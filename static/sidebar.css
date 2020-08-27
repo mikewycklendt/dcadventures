@@ -1,0 +1,88 @@
+#rules{
+	grid-area: rulea;
+}
+
+#games{
+	grid-area: games;
+}
+
+#stories{
+	grid-area: stories;
+}
+
+#heroes{
+	grid-area: heroes;
+}
+
+#npcs{
+	grid-area: npcs;
+}
+
+#locations{
+	grid-area: locations;
+}
+
+#skills{
+	grid-area: skills;
+
+}
+
+#abilities{
+	grid-area: abilities;
+}
+
+#powers{
+	grid-area: powers;
+}
+
+#flaws{
+	grid-area: flaws;
+}
+
+#equipment{
+	grid-area: equipment;
+}
+
+#devices{
+	grid-area: devices;
+}
+
+#armor{
+	grid-area: armor;
+}
+
+#weapons{
+	grid-area: weapons;
+}
+
+#vehicles{
+	grid-area: vehicles;
+}
+
+#constructs{
+	grid-area: constructs;
+}
+
+.button{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 250px;
+	height: 45px;
+	margin: 0px;
+	border-bottom: 2px solid #cdb99d;
+}
+
+.button:hover {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 250px;
+	height: 45px;
+	margin: 0px;
+	border-bottom: 2px solid #7ecef6;
+	border-left: 2px solid #7ecef6;
+	border-right: 2px solid #7ecef6;
+}

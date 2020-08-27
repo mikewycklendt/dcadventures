@@ -1,0 +1,51 @@
+.splash{
+	display: grid;
+	height: 768;
+	width: 800;
+	vertical-align: middle;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 80% 10% 10%;
+	grid-template-areas: "splash splash"
+							"signup about"
+							"below below";
+	
+}
+
+#splash{
+	grid-area: splash;
+}
+
+#signup{
+	grid-area: signup;
+	align-content: center;
+}
+
+#about{
+	grid-area: about;
+	align-content: center;
+}
+
+#below{
+	grid-area: below;
+}
+
+.btn-splash{
+	width: 270px;
+	height: 95px;
+	padding: 10px;
+	border: 4px solid #af0101;
+	border-color: #af0101;
+	border-radius: 5px;
+	align-content: center;
+}
+
+.btn-splash:hover{
+	width: 270px;
+	height: 95px;
+	padding: 10px;
+	border: 4px solid #3a4e87;
+	border-color: #3a4e87;
+	border-radius: 5px;
+	background-color: white;
+	align-content: center;
+}
