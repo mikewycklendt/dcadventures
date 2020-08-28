@@ -8,6 +8,7 @@ body{
 	display: grid;
 	align-content: center;
 	justify-content: center;
+	justify-self: center;
 	vertical-align: middle;
 	width: 1306;
 	margin: 0px;
