@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
-from forms import *
 from flask_migrate import Migrate
 import config
 from forms import VenueForm, ShowForm, ArtistForm
@@ -23,11 +22,11 @@ stylesheets = ['<link href="static/template.css" type="text/css" rel="stylesheet
 
 @app.route('/')
 def index():
-	include = 'home.html'
+	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
 	stylesheets += '<link href="static/home.css" type="text/css" rel="stylesheet" />'
 	meta = '<meta name="DC Adventures Online" content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero." />'
-	return render_template('template.html', include=include, title=title, stylesheets=stylesheets, meta=meta)
+	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta=meta)
 
 if __name__ == '__main__':
     app.debug = True
