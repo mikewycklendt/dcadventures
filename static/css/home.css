@@ -30,7 +30,7 @@
 	grid-area: below;
 }
 
-.btn-splash{
+#btn-splash{
 	width: 270px;
 	height: 95px;
 	padding: 10px;
@@ -40,7 +40,7 @@
 	align-content: center;
 }
 
-.btn-splash:hover{
+#btn-splash:hover{
 	width: 270px;
 	height: 95px;
 	padding: 10px;

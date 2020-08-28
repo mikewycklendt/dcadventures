@@ -17,7 +17,7 @@ body{
 
 }
 
-.bannergrid{
+#bannergrid{
 	display: grid;
 	grid-area: banner;
 	background-image: url( 'img/banner.jpg' ) no-repeat;
@@ -64,7 +64,7 @@ body{
 	grid-area: content;
 }
 
-.sidebargrid{
+#sidebargrid{
 	display: grid;
 	grid-area: sidebar;
 	background-image: url('img/sidebar.png') no-repeat;
