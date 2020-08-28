@@ -60,6 +60,7 @@ body{
 #content{
 	background-color: white;
 	font-family: 'Montserrat', sans-serif;
+	grid-area: content;
 }
 
 #sidebargrid{
