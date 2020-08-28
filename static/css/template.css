@@ -20,7 +20,7 @@ body{
 #bannergrid{
 	display: grid;
 	grid-area: banner;
-	background-image: url( img/banner.jpg ) no-repeat;
+	background-image: url( 'img/banner.jpg' ) no-repeat;
 	background-size: cover;
 	width: 100%;
 	grid-template-columns:  auto 125px;
