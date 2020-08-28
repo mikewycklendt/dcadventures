@@ -4,23 +4,13 @@ body{
 	margin: 0px;
 }
 
-.page{
-	margin: 0px;
-	justify-content: center;
-	align-content: center;
-	grid-template-rows: auto;
-	grid-template-columns: 100%;
-	grid-template-areas: "page";
-}
 
 .container{
-	display: grid;
-	grid-area: page;
+
 	align-content: center;
 	justify-content: center;
 	justify-self: center;
 	vertical-align: middle;
-	width: 1306;
 	margin: 0px;
 	grid-template-rows: 286px 3000px;
 	grid-template-columns: 2px 250px 2px 1050px 2px;
