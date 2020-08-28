@@ -13,9 +13,9 @@ body{
 	grid-template-areas: "page";
 }
 
-#container{
-	grid-area: page;
+.container{
 	display: grid;
+	grid-area: page;
 	align-content: center;
 	justify-content: center;
 	justify-self: center;
