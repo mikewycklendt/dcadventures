@@ -19,7 +19,7 @@ setup_db(app)
 
 @app.route('/')
 def index():
-	stylesheets = ["static/template.css"]
+	stylesheets = {"static/template.css"}
 	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
 	stylesheets += "static/home.css" 

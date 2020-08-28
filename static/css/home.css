@@ -8,6 +8,7 @@
 	grid-template-areas: "splash splash"
 							"signup about"
 							"below below";
+	background-image: url('/static/img/justice.png');
 	
 }
 
