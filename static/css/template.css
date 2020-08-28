@@ -5,9 +5,8 @@ body{
 }
 
 
-.grid-container{
+.container{
 	display: grid;
-	align-content: center;
 	justify-content: center;
 	margin: 0px;
 	grid-template-rows: 286px 3000px;
