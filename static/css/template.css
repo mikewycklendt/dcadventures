@@ -21,6 +21,7 @@ body{
 	display: grid;
 	grid-area: banner;
 	background: url(../img/banner.png);
+	background-size: cover;
 	width: 100%;
 	grid-template-columns:  auto 125px;
 	grid-template-rows: 30px auto;
@@ -67,6 +68,7 @@ body{
 	display: grid;
 	grid-area: sidebar;
 	background: url(static/img/sidebar.png);
+	background-size: cover;
 	width: 100%;
 	margin: 0px;
 	grid-template-columns: 100%;
