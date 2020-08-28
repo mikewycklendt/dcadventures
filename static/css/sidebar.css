@@ -63,7 +63,7 @@
 	grid-area: constructs;
 }
 
-#button{
+.btn{
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
@@ -74,7 +74,7 @@
 	border-bottom: 2px solid #cdb99d;
 }
 
-#button:hover {
+.btn:hover {
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;

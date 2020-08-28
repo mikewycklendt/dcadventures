@@ -23,8 +23,8 @@ body{
 	background-image: url( 'img/banner.jpg' ) no-repeat;
 	background-size: cover;
 	width: 100%;
-	grid-template-columns:  auto 125px;
-	grid-template-rows: 30px auto;
+	grid-template-columns:  auto 140px;
+	grid-template-rows: 45px auto;
 	grid-template-areas: "topleft topright"
 							"bottom bottom";
 	margin: 0px;
@@ -95,6 +95,7 @@ body{
 .btn-login{
 	width: 125px;
 	height: 30px;
+	margin: 15px;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
