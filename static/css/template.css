@@ -5,12 +5,10 @@ body{
 }
 
 
-.container{
+.grid-container{
 
 	align-content: center;
 	justify-content: center;
-	justify-self: center;
-	vertical-align: middle;
 	margin: 0px;
 	grid-template-rows: 286px 3000px;
 	grid-template-columns: 2px 250px 2px 1050px 2px;
