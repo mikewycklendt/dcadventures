@@ -19,12 +19,13 @@ setup_db(app)
 
 @app.route('/')
 def index():
-	stylesheets = ['<link href="static/template.css" type="text/css" rel="stylesheet" />']
+	stylesheets = ["static/template.css"]
 	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
-	stylesheets += '<link href="static/home.css" type="text/css" rel="stylesheet" />'
-	meta = '<meta name="DC Adventures Online" content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero." />'
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta=meta)
+	stylesheets += "static/home.css" 
+	meta_name="DC Adventures Online"
+	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
+	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
 
 if __name__ == '__main__':
     app.debug = True
