@@ -20,7 +20,7 @@ body{
 #bannergrid{
 	display: grid;
 	grid-area: banner;
-	background: url("../img/banner.jpg") no-repeat;
+	background-image: url( img/banner.jpg ) no-repeat;
 	background-size: cover;
 	width: 100%;
 	grid-template-columns:  auto 125px;
@@ -67,7 +67,7 @@ body{
 #sidebargrid{
 	display: grid;
 	grid-area: sidebar;
-	background: url('../img/sidebar.png') no-repeat;
+	background: url('img/sidebar.png') no-repeat;
 	background-size: cover;
 	width: 100%;
 	margin: 0px;
