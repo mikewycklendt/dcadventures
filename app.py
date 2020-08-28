@@ -16,10 +16,10 @@ from db import *
 app = Flask(__name__)
 setup_db(app)
 
-stylesheets = ['<link href="static/template.css" type="text/css" rel="stylesheet" />']
 
 @app.route('/')
 def index():
+	stylesheets = ['<link href="static/template.css" type="text/css" rel="stylesheet" />']
 	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
 	stylesheets += '<link href="static/home.css" type="text/css" rel="stylesheet" />'
