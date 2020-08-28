@@ -17,13 +17,10 @@ body{
 
 }
 
-#banner{
-	grid-area: banner;
-	background-image: '/static/img/banner.png';
-}
-
 #bannergrid{
 	display: grid;
+	grid-area: banner;
+	background-image: url(../img/banner.png)
 	width: 100%;
 	grid-template-columns:  auto 125px;
 	grid-template-rows: 30px auto;
@@ -65,13 +62,10 @@ body{
 	font-family: 'Montserrat', sans-serif;
 }
 
-#sidebar{
-	grid-area: sidebar;
-	background-image: '/static/img/sidebar.png';
-}
-
 #sidebargrid{
 	display: grid;
+	grid-area: sidebar;
+	background-image: url(../img/sidebar.png)
 	width: 100%;
 	margin: 0px;
 	grid-template-columns: 100%;
