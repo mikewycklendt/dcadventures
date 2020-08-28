@@ -7,7 +7,7 @@ body{
 
 .container{
 	display: grid;
-	justify-items: center;
+	align-items: center;
 	grid-template-rows: 286px 3000px;
 	grid-template-columns: 2px 250px 2px 1050px 2px;
 	grid-template-areas: "banner banner banner banner banner"
