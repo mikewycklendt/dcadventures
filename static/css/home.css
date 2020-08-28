@@ -1,4 +1,4 @@
-.splash{
+#splash{
 	display: grid;
 	height: 768;
 	width: 800;
@@ -12,7 +12,7 @@
 	
 }
 
-#splash{
+#blank{
 	grid-area: splash;
 }
 
