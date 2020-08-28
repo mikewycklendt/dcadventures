@@ -22,7 +22,7 @@ def index():
 	stylesheets = [{"style": "static/template.css"}]
 	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
-	stylesheets += {"style": "static/home.css"} 
+	stylesheets.append({"style": "static/home.css"}) 
 	meta_name="DC Adventures Online"
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
