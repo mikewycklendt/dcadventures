@@ -67,7 +67,7 @@ body{
 #sidebargrid{
 	display: grid;
 	grid-area: sidebar;
-	background: url('img/sidebar.png') no-repeat;
+	background-image: url('img/sidebar.png') no-repeat;
 	background-size: cover;
 	width: 100%;
 	margin: 0px;
