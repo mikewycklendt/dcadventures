@@ -20,8 +20,8 @@ def db_drop_and_create_all():
     db.create_all()
 
 class Ability(db.Model):
-    __tablename__ = 'abilities'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	__tablename__ = 'abilities'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.ARRAY(db.String))
 	summary = db.Column(db.String())
