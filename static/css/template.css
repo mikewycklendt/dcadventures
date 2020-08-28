@@ -17,16 +17,20 @@ body{
 
 }
 
+#banner{
+	grid-area: banner;
+	background-image: '/static/img/banner.png';
+}
+
 #bannergrid{
 	display: grid;
-	grid-area: banner;
 	width: 100%;
 	grid-template-columns:  auto 125px;
 	grid-template-rows: 30px auto;
 	grid-template-areas: "topleft topright"
 							"bottom bottom";
 	margin: 0px;
-	background-image: '/static/img/banner.png';
+	
 }
 
 #login{
@@ -62,10 +66,13 @@ body{
 }
 
 #sidebar{
-	display: grid;
 	grid-area: sidebar;
-	width: 100%;
 	background-image: '/static/img/sidebar.png';
+}
+
+#sidebargrid{
+	display: grid;
+	width: 100%;
 	margin: 0px;
 	grid-template-columns: 100%;
 	grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px auto;
