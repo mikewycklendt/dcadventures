@@ -19,10 +19,10 @@ setup_db(app)
 
 @app.route('/')
 def index():
-	stylesheets = [{"style": "static/css/template.css"}, {"style": "static/css/sidebar.css"}]
+	stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}]
 	includehtml = 'home.html'
 	title = 'DC Adventures Online Roleplqying Game'
-	stylesheets.append({"style": "static/css/home.css"})
+	stylesheets.append({"style": "/static/css/home.css"})
 	meta_name="DC Adventures Online"
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
