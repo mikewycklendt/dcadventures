@@ -9,7 +9,8 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from db import *
+import db
+import sys
 
 #db_drop_and_create_all()
 
