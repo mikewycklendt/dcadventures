@@ -1,5 +1,6 @@
 .splash{
 	display: grid;
+	grid-area: content;
 	height: 768px;
 	width: 800px;
 	vertical-align: middle;
