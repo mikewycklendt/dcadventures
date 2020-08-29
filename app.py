@@ -18,7 +18,6 @@ app = Flask(__name__)
 moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc'
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 @app.route('/')
 def index():
