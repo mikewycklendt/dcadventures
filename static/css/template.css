@@ -33,7 +33,7 @@ body{
 
 #login{
 	grid-area: topright;
-	font-family: Nanum Gothic, Verdana;
+	font-family: 'Monda', Verdana;
 }
 
 #topleft{
@@ -98,7 +98,7 @@ body{
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
-	font-family: Nanum Gothic, Verdana;
+	font-family: 'Monda', Verdana;
 	font-size: 12px;;
 	text-align: center;
 	color: white;
@@ -110,7 +110,7 @@ body{
 	border: 2px solid white;
 	border-color: white;
 	background-color: #3a4e87;
-	font-family: Nanum Gothic, Verdana;
+	font-family: 'Monda', Verdana;
 	font-size: 12px;
 	text-align: center;
 	color: white;
