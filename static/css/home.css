@@ -33,21 +33,22 @@
 
 #btn-splash{
 	width: 270px;
-	height: 95px;
+	height: 75px;
 	padding: 10px;
 	border: 4px solid #af0101;
 	border-color: #af0101;
-	border-radius: 5px;
+	border-radius: 20px;
+	background-color: white;
 	align-content: center;
 }
 
 #btn-splash:hover{
-	width: 270px;
-	height: 95px;
+	width: 290px;
+	height: 85px;
 	padding: 10px;
 	border: 4px solid #3a4e87;
 	border-color: #3a4e87;
-	border-radius: 5px;
-	background-color: white;
+	border-radius: 20px;
+	background-color: #af0101;
 	align-content: center;
 }
