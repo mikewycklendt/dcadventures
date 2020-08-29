@@ -69,7 +69,7 @@ body{
 	grid-area: sidebar;
 	width: 100%;
 	margin: 0px;
-	grid-template-columns: auto;
+	grid-template-columns: 100%;
 	grid-template-rows: 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49x 49px auto;
 	grid-template-areas: "rules"
 							"games"
