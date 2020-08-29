@@ -99,6 +99,7 @@ body{
 	border-color: white;
 	background-color: #af0101;
 	font-family: Monda, sans-serif;
+	font-size: 12px;;
 	text-align: center;
 	color: white;
 }
@@ -109,7 +110,8 @@ body{
 	border: 2px solid white;
 	border-color: white;
 	background-color: #3a4e87;
-	font-family: 'Monda', sans-serif;
+	font-family: Monda, sans-serif;
+	font-size: 12px;
 	text-align: center;
 	color: white;
 }
