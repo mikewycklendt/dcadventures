@@ -4,14 +4,16 @@ body{
 	margin: 0px;
 }
 
-
 .container{
 	display: grid;
-	justify-content: center;
+	align-content: center;
+	vertical-align: middle;
+	width: 1306;
+	margin: 0px;
 	grid-template-rows: 286px 3000px;
 	grid-template-columns: 2px 250px 2px 1050px 2px;
-	grid-template-areas: "banner banner banner banner banner"
-							"left sidebar middle content right"
+	grid-template-areas: ". banner banner banner banner banner ."
+							". left sidebar middle content right ."
 
 }
 
@@ -67,8 +69,10 @@ body{
 	grid-area: sidebar;
 	background-image: url('img/sidebar.png') no-repeat;
 	background-size: cover;
+	width: 100%;
+	margin: 0px;
 	grid-template-columns: 100%;
-	grid-template-rows: 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px 47px auto;
+	grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px auto;
 	grid-template-areas: "rules"
 							"games"
 							"stories"
@@ -91,7 +95,6 @@ body{
 .btn-login{
 	width: 125px;
 	height: 30px;
-	margin: 15px;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
