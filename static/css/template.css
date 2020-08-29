@@ -67,12 +67,10 @@ body{
 #sidebargrid{
 	display: grid;
 	grid-area: sidebar;
-	background-image: url('img/sidebar.png') no-repeat;
-	background-size: cover;
 	width: 100%;
 	margin: 0px;
-	grid-template-columns: 100%;
-	grid-template-rows: 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px auto;
+	grid-template-columns: auto;
+	grid-template-rows: 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49x 49px auto;
 	grid-template-areas: "rules"
 							"games"
 							"stories"
@@ -95,6 +93,7 @@ body{
 .btn-login{
 	width: 125px;
 	height: 30px;
+	margin: 7px;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
