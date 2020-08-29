@@ -10,7 +10,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
 
 		{% for style in stylesheets %}
-		<link href="{{ style.style }}" type="text/css" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="{{ style.style }}"  />
 		{% endfor %}
 
 	</head>
@@ -30,7 +30,7 @@
 
 			<div id="left"></div>
 
-			<div id="sidebargrid" style="background:url(/static/img/sidebar.jpg">
+			<div id="sidebargrid" style='background:url(/static/img/sidebar.jpg'>
 			<div id="rules">
 				<div class="btn">
 					<img src="/static/img/sidebar/rulesGOLD.png" 
