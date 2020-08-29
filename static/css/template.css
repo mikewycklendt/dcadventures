@@ -95,11 +95,12 @@ body{
 	width: 125px;
 	height: 30px;
 	margin: 7px;
+	padding: 10px;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
 	font-family: 'Monda', Verdana;
-	font-size: 12px;;
+	font-size: 16px;;
 	text-align: center;
 	color: white;
 }
@@ -111,7 +112,7 @@ body{
 	border-color: white;
 	background-color: #3a4e87;
 	font-family: 'Monda', Verdana;
-	font-size: 12px;
+	font-size: 16px;
 	text-align: center;
 	color: white;
 }
