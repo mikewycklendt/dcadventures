@@ -10,8 +10,6 @@ moment = Moment(app)
 database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
 db = SQLAlchemy(app)
 
-migrate = Migrate(app, db)
-
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
