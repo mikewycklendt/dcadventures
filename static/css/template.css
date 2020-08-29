@@ -10,7 +10,7 @@ body{
 	vertical-align: middle;
 	width: 1306;
 	margin: 0px;
-	grid-template-rows: 286px 3000px;
+	grid-template-rows: 286px auto;
 	grid-template-columns: 2px 250px 2px 1050px 2px;
 	grid-template-areas: "banner banner banner banner banner"
 							"left sidebar middle content right";
@@ -46,17 +46,17 @@ body{
 
 #left{
 	grid-area: left;
-	background-color: #153958;
+	background-color: #42abe0;
 }
 
 #middle{
 	grid-area: middle;
-	background-color: #153958;
+	background-color: #42abe0;
 }
 
 #right{
 	grid-area: right;
-	background-color: #153958;
+	background-color: #42abe0;
 }
 
 #content{
