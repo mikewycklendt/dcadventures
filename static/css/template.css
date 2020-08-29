@@ -70,7 +70,7 @@ body{
 	width: 100%;
 	margin: 0px;
 	grid-template-columns: 100%;
-	grid-template-rows: 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49x 49px auto;
+	grid-template-rows: 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px;
 	grid-template-areas: "rules"
 							"games"
 							"stories"
