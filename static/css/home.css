@@ -3,7 +3,7 @@
 	height: 768px;
 	width: 800px;
 	vertical-align: middle;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 400px 400px ;
 	grid-template-rows: 80% 10% 10%;
 	grid-template-areas: "splash splash"
 							"signup about"
