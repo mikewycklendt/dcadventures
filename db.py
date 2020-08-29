@@ -8,7 +8,7 @@ app = Flask(__name__)
 moment = Moment(app)
 #app.config.from_object('config')
 database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
-db = SQLAlchemy(app)
+
 
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
