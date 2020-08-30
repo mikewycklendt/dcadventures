@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-import db
+from db import setup_db, Ability, db_drop_and_create_all 
 import sys
 
 #db_drop_and_create_all()
@@ -17,9 +17,11 @@ import sys
 app = Flask(__name__)
 moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc'
-db = SQLAlchemy(app)
-
+db = SQLAlchemy()
+setup_db(app)
 migrate = Migrate(app, db)
+
+
 
 @app.route('/')
 def index():
