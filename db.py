@@ -11,8 +11,6 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 db = SQLAlchemy()
-setup_db(app)
-migrate = Migrate(app, db)
 
 def setup_db(app):
 	database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
@@ -25,6 +23,9 @@ def setup_db(app):
 def db_drop_and_create_all():
 	db.drop_all()
 	db.create_all()
+
+setup_db(app)
+migrate = Migrate(app, db)
 
 class Ability(db.Model):
 	__tablename__ = 'abilities'
