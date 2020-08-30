@@ -74,18 +74,21 @@ def abilities_create():
 					"description": ['Deception, Intimidation, and Persuasion skill checks.',
 									'Presence checks to influence others through force of personality when a specific skill doesn’t apply.'],
 					"summary": 'Presence is force of personality, persuasiveness, leader-ship ability and (to a lesser degree) attractiveness. Pres-ence is useful for heroes who intend to be leaders as well as those who strike fear into the hearts of criminals with their presence. Your Presence modifier applies to:'}]
-	print (abilities)
+	#print (abilities)
 
 	for ability in abilities:
-		print(ability)
 		name = ability.name
+		print(name)
 		description = ability.description
+		for entry in description:
+			print(entry)
 		summary = ability.summary
-		newEntry = Ability(name=name, description=description, summary=summary)
-		db.session.add(newEntry)
-		db.session.commit()
+		print(summary)
+		#newEntry = Ability(name=name, description=description, summary=summary)
+		#db.session.add(newEntry)
+		#db.session.commit()
 
-	return redirect(url_for('venues_results'))
+	return ('abilities')
 
 @app.route('/venues/results')
 def venues_results():
