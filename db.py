@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
 
-
 app = Flask(__name__)
 moment = Moment(app)
 #app.config.from_object('config')
@@ -17,15 +16,15 @@ migrate = Migrate(app, db)
 
 def setup_db(app):
 	database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    db.app = app
-    db.init_app(app)
+	app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+	app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+	db.app = app
+	db.init_app(app)
 	db.create_all()
-
+	
 def db_drop_and_create_all():
-    db.drop_all()
-    db.create_all()
+	db.drop_all()
+	db.create_all()
 
 class Ability(db.Model):
 	__tablename__ = 'abilities'
