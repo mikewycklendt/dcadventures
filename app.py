@@ -33,7 +33,7 @@ def index():
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
 
-@app.route('/abilities/create', methods=['POST'])
+@app.route('/abilities/create')
 def abilities_create():
 	abilities = [{"name": "Strength",
 					"description": ['Damage dealt by your unarmed and strength-based attacks.',
