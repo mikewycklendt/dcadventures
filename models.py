@@ -19,10 +19,6 @@ def setup_db(app):
 	db.app = app
 	db.init_app(app)
 	db.create_all()
-	
-def db_drop_and_create_all():
-	db.drop_all()
-	db.create_all()
 
 setup_db(app)
 migrate = Migrate(app, db)
@@ -33,6 +29,8 @@ class Ability(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.ARRAY(db.String))
 	summary = db.Column(db.String())
+
+	db.create_all()
 
 if __name__ == '__main__':
     app.debug = True
