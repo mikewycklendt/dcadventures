@@ -74,7 +74,9 @@ def abilities_create():
 					"description": ['Deception, Intimidation, and Persuasion skill checks.',
 									'Presence checks to influence others through force of personality when a specific skill doesn’t apply.'],
 					"summary": 'Presence is force of personality, persuasiveness, leader-ship ability and (to a lesser degree) attractiveness. Pres-ence is useful for heroes who intend to be leaders as well as those who strike fear into the hearts of criminals with their presence. Your Presence modifier applies to:'}]
-	print (abilities)
+	
+	for ability in abilities:
+		print (ability)
 	'''
 	for ability in abilities:
 		name = ability.name
