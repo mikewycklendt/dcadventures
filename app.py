@@ -60,7 +60,7 @@ def absent():
 		value = entry['value']
 		ability.absent = value
 		db.session.commit()
-		db.session.close
+		db.session.close()
 
 	ability = Ability.query.all()
 
