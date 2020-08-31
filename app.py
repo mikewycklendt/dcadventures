@@ -85,7 +85,10 @@ def abilities_create():
 		'summary': 'Presence is force of personality, persuasiveness, leader-ship ability and (to a lesser degree) attractiveness. Pres-ence is useful for heroes who intend to be leaders as well as those who strike fear into the hearts of criminals with their presence. Your Presence modifier applies to:'})
 	
 	for ability in abilities:
-		print (ability.name)
+		print (abilitty['name'])
+		print (ability['summary'])
+		for describe in ability['description']
+			print (describe)
 	'''
 	for ability in abilities:
 		name = ability.name
