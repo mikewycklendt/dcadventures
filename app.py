@@ -57,14 +57,14 @@ def absent():
 		print (entry['value'])
 		ability_id = entry['id']
 		value = entry['value']
-		'''
+		
 		ability = Ability.query.filter_by(id=ability_id).one()
 		ability.absent = value
 		db.session.commit()
-		'''
+		
 
 	return ('absent')
-	
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
