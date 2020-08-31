@@ -62,6 +62,9 @@ def absent():
 		ability.absent = value
 		db.session.commit()
 		'''
+
+	return ('absent')
+	
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
