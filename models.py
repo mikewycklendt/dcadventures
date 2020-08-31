@@ -31,6 +31,12 @@ class Ability(db.Model):
 	summary = db.Column(db.String())
 	absent = db.Column(db.String())
 
+class Defense(db.Model):
+	__tablename__ = 'abilities'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	description = db.Column(db.String())
+	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)

@@ -38,38 +38,33 @@ def defense_create():
 
 	defenses = []
 
-@app.route('/absent')
-def absent():
+	defenses.append({'name': 'Dodge',
+						'ability_id': 3,
+						'description': 'Dodge defense is based on Agility rank. It includes reaction time, quickness, nimbleness, and overall coordination, used to avoid ranged attacks or other hazards where reflexes and speed are important.'})
+	defenses.append({'name': 'Fortitude',
+						'ability_id': 2,
+						'description': 'Fortitude defense is based on Stamina and measures health and resistance to threats like poison or disease. It incorporates constitution, ruggedness, metabolism, and immunity.'})
+	defenses.append({'name': 'Parry',
+						'ability_id': 5,
+						'description': 'Parry defense is based on Fighting. It is the ability to counter, duck, or otherwise evade a foe’s attempts to strike you in close combat through superior fighting ability.'})
+	defenses.append({'name': 'Toughness',
+						'ability_id': 2,
+						'description': 'Toughness defense is based on Stamina and is resistance to direct damage or harm, and overall durability.'})
+	defenses.append({'name': 'Will',
+						'ability_id': 7,
+						'description': 'Will defense is based on Awareness rank. It measures mental stability, level-headedness, determination, selfconfidence, self-awareness, and willpower, and is used to resist mental or spiritual attacks.'})				
 
-	absent = []
+	for defense in defenses:
+		name = defense['name']
+		ability_id = defense['ability_id']
+		description = defense['description']
 
-	absent.append({'id': 1, 'value': 'A creature with no Strength is incapable of exerting any physical force, either because it has no physical form (like an incorporeal ghost) or simply can’t move (like a tree).'})
-	absent.append({'id': 2, 'value': 'A creature with no Stamina has no physical body (like a ghost) or is not a living being (such as a robot or other construct). Creatures with no Stamina suffer and recover from damage like inanimate ob-jects (see Damaging Objects under the Damage effect). They are immune to fatigued and exhausted conditions, but cannot exert extra effort. Creatures with no Stamina are often—but not necessarily—immune to many of the other things affecting living beings as well (see the Immunity effect in the Powers chapter). They have no Fortitude defense.'})
-	absent.append({'id': 3, 'value': 'A creature with no Agility is unable to move its body under its own power and has no Dodge defense.'})
-	absent.append({'id': 4, 'value': 'A creature with no Dexterity cannot manipulate objects and hence cannot make physical attacks.'})
-	absent.append({'id': 5, 'value': 'A creature with no Fighting is incapable of making any sort of close attack (but may still be able to launch ranged attacks, if it has Dexterity).'})
-	absent.append({'id': 6, 'value': 'A creature with no Intellect is an automaton, lacking free will and operating entirely on simple instinct or pre-programmed instructions. Anything with no Intellect is immune to mental effects and interaction skills and has no Will defense.'})
-	absent.append({'id': 7, 'value': 'Anything with no Awareness is completely unaware and also has no Presence. It is an inanimate object, not a creature. Objects are immune to mental effects and interaction skills, and have no defenses apart from Toughness (and Fortitude, if they are alive).'})
-	absent.append({'id': 8, 'value': 'Creatures without Presence are unable to interact and are immune to interaction skills. They have no Will defense.'})
+		print (name)
+		print (ability_id)
+		print (description)
 
-	for entry in absent:
-		ability_id = entry['id']
-		
-		
-		ability = Ability.query.filter_by(id=ability_id).one()
-		value = entry['value']
-		ability.absent = value
-		db.session.commit()
-		db.session.close()
-
-	ability = Ability.query.all()
-
-	for entry in ability:
-		check = entry.absent
-		print (check)
-
-	return ('absent')
-
+	return ('defense')
+	
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
