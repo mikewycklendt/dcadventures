@@ -59,12 +59,24 @@ def defense_create():
 		ability_id = defense['ability_id']
 		description = defense['description']
 
+		entry = Defense(name=name, ability_id=ability_id, description=description)
+		db.session.add(entry)
+		db.session.commit()
+
+	additions = Defense.query.all()
+	for addition in additions:
+		defense_id = addition.id
+		name = addition.name
+		ability_id = addition.ability_id
+		description = addition.description
+
+		print (defense_id)
 		print (name)
 		print (ability_id)
 		print (description)
 
 	return ('defense')
-	
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
