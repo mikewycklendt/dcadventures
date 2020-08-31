@@ -33,50 +33,6 @@ def index():
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
 
-@app.route('/defense/create')
-def defense_create():
-
-	defenses = []
-
-	defenses.append({'name': 'Dodge',
-						'ability_id': 3,
-						'description': 'Dodge defense is based on Agility rank. It includes reaction time, quickness, nimbleness, and overall coordination, used to avoid ranged attacks or other hazards where reflexes and speed are important.'})
-	defenses.append({'name': 'Fortitude',
-						'ability_id': 2,
-						'description': 'Fortitude defense is based on Stamina and measures health and resistance to threats like poison or disease. It incorporates constitution, ruggedness, metabolism, and immunity.'})
-	defenses.append({'name': 'Parry',
-						'ability_id': 5,
-						'description': 'Parry defense is based on Fighting. It is the ability to counter, duck, or otherwise evade a foe’s attempts to strike you in close combat through superior fighting ability.'})
-	defenses.append({'name': 'Toughness',
-						'ability_id': 2,
-						'description': 'Toughness defense is based on Stamina and is resistance to direct damage or harm, and overall durability.'})
-	defenses.append({'name': 'Will',
-						'ability_id': 7,
-						'description': 'Will defense is based on Awareness rank. It measures mental stability, level-headedness, determination, selfconfidence, self-awareness, and willpower, and is used to resist mental or spiritual attacks.'})				
-
-	for defense in defenses:
-		name = defense['name']
-		ability_id = defense['ability_id']
-		description = defense['description']
-
-		entry = Defense(name=name, ability_id=ability_id, description=description)
-		db.session.add(entry)
-		db.session.commit()
-
-	additions = Defense.query.all()
-	for addition in additions:
-		defense_id = addition.id
-		name = addition.name
-		ability_id = addition.ability_id
-		description = addition.description
-
-		print (defense_id)
-		print (name)
-		print (ability_id)
-		print (description)
-
-	return ('defense')
-
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
