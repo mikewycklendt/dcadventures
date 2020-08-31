@@ -53,15 +53,19 @@ def absent():
 	absent.append({'id': 8, 'value': 'Creatures without Presence are unable to interact and are immune to interaction skills. They have no Will defense.'})
 
 	for entry in absent:
-		print (entry['id'])
-		print (entry['value'])
 		ability_id = entry['id']
-		value = entry['value']
+		
 		
 		ability = Ability.query.filter_by(id=ability_id).one()
+		value = entry['value']
 		ability.absent = value
 		db.session.commit()
-		
+		db.session.close
+
+	ability = Ability.query.all()
+
+	for entry in ability:
+		check = entry.absent
 
 	return ('absent')
 
