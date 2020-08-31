@@ -86,22 +86,15 @@ def abilities_create():
 	
 	for ability in abilities:
 		print (ability['name'])
+		name = ability['name']
 		print (ability['summary'])
+		summary = ability['summary']
 		description = ability['description']
+		newEntry = Ability(name=name, description=description, summary=summary)
+		db.session.add(newEntry)
+		db.session.commit()
 		for describe in description:
 			print (describe)
-	'''
-	for ability in abilities:
-		name = ability.name
-		print(name)
-		description = ability.description
-		for entry in description:
-			print(entry)
-		summary = ability.summary
-		print(summary)
-		#newEntry = Ability(name=name, description=description, summary=summary)
-		#db.session.add(newEntry)
-		#db.session.commit()
 	'''
 	return ('abilities')
 
