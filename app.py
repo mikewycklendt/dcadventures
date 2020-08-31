@@ -87,7 +87,8 @@ def abilities_create():
 	for ability in abilities:
 		print (abilitty['name'])
 		print (ability['summary'])
-		for describe in ability['description']
+		description = ability['description']
+		for describe in description:
 			print (describe)
 	'''
 	for ability in abilities:
