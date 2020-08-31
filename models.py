@@ -32,7 +32,7 @@ class Ability(db.Model):
 	absent = db.Column(db.String())
 
 class Defense(db.Model):
-	__tablename__ = 'abilities'
+	__tablename__ = 'defense'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	description = db.Column(db.String())
 	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
