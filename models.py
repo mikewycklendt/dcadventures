@@ -34,6 +34,7 @@ class Ability(db.Model):
 class Defense(db.Model):
 	__tablename__ = 'defense'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String)
 	description = db.Column(db.String())
 	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 
