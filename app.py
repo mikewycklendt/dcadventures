@@ -66,6 +66,7 @@ def absent():
 
 	for entry in ability:
 		check = entry.absent
+		print (check)
 
 	return ('absent')
 
