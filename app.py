@@ -95,7 +95,7 @@ def abilities_create():
 		db.session.commit()
 		for describe in description:
 			print (describe)
-	'''
+
 	return ('abilities')
 
 @app.route('/venues/results')
