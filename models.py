@@ -30,6 +30,7 @@ class Ability(db.Model):
 	description = db.Column(db.ARRAY(db.String))
 	summary = db.Column(db.String())
 	absent = db.Column(db.String())
+	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
 
 class Defense(db.Model):
 	__tablename__ = 'defense'
@@ -37,6 +38,16 @@ class Defense(db.Model):
 	name = db.Column(db.String)
 	description = db.Column(db.String())
 	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
+	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+
+class Modifier(db.Model):
+	__tablename__ = 'modifiers'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cost = db.Column(db.Integer())
+	description = db.Column(db.String())
+	table = db.Column(db.Boolean)
+
 
 if __name__ == '__main__':
     app.debug = True
