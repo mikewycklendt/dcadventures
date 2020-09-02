@@ -71,11 +71,8 @@ def modifierid():
 	entries = [1, 2, 3, 4, 5, 6, 7, 8]
 	for row in table:
 		for entry in entries:
-			if row.id == entry:
-				print(row.name)
-			else:
-				todelete = Defense.query(Defense).filter_by(id=entry).one()
-				db.session.delete(todelete)
+			if row.id != entry:
+				db.session.delete(row)
 				db.session.commit()
 				db.session.close()
 		'''
