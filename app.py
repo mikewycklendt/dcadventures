@@ -43,7 +43,7 @@ def abilities():
 	return render_template('table.html', table=table, titlw=title)
 
 @app.route('/defense')
-def abilities():
+def defense():
 
 	title = 'Defense'
 
@@ -52,7 +52,7 @@ def abilities():
 	return render_template('table.html', table=table, titlw=title)
 
 @app.route('/mofifiers')
-def abilities():
+def modifiers():
 
 	title = 'Modifiers'
 
