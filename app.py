@@ -70,7 +70,7 @@ def modifierid():
 	modifier_id = 4
 
 	for row in table:
-		line = Ability.query.filter_by(id=row.id).ons()
+		line = Ability.query.filter_by(id=row.id).one()
 		row.modifier_id = modifier_id
 		db.session.add(entry)
 		db.session.commit()
