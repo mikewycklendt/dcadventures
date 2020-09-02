@@ -72,7 +72,6 @@ def modifierid():
 	for row in table:
 		line = Ability.query.filter_by(id=row.id).one()
 		row.modifier_id = modifier_id
-		db.session.add(entry)
 		db.session.commit()
 		db.session.close()
 
