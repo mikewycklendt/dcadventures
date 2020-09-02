@@ -1,7 +1,7 @@
 .grid {
 	display: grid;
-	width: 30%;
-	grid-template-columns: 10% 90%;
+	width: 45%;
+	grid-template-columns: 15% 90%;
 }
 
 .grid > span {
