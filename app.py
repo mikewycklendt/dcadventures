@@ -65,12 +65,11 @@ def modifiers():
 @app.route('/modifierid')
 def modifierid():
 
-	table = Ability.query.all()
+	table = Defense.query.all()
 
-	modifier_id = 1
+	modifier_id = 4
 
 	for row in table:
-		line = Ability.query.filter_by(id=row.id).one()
 		row.modifier_id = modifier_id
 		db.session.commit()
 		db.session.close()
