@@ -102,6 +102,8 @@ def modifierid():
 		print(row.name)
 		print(row.modifier_id)
 
+	return ('updated modifieer')
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
