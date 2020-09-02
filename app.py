@@ -89,20 +89,6 @@ def debilitated_create():
 		'controlled':
 		'ability_id': 
 		})
-
-@app.route('/skills/create')
-def skills_create():
-
-	skills = []
-
-	skills.append({
-		'name': '',
-		'ability_id': ,
-		'untrained': ,
-		'action_id':
-		'description': ''
-		})
-
 '''
 
 @app.route('/action/create')
@@ -111,31 +97,10 @@ def action_create():
 	actions = []
 
 	actions.append({
-		'name': 'Standard Action',
+		'name': 'Multiple Actions',
 		'cost': True,
 		'turn': True,
-		'description': 'A standard action generally involves acting upon something, whether it’s an attack or using a power to affect something. You’re limited to one standard action each round.'	
-		})
-
-	actions.append({
-		'name': 'Move Action',
-		'cost': True,
-		'turn': True,
-		'description': 'A move action, like the name implies, usually involves moving. You can take your move action before or afteryour standard action, so you can attack then move, or move then attack. You cannot, however, normally split-up your move action before and after your standard action. Move actions also include things like drawing weapons, standing up, and picking up or manipulating objects.'	
-		})
-
-	actions.append({
-		'name': 'Free Action',
-		'cost': False,
-		'turn': True,
-		'description': 'A free action is something so comparatively minor it doesn’t take significant time, so you can perform as many free actions in a round as the GM considers reasonable. Free actions include things like talking (heroes and villains always find time to say a lot in the middle of a fight), dropping something, ending the use of a power, activating or maintaining some other powers, and so forth.'	
-		})
-
-	actions.append({
-		'name': 'Reaction',
-		'cost': False,
-		'turn': False,
-		'description': 'A reaction is something you do in response to something else. A reaction doesn’t take any significant time, like a free action. The difference is you react in response to something else happening during the round, perhaps not even on your turn. Reactions don’t count against your normal allotment of actions and you can react as often as the circumstances dictate, but only when they dictate.'	
+		'description': 'This kind of action takes more than one standard action and may take up multiple turns.'	
 		})
 
 	for action in actions:
@@ -157,7 +122,224 @@ def action_create():
 		print (result.turn)
 		print (result.description)
 
-	return ('Actions Added') 
+	return ('Actions Added')
+
+@app.route('/skills/create')
+def skills_create():
+
+	skills = []
+
+	skills.append({
+		'name': 'Acrobatics',
+		'ability_id': 3,
+		'untrained': False,
+		'action_id': 1,
+		'description': ''
+		})
+
+	skills.append({
+		'name': 'Athletics',
+		'ability_id': 1,
+		'untrained': True,
+		'action_id': 2,
+		'description': ''
+		})
+
+	skills.append({
+		'name': 'Close Combat',
+		'ability_id': 5,
+		'untrained': True,
+		'action_id': 1,
+		'description': ''
+		})
+
+	skills.append({
+		'name': 'Deception',
+		'ability_id': 8,
+		'untrained': True,
+		'action_id': 1,
+		'description': ''
+		})
+
+	skills.append({
+		'name': 'Expertise',
+		'ability_id': 6,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+
+
+
 
 
 if __name__ == '__main__':
