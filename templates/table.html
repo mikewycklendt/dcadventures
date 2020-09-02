@@ -12,10 +12,10 @@
 		<div class="grid">
 		{% for row in table %}
 			<span>
-				<h2><strong>{{ row.id }}</strong></h2>
+				<{{ size }}> <strong>{{ row.id }}</strong></{{size}}>
 			</span>
 			<span>
-				<h2><strong>{{ row.name }}</strong></h2>
+				<{{size}}<strong>{{ row.name }}</strong></{{size}}>
 			</span>
 		{% endfor %}
 		</div>

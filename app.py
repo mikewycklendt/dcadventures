@@ -37,28 +37,30 @@ def index():
 def abilities():
 
 	title = 'Abilities'
-
+	size = 'h2' 
 	table = Ability.query.all()
 
-	return render_template('table.html', table=table, title=title)
+	return render_template('table.html', table=table, title=title, size=size)
 
 @app.route('/defense')
 def defense():
 
 	title = 'Defense'
-
+	size = 'h2'
 	table = Defense.query.all()
 
-	return render_template('table.html', table=table, title=title)
+	return render_template('table.html', table=table, title=title, size=size)
 
 @app.route('/mofifiers')
 def modifiers():
 
 	title = 'Modifiers'
+	
+	size = 'h3'
 
 	table = Modifier.query.all()
 
-	return render_template('table.html', table=table, title=title)
+	return render_template('table.html', table=table, title=title, size=size)
 
 if __name__ == '__main__':
     app.debug = True
