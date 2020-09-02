@@ -72,7 +72,7 @@ def modifierid():
 	for row in table:
 		for entry in entries:
 			if row.id == entry:
-
+				print(row.name)
 			else:
 				db.session.delete(row)
 				db.session.commit()
