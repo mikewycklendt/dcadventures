@@ -65,9 +65,9 @@ def modifiers():
 @app.route('/modifierid')
 def modifierid():
 
-	table = Ability.query.all()
+	table = Defense.query.all()
 
-	modifier_id = 1
+	modifier_id = 4
 
 	for row in table:
 		entry = Ability(modifier_id=modifier_id)
