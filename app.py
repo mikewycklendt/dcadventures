@@ -62,6 +62,20 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
+@app.route('/actions')
+def actions():
+
+	title = 'Actions'
+	
+	size = 'h1'
+
+	table = Action.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
+
+
+'''
 @app.route('/debilitated/create')
 def debilitated_create():
 
@@ -88,6 +102,8 @@ def skills_create():
 		'action_id':
 		'description': ''
 		})
+
+'''
 
 @app.route('/action/create')
 def action_create():
