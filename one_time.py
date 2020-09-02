@@ -88,8 +88,9 @@ def defense_create():
 		name = defense['name']
 		ability_id = defense['ability_id']
 		description = defense['description']
+		modifier_id = 4
 
-		entry = Defense(name=name, ability_id=ability_id, description=description)
+		entry = Defense(name=name, ability_id=ability_id, description=description, modifier_id=modifier_id)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -99,15 +100,17 @@ def defense_create():
 		name = addition.name
 		ability_id = addition.ability_id
 		description = addition.description
+		modifier = addition.modifier_id
 
 		print (defense_id)
 		print (name)
 		print (ability_id)
 		print (description)
+		print (modifier)
 
 	return ('defense')
 
-	@app.route('/modifier')
+@app.route('/modifier')
 def modifiers():
 	modifiers = []
 

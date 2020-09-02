@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier
+from models import setup_db, Ability, Defense, Modifier, Action
 import sys
 
 #db_drop_and_create_all()
@@ -62,52 +62,89 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/defense/create')
-def defense_create():
+@app.route('/debilitated/create')
+def debilitated_create():
 
-	defenses = []
+	entries = []
 
-	defenses.append({'name': 'Dodge',
-						'ability_id': 3,
-						'description': 'Dodge defense is based on Agility rank. It includes reaction time, quickness, nimbleness, and overall coordination, used to avoid ranged attacks or other hazards where reflexes and speed are important.'})
-	defenses.append({'name': 'Fortitude',
-						'ability_id': 2,
-						'description': 'Fortitude defense is based on Stamina and measures health and resistance to threats like poison or disease. It incorporates constitution, ruggedness, metabolism, and immunity.'})
-	defenses.append({'name': 'Parry',
-						'ability_id': 5,
-						'description': 'Parry defense is based on Fighting. It is the ability to counter, duck, or otherwise evade a foe’s attempts to strike you in close combat through superior fighting ability.'})
-	defenses.append({'name': 'Toughness',
-						'ability_id': 2,
-						'description': 'Toughness defense is based on Stamina and is resistance to direct damage or harm, and overall durability.'})
-	defenses.append({'name': 'Will',
-						'ability_id': 7,
-						'description': 'Will defense is based on Awareness rank. It measures mental stability, level-headedness, determination, selfconfidence, self-awareness, and willpower, and is used to resist mental or spiritual attacks.'})				
+	entries.append({
+		'name': 'Debilitated ',
+		'effects': 
+		'condition_id': 
+		'actions':
+		'controlled':
+		'ability_id': 
+		})
 
-	for defense in defenses:
-		name = defense['name']
-		ability_id = defense['ability_id']
-		description = defense['description']
-		modifier_id = 4
+@app.route('/skills/create')
+def skills_create():
 
-		entry = Defense(name=name, ability_id=ability_id, description=description, modifier_id=modifier_id)
+	skills = []
+
+	skills.append({
+		'name': '',
+		'ability_id': ,
+		'untrained': ,
+		'action_id':
+		'description': ''
+		})
+
+@app.route('/action/create')
+def action_create():
+
+	actions = []
+
+	actions.append({
+		'name': 'Standard Action',
+		'cost': True,
+		'turn': True,
+		'description': 'A standard action generally involves acting upon something, whether it’s an attack or using a power to affect something. You’re limited to one standard action each round.'	
+		})
+
+	actions.append({
+		'name': 'Move Action',
+		'cost': True,
+		'turn': True,
+		'description': 'A move action, like the name implies, usually involves moving. You can take your move action before or afteryour standard action, so you can attack then move, or move then attack. You cannot, however, normally split-up your move action before and after your standard action. Move actions also include things like drawing weapons, standing up, and picking up or manipulating objects.'	
+		})
+
+	actions.append({
+		'name': 'Free Action',
+		'cost': False,
+		'turn': True,
+		'description': 'A free action is something so comparatively minor it doesn’t take significant time, so you can perform as many free actions in a round as the GM considers reasonable. Free actions include things like talking (heroes and villains always find time to say a lot in the middle of a fight), dropping something, ending the use of a power, activating or maintaining some other powers, and so forth.'	
+		})
+
+	actions.append({
+		'name': 'Reaction',
+		'cost': False,
+		'turn': False,
+		'description': 'A reaction is something you do in response to something else. A reaction doesn’t take any significant time, like a free action. The difference is you react in response to something else happening during the round, perhaps not even on your turn. Reactions don’t count against your normal allotment of actions and you can react as often as the circumstances dictate, but only when they dictate.'	
+		})
+
+	for action in actions:
+		name = action['name']
+		cost = action['cost']
+		turn = action['turn']
+		description= action['description']
+
+		entry = Action(name=name, cost=cost, turn=turn, description=description)
 		db.session.add(entry)
 		db.session.commit()
 
-	additions = Defense.query.all()
-	for addition in additions:
-		defense_id = addition.id
-		name = addition.name
-		ability_id = addition.ability_id
-		description = addition.description
-		modifier = addition.modifier_id
+	results = Action.query.all()
 
-		print (defense_id)
-		print (name)
-		print (ability_id)
-		print (description)
-		print (modifier)
+	for result in results:
+		print (result.id)
+		print (result.name)
+		print (result.cost)
+		print (result.turn)
+		print (result.description)
 
-	return ('defense')
+	return ('Actions Added') 
+
+
+@app.route('/')
 
 if __name__ == '__main__':
     app.debug = True

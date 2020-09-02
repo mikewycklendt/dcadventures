@@ -48,6 +48,15 @@ class Modifier(db.Model):
 	description = db.Column(db.String())
 	table = db.Column(db.Boolean)
 
+class Action(db.Model):
+	__tablename__ = 'actions'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cost = db.Column(db.Boolean)
+	turn = db.Column(db.Boolean)
+	description = db.Column(db.String())
+
+
 
 if __name__ == '__main__':
     app.debug = True
