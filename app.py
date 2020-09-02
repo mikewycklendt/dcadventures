@@ -81,6 +81,8 @@ def modifierid():
 
 	todelete = list(range(6, 21))
 
+	print (todelete)
+	
 	'''
 	for delete in todelete:
 		item = db.session.query(Defense).filter_by(id=delete).one()
