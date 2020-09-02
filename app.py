@@ -124,6 +124,8 @@ def action_create():
 
 	return ('Actions Added')
 
+'''
+
 @app.route('/skills/create')
 def skills_create():
 
@@ -337,7 +339,7 @@ def skills_create():
 		'description': ''
 		})
 
-
+'''
 
 
 
