@@ -62,7 +62,7 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-	@app.route('/defense/create')
+@app.route('/defense/create')
 def defense_create():
 
 	defenses = []
