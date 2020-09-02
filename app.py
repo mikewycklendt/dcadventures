@@ -40,7 +40,7 @@ def abilities():
 
 	table = Ability.query.all()
 
-	return render_template('table.html', table=table, titlw=title)
+	return render_template('table.html', table=table, title=title)
 
 @app.route('/defense')
 def defense():
@@ -49,7 +49,7 @@ def defense():
 
 	table = Defense.query.all()
 
-	return render_template('table.html', table=table, titlw=title)
+	return render_template('table.html', table=table, title=title)
 
 @app.route('/mofifiers')
 def modifiers():
@@ -58,7 +58,7 @@ def modifiers():
 
 	table = Modifier.query.all()
 
-	return render_template('table.html', table=table, titlw=title)
+	return render_template('table.html', table=table, title=title)
 
 if __name__ == '__main__':
     app.debug = True
