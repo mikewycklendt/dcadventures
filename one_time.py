@@ -63,7 +63,7 @@ def abilities_create():
 
 	return ('abilities')
 
-	@app.route('/defense/create')
+@app.route('/defense/create')
 def defense_create():
 
 	defenses = []
@@ -272,3 +272,46 @@ def modifiers():
 
 
 	return ('modifiers')
+
+
+@app.route('/deleteitems')
+def delete_items():
+
+	todelete = list(range(9, 369))
+
+	print (todelete)
+	
+	for itemid in todelete:
+		item = db.session.query(Ability).filter_by(id=itemid).one()
+		db.session.delete(item)
+		db.session.commit()
+		db.session.close()
+	
+	table = Ability.query.all()
+
+	for row in table:
+		print(row.id)
+		print(row.name)
+
+	return ('deleted')
+
+@app.route('/modifierid')
+def modifierid():
+
+	modifierid = 1
+
+	abilities = Ability.query.all()
+
+	for ability in abilities:
+		ability.modifier_id = 1
+		db.session.commit()
+		db.session.close()
+
+	table = Ability.query.all()
+
+	for row in table:
+		print(row.id)
+		print(row.name)
+		print(row.modifier_id)
+
+	return ('updated modifieer')
