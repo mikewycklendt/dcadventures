@@ -70,6 +70,7 @@ def modifierid():
 	modifier_id = 4
 
 	for row in table:
+		line = Ability.query.filter_by(id=row.id)
 		entry = Ability(modifier_id=modifier_id)
 		db.session.add(entry)
 		db.session.commit()
