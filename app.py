@@ -65,7 +65,7 @@ def modifiers():
 @app.route('/modifierid')
 def modifierid():
 
-	table = Defense.query.all()
+	table = .query.all()
 	
 	modifier_id = 4
 	'''
@@ -77,14 +77,15 @@ def modifierid():
 				db.session.commit()
 				db.session.close()
 	'''
+	'''
 
-	todelete = list(range(1, 21))
+	todelete = list(range(6, 21))
 
 	for delete in todelete:
 		item = db.session.query(Defense).filter_by(id=delete).one()
 		db.session.delete(item)
 		db.session.close() 
-
+	'''
 	table = Defense.query.all()
 
 	for row in table:
