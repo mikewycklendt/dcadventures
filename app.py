@@ -62,25 +62,12 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/modifierid')
-def modifierid():
-	
-	modifier_id = 4
-	'''
-	entries = [1, 2, 3, 4, 5, 6, 7, 8]
-	for row in table:
-		for entry in entries:
-			if row.id != entry:
-				db.session.delete(row)
-				db.session.commit()
-				db.session.close()
-	'''
-	
+@app.route('/deleteitems')
+def delete_items():
 
 	todelete = list(range(9, 369))
 
 	print (todelete)
-	
 	
 	for itemid in todelete:
 		item = db.session.query(Ability).filter_by(id=itemid).one()
@@ -93,9 +80,27 @@ def modifierid():
 	for row in table:
 		print(row.id)
 		print(row.name)
-		print(row.modifier_id)
 
-	return (str(modifier_id))
+	return ('deleted')
+
+@app.route('/modifierid')
+def modifierid():
+
+	modifierid = 1
+
+	abilities = Ability.query.all()
+
+	for ability in abilties:
+		ability.modifier_id = 1
+		db.session.commit()
+		db.session.close()
+
+	table = Ability.query.all()
+
+	for row in table:
+		print(row.id)
+		print(row.name)
+		print(row.modifier_id)
 
 if __name__ == '__main__':
     app.debug = True
