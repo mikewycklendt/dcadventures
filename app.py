@@ -78,6 +78,15 @@ def modifierid():
 				db.session.close()
 	'''
 
+	todelete = list(ramge(1, 21))
+
+	for delete ib todelete:
+		item = db.session.query(Defense).filter_by(id=delete).one()
+		db.session.delete(item)
+		db.session.close() 
+
+	table = Defense.query.all()
+
 	for row in table:
 		print(row.id)
 
