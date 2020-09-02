@@ -1,0 +1,10 @@
+.grid {
+	display: grid;
+	width: 65%;
+	grid-template-columns: 10% 90%;
+}
+
+.grid > span {
+	padding: 14px 7px;
+	border-bottom: 3px solid black;  
+}

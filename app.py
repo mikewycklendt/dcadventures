@@ -33,6 +33,32 @@ def index():
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content)
 
+@app.route('/abilities')
+def abilities():
+
+	title = 'Abilities'
+
+	table = Ability.query.all()
+
+	return render_template('table.html', table=table, titlw=title)
+
+@app.route('/defense')
+def abilities():
+
+	title = 'Defense'
+
+	table = Defense.query.all()
+
+	return render_template('table.html', table=table, titlw=title)
+
+@app.route('/mofifiers')
+def abilities():
+
+	title = 'Modifiers'
+
+	table = Modifier.query.all()
+
+	return render_template('table.html', table=table, titlw=title)
 
 if __name__ == '__main__':
     app.debug = True
