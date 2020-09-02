@@ -77,7 +77,7 @@ def modifierid():
 	'''
 	
 
-	todelete = list(range(1, 7))
+	todelete = list(range(1, 6)
 
 	print (todelete)
 	
