@@ -138,7 +138,7 @@ def skills_create():
 		'action_id': 1,
 		'type': None,
 		'tools': False,
-		'description': 'Use Acrobatics to flip, dive, roll, tumble, and perform other acrobatic maneuvers, as well as keeping your balance under difficult circumstances.
+		'description': 'Use Acrobatics to flip, dive, roll, tumble, and perform other acrobatic maneuvers, as well as keeping your balance under difficult circumstances.'
 		})
 
 	skills.append({
