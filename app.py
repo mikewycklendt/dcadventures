@@ -90,7 +90,7 @@ def modifierid():
 
 	abilities = Ability.query.all()
 
-	for ability in abilties:
+	for ability in abilities:
 		ability.modifier_id = 1
 		db.session.commit()
 		db.session.close()
