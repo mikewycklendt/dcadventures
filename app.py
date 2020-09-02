@@ -70,7 +70,7 @@ def modifierid():
 	modifier_id = 4
 
 	for row in table:
-		entry = Defenaw(modifier_id=modifier_id)
+		entry = Defense(modifier_id=modifier_id)
 		db.session.add(entry)
 		db.session.commit()
 		db.session.close()
