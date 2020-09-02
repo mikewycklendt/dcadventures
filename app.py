@@ -62,6 +62,20 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
+@app.route('/modifierid')
+def modifierid():
+
+	table = Ability.query.all()
+
+	modifier_id = 1
+
+	for row in table:
+		entry = Ability(modifier_id=modifier_id)
+		db.session.add(entry)
+		db.session.commit()
+
+	return (str(modifier_id))
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
