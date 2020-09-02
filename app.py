@@ -84,11 +84,13 @@ def modifiers():
 	modifiers.append({'name': 'Flaws',
 						'cost': null,
 						'description': 'You can add flaws to your effect to reduce the number of power points required for that effect.',
+						'table': False
 		})
 
 	modifiers.append({'name': 'Extras',
 						'cost': null,
 						'description': 'You can add extras to powers to increase its modifier by spending power points.',
+						'table': False
 		})
 
 	modifiers.append({'name': 'Descriptors',
@@ -100,6 +102,7 @@ def modifiers():
 	modifiers.append({'name': 'Devices',
 						'cost': null,
 						'description': 'DEVICES \n\n A device is an item that provides a particular power effect or set of effects. While devices are typically creations of advanced science, they don’t have to be. Many heroes and villains have magical devices such as enchanted weapons and armor, magical talismans, wands and staves of power, and so forth. Some devices are products of alien technology so advanced they might as well be magical, or focuses of psychic or cosmic power beyond the understanding of both magic and science. All devices work the same way in game terms, regardless of their origin or descriptors. \n\n Generally speaking, devices are powers with the Removable flaw applied to them (see Removable in the Powers chapter), meaning the power is external to the character. Take away the device, and the wielder loses the ability to use those powers. So if an armored hero loses access to his battlesuit, for example, he also loses access to the powers tied-up in it. The same is the case if a hero loses a cosmic ring, magic helmet, or alien artifact, which is why Removable is a flaw for those powers. \n\n Just like other powers, devices cost power points (albeit reduced some by the Removable flaw). Characters who want to have and use a device on a regular basis have to pay power points to have it, just like having any other power. The device becomes a part of the character’s abilities. If the device is lost, stolen, or destroyed, the character can replace it, given time, since the device is considered a permanent part of the character. Only a re-allocation of the character’s power points will change this, and Gamemasters should allow characters to re-allocate power points spent on a Removable power if it is somehow permanently lost. \n\n In other cases, characters may make temporary use of a device. Most devices are usable by anyone able to operate them, in which case characters may loan devices to each other, or may pick up and use someone else’s device (or even steal a device away from someone in order to use it against them). The key concept here is the use of the device is temporary, something that happens during a single scene or, at most, a single adventure. If the character wants to continue using the device beyond that, he must pay power points to make the device part of his regular abilities. Otherwise the GM can simply rule that the device is lost, reclaimed by its owner, runs out of power, breaks down, or whatever, and is therefore no longer accessible. Characters with the Inventor and Artificer advantages can create temporary devices for use in an adventure. \n\n Gamemasters may require characters to spend a hero point to make temporary use of a device that doesn’t belong to them, similar to performing a power stunt without suffering fatigue. This helps to limit the loaning and temporary use of devices.',
+						'table': False
 		})
 
 	modifiers.append({'name': 'Equipment',
@@ -152,7 +155,7 @@ def modifiers():
 
 	modifiers.append({'name': 'Maneuvers',
 						'cost': null,
-						'description': 'A maneuver is a different way of performing a particular action. For example, a defensive attack is an attack action that improves your defenses at the cost of accuracy. Maneuvers are optional; you choose which, if any, apply to your action(s) when you declare them. The GM decides if a particular maneuver is appropriate or prohibited by circumstances. \n\n Certain advantages and effects may enhance or work in conjunction with certain maneuvers. See their descriptions for details.'
+						'description': 'A maneuver is a different way of performing a particular action. For example, a defensive attack is an attack action that improves your defenses at the cost of accuracy. Maneuvers are optional; you choose which, if any, apply to your action(s) when you declare them. The GM decides if a particular maneuver is appropriate or prohibited by circumstances. \n\n Certain advantages and effects may enhance or work in conjunction with certain maneuvers. See their descriptions for details.',
 						'table': False
 		})
 
