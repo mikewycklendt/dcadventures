@@ -67,7 +67,7 @@ def modifierid():
 
 	table = Ability.query.all()
 
-	modifier_id = 4
+	modifier_id = 1
 
 	for row in table:
 		line = Ability.query.filter_by(id=row.id).one()
