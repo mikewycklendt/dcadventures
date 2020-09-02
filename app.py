@@ -73,8 +73,8 @@ def modifierid():
 		entry = Ability(modifier_id=modifier_id)
 		db.session.add(entry)
 		db.session.commit()
-		print(table.name)
-		print(table.modifier_id)
+		print(row.name)
+		print(row.modifier_id)
 
 	return (str(modifier_id))
 
