@@ -68,11 +68,20 @@ def modifierid():
 	table = Defense.query.all()
 
 	modifier_id = 4
-
+	entries = [1, 2, 3, 4, 5, 6, 7, 8]
 	for row in table:
+		for entry in entries:
+			if row.id == entry:
+
+			else:
+				db.session.delete(row)
+				db.session.commit()
+				db.session.close()
+		'''
 		row.modifier_id = modifier_id
 		db.session.commit()
 		db.session.close()
+		'''
 
 	for row in table:
 		print(row.name)
