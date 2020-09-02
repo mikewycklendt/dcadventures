@@ -84,7 +84,8 @@ def modifierid():
 	for itemid in todelete:
 		item = db.session.query(Defense).filter_by(id=itemid).one()
 		db.session.delete(item)
-		db.session.close() 
+		db.session.commit()
+		db.session.close()
 	
 	table = Defense.query.all()
 
