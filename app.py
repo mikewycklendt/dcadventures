@@ -77,10 +77,11 @@ def modifierid():
 				db.session.commit()
 				db.session.close()
 	'''
-	'''
+	
 
 	todelete = list(range(6, 21))
 
+	'''
 	for delete in todelete:
 		item = db.session.query(Defense).filter_by(id=delete).one()
 		db.session.delete(item)
