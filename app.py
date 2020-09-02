@@ -51,7 +51,7 @@ def defense():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/mofifiers')
+@app.route('/modifiers')
 def modifiers():
 
 	title = 'Modifiers'
