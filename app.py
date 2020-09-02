@@ -187,7 +187,7 @@ def modifiers():
 		db.session.add(entry)
 		db.session.commit()
 
-	added = Modifier.query.1all()
+	added = Modifier.query.all()
 
 	for add in added:
 		modifier_id = add.id
