@@ -79,7 +79,7 @@ def modifierid():
 
 	todelete = list(range(1, 6)
 
-	print (todelete)
+	print(todelete)
 	
 	for itemid in todelete:
 		item = db.session.query(Defense).filter_by(id=itemid).one()
