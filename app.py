@@ -81,13 +81,13 @@ def modifierid():
 
 	print (todelete)
 	
-	'''
+	
 	for itemid in todelete:
 		item = db.session.query(Ability).filter_by(id=itemid).one()
 		db.session.delete(item)
 		db.session.commit()
 		db.session.close()
-	'''
+	
 	table = Ability.query.all()
 
 	for row in table:
