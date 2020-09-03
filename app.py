@@ -382,7 +382,7 @@ def skill_type_create():
  
 	for skill in types:
 		name = skill['name']
-		check_id = skill['ability_id']
+		check_id = skill['check_id']
 		group = skill['group']
 		team = skill['team']
 		gm = skill['gm']
