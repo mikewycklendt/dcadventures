@@ -330,7 +330,7 @@ def skills_create():
 
 	return ('skills added')
 
-'''
+
 @app.route('/skill/table')
 def skill_table():
 
@@ -338,19 +338,19 @@ def skill_table():
 
 	tables.append(
 					{'dc': 5,
-					'skill_id': ,
+					'skill_id': 16,
 					'description': 'Easy (low-speed turn)'},
 					{'dc': 10,
-					'skill_id': ,
+					'skill_id': 16,
 					'description': 'Average (sudden reverse, dodging obstacles)'},
 					{'dc': 15,
-					'skill_id': ,
+					'skill_id': 16,
 					'description': 'Difficult (tight turns)'},
 					{'dc': 20,
-					'skill_id': ,
+					'skill_id': 16,
 					'description': 'Challenging (bootlegger reverse, loop, barrel roll)'},
 					{'dc': 25,
-					'skill_id': ,
+					'skill_id': 16,
 					'description': 'Formidable (high-speed maneuvers, jumping or flying around obstacles)'}
 				})
 
@@ -370,7 +370,7 @@ def skill_table():
 		print (skill_table.skill_id)
 
 	return ('skill tables created')
-'''
+
 
 @app.route('/skills/type')
 def skill_type_create():
