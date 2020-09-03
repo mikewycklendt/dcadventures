@@ -2,9 +2,9 @@
 	display: grid;
 	grid-area: contentbox;
 	height: 80vh;
-	width: 60vw;
-	margin-left: 15%;
-	margin-right: 15%;
+	width: 40vw;
+	margin-left: 10vw;
+	margin-right: 10vw;
 	vertical-align: middle;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 60vh auto 15vh;
