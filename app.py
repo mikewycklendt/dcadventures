@@ -336,7 +336,7 @@ def skill_table():
 
 	tables = []
 
-	tables.append(
+	tables.append({
 					{'dc': 5,
 					'skill_id': 16,
 					'description': 'Easy (low-speed turn)'},
