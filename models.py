@@ -60,7 +60,7 @@ class Skill(db.Model):
 	__tablename__ = 'skills'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	ability_id = db.Column(db.Integer, db.ForeignKey('ability.id'))
+	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 	untrained = db.Column(db.Boolean)
 	tools = db.Column(db.Boolean)
 	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
