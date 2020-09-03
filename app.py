@@ -122,6 +122,40 @@ def debilitated_create():
 		})
 '''
 
+@app.route('/action/create')
+def action_create():
+
+	actions = []
+
+	actions.append({
+		'name': 'Conversation',
+		'cost': False,
+		'turn': False,
+		'description': 'Have an ongoing conversation with the characters you can communicate with.'	
+		})
+
+	for action in actions:
+		name = action['name']
+		cost = action['cost']
+		turn = action['turn']
+		description= action['description']
+
+		entry = Action(name=name, cost=cost, turn=turn, description=description)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Action.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+		print (result.cost)
+		print (result.turn)
+		print (result.description)
+
+	return ('Actions Added') 
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
