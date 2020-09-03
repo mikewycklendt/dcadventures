@@ -386,7 +386,7 @@ def skill_type_create():
 		group = skill['group']
 		team = skill['team']
 		gm = skill['gm']
-		description = skill['dxescription']
+		description = skill['description']
 
 		entry = SkillType(name=name, check_id=check_id, group=group, team=team, gm=gm, description=description)
 		db.session.add(entry)
