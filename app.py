@@ -318,7 +318,7 @@ def skills_create():
 @app.route('/skill/table')
 def skill_table():
 
-	tables: []
+	tables = []
 
 	tables.append(
 					{'dc': 5,
