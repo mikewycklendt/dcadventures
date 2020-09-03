@@ -346,7 +346,7 @@ def skill_table():
 					'skill_id': 16,
 					'description': 'Average (sudden reverse, dodging obstacles)'}
 					)
-					
+
 	tables.append({'dc': 15,
 					'skill_id': 16,
 					'description': 'Difficult (tight turns)'}
@@ -368,7 +368,7 @@ def skill_table():
 		skill_id = table['skill_id']
 		descriptioon = table['description']
 
-		entry = SkillTable(dc=dc, skill_id=skill_id, descriptioon=descriptioon)
+		entry = SkillTable(dc=dc, skill_id=skill_id, description=descriptioon)
 		db.session.add(entry)
 		db.session.commit()
 
