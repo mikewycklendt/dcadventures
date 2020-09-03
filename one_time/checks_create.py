@@ -44,8 +44,9 @@ def check_create():
 		automatic = check['automatic']
 		routine = check['routine']
 		graded = check['graded']
+		fail = check['fail']
 
-		entry = Check(name=name, critical=critical, dc=dc, opposed=opposed, automatic=automatic, routine=routine, graded=graded)
+		entry = Check(name=name, critical=critical, dc=dc, opposed=opposed, automatic=automatic, routine=routine, graded=graded, fail=fail)
 		db.session.add(entry)
 		db.session.commit()
 
