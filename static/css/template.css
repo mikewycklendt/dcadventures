@@ -72,9 +72,15 @@ body{
 }
 
 #content{
+	display: grid;
+	grid-area: content;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "contentbox";
 	background-color: white;
 	font-family: Nanum Gothic, Verdana;
-	grid-area: content;
 }
 
 #sidebargrid{
