@@ -315,6 +315,7 @@ def skills_create():
 
 	return ('skills added')
 
+'''
 @app.route('/skill/table')
 def skill_table():
 
@@ -354,6 +355,7 @@ def skill_table():
 		print (skill_table.skill_id)
 
 	return ('skill tables created')
+'''
 
 @app.route('/skills/type')
 def check_create():
