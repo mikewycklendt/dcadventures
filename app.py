@@ -37,7 +37,7 @@ def index():
 def abilities():
 
 	title = 'Abilities'
-	size = 'h2' 
+	size = 'h1' 
 	table = Ability.query.all()
 
 	return render_template('table.html', table=table, title=title, size=size)
