@@ -72,7 +72,7 @@ class SkillTable(db.Model):
 	__tablename__ = 'skill_tables'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	dc = db.Columnh(db.Integer)
+	dc = db.Column(db.Integer)
 	description = db.Column(db.String())
 
 class SkillType(db.Model):
