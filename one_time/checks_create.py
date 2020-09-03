@@ -4,33 +4,36 @@ def check_create():
 	checks = []
 
 	checks.append({
-		'name': 'Check',
-		'critical': True,
+		'name': 'Team Check',
+		'critical': False,
 		'dc': True,
-		'opposed': False,
+		'opposed': True,
 		'automatic': False,
-		'routine': True,
-		'graded': True
+		'routine': False,
+		'graded': True,
+		'fail': None
 	})
 
 	checks.append({
-		'name': 'Opposed Check',
+		'name': 'Attack Check',
 		'critical': True,
 		'dc': False,
 		'opposed': True,
 		'automatic': False,
-		'routine': True,
-		'graded': True
+		'routine': False,
+		'graded': False,
+		'fail': 1
 	})
 
 	checks.append({
-		'name': 'Routine Check',
+		'name': 'Resistance Check',
 		'critical': False,
-		'dc': False,
+		'dc': True,
 		'opposed': False,
-		'automatic': True,
-		'routine': True,
-		'graded': False
+		'automatic': False,
+		'routine': False,
+		'graded': True,
+		'fail': None
 	})
 
 	for check in checks:

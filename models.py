@@ -95,6 +95,7 @@ class Check(db.Model):
 	automatic = db.Column(db.Boolean)
 	routine = db.Column(db.Boolean)
 	graded = db.Column(db.Boolean)
+	fail = db.Column(db.Integer)
 
 
 if __name__ == '__main__':
