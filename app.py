@@ -364,7 +364,7 @@ def check_create():
 
 	types.append({
 		'name': 'Interaction',
-		'check_id' 2,
+		'check_id': 2,
 		'group': True,
 		'team': False,
 		'gm': True,
@@ -373,7 +373,7 @@ def check_create():
 
 	types.append({
 		'name': 'Manipulation',
-		'check_id' 1,
+		'check_id': 1,
 		'group': False,
 		'team': True,
 		'gm': True,
