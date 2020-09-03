@@ -317,7 +317,7 @@ def skills_create():
 		description = skill['description']
 		table = skill['table']
 
-		entry = Skill(name=name, abiliry_id=abiliry_id, untrained=untrained, action_id=action_id, check_id=skill_type, tools=tools, description=description, table=table)
+		entry = Skill(name=name, ability_id=abiliry_id, untrained=untrained, action_id=action_id, check_id=skill_type, tools=tools, description=description, table=table)
 		db.session.add(entry)
 		db.session.commit()
 
