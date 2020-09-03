@@ -339,20 +339,29 @@ def skill_table():
 	tables.append(
 					{'dc': 5,
 					'skill_id': 16,
-					'description': 'Easy (low-speed turn)'},
-					{'dc': 10,
+					'description': 'Easy (low-speed turn)'}
+					)
+	
+	tables.append({'dc': 10,
 					'skill_id': 16,
-					'description': 'Average (sudden reverse, dodging obstacles)'},
-					{'dc': 15,
+					'description': 'Average (sudden reverse, dodging obstacles)'}
+					)
+					
+	tables.append({'dc': 15,
 					'skill_id': 16,
-					'description': 'Difficult (tight turns)'},
-					{'dc': 20,
+					'description': 'Difficult (tight turns)'}
+					)
+
+	tables.append({'dc': 20,
 					'skill_id': 16,
-					'description': 'Challenging (bootlegger reverse, loop, barrel roll)'},
-					{'dc': 25,
+					'description': 'Challenging (bootlegger reverse, loop, barrel roll)'}
+					)
+
+	tables.append({'dc': 25,
 					'skill_id': 16,
 					'description': 'Formidable (high-speed maneuvers, jumping or flying around obstacles)'}
-				)
+					)				
+				
 
 	for table in tables:
 		dc = table['dc']
