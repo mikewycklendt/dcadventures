@@ -299,7 +299,7 @@ def skills_create():
 		action_id = skill['action_id']
 		skill_type = skill['type']
 		tools = skill['tools']
-		description = skill['dxescription']
+		description = skill['description']
 		table = skill['table', None]
 
 		entry = Skill(name=name, abiliry_id=abiliry_id, untrained=untrained, action_id=action_id, check_id=skill_type, tools=tools, description=description, table=table)
