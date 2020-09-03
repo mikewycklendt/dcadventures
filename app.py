@@ -407,7 +407,7 @@ def check_create():
 	checks = []
 
 	checks.append({
-		'name': 'Check'
+		'name': 'Check',
 		'critical': True,
 		'dc': True,
 		'opposed': False,
@@ -417,7 +417,7 @@ def check_create():
 	})
 
 	checks.append({
-		'name': 'Opposed Check'
+		'name': 'Opposed Check',
 		'critical': True,
 		'dc': False,
 		'opposed': True,
@@ -427,7 +427,7 @@ def check_create():
 	})
 
 	checks.append({
-		'name': 'Routine Check'
+		'name': 'Routine Check',
 		'critical': False,
 		'dc': False,
 		'opposed': False,
