@@ -358,7 +358,7 @@ def skill_table():
 '''
 
 @app.route('/skills/type')
-def check_create():
+def skill_type_create():
 
 	types = []
 
