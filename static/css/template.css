@@ -4,8 +4,19 @@ body{
 	margin: 0px;
 }
 
+.page {
+	display: grid;
+	justify-content: center;
+	width: 100%;
+	height: auto;
+	grid-template-rows: auto;
+	grid-template-columns: 100%;
+	grid-template-areas: "wholepage";
+}
+
 .container{
 	display: grid;
+	grid-area: wholepage;
 	justify-content: center;
 	align-content: center;
 	vertical-align: middle;
