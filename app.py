@@ -288,7 +288,7 @@ def skills_create():
 		'action_id': 2,
 		'type': 2,
 		'tools': False,
-		'description': 'Use this skill to operate vehicles, from ground vehicles like cars to boats, planes, or even spaceships! See Vehicles in the Gadgets & Gear chapter for details. \n\n Routine tasks, such as ordinary operation of known vehicles, don’t require a check and may even be done untrained for some vehicles, particularly common ones like cars. Make a check only when operating the vehicle in a stressful or dramatic situation like being chased or attacked, or trying to reach a destination in a limited amount of time. \n\n You can also make Vehicle checks to perform various maneuvers with a vehicle:'
+		'description': 'Use this skill to operate vehicles, from ground vehicles like cars to boats, planes, or even spaceships! See Vehicles in the Gadgets & Gear chapter for details. \n\n Routine tasks, such as ordinary operation of known vehicles, don’t require a check and may even be done untrained for some vehicles, particularly common ones like cars. Make a check only when operating the vehicle in a stressful or dramatic situation like being chased or attacked, or trying to reach a destination in a limited amount of time. \n\n You can also make Vehicle checks to perform various maneuvers with a vehicle:',
 		'table': True
 		})
 
