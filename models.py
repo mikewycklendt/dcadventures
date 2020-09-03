@@ -86,7 +86,7 @@ class SkillType(db.Model):
 	description = db.Column(db.String())
 
 class Check(db.Model):
-	__tablename__ = 'chwxka'
+	__tablename__ = 'checks'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	critical = db.Column(db.Boolean)
