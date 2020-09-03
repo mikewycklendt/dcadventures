@@ -352,6 +352,13 @@ def action_create():
 		'description': 'A reaction is something you do in response to something else. A reaction doesn’t take any significant time, like a free action. The difference is you react in response to something else happening during the round, perhaps not even on your turn. Reactions don’t count against your normal allotment of actions and you can react as often as the circumstances dictate, but only when they dictate.'	
 		})
 
+	actions.append({
+		'name': 'Multiple Actions',
+		'cost': True,
+		'turn': True,
+		'description': 'This kind of action takes more than one standard action and may take up multiple turns.'	
+		})
+
 	for action in actions:
 		name = action['name']
 		cost = action['cost']
@@ -372,3 +379,4 @@ def action_create():
 		print (result.description)
 
 	return ('Actions Added') 
+

@@ -56,6 +56,38 @@ class Action(db.Model):
 	turn = db.Column(db.Boolean)
 	description = db.Column(db.String())
 
+class Skill(db.Model):
+	__tablename__ = 'skills'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	ability_id = db.Column(db.Integer, db.ForeignKey('ability.id'))
+	untrained = db.Column(db.Boolean)
+	tools = db.Column(db.Boolean)
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	action_id = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	description = db.Column(db.String())
+	table = db.Column(db.ARRAY())
+
+class SkillType(db.Model):
+	__tablename__ = 'skill_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	group = db.Column(db.Boolean)
+	team = db.Column(db.Boolean)
+	gm = db.Column(db.Boolean)
+	description = db.Column(db.String())
+
+class Check(db.Model):
+	__tablename__ = 'chwxka'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	critical = db.Column(db.Boolean)
+	dc = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+	automatic = db.Column(db.Boolean)
+	routine = db.Column(db.Boolean)
+	graded = db.Column(db.Boolean)
 
 
 if __name__ == '__main__':
