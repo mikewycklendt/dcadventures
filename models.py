@@ -66,7 +66,14 @@ class Skill(db.Model):
 	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	action_id = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	description = db.Column(db.String())
-	table = db.Column(db.ARRAY())
+	table = db.Column(db.Boolean)
+
+class SkillTable(db.Model):
+	__tablename__ = 'skill_tables'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	dc = db.Columnh(db.Integer)
+	description = db.Column(db.String())
 
 class SkillType(db.Model):
 	__tablename__ = 'skill_type'

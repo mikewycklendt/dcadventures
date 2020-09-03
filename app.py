@@ -289,18 +289,7 @@ def skills_create():
 		'type': 2,
 		'tools': False,
 		'description': 'Use this skill to operate vehicles, from ground vehicles like cars to boats, planes, or even spaceships! See Vehicles in the Gadgets & Gear chapter for details. \n\n Routine tasks, such as ordinary operation of known vehicles, don’t require a check and may even be done untrained for some vehicles, particularly common ones like cars. Make a check only when operating the vehicle in a stressful or dramatic situation like being chased or attacked, or trying to reach a destination in a limited amount of time. \n\n You can also make Vehicle checks to perform various maneuvers with a vehicle:'
-		'table': [
-					{'dc': 5, 
-					'description': 'Easy (low-speed turn)'},
-					{'dc': 10,
-					'description': 'Average (sudden reverse, dodging obstacles)'},
-					{'dc': 15,
-					'description': 'Difficult (tight turns)'},
-					{'dc': 20,
-					'description': 'Challenging (bootlegger reverse, loop, barrel roll)'},
-					{'dc': 25,
-					'description': 'Formidable (high-speed maneuvers, jumping or flying around obstacles)'}
-					]
+		'table': True
 		})
 
 	for skill in skills:
@@ -325,6 +314,46 @@ def skills_create():
 		print (result.table)
 
 	return ('skills added')
+
+@app.route('/skill/table')
+def skill_table():
+
+	tables: []
+
+	tables.append(
+					{'dc': 5,
+					'skill_id': ,
+					'description': 'Easy (low-speed turn)'},
+					{'dc': 10,
+					'skill_id': ,
+					'description': 'Average (sudden reverse, dodging obstacles)'},
+					{'dc': 15,
+					'skill_id': ,
+					'description': 'Difficult (tight turns)'},
+					{'dc': 20,
+					'skill_id': ,
+					'description': 'Challenging (bootlegger reverse, loop, barrel roll)'},
+					{'dc': 25,
+					'skill_id': ,
+					'description': 'Formidable (high-speed maneuvers, jumping or flying around obstacles)'}
+				})
+
+	for table in tables:
+		dc = table['dc']
+		skill_id = table['skill_id']
+		descriptioon = table['description']
+
+		entry = SkillTable(dc=dc, skill_id=skill_id, descriptioon=descriptioon
+		db.session.add(entry)
+		db.session.commit()
+
+	skill_tables = SkillTable.query.all()
+
+	for skill_table in skill_tables:
+		print (skill_table.id)
+		print (skill_table.skill_id)
+
+	return ('skill tables created')
 
 @app.route('/skills/type')
 def check_create():
