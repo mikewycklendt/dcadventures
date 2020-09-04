@@ -38,6 +38,13 @@ def action_create():
 		'description': 'This kind of action takes more than one standard action and may take up multiple turns.'	
 		})
 
+	actions.append({
+		'name': 'Conversation',
+		'cost': False,
+		'turn': False,
+		'description': 'This kind of action takes more than one standard action and may take up multiple turns.'	
+		})
+
 	for action in actions:
 		name = action['name']
 		cost = action['cost']

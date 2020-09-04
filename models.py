@@ -120,6 +120,55 @@ class Sense(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
+class Measurement(db.Model):
+	__tablename__ = 'measurements'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	rank = db.Column(db.Integer)
+	mass = db.Column(db.Integer)
+	mass_unit = db.Column(db.String())
+	time = db.Column(db.Integer)
+	time_unit =db.Column(db.String())
+	distance = db.Column(db.Integer)
+	distance_unit = db.Column(db.String())
+	volume = db.Column(db.Integer)
+	volume_unit = db.Column(db.String())
+
+class MassCovert(db.Model):
+	__tablename__ = 'mass_convert'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	pound = db.Column(db.Integer)
+	tons = db.Column(db.Integer)
+	kilotons = db.Column(db.Integer)
+
+class TimeCovert(db.Model):
+	__tablename__ = 'time_convert'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	seconds = db.Column(db.Integer)
+	minutes = db.Column(db.Integer)
+	hours = db.Column(db.Integer)
+	days = db.Column(db.Integer)
+	weeks = db.Column(db.Integer)
+	months = db.Column(db.Integer)
+	years = db.Column(db.Integer)
+
+class DistanceCovert(db.Model):
+	__tablename__ = 'distance_convert'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	inches = db.Column(db.Integer)
+	feet = db.Column(db.Integer)
+	mile = db.Column(db.Integer)
+	lightyear = db.Column(db.Integer)
+
+class VolumeCovert(db.Model):
+	__tablename__ = 'volume_convert'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cft = db.Column(db.Integer)
+	million = db.Column(db.Integer)
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)

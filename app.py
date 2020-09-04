@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense
+from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, V
 import sys
 
 #db_drop_and_create_all()
@@ -138,6 +138,18 @@ def senses():
 	table = Sense.query.all()
 
 	return render_template('table.html', table=table, title=title, size=size)
+
+@app.route('/measurements')
+def measurements():
+
+	title = 'Measurements Table'
+	
+	size = 'h3'
+
+	table = Measurement.query.all()
+
+	return render_template('measurements.html', table=table, title=title, size=size)
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
@@ -154,26 +166,107 @@ def debilitated_create():
 		})
 '''
 
+@app.route('/measurements/create')
+def measurements_create():
 
-@app.route('/senses/create')
-def senses_create():
+	rank = -5
+	mass = 1.5
+	mass_unit = 'Pounds'
+	time = 1 / 8
+	time_unit = 'Seconds'
+	distance = 6
+	distance_unit = 'Inches'
+	volume = 1 / 32
+	volume_unit = 'Cubic Feet'
 
-	senses = ['Sight', 'Hearing', 'Smell', 'Taste', 'Touch']
+	entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
+	db.session.add(entry)
+	db.session.commit()
 
-	for sense in senses:
+	distance = 1
 
-		entry = Sense(name=sense)
+	for i in range(-5, 30, 1):
+		rank = i + 1
+		mass = mass * 2
+		mass_unit = 'Pounds'
+		time = time * 2
+		time_unit = 'Seconds'
+		distance = distance * 2
+		distance_unit = 'feet'
+		volume = volume * 2
+		volume_unit = 'Cubic Feet'
+
+		if rank = 7:
+			mass = 3
+	
+		if 6 < rank < 17:
+			mass_unit = 'Tons'
+
+		if rank = 17:
+			mass = 3.2
+
+		if 17 < rank:
+			mass_unit = 'Kilotons'
+
+		if rank = -2:
+			time = 1
+
+		if -1 < rank < 3: 
+			time_unit = 'Seconds'
+
+		if rank = 3:
+			time = 1
+
+		if 2 < rank < 9:
+			time_unit = 'minutes'
+
+		if rank = 9:
+			time = 1
+
+		if 8 < rank < 14:
+			time_unit = 'Hours'
+
+		if rank = 14:
+			time = 1
+
+		if 13 < rank < 17:	
+			time_unit = 'Days'
+
+		if rank = 17:
+			time = 1
+
+		if 16 < rank < 19:
+			time_unit = 'Weeks'
+
+		if rank = 19:
+			time = 1
+
+		if 18 < rank < 23:
+			time_unit = 'Months
+			
+		if rank = 23:
+			time = 1.5
+
+		if 22 < rank:
+			time_unit = 'Years'
+
+		if rank = 6:
+			distance = .5
+
+		if rank > 5:
+			distance_unit = 'Miles'
+
+		entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Sense.query.all()
+	results = Measurement.query.all()
 
 	for result in results:
-		print (result.id)
-		print (result.name)
+		print (result.rank)
 
-	return ('senses added')
-
+	return ('measurements added')
+		
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
