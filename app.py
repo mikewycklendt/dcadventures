@@ -170,13 +170,13 @@ def debilitated_create():
 def measurements_create():
 
 	rank = -5
-	mass = 1.5
+	mass === 1.5
 	mass_unit = 'Pounds'
-	time = 1 / 8
+	time === 1 / 8
 	time_unit = 'Seconds'
 	distance = 6
 	distance_unit = 'Inches'
-	volume = 1 / 32
+	volume === 1 / 32
 	volume_unit = 'Cubic Feet'
 
 	entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
