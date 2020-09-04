@@ -124,13 +124,13 @@ class Measurement(db.Model):
 	__tablename__ = 'measurements'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	rank = db.Column(db.Integer)
-	mass = db.Column(db.Float, asdecimal=True)
+	mass = db.Column(db.Float(asdecimal=True))
 	mass_unit = db.Column(db.String())
-	time = db.Column(db.Float, asdecimal=True)
+	time = db.Column(db.Float(asdecimal=True))
 	time_unit =db.Column(db.String())
-	distance = db.Column(db.Float, asdecimal=True)
+	distance = db.Column(db.Float(asdecimal=True))
 	distance_unit = db.Column(db.String())
-	volume = db.Column(db.Float, asdecimal=True)
+	volume = db.Column(db.Float(asdecimal=True))
 	volume_unit = db.Column(db.String())
 
 class MassCovert(db.Model):
