@@ -115,6 +115,11 @@ class Phase(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
+class Sense(db.Model):
+	__tablename__ = 'senses'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
