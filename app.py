@@ -242,7 +242,7 @@ def measurements_create():
 			time = 1
 
 		if 18 < rank < 23:
-			time_unit = 'Months
+			time_unit = 'Months'
 			
 		if rank == 23:
 			time = 1.5
