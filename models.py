@@ -120,6 +120,19 @@ class Sense(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
+class Measurement(db.Model):
+	__tablename__ = 'measurements'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	rank = db.Column(db.Integer)
+	mass = db.Column(db.Float, asdecimal=True)
+	mass_unit = db.Column(db.String())
+	time = db.Column(db.Float, asdecimal=True)
+	time_unit =db.Column(db.String())
+	distance = db.Column(db.Float, asdecimal=True)
+	distance_unit = db.Column(db.String())
+	volume = db.Column(db.Float, asdecimal=True)
+	volume_unit = db.Column(db.String())
+
 class MassCovert(db.Model):
 	__tablename__ = 'mass_convert'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
