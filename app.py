@@ -170,13 +170,13 @@ def debilitated_create():
 def measurements_create():
 
 	rank = -5
-	mass === 1.5
+	mass == 1.5
 	mass_unit = 'Pounds'
-	time === 1 / 8
+	time == 1 / 8
 	time_unit = 'Seconds'
 	distance = 6
 	distance_unit = 'Inches'
-	volume === 1 / 32
+	volume == 1 / 32
 	volume_unit = 'Cubic Feet'
 
 	entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
@@ -203,7 +203,7 @@ def measurements_create():
 			mass_unit = 'Tons'
 
 		if rank == 17:
-			mass = 3.2
+			mass == 3.2
 
 		if 17 < rank:
 			mass_unit = 'Kilotons'
@@ -245,13 +245,13 @@ def measurements_create():
 			time_unit = 'Months'
 			
 		if rank == 23:
-			time = 1.5
+			time == 1.5
 
 		if 22 < rank:
 			time_unit = 'Years'
 
 		if rank == 6:
-			distance = .5
+			distance == .5
 
 		if rank > 5:
 			distance_unit = 'Miles'
