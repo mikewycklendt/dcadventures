@@ -196,61 +196,61 @@ def measurements_create():
 		volume = volume * 2
 		volume_unit = 'Cubic Feet'
 
-		if rank = 7:
+		if rank == 7:
 			mass = 3
 	
 		if 6 < rank < 17:
 			mass_unit = 'Tons'
 
-		if rank = 17:
+		if rank == 17:
 			mass = 3.2
 
 		if 17 < rank:
 			mass_unit = 'Kilotons'
 
-		if rank = -2:
+		if rank == -2:
 			time = 1
 
 		if -1 < rank < 3: 
 			time_unit = 'Seconds'
 
-		if rank = 3:
+		if rank == 3:
 			time = 1
 
 		if 2 < rank < 9:
 			time_unit = 'minutes'
 
-		if rank = 9:
+		if rank == 9:
 			time = 1
 
 		if 8 < rank < 14:
 			time_unit = 'Hours'
 
-		if rank = 14:
+		if rank == 14:
 			time = 1
 
 		if 13 < rank < 17:	
 			time_unit = 'Days'
 
-		if rank = 17:
+		if rank == 17:
 			time = 1
 
 		if 16 < rank < 19:
 			time_unit = 'Weeks'
 
-		if rank = 19:
+		if rank == 19:
 			time = 1
 
 		if 18 < rank < 23:
 			time_unit = 'Months
 			
-		if rank = 23:
+		if rank == 23:
 			time = 1.5
 
 		if 22 < rank:
 			time_unit = 'Years'
 
-		if rank = 6:
+		if rank == 6:
 			distance = .5
 
 		if rank > 5:
