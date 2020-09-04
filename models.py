@@ -97,6 +97,23 @@ class Check(db.Model):
 	graded = db.Column(db.Boolean)
 	fail = db.Column(db.Integer)
 
+class Condition(db.Model):
+	__tablename__ = 'conditions'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	phase = db.Column(db.Integer)
+	supercede = db.Column(db.String())
+	specific = db.Column(db.Boolean)
+	multiple = db.Column(db.Boolean)
+	time = db.Column(db.Integer)
+	unit = db.Column(db.String())
+	effects = db.Column(db.String())
+	description = db.Column(db.String())
+
+class Phase(db.Model):
+	__tablename__ = 'phases'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
 
 if __name__ == '__main__':
     app.debug = True
