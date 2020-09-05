@@ -175,6 +175,8 @@ def measurements():
 
 	formatted = [measurement.format() for measurement in measurements]
 
+	print (formatted)
+
 	table = measure(formatted)
 
 
