@@ -201,7 +201,7 @@ def measurements_create():
 	db.session.add(entry)
 	db.session.commit()
 
-	distance = 1
+	distance = 0
 
 	
 	for i in range(-5, 30, 1):
