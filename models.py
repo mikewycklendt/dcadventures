@@ -177,7 +177,7 @@ class Check(db.Model):
 			'automatic': self.automatic,
 			'routine': self.routine,
 			'graded': self.graded,
-			'roll': self.roll
+			'roll': self.roll,
 			'fail': self.fail
 		}
 
