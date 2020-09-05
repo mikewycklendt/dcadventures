@@ -36,7 +36,7 @@ def multiply(value1, value2):
 	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
 	return decimal
 
-def measure(mass, time, distance, volume)
+def measure(mass, time, distance, volume):
 	mass = Decimal(mass).quantize(Decimal(.01))
 	time = Decimal(time).quantize(Decimal(.01))
 	distance = Decimal(distance).quantize(Decimal(.01))
