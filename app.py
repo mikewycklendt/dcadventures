@@ -23,12 +23,12 @@ setup_db(app)
 migrate = Migrate(app, db)
 
 def decRound(value):
-	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
+	decimal = Decimal(value).quantize(Decimal('.001'), rounding=ROUND_UP)
 	return decimal
 
 def divide(value1, value2):
 	value = Decimal(value1) / Decimal(value2)
-	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
+	decimal = Decimal(value).quantize(Decimal('.001'), rounding=ROUND_UP)
 	return decimal
 
 def multiply(value1, value2):
