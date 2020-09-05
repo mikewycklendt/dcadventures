@@ -269,7 +269,7 @@ def measurements_create():
 			time_unit = 'Years'
 
 		if rank == 6:
-			distance = Decimal(l.5)
+			distance == Decimal(l.5)
 
 		if rank > 5:
 			distance_unit = 'Miles'
