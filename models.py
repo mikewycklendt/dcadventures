@@ -164,6 +164,7 @@ class Check(db.Model):
 	automatic = db.Column(db.Boolean)
 	routine = db.Column(db.Boolean)
 	graded = db.Column(db.Boolean)
+	roll = db.Column(db.Boolean)
 	fail = db.Column(db.Integer)
 
 	def format(self):
@@ -176,6 +177,7 @@ class Check(db.Model):
 			'automatic': self.automatic,
 			'routine': self.routine,
 			'graded': self.graded,
+			'roll': self.roll
 			'fail': self.fail
 		}
 
