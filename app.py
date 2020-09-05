@@ -44,7 +44,7 @@ def measure(measurements):
 		measurement['distance'] = Decimal(distance).quantize(Decimal(.01))
 		measurement['volume'] = Decimal(volume).quantize(Decimal(.01))
 
-	return measurement
+	return measurements
 
 @app.route('/')
 def index():
