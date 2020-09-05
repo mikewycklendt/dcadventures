@@ -285,8 +285,8 @@ def measurements_create():
 	for result in results:
 		print (result.rank)
 '''
-return ('measurements added')
-		
+	return ('measurements added')
+	
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
