@@ -39,6 +39,11 @@ def multiply(value1, value2):
 def measure(measurements):
 
 	for measurement in measurements:
+		mass = measurement['mass']
+		time = measurement['time']
+		distance = measurement['distance']
+		volume = measurement['volume']
+
 		measurement['mass'] = Decimal(mass).quantize(Decimal(.01))
 		measurement['time'] = Decimal(time).quantize(Decimal(.01))
 		measurement['distance'] = Decimal(distance).quantize(Decimal(.01))
@@ -175,10 +180,7 @@ def measurements():
 
 	formatted = [measurement.format() for measurement in measurements]
 
-	print (formatted)
-
 	table = measure(formatted)
-
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
