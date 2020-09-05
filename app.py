@@ -203,7 +203,7 @@ def measurements_create():
 
 	distance = 1
 
-'''
+	'''
 	for i in range(-5, 30, 1):
 		rank = i + 1
 		mass = mass * 2
@@ -284,7 +284,7 @@ def measurements_create():
 
 	for result in results:
 		print (result.rank)
-'''
+	'''
 	return ('measurements added')
 	
 if __name__ == '__main__':
