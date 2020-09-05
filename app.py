@@ -229,7 +229,7 @@ def measurements_create():
 		'distance': 6,
 		'distance_unit': 'feet',
 		'volume': divide(1, 4),
-		'volume_unit':
+		'volume_unit': 'cubic feet'
 	})
 
 	measurements.append({
@@ -243,7 +243,7 @@ def measurements_create():
 		'volume': divide(1, 2),
 		'volume_unit': 'cubic feet'
 	})
-	
+
 	measurements.append({
 		'rank': 0,
 		'mass': 50,
