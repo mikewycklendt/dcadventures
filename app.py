@@ -534,7 +534,7 @@ def measurements_create():
 
 	measurements.append({
 		'rank': 24,
-	1	'mass': 400,
+		'mass': 400,
 		'mass_unit': 'kilotons',
 		'time': 3,
 		'time_unit': 'years',
