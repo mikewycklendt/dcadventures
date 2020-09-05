@@ -34,11 +34,11 @@ class Ability(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'description': self.description
-			'summary': self.summary
-			'absent': self.absent
+			'id': self.id,
+			'name': self.name,
+			'description': self.description,
+			'summary': self.summary,
+			'absent': self.absent,
 			'modifier_id': self.modifier_id
 		}
 
@@ -52,10 +52,10 @@ class Defense(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'description': self.description
-			'ability_id': self.ability_id
+			'id': self.id,
+			'name': self.name,
+			'description': self.description,
+			'ability_id': self.ability_id,
 			'modifier_id': self.modifier_id
 		}
 
@@ -69,10 +69,10 @@ class Modifier(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'cost': self.cost
-			'description': self.description
+			'id': self.id,
+			'name': self.name,
+			'cost': self.cost,
+			'description': self.description,
 			'table': self.table
 		}
 
@@ -86,10 +86,10 @@ class Action(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'cost': self.cost
-			'turn': self.turn
+			'id': self.id,
+			'name': self.name,
+			'cost': self.cost,
+			'turn': self.turn,
 			'description': self.description
 		}
 
@@ -107,14 +107,14 @@ class Skill(db.Model):
 
 	def format(self):
 		return {
-			'id':  self.id
-			'name': self.name
-			'ability_id': self.ability_id
-			'untrained': self.untrained
-			'tools': self.tools
-			'check_id': self.check_id
-			'action_id': self.action_id
-			'description': self.description
+			'id':  self.id,
+			'name': self.name,
+			'ability_id': self.ability_id,
+			'untrained': self.untrained,
+			'tools': self.tools,
+			'check_id': self.check_id,
+			'action_id': self.action_id,
+			'description': self.description,
 			'table': self.table
 		}
 
@@ -127,9 +127,9 @@ class SkillTable(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'skill_id': self.skill_id
-			'dc': self.dc
+			'id': self.id,
+			'skill_id': self.skill_id,
+			'dc': self.dc,
 			'description': self.description
 		}
 
@@ -145,12 +145,12 @@ class SkillType(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'check_id': self.check_id
-			'group': self.group
-			'team': self.team
-			'gm': self.gm
+			'id': self.id,
+			'name': self.name,
+			'check_id': self.check_id,
+			'group': self.group,
+			'team': self.team,
+			'gm': self.gm,
 			'description': self.description
 		}
 
@@ -168,14 +168,14 @@ class Check(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'critical': self.critical
-			'dc': self.dc
-			'opposed': self.opposed
-			'automatic': self.automatic
-			'routine': self.routine
-			'graded': self.graded
+			'id': self.id,
+			'name': self.name,
+			'critical': self.critical,
+			'dc': self.dc,
+			'opposed': self.opposed,
+			'automatic': self.automatic,
+			'routine': self.routine,
+			'graded': self.graded,
 			'fail': self.fail
 		}
 
@@ -195,14 +195,14 @@ class Condition(db.Model):
 	def format(self):
 		return {
 			'id'self.id
-			'name': self.name
-			'phase': self.phase
-			'supercede': self.supercede
-			'specific': self.specific
-			'multiple': self.multiple
-			'time': self.time
-			'unit': self.unit
-			'effects': self.effects
+			'name': self.name,
+			'phase': self.phase,
+			'supercede': self.supercede,
+			'specific': self.specific,
+			'multiple': self.multiple,
+			'time': self.time,
+			'unit': self.unit,
+			'effects': self.effects,
 			'description': self.description
 		}
 
@@ -213,7 +213,7 @@ class Phase(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
+			'id': self.id,
 			'name': self.name
 		}
 
@@ -224,7 +224,7 @@ class Sense(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
+			'id': self.id,
 			'name': self.name
 		}
 class Measurement(db.Model):
@@ -242,15 +242,15 @@ class Measurement(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'rank': self.
-			'mass': self.rank
-			'mass_unit': self.mass_unit
-			'time': self.time
-			'time_unit': self.time_unit
-			'distance': self.distance
-			'distance_unit': self.distance_unit
-			'volume': self.volume
+			'id': self.id,
+			'rank': self.rank,
+			'mass': self.mass,
+			'mass_unit': self.mass_unit,
+			'time': self.time,
+			'time_unit': self.time_unit,
+			'distance': self.distance,
+			'distance_unit': self.distance_unit,
+			'volume': self.volume,
 			'volume_unit': self.volume_unit
 		}
 
@@ -264,10 +264,10 @@ class MassCovert(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'pound': self.pound
-			'tons': self.tons
+			'id': self.id,
+			'name': self.name,
+			'pound': self.pound,
+			'tons': self.tons,
 			'kilotons': self.kilotons
 		}
 
@@ -285,14 +285,14 @@ class TimeCovert(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'seconds': self.seconds
-			'minutes': self.minutes
-			'hours': self.hours
-			'days': self.days
-			'weeks': self.weeks
-			'months': self.months
+			'id': self.id,
+			'name': self.name,
+			'seconds': self.seconds,
+			'minutes': self.minutes,
+			'hours': self.hours,
+			'days': self.days,
+			'weeks': self.weeks,
+			'months': self.months,
 			'years': self.years
 		}
 
@@ -307,11 +307,11 @@ class DistanceCovert(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'inches': self.inches
-			'feet': self.feet
-			'mile': self.mile
+			'id': self.id,
+			'name': self.name,
+			'inches': self.inches,
+			'feet': self.feet,
+			'mile': self.mile,
 			'lightyear': self.lightyear 
 		}
 
@@ -324,9 +324,9 @@ class VolumeCovert(db.Model):
 
 	def format(self):
 		return {
-			'id': self.id
-			'name': self.name
-			'cft': self.cft
+			'id': self.id,
+			'name': self.name,
+			'cft': self.cft,
 			'million': self.million 
 		}
 
