@@ -183,7 +183,7 @@ def debilitated_create():
 def measurements_create():
 
 	rank = -5
-	mass = Decimal('1.5')
+	mass = Decimal(1.5)
 	mass_unit = 'Pounds'
 	time = divide(1, 8)
 	time_unit = 'Seconds'
@@ -263,13 +263,13 @@ def measurements_create():
 			time_unit = 'Months'
 			
 		if rank == 23:
-			time == Decimal('1.5')
+			time == Decimal(1.5)
 
 		if 22 < rank:
 			time_unit = 'Years'
 
 		if rank == 6:
-			distance = Decimal('l.5')
+			distance = Decimal(l.5)
 
 		if rank > 5:
 			distance_unit = 'Miles'
