@@ -280,6 +280,7 @@ def measurements_create():
 		distance = decRound(distance)
 		volume = decRound(volume)
 
+		print (rank)
 		print ('mass    ' + str(mass))
 		print ('time    ' + str(time))
 		print ('distance    ' + str(distance))
