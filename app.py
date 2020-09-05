@@ -188,7 +188,7 @@ def measurements():
 
 
 @app.route('/modifier')
-def modifiers():
+def modifiers_create():
 	modifiers = []
 
 	modifiers.append({'name': 'Abilities',
