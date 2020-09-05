@@ -4,6 +4,45 @@ def check_create():
 	checks = []
 
 	checks.append({
+		'name': 'Skill Check',
+		'critical': True,
+		'dc': True,
+		'opposed': False,
+		'automatic': False,
+		'routine': False,
+		'graded': True,
+		'roll': True,
+		'compare': False,
+		'fail': None
+	})
+
+	checks.append({
+		'name': 'Opposed Check',
+		'critical': True,
+		'dc': False,
+		'opposed': True,
+		'automatic': False,
+		'routine': True,
+		'graded': False,
+		'roll': True,
+		'compare': False,
+		'fail': 1
+	})
+
+	checks.append({
+		'name': 'Routine Check',
+		'critical': False,
+		'dc': True,
+		'opposed': False,
+		'automatic': False,
+		'routine': False,
+		'graded': True,
+		'roll': False,
+		'compare': False,
+		'fail': None
+	})
+
+	checks.append({
 		'name': 'Team Check',
 		'critical': False,
 		'dc': True,
@@ -11,6 +50,8 @@ def check_create():
 		'automatic': False,
 		'routine': False,
 		'graded': True,
+		'roll': True,
+		'compare': False,
 		'fail': None
 	})
 
@@ -22,6 +63,8 @@ def check_create():
 		'automatic': False,
 		'routine': False,
 		'graded': False,
+		'roll': True,
+		'compare': False,
 		'fail': 1
 	})
 
@@ -33,6 +76,21 @@ def check_create():
 		'automatic': False,
 		'routine': False,
 		'graded': True,
+		'compare': False,
+		'roll': True,
+		'fail': None
+	})
+
+	checks.append({
+		'name': 'Comparison Check',
+		'critical': False,
+		'dc':False,
+		'opposed': True,
+		'automatic': True,
+		'routine': False,
+		'graded': False,
+		'compare':True,
+		'roll': False,
 		'fail': None
 	})
 

@@ -165,6 +165,7 @@ class Check(db.Model):
 	routine = db.Column(db.Boolean)
 	graded = db.Column(db.Boolean)
 	roll = db.Column(db.Boolean)
+	compare = db.Column(db.Boolean)
 	fail = db.Column(db.Integer)
 
 	def format(self):
@@ -178,6 +179,7 @@ class Check(db.Model):
 			'routine': self.routine,
 			'graded': self.graded,
 			'roll': self.roll,
+			'compare': self.compare,	
 			'fail': self.fail
 		}
 
