@@ -280,6 +280,11 @@ def measurements_create():
 		distance = decRound(distance)
 		volume = decRound(volume)
 
+		print (mass)
+		print (time)
+		print (distance)
+		print (volume)
+
 		'''
 		entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 		db.session.add(entry)
@@ -290,7 +295,7 @@ def measurements_create():
 	for result in results:
 		print (result.rank)
 	'''
-	
+
 	return ('measurements added')
 	
 if __name__ == '__main__':
