@@ -36,6 +36,12 @@ def multiply(value1, value2):
 	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
 	return decimal
 
+def measure(mass, time, distance, volume)
+	mass = Decimal(mass).quantize(Decimal(.01))
+	time = Decimal(time).quantize(Decimal(.01))
+	distance = Decimal(distance).quantize(Decimal(.01))
+	volume = Decimal(volume).quantize(Decimal(.01))
+
 @app.route('/')
 def index():
 	stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}]
@@ -160,6 +166,9 @@ def measurements():
 	size = 'h3'
 
 	table = Measurement.query.all()
+
+	for entry in table:
+		measure(entry.mass, entry.time, entry.distance, entry.volume)
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
