@@ -284,13 +284,13 @@ def measurements_create():
 		entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 		db.session.add(entry)
 		db.session.commit()
-		'''
-
+		
 	results = Measurement.query.all()
 
 	for result in results:
 		print (result.rank)
 	'''
+	
 	return ('measurements added')
 	
 if __name__ == '__main__':
