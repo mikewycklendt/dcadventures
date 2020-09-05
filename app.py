@@ -203,7 +203,7 @@ def measurements_create():
 
 	distance = 1
 
-	'''
+	
 	for i in range(-5, 30, 1):
 		rank = i + 1
 		mass = mass * 2
@@ -267,18 +267,24 @@ def measurements_create():
 			time = Decimal(1.5)
 
 		if 22 < rank:
-			time_unit = 'Years'
-
+			time_unit = 'Years'	
+			
 		if rank == 6:
-			distance = Decimal(l.5)
-
+			distance = Decimal(1.5) 
+		
 		if rank > 5:
 			distance_unit = 'Miles'
 
+		mass = decRound(mass)
+		time = decRound(time)
+		distance = decRound(distance)
+		volume = decRound(volume)
 
+		'''
 		entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 		db.session.add(entry)
 		db.session.commit()
+		'''
 
 	results = Measurement.query.all()
 
