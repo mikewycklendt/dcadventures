@@ -179,7 +179,9 @@ def measurements():
 	measurements = Measurement.query.all()
 
 	formatted = [measurement.format() for measurement in measurements]
-
+	
+	print (formatted)
+	
 	table = measure(formatted)
 
 	return render_template('measurements.html', table=table, title=title, size=size)
