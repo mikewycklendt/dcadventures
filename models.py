@@ -194,7 +194,7 @@ class Condition(db.Model):
 
 	def format(self):
 		return {
-			'id'self.id
+			'id': self.id
 			'name': self.name,
 			'phase': self.phase,
 			'supercede': self.supercede,
