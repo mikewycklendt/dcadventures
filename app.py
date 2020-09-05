@@ -10,6 +10,7 @@ from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
+from decimal import *
 import sys
 
 #db_drop_and_create_all()
@@ -21,7 +22,19 @@ db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
 
+def decRound(value):
+	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
+	return decimal
 
+def divide(value1, value2):
+	value = Decimal(value1) / Decimal(value2)
+	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
+	return decimal
+
+def multiply(value1, value2):
+	value = Decimal(value1) * Decimal(value2)
+	decimal = Decimal(value).quantize(Decimal('.01'), rounding=ROUND_UP)
+	return decimal
 
 @app.route('/')
 def index():
@@ -170,15 +183,20 @@ def debilitated_create():
 def measurements_create():
 
 	rank = -5
-	mass == 1.5
+	mass = Decimal('1.5')
 	mass_unit = 'Pounds'
-	time == 1 / 8
+	time = divide(1, 8)
 	time_unit = 'Seconds'
 	distance = 6
 	distance_unit = 'Inches'
-	volume == 1 / 32
+	volume = divide(1, 32)
 	volume_unit = 'Cubic Feet'
 
+	print (mass)
+	print (time)
+	print (volume)
+
+	
 	entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 	db.session.add(entry)
 	db.session.commit()
@@ -189,11 +207,11 @@ def measurements_create():
 		rank = i + 1
 		mass = mass * 2
 		mass_unit = 'Pounds'
-		time = time * 2
+		time = multiply(time, 2)
 		time_unit = 'Seconds'
-		distance = distance * 2
+		distance = multiply(distance, 2)
 		distance_unit = 'feet'
-		volume = volume * 2
+		volume = multiply(volume, 2)
 		volume_unit = 'Cubic Feet'
 
 		if rank == 7:
@@ -203,7 +221,7 @@ def measurements_create():
 			mass_unit = 'Tons'
 
 		if rank == 17:
-			mass == 3.2
+			mass == Decimal(3.2)
 
 		if 17 < rank:
 			mass_unit = 'Kilotons'
@@ -245,17 +263,18 @@ def measurements_create():
 			time_unit = 'Months'
 			
 		if rank == 23:
-			time == 1.5
+			time == Decimal('1.5')
 
 		if 22 < rank:
 			time_unit = 'Years'
 
 		if rank == 6:
-			distance == .5
+			distance == Decima('l.5')
 
 		if rank > 5:
 			distance_unit = 'Miles'
 
+	'''
 		entry = Measurement(rank=rank, mass=mass, mass_unit=mass_unit, time=time, time_unit=time_unit, distance=distance, distance_unit=distance_unit, volume=volume, volume_unit=volume_unit)
 		db.session.add(entry)
 		db.session.commit()
@@ -264,7 +283,7 @@ def measurements_create():
 
 	for result in results:
 		print (result.rank)
-
+	'''
 	return ('measurements added')
 		
 if __name__ == '__main__':
