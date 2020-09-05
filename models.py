@@ -29,7 +29,6 @@ class Ability(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.ARRAY(db.String))
 	summary = db.Column(db.String())
-	absent = db.Column(db.String())
 	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
 
 	def format(self):
@@ -38,7 +37,6 @@ class Ability(db.Model):
 			'name': self.name,
 			'description': self.description,
 			'summary': self.summary,
-			'absent': self.absent,
 			'modifier_id': self.modifier_id
 		}
 
