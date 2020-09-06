@@ -3,9 +3,10 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-from dotenv import load_dotenv()
-load_dotenv()
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 db_path = os.environ.get("db_path")
 

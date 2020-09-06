@@ -13,9 +13,10 @@ from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillTyp
 from decimal import *
 import sys
 
-from dotenv import load_dotenv()
-load_dotenv()
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 db_path = os.environ.get("db_path")
 
