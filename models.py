@@ -84,6 +84,20 @@ class Modifier(db.Model):
 			'table': self.table
 		}
 
+class ModifierTable(db.Model):
+	__tablename__ = 'modifiers_table'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	description = db.Column(db.String())
+	value = db.Column(db.Integer())
+	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'description': self.description.
+			'value': self.value
+		}
+
 class Action(db.Model):
 	__tablename__ = 'actions'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -132,13 +146,17 @@ class SkillTable(db.Model):
 	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	dc = db.Column(db.Integer)
 	description = db.Column(db.String())
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
 
 	def format(self):
 		return {
 			'id': self.id,
 			'skill_id': self.skill_id,
 			'dc': self.dc,
-			'description': self.description
+			'description': self.description,
+			'check_id': self.check_id,
+			'modifier_id': self.modifier_id
 		}
 
 class SkillType(db.Model):

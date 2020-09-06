@@ -142,6 +142,12 @@ def modifiers_create():
 						'table': False
 		})
 
+	modifiers.append({'name': 'Circumstance Modifiers',
+						'cost': None,
+						'description': 'Some circumstances make checks easier or harder, resulting in a bonus or penalty to the check. Characters in a favorable situation are said to have a circumstance bonus for the check, while those in a disadvantageous situation are said to have a circumstance penalty. \n\n Some circumstances make checks easier or harder, resulting in a bonus or penalty to the check. Characters in a favorable situation are said to have a circumstance bonus or the check, while those in a disadvantageous situation are said to have a circumstance penalty. \n\n UNDER THE HOOD: CIRCUMSTANCES \n\n 	Circumstance modifiers are another useful Gamemaster tool for handling a lot of the variables that come up during game play. Specific examples are discussed throughout the rules for various types of checks. One example includes the following: \n\n TOOLS \n\n Some tasks require tools. If tools are needed, the specific items are mentioned in the description of the task or skill. If you don’t have the appropriate tools, you may still be able to attempt the task, but at a major disadvantage, for a –5 circumstance penalty on your check, if the GM decides you can attempt the task at all. A character may be able to put together makeshift tools in order to make the check. If the GM allows this, reduce the circumstance penalty to –2.',
+						'table': True
+		})
+
 	for modifier in modifiers:
 		name = modifier['name']
 		cost = modifier['cost']
