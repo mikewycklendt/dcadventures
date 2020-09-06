@@ -95,7 +95,8 @@ class ModifierTable(db.Model):
 		return {
 			'id': self.id,
 			'description': self.description,
-			'value': self.value
+			'value': self.value,
+			'modifier_id': self.modifier_id
 		}
 
 class Action(db.Model):
