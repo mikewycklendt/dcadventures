@@ -14,9 +14,10 @@ from decimal import *
 import sys
 
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
+
+import os
 
 db_path = os.environ.get("db_path")
 
