@@ -94,7 +94,7 @@ class ModifierTable(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'description': self.description.
+			'description': self.description,
 			'value': self.value
 		}
 
