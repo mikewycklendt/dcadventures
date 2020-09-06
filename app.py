@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
+from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable
 from decimal import *
 import sys
 
@@ -195,37 +195,7 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 
-@app.route('/modifier')
-def modifiers_create():
-	modifiers = []
 
-	modifiers.append({'name': 'Circumstance Modifiers',
-						'cost': None,
-						'description': 'Some circumstances make checks easier or harder, resulting in a bonus or penalty to the check. Characters in a favorable situation are said to have a circumstance bonus for the check, while those in a disadvantageous situation are said to have a circumstance penalty. \n\n Some circumstances make checks easier or harder, resulting in a bonus or penalty to the check. Characters in a favorable situation are said to have a circumstance bonus or the check, while those in a disadvantageous situation are said to have a circumstance penalty. \n\n UNDER THE HOOD: CIRCUMSTANCES \n\n 	Circumstance modifiers are another useful Gamemaster tool for handling a lot of the variables that come up during game play. Specific examples are discussed throughout the rules for various types of checks. One example includes the following: \n\n TOOLS \n\n Some tasks require tools. If tools are needed, the specific items are mentioned in the description of the task or skill. If you don’t have the appropriate tools, you may still be able to attempt the task, but at a major disadvantage, for a –5 circumstance penalty on your check, if the GM decides you can attempt the task at all. A character may be able to put together makeshift tools in order to make the check. If the GM allows this, reduce the circumstance penalty to –2.',
-						'table': True
-		})
-
-	for modifier in modifiers:
-		name = modifier['name']
-		cost = modifier['cost']
-		description = modifier['description']
-		table = modifier['table']
-
-		entry = Modifier(name=name, cost=cost, description=description, table=table)
-		db.session.add(entry)
-		db.session.commit()
-
-	added = Modifier.query.all()
-
-	for add in added:
-		modifier_id = add.id
-		name = add.name
-
-		print(modifier_id)
-		print(name)
-
-
-	return ('modifiers')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
@@ -242,7 +212,53 @@ def debilitated_create():
 		})
 '''
 
+@app.route('/modifier/table')
+def modifiers_table_create():
+	modifiers = []
 
+	modifiers.append({
+		'description': 'major penalty',
+		'value': -5,
+		'modifier_id': 24
+		})
+
+	modifiers.append({
+		'description': 'penalty',
+		'value': -2,
+		'modifier_id': 24
+		})
+
+	modifiers.append({
+		'description': 'bonus',
+		'value': 2,
+		'modifier_id': 24
+		})
+
+	modifiers.append({
+		'description': 'major bonus',
+		'value': 5,
+		'modifier_id': 24
+		})
+	for modifier in modifiers:
+		value = modifier['value']
+		modifier_id = modifier['modifier_id']
+		description = modifier['description']
+
+		entry = ModifierTable(description=description, value=value, modifier_id=modifier_id)
+		db.session.add(entry)
+		db.session.commit()
+
+	added = Modifier.query.all()
+
+	for add in added:
+		modifier_id = add.id
+		description = add.description
+
+		print(modifier_id)
+		print(description)
+
+
+	return ('modifier table added')
 	
 if __name__ == '__main__':
     app.debug = True
