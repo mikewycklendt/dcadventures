@@ -13,11 +13,19 @@ from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillTyp
 from decimal import *
 import sys
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+db_path = os.environ.get("db_path")
+
+print (db_path)
+
 #db_drop_and_create_all()
 
 app = Flask(__name__)
 moment = Moment(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)

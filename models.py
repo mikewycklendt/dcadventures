@@ -2,18 +2,23 @@ from flask import Flask, render_template, request, Response, flash, redirect, ur
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+from dotenv import load_dotenv
+load_dotenv()
 import os
+
+db_path = os.environ.get("db_path")
 
 app = Flask(__name__)
 moment = Moment(app)
 #app.config.from_object('config')
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
+database_path = db_path
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 db = SQLAlchemy()
 
 def setup_db(app):
-	database_path = "postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc"
+	database_path = db_path
 	app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 	app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 	db.app = app

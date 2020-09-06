@@ -3,8 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+db_path = os.environ.get("db_path")
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:postgres@3.134.26.61:5432/dc'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 
 db = SQLAlchemy(app)
 
