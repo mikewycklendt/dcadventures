@@ -21,8 +21,6 @@ import os
 
 db_path = os.environ.get("db_path")
 
-print (db_path)
-
 #db_drop_and_create_all()
 
 app = Flask(__name__)
