@@ -13,7 +13,7 @@ from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillTyp
 from decimal import *
 import sys
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv()
 load_dotenv()
 import os
 
