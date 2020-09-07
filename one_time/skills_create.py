@@ -11,7 +11,7 @@ def skills_create():
 		'type': None,
 		'tools': False,
 		'description': 'Use Acrobatics to flip, dive, roll, tumble, and perform other acrobatic maneuvers, as well as keeping your balance under difficult circumstances.'
-		, 'table': False
+		, 'table': True
 		})
 
 	skills.append({
@@ -44,7 +44,7 @@ def skills_create():
 		'type': 1,
 		'tools': False,
 		'description': 'Deception is the skill of getting others to believe what you want them to believe. It covers things like acting, bluffing, fast-talk, trickery, and subterfuge. \n\n Deception takes as long as it takes to spin-out your story. Uses of Deception in action rounds are generally standard actions, although you can attempt to deceive as a move action by taking a –5 penalty to your check.' 
-		, 'table': False
+		, 'table': True
 		})
 
 	skills.append({
@@ -165,7 +165,7 @@ def skills_create():
 		'type': 2,
 		'tools': True,
 		'description': 'You’re trained in treating injuries and ailments. The check DC and effect of Treatment depend on the task:'
-		, 'table': False
+		, 'table': True
 		})
 
 	skills.append({

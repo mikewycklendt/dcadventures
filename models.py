@@ -149,6 +149,10 @@ class SkillTable(db.Model):
 	description = db.Column(db.String())
 	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+	degree = db.Column(db.Boolean)
+	measurement  = db.Column(db.Integer)
+	complexity = db.Column(db.String())
+	modifier = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -157,7 +161,11 @@ class SkillTable(db.Model):
 			'dc': self.dc,
 			'description': self.description,
 			'check_id': self.check_id,
-			'modifier_id': self.modifier_id
+			'modifier_id': self.modifier_id,
+			'degree': self.degree,
+			'measurement': self.measurement,
+			'complexity': self.complexity,
+			'modifier': self.modifier
 		}
 
 class SkillType(db.Model):
