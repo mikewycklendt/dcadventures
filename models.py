@@ -153,6 +153,8 @@ class SkillTable(db.Model):
 	measurement  = db.Column(db.Integer)
 	complexity = db.Column(db.String())
 	modifier = db.Column(db.Boolean)
+	circumstance = db.Column(db.Boolean)
+
 
 	def format(self):
 		return {
@@ -165,7 +167,8 @@ class SkillTable(db.Model):
 			'degree': self.degree,
 			'measurement': self.measurement,
 			'complexity': self.complexity,
-			'modifier': self.modifier
+			'modifier': self.modifier,
+			'circumstance': self.circumstance
 		}
 
 class SkillType(db.Model):
