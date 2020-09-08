@@ -9,10 +9,13 @@ h2 {
 	width: 100%;
 	height: auto;
 	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "contentpage";
 }
 
 #skill-grid {
 	display: grid;
+	grid-area: contentpage;
 	width: 80%;
 	margin-left: 10%;
 	height: auto;
