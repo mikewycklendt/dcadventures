@@ -40,9 +40,9 @@
 
 input[type=text] {
 	width: 95%;
-	height: 18px;
+	height: 80%;
 	padding: 6px 6px;
-	font-size: 70%;
+	font-size: 18px;
 	border: 1px solid lightblue;
 	outline: 1px solid #af0101;
 	outline-offset: 5px 8px;
