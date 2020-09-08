@@ -30,7 +30,7 @@ h2 {
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
-	padding: 4%;
+	padding: 1%;
 }
 
 #title-img {
@@ -89,8 +89,6 @@ input[type=text]:focus {
 	border-radius: 15px;
 	padding: 2%;
 	grid-template-columns: 100%;
-
-
 }
 
 #addskillform {
@@ -105,6 +103,7 @@ input[type=text]:focus {
 #addskillunderline {
 	border-bottom: 2px solid lightblue;
 	width: 70%;
+	height: auto;
 	margin: 0px;
 }
 
