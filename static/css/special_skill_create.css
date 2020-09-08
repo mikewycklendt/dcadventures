@@ -17,6 +17,7 @@ h2 {
 	display: grid;
 	grid-area: create_skill;
 	width: 80%;
+	margin-left: 10%;
 	height: auto;
 	grid-template-columns: 100%;
 	border: 2px solid lightblue;
