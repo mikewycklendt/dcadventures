@@ -42,10 +42,7 @@ h2 {
 	outline: 3px solid #af0101;
 	outline-offset: 8px;
 }
-
-#spacer {
-	height: 1vh;
-}
+	
 
 input[type=text] {
 	width: 100%;
