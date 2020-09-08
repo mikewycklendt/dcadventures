@@ -41,7 +41,7 @@ sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", 
 def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 	title = 'DC Adventures Online: Create a Special Skill'
-	stylesheets.append({"style": "home.css"})
+	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
