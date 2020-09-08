@@ -24,7 +24,9 @@ h2 {
 #box-title {
 	width: 70%;
 	height: auto;
-	margin: 2%;
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-bottom: 2%;
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
