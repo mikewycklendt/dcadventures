@@ -30,6 +30,10 @@ h2 {
 	padding: 4%;
 }
 
+#title-img {
+	background: url(/static/img/title/create_skill.png);
+}
+
 .box-outline {
 	outline: 3px solid #af0101;
 	outline-offset: 8px;
