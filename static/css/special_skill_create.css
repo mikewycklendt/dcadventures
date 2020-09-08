@@ -72,6 +72,7 @@ select:focus {
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
+	justify-content: center;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
 	font-size: 130%;
