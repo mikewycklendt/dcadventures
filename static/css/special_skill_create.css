@@ -1,6 +1,7 @@
 h2 {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
+	color: #245681;
 }
 
 #skill-container {
@@ -25,8 +26,9 @@ h2 {
 	width: 70%;
 	height: 20vh;
 	margin: 5%;
+	border-radius: 15%;
 	background:url(/static/img/title/bg.png);
-	padding: 10px;
+	padding: 4%;
 	outline: 3px solid #af0101;
 	outline-offset: 2%;
 }
@@ -50,7 +52,7 @@ input[type=text]:focus {
 
 .btn {
 	width: 85%;
-	height: 85%;
+	height: auto;
 	padding: 15px;
 	background-color: #af0101;
 	cursor: crosshair;
@@ -76,10 +78,12 @@ input[type=text]:focus {
 #name {
 	display: grid;
 	width: 84%;
-	border: 2px solid #af0101;
+	margin-left: 10%;
+	margin-bottom:2vh;
+	border: 1px solid #af0101;
 	border-radius: 5%;
-	grid-template-columns: 60% 20%;
-	grid-template-rows: auto 15vh;
+	grid-template-columns: 70% 20%;
+	grid-template-rows: 12vh auto;
 	grid-template-areas: "name-title name-title"
 							"name-field name-button";
 }
