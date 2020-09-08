@@ -64,14 +64,14 @@ input[type=text]:focus {
 	font-size: 18px;
 	color: white;
 	outline: 2px solid white;
-	outline-offset: -2px;
+	outline-offset: -4px;
 }
 
 .btn:hover {
 	background-color: lightblue;
 	color: black;
 	outline: 2px solid black;
-	outline-offset: -2px;
+	outline-offset: -4px;
 }
 
 #addskillgrid {
