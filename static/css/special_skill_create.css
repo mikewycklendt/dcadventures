@@ -15,6 +15,7 @@ h2 {
 	display: grid;
 	grid-area: contentpage;
 	width: 80%;
+	margin-top: 2px;
 	margin-left: 10%;
 	grid-template-columns: 100%;
 	border: 2px solid lightblue;
@@ -23,11 +24,11 @@ h2 {
 #box-title {
 	width: 70%;
 	height: auto;
-	margin: 10%;
+	margin: 2%;
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
-	padding: 1%;
+	padding: 10px;
 }
 
 #title-img {
