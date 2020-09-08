@@ -20,7 +20,7 @@ h2 {
 	border: 2px solid lightblue;
 }
 
-.box-title {
+#box-title {
 	width: 70%;
 	height: 5vh;
 	margin: 7%;
@@ -91,26 +91,26 @@ input[type=text]:focus {
 	padding:2%;
 	grid-template-columns: 70% 30%;
 	grid-template-rows: 5vh 2vh;
-	grid-template-areas: "name-title name-title"
-							"name-field name-button";
+	grid-template-areas: "nametitle nametitle"
+							"namefield namebutton";
 }
 
-#category-title {
+#addskill-underline {
 	border-bottom: 2px solid lightblue;
 	width: 70%;
 	height: auto;
 }
 
 #createskill {
-	grid-area: name-title;
+	grid-area: nametitle;
 }
 
 #nameskill {
-	grid-area: name-field;
+	grid-area: namefield;
 }
 
 #namebutton {
-	grid-area: name-button;
+	grid-area: namebutton;
 }
 
 
