@@ -9,7 +9,6 @@ h2 {
 	width: 100%;
 	height: auto;
 	grid-template-columns: 100%;
-	grid-template-rows: auto;
 	grid-template-areas: "create_skill";
 }
 
@@ -25,8 +24,8 @@ h2 {
 
 .box-title {
 	width: 70%;
-	height: auto;
-	margin: 5%;
+	height: 10vh;
+	margin: 15%;
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
@@ -39,7 +38,7 @@ h2 {
 }
 
 #spacer {
-	height: 3vh;
+	height: 1vh;
 }
 
 input[type=text] {
