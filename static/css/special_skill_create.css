@@ -101,15 +101,15 @@ input[type=text]:focus {
 	height: auto;
 }
 
-#name-title {
+#addskill {
 	grid-area: name-title;
 }
 
-#name-field {
+#nameskill {
 	grid-area: name-field;
 }
 
-#name-button {
+#namebutton {
 	grid-area: name-button;
 }
 
