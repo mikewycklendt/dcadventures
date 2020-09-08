@@ -31,14 +31,14 @@
 				<div id="skill-attr-title">
 					Enhances Skill:
 				</div>
-			</div>
 
-			<div id="category-field">
-				<select id="skill" name="skill" aria-placeholder="skill-type">
-					{% for skill in skills %}
-						<option value={{skill.id}}>{{skill.name}}</option>
-					{% endfor %}
-				</select>
+				<div id="category-field">
+					<select id="skill" name="skill" aria-placeholder="skill-type">
+						{% for skill in skills %}
+							<option value={{skill.id}}>{{skill.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 
 
