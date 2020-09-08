@@ -88,25 +88,8 @@ body{
 	grid-area: sidebar;
 	width: 100%;
 	margin: 0px;
+	padding: 0px;
 	grid-template-columns: 100%;
-	grid-template-rows: 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px 49px;
-	grid-template-areas: "rules"
-							"games"
-							"stories"
-							"heroes"
-							"npcs"
-							"locations"
-							"skills"
-							"abilities"
-							"powers"
-							"flaws"
-							"equipment"
-							"devices"
-							"armor"
-							"weapons"
-							"vehicles"
-							"constructs";
-
 }
 
 .btn-login{
