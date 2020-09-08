@@ -86,8 +86,8 @@ input[type=text]:focus {
 
 #addskillform {
 	display: grid;
-	width: 80%;
-	margin: 10px;
+	width: 100%;
+	margin: 4%;
 	grid-template-columns: 70% 30%;
 	grid-template-rows: 5vh;
 	grid-template-areas: "namefield namebutton";
