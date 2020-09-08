@@ -85,17 +85,24 @@ input[type=text]:focus {
 	outline-offset: -2px;
 }
 
-#name-grid {
+#addskillgrid {
 	display: grid;
-	width: 75%;
-	margin-bottom:2vh;
+	width: 80%;
+	margin-left: 10%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
-	padding:2%;
+	padding: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+
+}
+
+#addskillform {
+	display: grid;
+	width: 100%;
 	grid-template-columns: 70% 30%;
-	grid-template-rows: 5vh 2vh;
-	grid-template-areas: "nametitle nametitle"
-							"namefield namebutton";
+	grid-template-rows: 5vh;
+	grid-template-areas: "namefield namebutton";
 }
 
 #addskill-underline {
