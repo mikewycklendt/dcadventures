@@ -80,7 +80,6 @@ input[type=text]:focus {
 #addskillgrid {
 	display: grid;
 	width: 80%;
-	height: auto;
 	margin-left: 10%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
