@@ -148,6 +148,12 @@ def modifiers_create():
 						'table': True
 		})
 
+	modifiers.append({'name': 'Difficulty Modifier',
+						'cost': None,
+						'description': 'Modifies the difficulty level of an action.',
+						'table': True
+		})
+
 	for modifier in modifiers:
 		name = modifier['name']
 		cost = modifier['cost']

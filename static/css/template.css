@@ -76,6 +76,8 @@ body{
 	grid-area: content;
 	width: 100%;
 	height: auto;
+	margin: 0px;
+	padding: 0px;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
 	grid-template-areas: "contentbox";

@@ -23,7 +23,7 @@ h2 {
 
 #box-title {
 	width: 70%;
-	height: auto;
+	height: 20vh;
 	margin: 5%;
 	background:url(/static/img/title/bg.png);
 	padding: 10px;
