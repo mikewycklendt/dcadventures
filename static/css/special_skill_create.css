@@ -41,7 +41,7 @@ input[type=text] {
 	width: 95%;
 	height: 80%;
 	padding: 10px 10px;
-	font-size: 24px;
+	font-size: 130%;
 	border: 1px solid lightblue;
 	outline: 1px solid #af0101;
 	outline-offset: 5px 8px;
@@ -74,7 +74,7 @@ select:focus {
 	margin: 3px;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
-	font-size: 100%;
+	font-size: 130%;
 	color: white;
 	outline: 2px solid white;
 	outline-offset: -4px;
