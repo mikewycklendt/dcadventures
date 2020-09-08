@@ -27,7 +27,7 @@ h2 {
 	width: 70%;
 	height: auto;
 	margin: 5%;
-	border-radius: 25px;
+	border-radius: 35pxpx;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
 	padding: 4%;
@@ -83,13 +83,12 @@ input[type=text]:focus {
 #name {
 	display: grid;
 	width: 80%;
-	margin-left: 10%;
 	margin-bottom:2vh;
 	border: 1px solid #af0101;
 	border-radius: 15px;
 	padding:7%;
 	grid-template-columns: 70% 20%;
-	grid-template-rows: 12vh auto;
+	grid-template-rows: 5vh 5vh;
 	grid-template-areas: "name-title name-title"
 							"name-field name-button";
 }
