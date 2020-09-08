@@ -38,7 +38,7 @@ title = 'DC Adventures Online Roleplqying Game'
 sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs"]
 
 @app.route('/')
-def index(stylesheets, meta_name, meta_content, title):
+def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'special_skill_create.html'
 	title = 'DC Adventures Online: Create a Special Skill'
 	stylesheets.append({"style": "/static/css/pecial_skill_create.css"})
@@ -46,7 +46,7 @@ def index(stylesheets, meta_name, meta_content, title):
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/skill/create')
-def skill_create(stylesheets, meta_name, meta_content, sidebar):
+def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'special_skill_create.html'
 	title = 'DC Adventures Online Roleplqying Game: Create Special Skill'
 	stylesheets.append({"style": "/static/css/special_skill_create.css"})
