@@ -25,13 +25,17 @@ h2 {
 
 #box-title {
 	width: 70%;
-	height: 20vh;
+	height: auto;
 	margin: 5%;
-	border-radius: 15%;
+	border-radius: 25px;
+	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
 	padding: 4%;
+}
+
+#box-outline {
 	outline: 3px solid #af0101;
-	outline-offset: 2%;
+	outline-offset: 8px;
 }
 
 #spacer {
@@ -42,8 +46,8 @@ input[type=text] {
 	width: 100%;
 	height: 12vh;
 	padding: 15px 15px;
-	border: 2px solid #af0101;
-	border-radius: 8px;
+	outline: 1px solid #af0101;
+	outline-offset: 5px 8px;
 }
 
 
@@ -78,11 +82,12 @@ input[type=text]:focus {
 
 #name {
 	display: grid;
-	width: 84%;
+	width: 80%;
 	margin-left: 10%;
 	margin-bottom:2vh;
 	border: 1px solid #af0101;
-	border-radius: 5%;
+	border-radius: 15px;
+	padding:7%;
 	grid-template-columns: 70% 20%;
 	grid-template-rows: 12vh auto;
 	grid-template-areas: "name-title name-title"
