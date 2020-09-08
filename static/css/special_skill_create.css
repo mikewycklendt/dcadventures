@@ -82,7 +82,7 @@ input[type=text]:focus {
 	outline-offset: -2px;
 }
 
-.name {
+#name-grid {
 	display: grid;
 	width: 75%;
 	margin-bottom:2vh;
