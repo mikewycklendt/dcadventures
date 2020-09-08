@@ -7,7 +7,6 @@ h2 {
 .skill-container {
 	display: grid;
 	width: 100%;
-	height: auto;
 	grid-template-columns: 100%;
 	grid-template-areas: "contentpage";
 }
