@@ -23,7 +23,7 @@ h2 {
 	border: 2px solid lightblue;
 }
 
-#box-title {
+.box-title {
 	width: 70%;
 	height: auto;
 	margin: 5%;
@@ -33,7 +33,7 @@ h2 {
 	padding: 4%;
 }
 
-#box-outline {
+.box-outline {
 	outline: 3px solid #af0101;
 	outline-offset: 8px;
 }
