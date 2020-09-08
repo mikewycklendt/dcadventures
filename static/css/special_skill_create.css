@@ -101,7 +101,6 @@ input[type=text]:focus {
 #addskillunderline {
 	border-bottom: 2px solid lightblue;
 	width: 70%;
-	height: auto;
 	margin: 0px;
 }
 
