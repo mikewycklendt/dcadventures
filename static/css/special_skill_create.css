@@ -47,9 +47,22 @@ input[type=text] {
 	outline-offset: 5px 8px;
 }
 
-
 input[type=text]:focus {
 	background-color: lightblue;
+}
+
+select {
+	width: 95%;
+	height: 80%;
+	padding: 10px 10px;
+	font-size: 24px;
+	border: 2px solid lightblue;
+	border-radius: 8px;
+}
+
+select:focus {
+	background-color: lightblue;
+	border: 2px solid #af0101;
 }
 
 .btn {
@@ -103,7 +116,6 @@ input[type=text]:focus {
 	padding: 0px;
 }
 
-
 #nameskill {
 	grid-area: namefield;
 }
@@ -112,4 +124,40 @@ input[type=text]:focus {
 	grid-area: namebutton;
 }
 
+#skill-form {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	grid-template-columns: 100%;
+}
+
+#skill-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 70%;
+	margin: 0px;
+	font-family: 'Monda', Verdana;
+	font-size: 28px;
+	color: #245681;
+	padding: 0px;
+}
+
+#category {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+}
+
+#category-field {
+	display: grid;
+	width: 60%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: 3vh;
+	grid-template-areas: "categoryfield";
+}
 

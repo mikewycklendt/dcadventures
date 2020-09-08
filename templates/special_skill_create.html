@@ -4,7 +4,7 @@
 		<div id="box-title" style="background: url(/static/img/title/bg.png); justify-content: center;">
 			<img src="/static/img/title/create_skill.png" width="100%">
 		</div>
-		</span>
+
 		<span>
 		<div id="addskillgrid">
 
@@ -23,6 +23,30 @@
 			</div>
 
 		</div>
+		
+		<span>
+		<div id="skill-form">
+
+			<div id="category">
+				<div id="skill-attr-title">
+					Enhances Skill:
+				</div>
+			</div>
+
+			<div id="category-field">
+				<select id="skill" name="skill" aria-placeholder="skill-type">
+					{% for skill in skills %}
+						<option value={{skill.id}}>{{skill.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+
+
+			
+
+		</div>
+	
 		</span>
 	</div>
 </div>
