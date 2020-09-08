@@ -88,7 +88,7 @@ input[type=text]:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 70% 20%;
+	grid-template-columns: 70% 25%;
 	grid-template-rows: 5vh;
 	grid-template-areas: "namefield namebutton";
 }
