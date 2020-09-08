@@ -22,8 +22,8 @@ h2 {
 
 #box-title {
 	width: 70%;
-	height: 5vh;
-	margin: 7%;
+	height: 3vh;
+	margin: 3%;
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
