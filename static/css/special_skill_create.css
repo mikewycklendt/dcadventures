@@ -294,8 +294,8 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 25% 60% 15%;
-	grid-template-rows: 4vh 4vh;
+	grid-template-columns: 15% 60% 15%;
+	grid-auto-rows: 4vh;
 /*
 	grid-template-areas:"dcclass dctitle dcblank" 
 						"dcselect dcfield dcbutton";
