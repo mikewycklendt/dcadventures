@@ -204,7 +204,7 @@ textarea:focus {
 #multiple-attr-title {
 	border-bottom: 2px solid lightblue;
 	width: 85%;
-	margin: 0px;
+	margin-bottom: 3px;
 	font-family: 'Monda', Verdana;
 	font-size: 1350%;
 	color: #245681;

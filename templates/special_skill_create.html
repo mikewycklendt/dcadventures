@@ -67,7 +67,7 @@
 						Action Type:
 					</div>
 
-					<select id="action" name="action" style="height: 3vh;">
+					<select id="action" name="action" style="height: 4vh; font-size: 110%;">
 						{% for action in actions %}
 							<option value={{action.id}}>{{action.name}}</option>
 						{% endfor %}
@@ -79,7 +79,7 @@
 						Check Type:
 					</div>
 					
-					<select id="check" name="check">
+					<select id="check" name="check" style="height: 4vh; font-size: 110%;">
 						{% for check in checks %}
 							<option value={{check.id}}>{{check.name}}</option>
 						{% endfor %}
@@ -91,7 +91,7 @@
 						Condition Status:
 					</div>
 					
-					<select id="condition" name="condition">
+					<select id="condition" name="condition" style="height: 4vh; font-size: 110%;">
 						<option value="">Normal</option>
 						{% for condition in conditions %}
 							<option value={{condition.id}}>{{condition.name}}</option>
@@ -104,7 +104,7 @@
 						Speed Rank Modifier:
 					</div>
 					
-					<select id="speed" name="speed">
+					<select id="speed" name="speed" style="height: 4vh; font-size: 110%;">
 						{% for number in numbers %}
 							<option value={{number}}>{{number}}</option>
 						{% endfor %}
