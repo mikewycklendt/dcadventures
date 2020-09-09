@@ -25,7 +25,7 @@
 	border: 3px solid lightblue;
 	background:url(/static/img/title/bg.png);
 	padding: 10px;
-	box-shadow: 12px 7px 25px 1px lightgray;
+	box-shadow: 12px 7px 25px 1px #b4b3b3;
 }
 
 #title-img {
