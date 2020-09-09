@@ -158,7 +158,7 @@ textarea:focus {
 	width: 70%;
 	margin: 0px;
 	font-family: 'Monda', Verdana;
-	font-size: 25px;
+	font-size: 160%;
 	color: #245681;
 	padding: 0px;
 }
@@ -206,7 +206,7 @@ textarea:focus {
 	width: 85%;
 	margin: 0px;
 	font-family: 'Monda', Verdana;
-	font-size: 120%;
+	font-size: 1350%;
 	color: #245681;
 	padding: 0px;
 }
