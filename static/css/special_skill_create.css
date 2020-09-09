@@ -67,7 +67,7 @@ select:focus {
 	border: 2px solid #af0101;
 }
 
-input[type=textarea] {
+textarea {
 	width: 100%;
 	height: 100px;
 	padding: 12px 20px;
@@ -81,6 +81,7 @@ input[type=textarea] {
 
 textarea:focus {
 	background-color: lightblue;
+	border: none;
 }
 
 .btn {
