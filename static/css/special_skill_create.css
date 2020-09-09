@@ -74,13 +74,16 @@ textarea {
 	box-sizing: border-box;
 	border: 2px solid lightblue;
 	border-radius: 8px;
-	background-color: #f8f8f8;
+	background-color: white;
 	resize: vertical;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
   }
 
 textarea:focus {
 	background-color: lightblue;
 	border:3px solid #af0101;
+	border-radius: 8px;
 }
 
 .btn {
@@ -192,7 +195,7 @@ textarea:focus {
 
 #description-field {
 	display: grid;
-	width: 60%;
+	width: 70%;
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
