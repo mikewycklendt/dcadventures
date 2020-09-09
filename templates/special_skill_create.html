@@ -39,12 +39,23 @@
 				</div>
 
 				<div id="category-field">
-					<select id="skill" name="skill">
+					<select id="skill" name="skill" aria-placeholder="Select Skill Type">
 						{% for skill in skills %}
 							<option value={{skill.id}}>{{skill.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
+
+				<div id="description">
+					<div id="skill-attr-tttle">
+						Description
+					</div>
+
+					<div id="description-field">
+						<textarea id="description" name="description" placeholder="Type description here"></textarea>
+					</div>
+				</div>
+
 			</div>
 
 
