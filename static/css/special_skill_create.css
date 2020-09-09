@@ -195,7 +195,7 @@ textarea:focus {
 	width: 60%;
 	margin: 2%;
 	grid-template-columns: 100%;
-	grid-template-rows: 3vh;
-	grid-template-areas: "categoryfield";
+	grid-template-rows: auto;
+	grid-template-areas: "descriptionfield";
 }
 
