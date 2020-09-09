@@ -55,7 +55,7 @@ input[type=text]:focus {
 
 select {
 	width: 95%;
-	height: 4vh;
+	height: 5vh;
 	padding: 4px 4px;
 	font-family: 'Monda', Verdana;
 	font-size: 120%;
