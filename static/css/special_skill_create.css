@@ -87,8 +87,8 @@ textarea:focus {
 
 .btn {
 	width: 85%;
-	height: auto;
-	padding: 3%;
+	height: 80%;
+	padding: 15px;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
