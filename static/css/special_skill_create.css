@@ -88,7 +88,7 @@ textarea:focus {
 .btn {
 	width: 85%;
 	height: auto;
-	padding: 13px;
+	padding: 3%;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
@@ -296,41 +296,6 @@ textarea:focus {
 	margin: 2%;
 	grid-template-columns: 15% 60% 15%;
 	grid-auto-rows: 4vh;
-/*
-	grid-template-areas:"dcclass dctitle dcblank" 
-						"dcselect dcfield dcbutton";
-*/
 }
 
-/*
-#dclevel-select {
-	display: grid;
-	grid-area: dcselect;
-}
-
-#dc-class{
-	display: grid;
-	grid-area: dcclass;
-}
-
-#dc-title {
-	display: grid;
-	grid-area: dctitle;
-}
-
-#dc-blank {
-	display: grid;
-	grid-area: dcblank;
-}
-
-#dclevel-field{
-	display: grid;
-	grid-area: usefield;
-}
-
-#use-btn {
-	display: grid;
-	grid-area: usebutton;
-}
-*/
 
