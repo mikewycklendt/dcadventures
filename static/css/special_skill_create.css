@@ -295,7 +295,7 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	grid-template-columns: 15% 68% 15%;
-	grid-auto-rows: 4vh;
+	grid-auto-rows: 3vh;
 }
 
 
