@@ -201,3 +201,62 @@ textarea:focus {
 	grid-template-areas: "descriptionfield";
 }
 
+#multiple-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin: 0px;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
+	color: #245681;
+	padding: 0px;
+}
+
+
+#action-check-condition-speed {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto auto;
+	grid-template-areas: "actionfield checkfield"
+							"conditionfield speedfield";
+}
+
+#action-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "actionfield";
+}
+
+#check-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "checkfield";
+}
+
+#condition-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "conditionfield";
+}
+
+#speed-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "speedfield";
+}

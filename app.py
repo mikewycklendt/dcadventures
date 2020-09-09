@@ -53,7 +53,17 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	skills = Skill.query.all()
 
-	return render_template('template.html', skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	checks = Check.query.all()
+
+	conditions = Condition.query.all()
+
+	actions = Action.query.all()
+	
+	numbers = []
+	for i in range(-20, 21, 1):
+		numbers += i
+
+	return render_template('template.html', actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
