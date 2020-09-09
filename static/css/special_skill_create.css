@@ -57,7 +57,8 @@ select {
 	width: 95%;
 	height: 4vh;
 	padding: 4px 4px;
-	font-size: 20px;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
 	border: 2px solid lightblue;
 	border-radius: 8px;
 }
