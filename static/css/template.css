@@ -21,6 +21,7 @@ body{
 	align-content: center;
 	vertical-align: middle;
 	width: 70%;
+	height: 100%;
 	margin: 0px;
 	grid-template-rows: 30vh auto;
 	grid-template-columns: 2px 17% 2px 80% 2px;
