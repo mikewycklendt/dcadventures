@@ -279,3 +279,58 @@ textarea:focus {
 	grid-template-rows: auto;
 	grid-template-areas: "dctype";
 }
+
+#dc-levels {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+}
+
+#dc-field {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 25% 60% 15%;
+	grid-template-rows: 4vh 4vh;
+/*
+	grid-template-areas:"dcclass dctitle dcblank" 
+						"dcselect dcfield dcbutton";
+*/
+}
+
+/*
+#dclevel-select {
+	display: grid;
+	grid-area: dcselect;
+}
+
+#dc-class{
+	display: grid;
+	grid-area: dcclass;
+}
+
+#dc-title {
+	display: grid;
+	grid-area: dctitle;
+}
+
+#dc-blank {
+	display: grid;
+	grid-area: dcblank;
+}
+
+#dclevel-field{
+	display: grid;
+	grid-area: usefield;
+}
+
+#use-btn {
+	display: grid;
+	grid-area: usebutton;
+}
+*/
+

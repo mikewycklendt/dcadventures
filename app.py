@@ -67,7 +67,11 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(-20, 21, 1):
 		numbers.append(i)
 
-	return render_template('template.html', dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	dcclasses = []
+	for i in range(0, 41, 1):
+		dcclasses.append(i)
+
+	return render_template('template.html', dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():

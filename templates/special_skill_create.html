@@ -142,7 +142,48 @@
 
 			<br>
 
-			
+			<div id="dc-levels">
+				<div id="skill-attr-title">
+					Difficulty Class Table:
+				</div>
+				<div id="dc-field">
+					<span>
+						<div id="multiple-attr-title">
+							DC:
+						</div>
+					</span>
+
+					<span>
+						<div id="multiple-attr-title">
+							Description:
+						</div>
+					</span>
+
+					<span>
+					</span>
+
+					<span>
+						<select id="dcclass" name="dcclass">
+							{% for class in dcclasses %}
+							<option value={{class}}>{{clas}}s</option>
+						{% endfor %}
+						</select>
+					</span>
+
+					<span>
+						<input type="text" id="dc_description" name="dc_description">
+					</span>
+
+					<span>
+						<div class="btn" id="dc_create" style="align-items: center;">
+							<center>
+							<i class="fa fa-plus"></i>   Add
+							</center>
+						</div>
+					</span>
+					
+				</div>
+			</div>
 
 		</div>
 	
