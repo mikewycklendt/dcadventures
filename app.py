@@ -58,12 +58,16 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	conditions = Condition.query.all()
 
 	actions = Action.query.all()
+
+	skilltype = SkillType.query.all()
+
+	dctype = [{"value": "gm", "name": "Set by GM"}, {"value": "table", "name": "DC Table"}]
 	
 	numbers = []
 	for i in range(-20, 21, 1):
 		numbers.append(i)
 
-	return render_template('template.html', actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	return render_template('template.html', dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():

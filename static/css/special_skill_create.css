@@ -212,7 +212,7 @@ textarea:focus {
 }
 
 
-#action-check-condition-speed {
+#action-check-condition-speed-skilltype-dctype {
 	display: grid;
 	width: 100%;
 	margin: 0px;
@@ -220,9 +220,10 @@ textarea:focus {
 	border-radius: 15px;
 	padding: 2%;
 	grid-template-columns: 50% 50%;
-	grid-template-rows: auto auto;
+	grid-template-rows: auto auto auto;
 	grid-template-areas: "actionfield checkfield"
-							"conditionfield speedfield";
+							"conditionfield speedfield"
+							"skilltype dctype";
 }
 
 #action-field {
@@ -259,4 +260,22 @@ textarea:focus {
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
 	grid-template-areas: "speedfield";
+}
+
+#skilltype-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "skilltype";
+}
+
+#dctype-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "dctype";
 }

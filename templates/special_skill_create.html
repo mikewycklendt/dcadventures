@@ -110,6 +110,33 @@
 						{% endfor %}
 					</select>
 				</div>
+
+				<div id="skilltype-field">
+					<div id="multiple-attr-title">
+						Skill Type:
+					</div>
+					
+					<select id="skilltype" name="skilltype" style="height: 4vh; font-size: 110%;">
+						<option value="">N/A</option>
+						{% for type in skilltype %}
+							<option value="{{type.id}}">{{type.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="dctype-field">
+					<div id="multiple-attr-title">
+						DC Set by:
+					</div>
+					
+					<select id="skilltype" name="skilltype" style="height: 4vh; font-size: 110%;">
+						<option value="">N/A</option>
+						{% for type in dctype %}
+							<option value="{{type.value}}">{{type.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
 			</div>
 
 			<br>
