@@ -82,7 +82,7 @@ textarea {
 
 textarea:focus {
 	background-color: lightblue;
-	border:3px solid #af0101;
+	border: 2px solid #af0101;
 	border-radius: 8px;
 }
 
