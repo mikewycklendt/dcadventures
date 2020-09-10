@@ -293,7 +293,7 @@ textarea:focus {
 #dc-rows {
 	display: grid;
 	width: 100%;
-	margin: 2%;
+	margin: 0px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 }
@@ -309,7 +309,7 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 20% 20% 20% 40%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	grid-auto-rows: 3vh;
 }
 
@@ -318,7 +318,7 @@ textarea:focus {
 	width: 85%;
 	margin-bottom: 5px;
 	font-family: 'Monda', Verdana;
-	font-size: 90%;
+	font-size: 110%;
 	color: #245681;
 	padding: 0px;
 }
@@ -338,3 +338,47 @@ textarea:focus {
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 }
+
+#dc-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	padding: 0px;
+}
+
+#dcmeasurementfield {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 15% 15% 20% 50%;
+	grid-template-rows: auto;
+}
+
+#dcdamagefield {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 15% 15% 70%;
+	grid-template-rows: auto;
+}
+
+#dckeywordfield {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 15% 45% 45%;
+	grid-template-rows: auto;
+}
+
+#dcdamagefield {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 15% 25% 60%;
+	grid-template-rows: auto;
+}
+
+

@@ -77,7 +77,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	value_type =['value', 'math']
 
-	return render_template('template.html', value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	defenses = Defense.query.all()
+
+	return render_template('template.html', defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
@@ -246,6 +248,44 @@ def measurements():
 	table = measure(formatted)
 
 	return render_template('measurements.html', table=table, title=title, size=size)
+
+
+@app.route('/defense/create')
+def defense_create():
+
+	defenses = []
+
+	defenses.append({'name': 'Base Defense',
+						'ability_id': ,
+						'description': 'Base defense rank.'
+						, 'modifier_id': 4 })
+
+	for defense in defenses:
+		name = defense['name']
+		ability_id = defense['ability_id']
+		description = defense['description']
+		modifier_id = 4
+
+		entry = Defense(name=name, ability_id=ability_id, description=description, modifier_id=modifier_id)
+		db.session.add(entry)
+		db.session.commit()
+
+	additions = Defense.query.all()
+	for addition in additions:
+		defense_id = addition.id
+		name = addition.name
+		ability_id = addition.ability_id
+		description = addition.description
+		modifier = addition.modifier_id
+
+		print (defense_id)
+		print (name)
+		print (ability_id)
+		print (description)
+		print (modifier)
+
+	return ('defense')
+
 
 '''
 @app.route('/debilitated/create')
