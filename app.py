@@ -179,8 +179,8 @@ def senses():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/measure')
-def senses():
+@app.route('/measuretype')
+def measurement_type():
 
 	title = 'Measurement Type'
 	
@@ -191,7 +191,7 @@ def senses():
 	return render_template('table.html', table=table, title=title, size=size)
 
 @app.route('/units')
-def senses():
+def unit_type():
 
 	title = 'Measurement Units'
 	
