@@ -23,6 +23,12 @@ def defense_create():
 						'ability_id': 7,
 						'description': 'Will defense is based on Awareness rank. It measures mental stability, level-headedness, determination, selfconfidence, self-awareness, and willpower, and is used to resist mental or spiritual attacks.'
 						, 'modifier_id': 4 })
+
+	defenses.append({'name': 'Base Defense',
+						'ability_id': '',
+						'description': 'Base defense rank.'
+						, 'modifier_id': 4 })
+
 	for defense in defenses:
 		name = defense['name']
 		ability_id = defense['ability_id']
