@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit
+from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -71,7 +71,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(0, 41, 1):
 		dcclasses.append(i)
 
-	return render_template('template.html', dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	dc_rank = ['This Skill', 'Parent Skill', 'Parent Ability', 'Distance Rank', 'Speed Rank', 'Time Rank', 'Throwing Rank']
+
+	return render_template('template.html', dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
@@ -201,6 +203,29 @@ def unit_type():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
+@app.route('/ranks')
+def rank_type():
+
+	title = 'Measurement Units'
+	
+	size = 'h1'
+
+	table = Rank.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
+
+@app.route('/math')
+def math_type():
+
+	title = 'Measurement Units'
+	
+	size = 'h1'
+
+	table = Math.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
 @app.route('/measurements')
 def measurements():
 
@@ -218,130 +243,106 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
-@app.route('/measuretype/create')
-def measure_type_create():
+@app.route('/ranks/create'):
+def ranks_create():
 
-	types = []
+	ranks = []
 
-	types.append({
-		'name': 'mass'
+	ranks.append({
+		'name': 'This Skill'
 	})
 
-	types.append({
-		'name': 'time'
+	ranks.append({
+		'name': 'Parent Skill'
 	})
 
-	types.append({
-		'name': 'distance'
+	ranks.append({
+		'name': 'Parent Ability'
 	})
 
-	types.append({
-		'name': 'volume'
+	ranks.append({
+		'name': 'Distance Rank'
 	})
 
-	for measure in types:
-		name = measure['name']
+	ranks.append({
+		'name': 'Speed Rank'
+	})
 
-		entry = MeasureType(name=name)
+	ranks.append({
+		'name': 'Time Rank'
+	})
+
+	ranks.append({
+		'name': 'Throwing Rank'
+	})
+
+	ranks.append({
+		'name': 'This Advantage'
+	})
+
+	ranks.append({
+		'name': 'This Power'
+	})
+
+	ranks.append({
+		'name': 'This Extra'
+	})
+
+	ranks.append({
+		'name': 'This Weapon'
+	})
+
+	ranks.append({
+		'name': 'This Equipment'
+	})
+	
+	ranks.append({
+		'name': 'This Vehicle'
+	})
+
+	ranks.append({
+		'name': 'This Vehicle'
+	})
+
+	for rank in ranks:
+		name= rank['name']
+
+		entry = Rank(name=name)
 		db.session.add(entry)
 		db.session.commit()
 
-	return 'measurement type created'
+	return ('ranks added')
 
-@app.route('/units/create')
-def units_create():
+@app.route('/math/create')
+def math_create():
 
-	units = []
+	maths = []
 
-	units.append({
-		'name': 'pounds',
-		'type_id': 1
+	maths.append({
+		'name': 'add'
 	})
 
-	units.append({
-		'name': 'tons',
-		'type_id': 1
+	maths.append({
+		'name': 'subtract'
 	})
 
-	units.append({
-		'name': 'kilotons',
-		'type_id': 1
+	maths.append({
+		'multiply': 'multiply'
 	})
 
-	units.append({
-		'name': 'seconds',
-		'type_id': 2
+	maths.append({
+		'name': 'divide'
 	})
 
-	units.append({
-		'name': 'minutes',
-		'type_id': 2
-	})
+	for math in maths:
+		name = math['name']
 
-	units.append({
-		'name': 'hours',
-		'type_id': 2
-	})
-
-	units.append({
-		'name': 'days',
-		'type_id': 2
-	})
-
-	units.append({
-		'name': 'weeks',
-		'type_id': 2
-	})
-
-	units.append({
-		'name': 'months',
-		'type_id': 2
-	})
-
-	units.append({
-		'name': 'years',
-		'type_id': 2
-	})
-
-	units.append({
-		'name': 'inches',
-		'type_id': 3
-	})
-
-	units.append({
-		'name': 'feet',
-		'type_id': 3
-	})
-
-	units.append({
-		'name': 'miles',
-		'type_id': 3
-	})
-
-	units.append({
-		'name': 'million miles',
-		'type_id': 3
-	})
-
-	units.append({
-		'name': 'cubic feet',
-		'type_id': 4
-	})
-
-	units.append({
-		'name': 'million cubic feet',
-		'type_id': 4
-	})
-
-	for unit in units:
-		name = unit['name']
-		type_id = unit['type_id']
-
-		entry = Unit(name=name, type_id=type_id)
+		entry = Math(name=name)
 		db.session.add(entry)
 		db.session.commit()
 
-	return ('units created')
+	return ('maths added')
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

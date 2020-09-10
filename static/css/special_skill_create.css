@@ -298,4 +298,20 @@ textarea:focus {
 	grid-auto-rows: 5vh;
 }
 
+#dc-fields {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: ;
+	grid-auto-rows: 3vh;
+}
 
+#dc-field-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+	color: #245681;
+	padding: 0px;
+}
