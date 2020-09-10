@@ -247,67 +247,6 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
-
-@app.route('/ranks/create')
-def ranks_create():	
-
-	names = ['Defense', 'Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
-
-	for name in names:
-
-		entry = Rank(name=name)
-		db.session.add(entry)
-		db.session.commit()
-		
-	return ('ranks added')
-
-@app.route('/math/create')
-def math_create():
-
-	symbols = []
-
-	symbols.append({
-		'id': 1,
-		'name': 'add',
-		'symbol': '+'
-	})
-
-	symbols.append({
-		'id': 2,
-		'name': 'subtract',
-		'symbol': '-'
-	})
-
-	symbols.append({
-		'id': 3,
-		'name': 'multiply',
-		'symbol': 'x'
-	})
-
-	symbols.append({
-		'id': 4,
-		'name': 'divide',
-		'symbol': '/'
-	})
-
-	for sym in symbols:
-		math_id = sym['id']
-		symbol = sym['symbol']
-
-		math = db.session.query(Math).filter_by(id=math_id).one()
-		math.symbol = symbol
-		db.session.commit()
-		db.session.close()
-
-	maths = Math.query.all()
-
-	for math in maths:
-		print (math.name)
-		print (math.symbol)
-
-
-	return ('maths added')
-
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
