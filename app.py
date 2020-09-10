@@ -243,7 +243,7 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
-@app.route('/ranks/create'):
+@app.route('/ranks/create')
 def ranks_create():
 
 	ranks = []
