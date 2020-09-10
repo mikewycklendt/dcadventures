@@ -290,6 +290,13 @@ textarea:focus {
 	grid-template-columns: 100%;
 }
 
+#dc-rows {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
 #dc-field {
 	display: grid;
 	width: 100%;
