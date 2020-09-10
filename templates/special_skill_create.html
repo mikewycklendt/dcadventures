@@ -174,7 +174,7 @@
 							</div>
 							<div id="dcclass" style="margin-top: 3px;">
 								<select id="dc_class" name="dcclass" style="height: 3vh; font-size: 70%;">
-									<option value=""></option>
+									<option value="">DC</option>
 									{% for class in dcclasses %}
 										<option value={{class}}>{{class}}</option>
 									{% endfor %}
@@ -183,7 +183,7 @@
 							<div id="dc-math-grid"style="margin-top: 3px;">
 								<div id="dcmathvalue" style="margin-top: 3px;">
 									<select id="dc_math_value" name="dcclass" style="height: 3vh; font-size: 70%;">
-										<option value=""></option>
+										<option value="">Value</option>
 										{% for class in dcclasses %}
 											<option value={{class}}>{{class}}</option>
 										{% endfor %}
@@ -193,7 +193,7 @@
 								<div id="dcmathtype" style="margin-top: 3px;">
 									<div id="dcmathtype">
 										<select id="dc_math_type" name="dcclass" style="height: 3vh; font-size: 70%;">
-											<option value=""></option>
+											<option value="">Math</option>
 											{% for math in maths %}
 												<option value={{math.id}}>{{math.name}}</option>
 											{% endfor %}
@@ -203,7 +203,7 @@
 
 								<div id="dcranktype" style="margin-top: 3px;">
 									<select id="dc_rank_type" name="dcclass" style="height: 3vh; font-size: 70%;">
-										<option value=""></option>
+										<option value="">Rank</option>
 										{% for rank in dc_rank %}
 											<option value="{{rank}}">{{rank}}</option>
 										{% endfor %}
@@ -228,7 +228,6 @@
 					
 				</div>
 
-				<br>
 				<div id="dc-fields">
 
 					<div>
