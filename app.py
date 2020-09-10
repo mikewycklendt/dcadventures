@@ -219,7 +219,7 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 @app.route('/measuretype/create')
-def measure_type_create:
+def measure_type_create():
 
 	types = []
 
