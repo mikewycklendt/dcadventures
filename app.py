@@ -256,7 +256,7 @@ def ranks_create():
 	for name in names:
 
 		entry = Rank(name=name)
-		db.sexssion.add(entry)
+		db.session.add(entry)
 		db.session.commit()
 		
 	return ('ranks added')
