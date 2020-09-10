@@ -318,16 +318,10 @@ def math_create():
 
 	maths = []
 
-	maths.append({
-		'name': 'add'
-	})
+
 
 	maths.append({
-		'name': 'subtract'
-	})
-
-	maths.append({
-		'multiply': 'multiply'
+		'name': 'multiply'
 	})
 
 	maths.append({
