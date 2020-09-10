@@ -298,11 +298,13 @@ class Math(db.Model):
 	__tablename__ = 'math'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	symbol = db.Column(db.String())
 
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'symbol': self.symbol
 		}
 
 class Rank(db.Model):

@@ -130,7 +130,7 @@
 						DC Set by:
 					</div>
 					
-					<select id="skilltype" name="skilltype" style="height: 4vh; font-size: 110%;">
+					<select id="dc_set" name="skilltype" style="height: 4vh; font-size: 110%;">
 						<option value="">N/A</option>
 						{% for type in dctype %}
 							<option value="{{type.value}}">{{type.name}}</option>
@@ -164,11 +164,54 @@
 					</div>
 
 					<div>
-						<select id="dcclass" name="dcclass" style="height: 5vh;">
-							{% for class in dcclasses %}
-							<option value={{class}}>{{class}}</option>
-						{% endfor %}
-						</select>
+						<div id="dc-value-grid">
+							<div>
+								<select id="dc_type" name="dc_type" style="height: 5vh;">
+									{% for type in value_type %}
+										<option value="{{type}}">{{type}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div id="dcclass">
+								<select id="dc_class" name="dcclass" style="height: 3vh; font-size: 70%;">
+									<option value=""></option>
+									{% for class in dcclasses %}
+										<option value={{class}}>{{class}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div id="dc-math-grid">
+								<div id="dcmathvalue">
+									<select id="dc_math_value" name="dcclass" style="height: 3vh; font-size: 70%;">
+										<option value=""></option>
+										{% for class in dcclasses %}
+											<option value={{class}}>{{class}}</option>
+										{% endfor %}
+									</select>
+								</div>
+
+								<div id="dcmathtype">
+									<div id="dcmathtype">
+										<select id="dc_math_type" name="dcclass" style="height: 3vh; font-size: 70%;">
+											<option value=""></option>
+											{% for math in maths %}
+												<option value={{math.id}}>{{math.name}}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+
+								<div id="dcranktype">
+									<select id="dc_rank_type" name="dcclass" style="height: 3vh; font-size: 70%;">
+										<option value=""></option>
+										{% for rank in dc_rank %}
+											<option value="{{rank}}">{{rank}}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 
 					<div>
@@ -183,6 +226,31 @@
 						</div>
 					</div>
 					
+				</div>
+
+				<br>
+				<div id="dc-fields">
+
+					<div>
+						<div id="dc-field-title">
+							Measurement:
+						</div>
+					</div>
+
+					<div>
+						<div id="dc-field-title">
+							Damage Adjust:
+						</div>
+					</div>
+
+					<div>
+						<div id="dc-field-title">
+							Keyword:
+						</div>
+					</div>
+
+
+
 				</div>
 	
 			</div>

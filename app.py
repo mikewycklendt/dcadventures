@@ -71,9 +71,13 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(0, 41, 1):
 		dcclasses.append(i)
 
-	dc_rank = ['This Skill', 'Parent Skill', 'Parent Ability', 'Distance Rank', 'Speed Rank', 'Time Rank', 'Throwing Rank']
+	dc_rank = ['This Skill', 'Parent Skill', 'Parent Ability', 'Defense', 'Distance Rank', 'Speed Rank', 'Time Rank', 'Throwing Rank', 'Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
 
-	return render_template('template.html', dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	maths = Math.query.all()
+
+	value_type =['value', 'math']
+
+	return render_template('template.html', value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
@@ -243,97 +247,64 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
+
 @app.route('/ranks/create')
-def ranks_create():
+def ranks_create():	
 
-	ranks = []
+	names = ['Defense', 'Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
 
-	ranks.append({
-		'name': 'This Skill'
-	})
-
-	ranks.append({
-		'name': 'Parent Skill'
-	})
-
-	ranks.append({
-		'name': 'Parent Ability'
-	})
-
-	ranks.append({
-		'name': 'Distance Rank'
-	})
-
-	ranks.append({
-		'name': 'Speed Rank'
-	})
-
-	ranks.append({
-		'name': 'Time Rank'
-	})
-
-	ranks.append({
-		'name': 'Throwing Rank'
-	})
-
-	ranks.append({
-		'name': 'This Advantage'
-	})
-
-	ranks.append({
-		'name': 'This Power'
-	})
-
-	ranks.append({
-		'name': 'This Extra'
-	})
-
-	ranks.append({
-		'name': 'This Weapon'
-	})
-
-	ranks.append({
-		'name': 'This Equipment'
-	})
-	
-	ranks.append({
-		'name': 'This Vehicle'
-	})
-
-	ranks.append({
-		'name': 'This Vehicle'
-	})
-
-	for rank in ranks:
-		name= rank['name']
+	for name in names:
 
 		entry = Rank(name=name)
-		db.session.add(entry)
+		db.sexssion.add(entry)
 		db.session.commit()
-
+		
 	return ('ranks added')
 
 @app.route('/math/create')
 def math_create():
 
-	maths = []
+	symbols = []
 
-
-
-	maths.append({
-		'name': 'multiply'
+	symbols.append({
+		'id': 1,
+		'name': 'add',
+		'symbol': '+'
 	})
 
-	maths.append({
-		'name': 'divide'
+	symbols.append({
+		'id': 2,
+		'name': 'subtract',
+		'symbol': '-'
 	})
+
+	symbols.append({
+		'id': 3,
+		'name': 'multiply',
+		'symbol': 'x'
+	})
+
+	symbols.append({
+		'id': 4,
+		'name': 'divide',
+		'symbol': '/'
+	})
+
+	for sym in symbols:
+		math_id = sym['id']
+		symbol = sym['symbol']
+
+		math = Math.query.filter_by(id=math_id)
+		math.symbol = symbol
+		db.session.commit()
+		db.session.close()
+
+	maths = Math.query.all()
 
 	for math in maths:
-		name = math['name']
+		print (math.name)
+		print (math.symbol)
 
-		entry = Math(name=name)
-		db.session.add(entry)
-		db.session.commit()
 
 	return ('maths added')
 
