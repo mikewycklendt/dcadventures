@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable
+from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -179,6 +179,28 @@ def senses():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
+@app.route('/measure')
+def senses():
+
+	title = 'Measurement Type'
+	
+	size = 'h1'
+
+	table = MeasureType.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
+@app.route('/units')
+def senses():
+
+	title = 'Measurement Units'
+	
+	size = 'h1'
+
+	table = Unit.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
 @app.route('/measurements')
 def measurements():
 
@@ -196,8 +218,130 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
+@app.route('/measuretype/create')
+def measure_type_create:
 
+	types = []
 
+	types.append({
+		'name': 'mass'
+	})
+
+	types.append({
+		'name': 'time'
+	})
+
+	types.append({
+		'name': 'distance'
+	})
+
+	types.append({
+		'name': 'volume'
+	})
+
+	for measure in types:
+		name = measure['name']
+
+		entry = MeasureType(name=name)
+		db.session.add(entry)
+		db.session.commit()
+
+	return 'measurement type created'
+
+@app.route('/units/create')
+def units_create():
+
+	units = []
+
+	units.append({
+		'name': 'pounds',
+		'type_id': 1
+	})
+
+	units.append({
+		'name': 'tons',
+		'type_id': 1
+	})
+
+	units.append({
+		'name': 'kilotons',
+		'type_id': 1
+	})
+
+	units.append({
+		'name': 'seconds',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'minutes',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'hours',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'days',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'weeks',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'months',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'years',
+		'type_id': 2
+	})
+
+	units.append({
+		'name': 'inches',
+		'type_id': 3
+	})
+
+	units.append({
+		'name': 'feet',
+		'type_id': 3
+	})
+
+	units.append({
+		'name': 'miles',
+		'type_id': 3
+	})
+
+	units.append({
+		'name': 'million miles',
+		'type_id': 3
+	})
+
+	units.append({
+		'name': 'cubic feet',
+		'type_id': 4
+	})
+
+	units.append({
+		'name': 'million cubic feet',
+		'type_id': 4
+	})
+
+	for unit in units:
+		name = unit['name']
+		type_id = unit['type_id']
+
+		entry = Unit(name=name, type_id=type_id)
+		db.session.add(entry)
+		db.session.commit()
+
+	return ('units created')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

@@ -259,6 +259,30 @@ class Phase(db.Model):
 			'name': self.name
 		}
 
+class MeasureType(db.Model):
+	__tablename__ = 'measurement_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
+class Unit(db.Model):
+	__tablename__ = 'unit_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'type_id': self.type_id
+		}
+
 class Sense(db.Model):
 	__tablename__ = 'senses'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
