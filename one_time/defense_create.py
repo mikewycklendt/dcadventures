@@ -25,7 +25,7 @@ def defense_create():
 						, 'modifier_id': 4 })
 
 	defenses.append({'name': 'Base Defense',
-						'ability_id': '',
+						'ability_id': None,
 						'description': 'Base defense rank.'
 						, 'modifier_id': 4 })
 
