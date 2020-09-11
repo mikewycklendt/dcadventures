@@ -266,7 +266,7 @@
 						</div>
 
 						<div>
-							<select id="dc_measurement_type" name="dc_type" style="height: 3vh; font-size: 70%;">
+							<select id="dc_measurement_type" name="dc_type" style="height: 3vh; font-size: 70%; padding: 0px;">
 								<option value="">Type</option>
 								{% for type in value_type %}
 									<option value="{{type}}">{{type}}</option>
@@ -277,11 +277,11 @@
 						<div id="dcmeasurementfields" style="margin-top: 0px;">
 							<div id="dcmeasurementfieldvalue" style="margin-top: 0px;">
 								<div>
-									<input type="text" id="dc_measurement_value" name="dc_measurement_value" placeholder="Value" style="width: 90%; height: 3vh; margin: 0px; padding: 0px; font-size: 90%;">
+									<input type="text" id="dc_measurement_value" name="dc_measurement_value" placeholder="Value" style="width: 90%; height: 3vh; margin: 0px; padding: 0px; padding-left: 1%; font-size: 90%;">
 								</div>
 
 								<div>
-									<select id="dc_measurement_units" name="dc_math_value" style="height: 3vh; font-size: 70%;">
+									<select id="dc_measurement_units" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
 										<option value="">Units</option>
 										{% for unit in units %}
 											<option value="{{unit}}">{{unit}}</option>
@@ -293,7 +293,7 @@
 
 							<div id="dcmeasurementfieldmath">
 								<div>
-									<select id="dc_measurement_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%;">
+									<select id="dc_measurement_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
 										<option value="">Value</option>
 										{% for class in dcclasses %}
 											<option value={{class}}>{{class}}</option>
@@ -303,7 +303,7 @@
 
 
 								<div>
-									<select id="dc_measurement_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%;">
+									<select id="dc_measurement_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%; padding: 0px;">
 										<option value="">Math</option>
 										{% for math in maths %}
 											<option value={{math.id}}>{{math.name}}</option>
@@ -312,7 +312,7 @@
 								</div>
 		
 								<div>
-									<select id="dc_measurement_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%;">
+									<select id="dc_measurement_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%; padding: 0px;">
 										<option value="">Rank</option>
 										{% for rank in dc_rank %}
 											<option value="{{rank}}">{{rank}}</option>
