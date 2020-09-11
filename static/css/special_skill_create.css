@@ -359,19 +359,26 @@ textarea:focus {
 	font-size: auto;
 }
 
-#dcmeasurementfieldmath {
+#dcmeasurementfields {
 	display: grid;
-	width: 50%;
+	width: 100%;
 	margin: 2%;
-	grid-template-columns: 20% 40% 40%;
-	grid-template-rows: auto;
+	grid-template-rows: 100%;
+	grid-auto-columns: auto;
 }
 
 #dcmeasurementfieldvalue{
 	display: grid;
-	width: 50%;
+	width: 40%;
 	margin: 2%;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 50% 50% ;
+}
+
+#dcmeasurementfieldmath{
+	display: grid;
+	width: 60%;
+	margin: 2%;
+	grid-template-columns: 20% 40% 40%;
 }
 
 #dcdamagefield {
