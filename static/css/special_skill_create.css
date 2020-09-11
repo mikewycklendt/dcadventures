@@ -361,7 +361,7 @@ textarea:focus {
 
 #dcmeasurementfieldmath {
 	display: grid;
-	width: 100%;
+	width: 45%;
 	margin: 2%;
 	grid-template-columns: 15% 15% 15%;
 	grid-template-rows: auto;
