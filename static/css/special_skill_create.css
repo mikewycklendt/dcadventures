@@ -310,7 +310,7 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	margin-top: 2%;
+	margin-top: 0%;
 	grid-template-columns: 20% 20% 20% 40%;
 	grid-auto-rows: 3vh;
 }
