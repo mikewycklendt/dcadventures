@@ -363,8 +363,8 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-rows: 100%;
-	grid-auto-columns: auto;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
 }
 
 #dcmeasurementfieldvalue{
