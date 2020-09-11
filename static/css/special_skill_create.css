@@ -361,9 +361,9 @@ textarea:focus {
 
 #dcmeasurementfieldmath {
 	display: grid;
-	width: 45%;
+	width: 70%;
 	margin: 2%;
-	grid-template-columns: 15% 15% 15%;
+	grid-template-columns: 10% 45% 45%;
 	grid-template-rows: auto;
 }
 
@@ -371,7 +371,7 @@ textarea:focus {
 	display: grid;
 	width: 30%;
 	margin: 2%;
-	grid-template-columns: 15% 15%;
+	grid-template-columns: 50% 50%;
 }
 
 #dcdamagefield {
