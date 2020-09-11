@@ -353,32 +353,55 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 15% 15% 20% 50%;
+	grid-template-columns: 15% 15% auto;
 	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: auto;
+}
+
+#dcmeasurementfieldmath {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 15% 15% 15% auto;
+	grid-template-rows: auto;
+}
+
+#dcmeasurementfieldvalue{
+	display: grid;
+	width: auto;
+	margin: 2%;
+	grid-template-columns: 15% 15% auto;
 }
 
 #dcdamagefield {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 15% 15% 70%;
+	grid-template-columns: 15% 15% auto;
 	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: auto;
 }
 
 #dckeywordfield {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 15% 45% 45%;
+	grid-template-columns: 15% 45% auto;
 	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: auto;
 }
 
 #dcdamagefield {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 15% 25% 60%;
+	grid-template-columns: 15% 25% auto;
 	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: auto;
 }
 
 

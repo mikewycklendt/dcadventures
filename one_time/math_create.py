@@ -56,7 +56,7 @@ def math_create():
 		math_id = sym['id']
 		symbol = sym['symbol']
 
-		math = db.session.query(Math).filter_by(id=math_id)
+		math = db.session.query(Math).filter_by(id=math_id).one()
 		math.symbol = symbol
 		db.session.commit()
 		db.session.close()

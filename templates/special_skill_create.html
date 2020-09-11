@@ -176,7 +176,7 @@
 								</select>
 							</div>
 							<div id="dcclass" style="margin-top: 3px;">
-								<select id="dc_class" name="dcclass" style="height: 3vh; font-size: 70%;">
+								<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%;">
 									<option value="">DC</option>
 									{% for class in dcclasses %}
 										<option value={{class}}>{{class}}</option>
@@ -185,7 +185,7 @@
 							</div>
 							<div id="dc-math-grid"style="margin-top: 3px;">
 								<div id="dcmathvalue" style="margin-top: 3px;">
-									<select id="dc_math_value" name="dcclass" style="height: 3vh; font-size: 70%;">
+									<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%;">
 										<option value="">Value</option>
 										{% for class in dcclasses %}
 											<option value={{class}}>{{class}}</option>
@@ -194,7 +194,7 @@
 								</div>
 
 								<div id="dcmathtype" style="margin-top: 3px;">
-									<select id="dc_math_type" name="dcclass" style="height: 3vh; font-size: 70%;">
+									<select id="dc_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%;">
 										<option value="">Math</option>
 										{% for math in maths %}
 											<option value={{math.id}}>{{math.name}}</option>
@@ -203,7 +203,7 @@
 								</div>
 			
 								<div id="dcranktype" style="margin-top: 3px;">
-									<select id="dc_rank_type" name="dcclass" style="height: 3vh; font-size: 70%;">
+									<select id="dc_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%;">
 										<option value="">Rank</option>
 										{% for rank in dc_rank %}
 											<option value="{{rank}}">{{rank}}</option>
@@ -258,27 +258,122 @@
 				</div>
 
 				<div id="dcmeasurementfield">
+					
+					<div id="dc-attr-field">
+						Measurement:
+					</div>
 
+					<div>
+						<select id="dc_measurement_type" name="dc_type" style="height: 5vh;">
+							<option value="">Type</option>
+							{% for type in value_type %}
+								<option value="{{type}}">{{type}}</option>
+							{% endfor %}
+						</select>
+					</div>
 
+					<div>
+						<div id="dcmeasurementvalue" style="margin-top: 3px;">
+							<div>
+								<input type="text" id="dc_measurement_value" name="dc_measurement_value" placeholder="Value">
+							</div>
+
+							<div>
+								<select id="dc_measurement_units" name="dc_math_value" style="height: 3vh; font-size: 70%;">
+									<option value="">Units</option>
+									{% for unit in units %}
+										<option value="{{unit}}">{{unit}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						
+						</div>
+
+						<div id="dcmeasurementfieldmath"style="margin-top: 3px;">
+							<div id="dcmeasurementmathvalue" style="margin-top: 3px;">
+								<select id="dc_measurement_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%;">
+									<option value="">Value</option>
+									{% for class in dcclasses %}
+										<option value={{class}}>{{class}}</option>
+									{% endfor %}
+								</select>
+							</div>
+
+							<div id="dcmathtype" style="margin-top: 3px;">
+								<select id="dc_measurement_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%;">
+									<option value="">Math</option>
+									{% for math in maths %}
+										<option value={{math.id}}>{{math.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+		
+							<div id="dcranktype" style="margin-top: 3px;">
+								<select id="dc_measurement_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%;">
+									<option value="">Rank</option>
+									{% for rank in dc_rank %}
+										<option value="{{rank}}">{{rank}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
 
 				</div>
 
 				<div id="dcdamagefield">
+					
+					<div id="dc-attr-field">
+						Damage Adjust:
+					</div>
+					
+					<div>
+						<select id="dc_damage" name="dc_damage" style="height: 4vh; font-size: 70%;">
+							<option value="">Damage Adjust</option>
+							{% for number in numbers %}
+								<option value={{number}}>{{number}}</option> 
+							{% endfor %}
+						</select>
+					</div>
 
+					<div>
+						(- per degree of success + per degree of failure)
+					</div>
 
 
 				</div>
 
 				<div id="dckeywordfield">
 				
+					<div id="dc-attr-field">
+						Keyword
+					</div>
 
+					<div>
+						<input type="text" id="dc_keyword" name="dc_keyword" style="height: 4vh;">
+					</div>
+
+					<div>
+
+					</div>
 
 				</div>
 
-				<div id="dckeywordfield">
+				<div id="dcdefensefield">
 
+					<div id="dc-attr-field">
+						Relevant Defense:
+					</div>
 
-					
+					<div>
+						<select id="dc_defense" name="dc_defense" style="height: 4vh; font-size: 70%;">
+							<option value=""></option>
+							{% for defense in defenses %}
+								<option value={{defense.id}}>{{defense.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
 				</div>
 
 
