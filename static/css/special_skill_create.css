@@ -353,7 +353,7 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 15% 15% auto;
+	grid-template-columns: 15% 15% 70%;
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
