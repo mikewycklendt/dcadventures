@@ -325,6 +325,7 @@ textarea:focus {
 	font-size: 130%;
 	color: #245681;
 	padding: 0px;
+	vertical-align: text-top;
 }
 
 .regular-checkbox {
