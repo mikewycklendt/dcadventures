@@ -421,6 +421,6 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	margin-top: 0px;
-	grid-template-columns: 83% auto;
+	grid-template-columns: 83% auto 5%;
 	grid-template-rows: auto;
 }
