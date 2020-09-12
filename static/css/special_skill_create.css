@@ -367,7 +367,6 @@ textarea:focus {
 
 .big-checkbox:checked:after {
 	font-size: 15px;
-	padding: 0px;
 	left: 6px;
 }
 
