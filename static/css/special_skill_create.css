@@ -362,7 +362,7 @@ textarea:focus {
 }
 
 .big-checkbox {
-	padding: 0px;
+	padding: 5px;
 }
 
 .big-checkbox:checked:after {
