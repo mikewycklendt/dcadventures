@@ -311,7 +311,7 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	margin-top: 0%;
-	grid-template-columns: 24% 18% 18% 40%;
+	grid-template-columns: 24% 26% 18% 32%;
 	grid-auto-rows: 3vh
 }
   
