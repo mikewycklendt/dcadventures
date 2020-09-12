@@ -311,7 +311,7 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	margin-top: 0%;
-	grid-template-columns: 20% 20% 20% 40%;
+	grid-template-columns: 24% 18% 18% 40%;
 	grid-auto-rows: 3vh
 }
   
@@ -358,11 +358,11 @@ textarea:focus {
 }
 
 .big-checkbox {
-	padding: 12px;
+	padding: 7px;
 }
 
 .big-checkbox:checked:after {
-	font-size: 20px;
+	font-size: 15px;
 	left: 6px;
 }
 
