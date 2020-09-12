@@ -313,6 +313,10 @@ textarea:focus {
 	margin-top: 0%;
 	grid-template-columns: 20% 20% 20% 40%;
 	grid-auto-rows: 3vh;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #dc-fields input {
