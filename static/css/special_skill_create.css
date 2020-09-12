@@ -319,7 +319,7 @@ textarea:focus {
 	user-select: none;
 }
 
-#dc-field-title input {
+#dc-fields input {
 	position: absolute;
 	opacity: 0;
 	cursor: pointer;
@@ -337,28 +337,28 @@ textarea:focus {
   }
   
   /* On mouse-over, add a grey background color */
-  #dc-field-title input ~ .checkmark {
+  #dc-fields:hover input ~ .checkmark {
 	background-color: #ccc;
   }
   
   /* When the checkbox is checked, add a blue background */
-  #dc-field-title input:checked ~ .checkmark {
+  #dc-fields input:checked ~ .checkmark {
 	background-color: #2196F3;
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
-  #dc-field-title:after {
+  #dc-fields:after {
 	content: "";
 	position: absolute;
 	display: none;
   }
   
   /* Show the checkmark when checked */
-  #dc-field-title input:checked ~ .checkmark:after {
+  #dc-fields input:checked ~ .checkmark:after {
 	display: block;
   }
 
-  #dc-field-title .checkmark:after {
+  #dc-field-titlecontainer .checkmark:after {
 	left: 9px;
 	top: 5px;
 	width: 5px;
@@ -379,10 +379,6 @@ textarea:focus {
 	font-size: 110%;
 	color: #245681;
 	padding: 0px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 
 #dc-value-grid {
