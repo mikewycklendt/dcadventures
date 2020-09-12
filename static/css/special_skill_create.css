@@ -358,11 +358,11 @@ textarea:focus {
 }
 
 .big-checkbox {
-	padding: 18px;
+	padding: 12px;
 }
 
 .big-checkbox:checked:after {
-	font-size: 28px;
+	font-size: 20px;
 	left: 6px;
 }
 
