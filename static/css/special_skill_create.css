@@ -367,7 +367,7 @@ textarea:focus {
 
 .big-checkbox:checked:after {
 	font-size: 20px;
-	left: 6px;
+	left: 1px;
 }
 
 #dc-value-grid {
