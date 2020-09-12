@@ -321,7 +321,7 @@ textarea:focus {
 	width: 85%;
 	margin-bottom: 5px;
 	font-family: 'Monda', Verdana;
-	font-size: 110%;
+	font-size: 120%;
 	color: #245681;
 	padding: 0px;
 }
@@ -368,7 +368,7 @@ textarea:focus {
 .big-checkbox:checked:after {
 	font-size: 20px;
 	left: 3px;
-	bottom: 3px;
+
 }
 
 #dc-value-grid {
