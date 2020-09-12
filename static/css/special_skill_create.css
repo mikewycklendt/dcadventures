@@ -354,7 +354,7 @@ textarea:focus {
 
 .regular-checkbox:checked:after {
 	content: '\2714';
-	font-size: 14px;
+	font-size: 20px;
 	position: absolute;
 	top: 0px;
 	left: 3px;
@@ -362,11 +362,11 @@ textarea:focus {
 }
 
 .big-checkbox {
-	padding: 15px;
+	padding: 11px;
 }
 
 .big-checkbox:checked:after {
-	font-size: 15px;
+	font-size: 20px;
 	left: 6px;
 }
 
