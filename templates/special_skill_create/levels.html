@@ -1,0 +1,30 @@
+<div id="levels-header">
+	<div id="levels-checkbox" style="vertical-align: 0px;">
+		<input type="checkbox" id="levels" class="regular-checkbox big-checkbox">  
+	</div>
+
+	<div id="levels-title">
+		Character Levels Table:
+	</div>
+
+	<div id="levels-base-form">
+		<div>
+			<select id="levels_dc_set" name="skilltype" style="height: 4vh; font-size: 110%;">
+				<option value="">DC</option>
+				{% for class in dcclasses %}
+					<option value={{class}}>{{class}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select id="levels_target" name="skilltype" style="height: 4vh; font-size: 110%;">
+				<option value="">Target</option>
+				{% for target in level_target %}
+					<option value="{{target}}">{{target}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+					
+</div>

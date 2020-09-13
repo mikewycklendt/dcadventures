@@ -1,5 +1,6 @@
 @import "special_skill_create/dc_table.css";
 @import "special_skill_create/base_form.css";
+@import "special_skill_create/levels.css";
 
 .skill-container {
 	display: grid;
@@ -190,4 +191,14 @@ textarea:focus {
 	font-size: 20px;
 	left: 3px;
 
+}
+
+#skill-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 70%;
+	margin: 0px;
+	font-family: 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
 }
