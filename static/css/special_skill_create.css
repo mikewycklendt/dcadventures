@@ -1,5 +1,5 @@
 
-@import "/special_skill_create/dc_table.css";
+@import "special_skill_create/dc_table.css";
 
 .skill-container {
 	display: grid;
