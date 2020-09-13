@@ -25,7 +25,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 	grid-template-rows: 30vh auto;
-	grid-template-columns: .2% 17% .2% 82% .2;
+	grid-template-columns: .2% 17% .2% 82% .2%;
 	grid-template-areas: "banner banner banner banner banner"
 							"left sidebar middle content right";
 	box-shadow: 0px 10px 30px 1px #b4b3b3;
