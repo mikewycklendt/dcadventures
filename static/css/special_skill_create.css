@@ -501,28 +501,28 @@ textarea:focus {
 	margin: 4px;
 }
 
-#dc-table-description {
+#dc-table-title-description {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
 }
 
-#dc-table-measurement {
+#dc-table-title-measurement {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
 }
 
-#dc-table-damage {
+#dc-table-title-damage {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
 }
 
-#dc-table-defense {
+#dc-table-title-defense {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
