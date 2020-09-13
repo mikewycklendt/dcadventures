@@ -1,0 +1,104 @@
+<div id="category">
+	<div id="skill-attr-title">
+		Enhances Skill:
+	</div>
+
+	<div id="category-field">
+		<select id="skill" name="skill" aria-placeholder="Select Skill Type">
+			{% for skill in skills %}
+				<option value={{skill.id}}>{{skill.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+	<br>
+<div id="description">
+	<div id="skill-attr-title">
+		Description
+	</div>
+
+	<div id="description-field">
+		<textarea id="description" name="description" placeholder="Type description here" style="border: 2px solid lightblue; resize: vertical;"></textarea>
+	</div>
+</div>
+
+<br>
+
+<div id="action-check-condition-speed-skilltype-dctype">
+
+	<div id="action-field">
+		<div id="multiple-attr-title">
+			Action Type:
+		</div>
+
+		<select id="action" name="action" style="height: 4vh; font-size: 110%;">
+			{% for action in actions %}
+				<option value={{action.id}}>{{action.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="check-field">
+		<div id="multiple-attr-title">
+			Check Type:
+		</div>
+		
+		<select id="check" name="check" style="height: 4vh; font-size: 110%;">
+			{% for check in checks %}
+				<option value={{check.id}}>{{check.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="condition-field">
+		<div id="multiple-attr-title">
+			Condition Status:
+		</div>
+		
+		<select id="condition" name="condition" style="height: 4vh; font-size: 110%;">
+			<option value="">Normal</option>
+			{% for condition in conditions %}
+				<option value={{condition.id}}>{{condition.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="speed-field">
+		<div id="multiple-attr-title">
+			Speed Rank Modifier:
+		</div>
+		
+		<select id="speed" name="speed" aria-placeholder="0" style="height: 4vh; font-size: 110%;">
+			<option value=0>0</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="skilltype-field">
+		<div id="multiple-attr-title">
+			Skill Type:
+		</div>
+		
+		<select id="skilltype" name="skilltype" style="height: 4vh; font-size: 110%;">
+			<option value="">N/A</option>
+			{% for type in skilltype %}
+				<option value="{{type.id}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="dctype-field">
+		<div id="multiple-attr-title">
+			DC Set by:
+		</div>
+		
+		<select id="dc_set" name="skilltype" style="height: 4vh; font-size: 110%;">
+			<option value="">N/A</option>
+			{% for type in dctype %}
+				<option value="{{type.value}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
