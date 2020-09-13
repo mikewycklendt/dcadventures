@@ -486,14 +486,14 @@ textarea:focus {
 
 #dc-table-title {
 	font-family: 'Monda', Verdana;
-	font-size: 110%;
+	font-size: 100%;
 	border-bottom: 1px solid lightblue;
 	margin: 2%
 }
 
 #dc-table-col {
 	font-family: 'Monda', Verdana;
-	font-size: 90%;
+	font-size: 80%;
 	margin: 1%;
 	
 }
