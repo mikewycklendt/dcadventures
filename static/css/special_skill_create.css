@@ -484,82 +484,16 @@ textarea:focus {
 	border-radius: 5px;
 }
 
-#dc-table-row {
-	width: auto;
-	margin: 2%;
-	border-bottom: 1px solid #af0101;
-	font-size: 90%;
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-#dc-table-dc-title {
+#dc-table-title {
 	font-family: 'Monda', Verdana;
 	font-size: 110%;
+	border-bottom: 1px solid lightblue;
 }
 
-#dc-table-keyword-title {
-	font-family: 'Monda', Verdana;
-	font-size: 110%;
-}
-
-#dc-table-description-title {
-	font-family: 'Monda', Verdana;
-	font-size: 110%;
-}
-
-
-#dc-table-measure-title {
-	font-family: 'Monda', Verdana;
-	font-size: 110%;
-}
-
-
-#dc-table-damage-title {
-	font-family: 'Monda', Verdana;
-	font-size: 110%;
-}
-
-
-#dc-table-defense-title {
-	font-family: 'Monda', Verdana;
-	font-size: 110%;
-}
-
-#dc-table-dc {
+#dc-table-col {
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
 }
-
-#dc-table-keyword {
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-#dc-table-description {
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-
-#dc-table-measure {
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-
-#dc-table-damage {
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-
-#dc-table-defense {
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-}
-
-
 
 .dc-col {
 	display: flex;
