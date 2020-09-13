@@ -487,7 +487,42 @@ textarea:focus {
 
 }
 
-#dc-table-title {
+#dc-table-title-dc {
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+}
+
+#dc-table-title-keyword {
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+}
+
+#dc-table-description {
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+}
+
+#dc-table-measurement {
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+}
+
+#dc-table-damage {
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+}
+
+#dc-table-defense {
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
