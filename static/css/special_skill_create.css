@@ -490,10 +490,10 @@ textarea:focus {
 	font-size: 100%;
 	border-bottom: 1px solid lightblue;
 	margin: 1%;
-	padding: 1%;
 }
 
 #dc-table-col {
+	width: 95%;
 	font-family: 'Monda', Verdana;
 	font-size: 80%;
 	margin: 1%;
