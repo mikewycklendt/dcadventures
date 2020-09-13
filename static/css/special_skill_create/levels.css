@@ -1,10 +1,10 @@
 #levels {
 	display: grid;
-	width: 80%;
+	width: 79%;
 	margin-left: 10%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
-	padding: 2%;
+	padding: 1%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 }
@@ -12,7 +12,7 @@
 #levels-header {
 	display: grid;
 	width: 100%;
-	margin: 2%;
+	margin:opx;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
 	grid-template-columns: 60% 40%;
