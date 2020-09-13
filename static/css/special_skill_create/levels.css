@@ -1,6 +1,6 @@
 #levels {
 	display: grid;
-	width: 100%;
+	width: 800%;
 	margin: 0px;
 	border: 1px solid #af0101;
 	border-radius: 15px;
@@ -13,9 +13,9 @@
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	padding: 1%;
+	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 7% 53% 40%;
+	grid-template-columns: 10% 50% 40%;
 	grid-template-rows: auto;
 }
 
