@@ -475,13 +475,14 @@ textarea:focus {
 
 #dc-table-container {
 	display: grid;
-	margin: 2%;
+	margin: 1%;
 	height: auto;
 	width: auto;
 	grid-template-columns: 10% 15% auto 15% 10% 10%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	border-radius: 5px;
+
 }
 
 #dc-table-title {
