@@ -472,3 +472,97 @@ textarea:focus {
 	grid-template-columns: 83% auto 5%;
 	grid-template-rows: auto;
 }
+
+#dc-table-container {
+	display: grid;
+	margin: 2%;
+	height: auto;
+	width: auto;
+	grid-template-columns: 10% 15% auto 15% 10% 10%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	border-radius: 5px;
+}
+
+#dc-table-row {
+	width: auto;
+	margin: 2%;
+	border-bottom: 1px solid #af0101;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+#dc-table-dc-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+#dc-table-keyword-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+#dc-table-description-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+
+#dc-table-measure-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+
+#dc-table-damage-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+
+#dc-table-defense-title {
+	font-family: 'Monda', Verdana;
+	font-size: 110%;
+}
+
+#dc-table-dc {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+#dc-table-keyword {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+#dc-table-description {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+
+#dc-table-measure {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+
+#dc-table-damage {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+
+#dc-table-defense {
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+}
+
+
+
+.dc-col {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+}
