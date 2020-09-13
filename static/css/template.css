@@ -27,6 +27,7 @@ body{
 	grid-template-columns: 2px 17% 2px 80% 2px;
 	grid-template-areas: "banner banner banner banner banner"
 							"left sidebar middle content right";
+	box-shadow: 0px 10px 30px 5px #b4b3b3;
 
 }
 
