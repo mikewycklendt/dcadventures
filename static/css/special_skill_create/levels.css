@@ -39,9 +39,10 @@
 	margin-left: 5%;
 	margin-right: 5%;
 	margin-top: 0px;
+	padding: 2%;
 	border-left: 1px solid  lightblue;
 	border-bottom: 1px solid  lightblue;
-	border-right: lightblue;
+	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	grid-template-columns: 30% 70%;
