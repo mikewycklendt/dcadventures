@@ -1,6 +1,7 @@
 @import "special_skill_create/dc_table.css";
 @import "special_skill_create/base_form.css";
 @import "special_skill_create/levels.css";
+@import "special_skill_create/circumstance_table.css";
 
 .skill-container {
 	display: grid;

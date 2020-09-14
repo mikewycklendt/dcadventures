@@ -9,7 +9,7 @@
 
 	<div id="levels-base-form">
 		<div>
-			<select id="levels_dc_set" name="skilltype" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<select id="levels_dc_set" name="levels_dc_set" style="height: 4vh; padding: 0%; font-size: 100%;">
 				<option value="">DC</option>
 				{% for class in dcclasses %}
 					<option value={{class}}>{{class}}</option>
@@ -18,7 +18,7 @@
 		</div>
 
 		<div>
-			<select id="levels_target" name="skilltype" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<select id="levels_target" name="levels_target" style="height: 4vh; font-size: 100%; padding: 0%;">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
@@ -42,11 +42,11 @@
 		<div></div>
 
 		<div id="levels-field">
-			<input type="text" id="level" style="height: 1vh; font-size: 90%;">
+			<input type="text" id="level" name="level" style="height: 1vh; font-size: 90%;">
 		</div>
 
 		<div id="levels-field" style="width:95%" >
-			<input type="text" id="level_effect" style="height: 1vh; font-size: 90%;">
+			<input type="text" id="level_effect" name="level_effect" style="height: 1vh; font-size: 90%;">
 		</div>
 
 		<div id="levels-add">

@@ -1,0 +1,74 @@
+<div id="circ-header">
+
+	<div id="circ-title">
+		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox">  Circumstance Modifier Table:
+	</div>
+
+	<div>
+		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<option value="">DC</option>
+			{% for target in level_target %}
+				<option value="{{target}}"">{{target}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="circ-entry">
+
+	<div id="circ-entry-title">
+		Modifier:
+	</div>
+
+	<div id="circ-entry-title">
+		Circumstance
+	</div>
+
+	<div id="circ-entry-title">
+	</div>
+
+	<div id="circ-field">
+		<select id="circ_modifier" name="circ_modifier" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Modifier</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="circ-field">
+		<input type="text" id="circumstance_entry" name="circumstance_entry" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="circ-add">
+		<div class="btn" id="circ_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="circ-table">
+
+	<div id="circ-table-title">
+		Modifier:
+	</div>
+
+	<div id="circ-table-title">
+		Circumstance:
+	</div>
+
+	<div id="circ-table-modifier">
+		-5
+	</div>
+
+	<div id="circ-table-circ">
+	The target wants to believe you.
+	</div>
+
+
+</div>
+

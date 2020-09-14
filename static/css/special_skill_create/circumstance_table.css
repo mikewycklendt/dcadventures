@@ -1,4 +1,4 @@
-#levels {
+#circumstance {
 	display: grid;
 	width: 100%;
 	border: 1px solid #af0101;
@@ -8,16 +8,17 @@
 	grid-auto-rows: auto;
 }
 
-#levels-header {
+#circ-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 80% 20%;
 	grid-template-rows: auto;
 }
 
-#levels-title {
+
+#circ-title {
 	margin: 0px;
 	font-family: 'Monda', Verdana;
 	font-size: 160%;
@@ -25,14 +26,7 @@
 	padding: 0px;
 }
 
-#levels-base-form {
-	display: grid;
-	width: 100%;
-	grid-template-columns: 30% 70%;
-	grid-template-rows: auto;
-}
-
-#levels-entry {
+#circ-entry {
 	display: grid;
 	width: 88%;
 	margin-top: 0px;
@@ -43,11 +37,11 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 22% 63% 15%;
+	grid-template-columns: 10% 75% 15%;
 	grid-auto-rows: auto;
 }
 
-#levels-entry-title {
+#circ-entry-title {
 	border-bottom: 1px solid lightblue;
 	width: 70%;
 	font-family: 'Monda', Verdana;
@@ -56,29 +50,29 @@
 	margin-bottom: 4px;
 }
 
-#levels-field {
+#circ-field {
 	width: 85%;
 	height: auto;
 	padding: 4px;
 }
 
-#levels-add {
+#circ-add {
 	width: 100%;
 	padding: 3px;
 
 }
 
-#levels-table {
+#circ-table {
 	display: grid;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 7% 23% 70%;
+	grid-template-columns: 7% 93%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
 
-#levels-table-title {
+#circ-table-title {
 	border-bottom: 1px solid lightblue;
 	width: 95%;
 	font-family: 'Monda', Verdana;
@@ -87,7 +81,7 @@
 	margin-bottom: 4px;
 }
 
-#levels-table-dc {
+#circ-table-modifier {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -96,16 +90,7 @@
 	height: auto;
 }
 
-#levels-table-level {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-}
-
-#levels-table-effect {
+#circ-table-circ {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
