@@ -43,7 +43,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 15% 25% 60%;
+	grid-template-columns: 15% 20% 65%;
 	grid-template-rows: 3vh 4vh 4vh;
 	grid-template-areas: "value_title keyword_title description-title"
 							"value keyword description"
