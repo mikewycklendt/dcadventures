@@ -32,3 +32,32 @@
 	grid-template-columns: 30% 70%;
 	grid-template-rows: auto;
 }
+
+#levels-entry {
+	display: grid;
+	width: 100%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 0px;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: lightblue;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	grid-template-columns: 30% 70%;
+	grid-template-rows: auto auto;
+}
+
+#levels-entry-title {
+	border-bottom: 1px solid lightblue;
+	width: 70%;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+	color: #245681;
+	margin: 2%;
+}
+
+#levels-field {
+	width: 85%;
+	height: 3vh;
+}
