@@ -71,7 +71,7 @@
 }
 
 #degree-description-title {
-	grid-area: description_title;
+	grid-area: description-title;
 	border-bottom: 1px solid lightblue;
 	width: 70%;
 	font-family: 'Monda', Verdana;
