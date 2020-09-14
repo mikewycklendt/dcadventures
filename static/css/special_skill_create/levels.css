@@ -28,7 +28,7 @@
 #levels-base-form {
 	display: grid;
 	width: 100%;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 45% 20% 35%;
 	grid-template-rows: auto;
 }
 
