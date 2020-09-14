@@ -45,14 +45,14 @@
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	grid-template-columns: 30% 70%;
-	grid-template-rows: auto auto;
+	grid-template-rows: 3vh auto;
 }
 
 #levels-entry-title {
 	border-bottom: 1px solid lightblue;
 	width: 70%;
 	font-family: 'Monda', Verdana;
-	font-size: 90%;
+	font-size: 100%;
 	color: #245681;
 	margin-bottom: 2%;
 }
