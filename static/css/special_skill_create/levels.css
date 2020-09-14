@@ -35,8 +35,9 @@
 
 #levels-entry {
 	display: grid;
-	width: 85%;
+	width: 90%;
 	margin-top: 0px;
+	scroll-margin-left: 5%;
 	padding: 1%;
 	border-left: 1px solid  lightblue;
 	border-bottom: 1px solid  lightblue;
