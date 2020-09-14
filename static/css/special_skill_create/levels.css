@@ -71,8 +71,9 @@
 
 #levels-table {
 	display: grid;
-	width: 96%;
+	width: 94%;
 	padding: 2%;
+	margin: 2%;
 	grid-template-columns: 7% 23% 70%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
