@@ -77,7 +77,6 @@
 	grid-template-columns: 7% 23% 70%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
-	border-radius: 10px;
 }
 
 #levels-table-title {
