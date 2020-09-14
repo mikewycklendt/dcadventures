@@ -1,0 +1,97 @@
+<div id="degree-header" style="justify-content: center;">
+
+	<div id="degree-title">
+		<input type="checkbox" id="degree_check" class="regular-checkbox big-checkbox">  Degrees of Success/Failure Table:
+	</div>
+
+	<div id="degrees-base-form">
+		<div>
+			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result">
+		</div>
+
+		<div></div>
+
+		<div>
+			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+				<option value="">Target</option>
+				{% for target in level_target %}
+					<option value="{{target}}">{{target}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="degree-entry">
+
+	<div id="degree-value-title">
+		Degree:
+	</div>
+
+	<div id="levels-keyword-title">
+		Keyword:
+	</div>
+
+	<div id="levels-keyword-title">
+		Description:
+	</div>
+
+	<div id="degree-value-field">
+		<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<option value="">Target</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="degree-keyword-field" style="width:95%" >
+		<input type="text" id="level_effect" name="level_effect" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="degree-description-field">
+		<textarea id="degree_desc" name="degree_desc" style="height: 80%; font-size: 90%;"></textarea>
+	</div>
+
+	<div id="degree-add">
+		<div class="btn" id="level_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+	<div></div>
+
+</div>
+
+	<div id="degree-table">
+
+		<div id="levels-table-title">
+			Degree:
+		</div>
+
+		<div id="levels-table-title">
+			Keyword:
+		</div>
+
+		<div id="levels-table-title">
+			Description:
+		</div>
+
+		<div id="levels-table-degree">
+			1
+		</div>
+		
+		<div id="degree-table-keyword">
+			General
+		</div>
+		
+		<div id="degree-table-description">
+			Information concerns local happenings, rummors, gossip and the like 
+		</div>
+
+	</div>
+					
