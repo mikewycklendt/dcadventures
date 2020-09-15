@@ -3,6 +3,7 @@
 @import "special_skill_create/levels.css";
 @import "special_skill_create/circumstance_table.css";
 @import "special_skill_create/degree_table.css";
+@import "special_skill_create/degree_mod.css";
 
 
 .skill-container {
