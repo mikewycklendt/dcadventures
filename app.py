@@ -263,7 +263,7 @@ def ranks_create():
 
 	for unit in units:
 		if 7 < unit.id < 16:
-			unit.type = 'char'
+			unit.rank_type = 'char'
 
 		db.session.commit()
 		db.session.close()
