@@ -68,7 +68,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	level_target = ['Active Player', 'Other Player']
 
-	measure_rank = db.session.query(Rank).filter_by(rank_type=='measure')
+	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 	
 	numbers = []
 	for i in range(-20, 21, 1):
