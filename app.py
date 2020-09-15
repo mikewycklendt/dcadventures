@@ -69,6 +69,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	level_target = ['Active Player', 'Other Player']
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
+
+	deg_mod_type = ['damage', 'measure']
 	
 	numbers = []
 	for i in range(-20, 21, 1):
@@ -88,7 +90,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	units = Unit.query.all()
 
-	return render_template('template.html', measure_rank=measure_rank, level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	ranks = Rank.query.all()
+
+	return render_template('template.html', ranks=ranks, deg_mod_type=deg_mod_type, measure_rank=measure_rank, level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():

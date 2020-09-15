@@ -21,7 +21,7 @@
 #deg-mod-title {
 	margin: 0px;
 	font-family: 'Monda', Verdana;
-	font-size: 160%;
+	font-size: 130%;
 	color: #245681;
 	padding: 0px;
 }
@@ -37,10 +37,11 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 10% 15% 45% 20% 10% ;
-	grid-template-rows: auto 6vh;
-	grid-template-areas: "degree type effect keyword button"
-							"description description description description description ";
+	grid-template-columns: 10% 15% 65% 10% ;
+	grid-template-rows: auto auto auto;
+	grid-template-areas: "degree type effect effect"
+							"nullify nullify description blank"
+							"keyword keyword description button";
 }
 
 #deg-mod-entry-title {
@@ -52,7 +53,41 @@
 	margin-bottom: 4px;
 }
 
-#deg-mod-field {
+#deg-mod-deg {
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-type {
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-nullify {
+	grid-area: nullify;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-keyword {
+	grid-area: keyword;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-description {
+	grid-area: description;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-blank {
+	grid-area: blank;
 	width: 85%;
 	height: auto;
 	padding: 4px;
@@ -63,26 +98,49 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 25% 75%;
+	grid-auto-rows: auto;
 }
 
-#deg-mod-math {
+#deg-mod-damage {
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 20% 30% 50%;
+	grid-template-columns: 25% 75%;
+	grid-auto-rows: auto;
 }
 
-#deg-mod-value {
+#deg-mod-measure-math {
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 30;
+	grid-template-columns: 15% 30% 30% 25%;
+}
+
+#deg-mod-measure-value {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 30% 70%;
+}
+
+#deg-mod-damage-math {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#deg-mod-damage-value {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 100%;
 }
 
 #deg-mod-add {
+	grid-area: button;
 	width: 100%;
 	padding: 3px;
-
 }
 
 #deg-mod-table {
@@ -90,12 +148,12 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 12% 28% 60% %;
+	grid-template-columns: 10% 20% 20% 40% 10%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
 
-#circ-table-title {
+#deg-mod-table-title {
 	border-bottom: 1px solid lightblue;
 	width: 95%;
 	font-family: 'Monda', Verdana;
@@ -104,7 +162,7 @@
 	margin-bottom: 4px;
 }
 
-#circ-table-modifier {
+#deg-mod-table-deg {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -113,7 +171,34 @@
 	height: auto;
 }
 
-#circ-table-circ {
+#deg-mod-table-effect {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#deg-mod-table-keyword {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#deg-mod-table-desc {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#deg-mod-table-nullify {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
