@@ -67,6 +67,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	dctype = [{"value": "gm", "name": "Set by GM"}, {"value": "table", "name": "DC Table"}]
 
 	level_target = ['Active Player', 'Other Player']
+
+	measure_rank = db.session.query(Rank).filter_by(rank_type=='measure')
 	
 	numbers = []
 	for i in range(-20, 21, 1):
@@ -86,7 +88,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	units = Unit.query.all()
 
-	return render_template('template.html', level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	return render_template('template.html', measure_rank=measure_rank, level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
@@ -255,35 +257,6 @@ def measurements():
 	table = measure(formatted)
 
 	return render_template('measurements.html', table=table, title=title, size=size)
-
-@app.route('/ranks/create')
-def ranks_create():
-
-	units = Rank.query.all()
-
-	for unit in units:
-		if 0 < unit.id < 4:
-			unit.rank_type = 'char'
-		if 3 < unit.id < 8:
-			unit.rank_type = 'measure'
-		if 7 < unit.id < 16:
-			unit.rank_type = 'char'
-		if unit.id > 15:
-			unit.rank_type = 'opp'
-		if 26 < unit.id:
-			unit.rank_type = 'measure' 
-
-		db.session.commit()
-		db.session.close()
-		
-	results = Rank.query.all()
-
-	for result in results:
-		print (result.name)
-		print (result.rank_type)
-
-	return ('ranks added')
-
 
 
 

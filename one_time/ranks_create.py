@@ -81,8 +81,8 @@ def ranks_create():
 			unit.rank_type = 'char'
 		if 3 < unit.id < 8:
 			unit.rank_type = 'measure'
-		if 7 <unit.id < 16:
-			unit.type = 'char'
+		if 7 < unit.id < 16:
+			unit.rank_type = 'char'
 		if unit.id > 15:
 			unit.rank_type = 'opp'
 
