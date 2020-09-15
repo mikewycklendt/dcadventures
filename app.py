@@ -262,36 +262,11 @@ def ranks_create():
 	units = Rank.query.all()
 
 	for unit in units:
-		if 0 < unit.id < 4:
-			unit.rank_type = 'char'
-		if 3 < unit.id < 8:
-			unit.rank_type = 'measure'
-		if 7 <unit.id < 16:
+		if 7 < unit.id < 16:
 			unit.type = 'char'
-		if unit.id > 15:
-			unit.rank_type = 'opp'
 
 		db.session.commit()
 		db.session.close()
-
-	unit_add = []
-
-	unit_add.append({
-		'name': 'mass rank',
-		'rank_type': 'measure'
-	})
-	unit_add.append({
-		'name': 'volume rank',
-		'rank_type': 'measure'
-	})
-
-	for rank in unit_add:
-		name = rank['name']
-		rank_type = rank['rank_type']
-
-		entry = Rank(name=name, rank_type=rank_type)
-		db.session.add(entry)
-		db.session.commit()
 		
 	results = Rank.query.all()
 
