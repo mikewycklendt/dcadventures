@@ -1,0 +1,123 @@
+#degrees_mod {
+	display: grid;
+	width: 100%;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
+#deg-mod-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 80% 20%;
+	grid-template-rows: auto;
+}
+
+
+#deg-mod-title {
+	margin: 0px;
+	font-family: 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+}
+
+#deg-mod-entry {
+	display: grid;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 10% 15% 45% 20% 10% ;
+	grid-template-rows: auto 6vh;
+	grid-template-areas: "degree type effect keyword button"
+							"description description description description description ";
+}
+
+#deg-mod-entry-title {
+	border-bottom: 1px solid lightblue;
+	width: 70%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	margin-bottom: 4px;
+}
+
+#deg-mod-field {
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-measure {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 25% 75%;
+}
+
+#deg-mod-math {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 20% 30% 50%;
+}
+
+#deg-mod-value {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 30;
+}
+
+#deg-mod-add {
+	width: 100%;
+	padding: 3px;
+
+}
+
+#deg-mod-table {
+	display: grid;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 12% 28% 60% %;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+}
+
+#circ-table-title {
+	border-bottom: 1px solid lightblue;
+	width: 95%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	margin-bottom: 4px;
+}
+
+#circ-table-modifier {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#circ-table-circ {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}

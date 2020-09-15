@@ -49,7 +49,7 @@ def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_conten
 def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'special_skill_create.html'
 	
-	skill_includes = {'base_form': 'special_skill_create/base_form.html','dc_table': 'special_skill_create/dc_table.html', 'levels': 'special_skill_create/levels.html', 'circumstance': 'special_skill_create/circumstance_table.html', 'degree': 'special_skill_create/degree_table.html'}
+	skill_includes = {'base_form': 'special_skill_create/base_form.html','dc_table': 'special_skill_create/dc_table.html', 'levels': 'special_skill_create/levels.html', 'circumstance': 'special_skill_create/circumstance_table.html', 'degree': 'special_skill_create/degree_table.html', 'degree_mod': 'special_skill_create/degree_mod.html'}
 
 	title = 'DC Adventures Online Roleplqying Game: Create Special Skill'
 	stylesheets.append({"style": "/static/css/special_skill_create.css"})
@@ -256,6 +256,50 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
+@app.route('/ranks/create')
+def ranks_create():
+
+	units = Rank.query.all()
+
+	for unit in units:
+		if 0 < unit.id < 4:
+			unit.rank_type = 'char'
+		if 3 < unit.id < 8:
+			unit.rank_type = 'measure'
+		if 7 <unit.id < 16:
+			unit.type = 'char'
+		if unit.id > 15:
+			unit.rank_type = 'opp'
+
+		db.session.commit()
+		db.session.close()
+
+	unit_add = []
+
+	unit_add.append({
+		'name': 'mass rank',
+		'rank_type': 'measure'
+	})
+	unit_add.append({
+		'name': 'volume rank',
+		'rank_type': 'measure'
+	})
+
+	for rank in unit_add:
+		name = rank['name']
+		rank_type = rank['rank_type']
+
+		entry = Rank(name=name, rank_type=rank_type)
+		db.session.add(entry)
+		db.session.commit()
+		
+	results = Rank.query.all()
+
+	for result in results:
+		print (result.name)
+		print (result.rank_type)
+
+	return ('ranks added')
 
 
 
