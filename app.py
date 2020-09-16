@@ -282,7 +282,7 @@ def ranks_create():
 		item = db.session.query(Ability).filter_by(id=rankid).one()
 		item.rank_type = measure
 		db.session.commit()
-		db.session.close(
+		db.session.close()
 		
 	results = Rank.query.all()
 
