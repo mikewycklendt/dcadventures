@@ -4,90 +4,91 @@ def ranks_create():
 	ranks = []
 
 	ranks.append({
-		'name': 'This Skill'
+		'name': 'This Skill',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'Parent Skill'
+		'name': 'Parent Skill',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'Parent Ability'
+		'name': 'Parent Ability',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'Distance Rank'
+		'name': 'Distance Rank',
+		'rank_type': 
 	})
 
 	ranks.append({
-		'name': 'Speed Rank'
+		'name': 'Speed Rank',
+		'rank_type': 
 	})
 
 	ranks.append({
-		'name': 'Time Rank'
+		'name': 'Time Rank',
+		'rank_type': 
 	})
 
 	ranks.append({
-		'name': 'Throwing Rank'
+		'name': 'Throwing Rank',
+		'rank_type': 
 	})
 
 	ranks.append({
-		'name': 'This Advantage'
+		'name': 'This Advantage',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'This Power'
+		'name': 'This Power',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'This Extra'
+		'name': 'This Extra',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'This Weapon'
+		'name': 'This Weapon',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'This Equipment'
+		'name': 'This Equipment',
+		'rank_type': 'char'
 	})
 	
 	ranks.append({
-		'name': 'This Vehicle'
+		'name': 'This Vehicle',
+		'rank_type': 'char'
 	})
 
 	ranks.append({
-		'name': 'This Vehicle'
+		'name': 'Defense',
+		'rank_type': 'char'
 	})
 
 	for rank in ranks:
 		name= rank['name']
+		rank_type = rank['rank_type']
 
 		entry = Rank(name=name)
 		db.session.add(entry)
 		db.session.commit()
 
-	names = ['Defense', 'Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
+	names = ['Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
 
 	for name in names:
+		rank_type = 'opp'
 
-		entry = Rank(name=name)
+		entry = Rank(name=name, rank_type=rank_type)
 		db.sexssion.add(entry)
 		db.session.commit()
-
-	units = Rank.query.all()
-
-	for unit in units:
-		if 0 < unit.id < 4:
-			unit.rank_type = 'char'
-		if 3 < unit.id < 8:
-			unit.rank_type = 'measure'
-		if 7 < unit.id < 16:
-			unit.rank_type = 'char'
-		if unit.id > 15:
-			unit.rank_type = 'opp'
-
-		db.session.commit()
-		db.session.close()
 
 	unit_add = []
 
