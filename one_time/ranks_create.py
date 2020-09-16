@@ -20,22 +20,22 @@ def ranks_create():
 
 	ranks.append({
 		'name': 'Distance Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Speed Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Time Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Throwing Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
@@ -77,7 +77,7 @@ def ranks_create():
 		name= rank['name']
 		rank_type = rank['rank_type']
 
-		entry = Rank(name=name)
+		entry = Rank(name=name, rank_type=rank_type)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -87,7 +87,7 @@ def ranks_create():
 		rank_type = 'opp'
 
 		entry = Rank(name=name, rank_type=rank_type)
-		db.sexssion.add(entry)
+		db.session.add(entry)
 		db.session.commit()
 
 	unit_add = []
