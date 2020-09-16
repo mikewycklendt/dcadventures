@@ -124,7 +124,9 @@
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 7% 30% 5% 30% auto;
+	grid-template-columns: 9% 30% 7% 30% auto;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
 }
 
 #deg-mod-measure-math {
