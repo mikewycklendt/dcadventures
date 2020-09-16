@@ -124,6 +124,7 @@
 	display: grid;
 	width: 100%;
 	height: auto;
+	grid-template-columns: 7% 30% 5% 30% auto;
 }
 
 #deg-mod-measure-math {
