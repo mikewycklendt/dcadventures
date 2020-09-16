@@ -277,7 +277,7 @@ def ranks_create():
 			unit.rank_type = 'char'
 		if 15 < unit.id < 27:
 			unit.rank_type = 'opp'
-		if 26 < unit.id:
+		if unit.id > 26:
 			unit.rank_type = 'measure'
 
 		db.session.commit()
