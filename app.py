@@ -263,6 +263,31 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 
+@app.route('/ranks/create')
+def ranks_create():
+
+	units = Rank.query.all()
+
+	for unit in units:
+		if 0 < unit.id < 4:
+			unit.rank_type = 'char'
+		if 3 < unit.id < 8:
+			unit.rank_type = 'measure'
+		if 7 < unit.id < 16:
+			unit.rank_type = 'char'
+		if unit.id > 15:
+			unit.rank_type = 'opp'
+
+		db.session.commit()
+		db.session.close()
+		
+	results = Rank.query.all()
+
+	for result in results:
+		print (result.name)
+		print (result.rank_type)
+
+	return ('ranks added')
 
 '''
 @app.route('/debilitated/create')
