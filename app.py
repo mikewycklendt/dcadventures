@@ -292,6 +292,28 @@ def ranks_create():
 
 	return ('ranks edited')
 
+
+@app.route('/deleteitems')
+def delete_items():
+
+	todelete = list(range(1, 28))
+
+	print (todelete)
+	
+	for itemid in todelete:
+		item = db.session.query(Rank).filter_by(id=itemid).one()
+		db.session.delete(item)
+		db.session.commit()
+		db.session.close()
+	
+	table = Rank.query.all()
+
+	for row in table:
+		print(row.id)
+		print(row.name)
+
+	return ('deleted')
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
