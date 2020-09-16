@@ -159,7 +159,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 10% 20% 20% 40% 10%;
+	grid-template-columns: 10% 20% 12% 43% 15%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
