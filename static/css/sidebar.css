@@ -20,5 +20,5 @@
 	border-bottom: 2px solid #7ecef6;
 	border-left: 2px solid #7ecef6;
 	border-right: 2px solid #7ecef6;
-	background-color: rgba(255, 255, 255, .4) 
+	background-color: fade(#FFFFFF, 40%)
 }
