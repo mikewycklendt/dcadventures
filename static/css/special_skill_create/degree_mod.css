@@ -81,7 +81,7 @@
 
 #deg-mod-description {
 	grid-area: description;
-	width: 85%;
+	width: 95%;
 	height: auto;
 	padding: 4px;
 }
@@ -92,6 +92,17 @@
 	height: auto;
 	padding: 4px;
 }
+
+#deg-mod-effect {
+	display: grid;
+	grid-area: effect;
+	width: 100%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
 
 #deg-mod-measure {
 	display: grid;
@@ -134,7 +145,7 @@
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 100%;
+	grid-template-columns: 25% 75%;
 }
 
 #deg-mod-add {

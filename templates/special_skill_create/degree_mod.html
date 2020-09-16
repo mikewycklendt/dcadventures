@@ -38,6 +38,7 @@
 	<div id="deg-mod-effect">
 		<div id="deg-mod-damage">
 
+		
 			<div id="deg-mod-field">
 				<select id="deg_mod_damage_type" name="deg_mod_damage_type" style="height: 2vh; padding: 0%; font-size: 80%;">
 					<option value="">Type</option>
@@ -47,72 +48,73 @@
 				</select>
 			</div>
 
-			<div id="deg-mod-damage-math">
+			<div>
+				<div id="deg-mod-damage-math">
 
-				<div>
-					<select id="deg_mod_math_damage" name="deg_mod_math_damage" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Damage</option>
-						{% for class in dcclasses %}
-							<option value={{class}}>{{class}}</option>
-						{% endfor %}
-					</select>
-				</div>
+					<div>
+						<select id="deg_mod_math_damage" name="deg_mod_math_damage" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Damage</option>
+							{% for class in dcclasses %}
+								<option value={{class}}>{{class}}</option>
+							{% endfor %}
+						</select>
+					</div>
 
-				<div>
-					<select id="deg_mod_damage_math1" name="deg_mod_damage_math1" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Math</option>
-						{% for math in maths %}
-							<option value={{math.id}}>{{math.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select id="deg_mod_damage_val1" name="deg_mod_damage_val1" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Rank</option>
-						{% for number in numbers %}
-							<option value={{number}}>{{number}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select id="deg_mod_damage_math2" name="deg_mod_damage_math" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Math</option>
-						{% for math in maths %}
-							<option value={{math.id}}>{{math.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
+					<div>
+						<select id="deg_mod_damage_math1" name="deg_mod_damage_math1" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Math</option>
+							{% for math in maths %}
+								<option value={{math.id}}>{{math.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
 					
-				<div>
-					<select id="deg_mod_damage_val2" name="deg_mod_damage_val2" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Math</option>
-						{% for rank in ranks %}
-							<option value={{rank.id}}>{{rank.name}}</option>
-						{% endfor %}
-					</select>
+					<div>
+						<select id="deg_mod_damage_val1" name="deg_mod_damage_val1" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Rank</option>
+							{% for number in numbers %}
+								<option value={{number}}>{{number}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select id="deg_mod_damage_math2" name="deg_mod_damage_math" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Math</option>
+							{% for math in maths %}
+								<option value={{math.id}}>{{math.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div>
+						<select id="deg_mod_damage_val2" name="deg_mod_damage_val2" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Math</option>
+							{% for rank in ranks %}
+								<option value={{rank.id}}>{{rank.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
 				</div>
 
+				<div id="deg-mod-damage-value">
+
+					<div>
+						<select id="deg_damage_value" name="deg_damage_value" style="height: 2vh; padding: 0%; font-size: 80%;">
+							<option value="">Degree</option>
+							{% for number in numbers %}
+								<option value={{number}}>{{number}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div id="deg-mod-entry-title">
+						Degrees of damage
+					</div>
+
+				</div>
 			</div>
-
-			<div id="deg-mod-damage-value">
-
-				`<div>
-					<select id="deg_damage_value" name="deg_damage_value" style="height: 2vh; padding: 0%; font-size: 80%;">
-						<option value="">Degree</option>
-						{% for number in numbers %}
-							<option value={{number}}>{{number}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div id="deg-mod-entry-title">
-					Degrees of damage
-				</div>
-
-			</div>
-
 		</div>
 
 		<div id="deg-mod-measure">
@@ -217,7 +219,7 @@
 	</div>
 
 	<div id="deg-mod-add">
-		<div class="btn" id="deg_mod_add" style="height: 95%; padding: 3px; font-size: 95%;">
+		<div class="btn" id="deg_mod_add" style="height: 95%; padding: 3px; font-size: 95%; vertical-align: middle;">
 			<center>
 				<i class="fa fa-plus"></i>   Add
 			</center>
