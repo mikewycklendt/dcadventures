@@ -273,29 +273,16 @@ def ranks_create():
 
 	opp = 'opp'
 
-	rank =  db.session.query(Ability).filter_by(id=4).one()
-	rank.rank_type = measure
+	
+	ids = list(range(4, 8))
 
-	db.session.commit()
-	db.session.close
-
-	rank = db.session.query(Ability).filter_by(id=5).one()
-	rank.rank_type = measure
-
-	db.session.commit()
-	db.session.close
-
-	rank = db.session.query(Ability).filter_by(id=6).one()
-	rank.rank_type = measure
-
-	db.session.commit()
-	db.session.close
-
-	rank = db.session.query(Ability).filter_by(id=7).one()
-	rank.rank_type = measure
-
-	db.session.commit()
-	db.session.close
+	print (ids)
+	
+	for rankid in ids:
+		item = db.session.query(Ability).filter_by(id=rankid).one()
+		item.rank_type = measure
+		db.session.commit()
+		db.session.close(
 		
 	results = Rank.query.all()
 
