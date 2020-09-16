@@ -199,6 +199,18 @@
 			
 			</div>
 		</div>
+
+		<div id="deg-mod-condition">
+
+			<select id="deg_mod_condition" name="deg_mod_condition" style="height: 3vh; padding: 0%; font-size: 80%;">
+				<option value="">Condition</option>
+				{% for condition in conditions %}
+					<option value={{condition.id}}>{{condition.name}}</option>
+				{% endfor %}
+			</select>
+
+		</div>
+
 	</div>
 
 	<div id="deg-mod-nullify">

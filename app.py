@@ -70,7 +70,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
-	deg_mod_type = ['damage', 'measure']
+	deg_mod_type = ['damage', 'measure', 'condition']
 	
 	numbers = []
 	for i in range(-20, 21, 1):

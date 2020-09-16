@@ -120,6 +120,12 @@
 	grid-auto-rows: auto;
 }
 
+#deg-mod-condition {
+	display: grid;
+	width: 100%;
+	height: auto;
+}
+
 #deg-mod-measure-math {
 	display: grid;
 	width: 100%;
