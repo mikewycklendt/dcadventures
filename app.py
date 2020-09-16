@@ -295,10 +295,7 @@ def ranks_create():
 
 @app.route('/deleteitems')
 def delete_items():
-
-)
 	
-
 	item = db.session.query(Rank).filter_by(id=28).one()
 	db.session.delete(item)
 	db.session.commit()
