@@ -274,22 +274,29 @@ def ranks_create():
 
 	opp = 'opp'
 
-	for unit in units:
-		if 3 < unit.id < 8:
-			rank = Rank.query.get(unit.id)
-			rank.rank_type = measure
-		if 7 < unit.id < 16:
-			rank = Rank.query.get(unit.id)
-			rank.rank_type = char
-		if 15 < unit.id < 27:
-			rank = Rank.query.get(unit.id)
-			rank.rank_type = opp
-		if unit.id > 26:
-			rank = Rank.query.get(unit.id)
-			rank.rank_type = measure
+	rank = Rank.query.get(4)
+	rank.rank_type = measure
 
-		db.session.commit()
-		db.session.close
+	db.session.commit()
+	db.session.close
+
+	rank = Rank.query.get(5)
+	rank.rank_type = measure
+
+	db.session.commit()
+	db.session.close
+
+	rank = Rank.query.get(6)
+	rank.rank_type = measure
+
+	db.session.commit()
+	db.session.close
+
+	rank = Rank.query.get(7)
+	rank.rank_type = measure
+
+	db.session.commit()
+	db.session.close
 		
 	results = Rank.query.all()
 
