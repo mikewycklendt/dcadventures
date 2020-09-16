@@ -234,23 +234,79 @@
 		</select>
 	</div>
 
-	
+</div>
 
+<div id="dcconditionfield">
+
+	<div id="dc-attr-field">
+		Change Condition From:
 	</div>
 
-	<div id="dc-add">
+	<div>
+		<select id="dc_condition_1" name="dc_condition_1" style="height: 3vh; font-size: 70%; padding: 0px;">
+			<option value=""></option>
+			{% for condition in combined_conditions%}
+				<option value="{{condition}}">{{condition}}</option>
+			{% endfor %}
+			{% for condition in conditions%}
+				<option value="{{condition}}">{{condition}}</option>
+			{% endfor %}	
+		</select>
+	</div>
 
-		<div></div>
+	<div>
+		To:
+	</div>
 
-		<div style="align-items: right;">
-			<div class="btn" id="dc_create" style="height: 2.5vh; padding-top: 5%; align-content: center; align-items: center;">
-				<center>
-				<i class="fa fa-plus"></i>   Add
-				</center>
-			</div>
+	<div>
+		<select id="dc_condition_2" name="dc_condition_2" style="height: 3vh; font-size: 70%; padding: 0px;">
+			<option value=""></option>
+			{% for condition in combined_conditions%}
+				<option value="{{condition}}">{{condition}}</option>
+			{% endfor %}
+			{% for condition in conditions%}
+				<option value="{{condition}}">{{condition}}</option>
+			{% endfor %}	
+		</select>
+	</div>
+
+	<div></div>
+
+</div>
+
+<div id="dcactionfield">
+
+	<div id="dc-attr-field">
+		Change Action To:
+	</div>
+
+	<div>
+		<select id="dc_defense" name="dc_defense" style="height: 3vh; font-size: 70%; padding: 0px;">
+			<option value=""></option>
+			{% for action in actions %}
+				<option value={action.id}}>{{action.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	
+	<div></div>
+
+</div>
+
+
+<div id="dc-add">
+
+	<div></div>
+
+	<div style="align-items: right;">
+		<div class="btn" id="dc_create" style="height: 2.5vh; padding-top: 5%; align-content: center; align-items: center;">
+			<center>
+			<i class="fa fa-plus"></i>   Add
+			</center>
 		</div>
+	</div>
 
-		<div></div>
+<div></div>
 
 	</div>
 
