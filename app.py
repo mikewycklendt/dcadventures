@@ -263,7 +263,7 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 
-@app.route('/ranks/create', methods=['POST'])
+@app.route('/ranks/create', methods=['PATCH'])
 def ranks_create():
 
 	units = Rank.query.all()
