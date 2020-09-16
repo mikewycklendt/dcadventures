@@ -1,6 +1,3 @@
-app = Flask(__name__)
-moment = Moment(app)
-
 
 
 @app.route('/abilities')
