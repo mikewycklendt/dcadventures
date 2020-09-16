@@ -266,7 +266,6 @@ def measurements():
 @app.route('/ranks/create')
 def ranks_create():
 
-	units = Rank.query.all()
 
 	measure = 'measure'
 
@@ -274,25 +273,25 @@ def ranks_create():
 
 	opp = 'opp'
 
-	rank = Rank.query.get(4)
+	rank =  db.session.query(Ability).filter_by(id=4).one()
 	rank.rank_type = measure
 
 	db.session.commit()
 	db.session.close
 
-	rank = Rank.query.get(5)
+	rank = db.session.query(Ability).filter_by(id=5).one()
 	rank.rank_type = measure
 
 	db.session.commit()
 	db.session.close
 
-	rank = Rank.query.get(6)
+	rank = db.session.query(Ability).filter_by(id=6).one()
 	rank.rank_type = measure
 
 	db.session.commit()
 	db.session.close
 
-	rank = Rank.query.get(7)
+	rank = db.session.query(Ability).filter_by(id=7).one()
 	rank.rank_type = measure
 
 	db.session.commit()
@@ -304,7 +303,7 @@ def ranks_create():
 		print (result.name)
 		print (result.rank_type)
 
-	return redirect(url_for('rank_type'))
+	return ('ranks edited')
 
 '''
 @app.route('/debilitated/create')
