@@ -263,7 +263,7 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 
-@app.route('/ranks/create')
+@app.route('/ranks/create', methods=['POST'])
 def ranks_create():
 
 	units = Rank.query.all()
@@ -294,7 +294,7 @@ def ranks_create():
 		print (result.name)
 		print (result.rank_type)
 
-	return ('ranks added')
+	return redirect(url_for('rank_type'))
 
 '''
 @app.route('/debilitated/create')
