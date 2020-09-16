@@ -285,22 +285,22 @@ def ranks_create():
 
 	ranks.append({
 		'name': 'Distance Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Speed Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Time Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
 		'name': 'Throwing Rank',
-		'rank_type': 
+		'rank_type': 'measure'
 	})
 
 	ranks.append({
