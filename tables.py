@@ -20,8 +20,6 @@ load_dotenv()
 
 import os
 
-import tables
-
 db_path = os.environ.get("db_path")
 
 #db_drop_and_create_all()
