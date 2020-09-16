@@ -296,15 +296,13 @@ def ranks_create():
 @app.route('/deleteitems')
 def delete_items():
 
-	todelete = list(range(1, 28))
-
-	print (todelete)
+)
 	
-	for itemid in todelete:
-		item = db.session.query(Rank).filter_by(id=itemid).one()
-		db.session.delete(item)
-		db.session.commit()
-		db.session.close()
+
+	item = db.session.query(Rank).filter_by(id=28).one()
+	db.session.delete(item)
+	db.session.commit()
+	db.session.close()
 	
 	table = Rank.query.all()
 
