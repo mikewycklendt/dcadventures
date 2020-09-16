@@ -266,7 +266,7 @@ def measurements():
 @app.route('/ranks/create')
 def ranks_create():
 
-	units = Rank.query.all()
+	units = db.session.query(Rank).all()
 
 	for unit in units:
 		if 0 < unit.id < 4:
@@ -275,8 +275,10 @@ def ranks_create():
 			unit.rank_type = 'measure'
 		if 7 < unit.id < 16:
 			unit.rank_type = 'char'
-		if unit.id > 15:
+		if 15 < unit.id < 27:
 			unit.rank_type = 'opp'
+		if 26 < unit.id:
+			unit.rank_type = 'measure'
 
 		db.session.commit()
 		db.session.close()
