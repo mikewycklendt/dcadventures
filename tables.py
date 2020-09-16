@@ -20,7 +20,7 @@ load_dotenv()
 
 import os
 
-from tables import *
+import tables
 
 db_path = os.environ.get("db_path")
 
