@@ -231,7 +231,7 @@ def rank_type():
 
 	table = Rank.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('ranks.html', table=table, title=title, size=size)
 
 
 @app.route('/math')
