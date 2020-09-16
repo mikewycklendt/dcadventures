@@ -30,7 +30,7 @@
 	margin: 2%;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	grid-template-columns: 24% 26% 18% 32%;
+	grid-template-columns: 20% 20% 16% 32% 32%;
 	grid-auto-rows: 3vh
 }
   
@@ -40,7 +40,7 @@
 	width: 85%;
 	margin-bottom: 5px;
 	font-family: 'Monda', Verdana;
-	font-size: 130%;
+	font-size: 110%;
 	color: #245681;
 	padding: 0px;
 	vertical-align: 0px;

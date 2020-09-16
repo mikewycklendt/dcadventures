@@ -197,6 +197,16 @@ textarea:focus {
 
 }
 
+.med-checkbox {
+	padding: 11px;
+}
+
+.med-checkbox:checked:after {
+	font-size: 14px;
+	left: 3px;
+
+}
+
 #skill-attr-title {
 	border-bottom: 2px solid lightblue;
 	width: 70%;
