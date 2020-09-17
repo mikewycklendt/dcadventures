@@ -151,3 +151,20 @@
 	color: #245681;
 	padding: 0px;
 }
+
+#sub-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
+#secret-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
