@@ -154,6 +154,7 @@ class SkillTable(db.Model):
 	complexity = db.Column(db.String())
 	modifier = db.Column(db.Boolean)
 	circumstance = db.Column(db.Boolean)
+	requires_sub = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -168,7 +169,8 @@ class SkillTable(db.Model):
 			'measurement': self.measurement,
 			'complexity': self.complexity,
 			'modifier': self.modifier,
-			'circumstance': self.circumstance
+			'circumstance': self.circumstance,
+			'requires_sub': self.requires_sub
 		}
 
 class SkillType(db.Model):
