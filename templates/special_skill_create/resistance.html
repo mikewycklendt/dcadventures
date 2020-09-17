@@ -1,0 +1,74 @@
+<div id="resist-header">
+
+	<div id="resist-title">
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox">  Resistance Check Modifier Table:
+	</div>
+
+	<div>
+		<select id="resist_target" name="resist_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<option value="">Target</option>
+			{% for target in level_target %}
+				<option value="{{target}}">{{target}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="resist-entry">
+
+	<div id="resist-entry-title">
+		Modifier:
+	</div>
+
+	<div id="resist-entry-title">
+		Description:
+	</div>
+
+	<div id="resist-entry-title">
+	</div>
+
+	<div id="resist-field">
+		<select id="resist_modifier" name="resist_modifier" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Modifier</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="resist-field" style="width: 95%;" >
+		<input type="text" id="resist_desc" name="resist_desc" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="resist-add">
+		<div class="btn" id="resist_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="resist-table">
+
+	<div id="resist-table-title">
+		Modifier:
+	</div>
+
+	<div id="resist-table-title">
+		Description:
+	</div>
+
+	<div id="resist-table-mod">
+		-5
+	</div>
+
+	<div id="resist-table-desc">
+	The target wants to believe you.
+	</div>
+
+
+</div>
+
