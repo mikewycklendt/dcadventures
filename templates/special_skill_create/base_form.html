@@ -90,7 +90,7 @@
 		</select>
 	</div>
 
-	<div id="equipment-field">
+	<div id="subskill-field">
 		<div></div>
 		<div id="multiple-attr-title">
 			Is this a  sub-skill?  <input type="checkbox" id="subskill_check" class="regular-checkbox big-checkbox">
@@ -109,4 +109,18 @@
 				<option value="{{type.value}}">{{type.name}}</option>
 			{% endfor %}
 		</select>
+	</div>
+
+	<div id="opposed_by">
+		<div id="multiple-attr-title">
+			Opposed by:
+		</div>
+
+		<select id="dc_set" name="skilltype" style="height: 4vh; font-size: 110%;">
+			<option value="">N/A</option>
+			{% for oppose in opposed %}
+				<option value="{{oppose}}">{{oppose}}</option>
+			{% endfor %}
+		</select>
+
 	</div>
