@@ -1,0 +1,87 @@
+<div id="rounds-header" style="justify-content: center;">
+
+	<div id="rounds-title">
+		<input type="checkbox" id="rounds_check" class="regular-checkbox big-checkbox">  Multiple Round Effect:
+	</div>
+
+</div>
+
+	<div id="rounds-entry">
+
+		<div id="rounds-entry-title">
+			DC:
+		</div>
+
+		<div id="rounds-entry-title">
+			Degree of Result:
+		</div>
+
+		<div id="rounds-entry-title">
+			Affected Rank:
+		</div>
+
+		<div id="rounds-entry-title">
+			Modifier:
+		</div>
+
+		<div id="rounds-entry-title">
+			Rounds:
+		</div>
+
+		<div></div>
+
+
+		<div id="rounds-field">
+			<select id="rounds_dc" name="rounds_dc" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">DC</option>
+				{% for class in dcclasses %}
+					<option value={{class}}>{{class}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="rounds-field">
+			<select id="rounds_degree" name="rounds_degree" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">DC</option>
+				{% for number in numbers %}
+					<option value={{number}}>{{number}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="rounds-field">
+			<select id="rounds_rank" name="rounds_rank" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">Affected Rank</option>
+				{% for rank in ranks %}
+					<option value="{{rank}}">{{rank}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="rounds-field">
+			<select id="rounds_mod" name="rounds_mpd" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">Modifier</option>
+				{% for number in numbers %}
+					<option value={{number}}>{{number}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="rounds-field">
+			<select id="rounds_dc" name="rounds_dc" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">DC</option>
+				{% for class in dcclasses %}
+					<option value={{class}}>{{class}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="rounds-add">
+			<div class="btn" id="level_add" style="height: 95%; padding: 3px; font-size: 95%;">
+				<center>
+					<i class="fa fa-plus"></i>   Add
+				</center>
+			</div>
+		</div>
+
+	</div>
