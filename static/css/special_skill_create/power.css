@@ -54,7 +54,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 7% 23% 70%;
+	grid-template-columns: 23% 70%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
