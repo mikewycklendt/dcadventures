@@ -36,7 +36,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 40% 15% auto;
+	grid-template-columns: 40% 30% auto;
 	grid-auto-rows: auto;
 }
 
