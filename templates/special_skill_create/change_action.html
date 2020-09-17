@@ -1,0 +1,42 @@
+<div id="action-header">
+
+	<div id="action-title">
+		<input type="checkbox" id="levels_check" class="regular-checkbox big-checkbox"> Change Action Type:
+	</div>
+
+</div>
+
+<div id="action-entry">
+	<div id="move-entry-title">
+		Change to:
+	</div>
+
+	<div  id="move-entry-title">
+		Check Modifier:
+	</div>
+
+	<div></div>
+
+	<div>
+
+		<select id="action_change" name="action_change" aria-placeholder="0" style="width: 90%; height: 4vh; font-size: 110%;">
+			<option value=''>Action Type</option>
+			{% for action in actions %}
+				<option value={{action.id}}>{{action.name}}</option>
+			{% endfor %}
+		</select>
+
+	</div>
+
+	<div>
+		<select id="action_mod" name="action_mod" aria-placeholder="0" style="width: 90%; height: 4vh; font-size: 110%;">
+			<option value=''>Action Type</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div></div>
+
+</div>
