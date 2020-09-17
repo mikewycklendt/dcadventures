@@ -1,0 +1,67 @@
+<div id="move-header">
+
+	<div id="move-title">
+		Movement Effect:
+	</div>
+
+</div>
+
+<div id="move-entry">
+	<div id="move-entry-title">
+		Rank:
+	</div>
+
+	<div  id="move-entry-title">
+		Math:
+	</div>
+
+	<div id="move-entry-title">
+		Value:
+	</div>
+
+	<div></div>
+
+	<div>
+
+		<div>
+
+			<select id="move-rank" name="move-rank" aria-placeholder="0" style="height: 4vh; font-size: 110%;">
+				<option value=''>Math</option>
+				{% for rank in measure_rank %}
+					<option value={{rank.id}}>{{rank.name}}</option>
+				{% endfor %}
+				{% for rank in char_rank %}
+					<option value={{rank.id}}>{{rank.name}}</option>
+				{% endfor %}
+			</select>
+	
+		</div>
+
+	</div>
+
+	<div>
+
+		<select id="move-math" name="move-math" aria-placeholder="0" style="height: 4vh; font-size: 110%;">
+			<option value=''>Math</option>
+			{% for math in maths %}
+				<option value={{math.id}}>{{math.name}}</option>
+			{% endfor %}
+		</select>
+
+	</div>
+
+	<div>
+
+		<select id="move-value" name="move-value" aria-placeholder="0" style="height: 4vh; font-size: 110%;">
+			<option value=''>Value</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+
+	</div>
+
+	<div></div>
+
+</div>
+
