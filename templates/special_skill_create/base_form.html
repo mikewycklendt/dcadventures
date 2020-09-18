@@ -176,3 +176,31 @@
 		</div>
 
 	</div>
+
+	<div id="untrained-details-field">
+		
+		<div id="multiple-attr-title">
+			Can this skill be used untrained?
+		</div>
+
+		<div id="untrained-fields`">
+			<div>
+				<select id="untrained_dclimit" name="untrained_dclimit" style="height: 4vh; font-size: 110%;">
+					<option value="">DC Limit</option>
+					{% for class in dcclasses %}
+						<option value={{class}}>{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<div>
+				<select id="untrained_mod" name="untrained_mod" style="height: 4vh; font-size: 110%;">
+					<option value="">Modifier</option>
+					{% for negetive in negetives %}
+						<option value={{negetive}}>{{negetive}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+	</div>
