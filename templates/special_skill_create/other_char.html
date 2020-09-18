@@ -1,0 +1,123 @@
+<div id="char-header" style="justify-content: center;">
+
+	<div id="char-title">
+		<input type="checkbox" id="char_check" class="regular-checkbox big-checkbox">  Requires Check from Other Character
+	</div>
+
+	<div id="char-base-form">
+		<div>
+			<select id="char_type" name="char_type" style="height: 4vh; font-size: 100%; padding: 0%;">
+				<option value="">Target</option>
+				{% for check in checks %}
+					<option value={{check.id}}>{{check.name}}</option>
+				{% endfor %}
+			</select>		
+		</div>
+
+		<div></div>
+
+		<div>
+			<select id="char_target" name="char_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+				<option value="">Target</option>
+				{% for target in targetS %}
+					<option value="{{target}}">{{target}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="char-entry">
+
+	<div id="char-value-title">
+		Degree:
+	</div>
+
+	<div id="char-rank-title">
+		Rank:
+	</div>
+
+	<div id="char-description-title">
+		Description:
+	</div>
+
+	<div id="char-value-field">
+		<select id="char_value" name="char_value" style="height: 3vh; font-size: 100%; padding: 0%;">
+			<option value="">Degree</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="char-rank-field" style="width:95%" >
+		<select id="char_rank" name="char_rank" style="height: 4vh; font-size: 110%;">
+			<option value="">Rank</option>
+			{% for oppose in opposed %}
+				<option value="{{oppose}}">{{oppose}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="char-description-field">
+		<textarea id="char_desc" name="char_desc" style="width: 100%; height: 80%; font-size: 90%; padding: 2%;"></textarea>
+	</div>
+
+	<div id="char-add">
+		<div class="btn" id="char_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+	<div></div>
+
+</div>
+
+	<div id="char-table">
+
+		<div id="char-table-title">
+			Degree:
+		</div>
+
+		<div id="char-table-title">
+			Target:
+		</div>
+
+		<div id="char-table-title">
+			Check Type:
+		</div>
+
+		<div id="char-table-title">
+			Rank:
+		</div>
+
+		<div id="char-table-title">
+			Description:
+		</div>
+
+		<div id="char-table-degree">
+			1
+		</div>
+		
+		<div id="char-table-target">
+			Other Player
+		</div>
+
+		<div id="char-table-check">
+			Skill Check
+		</div>
+
+		<div id="char-table-rank">
+			Insight
+		</div>
+		
+		<div id="char-table-description">
+			Player understands the message. 
+		</div>
+
+	</div>
+					
