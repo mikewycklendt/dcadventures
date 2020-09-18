@@ -57,8 +57,8 @@
 				<div id="dcranktype" style="margin-top: 3px;">
 					<select id="dc_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%; padding: 0px; ">
 						<option value="">Rank</option>
-						{% for rank in dc_rank %}
-							<option value="{{rank}}">{{rank}}</option>
+						{% for rank in ranks %}
+							<option value={{rank.id}}>{{rank.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
