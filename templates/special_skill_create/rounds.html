@@ -52,8 +52,8 @@
 		<div id="rounds-field">
 			<select id="rounds_rank" name="rounds_rank" style="height: 3vh; padding: 0%; font-size: 90%;">
 				<option value="">Affected Rank</option>
-				{% for rank in ranks %}
-					<option value="{{rank}}">{{rank}}</option>
+				{% for rank in dc_ranks %}
+					<option value="{{rank}}">{{rank.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
