@@ -1,0 +1,47 @@
+<div id="resist-header">
+
+	<div id="opp-cond-title">
+		<input type="checkbox" id="opp_cond_check" class="regular-checkbox big-checkbox"> Opponent Condition:
+	</div>
+
+</div>
+
+<div id="opp-cond-entry">
+
+	<div id="opp-cond-entry-title">
+		Condition:
+	</div>
+
+	<div id="resist-entry-title">
+		Rounds:
+	</div>
+
+	<div id="opp-cond-entry-title">
+		Description:
+	</div>
+
+	<div id="opp-cond-field">
+		<select id="opp_cond_cond" name="opp_cond_cond" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Condition</option>
+			{% for condition in conditions %}
+				<option value={{condition.id}}>{{condition.name}}</option>
+			{% endfor %}
+	</div>
+
+	<div id="opp-cond-field" style="width: 95%;" >
+		<select id="opp_cond_rounds" name="opp_cond_rounds" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Lasts</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+		</select>
+	</div>
+	
+	<div id="opp-cond-field">
+		<input type="text" id="opp_cond_desc" name="opp_cond_desc" style="height: 1vh; font-size: 90%;">
+	</div>
+
+</div>
+
+
