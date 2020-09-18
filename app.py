@@ -98,7 +98,11 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(0, 41, 1):
 		dcclasses.append(i)
 
-	dc_rank = ['This Skill', 'Parent Skill', 'Parent Ability', 'Defense', 'Distance Rank', 'Speed Rank', 'Time Rank', 'Throwing Rank', 'Opponent Skill', 'Opponent Power', 'Opponent Ability', 'Opponent Advantage', 'Opponent Equipment', 'Opponent Weapon', 'Opponent Defense', 'Opponent Device', 'Opponent Construct', 'Opponent Speed', 'Opponent Throwing']
+	dc_rank = []
+
+	char = [rank.format() for rank in char_rank]
+
+	measure = [rank.format() for  rank in measure_rank]
 
 	maths = Math.query.all()
 
