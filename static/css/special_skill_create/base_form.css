@@ -171,7 +171,7 @@
 #secret-details {
 	display: grid;
 	width: 85%;
-	grid-template-columns: 15% 35% 50%;
+	grid-template-columns: 15% 65% 20%;
 	grid-template-rows: auto;
 }
 
