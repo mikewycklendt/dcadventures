@@ -1,0 +1,66 @@
+<div id="resist-effect-header">
+
+	<div id="resist-effect-title">
+		<input type="checkbox" id="other_check" class="regular-checkbox big-checkbox">  Can Resist Certain Effects:
+	</div>
+
+</div>
+
+<div id="resist-effect-entry">
+
+	<div id="resist-effect-entry-title">
+		Effects of:
+	</div>
+
+	<div id="resist-effect-entry-title">
+		Examples
+	</div>
+
+	<div id="resist-effect-entry-title">
+	</div>
+
+	<div id="resist-effect-field">
+		<select id="resist_effect" name="other_skill" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Resists</option>
+			{% for resist in resists %}
+				<option value="{{resist}}">{{resist}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="resist-effect-field" style="width: 95%;" >
+		<input type="text" id="resist_effect_examples" name="resist
+		_effect_examples" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="resist-effect-add">
+		<div class="btn" id="resist_effect_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="resist-effect-table">
+
+	<div id="resist-effect-table-title">
+		Resists:
+	</div>
+
+	<div id="resist-effect-table-title">
+		Examples:
+	</div>
+
+	<div id="resist-effect-table-effect">
+		Deception
+	</div>
+
+	<div id="resist-effect-table-examples">
+		Unaffected by attempts to influence you
+	</div>
+
+
+</div>
+

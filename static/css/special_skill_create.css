@@ -13,6 +13,8 @@
 @import "special_skill_create/opponent_condition.css";
 @import "special_skill_create/other_char.css";
 @import "special_skill_create/other_checks.css";
+@import "special_skill_create/resist.css";
+
 
 .skill-container {
 	display: grid;
