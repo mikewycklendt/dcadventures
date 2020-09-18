@@ -127,8 +127,12 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	powers = sorted(powers_raw)
 
 	resists_raw = []
-	resists_raw.append(opposed)
-	resists_raw.append(powers)
+
+	for oppose in opposed:
+		resists_raw.append(oppose)
+
+	for power in powers:
+		resists_raw.append(power)
 
 	resists = sorted(resists_raw)
 
