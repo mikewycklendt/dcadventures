@@ -98,7 +98,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	negatives = []
 	for i in range(-20, 1, 1):
-		negetives.append(i)
+		negatives.append(i)
 
 	dcclasses = []
 	for i in range(0, 41, 1):
