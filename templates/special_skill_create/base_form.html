@@ -159,10 +159,20 @@
 			Is Result Hidden from Player?
 		</div>
 
-		<div>
-			<input type="checkbox" id="subskill_check" class="regular-checkbox big-checkbox">
-		</div>
+		<div id="secret-details">
 
+			<div>
+				<input type="checkbox" id="secret-check" class="regular-checkbox big-checkbox">
+			</div>
+
+			<div id="secrt-mod">
+				<select id="secret_mod" name="secret_mod" style="height: 4vh; font-size: 110%;">
+					<option value="">DC Modifier</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+			</div>
 	</div>
 
 	<div id="untrained-field">
