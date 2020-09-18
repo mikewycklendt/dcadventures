@@ -1,0 +1,95 @@
+<div id="opposed-by-header">
+
+	<div id="opposed-by-title">
+		<input type="checkbox" id="opposed_by_check" class="regular-checkbox big-checkbox">  Opposed by:
+	</div>
+
+	<div>
+		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<option value="">Target</option>
+			{% for oppose in opposed_by %}
+				<option value="{{oppose.id}}">{{oppose.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="opposed-by-entry">
+
+	<div id="opposed-by-entry-title">
+		Opposed by:
+	</div>
+
+	<div id="opposed-by-entry-title">
+		Modifier:
+	</div>
+
+	<div id="opposed-by-entry-title">
+		Situation:
+	</div>
+
+	<div id="opposed-by-entry-title">
+	</div>
+
+	<div id="opposed-by-field">
+		<select id="opposed_by" name="opposed_by" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Opposed by</option>
+			{% for resist in resists %}
+				<option value="{{resist}}">{{resist}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="opposed-by-field">
+		<select id="opposed_by_mod" name="opposed_by_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Modifier</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="opposed-by-field" style="width: 95%;" >
+		<input type="text" id="opposed_by_sit" name="opposed_by_sit" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="opposed-by-add">
+		<div class="btn" id="opposed_by_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="opposed-by-table">
+
+	<div id="opposed-by-table-title">
+		Opposed by:
+	</div>
+
+	<div id="opposed-by-table-title">
+		Modifier:
+	</div>
+
+	<div id="opposed-by-table-title">
+		Situation:
+	</div>
+
+	<div id="opposed-by-table-oppose">
+		Insight
+	</div>
+
+	<div id="opposed-by-table-mod">
+		0
+	</div>
+
+	<div id="opposed-by-table-sit">
+		To intimidate
+	</div>
+
+
+</div>
+

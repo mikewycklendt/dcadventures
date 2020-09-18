@@ -14,7 +14,7 @@
 @import "special_skill_create/other_char.css";
 @import "special_skill_create/other_checks.css";
 @import "special_skill_create/resist.css";
-
+@import "special_skill_create/opposed.css";
 
 .skill-container {
 	display: grid;
