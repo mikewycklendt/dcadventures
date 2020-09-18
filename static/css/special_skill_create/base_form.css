@@ -168,6 +168,14 @@
 	grid-template-rows: auto;
 }
 
+#untrained-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
 #untrained-details-field {
 	display: grid;
 	width: 95%;
