@@ -170,7 +170,7 @@
 
 #untrained-details-field {
 	display: grid;
-	width: 85%;
+	width: 95%;
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
