@@ -199,3 +199,31 @@
 		</div>
 
 	</div>
+
+	<div id="change-level-field">
+		
+		<div id="multiple-attr-title">
+			Changes Character Level:
+		</div>
+
+		<div id="change-level-fields">
+			<div>
+				<select id="change_level_type" name="change_level_type" style="height: 4vh; font-size: 110%;">
+					<option value="">Level Type</option>
+					{% for level in level_type %}
+						<option value={{level.id}}>{{level.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<div>
+				<select id="change_level_level" name="change_level_level" style="height: 4vh; font-size: 110%;">
+					<option value="">Level</option>
+					{% for level in levels %}
+						<option value="{{level}}">{{level}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+	</div>

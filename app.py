@@ -82,9 +82,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dctype = [{"value": "gm", "name": "Set by GM"}, {"value": "table", "name": "DC Table"}]
 
-	level_target = ['Active Player', 'Other Player', 'Opponent']
+	level_target = ['Active Player', 'Other Player', 'GM Controlled']
 
-	targets = ['Other Player', 'Opponent']
+	targets = ['Other Player', 'GM Controlled']
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
@@ -138,7 +138,10 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	resists = sorted(resists_raw)
 
-	return render_template('template.html', opposed_by=opposed_by, resists=resists, negatives=negatives, times=times, opposed=opposed, results=results, powers=powers, char_rank=char_rank, combined_conditions=combined_conditions, ranks=ranks, deg_mod_type=deg_mod_type, measure_rank=measure_rank, level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	levels = {'id': 1, 'name': 'Attitude'}
+	level_type = ['Hostile', 'Unfavorable', 'Indifferent', 'Favorable', 'Helpful']
+
+	return render_template('template.html', attitudes=attitudes, levels=levels, opposed_by=opposed_by, resists=resists, negatives=negatives, times=times, opposed=opposed, results=results, powers=powers, char_rank=char_rank, combined_conditions=combined_conditions, ranks=ranks, deg_mod_type=deg_mod_type, measure_rank=measure_rank, level_target=level_target, skill_includes=skill_includes, units=units, defenses=defenses, value_type=value_type, maths=maths, dc_rank=dc_rank, dcclasses=dcclasses, dctype=dctype, skilltype=skilltype, actions=actions, conditions=conditions, checks=checks, numbers=numbers, skills=skills, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/abilities')
 def abilities():
