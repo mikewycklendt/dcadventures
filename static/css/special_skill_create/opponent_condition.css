@@ -37,7 +37,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 15% 10% 75%;
+	grid-template-columns: 15% 15% 10% 45% 15%;
 	grid-auto-rows: auto;
 }
 
@@ -54,4 +54,59 @@
 	width: 85%;
 	height: auto;
 	padding: 4px;
+}
+
+#opp-cond-table {
+	display: grid;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 10% 25% 10% 55%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+}
+
+#opp-cond-title {
+	border-bottom: 1px solid lightblue;
+	width: 95%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	margin-bottom: 4px;
+}
+
+#opp-cond-table-degree {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#opp-cond-table-condition {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#opp-cond-table-rounds {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#opp-cond-table-description {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
 }

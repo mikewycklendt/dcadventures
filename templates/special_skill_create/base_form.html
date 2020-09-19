@@ -59,7 +59,7 @@
 		<select id="condition" name="condition" style="height: 4vh; font-size: 110%;">
 			<option value="">Normal</option>
 			{% for condition in conditions %}
-				<option value={{condition.id}}>{{condition.name}}</option>
+				<option value="{{condition}}">{{condition}}</option>
 			{% endfor %}
 		</select>
 	</div>

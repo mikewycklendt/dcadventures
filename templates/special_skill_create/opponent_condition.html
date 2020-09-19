@@ -9,6 +9,10 @@
 <div id="opp-cond-entry">
 
 	<div id="opp-cond-entry-title">
+		Degree:
+	</div>
+
+	<div id="opp-cond-entry-title">
 		Condition:
 	</div>
 
@@ -20,11 +24,24 @@
 		Description:
 	</div>
 
+	<div id="opp-cond-entry-title">
+	</div>
+
+	<div id="opp-cond-field">
+		<select id="opp_cond_degree" name="opp_conddegree" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">of success</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+
 	<div id="opp-cond-field">
 		<select id="opp_cond_cond" name="opp_cond_cond" style="height: 3vh; padding: 0%; font-size: 90%;">
 			<option value="">Condition</option>
 			{% for condition in conditions %}
-				<option value={{condition.id}}>{{condition.name}}</option>
+				<option value="{{condition}}">{{condition}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -43,6 +60,49 @@
 		<input type="text" id="opp_cond_desc" name="opp_cond_desc" style="height: 1vh; font-size: 90%; width: 95%;">
 	</div>
 
+	
+	<div id="opp-cond-field">
+		<div class="btn" id="opp-cond_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
 </div>
 
+<div id="opp-cond-table">
 
+	<div id="opp-cond-table-title">
+		Degree:
+	</div>
+
+	<div id="opp-cond-table-title">
+		Condition:
+	</div>
+
+	<div id="opp-cond-table-title">
+		Rounds:
+	</div>
+
+	<div id="opp-cond-table-title">
+		Description:
+	</div>
+
+	<div id="opp-cond-table-degree">
+		0
+	</div>
+	
+	<div id="opp-cond-table-condition">
+		Impaired
+	</div>
+
+	<div id="opp-cond-table-rounds">
+		1
+	</div>
+	
+	<div id="char-table-description">
+		Opponent is impaired. 
+	</div>
+
+</div>
