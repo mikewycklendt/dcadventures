@@ -154,15 +154,13 @@
 	width: 85%;
 	margin: 2%;
 	grid-template-columns: 50% 50%;
-	grid-auto-rows: auto;
 }
 
 #prep-math-rank {
 	display: grid;
 	width: 100%;
 	margin: 2%;
-	grid-template-columns: 20% 30% 30% 30%;
-	grid-auto-rows: auto;
+	grid-template-columns: 20% 30% 25% 25%;
 	font-family: 'Monda', Verdana;
 	font-size: 80%;	
 }
