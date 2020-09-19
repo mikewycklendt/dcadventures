@@ -220,7 +220,7 @@
 				<select id="change_level_level" name="change_level_level" style="height: 4vh; font-size: 110%;">
 					<option value="">Level</option>
 					{% for level in levels %}
-						<option value="{{level}}">{{level}}</option>
+						<option value={{level.id}}>{{level.name}}</option>
 					{% endfor %}
 				</select>
 			</div>	
