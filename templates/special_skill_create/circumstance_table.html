@@ -28,13 +28,71 @@
 	<div id="circ-entry-title">
 	</div>
 
-	<div id="circ-field">
-		<select id="circ_modifier" name="circ_modifier" style="height: 3vh; padding: 0%; font-size: 90%;">
-			<option value="">Modifier</option>
-			{% for number in numbers %}
-				<option value={{number}}>{{number}}</option>
-			{% endfor %}
-		</select>
+	<div id="circ-mod-field">
+
+		<div>
+
+			<select id="circ_mod_type" name="circ_mod_type" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">Modifier</option>
+				{% for value in value_type %}
+					<option value="{{value}}">{{value}}</option>
+				{% endfor %}
+			</select>
+			
+		</div>
+
+
+		<div id="circ-mod-value">
+			<select id="circ_modifier" name="circ_modifier" style="height: 3vh; padding: 0%; font-size: 90%;">
+				<option value="">Modifier</option>
+				{% for number in numbers %}
+					<option value={{number}}>{{number}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="circ-mod-math">
+
+			<div>
+
+				<select id="circ_mod" name="circ_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Modifier</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+			
+			<div>For Every</div>
+
+			<div>
+
+				<input type="text" id="circ_mod_value" name="circ_mod_value" style="height: 1vh; font-size: 80%;">
+
+			</div>
+
+			<div>
+
+				<select id="circ_mod_unit" name="circ_mod_unit" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Modifier</option>
+					{% for unit in units %}
+						<option value={{unit.id}}>{{unit.name}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+
+			<div>
+
+
+
+			</div>
+
+
+		</div>
+		
+	
 	</div>
 
 	<div id="circ-field" style="width: 95%;" >

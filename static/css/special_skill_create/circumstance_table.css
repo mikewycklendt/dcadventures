@@ -56,6 +56,30 @@
 	padding: 4px;
 }
 
+#circ-mod-field {
+	display: grid;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
+#circ-mod-value {
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#circ-mod-math {
+	display: grid;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
 #circ-add {
 	width: 100%;
 	padding: 3px;
@@ -67,7 +91,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 12% 88%;
+	grid-template-columns: 30% 70%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
