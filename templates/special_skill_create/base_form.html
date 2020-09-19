@@ -111,16 +111,70 @@
 		</div>
 
 		<div>
-			<input type="text" id="prep_value" name="prep_value" style="margin-top: 5px; width: 80%; height: 2vh; padding: 4px; font-size: 90%;">
-		</div>
-		
-		<div>
-			<select id="prep_unit" name="prep_unit" style="height: 4vh; font-size: 110%;">
-				<option value="">Time Unit</option>
-				{% for time in times %}
-					<option value="{{time.id}}">{{time.name}}</option>
+			<select id="prep_type" name="prep_type" style="height: 4vh; font-size: 110%;">
+				<option value="">Immediate</option>
+				{% for value in value_type %}
+					<option value="{{value}}">{{value}}</option>
 				{% endfor %}
-			</select>
+			</select>			
+		</div>
+
+		
+		<div id="prep-value"></div>
+			<div>
+				<input type="text" id="prep_value" name="prep_value" style="margin-top: 5px; width: 80%; height: 2vh; padding: 4px; font-size: 90%;">
+			</div>
+		
+			<div>
+				<select id="prep_unit" name="prep_unit" style="height: 4vh; font-size: 110%;">
+					<option value="">Time Unit</option>
+					{% for time in times %}
+						<option value="{{time.id}}">{{time.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div id="prep-math-rank">
+
+			<div>
+				Time Rank = 
+			</div>
+
+			<div>
+				<select id="prep_rank" name="prep_rank" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Rank</option>
+					{% for rank in measure %}
+						<option value={{rank.id}}>{{rank.name}}</option>
+					{% endfor %}
+					{% for rank in char %}
+						<option value={{rank.id}}>{{rank.name}}</option>
+					{% endfor %}
+				</select>
+			
+			</div>
+			
+			
+			<div>
+
+				<select id="prep_math" name="prep_math" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Math</option>
+					{% for math in maths %}
+						<option value="{{math}}">{{math}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+
+			<div>
+				<select id="prep_mod" name="prep_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Rank</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 		</div>
 
 	</div>

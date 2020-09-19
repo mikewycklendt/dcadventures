@@ -133,16 +133,13 @@
 
 #prep-field {
 	display: grid;
-	width: 85%;
+	width: 100%;
 	margin: 2%;
-	grid-template-columns: 30% 70%;
-	grid-template-rows: auto auto;
-	grid-template-areas: "prepheader prepheader"
-							"prepvalue prepunit";
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
 }
 
 #prep-title {
-	grid-area: prepheader;
 	border-bottom: 2px solid lightblue;
 	width: 85%;
 	margin-bottom: 5px;
@@ -150,6 +147,24 @@
 	font-size: 130%;
 	color: #245681;
 	padding: 0px;
+}
+
+#prep-value {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+}
+
+#prep-math-rank {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 20% 30% 30% 30%;
+	grid-auto-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 80%;	
 }
 
 #sub-field {
