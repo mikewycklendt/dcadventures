@@ -15,6 +15,9 @@
 @import "special_skill_create/other_checks.css";
 @import "special_skill_create/resist.css";
 @import "special_skill_create/opposed.css";
+@import "special_skill_create/alt_check.css";
+
+
 
 .skill-container {
 	display: grid;

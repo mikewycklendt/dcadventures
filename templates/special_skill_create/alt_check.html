@@ -1,0 +1,65 @@
+<div id="alt-check-header">
+
+	<div id="other-title">
+		<input type="checkbox" id="alt_check_check" class="regular-checkbox big-checkbox">  Can Make Skill Check:
+	</div>
+
+</div>
+
+<div id="alt-check-entry">
+
+	<div id="alt-check-entry-title">
+		DC:
+	</div>
+
+	<div id="alt-check-entry-title">
+		Description:
+	</div>
+
+	<div id="alt-check-entry-title">
+	</div>
+
+	<div id="alt-check-field">
+		<select id="alt_check_dc" name="alt_check_dc" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">DC</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="alt-check-field" style="width: 95%;" >
+		<input type="text" id="alt_check_desc" name="alt_check_desc" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="alt-check-add">
+		<div class="btn" id="alt_check_add" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="alt-check-table">
+
+	<div id="alt-check-table-title">
+		DC:
+	</div>
+
+	<div id="alt-check-table-title">
+		Description:
+	</div>
+
+	<div id="alt-check-table-skill">
+		20
+	</div>
+
+	<div id="alt-check-table-examples">
+		Evaluate social situation
+	</div>
+
+
+</div>
+
