@@ -204,6 +204,14 @@
 	grid-template-rows: auto;
 }
 
+#materials-field {
+	display: grid;
+	width: 95%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
 #untrained-details-field {
 	display: grid;
 	width: 95%;
