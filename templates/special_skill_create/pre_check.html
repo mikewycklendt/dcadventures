@@ -1,0 +1,190 @@
+<div id="pre-check-header">
+
+	<div id="pre-check-title">
+		<input type="checkbox" id="pre_check_check" class="regular-checkbox big-checkbox">  Other Required Checks:
+	</div>
+
+	<div>
+		<select id="pre_check_type" name="pre_check_type" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Check Type</option>
+			{% for check in checks_two %}
+				<option value="{{check.id}}">{{check.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="pre-check-entry-standard">
+
+	<div id="pre-check-entry-title">
+		When:
+	</div>
+
+	<div id="pre-check-entry-title">
+		Check:
+	</div>
+
+	<div id="pre-check-entry-title">
+		Circumstance
+	</div>
+
+	<div id="pre-check-entry-title">
+	</div>
+	
+	<div id="pre-check-field">
+		<select id="pre_check_when" name="pre_check_when" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value=""></option>
+			{% for when in whens %}
+				<option value="{{when}}">{{when}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="pre-check-field">
+		<select id="pre_check_skill" name="pre_check_skill" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Check</option>
+			{% for skill in skills_abilities %}
+				<option value="{{skill}}">{{skill}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="pre-check-field" style="width: 95%;" >
+		<input type="text" id="pre_check_circ" name="pre_check_circ" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="pre-check-add">
+		<div class="btn" id="	pre_check_add_standard" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="pre-check-entry-opposed">
+
+	<div id="pre-check-entry-title">
+		When:
+	</div>
+
+	<div id="pre-check-entry-title">
+		Check:
+	</div>
+
+	<div id="pre-check-entry-title">
+		Opposed by:
+	</div>
+
+	<div id="pre-check-entry-title">
+		Circumstance
+	</div>
+
+	<div id="pre-check-entry-title">
+	</div>
+	
+	<div id="pre-check-field">
+		<select id="pre_check_opposed_when" name="pre_check_opposed_when" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value=""></option>
+			{% for when in whens %}
+				<option value="{{when}}">{{when}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="pre-check-field">
+		<select id="pre_check_opposed_skill" name="pre_check_opposed_skill" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Check</option>
+			{% for skill in skills_abilities %}
+				<option value="{{skill}}">{{skill}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="pre-check-field">
+		<select id="pre_check_opposed" name="pre_check_opposed" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Opposed Check</option>
+			{% for skill in skills_abilities %}
+				<option value="{{skill}}">{{skill}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="pre-check-field" style="width: 95%;" >
+		<input type="text" id="pre_check_opposed_circ" name="pre_check_circ" style="height: 1vh; font-size: 90%;">
+	</div>
+
+	<div id="pre-check-add">
+		<div class="btn" id="pre_check_add_standard" style="height: 95%; padding: 3px; font-size: 95%;">
+			<center>
+				<i class="fa fa-plus"></i>   Add
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<div id="pre-check-table-standard">
+
+	<div id="pre-check-table-title">
+		When:
+	</div>
+
+	<div id="pre-check-table-title">
+		Check:
+	</div>
+
+	<div id="pre-check-table-title">
+		Circumstance
+
+	<div id="pre-check-table-when">
+		Before
+	</div>
+
+	<div id="pre-check-table-skill">
+		Deception
+	</div>
+
+	<div id="pre-check-table-circ">
+		Momentary distraction needed to make a stealth check when others are aware of you.
+	</div>
+
+</div>
+
+<div id="pre-check-table-opposed">
+
+	<div id="pre-check-table-title">
+		When:
+	</div>
+
+	<div id="pre-check-table-title">
+		Check:
+	</div>
+
+	<div id="pre-check-table-opposed">
+		Opposed By:
+	</div>
+
+	<div id="pre-check-table-title">
+		Circumstance
+
+	<div id="pre-check-table-when">
+		Before
+	</div>
+
+	<div id="pre-check-table-skill">
+		Deception
+	</div>
+
+	<div id="pre-check-table-opposed">
+		Perception
+	</div>
+	
+	<div id="pre-check-table-circ">
+		Hide and go unnoticed.
+	</div>
+
+</div>
+
