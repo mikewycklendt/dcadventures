@@ -37,6 +37,7 @@
 				{% for value in value_type %}
 					<option value="{{value}}">{{value}}</option>
 				{% endfor %}
+				<option value="adjust">Adjust</option>
 			</select>
 			
 		</div>
@@ -94,6 +95,42 @@
 					<option value="">Modifier</option>
 					{% for unit in units %}
 						<option value={{unit.id}}>{{unit.name}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+
+		</div>
+
+		<div id="circ-mod-adjust">
+
+			<div>
+
+				<select id="circ_adjust_check" name="circ_mod" style="height: 3vh; padding: 0%; font-size: 70%;">
+					<option value="">Check Mod</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+			
+			<div>
+				<select id="circ_adjust_mod" name="circ_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Modifier</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+
+			<div>
+
+				<select id="circ_adjust_rank" name="circ_adjust_rank" style="height: 3vh; padding: 0%; font-size: 90%;">
+					<option value="">Modifier</option>
+					{% for rank in measure_rank %}
+						<option value={{rank.id}}>{{rank.name}}</option>
 					{% endfor %}
 				</select>
 

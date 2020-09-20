@@ -80,6 +80,15 @@
 	grid-auto-rows: auto;
 }
 
+#circ-mod-adjust {
+	display: grid;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
 #circ-add {
 	width: 100%;
 	padding: 3px;
