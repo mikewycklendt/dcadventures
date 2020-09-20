@@ -5,6 +5,16 @@
 	</div>
 
 	<div>
+		<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<option value="">Check Type</option>
+			<option value="this">This Skill</option>
+			{% for skill in skills %}
+				<option value={{skill.id}}>{{skill.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	
+	<div>
 		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;">
 			<option value="">Target</option>
 			{% for target in level_target %}
@@ -19,6 +29,10 @@
 
 	<div id="circ-entry-title">
 		Modifier:
+	</div>
+
+	<div id="circ-entry-title">
+		Lasts:
 	</div>
 
 	<div id="circ-entry-title">
@@ -38,10 +52,23 @@
 					<option value="{{value}}">{{value}}</option>
 				{% endfor %}
 				<option value="adjust">Adjust</option>
+				<option value="adjust">No equipment</option>
 			</select>
 			
 		</div>
 
+	</div>
+
+	<div>
+
+		<select id="circ_mod_rounds" name="circ_mod_rounds" style="height: 3vh; padding: 0%; font-size: 90%;">
+			<option value="">Rounds</option>
+			<option value="indef">Indefinite</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+		
 	</div>
 
 	
@@ -117,7 +144,7 @@
 			
 			<div>
 				<select id="circ_adjust_mod" name="circ_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
-					<option value="">Modifier</option>
+					<option value="">Modifies</option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
 					{% endfor %}
@@ -151,11 +178,19 @@
 	</div>
 
 	<div id="circ-table-title">
+		Rounds:
+	</div>
+
+	<div id="circ-table-title">
 		Circumstance:
 	</div>
 
 	<div id="circ-table-modifier">
 		-5
+	</div>
+
+	<div id="circ-table-rounds">
+		2
 	</div>
 
 	<div id="circ-table-circ">

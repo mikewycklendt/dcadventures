@@ -154,7 +154,7 @@
 	display: grid;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 25% 25% auto;
 }
 
 #deg-mod-add {

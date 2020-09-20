@@ -13,7 +13,7 @@
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 55% 25% 20%;
 	grid-template-rows: auto;
 }
 
@@ -100,7 +100,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 30% 15% 55%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
@@ -115,6 +115,15 @@
 }
 
 #circ-table-modifier {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+#circ-table-roundss {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;

@@ -29,6 +29,7 @@
 	<div id="deg-mod-type">
 		<select id="deg_mod_type" name="deg_mod_type" style="height: 3vh; padding: 0%; font-size: 80%;">
 			<option value="">Type</option>
+			<option value="">Event</option>
 			{% for type in deg_mod_type %}
 				<option value="{{type}}">{{type}}</option>
 			{% endfor %}
@@ -96,6 +97,12 @@
 						</select>
 					</div>
 
+					<di>
+						Degrees
+					</div>
+
+					<div></div>
+
 				</div>
 
 				<div id="deg-mod-damage-value">
@@ -110,7 +117,12 @@
 					</div>
 
 					<div id="deg-mod-entry-title">
-						Degrees of damage
+						<select id="deg_damage_value" name="deg_damage_value" style="height: 3vh; padding: 0%; font-size: 80%;">
+							<option value="">Value</option>
+							{% for number in numbers %}
+								<option value={{number}}>{{number}}</option>
+							{% endfor %}
+						</select>
 					</div>
 
 				</div>
