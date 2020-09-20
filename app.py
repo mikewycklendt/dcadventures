@@ -152,7 +152,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	whens = ['before', 'after']
 
-	checks_two = [{'id': 'skill' 'name': 'Skill Check'}, {'id': 'opposed' 'name': 'Opposed Check'}]
+	checks_two = [{'id': 'skill', 'name': 'Skill Check'}, {'id': 'opposed', 'name': 'Opposed Check'}]
 
 	for skill in skills:
 		skills_abilities_raw.append(skill.name)
