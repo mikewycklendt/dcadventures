@@ -5,7 +5,7 @@
 	</div>
 
 	<div>
-		<select id="pre_check_type" name="pre_check_type" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select id="pre_check_type" name="pre_check_type" style="height: 3vh; padding: 0%; font-size: 90%; display: none;">
 			<option value="">Check Type</option>
 			{% for check in checks_two %}
 				<option value="{{check.id}}">{{check.name}}</option>
@@ -15,7 +15,7 @@
 
 </div>
 
-<div id="pre-check-entry-standard">
+<div id="pre-check-entry-standard" style="display: none;">
 
 	<div id="pre-check-entry-title">
 		When:
@@ -64,7 +64,7 @@
 
 </div>
 
-<div id="pre-check-entry-opposed">
+<div id="pre-check-entry-opposed" style="display: none;">
 
 	<div id="pre-check-entry-title">
 		When:
@@ -126,7 +126,7 @@
 
 </div>
 
-<div id="pre-check-table-standard">
+<div id="pre-check-table-standard" style="display: none;">
 
 	<div id="pre-check-table-title">
 		When:
@@ -154,7 +154,7 @@
 
 </div>
 
-<div id="pre-check-table-opposed">
+<div id="pre-check-table-opposed" style="display: none;">
 
 	<div id="pre-check-table-title">
 		When:

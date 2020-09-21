@@ -6,13 +6,13 @@
 
 	<div id="degree-base-form">
 		<div>
-			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result">
+			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result" style="display: none;">
 		</div>
 
 		<div></div>
 
 		<div>
-			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;" style="display: none;">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
@@ -24,7 +24,7 @@
 
 </div>
 
-<div id="degree-entry">
+<div id="degree-entry" style="display: none;">
 
 	<div id="degree-value-title">
 		Degree:
@@ -67,7 +67,7 @@
 
 </div>
 
-	<div id="degree-table">
+	<div id="degree-table" style="display: none;">
 
 		<div id="levels-table-title">
 			Degree:

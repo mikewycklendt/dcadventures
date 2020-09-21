@@ -5,7 +5,7 @@
 	</div>
 
 	<div>
-		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%;">
+		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
 			<option value="">Target</option>
 			{% for oppose in opposed_by %}
 				<option value="{{oppose.id}}">{{oppose.name}}</option>
@@ -15,7 +15,7 @@
 
 </div>
 
-<div id="opposed-by-entry">
+<div id="opposed-by-entry" style="display: none;">
 
 	<div id="opposed-by-entry-title">
 		Opposed by:
@@ -64,7 +64,7 @@
 
 </div>
 
-<div id="opposed-by-table">
+<div id="opposed-by-table" style="display: none;">
 
 	<div id="opposed-by-table-title">
 		Opposed by:

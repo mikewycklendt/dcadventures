@@ -5,7 +5,7 @@
 	</div>
 
 	<div>
-		<select id="resist_target" name="resist_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+		<select id="resist_target" name="resist_target" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
 			<option value="">Target</option>
 			{% for target in level_target %}
 				<option value="{{target}}">{{target}}</option>
@@ -15,7 +15,7 @@
 
 </div>
 
-<div id="resist-entry">
+<div id="resist-entry" style="display: none;">
 
 	<div id="resist-entry-title">
 		Modifier:
@@ -51,7 +51,7 @@
 
 </div>
 
-<div id="resist-table">
+<div id="resist-table" style="display: none;">
 
 	<div id="resist-table-title">
 		Modifier:
