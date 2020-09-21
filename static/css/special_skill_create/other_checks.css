@@ -39,7 +39,7 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 25% 60% 15%;
 	grid-auto-rows: auto;
-	max-height: 0;
+	max-height: 0vh;
 	overflow: hidden;
 	transition: maxheight 1s ease-out;
 }
