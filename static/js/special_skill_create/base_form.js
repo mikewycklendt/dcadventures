@@ -4,7 +4,7 @@ function untrained_check() {
 	
 	if (untrained_check.checked == true) {
 		untrained_details_field.style.display = "grid"
-	if (untrained_check == false) {
-		untrained_details_field.xtyle.display = "none"
+	} else {
+		untrained_details_field.style.display = "none"
 	}
 }
