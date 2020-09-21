@@ -6,6 +6,7 @@ function other_check() {
 		other_entry.style.display = "grid"
 		other_entry.style.maxHeight = other_entry.scrollHeight + "px";
 	} else {
+		other_entry.style.maxHeight = 0;
 		other_entry.style.display = "none"
 	}
 }
