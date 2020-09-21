@@ -22,7 +22,7 @@ function subskill_check() {
 
 function secret_check() {
 	const secret_check = document.getElementById("secret_check");
-	const secret_mod = document.getElementById("secret_mod");
+	const secret_mod = document.getElementById("secret-mod");
 	
 	if (secret_check.checked == true) {
 		secret_mod.style.display = "grid"
