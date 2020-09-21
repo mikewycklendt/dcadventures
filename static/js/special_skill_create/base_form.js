@@ -19,3 +19,14 @@ function subskill_check() {
 		subskill.style.display = "none"
 	}
 }
+
+function secret_check() {
+	const secret_check = document.getElementById("secret_check");
+	const secret_mod = document.getElementById("secret_mod");
+	
+	if (secret_check.checked == true) {
+		secret_mod.style.display = "grid"
+	} else {
+		secret_mod.style.display = "none"
+	}
+}
