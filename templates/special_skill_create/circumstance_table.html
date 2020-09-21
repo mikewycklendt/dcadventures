@@ -5,7 +5,7 @@
 	</div>
 
 	<div>
-		<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%;">
+		<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
 			<option value="">Check Type</option>
 			<option value="this">This Skill</option>
 			{% for skill in skills %}
@@ -15,7 +15,7 @@
 	</div>
 	
 	<div>
-		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
 			<option value="">Target</option>
 			{% for target in level_target %}
 				<option value="{{target}}">{{target}}</option>
@@ -171,7 +171,7 @@
 
 </div>
 
-<div id="circ-table">
+<div id="circ-table" style="display: none;">
 
 	<div id="circ-table-title">
 		Modifier:
