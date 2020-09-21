@@ -39,6 +39,7 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 25% 60% 15%;
 	grid-auto-rows: auto;
+	transition: ease-in-out;
 }
 
 #other-entry-title {
