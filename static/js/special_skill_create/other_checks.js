@@ -4,11 +4,11 @@ function other_check() {
 	
 	if (other_check.checked == true) {
 		other_entry.style.display = "grid"
+		other_entry.style.padding = "1%"
 		other_entry.style.maxHeight = other_entry.scrollHeight + "px";
+		other_entry.style.padding = "1%"
 	} else {
 		other_entry.style.maxHeight = "0px";
-		if (other_entry.style.maxHeight = "0px") {
-			other_entry.style.display = "none";
-		};
+		other_entry.style.padding = "0px";
 	}
 }

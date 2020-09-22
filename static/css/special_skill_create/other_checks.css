@@ -41,7 +41,7 @@
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height .4s ease-out;
+	transition: all .4s ease-out;
 }
 
 #other-entry-title {
