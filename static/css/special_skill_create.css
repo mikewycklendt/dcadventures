@@ -67,7 +67,7 @@ input[type=text] {
 	border: 1px solid lightblue;
 	outline: 1px solid #af0101;
 	outline-offset: 5px 8px;
-	transition:  all .2s ease-in;
+	transition:  all .1s ease-in;
 }
 
 input[type=text]:focus {
@@ -100,7 +100,7 @@ textarea {
 	resize: vertical;
 	font-family: 'Monda', Verdana;
 	font-size: 120%;
-	transition:  all .2s ease-in;
+	transition:  all .1s ease-in;
   }
 
 textarea:focus {
