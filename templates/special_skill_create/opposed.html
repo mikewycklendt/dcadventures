@@ -4,7 +4,7 @@
 		<input type="checkbox" id="opposed_by_check" class="regular-checkbox big-checkbox" onclick="opposed_by_check()">  Opposed by:
 	</div>
 
-	<div id="opposed-by-base-form" style="opacity: 0%;">
+	<div id="opposed-by-base-form" style="opacity: 0%; transition: all .3s ease-out;">
 		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%;">
 			<option value="">Target</option>
 			{% for oppose in opposed_by %}

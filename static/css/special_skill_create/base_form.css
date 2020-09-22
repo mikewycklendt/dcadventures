@@ -186,6 +186,8 @@
 	width: 85%;
 	grid-template-columns: 15% 65% 20%;
 	grid-template-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 #untrained-field {
@@ -194,6 +196,7 @@
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
+	transition: all .3s ease-out;
 }
 
 #cover-field {
