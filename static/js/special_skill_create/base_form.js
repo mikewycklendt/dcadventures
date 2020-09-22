@@ -28,8 +28,8 @@ function secret_check() {
 	
 	if (secret_check.checked == true) {
 		secret_mod.style.display = "grid";
-		untrained_details_field.style.opacity = "100%";
+		secret_mod.style.opacity = "100%";
 	} else {
-		secret_mod.style.display = "none";
+		secret_mod.style.opacity = "0%";
 	}
 }
