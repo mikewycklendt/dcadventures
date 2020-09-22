@@ -38,6 +38,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 10% 20% 30% 15% 15% 10%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #rounds-entry-title {

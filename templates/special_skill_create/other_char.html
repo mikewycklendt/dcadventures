@@ -1,12 +1,12 @@
 <div id="char-header" style="justify-content: center;">
 
 	<div id="char-title">
-		<input type="checkbox" id="char_check" class="regular-checkbox big-checkbox">  Requires Check from Other Character
+		<input type="checkbox" id="char_check" class="regular-checkbox big-checkbox" onclick="char_check()">  Requires Check from Other Character
 	</div>
 
 	<div id="char-base-form">
 		<div>
-			<select id="char_type" name="char_type" style="height: 4vh; font-size: 100%; padding: 0%; display: none;">
+			<select id="char_type" name="char_type" style="height: 4vh; font-size: 100%; padding: 0%;">
 				<option value="">Check Type</option>
 				{% for check in checks %}
 					<option value={{check.id}}>{{check.name}}</option>

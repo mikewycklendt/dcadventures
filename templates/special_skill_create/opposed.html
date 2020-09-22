@@ -1,11 +1,11 @@
 <div id="opposed-by-header">
 
 	<div id="opposed-by-title">
-		<input type="checkbox" id="opposed_by_check" class="regular-checkbox big-checkbox">  Opposed by:
+		<input type="checkbox" id="opposed_by_check" class="regular-checkbox big-checkbox" onclick="opposed_by_check()">  Opposed by:
 	</div>
 
-	<div>
-		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
+	<div id="opposed-by-base-form" style="opacity: 0%;">
+		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%;">
 			<option value="">Target</option>
 			{% for oppose in opposed_by %}
 				<option value="{{oppose.id}}">{{oppose.name}}</option>

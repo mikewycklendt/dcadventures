@@ -1,11 +1,11 @@
 <div id="deg-mod-header">
 
 	<div id="deg-mod-title">
-		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox">  Degree of Success/Failure (Modifier) Table:
+		<input type="checkbox" id="deg_mod_check" class="regular-checkbox big-checkbox" onclick="deg_mod_check()">  Degree of Success/Failure (Modifier) Table:
 	</div>
 
-	<div>
-		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
+	<div id="deg-mod-base-form" style="opacity: 0%;">
+		<select id="deg_mod_target" name="deg_mod_target" style="height: 4vh; padding: 0%; font-size: 100%;">
 			<option value="">Target</option>
 			{% for target in level_target %}
 				<option value="{{target}}">{{target}}</option>

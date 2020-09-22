@@ -30,6 +30,7 @@
 	width: 100%;
 	grid-template-columns: 65% 5% 30%;
 	grid-template-rows: auto;
+	opacity: 0%;
 }
 
 #degree-entry {
@@ -48,6 +49,9 @@
 	grid-template-areas: "value_title keyword_title description-title"
 							"value keyword description"
 							"button button description";
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #degree-value-title {

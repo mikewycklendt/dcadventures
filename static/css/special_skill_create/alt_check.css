@@ -39,6 +39,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 15% 70% 15%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #alt-check-entry-title {

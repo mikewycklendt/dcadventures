@@ -13,8 +13,18 @@
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 55% 25% 20%;
+	grid-template-columns: 55% 45%;
 	grid-template-rows: auto;
+}
+
+#circ-base-form {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: auto;
+	opacity: 0%;
 }
 
 
@@ -39,6 +49,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 15% 15% 55% 15%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #circ-entry-title {

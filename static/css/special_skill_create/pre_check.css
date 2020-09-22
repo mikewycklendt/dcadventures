@@ -39,6 +39,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 10% 20% 55% 15%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #pre-check-entry-opposed {
@@ -54,6 +57,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 10% 20% 20% 40% 10%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #pre-check-entry-title {

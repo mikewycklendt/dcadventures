@@ -38,6 +38,9 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 40% 30% auto;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #action-entry-title {

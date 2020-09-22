@@ -1,26 +1,28 @@
 <div id="circ-header">
 
 	<div id="circ-title">
-		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox">  Circumstance Modifier Table:
+		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()">  Circumstance Modifier Table:
 	</div>
 
-	<div>
-		<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
-			<option value="">Check Type</option>
-			<option value="this">This Skill</option>
-			{% for skill in skills %}
-				<option value={{skill.id}}>{{skill.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
+	<div id="circ-base-form" style="opacity: 0%;">
+		<div>
+			<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%;">
+				<option value="">Check Type</option>
+				<option value="this">This Skill</option>
+				{% for skill in skills %}
+					<option value={{skill.id}}>{{skill.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	
-	<div>
-		<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%; display: none;">
-			<option value="">Target</option>
-			{% for target in level_target %}
-				<option value="{{target}}">{{target}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+				<option value="">Target</option>
+				{% for target in level_target %}
+					<option value="{{target}}">{{target}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 </div>

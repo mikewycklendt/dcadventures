@@ -42,6 +42,9 @@
 	grid-template-areas: "degree type effect effect"
 							"nullify nullify description button"
 							"keyword keyword description blank";
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-entry-title {

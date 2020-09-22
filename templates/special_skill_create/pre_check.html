@@ -1,11 +1,11 @@
 <div id="pre-check-header">
 
 	<div id="pre-check-title">
-		<input type="checkbox" id="pre_check_check" class="regular-checkbox big-checkbox">  Other Required Checks:
+		<input type="checkbox" id="pre_check_check" class="regular-checkbox big-checkbox" onclick="pre_check_check()">  Other Required Checks:
 	</div>
 
-	<div>
-		<select id="pre_check_type" name="pre_check_type" style="height: 3vh; padding: 0%; font-size: 90%; display: none;">
+	<div id="pre-check-header-type" style="opacity: 0%;">
+		<select id="pre_check_type" name="pre_check_type" style="height: 3vh; padding: 0%; font-size: 90%;">
 			<option value="">Check Type</option>
 			{% for check in checks_two %}
 				<option value="{{check.id}}">{{check.name}}</option>

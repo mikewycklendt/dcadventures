@@ -1,18 +1,18 @@
 <div id="degree-header" style="justify-content: center;">
 
 	<div id="degree-title">
-		<input type="checkbox" id="degree_check" class="regular-checkbox big-checkbox">  Degree of Success/Failure (Keyword) Table:
+		<input type="checkbox" id="degree_check" class="regular-checkbox big-checkbox" onclick="degree_check()">  Degree of Success/Failure (Keyword) Table:
 	</div>
 
 	<div id="degree-base-form">
 		<div>
-			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px; display: none;" placeholder="Type of Result">
+			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result">
 		</div>
 
 		<div></div>
 
 		<div>
-			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%; display: none;">
+			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
