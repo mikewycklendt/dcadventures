@@ -14,7 +14,7 @@ function pre_check_entry() {
 	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
 	console.log(pre_check_type_value)
 	pre_check_entry_standard = document.getElementById("pre-check-entry-standard")
-	pre_check_entry_opposed = document.getElementById("pre-check-entry-standard")
+	pre_check_entry_opposed = document.getElementById("pre-check-entry-opposed")
 
 	if (pre_check_type_value == 'skill') {
 		pre_check_entry_standard.style.display = "grid";
