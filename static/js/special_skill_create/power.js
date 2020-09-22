@@ -5,7 +5,7 @@ function power_check() {
 	if (power_check.checked == true) {
 		power_entry.style.display = "grid";
 		power_entry.style.padding = "1%";
-		power_entry.style.maxHeight = other_entry.scrollHeight + "px";
+		power_entry.style.maxHeight = power_entry.scrollHeight + "px";
 		power_entry.style.padding = "1%";
 	} else {
 		power_entry.style.maxHeight = "0px";

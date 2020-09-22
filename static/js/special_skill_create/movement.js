@@ -5,7 +5,7 @@ function movement_check() {
 	if (movement_check.checked == true) {
 		move_entry.style.display = "grid";
 		move_entry.style.padding = "1%";
-		move_entry.style.maxHeight = other_entry.scrollHeight + "px";
+		move_entry.style.maxHeight = move_entry.scrollHeight + "px";
 		move_entry.style.padding = "1%";
 	} else {
 		move_entry.style.maxHeight = "0px";

@@ -5,7 +5,7 @@ function opp_cond_check() {
 	if (opp_cond_check.checked == true) {
 		opp_cond_entry.style.display = "grid";
 		opp_cond_entry.style.padding = "1%";
-		opp_cond_entry.style.maxHeight = other_entry.scrollHeight + "px";
+		opp_cond_entry.style.maxHeight = opp_cond_entry.scrollHeight + "px";
 		opp_cond_entry.style.padding = "1%";
 	} else {
 		opp_cond_entry.style.maxHeight = "0px";

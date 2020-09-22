@@ -5,7 +5,7 @@ function alt_check() {
 	if (alt_check.checked == true) {
 		alt_entry.style.display = "grid";
 		alt_entry.style.padding = "1%";
-		alt_entry.style.maxHeight = other_entry.scrollHeight + "px";
+		alt_entry.style.maxHeight = alt_entry.scrollHeight + "px";
 		alt_entry.style.padding = "1%";
 	} else {
 		alt_entry.style.maxHeight = "0px";
