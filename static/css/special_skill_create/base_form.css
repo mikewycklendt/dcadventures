@@ -219,6 +219,7 @@
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
+	opacity: 0%;
 }
 
 #untrained-fields {
