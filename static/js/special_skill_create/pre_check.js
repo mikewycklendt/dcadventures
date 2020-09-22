@@ -36,7 +36,7 @@ function pre_check_entry() {
 		pre_check_entry_opposed.style.padding = "1%";
 	} else {
 		pre_check_entry_opposed.style.display = "none";
-		pre_check_entry_standard.styl.display = "none";
+		pre_check_entry_standard.style.display = "none";
 
 	}
 }
