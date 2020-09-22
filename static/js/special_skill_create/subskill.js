@@ -5,7 +5,7 @@ function subskill_check() {
 	if (subskill_check.checked == true) {
 		subskill.style.display = "grid";
 		subskill.style.padding = "1%";
-		subskill.style.maxHeight = other_entry.scrollHeight + "px";
+		subskill.style.maxHeight = subskill.scrollHeight + "px";
 		subskill.style.padding = "1%";
 	} else {
 		subskill.style.maxHeight = "0px";
