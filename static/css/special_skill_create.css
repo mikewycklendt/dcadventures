@@ -100,6 +100,7 @@ textarea {
 	resize: vertical;
 	font-family: 'Monda', Verdana;
 	font-size: 120%;
+	transition:  all .2s ease-in;
   }
 
 textarea:focus {
