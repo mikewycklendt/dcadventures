@@ -99,12 +99,10 @@ body{
 }
 
 #sidebargrid{
-	display: grid;
 	grid-area: sidebar;
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	grid-template-columns: 100%;
 }
 
 .btn-login{
