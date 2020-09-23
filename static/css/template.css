@@ -38,10 +38,10 @@ body{
 	background-size: cover;
 	width: 100%;
 	height: auto;
-	grid-template-columns:  auto 140px;
-	grid-template-rows: 45px auto;
-	grid-template-areas: "topleft topright"
-							"bottom bottom";
+	grid-template-columns:  auto 10% 10%;
+	grid-template-rows: auto auto;
+	grid-template-areas: "topleft topright rightspace"
+							"bottom bottom bottom";
 	margin: 0px;
 	
 }
@@ -65,6 +65,10 @@ body{
 
 #topleft{
 	grid-area: topleft;
+}
+
+#rightspace{
+	grid-area: rightspace;
 }
 
 #bottom{
