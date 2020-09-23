@@ -8,7 +8,7 @@
 .splash{
 	display: grid;
 	grid-area: contentpage;
-	height: 80vh;
+	height: 700px;
 	width: 40vw;
 	margin-left: 7.5vw;
 	margin-right: 10vw;
