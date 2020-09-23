@@ -47,6 +47,7 @@ body{
 }
 
 #banner {
+	grid-area: banner;
 	width: auto;
 	height: auto;
 }
