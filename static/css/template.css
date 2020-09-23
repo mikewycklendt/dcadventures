@@ -38,8 +38,8 @@ body{
 	background-size: cover;
 	width: 100%;
 	height: auto;
-	grid-template-columns:  auto 140px;
-	grid-template-rows: 45px auto;
+	grid-template-columns:  auto 10%;
+	grid-template-rows: auto auto;
 	grid-template-areas: "topleft topright"
 							"bottom bottom";
 	margin: 0px;
