@@ -27,17 +27,17 @@ body{
 	grid-template-columns: .2% 17% .2% 82.4% .2%;
 	grid-template-areas: "banner banner banner banner right"
 							"left sidebar middle content right"
-							"banner banner banner banner right";
+							"bannerimg bannerimg bannerimg bannerimg bannerimg";
 	box-shadow: -1px 0px 18px .2px black;
 
 }
 
 #bannergrid{
 	display: grid;
-	grid-area: banner;
 	background-image: url( 'img/banner.jpg' ) no-repeat;
 	background-size: cover;
 	width: 100%;
+	height: auto;
 	grid-template-columns:  auto 140px;
 	grid-template-rows: 45px auto;
 	grid-template-areas: "topleft topright"
@@ -48,6 +48,12 @@ body{
 
 #banner {
 	grid-area: banner;
+	width: auto;
+	height: auto;
+}
+
+#banner-img {
+	grid-area: bannerimg;
 	width: auto;
 	height: auto;
 }
