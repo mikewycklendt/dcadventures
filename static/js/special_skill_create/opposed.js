@@ -8,3 +8,20 @@ function opposed_by_check() {
 		opposed_by_base_form.style.opacity = "0%";
 	}
 }
+
+function opposed_by_by() {
+	opposed_by_by = document.getElementById("opposed_by_by")
+	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
+	opposed_by_entry = document.getElementById("opposed-by-entry")
+
+	if (pre_check_type_value != '') {
+		opposed_by_entry.style.display = "grid";
+		opposed_by_entry.style.padding = "1%";
+		opposed_by_entry.style.maxHeight = opposed_by_entry.scrollHeight + "px";
+		opposed_by_entry.style.padding = "1%";
+
+	} else {
+		opposed_by_entry.style.maxHeight = "0px";
+		opposed_by_entry.style.padding = "0px";
+	}
+}
