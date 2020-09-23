@@ -8,13 +8,13 @@
 .splash{
 	display: grid;
 	grid-area: contentpage;
-	height: 700px;
+	height: 800px;
 	width: 40vw;
 	margin-left: 7.5vw;
 	margin-right: 10vw;
 	vertical-align: middle;
 	grid-template-columns: 50% 50%;
-	grid-template-rows: 450px auto 100px;
+	grid-template-rows: 600px auto 50px;
 	grid-template-areas: "splash splash"
 							"signup about"
 							"below below";
