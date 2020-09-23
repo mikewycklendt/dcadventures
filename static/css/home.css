@@ -14,7 +14,7 @@
 	margin-right: 10vw;
 	vertical-align: middle;
 	grid-template-columns: 50% 50%;
-	grid-template-rows: 60vh auto 15vh;
+	grid-template-rows: 60% auto 10%;
 	grid-template-areas: "splash splash"
 							"signup about"
 							"below below";
