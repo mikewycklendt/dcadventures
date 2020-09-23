@@ -11,7 +11,7 @@ function opposed_by_check() {
 
 function opposed_by_by() {
 	const opposed_by_by = document.getElementById("opposed_by_by")
-	let opposed_by_by_value = pre_check_type.options[opposed_by_by.selectedIndex].value;
+	let opposed_by_by_value = opposed_by_by.options[opposed_by_by.selectedIndex].value;
 	console.log(opposed_by_by_value)
 	const opposed_by_entry = document.getElementById("opposed-by-entry")
 
