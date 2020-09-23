@@ -40,9 +40,8 @@ body{
 	height: auto;
 	grid-template-columns:  auto 15%;
 	grid-template-rows: auto;
-	grid-template-areas: "topleft topright"
+	grid-template-areas: "topleft topright";
 	margin: 0px;
-	
 }
 
 #banner {
