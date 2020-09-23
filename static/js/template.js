@@ -1,6 +1,6 @@
 function banner_size() {
-	const banner = document.getElementById("banner");
-	const banner_img = document.getElementById("banner-img");
-	const banner_height = banner_img.scrollHeight;
-	banner.style.height = banner_height + "px";
+	const banner_grid = document.getElementById("bannergrid");
+	const banner_img = document.getElementById("the-banner");
+	const banner_width = banner_img.scrollWidth
+	banner_grid.style.width = banner_width + "px";
 }
