@@ -6,7 +6,7 @@
 
 	<div id="char-base-form" style="transition: all .3s ease-out;">
 		<div>
-			<select id="char_type" name="char_type" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<select id="char_type" name="char_type" style="height: 4vh; font-size: 100%; padding: 0%;" onchange="char_base()">
 				<option value="">Check Type</option>
 				{% for check in checks %}
 					<option value={{check.id}}>{{check.name}}</option>
@@ -17,7 +17,7 @@
 		<div></div>
 
 		<div>
-			<select id="char_target" name="char_target" style="height: 4vh; font-size: 100%; padding: 0%; display: none;">
+			<select id="char_target" name="char_target" style="height: 4vh; font-size: 100%; padding: 0%;" onchange="char_base()">
 				<option value="">Target</option>
 				{% for target in targetS %}
 					<option value="{{target}}">{{target}}</option>
