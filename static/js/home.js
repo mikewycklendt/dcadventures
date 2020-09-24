@@ -17,4 +17,9 @@ function home_button_placement() {
 	below.style.height = splash_25 + "px";
 }
 
-window.onresize = home_button_placement;
+function resize_item() {
+	window.onresize = home_button_placement;
+}
+
+
+

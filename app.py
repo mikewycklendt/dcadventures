@@ -36,17 +36,18 @@ meta_name="DC Adventures Online"
 meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 title = 'DC Adventures Online Roleplqying Game'
 sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs"]
-scripts = [{'script': '/static/js/template.js'}]
+scripts = [{'script': 'banner_size();'}]
+}]
 
 @app.route('/')
-def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title, scripts=scripts):
+def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 	
 	title = 'DC Adventures Online: Create a Special Skill'
 	stylesheets.append({"style": "/static/css/home.css"})
-	scripts.append({'script': '/static/js/home.js'})
+	scripts.append({'script': 'home_button_placement();'})
 
-	return render_template('template.html', scripts=scripts, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	return render_template('template.html', script=script, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 @app.route('/skill/create')
 def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, scripts=scripts):

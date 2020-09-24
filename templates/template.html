@@ -9,9 +9,9 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
 		
-		{% for script in scripts %}
-		<script src="{{ script.script }}"></script>
-		{% endfor %}
+		<script src="/static/js/require.js"></script>
+		<script src="/static/js/template.js"></script>
+
 
 		{% for style in stylesheets %}
 		<link type="text/css" rel="stylesheet" href="{{ style.style }}"  />
@@ -19,7 +19,7 @@
 
 	</head>
 
-	<body onload="banner_size(); home_button_placement();">
+<body">
 
 		<div class="page" style="justify-items: center;">
 		<div class="container" style="justify-content: center;">
