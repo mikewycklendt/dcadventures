@@ -5,9 +5,9 @@ function home_button_placement() {
 	let sidebar_height = sidebargrid.scrollHeight;
 	console.log(sidebar_height);
 	splash.style.height = sidebar_height + "px";
-	blank = document.getElementById("blank")
-	buttons = document.getElementById("buttons")
-	below - document.getElementById("belos")
+	blank = document.getElementById("blank");
+	buttons = document.getElementById("buttons");
+	below - document.getElementById("belos");
 	splash_60 = sidebar_height * .6;
 	splash_15 = sidebar_height * .15;
 	splash_25 = sidebar_height * .25;
