@@ -26,7 +26,8 @@ body{
 	grid-template-rows: auto auto auto;
 	grid-template-columns: .2% 17% .2% 82.4% .2%;
 	grid-template-areas: "banner banner banner banner right"
-							"left sidebar middle content right";
+							"left sidebar middle content right"
+							"bottomleft bottomsidebar bottommiddle bottomcontent bottomright";
 	box-shadow: -1px 0px 18px .2px black;
 
 }
@@ -66,10 +67,6 @@ body{
 	grid-area: topleft;
 }
 
-#bottom{
-	grid-area: bottom;
-}
-
 #left{
 	grid-area: left;
 	background-color: #42abe0;
@@ -82,6 +79,21 @@ body{
 
 #right{
 	grid-area: right;
+	background-color: #42abe0;
+}
+
+#bottomleft{
+	grid-area: bottomleft;
+	background-color: #42abe0;
+}
+
+#bottommiddle{
+	grid-area: bottommiddle;
+	background-color: #42abe0;
+}
+
+#bottomright{
+	grid-area: bottomright;
 	background-color: #42abe0;
 }
 
@@ -110,11 +122,34 @@ body{
 	font-family: Nanum Gothic, Verdana;
 }
 
+
+#bottomcontent{
+	grid-area: bottomcontent;
+	display: grid;
+	width: 100%;
+	height: auto;
+	margin: 0px;
+	padding: 0px;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "contentbox";
+	font-family: Nanum Gothic, Verdana;
+}
+
 #sidebargrid{
 	grid-area: sidebar;
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
+	background-color: #1e507a;
+}
+
+#bottomsidebar{
+	grid-area: bottomsidebar;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #1e507a;
 }
 
 .btn-login{
