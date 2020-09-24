@@ -5,3 +5,5 @@ function banner_size() {
 	const banner_height = banner_img.scrollHeight
 	banner_grid.style.width = banner_width + "px";
 }
+
+window.onresize = banner_size;
