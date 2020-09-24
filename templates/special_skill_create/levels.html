@@ -9,13 +9,13 @@
 
 	<div id="levels-base-form" style="transition: all .3s ease-out;">
 		<div>
-			<input type="text" id="level_type" name="level_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of level">
+			<input type="text" id="level_type" name="level_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of level" onchange="levels_base()">
 		</div>
 
 		<div></div>
 
 		<div>
-			<select id="levels_dc_set" name="levels_dc_set" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<select id="levels_dc_set" name="levels_dc_set" style="height: 4vh; padding: 0%; font-size: 100%;" onchange="levels_base()">
 				<option value="">DC</option>
 				{% for class in dcclasses %}
 					<option value={{class}}>{{class}}</option>
@@ -24,7 +24,7 @@
 		</div>
 
 		<div>
-			<select id="levels_target" name="levels_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<select id="levels_target" name="levels_target" style="height: 4vh; font-size: 100%; padding: 0%;" onchange="levels_base()">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>

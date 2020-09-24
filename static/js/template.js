@@ -28,6 +28,4 @@ function banner_size() {
 	}
 }
 
-
 window.onresize = banner_size; 
-window.onload = banner_size;
