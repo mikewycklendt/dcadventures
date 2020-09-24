@@ -23,6 +23,7 @@
 }
 
 #blank{
+	display: block;
 	grid-area: splash;
 }
 
