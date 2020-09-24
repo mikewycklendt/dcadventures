@@ -14,8 +14,8 @@ function degree_base() {
 	const degree_target = document.getElementById("degree_target");
 	degrees_target =  degree_target.options[degree_target.selectedIndex].value;
 	degrees_type = degree_type.value;
-	console.log(degree_target);
-	console.log(degree_type);
+	console.log(degrees_target);
+	console.log(degrees_type);
 	const degree_entry = document.getElementById("degree-entry");
 
 	if (degrees_type != '' && degrees_target != '') {
