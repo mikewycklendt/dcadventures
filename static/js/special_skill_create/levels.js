@@ -14,7 +14,7 @@ function levels_base() {
 	const level_dc_set = document.getElementById("levels_dc_set");
 	const level_target = document.getElementById("levels_target");
 	levels_dc =  level_dc_set.options[level_dc_set.selectedIndex].value;
-	levels_target =  level_type.options[level_target.selectedIndex].value;
+	levels_target =  level_target.options[level_target.selectedIndex].value;
 	levels_type = level_type.value;
 	console.log(opposed_by_by_value)
 	const levels_entry = document.getElementById("levels-entry")
