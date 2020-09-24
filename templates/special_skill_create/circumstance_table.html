@@ -6,7 +6,7 @@
 
 	<div id="circ-base-form" style="opacity: 0%; opacity: 0%; transition: all .3s ease-out;">
 		<div>
-			<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<select id="circ_skill" name="circ_skill" style="height: 4vh; padding: 0%; font-size: 100%;" onchange="circ_base()">
 				<option value="">Check Type</option>
 				<option value="this">This Skill</option>
 				{% for skill in skills %}
@@ -16,7 +16,7 @@
 		</div>
 	
 		<div>
-			<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;">
+			<select id="circ_target" name="circ_target" style="height: 4vh; padding: 0%; font-size: 100%;" onchange="circ_base()">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
