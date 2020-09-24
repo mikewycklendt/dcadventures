@@ -16,8 +16,10 @@ function levels_base() {
 	levels_dc =  level_dc_set.options[level_dc_set.selectedIndex].value;
 	levels_target =  level_target.options[level_target.selectedIndex].value;
 	levels_type = level_type.value;
-	console.log(opposed_by_by_value)
-	const levels_entry = document.getElementById("levels-entry")
+	console.log(levels_dc);
+	console.log(levels_target);
+	console.log(levels_type);
+	const levels_entry = document.getElementById("levels-entry");
 
 	if (levels_type != '' && levels_target != '' && levels_dc != '') {
 		levels_entry.style.display = "grid";
