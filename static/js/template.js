@@ -35,5 +35,5 @@ function resize_item() {
 	}	
 }
 
-window.onresize = banner_size; 
-window.onload = banner_size;
+window.onresize = resize_item; 
+window.onload = resize_item;
