@@ -6,13 +6,13 @@
 
 	<div id="degree-base-form" style="transition: all .3s ease-out;">
 		<div>
-			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result">
+			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result" onblur="degree_base()">
 		</div>
 
 		<div></div>
 
 		<div>
-			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;">
+			<select id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;" onchange="degree_base()">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
