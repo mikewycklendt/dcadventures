@@ -5,7 +5,7 @@
 	grid-template-areas: "contentpage";
 }
 
-#splash{
+.splash{
 	display: grid;
 	grid-area: contentpage;
 	height: auto;
