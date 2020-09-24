@@ -8,3 +8,20 @@ function resist_check() {
 		resist_target.style.opacity = "0%";
 	}
 }
+
+function resist_base() {
+	const resist_target = document.getElementById("resist_target");
+	resisttarget =  deg_mod_target.options[resist_target.selectedIndex].value;
+	console.log(resisttarget);
+	const resist_entry = document.getElementById("resist-entry");
+
+	if (resisttarget != '') {
+		resist_entry.style.display = "grid";
+		resist_entry.style.padding = "1%";
+		resist_entry.style.maxHeight = resist_entry.scrollHeight + "px";
+		resist_entry.style.padding = "1%";
+	} else {
+		resist_entry.style.maxHeight = "0px";
+		resist_entry.style.padding = "0px";
+	}
+}
