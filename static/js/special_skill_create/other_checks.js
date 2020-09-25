@@ -23,9 +23,9 @@ function other_submit() {
 	table.style.maxHeight = table.scrollHeight + "px";
 	table.style.padding = "1%";
 	
-	let skill_value = document.getElementById('other_skill').value;
-	let examples_field = document.getElementById('other_examples');
-	let examples_value =  examples_field.options[examples_field.selectedIndex].value; 
+	let examples_value = document.getElementById('other_examples').value;
+	let skill_field = document.getElementById('other_skill');
+	let skill_value =  skill_field.options[skill_field.selectedIndex].value; 
 
 	console.log
 	
