@@ -74,10 +74,13 @@ deleteItem = function() {
 			console.log('click')
 			skills[i].style.maxHeight = "0px";
 			skills[i].style.padding = "0px";
+			skills[i].style.marginBottom = "0px";
 			examples[i].style.maxHeight = "0px";
 			examples[i].style.padding = "0px";
+			examples[i].style.marginBottom = "0px";
 			deletesDiv[i].style.maxHeight = "0px";
 			deletesDiv[i].style.padding = "0px";
+			deletesDiv[i].style.marginBottom = "0px";
 		}
 	}
 };
