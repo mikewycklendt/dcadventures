@@ -11,7 +11,7 @@ function other_check() {
 		other_entry.style.maxHeight = "0px";
 		other_entry.style.padding = "0px";
 	}
-}
+};
 
 other_enter = 0;
 
@@ -59,7 +59,7 @@ function other_submit() {
 		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 	}
-}
+};
 
 deleteItem = function() {
 	const deletes = document.querySelectorAll('.other-xbox');
@@ -78,6 +78,6 @@ deleteItem = function() {
 			deletesDiv[i].style.padding = "0px";
 		}
 	}
-}
+};
 
 deleteItem();
