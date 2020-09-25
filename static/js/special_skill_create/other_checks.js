@@ -57,6 +57,6 @@ function other_submit() {
 		skill.style.maxHeight = skill.scrollHeight + "px";
 		examples.style.maxHeight = examples.scrollHeight + "px";
 		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.maxHeight = table.scrollHeight + 20 + "px";
 	}
 }
