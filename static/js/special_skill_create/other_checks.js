@@ -69,6 +69,7 @@ deleteItem = function() {
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
+			console.log('click')
 			skills[i].style.maxHeight = "0px";
 			skills[i].style.padding = "0px";
 			examples[i].style.maxHeight = "0px";
