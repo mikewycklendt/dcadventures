@@ -61,7 +61,7 @@ function other_submit() {
 	}
 }
 
-deleteItem = function() {
+function deleteItem() {
 	const deletes = document.getElementsByClassName('other-xbox');
 	const skills = document.getElementsByClassName('other-table-skill')
 	const examples = document.getElementsByClassName('other-table-examples')
