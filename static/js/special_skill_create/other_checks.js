@@ -80,4 +80,4 @@ function deleteItem() {
 	}
 }
 
-deleteItem();
+deleteItem
