@@ -62,7 +62,7 @@ function other_submit() {
 }
 
 deleteItem = function() {
-	const deletes = document.querySelectorAll('.other-xbox');
+	const deletes = document.getElementsByClassName('other-xbox');
 	const skills = document.getElementsByClassName('other-table-skill')
 	const examples = document.getElementsByClassName('other-table-examples')
 	const deletesDiv = document.getElementsByClassName('other-table-delete')
