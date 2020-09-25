@@ -26,16 +26,21 @@ function other_submit() {
 	let skill_value = document.getElementById('other_skill').value;
 	let examples_field = document.getElementById('other_examples');
 	let examples_value =  examples_field.options[examples_field.selectedIndex].value; 
+
+	console.log
 	
 	if (skill_value != '' && examples_value != '') {
 
-		const skill = document.createElement('#other-table-skill');
+		const skill = document.createElement('div');
+		skill.className = 'other-table-skill'
 		skill.innerHTML = skill_value;
 
-		const examples = document.createElement('#other-table-examples');
+		const examples = document.createElement('div');
+		examples.className = 'other-table-examples'
 		examples.innerHTML = examples_value;
 	
-		const otherDelete = document.createElement('#other-table-delete');
+		const otherDelete = document.createElement('div');
+		otherDelete.className = 'other-table-delete'
 		const deleteBtn = document.createElement('button');
 		deleteBtn.className = 'other-xbox';
 		deleteBtn.innerHTML = '&cross;';
