@@ -60,3 +60,21 @@ function other_submit() {
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 	}
 }
+
+deleteItem = function() {
+	const deletes = document.querySelectorAll('.other-xbox');
+	const skills = document.getElementsByClassName('other-table-skill')
+	const examples = document.getElementsByClassName('other-table-examples')
+	const deletesDiv = document.getElementsByClassName('other-table-delete')
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			skills[i].style.maxHeight = "0px";
+			skills[i].style.padding = "0px";
+			examples[i].style.maxHeight = "0px";
+			examples[i].style.padding = "0px";
+			deletesDiv[i].style.maxHeight = "0px";
+			deletesDiv[i].style.padding = "0px";
+		}
+	}
+}
