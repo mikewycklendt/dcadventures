@@ -78,3 +78,5 @@ deleteItem = function() {
 		}
 	}
 }
+
+deleteItem();
