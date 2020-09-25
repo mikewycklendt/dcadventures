@@ -61,11 +61,11 @@ function other_submit() {
 	}
 }
 
-function deleteItem() {
-	const deletes = document.getElementsByClassName('other-xbox');
-	const skills = document.getElementsByClassName('other-table-skill')
-	const examples = document.getElementsByClassName('other-table-examples')
-	const deletesDiv = document.getElementsByClassName('other-table-delete')
+deleteItem = function() {
+	const deletes = document.querySelectorAll('.other-xbox');
+	const skills = document.getElementsByClassName('other-table-skill');
+	const examples = document.getElementsByClassName('other-table-examples');
+	const deletesDiv = document.getElementsByClassName('other-table-delete');
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
@@ -80,4 +80,4 @@ function deleteItem() {
 	}
 }
 
-deleteItem
+deleteItem();
