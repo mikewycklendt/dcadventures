@@ -53,6 +53,7 @@ function other_submit() {
 		table.appendChild(examples);
 		table.appendChild(otherDelete);
 
+		table.style.maxHeight = table.scrollHeight + "px";
 		skill.style.maxHeight = skill.scrollHeight + "px";
 		examples.style.maxHeight = examples.scrollHeight + "px";
 		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
