@@ -12,3 +12,77 @@ function power_check() {
 		power_entry.style.padding = "0px";
 	}
 }
+
+power_enter = 0;
+
+function power_submit() {
+	const table = document.getElementById('power-table');
+
+	table.style.display = "grid";
+	table.style.padding = "1%";
+	table.style.maxHeight = table.scrollHeight + "px";
+	table.style.padding = "1%";
+	
+	let sit_value = document.getElementById('power_sit').value;
+	let power_field = document.getElementById('power');
+	let power_value = power_field.options[power_field.selectedIndex].value; 
+
+	console.log
+	
+	if (sit_value != '' && power_value != '') {
+
+		const pwr = document.createElement('div');
+		pwr.className = 'power-table-power'
+		pwr.innerHTML = power_value;
+
+		const sit = document.createElement('div');
+		sit.className = 'power-table-sit'
+		sit.innerHTML = sit_value;
+	
+		const pwrDelete = document.createElement('div');
+		pwrDelete.className = 'power-table-delete'
+		const deleteBtn = document.createElement('button');
+		deleteBtn.className = 'power-xbox';
+		deleteBtn.innerHTML = '&cross;';
+		deleteBtn.setAttribute('data-id', power_enter);
+		pwrDelete.appendChild(deleteBtn);
+
+		power_enter = power_enter + 1;
+	
+		table.appendChild(pwr);
+		table.appendChild(sit);
+		table.appendChild(pwrDelete);
+
+		
+		pwr.style.maxHeight = skill.scrollHeight + "px";
+		sit.style.maxHeight = examples.scrollHeight + "px";
+		pwrDelete.style.maxHeight = otherDelete.scrollHeight + "px";
+		table.style.maxHeight = table.scrollHeight + 20 + "px";
+
+		power_delete()
+	}
+};
+
+power_delete = function() {
+	const deletes = document.querySelectorAll('.power-xbox');
+	const pwrs = document.getElementsByClassName('power-table-power');
+	const sits = document.getElementsByClassName('power-table-sit');
+	const deletesDiv = document.getElementsByClassName('power-table-delete');
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+			pwrs[i].style.maxHeight = "0px";
+			pwrs[i].style.padding = "0px";
+			pwrs[i].style.marginBottom = "0px";
+			sits[i].style.maxHeight = "0px";
+			sits[i].style.padding = "0px";
+			sits[i].style.marginBottom = "0px";
+			deletesDiv[i].style.maxHeight = "0px";
+			deletesDiv[i].style.padding = "0px";
+			deletesDiv[i].style.marginBottom = "0px";
+		}
+	}
+};
+
+power_delete();
