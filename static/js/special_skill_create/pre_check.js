@@ -89,7 +89,7 @@ function pre_check_standard_submit() {
 		standard_table.appendChild(skill);
 		standard_table.appendChild(circ);
 
-		table.appendChild(standardDelete);
+		standard_table.appendChild(standardDelete);
 
 		
 		skill.style.maxHeight = skill.scrollHeight + "px";
