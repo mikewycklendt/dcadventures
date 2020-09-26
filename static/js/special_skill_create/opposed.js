@@ -39,7 +39,7 @@ function opposed_by_submit() {
 	let sit_value = document.getElementById('opposed_by_sit').value;
 	let opposed_field = document.getElementById('opposed_by');
 	let mod_field = document.getElementById('opposed_by_mod');
-	let opposed_by_field = document.getElementById('opposed_by_by');
+	let opposed_by_field = document.getElementById('opposed-by-base-form');
 	let opposed_value =  opposed_field.options[opposed_field.selectedIndex].value;
 	let mod_value =  mod_field.options[mod_field.selectedIndex].value; 
 
