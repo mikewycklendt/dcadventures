@@ -77,9 +77,12 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 7% 23% 70%;
+	grid-template-columns: 7% 23% 65% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #levels-table-title {
@@ -98,6 +101,9 @@
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #levels-table-level {
@@ -107,6 +113,9 @@
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #levels-table-effect {
@@ -116,4 +125,17 @@
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
+
+#levels-table-type {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
