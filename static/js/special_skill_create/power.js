@@ -54,9 +54,9 @@ function power_submit() {
 		table.appendChild(pwrDelete);
 
 		
-		pwr.style.maxHeight = skill.scrollHeight + "px";
-		sit.style.maxHeight = examples.scrollHeight + "px";
-		pwrDelete.style.maxHeight = otherDelete.scrollHeight + "px";
+		pwr.style.maxHeight = pwr.scrollHeight + "px";
+		sit.style.maxHeight = sit.scrollHeight + "px";
+		pwrDelete.style.maxHeight = pwrDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
 		power_delete()
