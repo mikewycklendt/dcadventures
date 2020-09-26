@@ -100,7 +100,7 @@ function levels_submit() {
 };
 
 levels_delete = function() {
-	const deletes = document.querySelectorAll('levels-xbox');
+	const deletes = document.querySelectorAll('.levels-xbox');
 	const dcs = document.getElementsByClassName('levels-table-dc');
 	const lvls = document.getElementsByClassName('levels-table-level');
 	const efcts = document.getElementsByClassName('levels-table-effect');
