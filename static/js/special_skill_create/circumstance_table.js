@@ -28,3 +28,50 @@ function circ_base() {
 		circ_entry.style.padding = "0px";
 	}
 }
+
+
+function circ_mod() {
+	let circ_mod_type_field = document.getElementById('circ_mod_type');
+	let circ_mod_type_value =  circ_mod_type_field.options[circ_mod_type_field.selectedIndex].value;
+	let mod_field = document.getElementById('circ-mod-field');
+	let value_field = document.getElementById('circ-mod-value');
+	let math_field = document.getElementById('circ-mod-math');
+	let adjust_field = document.getElementById('circ-mod-adjust');
+
+	if (circ_mod_type_value = 'value') {
+		value_field.style.display = "grid";
+		value_field.style.maxHeight = value_field.scrollHeight + "px";
+		mod_field.style.display = "grid";
+		mod_field.style.maxHeight = mod_field.scrollHeight + 20 + "px";
+		math_field.style.display = "none";
+		adjust_field.style.display = "none"
+	} else if (circ_mod_type_value = 'math') {
+		math_field.style.display = "grid";
+		math_field.style.maxHeight = value_field.scrollHeight + "px";
+		mod_field.style.display = "grid";
+		mod_field.style.maxHeight = mod_field.scrollHeight + 20 + "px";
+		value_field.style.display = "none";
+		adjust_field.style.display = "none"
+	} else if (circ_mod_type_value = 'Adjust') {
+		adjust_field.style.display = "grid";
+		adjust_field.style.maxHeight = value_field.scrollHeight + "px";
+		mod_field.style.display = "grid";
+		mod_field.style.maxHeight = mod_field.scrollHeight + 20 + "px";
+		math_field.style.display = "none";
+		math_field.style.display = "none"
+	} else if (circ_mod_type_value = 'No equipment') {
+		value_field.style.display = "grid";
+		value_field.style.maxHeight = value_field.scrollHeight + "px";
+		mod_field.style.display = "grid";
+		mod_field.style.maxHeight = mod_field.scrollHeight + 20 + "px";
+		math_field.style.display = "none";
+		adjust_field.style.display = "none"
+	} else {
+		mod_field.style.maxHeight = "0px";
+		mod_field.style.padding = "0px";
+		math_field.style.display = "none";
+		value_field.style.display = "none";
+		adjust_field.style.display = "none"
+	}
+
+};
