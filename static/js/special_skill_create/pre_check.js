@@ -76,7 +76,7 @@ function pre_check_standard_submit() {
 		circ.innerHTML = standard_circ_value;
 	
 		const standardDelete = document.createElement('div');
-		standardDelete.className = 'pre-check-table-standard-delete'
+		standardDelete.className = 'pre-check-table-delete'
 		const deleteBtn = document.createElement('button');
 		deleteBtn.className = 'pre-check-standard-xbox';
 		deleteBtn.innerHTML = '&cross;';
