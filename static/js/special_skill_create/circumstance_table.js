@@ -1,4 +1,4 @@
-function circ_check() {
+function circumstance_check() {
 	const circ_check = document.getElementById("circ_check");
 	const circ_base_form = document.getElementById("circ-base-form");
 	
