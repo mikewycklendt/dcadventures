@@ -68,7 +68,7 @@ function pre_check_standard_submit() {
 		skill.innerHTML = standard_skill_value;
 
 		const when = document.createElement('div');
-		when.className = 'pre-checkr-table-when'
+		when.className = 'pre-check-table-when'
 		when.innerHTML = standard_when_value;
 
 		const circ = document.createElement('div');
