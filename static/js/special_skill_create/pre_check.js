@@ -164,8 +164,8 @@ function pre_check_opposed_submit() {
 		when.innerHTML = opposed_when_value;
 		
 		const opposed = document.createElement('div');
-		when.className = 'pre-check-table-opposedby'
-		when.innerHTML = opposed_value;
+		opposed.className = 'pre-check-table-opposedby'
+		opposed.innerHTML = opposed_value;
 
 		const circ = document.createElement('div');
 		circ.className = 'pre-check-table-opposed-circ'
