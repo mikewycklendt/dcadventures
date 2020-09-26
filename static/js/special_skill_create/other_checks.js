@@ -59,11 +59,11 @@ function other_submit() {
 		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
-		deleteItem()
+		other_delete()
 	}
 };
 
-deleteItem = function() {
+other_delete = function() {
 	const deletes = document.querySelectorAll('.other-xbox');
 	const skills = document.getElementsByClassName('other-table-skill');
 	const examples = document.getElementsByClassName('other-table-examples');
@@ -85,4 +85,4 @@ deleteItem = function() {
 	}
 };
 
-deleteItem();
+other_delete();
