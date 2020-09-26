@@ -48,7 +48,7 @@ function pre_check_standard_submit() {
 
 	standard_table.style.display = "grid";
 	standard_table.style.padding = "1%";
-	standard_table.style.maxHeight = table.scrollHeight + "px";
+	standard_table.style.maxHeight = standard_table.scrollHeight + "px";
 	standard_table.style.padding = "1%";
 	
 	let standard_circ_value = document.getElementById('pre_check_circ').value;
@@ -137,7 +137,7 @@ function pre_check_opposed_submit() {
 
 	opposed_table.style.display = "grid";
 	opposed_table.style.padding = "1%";
-	opposed_table.style.maxHeight = table.scrollHeight + "px";
+	opposed_table.style.maxHeight = opposed_table.scrollHeight + "px";
 	opposed_table.style.padding = "1%";
 	
 	let opposed_circ_value = document.getElementById('pre_check_opposed_circ').value;
