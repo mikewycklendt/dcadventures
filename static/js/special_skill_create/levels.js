@@ -89,10 +89,10 @@ function levels_submit() {
 		table.appendChild(lvlDelete);
 
 		
-		dc.style.maxHeight = skill.scrollHeight + "px";
-		lvl.style.maxHeight = skill.scrollHeight + "px";
-		efct.style.maxHeight = skill.scrollHeight + "px";
-		lvlDelete.style.maxHeight = skill.scrollHeight + "px";
+		dc.style.maxHeight = dc.scrollHeight + "px";
+		lvl.style.maxHeight = lvl.scrollHeight + "px";
+		efct.style.maxHeight = efct.scrollHeight + "px";
+		lvlDelete.style.maxHeight = lvlDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
 		levels_delete()
