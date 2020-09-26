@@ -82,6 +82,9 @@
 	width: 85%;
 	height: auto;
 	padding: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #circ-mod-math {
@@ -91,6 +94,9 @@
 	padding: 4px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #circ-mod-adjust {
@@ -100,6 +106,9 @@
 	padding: 4px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #circ-add {
@@ -116,6 +125,9 @@
 	grid-template-columns: 30% 15% 55%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #circ-table-title {
@@ -127,29 +139,48 @@
 	margin-bottom: 4px;
 }
 
-#circ-table-modifier {
+.circ-table-modifier {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#circ-table-roundss {
+.circ-table-rounds {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#circ-table-circ {
+.circ-table-circ {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
-	height: auto;
+	height: auto;max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.circ-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
