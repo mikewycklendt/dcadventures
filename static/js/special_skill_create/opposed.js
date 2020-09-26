@@ -53,7 +53,7 @@ function opposed_by_submit() {
 		mod.innerHTML = mod_value;
 
 		const sit = document.createElement('div');
-		sit.className = 'opposed-by-table-oppose'
+		sit.className = 'opposed-by-table-sit'
 		sit.innerHTML = sit_value;
 
 		const oppDelete = document.createElement('div');
