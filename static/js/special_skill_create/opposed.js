@@ -41,6 +41,8 @@ function opposed_by_submit() {
 	let mod_field = document.getElementById('opposed_by_mod');
 	let opposed_value =  opposed_field.options[opposed_field.selectedIndex].value;
 	let mod_value =  mod_field.options[mod_field.selectedIndex].value; 
+
+	console.log(sit_value)
 	
 	if (opposed_value != '' && mod_value != '' && sit_value != '') {
 
