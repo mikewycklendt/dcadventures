@@ -106,7 +106,7 @@
 	transition: all .4s ease-out;
 }
 
-#levels-table-level {
+.levels-table-level {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -118,7 +118,7 @@
 	transition: all .4s ease-out;
 }
 
-#levels-table-effect {
+.levels-table-effect {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -130,7 +130,16 @@
 	transition: all .4s ease-out;
 }
 
-#levels-table-type {
+.levels-table-type {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+}
+
+.levels-table-delete {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
