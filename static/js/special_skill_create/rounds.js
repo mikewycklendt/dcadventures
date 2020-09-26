@@ -79,6 +79,7 @@ function rounds_submit() {
 		rank.style.maxHeight = rank.scrollHeight + "px";
 		mod.style.maxHeight = mod.scrollHeight + "px";
 		rnd.style.maxHeight = rnd.scrollHeight + "px";
+		rndDelete.style.maxHeight = rndDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
 		rounds_delete()
