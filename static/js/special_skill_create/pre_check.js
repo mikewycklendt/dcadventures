@@ -186,7 +186,7 @@ function pre_check_opposed_submit() {
 		opposed_table.appendChild(opposed);
 		opposed_table.appendChild(circ);
 
-		table.appendChild(oDelete);
+		opposed_table.appendChild(opposedDelete);
 
 		
 		skill.style.maxHeight = skill.scrollHeight + "px";
