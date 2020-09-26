@@ -160,7 +160,7 @@ function pre_check_opposed_submit() {
 		skill.innerHTML = opposed_skill_value;
 
 		const when = document.createElement('div');
-		when.className = 'pre-checkr-table-opposed-when'
+		when.className = 'pre-check-table-opposed-when'
 		when.innerHTML = opposed_when_value;
 		
 		const opposed = document.createElement('div');
