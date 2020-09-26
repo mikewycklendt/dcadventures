@@ -153,7 +153,7 @@ function pre_check_opposed_submit() {
 	console.log(opposed_skill_value);
 	console.log(opposed_value);
 	
-	if (standard_skill_value != '' && standard_circ_value != '' && standard_when_value != '') {
+	if (opposed_skill_value != '' && opposed_circ_value != '' && opposed_when_value != '' && opposed_value != '') {
 
 		const skill = document.createElement('div');
 		skill.className = 'pre-check-table-opposed-skill'
