@@ -55,7 +55,7 @@ function opposed_by_submit() {
 		mod.innerHTML = mod_value;
 
 		const sit = document.createElement('div');
-		sit.className = 'opposed-by-table-sit'
+		sit.className = 'opposed-by-table-sit';
 		sit.innerHTML = sit_value;
 
 		const oppDelete = document.createElement('div');
@@ -76,6 +76,7 @@ function opposed_by_submit() {
 		
 		opp.style.maxHeight = opp.scrollHeight + "px";
 		mod.style.maxHeight = mod.scrollHeight + "px";
+		sit.style.maxHeight = sit.scrollHeight + "px";
 		oppDelete.style.maxHeight = oppDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
