@@ -12,3 +12,4 @@ function movement_check() {
 		move_entry.style.padding = "0px";
 	}
 }
+
