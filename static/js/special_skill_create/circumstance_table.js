@@ -29,8 +29,6 @@ function circ_base() {
 	}
 }
 
-CIRC_enter = 0;
-
 function circ_mod() {
 	
 	let mod_field = document.getElementById('opposed_by_mod');
