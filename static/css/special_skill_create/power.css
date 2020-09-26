@@ -36,7 +36,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 25% 65% 10%;
+	grid-template-columns: 25% 60% 3% 10%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
@@ -57,7 +57,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 23% 70%;
+	grid-template-columns: 23% 65% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
