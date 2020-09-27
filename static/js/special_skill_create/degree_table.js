@@ -66,7 +66,7 @@ function degree_submit() {
 		key.innerHTML = key_value;
 
 		const desc = document.createElement('div');
-		desc.className = 'degree-table-deg'
+		desc.className = 'degree-table-desc'
 		desc.innerHTML = desc_value;
 
 		const degDelete = document.createElement('div');
