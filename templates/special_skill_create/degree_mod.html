@@ -42,7 +42,7 @@
 
 		
 			<div id="deg-mod-damage-field">
-				<select id="deg_mod_damage_type" name="deg_mod_damage_type" style="height: 3vh; padding: 0%; font-size: 80%;">
+				<select id="deg_mod_damage_type" name="deg_mod_damage_type" style="height: 3vh; padding: 0%; font-size: 80%;" onchange="deg_mod_damage_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
 						<option value="{{type}}">{{type}}</option>
@@ -129,7 +129,7 @@
 		<div id="deg-mod-measure" style="display: none;">
 
 			<div id="deg-mod-field">
-				<select id="deg_mod_measure_type" name="deg_mod_measure_type" style="height: 3vh; padding: 0%; font-size: 80%;">
+				<select id="deg_mod_measure_type" name="deg_mod_measure_type" style="height: 3vh; padding: 0%; font-size: 80%;" onchange="deg_mod_measure_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
 						<option value="{{type}}">{{type}}</option>
