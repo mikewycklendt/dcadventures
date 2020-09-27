@@ -5,7 +5,7 @@
 	</div>
 
 	<div id="degree-base-form" style="transition: all .3s ease-out;">
-		<div>
+		<div id="degree-type" style="transition: all .3s ease-out;">
 			<input type="text" id="degree_type" name="degree_type" style="height: 1vh; font-size: 80%; width: 85%; margin-top: 2px;" placeholder="Type of Result" onblur="degree_base()">
 		</div>
 
@@ -56,7 +56,7 @@
 	</div>
 
 	<div id="degree-add">
-		<div class="btn" id="degree_add" style="height: 95%; padding: 3px; font-size: 95%;">
+		<div class="btn" id="degree_add" style="height: 95%; padding: 3px; font-size: 95%;" onclick="degree_submit()">
 			<center>
 				<i class="fa fa-plus"></i>   Add
 			</center>
@@ -68,6 +68,16 @@
 </div>
 
 	<div id="degree-table" style="display: none;">
+
+		<div></div>
+		<div></div>
+		<div id="degree-table-type"></div>
+		<div></div>
+
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
 
 		<div id="levels-table-title">
 			Degree:
@@ -81,17 +91,7 @@
 			Description:
 		</div>
 
-		<div id="levels-table-degree">
-			1
-		</div>
-		
-		<div id="degree-table-keyword">
-			General
-		</div>
-		
-		<div id="degree-table-description">
-			Information concerns local happenings, rummors, gossip and the like 
-		</div>
+		<div></div>
 
 	</div>
 					
