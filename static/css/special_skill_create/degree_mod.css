@@ -112,6 +112,9 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-damage {
@@ -120,6 +123,9 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-condition {
@@ -129,6 +135,9 @@
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-measure-math {
@@ -136,6 +145,9 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 15% 30% 30% 25%;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-measure-value {
@@ -143,6 +155,9 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 30% 70%;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-damage-math {
@@ -150,6 +165,9 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 20% 20% 20% 20% 20%;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-damage-value {
@@ -157,6 +175,9 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 25% 25% auto;
+	max-width: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #deg-mod-add {
@@ -170,7 +191,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 10% 20% 12% 43% 15%;
+	grid-template-columns: 10% 20% 12% 38% 15% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
@@ -184,47 +205,74 @@
 	margin-bottom: 4px;
 }
 
-#deg-mod-table-deg {
+.deg-mod-table-deg {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#deg-mod-table-effect {
+.deg-mod-table-effect {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#deg-mod-table-keyword {
+.deg-mod-table-keyword {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#deg-mod-table-desc {
+.deg-mod-table-desc {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#deg-mod-table-nullify {
+.deg-mod-table-null {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.deg-mod-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
