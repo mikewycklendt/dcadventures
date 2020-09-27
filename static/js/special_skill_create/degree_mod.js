@@ -57,9 +57,9 @@ function deg_mod_type() {
 
 		
 		measure.style.display = "none";
-		measure.style.maxWidth = "0px";
+		measure.style.opacity = "0%";
 		condition.style.display = "none";
-		condition.style.maxWidth = "0px";
+		condition.style.opacity = "0%";
 	} else if (deg_mod_type_value == 'measure') {
 		measure.style.display = "grid";
 		measure.style.opacity = "100%";
