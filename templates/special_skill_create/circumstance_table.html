@@ -50,9 +50,8 @@
 
 			<select id="circ_mod_type" name="circ_mod_type" style="height: 3vh; padding: 0%; font-size: 90%;" onchange="circ_mod()">
 				<option value="">Modifier</option>
-				{% for value in value_type %}
-					<option value="{{value}}">{{value}}</option>
-				{% endfor %}
+				<option value="value">Value</option>
+				<option value="math">Units</option>
 				<option value="adjust">Adjust</option>
 				<option value="noequip">No equipment</option>
 			</select>
@@ -121,7 +120,7 @@
 			<div>
 
 				<select id="circ_mod_unit" name="circ_mod_unit" style="height: 3vh; padding: 0%; font-size: 90%;">
-					<option value="">Modifier</option>
+					<option value="">unit</option>
 					{% for unit in units %}
 						<option value={{unit.id}}>{{unit.name}}</option>
 					{% endfor %}

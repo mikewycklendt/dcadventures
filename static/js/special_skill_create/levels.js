@@ -40,12 +40,12 @@ function levels_submit() {
 	let trgt_field = document.getElementById('levels_target');
 	let trgt_value = trgt_field.options[trgt_field.selectedIndex].value;
 	let type_value = document.getElementById('level_type').value;
-	let type_field = document.getElementById('level_type');
+	let level_type_field = document.getElementById('level-type');
 
 	const level_type = document.getElementById('levels-table-type');
 
 	level_type.innerHTML = type_value;
-	type_field.style.opacity = "0%;"
+	level_type_field.style.opacity = "0%;"
 
 	table.style.display = "grid";
 	table.style.padding = "1%";
