@@ -115,7 +115,7 @@ function circ_submit() {
 	let modifier_value = modifier_field.options[modifier_field.selectedIndex].value;
 	let mod_value = mod_field.options[mod_field.selectedIndex].value;
 	let unit_value = unit_field.options[unit_field.selectedIndex].value;
-	let chk_value = chk_field.option[chk_field.selectedIndex].value;
+	let chk_value = chk_field.options[chk_field.selectedIndex].value;
 	let adj_value = adj_field.options[adj_field.selectedIndex].value;
 	let rank_value = rank_field.options[rank_field.selectedIndex].value;
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value;
