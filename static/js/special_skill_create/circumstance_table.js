@@ -39,6 +39,21 @@ function circ_mod() {
 	const adjust_field = document.getElementById('circ-mod-adjust');
 	const circ_entry = document.getElementById("circ-entry");
 
+	let modifier_field = document.getElementById('circ_modifier');
+	let mod_field = document.getElementById('circ_mod');
+	let unit_field = document.getElementById('circ_mod_unit');
+	let chk_field = document.getElementById('circ_adjust_check');
+	let adj_field = document.getElementById('circ_adjust_mod');
+	let rank_field = document.getElementById('circ_adjust_rank');
+
+	let val_value = document.getElementById('circ_mod_value').value;
+
+	let modifier_value = modifier_field.options[modifier_field.selectedIndex].value;
+	let mod_value = mod_field.options[mod_field.selectedIndex].value;
+	let unit_value = unit_field.options[unit_field.selectedIndex].value;
+	let chk_value = chk_field.options[chk_field.selectedIndex].value;
+	let adj_value = adj_field.options[adj_field.selectedIndex].value;
+	let rank_value = rank_field.options[rank_field.selectedIndex].value;
 
 	if (circ_mod_type_value == 'value') {
 		value_field.style.display = "grid";
@@ -49,6 +64,12 @@ function circ_mod() {
 		math_field.style.maxHeight = "0px";
 		adjust_field.style.display = "none";
 		adjust_field.style.maxHeight = "0px";
+		mod_value = '';
+		unit_value = '';
+		chk_value = '';
+		adj_value = '';
+		rank_value = '';
+		val_value = '';
 	} else if (circ_mod_type_value == 'math') {
 		math_field.style.display = "grid";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + math_field.scrollHeight + "px";
@@ -58,6 +79,10 @@ function circ_mod() {
 		value_field.style.maxHeight = "0px";
 		adjust_field.style.display = "none";
 		adjust_field.style.maxHeight = "0px";
+		modifier_value = '';
+		chk_value = '';
+		adj_value = '';
+		rank_value = '';
 	} else if (circ_mod_type_value == 'adjust') {
 		adjust_field.style.display = "grid";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + adjust_field.scrollHeight+ "px";
@@ -67,6 +92,10 @@ function circ_mod() {
 		value_field.style.maxHeight = "0px";
 		math_field.style.display = "none";
 		math_field.style.maxHeight = "0px";
+		modifier_value = '';
+		mod_value = '';
+		unit_value = '';
+		val_value = '';
 	} else if (circ_mod_type_value == 'noequip') {
 		value_field.style.display = "grid";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + value_field.scrollHeight + "px";
