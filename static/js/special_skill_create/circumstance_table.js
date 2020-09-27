@@ -105,16 +105,15 @@ function circ_submit() {
 	let rnd_field = document.getElementById('circ_mod_rounds');
 	let modifier_field = document.getElementById('circ_modifier');
 	let mod_field = document.getElementById('circ_mod');
-	let val_field = document.getElementById('circ_mod_value');
 	let unit_field = document.getElementById('circ_mod_unit');
 	let chk_field = document.getElementById('circ_adjust_check');
 	let adj_field = document.getElementById('circ_adjust_mod');
 	let rank_field = document.getElementById('circ_adjust_rank');
 
+	let val_value = document.getElementById('circ_mod_value').value;
 
 	let modifier_value = modifier_field.options[modifier_field.selectedIndex].value;
 	let mod_value = mod_field.options[mod_field.selectedIndex].value;
-	let val_value = val_field.options[val_field.selectedIndex].value;
 	let unit_value = unit_field.options[unit_field.selectedIndex].value;
 	let chk_value = chk_field.option[chk_field.selectedIndex].value;
 	let adj_value = adj_field.options[adj_field.selectedIndex].value;
