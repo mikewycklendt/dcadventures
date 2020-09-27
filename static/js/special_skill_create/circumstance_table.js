@@ -42,31 +42,32 @@ function circ_mod() {
 
 	if (circ_mod_type_value == 'value') {
 		value_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + 20 + "px";
+		circ_entry.style.maxHeight = circ_entry.scrollHeight + value_field.scrollHeight + "px";
 		value_field.style.padding = "1%";
 		value_field.style.maxHeight = value_field.scrollHeight + "px";
 		math_field.style.display = "none";
 		adjust_field.style.display = "none"
 	} else if (circ_mod_type_value == 'math') {
 		math_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + 20 + "px";
+		circ_entry.style.maxHeight = circ_entry.scrollHeight + math_field.scrollHeight + "px";
 		math_field.style.padding = "1%";
 		math_field.style.maxHeight = math_field.scrollHeight + "px";
 		value_field.style.display = "none";
 		adjust_field.style.display = "none"
 	} else if (circ_mod_type_value == 'adjust') {
 		adjust_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + 20 + "px";
+		circ_entry.style.maxHeight = circ_entry.scrollHeight + adjust_field.scrollHeight+ "px";
 		adjust_field.style.padding = "1%";
-		adjust_field.style.maxHeight = adj.scrollHeight + "px";
+		adjust_field.style.maxHeight = adjust_field.scrollHeight + "px";
 		value_field.style.display = "none";
 		math_field.style.display = "none"
 	} else if (circ_mod_type_value == 'noequip') {
 		value_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + 20 + "px";
+		circ_entry.style.maxHeight = circ_entry.scrollHeight + value_field.scrollHeight + "px";
 		value_field.style.padding = "1%";
 		value_field.style.maxHeight = value_field.scrollHeight + "px";
 		adjust_field.style.display = "none"
+		math_field.style.display = "none"
 	} else {
 		math_field.style.display = "none";
 		value_field.style.display = "none";
