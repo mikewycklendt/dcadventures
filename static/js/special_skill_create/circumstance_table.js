@@ -103,13 +103,13 @@ function circ_submit() {
 	let mod_type_field = document.getElementById('circ_mod_type');
 	
 	let rnd_field = document.getElementById('circ_mod_rounds');
-	let modifier_field = document.getElementByI('circ_modifier');
-	let mod_field = document.getElementByI('circ_mod');
-	let val_field = document.getElementByI('circ_mod_value');
-	let unit_field = document.getElementByI('circ_mod_unit');
-	let chk_field = document.getElementByI('circ_adjust_check');
-	let adj_field = document.getElementByI('circ_adjust_mod');
-	let rank_field = document.getElementByI('circ_adjust_rank');
+	let modifier_field = document.getElementById('circ_modifier');
+	let mod_field = document.getElementById('circ_mod');
+	let val_field = document.getElementById('circ_mod_value');
+	let unit_field = document.getElementById('circ_mod_unit');
+	let chk_field = document.getElementById('circ_adjust_check');
+	let adj_field = document.getElementById('circ_adjust_mod');
+	let rank_field = document.getElementById('circ_adjust_rank');
 
 
 	let modifier_value = modifier_field.options[modifier_field.selectedIndex].value;
