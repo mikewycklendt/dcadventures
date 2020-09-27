@@ -45,7 +45,7 @@ function levels_submit() {
 	const level_type = document.getElementById('levels-table-type');
 
 	level_type.innerHTML = type_value;
-	level_type_field.style.opacity = "0%;"
+	level_type_field.style.opacity = "0%";
 
 	table.style.display = "grid";
 	table.style.padding = "1%";
