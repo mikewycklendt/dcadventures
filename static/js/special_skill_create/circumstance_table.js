@@ -40,28 +40,28 @@ function circ_mod() {
 	const circ_entry = document.getElementById("circ-entry");
 
 
-	if (circ_mod_type_value = 'value') {
+	if (circ_mod_type_value == 'value') {
 		value_field.style.display = "grid";
 		value_field.style.padding = "1%";
 		value_field.style.maxHeight = value_field.scrollHeight + "px";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + "px";
 		math_field.style.display = "none";
 		adjust_field.style.display = "none"
-	} else if (circ_mod_type_value = 'math') {
+	} else if (circ_mod_type_value == 'math') {
 		math_field.style.display = "grid";
 		math_field.style.padding = "1%";
 		math_field.style.maxHeight = math_field.scrollHeight + "px";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + "px";
 		value_field.style.display = "none";
 		adjust_field.style.display = "none"
-	} else if (circ_mod_type_value = 'Adjust') {
+	} else if (circ_mod_type_value == 'Adjust') {
 		adjust_field.style.display = "grid";
 		adjust_field.style.padding = "1%";
 		adjust_field.style.maxHeight = adj.scrollHeight + "px";
 		circ_entry.style.maxHeight = circ_entry.scrollHeight + "px";
 		value_field.style.display = "none";
 		math_field.style.display = "none"
-	} else if (circ_mod_type_value = 'No equipment') {
+	} else if (circ_mod_type_value == 'No equipment') {
 		value_field.style.display = "grid";
 		value_field.style.padding = "1%";
 		value_field.style.maxHeight = value_field.scrollHeight + "px";
