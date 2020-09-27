@@ -45,12 +45,12 @@ function circ_mod() {
 		adjust_field.style.display = "none"
 	} else if (circ_mod_type_value = 'math') {
 		math_field.style.display = "grid";
-		math_field.style.maxHeight = value_field.scrollHeight + "px";
+		math_field.style.maxHeight = math_field.scrollHeight + "px";
 		value_field.style.display = "none";
 		adjust_field.style.display = "none"
 	} else if (circ_mod_type_value = 'Adjust') {
 		adjust_field.style.display = "grid";
-		adjust_field.style.maxHeight = value_field.scrollHeight + "px";
+		adjust_field.style.maxHeight = adjust_field.scrollHeight + "px";
 		math_field.style.display = "none";
 		math_field.style.display = "none"
 	} else if (circ_mod_type_value = 'No equipment') {
