@@ -112,7 +112,7 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -123,7 +123,7 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -135,7 +135,7 @@
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -145,7 +145,7 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 15% 30% 30% 25%;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -155,7 +155,7 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 30% 70%;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -165,7 +165,7 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 20% 20% 20% 20% 20%;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -175,7 +175,7 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 25% 25% auto;
-	max-width: 0;
+	max-width: 0px;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
