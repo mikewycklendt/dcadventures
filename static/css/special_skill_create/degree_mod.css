@@ -112,23 +112,29 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-damage {
 	display: grid;
-	width: auto;
+	width: 100%;
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-condition {
 	display: grid;
-	width: auto;
+	width: 100%;
 	height: auto;
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-measure-math {
@@ -136,9 +142,8 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 15% 30% 30% 25%;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-measure-value {
@@ -146,9 +151,8 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 30% 70%;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-damage-math {
@@ -156,9 +160,8 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 20% 20% 20% 20% 20%;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-damage-value {
@@ -166,9 +169,8 @@
 	width: 100%;
 	height: auto;
 	grid-template-columns: 25% 25% auto;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 #deg-mod-add {
