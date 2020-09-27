@@ -102,7 +102,7 @@ function deg_mod_damage_type() {
 		damage_value.style.opacity = "0%";
 	} else if (damage_type_value == 'value') {
 		damage_value.style.display = "grid";
-		damage_value.style.opacity = "100%3";
+		damage_value.style.opacity = "100%";
 		damage_math.style.display = "none";
 		damage_math.style.opacity = "0%";
 	} else {
