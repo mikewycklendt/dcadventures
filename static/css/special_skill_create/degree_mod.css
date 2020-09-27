@@ -112,9 +112,6 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #deg-mod-damage {
@@ -123,9 +120,6 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #deg-mod-condition {
@@ -135,9 +129,6 @@
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
-	max-width: 0px;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #deg-mod-measure-math {
