@@ -100,7 +100,7 @@ function circ_submit() {
 	
 	let circ_value = document.getElementById('circumstance_entry').value;
 	
-	let mod_type_field = document.getElementByI('circ_mod_type');
+	let mod_type_field = document.getElementById('circ_mod_type');
 	
 	let rnd_field = document.getElementById('circ_mod_rounds');
 	let modifier_field = document.getElementByI('circ_modifier');
