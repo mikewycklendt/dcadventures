@@ -73,6 +73,9 @@
 	grid-template-columns: 20% 75% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #resist-effect-table-title {
