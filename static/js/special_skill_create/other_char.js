@@ -32,8 +32,10 @@ char_enter = 0;
 
 function char_submit() {
 	const table = document.getElementById('char-table');
-	const tar_value = document.getElementById("char_target");
-	const chk_value = document.getElementById("char_type");
+	const tar_field = document.getElementById("char_target");
+	const chk_field = document.getElementById("char_type");
+	let chk_value = chk_field.options[chk_field.selectedIndex].value;
+	let tar_value =  tar_field.options[tar_field.selectedIndex].value;
 
 	table.style.display = "grid";
 	table.style.padding = "1%";
