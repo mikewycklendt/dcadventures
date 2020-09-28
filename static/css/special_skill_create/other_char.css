@@ -117,9 +117,12 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 7% 15% 15% 13% 50%;
+	grid-template-columns: 7% 15% 15% 13% 45% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #char-table-title {
@@ -131,40 +134,52 @@
 	margin-bottom: 4px;
 }
 
-#char-table-degree {
+.char-table-deg {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#char-table-target {
+.char-table-tar {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#char-table-rank {
+.char-table-rnk {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#char-table-check {
+.char-table-chk {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #char-table-description {
@@ -174,4 +189,16 @@
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+}
+
+.char-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
