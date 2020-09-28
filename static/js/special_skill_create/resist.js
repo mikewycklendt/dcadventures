@@ -56,7 +56,7 @@ function resist_submit() {
 		
 		ex.style.maxHeight = ex.scrollHeight + "px";
 		eff.style.maxHeight = eff.scrollHeight + "px";
-		resistDelete.style.maxHeight = pwrDelete.scrollHeight + "px";
+		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
 		resist_delete()
