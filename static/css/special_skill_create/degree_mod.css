@@ -99,7 +99,6 @@
 #deg-mod-effect {
 	display: grid;
 	grid-area: effect;
-	width: auto;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
@@ -108,7 +107,6 @@
 
 #deg-mod-measure {
 	display: grid;
-	width: auto;
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
@@ -119,7 +117,6 @@
 
 #deg-mod-damage {
 	display: grid;
-	width: auto;
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
@@ -130,7 +127,6 @@
 
 #deg-mod-condition {
 	display: grid;
-	width: auto;
 	height: auto;
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
