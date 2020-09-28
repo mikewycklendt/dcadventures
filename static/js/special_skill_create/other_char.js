@@ -12,7 +12,7 @@ function char_check() {
 function char_base() {
 	const char_type = document.getElementById("char_type");
 	const char_target = document.getElementById("char_target");
-	let chartype = circ_skill.options[char_type.selectedIndex].value;
+	let chartype = char_type.options[char_type.selectedIndex].value;
 	let chartarget =  char_target.options[char_target.selectedIndex].value;
 	console.log(chartype);
 	console.log(chartarget);
@@ -42,15 +42,13 @@ function char_submit() {
 	table.style.maxHeight = table.scrollHeight + "px";
 	table.style.padding = "1%";
 	
-	let deg_field = document.getElementById('char_val');
-	let chk_field = document.getElementById('char_rank');
+	let deg_field = document.getElementById('char_value');
+	let rnk_field = document.getElementById('char_rank');
 
 	let des_value = document.getElementById('char_value').value;
 
 	let deg_value = deg_field.options[deg_field.selectedIndex].value;
 	let rnk_value = rnk_field.options[rnk_field.selectedIndex].value;
-	let chk_value = chk_field.options[chk_field.selectedIndex].value;
- 
 	
 	if (deg_value != '' && tar_value != '' && chk_value != '' && rnk_value != '' && des_value != '') {
 		const deg = document.createElement('div');
