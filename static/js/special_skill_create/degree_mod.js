@@ -168,7 +168,7 @@ function deg_mod_submit() {
 	let damage_val1 =  damage_val1_field.options[damage_val1_field.selectedIndex].value;
 	let damage_val2_field = document.getElementById('deg_mod_damage_val2');
 	let damage_val2 =  damage_val2_field.options[damage_val2_field.selectedIndex].value;
-	let damage_deg_val_field = document.getElementById('deg_mod_damage_deg_value');
+	let damage_deg_val_field = document.getElementById('deg_damage_deg_value');
 	let damage_deg_val =  damage_deg_val_field.options[damage_deg_val_field.selectedIndex].value;
 	let damage_val_field = document.getElementById('deg_mod_damage_value');
 	let damage_val =  damage_val_field.options[damage_val_field.selectedIndex].value;
