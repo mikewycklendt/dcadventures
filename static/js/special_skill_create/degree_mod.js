@@ -216,7 +216,9 @@ function deg_mod_submit() {
 			}
 		} else if (type == 'condition') {
 			effect = 'from ' + condition1 + ' to ' + condition2;
-		} else if (type)
+		} else if (type == 'Event') {
+			effect = 'Event';
+		}
 
 		const eff = document.createElement('div');
 		eff.className = 'deg-mod-table-effect'
