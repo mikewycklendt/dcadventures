@@ -73,7 +73,7 @@ function resistance_submit() {
 		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
-		resist_delete()
+		resistance_delete()
 	}
 };
 
