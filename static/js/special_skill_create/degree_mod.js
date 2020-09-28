@@ -224,9 +224,9 @@ function deg_mod_submit() {
 		eff.className = 'deg-mod-table-effect'
 		eff.innerHTML = effect;
 	
-		const key = document.createElement('div');
-		key.className = 'deg-mod-table-key'
-		key.innerHTML = key;
+		const key_div = document.createElement('div');
+		key_div.className = 'deg-mod-table-key'
+		key_div.innerHTML = key;
 
 		const desc_div = document.createElement('div');
 		desc_div.className = 'deg-mod-table-desc'
@@ -248,14 +248,14 @@ function deg_mod_submit() {
 	
 		table.appendChild(deg);
 		table.appendChild(eff);
-		table.appendChild(key);
+		table.appendChild(key_div);
 		table.appendChild(desc_div);
 		table.appendChild(nullify);	
 		table.appendChild(degmodDelete);
 
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		eff.style.maxHeight = eff.scrollHeight + "px";
-		key.style.maxHeight = key.scrollHeight + "px";
+		key_div.style.maxHeight = key_div.scrollHeight + "px";
 		desc_div.style.maxHeight = desc_div.scrollHeight + "px";
 		nullify.style.maxHeight = nullify.scrollHeight + "px";
 		degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
