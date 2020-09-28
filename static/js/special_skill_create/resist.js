@@ -25,7 +25,7 @@ function resist_submit() {
 	
 	let ex_value = document.getElementById('resist_effect_examples').value;
 	let eff_field = document.getElementById('resist_effect');
-	let eff_value = power_field.options[power_field.selectedIndex].value; 
+	let eff_value = eff_field.options[eff_field.selectedIndex].value; 
 
 	console.log
 	

@@ -37,9 +37,9 @@ function resistance_submit() {
 	table.style.maxHeight = table.scrollHeight + "px";
 	table.style.padding = "1%";
 	
-	let mod_value = document.getElementById('resist_desc').value;
-	let des_field = document.getElementById('resist_modifier');
-	let des_value = des_field.options[des_field.selectedIndex].value; 
+	let des_value = document.getElementById('resist_desc').value;
+	let mod_field = document.getElementById('resist_modifier');
+	let mod_value = mod_field.options[mod_field.selectedIndex].value; 
 
 	console.log
 	
@@ -50,7 +50,7 @@ function resistance_submit() {
 		mod.innerHTML = mod_value;
 
 		const des = document.createElement('div');
-		des.className = 'resist-table-des'
+		des.className = 'resist-table-desc'
 		des.innerHTML = des_value;
 	
 		const resistDelete = document.createElement('div');
