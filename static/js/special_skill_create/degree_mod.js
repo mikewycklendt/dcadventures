@@ -182,6 +182,8 @@ function deg_mod_submit() {
 	let measure_math =  measure_math_field.options[measure_math_field.selectedIndex].value;
 	let measure_math_rank_field = document.getElementById('deg_mod_measure_math_rank');
 	let measure_math_rank =  measure_math_rank_field.options[measure_math_rank_field.selectedIndex].value;
+	let measure_value_field = document.getElementById('deg_mod_measure_value');
+	let measure_value =  measure_value_field.options[measure_value_field.selectedIndex].value;
 	let measure_rank_field = document.getElementById('deg_mod_measure_rank');
 	let measure_rank =  measure_rank_field.options[measure_rank_field.selectedIndex].value;
 	let condition1_field = document.getElementById('deg_mod_condition1');
@@ -214,7 +216,7 @@ function deg_mod_submit() {
 			}
 		} else if (type == 'condition') {
 			effect = 'from ' + condition1 + ' to ' + condition2;
-		}
+		} else if (type)
 
 		const eff = document.createElement('div');
 		eff.className = 'deg-mod-table-effect'
@@ -224,9 +226,9 @@ function deg_mod_submit() {
 		key.className = 'deg-mod-table-key'
 		key.innerHTML = key;
 
-		const desc = document.createElement('div');
-		desc.className = 'deg-mod-table-desc'
-		desc.innerHTML = desc;
+		const desc_div = document.createElement('div');
+		desc_div.className = 'deg-mod-table-desc'
+		desc_div.innerHTML = desc;
 	
 		const nullify = document.createElement('div');
 		nullify.className = 'deg-mod-table-null'
@@ -245,14 +247,14 @@ function deg_mod_submit() {
 		table.appendChild(deg);
 		table.appendChild(eff);
 		table.appendChild(key);
-		table.appendChild(desc);
+		table.appendChild(desc_div);
 		table.appendChild(nullify);	
 		table.appendChild(degmodDelete);
 
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		eff.style.maxHeight = eff.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
-		desc.style.maxHeight = desc.scrollHeight + "px";
+		desc_div.style.maxHeight = desc_div.scrollHeight + "px";
 		nullify.style.maxHeight = nullify.scrollHeight + "px";
 		degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
