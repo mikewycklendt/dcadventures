@@ -70,7 +70,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 12% 88%;
+	grid-template-columns: 12% 83% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 }
@@ -84,20 +84,38 @@
 	margin-bottom: 4px;
 }
 
-#resist-table-mod {
+.resist-table-mod {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#resist-table-desc {
+.resist-table-desc {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }

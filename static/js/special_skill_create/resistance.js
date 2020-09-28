@@ -25,3 +25,78 @@ function resist_base() {
 		resist_entry.style.padding = "0px";
 	}
 }
+
+resistance_enter = 0;
+
+function resistance_submit() {
+	const table = document.getElementById('resist-table');
+	const resist_target = document.getElementById("resist_target");
+
+	table.style.display = "grid";
+	table.style.padding = "1%";
+	table.style.maxHeight = table.scrollHeight + "px";
+	table.style.padding = "1%";
+	
+	let mod_value = document.getElementById('resist_modifier').value;
+	let des_field = document.getElementById('resist_desc');
+	let des_value = des_field.options[des_field.selectedIndex].value; 
+
+	console.log
+	
+	if (resist_target != '' && mod_value != '' && des_value != '') {
+
+		const mod = document.createElement('div');
+		mod.className = 'resist-table-mod'
+		mod.innerHTML = mod_value;
+
+		const des = document.createElement('div');
+		des.className = 'resist-table-des'
+		des.innerHTML = des_value;
+	
+		const resistDelete = document.createElement('div');
+		resistDelete.className = 'resist-table-delete'
+		const deleteBtn = document.createElement('button');
+		deleteBtn.className = 'resist-xbox';
+		deleteBtn.innerHTML = '&cross;';
+		deleteBtn.setAttribute('data-id', resistance_enter);
+		resistDelete.appendChild(deleteBtn);
+
+		resistance_enter = resistance_enter + 1;
+	
+		table.appendChild(mod);
+		table.appendChild(des);
+		table.appendChild(resistDelete);
+
+		
+		mod.style.maxHeight = mod.scrollHeight + "px";
+		des.style.maxHeight = des.scrollHeight + "px";
+		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
+		table.style.maxHeight = table.scrollHeight + 20 + "px";
+
+		resist_delete()
+	}
+};
+
+resistance_delete = function() {
+	const deletes = document.querySelectorAll('.resist-xbox');
+	const pwrs = document.getElementsByClassName('resist-table-mod');
+	const sits = document.getElementsByClassName('resist-table-desc');
+	const deletesDiv = document.getElementsByClassName('resist-table-delete');
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+			pwrs[i].style.maxHeight = "0px";
+			pwrs[i].style.padding = "0px";
+			pwrs[i].style.marginBottom = "0px";
+			sits[i].style.maxHeight = "0px";
+			sits[i].style.padding = "0px";
+			sits[i].style.marginBottom = "0px";
+			deletesDiv[i].style.maxHeight = "0px";
+			deletesDiv[i].style.padding = "0px";
+			deletesDiv[i].style.marginBottom = "0px";
+		}
+	}
+};
+
+resistance_delete();
