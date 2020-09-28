@@ -102,7 +102,7 @@
 	width: auto;
 	height: auto;
 	padding: 4px;
-	grid-template-columns: 100%;
+	grid-template-columns: auto;
 	grid-auto-rows: auto;
 }
 
