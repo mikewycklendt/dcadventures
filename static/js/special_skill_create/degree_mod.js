@@ -182,8 +182,6 @@ function deg_mod_submit() {
 	let measure_math =  measure_math_field.options[measure_math_field.selectedIndex].value;
 	let measure_math_rank_field = document.getElementById('deg_mod_measure_math_rank');
 	let measure_math_rank =  measure_math_rank_field.options[measure_math_rank_field.selectedIndex].value;
-	let measure_value_field = document.getElementById('deg_mod_measure_value');
-	let measure_value =  measure_value_field.options[measure_value_field.selectedIndex].value;
 	let measure_rank_field = document.getElementById('deg_mod_measure_rank');
 	let measure_rank =  measure_rank_field.options[measure_rank_field.selectedIndex].value;
 	let condition1_field = document.getElementById('deg_mod_condition1');
