@@ -53,7 +53,7 @@ function deg_mod_type() {
 
 	if (deg_mod_type_value == 'damage') {
 		damage.style.display = "grid";
-		damage.style.maxWidth = damage.style.scrollWidth + "px";
+		damage.style.maxWidth = damage.scrollWidth + "px";
 
 		measure.style.display = "none";
 		measure.style.maxWidth = "0px";
@@ -61,7 +61,7 @@ function deg_mod_type() {
 		condition.style.maxWidth = "0px";
 	} else if (deg_mod_type_value == 'measure') {
 		measure.style.display = "grid";
-		measure.style.maxWidth = measure.style.scrollWidth + "px";
+		measure.style.maxWidth = measure.scrollWidth + "px";
 
 		damage.style.display = "none";
 		damage.style.maxWidth = "0px";
@@ -69,7 +69,7 @@ function deg_mod_type() {
 		condition.style.maxWidth = "0px";
 	} else if (deg_mod_type_value == 'condition') {
 		condition.style.display = "grid";
-		condition.style.maxWidth = condition.style.scrollWidth + "px";
+		condition.style.maxWidth = condition.scrollWidth + "px";
 		damage.style.display = "none";
 		damage.style.maxWidth = "0px";
 		measure.style.display = "none";
