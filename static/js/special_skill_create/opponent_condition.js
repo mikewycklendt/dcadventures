@@ -16,7 +16,7 @@ function opp_cond_check() {
 opp_cond_enter = 0;
 
 function opp_cond_submit() {
-	const table = document.getElementById('power-table');
+	const table = document.getElementById('opp-cond-table');
 
 	table.style.display = "grid";
 	table.style.padding = "1%";
