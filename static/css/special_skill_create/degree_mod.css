@@ -99,7 +99,7 @@
 #deg-mod-effect {
 	display: grid;
 	grid-area: effect;
-	width: 100%;
+	width: auto;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
@@ -112,64 +112,71 @@
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-damage {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-condition {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 9% 30% 7% 30% auto;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-measure-math {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 15% 30% 30% 25%;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-measure-value {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 30% 70%;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-damage-math {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 20% 20% 20% 20% 20%;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 
 #deg-mod-damage-value {
 	display: grid;
-	width: 100%;
+	width: auto;
 	height: auto;
 	grid-template-columns: 25% 25% auto;
-	opacity: 0%;
+	max-width: 0;
+	overflow: hidden;
 	transition: all .2s ease-out;
 }
 

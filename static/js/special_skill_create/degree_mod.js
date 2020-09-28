@@ -53,35 +53,34 @@ function deg_mod_type() {
 
 	if (deg_mod_type_value == 'damage') {
 		damage.style.display = "grid";
-		damage.style.opacity = "100%"
+		damage.style.maxWidth = damage.style.scrollWidth + "px";
 
-		
 		measure.style.display = "none";
-		measure.style.opacity = "0%";
+		measure.style.maxWidth = "0px";
 		condition.style.display = "none";
-		condition.style.opacity = "0%";
+		condition.style.maxWidth = "0px";
 	} else if (deg_mod_type_value == 'measure') {
 		measure.style.display = "grid";
-		measure.style.opacity = "100%";
+		measure.style.maxWidth = measure.style.scrollWidth + "px";
 
 		damage.style.display = "none";
-		damage.style.opacity = "0%";
+		damage.style.maxWidth = "0px";
 		condition.style.display = "none";
-		condition.style.opacity = "0%";
+		condition.style.maxWidth = "0px";
 	} else if (deg_mod_type_value == 'condition') {
 		condition.style.display = "grid";
-		condition.style.opacity = "100%";
+		condition.style.maxWidth = condition.style.scrollWidth + "px";
 		damage.style.display = "none";
-		damage.style.opacity = "0%";
+		damage.style.maxWidth = "0px";
 		measure.style.display = "none";
-		measure.style.opacity = "0%";
+		measure.style.maxWidth = "0px";
 	} else {
 		damage.style.display = "none";
-		damage.style.opacity = "0%";
+		damage.style.maxWidth = "0px";
 		measure.style.display = "none";
-		measure.style.opacity = "0%";
+		measure.style.maxWidth = "0px";
 		condition.style.display = "none";
-		condition.style.opacity = "0%";
+		condition.style.maxWidth = "0px";
 	}
 
 };
