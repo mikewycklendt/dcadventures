@@ -268,7 +268,7 @@ function deg_mod_submit() {
 deg_mod_delete = function() {
 	const deletes = document.querySelectorAll('.deg-mod-xbox');
 	const degs = document.getElementsByClassName('deg-mod-table-deg');
-	const effs = document.getElementsByClassName('deg-mod-effect');
+	const effs = document.getElementsByClassName('deg-mod-table-effect');
 	const keys = document.getElementsByClassName('deg-mod-table-key');
 	const dess = document.getElementsByClassName('deg-mod-table-desc');
 	const nulls = document.getElementsByClassName('deg-mod-table-null');
