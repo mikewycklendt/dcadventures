@@ -89,9 +89,11 @@ function char_submit() {
 		table.appendChild(charDelete);
 
 		
-		mod.style.maxHeight = mod.scrollHeight + "px";
-		rnd.style.maxHeight = rnd.scrollHeight + "px";
-		circ.style.maxHeight = circ.scrollHeight + "px";
+		deg.style.maxHeight = deg.scrollHeight + "px";
+		tar.style.maxHeight = tar.scrollHeight + "px";
+		chk.style.maxHeight = chk.scrollHeight + "px";
+		rnk.style.maxHeight = rnk.scrollHeight + "px";
+		des.style.maxHeight = des.scrollHeight + "px";
 		charDelete.style.maxHeight = charDelete.scrollHeight + "px";
 		table.style.maxHeight = table.scrollHeight + 20 + "px";
 
