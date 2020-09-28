@@ -64,9 +64,12 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 10% 25% 10% 55%;
+	grid-template-columns: 10% 25% 10% 50% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #opp-cond-table-title {
@@ -78,38 +81,62 @@
 	margin-bottom: 4px;
 }
 
-#opp-cond-table-degree {
+.opp-cond-table-deg {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#opp-cond-table-condition {
+.opp-cond-table-con {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#opp-cond-table-rounds {
+.opp-cond-table-rnd {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#opp-cond-table-description {
+.opp-cond-table-des {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
 	margin-bottom: 4px;
 	width: 97%;
 	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.opp-cond-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
