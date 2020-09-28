@@ -37,8 +37,8 @@ function resistance_submit() {
 	table.style.maxHeight = table.scrollHeight + "px";
 	table.style.padding = "1%";
 	
-	let mod_value = document.getElementById('resist_modifier').value;
-	let des_field = document.getElementById('resist_desc');
+	let mod_value = document.getElementById('resist_desc').value;
+	let des_field = document.getElementById('resist_modifier');
 	let des_value = des_field.options[des_field.selectedIndex].value; 
 
 	console.log
@@ -79,19 +79,19 @@ function resistance_submit() {
 
 resistance_delete = function() {
 	const deletes = document.querySelectorAll('.resist-xbox');
-	const pwrs = document.getElementsByClassName('resist-table-mod');
-	const sits = document.getElementsByClassName('resist-table-desc');
+	const mods = document.getElementsByClassName('resist-table-mod');
+	const dess = document.getElementsByClassName('resist-table-desc');
 	const deletesDiv = document.getElementsByClassName('resist-table-delete');
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			pwrs[i].style.maxHeight = "0px";
-			pwrs[i].style.padding = "0px";
-			pwrs[i].style.marginBottom = "0px";
-			sits[i].style.maxHeight = "0px";
-			sits[i].style.padding = "0px";
-			sits[i].style.marginBottom = "0px";
+			mods[i].style.maxHeight = "0px";
+			mods[i].style.padding = "0px";
+			mods[i].style.marginBottom = "0px";
+			dess[i].style.maxHeight = "0px";
+			dess[i].style.padding = "0px";
+			dess[i].style.marginBottom = "0px";
 			deletesDiv[i].style.maxHeight = "0px";
 			deletesDiv[i].style.padding = "0px";
 			deletesDiv[i].style.marginBottom = "0px";

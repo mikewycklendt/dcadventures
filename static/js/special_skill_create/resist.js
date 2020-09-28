@@ -23,8 +23,8 @@ function resist_submit() {
 	table.style.maxHeight = table.scrollHeight + "px";
 	table.style.padding = "1%";
 	
-	let ex_value = document.getElementById('resist_effect').value;
-	let eff_field = document.getElementById('resist_effect_examples');
+	let ex_value = document.getElementById('resist_effect_examples').value;
+	let eff_field = document.getElementById('resist_effect');
 	let eff_value = power_field.options[power_field.selectedIndex].value; 
 
 	console.log
@@ -65,19 +65,19 @@ function resist_submit() {
 
 resist_delete = function() {
 	const deletes = document.querySelectorAll('.resist-effect-xbox');
-	const pwrs = document.getElementsByClassName('resist-effect-table-eff');
-	const sits = document.getElementsByClassName('resist-effect-table-ex');
+	const effs = document.getElementsByClassName('resist-effect-table-eff');
+	const exs = document.getElementsByClassName('resist-effect-table-ex');
 	const deletesDiv = document.getElementsByClassName('resist-effect-table-delete');
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			pwrs[i].style.maxHeight = "0px";
-			pwrs[i].style.padding = "0px";
-			pwrs[i].style.marginBottom = "0px";
-			sits[i].style.maxHeight = "0px";
-			sits[i].style.padding = "0px";
-			sits[i].style.marginBottom = "0px";
+			effs[i].style.maxHeight = "0px";
+			effs[i].style.padding = "0px";
+			effs[i].style.marginBottom = "0px";
+			exs[i].style.maxHeight = "0px";
+			exs[i].style.padding = "0px";
+			exs[i].style.marginBottom = "0px";
 			deletesDiv[i].style.maxHeight = "0px";
 			deletesDiv[i].style.padding = "0px";
 			deletesDiv[i].style.marginBottom = "0px";
