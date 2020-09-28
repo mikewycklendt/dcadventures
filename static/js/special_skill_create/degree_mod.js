@@ -154,7 +154,7 @@ function deg_mod_submit() {
 	let target =  target_field.options[target_field.selectedIndex].value;
 	let deg_field = document.getElementById('deg_value');
 	let deg_value =  deg_field.options[deg_field.selectedIndex].value;
-	let type_field = document.getElementById('deh_mod_type');
+	let type_field = document.getElementById('deg_mod_type');
 	let type =  type_field.options[type_field.selectedIndex].value;
 	let damage_type_field = document.getElementById('deg_mod_damage_type');
 	let damage_type =  damage_type_field.options[damage_type_field.selectedIndex].value;
@@ -196,6 +196,73 @@ function deg_mod_submit() {
 	let nullify_val = nullify_field.options[nullify_field.selectedIndex].value;
 	let key = document.getElementById('deg_mod_keyword').value;
 	let desc = document.getElementById('deg_mod_desc').value;
+
+	if ((target != '' && deg_value != '' && type != '' && damage_type == 'math' && damage_math1 != '' && damage_math2 != '' && damage_val1 !=  '' && damage_val2 != '' && key != '' && desc != '') || (target != '' && deg_value != '' && type != '' && key != '' && desc != '' && damage_deg_val != '' && damage_type == 'value' && damage_val != '') || (target != '' && deg_value != '' && type != '' && key != '' && desc != '' && measure_type == 'value' && measure_value != '' && measure_rank != '') || (target != '' && deg_value != '' && type != '' && key != '' && desc != '' && measure_type == 'math' && measure_math != '' && measure_val1 != '' && measure_val2 != '' && measure_math_rank != '') || (target != '' && deg_value != '' && type != '' && key != '' && desc != '' && condition1 != '' && condition2 != '')) {
+
+
+		const deg = document.createElement('div');
+		deg.className = 'deg-mod-table-deg'
+		deg.innerHTML = deg_value;
+		
+		if (type == 'damage') {
+			if (damage_type == 'math') {
+				effect = damage_math + ' ' + damage_val1 + ' ' + damage_math1 + ' ' + damage_val2 + ' ' + damage_math2;
+			} else if (damage_type == 'value') {
+				effect = 'degree: ' + damage_deg_val + ' damage: ' + damage_val;
+			}
+		} else if (type == 'measure') {
+			if (measure_type == 'math') {
+				effect = measure_val1 + ' ' + measure_math + ' ' + measure_val2 + ' ' + measure_math_rank;
+			} else if (measure_type == 'value') {
+				effect = measure_value + ' ' + measure_rank;
+			}
+		} else if (type == 'condition') {
+			effect = 'from ' + condition1 + ' to ' + condition2;
+		}
+
+		const eff = document.createElement('div');
+		eff.className = 'deg-mod-table-effect'
+		eff.innerHTML = effect;
+	
+		const key = document.createElement('div');
+		key.className = 'deg-mod-table-key'
+		key.innerHTML = key;
+
+		const desc = document.createElement('div');
+		desc.className = 'deg-mod-table-desc'
+		desc.innerHTML = desc;
+	
+		const nullify = document.createElement('div');
+		nullify.className = 'deg-mod-table-null'
+		nullify.innerHTML = nullify_val;
+
+		const degmodDelete = document.createElement('div');
+		degmodDelete.className = 'deg-mod-table-delete'
+		const deleteBtn = document.createElement('button');
+		deleteBtn.className = 'deg-mod-xbox';
+		deleteBtn.innerHTML = '&cross;';
+		deleteBtn.setAttribute('data-id', deg_mod_enter);
+		degmodDelete.appendChild(deleteBtn);
+
+		deg_mod_enter = deg_mod_enter + 1;
+	
+		table.appendChild(deg);
+		table.appendChild(eff);
+		table.appendChild(key);
+		table.appendChild(desc);
+		table.appendChild(nullify);	
+		table.appendChild(degmodDelete);
+
+		deg.style.maxHeight = deg.scrollHeight + "px";
+		eff.style.maxHeight = eff.scrollHeight + "px";
+		key.style.maxHeight = key.scrollHeight + "px";
+		desc.style.maxHeight = desc.scrollHeight + "px";
+		nullify.style.maxHeight = nullify.scrollHeight + "px";
+		degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
+		table.style.maxHeight = table.scrollHeight + 20 + "px";
+
+		deg_mod_delete()
+	}
 };
 
 deg_mod_delete = function() {
