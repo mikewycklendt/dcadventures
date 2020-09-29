@@ -8,10 +8,12 @@ function banner_size() {
 	const splashes = document.getElementsByClassName("splash");
 
 	if (splashes != null) {
-		const sidebargrid = document.getElementById("sidebargrid");	
+		const sidebargrid = document.getElementById("sidebargrid");
+		console.log('sidebargrid: ' + sidebargrid.scrollHeight)
+		const homeimg = document.getElementById("home-img");
+		console.log('home-img: ' + homeimg.scrollHeight)
+		const splashes = document.getElementsByClassName("splash");
 		const splash = splashes[0];
-		splash_height = splash.scrollHeight;
-		console.log(splash_height)
 		let sidebar_height = sidebargrid.scrollHeight;
 		console.log(sidebar_height);
 		splash.style.height = sidebar_height + "px";
