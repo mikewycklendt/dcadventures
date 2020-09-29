@@ -20,7 +20,7 @@ function banner_size() {
 		blank = document.getElementById("blank");
 		buttons = document.getElementById("buttons");
 		below - document.getElementById("below");
-		splash_60 = homeimg_height * .5;
+		splash_60 = homeimg_height * .65;
 		splash_15 = homeimg_height * .15;
 		splash_25 = homeimg_height * .20;
 		console.log(splash_60);
