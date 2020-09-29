@@ -28,11 +28,11 @@ function banner_size() {
 			buttons.style.height = splash_15 + "px";
 			below.style.height = splash_25 + "px";
 
-			homeimg.onresize - home_resize;
+			homeimg.onresize = home_resize;
 		}
 	
 	if (splashes != null) {
-		home_resize;
+		home_resize();
 	}
 }
 
