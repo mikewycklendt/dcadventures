@@ -27,7 +27,7 @@ function check_type() {
 alt_check_enter = 0;
 
 function alt_check_submit() {
-	const table = document.getElementById('power-table');
+	const table = document.getElementById('alt-check-table');
 
 	table.style.display = "grid";
 	table.style.padding = "1%";
