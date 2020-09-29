@@ -12,3 +12,15 @@ function alt_check() {
 		alt_entry.style.padding = "0px";
 	}
 }
+
+function check_type() {
+	const check_field = document.getElementById('check');
+	let check_value = check_field.options[check_field.selectedIndex].value;
+
+	alt_check = document.getElementById('alt-check');
+
+	if (check_value != 1) {
+		alt_check.style.display = 'grid';
+	}
+
+}
