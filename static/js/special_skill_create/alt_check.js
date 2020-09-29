@@ -1,8 +1,8 @@
 function alt_check() {
-	const alt_check = document.getElementById("alt_check_check");
+	const alt_check_check = document.getElementById("alt_check_check");
 	const alt_entry = document.getElementById("alt-check-entry");
 	
-	if (alt_check.checked == true) {
+	if (alt_check_check.checked == true) {
 		alt_entry.style.display = "grid";
 		alt_entry.style.padding = "1%";
 		alt_entry.style.maxHeight = alt_entry.scrollHeight + "px";
