@@ -1,4 +1,4 @@
-function alt_check() {
+function alt_check_entry() {
 	const alt_check_check = document.getElementById("alt_check_check");
 	const alt_entry = document.getElementById("alt-check-entry");
 	
