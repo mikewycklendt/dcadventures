@@ -1,5 +1,8 @@
 function home_button_placement() {
 	const sidebargrid = document.getElementById("sidebargrid");
+	console.log('sidebargrid: ' + sidebargrid)
+	const homeimg = document.getElementById("home-img");
+	console.log('home-img: ' + homeimg)
 	const splashes = document.getElementsByClassName("splash");
 	const splash = splashes[0];
 	let sidebar_height = sidebargrid.scrollHeight;
