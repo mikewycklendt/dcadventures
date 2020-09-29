@@ -43,15 +43,15 @@ function alt_check_submit() {
 	if (dc_value != '' && des_value != '') {
 
 		const dc = document.createElement('div');
-		dc.className = 'alt-check-dc'
+		dc.className = 'alt-check-table-dc'
 		dc.innerHTML = dc_value;
 
 		const des = document.createElement('div');
-		des.className = 'alt-check-des'
+		des.className = 'alt-check-table-des'
 		des.innerHTML = des_value;
 	
 		const altDelete = document.createElement('div');
-		altDelete.className = 'alt-check-delete'
+		altDelete.className = 'alt-check-table-delete'
 		const deleteBtn = document.createElement('button');
 		deleteBtn.className = 'alt-check-xbox';
 		deleteBtn.innerHTML = '&cross;';
