@@ -7,8 +7,8 @@ function banner_size() {
 	
 	const splashes = document.getElementsByClassName("splash");
 
-	function home_resize () {
-		if (splashes != null) {	
+	function home_resize() {
+			
 			const sidebargrid = document.getElementById("sidebargrid");
 			console.log('sidebargrid: ' + sidebargrid.scrollHeight)
 			const homeimg = document.getElementById("home-img");
@@ -28,11 +28,13 @@ function banner_size() {
 			blank.style.height = splash_60 + "px";
 			buttons.style.height = splash_15 + "px";
 			below.style.height = splash_25 + "px";
-		}
+	
 		homeimg.onresize - home_resize;
 	}
-
-	home_resize();
+		
+	if (splashes != null) {
+		home_resize();
+	}
 }
 
 window.onresize = banner_size; 
