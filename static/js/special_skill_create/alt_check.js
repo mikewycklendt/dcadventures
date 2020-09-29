@@ -22,5 +22,4 @@ function check_type() {
 	if (check_value != 1) {
 		alt_check.style.display = 'grid';
 	}
-
 }
