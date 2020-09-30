@@ -21,7 +21,6 @@ function dc_dc_type() {
 	if (type_value == 'value') {
 		dc_class.style.display = "grid";
 		dc_math.style.display = "none";
-		dc_class.style.padding = "1%";
 		dc_class.style.maxHeight = dc_class.scrollHeight + "px";
 		dc_entry.style.display = "grid";
 		dc_entry.style.padding = "1%";
@@ -29,7 +28,6 @@ function dc_dc_type() {
 		dc_entry.style.padding = "1%";
 	} else if (type_value == 'math') {
 		dc_math.style.display = "grid";
-		dc_math.style.padding = "1%";
 		dc_math.style.maxHeight = dc_math.scrollHeight + "px";
 		dc_class.style.display = "none";
 		dc_entry.style.display = "grid";
