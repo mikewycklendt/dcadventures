@@ -35,42 +35,45 @@
 
 <div id="dc-entry" style="display: none;">
 
-	<div>DC: </div>
+	<div id="multiple=attr-title">DC: </div>
 
-	<div id="dc-class" style="margin-top: 3px;" style="display: none;">
-		<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
-			<option value="">DC</option>
-			{% for class in dcclasses %}
-				<option value={{class}}>{{class}}</option>
-			{% endfor %}
-		</select>
-	</div>
-	<div id="dc-math"style="margin-top: 3px;" style="display: none;">
-		<div id="dcmathvalue" style="margin-top: 3px;">
-			<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
-				<option value="">Value</option>
+	<div>
+		<div id="dc-class" style="margin-top: 3px;" style="display: none;">
+			<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<option value="">DC</option>
 				{% for class in dcclasses %}
 					<option value={{class}}>{{class}}</option>
 				{% endfor %}
 			</select>
 		</div>
+	
+		<div id="dc-math"style="margin-top: 3px;" style="display: none;">
+			<div id="dcmathvalue" style="margin-top: 3px;">
+				<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<option value="">Value</option>
+					{% for class in dcclasses %}
+						<option value={{class}}>{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>
 
-		<div id="dcmathtype" style="margin-top: 3px;">
-			<select id="dc_math" name="dc_math" style="height: 3vh; font-size: 70%; padding: 0px;">
-				<option value="">Math</option>
-				{% for math in maths %}
-					<option value={{math.id}}>{{math.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
+			<div id="dcmathtype" style="margin-top: 3px;">
+				<select id="dc_math" name="dc_math" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<option value="">Math</option>
+					{% for math in maths %}
+						<option value={{math.id}}>{{math.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 
-		<div id="dcranktype" style="margin-top: 3px;">
-			<select id="dc_math_rank" name="dc_math_rank" style="height: 3vh; font-size: 70%; padding: 0px; ">
-				<option value="">Rank</option>
-				{% for rank in ranks %}
-					<option value={{rank.id}}>{{rank.name}}</option>
-				{% endfor %}
-			</select>
+			<div id="dcranktype" style="margin-top: 3px;">
+				<select id="dc_math_rank" name="dc_math_rank" style="height: 3vh; font-size: 70%; padding: 0px; ">
+					<option value="">Rank</option>
+					{% for rank in ranks %}
+						<option value={{rank.id}}>{{rank.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
 
