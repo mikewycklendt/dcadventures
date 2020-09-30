@@ -82,6 +82,9 @@
 	grid-template-rows: auto;
 	grid-template-columns: 25% 25% 25% auto;
 	grid-auto-columns: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-class {
