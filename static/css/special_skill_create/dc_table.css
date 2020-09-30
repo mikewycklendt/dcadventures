@@ -78,7 +78,7 @@
 #dc-math {
 	display: grid;
 	width: 100%;
-	margin: 2%;
+	margin: 0%;
 	grid-template-rows: auto;
 	grid-template-columns: 25% 25% 25% auto;
 	grid-auto-columns: auto;
@@ -90,7 +90,7 @@
 #dc-class {
 	display: grid;
 	width: 100%;
-	margin: 2%;
+	margin: 0%;
 	grid-template-columns: 20% 80%;
 	grid-auto-rows: auto;
 	max-height: 0;
