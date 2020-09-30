@@ -21,7 +21,26 @@
 	margin: 2%;
 	margin-bottom: 0px;
 	grid-template-columns: 15% 85%;
-	grid-template-rows: auto auto;
+	grid-template-rows: auto;
+	border-bottom: 2px solid lightblue;
+}
+
+#dc-entry {
+	display: grid;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 15% 75;
+	grid-template-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-fields {
@@ -47,7 +66,7 @@
 	display: table-cell;
 }
 
-#dc-value-grid {
+#dc-value {
 	display: grid;
 	width: 100%;
 	margin: 2%;
@@ -55,12 +74,24 @@
 	grid-auto-rows: auto;
 }
 
-#dc-math-grid {
+#dc-math {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: 25% 25% 25% auto;
+	grid-auto-columns: auto;
+}
+
+#dc-class {
 	display: grid;
 	width: 100%;
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-attr-title {
@@ -73,7 +104,7 @@
 	padding: 0px;
 }
 
-#dcmeasurementfield {
+#dc-measure-field {
 	display: grid;
 	width: 100%;
 	margin-left: 2%;
@@ -81,31 +112,43 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcmeasurementfields {
+#dc-measure-fields {
 	display: grid;
 	width: 100%;
 	margin: 0px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcmeasurementfieldvalue{
+#dc-measure-value{
 	display: grid;
 	width: 40%;
 	margin: 0px;
-	grid-template-columns: 50% 50% ;
+	grid-template-columns: 50% 50%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcmeasurementfieldmath{
+#dc-measure-math{
 	display: grid;
 	width: 60%;
 	margin: 0px;
 	grid-template-columns: 20% 40% 40%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcdamagefield {
+#dc-damage-field {
 	display: grid;
 	width: 100%;
 	margin-top: 1%;
@@ -114,9 +157,12 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dckeywordfield {
+#dc-keyword-field {
 	display: grid;
 	width: 100%;
 	margin-top: 1%;
@@ -125,9 +171,12 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcdefensefield {
+#dc-defense-field {
 	display: grid;
 	width: 100%;
 	margin-top: 1%;
@@ -136,9 +185,12 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcconditionfield {
+#dc-condition-field {
 	display: grid;
 	width: 100%;
 	margin-top: 1%;
@@ -147,9 +199,12 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#dcactionfield {
+#dc-action-field {
 	display: grid;
 	width: 100%;
 	margin-top: 1%;
@@ -158,6 +213,9 @@
 	grid-template-rows: auto;
 	font-family: 'Monda', Verdana;
 	font-size: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-add {
@@ -174,55 +232,167 @@
 	margin: 1%;
 	height: auto;
 	width: auto;
-	grid-template-columns: 10% 15% auto 15% 10% 10%;
+	grid-template-columns: 7% auto auto auto auto auto auto auto 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	border-radius: 5px;
 	padding-bottom: 2%;
 	margin-bottom: 3%;
-
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-table-title-dc {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
 }
 
-#dc-table-title-keyword {
+#dc-table-title-key {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
 }
 
-#dc-table-title-description {
+#dc-table-title-des {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
 }
 
-#dc-table-title-measurement {
+#dc-table-title-mea {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
 }
 
-#dc-table-title-damage {
+#dc-table-title-dam {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
 }
 
-#dc-table-title-defense {
+#dc-table-title-def {
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
+	display: block;
+}
+
+#dc-table-title-con {
+	font-family: 'Monda', Verdana;
+	font-size: 65%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+	display: block;
+}
+
+#dc-table-title-act {
+	font-family: 'Monda', Verdana;
+	font-size: 65%;
+	border-bottom: 1px solid lightblue;
+	margin: 4px;
+	display: black;
+}
+
+.dc-table-dc {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-key {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-mea {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-dam {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-def {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-con {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-act {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-table-delete {
+	font-family: 'Monda', Verdana;
+	font-size: 55%;
+	margin: 4px;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #dc-table-col {

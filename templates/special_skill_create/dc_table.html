@@ -19,58 +19,60 @@
 	</div>
 
 	
-		<div id="dc-value-grid">
-			<div>
-				<select id="dc_type" name="dc_type" style="height: 5vh;">
-					{% for type in value_type %}
-						<option value="{{type}}">{{type}}</option>
-					{% endfor %}
-				</select>
-			</div>
-			<div id="dcclass" style="margin-top: 3px;">
-				<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
-					<option value="">DC</option>
-					{% for class in dcclasses %}
-						<option value={{class}}>{{class}}</option>
-					{% endfor %}
-				</select>
-			</div>
-			<div id="dc-math-grid"style="margin-top: 3px;">
-				<div id="dcmathvalue" style="margin-top: 3px;">
-					<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
-						<option value="">Value</option>
-						{% for class in dcclasses %}
-							<option value={{class}}>{{class}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div id="dcmathtype" style="margin-top: 3px;">
-					<select id="dc_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%; padding: 0px;">
-						<option value="">Math</option>
-						{% for math in maths %}
-							<option value={{math.id}}>{{math.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div id="dcranktype" style="margin-top: 3px;">
-					<select id="dc_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%; padding: 0px; ">
-						<option value="">Rank</option>
-						{% for rank in ranks %}
-							<option value={{rank.id}}>{{rank.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-		</div>
-	
-
-	<div>
-		<input type="text" id="dc_description" name="dc_description" style="height: 3vh;">
+	<div id="dc-value">
+		<select id="dc_type" name="dc_type" style="height: 5vh;" onchange="dc_dc_type()">
+			<option value="">Type</option>
+			{% for type in value_type %}
+				<option value="{{type}}">{{type}}</option>
+			{% endfor %}
+		</select>
 	</div>
-
 	
+	<div>
+		<input type="text" id="dc_des" name="dc_description" style="height: 3vh;">
+	</div>
+</div>
+
+<div id="dc-entry" style="display: none;">
+
+	<div>DC: </div>
+
+	<div id="dc-class" style="margin-top: 3px;" style="display: none;">
+		<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
+			<option value="">DC</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div id="dc-math"style="margin-top: 3px;" style="display: none;">
+		<div id="dcmathvalue" style="margin-top: 3px;">
+			<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<option value="">Value</option>
+				{% for class in dcclasses %}
+					<option value={{class}}>{{class}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="dcmathtype" style="margin-top: 3px;">
+			<select id="dc_math" name="dc_math" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<option value="">Math</option>
+				{% for math in maths %}
+					<option value={{math.id}}>{{math.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="dcranktype" style="margin-top: 3px;">
+			<select id="dc_math_rank" name="dc_math_rank" style="height: 3vh; font-size: 70%; padding: 0px; ">
+				<option value="">Rank</option>
+				{% for rank in ranks %}
+					<option value={{rank.id}}>{{rank.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 
 
 </div>
@@ -81,32 +83,38 @@
 
 		<div>
 			<div id="dc-field-title" style="vertical-align: top;">
-				<input type="checkbox" id="dc_measurement" class="medium-checkbox med-checkbox"> Measurement 
+				<input type="checkbox" id="dc_mea_check" class="medium-checkbox med-checkbox" onclick="dc_mea_click()"> Measurement 
 			</div>
 		</div>
 
 		<div>
 			<div id="dc-field-title" style="vertical-align: top;">
-				<input type="checkbox" id="dc_damage" class="medium-checkbox med-checkbox"> Damage Adjust 
+				<input type="checkbox" id="dc_dam_check" class="medium-checkbox med-checkbox" onclick="dc_dam_click()"> Damage Adjust 
 			</div>
 		</div>
 
 		<div>
 			<div id="dc-field-title" style="vertical-align: top;">
-				<input type="checkbox" id="dc_keyword" class="medium-checkbox med-checkbox"> Keyword 
+				<input type="checkbox" id="dc_key_check" class="medium-checkbox med-checkbox" onclick="dc_key_click()"> Keyword 
 			</div>
 		</div>
 
 		<div>
 			<div id="dc-field-title" style="vertical-align: top;">
-				<input type="checkbox" id="dc_condition" class="medium-checkbox med-checkbox"> Condition Change
+				<input type="checkbox" id="dc_con_check" class="medium-checkbox med-checkbox" onclick="dc_con_click()"> Condition Change
+			</div>
+		</div>
+
+		<div>
+			<div id="dc-field-title" style="vertical-align: top;">
+				<input type="checkbox" id="dc_def_check" class="medium-checkbox med-checkbox" onclick="dc_def_click()"> Condition Change
 			</div>
 		</div>
 		
 
 		<div>
 			<div id="dc-field-title" style="vertical-align: top;">
-				<input type="checkbox" id="dc_action" class="medium-checkbox med-checkbox"> Action Change
+				<input type="checkbox" id="dc_act_check" class="medium-checkbox med-checkbox" onclick="dc_act_click()"> Action Change
 			</div>
 		</div>
 
@@ -115,14 +123,14 @@
 
 
 
-	<div id="dcmeasurementfield">
+	<div id="dc-measure-field" style="display: none;">
 
 		<div id="dc-attr-field">
 			Measurement:
 		</div>
 
 		<div>
-			<select id="dc_measurement_type" name="dc_type" style="height: 3vh; font-size: 70%; padding: 0px;">
+			<select id="dc_mea_type" name="dc_mea_type" style="height: 3vh; font-size: 70%; padding: 0px;" onchange="dc_measure_type()">
 				<option value="">Type</option>
 				{% for type in value_type %}
 					<option value="{{type}}">{{type}}</option>
@@ -130,14 +138,14 @@
 			</select>
 		</div>
 
-		<div id="dcmeasurementfields" style="margin-top: 0px;">
-			<div id="dcmeasurementfieldvalue" style="margin-top: 0px;">
+		<div id="dc-measure-fields" style="margin-top: 0px;">
+			<div id="dc-measure-value" style="margin-top: 0px;" style="display: none;">
 				<div>
-					<input type="text" id="dc_measurement_value" name="dc_measurement_value" placeholder="Value" style="width: 90%; height: 3vh; margin: 0px; padding: 0px; padding-left: 1%; font-size: 90%;">
+					<input type="text" id="dc_mea_val" name="dc_mea_val" placeholder="Value" style="width: 90%; height: 3vh; margin: 0px; padding: 0px; padding-left: 1%; font-size: 90%;">
 				</div>
 
 				<div>
-					<select id="dc_measurement_units" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select id="dc_mea_unit" name="dc_mea_unit" style="height: 3vh; font-size: 70%; padding: 0px;">
 						<option value="">Units</option>
 						{% for unit in units %}
 							<option value="{{unit}}">{{unit}}</option>
@@ -147,9 +155,9 @@
 			</div>
 
 
-			<div id="dcmeasurementfieldmath">
+			<div id="dc-measure-math" style="display: none;">
 				<div>
-					<select id="dc_measurement_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select id="dc_mea_math_val" name="dc_mea_math_val" style="height: 3vh; font-size: 70%; padding: 0px;">
 						<option value="">Value</option>
 						{% for class in dcclasses %}
 							<option value={{class}}>{{class}}</option>
@@ -159,7 +167,7 @@
 
 
 				<div>
-					<select id="dc_measurement_math_type" name="dc_mathh_type" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select id="dc_mea_math" name="dc_mea_math_type" style="height: 3vh; font-size: 70%; padding: 0px;">
 						<option value="">Math</option>
 						{% for math in maths %}
 							<option value={{math.id}}>{{math.name}}</option>
@@ -168,7 +176,7 @@
 				</div>
 
 				<div>
-					<select id="dc_measurement_rank_type" name="dc_rank_type" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select id="dc_mea_math_rank" name="dc_mea_math_rank" style="height: 3vh; font-size: 70%; padding: 0px;">
 						<option value="">Rank</option>
 						{% for rank in ranks %}
 							<option value={{rank.id}}>{{rank.name}}</option>
@@ -181,14 +189,14 @@
 	</div>
 
 
-<div id="dcdamagefield">
+<div id="dc-damage-field" style="display: none;">
 	
 	<div id="dc-attr-field">
 		Damage Adjust:
 	</div>
 	
 	<div>
-		<select id="dc_damage" name="dc_damage" style="height: 4vh; font-size: 70%;">
+		<select id="dc_dam" name="dc_dam" style="height: 4vh; font-size: 70%;">
 			<option value="">Damage Adjust</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option> 
@@ -203,14 +211,14 @@
 
 </div>
 
-<div id="dckeywordfield">
+<div id="dc-keyword-field" style="display: none;">
 
 	<div id="dc-attr-field">
 		Keyword
 	</div>
 
 	<div>
-		<input type="text" id="dc_keyword" name="dc_keyword" style="height: 2vh; padding: 1%; font-size: 100%;" placeholder="Keyword">
+		<input type="text" id="dc_key" name="dc_key" style="height: 2vh; padding: 1%; font-size: 100%;" placeholder="Keyword">
 	</div>
 
 	<div>
@@ -219,14 +227,14 @@
 
 </div>
 
-<div id="dcdefensefield">
+<div id="dc-defense-field" style="display: none;">
 
 	<div id="dc-attr-field">
 		Relevant Defense:
 	</div>
 
 	<div>
-		<select id="dc_defense" name="dc_defense" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select id="dc_def" name="dc_def" style="height: 3vh; font-size: 70%; padding: 0px;">
 			<option value=""></option>
 			{% for defense in defenses %}
 				<option value={{defense.id}}>{{defense.name}}</option>
@@ -236,7 +244,7 @@
 
 </div>
 
-<div id="dcconditionfield">
+<div id="dc-condition-field" style="display: none;">
 
 	<div id="dc-attr-field">
 		Change Condition:
@@ -247,7 +255,7 @@
 	</div>
 
 	<div>
-		<select id="dc_condition_1" name="dc_condition_1" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select id="dc_con1" name="dc_con1" style="height: 3vh; font-size: 70%; padding: 0px;">
 			<option value=""></option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -260,7 +268,7 @@
 	</div>
 
 	<div>
-		<select id="dc_condition_2" name="dc_condition_2" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select id="dc_con2" name="dc_con2" style="height: 3vh; font-size: 70%; padding: 0px;">
 			<option value=""></option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -272,14 +280,14 @@
 
 </div>
 
-<div id="dcactionfield">
+<div id="dc-action-field" style="display: none;">
 
 	<div id="dc-attr-field">
 		Change Action To:
 	</div>
 
 	<div>
-		<select id="dc_defense" name="dc_defense" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select id="dc_act" name="dc_act" style="height: 3vh; font-size: 70%; padding: 0px;">
 			<option value=""></option>
 			{% for action in actions %}
 				<option value={action.id}}>{{action.name}}</option>
@@ -297,7 +305,7 @@
 	<div></div>
 
 	<div style="align-items: right;">
-		<div class="btn" id="dc_create" style="height: 2.5vh; padding-top: 5%; align-content: center; align-items: center;">
+		<div class="btn" id="dc_create" style="height: 2.5vh; padding-top: 5%; align-content: center; align-items: center;" onclick="dc_submit()">
 			<center>
 			<i class="fa fa-plus"></i>   Add
 			</center>
@@ -315,50 +323,35 @@
 					DC:
 				</div>
 
-				<div id="dc-table-title-keyword">
+				<div id="dc-table-title-key" style="display: none;">
 					Keyword:
 				</div>
 
-				<div id="dc-table-title-description">
+				<div id="dc-table-title-des">
 					Description:
 				</div>
 				
-				<div id="dc-table-title-measurement">
-					Measurement:
+				<div id="dc-table-title-mea" style="display: none;">
+					Measure:
 				</div> 
 
-				<div id="dc-table-title-damage">
+				<div id="dc-table-title-dam" style="display: none;">
 					Damage:
 				</div>
 
-				<div id="dc-table-title-defense">
+				<div id="dc-table-title-def" style="display: none;">
 					Defense:
 				</div>
 
-				<div id="dc-table-col">
-					15
+				<div id="dc-table=title-act" style="display: none;">
+					Action:
 				</div>
 
-				<div id="dc-table-col">
-					Simple
+				<div id="dc-table-title-con" style="display: none;">
+					Condition:
 				</div>
 
-				<div id="dc-table-col">
-					electronic timer or  detonator, tripwire trap
-				</div>
-
-				<div id="dc-table-col">
-					2 hours
-				</div>
-
-				<div id="dc-table-col">
-					None
-				</div>
-
-				<div id="dc-table-col">
-					None
-				</div>
-
+				<div></div>
 
 		</div>
 
