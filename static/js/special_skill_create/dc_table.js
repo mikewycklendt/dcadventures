@@ -194,8 +194,8 @@ function dc_submit() {
 	const mea_type_field = document.getElementById('dc_mea_type');
 	let mea_type_value = mea_type_field.options[mea_type_field.selectedIndex].value;
 
-	const mea_val_field = document.getElementById('dc_mea_val');
-	let mea_val_value = mea_val_field.options[mea_val_field.selectedIndex].value;
+	const mea_val_value = document.getElementById('dc_mea_val').value;
+
 	const mea_unt_field = document.getElementById('dc_mea_unit');
 	let mea_unt_value = mea_unt_field.options[mea_unt_field.selectedIndex].value;
 
