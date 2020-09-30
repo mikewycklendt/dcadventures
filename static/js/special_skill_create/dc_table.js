@@ -210,8 +210,7 @@ function dc_submit() {
 	const dam_field = document.getElementById('dc_dam');
 	let dam_value = dam_field.options[dam_field.selectedIndex].value;
 	
-	const key_field = document.getElementById('dc_key');
-	let key_value = key_field.options[key_field.selectedIndex].value;
+	const key_value = document.getElementById('dc_key').value;
 	
 	const def_field = document.getElementById('dc_def');
 	let def_value = def_field.options[def_field.selectedIndex].value;
