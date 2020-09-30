@@ -23,14 +23,14 @@ function dc_dc_type() {
 		dc_math.style.display = "none"
 		dc_entry.style.display = "grid";
 		dc_entry.style.padding = "1%";
-		dc_entry.style.maxHeight = power_entry.scrollHeight + "px";
+		dc_entry.style.maxHeight = dc_entry.scrollHeight + "px";
 		dc_entry.style.padding = "1%";
 	} else if (type_value == 'math') {
 		dc_math.style.display = "grid";
 		dc_class.style.display = "none";
 		dc_entry.style.display = "grid";
 		dc_entry.style.padding = "1%";
-		dc_entry.style.maxHeight = power_entry.scrollHeight + "px";
+		dc_entry.style.maxHeight = dc_entry.scrollHeight + "px";
 		dc_entry.style.padding = "1%";
 	} else {
 		dc_class.style.display = "none";
@@ -47,7 +47,7 @@ function dc_mea_click() {
 	if (mea_check.checked == true) {
 		mea_grid.style.display = "grid";
 		mea_grid.style.padding = "1%";
-		mea_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		mea_grid.style.maxHeight = mea_grid.scrollHeight + "px";
 		mea_grid.style.padding = "1%";
 	}  else {
 		mea_grid.style.maxHeight = "0px";
@@ -62,7 +62,7 @@ function dc_dam_click() {
 	if (dam_check.checked == true) {
 		dam_grid.style.display = "grid";
 		dam_grid.style.padding = "1%";
-		dam_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		dam_grid.style.maxHeight = dam_grid.scrollHeight + "px";
 		dam_grid.style.padding = "1%";
 	}  else {
 		dam_grid.style.maxHeight = "0px";
@@ -78,7 +78,7 @@ function dc_key_click() {
 	if (key_check.checked == true) {
 		key_grid.style.display = "grid";
 		key_grid.style.padding = "1%";
-		key_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		key_grid.style.maxHeight = key_grid.scrollHeight + "px";
 		key_grid.style.padding = "1%";
 	}  else {
 		key_grid.style.maxHeight = "0px";
@@ -93,7 +93,7 @@ function dc_con_click() {
 	if (con_check.checked == true) {
 		con_grid.style.display = "grid";
 		con_grid.style.padding = "1%";
-		con_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		con_grid.style.maxHeight = con_grid.scrollHeight + "px";
 		con_grid.style.padding = "1%";
 	}  else {
 		con_grid.style.maxHeight = "0px";
@@ -108,7 +108,7 @@ function dc_act_click() {
 	if (act_check.checked == true) {
 		act_grid.style.display = "grid";
 		act_grid.style.padding = "1%";
-		act_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		act_grid.style.maxHeight = act_grid.scrollHeight + "px";
 		act_grid.style.padding = "1%";
 	}  else {
 		act_grid.style.maxHeight = "0px";
@@ -123,7 +123,7 @@ function dc_def_click() {
 	if (def_check.checked == true) {
 		def_grid.style.display = "grid";
 		def_grid.style.padding = "1%";
-		def_grid.style.maxHeight = power_entry.scrollHeight + "px";
+		def_grid.style.maxHeight = def_grid.scrollHeight + "px";
 		def_grid.style.padding = "1%";
 	}  else {
 		def_grid.style.maxHeight = "0px";
@@ -142,13 +142,13 @@ function dc_measure_type() {
 		dc_measure_value.style.display = "grid"
 		dc_measure_math.style.display = "none";
 		dc_measure_value.style.padding = "1%";
-		dc_measure_value.style.maxHeight = power_entry.scrollHeight + "px";
+		dc_measure_value.style.maxHeight = dc_measure_value.scrollHeight + "px";
 		dc_measure_value.style.padding = "1%";
 	} else if (mea_type_value == 'math') {
 		dc_measure_math.style.display = "grid"
 		dc_measure_value.style.display = "none";
 		dc_measure_math.style.padding = "1%";
-		dc_measure_math.style.maxHeight = power_entry.scrollHeight + "px";
+		dc_measure_math.style.maxHeight = dc_measure_math.scrollHeight + "px";
 		dc_measure_math.style.padding = "1%";
 	} else {
 		dc_measure_math.style.display = "none";
