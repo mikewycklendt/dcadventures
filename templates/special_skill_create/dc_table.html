@@ -39,12 +39,16 @@
 
 	<div>
 		<div id="dc-class" style="margin-top: 3px;" style="display: none;">
-			<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
-				<option value="">DC</option>
-				{% for class in dcclasses %}
-					<option value={{class}}>{{class}}</option>
-				{% endfor %}
-			</select>
+			<div>
+				<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<option value="">DC</option>
+					{% for class in dcclasses %}
+						<option value={{class}}>{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div></div>
 		</div>
 	
 		<div id="dc-math"style="margin-top: 3px;" style="display: none;">
@@ -74,7 +78,7 @@
 					{% endfor %}
 				</select>
 			</div>
-		</div>
+		</div>`
 	</div>
 
 
