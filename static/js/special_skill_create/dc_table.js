@@ -48,7 +48,7 @@ function dc_dc_type() {
 }
 
 function dc_mea_click() {
-	const mea_grid = document.getElementById('dc-measurement-field');
+	const mea_grid = document.getElementById('dc-measure-field');
 	const mea_check = document.getElementById('dc_mea_check');
 
 	if (mea_check.checked == true) {
