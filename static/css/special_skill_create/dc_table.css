@@ -12,12 +12,13 @@
 	display: grid;
 	width: 100%;
 	margin: 0px;
+	padding: 0px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 }
 #dc-field {
 	display: grid;
-	width: 100%;
+	width: 97%;
 	margin: 2%;
 	padding: 1%;
 	margin-bottom: 0px;
@@ -100,7 +101,7 @@
 #dc-attr-title {
 	border-bottom: 2px solid lightblue;
 	width: 70%;
-	margin-bottom: 5px;
+	margin-bottom: 2px;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	color: #245681;
