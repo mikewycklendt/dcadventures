@@ -38,7 +38,7 @@
 	<div id="multiple=attr-title">DC: </div>
 
 	<div>
-		<div id="dc-class" style="margin-top: 3px;" style="display: none;">
+		<div id="dc-class" style="display: none;">
 			<div>
 				<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
 					<option value="">DC</option>
@@ -51,8 +51,8 @@
 			<div></div>
 		</div>
 	
-		<div id="dc-math"style="margin-top: 3px;" style="display: none;">
-			<div id="dcmathvalue" style="margin-top: 3px;">
+		<div id="dc-math" style="display: none;">
+			<div id="dcmathvalue">
 				<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
 					<option value="">Value</option>
 					{% for class in dcclasses %}
@@ -61,7 +61,7 @@
 				</select>
 			</div>
 
-			<div id="dcmathtype" style="margin-top: 3px;">
+			<div id="dcmathtype">
 				<select id="dc_math" name="dc_math" style="height: 3vh; font-size: 70%; padding: 0px;">
 					<option value="">Math</option>
 					{% for math in maths %}
@@ -70,7 +70,7 @@
 				</select>
 			</div>
 
-			<div id="dcranktype" style="margin-top: 3px;">
+			<div id="dcranktype">
 				<select id="dc_math_rank" name="dc_math_rank" style="height: 3vh; font-size: 70%; padding: 0px; ">
 					<option value="">Rank</option>
 					{% for rank in ranks %}

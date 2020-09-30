@@ -18,30 +18,28 @@ function dc_dc_type() {
 	const dc_math = document.getElementById('dc-math');
 	const dc_entry = document.getElementById('dc-entry');
 
-	if (type_value == 'value') {
-		dc_class.style.display = "grid";
-		dc_class.style.maxHeight = dc_class.scrollHeight + "px";
+	if (type_value != '') {
 		dc_entry.style.display = "grid";
 		dc_entry.style.padding = "1%";
 		dc_entry.style.maxHeight = dc_entry.scrollHeight + "px";
 		dc_entry.style.padding = "1%";
+	} else {
+		dc_entry.style.maxHeight = "0px";
+		dc_entry.style.padding = "0px";
+	}
 
+	if (type_value == 'value') {
+		dc_class.style.display = "grid";
+		dc_class.style.maxHeight = dc_class.scrollHeight + "px";
 		dc_math.style.display = "none";
 
 	} else if (type_value == 'math') {
 		dc_math.style.display = "grid";
 		dc_math.style.maxHeight = dc_math.scrollHeight + "px";
-		dc_entry.style.display = "grid";
-		dc_entry.style.padding = "1%";
-		dc_entry.style.maxHeight = dc_entry.scrollHeight + "px";
-		dc_entry.style.padding = "1%";
-		
 		dc_class.style.display = "none";
 	} else {
 		dc_class.style.display = "none";
 		dc_math.style.display = "none";
-		dc_entry.style.maxHeight = "0px";
-		dc_entry.style.padding = "0px";
 	}
 }
 
