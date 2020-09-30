@@ -47,10 +47,9 @@
 	display: grid;
 	width: 97%;
 	margin: 2%;
-	padding: 1%;
 	margin-top: 0%;
 	margin-bottom: 3%;
-	grid-template-columns: 20% 20% 16% 22% 22%;
+	grid-template-columns: 17% 17% 17% 17% 17% 15%;
 	grid-template-rows: auto;
 	border-bottom: 2px solid lightblue;
 }

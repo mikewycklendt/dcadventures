@@ -26,8 +26,6 @@ function power_submit() {
 	let sit_value = document.getElementById('power_sit').value;
 	let power_field = document.getElementById('power_power');
 	let power_value = power_field.options[power_field.selectedIndex].value; 
-
-	console.log
 	
 	if (sit_value != '' && power_value != '') {
 
