@@ -38,16 +38,7 @@ function banner_size() {
 
 window.onresize = banner_size; 
 
-const sidebar_btns = document.getElementsByClassName('btn-sidebar');
 
 function btn_select(item) {
-	this.clear_sidebar_btn();
 	item.style.background = 'rgba(175, 1, 1 .3)';
-}
-
-function clear_sidebar_btn() {
-	for (let i = 0; i < sidebar_btns.length; i++) {
-		let item = sidebar_btns[i];
-		item.style.background = 'rgba(255,255,255, 0)';
-	}
 }
