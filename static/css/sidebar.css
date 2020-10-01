@@ -1,4 +1,4 @@
-.btn-sidebar{
+#btn-sidebar{
 	display: block;
 	padding-top: 0px;
 	padding-bottom: 0%;
@@ -11,7 +11,7 @@
 	border-bottom: 2px solid #cdb99d;
 }
 
-.btn-sidebar:hover {
+#btn-sidebar:hover {
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;
@@ -24,4 +24,13 @@
 	border-left: 2px solid #7ecef6;
 	border-right: 2px solid #7ecef6;
 	background-color: fade(#FFFFFF, 40%);
+}
+
+.btn-sidebar {
+	background: white;
+	opacity: 0%;
+}
+
+.btn-sidebar:hover {
+	opacity: 40%;
 }
