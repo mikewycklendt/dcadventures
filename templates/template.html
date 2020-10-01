@@ -51,7 +51,7 @@
 
 			<div id="sidebargrid" style='background:url(/static/img/sidebar.jpg) no-repeat;'>
 				{% for button in sidebar %}
-				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;">
+				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;" onclick="btn_select(this)">
 					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;">
 						<img width="100%" height="100%" src="/static/img/sidebar/{{ button }}GOLD.png" 
 						onmouseover="this.src='/static/img/sidebar/{{ button }}BLUE.png'" 
