@@ -26,10 +26,14 @@
 
 .btn-sidebar {
 	background: rgba(255,255,255, 0);
-	transition: all .07s linear;
+	transition: all .1s linear;
 }
 
 .btn-sidebar:hover {
 	background: rgba(255,255,255, .2);
+}
+
+.btn-sidebar:active {
+	background: rgba(175, 1, 1 .3);
 }
 
