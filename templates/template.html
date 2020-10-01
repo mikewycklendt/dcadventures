@@ -16,6 +16,17 @@
 		<link type="text/css" rel="stylesheet" href="{{ style.style }}"  />
 		{% endfor %}
 
+		<style>
+			.btn-sidebar:hover::after {
+				background: url(/static/img/sidebar/btn_bg.png);
+				border-bottom: 2px solid #7ecef6;
+				border-left: 2px solid #7ecef6;
+				border-right: 2px solid #7ecef6;
+				position: absolute;
+				z-index: 1;
+			}
+		</style>
+
 	</head>
 
 <body onload="banner_size()">
@@ -51,7 +62,7 @@
 			<div id="sidebargrid" style='background:url(/static/img/sidebar.jpg) no-repeat;'>
 				{% for button in sidebar %}
 				<div id="{{button}}-btn" style="margin: 0px;">
-					<div class="btn-sidebar" style="margin: 0px;">
+					<div class="btn-sidebar" style=" margin: 0px;">
 						<img width="100%" src="/static/img/sidebar/{{ button }}GOLD.png" 
 						onmouseover="this.src='/static/img/sidebar/{{ button }}BLUE.png'" 
 						onmouseout="this.src='/static/img/sidebar/{{ button }}GOLD.png'" />

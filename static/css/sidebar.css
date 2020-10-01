@@ -1,4 +1,5 @@
 .btn-sidebar{
+	display: block;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
@@ -7,18 +8,18 @@
 	height: auto;
 	margin: 0px;
 	border-bottom: 2px solid #cdb99d;
+	position: relative;
 }
 
-.btn-sidebar:hover {
-	padding-top: 0px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	width: 100%;
-	height: auto;
-	margin: 0px;
+.btn-sidebar:hover::after {
+	background: url(/static/img/sidebar/btn_bg.png);
 	border-bottom: 2px solid #7ecef6;
 	border-left: 2px solid #7ecef6;
 	border-right: 2px solid #7ecef6;
-	background-color: fade(#FFFFFF, 40%);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolutE;
+	z-index: 1;
 }
