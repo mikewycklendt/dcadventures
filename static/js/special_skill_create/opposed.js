@@ -29,12 +29,6 @@ function opposed_by_by() {
 opposed_enter = 0;
 
 function opposed_by_submit() {
-	const table = document.getElementById('opposed-by-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let sit_value = document.getElementById('opposed_by_sit').value;
 	let opposed_field = document.getElementById('opposed_by');
@@ -43,9 +37,12 @@ function opposed_by_submit() {
 	let opposed_value =  opposed_field.options[opposed_field.selectedIndex].value;
 	let mod_value =  mod_field.options[mod_field.selectedIndex].value; 
 
+	const opposed_by_by = document.getElementById("opposed_by_by")
+	let opposed_by_by_value = opposed_by_by.options[opposed_by_by.selectedIndex].value;
+
 	console.log(sit_value)
 	
-	if (opposed_value != '' && mod_value != '' && sit_value != '') {
+	if (opposed_value != '' && mod_value != '' && sit_value != '' && opposed_by_by_value != '') {
 
 		const opp = document.createElement('div');
 		opp.className = 'opposed-by-table-oppose'
@@ -69,21 +66,115 @@ function opposed_by_submit() {
 
 		opposed_enter = opposed_enter + 1;
 	
+		const table = document.getElementById('opposed-by-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(opp);
 		table.appendChild(mod);
 		table.appendChild(sit);
 		table.appendChild(oppDelete);
+
+		rows = [opp.scrollHeight, mod.scrollHeight, sit.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 
 		
 		opp.style.maxHeight = opp.scrollHeight + "px";
 		mod.style.maxHeight = mod.scrollHeight + "px";
 		sit.style.maxHeight = sit.scrollHeight + "px";
 		oppDelete.style.maxHeight = oppDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		opposed_by_field.style.opacity = '0%';
 
 		opposed_delete()
+	
+		errors_delete = document.getElementsByClassName('opposed-by-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('opposed-by-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('opposed-by-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('opposed-by-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (dc_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opposed-by-err-line'
+			error.innerHTML = ' You must enter a difficulty class';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (opposed_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opposed-by-err-line'
+			error.innerHTML = ' You must specify what this skill is opposed by';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (mod_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opposed-by-err-line'
+			error.innerHTML = ' You must enter a modifier';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (sit_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opposed-by-err-line'
+			error.innerHTML = ' You must specify the situation in which thios skill is opposed';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (opposed_by_by_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opposed-by-err-line'
+			error.innerHTML = ' You must choose the priority by which the opposed skill is determined';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

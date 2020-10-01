@@ -4,6 +4,11 @@ function untrained_check() {
 	
 	if (untrained_check.checked == true) {
 		untrained_details_field.style.display = "grid";
+	} else {
+		untrained_details_field.style.display = "none";
+	}
+
+	if (untrained_check.checked != false) {
 		untrained_details_field.style.opacity = "100%";
 	} else {
 		untrained_details_field.style.display = "none";

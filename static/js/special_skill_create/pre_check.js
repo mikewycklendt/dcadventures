@@ -88,15 +88,22 @@ function pre_check_standard_submit() {
 		standard_table.appendChild(when);
 		standard_table.appendChild(skill);
 		standard_table.appendChild(circ);
-
 		standard_table.appendChild(standardDelete);
 
-		
+		rows = [when.scrollHeight, skill.scrollHeight, circ.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		skill.style.maxHeight = skill.scrollHeight + "px";
 		when.style.maxHeight = when.scrollHeight + "px";
 		circ.style.maxHeight = circ.scrollHeight + "px";
 		standardDelete.style.maxHeight = standardDelete.scrollHeight + "px";
-		standard_table.style.maxHeight = standard_table.scrollHeight + 20 + "px";
+		standard_table.style.maxHeight = standard_table.scrollHeight + row_height + 15 + "px";
 
 		pre_check_standard_delete()
 	}
@@ -133,12 +140,6 @@ pre_check_standard_delete();
 opposed_enter = 0;
 
 function pre_check_opposed_submit() {
-	const opposed_table = document.getElementById('pre-check-table-opposed');
-
-	opposed_table.style.display = "grid";
-	opposed_table.style.padding = "1%";
-	opposed_table.style.maxHeight = opposed_table.scrollHeight + "px";
-	opposed_table.style.padding = "1%";
 	
 	let opposed_circ_value = document.getElementById('pre_check_opposed_circ').value;
 	let opposed_when_field = document.getElementById('pre_check_opposed_when');
@@ -181,20 +182,34 @@ function pre_check_opposed_submit() {
 
 		opposed_enter = opposed_enter + 1;
 	
+		const opposed_table = document.getElementById('pre-check-table-opposed');
+
+		opposed_table.style.display = "grid";
+		opposed_table.style.padding = "1%";
+		opposed_table.style.maxHeight = opposed_table.scrollHeight + "px";
+		opposed_table.style.padding = "1%";
+
 		opposed_table.appendChild(when);
 		opposed_table.appendChild(skill);
 		opposed_table.appendChild(opposed);
 		opposed_table.appendChild(circ);
-
 		opposed_table.appendChild(opposedDelete);
 
+		rows = [when.scrollHeight, skill.scrollHeight, opposed.scrollHeight, circ.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 		
 		skill.style.maxHeight = skill.scrollHeight + "px";
 		when.style.maxHeight = when.scrollHeight + "px";
 		circ.style.maxHeight = circ.scrollHeight + "px";
 		opposed.style.maxHeight = opposed.scrollHeight + "px";
 		opposedDelete.style.maxHeight = opposedDelete.scrollHeight + "px";
-		opposed_table.style.maxHeight = opposed_table.scrollHeight + 20 + "px";
+		opposed_table.style.maxHeight = opposed_table.scrollHeight + row_height + 15 + "px";
 
 		pre_check_opposed_delete()
 	}

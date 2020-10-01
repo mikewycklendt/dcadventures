@@ -16,12 +16,6 @@ function power_check() {
 power_enter = 0;
 
 function power_submit() {
-	const table = document.getElementById('power-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let sit_value = document.getElementById('power_sit').value;
 	let power_field = document.getElementById('power_power');
@@ -47,15 +41,30 @@ function power_submit() {
 
 		power_enter = power_enter + 1;
 	
+		const table = document.getElementById('power-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(pwr);
 		table.appendChild(sit);
 		table.appendChild(pwrDelete);
 
-		
+		rows = [pwr.scrollHeight, sit.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		pwr.style.maxHeight = pwr.scrollHeight + "px";
 		sit.style.maxHeight = sit.scrollHeight + "px";
 		pwrDelete.style.maxHeight = pwrDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		power_delete()
 	}

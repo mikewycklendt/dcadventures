@@ -142,6 +142,19 @@ textarea:focus {
 	grid-template-columns: 100%;
 }
 
+#addskill-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #addskillform {
 	display: grid;
 	width: 100%;

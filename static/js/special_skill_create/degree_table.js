@@ -32,14 +32,9 @@ function degree_base() {
 degree_enter = 0;
 
 function degree_submit() {
-	const table = document.getElementById('degree-table');
+	
 	const type = document.getElementById('degree-type');
 
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
-	
 	let key_value = document.getElementById('degree_keyword').value;
 	let desc_value = document.getElementById('degree_desc').value;
 	let val_field = document.getElementById('degree_value');
@@ -79,19 +74,113 @@ function degree_submit() {
 
 		degree_enter = degree_enter + 1;
 	
+		const table = document.getElementById('degree-table');
+	
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+	
 		table.appendChild(val);
 		table.appendChild(key);
 		table.appendChild(desc);
 		table.appendChild(degDelete);
+
+		rows = [val.scrollHeight, desc.scrollHeight, key.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 
 		
 		val.style.maxHeight = val.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
 		desc.style.maxHeight = desc.scrollHeight + "px";
 		degDelete.style.maxHeight = degDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		degree_delete()
+	
+		errors_delete = document.getElementsByClassName('degree-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('degree-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('degree-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('degree-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (degrees_type == '') {
+			const error = document.createElement('div');
+			error.className = 'degree-err-line'
+			error.innerHTML = ' You must enter a degree type';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (degrees_target == '') {
+			const error = document.createElement('div');
+			error.className = 'degree-err-line'
+			error.innerHTML = ' You must enter a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (key_value == '') {
+			const error = document.createElement('div');
+			error.className = 'degree-err-line'
+			error.innerHTML = ' You must enter a keyword';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (desc_value == '') {
+			const error = document.createElement('div');
+			error.className = 'degree-err-line'
+			error.innerHTML = ' You must enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (val_value == '') {
+			const error = document.createElement('div');
+			error.className = 'degree-err-line'
+			error.innerHTML = ' You must enter a degree value';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

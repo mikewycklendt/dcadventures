@@ -16,12 +16,6 @@ function opp_cond_check() {
 opp_cond_enter = 0;
 
 function opp_cond_submit() {
-	const table = document.getElementById('opp-cond-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let des_value = document.getElementById('opp_cond_desc').value;
 	let deg_field = document.getElementById('opp_cond_degree');
@@ -30,8 +24,6 @@ function opp_cond_submit() {
 	let con_value = con_field.options[con_field.selectedIndex].value; 
 	let rnd_field = document.getElementById('opp_cond_rounds');
 	let rnd_value = rnd_field.options[rnd_field.selectedIndex].value; 
-
-	console.log
 	
 	if (des_value != '' && deg_value != '' && con_value != '' && rnd_value != '') {
 
@@ -61,21 +53,104 @@ function opp_cond_submit() {
 
 		opp_cond_enter = opp_cond_enter + 1;
 	
+		const table = document.getElementById('opp-cond-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(deg);
 		table.appendChild(con);
 		table.appendChild(rnd);
 		table.appendChild(des)
 		table.appendChild(ocDelete);
 
+		rows = [deg.scrollHeight, con.scrollHeight, rnd.scrollHeight, des.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 		
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		con.style.maxHeight = con.scrollHeight + "px";
 		rnd.style.maxHeight = rnd.scrollHeight + "px";
 		des.style.maxHeight = des.scrollHeight + "px";
 		ocDelete.style.maxHeight = ocDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		opp_cond_delete()
+	
+		errors_delete = document.getElementsByClassName('opp-cond-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('opp-cond-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('opp-cond-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('opp-cond-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (des_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opp-cond-err-line'
+			error.innerHTML = ' You must enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (deg_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opp-cond-err-line'
+			error.innerHTML = ' You must enter a required degree of success';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (con_value == '') {
+			const error = document.createElement('div');
+			error.className = 'opp-cond-err-line'
+			error.innerHTML = ' You must enter a condition';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (rnd_value != '') {
+			const error = document.createElement('div');
+			error.className = 'opp-cond-err-line'
+			error.innerHTML = ' You must specify how long the condition lasts';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

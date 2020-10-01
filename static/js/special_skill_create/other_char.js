@@ -31,16 +31,10 @@ function char_base() {
 char_enter = 0;
 
 function char_submit() {
-	const table = document.getElementById('char-table');
 	const tar_field = document.getElementById("char_target");
 	const chk_field = document.getElementById("char_type");
 	let chk_value = chk_field.options[chk_field.selectedIndex].value;
 	let tar_value =  tar_field.options[tar_field.selectedIndex].value;
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let deg_field = document.getElementById('char_value');
 	let rnk_field = document.getElementById('char_rank');
@@ -80,6 +74,13 @@ function char_submit() {
 		charDelete.appendChild(deleteBtn);
 
 		char_enter = char_enter + 1;
+
+		const table = document.getElementById('char-table');
+	
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
 	
 		table.appendChild(deg);
 		table.appendChild(tar);
@@ -88,16 +89,102 @@ function char_submit() {
 		table.appendChild(des)
 		table.appendChild(charDelete);
 
-		
+		rows = [deg.scrollHeight, des.scrollHeight, tar.scrollHeight, chk.scrollHeight, rnk.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		tar.style.maxHeight = tar.scrollHeight + "px";
 		chk.style.maxHeight = chk.scrollHeight + "px";
 		rnk.style.maxHeight = rnk.scrollHeight + "px";
 		des.style.maxHeight = des.scrollHeight + "px";
 		charDelete.style.maxHeight = charDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		char_delete()
+	
+		errors_delete = document.getElementsByClassName('char-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('char-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('char-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('char-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (deg_value == '') {
+			const error = document.createElement('div');
+			error.className = 'char-err-line'
+			error.innerHTML = ' You must specify the required degree of success';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (tar_value == '') {
+			const error = document.createElement('div');
+			error.className = 'char-err-line'
+			error.innerHTML = ' You must choose a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (chk_value == '') {
+			const error = document.createElement('div');
+			error.className = 'char-err-line'
+			error.innerHTML = ' You must choose a check type';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (rnk_value == '') {
+			const error = document.createElement('div');
+			error.className = 'char-err-line'
+			error.innerHTML = ' You must choose the rank type for the check';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (des_value != '') {
+			const error = document.createElement('div');
+			error.className = 'char-err-line'
+			error.innerHTML = ' You must enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

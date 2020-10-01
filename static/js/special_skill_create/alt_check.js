@@ -27,19 +27,11 @@ function check_type() {
 alt_check_enter = 0;
 
 function alt_check_submit() {
-	const table = document.getElementById('alt-check-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let des_value = document.getElementById('alt_check_desc').value;
 	let dc_field = document.getElementById('alt_check_dc');
 	let dc_value = dc_field.options[dc_field.selectedIndex].value; 
 
-	console.log
-	
 	if (dc_value != '' && des_value != '') {
 
 		const dc = document.createElement('div');
@@ -60,17 +52,80 @@ function alt_check_submit() {
 
 		alt_check_enter = alt_check_enter + 1;
 	
+		const table = document.getElementById('alt-check-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(dc);
 		table.appendChild(des);
 		table.appendChild(altDelete);
 
-		
+		rows = [dc.scrollHeight, des.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		des.style.maxHeight = des.scrollHeight + "px";
 		altDelete.style.maxHeight = altDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		alt_check_delete()
+
+		errors_delete = document.getElementsByClassName('alt-check-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('alt-check-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('alt-check-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('alt-check-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (dc_value == '') {
+			const error = document.createElement('div');
+			error.className = 'alt-check-err-line'
+			error.innerHTML = ' You must enter a difficulty class';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (des_value == '') {
+			const error = document.createElement('div');
+			error.className = 'alt-check-err-line'
+			error.innerHTML = ' You must enter a difficulty class';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

@@ -16,13 +16,6 @@ function other_check() {
 other_enter = 0;
 
 function other_submit() {
-	const table = document.getElementById('other-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
-	
 	let examples_value = document.getElementById('other_examples').value;
 	let skill_field = document.getElementById('other_skill');
 	let skill_value =  skill_field.options[skill_field.selectedIndex].value; 
@@ -48,16 +41,31 @@ function other_submit() {
 		otherDelete.appendChild(deleteBtn);
 
 		other_enter = other_enter + 1;
+
+		const table = document.getElementById('other-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
 	
 		table.appendChild(skill);
 		table.appendChild(examples);
 		table.appendChild(otherDelete);
 
+		rows = [skill.scrollHeight, examples.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 		
 		skill.style.maxHeight = skill.scrollHeight + "px";
 		examples.style.maxHeight = examples.scrollHeight + "px";
 		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		other_delete()
 	}

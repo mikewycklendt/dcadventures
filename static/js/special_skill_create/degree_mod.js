@@ -143,12 +143,6 @@ function deg_mod_measure_type() {
 deg_mod_enter = 0;
 
 function deg_mod_submit() {
-	const table = document.getElementById('deg-mod-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let target_field = document.getElementById('deg_mod_target');
 	let target =  target_field.options[target_field.selectedIndex].value;
@@ -246,6 +240,13 @@ function deg_mod_submit() {
 
 		deg_mod_enter = deg_mod_enter + 1;
 	
+		const table = document.getElementById('deg-mod-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(deg);
 		table.appendChild(eff);
 		table.appendChild(key_div);
@@ -253,15 +254,154 @@ function deg_mod_submit() {
 		table.appendChild(nullify);	
 		table.appendChild(degmodDelete);
 
+		
+		rows = [deg.scrollHeight, eff.scrollHeight, key_div.scrollHeight, desc_div.scrollHeight, nullify.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		eff.style.maxHeight = eff.scrollHeight + "px";
 		key_div.style.maxHeight = key_div.scrollHeight + "px";
 		desc_div.style.maxHeight = desc_div.scrollHeight + "px";
 		nullify.style.maxHeight = nullify.scrollHeight + "px";
 		degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		deg_mod_delete()
+		
+		errors_delete = document.getElementsByClassName('deg-mod-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('deg-mod-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+		errors = document.getElementById('deg-mod-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		errors_delete = document.getElementsByClassName('deg-mod-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+
+		if (target == '') { 
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must choose a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (deg_value == '') {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must chose a degree value';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'event') && ((key == '') && (desc == ''))) {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must fill out all event fields';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'damage') && (damage_type == 'math') && ((damage_math1 == '') || (damage_math2 == '') || (damage_val1 ==  '') || (damage_val2 == ''))) { 
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter all math fields for damage';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'damage') && (damage_type == 'value') && ((damage_deg_val == '') ||  (damage_val == ''))) {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter all damage values';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (key == '') {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter a keyword';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (desc == '') {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'measure') && (measure_type == 'value') && ((measure_value == '') || (measure_rank == ''))) {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter all measurement values';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'measure') && (measure_type == 'math') && ((measure_math == '') || (measure_val1 == '') || (measure_val2 == '') || (measure_math_rank == ''))) {
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter all math values for the measurement';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if ((type == 'condition') && ((condition1 == '') || (condition2 == ''))) {
+
+			const error = document.createElement('div');
+			error.className = 'deg-mod-err-line'
+			error.innerHTML = ' You must enter BOTH CONDITIONS';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}		
 	}
 };
 

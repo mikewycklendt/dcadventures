@@ -29,14 +29,9 @@ function resist_base() {
 resistance_enter = 0;
 
 function resistance_submit() {
-	const table = document.getElementById('resist-table');
+	
 	const resist_target = document.getElementById("resist_target");
 
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
-	
 	let des_value = document.getElementById('resist_desc').value;
 	let mod_field = document.getElementById('resist_modifier');
 	let mod_value = mod_field.options[mod_field.selectedIndex].value; 
@@ -62,16 +57,32 @@ function resistance_submit() {
 		resistDelete.appendChild(deleteBtn);
 
 		resistance_enter = resistance_enter + 1;
+
+		const table = document.getElementById('resist-table');
+	
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
 	
 		table.appendChild(mod);
 		table.appendChild(des);
 		table.appendChild(resistDelete);
 
+		rows = [mod.scrollHeight, des.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		
 		mod.style.maxHeight = mod.scrollHeight + "px";
 		des.style.maxHeight = des.scrollHeight + "px";
 		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		resistance_delete()
 	}

@@ -36,7 +36,6 @@ function levels_base() {
 levels_enter = 0;
 
 function levels_submit() {
-	const table = document.getElementById('levels-table');
 	let trgt_field = document.getElementById('levels_target');
 	let trgt_value = trgt_field.options[trgt_field.selectedIndex].value;
 	let type_value = document.getElementById('level_type').value;
@@ -47,11 +46,6 @@ function levels_submit() {
 	level_type.innerHTML = type_value;
 	level_type_field.style.opacity = "0%";
 
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
-	
 	let lvl_value = document.getElementById('level').value;
 	let efct_value = document.getElementById('level_effect').value;
 	let dc_field = document.getElementById('levels_dc_set');
@@ -83,19 +77,121 @@ function levels_submit() {
 
 		levels_enter = levels_enter + 1;
 	
+		const table = document.getElementById('levels-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+			
 		table.appendChild(dc);
 		table.appendChild(lvl);
 		table.appendChild(efct);
 		table.appendChild(lvlDelete);
 
+		rows = [dc.scrollHeight, lvl.scrollHeight, efct.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		lvl.style.maxHeight = lvl.scrollHeight + "px";
 		efct.style.maxHeight = efct.scrollHeight + "px";
 		lvlDelete.style.maxHeight = lvlDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		levels_delete()
+		
+		errors_delete = document.getElementsByClassName('levels-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('levels-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('levels-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('levels-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (type_value == '') {
+			const error = document.createElement('div');
+			error.className = 'levels-err-line'
+			error.innerHTML = ' You must enter a level type';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (lvl_value == '') {
+			const error = document.createElement('div');
+			error.className = 'levels-err-line'
+			error.innerHTML = ' You must enter a level value';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (efct_value == '') {
+			const error = document.createElement('div');
+			error.className = 'levels-err-line'
+			error.innerHTML = ' You must enter an effect';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (dc_value == '') {
+			const error = document.createElement('div');
+			error.className = 'levels-err-line'
+			error.innerHTML = ' You must enter a difficulty class';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (trgt_value != '') {
+			const error = document.createElement('div');
+			error.className = 'levels-err-line'
+			error.innerHTML = ' You must enter a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+
+		
+
+
+	
+
+
+		
 	}
 };
 

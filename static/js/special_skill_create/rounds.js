@@ -16,12 +16,6 @@ function rounds_check() {
 rounds_enter = 0;
 
 function rounds_submit() {
-	const table = document.getElementById('rounds-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let dc_field = document.getElementById('rounds_dc');
 	let dc_value =  dc_field.options[dc_field.selectedIndex].value;
@@ -66,6 +60,13 @@ function rounds_submit() {
 
 		other_enter = other_enter + 1;
 	
+		const table = document.getElementById('rounds-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+		
 		table.appendChild(dc);
 		table.appendChild(deg);
 		table.appendChild(rank);
@@ -73,14 +74,22 @@ function rounds_submit() {
 		table.appendChild(rnd);
 		table.appendChild(rndDelete);
 
-		
+		rows = [dc.scrollHeight, deg.scrollHeight, rank.scrollHeight, mod.scrollHeight, rnd.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		deg.style.maxHeight = deg.scrollHeight + "px";
 		rank.style.maxHeight = rank.scrollHeight + "px";
 		mod.style.maxHeight = mod.scrollHeight + "px";
 		rnd.style.maxHeight = rnd.scrollHeight + "px";
 		rndDelete.style.maxHeight = rndDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		rounds_delete()
 	}

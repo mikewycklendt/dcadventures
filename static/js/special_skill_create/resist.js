@@ -16,12 +16,6 @@ function resist_effect_check() {
 resist_enter = 0;
 
 function resist_submit() {
-	const table = document.getElementById('resist-effect-table');
-
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
 	
 	let ex_value = document.getElementById('resist_effect_examples').value;
 	let eff_field = document.getElementById('resist_effect');
@@ -49,15 +43,30 @@ function resist_submit() {
 
 		resist_enter = resist_enter + 1;
 	
+		const table = document.getElementById('resist-effect-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(eff);
 		table.appendChild(ex);
 		table.appendChild(resistDelete);
 
-		
+		rows = [eff.scrollHeight, ex.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+
 		ex.style.maxHeight = ex.scrollHeight + "px";
 		eff.style.maxHeight = eff.scrollHeight + "px";
 		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 30 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		resist_delete()
 	}

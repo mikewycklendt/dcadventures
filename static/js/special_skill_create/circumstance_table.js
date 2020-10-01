@@ -90,12 +90,11 @@ function circ_mod() {
 circ_enter = 0;
 
 function circ_submit() {
-	const table = document.getElementById('circ-table');
 
-	table.style.display = "grid";
-	table.style.padding = "1%";
-	table.style.maxHeight = table.scrollHeight + "px";
-	table.style.padding = "1%";
+	const circ_skill = document.getElementById("circ_skill");
+	const circ_target = document.getElementById("circ_target");
+	circskill = circ_skill.options[circ_skill.selectedIndex].value;
+	circtarget =  circ_target.options[circ_target.selectedIndex].value;
 	
 	let circ_value = document.getElementById('circumstance_entry').value;
 	
@@ -120,7 +119,10 @@ function circ_submit() {
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value;
 	let mod_type_value =  mod_type_field.options[mod_type_field.selectedIndex].value; 
 	
-	if ((mod_type_value == 'value' && modifier_value != '' && rnd_value != '' && circ_value != '') || (mod_type_value == 'math' && rnd_value != '' && circ_value != '' && val_value != '' && unit_value != '' &&  mod_value != '') || (mod_type_value == 'adjust' && rnd_value != '' && circ_value != '' && chk_value != '' && adj_value != '' && rank_value != '') || (mod_type_value == 'noequip' && rnd_value != '' && circ_value != '' && modifier_value != '')) {
+	if ( (circskill != '') && (circtarget != '') && ((mod_type_value == 'value' && modifier_value != '' && rnd_value != '' && circ_value != '') || 
+		(mod_type_value == 'math' && rnd_value != '' && circ_value != '' && val_value != '' && unit_value != '' &&  mod_value != '') || 
+		(mod_type_value == 'adjust' && rnd_value != '' && circ_value != '' && chk_value != '' && adj_value != '' && rank_value != '') || 
+		(mod_type_value == 'noequip' && rnd_value != '' && circ_value != '' && modifier_value != ''))) {
 
 		const mod = document.createElement('div');
 		mod.className = 'circ-table-modifier'
@@ -157,19 +159,100 @@ function circ_submit() {
 
 		circ_enter = circ_enter + 1;
 	
+		const table = document.getElementById('circ-table');
+
+		table.style.display = "grid";
+		table.style.padding = "1%";
+		table.style.maxHeight = table.scrollHeight + "px";
+		table.style.padding = "1%";
+
 		table.appendChild(mod);
 		table.appendChild(rnd);
 		table.appendChild(circ);
 		table.appendChild(circDelete);
 
 		
+		rows = [mod.scrollHeight, rnd.scrollHeight, circ.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
+		
 		mod.style.maxHeight = mod.scrollHeight + "px";
 		rnd.style.maxHeight = rnd.scrollHeight + "px";
 		circ.style.maxHeight = circ.scrollHeight + "px";
 		circDelete.style.maxHeight = circDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + 20 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		circ_delete()
+		
+		errors_delete = document.getElementsByClassName('circ-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		} 
+
+		errors = document.getElementById('circ-err')
+
+		errors.style.display = "none";
+		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
+		
+	} else {
+
+		errors_delete = document.getElementsByClassName('circ-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+
+		errors = document.getElementById('circ-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (((mod_type_value == 'value') && ((modifier_value == '') || (rnd_value != '') || (circ_value != ''))) || 
+			((mod_type_value == 'math') && ((rnd_value == '') || (circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
+			((mod_type_value == 'adjust') && ((rnd_value == '') || (circ_value == '') || (chk_value == '') || (adj_value == '') || (rank_value == ''))) || 
+			((mod_type_value == 'noequip') && ((rnd_value == '') || (circ_value == '') || (modifier_value == '')))) {
+
+			const error = document.createElement('div');
+			error.className = 'circ-err-line'
+			error.innerHTML = ' You must fill out all modifier fields';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (circskill == '') {
+
+			const error = document.createElement('div');
+			error.className = 'circ-err-line'
+			error.innerHTML = ' You must choose a skill check type.';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (circtarget != '') {
+
+			const error = document.createElement('div');
+			error.className = 'circ-err-line'
+			error.innerHTML = ' You must choose a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

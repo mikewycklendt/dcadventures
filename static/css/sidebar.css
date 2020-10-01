@@ -28,7 +28,6 @@
 .btn-sidebar {
 	background: rgba(255,255,255, 0);
 	transition: all .1s linear;
-	cursor: ;
 }
 
 .btn-sidebar:hover {

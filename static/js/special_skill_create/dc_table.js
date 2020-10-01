@@ -167,8 +167,6 @@ let dc_enter = 0;
 
 function dc_submit() {
 
-	const table = document.getElementById('dc-table-container');
-
 	const type_field = document.getElementById('dc_type');
 	let type_value = type_field.options[type_field.selectedIndex].value;
 
@@ -311,28 +309,30 @@ function dc_submit() {
 		const con_title = document.getElementById('dc-table-title-con');
 
 		if (key_check.checked == true) {
-			key_title.style.display = 'block';
+			key_title.style.maxWidth = key_title.scrollWidth + "px";
 		} 
 
 		if (mea_check.checked == true) {
-			mea_title.style.display = 'block';
+			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
 		}
 
 		if (dam_check.checked == true) {
-			dam_title.style.display = 'block';
+			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
 		}
 
 		if (def_check.checked == true) {
-			def_title.style.display = 'block';
+			def_title.style.maxWidth = def_title.scrollWidth + "px";
 		}
 
 		if (act_check.checked == true) {
-			act_title.style.display = 'block';
+			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 
 		if (con_check.checked == true) {
-			con_title.style.display = 'block';
+			con_title.style.maxWidth = con_title.scrollWidth + "px";
 		}
+
+		const table = document.getElementById('dc-table-container');
 
 		table.style.display = "grid";
 		table.style.padding = "1%";
@@ -347,6 +347,15 @@ function dc_submit() {
 		table.appendChild(def);
 		table.appendChild(act);
 		table.appendChild(con);
+
+		let rows = [dc.scrollHeight, key.scrollHeight, des.scrollHeight, mea.scrollHeight, dam.scrollHeight, def.scrollHeight, act.scrollHeight, con.scrollHeight];
+		let row_height = 0;
+
+		for (i = 0; i < rows.length; i++) {
+			if (rows[i] > row_height) {
+				row_height = rows[i]
+			}
+		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
@@ -357,7 +366,7 @@ function dc_submit() {
 		act.style.maxHeight = act.scrollHeight + "px";
 		con.style.maxHeight = con.scrollHeight + "px";
 		dcDelete.style.maxHeight = dcDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + des.scrollHeight + 15 + "px";
+		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		dc_delete();
 	}
@@ -419,57 +428,56 @@ function dc_delete() {
 
 	for (let i = 0; i < keys.length; i++) {
 		if (keys[i].innerHTML != ''){
-			key_title.style.display = 'block';
+			key_title.style.maxWidth = key_title.scrollWidth + "px";
 			break;
 		} else {
-			key_title.style.display = 'none';
+			key_title.style.maxWidth = "0px";
 		}
 	}
 
 	for (let i = 0; i < meas.length; i++) {
 		if (meas[i].innerHTML != ''){
-			mea_title.style.display = 'block';
+			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
 			break;
 		} else {
-			mea_title.style.display = 'none';
+			mea_title.style.maxWidth = "0px";
 		}
 	}
 	
 	for (let i = 0; i < dams.length; i++) {
 		if (dams[i].innerHTML != ''){
-			dam_title.style.display = 'block';
+			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
 			break;
 		} else {
-			dam_title.style.display = 'none';
+			dam_title.style.maxWidth = "0px";
 		}
 	}
 
 	for (let i = 0; i < defs.length; i++) {
 		if (defs[i].innerHTML != ''){
-			def_title.style.display = 'block';
+			def_title.style.maxWidth = def_title.scrollWidth + "px";
 			break;
 		} else {
-			def_title.style.display = 'none';
+			def_title.style.maxWidth = "0px";
 		}
 	}
 		
 	for (let i = 0; i < acts.length; i++) {
 		if (acts[i].innerHTML != ''){
-			act_title.style.display = 'block';
+			act_title.style.maxWidth = act_title.scrollWidth + "px";
 			break;
 		} else {
-			act_title.style.display = 'none';
+			act_title.style.maxWidth = "0px";
 		}
 	}
 	
 	for (let i = 0; i < cons.length; i++) {
 		if (cons[i].innerHTML != ''){
-			con_title.style.display = 'block';
+			con_title.style.maxWidth = con_title.scrollWidth + "px";
 		} else {
-			con_title.style.display = 'none';
+			con_title.style.maxWidth = "0px";
 		}
-	}
-	
+	}	
 }
 
 dc_delete();
