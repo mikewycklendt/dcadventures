@@ -25,9 +25,11 @@
 }
 
 .btn-sidebar {
-	background: rgba(255,255,255, 0)
+	background: rgba(255,255,255, 0);
+	transition: all .1s linear;
 }
 
 .btn-sidebar:hover {
-	background: rgba(255,255,255, .2)
+	background: rgba(255,255,255, .2);
 }
+
