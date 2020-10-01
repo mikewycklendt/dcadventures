@@ -17,7 +17,21 @@
 		{% endfor %}
 
 		<style>
-			.btn-sidebar:hover {
+
+			.btn-sidebar:hover::before {
+				display: block;
+				padding-top: 0px;
+				padding-bottom: 0px;
+				padding-left: 0px;
+				padding-right: 0px;
+				width: 100%;
+				height: auto;
+				margin: 0px;
+				border-bottom: 2px solid #cdb99d;
+				position: relative;
+			}
+
+			.btn-sidebar:hover::after {
 				background: url('/static/img/sidebar/btn_bg.png');
 				border-bottom: 2px solid #7ecef6;
 				border-left: 2px solid #7ecef6;
