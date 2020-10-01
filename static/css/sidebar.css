@@ -9,6 +9,7 @@
 	margin: 0px;
 	margin-bottom: 0%;
 	border-bottom: 2px solid #cdb99d;
+	cursor: pointer;
 }
 
 #btn-sidebar:hover {
@@ -27,13 +28,11 @@
 .btn-sidebar {
 	background: rgba(255,255,255, 0);
 	transition: all .1s linear;
+	cursor: ;
 }
 
 .btn-sidebar:hover {
 	background: rgba(255,255,255, .2);
 }
 
-.btn-sidebar:active {
-	background: rgba(175, 1, 1 .3);
-}
 
