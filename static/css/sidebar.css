@@ -23,7 +23,6 @@
 	border-bottom: 2px solid #7ecef6;
 	border-left: 2px solid #7ecef6;
 	border-right: 2px solid #7ecef6;
-	background-color: fade(#FFFFFF, 40%);
 }
 
 .btn-sidebar {
@@ -31,5 +30,5 @@
 }
 
 .btn-sidebar:hover {
-	background: rgba(255,255,255, .5)
+	background: rgba(255,255,255, .3)
 }
