@@ -31,6 +31,7 @@ resistance_enter = 0;
 function resistance_submit() {
 	
 	const resist_target = document.getElementById("resist_target");
+	resisttarget =  deg_mod_target.options[resist_target.selectedIndex].value;
 
 	let des_value = document.getElementById('resist_desc').value;
 	let mod_field = document.getElementById('resist_modifier');
@@ -38,7 +39,7 @@ function resistance_submit() {
 
 	console.log
 	
-	if (resist_target != '' && mod_value != '' && des_value != '') {
+	if (resisttarget != '' && mod_value != '' && des_value != '') {
 
 		const mod = document.createElement('div');
 		mod.className = 'resist-table-mod'
@@ -85,6 +86,68 @@ function resistance_submit() {
 		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		resistance_delete()
+	
+		errors_delete = document.getElementsByClassName('resist-err-line');
+
+		if (typeof errors_delete === "undefined") {
+			console.log('no errors defined')
+		} else {
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.maxHeight = "0px";
+				errors_delete[i].style.padding = "0px";
+				errors_delete[i].style.marginBottom = "0px";
+			}
+
+			errors = document.getElementById('rounds-err')
+
+			errors.style.display = "none";
+			errors.style.padding = "0px";
+			errors.style.maxHeight = "0px";
+		}
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('resist-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('resist-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (resisttarget == '') {
+			const error = document.createElement('div');
+			error.className = 'resist-err-line'
+			error.innerHTML = ' You must choose a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (mod_value == '') {
+			const error = document.createElement('div');
+			error.className = 'resist-err-line'
+			error.innerHTML = ' You must specify a modifier';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (des_value == '') {
+			const error = document.createElement('div');
+			error.className = 'resist-err-line'
+			error.innerHTML = ' You must enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

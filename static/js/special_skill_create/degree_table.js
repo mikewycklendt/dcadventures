@@ -106,17 +106,21 @@ function degree_submit() {
 	
 		errors_delete = document.getElementsByClassName('degree-err-line');
 
-		for (i = 0; i < errors_delete.length; i++) {
-			errors_delete[i].style.maxHeight = "0px";
-			errors_delete[i].style.padding = "0px";
-			errors_delete[i].style.marginBottom = "0px";
+		if (typeof errors_delete === "undefined") {
+			console.log('no errors defined')
+		} else {
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.maxHeight = "0px";
+				errors_delete[i].style.padding = "0px";
+				errors_delete[i].style.marginBottom = "0px";
+			}
+
+			errors = document.getElementById('rounds-err')
+
+			errors.style.display = "none";
+			errors.style.padding = "0px";
+			errors.style.maxHeight = "0px";
 		}
-
-		errors = document.getElementById('degree-err')
-
-		errors.style.display = "none";
-		errors.style.padding = "0px";
-		errors.style.maxHeight = "0px";
 
 	} else {
 

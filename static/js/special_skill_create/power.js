@@ -67,6 +67,58 @@ function power_submit() {
 		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		power_delete()
+
+		errors_delete = document.getElementsByClassName('power-err-line');
+
+		if (typeof errors_delete === "undefined") {
+			console.log('no errors defined')
+		} else {
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.maxHeight = "0px";
+				errors_delete[i].style.padding = "0px";
+				errors_delete[i].style.marginBottom = "0px";
+			}
+
+			errors = document.getElementById('rounds-err')
+
+			errors.style.display = "none";
+			errors.style.padding = "0px";
+			errors.style.maxHeight = "0px";
+		}
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('power-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('power-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (sit_value == '') {
+			const error = document.createElement('div');
+			error.className = 'power-err-line'
+			error.innerHTML = ' You must enter a situation';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (power_value== '') {
+			const error = document.createElement('div');
+			error.className = 'power-err-line'
+			error.innerHTML = ' You must enter a power';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 

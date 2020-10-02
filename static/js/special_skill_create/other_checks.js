@@ -68,6 +68,58 @@ function other_submit() {
 		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		other_delete()
+	
+		errors_delete = document.getElementsByClassName('other-table-err-line');
+
+		if (typeof errors_delete === "undefined") {
+			console.log('no errors defined')
+		} else {
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.maxHeight = "0px";
+				errors_delete[i].style.padding = "0px";
+				errors_delete[i].style.marginBottom = "0px";
+			}
+
+			errors = document.getElementById('rounds-err')
+
+			errors.style.display = "none";
+			errors.style.padding = "0px";
+			errors.style.maxHeight = "0px";
+		}
+
+	} else {
+
+		errors_delete = document.getElementsByClassName('other-table-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+		errors = document.getElementById('other-table-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors.scrollHeight + "px";
+		errors.style.padding = "1%";
+
+		if (skill_value == '') {
+			const error = document.createElement('div');
+			error.className = 'other-table-line'
+			error.innerHTML = ' You must choose a skill';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
+
+		if (examples_value != '') {
+			const error = document.createElement('div');
+			error.className = 'other-table-line'
+			error.innerHTML = ' You must provide example  situations';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+		}
 	}
 };
 
