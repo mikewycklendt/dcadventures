@@ -182,7 +182,7 @@ function levels_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (trgt_value != '') {
+		if (trgt_value == '') {
 			const error = document.createElement('div');
 			error.className = 'levels-err-line'
 			error.innerHTML = ' You must enter a target';
