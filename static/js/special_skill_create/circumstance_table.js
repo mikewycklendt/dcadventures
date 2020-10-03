@@ -219,7 +219,8 @@ function circ_submit() {
 
 		console.log(rnd_value);
 
-		
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
 
 		let errors_height = errors.scrollHeight + 10;
 
@@ -302,8 +303,7 @@ function circ_submit() {
 			console.log(errors_height);
 		}
 
-		errors.style.display = "grid";
-		errors.style.padding = "1%";
+		
 		errors.style.maxHeight = errors_height + "px";
 		errors.style.padding = "1%";
 	}
