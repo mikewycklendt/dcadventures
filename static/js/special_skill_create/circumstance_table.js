@@ -224,7 +224,7 @@ function circ_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
-		if (((mod_type_value == 'value') && ((modifier_value == '') |||| (circ_value != ''))) || 
+		if (((mod_type_value == 'value') && ((modifier_value == '') || (circ_value != ''))) || 
 			((mod_type_value == 'math') && (((circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
 			((mod_type_value == 'adjust') && (((circ_value == '') || (chk_value == '') || (adj_value == '') || (rank_value == ''))) || 
 			((mod_type_value == 'noequip') && ((circ_value == '') || (modifier_value == '')))) {
