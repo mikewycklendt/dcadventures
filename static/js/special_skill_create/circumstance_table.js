@@ -219,12 +219,9 @@ function circ_submit() {
 
 		console.log(rnd_value);
 
-		errors.style.display = "grid";
-		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
+		
 
-		let errors_height = errors.scrollHeight;
+		let errors_height = errors.scrollHeight + 10;
 
 		if (((mod_type_value == 'value') && (modifier_value == '')) || 
 			((mod_type_value == 'math') && ((rnd_value == '') || (circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
@@ -305,8 +302,10 @@ function circ_submit() {
 			console.log(errors_height);
 		}
 
-		errors_height = errors_height + 10;
-		errors.maxHeight = errors_height + "px"
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 
