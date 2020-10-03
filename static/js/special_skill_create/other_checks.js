@@ -101,7 +101,7 @@ function other_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
-		console.log(skill_value)
+		console.log(examples_value)
 
 		if (skill_value == '') {
 			const error = document.createElement('div');
