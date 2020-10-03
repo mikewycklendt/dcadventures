@@ -81,7 +81,7 @@ function alt_check_submit() {
 
 		errors_delete = document.getElementsByClassName('alt-check-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -90,7 +90,7 @@ function alt_check_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('alt-check-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -104,7 +104,7 @@ function alt_check_submit() {
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.display = "none";
 		}
-		errors = document.getElementById('alt-check-err')
+		const errors = document.getElementById('alt-check-err')
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
@@ -119,6 +119,7 @@ function alt_check_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (des_value == '') {
@@ -129,6 +130,7 @@ function alt_check_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 	}
 };
