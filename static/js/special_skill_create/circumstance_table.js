@@ -275,6 +275,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors_scroll = errors_scroll + error.scrollHeight;
 		}
 
 		if (rnd_value == '') {
@@ -286,6 +287,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px"
+			errors_scroll = errors_scroll + error.scrollHeight;
 		}
 
 		errors.maxHeight = errors.scrollHeight + errors_scroll + 'px';
