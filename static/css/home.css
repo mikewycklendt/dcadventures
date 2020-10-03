@@ -92,7 +92,7 @@
 
 .signup-btn{
 	background: url('/static/img/signupRED.png') no-repeat;
-	background-size: 115%;
+	background-size: 100%;
 	border: 4px solid #af0101;
 	border-radius: 20px;
 	padding:15px;
@@ -106,7 +106,7 @@
 
 .signup-btn:hover{
 	background: url('/static/img/signupBLUE.png') no-repeat;
-	background-size: 100%;
+	background-size: 115%;
 	border: 4px solid #3a4e87;
 	border-radius: 20px;
 	padding:15px;
