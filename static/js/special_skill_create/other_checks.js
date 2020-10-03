@@ -69,9 +69,9 @@ function other_submit() {
 
 		other_delete()
 	
-		errors_delete = document.getElementsByClassName('other-table-err-line');
+		errors_delete = document.getElementsByClassName('other-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -80,7 +80,7 @@ function other_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('other-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -89,7 +89,7 @@ function other_submit() {
 
 	} else {
 
-		errors_delete = document.getElementsByClassName('other-table-err-line');
+		errors_delete = document.getElementsByClassName('other-err-line');
 
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.display = "none";
@@ -101,24 +101,28 @@ function other_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
+		console.log(skill_value)
+
 		if (skill_value == '') {
 			const error = document.createElement('div');
-			error.className = 'other-table-line'
+			error.className = 'other-err-line'
 			error.innerHTML = ' You must choose a skill';
 
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (examples_value != '') {
 			const error = document.createElement('div');
-			error.className = 'other-table-line'
+			error.className = 'other-err-line'
 			error.innerHTML = ' You must provide example  situations';
 
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 	}
 };
