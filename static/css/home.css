@@ -63,3 +63,55 @@
 	background-color: #af0101;
 	align-content: center;
 }
+
+.about-btn{
+	background: url('/static/img/aboutRED.png') no-repeat;
+	background-size: 100%;
+	border: 4px solid #af0101;
+	border-radius: 20px;
+	padding:15px;
+	width: 60%;
+	height: auto;
+	background-color: white;
+	background-position: center center;
+	transition: all .15s linear;
+	cursor: pointer;
+}
+
+.about-btn:hover{
+	background: url('/static/img/aboutBLUE.png') no-repeat;
+	background-size: 100%;
+	border: 4px solid #3a4e87;
+	border-radius: 20px;
+	padding:15px;
+	width: 60%;
+	height: auto;
+	background-color: lightblue;
+	background-position: center center;
+}
+
+.signup-btn{
+	background: url('/static/img/signupRED.png') no-repeat;
+	background-size: 100%;
+	border: 4px solid #af0101;
+	border-radius: 20px;
+	padding:15px;
+	width: 60%;
+	height: auto;
+	background-color: white;
+	background-position: center center;
+	transition: all .15s linear;
+	cursor: pointer;
+}
+
+.signup-btn:hover{
+	background: url('/static/img/signupBLUE.png') no-repeat;
+	background-size: 100%;
+	border: 4px solid #3a4e87;
+	border-radius: 20px;
+	padding:15px;
+	width: 60%;
+	height: auto;
+	background-color: lightblue;
+	background-position: center center;
+}
