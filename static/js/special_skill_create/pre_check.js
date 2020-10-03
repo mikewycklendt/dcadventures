@@ -43,13 +43,7 @@ function pre_check_entry() {
 
 standard_enter = 0;
 
-function pre_check_standard_submit() {
-	const standard_table = document.getElementById('pre-check-table-standard');
-
-	standard_table.style.display = "grid";
-	standard_table.style.padding = "1%";
-	standard_table.style.maxHeight = standard_table.scrollHeight + "px";
-	standard_table.style.padding = "1%";
+function pre_check_standard_submit() {;
 	
 	let standard_circ_value = document.getElementById('pre_check_circ').value;
 	let standard_when_field = document.getElementById('pre_check_when');
@@ -87,6 +81,13 @@ function pre_check_standard_submit() {
 		standardDelete.appendChild(deleteBtn);
 
 		standard_enter = standard_enter + 1;
+
+		const standard_table = document.getElementById('pre-check-table-standard');
+
+		standard_table.style.display = "grid";
+		standard_table.style.padding = "1%";
+		standard_table.style.maxHeight = standard_table.scrollHeight + "px";
+		standard_table.style.padding = "1%"
 	
 		standard_table.appendChild(when);
 		standard_table.appendChild(skill);
@@ -145,7 +146,7 @@ function pre_check_standard_submit() {
 		if (standard_skill_value == '') {
 			const error = document.createElement('div');
 			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must choose a skill valure';
+			error.innerHTML = ' You must choose a skill value';
 
 			errors.appendChild(error);
 
@@ -153,7 +154,7 @@ function pre_check_standard_submit() {
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
-		if (standard_circ_value != '') {
+		if (standard_circ_value == '') {
 			const error = document.createElement('div');
 			error.className = 'pre-check-err-line'
 			error.innerHTML = ' You must enter a circumstance';
