@@ -238,7 +238,7 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 		
-			console.log(errors.scrollHeight);
+			console.log(error.offsetHeight);
 		}
 
 		if (circskill == '') {
@@ -275,7 +275,8 @@ function circ_submit() {
 
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
-			console.log(errors.scrollHeight)
+			
+			console.log(error.offsetHeight);
 		}
 
 		if (rnd_value == '') {
@@ -286,11 +287,10 @@ function circ_submit() {
 
 			errors.appendChild(error);
 
-			console.log(error.scrollHeight)
-
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
-			console.log(errors.scrollHeight)
+			
+			console.log(error.offsetHeight);
 		}
 	}
 };
