@@ -236,7 +236,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 		
 			console.log(errors.scrollHeight);
 		}
@@ -250,7 +250,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 		}
 
 		if (circtarget == '') {
@@ -262,7 +262,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 		}
 
 		if (circ_value == '') {
@@ -274,7 +274,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 			console.log(errors.scrollHeight)
 		}
 
@@ -289,7 +289,7 @@ function circ_submit() {
 			console.log(error.scrollHeight)
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 			console.log(errors.scrollHeight)
 		}
 	}
