@@ -234,6 +234,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (circskill == '') {
@@ -253,6 +254,18 @@ function circ_submit() {
 			const error = document.createElement('div');
 			error.className = 'circ-err-line'
 			error.innerHTML = ' You must choose a target';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+		}
+
+		if (circ_value == '') {
+
+			const error = document.createElement('div');
+			error.className = 'circ-err-line'
+			error.innerHTML = ' You must explain the circumstance.';
 
 			errors.appendChild(error);
 
