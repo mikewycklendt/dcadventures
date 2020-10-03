@@ -236,9 +236,10 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.maxHeight + error.offsetHeight + 10 + 'px';
+			errors.style.maxHeight = errors.offsetHeight + error.scrollHeight + 10 + 'px';
 		
 			console.log(error.scrollHeight);
+			console.log(errors.offsetHeight);
 		}
 
 		if (circskill == '') {
@@ -274,9 +275,10 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.maxHeight + error.offsetHeight + 10 + 'px';
+			errors.style.maxHeight = errors.offsetHeight + error.offsetHeight + 10 + 'px';
 			
 			console.log(error.scrollHeight);
+			console.log(errors.offsetHeight);
 		}
 
 		if (rnd_value == '') {
@@ -288,9 +290,10 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.maxHeight + error.offsetHeight + 10 + 'px';
+			errors.style.maxHeight = errors.offsetHeight + error.offsetHeight + 10 + 'px';
 			
 			console.log(error.scrollHeight);
+			console.log(errors.offsetHeight);
 		}
 	}
 };
