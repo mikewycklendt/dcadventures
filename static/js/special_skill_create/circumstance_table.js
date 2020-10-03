@@ -217,6 +217,8 @@ function circ_submit() {
 
 		errors = document.getElementById('circ-err')
 
+		console.log(rnd_value);
+
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
 		errors.style.maxHeight = errors.scrollHeight + "px";
