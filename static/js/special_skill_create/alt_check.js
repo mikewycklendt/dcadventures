@@ -108,10 +108,10 @@ function alt_check_submit() {
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
 
 		console.log(dc_value)
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (dc_value == '') {
 			const error = document.createElement('div');
@@ -121,7 +121,7 @@ function alt_check_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (des_value == '') {
@@ -132,8 +132,11 @@ function alt_check_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 

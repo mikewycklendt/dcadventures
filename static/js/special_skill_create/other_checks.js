@@ -98,10 +98,10 @@ function other_submit() {
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
-
+		
 		console.log(examples_value)
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (skill_value == '') {
 			const error = document.createElement('div');
@@ -111,7 +111,7 @@ function other_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (examples_value == '') {
@@ -122,8 +122,11 @@ function other_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 

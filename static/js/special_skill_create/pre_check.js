@@ -140,8 +140,8 @@ function pre_check_standard_submit() {;
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (standard_skill_value == '') {
 			const error = document.createElement('div');
@@ -151,7 +151,7 @@ function pre_check_standard_submit() {;
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (standard_circ_value == '') {
@@ -162,7 +162,7 @@ function pre_check_standard_submit() {;
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (standard_when_value == '') {
@@ -173,7 +173,7 @@ function pre_check_standard_submit() {;
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (pre_check_type_value == '') {
@@ -184,8 +184,11 @@ function pre_check_standard_submit() {;
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 
@@ -326,8 +329,8 @@ function pre_check_opposed_submit() {
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (opposed_skill_value == '') {
 			const error = document.createElement('div');
@@ -337,7 +340,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (opposed_circ_value != '') {
@@ -348,7 +351,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (opposed_when_value == '') {
@@ -359,7 +362,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (opposed_value == '') {
@@ -370,7 +373,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (pre_check_type_value == '') {
@@ -381,8 +384,11 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 

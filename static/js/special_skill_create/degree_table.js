@@ -106,6 +106,8 @@ function degree_submit() {
 	
 		errors_delete = document.getElementsByClassName('degree-err-line');
 
+		let errors_height = errors.scrollHeight + 20;
+
 		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
@@ -133,8 +135,8 @@ function degree_submit() {
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (degrees_type == '') {
 			const error = document.createElement('div');
@@ -144,7 +146,7 @@ function degree_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (degrees_target == '') {
@@ -155,7 +157,7 @@ function degree_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (key_value == '') {
@@ -166,7 +168,7 @@ function degree_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (desc_value == '') {
@@ -177,7 +179,7 @@ function degree_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (val_value == '') {
@@ -188,8 +190,11 @@ function degree_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 

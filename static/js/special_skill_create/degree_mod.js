@@ -297,14 +297,14 @@ function deg_mod_submit() {
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
-		errors.style.maxHeight = errors.scrollHeight + "px";
-		errors.style.padding = "1%";
 
 		errors_delete = document.getElementsByClassName('deg-mod-err-line');
 
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.display = "none";
 		}
+
+		let errors_height = errors.scrollHeight + 20;
 
 		if (target == '') { 
 			const error = document.createElement('div');
@@ -314,7 +314,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (deg_value == '') {
@@ -325,7 +325,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'event') && ((key == '') && (desc == ''))) {
@@ -336,7 +336,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'damage') && (damage_type == 'math') && ((damage_math1 == '') || (damage_math2 == '') || (damage_val1 ==  '') || (damage_val2 == ''))) { 
@@ -347,7 +347,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'damage') && (damage_type == 'value') && ((damage_deg_val == '') ||  (damage_val == ''))) {
@@ -358,7 +358,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (key == '') {
@@ -369,7 +369,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if (desc == '') {
@@ -380,7 +380,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'measure') && (measure_type == 'value') && ((measure_value == '') || (measure_rank == ''))) {
@@ -391,7 +391,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'measure') && (measure_type == 'math') && ((measure_math == '') || (measure_val1 == '') || (measure_val2 == '') || (measure_math_rank == ''))) {
@@ -402,7 +402,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_height = errors_height + error.scrollHeight; 
 		}
 
 		if ((type == 'condition') && ((condition1 == '') || (condition2 == ''))) {
@@ -414,8 +414,11 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
-		}		
+			errors_height = errors_height + error.scrollHeight; 
+		}
+		
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 };
 
