@@ -6,6 +6,8 @@ function banner_size() {
 	banner_grid.style.width = banner_width + "px";
 	
 	const splashes = document.getElementsByClassName("splash");
+
+	console.log(splashes)
 	
 	if (splashes == null) {
 		console.log('not home')
