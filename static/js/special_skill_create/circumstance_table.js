@@ -304,6 +304,9 @@ function circ_submit() {
 			errors_height = errors_height + error.scrollHeight 
 			console.log(errors_height);
 		}
+
+		errors_height = errors_height + 10;
+		errors.maxHeight = errors_height + "px"
 	}
 };
 
