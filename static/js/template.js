@@ -7,7 +7,7 @@ function banner_size() {
 	
 	const splashes = document.getElementsByClassName("splash");
 
-	console.log(splashes)
+	console.log(splashes[0])
 	
 	if (splashes == null) {
 		console.log('not home')
