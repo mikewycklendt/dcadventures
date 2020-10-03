@@ -149,7 +149,7 @@ function opp_cond_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (rnd_value != '') {
+		if (rnd_value == '') {
 			const error = document.createElement('div');
 			error.className = 'opp-cond-err-line'
 			error.innerHTML = ' You must specify how long the condition lasts';
