@@ -238,10 +238,10 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.offsetHeight + error.scrollHeight + 10 + 'px';
 		
-			console.log(error.scrollHeight);
+			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
 
-			errors_height = errors_height + error.scrollHeight 
+			errors_height = errors_height + error.offsetHeight; 
 			console.log(errors_height);
 		}
 
@@ -280,9 +280,10 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.offsetHeight + error.offsetHeight + 10 + 'px';
 			
-			console.log(error.scrollHeight);
+			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
-			errors_height = errors_height + error.scrollHeight 
+
+			errors_height = errors_height + error.offsetHeight;
 			console.log(errors_height);
 		}
 
@@ -297,9 +298,10 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.offsetHeight + error.offsetHeight + 10 + 'px';
 			
-			console.log(error.scrollHeight);
+			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
-			errors_height = errors_height + error.scrollHeight 
+
+			errors_height = errors_height + error.offsetHeight;
 			console.log(errors_height);
 		}
 
