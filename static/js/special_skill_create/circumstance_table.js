@@ -215,7 +215,7 @@ function circ_submit() {
 			errors_delete[i].style.display = "none";
 		}
 
-		errors = document.getElementById('circ-err')
+		const errors = document.getElementById('circ-err')
 
 		console.log(rnd_value);
 
@@ -237,6 +237,8 @@ function circ_submit() {
 
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+		
+			console.log(errors.scrollHeight);
 		}
 
 		if (circskill == '') {
@@ -273,6 +275,7 @@ function circ_submit() {
 
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			console.log(errors.scrollHeight)
 		}
 
 		if (rnd_value == '') {
@@ -283,8 +286,11 @@ function circ_submit() {
 
 			errors.appendChild(error);
 
+			console.log(error.scrollHeight)
+
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			console.log(errors.scrollHeight)
 		}
 	}
 };
