@@ -86,7 +86,7 @@ function opp_cond_submit() {
 	
 		errors_delete = document.getElementsByClassName('opp-cond-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -95,7 +95,7 @@ function opp_cond_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('opp-cond-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -124,6 +124,7 @@ function opp_cond_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (deg_value == '') {
@@ -134,6 +135,7 @@ function opp_cond_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (con_value == '') {
@@ -144,6 +146,7 @@ function opp_cond_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (rnd_value != '') {
@@ -154,6 +157,7 @@ function opp_cond_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 	}
 };

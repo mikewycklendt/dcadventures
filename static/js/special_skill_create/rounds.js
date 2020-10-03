@@ -95,7 +95,7 @@ function rounds_submit() {
 
 		errors_delete = document.getElementsByClassName('rounds-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -133,6 +133,7 @@ function rounds_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (mod_value == '') {
@@ -143,6 +144,7 @@ function rounds_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (rnd_value == '') {
@@ -153,6 +155,7 @@ function rounds_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 	}
 };

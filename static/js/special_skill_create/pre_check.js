@@ -294,7 +294,7 @@ function pre_check_opposed_submit() {
 
 		errors_delete = document.getElementsByClassName('pre-check-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -303,7 +303,7 @@ function pre_check_opposed_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('pre-check-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -332,6 +332,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (opposed_circ_value != '') {
@@ -342,6 +343,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (opposed_when_value == '') {
@@ -352,6 +354,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (opposed_value == '') {
@@ -362,6 +365,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (pre_check_type_value == '') {
@@ -372,6 +376,7 @@ function pre_check_opposed_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 	}
 };

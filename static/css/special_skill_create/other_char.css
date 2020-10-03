@@ -226,8 +226,16 @@
 	margin-top: 1%;
 	margin-bottom: 1%;
 	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 .char-err-line::before {
-	content: '<i class="fa fa-warning" style="font-size:48px;color:red"></i>';
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
 }

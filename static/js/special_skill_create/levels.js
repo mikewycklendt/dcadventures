@@ -108,7 +108,7 @@ function levels_submit() {
 		
 		errors_delete = document.getElementsByClassName('levels-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -117,7 +117,7 @@ function levels_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('levels-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -146,6 +146,7 @@ function levels_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (lvl_value == '') {
@@ -156,6 +157,7 @@ function levels_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (efct_value == '') {
@@ -166,6 +168,7 @@ function levels_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (dc_value == '') {
@@ -176,6 +179,7 @@ function levels_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (trgt_value != '') {
@@ -186,16 +190,8 @@ function levels_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
-
-
-		
-
-
-	
-
-
-		
 	}
 };
 

@@ -276,7 +276,7 @@ function deg_mod_submit() {
 		
 		errors_delete = document.getElementsByClassName('deg-mod-err-line');
 
-		if (typeof errors_delete === "undefined") {
+		if (typeof errors_delete[0] === "undefined") {
 			console.log('no errors defined')
 		} else {
 			for (i = 0; i < errors_delete.length; i++) {
@@ -285,7 +285,7 @@ function deg_mod_submit() {
 				errors_delete[i].style.marginBottom = "0px";
 			}
 
-			errors = document.getElementById('rounds-err')
+			errors = document.getElementById('deg-mod-err')
 
 			errors.style.display = "none";
 			errors.style.padding = "0px";
@@ -314,6 +314,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (deg_value == '') {
@@ -324,6 +325,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'event') && ((key == '') && (desc == ''))) {
@@ -334,6 +336,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'damage') && (damage_type == 'math') && ((damage_math1 == '') || (damage_math2 == '') || (damage_val1 ==  '') || (damage_val2 == ''))) { 
@@ -344,6 +347,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'damage') && (damage_type == 'value') && ((damage_deg_val == '') ||  (damage_val == ''))) {
@@ -354,6 +358,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (key == '') {
@@ -364,6 +369,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (desc == '') {
@@ -374,6 +380,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'measure') && (measure_type == 'value') && ((measure_value == '') || (measure_rank == ''))) {
@@ -384,6 +391,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'measure') && (measure_type == 'math') && ((measure_math == '') || (measure_val1 == '') || (measure_val2 == '') || (measure_math_rank == ''))) {
@@ -394,6 +402,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if ((type == 'condition') && ((condition1 == '') || (condition2 == ''))) {
@@ -405,6 +414,7 @@ function deg_mod_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
+			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}		
 	}
 };
