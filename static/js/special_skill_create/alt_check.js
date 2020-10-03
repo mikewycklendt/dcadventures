@@ -111,6 +111,8 @@ function alt_check_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
+		console.log(dc_value)
+
 		if (dc_value == '') {
 			const error = document.createElement('div');
 			error.className = 'alt-check-err-line'
