@@ -114,7 +114,7 @@ function other_submit() {
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
-		if (examples_value != '') {
+		if (examples_value == '') {
 			const error = document.createElement('div');
 			error.className = 'other-err-line'
 			error.innerHTML = ' You must provide example  situations';
