@@ -222,7 +222,7 @@ function circ_submit() {
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
 
-		let errors_height = errors.scrollHeight + 10;
+		let errors_height = errors.scrollHeight + 20;
 
 		if (((mod_type_value == 'value') && (modifier_value == '')) || 
 			((mod_type_value == 'math') && ((rnd_value == '') || (circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
@@ -241,7 +241,7 @@ function circ_submit() {
 			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
 
-			errors_height = errors_height + error.offsetHeight; 
+			errors_height = errors_height + error.scrollHeight; 
 			console.log(errors_height);
 		}
 
@@ -283,7 +283,7 @@ function circ_submit() {
 			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
 
-			errors_height = errors_height + error.offsetHeight;
+			errors_height = errors_height + error.scrollHeight;
 			console.log(errors_height);
 		}
 
@@ -301,7 +301,7 @@ function circ_submit() {
 			console.log(error.offsetHeight);
 			console.log(errors.offsetHeight);
 
-			errors_height = errors_height + error.offsetHeight;
+			errors_height = errors_height + error.scrollHeight;
 			console.log(errors_height);
 		}
 
