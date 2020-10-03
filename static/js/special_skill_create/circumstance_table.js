@@ -222,6 +222,8 @@ function circ_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
+		errors_scroll = 0;
+
 		if (((mod_type_value == 'value') && ((modifier_value == '') || (rnd_value != '') || (circ_value != ''))) || 
 			((mod_type_value == 'math') && ((rnd_value == '') || (circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
 			((mod_type_value == 'adjust') && ((rnd_value == '') || (circ_value == '') || (chk_value == '') || (adj_value == '') || (rank_value == ''))) || 
@@ -235,7 +237,10 @@ function circ_submit() {
 
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_scroll = errors_scroll + error.scrollHeight;
 		}
+
+		
 
 		if (circskill == '') {
 
@@ -246,7 +251,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_scroll = errors_scroll + error.scrollHeight;
 		}
 
 		if (circtarget == '') {
@@ -258,7 +263,7 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			errors_scroll = errors_scroll + error.scrollHeight;
 		}
 
 		if (circ_value == '') {
@@ -270,7 +275,6 @@ function circ_submit() {
 			errors.appendChild(error);
 
 			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
 		if (rnd_value == '') {
@@ -281,9 +285,10 @@ function circ_submit() {
 
 			errors.appendChild(error);
 
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
+			error.style.maxHeight = error.scrollHeight + "px"
 		}
+
+		errors.maxHeight = errors.scrollHeight + errors_scroll + 'px';
 	}
 };
 
