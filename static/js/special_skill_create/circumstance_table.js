@@ -224,10 +224,10 @@ function circ_submit() {
 		errors.style.maxHeight = errors.scrollHeight + "px";
 		errors.style.padding = "1%";
 
-		if (((mod_type_value == 'value') && ((modifier_value == '') || (rnd_value != '') || (circ_value != ''))) || 
-			((mod_type_value == 'math') && ((rnd_value == '') || (circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
-			((mod_type_value == 'adjust') && ((rnd_value == '') || (circ_value == '') || (chk_value == '') || (adj_value == '') || (rank_value == ''))) || 
-			((mod_type_value == 'noequip') && ((rnd_value == '') || (circ_value == '') || (modifier_value == '')))) {
+		if (((mod_type_value == 'value') && ((modifier_value == '') |||| (circ_value != ''))) || 
+			((mod_type_value == 'math') && (((circ_value == '') || (val_value == '') || (unit_value == '') ||  (mod_value != ''))) || 
+			((mod_type_value == 'adjust') && (((circ_value == '') || (chk_value == '') || (adj_value == '') || (rank_value == ''))) || 
+			((mod_type_value == 'noequip') && ((circ_value == '') || (modifier_value == '')))) {
 
 			const error = document.createElement('div');
 			error.className = 'circ-err-line'
@@ -238,7 +238,7 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 		
-			console.log(error.offsetHeight);
+			console.log(error.scrollHeight);
 		}
 
 		if (circskill == '') {
@@ -276,7 +276,7 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 			
-			console.log(error.offsetHeight);
+			console.log(error.scrollHeight);
 		}
 
 		if (rnd_value == '') {
@@ -290,7 +290,7 @@ function circ_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors.style.maxHeight = errors.scrollHeight + error.offsetHeight + 10 + 'px';
 			
-			console.log(error.offsetHeight);
+			console.log(error.scrollHeight);
 		}
 	}
 };
