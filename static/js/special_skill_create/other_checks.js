@@ -94,7 +94,7 @@ function other_submit() {
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.display = "none";
 		}
-		errors = document.getElementById('other-table-err')
+		errors = document.getElementById('other-err')
 
 		errors.style.display = "grid";
 		errors.style.padding = "1%";
