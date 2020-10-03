@@ -31,7 +31,9 @@ function banner_size() {
 			homeimg.onresize = home_resize;
 		}
 	
-	if (splashes != null) {
+	if (typeof splashes === "undefined") {
+		console.log('not home')
+	} else {
 		home_resize();
 	}
 }
