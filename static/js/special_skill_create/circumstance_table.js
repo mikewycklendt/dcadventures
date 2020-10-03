@@ -248,7 +248,7 @@ function circ_submit() {
 			errors.style.maxHeight = errors.scrollHeight + error.scrollHeight + 10 + 'px'
 		}
 
-		if (circtarget != '') {
+		if (circtarget == '') {
 
 			const error = document.createElement('div');
 			error.className = 'circ-err-line'
