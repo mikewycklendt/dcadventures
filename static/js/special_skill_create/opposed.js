@@ -130,18 +130,6 @@ function opposed_by_submit() {
 
 		let errors_height = errors.scrollHeight + 20;
 
-
-		if (dc_value == '') {
-			const error = document.createElement('div');
-			error.className = 'opposed-by-err-line'
-			error.innerHTML = ' You must enter a difficulty class';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
 		if (opposed_value == '') {
 			const error = document.createElement('div');
 			error.className = 'opposed-by-err-line'
