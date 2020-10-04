@@ -17,6 +17,7 @@
 	padding: 2%;
 	grid-template-columns: 100%;
 	margin-bottom: 20px;
+	grid-auto-rows: auto;
 }
 
 #category-field {
@@ -25,7 +26,6 @@
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: 3vh;
-	grid-template-areas: "categoryfield";
 }
 
 #category-err {
