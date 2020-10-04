@@ -65,7 +65,7 @@
 
 			<div id="sidebargrid" style='background:url(/static/img/sidebar.png) no-repeat; background-size: 100%; background-color: #1e507a;'>
 				{% for button in sidebar %}
-				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;" onclick=btn_select(this)>
+				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;" onclick=btn_select(this) onmouseover="sidebar_over()" onmouseout="sidebar_out()">
 					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;">
 						<img width="100%" height="100%" src="/static/img/sidebar/{{ button }}GOLD.png" style="opacity: 0%;">
 					</div>
@@ -97,6 +97,14 @@
 		<script>
 			const sidebar_btns = {{ sidebar | tojson }};
 			console.log(sidebar_btns);
+
+			const btn_sidebar = document.getElementsByClassName('btn-sidebar')
+
+			for (i = 0; i < btn_sidebar.length; i++){
+				btn_sidebar[i].style.backgroundImage = "url(/static/img/sidebar/" + sidebar_btns[i] + "GOLD.png)"
+			}
+
+
 
 		</script>
 		
