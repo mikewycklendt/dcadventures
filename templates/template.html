@@ -102,8 +102,9 @@
 
 			for (i = 0; i < btn_sidebar.length; i++){
 				btn_sidebar[i].style.backgroundImage = "url(/static/img/sidebar/" + sidebar_btns[i] + "GOLD.png)";
+				let sidebar_button = 
 				btn_sidebar[i].onmouseover = function(){btn_sidebar[i].style.backgroundImage = "url(/static/img/sidebar/" + sidebar_btns[i] + "BLUE.png)"};
-				btn_sidebar[i].onmouseover = function(){btn_sidebar[i].style.backgroundImage = "url(/static/img/sidebar/" + sidebar_btns[i] + "GOLD.png)"};
+				btn_sidebar[i].onmouseout = function(){btn_sidebar[i].style.backgroundImage = "url(/static/img/sidebar/" + sidebar_btns[i] + "GOLD.png)"};
 			}
 
 		</script>
