@@ -6,6 +6,7 @@
 	border-radius: 15px;
 	padding: 2%;
 	grid-template-columns: 100%;
+	margin-bottom: 20px;
 }
 
 #dc-rows {
