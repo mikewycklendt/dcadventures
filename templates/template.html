@@ -53,10 +53,8 @@
 			<div id="sidebargrid" style='background:url(/static/img/sidebar.png) no-repeat; background-size: 100%; background-color: #1e507a;'>
 				{% for button in sidebar %}
 				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;" onclick=btn_select(this)>
-					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;">
-						<img width="100%" height="100%" src="/static/img/sidebar/{{ button }}GOLD.png" 
-						onmouseover="this.src='/static/img/sidebar/{{ button }}BLUE.png'" 
-						onmouseout="this.src='/static/img/sidebar/{{ button }}GOLD.png'" />
+					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;" style="background: url(/st)">
+						<img width="100%" height="100%" src="/static/img/sidebar/{{ button }}GOLD.png" style="opacity: 0%;">
 					</div>
 				</div>
 				{% endfor %}
