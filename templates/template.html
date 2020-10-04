@@ -18,6 +18,19 @@
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+		<style>
+			.btn-sidebar {
+
+				background-color: rgba(255,255,255, 0);
+				transition: all .1s linear;
+			}
+
+			.btn-sidebar:hover {
+				background-color: rgba(255,255,255, .2);
+			}
+
+		</style>
+
 	</head>
 
 <body onload="banner_size()">
@@ -53,7 +66,7 @@
 			<div id="sidebargrid" style='background:url(/static/img/sidebar.png) no-repeat; background-size: 100%; background-color: #1e507a;'>
 				{% for button in sidebar %}
 				<div id="{{button}}-btn" class="btn-sidebar" style="margin: 0px;" onclick=btn_select(this)>
-					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;" style="background: url(/st)">
+					<div id="btn-sidebar" style=" margin: 0px; padding: 0%;">
 						<img width="100%" height="100%" src="/static/img/sidebar/{{ button }}GOLD.png" style="opacity: 0%;">
 					</div>
 				</div>
@@ -81,6 +94,11 @@
 		</div>
 		</div>
 
+		<script>
+			const sidebar_btns = {{ sidebar | tojson }};
+			console.log(sidebar_btns);
+
+		</script>
 		
 
 	</body>
