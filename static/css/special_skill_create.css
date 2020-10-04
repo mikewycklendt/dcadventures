@@ -33,6 +33,7 @@
 	margin-top: 2px;
 	margin-left: 10%;
 	grid-template-columns: 100%;
+	grid-template-areas: "contentpage";
 }
 
 #box-title {
