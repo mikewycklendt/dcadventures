@@ -224,7 +224,6 @@ body{
 }
 
 .btn-login{
-	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
 	font-family: Comic;
@@ -236,7 +235,6 @@ body{
 	border-color: white;
 	background-color: #af0101;
 	font-size: 1vw;
-	text-align: center;
 	color: white;
 	transition: all .15s linear;
 	cursor: pointer;
