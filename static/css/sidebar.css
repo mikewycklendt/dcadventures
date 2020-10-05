@@ -39,7 +39,7 @@
 	text-shadow: 0px 0px 2px white, 3px 3px 4px black;
 	content: '\f006';
 	padding-left: .3vw;
-	padding-right: .6vw;
+	padding-right: 0;
 	display:inline-block;
 	vertical-align: middle;
 }
