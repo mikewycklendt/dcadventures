@@ -227,14 +227,14 @@ body{
 	vertical-align: middle;
 	text-align: center;
 	font-family: Comic;
-	width: 6vw;
+	width: 5vw;
 	height: auto;
 	margin-top: 2vw;
 	padding: .2vw;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
-	font-size: 1vw;
+	font-size: 1.4vw;
 	color: white;
 	transition: all .15s linear;
 	cursor: pointer;
