@@ -97,6 +97,7 @@
 	height: auto;
 	background-color: lightblue;
 	background-position: center center;
+	box-shadow: 6px 5px 30px 0px black;
 }
 
 .signup-btn{
