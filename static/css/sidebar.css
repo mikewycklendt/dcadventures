@@ -37,7 +37,8 @@
 	content: '\f006';
 	padding-left: .3vw;
 	padding-right: .6vw;
-	display: inline-block;
+	display:inline-block;
+	vertical-align: middle;
 }
 
 .btn-sidebar{
