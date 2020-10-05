@@ -1,0 +1,13 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "CampJusticeOutlineItalic";
+  src: url("./fonts/justiceoutline.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/justiceoutline.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/justiceoutline.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/justiceoutline.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/justiceoutline.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/justiceoutline.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/justiceoutline.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
