@@ -225,6 +225,8 @@ body{
 
 .btn-login{
 	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 	font-family: Comic;
 	width: 6vw;
 	height: auto;
@@ -233,7 +235,6 @@ body{
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
-	font-family: 'Monda', Verdana;
 	font-size: 1vw;
 	text-align: center;
 	color: white;
@@ -241,14 +242,11 @@ body{
 	cursor: pointer;
 }
 
-.btn-login:hover {
-	width: 110px;
-	height: 30px;
+.btn-login:hover{
+
 	border: 2px solid white;
 	border-color: white;
 	background-color: #3a4e87;
-	font-family: 'Monda', Verdana;
-	font-size: 16px;
 	text-align: center;
 	color: white;
 }
