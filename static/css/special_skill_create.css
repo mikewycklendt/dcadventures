@@ -109,6 +109,7 @@ textarea:focus {
 }
 
 .btn {
+	display: block;
 	vertical-align: middle;
 	width: 85%;
 	height: 80%;
