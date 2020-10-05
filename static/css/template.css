@@ -1,5 +1,75 @@
 @import "sidebar.css";
 
+@font-face {
+	font-family: "Comic";
+	src: url('/static/font/comic/fonts/comic.woff2') format("woff2"); /* Modern Browsers */
+	src: url('/static/font/comic/fonts/comic.woff') format("woff"), /* Modern Browsers */
+    		url('/static/font/comic/fonts/comic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+    		url('/static/font/comic/fonts/comic.otf') format("opentype"), /* Open Type Font */
+    		url('/static/font/comic/fonts/comic.ttf') format("truetype"), /* Safari, Android, iOS */
+    		url('/static/font/comic/fonts/comic.eot'), /* IE9 Compat Modes */
+			url('/static/font/comic/fonts/comic.svg') format("svg"); /* Legacy iOS */
+	  
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "JusticeOutline";
+	src: url('/static/font/justice_outline/fonts/justiceoutline.woff2') format("woff2"); /* Modern Browsers */
+	src: url('/static/font/justice_outline/fonts/justiceoutline.woff') format("woff"), /* Modern Browsers */
+			url('/static/font/justice_outline/fonts/justiceoutline.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */			
+			url('/static/font/justice_outline/fonts/justiceoutline.otf') format("opentype"), /* Open Type Font */
+			url('/static/font/justice_outline/fonts/justiceoutline.eot'), /* IE9 Compat Modes */
+			url('/static/font/justice_outline/fonts/justiceoutline.ttf') format("truetype"), /* Safari, Android, iOS */			
+			url('/static/font/justice_outline/fonts/justiceoutline.svg') format("svg"); /* Legacy iOS */
+		
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "CampJusticeSemi-Italic";
+	src: url('/static/font/justice_semi_italic/fonts/justicesemiitalic.woff2') format("woff2"); /* Modern Browsers */
+	src: url('/static/font/justice_semi_italic/fonts/justicesemiitalic.woff') format("woff"), /* Modern Browsers */
+			url('/static/font/justice_semi_italic/fonts/justicesemiitalic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+			url('/static/font/justice_semi_italic/fonts/justicesemiitalic.otf') format("opentype"), /* Open Type Font */
+			url('/static/font/justice_semi_italic/fonts/justicesemiitalic.ttf') format("truetype"), /* Safari, Android, iOS */
+			url('/static/font/justice_semi_italic/fonts/justicesemiitalic.eot'), /* IE9 Compat Modes */
+			url('/static/font/justice_semi_italic/fonts/justicesemiitalic.svg') format("svg"); /* Legacy iOS */
+	
+	font-weight: normal;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: "JusticeItalic";
+	src: url('/static/font/justice_italic/fonts/justiceitalic.woff2') format("woff2"); /* Modern Browsers */
+	src: url('/static/font/justice_italic/fonts/justiceitalic.woff') format("woff"), /* Modern Browsers */
+			url('/static/font/justice_italic/fonts/justiceitalic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+			url('/static/font/justice_italic/fonts/justiceitalic.otf') format("opentype"), /* Open Type Font */
+			url('/static/font/justice_italic/fonts/justiceitalic.eot'), /* IE9 Compat Modes */
+			url('/static/font/justice_italic/fonts/justiceitalic.ttf') format("truetype"), /* Safari, Android, iOS */
+			url('/static/font/justice_italic/fonts/justiceitalic.svg') format("svg"); /* Legacy iOS */
+	  
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "usticeMidItalic";
+	src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff2') format("woff2"); /* Modern Browsers */ 
+	src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff') format("woff"), /* Modern Browsers */
+			url('/static/font/justice_mid_italic/fonts/justicemiditalic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+			url('/static/font/justice_mid_italic/fonts/justicemiditalic.eot'), /* IE9 Compat Modes */  
+			url('/static/font/justice_mid_italic/fonts/justicemiditalic.otf') format("opentype"), /* Open Type Font */
+			url('/static/font/justice_mid_italic/fonts/justicemiditalic.ttf') format("truetype"), /* Safari, Android, iOS */
+			url('/static/font/justice_mid_italic/fonts/justicemiditalic.svg') format("svg"); /* Legacy iOS */
+	  
+	font-weight: normal;
+	font-style: normal;
+}
+
 body{
 	margin: 0px;
 }

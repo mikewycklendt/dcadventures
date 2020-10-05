@@ -1,13 +1,14 @@
 /* font converted using font-converter.net. thank you! */
 @font-face {
   font-family: "CampJusticeMid-CaseItalic";
-  src: url("./fonts/justicemiditalic.eot"); /* IE9 Compat Modes */
-  src: url("./fonts/justicemiditalic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("./fonts/justicemiditalic.otf") format("opentype"), /* Open Type Font */
-    url("./fonts/justicemiditalic.svg") format("svg"), /* Legacy iOS */
-    url("./fonts/justicemiditalic.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("./fonts/justicemiditalic.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/justicemiditalic.woff2") format("woff2"); /* Modern Browsers */
+  src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff2') format("woff2"); /* Modern Browsers */ 
+  src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff') format("woff"), /* Modern Browsers */
+        url('/static/font/justice_mid_italic/fonts/justicemiditalic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+        url('/static/font/justice_mid_italic/fonts/justicemiditalic.eot'), /* IE9 Compat Modes */  
+        url('/static/font/justice_mid_italic/fonts/justicemiditalic.otf') format("opentype"), /* Open Type Font */
+        url('/static/font/justice_mid_italic/fonts/justicemiditalic.ttf') format("truetype"), /* Safari, Android, iOS */
+        url('/static/font/justice_mid_italic/fonts/justicemiditalic.svg') format("svg"); /* Legacy iOS */
+    
   font-weight: normal;
   font-style: normal;
 }

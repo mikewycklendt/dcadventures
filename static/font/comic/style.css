@@ -1,13 +1,14 @@
 /* font converted using font-converter.net. thank you! */
 @font-face {
-  font-family: "HoustonComicsPersonalUse";
-  src: url("./fonts/comic.eot"); /* IE9 Compat Modes */
-  src: url("./fonts/comic.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("./fonts/comic.otf") format("opentype"), /* Open Type Font */
-    url("./fonts/comic.svg") format("svg"), /* Legacy iOS */
-    url("./fonts/comic.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("./fonts/comic.woff") format("woff"), /* Modern Browsers */
-    url("./fonts/comic.woff2") format("woff2"); /* Modern Browsers */
-  font-weight: normal;
-  font-style: normal;
-}
+	font-family: "Comic";
+	src: url('/static/font/comic/fonts/comic.woff2') format("woff2"); /* Modern Browsers */
+	src: url('/static/font/comic/fonts/comic.woff') format("woff"), /* Modern Browsers */
+    url('/static/font/comic/fonts/comic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+    url('/static/font/comic/fonts/comic.otf') format("opentype"), /* Open Type Font */
+    url('/static/font/comic/fonts/comic.ttf') format("truetype"), /* Safari, Android, iOS */
+    url('/static/font/comic/fonts/comic.eot'), /* IE9 Compat Modes */
+	  url('/static/font/comic/fonts/comic.svg') format("svg"); /* Legacy iOS */
+	  
+	font-weight: normal;
+	font-style: normal;
+  }

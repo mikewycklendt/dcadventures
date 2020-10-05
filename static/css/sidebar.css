@@ -1,5 +1,7 @@
 #btn-sidebar{
 	display: block;
+	font-family: Comic;
+	font-size: 1.5vw;
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;	
@@ -10,9 +12,11 @@
 	margin-bottom: 0%;
 	border-bottom: 2px solid #cdb99d;
 	cursor: pointer;
+	transition: all .7s linear;
 }
 
 #btn-sidebar:hover {
+	font-size: 1.7vw;
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;
@@ -25,6 +29,14 @@
 	border-right: 2px solid #7ecef6;
 }
 
+.btn-sidebar{
+	transition: all .1s linear;
+	background-color: rgba(255,255,255, 0);
+}
+
+.btn-sidebar:hover{
+	background-color: rgba(255,255,255, .2);
+}
 .signup-btn{
 	background: url('/static/img/signupRED.png') no-repeat;
 	background-size: 100%;
