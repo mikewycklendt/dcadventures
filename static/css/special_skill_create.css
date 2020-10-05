@@ -109,6 +109,8 @@ textarea:focus {
 }
 
 .btn {
+	display: table-cell;
+	vertical-align: middle;
 	width: 85%;
 	height: 80%;
 	padding: 15px;
