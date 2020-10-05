@@ -131,6 +131,8 @@ body{
 #login{
 	grid-area: topright;
 	font-family: 'Monda', Verdana;
+	justify-content: right;
+	justify-items: right;
 }
 
 #topleft{
