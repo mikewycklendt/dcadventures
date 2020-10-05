@@ -64,12 +64,16 @@
 	align-content: center;
 }
 
-.about-btn{
-	background: url('/static/img/aboutRED.png') no-repeat;
-	background-size: 100%;
+.home-btn{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-family: Comic;
+	font-size: 2vh;
+	color: #af0101;
 	border: 4px solid #af0101;
 	border-radius: 20px;
-	padding:15px;
+	padding: 3vw;
 	width: 60%;
 	height: auto;
 	background-color: white;
@@ -78,9 +82,9 @@
 	cursor: pointer;
 }
 
-.about-btn:hover{
-	background: url('/static/img/aboutBLUE.png') no-repeat;
-	background-size: 115%;
+.home-btn:hover{
+	font-size: 2.5vh;
+	color: #3a4e87;
 	border: 4px solid #3a4e87;
 	border-radius: 20px;
 	padding:15px;
