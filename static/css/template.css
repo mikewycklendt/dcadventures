@@ -229,12 +229,12 @@ body{
 	font-family: Comic;
 	width: 5vw;
 	height: auto;
-	margin-top: 2vw;
-	padding: .2vw;
+	margin-top: .7vw;
+	padding: .3vw;
 	border: 2px solid white;
 	border-color: white;
 	background-color: #af0101;
-	font-size: 1.4vw;
+	font-size: 1.2vw;
 	color: white;
 	transition: all .15s linear;
 	cursor: pointer;
