@@ -2,6 +2,7 @@
 	display: block;
 	font-family: Comic;
 	font-size: 1.5vw;
+	color: #cdb99d;;
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;	
@@ -12,11 +13,12 @@
 	margin-bottom: 0%;
 	border-bottom: 2px solid #cdb99d;
 	cursor: pointer;
-	transition: all .7s linear;
+	transition: all .1s linear;
 }
 
 #btn-sidebar:hover {
-	font-size: 1.7vw;
+	font-size: 1.8vw;
+	color: #7ecef6;
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;
