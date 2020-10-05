@@ -74,7 +74,7 @@
 	border: 4px solid #af0101;
 	border-radius: 20px;
 	padding: 1.5vw;
-	width: 60%;
+	width: 40%;
 	height: auto;
 	background-color: white;
 	background-position: center center;
@@ -83,11 +83,10 @@
 }
 
 .home-btn:hover{
-	font-size: 3.5vw;
+	font-size: 4vw;
 	color: #3a4e87;
 	border: 4px solid #3a4e87;
 	border-radius: 20px;
-	width: 60%;
 	height: auto;
 	background-color: lightblue;
 	background-position: center center;
