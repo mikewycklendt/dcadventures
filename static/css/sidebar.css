@@ -3,7 +3,7 @@
 	font-family: Comic;
 	font-size: 1.5vw;
 	color: #cdb99d;;
-	text-shadow: 2px 2px 2px 2px #b4b3b3;
+	text-shadow: 5px 5px 5px #b4b3b3;
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;	
@@ -20,7 +20,6 @@
 #btn-sidebar:hover {
 	font-size: 1.7vw;
 	color: #7ecef6;
-	
 	padding-top: 0px;
 	padding-bottom: 0%;
 	padding-left: 0px;
