@@ -35,7 +35,7 @@
 #btn-sidebar::before {
 	font-family: 'FontAwesome';
 	font-size: 1vw;
-	text-shadow: 0px 0px 1px white;
+	text-shadow: 0px 0px 1px white, 3px 3px 4px black;
 	content: '\f006';
 	padding-left: .3vw;
 	padding-right: .6vw;
