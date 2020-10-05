@@ -69,11 +69,11 @@
 	vertical-align: middle;
 	text-align: center;
 	font-family: Comic;
-	font-size: 6vw;
+	font-size: 3vw;
 	color: #af0101;
 	border: 4px solid #af0101;
 	border-radius: 20px;
-	padding: 5vw;
+	padding: 3vw;
 	width: 60%;
 	height: auto;
 	background-color: white;
@@ -83,7 +83,7 @@
 }
 
 .home-btn:hover{
-	font-size: 7vw;
+	font-size: 3.5vw;
 	color: #3a4e87;
 	border: 4px solid #3a4e87;
 	border-radius: 20px;
