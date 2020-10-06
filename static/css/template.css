@@ -30,13 +30,13 @@
 
 @font-face {
 	font-family: "Justice3D";
-	src: url('STatic/font/justice_3d/fonts/justice3d.woff2') format("woff2"); /* Modern Browsers */
-	src: url('STatic/font/justice_3d/fonts/justice3d.woff') format("woff"), /* Modern Browsers */
-			url('STatic/font/justice_3d/fonts/justice3d..otf') format("opentype"), /* Open Type Font */
-			url('STatic/font/justice_3d/fonts/justice3d.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
-			url('STatic/font/justice_3d/fonts/justice3d.eot'), /* IE9 Compat Modes */    
-			url('STatic/font/justice_3d/fonts/justice3d.ttf') format("truetype"), /* Safari, Android, iOS */    
-			url('STatic/font/justice_3d/fonts/justice3d.svg') format("svg"); /* Legacy iOS */
+	src: url('static/font/justice_3d/fonts/justice3d.woff2') format("woff2"); /* Modern Browsers */
+	src: url('static/font/justice_3d/fonts/justice3d.woff') format("woff"), /* Modern Browsers */
+			url('static/font/justice_3d/fonts/justice3d..otf') format("opentype"), /* Open Type Font */
+			url('static/font/justice_3d/fonts/justice3d.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
+			url('static/font/justice_3d/fonts/justice3d.eot'), /* IE9 Compat Modes */    
+			url('static/font/justice_3d/fonts/justice3d.ttf') format("truetype"), /* Safari, Android, iOS */    
+			url('static/font/justice_3d/fonts/justice3d.svg') format("svg"); /* Legacy iOS */
 	font-weight: normal;
 	font-style: normal;
 }
