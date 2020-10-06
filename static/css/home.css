@@ -7,8 +7,11 @@
 
 .splash{
 	display: grid;
-	grid-auto-rows: auto;
+	grid-auto-rows: auto auto;
 	grid-template-columns: 100%;
+	grid-template-areas: "blank"
+							"homebuttons"
+							"bottom";
 	grid-area: contentpage;
 	height: auto;
 	width: 40vw;
@@ -20,8 +23,7 @@
 }
 
 #blank{
-	display: block;
-	grid-area: splash;
+	grid-area: blank;
 }
 
 #signup{
@@ -41,6 +43,7 @@
 
 #buttons {
 	display: grid;
+	grid-area: homebuttons;
 	height: auto;
 	grid-template-columns: 50% 50%;
 	grid-auto-rows: auto;
@@ -49,6 +52,7 @@
 
 #below{
 	grid-area: below;
+	height: 200px;
 }
 
 #btn-splash{
