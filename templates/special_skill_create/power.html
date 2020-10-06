@@ -21,7 +21,7 @@
 
 	<div>
 
-		<select id="power_power" name="power_power" aria-placeholder="0" style="width: 90%; height: 4vh; font-size: 110%;">
+		<select class="entry-select" id="power_power" name="power_power" aria-placeholder="0" >
 			<option value=''>Power</option>
 			{% for power in powers %}
 				<option value="{{power}}">{{power}}</option>
@@ -32,7 +32,7 @@
 
 	<div>
 
-		<input type="text" id="power_sit" name="power_sit" style="height: 1vh; font-size: 80%; width: 95%; margin-top: 2px;">
+		<input type="text" class="entry-text" id="power_sit" name="power_sit">
 
 	</div>
 
@@ -40,7 +40,7 @@
 
 	<div>
 
-		<div class="btn" id="power_add" style="height: 3vh; width: 5vw; font-size: 90%; display: table-cell; padding: 2px; vertical-align: middle; align-content: center; align-items: center;" onclick="power_submit()">
+		<div class="btn-small" id="power_add" onclick="power_submit()">
 			<center>
 			<i class="fa fa-plus"></i>   Add
 			</center>
