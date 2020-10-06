@@ -5,7 +5,7 @@
 	</div>
 
 	<div id="opposed-by-base-form" style="opacity: 0%; transition: all .3s ease-out;">
-		<select id="opposed_by_by" name="opposed_by_by" style="height: 4vh; padding: 0%; font-size: 100%;" onchange="opposed_by_by()">
+		<select id="opposed_by_by" class="header-select" name="opposed_by_by" onchange="opposed_by_by()">
 			<option value="">Priority</option>
 			{% for oppose in opposed_by %}
 				<option value="{{oppose.id}}">{{oppose.name}}</option>
