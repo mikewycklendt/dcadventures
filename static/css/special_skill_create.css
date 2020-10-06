@@ -106,7 +106,7 @@ select:focus {
 .select-sml {
 	height: 1.6vw; 
 	padding: .2vw;  
-	font-size: 90%;
+	font-size: 80%;
 }
 
 .header-select {
