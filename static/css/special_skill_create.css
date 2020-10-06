@@ -63,10 +63,10 @@
 
 
 input[type=text] {
-	width: 95%;
-	height: 80%;
-	padding: .5vw;
-	font-size: 140%;
+	width: 90%;
+	height: 1vh;
+	padding: .3vw;
+	font-size: 95%;
 	border: 1px solid lightblue;
 	outline: 1px solid #af0101;
 	outline-offset: 5px 8px;
