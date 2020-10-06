@@ -187,7 +187,7 @@ textarea:focus {
 	display: table-cell;
 	width: 5vw;
 	vertical-align: middle;
-	height: 1.3vw;
+	height: 1.2vw;
 	padding: .3vw;
 	background-color: #af0101;
 	cursor: crosshair;
@@ -200,6 +200,13 @@ textarea:focus {
 	outline: 2px solid white;
 	outline-offset: -4px;
 	transition: all .2s ease-out;
+}
+
+.btn-sml:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
 }
 
 #addskillgrid {
