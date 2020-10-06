@@ -92,6 +92,11 @@ select:focus {
 	border: 2px solid #af0101;
 }
 
+.entry-select {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
 textarea {
 	width: 100%;
 	height: 100px;
