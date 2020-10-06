@@ -11,6 +11,8 @@
 
 #category {
 	display: grid;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
 	width: 100%;
 	margin: 0px;
 	border: 1px solid #af0101;
@@ -59,6 +61,8 @@
 	display: grid;
 	width: 100%;
 	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
 	padding: 2%;
