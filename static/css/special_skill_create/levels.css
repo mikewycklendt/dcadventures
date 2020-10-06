@@ -29,9 +29,14 @@
 #levels-base-form {
 	display: grid;
 	width: 100%;
-	grid-template-columns: 43% 2% 20% 35%;
+	grid-template-columns: 43% 2% 17% 35%;
 	grid-template-rows: auto;
 	opacity: 0%
+}
+
+#level-type {
+	height: 1vw; 
+	font-size: 95%;
 }
 
 #levels-entry {
