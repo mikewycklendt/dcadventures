@@ -11,8 +11,6 @@
 
 #category {
 	display: grid;
-	font-family: Comic, 'Monda', Verdana;
-	font-size: 200%;
 	width: 100%;
 	margin: 0px;
 	border: 1px solid #af0101;
@@ -61,8 +59,6 @@
 	display: grid;
 	width: 100%;
 	margin: 0px;
-	font-family: Comic, 'Monda', Verdana;
-	font-size: 200%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
 	padding: 2%;
@@ -111,6 +107,16 @@
 	margin-bottom: 5px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+}
+
+#skill-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
 	color: #245681;
 	padding: 0px;
 }
