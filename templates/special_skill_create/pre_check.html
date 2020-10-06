@@ -5,7 +5,7 @@
 	</div>
 
 	<div id="pre-check-header-type" style="opacity: 0%; transition: all .3s ease-out;">
-		<select id="pre_check_type" name="pre_check_type" style="height: 2.5vw; font-size: 110%;" onchange="pre_check_entry()">
+		<select id="pre_check_type" class="header-select" name="pre_check_type" onchange="pre_check_entry()">
 			<option value="">Check Type</option>
 			{% for check in checks_two %}
 				<option value="{{check.id}}">{{check.name}}</option>
@@ -86,7 +86,7 @@
 	</div>
 	
 	<div id="pre-check-field">
-		<select id="pre_check_opposed_when" name="pre_check_opposed_when" style="height: 2.3vw; padding: .3vw;  font-size: 100%;">
+		<select id="pre_check_opposed_when" class="entry-select"  name="pre_check_opposed_when">
 			<option value=""></option>
 			{% for when in whens %}
 				<option value="{{when}}">{{when}}</option>
@@ -95,7 +95,7 @@
 	</div>
 
 	<div id="pre-check-field">
-		<select id="pre_check_opposed_skill" name="pre_check_opposed_skill" style="height: 2.3vw; padding: .3vw;  font-size: 100%;">
+		<select id="pre_check_opposed_skill" class="entry-select"  name="pre_check_opposed_skill" >
 			<option value="">Check</option>
 			{% for skill in skills_abilities %}
 				<option value="{{skill}}">{{skill}}</option>
