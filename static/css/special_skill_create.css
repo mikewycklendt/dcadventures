@@ -78,6 +78,11 @@ input[type=text]:focus {
 	outline: 2px solid #af0101;
 }
 
+.entry-text {
+	height: 1vw; 
+	font-size: 95%;
+}
+
 select {
 	width: 95%;
 	padding: .2vw;
