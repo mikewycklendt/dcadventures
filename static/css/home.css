@@ -6,7 +6,9 @@
 }
 
 .splash{
-	display: block;
+	display: grid;
+	grid-auto-rows: auto;
+	grid-template-columns: 100%;
 	grid-area: contentpage;
 	height: auto;
 	width: 40vw;
