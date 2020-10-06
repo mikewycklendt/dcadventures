@@ -19,7 +19,7 @@
 
 	<div>
 
-		<select id="action_change" name="action_change" aria-placeholder="0" style="width: 90%; height: 4vh; font-size: 110%;">
+		<select class="entry-select" id="action_change" name="action_change" aria-placeholder="0">
 			<option value=''>Action Type</option>
 			{% for action in actions %}
 				<option value={{action.id}}>{{action.name}}</option>
@@ -29,7 +29,7 @@
 	</div>
 
 	<div>
-		<select id="action_mod" name="action_mod" aria-placeholder="0" style="width: 90%; height: 4vh; font-size: 110%;">
+		<select class="entry-select" id="action_mod" name="action_mod" aria-placeholder="0">
 			<option value=''>Modifier</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option>
