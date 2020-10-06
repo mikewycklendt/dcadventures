@@ -183,6 +183,25 @@ textarea:focus {
 	outline-offset: -2px;
 }
 
+.btn-sml {
+	display: table-cell;
+	width: 5vw;
+	vertical-align: middle;
+	height: 1.3vw;
+	padding: .3vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 110%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
 #addskillgrid {
 	display: grid;
 	width: 100%;
