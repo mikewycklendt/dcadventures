@@ -33,7 +33,7 @@
 	</div>
 
 	<div id="opposed-by-field">
-		<select id="opposed_by" name="opposed_by" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select class="entry-select" id="opposed_by" name="opposed_by">
 			<option value="">Opposed by</option>
 			{% for resist in resists %}
 				<option value="{{resist}}">{{resist}}</option>
@@ -42,7 +42,7 @@
 	</div>
 
 	<div id="opposed-by-field">
-		<select id="opposed_by_mod" name="opposed_by_mod" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select class="entry-select" id="opposed_by_mod" name="opposed_by_mod" >
 			<option value="">Modifier</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option>
@@ -51,7 +51,7 @@
 	</div>
 
 	<div id="opposed-by-field" style="width: 95%;" >
-		<input type="text" id="opposed_by_sit" name="opposed_by_sit" style="height: 1vh; font-size: 90%;">
+		<input type="text" class="entry-text" id="opposed_by_sit" name="opposed_by_sit" >
 	</div>
 
 	<div id="opposed-by-add">
