@@ -170,7 +170,7 @@ textarea:focus {
 	width: 70%;
 	margin: 0px;
 	font-family: Comic, Verdana;
-	text-shadow: 1px, 1px, 1px rgba(36, 86, 129, 0.004);
+	text-shadow: 1px, 1px, 1px rgba(36, 86, 129, 0.01);
 	font-size: 280%;
 	color: #245681;
 	padding: 0px;
