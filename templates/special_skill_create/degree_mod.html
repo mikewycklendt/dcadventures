@@ -5,7 +5,7 @@
 	</div>
 
 	<div id="deg-mod-base-form" style="opacity: 0%; transition: all .3s ease-out;">
-		<select id="deg_mod_target" name="deg_mod_target" style="height: 4vh; padding: 0%; font-size: 100%;" onchange="deg_mod_base()">
+		<select class="header-select" id="deg_mod_target" name="deg_mod_target" onchange="deg_mod_base()">
 			<option value="">Target</option>
 			{% for target in level_target %}
 				<option value="{{target}}">{{target}}</option>
