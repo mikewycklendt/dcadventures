@@ -41,8 +41,8 @@
 		<div id="deg-mod-damage" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 		
-			<div class="select-sml" id="deg-mod-damage-field">
-				<select id="deg_mod_damage_type" name="deg_mod_damage_type" onchange="deg_mod_damage_type()">
+			<div id="deg-mod-damage-field">
+				<select class="select-sml" id="deg_mod_damage_type" name="deg_mod_damage_type" onchange="deg_mod_damage_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
 						<option value="{{type}}">{{type}}</option>
@@ -228,7 +228,7 @@
 				</select>
 			</div>
 			
-			<div style="font-size: 110%;" >
+			<div id="deg-mod-condition-twxt" >
 				<center>
 				To: 
 				</center>			

@@ -27,6 +27,12 @@
 	padding: 0px;
 }
 
+#deg-mod-condition-text {
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 110%;
+	color: #245681;
+}
+
 #deg-mod-base-form {
 	opacity: 0%; 
 	transition: all .3s ease-out; 
