@@ -28,7 +28,7 @@
 	</div>
 
 	<div id="opp-cond-field">
-		<select id="opp_cond_degree" name="opp_conddegree" style="height: 3vh; padding: 0%; font-size: 80%;">
+		<select class="select-sml" id="opp_cond_degree" name="opp_conddegree" >
 			<option value="">of success</option>
 			{% for class in dcclasses %}
 				<option value={{class}}>{{class}}</option>
@@ -38,7 +38,7 @@
 
 
 	<div id="opp-cond-field">
-		<select id="opp_cond_cond" name="opp_cond_cond" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select class="select-sml" id="opp_cond_cond" name="opp_cond_cond" >
 			<option value="">Condition</option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -47,7 +47,7 @@
 	</div>
 
 	<div id="opp-cond-field" style="width: 95%;" >
-		<select id="opp_cond_rounds" name="opp_cond_rounds" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select class="select-sml" id="opp_cond_rounds" name="opp_cond_rounds" >
 			<option value="">Lasts</option>
 			{% for class in dcclasses %}
 				<option value={{class}}>{{class}}</option>
@@ -57,12 +57,12 @@
 	</div>
 	
 	<div id="opp-cond-field">
-		<input type="text" id="opp_cond_desc" name="opp_cond_desc" style="height: 1vh; font-size: 90%; width: 95%;">
+		<input type="text" id="opp_cond_desc" name="opp_cond_desc" >
 	</div>
 
 	
 	<div id="opp-cond-field">
-		<div class="btn" id="opp-cond_add" style="height: 95%; padding: 3px; font-size: 95%;" onclick="opp_cond_submit()">
+		<div class="btn-small" id="opp-cond_add" onclick="opp_cond_submit()">
 			<center>
 				<i class="fa fa-plus"></i>   Add
 			</center>

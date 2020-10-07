@@ -60,6 +60,12 @@
 	padding: 4px;
 }
 
+#opp-cond-field input[type="text"] {
+	height: 1vw;
+	font-size: 100%;
+	width: 97%;
+}
+
 #opp-cond-table {
 	display: grid;
 	width: 94%;
