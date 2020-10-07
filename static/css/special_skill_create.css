@@ -79,9 +79,9 @@ input[type=text]:focus {
 }
 
 #nameskill input[type="text"] {
-	height: 3vw;
+	height: 2.6vw;
 	padding: .5vw;
-	font-size: 110%;
+	font-size: 130%;
 }
 
 .entry-text {
