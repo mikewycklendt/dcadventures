@@ -20,7 +20,7 @@
 	</div>
 
 	<div id="alt-check-field">
-		<select id="alt_check_dc" name="alt_check_dc" style="height: 3vh; font-size: 90%;">
+		<select class="entry-select" id="alt_check_dc" name="alt_check_dc" >
 			<option value="">DC</option>
 			{% for class in dcclasses %}
 				<option value={{class}}>{{class}}</option>
@@ -29,14 +29,12 @@
 	</div>
 
 	<div id="alt-check-field" style="width: 95%;" >
-		<input type="text" id="alt_check_desc" name="alt_check_desc" style="height: 1vh; font-size: 90%;">
+		<input type="text" id="alt_check_desc" name="alt_check_desc">
 	</div>
 
 	<div id="alt-check-add">
-		<div class="btn" id="alt_check_add" style="height: 95%; padding: 3px; font-size: 95%;" onclick="alt_check_submit()">
-			<center>
-				<i class="fa fa-plus"></i>   Add
-			</center>
+		<div class="btn" id="alt_check_add" onclick="alt_check_submit()">
+			Add
 		</div>
 	</div>
 
