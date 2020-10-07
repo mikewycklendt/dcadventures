@@ -75,6 +75,10 @@
 	grid-template-areas: "descriptionfield";
 }
 
+#description-field textarea{
+	border: 2px solid lightblue;
+}
+
 #description-err {
 	display: none;
 	width: 94%;
