@@ -44,7 +44,7 @@
 	</div>
 
 	<div id="char-value-field">
-		<select id="char_value" name="char_value" style="height: 3vh; font-size: 100%; padding: 0%;">
+		<select class="select-sml" id="char_value" name="char_value" >
 			<option value="">Degree</option>
 			<option value="result">Result</option>
 			{% for number in numbers %}
@@ -54,7 +54,7 @@
 	</div>
 
 	<div id="char-rank-field" style="width:95%" >
-		<select id="char_rank" name="char_rank" style="height:3vh; font-size: 95%; padding: 0%;">
+		<select class="select-sml" id="char_rank" name="char_rank" >
 			<option value="">Rank</option>
 			{% for oppose in opposed %}
 				<option value="{{oppose}}">{{oppose}}</option>
@@ -63,7 +63,7 @@
 	</div>
 
 	<div id="char-description-field">
-		<textarea id="char_desc" name="char_desc" style="width: 100%; height: 80%; font-size: 90%; padding: 2%;"></textarea>
+		<textarea id="char_desc" name="char_desc" ></textarea>
 	</div>
 
 	<div id="char-add">
