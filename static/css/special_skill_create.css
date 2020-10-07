@@ -147,6 +147,7 @@ textarea:focus {
 	cursor: crosshair;
 	margin: 3px;
 	justify-content: center;
+	text-align: center;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
 	font-size: 130%;
@@ -167,7 +168,6 @@ textarea:focus {
 .btn::before {
 	font-family: 'FontAwesome';
 	content: '\f067';
-	justify-content: center;
 	display: inline-block;
 }
 
