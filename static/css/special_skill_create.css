@@ -177,6 +177,7 @@ textarea:focus {
 	vertical-align: middle;
 	height: 2vw;
 	padding: .3vw;
+	text-align: center;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
@@ -197,12 +198,19 @@ textarea:focus {
 	outline-offset: -2px;
 }
 
+.btn-small::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
+}
+
 .btn-sml {
 	display: table-cell;
 	width: 5vw;
 	vertical-align: middle;
 	height: 1.2vw;
 	padding: .3vw;
+	text-align: center;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
@@ -221,6 +229,12 @@ textarea:focus {
 	color: black;
 	outline: 2px solid black;
 	outline-offset: -2px;
+}
+
+.btn-sml::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
 }
 
 #addskillgrid {
