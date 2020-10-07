@@ -38,3 +38,23 @@ function secret_check() {
 		secret_mod.style.opacity = "0%";
 	}
 }
+
+function prep_type() {
+	const prep_field = document.getElementById('prep_type');
+	let prep = prep_field.options[prep_field.selectedIndex].value;
+
+	const prep_value = document.getElementById('prep-value');
+	const prep_math = document.getElementById('prep-math-rank');
+		
+	if (prep == 'value') {
+		prep_value.style.display = 'grid';
+		prep_math.style.display = 'nonr';
+	} else if (prep == 'math') {
+		prep_math.style.display = 'grid';
+		prep_value.style.display = 'none';
+	}
+	else {
+		prep_math.style.display = 'grid';
+		prep_value.style.display = 'none';		
+	}
+}
