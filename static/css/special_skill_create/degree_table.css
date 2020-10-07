@@ -99,6 +99,12 @@
 	padding: 4px;
 }
 
+#degree-keyword-field input[type="text"] {
+	height: 1.4vw;
+	font-size: 100%;
+	width: 95%;
+}
+
 #degree-description-field {
 	grid-area: description;
 	width: 85%;
@@ -112,6 +118,7 @@
 	font-size: 90%; 
 	padding: 2%;
 }
+
 #degree-add {
 	grid-area: button;
 	width: 100%;
