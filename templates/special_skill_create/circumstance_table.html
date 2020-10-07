@@ -88,7 +88,7 @@
 
 	<div id="circ-mod-field">
 		<div id="circ-mod-value" style="display: none;">
-			<select class="select-sml" id="circ_modifier" name="circ_modifier">
+			<select class="circ-mod-select" id="circ_modifier" name="circ_modifier">
 				<option value="">Modifier</option>
 				{% for number in numbers %}
 					<option value={{number}}>{{number}}</option>
@@ -100,7 +100,7 @@
 
 			<div>
 
-				<select class="select-sml" id="circ_mod" name="circ_mod">
+				<select class="circ-mod-select" id="circ_mod" name="circ_mod">
 					<option value="">Modifier</option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
@@ -111,7 +111,7 @@
 			
 			<div>For Every</div>
 
-			<div style="margin-bottom: 4px;">
+			<div>
 
 				<input type="text" id="circ_mod_value" name="circ_mod_value" >
 
@@ -119,7 +119,7 @@
 
 			<div>
 
-				<select  class="select-sml" id="circ_mod_unit" name="circ_mod_unit" >
+				<select  class="circ-mod-select" id="circ_mod_unit" name="circ_mod_unit" >
 					<option value="">unit</option>
 					{% for unit in units %}
 						<option value={{unit.id}}>{{unit.name}}</option>

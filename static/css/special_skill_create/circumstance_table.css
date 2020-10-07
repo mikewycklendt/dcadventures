@@ -105,8 +105,18 @@
 	width: 80%; 
 	margin-top: .2vw;
 	margin-bottom: .2vh;
-	height: .7vh; 
-	font-size: 80%;
+	height: .6vw; 
+	font-size: 110%;
+}
+
+#circ-mod-math div {
+	margin-bottom: .2vw;
+}
+
+.circ-mod-select{
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 100%;
 }
 
 #circ-mod-adjust {
@@ -119,6 +129,10 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#circ-mod-adjust div {
+	margin-bottom: .2vw;
 }
 
 #circ-add {
