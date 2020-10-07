@@ -31,7 +31,7 @@ db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
 
-stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"}]
+stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
 meta_name="DC Adventures Online"
 meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 title = 'DC Adventures Online Roleplqying Game'

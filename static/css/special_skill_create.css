@@ -164,6 +164,12 @@ textarea:focus {
 	outline-offset: -2px;
 }
 
+.btn::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
+}
+
 .btn-small {
 	display: table-cell;
 	width: 5vw;
