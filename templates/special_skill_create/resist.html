@@ -20,7 +20,7 @@
 	</div>
 
 	<div id="resist-effect-field">
-		<select id="resist_effect" name="other_skill" style="height: 3vh; padding: 0%; font-size: 90%;">
+		<select class="entry-select" id="resist_effect" name="other_skill">
 			<option value="">Resists</option>
 			{% for resist in resists %}
 				<option value="{{resist}}">{{resist}}</option>
@@ -29,11 +29,11 @@
 	</div>
 
 	<div id="resist-effect-field" style="width: 95%;" >
-		<input type="text" id="resist_effect_examples" name="resist_effect_examples" style="height: 1vh; font-size: 90%;">
+		<input type="text" id="resist_effect_examples" name="resist_effect_examples" >
 	</div>
 
 	<div id="resist-effect-add">
-		<div class="btn" id="resist_effect_add" style="height: 95%; padding: 3px; font-size: 95%;" onclick="resist_submit()">
+		<div class="btn-small" id="resist_effect_add" onclick="resist_submit()">
 			<center>
 				<i class="fa fa-plus"></i>   Add
 			</center>
