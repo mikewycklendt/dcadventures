@@ -138,6 +138,12 @@
 	margin-bottom: 20px;
 }
 
+.base-select {
+	height: 2.7vw;
+	padding: .4vw;
+	font-size: 130%;
+}
+
 #action-field {
 	display: grid;
 	width: 85%;

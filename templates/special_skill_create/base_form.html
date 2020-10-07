@@ -42,7 +42,7 @@
 			Action Type:
 		</div>
 
-		<select id="action" name="action" >
+		<select class="base-select" id="action" name="action" >
 			{% for action in actions %}
 				<option value={{action.id}}>{{action.name}}</option>
 			{% endfor %}
@@ -54,7 +54,7 @@
 			Check Type:
 		</div>
 		
-		<select id="check" name="check"  onchange="check_type()">
+		<select class="base-select" id="check" name="check"  onchange="check_type()">
 			{% for check in checks %}
 				<option value={{check.id}}>{{check.name}}</option>
 			{% endfor %}
@@ -66,7 +66,7 @@
 			Condition Status:
 		</div>
 		
-		<select id="condition" name="condition" >
+		<select class="base-select" id="condition" name="condition" >
 			<option value="">Normal</option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -79,7 +79,7 @@
 			Speed Rank Modifier:
 		</div>
 		
-		<select id="speed" name="speed" aria-placeholder="0" >
+		<select class="base-select" id="speed" name="speed" aria-placeholder="0" >
 			<option value=0>0</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option>
@@ -92,7 +92,7 @@
 			Skill Type:
 		</div>
 		
-		<select id="skilltype" name="skilltype" >
+		<select class="base-select" id="skilltype" name="skilltype" >
 			<option value="">N/A</option>
 			{% for type in skilltype %}
 				<option value="{{type.id}}">{{type.name}}</option>
@@ -107,7 +107,7 @@
 			DC Set by:
 		</div>
 		
-		<select id="dc_set" name="dc_set"  onchange="dc_set()">
+		<select class="base-select" id="dc_set" name="dc_set"  onchange="dc_set()">
 			<option value="">N/A</option>
 			{% for type in dctype %}
 				<option value="{{type.value}}">{{type.name}}</option>
@@ -121,7 +121,7 @@
 		</div>
 
 		<div>
-			<select id="prep_type" name="prep_type" onchange="prep_type()">
+			<select class="base-select" id="prep_type" name="prep_type" onchange="prep_type()">
 				<option value="">Immediate</option>
 				{% for value in value_type %}
 					<option value="{{value}}">{{value}}</option>
@@ -136,7 +136,7 @@
 			</div>
 		
 			<div>
-				<select id="prep_unit" name="prep_unit" >
+				<select class="base-select" id="prep_unit" name="prep_unit" >
 					<option value="">Time Unit</option>
 					{% for time in times %}
 						<option value="{{time.id}}">{{time.name}}</option>
@@ -152,7 +152,7 @@
 			</div>
 
 			<div>
-				<select id="prep_rank" name="prep_rank" >
+				<select class="select-sml" id="prep_rank" name="prep_rank" >
 					<option value="">Rank</option>
 					{% for rank in measure %}
 						<option value={{rank.id}}>{{rank.name}}</option>
@@ -167,7 +167,7 @@
 			
 			<div>
 
-				<select id="prep_math" name="prep_math" >
+				<select class="select-sml" id="prep_math" name="prep_math" >
 					<option value="">Math</option>
 					{% for math in maths %}
 						<option value="{{math}}">{{math}}</option>
@@ -177,7 +177,7 @@
 			</div>
 
 			<div>
-				<select id="prep_mod" name="prep_mod" >
+				<select class="select-sml" id="prep_mod" name="prep_mod" >
 					<option value="">Value</option>
 					{% for class in dcclasses %}
 						<option value={{class}}>{{class}}</option>
@@ -238,7 +238,7 @@
 			</div>
 
 			<div id="secret-mod" style="opacity: 0%; transition: all .3s ease-out;">
-				<select id="secret_mod" name="secret_mod" >
+				<select class="base-select" id="secret_mod" name="secret_mod" >
 					<option value="">DC Modifier</option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
@@ -268,7 +268,7 @@
 
 		<div id="untrained-fields">
 			<div>
-				<select id="untrained_dclimit" name="untrained_dclimit" >
+				<select class="base-select" id="untrained_dclimit" name="untrained_dclimit" >
 					<option value="">DC Limit</option>
 					{% for class in dcclasses %}
 						<option value={{class}}>{{class}}</option>
@@ -277,8 +277,8 @@
 			</div>	
 
 			<div>
-				<select id="untrained_mod" name="untrained_mod" >
-					<option value="">Modifier</option>
+				<select class="base-select" id="untrained_mod" name="untrained_mod" >
+					<op	tion value="">Modifier</option>
 					{% for negetive in negatives %}
 						<option value={{negetive}}>{{negetive}}</option>
 					{% endfor %}
@@ -296,7 +296,7 @@
 
 		<div id="change-level-fields">
 			<div>
-				<select id="change_level_type" name="change_level_type" >
+				<select class="base-select" id="change_level_type" name="change_level_type" >
 					<option value="">Level Type</option>
 					{% for level in level_type %}
 						<option value={{level.id}}>{{level.name}}</option>
@@ -305,7 +305,7 @@
 			</div>	
 
 			<div>
-				<select id="change_level_level" name="change_level_level" >
+				<select class="base-select" id="change_level_level" name="change_level_level" >
 					<option value="">Level</option>
 					{% for level in levels %}
 						<option value={{level.id}}>{{level.name}}</option>
