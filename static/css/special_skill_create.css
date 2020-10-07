@@ -78,6 +78,12 @@ input[type=text]:focus {
 	outline: 2px solid #af0101;
 }
 
+#nameskill input[type="text"] {
+	height: 3vw;
+	padding: .5vw;
+	font-size: 110%;
+}
+
 .entry-text {
 	height: 1vw; 
 	font-size: 95%;
