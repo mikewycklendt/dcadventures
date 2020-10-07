@@ -4,7 +4,7 @@
 		<input type="checkbox" id="deg_mod_check" class="regular-checkbox big-checkbox" onclick="deg_mod_check()">  Degree of Success/Failure (Modifier) Table:
 	</div>
 
-	<div id="deg-mod-base-form" style="opacity: 0%; transition: all .3s ease-out;">
+	<div id="deg-mod-base-form" >
 		<select class="header-select" id="deg_mod_target" name="deg_mod_target" onchange="deg_mod_base()">
 			<option value="">Target</option>
 			{% for target in level_target %}
@@ -18,7 +18,7 @@
 <div id="deg-mod-entry" style="display: none;">
 
 	<div id="deg-mod-deg">
-		<select id="deg_value" name="deg_value" style="height: 3vh; padding: 0%; font-size: 80%;">
+		<select class="select-sml" id="deg_value" name="deg_value" >
 			<option value="">Degree</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option>
@@ -27,7 +27,7 @@
 	</div>
 
 	<div id="deg-mod-type">
-		<select id="deg_mod_type" name="deg_mod_type" style="height: 3vh; padding: 0%; font-size: 80%;" onchange="deg_mod_type()">
+		<select class="select-sml" id="deg_mod_type" name="deg_mod_type" onchange="deg_mod_type()">
 			<option value="">Type</option>
 			<option value="event">Event</option>
 			{% for type in deg_mod_type %}
@@ -41,8 +41,8 @@
 		<div id="deg-mod-damage" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 		
-			<div id="deg-mod-damage-field">
-				<select id="deg_mod_damage_type" name="deg_mod_damage_type" style="height: 3vh; padding: 0%; font-size: 80%;" onchange="deg_mod_damage_type()">
+			<div class="select-sml" id="deg-mod-damage-field">
+				<select id="deg_mod_damage_type" name="deg_mod_damage_type" onchange="deg_mod_damage_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
 						<option value="{{type}}">{{type}}</option>
@@ -54,7 +54,7 @@
 				<div id="deg-mod-damage-math" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 					<div>
-						<select id="deg_mod_math_damage" name="deg_mod_math_damage" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_math_damage" name="deg_mod_math_damage" >
 							<option value="">Damage</option>
 							{% for class in dcclasses %}
 								<option value={{class}}>{{class}}</option>
@@ -63,7 +63,7 @@
 					</div>
 
 					<div>
-						<select id="deg_mod_damage_math1" name="deg_mod_damage_math1" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_damage_math1" name="deg_mod_damage_math1" >
 							<option value="">Math</option>
 							{% for math in maths %}
 								<option value={{math.id}}>{{math.name}}</option>
@@ -72,7 +72,7 @@
 					</div>
 					
 					<div>
-						<select id="deg_mod_damage_val1" name="deg_mod_damage_val1" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_damage_val1" name="deg_mod_damage_val1" >
 							<option value="">Rank</option>
 							{% for number in numbers %}
 								<option value={{number}}>{{number}}</option>
@@ -81,7 +81,7 @@
 					</div>
 
 					<div>
-						<select id="deg_mod_damage_math2" name="deg_mod_damage_math" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_damage_math2" name="deg_mod_damage_math" >
 							<option value="">Math</option>
 							{% for math in maths %}
 								<option value={{math.id}}>{{math.name}}</option>
@@ -90,7 +90,7 @@
 					</div>
 					
 					<div>
-						<select id="deg_mod_damage_val2" name="deg_mod_damage_val2" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_damage_val2" name="deg_mod_damage_val2" >
 							<option value="">Math</option>
 							{% for rank in ranks %}
 								<option value={{rank.id}}>{{rank.name}}</option>
@@ -105,7 +105,7 @@
 				<div id="deg-mod-damage-value" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 					<div>
-						<select id="deg_damage_deg_value" name="deg_damage_deg_value" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_damage_deg_value" name="deg_damage_deg_value" >
 							<option value="">Degree</option>
 							{% for number in numbers %}
 								<option value={{number}}>{{number}}</option>
@@ -114,7 +114,7 @@
 					</div>
 
 					<div id="deg-mod-entry-title">
-						<select id="deg_damage_value" name="deg_damage_value" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_damage_value" name="deg_damage_value" >
 							<option value="">Value</option>
 							{% for number in numbers %}
 								<option value={{number}}>{{number}}</option>
@@ -129,7 +129,7 @@
 		<div id="deg-mod-measure" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 			<div id="deg-mod-field">
-				<select id="deg_mod_measure_type" name="deg_mod_measure_type" style="height: 3vh; padding: 0%; font-size: 80%;" onchange="deg_mod_measure_type()">
+				<select class="select-sml" id="deg_mod_measure_type" name="deg_mod_measure_type" onchange="deg_mod_measure_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
 						<option value="{{type}}">{{type}}</option>
@@ -141,7 +141,7 @@
 				<div id="deg-mod-measure-math" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 					<div>
-						<select id="deg_mod_measure_val1" name="deg_mod_measure_val1" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_val1" name="deg_mod_measure_val1" >
 							<option value="">Rank</option>
 							{% for number in numbers %}
 								<option value={{number}}>{{number}}</option>
@@ -150,7 +150,7 @@
 					</div>
 
 					<div>
-						<select id="deg_mod_measure_math" name="deg_mod_measure_math" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_math" name="deg_mod_measure_math" >
 							<option value="">Math</option>
 							{% for math in maths %}
 								<option value={{math.id}}>{{math.name}}</option>
@@ -159,7 +159,7 @@
 					</div>
 					
 					<div>
-						<select id="deg_mod_measure_val2" name="deg_mod_damage_val2" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_val2" name="deg_mod_damage_val2" >
 							<option value="">Rank Type</option>
 							{% for rank in ranks %}
 								<option value={{rank.id}}>{{rank.name}}</option>
@@ -169,7 +169,7 @@
 
 					<div>
 
-						<select id="deg_mod_measure_math_rank" name="deg_mod_measure_math_rank" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_math_rank" name="deg_mod_measure_math_rank" >
 							<option value="">Rank Type</option>
 							{% for rank in measure_rank %}
 								<option value={{rank.id}}>{{rank.name}}</option>
@@ -185,7 +185,7 @@
 				<div id="deg-mod-measure-value" style="display: none; opacity: 0%; transition: opacity .2s ease-out;">
 
 					<div>
-						<select id="deg_mod_measure_value" name="deg_measure_value" style="height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_value" name="deg_measure_value" >
 							<option value="">Rank</option>
 							{% for number in numbers %}
 								<option value={{number}}>{{number}}</option>
@@ -195,7 +195,7 @@
 
 					<div>
 
-						<select id="deg_mod_measure_rank" name="deg_mod_measure_rank" style="width: 50%; height: 3vh; padding: 0%; font-size: 80%;">
+						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank" >
 							<option value="">Rank Type</option>
 							{% for rank in measure_rank %}
 								<option value={{rank.id}}>{{rank.name}}</option>
@@ -216,7 +216,7 @@
 			</div>
 	
 			<div>
-				<select id="deg_mod_condition1" name="deg_mod_condition1" style="width: 100%; height: 3vh; padding: 0%; font-size: 80%;">
+				<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
 					<option value="">Condition</option>
 					<option value="current">Current</option>
 					{% for condition in combined_conditions %}
@@ -228,14 +228,14 @@
 				</select>
 			</div>
 			
-			<div>
+			<div style="font-size: 110%;" >
 				<center>
 				To: 
 				</center>			
 			</div>
 
 			<div>
-				<select id="deg_mod_condition2" name="deg_mod_condition2" style="width: 100%; height: 3vh; padding: 0%; font-size: 80%;">
+				<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
 					<option value="">Condition</option>
 					<option value="current">Current</option>
 					{% for condition in combined_conditions %}
@@ -254,7 +254,7 @@
 
 	<div id="deg-mod-nullify">
 
-		<select id="deg_mod_nullify" name="deg_mod_nullify" style="height: 3vh; padding: 0%; font-size: 80%;">
+		<select class="entry-select" id="deg_mod_nullify" name="deg_mod_nullify" >
 			<option value="">DC to Nullify</option>
 			<option value="extra">Extra Check</option>
 			{% for class in dcclasses %}
@@ -265,11 +265,11 @@
 	</div>
 
 	<div id="deg-mod-keyword">
-		<input type="text" id="deg_mod_keyword" name="deg_mod_keyword" style="height: 2vh; padding: 1%; font-size: 100%;" placeholder="Keyword">
+		<input type="text" id="deg_mod_keyword" name="deg_mod_keyword" placeholder="Keyword">
 	</div>
 
 	<div id="deg-mod-description">
-		<textarea id="deg_mod_desc" name="deg_mod_desc" style="width: 98%; height: 80%; font-size: 90%; padding: 2%;"></textarea>
+		<textarea id="deg_mod_desc" name="deg_mod_desc" ></textarea>
 	</div>
 
 	<div id="deg-mod-add">

@@ -27,6 +27,12 @@
 	padding: 0px;
 }
 
+#deg-mod-base-form {
+	opacity: 0%; 
+	transition: all .3s ease-out; 
+	margin-bottom: .2vh; 
+}
+
 #deg-mod-entry {
 	display: grid;
 	width: 88%;
@@ -88,6 +94,13 @@
 	width: 95%;
 	height: auto;
 	padding: 4px;
+}
+
+#deg-mod-description textarea {
+	width: 98%;
+	height: 80%;
+	font-size: 90%;
+	padding: 2%;
 }
 
 #deg-mod-blank {
