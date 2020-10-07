@@ -87,16 +87,26 @@
 	transition: all .4s ease-out;
 }
 
-#circ-mod-math {
+.circ-mod-math {
 	display: grid;
 	width: 85%;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 70%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+circ-mod-math input[type="text"] {
+	width: 80%; 
+	margin-top: .2vw;
+	margin-bottom: .2vh;
+	height: .7vh; 
+	font-size: 80%;
 }
 
 #circ-mod-adjust {
