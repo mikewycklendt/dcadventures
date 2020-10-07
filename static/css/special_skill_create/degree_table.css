@@ -46,7 +46,7 @@
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 15% 20% 65%;
-	grid-template-rows: 3vh 4vh 4vh;
+	grid-template-rows: auto auto auto;
 	grid-template-areas: "value_title keyword_title description-title"
 							"value keyword description"
 							"button button description";
@@ -110,6 +110,32 @@
 	width:95%;
 	height: auto;
 	padding: 4px;
+}
+
+.degree-btn {
+	display: table-cell;
+	width: 10vw;
+	vertical-align: middle;
+	height: 2vw;
+	padding: .3vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 110%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.degree-btn {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
 }
 
 #degree-description-field textarea {
