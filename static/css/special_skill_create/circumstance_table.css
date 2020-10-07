@@ -79,7 +79,7 @@
 }
 
 #circ-mod-value {
-	width: 85%;
+	width: 100%;
 	height: auto;
 	padding: 4px;
 	max-height: 0;
@@ -89,7 +89,7 @@
 
 #circ-mod-math {
 	display: grid;
-	width: 85%;
+	width: 100%;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
@@ -121,7 +121,7 @@
 
 #circ-mod-adjust {
 	display: grid;
-	width: 85%;
+	width: 100%;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
