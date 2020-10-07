@@ -12,7 +12,7 @@
 		<div></div>
 
 		<div>
-			<select class="header-select" id="degree_target" name="degree_target" style="height: 4vh; font-size: 100%; padding: 0%;" onchange="degree_base()">
+			<select class="header-select" id="degree_target" name="degree_target" onchange="degree_base()">
 				<option value="">Target</option>
 				{% for target in level_target %}
 					<option value="{{target}}">{{target}}</option>
