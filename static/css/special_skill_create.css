@@ -167,6 +167,7 @@ textarea:focus {
 .btn::before {
 	font-family: 'FontAwesome';
 	content: '\f067';
+	justify-content: center;
 	display: inline-block;
 }
 
