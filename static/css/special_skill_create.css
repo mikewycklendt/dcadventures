@@ -37,6 +37,7 @@
 }
 
 #box-title {
+	display: table-cell;
 	width: 85%;
 	height: auto;
 	margin-top: 2%;
