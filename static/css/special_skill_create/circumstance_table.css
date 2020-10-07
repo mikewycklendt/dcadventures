@@ -87,7 +87,7 @@
 	transition: all .4s ease-out;
 }
 
-.circ-mod-math {
+#circ-mod-math {
 	display: grid;
 	width: 85%;
 	height: auto;
@@ -101,7 +101,7 @@
 	transition: all .4s ease-out;
 }
 
-circ-mod-math input[type="text"] {
+#circ-mod-math input[type="text"] {
 	width: 80%; 
 	margin-top: .2vw;
 	margin-bottom: .2vh;
