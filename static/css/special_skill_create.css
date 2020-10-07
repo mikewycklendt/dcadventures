@@ -79,7 +79,7 @@ input[type=text]:focus {
 }
 
 #nameskill input[type="text"] {
-	height: 2.6vw;
+	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;
 }
