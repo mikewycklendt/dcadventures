@@ -231,14 +231,14 @@
 			Is Result Hidden from Player?
 		</div>
 
-		<div id="secret-details" style="font-size: 100%;">
+		<div id="secret-details">
 
 			<div>
 				<input type="checkbox" id="secret_check" class="regular-checkbox big-checkbox" onclick="secret_check()">
 			</div>
 
 			<div id="secret-mod" style="opacity: 0%; transition: all .3s ease-out;">
-				<select class="base-select" id="secret_mod" name="secret_mod" >
+				<select class="base-select" id="secret_mod" name="secret_mod" style="font-size: 80%;">
 					<option value="">DC Modifier</option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
