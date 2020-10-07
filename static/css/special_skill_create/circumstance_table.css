@@ -22,7 +22,6 @@
 	display: grid;
 	width: 100%;
 	padding: 0px;
-	border-bottom: 2px solid lightblue;
 	grid-template-columns: 60% 40%;
 	grid-template-rows: auto;
 	opacity: 0%;
