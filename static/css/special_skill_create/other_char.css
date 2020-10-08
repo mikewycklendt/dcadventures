@@ -125,6 +125,7 @@
 	display: table-cell;
 	width: 12vw;
 	vertical-align: middle;
+	text-align: center;
 	height: 2vw;
 	padding: .3vw;
 	background-color: #af0101;
@@ -145,6 +146,12 @@
 	color: black;
 	outline: 2px solid black;
 	outline-offset: -2px;
+}
+
+.degree-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
 }
 
 #char-table {
