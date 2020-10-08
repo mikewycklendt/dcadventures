@@ -286,7 +286,7 @@ function dc_submit() {
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
 		if (con_check.checked == true) {
-			con.innerHTML = con_value;
+			con.innerHTML = con1_value + ' ' + con2_value;
 		} else {
 			con.innerHTML = ''
 		}
