@@ -242,6 +242,7 @@ function dc_submit() {
 		des.innerHTML = des_value;
 
 		console.log(key_value);
+		console.log(con_check.checked);
 
 		const key = document.createElement('div');
 		key.className = 'dc-table-key';
