@@ -313,7 +313,6 @@
 	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
-	display: block;
 	max-width: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -324,7 +323,6 @@
 	font-size: 65%;
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
-	display: black;
 	max-width: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
