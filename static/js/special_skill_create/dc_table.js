@@ -241,6 +241,8 @@ function dc_submit() {
 		des.className = 'dc-table-des';
 		des.innerHTML = des_value;
 
+		console.log(key_value);
+
 		const mea = document.createElement('div');
 		mea.className = 'dc-table-mea';
 		if (mea_type_value == 'value') {
