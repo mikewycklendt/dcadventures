@@ -243,6 +243,10 @@ function dc_submit() {
 
 		console.log(key_value);
 
+		const key = document.createElement('div');
+		key.className = 'dc-table-key';
+		key.innerHTML = key_value;
+
 		const mea = document.createElement('div');
 		mea.className = 'dc-table-mea';
 		mea.innerHTML = '';
@@ -250,11 +254,6 @@ function dc_submit() {
 		const dam = document.createElement('div');
 		dam.className = 'dc-table-dam';
 		dam.innerHTML = dam_value;
-		
-
-		const key = document.createElement('div');
-		key.className = 'dc-table-key';
-		key.innerHTML = key_value;
 
 		const def = document.createElement('div');
 		def.className = 'dc-table-def';
@@ -269,7 +268,7 @@ function dc_submit() {
 		con.innerHTML = con1_value + ' ' + con2_value;
 	
 		const dcDelete = document.createElement('div');
-		dcDelete.className = 'dc-table-delete'
+		dcDelete.className = 'dc-table-delete';
 		const deleteBtn = document.createElement('button');
 		deleteBtn.className = 'dc-xbox';
 		deleteBtn.innerHTML = '&cross;';
