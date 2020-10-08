@@ -332,7 +332,6 @@ function dc_submit() {
 		}
 
 		
-		
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
 		des.style.maxHeight = des.scrollHeight + "px";
