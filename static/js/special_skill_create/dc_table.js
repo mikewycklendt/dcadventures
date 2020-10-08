@@ -253,42 +253,42 @@ function dc_submit() {
 
 		const dam = document.createElement('div');
 		dam.className = 'dc-table-dam';
-		if (dam_check.checked == true) {
+		if (dam_value != '') {
 			dam.innerHTML = dam_value;
 		} else {
-			dam.innerHTML = ''
+			dam.innerHTML = '';
 		}
 
 		const key = document.createElement('div');
 		key.className = 'dc-table-key';
-		if (key_check.checked == true) {
+		if (key_value != '') {
 			key.innerHTML = key_value;
 		} else {
-			key.innerHTML = ''
+			key.innerHTML = '';
 		}
 
 		const def = document.createElement('div');
 		def.className = 'dc-table-def';
-		if (def_check.checked == true) {
+		if (def_value != '') {
 			def.innerHTML = def_value;
 		} else {
-			def.innerHTML = ''
+			def.innerHTML = '';
 		}
 
 		const act = document.createElement('div');
 		act.className = 'dc-table-act';
-		if (act_check.checked == true) {
+		if (act_value != '') {
 			act.innerHTML = act_value;
 		} else {
-			act.innerHTML = ''
+			act.innerHTML = '';
 		}
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		if (con_check.checked == true) {
+		if (con1_value != '' && con2_value != '') {
 			con.innerHTML = con1_value + ' ' + con2_value;
 		} else {
-			con.innerHTML = ''
+			con.innerHTML = '';
 		}
 	
 		const dcDelete = document.createElement('div');
@@ -323,6 +323,7 @@ function dc_submit() {
 		table.appendChild(def);
 		table.appendChild(act);
 		table.appendChild(con);
+		table.appendChild(dcDelete);
 
 		let rows = [dc.scrollHeight, key.scrollHeight, des.scrollHeight, mea.scrollHeight, dam.scrollHeight, def.scrollHeight, act.scrollHeight, con.scrollHeight];
 		let row_height = 0;
