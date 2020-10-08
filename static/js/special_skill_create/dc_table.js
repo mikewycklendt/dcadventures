@@ -308,30 +308,6 @@ function dc_submit() {
 		const act_title = document.getElementById('dc-table-title-act');
 		const con_title = document.getElementById('dc-table-title-con');
 
-		if (key_check.checked == true) {
-			key_title.style.maxWidth = key_title.scrollWidth + "px";
-		} 
-
-		if (mea_check.checked == true) {
-			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
-		}
-
-		if (dam_check.checked == true) {
-			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
-		}
-
-		if (def_check.checked == true) {
-			def_title.style.maxWidth = def_title.scrollWidth + "px";
-		}
-
-		if (act_check.checked == true) {
-			act_title.style.maxWidth = act_title.scrollWidth + "px";
-		}
-
-		if (con_check.checked == true) {
-			con_title.style.maxWidth = con_title.scrollWidth + "px";
-		}
-
 		const table = document.getElementById('dc-table-container');
 
 		table.style.display = "grid";
@@ -355,6 +331,30 @@ function dc_submit() {
 			if (rows[i] > row_height) {
 				row_height = rows[i]
 			}
+		}
+
+		if (key_check.checked == true) {
+			key_title.style.maxWidth = key_title.scrollWidth + "px";
+		} 
+
+		if (mea_check.checked == true) {
+			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
+		}
+
+		if (dam_check.checked == true) {
+			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
+		}
+
+		if (def_check.checked == true) {
+			def_title.style.maxWidth = def_title.scrollWidth + "px";
+		}
+
+		if (act_check.checked == true) {
+			act_title.style.maxWidth = act_title.scrollWidth + "px";
+		}
+
+		if (con_check.checked == true) {
+			con_title.style.maxWidth = con_title.scrollWidth + "px";
 		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
