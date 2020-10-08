@@ -242,7 +242,7 @@ function dc_submit() {
 		des.innerHTML = des_value;
 
 		const mea = document.createElement('div');
-		mea.className = 'dc-table-mea'
+		mea.className = 'dc-table-mea';
 		if (mea_type_value == 'value') {
 			mea.innerHTML = mea_val_value + ' ' + mea_unt_value;
 		} else if (mea_type_value == 'math') {
