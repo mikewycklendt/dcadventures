@@ -331,9 +331,7 @@ function dc_submit() {
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 
-		if (con_check.checked == true) {
-			con_title.style.maxWidth = con_title.scrollWidth + "px";
-		}
+		
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
