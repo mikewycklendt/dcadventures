@@ -255,43 +255,24 @@ function dc_submit() {
 
 		const dam = document.createElement('div');
 		dam.className = 'dc-table-dam';
-		if (dam_value != '') {
-			dam.innerHTML = dam_value;
-		} else {
-			dam.innerHTML = '';
-		}
+		dam.innerHTML = dam_value;
+		
 
 		const key = document.createElement('div');
 		key.className = 'dc-table-key';
-		if (key_value != '') {
-			key.innerHTML = key_value;
-		} else {
-			key.innerHTML = '';
-		}
+		key.innerHTML = key_value;
 
 		const def = document.createElement('div');
 		def.className = 'dc-table-def';
-		if (def_value != '') {
-			def.innerHTML = def_value;
-		} else {
-			def.innerHTML = '';
-		}
+		def.innerHTML = def_value;
 
 		const act = document.createElement('div');
 		act.className = 'dc-table-act';
-		if (act_value != '') {
-			act.innerHTML = act_value;
-		} else {
-			act.innerHTML = '';
-		}
+		act.innerHTML = act_value;
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		if (con1_value != '' && con2_value != '') {
-			con.innerHTML = con1_value + ' ' + con2_value;
-		} else {
-			con.innerHTML = '';
-		}
+		con.innerHTML = con1_value + ' ' + con2_value;
 	
 		const dcDelete = document.createElement('div');
 		dcDelete.className = 'dc-table-delete'
