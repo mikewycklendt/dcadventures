@@ -254,9 +254,6 @@
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
 	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #dc-table-title-key {
@@ -276,9 +273,6 @@
 	border-bottom: 1px solid lightblue;
 	margin: 4px;
 	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #dc-table-title-mea {
