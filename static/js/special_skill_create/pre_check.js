@@ -1,11 +1,14 @@
 function pre_check_check() {
 	const pre_check_check = document.getElementById("pre_check_check");
 	const pre_check_header_type = document.getElementById("pre-check-header-type");
+	const title = document.getElementById("pre-check-title");
 	
 	if (pre_check_check.checked == true) {
 		pre_check_header_type.style.opacity = "100%";
+		title.style.color = "#af0101";
 	} else {
 		pre_check_header_type.style.opacity = "0%";
+		title.style.color = "#245681";
 	}
 }
 

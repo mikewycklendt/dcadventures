@@ -1,13 +1,20 @@
 function deg_mod_check() {
 	const deg_mod_check = document.getElementById("deg_mod_check");
 	const deg_mod_base_form = document.getElementById("deg-mod-base-form");
-	
+	const title = document.getElementById("deg-mod-title");
+
 	if (deg_mod_check.checked == true) {
 		deg_mod_base_form.style.opacity = "100%";
+		title.style.color = "#af0101";
 	} else {
 		deg_mod_base_form.style.opacity = "0%";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
 
 function deg_mod_base() {
 	const deg_mod_target = document.getElementById("deg_mod_target");

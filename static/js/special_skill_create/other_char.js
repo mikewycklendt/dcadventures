@@ -1,13 +1,20 @@
 function char_check() {
 	const char_check = document.getElementById("char_check");
 	const char_base_form = document.getElementById("char-base-form");
+	const title = document.getElementById("char-title");
 	
 	if (char_check.checked == true) {
 		char_base_form.style.opacity = "100%";
+		title.style.color = "#af0101";
 	} else {
 		char_base_form.style.opacity = "0%";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
 
 function char_base() {
 	const char_type = document.getElementById("char_type");

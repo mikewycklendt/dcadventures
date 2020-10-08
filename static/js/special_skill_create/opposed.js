@@ -1,13 +1,20 @@
 function opposed_by_check() {
 	const opposed_by_check = document.getElementById("opposed_by_check");
 	const opposed_by_base_form = document.getElementById("opposed-by-base-form");
+	const title = document.getElementById("opposed-by-title");
 	
 	if (opposed_by_check.checked == true) {
 		opposed_by_base_form.style.opacity = "100%";
+		title.style.color = "#af0101";
 	} else {
 		opposed_by_base_form.style.opacity = "0%";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
 
 function opposed_by_by() {
 	const opposed_by_by = document.getElementById("opposed_by_by")

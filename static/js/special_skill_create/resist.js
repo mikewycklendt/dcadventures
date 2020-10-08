@@ -1,17 +1,24 @@
 function resist_effect_check() {
 	const resist_effect_check = document.getElementById("resist_effect_check");
 	const resist_effect_entry = document.getElementById("resist-effect-entry");
+	const title = document.getElementById("resist-effect-title");
 	
 	if (resist_effect_check.checked == true) {
 		resist_effect_entry.style.display = "grid";
 		resist_effect_entry.style.padding = "1%";
 		resist_effect_entry.style.maxHeight = resist_effect_entry.scrollHeight + "px";
 		resist_effect_entry.style.padding = "1%";
+		title.style.color = "#af0101";
 	} else {
 		resist_effect_entry.style.maxHeight = "0px";
 		resist_effect_entry.style.padding = "0px";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
 
 resist_enter = 0;
 

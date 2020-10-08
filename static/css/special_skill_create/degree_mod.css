@@ -25,6 +25,7 @@
 	font-size: 160%;
 	color: #245681;
 	padding: 0px;
+	transition: all .2s linear;
 }
 
 #deg-mod-condition-text {

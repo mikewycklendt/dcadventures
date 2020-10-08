@@ -1,15 +1,18 @@
 function power_check() {
 	const power_check = document.getElementById("power_check");
 	const power_entry = document.getElementById("power-entry");
+	const title = document.getElementById("power-title");
 	
 	if (power_check.checked == true) {
 		power_entry.style.display = "grid";
 		power_entry.style.padding = "1%";
 		power_entry.style.maxHeight = power_entry.scrollHeight + "px";
 		power_entry.style.padding = "1%";
+		title.style.color = "#af0101";
 	} else {
 		power_entry.style.maxHeight = "0px";
 		power_entry.style.padding = "0px";
+		title.style.color = "#245681";
 	}
 }
 

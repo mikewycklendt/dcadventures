@@ -1,17 +1,26 @@
 function opp_cond_check() {
 	const opp_cond_check = document.getElementById("opp_cond_check");
 	const opp_cond_entry = document.getElementById("opp-cond-entry");
+	const title = document.getElementById("opp-cond-title");
 	
 	if (opp_cond_check.checked == true) {
 		opp_cond_entry.style.display = "grid";
 		opp_cond_entry.style.padding = "1%";
 		opp_cond_entry.style.maxHeight = opp_cond_entry.scrollHeight + "px";
 		opp_cond_entry.style.padding = "1%";
+		title.style.color = "#af0101";
 	} else {
 		opp_cond_entry.style.maxHeight = "0px";
 		opp_cond_entry.style.padding = "0px";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
+
+
 
 opp_cond_enter = 0;
 

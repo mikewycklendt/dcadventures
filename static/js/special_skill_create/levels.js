@@ -1,13 +1,20 @@
 function levels_check() {
 	const levels_check = document.getElementById("levels_check");
 	const levels_base_form = document.getElementById("levels-base-form");
-	
+	const title = document.getElementById("levels-title");
+
 	if (levels_check.checked == true) {
 		levels_base_form.style.opacity = "100%";
+		title.style.color = "#af0101";
 	} else {
 		levels_base_form.style.opacity = "0%";
+		title.style.color = "#245681";
 	}
 }
+
+
+
+
 
 function levels_base() {
 	const level_type = document.getElementById("level_type");

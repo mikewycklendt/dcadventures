@@ -25,6 +25,7 @@
 	font-size: 200%;
 	color: #245681;
 	padding: 0px;
+	transition: all .2s linear;
 }
 
 #pre-check-entry-standard {
