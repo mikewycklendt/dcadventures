@@ -266,8 +266,12 @@ function dc_submit() {
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		con.innerHTML = con1_value + ' to ' + con2_value;
-	
+		if (con.checked == true) {
+			con.innerHTML = con1_value + ' to ' + con2_value;
+		} else {
+			con.innerHTML = '';
+		}
+
 		const dcDelete = document.createElement('div');
 		dcDelete.className = 'dc-table-delete';
 		const deleteBtn = document.createElement('button');
@@ -445,7 +449,7 @@ function dc_delete() {
 			}
 			
 			for (let i = 0; i < cons.length; i++) {
-				if (cons[i].innerHTML != ' to '){
+				if (cons[i].innerHTML != ''){
 					con_title.style.maxWidth = con_title.scrollWidth + "px";
 				} else {
 					con_title.style.maxWidth = "0px";
