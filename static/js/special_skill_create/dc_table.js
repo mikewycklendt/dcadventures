@@ -413,6 +413,16 @@ function dc_delete() {
 dc_delete();
 
 function titles_delete() {
+
+	const dcs = document.getElementsByClassName('dc-table-dc');
+	const keys = document.getElementsByClassName('dc-table-key');
+	const dess = document.getElementsByClassName('dc-table-des');
+	const meas = document.getElementsByClassName('dc-table-mea');
+	const dams = document.getElementsByClassName('dc-table-dam');
+	const defs = document.getElementsByClassName('dc-table-def');
+	const acts = document.getElementsByClassName('dc-table-act');
+	const cons = document.getElementsByClassName('dc-table-con');
+	
 	for (let int = 0; i < keys.length; i++) {
 		if (keys[int].innerHTML != ''){
 			key_title.style.maxWidth = key_title.scrollWidth + "px";
