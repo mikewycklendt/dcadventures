@@ -564,7 +564,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if ((con_check.checked == true && (con1_value == '' && con2_value == '')) { 
+		if (con_check.checked == true && (con1_value == '' && con2_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You choose both conditions or uncheck the condition box';
