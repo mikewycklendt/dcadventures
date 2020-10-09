@@ -350,6 +350,7 @@ function dc_submit() {
 		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		dc_delete();
+		titles_delete();
 	}
 }
 
@@ -404,13 +405,12 @@ function dc_delete() {
 			deletesDiv[i].style.maxHeight = "0px";
 			deletesDiv[i].style.padding = "0px";
 			deletesDiv[i].style.marginBottom = "0px";
-
-			titles_delete();
 		}
 	}
 }
 
 dc_delete();
+titles_delete();
 
 function titles_delete() {
 
