@@ -257,28 +257,63 @@ function dc_submit() {
 
 		const key = document.createElement('div');
 		key.className = 'dc-table-key';
-		key.innerHTML = key_value;
+
+		if (key_value != '') {	
+			key.innerHTML = key_value;
+			key_col = "auto";
+		} else {
+			key.innerHTML = '';
+		}
 
 		const mea = document.createElement('div');
 		mea.className = 'dc-table-mea';
-		mea.innerHTML = '';
+		
+		if (mea_type_value == 'math') {
+			mea.innerHTML = mea_math_val_value + mea_math_value + mea_math_rnk_value;
+			mea_col = "auto";
+		} else if (mea_type_value == 'value') {
+			mea.innerHTML = mea_val_value + ' ' + mea_unt_value;
+			mea_col = "auto";
+		} else {
+			mea.innerHTML = '';
+		}
 
 		const dam = document.createElement('div');
 		dam.className = 'dc-table-dam';
-		dam.innerHTML = dam_value;
+		
+		if (dam_value != '') {
+			dam.innerHTML = dam_value;
+			dam_col = "auto";
+		} else {
+			dam.innerHTML = '';
+		}
 
 		const def = document.createElement('div');
 		def.className = 'dc-table-def';
-		def.innerHTML = def_value;
+		
+		if (def_value != '') {
+			def.innerHTML = def_value;
+			def_col = "auto";
+		} else {
+			def.innerHTML = '';
+		}
 
 		const act = document.createElement('div');
 		act.className = 'dc-table-act';
-		act.innerHTML = act_value;
+		
+		if (act_value != '') {
+			act.innerHTML = act_value;
+			act_col = "auto";
+		} else {
+			act.innerHTML = '';
+		}
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		if (con_check.checked == true) {
+		
+		if (con1_value != '' && con2_value != '') {
 			con.innerHTML = con1_value + ' to ' + con2_value;
+			con_col = "auto";
 		} else {
 			con.innerHTML = '';
 		}
