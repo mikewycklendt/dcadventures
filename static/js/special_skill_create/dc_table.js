@@ -183,11 +183,13 @@ function dc_measure_type() {
 		dc_measure_value.style.padding = "1%";
 		dc_measure_value.style.maxHeight = dc_measure_value.scrollHeight + "px";
 		dc_measure_value.style.padding = "1%";
+		dc_measure_math.style.display = "none";
 	} else if (mea_type_value == 'math') {
 		dc_measure_math.style.display = "grid";
 		dc_measure_math.style.padding = "1%";
 		dc_measure_math.style.maxHeight = dc_measure_math.scrollHeight + "px";
 		dc_measure_math.style.padding = "1%";
+		dc_measure_value.style.display = "none";
 	} else {
 		dc_measure_math.style.display = "none";
 		dc_measure_value.style.display = "none";
