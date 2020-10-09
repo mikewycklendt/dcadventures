@@ -335,7 +335,7 @@ function dc_submit() {
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		if (con_check.checked == true) {
-			act_title.style.maxWidth = act_title.scrollWidth + "px";
+			con_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
