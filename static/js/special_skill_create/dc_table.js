@@ -335,7 +335,7 @@ function dc_submit() {
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		if (con_check.checked == true) {
-			_title.style.maxWidth = act_title.scrollWidth + "px";
+			con_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
@@ -430,7 +430,7 @@ function titles_delete() {
 		}
 	}
 
-	for (let i = 0; i < meas.length; i++) {
+	for (let int = 0; i < meas.length; i++) {
 		if (meas[int].innerHTML != ''){
 			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
 			break;
@@ -439,7 +439,7 @@ function titles_delete() {
 		}
 	}
 	
-	for (let i = 0; i < dams.length; i++) {
+	for (let int = 0; i < dams.length; i++) {
 		if (dams[int].innerHTML != ''){
 			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
 			break;
@@ -448,7 +448,7 @@ function titles_delete() {
 		}
 	}
 
-	for (let i = 0; i < defs.length; i++) {
+	for (let int = 0; i < defs.length; i++) {
 		if (defs[int].innerHTML != ''){
 			def_title.style.maxWidth = def_title.scrollWidth + "px";
 			break;
@@ -457,7 +457,7 @@ function titles_delete() {
 		}
 	}
 		
-	for (let i = 0; i < acts.length; i++) {
+	for (let int = 0; i < acts.length; i++) {
 		if (acts[int].innerHTML != ''){
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 			break;
@@ -466,7 +466,7 @@ function titles_delete() {
 		}
 	}
 	
-	for (let i = 0; i < cons.length; i++) {
+	for (let int = 0; i < cons.length; i++) {
 		if (cons[int].innerHTML != ''){
 			con_title.style.maxWidth = con_title.scrollWidth + "px";
 		} else {
