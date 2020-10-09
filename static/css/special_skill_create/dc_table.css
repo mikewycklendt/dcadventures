@@ -237,7 +237,7 @@
 	margin: 1%;
 	height: auto;
 	width: auto;
-	grid-template-columns: 7% auto auto auto auto auto auto auto 5%;
+	grid-template-columns: 5% auto auto auto auto auto auto auto auto;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	border-radius: 5px;

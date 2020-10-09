@@ -295,6 +295,7 @@ function dc_submit() {
 		table.style.padding = "1%";
 		table.style.maxHeight = table.scrollHeight + "px";
 		table.style.padding = "1%";
+		table.style.gridTemplateColumns = "auto auto auto auto auto auto auto auto auto auto";
 
 		table.appendChild(dc);
 		table.appendChild(key);
