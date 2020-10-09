@@ -165,6 +165,17 @@ function dc_measure_type() {
 
 let dc_enter = 0;
 
+let dc_col = "auto";
+let key_col = "1%";
+let des_col = "auto";
+let mea_col = "1%";
+let dam_col = "1%";
+let def_col = "1%";
+let act_col = "1%";
+let con_col = "1%";
+let del_col = "auto";
+let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
+
 function dc_submit() {
 
 	const type_field = document.getElementById('dc_type');
@@ -295,7 +306,7 @@ function dc_submit() {
 		table.style.padding = "1%";
 		table.style.maxHeight = table.scrollHeight + "px";
 		table.style.padding = "1%";
-		table.style.gridTemplateColumns = "auto auto auto auto auto auto auto auto auto auto";
+		table.style.gridTemplateColumns = dc_grid;
 
 		table.appendChild(dc);
 		table.appendChild(key);
@@ -415,55 +426,73 @@ function dc_delete() {
 			for (let int = 0; int < keys.length; int++) {
 				if (keys[int].innerHTML != ''){
 					key_title.style.maxWidth = key_title.scrollWidth + "px";
+					key_col = "auto";
 					break;
 				} else {
 					key_title.style.maxWidth = "0px";
+					key_col = "1%";
 				}
 			}
 
 			for (let int = 0; int < meas.length; int++) {
 				if (meas[int].innerHTML != ''){
 					mea_title.style.maxWidth = mea_title.scrollWidth + "px";
+					mea_col = "auto";
 					break;
 				} else {
 					mea_title.style.maxWidth = "0px";
+					mea_col = "1%";
 				}
 			}
 	
 			for (let int = 0; int < dams.length; int++) {
 				if (dams[int].innerHTML != ''){
 					dam_title.style.maxWidth = dam_title.scrollWidth + "px";
+					dam_col = "auto";
 					break;
 				} else {
 					dam_title.style.maxWidth = "0px";
+					dam_col = "1%";
 				}
 			}
 
 			for (let int = 0; int < defs.length; int++) {
 				if (defs[int].innerHTML != ''){
 					def_title.style.maxWidth = def_title.scrollWidth + "px";
+					def_col = "auto";
 					break;
 				} else {
 					def_title.style.maxWidth = "0px";
+					def_col = "1%";
 				}
 			}
 		
 			for (let int = 0; int < acts.length; int++) {
 				if (acts[int].innerHTML != ''){
 					act_title.style.maxWidth = act_title.scrollWidth + "px";
+					act_col = "auto";
 					break;
 				} else {
 					act_title.style.maxWidth = "0px";
+					act_col = "1%";
 				}
 			}
 	
 			for (let int = 0; int < cons.length; int++) {
 				if (cons[int].innerHTML != ''){
 					con_title.style.maxWidth = con_title.scrollWidth + "px";
+					con_col = "auto";
+					break;
 				} else {
 					con_title.style.maxWidth = "0px";
+					con_col = "1%";
 				}
-			}	
+			}
+
+			const table = document.getElementById('dc-table-container');
+
+			table.style.gridTemplateColumns = dc_grid;
+
 		}
 	}
 }
