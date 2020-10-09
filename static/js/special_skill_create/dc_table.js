@@ -326,6 +326,8 @@ function dc_submit() {
 		deleteBtn.setAttribute('data-id', dc_enter);
 		dcDelete.appendChild(deleteBtn);
 
+		let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
+		
 		dc_enter = dc_enter + 1;
 			
 		const key_title = document.getElementById('dc-table-title-key');
