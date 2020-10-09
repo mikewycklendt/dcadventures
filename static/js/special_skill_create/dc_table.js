@@ -51,6 +51,12 @@ function dc_mea_click() {
 	const mea_grid = document.getElementById('dc-measure-field');
 	const mea_check = document.getElementById('dc_mea_check');
 
+
+	const mea_unt_field = document.getElementById('dc_mea_unit');
+	const mea_math_val_field = document.getElementById('dc_mea_math_val');
+	const mea_math_field = document.getElementById('dc_mea_math');
+	const mea_math_rnk_field = document.getElementById('dc_mea_math_rank');
+
 	if (mea_check.checked == true) {
 		mea_grid.style.display = "grid";
 		mea_grid.style.padding = "1%";
@@ -59,12 +65,21 @@ function dc_mea_click() {
 	}  else {
 		mea_grid.style.maxHeight = "0px";
 		mea_grid.style.padding = "0px";
+
+		document.getElementById('dc_mea_val').value = '';
+		mea_unt_field.options[mea_unt_field.selectedIndex].value = '';
+		mea_math_val_field.options[mea_math_val_field.selectedIndex].value = '';
+		mea_math_field = document.getElementById('dc_mea_math') = '';
+		mea_math_field.options[mea_math_field.selectedIndex].value = '';
+		mea_math_rnk_field.options[mea_math_rnk_field.selectedIndex].value = '';
 	}
 }
 
 function dc_dam_click() {
 	const dam_grid = document.getElementById('dc-damage-field');
 	const dam_check = document.getElementById('dc_dam_check');
+
+	const dam_field = document.getElementById('dc_dam');
 
 	if (dam_check.checked == true) {
 		dam_grid.style.display = "grid";
@@ -74,6 +89,8 @@ function dc_dam_click() {
 	}  else {
 		dam_grid.style.maxHeight = "0px";
 		dam_grid.style.padding = "0px";
+
+		dam_field.options[dam_field.selectedIndex].value = '';
 	}
 
 }
@@ -81,7 +98,7 @@ function dc_dam_click() {
 function dc_key_click() {
 	const key_grid = document.getElementById('dc-keyword-field');
 	const key_check = document.getElementById('dc_key_check');
-
+	
 	if (key_check.checked == true) {
 		key_grid.style.display = "grid";
 		key_grid.style.padding = "1%";
@@ -90,13 +107,18 @@ function dc_key_click() {
 	}  else {
 		key_grid.style.maxHeight = "0px";
 		key_grid.style.padding = "0px";
+	
+		document.getElementById('dc_key').value = '';
 	}
 }
 
 function dc_con_click() {
 	const con_grid = document.getElementById('dc-condition-field');
 	const con_check = document.getElementById('dc_con_check');
-
+	
+	const con1_field = document.getElementById('dc_con1');
+	const con2_field = document.getElementById('dc_con2');
+	
 	if (con_check.checked == true) {
 		con_grid.style.display = "grid";
 		con_grid.style.padding = "1%";
@@ -105,12 +127,17 @@ function dc_con_click() {
 	}  else {
 		con_grid.style.maxHeight = "0px";
 		con_grid.style.padding = "0px";
+	
+		con1_field.options[con1_field.selectedIndex].value = '';
+		con2_field.options[con2_field.selectedIndex].value= '';
 	}
 }
 
 function dc_act_click() {
 	const act_grid = document.getElementById('dc-action-field');
 	const act_check = document.getElementById('dc_act_check');
+		
+	const act_field = document.getElementById('dc_act');
 
 	if (act_check.checked == true) {
 		act_grid.style.display = "grid";
@@ -120,12 +147,16 @@ function dc_act_click() {
 	}  else {
 		act_grid.style.maxHeight = "0px";
 		act_grid.style.padding = "0px";
+
+		act_field.options[act_field.selectedIndex].value = '';
 	}
 }
 
 function dc_def_click() {
 	const def_grid = document.getElementById('dc-defense-field');
 	const def_check = document.getElementById('dc_def_check');
+	
+	const def_field = document.getElementById('dc_def');
 
 	if (def_check.checked == true) {
 		def_grid.style.display = "grid";
@@ -135,6 +166,8 @@ function dc_def_click() {
 	}  else {
 		def_grid.style.maxHeight = "0px";
 		def_grid.style.padding = "0px";
+
+		def_field.options[def_field.selectedIndex].value = '';
 	}
 }
 
@@ -146,14 +179,12 @@ function dc_measure_type() {
 	const dc_measure_math = document.getElementById('dc-measure-math');
 
 	if (mea_type_value == 'value') {
-		dc_measure_value.style.display = "grid"
-		dc_measure_math.style.display = "none";
+		dc_measure_value.style.display = "grid";
 		dc_measure_value.style.padding = "1%";
 		dc_measure_value.style.maxHeight = dc_measure_value.scrollHeight + "px";
 		dc_measure_value.style.padding = "1%";
 	} else if (mea_type_value == 'math') {
-		dc_measure_math.style.display = "grid"
-		dc_measure_value.style.display = "none";
+		dc_measure_math.style.display = "grid";
 		dc_measure_math.style.padding = "1%";
 		dc_measure_math.style.maxHeight = dc_measure_math.scrollHeight + "px";
 		dc_measure_math.style.padding = "1%";
