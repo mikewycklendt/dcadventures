@@ -528,6 +528,7 @@ function dc_delete() {
 
 			const table = document.getElementById('dc-table-container');
 
+			let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
 			table.style.gridTemplateColumns = dc_grid;
 
 		}
