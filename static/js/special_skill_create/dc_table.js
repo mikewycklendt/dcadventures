@@ -335,7 +335,7 @@ function dc_submit() {
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		if (con_check.checked == true) {
-			con_title.style.maxWidth = act_title.scrollWidth + "px";
+			_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
@@ -405,62 +405,64 @@ function dc_delete() {
 			deletesDiv[i].style.padding = "0px";
 			deletesDiv[i].style.marginBottom = "0px";
 
-			for (let i = 0; i < keys.length; i++) {
-				if (keys[i].innerHTML != ''){
-					key_title.style.maxWidth = key_title.scrollWidth + "px";
-					break;
-				} else {
-					key_title.style.maxWidth = "0px";
-				}
-			}
-		
-			for (let i = 0; i < meas.length; i++) {
-				if (meas[i].innerHTML != ''){
-					mea_title.style.maxWidth = mea_title.scrollWidth + "px";
-					break;
-				} else {
-					mea_title.style.maxWidth = "0px";
-				}
-			}
-			
-			for (let i = 0; i < dams.length; i++) {
-				if (dams[i].innerHTML != ''){
-					dam_title.style.maxWidth = dam_title.scrollWidth + "px";
-					break;
-				} else {
-					dam_title.style.maxWidth = "0px";
-				}
-			}
-		
-			for (let i = 0; i < defs.length; i++) {
-				if (defs[i].innerHTML != ''){
-					def_title.style.maxWidth = def_title.scrollWidth + "px";
-					break;
-				} else {
-					def_title.style.maxWidth = "0px";
-				}
-			}
-				
-			for (let i = 0; i < acts.length; i++) {
-				if (acts[i].innerHTML != ''){
-					act_title.style.maxWidth = act_title.scrollWidth + "px";
-					break;
-				} else {
-					act_title.style.maxWidth = "0px";
-				}
-			}
-			
-			for (let i = 0; i < cons.length; i++) {
-				if (cons[i].innerHTML != ''){
-					con_title.style.maxWidth = con_title.scrollWidth + "px";
-				} else {
-					con_title.style.maxWidth = "0px";
-				}
-			}	
+			titles_delete();
 		}
 	}
-
-	
 }
 
 dc_delete();
+
+function titles_delete() {
+	for (let int = 0; i < keys.length; i++) {
+		if (keys[int].innerHTML != ''){
+			key_title.style.maxWidth = key_title.scrollWidth + "px";
+			break;
+		} else {
+			key_title.style.maxWidth = "0px";
+		}
+	}
+
+	for (let i = 0; i < meas.length; i++) {
+		if (meas[int].innerHTML != ''){
+			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
+			break;
+		} else {
+			mea_title.style.maxWidth = "0px";
+		}
+	}
+	
+	for (let i = 0; i < dams.length; i++) {
+		if (dams[int].innerHTML != ''){
+			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
+			break;
+		} else {
+			dam_title.style.maxWidth = "0px";
+		}
+	}
+
+	for (let i = 0; i < defs.length; i++) {
+		if (defs[int].innerHTML != ''){
+			def_title.style.maxWidth = def_title.scrollWidth + "px";
+			break;
+		} else {
+			def_title.style.maxWidth = "0px";
+		}
+	}
+		
+	for (let i = 0; i < acts.length; i++) {
+		if (acts[int].innerHTML != ''){
+			act_title.style.maxWidth = act_title.scrollWidth + "px";
+			break;
+		} else {
+			act_title.style.maxWidth = "0px";
+		}
+	}
+	
+	for (let i = 0; i < cons.length; i++) {
+		if (cons[int].innerHTML != ''){
+			con_title.style.maxWidth = con_title.scrollWidth + "px";
+		} else {
+			con_title.style.maxWidth = "0px";
+		}
+	}	
+}
