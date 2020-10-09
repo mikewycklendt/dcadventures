@@ -432,6 +432,148 @@ function dc_submit() {
 		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
 		dc_delete();
+		
+		errors_delete = document.getElementsByClassName('dc-err-line');
+
+		if (typeof errors_delete[0] === "undefined") {
+			console.log('no errors defined')
+		} else {
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.maxHeight = "0px";
+				errors_delete[i].style.padding = "0px";
+				errors_delete[i].style.marginBottom = "0px";
+			}
+
+			errors = document.getElementById('dc-err')
+
+			errors.style.display = "none";
+			errors.style.padding = "0px";
+			errors.style.maxHeight = "0px";
+		}
+
+	} else {
+		errors = document.getElementById('dc-err')
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+
+		errors_delete = document.getElementsByClassName('dc-err-line');
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.display = "none";
+		}
+
+		let errors_height = errors.scrollHeight + 20;
+
+		if (des_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter a description';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (type_value == 'value' && class_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter a dc value';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (type_value == 'math' && (math_val_value == '' || math_value == '' || math_rank_value == '')) { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter all dc math fields';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (mea_type_value == 'math' && (mea_math_val_value == '' || mea_math_value == '' || mea_math_rnk_value == '')) { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter all dc math fields or uncheck the measurement box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (mea_type_value == 'value' && (mea_val_value == '' || mea_unt_value == '')) { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter all dc math fields';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (key_check.checked == true && key_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter a keyword or uncheck the keyword box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (dam_check.checked == true && dam_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You enter a damage value or uncheck the damage box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (def_check.checked == true && def_value != '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You choose a defense or uncheck the defense box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if (act_check.checked == true && act_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You choose an action type or uncheck the action box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+
+		if ((con_check.checked == true && (con1_value == '' && con2_value == '')) { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You choose both conditions or uncheck the condition box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
 	}
 }
 
