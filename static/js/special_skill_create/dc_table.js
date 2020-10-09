@@ -266,7 +266,7 @@ function dc_submit() {
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		if (con_checked.checked == true) {
+		if (con_check.checked == true) {
 			con.innerHTML = con1_value + ' to ' + con2_value;
 		} else {
 			con.innerHTML = '';
@@ -334,7 +334,9 @@ function dc_submit() {
 		if (act_check.checked == true) {
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 		}
-
+		if (con_check.checked == true) {
+			act_title.style.maxWidth = act_title.scrollWidth + "px";
+		}
 		
 		dc.style.maxHeight = dc.scrollHeight + "px";
 		key.style.maxHeight = key.scrollHeight + "px";
