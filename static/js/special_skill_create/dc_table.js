@@ -574,6 +574,9 @@ function dc_submit() {
 			error.style.maxHeight = error.scrollHeight + "px";
 			errors_height = errors_height + error.scrollHeight; 
 		}
+
+		errors.style.maxHeight = errors_height + "px";
+		errors.style.padding = "1%";
 	}
 }
 
