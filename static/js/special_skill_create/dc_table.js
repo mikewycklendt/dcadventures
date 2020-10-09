@@ -266,7 +266,7 @@ function dc_submit() {
 
 		const con = document.createElement('div');
 		con.className = 'dc-table-con';
-		con.innerHTML = con1_value + ' ' + con2_value;
+		con.innerHTML = con1_value + ' to ' + con2_value;
 	
 		const dcDelete = document.createElement('div');
 		dcDelete.className = 'dc-table-delete';
@@ -445,7 +445,7 @@ function dc_delete() {
 			}
 			
 			for (let i = 0; i < cons.length; i++) {
-				if (cons[i].innerHTML != ''){
+				if (cons[i].innerHTML != ' to '){
 					con_title.style.maxWidth = con_title.scrollWidth + "px";
 				} else {
 					con_title.style.maxWidth = "0px";
