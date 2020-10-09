@@ -153,7 +153,7 @@
 					<select id="dc_mea_unit" name="dc_mea_unit" style="height: 3vh; font-size: 70%; padding: 0px;">
 						<option value="">Units</option>
 						{% for unit in units %}
-							<option value="{{unit}}">{{unit}}</option>
+							<option value={{unit.id}}>{{unit.name}}</option>
 			`			{% endfor %}
 					</select>
 				</div>
