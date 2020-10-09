@@ -165,7 +165,7 @@ function dc_measure_type() {
 
 let dc_enter = 0;
 
-let dc_col = "auto";
+let dc_col = "5%";
 let key_col = "1%";
 let des_col = "auto";
 let mea_col = "1%";
