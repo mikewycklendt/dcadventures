@@ -427,7 +427,7 @@ function titles_delete() {
 	const acts = document.getElementsByClassName('dc-table-act');
 	const cons = document.getElementsByClassName('dc-table-con');
 
-	for (let int = 0; i < keys.length; int++) {
+	for (let int = 0; int < keys.length; int++) {
 		if (keys[int].innerHTML != ''){
 			key_title.style.maxWidth = key_title.scrollWidth + "px";
 			break;
@@ -436,7 +436,7 @@ function titles_delete() {
 		}
 	}
 
-	for (let int = 0; i < meas.length; int++) {
+	for (let int = 0; int < meas.length; int++) {
 		if (meas[int].innerHTML != ''){
 			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
 			break;
@@ -445,7 +445,7 @@ function titles_delete() {
 		}
 	}
 	
-	for (let int = 0; i < dams.length; int++) {
+	for (let int = 0; int < dams.length; int++) {
 		if (dams[int].innerHTML != ''){
 			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
 			break;
@@ -454,7 +454,7 @@ function titles_delete() {
 		}
 	}
 
-	for (let int = 0; i < defs.length; int++) {
+	for (let int = 0; int < defs.length; int++) {
 		if (defs[int].innerHTML != ''){
 			def_title.style.maxWidth = def_title.scrollWidth + "px";
 			break;
@@ -463,7 +463,7 @@ function titles_delete() {
 		}
 	}
 		
-	for (let int = 0; i < acts.length; int++) {
+	for (let int = 0; int < acts.length; int++) {
 		if (acts[int].innerHTML != ''){
 			act_title.style.maxWidth = act_title.scrollWidth + "px";
 			break;
@@ -472,7 +472,7 @@ function titles_delete() {
 		}
 	}
 	
-	for (let int = 0; i < cons.length; int++) {
+	for (let int = 0; int < cons.length; int++) {
 		if (cons[int].innerHTML != ''){
 			con_title.style.maxWidth = con_title.scrollWidth + "px";
 		} else {
