@@ -6,6 +6,8 @@ function levels_check() {
 	if (levels_check.checked == true) {
 		levels_base_form.style.opacity = "100%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		levels_base_form.style.opacity = "0%";
 		title.style.color = "#245681";

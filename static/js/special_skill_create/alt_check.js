@@ -9,6 +9,8 @@ function alt_check_entry() {
 		alt_entry.style.maxHeight = alt_entry.scrollHeight + "px";
 		alt_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		alt_entry.style.maxHeight = "0px";
 		alt_entry.style.padding = "0px";

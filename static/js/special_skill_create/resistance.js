@@ -6,6 +6,8 @@ function resist_check() {
 	if (resist_check.checked == true) {
 		resist_target.style.opacity = "100%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		resist_target.style.opacity = "0%";
 		title.style.color = "#245681";

@@ -9,6 +9,8 @@ function movement_check() {
 		move_entry.style.maxHeight = move_entry.scrollHeight + "px";
 		move_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		move_entry.style.maxHeight = "0px";
 		move_entry.style.padding = "0px";

@@ -6,6 +6,8 @@ function pre_check_check() {
 	if (pre_check_check.checked == true) {
 		pre_check_header_type.style.opacity = "100%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		pre_check_header_type.style.opacity = "0%";
 		title.style.color = "#245681";

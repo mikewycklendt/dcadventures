@@ -6,6 +6,8 @@ function char_check() {
 	if (char_check.checked == true) {
 		char_base_form.style.opacity = "100%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "167%";
+		setTimeout(function(){title.style.fontSize = "160%"}, 75);
 	} else {
 		char_base_form.style.opacity = "0%";
 		title.style.color = "#245681";

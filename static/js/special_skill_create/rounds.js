@@ -9,6 +9,8 @@ function rounds_check() {
 		rounds_entry.style.maxHeight = rounds_entry.scrollHeight + "px";
 		rounds_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		rounds_entry.style.maxHeight = "0px";
 		rounds_entry.style.padding = "0px";

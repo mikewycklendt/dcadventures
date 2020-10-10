@@ -9,6 +9,8 @@ function resist_effect_check() {
 		resist_effect_entry.style.maxHeight = resist_effect_entry.scrollHeight + "px";
 		resist_effect_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		resist_effect_entry.style.maxHeight = "0px";
 		resist_effect_entry.style.padding = "0px";

@@ -9,6 +9,8 @@ function power_check() {
 		power_entry.style.maxHeight = power_entry.scrollHeight + "px";
 		power_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		power_entry.style.maxHeight = "0px";
 		power_entry.style.padding = "0px";
