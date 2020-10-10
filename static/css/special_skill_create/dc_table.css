@@ -250,7 +250,7 @@
 	width: 100%;
 	margin: 2%;
 	margin-top: 0px;
-	grid-template-columns: 40 auto 20%;
+	grid-template-columns: 80% 20%;
 	grid-template-rows: auto;
 }
 
