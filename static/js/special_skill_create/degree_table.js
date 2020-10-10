@@ -6,8 +6,8 @@ function degree_check() {
 	if (degree_check.checked == true) {
 		degree_base_form.style.opacity = "100%";
 		title.style.color = "#af0101";
-		title.style.fontSize = "107%";
-		setTimeout(function(){title.style.fontSize = "100%"}, 75);
+		title.style.fontSize = "167%";
+		setTimeout(function(){title.style.fontSize = "160%"}, 75);
 	} else {
 		degree_base_form.style.opacity = "0%";
 		title.style.color = "#245681";
