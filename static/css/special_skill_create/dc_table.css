@@ -104,7 +104,7 @@
 	width: 90%;
 	margin-bottom: 2px;
 	font-family: 'Monda', Verdana;
-	font-size: 75%;
+	font-size: 85%;
 	color: #245681;
 	padding: 0px;
 }
@@ -140,6 +140,11 @@
 	transition: all .4s ease-out;
 }
 
+#dc-measure-value input[type="text"]{
+	height: 1.5vw;
+	font-size: 95%;
+}
+
 #dc-measure-math{
 	display: grid;
 	width: 60%;
@@ -164,6 +169,13 @@
 	transition: all .4s ease-out;
 }
 
+#dc-damage-text {
+	width: 90%;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+	color: #245681;
+}
+
 #dc-keyword-field {
 	display: grid;
 	width: 100%;
@@ -176,6 +188,11 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#dc-keyword-field input[type="text"] {
+	height: 1.5vw;
+	font-size: 90%;
 }
 
 #dc-defense-field {
@@ -204,6 +221,13 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#dc-condition-text {
+	width: 90%;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+	color: #245681;
 }
 
 #dc-action-field {

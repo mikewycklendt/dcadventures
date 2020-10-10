@@ -277,8 +277,10 @@ function dc_submit() {
 		dc.className = 'dc-table-dc';
 		if (type_value == 'value') {
 			dc.innerHTML = class_value;
+			dc_col = "4%";
 		} else if (type_value == 'math') {
 			dc.innerHTML = math_val_value + ' ' + math_value + ' ' + math_rank_value;
+			dc_col = "15%";
 		}
 		
 		const des = document.createElement('div');

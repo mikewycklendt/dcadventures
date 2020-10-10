@@ -20,7 +20,7 @@
 
 	
 	<div id="dc-value">
-		<select id="dc_type" name="dc_type" style="height: 5vh;" onchange="dc_dc_type()">
+		<select class="header-select" id="dc_type" name="dc_type" onchange="dc_dc_type()">
 			<option value="">Type</option>
 			{% for type in value_type %}
 				<option value="{{type}}">{{type}}</option>
@@ -29,7 +29,7 @@
 	</div>
 	
 	<div>
-		<input type="text" id="dc_des" name="dc_description" style="height: 3vh;">
+		<input type="text" id="dc_des" name="dc_description" >
 	</div>
 </div>
 
@@ -40,7 +40,7 @@
 	<div>
 		<div id="dc-class" style="display: none;">
 			<div>
-				<select id="dc_class" name="dc_class" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<select class="select-sml" id="dc_class" name="dc_class" >
 					<option value="">DC</option>
 					{% for class in dcclasses %}
 						<option value={{class}}>{{class}}</option>
@@ -53,7 +53,7 @@
 	
 		<div id="dc-math" style="display: none;">
 			<div id="dcmathvalue">
-				<select id="dc_math_value" name="dc_math_value" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<select class="select-sml" id="dc_math_value" name="dc_math_value" >
 					<option value="">Value</option>
 					{% for class in dcclasses %}
 						<option value={{class}}>{{class}}</option>
@@ -62,7 +62,7 @@
 			</div>
 
 			<div id="dcmathtype">
-				<select id="dc_math" name="dc_math" style="height: 3vh; font-size: 70%; padding: 0px;">
+				<select class="select-sml" id="dc_math" name="dc_math" >
 					<option value="">Math</option>
 					{% for math in maths %}
 						<option value={{math.id}}>{{math.name}}</option>
@@ -71,7 +71,7 @@
 			</div>
 
 			<div id="dcranktype">
-				<select id="dc_math_rank" name="dc_math_rank" style="height: 3vh; font-size: 70%; padding: 0px; ">
+				<select class="select-sml" id="dc_math_rank" name="dc_math_rank" >
 					<option value="">Rank</option>
 					{% for rank in ranks %}
 						<option value={{rank.id}}>{{rank.name}}</option>
@@ -135,7 +135,7 @@
 		</div>
 
 		<div>
-			<select id="dc_mea_type" name="dc_mea_type" style="height: 3vh; font-size: 70%; padding: 0px;" onchange="dc_measure_type()">
+			<select class="select-sml" id="dc_mea_type" name="dc_mea_type" onchange="dc_measure_type()">
 				<option value="">Type</option>
 				{% for type in value_type %}
 					<option value="{{type}}">{{type}}</option>
@@ -146,11 +146,11 @@
 		<div id="dc-measure-fields" style="margin-top: 0px;">
 			<div id="dc-measure-value" style="margin-top: 0px;" style="display: none;">
 				<div>
-					<input type="text" id="dc_mea_val" name="dc_mea_val" placeholder="Value" style="width: 90%; height: 3vh; margin: 0px; padding: 0px; padding-left: 1%; font-size: 90%;">
+					<input type="text" id="dc_mea_val" name="dc_mea_val" placeholder="Value">
 				</div>
 
 				<div>
-					<select id="dc_mea_unit" name="dc_mea_unit" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select class="select-sml" id="dc_mea_unit" name="dc_mea_unit" >
 						<option value="">Units</option>
 						{% for unit in units %}
 							<option value={{unit.id}}>{{unit.name}}</option>
@@ -162,7 +162,7 @@
 
 			<div id="dc-measure-math" style="display: none;">
 				<div>
-					<select id="dc_mea_math_val" name="dc_mea_math_val" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select class="select-sml" id="dc_mea_math_val" name="dc_mea_math_val" >
 						<option value="">Value</option>
 						{% for class in dcclasses %}
 							<option value={{class}}>{{class}}</option>
@@ -172,7 +172,7 @@
 
 
 				<div>
-					<select id="dc_mea_math" name="dc_mea_math_type" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select class="select-sml" id="dc_mea_math" name="dc_mea_math_type" >
 						<option value="">Math</option>
 						{% for math in maths %}
 							<option value={{math.id}}>{{math.name}}</option>
@@ -181,7 +181,7 @@
 				</div>
 
 				<div>
-					<select id="dc_mea_math_rank" name="dc_mea_math_rank" style="height: 3vh; font-size: 70%; padding: 0px;">
+					<select class="select-sml" id="dc_mea_math_rank" name="dc_mea_math_rank" >
 						<option value="">Rank</option>
 						{% for rank in ranks %}
 							<option value={{rank.id}}>{{rank.name}}</option>
@@ -201,7 +201,7 @@
 	</div>
 	
 	<div>
-		<select id="dc_dam" name="dc_dam" style="height: 3vh; font-size: 70%;">
+		<select class="select-sml" id="dc_dam" name="dc_dam" >
 			<option value="">Damage Adjust</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option> 
@@ -209,7 +209,7 @@
 		</select>
 	</div>
 
-	<div>
+	<div id="dc-damage-text">
 		(- per degree of success + per degree of failure)
 	</div>
 
@@ -223,7 +223,7 @@
 	</div>
 
 	<div>
-		<input type="text" id="dc_key" name="dc_key" style="height: 2vh; padding: 1%; font-size: 100%;" placeholder="Keyword">
+		<input type="text" id="dc_key" name="dc_key" placeholder="Keyword">
 	</div>
 
 	<div>
@@ -239,7 +239,7 @@
 	</div>
 
 	<div>
-		<select id="dc_def" name="dc_def" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select class="select-sml" id="dc_def" name="dc_def">
 			<option value=""></option>
 			{% for defense in defenses %}
 				<option value={{defense.id}}>{{defense.name}}</option>
@@ -255,12 +255,12 @@
 		Change Condition:
 	</div>
 
-	<div>
+	<div id="dc-condition-text">
 		From: 
 	</div>
 
 	<div>
-		<select id="dc_con1" name="dc_con1" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select class="select-sml" id="dc_con1" name="dc_con1" >
 			<option value=""></option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -273,7 +273,7 @@
 	</div>
 
 	<div>
-		<select id="dc_con2" name="dc_con2" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select class="select-sml" id="dc_con2" name="dc_con2" >
 			<option value=""></option>
 			{% for condition in conditions %}
 				<option value="{{condition}}">{{condition}}</option>
@@ -292,7 +292,7 @@
 	</div>
 
 	<div>
-		<select id="dc_act" name="dc_act" style="height: 3vh; font-size: 70%; padding: 0px;">
+		<select class="select-sml" id="dc_act" name="dc_act" >
 			<option value=""></option>
 			{% for action in actions %}
 				<option value={action.id}}>{{action.name}}</option>
