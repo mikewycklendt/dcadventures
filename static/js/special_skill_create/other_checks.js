@@ -2,6 +2,8 @@ function other_check() {
 	const other_check = document.getElementById("other_check");
 	const other_entry = document.getElementById("other-entry");
 	const title = document.getElementById("other-title");
+
+	
 	
 	if (other_check.checked == true) {
 		other_entry.style.display = "grid";
@@ -9,6 +11,8 @@ function other_check() {
 		other_entry.style.maxHeight = other_entry.scrollHeight + "px";
 		other_entry.style.padding = "1%";
 		title.style.color = "#af0101";
+		title.style.fontSize = "240%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 200);
 	} else {
 		other_entry.style.maxHeight = "0px";
 		other_entry.style.padding = "0px";
