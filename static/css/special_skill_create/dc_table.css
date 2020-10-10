@@ -141,8 +141,9 @@
 }
 
 #dc-measure-value input[type="text"]{
-	height: 1.5vw;
-	font-size: 95%;
+	height: 1.1vw;
+	font-size: 90%;
+	width: 90%;
 }
 
 #dc-measure-math{
