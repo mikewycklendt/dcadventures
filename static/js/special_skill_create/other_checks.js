@@ -12,7 +12,7 @@ function other_check() {
 		other_entry.style.padding = "1%";
 		title.style.color = "#af0101";
 		title.style.fontSize = "210%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 200);
+		setTimeout(function(){title.style.fontSize = "200%"}, 100);
 	} else {
 		other_entry.style.maxHeight = "0px";
 		other_entry.style.padding = "0px";
