@@ -6,7 +6,7 @@ function deg_mod_check() {
 	if (deg_mod_check.checked == true) {
 		deg_mod_base_form.style.opacity = "100%";
 		title.style.color = "#af0101";
-		title.style.fontSize = "167%";
+		title.style.fontSize = "164%";
 		setTimeout(function(){title.style.fontSize = "160%"}, 75);
 	} else {
 		deg_mod_base_form.style.opacity = "0%";
