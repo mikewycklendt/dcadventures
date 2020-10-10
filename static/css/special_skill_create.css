@@ -293,7 +293,7 @@ textarea:focus {
 	background-color: #fafafa;
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-	padding: .8vw;
+	padding: .7vw;
 	border-radius: 3px;
 	display: inline-block;
 	position: relative;
@@ -316,7 +316,7 @@ textarea:focus {
 
 .regular-checkbox:checked:after {
 	content: '\2714';
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 	position: absolute;
 	top: 0px;
 	left: 3px;
@@ -328,7 +328,7 @@ textarea:focus {
 	background-color: #fafafa;
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-	padding: .7vw;
+	padding: .5vw;
 	border-radius: 3px;
 	display: inline-block;
 	position: relative;
@@ -360,11 +360,11 @@ textarea:focus {
 
 
 .big-checkbox {
-	padding: 1vw;
+	padding: .8vw;
 }
 
 .big-checkbox:checked:after {
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 	left: 3px;
 
 }
@@ -374,7 +374,7 @@ textarea:focus {
 }
 
 .med-checkbox:checked:after {
-	font-size: 1.2vw;
+	font-size: 1vw;
 	left: 3px;
 
 }
