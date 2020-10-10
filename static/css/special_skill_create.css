@@ -140,7 +140,7 @@ textarea:focus {
 
 .btn {
 	display: table-cell;
-	width: 10;
+	width: 10vw;
 	height:  3.6vw;
 	background-color: #af0101;
 	cursor: crosshair;
