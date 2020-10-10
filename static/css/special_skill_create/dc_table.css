@@ -250,8 +250,41 @@
 	width: 100%;
 	margin: 2%;
 	margin-top: 0px;
-	grid-template-columns: 83% auto 5%;
+	grid-template-columns: 40 auto 20%;
 	grid-template-rows: auto;
+}
+
+.dc-btn {
+	display: table-cell;
+	width: 12vw;
+	vertical-align: middle;
+	height: 2vw;
+	padding: .3vw;
+	text-align: center;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 110%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.dc-btn:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.dc-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
 }
 
 #dc-table-container {
