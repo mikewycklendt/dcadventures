@@ -226,7 +226,7 @@ class SkillBonus(db.Model):
 	subskill_description = db.Column(db.String())
 	move_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	move_math = time_rank = db.Column(db.Integer, db.ForeignKey('math.id'))
-	move_val = time_rank = db.Column(db.Integer)
+	move_val = db.Column(db.Integer)
 	action_change = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action_mod = db.Column(db.Integer)
 
