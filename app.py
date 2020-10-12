@@ -14,6 +14,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from tables import tables
+from skills import skills
 from dotenv import load_dotenv
 
 load_dotenv()
