@@ -431,7 +431,7 @@ class SkillCircMod(db.Model):
 	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	target = db.Column(db.String())
-	type = target = db.Column(db.String())
+	type = db.Column(db.String())
 	mod = db.Column(db.Integer)
 	unit_mod = db.Column(db.Integer)
 	unit_value = db.Column(db.Integer)
