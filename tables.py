@@ -1,6 +1,37 @@
 from flask import Blueprint
+import json
+import dateutil.parser
+import babel
+from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
+from flask_moment import Moment
+from flask_sqlalchemy import SQLAlchemy
+import logging
+from logging import Formatter, FileHandler
+from flask_wtf import Form
+from flask_migrate import Migrate
+from datetime import datetime
 from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from decimal import *
+from measurements import decRound, divide, multiply, measure
+import sys
+from tables import tables
+from dotenv import load_dotenv
 
+load_dotenv()
+
+import os
+
+db_path = os.environ.get("db_path")
+
+#db_drop_and_create_all()
+
+app = Flask(__name__)
+moment = Moment(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = db_path
+app.register_blueprint(tables)
+db = SQLAlchemy()
+setup_db(app)
+migrate = Migrate(app, db)
 
 tables = Blueprint('tables', __name__)
 
