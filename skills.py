@@ -24,7 +24,7 @@ db_path = os.environ.get("db_path")
 
 skills = Blueprint('skills', __name__)
 
-@app.route('/skill/create')
+@skills.route('/skill/create')
 def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'special_skill_create.html'
 	
