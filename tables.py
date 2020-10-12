@@ -14,7 +14,6 @@ from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillTyp
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
-from tables import tables
 from dotenv import load_dotenv
 
 load_dotenv()
