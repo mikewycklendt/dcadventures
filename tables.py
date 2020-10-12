@@ -23,15 +23,6 @@ import os
 
 db_path = os.environ.get("db_path")
 
-#db_drop_and_create_all()
-
-app = Flask(__name__)
-moment = Moment(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = db_path
-app.register_blueprint(tables)
-db = SQLAlchemy()
-setup_db(app)
-migrate = Migrate(app, db)
 
 tables = Blueprint('tables', __name__)
 
