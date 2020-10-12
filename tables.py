@@ -1,35 +1,8 @@
-import json
-import dateutil.parser
-import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
-import logging
-from logging import Formatter, FileHandler
-from flask_wtf import Form
-from flask_migrate import Migrate
-from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank
-from decimal import *
-from measurements import decRound, divide, multiply, measure
-import sys
+from flask import Blueprint
 
-from dotenv import load_dotenv
+tables = Blueprint('tables', __name__)
 
-load_dotenv()
-
-import os
-
-db_path = os.environ.get("db_path")
-
-#db_drop_and_create_all()
-
-app = Flask(__name__)
-moment = Moment(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = db_path
-db = SQLAlchemy()
-
-@app.route('/abilities')
+@tables.route('/abilities')
 def abilities():
 
 	title = 'Abilities'
@@ -38,7 +11,7 @@ def abilities():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/defense')
+@tables.route('/defense')
 def defense():
 
 	title = 'Defense'
@@ -47,7 +20,7 @@ def defense():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/modifiers')
+@tables.route('/modifiers')
 def modifiers():
 
 	title = 'Modifiers'
@@ -58,7 +31,7 @@ def modifiers():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/actions')
+@tables.route('/actions')
 def actions():
 
 	title = 'Actions'
@@ -69,7 +42,7 @@ def actions():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/skills')
+@tables.route('/skills')
 def skills():
 
 	title = 'Skills'
@@ -80,7 +53,7 @@ def skills():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/skill/type')
+@tables.route('/skill/type')
 def skill_type():
 
 	title = 'Skill Type'
@@ -91,7 +64,7 @@ def skill_type():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/checks')
+@tables.route('/checks')
 def checks():
 
 	title = 'Check Types'
@@ -102,7 +75,7 @@ def checks():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/conditions')
+@tables.route('/conditions')
 def conditions():
 
 	title = 'Basic Conditions'
@@ -113,7 +86,7 @@ def conditions():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/phases')
+@tables.route('/phases')
 def phases():
 
 	title = 'Phases'
@@ -124,7 +97,7 @@ def phases():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/senses')
+@tables.route('/senses')
 def senses():
 
 	title = 'Senses'
@@ -135,7 +108,7 @@ def senses():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/measuretype')
+@tables.route('/measuretype')
 def measurement_type():
 
 	title = 'Measurement Type'
@@ -146,7 +119,7 @@ def measurement_type():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/units')
+@tables.route('/units')
 def unit_type():
 
 	title = 'Measurement Units'
@@ -157,7 +130,7 @@ def unit_type():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/ranks')
+@tables.route('/ranks')
 def rank_type():
 
 	title = 'Measurement Units'
@@ -169,7 +142,7 @@ def rank_type():
 	return render_template('ranks.html', table=table, title=title, size=size)
 
 
-@app.route('/math')
+@tables.route('/math')
 def math_type():
 
 	title = 'Measurement Units'
@@ -180,7 +153,7 @@ def math_type():
 
 	return render_template('table.html', table=table, title=title, size=size)
 
-@app.route('/measurements')
+@tables.route('/measurements')
 def measurements():
 
 	title = 'Measurements Table'
@@ -196,3 +169,4 @@ def measurements():
 	table = measure(formatted)
 
 	return render_template('measurements.html', table=table, title=title, size=size)
+
