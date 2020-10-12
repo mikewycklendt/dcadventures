@@ -24,8 +24,6 @@ db_path = os.environ.get("db_path")
 
 skills = Blueprint('skills', __name__)
 db = SQLAlchemy()
-setup_db(app)
-migrate = Migrate(app, db)
 
 stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
 meta_name="DC Adventures Online"
