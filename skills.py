@@ -172,7 +172,7 @@ def post_skill():
 		all_skills.append(skill.name)
 
 	for skill in all_skills:
-		if skill.name == name
+		if skill.name == name:
 			error = True
 			body['success'] = False
 			body['error'] = 'There is already a skill with that name'
