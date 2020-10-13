@@ -12,6 +12,7 @@ skill_create = function() {
 	})
 	.then(response => response.json())
 	.then(jsonResponse => {
+		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			const name_div = document.getElementById('skill-name');
 			const skill_id = document.getElementById('skill_id');
