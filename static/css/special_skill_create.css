@@ -270,14 +270,21 @@ textarea:focus {
 }
 
 #addskillunderline {
+	display: grid;
+	grid-template-columns: 35% 65%;
+	grid-template-rows: auto;
 	border-bottom: 2px solid lightblue;
-	width: 70%;
+	width: 85%;
 	margin: 0px;
 	font-family: Comic, Verdana;
 	text-shadow: 1px, 1px, 1px rgba(36, 86, 129, 0.05);
 	font-size: 280%;
 	color: #245681;
 	padding: 0px;
+}
+
+#skill-name {
+	display: none;
 }
 
 #nameskill {
@@ -377,4 +384,38 @@ textarea:focus {
 	font-size: 1vw;
 	left: 3px;
 
+}
+
+#name-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.name-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.name-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
 }
