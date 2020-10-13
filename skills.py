@@ -159,6 +159,7 @@ def post_skill():
 	error = False
 
 	name = request.get_json()['name']
+	print(name)
 
 	skills = Skill.query.all()
 	bonuses = SkillBonus.query.all()
@@ -192,4 +193,5 @@ def post_skill():
 		db.session.rollback()
 	finally:
 		db.session.close()
+		print(body)
 		return jsonify(body)
