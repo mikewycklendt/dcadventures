@@ -18,6 +18,7 @@ skill_create = function() {
 			const skill_id = document.getElementById('skill_id');
 			name_div.innerHTML = jsonResponse.name;
 			skill_id.value = jsonResponse.id;
+			name_div.style.display = "block"
 		} else {
 			const errors = document.getElementById('name-err');
 
