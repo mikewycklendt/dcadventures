@@ -213,7 +213,7 @@ def post_other_checks():
 		body['success'] = True
 		body['id'] = bonus.id
 		body['bonus_id'] = bonus.bonus_id
-		body['skill'] = skill.skill_id
+		body['skill'] = skill.name
 		body['description'] = bonus.description
 
 	except:
