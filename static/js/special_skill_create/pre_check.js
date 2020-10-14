@@ -279,6 +279,8 @@ function pre_check_opposed_submit() {
 	pre_check_type = document.getElementById("pre_check_type")
 	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	console.log(opposed_circ_value);
 	console.log(opposed_when_value);
 	console.log(opposed_skill_value);
