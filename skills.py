@@ -319,7 +319,7 @@ def post_bonus_rounds():
 	body['degree'] = bonus.degree
 	body['rank'] = rank.name
 	body['mod'] = bonus.mod
-	body['rounds'] = bonus.round
+	body['rounds'] = bonus.rounds
 	
 	db.session.close()
 	print(body)
