@@ -236,9 +236,10 @@ def post_pre_check():
 	when = request.get_json()['when']
 	check = request.get_json()['check']
 	description = request.get_json()['description']
+	opposed_check = request.get_json()['opposed_check']
 
 
-	bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=check, description=description)
+	bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=check, opposed_check=opposed_check, description=description)
 	db.session.add(bonus)
 	db.session.commit()
 	body['success'] = True
@@ -247,6 +248,7 @@ def post_pre_check():
 	body['check_type'] = bonus.check_type
 	body['when'] = bonus.when
 	body['check'] = bonus.check
+	body['oppose_check'] = bonus.opposed_check
 	body['description'] = bonus.description
 
 	db.session.close()
