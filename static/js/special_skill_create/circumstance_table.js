@@ -127,6 +127,8 @@ function circ_submit() {
 	let rank_value = rank_field.options[rank_field.selectedIndex].value;
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value;
 	let mod_type_value =  mod_type_field.options[mod_type_field.selectedIndex].value; 
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if ( (circskill != '') && (circtarget != '') && ((mod_type_value == 'value' && modifier_value != '' && rnd_value != '' && circ_value != '') || 
 		(mod_type_value == 'math' && rnd_value != '' && circ_value != '' && val_value != '' && unit_value != '' &&  mod_value != '') || 

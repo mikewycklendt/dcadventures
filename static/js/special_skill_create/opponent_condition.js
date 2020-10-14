@@ -35,6 +35,8 @@ function opp_cond_submit() {
 	let con_value = con_field.options[con_field.selectedIndex].value; 
 	let rnd_field = document.getElementById('opp_cond_rounds');
 	let rnd_value = rnd_field.options[rnd_field.selectedIndex].value; 
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (des_value != '' && deg_value != '' && con_value != '' && rnd_value != '') {
 

@@ -266,6 +266,8 @@ function dc_submit() {
 	const act_field = document.getElementById('dc_act');
 	let act_value = act_field.options[act_field.selectedIndex].value;
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	if ((des_value != '') && ((type_value == 'value' && class_value != '') || (type_value == 'math' && math_val_value != '' && math_value != '' && math_rank_value != '')) &&  
 			((mea_check.checked == true && mea_type_value == 'math' && mea_math_val_value != '' && mea_math_value != '' && mea_math_rnk_value != '') || 
 			(mea_check.checked == true && mea_type_value == 'value' && mea_val_value != '' && mea_unt_value != '') || (mea_check.checked == false)) && 

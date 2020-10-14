@@ -238,19 +238,61 @@ def post_pre_check():
 	description = request.get_json()['description']
 	opposed_check = request.get_json()['opposed_check']
 
+	try:
+		bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=check, opposed_check=opposed_check, description=description)
+		db.session.add(bonus)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['check_type'] = bonus.check_type
+		body['when'] = bonus.when
+		body['check'] = bonus.check
+		body['oppose_check'] = bonus.opposed_check
+		body['description'] = bonus.description
 
-	bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=check, opposed_check=opposed_check, description=description)
-	db.session.add(bonus)
-	db.session.commit()
-	body['success'] = True
-	body['id'] = bonus.id
-	body['bonus_id'] = bonus.bonus_id
-	body['check_type'] = bonus.check_type
-	body['when'] = bonus.when
-	body['check'] = bonus.check
-	body['oppose_check'] = bonus.opposed_check
-	body['description'] = bonus.description
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
 
-	db.session.close()
-	print(body)
-	return jsonify(body)
+@skills.route('/skill/opposed/create', methods=['POST'])
+def post_opposed():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	priority = request.get_json()['priority'] 
+	opposed = request.get_json()['opposed']
+	mod = request.get_json()['mod']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillOpposed(bonus_id=bonus_id, priority=priority, opposed=opposed, mod=mod, description=description)
+		db.session.add(bonus)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['priority'] = bonus.priority
+		body['opposed'] = bonus.opposed
+		body['mod'] = bonus.mod
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+	

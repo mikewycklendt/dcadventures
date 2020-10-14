@@ -36,6 +36,8 @@ function rounds_submit() {
 	let mod_value =  mod_field.options[mod_field.selectedIndex].value;
 	let rnd_field = document.getElementById('rounds_rounds');
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value; 
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (rank_value != '' && mod_value != '' && rnd_value != '') {
 

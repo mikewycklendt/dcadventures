@@ -52,6 +52,8 @@ function char_submit() {
 
 	let deg_value = deg_field.options[deg_field.selectedIndex].value;
 	let rnk_value = rnk_field.options[rnk_field.selectedIndex].value;
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (deg_value != '' && tar_value != '' && chk_value != '' && rnk_value != '' && des_value != '') {
 		const deg = document.createElement('div');

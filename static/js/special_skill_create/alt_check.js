@@ -37,6 +37,8 @@ function alt_check_submit() {
 	let dc_field = document.getElementById('alt_check_dc');
 	let dc_value = dc_field.options[dc_field.selectedIndex].value; 
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	if (dc_value != '' && des_value != '') {
 
 		const dc = document.createElement('div');

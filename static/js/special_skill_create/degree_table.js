@@ -57,6 +57,8 @@ function degree_submit() {
 
 	type.style.opacity = "0%"
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	if (degrees_type != '' && degrees_target != '' && key_value != '' && desc_value != '' && val_value != '') {
 
 		table_type = document.getElementById('degree-table-type');

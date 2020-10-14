@@ -58,7 +58,9 @@ function levels_submit() {
 	let lvl_value = document.getElementById('level').value;
 	let efct_value = document.getElementById('level_effect').value;
 	let dc_field = document.getElementById('levels_dc_set');
-	let dc_value =  dc_field.options[dc_field.selectedIndex].value; 
+	let dc_value =  dc_field.options[dc_field.selectedIndex].value;
+	
+	const bonus_id = document.getElementById('bonus_id').value;
 
 	console.log
 	

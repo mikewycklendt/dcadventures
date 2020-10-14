@@ -46,6 +46,8 @@ function resistance_submit() {
 	let mod_value = mod_field.options[mod_field.selectedIndex].value; 
 
 	console.log
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (resisttarget != '' && mod_value != '' && des_value != '') {
 

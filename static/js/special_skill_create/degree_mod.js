@@ -198,6 +198,8 @@ function deg_mod_submit() {
 	let key = document.getElementById('deg_mod_keyword').value;
 	let desc = document.getElementById('deg_mod_desc').value;
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	if ((target != '' && deg_value != '' && type == 'event' && key != '' && desc != '') || (target != '' && deg_value != '' && type == 'damage' && damage_type == 'math' && damage_math1 != '' && damage_math2 != '' && damage_val1 !=  '' && damage_val2 != '' && key != '' && desc != '') || (target != '' && deg_value != '' && type == 'damage' && key != '' && desc != '' && damage_deg_val != '' && damage_type == 'value' && damage_val != '') || (target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'value' && measure_value != '' && measure_rank != '') || (target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'math' && measure_math != '' && measure_val1 != '' && measure_val2 != '' && measure_math_rank != '') || (target != '' && deg_value != '' && type == 'condition' && key != '' && desc != '' && condition1 != '' && condition2 != '')) {
 
 

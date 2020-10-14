@@ -50,80 +50,116 @@ function opposed_by_submit() {
 	let opposed_by_by_value = opposed_by_by.options[opposed_by_by.selectedIndex].value;
 
 	console.log(sit_value)
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (opposed_value != '' && mod_value != '' && sit_value != '' && opposed_by_by_value != '') {
 
-		const opp = document.createElement('div');
-		opp.className = 'opposed-by-table-oppose'
-		opp.innerHTML = opposed_value;
-
-		const mod = document.createElement('div');
-		mod.className = 'opposed-by-table-mod'
-		mod.innerHTML = mod_value;
-
-		const sit = document.createElement('div');
-		sit.className = 'opposed-by-table-sit';
-		sit.innerHTML = sit_value;
-
-		const oppDelete = document.createElement('div');
-		oppDelete.className = 'opposed-by-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'opposed-by-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', opposed_enter);
-		oppDelete.appendChild(deleteBtn);
-
-		opposed_enter = opposed_enter + 1;
-	
-		const table = document.getElementById('opposed-by-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(opp);
-		table.appendChild(mod);
-		table.appendChild(sit);
-		table.appendChild(oppDelete);
-
-		rows = [opp.scrollHeight, mod.scrollHeight, sit.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/opposed/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'priority': opposed_by_by_value,
+				'opposed': opposed_value,
+				'mod': mod_value,
+				'description': sit_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
+
+				const opp = document.createElement('div');
+				opp.className = 'opposed-by-table-oppose'
+				opp.innerHTML = jsonResponse.opposed;
+
+				const mod = document.createElement('div');
+				mod.className = 'opposed-by-table-mod'
+				mod.innerHTML = jsonResponse.mod;
+
+				const sit = document.createElement('div');
+				sit.className = 'opposed-by-table-sit';
+				sit.innerHTML = jsonResponse.description;
+
+				const oppDelete = document.createElement('div');
+				oppDelete.className = 'opposed-by-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'opposed-by-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.ID);
+				oppDelete.appendChild(deleteBtn);
+
+				const table = document.getElementById('opposed-by-table');
+
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+
+				table.appendChild(opp);
+				table.appendChild(mod);
+				table.appendChild(sit);
+				table.appendChild(oppDelete);
+
+				rows = [opp.scrollHeight, mod.scrollHeight, sit.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
 
 		
-		opp.style.maxHeight = opp.scrollHeight + "px";
-		mod.style.maxHeight = mod.scrollHeight + "px";
-		sit.style.maxHeight = sit.scrollHeight + "px";
-		oppDelete.style.maxHeight = oppDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				opp.style.maxHeight = opp.scrollHeight + "px";
+				mod.style.maxHeight = mod.scrollHeight + "px";
+				sit.style.maxHeight = sit.scrollHeight + "px";
+				oppDelete.style.maxHeight = oppDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
-		opposed_by_field.style.opacity = '0%';
+				opposed_by_field.style.opacity = '0%';
 
-		opposed_delete()
+				opposed_delete()
 	
-		errors_delete = document.getElementsByClassName('opposed-by-err-line');
+				errors_delete = document.getElementsByClassName('opposed-by-err-line');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('opposed-by-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('pre-check-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'pre-check-err-line';
+				error.innerHTML = jsonResponse.error;
+	
+				errors.appendChild(error);
+	
+				error.style.maxHeight = error.scrollHeight + "px";
+	
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('opposed-by-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 

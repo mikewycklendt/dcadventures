@@ -31,6 +31,8 @@ function resist_submit() {
 	let eff_value = eff_field.options[eff_field.selectedIndex].value; 
 
 	console.log
+
+	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (eff_value != '' && ex_value != '') {
 
