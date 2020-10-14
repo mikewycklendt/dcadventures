@@ -25,7 +25,7 @@ function other_submit() {
 	let skill_field = document.getElementById('other_skill');
 	let skill_value =  skill_field.options[skill_field.selectedIndex].value; 
 
-	const bonus_id = document.getElementById('bonus_id');
+	const bonus_id = document.getElementById('bonus_id').value;
 
 	console.log
 	
