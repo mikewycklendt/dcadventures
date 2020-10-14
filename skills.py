@@ -308,27 +308,21 @@ def post_bonus_rounds():
 
 	rank = db.session.query(Rank).filter_by(id=rank_id).one()
 
-	try:
-		bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
-		db.session.add(bonus)
-		db.session.commit()
-		body['success'] = True
-		body['id'] = bonus.id
-		body['bonus_id'] = bonus.bonus_id
-		body['dc'] = bonus.dc
-		body['degree'] = bonus.degree
-		body['rank'] = rank.name
-		body['mod'] = bonus.mod
-		body['rounds'] = bonus.round
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
+
+	bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
+	db.session.add(bonus)	
+	db.session.commit()
+	body['success'] = True
+	body['id'] = bonus.id
+	body['bonus_id'] = bonus.bonus_id
+	body['dc'] = bonus.dc
+	body['degree'] = bonus.degree
+	body['rank'] = rank.name
+	body['mod'] = bonus.mod
+	body['rounds'] = bonus.round
 	
-	finally:
-		db.session.close()
-		print(body)
-		return jsonify(body)
+	db.session.close()
+	print(body)
+	return jsonify(body)
 
 	
