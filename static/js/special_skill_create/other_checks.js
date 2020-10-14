@@ -106,10 +106,14 @@ function other_submit() {
 					errors.style.display = "none";
 					errors.style.padding = "0px";
 					errors.style.maxHeight = "0px";
+
 				}
 			} else {
 				const errors = document.getElementById('other-err');
-	
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
 				const error = document.createElement('div');
 				error.className = 'other-err-line';
 				error.innerHTML = jsonResponse.error;
