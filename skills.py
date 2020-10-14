@@ -238,7 +238,7 @@ def post_pre_check():
 	description = request.get_json()['description']
 
 
-	bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=Check, description=description)
+	bonus = SkillOtherCheck(bonus_id=bonus_id, check_type=check_type, when=when, check=check, description=description)
 	db.session.add(bonus)
 	db.session.commit()
 	body['success'] = True
