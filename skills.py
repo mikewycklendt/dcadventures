@@ -204,7 +204,7 @@ def post_other_checks():
 	skill_id = request.get_json()['skill_id']
 	description = request.get_json()['description']
 
-	skill = SkillOther.query.filter_by(id=skill_id)
+	skill = Skill.query.filter_by(id=skill_id)
 
 	try:
 		bonus = SkillOther(bonus_id=bonus_id, skill_id=skill_id, description=description)
