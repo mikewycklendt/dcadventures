@@ -59,80 +59,117 @@ function pre_check_standard_submit() {;
 	pre_check_type = document.getElementById("pre_check_type")
 	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
 
+	const bonus_id = document.getElementById('bonus_id').value;
+
 	console.log(standard_circ_value);
 	console.log(standard_when_value);
 	console.log(standard_skill_value);
 	
 	if (standard_skill_value != '' && standard_circ_value != '' && standard_when_value != '' && pre_check_type_value != '') {
 
-		const skill = document.createElement('div');
-		skill.className = 'pre-check-table-skill'
-		skill.innerHTML = standard_skill_value;
-
-		const when = document.createElement('div');
-		when.className = 'pre-check-table-when'
-		when.innerHTML = standard_when_value;
-
-		const circ = document.createElement('div');
-		circ.className = 'pre-check-table-circ'
-		circ.innerHTML = standard_circ_value;
-	
-		const standardDelete = document.createElement('div');
-		standardDelete.className = 'pre-check-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'pre-check-standard-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', standard_enter);
-		standardDelete.appendChild(deleteBtn);
-
-		standard_enter = standard_enter + 1;
-
-		const standard_table = document.getElementById('pre-check-table-standard');
-
-		standard_table.style.display = "grid";
-		standard_table.style.padding = "1%";
-		standard_table.style.maxHeight = standard_table.scrollHeight + "px";
-		standard_table.style.padding = "1%"
-	
-		standard_table.appendChild(when);
-		standard_table.appendChild(skill);
-		standard_table.appendChild(circ);
-		standard_table.appendChild(standardDelete);
-
-		rows = [when.scrollHeight, skill.scrollHeight, circ.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/pre_check/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'check_type': pre_check_type_value,
+				'when': standard_when_value,
+				'check': standard_skill_value,
+				'description': standard_circ_value,
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		skill.style.maxHeight = skill.scrollHeight + "px";
-		when.style.maxHeight = when.scrollHeight + "px";
-		circ.style.maxHeight = circ.scrollHeight + "px";
-		standardDelete.style.maxHeight = standardDelete.scrollHeight + "px";
-		standard_table.style.maxHeight = standard_table.scrollHeight + row_height + 15 + "px";
+				const skill = document.createElement('div');
+				skill.className = 'pre-check-table-skill'
+				skill.innerHTML = jsonResponse.check;
 
-		pre_check_standard_delete()
+				const when = document.createElement('div');
+				when.className = 'pre-check-table-when'
+				when.innerHTML = jsonResponse.when;
+
+				const circ = document.createElement('div');
+				circ.className = 'pre-check-table-circ'
+				circ.innerHTML = jsonResponse.description;
 	
-		errors_delete = document.getElementsByClassName('pre-check-err-line');
+				const standardDelete = document.createElement('div');
+				standardDelete.className = 'pre-check-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'pre-check-standard-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				standardDelete.appendChild(deleteBtn);
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				const standard_table = document.getElementById('pre-check-table-standard');
+
+				standard_table.style.display = "grid";
+				standard_table.style.padding = "1%";
+				standard_table.style.maxHeight = standard_table.scrollHeight + "px";
+				standard_table.style.padding = "1%"
+	
+				standard_table.appendChild(when);
+				standard_table.appendChild(skill);
+				standard_table.appendChild(circ);
+				standard_table.appendChild(standardDelete);
+
+				rows = [when.scrollHeight, skill.scrollHeight, circ.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				skill.style.maxHeight = skill.scrollHeight + "px";
+				when.style.maxHeight = when.scrollHeight + "px";
+				circ.style.maxHeight = circ.scrollHeight + "px";
+				standardDelete.style.maxHeight = standardDelete.scrollHeight + "px";
+				standard_table.style.maxHeight = standard_table.scrollHeight + row_height + 15 + "px";
+
+				pre_check_standard_delete()
+	
+				errors_delete = document.getElementsByClassName('pre-check-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('pre-check-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+
+			} else {
+				const errors = document.getElementById('pre-check-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'pre-check-err-line';
+				error.innerHTML = jsonResponse.error;
+	
+				errors.appendChild(error);
+	
+				error.style.maxHeight = error.scrollHeight + "px";
+	
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('pre-check-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 

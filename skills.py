@@ -226,3 +226,36 @@ def post_other_checks():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+@skills.route('/skill/pre_check/create', methods=['POST'])
+def post_other_checks():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	check_type = request.get_json()['check_type']
+	when = request.get_json()['when']
+	check = request.get_json()['check']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillOther(bonus_id=bonus_id, check_type=check_type, when=when, check=Check, description=description)
+		db.session.add(bonus)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['check_type'] = bonus.check_type
+		body['when'] = bonus.when
+		body['check'] = bonus.check
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
