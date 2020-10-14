@@ -27,7 +27,7 @@ function other_submit() {
 
 	const bonus_id = document.getElementById('bonus_id').value;
 
-	console.log
+	console.log(bonus_id)
 	
 	if (skill_value != '' && examples_value != '') {
 
