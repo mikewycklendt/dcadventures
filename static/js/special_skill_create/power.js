@@ -30,68 +30,100 @@ function power_submit() {
 	
 	if (sit_value != '' && power_value != '') {
 
-		const pwr = document.createElement('div');
-		pwr.className = 'power-table-power'
-		pwr.innerHTML = power_value;
-
-		const sit = document.createElement('div');
-		sit.className = 'power-table-sit'
-		sit.innerHTML = sit_value;
-	
-		const pwrDelete = document.createElement('div');
-		pwrDelete.className = 'power-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'power-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', power_enter);
-		pwrDelete.appendChild(deleteBtn);
-
-		power_enter = power_enter + 1;
-	
-		const table = document.getElementById('power-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(pwr);
-		table.appendChild(sit);
-		table.appendChild(pwrDelete);
-
-		rows = [pwr.scrollHeight, sit.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/power/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'power': power_value,
+				'description': sit_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		pwr.style.maxHeight = pwr.scrollHeight + "px";
-		sit.style.maxHeight = sit.scrollHeight + "px";
-		pwrDelete.style.maxHeight = pwrDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				const pwr = document.createElement('div');
+				pwr.className = 'power-table-power'
+				pwr.innerHTML = jsonResponse.power;
 
-		power_delete()
+				const sit = document.createElement('div');
+				sit.className = 'power-table-sit'
+				sit.innerHTML = jsonResponse.description;
+	
+				const pwrDelete = document.createElement('div');
+				pwrDelete.className = 'power-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'power-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				pwrDelete.appendChild(deleteBtn);
 
-		errors_delete = document.getElementsByClassName('power-err-line');
+				const table = document.getElementById('power-table');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+
+				table.appendChild(pwr);
+				table.appendChild(sit);
+				table.appendChild(pwrDelete);
+
+				rows = [pwr.scrollHeight, sit.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				pwr.style.maxHeight = pwr.scrollHeight + "px";
+				sit.style.maxHeight = sit.scrollHeight + "px";
+				pwrDelete.style.maxHeight = pwrDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				power_delete()
+
+				errors_delete = document.getElementsByClassName('power-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('power-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('pre-check-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'pre-check-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('power-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 

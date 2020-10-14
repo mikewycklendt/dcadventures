@@ -308,21 +308,56 @@ def post_bonus_rounds():
 
 	rank = db.session.query(Rank).filter_by(id=rank_id).one()
 
+	try:
+		bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['dc'] = bonus.dc
+		body['degree'] = bonus.degree
+		body['rank'] = rank.name
+		body['mod'] = bonus.mod
+		body['rounds'] = bonus.rounds
 
-	bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
-	db.session.add(bonus)	
-	db.session.commit()
-	body['success'] = True
-	body['id'] = bonus.id
-	body['bonus_id'] = bonus.bonus_id
-	body['dc'] = bonus.dc
-	body['degree'] = bonus.degree
-	body['rank'] = rank.name
-	body['mod'] = bonus.mod
-	body['rounds'] = bonus.rounds
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	db.session.close()
-	print(body)
-	return jsonify(body)
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+@skills.route('/skill/power/create', methods=['POST'])
+def post_bonus_power():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	power = request.get_json()['power']
+	description = request.get_json()['description']
+	try:
+		bonus = SkillPower(bonus_id=bonus_id, power=power, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['power']  = bonus.power
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
 
 	
