@@ -228,7 +228,7 @@ def post_other_checks():
 		return jsonify(body)
 
 @skills.route('/skill/pre_check/create', methods=['POST'])
-def post_other_checks():
+def post_pre_check():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
