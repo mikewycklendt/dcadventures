@@ -35,7 +35,7 @@ function other_submit() {
 			method: 'POST',
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
-				'skill': skill_value,
+				'skill_id': skill_value,
 				'description': examples_value,
 			}),
 			headers: {
