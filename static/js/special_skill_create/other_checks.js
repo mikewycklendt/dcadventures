@@ -20,84 +20,108 @@ function other_check() {
 	}
 }
 
-
-
-
-
-other_enter = 0;
-
 function other_submit() {
 	let examples_value = document.getElementById('other_examples').value;
 	let skill_field = document.getElementById('other_skill');
 	let skill_value =  skill_field.options[skill_field.selectedIndex].value; 
 
+	const bonus_id = document.getElementById('bonus_id');
+
 	console.log
 	
 	if (skill_value != '' && examples_value != '') {
 
-		const skill = document.createElement('div');
-		skill.className = 'other-table-skill'
-		skill.innerHTML = skill_value;
-
-		const examples = document.createElement('div');
-		examples.className = 'other-table-examples'
-		examples.innerHTML = examples_value;
-	
-		const otherDelete = document.createElement('div');
-		otherDelete.className = 'other-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'other-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', other_enter);
-		otherDelete.appendChild(deleteBtn);
-
-		other_enter = other_enter + 1;
-
-		const table = document.getElementById('other-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-	
-		table.appendChild(skill);
-		table.appendChild(examples);
-		table.appendChild(otherDelete);
-
-		rows = [skill.scrollHeight, examples.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'skill': skill_value,
+				'description': examples_value,
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
+
+				const skill = document.createElement('div');
+				skill.className = 'other-table-skill'
+				skill.innerHTML = jsonResponse.skill;
+
+				const examples = document.createElement('div');
+				examples.className = 'other-table-examples'
+				examples.innerHTML = jsonResponse.description;
+	
+				const otherDelete = document.createElement('div');
+				otherDelete.className = 'other-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'other-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				otherDelete.appendChild(deleteBtn);
+
+				const table = document.getElementById('other-table');
+
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+	
+				table.appendChild(skill);
+				table.appendChild(examples);
+				table.appendChild(otherDelete);
+
+				rows = [skill.scrollHeight, examples.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
 		
-		skill.style.maxHeight = skill.scrollHeight + "px";
-		examples.style.maxHeight = examples.scrollHeight + "px";
-		otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				skill.style.maxHeight = skill.scrollHeight + "px";
+				examples.style.maxHeight = examples.scrollHeight + "px";
+				otherDelete.style.maxHeight = otherDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
-		other_delete()
+				other_delete()
 	
-		errors_delete = document.getElementsByClassName('other-err-line');
+				errors_delete = document.getElementsByClassName('other-err-line');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('other-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('other-err');
+	
+				const error = document.createElement('div');
+				error.className = 'other-err-line';
+				error.innerHTML = jsonResponse.error;
+	
+				errors.appendChild(error);
+	
+				error.style.maxHeight = error.scrollHeight + "px";
+	
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('other-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
-
+		})
 	} else {
 
 		errors_delete = document.getElementsByClassName('other-err-line');

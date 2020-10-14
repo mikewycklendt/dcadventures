@@ -15,7 +15,7 @@ skill_create = function() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			const name_div = document.getElementById('skill-name');
-			const skill_id = document.getElementById('skill_id');
+			const skill_id = document.getElementById('bonus_id');
 			name_div.innerHTML = jsonResponse.name;
 			skill_id.value = jsonResponse.id;
 			name_div.style.display = "block"
