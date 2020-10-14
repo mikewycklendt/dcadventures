@@ -28,6 +28,8 @@ skill_create = function() {
 
 			errors.appendChild(error);
 
+			errors.style.display = "grid";
+
 			error.style.maxHeight = error.scrollHeight + "px";
 
 			errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
