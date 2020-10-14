@@ -197,7 +197,7 @@ def post_skill():
 		return jsonify(body)
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
-def post_other_checks():
+def post_bonus_other_checks():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
@@ -228,7 +228,7 @@ def post_other_checks():
 		return jsonify(body)
 
 @skills.route('/skill/pre_check/create', methods=['POST'])
-def post_pre_check():
+def post_bonus_pre_check():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
@@ -263,7 +263,7 @@ def post_pre_check():
 		return jsonify(body)
 
 @skills.route('/skill/opposed/create', methods=['POST'])
-def post_opposed():
+def post_bonus_opposed():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
@@ -284,6 +284,42 @@ def post_opposed():
 		body['mod'] = bonus.mod
 		body['description'] = bonus.description
 
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+@skills.route('/skill/rounds/create', methods=['POST'])
+def post_bonus_rounds():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	dc = request.get_json()['dc']
+	degree = request.get_json()['degree']
+	rank_id = request.get_json()['rank']
+	mod = request.get_json()['mod']
+	rounds = request.get_json()['rounds']
+
+	rank = db.session.query(Rank).filter_by(id=rank).one()
+
+	try:
+		bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
+		db.session.add(bonus)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['dc'] = bonus.dc
+		body['degree'] = bonus.degree
+		body['rank'] = rank.name
+		body['mod'] = bonus.mod
+		body['rounds'] = bonus.round
 	except:
 		error = True
 		body['success'] = False

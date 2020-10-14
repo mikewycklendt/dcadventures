@@ -19,11 +19,6 @@ function rounds_check() {
 }
 
 
-
-
-
-rounds_enter = 0;
-
 function rounds_submit() {
 	
 	let dc_field = document.getElementById('rounds_dc');
@@ -41,86 +36,121 @@ function rounds_submit() {
 	
 	if (rank_value != '' && mod_value != '' && rnd_value != '') {
 
-		const dc = document.createElement('div');
-		dc.className = 'rounds-table-dc'
-		dc.innerHTML = dc_value;
+		response = fetch('/skill/rounds/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'dc': dc_value,
+				'degree': deg_value,
+				'rank': rank_value,
+				'mod': mod_value,
+				'rounds': rnd_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
+			}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		const deg = document.createElement('div');
-		deg.className = 'rounds-table-degree'
-		deg.innerHTML = deg_value;
+				const dc = document.createElement('div');
+				dc.className = 'rounds-table-dc'
+				dc.innerHTML = jsonResponse.dc;
 
-		const rank = document.createElement('div');
-		rank.className = 'rounds-table-rank'
-		rank.innerHTML = rank_value;
+				const deg = document.createElement('div');
+				deg.className = 'rounds-table-degree'
+				deg.innerHTML = jsonResponse.degree;
 
-		const mod = document.createElement('div');
-		mod.className = 'rounds-table-mod'
-		mod.innerHTML = mod_value;
+				const rank = document.createElement('div');
+				rank.className = 'rounds-table-rank'
+				rank.innerHTML = jsonResponse.rank;
+
+				const mod = document.createElement('div');
+				mod.className = 'rounds-table-mod'
+				mod.innerHTML = jsonResponse.mod;
 	
-		const rnd = document.createElement('div');
-		rnd.className = 'rounds-table-rounds'
-		rnd.innerHTML = rnd_value;
+				const rnd = document.createElement('div');
+				rnd.className = 'rounds-table-rounds'
+				rnd.innerHTML = jsonResponse.rounds;
 	
-		const rndDelete = document.createElement('div');
-		rndDelete.className = 'rounds-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'rounds-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', rounds_enter);
-		rndDelete.appendChild(deleteBtn);
+				const rndDelete = document.createElement('div');
+				rndDelete.className = 'rounds-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'rounds-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id );
+				rndDelete.appendChild(deleteBtn);
 
-		other_enter = other_enter + 1;
-	
-		const table = document.getElementById('rounds-table');
+				const table = document.getElementById('rounds-table');
 
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
 		
-		table.appendChild(dc);
-		table.appendChild(deg);
-		table.appendChild(rank);
-		table.appendChild(mod);
-		table.appendChild(rnd);
-		table.appendChild(rndDelete);
+				table.appendChild(dc);
+				table.appendChild(deg);
+				table.appendChild(rank);
+				table.appendChild(mod);
+				table.appendChild(rnd);
+				table.appendChild(rndDelete);
 
-		rows = [dc.scrollHeight, deg.scrollHeight, rank.scrollHeight, mod.scrollHeight, rnd.scrollHeight];
-		let row_height = 0;
+				rows = [dc.scrollHeight, deg.scrollHeight, rank.scrollHeight, mod.scrollHeight, rnd.scrollHeight];
+				let row_height = 0;
 
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				dc.style.maxHeight = dc.scrollHeight + "px";
+				deg.style.maxHeight = deg.scrollHeight + "px";
+				rank.style.maxHeight = rank.scrollHeight + "px";
+				mod.style.maxHeight = mod.scrollHeight + "px";
+				rnd.style.maxHeight = rnd.scrollHeight + "px";
+				rndDelete.style.maxHeight = rndDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				rounds_delete()
+
+				errors_delete = document.getElementsByClassName('rounds-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('rounds-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('pre-check-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'pre-check-err-line';
+				error.innerHTML = jsonResponse.error;
+	
+				errors.appendChild(error);
+	
+				error.style.maxHeight = error.scrollHeight + "px";
+	
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-		}
-
-		dc.style.maxHeight = dc.scrollHeight + "px";
-		deg.style.maxHeight = deg.scrollHeight + "px";
-		rank.style.maxHeight = rank.scrollHeight + "px";
-		mod.style.maxHeight = mod.scrollHeight + "px";
-		rnd.style.maxHeight = rnd.scrollHeight + "px";
-		rndDelete.style.maxHeight = rndDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
-
-		rounds_delete()
-
-		errors_delete = document.getElementsByClassName('rounds-err-line');
-
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
-			}
-
-			errors = document.getElementById('rounds-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 
