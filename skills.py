@@ -306,7 +306,7 @@ def post_bonus_rounds():
 	mod = request.get_json()['mod']
 	rounds = request.get_json()['rounds']
 
-	rank = db.session.query(Rank).filter_by(id=rank).one()
+	rank = db.session.query(Rank).filter_by(id=rank_id).one()
 
 	try:
 		bonus = SkillRound(bonus_id=bonus_id, dc=dc, degree=degree, rank=rank_id, mod=mod, rounds=rounds)
