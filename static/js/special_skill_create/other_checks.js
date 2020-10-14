@@ -31,7 +31,7 @@ function other_submit() {
 	
 	if (skill_value != '' && examples_value != '') {
 
-		response = fetch('/skill/create', {
+		response = fetch('/skill/other_checks/create', {
 			method: 'POST',
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
