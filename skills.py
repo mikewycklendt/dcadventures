@@ -443,7 +443,7 @@ def post_bonus_circ():
 	else:
 		unit_name = None
 
-	skill = db.session.query(Skill).filter_by(id=skill).one()
+	skill = db.session.query(Skill).filter_by(id=skill_id).one()
 
 	try:
 		unitvalue = int(unit_value)
