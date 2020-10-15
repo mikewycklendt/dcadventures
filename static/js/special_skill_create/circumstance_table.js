@@ -250,11 +250,15 @@ function circ_submit() {
 				errors.style.display = "grid";
 				errors.style.padding = "1%";
 
-				const error = document.createElement('div');
-				error.className = 'circ-err-line';
-				error.innerHTML = jsonResponse.error;
+				const error_msgs = jsonResponse.error
 
-				errors.appendChild(error);
+				for (i=0; i < error_msgs.length; i++) {
+					const error = document.createElement('div');
+					error.className = 'name-err-line';
+					error.innerHTML = error_msgs[i];
+			
+					errors.appendChild(error);
+				}
 
 				error.style.maxHeight = error.scrollHeight + "px";
 

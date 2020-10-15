@@ -157,6 +157,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 def post_skill(): 
 	body = {}
 	error = False
+	error_msgs = []]
+	errors = {}
 
 	name = request.get_json()['name']
 	print(name)
@@ -175,8 +177,9 @@ def post_skill():
 	for skill in all_skills:
 		if skill == name:
 			error = True
-			body['success'] = False
-			body['error'] = 'There is already a skill with that name'
+			errors['success'] = False
+			error_msgs.append('There is already a skill with that name')
+			errors['error'] = error_msgs
 			break
 
 	try:
@@ -188,12 +191,16 @@ def post_skill():
 		body['name'] = skill.name
 	except:
 		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		errors['success'] = False
+		error_msgs.append('There was an error processing the request')
+		errors['error'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print(body)
+	if error
+		return jsonify(errors)
+	else:
 		return jsonify(body)
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
@@ -405,6 +412,9 @@ def post_bonus_level():
 @skills.route('/skill/circ/create', methods=['POST'])
 def post_bonus_circ():
 	body = {}
+	error = False
+	error_msgs = []
+	errors = {}
 
 	bonus_id = request.get_json()['bonus_id']
 	skill = request.get_json()['skill'] 
@@ -435,27 +445,47 @@ def post_bonus_circ():
 
 	skill = db.session.query(Skill).filter_by(id=skill).one()
 
+	try:
+		unitvalue = int(unit_value)
+	except:
+		error = True
+		error_msgs.append('Unit value must be a number')
+		errors['success'] = False
+		errors['error'] = error_msgs
 
-	bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unit_value, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
-	db.session.add(bonus)	
-	db.session.commit()
-	body['success'] = True
-	body['id'] = bonus.id
-	body['bonus_id'] = bonus.bonus_id	
-	body['skill'] = skill.name
-	body['target'] = bonus.target
-	body['type'] = bonus.type
-	body['mod'] = bonus.mo	
-	body['unit_mod'] = bonus.unit_mod
-	body['unit_value'] = bonus.unit_value
-	body['unit_type'] = unit_name
-	body['adjust_check_mod'] = bonus.adjust_check_mod
-	body['adjust_mod'] = bonus.adjust_mod
-	body['adjust_rank'] = rank_name
-	body['equip_mod'] = bonus.equip_mod
-	body['rounds'] = bonus.rounds
-	body['description'] = bonus.description
+	try:
+		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unit_value, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id	
+		body['skill'] = skill.name
+		body['target'] = bonus.target
+		body['type'] = bonus.type
+		body['mod'] = bonus.mo	
+		body['unit_mod'] = bonus.unit_mod
+		body['unit_value'] = bonus.unit_value
+		body['unit_type'] = unit_name
+		body['adjust_check_mod'] = bonus.adjust_check_mod
+		body['adjust_mod'] = bonus.adjust_mod
+		body['adjust_rank'] = rank_name
+		body['equip_mod'] = bonus.equip_mod
+		body['rounds'] = bonus.rounds
+		body['description'] = bonus.description
 
-	db.session.close()
-	print(body)
-	return jsonify(body)
+	except:
+		error = False
+		error_msgs.append('There was an error processing the request')
+		errors['success'] = False
+		errors['error'] = error_msgs
+
+	finally:
+		db.session.close()
+		print(body)
+
+	if error:
+		return jsonify(errors)
+
+	else:
+		return jsonify(body)

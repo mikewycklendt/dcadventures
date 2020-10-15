@@ -22,11 +22,15 @@ skill_create = function() {
 		} else {
 			const errors = document.getElementById('name-err');
 
-			const error = document.createElement('div');
-			error.className = 'name-err-line';
-			error.innerHTML = jsonResponse.error;
+			const error_msgs = jsonResponse.error
 
-			errors.appendChild(error);
+			for (i=0; i < error_msgs.length; i++) {
+				const error = document.createElement('div');
+				error.className = 'name-err-line';
+				error.innerHTML = error_msgs[i];
+			
+				errors.appendChild(error);
+			}
 
 			errors.style.display = "grid";
 
