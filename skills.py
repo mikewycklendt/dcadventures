@@ -454,12 +454,14 @@ def post_bonus_circ():
 		rank_name = rank.name
 	else:
 		adjust_rank = None
+		rank_name = ''
 
 	if unit_type != '':	
 		unit = db.session.query(Unit).filter_by(id=unit_type).one()
 		unit_name = unit.name
 	else:
 		unit_type = None
+		unit_name = ''
 
 	skill = db.session.query(Skill).filter_by(id=skill_id).one()
 
