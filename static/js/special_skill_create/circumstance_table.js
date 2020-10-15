@@ -135,89 +135,133 @@ function circ_submit() {
 		(mod_type_value == 'adjust' && rnd_value != '' && circ_value != '' && chk_value != '' && adj_value != '' && rank_value != '') || 
 		(mod_type_value == 'noequip' && rnd_value != '' && circ_value != '' && modifier_value != ''))) {
 
-		const mod = document.createElement('div');
-		mod.className = 'circ-table-modifier'
+		response = fetch('/skill/circ/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'skill': circskill,
+				'target': circtarget,
+				'type': mod_type_value,
+				'mod': modifier_value,
+				'unit_mod': mod_value,
+				'unit_value': val_value,
+				'unit_type': unit_value,
+				'adjust_check_mod': chk_value,
+				'adjust_mod': adj_value,
+				'adjust_rank': rank_value,
+				'equip_mod': modifier_value,
+				'rounds': rnd_value,
+				'description': circ_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
+			}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		if (mod_type_value == 'value') {
-			circ_mod_value = modifier_value;
-		}
-		if (mod_type_value == 'noequip') {
-			circ_mod_value = modifier_value;
-		}
-		if (mod_type_value == 'math') {
-			circ_mod_value = mod_value + ' for every ' + val_value + ' ' + unit_value; 
-		}
-		if (mod_type_value == 'adjust') {
-			circ_mod_value = 'check adjust: ' + chk_value + ' rank adjust: ' + adj_value + ' ' + rank_value
-		}
-		mod.innerHTML = circ_mod_value;
+				const mod = document.createElement('div');
+				mod.className = 'circ-table-modifier'
 
-		const rnd = document.createElement('div');
-		rnd.className = 'circ-table-rounds';
-		rnd.innerHTML = rnd_value;
+				if (mod_type_value == 'value') {
+					circ_mod_value = jsonResponse.mod;
+				}
+				if (mod_type_value == 'noequip') {
+					circ_mod_value = jsonResponse.mod;
+				}
+				if (mod_type_value == 'math') {
+					circ_mod_value = jsonResponse.unit_mod + ' for every ' + jsonResponse.unit_value + ' ' + jsonResponse.unit_type; 
+				}
+				if (mod_type_value == 'adjust') {
+					circ_mod_value = 'check adjust: ' + jsonResponse.adjust_check_mod + ' rank adjust: ' + jsonResponse.adjust_mod + ' ' + jsonResponse.adjust_rank;
+				}
+				mod.innerHTML = circ_mod_value;
 
-		const circ = document.createElement('div');
-		circ.className = 'circ-table-circ';
-		circ.innerHTML = circ_value;
+				const rnd = document.createElement('div');
+				rnd.className = 'circ-table-rounds';
+				rnd.innerHTML = jsonResponse.rounds;
 
-		const circDelete = document.createElement('div');
-		circDelete.className = 'circ-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'circ-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', circ_enter);
-		circDelete.appendChild(deleteBtn);
+				const circ = document.createElement('div');
+				circ.className = 'circ-table-circ';
+				circ.innerHTML = jsonResponse.description;
 
-		circ_enter = circ_enter + 1;
+				const circDelete = document.createElement('div');
+				circDelete.className = 'circ-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'circ-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				circDelete.appendChild(deleteBtn);
+
+				circ_enter = circ_enter + 1;
 	
-		const table = document.getElementById('circ-table');
+				const table = document.getElementById('circ-table');
 
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
 
-		table.appendChild(mod);
-		table.appendChild(rnd);
-		table.appendChild(circ);
-		table.appendChild(circDelete);
+				table.appendChild(mod);
+				table.appendChild(rnd);
+				table.appendChild(circ);
+				table.appendChild(circDelete);
 
 		
-		rows = [mod.scrollHeight, rnd.scrollHeight, circ.scrollHeight];
-		let row_height = 0;
+				rows = [mod.scrollHeight, rnd.scrollHeight, circ.scrollHeight];
+				let row_height = 0;
 
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+		
+				mod.style.maxHeight = mod.scrollHeight + "px";
+				rnd.style.maxHeight = rnd.scrollHeight + "px";
+				circ.style.maxHeight = circ.scrollHeight + "px";
+				circDelete.style.maxHeight = circDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				circ_delete()
+		
+				errors_delete = document.getElementsByClassName('circ-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('circ-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('circ-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'circ-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-		}
-		
-		mod.style.maxHeight = mod.scrollHeight + "px";
-		rnd.style.maxHeight = rnd.scrollHeight + "px";
-		circ.style.maxHeight = circ.scrollHeight + "px";
-		circDelete.style.maxHeight = circDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
-
-		circ_delete()
-		
-		errors_delete = document.getElementsByClassName('circ-err-line');
-
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
-			}
-
-			errors = document.getElementById('circ-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
-		
+		})
 	} else {
 
 		errors_delete = document.getElementsByClassName('circ-err-line');

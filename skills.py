@@ -402,4 +402,57 @@ def post_bonus_level():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/circ/create', methods=['POST'])
+def post_bonus_power():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	skill = request.get_json()['skill'] 
+	target = request.get_json()['target']
+	type = request.get_json()['type']
+	mod = request.get_json()['mod']
+	unit_mod = request.get_json()['unit_mod']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	adjust_check_mod = request.get_json()['adjust_check_mod']
+	adjust_mod = request.get_json()['adjust_mod']
+	adjust_rank = request.get_json()['adjust_rank']
+	equip_mod = request.get_json()['equip_mod']
+	rounds = request.get_json()['rounds']
+	description = request.get_json()['description']
+
+	rank = db.session.query(Rank).filter_by(id=adjust_rank).one()
+	unit = db.session.query(Unit).filter_by(id=unit_type).one()
+	skill = db.session.query(Skill).filter_by(id=skill).one()
+
+	try:
+		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unit_value, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['skill'] = skill.name
+		body['target'] = bonus.target
+		body['type'] = bonus.type
+		body['mod'] = bonus.mod
+		body['unit_mod'] = bonus.unit_mod
+		body['unit_value'] = bonus.unit_value
+		body['unit_type'] = unit.name
+		body['adjust_check_mod'] = bonus.adjust_check_mod
+		body['adjust_mod'] = bonus.adjust_mod
+		body['adjust_rank'] = rank.name
+		body['equip_mod'] = bonus.equip_mod
+		body['rounds'] = bonus.rounds
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
