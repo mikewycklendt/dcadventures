@@ -403,7 +403,7 @@ def post_bonus_level():
 		return jsonify(body)
 
 @skills.route('/skill/circ/create', methods=['POST'])
-def post_bonus_power():
+def post_bonus_circ():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
