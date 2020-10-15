@@ -431,6 +431,24 @@ def post_bonus_circ():
 	rounds = request.get_json()['rounds']
 	description = request.get_json()['description']
 
+	if mod == '':
+		mod = None
+
+	if unit_mod == '':
+		unit_mod = None
+
+	if unit_value == '':
+		unit_value = None
+	
+	if adjust_check_mod == '':
+		adjust_check_mod = None
+	
+	if adjust_mod == '':
+		adjust_mod = None
+
+	if equip_mod == '':
+		equip_mod = None
+
 	if adjust_rank != '':
 		rank = db.session.query(Rank).filter_by(id=adjust_rank).one()
 		rank_name = rank.name
