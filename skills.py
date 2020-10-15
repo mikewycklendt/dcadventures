@@ -417,7 +417,7 @@ def post_bonus_circ():
 	errors = {}
 
 	bonus_id = request.get_json()['bonus_id']
-	skill = request.get_json()['skill'] 
+	skill_id = request.get_json()['skill'] 
 	target = request.get_json()['target']
 	type = request.get_json()['type']
 	mod = request.get_json()['mod']
@@ -453,7 +453,7 @@ def post_bonus_circ():
 		errors['success'] = False
 		errors['error'] = error_msgs
 
-	bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
+	bonus = SkillCircMod(bonus_id=bonus_id, skill=skill_id, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
 	db.session.add(bonus)	
 	db.session.commit()
 	body['success'] = True
