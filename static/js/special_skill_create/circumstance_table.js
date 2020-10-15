@@ -261,12 +261,12 @@ function circ_submit() {
 					error.innerHTML = i;
 			
 					errors.appendChild(error);
+				
+					error.style.maxHeight = error.scrollHeight + "px";
+
+					errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+					errors.style.padding = "1%";	
 				}
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
 			}
 		})
 	} else {
