@@ -157,7 +157,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 def post_skill(): 
 	body = {}
 	error = False
-	error_msgs = []]
+	error_msgs = []
 	errors = {}
 
 	name = request.get_json()['name']
