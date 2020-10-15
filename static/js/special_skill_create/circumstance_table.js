@@ -245,6 +245,8 @@ function circ_submit() {
 					errors.style.maxHeight = "0px";
 				}
 			} else {
+
+				console.log(jsonResponse)
 				const errors = document.getElementById('circ-err');
 
 				errors.style.display = "grid";
