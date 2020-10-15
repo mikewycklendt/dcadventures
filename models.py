@@ -425,6 +425,19 @@ class SkillLevels(db.Model):
 			'description': self.description
 		}
 
+class SkillLevelsType(db.Model):
+	__tablename__ = 'skill_levels_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type
+		}
+
 class SkillCircMod(db.Model):
 	__tablename__ = 'skill_circ_mod'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
