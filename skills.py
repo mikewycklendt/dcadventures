@@ -453,39 +453,24 @@ def post_bonus_circ():
 		errors['success'] = False
 		errors['error'] = error_msgs
 
-	try:
-		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unit_value, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
-		db.session.add(bonus)	
-		db.session.commit()
-		body['success'] = True
-		body['id'] = bonus.id
-		body['bonus_id'] = bonus.bonus_id	
-		body['skill'] = skill.name
-		body['target'] = bonus.target
-		body['type'] = bonus.type
-		body['mod'] = bonus.mo	
-		body['unit_mod'] = bonus.unit_mod
-		body['unit_value'] = bonus.unit_value
-		body['unit_type'] = unit_name
-		body['adjust_check_mod'] = bonus.adjust_check_mod
-		body['adjust_mod'] = bonus.adjust_mod
-		body['adjust_rank'] = rank_name
-		body['equip_mod'] = bonus.equip_mod
-		body['rounds'] = bonus.rounds
-		body['description'] = bonus.description
+	bonus = SkillCircMod(bonus_id=bonus_id, skill=skill, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
+	db.session.add(bonus)	
+	db.session.commit()
+	body['success'] = True
+	body['id'] = bonus.id
+	body['bonus_id'] = bonus.bonus_id	
+	body['skill'] = skill.name
+	body['target'] = bonus.target
+	body['type'] = bonus.type
+	body['mod'] = bonus.mo	
+	body['unit_mod'] = bonus.unit_mod
+	body['unit_value'] = bonus.unit_value
+	body['unit_type'] = unit_name
+	body['adjust_check_mod'] = bonus.adjust_check_mod
+	body['adjust_mod'] = bonus.adjust_mod
+	body['adjust_rank'] = rank_name
+	body['equip_mod'] = bonus.equip_mod
+	body['rounds'] = bonus.rounds
+	body['description'] = bonus.description
 
-	except:
-		error = False
-		error_msgs.append('There was an error processing the request')
-		errors['success'] = False
-		errors['error'] = error_msgs
-
-	finally:
-		db.session.close()
-		print(body)
-
-	if error:
-		return jsonify(errors)
-
-	else:
-		return jsonify(body)
+	return jsonify(body)
