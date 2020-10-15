@@ -198,7 +198,7 @@ def post_skill():
 	finally:
 		db.session.close()
 		print(body)
-	if error
+	if error:
 		return jsonify(errors)
 	else:
 		return jsonify(body)
