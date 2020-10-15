@@ -42,7 +42,7 @@ function levels_base() {
 }
 
 
-levels_enter = 0;
+let bonus_level = true;
 
 function levels_submit() {
 	let trgt_field = document.getElementById('levels_target');
@@ -61,7 +61,6 @@ function levels_submit() {
 	let dc_value =  dc_field.options[dc_field.selectedIndex].value;
 	
 	const bonus_id = document.getElementById('bonus_id').value;
-	let bonus_level = true; 
 
 	console.log(bonus_level)
 	

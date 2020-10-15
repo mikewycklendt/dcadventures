@@ -364,7 +364,7 @@ def post_bonus_power():
 def post_bonus_level():
 	body = {}
 
-	bonus_level = True
+	bonus_level = request.get_json()['bonus_level']
 	bonus_id = request.get_json()['bonus_id']
 	type = request.get_json()['type']
 	target = request.get_json()['target']
@@ -381,7 +381,6 @@ def post_bonus_level():
 			level = SkillLevelsType(bonus_id=bonus_id, type=type)
 			db.session.add(level)	
 			db.session.commit()
-			bonus_level = False
 
 		body['success'] = True
 		body['id'] = bonus.id
