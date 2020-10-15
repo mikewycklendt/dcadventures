@@ -470,8 +470,8 @@ def post_bonus_circ():
 	except:
 		error = True
 		error_msgs.append('Unit value must be a number')
-		errors['success'] = False
-		errors['error'] = error_msgs
+		body['success'] = False
+		body['error'] = error_msgs
 
 	try:
 		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill_id, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
@@ -497,15 +497,10 @@ def post_bonus_circ():
 	except:
 		error = False
 		error_msgs.append('There was an error processing the request')
-		errors['success'] = False
-		errors['error'] = error_msgs
+		body['success'] = False
+		body['error'] = error_msgs
 
 	finally:
 		db.session.close()
 		print(body)
-
-	if error:
-		return jsonify(errors)
-
-	else:
 		return jsonify(body)
