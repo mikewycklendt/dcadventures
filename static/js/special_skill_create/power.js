@@ -107,13 +107,13 @@ function power_submit() {
 					errors.style.maxHeight = "0px";
 				}
 			} else {
-				const errors = document.getElementById('pre-check-err');
+				const errors = document.getElementById('power-err');
 
 				errors.style.display = "grid";
 				errors.style.padding = "1%";
 
 				const error = document.createElement('div');
-				error.className = 'pre-check-err-line';
+				error.className = 'power-err-line';
 				error.innerHTML = jsonResponse.error;
 
 				errors.appendChild(error);

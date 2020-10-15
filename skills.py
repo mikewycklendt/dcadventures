@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -347,6 +347,48 @@ def post_bonus_power():
 		body['id'] = bonus.id
 		body['bonus_id'] = bonus.bonus_id
 		body['power']  = bonus.power
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+@skills.route('/skill/level/create', methods=['POST'])
+def post_bonus_level():
+	body = {}
+
+	bonus_level = request.get_json()['bonus_level']
+	bonus_id = request.get_json()['bonus_id']
+	type = request.get_json()['type']
+	target = request.get_json()['target']
+	degree = request.get_json()['degree'] 
+	keyword = request.get_json()['keyword']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillLevels(bonus_id=bonus_id, type=type, target=target, degree=degree, keyword=keyword, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+
+		if bonus_level:
+			level = SkillLevelsType(bonus_id=bonus_id, type=type)
+			db.session.add(level)	
+			db.session.commit()
+
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['type'] = bonus.type
+		body['target'] = bonus.target
+		body['degree'] = bonus.degree
+		body['keyword'] = bonus.keyword
 		body['description'] = bonus.description
 
 	except:
