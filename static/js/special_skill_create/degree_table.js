@@ -66,11 +66,11 @@ function degree_submit() {
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
 				'degree_type_check': degree_type_check,
-				'target': self.target,
-				'degree': self.degree,
-				'keyword': self.keyword,
-				'description': self.description,
-				'type': self.type	
+				'target': degrees_target,
+				'degree': val_value,
+				'keyword': key_value,
+				'description': desc_value,
+				'type': degrees_type	
 			}),
 			headers: {
 			  'Content-Type': 'application/json',
