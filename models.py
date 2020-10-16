@@ -485,6 +485,8 @@ class SkillDegreeKey(db.Model):
 	degree = db.Column(db.Integer)
 	keyword = db.Column(db.String())
 	description = db.Column(db.String())
+	type = db.Column(db.String())
+	
 
 	def format(self):
 		return {
@@ -494,7 +496,22 @@ class SkillDegreeKey(db.Model):
 			'target': self.target,
 			'degree': self.degree,
 			'keyword': self.keyword,
-			'description': self.description			
+			'description': self.description,
+			'type': self.type			
+		}
+
+class SkillDegreeKey(db.Model):
+	__tablename__ = 'skill_degree_key'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+	
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type			
 		}
 
 class SkillDegreeMod(db.Model):
