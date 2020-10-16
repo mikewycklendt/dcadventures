@@ -814,7 +814,7 @@ def post_bonus_char_check():
 	checks = db.session.query(Check).filter_by(id=check_id).one()
 
 	try:
-		bonus = SkillOppCondition(bonus_id=bonus_id, check_id=check_id, target=target, degree=degree, rank=rank, description=description)
+		bonus = SkillCharCheck(bonus_id=bonus_id, check_id=check_id, target=target, degree=degree, rank=rank, description=description)
 		db.session.add(bonus)	
 		db.session.commit()
 		body['success'] = True
