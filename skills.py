@@ -641,7 +641,7 @@ def post_bonus_degree_mod():
 		math = db.session.query(Math).filter_by(id=measure_math_math).one()
 		measure_math_math_name = math.symbol
 	else:
-		damage_math_math1 = None
+		measure_math_math = None
 		measure_math_math_name = ''
 
 	
