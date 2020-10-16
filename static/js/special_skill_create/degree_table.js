@@ -138,6 +138,8 @@ function degree_submit() {
 	
 				errors_delete = document.getElementsByClassName('degree-err-line');
 
+				const errors = document.getElementById('degree-err');
+				
 				let errors_height = errors.scrollHeight + 20;
 
 				if (typeof errors_delete[0] === "undefined") {

@@ -546,3 +546,147 @@ def post_bonus_degree_key():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+@skills.route('/skill/degree_mod/create', methods=['POST'])
+def post_bonus_degree_mod():
+	body = {}
+	error = False
+	error_msgs = []
+	errors = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	target = request.get_json()['target']
+	degree = request.get_json()['degree']
+	type = request.get_json()['type']
+	damage_value_degree = request.get_json()['damage_value_degree']
+	damage_value_value = request.get_json()['damage_value_value']
+	damage_math_damage = request.get_json()['damage_math_damage']
+	damage_math_math1 = request.get_json()['damage_math_math1']
+	damage_math_value = request.get_json()['damage_math_value']
+	damage_math_math2 = request.get_json()['damage_math_math2']
+	damage_math_rank = request.get_json()['damage_math_rank']
+	measure_value = request.get_json()['measure_value']
+	measure_value_rank = request.get_json()['measure_value_rank']
+	measure_math_value = request.get_json()['measure_math_value']
+	measure_math_math = request.get_json()['measure_math_math']
+	measure_math_rank = request.get_json()['measure_math_rank']
+	measure_math_measure_rank = request.get_json()['measure_math_measure_rank']
+
+	if damage_value_degree == '':
+		damage_value_degree = None
+
+	if damage_value_value == '':
+		damage_value_value = None
+
+	if damage_math_damage == '':
+		damage_math_damage = None
+
+	if damage_math_value == '':
+		damage_math_value = None
+
+	if measure_value == '':
+		measure_value = None
+
+	if measure_math_value == '':
+		measure_math_value = None
+
+	if measure_math_measure_rank != '':
+		rank = db.session.query(Rank).filter_by(id=measure_math_measure_rank).one()
+		measure_math_measure_rank_name = rank.name
+	else:
+		measure_math_measure_rank = None
+		measure_math_measure_rank_name = ''
+
+	if measure_math_rank != '':
+		rank = db.session.query(Rank).filter_by(id=measure_math_rank).one()
+		measure_math_rank_name = rank.name
+	else:
+		measure_math_rank = None
+		measure_math_rank_name = ''
+
+	if measure_value_rank != '':
+		rank = db.session.query(Rank).filter_by(id=measure_value_rank).one()
+		measure_value_rank_name = rank.name
+	else:
+		measure_value_rank = None
+		measure_value_rank_name = ''
+
+	if damage_math_rank != '':
+		rank = db.session.query(Rank).filter_by(id=damage_math_rank).one()
+		damage_math_rank_name = rank.name
+	else:
+		adjust_rank = None
+		damage_math_rank_name = ''
+
+	if damage_math_math1 != '':	
+		math = db.session.query(Math).filter_by(id=damage_math_math1).one()
+		damage_math_math1_name = math.symbol
+	else:
+		damage_math_math1 = None
+		damage_math_math1_name = ''
+
+	if damage_math_math2 != '':	
+		math = db.session.query(Math).filter_by(id=damage_math_math2).one()
+		damage_math_math2_name = math.symbol
+	else:
+		damage_math_math2 = None
+		damage_math_math2_name = ''
+
+	if measure_math_math != '':	
+		math = db.session.query(Math).filter_by(id=measure_math_math).one()
+		measure_math_math_name = math.symbol
+	else:
+		damage_math_math1 = None
+		measure_math_math_name = ''
+
+	try:
+		bonus = SkillDegreeMod(bonus_id=bonus_id, 
+			target=target,
+			degree=degree,
+			type=type,
+			damage_value_degree=damage_value_degree,
+			damage_value_value=damage_value_value,
+			damage_math_damage=damage_math_damage,
+			damage_math_math1=damage_math_math1,
+			damage_math_value=damage_math_value,
+			damage_math_math2=damage_math_math2,
+			damage_math_rank=damage_math_rank,
+			measure_value=measure_value,
+			measure_value_rank=measure_value_rank,
+			measure_math_value=measure_math_value,
+			measure_math_math =measure_math_math,
+			measure_math_rank=measure_math_rank,
+			measure_math_measure_rank=measure_math_measure_rank)	
+		
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id	
+		body['target'] = bonus.target
+		body['degree'] = bonus.degree
+		body['type'] = bonus.type
+		body['damage_value_degree'] = bonus.damage_value_degree
+		body['damage_value_value'] = bonus.damage_value_value
+		body['damage_math_damage'] = bonus.damage_math_damage
+		body['damage_math_math1'] = bonus.damage_math_math1
+		body['damage_math_value'] = bonus.damage_math_value
+		body['damage_math_math2'] = bonus.damage_math_math2
+		body['damage_math_rank'] = bonus.damage_math_rank
+		body['measure_value'] = bonus.measure_value
+		body['measure_value_rank'] = bonus.measure_value_rank
+		body['measure_math_value'] = bonus.measure_math_value
+		body['measure_math_math'] = bonus.measure_math_math
+		body['measure_math_rank'] = bonus.measure_math_rank
+		body['measure_math_measure_rank'] = bonus.measure_math_measure_rank
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)

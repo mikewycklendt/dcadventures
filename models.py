@@ -534,6 +534,11 @@ class SkillDegreeMod(db.Model):
 	measure_math_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	measure_math_measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	condition_1 = db.Column(db.String())
+	condition_2 = db.Column(db.String())
+	keyword = db.Column(db.String())
+	description = db.Column(db.String())
+	nullify = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -554,7 +559,12 @@ class SkillDegreeMod(db.Model):
 			'measure_math_value': self.measure_math_value,
 			'measure_math_math': self.measure_math_math,
 			'measure_math_rank': self.measure_math_rank,
-			'measure_math_measure_rank': self.measure_math_measure_rank
+			'measure_math_measure_rank': self.measure_math_measure_rank,
+			'condition_1': self.condition_1,
+			'condition_2': self.condition_2,
+			'keyword': self.keyword,
+			'description': self.description,
+			'nullify': self.nullify
 		}
 
 class SkillResistCheck(db.Model):

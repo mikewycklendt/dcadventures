@@ -200,108 +200,159 @@ function deg_mod_submit() {
 
 	const bonus_id = document.getElementById('bonus_id').value;
 
-	if ((target != '' && deg_value != '' && type == 'event' && key != '' && desc != '') || (target != '' && deg_value != '' && type == 'damage' && damage_type == 'math' && damage_math1 != '' && damage_math2 != '' && damage_val1 !=  '' && damage_val2 != '' && key != '' && desc != '') || (target != '' && deg_value != '' && type == 'damage' && key != '' && desc != '' && damage_deg_val != '' && damage_type == 'value' && damage_val != '') || (target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'value' && measure_value != '' && measure_rank != '') || (target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'math' && measure_math != '' && measure_val1 != '' && measure_val2 != '' && measure_math_rank != '') || (target != '' && deg_value != '' && type == 'condition' && key != '' && desc != '' && condition1 != '' && condition2 != '')) {
+	if ((target != '' && deg_value != '' && type == 'event' && key != '' && desc != '') || 
+		(target != '' && deg_value != '' && type == 'damage' && damage_type == 'math' && damage_math != '' && damage_math1 != '' && damage_math2 != '' && damage_val1 !=  '' && damage_val2 != '' && key != '' && desc != '') || 
+		(target != '' && deg_value != '' && type == 'damage' && key != '' && desc != '' && damage_deg_val != '' && damage_type == 'value' && damage_val != '') || 
+		(target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'value' && measure_value != '' && measure_rank != '') || 
+		(target != '' && deg_value != '' && type == 'measure' && key != '' && desc != '' && measure_type == 'math' && measure_math != '' && measure_val1 != '' && measure_val2 != '' && measure_math_rank != '') || 
+		(target != '' && deg_value != '' && type == 'condition' && key != '' && desc != '' && condition1 != '' && condition2 != '')) {
 
+		response = fetch('/skill/degree_mod/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'target': target,
+				'degree': deg_value,
+				'type': type,
+				'damage_value_degree': damage_deg_val,
+				'damage_value_value': damage_val,
+				'damage_math_damage': damage_math,
+				'damage_math_math1': damage_math1,
+				'damage_math_value': damage_val1,
+				'damage_math_math2': damage_math2,
+				'damage_math_rank': damage_val2,
+				'measure_value': measure_value,
+				'measure_value_rank': measure_rank,
+				'measure_math_value': measure_val1,
+				'measure_math_math': measure_math,
+				'measure_math_rank': measure_val2,
+				'measure_math_measure_rank': measure_math_rank
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
+			}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		const deg = document.createElement('div');
-		deg.className = 'deg-mod-table-deg'
-		deg.innerHTML = deg_value;
+				const deg = document.createElement('div');
+				deg.className = 'deg-mod-table-deg'
+				deg.innerHTML = deg_value;
 		
-		if (type == 'damage') {
-			if (damage_type == 'math') {
-				effect = damage_math + ' ' + damage_val1 + ' ' + damage_math1 + ' ' + damage_val2 + ' ' + damage_math2;
-			} else if (damage_type == 'value') {
-				effect = 'degree: ' + damage_deg_val + ' damage: ' + damage_val;
-			}
-		} else if (type == 'measure') {
-			if (measure_type == 'math') {
-				effect = measure_val1 + ' ' + measure_math + ' ' + measure_val2 + ' ' + measure_math_rank;
-			} else if (measure_type == 'value') {
-				effect = measure_value + ' ' + measure_rank;
-			}
-		} else if (type == 'condition') {
-			effect = 'from ' + condition1 + ' to ' + condition2;
-		} else if (type == 'event') {
-			effect = 'Event';
-		}
+				if (type == 'damage') {
+					if (damage_type == 'math') {
+						effect = damage_math + ' ' + damage_val1 + ' ' + damage_math1 + ' ' + damage_val2 + ' ' + damage_math2;
+					} else if (damage_type == 'value') {
+						effect = 'degree: ' + damage_deg_val + ' damage: ' + damage_val;
+					}
+				} else if (type == 'measure') {
+					if (measure_type == 'math') {
+						effect = measure_val1 + ' ' + measure_math + ' ' + measure_val2 + ' ' + measure_math_rank;
+					} else if (measure_type == 'value') {
+						effect = measure_value + ' ' + measure_rank;
+					}
+				} else if (type == 'condition') {
+					effect = 'from ' + condition1 + ' to ' + condition2;
+				} else if (type == 'event') {
+					effect = 'Event';
+				}
 
-		const eff = document.createElement('div');
-		eff.className = 'deg-mod-table-effect'
-		eff.innerHTML = effect;
+				const eff = document.createElement('div');
+				eff.className = 'deg-mod-table-effect'
+				eff.innerHTML = effect;
+
+				const key_div = document.createElement('div');
+				key_div.className = 'deg-mod-table-key'
+				key_div.innerHTML = key;
+
+				const desc_div = document.createElement('div');
+				desc_div.className = 'deg-mod-table-desc'
+				desc_div.innerHTML = desc;
 	
-		const key_div = document.createElement('div');
-		key_div.className = 'deg-mod-table-key'
-		key_div.innerHTML = key;
+				const nullify = document.createElement('div');
+				nullify.className = 'deg-mod-table-null'
+				nullify.innerHTML = nullify_val;
 
-		const desc_div = document.createElement('div');
-		desc_div.className = 'deg-mod-table-desc'
-		desc_div.innerHTML = desc;
-	
-		const nullify = document.createElement('div');
-		nullify.className = 'deg-mod-table-null'
-		nullify.innerHTML = nullify_val;
+				const degmodDelete = document.createElement('div');
+				degmodDelete.className = 'deg-mod-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'deg-mod-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', deg_mod_enter);
+				degmodDelete.appendChild(deleteBtn);
 
-		const degmodDelete = document.createElement('div');
-		degmodDelete.className = 'deg-mod-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'deg-mod-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', deg_mod_enter);
-		degmodDelete.appendChild(deleteBtn);
+				const table = document.getElementById('deg-mod-table');
 
-		deg_mod_enter = deg_mod_enter + 1;
-	
-		const table = document.getElementById('deg-mod-table');
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
 
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(deg);
-		table.appendChild(eff);
-		table.appendChild(key_div);
-		table.appendChild(desc_div);
-		table.appendChild(nullify);	
-		table.appendChild(degmodDelete);
+				table.appendChild(deg);
+				table.appendChild(eff);
+				table.appendChild(key_div);
+				table.appendChild(desc_div);
+				table.appendChild(nullify);	
+				table.appendChild(degmodDelete);
 
 		
-		rows = [deg.scrollHeight, eff.scrollHeight, key_div.scrollHeight, desc_div.scrollHeight, nullify.scrollHeight];
-		let row_height = 0;
+				rows = [deg.scrollHeight, eff.scrollHeight, key_div.scrollHeight, desc_div.scrollHeight, nullify.scrollHeight];
+				let row_height = 0;
 
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
-			}
-		}
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
 
-		deg.style.maxHeight = deg.scrollHeight + "px";
-		eff.style.maxHeight = eff.scrollHeight + "px";
-		key_div.style.maxHeight = key_div.scrollHeight + "px";
-		desc_div.style.maxHeight = desc_div.scrollHeight + "px";
-		nullify.style.maxHeight = nullify.scrollHeight + "px";
-		degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				deg.style.maxHeight = deg.scrollHeight + "px";
+				eff.style.maxHeight = eff.scrollHeight + "px";
+				key_div.style.maxHeight = key_div.scrollHeight + "px";
+				desc_div.style.maxHeight = desc_div.scrollHeight + "px";
+				nullify.style.maxHeight = nullify.scrollHeight + "px";
+				degmodDelete.style.maxHeight = degmodDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
-		deg_mod_delete()
+				deg_mod_delete()
 		
-		errors_delete = document.getElementsByClassName('deg-mod-err-line');
+				errors_delete = document.getElementsByClassName('deg-mod-err-line');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('deg-mod-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			} else {
+				const errors = document.getElementById('deg-mod-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'deg-mod-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
+		})				
 
-			errors = document.getElementById('deg-mod-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
 
 	} else {
 		errors = document.getElementById('deg-mod-err')
