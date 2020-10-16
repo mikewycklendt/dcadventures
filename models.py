@@ -500,8 +500,8 @@ class SkillDegreeKey(db.Model):
 			'type': self.type			
 		}
 
-class SkillDegreeKey(db.Model):
-	__tablename__ = 'skill_degree_key'
+class SkillDegreeType(db.Model):
+	__tablename__ = 'skill_degree_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	type = db.Column(db.String())
