@@ -725,6 +725,36 @@ def post_bonus_resistance():
 		body['target'] =  bonus.target
 		body['mod'] = bonus.mod
 		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+
+@skills.route('/skill/resist/create', methods=['POST'])
+def post_bonus_resist():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	effect = request.get_json()['effect']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillResistCheck(bonus_id=bonus_id, effect=effect, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['effect'] = bonus.effect
+		body['description'] = bonus.description
 		
 	except:
 		error = True
@@ -736,3 +766,4 @@ def post_bonus_resistance():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+

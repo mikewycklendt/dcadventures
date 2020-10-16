@@ -36,68 +36,101 @@ function resist_submit() {
 	
 	if (eff_value != '' && ex_value != '') {
 
-		const eff = document.createElement('div');
-		eff.className = 'resist-effect-table-eff'
-		eff.innerHTML = eff_value;
-
-		const ex = document.createElement('div');
-		ex.className = 'resist-effect-table-ex'
-		ex.innerHTML = ex_value;
-	
-		const resistDelete = document.createElement('div');
-		resistDelete.className = 'resist-effect-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'resist-effect-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', resist_enter);
-		resistDelete.appendChild(deleteBtn);
-
-		resist_enter = resist_enter + 1;
-	
-		const table = document.getElementById('resist-effect-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(eff);
-		table.appendChild(ex);
-		table.appendChild(resistDelete);
-
-		rows = [eff.scrollHeight, ex.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/resist/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'effect': eff_value,
+				'description': ex_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		ex.style.maxHeight = ex.scrollHeight + "px";
-		eff.style.maxHeight = eff.scrollHeight + "px";
-		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				const eff = document.createElement('div');
+				eff.className = 'resist-effect-table-eff'
+				eff.innerHTML = jsonResponse.effect;
 
-		resist_delete()
+				const ex = document.createElement('div');
+				ex.className = 'resist-effect-table-ex'
+				ex.innerHTML = jsonResponse.description;
 	
-		errors_delete = document.getElementsByClassName('resist-effect-err-line');
+				const resistDelete = document.createElement('div');
+				resistDelete.className = 'resist-effect-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'resist-effect-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				resistDelete.appendChild(deleteBtn);
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				const table = document.getElementById('resist-effect-table');
+
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+
+				table.appendChild(eff);
+				table.appendChild(ex);
+				table.appendChild(resistDelete);
+
+				rows = [eff.scrollHeight, ex.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				ex.style.maxHeight = ex.scrollHeight + "px";
+				eff.style.maxHeight = eff.scrollHeight + "px";
+				resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				resist_delete()
+	
+				errors_delete = document.getElementsByClassName('resist-effect-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('resist-effect-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+
+			} else {
+				const errors = document.getElementById('resist-effect-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'resist-effect-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('resist-effect-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 
