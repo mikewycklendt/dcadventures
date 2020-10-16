@@ -571,6 +571,11 @@ def post_bonus_degree_mod():
 	measure_math_math = request.get_json()['measure_math_math']
 	measure_math_rank = request.get_json()['measure_math_rank']
 	measure_math_measure_rank = request.get_json()['measure_math_measure_rank']
+	condition_1 = request.get_json()['condition_1']
+	condition_2 = request.get_json()['condition_2']
+	keyword = request.get_json()['keyword']
+	description = request.get_json()['description']
+	nullify = request.get_json()['nullify']
 
 	if damage_value_degree == '':
 		damage_value_degree = None
@@ -656,7 +661,12 @@ def post_bonus_degree_mod():
 			measure_math_value=measure_math_value,
 			measure_math_math =measure_math_math,
 			measure_math_rank=measure_math_rank,
-			measure_math_measure_rank=measure_math_measure_rank)	
+			measure_math_measure_rank=measure_math_measure_rank,
+			condition_1=condition_1,
+			condition_2=condition_2,
+			keyword=keyword,
+			description=description,
+			nullify=nullify)	
 		
 		db.session.add(bonus)	
 		db.session.commit()
@@ -669,16 +679,21 @@ def post_bonus_degree_mod():
 		body['damage_value_degree'] = bonus.damage_value_degree
 		body['damage_value_value'] = bonus.damage_value_value
 		body['damage_math_damage'] = bonus.damage_math_damage
-		body['damage_math_math1'] = bonus.damage_math_math1
+		body['damage_math_math1'] = damage_math_math1_name
 		body['damage_math_value'] = bonus.damage_math_value
-		body['damage_math_math2'] = bonus.damage_math_math2
-		body['damage_math_rank'] = bonus.damage_math_rank
+		body['damage_math_math2'] = damage_math_math2_name
+		body['damage_math_rank'] = damage_math_rank_name
 		body['measure_value'] = bonus.measure_value
-		body['measure_value_rank'] = bonus.measure_value_rank
+		body['measure_value_rank'] = measure_value_rank_name
 		body['measure_math_value'] = bonus.measure_math_value
-		body['measure_math_math'] = bonus.measure_math_math
-		body['measure_math_rank'] = bonus.measure_math_rank
-		body['measure_math_measure_rank'] = bonus.measure_math_measure_rank
+		body['measure_math_math'] = measure_math_math_name
+		body['measure_math_rank'] = measure_math_rank_name
+		body['measure_math_measure_rank'] = measure_math_measure_rank_name
+		body['condition_1'] = bonus.condition_1
+		body['condition_2'] = bonus.condition_2
+		body['keyword'] = bonus.keyword
+		body['description'] = bonus.description
+		body['nullify'] = bonus.nullify
 
 	except:
 		error = True

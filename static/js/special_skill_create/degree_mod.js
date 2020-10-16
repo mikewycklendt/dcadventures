@@ -226,7 +226,12 @@ function deg_mod_submit() {
 				'measure_math_value': measure_val1,
 				'measure_math_math': measure_math,
 				'measure_math_rank': measure_val2,
-				'measure_math_measure_rank': measure_math_rank
+				'measure_math_measure_rank': measure_math_rank,
+				'condition_1': condition1,
+				'condition_2': condition2,
+				'keyword': key,
+				'description': desc,
+				'nullify': nullify_val
 			}),
 			headers: {
 			  'Content-Type': 'application/json',
@@ -243,18 +248,18 @@ function deg_mod_submit() {
 		
 				if (type == 'damage') {
 					if (damage_type == 'math') {
-						effect = damage_math + ' ' + damage_val1 + ' ' + damage_math1 + ' ' + damage_val2 + ' ' + damage_math2;
+						effect = jsonResponse.damage_math_damage + ' ' + jsonResponse.damage_math_math1 + ' ' + jsonResponse.damage_type_value + ' ' + jsonResponse.damage_math_math2 + ' ' + jsonResponse.damage_math_rank;
 					} else if (damage_type == 'value') {
-						effect = 'degree: ' + damage_deg_val + ' damage: ' + damage_val;
+						effect = 'degree: ' + jsonResponse.damage_value_degree + ' damage: ' + jsonResponse.damage_value_value;
 					}
 				} else if (type == 'measure') {
 					if (measure_type == 'math') {
-						effect = measure_val1 + ' ' + measure_math + ' ' + measure_val2 + ' ' + measure_math_rank;
+						effect = jsonResponse.measure_math_value + ' ' + jsonResponse.measure_math_math + ' ' + jsonResponse.measure_math_rank + ' ' + jsonResponse.measure_math_measure_rank;
 					} else if (measure_type == 'value') {
-						effect = measure_value + ' ' + measure_rank;
+						effect = jsonResponse.measure_value + ' ' + jsonResponse.measure_value_rank;
 					}
 				} else if (type == 'condition') {
-					effect = 'from ' + condition1 + ' to ' + condition2;
+					effect = 'from ' + jsonResponse.condition_1 + ' to ' + jsonResponse.condition_2;
 				} else if (type == 'event') {
 					effect = 'Event';
 				}
@@ -265,22 +270,22 @@ function deg_mod_submit() {
 
 				const key_div = document.createElement('div');
 				key_div.className = 'deg-mod-table-key'
-				key_div.innerHTML = key;
+				key_div.innerHTML = jsonResponse.keyword;
 
 				const desc_div = document.createElement('div');
 				desc_div.className = 'deg-mod-table-desc'
-				desc_div.innerHTML = desc;
+				desc_div.innerHTML = jsonResponse.description;
 	
 				const nullify = document.createElement('div');
 				nullify.className = 'deg-mod-table-null'
-				nullify.innerHTML = nullify_val;
+				nullify.innerHTML = jsonResponse.nullify;
 
 				const degmodDelete = document.createElement('div');
 				degmodDelete.className = 'deg-mod-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'deg-mod-xbox';
 				deleteBtn.innerHTML = '&cross;';
-				deleteBtn.setAttribute('data-id', deg_mod_enter);
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				degmodDelete.appendChild(deleteBtn);
 
 				const table = document.getElementById('deg-mod-table');
