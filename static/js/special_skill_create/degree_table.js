@@ -39,7 +39,7 @@ function degree_base() {
 	}
 }
 
-degree_enter = 0;
+degree_type_check = true;
 
 function degree_submit() {
 	
@@ -61,80 +61,119 @@ function degree_submit() {
 
 	if (degrees_type != '' && degrees_target != '' && key_value != '' && desc_value != '' && val_value != '') {
 
-		table_type = document.getElementById('degree-table-type');
-		table_type.innerHTML = degrees_type;
-
-		const val = document.createElement('div');
-		val.className = 'degree-table-deg'
-		val.innerHTML = val_value;
-		
-		const key = document.createElement('div');
-		key.className = 'degree-table-key'
-		key.innerHTML = key_value;
-
-		const desc = document.createElement('div');
-		desc.className = 'degree-table-desc'
-		desc.innerHTML = desc_value;
-
-		const degDelete = document.createElement('div');
-		degDelete.className = 'degree-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'degree-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', degree_enter);
-		degDelete.appendChild(deleteBtn);
-
-		degree_enter = degree_enter + 1;
-	
-		const table = document.getElementById('degree-table');
-	
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-	
-		table.appendChild(val);
-		table.appendChild(key);
-		table.appendChild(desc);
-		table.appendChild(degDelete);
-
-		rows = [val.scrollHeight, desc.scrollHeight, key.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/power/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'degree_type_check': degree_type_check,
+				'target': self.target,
+				'degree': self.degree,
+				'keyword': self.keyword,
+				'description': self.description,
+				'type': self.type	
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
+
+				degree_type_check = false;
+
+				table_type = document.getElementById('degree-table-type');
+				table_type.innerHTML = jsonResponse.type;
+
+				const val = document.createElement('div');
+				val.className = 'degree-table-deg'
+				val.innerHTML = jsonResponse.degree;
+		
+				const key = document.createElement('div');
+				key.className = 'degree-table-key'
+				key.innerHTML = jsonResponse.keyword;
+
+				const desc = document.createElement('div');
+				desc.className = 'degree-table-desc'
+				desc.innerHTML = jsonResponse.description;
+
+				const degDelete = document.createElement('div');
+				degDelete.className = 'degree-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'degree-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				degDelete.appendChild(deleteBtn);
+	
+				const table = document.getElementById('degree-table');
+	
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+	
+				table.appendChild(val);
+				table.appendChild(key);
+				table.appendChild(desc);
+				table.appendChild(degDelete);
+
+				rows = [val.scrollHeight, desc.scrollHeight, key.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
 
 		
-		val.style.maxHeight = val.scrollHeight + "px";
-		key.style.maxHeight = key.scrollHeight + "px";
-		desc.style.maxHeight = desc.scrollHeight + "px";
-		degDelete.style.maxHeight = degDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				val.style.maxHeight = val.scrollHeight + "px";
+				key.style.maxHeight = key.scrollHeight + "px";
+				desc.style.maxHeight = desc.scrollHeight + "px";
+				degDelete.style.maxHeight = degDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
-		degree_delete()
+				degree_delete()
 	
-		errors_delete = document.getElementsByClassName('degree-err-line');
+				errors_delete = document.getElementsByClassName('degree-err-line');
 
-		let errors_height = errors.scrollHeight + 20;
+				let errors_height = errors.scrollHeight + 20;
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('degree-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+	
+			} else {
+				const errors = document.getElementById('degree-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'degree-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('degree-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})				
 
 	} else {
 
