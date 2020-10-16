@@ -800,3 +800,40 @@ def post_bonus_opp_condition():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/char_check/create', methods=['POST'])
+def post_bonus_char_check():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	check_id = request.get_json()['check_id']
+	target = request.get_json()['target']
+	degree = request.get_json()['degree']
+	rank = request.get_json()['rank']
+	description = request.get_json()['description']
+
+	checks = db.session.query(Check).filter_by(id=check_id).one()
+
+	try:
+		bonus = SkillOppCondition(bonus_id=bonus_id, check_id=check_id, target=target, degree=degree, rank=rank, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['check_id'] = checks.name
+		body['target'] = bonus.target
+		body['degree'] = bonus.degree
+		body['rank'] = bonus.rank
+		body['description'] = bonus.description
+		
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+

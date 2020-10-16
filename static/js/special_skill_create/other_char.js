@@ -56,86 +56,124 @@ function char_submit() {
 	const bonus_id = document.getElementById('bonus_id').value;
 	
 	if (deg_value != '' && tar_value != '' && chk_value != '' && rnk_value != '' && des_value != '') {
-		const deg = document.createElement('div');
-		deg.className = 'char-table-deg'
-		deg.innerHTML = deg_value;
 
-		const tar = document.createElement('div');
-		tar.className = 'char-table-tar';
-		tar.innerHTML = tar_value;
-
-		const chk = document.createElement('div');
-		chk.className = 'char-table-chk';
-		chk.innerHTML = chk_value;
-
-		const rnk = document.createElement('div');
-		rnk.className = 'char-table-rnk';
-		rnk.innerHTML = rnk_value;
-
-		const des = document.createElement('div');
-		des.className = 'char-table-des';
-		des.innerHTML = des_value;
-
-		const charDelete = document.createElement('div');
-		charDelete.className = 'char-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'char-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', char_enter);
-		charDelete.appendChild(deleteBtn);
-
-		char_enter = char_enter + 1;
-
-		const table = document.getElementById('char-table');
-	
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-	
-		table.appendChild(deg);
-		table.appendChild(tar);
-		table.appendChild(chk);
-		table.appendChild(rnk);
-		table.appendChild(des)
-		table.appendChild(charDelete);
-
-		rows = [deg.scrollHeight, des.scrollHeight, tar.scrollHeight, chk.scrollHeight, rnk.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/char_check/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'check_id': chk_value,
+				'target': tar_value,
+				'degree': deg_value,
+				'rank': rnk_value,
+				'description': des_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		deg.style.maxHeight = deg.scrollHeight + "px";
-		tar.style.maxHeight = tar.scrollHeight + "px";
-		chk.style.maxHeight = chk.scrollHeight + "px";
-		rnk.style.maxHeight = rnk.scrollHeight + "px";
-		des.style.maxHeight = des.scrollHeight + "px";
-		charDelete.style.maxHeight = charDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				const deg = document.createElement('div');
+				deg.className = 'char-table-deg'
+				deg.innerHTML = jsonResponse.degree;
 
-		char_delete()
+				const tar = document.createElement('div');
+				tar.className = 'char-table-tar';
+				tar.innerHTML = jsonResponse.target;
+
+				const chk = document.createElement('div');
+				chk.className = 'char-table-chk';
+				chk.innerHTML = jsonResponse.check_id;
+
+				const rnk = document.createElement('div');
+				rnk.className = 'char-table-rnk';
+				rnk.innerHTML = jsonResponse.rank;
+
+				const des = document.createElement('div');
+				des.className = 'char-table-des';
+				des.innerHTML = jsonResponse.description;
+
+				const charDelete = document.createElement('div');
+				charDelete.className = 'char-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'char-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				charDelete.appendChild(deleteBtn);
+
+				const table = document.getElementById('char-table');
+			
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+			
+				table.appendChild(deg);
+				table.appendChild(tar);
+				table.appendChild(chk);
+				table.appendChild(rnk);
+				table.appendChild(des)
+				table.appendChild(charDelete);
+
+				rows = [deg.scrollHeight, des.scrollHeight, tar.scrollHeight, chk.scrollHeight, rnk.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				deg.style.maxHeight = deg.scrollHeight + "px";
+				tar.style.maxHeight = tar.scrollHeight + "px";
+				chk.style.maxHeight = chk.scrollHeight + "px";
+				rnk.style.maxHeight = rnk.scrollHeight + "px";
+				des.style.maxHeight = des.scrollHeight + "px";
+				charDelete.style.maxHeight = charDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				char_delete()
+			
+				errors_delete = document.getElementsByClassName('char-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('char-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+
+			} else {
+				const errors = document.getElementById('char-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'char-err-line';
+				error.innerHTML = jsonResponse.error;
 	
-		errors_delete = document.getElementsByClassName('char-err-line');
-
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				errors.appendChild(error);
+	
+				error.style.maxHeight = error.scrollHeight + "px";
+	
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
+		})
 
-			errors = document.getElementById('char-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
 
 	} else {
 
