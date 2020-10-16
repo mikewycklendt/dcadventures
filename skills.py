@@ -644,57 +644,64 @@ def post_bonus_degree_mod():
 		measure_math_math = None
 		measure_math_math_name = ''
 
+	try:
+		bonus = SkillDegreeMod(bonus_id=bonus_id, 
+			target=target,
+			degree=degree,
+			type=type,
+			damage_value_degree=damage_value_degree,
+			damage_value_value=damage_value_value,
+			damage_math_damage=damage_math_damage,
+			damage_math_math1=damage_math_math1,
+			damage_math_value=damage_math_value,
+			damage_math_math2=damage_math_math2,
+			damage_math_rank=damage_math_rank,
+			measure_value=measure_value,
+			measure_value_rank=measure_value_rank,
+			measure_math_value=measure_math_value,
+			measure_math_math =measure_math_math,
+			measure_math_rank=measure_math_rank,
+			measure_math_measure_rank=measure_math_measure_rank,
+			condition_1=condition_1,
+			condition_2=condition_2,
+			keyword=keyword,
+			description=description,
+			nullify=nullify)	
 	
-	bonus = SkillDegreeMod(bonus_id=bonus_id, 
-		target=target,
-		degree=degree,
-		type=type,
-		damage_value_degree=damage_value_degree,
-		damage_value_value=damage_value_value,
-		damage_math_damage=damage_math_damage,
-		damage_math_math1=damage_math_math1,
-		damage_math_value=damage_math_value,
-		damage_math_math2=damage_math_math2,
-		damage_math_rank=damage_math_rank,
-		measure_value=measure_value,
-		measure_value_rank=measure_value_rank,
-		measure_math_value=measure_math_value,
-		measure_math_math =measure_math_math,
-		measure_math_rank=measure_math_rank,
-		measure_math_measure_rank=measure_math_measure_rank,
-		condition_1=condition_1,
-		condition_2=condition_2,
-		keyword=keyword,
-		description=description,
-		nullify=nullify)	
-	
-	db.session.add(bonus)	
-	db.session.commit()
-	body['success'] = True
-	body['id'] = bonus.id
-	body['bonus_id'] = bonus.bonus_id	
-	body['target'] = bonus.target
-	body['degree'] = bonus.degree
-	body['type'] = bonus.type
-	body['damage_value_degree'] = bonus.damage_value_degree
-	body['damage_value_value'] = bonus.damage_value_value
-	body['damage_math_damage'] = bonus.damage_math_damage
-	body['damage_math_math1'] = damage_math_math1_name
-	body['damage_math_value'] = bonus.damage_math_value
-	body['damage_math_math2'] = damage_math_math2_name
-	body['damage_math_rank'] = damage_math_rank_name
-	body['measure_value'] = bonus.measure_value
-	body['measure_value_rank'] = measure_value_rank_name
-	body['measure_math_value'] = bonus.measure_math_value
-	body['measure_math_math'] = measure_math_math_name
-	body['measure_math_rank'] = measure_math_rank_name
-	body['measure_math_measure_rank'] = measure_math_measure_rank_name
-	body['condition_1'] = bonus.condition_1
-	body['condition_2'] = bonus.condition_2
-	body['keyword'] = bonus.keyword
-	body['description'] = bonus.description
-	body['nullify'] = bonus.nullify
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id	
+		body['target'] = bonus.target
+		body['degree'] = bonus.degree
+		body['type'] = bonus.type
+		body['damage_value_degree'] = bonus.damage_value_degree
+		body['damage_value_value'] = bonus.damage_value_value
+		body['damage_math_damage'] = bonus.damage_math_damage
+		body['damage_math_math1'] = damage_math_math1_name
+		body['damage_math_value'] = bonus.damage_math_value
+		body['damage_math_math2'] = damage_math_math2_name
+		body['damage_math_rank'] = damage_math_rank_name
+		body['measure_value'] = bonus.measure_value
+		body['measure_value_rank'] = measure_value_rank_name
+		body['measure_math_value'] = bonus.measure_math_value
+		body['measure_math_math'] = measure_math_math_name
+		body['measure_math_rank'] = measure_math_rank_name
+		body['measure_math_measure_rank'] = measure_math_measure_rank_name
+		body['condition_1'] = bonus.condition_1
+		body['condition_2'] = bonus.condition_2
+		body['keyword'] = bonus.keyword
+		body['description'] = bonus.description
+		body['nullify'] = bonus.nullify
 
-	db.session.close()
-	print(body)
-	return jsonify(body)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)

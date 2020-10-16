@@ -248,7 +248,7 @@ function deg_mod_submit() {
 		
 				if (type == 'damage') {
 					if (damage_type == 'math') {
-						effect = jsonResponse.damage_math_damage + ' ' + jsonResponse.damage_math_math1 + ' ' + jsonResponse.damage_type_value + ' ' + jsonResponse.damage_math_math2 + ' ' + jsonResponse.damage_math_rank;
+						effect = jsonResponse.damage_math_damage + ' ' + jsonResponse.damage_math_math1 + ' ' + jsonResponse.damage_math_value + ' ' + jsonResponse.damage_math_math2 + ' ' + jsonResponse.damage_math_rank;
 					} else if (damage_type == 'value') {
 						effect = 'degree: ' + jsonResponse.damage_value_degree + ' damage: ' + jsonResponse.damage_value_value;
 					}
