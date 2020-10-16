@@ -620,7 +620,7 @@ def post_bonus_degree_mod():
 		rank = db.session.query(Rank).filter_by(id=damage_math_rank).one()
 		damage_math_rank_name = rank.name
 	else:
-		adjust_rank = None
+		damage_math_rank = None
 		damage_math_rank_name = ''
 
 	if damage_math_math1 != '':	
