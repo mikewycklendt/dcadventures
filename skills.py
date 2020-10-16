@@ -695,3 +695,6 @@ def post_bonus_degree_mod():
 	body['description'] = bonus.description
 	body['nullify'] = bonus.nullify
 
+	db.session.close()
+	print(body)
+	return jsonify(body)
