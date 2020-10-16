@@ -767,3 +767,36 @@ def post_bonus_resist():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/opp_condition/create', methods=['POST'])
+def post_bonus_opp_condition():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	degree = request.get_json()['degree']
+	condition = request.get_json()['condition']
+	rounds = request.get_json()['rounds']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillOppCondition(bonus_id=bonus_id, degree=degree, condition=condition, rounds=rounds, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['degree'] = bonus.degree
+		body['condition'] = bonus.condition
+		body['rounds'] = bonus.rounds
+		body['description'] = bonus.description
+		
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+

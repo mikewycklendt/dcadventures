@@ -40,80 +40,115 @@ function opp_cond_submit() {
 	
 	if (des_value != '' && deg_value != '' && con_value != '' && rnd_value != '') {
 
-		const deg = document.createElement('div');
-		deg.className = 'opp-cond-table-deg'
-		deg.innerHTML = deg_value;
-
-		const con = document.createElement('div');
-		con.className = 'opp-cond-table-con'
-		con.innerHTML = con_value;
-
-		const rnd = document.createElement('div');
-		rnd.className = 'opp-cond-table-rnd'
-		rnd.innerHTML = rnd_value;
-
-		const des = document.createElement('div');
-		des.className = 'opp-cond-table-des'
-		des.innerHTML = des_value;
-	
-		const ocDelete = document.createElement('div');
-		ocDelete.className = 'opp-cond-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'opp-cond-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', opp_cond_enter);
-		ocDelete.appendChild(deleteBtn);
-
-		opp_cond_enter = opp_cond_enter + 1;
-	
-		const table = document.getElementById('opp-cond-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(deg);
-		table.appendChild(con);
-		table.appendChild(rnd);
-		table.appendChild(des)
-		table.appendChild(ocDelete);
-
-		rows = [deg.scrollHeight, con.scrollHeight, rnd.scrollHeight, des.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/opp_condition/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'degree': deg_value,
+				'condition': con_value,
+				'rounds': rnd_value,
+				'description': des_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
-		
-		deg.style.maxHeight = deg.scrollHeight + "px";
-		con.style.maxHeight = con.scrollHeight + "px";
-		rnd.style.maxHeight = rnd.scrollHeight + "px";
-		des.style.maxHeight = des.scrollHeight + "px";
-		ocDelete.style.maxHeight = ocDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		opp_cond_delete()
-	
-		errors_delete = document.getElementsByClassName('opp-cond-err-line');
+				const deg = document.createElement('div');
+				deg.className = 'opp-cond-table-deg'
+				deg.innerHTML = jsonResponse.degree;
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				const con = document.createElement('div');
+				con.className = 'opp-cond-table-con'
+				con.innerHTML = jsonResponse.condition;
+
+				const rnd = document.createElement('div');
+				rnd.className = 'opp-cond-table-rnd'
+				rnd.innerHTML = jsonResponse.rounds;
+
+				const des = document.createElement('div');
+				des.className = 'opp-cond-table-des'
+				des.innerHTML = jsonResponse.description;
+			
+				const ocDelete = document.createElement('div');
+				ocDelete.className = 'opp-cond-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'opp-cond-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				ocDelete.appendChild(deleteBtn);
+
+				const table = document.getElementById('opp-cond-table');
+
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+
+				table.appendChild(deg);
+				table.appendChild(con);
+				table.appendChild(rnd);
+				table.appendChild(des)
+				table.appendChild(ocDelete);
+
+				rows = [deg.scrollHeight, con.scrollHeight, rnd.scrollHeight, des.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+				
+				deg.style.maxHeight = deg.scrollHeight + "px";
+				con.style.maxHeight = con.scrollHeight + "px";
+				rnd.style.maxHeight = rnd.scrollHeight + "px";
+				des.style.maxHeight = des.scrollHeight + "px";
+				ocDelete.style.maxHeight = ocDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				opp_cond_delete()
+			
+				errors_delete = document.getElementsByClassName('opp-cond-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('opp-cond-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+
+			} else {
+				const errors = document.getElementById('opp-cond-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'opp-cond-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('opp-cond-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 
