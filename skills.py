@@ -747,7 +747,7 @@ def post_bonus_resist():
 	description = request.get_json()['description']
 
 	try:
-		bonus = SkillResistCheck(bonus_id=bonus_id, effect=effect, description=description)
+		bonus = SkillResistEffect(bonus_id=bonus_id, effect=effect, description=description)
 		db.session.add(bonus)	
 		db.session.commit()
 		body['success'] = True
