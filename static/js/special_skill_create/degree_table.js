@@ -61,7 +61,7 @@ function degree_submit() {
 
 	if (degrees_type != '' && degrees_target != '' && key_value != '' && desc_value != '' && val_value != '') {
 
-		response = fetch('/skill/power/create', {
+		response = fetch('/skill/degree_key/create', {
 			method: 'POST',
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
