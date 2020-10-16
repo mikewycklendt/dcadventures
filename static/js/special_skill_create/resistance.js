@@ -51,69 +51,103 @@ function resistance_submit() {
 	
 	if (resisttarget != '' && mod_value != '' && des_value != '') {
 
-		const mod = document.createElement('div');
-		mod.className = 'resist-table-mod'
-		mod.innerHTML = mod_value;
-
-		const des = document.createElement('div');
-		des.className = 'resist-table-desc'
-		des.innerHTML = des_value;
-	
-		const resistDelete = document.createElement('div');
-		resistDelete.className = 'resist-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'resist-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', resistance_enter);
-		resistDelete.appendChild(deleteBtn);
-
-		resistance_enter = resistance_enter + 1;
-
-		const table = document.getElementById('resist-table');
-	
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-	
-		table.appendChild(mod);
-		table.appendChild(des);
-		table.appendChild(resistDelete);
-
-		rows = [mod.scrollHeight, des.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/resistance/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'target': resisttarget,
+				'mod': mod_value,
+				'description': des_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
+
+				const mod = document.createElement('div');
+				mod.className = 'resist-table-mod'
+				mod.innerHTML = jsonResponse.mod;
+
+				const des = document.createElement('div');
+				des.className = 'resist-table-desc'
+				des.innerHTML = jsonResponse.description;
+	
+				const resistDelete = document.createElement('div');
+				resistDelete.className = 'resist-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'resist-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
+				resistDelete.appendChild(deleteBtn);
+
+				const table = document.getElementById('resist-table');
+	
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+	
+				table.appendChild(mod);
+				table.appendChild(des);
+				table.appendChild(resistDelete);
+
+				rows = [mod.scrollHeight, des.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
 
 		
-		mod.style.maxHeight = mod.scrollHeight + "px";
-		des.style.maxHeight = des.scrollHeight + "px";
-		resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				mod.style.maxHeight = mod.scrollHeight + "px";
+				des.style.maxHeight = des.scrollHeight + "px";
+				resistDelete.style.maxHeight = resistDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
-		resistance_delete()
+				resistance_delete()
 	
-		errors_delete = document.getElementsByClassName('resist-err-line');
+				errors_delete = document.getElementsByClassName('resist-err-line');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('resist-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+			
+			} else {
+				const errors = document.getElementById('resist-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error = document.createElement('div');
+				error.className = 'resist-err-line';
+				error.innerHTML = jsonResponse.error;
+
+				errors.appendChild(error);
+
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors = document.getElementById('resist-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 

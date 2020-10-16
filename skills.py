@@ -705,3 +705,34 @@ def post_bonus_degree_mod():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+@skills.route('/skill/resistance/create', methods=['POST'])
+def post_bonus_resistance():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	target = request.get_json()['target']
+	mod = request.get_json()['mod']
+	description = request.get_json()['description']
+
+	try:
+		bonus = SkillResistCheck(bonus_id=bonus_id, target=target, mod=mod, description=description)
+		db.session.add(bonus)	
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['target'] =  bonus.target
+		body['mod'] = bonus.mod
+		body['description'] = bonus.description
+		
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
