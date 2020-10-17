@@ -296,6 +296,9 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	grid-template-columns: 70% 25%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .15s ease-out;
 }
 
 #skill-edit-field input[type="text"] {
