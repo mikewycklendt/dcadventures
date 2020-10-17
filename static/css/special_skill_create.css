@@ -298,6 +298,12 @@ textarea:focus {
 	grid-template-columns: 70% 25%;
 }
 
+#skill-edit-field input[type="text"] {
+	height: 2.4vw;
+	padding: .5vw;
+	font-size: 150%;
+}
+
 #skill-name {
 	opacity: 0%;
 	font-family: Comic, Verdana;
