@@ -203,6 +203,57 @@ def post_skill():
 	else:
 		return jsonify(body)
 
+@skills.route('/skill/edit_name', methods=['POST'])
+def edit_skill_name(): 
+	body = {}
+	error = False
+	error_msgs = []
+	errors = {}
+
+	skill_id = request.get_json()['id']
+	name = request.get_json()['name']
+	print(name)
+
+	skills = Skill.query.all()
+	bonuses = SkillBonus.query.all()
+
+	all_skills = []
+
+	for skill in skills:
+		all_skills.append(skill.name)
+
+	for skill in bonuses:
+		all_skills.append(skill.name)
+
+	for skill in all_skills:
+		if skill == name:
+			error = True
+			errors['success'] = False
+			error_msgs.append('There is already a skill with that name')
+			errors['error'] = error_msgs
+			break
+
+	try:
+		skill = SkillBonus.query.get(skill_id)
+		skill.name = name
+		db.session.commit()
+		body['success'] = True
+		body['id'] = skill.id
+		body['name'] = skill.name
+	except:
+		error = True
+		errors['success'] = False
+		error_msgs.append('There was an error processing the request')
+		errors['error'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print(body)
+	if error:
+		return jsonify(errors)
+	else:
+		return jsonify(body)
+
 @skills.route('/skill/other_checks/create', methods=['POST'])
 def post_bonus_other_checks():
 	body = {}

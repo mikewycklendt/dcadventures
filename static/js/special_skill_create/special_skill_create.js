@@ -59,6 +59,53 @@ edit_form = function() {
 	edit_grid.style.display = "grid";
 	edit_grid.style.maxHeight = edit_grid.scrollHeight + "px";
 	edit_grid.style.padding = "1%";
-
-
 }
+
+skill_edit = function() {
+	const id = document.getElementById('bonus_id').value;
+	const name = document.getElementById('skill_name_edit').value;
+	
+	response = fetch('/skill/edit_name', {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': id,
+			'name': name
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+			const name_div = document.getElementById('skill-name');
+			const edit_grid = document.getElementById('skill-edit-grid');
+			edit_grid.style.display = "none";
+			name_div.innerHTML = jsonResponse.name;
+			name_div.style.fontSize = "460%";
+			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
+
+
+		} else {
+			const errors = document.getElementById('name-err');
+
+			const error_msgs = jsonResponse.error
+			let i;
+
+			for (i of error_msgs) {
+				const error = document.createElement('div');
+				error.className = 'circ-err-line';
+				error.innerHTML = i;
+		
+				errors.appendChild(error);
+			
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";	
+			}
+		}
+	})
+}
+
