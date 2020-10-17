@@ -1,5 +1,7 @@
 skill_create = function() {
 	const skill_name = document.getElementById('skill_name').value;
+	const add_skill = document.getElementById('add-skill');
+	const edit_button = document.getElementById('edit-button');
 
 	response = fetch('/skill/create', {
 		method: 'POST',
@@ -19,6 +21,11 @@ skill_create = function() {
 			name_div.innerHTML = jsonResponse.name;
 			skill_id.value = jsonResponse.id;
 			name_div.style.display = "block"
+			name_div.style.opacity = "100%"
+			setTimeout(function(){name_div.style.fontSize = "400%"}, 50);
+			setTimeout(function(){name_div.style.fontSize = "360%"}, 75);
+			edit_button.style.display = "block";
+			add_skill.style.display = "none";
 		} else {
 			const errors = document.getElementById('name-err');
 

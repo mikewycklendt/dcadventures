@@ -311,7 +311,7 @@ textarea:focus {
 	opacity: 0%;
 	font-family: Comic, Verdana;
 	text-shadow: 1px, 1px, 1px rgba(36, 86, 129, 0.05);
-	font-size: 400%;
+	font-size: 300%;
 	color: #245681;
 	transition: all .05s ease-in-out
 }
