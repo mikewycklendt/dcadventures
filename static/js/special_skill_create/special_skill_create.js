@@ -48,3 +48,17 @@ skill_create = function() {
 		}
 	})
 }
+
+edit_form = function() {
+	const skill_id = document.getElementById('bonus_id').value;
+	const edit_field = document.getElementById('skill_name_edit');
+	const name = document.getElementById('skill-name').innerHTML;
+	const edit_grid = document.getElementById('skill-edit-grid');
+
+	edit_field.value = name;
+	edit_grid.style.display = "grid";
+	edit_grid.style.maxHeight = edit_grid.scrollHeight + "px";
+	edit_grid.style.padding = "1%";
+
+
+}
