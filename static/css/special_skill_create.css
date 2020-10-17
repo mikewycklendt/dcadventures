@@ -286,11 +286,15 @@ textarea:focus {
 
 #skill-name-grid {
 	display: grid;
+	width: 100%;
+	margin: 2%;
 	grid-template-columns: 70% 25%;
 }
 
 #skill-edit-grid {
 	display: grid;
+	width: 100%;
+	margin: 2%;
 	grid-template-columns: 70% 25%;
 }
 
