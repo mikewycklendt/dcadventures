@@ -316,6 +316,11 @@ textarea:focus {
 	transition: all .05s ease-in-out
 }
 
+#all-fields {
+	opacity: 0%;
+	transition: all .1s linear;
+} 
+
 .edit-btn {
 	display: table-cell;
 	width: 13vw;

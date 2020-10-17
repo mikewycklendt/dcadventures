@@ -16,6 +16,7 @@ skill_create = function() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			const all_fields = document.getElementById('all-fields');
 			const name_div = document.getElementById('skill-name');
 			const skill_id = document.getElementById('bonus_id');
 			name_div.innerHTML = jsonResponse.name;
@@ -26,6 +27,7 @@ skill_create = function() {
 			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 			edit_button.style.display = "block";
 			add_skill.style.display = "none";
+			all_fields.style.opacity = "100%";
 		} else {
 			const errors = document.getElementById('name-err');
 
