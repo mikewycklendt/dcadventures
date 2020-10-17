@@ -236,7 +236,8 @@ def edit_skill_name():
 	try:
 		skill = SkillBonus.query.get(skill_id)
 		skill.name = name
-		db.session.commit(skill)
+		db.session.add(skill)
+		db.session.commit()
 		body['success'] = True
 		body['id'] = skill.id
 		body['name'] = skill.name
