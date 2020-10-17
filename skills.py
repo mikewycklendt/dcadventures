@@ -234,9 +234,8 @@ def edit_skill_name():
 			break
 
 	try:
-		skill = SkillBonus.query.get(skill_id)
+		skill = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
 		skill.name = name
-		db.add(skill)
 		db.session.commit()
 		body['success'] = True
 		body['id'] = skill.id
