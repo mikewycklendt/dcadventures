@@ -22,8 +22,8 @@ skill_create = function() {
 			skill_id.value = jsonResponse.id;
 			name_div.style.display = "block"
 			name_div.style.opacity = "100%"
-			name_div.style.fontSize = "400%";
-			setTimeout(function(){name_div.style.fontSize = "360%"}, 75);
+			name_div.style.fontSize = "460%";
+			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 			edit_button.style.display = "block";
 			add_skill.style.display = "none";
 		} else {
