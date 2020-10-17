@@ -13,13 +13,7 @@
 		<div id="addskillgrid">
 
 			<div id="addskillunderline">
-				<div>
 					Skill Name
-				</div>
-
-				<div id="skill-name">
-
-				</div>
 			</div>
 
 			<div id="addskillform">
@@ -34,14 +28,41 @@
 				</div>
 			</div>
 
-		</div>
+			<div id="skill-name-grid">
 
-		<div id="name-err">
+				<div id="skill-name">
 
-		</div>
+				</div>
+
+				<div id="skill-edit">
+					<div id="edit-button">
+						<button style="font-size: 320%;"><i class="fa fa-edit"></i></button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="skill-edit-grid">
+				<div id="skill-edit-field">
+					<input type="text" id="skill_name_edit">
+				</div>
+
+				<div id="skill-edit-btn">
+					<div class="edit-btn" id="skill_edit" onclick="skill_edit()">
+						Edit Skill Name
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
 		
+			</div>
+			
+		</div>
+
 		<br>
-		
+
 		<div id="skill-form">
 			{% include skill_includes.base_form %}
 

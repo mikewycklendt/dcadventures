@@ -48,7 +48,7 @@ function char_submit() {
 	let deg_field = document.getElementById('char_value');
 	let rnk_field = document.getElementById('char_rank');
 
-	let des_value = document.getElementById('char_value').value;
+	let des_value = document.getElementById('char_desc').value;
 
 	let deg_value = deg_field.options[deg_field.selectedIndex].value;
 	let rnk_value = rnk_field.options[rnk_field.selectedIndex].value;
