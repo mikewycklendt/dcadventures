@@ -928,13 +928,16 @@ def post_bonus_dc():
 	if damage == '':
 		damage = None
 
-	try:
-		measureval = int(measure_val)
-	except:
-		error = True
-		error_msgs.append('Measurement value must be a number')
-		body['success'] = False
-		body['error'] = error_msgs
+	if measure_val != '':
+		try:
+			measureval = int(measure_val)
+		except:
+			error = True
+			error_msgs.append('Measurement value must be a number')
+			body['success'] = False
+			body['error'] = error_msgs
+	else:
+		measure_val = None
 
 
 	if math_rank != '':
