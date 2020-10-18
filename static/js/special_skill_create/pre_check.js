@@ -246,18 +246,25 @@ pre_check_standard_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			skills[i].style.maxHeight = "0px";
-			skills[i].style.padding = "0px";
-			skills[i].style.marginBottom = "0px";
-			circs[i].style.maxHeight = "0px";
-			circs[i].style.padding = "0px";
-			circs[i].style.marginBottom = "0px";
-			whens[i].style.maxHeight = "0px";
-			whens[i].style.padding = "0px";
-			whens[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/pre_check/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				skills[i].style.maxHeight = "0px";
+				skills[i].style.padding = "0px";
+				skills[i].style.marginBottom = "0px";
+				circs[i].style.maxHeight = "0px";
+				circs[i].style.padding = "0px";
+				circs[i].style.marginBottom = "0px";
+				whens[i].style.maxHeight = "0px";
+				whens[i].style.padding = "0px";
+				whens[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
