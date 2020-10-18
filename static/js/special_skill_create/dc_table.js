@@ -275,185 +275,242 @@ function dc_submit() {
 			((def_check.checked == true && def_value != '') || (def_check.checked == false)) && ((act_check.checked == true && act_value != '') || (act_check.checked == false)) && 
 			((con_check.checked == true && con1_value != '' && con2_value != '') || (con_check.checked == false)) ) {
 
-		const dc = document.createElement('div');
-		dc.className = 'dc-table-dc';
-		if (type_value == 'value') {
-			dc.innerHTML = class_value;
-			dc_col = "4%";
-		} else if (type_value == 'math') {
-			dc.innerHTML = math_val_value + ' ' + math_value + ' ' + math_rank_value;
-			dc_col = "15%";
-		}
-		
-		const des = document.createElement('div');
-		des.className = 'dc-table-des';
-		des.innerHTML = des_value;
 
-		console.log(key_value);
-		console.log(con_check.checked);
+		response = fetch('/skill/dc/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'type': type_value,
+				'val': class_value,
+				'math_val': math_val_value,
+				'math': math_value,
+				'math_rank': math_rank_value,
+				'measure_type': mea_type_value,
+				'measure_val': mea_val_value,
+				'measure_val_unit': mea_unt_value,
+				'measure_math_val': mea_math_val_value,
+				'measure_math': mea_math_value,
+				'measure_rank': mea_math_rnk_value,
+				'damage': dam_value,
+				'keyword': key_value,
+				'condition_one': con1_value,
+				'condition_two': con2_value,
+				'defense': def_value,
+				'action': act_value,
+				'description': des_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
+			}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		const key = document.createElement('div');
-		key.className = 'dc-table-key';
+				const dc = document.createElement('div');
+				dc.className = 'dc-table-dc';
+				if (type_value == 'value') {
+					dc.innerHTML = jsonResponse.val;
+					dc_col = "4%";
+				} else if (type_value == 'math') {
+					dc.innerHTML = jsonResponse.math_val + ' ' + jsonResponse.math + ' ' + jsonResponse.math_rank;
+					dc_col = "15%";
+				}
+				
+				const des = document.createElement('div');
+				des.className = 'dc-table-des';
+				des.innerHTML = jsonResponse.description;
 
-		if (key_value != '') {	
-			key.innerHTML = key_value;
-			key_col = "auto";
-		} else {
-			key.innerHTML = '';
-		}
+				console.log(key_value);
+				console.log(con_check.checked);
 
-		const mea = document.createElement('div');
-		mea.className = 'dc-table-mea';
-		
-		if (mea_type_value == 'math') {
-			mea.innerHTML = mea_math_val_value + mea_math_value + mea_math_rnk_value;
-			mea_col = "auto";
-		} else if (mea_type_value == 'value') {
-			mea.innerHTML = mea_val_value + ' ' + mea_unt_value;
-			mea_col = "auto";
-		} else {
-			mea.innerHTML = '';
-		}
+				const key = document.createElement('div');
+				key.className = 'dc-table-key';
 
-		const dam = document.createElement('div');
-		dam.className = 'dc-table-dam';
-		
-		if (dam_value != '') {
-			dam.innerHTML = dam_value;
-			dam_col = "auto";
-		} else {
-			dam.innerHTML = '';
-		}
+				if (key_value != '') {	
+					key.innerHTML = jsonResponse.keyword;
+					key_col = "auto";
+				} else {
+					key.innerHTML = '';
+				}
 
-		const def = document.createElement('div');
-		def.className = 'dc-table-def';
-		
-		if (def_value != '') {
-			def.innerHTML = def_value;
-			def_col = "auto";
-		} else {
-			def.innerHTML = '';
-		}
+				const mea = document.createElement('div');
+				mea.className = 'dc-table-mea';
+				
+				if (mea_type_value == 'math') {
+					mea.innerHTML = jsonResponse.measure_math_val + jsonResponse.measure_math + jsonResponse.measure_rank;
+					mea_col = "auto";
+				} else if (mea_type_value == 'value') {
+					mea.innerHTML = jsonResponse.measure_val + ' ' + jsonResponse.measure_val_unit;
+					mea_col = "auto";
+				} else {
+					mea.innerHTML = '';
+				}
 
-		const act = document.createElement('div');
-		act.className = 'dc-table-act';
-		
-		if (act_value != '') {
-			act.innerHTML = act_value;
-			act_col = "auto";
-		} else {
-			act.innerHTML = '';
-		}
+				const dam = document.createElement('div');
+				dam.className = 'dc-table-dam';
+				
+				if (dam_value != '') {
+					dam.innerHTML = jsonResponse.damage;
+					dam_col = "auto";
+				} else {
+					dam.innerHTML = '';
+				}
 
-		const con = document.createElement('div');
-		con.className = 'dc-table-con';
-		
-		if (con1_value != '' && con2_value != '') {
-			con.innerHTML = con1_value + ' to ' + con2_value;
-			con_col = "auto";
-		} else {
-			con.innerHTML = '';
-		}
+				const def = document.createElement('div');
+				def.className = 'dc-table-def';
+				
+				if (def_value != '') {
+					def.innerHTML = jsonResponse.defense;
+					def_col = "auto";
+				} else {
+					def.innerHTML = '';
+				}
 
-		const dcDelete = document.createElement('div');
-		dcDelete.className = 'dc-table-delete';
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'dc-xbox';
-		deleteBtn.innerHTML = '&cross;';
-		deleteBtn.setAttribute('data-id', dc_enter);
-		dcDelete.appendChild(deleteBtn);
+				const act = document.createElement('div');
+				act.className = 'dc-table-act';
+				
+				if (act_value != '') {
+					act.innerHTML = jsonResponse.action;
+					act_col = "auto";
+				} else {
+					act.innerHTML = '';
+				}
 
-		let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
-		
-		dc_enter = dc_enter + 1;
+				const con = document.createElement('div');
+				con.className = 'dc-table-con';
+				
+				if (con1_value != '' && con2_value != '') {
+					con.innerHTML = jsonResponse.condition_one + ' to ' + jsonResponse.condition_two;
+					con_col = "auto";
+				} else {
+					con.innerHTML = '';
+				}
+
+				const dcDelete = document.createElement('div');
+				dcDelete.className = 'dc-table-delete';
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'dc-xbox';
+				deleteBtn.innerHTML = '&cross;';
+				deleteBtn.setAttribute('data-id', jsonResponse.dam_grid);
+				dcDelete.appendChild(deleteBtn);
+
+				let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
+					
+				const key_title = document.getElementById('dc-table-title-key');
+				const mea_title = document.getElementById('dc-table-title-mea');
+				const dam_title = document.getElementById('dc-table-title-dam');
+				const def_title = document.getElementById('dc-table-title-def');
+				const act_title = document.getElementById('dc-table-title-act');
+				const con_title = document.getElementById('dc-table-title-con');
+
+				const table = document.getElementById('dc-table-container');
+
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+				table.style.gridTemplateColumns = dc_grid;
+
+				table.appendChild(dc);
+				table.appendChild(key);
+				table.appendChild(des);
+				table.appendChild(mea);
+				table.appendChild(dam);
+				table.appendChild(def);
+				table.appendChild(act);
+				table.appendChild(con);
+				table.appendChild(dcDelete);
+
+				let rows = [dc.scrollHeight, key.scrollHeight, des.scrollHeight, mea.scrollHeight, dam.scrollHeight, def.scrollHeight, act.scrollHeight, con.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				if (key_check.checked == true) {
+					key_title.style.maxWidth = key_title.scrollWidth + "px";
+				} 
+
+				if (mea_check.checked == true) {
+					mea_title.style.maxWidth = mea_title.scrollWidth + "px";
+				}
+
+				if (dam_check.checked == true) {
+					dam_title.style.maxWidth = dam_title.scrollWidth + "px";
+				}
+
+				if (def_check.checked == true) {
+					def_title.style.maxWidth = def_title.scrollWidth + "px";
+				}
+
+				if (act_check.checked == true) {
+					act_title.style.maxWidth = act_title.scrollWidth + "px";
+				}
+				if (con_check.checked == true) {
+					con_title.style.maxWidth = act_title.scrollWidth + "px";
+				}
+				
+				dc.style.maxHeight = dc.scrollHeight + "px";
+				key.style.maxHeight = key.scrollHeight + "px";
+				des.style.maxHeight = des.scrollHeight + "px";
+				mea.style.maxHeight = mea.scrollHeight + "px";
+				dam.style.maxHeight = dam.scrollHeight + "px";
+				def.style.maxHeight = def.scrollHeight + "px";
+				act.style.maxHeight = act.scrollHeight + "px";
+				con.style.maxHeight = con.scrollHeight + "px";
+				dcDelete.style.maxHeight = dcDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				dc_delete();
+				
+				errors_delete = document.getElementsByClassName('dc-err-line');
+
+				if (typeof errors_delete[0] === "undefined") {
+					console.log('no errors defined')
+				} else {
+					for (i = 0; i < errors_delete.length; i++) {
+						errors_delete[i].style.maxHeight = "0px";
+						errors_delete[i].style.padding = "0px";
+						errors_delete[i].style.marginBottom = "0px";
+					}
+
+					errors = document.getElementById('dc-err')
+
+					errors.style.display = "none";
+					errors.style.padding = "0px";
+					errors.style.maxHeight = "0px";
+				}
+
+			} else {
+
+				console.log(jsonResponse)
+				const errors = document.getElementById('dc-err');
+
+				errors.style.display = "grid";
+				errors.style.padding = "1%";
+
+				const error_msgs = jsonResponse.error
+				let i;
+
+				for (i of error_msgs) {
+					const error = document.createElement('div');
+					error.className = 'dc-err-line';
+					error.innerHTML = i;
 			
-		const key_title = document.getElementById('dc-table-title-key');
-		const mea_title = document.getElementById('dc-table-title-mea');
-		const dam_title = document.getElementById('dc-table-title-dam');
-		const def_title = document.getElementById('dc-table-title-def');
-		const act_title = document.getElementById('dc-table-title-act');
-		const con_title = document.getElementById('dc-table-title-con');
+					errors.appendChild(error);
+				
+					error.style.maxHeight = error.scrollHeight + "px";
 
-		const table = document.getElementById('dc-table-container');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-		table.style.gridTemplateColumns = dc_grid;
-
-		table.appendChild(dc);
-		table.appendChild(key);
-		table.appendChild(des);
-		table.appendChild(mea);
-		table.appendChild(dam);
-		table.appendChild(def);
-		table.appendChild(act);
-		table.appendChild(con);
-		table.appendChild(dcDelete);
-
-		let rows = [dc.scrollHeight, key.scrollHeight, des.scrollHeight, mea.scrollHeight, dam.scrollHeight, def.scrollHeight, act.scrollHeight, con.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+					errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+					errors.style.padding = "1%";	
+				}
 			}
-		}
-
-		if (key_check.checked == true) {
-			key_title.style.maxWidth = key_title.scrollWidth + "px";
-		} 
-
-		if (mea_check.checked == true) {
-			mea_title.style.maxWidth = mea_title.scrollWidth + "px";
-		}
-
-		if (dam_check.checked == true) {
-			dam_title.style.maxWidth = dam_title.scrollWidth + "px";
-		}
-
-		if (def_check.checked == true) {
-			def_title.style.maxWidth = def_title.scrollWidth + "px";
-		}
-
-		if (act_check.checked == true) {
-			act_title.style.maxWidth = act_title.scrollWidth + "px";
-		}
-		if (con_check.checked == true) {
-			con_title.style.maxWidth = act_title.scrollWidth + "px";
-		}
-		
-		dc.style.maxHeight = dc.scrollHeight + "px";
-		key.style.maxHeight = key.scrollHeight + "px";
-		des.style.maxHeight = des.scrollHeight + "px";
-		mea.style.maxHeight = mea.scrollHeight + "px";
-		dam.style.maxHeight = dam.scrollHeight + "px";
-		def.style.maxHeight = def.scrollHeight + "px";
-		act.style.maxHeight = act.scrollHeight + "px";
-		con.style.maxHeight = con.scrollHeight + "px";
-		dcDelete.style.maxHeight = dcDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
-
-		dc_delete();
-		
-		errors_delete = document.getElementsByClassName('dc-err-line');
-
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
-			}
-
-			errors = document.getElementById('dc-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 		errors = document.getElementById('dc-err')

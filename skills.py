@@ -888,3 +888,156 @@ def post_bonus_char_check():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/dc/create', methods=['POST'])
+def post_bonus_dc():
+	body = {}
+	error = False
+	error_msgs = []
+	errors = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	type = request.get_json()['type']
+	val = request.get_json()['val']
+	math_val = request.get_json()['math_val']
+	math = request.get_json()['math']
+	math_rank = request.get_json()['math_rank']
+	measure_type = request.get_json()['measure_type']
+	measure_val = request.get_json()['measure_val']
+	measure_val_unit = request.get_json()['measure_val_unit']
+	measure_math_val = request.get_json()['measure_math_val']
+	measure_math = request.get_json()['measure_math']
+	measure_rank = request.get_json()['measure_rank']
+	damage = request.get_json()['damage']
+	keyword = request.get_json()['keyword']
+	condition_one = request.get_json()['condition_one']
+	condition_two = request.get_json()['condition_two']
+	defense = request.get_json()['defense']
+	action = request.get_json()['action']
+	description = request.get_json()['description']
+
+
+	if val == '':
+		val = None
+
+	if math_val == '':
+		math_val = None
+
+	if measure_math_val == '':
+		measure_math_val = None
+
+	if damage == '':
+		damage = None
+
+	try:
+		measureval = int(measure_val)
+	except:
+		error = True
+		error_msgs.append('Measurement value must be a number')
+		body['success'] = False
+		body['error'] = error_msgs
+
+
+	if math_rank != '':
+		rank = db.session.query(Rank).filter_by(id=math_rank).one()
+		math_rank_name = rank.name
+	else:
+		math_rank = None
+		math_rank_name = ''
+
+	if measure_rank != '':
+		rank = db.session.query(Rank).filter_by(id=measure_rank).one()
+		measure_rank_name = rank.name
+	else:
+		measure_rank = None
+		measure_rank_name = ''
+
+	if defense != '':
+		defenses = db.session.query(Defense).filter_by(id=defense).one()
+		defense_name = defenses.name
+	else:
+		defense = None
+		defense_name = ''
+
+	if action != '':
+		actions = db.session.query(Action).filter_by(id=action).one()
+		action_name = actions.name
+	else:
+		action = None
+		action_name = ''
+
+	if measure_math != '':
+		maths = db.session.query(Math).filter_by(id=measure_math).one()
+		measure_math_name = maths.symbol
+	else:
+		measure_math = None
+		measure_math_name = ''
+
+	if math != '':
+		maths = db.session.query(Math).filter_by(id=math).one()
+		math_name = maths.symbol
+	else:
+		math = None
+		math_name = ''
+
+	if measure_val_unit != '':	
+		unit = db.session.query(Unit).filter_by(id=measure_val_unit).one()
+		measure_val_unit_name = unit.name
+	else:
+		measure_val_unit = None
+		measure_val_unit_name = ''
+
+	try:
+		bonus = SkillDC(bonus_id = bonus_id,
+							type = type,
+							val = val,
+							math_val = math_val,
+							math = math,
+							math_rank = math_rank,
+							measure_type = measure_type,
+							measure_val = measureval,
+							measure_val_unit = measure_val_unit,
+							measure_math_val = measure_math_val,
+							measure_math = measure_math,
+							measure_rank = measure_rank,
+							damage = damage,
+							keyword = keyword,
+							condition_one = condition_one,
+							condition_two = condition_two,
+							defense = defense,
+							action = action,
+							description = description)		
+		db.session.add(bonus)	
+		db.session.commit()
+
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id	
+		body['type'] = bonus.type
+		body['val'] = bonus.val
+		body['math_val'] = bonus.math_val
+		body['math'] = math_name
+		body['math_rank'] = math_rank_name
+		body['measure_type'] = bonus.measure_type
+		body['measure_val'] = bonus.measure_val
+		body['measure_val_unit'] = measure_val_unit_name
+		body['measure_math_val'] = bonus.measure_math_val
+		body['measure_math'] = measure_math_name
+		body['measure_rank'] = measure_rank_name
+		body['damage'] = bonus.damage
+		body['keyword'] = bonus.keyword
+		body['condition_one'] = bonus.condition_one
+		body['condition_two'] = bonus.condition_two
+		body['defense'] = defense_name
+		body['action'] = action_name
+		body['description'] = bonus.description
+
+	except:
+		error = False
+		error_msgs.append('There was an error processing the request')
+		body['success'] = False
+		body['error'] = error_msgs
+
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
