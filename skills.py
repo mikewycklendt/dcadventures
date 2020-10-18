@@ -937,7 +937,7 @@ def post_bonus_dc():
 			body['success'] = False
 			body['error'] = error_msgs
 	else:
-		measure_val = None
+		measureval = None
 
 
 	if math_rank != '':
