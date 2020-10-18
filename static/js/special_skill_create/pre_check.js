@@ -324,11 +324,11 @@ function pre_check_opposed_submit() {
 		
 				const opposed = document.createElement('div');
 				opposed.className = 'pre-check-table-opposedby'
-				opposed.innerHTML = jsonResponse.opposed_check;
+				opposed.innerHTML = jsonResponse.oppose_check;
 
 				const circ = document.createElement('div');
 				circ.className = 'pre-check-table-opposed-circ'
-				circ.innerHTML = jsonResponse.opposed_circ_value;
+				circ.innerHTML = jsonResponse.description;
 	
 				const opposedDelete = document.createElement('div');
 				opposedDelete.className = 'pre-check-table-opposed-delete'
