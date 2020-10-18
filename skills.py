@@ -288,7 +288,7 @@ def post_bonus_other_checks():
 @skills.route('/skill/other_checks/delete/<bonus_id>', methods=['DELETE'])
 def delete_bonus_other_checks(bonus_id):
 	try:
-		SkillOther.query.filter_by(id=bonus_id).delete()
+		db.session.query(SkillOther).filter_by(id=bonus_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
