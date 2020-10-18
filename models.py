@@ -379,6 +379,7 @@ class SkillDC(db.Model):
 	condition_two = db.Column(db.String())
 	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	description = db.Column(db.String())
 
 
 	def format(self):
@@ -401,7 +402,8 @@ class SkillDC(db.Model):
 			'condition_one': self.condition_one,
 			'condition_two': self.condition_two,
 			'defense': self.defense,
-			'action': self.action
+			'action': self.action,
+			'description': self.description
 		}
 
 class SkillLevels(db.Model):
