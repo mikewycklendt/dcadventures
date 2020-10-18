@@ -182,15 +182,22 @@ resist_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			effs[i].style.maxHeight = "0px";
-			effs[i].style.padding = "0px";
-			effs[i].style.marginBottom = "0px";
-			exs[i].style.maxHeight = "0px";
-			exs[i].style.padding = "0px";
-			exs[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/pre_check/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				effs[i].style.maxHeight = "0px";
+				effs[i].style.padding = "0px";
+				effs[i].style.marginBottom = "0px";
+				exs[i].style.maxHeight = "0px";
+				exs[i].style.padding = "0px";
+				exs[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+				})
 		}
 	}
 };
