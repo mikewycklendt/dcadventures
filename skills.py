@@ -928,7 +928,7 @@ def post_bonus_dc():
 	if damage == '':
 		damage = None
 
-	if measure_val = '':
+	if measure_val == '':
 		measureval = None
 
 	try:
