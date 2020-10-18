@@ -350,7 +350,7 @@ textarea:focus {
 
 .edit-btn::before {
 	font-family: 'FontAwesome';
-	content: '\f044';
+	content: '\f0c7';
 	display: inline-block;
 }
 
