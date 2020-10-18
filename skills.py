@@ -1009,7 +1009,7 @@ def post_bonus_dc():
 							defense = defense,
 							action = action,
 							description = description)		
- 	db.session.add(bonus)	
+	db.session.add(bonus)	
 	db.session.commit()
 
 	body['success'] = True
