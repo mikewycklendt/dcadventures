@@ -335,7 +335,7 @@ function pre_check_opposed_submit() {
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'pre-check-opposed-xbox';
 				deleteBtn.innerHTML = '&cross;';
-				deleteBtn.setAttribute('data-id', opposed_enter);
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				opposedDelete.appendChild(deleteBtn);
 
 				const opposed_table = document.getElementById('pre-check-table-opposed');
