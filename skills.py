@@ -1047,4 +1047,4 @@ def post_bonus_dc():
 		finally:
 			db.session.close()
 			print(body)
-			return jsonify(body
+			return jsonify(body)
