@@ -928,6 +928,9 @@ def post_bonus_dc():
 	if damage == '':
 		damage = None
 
+	if measure_val = '':
+		measureval = None
+
 	try:
 		measureval = int(measure_val)
 	except:
@@ -935,8 +938,6 @@ def post_bonus_dc():
 		error_msgs.append('Measurement value must be a number')
 		body['success'] = False
 		body['error'] = error_msgs
-		measureval = None
-	
 
 	if math_rank != '':
 		rank = db.session.query(Rank).filter_by(id=math_rank).one()
@@ -987,7 +988,6 @@ def post_bonus_dc():
 		measure_val_unit = None
 		measure_val_unit_name = ''
 
-
 	bonus = SkillDC(bonus_id = bonus_id,
 							type = type,
 							val = val,
@@ -1031,6 +1031,8 @@ def post_bonus_dc():
 	body['defense'] = defense_name
 	body['action'] = action_name
 	body['description'] = bonus.description
+
+
 
 	db.session.close()
 	print(body)
