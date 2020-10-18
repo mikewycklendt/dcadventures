@@ -989,8 +989,8 @@ def post_bonus_dc():
 		measure_val_unit = None
 		measure_val_unit_name = ''
 
-	try:
-		bonus = SkillDC(bonus_id = bonus_id,
+
+	bonus = SkillDC(bonus_id = bonus_id,
 							type = type,
 							val = val,
 							math_val = math_val,
@@ -1009,38 +1009,31 @@ def post_bonus_dc():
 							defense = defense,
 							action = action,
 							description = description)		
-		db.session.add(bonus)	
-		db.session.commit()
+ 	db.session.add(bonus)	
+	db.session.commit()
 
-		body['success'] = True
-		body['id'] = bonus.id
-		body['bonus_id'] = bonus.bonus_id	
-		body['type'] = bonus.type
-		body['val'] = bonus.val
-		body['math_val'] = bonus.math_val
-		body['math'] = math_name
-		body['math_rank'] = math_rank_name
-		body['measure_type'] = bonus.measure_type
-		body['measure_val'] = bonus.measure_val
-		body['measure_val_unit'] = measure_val_unit_name
-		body['measure_math_val'] = bonus.measure_math_val
-		body['measure_math'] = measure_math_name
-		body['measure_rank'] = measure_rank_name
-		body['damage'] = bonus.damage
-		body['keyword'] = bonus.keyword
-		body['condition_one'] = bonus.condition_one
-		body['condition_two'] = bonus.condition_two
-		body['defense'] = defense_name
-		body['action'] = action_name
-		body['description'] = bonus.description
+	body['success'] = True
+	body['id'] = bonus.id
+	body['bonus_id'] = bonus.bonus_id	
+	body['type'] = bonus.type
+	body['val'] = bonus.val
+	body['math_val'] = bonus.math_val
+	body['math'] = math_name
+	body['math_rank'] = math_rank_name
+	body['measure_type'] = bonus.measure_type
+	body['measure_val'] = bonus.measure_val
+	body['measure_val_unit'] = measure_val_unit_name
+	body['measure_math_val'] = bonus.measure_math_val
+	body['measure_math'] = measure_math_name
+	body['measure_rank'] = measure_rank_name
+	body['damage'] = bonus.damage
+	body['keyword'] = bonus.keyword
+	body['condition_one'] = bonus.condition_one
+	body['condition_two'] = bonus.condition_two
+	body['defense'] = defense_name
+	body['action'] = action_name
+	body['description'] = bonus.description
 
-	except:
-		error = False
-		error_msgs.append('There was an error processing the request')
-		body['success'] = False
-		body['error'] = error_msgs
-
-	finally:
-		db.session.close()
-		print(body)
-		return jsonify(body)
+	db.session.close()
+	print(body)
+	return jsonify(body)
