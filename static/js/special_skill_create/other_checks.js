@@ -177,16 +177,23 @@ other_delete = function() {
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
-			console.log('click')
-			skills[i].style.maxHeight = "0px";
-			skills[i].style.padding = "0px";
-			skills[i].style.marginBottom = "0px";
-			examples[i].style.maxHeight = "0px";
-			examples[i].style.padding = "0px";
-			examples[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/other_checks/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				console.log('click')
+				skills[i].style.maxHeight = "0px";
+				skills[i].style.padding = "0px";
+				skills[i].style.marginBottom = "0px";
+				examples[i].style.maxHeight = "0px";
+				examples[i].style.padding = "0px";
+				examples[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})			
 		}
 	}
 };
