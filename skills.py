@@ -930,14 +930,14 @@ def post_bonus_dc():
 
 	if measure_val == '':
 		measureval = None
-
-	try:
-		measureval = int(measure_val)
-	except:
-		error = True
-		error_msgs.append('Measurement value must be a number')
-		body['success'] = False
-		body['error'] = error_msgs
+	else:
+		try:
+			measureval = int(measure_val)
+		except:
+			error = True
+			error_msgs.append('Measurement value must be a number')
+			body['success'] = False
+			body['error'] = error_msgs
 
 	if math_rank != '':
 		rank = db.session.query(Rank).filter_by(id=math_rank).one()
