@@ -210,15 +210,23 @@ resistance_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			mods[i].style.maxHeight = "0px";
-			mods[i].style.padding = "0px";
-			mods[i].style.marginBottom = "0px";
-			dess[i].style.maxHeight = "0px";
-			dess[i].style.padding = "0px";
-			dess[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/resistance/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				mods[i].style.maxHeight = "0px";
+				mods[i].style.padding = "0px";
+				mods[i].style.marginBottom = "0px";
+				dess[i].style.maxHeight = "0px";
+				dess[i].style.padding = "0px";
+				dess[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };

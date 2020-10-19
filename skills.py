@@ -887,6 +887,17 @@ def post_bonus_resistance():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/resistance/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_resistance(bonus_id):
+	try:
+		db.session.query(SkillResistCheck).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
+
 
 @skills.route('/skill/resist/create', methods=['POST'])
 def post_bonus_resist():
