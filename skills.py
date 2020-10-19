@@ -972,6 +972,17 @@ def post_bonus_opp_condition():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/opp_condition/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_opp_condition(bonus_id):
+	try:
+		db.session.query(SkillOppCondition).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
+
 @skills.route('/skill/char_check/create', methods=['POST'])
 def post_bonus_char_check():
 	body = {}
