@@ -105,7 +105,7 @@ function levels_submit() {
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'levels-xbox';
 				deleteBtn.innerHTML = '&cross;';
-				deleteBtn.setAttribute('data-id', jsonResponse.ID);
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				lvlDelete.appendChild(deleteBtn);
 	
 				const table = document.getElementById('levels-table');
@@ -258,18 +258,26 @@ levels_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			dcs[i].style.maxHeight = "0px";
-			dcs[i].style.padding = "0px";
-			dcs[i].style.marginBottom = "0px";
-			lvls[i].style.maxHeight = "0px";
-			lvls[i].style.padding = "0px";
-			lvls[i].style.marginBottom = "0px";
-			efcts[i].style.maxHeight = "0px";
-			efcts[i].style.padding = "0px";
-			efcts[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/level/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				dcs[i].style.maxHeight = "0px";
+				dcs[i].style.padding = "0px";
+				dcs[i].style.marginBottom = "0px";
+				lvls[i].style.maxHeight = "0px";
+				lvls[i].style.padding = "0px";
+				lvls[i].style.marginBottom = "0px";
+				efcts[i].style.maxHeight = "0px";
+				efcts[i].style.padding = "0px";
+				efcts[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };

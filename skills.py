@@ -515,6 +515,17 @@ def post_bonus_level():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/level/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_level(bonus_id):
+	try:
+		db.session.query(SkillLevels).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
+
 @skills.route('/skill/circ/create', methods=['POST'])
 def post_bonus_circ():
 	body = {}
