@@ -1196,7 +1196,7 @@ def post_bonus_dc():
 @skills.route('/skill/dc/delete/<bonus_id>', methods=['DELETE'])
 def delete_bonus_dc(bonus_id):
 	try:
-		db.session.query(SkillCharCheck).filter_by(id=bonus_id).delete()
+		db.session.query(SkillDC).filter_by(id=bonus_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
