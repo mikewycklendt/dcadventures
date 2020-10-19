@@ -426,7 +426,7 @@ def post_bonus_rounds():
 @skills.route('/skill/rounds/delete/<bonus_id>', methods=['DELETE'])
 def delete_bonus_rounds(bonus_id):
 	try:
-		db.session.query(SkillOpposed).filter_by(id=bonus_id).delete()
+		db.session.query(SkillRound).filter_by(id=bonus_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
