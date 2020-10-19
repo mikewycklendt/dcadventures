@@ -376,7 +376,7 @@ def post_bonus_opposed():
 		return jsonify(body)
 
 @skills.route('/skill/opposed/delete/<bonus_id>', methods=['DELETE'])
-def delete_bonus_pre_check(bonus_id):
+def delete_bonus_opposed(bonus_id):
 	try:
 		db.session.query(SkillOpposed).filter_by(id=bonus_id).delete()
 		db.session.commit()
