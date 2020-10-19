@@ -501,24 +501,31 @@ deg_mod_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			degs[i].style.maxHeight = "0px";
-			degs[i].style.padding = "0px";
-			degs[i].style.marginBottom = "0px";
-			effs[i].style.maxHeight = "0px";
-			effs[i].style.padding = "0px";
-			effs[i].style.marginBottom = "0px";
-			keys[i].style.maxHeight = "0px";
-			keys[i].style.padding = "0px";
-			keys[i].style.marginBottom = "0px";
-			dess[i].style.maxHeight = "0px";
-			dess[i].style.padding = "0px";
-			dess[i].style.marginBottom = "0px";
-			nulls[i].style.maxHeight = "0px";
-			nulls[i].style.padding = "0px";
-			nulls[i].style.marginBottom = "0px";
-			deletesDivs[i].style.maxHeight = "0px";
-			deletesDivs[i].style.padding = "0px";
-			deletesDivs[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/degree_mod/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				degs[i].style.maxHeight = "0px";
+				degs[i].style.padding = "0px";
+				degs[i].style.marginBottom = "0px";
+				effs[i].style.maxHeight = "0px";
+				effs[i].style.padding = "0px";
+				effs[i].style.marginBottom = "0px";
+				keys[i].style.maxHeight = "0px";
+				keys[i].style.padding = "0px";
+				keys[i].style.marginBottom = "0px";
+				dess[i].style.maxHeight = "0px";
+				dess[i].style.padding = "0px";
+				dess[i].style.marginBottom = "0px";
+				nulls[i].style.maxHeight = "0px";
+				nulls[i].style.padding = "0px";
+				nulls[i].style.marginBottom = "0px";
+				deletesDivs[i].style.maxHeight = "0px";
+				deletesDivs[i].style.padding = "0px";
+				deletesDivs[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };

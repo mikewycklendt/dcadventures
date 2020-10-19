@@ -845,6 +845,17 @@ def post_bonus_degree_mod():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/degree_mod/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_degree_mod(bonus_id):
+	try:
+		db.session.query(SkillDegreeMod).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
+
 @skills.route('/skill/resistance/create', methods=['POST'])
 def post_bonus_resistance():
 	body = {}
