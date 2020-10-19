@@ -216,24 +216,32 @@ rounds_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			dcs[i].style.maxHeight = "0px";
-			dcs[i].style.padding = "0px";
-			dcs[i].style.marginBottom = "0px";
-			degs[i].style.maxHeight = "0px";
-			degs[i].style.padding = "0px";
-			degs[i].style.marginBottom = "0px";
-			ranks[i].style.maxHeight = "0px";
-			ranks[i].style.padding = "0px";
-			ranks[i].style.marginBottom = "0px";
-			modss[i].style.maxHeight = "0px";
-			modss[i].style.padding = "0px";
-			modss[i].style.marginBottom = "0px";
-			rnds[i].style.maxHeight = "0px";
-			rnds[i].style.padding = "0px";
-			rnds[i].style.marginBottom = "0px";
-			deletesDivs[i].style.maxHeight = "0px";
-			deletesDivs[i].style.padding = "0px";
-			deletesDivs[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/rounds/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				dcs[i].style.maxHeight = "0px";
+				dcs[i].style.padding = "0px";
+				dcs[i].style.marginBottom = "0px";
+				degs[i].style.maxHeight = "0px";
+				degs[i].style.padding = "0px";
+				degs[i].style.marginBottom = "0px";
+				ranks[i].style.maxHeight = "0px";
+				ranks[i].style.padding = "0px";
+				ranks[i].style.marginBottom = "0px";
+				modss[i].style.maxHeight = "0px";
+				modss[i].style.padding = "0px";
+				modss[i].style.marginBottom = "0px";
+				rnds[i].style.maxHeight = "0px";
+				rnds[i].style.padding = "0px";
+				rnds[i].style.marginBottom = "0px";
+				deletesDivs[i].style.maxHeight = "0px";
+				deletesDivs[i].style.padding = "0px";
+				deletesDivs[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
