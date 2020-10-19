@@ -175,15 +175,23 @@ power_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			pwrs[i].style.maxHeight = "0px";
-			pwrs[i].style.padding = "0px";
-			pwrs[i].style.marginBottom = "0px";
-			sits[i].style.maxHeight = "0px";
-			sits[i].style.padding = "0px";
-			sits[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/power/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				pwrs[i].style.maxHeight = "0px";
+				pwrs[i].style.padding = "0px";
+				pwrs[i].style.marginBottom = "0px";
+				sits[i].style.maxHeight = "0px";
+				sits[i].style.padding = "0px";
+				sits[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
