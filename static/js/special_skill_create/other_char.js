@@ -261,24 +261,32 @@ char_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			degs[i].style.maxHeight = "0px";
-			degs[i].style.padding = "0px";
-			degs[i].style.marginBottom = "0px";
-			chks[i].style.maxHeight = "0px";
-			chks[i].style.padding = "0px";
-			chks[i].style.marginBottom = "0px";
-			rnks[i].style.maxHeight = "0px";
-			rnks[i].style.padding = "0px";
-			rnks[i].style.marginBottom = "0px";
-			dess[i].style.maxHeight = "0px";
-			dess[i].style.padding = "0px";
-			dess[i].style.marginBottom = "0px";
-			tars[i].style.maxHeight = "0px";
-			tars[i].style.padding = "0px";
-			tars[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/char_check/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				degs[i].style.maxHeight = "0px";
+				degs[i].style.padding = "0px";
+				degs[i].style.marginBottom = "0px";
+				chks[i].style.maxHeight = "0px";
+				chks[i].style.padding = "0px";
+				chks[i].style.marginBottom = "0px";
+				rnks[i].style.maxHeight = "0px";
+				rnks[i].style.padding = "0px";
+				rnks[i].style.marginBottom = "0px";
+				dess[i].style.maxHeight = "0px";
+				dess[i].style.padding = "0px";
+				dess[i].style.marginBottom = "0px";
+				tars[i].style.maxHeight = "0px";
+				tars[i].style.padding = "0px";
+				tars[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
