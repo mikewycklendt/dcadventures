@@ -383,18 +383,25 @@ circ_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			mods[i].style.maxHeight = "0px";
-			mods[i].style.padding = "0px";
-			mods[i].style.marginBottom = "0px";
-			rnds[i].style.maxHeight = "0px";
-			rnds[i].style.padding = "0px";
-			rnds[i].style.marginBottom = "0px";
-			circs[i].style.maxHeight = "0px";
-			circs[i].style.padding = "0px";
-			circs[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/circ/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				mods[i].style.maxHeight = "0px";
+				mods[i].style.padding = "0px";
+				mods[i].style.marginBottom = "0px";
+				rnds[i].style.maxHeight = "0px";
+				rnds[i].style.padding = "0px";
+				rnds[i].style.marginBottom = "0px";
+				circs[i].style.maxHeight = "0px";
+				circs[i].style.padding = "0px";
+				circs[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
