@@ -261,18 +261,26 @@ degree_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			vals[i].style.maxHeight = "0px";
-			vals[i].style.padding = "0px";
-			vals[i].style.marginBottom = "0px";
-			keys[i].style.maxHeight = "0px";
-			keys[i].style.padding = "0px";
-			keys[i].style.marginBottom = "0px";
-			descs[i].style.maxHeight = "0px";
-			descs[i].style.padding = "0px";
-			descs[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/degree_key/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				vals[i].style.maxHeight = "0px";
+				vals[i].style.padding = "0px";
+				vals[i].style.marginBottom = "0px";
+				keys[i].style.maxHeight = "0px";
+				keys[i].style.padding = "0px";
+				keys[i].style.marginBottom = "0px";
+				descs[i].style.maxHeight = "0px";
+				descs[i].style.padding = "0px";
+				descs[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
