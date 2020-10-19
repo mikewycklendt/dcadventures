@@ -1192,3 +1192,14 @@ def post_bonus_dc():
 			db.session.close()
 			print(body)
 			return jsonify(body)
+
+@skills.route('/skill/dc/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_dc(bonus_id):
+	try:
+		db.session.query(SkillCharCheck).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})

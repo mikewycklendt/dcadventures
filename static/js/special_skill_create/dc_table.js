@@ -393,7 +393,7 @@ function dc_submit() {
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'dc-xbox';
 				deleteBtn.innerHTML = '&cross;';
-				deleteBtn.setAttribute('data-id', jsonResponse.dam_grid);
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				dcDelete.appendChild(deleteBtn);
 
 				let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
@@ -665,111 +665,117 @@ function dc_delete() {
 		btn.onclick = function(e) {
 			console.log('click')
 
-			dcs[i].style.maxHeight = "0px";
-			dcs[i].style.padding = "0px";
-			dcs[i].style.marginBottom = "0px";
-			keys[i].style.maxHeight = "0px";
-			keys[i].style.padding = "0px";
-			keys[i].style.marginBottom = "0px";
-			keys[i].innerHTML = '';
-			dess[i].style.maxHeight = "0px";
-			dess[i].style.padding = "0px";
-			dess[i].style.marginBottom = "0px";
-			meas[i].style.maxHeight = "0px";
-			meas[i].style.padding = "0px";
-			meas[i].style.marginBottom = "0px";
-			meas[i].innerHTML = '';
-			dams[i].style.maxHeight = "0px";
-			dams[i].style.padding = "0px";
-			dams[i].style.marginBottom = "0px";
-			dams[i].innerHTML = '';
-			acts[i].style.maxHeight = "0px";
-			acts[i].style.padding = "0px";
-			acts[i].style.marginBottom = "0px";
-			acts[i].innerHTML = '';
-			defs[i].style.maxHeight = "0px";
-			defs[i].style.padding = "0px";
-			defs[i].style.marginBottom = "0px";
-			defs[i].innerHTML = '';
-			cons[i].style.maxHeight = "0px";
-			cons[i].style.padding = "0px";
-			cons[i].style.marginBottom = "0px";
-			cons[i].innerHTML = '';
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+			const delId = e.target.dataset['id'];
+			fetch('/skill/dc/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
 
-			for (let int = 0; int < keys.length; int++) {
-				if (keys[int].innerHTML != ''){
-					key_title.style.maxWidth = key_title.scrollWidth + "px";
-					key_col = "auto";
-					break;
-				} else {
-					key_title.style.maxWidth = "0px";
-					key_col = "1%";
-				}
-			}
+				dcs[i].style.maxHeight = "0px";
+				dcs[i].style.padding = "0px";
+				dcs[i].style.marginBottom = "0px";
+				keys[i].style.maxHeight = "0px";
+				keys[i].style.padding = "0px";
+				keys[i].style.marginBottom = "0px";
+				keys[i].innerHTML = '';
+				dess[i].style.maxHeight = "0px";
+				dess[i].style.padding = "0px";
+				dess[i].style.marginBottom = "0px";
+				meas[i].style.maxHeight = "0px";
+				meas[i].style.padding = "0px";
+				meas[i].style.marginBottom = "0px";
+				meas[i].innerHTML = '';
+				dams[i].style.maxHeight = "0px";
+				dams[i].style.padding = "0px";
+				dams[i].style.marginBottom = "0px";
+				dams[i].innerHTML = '';
+				acts[i].style.maxHeight = "0px";
+				acts[i].style.padding = "0px";
+				acts[i].style.marginBottom = "0px";
+				acts[i].innerHTML = '';
+				defs[i].style.maxHeight = "0px";
+				defs[i].style.padding = "0px";
+				defs[i].style.marginBottom = "0px";
+				defs[i].innerHTML = '';
+				cons[i].style.maxHeight = "0px";
+				cons[i].style.padding = "0px";
+				cons[i].style.marginBottom = "0px";
+				cons[i].innerHTML = '';
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
 
-			for (let int = 0; int < meas.length; int++) {
-				if (meas[int].innerHTML != ''){
-					mea_title.style.maxWidth = mea_title.scrollWidth + "px";
-					mea_col = "auto";
-					break;
-				} else {
-					mea_title.style.maxWidth = "0px";
-					mea_col = "1%";
+				for (let int = 0; int < keys.length; int++) {
+					if (keys[int].innerHTML != ''){
+						key_title.style.maxWidth = key_title.scrollWidth + "px";
+						key_col = "auto";
+						break;
+					} else {
+						key_title.style.maxWidth = "0px";
+						key_col = "1%";
+					}
 				}
-			}
-	
-			for (let int = 0; int < dams.length; int++) {
-				if (dams[int].innerHTML != ''){
-					dam_title.style.maxWidth = dam_title.scrollWidth + "px";
-					dam_col = "auto";
-					break;
-				} else {
-					dam_title.style.maxWidth = "0px";
-					dam_col = "1%";
-				}
-			}
 
-			for (let int = 0; int < defs.length; int++) {
-				if (defs[int].innerHTML != ''){
-					def_title.style.maxWidth = def_title.scrollWidth + "px";
-					def_col = "auto";
-					break;
-				} else {
-					def_title.style.maxWidth = "0px";
-					def_col = "1%";
+				for (let int = 0; int < meas.length; int++) {
+					if (meas[int].innerHTML != ''){
+						mea_title.style.maxWidth = mea_title.scrollWidth + "px";
+						mea_col = "auto";
+						break;
+					} else {
+						mea_title.style.maxWidth = "0px";
+						mea_col = "1%";
+					}
 				}
-			}
 		
-			for (let int = 0; int < acts.length; int++) {
-				if (acts[int].innerHTML != ''){
-					act_title.style.maxWidth = act_title.scrollWidth + "px";
-					act_col = "auto";
-					break;
-				} else {
-					act_title.style.maxWidth = "0px";
-					act_col = "1%";
+				for (let int = 0; int < dams.length; int++) {
+					if (dams[int].innerHTML != ''){
+						dam_title.style.maxWidth = dam_title.scrollWidth + "px";
+						dam_col = "auto";
+						break;
+					} else {
+						dam_title.style.maxWidth = "0px";
+						dam_col = "1%";
+					}
 				}
-			}
-	
-			for (let int = 0; int < cons.length; int++) {
-				if (cons[int].innerHTML != ''){
-					con_title.style.maxWidth = con_title.scrollWidth + "px";
-					con_col = "auto";
-					break;
-				} else {
-					con_title.style.maxWidth = "0px";
-					con_col = "1%";
+
+				for (let int = 0; int < defs.length; int++) {
+					if (defs[int].innerHTML != ''){
+						def_title.style.maxWidth = def_title.scrollWidth + "px";
+						def_col = "auto";
+						break;
+					} else {
+						def_title.style.maxWidth = "0px";
+						def_col = "1%";
+					}
 				}
-			}
+			
+				for (let int = 0; int < acts.length; int++) {
+					if (acts[int].innerHTML != ''){
+						act_title.style.maxWidth = act_title.scrollWidth + "px";
+						act_col = "auto";
+						break;
+					} else {
+						act_title.style.maxWidth = "0px";
+						act_col = "1%";
+					}
+				}
+		
+				for (let int = 0; int < cons.length; int++) {
+					if (cons[int].innerHTML != ''){
+						con_title.style.maxWidth = con_title.scrollWidth + "px";
+						con_col = "auto";
+						break;
+					} else {
+						con_title.style.maxWidth = "0px";
+						con_col = "1%";
+					}
+				}
 
-			const table = document.getElementById('dc-table-container');
+				const table = document.getElementById('dc-table-container');
 
-			let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
-			table.style.gridTemplateColumns = dc_grid;
-
+				let dc_grid = dc_col + ' ' + key_col + ' ' + des_col + ' ' + mea_col + ' ' + dam_col + ' ' + def_col + ' ' + act_col + ' ' + con_col + ' ' + del_col; 
+				table.style.gridTemplateColumns = dc_grid;
+			})
 		}
 	}
 }
