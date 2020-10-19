@@ -375,6 +375,17 @@ def post_bonus_opposed():
 		print(body)
 		return jsonify(body)
 
+@skills.route('/skill/opposed/delete/<bonus_id>', methods=['DELETE'])
+def delete_bonus_pre_check(bonus_id):
+	try:
+		db.session.query(SkillOpposed).filter_by(id=bonus_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
+
 @skills.route('/skill/rounds/create', methods=['POST'])
 def post_bonus_rounds():
 	body = {}

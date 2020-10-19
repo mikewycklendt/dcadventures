@@ -234,18 +234,26 @@ opposed_delete = function() {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click')
-			opposeds[i].style.maxHeight = "0px";
-			opposeds[i].style.padding = "0px";
-			opposeds[i].style.marginBottom = "0px";
-			modss[i].style.maxHeight = "0px";
-			modss[i].style.padding = "0px";
-			modss[i].style.marginBottom = "0px";
-			sits[i].style.maxHeight = "0px";
-			sits[i].style.padding = "0px";
-			sits[i].style.marginBottom = "0px";
-			deletesDiv[i].style.maxHeight = "0px";
-			deletesDiv[i].style.padding = "0px";
-			deletesDiv[i].style.marginBottom = "0px";
+
+			const delId = e.target.dataset['id'];
+			fetch('/skill/opposed/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				opposeds[i].style.maxHeight = "0px";
+				opposeds[i].style.padding = "0px";
+				opposeds[i].style.marginBottom = "0px";
+				modss[i].style.maxHeight = "0px";
+				modss[i].style.padding = "0px";
+				modss[i].style.marginBottom = "0px";
+				sits[i].style.maxHeight = "0px";
+				sits[i].style.padding = "0px";
+				sits[i].style.marginBottom = "0px";
+				deletesDiv[i].style.maxHeight = "0px";
+				deletesDiv[i].style.padding = "0px";
+				deletesDiv[i].style.marginBottom = "0px";
+			})
 		}
 	}
 };
