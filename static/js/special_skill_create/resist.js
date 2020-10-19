@@ -184,7 +184,7 @@ resist_delete = function() {
 			console.log('click')
 
 			const delId = e.target.dataset['id'];
-			fetch('/skill/pre_check/delete/' + delId, {
+			fetch('/skill/resist/delete/' + delId, {
 				method: 'DELETE'
 			})
 			.then(function() {
