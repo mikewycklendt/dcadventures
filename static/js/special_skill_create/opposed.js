@@ -90,7 +90,7 @@ function opposed_by_submit() {
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'opposed-by-xbox';
 				deleteBtn.innerHTML = '&cross;';
-				deleteBtn.setAttribute('data-id', jsonResponse.ID);
+				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				oppDelete.appendChild(deleteBtn);
 
 				const table = document.getElementById('opposed-by-table');
