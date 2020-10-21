@@ -158,37 +158,34 @@ def post_skill():
 	body = {}
 	error = False
 	error_msgs = []
-	errors = {}
 
 	name = request.get_json()['name']
 	print(name)
 
-	skills = Skill.query.all()
-	bonuses = SkillBonus.query.all()
+	bonus = db.session.query(SkillBonus).filter(SkillBonus.name == name).first()
+	skill = db.session.query(Skill).filter(Skill.name == name).first()
 
-	all_skills = []
+	if bonus:
+		error = True
+		body['success'] = False
+		error_msgs.append('There is already a skill with that name')
+		body['error'] = error_msgs
 
-	for skill in skills:
-		all_skills.append(skill.name)
+	if skill:
+		body = True
+		body['success'] = False
+		error_msgs.append('There is already a skill with that name')
+		body['error'] = error_msgs
 
-	for skill in bonuses:
-		all_skills.append(skill.name)
-
-	for skill in all_skills:
-		if skill == name:
-			error = True
-			errors['success'] = False
-			error_msgs.append('There is already a skill with that name')
-			errors['error'] = error_msgs
-			break
-
+	if error:
+		return jsonify(body)
 	try:
-		skill = SkillBonus(name=name)
-		db.session.add(skill)
+		skill_bonus = SkillBonus(name=name)
+		db.session.add(skill_bonus)
 		db.session.commit()
 		body['success'] = True
-		body['id'] = skill.id
-		body['name'] = skill.name
+		body['id'] = skill_bonus.id
+		body['name'] = skill_bonus.name
 	except:
 		error = True
 		errors['success'] = False
@@ -198,9 +195,6 @@ def post_skill():
 	finally:
 		db.session.close()
 		print(body)
-	if error:
-		return jsonify(errors)
-	else:
 		return jsonify(body)
 
 @skills.route('/skill/edit_name', methods=['POST'])
@@ -208,51 +202,208 @@ def edit_skill_name():
 	body = {}
 	error = False
 	error_msgs = []
-	errors = {}
 
 	skill_id = request.get_json()['id']
 	name = request.get_json()['name']
 	print(name)
 
-	skills = Skill.query.all()
-	bonuses = SkillBonus.query.all()
+	bonus = db.session.query(SkillBonus).filter(SkillBonus.name == name).first()
+	skill = db.session.query(Skill).filter(Skill.name == name).first()
+	
+	if bonus:
+		error = True
+		body['success'] = False
+		error_msgs.append('There is already a skill with that name')
+		body['error'] = error_msgs
 
-	all_skills = []
+	if skill:
+		body = True
+		body['success'] = False
+		error_msgs.append('There is already a skill with that name')
+		body['error'] = error_msgs
 
-	for skill in skills:
-		all_skills.append(skill.name)
-
-	for skill in bonuses:
-		all_skills.append(skill.name)
-
-	for skill in all_skills:
-		if skill == name:
-			error = True
-			errors['success'] = False
-			error_msgs.append('There is already a skill with that name')
-			errors['error'] = error_msgs
-			break
-
+	if error:
+		return jsonify(body)
 	try:
-		skill = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
-		skill.name = name
+		skill_bonus = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
+		skill_bonus.name = name
 		db.session.commit()
 		body['success'] = True
-		body['id'] = skill.id
-		body['name'] = skill.name
+		body['id'] = skill_bonus.id
+		body['name'] = skill_bonus.name
 	except:
 		error = True
-		errors['success'] = False
+		body['success'] = False
 		error_msgs.append('There was an error processing the request')
-		errors['error'] = error_msgs
+		body['error'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print(body)
-	if error:
-		return jsonify(errors)
-	else:
 		return jsonify(body)
+
+@skills.route('/skill/save', methods=['POST'])
+def save_skill():
+	error = False
+	body = {}
+	error_msgs = []
+
+	bonus_id = request.get_json()['id']
+	skill_id = request.get_json()['skill_id']
+	description = request.get_json()['description']
+	action = request.get_json()['action']
+	check_id = request.get_json()['check_id']
+	condition = request.get_json()['condition']
+	speed_mod = request.get_json()['speed_mod']
+	skill_type = request.get_json()['skill_type']
+	dc_set = request.get_json()['dc_set']
+	time_type = request.get_json()['time_type']
+	time_unit = request.get_json()['time_unit']
+	time_rank = request.get_json()['time_rank']	
+	time_mod = request.get_json()['time_mod']
+	time_val = request.get_json()['time_val']
+	time_val_unit = request.get_json()['time_val_unit']
+	sub_check = request.get_json()['sub_check']
+	cover_check = request.get_json()['cover_check']
+	materials_check = request.get_json()['materials_check']
+	hidden_check = request.get_json()['hidden_check']
+	hidden_mod = request.get_json()['hidden_mod']
+	untrained_check = request.get_json()['untrained_check']
+	untrained_limit = request.get_json()['untrained_limit']
+	untrained_mod = request.get_json()['untrained_mod']
+	level_type = request.get_json()['level_type']
+	level_change = request.get_json()['level_change']
+	subskill = request.get_json()['subskill']
+	subskill_description = request.get_json()['subskill_description']
+	move_rank = request.get_json()['move_rank']
+	move_math = request.get_json()['move_math']
+	move_val = request.get_json()['move_val']
+	action_change = request.get_json()['action_change']
+	action_mod = request.get_json()['action_mod']
+	public = request.get_json()['public']
+	approved = request.get_json()['approved']
+	other = request.get_json()['other']
+	other_check = request.get_json()['other_check']
+	opposed = request.get_json()['opposed']
+	rounds = request.get_json()['round']
+	power = request.get_json()['power']
+	levels = request.get_json()['levels']
+	circ_mod = request.get_json()['circ_mod']
+	degree_key = request.get_json()['degree_key']
+	degree_mod = request.get_json()['degree_mod']
+	resist_check = request.get_json()['resist_check']
+	resist_effect = request.get_json()['resist_effect']
+	opp_condition = request.get_json()['opp_condition']
+	char_check = request.get_json()['char_check']
+
+	if speed_mod == '':
+		speed_mod = None
+
+	if time_mod == '':
+		time_mod = None
+
+	if time_val == '':
+		time_val = None
+	else:
+		try:
+			timeval = int(time_val)
+		except:
+			error = True
+			error_msgs.append('Time to complete value must be a number')
+			body['success'] = False
+			body['error'] = error_msgs
+
+
+	if hidden_mod == '':
+		hidden_mod = None
+
+	if untrained_limit == '':
+		untrained_limit = None
+
+	if untrained_mod == '':
+		untrained_mod = None
+
+	if move_val == '':
+		move_val = None
+
+	if action_mod == '':
+		action_mod = None
+
+	if dc_set == 'table':
+		skill_dc = db.session.query(SkillDC).filter(SkillDC.id == bonus_id).first()
+		if skill_dc is None:
+			error = True
+			error_msgs.append(' You must have one entry in the DC Table if this skill uses at least one DC that is not set by the GM.  Add an entry to the DC table or change DC Set By to GM or N/A. ')
+
+	if error:
+		body['success'] = True
+		body['error'] = error_msgs
+		return jsonify(body)
+
+	skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+
+	try:
+		skill.skill_id = skill_id
+		skill.description = description
+		skill.action = action
+		skill.check_id = check_id
+		skill.condition = condition
+		skill.speed_mod = speed_mod
+		skill.skill_type = skill_type
+		skill.dc_set = dc_set
+		skill.time_type = time_type
+		skill.time_unit = time_unit
+		skill.time_rank = time_rank	
+		skill.time_mod = time_mod
+		skill.time_val = timeval
+		skill.time_val_unit = time_val_unit
+		skill.sub_check = sub_check
+		skill.cover_check = cover_check
+		skill.materials_check = materials_check
+		skill.hidden_check = hidden_check
+		skill.hidden_mod = hidden_mod
+		skill.untrained_check = untrained_check
+		skill.untrained_limit = untrained_limit
+		skill.untrained_mod = untrained_mod
+		skill.level_type = level_type
+		skill.level_change = level_change
+		skill.subskill = subskill
+		skill.subskill_description = subskill_description
+		skill.move_rank = move_rank
+		skill.move_math = move_math
+		skill.move_val = move_val
+		skill.action_change = action_change
+		skill.action_mod = action_mod
+		skill.public = public
+		skill.approved = approved
+		skill.other = other
+		skill.other_check = other_check
+		skill.opposed = opposed
+		skill.round = rounds
+		skill.power = power
+		skill.levels = levels
+		skill.circ_mod = circ_mod
+		skill.degree_key = degree_key
+		skill.degree_mod = degree_mod
+		skill.resist_check = resist_check
+		skill.resist_effect = resist_effect
+		skill.opp_condition = opp_condition
+		skill.char_check = char_check
+
+		db.session.commit()
+
+	except:
+		db.session.rollback()
+		error = True
+		body['success'] = True
+		error_msgs.append('There was an error processing the request.')
+		body['error'] = error_msgs
+		return jsonify(body)
+
+	finally:
+		db.session.close()
+		flash('Skill %s Successfully Created' % skill.name)
+        return redirect(url_for('index'))
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
 def post_bonus_other_checks():
@@ -556,7 +707,15 @@ def post_bonus_circ():
 
 	if unit_value == '':
 		unit_value = None
-	
+	else:
+		try:
+			unitvalue = int(unit_value)
+		except:
+			error = True
+			error_msgs.append('Unit value must be a number')
+			body['success'] = False
+			body['error'] = error_msgs
+
 	if adjust_check_mod == '':
 		adjust_check_mod = None
 	
@@ -582,13 +741,8 @@ def post_bonus_circ():
 
 	skill = db.session.query(Skill).filter_by(id=skill_id).one()
 
-	try:
-		unitvalue = int(unit_value)
-	except:
-		error = True
-		error_msgs.append('Unit value must be a number')
-		body['success'] = False
-		body['error'] = error_msgs
+	if error:
+		return jsonify(body)
 
 	try:
 		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill_id, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)

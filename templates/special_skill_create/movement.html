@@ -25,7 +25,7 @@
 
 		<div>
 
-			<select class="entry-select" id="move-rank" name="move-rank" aria-placeholder="0" >
+			<select class="entry-select" id="move_rank" name="move_rank" aria-placeholder="0" >
 				<option value=''>Rank</option>
 				{% for rank in measure_rank %}
 					<option value={{rank.id}}>{{rank.name}}</option>
@@ -41,7 +41,7 @@
 
 	<div>
 
-		<select class="entry-select" id="move-math" name="move-math" aria-placeholder="0" >
+		<select class="entry-select" id="move_math" name="move_math" aria-placeholder="0" >
 			<option value=''>Math</option>
 			{% for math in maths %}
 				<option value={{math.id}}>{{math.name}}</option>
@@ -52,7 +52,7 @@
 
 	<div>
 
-		<select class="entry-select" id="move-value" name="move-value" aria-placeholder="0" >
+		<select class="entry-select" id="move_value" name="mov_value" aria-placeholder="0" >
 			<option value=''>Value</option>
 			{% for number in numbers %}
 				<option value={{number}}>{{number}}</option>

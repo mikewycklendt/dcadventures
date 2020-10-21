@@ -48,7 +48,7 @@ function prep_type() {
 		
 	if (prep == 'value') {
 		prep_value.style.display = 'grid';
-		prep_math.style.display = 'nonr';
+		prep_math.style.display = 'none';
 	} else if (prep == 'math') {
 		prep_math.style.display = 'grid';
 		prep_value.style.display = 'none';

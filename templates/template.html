@@ -69,6 +69,16 @@
 			<div id="middle"></div>
 			<div id="sidelines" style="background: url(/static/img/sidelines.png) repeat-y; justify-content: center;">
 			<div id="content" style="background: url(/static/img/corner.png) no-repeat; background-size: 100%; justify-content: center;">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<div id="flashed-messages">
+						{% for message in messages %}
+					  		<div class="flash-message">{{ message }}</div>
+						{% endfor %}
+						</div>
+					{% endif %}
+			  	{% endwith %}
+				
 				{% include includehtml %}
 			</div>
 			</div>

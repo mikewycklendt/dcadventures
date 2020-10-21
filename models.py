@@ -229,6 +229,21 @@ class SkillBonus(db.Model):
 	move_val = db.Column(db.Integer)
 	action_change = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action_mod = db.Column(db.Integer)
+	public = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+	other = db.Column(db.Boolean)
+	other_check = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+	round = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
+	levels = db.Column(db.Boolean)
+	circ_mod = db.Column(db.Boolean)
+	degree_key = db.Column(db.Boolean)
+	degree_mod = db.Column(db.Boolean)
+	resist_check = db.Column(db.Boolean)
+	resist_effect = db.Column(db.Boolean)
+	opp_condition = db.Column(db.Boolean)
+	char_check = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -236,7 +251,7 @@ class SkillBonus(db.Model):
 			'name': self.name,
 			'skill_id': self.skill_id,
 			'description': self.description,
-			'action': self.action_id,
+			'action': self.action,
 			'check_id': self.check_id,
 			'condition': self.condition,
 			'speed_mod': self.speed_mod,
@@ -264,7 +279,22 @@ class SkillBonus(db.Model):
 			'move_math': self.move_math,
 			'move_val': self.move_val,
 			'action_change': self.action_change,
-			'action_mod': self.action_mod
+			'action_mod': self.action_mod,
+			'public': self.public,
+			'approved': self.approved,
+			'other': self.other,
+			'other_check': self.other_check,
+			'opposed': self.opposed,
+			'round': self.round,
+			'power': self.power,
+			'levels': self.levels,
+			'circ_mod': self.circ_mod,
+			'degree_key': self.degree_key,
+			'degree_mod': self.degree_mod,
+			'resist_check': self.resist_check,
+			'resist_effect': self.resist_effect,
+			'opp_condition': self.opp_condition,
+			'char_check': self.char_check
 		}
 
 class SkillOther(db.Model):

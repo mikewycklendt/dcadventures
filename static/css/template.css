@@ -264,3 +264,29 @@ body{
 	text-align: center;
 	color: white;
 }
+
+#flashed-messages {
+	display: block;
+	width: 100%;
+	background-color: lightblue;
+	font-family: 'Monda', Verdana;
+	font-size: 1.6vw;
+	color: #3a4e87;
+	text-align: center;
+}
+
+.flash-message {
+	font-family: 'Monda', Verdana;
+	font-size: 1.6vw;
+	color: #3a4e87;
+	text-align: center;
+}
+
+.flash-message::before {
+	font-family: 'FontAwesome';
+	content: '\f058';
+	padding-right: 1.5vw;
+	display: inline-block;
+	color: #3a4e87;
+	text-align: center;
+}
