@@ -357,7 +357,7 @@ textarea:focus {
 .save-btn {
 	display: table-cell;
 	align-self: center;
-	width: 16vw;
+	width: 14vw;
 	height:  4vw;
 	background-color: #af0101;
 	cursor: crosshair;
@@ -558,7 +558,8 @@ textarea:focus {
 
 #save-div{
 	display: table-cell;
-	width: 100%;
+	width: 50%;
+	margin-left: 25%;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
