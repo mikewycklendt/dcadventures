@@ -354,6 +354,39 @@ textarea:focus {
 	display: inline-block;
 }
 
+.save-btn {
+	display: table-cell;
+	width: 18vw;
+	height:  6vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 190%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+
+.save-btn:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.save-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f0c7';
+	display: inline-block;
+}
+
 #nameskill {
 	grid-area: namefield;
 }
@@ -520,4 +553,10 @@ textarea:focus {
 	content: '\f071';
 	padding-right: 1.5vw;
 	display: inline-block;
+}
+
+#save-div{
+	width: 100%;
+	align-items: center;
+	align-content: center;
 }
