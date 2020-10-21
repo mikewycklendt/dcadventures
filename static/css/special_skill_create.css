@@ -557,9 +557,8 @@ textarea:focus {
 }
 
 #save-div{
-	display: table-cell;
-	width: 50%;
-	margin-left: 25%;
+	display: block;
+	width: 100%;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
