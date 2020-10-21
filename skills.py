@@ -403,7 +403,7 @@ def save_skill():
 	finally:
 		db.session.close()
 		flash('Skill %s Successfully Created' % skill.name)
-        return redirect(url_for('index'))
+		return redirect(url_for('index'))
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
 def post_bonus_other_checks():
