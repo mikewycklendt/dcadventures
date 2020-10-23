@@ -32,21 +32,20 @@ skill_create = function() {
 			const errors = document.getElementById('name-err');
 
 			const error_msgs = jsonResponse.error
+			let i;
 
-			for (i=0; i < error_msgs.length; i++) {
+			for (i of error_msgs) {
 				const error = document.createElement('div');
-				error.className = 'name-err-line';
-				error.innerHTML = error_msgs[i];
-			
+				error.className = 'circ-err-line';
+				error.innerHTML = i;
+		
 				errors.appendChild(error);
+			
+				error.style.maxHeight = error.scrollHeight + "px";
+
+				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+				errors.style.padding = "1%";
 			}
-
-			errors.style.display = "grid";
-
-			error.style.maxHeight = error.scrollHeight + "px";
-
-			errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-			errors.style.padding = "1%";
 		}
 	})
 }

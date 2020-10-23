@@ -162,17 +162,25 @@ def post_skill():
 	name = request.get_json()['name']
 	print(name)
 
+	name_split = name.split(' ')
+	name = name_split[0].capitalize()
+	i = 1
+	while i < len(name_split):
+		name += ' ' 
+		name += name_split[i].capitalize()
+		i += 1
+
 	bonus = db.session.query(SkillBonus).filter(SkillBonus.name == name).first()
 	skill = db.session.query(Skill).filter(Skill.name == name).first()
 
-	if bonus:
+	if bonus is not None:
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already a skill with that name')
 		body['error'] = error_msgs
 
-	if skill:
-		body = True
+	if skill is not None:
+		error = True
 		body['success'] = False
 		error_msgs.append('There is already a skill with that name')
 		body['error'] = error_msgs
@@ -207,17 +215,25 @@ def edit_skill_name():
 	name = request.get_json()['name']
 	print(name)
 
+	name_split = name.split(' ')
+	name = name_split[0].capitalize()
+	i = 1
+	while i < len(name_split):
+		name += ' ' 
+		name += name_split[i].capitalize()
+		i += 1
+
 	bonus = db.session.query(SkillBonus).filter(SkillBonus.name == name).first()
 	skill = db.session.query(Skill).filter(Skill.name == name).first()
 	
-	if bonus:
+	if bonus is not None:
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already a skill with that name')
 		body['error'] = error_msgs
 
-	if skill:
-		body = True
+	if skill is not None:
+		error = True
 		body['success'] = False
 		error_msgs.append('There is already a skill with that name')
 		body['error'] = error_msgs
