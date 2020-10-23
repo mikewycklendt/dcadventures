@@ -405,7 +405,7 @@ skill_save = function() {
 
 		if (description == '') {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must write a description';
 
 			errors.appendChild(error);
@@ -416,7 +416,7 @@ skill_save = function() {
 
 		if (action == '') {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must choose an action type';
 
 			errors.appendChild(error);
@@ -427,7 +427,7 @@ skill_save = function() {
 
 		if (check_id == '') {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must choose a check type';
 
 			errors.appendChild(error);
@@ -438,7 +438,7 @@ skill_save = function() {
 
 		if (time_type == 'value' && (time_val == '' || time_val_unit == '')) {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must fill out all time to complete fields';
 
 			errors.appendChild(error);
@@ -449,7 +449,7 @@ skill_save = function() {
 
 		if (time_type == 'math' && (time_unit == '' || time_rank == '' || time_mod == '')) {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must fill out all time to complete fields';
 
 			errors.appendChild(error);
@@ -460,7 +460,7 @@ skill_save = function() {
 
 		if (sub_check == true && (subskill == '' || subskill_description == '')) {
 			const error = document.createElement('div');
-			error.className = 'skill-bonus-line'
+			error.className = 'skill-bonus-err-line'
 			error.innerHTML = ' You must fill out both subskill fields or uncheck the subskill box';
 
 			errors.appendChild(error);
