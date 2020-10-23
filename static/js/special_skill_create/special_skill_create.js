@@ -279,7 +279,7 @@ skill_save = function() {
 
 	const bonus_id = document.getElementById('bonus_id').value;
 
-	if (description != '' && action != '' && check_id != '' && 
+	if ((description != '' && action != '' && check_id != '') && 
 		((time_type == 'immediate') || (time_type == 'value' && time_val != '' && time_val_unit != '') || (time_type == 'math' && time_unit != '' && time_rank != '' && time_mod != '')) && 
 		((sub_check == false) || (sub_check == true && subskill != '' && subskill_description != ''))) {
 
