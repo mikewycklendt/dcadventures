@@ -43,6 +43,7 @@
 		</div>
 
 		<select class="base-select" id="action" name="action" >
+			<option value=''>Action Type</option>
 			{% for action in actions %}
 				<option value={{action.id}}>{{action.name}}</option>
 			{% endfor %}
@@ -55,6 +56,7 @@
 		</div>
 		
 		<select class="base-select" id="check" name="check"  onchange="check_type()">
+			<option value=''>Check Type</option>
 			{% for check in checks %}
 				<option value={{check.id}}>{{check.name}}</option>
 			{% endfor %}
