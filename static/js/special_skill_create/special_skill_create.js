@@ -28,15 +28,35 @@ skill_create = function() {
 			edit_button.style.display = "block";
 			add_skill.style.display = "none";
 			all_fields.style.opacity = "100%";
+
+			errors_delete = document.getElementsByClassName('name-err-line');
+
+			if (typeof errors_delete[0] === "undefined") {
+				console.log('no errors defined')
+			} else {
+				for (i = 0; i < errors_delete.length; i++) {
+					errors_delete[i].style.maxHeight = "0px";
+					errors_delete[i].style.padding = "0px";
+					errors_delete[i].style.marginBottom = "0px";
+				}
+
+			errors = document.getElementById('name-err')
+
+				errors.style.display = "none";
+				errors.style.padding = "0px";
+				errors.style.maxHeight = "0px";
+			}
+
 		} else {
 			const errors = document.getElementById('name-err');
+			errors.style.display = "grid";
 
 			const error_msgs = jsonResponse.error
 			let i;
 
 			for (i of error_msgs) {
 				const error = document.createElement('div');
-				error.className = 'circ-err-line';
+				error.className = 'name-err-line';
 				error.innerHTML = i;
 		
 				errors.appendChild(error);
@@ -87,16 +107,34 @@ skill_edit = function() {
 			name_div.style.fontSize = "460%";
 			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 
+			errors_delete = document.getElementsByClassName('name-err-line');
+
+			if (typeof errors_delete[0] === "undefined") {
+				console.log('no errors defined')
+			} else {
+				for (i = 0; i < errors_delete.length; i++) {
+					errors_delete[i].style.maxHeight = "0px";
+					errors_delete[i].style.padding = "0px";
+					errors_delete[i].style.marginBottom = "0px";
+				}
+
+			errors = document.getElementById('name-err')
+
+				errors.style.display = "none";
+				errors.style.padding = "0px";
+				errors.style.maxHeight = "0px";
+			}
 
 		} else {
 			const errors = document.getElementById('name-err');
+			errors.style.display = "grid";
 
 			const error_msgs = jsonResponse.error
 			let i;
 
 			for (i of error_msgs) {
 				const error = document.createElement('div');
-				error.className = 'circ-err-line';
+				error.className = 'name-err-line';
 				error.innerHTML = i;
 		
 				errors.appendChild(error);
