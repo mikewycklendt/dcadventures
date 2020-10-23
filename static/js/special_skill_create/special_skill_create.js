@@ -283,7 +283,7 @@ skill_save = function() {
 		((time_type == 'immediate') || (time_type == 'value' && time_val != '' && time_val_unit != '') || (time_type == 'math' && time_unit != '' && time_rank != '' && time_mod != '')) && 
 		((sub_check == false) || (sub_check == true && subskill != '' && subskill_description != ''))) {
 
-		response = fetch('/skill/rounds/create', {
+		response = fetch('/skill/save', {
 			method: 'POST',
 			body: JSON.stringify({
 				'id': bonus_id,
