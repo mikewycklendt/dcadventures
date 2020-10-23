@@ -150,7 +150,7 @@ skill_edit = function() {
 
 skill_save = function() {
 
-	const description =  document.getElementById('description').value;
+	const description = document.getElementById('bonus_desc').value;
 
 	const skill_id_field = document.getElementById('skill');
 	const skill_id = skill_id_field.options[skill_id_field.selectedIndex].value;
