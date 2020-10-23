@@ -549,7 +549,7 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
-.skill-bonus-line::before {
+.skill-bonus-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;

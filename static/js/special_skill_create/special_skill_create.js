@@ -150,6 +150,24 @@ skill_edit = function() {
 
 skill_save = function() {
 
+	errors_delete = document.getElementsByClassName('skill-bonus-err-line');
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById('skill-bonus-err')
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+	}
+
 	const description = document.getElementById('bonus_desc').value;
 
 	const skill_id_field = document.getElementById('skill');
@@ -356,7 +374,7 @@ skill_save = function() {
 
 				for (i of error_msgs) {
 					const error = document.createElement('div');
-					error.className = 'skill-bonus-line';
+					error.className = 'skill-bonus-err-line';
 					error.innerHTML = i;
 			
 					errors.appendChild(error);
