@@ -360,6 +360,7 @@ skill_save = function() {
 		.then(jsonResponse => {
 			console.log(jsonResponse)
 			if (jsonResponse.success) {
+				console.log('success')
 			} else {
 				console.log(jsonResponse)
 				const errors = document.getElementById('skill-bonus-err');
