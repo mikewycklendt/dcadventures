@@ -360,7 +360,9 @@ def save_skill():
 
 	try:
 		skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
-		
+
+		name = skill.name
+
 		skill.skill_id = skill_id
 		skill.description = description
 		skill.action = action
@@ -420,7 +422,7 @@ def save_skill():
 
 	finally:
 		db.session.close()
-		flash('Skill %s Successfully Created' % skill.name)
+		flash('Skill ' + name + ' Successfully Created')
 		return redirect(url_for('index'))
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
