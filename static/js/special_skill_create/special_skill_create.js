@@ -221,7 +221,7 @@ skill_save = function() {
 	const hidden_check = secret_check.checked;
 
 	const secret_mod = document.getElementById('secret_mod');
-	const hidden_mod = secret_mod.checked;
+	const hidden_mod = secret_mod.options[secret_mod.selectedIndex].value;
 
 	const untrained_check_check = document.getElementById('untrained_check');
 	const untrained_check = untrained_check_check.checked;
