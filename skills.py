@@ -327,6 +327,9 @@ def save_skill():
 	if move_math == '':
 		move_math = None
 
+	if action_change == '':
+		action_change = None
+
 	if speed_mod == '':
 		speed_mod = None
 
