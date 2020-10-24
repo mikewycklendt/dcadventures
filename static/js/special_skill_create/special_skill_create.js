@@ -277,7 +277,7 @@ skill_save = function() {
 	const circ_check = document.getElementById('circ_check');
 	const circ_mod = circ_check.checked;
 
-	const degree_check = document.getAnimations('degree_check');
+	const degree_check = document.getElementById('degree_check');
 	const degree_key = degree_check.checked;
 
 	const deg_mod_check = document.getElementById('deg_mod_check');
