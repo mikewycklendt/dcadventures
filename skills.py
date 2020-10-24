@@ -352,7 +352,7 @@ def save_skill():
 			error_msgs.append(' You must have one entry in the DC Table if this skill uses at least one DC that is not set by the GM.  Add an entry to the DC table or change DC Set By to GM or N/A. ')
 
 	if error:
-		body['success'] = True
+		body['success'] = False
 		body['error'] = error_msgs
 		return jsonify(body)
 
