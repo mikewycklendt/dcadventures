@@ -435,7 +435,7 @@ def save_skill():
 	db.session.close()
 	return jsonify({'success': True})
 	
-@skills.route('/skill/save/success/<bonus_id>', methods=['DELETE'])
+@skills.route('/skill/save/success/<bonus_id>')
 def skill_save_success(bonus_id):	
 	skill = db.session.query(SkillBonus).filter_by(id=bonus_id).one()
 	
