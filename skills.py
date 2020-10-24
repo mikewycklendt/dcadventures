@@ -433,8 +433,14 @@ def save_skill():
 	db.session.commit()
 
 	db.session.close()
-	flash('Skill ' + name + ' Successfully Created')
-	return redirect('/')
+	return jsonify({'success': True})
+	
+@skills.route('/skill/save/success/<bonus_id>', methods=['DELETE'])
+def skill_save_success(bonus_id):	
+	skill = db.session.query(SkillBonus).filter_by(id=bonus_id).one()
+	
+	flash('Skill ' + skill.name + ' Successfully Created')
+	return redirect(url_for('home'))
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
 def post_bonus_other_checks():

@@ -359,6 +359,7 @@ skill_save = function() {
 		.then(response => response.json())
 		.then(jsonResponse => {
 			if (jsonResponse.success) {
+				window.location.replace('/skill/save/success/' + bonus_id)
 			} else {
 				console.log(jsonResponse)
 				const errors = document.getElementById('skill-bonus-err');
