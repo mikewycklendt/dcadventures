@@ -356,9 +356,11 @@ def save_skill():
 		body['error'] = error_msgs
 		return jsonify(body)
 
-	skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+	
 
 	try:
+		skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+		
 		skill.skill_id = skill_id
 		skill.description = description
 		skill.action = action
