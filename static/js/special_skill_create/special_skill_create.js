@@ -469,7 +469,7 @@ skill_save = function() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		errors.style.maxHeight = errors_height + "px";
+		errors.style.maxHeight = errors_height + 20 + "px";
 		errors.style.padding = "1%";
 
 	}
