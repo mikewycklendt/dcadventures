@@ -312,12 +312,55 @@ def save_skill():
 	opp_condition = request.get_json()['opp_condition']
 	char_check = request.get_json()['char_check']
 
+	skill_type = db.Column(db.Integer, db.ForeignKey('skill_type.id'))
+	dc_set = db.Column(db.String())
+	time_type = db.Column(db.String())
+	time_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	time_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))	
+	time_mod = db.Column(db.Integer)
+	time_val = db.Column(db.Integer)
+	time_val_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	sub_check = db.Column(db.Boolean)
+	cover_check = db.Column(db.Boolean)
+	materials_check = db.Column(db.Boolean)
+	hidden_check = db.Column(db.Boolean)
+	hidden_mod = db.Column(db.Integer)
+	untrained_check = db.Column(db.Boolean)
+	untrained_limit = db.Column(db.Integer)
+	untrained_mod = db.Column(db.Integer)
+	level_type = db.Column(db.String())
+	level_change = db.Column(db.String())
+	subskill = db.Column(db.String())
+	subskill_description = db.Column(db.String())
+	move_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	move_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	move_val = db.Column(db.Integer)
+	action_change = db.Column(db.Integer, db.ForeignKey('actions.id'))
+
+	if skill_type == '':
+		skill_type = None
+
+	if time_unit == '':
+		time_unit = None
+
+	if time_rank == '':
+		time_rank = None
+
+	if move_rank == '':
+		move_rank = None
+		
+	if move_math == '':
+		move_math = None
+
 	if speed_mod == '':
 		speed_mod = None
 
 	if time_mod == '':
 		time_mod = None
 
+	if time_val_unit == '':
+		time_val_unit = None
+	
 	if time_val == '':
 		timeval = None
 	else:
