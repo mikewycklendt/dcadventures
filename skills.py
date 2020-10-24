@@ -358,72 +358,62 @@ def save_skill():
 
 	
 
-	try:
-		skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+	skill = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+	
+	name = skill.name
+	
+	skill.skill_id = skill_id
+	skill.description = description
+	skill.action = action
+	skill.check_id = check_id
+	skill.condition = condition
+	skill.speed_mod = speed_mod
+	skill.skill_type = skill_type
+	skill.dc_set = dc_set
+	skill.time_type = time_type	
+	skill.time_unit = time_unit
+	skill.time_rank = time_rank	
+	skill.time_mod = time_mod
+	skill.time_val = timeval
+	skill.time_val_unit = time_val_unit
+	skill.sub_check = sub_check
+	skill.cover_check = cover_check
+	skill.materials_check = materials_check
+	skill.hidden_check = hidden_check
+	skill.hidden_mod = hidden_mod
+	skill.untrained_check = untrained_check
+	skill.untrained_limit = untrained_limit
+	skill.untrained_mod = untrained_mod
+	skill.level_type = level_type
+	skill.level_change = level_change
+	skill.subskill = subskill
+	skill.subskill_description = subskill_description
+	skill.move_rank = move_rank
+	skill.move_math = move_math
+	skill.move_val = move_val
+	skill.action_change = action_change
+	skill.action_mod = action_mod
+	skill.public = public
+	skill.approved = approved
+	skill.other = other
+	skill.other_check = other_check
+	skill.opposed = opposed
+	skill.round = rounds
+	skill.power = power
+	skill.levels = levels
+	skill.circ_mod = circ_mod
+	skill.degree_key = degree_key
+	skill.degree_mod = degree_mod
+	skill.resist_check = resist_check
+	skill.resist_effect = resist_effect
+	skill.opp_condition = opp_condition
+	skill.char_check = char_check
 
-		name = skill.name
+	db.session.commit()
 
-		skill.skill_id = skill_id
-		skill.description = description
-		skill.action = action
-		skill.check_id = check_id
-		skill.condition = condition
-		skill.speed_mod = speed_mod
-		skill.skill_type = skill_type
-		skill.dc_set = dc_set
-		skill.time_type = time_type
-		skill.time_unit = time_unit
-		skill.time_rank = time_rank	
-		skill.time_mod = time_mod
-		skill.time_val = timeval
-		skill.time_val_unit = time_val_unit
-		skill.sub_check = sub_check
-		skill.cover_check = cover_check
-		skill.materials_check = materials_check
-		skill.hidden_check = hidden_check
-		skill.hidden_mod = hidden_mod
-		skill.untrained_check = untrained_check
-		skill.untrained_limit = untrained_limit
-		skill.untrained_mod = untrained_mod
-		skill.level_type = level_type
-		skill.level_change = level_change
-		skill.subskill = subskill
-		skill.subskill_description = subskill_description
-		skill.move_rank = move_rank
-		skill.move_math = move_math
-		skill.move_val = move_val
-		skill.action_change = action_change
-		skill.action_mod = action_mod
-		skill.public = public
-		skill.approved = approved
-		skill.other = other
-		skill.other_check = other_check
-		skill.opposed = opposed
-		skill.round = rounds
-		skill.power = power
-		skill.levels = levels
-		skill.circ_mod = circ_mod
-		skill.degree_key = degree_key
-		skill.degree_mod = degree_mod
-		skill.resist_check = resist_check
-		skill.resist_effect = resist_effect
-		skill.opp_condition = opp_condition
-		skill.char_check = char_check
-
-		db.session.commit()
-
-	except:
-		db.session.rollback()
-		error = True
-		body['success'] = True
-		error_msgs.append('There was an error processing the request.')
-		body['error'] = error_msgs
-		return jsonify(body)
-
-	finally:
-		db.session.close()
-		flash('Skill ' + name + ' Successfully Created')
-		return redirect(url_for('index'))
+	db.session.close()
+	flash('Skill ' + name + ' Successfully Created')
+	return redirect(url_for('index'))
 
 @skills.route('/skill/other_checks/create', methods=['POST'])
 def post_bonus_other_checks():
