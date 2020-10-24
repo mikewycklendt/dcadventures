@@ -34,16 +34,18 @@ db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
 
-stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
-meta_name="DC Adventures Online"
-meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
-title = 'DC Adventures Online Roleplqying Game'
-sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
+
 
 @app.route('/')
-def index(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
+def home():
 	includehtml = 'home.html'
-	
+
+	stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
+	meta_name="DC Adventures Online"
+	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
+	title = 'DC Adventures Online Roleplqying Game'
+	sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
+
 	title = 'DC Adventures Online: Create a Special Skill'
 	stylesheets.append({"style": "/static/css/home.css"})
 
