@@ -346,7 +346,7 @@ def save_skill():
 		action_mod = None
 
 	if dc_set == 'table':
-		skill_dc = db.session.query(SkillDC).filter(SkillDC.id == bonus_id).first()
+		skill_dc = db.session.query(SkillDC).filter(SkillDC.bonus_id == bonus_id).first()
 		if skill_dc is None:
 			error = True
 			error_msgs.append(' You must have one entry in the DC Table if this skill uses at least one DC that is not set by the GM.  Add an entry to the DC table or change DC Set By to GM or N/A. ')
