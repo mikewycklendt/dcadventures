@@ -319,7 +319,7 @@ def save_skill():
 		time_mod = None
 
 	if time_val == '':
-		time_val = None
+		timeval = None
 	else:
 		try:
 			timeval = int(time_val)
