@@ -1,0 +1,103 @@
+<div class="skill-container" style="justify-content: center; background:url(/static/img/bg/superman.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="skill-grid">
+		
+		<div id="box-title">
+			<img src="/static/img/title/create_power.png" width="100%">
+		</div>
+		<br>
+		
+		<br>
+
+		<span>
+
+		<div id="addpowergrid">
+
+			<div id="add-power">
+
+				<div id="addpowerunderline">
+						Power Name
+				</div>
+
+				<div id="addpowerform">
+					<div id="namepower">
+						<input type="text" id="power_name" placeholder="Power Name">
+					</div>
+						
+					<div id="namebutton">
+						<div class="btn" id="power_create" onclick="power_create()" >
+							 Create Power
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div id="power-name-grid">
+
+				<div id="power-name">
+
+				</div>
+
+				<div id="power-edit">
+					<div id="edit-button" style="display: none;">
+						<button  style="font-size: 260%;" onclick="power_form()"><i class="fa fa-edit"></i></button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="power-edit-grid" style="display: none;">
+				<div id="power-edit-field">
+					<input type="text" id="power_name_edit">
+				</div>
+
+				<div id="power-edit-btn">
+					<div class="edit-btn" id="power_edit" onclick="power_edit()">
+						Save
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
+		
+			</div>
+			
+		</div>
+
+		<br>
+
+		<div id="all-fields">
+
+		<div id="power-form">
+			{% include power_includes.base_form %}
+
+		</div>
+
+		<br>
+
+		
+
+		<br>
+
+		<div id="power-err"></div>
+
+		<br><br>
+
+		<div id="save-div">
+			<div class="save-btn" onclick="power_save()"> Save Power</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+
+		</span>
+		
+	</div>
+	
+</div>
+
+	<script src="/static/js/power_create/power_create.js"></script>
+
+	<input type="hidden" id="power_id" name="power_id" value=>

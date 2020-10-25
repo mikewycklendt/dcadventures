@@ -1,33 +1,15 @@
-@import "special_skill_create/dc_table.css";
-@import "special_skill_create/base_form.css";
-@import "special_skill_create/levels.css";
-@import "special_skill_create/circumstance_table.css";
-@import "special_skill_create/degree_table.css";
-@import "special_skill_create/degree_mod.css";
-@import "special_skill_create/movement.css";
-@import "special_skill_create/power.css";
-@import "special_skill_create/rounds.css";
-@import "special_skill_create/subskill.css";
-@import "special_skill_create/change_action.css";
-@import "special_skill_create/resistance.css";
-@import "special_skill_create/opponent_condition.css";
-@import "special_skill_create/other_char.css";
-@import "special_skill_create/other_checks.css";
-@import "special_skill_create/resist.css";
-@import "special_skill_create/opposed.css";
-@import "special_skill_create/alt_check.css";
-@import "special_skill_create/pre_check.css";
+
+@import "power_create/base_form.css";
 
 
-
-.skill-container {
+.power-container {
 	display: grid;
 	width: 100%;
 	grid-template-columns: 100%;
 	grid-template-areas: "contentpage";
 }
 
-.skill-grid {
+.power-grid {
 	display: grid;
 	width: 80%;
 	margin-top: 2px;
@@ -54,7 +36,7 @@
 }
 
 #title-img {
-	background: url(/static/img/title/create_skill.png);
+	background: url(/static/img/title/create_power.png);
 }
 
 .box-outline {
@@ -79,7 +61,7 @@ input[type=text]:focus {
 	outline: 2px solid #af0101;
 }
 
-#nameskill input[type="text"] {
+#namepower input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;
@@ -237,7 +219,7 @@ textarea:focus {
 	display: inline-block;
 }
 
-#addskillgrid {
+#addpowergrid {
 	display: grid;
 	width: 100%;
 	margin: 0px;
@@ -248,7 +230,7 @@ textarea:focus {
 	grid-auto-rows: auto;
 }
 
-#addskill-err {
+#addpower-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -261,7 +243,7 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
-#addskillform {
+#addpowerform {
 	display: grid;
 	width: 100%;
 	margin: 2%;
@@ -270,7 +252,7 @@ textarea:focus {
 	grid-template-areas: "namefield namebutton";
 }
 
-#addskillunderline {
+#addpowerunderline {
 	display: grid;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
@@ -284,14 +266,14 @@ textarea:focus {
 	padding: 0px;
 }
 
-#skill-name-grid {
+#power-name-grid {
 	display: grid;
 	width: 100%;
 	margin: 2%;
 	grid-template-columns: 70% 25%;
 }
 
-#skill-edit-grid {
+#power-edit-grid {
 	display: grid;
 	width: 100%;
 	margin: 2%;
@@ -301,13 +283,13 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#skill-edit-field input[type="text"] {
+#power-edit-field input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;
 }
 
-#skill-name {
+#power-name {
 	opacity: 0%;
 	font-family: Comic, Verdana;
 	text-shadow: 1px, 1px, 1px rgba(36, 86, 129, 0.05);
@@ -388,7 +370,7 @@ textarea:focus {
 	display: inline-block;
 }
 
-#nameskill {
+#namepower {
 	grid-area: namefield;
 }
 
@@ -522,7 +504,7 @@ textarea:focus {
 }
 
 
-#skill-bonus-err {
+#power-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -535,7 +517,7 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
-.skill-bonus-err-line {
+.power-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -549,7 +531,7 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
-.skill-bonus-err-line::before {
+.power-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;
@@ -564,4 +546,24 @@ textarea:focus {
 	align-content: center;
 	justify-content: center;
 	justify-items: center;
+}
+
+.power-table {
+	display: grid;
+	width: 100%;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	margin-bottom: 20px;
+}
+
+.power-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
 }

@@ -1,0 +1,325 @@
+<div id="category">
+	<div id="skill-attr-title">
+		Enhances Skill:
+	</div>
+
+	<div id="category-field">
+		<select class="header-select" id="skill" name="skill">
+			{% for skill in skills %}
+				<option value={{skill.id}}>{{skill.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<br>
+
+<div id="category-err"></div>
+
+<br>
+
+<div id="description">
+	<div id="skill-attr-title">
+		Description
+	</div>
+
+	<div id="description-field">
+		<textarea id="bonus_desc" name="bonus_desc"></textarea>
+	</div>
+</div>
+
+<br>
+
+<div id="description-err"></div>
+
+<br>
+
+<div id="action-check-condition-speed-skilltype-dctype">
+
+	<div id="action-field">
+		<div id="multiple-attr-title">
+			Action Type:
+		</div>
+
+		<select class="base-select" id="action" name="action" >
+			<option value=''>Action Type</option>
+			{% for action in actions %}
+				<option value={{action.id}}>{{action.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="check-field">
+		<div id="multiple-attr-title">
+			Check Type:
+		</div>
+		
+		<select class="base-select" id="check" name="check"  onchange="check_type()">
+			<option value=''>Check Type</option>
+			{% for check in checks %}
+				<option value={{check.id}}>{{check.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="condition-field">
+		<div id="multiple-attr-title">
+			Condition Status:
+		</div>
+		
+		<select class="base-select" id="condition" name="condition" >
+			<option value="">Normal</option>
+			{% for condition in conditions %}
+				<option value="{{condition}}">{{condition}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="speed-field">
+		<div id="multiple-attr-title">
+			Speed Rank Modifier:
+		</div>
+		
+		<select class="base-select" id="speed" name="speed" aria-placeholder="0" >
+			<option value=0>0</option>
+			{% for number in numbers %}
+				<option value={{number}}>{{number}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="skilltype-field">
+		<div id="multiple-attr-title">
+			Skill Type:
+		</div>
+		
+		<select class="base-select" id="skilltype" name="skilltype" >
+			<option value="">N/A</option>
+			{% for type in skilltype %}
+				<option value="{{type.id}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	
+
+	<div id="dctype-field">
+		<div id="multiple-attr-title">
+			DC Set by:
+		</div>
+		
+		<select class="base-select" id="dc_set" name="dc_set"  onchange="dc_set()">
+			<option value="">N/A</option>
+			{% for type in dctype %}
+				<option value="{{type.value}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="prep-field">
+		<div id="multiple-attr-title">
+			Time to Complete:
+		</div>
+
+		<div>
+			<select class="base-select" id="prep_type" name="prep_type" onchange="prep_type()">
+				<option value="immediate">Immediate</option>
+				{% for value in value_type %}
+					<option value="{{value}}">{{value}}</option>
+				{% endfor %}
+			</select>			
+		</div>
+
+		
+		<div id="prep-value" style="display: none;">
+			<div>
+				<input type="text" id="prep_value" name="prep_value" style="height: 1.2vw;">
+			</div>
+		
+			<div>
+				<select class="base-select" id="prep_unit" name="prep_unit" style="font-size: 90%;">
+					<option value="">Time Unit</option>
+					{% for time in times %}
+						<option value="{{time.id}}">{{time.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div id="prep-math-rank" style="display: none;">
+
+			<div>
+				Time Rank 
+			</div>
+
+			<div>
+				<select class="select-sml" id="prep_rank" name="prep_rank" >
+					<option value="">Rank</option>
+					{% for rank in measure_rank %}
+						<option value={{rank.id}}>{{rank.name}}</option>
+					{% endfor %}
+					{% for rank in char_rank %}
+						<option value={{rank.id}}>{{rank.name}}</option>
+					{% endfor %}
+				</select>
+			
+			</div>
+			
+			
+			<div>
+
+				<select class="select-sml" id="prep_math" name="prep_math" >
+					<option value="">Math</option>
+					{% for math in maths %}
+						<option value="{{math.id}}">{{math.name}}</option>
+					{% endfor %}
+				</select>
+
+			</div>
+
+			<div>
+				<select class="select-sml" id="prep_mod" name="prep_mod" >
+					<option value="">Value</option>
+					{% for class in dcclasses %}
+						<option value={{class}}>{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="sub-field">
+		
+		<div id="multiple-attr-title">
+			Is this a  sub-skill?
+		</div>
+
+		<div>
+			<input type="checkbox" id="subskill_check" class="regular-checkbox big-checkbox" onclick="subskill_check()">
+		</div>
+
+	</div>
+
+	<div id="cover-field">
+		
+		<div id="multiple-attr-title">
+			Does this skill require cover?
+		</div>
+
+		<div>
+			<input type="checkbox" id="cover_check" class="regular-checkbox big-checkbox">
+		</div>
+
+	</div>
+
+	<div id="materials-field">
+		
+		<div id="multiple-attr-title" style="font-size: 140%;">
+			Does this skill require materials?
+		</div>
+
+		<div>
+			<input type="checkbox" id="materials_check" class="regular-checkbox big-checkbox">
+		</div>
+
+	</div>
+	
+	<div id="secret-field">
+		
+		<div id="multiple-attr-title" style="font-size: 140%;">
+			Is Result Hidden from Player?
+		</div>
+
+		<div id="secret-details">
+
+			<div>
+				<input type="checkbox" id="secret_check" class="regular-checkbox big-checkbox" onclick="secret_check()">
+			</div>
+
+			<div id="secret-mod" style="opacity: 0%; transition: all .3s ease-out;">
+				<select class="base-select" id="secret_mod" name="secret_mod" style="font-size: 80%;">
+					<option value="">DC Modifier</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div id="untrained-field">
+		
+		<div id="multiple-attr-title" style="font-size: 140%;">
+			Can this skill be used untrained?
+		</div>
+
+		<div>
+			<input type="checkbox" id="untrained_check" class="regular-checkbox big-checkbox" onclick="untrained_check()">
+		</div>
+
+	</div>
+
+	<div id="untrained-details-field" style="display: none; opacity: 0%; transition: all .3s ease-out;">
+		
+		<div id="multiple-attr-title">
+			Untrained Details:
+		</div>
+
+		<div id="untrained-fields" style="font-size: 85%;">
+			<div>
+				<select class="base-select" id="untrained_dclimit" name="untrained_dclimit" >
+					<option value="">DC Limit</option>
+					{% for class in dcclasses %}
+						<option value={{class}}>{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<div>
+				<select class="base-select" id="untrained_mod" name="untrained_mod" >
+					<option value="">Modifier</option>
+					{% for negetive in negatives %}
+						<option value={{negetive}}>{{negetive}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+	</div>
+
+	<div id="change-level-field">
+		
+		<div id="multiple-attr-title">
+			Changes Character Level:
+		</div>
+
+		<div id="change-level-fields">
+			<div>
+				<select class="base-select" id="change_level_type" name="change_level_type" >
+					<option value="">Level Type</option>
+					{% for level in level_type %}
+						<option value={{level.id}}>{{level.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<div>
+				<select class="base-select" id="change_level_level" name="change_level_level" >
+					<option value="">Level</option>
+					{% for level in levels %}
+						<option value={{level.id}}>{{level.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+	</div>
+
+	<br>
+
+	<div id="base-form-err"></div>
+
+	<br>
