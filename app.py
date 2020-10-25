@@ -15,6 +15,7 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from tables import tables
 from skills import skills
+from powers import powers
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -30,6 +31,7 @@ moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 app.register_blueprint(tables)
 app.register_blueprint(skills)
+app.register_blueprint(powers)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
