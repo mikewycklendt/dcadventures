@@ -73,6 +73,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 						{'type': 'cont', 'name': 'Continuous'},
 						{'type': 'perm', 'name': 'Permanent'}]
 
+	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+
 	distance = db.session.query(Unit).filter_by(type_id=3)
 
-	return render_template('template.html', distance=distance, negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)
+	return render_template('template.html', dc_type=dc_type, distance=distance, negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)

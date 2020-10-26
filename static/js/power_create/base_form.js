@@ -13,3 +13,15 @@ function range_type() {
 		power_range.style.padding = "0px";
 	}
 }
+
+function power_dc_type() {
+	const type_field = document.getElementById("power_dc_type");
+	const type = type_field.options[type_field.selectedIndex].value;
+	const mod = document.getElementById("power-dc-mod");
+
+	if (type == 'mod') {
+		mod.style.opacity = "100%";
+	} else {
+		mod.style.opacity  = "0%"
+	}
+}

@@ -78,6 +78,36 @@
 		</select>
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Difficulty Class:
+		</div>
+		
+		<div id="power-dc-field">
+			<div>
+				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="power_dc_type()">
+					<option value=0>0</option>
+					{% for dc in positives %}
+						<option value={{dc.type}}>{{dc.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="power-dc-mod">
+				<select class="base-select" id="power_dc_mod" name="power_dc_mod" >
+					<option value=></option>
+					{% for num in negatives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
+					{% for num in positives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+	</div>
+
 </div>
 
 	<br>
