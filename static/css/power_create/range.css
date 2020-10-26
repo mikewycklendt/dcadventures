@@ -33,10 +33,15 @@
 }
 
 #range-name-field {
-	grid-area: rank;
+	grid-area: name;
 	width: 85%;
 	height: auto;
 	padding: 4px;
+}
+
+#range-name-field input[type="text"] {
+	height: 1.1vw;
+	font-size: 80%;
 }
 
 #range-value-field {
@@ -47,12 +52,12 @@
 }
 
 #range-value-field input[type="text"] {
-	height: 1.3vw;
+	height: 1.1vw;
 	font-size: 80%;
 }
 
 #range-unit-field {
-	grid-area: rank;
+	grid-area: unit;
 	width: 85%;
 	height: auto;
 	padding: 4px;
