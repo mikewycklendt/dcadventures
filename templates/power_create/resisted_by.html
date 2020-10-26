@@ -1,7 +1,7 @@
 <div id="resist-header" style="justify-content: center;">
 
 	<div id="resist-title">
-		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()"> Range:
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()"> Resisted By:
 	</div>
 
 </div>
@@ -60,7 +60,7 @@
 
 		<div id="resist-power">
 			<select class="select-sml" id="" name="">
-				<option value=""></option>
+				<option value="">Power</option>
 				{% for power in powers %}
 					<option value="{{power}}">{{power}}</option>
 				{% endfor %}

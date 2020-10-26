@@ -9,7 +9,7 @@ function resist_check() {
 		entry.style.maxHeight = entry.scrollHeight + "px";
 		entry.style.padding = "1%";
 		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
+		title.style.fontSize = "220%";
 		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
 		entry.style.maxHeight = "0px";
