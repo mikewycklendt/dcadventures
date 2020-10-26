@@ -46,8 +46,8 @@
 
 #range-value-field {
 	grid-area: value;
-	width: 85%;
-	height: auto;
+	width: 95%;
+	height: 9vw;
 	padding: 4px;
 }
 
@@ -86,18 +86,18 @@
 
 .range-btn {
 	display: table-cell;
-	width: 12vw;
+	width: 15vw;
 	vertical-align: middle;
 	text-align: center;
-	height: 2vw;
-	padding: .3vw;
+	height: 1.5vw;
+	padding: .2vw;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
 	justify-content: center;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
-	font-size: 110%;
+	font-size: 95%;
 	color: white;
 	outline: 2px solid white;
 	outline-offset: -4px;
