@@ -1,0 +1,94 @@
+<div id="resist-header" style="justify-content: center;">
+
+	<div class="resist-title">
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()">Range:
+	</div>
+
+</div>
+
+<div id="range-entry">
+
+	<div id="resist-type-field">
+		<select class="select-sml" id="resist_type" name="resist_type" onchange="resist_type()">
+			<option value="">Resisted By</option>
+			{% for type in resisted_by %}
+				<option value="{{type.type}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="resist-mod-field">
+
+	</div>
+
+	<div id="resist-field-field">
+
+		<div id="resist-ability">
+			<select class="select-sml" id="resist_ability" name="resist_ability">
+				<option value="">Ability</option>
+				{% for ability in abilities %}
+					<option value={{ability.id}}>{{ability.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="resist-skill">
+			<select class="select-sml" id="resist_skill" name="resist_skill">
+				<option value="">Skill</option>
+				{% for skill in skills %}
+					<option value={{skill.id}}>{{skill.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="resist-defense">
+			<select class="select-sml" id="resist_defense" name="resist_defense">
+				<option value="">Defense</option>
+				{% for defense in defenses %}
+					<option value={{defense.id}}>{{defense.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="resist-power">
+			<select class="select-sml" id="" name="">
+				<option value=""></option>
+				{% for power in powers %}
+					<option value="{{power}}">{{power}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="resist-add">
+		<div class="resist-btn" onclick="resist_submit()">
+			Add
+		</div>
+	</div>
+
+	<div id="resist-description-field">
+		<textarea id="range_desc" name="range_desc" placeholder="Description"></textarea>
+	</div>
+	
+
+</div>
+<div id="resist-table">
+
+	<div class="power-table-title">
+		Resisted By:
+	</div>
+
+	<div class="power-table-title">
+		Modifier:
+	</div>
+
+	<div class="power-table-title">
+		Description:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="resist-err"></div>

@@ -107,6 +107,23 @@
 		</div>
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Check Type
+		</div>
+	
+		<div>
+			<select class="base-select" id="check" name="check">
+				<option value="">Check Type</option>
+				<option value=>None</option>
+				{% for check in checks %}
+					<option value={{check.id}}>{{check.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
 </div>
 
 	<br>

@@ -1,0 +1,236 @@
+#resist-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
+#resist-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#resist-entry {
+	display: grid;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 20% 20% 60%;
+	grid-template-rows:  auto auto auto;
+	grid-template-areas: "type mod description"
+							"field field description"
+							"button button description";
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-type-field {
+	grid-area: type;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#resist-mod-field {
+	grid-area: mod;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#resist-field-field {
+	grid-area: value;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#resist-ability {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-defense {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-skill {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-power {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-description-field {
+	grid-area: description;
+	width: 90%;
+	height: auto;
+	padding: 4px;
+}
+
+#resist-description-field textarea{
+	width: 100%; 
+	height: 6vw; 
+	font-size: 90%; 
+	padding: 2%;
+}
+
+#resist-add {
+	grid-area: button;
+	width: 100%;
+	padding: 3px;
+
+}
+
+#resist-btn {
+	display: table-cell;
+	width: 15vw;
+	vertical-align: middle;
+	text-align: center;
+	height: 1.5vw;
+	padding: .2vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 95%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.resist-btn:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.resist-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
+}
+
+#resist-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 20% 15% 60% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-res {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-mod {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#resist-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}
