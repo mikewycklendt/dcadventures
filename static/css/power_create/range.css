@@ -1,0 +1,220 @@
+#range-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
+#range-entry {
+	display: grid;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 20% 20% 60%;
+	grid-template-rows:  auto auto auto;
+	grid-template-areas: "rank name description"
+							"value unit description"
+							"button button description";
+}
+
+#range-rank-field {
+	grid-area: rank;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#range-name-field {
+	grid-area: rank;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#range-value-field {
+	grid-area: value;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#range-value-field input[type="text"] {
+	height: 1.3vw;
+	font-size: 80%;
+}
+
+#range-unit-field {
+	grid-area: rank;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#range-description-field {
+	grid-area: description;
+	width: 85%;
+	height: auto;
+	padding: 4px;
+}
+
+#range-description-field textarea{
+	width: 100%; 
+	height: 3.7vw; 
+	font-size: 90%; 
+	padding: 2%;
+}
+
+#range-add {
+	grid-area: button;
+	width: 100%;
+	padding: 3px;
+
+}
+
+.range-btn {
+	display: table-cell;
+	width: 12vw;
+	vertical-align: middle;
+	text-align: center;
+	height: 2vw;
+	padding: .3vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 110%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.range-btn:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.range-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
+}
+
+#range-table {
+	display: grid;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 7% 18% 20% 50% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-rnk {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-name {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-mea {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#range-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

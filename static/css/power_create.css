@@ -567,3 +567,12 @@ textarea:focus {
 	padding: 0px;
 	transition: all .2s linear;
 }
+
+.power-table-title {
+	border-bottom: 1px solid lightblue;
+	width: 95%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	margin-bottom: 4px;
+}

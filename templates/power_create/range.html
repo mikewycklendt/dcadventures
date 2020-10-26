@@ -1,0 +1,71 @@
+<div id="range-header" style="justify-content: center;">
+
+	<div class="power-title">
+		Range:
+	</div>
+
+</div>
+
+<div id="range-entry">
+
+	<div id="range-rank-field">
+		<select class="select-sml" id="range_rnk" name="range_rnk" >
+			<option value="">Rank</option>
+			{% for num in positives %}
+				<option value={{num}}>{{num}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="range-name-field">
+		<input type="text" id="range_key" name="range_key" placeholder="Keyword">
+	</div>
+
+	<div id="range-value-field">
+		<input type="text" id="range_val" name="range_val" placeholder="Value">
+	</div>
+
+	<div id="range-unit-field">
+		<select class="select-sml" id="range_unt" name="range_unt" >
+			<option value="">Rank</option>
+			{% for unit in distance %}
+				<option value={{unit.id}}>{{unit.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="range-add-field">
+		<div class="range-btn" onclick="range_submit()">
+			Add
+		</div>
+	</div>
+
+	<div id="range-description-field">
+		<textarea id="range_desc" name="range_desc" placeholder="Description"></textarea>
+	</div>
+	
+
+</div>
+<div id="range-table">
+
+	<div class="power-table-title">
+		Rank:
+	</div>
+
+	<div class="power-table-title">
+		Name:
+	</div>
+
+	<div class="power-table-title">
+		Measurement
+	</div>
+
+	<div class="power-table-title">
+		Description:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="range-err"></div>
