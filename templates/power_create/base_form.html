@@ -86,8 +86,7 @@
 		<div id="power-dc-field">
 			<div>
 				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="power_dc_type()">
-					<option value=0>0</option>
-					{% for dc in positives %}
+					{% for dc in dc_type %}
 						<option value={{dc.type}}>{{dc.name}}</option>
 					{% endfor %}
 				</select>
