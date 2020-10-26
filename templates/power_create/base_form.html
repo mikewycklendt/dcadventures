@@ -67,7 +67,7 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Cost:
+			Cost Per Rank:
 		</div>
 		
 		<select class="base-select" id="cost" name="cost" >
@@ -94,7 +94,7 @@
 
 			<div id="power-dc-mod">
 				<select class="base-select" id="power_dc_mod" name="power_dc_mod" >
-					<option value=></option>
+					<option value=>Modifier</option>
 					{% for num in negatives %}
 						<option value={{num}}>{{num}}</option>
 					{% endfor %}
