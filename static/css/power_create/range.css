@@ -125,9 +125,7 @@
 	grid-template-columns: 7% 18% 20% 50% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+
 }
 
 .range-table-rnk {
