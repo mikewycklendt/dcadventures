@@ -107,7 +107,7 @@
 
 }
 
-#resist-btn {
+.resist-btn {
 	display: table-cell;
 	width: 15vw;
 	vertical-align: middle;
