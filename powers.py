@@ -39,5 +39,38 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	stylesheets.append({"style": "/static/css/power_create.css"})
 
 	power_includes = {'base_form': 'base_form.html'}
+	
+	negatives = []
+	for i in range(-20, 1, 1):
+		negatives.append(i)
 
-	return render_template('template.html', power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)
+	positives = []
+	for i in range(1, 41, 1):
+		positives.append(i)
+
+	power_type = [{'type': 'attack', 'name': 'Attack'}, 
+					{'type': 'move', 'name': 'Movement'},  
+					{'type': 'sense', 'name': 'Sensory'},
+					{'type': 'control', 'name': 'Control'}, 
+					{'type': 'defense', 'name': 'Defense'}, 
+					{'type': 'general', 'name': 'General'}]
+
+	action_type = [{'type': 'standard', 'name': 'Standard Action'},
+					{'type': 'move', 'name': 'Move Action'},
+					{'type': 'free', 'name': 'Free Action'},
+					{'type': 'reaction', 'name': 'Reaction'},
+					{'type': 'none', 'name': 'None'}]
+
+	range_type = [{'type': 'personal', 'name': 'Personal'}, 
+					{'type': 'close', 'name': 'Close'}, 
+					{'type': 'ranged', 'name': 'Ranged'}, 
+					{'type': 'perception', 'name': 'Perception'}, 
+					{'type': 'rank', 'name': 'Rank Table'}]
+
+	duration_type = [{'type': 'instant', 'name': 'Instant'}, 
+						{'type': 'conc', 'name': 'Concentration'}, 
+						{'type': 'sustained', 'name': 'Sustained'},
+						{'type': 'cont', 'name': 'Continuous'},
+						{'type': 'perm', 'name': 'Permanent'}]
+
+	return render_template('template.html', negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)
