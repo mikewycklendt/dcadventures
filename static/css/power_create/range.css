@@ -65,7 +65,7 @@
 
 #range-description-field {
 	grid-area: description;
-	width: 95%;
+	width: 90%;
 	height: auto;
 	padding: 4px;
 }
@@ -118,7 +118,7 @@
 }
 
 #range-table {
-	display: grid;
+	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
