@@ -38,7 +38,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	title = 'DC Adventures Online Roleplqying Game: Create Power'
 	stylesheets.append({"style": "/static/css/power_create.css"})
 
-	power_includes = {'base_form': 'power_create/base_form.html'}
+	power_includes = {'base_form': 'power_create/base_form.html', 'range': 'power_create/range.html'}
 	
 	negatives = []
 	for i in range(-20, 1, 1):
