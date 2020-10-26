@@ -1,7 +1,7 @@
 <div id="resist-header" style="justify-content: center;">
 
 	<div id="resist-title">
-		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()">Range:
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()"> Range:
 	</div>
 
 </div>
@@ -18,7 +18,15 @@
 	</div>
 
 	<div id="resist-mod-field">
-
+		<select class="select-sml" id="resist_mod" name="resist_mod" onchange="resist_type()">
+			<option value="">Modifier</option>
+			{% for num in negatives %}
+				<option value={{num}}>{{num}}</option>
+			{% endfor %}
+			{% for num in positives %}
+				<option value={{num}}>{{num}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
 	<div id="resist-field-field">

@@ -52,7 +52,7 @@
 }
 
 #resist-field-field {
-	grid-area: value;
+	grid-area: field;
 	width: 85%;
 	height: auto;
 	padding: 4px;
