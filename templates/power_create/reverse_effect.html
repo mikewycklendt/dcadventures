@@ -86,7 +86,7 @@
 		<div>
 			<select class="select-sml" id="reverse_type" name="reverse_type" onchange="reverse_type()">
 				<option value="">Check Type</option>
-				{% for type in check_type %}
+				{% for type in check_types %}
 					<option value="{{type.type}}">{{type.name}}</option>
 				{% endfor %}
 			</select>
@@ -134,7 +134,7 @@
 
 		<div>
 			<select class="select-sml" id="reverse_value_type" name="reverse_value_type" onchange="reverse_value_type()">
-				{% for dc in dc_type %}
+				{% for dc in dc_value %}
 					<option value="{{dc.type}}">{{dc.name}}</option>
 				{% endfor %}
 			</select>
