@@ -80,7 +80,7 @@
 
 #resist-condition {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 10% 40% 10% 40%;
 	grid-template-rows: auto;
 	width: 85%;
 	height: auto;

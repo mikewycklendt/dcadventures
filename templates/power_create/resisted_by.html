@@ -114,7 +114,11 @@
 
 		<div id="resist-condition">
 			<div>
-				From: <select class="select-sml" id="resist_con1" name="resist_con1">
+				From:
+			</div> 
+			
+			<div>
+				<select class="select-sml" id="resist_con1" name="resist_con1">
 					<option value="">Condition</option>
 					{% for condition in conditions %}
 						<option value="{{condition}}">{{condition}}</option>
@@ -123,7 +127,11 @@
 			</div>
 
 			<div>
-				To: <select class="select-sml" id="resist_con2" name="resist_con2">
+				To: 
+			</div>
+			
+			<div>
+				<select class="select-sml" id="resist_con2" name="resist_con2">
 					<option value="">Condition</option>
 					{% for condition in conditions %}
 						<option value="{{condition}}">{{condition}}</option>
