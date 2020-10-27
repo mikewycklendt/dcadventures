@@ -85,7 +85,7 @@
 	display: grid;
 	grid-template-columns: 10% 40% 10% 40%;
 	grid-template-rows: auto;
-	width: 955%;
+	width: 95%;
 	height: auto;
 	padding: 4px;
 }
