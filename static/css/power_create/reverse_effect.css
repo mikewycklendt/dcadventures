@@ -10,6 +10,7 @@
 #reverse-base {
 	display: grid;
 	opacity: 0%;
+	transition: all .3s linear;
 }
 
 #reverse-title {
