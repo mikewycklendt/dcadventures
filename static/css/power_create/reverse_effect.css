@@ -1,13 +1,18 @@
-#resist-header {
+#reverse-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 100%;
+	grid-template-columns: 70% 30%;
 	grid-template-rows: auto;
 }
 
-#resist-title {
+#reverse-base {
+	display: grid;
+	opacity: 0%;
+}
+
+#reverse-title {
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
@@ -16,7 +21,7 @@
 	transition: all .2s linear;
 }
 
-#resist-entry {
+#reverse-entry {
 	display: none;
 	width: 88%;
 	margin-top: 0px;
@@ -24,175 +29,113 @@
 	padding: 1%;
 	font-family: 'Monda', Verdana;;
 	color: #245681;
-	font-size: 100%;
+	font-size: 90%;
 	border-left: 1px solid  lightblue;
 	border-bottom: 1px solid  lightblue;
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 20% 20% 60%;
-	grid-template-rows:  auto auto auto;
-	grid-template-areas: "type mod description"
-							"field field effect"
-							"button button values";
+	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#resist-type-field {
-	grid-area: type;
-	width: 85%;
-	height: auto;
-	padding: 4px;
-}
-
-#resist-mod-field {
-	grid-area: mod;
-	width: 85%;
-	height: auto;
-	padding: 4px;
-}
-
-#resist-field-field {
-	grid-area: field;
-	width: 95%;
-	height: auto;
-	padding: 4px;
-}
-
-#resist-effect-field {
-	grid-area: effect;
+#reverse-entry-head {
 	display: grid;
-	grid-template-columns: 15% 35% 15% 35%;
-	grid-template-rows: auto;
-	width: 95%;
-	height: auto;
-	padding: 4px;
+	width: 100%;
+	grid-template-columns: 10% 10% 60% 20%;
+	grid-auto-rows: auto;
 }
 
-#resist-value-field {
-	grid-area: values;
+#reverse-checks {
 	display: grid;
+	width: 100%;
+	grid-template-columns: 10% 40% 10% 40%;
+}
+
+#reverse-check {
+	display: none;
+	grid-template-columns: 15% 20% 15% 50%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#reverse-check-fields {
+	display: grid;
+	width: 100%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	width: 95%;
-	height: auto;
-	padding: 4px;
 }
 
-#resist-condition {
-	display: none;
-	grid-template-columns: 13% 40% 7% 40%;
-	grid-template-rows: auto;
-	width: 100%;
-	height: auto;
-	padding: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .2s ease-out;
-}
-
-#resist-damage {
-	display: none;
-	grid-template-columns: 50% 50%;
-	grid-template-rows: auto;
-	width: 95%;
-	height: auto;
-	padding: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .2s ease-out;
-}
-
-#resist-ability {
+#reverse-ability {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#resist-defense {
+#reverse-defense {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#resist-skill {
+#reverse-skill {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#resist-power {
+#reverse-power {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#resist-description-field {
-	grid-area: description;
-	width: 90%;
-	height: auto;
-	padding: 4px;
+#reverse-check-value {
+	display: none;
+	grid-template-columns: 40% 60%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-#resist-description-field input[type="text"] {
+
+
+#reverse-check-math {
+	display: none;
+	grid-template-columns: 15% 20% 65%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#reverse-time {
+	display: none;
+	grid-template-columns: 10% 30% 10% 30% 20%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#reverse-time input[type="text"] {
 	width: 100%; 
-	height: 1.2vw; 
-	font-size: 90%; 
+	height: 1vw; 
+	font-size: 80%; 
 	padding: 2%;
 }
 
-#resist-add {
-	grid-area: button;
-	width: 100%;
-	padding: 3px;
-
-}
-
-.resist-btn {
-	display: table-cell;
-	width: 15vw;
-	vertical-align: middle;
-	text-align: center;
-	height: 1.5vw;
-	padding: .2vw;
-	background-color: #af0101;
-	cursor: crosshair;
-	margin: 3px;
-	justify-content: center;
-	font-family: 'Monda', Verdana;
-	text-decoration: none;
-	font-size: 95%;
-	color: white;
-	outline: 2px solid white;
-	outline-offset: -4px;
-	transition: all .2s ease-out;
-}
-
-.resist-btn:hover {
-	background-color: lightblue;
-	color: black;
-	outline: 2px solid black;
-	outline-offset: -2px;
-}
-
-.resist-btn::before {
-	font-family: 'FontAwesome';
-	content: '\f067';
-	display: inline-block;
-}
-
-#resist-table {
+#reverse-table {
 	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 15% 15% 15% 20% 30% 5%;
+	grid-template-columns: 10% 15% 15% 30% 30% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
@@ -200,7 +143,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-res {
+.reverse-table-tgt {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -212,7 +155,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-mod {
+.reverse-table-deg {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -224,7 +167,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-deg {
+.reverse-table-whn {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -236,7 +179,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-eft {
+.reverse-table-chk {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -248,7 +191,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-des {
+.reverse-table-tme {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -260,7 +203,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-table-del {
+.reverse-table-del {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -272,7 +215,7 @@
 	transition: all .4s ease-out;
 }
 
-#resist-err {
+#reverse-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -285,7 +228,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-err-line {
+.reverse-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -299,7 +242,7 @@
 	transition: all .4s ease-out;
 }
 
-.resist-err-line::before {
+.reverse-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;

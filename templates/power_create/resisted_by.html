@@ -11,7 +11,7 @@
 	<div id="resist-type-field">
 		<select class="select-sml" id="resist_type" name="resist_type" onchange="resist_type()">
 			<option value="">Resisted By</option>
-			{% for type in resisted_by %}
+			{% for type in check_types %}
 				<option value="{{type.type}}">{{type.name}}</option>
 			{% endfor %}
 		</select>
@@ -59,7 +59,7 @@
 		</div>
 
 		<div id="resist-power">
-			<select class="select-sml" id="" name="">
+			<select class="select-sml" id="resist_power" name="resist_power">
 				<option value="">Power</option>
 				{% for power in powers %}
 					<option value="{{power}}">{{power}}</option>

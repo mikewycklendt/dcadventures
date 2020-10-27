@@ -1,0 +1,214 @@
+<div id="reverse-header" style="justify-content: center;">
+
+	<div id="reverse-title">
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="reverse_check()"> Reverse Effect:
+	</div>
+
+	<div id="reverse-base">
+		<select class="header-select" id="reverse_target" name="reverse_target" onchange="reverse_base()">
+			{% for target in targets %}
+				<option value="{{target.type}}">{{target.name}}</option>
+			{% endfor %}
+		</select> 
+	</div>
+
+</div>
+
+<div id="reverse-entry">
+
+	<div id="reverse-entry-head">
+
+		<div>
+			Degree:
+		</div>
+
+		<div>
+			When:
+		</div>
+
+		<div>
+			Reversed By:
+		</div>
+
+		<div></div>
+
+	</div>
+
+	<div id="reverse-entry-head">
+
+		<div>
+			<select class="select-sml" id="reverse_degree" name="reverse_degree">
+				<option value="">Degree</option>
+				{% for num in negatives %}
+					<option value={{num}}>{{num}}</option>
+				{% endfor %}
+				{% for num in positives %}
+					<option value={{num}}>{{num}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="reverse_when" name="reverse_when">
+				{% for when in whens %}
+					<option value="{{when.type}}">{{when.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="reverse-checks">
+			<div>
+				<input type="checkbox" id="reverse_check_check" class="medium-checkbox med-checkbox" onclick="reverse_check_check()">
+			</div>
+
+			<div>
+				Reverse by Check
+			</div>
+
+			<div>
+				<input type="checkbox" id="reverse_time_check" class="medium-checkbox med-checkbox" onclick="reverse_time_check()">
+			</div>
+
+			<div>
+				Reverse by Time
+			</div>
+		</div>
+
+		<div>
+			<div class="btn-small" onclick="reverse_submit()">
+				Add
+			</div>
+		</div>
+
+	</div>
+
+	<div id="reverse-check">
+		<div>
+			<select class="select-sml" id="reverse_type" name="reverse_type" onchange="reverse_type()">
+				<option value="">Check Type</option>
+				{% for type in check_type %}
+					<option value="{{type.type}}">{{type.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="reverse-ability">
+				<select class="select-sml" id="resist_ability" name="resist_ability">
+					<option value="">Ability</option>
+					{% for ability in abilities %}
+						<option value={{ability.id}}>{{ability.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div id="reverse-skill">
+				<select class="select-sml" id="resist_skill" name="resist_skill">
+					<option value="">Skill</option>
+					{% for skill in skills %}
+						<option value={{skill.id}}>{{skill.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div id="reverse-defense">
+				<select class="select-sml" id="resist_defense" name="resist_defense">
+					<option value="">Defense</option>
+					{% for defense in defenses %}
+						<option value={{defense.id}}>{{defense.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div id="reverse-power">
+				<select class="select-sml" id="reverse_power" name="reverse_power">
+					<option value="">Power</option>
+					{% for power in powers %}
+						<option value="{{power}}">{{power}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+		<div>
+			<select class="select-sml" id="reverse_value_type" name="reverse_value_type" onchange="reverse_value_type()">
+				{% for dc in dc_type %}
+					<option value="{{dc.type}}">{{dc.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="reverse-check-fields">
+			<div id="reverse-check-value">
+
+				<div>
+					<select class="select-sml" id="reverse_value_dc" name="reverse_value_dc">
+						<option value="">DC Value</option>
+						{% for num in positives %}
+							<option value={{num}}>{{num}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="reverse-check-math">
+
+				<div>
+					<select class="select-sml" id="reverse_math_dc" name="reverse_math_dc">
+						<option value="">DC Value</option>
+						{% for num in positives %}
+							<option value={{num}}>{{num}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="reverse_math" name="reverse_math">
+						<option value="">Math Type</option>
+						{% for math in maths %}
+							<option value={{math.id}}>{{math.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					Rank
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div id="reverse-time">
+
+		<div>
+			Time:
+		</div>
+
+		<div>
+			<input type="text" id="reverse_time" name="reverse_time">
+		</div>
+
+		<div>
+			Units:
+		</div>
+
+		<div>
+			<select class="select-sml" id="reverse_time_unit" name="reverse_time_unit">
+				<option value="">Units</option>
+				{% for time in times %}
+					<option value={{time.id}}>{{time.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+	</div>
+
+</div>
