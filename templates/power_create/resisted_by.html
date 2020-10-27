@@ -78,6 +78,70 @@
 	<div id="resist-description-field">
 		<textarea id="range_desc" name="range_desc" placeholder="Description"></textarea>
 	</div>
+
+	<div id="resist-effect-field">
+		<div>
+			Effect: <select class="select-sml" id="resist_eft" name="resist_eft" onchange="resist_effect()">
+						<option value="">Effect</option>
+						{% for effect in effects %}
+							<option value="{{effect.type}}">{{effect.name}}</option>
+						{% endfor %}
+					</select>
+		</div>
+
+		<div>
+			Deggree: <select class="select-sml" id="resist_deg" name="resist_deg">
+						<option value="">Degree</option>
+						{% for num in negetives %}
+							<option value={{num}}>{{num}}</option>
+						{% endfor %}
+						{% for num in positives %}
+							<option value={{num}}>{{num}}</option>
+						{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="resist-value-field">
+
+		<div id="resist-condition">
+			<div>
+				From: <select class="select-sml" id="resist_con1" name="resist_con1">
+					<option value="">Condition</option>
+					{% for condition in conditions %}
+						<option value="{{condition}}">{{condition}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				To: <select class="select-sml" id="resist_con2" name="resist_con2">
+					<option value="">Condition</option>
+					{% for condition in conditions %}
+						<option value="{{condition}}">{{condition}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div id="resist-damage">
+			<div>
+				<select class="select-sml" id="resist_dan" name="resist_dan">
+					<option value="">Damage</option>
+					<option value="0">0</option>
+					{% for num in positives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+
+			</div>
+		</div>
+
+
+	</div>
 	
 
 </div>

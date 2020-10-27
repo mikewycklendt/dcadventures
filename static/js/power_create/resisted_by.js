@@ -74,3 +74,27 @@ function resist_type() {
 		pwr.style.maxHeight = "0px";
 	}
 }
+
+function resist_effect() {
+	const effect_field = document.getElementById("resist_eft");
+	const effect = effect_field.options[effect_field.selectedIndex].value;
+	const con = document.getElementById("resist-condition")
+	const dam = document.getElementById("resist-damage")
+
+	if (effect == 'condition') {
+		con.style.display = "grid";
+		con.style.maxHeight = con.style.scrollHeight + 'px';
+		dam.style.display = "none";
+		dam.style.maxHeight = "0px";
+	} else if (effect == 'damage') {
+		dam.style.display = "grid";
+		dam.style.maxHeight = dam.style.scrollHeight + 'px';
+		con.style.display = "none";
+		con.style.maxHeight = "0px";
+	} else {
+		con.style.display = "none";
+		con.style.maxHeight = "0px";
+		dam.style.display = "none";
+		dam.style.maxHeight = "0px";
+	}
+}
