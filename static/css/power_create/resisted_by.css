@@ -17,7 +17,7 @@
 }
 
 #resist-entry {
-	display: grid;
+	display: none;
 	width: 88%;
 	margin-top: 0px;
 	margin-left: 5%;
@@ -213,6 +213,30 @@
 }
 
 .resist-table-mod {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-deg {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.resist-table-eft {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
