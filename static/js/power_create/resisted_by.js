@@ -83,12 +83,12 @@ function resist_effect() {
 
 	if (effect == 'condition') {
 		con.style.display = "grid";
-		con.style.maxHeight = con.style.scrollHeight + 20 + 'px';
+		con.style.maxHeight = con.scrollHeight + 'px';
 		dam.style.display = "none";
 		dam.style.maxHeight = "0px";
 	} else if (effect == 'damage') {
 		dam.style.display = "grid";
-		dam.style.maxHeight = dam.style.scrollHeight + 20 + 'px';
+		dam.style.maxHeight = dam.scrollHeight 'px';
 		con.style.display = "none";
 		con.style.maxHeight = "0px";
 	} else {
