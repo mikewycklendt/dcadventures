@@ -88,7 +88,7 @@ function resist_effect() {
 		dam.style.maxHeight = "0px";
 	} else if (effect == 'damage') {
 		dam.style.display = "grid";
-		dam.style.maxHeight = dam.scrollHeight 'px';
+		dam.style.maxHeight = dam.scrollHeight + 'px';
 		con.style.display = "none";
 		con.style.maxHeight = "0px";
 	} else {
