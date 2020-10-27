@@ -73,7 +73,10 @@
 
 #resist-value-field {
 	grid-area: values;
-	width: 85%;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	width: 95%;
 	height: auto;
 	padding: 4px;
 }
@@ -85,10 +88,6 @@
 	width: 85%;
 	height: auto;
 	padding: 4px;
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #resist-damage {
@@ -101,7 +100,7 @@
 	display: none;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .4s ease-out;
+	transition: all .2s ease-out;
 }
 
 #resist-ability {
