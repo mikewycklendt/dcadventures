@@ -139,9 +139,9 @@
 	padding: 4px;
 }
 
-#resist-description-field textarea{
+#resist-description-field input[type="text"] {
 	width: 100%; 
-	height: 6vw; 
+	height: 1.2vw; 
 	font-size: 90%; 
 	padding: 2%;
 }
