@@ -33,30 +33,37 @@ function reverse_base() {
 function reverse_check_check() {
 	const check = document.getElementById("reverse_check_check");
 	const field = document.getElementById("reverse-check")
+	const entry = document.getElementById("reverse-entry")
 
 	if (check.checked == true) {
 		field.style.display = "grid";
 		field.style.padding = "1%";
 		field.style.maxHeight = field.scrollHeight + "px";
+		entry.style.maxHeight = entry.scrollHeight + field.scrollHeight + "px";
 		field.style.padding = "1%";
 	} else {
 		field.style.maxHeight = "0px";
 		field.style.padding = "0px";
+		entry.style.maxHeight = entry.scrollHeight - field.scrollHeight + "px";
 	}
 }
 
 function reverse_time_check() {
 	const check = document.getElementById("reverse_time_check");
 	const field = document.getElementById("reverse-time")
+	const entry = document.getElementById("reverse-entry")
 
 	if (check.checked == true) {
 		field.style.display = "grid";
 		field.style.padding = "1%";
 		field.style.maxHeight = field.scrollHeight + "px";
+		entry.style.maxHeight = entry.scrollHeight + field.scrollHeight + "px";
 		field.style.padding = "1%";
 	} else {
 		field.style.maxHeight = "0px";
 		field.style.padding = "0px";
+		
+		entry.style.maxHeight = entry.scrollHeight - field.scrollHeight + "px";
 	}
 }
 

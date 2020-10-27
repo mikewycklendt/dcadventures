@@ -44,7 +44,7 @@
 #reverse-entry-head {
 	display: grid;
 	width: 100%;
-	grid-template-columns: 10% 10% 60% 20%;
+	grid-template-columns: 13% 10% 60% 17%;
 	grid-auto-rows: auto;
 }
 
