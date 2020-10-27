@@ -1,6 +1,6 @@
 function reverse_check() {
 	const check = document.getElementById("reverse_check");
-	const base = document.getElementById("reverse_base");
+	const base = document.getElementById("reverse-base");
 	const title = document.getElementById("reverse-title");
 
 	if (check.checked == true) {
