@@ -25,11 +25,12 @@
 	grid-template-areas: "sur-eff-title des-title des-title"
 							"sur-eff des des"
 							"math time button";
-	grid-auto-rows: auto;
+	grid-template-rows: auto auto auto;
+	gap: .2vw;
 }
 
 #move-surface input[type="text"] {
-	height: .9vw;
+	height: 1vw;
 	font-size: 80%;
 }
 
