@@ -38,7 +38,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	title = 'DC Adventures Online Roleplqying Game: Create Power'
 	stylesheets.append({"style": "/static/css/power_create.css"})
 
-	power_includes = {'base_form': 'power_create/base_form.html', 'range': 'power_create/range.html', 'resisted_by': 'power_create/resisted_by.html', 'reverse_effect': 'power_create/reverse_effect.html'}
+	power_includes = {'base_form': 'power_create/base_form.html', 'range': 'power_create/range.html', 'resisted_by': 'power_create/resisted_by.html', 'reverse_effect': 'power_create/reverse_effect.html', 'move': 'power_create/move.html'}
 	
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -46,6 +46,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	positives = []
 	for i in range(1, 41, 1):
+		positives.append(i)
+
+	time_numbers = []
+	for i in range(1, 61, 1):
 		positives.append(i)
 
 	power_type = [{'type': 'attack', 'name': 'Attack'}, 
@@ -113,5 +117,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	times = db.session.query(Unit).filter_by(type_id=2)
 
+	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 
-	return render_template('template.html', maths=maths, times=times, targets=targets, whens=whens, dc_value=dc_value, effects=effects, conditions=conditions, check_types=check_types, powers=powers, skills=skills, abilities=abilities, defenses=defenses, checks=checks, dc_type=dc_type, distance=distance, negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)
+
+	return render_template('template.html', permanence=permanence, time_numbers=time_numbers, maths=maths, times=times, targets=targets, whens=whens, dc_value=dc_value, effects=effects, conditions=conditions, check_types=check_types, powers=powers, skills=skills, abilities=abilities, defenses=defenses, checks=checks, dc_type=dc_type, distance=distance, negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title)

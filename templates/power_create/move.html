@@ -1,0 +1,123 @@
+<div id="move-header" style="justify-content: center;">
+
+	<div class="power-title">
+		Movement Effect:
+	</div>
+
+</div>
+
+<div id="move-entry">
+
+	<div id="move-sur-eff-title">
+		<div>
+			Surface:
+		</div>
+
+		<div>
+			Effect Permanence:
+		</div>
+	</div>
+
+	<div id="move-des-title">
+		Effect Description:
+	</div>
+
+	<div id="move-sur-eff">
+		<div id="move-surface">
+			<input type="text" id="move_surface" name="move_surface">			
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_perm" name="move_perm" onchange="move_perm()">
+				{% for perm in permanence %}
+					<option value="{{perm.type}}">{{perm.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="move-des">
+		<input type="text" id="move_des" name="move_des">
+	</div>
+
+	<div id="move-math">
+		<div>
+			Power Rank
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_math" name="move_math">
+				<option value="">Math</option>
+				{% for math in maths %}
+					<option value={{math.id}}>{{math.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_mod" name="move_mod">
+				<option value="">Modifier</option>
+				{% for num in positives %}
+					<option value={{num}}>{{num}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="move-time">
+		<div>
+			Time:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_time" name="move_time">
+				<option value="">Time</option>
+				{% for num in time_numbers %}
+					<option value={{num}}>{{num}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			Units:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_units" name="move_units">
+				<option value="">Units</option>
+				{% for time in times %}
+					<option value={{time.id}}>{{time.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="move-add">
+		<div class="btn-sml" onclick="move_submit()">
+			Add
+		</div>
+	</div>
+
+<div id="move-table">
+
+	<div class="power-table-title">
+		Surface:
+	</div>
+
+	<div class="power-table-title">
+		Modifier:
+	</div>
+
+	<div class="power-table-title">
+		Effect:
+	</div>
+
+	<div class="power-table-title">
+		Description:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="move-err"></div>

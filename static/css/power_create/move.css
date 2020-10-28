@@ -1,0 +1,193 @@
+#move-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
+#move-entry {
+	display: grid;
+	font-family: 'Monda', Verdana;;
+	color: #245681;
+	font-size: 80%;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 50% 40% 10%;
+	grid-template-areas: "sur-eff-title des-title des-title"
+							"sur-eff des des"
+							"math time button";
+	grid-auto-rows: auto;
+}
+
+#move-surface input[type="text"] {
+	height: 1.1vw;
+	font-size: 80%;
+}
+
+#move-sur-eff-title {
+	display: grid;
+	grid-area: sur-eff-title;
+	grid-template-columns: 50% 50%;
+}
+
+#move-des-title {
+	display: grid;
+	grid-area: des-title;
+}
+
+#move-des {
+	grid-area: des;
+}
+
+#move-des input[type="text"] {
+	height: 1.1vw;
+	font-size: 80%;
+}
+
+#move-sur-eff-title {
+	display: grid;
+	grid-area: sur-eff-title;
+	grid-template-columns: 50% 50%;
+}
+
+#move-sur-eff {
+	display: grid;
+	grid-area: sur-eff;
+	grid-template-columns: 50% 50%;
+}
+
+#move-math {
+	display: grid;
+	grid-area: math;
+	grid-template-columns: 35% 35% 30%;
+}
+
+#move-time {
+	display: none;
+	grid-area: time;
+	grid-template-areas: 15% 35% 15% 35%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-add {
+	display: grid;
+	grid-area: button;
+}
+
+#move-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 7% 18% 20% 50% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-table-sur {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-table-mod {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-table-eff {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.range-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.move-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}
