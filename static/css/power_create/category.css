@@ -37,10 +37,10 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 25% 50% 25%;
 	grid-auto-rows: auto auto auto auto;
-	grid-template-areas: "cat-title des-title des-title"
+	grid-template-areas: "cat-title des-title button"
 						"cat des des"
 						"rank-title des des"
-						"rank blank button";
+						"rank des des";
 }
 
 #cat-cat-title {
@@ -99,7 +99,7 @@
 
 #cat-des textarea{
 	width: 100%; 
-	height: 3vw; 
+	height: 5vw; 
 	font-size: 90%; 
 	padding: 2%;
 }
