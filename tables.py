@@ -194,7 +194,7 @@ def measurements():
 	return render_template('measurements.html', table=table, title=title, size=size)
 
 @tables.route('/senses')
-def math_type():
+def sense_type():
 
 	title = 'Senses'
 	
