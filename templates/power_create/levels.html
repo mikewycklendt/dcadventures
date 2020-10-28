@@ -1,37 +1,13 @@
 <div id="levels-header" style="justify-content: center;">
 
-		
-
-
 	<div id="levels-title">
-		<input type="checkbox" id="levels_check" class="regular-checkbox big-checkbox" onclick="levels_check()">  Character Levels Table:
+		<input type="checkbox" id="levels_check" class="regular-checkbox big-checkbox" onclick="levels_check()">  Levels Table:
 	</div>
 
 	<div id="levels-base-form" style="transition: all .3s ease-out;">
 		<div id="level-type" style="transition: all .4s ease-out;">
 			<input class="entry-text" type="text" id="level_type" name="level_type" placeholder="Type of level" onblur="levels_base()">
 		</div>
-
-		<div></div>
-
-		<div>
-			<select class="header-select" id="levels_dc_set" name="levels_dc_set" onchange="levels_base()">
-				<option value="">DC</option>
-				{% for class in dcclasses %}
-					<option value={{class}}>{{class}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="header-select" id="levels_target" name="levels_target" onchange="levels_base()">
-				<option value="">Target</option>
-				{% for target in level_target %}
-					<option value="{{target}}">{{target}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
 </div>
 
 	<div id="levels-entry" style="display: none;">

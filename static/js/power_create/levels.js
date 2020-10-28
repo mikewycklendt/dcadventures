@@ -20,17 +20,10 @@ function levels_check() {
 
 function levels_base() {
 	const level_type = document.getElementById("level_type");
-	const level_dc_set = document.getElementById("levels_dc_set");
-	const level_target = document.getElementById("levels_target");
-	levels_dc =  level_dc_set.options[level_dc_set.selectedIndex].value;
-	levels_target =  level_target.options[level_target.selectedIndex].value;
 	levels_type = level_type.value;
-	console.log(levels_dc);
-	console.log(levels_target);
-	console.log(levels_type);
 	const levels_entry = document.getElementById("levels-entry");
 
-	if (levels_type != '' && levels_target != '' && levels_dc != '') {
+	if (levels_type != '') {
 		levels_entry.style.display = "grid";
 		levels_entry.style.padding = "1%";
 		levels_entry.style.maxHeight = levels_entry.scrollHeight + "px";
@@ -66,7 +59,7 @@ function levels_submit() {
 	
 	if (type_value != '' && lvl_value != '' && efct_value != '' && dc_value != '' && trgt_value != '') {
 
-		response = fetch('/skill/level/create', {
+		response = fetch('/power/level/create', {
 			method: 'POST',
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
