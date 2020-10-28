@@ -5,12 +5,14 @@ function range_type() {
 
 	if (range == 'rank') {
 		power_range.style.display = "grid";
+		power_range.style.opacity = "100%"
 		power_range.style.padding = "1%";
 		power_range.style.maxHeight = power_range.scrollHeight + "px";
 		power_range.style.padding = "1%";
 	} else {
 		power_range.style.maxHeight = "0px";
 		power_range.style.padding = "0px";
+		power_range.style.opacity = "0%";
 	}
 }
 
@@ -32,10 +34,13 @@ function categorized() {
 
 	if (check.checked == true) {
 		div.style.display = "grid";
+		div.style.opacity = "100%";
 		div.style.maxHeight = div.scrollHeight + "px";
+		div.style.padding = "1%";
 	} else {
-		div.style.display = "none";
-		div.style.maxHeight = "0%";
+		div.style.maxHeight = "0px";
+		div.style.padding = "0%"
+		div.style.opacity = "0%";
 	}
 }
 
@@ -46,10 +51,13 @@ function movement() {
 
 	if (field == 2) {
 		div.style.display = "grid";
+		div.style.opacity = "100%";
 		div.style.maxHeight = div.scrollHeight + "px";
+		div.style.padding = "1%";
 	} else {
-		div.style.display = "none";
 		div.style.maxHeight = "0px";
+		div.style.padding = "0%"
+		div.style.opacity = "0%";
 	}
 }
 
