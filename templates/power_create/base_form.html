@@ -84,7 +84,7 @@
 		</div>
 		
 		<select class="base-select" id="limit" name="limit" >
-			<option value=0>0</option>
+			<option value=>None</option>
 			{% for num in positives %}
 				<option value={{num}}>{{num}}</option>
 			{% endfor %}
@@ -123,7 +123,7 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Check Type
+			Check Type:
 		</div>
 	
 		<div>
@@ -136,7 +136,38 @@
 			</select>
 		</div>
 
-	</div
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Inflicts Damage:
+		</div>
+	
+		<div id="power-damage">
+			<div>
+				Power Rank
+			</div>
+
+			<div>
+				<select class="base-select" id="dam_math" name="dam_math">
+					<option value="">None</option>
+					{% for math in maths %}
+						<option value={{math.id}}>{{math.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="dam_val" name="dam_val">
+					<option value="">None</option>
+					{% for num in positives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+	</div>
 
 </div>
 

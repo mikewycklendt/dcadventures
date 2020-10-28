@@ -88,6 +88,17 @@
 	grid-template-rows: auto;
 }
 
+#power-damage {
+	display: grid;
+	font-family: 'Monda', Verdana;;
+	color: #245681;
+	font-size: 80%;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 20% 40% 40%;
+	grid-template-rows: auto;
+}
+
 #power-dc-mod{
 	opacity: 0%;
 	transition: all .3s linear;
