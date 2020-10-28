@@ -74,7 +74,7 @@
 #move-time {
 	display: none;
 	grid-area: time;
-	grid-template-areas: 15% 35% 15% 35%;
+	grid-template-columns: 15% 35% 15% 35%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
