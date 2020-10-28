@@ -29,7 +29,7 @@
 }
 
 #move-surface input[type="text"] {
-	height: 1.1vw;
+	height: 1.0vw;
 	font-size: 80%;
 }
 
@@ -49,7 +49,7 @@
 }
 
 #move-des input[type="text"] {
-	height: 1.1vw;
+	height: 1.0vw;
 	font-size: 80%;
 }
 
@@ -68,7 +68,7 @@
 #move-math {
 	display: grid;
 	grid-area: math;
-	grid-template-columns: 35% 35% 30%;
+	grid-template-columns: 25% 40% 35%;
 }
 
 #move-time {
