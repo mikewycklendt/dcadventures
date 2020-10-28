@@ -33,8 +33,8 @@
 		
 		<select class="base-select" id="action" name="action">
 			<option value=''>Action Type</option>
-			{% for type in action_type %}
-				<option value="{{type.type}}">{{type.name}}</option>
+			{% for type in actions %}
+				<option value={{type.id}}>{{type.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -76,6 +76,20 @@
 				<option value={{num}}>{{num}}</option>
 			{% endfor %}
 		</select>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Rank Limit:
+		</div>
+		
+		<select class="base-select" id="limit" name="limit" >
+			<option value=0>0</option>
+			{% for num in positives %}
+				<option value={{num}}>{{num}}</option>
+			{% endfor %}
+		</select>
+	
 	</div>
 
 	<div class="base-field">
@@ -122,7 +136,7 @@
 			</select>
 		</div>
 
-	</div>
+	</div
 
 </div>
 
