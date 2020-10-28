@@ -41,9 +41,6 @@
 						"cat des des"
 						"rank-title des des"
 						"rank blank button";
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #cat-cat-title {
@@ -115,7 +112,7 @@
 }
 
 #cat-table {
-	display: grid;
+	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
