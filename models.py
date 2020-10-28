@@ -781,6 +781,19 @@ class Sense(db.Model):
 			'name': self.name
 		}
 
+class SubSense(db.Model):
+	__tablename__ = 'sub_senses'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	sense_id = db.Column(db.Integer, db.ForeignKey('senses.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'sense_id': self.sense_id
+		}
+
 class Math(db.Model):
 	__tablename__ = 'math'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

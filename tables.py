@@ -193,3 +193,14 @@ def measurements():
 
 	return render_template('measurements.html', table=table, title=title, size=size)
 
+@tables.route('/senses')
+def math_type():
+
+	title = 'Senses'
+	
+	size = 'h1'
+
+	table = Math.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
