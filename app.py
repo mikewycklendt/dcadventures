@@ -89,37 +89,37 @@ def subsenses_create():
 	mental = ['Mental Awareness', 'Mind Reading', 'Precognition', 'Postcognition']
 
 	for sense in visual:
-		sense_id = 1
+		sense_id = 6
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
 
 	for sense in auditory:
-		sense_id = 2
+		sense_id = 7
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
 
 	for sense in olfactory:
-		sense_id = 3
+		sense_id = 8
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
 
 	for sense in tactitle:
-		sense_id = 4
+		sense_id = 9
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
 
 	for sense in radio:
-		sense_id = 5
+		sense_id = 10
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
 
 	for sense in mental:
-		sense_id = 6
+		sense_id = 11
 		entry = SubSense(name=sense, sense_id=sense_id)
 		db.session.add(entry)
 		db.session.commit()
