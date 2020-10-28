@@ -21,7 +21,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 50% 40% 10%;
+	grid-template-columns: 40% 45% 15%;
 	grid-template-areas: "sur-eff-title des-title des-title"
 							"sur-eff des des"
 							"math time button";
