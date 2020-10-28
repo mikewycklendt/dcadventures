@@ -1,13 +1,4 @@
-#levels {
-	display: grid;
-	width: 100%;
-	border: 1px solid #af0101;
-	border-radius: 15px;
-	padding: 2%;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	margin-bottom: 20px;
-}
+
 
 #levels-header {
 	display: grid;

@@ -1,3 +1,10 @@
+#power-range {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #range-header {
 	display: grid;
 	width: 100%;

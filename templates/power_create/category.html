@@ -1,0 +1,67 @@
+<div id="cat-header" style="justify-content: center;">
+
+	<div id="cat-title">
+		Power Categories:
+	</div>
+</div>
+
+<div id="cat-entry">
+
+	<div id="cat-cat-title">
+		Name:
+	</div>
+
+	<div id="cat-des-title">
+		Category Description:
+	</div>
+
+	<div id="cat-name">
+		<input type="text" id="cat_name" name="cat_name">
+	</div>
+
+	<div id="cat-rank-title">
+		Required Rank:
+	</div>
+
+	<div id="cat-rank">
+		<select class="entry-select" id="cat_rank" name="cat_rank">
+			<option value="">Rank</option>
+			{% for num in positives %}
+				<option value={{num}}>{{num}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="cat-des">
+		<textarea id="cat_des" name="cat_des" placeholder="Category Description"></textarea>
+	</div>
+
+	<div id="cat-none"></div>
+
+	<div id="cat-add">
+		<div class="btn-sml" onclick="cat_submit()">
+			Add
+		</div>
+	</div>
+
+</div>
+
+<div id="cat-table">
+
+	<div class="power-table-title">
+		Name:
+	</div>
+
+	<div class="power-table-title">
+		Rank:
+	</div>
+
+	<div class="power-table-title">
+		Description:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="cat-err"></div>

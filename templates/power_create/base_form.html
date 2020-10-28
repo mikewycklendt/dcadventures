@@ -31,7 +31,7 @@
 			Action Type:
 		</div>
 		
-		<select class="base-select" id="action" name="action">
+		<select class="base-select" id="action" name="action" onchange="movement()">
 			<option value=''>Action Type</option>
 			{% for type in actions %}
 				<option value={{type.id}}>{{type.name}}</option>
@@ -167,7 +167,19 @@
 			</div>
 		</div>
 
+
+
+
 	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Categorized Power:
+		</div>
+	
+		<div>
+			<input type="checkbox" id="categorized" class="regular-checkbox big-checkbox" onclick="categorized()">
+		<div>
 
 </div>
 

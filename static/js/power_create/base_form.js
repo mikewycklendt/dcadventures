@@ -25,3 +25,31 @@ function power_dc_type() {
 		mod.style.opacity  = "0%"
 	}
 }
+
+function categorized() {
+	const check = document.getElementById("categorized");
+	const div = document.getElementById("category")
+
+	if (check.checked == true) {
+		div.style.opacity = "100%";
+		div.style.maxHeight = div.scrollHeight + "px";
+	} else {
+		div.style.opacity = "0%";
+		div.style.maxHeight = "0%";
+	}
+}
+
+function movement() {
+	const field_field = document.getElementById("action");
+	const field = field_field.options[field_field.selectedIndex].value;
+	const div = document.getElementById("power-move")
+
+	if (field == 2) {
+		div.style.display = "grid";
+		div.style.maxHeight = div.scrollHeight + "px";
+	} else {
+		div.style.display = "none";
+		div.style.maxHeight = "0px";
+	}
+}
+
