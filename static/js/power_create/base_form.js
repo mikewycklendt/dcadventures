@@ -31,10 +31,10 @@ function categorized() {
 	const div = document.getElementById("category")
 
 	if (check.checked == true) {
-		div.style.opacity = "100%";
+		div.style.display = "grid";
 		div.style.maxHeight = div.scrollHeight + "px";
 	} else {
-		div.style.opacity = "0%";
+		div.style.display = "none";
 		div.style.maxHeight = "0%";
 	}
 }
