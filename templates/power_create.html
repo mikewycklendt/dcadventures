@@ -76,6 +76,12 @@
 
 			<br>
 
+			<div class="power-box" id="ranks">
+				{% include power_includes.ranks %}
+			</div>
+
+			<br>
+			
 			<div class="power-box" id="category">
 				{% include power_includes.category %}
 			</div>
@@ -92,6 +98,17 @@
 				{% include power_includes.move %}
 			</div>
 
+			<br>
+
+			<div class="power-box" id="power-sense">
+				{% include power_includes.sense %}
+			</div>
+
+			<br>
+
+			<div class="power-box" id="power-circ">
+				{% include power_includes.circ %}
+			</div>
 
 			<br>
 
@@ -107,7 +124,7 @@
 
 			<br>
 
-			<div class="power-box" id="reverse">
+			<div class="power-box" id="levels">
 				{% include power_includes.levels %}
 			</div>
 
@@ -140,6 +157,8 @@
 	<script src="/static/js/power_create/reverse_effect.js"></script>
 	<script src="/static/js/power_create/move.js"></script>
 	<script src="/static/js/power_create/levels.js"></script>
-
-
+	<script src="/static/js/power_create/sense.js"></script>
+	<script src="/static/js/power_create/ranks.js"></script>
+	<script src="/static/js/power_create/circumstance_table.js"></script>
+	
 	<input type="hidden" id="power_id" name="power_id" value=>

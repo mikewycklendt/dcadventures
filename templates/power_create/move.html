@@ -42,7 +42,13 @@
 
 	<div id="move-math">
 		<div>
-			Power Rank
+			<select class="select-sml" id="move_rank" name="move_rank">
+				<option value="">Rank</option>
+				<option value=>This Power</option>
+				{% for num in positives %}
+					<option value={{num}}>{{num}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>

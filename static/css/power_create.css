@@ -5,6 +5,9 @@
 @import "power_create/move.css";
 @import "power_create/levels.css";
 @import "power_create/category.css";
+@import "power_create/sense.css";
+@import "power_create/ranks.css";
+@import "power_create/circumstance_table.css";
 
 
 .power-container {

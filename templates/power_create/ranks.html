@@ -1,0 +1,127 @@
+<div id="ranks-header" style="justify-content: center;">
+
+	<div id="ranks-title">
+		Ranks Table:
+	</div>
+</div>
+
+	<div id="ranks-entry">
+
+		<div id="ranks-row1">
+
+			<div>
+				Rank:
+			</div>
+
+
+			<div>
+				Keyword:
+			</div>
+
+			<div>
+				Description
+			</div>
+
+		</div>
+
+		<div id="ranks-row1">
+			<div>
+				<select class="select-sml" id="rank_rank" name="rank_rank">
+					{% for num in positives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<input class="entry-text" type="text" id="rank_key" name="rank_key" >
+			</div>
+
+			<div>
+				<input class="entry-text" type="text" id="rank_des" name="rank_des" >
+			</div>
+		</div>
+
+		<div id="ranks-row2">
+
+			<div>
+				Adds:
+			</div>
+
+			<div>
+				<input type="checkbox" id="ranks_ranged" class="medium-checkbox med-checkbox"> Ranged
+			</div>
+
+			<div>
+				<input type="checkbox" id="ranks_radius" class="medium-checkbox med-checkbox"> Radius
+			</div>
+
+			<div>
+				<input type="checkbox" id="ranks_accurate" class="medium-checkbox med-checkbox"> Accurate
+			</div>
+
+			<div>
+				<input type="checkbox" id="ranks_acute" class="medium-checkbox med-checkbox"> Acute
+			</div>
+
+			<div>
+				<input type="checkbox" id="ranks_sense_types" class="medium-checkbox med-checkbox"> All Sense Types
+			</div>
+			
+			<div>
+				<input type="checkbox" id="ranks_all_senses" class="medium-checkbox med-checkbox"> All Senses
+			</div>
+
+			<div id="ranks-add">
+				<div class="btn-small" id="rank_add" onclick="rank_submit()">
+					 Add
+	`			</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="ranks-table">
+
+		<div class="power-table-title">
+			Rank:
+		</div>
+
+		<div class="power-table-title">
+			Ranged
+		</div>
+
+		<div class="power-table-title">
+			Radius
+		</div>
+
+		<div class="power-table-title">
+			Accurate
+		</div>
+
+		<div class="power-table-title">
+			Acute
+		</div>
+
+		<div class="power-table-title">
+			All Sense Types
+		</div>
+		
+		<div class="power-table-title">
+			All Senses
+		</div>
+	
+		<div class="power-table-title">
+			Keyword:
+		</div>
+	
+		<div class="power-table-title">
+			Description:
+		</div>
+	
+		<div></div>
+		
+	</div>
+	
+	<div id="ranks-err"></div>

@@ -1,0 +1,340 @@
+#sense-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+}
+
+#sense-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#sense-entry {
+	display: none;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	font-family: 'Monda', Verdana;;
+	color: #245681;
+	font-size: 85%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
+
+#sense-row1 {
+	display: grid;
+	grid-template-columns: 15% 15% 10% 10% 20% 10% 20%;
+	grid-auto-rows: auto;
+}
+
+#sense-lighting {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-lighting-head {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-visual {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-auditory {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-olfactory {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-tactile {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-radio {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-mental {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-special {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-row2 {
+	display: grid;
+	grid-template-columns: 20% 80%;
+}
+
+#sense-height {
+	display: grid;
+	grid-template-columns: 35% 25% 20% 20%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-trait {
+	display: grid;
+	grid-auto-rows: auto;
+}
+
+#sense-height-skill {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-ability {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-defense {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-ensense {
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-bonus {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-height-ensense {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-resist {
+	display: grid;
+	grid-template-columns: 30% 30% 15% 15% 10%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-resist {
+	display: grid;
+	grid-template-columns: 35% 25% 40%;
+}
+
+#sense-resist-trait {
+	display: grid;
+	grid-auto-rows: auto;
+}
+
+#sense-resist-skill {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-resist-ability {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-resist-defense {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+#sense-resist-bonus {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-resist-power {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-resist-immune-perm {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-row3 {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+#sense-row4 {
+	display: grid;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#sense-row5 {
+	display: grid;
+	grid-template-columns: 20% 80%;	
+}
+
+#sense-time {
+	display: grid;
+	grid-template-columns: 10% 20% 50% 20%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-time-skill {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-time-bonus {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-time-value {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+}
+
+#sense-time-value input[type="text"] {
+	height: 1vw;
+	font-size: 80%;
+	width: 80%;
+}
+
+#sense-time-factor {
+	display: grid;
+	grid-template-columns: 10% 50% 40%;
+}
+
+#sense-row6 {
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+
+#sense-distance {
+	display: grid;
+	grid-template-columns: 20% 80%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-distance input[type="text"] {
+	height: 1vw;
+	font-size: 80%;
+	width: 80%;
+}
+
+#sense-distance-values {
+	display: grid;
+	grid-template-columns: 15% 15% 25% 25% 10%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-distance-factor {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#sense-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.sense-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.sense-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

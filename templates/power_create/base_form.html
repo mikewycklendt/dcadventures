@@ -18,7 +18,7 @@
 			Power Type:
 		</div>
 
-		<select class="base-select" id="type" name="type" >
+		<select class="base-select" id="type" name="type" onchange="power_type()">
 			<option value=''>Power Type</option>
 			{% for type in power_type %}
 				<option value="{{type.type}}">{{type.name}}</option>
@@ -70,7 +70,8 @@
 			Cost Per Rank:
 		</div>
 		
-		<select class="base-select" id="cost" name="cost" >
+		<select class="base-select" id="cost" name="cost" onchange="ranks()">
+			<option value="">Table</option>
 			<option value=0>0</option>
 			{% for num in positives %}
 				<option value={{num}}>{{num}}</option>
@@ -190,6 +191,85 @@
 
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Requires Partner:
+		</div>
+	
+		<div>
+			<select class="select-sml" id="partner" name="partner">
+				{% for partner in partners %}
+					<option value="{{partner.type}}">{{partner.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Circumstance Modifier:
+		</div>
+	
+		<div id="power-circ-grid">
+			
+			<div>
+				<select class="select-sml" id="circ" name="circ" onchange="circ()">
+					{% for circ in circumstances %}
+`						<option value="{{circ.type}}">{{circ.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="circ-required" style="opacity: 0%;">
+				<select class="select-sml" id="circ_required" name="circ_required">
+					<option value="">Required</option>
+						{% for req in required %}
+							<option value="{{req.type}}">{{req.name}}</option>
+						{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Requires Skill Check:
+		</div>
+	
+		<div id="power-skill-grid">
+			
+			<div>
+				<select class="select-sml" id="skill" name="skill" onchange="skill()">
+					<option value="">N/A</option>
+					{% for skill in skills %}
+`						<option value={{skill.id}}>{{skill.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="skill-grid" style="opacity: 0%;">
+				
+				<div>	
+					<select class="select-sml" id="circ_required" name="circ_required">
+						<option value="">Required</option>
+							{% for req in required %}
+								<option value="{{req.type}}">{{req.name}}</option>
+							{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="skill_when" name="skill_when">
+						{% for w in whens %}
+							<option value="{{w.type}}">{{w.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 </div>
 
