@@ -305,7 +305,7 @@ function sense_resist_trait() {
 }
 
 function sense_power_req() {
-	const check = document.getElementById("sense_power_req");
+	const check = document.getElementById("sense_height_power_req");
 	const div = document.getElementById("sense-height-ensense");
 
 	if (check.checked == true) {
