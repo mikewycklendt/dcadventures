@@ -130,19 +130,19 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
 
-	visual = db.session.query(SubSense).filter_by(type_id=6)
+	visual = db.session.query(SubSense).filter_by(sense_id=6)
 	
-	auditory = db.session.query(SubSense).filter_by(type_id=7)
+	auditory = db.session.query(SubSense).filter_by(sense_id=7)
 
-	olfactory = db.session.query(SubSense).filter_by(type_id=8)
+	olfactory = db.session.query(SubSense).filter_by(sense_id=8)
 
-	tactile = db.session.query(SubSense).filter_by(type_id=9)
+	tactile = db.session.query(SubSense).filter_by(sense_id=9)
 
-	radio = db.session.query(SubSense).filter_by(type_id=10)
+	radio = db.session.query(SubSense).filter_by(sense_id=10)
 
-	mental = db.session.query(SubSense).filter_by(type_id=11)
+	mental = db.session.query(SubSense).filter_by(sense_id=11)
 
-	special = db.session.query(SubSense).filter_by(type_id=12)
+	special = db.session.query(SubSense).filter_by(sense_id=12)
 
 	power_sense = ['Accurate', 'Acute', 'Analytical', 'Awareness', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision', 'Detect', 'Direction Sense', 'Distance Sense', 'Extended', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Ranged', 'Rapid', 'Time Sense', 'Tracking', 'Ultra-Hearing', 'Ultravision']
 
