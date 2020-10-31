@@ -217,7 +217,7 @@
 
 #sense-row3 {
 	display: grid;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 25% 15% 20% 25% 15%;
 }
 
 #sense-row4 {
