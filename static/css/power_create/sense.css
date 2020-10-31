@@ -227,7 +227,7 @@
 
 #sense-time {
 	display: grid;
-	grid-template-columns: 10% 20% 50% 20%;
+	grid-template-columns: 15% 20% 40% 25%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;
