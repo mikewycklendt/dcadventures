@@ -474,7 +474,7 @@
 			<div>
 				<select class="select-sml" id="sense_dis_unit" name="sense_dis_unit">
 					<option value="">Unit</option>
-					{% u in distances %}
+					{% for u in distances %}
 						<option value={{u.id}}>{{u.name}}</option>
 					{% endfor %}
 				</select>
