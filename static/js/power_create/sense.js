@@ -195,7 +195,7 @@ function sense_height_trait() {
 		bon.style.maxHeight = "0px";
 		def.style.display =  "none";
 		def.style.maxHeight = "0px";
-	} else if (field == 'bon') {
+	} else if (field == 'bonus') {
 		bon.style.display = "block";
 		bon.style.maxHeight = bon.scrollHeight + "px";
 		abi.style.display =  "none";
