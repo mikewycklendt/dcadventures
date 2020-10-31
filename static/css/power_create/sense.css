@@ -227,6 +227,7 @@
 
 #sense-time {
 	display: grid;
+	padding: 1%;
 	grid-template-columns: 15% 20% 40% 25%;
 	display: none;
 	max-height: 0;
@@ -257,7 +258,7 @@
 }
 
 #sense-time-value input[type="text"] {
-	height: 1vw;
+	height: .8vw;
 	font-size: 80%;
 	width: 80%;
 }
@@ -274,6 +275,7 @@
 
 #sense-distance {
 	display: grid;
+	padding: 1%;
 	grid-template-columns: 20% 80%;
 	display: none;
 	max-height: 0;
@@ -282,14 +284,14 @@
 }
 
 #sense-distance input[type="text"] {
-	height: 1vw;
+	height:.8vw;
 	font-size: 80%;
 	width: 80%;
 }
 
 #sense-distance-values {
 	display: grid;
-	grid-template-columns: 15% 15% 25% 25% 10%;
+	grid-template-columns: 15% 15% 25% 25% 20%;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
