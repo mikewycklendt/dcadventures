@@ -204,7 +204,7 @@
 				</div>
 
 				<div>
-					<input type="checkbox" id="sense_height_power_req" class="medium-checkbox med-checkbox" onclick="sense_power_req()"> NeedsS Sense Power
+					<input type="checkbox" id="sense_height_power_req" class="medium-checkbox med-checkbox" onclick="sense_power_req()"> Needs Sense Power
 				</div>
 
 				<div id="sense-height-ensense">
@@ -288,7 +288,8 @@
 
 				<div>
 					<select class="select-sml" id="sense_resist_circ" name="sense_resist_circ">
-						{% for i in negetives %}
+						<option value="">Modifier</option>
+						{% for i in negatives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 						{% for i in positives %}

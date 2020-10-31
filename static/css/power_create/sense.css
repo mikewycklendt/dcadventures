@@ -158,7 +158,7 @@
 
 #sense-resist {
 	display: grid;
-	grid-template-columns: 15% 30% 20% 15% 15%;
+	grid-template-columns: 20% 25% 20% 20% 15%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;
