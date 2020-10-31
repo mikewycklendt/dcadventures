@@ -144,6 +144,31 @@ function sense_skill() {
 	}
 }
 
+function sense_type() {
+	const field_field = document.getElementById("sense_type");
+	const field = field_field.options[field_field.selectedIndex].value;
+
+	const hei = document.getElementById("sense-height");
+	const res = document.getElementById("sense-resist");
+
+	if (field == 'height') {
+		hei.style.display = "grid";
+		hei.style.maxHeight = hei.scrollHeight + "px";
+		res.style.display = "none";
+		res.style.maxHeight = "0px";
+	} else if (field == 'resist') {
+		res.style.display = "grid";
+		res.style.maxHeight = res.scrollHeight + "px";
+		hei.style.display = "none";
+		hei.style.maxHeight = "0px";
+	} else {
+		hei.style.display = "none";
+		hei.style.maxHeight = "0px";
+		res.style.display = "none";
+		res.style.maxHeight = "0px";
+	}
+}
+
 function sense_height_trait() {
 	const field_field = document.getElementById("sense_height_trait");
 	const field = field_field.options[field_field.selectedIndex].value;
