@@ -196,7 +196,7 @@
 						<select class="select-sml" id="sense_height_bonus" name="sense_height_bonus">
 							<option value="">Enhanced Skill</option>
 							{% for t in bonuses %}
-								<option value={{t.id}}>{{t.name}}</option>
+								<option value={{t}}>{{t}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -204,7 +204,7 @@
 				</div>
 
 				<div>
-					<input type="checkbox" id="sense_height_power_req" class="medium-checkbox med-checkbox" onclick="sense_power_req()"> Requires Sense Power
+					<input type="checkbox" id="sense_height_power_req" class="medium-checkbox med-checkbox" onclick="sense_power_req()"> NeedsS Sense Power
 				</div>
 
 				<div id="sense-height-ensense">
