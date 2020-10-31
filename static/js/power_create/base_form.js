@@ -122,7 +122,7 @@ function ranks() {
 	const field = field_field.options[field_field.selectedIndex].value;
 	const div = document.getElementById("ranks")
 
-	if (field == 2) {
+	if (field == 'table') {
 		div.style.display = "grid";
 		div.style.opacity = "100%";
 		div.style.maxHeight = div.scrollHeight + "px";

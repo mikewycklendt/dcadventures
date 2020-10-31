@@ -71,7 +71,8 @@
 		</div>
 		
 		<select class="base-select" id="cost" name="cost" onchange="ranks()">
-			<option value="">Table</option>
+			<option value="">Cost</option>
+			<option value="table">Table</option>
 			<option value=0>0</option>
 			{% for num in positives %}
 				<option value={{num}}>{{num}}</option>
