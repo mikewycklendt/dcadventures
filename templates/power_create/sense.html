@@ -63,7 +63,7 @@
 					<option value=>Any</option>
 					{% for s in auditory %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>
 
@@ -72,7 +72,7 @@
 					<option value=>Any</option>
 					{% for s in olfactory %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>
 
@@ -81,7 +81,7 @@
 					<option value=>Any</option>
 					{% for s in olfactory %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>
 
@@ -90,7 +90,7 @@
 					<option value=>Any</option>
 					{% for s in radio %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>
 
@@ -99,7 +99,7 @@
 					<option value=>Any</option>
 					{% for s in mental %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>
 
@@ -108,7 +108,7 @@
 					<option value=>Any</option>
 					{% for s in mental %}
 					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+					{% endfor %}
 				</select>
 			</div>			
 
@@ -135,7 +135,7 @@
 		<div>
 			<select  class="select-sml" id="sense_skill" name="sense_skill" onchange="sense_skill()">
 				<option value="">N/A</option>
-				{for s in skills}
+				{% for s in skills %}
 					<option value={{s.id}}>{{s.name}}</option>
 				{% endfor %}
 			</select>
@@ -160,7 +160,7 @@
 
 		<div>
 			<select class="select-sml" id="sense_type" name="sense_type" onchange="sense_type()">
-				{% fer s in sense_type %}
+				{% for s in sense_type %}
 					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}
 			</select>
@@ -282,7 +282,7 @@
 						<select class="select-sml" id="sense_resist_power" name="sense_resist_power">
 							<option value="">Power</option>
 							{% for t in powers %}
-								<option value="{{t}}"">{{t}}</option>
+								<option value="{{t}}">{{t}}</option>
 							{% endfor %}
 						</select>
 					</div>
