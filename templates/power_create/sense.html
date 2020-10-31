@@ -32,14 +32,6 @@
 		</div>
 
 		<div>
-
-		</div>
-
-		<div id="sense-lighting-head" style="opacity: 0%;">
-			See in:
-		</div>	
-
-		<div>
 			<select class="select-sml" id="sense_sense" name="sense_sense" onchange="sense_sense()">
 				<option value="">Any</option>
 				{% for s in senses %}
@@ -144,15 +136,6 @@
 		<div id="sense-skill-req" style="opacity: 0%;">
 			<input type="checkbox" id="sense_skill_req" class="medium-checkbox med-checkbox"> Required
 		</div>
-
-
-		<div id="sense-lighting" style="opacity: 0%;">
-			 <select class="select-sml" id="sense_lighting" name="sense_lighting">
-				 {% for d in darkness %}
-				<option value="{{d.type}}">{{d.name}}</option>
-				 {% endfor %}
-			 </select>
-		 </div>
 
 	</div>
 
@@ -320,10 +303,6 @@
 	<div id="sense-row3">
 
 		<div>
-			<input type="checkbox" id="sense_dark" class="medium-checkbox med-checkbox" onclick="sense_dark()"> Counters Darkness
-		</div>
-
-		<div>
 			<input type="checkbox" id="sense_objects" class="medium-checkbox med-checkbox"> Penetrates Objects 
 		</div>
 
@@ -333,6 +312,18 @@
 
 		<div>
 			<input type="checkbox" id="sense_gm" class="medium-checkbox med-checkbox"> GM Can Trigger
+		</div>
+
+		<div>
+			<input type="checkbox" id="sense_dark" class="medium-checkbox med-checkbox" onclick="sense_dark()"> Counters Darkness
+		</div>
+
+		<div id="sense-lighting" style="opacity: 0%;">
+			<select class="select-sml" id="sense_lighting" name="sense_lighting">
+				{% for d in darkness %}
+			   <option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 	</div>
