@@ -158,17 +158,13 @@
 
 #sense-resist {
 	display: grid;
-	grid-template-columns: 30% 30% 15% 15% 10%;
+	grid-template-columns: 15% 30% 20% 15% 15%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#sense-resist {
-	display: grid;
-	grid-template-columns: 35% 25% 40%;
-}
 
 #sense-resist-trait {
 	display: grid;
