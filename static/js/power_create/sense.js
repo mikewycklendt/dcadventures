@@ -1,13 +1,13 @@
 function sense_sense() {
 	const field_field  = document.getElementById("sense_sense");
 	const field = field_field.options[field_field.selectedIndex].value;
-	const vis = document.getElementById("sense_visual");
-	const aud = document.getElementById("sense_auditory");
-	const olf = document.getElementById("sense_olfactory");
-	const tac = document.getElementById("sense_tactile");
-	const rad = document.getElementById("sense_radio");
-	const men = document.getElementById("sense_mental");
-	const spe = document.getElementById("sense_special");
+	const vis = document.getElementById("sense-visual");
+	const aud = document.getElementById("sense-auditory");
+	const olf = document.getElementById("sense-olfactory");
+	const tac = document.getElementById("sense-tactile");
+	const rad = document.getElementById("sense-radio");
+	const men = document.getElementById("sense-mental");
+	const spe = document.getElementById("sense-special");
 
 	if (field == 6) {
 		vis.style.display = "block";
