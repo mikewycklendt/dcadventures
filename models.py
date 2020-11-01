@@ -770,6 +770,19 @@ class Unit(db.Model):
 			'type_id': self.type_id
 		}
 
+class Material(db.Model):
+	__tablename__ = 'materials'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	toughness = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'toughness': self.toughness
+		}
+
 class Sense(db.Model):
 	__tablename__ = 'senses'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
