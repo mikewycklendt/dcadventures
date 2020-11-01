@@ -222,11 +222,13 @@
 	padding: 2px;;
 	grid-template-columns: 25% 15% 20% 25% 15%;
 	justify-content: center;
+	gap: 2px;
 }
 
 #sense-row4 {
 	display: grid;
 	padding: 2px;
+	gap: 2px;
 	grid-template-columns: 20% 20% 20% 20% 20%;
 	justify-content: center;
 }
