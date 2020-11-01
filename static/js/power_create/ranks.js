@@ -19,10 +19,12 @@ function ranks_distance() {
 function ranks_ranged() {
 	const check = document.getElementById("ranks_ranged");
 	const div = document.getElementById("ranks-distance");
+	const ranks = document.getElementById("ranks");
 
 	if (check.checked == true) {
 		div.style.display = "grid";
 		div.style.maxHeight = div.scrollHeight + "px";
+		ranks.style.maxHeight = div.scrollHeight  + ranks.scrollHeight + "px"
 	} else {
 		div.style.maxHeight = "0px";
 	}
