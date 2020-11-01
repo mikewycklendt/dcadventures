@@ -131,7 +131,7 @@
 
 #create-split {
 	display: grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 30% 60% 10%;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	color: #245681
