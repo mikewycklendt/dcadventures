@@ -205,7 +205,7 @@ def sense_type():
 	return render_template('table.html', table=table, title=title, size=size)
 
 @tables.route('/materials')
-def sense_type():
+def materials():
 
 	title = 'Materials'
 	
