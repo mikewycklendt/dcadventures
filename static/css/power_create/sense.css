@@ -211,15 +211,15 @@
 }
 
 .check-div {
+	display: inline-block;
+	vertical-align: middle;
 	border-radius: 5px;
 	background-color: #F0F0F0;
 }
 
 #sense-row3 {
 	display: grid;
-	padding: 2px;
-	height: 1.2vw;
-	line-height: 1.2vw;
+	padding: 2px;;
 	grid-template-columns: 25% 15% 20% 25% 15%;
 	justify-content: center;
 }
@@ -227,8 +227,6 @@
 #sense-row4 {
 	display: grid;
 	padding: 2px;
-	height: 1.2vw;
-	line-height: 1.2vw;
 	grid-template-columns: 20% 20% 20% 20% 20%;
 	justify-content: center;
 }
