@@ -291,3 +291,10 @@ body{
 	color: #3a4e87;
 	text-align: center;
 }
+
+.check-div {
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+}
