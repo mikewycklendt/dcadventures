@@ -17,7 +17,7 @@ function range_type() {
 }
 
 function power_type() {
-	const move = document.getElementById('move');
+	const move = document.getElementById('power-move');
 	const sense = document.getElementById('power-sense');
 	const field_field = document.getElementById('type');
 	const field = field_field.options[field_field.selectedIndex].value;
