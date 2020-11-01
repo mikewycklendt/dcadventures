@@ -39,7 +39,7 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	gap: 2px;
+	gap: 4px;
 }
 
 #ranks-row1  {
