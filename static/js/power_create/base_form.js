@@ -140,3 +140,30 @@ function ranks() {
 		div.style.opacity = "0%";
 	}	
 }
+
+function senses() {
+	const sense = document.getElementById('power-sense');
+	const field = document.getElementById('senses');
+
+	if (field.checked == true) {
+		sense.style.display = "grid";
+		sense.style.opacity = "100%";
+		sense.style.maxHeight = sense.scrollHeight + "px";
+		sense.style.padding = "1%";
+	} else {
+		sense.style.maxHeight = "0px";
+		sense.style.padding = "0%"
+		sense.style.opacity = "0%";
+	}
+}
+
+function creates() {
+	const check = document.getElementById("creates");
+	const div = document.getElementById("creates-mat");
+
+	if (check.checked == true) {
+		div.style.opacity = "100%"
+	} else {
+		div.style.opacity = "0%"
+	}
+}

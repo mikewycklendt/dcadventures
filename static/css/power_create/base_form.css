@@ -118,3 +118,13 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 }
+
+.base-split {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.check-fade{
+	opacity: 0%;
+	transition: all .3s linear;
+}
