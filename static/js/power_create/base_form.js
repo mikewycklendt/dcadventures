@@ -18,7 +18,7 @@ function range_type() {
 
 function power_type() {
 	const move = document.getElementById('move');
-	const sense = document.getElementById('sense');
+	const sense = document.getElementById('power-sense');
 	const field_field = document.getElementById('type');
 	const field = field_field.options[field_field.selectedIndex].value;
 
@@ -38,6 +38,13 @@ function power_type() {
 		move.style.maxHeight = "0px";
 		move.style.padding = "0%"
 		move.style.opacity = "0%";
+	} else {
+		move.style.maxHeight = "0px";
+		move.style.padding = "0%"
+		move.style.opacity = "0%";
+		sense.style.maxHeight = "0px";
+		sense.style.padding = "0%"
+		sense.style.opacity = "0%";
 	}
 }
 

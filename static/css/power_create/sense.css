@@ -1,3 +1,10 @@
+#power-sense {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #sense-header {
 	display: grid;
 	width: 100%;
@@ -208,13 +215,6 @@
 #sense-resist-immune-perm {
 	opacity: 0%;
 	transition: all .4s ease-out;
-}
-
-.check-div {
-	display: flex;
-	align-items: center;
-	border-radius: 5px;
-	border: 1px solid lightblue;
 }
 
 #sense-row3 {
