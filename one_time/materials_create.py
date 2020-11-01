@@ -66,7 +66,7 @@ def materials_create():
 
 	for material in materials:
 		name = material['name']
-		toughness = material['type_id']
+		toughness = material['toughness']
 
 		entry = Material(name=name, toughness=toughness)
 		db.session.add(entry)
