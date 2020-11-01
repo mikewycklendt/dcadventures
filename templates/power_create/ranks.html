@@ -50,7 +50,7 @@
 
 			<div>
 				<div class="check-div">
-					<input type="checkbox" id="ranks_ranged" class="medium-checkbox med-checkbox"> Ranged
+					<input type="checkbox" id="ranks_ranged" class="medium-checkbox med-checkbox" onclick="ranks_ranged()"> Ranged
 				</div>
 			</div>
 
@@ -84,6 +84,65 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div id="ranks-distance">
+			<div>
+				<select class="select-sml" id="ranks_distance" name="ranks_distance" onchange="ranks_distance()">
+					{% for d in sense_distance %}
+						<option value="{{d.type}}">{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div id="ranks-distance-values">
+	
+				<div>
+					<select class="select-sml" id="ranks_dis_dc" name="ranks_dis_dc">
+						<option value="">DC</option>
+						<option value=>N/A</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="ranks_dis_mod" name="ranks_dis_mod">
+						<option value="">Modifier</option>
+						<option value=>N/A</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<input type="text" id="ranks_dis_value" name="ranks_dis_value"> 
+				</div>
+	
+				<div>
+					<select class="select-sml" id="ranks_dis_unit" name="ranks_dis_unit">
+						<option value="">Unit</option>
+						{% for u in distances %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div id="ranks-distance-factor">
+					<select class="select-sml" id="ranks_dis_factor" name="ranks_dis_factor">
+						<option value=>X Per Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+			</div>
 		</div>
 
 		<div id="ranks-row3">

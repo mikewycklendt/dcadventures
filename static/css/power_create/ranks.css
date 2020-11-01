@@ -60,6 +60,34 @@
 	grid-template-columns: 80% 20%;
 }
 
+#ranks-distance {
+	display: grid;
+	padding: 1%;
+	grid-template-columns: 20% 80%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#ranks-distance input[type="text"] {
+	height:.8vw;
+	font-size: 80%;
+	width: 80%;
+}
+
+#ranks-distance-values {
+	display: grid;
+	grid-template-columns: 15% 15% 25% 25% 20%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#ranks-distance-factor {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #ranks-table {
 	display: none;
 	width: 94%;
