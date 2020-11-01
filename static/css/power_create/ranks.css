@@ -39,20 +39,29 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	gap: 2px;
 }
 
 #ranks-row1  {
 	display: grid;
 	grid-template-columns: 15% 25% 60%;
+	gap: 2px;
 }
 
 #ranks-row2 {
 	display: grid;
-	grid-template-columns: 10% 12% 12% 12% 12% 15% 12% 15%;
+	gap: 2px;
+	font-size: 85%;
+	grid-template-columns: 5% 15% 15% 15% 15% 20% 15%;
+}
+
+#ranks-row3 {
+	display: grid;
+	grid-template-columns: 80% 20%;
 }
 
 #ranks-table {
-	display: grid;
+	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
