@@ -128,3 +128,13 @@
 	opacity: 0%;
 	transition: all .3s linear;
 }
+
+#create-split {
+	display: grid;
+	grid-template-columns: 30% 70%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681
+}
+
+
