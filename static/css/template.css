@@ -298,3 +298,8 @@ body{
 	border-radius: 5px;
 	border: 1px solid lightblue;
 }
+
+.vcenter {
+	display: flex;
+	align-items: center;
+}
