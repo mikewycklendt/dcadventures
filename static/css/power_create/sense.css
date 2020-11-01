@@ -240,7 +240,6 @@
 
 #sense-time {
 	display: grid;
-	padding: 1%;
 	grid-template-columns: 15% 20% 40% 25%;
 	display: none;
 	max-height: 0;
@@ -288,7 +287,6 @@
 
 #sense-distance {
 	display: grid;
-	padding: 1%;
 	grid-template-columns: 20% 80%;
 	display: none;
 	max-height: 0;
