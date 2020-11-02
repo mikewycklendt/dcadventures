@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Modifier, Complex, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -54,83 +54,46 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/complexity/create')
+def complex_create():
 
+	complexity = []
 
-@app.route('/materials/create')
-def materials_create():
-
-	materials = []
-
-	materials.append({
-		'name': 'Paper',
-		'toughness': 0
+	complexity.append({
+		'name': 'Simple',
+		'dc': 15,
+		'time': 10
 	})
 	
-	materials.append({
-		'name': 'Soil',
-		'toughness': 0
+	complexity.append({
+		'name': 'Moderate',
+		'dc': 20,
+		'time': 12
 	})
 
-	
-	materials.append({
-		'name': 'Glass',
-		'toughness': 1
+	complexity.append({
+		'name': 'Complex',
+		'dc': 25,
+		'time': 14
 	})
 
-	materials.append({
-		'name': 'Ice',
-		'toughness': 1
-	})
-	
-	materials.append({
-		'name': 'Rope',
-		'toughness': 1
-	})
-	
-	materials.append({
-		'name': 'Wood',
-		'toughness': 3
+	complexity.append({
+		'name': 'Advanced',
+		'dc': 30,
+		'time': 16
 	})
 
-	materials.append({
-		'name': 'Stone',
-		'toughness': 5
-	})
-	
-	materials.append({
-		'name': 'Iron',
-		'toughness': 7
-	})
-	
-	materials.append({
-		'name': 'Reinforced Concrete',
-		'toughness': 8
-	})
-	
-	materials.append({
-		'name': 'Steel',
-		'toughness': 9
-	})
-	
-	materials.append({
-		'name': 'Titanium',
-		'toughness': 15
-	})
-	
-	materials.append({
-		'name': 'Promedtheum',
-		'toughness': 20
-	})
 
-	for material in materials:
-		name = material['name']
-		toughness = material['toughness']
+	for complexi in complexity:
+		name = complexi['name']
+		dc = complexi['dc']
+		time = complexi['time']
 
-		entry = Material(name=name, toughness=toughness)
+		entry = Complex(name=name, dc=dc, time=time)
 		db.session.add(entry)
 		db.session.commit()
 
-	return ('materials created')
+	return ('complexity created')
 
 '''
 @app.route('/debilitated/create')

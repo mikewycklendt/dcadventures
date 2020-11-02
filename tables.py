@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, SubSense, Material, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Modifier, Complex, Action, Skill, SkillType, Check, SkillTable, Condition, Phase, Sense, SubSense, Material, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -212,5 +212,16 @@ def materials():
 	size = 'h1'
 
 	table = Material.query.all()
+
+	return render_template('table.html', table=table, title=title, size=size)
+
+@tables.route('/complexity')
+def materials():
+
+	title = 'Complexity'
+	
+	size = 'h1'
+
+	table = Complex.query.all()
 
 	return render_template('table.html', table=table, title=title, size=size)

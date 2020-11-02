@@ -783,6 +783,21 @@ class Material(db.Model):
 			'toughness': self.toughness
 		}
 
+class Complex(db.Model):
+	__tablename__ = 'complexity'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	dc = db.Column(db.Integer)
+	time = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'dc': self.dc,
+			'time': self.time
+		}
+
 class Sense(db.Model):
 	__tablename__ = 'senses'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
