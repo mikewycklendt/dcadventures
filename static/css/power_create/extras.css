@@ -1,0 +1,185 @@
+#extras-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 80% 20%;
+	grid-template-rows: auto;
+}
+
+#extras-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#extras-entry {
+	display: grid;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 20% 20% 45% 15%;
+	grid-auto-rows: auto auto auto auto;
+	grid-template-areas: "name-title name-title des-title des-title"
+							"name name des des"
+							"points-title ranks-title des des"
+							"points ranks des des";
+}
+
+#extras-name-title{
+	grid-area: name-title;
+}
+
+#extras-des-title{
+	grid-area: des-title;
+}
+
+#extras-name{
+	grid-area: name;
+}
+
+#extras-des{
+	grid-area: des;
+}
+
+#extras-des textarea{
+	width: 100%; 
+	height: 5vw; 
+	font-size: 90%; 
+	padding: 2%;
+}
+
+#extras-points-title{
+	grid-area: points;
+}
+
+#extras-ranks-title{
+	grid-area: ranks;
+}
+
+#extras-points{
+	grid-area: points;
+}
+
+#extras-ranks{
+	grid-area: ranks;
+}
+
+#extras-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 25% 10% 15% 50%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-nam {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-pnt {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-rnk {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#extras-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

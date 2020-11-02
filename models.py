@@ -672,9 +672,32 @@ class SkillCharCheck(db.Model):
 			'description': self.description
 		}
 
+class Power(db.Model):
+	__tablename__ = 'powers'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
 
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
 
+class Extra(db.Model):
+	__tablename__ = 'extras'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cost = db.Column(db.Integer)
+	ranks = db.Column(db.Integer)
+	
 
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'cost': self.cost,
+			'ranks': self.ranks
+		}
 
 
 

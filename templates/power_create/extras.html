@@ -1,0 +1,78 @@
+<div id="extras-header" style="justify-content: center;">
+
+	<div class="power-title">
+		Extras:
+	</div>
+
+	<div>
+		<div class="btn-head" id="extras_submit" onclick="extras_submit()">
+			Add
+		</div> 
+	</div>
+
+</div>
+
+<div id="extras-entry">
+
+	<div id="extras-name-title">
+		Name:
+	</div>
+
+	<div id="extras-des-title">
+		Description
+	</div>
+	
+	<div id="extras-name">
+		<input type="text" class="entry-text" id="extra_name" name="extra_name">
+	</div>
+
+	<div id="extras-des">
+		<textarea id="extra_des" name="extra_des"></textarea>
+	</div>
+	
+	<div id="extras-points-title">
+		Cost:
+	</div>
+
+	<div id="extras-ranks-title">
+		For # of Ranks:
+	</div>
+
+	<div id="extras-points">
+		<select class="entry-select" id="extra_points" name="extra_points">
+			<option value="">Points</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="extras-ranks">
+		<select class="entry-select" id="extra_ranks" name="extra_ranks">
+			<option value=>Flat</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+<div id="extras-table">
+
+	<div class="power-table-title">
+		Name:
+	</div>
+
+	<div class="power-table-title">
+		Cost:
+	</div>
+
+	<div class="power-table-title">
+		Description:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="extras-err"></div>

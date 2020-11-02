@@ -1,0 +1,49 @@
+<div id="damage-header">
+
+	<div id="damage-title">
+		<input type="checkbox" id="damage_check" class="regular-checkbox big-checkbox" onclick="damage_check()"> Damage Effect:
+	</div>
+	
+	<div id="damage-base">
+		<select class="header-select" id="damage_rank" name="damage_rank" onchange="damage_base()">
+			<option value="">Rank</option>
+			<option value=>Power Rank</option>
+			{% for i in positives %}
+				<option value="{{i}}">Rank + {{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="damage-entry">
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>

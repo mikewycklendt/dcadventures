@@ -1,0 +1,49 @@
+<div id="create-header">
+
+	<div id="create-title">
+		<input type="checkbox" id="create_check" class="regular-checkbox big-checkbox" onclick="create_check()"> Create Effect:
+	</div>
+
+	<div id="create-base">
+		<select class="header-select" id="create_rank" name="create_rank" onchange="create_base()">
+			<option value="">Rank</option>
+			<option value=>Power Rank</option>
+			{% for i in positives %}
+				<option value="{{i}}">Rank + {{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+</div>
+
+<div id="create-entry">
+
+</div>
+
+<div id="create-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="create-err"></div>

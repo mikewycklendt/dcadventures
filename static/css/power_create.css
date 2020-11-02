@@ -8,6 +8,9 @@
 @import "power_create/sense.css";
 @import "power_create/ranks.css";
 @import "power_create/circumstance_table.css";
+@import "power_create/create.css";
+@import "power_create/damage.css";
+@import "power_create/extras.css";
 
 
 .power-container {
@@ -583,4 +586,69 @@ textarea:focus {
 	font-size: 100%;
 	color: #245681;
 	margin-bottom: 4px;
+}
+
+.btn-head {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	height: 100%;
+	padding: .3vw;
+	text-align: center;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	font-size: 110%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.btn-head:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.btn-head::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
+}
+
+.btn-entry {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	height: 100%;
+	padding: .3vw;
+	text-align: center;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	font-family: 'Monda', Verdana;
+	text-decoration: none;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.btn-entry:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.btn-entry::before {
+	font-family: 'FontAwesome';
+	content: '\f067';
+	display: inline-block;
 }
