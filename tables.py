@@ -216,7 +216,7 @@ def materials():
 	return render_template('table.html', table=table, title=title, size=size)
 
 @tables.route('/complexity')
-def materials():
+def complexity():
 
 	title = 'Complexity'
 	
