@@ -689,14 +689,15 @@ class Extra(db.Model):
 	name = db.Column(db.String())
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
-	
+	des = db.Column(db.String())
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'cost': self.cost,
-			'ranks': self.ranks
+			'ranks': self.ranks,
+			'des': self.des
 		}
 
 
