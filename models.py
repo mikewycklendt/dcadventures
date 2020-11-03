@@ -686,6 +686,7 @@ class Power(db.Model):
 class Extra(db.Model):
 	__tablename__ = 'extras'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	name = db.Column(db.String())
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
