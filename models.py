@@ -691,6 +691,7 @@ class Extra(db.Model):
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
 	des = db.Column(db.String())
+	inherit = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -698,7 +699,8 @@ class Extra(db.Model):
 			'name': self.name,
 			'cost': self.cost,
 			'ranks': self.ranks,
-			'des': self.des
+			'des': self.des,
+			'inherit': self.inherit
 		}
 
 class Check(db.Model):

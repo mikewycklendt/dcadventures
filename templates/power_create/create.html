@@ -5,12 +5,9 @@
 	</div>
 
 	<div id="create-base">
-		<select class="header-select" id="create_rank" name="create_rank" onchange="create_base()">
-			<option value="">Rank</option>
-			<option value=>Power Rank</option>
-			{% for i in positives %}
-				<option value="{{i}}">Rank + {{i}}</option>
-			{% endfor %}
+		<select class="extra-select" id="create_extra" name="create_extra" onchange="create_base()">
+			<option value="">Base or Extra</option>
+			<option value=>Base Effect</option>
 		</select>
 	</div>
 
@@ -21,6 +18,10 @@
 </div>
 
 <div id="create-table">
+
+	<div class="power-table-title">
+		Extra:
+	</div>
 
 	<div class="power-table-title">
 		Target:

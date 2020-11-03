@@ -3,13 +3,15 @@
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 65% 35%;
+	grid-template-columns: 70% 30%;
 	grid-template-rows: auto;
 }
 
 #create-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
+	display: grid;
+	grid-template-columns: 25% % 50%;
 }
 
 #create-title {
@@ -45,13 +47,73 @@
 
 #create-row1 {
 	display: grid;
-	grid-template-columns: 20% 20% 20% 20%;
+	grid-template-columns: 16% 16% 20% 16% 16% 16;
 	gap: 3px;
 }
 
-rank(+) 
+#create-row2 {
+	display: grid;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	gap: 3px;
+}
 
-solidity time complexity volume toughness damaged maintain repairable stationary mass
+#create-row3 {
+	display: grid;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	gap: 3px;
+}
+
+#create-row4 {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	gap: 3px;
+}
+
+#create-ranged {
+	display: grid;
+	grid-template-columns: 15% 20% 65%%;
+	gap: 3px;
+}
+
+#create-ranged-dc {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: 3px;
+}
+
+#create-ranged-trait {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: 3px;
+}
+
+#create-trap {
+	display: grid;
+	grid-template-columns: 5% 10% 35% 10% 20% 10% 10%;
+	gap: 3px;
+}
+
+#create-trap-dc {
+	display: grid;
+	grid-template-columns: 100%;
+	gap: 3px;
+}
+
+#create-trap-trait {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: 3px;
+}
+
+solidity visibility complexity volumerank toughnessrank(impervious) massrank
+damagedcheck maintaincheck repairablecheck moveable stationary
+trapcheck rangedattackcheck weapon supportsweight appearsrealcheck
+covercheck concealmentcheck blockincomingcheck blockoutgoingcheck
+ranged attack: traittargetdc | dc  || traittype | trait ||
+trap: attackcheckagainst | | dc | traittype | trait | | resistchecktype  trait  dcorrank  canescape 
+targettraittype | trait | mod | damagetype | value
+weightstrength strengthencheck | |actionincrease rounds | extraeffortincrease rounds| |
+moveablebyplayer | trait | moveablebyopponentcheck | resistedbyability resistrank()
 
 #create-table {
 	display: none;
@@ -66,7 +128,7 @@ solidity time complexity volume toughness damaged maintain repairable stationary
 	transition: all .4s ease-out;
 }
 
-.create-table-rnk {
+.create-table-ext {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;

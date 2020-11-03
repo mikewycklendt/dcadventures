@@ -21,6 +21,15 @@
 	<div id="extras-des-title">
 		Description
 	</div>
+
+	<div id="extras-inherits">
+		<select class="header-select" id="extra_inherit" name="extra_inherit">
+			<option value=>Inherits Effects of:</option>
+			{% for power in powers %}
+				<option value="{{power}}">{{power}}</option>
+			{% endfor %}
+		</select>
+	</div>
 	
 	<div id="extras-name">
 		<input type="text" class="entry-text" id="extra_name" name="extra_name">
@@ -68,10 +77,19 @@
 	</div>
 
 	<div class="power-table-title">
+		Per Rank:
+	</div>
+
+	<div class="power-table-title">
 		Description:
 	</div>
 
-	<div></div>
+	<div class="power-table-title">
+		Inherits Powers:
+	</div>
+
+	<div>		
+	</div>
 	
 </div>
 

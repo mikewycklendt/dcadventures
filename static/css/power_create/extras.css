@@ -30,12 +30,13 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 20% 20% 45% 15%;
+	grid-template-columns: 20% 20% 35% 25%;
 	grid-auto-rows: auto auto auto auto;
-	grid-template-areas: "name-title name-title des-title des-title"
+	grid-template-areas: "name-title name-title des-title inherits"
 							"name name des des"
 							"points-title ranks-title des des"
 							"points ranks des des";
+	gap: 4px;
 }
 
 #extras-name-title{
@@ -44,6 +45,10 @@
 
 #extras-des-title{
 	grid-area: des-title;
+}
+
+#extras-inherits{
+	grid-area: inherits;
 }
 
 #extras-name{
@@ -82,7 +87,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 25% 10% 15% 50%;
+	grid-template-columns: 15% 10% 15% 40% 20%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
@@ -127,6 +132,18 @@
 }
 
 .extras-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-inh {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;

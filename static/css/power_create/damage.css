@@ -56,6 +56,18 @@
 	transition: all .4s ease-out;
 }
 
+.create-table-ext {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 .damage-table-rnk {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
