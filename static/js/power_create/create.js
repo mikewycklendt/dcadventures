@@ -52,6 +52,7 @@ function create_stationary() {
 	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
+
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
 		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
@@ -126,6 +127,8 @@ function create_move_player() {
 	const trait = field.options[field.selectedIndex].value
 	const update = document.getElementById('create_move_player_trait');
 	const div = document.getElementById('create-move-trait')
+
+	console.log(trait)
 
 	update.innerText = null;
 
