@@ -315,29 +315,31 @@
 			</select>
 		</div>
 
-		<div id="create-ranged-dc">
-			<select class="select-sml" id="create_ranged_dc" name="create_ranged_dc">
-				<option value="">DC</option>
-				<option value=>Effect Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				</select>	
-		</div>
-
-		<div id="create-ranged-trait">
-			<div>
-				<select class="select-sml" id="create_ranged_trait_type" name="create_ranged_trait_type" onchange="create_ranged_trait_type()">
-					{% for t in trait %}
-						<option value="{{t.type}}">{{t.name}}</option>
+		<div>
+			<div id="create-ranged-dc">
+				<select class="select-sml" id="create_ranged_dc" name="create_ranged_dc">
+					<option value="">DC</option>
+					<option value=>Effect Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
 					{% endfor %}
-				</select>
+					</select>	
 			</div>
 
-			<div>
-				<select class="select-sml" id="create_ranged_trait" name="create_ranged_trait">
+			<div id="create-ranged-trait">
+				<div>
+					<select class="select-sml" id="create_ranged_trait_type" name="create_ranged_trait_type" onchange="create_ranged_trait_type()">
+						{% for t in trait %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 
-				</select>
+				<div>
+					<select class="select-sml" id="create_ranged_trait" name="create_ranged_trait">
+
+					</select>
+				</div>
 			</div>
 		</div>
 

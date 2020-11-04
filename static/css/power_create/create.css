@@ -74,7 +74,7 @@
 #create-ranged {
 	display: none;
 	width: 98%;
-	grid-template-columns: 15% 20% 50% 10% 5%;
+	grid-template-columns: 15% 20% 40% 15% 10%;
 	gap: 3px;
 	max-height: 0;
 	overflow: hidden;
