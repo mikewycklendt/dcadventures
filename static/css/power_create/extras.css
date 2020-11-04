@@ -30,7 +30,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 20% 20% 25% 35%;
+	grid-template-columns: 20% 20% 30% 30%;
 	grid-auto-rows: auto auto auto auto;
 	grid-template-areas: "name-title name-title des-title inherits"
 							"name name des des"
