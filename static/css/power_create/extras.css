@@ -19,7 +19,7 @@
 #extras-entry {
 	display: grid;
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 120%;
 	color: #245681;
 	width: 88%;
 	margin-top: 0px;
@@ -67,11 +67,11 @@
 }
 
 #extras-points-title{
-	grid-area: points;
+	grid-area: points-title;
 }
 
 #extras-ranks-title{
-	grid-area: ranks;
+	grid-area: ranks-title;
 }
 
 #extras-points{

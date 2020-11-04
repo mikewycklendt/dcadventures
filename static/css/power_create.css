@@ -631,10 +631,10 @@ textarea:focus {
 
 .btn-entry {
 	display: flex;
-	width: 100%;
+	width: 85%;
 	align-items: center;
-	height: 100%;
-	padding: .3vw;
+	height: 80%;
+	padding: .2vw;
 	text-align: center;
 	background-color: #af0101;
 	cursor: crosshair;
