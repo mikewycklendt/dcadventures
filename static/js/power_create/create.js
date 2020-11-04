@@ -276,12 +276,12 @@ function create_ranged_type() {
 
 	if (value == 'dc') {
 		dc.style.display = 'grid';
-		dc.style.maxheight = dc.scrollHeight + 'px';
+		dc.style.maxHeight = dc.scrollHeight + 'px';
 		tr.style.display = 'none';
 		tr.style.maxHeight = '0px';
 	} else if (value == 'target' || value == 'player') {	
 		tr.style.display = 'grid';
-		tr.style.maxheight = tr.scrollHeight + 'px';
+		tr.style.maxHeight = tr.scrollHeight + 'px';
 		dc.style.display = 'none';
 		dc.style.maxHeight = '0px';
 	} else {
