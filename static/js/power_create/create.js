@@ -36,35 +36,13 @@ function create_moveable() {
 	const entry = document.getElementById('create-entry');
 	const check2 = document.getElementById('create_stationary');
 
-	if (check.checked == true) {
+	if (check.checked == true || check2.checked == true) {
 		if (check2.checked == false) {
 			div.style.display = 'grid';
 			div.style.maxHeight = div.scrollHeight + 'px';
 			entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
 		}
-	} else {
-		if (check2 == false) {
-			div.style.maxHeight = '0px';
-			entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-		}
-	}
-}
-
-
-function create_stationary() {
-	const check = document.getElementById('create_stationary');
-	const div = document.getElementById('create-move');
-	const entry = document.getElementById('create-entry');
-	const check2 = document.getElementById('create_moveable');
-
-	if (check.checked == true) {
-		if (check2.checked == false) {
-			div.style.display = 'grid';
-			div.style.maxheight = div.scrollHeight + 'px';
-			entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
-		}
-	} else {
-		if (check2.checked == false) {
+	} if (check.checked == false && check2 == false) {
 			div.style.maxHeight = '0px';
 			entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 		}
