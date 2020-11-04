@@ -45,30 +45,35 @@
 
 #create-row1 {
 	display: grid;
+	width: 98%;
 	grid-template-columns: 16% 16% 20% 16% 16% 16%;
 	gap: 3px;
 }
 
 #create-row2 {
 	display: grid;
+	width: 98%;
 	grid-template-columns: 24% 19% 19% 19% 19%;
 	gap: 3px;
 }
 
 #create-row3 {
 	display: grid;
+	width: 98%;
 	grid-template-columns: 18% 18% 18% 26% 20%;
 	gap: 3px;
 }
 
 #create-row4 {
 	display: grid;
+	width: 98%;
 	grid-template-columns: 25% 25% 25% 25%;
 	gap: 3px;
 }
 
 #create-ranged {
 	display: none;
+	width: 98%;
 	grid-template-columns: 15% 20% 50% 10% 5%;
 	gap: 3px;
 	max-height: 0;
@@ -101,6 +106,7 @@
 
 #create-weapon {
 	display: none;
+	width: 98%;
 	gap: 3px;
 	grid-template-columns: 15% 20% 25% 10% 20% 10%;
 }
@@ -112,6 +118,7 @@
 
 #create-trap {
 	display: none;
+	width: 98%;
 	grid-template-columns: 5% 10% 30% 10% 15% 10% 20%;
 	gap: 3px;
 	max-height: 0;
@@ -139,6 +146,7 @@
 
 #create-support {
 	display: none;
+	width: 98%;
 	grid-template-columns: 15% 15% 70%;
 	gap: 3px;
 	max-height: 0;
@@ -172,6 +180,7 @@
 
 #create-move {
 	display: none;
+	width: 98%;
 	grid-template-columns: 15% 25% 25% 35%;
 	gap: 3px;
 	max-height: 0;
