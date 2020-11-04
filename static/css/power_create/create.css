@@ -179,8 +179,10 @@
 	transition: all .4s ease-out;
 }
 
-#create-move-trait {
+#create-move-opp {
 	opacity: 0%;
+	display: grid;
+	grid-template-columns: 50% 50%;
 	transition: all .3s linear;
 }
 
