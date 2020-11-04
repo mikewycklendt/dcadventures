@@ -162,11 +162,13 @@ function create_move_opponent_check() {
 }
 
 function create_trap_type() {
-	const field = document.getElementById('create_trap_type')
+	const field = document.getElementById('create_trap_type');
 	const val = field.options[field.selectedIndex].value;
-	const dc = document.getElementById('create-trap-dc')
-	const tr = document.getElementById('create-trap-trait')
+	const dc = document.getElementById('create-trap-dc');
+	const tr = document.getElementById('create-trap-trait');
 
+	console.log(val)
+	
 	if (val == 'dc') {
 		dc.style.display = 'grid';
 		dc.style.maxheight = dc.scrollHeight + 'px';
