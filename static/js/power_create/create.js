@@ -41,7 +41,7 @@ function create_moveable() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
@@ -57,7 +57,7 @@ function create_stationary() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
@@ -72,7 +72,7 @@ function create_trap() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
@@ -87,7 +87,7 @@ function create_ranged() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
@@ -102,7 +102,7 @@ function create_weapon() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
@@ -117,7 +117,7 @@ function create_support() {
 		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
-		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px'
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
 }
 
