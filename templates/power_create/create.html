@@ -329,7 +329,7 @@
 			<div id="create-ranged-trait">
 				<div>
 					<select class="select-sml" id="create_ranged_trait_type" name="create_ranged_trait_type" onchange="create_ranged_trait_type()">
-						{% for t in trait %}
+						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
