@@ -168,22 +168,22 @@ function create_trap_type() {
 	const tr = document.getElementById('create-trap-trait');
 
 	console.log(val)
-	
+
 	if (val == 'dc') {
 		dc.style.display = 'grid';
-		dc.style.maxheight = dc.scrollHeight + 'px';
+		dc.style.maxHeight = dc.scrollHeight + 'px';
 		tr.style.display = 'none';
-		tr.style.maxheight = '0px';
+		tr.style.maxHeight = '0px';
 	} else if (val == 'trait') {
 		tr.style.display = 'grid';
-		tr.style.maxheight = tr.scrollHeight + 'px';
+		tr.style.maxHeight = tr.scrollHeight + 'px';
 		dc.style.display = 'none';
-		dc.style.maxheight = '0px';
+		dc.style.maxHeight = '0px';
 	} else {
 		dc.style.display = 'none';
-		dc.style.maxheight = '0px';
+		dc.style.maxHeight = '0px';
 		tr.style.display = 'none';
-		tr.style.maxheight = '0px';
+		tr.style.maxHeight = '0px';
 	}
 
 }
