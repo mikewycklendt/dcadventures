@@ -37,15 +37,12 @@ function create_moveable() {
 	const check2 = document.getElementById('create_stationary');
 
 	if (check.checked == true || check2.checked == true) {
-		if (check2.checked == false) {
 			div.style.display = 'grid';
 			div.style.maxHeight = div.scrollHeight + 'px';
 			entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
-		}
-	} if (check.checked == false && check2 == false) {
+	} else if (check.checked == false && check2.checked == false) {
 			div.style.maxHeight = '0px';
 			entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-		}
 	}
 }
 
