@@ -597,9 +597,9 @@ textarea:focus {
 
 .btn-head {
 	display: flex;
-	width: 100%;
+	width: 90%;
 	align-items: center;
-	height: 100%;
+	height: 90%;
 	padding: .3vw;
 	text-align: center;
 	background-color: #af0101;
