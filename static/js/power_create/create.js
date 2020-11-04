@@ -172,7 +172,7 @@ function create_trap_type() {
 		dc.style.maxheight = dc.scrollHeight + 'px';
 		tr.style.display = 'none';
 		tr.style.maxheight = '0px';
-	} else if (field == 'trait') {
+	} else if (val == 'trait') {
 		tr.style.display = 'grid';
 		tr.style.maxheight = tr.scrollHeight + 'px';
 		dc.style.display = 'none';
