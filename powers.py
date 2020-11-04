@@ -197,7 +197,7 @@ def power_trait_select():
 	body = {}
 	body['success'] = True
 
-	trait = request.get_json['trait'] 
+	trait = request.get_json()['trait'] 
 
 	skills_query = Skill.query.all()
 	skills_raw = []
@@ -341,12 +341,12 @@ def post_extra_create():
 	error_msgs = []
 	
 
-	name = request.get_json['name'] 
-	power_id = request.get_json['power_id']
-	cost = request.get_json['cost']
-	ranks = request.get_json['ranks'] 
-	des = request.get_json['des'] 
-	inherit = request.get_json['inherit']
+	name = request.get_json()['name'] 
+	power_id = request.get_json()['power_id']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks'] 
+	des = request.get_json()['des'] 
+	inherit = request.get_json()['inherit']
 
 	power = db.session.query(Extra).filter(Extra.name == name).first()
 
