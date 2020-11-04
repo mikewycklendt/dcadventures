@@ -38,7 +38,7 @@ function create_moveable() {
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
-		entry.style.maHeight = entry.scrollHeight + div.scrollHeight + 'px';
+		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
 		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
