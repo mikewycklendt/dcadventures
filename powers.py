@@ -237,6 +237,7 @@ def power_trait_select():
 		body['success'] = False
 		body['options'] = 'no match'
 
+	print(body)
 	return jsonify(body)
 
 
