@@ -625,6 +625,7 @@ textarea:focus {
 .btn-head::before {
 	font-family: 'FontAwesome';
 	content: '\f067';
+	padding-right: .3vw;
 	display: inline-block;
 }
 
