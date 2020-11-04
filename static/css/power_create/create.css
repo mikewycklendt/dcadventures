@@ -109,6 +109,9 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 15% 20% 25% 10% 20% 10%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #create-weapon-value {
