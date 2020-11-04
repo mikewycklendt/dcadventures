@@ -240,37 +240,37 @@
 					</select>
 				</div>
 			</div>
-
-			<div>
-				<select class="select-sml" id="create_trap_resist_check" name="create_trap_resist_check" onchange="create_trap_resist_check()">
-					<option value="">Resist Check</option>
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="create_trap_resist_trait" name="create_trap_resist_trait">
-
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="create_trap_resist_dc" name="create_trap_resist_dc">
-					<option value="">DC</option>
-					<option value=>Effect Rank</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div class="check-div">
-				<input type="checkbox" id="create_trap_escape" class="medium-checkbox med-checkbox" > Can Escape
-			</div>
-
 		</div>
+
+		<div>
+			<select class="select-sml" id="create_trap_resist_check" name="create_trap_resist_check" onchange="create_trap_resist_check()">
+				<option value="">Resist Check</option>
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_trap_resist_trait" name="create_trap_resist_trait">
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_trap_resist_dc" name="create_trap_resist_dc">
+				<option value="">DC</option>
+				<option value=>Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_trap_escape" class="medium-checkbox med-checkbox" > Can Escape
+		</div>
+
+
 	</div>
 
 	<div id="create-ranged">
