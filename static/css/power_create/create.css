@@ -45,7 +45,7 @@
 
 #create-row1 {
 	display: grid;
-	grid-template-columns: 16% 16% 20% 16% 16% 16;
+	grid-template-columns: 16% 16% 20% 16% 16% 16%;
 	gap: 3px;
 }
 
