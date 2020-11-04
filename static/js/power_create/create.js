@@ -33,12 +33,15 @@ function create_base() {
 function create_moveable() {
 	const div = document.getElementById('create-move');
 	const check = document.getElementById('create_moveable');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
 	}
 }
 
@@ -46,60 +49,75 @@ function create_moveable() {
 function create_stationary() {
 	const check = document.getElementById('create_stationary');
 	const div = document.getElementById('create-move');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
 	}
 }
 
 function create_trap() {
 	const check = document.getElementById('create_trap');
 	const div = document.getElementById('create-trap');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
 	}
 }
 
 function create_ranged() {
 	const check = document.getElementById('create_ranged');
 	const div = document.getElementById('create-ranged');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
 	}
 }
 
 function create_weapon() {
 	const check = document.getElementById('create_weapon');
 	const div = document.getElementById('create-weapon');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px
 	}
 }
 
 function create_support() {
 	const check = document.getElementById('create_support');	
 	const div = document.getElementById('create-support');
+	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
 		div.style.maxheight = div.scrollHeight + 'px';
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
+		entry.style.maxheight = entry.scrollHeight - div.scrollHeight + 'px'
 	}
 }
 
