@@ -32,7 +32,7 @@ function create_base() {
 
 function create_moveable() {
 	const div = document.getElementById('create-move');
-	const check = document.getElementById('create_create_stationary');
+	const check = document.getElementById('create_moveable');
 	const entry = document.getElementById('create-entry');
 
 	if (check.checked == true) {
