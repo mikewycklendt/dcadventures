@@ -192,7 +192,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											sense_distance=sense_distance, against=against, traits=traits, object_damage=object_damage, darkness=darkness, solidity=solidity, partners=partners, visibility=visibility,
 											moveable=moveable, complexity=complexity)
 
-@skills.route('/power/trait/select', methods=['POST'])
+@powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
 	body = {}
 	body['success'] = True
@@ -240,7 +240,7 @@ def power_trait_select():
 	return jsonify(body)
 
 
-@skills.route('/power/create', methods=['POST'])
+@powers.route('/power/create', methods=['POST'])
 def post_power(): 
 	body = {}
 	error = False
@@ -285,7 +285,7 @@ def post_power():
 		print(body)
 		return jsonify(body)
 
-@skills.route('/power/edit_name', methods=['POST'])
+@powers.route('/power/edit_name', methods=['POST'])
 def edit_power_name(): 
 	body = {}
 	error = False
@@ -332,7 +332,7 @@ def edit_power_name():
 		return jsonify(body)
 
 
-@skills.route('/power/extra/create', methods=['POST'])
+@powers.route('/power/extra/create', methods=['POST'])
 def post_extra_create():
 	body = {}
 	body['success'] = True
@@ -383,7 +383,7 @@ def post_extra_create():
 		print(body)
 		return jsonify(body)
 
-@skills.route('/power/extra/delete/<power_id>', methods=['DELETE'])
+@powers.route('/power/extra/delete/<power_id>', methods=['DELETE'])
 def delete_extra(power_id):
 	try:
 		db.session.query(Extra).filter_by(id=power_id).delete()
