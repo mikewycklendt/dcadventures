@@ -171,7 +171,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	traits = [{'type': '', 'name': 'Trait'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
-	object_damage = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'} {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
+	object_damage = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'effect', 'name': 'Effect Rank'}, {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
 
 	solidity = [{'type': '', 'name': 'Solidity'}, {'type': 'solid' 'name': 'Solid'}, {'type': 'incorp' 'name': 'Incorporeal'}, {'type': 'select' 'name': 'Selective'}]
 
@@ -179,17 +179,23 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
+	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': None, 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+
+	complexity = Complex.query.all()
+
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
 											senses=senses, subsenses=subsenses, actions=actions, permanence=permanence, time_numbers=time_numbers, maths=maths, times=times, targets=targets, whens=whens, dc_value=dc_value, 
 											effects=effects, conditions=conditions, check_types=check_types, powers=powers, skills=skills, abilities=abilities, defenses=defenses, checks=checks, dc_type=dc_type, 
 											distance=distance, negatives=negatives, positives=positives, power_type=power_type, action_type=action_type, range_type=range_type, duration_type=duration_type, 
 											power_includes=power_includes, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, includehtml=includehtml, title=title, 
-											sense_distance=sense_distance, against=against, traits=traits, object_damage=object_damage, darkness=darkness, solidity=solidity, partners=partners)
+											sense_distance=sense_distance, against=against, traits=traits, object_damage=object_damage, darkness=darkness, solidity=solidity, partners=partners, visibility=visibility,
+											moveable=moveable, complexity=complexity)
 
 @skills.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
 	body = {}
+	body['success'] = True
 
 	trait = request.get_json['trait'] 
 
@@ -219,18 +225,17 @@ def power_trait_select():
 
 	if trait == 'ability':
 		body['options'] = abilities
-	
-	if trait == 'defense':
+	elif trait == 'defense':
 		body['options'] = defenses
-	
-	if trait == 'skill':
+	elif trait == 'skill':
 		body['options'] = skills
-
-	if trait == 'bonus':
+	elif trait == 'bonus':
 		body['options'] = bonuses
-	
-	if trait == 'power':
+	elif trait == 'power':
 		body['options'] = powers
+	else:
+		body['success'] = False
+		body['options'] = 'no match'
 
 	return jsonify(body)
 
@@ -328,7 +333,7 @@ def edit_power_name():
 
 
 @skills.route('/power/extra/create', methods=['POST'])
-def post_bonus_pre_check():
+def post_extra_create():
 	body = {}
 	body['success'] = True
 	error = False
@@ -340,6 +345,7 @@ def post_bonus_pre_check():
 	cost = request.get_json['cost']
 	ranks = request.get_json['ranks'] 
 	des = request.get_json['des'] 
+	inherit = request.get_json['inherit']
 
 	power = db.session.query(Extra).filter(Extra.name == name).first()
 
@@ -353,14 +359,17 @@ def post_bonus_pre_check():
 		return jsonify(body)
 
 	try:
-		power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des)
+		power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit)
 		db.session.add(power)
 		db.session.commit()
-		body['name'] = name
-		body['power_id'] = power_id
-		body['cost'] = cost
-		body['ranks'] = ranks
-		body['des'] = des
+
+		body['id'] = power.id
+		body['name'] = power.name
+		body['power_id'] = power.power_id
+		body['cost'] = power.cost
+		body['ranks'] = power.ranks
+		body['des'] = power.des
+		body['inherit'] = power.inherit
 
 	except:
 		error = True
@@ -375,7 +384,7 @@ def post_bonus_pre_check():
 		return jsonify(body)
 
 @skills.route('/power/extra/delete/<power_id>', methods=['DELETE'])
-def delete_bonus_pre_check(power_id):
+def delete_extra(power_id):
 	try:
 		db.session.query(Extra).filter_by(id=power_id).delete()
 		db.session.commit()

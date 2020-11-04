@@ -6,14 +6,445 @@
 
 	<div id="create-base">
 		<select class="extra-select" id="create_extra" name="create_extra" onchange="create_base()">
-			<option value="">Base or Extra</option>
-			<option value=>Base Effect</option>
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
 		</select>
 	</div>
 
 </div>
 
 <div id="create-entry">
+
+	<div id="create=row1">
+		<div>
+			Solidity:
+		</div>
+
+		<div>
+			Visibility:
+		</div>
+
+		<div>
+			Complexity:
+		</div>
+
+		<div>
+			Volume Rank:
+		</div>
+
+		<div>
+			Toughness:
+		</div>
+
+		<div>
+			Mass Rank:
+		</div>
+	</div>
+
+	<div id="create=row1">
+		<div>
+			<select class="select-sml" id="create_solidity" name="create_solidity">
+				{% for s in solidity %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" name="create_visibility" id="create_visibility">
+				{% for v in visibility %}
+					<option value="{{v.type}}">{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_complexity" name="create_complexity">
+				{% for c in complexity %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_volume" name="create_volume">
+				<option value=>Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_toughness" name="create_toughness">
+				<option value=>Effect Rank</option>
+				<option value=1000>Impervious</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_mass" name="create_mass">
+				<option value=>Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="create-row2">
+
+		<div class="check-div">
+			<input type="checkbox" id="create_damageable" class="medium-checkbox med-checkbox"> Can be Damaged
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_damageable" class="medium-checkbox med-checkbox"> Maintained
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_repairable" class="medium-checkbox med-checkbox"> Repairable
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_moveable" class="medium-checkbox med-checkbox" onclick="create_moveable()"> Moveable
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_create_stationary" class="medium-checkbox med-checkbox" onclick="create_stationary()"> Stationary
+		</div>
+
+	</div>
+
+	<div id="create-row3">
+		<div class="check-div">
+			<input type="checkbox" id="create_trap" class="medium-checkbox med-checkbox" onclick="create_trap()"> Can Trap
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_ranged" class="medium-checkbox med-checkbox" onclick="create_ranged()"> Can Trap
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_weapon" class="medium-checkbox med-checkbox" onclick="create_weapon()"> Can Trap
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_support" class="medium-checkbox med-checkbox" onclick="create_support()"> Supports Weight 
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_real" class="medium-checkbox med-checkbox" > Appears Real
+		</div>
+	</div>
+
+	<div id="create-row4">
+		<div class="check-div">
+			<input type="checkbox" id="create_cover" class="medium-checkbox med-checkbox" > Provides Cover
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_conceal" class="medium-checkbox med-checkbox" > Concealment
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_incoming" class="medium-checkbox med-checkbox" > Blocks Incoming
+		</div>
+		
+		<div class="check-div">
+			<input type="checkbox" id="create_outgoing" class="medium-checkbox med-checkbox" > Blocks Outgoing
+		</div>
+
+	</div>
+
+	<div id="create-move">
+		<div>
+			<select class="select-sml" id="create_move_player" name="create_move_player" onchange="create_move_player()">
+				{% for m in moveable %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="create-move-trait">
+			<select class="select-sml" id="create_move_player_trait" name="create_move_player_trait">
+
+			</select>
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_move_opponent_check" class="medium-checkbox med-checkbox" onclick="create_move_opponent_check()"> Supports Weight 
+		</div>
+
+		<div id="create-move-opp">
+			<div>
+				<select class="select-sml" id="create_move_opponent_ability" name="create_move_opponent_ability">
+					<option value="">Rank to Move</option>
+					{% for a in abilities %}
+						<option value={{a.id}}>{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_move_opponent_rank" name="create_move_opponent_rank">
+					<option value=>Effect Rank</option>
+					{% for i in positives %}
+						<option  value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="create-trap">
+		<div>
+			Trap:
+		</div>
+		
+		<div>
+			<select class="select-sml" id="create_trap_type" name="create_trap_type" onchange="create_trap_type()">
+				{% for a in against %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="create-trap-dc">
+				<select class="select-sml" id="create_trap_dc" name="create_trap_dc">
+					<option value="">DC</option>
+					<option value=0>Effect Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="create-trap-trait">
+				<div>
+					<select class="select-sml" id="create_trap_trait_type" name="create_trap_trait_type" onchange="create_trap_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="create_trap_trait" name="create_trap_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_trap_resist_check" name="create_trap_resist_check" onchange="create_trap_resist_check()">
+					<option value="">Resist Check</option>
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_trap_resist_trait" name="create_trap_resist_trait">
+
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_trap_resist_dc" name="create_trap_resist_dc">
+					<option value="">DC</option>
+					<option value=>Effect Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="check-div">
+				<input type="checkbox" id="create_trap_escape" class="medium-checkbox med-checkbox" > Can Escape
+			</div>
+
+		</div>
+	</div>
+
+	<div id="create-ranged">
+		<div>
+			Ranged Attack:
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_ranged_type" name="create_ranged_type" onchange="create_ranged_type()">
+				{% for d in determined %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="create-ranged-dc">
+			<select class="select-sml" id="create_ranged_dc" name="create_ranged_dc">
+				<option value="">DC</option>
+				<option value=>Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				</select>	
+		</div>
+
+		<div id="create-ranged-trait">
+			<div>
+				<select class="select-sml" id="create_ranged_trait_type" name="create_ranged_trait_type" onchange="create_ranged_trait_type()">
+					{% for t in trait %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_ranged_trait" name="create_ranged_trait">
+
+				</select>
+			</div>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_ranged_damage_type" name="create_ranged_damage_type" onchange="create_ranged_damage_type()">
+				{% for d in object_damage %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="create-ranged-damage">
+			<select class="select-sml" id="create_ranged_damage_value" name="create_ranged_damage_value">
+				<option value="">Value</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="create-weapon">
+		
+		<div>
+			Weapon:
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_weapon_trait_type" name="create_weapon_trait_type" onchange="create_weapon_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="select-sml" id="create_weapon_trait" name="create_weapon_trait">
+
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_weapon_mod" name="create_weapon_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_weapon_damage_type" name="create_weapon_damage_type" onchange="create_weapon_damage_type()">
+				{% for d in object_damage %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="create-weapon-value"> 
+			<select class="select-sml" id="create_weapon_damage" name="create_weapon_damage">
+				<option value="">Value</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="create-support">
+		<div>
+			Supports Weight:
+		</div>
+
+		<div>
+			<select class="select-sml" id="create_support_strength" name="create_support_strength">
+				<option value="">Strength Rank</option>
+				<option value=>Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="create_support_strengthen" class="medium-checkbox med-checkbox" onclick="create_support_strengthen()"> Can Stregthen
+		</div>
+
+		<div id="create-support-strengthen">
+
+			<div id="create-support-action">
+				<div>
+					<select class="select-sml" id="create_support_action" name="create_support_action">
+						<option value="">With Action</option>
+						{% for i in positives %}
+							<option value={{i}}>+{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="create_support_action_rounds" name="create_support_action_rounds">
+						<option value="">Rounds</option>
+						<option value=>Permanent</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+			</div>
+
+			<div id="create-support-effort">
+				<div>
+					<select class="select-sml" id="create_support_effort" name="create_support_effort">
+						<option value="">With Extra Effort</option>
+						{% for i in positives %}
+							<option value={{i}}>+{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="create_support_effort_rounds" name="create_support_effort_rounds">
+						<option value="">Rounds</option>
+						<option value=>Permanent</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 </div>
 

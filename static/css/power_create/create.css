@@ -10,8 +10,6 @@
 #create-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
-	display: grid;
-	grid-template-columns: 25% % 50%;
 }
 
 #create-title {
@@ -26,7 +24,7 @@
 #create-entry {
 	display: none;
 	font-family: 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 85%;
 	color: #245681;
 	width: 88%;
 	margin-top: 0px;
@@ -70,50 +68,129 @@
 }
 
 #create-ranged {
-	display: grid;
-	grid-template-columns: 15% 20% 65%%;
+	display: none;
+	grid-template-columns: 15% 20% 50% 10% 5%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #create-ranged-dc {
-	display: grid;
+	display: none;
 	grid-template-columns: 50% 50%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #create-ranged-trait {
-	display: grid;
+	display: none;
 	grid-template-columns: 50% 50%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#create-ranged-damage {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#create-weapon {
+	display: none;
+	gap: 3px;
+	grid-template-columns: 15% 20% 25% 10% 20% 10%;
+}
+
+#create-weapon-value {
+	opacity: 0%;
+	transition: all .3s linear;
 }
 
 #create-trap {
-	display: grid;
+	display: none;
 	grid-template-columns: 5% 10% 35% 10% 20% 10% 10%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #create-trap-dc {
-	display: grid;
+	display: none;
 	grid-template-columns: 100%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #create-trap-trait {
-	display: grid;
+	display: none;
 	grid-template-columns: 50% 50%;
 	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
-solidity visibility complexity volumerank toughnessrank(impervious) massrank
-damagedcheck maintaincheck repairablecheck moveable stationary
-trapcheck rangedattackcheck weapon supportsweight appearsrealcheck
-covercheck concealmentcheck blockincomingcheck blockoutgoingcheck
-ranged attack: traittargetdc | dc  || traittype | trait ||
-trap: attackcheckagainst | | dc | traittype | trait | | resistchecktype  trait  dcorrank  canescape 
-targettraittype | trait | mod | damagetype | value
-weightstrength strengthencheck | |actionincrease rounds | extraeffortincrease rounds| |
-moveablebyplayer | trait | moveablebyopponentcheck | resistedbyability resistrank()
+#create-support {
+	display: none;
+	grid-template-columns: 15% 15% 70%;
+	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#create-support-strengthen {
+	display: grid;
+	opacity: 0%;
+	gap: 3px;
+	grid-template-columns: 50% 50%;
+	transition: all .3s linear;
+}
+
+#create-support-action {
+	display: grid;
+	gap: 3px;
+	grid-template-columns: 50% 50%;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+}
+
+#create-support-effort {
+	display: grid;
+	gap: 3px;
+	grid-template-columns: 50% 50%;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+}
+
+#create-move {
+	display: none;
+	grid-template-columns: 15% 25% 25% 35%;
+	gap: 3px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#create-move-trait {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#create-move-trait {
+	display: grid;
+	grid-template-columns: 70% 30%;
+	gap: 3px;
+	opacity: 0%;
+	transition: all .3s linear;
+}
 
 #create-table {
 	display: none;

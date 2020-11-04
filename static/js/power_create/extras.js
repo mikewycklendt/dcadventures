@@ -6,6 +6,8 @@ function extras_submit() {
 	let cost = cost_field.options[cost_field.selectedIndex].value;
 	let rank_field = document.getElementById('extra_rank');
 	let rank = rank_field.options[rank_field.selectedIndex].value;
+	let inherit_field = document.getElementById('inherit');
+	let inherit = inherit_field.options[inherit_field.selectedIndex].value;
 
 	const power_id = document.getElementById('power_id').value;
 	
@@ -18,7 +20,8 @@ function extras_submit() {
 				'name': name,
 				'cost': cost,
 				'ranks': rank,
-				'des': des
+				'des': des,
+				'inherit': inherit
 			}),
 			headers: {
 			  'Content-Type': 'application/json',
@@ -28,6 +31,16 @@ function extras_submit() {
 		.then(jsonResponse => {
 			console.log(jsonResponse)
 			if (jsonResponse.success) {
+
+				const selects = document.getElementsByClassName('extra-select')
+				const select;
+
+				for (select of selects)  {
+					let option = document.createElement("option")
+					option.value = jsonResponse.id;
+					option.text = jsonResponse.name;
+					select.add(option);
+				}
 
 				const nam = document.createElement('div');
 				nam.className = 'extras-table-nam'
@@ -44,6 +57,10 @@ function extras_submit() {
 				const des = document.createElement('div');
 				des.className = 'extras-table-des'
 				des.innerHTML = jsonResponse.des;
+
+				const inh = document.createElement('div');
+				inh.className = 'extras-table-inh'
+				inh.innerHTML = jsonResponse.des;
 			
 				const exDelete = document.createElement('div');
 				exDelete.className = 'extras-table-del'
@@ -64,6 +81,7 @@ function extras_submit() {
 				table.appendChild(pnt);
 				table.appendChild(rnk);
 				table.appendChild(des)
+				table.appendChild(inh)
 				table.appendChild(exDelete);
 
 				rows = [deg.scrollHeight, con.scrollHeight, rnd.scrollHeight, des.scrollHeight];
@@ -190,6 +208,7 @@ extras_delete = function() {
 	const rnks = document.getElementsByClassName('extras-table-con');
 	const pnts = document.getElementsByClassName('extras-table-rnd');
 	const dess = document.getElementsByClassName('extras-table-des');
+	const inhs = document.getElementsByClassName('extras-table-inh');
 	const deletesDiv = document.getElementsByClassName('extras-table-del');
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
@@ -201,6 +220,20 @@ extras_delete = function() {
 				method: 'DELETE'
 			})
 			.then(function() {
+
+				const selects = document.getElementsByClassName('extra-select');
+				const select;
+
+				for (select of selects) {
+					options = select.options;
+					const option;
+
+					for (option of options) {
+						if (option.value == delId) {
+							select.remove(option)
+						}
+					}
+				}
 
 				nams[i].style.maxHeight = "0px";
 				nams[i].style.padding = "0px";
@@ -214,6 +247,9 @@ extras_delete = function() {
 				dess[i].style.maxHeight = "0px";
 				dess[i].style.padding = "0px";
 				dess[i].style.marginBottom = "0px";
+				inhs[i].style.maxHeight = "0px";
+				inhs[i].style.padding = "0px";
+				inhs[i].style.marginBottom = "0px";
 				deletesDiv[i].style.maxHeight = "0px";
 				deletesDiv[i].style.padding = "0px";
 				deletesDiv[i].style.marginBottom = "0px";

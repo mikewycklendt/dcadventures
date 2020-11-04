@@ -5,12 +5,9 @@
 	</div>
 	
 	<div id="damage-base">
-		<select class="header-select" id="damage_rank" name="damage_rank" onchange="damage_base()">
-			<option value="">Rank</option>
-			<option value=>Power Rank</option>
-			{% for i in positives %}
-				<option value="{{i}}">Rank + {{i}}</option>
-			{% endfor %}
+		<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
+			<option value=>Base or Extra</option>
+			<option value=>Base Effect</option>
 		</select>
 	</div>
 
