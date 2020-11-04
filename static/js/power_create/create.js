@@ -191,7 +191,7 @@ function create_trap_type() {
 function create_trap_trait_type() {
 	const field = document.getElementById('create_trap_trait_type')
 	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById('create_trap_trait_type');
+	const update = document.getElementById('create_trap_trait');
 
 	update.innerText = null;
 
