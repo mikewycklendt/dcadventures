@@ -66,7 +66,7 @@
 }
 
 #deg-mod-entry input[type="text"] {
-	width: 100%; 
+	width: 90%; 
 	height: 1.2vw; 
 	font-size: 100%; 
 	padding: 2%;
@@ -90,7 +90,7 @@
 #deg-mod-row2 {
 	display: grid;
 	gap: 3px;
-	grid-template-columns: 25% 20% 45%;
+	grid-template-columns: 25% 15% 60%;
 }
 
 #deg-mod-deg {
