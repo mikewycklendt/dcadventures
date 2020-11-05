@@ -6,7 +6,7 @@ function extras_submit() {
 	let cost = cost_field.options[cost_field.selectedIndex].value;
 	let rank_field = document.getElementById('extra_rank');
 	let rank = rank_field.options[rank_field.selectedIndex].value;
-	let inherit_field = document.getElementById('inherit');
+	let inherit_field = document.getElementById('extra_inherit');
 	let inherit = inherit_field.options[inherit_field.selectedIndex].value;
 
 	const power_id = document.getElementById('power_id').value;
