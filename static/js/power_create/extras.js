@@ -33,7 +33,7 @@ function extras_submit() {
 			if (jsonResponse.success) {
 
 				const selects = document.getElementsByClassName('extra-select')
-				const select;
+				let select;
 
 				for (select of selects)  {
 					let option = document.createElement("option")
@@ -222,7 +222,7 @@ extras_delete = function() {
 			.then(function() {
 
 				const selects = document.getElementsByClassName('extra-select');
-				const select;
+				let select;
 
 				for (select of selects) {
 					options = select.options;
