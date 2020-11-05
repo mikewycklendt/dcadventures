@@ -31,10 +31,10 @@
 	<div id="deg-mod-deg">
 		<select class="select-sml" id="deg_value" name="deg_value" >
 			<option value="">Degree</option>
-			{% i in negatives %}
+			{% for i in negatives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
-			{% i in positives %}
+			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</select>
