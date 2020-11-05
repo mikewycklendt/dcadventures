@@ -84,7 +84,7 @@ function extras_submit() {
 				table.appendChild(inh)
 				table.appendChild(exDelete);
 
-				rows = [deg.scrollHeight, con.scrollHeight, rnd.scrollHeight, des.scrollHeight];
+				rows = [nam.scrollHeight, pnt.scrollHeight, rnk.scrollHeight, des.scrollHeight, inh.scrollHeight];
 				let row_height = 0;
 
 				for (i = 0; i < rows.length; i++) {
