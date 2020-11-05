@@ -231,7 +231,7 @@ extras_delete = function() {
 					for (option of options) {
 						if (option.value == delId) {
 							console.log(option.value);
-							option = null;
+							option.remove();
 						}
 					}
 				}
