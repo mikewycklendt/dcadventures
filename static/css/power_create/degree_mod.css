@@ -105,23 +105,9 @@
 	padding: 4px;
 }
 
-#deg-mod-nullify {
-	grid-area: nullify;
-	width: 85%;
-	height: auto;
-	padding: 4px;
-}
-
-#deg-mod-keyword {
-	grid-area: keyword;
-	width: 85%;
-	height: auto;
-	padding: 4px;
-}
 
 #deg-mod-effect {
 	display: grid;
-	grid-area: effect;
 	width: 100%;
 	height: auto;
 	padding: 4px;
