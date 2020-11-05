@@ -226,7 +226,7 @@ extras_delete = function() {
 
 				for (select of selects) {
 					options = select.options;
-					const option;
+					let option;
 
 					for (option of options) {
 						if (option.value == delId) {
