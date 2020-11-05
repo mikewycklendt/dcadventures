@@ -231,6 +231,7 @@ extras_delete = function() {
 					for (option of options) {
 						if (option.value == delId) {
 							select.remove(option)
+							console.log(option.value)
 						}
 					}
 				}
