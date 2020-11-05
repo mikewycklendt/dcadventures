@@ -1,3 +1,43 @@
+function trait_select(select, fill) {
+	const field = document.getElementById(select)
+	const trait = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
+
+	response = fetch('/power/trait/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'trait': trait
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option;
+				o.text = option;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;
 	const add_power = document.getElementById('add-power');

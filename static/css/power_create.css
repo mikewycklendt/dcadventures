@@ -11,6 +11,7 @@
 @import "power_create/create.css";
 @import "power_create/damage.css";
 @import "power_create/extras.css";
+@import "power_create/degree_mod.css";
 
 
 .power-container {
