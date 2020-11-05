@@ -204,9 +204,9 @@ function extras_submit() {
 
 extras_delete = function() {
 	const deletes = document.querySelectorAll('.extras-xbox');
-	const nams = document.getElementsByClassName('extras-table-deg');
-	const rnks = document.getElementsByClassName('extras-table-con');
-	const pnts = document.getElementsByClassName('extras-table-rnd');
+	const nams = document.getElementsByClassName('extras-table-nam');
+	const rnks = document.getElementsByClassName('extras-table-rnk');
+	const pnts = document.getElementsByClassName('extras-table-pnt');
 	const dess = document.getElementsByClassName('extras-table-des');
 	const inhs = document.getElementsByClassName('extras-table-inh');
 	const deletesDiv = document.getElementsByClassName('extras-table-del');
