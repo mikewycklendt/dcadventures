@@ -211,7 +211,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
+	grid-template-columns: 15% 5% 5% 5% 5% 5% 5% auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
@@ -230,7 +230,8 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
-.create-table-des {
+
+.create-table-sol {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -240,6 +241,248 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+.create-table-vis {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-com {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-vol {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-tou {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-mas {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-dam {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-dam::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-mai {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-mai::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-rep {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-rep::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-mov {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-mov::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-sta {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-sta::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-tra {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-tra::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-ran {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-ran::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-wea {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-wea::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-wei {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-wei::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-rea {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-rea::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-cov {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-cov::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-con {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-con::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-inc {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-inc::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.create-table-out {
+	display: block;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.create-table-out::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
 }
 
 .create-table-del {
