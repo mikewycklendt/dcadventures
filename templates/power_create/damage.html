@@ -14,6 +14,39 @@
 </div>
 
 <div id="damage-entry">
+	<div id="damage-row1">
+		<div>
+			<select class="select-sml" id="dam_trait_type" name="dam_trait_type" onchange="dam_trait_type()">
+			{% for t in traits %}
+				<option value="{{t.type}}">{{t.name}}</option>
+			{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dam_trait" name="dam_trait">
+
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dam_mod" name="dam_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
+			</div>
+		</div>
+
+	</div>
+
+
 
 </div>
 
