@@ -43,8 +43,12 @@
 	transition: all .4s ease-out;
 }
 
-
-resisttype resisttrait mod 
+#damage-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 2%0 30% 15% 35%;
+}
 #damage-table {
 	display: none;
 	width: 94%;

@@ -29,3 +29,10 @@ function damage_base() {
 		entry.style.padding = "0px";
 	}
 }
+
+function dam_trait_type() {
+	const select = 'dam_trait_type'
+	const fill = 'dam_trait'
+
+	trait_select(select, fill)
+}
