@@ -144,6 +144,7 @@
 			<div>
 				<select class="select-sml" id="resist_dam" name="resist_dam">
 					<option value="">Damage</option>
+					<option value="result">Result</option>
 					<option value="0">0</option>
 					{% for num in positives %}
 						<option value={{num}}>{{num}}</option>
@@ -152,7 +153,9 @@
 			</div>
 
 			<div>
-
+				<div class="check-div">
+					<input type="checkbox" id="resist_strength" class="medium-checkbox med-checkbox"> Strength-Based
+				</div>
 			</div>
 		</div>
 
