@@ -1,0 +1,120 @@
+<div id="defense-header">
+
+	<div id="defense-title">
+		<input type="checkbox" id="defense_check" class="regular-checkbox big-checkbox" onclick="defense_check()"> Defensive Effect:
+	</div>
+	
+	<div id="defense-base">
+		<select class="extra-select" id="defense_extra" name="defense_extra" onchange="defense_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="defense-entry">
+
+	<div id="defense-row1">
+
+		<div>
+			Defense:
+		</div>
+
+		<div>
+			Use Type:
+		</div>
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			Die Roll:
+		</div>
+
+		<div>
+			<select class="select-sml" id="defense_defense" name="defense_defense">
+				<option value="">Defense</option>
+				<option value="any">Any</option>
+				{% for d in defenses %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="defense_use" name="defense_use">
+				{% for u in use_type %}
+					<option value="{{u.type}}">{{u.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="defense_mod" name="defense_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="die-roll">
+			<div>
+				<select class="select-sml" id="defense_roll" name="defense_roll">
+					<option value="">Roll</option>
+					<option value="always">Always</option>
+					{% for i in die %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				 or 
+			</div>
+
+			<div>
+				<select class="select-sml" id="defense_outcome" name="defense_outcome">
+					{% for o in outcome %}
+						<option value="{{o.type}}">{{o.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>

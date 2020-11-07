@@ -12,6 +12,7 @@
 @import "power_create/damage.css";
 @import "power_create/extras.css";
 @import "power_create/degree_mod.css";
+@import "power_create/defense.css";
 
 
 .power-container {
@@ -664,4 +665,12 @@ textarea:focus {
 	font-family: 'FontAwesome';
 	content: '\f067';
 	display: inline-block;
+}
+
+.die-roll {
+	display: grid;
+	gap: 3px;
+	grid-template-columns: 35% 15% 50%;
+	border-radius: 5px;
+	border: 1px solid lightblue;
 }

@@ -1,23 +1,35 @@
 function resist_check() {
 	const check = document.getElementById("resist_check");
-	const entry = document.getElementById("resist-entry");
 	const title = document.getElementById("resist-title");
-	
+	const base = document.getElementById('resist-base')
+
 	if (check.checked == true) {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
+		base.style.opacity = '100%';
 		title.style.color = "#af0101";
 		title.style.fontSize = "220%";
 		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
+		base.style.opacity = '0%'
 		title.style.color = "#245681";
 	}
 }
 
+
+function resist_base() {
+	const field = document.getElementById('resist_extra')
+	const value = field.options[field.selectedIndex].value;
+	const entry = document.getElementById("resist-entry")
+
+	if (value != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+	}
+}
 function resist_type() {
 	const type_field = document.getElementById('resist_type');
 	let type_value = type_field.options[type_field.selectedIndex].value;
