@@ -51,10 +51,32 @@
 	grid-auto-rows: auto;
 }
 
+#defense-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 18% 18% 18% 18% 18%;
+	grid-auto-rows: auto;
+}
+
+#defense-row3 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 25% 25 25%;
+	grid-auto-rows: auto;
+}
+
+#defense-reflect-action {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 /*
 
 defense usetype modifier die moreless
-
+dodge fortitude parry toughness will
+area perception reflect action type
 */
 
 #defense-table {

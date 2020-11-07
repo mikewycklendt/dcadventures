@@ -89,6 +89,59 @@
 
 	</div>
 
+	<div id="defense-row2">
+
+		<div class="check-div">
+			Works with: 
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="defense_dodge" class="medium-checkbox med-checkbox" > Dodge
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="defense_fortitude" class="medium-checkbox med-checkbox" > Fortitude
+		</div>
+		
+		<div class="check-div">
+			<input type="checkbox" id="defense_parry" class="medium-checkbox med-checkbox" > Parry
+		</div>
+		
+		<div class="check-div">
+			<input type="checkbox" id="defense_toughness" class="medium-checkbox med-checkbox" > Toughness
+		</div>
+		
+		<div class="check-div">
+			<input type="checkbox" id="defense_will" class="medium-checkbox med-checkbox" > Will
+		</div>
+
+	</div>
+
+	<div id="defense-row3">
+
+		<div class="check-div">
+			<input type="checkbox" id="defense_resist_area" class="medium-checkbox med-checkbox" > Resists Area Effects
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="defense_resist_perc" class="medium-checkbox med-checkbox" > Resists Perception Effects
+		</div>
+
+		<div>
+			<input type="checkbox" id="defense_reflect" class="medium-checkbox med-checkbox" onclick="defense_reflect()"> Reflects Attacks
+		</div>
+
+		<div id="defense-reflect-action">
+			<select class="select-sml" id="defense_reflect_action" name="defense_reflect_action">
+				<option value="">Reflect Action Type</option>
+				{% for a in actions %}
+					<option value="a.id">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
 </div>
 
 <div id="damage-table">
