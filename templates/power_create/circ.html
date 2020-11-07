@@ -64,7 +64,7 @@
 
 		<div id="circ-type">
 			<select class="select-sml" id="circ_type" name="circ_type" onchange="circ_type()">
-				{% for circ_type %}
+				{% for c in circ_type %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
