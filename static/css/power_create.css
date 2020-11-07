@@ -670,7 +670,7 @@ textarea:focus {
 .die-roll {
 	display: grid;
 	gap: 3px;
-	grid-template-columns: 35% 15% 50%;
+	grid-template-columns: 34% 10% 50%;
+	text-align: center;
 	border-radius: 5px;
-	border: 1px solid lightblue;
 }
