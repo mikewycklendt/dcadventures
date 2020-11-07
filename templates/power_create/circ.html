@@ -25,6 +25,62 @@
 
 	<div id="circ-row1">
 
+		<div id="circ-mod-title">
+			Modifier:
+		</div>
+
+		<div id="circ-round-title">
+			Lasts:
+		</div>
+
+		<div id="circ-des-title">
+			Circumstance:
+		</div>
+
+		<div id="circ-mod">
+			<select class="select-sml" id="circ_mod" name="circ_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="circ-round">
+			<select class="select-sml" id="circ_rounds" name="circ_rrounds">
+				<option value="0">Once</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="circ-des">
+			<textarea id="circ_des" name="circ_des"></textarea>
+		</div>
+
+		<div id="circ-type">
+			<select class="select-sml" id="circ_type" name="circ_type" onchange="circ_type()">
+				{% for circ_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="circ-range">
+		<div>
+			<select class="select-sml" id="circ_range" name="circ_name">
+				<option value="">Range</option>
+				{% for r in ranges %}
+					<option value={{r.id}}>{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 </div>

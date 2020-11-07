@@ -106,11 +106,10 @@ depend modifier lasts circ button
 #circ-range {
 	display: none;
 	width: 98%;
-	grid-template-columns: 30% 20% 50%;
+	grid-template-columns: 20% 80%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 50% 50%;
 }
 
 

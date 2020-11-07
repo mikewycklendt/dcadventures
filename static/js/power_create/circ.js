@@ -32,3 +32,16 @@ function circ_base() {
 		entry.style.padding = "0px";
 	}
 }
+
+function circ_type() {
+	const field = document.getElementById('circ_type');
+	const value = field.options[field.selectedIndex].value;
+	const ran = document.getElementById('circ-range');
+
+	if (value == 'range') {
+		ran.style.display = 'grid';
+		ran.style.maxHeight = ran.scrollHeight + 'px';
+	} else {
+		ran.style.maxHeight = '0px';
+	}
+}
