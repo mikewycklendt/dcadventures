@@ -29,3 +29,14 @@ function defense_base() {
 		entry.style.padding = "0px";
 	}
 }
+
+function defense_reflect() {
+	const check = document.getElementById('defense_reflect')
+	const base = document.getElementById('defense-reflect-action')
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+	} else {
+		base.style.opacity = '0%'
+	}	
+}
