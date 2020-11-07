@@ -58,15 +58,15 @@ def range_create():
 
 	ranges = []
 
-	ranges.append({'name': 'Short'
+	ranges.append({'name': 'Short',
 					'distance': 25
 					})
 					
-	ranges.append({'name': 'Medium'
+	ranges.append({'name': 'Medium',
 					'distance': 50
 					})
 
-	ranges.append({'name': 'Long'
+	ranges.append({'name': 'Long',
 					'distance': 100
 					})
 
