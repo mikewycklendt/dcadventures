@@ -63,7 +63,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 20% 25% 20% 25%;
+	grid-template-columns: 10% 20% 25% 25% 20%;
 	grid-auto-rows: auto;
 }
 
