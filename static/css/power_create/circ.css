@@ -60,7 +60,7 @@
 	grid-template-columns: 15% 15% 55% 15%;
 	grid-template-areas: "mod-title round-title des-title button"
 							"mod round des des"
-							"type des des" ;
+							"type type des des" ;
 }
 
 #circ-row1 textarea {
@@ -78,6 +78,10 @@
 
 #circ-des-title {
 	grid-area: des-title;
+}
+
+#circ-button {
+	grid-area: button;
 }
 
 #circ-mod {
