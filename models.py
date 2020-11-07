@@ -781,6 +781,19 @@ class MeasureType(db.Model):
 			'name': self.name
 		}
 
+class Range(db.Model):
+	__tablename__ = 'range'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	distance = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'distance': self.distance
+		}
+
 class Unit(db.Model):
 	__tablename__ = 'unit_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

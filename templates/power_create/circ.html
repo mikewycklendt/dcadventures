@@ -1,0 +1,58 @@
+<div id="circ-header">
+
+	<div id="circ-title">
+		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()"> Circumstance Modifier:
+	</div>
+
+	<div>
+		<select class="header-select" id="circ_target" name="circ_target" onchange="circ_base()">
+			{% for t in targets %}
+				<option value="{{t.type}}">{{t.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	
+	<div id="circ-base">
+		<select class="extra-select" id="circ_extra" name="circ_extra" onchange="circ_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="circ-entry">
+
+	<div id="circ-row1">
+
+	</div>
+
+</div>
+
+<div id="circ-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="circ-err"></div>
