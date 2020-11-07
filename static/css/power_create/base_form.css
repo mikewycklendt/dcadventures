@@ -78,6 +78,9 @@
 	margin: 2%;
 	grid-template-columns: 100%;
 	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
+	color: #245681
 }
 
 #power-dc-field {
