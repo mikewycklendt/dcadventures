@@ -142,32 +142,16 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Inflicts Damage:
+			Increase Size Rank:
 		</div>
-	
-		<div id="power-damage">
-			<div>
-				Power Rank
-			</div>
 
-			<div>
-				<select class="base-select" id="dam_math" name="dam_math">
-					<option value="">Math</option>
-					{% for math in maths %}
-						<option value={{math.id}}>{{math.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="dam_val" name="dam_val">
-					<option value="">None</option>
-					{% for num in positives %}
-						<option value={{num}}>{{num}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<input type="checkbox" id="size_rank" class="regular-checkbox big-checkbox"> + 1 Per Rank of this Effect
 		</div>
+
+	</div>
+		
+
 	</div>
 
 	<div class="base-field">
@@ -283,6 +267,35 @@
 		</div>
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Grab Bonus:
+		</div>
+
+		<div class="base-split">
+	
+			<div>
+				<select class="base-select" id="grab" name="grab">
+					<option value="">N/A</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="grab_type" class="grab_type">
+					{% for b in bonus_type %}
+						<option value="{{b.type}}">{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+	</div>
+
+	
 </div>
 
 
