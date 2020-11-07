@@ -75,7 +75,7 @@ def range_create():
 		name = r['name']
 		distance = r['distance']
 
-		entry = Range(name=sense, distance=distance)
+		entry = Range(name=name, distance=distance)
 		db.session.add(entry)
 		db.session.commit()
 
