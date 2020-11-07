@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Power, Extra, Complex, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Modifier, Range, Power, Extra, Complex, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -53,48 +53,39 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/range/create')
+def range_create():
 
-@app.route('/complexity/create')
-def complex_create():
+	ranges = []
 
-	complexity = []
+	ranges.append({'name': 'Short'
+					'distance': 25
+					})
+					
+	ranges.append({'name': 'Medium'
+					'distance': 50
+					})
 
-	complexity.append({
-		'name': 'Simple',
-		'dc': 15,
-		'time': 10
-	})
-	
-	complexity.append({
-		'name': 'Moderate',
-		'dc': 20,
-		'time': 12
-	})
-
-	complexity.append({
-		'name': 'Complex',
-		'dc': 25,
-		'time': 14
-	})
-
-	complexity.append({
-		'name': 'Advanced',
-		'dc': 30,
-		'time': 16
-	})
+	ranges.append({'name': 'Long'
+					'distance': 100
+					})
 
 
-	for complexi in complexity:
-		name = complexi['name']
-		dc = complexi['dc']
-		time = complexi['time']
+	for r in ranges:
+		name = r['name']
+		distance = r['distance']
 
-		entry = Complex(name=name, dc=dc, time=time)
+		entry = Range(name=sense, distance=distance)
 		db.session.add(entry)
 		db.session.commit()
 
-	return ('complexity created')
+	results = Range.query.all()
 
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('ranges added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
