@@ -4,21 +4,25 @@
 		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()"> Circumstance Modifier:
 	</div>
 
-	<div>
-		<select class="header-select" id="circ_target" name="circ_target" onchange="circ_base()">
-			{% for t in targets %}
-				<option value="{{t.type}}">{{t.name}}</option>
-			{% endfor %}
-		</select>
+	<div id="circ-base">
+
+		<div>
+			<select class="header-select" id="circ_target" name="circ_target" onchange="circ_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div id="circ-base">
+			<select class="extra-select" id="circ_extra" name="circ_extra" onchange="circ_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+
 	</div>
 	
-	<div id="circ-base">
-		<select class="extra-select" id="circ_extra" name="circ_extra" onchange="circ_base()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
-	</div>
-
 </div>
 
 <div id="circ-entry">
