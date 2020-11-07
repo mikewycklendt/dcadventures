@@ -37,11 +37,14 @@ function circ_type() {
 	const field = document.getElementById('circ_type');
 	const value = field.options[field.selectedIndex].value;
 	const ran = document.getElementById('circ-range');
+	const entry = document.getElementById('circ-entry')
 
 	if (value == 'range') {
 		ran.style.display = 'grid';
 		ran.style.maxHeight = ran.scrollHeight + 'px';
+		entry.style.maxHeight = ran.scrollHeight + entry.scrollHeight + 'px';
 	} else {
 		ran.style.maxHeight = '0px';
+		entry.style.maxHeight = entry.scrollHeight - ran.scrollHeight;
 	}
 }
