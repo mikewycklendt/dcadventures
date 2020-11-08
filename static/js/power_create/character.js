@@ -60,29 +60,6 @@ function char_reduced() {
 	}
 }
 
-function char_limited() {
-	const field = document.getElementById('char_limited');
-	const value = field.options[field.selectedIndex].value;
-	const oth = document.getElementById('char-other')
-	const emo = document.getElementById('char-emotion')
-
-	if (value == 'other') {
-		oth.style.display = 'grid';
-		oth.style.maxHeight = oth.scrollHeight + 'px';
-		emo.style.display = 'none';
-		emo.style.maxHeight = '0px';
-	} else if (value == 'emotion') {
-		emo.style.display = 'grid';
-		emo.style.maxHeight = emo.scrollHeight + 'px';
-		oth.style.display = 'none';
-		oth.style.maxHeight = '0px';
-	} else {
-		oth.style.display = 'none';
-		oth.style.maxHeight = '0px';
-		emo.style.display = 'none';
-		emo.style.maxHeight = '0px'
-	}
-}
 
 function char_limited_by() {
 	const field = document.getElementById('char_limited_by');
