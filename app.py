@@ -54,25 +54,6 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/emotions/create')
-def emotions_create():
-
-	emotions = ['Anger', 'Fear', 'Sadness', 'Happiness', 'Surprise', 'Disgust']
-
-	for emotion in emotions:
-
-		entry = Emotion(name=emotion)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Emotion.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('emotions added')
-
 
 '''
 @app.route('/debilitated/create')

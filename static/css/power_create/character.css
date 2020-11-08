@@ -82,6 +82,11 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+#char-emotion-other {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #char-other {
 	display: none;
 	max-height: 0;

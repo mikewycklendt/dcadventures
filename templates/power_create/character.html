@@ -69,15 +69,44 @@
 			<div id="char-emotion">
 				<div>
 					<select class="select-sml" id="char_emotion" name="char_emotion" onchange="char_emotion()">
+						<option value="">Emotion</option>
+						<option value="other">Other</option>
 						{% for e in emotions %}
-							<option value="{{e}}"
+							<option value={{e.id}}>{{e.name}}</option>
 						{% endfor %}
 					</select>
+				</div>
+
+				<div id="char-emotion-other">
+					<input type="text" id="char_emotion_other" name="char_emotion_other">
 				</div>
 			</div>
 
 		</div>
 
+	</div>
+
+	<div id="char-reduced">
+		<div>
+			<select class="select-sml" id="char_reduced_trait" name="char_reduced_trait">
+				<option value="">Trait</option>
+				{% for a in abilities %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_reduced_value" name="char_reduced_value">
+				<option value="">Amount</option>
+				{% for i in negatives %}
+					<option value={{I}}>{{I}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+		
 	</div>
 
 	changes perrank limit reduces
