@@ -781,6 +781,17 @@ class MeasureType(db.Model):
 			'name': self.name
 		}
 
+class Emotion(db.Model):
+	__tablename__ = 'emotions'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class Range(db.Model):
 	__tablename__ = 'range'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

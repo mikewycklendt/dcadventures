@@ -1,0 +1,115 @@
+<div id="char-header">
+
+	<div id="char-title">
+		<input type="checkbox" id="char_check" class="regular-checkbox big-checkbox" onclick="char_check()"> Changes Character Traits:
+	</div>
+	
+	<div id="char-base">
+		<select class="extra-select" id="char_extra" name="char_extra" onchange="char_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="char-entry">
+
+	<div id="char-row1">
+
+		<div>
+			<select class="select-sml" id="char_affects" name="char_affects">
+				<option value="">Changed Trait</option>
+				<option value="size">Size Rank</option>
+				{% for a in abilities %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_value" name="char_value">
+				<option value="">Increased By</option>
+				<option value="rank">Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="char_limited" class="medium-checkbox med-checkbox" onclick="char_limited()"> Limited
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="char_reduced" class="medium-checkbox med-checkbox" onclick="char_reduced()"> Reduces Trait
+			</div>
+		</div>
+
+	</div>
+
+	<div id="char-limited">
+
+		<div>
+			<select class="select-sml" id="char_limited" name="char_limited" onchange="char_limited()">
+				{% for l in limited %}
+					<option value="{{l.type}}">{{l.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<div id="char-other">
+				<input type="text" id="char_other" name="char_other">
+			</div>
+
+			<div id="char-emotion">
+				<div>
+					<select class="select-sml" id="char_emotion" name="char_emotion" onchange="char_emotion()">
+						{% for e in emotions %}
+							<option value="{{e}}"
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	changes perrank limit reduces
+limited by | bonus | emotion other
+trait amount
+
+</div>
+
+<div id="char-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="char-err"></div>
