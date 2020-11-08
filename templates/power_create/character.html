@@ -54,7 +54,7 @@
 	<div id="char-limited">
 
 		<div>
-			<select class="select-sml" id="char_limited" name="char_limited" onchange="char_limited()">
+			<select class="select-sml" id="char_limited_by" name="char_limited_by" onchange="char_limited_by()">
 				{% for l in limited %}
 					<option value="{{l.type}}">{{l.name}}</option>
 				{% endfor %}
@@ -106,7 +106,7 @@
 		</div>
 
 		<div></div>
-		
+
 	</div>
 
 	changes perrank limit reduces

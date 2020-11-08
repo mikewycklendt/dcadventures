@@ -84,8 +84,8 @@ function char_limited() {
 	}
 }
 
-function char_limited() {
-	const field = document.getElementById('char_limited');
+function char_limited_by() {
+	const field = document.getElementById('char_limited_by');
 	const value = field.options[field.selectedIndex].value;
 	const oth = document.getElementById('char-other')
 	const emo = document.getElementById('char-emotion')
