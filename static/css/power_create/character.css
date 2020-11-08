@@ -51,6 +51,7 @@ trait amount
 
 #char-entry input[type="text"] {
 	height: 1.1vw;
+	padding: 2px;
 	font-size: 90%;
 	width: 90%;
 }
