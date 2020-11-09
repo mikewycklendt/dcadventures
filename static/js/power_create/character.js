@@ -62,14 +62,6 @@ function char_reduced() {
 	}
 }
 
-function char_limbs() {
-	const check = 'char_limbs';
-	const div = 'char-limbs';
-	
-	function check_drop(check, div, entry)
-}
-
-
 function char_limited_by() {
 	const field = document.getElementById('char_limited_by');
 	const value = field.options[field.selectedIndex].value;
