@@ -121,7 +121,6 @@
 
 #move-time {
 	display: none;
-	grid-area: time;
 	grid-template-columns: 15% 35% 15% 35%;
 	max-height: 0;
 	overflow: hidden;
