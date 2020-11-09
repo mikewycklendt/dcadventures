@@ -109,3 +109,10 @@ function env_visibility_trait_type() {
 
 	trait_select(select, fill)
 }
+
+function env_immune() {
+	const check = 'env_immune';
+	const div = 'env-immune'
+
+	check_display(check, div)
+}

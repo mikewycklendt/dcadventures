@@ -75,6 +75,20 @@ visibility traittype trait modifier costperrank
 	grid-auto-rows: auto;
 }
 
+#env-row3 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 20% auto auto;
+	grid-auto-rows: auto;
+}
+
+#env-immune {
+	display: none;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
 #env-temp {
 	display: none;
 	grid-template-columns: 15% 15% 20% 25% 25%;

@@ -96,6 +96,32 @@
 
 	</div>
 
+	<div id="env-row3">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_immune" class="medium-checkbox med-checkbox" onclick="env_immune()"> Immunity
+			</div>
+		</div>
+
+		<div id="env-immune">
+			<select class="select-sml" id="env_immune_type" name="env_immune_type">
+				{% for e in extremity %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+		</div>
+
+		<div>
+
+		</div>
+
+	</div>
+
 	<div id="env-temp">
 
 		<div>

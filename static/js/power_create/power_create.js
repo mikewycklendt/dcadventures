@@ -39,9 +39,9 @@ function trait_select(select, fill) {
 }
 
 function check_drop(field, divdrop, entrydrop) {
-	const check = document.getElementById(field)
-	const div = document.getElementById(divdrop)
-	const entry = document.getElementById(entrydrop)
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdrop);
+	const entry = document.getElementById(entrydrop);
 
 	if (check.checked == true) {
 		div.style.display = 'grid';
@@ -54,12 +54,25 @@ function check_drop(field, divdrop, entrydrop) {
 }
 
 function check_opacity(field, divopacity) {
-	const check = document.getElementById(field)
-	const div = document.getElementById(divopacity)
+	const check = document.getElementById(field);
+	const div = document.getElementById(divopacity);
 
 	if (check.checked == true) {
 		div.style.opacity = '100%';
 	} else {
+		div.style.opacity = '0%';
+	}
+}
+
+function check_display(field, divdisplay) {
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdisplay);
+
+	if (check.checked == true) {
+		div.style.display = 'grid';
+		setTimeout(function(){div.style.opacity = '100%'}, 10);
+	} else {
+		div.style.display = 'none';
 		div.style.opacity = '0%';
 	}
 }
