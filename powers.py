@@ -205,7 +205,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	emotions = Emotion.query.all()
 
-	temp_type = [{'type': '', 'name': 'Temperature Type'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}]
+	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}]
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
