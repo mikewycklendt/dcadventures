@@ -58,6 +58,13 @@
 	gap: 3px;
 }
 
+#move-row3 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 25% 25% 25% 25%;
+	gap: 3px;
+}
+
 #move-ground {
 	display: none;
 	width: 98%;

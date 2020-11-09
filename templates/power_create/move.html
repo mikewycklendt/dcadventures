@@ -75,18 +75,43 @@
 		</div>
 
 		<div>
-
+			<div class="check-div">
+				<input type="checkbox" id="move_continuous" class="medium-checkbox med-checkbox" > Continuous
+			</div>
 		</div>
 
 		<div>
-
+			<div class="check-div">
+				<input type="checkbox" id="move_subtle" class="medium-checkbox med-checkbox" > Subtle
+			</div>
 		</div>
 
 		<div>
-
+			<div class="check-div">
+				<input type="checkbox" id="move_concentration" class="medium-checkbox med-checkbox" > Concentration
+			</div>
 		</div>
 		
 	</div>
+
+	<div id="move-row3">
+		<div>
+			<select class="select-sml" id="move_condition" name="move_condition">
+				<option value="">Condition</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+		<div></div>
+
+		<div></div>
+	</div>
+
+	<div id="move-flight"></div>
 
 	<div id="move-ground">
 		<div>
