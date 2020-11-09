@@ -99,14 +99,14 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_ground_perm" name="move_perm" onchange="move_perm()">
+			<select class="select-sml" id="move_ground_perm" name="move_ground_perm" onchange="move_ground_perm()">
 				{% for perm in permanence %}
 					<option value="{{perm.type}}">{{perm.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div id="move-time">
+		<div id="move-ground-time">
 			<div>
 				Time:
 			</div>
@@ -135,7 +135,9 @@
 		</div>
 
 		<div>
-			<input type="checkbox" id="move_ground_ranged" class="medium-checkbox med-checkbox" > Ranged
+			<div class="check-div">
+				<input type="checkbox" id="move_ground_ranged" class="medium-checkbox med-checkbox" > Ranged
+			</div>
 		</div>
 	</div>
 
