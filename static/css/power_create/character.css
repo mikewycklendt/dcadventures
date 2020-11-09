@@ -125,6 +125,17 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+#char-carry {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 15% 60%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 /*
 continuous sustained distracting projection 
 */

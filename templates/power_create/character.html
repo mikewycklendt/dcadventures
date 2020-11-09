@@ -60,7 +60,9 @@
 		</div>
 
 		<div>
-
+			<div class="check-div">
+				<input type="checkbox" id="char_carry" class="medium-checkbox med-checkbox" onclick="char_carry()"> Extra Carry
+			</div>
 		</div>
 
 		<div>
@@ -156,6 +158,23 @@
 				<input type="checkbox" id="char_projection" class="medium-checkbox med-checkbox" > Projection
 			</div>
 		</div>
+	</div>
+
+	<div id="char-carry">
+
+		<div>
+			Carrying Capacity:
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_carry_capacity" name="char_carry_capacity">
+				<option value="">Max Size</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 	</div>
 
 </div>
