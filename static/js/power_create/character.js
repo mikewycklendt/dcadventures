@@ -1,5 +1,3 @@
-const entry = document.getElementById("char-entry")
-
 function char_check() {
 	const check = document.getElementById("char_check");
 	const title = document.getElementById("char-title");
@@ -99,8 +97,9 @@ function char_emotion() {
 }
 
 function char_limbs() {
-	const check = 'char_limbs'
-	const div = 'char-limbs'
+	const check = 'char_limbs';
+	const div = 'char-limbs';
+	const entry = 'char-entry';
 
 	check_drop(check, div, entry)
 }
