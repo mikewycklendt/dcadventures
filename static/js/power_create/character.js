@@ -97,3 +97,10 @@ function char_emotion() {
 		oth.style.opacity = '0%';
 	}
 }
+
+function char_limbs() {
+	const check = 'char_limbs'
+	const div = 'char-limbs'
+
+	check_drop(check, div, entry)
+}
