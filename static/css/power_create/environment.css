@@ -1,0 +1,207 @@
+#env-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 70% 30%;
+	grid-template-rows: auto;
+}
+
+#env-base {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#env-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#env-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-entry input[type="text"] {
+	height: 1.1vw;
+	padding: 2px;
+	font-size: 90%;
+	width: 90%;
+}
+
+/*
+rank1radius distaNCE RANKPER rank maxrank
+temperature impede light visibility selective
+temperature: coldheat intenseextreme cost
+movement: windicerainsnowother speeddecrease costperrank circmod:athleticsacrobatic other
+concealment: costtroreducecost costtoeliminatecost
+visibility traittype trait modifier costperrank 
+*/
+
+#env-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 25% 5% 25% 20%;
+	grid-auto-rows: auto;
+}
+
+#env-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
+#env-temp {
+	display: none;
+	grid-template-columns: 10% 20% 20% 25% 25%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-move {
+	display: none;
+	grid-template-columns: 10% 20% 10% 10% 35% 15%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-move-other {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#env-conceal {
+	display: none;
+	grid-template-columns: 20% 30% 30% 20%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-visibility {
+	display: none;
+	grid-template-columns: 16% 20% 30% 17% 17%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.env-table-ext {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.env-table-rnk {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+.env-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.env-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#env-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.env-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.env-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

@@ -1,0 +1,266 @@
+<div id="env-header">
+
+	<div id="env-title">
+		<input type="checkbox" id="env_check" class="regular-checkbox big-checkbox" onclick="env_check()"> Environment Effect:
+	</div>
+	
+	<div id="env-base">
+		<select class="extra-select" id="env_extra" name="env_extra" onchange="env_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="env-entry">
+	
+	<div id="env-row1">
+
+		<div>
+			Starting Radius:
+		</div>
+
+		<div>
+			Distance Rank
+		</div>
+
+		<div></div>
+
+		<div>
+			Effect Rank:
+		</div>
+
+		<div></div>
+
+
+		<div>
+			<input type="text" id="env_radius" name="env_radius">
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_distance" name="env_distance">
+				{% for  i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="vcenter">
+			per
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_rank" name="env_rank">
+				{% for  i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+	</div>
+
+	<div id="env-row2">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_temp" class="medium-checkbox med-checkbox" onclick="env_temp()"> Temperature
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_impede" class="medium-checkbox med-checkbox" onclick="env_impede()"> Impede Movement
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_conceal" class="medium-checkbox med-checkbox" onclick="env_conceal()"> Light
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_visibility" class="medium-checkbox med-checkbox" onclick="env_visibility()"> Visibility
+			</div>
+		</div>
+
+	</div>
+
+	<div id="env-temp">
+
+		<div>
+			Temperature:
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_temp_type" name="env_temp_type">
+				{% for t in temp_type %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_temp_extremity" name="env_temp_extremity">
+				{% for e in extremitty %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_temp_cost" name="env_temp_cost">
+				<option value="">Cost Per Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+	</div>
+
+	<div id="env-move">
+
+		<div>
+			Movement:
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_move_nature" name="env_move_nature" onchange="env_move_other()">
+				{% for n in nature %}
+					<option value="{{n.type}}">{{n.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_move_speed" name="env_move_speed">
+				<option value="">Speed Mod</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_move_cost" name="env_move_cost">
+				<option value="">Cost Per Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_move_cost_circ" class="medium-checkbox med-checkbox" > Surface Modifier
+			</div>
+		</div>
+
+		<div id="env-move-other">
+			<input type="text" id="env_move_other" name="env_move_other">
+		</div>
+	</div>
+
+	<div id="env-conceal">
+		<div>
+			Counter Concealment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_conceal_reduce" name="env_conceal_reduce">
+				<option value="">Cost to Reduce</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="select-sml" id="env_conceal_eliminate" name="env_conceal_eliminate">
+				<option value="">Cost to Eliminate</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+	</div>
+
+	<div id="env-visibility">
+
+		<div>
+			Lessen Visibility:
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_visibility_trait_type" name="env_visibility_trait_type" onchange="env_visibility_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_visibility_trait" name="env_visibility_trait">
+
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_visibility_mod" name="env_visibility_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{I}}>{{I}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_visibility_cost" name="env_visibility_cost">
+				<option value="">Cost Per Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+s
+</div>
+
+<div id="env-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="env-err"></div>
