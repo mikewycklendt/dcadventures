@@ -1,3 +1,5 @@
+const entry = document.getElementById("char-entry")
+
 function char_check() {
 	const check = document.getElementById("char_check");
 	const title = document.getElementById("char-title");
@@ -58,6 +60,13 @@ function char_reduced() {
 		div.style.maxHeight = '0px';
 		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 	}
+}
+
+function char_limbs() {
+	const check = 'char_limbs';
+	const div = 'char-limbs';
+	
+	function check_drop(check, div, entry)
 }
 
 

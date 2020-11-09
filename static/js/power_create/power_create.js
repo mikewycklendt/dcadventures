@@ -38,6 +38,32 @@ function trait_select(select, fill) {
 	})	
 }
 
+function check_drop(field, divdrop, entrydrop) {
+	const check = document.getElementById(field)
+	const div = document.getElementById(divdrop)
+	const entry = document.getElementById(entrydrop)
+
+	if (check.checked == true) {
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+		entry.style.maxHeight = div.scrollHeight + entry.scrollHeight + 'px';
+	} else {
+		div.style.maxHeight = '0px';
+		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
+	}
+}
+
+function check_opacity(field, divopacity) {
+	const check = document.getElementById(field)
+	const div = document.getElementById(divopacity)
+
+	if (check.checked == true) {
+		div.style.opacity = '100%';
+	} else {
+		div.style.opacity = '0%';
+	}
+}
+
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;
 	const add_power = document.getElementById('add-power');
