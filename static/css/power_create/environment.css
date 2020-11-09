@@ -44,7 +44,7 @@
 }
 
 #env-entry input[type="text"] {
-	height: 1.1vw;
+	height: .9vw;
 	padding: 2px;
 	font-size: 90%;
 	width: 90%;
@@ -85,7 +85,7 @@ visibility traittype trait modifier costperrank
 
 #env-move {
 	display: none;
-	grid-template-columns: 15% 20% 10% 10% 25% 29%;
+	grid-template-columns: 15% 20% 10% 10% 25% 20%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
