@@ -42,7 +42,7 @@ function move_ground_perm() {
 		div.style.maxHeight = div.scrollHeight + "px";
 	} else {
 		div.style.maxHeight = "0px"
-		setTimeout(function(){title.style.display = 'none'}, 400);
+		setTimeout(function(){div.style.display = 'none'}, 400);
 	}
 
 }
