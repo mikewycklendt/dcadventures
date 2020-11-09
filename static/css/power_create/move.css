@@ -115,8 +115,8 @@
 
 #move-math {
 	display: grid;
-	grid-area: math;
 	grid-template-columns: 35% 35% 30%;
+	gap: 3px;
 }
 
 #move-time {
