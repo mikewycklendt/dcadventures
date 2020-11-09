@@ -91,7 +91,7 @@ function env_visibility() {
 }
 
 function env_move_other() {
-	const field = document.getElementById('env_move_other');
+	const field = document.getElementById('env_move_nature');
 	const value = field.options[field.selectedIndex].value;
 	const div = document.getElementById('env-move-other');
 
@@ -106,6 +106,6 @@ function env_move_other() {
 function env_visibility_trait_type() {
 	const select = 'env_visibility_trait_type'
 	const fill = 'env_visibility_trait'
-	
+
 	trait_select(select, fill)
 }
