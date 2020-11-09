@@ -50,6 +50,7 @@ function check_drop(field, divdrop, entrydrop) {
 	} else {
 		div.style.maxHeight = '0px';
 		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
+		setTimeout(function(){div.style.display = 'none'}, 400);
 	}
 }
 
@@ -72,8 +73,8 @@ function check_display(field, divdisplay) {
 		div.style.display = 'grid';
 		setTimeout(function(){div.style.opacity = '100%'}, 10);
 	} else {
-		div.style.display = 'none';
 		div.style.opacity = '0%';
+		setTimeout(function(){div.style.display = 'none'}, 300);
 	}
 }
 
