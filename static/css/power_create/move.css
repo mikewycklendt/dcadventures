@@ -7,6 +7,15 @@
 	grid-template-rows: auto;
 }
 
+#move-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
 #move-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
