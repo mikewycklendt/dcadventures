@@ -792,6 +792,17 @@ class Emotion(db.Model):
 			'name': self.name
 		}
 
+class Ground(db.Model):
+	__tablename__ = 'ground'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class Range(db.Model):
 	__tablename__ = 'range'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
