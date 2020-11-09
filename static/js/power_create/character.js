@@ -1,3 +1,5 @@
+const entry = 'char-entry';
+
 function char_check() {
 	const check = document.getElementById("char_check");
 	const title = document.getElementById("char-title");
@@ -100,6 +102,13 @@ function char_limbs() {
 	const check = 'char_limbs';
 	const div = 'char-limbs';
 	const entry = 'char-entry';
+
+	check_drop(check, div, entry)
+}
+
+function char_carry() {
+	const check = 'char_carry'
+	const div = 'char-carry'
 
 	check_drop(check, div, entry)
 }
