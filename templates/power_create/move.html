@@ -1,7 +1,14 @@
 <div id="move-header" style="justify-content: center;">
 
-	<div class="power-title">
-		Movement Effect:
+	<div id="move-title">
+		<input type="checkbox" id="move_check" class="regular-checkbox big-checkbox" onclick="move_check()"> Movement Effect:
+	</div>
+
+	<div id="move-base">
+		<select class="extra-select" id="move_extra" name="move_extra" onchange="move_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
 	</div>
 
 </div>
@@ -76,7 +83,7 @@
 		</div>
 
 		<div>
-			
+
 		</div>
 		
 	</div>
