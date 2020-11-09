@@ -17,31 +17,16 @@ function range_type() {
 }
 
 function power_type() {
-	const move = document.getElementById('power-move');
 	const sense = document.getElementById('power-sense');
 	const field_field = document.getElementById('type');
 	const field = field_field.options[field_field.selectedIndex].value;
 
-	if (field == 'move') {
-		move.style.display = "grid";
-		move.style.opacity = "100%";
-		move.style.maxHeight = move.scrollHeight + "px";
-		move.style.padding = "1%";
-		sense.style.maxHeight = "0px";
-		sense.style.padding = "0%"
-		sense.style.opacity = "0%";
-	} else if (field == 'sense') {
+	if (field == 'sense') {
 		sense.style.display = "grid";
 		sense.style.opacity = "100%";
 		sense.style.maxHeight = sense.scrollHeight + "px";
 		sense.style.padding = "1%";
-		move.style.maxHeight = "0px";
-		move.style.padding = "0%"
-		move.style.opacity = "0%";
 	} else {
-		move.style.maxHeight = "0px";
-		move.style.padding = "0%"
-		move.style.opacity = "0%";
 		sense.style.maxHeight = "0px";
 		sense.style.padding = "0%"
 		sense.style.opacity = "0%";

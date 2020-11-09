@@ -12,3 +12,10 @@ function move_perm() {
 	}
 
 }
+
+function move_ground() {
+	const check = 'move_ground';
+	const div = 'move-ground';
+
+	check_drop(check, div)
+}
