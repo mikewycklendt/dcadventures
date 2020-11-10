@@ -1,4 +1,4 @@
-const entry = 'move-entry';
+const move_entry = 'move-entry';
 
 function move_check() {
 	const check = document.getElementById("move_check");
@@ -51,14 +51,14 @@ function move_ground() {
 	const check = 'move_ground';
 	const div = 'move-ground';
 
-	check_drop(check, div, entry);
+	check_drop(check, div, move_entry);
 }
 
 function move_subtle() {
 	const check = 'move_subtle';
 	const div = 'move-subtle';
 	
-	check_drop(check, div, entry);
+	check_drop(check, div, move_entry);
 }
 
 function move_subtle_trait_type() {
@@ -81,5 +81,5 @@ function move_flight() {
 	const check = 'move_flight';
 	const div = 'move-flight';
 	
-	check_drop(check, div, entry);
+	check_drop(check, div, move_entry);
 }
