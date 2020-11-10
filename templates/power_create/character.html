@@ -37,6 +37,19 @@
 			</select>
 		</div>
 
+		<div style="text-align: center;">
+			Per
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_rank" name="char_rank">
+				<option value="">Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="char_limited" class="medium-checkbox med-checkbox" onclick="char_limited()"> Limited
