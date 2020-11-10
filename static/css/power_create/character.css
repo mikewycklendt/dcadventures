@@ -72,6 +72,13 @@ trait amount
 	grid-auto-rows: auto;
 }
 
+#char-button {
+	display: grid;
+	height: 1.2vw;
+	grid-template-columns: 85% 15%;
+	grid-template-rows: auto;
+}
+
 #char-limited {
 	display: none;
 	width: 98%;
