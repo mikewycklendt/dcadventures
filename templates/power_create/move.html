@@ -173,7 +173,7 @@
 
 		<div>
 			<select class="select-sml" id="move_subtle_trait_type" name="move_subtle_trait_type" onchange="move_subtle_trait_type()">
-				{%c for t in traits %}
+				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
