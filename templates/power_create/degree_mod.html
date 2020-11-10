@@ -175,41 +175,71 @@
 		<div id="deg-mod-condition" style="display: none;">
 
 			<div>
-				From: 
-			</div>
-	
-			<div>
-				<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
-					<option value="">Condition</option>
-					<option value="current">Current</option>
-					{% for condition in combined_conditions %}
-						<option value="{{condition}}">{{condition}}</option>
-					{% endfor %}
-					{% for condition in conditions %}
-						<option value="{{condition}}">{{condition}}</option>
+				<select class="select-sml" id="deg_mod_condition_type" name="deg_mod_condition_type" onchange="deg_mod_condition_type()">
+					{% for c in condition_type %}
+						<option value="{{c.type}}">{{c.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
+
+			<div>
+				<div id="deg-mod-condition-damage">
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition_damage_value" name="deg_mod_condition_damage_value">
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div style="text-align: center;">
+						Condition
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition_damage" name="deg_mod_condition_damage">
+							{% for u in updown %}
+								<option value={{u.id}}>{{u.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+				</div>
 			
-			<div id="deg-mod-condition-twxt" >
-				To: 		
-			</div>
+			
+				<div id="deg-mod-conditions">
+					<div>
+						From: 
+					</div>
 
-			<div>
-				<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
-					<option value="">Condition</option>
-					<option value="current">Current</option>
-					{% for condition in combined_conditions %}
-						<option value="{{condition}}">{{condition}}</option>
-					{% endfor %}
-					{% for condition in conditions %}
-						<option value="{{condition}}">{{condition}}</option>
-					{% endfor %}
-				</select>
-			</div>
+					<div>
+						<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
+							<option value="">Condition</option>
+							<option value="current">Current</option>
+							{% for condition in conditions %}
+								<option value="{{condition}}">{{condition}}</option>
+							{% endfor %}
+						</select>
+					</div>
 
-			<div></div>
-		
+					<div id="deg-mod-condition-twxt" >
+						To: 		
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
+							<option value="">Condition</option>
+							<option value="current">Current</option>
+							{% for condition in conditions %}
+								<option value="{{condition}}">{{condition}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div></div>
+				</div>
+			</div>
 		</div>
 	</div>
 

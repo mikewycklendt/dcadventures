@@ -94,6 +94,30 @@ function deg_mod_circ_trait_type() {
 	trait_select(select, fill)
 }
 
+function deg_mod_condition_type() {
+	const field = document.getElementById('deg_mod_condition_type')
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById('deg-mod-condition-damage')
+	const math = document.getElementById('deg-mod-conditions')
+
+	if (value == 'condition') {
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		math.style.display = 'grid';
+		setTimeout(function(){math.style.opacity = '100%'}, 10);
+	} else if (value == 'damage') {
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		val.style.display = 'grid';
+		setTimeout(function(){val.style.opacity = '100%'}, 10);
+	} else {
+		val.style.opacity = '0%';
+		setTimeout(function(){val.style.display = 'none'}, 300);
+		math.style.opacity = '0%';
+		setTimeout(function(){math.style.display = 'none'}, 300);
+	}
+}
+
 function deg_mod_damage_type() {
 	let damage = document.getElementById('deg-mod-damage');
 	

@@ -138,15 +138,30 @@
 }
 
 #deg-mod-condition {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 9% 30% 7% 30% auto;
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
+	display: none;
+	width: 98%;
+	grid-template-columns: 25% 75%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#deg-mod-conditions {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 10% 40% 10% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#deg-mod-condition-damage {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 40% 20% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
 }
 
 #deg-mod-measure-math {
