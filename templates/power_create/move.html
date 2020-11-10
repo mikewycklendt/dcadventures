@@ -19,7 +19,7 @@
 		<div id="move-math">
 			<div>
 				<select class="select-sml" id="move_rank" name="move_rank">
-					<option value="">Rank</option>
+					<option value="">Speed Rank</option>
 					<option value=>This Power</option>
 					{% for num in positives %}
 						<option value={{num}}>{{num}}</option>
@@ -82,7 +82,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_subtle" class="medium-checkbox med-checkbox" > Subtle
+				<input type="checkbox" id="move_subtle" class="medium-checkbox med-checkbox" onclick="move_subtle()"> Subtle
 			</div>
 		</div>
 
@@ -164,6 +164,38 @@
 				<input type="checkbox" id="move_ground_ranged" class="medium-checkbox med-checkbox" > Ranged
 			</div>
 		</div>
+	</div>
+
+	<div id="move-subtle">
+		<div>
+			Subtle:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_subtle_trait_type" name="move_subtle_trait_type" onchange="move_subtle_trait_type()">
+				{%c for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_subtle_trait" name="move_subtle_trait">
+
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_subtle_mod" name="move_subtle_mod">
+				<option value="">Bonus</option>
+				<option value="free">No Check</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
 	</div>
 
 	<div id="move-button-row">

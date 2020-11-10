@@ -73,7 +73,16 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
 
+#move-subtle {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 20% 30% 20% 20%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #move-button-row {

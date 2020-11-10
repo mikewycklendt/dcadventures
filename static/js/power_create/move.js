@@ -53,3 +53,17 @@ function move_ground() {
 
 	check_drop(check, div, entry);
 }
+
+function move_subtle() {
+	const check = 'move_subtle';
+	const div = 'move-subtle';
+	
+	check_drop(check, div, entry);
+}
+
+function move_subtle_trait_type() {
+	const select = 'move_subtle_trait_type';
+	const fill = 'move_subtle_trait';
+
+	trait_select(select, fill);
+}
