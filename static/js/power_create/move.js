@@ -76,3 +76,10 @@ function move_distance_type() {
 
 	math_div_select(select, val, math, div)
 }
+
+function move_flight() {
+	const check = 'move_flight';
+	const div = 'move-flight';
+	
+	check_drop(check, div, entry);
+}
