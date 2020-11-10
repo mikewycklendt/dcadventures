@@ -256,11 +256,25 @@
 
 	<div id="move-flight">
 
-		<div id="move-flight-text">
-			Conditions when character cannot fly:
-		</div>
+		<div id="move-flight-left">
+			<div>
+				Conditions when character cannot fly:
+			</div>
 
-		<div id="move-flight-condition">
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="move_flight_resist" class="medium-checkbox med-checkbox" > May Require Resistence Check
+				</div>
+			</div>
+			
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="move_flight_equip" class="medium-checkbox med-checkbox" > Requires Equipment
+				</div>
+			</div>
+		</div>
+		
+		<div>
 
 			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple>
 				<option value="">(Ctl or Cmd to select multiple)</option>
@@ -270,19 +284,6 @@
 			</select>
 
 		</div>
-		
-		<div id="move-flight-resist">
-			<div class="check-div">
-				<input type="checkbox" id="move_flight_resist" class="medium-checkbox med-checkbox" > May Require Resistence Check
-			</div>
-		</div>
-		
-		<div id="move-flight-equip">
-			<div class="check-div">
-				<input type="checkbox" id="move_flight_equip" class="medium-checkbox med-checkbox" > Requires Equipment
-			</div>
-		</div>
-
 	</div>
 
 	<div id="move-button-row">

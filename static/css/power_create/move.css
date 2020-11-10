@@ -107,30 +107,19 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 50% 50%;
-	grid-template-rows: auto auto auto;
-	grid-template-areas: "conditiontext condition"
-						"resist condition"
-						"equip condition";
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#move-flight-text {
-	grid-area: conditiontext;
+#move-flight-left {
+	display: grid;
+	gap: 3px;
+	width: 98%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
 }
 
-#move-flight-resist {
-	grid-area: resist;
-}
-
-#move-flight-equip {
-	grid-area: equip;
-}
-
-#move-flight-condition {
-	grid-area: condition;
-}
 
 #move-button-row {
 	display: grid;
