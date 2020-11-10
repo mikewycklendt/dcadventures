@@ -61,8 +61,25 @@
 #move-row3 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: auto auto auto auto;
 	gap: 3px;
+}
+
+#move-distance {
+	display: none;
+}
+
+#move-distance-value {
+	display: none;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#move-distance-math {
+	display: none;
+	opacity: 0%;
+	transition: all .3s linear;
+	grid-template-columns: 40% 30% 30%;
 }
 
 #move-ground {

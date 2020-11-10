@@ -66,6 +66,79 @@
 
 	</div>
 
+	<div id="move-row3">
+		<div>
+			<select class="select-sml" id="move_condition" name="move_condition">
+				<option value="">Condition</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_direction" name="move_direction">
+				{% for d in directions %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_distance_type" name="move_distance_type" onchange="move_distance_type()">
+				<option value="">Max Distance</option>
+				<option value="unlimited">Unlimited</option>
+				{% for v in value_type %}
+					<option value="{{v.type}}">{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="move-distance">
+
+			<div id="move-distance-value">
+				<select class="select-sml" id="move_distance_value" name="move_distance_value">
+					<option value="">Distance Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="move-distance-math">
+				<div>
+					<select class="select-sml" id="move_distance_math_value" name="move_distance_math_value">
+						<option value="">Distance Rank</option>
+						<option value="vert">Vertical Height</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_math" name="move_distance_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_math_value2" name="move_distance_math_value2">
+						<option value="">Value</option>
+						<option value="effect">Effect Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 	<div id="move-row2">
 
 		<div>
@@ -92,23 +165,6 @@
 			</div>
 		</div>
 		
-	</div>
-
-	<div id="move-row3">
-		<div>
-			<select class="select-sml" id="move_condition" name="move_condition">
-				<option value="">Condition</option>
-				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div></div>
-
-		<div></div>
-
-		<div></div>
 	</div>
 
 	<div id="move-flight"></div>

@@ -67,3 +67,12 @@ function move_subtle_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function move_distance_type() {
+	const select = 'move_distance_type'
+	const val = 'move-distance-value'
+	const math = 'move-distance-math'
+	const div = 'move-distance'
+
+	math_div_select(select, val, math, div)
+}

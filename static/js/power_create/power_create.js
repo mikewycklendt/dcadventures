@@ -38,6 +38,34 @@ function trait_select(select, fill) {
 	})	
 }
 
+function math_div_select(select, valuediv, mathdiv, containdiv ) {
+	const field = document.getElementById(select);
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById(valuediv)
+	const math = document.getElementById(mathdiv)
+	const div = document.getElementById(containdiv)
+
+	if (value == 'math') {
+		div.style.display = 'grid';
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		math.style.display = 'grid';
+		setTimeout(function(){math.style.opacity = '100%'}, 10);
+	} else if (value == 'value') {
+		div.style.display = 'grid';
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		val.style.display = 'grid';
+		setTimeout(function(){val.style.opacity = '100%'}, 10);
+	} else {
+		val.style.opacity = '0%';
+		setTimeout(function(){val.style.display = 'none'}, 300);
+		math.style.opacity = '0%';
+		setTimeout(function(){math.style.display = 'none'}, 300);
+		setTimeout(function(){div.style.display = 'none'}, 300);
+	}
+}
+
 function check_drop(field, divdrop, entrydrop) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divdrop);
