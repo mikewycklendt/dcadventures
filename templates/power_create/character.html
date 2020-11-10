@@ -19,8 +19,9 @@
 
 		<div>
 			<select class="select-sml" id="char_affects" name="char_affects">
-				<option value="">Changed Trait</option>
-				<option value="size">Size Rank</option>
+				{% for c in character %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
 				{% for a in abilities %}
 					<option value={{a.id}}>{{a.name}}</option>
 				{% endfor %}
