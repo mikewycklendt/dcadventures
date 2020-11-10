@@ -167,8 +167,6 @@
 		
 	</div>
 
-	<div id="move-flight"></div>
-
 	<div id="move-ground">
 		<div>
 			<select class="select-sml" id="move_ground_type" name="move_ground_type">
@@ -276,7 +274,12 @@
 
 		<div>
 
-			
+			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple>
+				<option value="">(Ctl or Cmd to select multiple)</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
 
 		</div>
 	</div>
