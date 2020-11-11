@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, MediumType, MaterialType, EnergyType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -227,7 +227,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sources = Source.query.all()
 
-	mediums = Medium.query.all()
+	medium = Medium.query.all()
+
+	mediums = MediumType.query.all()
+
+	materials = MaterialType.query.all()
+
+	energies = EnergyType.query.all()
 
 
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
@@ -239,7 +245,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											sense_distance=sense_distance, against=against, traits=traits, object_damage=object_damage, darkness=darkness, solidity=solidity, partners=partners, visibility=visibility,
 											moveable=moveable, complexity=complexity, determined=determined, deg_mod_type=deg_mod_type, value_type=value_type, die=die, use_type=use_type, outcome=outcome,
 											circ_type=circ_type, ranges=ranges, limited=limited, emotions=emotions, temp_type=temp_type, extremity=extremity, nature=nature, grounds=grounds, directions=directions,
-											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors. origins=origins, sources=sources, mediums=mediums)
+											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors. origins=origins, sources=sources, mediums=mediums, medium=medium, 
+											materials=materials, energies=energies)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():

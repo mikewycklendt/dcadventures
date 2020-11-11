@@ -710,6 +710,9 @@ class Descriptor(db.Model):
 	origin = db.Column(db.Integer, db.ForeignKey('origin.id'))
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
+	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	result = db.Column(db.String())
 
 	def format(self):
@@ -719,6 +722,9 @@ class Descriptor(db.Model):
 			'origin': self.origin,
 			'source': self.source,
 			'medium': self.medium,
+			'medium_type': self.medium_type,
+			'material_type': self.material_type,
+			'energy_type': self.energy_type,
 			'result': self.result
 		}
 
@@ -795,7 +801,9 @@ class Medium(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'medium_type': self.medium_type
+			'medium_type': self.medium_type,
+			'material_type': self.material_type,
+			'energy_type': self.energy_type
 		}
 
 class Check(db.Model):
