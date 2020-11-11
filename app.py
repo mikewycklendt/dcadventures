@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Descriptor, Origin, Source, Medium, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Modifier, Descriptor, Origin, Source, Medium, MediumType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -52,6 +52,27 @@ def home():
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+
+
+@app.route('/origins/create')
+def origins_create():
+
+	origins = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training', 'Other']
+
+	for i in origins:
+
+		entry = Origin(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Origin.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('origins added')
+
 
 
 '''

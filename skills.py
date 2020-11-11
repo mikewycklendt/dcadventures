@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Power, Range, Descriptor, Origin, Source, Medium, Extra, Defense, Emotion, Complex, Modifier, Action, Ground, Skill, SkillType, Check, SkillTable, Material, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import setup_db, Ability, Power, Range, Descriptor, Origin, Source, Medium, MediumType, Extra, Defense, Emotion, Complex, Modifier, Action, Ground, Skill, SkillType, Check, SkillTable, Material, Condition, Phase, Sense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys

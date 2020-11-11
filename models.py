@@ -755,11 +755,41 @@ class MediumType(db.Model):
 			'name': self.name
 		}
 
+class MaterialType(db.Model):
+	__tablename__ = 'material_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'medium_type': self.medium_type
+		}
+
+
+class EnergyType(db.Model):
+	__tablename__ = 'energy_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'medium_type': self.medium_type
+		}
+
+
 class Medium(db.Model):
 	__tablename__ = 'medium'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
+	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 
 	def format(self):
 		return {
