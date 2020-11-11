@@ -1,0 +1,92 @@
+<div id="damage-header">
+
+	<div id="damage-title">
+		<input type="checkbox" id="damage_check" class="regular-checkbox big-checkbox" onclick="damage_check()"> Damage Effect:
+	</div>
+	
+	<div id="damage-base">
+		<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="damage-entry">
+	<div id="damage-row1">
+
+		<div></div>
+
+		<div>
+			Resisted By:
+		</div>
+
+		<div>
+			Modifier
+		</div>
+
+		<div></div>
+		
+		<div>
+			<select class="select-sml" id="dam_trait_type" name="dam_trait_type" onchange="dam_trait_type()">
+			{% for t in traits %}
+				<option value="{{t.type}}">{{t.name}}</option>
+			{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dam_trait" name="dam_trait">
+
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dam_mod" name="dam_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
+			</div>
+		</div>
+
+	</div>
+
+
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>
