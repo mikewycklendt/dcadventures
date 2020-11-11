@@ -24,7 +24,7 @@ def materialtype_create():
 
 	for i in medium:
 
-		entry = MaterialType(name=i)
+		entry = MaterialType(name=i, medium_type=1)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -44,7 +44,7 @@ def energytype_create():
 
 	for i in medium:
 
-		entry = EnergyType(name=i)
+		entry = EnergyType(name=i, medium_type=2)
 		db.session.add(entry)
 		db.session.commit()
 

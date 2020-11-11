@@ -54,24 +54,6 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/mediumtype/create')
-def mediumtype_create():
-
-	medium = ['Material', 'Energy']
-
-	for i in medium:
-
-		entry = MediumType(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = MediumType.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('medium added')
 
 @app.route('/materialtype/create')
 def materialtype_create():
@@ -80,7 +62,7 @@ def materialtype_create():
 
 	for i in medium:
 
-		entry = MaterialType(name=i)
+		entry = MaterialType(name=i, medium_type=1)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -100,7 +82,7 @@ def energytype_create():
 
 	for i in medium:
 
-		entry = EnergyType(name=i)
+		entry = EnergyType(name=i, medium_type=2)
 		db.session.add(entry)
 		db.session.commit()
 
