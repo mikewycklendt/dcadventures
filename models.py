@@ -703,6 +703,58 @@ class Extra(db.Model):
 			'inherit': self.inherit
 		}
 
+class Descriptor(db.Model):
+	__tablename__ = 'descriptors'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	origin = db.Column(db.Integer, db.ForeignKey('origin.id'))
+	source = db.Column(db.Integer, db.ForeignKey('source.id'))
+	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
+	result = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'origin': self.origin,
+			'source': self.source,
+			'medium': self.medium,
+			'result': self.result
+		}
+
+class Origin(db.Model):
+	__tablename__ = 'origin'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
+class Source(db.Model):
+	__tablename__ = 'source'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
+class Medium(db.Model):
+	__tablename__ = 'medium'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class Check(db.Model):
 	__tablename__ = 'checks'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
