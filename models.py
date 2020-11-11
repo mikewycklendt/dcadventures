@@ -744,8 +744,8 @@ class Source(db.Model):
 			'name': self.name
 		}
 
-class Medium(db.Model):
-	__tablename__ = 'medium'
+class MediumType(db.Model):
+	__tablename__ = 'medium_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
@@ -753,6 +753,19 @@ class Medium(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name
+		}
+
+class Medium(db.Model):
+	__tablename__ = 'medium'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'medium_type': self.medium_type
 		}
 
 class Check(db.Model):
