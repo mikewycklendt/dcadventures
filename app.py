@@ -76,7 +76,7 @@ def origins_create():
 @app.route('/sources/create')
 def sources_create():
 
-	sources = ['Biological', 'Cosmic', 'Divine', 'Extradimensional', 'Magical', 'Moral', 'Psionic', 'Technological', 'Other']
+	sources = ['Biological', 'Cosmic', 'Divine', 'Extradimensional', 'Magical', 'Moral', 'Psionic', 'Technological']
 
 	for i in sources:
 
