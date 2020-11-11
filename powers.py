@@ -245,7 +245,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											sense_distance=sense_distance, against=against, traits=traits, object_damage=object_damage, darkness=darkness, solidity=solidity, partners=partners, visibility=visibility,
 											moveable=moveable, complexity=complexity, determined=determined, deg_mod_type=deg_mod_type, value_type=value_type, die=die, use_type=use_type, outcome=outcome,
 											circ_type=circ_type, ranges=ranges, limited=limited, emotions=emotions, temp_type=temp_type, extremity=extremity, nature=nature, grounds=grounds, directions=directions,
-											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors. origins=origins, sources=sources, mediums=mediums, medium=medium, 
+											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors, origins=origins, sources=sources, mediums=mediums, medium=medium, 
 											materials=materials, energies=energies)
 
 @powers.route('/power/trait/select', methods=['POST'])
