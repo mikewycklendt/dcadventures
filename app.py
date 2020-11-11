@@ -54,44 +54,6 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/origins/create')
-def origins_create():
-
-	origins = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training', 'Other']
-
-	for i in origins:
-
-		entry = Origin(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Origin.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('origins added')
-
-@app.route('/sources/create')
-def sources_create():
-
-	sources = ['Biological', 'Cosmic', 'Divine', 'Extradimensional', 'Magical', 'Moral', 'Psionic', 'Technological']
-
-	for i in sources:
-
-		entry = Source(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Source.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('sources added')
-
 @app.route('/mediumtype/create')
 def mediumtype_create():
 
@@ -99,11 +61,11 @@ def mediumtype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = MediumType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = MediumType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -118,11 +80,11 @@ def materialtype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = MaterialType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = MaterialType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -138,11 +100,11 @@ def energytype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = EnergyType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = EnergyType.query.all()
 
 	for result in results:
 		print (result.id)

@@ -5,11 +5,11 @@ def mediumtype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = MediumType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = MediumType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -24,11 +24,11 @@ def materialtype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = MaterialType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = MaterialType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -44,11 +44,11 @@ def energytype_create():
 
 	for i in medium:
 
-		entry = Medium(name=i)
+		entry = EnergyType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Medium.query.all()
+	results = EnergyType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -98,8 +98,6 @@ def medium_create():
 		entry = Medium(name=i, medium_type=1, energy_type=1)
 		db.session.add(entry)
 		db.session.commit()
-
-	
 
 	results = Medium.query.all()
 
