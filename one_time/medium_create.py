@@ -17,38 +17,26 @@ def mediumtype_create():
 
 	return ('medium added')
 
-@app.route('/materialtype/create')
-def materialtype_create():
+@app.route('/mediumsubtype/create')
+def mediumsubtypetype_create():
 
-	medium = ['Gas', 'Liquid', 'Earth', 'Biological']
+	materials = ['Gas', 'Liquid', 'Earth', 'Biological']
 
-	for i in medium:
+	for i in materials:
 
-		entry = MaterialType(name=i, medium_type=1)
+		entry = MediumSubType(name=i, medium_type=1)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = MaterialType.query.all()
+	energies = ['Electromagnetic', 'Gravity', 'Kinetic', 'Divine', 'Magical', 'Psionic', 'Cosmic']
 
-	for result in results:
-		print (result.id)
-		print (result.name)
+	for i in energies:
 
-	return ('medium added')
-
-
-@app.route('/energytype/create')
-def energytype_create():
-
-	medium = ['Electromagnetic', 'Gravity', 'Kinetic', 'Divine', 'Magical', 'Psionic', 'Cosmic']
-
-	for i in medium:
-
-		entry = EnergyType(name=i, medium_type=2)
+		entry = MediumSubType(name=i, medium_type=2)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = EnergyType.query.all()
+	results = MediumSubType.query.all()
 
 	for result in results:
 		print (result.id)
@@ -69,25 +57,25 @@ def medium_create():
 
 	for i in medium_gas:
 
-		entry = Medium(name=i, medium_type=1, material_type=1)
+		entry = Medium(name=i, medium_type=1, medium_subtype=1)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_liquid:
 
-		entry = Medium(name=i, medium_type=1, material_type=2)
+		entry = Medium(name=i, medium_type=1, medium_subtype=2)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_earth:
 
-		entry = Medium(name=i, medium_type=1, material_type=3)
+		entry = Medium(name=i, medium_type=1, medium_subtype=3)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_biological:
 
-		entry = Medium(name=i, medium_type=1, material_type=4)
+		entry = Medium(name=i, medium_type=1, medium_subtype=4)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -95,7 +83,7 @@ def medium_create():
 
 	for i in medium_electromagnetic:
 
-		entry = Medium(name=i, medium_type=1, energy_type=1)
+		entry = Medium(name=i, medium_type=2, medium_subtype=5)
 		db.session.add(entry)
 		db.session.commit()
 

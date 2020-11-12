@@ -1,7 +1,7 @@
 @app.route('/origins/create')
 def origins_create():
 
-	origins = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training', 'Other']
+	origins = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training']
 
 	for i in origins:
 
