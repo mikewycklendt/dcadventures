@@ -797,6 +797,21 @@ class MediumType(db.Model):
 			'description': self.description
 		}
 
+class MediumSubType(db.Model):
+	__tablename__ = 'medium_subtype'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'medium_type': self.medium_type,
+			'description': self.description
+		}
+
 class Medium(db.Model):
 	__tablename__ = 'medium'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
