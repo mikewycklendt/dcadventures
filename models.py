@@ -714,6 +714,7 @@ class PowerDes(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	result = db.Column(db.String())
 	descriptor = db.Column(db.Boolean)
 
@@ -727,8 +728,7 @@ class PowerDes(db.Model):
 			'source': self.source,
 			'medium': self.medium,
 			'medium_type': self.medium_type,
-			'material_type': self.material_type,
-			'energy_type': self.energy_type,
+			'medium_subtype': self.medium_subtype,
 			'result': self.result,
 			'descriptor': self.descriptor
 		}
@@ -741,6 +741,7 @@ class Descriptor(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	result = db.Column(db.String())
 	description = db.Column(db.String())
 
@@ -752,8 +753,7 @@ class Descriptor(db.Model):
 			'source': self.source,
 			'medium': self.medium,
 			'medium_type': self.medium_type,
-			'material_type': self.material_type,
-			'energy_type': self.energy_type,
+			'medium_subtype': self.medium_subtype,
 			'result': self.result,
 			'description': self.description
 		}
@@ -817,6 +817,7 @@ class Medium(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	description = db.Column(db.String())
 
 	def format(self):
@@ -824,8 +825,7 @@ class Medium(db.Model):
 			'id': self.id,
 			'name': self.name,
 			'medium_type': self.medium_type,
-			'material_type': self.material_type,
-			'energy_type': self.energy_type,
+			'medium_subtype': self.medium_subtype,
 			'description': self.description
 		}
 
