@@ -704,7 +704,6 @@ class Extra(db.Model):
 			'inherit': self.inherit
 		}
 
-
 class PowerDes(db.Model):
 	__tablename__ = 'power_descriptors'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -715,7 +714,8 @@ class PowerDes(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
+	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
+	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	result = db.Column(db.String())
 	descriptor = db.Column(db.Boolean)
 
@@ -729,7 +729,8 @@ class PowerDes(db.Model):
 			'source': self.source,
 			'medium': self.medium,
 			'medium_type': self.medium_type,
-			'medium_subtype': self.medium_subtype,
+			'material_type': self.material_type,
+			'energy_type': self.energy_type,
 			'result': self.result,
 			'descriptor': self.descriptor
 		}
@@ -742,7 +743,8 @@ class Descriptor(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
+	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
+	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	result = db.Column(db.String())
 	description = db.Column(db.String())
 
@@ -754,7 +756,8 @@ class Descriptor(db.Model):
 			'source': self.source,
 			'medium': self.medium,
 			'medium_type': self.medium_type,
-			'medium_subtype': self.medium_subtype,
+			'material_type': self.material_type,
+			'energy_type': self.energy_type,
 			'result': self.result,
 			'description': self.description
 		}
@@ -798,8 +801,24 @@ class MediumType(db.Model):
 			'description': self.description
 		}
 
-class MediumSubType(db.Model):
-	__tablename__ = 'medium_subtype'
+class MaterialType(db.Model):
+	__tablename__ = 'material_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'medium_type': self.medium_type,
+			'description': self.description
+		}
+
+
+class EnergyType(db.Model):
+	__tablename__ = 'energy_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
@@ -818,7 +837,8 @@ class Medium(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
+	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
+	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	description = db.Column(db.String())
 
 	def format(self):
@@ -826,10 +846,10 @@ class Medium(db.Model):
 			'id': self.id,
 			'name': self.name,
 			'medium_type': self.medium_type,
-			'medium_subtype': self.medium_subtype,
+			'material_type': self.material_type,
+			'energy_type': self.energy_type,
 			'description': self.description
 		}
-
 
 class Check(db.Model):
 	__tablename__ = 'checks'
