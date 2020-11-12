@@ -353,9 +353,6 @@ def power_medium_select():
 	medium_type = request.get_json()['medium_type']
 	type_id = request.get_json()['type_id']
 
-	mediums = db.session.query(Medium).filter(Medium. == name).first()
-
-		body['options'] = 
 	else:
 		body['success'] = False
 		body['options'] = 'no match'
