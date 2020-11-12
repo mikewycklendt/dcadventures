@@ -714,8 +714,6 @@ class PowerDes(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
-	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	result = db.Column(db.String())
 	descriptor = db.Column(db.Boolean)
 
@@ -743,8 +741,6 @@ class Descriptor(db.Model):
 	source = db.Column(db.Integer, db.ForeignKey('source.id'))
 	medium = db.Column(db.Integer, db.ForeignKey('medium.id'))
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
-	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	result = db.Column(db.String())
 	description = db.Column(db.String())
 
@@ -837,8 +833,6 @@ class Medium(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
-	material_type = db.Column(db.Integer, db.ForeignKey('material_type.id'))
-	energy_type = db.Column(db.Integer, db.ForeignKey('energy_type.id'))
 	description = db.Column(db.String())
 
 	def format(self):
