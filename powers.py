@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -230,10 +230,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	medium = Medium.query.all()
 
 	mediums = MediumType.query.all()
-
-	materials = db.session.query(MediumSubType).filter_by(medium_type=1)
-
-	energies = db.session.query(MediumSubType).filter_by(medium_type=2)
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
