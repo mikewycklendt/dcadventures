@@ -10,7 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MaterialType, EnergyType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import setup_db, Ability, Power, Extra, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -231,9 +231,11 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	mediums = MediumType.query.all()
 
-	materials = MaterialType.query.all()
+	materials = db.session.query(MediumSubType).filter_by(medium_type=1)
 
-	energies = EnergyType.query.all()
+	energies = db.session.query(MediumSubType).filter_by(medium_type=2)
+
+	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
@@ -245,7 +247,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											moveable=moveable, complexity=complexity, determined=determined, deg_mod_type=deg_mod_type, value_type=value_type, die=die, use_type=use_type, outcome=outcome,
 											circ_type=circ_type, ranges=ranges, limited=limited, emotions=emotions, temp_type=temp_type, extremity=extremity, nature=nature, grounds=grounds, directions=directions,
 											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors, origins=origins, sources=sources, mediums=mediums, medium=medium, 
-											materials=materials, energies=energies)
+											materials=materials, energies=energies, descriptor_type=descriptor_type)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
@@ -343,6 +345,23 @@ def power_descriptor_select():
 	print(body)
 	return jsonify(body)
 
+@powers.route('/power/medium/select', methods=['POST'])
+def power_medium_select():
+	body = {}
+	body['success'] = True
+
+	medium_type = request.get_json()['medium_type']
+	type_id = request.get_json()['type_id']
+
+	mediums = db.session.query(Medium).filter(Medium. == name).first()
+
+		body['options'] = 
+	else:
+		body['success'] = False
+		body['options'] = 'no match'
+
+	print(body)
+	return jsonify(body)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

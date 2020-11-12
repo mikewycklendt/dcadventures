@@ -1,69 +1,225 @@
-<div id="damage-header">
+<div id="descriptor-header">
 
-	<div id="damage-title">
-		<input type="checkbox" id="damage_check" class="regular-checkbox big-checkbox" onclick="damage_check()"> Damage Effect:
-	</div>
-	
-	<div id="damage-base">
-		<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+	<div id="descriptor-title">
+		Descriptors:
 	</div>
 
 </div>
 
-<div id="damage-entry">
-	<div id="damage-row1">
-
-		<div></div>
-
+<div id="descriptor-entry">
+	<div id="descriptor-row1">
 		<div>
-			Resisted By:
+			Origin:
 		</div>
 
 		<div>
-			Modifier
-		</div>
-
-		<div></div>
-		
-		<div>
-			<select class="select-sml" id="dam_trait_type" name="dam_trait_type" onchange="dam_trait_type()">
-			{% for t in traits %}
-				<option value="{{t.type}}">{{t.name}}</option>
-			{% endfor %}
-			</select>
+			Source:
 		</div>
 
 		<div>
-			<select class="select-sml" id="dam_trait" name="dam_trait">
-
-			</select>
+			Medium Type:
 		</div>
 
 		<div>
-			<select class="select-sml" id="dam_mod" name="dam_mod">
-				<option value="">Modifier</option>
-				{% for i in negatives %}
-				<option value={{i}}>{{i}}</option>
+			<div id="descriptor-energy-title">
+				Energy Type:
+			</div>
+
+			<div id="descriptor-material-title">
+				Material Type:
+			</div>
+		</div>
+
+		<div id="descriptor-medium-title">
+			Medium:	
+		</div>
+
+		<div id="descriptor-field-title">
+			Descriptor:
+		</div>
+
+		<div>
+			<select class="entry-select" id="descriptor_origin" name="descriptor_origin" onchange="descriptor()">
+				<option value="">Origin</option>
+				<option value="new">New</option>
+				{% for o in origins %}
+					<option value={{o.id}}>{{o.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-		
+
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
+			<select class="entry-select" id="descriptor_source" name="descriptor_source" onchange="descriptor()">
+				<option value="">Source</option>
+				<option value="new">New</option>
+				{% for s in sources %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="descriptor_medium_type" name="descriptor_medium_type" onchange="descriptor()">
+				<option value="">Medium Type</option>
+				{% for m in mediums %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="descriptor-material">
+				<select class="entry-select" id="descriptor_material_type" name="descriptor_material_type" onchange="descriptor()">
+					<option value="">Material Type</option>
+					<option value="new">New</option>
+					<option value="all">All Materials</option>
+					{% for m in materials %}
+						<option value={{m.id}}>{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="descriptor-energy">
+				<select class="entry-select" id="descriptor_energy_type" name="descriptor_energy_type" onchange="descriptor()">
+					<option value="">Energy Type</option>
+					<option value="all">All Energies</option>
+					{% for e in energies %}
+						<option value={{e.id}>{{e.name}}</option>}
+					{% endfor %}
+				</select>
+			</div>
+		
+		</div>
+
+		<div id="descriptor-medium">
+			<select class="entry-select" id="descriptor_medium" name="descriptor_medium" onchange="descriptor()">
+				<option value="">Medium</option>
+				<option value="new">New</option>
+			</select>
+		</div>
+
+		<div id="descriptor-field">
+			<select class="header-select" id="descriptor_field" name="descriptor_field">
+
+			</select>
+		</div>
+
+	</div>
+
+	<div id="descriptor-row2">
+		<div id="descriptor-origin-field">
+			<input type="text" id="descriptor_origin_name" name="descriptor_origin_name">
+		</div>
+
+		
+		<div id="descriptor-source-field">
+			<input type="text" id="descriptor_source_name" name="descriptor_source_name">
+		</div>
+
+		<div>
+
+		</div>
+
+		
+		<div id="descriptor-medium-type-field">
+			<input type="text" id="descriptor_medium_type_name" name="descriptor_medium_type_name">
+		</div>
+
+		
+		<div id="descriptor-medium-field">
+			<input type="text" id="descriptor_medium_name" name="descriptor_medium_name">
+		</div>
+
+		
+		<div id="descriptor-descriptor-new">
+			<input type="text" id="descriptor_name" name="descriptor_name">
+		</div>
+
+	</div>
+
+	<div id="descriptor-row3">
+		<div id="descriptor-origin-des">
+			<div>
+				Origin Description:
+			</div>
+
+			<div>
+				<textarea id="descriptor_origin_des" name="descriptor_origin_des"></textarea>
+			</div>
+		</div>
+
+		<div id="descriptor-source-des">
+			<div>
+				Source Description:
+			</div>
+
+			<div>
+				<textarea id="descriptor_source_des" name="descriptor_source_des"></textarea>
+			</div>
+		</div>
+		
+		<div id="descriptor-medium-type-des">
+			<div id="descriptor-medium-type-des-title">
+			</div>
+
+			<div>
+				<textarea id="descriptor_medium_type_des" name="descriptor_medium_type_des"></textarea>
+			</div>
+		</div>
+
+		<div id="descriptor-medium-des">
+			<div>
+				Medium Description:
+			</div>
+
+			<div>
+				<textarea id="descriptor_medium_des" name="descriptor_medium_des"></textarea>
+			</div>
+		</div>
+		<div id="descriptor-descriptor-result">
+			<div>
+				Descriptor Result:
+			</div>
+
+			<div>
+				<textarea id="descriptor_result" name="descriptor_result"></textarea>
 			</div>
 		</div>
 
 	</div>
 
+	<div id="`descriptor-row4">
+		<div></div>
 
+		<div></div>
 
+		<div></div>
+
+		<div></div>
+
+		<div>
+			<select class="header-select" id="descriptor_descriptor" name="descriptor_descriptor">
+				{% for d in descriptor_type %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-head" id="descriptor_submit" name="descriptor_submit" onclick="descriptor_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+	
+	/*
+	origin source mediumtype entypemattype mat  descriptor
+	new		new   				new		   new	 new
+										 foraffect SUBMIT             		
+	*/
 </div>
 
-<div id="damage-table">
+<div id="descriptor-table">
 
 	<div class="power-table-title">
 		Target:
@@ -89,4 +245,4 @@
 	
 </div>
 
-<div id="damage-err"></div>
+<div id="descriptor-err"></div>

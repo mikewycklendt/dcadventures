@@ -15,6 +15,7 @@
 @import "power_create/defense.css";
 @import "power_create/character.css";
 @import "power_create/environment.css";
+@import "power_create/descriptors.css";
 
 
 .power-container {
