@@ -221,7 +221,7 @@ def complexity():
 	title = 'Complexity'
 	
 	size = 'h1'
-``
+
 	table = Complex.query.all()
 
 	return render_template('table.html', table=table, title=title, size=size)
