@@ -171,7 +171,7 @@ function sense_time_set() {
 function sense_time() {
 	const check = document.getElementById("sense_time");
 	const div = document.getElementById("sense-time");
-	const sen = document.getElementById("power-sense");
+	const sen = document.getElementById("sense-entry");
 	
 	if (check.checked == true) {
 		div.style.display = "grid";
@@ -185,7 +185,7 @@ function sense_time() {
 function sense_ranged() {
 	const check = document.getElementById("sense_ranged");
 	const div = document.getElementById("sense-distance");
-	const sen = document.getElementById("power-sense");
+	const sen = document.getElementById("sense-entry");
 
 	if (check.checked == true) {
 		div.style.display = "grid";

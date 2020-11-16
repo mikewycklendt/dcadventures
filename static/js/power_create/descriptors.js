@@ -317,14 +317,8 @@ function descriptor_effect() {
 
 }
 
-let rows = 0;
-let des_rows = 0;
-let cha_count = 3;
-let cha_rows = 0;
-let rows_effect = 0;
-let des_rows_effect = 0;
-let cha_count_effect = 3;
-let cha_rows_effect = 0;
+
+let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
 
 
 function descriptor_post() {
@@ -417,15 +411,15 @@ function descriptor_post() {
 							const place_div = 'descriptors';
 							const btn_div = 'des-btn';
 							const btn_del = 'des-del';	
-							des_rows = des_rows + 1
+							des_counts.des_rows = des_counts.des_rows + 1
 						} else {
 							const place_div = 'descriptor-table';
 							const btn_div = 'cha-btn';
 							const btn_del = 'cha-del';
-							cha_count = cha_count + 1
-							if (cha_count == 4) {
-								cha_rows = cha_rows + 1;
-								cha_count = 0;
+							des_counts.cha_count = des_counts.cha_count + 1
+							if (des_counts.cha_count == 4) {
+								des_counts.cha_rows = des_counts.cha_rows + 1;
+								des_counts.cha_count = 0;
 							}
 						}
 					} else if (jsonResponse.type == 'effect') {
@@ -434,15 +428,15 @@ function descriptor_post() {
 							const place_div = 'descriptors-interact';
 							const btn_div = 'des-btn-effect';
 							const btn_del = 'des-del-effect';
-							des_rows_effect = des_rows_effect + 1
+							des_counts.des_rows_effect = des_counts.des_rows_effect + 1
 						} else {
 							const place_div = 'descriptor-interact-table';
 							const btn_div = 'cha-btn-effect';
 							const btn_del = 'cha-del-effect';
-							cha_count_effect = cha_count_effect + 1
-							if (cha_count_effect == 4) {
-								cha_rows_effect = cha_rows_effect + 1;
-								cha_count_effect = 0;
+							des_counts.cha_count_effect = des_counts.cha_count_effect + 1
+							if (des_counts.cha_count_effect == 4) {
+								des_counts.cha_rows_effect = des_counts.cha_rows_effect + 1;
+								des_counts.cha_count_effect = 0;
 							}}
 					}
 
@@ -473,12 +467,12 @@ function descriptor_post() {
 
 					table.appendChild(btn);
 
-					if ((des_rows > rows) || (cha_rows > rows)) {
+					if ((des_counts.des_rows > des_counts.rows) || (des_counts.cha_rows > des_counts.rows)) {
 						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
-						rows = rows + 1;
-					} else if ((des_rows_effect > rows_effect) || (cha_rows_effect > rows_effect)) {
+						des_counts.rows = des_counts.rows + 1;
+					} else if ((des_counts.des_rows_effect > des_counts.rows_effect) || (des_counts.cha_rows_effect > des_counts.rows_effect)) {
 						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
-						rows_effect = rows_effect + 1;
+						des_counts.rows_effect = des_counts.rows_effect + 1;
 					}
 					
 					descriptor_delete()
@@ -549,12 +543,12 @@ function power_cha_delete() {
 				div.style.opacity = '0%';
 				setTimeout(function(){div.style.display = 'none'}, 400)
 
-				cha_count = cha_count - 1
-				if (cha_count < 0) {
-					cha_rows = cha_rows - 1
-					cha_count = 3
+				des_counts.cha_count = des_counts.cha_count - 1
+				if (des_counts.cha_count < 0) {
+					des_counts.cha_rows = des_counts.cha_rows - 1
+					des_counts.cha_count = 3
 				}
-				if ((cha_rows < rows) && (des_rows < rows)) {
+				if ((des_counts.cha_rows < des_counts.rows) && (des_counts.des_rows < des_counts.rows)) {
 					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
 				}
 			})
@@ -584,8 +578,8 @@ function power_des_delete() {
 				div.style.opacity = '0%';
 				setTimeout(function(){div.style.display = 'none'}, 400)
 
-				des_rows = des_rows - 1
-				if ((cha_rows < rows) && (des_rows < rows)) {
+				des_counts.des_rows = des_counts.des_rows - 1
+				if ((des_counts.cha_rows < des_counts.rows) && (des_counts.des_rows < des_counts.rows)) {
 					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
 				}
 			})
@@ -614,8 +608,8 @@ function power_des_effect_delete() {
 				div.style.opacity = '0%';
 				setTimeout(function(){div.style.display = 'none'}, 400)
 
-				des_rows_effect = des_rows_effect - 1
-				if ((cha_rows_effect < rows_effect) && (des_rows_effect < rows_effect)) {
+				des_counts.des_rows_effect = des_counts.des_rows_effect - 1
+				if ((des_counts.cha_rows_effect < des_counts.rows_effect) && (des_counts.des_rows_effect < des_counts.rows_effect)) {
 					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
 				}
 			})
@@ -644,12 +638,12 @@ function power_cha_effect_delete() {
 				div.style.opacity = '0%';
 				setTimeout(function(){div.style.display = 'none'}, 400)
 
-				cha_count_effect = cha_count_effect - 1
-				if (cha_count_effect < 0) {
-					cha_rows_effect = cha_rows_effect - 1
-					cha_count_effect = 3
+				des_counts.cha_count_effect = des_counts.cha_count_effect - 1
+				if (des_counts.cha_count_effect < 0) {
+					des_counts.cha_rows_effect = des_counts.cha_rows_effect - 1
+					des_counts.cha_count_effect = 3
 				}
-				if ((cha_rows_effect < rows_effect) && (des_rows_effect < rows_effect)) {
+				if ((des_counts.cha_rows_effect < des_counts.rows_effect) && (des_counts.des_rows_effect < des_counts.rows_effect)) {
 					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
 				}
 			})
