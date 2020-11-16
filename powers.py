@@ -843,7 +843,7 @@ def post_descriptor():
 		if one_medium_name != '':
 			names.append(one_medium_name)
 			count = count + 1
-		if count > 1
+		if count > 1:
 			name = names[0]
 			i = 1
 			while i < len(names):
