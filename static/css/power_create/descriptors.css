@@ -17,7 +17,6 @@
 }
 
 #descriptor-entry {
-	display: none;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	color: #245681;
@@ -33,9 +32,6 @@
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	gap: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 
