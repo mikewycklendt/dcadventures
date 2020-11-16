@@ -891,7 +891,7 @@ def post_descriptor():
 		finally:
 			db.session.close()
 
-		if descriptor_field == 'new'
+		if descriptor_field == 'new':
 			try:
 				descriptor_new = db.sesssion.query(Descriptor).filter(Descriptor.id == descriptor_id).one()
 				descriptor_new.origin = origin_id
