@@ -5,11 +5,21 @@
 	</div>
 
 	<div id="reverse-base">
-		<select class="header-select" id="reverse_target" name="reverse_target" onchange="reverse_base()">
-			{% for target in targets %}
-				<option value="{{target.type}}">{{target.name}}</option>
-			{% endfor %}
-		</select> 
+		<div>
+			<select class="header-select" id="reverse_target" name="reverse_target" onchange="reverse_base()">
+				{% for target in targets %}
+					<option value="{{target.type}}">{{target.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="extra-select" id="reverse_extra" name="reverse_extra" onchange="reverse_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+
 	</div>
 
 </div>

@@ -1,0 +1,142 @@
+<div id="resistance-header">
+
+	<div id="resistance-title">
+		<input type="checkbox" id="resistance_check" class="regular-checkbox big-checkbox" onclick="resistance_check()"> Resistance Modifier:
+	</div>
+	
+	<div id="resistance-base-form" >
+		<div>
+			<select class="header-select" id="resistance_target" name="resistance_target" onchange="resistance_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="extra-select" id="resistance_extra" name="resistance_extra" onchange="resistance_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+	
+	</div>
+
+</div>
+
+<div id="resistance-entry">
+	<div id="resistance-row1">
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			Rounds
+		</div>
+
+		<div>
+			Circumstance:
+		</div>
+
+		<div></div>
+
+		<div>
+			<select class="entry-select" id="resistance_mod" name="resistance_mod">
+				<option value="">Modifier</option>
+				<option value="effect">Effect Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{I}}>{{I}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="resistance_rounds" name="resistance_rounds">
+				<option value="">Lasts</option>
+				<option value=0>Turn</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="resistance_circ" name="resistance_circ">
+		</div>
+
+		<div>
+			<div class="btn-entry" id="resistance_submit" name="resistance_submit" onclick="resistance_submit()">
+				 Add
+			</div>
+		</div>
+
+	</div>
+
+	<div id="resistance-row2">
+		<div>
+			<select class="select-sml" id="resistance_check_type" name="resistance_check_type" onchange="resistance_check_type()">
+				{% for r in resistance_type %}
+					<option value="{{r.type}}">{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="resistance-trait">
+				<div>
+					<select class="select-sml" id="resistance_trait_type" name="resistance_trait_type" onchange="resistance_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="resistance_trait" name="resistance_trait">
+
+					</select>
+				</div>
+			</div>
+
+			<div id="resistance-descriptor">
+				<select class="descriptor-sml" id="resistance_descriptor" name="resistance_descriptor">
+					<option value="">Use above form for descriptors</option>
+				</select>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div id="resistance-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="resistance-err"></div>

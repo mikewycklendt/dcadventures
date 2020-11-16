@@ -1,7 +1,8 @@
 function damage_check() {
 	const check = document.getElementById("damage_check");
 	const title = document.getElementById("damage-title");
-	const base = document.getElementById('damage-base')
+	const base = document.getElementById('damage-base');
+	const entry = document.getElementById("damage-entry");
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,13 +12,16 @@ function damage_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
 function damage_base() {
-	const field = document.getElementById('damage_extra')
+	const field = document.getElementById('damage_extra');
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("damage-entry")
+	const entry = document.getElementById("damage-entry");
 
 	if (value != '') {
 		entry.style.display = "grid";
@@ -27,6 +31,7 @@ function damage_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

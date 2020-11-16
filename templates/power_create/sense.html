@@ -1,8 +1,16 @@
 
 <div id="sense-header">
 
-	<div class="power-title">
-		Sense Effect:
+	<div class="sense-title">
+		<input type="checkbox" id="levels_check" class="regular-checkbox big-checkbox" onclick="levels_check()"> Sense Effect:
+	</div>
+
+	
+	<div id="sense-base">
+		<select class="extra-select" id="sense_extra" name="sense_extra" onchange="sense_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
 	</div>
 
 </div>
@@ -43,68 +51,12 @@
 		</div>
 
 		<div>
-			<div id="sense-visual">
-				<select class="select-sml" id="sense_visual" name="sense_visual">
-					<option value=>Any</option>
-					{% for s in visual %}
-					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
+			
+			<div>
+				<select class="select-sml" id="sense_subsense" name="sense_subsense">
+				
 				</select>
 			</div>
-
-			<div id="sense-auditory">
-				<select class="select-sml" id="sense_auditory" name="sense_auditory">
-					<option value=>Any</option>
-					{% for s in auditory %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-olfactory">
-				<select class="select-sml" id="sense_olfactory" name="sense_olfactory">
-					<option value=>Any</option>
-					{% for s in olfactory %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-tactile">
-				<select class="select-sml" id="sense_tactile" name="sense_tactile">
-					<option value=>Any</option>
-					{% for s in olfactory %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-radio">
-				<select class="select-sml" id="sense_radio" name="sense_radio">
-					<option value=>Any</option>
-					{% for s in radio %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-mental">
-				<select class="select-sml" id="sense_mental" name="sense_mental">
-					<option value=>Any</option>
-					{% for s in mental %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-special">
-				<select class="select-sml" id="sense_special" name="sense_special">
-					<option value=>Any</option>
-					{% for s in mental %}
-					<option value={{s.id}}>{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>			
 
 		</div>
 
@@ -157,7 +109,7 @@
 
 			<div id="sense-height">
 				<div>
-					<select class="select-sml" id="sense_height_trait" name="sense_height_trait" onchange="sense_height_trait()">
+					<select class="select-sml" id="sense_height_trait_type" name="sense_height_trait_type" onchange="sense_height_trait()">
 						{% for trait in heightened %}
 							<option value="{{trait.type}}">{{trait.name}}</option>
 						{% endfor %}
@@ -166,42 +118,9 @@
 
 				<div id="sense-height-trait">
 
-					<div id="sense-height-skill">
-						<select class="select-sml" id="sense_height_skill" name="sense_height_skill">
-							<option value="">Skill</option>
-							{% for t in skills %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-height-ability">
-						<select class="select-sml" id="sense_height_ability" name="sense_height_ability">
-							<option value="">Abilities</option>
-							{% for t in abilities %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-						
-					</div>
-
-					<div id="sense-height-defense">
-						<select class="select-sml" id="sense_height_defense" name="sense_height_defense">
-							<option value="">Defense</option>
-							{% for t in defenses %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-height-bonus">		
-						<select class="select-sml" id="sense_height_bonus" name="sense_height_bonus">
-							<option value="">Enhanced Skill</option>
-							{% for t in bonuses %}
-								<option value={{t}}>{{t}}</option>
-							{% endfor %}
-						</select>
-					</div>
+					<select class="select-sml" id="sense_height_trait" name="sense_height_trait">
+						<option value=""></option>
+					</select>
 
 				</div>
 
@@ -223,7 +142,7 @@
 
 			<div id="sense-resist">
 				<div>
-					<select class="select-sml" id="sense_resist_trait" name="sense_resist_trait" onchange="sense_resist_trait()">
+					<select class="select-sml" id="sense_resist_trait_type" name="sense_resist_trait_type" onchange="sense_resist_trait()">
 						{% for trait in resistant %}
 							<option value="{{trait.type}}">{{trait.name}}</option>
 						{% endfor %}
@@ -231,51 +150,9 @@
 				</div>
 
 				<div id="sense-resist-trait">
-					<div id="sense-resist-skill">
-						<select class="select-sml" id="sense_resist_skill" name="sense_resist_skill">
-							<option value="">Skill</option>
-							{% for t in skills %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-resist-ability">
-						<select class="select-sml" id="sense_resist_ability" name="sense_resist_ability">
-							<option value="">Abilities</option>
-							{% for t in abilities %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-resist-defense">
-						<select class="select-sml" id="sense_resist_defense" name="sense_resist_defense">
-							<option value="">Defense</option>
-							{% for t in defenses %}
-								<option value={{t.id}}>{{t.name}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-resist-bonus">
-						<select class="select-sml" id="sense_resist_bonus" name="sense_resist_bonus">
-							<option value="">Enhanced Skill</option>
-							{% for t in bonuses %}
-								<option value="{{t}}">{{t}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
-					<div id="sense-resist-power">
-						<select class="select-sml" id="sense_resist_power" name="sense_resist_power">
-							<option value="">Power</option>
-							{% for t in powers %}
-								<option value="{{t}}">{{t}}</option>
-							{% endfor %}
-						</select>
-					</div>
-
+					<select class="select-sml" id="sense_resist_trait" name="sense_resist_trait">
+						<option value=""></option>
+					</select>
 				</div>
 				
 				<div>

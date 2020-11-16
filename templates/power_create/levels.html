@@ -4,9 +4,16 @@
 		<input type="checkbox" id="levels_check" class="regular-checkbox big-checkbox" onclick="levels_check()">  Levels Table:
 	</div>
 
-	<div id="levels-base-form" style="transition: all .3s ease-out;">
-		<div id="level-type" style="transition: all .4s ease-out;">
+	<div id="levels-base-form">
+		<div>
 			<input class="entry-text" type="text" id="level_type" name="level_type" placeholder="Type of level" onblur="levels_base()">
+		</div>
+
+		<div>
+			<select class="extra-select" id="levels_extra" name="levels_extra" onchange="levels_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
 		</div>
 	</div>
 </div>

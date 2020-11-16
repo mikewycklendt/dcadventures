@@ -1,15 +1,20 @@
-
-
-#levels-header {
+#resistance-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 45% 55%;
+	grid-template-columns: 60% 40%;
 	grid-template-rows: auto;
 }
 
-#levels-title {
+#resistance-base {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#resistance-title {
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
@@ -18,21 +23,11 @@
 	transition: all .2s linear;
 }
 
-#levels-base-form {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	width: 100%;
-	opacity: 0%;
-	transition: all .4s linear;
-}
-
-#level-type {
-	height: 1vw; 
-	font-size: 95%;
-}
-
-#levels-entry {
-	display: grid;
+#resistance-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
 	width: 88%;
 	margin-top: 0px;
 	margin-left: 5%;
@@ -42,40 +37,61 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 22% 63% 15%;
+	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	gap: 4px;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#levels-entry-title {
-	border-bottom: 1px solid lightblue;
-	width: 70%;
-	font-family: 'Monda', Verdana;
-	font-size: 100%;
-	color: #245681;
-	margin-bottom: 4px;
+#resistance-entry input[type="text"] {
+	height: 1.3vw;
+	padding: .2vw;
 }
+/*
+modifier rounds description button
+checktype checktrait applies [appliesfield]
 
-#levels-field {
-	width: 85%;
-	height: auto;
-	padding: 4px;
-}
 
-#levels-add {
-	width: 100%;
-	padding: 3px;
+appliesfield
+traittypr trait
+descriptor
+*/
 
-}
-
-#levels-table {
+#resistance-row1 {
 	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 15% 55% 15%;
+	grid-auto-rows: auto;
+}
+
+#resistance-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 40% 40%;
+	grid-auto-rows: auto;
+}
+
+#resistance-trait {
+	display: none;
+	grid-template-columns: 50% 50%;
+	opacity: 0%;;
+}
+
+#resistance-descriptor {
+	display: none;
+	opacity: 0%;;
+}
+
+#resistance-table {
+	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 7% 23% 65% 5%;
+	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
@@ -83,16 +99,7 @@
 	transition: all .4s ease-out;
 }
 
-#levels-table-title {
-	border-bottom: 1px solid lightblue;
-	width: 95%;
-	font-family: 'Monda', Verdana;
-	font-size: 100%;
-	color: #245681;
-	margin-bottom: 4px;
-}
-
-.levels-table-dc {
+.resistance-table-ext {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -104,7 +111,7 @@
 	transition: all .4s ease-out;
 }
 
-.levels-table-level {
+.resistance-table-del {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -116,40 +123,7 @@
 	transition: all .4s ease-out;
 }
 
-.levels-table-effect {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.levels-table-type {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-}
-
-.levels-table-delete {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#levels-err {
+#resistance-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -162,7 +136,7 @@
 	transition: all .4s ease-out;
 }
 
-.levels-err-line {
+.resistance-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -176,7 +150,7 @@
 	transition: all .4s ease-out;
 }
 
-.levels-err-line::before {
+.resistance-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;

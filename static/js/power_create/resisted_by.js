@@ -2,6 +2,7 @@ function resist_check() {
 	const check = document.getElementById("resist_check");
 	const title = document.getElementById("resist-title");
 	const base = document.getElementById('resist-base')
+	const entry = document.getElementById("resist-entry")
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,6 +12,9 @@ function resist_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
@@ -28,6 +32,7 @@ function resist_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 function resist_type() {

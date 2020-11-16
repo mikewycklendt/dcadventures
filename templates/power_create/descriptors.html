@@ -20,14 +20,8 @@
 			Medium Type:
 		</div>
 
-		<div>
-			<div id="descriptor-energy-title">
-				Energy Type:
-			</div>
-
-			<div id="descriptor-material-title">
-				Material Type:
-			</div>
+		<div id="descriptor-medium-subtype-title">
+	
 		</div>
 
 		<div id="descriptor-medium-title">
@@ -59,7 +53,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="descriptor_medium_type" name="descriptor_medium_type" onchange="descriptor()">
+			<select class="entry-select" id="descriptor_medium_type" name="descriptor_medium_type" onchange="get_medium_subtypes(); descriptor()">
 				<option value="">Medium Type</option>
 				{% for m in mediums %}
 					<option value={{m.id}}>{{m.name}}</option>
@@ -67,34 +61,14 @@
 			</select>
 		</div>
 
-		<div>
-			<div id="descriptor-material">
-				<select class="entry-select" id="descriptor_material_type" name="descriptor_material_type" onchange="descriptor()">
-					<option value="">Material Type</option>
-					<option value="new">New</option>
-					<option value="all">All Materials</option>
-					{% for m in materials %}
-						<option value={{m.id}}>{{m.name}}</option>
-					{% endfor %}
+		<div id="descriptor-medium-subtype">
+				<select class="entry-select" id="descriptor_medium_subtype" name="descriptor_material_type" onchange="get_medium(); descriptor()">
 				</select>
-			</div>
-
-			<div id="descriptor-energy">
-				<select class="entry-select" id="descriptor_energy_type" name="descriptor_energy_type" onchange="descriptor()">
-					<option value="">Energy Type</option>
-					<option value="all">All Energies</option>
-					{% for e in energies %}
-						<option value={{e.id}>{{e.name}}</option>}
-					{% endfor %}
-				</select>
-			</div>
-		
 		</div>
+
 
 		<div id="descriptor-medium">
 			<select class="entry-select" id="descriptor_medium" name="descriptor_medium" onchange="descriptor()">
-				<option value="">Medium</option>
-				<option value="new">New</option>
 			</select>
 		</div>
 
@@ -121,8 +95,8 @@
 		</div>
 
 		
-		<div id="descriptor-medium-type-field">
-			<input type="text" id="descriptor_medium_type_name" name="descriptor_medium_type_name">
+		<div id="descriptor-medium-subtype-field">
+			<input type="text" id="descriptor_medium_subtype_name" name="descriptor_medium_type_name">
 		</div>
 
 		
@@ -158,12 +132,12 @@
 			</div>
 		</div>
 		
-		<div id="descriptor-medium-type-des">
-			<div id="descriptor-medium-type-des-title">
+		<div id="descriptor-medium-subtype-des">
+			<div id="descriptor-medium-subtype-des-title">
 			</div>
 
 			<div>
-				<textarea id="descriptor_medium_type_des" name="descriptor_medium_type_des"></textarea>
+				<textarea id="descriptor_medium_subtype_des" name="descriptor_medium_subtype_des"></textarea>
 			</div>
 		</div>
 
@@ -198,7 +172,7 @@
 		<div></div>
 
 		<div>
-			<select class="header-select" id="descriptor_descriptor" name="descriptor_descriptor">
+			<select class="header-select" id="descriptor_descriptor_type" name="descriptor_descriptor_type">
 				{% for d in descriptor_type %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
@@ -219,30 +193,82 @@
 	*/
 </div>
 
-<div id="descriptor-table">
-
-	<div class="power-table-title">
-		Target:
+<div id="descriptors-div">
+	<div class="descriptor-table-title">
+		Descriptors for this Power
 	</div>
 
-	<div class="power-table-title">
-		Degree:
-	</div>
+	<br>
 
-	<div class="power-table-title">
-		When:
-	</div>
+	<div class="descriptor-table-container">
 
-	<div class="power-table-title">
-		Check:
-	</div>
+		<div id="descriptors">
+			<div class="power-table-title" style="font-size: 135%;">
+				Descriptors
+			</div>	
+		</div>
+
+		<div id="descriptor-table">
+
+			<div class="power-table-title">
+				Characteristics:
+			</div>
+
+			<div class="power-table-title">
+
+			</div>
+
+			<div class="power-table-title">
+
+			</div>
+
+			<div class="power-table-title">
+
+			</div>
 	
-	<div class="power-table-title">
-		Time:
+>
+	
+		</div>
+
 	</div>
 
-	<div></div>
+</div>
+
+<div id="descriptors-interact-div">
+	<div class="descriptor-table-title">
+		Descriptors this Power Interacts With:
+	</div>
+
+	<br>
+
+	<div class="descriptor-table-container">
+
+		<div id="descriptors-interact">
+			<div class="power-table-title" style="font-size: 135%;">
+				Descriptors
+			</div>	
+		</div>
+
+		<div id="descriptor-interact-table">
+
+			<div class="power-table-title">
+				Characteristics:
+			</div>
+
+			<div class="power-table-title">
+			</div>
+
+			<div class="power-table-title">
+			</div>
+
+			<div class="power-table-title">
+			</div>
+
 	
+		</div>
+
+	</div>
+
 </div>
 
 <div id="descriptor-err"></div>

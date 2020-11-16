@@ -1,135 +1,46 @@
-function sense_sense() {
-	const field_field  = document.getElementById("sense_sense");
-	const field = field_field.options[field_field.selectedIndex].value;
-	const vis = document.getElementById("sense-visual");
-	const aud = document.getElementById("sense-auditory");
-	const olf = document.getElementById("sense-olfactory");
-	const tac = document.getElementById("sense-tactile");
-	const rad = document.getElementById("sense-radio");
-	const men = document.getElementById("sense-mental");
-	const spe = document.getElementById("sense-special");
+function sense_check() {
+	const check = document.getElementById("sense_check");
+	const title = document.getElementById("sense-title");
+	const base = document.getElementById('sense-base');
+	const entry = document.getElementById("sense-entry");
 
-	if (field == 6) {
-		vis.style.display = "block";
-		vis.style.maxHeight = vis.scrollHeight + "px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
-	} else if (field == 7) {
-		aud.style.display = "block";
-		aud.style.maxHeight = aud.scrollHeight + "px";
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
-	} else if (field == 8) {
-		olf.style.display = "block";
-		olf.style.maxHeight = olf.scrollHeight + "px";
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
-	} else if (field == 9) {
-		tac.style.display = "block";
-		tac.style.maxHeight = tac.scrollHeight + "px";
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
-	} else if (field == 10) {
-		rad.style.display = "block";
-		rad.style.maxHeight = rad.scrollHeight + "px";
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
-	} else if (field == 11) {
-		men.style.display = "block";
-		men.style.maxHeight = men.scrollHeight + "px";
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px"
-	} else if (field == 12) {
-		spe.style.display = "block";
-		spe.style.maxHeight = spe.scrollHeight + "px"
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "220%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
-		vis.style.display = "none";
-		vis.style.maxHeight = "0px";
-		aud.style.display = "none";
-		aud.style.maxHeight = "0px";
-		olf.style.display = "none";
-		olf.style.maxHeight = "0px";
-		tac.style.display = "none";
-		tac.style.maxHeight = "0px";
-		rad.style.display = "none";
-		rad.style.maxHeight = "0px";
-		men.style.display = "none";
-		men.style.maxHeight = "0px";
-		spe.style.display = "none";
-		spe.style.maxHeight = "0px";
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
+}
+
+function sense_base() {
+	const field = document.getElementById('sense_extra');
+	const value = field.options[field.selectedIndex].value;
+	const entry = document.getElementById("sense-entry");
+
+	if (value != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function sense_sense() {
+
+	const select = 'sense_sense';
+	const fill = 'sense_subsense';
+
+	subsense_select(select, fill)
 }
 
 function sense_skill() {
@@ -170,138 +81,17 @@ function sense_type() {
 }
 
 function sense_height_trait() {
-	const field_field = document.getElementById("sense_height_trait");
-	const field = field_field.options[field_field.selectedIndex].value;
-	const abi = document.getElementById("sense-height-ability")
-	const ski = document.getElementById("sense-height-skill")
-	const bon = document.getElementById("sense-height-bonus")
-	const def = document.getElementById("sense-height-defense")
+	const select = 'sense_height_trait_type';
+	const fill = 'sense_height_trait';
 
-	if (field == 'ability') {
-		abi.style.display = "block";
-		abi.style.maxHeight = abi.scrollHeight + "px";		
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'skill') {
-		ski.style.display = "block";
-		ski.style.maxHeight = ski.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'bonus') {
-		bon.style.display = "block";
-		bon.style.maxHeight = bon.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'defense') {
-		def.style.display = "block";
-		def.style.maxHeight = def.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-	} else {
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	}
+	trait_select(select, fill)
 }
 
 function sense_resist_trait() {
-	const field_field = document.getElementById("sense_resist_trait");
-	const field = field_field.options[field_field.selectedIndex].value;
-	const abi = document.getElementById("sense-resist-ability")
-	const ski = document.getElementById("sense-resist-skill")
-	const bon = document.getElementById("sense-resist-bonus")
-	const pow = document.getElementById("sense-resist-power")
-	const def = document.getElementById("sense-resist-defense")
+	const select = 'sense_resist_trait_type';
+	const fill = 'sense_resist_trait';
 
-	if (field == 'ability') {
-		abi.style.display = "block";
-		abi.style.maxHeight = abi.scrollHeight + "px";		
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		pow.style.display =  "none";
-		pow.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'skill') {
-		ski.style.display = "block";
-		ski.style.maxHeight = ski.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		pow.style.display =  "none";
-		pow.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'bonus') {
-		bon.style.display = "block";
-		bon.style.maxHeight = bon.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px"
-		pow.style.display =  "none";
-		pow.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'power') {
-		pow.style.display = "block";
-		pow.style.maxHeight = pow.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	} else if (field == 'defense') {
-		def.style.display = "block";
-		def.style.maxHeight = def.scrollHeight + "px";
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		pow.style.display =  "none";
-		pow.style.maxHeight = "0px";
-	} else {
-		abi.style.display =  "none";
-		abi.style.maxHeight = "0px";
-		ski.style.display =  "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display =  "none";
-		bon.style.maxHeight = "0px";
-		pow.style.display =  "none";
-		pow.style.maxHeight = "0px";
-		def.style.display =  "none";
-		def.style.maxHeight = "0px";
-	}
-
+	trait_select(select, fill)
 }
 
 function sense_power_req() {

@@ -3,7 +3,8 @@ const move_entry = 'move-entry';
 function move_check() {
 	const check = document.getElementById("move_check");
 	const title = document.getElementById("move-title");
-	const base = document.getElementById('move-base')
+	const base = document.getElementById('move-base');
+	const entry = document.getElementById("move-entry");
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -13,13 +14,16 @@ function move_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
 function move_base() {
-	const field = document.getElementById('move_extra')
+	const field = document.getElementById('move_extra');
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("move-entry")
+	const entry = document.getElementById("move-entry");
 
 	if (value != '') {
 		entry.style.display = "grid";
@@ -29,6 +33,7 @@ function move_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

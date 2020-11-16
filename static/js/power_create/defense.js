@@ -1,7 +1,8 @@
 function defense_check() {
 	const check = document.getElementById("defense_check");
 	const title = document.getElementById("defense-title");
-	const base = document.getElementById('defense-base')
+	const base = document.getElementById('defense-base');
+	const entry = document.getElementById("defense-entry");
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,13 +12,16 @@ function defense_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
 function defense_base() {
-	const field = document.getElementById('defense_extra')
+	const field = document.getElementById('defense_extra');
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("defense-entry")
+	const entry = document.getElementById("defense-entry");
 
 	if (value != '') {
 		entry.style.display = "grid";
@@ -27,6 +31,7 @@ function defense_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

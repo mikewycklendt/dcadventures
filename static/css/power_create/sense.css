@@ -1,16 +1,9 @@
-#power-sense {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
 #sense-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 100%;
+	grid-template-columns: 70% 30%;
 	grid-template-rows: auto;
 }
 
@@ -21,6 +14,14 @@
 	color: #245681;
 	padding: 0px;
 	transition: all .2s linear;
+}
+
+#sense-base-form {
+	display: grid;
+	grid-template-columns: 100%;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s linear;
 }
 
 #sense-entry {
@@ -58,55 +59,6 @@
 	transition: all .4s ease-out;
 }
 
-#sense-visual {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-auditory {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-olfactory {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-tactile {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-radio {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-mental {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-special {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
 #sense-row2 {
 	display: grid;
 	grid-template-columns: 20% 80%;
@@ -126,38 +78,6 @@
 	grid-auto-rows: auto;
 }
 
-#sense-height-skill {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-height-ability {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-height-defense {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-height-ensense {
-	opacity: 0%;
-	transition: all .4s ease-out;
-}
-
-#sense-height-bonus {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
 
 #sense-height-ensense {
 	opacity: 0%;
@@ -173,44 +93,9 @@
 	transition: all .4s ease-out;
 }
 
-
 #sense-resist-trait {
 	display: grid;
 	grid-auto-rows: auto;
-}
-
-#sense-resist-skill {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-resist-ability {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-resist-defense {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-#sense-resist-bonus {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#sense-resist-power {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #sense-resist-immune-perm {

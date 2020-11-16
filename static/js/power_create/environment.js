@@ -1,7 +1,8 @@
 function env_check() {
 	const check = document.getElementById("env_check");
 	const title = document.getElementById("env-title");
-	const base = document.getElementById('env-base')
+	const base = document.getElementById('env-base');
+	const entry = document.getElementById("env-entry");
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,13 +12,16 @@ function env_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
 function env_base() {
-	const field = document.getElementById('env_extra')
+	const field = document.getElementById('env_extra');
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("env-entry")
+	const entry = document.getElementById("env-entry");
 
 	if (value != '') {
 		entry.style.display = "grid";
@@ -27,6 +31,7 @@ function env_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

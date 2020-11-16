@@ -4,6 +4,7 @@ function char_check() {
 	const check = document.getElementById("char_check");
 	const title = document.getElementById("char-title");
 	const base = document.getElementById('char-base')
+	const entry = document.getElementById("char-entry")
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -13,6 +14,9 @@ function char_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
@@ -28,7 +32,8 @@ function char_base() {
 		entry.style.padding = "1%";
 	} else {
 		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

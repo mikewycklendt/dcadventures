@@ -2,6 +2,7 @@ function create_check() {
 	const check = document.getElementById("create_check");
 	const title = document.getElementById("create-title");
 	const base = document.getElementById('create-base')
+	const entry = document.getElementById("create-entry")
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,6 +12,9 @@ function create_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
@@ -27,6 +31,7 @@ function create_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

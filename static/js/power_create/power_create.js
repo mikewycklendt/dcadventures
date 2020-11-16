@@ -6,7 +6,7 @@ function trait_select(select, fill) {
 	update.innerText = null;
 
 	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
 	response = fetch('/power/trait/select', {
 		method: 'POST',
@@ -29,6 +29,46 @@ function trait_select(select, fill) {
 				let o = document.createElement("option")
 				o.value = option;
 				o.text = option;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+function subsense_select(select, fill) {
+	const field = document.getElementById(select);
+	const sense_id = field.options[field.selectedIndex].value;
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch('/sense/subsense/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'sense_id': sense_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
 				update.add(o);
 			}
 
@@ -103,6 +143,71 @@ function check_display(field, divdisplay) {
 	} else {
 		div.style.opacity = '0%';
 		setTimeout(function(){div.style.display = 'none'}, 300);
+	}
+}
+
+function clear_errors(line, div) {
+		
+	const errors_delete = document.getElementsByClassName(line);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+			setTimeout(function(){errors_delete[i].style.display = 'none'}, 400)
+		}
+
+		const errors = document.getElementById(div)
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+	}
+}
+
+function clear_error_lines(line) {
+	const errors_delete = document.getElementsByClassName('extras-err-line');
+
+	for (i = 0; i < errors_delete.length; i++) {
+		errors_delete[i].style.display = "none";
+	}
+}
+
+function new_error(description, error_line, errors, errors_height) {
+	const error = document.createElement('div');
+	error.className = error_line;
+	error.innerHTML = description;
+
+	errors.appendChild(error);
+
+	error.style.maxHeight = error.scrollHeight + "px";
+	errors_height = errors_height + error.scrollHeight; 
+}	
+
+function json_errors(line, div, all_errors) {					
+	const errors = document.getElementById(div);
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	
+	let error_msg;
+
+	for (error_msg of all_errors) {
+
+		const error = document.createElement('div');
+		error.className = line;
+		error.innerHTML = jsonResponse.error;
+	
+		errors.appendChild(error);
+	
+		error.style.maxHeight = error.scrollHeight + "px";
+	
+		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+		errors.style.padding = "1%";
 	}
 }
 

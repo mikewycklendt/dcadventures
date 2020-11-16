@@ -2,6 +2,7 @@ function circ_check() {
 	const check = document.getElementById("circ_check");
 	const title = document.getElementById("circ-title");
 	const base = document.getElementById('circ-base')
+	const entry = document.getElementById("circ-entry")
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -11,6 +12,9 @@ function circ_check() {
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
@@ -30,6 +34,7 @@ function circ_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

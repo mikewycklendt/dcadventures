@@ -2,6 +2,7 @@ function reverse_check() {
 	const check = document.getElementById("reverse_check");
 	const base = document.getElementById("reverse-base");
 	const title = document.getElementById("reverse-title");
+	const entry = document.getElementById("reverse-entry")
 
 	if (check.checked == true) {
 		base.style.opacity = "100%"
@@ -11,15 +12,21 @@ function reverse_check() {
 	} else {
 		base.style.opacity = "0%"
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
 function reverse_base() {
 	const target_field = document.getElementById("reverse_target");
 	const target = target_field.options[target_field.selectedIndex].value;
+	const extra_field = document.getElementById('reverse_extra');
+	const extra = extra_field.options[extra_field.selectedIndex].value;
 	const entry = document.getElementById("reverse-entry")
 
-	if (target != '') {
+
+	if (target != '' && extra != '') {
 		entry.style.display = "grid";
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";
@@ -27,6 +34,7 @@ function reverse_base() {
 	} else {
 		entry.style.maxHeight = "0px";
 		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

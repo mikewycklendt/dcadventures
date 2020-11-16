@@ -17,19 +17,26 @@ function range_type() {
 }
 
 function power_type() {
-	const sense = document.getElementById('power-sense');
+	const sense = document.getElementById("sense-entry");
+	const move = document.getElementById("move-entry");
 	const field_field = document.getElementById('type');
 	const field = field_field.options[field_field.selectedIndex].value;
 
 	if (field == 'sense') {
 		sense.style.display = "grid";
-		sense.style.opacity = "100%";
 		sense.style.maxHeight = sense.scrollHeight + "px";
-		sense.style.padding = "1%";
+		move.style.maxHeight = "0px";
+		setTimeout(function(){move.style.display = 'none'}, 400);
+	} else if (field == 'move') {
+		move.style.display = "grid";
+		move.style.maxHeight = move.scrollHeight + "px";
+		sense.style.maxHeight = "0px";
+		setTimeout(function(){sense.style.display = 'none'}, 400);
 	} else {
 		sense.style.maxHeight = "0px";
-		sense.style.padding = "0%"
-		sense.style.opacity = "0%";
+		setTimeout(function(){sense.style.display = 'none'}, 400);
+		move.style.maxHeight = "0px";
+		setTimeout(function(){move.style.display = 'none'}, 400);
 	}
 }
 
@@ -94,17 +101,14 @@ function categorized() {
 function movement() {
 	const field_field = document.getElementById("action");
 	const field = field_field.options[field_field.selectedIndex].value;
-	const div = document.getElementById("power-move")
+	const move = document.getElementById("move-entry");
 
 	if (field == 2) {
-		div.style.display = "grid";
-		div.style.opacity = "100%";
-		div.style.maxHeight = div.scrollHeight + "px";
-		div.style.padding = "1%";
+		move.style.display = "grid";
+		move.style.maxHeight = move.scrollHeight + "px";
 	} else {
-		div.style.maxHeight = "0px";
-		div.style.padding = "0%"
-		div.style.opacity = "0%";
+		move.style.maxHeight = "0px";
+		setTimeout(function(){move.style.display = 'none'}, 400);
 	}
 }
 

@@ -16,6 +16,7 @@
 @import "power_create/character.css";
 @import "power_create/environment.css";
 @import "power_create/descriptors.css";
+@import "power_create/resist.css";
 
 
 .power-container {
@@ -95,7 +96,7 @@ select {
 	font-size: 130%;
 	border: 2px solid lightblue;
 	border-radius: 8px;
-	transition: all .1s ease-out;
+	transition: all .2s ease-out;
 }
 
 select:focus {
@@ -109,7 +110,19 @@ select:focus {
 	font-size: 100%;
 }
 
+.entry-descriptor {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
 .select-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.descriptor-sml {
 	height: 1.6vw; 
 	padding: .1vw;  
 	font-size: 80%;
@@ -642,7 +655,7 @@ textarea:focus {
 	display: flex;
 	width: 85%;
 	align-items: center;
-	height: 80%;
+	height: 95%;
 	padding: .2vw;
 	text-align: center;
 	background-color: #af0101;

@@ -2,6 +2,7 @@ function levels_check() {
 	const levels_check = document.getElementById("levels_check");
 	const levels_base_form = document.getElementById("levels-base-form");
 	const title = document.getElementById("levels-title");
+	const entry = document.getElementById("levels-entry");
 
 	if (levels_check.checked == true) {
 		levels_base_form.style.opacity = "100%";
@@ -11,26 +12,27 @@ function levels_check() {
 	} else {
 		levels_base_form.style.opacity = "0%";
 		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
-
-
-
-
 function levels_base() {
-	const level_type = document.getElementById("level_type");
-	levels_type = level_type.value;
-	const levels_entry = document.getElementById("levels-entry");
+	const type = document.getElementById("level_type").value;
+	const extra_field = document.getElementById('levels_extra');
+	const extra = extra_field.options[extra_field.selectedIndex].value;
+	const entry = document.getElementById("levels-entry");
 
-	if (levels_type != '') {
-		levels_entry.style.display = "grid";
-		levels_entry.style.padding = "1%";
-		levels_entry.style.maxHeight = levels_entry.scrollHeight + "px";
-		levels_entry.style.padding = "1%";
+	if (type != '' && extra != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
 	} else {
-		levels_entry.style.maxHeight = "0px";
-		levels_entry.style.padding = "0px";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 

@@ -1,23 +1,80 @@
 	
-function descriptor_opacity(value, div) {
+function descriptor_new(value, div) {
+	
+	const des_title_row1 = document.getElementById('descriptor-field-title');
+	const des_field = document.getElementById('descriptor-field');
+
 	if (value == 'new') {
 		div.style.opacity = '100%;'
+		des_title_row1.style.opacity = '0%'
+		des_field.style.opacity = '0%'
 	} else {
 		div.style.opacity = '0%';
 	}
 }
 
-function get_mediums(medium_type, type_id, update) {
+function get_medium_subtypes() {
+
+	const title = document.getElementById('descriptor-medium-subtype-title')
+	const des_title = document.getElementById('descriptor-medium-subtype-des-title')
+
+	const medium_type_field  = document.getElementById('descriptor_medium_type');
+	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
+
+	const update = document.getElementById('descriptor_medium_subtype');
+
 	update.innerText = null;
 
 	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	response = fetch('/power/trait/select', {
+	response = fetch('/power/medium/subtype/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'medium_type': medium_type
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			title.innerText = jsonResponse.title;
+			title.style.opacity = '100%';
+
+			des_title.innerText = jsonResponse.des_title;
+			
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+function get_mediums(medium_type, medium_subtype, update) {
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch('/power/medium/select', {
 		method: 'POST',
 		body: JSON.stringify({
 			'medium_type': medium_type,
-			'type_id': type_id
+			'medium_subtype': medium_subtype
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -33,8 +90,52 @@ function get_mediums(medium_type, type_id, update) {
 
 			for (option of options)  {
 				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+function get_medium() {
+	
+}
+
+function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch('/power/medium/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'origin': origin,
+			'source': source,
+			'medium_type': medium_type,
+			'medium_subtype': medium_subtype,
+			'medium': medium
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
 				update.add(o);
 			}
 
@@ -55,20 +156,29 @@ function descriptor_des(value, div) {
 	}
 }
 
-function medium_type_show(div1, div2) {
-	div1.style.display = 'grid';
-	setTimeout(function(){div1.style.opacity = '100%'}, 10);
-	div2.style.display = 'grid';
-	setTimeout(function(){div2.style.opacity = '100%'}, 10);
+function new_entry_show(row2, row3) {
+	row2.style.display = 'grid';
+	row2.style.maxHeight = row2.scrollHeight + 'px';
+	row3.style.display = 'grid';
+	row3.style.maxHeight = row3.scrollHeight + 'px';
 }
 
-function medium_type_hide(div3, div4) {
-	div3.style.display = 'none';
-	div3.style.opacity = '0%';
-	div4.style.display = 'none';
-	div4.style.opacity = '0%';
+function new_entry_hide(row2, row3) {
+	row2.style.maxHeight = '0px';
+	setTimeout(function(){row2.style.display = 'none'}, 400);
+	row3.style.maxHeight = '0px';
+	setTimeout(function(){row3.style.display = 'none'}, 400);
 }
 
+function field_show(value, title, field) {
+	if (value != '' && value != 'new' && value != 'all') {
+		title.style.opacity = '100%';
+		field.style.opacity = '100%';
+	} else {
+		title.style.opacity = '100%';
+		field.style.opacity = '100%';
+	}
+}
 function descriptor() {
 	const origin_field  = document.getElementById('descriptor_origin');
 	const origin = origin_field.options[origin_field.selectedIndex].value;
@@ -78,12 +188,9 @@ function descriptor() {
 
 	const medium_type_field  = document.getElementById('descriptor_medium_type');
 	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
-
-	const material_type_field  = document.getElementById('descriptor_material_type');
-	const material_type = material_type_field.options[material_type_field.selectedIndex].value;
-
-	const energy_type_field  = document.getElementById('descriptor_energy_type');
-	const energy_type = energy_type_field.options[energy_type_field.selectedIndex].value;
+	
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
 
 	const medium_field  = document.getElementById('descriptor_medium');
 	const medium = medium_field.options[medium_field.selectedIndex].value;
@@ -91,82 +198,478 @@ function descriptor() {
 	const descriptor_field  = document.getElementById('descriptor_field');
 	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
 
-	const origin_name = document.getElementById('descriptor_origin_name').value;
-	const source_name = document.getElementById('descriptor_source_name').value;
-	const medium_type_name = document.getElementById('descriptor_medium_type_name').value;
-	const material_type_name = document.getElementById('descriptor_material_type_name').value;
-	const energy_type_name = document.getElementById('descriptor_energy_type_name').value;
-	const medium_name = document.getElementById('descriptor_medium_name').value;
-	const descriptor_name = document.getElementById('descriptor_name').value;
-
-	const origin_des = document.getElementById('descriptor_origin_des').value;
-	const source_des = document.getElementById('descriptor_source_des').value;
-	const medium_type_des = document.getElementById('descriptor_medium_type_des').value;
-	const medium_des = document.getElementById('descriptor_medium_des').value;
-	const descriptor_result = document.getElementById('descriptor_result').value;
-
-	const ene_title_row1 = document.getElementById('descriptor-energy-title');
-	const mat_title_row1 = document.getElementById('descriptor-material-title');
-	const ene_row1 = document.getElementById('descriptor-energy');
-	const mat_row1 = document.getElementById('descriptor-material');
+	const sub_title_row1 = document.getElementById('descriptor-medium-subtype-title')
 	const med_title_row1 = document.getElementById('descriptor-medium-title');
 	const des_title_row1 = document.getElementById('descriptor-field-title');
+	const sub_row1 = document.getElementById('descriptor-medium-subtype');
 	const med_row1 = document.getElementById('descriptor-medium');
 	const des_field = document.getElementById('descriptor-field');
 
 	const ori_text = document.getElementById('descriptor-origin-field');
 	const sou_text = document.getElementById('descriptor-source-field');
-	const typ_text = document.getElementById('descriptor-medium-type-field');
+	const sub_text = document.getElementById('descriptor-medium-subtype-field');
 	const med_text = document.getElementById('descriptor-medium-field');
 	const des_text = document.getElementById('descriptor-new');
 
-	const type_des_title = document.getElementById('descriptor-medium-type-des-title');
-
 	const ori_des = document.getElementById('descriptor-origin-des');
 	const sou_des = document.getElementById('descriptor-source-des');
-	const typ_des = document.getElementById('descriptor-medium-type-des');
+	const sub_des = document.getElementById('descriptor-medium-subtype-des');
 	const med_des = document.getElementById('descriptor-medium-des');
 	const des_des = document.getElementById('descriptor-descriptor-result');
 
 	const row2 = document.getElementById('descriptor-row2');
 	const row3 = document.getElementById('descriptor-row3');
 
-	if (origin == 'new' || source == 'new' || material_type == 'new' || energy_type ==  'new' || medium == 'new' || descriptor == 'new') {
-		row2.style.display = 'grid';
-		row2.style.maxHeight = row2.scrollHeight + 'px';
-		row3.style.display = 'grid';
-		row3.style.maxHeight = row3.scrollHeight + 'px';
+	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
+		new_entry_show(row2, row3)
 	}
 
-	if (origin != 'new' && source != 'new' && material_type != 'new' && energy_type !=  'new' && medium != 'new' && descriptor != 'new') {
-		row2.style.display = 'grid';
-		row2.style.maxHeight = row2.scrollHeight + 'px';
-		row3.style.display = 'grid';
-		row3.style.maxHeight = row3.scrollHeight + 'px';
+	if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
+		new_entry_hide(row2, row3)
 	}
 
-	descriptor_opacity(origin, ori_text);
-	descriptor_des(origin, origin_des);
-	descriptor_opacity(source, sou_text);
+	descriptor_new(origin, ori_text);
+	descriptor_des(origin, ori_des);
+	descriptor_new(source, sou_text);
 	descriptor_des(source, sou_des);
-	descriptor_opacity(material_type, typ_text);
-	descriptor_des(material_type, typ_des);
-	descriptor_opacity(energy_type, typ_text);
-	descriptor_des(energy_type, typ_des);
-	descriptor_opacity(medium, med_text);
+	descriptor_new(medium_subtype, sub_text)
+	descriptor_des(medium_subtype, sub_des)
+	descriptor_new(medium, med_text);
 	descriptor_des(medium, med_des);
-	descriptor_opacity(descriptor, des_text);
+	descriptor_new(descriptor, des_text);
 	descriptor_des(descriptor, des_des);
 
-	if (medium_type == 1) { 
-		medium_type_show(mat_title_row1, mat_row1);
-		medium_type_hide(ene_row1, ene_title_row1)
-	}
-	else if (medium_type == 2) {
-		medium_type_show(ene_title_row1, ene_row1)
-		medium_type_hide(mat_title_row1, mat_row1)
+	field_show(medium_type, sub_title_row1, sub_row1)
+	field_show(medium_subtype, med_title_row1, med_row1)
+	
+	if ((origin != 'new' && origin != 'all' && origin != '') || (source != 'new' && source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
+		(medium_subtype !=  'new' && medium_subtype != 'all' && medium_subtype != '') || (medium != 'new' && medium != 'all' && medium != '')) {
+		des_title_row1.style.opacity = '100%';
+		des_field.style.opacity = '100%';
 	} else {
-		medium_type_hide(mat_title_row1, mat_row1)
-		medium_type_hide(ene_row1, ene_title_row1)
+		des_title_row1.style.opacity = '0%';
+		des_field.style.opacity = '0%';
+	}
+}
+
+function descriptor_submit() {
+
+	const descriptor_type = document.getElementById('descriptor_descriptor_type')
+
+	if (descriptor_type ==  'effect') {
+		descriptor_effect()
+	} else if(descriptor_type == 'power') {
+		descriptor_post()
+	} else {
+		const errors = document.getElementById('descriptor-err');
+
+		errors.style.display = "grid";
+		errors.style.padding = "1%";
+
+		const error = document.createElement('div');
+		error.className = 'descriptor-err-line';
+		error.innerHTML = 'You must specify if this power owns this descriptor or if it just affects or is affected by it.';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+
+		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+		errors.style.padding = "1%";
+	}
+
+}
+
+function descriptor_effect() {
+	const origin_name = document.getElementById('descriptor_origin_name').value;
+	const source_name = document.getElementById('descriptor_source_name').value;
+	const medium_subtype_name = document.getElementById('descriptor_medium_subtype_name').value;
+	const medium_name = document.getElementById('descriptor_medium_name').value;
+	const descriptor_name = document.getElementById('descriptor_name').value;
+
+	const origin_des = document.getElementById('descriptor_origin_des').value;
+	const source_des = document.getElementById('descriptor_source_des').value;
+	const medium_subtype_des = document.getElementById('descriptor_medium_subtype_des').value;
+	const medium_des = document.getElementById('descriptor_medium_des').value;
+	const descriptor_result = document.getElementById('descriptor_result').value;
+
+	const origin_field  = document.getElementById('descriptor_origin');
+	const origin = origin_field.options[origin_field.selectedIndex].value;
+
+	const source_field  = document.getElementById('descriptor_source');
+	const source = source_field.options[source_field.selectedIndex].value;
+
+	const medium_type_field  = document.getElementById('descriptor_medium_type');
+	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
+	
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
+
+	const medium_field  = document.getElementById('descriptor_medium');
+	const medium = medium_field.options[medium_field.selectedIndex].value;
+
+	const descriptor_field  = document.getElementById('descriptor_field');
+	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
+
+	const descriptor_type = document.getElementById('descriptor_descriptor_type');
+	
+	const power_id = document.getElementById('power_id').value;
+
+}
+
+let rows = 0;
+let des_rows = 0;
+let cha_count = 3;
+let cha_rows = 0;
+let rows_effect = 0;
+let des_rows_effect = 0;
+let cha_count_effect = 3;
+let cha_rows_effect = 0;
+
+
+function descriptor_post() {
+
+	const error_line = 'descriptor-err-line';
+	const error_div = 'descriptor-err';
+
+	const origin_name = document.getElementById('descriptor_origin_name').value;
+	const source_name = document.getElementById('descriptor_source_name').value;
+	const medium_subtype_name = document.getElementById('descriptor_medium_subtype_name').value;
+	const medium_name = document.getElementById('descriptor_medium_name').value;
+	const descriptor_name = document.getElementById('descriptor_name').value;
+
+	const origin_des = document.getElementById('descriptor_origin_des').value;
+	const source_des = document.getElementById('descriptor_source_des').value;
+	const medium_subtype_des = document.getElementById('descriptor_medium_subtype_des').value;
+	const medium_des = document.getElementById('descriptor_medium_des').value;
+	const descriptor_result = document.getElementById('descriptor_result').value;
+
+	const origin_field  = document.getElementById('descriptor_origin');
+	const origin = origin_field.options[origin_field.selectedIndex].value;
+
+	const source_field  = document.getElementById('descriptor_source');
+	const source = source_field.options[source_field.selectedIndex].value;
+
+	const medium_type_field  = document.getElementById('descriptor_medium_type');
+	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
+	
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
+
+	const medium_field  = document.getElementById('descriptor_medium');
+	const medium = medium_field.options[medium_field.selectedIndex].value;
+
+	const descriptor_field  = document.getElementById('descriptor_field');
+	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
+
+	const descriptor_type = document.getElementById('descriptor_descriptor_type');
+	
+	const power_id = document.getElementById('power_id').value;
+
+	if (((origin == 'new' && origin_name != '' && origin_des != '') || (origin != 'new' )) || ((source == 'new' && source_name != '' && source_des != '') || (source != 'new')) || 
+			((medium_subtype == 'new' && medium_subtype_name != '' && medium_subtype_des != '') || (medium_subtype != 'new')) || ((medium == 'new' && medium_name != '' && medium_des != '') || (medium != 'new')) ||
+			((descriptor == 'new' && descriptor_name != '' && descriptor_result != '') || (descriptor != '')) ) {
+
+			response = fetch('/descriptor/create', {
+				method: 'POST',
+				body: JSON.stringify({
+					'origin': origin,
+					'origin_name': origin_name,
+					'origin_des': origin_des,
+					'source': source,
+					'source_name': source_name,
+					'source_des': source_des,
+					'medium_type': medium_type,
+					'medium_subtype': medium_subtype,
+					'medium_subtype_name': medium_subtype_name,
+					'medium_subtype_des': medium_subtype_des,
+					'medium': medium,
+					'medium_name': medium_name,
+					'medium_des': medium_des,
+					'descriptor': descriptor,
+					'descriptor_name': descriptor_name,
+					'descriptor_result': descriptor_result,
+					'descriptor_type': descriptor_type,
+					'power_id': power_id
+				}),
+				headers: {
+				'Content-Type': 'application/json',
+				}
+			})
+			.then(response => response.json())
+			.then(jsonResponse => {
+				console.log(jsonResponse)
+				if (jsonResponse.success) {
+
+					const selects = document.getElementsByClassName('descriptor-sml')
+					let select;
+
+					for (select of selects)  {
+						let option = document.createElement("option")
+						option.value = jsonResponse.id;
+						option.text = jsonResponse.name;
+						select.add(option);
+					}
+
+					if (jsonResponse.type == 'power') {
+						const table_div = 'descriptors-div';
+						if (jsonResponse.descriptor) {
+							const place_div = 'descriptors';
+							const btn_div = 'des-btn';
+							const btn_del = 'des-del';	
+							des_rows = des_rows + 1
+						} else {
+							const place_div = 'descriptor-table';
+							const btn_div = 'cha-btn';
+							const btn_del = 'cha-del';
+							cha_count = cha_count + 1
+							if (cha_count == 4) {
+								cha_rows = cha_rows + 1;
+								cha_count = 0;
+							}
+						}
+					} else if (jsonResponse.type == 'effect') {
+						const table_div = 'descriptors-interact-div';
+						if (jsonResponse.descriptor) {
+							const place_div = 'descriptors-interact';
+							const btn_div = 'des-btn-effect';
+							const btn_del = 'des-del-effect';
+							des_rows_effect = des_rows_effect + 1
+						} else {
+							const place_div = 'descriptor-interact-table';
+							const btn_div = 'cha-btn-effect';
+							const btn_del = 'cha-del-effect';
+							cha_count_effect = cha_count_effect + 1
+							if (cha_count_effect == 4) {
+								cha_rows_effect = cha_rows_effect + 1;
+								cha_count_effect = 0;
+							}}
+					}
+
+					const div = document.getElementById(table_div);
+					const table = document.getElementById(place_div);
+
+					const btn = document.createElement('div');
+					btn.className = btn_div;
+
+					const txt = document.createElement('div');
+					txt.className = 'des-txt'
+					txt.innerHTML = jsonResponse.name;
+				
+					const del = document.createElement('div');
+					del.className = 'del'
+					const deleteBtn = document.createElement('button');
+					deleteBtn.className = 'des-del';
+					deleteBtn.setAttribute('data-id', jsonResponse.id);
+					del.appendChild(deleteBtn);
+
+					btn.appendChild(txt);
+					btn.appendChild(del);
+
+					div.style.display = "grid";
+					div.style.padding = "1%";
+					div.style.maxHeight = div.scrollHeight + "px";
+					div.style.padding = "1%";
+
+					table.appendChild(btn);
+
+					if ((des_rows > rows) || (cha_rows > rows)) {
+						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
+						rows = rows + 1;
+					} else if ((des_rows_effect > rows_effect) || (cha_rows_effect > rows_effect)) {
+						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
+						rows_effect = rows_effect + 1;
+					}
+					
+					descriptor_delete()
+
+					clear_errors(error_line, error_div)
+
+				} else {
+
+					const all_errors = jsonResponse.error;
+
+					json_errors(error_line, error_div, all_errors);
+
+				}
+			})
+
+		} else {
+
+			clear_error_lines(error_line);
+
+			const errors = document.getElementById(error_div)
+
+			errors.style.display = "grid";
+			errors.style.padding = "1%";
+
+			let errors_height = errors.scrollHeight + 20;
+
+			if (des == '') {
+				let description = '';
+				new_error(description, error_line, errors, errors_height)
+			}
+
+			errors.style.maxHeight = errors_height + "px";
+			errors.style.padding = "1%";
+		}
+}
+
+
+descriptor_delete = function() {
+
+	power_cha_delete()
+	power_des_delete()
+
+	power_cha_effect_delete()
+	power_des_effect_delete()
+
+};
+
+descriptor_delete();
+
+function power_cha_delete() {
+	const deletes = document.querySelectorAll('.cha-del');
+	const div = document.getElementsByClassName('cha-btn');
+	const table_min = document.getElementById('descriptors-div');
+	
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+
+			const delId = e.target.dataset['id'];
+			fetch('/descriptor/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				remove_descriptor(delId)
+
+				div.style.opacity = '0%';
+				setTimeout(function(){div.style.display = 'none'}, 400)
+
+				cha_count = cha_count - 1
+				if (cha_count < 0) {
+					cha_rows = cha_rows - 1
+					cha_count = 3
+				}
+				if ((cha_rows < rows) && (des_rows < rows)) {
+					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+				}
+			})
+		}
+	}
+}
+
+
+function power_des_delete() {
+	const deletes = document.querySelectorAll('.des-del');
+	const div = document.getElementsByClassName('des-btn');
+	const table_min = document.getElementById('descriptors-div');
+	
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+
+			const delId = e.target.dataset['id'];
+			fetch('/descriptor/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				remove_descriptor(delId)
+
+				div.style.opacity = '0%';
+				setTimeout(function(){div.style.display = 'none'}, 400)
+
+				des_rows = des_rows - 1
+				if ((cha_rows < rows) && (des_rows < rows)) {
+					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+				}
+			})
+		}
+	}
+}
+
+function power_des_effect_delete() {
+	const deletes = document.querySelectorAll('.des-del-effect');
+	const div = document.getElementsByClassName('des-btn-effect');
+	const table_min = document.getElementById('descriptors-interact-div');
+	
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+
+			const delId = e.target.dataset['id'];
+			fetch('/descriptor/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				remove_descriptor(delId)
+
+				div.style.opacity = '0%';
+				setTimeout(function(){div.style.display = 'none'}, 400)
+
+				des_rows_effect = des_rows_effect - 1
+				if ((cha_rows_effect < rows_effect) && (des_rows_effect < rows_effect)) {
+					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+				}
+			})
+		}
+	}
+}
+
+function power_cha_effect_delete() {
+	const deletes = document.querySelectorAll('.cha-del-effect');
+	const div = document.getElementsByClassName('cha-btn-effect');
+	const table_min = document.getElementById('descriptors-interact-div');
+
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+
+			const delId = e.target.dataset['id'];
+			fetch('/descriptor/delete/' + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				remove_descriptor(delId)
+
+				div.style.opacity = '0%';
+				setTimeout(function(){div.style.display = 'none'}, 400)
+
+				cha_count_effect = cha_count_effect - 1
+				if (cha_count_effect < 0) {
+					cha_rows_effect = cha_rows_effect - 1
+					cha_count_effect = 3
+				}
+				if ((cha_rows_effect < rows_effect) && (des_rows_effect < rows_effect)) {
+					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+				}
+			})
+		}
+	}
+}
+
+function remove_descriptor(id) {
+	const selects = document.getElementsByClassName('descriptor-sml');
+	let select;
+	
+	for (select of selects) {
+		options = select.options;
+		let option;
+
+		for (option of options) {
+			if (option.value == delId) {
+				console.log(option.value);
+				option.remove();
+			}
+		}
 	}
 }
