@@ -146,9 +146,11 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 }
 
 function descriptor_des(value, div) {
+	const row3 = document.getElementById('descriptor-row3') 
 	if (value == 'new') {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px'
+		row3.style.display = 'grid';
 		row3.style.maxHeight = div.scrollHeight + row3.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
