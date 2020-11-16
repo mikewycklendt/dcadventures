@@ -5,7 +5,7 @@ function descriptor_new(value, div) {
 	const des_field = document.getElementById('descriptor-field');
 
 	if (value == 'new') {
-		div.style.opacity = '100%;'
+		div.style.opacity = '100%';
 		des_title_row1.style.opacity = '0%'
 		des_field.style.opacity = '0%'
 	} else {
