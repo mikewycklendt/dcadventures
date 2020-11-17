@@ -367,30 +367,31 @@ def power_medium_subtype_select():
 
 	print('id ' + medium_type_id)
 
-	medium_type = db.session.query(MediumType).filter_by(id=medium_type_id).one()
-	medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
+	try:
+		medium_type = db.session.query(MediumType).filter_by(id=medium_type_id).one()
+		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
 		
-	all_medium_type = 'Any ' + medium_type.name
+		all_medium_type = 'Any ' + medium_type.name
 
-	title = medium_type.name + ' Type'
+		title = medium_type.name + ' Type'
 
-	des_title = 'New ' + medium_type.name + ' Type Description'
+		des_title = 'New ' + medium_type.name + ' Type Description'
 
-	options = []
+		options = []
 
-	options.append({'id': '', 'name': medium_type.name})
-	options.append({'id': 'all', 'name': all_medium_type})
-	options.append({'id': 'new', 'name': 'New'})
+		options.append({'id': '', 'name': medium_type.name})
+		options.append({'id': 'all', 'name': all_medium_type})
+		options.append({'id': 'new', 'name': 'New'})
 
-	for subtype in medium_subtypes:
-		options.append({'id': subtype.id, 'name': subtype.name})
+		for subtype in medium_subtypes:
+			options.append({'id': subtype.id, 'name': subtype.name})
 
-	body['options'] = options	
-	body['title'] = title
-	body['des_title'] = des_title
+		body['options'] = options	
+		body['title'] = title
+		body['des_title'] = des_title
 
-	print(body)
-	return jsonify(body)
+		print(body)
+		return jsonify(body)
 
 @powers.route('/sense/subsense/select', methods=['POST'])
 def get_subsense_select():
@@ -435,7 +436,7 @@ def power_medium_select():
 
 	try:
 		subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype)
-		mediums = db.session.query(Medium).filter_by(medium_type=medium_type, medium_subtype=medium_subtype).order_by(name).all()
+		mediums = db.session.query(Medium).filter_by(medium_type=medium_type, medium_subtype=medium_subtype).order_by(Medium.name).all()
 		
 		all_subtype = 'Any ' + subtype.name
 
