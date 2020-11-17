@@ -648,6 +648,9 @@ def post_descriptor():
 	descriptor_type = request.get_json()['descriptor_type']
 	power_id = request.get_json()['power_id']
 
+	name = ''
+	one_medium_name = ''
+
 	if origin == 'new':
 		process = True
 		try:
@@ -663,6 +666,10 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['origin'] = {'id': entry.id, 'name': entry.name}
+				if name == '':
+					name = name + entry.name
+				else:
+					name = name + ', ' + entry.name
 		except:
 			error = True
 			body['success'] = False
@@ -675,6 +682,10 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Origin).filter_by(id=origin).one()
 		descriptor['origin'] = {'id': entry.id, 'name': entry.name}
+		if name == '':
+			name = name + entry.name
+		else:
+			name = name + ', ' + entry.name
 
 	if source == 'new':
 		process = True
@@ -691,6 +702,10 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['source'] = {'id': entry.id, 'name': entry.name}
+				if name == '':
+					name = name + entry.name
+				else:
+					name = name + ', ' + entry.name
 		except:
 			error = True
 			body['success'] = False
@@ -703,10 +718,15 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Source).filter_by(id=source).one()
 		descriptor['source'] = {'id': entry.id, 'name': entry.name}
+		if name == '':
+			name = name + entry.name
+		else:
+			name = name + ', ' + entry.name
 
 	if medium_type != '':
 		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
 		descriptor['medium_type'] = {'id': entry.id, 'name': entry.name}
+		one_medium_name = entry.name
 	else:
 		descriptor['medium_type'] = {'id': None, 'name': ''}
 
@@ -725,6 +745,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
+				one_medium_name = entry.name
 		except:
 			error = True
 			body['success'] = False
@@ -739,6 +760,7 @@ def post_descriptor():
 	else:
 		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
 		descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
+		one_medium_name = entry.name
 
 	if medium == 'new':
 		process = True
@@ -755,6 +777,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['medium'] = {'id': entry.id, 'name': entry.name}
+				one_medium_name = entry.name
 		except:
 			error = True
 			body['success'] = False
@@ -769,7 +792,14 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Medium).filter_by(id=medium).one()
 		descriptor['medium'] = {'id': entry.id, 'name': entry.name}
-	
+		one_medium_name = entry.name
+
+	if one_medium_name != '':
+		if name == '':
+			name = name + one_medium_name
+		else:
+			name = name + ', ' + one_medium_name
+
 	if descriptor_field == 'new':
 		process = True
 		try:
@@ -785,6 +815,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+				name = entry.name
 		except:
 			error = True
 			body['success'] = False
@@ -799,6 +830,7 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+		name = entry.name
 
 	origin = descriptor['origin']
 	origin_id = origin['id']
@@ -822,53 +854,10 @@ def post_descriptor():
 
 	descriptor = descriptor['descriptor']
 	descriptor_id = descriptor['id']
-	descriptor_name = descriptor['name']
+	descriptor_name = descriptor['name']\
 
-	count = 0
-
-	names = []
-	one_medium_name = ''
-
-	if descriptor_id is not None:
-		body['descriptor'] = True
-		name = descriptor_name
-	else:
-		if origin_id is not None:
-			names.append(origin_name)
-			count = count + 1
-		if source_id is not None:
-			names.append(source_name)
-			count = count + 1
-		if medium_type_id is not None:
-			one_medium_name = medium_type_name 
-		if medium_subtype_id is not None:
-			one_medium_name = medium_subtype_name
-		if medium_id is not None:
-			one_medium_name = medium_name
-		if one_medium_name != '':
-			names.append(one_medium_name)
-			count = count + 1
-		if count > 1:
-			name = names[0]
-			i = 1
-			while i < len(names):
-				name = name + ', ' + names[i]
-		else:
-			for only_name in names:
-				name = only_name
-
-	if descriptor_type == 'power':
-		is_descriptor = True
-		body['type'] = 'power'
-	elif descriptor_type == 'effect':
-		is_descriptor = False
-		body['type'] = 'effect'
-	else:
-		error = True
-		body['success'] = False
-		error_msgs.append('You must choose if this descriptor is for this power or if this power interacts with this descriptor')
-		body['error'] = error_msgs
-
+	print('descriptor: ')
+	print(descriptor)
 
 	power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
 	db.session.add(power_descriptor)
@@ -878,9 +867,6 @@ def post_descriptor():
 	body['name'] = power_descriptor.name
 	
 	db.session.close()
-
-	print('descriptor: ')
-	print(descriptor)
 
 	if descriptor_field == 'new':
 		try:
