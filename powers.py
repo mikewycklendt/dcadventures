@@ -869,46 +869,41 @@ def post_descriptor():
 		body['error'] = error_msgs
 
 
-	if error:
-		print(body)
-		return jsonify(body)
-	else:
+	entry = PowerDes(name = name,	
+					power_id = power_id,
+					des_id = descriptor_id,
+					origin = origin_id,
+					source = source_id,
+					medium = medium_id,
+					medium_type = medium_type_id,
+					medium_subtype = medium_subtype,
+					descriptor = is_descriptor)
+	db.session.commit()
 
-		entry = PowerDes(name = name,	
-						power_id = power_id,
-						des_id = descriptor_id,
-						origin = origin_id,
-						source = source_id,
-						medium = medium_id,
-						medium_type = medium_type_id,
-						medium_subtype = medium_subtype,
-						descriptor = is_descriptor)
-		db.session.commit()
-
-		body['id'] = entry.id
-		body['name'] = entry.name
+	body['id'] = entry.id	
+	body['name'] = entry.name
 		
 		
-		db.session.close()
+	db.session.close()
 
-		if descriptor_field == 'new':
-			try:
-				descriptor_new = db.sesssion.query(Descriptor).filter(Descriptor.id == descriptor_id).one()
-				descriptor_new.origin = origin_id
-				descriptor_new.source = source_id
-				descriptor_new.medium = medium_id
-				descriptor_new.medium_type = medium_type_id
-				descriptor_new.medium_subtype = medium_subtype_id
-				descriptor_new.result =  descriptor_result
-				db.session.commit()
-			except:
-				error = True
-				body['success'] = False
-				error_msgs.append('There could not fill out all descriptor information')
-				body['error'] = error_msgs
-				db.session.rollback()
-			finally:
-				db.session.close()
+	if descriptor_field == 'new':
+		try:
+			descriptor_new = db.sesssion.query(Descriptor).filter(Descriptor.id == descriptor_id).one()
+			descriptor_new.origin = origin_id
+			descriptor_new.source = source_id
+			descriptor_new.medium = medium_id
+			descriptor_new.medium_type = medium_type_id
+			descriptor_new.medium_subtype = medium_subtype_id
+			descriptor_new.result =  descriptor_result
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('There could not fill out all descriptor information')
+			body['error'] = error_msgs
+			db.session.rollback()
+		finally:
+			db.session.close()
 
 	print(body)
 	return jsonify(body)
