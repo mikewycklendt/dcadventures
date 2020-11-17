@@ -180,8 +180,8 @@ function field_show(value, title, field) {
 		title.style.opacity = '100%';
 		field.style.opacity = '100%';
 	} else {
-		title.style.opacity = '100%';
-		field.style.opacity = '100%';
+		title.style.opacity = '0%';
+		field.style.opacity = '0%';
 	}
 }
 function descriptor() {
