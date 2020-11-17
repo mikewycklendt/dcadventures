@@ -796,9 +796,6 @@ def post_descriptor():
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 
-	print('descriptor: ')
-	print(descriptor)
-
 	origin = descriptor['origin']
 	origin_id = origin['id']
 	origin_name = origin['name']
@@ -877,6 +874,9 @@ def post_descriptor():
 	body['name'] = power_descriptor.name
 	
 	db.session.close()
+
+	print('descriptor: ')
+	print(descriptor)
 
 	if descriptor_field == 'new':
 		try:
