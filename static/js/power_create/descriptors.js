@@ -190,6 +190,9 @@ function descriptor() {
 
 	const medium_type_field  = document.getElementById('descriptor_medium_type');
 	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
+	
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
 
 	const medium_field  = document.getElementById('descriptor_medium');
 	const medium = medium_field.options[medium_field.selectedIndex].value;
@@ -239,10 +242,6 @@ function descriptor() {
 	descriptor_des(descriptor, des_des);
 
 	field_show(medium_type, sub_title_row1, sub_row1)
-
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
-
 	field_show(medium_subtype, med_title_row1, med_row1)
 	
 	if ((origin != 'new' && origin != 'all' && origin != '') || (source != 'new' && source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
