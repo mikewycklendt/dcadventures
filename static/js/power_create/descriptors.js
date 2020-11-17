@@ -23,7 +23,7 @@ function get_medium_subtypes() {
 
 	const update = document.getElementById('descriptor_medium_subtype');
 
-	update.innerText = null;
+	
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
@@ -46,6 +46,8 @@ function get_medium_subtypes() {
 			title.style.opacity = '100%';
 
 			des_title.innerText = jsonResponse.des_title;
+
+			update.innerText = null;
 			
 			const options = jsonResponse.options;
 			let option;
