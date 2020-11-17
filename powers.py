@@ -697,7 +697,7 @@ def post_descriptor():
 		descriptor['source'] = {'id': entry.id, 'name': entry.name}
 
 	if medium_type != '':
-		entry = db.session.query(MediumType).filter_by(id=medium_type)
+		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
 		descriptor['medium_type'] = {'id': entry.id, 'name': entry.name}
 	else:
 		descriptor['medium_type'] = {'id': None, 'name': ''}
