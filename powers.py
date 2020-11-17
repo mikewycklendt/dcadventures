@@ -796,7 +796,7 @@ def post_descriptor():
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 
-	print(descriptor)
+	print('descriptor: ' descriptor)
 
 	origin = descriptor['origin']
 	origin_id = origin['id']
@@ -872,28 +872,23 @@ def post_descriptor():
 		print(body)
 		return jsonify(body)
 	else:
-		try:
-			entry = PowerDes(name = name,	
-							power_id = power_id,
-							des_id = descriptor_id,
-							origin = origin_id,
-							source = source_id,
-							medium = medium_id,
-							medium_type = medium_type_id,
-							medium_subtype = medium_subtype,
-							descriptor = is_descriptor)
-			db.session.commit()
 
-			body['id'] = entry.id
-			body['name'] = entry.name
-		except:
-			error = True
-			body['success'] = False
-			error_msgs.append('Could not complete the process')
-			body['error'] = error_msgs
-			db.session.rollback()
-		finally:
-			db.session.close()
+		entry = PowerDes(name = name,	
+						power_id = power_id,
+						des_id = descriptor_id,
+						origin = origin_id,
+						source = source_id,
+						medium = medium_id,
+						medium_type = medium_type_id,
+						medium_subtype = medium_subtype,
+						descriptor = is_descriptor)
+		db.session.commit()
+
+		body['id'] = entry.id
+		body['name'] = entry.name
+		
+		
+		db.session.close()
 
 		if descriptor_field == 'new':
 			try:
