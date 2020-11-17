@@ -665,7 +665,7 @@ def post_descriptor():
 	elif origin == '':
 		descriptor['origin'] = {'id': None, 'name': ''}
 	else:
-		entry = db.session.query(Origin).filter_by(id=origin)
+		entry = db.session.query(Origin).filter_by(id=origin).one()
 		descriptor['origin'] = {'id': entry.id, 'name': entry.name}
 
 	if source == 'new':
@@ -693,9 +693,9 @@ def post_descriptor():
 	elif source == '':
 		descriptor['source'] = {'id': None, 'name': ''}
 	else:
-		entry = db.session.query(Source).filter_by(id=source)
+		entry = db.session.query(Source).filter_by(id=source).one()
 		descriptor['source'] = {'id': entry.id, 'name': entry.name}
-
+		
 	if medium_type != '':
 		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
 		descriptor['medium_type'] = {'id': entry.id, 'name': entry.name}
@@ -729,7 +729,7 @@ def post_descriptor():
 	elif medium_subtype == 'all':
 		descriptor['medium_type'] = {'id': None, 'name': 'all'}
 	else:
-		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype)
+		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
 		descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
 
 	if medium == 'new':
@@ -759,7 +759,7 @@ def post_descriptor():
 	elif medium == 'all':
 		descriptor['medium'] = {'id': None, 'name': 'all'}
 	else:
-		entry = db.session.query(Medium).filter_by(id=medium)
+		entry = db.session.query(Medium).filter_by(id=medium).one()
 		descriptor['medium'] = {'id': entry.id, 'name': entry.name}
 	
 	if descriptor_field == 'new':
@@ -789,7 +789,7 @@ def post_descriptor():
 	elif descriptor == 'all':
 		descriptor['descriptor'] = {'id': None, 'name': 'all'}
 	else:
-		entry = db.session.query(Descriptor).filter_by(id=descriptor)
+		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 
 	origin = descriptor['origin']
