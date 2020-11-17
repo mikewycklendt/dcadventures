@@ -796,7 +796,7 @@ def post_descriptor():
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 
-	print('descriptor: ' descriptor)
+	print('descriptor: ' + descriptor)
 
 	origin = descriptor['origin']
 	origin_id = origin['id']
