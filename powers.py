@@ -664,8 +664,6 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not Add that origin')
 			db.session.rollback()
-		finally:
-			db.session.close()
 	elif origin == '':
 		descriptor['origin'] = {'id': None, 'name': ''}
 	else:
@@ -692,8 +690,6 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not Add that source')
 			db.session.rollback()
-		finally:
-			db.session.close()
 	elif source == '':
 		descriptor['source'] = {'id': None, 'name': ''}
 	else:
@@ -726,8 +722,6 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not Add that medium subtype')
 			db.session.rollback()
-		finally:
-			db.session.close()
 	elif medium_subtype == '':
 		descriptor['medium_type'] = {'id': None, 'name': ''}
 	elif medium_subtype == 'all':
@@ -756,8 +750,6 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not Add that medium')
 			db.session.rollback()
-		finally:
-			db.session.close()
 	elif medium == '':
 		descriptor['medium'] = {'id': None, 'name': ''}
 	elif medium == 'all':
@@ -786,8 +778,6 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not Add that descriptor')
 			db.session.rollback()
-		finally:
-			db.session.close()
 	elif descriptor_field == '':
 		descriptor['descriptor'] = {'id': None, 'name': ''}
 	elif descriptor == 'all':
