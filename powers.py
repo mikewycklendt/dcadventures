@@ -385,11 +385,9 @@ def power_medium_subtype_select():
 	for subtype in medium_subtypes:
 		options.append({'id': subtype.id, 'name': subtype.name})
 
-	body['options'] = options	body['title'] = title
+	body['options'] = options	
+	body['title'] = title
 	body['des_title'] = des_title
-
-	body['success'] = False
-	body['options'] = 'no results'
 
 	print(body)
 	return jsonify(body)
