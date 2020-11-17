@@ -911,3 +911,5 @@ def post_descriptor():
 			finally:
 				db.session.close()
 
+		return jsonify(body)
+
