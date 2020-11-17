@@ -433,10 +433,8 @@ def get_subsense_select():
 def power_medium_select():
 	body = {}
 	body['success'] = True
-
-	medium_type = request.get_json()['medium_type']
+	
 	medium_subtype = request.get_json()['medium_subtype']
-
 
 	try:
 		subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype)
