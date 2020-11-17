@@ -854,7 +854,18 @@ def post_descriptor():
 
 	descriptor = descriptor['descriptor']
 	descriptor_id = descriptor['id']
-	descriptor_name = descriptor['name']\
+	descriptor_name = descriptor['name']
+
+	if descriptor_type == 'power':
+		is_descriptor = True
+		body['type'] = 'power'
+	elif descriptor_type == 'effect':
+		is_descriptor = False
+		body['type'] = 'effect'
+	else:
+		body['success'] = False
+		error_msgs.append('You must specify whether or not this descri8ptor is assigned to this power.')
+		body['error'] = error_msgs
 
 	print('descriptor: ')
 	print(descriptor)
