@@ -65,7 +65,13 @@ function get_medium_subtypes() {
 	})	
 }
 
-function get_mediums(medium_type, medium_subtype, update) {
+function get_medium() {
+
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
+	
+	const medium_field  = document.getElementById('descriptor_medium');
+	const update = medium_field.options[medium_field.selectedIndex].value;
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
@@ -73,7 +79,6 @@ function get_mediums(medium_type, medium_subtype, update) {
 	response = fetch('/power/medium/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'medium_type': medium_type,
 			'medium_subtype': medium_subtype
 		}),
 		headers: {
@@ -101,10 +106,6 @@ function get_mediums(medium_type, medium_subtype, update) {
 			console.log(jsonResponse.options);
 		}
 	})	
-}
-
-function get_medium() {
-	
 }
 
 function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
