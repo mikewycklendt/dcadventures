@@ -869,7 +869,7 @@ def post_descriptor():
 		body['error'] = error_msgs
 
 
-	entry = PowerDes(name = name,	
+	power_descriptor = PowerDes(name = name,	
 					power_id = power_id,
 					des_id = descriptor_id,
 					origin = origin_id,
@@ -878,7 +878,7 @@ def post_descriptor():
 					medium_type = medium_type_id,
 					medium_subtype = medium_subtype_id,
 					descriptor = is_descriptor)
-	db.session.add(entry)
+	db.session.add(power_descriptor)
 	db.session.commit()
 	db.session.close()
 
