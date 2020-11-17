@@ -214,7 +214,7 @@ function descriptor() {
 	const sou_text = document.getElementById('descriptor-source-field');
 	const sub_text = document.getElementById('descriptor-medium-subtype-field');
 	const med_text = document.getElementById('descriptor-medium-field');
-	const des_text = document.getElementById('descriptor-new');
+	const des_text = document.getElementById('descriptor-descriptor-new');
 
 	const ori_des = document.getElementById('descriptor-origin-des');
 	const sou_des = document.getElementById('descriptor-source-des');

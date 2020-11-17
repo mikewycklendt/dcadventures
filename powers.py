@@ -350,8 +350,8 @@ def power_descriptor_select():
 			options.append({'id': descriptor['id'], 'name': descriptor['name']})
 	
 	except:
-		body['success'] = False
-		options.append({'id': '', 'name': 'no match'})
+		body['success'] = True
+		options.append({'id': '', 'name': 'No Descriptors'})
 
 	body['options'] = options
 
