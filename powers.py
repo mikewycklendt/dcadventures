@@ -717,7 +717,7 @@ def post_descriptor():
 				error_msgs.append('There is already a medium subtype with that name')
 				body['error'] = error_msgs
 			if process:
-				entry = MediumSubType(name=medium_subtype_name, description=medium_subtype_des)
+				entry = MediumSubType(name=medium_subtype_name, medium_type=medium_type, description=medium_subtype_des)
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
@@ -747,7 +747,7 @@ def post_descriptor():
 				error_msgs.append('There is already a medium with that name')
 				body['error'] = error_msgs
 			if process:
-				entry = Medium(name=medium_name, description=medium_des)
+				entry = Medium(name=medium_name, medium_type=medium_type, medium_subtype=medium_subtype, description=medium_des)
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['medium'] = {'id': entry.id, 'name': entry.name}
