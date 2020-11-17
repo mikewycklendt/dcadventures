@@ -621,6 +621,10 @@ def post_descriptor():
 	error_msgs = []
 	descriptor = {}
 
+	results = request.get_json()
+
+	print(results)
+
 	origin = request.get_json()['origin']
 	origin_name = request.get_json()['origin_name']
 	origin_des = request.get_json()['origin_des']
@@ -695,7 +699,7 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Source).filter_by(id=source).one()
 		descriptor['source'] = {'id': entry.id, 'name': entry.name}
-		
+
 	if medium_type != '':
 		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
 		descriptor['medium_type'] = {'id': entry.id, 'name': entry.name}
