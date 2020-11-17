@@ -257,76 +257,11 @@ function descriptor() {
 	}
 }
 
-function descriptor_submit() {
-
-	const descriptor_type = document.getElementById('descriptor_descriptor_type')
-
-	if (descriptor_type ==  'effect') {
-		descriptor_effect()
-	} else if(descriptor_type == 'power') {
-		descriptor_post()
-	} else {
-		const errors = document.getElementById('descriptor-err');
-
-		errors.style.display = "grid";
-		errors.style.padding = "1%";
-
-		const error = document.createElement('div');
-		error.className = 'descriptor-err-line';
-		error.innerHTML = 'You must specify if this power owns this descriptor or if it just affects or is affected by it.';
-
-		errors.appendChild(error);
-
-		error.style.maxHeight = error.scrollHeight + "px";
-
-		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-		errors.style.padding = "1%";
-	}
-
-}
-
-function descriptor_effect() {
-	const origin_name = document.getElementById('descriptor_origin_name').value;
-	const source_name = document.getElementById('descriptor_source_name').value;
-	const medium_subtype_name = document.getElementById('descriptor_medium_subtype_name').value;
-	const medium_name = document.getElementById('descriptor_medium_name').value;
-	const descriptor_name = document.getElementById('descriptor_name').value;
-
-	const origin_des = document.getElementById('descriptor_origin_des').value;
-	const source_des = document.getElementById('descriptor_source_des').value;
-	const medium_subtype_des = document.getElementById('descriptor_medium_subtype_des').value;
-	const medium_des = document.getElementById('descriptor_medium_des').value;
-	const descriptor_result = document.getElementById('descriptor_result').value;
-
-	const origin_field  = document.getElementById('descriptor_origin');
-	const origin = origin_field.options[origin_field.selectedIndex].value;
-
-	const source_field  = document.getElementById('descriptor_source');
-	const source = source_field.options[source_field.selectedIndex].value;
-
-	const medium_type_field  = document.getElementById('descriptor_medium_type');
-	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
-	
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
-
-	const medium_field  = document.getElementById('descriptor_medium');
-	const medium = medium_field.options[medium_field.selectedIndex].value;
-
-	const descriptor_field  = document.getElementById('descriptor_field');
-	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
-
-	const descriptor_type = document.getElementById('descriptor_descriptor_type');
-	
-	const power_id = document.getElementById('power_id').value;
-
-}
-
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
 
 
-function descriptor_post() {
+function descriptor_submit() {
 
 	const error_line = 'descriptor-err-line';
 	const error_div = 'descriptor-err';
