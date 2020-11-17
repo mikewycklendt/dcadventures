@@ -868,6 +868,7 @@ def post_descriptor():
 					medium_type = medium_type_id,
 					medium_subtype = medium_subtype,
 					descriptor = is_descriptor)
+	db.session.add()
 	db.session.commit()
 
 	body['id'] = entry.id	
