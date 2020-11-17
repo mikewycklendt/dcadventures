@@ -40,7 +40,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 15% 15% 15% 15% 25%;
+	grid-template-columns: 16% 16% 16% 16% 16% 20%;
 	grid-auto-rows: auto;
 }
 
