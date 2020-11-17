@@ -70,8 +70,7 @@ function get_medium() {
 	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
 	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
 	
-	const medium_field  = document.getElementById('descriptor_medium');
-	const update = medium_field.options[medium_field.selectedIndex].value;
+	const update  = document.getElementById('descriptor_medium');
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
