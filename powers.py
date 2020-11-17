@@ -365,7 +365,7 @@ def power_medium_subtype_select():
 
 	medium_type_id = request.get_json()['medium_type']
 
-	print('id ' + medium_type)
+	print('id ' + medium_type_id)
 
 	medium_type = db.session.query(MediumType).filter_by(id=medium_type_id)
 	medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
