@@ -796,6 +796,8 @@ def post_descriptor():
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 
+	print(descriptor)
+
 	origin = descriptor['origin']
 	origin_id = origin['id']
 	origin_name = origin['name']
@@ -867,6 +869,7 @@ def post_descriptor():
 
 
 	if error:
+		print(body)
 		return jsonify(body)
 	else:
 		try:
