@@ -390,8 +390,12 @@ def power_medium_subtype_select():
 		body['title'] = title
 		body['des_title'] = des_title
 
-		print(body)
-		return jsonify(body)
+	except:
+		body['success'] = False
+		body['options'] = 'no results'
+
+	print(body)
+	return jsonify(body)
 
 @powers.route('/sense/subsense/select', methods=['POST'])
 def get_subsense_select():
