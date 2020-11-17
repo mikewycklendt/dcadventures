@@ -296,7 +296,8 @@ function descriptor_submit() {
 	const descriptor_field  = document.getElementById('descriptor_field');
 	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
 
-	const descriptor_type = document.getElementById('descriptor_descriptor_type');
+	const descriptor_type_field = document.getElementById('descriptor_descriptor_type');
+	const descriptor_type = descriptor_type_field.options[descriptor_type_field.selectedIndex].value;
 	
 	const power_id = document.getElementById('power_id').value;
 
