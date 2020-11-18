@@ -112,7 +112,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	response = fetch('/power/medium/select', {
+	response = fetch('/power/descriptor/select', {
 		method: 'POST',
 		body: JSON.stringify({
 			'origin': origin,

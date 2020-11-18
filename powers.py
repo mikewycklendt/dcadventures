@@ -872,14 +872,21 @@ def post_descriptor():
 	print('descriptor: ')
 	print(descriptor)
 
-	power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
-	db.session.add(power_descriptor)
-	db.session.commit()
+	try:
+		power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
+		db.session.add(power_descriptor)
+		db.session.commit()
 	
-	body['id'] = power_descriptor.id	
-	body['name'] = power_descriptor.name
-	
-	db.session.close()
+		body['id'] = power_descriptor.id	
+		body['name'] = power_descriptor.name
+	except:
+		error = True
+		body['success'] = False
+		error_msgs.append('Could not add the descriptor for thid power')
+		body['error'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
 
 	if descriptor_field == 'new':
 		try:
