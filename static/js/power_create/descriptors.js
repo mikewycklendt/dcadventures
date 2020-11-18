@@ -149,7 +149,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 			let option;
 
 			for (o of old_options) {
-				if (o.value != 'new' || o.value != 'all' || o.value != '') {
+				if (o.value != 'new' && o.value != 'all' && o.value != '') {
 					o.remove();
 				}
 			}
