@@ -366,7 +366,7 @@ def power_medium_subtype_select():
 	try:
 		medium_type = db.session.query(MediumType).filter_by(id=medium_type_id).one()
 		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
-		mediums = db.session.query(Medium).filter_by(medium_type=medium_type_id).order_by(Medium.name).all
+		mediums = db.session.query(Medium).filter_by(medium_type=medium_type_id).order_by(Medium.name).all()
 		
 		all_medium_type = 'Any ' + medium_type.name
 
