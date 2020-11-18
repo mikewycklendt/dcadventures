@@ -119,9 +119,7 @@ function get_medium() {
 	})	
 }
 
-let options = [];
-
-function get_descriptors(origin, source, medium_type, medium_subtype, medium, update, options) {
+function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
@@ -144,24 +142,19 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			if (options != []) {
-
 			let old_options = update.options;
 			let o;
 
-				for (option of options) {
-					for (o of old_options) {
-						if (o.value == option.id) {
-							console.log(option.value);
-							o.remove();
-						}
-					}
-				}
-			}
-			
 			let options = jsonResponse.options;
 			let option;
 
+			for (o of old_options) {
+				if (o.value != 'new' || o.value != 'all' || o.value != '') {
+					console.log(option.value);
+					o.remove();
+				}
+			}
+			
 			for (option of options)  {
 				let o = document.createElement("option")
 				o.value = option.id;
