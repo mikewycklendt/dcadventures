@@ -255,6 +255,8 @@ function descriptor() {
 		des_title_row1.style.opacity = '0%';
 		des_field.style.opacity = '0%';
 	}
+
+	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor_field)
 }
 
 

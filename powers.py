@@ -815,6 +815,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+				body['descriptor'] = True
 				name = entry.name
 		except:
 			error = True
@@ -830,6 +831,7 @@ def post_descriptor():
 	else:
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+		body['descriptor'] = True
 		name = entry.name
 
 	origin = descriptor['origin']

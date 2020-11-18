@@ -54,7 +54,7 @@
 
 		<div>
 			<select class="entry-select" id="descriptor_medium_type" name="descriptor_medium_type" onchange="get_medium_subtypes(); descriptor()">
-				<option value="all">Medium Type</option>
+				<option value="">Medium Type</option>
 				{% for m in mediums %}
 					<option value={{m.id}}>{{m.name}}</option>
 				{% endfor %}
