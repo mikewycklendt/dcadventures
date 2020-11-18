@@ -366,6 +366,7 @@ def power_medium_subtype_select():
 	try:
 		medium_type = db.session.query(MediumType).filter_by(id=medium_type_id).one()
 		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
+		mediums = db.session.query(Medium).filter_by(medium_type=medium_type_id).order_by(Medium.name).all
 		
 		all_medium_type = 'Any ' + medium_type.name
 
@@ -373,16 +374,28 @@ def power_medium_subtype_select():
 
 		des_title = 'New ' + medium_type.name + ' Type Description'
 
+		medium_type_medium = medium_type.name + ' Mediums'
+
 		options = []
 
+		options_medium = []
+		
 		options.append({'id': '', 'name': medium_type.name})
 		options.append({'id': 'all', 'name': all_medium_type})
 		options.append({'id': 'new', 'name': 'New'})
 
+		options_medium.append({'id': '', 'name': medium_type.name})
+		options_medium.append({'id': 'all', 'name': all_medium_type})
+		options_medium.append({'id': 'new', 'name': 'New'})
+
 		for subtype in medium_subtypes:
 			options.append({'id': subtype.id, 'name': subtype.name})
 
-		body['options'] = options	
+		for medium in mediums:
+			options_medium.append({'id': medium.id, 'namw': medium.name})
+
+		body['options'] = options
+		body['options_medium'] = options_medium
 		body['title'] = title
 		body['des_title'] = des_title
 

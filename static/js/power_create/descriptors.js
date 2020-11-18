@@ -22,11 +22,12 @@ function get_medium_subtypes() {
 	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
 
 	const update = document.getElementById('descriptor_medium_subtype');
-
-	
+	const update_medium  = document.getElementById('descriptor_medium');
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+	update_medium.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update_medium.style.backgroundColor = "white"}, 200)
 
 	response = fetch('/power/medium/subtype/select', {
 		method: 'POST',
@@ -42,11 +43,13 @@ function get_medium_subtypes() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			update.innerText = null;
+			update_medium.innerText = NULL;
+
 			title.innerText = jsonResponse.title;
 			title.style.opacity = '100%';
 
 			des_title.innerText = jsonResponse.des_title;
-
 
 			const options = jsonResponse.options;
 			let option;
@@ -56,6 +59,16 @@ function get_medium_subtypes() {
 				o.value = option.id;
 				o.text = option.name;
 				update.add(o);
+			}
+
+			const options_medium = jsonResponse.options_medium
+			let option_medium;
+
+			for (option_medium of options_medium) {
+				o = document.createElement('option')
+				o.value = option_medium.id;
+				o.text = option_medium.name;
+				update_medium.add(o);
 			}
 
 		} else {
