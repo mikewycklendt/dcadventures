@@ -44,7 +44,7 @@ function get_medium_subtypes() {
 		if (jsonResponse.success) {
 
 			update.innerText = null;
-			update_medium.innerText = NULL;
+			update_medium.innerText = null;
 
 			title.innerText = jsonResponse.title;
 			title.style.opacity = '100%';
