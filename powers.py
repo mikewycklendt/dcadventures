@@ -392,7 +392,7 @@ def power_medium_subtype_select():
 			options.append({'id': subtype.id, 'name': subtype.name})
 
 		for medium in mediums:
-			options_medium.append({'id': medium.id, 'namw': medium.name})
+			options_medium.append({'id': medium.id, 'name': medium.name})
 
 		body['options'] = options
 		body['options_medium'] = options_medium
