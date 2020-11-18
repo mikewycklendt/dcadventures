@@ -150,7 +150,6 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 
 			for (o of old_options) {
 				if (o.value != 'new' || o.value != 'all' || o.value != '') {
-					console.log(option.value);
 					o.remove();
 				}
 			}
