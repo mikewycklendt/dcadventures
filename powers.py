@@ -316,10 +316,6 @@ def power_descriptor_select():
 		
 	options = []
 
-	options.append({'id': '', 'name': 'Descriptor'})
-	options.append({'id': 'all', 'name': 'All Matching'})
-	options.append({'id': 'new', 'name': 'New'})
-
 	try:
 		if origin != 'all' or origin != 'new' or origin != '':
 			for descriptor in descriptors:
@@ -350,7 +346,7 @@ def power_descriptor_select():
 			options.append({'id': descriptor['id'], 'name': descriptor['name']})
 	
 	except:
-		body['success'] = True
+		body['success'] = False
 		options.append({'id': '', 'name': 'No Descriptors'})
 
 	body['options'] = options

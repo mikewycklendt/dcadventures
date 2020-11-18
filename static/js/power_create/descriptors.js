@@ -47,7 +47,6 @@ function get_medium_subtypes() {
 
 			des_title.innerText = jsonResponse.des_title;
 
-			update.innerText = null;
 
 			const options = jsonResponse.options;
 			let option;
@@ -107,7 +106,9 @@ function get_medium() {
 	})	
 }
 
-function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
+let options = [];
+
+function get_descriptors(origin, source, medium_type, medium_subtype, medium, update, options) {
 
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
@@ -130,10 +131,23 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const options = jsonResponse.options;
-			let option;
+			if (options != []) {
 
-			update.innerText = null;
+			let old_options = update.options;
+			let o;
+
+				for (option of options) {
+					for (o of old_options) {
+						if (o.value == option.id) {
+							console.log(option.value);
+							o.remove();
+						}
+					}
+				}
+			}
+			
+			let options = jsonResponse.options;
+			let option;
 
 			for (option of options)  {
 				let o = document.createElement("option")
