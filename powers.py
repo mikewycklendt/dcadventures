@@ -337,10 +337,12 @@ def power_descriptor_select():
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
 		while i < max_d:
+
 			des_id = descriptors[i].get('origin')
 			print(des_id)
 			if des_id != origin:
 				del descriptors[i]
+				max_d = max_d - 1
 
 	for descriptor in descriptors:
 		print(descriptor)
