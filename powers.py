@@ -343,27 +343,27 @@ def power_descriptor_select():
 
 	print(source)
 	if source != 'all' and source != 'new' and source != '':
-		for i in range(0, max_d, 1):
-			if descriptors[i].get('source') != source:
-				del descriptors[i]
+		for descriptor in descriptors:
+			if descriptor.get('source') != source:
+				del descriptor
 	
 	for descriptor in descriptors:
 		print(descriptor)
 
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
-		for i in range(0, max_d, 1):
-			if descriptors[i].get('medium_type') != medium_type:
-				del descriptors[i]
+		for descriptor in descriptors:
+			if descriptor.get('medium_type') != medium_type:
+				del descriptor
 
 	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '':
-		for i in range(0, max_d, 1):
-			if descriptors[i].get('medium_subtype') != medium_subtype:
-				del descriptors[i]
+		for descriptor in descriptors:
+			if descriptor.get('medium_subtype') != medium_subtype:
+				del descriptor
 
 	if medium != 'all' and medium != 'new' and medium != '':
-		for i in range(0, max_d, 1):
-			if descriptors[i].get('medium') != medium:
-				del descriptors[i]
+		for descriptor in descriptors:
+			if descriptor.get('medium') != medium:
+				del descriptor
 
 	print('\n\n')
 	for descriptor in descriptors:
