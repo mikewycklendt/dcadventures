@@ -340,7 +340,7 @@ def power_descriptor_select():
 			d_id = descriptors[i].get('origin') 
 			print(d_id)
 			if d_id != origin:
-				del descriptors[i]
+				print(descriptors[i])
 
 	for descriptor in descriptors:
 		print(descriptor)
