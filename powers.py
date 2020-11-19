@@ -346,7 +346,7 @@ def power_descriptor_select():
 		print(descriptor)
 
 	print('\n\n')	
-
+	'''
 	if source != 'all' and source != 'new' and source != '':
 		for descriptor in descriptors:
 			if descriptor.get('source') != source:
@@ -371,7 +371,7 @@ def power_descriptor_select():
 	for descriptor in descriptors:
 		print('results:')
 		print(descriptor)
-
+	'''
 
 	for descriptor in descriptors:
 		options.append({'id': descriptor['id'], 'name': descriptor['name']})
