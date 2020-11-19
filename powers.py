@@ -855,6 +855,7 @@ def post_descriptor():
 		body['error'] = error_msgs
 
 	if error:
+		print('body: ')
 		print(body)
 		errors = body['error']
 		for err in errors:
