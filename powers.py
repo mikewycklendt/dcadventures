@@ -674,7 +674,7 @@ def post_descriptor():
 				entry = Origin(name=origin_name, description=origin_des)
 				db.session.add(entry)
 				db.session.commit()
-				descriptor['origin'] = {'id': entry.id, 'name': entry.name}
+				origin_id = entry.id
 				if name == '':
 					name = name + entry.name
 				else:
@@ -687,10 +687,10 @@ def post_descriptor():
 		finally:
 			db.session.close()
 	elif origin == '':
-		descriptor['origin'] = {'id': None, 'name': ''}
+		origin_id = None
 	else:
 		entry = db.session.query(Origin).filter_by(id=origin).one()
-		descriptor['origin'] = {'id': entry.id, 'name': entry.name}
+		origin_id = entry.id
 		if name == '':
 			name = name + entry.name
 		else:
@@ -710,7 +710,7 @@ def post_descriptor():
 				entry = Source(name=source_name, description=source_des)
 				db.session.add(entry)
 				db.session.commit()
-				descriptor['source'] = {'id': entry.id, 'name': entry.name}
+				source_id = entry.id
 				if name == '':
 					name = name + entry.name
 				else:
@@ -723,10 +723,10 @@ def post_descriptor():
 		finally:
 			db.session.close()
 	elif source == '':
-		descriptor['source'] = {'id': None, 'name': ''}
+		source_id = None
 	else:
 		entry = db.session.query(Source).filter_by(id=source).one()
-		descriptor['source'] = {'id': entry.id, 'name': entry.name}
+		source_id = entry.id
 		if name == '':
 			name = name + entry.name
 		else:
@@ -734,10 +734,10 @@ def post_descriptor():
 
 	if medium_type != '':
 		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
-		descriptor['medium_type'] = {'id': entry.id, 'name': entry.name}
+		medium_type_id = entry.id
 		one_medium_name = entry.name
 	else:
-		descriptor['medium_type'] = {'id': None, 'name': ''}
+		medium_type_id = None
 
 	if medium_subtype == 'new':
 		process = True
@@ -750,10 +750,10 @@ def post_descriptor():
 				error_msgs.append('There is already a medium subtype with that name')
 				body['error'] = error_msgs
 			if process:
-				entry = MediumSubType(name=medium_subtype_name, medium_type=medium_type, description=medium_subtype_des)
+				entry = MediumSubType(name=medium_subtype_name, medium_type=medium_type_id, description=medium_subtype_des)
 				db.session.add(entry)
 				db.session.commit()
-				descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
+				medium_subtype_id = entry.id
 				one_medium_name = entry.name
 		except:
 			error = True
@@ -763,18 +763,17 @@ def post_descriptor():
 		finally:
 			db.session.close()
 	elif medium_subtype == '':
-		descriptor['medium_type'] = {'id': None, 'name': ''}
+		medium_subtype_id = None
 	elif medium_subtype == 'all':
-		descriptor['medium_type'] = {'id': None, 'name': 'all'}
+		medium_subtype_id = None
 	else:
 		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-		descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
+		medium_subtype_id = entry.id
 		one_medium_name = entry.name
 
-	'''
 	if medium == 'new':
 		process = True
-
+	try:
 		medium_check = db.session.query(Medium).filter(Medium.name == medium_name).first()
 		if medium_check is not None:
 			process = False
@@ -783,28 +782,26 @@ def post_descriptor():
 			error_msgs.append('There is already a medium with that name')
 			body['error'] = error_msgs
 		if process:
-	'''
-	entry = Medium(name=medium_name, medium_type=medium_type, medium_subtype=medium_subtype, description=medium_des)
-	db.session.add(entry)
-	db.session.commit()
-	descriptor['medium'] = {'id': entry.id, 'name': entry.name}
-	one_medium_name = entry.name
-	'''
+			entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des)
+			db.session.add(entry)
+			db.session.commit()
+			medium_id = entry.id
+			one_medium_name = entry.name
+	except:
 		error = True
 		body['success'] = False
 		error_msgs.append('Could Not Add that medium')
 		db.session.rollback()
-
+	finally:
 		db.session.close()
 	elif medium == '':
-		descriptor['medium'] = {'id': None, 'name': ''}
+		medium_id = None
 	elif medium == 'all':
-		descriptor['medium'] = {'id': None, 'name': 'all'}
+		medium_id = None
 	else:
 		entry = db.session.query(Medium).filter_by(id=medium).one()
-		descriptor['medium'] = {'id': entry.id, 'name': entry.name}
+		medium_id = entry.id
 		one_medium_name = entry.name
-'''
 
 	if one_medium_name != '':
 		if name == '':
@@ -823,10 +820,10 @@ def post_descriptor():
 				error_msgs.append('There is already a descriptor with that name')
 				body['error'] = error_msgs
 			if process:
-				entry = Descriptor(name=descriptor_name, result=descriptor_result)
+				entry = Descriptor(name=descriptor_name, origin=origin_id, source=source_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, medium=medium_id, result=descriptor_result)
 				db.session.add(entry)
 				db.session.commit()
-				descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+				descriptor_id = entry.id
 				body['descriptor'] = True
 				name = entry.name
 		except:
@@ -837,41 +834,14 @@ def post_descriptor():
 		finally:
 			db.session.close()
 	elif descriptor_field == '':
-		descriptor['descriptor'] = {'id': None, 'name': ''}
+		descriptor_id = None
 	elif descriptor == 'all':
-		descriptor['descriptor'] = {'id': None, 'name': 'all'}
+		descriptor_id = None
 	else:
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
-		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
+		descriptor_id = entry.id
 		body['descriptor'] = True
 		name = entry.name
-
-	print('descriptor: ')
-	print(descriptor)
-
-	origin = descriptor['origin']
-	origin_id = origin['id']
-	origin_name = origin['name']
-	
-	source = descriptor['source']
-	source_id = source['id']
-	source_name = source['name']
-
-	medium_type = descriptor['medium_type']
-	medium_type_id = medium_type['id']
-	medium_type_name = medium_type['name']
-
-	medium_subtype = descriptor['medium_subtype']
-	medium_subtype_id = medium_subtype['id']
-	medium_subtype_name = medium_subtype['name']
-	
-	medium = descriptor['medium']
-	medium_id = medium['id']
-	medium_name = medium['name']
-
-	descriptor = descriptor['descriptor']
-	descriptor_id = descriptor['id']
-	descriptor_name = descriptor['name']
 
 	if descriptor_type == 'power':
 		is_descriptor = True
@@ -884,8 +854,8 @@ def post_descriptor():
 		error_msgs.append('You must specify whether or not this descri8ptor is assigned to this power.')
 		body['error'] = error_msgs
 
-	print('descriptor: ')
-	print(descriptor)
+	if error:
+		return jsonify(body)
 
 	try:
 		power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
@@ -897,30 +867,11 @@ def post_descriptor():
 	except:
 		error = True
 		body['success'] = False
-		error_msgs.append('Could not add the descriptor for thid power')
+		error_msgs.append('Could not add the descriptor for this power')
 		body['error'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
-
-	if descriptor_field == 'new':
-		try:
-			descriptor_new = db.sesssion.query(Descriptor).filter(Descriptor.id == descriptor_id).one()
-			descriptor_new.origin = origin_id
-			descriptor_new.source = source_id
-			descriptor_new.medium = medium_id
-			descriptor_new.medium_type = medium_type_id
-			descriptor_new.medium_subtype = medium_subtype_id
-			descriptor_new.result =  descriptor_result
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			error_msgs.append('There could not fill out all descriptor information')
-			body['error'] = error_msgs
-			db.session.rollback()
-		finally:
-			db.session.close()
 
 	print(body)
 	return jsonify(body)
