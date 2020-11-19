@@ -321,11 +321,6 @@ def power_descriptor_select():
 	descriptors_query = Descriptor.query.all()
 	descriptors = [descriptor.format() for descriptor in descriptors_query]
 
-	print('\n\n')
-	print('descriptor raw resiults:')
-	print(descriptors_raw)
-	print('\n\n')
-
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
 		for i in range(len(descriptors)):
