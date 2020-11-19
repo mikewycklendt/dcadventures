@@ -328,7 +328,6 @@ def power_descriptor_select():
 	print('\n\n')
 	print(len(descriptors))
 
-	'''
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
 		for i in range(len(descriptors)):
@@ -379,7 +378,7 @@ def power_descriptor_select():
 	print('options: ')
 	for o in options:
 		print(o)
-	'''
+
 	'''
 	descriptors = ''
 	origin_check = False
