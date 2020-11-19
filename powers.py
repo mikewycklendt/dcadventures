@@ -305,7 +305,7 @@ def power_descriptor_select():
 	body['success'] = True
 
 	results = request.get_json()
-	print('\n\n\n\n\n\n\n')
+	print('\n\n\n')
 	print('descriptor resiults:')
 	print(results)
 
@@ -321,7 +321,7 @@ def power_descriptor_select():
 	descriptors_query = Descriptor.query.all()
 	descriptors_raw = [descriptor.format() for descriptor in descriptors_query]
 
-	print('\n\n\n\n\n\n\n')
+	print('\n\n\n')
 	print('descriptor raw resiults:')
 	print(descriptors_raw)
 
@@ -349,6 +349,22 @@ def power_descriptor_select():
 		for descriptor in descriptors_raw:
 			if descriptor['medium'] != medium:
 				descriptors_raw.remove(descriptor)
+
+	for descriptor in descriptors_raw:
+		print('\n\n\n')
+		print('results:')
+		print(descriptor)
+
+
+	for descriptor in descriptors_raw:
+		options.append({'id': descriptor['id'], 'name': descriptor['name']})
+
+	body['options'] = options
+
+	print('\n\n\n')
+	print('options: ')
+	for o in options:
+		print(o)
 
 	'''
 	descriptors = ''
@@ -410,16 +426,6 @@ def power_descriptor_select():
 		options.append({'id': descriptor.id, 'name': descriptor.name})
 
 	'''
-	
-	for descriptor in descriptors_raw:
-		options.append({'id': descriptor['id'], 'name': descriptor['name']})
-
-	body['options'] = options
-
-	print('\n\n\n\n\n\n')
-	print('options: ')
-	for o in options:
-		print(o)
 
 	print(body)
 	return jsonify(body)
