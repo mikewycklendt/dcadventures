@@ -319,51 +319,50 @@ def power_descriptor_select():
 	options = []
 
 	descriptors_query = Descriptor.query.all()
-	descriptors_raw = [descriptor.format() for descriptor in descriptors_query]
+	descriptors = [descriptor.format() for descriptor in descriptors_query]
 
-	print('\n\n\n')
+	print('\n\n')
 	print('descriptor raw resiults:')
 	print(descriptors_raw)
+	print('\n\n')
 
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
-		for descriptor in descriptors_raw:
-			if descriptor['origin'] != origin:
-				descriptors_raw.remove(descriptor)
+		for i in range(len(descriptors)):
+			if descriptors[i].get['origin'] != origin:
+				del descriptors[i]
 
 	for descriptor in descriptors_raw:
-		print('\n')
 		print(descriptor)
-		print('\n')
+
+	print('\n\n')	
 
 	print(source)
 	if source != 'all' and source != 'new' and source != '':
-		for descriptor in descriptors_raw:
-			if descriptor['source'] != source:
-				descriptors_raw.remove(descriptor)
+		for i in range(len(descriptors)):
+			if descriptors[i].get['source'] != source:
+				del descriptors[i]
 	
 	for descriptor in descriptors_raw:
-		print('\n')
-		print(descriptor)
-		print('\n')
+		print(descriptor
 
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
-		for descriptor in descriptors_raw:
-			if descriptor['medium_type'] != medium_type:
-				descriptors_raw.remove(descriptor)
+		for i in range(len(descriptors)):
+			if descriptors[i].get['medium_type'] != medium_type:
+				del descriptors[i]
 
 	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '':
-		for descriptor in descriptors_raw:
-			if descriptor['medium_subtype'] != medium_subtype:
-				descriptors_raw.remove(descriptor)
+		for i in range(len(descriptors)):
+			if descriptors[i].get['medium_subtype'] != medium_subtype:
+				del descriptors[i]
 
 	if medium != 'all' and medium != 'new' and medium != '':
-		for descriptor in descriptors_raw:
-			if descriptor['medium'] != medium:
-				descriptors_raw.remove(descriptor)
+		for i in range(len(descriptors)):
+			if descriptors[i].get['medium'] != medium:
+				del descriptors[i]
 
-	for descriptor in descriptors_raw:
-		print('\n\n\n')
+	print('\n\n')
+	for descriptor in descriptors:
 		print('results:')
 		print(descriptor)
 
