@@ -333,7 +333,7 @@ def power_descriptor_select():
 
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
-		while i < max_d
+		while i < max_d:
 			des_id = descriptors[i].get('origin')
 			print(des_id)
 			if des_id != origin:
