@@ -773,27 +773,27 @@ def post_descriptor():
 
 	if medium == 'new':
 		process = True
-	try:
-		medium_check = db.session.query(Medium).filter(Medium.name == medium_name).first()
-		if medium_check is not None:
-			process = False
+		try:
+			medium_check = db.session.query(Medium).filter(Medium.name == medium_name).first()
+			if medium_check is not None:
+				process = False
+				error = True
+				body['success'] = False
+				error_msgs.append('There is already a medium with that name')
+				body['error'] = error_msgs
+			if process:
+				entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des)
+				db.session.add(entry)
+				db.session.commit()
+				medium_id = entry.id
+				one_medium_name = entry.name
+		except:
 			error = True
 			body['success'] = False
-			error_msgs.append('There is already a medium with that name')
-			body['error'] = error_msgs
-		if process:
-			entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des)
-			db.session.add(entry)
-			db.session.commit()
-			medium_id = entry.id
-			one_medium_name = entry.name
-	except:
-		error = True
-		body['success'] = False
-		error_msgs.append('Could Not Add that medium')
-		db.session.rollback()
-	finally:
-		db.session.close()
+			error_msgs.append('Could Not Add that medium')
+			db.session.rollback()
+		finally:
+			db.session.close()
 	elif medium == '':
 		medium_id = None
 	elif medium == 'all':
