@@ -318,7 +318,7 @@ def power_descriptor_select():
 	descriptors_query = Descriptor.query.all()
 
 	descriptors = [descriptor.format() for descriptor in descriptors_query]
-	print('\n\n\n\n\ndescriptors format: ')\
+	print('\n\n\n\n\ndescriptors format: ')
 	print(descriptors)
 
 	options = []
