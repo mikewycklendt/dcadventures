@@ -146,6 +146,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 			let o;
 
 			let options = jsonResponse.options;
+			
 			let option;
 
 			for (o of old_options) {
@@ -155,6 +156,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 			}
 			
 			for (option of options)  {
+				console.log(option)
 				let o = document.createElement("option")
 				o.value = option.id;
 				o.text = option.name;

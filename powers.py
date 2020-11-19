@@ -316,40 +316,39 @@ def power_descriptor_select():
 		
 	options = []
 
-	try:
-		if origin != 'all' or origin != 'new' or origin != '':
-			for descriptor in descriptors:
-				if descriptor['origin'] != origin:
-					descriptors.remove(descriptor)
 
-		if source != 'all' or source != 'new' or source != '':
-			for descriptor in descriptors:
-				if descriptor['source'] != source:
-					descriptors.remove(descriptor)
+	if origin != 'all' or origin != 'new' or origin != '':
+		for descriptor in descriptors:
+			if descriptor['origin'] != origin:
+				descriptors.remove(descriptor)
 
-		if medium_type != 'all' or medium_type != 'new' or medium_type != '':
-			for descriptor in descriptors:
-				if descriptor['medium_type'] != medium_type:
-					descriptors.remove(descriptor)
+	if source != 'all' or source != 'new' or source != '':
+		for descriptor in descriptors:
+			if descriptor['source'] != source:
+				descriptors.remove(descriptor)
 
-		if medium_subtype != 'all' or medium_subtype != 'new' or medium_subtype != '':
-			for descriptor in descriptors:
-				if descriptor['medium_subtype'] != medium_subtype:
-					descriptors.remove(descriptor)
+	if medium_type != 'all' or medium_type != 'new' or medium_type != '':
+		for descriptor in descriptors:
+			if descriptor['medium_type'] != medium_type:
+				descriptors.remove(descriptor)
 
-		if medium != 'all' or medium != 'new' or medium != '':
-			for descriptor in descriptors:
-				if descriptor['medium'] != medium:
-					descriptors.remove(descriptor)
+	if medium_subtype != 'all' or medium_subtype != 'new' or medium_subtype != '':
+		for descriptor in descriptors:
+			if descriptor['medium_subtype'] != medium_subtype:
+				descriptors.remove(descriptor)
+
+	if medium != 'all' or medium != 'new' or medium != '':
+		for descriptor in descriptors:
+			if descriptor['medium'] != medium:
+				descriptors.remove(descriptor)
 
 		for descriptor in descriptors:
 			options.append({'id': descriptor['id'], 'name': descriptor['name']})
 	
-	except:
-		body['success'] = False
-		options.append({'id': '', 'name': 'No Descriptors'})
-
 	body['options'] = options
+
+	for o in options:
+		print(o)
 
 	print(body)
 	return jsonify(body)
