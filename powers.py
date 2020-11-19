@@ -771,6 +771,7 @@ def post_descriptor():
 		descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
 		one_medium_name = entry.name
 
+'''
 	if medium == 'new':
 		process = True
 
@@ -782,12 +783,13 @@ def post_descriptor():
 			error_msgs.append('There is already a medium with that name')
 			body['error'] = error_msgs
 		if process:
-			entry = Medium(name=medium_name, medium_type=medium_type, medium_subtype=medium_subtype, description=medium_des)
-			db.session.add(entry)
-			db.session.commit()
-			descriptor['medium'] = {'id': entry.id, 'name': entry.name}
-			one_medium_name = entry.name
-
+'''
+	entry = Medium(name=medium_name, medium_type=medium_type, medium_subtype=medium_subtype, description=medium_des)
+	db.session.add(entry)
+	db.session.commit()
+	descriptor['medium'] = {'id': entry.id, 'name': entry.name}
+	one_medium_name = entry.name
+'''
 		error = True
 		body['success'] = False
 		error_msgs.append('Could Not Add that medium')
@@ -802,6 +804,7 @@ def post_descriptor():
 		entry = db.session.query(Medium).filter_by(id=medium).one()
 		descriptor['medium'] = {'id': entry.id, 'name': entry.name}
 		one_medium_name = entry.name
+'''
 
 	if one_medium_name != '':
 		if name == '':
@@ -842,6 +845,9 @@ def post_descriptor():
 		descriptor['descriptor'] = {'id': entry.id, 'name': entry.name}
 		body['descriptor'] = True
 		name = entry.name
+
+	print('descriptor: ')
+	print(descriptor)
 
 	origin = descriptor['origin']
 	origin_id = origin['id']
