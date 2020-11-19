@@ -304,6 +304,10 @@ def power_descriptor_select():
 	body = {}
 	body['success'] = True
 
+	results = request.get_json()
+	print('\n\n\n\n\n\n\n')
+	print('descriptor resiults:')
+
 	origin = request.get_json()['origin']
 	source = request.get_json()['source']
 	medium_type = request.get_json()['medium_type']
