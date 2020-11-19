@@ -332,9 +332,9 @@ def power_descriptor_select():
 
 	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
-		for i in range(0, max_d, 1):
-			if descriptors[i].get('origin') != origin:
-				del descriptors[i]
+		for descriptor in descriptors:
+			if descriptor.get('origin') != origin:
+				del descriptor
 
 	for descriptor in descriptors:
 		print(descriptor)
