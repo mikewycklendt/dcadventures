@@ -771,7 +771,7 @@ def post_descriptor():
 		descriptor['medium_subtype'] = {'id': entry.id, 'name': entry.name}
 		one_medium_name = entry.name
 
-'''
+	'''
 	if medium == 'new':
 		process = True
 
@@ -783,13 +783,13 @@ def post_descriptor():
 			error_msgs.append('There is already a medium with that name')
 			body['error'] = error_msgs
 		if process:
-'''
+	'''
 	entry = Medium(name=medium_name, medium_type=medium_type, medium_subtype=medium_subtype, description=medium_des)
 	db.session.add(entry)
 	db.session.commit()
 	descriptor['medium'] = {'id': entry.id, 'name': entry.name}
 	one_medium_name = entry.name
-'''
+	'''
 		error = True
 		body['success'] = False
 		error_msgs.append('Could Not Add that medium')
