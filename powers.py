@@ -336,22 +336,18 @@ def power_descriptor_select():
 			des_id = descriptor.get('origin')
 			print(des_id)
 			if des_id != origin:
-				del descriptor
+				descriptors.remove(descriptor)
 
 	for descriptor in descriptors:
 		print(descriptor)
 
 	print('\n\n')	
 
-	print(source)
 	if source != 'all' and source != 'new' and source != '':
 		for descriptor in descriptors:
 			if descriptor.get('source') != source:
 				del descriptor
 	
-	for descriptor in descriptors:
-		print(descriptor)
-
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
 		for descriptor in descriptors:
 			if descriptor.get('medium_type') != medium_type:
