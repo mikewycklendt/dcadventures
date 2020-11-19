@@ -325,15 +325,27 @@ def power_descriptor_select():
 	print('descriptor raw resiults:')
 	print(descriptors_raw)
 
+	print(origin)
 	if origin != 'all' and origin != 'new' and origin != '':
 		for descriptor in descriptors_raw:
 			if descriptor['origin'] != origin:
 				descriptors_raw.remove(descriptor)
 
+	for descriptor in descriptors_raw:
+		print('\n')
+		print(descriptor)
+		print('\n')
+
+	print(source)
 	if source != 'all' and source != 'new' and source != '':
 		for descriptor in descriptors_raw:
 			if descriptor['source'] != source:
 				descriptors_raw.remove(descriptor)
+	
+	for descriptor in descriptors_raw:
+		print('\n')
+		print(descriptor)
+		print('\n')
 
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
 		for descriptor in descriptors_raw:
