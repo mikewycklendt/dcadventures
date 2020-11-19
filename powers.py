@@ -315,42 +315,27 @@ def power_descriptor_select():
 	medium_subtype = request.get_json()['medium_subtype']
 	medium = request.get_json()['medium']
 
-	descriptors_query = Descriptor.query.all()
-
-	descriptors = [descriptor.format() for descriptor in descriptors_query]
-	print('\n\n\n\n\ndescriptors format: ')
-	print(descriptors)
+	descriptors = Descriptor.query.all()
 
 	options = []
 
-
 	if origin != 'all' and origin != 'new' and origin != '':
-		for descriptor in descriptors:
-			if descriptor['origin'] != origin:
-				descriptors.remove(descriptor)
+		descriptors.filter_by(origin=origin).all()
 
 	if source != 'all' and source != 'new' and source != '':
-		for descriptor in descriptors:
-			if descriptor['source'] != source:
-				descriptors.remove(descriptor)
-
+		descriptors.filter_by(source=source).all()
+		
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
-		for descriptor in descriptors:
-			if descriptor['medium_type'] != medium_type:
-				descriptors.remove(descriptor)
+		descriptors.filter_by(medium_type=medium_type).all()
 
 	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '':
-		for descriptor in descriptors:
-			if descriptor['medium_subtype'] != medium_subtype:
-				descriptors.remove(descriptor)
+		descriptors.filter_by(medium_subtype=medium_subtype).all()
 
 	if medium != 'all' and medium != 'new' and medium != '':
-		for descriptor in descriptors:
-			if descriptor['medium'] != medium:
-				descriptors.remove(descriptor)
+		descriptors.filter_by(medium=medium).all()
 
-		for descriptor in descriptors:
-			options.append({'id': descriptor['id'], 'name': descriptor['name']})
+	for descriptor in descriptors:
+		options.append({'id': descriptor['id'], 'name': descriptor['name']})
 	
 	body['options'] = options
 
