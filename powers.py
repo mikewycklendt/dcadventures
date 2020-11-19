@@ -315,30 +315,109 @@ def power_descriptor_select():
 	medium_subtype = request.get_json()['medium_subtype']
 	medium = request.get_json()['medium']
 
-	descriptors = Descriptor.query.all()
-
+	options_raw = []
 	options = []
 
+	descriptors_query = Descriptor.query.all()
+	descriptors_raw = [descriptor.format() for descriptor in descriptors_query]
+
+	print('\n\n\n\n\n\n\n')
+	print('descriptor raw resiults:')
+	print(descriptors_raw)
+
 	if origin != 'all' and origin != 'new' and origin != '':
-		descriptors.filter_by(origin=origin).all()
+		for descriptor in descriptors_raw:
+			if descriptor['origin'] != origin:
+				descriptor.remove()
 
 	if source != 'all' and source != 'new' and source != '':
-		descriptors.filter_by(source=source).all()
-		
+		for descriptor in descriptors_raw:
+			if descriptor['source'] != source:
+				descriptor.remove()
+
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
-		descriptors.filter_by(medium_type=medium_type).all()
+		for descriptor in descriptors_raw:
+			if descriptor['medium_type'] != medium_type:
+				descriptor.remove()
 
 	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '':
-		descriptors.filter_by(medium_subtype=medium_subtype).all()
+		for descriptor in descriptors_raw:
+			if descriptor['medium_subtype'] != medium_subtype:
+				descriptor.remove()
 
 	if medium != 'all' and medium != 'new' and medium != '':
-		descriptors.filter_by(medium=medium).all()
+		for descriptor in descriptors_raw:
+			if descriptor['medium'] != medium:
+				descriptor.remove()
+
+	'''
+	descriptors = ''
+	origin_check = False
+	source_check = False
+	medium_type_check = False
+	medium_subtype_check = True
+	medium_check = True
+
+	if origin != 'all' and origin != 'new' and origin != '':
+		origin_check = True
+		descriptors_origin = db.session.query(Descriptor).filter_by(origin=origin).all()
+		descriptors = descriptors_origin
+
+	if source != 'all' and source != 'new' and source != '':
+		source_check = True
+		if descriptors == '':
+			descriptors = db.session.query(Descriptor).filter_by(source=source).all()`
+		else:
+			if descriptors = db.session.query(Descriptor).filter_by(source=source, origin=origin).all()
+
+	if medium != 'all' and medium != 'new' and medium != '':
+		medium_check = False
+
+		if descriptors = '':
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium).all()
+		elif origin_check and source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source, origin=origin).all()
+		elif origin_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, origin=origin).all()
+		elif source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source).all()
+			
+	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '' and medium_check:
+		medium_subtype_check = False
+
+		if descriptors = '':
+			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype).all()
+		elif origin_check and source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, source=source, origin=origin).all()
+		elif origin_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, origin=origin).all()
+		elif source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, source=source).all()
+
+
+	if medium_type != 'all' and medium_type != 'new' and medium_type != '' and medium_check and medium_subtype_check:
+		
+		if descriptors = '':
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium_type).all()
+		elif origin_check and source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source, origin=origin).all()
+		elif origin_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, origin=origin).all()
+		elif source_check:
+			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source).all()
 
 	for descriptor in descriptors:
-		options.append({'id': descriptor['id'], 'name': descriptor['name']})
+		options.append({'id': descriptor.id, 'name': descriptor.name})
+
+	'''
 	
+	for descriptor in descriptors_raw:
+		options.append({'id': descriptor['id'], 'name': descriptor['name']})
+
 	body['options'] = options
 
+	print('\n\n\n\n\n\n')
+	print('options: ')
 	for o in options:
 		print(o)
 
