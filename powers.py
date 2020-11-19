@@ -371,7 +371,7 @@ def power_descriptor_select():
 		print(descriptor)
 
 
-	for descriptor in descriptors_raw:
+	for descriptor in descriptors:
 		options.append({'id': descriptor['id'], 'name': descriptor['name']})
 
 	body['options'] = options
