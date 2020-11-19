@@ -307,6 +307,7 @@ def power_descriptor_select():
 	results = request.get_json()
 	print('\n\n\n\n\n\n\n')
 	print('descriptor resiults:')
+	print(results)
 
 	origin = request.get_json()['origin']
 	source = request.get_json()['source']
