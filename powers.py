@@ -747,6 +747,7 @@ def post_descriptor():
 
 	results = request.get_json()
 
+	print('\n\n\nCreate Descriptor input:\n')
 	print(results)
 
 	origin = request.get_json()['origin']
