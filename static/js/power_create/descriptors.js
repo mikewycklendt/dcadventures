@@ -373,17 +373,24 @@ function descriptor_submit() {
 						select.add(option);
 					}
 
+					const table_div;
+					const place_div;
+					const btn_div;
+					const btn_del;
+
+					console.log(des_counts)
+
 					if (type == 'power') {
-						const table_div = 'descriptors-div';
+						table_div = 'descriptors-div';
 						if (jsonResponse.descriptor) {
-							const place_div = 'descriptors';
-							const btn_div = 'des-btn';
-							const btn_del = 'des-del';	
+							place_div = 'descriptors';
+							btn_div = 'des-btn';
+							btn_del = 'des-del';	
 							des_counts.des_rows = des_counts.des_rows + 1
 						} else {
-							const place_div = 'descriptor-table';
-							const btn_div = 'cha-btn';
-							const btn_del = 'cha-del';
+							place_div = 'descriptor-table';
+							btn_div = 'cha-btn';
+							btn_del = 'cha-del';
 							des_counts.cha_count = des_counts.cha_count + 1
 							if (des_counts.cha_count == 4) {
 								des_counts.cha_rows = des_counts.cha_rows + 1;
@@ -391,16 +398,16 @@ function descriptor_submit() {
 							}
 						}
 					} else if (type == 'effect') {
-						const table_div = 'descriptors-interact-div';
+						table_div = 'descriptors-interact-div';
 						if (jsonResponse.descriptor) {
-							const place_div = 'descriptors-interact';
-							const btn_div = 'des-btn-effect';
-							const btn_del = 'des-del-effect';
+							place_div = 'descriptors-interact';
+							btn_div = 'des-btn-effect';
+							btn_del = 'des-del-effect';
 							des_counts.des_rows_effect = des_counts.des_rows_effect + 1
 						} else {
-							const place_div = 'descriptor-interact-table';
-							const btn_div = 'cha-btn-effect';
-							const btn_del = 'cha-del-effect';
+							place_div = 'descriptor-interact-table';
+							btn_div = 'cha-btn-effect';
+							btn_del = 'cha-del-effect';
 							des_counts.cha_count_effect = des_counts.cha_count_effect + 1
 							if (des_counts.cha_count_effect == 4) {
 								des_counts.cha_rows_effect = des_counts.cha_rows_effect + 1;
