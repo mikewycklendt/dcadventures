@@ -43,27 +43,8 @@ function get_medium_subtypes() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const select = document.getElementById('descriptor_medium');
-			let old_options = select.options;
-			
-			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
-					console.log('keep');
-				} else {
-					old_options[i].remove();
-				}
-			}
-
-			const select = document.getElementById('descriptor_medium_subtype');
-			let old_options = select.options;
-			
-			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
-					console.log('keep');
-				} else {
-					old_options[i].remove();
-				}
-			}
+			update.innerText = null;
+			update_medium.innerText = null;
 
 			title.innerText = jsonResponse.title;
 			title.style.opacity = '100%';
@@ -120,19 +101,10 @@ function get_medium() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const select = document.getElementById('descriptor_medium');
-			let old_options = select.options;
-			
-			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
-					console.log('keep');
-				} else {
-					old_options[i].remove();
-				}
-			}
-
 			const options = jsonResponse.options;
 			let option;
+
+			update.innerText = null;
 
 			for (option of options)  {
 				let o = document.createElement("option")
