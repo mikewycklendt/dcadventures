@@ -348,32 +348,48 @@ def power_descriptor_select():
 		print(descriptor)
 
 	print('\n\n')	
-	'''
+
 	if source != 'all' and source != 'new' and source != '':
-		for descriptor in descriptors:
-			if descriptor.get('source') != source:
-				del descriptor
-	
+		des_id = int(source)
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('source'))
+			if descriptors[i].get('source') == des_id:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
+
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
-		for descriptor in descriptors:
-			if descriptor.get('medium_type') != medium_type:
-				del descriptor
+		des_id = int(medium_type)
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium_type'))
+			if descriptors[i].get('medium_type') == des_id:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '':
-		for descriptor in descriptors:
-			if descriptor.get('medium_subtype') != medium_subtype:
-				del descriptor
+		des_id = int(medium_subtype)
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium_subtype'))
+			if descriptors[i].get('medium_subtype') == des_id:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	if medium != 'all' and medium != 'new' and medium != '':
-		for descriptor in descriptors:
-			if descriptor.get('medium') != medium:
-				del descriptor
+		des_id = int(medium)
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium'))
+			if descriptors[i].get('medium') == des_id:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	print('\n\n')
 	for descriptor in descriptors:
 		print('results:')
 		print(descriptor)
-	'''
+
 
 	for descriptor in descriptors:
 		options.append({'id': descriptor['id'], 'name': descriptor['name']})
