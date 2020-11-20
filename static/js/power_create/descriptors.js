@@ -360,7 +360,8 @@ function descriptor_submit() {
 				console.log(jsonResponse)
 				if (jsonResponse.success) {
 
-					console.log(jsonResponse)
+					descriptor_type = jsonResponse.type;
+					console.log(descriptor_type)
 
 					const selects = document.getElementsByClassName('descriptor-sml')
 					let select;
@@ -372,7 +373,7 @@ function descriptor_submit() {
 						select.add(option);
 					}
 
-					if (jsonResponse.type == 'power') {
+					if (descriptor_type == 'power') {
 						const table_div = 'descriptors-div';
 						if (jsonResponse.descriptor) {
 							const place_div = 'descriptors';
@@ -389,7 +390,7 @@ function descriptor_submit() {
 								des_counts.cha_count = 0;
 							}
 						}
-					} else if (jsonResponse.type == 'effect') {
+					} else if (descriptor_type == 'effect') {
 						const table_div = 'descriptors-interact-div';
 						if (jsonResponse.descriptor) {
 							const place_div = 'descriptors-interact';
