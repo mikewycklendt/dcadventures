@@ -142,19 +142,22 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			let old_options = update.options;
-			let o;
+			const select = document.getElementById('descriptor_field');
+			let old_options = select.options;
+			let old_o;
+			
+			for (old_o of old_options) {
+				if (old_o.value == 'new' || old_o.value == 'all' || old_o.value == '') {
+					console.log('keep')
+				} else {
+					old_o.remove();
+				}
+			}
 
 			let options = jsonResponse.options;
 			
 			let option;
 
-			for (o of old_options) {
-				if (o.value != 'new' && o.value != 'all' && o.value != '') {
-					o.remove();
-				}
-			}
-			
 			for (option of options)  {
 				console.log(option)
 				let o = document.createElement("option")
