@@ -373,12 +373,12 @@ function descriptor_submit() {
 						select.add(option);
 					}
 
-					const table_div;
-					const place_div;
-					const btn_div;
-					const btn_del;
+					let table_div;
+					let place_div;
+					let btn_div;
+					let btn_del;
 
-					console.log(des_counts)
+					console.log(des_counts);
 
 					if (type == 'power') {
 						table_div = 'descriptors-div';
