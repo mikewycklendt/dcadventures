@@ -955,8 +955,8 @@ def post_descriptor():
 	elif descriptor == 'all':
 		descriptor_id = None
 	else:
-		descriptor = int(descriptor)
-		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
+		descriptor_field = int(descriptor_field)
+		entry = db.session.query(Descriptor).filter_by(id=descriptor_field).one()
 		descriptor_id = entry.id
 		body['descriptor'] = True
 		name = entry.name
