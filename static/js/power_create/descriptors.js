@@ -147,15 +147,18 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 			let old_o;
 			
 			for (old_o of old_options) {
-				if (old_o.value == 'new' || old_o.value == 'all' || old_o.value == '') {
-					console.log('keep')
+				if (old_o.value == 'new') {
+					console.log('keep');
+				} else if (old_o.value == 'all') {
+					console.log('keep');
+				} else if (old_o.value == '') {
+					console.log('keep');
 				} else {
 					old_o.remove();
 				}
 			}
 
 			let options = jsonResponse.options;
-			
 			let option;
 
 			for (option of options)  {
