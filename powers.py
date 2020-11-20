@@ -800,6 +800,7 @@ def post_descriptor():
 	elif origin == '':
 		origin_id = None
 	else:
+		origin = int(origin)
 		entry = db.session.query(Origin).filter_by(id=origin).one()
 		origin_id = entry.id
 		if name == '':
@@ -836,6 +837,7 @@ def post_descriptor():
 	elif source == '':
 		source_id = None
 	else:
+		source = int(source)
 		entry = db.session.query(Source).filter_by(id=source).one()
 		source_id = entry.id
 		if name == '':
@@ -844,6 +846,7 @@ def post_descriptor():
 			name = name + ', ' + entry.name
 
 	if medium_type != '':
+		medium_type = int(medium_type)
 		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
 		medium_type_id = entry.id
 		one_medium_name = entry.name
@@ -878,6 +881,7 @@ def post_descriptor():
 	elif medium_subtype == 'all':
 		medium_subtype_id = None
 	else:
+		medium_subtype = int(medium_subtype)
 		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
 		medium_subtype_id = entry.id
 		one_medium_name = entry.name
@@ -910,6 +914,7 @@ def post_descriptor():
 	elif medium == 'all':
 		medium_id = None
 	else:
+		medium = int(medium)
 		entry = db.session.query(Medium).filter_by(id=medium).one()
 		medium_id = entry.id
 		one_medium_name = entry.name
@@ -949,6 +954,7 @@ def post_descriptor():
 	elif descriptor == 'all':
 		descriptor_id = None
 	else:
+		descriptor = int(descriptor)
 		entry = db.session.query(Descriptor).filter_by(id=descriptor).one()
 		descriptor_id = entry.id
 		body['descriptor'] = True
@@ -973,7 +979,7 @@ def post_descriptor():
 			print(err)
 		return jsonify(body)
 
-	
+	power_id = int(power_id)
 	power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
 	db.session.add(power_descriptor)
 	db.session.commit()
