@@ -153,7 +153,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 				} else if (old_options[i].value == '') {
 					console.log('keep');
 				} else {
-					old_o.remove();
+					old_options[i].remove();
 				}
 			}
 
