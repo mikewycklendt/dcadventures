@@ -146,11 +146,7 @@ function get_descriptors(origin, source, medium_type, medium_subtype, medium, up
 			let old_options = select.options;
 			
 			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new') {
-					console.log('keep');
-				} else if (old_options[i].value == 'all') {
-					console.log('keep');
-				} else if (old_options[i].value == '') {
+				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
 					console.log('keep');
 				} else {
 					old_options[i].remove();
