@@ -989,7 +989,7 @@ def post_descriptor():
 	body['name'] = power_descriptor.name
 	
 	db.session.close()
-	print('body: ')
+	print('\n\nbody: \n')
 	print(body)
 	return jsonify(body)
 

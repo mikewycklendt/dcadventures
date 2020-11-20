@@ -360,6 +360,8 @@ function descriptor_submit() {
 				console.log(jsonResponse)
 				if (jsonResponse.success) {
 
+					console.log(jsonResponse)
+
 					const selects = document.getElementsByClassName('descriptor-sml')
 					let select;
 
