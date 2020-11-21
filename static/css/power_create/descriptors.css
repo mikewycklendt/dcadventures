@@ -349,6 +349,39 @@ new		new   				new		   new	 new
 	transition: all .4s ease-in;
 }
 
+.des-btn-effect {
+	display: grid;
+	opacity: 0%;
+	grid-template-columns: 75% 25%;
+	gap: 5px;
+	padding: .5vw;
+	height: 3.5vw;
+	width: 100%;
+	background-color: lightblue;
+	font-family: 'Comic', 'Monda', Verdana;
+	font-size: 110%;
+	color: #245681;
+	border: 2px solid #245681;
+	transition: all .4s ease-in;
+	
+}
+
+.cha-btn-effect {
+	display: grid;
+	opacity: 0%;
+	grid-template-columns: 75% 25%;
+	gap: 5px;
+	padding: .3vw;
+	height: 2.7vw;
+	width: 100%;
+	background-color: lightblue;
+	font-family: 'Comic', 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	border: 2px solid #245681;
+	transition: all .4s ease-in;
+}
+
 .des-txt {
 	text-align: center;
 }
