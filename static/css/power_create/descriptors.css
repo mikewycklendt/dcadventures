@@ -137,7 +137,7 @@
 	padding: 2%;
 }
 
-#descriptor-origin-des {
+.descriptor-des-field {
 	display: none;
 	width: 98%;
 	height: 1.4;
@@ -148,55 +148,6 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
-
-#descriptor-source-des {
-	display: none;
-	width: 98%;
-	height: 1.4;
-	gap: 3px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#descriptor-medium-subtype-des {
-	display: none;
-	width: 98%;
-	height: 1.4;
-	gap: 3px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#descriptor-medium-des {
-	display: none;
-	width: 98%;
-	height: 1.4;
-	gap: 3px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#descriptor-descriptor-result {
-	display: none;
-	width: 98%;
-	height: 1.4;
-	gap: 3px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
 #descriptor-row4 {
 	display: grid;
 	width: 98%;
