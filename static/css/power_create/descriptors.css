@@ -425,6 +425,7 @@ new		new   				new		   new	 new
 
 .des-del::before {
 	font-family: 'FontAwesome';
+	font-size: 1.3vw;
 	content: '\f056';
 	display: inline-block;
 }
