@@ -270,7 +270,15 @@ new		new   				new		   new	 new
 	transition: all .4s ease-out;
 }
 
-.descriptor-table-container {
+#descriptor-table-container {
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 25% 75%;
+	grid-auto-rows: auto;
+}
+
+#descriptor-interact-table-container {
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
