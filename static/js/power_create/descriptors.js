@@ -289,6 +289,8 @@ function descriptor_field() {
 	descriptor_new(descriptor, des_text);
 	descriptor_des(descriptor, des_des);
 
+	console.log(descriptor)
+
 }
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
