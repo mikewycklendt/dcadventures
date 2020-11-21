@@ -211,7 +211,7 @@ new		new   				new		   new	 new
 									 foraffect SUBMIT             		
 */
 
-.descriptor-table-title {
+#descriptor-table-title {
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -226,6 +226,23 @@ new		new   				new		   new	 new
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
+
+#descriptor-interact-table-title {
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	text-align: center;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	font-family: 'Comic', 'Monda', Verdana;
+	font-size: 150%;
+	color: #af0101;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 
 #descriptors-div {
 	display: none;
@@ -259,9 +276,6 @@ new		new   				new		   new	 new
 	margin: 2%;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #descriptor-interact-table {
@@ -270,9 +284,6 @@ new		new   				new		   new	 new
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 
@@ -282,9 +293,6 @@ new		new   				new		   new	 new
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 #descriptors {
