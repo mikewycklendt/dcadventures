@@ -441,7 +441,7 @@ function descriptor_submit() {
 					btn.appendChild(txt);
 					btn.appendChild(del);
 
-					title.style.maxHeight = title.scrollHeight + 'px'
+					title.style.maxHeight = title.scrollHeight + 'px';
 					div.style.display = "grid";
 					div.style.padding = "1%";
 					div.style.maxHeight = div.scrollHeight + title.scrollHeight + "px";
