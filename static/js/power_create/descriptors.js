@@ -263,8 +263,6 @@ function descriptor() {
 	descriptor_des(medium_subtype, sub_des)
 	descriptor_new(medium, med_text);
 	descriptor_des(medium, med_des);
-	descriptor_new(descriptor, des_text);
-	descriptor_des(descriptor, des_des);
 
 	field_show(medium_type, sub_title_row1, sub_row1)
 	field_show(medium_subtype, med_title_row1, med_row1)
@@ -281,6 +279,17 @@ function descriptor() {
 	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor_field)
 }
 
+function descriptor_field() {
+
+	const descriptor_field  = document.getElementById('descriptor_field');
+	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
+	const des_text = document.getElementById('descriptor-descriptor-new');
+	const des_des = document.getElementById('descriptor-descriptor-result');
+
+	descriptor_new(descriptor, des_text);
+	descriptor_des(descriptor, des_des);
+
+}
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
 
