@@ -432,7 +432,7 @@ function descriptor_submit() {
 					txt.innerHTML = jsonResponse.name;
 				
 					const del = document.createElement('div');
-					del.className = 'del'
+					del.className = 'descriptor-del'
 					const deleteBtn = document.createElement('button');
 					deleteBtn.className = 'des-del';
 					deleteBtn.setAttribute('data-id', jsonResponse.id);
@@ -440,8 +440,7 @@ function descriptor_submit() {
 
 					btn.appendChild(txt);
 					btn.appendChild(del);
-
-					title.style.maxHeight = title.scrollHeight + 'px';
+					
 					div.style.display = "grid";
 					div.style.padding = "1%";
 					div.style.maxHeight = div.scrollHeight + title.scrollHeight + "px";

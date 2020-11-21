@@ -212,6 +212,7 @@ new		new   				new		   new	 new
 */
 
 #descriptor-table-title {
+	height: auto;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -225,6 +226,7 @@ new		new   				new		   new	 new
 }
 
 #descriptor-interact-table-title {
+	height: auto;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
