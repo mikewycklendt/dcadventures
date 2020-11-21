@@ -221,10 +221,7 @@ new		new   				new		   new	 new
 	font-family: 'Comic', 'Monda', Verdana;
 	font-size: 150%;
 	color: #af0101;
-	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	border: 1px solid #af01
 }
 
 #descriptor-interact-table-title {
@@ -238,17 +235,14 @@ new		new   				new		   new	 new
 	font-size: 150%;
 	color: #af0101;
 	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 }
 
 
 #descriptors-div {
 	display: none;
 	width: 94%;
-	padding: 3%;
-	margin: 2%;
+	padding: 1%;
+	margin: 1%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
@@ -260,8 +254,8 @@ new		new   				new		   new	 new
 #descriptors-interact-div {
 	display: none;
 	width: 94%;
-	padding: 3%;
-	margin: 2%;
+	padding: 1%;
+	margin: 1%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
@@ -336,7 +330,7 @@ new		new   				new		   new	 new
 .cha-btn {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 75% 25%;
+	grid-template-columns: 70% 30%;
 	gap: 5px;
 	padding: .1vw;
 	height: 2.7vw;
@@ -369,14 +363,14 @@ new		new   				new		   new	 new
 .cha-btn-effect {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 75% 25%;
+	grid-template-columns: 70% 30%;
 	gap: 5px;
 	padding: .1vw;
 	height: 2.7vw;
 	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 130%;
+	font-size: 100%;
 	color: #245681;
 	border: 2px solid #245681;
 	transition: all .4s ease-in;
