@@ -281,6 +281,9 @@ new		new   				new		   new	 new
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
+	gap: .1vw;
+	max-height: auto;
+	transition: all .4s ease-out;
 }
 
 #descriptor-table {
@@ -290,6 +293,9 @@ new		new   				new		   new	 new
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
+	gap: .1vw;
+	max-height: auto;
+	transition: all .4s ease-out;
 }
 
 #descriptors {
