@@ -381,6 +381,7 @@ new		new   				new		   new	 new
 .des-txt {
 	display: flex;
 	height: 100%;
+	width: 100%;
 	align-items: center;
 	text-align: center;
 }
@@ -388,6 +389,7 @@ new		new   				new		   new	 new
 .des-del {
 	display: flex;
 	height: 100%;
+	width: 100%;
 	align-items: center;
 	text-align: center;
 	color: #245681;
@@ -400,6 +402,7 @@ new		new   				new		   new	 new
 .descriptor-del {
 	display: flex;
 	height: 100%;
+	width: 100%;
 	align-items: center;
 	text-align: center;
 }
