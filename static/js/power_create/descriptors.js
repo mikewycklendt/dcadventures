@@ -386,13 +386,13 @@ function descriptor_submit() {
 						title_div = 'descriptor-table-title';
 						if (jsonResponse.descriptor) {
 							place_div = 'descriptors';
-							btn_div = 'des-btn';
-							btn_del = 'des-del';	
+							btn_div = 'des-btn descriptor-btn';
+							btn_del = 'des-del descriptor-btn';	
 							des_counts.des_rows = des_counts.des_rows + 1
 						} else {
 							place_div = 'descriptor-table';
-							btn_div = 'cha-btn';
-							btn_del = 'cha-del';
+							btn_div = 'cha-btn descriptor-btn';
+							btn_del = 'cha-del descriptor-btn';
 							des_counts.cha_count = des_counts.cha_count + 1
 							if (des_counts.cha_count == 4) {
 								des_counts.cha_rows = des_counts.cha_rows + 1;
@@ -404,13 +404,13 @@ function descriptor_submit() {
 						title_div = 'descriptor-interact-table-title';
 						if (jsonResponse.descriptor) {
 							place_div = 'descriptors-interact';
-							btn_div = 'des-btn-effect';
-							btn_del = 'des-del-effect';
+							btn_div = 'des-btn effect-btn';
+							btn_del = 'des-del effect-btn';
 							des_counts.des_rows_effect = des_counts.des_rows_effect + 1
 						} else {
 							place_div = 'descriptor-interact-table';
-							btn_div = 'cha-btn-effect';
-							btn_del = 'cha-del-effect';
+							btn_div = 'cha-btn effect-btn';
+							btn_del = 'cha-del effect-btn';
 							des_counts.cha_count_effect = des_counts.cha_count_effect + 1
 							if (des_counts.cha_count_effect == 4) {
 								des_counts.cha_rows_effect = des_counts.cha_rows_effect + 1;
@@ -493,144 +493,75 @@ function descriptor_submit() {
 		}
 }
 
-
 descriptor_delete = function() {
 
-	power_cha_delete()
-	power_des_delete()
+	const descriptors_to_delete = [{'delete_btn': '.cha-del', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': '.des-del', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': '.cha-del-effect', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
+									{'delete_btn': '.des-del-effect', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
 
-	power_cha_effect_delete()
-	power_des_effect_delete()
+	descriptor_delete_function(descriptors_to_delete)
 
 };
 
 descriptor_delete();
 
-function power_cha_delete() {
-	const deletes = document.querySelectorAll('.cha-del');
-	const div = document.getElementsByClassName('cha-btn');
-	const table_min = document.getElementById('descriptors-div');
+function descriptor_delete_function(descriptors_to_delete) {
+
+	let to_delete;
+
+	for (to_delete in descriptors_to_delete) {
+		const delete_btn = to_delete.delete_btn;
+		const div_btn = to_delete.button;
+		const container = to_delete.div;
 	
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/power/powerdes/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				remove_descriptor(delId)
-
-				div.style.opacity = '0%';
-				setTimeout(function(){div.style.display = 'none'}, 400)
-
-				des_counts.cha_count = des_counts.cha_count - 1
-				if (des_counts.cha_count < 0) {
-					des_counts.cha_rows = des_counts.cha_rows - 1
-					des_counts.cha_count = 3
-				}
-				if ((des_counts.cha_rows < des_counts.rows) && (des_counts.des_rows < des_counts.rows)) {
-					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
-				}
-			})
-		}
-	}
-}
-
-
-function power_des_delete() {
-	const deletes = document.querySelectorAll('.des-del');
-	const div = document.getElementsByClassName('des-btn');
-	const table_min = document.getElementById('descriptors-div');
+		const deletes = document.querySelectorAll(delete_btn);
+		const div = document.getElementsByClassName(div_btn);
+		const table_min = document.getElementById(container);
+		
+		for (let i = 0; i < deletes.length; i++) {
+			const btn = deletes[i];
+			btn.onclick = function(e) {
+				console.log('click')
 	
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/power/powerdes/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				remove_descriptor(delId)
-
-				div.style.opacity = '0%';
-				setTimeout(function(){div.style.display = 'none'}, 400)
-
-				des_counts.des_rows = des_counts.des_rows - 1
-				if ((des_counts.cha_rows < des_counts.rows) && (des_counts.des_rows < des_counts.rows)) {
-					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
-				}
-			})
-		}
-	}
-}
-
-function power_des_effect_delete() {
-	const deletes = document.querySelectorAll('.des-del-effect');
-	const div = document.getElementsByClassName('des-btn-effect');
-	const table_min = document.getElementById('descriptors-interact-div');
+				const delId = e.target.dataset['id'];
+				fetch('/power/powerdes/delete/' + delId, {
+					method: 'DELETE'
+				})
+				.then(function() {
 	
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+					remove_descriptor(delId)
+	
+					div.style.opacity = '0%';
+					setTimeout(function(){div.style.display = 'none'}, 400)
+	
+					if (div_btn == 'cha-btn') {
+						des_counts.cha_count = des_counts.cha_count - 1
+						if (des_counts.cha_count < 0) {
+							des_counts.cha_rows = des_counts.cha_rows - 1
+							des_counts.cha_count = 3
+						}
+					} else if (div_btn == 'des-btn') {
+						des_counts.des_rows = des_counts.des_rows - 1
+					} else if (div_btn == 'cha-btn-effect') {
+						des_counts.cha_count_effect = des_counts.cha_count_effect - 1
+						if (des_counts.cha_count_effect < 0) {
+							des_counts.cha_rows_effect = des_counts.cha_rows_effect - 1
+							des_counts.cha_count_effect = 3
+						}
+					} else if (div_btn == 'des-btn-effect') {
+						des_counts.des_rows_effect = des_counts.des_rows_effect - 1
+					}
+					
+					if ((des_counts.cha_rows < des_counts.rows) && (des_counts.des_rows < des_counts.rows)) {
+						table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+					}
 
-			const delId = e.target.dataset['id'];
-			fetch('/power/powerdes/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				remove_descriptor(delId)
-
-				div.style.opacity = '0%';
-				setTimeout(function(){div.style.display = 'none'}, 400)
-
-				des_counts.des_rows_effect = des_counts.des_rows_effect - 1
-				if ((des_counts.cha_rows_effect < des_counts.rows_effect) && (des_counts.des_rows_effect < des_counts.rows_effect)) {
-					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
-				}
-			})
-		}
-	}
-}
-
-function power_cha_effect_delete() {
-	const deletes = document.querySelectorAll('.cha-del-effect');
-	const div = document.getElementsByClassName('cha-btn-effect');
-	const table_min = document.getElementById('descriptors-interact-div');
-
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/power/powerdes/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				remove_descriptor(delId)
-
-				div.style.opacity = '0%';
-				setTimeout(function(){div.style.display = 'none'}, 400)
-
-				des_counts.cha_count_effect = des_counts.cha_count_effect - 1
-				if (des_counts.cha_count_effect < 0) {
-					des_counts.cha_rows_effect = des_counts.cha_rows_effect - 1
-					des_counts.cha_count_effect = 3
-				}
-				if ((des_counts.cha_rows_effect < des_counts.rows_effect) && (des_counts.des_rows_effect < des_counts.rows_effect)) {
-					table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
-				}
-			})
+					if ((des_counts.cha_rows_effect < des_counts.rows_effect) && (des_counts.des_rows_effect < des_counts.rows_effect)) {
+						table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
+					}
+				})
+			}
 		}
 	}
 }

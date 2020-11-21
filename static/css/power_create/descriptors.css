@@ -211,7 +211,7 @@ new		new   				new		   new	 new
 									 foraffect SUBMIT             		
 */
 
-#descriptor-table-title {
+.descriptor-table-header {
 	height: auto;
 	width: 94%;
 	padding: 1%;
@@ -225,35 +225,7 @@ new		new   				new		   new	 new
 	border: 1px solid #245681;
 }
 
-#descriptor-interact-table-title {
-	height: auto;
-	width: 94%;
-	padding: 1%;
-	margin: 2%;
-	text-align: center;
-	grid-template-columns: 100%;
-	grid-template-rows: auto;
-	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 150%;
-	color: #245681;
-	border: 1px solid #245681;
-}
-
-
-#descriptors-div {
-	display: none;
-	width: 94%;
-	padding: 1%;
-	margin: 1%;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#descriptors-interact-div {
+.descriptors-contain {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -274,7 +246,7 @@ new		new   				new		   new	 new
 	grid-template-columns: 25% 75%;
 }
 
-#descriptor-interact-table {
+.descriptor-char {
 	display: grid;
 	width: 94%;
 	padding: 1%;
@@ -286,29 +258,7 @@ new		new   				new		   new	 new
 	transition: all .4s ease-out;
 }
 
-#descriptor-table {
-	display: grid;
-	width: 94%;
-	padding: 1%;
-	margin: 2%;
-	grid-template-columns: 25% 25% 25% 25%;
-	grid-auto-rows: auto;
-	gap: .1vw;
-	max-height: auto;
-	transition: all .4s ease-out;
-}
-
-#descriptors {
-	display: grid;
-	width: 98%;
-	padding: 2%;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	gap: 7px;
-	border-right: 1px solid #af0101;
-}
-
-#descriptors-interact {
+.descriptor-col {
 	display: grid;
 	width: 98%;
 	padding: 2%;

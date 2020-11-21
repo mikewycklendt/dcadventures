@@ -993,3 +993,13 @@ def post_descriptor():
 	print(body)
 	return jsonify(body)
 
+@powers.route('/power/powerdes/delete/<power_id>', methods=['DELETE'])
+def delete_powerdes(power_id):
+	try:
+		db.session.query(PowerDes).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify({'success': True})
