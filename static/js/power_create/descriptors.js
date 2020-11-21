@@ -174,7 +174,7 @@ function descriptor_des(value, div) {
 	const row3 = document.getElementById('descriptor-row3') 
 	if (value == 'new') {
 		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px'
+		div.style.maxHeight = div.scrollHeight + 'px';
 		row3.style.display = 'grid';
 		row3.style.maxHeight = div.scrollHeight + row3.scrollHeight + 'px';
 	} else {
