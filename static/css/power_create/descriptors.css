@@ -390,6 +390,7 @@ new		new   				new		   new	 new
 
 .des-txt {
 	display: flex;
+	justify-content: center;
 	height: 100%;
 	flex-basis: inherit;
 	align-items: center;
