@@ -267,8 +267,8 @@ function descriptor() {
 	field_show(medium_type, sub_title_row1, sub_row1)
 	field_show(medium_subtype, med_title_row1, med_row1)
 	
-	if ((origin != 'new' && origin != 'all' && origin != '') || (source != 'new' && source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
-		(medium_subtype !=  'new' && medium_subtype != 'all' && medium_subtype != '') || (medium != 'new' && medium != 'all' && medium != '')) {
+	if ((origin != 'all' && origin != '') || (source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
+		(medium_subtype != 'all' && medium_subtype != '') || (medium != 'all' && medium != '')) {
 		des_title_row1.style.opacity = '100%';
 		des_field.style.opacity = '100%';
 	} else {
@@ -291,12 +291,7 @@ function descriptor_field() {
 
 	console.log(descriptor)
 
-	const row2 = document.getElementById('descriptor-row2');
-	const row3 = document.getElementById('descriptor-row3');
 
-	if (descriptor == 'new') {
-		new_entry_show(row2, row3)
-	}
 }
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
