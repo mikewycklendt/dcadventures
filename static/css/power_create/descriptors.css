@@ -377,9 +377,9 @@ new		new   				new		   new	 new
 }
 
 .des-txt {
-	display: table-cell;
+	display: flex;
 	height: 100%;
-	vertical-align: middle;
+	align-items: center;
 	text-align: center;
 }
 
@@ -389,6 +389,12 @@ new		new   				new		   new	 new
 	background-color: lightblue;
 	transition: all .3s linear;
 	cursor: pointer;
+}
+
+.descriptor-del {
+	display: flex;
+	height: 100%;
+	align-items: center;
 }
 
 .des-del:hover {
