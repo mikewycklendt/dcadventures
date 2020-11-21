@@ -279,6 +279,7 @@ new		new   				new		   new	 new
 }
 
 #descriptor-interact-table {
+	display: grid;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -286,8 +287,8 @@ new		new   				new		   new	 new
 	grid-auto-rows: auto;
 }
 
-
 #descriptor-table {
+	display: grid;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
