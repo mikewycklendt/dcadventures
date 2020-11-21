@@ -221,8 +221,8 @@ new		new   				new		   new	 new
 	grid-template-rows: auto;
 	font-family: 'Comic', 'Monda', Verdana;
 	font-size: 150%;
-	color: #af0101;
-	border: 1px solid #af01
+	color: #245681;
+	border: 1px solid #245681;
 }
 
 #descriptor-interact-table-title {
@@ -235,8 +235,8 @@ new		new   				new		   new	 new
 	grid-template-rows: auto;
 	font-family: 'Comic', 'Monda', Verdana;
 	font-size: 150%;
-	color: #af0101;
-	border: 1px solid #af0101;
+	color: #245681;
+	border: 1px solid #245681;
 }
 
 
@@ -328,7 +328,7 @@ new		new   				new		   new	 new
 	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 130%;
+	font-size: 150%;
 	text-align: center;
 	color: #245681;
 	border: 2px solid #245681;
@@ -363,7 +363,7 @@ new		new   				new		   new	 new
 	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 130%;
+	font-size: 150%;
 	text-align: center;
 	color: #245681;
 	border: 2px solid #245681;
@@ -391,9 +391,10 @@ new		new   				new		   new	 new
 .des-txt {
 	display: flex;
 	height: 100%;
-	width: 100%;
+	width: auto;
 	align-items: center;
 	align-self: center;
+	text-align: center;
 }
 
 .des-del {
