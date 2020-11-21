@@ -315,7 +315,7 @@ new		new   				new		   new	 new
 .des-btn {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 75% 25%;
+	grid-template-columns: 85% 15%;
 	gap: 5px;
 	padding: .2vw;
 	height: 3.5vw;
@@ -332,7 +332,7 @@ new		new   				new		   new	 new
 .cha-btn {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 85% 15%;
 	gap: 5px;
 	padding: .1vw;
 	height: 2.7vw;
@@ -348,7 +348,7 @@ new		new   				new		   new	 new
 .des-btn-effect {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 75% 25%;
+	grid-template-columns: 85% 15%;
 	gap: 5px;
 	padding: .2vw;
 	height: 3.5vw;
@@ -365,7 +365,7 @@ new		new   				new		   new	 new
 .cha-btn-effect {
 	display: grid;
 	opacity: 0%;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 85% 15%;
 	gap: 5px;
 	padding: .1vw;
 	height: 2.7vw;
