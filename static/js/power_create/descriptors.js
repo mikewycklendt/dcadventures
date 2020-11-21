@@ -291,6 +291,12 @@ function descriptor_field() {
 
 	console.log(descriptor)
 
+	const row2 = document.getElementById('descriptor-row2');
+	const row3 = document.getElementById('descriptor-row3');
+
+	if (descriptor == 'new') {
+		new_entry_show(row2, row3)
+	}
 }
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
