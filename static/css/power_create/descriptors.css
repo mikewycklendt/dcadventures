@@ -322,7 +322,7 @@ new		new   				new		   new	 new
 	display: grid;
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
-	gap: 5px;
+	gap: 2px;
 	padding: .2vw;
 	height: 3.5vw;
 	width: 90%;
@@ -340,7 +340,7 @@ new		new   				new		   new	 new
 	display: grid;
 	opacity: 0%;
 	grid-template-columns: 70% 30%;
-	gap: 5px;
+	gap: 2px;
 	padding: .1vw;
 	height: 3.2vw;
 	width: 90%;
@@ -357,7 +357,7 @@ new		new   				new		   new	 new
 	display: grid;
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
-	gap: 5px;
+	gap: 2px;
 	padding: .2vw;
 	height: 3.5vw;
 	width: 90%;
@@ -375,7 +375,7 @@ new		new   				new		   new	 new
 	display: grid;
 	opacity: 0%;
 	grid-template-columns: 70% 30%;
-	gap: 5px;
+	gap: 2px;
 	padding: .1vw;
 	height: 3.2vw;
 	width: 90%;
@@ -393,6 +393,7 @@ new		new   				new		   new	 new
 	height: 100%;
 	width: 100%;
 	align-items: center;
+	align-self: center;
 }
 
 .des-del {
