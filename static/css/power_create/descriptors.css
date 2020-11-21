@@ -336,11 +336,11 @@ new		new   				new		   new	 new
 	grid-template-columns: 70% 30%;
 	gap: 5px;
 	padding: .1vw;
-	height: 2.7vw;
+	height: 3.2vw;
 	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 90%;
 	text-align: center;
 	color: #245681;
 	border: 2px solid #245681;
@@ -371,11 +371,11 @@ new		new   				new		   new	 new
 	grid-template-columns: 70% 30%;
 	gap: 5px;
 	padding: .1vw;
-	height: 2.7vw;
+	height: 3.2vw;
 	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 90%;
 	text-align: center;
 	color: #245681;
 	border: 2px solid #245681;
