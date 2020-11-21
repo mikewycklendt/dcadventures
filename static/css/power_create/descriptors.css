@@ -384,6 +384,10 @@ new		new   				new		   new	 new
 }
 
 .des-del {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	text-align: center;
 	color: #245681;
 	border: none;
 	background-color: lightblue;
@@ -395,6 +399,7 @@ new		new   				new		   new	 new
 	display: flex;
 	height: 100%;
 	align-items: center;
+	text-align: center;
 }
 
 .des-del:hover {
