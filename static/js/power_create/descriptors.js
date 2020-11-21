@@ -377,11 +377,13 @@ function descriptor_submit() {
 					let place_div;
 					let btn_div;
 					let btn_del;
+					let title_div;
 
 					console.log(des_counts);
 
 					if (type == 'power') {
 						table_div = 'descriptors-div';
+						title_div = 'descriptor-table-title';
 						if (jsonResponse.descriptor) {
 							place_div = 'descriptors';
 							btn_div = 'des-btn';
@@ -399,6 +401,7 @@ function descriptor_submit() {
 						}
 					} else if (type == 'effect') {
 						table_div = 'descriptors-interact-div';
+						title_div = 'descriptor-interact-table-title';
 						if (jsonResponse.descriptor) {
 							place_div = 'descriptors-interact';
 							btn_div = 'des-btn-effect';
@@ -419,6 +422,7 @@ function descriptor_submit() {
 
 					const div = document.getElementById(table_div);
 					const table = document.getElementById(place_div);
+					const title = document.getElementById(title_div)
 
 					const btn = document.createElement('div');
 					btn.className = btn_div;
@@ -437,9 +441,10 @@ function descriptor_submit() {
 					btn.appendChild(txt);
 					btn.appendChild(del);
 
+					title.style.maxHeight = title.scrollHeight + 'px'
 					div.style.display = "grid";
 					div.style.padding = "1%";
-					div.style.maxHeight = div.scrollHeight + "px";
+					div.style.maxHeight = div.scrollHeight + title.scrollHeight + "px";
 					div.style.padding = "1%";
 
 					table.appendChild(btn);
