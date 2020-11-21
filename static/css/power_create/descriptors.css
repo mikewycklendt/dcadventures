@@ -280,7 +280,7 @@ new		new   				new		   new	 new
 	padding: 1%;
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
-	grid-auto-rows: 3.3vw;
+	grid-auto-rows: AUTO;
 	gap: .1vw;
 	max-height: auto;
 	transition: all .4s ease-out;
@@ -292,7 +292,7 @@ new		new   				new		   new	 new
 	padding: 1%;
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
-	grid-auto-rows: 3.3vw;
+	grid-auto-rows: auto;
 	gap: .1vw;
 	max-height: auto;
 	transition: all .4s ease-out;
