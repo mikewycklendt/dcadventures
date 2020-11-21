@@ -415,6 +415,8 @@ function descriptor_submit() {
 							}}
 					}
 
+					console.log(des_counts);
+
 					const div = document.getElementById(table_div);
 					const table = document.getElementById(place_div);
 
@@ -441,11 +443,14 @@ function descriptor_submit() {
 					div.style.padding = "1%";
 
 					table.appendChild(btn);
+					btn.style.opacity = '100%';
 
 					if ((des_counts.des_rows > des_counts.rows) || (des_counts.cha_rows > des_counts.rows)) {
 						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
 						des_counts.rows = des_counts.rows + 1;
-					} else if ((des_counts.des_rows_effect > des_counts.rows_effect) || (des_counts.cha_rows_effect > des_counts.rows_effect)) {
+					} 
+					
+					if ((des_counts.des_rows_effect > des_counts.rows_effect) || (des_counts.cha_rows_effect > des_counts.rows_effect)) {
 						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
 						des_counts.rows_effect = des_counts.rows_effect + 1;
 					}

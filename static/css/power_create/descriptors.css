@@ -212,7 +212,6 @@ new		new   				new		   new	 new
 */
 
 .descriptor-table-title {
-	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -255,7 +254,6 @@ new		new   				new		   new	 new
 }
 
 .descriptor-table-container {
-	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -267,7 +265,6 @@ new		new   				new		   new	 new
 }
 
 #descriptor-interact-table {
-	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
@@ -280,7 +277,6 @@ new		new   				new		   new	 new
 
 
 #descriptor-table {
-	display: none;
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
