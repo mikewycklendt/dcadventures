@@ -440,7 +440,7 @@ function descriptor_submit() {
 
 					btn.appendChild(txt);
 					btn.appendChild(del);
-					
+
 					div.style.display = "grid";
 					div.style.padding = "1%";
 					div.style.maxHeight = div.scrollHeight + title.scrollHeight + "px";
@@ -517,7 +517,7 @@ function power_cha_delete() {
 			console.log('click')
 
 			const delId = e.target.dataset['id'];
-			fetch('/descriptor/delete/' + delId, {
+			fetch('/power/powerdes/delete/' + delId, {
 				method: 'DELETE'
 			})
 			.then(function() {
@@ -552,7 +552,7 @@ function power_des_delete() {
 			console.log('click')
 
 			const delId = e.target.dataset['id'];
-			fetch('/descriptor/delete/' + delId, {
+			fetch('/power/powerdes/delete/' + delId, {
 				method: 'DELETE'
 			})
 			.then(function() {
@@ -582,7 +582,7 @@ function power_des_effect_delete() {
 			console.log('click')
 
 			const delId = e.target.dataset['id'];
-			fetch('/descriptor/delete/' + delId, {
+			fetch('/power/powerdes/delete/' + delId, {
 				method: 'DELETE'
 			})
 			.then(function() {
@@ -612,7 +612,7 @@ function power_cha_effect_delete() {
 			console.log('click')
 
 			const delId = e.target.dataset['id'];
-			fetch('/descriptor/delete/' + delId, {
+			fetch('/power/powerdes/delete/' + delId, {
 				method: 'DELETE'
 			})
 			.then(function() {

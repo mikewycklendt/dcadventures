@@ -280,7 +280,7 @@ new		new   				new		   new	 new
 	padding: 1%;
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
-	grid-auto-rows: auto;
+	grid-auto-rows: 3.3vw;
 	gap: .1vw;
 	max-height: auto;
 	transition: all .4s ease-out;
@@ -292,7 +292,7 @@ new		new   				new		   new	 new
 	padding: 1%;
 	margin: 2%;
 	grid-template-columns: 25% 25% 25% 25%;
-	grid-auto-rows: auto;
+	grid-auto-rows: 3.3vw;
 	gap: .1vw;
 	max-height: auto;
 	transition: all .4s ease-out;
@@ -391,7 +391,7 @@ new		new   				new		   new	 new
 .des-txt {
 	display: flex;
 	height: 100%;
-	width: auto;
+	width: inherit;
 	align-items: center;
 	align-self: center;
 	text-align: center;
