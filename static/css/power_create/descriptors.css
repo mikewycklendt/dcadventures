@@ -321,12 +321,12 @@ new		new   				new		   new	 new
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
 	gap: 5px;
-	padding: .5vw;
+	padding: .2vw;
 	height: 3.5vw;
-	width: 100%;
+	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 110%;
+	font-size: 130%;
 	color: #245681;
 	border: 2px solid #245681;
 	transition: all .4s ease-in;
@@ -338,9 +338,9 @@ new		new   				new		   new	 new
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
 	gap: 5px;
-	padding: .3vw;
+	padding: .1vw;
 	height: 2.7vw;
-	width: 100%;
+	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
 	font-size: 100%;
@@ -354,12 +354,12 @@ new		new   				new		   new	 new
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
 	gap: 5px;
-	padding: .5vw;
+	padding: .2vw;
 	height: 3.5vw;
-	width: 100%;
+	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 110%;
+	font-size: 130%;
 	color: #245681;
 	border: 2px solid #245681;
 	transition: all .4s ease-in;
@@ -371,18 +371,21 @@ new		new   				new		   new	 new
 	opacity: 0%;
 	grid-template-columns: 75% 25%;
 	gap: 5px;
-	padding: .3vw;
+	padding: .1vw;
 	height: 2.7vw;
-	width: 100%;
+	width: 90%;
 	background-color: lightblue;
 	font-family: 'Comic', 'Monda', Verdana;
-	font-size: 100%;
+	font-size: 130%;
 	color: #245681;
 	border: 2px solid #245681;
 	transition: all .4s ease-in;
 }
 
 .des-txt {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
 	text-align: center;
 }
 

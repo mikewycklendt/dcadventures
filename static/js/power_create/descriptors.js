@@ -428,7 +428,7 @@ function descriptor_submit() {
 					btn.className = btn_div;
 
 					const txt = document.createElement('div');
-					txt.className = 'des-txt'
+					txt.className = 'des-txt';
 					txt.innerHTML = jsonResponse.name;
 				
 					const del = document.createElement('div');
@@ -448,7 +448,7 @@ function descriptor_submit() {
 					div.style.padding = "1%";
 
 					table.appendChild(btn);
-					btn.style.opacity = '100%';
+					setTimeout(function(){btn.style.opacity = '100%'}, 10);
 
 					if ((des_counts.des_rows > des_counts.rows) || (des_counts.cha_rows > des_counts.rows)) {
 						div.style.maxHeight = div.scrollHeight + btn.scrollHeight + 'px';
