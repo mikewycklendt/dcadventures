@@ -221,15 +221,15 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
-	descriptors = Descriptor.query.order_by(name).all()
+	descriptors = Descriptor.query.order_by(Descriptor.name).all()
 
-	origins = Origin.query.order_by(name).all()
+	origins = Origin.query.order_by(Origin.name).all()
 
-	sources = Source.query.order_by(name).all()
+	sources = Source.query.order_by(Source.name).all()
 
-	medium = Medium.query.order_by(name).all()
+	medium = Medium.query.order_by(Medium.name).all()
 
-	mediums = MediumType.query.order_by(name).all()
+	mediums = MediumType.query.order_by(MediumType.name).all()
 
 	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(name)
 	
