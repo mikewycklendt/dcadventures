@@ -419,7 +419,7 @@ function descriptor_submit() {
 						} else {
 							place_div = 'descriptor-table';
 							btn_div = 'cha-btn descriptor-btn';
-							btn_del = 'cha-del descriptor-btn';
+							btn_del = 'des-del cha-descriptor-btn';
 							des_counts.cha_count = des_counts.cha_count + 1
 							if (des_counts.cha_count == 4) {
 								des_counts.cha_rows = des_counts.cha_rows + 1;
@@ -437,7 +437,7 @@ function descriptor_submit() {
 						} else {
 							place_div = 'descriptor-interact-table';
 							btn_div = 'cha-btn effect-btn';
-							btn_del = 'cha-del effect-btn';
+							btn_del = 'des-del cha-effect-btn';
 							des_counts.cha_count_effect = des_counts.cha_count_effect + 1
 							if (des_counts.cha_count_effect == 4) {
 								des_counts.cha_rows_effect = des_counts.cha_rows_effect + 1;
@@ -522,10 +522,10 @@ function descriptor_submit() {
 
 descriptor_delete = function() {
 
-	const descriptors_to_delete = [{'delete_btn': '.cha-del', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': '.des-del', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': '.cha-del-effect', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
-									{'delete_btn': '.des-del-effect', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
+	const descriptors_to_delete = [{'delete_btn': '.des-del cha-descriptor-btn', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': '.des-del descriptor-btn', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': '.des-del cha-effect-btn', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
+									{'delete_btn': '.des-del effect-btn', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
 
 	descriptor_delete_function(descriptors_to_delete)
 
