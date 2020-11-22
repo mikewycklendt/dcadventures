@@ -200,7 +200,7 @@ function json_errors(line, div, all_errors) {
 
 		const error = document.createElement('div');
 		error.className = line;
-		error.innerHTML = jsonResponse.error;
+		error.innerHTML = error_msg;
 	
 		errors.appendChild(error);
 	
