@@ -962,6 +962,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not Add that descriptor')
+			body['error'] = error_msgs
 			db.session.rollback()
 		finally:
 			db.session.close()
