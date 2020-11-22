@@ -741,6 +741,8 @@ def post_descriptor():
 	body = {}
 	body['success'] = True
 	body['descriptor'] = False
+	body['add_select'] = False
+	new_selects = []
 	error = False
 	error_msgs = []
 	descriptor = {}
@@ -787,6 +789,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				origin_id = entry.id
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
 				if name == '':
 					name = name + entry.name
 				else:
@@ -824,6 +828,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				source_id = entry.id
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_source', 'id': entry.id, 'name': entry.name})
 				if name == '':
 					name = name + entry.name
 				else:
@@ -869,6 +875,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_subtype_id = entry.id
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_medium_subtype', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name
 		except:
 			error = True
@@ -902,6 +910,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_id = entry.id
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_medium', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name
 		except:
 			error = True
@@ -942,6 +952,8 @@ def post_descriptor():
 				db.session.commit()
 				descriptor_id = entry.id
 				body['descriptor'] = True
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_field', 'id': entry.id, 'name': entry.name})
 				name = entry.name
 		except:
 			error = True
@@ -987,6 +999,7 @@ def post_descriptor():
 	
 	body['id'] = power_descriptor.id	
 	body['name'] = power_descriptor.name
+	body['selects'] = new_selects
 	
 	db.session.close()
 	print('\n\nbody: \n')

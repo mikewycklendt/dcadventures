@@ -385,6 +385,21 @@ function descriptor_submit() {
 						select.add(option);
 					}
 
+					if (jsonResponse.add_select) {
+						const new_options = jsonResponse.selects;
+						let new_option;
+
+						for (new_option of new_options) {
+							let new_select = document.getElementById(new_option.select)
+							let o = document.createElement("option");
+							o.value = new_option.id;
+							o.text = new_option.name;
+							new_select.add(o);
+							new_select.style.backgroundColor = 'lightblue';
+							setTimeout(function(){new_select.style.backgroundColor = "white"}, 200)
+						}
+					};
+
 					let table_div;
 					let place_div;
 					let btn_div;
@@ -547,21 +562,21 @@ function descriptor_delete_function(descriptors_to_delete) {
 					div.style.opacity = '0%';
 					setTimeout(function(){div.style.display = 'none'}, 400)
 	
-					if (div_btn == 'cha-btn') {
+					if (div_btn == 'cha-btn descriptor-btn') {
 						des_counts.cha_count = des_counts.cha_count - 1
 						if (des_counts.cha_count < 0) {
 							des_counts.cha_rows = des_counts.cha_rows - 1
 							des_counts.cha_count = 3
 						}
-					} else if (div_btn == 'des-btn') {
+					} else if (div_btn == 'des-btn descriptor-btn') {
 						des_counts.des_rows = des_counts.des_rows - 1
-					} else if (div_btn == 'cha-btn-effect') {
+					} else if (div_btn == 'cha-btn effect-btn') {
 						des_counts.cha_count_effect = des_counts.cha_count_effect - 1
 						if (des_counts.cha_count_effect < 0) {
 							des_counts.cha_rows_effect = des_counts.cha_rows_effect - 1
 							des_counts.cha_count_effect = 3
 						}
-					} else if (div_btn == 'des-btn-effect') {
+					} else if (div_btn == 'des-btn effect-btn') {
 						des_counts.des_rows_effect = des_counts.des_rows_effect - 1
 					}
 					
