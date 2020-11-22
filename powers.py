@@ -980,6 +980,7 @@ def post_descriptor():
 		is_descriptor = False
 		body['type'] = 'effect'
 	else:
+		error = True
 		body['success'] = False
 		error_msgs.append('You must specify whether or not this descriptor is assigned to this power.')
 		body['error'] = error_msgs
