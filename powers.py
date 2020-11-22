@@ -713,6 +713,26 @@ def post_descriptor():
 	name = ''
 	one_medium_name = ''
 
+	if descriptor_type == 'power':
+		is_descriptor = True
+		body['type'] = 'power'
+	elif descriptor_type == 'effect':
+		is_descriptor = False
+		body['type'] = 'effect'
+	else:
+		error = True
+		body['success'] = False
+		error_msgs.append('You must specify whether or not this descriptor is assigned to this power.')
+		body['error'] = error_msgs
+
+	if error:
+		print('body: ')
+		print(body)
+		errors = body['error']
+		for err in errors:
+			print(err)
+		return jsonify(body)
+
 	if origin == 'new':
 		process = True
 		try:
@@ -911,18 +931,6 @@ def post_descriptor():
 		descriptor_id = entry.id
 		body['descriptor'] = True
 		name = entry.name
-
-	if descriptor_type == 'power':
-		is_descriptor = True
-		body['type'] = 'power'
-	elif descriptor_type == 'effect':
-		is_descriptor = False
-		body['type'] = 'effect'
-	else:
-		error = True
-		body['success'] = False
-		error_msgs.append('You must specify whether or not this descriptor is assigned to this power.')
-		body['error'] = error_msgs
 
 	if error:
 		print('body: ')
