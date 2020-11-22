@@ -802,20 +802,26 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not Add that origin')
+			body['error'] = error_msgs
 			db.session.rollback()
 		finally:
 			db.session.close()
 	elif origin == '':
 		origin_id = None
 	else:
-		origin = int(origin)
-		entry = db.session.query(Origin).filter_by(id=origin).one()
-		origin_id = entry.id
-		if name == '':
-			name = name + entry.name
-		else:
-			name = name + ', ' + entry.name
-
+		try:
+			origin = int(origin)
+			entry = db.session.query(Origin).filter_by(id=origin).one()
+			origin_id = entry.id
+			if name == '':
+				name = name + entry.name
+			else:
+				name = name + ', ' + entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could not find that origin')
+		
 	if source == 'new':
 		process = True
 		try:
@@ -841,25 +847,36 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not Add that source')
+			body['error'] = error_msgs
 			db.session.rollback()
 		finally:
 			db.session.close()
 	elif source == '':
 		source_id = None
 	else:
-		source = int(source)
-		entry = db.session.query(Source).filter_by(id=source).one()
-		source_id = entry.id
-		if name == '':
-			name = name + entry.name
-		else:
-			name = name + ', ' + entry.name
-
+		try:
+			source = int(source)
+			entry = db.session.query(Source).filter_by(id=source).one()
+			source_id = entry.id
+			if name == '':
+				name = name + entry.name
+			else:
+				name = name + ', ' + entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that source')
+		
 	if medium_type != '':
-		medium_type = int(medium_type)
-		entry = db.session.query(MediumType).filter_by(id=medium_type).one()
-		medium_type_id = entry.id
-		one_medium_name = entry.name
+		try:
+			medium_type = int(medium_type)
+			entry = db.session.query(MediumType).filter_by(id=medium_type).one()
+			medium_type_id = entry.id
+			one_medium_name = entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that medium type')
 	else:
 		medium_type_id = None
 
@@ -885,6 +902,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not Add that medium subtype')
+			body['error'] = error_msgs
 			db.session.rollback()
 		finally:
 			db.session.close()
@@ -893,10 +911,15 @@ def post_descriptor():
 	elif medium_subtype == 'all':
 		medium_subtype_id = None
 	else:
-		medium_subtype = int(medium_subtype)
-		entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-		medium_subtype_id = entry.id
-		one_medium_name = entry.name
+		try:
+			medium_subtype = int(medium_subtype)
+			entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
+			medium_subtype_id = entry.id
+			one_medium_name = entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that medium subtype')
 
 	if medium == 'new':
 		process = True
@@ -920,6 +943,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not Add that medium')
+			body['error'] = error_msgs
 			db.session.rollback()
 		finally:
 			db.session.close()
@@ -928,10 +952,16 @@ def post_descriptor():
 	elif medium == 'all':
 		medium_id = None
 	else:
-		medium = int(medium)
-		entry = db.session.query(Medium).filter_by(id=medium).one()
-		medium_id = entry.id
-		one_medium_name = entry.name
+		try:
+			medium = int(medium)
+			entry = db.session.query(Medium).filter_by(id=medium).one()
+			medium_id = entry.id
+			one_medium_name = entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that medium')
+			body['error'] = error_msgs
 
 	if one_medium_name != '':
 		if name == '':
@@ -971,13 +1001,20 @@ def post_descriptor():
 	elif descriptor == 'all':
 		descriptor_id = None
 	else:
-		descriptor_field = int(descriptor_field)
-		entry = db.session.query(Descriptor).filter_by(id=descriptor_field).one()
-		descriptor_id = entry.id
-		body['descriptor'] = True
-		name = entry.name
+		try:
+			descriptor_field = int(descriptor_field)
+			entry = db.session.query(Descriptor).filter_by(id=descriptor_field).one()
+			descriptor_id = entry.id
+			body['descriptor'] = True
+			name = entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that descriptor')
+			body['error'] = error_msgs
 
 	if error:
+		body['error'] = error_msgs
 		print('body: ')
 		print(body)
 		errors = body['error']
