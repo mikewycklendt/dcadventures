@@ -231,9 +231,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	mediums = MediumType.query.order_by(MediumType.name).all()
 
-	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(name)
+	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(MediumSubType.name)
 	
-	energies = db.session.query(MediumSubType).filter_by(medium_type=2).order_by(name)
+	energies = db.session.query(MediumSubType).filter_by(medium_type=2).order_by(MediumSubType.name)
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
