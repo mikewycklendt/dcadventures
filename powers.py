@@ -221,19 +221,19 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
-	descriptors = Descriptor.query.all()
+	descriptors = Descriptor.query.order_by(name).all()
 
-	origins = Origin.query.all()
+	origins = Origin.query.order_by(name).all()
 
-	sources = Source.query.all()
+	sources = Source.query.order_by(name).all()
 
-	medium = Medium.query.all()
+	medium = Medium.query.order_by(name).all()
 
-	mediums = MediumType.query.all()
+	mediums = MediumType.query.order_by(name).all()
 
-	materials = db.session.query(MediumSubType).filter_by(medium_type=1)
+	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(name)
 	
-	energies = db.session.query(MediumSubType).filter_by(medium_type=2)
+	energies = db.session.query(MediumSubType).filter_by(medium_type=2).order_by(name)
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
@@ -400,67 +400,6 @@ def power_descriptor_select():
 	print('options: ')
 	for o in options:
 		print(o)
-
-	'''
-	descriptors = ''
-	origin_check = False
-	source_check = False
-	medium_type_check = False
-	medium_subtype_check = True
-	medium_check = True
-
-	if origin != 'all' and origin != 'new' and origin != '':
-		origin_check = True
-		descriptors_origin = db.session.query(Descriptor).filter_by(origin=origin).all()
-		descriptors = descriptors_origin
-
-	if source != 'all' and source != 'new' and source != '':
-		source_check = True
-		if descriptors == '':
-			descriptors = db.session.query(Descriptor).filter_by(source=source).all()`
-		else:
-			if descriptors = db.session.query(Descriptor).filter_by(source=source, origin=origin).all()
-
-	if medium != 'all' and medium != 'new' and medium != '':
-		medium_check = False
-
-		if descriptors = '':
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium).all()
-		elif origin_check and source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source, origin=origin).all()
-		elif origin_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, origin=origin).all()
-		elif source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source).all()
-			
-	if medium_subtype != 'all' and medium_subtype != 'new' and medium_subtype != '' and medium_check:
-		medium_subtype_check = False
-
-		if descriptors = '':
-			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype).all()
-		elif origin_check and source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, source=source, origin=origin).all()
-		elif origin_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, origin=origin).all()
-		elif source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium_sub1ype=medium_sub1ype, source=source).all()
-
-
-	if medium_type != 'all' and medium_type != 'new' and medium_type != '' and medium_check and medium_subtype_check:
-		
-		if descriptors = '':
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium_type).all()
-		elif origin_check and source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source, origin=origin).all()
-		elif origin_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, origin=origin).all()
-		elif source_check:
-			descriptors = db.session.query(Descriptor).filter_by(medium=medium, source=source).all()
-
-	for descriptor in descriptors:
-		options.append({'id': descriptor.id, 'name': descriptor.name})
-
-	'''
 
 	print(body)
 	return jsonify(body)
