@@ -496,6 +496,21 @@ function descriptor_submit() {
 
 					json_errors(error_line, error_div, all_errors);
 
+					if (jsonResponse.add_select) {
+						const new_options = jsonResponse.selects;
+						let new_option;
+
+						for (new_option of new_options) {
+							let new_select = document.getElementById(new_option.select)
+							let o = document.createElement("option");
+							o.value = new_option.id;
+							o.text = new_option.name;
+							new_select.add(o);
+							new_select.style.backgroundColor = 'lightblue';
+							setTimeout(function(){new_select.style.backgroundColor = "white"}, 200)
+						}
+					};
+
 				}
 			})
 
