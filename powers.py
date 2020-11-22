@@ -736,6 +736,8 @@ def delete_extra(power_id):
 		db.session.close()
 		return jsonify({'success': True})
 
+c fjm
+
 @powers.route('/descriptor/create', methods=['POST'])
 def post_descriptor(): 
 	body = {}
