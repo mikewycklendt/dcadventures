@@ -810,8 +810,8 @@ def post_descriptor():
 		origin_id = None
 	else:
 		try:
-			origin = int(origin)
-			entry = db.session.query(Origin).filter_by(id=origin).one()
+			input_id = int(origin)
+			entry = db.session.query(Origin).filter_by(id=input_id).one()
 			origin_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -855,8 +855,8 @@ def post_descriptor():
 		source_id = None
 	else:
 		try:
-			source = int(source)
-			entry = db.session.query(Source).filter_by(id=source).one()
+			input_id = int(source)
+			entry = db.session.query(Source).filter_by(id=input_id).one()
 			source_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -869,8 +869,8 @@ def post_descriptor():
 		
 	if medium_type != '':
 		try:
-			medium_type = int(medium_type)
-			entry = db.session.query(MediumType).filter_by(id=medium_type).one()
+			input_id = int(medium_type)
+			entry = db.session.query(MediumType).filter_by(id=input_id).one()
 			medium_type_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -912,8 +912,8 @@ def post_descriptor():
 		medium_subtype_id = None
 	else:
 		try:
-			medium_subtype = int(medium_subtype)
-			entry = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
+			input_id = int(medium_subtype)
+			entry = db.session.query(MediumSubType).filter_by(id=input_id).one()
 			medium_subtype_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -953,8 +953,8 @@ def post_descriptor():
 		medium_id = None
 	else:
 		try:
-			medium = int(medium)
-			entry = db.session.query(Medium).filter_by(id=medium).one()
+			input_id = int(medium)
+			entry = db.session.query(Medium).filter_by(id=input_id).one()
 			medium_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -1002,8 +1002,8 @@ def post_descriptor():
 		descriptor_id = None
 	else:
 		try:
-			descriptor_field = int(descriptor_field)
-			entry = db.session.query(Descriptor).filter_by(id=descriptor_field).one()
+			input_id = int(descriptor_field)
+			entry = db.session.query(Descriptor).filter_by(id=input_id).one()
 			descriptor_id = entry.id
 			body['descriptor'] = True
 			name = entry.name
