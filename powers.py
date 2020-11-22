@@ -725,6 +725,12 @@ def post_descriptor():
 		error_msgs.append('You must specify whether or not this descriptor is assigned to this power.')
 		body['error'] = error_msgs
 
+	if power_id == '':
+		error = True
+		body['success'] = False
+		error_msgs.append('You Must create a power first ')
+		body['error'] = error_msgs
+
 	if error:
 		print('body: ')
 		print(body)
