@@ -343,6 +343,13 @@ def power_descriptor_select():
 				print(descriptors[i])
 			else:
 				del descriptors[i]
+	elif origin == 'all':
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('origin'))
+			if descriptors[i].get('origin') is not None:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	for descriptor in descriptors:
 		print(descriptor)
@@ -357,12 +364,26 @@ def power_descriptor_select():
 				print(descriptors[i])
 			else:
 				del descriptors[i]
+	elif source == 'all':
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('source'))
+			if descriptors[i].get('source') is not None:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	if medium_type != 'all' and medium_type != 'new' and medium_type != '':
 		des_id = int(medium_type)
 		for i in range(len(descriptors) - 1, -1, -1):
 			print(descriptors[i].get('medium_type'))
 			if descriptors[i].get('medium_type') == des_id:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
+	elif medium_type == 'all':
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium_type'))
+			if descriptors[i].get('medium_type') is not None:
 				print(descriptors[i])
 			else:
 				del descriptors[i]
@@ -375,6 +396,13 @@ def power_descriptor_select():
 				print(descriptors[i])
 			else:
 				del descriptors[i]
+	elif medium_subtype == 'all':
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium_subtype'))
+			if descriptors[i].get('medium_subtype') is not None:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
 
 	if medium != 'all' and medium != 'new' and medium != '':
 		des_id = int(medium)
@@ -384,6 +412,16 @@ def power_descriptor_select():
 				print(descriptors[i])
 			else:
 				del descriptors[i]
+	elif medium == 'all':
+		for i in range(len(descriptors) - 1, -1, -1):
+			print(descriptors[i].get('medium'))
+			if descriptors[i].get('medium') is not None:
+				print(descriptors[i])
+			else:
+				del descriptors[i]
+
+	if origin == 'new' or origin == '' or source == 'new' or source == '' or medium_type == 'new' or medium_type == '' or medium_subtype == 'new' or medium_subtype == '' or medium == 'new' or medium == '':
+		descriptors = [] 
 
 	print('\n\n')
 	for descriptor in descriptors:
