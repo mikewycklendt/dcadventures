@@ -537,10 +537,10 @@ function descriptor_submit() {
 
 descriptor_delete = function() {
 
-	const descriptors_to_delete = [{'delete_btn': '.des-del cha-descriptor-btn', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': '.des-del descriptor-btn', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': '.des-del cha-effect-btn', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
-									{'delete_btn': '.des-del effect-btn', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
+	const descriptors_to_delete = [{'delete_btn': 'des-del cha-descriptor-btn', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': 'des-del descriptor-btn', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': 'des-del cha-effect-btn', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
+									{'delete_btn': 'des-del effect-btn', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
 
 	descriptor_delete_function(descriptors_to_delete)
 
@@ -557,7 +557,7 @@ function descriptor_delete_function(descriptors_to_delete) {
 		const div_btn = to_delete.button;
 		const container = to_delete.div;
 	
-		const deletes = document.querySelectorAll(delete_btn);
+		const deletes = document.getElementsByClassName(delete_btn);
 		const div = document.getElementsByClassName(div_btn);
 		const table_min = document.getElementById(container);
 		
