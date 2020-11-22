@@ -1015,5 +1015,5 @@ def delete_powerdes(power_id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' str(power_id) + ' DELETED\n\n')
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify({'success': True})
