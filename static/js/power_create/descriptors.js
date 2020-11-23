@@ -281,17 +281,35 @@ function descriptor() {
 
 function descriptor_field() {
 
+	const origin_field  = document.getElementById('descriptor_origin');
+	const origin = origin_field.options[origin_field.selectedIndex].value;
+
+	const source_field  = document.getElementById('descriptor_source');
+	const source = source_field.options[source_field.selectedIndex].value;
+	
+	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
+	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
+
+	const medium_field  = document.getElementById('descriptor_medium');
+	const medium = medium_field.options[medium_field.selectedIndex].valu
+
 	const descriptor_field  = document.getElementById('descriptor_field');
 	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
 	const des_text = document.getElementById('descriptor-descriptor-new');
 	const des_des = document.getElementById('descriptor-descriptor-result');
-
-	descriptor_new(descriptor, des_text);
-	descriptor_des(descriptor, des_des);
-
+	const row2 = document.getElementById('descriptor-row2');
+	const row3 = document.getElementById('descriptor-row3');
+	
 	console.log(descriptor)
 
+	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
+		new_entry_show(row2, row3)
+	} else if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
+		new_entry_hide(row2, row3)
+	}
 
+	descriptor_new(descriptor, des_text)
+	descriptor_des(descriptor, des_des)
 }
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0}
