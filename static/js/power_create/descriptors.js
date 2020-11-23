@@ -198,7 +198,7 @@ function new_entry_hide(row2, row3) {
 }
 
 function field_show(value, title, field) {
-	if (value != '' && value != 'new' && value != 'all') {
+	if (value != '' && value != 'all') {
 		title.style.opacity = '100%';
 		field.style.opacity = '100%';
 	} else {
