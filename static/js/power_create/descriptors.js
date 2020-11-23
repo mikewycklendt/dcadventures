@@ -436,7 +436,7 @@ function descriptor_submit() {
 							des_counts.des_rows = des_counts.des_rows + 1
 						} else {
 							place_div = 'descriptor-table';
-							btn_div = 'cha-btn descriptor-btn';
+							btn_div = 'cha-btn cha-descriptor-btn';
 							btn_del = 'des-del cha-descriptor-btn-del';
 							des_counts.cha_count = des_counts.cha_count + 1
 							if (des_counts.cha_count == 4) {
@@ -449,12 +449,12 @@ function descriptor_submit() {
 						title_div = 'descriptor-interact-table-title';
 						if (jsonResponse.descriptor) {
 							place_div = 'descriptors-interact';
-							btn_div = 'des-btn effect-btn';
+							btn_div = 'des-btn des-effect-btn';
 							btn_del = 'des-del effect-btn-del';
 							des_counts.des_rows_effect = des_counts.des_rows_effect + 1
 						} else {
 							place_div = 'descriptor-interact-table';
-							btn_div = 'cha-btn effect-btn';
+							btn_div = 'cha-btn cha-effect-btn';
 							btn_del = 'des-del cha-effect-btn-del';
 							des_counts.cha_count_effect = des_counts.cha_count_effect + 1
 							if (des_counts.cha_count_effect == 4) {
@@ -555,10 +555,10 @@ function descriptor_submit() {
 
 descriptor_delete = function() {
 
-	const descriptors_to_delete = [{'delete_btn': 'cha-descriptor-del', 'button': 'cha-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': 'descriptor-btn-del', 'button': 'des-btn descriptor-btn', 'div': 'descriptors-div'},
-									{'delete_btn': 'cha-effect-btn-del', 'button': 'cha-btn effect-btn', 'div': 'descriptors-interact-div'},
-									{'delete_btn': 'effect-btn-del', 'button': 'des-btn effect-btn', 'div': 'descriptors-interact-div'}]
+	const descriptors_to_delete = [{'delete_btn': 'cha-descriptor-btn-del', 'button': 'cha-descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': 'descriptor-btn-del', 'button': 'descriptor-btn', 'div': 'descriptors-div'},
+									{'delete_btn': 'cha-effect-btn-del', 'button': 'cha-effect-btn', 'div': 'descriptors-interact-div'},
+									{'delete_btn': 'effect-btn-del', 'button': 'des-effect-btn', 'div': 'descriptors-interact-div'}]
 
 	descriptor_delete_function(descriptors_to_delete)
 
@@ -568,12 +568,17 @@ descriptor_delete();
 
 function descriptor_delete_function(descriptors_to_delete) {
 
+	console.log('delete function')
+
 	let to_delete;
 
 	for (to_delete in descriptors_to_delete) {
 		const delete_btn = to_delete.delete_btn;
 		const div_btn = to_delete.button;
 		const container = to_delete.div;
+
+		console.log(delete_btn)
+		console.log(div_btn)
 	
 		const deletes = document.getElementsByClassName(delete_btn);
 		const div = document.getElementsByClassName(div_btn);
