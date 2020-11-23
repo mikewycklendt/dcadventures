@@ -454,7 +454,7 @@ function descriptor_submit() {
 							btn_div = 'des-btn des-effect-btn';
 							btn_del = 'des-del effect-btn-del';
 							des_counts.des_rows_effect = des_counts.des_rows_effect + 1
-							des_counts.eff_total = des_counts1.eff_total + 1
+							des_counts.eff_total = des_counts.eff_total + 1
 						} else {
 							place_div = 'descriptor-interact-table';
 							btn_div = 'cha-btn cha-effect-btn';
