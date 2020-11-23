@@ -810,8 +810,13 @@ def post_descriptor():
 		origin_id = None
 	else:
 		try:
+			print('\n\norigin')
+			print(origin)
+			print(type(origin))			
 			input_id = int(origin)
-			entry = db.session.query(Origin).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(Origin).filter(Origin.id=input_id).one()
 			origin_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -855,8 +860,13 @@ def post_descriptor():
 		source_id = None
 	else:
 		try:
+			print('\n\nsource')
+			print(source)
+			print(type(source))	
 			input_id = int(source)
-			entry = db.session.query(Source).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(Source).filter(Source.id=input_id).one()
 			source_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -869,8 +879,13 @@ def post_descriptor():
 		
 	if medium_type != '':
 		try:
+			print('\n\nsource')
+			print(medium_type)
+			print(type(medium_type))	
 			input_id = int(medium_type)
-			entry = db.session.query(MediumType).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(MediumType).filter(MediumType.id=input_id).one()
 			medium_type_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -912,8 +927,13 @@ def post_descriptor():
 		medium_subtype_id = None
 	else:
 		try:
+			print('\n\nmedium_subtype')
+			print(medium_subtype)
+			print(type(medium_subtype))	
 			input_id = int(medium_subtype)
-			entry = db.session.query(MediumSubType).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(MediumSubType).filter(MediumSubType.id=input_id).one()
 			medium_subtype_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -953,8 +973,13 @@ def post_descriptor():
 		medium_id = None
 	else:
 		try:
+			print('\n\nmedium')
+			print(medium)
+			print(type(medium))	
 			input_id = int(medium)
-			entry = db.session.query(Medium).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(Medium).filter(Medium.id=input_id).one()
 			medium_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -1002,8 +1027,13 @@ def post_descriptor():
 		descriptor_id = None
 	else:
 		try:
+			print('\n\ndescriptor_field')
+			print(descriptor_field)
+			print(type(descriptor_field))	
 			input_id = int(descriptor_field)
-			entry = db.session.query(Descriptor).filter_by(id=input_id).one()
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(Descriptor).filter(Descriptor.id=input_id).one()
 			descriptor_id = entry.id
 			body['descriptor'] = True
 			name = entry.name
