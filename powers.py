@@ -318,7 +318,10 @@ def power_descriptor_select():
 	options_raw = []
 	options = []
 
-	descriptors_query = Descriptor.query.all()
+	try:
+		descriptors_query = Descriptor.query.all()
+	except:
+		print('\n\n\nERROR\n\n\n')
 	descriptors_raw = [descriptor.format() for descriptor in descriptors_query]
 	descriptors = []
 
