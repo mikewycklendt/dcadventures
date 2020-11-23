@@ -645,7 +645,7 @@ function remove_descriptor(id) {
 		let option;
 
 		for (option of options) {
-			if (option.value == delId) {
+			if (option.value == Id) {
 				console.log(option.value);
 				option.remove();
 			}
