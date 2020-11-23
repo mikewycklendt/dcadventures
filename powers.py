@@ -816,7 +816,7 @@ def post_descriptor():
 			input_id = int(origin)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(Origin).filter(Origin.id=input_id).one()
+			entry = db.session.query(Origin).filter(Origin.id == input_id).one()
 			origin_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -866,7 +866,7 @@ def post_descriptor():
 			input_id = int(source)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(Source).filter(Source.id=input_id).one()
+			entry = db.session.query(Source).filter(Source.id == input_id).one()
 			source_id = entry.id
 			if name == '':
 				name = name + entry.name
@@ -885,7 +885,7 @@ def post_descriptor():
 			input_id = int(medium_type)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(MediumType).filter(MediumType.id=input_id).one()
+			entry = db.session.query(MediumType).filter(MediumType.id == input_id).one()
 			medium_type_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -933,7 +933,7 @@ def post_descriptor():
 			input_id = int(medium_subtype)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(MediumSubType).filter(MediumSubType.id=input_id).one()
+			entry = db.session.query(MediumSubType).filter(MediumSubType.id == input_id).one()
 			medium_subtype_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -979,7 +979,7 @@ def post_descriptor():
 			input_id = int(medium)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(Medium).filter(Medium.id=input_id).one()
+			entry = db.session.query(Medium).filter(Medium.id == input_id).one()
 			medium_id = entry.id
 			one_medium_name = entry.name
 		except:
@@ -1033,7 +1033,7 @@ def post_descriptor():
 			input_id = int(descriptor_field)
 			print(input_id)
 			print(type(input_id))
-			entry = db.session.query(Descriptor).filter(Descriptor.id=input_id).one()
+			entry = db.session.query(Descriptor).filter(Descriptor.id == input_id).one()
 			descriptor_id = entry.id
 			body['descriptor'] = True
 			name = entry.name
