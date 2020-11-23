@@ -594,12 +594,16 @@ function descriptor_delete_function(descriptors_to_delete) {
 				fetch('/power/powerdes/delete/' + delId, {
 					method: 'DELETE'
 				})
-				.then(function() {
+				.then(response => response.json())
+				.then(jsonResponse => {
 	
+					let delId = jsonResponse.id
+
+					console.log('delete ' + delId)
 					remove_descriptor(delId)
 	
-					div.style.opacity = '0%';
-					setTimeout(function(){div.style.display = 'none'}, 400)
+					div[i].style.opacity = '0%';
+					setTimeout(function(){div[i].style.display = 'none'}, 400)
 	
 					if (div_btn == 'cha-btn descriptor-btn') {
 						des_counts.cha_count = des_counts.cha_count - 1
