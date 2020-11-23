@@ -569,10 +569,11 @@ descriptor_delete();
 function descriptor_delete_function(descriptors_to_delete) {
 
 	console.log('delete function')
+	console.log(descriptors_to_delete)
 
 	let to_delete;
 
-	for (to_delete in descriptors_to_delete) {
+	for (to_delete of descriptors_to_delete) {
 		const delete_btn = to_delete.delete_btn;
 		const div_btn = to_delete.button;
 		const container = to_delete.div;
