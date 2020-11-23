@@ -423,9 +423,6 @@ def power_descriptor_select():
 			else:
 				del descriptors[i]
 
-	if origin == 'new' or origin == '' or source == 'new' or source == '' or medium_type == 'new' or medium_type == '' or medium_subtype == 'new' or medium_subtype == '' or medium == 'new' or medium == '':
-		descriptors = [] 
-
 	print('\n\n')
 	for descriptor in descriptors:
 		print('results:')
