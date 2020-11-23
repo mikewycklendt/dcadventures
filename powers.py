@@ -1052,15 +1052,24 @@ def post_descriptor():
 			print(err)
 		return jsonify(body)
 
-	power_id = int(power_id)
-	power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
-	db.session.add(power_descriptor)
-	db.session.commit()
+	try:
+		power_id = int(power_id)
+		power_descriptor = PowerDes(name=name, power_id=power_id, des_id=descriptor_id, origin=origin_id, source=source_id, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, descriptor=is_descriptor)
+		db.session.add(power_descriptor)
+		db.session.commit()
 	
-	body['id'] = power_descriptor.id	
-	body['name'] = power_descriptor.name
-	body['selects'] = new_selects
-	
+		body['id'] = power_descriptor.id	
+		body['name'] = power_descriptor.name
+		body['selects'] = new_selects
+	except:
+		error = True
+		body['success'] = False
+		error_msgs.append('Could Not find that descriptor')
+		body['error'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+
 	db.session.close()
 	print('\n\nbody: \n')
 	print(body)
