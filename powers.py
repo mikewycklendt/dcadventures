@@ -809,23 +809,19 @@ def post_descriptor():
 	elif origin == '':
 		origin_id = None
 	else:
-		try:
-			print('\n\norigin')
-			print(origin)
-			print(type(origin))			
-			input_id = int(origin)
-			print(input_id)
-			print(type(input_id))
-			entry = db.session.query(Origin).filter(Origin.id == input_id).one()
-			origin_id = entry.id
-			if name == '':
-				name = name + entry.name
-			else:
-				name = name + ', ' + entry.name
-		except:
-			error = True
-			body['success'] = False
-			error_msgs.append('Could not find that origin')
+		print('\n\norigin')
+		print(origin)
+		print(type(origin))			
+		input_id = int(origin)
+		print(input_id)
+		print(type(input_id))
+		entry = db.session.query(Origin).filter(Origin.id == input_id).one()
+		origin_id = entry.id
+		if name == '':	
+			name = name + entry.name
+		else:
+			name = name + ', ' + entry.name
+
 		
 	if source == 'new':
 		process = True
