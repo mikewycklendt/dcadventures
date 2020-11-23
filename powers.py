@@ -535,26 +535,33 @@ def power_medium_select():
 	body['success'] = True
 	
 	medium_subtype = request.get_json()['medium_subtype']
+	options = []
 
 	print('id ' + medium_subtype)
 
 	if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
-		subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-		mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype).order_by(Medium.name).all()
-		
-		all_subtype = 'Any ' + subtype.name
+		try:
+			subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
+			mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype).order_by(Medium.name).all()
+			
+			all_subtype = 'Any ' + subtype.name
 
-		options = []
+			options.append({'id': '', 'name': subtype.name})
+			options.append({'id': 'all', 'name': all_subtype})
+			options.append({'id': 'new', 'name': 'New'})
 
-		options.append({'id': '', 'name': subtype.name})
-		options.append({'id': 'all', 'name': all_subtype})
-		options.append({'id': 'new', 'name': 'New'})
+			for medium in mediums:
+				options.append({'id': medium.id, 'name': medium.name})
 
-		for medium in mediums:
-			options.append({'id': medium.id, 'name': medium.name})
+		except:
+			db.session.rollback()
+			options.append({'id': '', 'name': 'Medium'})
+		finally:
+			db.session.close()
+	else:
+		options.append({'id': '', 'name': 'Medium'})
 
-		body['options'] = options
-
+	body['options'] = options
 	print(body)
 	return jsonify(body)
 
