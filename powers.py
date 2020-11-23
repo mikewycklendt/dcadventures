@@ -1034,7 +1034,7 @@ def post_descriptor():
 			db.session.close()
 	elif descriptor_field == '':
 		descriptor_id = None
-	elif descriptor == 'all':
+	elif descriptor_field == 'all':
 		descriptor_id = None
 	else:
 		try:
