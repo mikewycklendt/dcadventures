@@ -528,7 +528,7 @@ def get_subsense_select():
 
 	print(body)
 	return jsonify(body)
-dftgyhjn
+	
 @powers.route('/power/medium/select', methods=['POST'])
 def power_medium_select():
 	body = {}
