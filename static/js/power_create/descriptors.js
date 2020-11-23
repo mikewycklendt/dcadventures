@@ -631,15 +631,7 @@ function descriptor_delete_function(descriptors_to_delete) {
 						table_min.style.maxHeight = table_min.scrollHeight - div.scrollHeight + 'px';
 					}
 
-					if (div_btn == 'cha-descriptor-btn' || div_btn == 'descriptor-btn') {
-						const chas = document.getElementsByClassName('cha-descriptor-btn');
-						const dess = document.getElementsByClassName('descriptor-btn');
-						minimize_descriptor_div(chas, dess);
-					} else if (div_btn == 'cha-effect-btn' || div_btn == 'des-effect-btn') {
-						const chas = document.getElementsByClassName('cha-effect-btn');
-						const dess = document.getElementsByClassName('des-effect-btn');
-						minimize_descriptor_div(chas, dess);						
-					}
+
 				})
 			}
 		}
