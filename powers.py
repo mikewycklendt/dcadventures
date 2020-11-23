@@ -538,28 +538,22 @@ def power_medium_select():
 
 	print('id ' + medium_subtype)
 
-	try:
-		if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
-			subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-			mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype).order_by(Medium.name).all()
+	if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
+		subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
+		mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype).order_by(Medium.name).all()
 		
-			all_subtype = 'Any ' + subtype.name
+		all_subtype = 'Any ' + subtype.name
 
-			options = []
+		options = []
 
-			options.append({'id': '', 'name': subtype.name})
-			options.append({'id': 'all', 'name': all_subtype})
-			options.append({'id': 'new', 'name': 'New'})
+		options.append({'id': '', 'name': subtype.name})
+		options.append({'id': 'all', 'name': all_subtype})
+		options.append({'id': 'new', 'name': 'New'})
 
-			for medium in mediums:
-				options.append({'id': medium.id, 'name': medium.name})
+		for medium in mediums:
+			options.append({'id': medium.id, 'name': medium.name})
 
-			body['options'] = options
-
-	except:
-		body['success'] = False
-		body['options'] = 'no results'
-		db.sessio9n.rollback()
+		body['options'] = options
 
 	print(body)
 	return jsonify(body)
