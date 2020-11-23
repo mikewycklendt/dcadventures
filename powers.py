@@ -815,19 +815,24 @@ def post_descriptor():
 	elif origin == '':
 		origin_id = None
 	else:
-		print('\n\norigin')
-		print(origin)
-		print(type(origin))			
-		input_id = int(origin)
-		print(input_id)
-		print(type(input_id))
-		entry = db.session.query(Origin).filter(Origin.id == input_id).one()
-		origin_id = entry.id
-		if name == '':	
-			name = name + entry.name
-		else:
-			name = name + ', ' + entry.name
-
+		try:
+			print('\n\norigin')
+			print(origin)
+			print(type(origin))			
+			input_id = int(origin)
+			print(input_id)
+			print(type(input_id))
+			entry = db.session.query(Origin).filter(Origin.id == input_id).one()
+			origin_id = entry.id
+			if name == '':	
+				name = name + entry.name
+			else:
+				name = name + ', ' + entry.name
+		except:
+			error = True
+			body['success'] = False
+			error_msgs.append('Could Not find that origin')
+			db.session.rollback()
 		
 	if source == 'new':
 		process = True
@@ -878,6 +883,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not find that source')
+			db.session.rollback()
 		
 	if medium_type != '':
 		try:
@@ -894,6 +900,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not find that medium type')
+			db.session.rollback()
 	else:
 		medium_type_id = None
 
@@ -942,6 +949,7 @@ def post_descriptor():
 			error = True
 			body['success'] = False
 			error_msgs.append('Could Not find that medium subtype')
+			db.session.rollback()
 
 	if medium == 'new':
 		process = True
@@ -989,6 +997,7 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not find that medium')
 			body['error'] = error_msgs
+			db.session.rollback()
 
 	if one_medium_name != '':
 		if name == '':
@@ -1044,6 +1053,7 @@ def post_descriptor():
 			body['success'] = False
 			error_msgs.append('Could Not find that descriptor')
 			body['error'] = error_msgs
+			db.session.rollback()
 
 	if error:
 		body['error'] = error_msgs
