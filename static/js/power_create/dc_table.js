@@ -77,7 +77,7 @@ function dc_dc() {
 	}
 }
 
-function dc_time {
+function dc_time() {
 	const check = 'dc_time';
 	const div = 'dc-time';
 	const entry = 'dc-entry';
