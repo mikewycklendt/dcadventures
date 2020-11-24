@@ -211,6 +211,28 @@ function json_errors(line, div, all_errors) {
 	}
 }
 
+function show_maxheight(div) {
+	setTimeout(function(){
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollheight + 'px';
+	}, 300)
+}
+
+function hide_maxheight(div) {
+	div.style.maxheight = '0px';
+	setTimeout(function(){div.style.display = none}, 299)
+}
+
+function shrink_entry(entry, div) {
+	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
+}
+
+function grow_entry(entry, div) {
+	setTimeout(function(){
+		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
+	}, 300)
+}
+
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;
 	const add_power = document.getElementById('add-power');

@@ -43,3 +43,50 @@ function mod_area() {
 	
 	check_drop(check, div, entry);
 }
+
+function mod_limited() {
+	const check = 'mod_limited'
+	const div = 'mod-limited';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry)
+}
+
+function mod_limited_trait_type() {
+	const select = 'mod_limited_trait_type';
+	const fill = 'mod_limited_trait'
+
+	trait_select(select, fill);
+}
+
+function mod_limited_type() {
+	const entry =  'mod-entry';
+	const trait = 'mod-limited-trait'
+	const desc = 'mod-limited-description';
+	const field = document.getElementById('mod_limited_type');
+	const val = field.options[field.selectedIndex].value;
+
+	if (val == 'trait'){
+		hide_maxheight(desc);
+		show_maxheight(trait, entry);
+	} else if (val == 'other') {
+		hide_maxheight(trait);
+		show_maxheight(desc, entry);
+	} else {
+		hide_maxheight(desc);
+		show_maxheight(trait);
+	}
+
+	if ((val != 'trait') || val != 'other') {
+		shrink_entry(entry, desc)
+	} else {
+		if (val  == 'trait') {
+			grow_entry(entry, trait);
+		} else if (val = 'other') {
+			grow_entry(entry, desc);
+		} 
+	}
+	}
+
+
+}
