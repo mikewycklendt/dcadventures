@@ -56,7 +56,7 @@ function resistance_check_type() {
 		setTimeout(function(){tra.style.opacity = '100%'}, 10)
 		des.style.display = 'none';
 		des.style.opacity = '0%';
-	} else if (value = 'descriptor') {
+	} else if (value == 'descriptor') {
 		des.style.display = 'grid';
 		setTimeout(function(){des.style.opacity = '100%'}, 10)
 		tra.style.display = 'none';
