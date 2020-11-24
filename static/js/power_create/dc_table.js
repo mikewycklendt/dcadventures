@@ -50,12 +50,12 @@ function dc_dc() {
 
 	if (value == 'value') {
 		setTimeout(function(){val.style.display = 'grid'}, 300)
-		setTimeout(function(){val.style.maxHeight = val.scrollHeight + 'px';}, 300)
+		setTimeout(function(){val.style.maxHeight = val.scrollHeight + 'px'}, 300)
 		math.style.maxHeight = '0px'
 		setTimeout(function(){math.style.display = 'none'}, 300)
 	} else if (value == 'math') {
 		setTimeout(function(){math.style.display = 'grid'}, 300)
-		setTimeout(function(){math.style.maxHeight = math.scrollHeight + 'px';}, 300)
+		setTimeout(function(){math.style.maxHeight = math.scrollHeight + 'px'}, 300)
 		val.style.maxHeight = '0px'
 		setTimeout(function(){val.style.display = 'none'}, 300)
 	} else {
