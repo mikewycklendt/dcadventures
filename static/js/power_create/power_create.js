@@ -216,14 +216,14 @@ function show_maxheight(div_input) {
 
 	setTimeout(function(){
 		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollheight + 'px';
+		div.style.maxHeight = div.scrollHeight + 'px';
 	}, 300)
 }
 
 function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
-	div.style.maxheight = '0px';
+	div.style.maxHeight = '0px';
 	setTimeout(function(){div.style.display = 'none'}, 299)
 }
 
@@ -236,7 +236,7 @@ function shrink_entry(entry_input, div_input) {
 
 function grow_entry(entry, div) {
 	setTimeout(function(){
-		entry.style.maxheight = entry.scrollHeight + div.scrollHeight + 'px';
+		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
 	}, 300)
 }
 
