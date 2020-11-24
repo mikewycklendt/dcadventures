@@ -150,6 +150,17 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+
+#char-points {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 30% 30%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
 /*
 continuous sustained distracting projection 
 */
