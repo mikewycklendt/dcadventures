@@ -54,7 +54,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	time_numbers = []
 	for i in range(1, 61, 1):
-		positives.append(i)
+		time_numbers.append(i)
 
 	power_type = [{'type': 'attack', 'name': 'Attack'}, 
 					{'type': 'move', 'name': 'Movement'},  
