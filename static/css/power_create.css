@@ -656,7 +656,7 @@ textarea:focus {
 	display: flex;
 	width: 85%;
 	align-items: center;
-	height: 95%;
+	height: 85%;
 	padding: .2vw;
 	text-align: center;
 	background-color: #af0101;
