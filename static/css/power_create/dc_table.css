@@ -44,7 +44,7 @@
 }
 
 #dc-entry input[type="text"] {
-	height: 1.2vw;
+	height: 1.4vw;
 	padding: .1vw;
 	width: 95%;
 }
@@ -53,7 +53,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 45% 15%;
+	grid-template-columns: 10% 27% 48% 15%;
 	grid-auto-rows: auto;
 }
 
