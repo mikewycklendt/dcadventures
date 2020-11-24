@@ -47,6 +47,7 @@ function dc_dc() {
 	const value = field.options[field.selectedIndex].value;
 	const val = document.getElementById('dc-value');
 	const math = document.getElementById('dc-math');
+	const entry = document.getElementById('dc-entry');
 
 	if (value == 'value') {
 		setTimeout(function(){val.style.display = 'grid'}, 300)
@@ -63,5 +64,11 @@ function dc_dc() {
 		setTimeout(function(){val.style.display = 'none'}, 300)
 		math.style.maxHeight = '0px'
 		setTimeout(function(){math.style.display = 'none'}, 300)	
+	}
+
+	if (value == 'value' || value == 'math') {
+		setTimeout(function(){entry.style.maxHeight = val.scrollHeight + entry.scrollHeight + 'px'}, 300)
+	} else {
+		setTimeout(function(){entry.style.maxHeight = entry.scrollHeight - val.scrollHeight + 'px'}, 300)
 	}
 }
