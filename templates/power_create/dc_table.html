@@ -54,12 +54,6 @@
 			<input type="text" id="dc_description" name="dc_description">
 		</div>
 
-		<div>
-			<div class="btn-entry" id="dc_submit" name="dc_submit" onclick="dc_submit()">
-				 Add
-			</div>
-		</div>
-
 	</div>
 
 	<div id="dc-value">
@@ -112,7 +106,63 @@
 		
 	</div>
 
+	<div id="dc-row2">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_time" class="medium-checkbox med-checkbox" onclick="dc_time()"> Time Requirement
+			</div>
+		</div>
 
+		<div>
+
+		</div>
+
+		<div>
+
+		</div>
+
+		<div>
+
+		</div>
+
+		<div>
+			<div class="btn-entry" id="dc_submit" name="dc_submit" onclick="dc_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+	<div id="dc-time">
+		<div>
+			<select class="select-sml" id="dc_time_type" name="dc_time_type">
+				{% for t in time_effect %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_time_value" name="dc_time_value">
+				<option value="">Value</option>
+				<option value="rank">Power Rank</option>
+				{% for i in time_numbers %}
+					<option value={{I}}>{{I}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_time_units" name="dc_time_units">
+				<option value="">Units</option>
+				{% for t in times %}
+					<option value={{t.id}}>{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+	</div>
 
 </div>
 

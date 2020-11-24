@@ -53,7 +53,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 16% 27% 42% 15%;
+	grid-template-columns: 16% 27% 57%;
 	grid-auto-rows: auto;
 }
 
@@ -73,6 +73,21 @@
 	transition: all .3s ease-out;
 }
 
+#dc-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 20% 20% 20% 15%;
+	grid-auto-rows: auto;
+}
+
+#dc-time {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 20% 25% 30%;
+	grid-auto-rows: auto;
+}
 #dc-table {
 	display: none;
 	width: 94%;
