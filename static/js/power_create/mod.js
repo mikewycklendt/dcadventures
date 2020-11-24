@@ -86,7 +86,4 @@ function mod_limited_type() {
 			grow_entry(entry, desc);
 		} 
 	}
-	}
-
-
 }
