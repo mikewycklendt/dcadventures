@@ -220,7 +220,7 @@ function show_maxheight(div_input) {
 	}, 300)
 }
 
-function hide_maxheight(div) {
+function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
 	div.style.maxheight = '0px';
@@ -228,7 +228,7 @@ function hide_maxheight(div) {
 }
 
 function shrink_entry(entry_input, div_input) {
-	const entry = document.getElementById(ewntry_input);
+	const entry = document.getElementById(entry_input);
 	const div = document.getElementById(div_input);
 
 	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
