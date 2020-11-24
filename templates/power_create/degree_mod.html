@@ -95,7 +95,7 @@
 				<select class="select-sml" id="deg_mod_measure_type" name="deg_mod_measure_type" onchange="deg_mod_measure_type()">
 					<option value="">Type</option>
 					{% for type in value_type %}
-						<option value="{{type}}">{{type}}</option>
+						<option value="{{type.type}}">{{type.name}}</option>
 					{% endfor %}
 				</select>
 			</div>

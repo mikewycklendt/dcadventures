@@ -1,0 +1,94 @@
+<div id="dc-header">
+
+	<div id="dc-title">
+		<input type="checkbox" id="dc_check" class="regular-checkbox big-checkbox" onclick="dc_check()"> DC Table:
+	</div>
+	
+	<div id="dc-base">
+		<select class="extra-select" id="dc_extra" name="dc_extra" onchange="dc_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="dc-entry">
+	<div id="dc-row1">
+
+		<div>
+			DC:
+		</div>
+
+		<div>
+			Degree Mod Type:
+		</div>
+
+		<div>
+			Description of Action:
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="dc_dc" name="dc_dc">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="dc_deg_mod_type" name="dc_deg_mod_type">
+				<option class="">Degree Mod Type</option>
+				<option value="none">None</option>
+				{% for t in deg_mod_type %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="dc_description" name="dc_description">
+		</div>
+
+		<div>
+			<div class="btn-entry" id="dc_submit" name="dc_submit" onclick="dc_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>

@@ -1,35 +1,31 @@
-#dc-levels {
+#dc-header {
 	display: grid;
 	width: 100%;
-	margin: 0px;
-	border: 1px solid #af0101;
-	border-radius: 15px;
-	padding: 2%;
-	grid-template-columns: 100%;
-	margin-bottom: 20px;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 70% 30%;
+	grid-template-rows: auto;
 }
 
-#dc-rows {
-	display: grid;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
+#dc-base {
+	opacity: 0%;
+	transition: all .4s ease-out;
 }
-#dc-field {
-	display: grid;
-	width: 97%;
-	margin: 2%;
-	padding: 1%;
-	margin-bottom: 0px;
-	grid-template-columns: 15% 85%;
-	grid-template-rows: auto;
-	border-bottom: 2px solid lightblue;
+
+#dc-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
 }
 
 #dc-entry {
-	display: grid;
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
 	width: 88%;
 	margin-top: 0px;
 	margin-left: 5%;
@@ -39,365 +35,60 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 15% 75%;
-	grid-template-rows: auto;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-speedrank
-
-#dc-fields {
-	display: grid;
-	width: 97%;
-	margin: 2%;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	grid-template-columns: 17% 17% 17% 17% 17% 15%;
-	grid-template-rows: auto;
-	border-bottom: 2px solid lightblue;
-}
-  
-
-#dc-field-title {
-	width: 85%;
-	margin-bottom: 5px;
-	font-family: 'Monda', Verdana;
-	font-size: 100%;
-	color: #245681;
-	padding: 0px;
-	vertical-align: top;
-	display: table-cell;
+#dc-entry input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+	width: 95%;
 }
 
-#dc-value {
+#dc-row1 {
 	display: grid;
-	width: 100%;
-	margin: 2%;
-	grid-template-columns: 100%;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 45% 15%;
 	grid-auto-rows: auto;
 }
 
-#dc-math {
-	display: grid;
-	width: 100%;
-	margin: 0%;
-	grid-template-rows: auto;
-	grid-template-columns: 25% 25% 25% auto;
+#dc-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#dc-class {
-	display: grid;
-	width: 100%;
-	margin: 0%;
-	grid-template-columns: 20% 80%;
-	grid-template-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-attr-title {
-	border-bottom: 2px solid lightblue;
-	width: 90%;
-	margin-bottom: 2px;
+.dc-table-ext {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
-	padding: 0px;
-}
-
-#dc-measure-field {
-	display: grid;
-	width: 100%;
-	margin-left: 2%;
-	grid-template-columns: 20% 15% 65%;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-measure-fields {
-	display: grid;
-	width: 100%;
-	margin: 0px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-}
-
-#dc-measure-value{
-	display: grid;
-	width: 40%;
-	margin: 0px;
-	grid-template-columns: 50% 50%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-measure-value input[type="text"]{
-	height: 1.1vw;
-	font-size: 90%;
-	width: 80%;
-}
-
-#dc-measure-math{
-	display: grid;
-	width: 60%;
-	margin: 0px;
-	grid-template-columns: 20% 40% 40%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-damage-field {
-	display: grid;
-	width: 100%;
-	margin-top: 1%;
-	margin-left: 2%;
-	grid-template-columns: 20% 15% auto;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-damage-text {
-	width: 90%;
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-	color: #245681;
-}
-
-#dc-keyword-field {
-	display: grid;
-	width: 100%;
-	margin-top: 1%;
-	margin-left: 2%;
-	grid-template-columns: 20% 45% auto;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-keyword-field input[type="text"] {
-	height: 1.5vw;
-	font-size: 90%;
-}
-
-#dc-defense-field {
-	display: grid;
-	width: 100%;
-	margin-top: 1%;
-	margin-left: 2%;
-	grid-template-columns: 20% 25% auto;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-condition-field {
-	display: grid;
-	width: 100%;
-	margin-top: 1%;
-	margin-left: 2%;
-	grid-template-columns: 20% 7% 20% 5% 20% auto;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-condition-text {
-	width: 90%;
-	font-family: 'Monda', Verdana;
-	font-size: 90%;
-	color: #245681;
-}
-
-#dc-action-field {
-	display: grid;
-	width: 100%;
-	margin-top: 1%;
-	margin-left: 2%;
-	grid-template-columns: 20% 20% auto;
-	grid-template-rows: auto;
-	font-family: 'Monda', Verdana;
-	font-size: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-add {
-	display: grid;
-	width: 100%;
-	margin: 2%;
-	margin-top: 0px;
-	grid-template-columns: 77% 20% 3%;
-	grid-template-rows: auto;
-}
-
-.dc-btn {
-	display: table-cell;
-	width: 12vw;
-	vertical-align: middle;
-	height: 2vw;
-	padding: .3vw;
-	text-align: center;
-	background-color: #af0101;
-	cursor: crosshair;
-	margin: 3px;
-	justify-content: center;
-	font-family: 'Monda', Verdana;
-	text-decoration: none;
-	font-size: 110%;
-	color: white;
-	outline: 2px solid white;
-	outline-offset: -4px;
-	transition: all .2s ease-out;
-}
-
-.dc-btn:hover {
-	background-color: lightblue;
-	color: black;
-	outline: 2px solid black;
-	outline-offset: -2px;
-}
-
-.dc-btn::before {
-	font-family: 'FontAwesome';
-	content: '\f067';
-	display: inline-block;
-}
-
-#dc-table-container {
-	display: none;
-	margin: 1%;
+	margin-bottom: 4px;
+	width: 97%;
 	height: auto;
-	width: auto;
-	grid-template-columns: auto 1% auto 1% 1% 1% 1% 1% auto;
-	grid-auto-rows: auto;
-	border: 1px solid #af0101;
-	border-radius: 5px;
-	padding-bottom: 2%;
-	margin-bottom: 3%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#dc-table-title-dc {
+.dc-table-rnk {
 	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-}
-
-#dc-table-title-key {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-title-des {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-}
-
-#dc-table-title-mea {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-title-dam {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-title-def {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	display: block;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-title-con {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-title-act {
-	font-family: 'Monda', Verdana;
-	font-size: 65%;
-	border-bottom: 1px solid lightblue;
-	margin: 4px;
-	max-width: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-dc {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-key {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -405,73 +96,26 @@ speedrank
 
 .dc-table-des {
 	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-.dc-table-mea {
+.dc-table-del {
 	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-}
-
-.dc-table-dam {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-def {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-con {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-act {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-delete {
-	font-family: 'Monda', Verdana;
-	font-size: 55%;
-	margin: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-table-col {
-	width: 95%;
-	font-family: 'Monda', Verdana;
-	font-size: 80%;
-	margin: 4px;
-	padding: 2px;
 }
 
 #dc-err {
