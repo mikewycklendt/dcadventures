@@ -79,11 +79,13 @@ descriptor
 	display: none;
 	grid-template-columns: 50% 50%;
 	opacity: 0%;;
+	transition: all .4s ease-in;
 }
 
 #resistance-descriptor {
 	display: none;
 	opacity: 0%;;
+	transition: all .4s ease-in;
 }
 
 #resistance-table {
