@@ -224,7 +224,7 @@ function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
 	div.style.maxheight = '0px';
-	setTimeout(function(){div.style.display = none}, 299)
+	setTimeout(function(){div.style.display = 'none'}, 299)
 }
 
 function shrink_entry(entry_input, div_input) {
