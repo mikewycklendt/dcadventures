@@ -53,8 +53,24 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 27% 48% 15%;
+	grid-template-columns: 16% 27% 42% 15%;
 	grid-auto-rows: auto;
+}
+
+#dc-value {
+	display: none;
+	grid-template-columns: 15% 85%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
+#dc-math {
+	display: none;
+	grid-template-columns: 15% 20% 25% 40%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
 }
 
 #dc-table {

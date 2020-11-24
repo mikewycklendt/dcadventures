@@ -32,10 +32,10 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="dc_dc" name="dc_dc">
+			<select class="entry-select" id="dc_dc" name="dc_dc" onchange="dc_dc()">
 				<option value="">DC</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+				{% for v in value_type %}
+					<option value={{v.type}}>{{v.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -59,6 +59,57 @@
 				 Add
 			</div>
 		</div>
+
+	</div>
+
+	<div id="dc-value">
+		<div>
+			<select class="select-sml" id="dc_value_value" name="dc_value_value">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+		</div>
+	</div>
+
+	<div id="dc-math">
+		<div>
+			<select class="select-sml" id="dc_math_vqlue" name="dc_math_value">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_math" name="dc_math_math">
+				<option value="">Math</option>
+				{% for m in maths %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_trait_type" name="dc_math_trait_type" onchange="dc_math_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option> 
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_trait" name="dc_math_trait">
+
+			</select>
+		</div>
+		
 	</div>
 
 

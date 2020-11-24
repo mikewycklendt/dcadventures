@@ -34,3 +34,34 @@ function dc_base() {
 		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
+
+function dc_math_trait_type() {
+	const select  = 'dc_math_trait_type';
+	const fill = 'dc_math_trait';
+
+	trait_select(select, fill);
+}
+
+function dc_dc() {
+	const field = document.getElementById('dc_dc');
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById('dc-value');
+	const math = document.getElementById('dc-math');
+
+	if (value == 'value') {
+		setTimeout(function(){val.style.display = 'grid'}, 300)
+		setTimeout(function(){val.style.maxHeight = val.scrollHeight + 'px';})
+		math.style.maxHeight = '0px'
+		setTimeout(function(){math.style.display = 'none'}, 300)
+	} else if (value == 'math') {
+		setTimeout(function(){math.style.display = 'grid'}, 300)
+		setTimeout(function(){math.style.maxHeight = math.scrollHeight + 'px';})
+		val.style.maxHeight = '0px'
+		setTimeout(function(){val.style.display = 'none'}, 300)
+	} else {
+		val.style.maxHeight = '0px'
+		setTimeout(function(){val.style.display = 'none'}, 300)
+		math.style.maxHeight = '0px'
+		setTimeout(function(){math.style.display = 'none'}, 300)	
+	}
+}
