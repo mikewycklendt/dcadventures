@@ -17,6 +17,7 @@
 @import "power_create/environment.css";
 @import "power_create/descriptors.css";
 @import "power_create/resist.css";
+@import "power_create/change_action.css";
 
 
 .power-container {
