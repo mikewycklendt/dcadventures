@@ -66,9 +66,9 @@ function dc_dc() {
 		setTimeout(function(){math.style.display = 'none'}, 300)	
 	}
 
-	if (value == 'value' || value == 'math') {
-		setTimeout(function(){entry.style.maxHeight = val.scrollHeight + entry.scrollHeight + 'px'}, 300)
-	} else {
+	if ((value != 'value') || (value != 'math')) {
 		setTimeout(function(){entry.style.maxHeight = entry.scrollHeight - val.scrollHeight + 'px'}, 300)
+	} else {
+		setTimeout(function(){entry.style.maxHeight = entry.scrollHeight + math.scrollHeight + 'px'}, 300)
 	}
 }
