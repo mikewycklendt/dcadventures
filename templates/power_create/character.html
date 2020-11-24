@@ -93,6 +93,25 @@
 
 	</div>
 
+	<div id="char-row2">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="char_points" class="medium-checkbox med-checkbox" onclick="char_points()"> Power Points
+			</div>
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+		</div>
+
+	</div>
+
 	<div id="char-limited">
 
 		<div>
@@ -195,6 +214,44 @@
 
 		<div>
 			 - size rank
+		</div>
+
+	</div>
+
+	<div id="char-points">
+		<div>
+			<select class="select-sml" id="char_points" name="char_points">
+				<option value="">Restored Points</option>
+				<option value="rank">Rank of Affected Trait</option>
+				<option value="power">This Power's Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_points_trait_type" name="char_points_trait_type" onchange="char_points_trait_type()">
+				<option value="">Points taken from</option>
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_points_trait" name="char_points_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="char_points_descriptor" name="char_points_descriptor">
+				<option value="">Use above form to add descriptors</option>
+			</select>
 		</div>
 
 	</div>

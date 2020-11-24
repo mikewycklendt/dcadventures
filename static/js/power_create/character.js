@@ -112,8 +112,22 @@ function char_limbs() {
 }
 
 function char_carry() {
-	const check = 'char_carry'
-	const div = 'char-carry'
+	const check = 'char_carry';
+	const div = 'char-carry';
 
-	check_drop(check, div, entry)
+	check_drop(check, div, entry);
+}
+
+function char_points() {
+	const check = 'char_points';
+	const div = 'char-points';
+
+	check_drop(check, div, entry);
+}
+
+function char_points_trait_type() {
+	const select = 'char_points_trait_type'
+	const fill = 'char_points_trait'
+	
+	trait_select(select, fill);
 }
