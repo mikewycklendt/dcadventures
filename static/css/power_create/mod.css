@@ -47,7 +47,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 25% 15% 20% 20% 20%;
 	grid-auto-rows: auto;
 }
 
@@ -55,7 +55,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 25% 15% 10% 20% 30%;
 }
 
 #mod-table {
