@@ -1,0 +1,104 @@
+<div id="mod-header">
+
+	<div id="mod-title">
+		<input type="checkbox" id="mod_check" class="regular-checkbox big-checkbox" onclick="mod_check()"> Modifiers:
+	</div>
+	
+	<div id="mod-base">
+		<select class="extra-select" id="mod_extra" name="mod_extra" onchange="mod_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="mod-entry">
+	<div id="mod-row1">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox"> Affects Objects
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_area" class="medium-checkbox med-checkbox" onclick="mod_area()"> Area
+			</div>
+		</div>
+
+		<div>
+			
+		</div>
+
+		<div>
+			
+		</div>
+
+		<div>
+			
+		</div>
+
+	</div>
+
+	<div id="mod-area">
+		<div>
+			Modifier to check:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_area_mod" name="mod_area_mod">
+				<option value="">Modifier</option>
+				<option value="rank">Power Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			Range:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_area_range" name="mod_area_range">
+				<option value="">Distance Rank</option>
+				<option value="rank">Power Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+</div>
+
+<div id="mod-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="mod-err"></div>
