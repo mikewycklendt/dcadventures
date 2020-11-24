@@ -1,6 +1,6 @@
 function resistance_check() {
 	const deg_mod_check = document.getElementById("resistance_check");
-	const deg_mod_base_form = document.getElementById("resistance-base-form");
+	const deg_mod_base_form = document.getElementById("resistance-base");
 	const title = document.getElementById("resistance-title");
 	const entry = document.getElementById("resistance-entry");
 
