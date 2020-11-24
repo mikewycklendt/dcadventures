@@ -43,6 +43,13 @@
 	transition: all .4s ease-out;
 }
 
+#mod-entry input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+	font-size: 90%;
+	width: 95%;
+}
+
 #mod-row1 {
 	display: grid;
 	width: 98%;
@@ -56,6 +63,36 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 25% 15% 10% 20% 30%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-limited {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 15% 65%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-trait {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 40% 60%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-description {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 100%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
