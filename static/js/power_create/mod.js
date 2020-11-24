@@ -61,8 +61,8 @@ function mod_limited_trait_type() {
 
 function mod_limited_type() {
 	const entry =  'mod-entry';
-	const trait = 'mod-limited-trait'
-	const desc = document.getElementById('mod-limited-description');
+	const trait = 'mod-limited-trait';
+	const desc = 'mod-limited-description';
 	const field = document.getElementById('mod_limited_type');
 	const val = field.options[field.selectedIndex].value;
 

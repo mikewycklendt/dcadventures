@@ -211,7 +211,9 @@ function json_errors(line, div, all_errors) {
 	}
 }
 
-function show_maxheight(div) {
+function show_maxheight(div_input) {
+	const div = document.getElementById(div_input);
+
 	setTimeout(function(){
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollheight + 'px';
@@ -219,11 +221,16 @@ function show_maxheight(div) {
 }
 
 function hide_maxheight(div) {
+	const div = document.getElementById(div_input);
+
 	div.style.maxheight = '0px';
 	setTimeout(function(){div.style.display = none}, 299)
 }
 
-function shrink_entry(entry, div) {
+function shrink_entry(entry_input, div_input) {
+	const entry = document.getElementById(ewntry_input);
+	const div = document.getElementById(div_input);
+
 	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 }
 
