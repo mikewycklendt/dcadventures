@@ -19,7 +19,7 @@
 	</div>
 
 	<div  id="move-entry-title">
-		Modifier to Check:
+		Modifier:
 	</div>
 
 	<div></div>
@@ -38,10 +38,19 @@
 	<div>
 		<select class="entry-select" id="action_mod" name="action_mod" aria-placeholder="0">
 			<option value=''>Modifier</option>
-			{% for number in numbers %}
-				<option value={{number}}>{{number}}</option>
+			{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</select>
+	</div>
+
+	<div>
+		<div class="check-div">
+			<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox"> Same Action No Check
+		</div>
 	</div>
 
 	<div>
