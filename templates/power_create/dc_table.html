@@ -151,6 +151,7 @@
 		<div>
 			<select class="select-sml" id="dc_time_units" name="dc_time_units">
 				<option value="">Units</option>
+				<option value="rank">Time Rank</option>
 				{% for t in times %}
 					<option value={{t.id}}>{{t.name}}</option>
 				{% endfor %}
