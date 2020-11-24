@@ -1,5 +1,5 @@
-function action_check() {
-	const check = document.getElementById("action_check");
+function change_action_check() {
+	const check = document.getElementById("change_action_check");
 	const title = document.getElementById("action-title");
 	const base = document.getElementById('action-base');
 	const entry = document.getElementById("action-entry");
