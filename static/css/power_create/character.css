@@ -76,7 +76,7 @@ trait amount
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 25% 28% 22% 25%;
 	grid-auto-rows: auto;
 }
 
