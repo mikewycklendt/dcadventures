@@ -235,11 +235,13 @@
 					</select>
 				</div>
 
-				<div class="select-sml" id="mod_ranged_math_units" name="mod_ranged_math_units">
-					<option value="">Units</option>
-					{% for u in distances %}
-						<option value={{u.id}}>{{u.name}}</option>
-					{% endfor %}
+				<div>
+					<select class="select-sml" id="mod_ranged_math_units" name="mod_ranged_math_units">
+						<option value="">Units</option>
+						{% for u in distances %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 		</div>

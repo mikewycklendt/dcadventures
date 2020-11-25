@@ -139,9 +139,8 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 40% 40% 20%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s ease-in;
 }
 
 #mod-ranged-math {
@@ -150,9 +149,8 @@
 	gap: 3px;
 	font-size: 80%;
 	grid-template-columns: 20% 20% 20% 25% 15%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s ease-in;
 }
 
 
