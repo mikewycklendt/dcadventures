@@ -83,6 +83,27 @@ function mod_limited_type() {
 		hide_maxheight(desc);
 		show_maxheight(trait);
 	}
+}
 
+function mod_ranged() {
+	const check = 'mod_ranged';
+	const div = 'mod-ranged';
+	const entry = 'mod-entry';
 
+	check_drop(check, div, entry)
+}
+
+function mod_ranged_type() {
+	const select = 'mod_ranged_type';
+	const val = 'mod-ranged-value';
+	const math = 'mod-ranged-math';
+
+	value_type(select, math, val)
+}
+
+function mod_ranged_math_trait_type() {
+	const select = 'mod_ranged_math_trait_type';
+	const fill = 'mod_ranged_math_trait'; 
+
+	trait_select(select, fill)
 }

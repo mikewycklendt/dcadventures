@@ -56,6 +56,13 @@
 			</div>
 		</div>
 		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_ranged" class="medium-checkbox med-checkbox" onclick="mod_ranged()"> Limited
+			</div>
+		</div>
+
+		
 	</div>
 
 	<div id="mod-area">
@@ -162,6 +169,81 @@
 				<div></div>
 			</div>
 		</div>
+	</div>
+
+	<div id="mod-ranged">
+		<div>
+			Ranged:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_ranged_type" name="mod_ranged_type" onchange="mod_ranged_type()">
+				{% for v in value_type %}
+					<option value="{{v.type}}">{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="mod-ranged-value">
+				<div>
+					<input type="text" id="mod_ranged_value" name="mod_ranged_value">
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranged_units" name="mod_ranged_units">
+						<option value="">Units</option>
+						{% for u in distances %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div></div>
+			</div>
+
+			<div id="mod-ranged-math">
+				<div>
+					<select class="select-sml" id="mod_ranged_math_value" name="mod_ranged_math_value">
+						<option value="">Value</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranged_math" name="mod_ranged_math">
+						<option value="">math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranged_math_trait_type" name="mod_ranged_math_trait_type" onchange="mod_ranged_math_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranged_math_trait" name="mod_ranged_math_trait">
+						<option value="">Trait</option>	
+					</select>
+				</div>
+
+				<div class="select-sml" id="mod_ranged_math_units" name="mod_ranged_math_units">
+					<option value="">Units</option>
+					{% for u in distances %}
+						<option value={{u.id}}>{{u,.name}}</option>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<div id="mod-buttonrow">
