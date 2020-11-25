@@ -14,50 +14,58 @@
 </div>
 
 <div id="action-entry" style="display: none;">
-	<div id="move-entry-title">
-		Change to:
-	</div>
+	<div id="action-row1">
+		<div id="move-entry-title">
+			Change to:
+		</div>
 
-	<div  id="move-entry-title">
-		Modifier:
-	</div>
+		<div  id="move-entry-title">
+			Modifier:
+		</div>
 
-	<div></div>
+		<div></div>
 
-	<div></div>
+		<div>
+			<select class="entry-select" id="action_change" name="action_change" aria-placeholder="0">
+				<option value=''>Action Type</option>
+				{% for action in actions %}
+					<option value={{action.id}}>{{action.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-	<div>
+		<div>
+			<select class="entry-select" id="action_mod" name="action_mod" aria-placeholder="0">
+				<option value=''>Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-		<select class="entry-select" id="action_change" name="action_change" aria-placeholder="0">
-			<option value=''>Action Type</option>
-			{% for action in actions %}
-				<option value={{action.id}}>{{action.name}}</option>
-			{% endfor %}
-		</select>
-
-	</div>
-
-	<div>
-		<select class="entry-select" id="action_mod" name="action_mod" aria-placeholder="0">
-			<option value=''>Modifier</option>
-			{% for i in negatives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div>
-		<div class="check-div">
-			<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox"> Same Action No Check
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox"> Same Action No Check
+			</div>
 		</div>
 	</div>
 
-	<div>
-		<div class="btn-entry" id="action_submit" name="action_submit" onclick="action_submit()">
-			 Add
+	<div id="action-row2">
+		<div>
+			Circumstance:
+		</div>
+
+		<div>
+			<input type="text" id="action_circ" name="action_circ">
+		</div>
+
+		<div>
+			<div class="btn-entry" id="action_submit" name="action_submit" onclick="action_submit()">
+				 Add
+			</div>
 		</div>
 	</div>
 
