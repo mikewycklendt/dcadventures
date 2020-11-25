@@ -77,7 +77,7 @@ function mod_limited_type() {
 		show_maxheight(trait);
 	}
 
-	if ((val != 'trait') || val != 'other') {
+	if ((val != 'trait') && val != 'other') {
 		shrink_entry(entry, trait)
 	} else {
 		if (val  == 'trait') {
