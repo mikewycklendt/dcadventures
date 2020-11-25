@@ -75,7 +75,7 @@
 				</div>
 				
 				<div>
-					<select class="select-sml" id="time_trait_type" name="time_trait_type">
+					<select class="select-sml" id="time_trait_type" name="time_trait_type" onchange="time_trait_type()">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}

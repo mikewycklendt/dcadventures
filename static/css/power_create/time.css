@@ -54,7 +54,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 15% 65%;
+	grid-template-columns: 20% 10% 70%;
 	grid-auto-rows: auto;
 }
 
@@ -62,12 +62,14 @@
 	display: none;
 	opacity: 0%;
 	grid-template-columns: 40% 60%;
+	transition: all .3s ease-in;
 }
 
 #time-math {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 20% 20% 20% 25% 15%;
+	grid-template-columns: 15% 15% 20% 30% 20%;
+	transition: all .3s ease-in;
 }
 
 #time-row2 {

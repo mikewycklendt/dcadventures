@@ -126,39 +126,6 @@
 		</div>
 	</div>
 
-	<div id="dc-time">
-		<div>
-			<select class="select-sml" id="dc_time_type" name="dc_time_type">
-				{% for t in time_effect %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_time_value" name="dc_time_value">
-				<option value="">Value</option>
-				<option value="rank">Power Rank</option>
-				{% for i in time_numbers %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_time_units" name="dc_time_units">
-				<option value="">Units</option>
-				<option value="rank">Time Rank</option>
-				{% for t in times %}
-					<option value={{t.id}}>{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div></div>
-
-	</div>
-
 </div>
 
 <div id="damage-table">
