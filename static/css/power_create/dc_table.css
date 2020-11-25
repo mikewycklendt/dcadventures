@@ -8,6 +8,7 @@
 }
 
 #dc-base {
+	display: grid;
 	grid-template-columns: 50% 50%;
 	gap: .2vw;
 	opacity: 0%;
