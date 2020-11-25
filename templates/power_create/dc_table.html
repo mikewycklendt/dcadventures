@@ -105,12 +105,15 @@
 
 	<div id="dc-row2">
 		<div>
-			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
-				<option value="">Use above form for values</option>
-			</select>
+			<div class="check-div">
+				<input type="checkbox" id="dc_descriptor" class="medium-checkbox med-checkbox" onclick="dc_descriptor()"> Descriptor
+			</div>
 		</div>
 
 		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_condition" class="medium-checkbox med-checkbox" onclick="dc_condition()"> Descriptor
+			</div>
 		</div>
 
 		<div>
@@ -123,6 +126,59 @@
 			<div class="btn-entry" id="dc_submit" name="dc_submit" onclick="dc_submit()">
 				 Add
 			</div>
+		</div>
+	</div>
+
+	<div id="dc-descriptor">
+
+		<div>
+			Descriptor:
+		</div>
+		
+		<div>
+			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
+				<option value="">Use above form for values</option>
+			</select>
+		</div>
+	
+		<div>
+			<select class="select-sml" id="dc_descriptor_possess" name="dc_descriptor_possess">
+				{% for p in posess %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+	</div>
+
+	<div id="dc-condition">
+		<div>
+			From:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_condition1" name="dc_condition1">
+				<option value="">Starting Condition</option>
+				<option value="current">Current</option>
+				{% for c in condition %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			To:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_condition1" name="dc_condition1">
+				<option value="">Ending Condition</option>
+				<option value="any">Any</option>
+				{% for c in condition %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select> 
 		</div>
 	</div>
 

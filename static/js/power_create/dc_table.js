@@ -84,3 +84,17 @@ function dc_time() {
 
 	check_drop(check, div, entry);
 }
+
+function dc_descriptor() {
+	const check = 'dc_descriptor';
+	const div = 'dc-descriptor';
+
+	check_drop(check, div);
+}
+
+function dc_condition() {
+	const check = 'dc_condition';
+	const div = 'dc-condition';
+
+	check_drop(check, div);
+}
