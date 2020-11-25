@@ -35,6 +35,7 @@
 #action-entry {
 	display: grid;
 	font-family: 'Monda', Verdana;
+	font-size: 120%;
 	width: 88%;
 	margin-top: 0px;
 	margin-left: 5%;
@@ -69,15 +70,6 @@
 	font-size: 120%;
 	grid-template-columns: 20% 65% 15%;
 	gap: .1vw;
-}
-
-#action-entry-title {
-	border-bottom: 1px solid lightblue;
-	width: 70%;
-	font-family: 'Monda', Verdana;
-	font-size: 100%;
-	color: #245681;
-	margin-bottom: 4px;
 }
 
 #action-err {
