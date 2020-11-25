@@ -16,7 +16,7 @@
 	transition: all .2s linear;
 }
 
-#sense-base-form {
+#sense-base {
 	display: grid;
 	grid-template-columns: 100%;
 	width: 100%;
@@ -25,6 +25,7 @@
 }
 
 #sense-entry {
+	display: none;
 	width: 88%;
 	margin-top: 0px;
 	margin-left: 5%;
@@ -40,6 +41,10 @@
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	gap: 6px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+
 }
 
 
