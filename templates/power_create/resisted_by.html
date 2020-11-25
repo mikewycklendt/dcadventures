@@ -23,10 +23,20 @@
 			{% endfor %}
 		</select>
 	</div>
+	
+	<div id="resist-dc-field">
+		<select class="select-sml" id="resist_dc" name="resist_dc">
+			<option value="">DC</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
 
 	<div id="resist-mod-field">
 		<select class="select-sml" id="resist_mod" name="resist_mod">
-			<option value="">Modifier</option>
+			<option value="">Mod</option>
+			<option value="rank">Power Rank</option>
 			{% for num in negatives %}
 				<option value={{num}}>{{num}}</option>
 			{% endfor %}

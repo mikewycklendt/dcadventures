@@ -35,11 +35,11 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 20% 20% 60%;
+	grid-template-columns: 16% 12% 12% 60%;
 	grid-template-rows:  auto auto auto;
-	grid-template-areas: "type mod description"
-							"field field effect"
-							"button button values";
+	grid-template-areas: "type dc mod description"
+							"field field field effect"
+							"button button button values";
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -47,7 +47,14 @@
 
 #resist-type-field {
 	grid-area: type;
-	width: 85%;
+	width: 95%;
+	height: auto;
+	padding: 4px;
+}
+
+#resist-dc-field {
+	grid-area: dc;
+	width: 95%;
 	height: auto;
 	padding: 4px;
 }
