@@ -78,7 +78,7 @@ function mod_limited_type() {
 	}
 
 	if ((val != 'trait') || val != 'other') {
-		shrink_entry(entry, desc)
+		shrink_entry(entry, trait)
 	} else {
 		if (val  == 'trait') {
 			grow_entry(entry, trait);
