@@ -144,6 +144,23 @@
 			<div id="mod-limited-description">
 				<input type="text" id="mod_limited_description" name="mod_limited_description">
 			</div>
+
+			<div id="mod-limited-subjects">
+				<div>
+					Number of affected characters:
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_limited_subjects" name="mod_limited_subjects">
+						<option value="">Limit</option>
+						{% for i in positives %}
+							<option value={{I}}>{{I}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
 		</div>
 	</div>
 
@@ -160,6 +177,9 @@
 		<div>
 			<select class="entry-select" id="mod_cost" name="mod-cost">
 				<option value="">N/A</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}

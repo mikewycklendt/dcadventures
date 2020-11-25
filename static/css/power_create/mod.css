@@ -114,6 +114,16 @@
 	transition: all .4s ease-out;
 }
 
+#mod-limited-subjects {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 30% 20% 50%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #mod-table {
 	display: none;
 	width: 94%;

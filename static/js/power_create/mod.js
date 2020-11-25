@@ -63,27 +63,26 @@ function mod_limited_type() {
 	const entry =  'mod-entry';
 	const trait = 'mod-limited-trait';
 	const desc = 'mod-limited-description';
+	const sub = 'mod-limited-subjects'
 	const field = document.getElementById('mod_limited_type');
 	const val = field.options[field.selectedIndex].value;
 
 	if (val == 'trait'){
 		hide_maxheight(desc);
+		hide_maxheight(sub);
 		show_maxheight(trait, entry);
 	} else if (val == 'other') {
 		hide_maxheight(trait);
+		hide_maxheight(sub)
 		show_maxheight(desc, entry);
+	} else if (val == 'subjects') {
+		hide_maxheight(trait);
+		hide_maxheight(desc);
+		show_maxheight(sub, entry)
 	} else {
 		hide_maxheight(desc);
 		show_maxheight(trait);
 	}
 
-	if ((val != 'trait') && val != 'other') {
-		shrink_entry(entry, trait)
-	} else {
-		if (val  == 'trait') {
-			grow_entry(entry, trait);
-		} else if (val = 'other') {
-			grow_entry(entry, desc);
-		} 
-	}
+
 }
