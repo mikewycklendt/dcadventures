@@ -95,51 +95,53 @@
 
 	</div>
 
-</div>
+	<div id="mod-limited">
 
-<div id="mod-limited">
-
-	<div>
-		<select class="select-sml" id="mod_limited_type" name="mod_limited_type" onchange="mod_limited_type()">
-			{% for l in limited_type %}
-				<option value="{{l.type}}">{{l.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div>
-		<select class="select-sml" id="mod_limited_mod" name="mod_limited_mod">
-			<option value="">Modifier</option>
-			<option value="rank">Power Rank</option>
-			<option value="X">X</option>
-			{% for i in negatives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div>
-		<div id="mod-limited-trait">
-			<div>
-				<select class="select-sml" id="mod_limited_trait_type" name="mod_limited_trait_type">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
+		<div>
+			<select class="select-sml" id="mod_limited_type" name="mod_limited_type" onchange="mod_limited_type()">
+				{% for l in limited_type %}
+					<option value="{{l.type}}">{{l.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div>
+			<select class="select-sml" id="mod_limited_mod" name="mod_limited_mod">
+				<option value="">Modifier</option>
+				<option value="rank">Power Rank</option>
+				<option value="X">X</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div>
+			<div id="mod-limited-trait">
+				<div>
+					<select class="select-sml" id="mod_limited_trait_type" name="mod_limited_trait_type">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="mod_limited_trait" name="mod_limited_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
 			</div>
-
-			<div>
-				<select class="select-sml" id="mod_limited_trait" name="mod_limited_trait">
-					<option value="">Trait</option>
-				</select>
+	
+			<div id="mod-limited-description">
+				<input type="text" id="mod_limited_description" name="mod_limited_description">
 			</div>
 		</div>
-
-		<div id="mod-limited-description">
-			<input type="text" id="mod_limited_description" name="mod_limited_description">
-		</div>
 	</div>
+
 </div>
+
+
 
 <div id="mod-table">
 
