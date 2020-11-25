@@ -111,3 +111,17 @@ function dc_keyword() {
 
 	check_drop(check, div, entry)
 }
+
+function dc_check_type() {
+	const check = 'dc_check_type';
+	const div = 'dc-check'
+
+	check_drop(check, div)
+}
+
+function dc_check_trait_type() {
+	const select = 'dc_check_trait_type';
+	const fill = 'dc_check_trait';
+
+	trait_select(select, fill)
+}

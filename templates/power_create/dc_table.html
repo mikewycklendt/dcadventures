@@ -208,6 +208,37 @@
 		<div></div>
 	</div>
 
+	<div id="dc-check">
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_trait_type" name="dc_chheck_trait_type" onchange="dc_chheck_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_trait" name="dc_chheck_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_mod" name="dc_check_mod">
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 </div>
 
 <div id="damage-table">
