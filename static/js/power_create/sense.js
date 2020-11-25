@@ -169,31 +169,19 @@ function sense_time_set() {
 }
 
 function sense_time() {
-	const check = document.getElementById("sense_time");
-	const div = document.getElementById("sense-time");
-	const sen = document.getElementById("sense-entry");
-	
-	if (check.checked == true) {
-		div.style.display = "grid";
-		div.style.maxHeight = div.scrollHeight + "px";
-		sen.style.maxHeight = div.scrollHeight + sen.scrollHeight + "px";
-	} else {
-		div.style.maxHeight = "0px";
-	}
+	const check = "sense_time";
+	const div = "sense-time";
+	const sen = "sense-entry";
+
+	check_drop(check, div, sen)
 }
 
 function sense_ranged() {
-	const check = document.getElementById("sense_ranged");
-	const div = document.getElementById("sense-distance");
-	const sen = document.getElementById("sense-entry");
+	const check = "sense_ranged";
+	const div = "sense-distance";
+	const sen = "sense-entry";
 
-	if (check.checked == true) {
-		div.style.display = "grid";
-		div.style.maxHeight = div.scrollHeight + "px";
-		sen.style.maxHeight = div.scrollHeight + sen.scrollHeight + "px";
-	} else {
-		div.style.maxHeight = "0px";
-	}
+	check_drop(check, div, sen)
 }
 
 function sense_distance() {
