@@ -37,7 +37,7 @@ function resist_base() {
 }
 function resist_type() {
 	const select = 'resist_trait_type';
-	const fill = 'resist_trait_type';
+	const fill = 'resist_trait';
 
 	trait_select(select, fill);
 }
