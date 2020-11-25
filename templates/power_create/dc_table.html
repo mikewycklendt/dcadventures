@@ -21,10 +21,6 @@
 		</div>
 
 		<div>
-			Degree Mod Type:
-		</div>
-
-		<div>
 			Description of Action:
 		</div>
 
@@ -33,16 +29,6 @@
 				<option value="">DC</option>
 				{% for v in value_type %}
 					<option value={{v.type}}>{{v.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="entry-select" id="dc_deg_mod_type" name="dc_deg_mod_type">
-				<option class="">Degree Mod Type</option>
-				<option value="none">None</option>
-				{% for t in deg_mod_type %}
-					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -112,7 +98,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_condition" class="medium-checkbox med-checkbox" onclick="dc_condition()"> Descriptor
+				<input type="checkbox" id="dc_condition" class="medium-checkbox med-checkbox" onclick="dc_condition()"> Condition
 			</div>
 		</div>
 
@@ -134,7 +120,7 @@
 		<div>
 			Descriptor:
 		</div>
-		
+
 		<div>
 			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
 				<option value="">Use above form for values</option>
@@ -179,6 +165,12 @@
 					<option value="{{c}}">{{c}}</option>
 				{% endfor %}
 			</select> 
+		</div>
+	</div>
+
+	<div id="dc-keyword">
+		<div>
+			<input type="text" id="dc_keyword" name="dc_keyword">
 		</div>
 	</div>
 
