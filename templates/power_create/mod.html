@@ -46,10 +46,40 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="mod-row2">
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="mod_limited" class="medium-checkbox med-checkbox" onclick="mod_limited()"> Limited
 			</div>
+		</div>
+		
+	</div>
+
+	<div id="mod-buttonrow">
+
+		<div></div>
+
+		<div>
+			Cost Per Rank:
+		</div>
+
+		<div>
+			<select class="entry-select" id="mod_cost" name="mod-cost">
+				<option value="">N/A</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="mod_submit" name="mod_submit" onclick="mod_submit">
+				 Add
+			</div>
+
 		</div>
 
 	</div>
@@ -84,6 +114,10 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select> 
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="mod_area_per_rank" class="medium-checkbox med-checkbox"> Per Rank
 		</div>
 
 		<div>
