@@ -80,8 +80,18 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 18% 18% 15% 37% 12%;
+	grid-template-columns: 18% 18% 15% 20% 17% 12%;
 	grid-auto-rows: auto;
+}
+
+#dc-check {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 25% 35% 20%;
+	gap: .2vw;
 }
 
 #dc-condition {
