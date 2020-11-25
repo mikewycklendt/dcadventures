@@ -134,7 +134,7 @@
 #dc-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;
-	height: 1.6vw;
+	height: 1.8vw;
 }
 
 #dc-table {
