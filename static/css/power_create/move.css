@@ -51,17 +51,17 @@
 	gap: 3px;
 }
 
-#move-row2 {
-	display: grid;
-	width: 98%;
-	grid-template-columns: 25% 25% 25% 25%;
-	gap: 3px;
-}
-
 #move-row3 {
 	display: grid;
 	width: 98%;
 	grid-template-columns: 20% 20% 20% 20% 20%;
+	gap: 3px;
+}
+
+#move-row2 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: auto auto auto auto;
 	gap: 3px;
 }
 
