@@ -97,6 +97,17 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+#char-appear {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 30% 30% 40%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #char-emotion {
 	display: none;
 	grid-template-columns: 40% 60%;

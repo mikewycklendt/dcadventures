@@ -103,7 +103,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="char_appear" class="medium-checkbox med-checkbox"> Alters Appearance
+				<input type="checkbox" id="char_appear" class="medium-checkbox med-checkbox" onclick="char_appear"> Alters Appearance
 			</div>
 		</div>
 
@@ -254,6 +254,21 @@
 		<div>
 			<select class="descriptor-sml" id="char_points_descriptor" name="char_points_descriptor">
 				<option value="">Use above form to add descriptors</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div id="char-appear">
+		<div>
+			Alters Appearance:
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_appeaR_target" name="char_appear_target">
+				{% for t in target %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
