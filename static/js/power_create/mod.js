@@ -76,4 +76,14 @@ function mod_limited_type() {
 		hide_maxheight(desc);
 		show_maxheight(trait);
 	}
+
+	if ((val != 'trait') || val != 'other') {
+		shrink_entry(entry, desc)
+	} else {
+		if (val  == 'trait') {
+			grow_entry(entry, trait);
+		} else if (val = 'other') {
+			grow_entry(entry, desc);
+		} 
+	}
 }
