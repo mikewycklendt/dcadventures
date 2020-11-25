@@ -1,4 +1,4 @@
-#dc-header {
+#time-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
@@ -7,12 +7,12 @@
 	grid-template-rows: auto;
 }
 
-#dc-base {
+#time-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
 
-#dc-title {
+#time-title {
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
@@ -21,7 +21,7 @@
 	transition: all .2s linear;
 }
 
-#dc-entry {
+#time-entry {
 	display: none;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
@@ -43,45 +43,43 @@
 	transition: all .4s ease-out;
 }
 
-#dc-entry input[type="text"] {
-	height: 1.7vw;
-	padding: .2vw;
+#time-entry input[type="text"] {
+	height: 1.2vw;
 	width: 95%;
+	font-size: 85%;
+	padding: .1vw;
 }
 
-#dc-row1 {
+#time-row1 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 16% 27% 57%;
+	grid-template-columns: 20% 15% 65%;
 	grid-auto-rows: auto;
 }
 
-#dc-value {
+#time-value {
 	display: none;
-	grid-template-columns: 15% 85%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .3s ease-out;
+	opacity: 0%;
+	grid-template-columns: 40% 60%;
 }
 
-#dc-math {
+#time-math {
 	display: none;
-	grid-template-columns: 15% 20% 25% 40%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .3s ease-out;
+	opacity: 0%;
+	grid-template-columns: 20% 20% 20% 25% 15%;
 }
 
-#dc-row2 {
+#time-row2 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 27% 20% 20% 20% 13%;
+	grid-template-columns: 15% 35% 25% 25%;
 	grid-auto-rows: auto;
 }
 
-#dc-table {
+
+#time-table {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -94,7 +92,7 @@
 	transition: all .4s ease-out;
 }
 
-.dc-table-ext {
+.time-table-ext {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -106,7 +104,7 @@
 	transition: all .4s ease-out;
 }
 
-.dc-table-rnk {
+.time-table-del {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -118,31 +116,7 @@
 	transition: all .4s ease-out;
 }
 
-.dc-table-des {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.dc-table-del {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#dc-err {
+#time-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -155,7 +129,7 @@
 	transition: all .4s ease-out;
 }
 
-.dc-err-line {
+.time-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -169,7 +143,7 @@
 	transition: all .4s ease-out;
 }
 
-.dc-err-line::before {
+.time-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;

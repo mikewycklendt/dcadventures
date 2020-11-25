@@ -1,0 +1,149 @@
+<div id="time-header">
+
+	<div id="time-title">
+		<input type="checkbox" id="time_check" class="regular-checkbox big-checkbox" onclick="time_check()"> Time Effect:
+	</div>
+	
+	<div id="time-base">
+		<select class="extra-select" id="time_extra" name="time_extra" onchange="time_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="time-entry">
+	<div id="time-row1">
+
+		<div>
+			<select class="select-sml" id="time_type" name="time_type">
+				{% for t in time_effect %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="time_value_type" name="time_value_type" onchange="time_value_type()">
+				{% for v in value_type %}
+					<option value="{{v.type}}">{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="time-value">
+				
+				<div>
+					<input type="text" id="time_value" name="time_value">
+				</div>
+				
+				<div>
+					
+					<select class="select-sml" id="time_units" name="time_units">
+						<option value="">Units</option>
+						<option value="rank">Time Rank</option>
+						{% for t in times %}
+							<option value={{t.id}}>{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			
+			</div>
+
+			<div id="time-math">
+
+				<div>
+					<select class="select-sml" id="dc_time_value" name="dc_time_value">
+						<option value="">Value</option>
+						<option value="rank">Power Rank</option>
+						{% for i in time_numbers %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_math" name="time_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="time_trait_type" name="time_trait_type">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_trait" name="time_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					= Time Rank
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="time-row2">
+		<div>
+			<select class="select-sml" id="time_dc" name="time_dc">
+				<option value="">DC</option>
+				<option value="">N/A</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="time_descriptor" name="time_descriptor">
+				<option value="">Use above form for values</option>
+			</select>
+		</div>
+
+		<div></div>
+
+		<div></div>
+	</div>
+</div>
+
+<div id="time-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="time-err"></div>

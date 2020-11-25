@@ -106,6 +106,30 @@ function math_div_select(select, valuediv, mathdiv, containdiv ) {
 	}
 }
 
+function value_type(select, mathdiv, valuediv) {
+	const field = document.getElementById(select);
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById(valuediv)
+	const math = document.getElementById(mathdiv)
+
+	if (value == 'math') {
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		math.style.display = 'grid';
+		setTimeout(function(){math.style.opacity = '100%'}, 10);
+	} else if (value == 'value') {
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		val.style.display = 'grid';
+		setTimeout(function(){val.style.opacity = '100%'}, 10);
+	} else {
+		val.style.opacity = '0%';
+		setTimeout(function(){val.style.display = 'none'}, 300);
+		math.style.opacity = '0%';
+		setTimeout(function(){math.style.display = 'none'}, 300);
+	}
+}
+
 function check_drop(field, divdrop, entrydrop) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divdrop);
