@@ -128,7 +128,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 15% 70%;
+	grid-template-columns: 10% 15% 70%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -147,8 +147,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	font-size: 80%;
-	grid-template-columns: 20% 20% 20% 25% 15%;
+	grid-template-columns: 15% 15% 25%  30% 15%;
 	opacity: 0%;
 	transition: all .3s ease-in;
 }
