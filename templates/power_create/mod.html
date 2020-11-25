@@ -58,32 +58,6 @@
 		
 	</div>
 
-	<div id="mod-buttonrow">
-
-		<div></div>
-
-		<div>
-			Cost Per Rank:
-		</div>
-
-		<div>
-			<select class="entry-select" id="mod_cost" name="mod-cost">
-				<option value="">N/A</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="btn-entry" id="mod_submit" name="mod_submit" onclick="mod_submit">
-				 Add
-			</div>
-
-		</div>
-
-	</div>
-
 	<div id="mod-area">
 		<div>
 			Modifier to check:
@@ -171,6 +145,32 @@
 				<input type="text" id="mod_limited_description" name="mod_limited_description">
 			</div>
 		</div>
+	</div>
+
+	<div id="mod-buttonrow">
+
+		<div></div>
+
+		<div>
+			Cost Per Rank:
+		</div>
+
+		<div>
+			<select class="entry-select" id="mod_cost" name="mod-cost">
+				<option value="">N/A</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="mod_submit" name="mod_submit" onclick="mod_submit">
+				 Add
+			</div>
+
+		</div>
+
 	</div>
 
 </div>
