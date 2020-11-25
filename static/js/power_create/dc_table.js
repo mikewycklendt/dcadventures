@@ -19,11 +19,14 @@ function dc_check() {
 }
 
 function dc_base() {
-	const field = document.getElementById('dc_extra');
+	const field = document.getElementById('dc_extra')
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("dc-entry");
+	
+	const field2 = document.getElementById('dc_target')
+	const target = field2.options[field2.selectedIndex].value;
+	const entry = document.getElementById("dc-entry")
 
-	if (value != '') {
+	if (value != '' && target != '') {
 		entry.style.display = "grid";
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";

@@ -19,11 +19,14 @@ function sense_check() {
 }
 
 function sense_base() {
-	const field = document.getElementById('sense_extra');
+	const field = document.getElementById('sense_extra')
 	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("sense-entry");
+	
+	const field2 = document.getElementById('sense_target')
+	const target = field2.options[field2.selectedIndex].value;
+	const entry = document.getElementById("sense-entry")
 
-	if (value != '') {
+	if (value != '' && target != '') {
 		entry.style.display = "grid";
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";

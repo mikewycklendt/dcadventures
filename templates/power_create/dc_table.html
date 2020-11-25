@@ -5,10 +5,21 @@
 	</div>
 	
 	<div id="dc-base">
-		<select class="extra-select" id="dc_extra" name="dc_extra" onchange="dc_base()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+
+		<div>
+			<select class="header-select" id="dc_target" name="dc_target" onchange="dc_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="extra-select" id="dc_extra" name="dc_extra" onchange="dc_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
 	</div>
 
 </div>

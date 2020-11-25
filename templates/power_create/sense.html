@@ -7,6 +7,15 @@
 
 	
 	<div id="sense-base">
+
+		<div>
+			<select class="header-select" id="sense_target" name="sense_target" onchange="sense_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<select class="extra-select" id="sense_extra" name="sense_extra" onchange="sense_base()">
 			<option value=>Base or Extra</option>
 			<option value=0>Base Effect</option>
@@ -44,6 +53,7 @@
 		<div>
 			<select class="select-sml" id="sense_sense" name="sense_sense" onchange="sense_sense()">
 				<option value="">Any</option>
+				<option value="all">All</option>
 				{% for s in senses %}
 					<option value={{s.id}}>{{s.name}}</option>
 				{% endfor %}
@@ -54,7 +64,7 @@
 			
 			<div>
 				<select class="select-sml" id="sense_subsense" name="sense_subsense">
-				
+					<option value="">Subsense</option>
 				</select>
 			</div>
 
