@@ -115,8 +115,9 @@ function dc_keyword() {
 function dc_check_type() {
 	const check = 'dc_check_type';
 	const div = 'dc-check'
+	const entry = 'dc-entry';
 
-	check_drop(check, div)
+	check_drop(check, div, entry)
 }
 
 function dc_check_trait_type() {
