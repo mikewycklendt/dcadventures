@@ -125,6 +125,13 @@ function char_points() {
 	check_drop(check, div, entry);
 }
 
+function char_appear() {
+	const check = 'char_appear';
+	const div = 'char-appear';
+
+	check_drop(check, div, entry)
+}
+
 function char_points_trait_type() {
 	const select = 'char_points_trait_type'
 	const fill = 'char_points_trait'
