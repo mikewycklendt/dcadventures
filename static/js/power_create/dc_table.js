@@ -88,20 +88,23 @@ function dc_time() {
 function dc_descriptor() {
 	const check = 'dc_descriptor';
 	const div = 'dc-descriptor';
+	const entry = 'dc-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function dc_condition() {
 	const check = 'dc_condition';
 	const div = 'dc-condition';
+	const entry = 'dc-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function dc_keyword() {
 	const check = 'dc_keyword';
 	const div = 'dc-keyword';
+	const entry = 'dc-entry';
 
-	check_drop(check, div)
+	check_drop(check, div, entry)
 }
