@@ -16,16 +16,16 @@
 <div id="resist-entry">
 
 	<div id="resist-type-field">
-		<select class="select-sml" id="resist_type" name="resist_type" onchange="resist_type()">
+		<select class="select-sml" id="resist_trait_type" name="resist_trait_type" onchange="resist_type()">
 			<option value="">Resisted By</option>
-			{% for type in check_types %}
-				<option value="{{type.type}}">{{type.name}}</option>
+			{% for t in traits %}
+				<option value="{{t.type}}">{{t.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
 
 	<div id="resist-mod-field">
-		<select class="select-sml" id="resist_mod" name="resist_mod" onchange="resist_type()">
+		<select class="select-sml" id="resist_mod" name="resist_mod">
 			<option value="">Modifier</option>
 			{% for num in negatives %}
 				<option value={{num}}>{{num}}</option>
@@ -38,41 +38,9 @@
 
 	<div id="resist-field-field">
 
-		<div id="resist-ability">
-			<select class="select-sml" id="resist_ability" name="resist_ability">
-				<option value="">Ability</option>
-				{% for ability in abilities %}
-					<option value={{ability.id}}>{{ability.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="resist-skill">
-			<select class="select-sml" id="resist_skill" name="resist_skill">
-				<option value="">Skill</option>
-				{% for skill in skills %}
-					<option value={{skill.id}}>{{skill.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="resist-defense">
-			<select class="select-sml" id="resist_defense" name="resist_defense">
-				<option value="">Defense</option>
-				{% for defense in defenses %}
-					<option value={{defense.id}}>{{defense.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="resist-power">
-			<select class="select-sml" id="resist_power" name="resist_power">
-				<option value="">Power</option>
-				{% for power in powers %}
-					<option value="{{power}}">{{power}}</option>
-				{% endfor %}
-			</select>
-		</div>
+		<select class="select-sml" id="resist_trait" name="resist_trait">
+			<option value="">Trait</option>
+		</select>
 
 	</div>
 

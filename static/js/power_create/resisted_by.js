@@ -36,60 +36,10 @@ function resist_base() {
 	}
 }
 function resist_type() {
-	const type_field = document.getElementById('resist_type');
-	let type_value = type_field.options[type_field.selectedIndex].value;
+	const select = 'resist_trait_type';
+	const fill = 'resist_trait_type';
 
-	const abl = document.getElementById('resist-ability');
-	const def = document.getElementById('resist-defense');
-	const skl = document.getElementById('resist-skill');
-	const pwr = document.getElementById('resist-power');
-
-	if (type_value == 'ability') {
-		abl.style.display = "grid";
-		abl.style.maxHeight = abl.scrollHeight + "px";
-		def.style.display = "none";
-		def.style.maxHeight = "0px";
-		skl.style.display = "none";
-		skl.style.maxHeight = "0px";
-		pwr.style.display = "none";
-		pwr.style.maxHeight = "0px";
-	} else if (type_value == 'defense') {
-		def.style.display = "grid";
-		def.style.maxHeight = def.scrollHeight + "px";
-		abl.style.display = "none";
-		abl.style.maxHeight = "0px";
-		skl.style.display = "none";
-		skl.style.maxHeight = "0px";
-		pwr.style.display = "none";
-		pwr.style.maxHeight = "0px";
-	} else if (type_value == 'skill') {
-		skl.style.display = "grid";
-		skl.style.maxHeight = skl.scrollHeight + "px";
-		def.style.display = "none";
-		def.style.maxHeight = "0px";
-		abl.style.display = "none";
-		abl.style.maxHeight = "0px";
-		pwr.style.display = "none";
-		pwr.style.maxHeight = "0px";
-	} else if (type_value == 'power') {
-		pwr.style.display = "grid";
-		pwr.style.maxHeight = pwr.scrollHeight + "px";
-		def.style.display = "none";
-		def.style.maxHeight = "0px";
-		skl.style.display = "none";
-		skl.style.maxHeight = "0px";
-		abl.style.display = "none";
-		abl.style.maxHeight = "0px";
-	} else {
-		def.style.display = "none";
-		def.style.maxHeight = "0px";
-		skl.style.display = "none";
-		skl.style.maxHeight = "0px";
-		abl.style.display = "none";
-		abl.style.maxHeight = "0px";
-		pwr.style.display = "none";
-		pwr.style.maxHeight = "0px";
-	}
+	trait_select(select, fill);
 }
 
 function resist_effect() {
