@@ -98,3 +98,10 @@ function dc_condition() {
 
 	check_drop(check, div);
 }
+
+function dc_keyword() {
+	const check = 'dc_keyword';
+	const div = 'dc-keyword';
+
+	check_drop(check, div)
+}

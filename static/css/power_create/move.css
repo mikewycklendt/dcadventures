@@ -61,7 +61,7 @@
 #move-row3 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	gap: 3px;
 }
 

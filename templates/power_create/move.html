@@ -67,6 +67,15 @@
 	</div>
 
 	<div id="move-row3">
+
+		<div>
+			<select class="select-sml" id="move_dc" name="move_dc">
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div>
 			<select class="select-sml" id="move_condition" name="move_condition">
 				<option value="">Condition</option>
