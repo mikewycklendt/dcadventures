@@ -72,6 +72,7 @@
 	display: grid;
 	grid-template-columns: 80% 20%;
 	gap: .1vw;
+	padding: .2vw;
 }
 
 #resist-effect-field {
