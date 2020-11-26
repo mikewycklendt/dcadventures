@@ -15,77 +15,30 @@
 
 <div id="resist-entry">
 
-	<div id="resist-type-field">
-		<select class="select-sml" id="resist_trait_type" name="resist_trait_type" onchange="resist_type()">
-			<option value="">Resisted By</option>
-			{% for t in traits %}
-				<option value="{{t.type}}">{{t.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
+	<div id="resist-row1">
+		<div>
+			<select class="select-sml" id="resist_trait_type" name="resist_trait_type" onchange="resist_type()">
+				<option value="">Resisted By</option>
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	
-	<div id="resist-dc-field">
-		<select class="select-sml" id="resist_dc" name="resist_dc">
-			<option value="">DC</option>
-			<option value="">N/A</option>
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div id="resist-mod-field">
-		<select class="select-sml" id="resist_mod" name="resist_mod">
-			<option value="">Mod</option>
-			<option value="rank">Power Rank</option>
-			{% for num in negatives %}
-				<option value={{num}}>{{num}}</option>
-			{% endfor %}
-			{% for num in positives %}
-				<option value={{num}}>{{num}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div id="resist-field-field">
-
-		<select class="select-sml" id="resist_trait" name="resist_trait">
-			<option value="">Trait</option>
-		</select>
-
-	</div>
-
-	<div id="resist-add">
-		<div class="resist-btn" onclick="resist_submit()">
-			Add
-		</div>
-	</div>
-
-	<div id="resist-description-field">
-		<input type="text" id="range_desc" name="range_desc" placeholder="Circumstance">
-	</div>
-
-	<div id="resist-effect-field">
 		<div>
-			Effect:
-		</div>
-		
-		<div>
-			<select class="select-sml" id="resist_eft" name="resist_eft" onchange="resist_effect()">
-				<option value="">Effect</option>
-				{% for effect in effects %}
-					<option value="{{effect.type}}">{{effect.name}}</option>
+			<select class="select-sml" id="resist_dc" name="resist_dc">
+				<option value="">DC</option>
+				<option value="">N/A</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			Degree:
-		</div>
-
-		<div>
-			<select class="select-sml" id="resist_deg" name="resist_deg">
-				<option value="">Degree</option>
+			<select class="select-sml" id="resist_mod" name="resist_mod">
+				<option value="">Mod</option>
+				<option value="rank">Power Rank</option>
 				{% for num in negatives %}
 					<option value={{num}}>{{num}}</option>
 				{% endfor %}
@@ -94,60 +47,124 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<input type="text" id="range_desc" name="range_desc" placeholder="Circumstance">
+		</div>
 	</div>
 
-	<div id="resist-value-field">
+	<div id="resist-row2">
 
-		<div id="resist-condition">
-			<div>
-				From:
-			</div> 
-			
-			<div>
-				<select class="select-sml" id="resist_con1" name="resist_con1">
-					<option value="">Condition</option>
-					{% for condition in conditions %}
-						<option value="{{condition}}">{{condition}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				To: 
-			</div>
-			
-			<div>
-				<select class="select-sml" id="resist_con2" name="resist_con2">
-					<option value="">Condition</option>
-					{% for condition in conditions %}
-						<option value="{{condition}}">{{condition}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<select class="select-sml" id="resist_trait" name="resist_trait">
+				<option value="">Trait</option>
+			</select>
 		</div>
 
-		<div id="resist-damage">
+		<div id="resist-effect-field">
 			<div>
-				<select class="select-sml" id="resist_dam" name="resist_dam">
-					<option value="">Damage</option>
-					<option value="result">Result</option>
-					<option value="0">0</option>
+				Effect:
+			</div>
+			
+			<div>
+				<select class="select-sml" id="resist_eft" name="resist_eft" onchange="resist_effect()">
+					<option value="">Effect</option>
+					{% for effect in effects %}
+						<option value="{{effect.type}}">{{effect.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div>
+				Degree:
+			</div>
+	
+			<div>
+				<select class="select-sml" id="resist_deg" name="resist_deg">
+					<option value="">Degree</option>
+					{% for num in negatives %}
+						<option value={{num}}>{{num}}</option>
+					{% endfor %}
 					{% for num in positives %}
 						<option value={{num}}>{{num}}</option>
 					{% endfor %}
 				</select>
 			</div>
+		</div>
+	
+	</div>
 
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="resist_strength" class="medium-checkbox med-checkbox"> Strength-Based
-				</div>
-			</div>
+	<div id="resist-row3">
+
+		<div>
+			<select class="descriptor-sml" id="resist_descriptor" name="resist_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use above form to put descriptors here</option>
+			</select>
 		</div>
 
+		<div>
+
+			<div id="resist-condition">
+				<div>
+					From:
+				</div> 
+				
+				<div>
+					<select class="select-sml" id="resist_con1" name="resist_con1">
+						<option value="">Condition</option>
+						{% for condition in conditions %}
+							<option value="{{condition}}">{{condition}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					To: 
+				</div>
+				
+				<div>
+					<select class="select-sml" id="resist_con2" name="resist_con2">
+						<option value="">Condition</option>
+						{% for condition in conditions %}
+							<option value="{{condition}}">{{condition}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+	
+			<div id="resist-damage">
+				<div>
+					<select class="select-sml" id="resist_dam" name="resist_dam">
+						<option value="">Damage</option>
+						<option value="result">Result</option>
+						<option value="0">0</option>
+						{% for num in positives %}
+							<option value={{num}}>{{num}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="resist_strength" class="medium-checkbox med-checkbox"> Strength-Based
+					</div>
+				</div>
+			</div>
+	
+		</div>
 
 	</div>
-	
+
+	<div id="resist-button-row">
+		<div></div>
+
+		<div>
+			<div class="btn-entry" id="resist_submit" name="resist_submit" onclick="resist_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
 
 </div>
 <div id="resist-table">
