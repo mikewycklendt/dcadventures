@@ -262,6 +262,7 @@ new		new   				new		   new	 new
 	align-items: center;
 	align-self: center;
 	text-align: center;
+	overflow: hidden;
 }
 
 .descriptor-del {
