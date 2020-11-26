@@ -97,7 +97,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="char_points" class="medium-checkbox med-checkbox" onclick="char_points()"> Restore Points
+				<input type="checkbox" id="char_points" class="medium-checkbox med-checkbox" onclick="char_points()"> Hero Points
 			</div>
 		</div>
 
@@ -224,9 +224,10 @@
 	<div id="char-points">
 		<div>
 			<select class="select-sml" id="char_points" name="char_points">
-				<option value="">Restored Points</option>
+				<option value="">Points</option>
 				<option value="rank">Rank of Affected Trait</option>
 				<option value="power">This Power's Rank</option>
+				<option value="all">Lose All</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
