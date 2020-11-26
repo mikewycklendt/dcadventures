@@ -59,7 +59,6 @@ function other_submit() {
 				otherDelete.className = 'other-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'other-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				otherDelete.appendChild(deleteBtn);
 

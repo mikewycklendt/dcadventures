@@ -58,7 +58,6 @@ function power_submit() {
 				pwrDelete.className = 'power-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'power-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				pwrDelete.appendChild(deleteBtn);
 

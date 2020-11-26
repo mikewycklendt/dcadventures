@@ -78,7 +78,6 @@ function opp_cond_submit() {
 				ocDelete.className = 'opp-cond-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'opp-cond-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				ocDelete.appendChild(deleteBtn);
 

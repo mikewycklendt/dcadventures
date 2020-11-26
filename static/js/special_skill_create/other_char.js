@@ -100,7 +100,6 @@ function char_submit() {
 				charDelete.className = 'char-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'char-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				charDelete.appendChild(deleteBtn);
 

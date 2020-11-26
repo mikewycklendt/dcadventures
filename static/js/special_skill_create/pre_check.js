@@ -102,7 +102,6 @@ function pre_check_standard_submit() {;
 				standardDelete.className = 'pre-check-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'pre-check-standard-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				standardDelete.appendChild(deleteBtn);
 
@@ -334,7 +333,6 @@ function pre_check_opposed_submit() {
 				opposedDelete.className = 'pre-check-table-opposed-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'pre-check-opposed-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				opposedDelete.appendChild(deleteBtn);
 

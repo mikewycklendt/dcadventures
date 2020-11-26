@@ -102,7 +102,6 @@ function degree_submit() {
 				degDelete.className = 'degree-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'degree-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				degDelete.appendChild(deleteBtn);
 	

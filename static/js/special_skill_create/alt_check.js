@@ -53,7 +53,6 @@ function alt_check_submit() {
 		altDelete.className = 'alt-check-table-delete'
 		const deleteBtn = document.createElement('button');
 		deleteBtn.className = 'alt-check-xbox';
-		deleteBtn.innerHTML = '&cross;';
 		deleteBtn.setAttribute('data-id', alt_check_enter);
 		altDelete.appendChild(deleteBtn);
 

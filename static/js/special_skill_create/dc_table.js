@@ -392,7 +392,6 @@ function dc_submit() {
 				dcDelete.className = 'dc-table-delete';
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'dc-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				dcDelete.appendChild(deleteBtn);
 

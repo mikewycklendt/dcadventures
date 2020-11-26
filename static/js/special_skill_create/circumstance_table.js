@@ -191,7 +191,6 @@ function circ_submit() {
 				circDelete.className = 'circ-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'circ-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				circDelete.appendChild(deleteBtn);
 

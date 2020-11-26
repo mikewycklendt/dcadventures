@@ -104,7 +104,6 @@ function levels_submit() {
 				lvlDelete.className = 'levels-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'levels-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				lvlDelete.appendChild(deleteBtn);
 	

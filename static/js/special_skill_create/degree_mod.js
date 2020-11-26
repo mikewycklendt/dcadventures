@@ -284,7 +284,6 @@ function deg_mod_submit() {
 				degmodDelete.className = 'deg-mod-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'deg-mod-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id);
 				degmodDelete.appendChild(deleteBtn);
 

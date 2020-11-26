@@ -159,3 +159,26 @@
 	display: inline-block;
 }
 
+.alt-check-xbox {
+	display: flex;
+	height: 100%;
+	width: 90%;
+	align-items: center;
+	text-align: center;
+	color: #245681;
+	border: none;
+	background-color: white;
+	transition: all .3s linear;
+	cursor: pointer;
+}
+
+.alt-check-xbox:hover {
+	color: #af0101;
+}
+
+.alt-check-xbox::before {
+	font-family: 'FontAwesome';
+	font-size: 1.3vw;
+	content: '\f056';
+	display: inline-block;
+}

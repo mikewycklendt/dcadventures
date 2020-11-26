@@ -168,3 +168,27 @@
 	padding-right: 1.5vw;
 	display: inline-block;
 }
+
+.power-xbox {
+	display: flex;
+	height: 100%;
+	width: 90%;
+	align-items: center;
+	text-align: center;
+	color: #245681;
+	border: none;
+	background-color: white;
+	transition: all .3s linear;
+	cursor: pointer;
+}
+
+.power-xbox:hover {
+	color: #af0101;
+}
+
+.power-xbox::before {
+	font-family: 'FontAwesome';
+	font-size: 1.3vw;
+	content: '\f056';
+	display: inline-block;
+}
