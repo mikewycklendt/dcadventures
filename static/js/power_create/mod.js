@@ -111,8 +111,9 @@ function mod_ranged_math_trait_type() {
 function mod_reflect() {
 	const check = 'mod_reflect';
 	const div = 'mod-reflect';
+	const entry = 'mod-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function mod_reflect_trait_type() {
