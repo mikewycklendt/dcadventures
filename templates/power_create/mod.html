@@ -62,6 +62,24 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_others" class="medium-checkbox med-checkbox"> Affects Others
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_sustained" class="medium-checkbox med-checkbox"> Sustained
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_reflect" class="medium-checkbox med-checkbox" onclick="mod_reflect()"> Reflect
+			</div>
+		</div>
+
 		
 	</div>
 
@@ -246,6 +264,41 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="mod-reflect">
+		<div>
+			Reflect:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_reflect_check" name="mod_reflect_check">
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_reflect_trait_type" name="mod_reflect_trait_type" onchange="mod_reflect_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_reflect_trait" name="mod_reflect_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="mod_reflect_descriptor" name="mod_reflect_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use above form to put descriptors here</option>
+			</select>
+		</div>
 	</div>
 
 	<div id="mod-buttonrow">

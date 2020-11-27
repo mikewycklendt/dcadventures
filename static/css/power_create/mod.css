@@ -62,7 +62,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 15% 20% 20% 50%;
+	grid-template-columns: 15% 15% 25% 20% 15% 10%;
 	grid-auto-rows: auto;
 }
 
@@ -152,7 +152,15 @@
 	transition: all .3s ease-in;
 }
 
-
+#mod-reflect {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 20% 20% 25% 25%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
 
 #mod-table {
 	display: none;

@@ -107,3 +107,10 @@ function mod_ranged_math_trait_type() {
 
 	trait_select(select, fill)
 }
+
+function mod_reflect() {
+	const check = 'mod_reflect';
+	const div = 'mod-reflect';
+
+	check_drop(check, div);
+}
