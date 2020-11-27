@@ -66,6 +66,14 @@
 	grid-auto-rows: auto;
 }
 
+#mod-row3 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
 #mod-buttonrow {
 	display: grid;
 	width: 98%;
