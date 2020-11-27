@@ -36,33 +36,33 @@ function env_base() {
 }
 
 function env_condition() {
-	const check = document.getElementById('env_condition');
-	const div = document.getElementById('env-condition')
-	const entry = document.getElementById("env-entry")
+	const check = 'env_condition';
+	const div = 'env-condition';
+	const entry = "env-entry";
 
 	check_drop(check, div, entry);
 }
 
 function env_impede() {
-	const check = document.getElementById('env_impede');
-	const div = document.getElementById('env-move')
-	const entry = document.getElementById("env-entry")
+	const check = 'env_impede';
+	const div = 'env-move';
+	const entry = "env-entry";
 
 	check_drop(check, div, entry);
 }
 
 function env_conceal() {
-	const check = document.getElementById('env_conceal');
-	const div = document.getElementById('env-conceal')
-	const entry = document.getElementById("env-entry")
+	const check = 'env_conceal';
+	const div = 'env-conceal';
+	const entry = "env-entry";
 
 	check_drop(check, div, entry);
 }
 
 function env_visibility() {
-	const check = document.getElementById('env_visibility');
-	const div = document.getElementById('env-visibility')
-	const entry = document.getElementById("env-entry")
+	const check = 'env_visibility';
+	const div = 'env-visibility';
+	const entry = "env-entry";
 
 	check_drop(check, div, entry);
 }
