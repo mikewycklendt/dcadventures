@@ -885,6 +885,17 @@ class Condition(db.Model):
 			'description': self.description
 		}
 
+class Damage(db.Model):
+	__tablename__ = 'descriptors'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+		}
+
 class Phase(db.Model):
 	__tablename__ = 'phases'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
