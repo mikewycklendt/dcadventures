@@ -126,10 +126,10 @@ visibility traittype trait modifier costperrank
 	transition: all .4s ease-out;
 }
 
-#char-button {
+#env-button-row {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 70% 15% 15%;
+	grid-template-columns: 80% 20%;
 }
 
 #env-table {
