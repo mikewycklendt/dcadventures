@@ -35,19 +35,12 @@ function env_base() {
 	}
 }
 
-function env_temp() {
-	const check = document.getElementById('env_temp');
-	const div = document.getElementById('env-temp')
+function env_condition() {
+	const check = document.getElementById('env_condition');
+	const div = document.getElementById('env-condition')
 	const entry = document.getElementById("env-entry")
 
-	if (check.checked == true) {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-		entry.style.maxHeight = div.scrollHeight + entry.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-	}
+	check_drop(check, div, entry);
 }
 
 function env_impede() {
@@ -55,14 +48,7 @@ function env_impede() {
 	const div = document.getElementById('env-move')
 	const entry = document.getElementById("env-entry")
 
-	if (check.checked == true) {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-		entry.style.maxHeight = div.scrollHeight + entry.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-	}
+	check_drop(check, div, entry);
 }
 
 function env_conceal() {
@@ -70,14 +56,7 @@ function env_conceal() {
 	const div = document.getElementById('env-conceal')
 	const entry = document.getElementById("env-entry")
 
-	if (check.checked == true) {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-		entry.style.maxHeight = div.scrollHeight + entry.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-	}
+	check_drop(check, div, entry);
 }
 
 function env_visibility() {
@@ -85,14 +64,7 @@ function env_visibility() {
 	const div = document.getElementById('env-visibility')
 	const entry = document.getElementById("env-entry")
 
-	if (check.checked == true) {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-		entry.style.maxHeight = div.scrollHeight + entry.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
-	}
+	check_drop(check, div, entry);
 }
 
 function env_move_other() {

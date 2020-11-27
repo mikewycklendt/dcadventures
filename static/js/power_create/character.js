@@ -138,3 +138,17 @@ function char_points_trait_type() {
 	
 	trait_select(select, fill);
 }
+
+function char_immunity() {
+	const check = 'char_immunity';
+	const div = 'char-immunity';
+
+	check_drop(check, div, entry);
+}
+
+function char_immunity_trait_type() {
+	const select = 'char_immunity_trait_type';
+	const fill = 'char_immunity_trait';
+
+	trait_select(select, fill);
+}

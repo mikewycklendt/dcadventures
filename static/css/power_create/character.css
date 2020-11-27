@@ -83,7 +83,7 @@ trait amount
 #char-button {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 85% 15%;
+	grid-template-columns: 70% 15% 15%;
 }
 
 #char-limited {
@@ -167,6 +167,17 @@ trait amount
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 20% 20% 30% 30%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#char-immunity {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 25% 30% 25%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;

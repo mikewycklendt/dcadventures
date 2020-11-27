@@ -89,9 +89,9 @@ visibility traittype trait modifier costperrank
 	transition: all .3s linear;
 }
 
-#env-temp {
+#env-condition {
 	display: none;
-	grid-template-columns: 15% 15% 20% 25% 25%;
+	grid-template-columns: 15% 15% 20% 25% 15% 10%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -124,6 +124,12 @@ visibility traittype trait modifier costperrank
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#char-button {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 70% 15% 15%;
 }
 
 #env-table {

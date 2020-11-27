@@ -66,7 +66,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="env_temp" class="medium-checkbox med-checkbox" onclick="env_temp()"> Temperature
+				<input type="checkbox" id="env_condition" class="medium-checkbox med-checkbox" onclick="env_condition()"> Condition
 			</div>
 		</div>
 		
@@ -122,7 +122,7 @@
 
 	</div>
 
-	<div id="env-temp">
+	<div id="env-condition">
 
 		<div>
 			Temperature:
@@ -148,6 +148,15 @@
 			<select class="select-sml" id="env_temp_cost" name="env_temp_cost">
 				<option value="">Cost Per Rank</option>
 				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_condition_rank" name="env_condition_rank">
+				<option value="">Ranks</option>
+				{% for i in hundred %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
@@ -267,6 +276,20 @@
 			</select>
 		</div>
 
+	</div>
+
+	<div id="env-button">
+
+		<div></div>
+		
+		<div>	
+		</div>
+		
+		<div>
+			<div class="btn-entry" id="env_submit" name="env_submit" onclick="env_submit()">
+				 Add
+			</div>
+		</div>
 	</div>
 
 </div>
