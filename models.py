@@ -886,7 +886,7 @@ class Condition(db.Model):
 		}
 
 class Damage(db.Model):
-	__tablename__ = 'descriptors'
+	__tablename__ = 'damage'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
