@@ -114,3 +114,10 @@ function mod_reflect() {
 
 	check_drop(check, div);
 }
+
+function mod_reflect_trait_type() {
+	const select = 'mod_reflect_trait_type';
+	const fill = 'mod_reflect_trait';
+
+	trait_select(select, fill);
+}
