@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Modifier, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Damage, Modifier, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -55,7 +55,24 @@ def home():
 
 
 
+@app.route('/damage/create')
+def damage_create():
 
+	values = ['Bullets', 'Cold', 'Electricity', 'Falling', 'fire', 'Magic', 'Radiation', 'Sonic', 'Physical', 'Energy', 'Area']
+
+	for i in values:
+
+		entry = Damage(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Damage.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('damage added')
 
 
 
