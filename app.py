@@ -56,7 +56,7 @@ def home():
 @app.route('/damage/create')
 def damage_create():
 
-	values = ['Bullets', 'Cold', , 'Falling', 'fire']
+	values = ['Bullets', 'Cold', 'Falling', 'Fire']
 
 	for i in values:
 		damage_type = 1
