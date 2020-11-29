@@ -1,7 +1,7 @@
 @app.route('/damage/create')
 def damage_create():
 
-	values = ['Bullets', 'Cold', , 'Falling', 'fire']
+	values = ['Bullets', 'Cold', 'Falling', 'fire']
 
 
 	for i in values:
@@ -34,7 +34,7 @@ def damage_type_create():
 
 	for i in values:
 
-		entry = Damage(name=i)
+		entry = DamageType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 

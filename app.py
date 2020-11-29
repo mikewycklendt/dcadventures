@@ -88,11 +88,11 @@ def damage_type_create():
 
 	for i in values:
 
-		entry = Damage(name=i)
+		entry = DamageType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Damage.query.all()
+	results = DamageType.query.all()
 
 	for result in results:
 		print (result.id)
