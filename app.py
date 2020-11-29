@@ -55,24 +55,6 @@ def home():
 
 
 
-@app.route('/damage/create')
-def damage_create():
-
-	values = ['Bullets', 'Cold', 'Electricity', 'Falling', 'fire', 'Magic', 'Radiation', 'Sonic', 'Physical', 'Energy', 'Area']
-
-	for i in values:
-
-		entry = Damage(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Damage.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('damage added')
 
 
 
