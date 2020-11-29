@@ -885,8 +885,8 @@ class Condition(db.Model):
 			'description': self.description
 		}
 
-class Damage(db.Model):
-	__tablename__ = 'damage'
+class DamageType(db.Model):
+	__tablename__ = 'damage_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
@@ -895,6 +895,20 @@ class Damage(db.Model):
 			'id': self.id,
 			'name': self.name,
 		}
+		
+class Damage(db.Model):
+	__tablename__ = 'damage'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	damage_type = db.Column(db.Integer, db.ForeignKey('damage_type.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+		}
+
+
 
 class Phase(db.Model):
 	__tablename__ = 'phases'
