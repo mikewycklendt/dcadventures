@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Damage, Modifier, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Damage, DamageType, Modifier, Descriptor, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -53,10 +53,52 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/damage/create')
+def damage_create():
 
+	values = ['Bullets', 'Cold', , 'Falling', 'fire']
 
+	for i in values:
+		damage_type = 1
+		entry = Damage(name=i, damage_type=damage_type)
+		db.session.add(entry)
+		db.session.commit()
 
+	values = ['Electricity', 'Magic', 'Radiation', 'Sonic']
 
+	for i in values:
+		damage_type = 2
+		entry = Damage(name=i, damage_type=damage_type)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Damage.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.damage_type)
+		print (result.name)
+
+	return ('damage added')
+
+@app.route('/damagetype/create')
+def damage_type_create():
+
+	values = ['Physical', 'Energy']
+
+	for i in values:
+
+		entry = Damage(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Damage.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('damage added')
 
 
 
