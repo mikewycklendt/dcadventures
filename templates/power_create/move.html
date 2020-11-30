@@ -323,6 +323,13 @@
 		
 		<div>
 			<div class="check-div">
+				<input type="checkbox" id="move_check_type" class="medium-checkbox med-checkbox" onclick="move_check_type()"> Through Objects
+			</div>
+		</div>
+
+		
+		<div>
+			<div class="check-div">
 				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Through Objects
 			</div>
 		</div>
@@ -341,6 +348,26 @@
 			<div class="btn-entry" id="move_submit" onclick="move_submit()">
 				 Add
 			</div>
+		</div>
+	</div>
+
+	<div id="move-check-type">
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_check_trait_type" name="move_check_trait_type" onchange="move_check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_check_trait" name="move_check_trait">
+				<option value="">Trait</option>
+			</select>
 		</div>
 	</div>
 

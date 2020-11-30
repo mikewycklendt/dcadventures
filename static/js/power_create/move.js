@@ -96,3 +96,18 @@ function move_objects() {
 
 	check_opacity(check, div);
 }
+
+function move_check_trait_type() {
+	const select = 'move_check_trait_type';
+	const fill = 'move_check_trait';
+
+	trait_select(select, fill);
+}
+
+function move_check_type() {
+	const check = 'move_check_type';
+	const div = 'move-check-type';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
