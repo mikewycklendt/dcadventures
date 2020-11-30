@@ -122,6 +122,14 @@
 		</div>
 	</div>
 
+	<div id="mod-row4">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_progressive" class="medium-checkbox med-checkbox"> Progressive
+			</div>
+		</div>		
+	</div>
+
 	<div id="mod-area">
 		<div>
 			Modifier to check:
@@ -344,6 +352,15 @@
 	<div id="mod-buttonrow">
 
 		<div></div>
+
+		<div>
+			<select class="entry-select" id="mod_ranks" name="mod_ranks">
+				<option value="">Ranks</option>
+				{% for i in hundred %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
 		<div>
 			<div class="vcenter">

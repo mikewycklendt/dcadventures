@@ -74,11 +74,19 @@
 	grid-auto-rows: auto;
 }
 
+#mod-row4 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
 #mod-buttonrow {
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 48% 17% 15% 20%;
+	grid-template-columns: 33% 15% 17% 15% 20%;
 }
 
 #mod-area {
