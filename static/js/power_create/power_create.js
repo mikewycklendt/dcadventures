@@ -106,6 +106,49 @@ function math_div_select(select, valuediv, mathdiv, containdiv ) {
 	}
 }
 
+function math_mod_div_select(select, valuediv, mathdiv, moddiv, containdiv ) {
+	const field = document.getElementById(select);
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById(valuediv)
+	const math = document.getElementById(mathdiv)
+	const mod = document.getElementById(moddiv)
+	const div = document.getElementById(containdiv)
+
+	if (value == 'math') {
+		div.style.display = 'grid';
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		mod.style.opacity = '0%';
+		mod.style.display = 'none';
+		math.style.display = 'grid';
+		setTimeout(function(){math.style.opacity = '100%'}, 10);
+	} else if (value == 'value') {
+		div.style.display = 'grid';
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		mod.style.opacity = '0%';
+		mod.style.display = 'none';
+		val.style.display = 'grid';
+		setTimeout(function(){val.style.opacity = '100%'}, 10);
+	} else if (value == 'mod') {
+		div.style.display = 'grid';
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		mod.style.display = 'grid';
+		setTimeout(function(){mod.style.opacity = '100%'}, 10);
+	} else {
+		mod.style.opacity = '0%';
+		setTimeout(function(){mod.style.display = 'none'}, 300);
+		val.style.opacity = '0%';
+		setTimeout(function(){val.style.display = 'none'}, 300);
+		math.style.opacity = '0%';
+		setTimeout(function(){math.style.display = 'none'}, 300);
+		setTimeout(function(){div.style.display = 'none'}, 300);
+	}
+}
+
 function value_type(select, mathdiv, valuediv) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;

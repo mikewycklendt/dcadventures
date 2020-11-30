@@ -74,12 +74,13 @@ function move_subtle_trait_type() {
 }
 
 function move_distance_type() {
-	const select = 'move_distance_type'
-	const val = 'move-distance-value'
-	const math = 'move-distance-math'
-	const div = 'move-distance'
+	const select = 'move_distance_type';
+	const val = 'move-distance-value';
+	const math = 'move-distance-math';
+	const div = 'move-distance';
+	const mod = 'move-distance-mod';
 
-	math_div_select(select, val, math, div)
+	math_mod_div_select(select, val, math, mod, div)
 }
 
 function move_flight() {
