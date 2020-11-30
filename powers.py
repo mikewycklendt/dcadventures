@@ -278,6 +278,8 @@ def power_trait_select():
 
 	trait = request.get_json()['trait'] 
 
+	this = ['This Power']
+
 	skills_query = Skill.query.all()
 	skills_raw = []
 	for skill in skills_query:
@@ -312,9 +314,11 @@ def power_trait_select():
 		body['options'] = bonuses
 	elif trait == 'power':
 		body['options'] = powers
+	elif trait == 'this':
+		body['options'] = this
 	else:
 		body['success'] = False
-		body['options'] = 'no match'
+		body['options'] = ['']
 
 	print(body)
 	return jsonify(body)
