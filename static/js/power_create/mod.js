@@ -122,3 +122,11 @@ function mod_reflect_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function mod_subtle() {
+	const check = 'mod_subtle';
+	const div = 'mod-subtle';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}

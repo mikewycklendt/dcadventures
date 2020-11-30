@@ -78,8 +78,19 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 20% 15% 25% 20% 20%;
 	grid-auto-rows: auto;
+}
+
+#mod-subtle {
+	display: none;
+	font-size: 80%;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 35% 65%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 #mod-buttonrow {
