@@ -138,6 +138,28 @@
 				</div>
 			</div>
 
+			<div id="move-distance-mod">
+				<div>
+					Effect Rank
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_mod" name="move_distance_mod">
+						<option value="">Mod</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}\
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					= Distance Rank
+				</div>
+			</div>
+
 		</div>
 	</div>
 
