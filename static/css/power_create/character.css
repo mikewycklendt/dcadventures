@@ -183,6 +183,17 @@ trait amount
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
+
+#char-insub {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 25% 30% 25%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
 /*
 continuous sustained distracting projection 
 */

@@ -152,3 +152,10 @@ function char_immunity_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function char_insub() {
+	const check = 'char_insub';
+	const div = 'char-insub';
+
+	check_drop(check, div, entry);
+}

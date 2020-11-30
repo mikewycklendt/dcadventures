@@ -114,6 +114,9 @@
 		</div>
 
 		<div>
+			<div class="check-div">
+				<input type="checkbox" id="char_immunity" class="medium-checkbox med-checkbox" onclick="char_insub()"> Insubstantial
+			</div>
 		</div>
 
 	</div>
@@ -166,8 +169,9 @@
 		<div>
 			<select class="select-sml" id="char_reduced_value" name="char_reduced_value">
 				<option value="">Amount</option>
+				<option value="">All</option>
 				{% for i in negatives %}
-					<option value={{I}}>{{I}}</option>
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -307,6 +311,21 @@
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="char-insub">
+		<div>
+			Insubstantial:
+		</div>
+
+		<div>
+			<select class="select-sml" id="chhar_insub" name="char_insub">
+				{% for i in insub %}
+					<option value="{{i.type}}">{{i.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 	</div>
 
 	<div id="char-button">
