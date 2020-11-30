@@ -71,7 +71,7 @@ function resistance_check_type() {
 
 function resistance_check_trait_type() {
 	const select = 'resistance_check_trait_type';
-	const fill = 'resistance_check_trait_type';
+	const fill = 'resistance_check_trait';
 
 	trait_select(select, fill);
 }
