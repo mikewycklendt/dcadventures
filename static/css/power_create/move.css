@@ -145,7 +145,7 @@
 	grid-template-columns: 20% 25% 35% 20%;
 	max-height: 0;
 	overflow: hidden;
-	text-replace: all .4s ease-in;
+	transition: all .4s ease-in;
 	gap: .2vw;
 }
 
