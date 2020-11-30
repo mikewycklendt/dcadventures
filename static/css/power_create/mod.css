@@ -87,7 +87,7 @@
 	font-size: 80%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 30% 15% 50%;
+	grid-template-columns: 30% 10% 60%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
