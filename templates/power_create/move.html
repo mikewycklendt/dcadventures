@@ -297,6 +297,20 @@
 
 	<div id="move-button-row">
 		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Through Objects
+			</div>
+		</div>
+
+		<div id="move-objects">
+			<select class="select-sml" id="move_openings" name="move_openings">
+				{% for o in openings %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div></div>
 
 		<div>

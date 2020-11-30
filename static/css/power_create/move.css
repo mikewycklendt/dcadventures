@@ -120,11 +120,15 @@
 	grid-auto-rows: auto;
 }
 
+#move-objects {
+	opacity: 0%;
+	transition: all .4s ease-in;
+}
 
 #move-button-row {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 25% 25% 30% 20%;
 	gap: 3px;
 }
 
@@ -177,11 +181,6 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-}
-
-#move-add {
-	display: grid;
-	grid-area: button;
 }
 
 #move-table {
