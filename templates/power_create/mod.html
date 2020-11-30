@@ -64,7 +64,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_others" class="medium-checkbox med-checkbox"> Affects Others
+				<input type="checkbox" id="mod_others" class="medium-checkbox med-checkbox" onclick="mod_others()"> Affects Others
 			</div>
 		</div>
 
@@ -368,7 +368,7 @@
 		<div>
 			Subtle:
 		</div>
-		
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="mod_subtle_perception_check" class="medium-checkbox med-checkbox" onclick="mod_subtle_perception_check()"> Requires Perception Check
@@ -382,6 +382,30 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
+		</div>
+	</div>
+
+	`<div id="mod-others">
+		<div>
+			Affects Others:
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_others_carry" class="medium-checkbox med-checkbox" > Requires Carrying
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_others_touch" class="medium-checkbox med-checkbox" onclick="mod_others_touch()"> Requires Touch
+			</div>
+		</div>
+
+		<div id="mod-others-touch">
+			<div class="check-div">
+				<input type="checkbox" id="mod_others_touch_continuous" class="medium-checkbox med-checkbox" > Continuous
+			</div>
 		</div>
 	</div>
 

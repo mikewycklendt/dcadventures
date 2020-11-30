@@ -137,3 +137,18 @@ function mod_subtle_perception_check() {
 
 	check_opacity(check, div);
 }
+
+function mod_others() {
+	const check = 'mod_others';
+	const div = 'mod-others';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry)
+}
+
+function mod_others_touch() {
+	const check = 'mod_others_touch';
+	const div = 'mod-others-touch';
+
+	check_opacity(check, div);
+}
