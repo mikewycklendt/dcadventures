@@ -1,0 +1,100 @@
+<div id="check-header">
+
+	<div id="check-title">
+		<input type="checkbox" id="check_check" class="regular-checkbox big-checkbox" onclick="check_check()"> Alternate Check:
+	</div>
+	
+	<div id="check-base">
+		<select class="extra-select" id="check_extra" name="check_extra" onchange="check_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="check-entry">
+	<div id="check-row1">
+
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			Circumstance:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_check_type" name="check_check_type">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.,id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_mod" name="check_mod">
+				<option value="">Moddifier</option>
+				<option value="rank">Effect Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<input type="text" id="check_circ" name="check_circ">
+		</div>
+	</div>
+
+	<div id="check-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="check_submit" name="check_submit" onclick="check_submit()">
+				 Add
+			</div>
+		</div>
+
+	</div>
+
+
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>
