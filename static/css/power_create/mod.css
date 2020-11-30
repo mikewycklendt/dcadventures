@@ -87,10 +87,15 @@
 	font-size: 80%;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 35% 15% 50%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#mod-subtle-dc {
+	opacity: 0%;
+	transition: all .4s ease-in;
 }
 
 #mod-buttonrow {

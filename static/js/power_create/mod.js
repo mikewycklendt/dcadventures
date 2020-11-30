@@ -130,3 +130,10 @@ function mod_subtle() {
 
 	check_drop(check, div, entry);
 }
+
+function mod_subtle_perception_check() {
+	const check = 'mod_subtle_perception_check';
+	const div = 'mod-subtle-dc';
+
+	check_opacity(check, div);
+}
