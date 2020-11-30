@@ -39,8 +39,6 @@
 			Circumstance:
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="entry-select" id="resistance_mod" name="resistance_mod">
 				<option value="">Modifier</option>
@@ -66,12 +64,6 @@
 
 		<div>
 			<input type="text" id="resistance_circ" name="resistance_circ">
-		</div>
-
-		<div>
-			<div class="btn-entry" id="resistance_submit" name="resistance_submit" onclick="resistance_submit()">
-				 Add
-			</div>
 		</div>
 
 	</div>
@@ -120,23 +112,33 @@
 		</div>
 	</div>
 
-	<div id="resistance-check">
-		<div>
-			<select class="select-sml" id="resistance_check_trait_type" name="resistance_check_trait_type" onchange="resistance_check_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
+
+	<div id="resistance-button-row">
+		<div id="resistance-check">
+			<div>
+				Check Type:
+			</div>
+
+			<div>
+				<select class="select-sml" id="resistance_check_trait_type" name="resistance_check_trait_type" onchange="resistance_check_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="resistance_check_trait" name="resistance_check_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
 		</div>
 
 		<div>
-			<select class="select-sml" id="resistance_check_trait" name="resistance_check_trait">
-				<option value="">Trait</option>
-			</select>
+			<div class="btn-entry" id="resistance_submit" name="resistance_submit" onclick="resistance_submit()">
+				 Add
+			</div>
 		</div>
-
-		<div></div>
-	</div>
 </div>
 
 <div id="resistance-table">

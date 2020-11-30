@@ -79,7 +79,6 @@ function resistance_check_trait_type() {
 function resistance_requires_check() {
 	const check = 'resistance_requires_check';
 	const div = 'resistance-check';
-	const entry  = 'resistance-entry';
 
-	check_drop(check, div, entry);
+	check_opacity(check, div);
 }
