@@ -67,5 +67,19 @@ function resistance_check_type() {
 		des.style.display = 'none';
 		des.style.opacity = '0%';
 	}
-	
+}
+
+function resistance_check_trait_type() {
+	const select = 'resistance_check_trait_type';
+	const fill = 'resistance_check_trait_type';
+
+	trait_select(select, fill);
+}
+
+function resistance_requires_check() {
+	const check = 'resistance_requires_check';
+	const div = 'resistance-check';
+	const entry  = 'resistance-entry';
+
+	check_drop(check, div, entry);
 }

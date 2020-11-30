@@ -110,6 +110,32 @@
 			</div>
 
 		</div>
+
+		<div></div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="resistance_requires_check" class="medium-checkbox med-checkbox" onclick="resistance_requires_check()"> Counters Darkness
+			</div>	
+		</div>
+	</div>
+
+	<div id="resistance-check">
+		<div>
+			<select class="select-sml" id="resistance_check_trait_type" name="resistance_check_trait_type">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="resistance_check_trait" name="resistance_check_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div></div>
 	</div>
 </div>
 
