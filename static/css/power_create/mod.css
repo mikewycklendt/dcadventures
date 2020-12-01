@@ -180,6 +180,31 @@
 	transition: all .4s ease-out;
 }
 
+#mod-limited-extra {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 60% 40%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-limited-language {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 30% 20% 50%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-limited-language-mod {
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
 #mod-ranged {
 	display: none;
 	width: 98%;

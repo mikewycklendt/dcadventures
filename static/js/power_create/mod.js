@@ -63,25 +63,60 @@ function mod_limited_type() {
 	const entry =  'mod-entry';
 	const trait = 'mod-limited-trait';
 	const desc = 'mod-limited-description';
-	const sub = 'mod-limited-subjects'
+	const sub = 'mod-limited-subjects';
+	const extra = 'mod-limited-extra';
+	const lan = 'mod-limited-language';
 	const field = document.getElementById('mod_limited_type');
 	const val = field.options[field.selectedIndex].value;
 
 	if (val == 'trait'){
+		hide_maxheight(lan);
+		hide_maxheight(extra);
 		hide_maxheight(desc);
 		hide_maxheight(sub);
 		show_maxheight(trait, entry);
 	} else if (val == 'other') {
+		hide_maxheight(lan);
+		hide_maxheight(extra);
 		hide_maxheight(trait);
 		hide_maxheight(sub)
 		show_maxheight(desc, entry);
 	} else if (val == 'subjects') {
+		hide_maxheight(lan);
+		hide_maxheight(extra);
 		hide_maxheight(trait);
 		hide_maxheight(desc);
 		show_maxheight(sub, entry)
-	} else {
+	} else if (val == 'extra') {
+		hide_maxheight(trait);
 		hide_maxheight(desc);
-		show_maxheight(trait);
+		hide_maxheight(lan);
+		hide_maxheight(sub);
+		show_maxheight(extra);		
+	} else if (val == 'language') {
+		hide_maxheight(trait);
+		hide_maxheight(desc);
+		hide_maxheight(extra);
+		hide_maxheight(sub);
+		show_maxheight(lan);
+	} else {
+		hide_maxheight(lan);
+		hide_maxheight(extra);
+		hide_maxheight(sub);
+		hide_maxheight(desc);
+		hide_maxheight(trait);
+	}
+}
+
+function mod_limited_language_mod() {
+	const field = document.getElementById('mod_limited_language_mod');
+	const val = field.options[field.selectedIndex].value;
+	const div = document.getElementById('mod-limited-language-mod');
+
+	if (val == 'mod') {
+		div.style.opacity = '100%';
+	} else {
+		div.style.opacity = '0%';
 	}
 }
 
