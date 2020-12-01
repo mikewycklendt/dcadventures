@@ -65,7 +65,7 @@
 	display: grid;
 	grid-template-columns: 80% 20%;
 	height: 1.6vw;
-	padding: 3%;
+	padding: 1%;
 }
 
 #opposed-table {
