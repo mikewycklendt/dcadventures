@@ -54,7 +54,7 @@
 }
 
 #degree-entry textarea {
-	height: 95%;
+	height: 90%;
 	font-size: 85%;
 	padding: .2vw;
 	width: 95%;
@@ -97,7 +97,7 @@
 }
 
 #degree-key input[type="text"] {
-	height: 1.5vw;
+	height: 1.7vw;
 	width: 95%;
 	padding: .1vw;
 	font-size: 120%;
