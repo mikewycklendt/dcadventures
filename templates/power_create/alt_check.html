@@ -57,6 +57,25 @@
 
 	<div id="check-button-row">
 		<div>
+			<select class="entry-select" id="check_when" name="check_when">
+				{% for c in check_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_trait_type" name="check_trait_type" onchange="check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_trait" name="check_trait">
+				<option value="">Trait</option>
+			</select>
 		</div>
 
 		<div>
