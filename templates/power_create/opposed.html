@@ -1,0 +1,132 @@
+<div id="opposed-header">
+
+	<div id="opposed-title">
+		<input type="checkbox" id="opposed_check" class="regular-checkbox big-checkbox" onclick="opposed_check()"> Opposed Check:
+	</div>
+	
+	<div id="opposed-base">
+		<select class="extra-select" id="opposed_extra" name="opposed_extra" onchange="opposed_base()">
+			<option value=>Base or Extra</option>
+			<option value=0>Base Effect</option>
+		</select>
+	</div>
+
+</div>
+
+<div id="opposed-entry">
+	<div id="opposed-row1">
+
+		<div>
+			Player Check Type:
+		</div>
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			Opponent Check Type
+		</div>
+
+		<div>
+			Modifier:
+		</div>
+
+	</div>
+
+	<div id="opposed-row2">
+
+		<div>
+			<select class="select-sml" id="opposed_trait_type" name="opposed_trait_type" onchange="opposed_trait_type()">
+				{% for t in trait %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="opposed_trait" name="opposed_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="opposed_mod" name="opposed_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="opposed_opponent_trait_type" name="opposed_opponent_trait_type" onchange="opposed_trait_type()">
+				{% for t in trait %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="opposed_opponent_trait" name="opposed_opponent_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="opposed_opponent_mod" name="opposed_opponent_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="opposed-button-row">
+		<div></div>
+	
+		<div>
+			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+<div id="damage-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="damage-err"></div>

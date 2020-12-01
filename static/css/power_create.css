@@ -23,8 +23,7 @@
 @import "power_create/time.css";
 @import "power_create/alt_check.css";
 @import "power_create/degree.css";
-
-
+@import "power_create/opposed.css";
 
 .power-container {
 	display: grid;
