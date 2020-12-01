@@ -64,7 +64,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 13% 25% 62%;
+	grid-template-columns: 11% 25% 64%;
 	grid-template-rows: 1.2vw auto auto 3vw;
 	grid-template-areas: "deg-title key-title des-title"
 							"deg key des"
@@ -103,7 +103,7 @@
 }
 
 #degree-key input[type="text"] {
-	height: 1.7vw;
+	height: 1.8vw;
 	width: 95%;
 	padding: .1vw;
 	font-size: 120%;
