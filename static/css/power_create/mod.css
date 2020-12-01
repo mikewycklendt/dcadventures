@@ -82,6 +82,14 @@
 	grid-auto-rows: auto;
 }
 
+#mod-row5 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
 #mod-subtle {
 	display: none;
 	font-size: 100%;
@@ -196,6 +204,24 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 15% 15% 25%  30% 15%;
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+#mod-ranged-mod {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 30% 30% 40%;
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+#mod-ranged-check {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 50% 50%;
 	opacity: 0%;
 	transition: all .3s ease-in;
 }

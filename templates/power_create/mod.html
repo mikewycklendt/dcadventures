@@ -3,7 +3,7 @@
 	<div id="mod-title">
 		<input type="checkbox" id="mod_check" class="regular-checkbox big-checkbox" onclick="mod_check()"> Modifiers:
 	</div>
-	
+
 	<div id="mod-base">
 		<select class="extra-select" id="mod_extra" name="mod_extra" onchange="mod_base()">
 			<option value=>Base or Extra</option>
@@ -52,19 +52,22 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_limited" class="medium-checkbox med-checkbox" onclick="mod_limited()"> Limited
-			</div>
-		</div>
-		
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_ranged" class="medium-checkbox med-checkbox" onclick="mod_ranged()"> Ranged
+				<input type="checkbox" id="mod_limited" class="medium-checkbox med-checkbox" onclick="mod_limited()">
+				Limited
 			</div>
 		</div>
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_others" class="medium-checkbox med-checkbox" onclick="mod_others()"> Affects Others
+				<input type="checkbox" id="mod_ranged" class="medium-checkbox med-checkbox" onclick="mod_ranged()">
+				Ranged
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_others" class="medium-checkbox med-checkbox" onclick="mod_others()">
+				Affects Others
 			</div>
 		</div>
 
@@ -76,7 +79,8 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_reflect" class="medium-checkbox med-checkbox" onclick="mod_reflect()"> Reflect
+				<input type="checkbox" id="mod_reflect" class="medium-checkbox med-checkbox" onclick="mod_reflect()">
+				Reflect
 			</div>
 		</div>
 
@@ -86,7 +90,7 @@
 			</div>
 		</div>
 
-		
+
 	</div>
 
 	<div id="mod-row3">
@@ -128,10 +132,11 @@
 				<input type="checkbox" id="mod_progressive" class="medium-checkbox med-checkbox"> Progressive
 			</div>
 		</div>
-		
+
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_subtle" class="medium-checkbox med-checkbox" onclick="mod_subtle()"> Subtle
+				<input type="checkbox" id="mod_subtle" class="medium-checkbox med-checkbox" onclick="mod_subtle()">
+				Subtle
 			</div>
 		</div>
 
@@ -140,19 +145,28 @@
 				<input type="checkbox" id="mod_permanent" class="medium-checkbox med-checkbox"> Permanent
 			</div>
 		</div>
-		
+
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_points" class="medium-checkbox med-checkbox" onclick="mod_points()"> Spend Points
+				<input type="checkbox" id="mod_points" class="medium-checkbox med-checkbox" onclick="mod_points()">
+				Spend Points
 			</div>
 		</div>
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_ranks" class="medium-checkbox med-checkbox" onclick="mod_ranks()"> Gain Trait
+				<input type="checkbox" id="mod_ranks" class="medium-checkbox med-checkbox" onclick="mod_ranks()"> Gain
+				Trait
 			</div>
 		</div>
+	</div>
 
+	<div id="mod-row5">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_action" class="medium-checkbox med-checkbox"> Action
+			</div>
+		</div>
 
 	</div>
 
@@ -166,12 +180,12 @@
 				<option value="">Modifier</option>
 				<option value="rank">Power Rank</option>
 				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
+				<option value={{i}}>{{i}}</option>
 				{% endfor %}
 				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+				<option value={{i}}>{{i}}</option>
 				{% endfor %}
-			</select> 
+			</select>
 		</div>
 
 		<div>
@@ -183,9 +197,9 @@
 				<option value="">Distance Rank</option>
 				<option value="rank">Power Rank</option>
 				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+				<option value={{i}}>{{i}}</option>
 				{% endfor %}
-			</select> 
+			</select>
 		</div>
 
 		<div class="check-div">
@@ -206,39 +220,39 @@
 		<div>
 			<select class="select-sml" id="mod_limited_type" name="mod_limited_type" onchange="mod_limited_type()">
 				{% for l in limited_type %}
-					<option value="{{l.type}}">{{l.name}}</option>
+				<option value="{{l.type}}">{{l.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-	
+
 		<div>
 			<select class="select-sml" id="mod_limited_mod" name="mod_limited_mod">
 				<option value="">Modifier</option>
 				<option value="rank">Power Rank</option>
 				<option value="X">X</option>
 				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
+				<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
-	
+
 		<div>
 			<div id="mod-limited-trait">
 				<div>
 					<select class="select-sml" id="mod_limited_trait_type" name="mod_limited_trait_type">
 						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
+						<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
-	
+
 				<div>
 					<select class="select-sml" id="mod_limited_trait" name="mod_limited_trait">
 						<option value="">Trait</option>
 					</select>
 				</div>
 			</div>
-	
+
 			<div id="mod-limited-description">
 				<input type="text" id="mod_limited_description" name="mod_limited_description">
 			</div>
@@ -252,7 +266,7 @@
 					<select class="select-sml" id="mod_limited_subjects" name="mod_limited_subjects">
 						<option value="">Limit</option>
 						{% for i in positives %}
-							<option value={{I}}>{{I}}</option>
+						<option value={{I}}>{{I}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -270,8 +284,10 @@
 		<div>
 			<select class="select-sml" id="mod_ranged_type" name="mod_ranged_type" onchange="mod_ranged_type()">
 				{% for v in value_type %}
-					<option value="{{v.type}}">{{v.name}}</option>
+				<option value="{{v.type}}">{{v.name}}</option>
 				{% endfor %}
+				<option value="mod">Modifier</option>
+				<option value="check">Requires Check</option>
 			</select>
 		</div>
 
@@ -285,11 +301,11 @@
 					<select class="select-sml" id="mod_ranged_units" name="mod_ranged_units">
 						<option value="">Units</option>
 						{% for u in distances %}
-							<option value={{u.id}}>{{u.name}}</option>
+						<option value={{u.id}}>{{u.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
-				
+
 				<div></div>
 			</div>
 
@@ -298,7 +314,7 @@
 					<select class="select-sml" id="mod_ranged_math_value" name="mod_ranged_math_value">
 						<option value="">Value</option>
 						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
+						<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -307,22 +323,23 @@
 					<select class="select-sml" id="mod_ranged_math" name="mod_ranged_math">
 						<option value="">math</option>
 						{% for m in maths %}
-							<option value={{m.id}}>{{m.name}}</option>
+						<option value={{m.id}}>{{m.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
 				<div>
-					<select class="select-sml" id="mod_ranged_math_trait_type" name="mod_ranged_math_trait_type" onchange="mod_ranged_math_trait_type()">
+					<select class="select-sml" id="mod_ranged_math_trait_type" name="mod_ranged_math_trait_type"
+						onchange="mod_ranged_math_trait_type()">
 						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
+						<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
 				<div>
 					<select class="select-sml" id="mod_ranged_math_trait" name="mod_ranged_math_trait">
-						<option value="">Trait</option>	
+						<option value="">Trait</option>
 					</select>
 				</div>
 
@@ -330,260 +347,301 @@
 					<select class="select-sml" id="mod_ranged_math_units" name="mod_ranged_math_units">
 						<option value="">Units</option>
 						{% for u in distances %}
-							<option value={{u.id}}>{{u.name}}</option>
+						<option value={{u.id}}>{{u.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 			</div>
-		</div>
 
-	</div>
-
-	<div id="mod-reflect">
-		<div>
-			Reflect:
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_check" name="mod_reflect_check">
-				<option value="">Check Type</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_trait_type" name="mod_reflect_trait_type" onchange="mod_reflect_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_trait" name="mod_reflect_trait">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="descriptor-sml" id="mod_reflect_descriptor" name="mod_reflect_descriptor">
-				<option value="">Descriptor</option>
-				<option value="">Use above form to put descriptors here</option>
-			</select>
-		</div>
-	</div>
-
-	<div id="mod-subtle">
-
-		<div>
-			Subtle:
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_subtle_perception_check" class="medium-checkbox med-checkbox" onclick="mod_subtle_perception_check()"> Requires Perception Check
-			</div>
-		</div>
-
-		<div id="mod-subtle-dc">
-			<select class="select-sml" id="mod_subtle_dc" name="mod_subtle_dc">
-				<option value="">DC</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div id="mod-others">
-		<div>
-			Affects Others:
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_others_carry" class="medium-checkbox med-checkbox" > Requires Carrying
-			</div>
-		</div>
-		
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_others_touch" class="medium-checkbox med-checkbox" onclick="mod_others_touch()"> Requires Touch
-			</div>
-		</div>
-
-		<div id="mod-others-touch">
-			<div class="check-div">
-				<input type="checkbox" id="mod_others_touch_continuous" class="medium-checkbox med-checkbox" > Continuous
-			</div>
-		</div>
-	</div>
-
-	<div id="mod-ranks">
-		<div >
-			Gain Ranks in Trait:
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_ranks_trait_type" name="mod_ranks_trait_type" onchange="mod_ranks_trait_type()">
-				{% for t in all_traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_ranks_trait" name="mod_ranks_trait">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_ranks_ranks" name="mod_ranks_ranks">
-				<option value="">Ranks</option>
-				<option value="effect">This Power</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_ranks_mod" name="mod_ranks_mod">
-				<option value="">Modifier</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
- 		</div>
-	</div>
-
-	<div id="mod-points">
-		<div>
-			Spend Points:
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_points_type" name="mod_points_type" onchange="mod_points_type()">
-				{% for s in spend %}
-					<option value="{{s.type}}">{{s.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div id="mod-points-reroll">
+			<div id="mod-ranged-mod">
 				<div>
-					<select class="select-sml" id="mod_points_reroll_target" name="mod_points_target">
-						{% for t in targets %}
-							<option value="{{5.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select>
+					Effect Rank
 				</div>
 
 				<div>
-					<select class="select-sml" id="mod_points_reroll_cost" name="mod_points_cost">
-						<option value="">Cost</option>
+					<select class="select-sml" id="mod_ranged_mod" name="mod_ranged_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
 						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
+						<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
 				<div>
-					<select class="select-sml" id="mod_points_rerolls" name="mod_points_rerolls" onchange="mod_points_reerolls()">
-						<option value="">Rerolls</option>
+					= Distance Rank
+				</div>
+			</div>
+
+			<div id="mod-ranged-check">
+				<div>
+					<select class="select-sml" id="mod_ranged_check" name="mod_ranged_check">
+						<option value="">Check Type</option>
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			</div>
+
+			<div id="mod-reflect">
+				<div>
+					Reflect:
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_reflect_check" name="mod_reflect_check">
+						<option value="">Check Type</option>
+						{% for c in checks %}
+						<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_reflect_trait_type" name="mod_reflect_trait_type"
+						onchange="mod_reflect_trait_type()">
+						{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_reflect_trait" name="mod_reflect_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="descriptor-sml" id="mod_reflect_descriptor" name="mod_reflect_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="mod-subtle">
+
+				<div>
+					Subtle:
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="mod_subtle_perception_check" class="medium-checkbox med-checkbox"
+							onclick="mod_subtle_perception_check()"> Requires Perception Check
+					</div>
+				</div>
+
+				<div id="mod-subtle-dc">
+					<select class="select-sml" id="mod_subtle_dc" name="mod_subtle_dc">
+						<option value="">DC</option>
 						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="mod-others">
+				<div>
+					Affects Others:
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="mod_others_carry" class="medium-checkbox med-checkbox"> Requires
+						Carrying
+					</div>
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="mod_others_touch" class="medium-checkbox med-checkbox"
+							onclick="mod_others_touch()"> Requires Touch
+					</div>
+				</div>
+
+				<div id="mod-others-touch">
+					<div class="check-div">
+						<input type="checkbox" id="mod_others_touch_continuous" class="medium-checkbox med-checkbox">
+						Continuous
+					</div>
+				</div>
+			</div>
+
+			<div id="mod-ranks">
+				<div>
+					Gain Ranks in Trait:
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranks_trait_type" name="mod_ranks_trait_type"
+						onchange="mod_ranks_trait_type()">
+						{% for t in all_traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
-				<div id="mod-points-reroll-result">
-					<select class="select-sml" id="mod_points_reroll_result" name="mod_points_reroll_result">
-						{% for r in result %}
-							<option value="{{r.type}}">{{r.name}}</option>
+				<div>
+					<select class="select-sml" id="mod_ranks_trait" name="mod_ranks_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_ranks_ranks" name="mod_ranks_ranks">
+						<option value="">Ranks</option>
+						<option value="effect">This Power</option>
+						{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
-			</div>
-		</div>
-	</div>
-
-	<div id="mod-buttonrow">
-
-		<div></div>
-
-		<div>
-			<select class="entry-select" id="mod_ranks" name="mod_ranks">
-				<option value="">Ranks</option>
-				{% for i in hundred %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="mod_cost" name="mod-cost">
-				<option value="">N/A</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="btn-entry" id="mod_submit" name="mod_submit" onclick="mod_submit">
-				 Add
+				<div>
+					<select class="select-sml" id="mod_ranks_mod" name="mod_ranks_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 
+			<div id="mod-points">
+				<div>
+					Spend Points:
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_points_type" name="mod_points_type" onchange="mod_points_type()">
+						{% for s in spend %}
+						<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div id="mod-points-reroll">
+						<div>
+							<select class="select-sml" id="mod_points_reroll_target" name="mod_points_target">
+								{% for t in targets %}
+								<option value="{{5.type}}">{{t.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="mod_points_reroll_cost" name="mod_points_cost">
+								<option value="">Cost</option>
+								{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="mod_points_rerolls" name="mod_points_rerolls"
+								onchange="mod_points_reerolls()">
+								<option value="">Rerolls</option>
+								{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div id="mod-points-reroll-result">
+							<select class="select-sml" id="mod_points_reroll_result" name="mod_points_reroll_result">
+								{% for r in result %}
+								<option value="{{r.type}}">{{r.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div id="mod-buttonrow">
+
+				<div></div>
+
+				<div>
+					<select class="entry-select" id="mod_ranks" name="mod_ranks">
+						<option value="">Ranks</option>
+						{% for i in hundred %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="vcenter">
+						Cost Per Rank:
+					</div>
+				</div>
+
+				<div>
+					<select class="entry-select" id="mod_cost" name="mod-cost">
+						<option value="">N/A</option>
+						{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="btn-entry" id="mod_submit" name="mod_submit" onclick="mod_submit">
+						Add
+					</div>
+
+				</div>
+
+			</div>
+
 		</div>
 
-	</div>
-
-</div>
 
 
+		<div id="mod-table">
 
-<div id="mod-table">
+			<div class="power-table-title">
+				Target:
+			</div>
 
-	<div class="power-table-title">
-		Target:
-	</div>
+			<div class="power-table-title">
+				Degree:
+			</div>
 
-	<div class="power-table-title">
-		Degree:
-	</div>
+			<div class="power-table-title">
+				When:
+			</div>
 
-	<div class="power-table-title">
-		When:
-	</div>
+			<div class="power-table-title">
+				Check:
+			</div>
 
-	<div class="power-table-title">
-		Check:
-	</div>
-	
-	<div class="power-table-title">
-		Time:
-	</div>
+			<div class="power-table-title">
+				Time:
+			</div>
 
-	<div></div>
-	
-</div>
+			<div></div>
 
-<div id="mod-err"></div>
+		</div>
+
+		<div id="mod-err"></div>

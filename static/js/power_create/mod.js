@@ -94,11 +94,39 @@ function mod_ranged() {
 }
 
 function mod_ranged_type() {
-	const select = 'mod_ranged_type';
+	const select = document.getElementById('mod_ranged_type');
+	const value = select.options[select.selectedIndex].value;
 	const val = 'mod-ranged-value';
 	const math = 'mod-ranged-math';
+	const mod = 'mod-ranged-mod';
+	const che = 'mod-ranged-check';
 
-	value_type(select, math, val)
+	if (value == 'value') {
+		hide_opacity(math);
+		hide_opacity(mod);
+		hide_opacity(che);
+		show_opacity(val)
+	} else if (value == 'math') {
+		hide_opacity(val);
+		hide_opacity(mod);
+		hide_opacity(che);
+		show_opacity(math);
+	} else if (value == 'mod') {
+		hide_opacity(math);
+		hide_opacity(val);
+		hide_opacity(che);
+		show_opacity(mod);
+	} else if (value == 'check') {
+		hide_opacity(math);
+		hide_opacity(mod);
+		hide_opacity(val);
+		show_opacity(che);
+	} else {
+		hide_opacity(math);
+		hide_opacity(mod);
+		hide_opacity(val);
+		hide_opacity(che);
+	}
 }
 
 function mod_ranged_math_trait_type() {
