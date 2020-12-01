@@ -10,6 +10,7 @@
 #degree-base {
 	display: grid;
 	grid-template-columns: 55% 45%;
+	gap: .2vw;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
