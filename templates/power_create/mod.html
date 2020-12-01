@@ -395,22 +395,24 @@
 			</div>
 		
 		</div>
+	
+	</div>
 
-		<div id="mod-side">
+	<div id="mod-side">
 
-			<div>
-				Side Effect:
-			</div>
+		<div>
+			Side Effect:
+		</div>
 
-			<div>
-				<select class="select-sml" id="mod_side" name="mod_side">
-					{% for s in side_effects %}
-						<option value="{{s.type}}">{{s.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<select class="select-sml" id="mod_side" name="mod_side">
+				{% for s in side_effects %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-			<div></div>
+		<div></div>
 
 	</div>
 
