@@ -245,5 +245,5 @@ function mod_side() {
 	const div = 'mod-side';
 	const entry = 'mod-entry';
 
-	check_drop(check, div, entry)
+	check_drop(check, div, entry);
 }
