@@ -136,6 +136,18 @@ function mod_ranged_math_trait_type() {
 	trait_select(select, fill)
 }
 
+function mod_ranged_check() {
+	const field = document.getElementById('mod_ranged_check');
+	const val = field.options[field.selectedIndex].value;
+	const div = document.getElementById('mod-ranged-check-dc');
+
+	if ((val == 1) || (val == 6)) {
+		div.style.opacity = '100%'
+	} else {
+		div.style.opacity = '0%';
+	}
+}
+
 function mod_reflect() {
 	const check = 'mod_reflect';
 	const div = 'mod-reflect';

@@ -221,9 +221,14 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 50% 20% 30%;
 	opacity: 0%;
 	transition: all .3s ease-in;
+}
+
+#mod-ranged-check-dc {
+	opacity: 0%;
+	transition: all .4s ease-out;
 }
 
 #mod-reflect {
