@@ -369,7 +369,7 @@
 
 			<div id="mod-ranged-check">
 				<div>
-					<select class="select-sml" id="mod_ranged_check" name="mod_ranged_check">
+					<select class="select-sml" id="mod_ranged_check" name="mod_ranged_check" onchange="mod_ranged_check()">
 						<option value="">Check Type</option>
 						{% for c in checks %}
 							<option value={{c.id}}>{{c.name}}</option>
