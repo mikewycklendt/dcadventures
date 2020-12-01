@@ -1,0 +1,92 @@
+<div id="degree-header">
+
+	<div id="degree-title">
+		<input type="checkbox" id="degree_check" class="regular-checkbox big-checkbox" onclick="degree_check()"> Degree of Success/Failure (Keyword):
+	</div>
+	
+	<div id="degree-base">
+
+		<div>
+			<input type="text" id="degree_type" name="degree_type" onblur="degree_base()">
+		</div>
+
+		<div>
+			<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div id="degree-entry">
+	<div id="degree-row1">
+		<div id="degree-deg-title">
+			Degree:
+		</div>
+
+		<div id="degree-key-title">
+			Keyword:
+		</div>
+
+		<div id="degree-des-title">
+			Description:
+		</div>
+
+		<div id="degree-deg">
+			<select class="entry-select" id="degree_degree" name="degree_degree">
+				<option value="">Degree</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="degree-key">
+			<input type="text" id="degree_keyword" name="degree_keyword">
+		</div>
+
+		<div id="degree-des">
+			<textarea id="degree_desscription" name="degree_description"></textarea>
+		</div>
+
+		<div id="degree-button">
+			<div class="btn-entry" id="degree_submit" name="degree_submit" onclick="degree_submit()">
+				 Add
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="degree-table">
+
+	<div class="power-table-title">
+		Target:
+	</div>
+
+	<div class="power-table-title">
+		Degree:
+	</div>
+
+	<div class="power-table-title">
+		When:
+	</div>
+
+	<div class="power-table-title">
+		Check:
+	</div>
+	
+	<div class="power-table-title">
+		Time:
+	</div>
+
+	<div></div>
+	
+</div>
+
+<div id="degree-err"></div>

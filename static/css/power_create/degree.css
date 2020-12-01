@@ -1,0 +1,220 @@
+#degree-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 55% 45%;
+	grid-template-rows: auto;
+}
+
+#degree-base {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#degree-base input[type="text"] {
+	height: 1.6vw;
+	font-size: 120%;
+	width: 95%;
+	padding: .2vw;
+}
+
+#degree-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#degree-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#degree-entry textarea {
+	height: 95%;
+	font-size: 85%;
+	padding: .2vw;
+	width: 95%;
+}
+
+#degree-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 25% 65%;
+	grid-template-rows: 1.2vw auto 3vw;
+	grid-template-areas: "deg-title key-title des-title"
+							"deg key des"
+							"button button des";
+}
+
+#degree-deg-title {
+	display: grid;
+	grid-area: deg-title;
+}
+
+#degree-key-title {
+	display: grid;
+	grid-area: key-title;
+}
+
+#degree-des-title {
+	display: grid;
+	grid-area: des-title;
+}
+
+#degree-deg {
+	display: grid;
+	grid-area: deg;
+}
+
+#degree-key {
+	display: grid;
+	grid-area: key;
+}
+
+#degree-key input[type="text"] {
+	height: 1.5vw;
+	width: 95%;
+	padding: .1vw;
+	font-size: 120%;
+}
+
+#degree-des {
+	display: grid;
+	grid-area: des;
+} 
+
+#degree-button {
+	display: grid;
+	grid-area: button;
+}
+
+#degree-type {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 140%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#degree-table {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.degree-table-ext {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.degree-table-rnk {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+.degree-table-des {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.degree-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#degree-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.degree-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.degree-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

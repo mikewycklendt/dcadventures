@@ -1,8 +1,8 @@
-function deg_check() {
-	const check = document.getElementById("deg_check");
-	const title = document.getElementById("deg-title");
-	const base = document.getElementById('deg-base');
-	const entry = document.getElementById("deg-entry");
+function degree_check() {
+	const check = document.getElementById("degree_check");
+	const title = document.getElementById("degree-title");
+	const base = document.getElementById('degree-base');
+	const entry = document.getElementById("degree-entry");
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
@@ -18,11 +18,11 @@ function deg_check() {
 	}
 }
 
-function deg_base() {
-	const field = document.getElementById('deg_extra');
+function degree_base() {
+	const field = document.getElementById('degree_extra');
 	const value = field.options[field.selectedIndex].value;
-	const type = document.getElementById('deg_type').value;
-	const entry = document.getElementById("deg-entry");
+	const type = document.getElementById('degree_type').value;
+	const entry = document.getElementById("degree-entry");
 
 	if (value != '' && type != '') {
 		entry.style.display = "grid";
