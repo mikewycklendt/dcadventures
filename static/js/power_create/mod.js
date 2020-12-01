@@ -239,3 +239,11 @@ function mod_points_reerolls() {
 		div.style.opacity = '0%';
 	}
 }
+
+function mod_side() {
+	const check = 'mod_side';
+	const div = 'mod-side';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry)
+}
