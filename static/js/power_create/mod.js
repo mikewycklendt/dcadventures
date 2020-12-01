@@ -189,7 +189,7 @@ function mod_points_type() {
 }
 
 function mod_points_reerolls() {
-	const field = document.getElementById("mod_points_reerolls");
+	const field = document.getElementById("mod_points_rerolls");
 	const val = field.options[field.selectedIndex].value;
 	const div = document.getElementById('mod-points-reroll-result');
 
