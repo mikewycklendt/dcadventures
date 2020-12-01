@@ -93,6 +93,18 @@
 	font-size: 110%;
 }
 
+#descriptor-damage-row {
+	display: none;
+	width: 98%;
+	height: 1.4;
+	gap: 3px;
+	grid-template-columns: 75% 25%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #descriptor-origin-field {
 	opacity: 0%;
 	transition: all .3s linear;

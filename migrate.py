@@ -33,4 +33,8 @@ if __name__ == '__main__':
 '''
 sudo python3 migrate.py db migrate
 sudo python3 migrate.py db upgrade
+
+DROP TABLE alembic_version;
+sudo python3 migrate.py db stamp heads
+
 '''

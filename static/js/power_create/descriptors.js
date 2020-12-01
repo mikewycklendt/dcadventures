@@ -183,18 +183,22 @@ function descriptor_des(value, div) {
 	}
 }
 
-function new_entry_show(row2, row3) {
+function new_entry_show(row2, row3, damage) {
 	row2.style.display = 'grid';
 	row2.style.maxHeight = row2.scrollHeight + 'px';
 	row3.style.display = 'grid';
 	row3.style.maxHeight = row3.scrollHeight + 'px';
+	damage.style.display = 'grid';
+	damage.style.maxHeight = damage.scrollHeight + 'px';
 }
 
-function new_entry_hide(row2, row3) {
+function new_entry_hide(row2, row3, damage) {
 	row2.style.maxHeight = '0px';
 	setTimeout(function(){row2.style.display = 'none'}, 400);
 	row3.style.maxHeight = '0px';
 	setTimeout(function(){row3.style.display = 'none'}, 400);
+	damage.style.maxHeight = '0px';
+	setTimeout(function(){damage.style.display = 'none'}, 400);
 }
 
 function field_show(value, title, field) {
@@ -246,13 +250,14 @@ function descriptor() {
 
 	const row2 = document.getElementById('descriptor-row2');
 	const row3 = document.getElementById('descriptor-row3');
+	const damage = document.getElementById('descriptor-damage-row')
 
 	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
-		new_entry_show(row2, row3)
+		new_entry_show(row2, row3, damage)	
 	}
 
 	if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
-		new_entry_hide(row2, row3)
+		new_entry_hide(row2, row3, damage)
 	}
 
 	descriptor_new(origin, ori_text);
@@ -352,6 +357,9 @@ function descriptor_submit() {
 
 	const descriptor_type_field = document.getElementById('descriptor_descriptor_type');
 	const descriptor_type = descriptor_type_field.options[descriptor_type_field.selectedIndex].value;
+
+	const damage_check = document.getElementById('descriptor_damage');
+	const damage = damage_check.checked;
 	
 	const power_id = document.getElementById('power_id').value;
 
@@ -379,6 +387,7 @@ function descriptor_submit() {
 					'descriptor_name': descriptor_name,
 					'descriptor_result': descriptor_result,
 					'descriptor_type': descriptor_type,
+					'damage': damage,
 					'power_id': power_id
 				}),
 				headers: {
