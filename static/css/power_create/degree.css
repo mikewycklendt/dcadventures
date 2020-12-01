@@ -117,6 +117,7 @@
 #degree-button {
 	display: grid;
 	grid-area: button;
+	font-size: 150%;
 }
 
 #degree-type {
