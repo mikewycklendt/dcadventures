@@ -448,7 +448,8 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
-			
+		</div>
+
 		<div>
 			<select class="select-sml" id="mod_ranks_mod" name="mod_ranks_mod">
 				<option value="">Modifier</option>
@@ -460,6 +461,59 @@
 				{% endfor %}
 			</select>
  		</div>
+	</div>
+
+	<div id="mod-points">
+		<div>
+			Spend Points:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_points_type" name="mod_points_type" onchange="mod_points_type()">
+				{% for s in spend %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="mod-points-reroll">
+				<div>
+					<select class="select-sml" id="mod_points_reroll_target" name="mod_points_target">
+						{% for t in targets %}
+							<option value="{{5.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_points_reroll_cost" name="mod_points_cost">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_points_rerolls" name="mod_points_reerolls" onchange="mod_points_reerolls()">
+						<option value="">Rerolls</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="mod-points-reroll-result">
+					<select class="select-sml" id="mod_points_reroll_result" name="mod_points_reroll_result">
+						{% for r in result %}
+							<option value="{{r.type}}">{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+		</div>
 	</div>
 
 	<div id="mod-buttonrow">
