@@ -64,8 +64,8 @@
 	grid-template-columns: 10% 20% 80%;
 	grid-template-rows: 1vw auto 3vw ;
 	grid-template-areas: "deg-title key-title desc-title"
-						"deg key desc"
-						"button button desc";
+							"deg key desc"
+							"button button desc";
 }
 
 #deg-deg-title {
