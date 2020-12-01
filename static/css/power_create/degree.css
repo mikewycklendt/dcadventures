@@ -65,9 +65,10 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 10% 25% 65%;
-	grid-template-rows: 1.2vw auto 3vw;
+	grid-template-rows: 1.2vw auto auto 3vw;
 	grid-template-areas: "deg-title key-title des-title"
 							"deg key des"
+							"extra extra des"
 							"button button des";
 }
 
@@ -79,6 +80,11 @@
 #degree-key-title {
 	display: grid;
 	grid-area: key-title;
+}
+
+#degree-extra {
+	display: grid;
+	grid-area: extra;
 }
 
 #degree-des-title {
@@ -119,7 +125,8 @@
 	padding: 1%;
 	margin: 2%;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 140%;
+	font-size: 160%;
+	text-align: center;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
