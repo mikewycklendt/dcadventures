@@ -214,7 +214,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 15% 70%;
+	grid-template-columns: 17% 15% 68%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
