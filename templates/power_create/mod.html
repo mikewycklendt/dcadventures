@@ -470,6 +470,20 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<select class="select-sml" id="mod_subtle_trait_type" name="mod_subtle_trait_type" onchange="mod_subtle_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_subtle_trait" name="mod_subtle_trait">
+				<option value="">Nullified if Possessing Trait</option>
+			</select>
+		</div>
 	</div>
 
 	<div id="mod-others">

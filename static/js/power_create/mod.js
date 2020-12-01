@@ -178,6 +178,13 @@ function mod_subtle_perception_check() {
 	check_opacity(check, div);
 }
 
+function mod_subtle_trait_type() {
+	const select = 'mod_subtle_trait_type';
+	const fill = 'mod_subtle_trait';
+
+	trait_select(select, fill);
+}
+
 function mod_others() {
 	const check = 'mod_others';
 	const div = 'mod-others';
