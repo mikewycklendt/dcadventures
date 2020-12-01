@@ -34,3 +34,10 @@ function check_base() {
 		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
+
+function check_trait_type() {
+	const select = 'check_trait_type';
+	const fill = 'check_trait';
+
+	trait_select(select, fill);
+}
