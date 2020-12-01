@@ -428,7 +428,7 @@
 
 		<div>
 			<select class="select-sml" id="mod_ranks_trait_type" name="mod_ranks_trait_type" onchange="mod_ranks_trait_type()">
-				{% for t in traits %}
+				{% for t in all_traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
