@@ -42,6 +42,16 @@ function extras_submit() {
 					select.add(option);
 				}
 
+				const selects = document.getElementsByClassName('extra-sml')
+				let select;
+
+				for (select of selects)  {
+					let option = document.createElement("option")
+					option.value = jsonResponse.id;
+					option.text = jsonResponse.name;
+					select.add(option);
+				}
+
 				const nam = document.createElement('div');
 				nam.className = 'extras-table-nam'
 				nam.innerHTML = jsonResponse.name;

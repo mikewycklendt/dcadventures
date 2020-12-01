@@ -128,6 +128,12 @@ select:focus {
 	font-size: 80%;
 }
 
+.extra-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .descriptor-sml {
 	height: 1.6vw; 
 	padding: .1vw;  
