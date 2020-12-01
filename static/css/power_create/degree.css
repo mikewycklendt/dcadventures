@@ -69,6 +69,7 @@
 	grid-template-areas: "deg-title key-title des-title"
 							"deg key des"
 							"extra extra des"
+							"cum cum des"
 							"button button des";
 }
 
@@ -85,6 +86,11 @@
 #degree-extra {
 	display: grid;
 	grid-area: extra;
+}
+
+#degree-cum {
+	display: grid;
+	grid-area: cum;
 }
 
 #degree-des-title {
