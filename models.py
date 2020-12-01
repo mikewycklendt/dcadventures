@@ -717,6 +717,7 @@ class PowerDes(db.Model):
 	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	result = db.Column(db.String())
 	descriptor = db.Column(db.Boolean)
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -730,7 +731,8 @@ class PowerDes(db.Model):
 			'medium_type': self.medium_type,
 			'medium_subtype': self.medium_subtype,
 			'result': self.result,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'damage': self.damage
 		}
 
 class Descriptor(db.Model):
@@ -744,6 +746,7 @@ class Descriptor(db.Model):
 	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	result = db.Column(db.String())
 	description = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -755,7 +758,8 @@ class Descriptor(db.Model):
 			'medium_type': self.medium_type,
 			'medium_subtype': self.medium_subtype,
 			'result': self.result,
-			'description': self.description
+			'description': self.description,
+			'damage': self.damage
 		}
 
 class Origin(db.Model):
