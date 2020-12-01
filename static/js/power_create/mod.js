@@ -152,3 +152,50 @@ function mod_others_touch() {
 
 	check_opacity(check, div);
 }
+
+function mod_points() {
+	const check = 'mod_points';
+	const div = 'mod-points';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
+function mod_ranks() {
+	const check = 'mod_ranks';
+	const div = 'mod-ranks';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry)
+}
+
+function mod_ranks_trait_type() {
+	const select = 'mod_ranks_trait_type';
+	const fill = 'mod_ranks_trait';
+
+	trait_select(select, fill);
+}
+
+function mod_points_type() {
+	const field = document.getElementById('mod_points_type');
+	const val = field.options[field.selectedIndex].value;
+	const rer = 'mod-points-reroll';
+
+	if (val == 'reroll') {
+		show_opacity(rer)
+	} else {
+		hide_opacity(rer)
+	}
+}
+
+function mod_points_reerolls() {
+	const field = document.getElementById("mod_points_reerolls");
+	const val = field.options[field.selectedIndex].value;
+	const div = document.getElementById('mod-points-reroll-result');
+
+	if (val > 1) {
+		div.style.opacity = '100%';
+	} else {
+		div.style.opacity = '0%';
+	}
+}

@@ -140,6 +140,18 @@
 				<input type="checkbox" id="mod_permanent" class="medium-checkbox med-checkbox"> Permanent
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_points" class="medium-checkbox med-checkbox" onclick="mod_points()"> Spend Points
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_ranks" class="medium-checkbox med-checkbox" onclick="mod_ranks()"> Gain Trait
+			</div>
+		</div>
 
 
 	</div>
@@ -407,6 +419,47 @@
 				<input type="checkbox" id="mod_others_touch_continuous" class="medium-checkbox med-checkbox" > Continuous
 			</div>
 		</div>
+	</div>
+
+	<div id="mod-ranks">
+		<div >
+			Gain Ranks in Trait:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_ranks_trait_type" name="mod_ranks_trait_type" onchange="mod_ranks_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_ranks_trait" name="mod_ranks_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_ranks_ranks" name="mod_ranks_ranks">
+				<option value="">Ranks</option>
+				<option value="effect">This Power</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+			
+		<div>
+			<select class="select-sml" id="mod_ranks_mod" name="mod_ranks_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+ 		</div>
 	</div>
 
 	<div id="mod-buttonrow">
