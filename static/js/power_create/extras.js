@@ -42,10 +42,10 @@ function extras_submit() {
 					select.add(option);
 				}
 
-				const selects = document.getElementsByClassName('extra-sml')
-				let select;
+				const selects_sml = document.getElementsByClassName('extra-sml')
+				let select_sml;
 
-				for (select of selects)  {
+				for (select_sml of selects_sml)  {
 					let option = document.createElement("option")
 					option.value = jsonResponse.id;
 					option.text = jsonResponse.name;
