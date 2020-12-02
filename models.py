@@ -780,12 +780,14 @@ class Source(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'description': self.description
+			'description': self.description,
+			'damage': self.damage
 		}
 
 class MediumType(db.Model):
@@ -793,12 +795,14 @@ class MediumType(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'description': self.description
+			'description': self.description,
+			'damage': self.damage
 		}
 
 class MediumSubType(db.Model):
@@ -807,13 +811,15 @@ class MediumSubType(db.Model):
 	name = db.Column(db.String())
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
 	description = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'medium_type': self.medium_type,
-			'description': self.description
+			'description': self.description,
+			'damage': self.damage
 		}
 
 class Medium(db.Model):
@@ -823,6 +829,7 @@ class Medium(db.Model):
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
 	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	description = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -830,7 +837,8 @@ class Medium(db.Model):
 			'name': self.name,
 			'medium_type': self.medium_type,
 			'medium_subtype': self.medium_subtype,
-			'description': self.description
+			'description': self.description,
+			'damage': self.damage
 		}
 
 class Check(db.Model):
