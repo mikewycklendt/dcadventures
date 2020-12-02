@@ -49,7 +49,7 @@ function extras_submit() {
 					let option = document.createElement("option")
 					option.value = jsonResponse.id;
 					option.text = jsonResponse.name;
-					select.add(option);
+					select_sml.add(option);
 				}
 
 				const nam = document.createElement('div');
