@@ -24,8 +24,8 @@ function resist_type() {
 function resist_effect() {
 	const effect_field = document.getElementById("resist_eft");
 	const effect = effect_field.options[effect_field.selectedIndex].value;
-	const con = document.getElementById("resist-condition");
-	const dam = document.getElementById("resist-damage");
+	const con = "resist-condition";
+	const dam = "resist-damage";
 
 	if (effect == 'condition') {
 		hide_maxheight(dam);
