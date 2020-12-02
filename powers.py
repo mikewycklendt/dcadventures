@@ -544,6 +544,7 @@ def get_subsense_select():
 	body['success'] = True
 
 	sense_id = request.get_json()['sense_id']
+	sense_id = int(sense_id)
 
 
 	try:
