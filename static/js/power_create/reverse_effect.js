@@ -17,17 +17,17 @@ function reverse_base() {
 }
 
 function reverse_check_check() {
-	const check = document.getElementById("reverse_check_check");
-	const field = document.getElementById("reverse-check")
-	const entry = document.getElementById("reverse-entry")
+	const check = "reverse_check_check";
+	const field = "reverse-check";
+	const entry = "reverse-entry";
 
 	check_drop(check, field, entry);
 }
 
 function reverse_time_check() {
-	const check = document.getElementById("reverse_time_check");
-	const field = document.getElementById("reverse-time")
-	const entry = document.getElementById("reverse-entry")
+	const check = "reverse_time_check";
+	const field = "reverse-time";
+	const entry = "reverse-entry";
 
 	check_drop(check, field, entry);
 }
