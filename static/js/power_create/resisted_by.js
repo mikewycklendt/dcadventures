@@ -28,19 +28,13 @@ function resist_effect() {
 	const dam = document.getElementById("resist-damage");
 
 	if (effect == 'condition') {
-		con.style.display = "grid";
-		con.style.maxHeight = con.scrollHeight + 'px';
-		dam.style.display = "none";
-		dam.style.maxHeight = "0px";
+		hide_maxheight(dam);
+		show_maxheight(con);
 	} else if (effect == 'damage') {
-		dam.style.display = "grid";
-		dam.style.maxHeight = dam.scrollHeight + 'px';
-		con.style.display = "none";
-		con.style.maxHeight = "0px";
+		hide_maxheight(con);
+		show_maxheight(dam);
 	} else {
-		con.style.display = "none";
-		con.style.maxHeight = "0px";
-		dam.style.display = "none";
-		dam.style.maxHeight = "0px";
+		hide_maxheight(dam);
+		hide_maxheight(con);
 	}
 }
