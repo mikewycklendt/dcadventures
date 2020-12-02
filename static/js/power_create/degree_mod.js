@@ -53,8 +53,8 @@ function deg_mod_circ_trait_type() {
 function deg_mod_condition_type() {
 	const field = document.getElementById('deg_mod_condition_type')
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById('deg-mod-condition-damage')
-	const math = document.getElementById('deg-mod-conditions')
+	const val = 'deg-mod-condition-damage';
+	const math = 'deg-mod-conditions';
 
 	if (value == 'condition') {
 		hide_opacity(val);
