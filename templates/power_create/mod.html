@@ -285,21 +285,14 @@
 
 			<div id="mod-limited-language">
 				<div>
-					<select class="select-sml" id="mod_limited_language_type" name="mod_limited_language_type" onchange="mod_limited_language_type()">
+					<select class="select-sml" id="mod_limited_language_type" name="mod_limited_language_type">
 						{% for n in null_type %}
 							<option value="{{n.type}}">{{n.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
-				<div id="mod-limited-language-mod">
-					<select class="select-sml" id="mod_limited_language_mod" name="mod_limited_language_mod">
-						<option value="">Modifier</option>
-						{% for i in negatives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
+				<div></div>
 
 				<div></div>
 			</div>
