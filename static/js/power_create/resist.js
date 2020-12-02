@@ -25,24 +25,18 @@ function resistance_trait_type() {
 function resistance_check_type() {
 	const field = document.getElementById('resistance_check_type');
 	const value = field.options[field.selectedIndex].value;
-	const des = document.getElementById('resistance-descriptor');
-	const tra = document.getElementById('resistance-trait');
+	const des = 'resistance-descriptor';
+	const tra = 'resistance-trait';
 
 	if (value == 'trait') {
-		tra.style.display = 'grid';
-		setTimeout(function(){tra.style.opacity = '100%'}, 10)
-		des.style.display = 'none';
-		des.style.opacity = '0%';
+		hide_opacity(des);
+		show_opacity(tra);
 	} else if (value == 'descriptor') {
-		des.style.display = 'grid';
-		setTimeout(function(){des.style.opacity = '100%'}, 10)
-		tra.style.display = 'none';
-		tra.style.opacity = '0%';
+		hide_opacity(tra);
+		show_opacity(des);
 	} else {
-		tra.style.display = 'none';
-		tra.style.opacity = '0%';
-		des.style.display = 'none';
-		des.style.opacity = '0%';
+		hide_opacity(tra);
+		hide_opacity(des);
 	}
 }
 
