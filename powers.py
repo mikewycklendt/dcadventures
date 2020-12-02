@@ -155,6 +155,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	special = db.session.query(SubSense).filter_by(sense_id=12)
 
+	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
+
 	power_sense = ['Accurate', 'Acute', 'Analytical', 'Awareness', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision', 'Detect', 'Direction Sense', 'Distance Sense', 'Extended', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Ranged', 'Rapid', 'Time Sense', 'Tracking', 'Ultra-Hearing', 'Ultravision']
 
 	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
@@ -286,7 +288,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors, origins=origins, sources=sources, mediums=mediums, medium=medium, 
 											materials=materials, energies=energies, descriptor_type=descriptor_type, resistance_type=resistance_type, bonus_type=bonus_type, time_effect=time_effect, 
 											limited_type=limited_type, possess=possess, hundred=hundred, game_rule=game_rule, damage=damage, insub=insub, openings=openings, spend=spend, result=result, 
-											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type)
+											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():

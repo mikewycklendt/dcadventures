@@ -50,6 +50,13 @@
 	grid-template-columns: 20% 30% 15% 35%;
 	grid-auto-rows: auto;
 }
+
+#damage-button-row {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 40% 40% 20%;
+}
 #damage-table {
 	display: none;
 	width: 94%;
