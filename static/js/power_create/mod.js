@@ -67,6 +67,7 @@ function mod_limited_type() {
 	const extra = 'mod-limited-extra';
 	const lan = 'mod-limited-language';
 	const deg = 'mod-limited-degree'
+	const sen = 'mod-limited-sense';
 	const field = document.getElementById('mod_limited_type');
 	const val = field.options[field.selectedIndex].value;
 
@@ -76,6 +77,7 @@ function mod_limited_type() {
 		hide_maxheight(desc);
 		hide_maxheight(sub);
 		hide_maxheight(deg);
+		hide_maxheight(sen);
 		show_maxheight(trait, entry);
 	} else if (val == 'other') {
 		hide_maxheight(lan);
@@ -83,6 +85,7 @@ function mod_limited_type() {
 		hide_maxheight(trait);
 		hide_maxheight(sub)
 		hide_maxheight(deg);
+		hide_maxheight(sen);
 		show_maxheight(desc, entry);
 	} else if (val == 'subjects') {
 		hide_maxheight(lan);
@@ -90,6 +93,7 @@ function mod_limited_type() {
 		hide_maxheight(trait);
 		hide_maxheight(desc);
 		hide_maxheight(deg);
+		hide_maxheight(sen);
 		show_maxheight(sub, entry)
 	} else if (val == 'extra') {
 		hide_maxheight(trait);
@@ -97,6 +101,7 @@ function mod_limited_type() {
 		hide_maxheight(lan);
 		hide_maxheight(sub);
 		hide_maxheight(deg);
+		hide_maxheight(sen);
 		show_maxheight(extra);		
 	} else if (val == 'language') {
 		hide_maxheight(trait);
@@ -104,6 +109,7 @@ function mod_limited_type() {
 		hide_maxheight(extra);
 		hide_maxheight(sub);
 		hide_maxheight(deg);
+		hide_maxheight(sen);
 		show_maxheight(lan);
 	} else if (val == 'degree') {
 		hide_maxheight(lan);
@@ -111,7 +117,16 @@ function mod_limited_type() {
 		hide_maxheight(sub);
 		hide_maxheight(desc);
 		hide_maxheight(trait);
+		hide_maxheight(sen);
 		show_maxheight(deg);
+	} else if (val == 'sense') {
+		hide_maxheight(deg);
+		hide_maxheight(lan);
+		hide_maxheight(extra);
+		hide_maxheight(sub);
+		hide_maxheight(desc);
+		hide_maxheight(trait);
+		show_maxheight(sen);
 	} else {
 		hide_maxheight(deg);
 		hide_maxheight(lan);
@@ -119,7 +134,15 @@ function mod_limited_type() {
 		hide_maxheight(sub);
 		hide_maxheight(desc);
 		hide_maxheight(trait);
+		hide_maxheight(sen);
 	}
+}
+
+function mod_limited_sense() {
+	const select = 'mod_limited_sense';
+	const fill = 'mod_limited_subsense';
+
+	subsense_select(select, fill);
 }
 
 function mod_ranged() {

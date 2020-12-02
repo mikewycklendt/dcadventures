@@ -309,6 +309,23 @@
 
 				<div></div>
 			</div>
+
+			<div id="mod-limited-sense">
+				<div>
+					<select class="select-sml" id="mod_limited_sense" name="mod_limited_sense" onchange="mod_limited_sense()">
+						<option value="">Sense</option>
+						{% for s in senses %}
+							<option value={{s.id}}>{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="mod_limited_subsense" name="mod_limited_subsense">
+						<option value="">Subsense</option>
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
 
