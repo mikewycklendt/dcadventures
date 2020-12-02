@@ -315,11 +315,110 @@ function shrink_entry(entry_input, div_input) {
 	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 }
 
-function grow_entry(entry, div) {
+function grow_entry(entry_input, div_input) {
+	const entry = document.getElementById(entry_input);
+	const div = document.getElementById(div_input);
+
 	setTimeout(function(){
 		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
 	}, 300)
 }
+
+function base(field_input, entry_input) {
+	const field = document.getElementById(field_input)
+	const value = field.options[field.selectedIndex].value;
+	const entry = document.getElementById(entry_input)
+
+	if (value != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_two(field_input, field2_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	
+	const field2 = document.getElementById(field2_input);
+	const target = field2.options[field2.selectedIndex].value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && target != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_text(field_input, text_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	const type = document.getElementById(text_input).value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && type != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function check_title(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "220%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function check_title_small(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "165%";
+		setTimeout(function(){title.style.fontSize = "160%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+	
 
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;

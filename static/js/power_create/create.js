@@ -1,38 +1,17 @@
 function create_check() {
-	const check = document.getElementById("create_check");
-	const title = document.getElementById("create-title");
-	const base = document.getElementById('create-base')
-	const entry = document.getElementById("create-entry")
+	const check = "create_check";
+	const title = "create-title";
+	const base = 'create-base';
+	const entry = "create-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function create_base() {
-	const field = document.getElementById('create_extra')
-	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("create-entry")
+	const field = 'create_extra';
+	const entry = "create-entry";
 
-	if (value != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base(field, entry);
 }
 
 function create_moveable() {
@@ -175,102 +154,30 @@ function create_trap_type() {
 	console.log(val)
 
 	if (val == 'dc') {
-		dc.style.display = 'grid';
-		dc.style.maxHeight = dc.scrollHeight + 'px';
-		tr.style.display = 'none';
-		tr.style.maxHeight = '0px';
+		hide_maxheight(tr);
+		show_maxheight(dc);
 	} else if (val == 'trait') {
-		tr.style.display = 'grid';
-		tr.style.maxHeight = tr.scrollHeight + 'px';
-		dc.style.display = 'none';
-		dc.style.maxHeight = '0px';
+		hide_maxheight(dc);
+		show_maxheight(tr);
 	} else {
-		dc.style.display = 'none';
-		dc.style.maxHeight = '0px';
-		tr.style.display = 'none';
-		tr.style.maxHeight = '0px';
+		hide_maxheight(dc);
+		hide_maxheight(tr);
 	}
 
 }
 
 function create_trap_trait_type() {
-	const field = document.getElementById('create_trap_trait_type')
-	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById('create_trap_trait');
+	const field = 'create_trap_trait_type';
+	const update = 'create_trap_trait';
 
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
-
-	response = fetch('/power/trait/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'trait': trait
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})
+	trait_select(field, update);
 }
 
 function create_trap_resist_check() {
-	const field = document.getElementById('create_trap_resist_check')
-	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById('create_trap_resist_trait');
+	const field = 'create_trap_resist_check';
+	const update = 'create_trap_resist_trait';
 
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
-
-	response = fetch('/power/trait/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'trait': trait
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	trait_select(field, update);
 }
 
 function create_ranged_type() {
@@ -298,43 +205,10 @@ function create_ranged_type() {
 }
 
 function create_ranged_trait_type() {
-	const field = document.getElementById('create_ranged_trait_type')
-	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById('create_ranged_trait');
+	const field = 'create_ranged_trait_type';
+	const update = 'create_ranged_trait';
 
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
-
-	response = fetch('/power/trait/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'trait': trait
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	trait_select(field, update);
 }
 
 function create_ranged_damage_type() {
@@ -350,43 +224,10 @@ function create_ranged_damage_type() {
 }
 
 function create_weapon_trait_type() {
-	const field = document.getElementById('create_weapon_trait_type')
-	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById('create_weapon_trait');
+	const field = 'create_weapon_trait_type';
+	const update = 'create_weapon_trait';
 
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 100)
-
-	response = fetch('/power/trait/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'trait': trait
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	trait_select(field, update);
 }
 
 function create_weapon_damage_type() {

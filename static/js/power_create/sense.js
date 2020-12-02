@@ -1,41 +1,18 @@
 function sense_check() {
-	const check = document.getElementById("sense_check");
-	const title = document.getElementById("sense-title");
-	const base = document.getElementById('sense-base');
-	const entry = document.getElementById("sense-entry");
+	const check = "sense_check";
+	const title = "sense-title";
+	const base = 'sense-base';
+	const entry = "sense-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function sense_base() {
-	const field = document.getElementById('sense_extra')
-	const value = field.options[field.selectedIndex].value;
-	
-	const field2 = document.getElementById('sense_target')
-	const target = field2.options[field2.selectedIndex].value;
-	const entry = document.getElementById("sense-entry")
+	const field = 'sense_extra';
+	const field2 = 'sense_target';
+	const entry = "sense-entry";
 
-	if (value != '' && target != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_two(field, field2, entry);
 }
 
 function sense_sense() {

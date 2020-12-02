@@ -1,40 +1,19 @@
 const move_entry = 'move-entry';
 
 function move_check() {
-	const check = document.getElementById("move_check");
-	const title = document.getElementById("move-title");
-	const base = document.getElementById('move-base');
-	const entry = document.getElementById("move-entry");
+	const check = "move_check";
+	const title = "move-title";
+	const base = 'move-base';
+	const entry = "move-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function move_base() {
-	const field = document.getElementById('move_extra');
-	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("move-entry");
+	const field = 'move_extra';
+	const entry = "move-entry";
 
-	if (value != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base(field, entry);
 }
 
 function move_ground_perm() {

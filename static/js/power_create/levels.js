@@ -1,39 +1,18 @@
 function levels_check() {
-	const levels_check = document.getElementById("levels_check");
-	const levels_base_form = document.getElementById("levels-base-form");
-	const title = document.getElementById("levels-title");
-	const entry = document.getElementById("levels-entry");
+	const levels_check = "levels_check";
+	const levels_base_form = "levels-base-form";
+	const title = "levels-title";
+	const entry = "levels-entry";
 
-	if (levels_check.checked == true) {
-		levels_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		levels_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(levels_check, title, levels_base_form, entry);
 }
 
 function levels_base() {
-	const type = document.getElementById("level_type").value;
-	const extra_field = document.getElementById('levels_extra');
-	const extra = extra_field.options[extra_field.selectedIndex].value;
-	const entry = document.getElementById("levels-entry");
+	const type = "level_type";
+	const extra_field = 'levels_extra';
+	const entry = "levels-entry";
 
-	if (type != '' && extra != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_text(extra_field, type, entry);
 }
 
 

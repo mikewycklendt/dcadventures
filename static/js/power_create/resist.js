@@ -1,41 +1,18 @@
 function resistance_check() {
-	const deg_mod_check = document.getElementById("resistance_check");
-	const deg_mod_base_form = document.getElementById("resistance-base");
-	const title = document.getElementById("resistance-title");
-	const entry = document.getElementById("resistance-entry");
+	const deg_mod_check = "resistance_check";
+	const deg_mod_base_form = "resistance-base";
+	const title = "resistance-title";
+	const entry = "resistance-entry";
 
-	if (deg_mod_check.checked == true) {
-		deg_mod_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "164%";
-		setTimeout(function(){title.style.fontSize = "160%"}, 75);
-	} else {
-		deg_mod_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(deg_mod_check, title, deg_mod_base_form, entry);
 }
 
 function resistance_base() {
-	const target_field = document.getElementById("resistance_target");
-	const extra_field = document.getElementById('resistance_extra')
-	const extra = extra_field.options[extra_field.selectedIndex].value;
-	const target =  target_field.options[target_field.selectedIndex].value;
+	const target_field = "resistance_target";
+	const extra_field = 'resistance_extra';
+	const entry = "resistance-entry";
 
-	const entry = document.getElementById("resistance-entry");
-
-	if (target != '' && extra != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_two(target_field, extra_field, entry);
 }
 
 function resistance_trait_type() {

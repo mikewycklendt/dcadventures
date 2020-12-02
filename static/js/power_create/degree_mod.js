@@ -1,40 +1,18 @@
 function deg_mod_check() {
-	const deg_mod_check = document.getElementById("deg_mod_check");
-	const deg_mod_base_form = document.getElementById("deg-mod-base-form");
-	const title = document.getElementById("deg-mod-title");
-	const entry = document.getElementById("deg-mod-entry");
+	const deg_mod_check = "deg_mod_check";
+	const deg_mod_base_form = "deg-mod-base-form";
+	const title = "deg-mod-title";
+	const entry = "deg-mod-entry";
 
-	if (deg_mod_check.checked == true) {
-		deg_mod_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "164%";
-		setTimeout(function(){title.style.fontSize = "160%"}, 75);
-	} else {
-		deg_mod_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title_small(deg_mod_check, title, deg_mod_base_form, entry);
 }
 
 function deg_mod_base() {
-	const target_field = document.getElementById("deg_mod_target");
-	const extra_field = document.getElementById('deg_mod_extra')
-	const extra = extra_field.options[extra_field.selectedIndex].value;
-	const target =  target_field.options[target_field.selectedIndex].value;
-	const entry = document.getElementById("deg-mod-entry");
+	const target_field = "deg_mod_target";
+	const extra_field = 'deg_mod_extra';
+	const entry = "deg-mod-entry";
 
-	if (target != '' && extra != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_two(target_field, extra_field, entry);
 }
 
 function deg_mod_type() {

@@ -1,41 +1,18 @@
 function dc_check() {
-	const check = document.getElementById("dc_check");
-	const title = document.getElementById("dc-title");
-	const base = document.getElementById('dc-base');
-	const entry = document.getElementById("dc-entry");
+	const check = "dc_check";
+	const title = "dc-title";
+	const base = 'dc-base';
+	const entry = "dc-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function dc_base() {
-	const field = document.getElementById('dc_extra')
-	const value = field.options[field.selectedIndex].value;
-	
-	const field2 = document.getElementById('dc_target')
-	const target = field2.options[field2.selectedIndex].value;
-	const entry = document.getElementById("dc-entry")
+	const field = 'dc_extra';
+	const field2 = 'dc_target';
+	const entry = "dc-entry";
 
-	if (value != '' && target != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_two(field, field2, entry);
 }
 
 function dc_math_trait_type() {
@@ -48,9 +25,9 @@ function dc_math_trait_type() {
 function dc_dc() {
 	const field = document.getElementById('dc_dc');
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById('dc-value');
-	const math = document.getElementById('dc-math');
-	const entry = document.getElementById('dc-entry');
+	const val = 'dc-value';
+	const math = 'dc-math';
+	const entry = 'dc-entry';
 
 	if (value == 'value') {
 		show_maxheight(val);

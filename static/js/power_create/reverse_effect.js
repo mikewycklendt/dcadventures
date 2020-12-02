@@ -1,41 +1,19 @@
 function reverse_check() {
-	const check = document.getElementById("reverse_check");
-	const base = document.getElementById("reverse-base");
-	const title = document.getElementById("reverse-title");
-	const entry = document.getElementById("reverse-entry")
+	const check = "reverse_check";
+	const base = "reverse-base";
+	const title = "reverse-title";
+	const entry = "reverse-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = "100%"
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = "0%"
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function reverse_base() {
-	const target_field = document.getElementById("reverse_target");
-	const target = target_field.options[target_field.selectedIndex].value;
-	const extra_field = document.getElementById('reverse_extra');
-	const extra = extra_field.options[extra_field.selectedIndex].value;
-	const entry = document.getElementById("reverse-entry")
+	const target_field = "reverse_target";
+	const extra_field = 'reverse_extra';
+	const entry = "reverse-entry";
 
 
-	if (target != '' && extra != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base_two(target_field, extra_field, entry);
 }
 
 function reverse_check_check() {

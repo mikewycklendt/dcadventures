@@ -1,38 +1,17 @@
 function defense_check() {
-	const check = document.getElementById("defense_check");
-	const title = document.getElementById("defense-title");
-	const base = document.getElementById('defense-base');
-	const entry = document.getElementById("defense-entry");
+	const check = "defense_check";
+	const title = "defense-title";
+	const base = 'defense-base';
+	const entry = "defense-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function defense_base() {
-	const field = document.getElementById('defense_extra');
-	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("defense-entry");
+	const field = 'defense_extra';
+	const entry = "defense-entry";
 
-	if (value != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base(field, entry);
 }
 
 function defense_reflect() {

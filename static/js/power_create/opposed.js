@@ -1,38 +1,17 @@
 function opposed_check() {
-	const check = document.getElementById("opposed_check");
-	const title = document.getElementById("opposed-title");
-	const base = document.getElementById('opposed-base');
-	const entry = document.getElementById("opposed-entry");
+	const check = "opposed_check";
+	const title = "opposed-title";
+	const base = 'opposed-base';
+	const entry = "opposed-entry";
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	check_title(check, title, base, entry);
 }
 
 function opposed_base() {
-	const field = document.getElementById('opposed_extra');
-	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById("opposed-entry");
+	const field = 'opposed_extra';
+	const entry = "opposed-entry";
 
-	if (value != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
+	base(field, entry);
 }
 
 function opposed_trait_type() {
