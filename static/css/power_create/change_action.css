@@ -67,7 +67,6 @@
 
 #action-row2 {
 	display: grid;
-	font-size: 120%;
 	grid-template-columns: 20% 65% 15%;
 	gap: .1vw;
 }
