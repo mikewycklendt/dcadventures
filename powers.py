@@ -546,23 +546,25 @@ def get_subsense_select():
 	sense_id_str = request.get_json()['sense_id']
 	sense_id = int(sense_id_str)
 
-
-	sense = db.session.query(Sense).filter_by(id=sense_id).one()
-	subsenses = db.session.query(SubSense).filter_by(sense_id=sense_id).order_by(SubSense.name).all()
+	try:
+		sense = db.session.query(Sense).filter_by(id=sense_id).one()
+		subsenses = db.session.query(SubSense).filter_by(sense_id=sense_id).order_by(SubSense.name).all()
 		
-	any_sense = 'Any ' + sense.name
-	all_sense = 'All ' + sense.name
+		any_sense = 'Any ' + sense.name
+		all_sense = 'All ' + sense.name
 
-	options = []
+		options = []
 
-	options.append({'id': '', 'name': any_sense})
-	options.append({'id': 0, 'name': all_sense})
+		options.append({'id': '', 'name': any_sense})
+		options.append({'id': 0, 'name': all_sense})
 
-	for subsense in subsenses:
-		options.append({'id': subsense.id, 'name': subsense.name})
+		for subsense in subsenses:
+			options.append({'id': subsense.id, 'name': subsense.name})
 
-	body['options'] = options
-
+		body['options'] = options
+	except:
+		body['success'] = False
+		body['options'] = 'no results'
 
 	print(body)
 	return jsonify(body)
