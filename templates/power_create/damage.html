@@ -59,6 +59,33 @@
 
 	</div>
 
+	<div id="damage-button-row">
+		<div>
+			Damage Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="damage_damage_type" name="damage_damage_type">
+				<option value="">Damage Type</option>
+				{% for d in damages %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor">
+				<option value="">Use above form to put descriptors here</option>
+			</select> 
+		</div>
+
+		<div>
+			<div class="btn-entry" id="damage_submit" name="damage_submit" onclick="damage_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
 
 
 </div>
