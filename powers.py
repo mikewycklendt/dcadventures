@@ -548,7 +548,7 @@ def get_subsense_select():
 
 
 	sense = db.session.query(Sense).filter_by(id=sense_id)
-	subsenses = db.session.query(SubSense).filter_by(sense_id=sense_id).order_by(name).all()
+	subsenses = db.session.query(SubSense).filter_by(sense_id=sense_id).order_by(SubSense.name).all()
 		
 	any_sense = 'Any ' + sense.name
 	all_sense = 'All ' + sense.name
