@@ -4,8 +4,8 @@ def mediumtype_create():
 	medium = ['Material', 'Energy']
 
 	for i in medium:
-
-		entry = MediumType(name=i)
+		
+		entry = MediumType(name=i, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -24,7 +24,7 @@ def mediumsubtypetype_create():
 
 	for i in materials:
 
-		entry = MediumSubType(name=i, medium_type=1)
+		entry = MediumSubType(name=i, medium_type=1, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -32,7 +32,7 @@ def mediumsubtypetype_create():
 
 	for i in energies:
 
-		entry = MediumSubType(name=i, medium_type=2)
+		entry = MediumSubType(name=i, medium_type=2, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -57,25 +57,25 @@ def medium_create():
 
 	for i in medium_gas:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=1)
+		entry = Medium(name=i, medium_type=1, medium_subtype=1, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_liquid:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=2)
+		entry = Medium(name=i, medium_type=1, medium_subtype=2, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_earth:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=3)
+		entry = Medium(name=i, medium_type=1, medium_subtype=3, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_biological:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=4)
+		entry = Medium(name=i, medium_type=1, medium_subtype=4, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -83,7 +83,7 @@ def medium_create():
 
 	for i in medium_electromagnetic:
 
-		entry = Medium(name=i, medium_type=2, medium_subtype=5)
+		entry = Medium(name=i, medium_type=2, medium_subtype=5, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 

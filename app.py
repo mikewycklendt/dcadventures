@@ -54,9 +54,140 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/origins/create')
+def origins_create():
 
+	origins = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training']
 
+	for i in origins:
 
+		entry = Origin(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Origin.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('origins added')
+
+@app.route('/sources/create')
+def sources_create():
+
+	sources = ['Biological', 'Cosmic', 'Divine', 'Extradimensional', 'Magical', 'Moral', 'Psionic', 'Technological', 'Other']
+
+	for i in sources:
+
+		entry = Source(name=i, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Source.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('sources added')
+
+@app.route('/mediumtype/create')
+def mediumtype_create():
+
+	medium = ['Material', 'Energy']
+
+	for i in medium:
+		
+		entry = MediumType(name=i, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = MediumType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('medium added')
+
+@app.route('/mediumsubtype/create')
+def mediumsubtypetype_create():
+
+	materials = ['Gas', 'Liquid', 'Earth', 'Biological']
+
+	for i in materials:
+
+		entry = MediumSubType(name=i, medium_type=1, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	energies = ['Electromagnetic', 'Gravity', 'Kinetic', 'Divine', 'Magical', 'Psionic', 'Cosmic']
+
+	for i in energies:
+
+		entry = MediumSubType(name=i, medium_type=2, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = MediumSubType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('medium added')
+
+@app.route('/medium/create')
+def medium_create():
+
+	medium_gas = ['Air']
+	
+	medium_liquid = ['Water']
+	
+	medium_earth = ['Soil', 'Rock', 'Sand']
+	
+	medium_biological = ['Acid', 'Blood']
+
+	for i in medium_gas:
+
+		entry = Medium(name=i, medium_type=1, medium_subtype=1, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	for i in medium_liquid:
+
+		entry = Medium(name=i, medium_type=1, medium_subtype=2, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	for i in medium_earth:
+
+		entry = Medium(name=i, medium_type=1, medium_subtype=3, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	for i in medium_biological:
+
+		entry = Medium(name=i, medium_type=1, medium_subtype=4, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	medium_electromagnetic = ['Electricity', 'Light', 'Radio', 'Radiation']
+
+	for i in medium_electromagnetic:
+
+		entry = Medium(name=i, medium_type=2, medium_subtype=5, damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Medium.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('medium added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

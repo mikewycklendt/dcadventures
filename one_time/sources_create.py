@@ -5,7 +5,7 @@ def sources_create():
 
 	for i in sources:
 
-		entry = Source(name=i)
+		entry = Source(name=i, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
