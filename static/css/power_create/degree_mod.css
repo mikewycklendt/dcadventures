@@ -119,31 +119,28 @@
 
 #deg-mod-circ {
 	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s ease-out;
 	gap: 3px;
 	grid-template-columns: 20% 20% 20% 30% ;
 }
 
 #deg-mod-measure {
-	display: grid;
+	display: none;
 	width: auto;
 	height: auto;
 	grid-template-columns: 25% 75%;
 	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s ease-out
 }
 
 #deg-mod-condition {
 	display: none;
 	width: 98%;
 	grid-template-columns: 25% 75%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s ease-out
 }
 
 #deg-mod-conditions {
@@ -170,7 +167,7 @@
 	height: auto;
 	grid-template-columns: 15% 30% 30% 25%;
 	opacity: 0%;
-	transition: opacity .2s ease-out;
+	transition: opacity .3s ease-out;
 }
 
 #deg-mod-measure-value {
@@ -179,7 +176,7 @@
 	height: auto;
 	grid-template-columns: 30% 70%;
 	opacity: 0%;
-	transition: opacity .2s ease-out;
+	transition: opacity .3s ease-out;
 }
 
 #deg-mod-damage-math {
@@ -188,7 +185,7 @@
 	height: auto;
 	grid-template-columns: 20% 20% 20% 20% 20%;
 	opacity: 0%;
-	transition: opacity .2s ease-out;
+	transition: opacity .3s ease-out;
 }
 
 #deg-mod-damage-value {

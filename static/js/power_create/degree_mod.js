@@ -18,49 +18,27 @@ function deg_mod_base() {
 function deg_mod_type() {
 	let deg_mod_type_field = document.getElementById('deg_mod_type');
 	let deg_mod_type_value = deg_mod_type_field.options[deg_mod_type_field.selectedIndex].value;
-
-	console.log(deg_mod_type_value)
-	
-	const cir = document.getElementById('deg-mod-circ')
-	const mea = document.getElementById('deg-mod-measure');
-	const con = document.getElementById('deg-mod-condition');
-
-	cir.style.display = 'grid';
-	cir.style.maxHeight = '0px';
-	mea.style.display = 'grid';
-	mea.style.maxHeight = '0px';
-	con.style.display = 'grid';
-	con.style.maxHeight = '0px';
+	const cir = 'deg-mod-circ';
+	const mea = 'deg-mod-measure';
+	const con = 'deg-mod-condition';
 	
 
 	if (deg_mod_type_value == 'circ') {
-		cir.style.display = 'grid';
-		cir.style.maxHeight = cir.scrollHeight + 'px'
-		mea.style.display = 'grid';;
-		mea.style.maxHeight = '0px';
-		con.style.display = 'grid';
-		con.style.maxHeight = '0px';
+		hide_opacity(mea);
+		hide_opacity(con);
+		show_opacity(cir);
 	} else if (deg_mod_type_value == 'measure') {
-		mea.style.display = 'grid';
-		mea.style.maxHeight = mea.scrollHeight + 'px'
-		cir.style.display = 'grid';
-		cir.style.maxHeight = '0px';
-		con.style.display = 'grid';
-		con.style.maxHeight = '0px';
+		hide_opacity(cir);
+		hide_opacity(con);
+		show_opacity(mea);
 	} else if (deg_mod_type_value == 'condition') {
-		con.style.display = 'grid';
-		con.style.maxHeight = con.scrollHeight + 'px'
-		cir.style.display = 'grid';
-		cir.style.maxHeight = '0px';
-		mea.style.display = 'grid';
-		mea.style.maxHeight = '0px';
+		hide_opacity(cir);
+		hide_opacity(mea);
+		show_opacity(con);
 	} else {
-		cir.style.display = 'grid';
-		cir.style.maxHeight = '0px';
-		mea.style.display = 'grid';
-		mea.style.maxHeight = '0px';
-		con.style.display = 'grid';
-		con.style.maxHeight = '0px';
+		hide_opacity(cir);
+		hide_opacity(mea);
+		hide_opacity(con);
 	}
 
 }
@@ -79,74 +57,52 @@ function deg_mod_condition_type() {
 	const math = document.getElementById('deg-mod-conditions')
 
 	if (value == 'condition') {
-		val.style.opacity = '0%';
-		val.style.display = 'none';
-		math.style.display = 'grid';
-		setTimeout(function(){math.style.opacity = '100%'}, 10);
+		hide_opacity(val);
+		show_opacity(math);
 	} else if (value == 'damage') {
-		math.style.opacity = '0%';
-		math.style.display = 'none';
-		val.style.display = 'grid';
-		setTimeout(function(){val.style.opacity = '100%'}, 10);
+		hide_opacity(math);
+		show_opacity(val);
 	} else {
-		val.style.opacity = '0%';
-		setTimeout(function(){val.style.display = 'none'}, 300);
-		math.style.opacity = '0%';
-		setTimeout(function(){math.style.display = 'none'}, 300);
+		hide_opacity(val);
+		hide_opacity(math);
 	}
 }
 
 function deg_mod_damage_type() {
-	let damage = document.getElementById('deg-mod-damage');
-	
 	let damage_type_field = document.getElementById('deg_mod_damage_type');
 	let damage_type_value = damage_type_field.options[damage_type_field.selectedIndex].value;
 	
-	let damage_math = document.getElementById('deg-mod-damage-math');
-	let damage_value = document.getElementById('deg-mod-damage-value');
+	let damage_math = 'deg-mod-damage-math';
+	let damage_value = 'deg-mod-damage-value';
 
 	if(damage_type_value == 'math') {
-		damage_math.style.display = "grid";
-		damage_math.style.opacity = "100%";
-		damage_value.style.display = "none";
-		damage_value.style.opacity = "0%";
+		hide_opacity(damage_value);
+		show_opacity(damage_math);
 	} else if (damage_type_value == 'value') {
-		damage_value.style.display = "grid";
-		damage_value.style.opacity = "100%";
-		damage_math.style.display = "none";
-		damage_math.style.opacity = "0%";
+		hide_opacity(damage_math);
+		show_opacity(damage_value);
 	} else {
-		damage_value.style.display = "none";
-		damage_value.style.opacity = "0%";
-		damage_math.style.display = "none";
-		damage_math.style.opacity = "0%";
+		hide_opacity(damage_math);
+		hide_opacity(damage_value);
 	}
 }
 
 function deg_mod_measure_type() {
-	let measure = document.getElementById('deg-mod-measure');
-
 	let measure_type_field = document.getElementById('deg_mod_measure_type');
 	let measure_type_value = measure_type_field.options[measure_type_field.selectedIndex].value;
 
-	let measure_math = document.getElementById('deg-mod-measure-math');
-	let measure_value = document.getElementById('deg-mod-measure-value');
+	let measure_math = 'deg-mod-measure-math';
+	let measure_value = 'deg-mod-measure-value';
 	
 	if(measure_type_value == 'math') {
-		measure_math.style.display = "grid";
-		measure_math.style.opacity = "100%";
-		measure_value.style.display = "none";
-		measure_value.style.opacity = "0%";
+		hide_opacity(measure_value);
+		show_opacity(measure_math);
 	} else if (measure_type_value == 'value') {
-		measure_value.style.display = "grid";
-		measure_value.style.opacity = "100%";
-		measure_math.style.display = "none";
-		measure_math.style.opacity = "0%";
+		hide_opacity(measure_math);
+		show_opacity(measure_value);
 	} else {
-		measure_value.style.display = "none";
-		measure_value.style.opacity = "0%";
-		measure_math.style.display = "none";
-		measure_math.style.opacity = "0%";
+		hide_opacity(measure_value);
+		hide_opacity(measure_math);
 	}
 }
 
