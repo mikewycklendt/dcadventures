@@ -66,6 +66,7 @@ function mod_limited_type() {
 	const sub = 'mod-limited-subjects';
 	const extra = 'mod-limited-extra';
 	const lan = 'mod-limited-language';
+	const deg = 'mod-limited-degree'
 	const field = document.getElementById('mod_limited_type');
 	const val = field.options[field.selectedIndex].value;
 
@@ -74,49 +75,50 @@ function mod_limited_type() {
 		hide_maxheight(extra);
 		hide_maxheight(desc);
 		hide_maxheight(sub);
+		hide_maxheight(deg);
 		show_maxheight(trait, entry);
 	} else if (val == 'other') {
 		hide_maxheight(lan);
 		hide_maxheight(extra);
 		hide_maxheight(trait);
 		hide_maxheight(sub)
+		hide_maxheight(deg);
 		show_maxheight(desc, entry);
 	} else if (val == 'subjects') {
 		hide_maxheight(lan);
 		hide_maxheight(extra);
 		hide_maxheight(trait);
 		hide_maxheight(desc);
+		hide_maxheight(deg);
 		show_maxheight(sub, entry)
 	} else if (val == 'extra') {
 		hide_maxheight(trait);
 		hide_maxheight(desc);
 		hide_maxheight(lan);
 		hide_maxheight(sub);
+		hide_maxheight(deg);
 		show_maxheight(extra);		
 	} else if (val == 'language') {
 		hide_maxheight(trait);
 		hide_maxheight(desc);
 		hide_maxheight(extra);
 		hide_maxheight(sub);
+		hide_maxheight(deg);
 		show_maxheight(lan);
-	} else {
+	} else if (val == 'degree') {
 		hide_maxheight(lan);
 		hide_maxheight(extra);
 		hide_maxheight(sub);
 		hide_maxheight(desc);
 		hide_maxheight(trait);
-	}
-}
-
-function mod_limited_language_mod() {
-	const field = document.getElementById('mod_limited_language_mod');
-	const val = field.options[field.selectedIndex].value;
-	const div = document.getElementById('mod-limited-language-mod');
-
-	if (val == 'mod') {
-		div.style.opacity = '100%';
+		show_maxheight(deg);
 	} else {
-		div.style.opacity = '0%';
+		hide_maxheight(deg);
+		hide_maxheight(lan);
+		hide_maxheight(extra);
+		hide_maxheight(sub);
+		hide_maxheight(desc);
+		hide_maxheight(trait);
 	}
 }
 
