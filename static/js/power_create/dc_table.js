@@ -53,29 +53,23 @@ function dc_dc() {
 	const entry = document.getElementById('dc-entry');
 
 	if (value == 'value') {
-		setTimeout(function(){val.style.display = 'grid'}, 300)
-		setTimeout(function(){val.style.maxHeight = val.scrollHeight + 'px'}, 300)
-		math.style.maxHeight = '0px'
-		setTimeout(function(){math.style.display = 'none'}, 300)
+		show_maxheight(val);
+		hide_maxheight(math)
 	} else if (value == 'math') {
-		setTimeout(function(){math.style.display = 'grid'}, 300)
-		setTimeout(function(){math.style.maxHeight = math.scrollHeight + 'px'}, 300)
-		val.style.maxHeight = '0px'
-		setTimeout(function(){val.style.display = 'none'}, 300)
+		show_maxheight(math);
+		hide_maxheight(val)
 	} else {
-		val.style.maxHeight = '0px'
-		setTimeout(function(){val.style.display = 'none'}, 300)
-		math.style.maxHeight = '0px'
-		setTimeout(function(){math.style.display = 'none'}, 300)	
+		hide_maxheight(val);
+		hide_maxheight(math)	
 	}
 
 	if ((value != 'value') && (value != 'math')) {
-		setTimeout(function(){entry.style.maxHeight = entry.scrollHeight - val.scrollHeight + 'px'}, 300)
+		shrink_entry(entry, val)
 	} else {
 		if (value == 'math') {
-			setTimeout(function(){entry.style.maxHeight = entry.scrollHeight + math.scrollHeight + 'px'}, 300)
+			grow_entry(entry, math);
 		} else if (value == 'value') {
-			setTimeout(function(){entry.style.maxHeight = entry.scrollHeight + val.scrollHeight + 'px'}, 300)
+			grow_entry(entry, val);
 		}
 	}
 }

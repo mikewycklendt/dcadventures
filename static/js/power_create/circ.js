@@ -41,15 +41,30 @@ function circ_base() {
 function circ_type() {
 	const field = document.getElementById('circ_type');
 	const value = field.options[field.selectedIndex].value;
+	const row = document.getElementById('circ-row2');
 	const ran = document.getElementById('circ-range');
-	const entry = document.getElementById('circ-entry')
+	const chk = document.getElementById('circ-check'); 
+	const entry = document.getElementById('circ-entry');
+
 
 	if (value == 'range') {
-		ran.style.display = 'grid';
-		ran.style.maxHeight = ran.scrollHeight + 'px';
-		entry.style.maxHeight = ran.scrollHeight + entry.scrollHeight + 'px';
+		show_maxheight(ran);
+		hide_maxheight(chk);
+	} if (value == 'check') {
+		show_maxheight(chk);
+		hide_maxheight(ran);
 	} else {
-		ran.style.maxHeight = '0px';
-		entry.style.maxHeight = entry.scrollHeight - ran.scrollHeight;
+		hide_maxheight(chk);
+		hide_maxheight(ran);
+	}
+
+	if (value != 'range' && value != 'check') {
+		shrink_entry(entry, chk);
+	} else {
+		if (value == 'range') {
+			grow_entry(entry, ran);
+		} else if (value == 'check') {
+			grow_entry(entry, chk);
+		}
 	}
 }

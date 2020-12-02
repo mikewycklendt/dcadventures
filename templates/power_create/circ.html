@@ -93,6 +93,30 @@
 		</div>
 	</div>
 
+	<div id="circ-check">
+		<div>
+			<select class="select-sml" id="circ_check_who" name="circ_check_who">
+				{% for w in who_check %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div>
+			<select class="select-sml" id="circ_check_trait_type" name="circ_check_trait_type" onchange="circ_check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_check_trait" name="circ_check_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+	</div>
+
 </div>
 
 <div id="circ-table">
