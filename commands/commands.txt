@@ -1,1 +1,6 @@
 git reset --hard HEAD~1
+
+TRUNCATE table_name;
+DELETE FROM table_name;
+
+sorted(lis, key = lambda i: i['age'])

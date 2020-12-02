@@ -304,13 +304,14 @@ function descriptor_field() {
 	const des_des = document.getElementById('descriptor-descriptor-result');
 	const row2 = document.getElementById('descriptor-row2');
 	const row3 = document.getElementById('descriptor-row3');
+	const damage = document.getElementById('descriptor-damage-row');
 	
 	console.log(descriptor)
 
 	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
-		new_entry_show(row2, row3)
+		new_entry_show(row2, row3, damage)
 	} else if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
-		new_entry_hide(row2, row3)
+		new_entry_hide(row2, row3, damage)
 	}
 
 	descriptor_new(descriptor, des_text)
