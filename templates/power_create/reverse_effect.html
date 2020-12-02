@@ -94,7 +94,7 @@
 
 	<div id="reverse-check">
 		<div>
-			<select class="select-sml" id="reverse_type" name="reverse_type" onchange="reverse_type()">
+			<select class="select-sml" id="reverse_trait_type" name="reverse_trait_type" onchange="reverse_trait_type()">
 				<option value="">Check Type</option>
 				{% for type in check_types %}
 					<option value="{{type.type}}">{{type.name}}</option>
@@ -103,43 +103,9 @@
 		</div>
 
 		<div>
-
-			<div id="reverse-ability">
-				<select class="select-sml" id="resist_ability" name="resist_ability">
-					<option value="">Ability</option>
-					{% for ability in abilities %}
-						<option value={{ability.id}}>{{ability.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-	
-			<div id="reverse-skill">
-				<select class="select-sml" id="resist_skill" name="resist_skill">
-					<option value="">Skill</option>
-					{% for skill in skills %}
-						<option value={{skill.id}}>{{skill.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-	
-			<div id="reverse-defense">
-				<select class="select-sml" id="resist_defense" name="resist_defense">
-					<option value="">Defense</option>
-					{% for defense in defenses %}
-						<option value={{defense.id}}>{{defense.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-	
-			<div id="reverse-power">
-				<select class="select-sml" id="reverse_power" name="reverse_power">
-					<option value="">Power</option>
-					{% for power in powers %}
-						<option value="{{power}}">{{power}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
+			<select class="select-sml" id="reverse_trait" name="reverse_trait">
+				<option value="">Trait</option>
+			</select>
 		</div>
 
 		<div>

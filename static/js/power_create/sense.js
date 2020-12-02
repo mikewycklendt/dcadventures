@@ -39,24 +39,18 @@ function sense_type() {
 	const field_field = document.getElementById("sense_type");
 	const field = field_field.options[field_field.selectedIndex].value;
 
-	const hei = document.getElementById("sense-height");
-	const res = document.getElementById("sense-resist");
+	const hei = "sense-height";
+	const res = "sense-resist";
 
 	if (field == 'height') {
-		hei.style.display = "grid";
-		hei.style.maxHeight = hei.scrollHeight + "px";
-		res.style.display = "none";
-		res.style.maxHeight = "0px";
+		hide_maxheight(res);
+		show_maxheight(hei);
 	} else if (field == 'resist') {
-		res.style.display = "grid";
-		res.style.maxHeight = res.scrollHeight + "px";
-		hei.style.display = "none";
-		hei.style.maxHeight = "0px";
+		hide_maxheight(hei);
+		show_maxheight(res);
 	} else {
-		hei.style.display = "none";
-		hei.style.maxHeight = "0px";
-		res.style.display = "none";
-		res.style.maxHeight = "0px";
+		hide_maxheight(hei);
+		hide_maxheight(res);
 	}
 }
 
@@ -75,25 +69,17 @@ function sense_resist_trait() {
 }
 
 function sense_power_req() {
-	const check = document.getElementById("sense_height_power_req");
-	const div = document.getElementById("sense-height-ensense");
+	const check = "sense_height_power_req";
+	const div = "sense-height-ensense";
 
-	if (check.checked == true) {
-		div.style.opacity = "100%";
-	} else {
-		div.style.opacity = "0%";
-	}
+	check_opacity(check, div);
 }
 
 function sense_resist_immune() {
-	const check = document.getElementById("sense_resist_immune")
-	const div = document.getElementById("sense-resist-immune-perm")
+	const check = "sense_resist_immune";
+	const div = "sense-resist-immune-perm";
 
-	if (check.checked == true) {
-		div.style.opacity = "100%";
-	} else {
-		div.style.opacity = "0%";
-	}
+	check_opacity(check, div);
 }
 
 function sense_dark() {
@@ -113,38 +99,26 @@ function sense_dark() {
 function sense_time_set() {
 	const field_field = document.getElementById("sense_time_set");
 	const field = field_field.options[field_field.selectedIndex].value
-	const val = document.getElementById("sense-time-value");
-	const ski = document.getElementById("sense-time-skill");
-	const bon = document.getElementById("sense-time-bonus");
+	const val = "sense-time-value";
+	const ski = "sense-time-skill";
+	const bon = "sense-time-bonus";
 
 	if (field == 'value') {
-		val.style.display = "grid";
-		val.style.maxHeight = val.scrollHeight + "px";
-		ski.style.display = "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display = "none";
-		bon.style.maxHeight = "0px";	
+		hide_maxheight(ski);
+		hide_maxheight(bon);
+		show_maxheight(val);
 	} else if (field == 'skill') {
-		ski.style.display = "grid";
-		ski.style.maxHeight = ski.scrollHeight + "px";		
-		val.style.display = "none";
-		val.style.maxHeight = "0px";
-		bon.style.display = "none";
-		bon.style.maxHeight = "0px";
+		hide_maxheight(val);
+		hide_maxheight(bon);
+		show_maxheight(ski);
 	} else if (field == 'bonus') {
-		bon.style.display = "grid";
-		bon.style.maxHeight = bon.scrollHeight + "px";		
-		val.style.display = "none";
-		val.style.maxHeight = "0px";
-		ski.style.display = "none";
-		ski.style.maxHeight = "0px";	
+		hide_maxheight(val);
+		hide_maxheight(ski);
+		show_maxheight(bon);	
 	} else {
-		val.style.display = "none";
-		val.style.maxHeight = "0px";
-		ski.style.display = "none";
-		ski.style.maxHeight = "0px";
-		bon.style.display = "none";
-		bon.style.maxHeight = "0px";
+		hide_maxheight(val);
+		hide_maxheight(ski);
+		hide_maxheight(bon);
 	}
 }
 
