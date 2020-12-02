@@ -118,7 +118,7 @@ def mediumsubtypetype_create():
 
 	for i in materials:
 
-		entry = MediumSubType(name=i, medium_type=1, damage=True)
+		entry = MediumSubType(name=i, medium_type=3, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -126,7 +126,7 @@ def mediumsubtypetype_create():
 
 	for i in energies:
 
-		entry = MediumSubType(name=i, medium_type=2, damage=True)
+		entry = MediumSubType(name=i, medium_type=4, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
