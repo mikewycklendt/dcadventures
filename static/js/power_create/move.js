@@ -19,14 +19,12 @@ function move_base() {
 function move_ground_perm() {
 	const field_field = document.getElementById("move_ground_perm");
 	const field = field_field.options[field_field.selectedIndex].value;
-	const div = document.getElementById("move-ground-time");
+	const div = "move-ground-time";
 
 	if (field == 'temp') {
-		div.style.display = "grid";
-		div.style.maxHeight = div.scrollHeight + "px";
+		show_maxheight(div)
 	} else {
-		div.style.maxHeight = "0px"
-		setTimeout(function(){div.style.display = 'none'}, 400);
+		hide_maxheight(div)
 	}
 
 }
