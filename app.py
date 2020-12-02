@@ -151,25 +151,25 @@ def medium_create():
 
 	for i in medium_gas:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=1, damage=True)
+		entry = Medium(name=i, medium_type=3, medium_subtype=32, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_liquid:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=2, damage=True)
+		entry = Medium(name=i, medium_type=3, medium_subtype=33, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_earth:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=3, damage=True)
+		entry = Medium(name=i, medium_type=3, medium_subtype=34, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
 	for i in medium_biological:
 
-		entry = Medium(name=i, medium_type=1, medium_subtype=4, damage=True)
+		entry = Medium(name=i, medium_type=3, medium_subtype=35, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -177,7 +177,7 @@ def medium_create():
 
 	for i in medium_electromagnetic:
 
-		entry = Medium(name=i, medium_type=2, medium_subtype=5, damage=True)
+		entry = Medium(name=i, medium_type=4, medium_subtype=36, damage=True)
 		db.session.add(entry)
 		db.session.commit()
 
