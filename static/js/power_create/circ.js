@@ -41,10 +41,9 @@ function circ_base() {
 function circ_type() {
 	const field = document.getElementById('circ_type');
 	const value = field.options[field.selectedIndex].value;
-	const row = document.getElementById('circ-row2');
-	const ran = document.getElementById('circ-range');
-	const chk = document.getElementById('circ-check'); 
-	const entry = document.getElementById('circ-entry');
+	const ran = 'circ-range';
+	const chk = 'circ-check'; 
+	const entry = 'circ-entry';
 
 
 	if (value == 'range') {
