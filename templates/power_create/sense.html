@@ -222,7 +222,7 @@
 			</div>
 		</div>
 
-		<div id="sense-lighting" style="opacity: 0%;">
+		<div id="sense-lighting" style="opacity: 0%; transition: all .3s ease-in;">
 			<select class="select-sml" id="sense_lighting" name="sense_lighting">
 				{% for d in darkness %}
 			   <option value="{{d.type}}">{{d.name}}</option>

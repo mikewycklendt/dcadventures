@@ -83,17 +83,10 @@ function sense_resist_immune() {
 }
 
 function sense_dark() {
-	const check = document.getElementById("sense_dark")
-	const lig = document.getElementById("sense-lighting");
-	const hea = document.getElementById("sense-lighting-head");
+	const check = "sense_dark";
+	const lig = "sense-lighting";
 
-	if (check.checked == true) {
-		lig.style.opacity = "100%"
-		hea.style.opacity = "100%"
-	} else {
-		lig.style.opacity = "0%"
-		hea.style.opacity = "0%"
-	}
+	check_opacity(check, lig);
 }
 
 function sense_time_set() {
