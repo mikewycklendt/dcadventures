@@ -15,8 +15,8 @@ function defense_base() {
 }
 
 function defense_reflect() {
-	const check = document.getElementById('defense_reflect')
-	const base = document.getElementById('defense-reflect-action')
+	const check = 'defense_reflect';
+	const base = 'defense-reflect-action';
 
 	check_opacity(check, base);
 }
