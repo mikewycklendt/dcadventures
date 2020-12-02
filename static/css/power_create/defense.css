@@ -61,6 +61,7 @@
 
 #defense-row3 {
 	display: grid;
+	font-size: 90%;
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 10% 20% 25% 25% 20%;
