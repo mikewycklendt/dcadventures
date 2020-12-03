@@ -103,12 +103,19 @@ function dc_submit() {
 
 	const des_value = document.getElementById('dc_des').value;
 
-	const mea_check = document.getElementById('dc_mea_check');
-	const dam_check = document.getElementById('dc_dam_check');
-	const key_check = document.getElementById('dc_key_check');
-	const def_check = document.getElementById('dc_def_check');
-	const con_check = document.getElementById('dc_con_check');
-	const act_check = document.getElementById('dc_act_check');
+	const mea_check_check = document.getElementById('dc_mea_check');
+	const dam_check_check = document.getElementById('dc_dam_check');
+	const key_check_check = document.getElementById('dc_key_check');
+	const def_check_check = document.getElementById('dc_def_check');
+	const con_check_check = document.getElementById('dc_con_check');
+	const act_check_check = document.getElementById('dc_act_check');
+
+	const mea_check = mea_check_check.checked;
+	const dam_check = dam_check_check.checked;
+	const key_check = key_check_check.checked;
+	const def_check = def_check_check.checked;
+	const con_check = con_check_check.checked;
+	const act_check = act_check_check.checked;
 
 	const mea_type_field = document.getElementById('dc_mea_type');
 	let mea_type_value = mea_type_field.options[mea_type_field.selectedIndex].value;
@@ -146,19 +153,31 @@ function dc_submit() {
 	const bonus_id = document.getElementById('bonus_id').value;
 	const error_line = 'dc-err-line';
 	const error_table = 'dc-err';
-
+	
+	const mea_check = mea_check_check.checked;
+	const dam_check = dam_check_check.checked;
+	const key_check = key_check_check.checked;
+	const def_check = def_check_check.checked;
+	const con_check = con_check_check.checked;
+	const act_check = act_check_check.checked;
 	if ((des_value != '') && ((type_value == 'value' && class_value != '') || (type_value == 'math' && math_val_value != '' && math_value != '' && math_rank_value != '')) &&  
-			((mea_check.checked == true && mea_type_value == 'math' && mea_math_val_value != '' && mea_math_value != '' && mea_math_rnk_value != '') || 
-			(mea_check.checked == true && mea_type_value == 'value' && mea_val_value != '' && mea_unt_value != '') || (mea_check.checked == false)) && 
-			((dam_check.checked == true && dam_value != '') || (dam_check.checked == false)) && ((key_check.checked == true && key_value != '') || (key_check.checked == false)) && 
-			((def_check.checked == true && def_value != '') || (def_check.checked == false)) && ((act_check.checked == true && act_value != '') || (act_check.checked == false)) && 
-			((con_check.checked == true && con1_value != '' && con2_value != '') || (con_check.checked == false)) ) {
+			((mea_check == true && mea_type_value == 'math' && mea_math_val_value != '' && mea_math_value != '' && mea_math_rnk_value != '') || 
+			(mea_check == true && mea_type_value == 'value' && mea_val_value != '' && mea_unt_value != '') || (mea_check == false)) && 
+			((dam_check == true && dam_value != '') || (dam_check == false)) && ((key_check == true && key_value != '') || (key_check == false)) && 
+			((def_check == true && def_value != '') || (def_check == false)) && ((act_check == true && act_value != '') || (act_check == false)) && 
+			((con_check == true && con1_value != '' && con2_value != '') || (con_check == false)) ) {
 
 
 		response = fetch('/skill/dc/create', {
 			method: 'POST',
 			body: JSON.stringify({
 				'bonus_id': bonus_id,
+				'measure_check': mea_check,
+				'damage_check': dam_check,
+				'keyword_check': key_check,
+				'defense_check': def_check,
+				'condition_check': con_check,
+				'action_check': act_check,
 				'type': type_value,
 				'val': class_value,
 				'math_val': math_val_value,

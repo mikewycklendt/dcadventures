@@ -427,6 +427,12 @@ class SkillDC(db.Model):
 	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	description = db.Column(db.String())
+	measure_check = db.Column(db.Boolean)
+	damage_check = db.Column(db.Boolean)
+	keyword_check = db.Column(db.Boolean)
+	defense_check = db.Column(db.Boolean)
+	condition_check = db.Column(db.Boolean)
+	action_check = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -450,7 +456,13 @@ class SkillDC(db.Model):
 			'condition_two': self.condition_two,
 			'defense': self.defense,
 			'action': self.action,
-			'description': self.description
+			'description': self.description,
+			'measure_check': self.measure_check,
+			'damage_check': self.damage_check,
+			'keyword_check': self.keyword_check,
+			'defense_check': self.defense_check,
+			'condition_check': self.condition_check,
+			'action_check': self.action_check
 		}
 
 class SkillLevels(db.Model):

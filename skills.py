@@ -1290,6 +1290,12 @@ def post_bonus_dc():
 	defense = request.get_json()['defense']
 	action = request.get_json()['action']
 	description = request.get_json()['description']
+	measure_check = request.get_json()['measure_check']
+	damage_check = request.get_json()['damage_check']
+	keyword_check = request.get_json()['keyword_check']
+	defense_check = request.get_json()'defense_check']
+	condition_check = request.get_json()['condition_check']
+	action_check = request.get_json()['action_check']
 
 
 	if val == '':
@@ -1388,7 +1394,13 @@ def post_bonus_dc():
 							condition_two = condition_two,
 							defense = defense,
 							action = action,
-							description = description)		
+							description = description,
+							measure_check = measure_check,
+							damage_check = damage_check,
+							keyword_check = keyword_check,
+							defense_check = defense_check,
+							condition_check = condition_check,
+							action_check = action_check)	
 			db.session.add(bonus)	
 			db.session.commit()
 
