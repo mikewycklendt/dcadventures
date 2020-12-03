@@ -1,7 +1,7 @@
 function rounds_check() {
-	const rounds_check = document.getElementById("rounds_check");
-	const rounds_entry = document.getElementById("rounds-entry");
-	const title = document.getElementById("rounds-title");
+	const rounds_check = "rounds_check";
+	const rounds_entry = "rounds-entry";
+	const title = "rounds-title";
 	
 	entry_check(rounds_check, rounds_entry, title);
 }
