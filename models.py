@@ -244,6 +244,7 @@ class SkillBonus(db.Model):
 	resist_effect = db.Column(db.Boolean)
 	opp_condition = db.Column(db.Boolean)
 	char_check = db.Column(db.Boolean)
+	alt_check = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -294,7 +295,8 @@ class SkillBonus(db.Model):
 			'resist_check': self.resist_check,
 			'resist_effect': self.resist_effect,
 			'opp_condition': self.opp_condition,
-			'char_check': self.char_check
+			'char_check': self.char_check,
+			'alt_check': self.alt_check
 		}
 
 class SkillOther(db.Model):
