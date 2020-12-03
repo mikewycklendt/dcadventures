@@ -283,6 +283,38 @@ function hide_maxheight(div_input) {
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
 
+function value_type_maxheight(select, math, value) {
+	const type_field = document.getElementById(select);
+	let val = type_field.options[type_field.selectedIndex].value;
+
+	const dc_measure_value = document.getElementById(value);
+	const dc_measure_math = document.getElementById(math);
+
+	if (val == 'value') {
+		hide_maxheight(math);
+		show_maxheight(value);
+	} else if (val == 'math') {
+		hide_maxheight(value)
+		show_maxheight(math)
+	} else {
+		hide_maxheight(value);
+		hide_maxheight(math);
+	}
+}
+
+function check_drop(field, divdrop) {
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdrop);
+
+	if (check.checked == true) {
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+	} else {
+		div.style.maxHeight = '0px';
+		setTimeout(function(){div.style.display = 'none'}, 400);
+	}
+}
+
 
 skill_create = function() {
 	const skill_name = document.getElementById('skill_name').value;

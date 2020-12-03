@@ -16,189 +16,61 @@ function dc_set() {
 }
 
 function dc_dc_type() {
-	const type_field = document.getElementById('dc_type');
-	let type_value = type_field.options[type_field.selectedIndex].value;
+	const type_field = 'dc_type';
+	const dc_class = 'dc-class';
+	const dc_math = 'dc-math';
 
-	const dc_class = document.getElementById('dc-class');
-	const dc_math = document.getElementById('dc-math');
-	const dc_entry = document.getElementById('dc-entry');
-
-	if (type_value != '') {
-		dc_entry.style.display = "grid";
-		dc_entry.style.padding = "1%";
-		dc_entry.style.maxHeight = dc_entry.scrollHeight + "px";
-		dc_entry.style.padding = "1%";
-	} else {
-		dc_entry.style.maxHeight = "0px";
-		dc_entry.style.padding = "0px";
-	}
-
-	if (type_value == 'value') {
-		dc_class.style.display = "grid";
-		dc_class.style.maxHeight = dc_class.scrollHeight + "px";
-		dc_math.style.display = "none";
-		dc_math.style.maxHeight = "0px";
-		dc_math.style.padding = "0px";
-
-	} else if (type_value == 'math') {
-		dc_math.style.display = "grid";
-		dc_math.style.maxHeight = dc_math.scrollHeight + "px";
-		dc_class.style.display = "none";
-		dc_class.style.maxHeight = "0px";
-		dc_class.style.padding = "0px";
-	} else {
-		dc_class.style.display = "none";
-		dc_math.style.display = "none";
-	}
+	value_type_maxheight(type_field, dc_math, dc_class);
 }
 
 function dc_mea_click() {
-	const mea_grid = document.getElementById('dc-measure-field');
-	const mea_check = document.getElementById('dc_mea_check');
+	const mea_grid = 'dc-measure-field';
+	const mea_check = 'dc_mea_check';
 
-
-	const mea_unt_field = document.getElementById('dc_mea_unit');
-	const mea_math_val_field = document.getElementById('dc_mea_math_val');
-	const mea_math_field = document.getElementById('dc_mea_math');
-	const mea_math_rnk_field = document.getElementById('dc_mea_math_rank');
-
-	if (mea_check.checked == true) {
-		mea_grid.style.display = "grid";
-		mea_grid.style.padding = "1%";
-		mea_grid.style.maxHeight = mea_grid.scrollHeight + "px";
-		mea_grid.style.padding = "1%";
-	}  else {
-		mea_grid.style.maxHeight = "0px";
-		mea_grid.style.padding = "0px";
-
-		document.getElementById('dc_mea_val').value = '';
-		mea_unt_field.options[mea_unt_field.selectedIndex].value = '';
-		mea_math_val_field.options[mea_math_val_field.selectedIndex].value = '';
-		mea_math_field = document.getElementById('dc_mea_math') = '';
-		mea_math_field.options[mea_math_field.selectedIndex].value = '';
-		mea_math_rnk_field.options[mea_math_rnk_field.selectedIndex].value = '';
-	}
+	check_drop(mea_check, mea_grid);
 }
 
 function dc_dam_click() {
-	const dam_grid = document.getElementById('dc-damage-field');
-	const dam_check = document.getElementById('dc_dam_check');
+	const dam_grid = 'dc-damage-field';
+	const dam_check = 'dc_dam_check';
 
-	const dam_field = document.getElementById('dc_dam');
-
-	if (dam_check.checked == true) {
-		dam_grid.style.display = "grid";
-		dam_grid.style.padding = "1%";
-		dam_grid.style.maxHeight = dam_grid.scrollHeight + "px";
-		dam_grid.style.padding = "1%";
-	}  else {
-		dam_grid.style.maxHeight = "0px";
-		dam_grid.style.padding = "0px";
-
-		dam_field.options[dam_field.selectedIndex].value = '';
-	}
-
+	check_drop(dam_check, dam_grid);
 }
 
 function dc_key_click() {
-	const key_grid = document.getElementById('dc-keyword-field');
-	const key_check = document.getElementById('dc_key_check');
+	const key_grid = 'dc-keyword-field';
+	const key_check = 'dc_key_check';
 	
-	if (key_check.checked == true) {
-		key_grid.style.display = "grid";
-		key_grid.style.padding = "1%";
-		key_grid.style.maxHeight = key_grid.scrollHeight + "px";
-		key_grid.style.padding = "1%";
-	}  else {
-		key_grid.style.maxHeight = "0px";
-		key_grid.style.padding = "0px";
-	
-		document.getElementById('dc_key').value = '';
-	}
+	check_drop(key_check, key_grid);
 }
 
 function dc_con_click() {
-	const con_grid = document.getElementById('dc-condition-field');
-	const con_check = document.getElementById('dc_con_check');
+	const con_grid = 'dc-condition-field';
+	const con_check = 'dc_con_check';
 	
-	const con1_field = document.getElementById('dc_con1');
-	const con2_field = document.getElementById('dc_con2');
-	
-	if (con_check.checked == true) {
-		con_grid.style.display = "grid";
-		con_grid.style.padding = "1%";
-		con_grid.style.maxHeight = con_grid.scrollHeight + "px";
-		con_grid.style.padding = "1%";
-	}  else {
-		con_grid.style.maxHeight = "0px";
-		con_grid.style.padding = "0px";
-	
-		con1_field.options[con1_field.selectedIndex].value = '';
-		con2_field.options[con2_field.selectedIndex].value= '';
-	}
+	check_drop(con_check, con_grid);
 }
 
 function dc_act_click() {
-	const act_grid = document.getElementById('dc-action-field');
-	const act_check = document.getElementById('dc_act_check');
+	const act_grid = 'dc-action-field';
+	const act_check = 'dc_act_check';
 		
-	const act_field = document.getElementById('dc_act');
-
-	if (act_check.checked == true) {
-		act_grid.style.display = "grid";
-		act_grid.style.padding = "1%";
-		act_grid.style.maxHeight = act_grid.scrollHeight + "px";
-		act_grid.style.padding = "1%";
-	}  else {
-		act_grid.style.maxHeight = "0px";
-		act_grid.style.padding = "0px";
-
-		act_field.options[act_field.selectedIndex].value = '';
-	}
+	check_drop(act_check, act_grid)
 }
 
 function dc_def_click() {
-	const def_grid = document.getElementById('dc-defense-field');
-	const def_check = document.getElementById('dc_def_check');
+	const def_grid = 'dc-defense-field';
+	const def_check = 'dc_def_check';
 	
-	const def_field = document.getElementById('dc_def');
-
-	if (def_check.checked == true) {
-		def_grid.style.display = "grid";
-		def_grid.style.padding = "1%";
-		def_grid.style.maxHeight = def_grid.scrollHeight + "px";
-		def_grid.style.padding = "1%";
-	}  else {
-		def_grid.style.maxHeight = "0px";
-		def_grid.style.padding = "0px";
-
-		def_field.options[def_field.selectedIndex].value = '';
-	}
+	check_drop(def_check, def_grid);
 }
 
 function dc_measure_type() {
-	const mea_type_field = document.getElementById('dc_mea_type');
-	let mea_type_value = mea_type_field.options[mea_type_field.selectedIndex].value;
+	const select = 'dc_mea_type';
+	const dc_measure_value = 'dc-measure-value';
+	const dc_measure_math = 'dc-measure-math';
 
-	const dc_measure_value = document.getElementById('dc-measure-value');
-	const dc_measure_math = document.getElementById('dc-measure-math');
-
-	if (mea_type_value == 'value') {
-		dc_measure_value.style.display = "grid";
-		dc_measure_value.style.padding = "1%";
-		dc_measure_value.style.maxHeight = dc_measure_value.scrollHeight + "px";
-		dc_measure_value.style.padding = "1%";
-		dc_measure_math.style.display = "none";
-	} else if (mea_type_value == 'math') {
-		dc_measure_math.style.display = "grid";
-		dc_measure_math.style.padding = "1%";
-		dc_measure_math.style.maxHeight = dc_measure_math.scrollHeight + "px";
-		dc_measure_math.style.padding = "1%";
-		dc_measure_value.style.display = "none";
-	} else {
-		dc_measure_math.style.display = "none";
-		dc_measure_value.style.display = "none";
-	}
+		value_type_maxheight(select, dc_measure_math, dc_measure_value)
 }
 
 let dc_enter = 0;
@@ -676,6 +548,18 @@ function dc_delete() {
 				deletesDiv[i].style.maxHeight = "0px";
 				deletesDiv[i].style.padding = "0px";
 				deletesDiv[i].style.marginBottom = "0px";
+
+				setTimeout(function(){
+					dcs[i].style.display = 'none';
+					keys[i].style.display = 'none';
+					dess[i].style.display = 'none';
+					meas[i].style.display = 'none';
+					dams[i].style.display = 'none';
+					acts[i].style.display = 'none';
+					defs[i].style.display = 'none';
+					cons[i].style.display = 'none';
+					deletesDiv[i].style.display = 'none';
+				}, 400);
 
 				for (let int = 0; int < keys.length; int++) {
 					if (keys[int].innerHTML != ''){

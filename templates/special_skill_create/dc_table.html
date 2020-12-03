@@ -33,59 +33,56 @@
 	</div>
 </div>
 
-<div id="dc-entry" style="display: none;">
+<div class="dc-entry" id="dc-class" style="display: none;">
 
 	<div id="dc-attr-title">DC: </div>
 
 	<div>
-		<div id="dc-class" style="display: none;">
-			<div>
-				<select class="select-sml" id="dc_class" name="dc_class" >
-					<option value="">DC</option>
-					{% for class in dcclasses %}
-						<option value={{class}}>{{class}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div></div>
-		</div>
-	
-		<div id="dc-math" style="display: none;">
-			<div id="dcmathvalue">
-				<select class="select-sml" id="dc_math_value" name="dc_math_value" >
-					<option value="">Value</option>
-					{% for class in dcclasses %}
-						<option value={{class}}>{{class}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="dcmathtype">
-				<select class="select-sml" id="dc_math" name="dc_math" >
-					<option value="">Math</option>
-					{% for math in maths %}
-						<option value={{math.id}}>{{math.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="dcranktype">
-				<select class="select-sml" id="dc_math_rank" name="dc_math_rank" >
-					<option value="">Rank</option>
-					{% for rank in ranks %}
-						<option value={{rank.id}}>{{rank.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-		</div>
+		<select class="select-sml" id="dc_class" name="dc_class" >
+			<option value="">DC</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
+	<div></div>
+</div>
 
+<div class="dc-entry" id="dc-math">
+
+	<div id="dc-attr-title">DC: </div>
+
+	<div id="dcmathvalue">
+		<select class="select-sml" id="dc_math_value" name="dc_math_value" >
+			<option value="">Value</option>
+			{% for class in dcclasses %}
+				<option value={{class}}>{{class}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="dcmathtype">
+		<select class="select-sml" id="dc_math" name="dc_math" >
+			<option value="">Math</option>
+			{% for math in maths %}
+				<option value={{math.id}}>{{math.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="dcranktype">
+		<select class="select-sml" id="dc_math_rank" name="dc_math_rank" >
+			<option value="">Rank</option>
+			{% for rank in ranks %}
+				<option value={{rank.id}}>{{rank.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div></div>
 </div>
 	
-
-
 	<div id="dc-fields">
 
 		<div>
