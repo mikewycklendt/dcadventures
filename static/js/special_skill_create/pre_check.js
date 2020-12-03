@@ -66,8 +66,8 @@ function pre_check_submit() {;
 	}
 
 	const bonus_id = document.getElementById('bonus_id').value;
-	const line = 'pre-check-err-line';
-	const errors = 'pre-check-err';
+	const error_line = 'pre-check-err-line';
+	const error_table = 'pre-check-err';
 	
 	if ((pre_check_type_value != '') && ((pre_check_type_value == 'skill' && standard_skill_value != '' && standard_circ_value != '' && standard_when_value != '') || 
 		(pre_check_type_value == 'opposed' && opposed_skill_value != '' && opposed_circ_value != '' && opposed_when_value != '' && opposed_value != ''))) {
@@ -161,11 +161,11 @@ function pre_check_submit() {;
 				pre_check_standard_delete();
 				pre_check_opposed_delete();
 
-				clear_errors(line, errors)
+				clear_errors(error_line, error_table)
 
 			} else {
 
-				back_error(line, errors)
+				back_error(error_line, error_table)
 			}
 		})
 
