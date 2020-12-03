@@ -172,14 +172,14 @@ function pre_check_submit() {;
 	} else {
 
 		if (pre_check_type_value == 'skill') {
-			pre_check_standard_errors()
+			pre_check_standard_errors(standard_skill_value, standard_circ_value, standard_when_value)
 		} else if (pre_check_type_value == 'opposed') {
-			pre_check_opposed_errors()
+			pre_check_opposed_errors(opposed_skill_value, opposed_circ_value, opposed_when_value, opposed_value)
 		}
 	}		
 };
 
-function pre_check_standard_errors() {
+function pre_check_standard_errors(standard_skill_value, standard_circ_value, standard_when_value) {
 	errors_delete = document.getElementsByClassName('pre-check-err-line');
 	
 	for (i = 0; i < errors_delete.length; i++) {
@@ -416,7 +416,7 @@ function pre_check_opposed_submit() {
 	}
 };
 
-function pre_check_opposed_errors() {
+function pre_check_opposed_errors(opposed_skill_value, opposed_circ_value, opposed_when_value, opposed_value) {
 	errors_delete = document.getElementsByClassName('pre-check-err-line');
 
 	for (i = 0; i < errors_delete.length; i++) {
