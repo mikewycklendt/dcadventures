@@ -6,6 +6,7 @@ function dc_set() {
 
 	if (dc_set == 'table') {
 		dc_table.style.display = 'grid';
+		setTimeout(function(){dc_table.style.opacity = '100%'}, 10);
 	}
 
 }

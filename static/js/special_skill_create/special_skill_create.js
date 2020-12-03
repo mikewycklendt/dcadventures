@@ -538,6 +538,9 @@ skill_save = function() {
 	const char_check_check = document.getElementById('char_check');
 	const char_check = char_check_check.checked;
 
+	const alt_check_check = document.getElementById('alt_check_check');
+	const alt_check = alt_check_check.checked
+
 	const bonus_id = document.getElementById('bonus_id').value;
 
 	if ((description != '' && action != '' && check_id != '') && 
@@ -593,7 +596,8 @@ skill_save = function() {
 				'resist_check': resist_check,
 				'resist_effect': resist_effect,
 				'opp_condition': opp_condition,
-				'char_check': char_check
+				'char_check': char_check,
+				'alt_check': alt_check
 			}),
 			headers: {
 			  'Content-Type': 'application/json',
