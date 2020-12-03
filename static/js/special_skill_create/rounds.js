@@ -68,7 +68,6 @@ function rounds_submit() {
 				rndDelete.className = 'rounds-table-delete'
 				const deleteBtn = document.createElement('button');
 				deleteBtn.className = 'rounds-xbox';
-				deleteBtn.innerHTML = '&cross;';
 				deleteBtn.setAttribute('data-id', jsonResponse.id );
 				rndDelete.appendChild(deleteBtn);
 
@@ -164,7 +163,7 @@ function rounds_submit() {
 };
 
 rounds_delete = function() {
-	const deletes = document.querySelectorAll('.rounds-xbox');
+	const deletes = '.rounds-xbox';
 	const divs = ['rounds-table-dc', 'rounds-table-degree', 'rounds-table-rank', 'rounds-table-mod', 'rounds-table-rounds', 'rounds-table-delete'];
 	const route = '/skill/rounds/delete/';
 	
