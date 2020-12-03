@@ -484,6 +484,37 @@ def delete_bonus_other_checks(bonus_id):
 		db.session.close()
 		return jsonify({'success': True})
 
+@skills.route('/skill/alt_check/create', methods=['POST'])
+def post_bonus_other_checks():
+	body = {}
+
+	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
+	description = request.get_json()['description']
+
+	skill = db.session.query(Skill).filter_by(id=skill_id).one()
+
+	try:
+		bonus = SkillOther(bonus_id=bonus_id, skill_id=skill_id, description=description)
+		db.session.add(bonus)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = bonus.id
+		body['bonus_id'] = bonus.bonus_id
+		body['skill'] = skill.name
+		body['description'] = bonus.description
+
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
 @skills.route('/skill/pre_check/create', methods=['POST'])
 def post_bonus_pre_check():
 	body = {}

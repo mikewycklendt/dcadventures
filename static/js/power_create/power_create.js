@@ -78,6 +78,20 @@ function subsense_select(select, fill) {
 	})	
 }
 
+function show_opacity(div_input) {
+	const div = document.getElementById(div_input);
+
+	setTimeout(function(){div.style.display = 'grid';}, 300);
+	setTimeout(function(){div.style.opacity = '100%';}, 310);
+}
+
+function hide_opacity(div_input) {
+	const div = document.getElementById(div_input);
+
+	div.style.opacity = '0%';
+	setTimeout(function(){div.style.display = 'none';}, 300);
+}
+
 function math_div_select(select, valuediv, mathdiv, containdiv ) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
@@ -276,20 +290,6 @@ function json_errors(line, div, all_errors) {
 		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
 		errors.style.padding = "1%";
 	}
-}
-
-function show_opacity(div_input) {
-	const div = document.getElementById(div_input);
-
-	setTimeout(function(){div.style.display = 'grid';}, 300);
-	setTimeout(function(){div.style.opacity = '100%';}, 310);
-}
-
-function hide_opacity(div_input) {
-	const div = document.getElementById(div_input);
-
-	div.style.opacity = '0%';
-	setTimeout(function(){div.style.display = 'none';}, 300);
 }
 
 function show_maxheight(div_input) {
