@@ -1,3 +1,174 @@
+function entry_check(check_input, entry_input, title_input) {
+	const check = document.getElementById(check_input);
+	const entry = document.getElementById(entry_input);
+	const title = document.getElementById(title_input);
+	
+	if (check.checked == true) {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		entry.style.maxHeight = "0px";
+		setTimeout(function(){entry.style.display = 'none';}, 400);
+		title.style.color = "#245681";
+	}
+}
+
+function base(field_input, entry_input) {
+	const field = document.getElementById(field_input)
+	const value = field.options[field.selectedIndex].value;
+	const entry = document.getElementById(entry_input)
+
+	if (value != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_two(field_input, field2_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	
+	const field2 = document.getElementById(field2_input);
+	const target = field2.options[field2.selectedIndex].value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && target != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_text(field_input, text_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	const type = document.getElementById(text_input).value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && type != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_three(field1_input, field2_input, text_input, entry_input) {
+	const text = document.getElementById(text_input).value;
+	const field1_field = document.getElementById(field1_input);
+	const field2_field = document.getElementById(field2_input);
+	const field1 =  field1_field.options[field1_field.selectedIndex].value;
+	const field2 =  field2_field.options[field2_field.selectedIndex].value;
+	const entry = document.getElementById(entry_input);
+
+	if (text != '' && field1 != '' && field2 != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		setTimeout(function(){entry.style.display = 'none';}, 400);
+	}
+}
+
+function check_title(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "220%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function check_title_two(check_input, title_input, base_input, entry_input, entry2_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+	const entry2 = document.getElementById(entry2_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "220%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+		entry2.style.maxHeight = "0px";
+		entry2.style.padding = "0px";
+		setTimeout(function(){entry2.style.display = 'none'}, 400);
+	}
+}
+
+function check_title_small(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "165%";
+		setTimeout(function(){title.style.fontSize = "160%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function entry_hide(entry_input) {
+	const entry = document.getElementById(entry_input);
+	entry.style.maxheight = '0px';
+	setTimeout(function(){entry.style.display = 'none';}, 400);
+}
+
+function entry_show(entry_input) {
+	const entry = document.getElementById(entry_input);
+	setTimeout(function(){
+		entry.style.display = 'grid';
+		entry.style.maxHeight = entry.scrollHeight + 'px';
+	}, 400)
+}
+
 skill_create = function() {
 	const skill_name = document.getElementById('skill_name').value;
 	const add_skill = document.getElementById('add-skill');

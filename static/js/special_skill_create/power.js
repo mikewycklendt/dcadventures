@@ -1,21 +1,9 @@
 function power_check() {
-	const power_check = document.getElementById("power_check");
-	const power_entry = document.getElementById("power-entry");
-	const title = document.getElementById("power-title");
+	const power_check = "power_check";
+	const power_entry = "power-entry";
+	const title = "power-title";
 	
-	if (power_check.checked == true) {
-		power_entry.style.display = "grid";
-		power_entry.style.padding = "1%";
-		power_entry.style.maxHeight = power_entry.scrollHeight + "px";
-		power_entry.style.padding = "1%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		power_entry.style.maxHeight = "0px";
-		power_entry.style.padding = "0px";
-		title.style.color = "#245681";
-	}
+	entry_check(power_check, power_entry, title);
 }
 
 power_enter = 0;

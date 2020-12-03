@@ -1,48 +1,29 @@
 function pre_check_check() {
-	const pre_check_check = document.getElementById("pre_check_check");
-	const pre_check_header_type = document.getElementById("pre-check-header-type");
-	const title = document.getElementById("pre-check-title");
+	const pre_check_check = "pre_check_check";
+	const pre_check_header_type = "pre-check-header-type";
+	const title = "pre-check-title";
+	const entry1 = "pre-check-entry-standard";
+	const entry2 = "pre-check-entry-opposed";
 	
-	if (pre_check_check.checked == true) {
-		pre_check_header_type.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		pre_check_header_type.style.opacity = "0%";
-		title.style.color = "#245681";
-	}
+	check_title_two(pre_check_check, title, pre_check_header_type, entry1, entry2);
 }
 
 function pre_check_entry() {
 	pre_check_type = document.getElementById("pre_check_type")
 	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
 	console.log(pre_check_type_value)
-	pre_check_entry_standard = document.getElementById("pre-check-entry-standard")
-	pre_check_entry_opposed = document.getElementById("pre-check-entry-opposed")
+	const pre_check_entry_standard = "pre-check-entry-standard";
+	const pre_check_entry_opposed = "pre-check-entry-opposed";
 
 	if (pre_check_type_value == 'skill') {
-		pre_check_entry_standard.style.display = "grid";
-		pre_check_entry_standard.style.padding = "1%";
-		pre_check_entry_standard.style.maxHeight = pre_check_entry_standard.scrollHeight + "px";
-		pre_check_entry_standard.style.padding = "1%";
-
-		pre_check_entry_opposed.style.display = "none";
-		pre_check_entry_opposed.style.padding = "0%";
-		pre_check_entry_opposed.style.maxHeight = "0px"
+		entry_hide(pre_check_entry_opposed);
+		entry_show(pre_check_entry_standard);
 	} else if (pre_check_type_value == 'opposed') {
-		pre_check_entry_standard.style.display = "none";
-		pre_check_entry_standard.style.padding = "0%";
-		pre_check_entry_standard.style.maxHeight = "0px";
-
-		pre_check_entry_opposed.style.display = "grid";
-		pre_check_entry_opposed.style.padding = "1%";
-		pre_check_entry_opposed.style.maxHeight = pre_check_entry_opposed.scrollHeight + "px";
-		pre_check_entry_opposed.style.padding = "1%";
+		entry_hide(pre_check_entry_standard);
+		entry_show(pre_check_entry_opposed);
 	} else {
-		pre_check_entry_opposed.style.display = "none";
-		pre_check_entry_standard.style.display = "none";
-
+		entry_hide(pre_check_entry_opposed);
+		entry_hide(pre_check_entry_standard);
 	}
 }
 
@@ -56,8 +37,8 @@ function pre_check_standard_submit() {;
 	let standard_when_value =  standard_when_field.options[standard_when_field.selectedIndex].value; 
 	let standard_skill_value =  standard_skill_field.options[standard_skill_field.selectedIndex].value; 
 
-	pre_check_type = document.getElementById("pre_check_type")
-	pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
+	const pre_check_type = document.getElementById("pre_check_type")
+	const pre_check_type_value = pre_check_type.options[pre_check_type.selectedIndex].value;
 
 	const bonus_id = document.getElementById('bonus_id').value;
 

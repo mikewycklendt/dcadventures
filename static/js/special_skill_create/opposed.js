@@ -1,38 +1,17 @@
 function opposed_by_check() {
-	const opposed_by_check = document.getElementById("opposed_by_check");
-	const opposed_by_base_form = document.getElementById("opposed-by-base-form");
-	const title = document.getElementById("opposed-by-title");
+	const opposed_by_check = "opposed_by_check";
+	const opposed_by_base_form = "opposed-by-base-form";
+	const title = "opposed-by-title";
+	const entry = 'opposed-by-entry';
 	
-	if (opposed_by_check.checked == true) {
-		opposed_by_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		opposed_by_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-	}
+	check_title(opposed_by_check, title, opposed_by_base_form, entry);
 }
 
-
-
-
-
 function opposed_by_by() {
-	const opposed_by_by = document.getElementById("opposed_by_by")
-	let opposed_by_by_value = opposed_by_by.options[opposed_by_by.selectedIndex].value;
-	console.log(opposed_by_by_value)
-	const opposed_by_entry = document.getElementById("opposed-by-entry")
+	const opposed_by_by = "opposed_by_by";
+	const opposed_by_entry = "opposed-by-entry";
 
-	if (opposed_by_by_value != '') {
-		opposed_by_entry.style.display = "grid";
-		opposed_by_entry.style.padding = "1%";
-		opposed_by_entry.style.maxHeight = opposed_by_entry.scrollHeight + "px";
-		opposed_by_entry.style.padding = "1%";
-	} else {
-		opposed_by_entry.style.maxHeight = "0px";
-		opposed_by_entry.style.padding = "0px";
-	}
+	base(opposed_by_by, opposed_by_entry);
 }
 
 opposed_enter = 0;

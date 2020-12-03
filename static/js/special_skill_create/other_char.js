@@ -1,41 +1,18 @@
 function char_check() {
-	const char_check = document.getElementById("char_check");
-	const char_base_form = document.getElementById("char-base-form");
-	const title = document.getElementById("char-title");
+	const char_check = "char_check";
+	const char_base_form = "char-base-form";
+	const title = "char-title";
+	const entry = 'char-entry';
 	
-	if (char_check.checked == true) {
-		char_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "167%";
-		setTimeout(function(){title.style.fontSize = "160%"}, 75);
-	} else {
-		char_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-	}
+	check_title(char_check, title, char_base_form, entry);
 }
 
-
-
-
-
 function char_base() {
-	const char_type = document.getElementById("char_type");
-	const char_target = document.getElementById("char_target");
-	let chartype = char_type.options[char_type.selectedIndex].value;
-	let chartarget =  char_target.options[char_target.selectedIndex].value;
-	console.log(chartype);
-	console.log(chartarget);
-	const char_entry = document.getElementById("char-entry");
+	const char_type = "char_type";
+	const char_target = "char_target";
+	const char_entry = "char-entry";
 
-	if (chartype != '' && chartarget != '') {
-		char_entry.style.display = "grid";
-		char_entry.style.padding = "1%";
-		char_entry.style.maxHeight = char_entry.scrollHeight + "px";
-		char_entry.style.padding = "1%";
-	} else {
-		char_entry.style.maxHeight = "0px";
-		char_entry.style.padding = "0px";
-	}
+	base_two(char_type, char_target, char_entry);
 }
 char_enter = 0;
 

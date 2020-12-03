@@ -1,38 +1,17 @@
 function deg_mod_check() {
-	const deg_mod_check = document.getElementById("deg_mod_check");
-	const deg_mod_base_form = document.getElementById("deg-mod-base-form");
-	const title = document.getElementById("deg-mod-title");
+	const deg_mod_check = "deg_mod_check";
+	const deg_mod_base_form = "deg-mod-base-form";
+	const title = "deg-mod-title";
+	const entry = 'deg-mod-entry';
 
-	if (deg_mod_check.checked == true) {
-		deg_mod_base_form.style.opacity = "100%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "164%";
-		setTimeout(function(){title.style.fontSize = "160%"}, 75);
-	} else {
-		deg_mod_base_form.style.opacity = "0%";
-		title.style.color = "#245681";
-	}
+	check_title_small(deg_mod_check, title, deg_mod_base_form, entry);
 }
 
-
-
-
-
 function deg_mod_base() {
-	const deg_mod_target = document.getElementById("deg_mod_target");
-	degmodtarget =  deg_mod_target.options[deg_mod_target.selectedIndex].value;
-	console.log(degmodtarget);
-	const deg_mod_entry = document.getElementById("deg-mod-entry");
+	const deg_mod_target = "deg_mod_target";
+	const deg_mod_entry = "deg-mod-entry";
 
-	if (degmodtarget != '') {
-		deg_mod_entry.style.display = "grid";
-		deg_mod_entry.style.padding = "1%";
-		deg_mod_entry.style.maxHeight = deg_mod_entry.scrollHeight + "px";
-		deg_mod_entry.style.padding = "1%";
-	} else {
-		deg_mod_entry.style.maxHeight = "0px";
-		deg_mod_entry.style.padding = "0px";
-	}
+	base(deg_mod_target, deg_mod_entry);
 }
 
 function deg_mod_type() {

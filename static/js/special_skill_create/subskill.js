@@ -11,6 +11,6 @@ function subskill_check() {
 	} else {
 		subskill.style.maxHeight = "0px";
 		subskill.style.padding = "0px";
-		subskill.style.opacity = "0%";
+		setTimeout(function(){subskill.style.display = 'none';}, 400)
 	}
 }

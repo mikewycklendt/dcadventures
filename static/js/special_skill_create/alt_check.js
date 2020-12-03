@@ -1,21 +1,9 @@
 function alt_check_entry() {
-	const alt_check_check = document.getElementById("alt_check_check");
-	const alt_entry = document.getElementById("alt-check-entry");
-	const title = document.getElementById("alt-check-title");
+	const check = "alt_check_check";
+	const entry = "alt-check-entry";
+	const title = "alt-check-title";
 	
-	if (alt_check_check.checked == true) {
-		alt_entry.style.display = "grid";
-		alt_entry.style.padding = "1%";
-		alt_entry.style.maxHeight = alt_entry.scrollHeight + "px";
-		alt_entry.style.padding = "1%";
-		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		alt_entry.style.maxHeight = "0px";
-		alt_entry.style.padding = "0px";
-		title.style.color = "#245681";
-	}
+	entry_check(check, entry, title)
 }
 
 function check_type() {
