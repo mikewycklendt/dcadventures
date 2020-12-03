@@ -27,69 +27,89 @@ function alt_check_submit() {
 
 	const bonus_id = document.getElementById('bonus_id').value;
 
+	const error_line = 'alt-check-err-line';
+	const error_table = 'alt-check-err'
+
 	if (dc_value != '' && des_value != '') {
 
-		const dc = document.createElement('div');
-		dc.className = 'alt-check-table-dc'
-		dc.innerHTML = dc_value;
-
-		const des = document.createElement('div');
-		des.className = 'alt-check-table-des'
-		des.innerHTML = des_value;
-	
-		const altDelete = document.createElement('div');
-		altDelete.className = 'alt-check-table-delete'
-		const deleteBtn = document.createElement('button');
-		deleteBtn.className = 'alt-check-xbox';
-		deleteBtn.setAttribute('data-id', alt_check_enter);
-		altDelete.appendChild(deleteBtn);
-
-		alt_check_enter = alt_check_enter + 1;
-	
-		const table = document.getElementById('alt-check-table');
-
-		table.style.display = "grid";
-		table.style.padding = "1%";
-		table.style.maxHeight = table.scrollHeight + "px";
-		table.style.padding = "1%";
-
-		table.appendChild(dc);
-		table.appendChild(des);
-		table.appendChild(altDelete);
-
-		rows = [dc.scrollHeight, des.scrollHeight];
-		let row_height = 0;
-
-		for (i = 0; i < rows.length; i++) {
-			if (rows[i] > row_height) {
-				row_height = rows[i]
+		response = fetch('/skill/circ/create', {
+			method: 'POST',
+			body: JSON.stringify({
+				'bonus_id': bonus_id,
+				'skill': circskill,
+				'target': circtarget,
+				'type': mod_type_value,
+				'mod': modifier_value,
+				'unit_mod': mod_value,
+				'unit_value': val_value,
+				'unit_type': unit_value,
+				'adjust_check_mod': chk_value,
+				'adjust_mod': adj_value,
+				'adjust_rank': rank_value,
+				'equip_mod': modifier_value,
+				'rounds': rnd_value,
+				'description': circ_value
+			}),
+			headers: {
+			  'Content-Type': 'application/json',
 			}
-		}
+		})
+		.then(response => response.json())
+		.then(jsonResponse => {
+			console.log(jsonResponse)
+			if (jsonResponse.success) {
 
-		dc.style.maxHeight = dc.scrollHeight + "px";
-		des.style.maxHeight = des.scrollHeight + "px";
-		altDelete.style.maxHeight = altDelete.scrollHeight + "px";
-		table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+				const dc = document.createElement('div');
+				dc.className = 'alt-check-table-dc'
+				dc.innerHTML = dc_value;
 
-		alt_check_delete()
+				const des = document.createElement('div');
+				des.className = 'alt-check-table-des'
+				des.innerHTML = des_value;
+			
+				const altDelete = document.createElement('div');
+				altDelete.className = 'alt-check-table-delete'
+				const deleteBtn = document.createElement('button');
+				deleteBtn.className = 'alt-check-xbox';
+				deleteBtn.setAttribute('data-id', alt_check_enter);
+				altDelete.appendChild(deleteBtn);
 
-		errors_delete = document.getElementsByClassName('alt-check-err-line');
+				alt_check_enter = alt_check_enter + 1;
+			
+				const table = document.getElementById('alt-check-table');
 
-		if (typeof errors_delete[0] === "undefined") {
-			console.log('no errors defined')
-		} else {
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.maxHeight = "0px";
-				errors_delete[i].style.padding = "0px";
-				errors_delete[i].style.marginBottom = "0px";
+				table.style.display = "grid";
+				table.style.padding = "1%";
+				table.style.maxHeight = table.scrollHeight + "px";
+				table.style.padding = "1%";
+
+				table.appendChild(dc);
+				table.appendChild(des);
+				table.appendChild(altDelete);
+
+				rows = [dc.scrollHeight, des.scrollHeight];
+				let row_height = 0;
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i] > row_height) {
+						row_height = rows[i]
+					}
+				}
+
+				dc.style.maxHeight = dc.scrollHeight + "px";
+				des.style.maxHeight = des.scrollHeight + "px";
+				altDelete.style.maxHeight = altDelete.scrollHeight + "px";
+				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
+
+				alt_check_delete()
+
+				clear_errors(error_line, error_table)
+
+			} else {
+
+				back_error(error_line, error_table)
 			}
-
-			errors = document.getElementById('alt-check-err')
-
-			errors.style.display = "none";
-			errors.style.padding = "0px";
-			errors.style.maxHeight = "0px";
-		}
+		})
 
 	} else {
 
@@ -135,10 +155,8 @@ function alt_check_submit() {
 };
 
 alt_check_delete = function() {
-	const deletes = document.querySelectorAll('.alt-check-xbox');
-	const dcs = document.getElementsByClassName('alt-check-table-dc');
-	const dess = document.getElementsByClassName('alt-check-table-des');
-	const deletesDiv = document.getElementsByClassName('alt-check-table-delete');
+	const deletes = '.alt-check-xbox';
+	const divs = ['alt-check-table-dc', 'alt-check-table-des', 'alt-check-table-delete'];
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {

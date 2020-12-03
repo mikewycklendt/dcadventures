@@ -312,6 +312,21 @@ class SkillOther(db.Model):
 			'description': self.description
 		}
 
+class SkillAlt(db.Model):
+	__tablename__ = 'skill_alt_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	dc = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'dc': self.dc,
+			'description': self.description
+		}
+
 class SkillOtherCheck(db.Model):
 	__tablename__ = 'skill_other_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
