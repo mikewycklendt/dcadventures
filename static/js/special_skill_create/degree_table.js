@@ -34,6 +34,8 @@ function degree_submit() {
 	type.style.opacity = "0%"
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'degree-err-line';
+	const error_table = 'degree-err';
 
 	if (degrees_type != '' && degrees_target != '' && key_value != '' && desc_value != '' && val_value != '') {
 
@@ -111,44 +113,10 @@ function degree_submit() {
 
 				degree_delete()
 	
-				errors_delete = document.getElementsByClassName('degree-err-line');
-
-				const errors = document.getElementById('degree-err');
-				
-				let errors_height = errors.scrollHeight + 20;
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('degree-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 	
 			} else {
-				const errors = document.getElementById('degree-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'degree-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})				
 
@@ -227,37 +195,11 @@ function degree_submit() {
 };
 
 degree_delete = function() {
-	const deletes = document.querySelectorAll('.degree-xbox');
-	const vals = document.querySelectorAll('.degree-table-deg');
-	const keys = document.querySelectorAll('.degree-table-key');
-	const descs = document.querySelectorAll('.degree-table-desc');
-	const deletesDiv = document.querySelectorAll('.degree-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.degree-xbox';
+	const divs = ['.degree-table-deg', '.degree-table-key', '.degree-table-desc', '.degree-table-delete'];
+	const route = '/skill/degree_key/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/degree_key/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				vals[i].style.maxHeight = "0px";
-				vals[i].style.padding = "0px";
-				vals[i].style.marginBottom = "0px";
-				keys[i].style.maxHeight = "0px";
-				keys[i].style.padding = "0px";
-				keys[i].style.marginBottom = "0px";
-				descs[i].style.maxHeight = "0px";
-				descs[i].style.padding = "0px";
-				descs[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 degree_delete();

@@ -311,6 +311,7 @@ def save_skill():
 	resist_effect = request.get_json()['resist_effect']
 	opp_condition = request.get_json()['opp_condition']
 	char_check = request.get_json()['char_check']
+	alt_check = request.get_json()['alt_check']
 
 	if skill_type == '':
 		skill_type = None
@@ -372,6 +373,13 @@ def save_skill():
 			error = True
 			error_msgs.append(' You must have one entry in the DC Table if this skill uses at least one DC that is not set by the GM.  Add an entry to the DC table or change DC Set By to GM or N/A. ')
 
+	if alt_check == True:
+		skill_dc = db.session.query(SkillDC).filter(SkillDC.bonus_id == bonus_id).first()
+		if skill_dc is None:
+			error = True
+			error_msgs.append(' If this skill can also make a skill check add at least one entry to the dc table or uncheck the Can Make Skill Check box ')
+
+
 	if error:
 		body['success'] = False
 		body['error'] = error_msgs
@@ -429,6 +437,7 @@ def save_skill():
 	skill.resist_effect = resist_effect
 	skill.opp_condition = opp_condition
 	skill.char_check = char_check
+	skill.alt_check = alt_check
 
 	db.session.commit()
 

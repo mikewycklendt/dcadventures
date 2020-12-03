@@ -20,6 +20,8 @@ function rounds_submit() {
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value; 
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'rounds-err-line';
+	const error_table = 'rounds-err';
 	
 	if (rank_value != '' && mod_value != '' && rnd_value != '') {
 
@@ -103,39 +105,9 @@ function rounds_submit() {
 
 				rounds_delete()
 
-				errors_delete = document.getElementsByClassName('rounds-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('rounds-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('pre-check-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'pre-check-err-line';
-				error.innerHTML = jsonResponse.error;
-	
-				errors.appendChild(error);
-	
-				error.style.maxHeight = error.scrollHeight + "px";
-	
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -193,44 +165,10 @@ function rounds_submit() {
 
 rounds_delete = function() {
 	const deletes = document.querySelectorAll('.rounds-xbox');
-	const dcs = document.getElementsByClassName('rounds-table-dc');
-	const degs = document.getElementsByClassName('rounds-table-degree');
-	const ranks = document.getElementsByClassName('rounds-table-rank');
-	const modss = document.getElementsByClassName('rounds-table-mod');
-	const rnds = document.getElementsByClassName('rounds-table-rounds');
-	const deletesDivs = document.getElementsByClassName('rounds-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/skill/rounds/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				dcs[i].style.maxHeight = "0px";
-				dcs[i].style.padding = "0px";
-				dcs[i].style.marginBottom = "0px";
-				degs[i].style.maxHeight = "0px";
-				degs[i].style.padding = "0px";
-				degs[i].style.marginBottom = "0px";
-				ranks[i].style.maxHeight = "0px";
-				ranks[i].style.padding = "0px";
-				ranks[i].style.marginBottom = "0px";
-				modss[i].style.maxHeight = "0px";
-				modss[i].style.padding = "0px";
-				modss[i].style.marginBottom = "0px";
-				rnds[i].style.maxHeight = "0px";
-				rnds[i].style.padding = "0px";
-				rnds[i].style.marginBottom = "0px";
-				deletesDivs[i].style.maxHeight = "0px";
-				deletesDivs[i].style.padding = "0px";
-				deletesDivs[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	const divs = ['rounds-table-dc', 'rounds-table-degree', 'rounds-table-rank', 'rounds-table-mod', 'rounds-table-rounds', 'rounds-table-delete'];
+	const route = '/skill/rounds/delete/';
+	
+	delete_function(deletes, divs, route);
 };
 
 rounds_delete();

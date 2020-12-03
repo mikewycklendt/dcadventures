@@ -19,6 +19,8 @@ function opp_cond_submit() {
 	let rnd_value = rnd_field.options[rnd_field.selectedIndex].value; 
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'opp-cond-err-line';
+	const error_table = 'opp-cond-err';
 	
 	if (des_value != '' && deg_value != '' && con_value != '' && rnd_value != '') {
 
@@ -94,40 +96,10 @@ function opp_cond_submit() {
 
 				opp_cond_delete()
 			
-				errors_delete = document.getElementsByClassName('opp-cond-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('opp-cond-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 
 			} else {
-				const errors = document.getElementById('opp-cond-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'opp-cond-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -195,41 +167,11 @@ function opp_cond_submit() {
 };
 
 opp_cond_delete = function() {
-	const deletes = document.querySelectorAll('.opp-cond-xbox');
-	const degs = document.getElementsByClassName('opp-cond-table-deg');
-	const cons = document.getElementsByClassName('opp-cond-table-con');
-	const rnds = document.getElementsByClassName('opp-cond-table-rnd');
-	const dess = document.getElementsByClassName('opp-cond-table-des');
-	const deletesDiv = document.getElementsByClassName('opp-cond-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.opp-cond-xbox';
+	const divs = ['opp-cond-table-deg', 'opp-cond-table-con', 'opp-cond-table-rnd', 'opp-cond-table-des', 'opp-cond-table-delete'];
+	const route = '/skill/opp_condition/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/opp_condition/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				degs[i].style.maxHeight = "0px";
-				degs[i].style.padding = "0px";
-				degs[i].style.marginBottom = "0px";
-				cons[i].style.maxHeight = "0px";
-				cons[i].style.padding = "0px";
-				cons[i].style.marginBottom = "0px";
-				rnds[i].style.maxHeight = "0px";
-				rnds[i].style.padding = "0px";
-				rnds[i].style.marginBottom = "0px";
-				dess[i].style.maxHeight = "0px";
-				dess[i].style.padding = "0px";
-				dess[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 opp_cond_delete();

@@ -106,6 +106,8 @@ function circ_submit() {
 	let mod_type_value =  mod_type_field.options[mod_type_field.selectedIndex].value; 
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'circ-err-line';
+	const error_table = 'circ-err';
 	
 	if ( (circskill != '') && (circtarget != '') && ((mod_type_value == 'value' && modifier_value != '' && rnd_value != '' && circ_value != '') || 
 		(mod_type_value == 'math' && rnd_value != '' && circ_value != '' && val_value != '' && unit_value != '' &&  mod_value != '') || 
@@ -203,46 +205,10 @@ function circ_submit() {
 
 				circ_delete()
 		
-				errors_delete = document.getElementsByClassName('circ-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('circ-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
 
-				console.log(jsonResponse)
-				const errors = document.getElementById('circ-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error_msgs = jsonResponse.error
-				let i;
-
-				for (i of error_msgs) {
-					const error = document.createElement('div');
-					error.className = 'circ-err-line';
-					error.innerHTML = i;
-			
-					errors.appendChild(error);
-				
-					error.style.maxHeight = error.scrollHeight + "px";
-
-					errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-					errors.style.padding = "1%";	
-				}
+				back_errors(error_line, error_table);
 			}
 		})
 	} else {
@@ -350,36 +316,11 @@ function circ_submit() {
 };
 
 circ_delete = function() {
-	const deletes = document.querySelectorAll('.circ-xbox');
-	const mods = document.querySelectorAll('.circ-table-modifier');
-	const rnds = document.querySelectorAll('.circ-table-rounds');
-	const circs = document.querySelectorAll('.circ-table-circ');
-	const deletesDiv = document.querySelectorAll('.circ-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.circ-xbox';
+	const divs = ['.circ-table-modifier', '.circ-table-rounds', '.circ-table-circ', '.circ-table-delete'];
+	const route = '/skill/circ/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/circ/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				mods[i].style.maxHeight = "0px";
-				mods[i].style.padding = "0px";
-				mods[i].style.marginBottom = "0px";
-				rnds[i].style.maxHeight = "0px";
-				rnds[i].style.padding = "0px";
-				rnds[i].style.marginBottom = "0px";
-				circs[i].style.maxHeight = "0px";
-				circs[i].style.padding = "0px";
-				circs[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route)
 };
 
 circ_delete();

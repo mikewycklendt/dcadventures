@@ -272,6 +272,8 @@ function dc_submit() {
 	let act_value = act_field.options[act_field.selectedIndex].value;
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'dc-err-line';
+	const error_table = 'dc-err';
 
 	if ((des_value != '') && ((type_value == 'value' && class_value != '') || (type_value == 'math' && math_val_value != '' && math_value != '' && math_rank_value != '')) &&  
 			((mea_check.checked == true && mea_type_value == 'math' && mea_math_val_value != '' && mea_math_value != '' && mea_math_rnk_value != '') || 
@@ -472,47 +474,13 @@ function dc_submit() {
 
 				dc_delete();
 				
-				errors_delete = document.getElementsByClassName('dc-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('dc-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 
 			} else {
 
 				console.log(jsonResponse)
-				const errors = document.getElementById('dc-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error_msgs = jsonResponse.error
-				let i;
-
-				for (i of error_msgs) {
-					const error = document.createElement('div');
-					error.className = 'dc-err-line';
-					error.innerHTML = i;
-			
-					errors.appendChild(error);
+				back_errors(error_line, error_table);
 				
-					error.style.maxHeight = error.scrollHeight + "px";
-
-					errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-					errors.style.padding = "1%";	
-				}
 			}
 		})
 

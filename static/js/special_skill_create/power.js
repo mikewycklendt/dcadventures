@@ -15,7 +15,9 @@ function power_submit() {
 	let power_value = power_field.options[power_field.selectedIndex].value; 
 
 	const bonus_id = document.getElementById('bonus_id').value;
-	
+	const error_line = 'power-err-line';
+	const error_table = 'power-err';
+
 	if (sit_value != '' && power_value != '') {
 
 		response = fetch('/skill/power/create', {
@@ -76,39 +78,9 @@ function power_submit() {
 
 				power_delete()
 
-				errors_delete = document.getElementsByClassName('power-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('power-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('power-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'power-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -154,33 +126,11 @@ function power_submit() {
 };
 
 power_delete = function() {
-	const deletes = document.querySelectorAll('.power-xbox');
-	const pwrs = document.getElementsByClassName('power-table-power');
-	const sits = document.getElementsByClassName('power-table-sit');
-	const deletesDiv = document.getElementsByClassName('power-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.power-xbox';
+	const divs = ['power-table-power', 'power-table-sit', 'power-table-delete'];
+	const route = '/skill/power/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/power/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				pwrs[i].style.maxHeight = "0px";
-				pwrs[i].style.padding = "0px";
-				pwrs[i].style.marginBottom = "0px";
-				sits[i].style.maxHeight = "0px";
-				sits[i].style.padding = "0px";
-				sits[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 power_delete();

@@ -179,7 +179,12 @@ function clear_errors(line, div) {
 			errors_delete[i].style.maxHeight = "0px";
 			errors_delete[i].style.padding = "0px";
 			errors_delete[i].style.marginBottom = "0px";
-		}
+		};
+		setTimeout(function(){
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.display = 'none';
+			}
+		}, 400);
 
 		errors = document.getElementById(div);
 
@@ -207,6 +212,28 @@ function back_error(line, table) {
 	errors.style.padding = "1%";
 }
 
+function back_errors(line, table) {
+	const errors = document.getElementById(table);
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	const error_msgs = jsonResponse.error
+	let i;
+
+	for (i of error_msgs) {
+		const error = document.createElement('div');
+		error.className = line;
+		error.innerHTML = i;
+			
+		errors.appendChild(error);
+				
+		error.style.maxHeight = error.scrollHeight + "px";
+
+		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+		errors.style.padding = "1%";	
+	}
+}
 
 function delete_function(button, divs, route) {
 	const deletes = document.querySelectorAll(button);
@@ -239,6 +266,22 @@ function delete_function(button, divs, route) {
 		}
 	}
 };
+
+function show_maxheight(div_input) {
+	const div = document.getElementById(div_input);
+
+	setTimeout(function(){
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+	}, 300)
+}
+
+function hide_maxheight(div_input) {
+	const div = document.getElementById(div_input);
+
+	div.style.maxHeight = '0px';
+	setTimeout(function(){div.style.display = 'none'}, 300)
+}
 
 
 skill_create = function() {

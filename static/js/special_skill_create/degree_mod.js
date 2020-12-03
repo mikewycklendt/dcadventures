@@ -178,6 +178,8 @@ function deg_mod_submit() {
 	let desc = document.getElementById('deg_mod_desc').value;
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'deg-mod-err-line';
+	const error_table = 'deg-mod-err';
 
 	if ((target != '' && deg_value != '' && type == 'event' && key != '' && desc != '') || 
 		(target != '' && deg_value != '' && type == 'damage' && damage_type == 'math' && damage_math != '' && damage_math1 != '' && damage_math2 != '' && damage_val1 !=  '' && damage_val2 != '' && key != '' && desc != '') || 
@@ -300,39 +302,9 @@ function deg_mod_submit() {
 
 				deg_mod_delete()
 		
-				errors_delete = document.getElementsByClassName('deg-mod-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('deg-mod-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('deg-mod-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'deg-mod-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})				
 
@@ -468,44 +440,11 @@ function deg_mod_submit() {
 };
 
 deg_mod_delete = function() {
-	const deletes = document.querySelectorAll('.deg-mod-xbox');
-	const degs = document.getElementsByClassName('deg-mod-table-deg');
-	const effs = document.getElementsByClassName('deg-mod-table-effect');
-	const keys = document.getElementsByClassName('deg-mod-table-key');
-	const dess = document.getElementsByClassName('deg-mod-table-desc');
-	const nulls = document.getElementsByClassName('deg-mod-table-null');
-	const deletesDivs = document.getElementsByClassName('deg-mod-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.deg-mod-xbox';
+	const divs = ['deg-mod-table-deg', 'deg-mod-table-effect', 'deg-mod-table-key', 'deg-mod-table-desc', 'deg-mod-table-null', 'deg-mod-table-delete'];
+	const route = '/skill/degree_mod/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/degree_mod/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				degs[i].style.maxHeight = "0px";
-				degs[i].style.padding = "0px";
-				degs[i].style.marginBottom = "0px";
-				effs[i].style.maxHeight = "0px";
-				effs[i].style.padding = "0px";
-				effs[i].style.marginBottom = "0px";
-				keys[i].style.maxHeight = "0px";
-				keys[i].style.padding = "0px";
-				keys[i].style.marginBottom = "0px";
-				dess[i].style.maxHeight = "0px";
-				dess[i].style.padding = "0px";
-				dess[i].style.marginBottom = "0px";
-				nulls[i].style.maxHeight = "0px";
-				nulls[i].style.padding = "0px";
-				nulls[i].style.marginBottom = "0px";
-				deletesDivs[i].style.maxHeight = "0px";
-				deletesDivs[i].style.padding = "0px";
-				deletesDivs[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 deg_mod_delete();

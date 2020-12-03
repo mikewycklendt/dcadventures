@@ -36,6 +36,8 @@ function levels_submit() {
 	let dc_value =  dc_field.options[dc_field.selectedIndex].value;
 	
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'levels-err-line';
+	const error_table = 'levels-err';
 
 	console.log(bonus_level)
 	
@@ -111,39 +113,9 @@ function levels_submit() {
 
 				levels_delete()
 		
-				errors_delete = document.getElementsByClassName('levels-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('levels-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('levels-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'levels-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -223,37 +195,11 @@ function levels_submit() {
 };
 
 levels_delete = function() {
-	const deletes = document.querySelectorAll('.levels-xbox');
-	const dcs = document.getElementsByClassName('levels-table-dc');
-	const lvls = document.getElementsByClassName('levels-table-level');
-	const efcts = document.getElementsByClassName('levels-table-effect');
-	const deletesDiv = document.getElementsByClassName('levels-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.levels-xbox';
+	const divs = ['levels-table-dc', 'levels-table-level', 'levels-table-effect', 'levels-table-delete'];
+	const route = '/skill/level/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/level/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				dcs[i].style.maxHeight = "0px";
-				dcs[i].style.padding = "0px";
-				dcs[i].style.marginBottom = "0px";
-				lvls[i].style.maxHeight = "0px";
-				lvls[i].style.padding = "0px";
-				lvls[i].style.marginBottom = "0px";
-				efcts[i].style.maxHeight = "0px";
-				efcts[i].style.padding = "0px";
-				efcts[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 levels_delete();

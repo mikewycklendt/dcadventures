@@ -31,7 +31,9 @@ function opposed_by_submit() {
 	console.log(sit_value)
 
 	const bonus_id = document.getElementById('bonus_id').value;
-	
+	const error_line = 'opposed-by-err-line';
+	const error_table = 'opposed-by-err';
+
 	if (opposed_value != '' && mod_value != '' && sit_value != '' && opposed_by_by_value != '') {
 
 		response = fetch('/skill/opposed/create', {
@@ -103,39 +105,9 @@ function opposed_by_submit() {
 
 				opposed_delete()
 	
-				errors_delete = document.getElementsByClassName('opposed-by-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('opposed-by-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('pre-check-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'pre-check-err-line';
-				error.innerHTML = jsonResponse.error;
-	
-				errors.appendChild(error);
-	
-				error.style.maxHeight = error.scrollHeight + "px";
-	
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -203,37 +175,11 @@ function opposed_by_submit() {
 };
 
 opposed_delete = function() {
-	const deletes = document.querySelectorAll('.opposed-by-xbox');
-	const opposeds = document.querySelectorAll('.opposed-by-table-oppose');
-	const modss = document.querySelectorAll('.opposed-by-table-mod');
-	const sits = document.querySelectorAll('.opposed-by-table-sit');
-	const deletesDiv = document.querySelectorAll('.opposed-by-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const deletes = '.opposed-by-xbox';
+	const divs = ['.opposed-by-table-oppose', '.opposed-by-table-mod', '.opposed-by-table-sit', '.opposed-by-table-delete'];
+	const route = '/skill/opposed/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/opposed/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-
-				opposeds[i].style.maxHeight = "0px";
-				opposeds[i].style.padding = "0px";
-				opposeds[i].style.marginBottom = "0px";
-				modss[i].style.maxHeight = "0px";
-				modss[i].style.padding = "0px";
-				modss[i].style.marginBottom = "0px";
-				sits[i].style.maxHeight = "0px";
-				sits[i].style.padding = "0px";
-				sits[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(deletes, divs, route);
 };
 
 opposed_delete();

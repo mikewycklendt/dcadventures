@@ -4,15 +4,13 @@ function untrained_check() {
 	
 	if (untrained_check.checked == true) {
 		untrained_details_field.style.display = "grid";
+		setTimeout(function(){untrained_details_field.style.opacity = '100%'}, 10);
 	} else {
-		untrained_details_field.style.display = "none";
+		untrained_details_field.style.opacity = '0%';
+		setTimeout(function(){untrained_details_field.style.display = 'none'}, 400);
 	}
 
-	if (untrained_check.checked != false) {
-		untrained_details_field.style.opacity = "100%";
-	} else {
-		untrained_details_field.style.display = "none";
-	}
+
 }
 
 function subskill_check() {
@@ -43,18 +41,18 @@ function prep_type() {
 	const prep_field = document.getElementById('prep_type');
 	let prep = prep_field.options[prep_field.selectedIndex].value;
 
-	const prep_value = document.getElementById('prep-value');
-	const prep_math = document.getElementById('prep-math-rank');
+	const prep_value = 'prep-value';
+	const prep_math = 'prep-math-rank';
 		
 	if (prep == 'value') {
-		prep_value.style.display = 'grid';
-		prep_math.style.display = 'none';
+		hide_maxheight(prep_math);
+		show_maxheight(prep_value);
 	} else if (prep == 'math') {
-		prep_math.style.display = 'grid';
-		prep_value.style.display = 'none';
+		hide_maxheight(prep_value);
+		show_maxheight(prep_math);
 	}
 	else {
-		prep_math.style.display = 'grid';
-		prep_value.style.display = 'none';		
+		hide_maxheight(prep_value);
+		hide_maxheight(prep_math);		
 	}
 }

@@ -161,11 +161,11 @@ function pre_check_submit() {;
 				pre_check_standard_delete();
 				pre_check_opposed_delete();
 
-				clear_errors(error_line, error_table)
+				clear_errors(error_line, error_table);
 
 			} else {
 
-				back_error(error_line, error_table)
+				back_error(error_line, error_table);
 			}
 		})
 

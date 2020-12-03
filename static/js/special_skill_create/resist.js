@@ -17,6 +17,8 @@ function resist_submit() {
 	console.log
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'resist-effect-err-line';
+	const error_table = 'resist-effect-err';
 	
 	if (eff_value != '' && ex_value != '') {
 
@@ -78,40 +80,10 @@ function resist_submit() {
 
 				resist_delete()
 	
-				errors_delete = document.getElementsByClassName('resist-effect-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('resist-effect-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-				}
+				clear_errors(error_line, error_table);
 
 			} else {
-				const errors = document.getElementById('resist-effect-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'resist-effect-err-line';
-				error.innerHTML = jsonResponse.error;
-
-				errors.appendChild(error);
-
-				error.style.maxHeight = error.scrollHeight + "px";
-
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 
@@ -157,32 +129,11 @@ function resist_submit() {
 };
 
 resist_delete = function() {
-	const deletes = document.querySelectorAll('.resist-effect-xbox');
-	const effs = document.getElementsByClassName('resist-effect-table-eff');
-	const exs = document.getElementsByClassName('resist-effect-table-ex');
-	const deletesDiv = document.getElementsByClassName('resist-effect-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/skill/resist/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				effs[i].style.maxHeight = "0px";
-				effs[i].style.padding = "0px";
-				effs[i].style.marginBottom = "0px";
-				exs[i].style.maxHeight = "0px";
-				exs[i].style.padding = "0px";
-				exs[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-				})
-		}
-	}
+	const deletes = '.resist-effect-xbox';
+	const divs = ['resist-effect-table-eff', 'resist-effect-table-ex', 'resist-effect-table-delete'];
+	const route = '/skill/resist/delete/';
+	
+	delete_function(deletes, divs, route);
 };
 
 resist_delete();

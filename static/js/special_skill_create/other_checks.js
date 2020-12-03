@@ -12,6 +12,8 @@ function other_submit() {
 	let skill_value =  skill_field.options[skill_field.selectedIndex].value; 
 
 	const bonus_id = document.getElementById('bonus_id').value;
+	const error_line = 'other-err-line';
+	const error_table = 'other-err';
 
 	console.log(bonus_id)
 	
@@ -75,40 +77,9 @@ function other_submit() {
 
 				other_delete()
 	
-				errors_delete = document.getElementsByClassName('other-err-line');
-
-				if (typeof errors_delete[0] === "undefined") {
-					console.log('no errors defined')
-				} else {
-					for (i = 0; i < errors_delete.length; i++) {
-						errors_delete[i].style.maxHeight = "0px";
-						errors_delete[i].style.padding = "0px";
-						errors_delete[i].style.marginBottom = "0px";
-					}
-
-					errors = document.getElementById('other-err')
-
-					errors.style.display = "none";
-					errors.style.padding = "0px";
-					errors.style.maxHeight = "0px";
-
-				}
+				clear_errors(error_line, error_table);
 			} else {
-				const errors = document.getElementById('other-err');
-
-				errors.style.display = "grid";
-				errors.style.padding = "1%";
-
-				const error = document.createElement('div');
-				error.className = 'other-err-line';
-				error.innerHTML = jsonResponse.error;
-	
-				errors.appendChild(error);
-	
-				error.style.maxHeight = error.scrollHeight + "px";
-	
-				errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
-				errors.style.padding = "1%";
+				back_error(error_line, error_table);
 			}
 		})
 	} else {
@@ -155,32 +126,11 @@ function other_submit() {
 };
 
 other_delete = function() {
-	const deletes = document.querySelectorAll('.other-xbox');
-	const skills = document.getElementsByClassName('other-table-skill');
-	const examples = document.getElementsByClassName('other-table-examples');
-	const deletesDiv = document.getElementsByClassName('other-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-
-			const delId = e.target.dataset['id'];
-			fetch('/skill/other_checks/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				console.log('click')
-				skills[i].style.maxHeight = "0px";
-				skills[i].style.padding = "0px";
-				skills[i].style.marginBottom = "0px";
-				examples[i].style.maxHeight = "0px";
-				examples[i].style.padding = "0px";
-				examples[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})			
-		}
-	}
+	const deletes = '.other-xbox';
+	const divs = ['other-table-skill', 'other-table-examples', 'other-table-delete'];
+	const route = '/skill/other_checks/delete/';
+	
+	delete_function(deletes, divs, route);
 };
 
 other_delete();
