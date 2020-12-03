@@ -485,7 +485,7 @@ def delete_bonus_other_checks(bonus_id):
 		return jsonify({'success': True})
 
 @skills.route('/skill/alt_check/create', methods=['POST'])
-def post_bonus_other_checks():
+def post_bonus_alt_check():
 	body = {}
 
 	bonus_id = request.get_json()['bonus_id']
