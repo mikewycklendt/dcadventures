@@ -179,104 +179,27 @@ function pre_check_submit() {;
 	}		
 };
 
-function pre_check_standard_errors(standard_skill_value, standard_circ_value, standard_when_value) {
-	errors_delete = document.getElementsByClassName('pre-check-err-line');
-	
-	for (i = 0; i < errors_delete.length; i++) {
-		errors_delete[i].style.display = "none";
-	}
-	errors = document.getElementById('pre-check-err')
-
-	errors.style.display = "grid";
-	errors.style.padding = "1%";
-
-	let errors_height = errors.scrollHeight + 20;
-
-	if (standard_skill_value == '') {
-		const error = document.createElement('div');
-		error.className = 'pre-check-err-line'
-		error.innerHTML = ' You must choose a skill value';
-
-		errors.appendChild(error);
-
-		error.style.maxHeight = error.scrollHeight + "px";
-		errors_height = errors_height + error.scrollHeight; 
-	}
-
-	if (standard_circ_value == '') {
-		const error = document.createElement('div');
-		error.className = 'pre-check-err-line'
-		error.innerHTML = ' You must enter a circumstance';
-
-		errors.appendChild(error);
-
-		error.style.maxHeight = error.scrollHeight + "px";
-		errors_height = errors_height + error.scrollHeight; 
-	}
-
-	if (standard_when_value == '') {
-		const error = document.createElement('div');
-		error.className = 'pre-check-err-line'
-		error.innerHTML = ' You must specify when this requirement occurs';
-
-		errors.appendChild(error);
-
-		error.style.maxHeight = error.scrollHeight + "px";
-		errors_height = errors_height + error.scrollHeight; 
-	}
-
-	if (pre_check_type_value == '') {
-		const error = document.createElement('div');
-		error.className = 'pre-check-err-line'
-		error.innerHTML = ' You must choose a check type';
-
-		errors.appendChild(error);
-
-		error.style.maxHeight = error.scrollHeight + "px";
-		errors_height = errors_height + error.scrollHeight; 
-	}
-
-	errors.style.maxHeight = errors_height + "px";
-	errors.style.padding = "1%";
-
-}
 
 
 pre_check_standard_delete = function() {
-	const deletes = document.querySelectorAll('.pre-check-standard-xbox');
-	const skills = document.getElementsByClassName('pre-check-table-skill');
-	const circs = document.getElementsByClassName('pre-check-table-circ');
-	const whens = document.getElementsByClassName('pre-check-table-when');
-	const deletesDiv = document.getElementsByClassName('pre-check-table-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
+	const button = '.pre-check-standard-xbox';
+	const divs = ['pre-check-table-skill', 'pre-check-table-circ', 'pre-check-table-when', 'pre-check-table-delete'];
+	const route = '/skill/pre_check/delete/';
 
-			const delId = e.target.dataset['id'];
-			fetch('/skill/pre_check/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				skills[i].style.maxHeight = "0px";
-				skills[i].style.padding = "0px";
-				skills[i].style.marginBottom = "0px";
-				circs[i].style.maxHeight = "0px";
-				circs[i].style.padding = "0px";
-				circs[i].style.marginBottom = "0px";
-				whens[i].style.maxHeight = "0px";
-				whens[i].style.padding = "0px";
-				whens[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-			})
-		}
-	}
+	delete_function(button, divs, route);
 };
 
 pre_check_standard_delete();
 
+pre_check_opposed_delete = function() {
+	const deletes = '.pre-check-opposed-xbox';
+	const divs = ['pre-check-table-opposed-skill', 'pre-check-table-opposed-circ', 'pre-check-table-opposed-when', 'pre-check-table-opposedby', 'pre-check-table-opposed-delete'];
+	const route = '/skill/pre_check/delete/';
+
+	delete_function(deletes, divs, route);
+};
+
+pre_check_opposed_delete();
 
 function pre_check_opposed_errors(opposed_skill_value, opposed_circ_value, opposed_when_value, opposed_value) {
 	errors_delete = document.getElementsByClassName('pre-check-err-line');
@@ -350,41 +273,64 @@ function pre_check_opposed_errors(opposed_skill_value, opposed_circ_value, oppos
 	errors.style.padding = "1%";
 }
 
-pre_check_opposed_delete = function() {
-	const deletes = document.querySelectorAll('.pre-check-opposed-xbox');
-	const skills = document.getElementsByClassName('pre-check-table-opposed-skill');
-	const circs = document.getElementsByClassName('pre-check-table-opposed-circ');
-	const whens = document.getElementsByClassName('pre-check-table-opposed-when');
-	const opposeds = document.getElementsByClassName('pre-check-table-opposedby');
-	const deletesDiv = document.getElementsByClassName('pre-check-table-opposed-delete');
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click')
-
-			const delId = e.target.dataset['id'];
-			fetch('/skill/pre_check/delete/' + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				skills[i].style.maxHeight = "0px";
-				skills[i].style.padding = "0px";
-				skills[i].style.marginBottom = "0px";
-				circs[i].style.maxHeight = "0px";
-				circs[i].style.padding = "0px";
-				circs[i].style.marginBottom = "0px";
-				whens[i].style.maxHeight = "0px";
-				whens[i].style.padding = "0px";
-				whens[i].style.marginBottom = "0px";
-				opposeds[i].style.maxHeight = "0px";
-				opposeds[i].style.padding = "0px";
-				opposeds[i].style.marginBottom = "0px";
-				deletesDiv[i].style.maxHeight = "0px";
-				deletesDiv[i].style.padding = "0px";
-				deletesDiv[i].style.marginBottom = "0px";
-				})
-		}
+function pre_check_standard_errors(standard_skill_value, standard_circ_value, standard_when_value) {
+	errors_delete = document.getElementsByClassName('pre-check-err-line');
+	
+	for (i = 0; i < errors_delete.length; i++) {
+		errors_delete[i].style.display = "none";
 	}
-};
+	errors = document.getElementById('pre-check-err')
 
-pre_check_opposed_delete();
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	let errors_height = errors.scrollHeight + 20;
+
+	if (standard_skill_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must choose a skill value';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (standard_circ_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must enter a circumstance';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (standard_when_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must specify when this requirement occurs';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (pre_check_type_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must choose a check type';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	errors.style.maxHeight = errors_height + "px";
+	errors.style.padding = "1%";
+
+}

@@ -207,6 +207,34 @@ function back_error(line, table) {
 	errors.style.padding = "1%";
 }
 
+
+function delete_function(button, divs, route) {
+	const deletes = document.querySelectorAll(button);
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click')
+
+			const delId = e.target.dataset['id'];
+			fetch(route + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+
+				let div_name;
+				for (div_name of divs) {
+					div = document.getElementsByClassName(div_name);
+					div[i].style.maxHeight = '0px';
+					div[i].style.padding = '0px';
+					div[i].style.marginBottom = '0px';
+					setTimeout(function(){div[i].style.display = 'none';}, 400);
+				}
+			})
+		}
+	}
+};
+
+
 skill_create = function() {
 	const skill_name = document.getElementById('skill_name').value;
 	const add_skill = document.getElementById('add-skill');
