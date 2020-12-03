@@ -1,12 +1,16 @@
 function dc_set() {
 	const dc_set_field = document.getElementById('dc_set');
 	let dc_set = dc_set_field.options[dc_set_field.selectedIndex].value;
+	const check = document.getElementById("alt_check_check");
 
 	const dc_table = document.getElementById('dc-levels');
 
 	if (dc_set == 'table') {
 		dc_table.style.display = 'grid';
 		setTimeout(function(){dc_table.style.opacity = '100%'}, 10);
+	} else if (dc_set != 'table' && check.checked == false) {
+		dc_table.style.opacity =  '0%';
+		setTimeout(function(){dc_table.style.display = 'none';}, 400)
 	}
 
 }
