@@ -3,7 +3,8 @@ function alt_check_entry() {
 	const entry = "alt-check-entry";
 	const title = "alt-check-title";
 
-	
+	console.log('click')
+
 	const dc_set_field = document.getElementById('dc_set');
 	let dc_set = dc_set_field.options[dc_set_field.selectedIndex].value;
 
