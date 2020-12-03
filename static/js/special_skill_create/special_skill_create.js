@@ -157,7 +157,7 @@ function check_title_small(check_input, title_input, base_input, entry_input) {
 
 function entry_hide(entry_input) {
 	const entry = document.getElementById(entry_input);
-	entry.style.maxheight = '0px';
+	entry.style.maxHeight = '0px';
 	setTimeout(function(){entry.style.display = 'none';}, 400);
 }
 
