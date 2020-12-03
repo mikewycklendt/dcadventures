@@ -1,12 +1,16 @@
 #subskill {
-	display: grid;
+	display: none;
 	width: 100%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
 	padding: 2%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	margin-bottom: 20px;
+	margin-bottom: 4.5vw;
+	max-height: 0; 
+	overflow: hidden; 
+	transition: all .4s ease-out; 
+	opacity: 0%;
 }
 
 #sub-header {
