@@ -227,8 +227,14 @@ function delete_function(button, divs, route) {
 					div[i].style.maxHeight = '0px';
 					div[i].style.padding = '0px';
 					div[i].style.marginBottom = '0px';
-					setTimeout(function(){div[i].style.display = 'none';}, 400);
-				}
+				};
+
+				setTimeout(function(){
+					for (div_name of divs) {
+						div = document.getElementsByClassName(div_name);
+						div[i].style.display = 'none';
+					}
+				}, 400);
 			})
 		}
 	}
