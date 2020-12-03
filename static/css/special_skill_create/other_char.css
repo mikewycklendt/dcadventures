@@ -225,7 +225,7 @@
 	transition: all .4s ease-out;
 }
 
-#char-table-des {
+.char-table-des {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
