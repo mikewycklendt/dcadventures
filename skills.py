@@ -830,7 +830,7 @@ def post_bonus_circ():
 	body['skill'] = skill.name
 	body['target'] = bonus.target
 	body['type'] = bonus.type
-	body['mod'] = bonus.mod	b
+	body['mod'] = bonus.mod
 	body['unit_mod'] = bonus.unit_mod
 	body['unit_value'] = bonus.unit_value
 	body['unit_type'] = unit_name
