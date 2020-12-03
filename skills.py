@@ -847,6 +847,7 @@ def post_bonus_circ():
 		error_msgs.append('There was an error processing the request')
 		body['success'] = False
 		body['error'] = error_msgs
+		db.session.rollback()
 
 	finally:
 		db.session.close()
