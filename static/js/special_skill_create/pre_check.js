@@ -171,66 +171,75 @@ function pre_check_submit() {;
 
 	} else {
 
-		errors_delete = document.getElementsByClassName('pre-check-err-line');
-
-		for (i = 0; i < errors_delete.length; i++) {
-			errors_delete[i].style.display = "none";
+		if (pre_check_type_value == 'skill') {
+			pre_check_standard_errors()
+		} else if (pre_check_type_value == 'opposed') {
+			pre_check_opposed_errors()
 		}
-		errors = document.getElementById('pre-check-err')
-
-		errors.style.display = "grid";
-		errors.style.padding = "1%";
-
-		let errors_height = errors.scrollHeight + 20;
-
-		if (standard_skill_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must choose a skill value';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (standard_circ_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must enter a circumstance';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (standard_when_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must specify when this requirement occurs';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (pre_check_type_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must choose a check type';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		errors.style.maxHeight = errors_height + "px";
-		errors.style.padding = "1%";
-	}
+	}		
 };
+
+function pre_check_standard_errors() {
+	errors_delete = document.getElementsByClassName('pre-check-err-line');
+	
+	for (i = 0; i < errors_delete.length; i++) {
+		errors_delete[i].style.display = "none";
+	}
+	errors = document.getElementById('pre-check-err')
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	let errors_height = errors.scrollHeight + 20;
+
+	if (standard_skill_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must choose a skill value';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (standard_circ_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must enter a circumstance';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (standard_when_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must specify when this requirement occurs';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (pre_check_type_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must choose a check type';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	errors.style.maxHeight = errors_height + "px";
+	errors.style.padding = "1%";
+
+}
 
 
 pre_check_standard_delete = function() {
@@ -404,77 +413,80 @@ function pre_check_opposed_submit() {
 		})
 	} else {
 
-		errors_delete = document.getElementsByClassName('pre-check-err-line');
-
-		for (i = 0; i < errors_delete.length; i++) {
-			errors_delete[i].style.display = "none";
-		}
-		errors = document.getElementById('pre-check-err')
-
-		errors.style.display = "grid";
-		errors.style.padding = "1%";
-
-		let errors_height = errors.scrollHeight + 20;
-
-		if (opposed_skill_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must choose a skill valure';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (opposed_circ_value != '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must enter a circumstance';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (opposed_when_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must specify when this requirement occurs';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (opposed_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must specify the opposed value';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		if (pre_check_type_value == '') {
-			const error = document.createElement('div');
-			error.className = 'pre-check-err-line'
-			error.innerHTML = ' You must CHOOSE A CHECK TYPE';
-
-			errors.appendChild(error);
-
-			error.style.maxHeight = error.scrollHeight + "px";
-			errors_height = errors_height + error.scrollHeight; 
-		}
-
-		errors.style.maxHeight = errors_height + "px";
-		errors.style.padding = "1%";
 	}
 };
+
+function pre_check_opposed_errors() {
+	errors_delete = document.getElementsByClassName('pre-check-err-line');
+
+	for (i = 0; i < errors_delete.length; i++) {
+		errors_delete[i].style.display = "none";
+	}
+	errors = document.getElementById('pre-check-err')
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	let errors_height = errors.scrollHeight + 20;
+
+	if (opposed_skill_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must choose a skill valure';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (opposed_circ_value != '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must enter a circumstance';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (opposed_when_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must specify when this requirement occurs';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (opposed_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must specify the opposed value';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	if (pre_check_type_value == '') {
+		const error = document.createElement('div');
+		error.className = 'pre-check-err-line'
+		error.innerHTML = ' You must CHOOSE A CHECK TYPE';
+
+		errors.appendChild(error);
+
+		error.style.maxHeight = error.scrollHeight + "px";
+		errors_height = errors_height + error.scrollHeight; 
+	}
+
+	errors.style.maxHeight = errors_height + "px";
+	errors.style.padding = "1%";
+}
 
 pre_check_opposed_delete = function() {
 	const deletes = document.querySelectorAll('.pre-check-opposed-xbox');
