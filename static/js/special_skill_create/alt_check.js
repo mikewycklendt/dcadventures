@@ -12,6 +12,9 @@ function alt_check_entry() {
 	if (check.checked == true || dc_set == 'table') {
 		dc_table.style.display = 'grid';
 		setTimeout(function(){dc_table.style.opacity = '100%'}, 10);
+	} else if (check.checked == false && dc_set != 'table'){
+		dc_table.style.opacity  = '0%';
+		setTimeout(function(){dc_table.style.display = 'none';}, 400);
 	}
 }
 
