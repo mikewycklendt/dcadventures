@@ -848,9 +848,10 @@ def post_bonus_circ():
 		body['success'] = False
 		body['error'] = error_msgs
 
-	db.session.close()
-	print(body)
-	return jsonify(body)
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
 
 @skills.route('/skill/circ/delete/<bonus_id>', methods=['DELETE'])
 def delete_bonus_circ(bonus_id):
