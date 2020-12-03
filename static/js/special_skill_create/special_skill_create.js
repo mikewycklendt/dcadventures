@@ -169,6 +169,44 @@ function entry_show(entry_input) {
 	}, 400)
 }
 
+function clear_errors(line, div) {
+	errors_delete = document.getElementsByClassName(line);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		}
+
+		errors = document.getElementById(div);
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+	}
+}
+
+function back_error(line, table) {
+	const errors = document.getElementById(table);
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	const error = document.createElement('div');
+	error.className = line;
+	error.innerHTML = jsonResponse.error;
+	
+	errors.appendChild(error);
+	
+	error.style.maxHeight = error.scrollHeight + "px";
+	
+	errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+	errors.style.padding = "1%";
+}
+
 skill_create = function() {
 	const skill_name = document.getElementById('skill_name').value;
 	const add_skill = document.getElementById('add-skill');
