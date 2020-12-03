@@ -783,7 +783,7 @@ def post_bonus_circ():
 		unit_mod = None
 
 	if unit_value == '':
-		unit_value = None
+		unitvalue = None
 	else:
 		try:
 			unitvalue = int(unit_value)
