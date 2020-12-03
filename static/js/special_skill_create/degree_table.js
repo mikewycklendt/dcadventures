@@ -196,7 +196,7 @@ function degree_submit() {
 
 degree_delete = function() {
 	const deletes = '.degree-xbox';
-	const divs = ['.degree-table-deg', '.degree-table-key', '.degree-table-desc', '.degree-table-delete'];
+	const divs = ['degree-table-deg', 'degree-table-key', 'degree-table-desc', 'degree-table-delete'];
 	const route = '/skill/degree_key/delete/';
 
 	delete_function(deletes, divs, route);

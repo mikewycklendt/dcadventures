@@ -199,7 +199,7 @@ function char_submit() {
 
 char_delete = function() {
 	const deletes = '.char-xbox';
-	const divs = ['.char-table-deg', '.char-table-chk', '.char-table-rnk', '.char-table-des', '.char-table-tar', '.char-table-delete'];
+	const divs = ['char-table-deg', 'char-table-chk', 'char-table-rnk', 'char-table-des', 'char-table-tar', 'char-table-delete'];
 	const route = '/skill/char_check/delete/';
 
 	delete_function(deletes, divs, route);

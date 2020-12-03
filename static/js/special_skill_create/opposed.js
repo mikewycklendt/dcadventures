@@ -176,7 +176,7 @@ function opposed_by_submit() {
 
 opposed_delete = function() {
 	const deletes = '.opposed-by-xbox';
-	const divs = ['.opposed-by-table-oppose', '.opposed-by-table-mod', '.opposed-by-table-sit', '.opposed-by-table-delete'];
+	const divs = ['opposed-by-table-oppose', 'opposed-by-table-mod', 'opposed-by-table-sit', 'opposed-by-table-delete'];
 	const route = '/skill/opposed/delete/';
 
 	delete_function(deletes, divs, route);

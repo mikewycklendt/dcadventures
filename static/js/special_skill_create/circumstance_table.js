@@ -317,7 +317,7 @@ function circ_submit() {
 
 circ_delete = function() {
 	const deletes = '.circ-xbox';
-	const divs = ['.circ-table-modifier', '.circ-table-rounds', '.circ-table-circ', '.circ-table-delete'];
+	const divs = ['circ-table-modifier', 'circ-table-rounds', 'circ-table-circ', 'circ-table-delete'];
 	const route = '/skill/circ/delete/';
 
 	delete_function(deletes, divs, route)
