@@ -1,11 +1,7 @@
 function alt_check_entry() {
-	const check = "alt_check_check";
-	const entry = "alt-check-entry";
+	const check = document.getElementById("alt_check_check");
 	const title = "alt-check-title";
 
-	logthis = check.checked;
-
-	console.log(logthis);
 
 	const dc_set_field = document.getElementById('dc_set');
 	let dc_set = dc_set_field.options[dc_set_field.selectedIndex].value;
