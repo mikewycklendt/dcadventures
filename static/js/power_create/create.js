@@ -78,24 +78,11 @@ function create_move_opponent_check() {
 }
 
 function create_trap_type() {
-	const field = document.getElementById('create_trap_type');
-	const val = field.options[field.selectedIndex].value;
-	const dc = document.getElementById('create-trap-dc');
-	const tr = document.getElementById('create-trap-trait');
+	const field = 'create_trap_type';
+	const options = [{'val': 'dc', 'div': 'create-trap-dc'},
+				{'val': 'trait', 'div': 'create-trap-trait'}];
 
-	console.log(val)
-
-	if (val == 'dc') {
-		hide_maxheight(tr);
-		show_maxheight(dc);
-	} else if (val == 'trait') {
-		hide_maxheight(dc);
-		show_maxheight(tr);
-	} else {
-		hide_maxheight(dc);
-		hide_maxheight(tr);
-	}
-
+	select_maxheight(field, options);
 }
 
 function create_trap_trait_type() {
