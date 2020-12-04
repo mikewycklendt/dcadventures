@@ -91,6 +91,7 @@
 #degree-cum {
 	display: grid;
 	grid-area: cum;
+	grid-template-columns: 50% 50%;
 }
 
 #degree-des-title {

@@ -60,8 +60,18 @@
 		</div>
 
 		<div id="degree-cum">
-			<div class="check-div">
-				<input type="checkbox" id="mod_cumulative" class="medium-checkbox med-checkbox"> Cumulative
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="mod_cumulative" class="medium-checkbox med-checkbox"> Cumulative
+				</div>
+			</div>
+
+			<div>
+				<select class="select-sml" id="degree_target" name="degree_target">
+					{% for t in targets %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
 		</div>
 
