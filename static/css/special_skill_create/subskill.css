@@ -10,7 +10,6 @@
 	max-height: 0; 
 	overflow: hidden; 
 	transition: all .4s ease-out; 
-	opacity: 0%;
 }
 
 #sub-header {
