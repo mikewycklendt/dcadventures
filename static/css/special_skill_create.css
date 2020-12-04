@@ -37,12 +37,13 @@
 }
 
 #box-title {
-	display: table-cell;
+	display: flex;
+	align-items: center;
 	width: 85%;
 	height: auto;
 	margin-top: 2%;
 	margin-left: 8%;
-	margin-bottom: 2%;
+	margin-bottom: 2vw;
 	border-radius: 35px;
 	border: 3px solid lightblue;
 	justify-content: center;
