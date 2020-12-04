@@ -23,21 +23,11 @@ function resistance_trait_type() {
 }
 
 function resistance_check_type() {
-	const field = document.getElementById('resistance_check_type');
-	const value = field.options[field.selectedIndex].value;
-	const des = 'resistance-descriptor';
-	const tra = 'resistance-trait';
+	const field = 'resistance_check_type';
+	const options = [{'val': 'descriptor', 'div': 'resistance-descriptor'},
+				{'val': 'trait', 'div': 'resistance-trait'}];
 
-	if (value == 'trait') {
-		hide_opacity(des);
-		show_opacity(tra);
-	} else if (value == 'descriptor') {
-		hide_opacity(tra);
-		show_opacity(des);
-	} else {
-		hide_opacity(tra);
-		hide_opacity(des);
-	}
+	select_opacity(field, options);
 }
 
 function resistance_check_trait_type() {
