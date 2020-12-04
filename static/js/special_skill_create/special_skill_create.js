@@ -324,10 +324,10 @@ function select_maxheight_entry(select, options, entry) {
 	console.log(val);
 
 	for (option of options) {
-		let value = option.value;
+		let valu = option.value;
 		let div = option.div;
 
-		if (val != value) {
+		if (val != valu) {
 			hide_maxheight(div);
 		} else {
 			show_maxheight(div);
@@ -338,10 +338,10 @@ function select_maxheight_entry(select, options, entry) {
 		shrink_entry(entry, adiv)
 	} else {
 		for (option of options) {
-			let value = option.value;
+			let valu = option.value;
 			let div = option.div;
 	
-			if (val == value) {
+			if (val == valu) {
 				grow_entry(entry, div);
 			}
 		}
