@@ -132,7 +132,7 @@
 	width: 100%;
 	height: auto;
 	padding: 4px;
-	grid-template-columns: 20% 20% 15% 29% 25%;
+	grid-template-columns: 20% 20% 15% 20% 25%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
