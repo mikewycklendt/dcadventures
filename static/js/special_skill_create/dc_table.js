@@ -9,19 +9,12 @@ function dc_set() {
 		dc_table.style.display = 'grid';
 		setTimeout(function(){dc_table.style.opacity = '100%'}, 10);
 	} else if (dc_set != 'table' && check.checked == false) {
-		dc_table.style.opacity =  '0%';
+		dc_table.style.opacity = '0%';
 		setTimeout(function(){dc_table.style.display = 'none';}, 400)
 	}
 
 }
 
-function dc_dc_type() {
-	const type_field = 'dc_type';
-	const dc_class = 'dc-class';
-	const dc_math = 'dc-math';
-
-	value_type_maxheight(type_field, dc_math, dc_class);
-}
 
 function dc_mea_click() {
 	const mea_grid = 'dc-measure-field';
