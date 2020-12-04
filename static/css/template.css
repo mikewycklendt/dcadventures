@@ -101,9 +101,6 @@ body{
 .container{
 	display: grid;
 	grid-area: wholepage;
-	justify-content: center;
-	align-content: center;
-	vertical-align: middle;
 	width: 70%;
 	height: 100%;
 	margin: 0px;
