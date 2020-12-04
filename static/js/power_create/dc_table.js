@@ -23,32 +23,12 @@ function dc_math_trait_type() {
 }
 
 function dc_dc() {
-	const field = document.getElementById('dc_dc');
-	const value = field.options[field.selectedIndex].value;
-	const val = 'dc-value';
-	const math = 'dc-math';
+	const field = 'dc_dc';
+	const options = [{'val': 'value', 'div': 'dc-value'},
+				{'val': 'math', 'div': 'dc-math'}]
 	const entry = 'dc-entry';
 
-	if (value == 'value') {
-		show_maxheight(val);
-		hide_maxheight(math)
-	} else if (value == 'math') {
-		show_maxheight(math);
-		hide_maxheight(val)
-	} else {
-		hide_maxheight(val);
-		hide_maxheight(math)	
-	}
-
-	if ((value != 'value') && (value != 'math')) {
-		shrink_entry(entry, val)
-	} else {
-		if (value == 'math') {
-			grow_entry(entry, math);
-		} else if (value == 'value') {
-			grow_entry(entry, val);
-		}
-	}
+	select_maxheight_entry(field, options, entry);
 }
 
 function dc_time() {
