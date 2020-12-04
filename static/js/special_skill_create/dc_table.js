@@ -383,6 +383,17 @@ function dc_submit() {
 
 		let errors_height = errors.scrollHeight + 20;
 
+		if (type_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You must choose a dc type value.';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+		
 		if (des_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
