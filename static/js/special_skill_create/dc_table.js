@@ -427,6 +427,17 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
+		if (mea_check == true && mea_type_value == '') { 
+			const error = document.createElement('div');
+			error.className = 'dc-err-line'
+			error.innerHTML = ' You choose a measurement type or uncheck the measurement box';
+
+			errors.appendChild(error);
+
+			error.style.maxHeight = error.scrollHeight + "px";
+			errors_height = errors_height + error.scrollHeight; 
+		}
+		
 		if (mea_type_value == 'math' && (mea_math_val_value == '' || mea_math_value == '' || mea_math_rnk_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
