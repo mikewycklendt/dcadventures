@@ -93,7 +93,7 @@
 	padding: 4px;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .2s ease-out;
+	transition: all .3s ease-out;
 }
 
 #resist-damage {
@@ -105,7 +105,7 @@
 	padding: 4px;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .2s ease-out;
+	transition: all .3s ease-out;
 }
 
 #resist-table {
