@@ -1293,7 +1293,7 @@ def post_bonus_dc():
 	measure_check = request.get_json()['measure_check']
 	damage_check = request.get_json()['damage_check']
 	keyword_check = request.get_json()['keyword_check']
-	defense_check = request.get_json()'defense_check']
+	defense_check = request.get_json()['defense_check']
 	condition_check = request.get_json()['condition_check']
 	action_check = request.get_json()['action_check']
 
