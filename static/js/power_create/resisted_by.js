@@ -22,19 +22,9 @@ function resist_type() {
 }
 
 function resist_effect() {
-	const effect_field = document.getElementById("resist_eft");
-	const effect = effect_field.options[effect_field.selectedIndex].value;
-	const con = "resist-condition";
-	const dam = "resist-damage";
+	const field = "resist_eft";
+	const options = [{'val': 'condition', 'div': "resist-condition"},
+					{'val': 'damage', 'div': "resist-damage"}];
 
-	if (effect == 'condition') {
-		hide_maxheight(dam);
-		show_maxheight(con);
-	} else if (effect == 'damage') {
-		hide_maxheight(con);
-		show_maxheight(dam);
-	} else {
-		hide_maxheight(dam);
-		hide_maxheight(con);
-	}
+	select_opacity(field, options);
 }
