@@ -18,10 +18,9 @@ function circ_base() {
 
 function circ_mod() {
 	const select = 'circ_mod_type';
-	const options = [{'value': 'value', 'div': 'circ-mod-value'},
-					{'value': 'noequip', 'div': 'circ-mod-value'},
-					{'value': 'math', 'div': 'circ-mod-math'},
-					{'value': 'adjust', 'div': 'circ-mod-adjust'}];
+	const options = [{'val': 'value', 'div': 'circ-mod-value'},
+					{'val': 'math', 'div': 'circ-mod-math'},
+					{'val': 'adjust', 'div': 'circ-mod-adjust'}];
 	const entry = "circ-entry";
 
 	select_maxheight_entry(select, options, entry);
