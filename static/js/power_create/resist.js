@@ -25,7 +25,7 @@ function resistance_trait_type() {
 function resistance_check_type() {
 	const field = 'resistance_check_type';
 	const options = [{'val': 'descriptor', 'div': 'resistance-descriptor'},
-				{'val': 'trait', 'div': 'resistance-trait'}];
+					{'val': 'trait', 'div': 'resistance-trait'}];
 
 	select_opacity(field, options);
 }
