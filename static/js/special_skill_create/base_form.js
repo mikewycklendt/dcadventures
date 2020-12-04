@@ -13,7 +13,6 @@ function untrained_check() {
 
 }
 
-
 function secret_check() {
 	const secret_check = document.getElementById("secret_check");
 	const secret_mod = document.getElementById("secret-mod");
@@ -32,4 +31,11 @@ function prep_type() {
 	const prep_math = 'prep-math-rank';
 		
 	value_type_maxheight(prep_field, prep_math, prep_value);
+}
+
+function subskill_check() {
+	const subskill_check = "subskill_check";
+	const subskill = "subskill";
+	
+	check_drop(subskill_check, subskill);
 }

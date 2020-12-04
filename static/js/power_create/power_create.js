@@ -301,6 +301,77 @@ function grow_entry(entry_input, div_input) {
 	}, 300)
 }
 
+function select_maxheight_entry(select, options, entry) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+	const adiv = options[0].div;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_maxheight(div);
+		} else {
+			show_maxheight(div);
+		}
+	};
+
+	if (val == '') {
+		shrink_entry(entry, adiv)
+	} else {
+		for (option of options) {
+			let valu = option.val;
+			let div = option.div;
+	
+			if (val == valu) {
+				grow_entry(entry, div);
+			}
+		}
+	}
+}
+
+function select_opacity(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity(div);
+		} else {
+			show_opacity(div);
+		}
+	};
+}
+
+function select_maxheight(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_maxheight(div);
+		} else {
+			show_maxheight(div);
+		}
+	};
+}
+
 function base(field_input, entry_input) {
 	const field = document.getElementById(field_input)
 	const value = field.options[field.selectedIndex].value;

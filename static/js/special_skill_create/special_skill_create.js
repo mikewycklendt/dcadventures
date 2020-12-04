@@ -381,6 +381,25 @@ function select_opacity(select, options) {
 	};
 }
 
+function select_maxheight(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_maxheight(div);
+		} else {
+			show_maxheight(div);
+		}
+	};
+}
+
 function check_drop(field, divdrop) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divdrop);
