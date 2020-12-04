@@ -15,117 +15,28 @@ function deg_mod_base() {
 }
 
 function deg_mod_type() {
-	let deg_mod_type_field = document.getElementById('deg_mod_type');
-	let deg_mod_type_value = deg_mod_type_field.options[deg_mod_type_field.selectedIndex].value;
+	const select = 'deg_mod_type';
+	const options = [{'val': 'damage', 'div': 'deg-mod-damage'},
+					{'val': 'measure', 'div': 'deg-mod-measure'},
+					{'val': 'condition', 'div': 'deg-mod-condition'}]
 
-	console.log(deg_mod_type_value)
-	
-	let damage = document.getElementById('deg-mod-damage');
-	
-	let damage_type_field = document.getElementById('deg_mod_damage_type');
-	let damage_type_value = damage_type_field.options[damage_type_field.selectedIndex].value;
-	
-	let damage_math = document.getElementById('deg-mod-damage-math');
-	let damage_value = document.getElementById('deg-mod-damage-value');
-	
-	let measure = document.getElementById('deg-mod-measure');
-
-	let measure_type_field = document.getElementById('deg_mod_measure_type');
-	let measure_type_value = measure_type_field.options[measure_type_field.selectedIndex].value;
-
-	let measure_math = document.getElementById('deg-mod-measure-math');
-	let measure_value = document.getElementById('deg-mod-measure-value');
-
-	let condition = document.getElementById('deg-mod-condition');
-
-
-	if (deg_mod_type_value == 'damage') {
-		damage.style.display = "grid";
-		damage.style.opacity = "100%"
-
-		
-		measure.style.display = "none";
-		measure.style.opacity = "0%";
-		condition.style.display = "none";
-		condition.style.opacity = "0%";
-	} else if (deg_mod_type_value == 'measure') {
-		measure.style.display = "grid";
-		measure.style.opacity = "100%";
-
-		damage.style.display = "none";
-		damage.style.opacity = "0%";
-		condition.style.display = "none";
-		condition.style.opacity = "0%";
-	} else if (deg_mod_type_value == 'condition') {
-		condition.style.display = "grid";
-		condition.style.opacity = "100%";
-		damage.style.display = "none";
-		damage.style.opacity = "0%";
-		measure.style.display = "none";
-		measure.style.opacity = "0%";
-	} else {
-		damage.style.display = "none";
-		damage.style.opacity = "0%";
-		measure.style.display = "none";
-		measure.style.opacity = "0%";
-		condition.style.display = "none";
-		condition.style.opacity = "0%";
-	}
-
+	select_opacity(select, options);	
 };
 
 function deg_mod_damage_type() {
-	let damage = document.getElementById('deg-mod-damage');
-	
-	let damage_type_field = document.getElementById('deg_mod_damage_type');
-	let damage_type_value = damage_type_field.options[damage_type_field.selectedIndex].value;
-	
-	let damage_math = document.getElementById('deg-mod-damage-math');
-	let damage_value = document.getElementById('deg-mod-damage-value');
+	const damage_type_field = 'deg_mod_damage_type';
+	const damage_math = 'deg-mod-damage-math';
+	const damage_value = 'deg-mod-damage-value';
 
-	if(damage_type_value == 'math') {
-		damage_math.style.display = "grid";
-		damage_math.style.opacity = "100%";
-		damage_value.style.display = "none";
-		damage_value.style.opacity = "0%";
-	} else if (damage_type_value == 'value') {
-		damage_value.style.display = "grid";
-		damage_value.style.opacity = "100%";
-		damage_math.style.display = "none";
-		damage_math.style.opacity = "0%";
-	} else {
-		damage_value.style.display = "none";
-		damage_value.style.opacity = "0%";
-		damage_math.style.display = "none";
-		damage_math.style.opacity = "0%";
-	}
+	value_type(damage_type_field, damage_math, damage_value);
 }
 
 function deg_mod_measure_type() {
-	let measure = document.getElementById('deg-mod-measure');
-
-	let measure_type_field = document.getElementById('deg_mod_measure_type');
-	let measure_type_value = measure_type_field.options[measure_type_field.selectedIndex].value;
-
-	let measure_math = document.getElementById('deg-mod-measure-math');
-	let measure_value = document.getElementById('deg-mod-measure-value');
+	const measure_type_field = 'deg_mod_measure_type';
+	const measure_math = 'deg-mod-measure-math';
+	const measure_value = 'deg-mod-measure-value';
 	
-	if(measure_type_value == 'math') {
-		measure_math.style.display = "grid";
-		measure_math.style.opacity = "100%";
-		measure_value.style.display = "none";
-		measure_value.style.opacity = "0%";
-	} else if (measure_type_value == 'value') {
-		measure_value.style.display = "grid";
-		measure_value.style.opacity = "100%";
-		measure_math.style.display = "none";
-		measure_math.style.opacity = "0%";
-	} else {
-		measure_value.style.display = "none";
-		measure_value.style.opacity = "0%";
-		measure_math.style.display = "none";
-		measure_math.style.opacity = "0%";
-	}
+	value_type(measure_type_field, measure_math, measure_value);
 }
 
 deg_mod_enter = 0;

@@ -299,6 +299,20 @@ function hide_maxheight(div_input) {
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
 
+function show_opacity(div_input) {
+	const div = document.getElementById(div_input);
+
+	setTimeout(function(){div.style.display = 'grid';}, 300);
+	setTimeout(function(){div.style.opacity = '100%';}, 310);
+}
+
+function hide_opacity(div_input) {
+	const div = document.getElementById(div_input);
+
+	div.style.opacity = '0%';
+	setTimeout(function(){div.style.display = 'none';}, 300);
+}
+
 function value_type_maxheight(select, math, value) {
 	const type_field = document.getElementById(select);
 	let val = type_field.options[type_field.selectedIndex].value;
@@ -348,6 +362,25 @@ function select_maxheight_entry(select, options, entry) {
 	}
 }
 
+function select_opacity(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity(div);
+		} else {
+			show_opacity(div);
+		}
+	};
+}
+
 function check_drop(field, divdrop) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divdrop);
@@ -358,6 +391,30 @@ function check_drop(field, divdrop) {
 	} else {
 		div.style.maxHeight = '0px';
 		setTimeout(function(){div.style.display = 'none'}, 400);
+	}
+}
+
+function value_type(select, mathdiv, valuediv) {
+	const field = document.getElementById(select);
+	const value = field.options[field.selectedIndex].value;
+	const val = document.getElementById(valuediv)
+	const math = document.getElementById(mathdiv)
+
+	if (value == 'math') {
+		val.style.opacity = '0%';
+		val.style.display = 'none';
+		math.style.display = 'grid';
+		setTimeout(function(){math.style.opacity = '100%'}, 10);
+	} else if (value == 'value') {
+		math.style.opacity = '0%';
+		math.style.display = 'none';
+		val.style.display = 'grid';
+		setTimeout(function(){val.style.opacity = '100%'}, 10);
+	} else {
+		val.style.opacity = '0%';
+		setTimeout(function(){val.style.display = 'none'}, 300);
+		math.style.opacity = '0%';
+		setTimeout(function(){math.style.display = 'none'}, 300);
 	}
 }
 
