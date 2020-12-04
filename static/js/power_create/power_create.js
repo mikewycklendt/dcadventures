@@ -92,30 +92,22 @@ function hide_opacity(div_input) {
 	setTimeout(function(){div.style.display = 'none';}, 300);
 }
 
-function math_div_select(select, valuediv, mathdiv, containdiv ) {
+function math_div_select(select, val, math, containdiv ) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById(valuediv)
-	const math = document.getElementById(mathdiv)
 	const div = document.getElementById(containdiv)
 
 	if (value == 'math') {
 		div.style.display = 'grid';
-		val.style.opacity = '0%';
-		val.style.display = 'none';
-		math.style.display = 'grid';
-		setTimeout(function(){math.style.opacity = '100%'}, 10);
+		hide_opacity(val);
+		show_opacity(math);
 	} else if (value == 'value') {
 		div.style.display = 'grid';
-		math.style.opacity = '0%';
-		math.style.display = 'none';
-		val.style.display = 'grid';
-		setTimeout(function(){val.style.opacity = '100%'}, 10);
+		hide_opacity(math);
+		show_opacity(val);
 	} else {
-		val.style.opacity = '0%';
-		setTimeout(function(){val.style.display = 'none'}, 300);
-		math.style.opacity = '0%';
-		setTimeout(function(){math.style.display = 'none'}, 300);
+		hide_opacity(math);
+		hide_opacity(val);
 		setTimeout(function(){div.style.display = 'none'}, 300);
 	}
 }

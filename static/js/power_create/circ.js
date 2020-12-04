@@ -16,31 +16,10 @@ function circ_base() {
 }
 
 function circ_type() {
-	const field = document.getElementById('circ_type');
-	const value = field.options[field.selectedIndex].value;
-	const ran = 'circ-range';
-	const chk = 'circ-check'; 
+	const field = 'circ_type';
+	const options = [{'val': 'range', 'div': 'circ-range'},
+					{'val': 'check', 'div': 'circ-check'}] 
 	const entry = 'circ-entry';
 
-
-	if (value == 'range') {
-		show_maxheight(ran);
-		hide_maxheight(chk);
-	} if (value == 'check') {
-		show_maxheight(chk);
-		hide_maxheight(ran);
-	} else {
-		hide_maxheight(chk);
-		hide_maxheight(ran);
-	}
-
-	if (value != 'range' && value != 'check') {
-		shrink_entry(entry, chk);
-	} else {
-		if (value == 'range') {
-			grow_entry(entry, ran);
-		} else if (value == 'check') {
-			grow_entry(entry, chk);
-		}
-	}
+	select_maxheight_entry(field, options, entry);
 }

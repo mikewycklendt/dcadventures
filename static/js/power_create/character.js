@@ -33,21 +33,11 @@ function char_reduced() {
 }
 
 function char_limited_by() {
-	const field = document.getElementById('char_limited_by');
-	const value = field.options[field.selectedIndex].value;
-	const oth = 'char-other'
-	const emo = 'char-emotion'
+	const field = 'char_limited_by';
+	const options = [{'val': 'other', 'div': 'char-other'},
+					{'val': 'emotion', 'div': 'char-emotion'}]
 
-	if (value == 'other') {
-		hide_maxheight(emo);
-		show_maxheight(oth);
-	} else if (value == 'emotion') {
-		hide_maxheight(oth);
-		show_maxheight(emo);
-	} else {
-		hide_maxheight(emo);
-		hide_maxheight(oth);
-	}
+	select_maxheight(field, options);
 }
 
 function char_emotion() {
