@@ -342,8 +342,7 @@ skill_create = function() {
 			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 			edit_button.style.display = "block";
 			add_skill.style.display = "none";
-			all_fields.style.display = 'grid';
-			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
+			all_fields.style.opacity = "100%";
 
 			errors_delete = document.getElementsByClassName('name-err-line');
 
