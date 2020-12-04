@@ -36,22 +36,11 @@ function sense_skill() {
 }
 
 function sense_type() {
-	const field_field = document.getElementById("sense_type");
-	const field = field_field.options[field_field.selectedIndex].value;
+	const select = "sense_type";
+	const options = [{'val': 'height', 'div': "sense-height"},
+					{'val': 'resist', 'div': "sense-resist"}];
 
-	const hei = "sense-height";
-	const res = "sense-resist";
-
-	if (field == 'height') {
-		hide_maxheight(res);
-		show_maxheight(hei);
-	} else if (field == 'resist') {
-		hide_maxheight(hei);
-		show_maxheight(res);
-	} else {
-		hide_maxheight(hei);
-		hide_maxheight(res);
-	}
+	select_maxheight(select, options);
 }
 
 function sense_height_trait() {
@@ -90,29 +79,12 @@ function sense_dark() {
 }
 
 function sense_time_set() {
-	const field_field = document.getElementById("sense_time_set");
-	const field = field_field.options[field_field.selectedIndex].value
-	const val = "sense-time-value";
-	const ski = "sense-time-skill";
-	const bon = "sense-time-bonus";
+	const select = "sense_time_set";
+	const options = [{'val': 'value', 'div': "sense-time-value"},
+					{'val': 'skill', 'div': "sense-time-skill"},
+					{'val': 'bonus', 'div': "sense-time-bonus"}];
 
-	if (field == 'value') {
-		hide_maxheight(ski);
-		hide_maxheight(bon);
-		show_maxheight(val);
-	} else if (field == 'skill') {
-		hide_maxheight(val);
-		hide_maxheight(bon);
-		show_maxheight(ski);
-	} else if (field == 'bonus') {
-		hide_maxheight(val);
-		hide_maxheight(ski);
-		show_maxheight(bon);	
-	} else {
-		hide_maxheight(val);
-		hide_maxheight(ski);
-		hide_maxheight(bon);
-	}
+	select_maxheight(select, options);
 }
 
 function sense_time() {
