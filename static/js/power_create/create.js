@@ -102,8 +102,8 @@ function create_trap_resist_check() {
 function create_ranged_type() {
 	const field = document.getElementById('create_ranged_type');
 	const value = field.options[field.selectedIndex].value;
-	const dc = document.getElementById('create-ranged-dc');
-	const tr = document.getElementById('create-ranged-trait')
+	const dc = 'create-ranged-dc';
+	const tr = 'create-ranged-trait'
 
 	if (value == 'dc') {
 		hide_maxheight(tr);
