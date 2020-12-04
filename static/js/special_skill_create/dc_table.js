@@ -15,6 +15,13 @@ function dc_set() {
 
 }
 
+function dc_dc_type() {
+	const type_field = 'dc_type';
+	const dc_class = 'dc-class';
+	const dc_math = 'dc-math';
+
+	value_type_maxheight(type_field, dc_math, dc_class);
+}
 
 function dc_mea_click() {
 	const mea_grid = 'dc-measure-field';
@@ -147,12 +154,6 @@ function dc_submit() {
 	const error_line = 'dc-err-line';
 	const error_table = 'dc-err';
 	
-	const mea_check = mea_check_check.checked;
-	const dam_check = dam_check_check.checked;
-	const key_check = key_check_check.checked;
-	const def_check = def_check_check.checked;
-	const con_check = con_check_check.checked;
-	const act_check = act_check_check.checked;
 	if ((des_value != '') && ((type_value == 'value' && class_value != '') || (type_value == 'math' && math_val_value != '' && math_value != '' && math_rank_value != '')) &&  
 			((mea_check == true && mea_type_value == 'math' && mea_math_val_value != '' && mea_math_value != '' && mea_math_rnk_value != '') || 
 			(mea_check == true && mea_type_value == 'value' && mea_val_value != '' && mea_unt_value != '') || (mea_check == false)) && 
