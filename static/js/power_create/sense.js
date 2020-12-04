@@ -40,7 +40,7 @@ function sense_type() {
 	const options = [{'val': 'height', 'div': "sense-height"},
 					{'val': 'resist', 'div': "sense-resist"}];
 
-	select_maxheight(select, options);
+	select_opacity(select, options);
 }
 
 function sense_height_trait() {
