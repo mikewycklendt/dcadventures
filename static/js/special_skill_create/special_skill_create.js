@@ -319,12 +319,11 @@ function select_maxheight_entry(select, options, entry) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
 	let option;
-	const adiv = document.getElementById(options[0].div);
+	const adiv = options[0].div;
 
 	for (option of options) {
 		let value = option.value;
-		let div_input = option.div;
-		let div = document.getElementById(div_input);
+		let div = option.div;
 
 		if (val != value) {
 			hide_maxheight(div);
@@ -338,8 +337,7 @@ function select_maxheight_entry(select, options, entry) {
 	} else {
 		for (option of options) {
 			let value = option.value;
-			let div_input = option.div;
-			let div = document.getElementById(div_input);
+			let div = option.div;
 	
 			if (val == value) {
 				grow_entry(entry, div);
