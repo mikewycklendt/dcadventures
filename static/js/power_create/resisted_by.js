@@ -26,5 +26,5 @@ function resist_effect() {
 	const options = [{'val': 'condition', 'div': "resist-condition"},
 					{'val': 'damage', 'div': "resist-damage"}];
 
-	select_opacity(field, options);
+	select_maxheight(field, options);
 }
