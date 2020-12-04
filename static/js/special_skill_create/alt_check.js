@@ -22,9 +22,13 @@ function check_type() {
 	const check_field = document.getElementById('check');
 	let check_value = check_field.options[check_field.selectedIndex].value;
 
-	alt_check = document.getElementById('alt-check');
+	const alt_check = document.getElementById('alt-check');
 
 	if (check_value != 1) {
 		alt_check.style.display = 'grid';
+		alt_check.style.maxHeight = alt_check.scrollHeight + 'px';
+	} else {
+		alt_check.style.maxHeight = '0px';
+		setTimeout(function(){alt_check.style.display = 'none'}, 400);
 	}
 }

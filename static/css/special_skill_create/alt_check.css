@@ -1,5 +1,8 @@
 #alt-check {
-	display: grid;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 	width: 100%;
 	border: 1px solid #af0101;
 	border-radius: 15px;
