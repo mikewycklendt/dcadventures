@@ -775,6 +775,7 @@ def post_bonus_circ():
 	equip_mod = request.get_json()['equip_mod']
 	rounds = request.get_json()['rounds']
 	description = request.get_json()['description']
+	noequip = request.get_json()['noequip']
 
 	if mod == '':
 		mod = None
@@ -822,7 +823,7 @@ def post_bonus_circ():
 		return jsonify(body)
 
 	try:
-		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill_id, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description)
+		bonus = SkillCircMod(bonus_id=bonus_id, skill=skill_id, target=target, type=type, mod=mod, unit_mod=unit_mod, unit_type=unit_type, unit_value=unitvalue, adjust_check_mod=adjust_check_mod, adjust_mod=adjust_mod, adjust_rank=adjust_rank, equip_mod=equip_mod, rounds=rounds, description=description, noequip=noequip)
 		db.session.add(bonus)	
 		db.session.commit()	
 		body['success'] = True

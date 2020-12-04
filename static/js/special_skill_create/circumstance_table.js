@@ -58,6 +58,9 @@ function circ_submit() {
 	let rnd_value =  rnd_field.options[rnd_field.selectedIndex].value;
 	let mod_type_value =  mod_type_field.options[mod_type_field.selectedIndex].value; 
 
+	const noequip_check = document.getElementById('noequip');
+	const noequip = noequip_check.checked;
+
 	const bonus_id = document.getElementById('bonus_id').value;
 	const error_line = 'circ-err-line';
 	const error_table = 'circ-err';
@@ -83,7 +86,8 @@ function circ_submit() {
 				'adjust_rank': rank_value,
 				'equip_mod': modifier_value,
 				'rounds': rnd_value,
-				'description': circ_value
+				'description': circ_value,
+				'noequip': noequip
 			}),
 			headers: {
 			  'Content-Type': 'application/json',

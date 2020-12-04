@@ -516,6 +516,7 @@ class SkillCircMod(db.Model):
 	equip_mod = db.Column(db.Integer)
 	rounds = db.Column(db.Integer)
 	description = db.Column(db.String())
+	noequip = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -533,7 +534,8 @@ class SkillCircMod(db.Model):
 			'adjust_rank': self.adjust_rank,
 			'equip_mod': self.equip_mod,
 			'rounds': self.rounds,
-			'description': self.description
+			'description': self.description,
+			'noequip': self.noequip
 		}
 
 
