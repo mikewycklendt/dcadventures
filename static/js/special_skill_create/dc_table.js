@@ -397,7 +397,7 @@ function dc_submit() {
 		if (des_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter a description';
+			error.innerHTML = ' You must enter a description';
 
 			errors.appendChild(error);
 
@@ -408,7 +408,7 @@ function dc_submit() {
 		if (type_value == 'value' && class_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter a dc value';
+			error.innerHTML = ' You must enter a dc value';
 
 			errors.appendChild(error);
 
@@ -419,7 +419,7 @@ function dc_submit() {
 		if (type_value == 'math' && (math_val_value == '' || math_value == '' || math_rank_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter all dc math fields';
+			error.innerHTML = ' You must enter all dc math fields';
 
 			errors.appendChild(error);
 
@@ -430,7 +430,7 @@ function dc_submit() {
 		if (mea_check == true && mea_type_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You choose a measurement type or uncheck the measurement box';
+			error.innerHTML = ' You must choose a measurement type or uncheck the measurement box';
 
 			errors.appendChild(error);
 
@@ -441,7 +441,7 @@ function dc_submit() {
 		if (mea_type_value == 'math' && (mea_math_val_value == '' || mea_math_value == '' || mea_math_rnk_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter all dc math fields or uncheck the measurement box';
+			error.innerHTML = ' You must enter all measurement math fields or uncheck the measurement box';
 
 			errors.appendChild(error);
 
@@ -452,7 +452,7 @@ function dc_submit() {
 		if (mea_type_value == 'value' && (mea_val_value == '' || mea_unt_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter all dc math fields';
+			error.innerHTML = ' You must enter all measurement values or uncheck the measurement box.';
 
 			errors.appendChild(error);
 
@@ -463,7 +463,7 @@ function dc_submit() {
 		if (key_check == true && key_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter a keyword or uncheck the keyword box';
+			error.innerHTML = ' You must enter a keyword or uncheck the keyword box';
 
 			errors.appendChild(error);
 
@@ -474,7 +474,7 @@ function dc_submit() {
 		if (dam_check == true && dam_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You enter a damage value or uncheck the damage box';
+			error.innerHTML = ' You must enter a damage value or uncheck the damage box';
 
 			errors.appendChild(error);
 
@@ -485,7 +485,7 @@ function dc_submit() {
 		if (def_check == true && def_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You choose a defense or uncheck the defense box';
+			error.innerHTML = ' You must choose a defense or uncheck the defense box';
 
 			errors.appendChild(error);
 
@@ -496,7 +496,7 @@ function dc_submit() {
 		if (act_check == true && act_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You choose an action type or uncheck the action box';
+			error.innerHTML = ' You must choose an action type or uncheck the action box';
 
 			errors.appendChild(error);
 
@@ -507,7 +507,7 @@ function dc_submit() {
 		if (con_check == true && (con1_value == '' || con2_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
-			error.innerHTML = ' You choose both conditions or uncheck the condition box';
+			error.innerHTML = ' You must choose both conditions or uncheck the condition box';
 
 			errors.appendChild(error);
 
