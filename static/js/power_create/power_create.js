@@ -120,7 +120,7 @@ function math_div_select(select, valuediv, mathdiv, containdiv ) {
 	}
 }
 
-function math_mod_div_select(select, value, math, mod, containdiv ) {
+function math_mod_div_select(select, val, math, mod, containdiv ) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
 	const div = document.getElementById(containdiv)
@@ -148,7 +148,7 @@ function math_mod_div_select(select, value, math, mod, containdiv ) {
 	}
 }
 
-function value_type(select, math, value) {
+function value_type(select, math, val) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
 

@@ -394,7 +394,7 @@ function check_drop(field, divdrop) {
 	}
 }
 
-function value_type(select, math, value) {
+function value_type(select, math, val) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
 
