@@ -39,82 +39,16 @@ function mod_limited_trait_type() {
 }
 
 function mod_limited_type() {
-	const entry =  'mod-entry';
-	const trait = 'mod-limited-trait';
-	const desc = 'mod-limited-description';
-	const sub = 'mod-limited-subjects';
-	const extra = 'mod-limited-extra';
-	const lan = 'mod-limited-language';
-	const deg = 'mod-limited-degree'
-	const sen = 'mod-limited-sense';
-	const field = document.getElementById('mod_limited_type');
-	const val = field.options[field.selectedIndex].value;
+	const options = [{'val': 'trait', 'div': 'mod-limited-trait'},
+					{'val': 'other', 'div': 'mod-limited-description'},
+					{'val': 'subjects', 'div': 'mod-limited-subjects'},
+					{'val': 'extra', 'div': 'mod-limited-extra'},
+					{'val': 'language', 'div': 'mod-limited-language'},
+					{'val': 'degree', 'div': 'mod-limited-degree'},
+					{'val': 'sense', 'div': 'mod-limited-sense'}];
+	const field = 'mod_limited_type';
 
-	if (val == 'trait'){
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(desc);
-		hide_maxheight(sub);
-		hide_maxheight(deg);
-		hide_maxheight(sen);
-		show_maxheight(trait, entry);
-	} else if (val == 'other') {
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(trait);
-		hide_maxheight(sub)
-		hide_maxheight(deg);
-		hide_maxheight(sen);
-		show_maxheight(desc, entry);
-	} else if (val == 'subjects') {
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(trait);
-		hide_maxheight(desc);
-		hide_maxheight(deg);
-		hide_maxheight(sen);
-		show_maxheight(sub, entry)
-	} else if (val == 'extra') {
-		hide_maxheight(trait);
-		hide_maxheight(desc);
-		hide_maxheight(lan);
-		hide_maxheight(sub);
-		hide_maxheight(deg);
-		hide_maxheight(sen);
-		show_maxheight(extra);		
-	} else if (val == 'language') {
-		hide_maxheight(trait);
-		hide_maxheight(desc);
-		hide_maxheight(extra);
-		hide_maxheight(sub);
-		hide_maxheight(deg);
-		hide_maxheight(sen);
-		show_maxheight(lan);
-	} else if (val == 'degree') {
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(sub);
-		hide_maxheight(desc);
-		hide_maxheight(trait);
-		hide_maxheight(sen);
-		show_maxheight(deg);
-	} else if (val == 'sense') {
-		hide_maxheight(deg);
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(sub);
-		hide_maxheight(desc);
-		hide_maxheight(trait);
-		show_maxheight(sen);
-	} else {
-		hide_maxheight(deg);
-		hide_maxheight(lan);
-		hide_maxheight(extra);
-		hide_maxheight(sub);
-		hide_maxheight(desc);
-		hide_maxheight(trait);
-		hide_maxheight(sen);
-	}
+	select_opacity(field, options);
 }
 
 function mod_limited_sense() {
@@ -133,39 +67,13 @@ function mod_ranged() {
 }
 
 function mod_ranged_type() {
-	const select = document.getElementById('mod_ranged_type');
-	const value = select.options[select.selectedIndex].value;
-	const val = 'mod-ranged-value';
-	const math = 'mod-ranged-math';
-	const mod = 'mod-ranged-mod';
-	const che = 'mod-ranged-check';
+	const select = 'mod_ranged_type';
+	const options = [{'val': 'value', 'div': 'mod-ranged-value'},
+					{'val': 'math', 'div': 'mod-ranged-math'},
+					{'val': 'mod', 'div': 'mod-ranged-mod'},
+					{'val': 'check', 'div': 'mod-ranged-check'}];
 
-	if (value == 'value') {
-		hide_opacity(math);
-		hide_opacity(mod);
-		hide_opacity(che);
-		show_opacity(val)
-	} else if (value == 'math') {
-		hide_opacity(val);
-		hide_opacity(mod);
-		hide_opacity(che);
-		show_opacity(math);
-	} else if (value == 'mod') {
-		hide_opacity(math);
-		hide_opacity(val);
-		hide_opacity(che);
-		show_opacity(mod);
-	} else if (value == 'check') {
-		hide_opacity(math);
-		hide_opacity(mod);
-		hide_opacity(val);
-		show_opacity(che);
-	} else {
-		hide_opacity(math);
-		hide_opacity(mod);
-		hide_opacity(val);
-		hide_opacity(che);
-	}
+	select_opacity(select, options);
 }
 
 function mod_ranged_math_trait_type() {
