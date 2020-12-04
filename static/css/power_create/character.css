@@ -54,6 +54,7 @@ trait amount
 	padding: 2px;
 	font-size: 90%;
 	width: 90%;
+	background-color: lightblue;
 }
 
 #char-row1 {
