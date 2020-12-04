@@ -70,7 +70,7 @@ function dc_measure_type() {
 	const dc_measure_value = 'dc-measure-value';
 	const dc_measure_math = 'dc-measure-math';
 
-		value_type_maxheight(select, dc_measure_math, dc_measure_value)
+	value_type_maxheight(select, dc_measure_math, dc_measure_value);
 }
 
 let dc_enter = 0;

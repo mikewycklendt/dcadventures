@@ -287,9 +287,6 @@ function value_type_maxheight(select, math, value) {
 	const type_field = document.getElementById(select);
 	let val = type_field.options[type_field.selectedIndex].value;
 
-	const dc_measure_value = document.getElementById(value);
-	const dc_measure_math = document.getElementById(math);
-
 	if (val == 'value') {
 		hide_maxheight(math);
 		show_maxheight(value);
