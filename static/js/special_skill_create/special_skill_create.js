@@ -321,6 +321,8 @@ function select_maxheight_entry(select, options, entry) {
 	let option;
 	const adiv = options[0].div;
 
+	console.log(val);
+
 	for (option of options) {
 		let value = option.value;
 		let div = option.div;
