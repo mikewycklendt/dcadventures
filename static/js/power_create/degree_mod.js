@@ -16,31 +16,12 @@ function deg_mod_base() {
 }
 
 function deg_mod_type() {
-	let deg_mod_type_field = document.getElementById('deg_mod_type');
-	let deg_mod_type_value = deg_mod_type_field.options[deg_mod_type_field.selectedIndex].value;
-	const cir = 'deg-mod-circ';
-	const mea = 'deg-mod-measure';
-	const con = 'deg-mod-condition';
+	let select = 'deg_mod_type';
+	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
+					{'val': 'measure', 'div':  'deg-mod-measure'},
+					{'val': 'condition', 'div': 'deg-mod-condition'}];
 	
-
-	if (deg_mod_type_value == 'circ') {
-		hide_opacity(mea);
-		hide_opacity(con);
-		show_opacity(cir);
-	} else if (deg_mod_type_value == 'measure') {
-		hide_opacity(cir);
-		hide_opacity(con);
-		show_opacity(mea);
-	} else if (deg_mod_type_value == 'condition') {
-		hide_opacity(cir);
-		hide_opacity(mea);
-		show_opacity(con);
-	} else {
-		hide_opacity(cir);
-		hide_opacity(mea);
-		hide_opacity(con);
-	}
-
+	select_opacity(select, options);
 }
 
 function deg_mod_circ_trait_type() {
@@ -51,59 +32,27 @@ function deg_mod_circ_trait_type() {
 }
 
 function deg_mod_condition_type() {
-	const field = document.getElementById('deg_mod_condition_type')
-	const value = field.options[field.selectedIndex].value;
-	const val = 'deg-mod-condition-damage';
-	const math = 'deg-mod-conditions';
+	const field = 'deg_mod_condition_type';
+	const options = [{'val': 'damage', 'div': 'deg-mod-condition-damage'},
+					{'val': 'condition', 'div': 'deg-mod-conditions'}];
 
-	if (value == 'condition') {
-		hide_opacity(val);
-		show_opacity(math);
-	} else if (value == 'damage') {
-		hide_opacity(math);
-		show_opacity(val);
-	} else {
-		hide_opacity(val);
-		hide_opacity(math);
-	}
+	select_opacity(field, options);
 }
 
 function deg_mod_damage_type() {
-	let damage_type_field = document.getElementById('deg_mod_damage_type');
-	let damage_type_value = damage_type_field.options[damage_type_field.selectedIndex].value;
-	
-	let damage_math = 'deg-mod-damage-math';
-	let damage_value = 'deg-mod-damage-value';
+	const field = 'deg_mod_damage_type';	
+	const math = 'deg-mod-damage-math';
+	const value = 'deg-mod-damage-value';
 
-	if(damage_type_value == 'math') {
-		hide_opacity(damage_value);
-		show_opacity(damage_math);
-	} else if (damage_type_value == 'value') {
-		hide_opacity(damage_math);
-		show_opacity(damage_value);
-	} else {
-		hide_opacity(damage_math);
-		hide_opacity(damage_value);
-	}
+	value_type(field, math, value);
 }
 
 function deg_mod_measure_type() {
-	let measure_type_field = document.getElementById('deg_mod_measure_type');
-	let measure_type_value = measure_type_field.options[measure_type_field.selectedIndex].value;
-
-	let measure_math = 'deg-mod-measure-math';
-	let measure_value = 'deg-mod-measure-value';
+	const field = 'deg_mod_measure_type';
+	const math = 'deg-mod-measure-math';
+	const value = 'deg-mod-measure-value';
 	
-	if(measure_type_value == 'math') {
-		hide_opacity(measure_value);
-		show_opacity(measure_math);
-	} else if (measure_type_value == 'value') {
-		hide_opacity(measure_math);
-		show_opacity(measure_value);
-	} else {
-		hide_opacity(measure_value);
-		hide_opacity(measure_math);
-	}
+	value_type(field, math, value)
 }
 
 deg_mod_enter = 0;
