@@ -48,7 +48,7 @@
 	border-right: 1px solid lightblue;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	grid-template-columns: 15% 15% 55% 15%;
+	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
@@ -64,6 +64,12 @@
 	margin-bottom: 4px;
 }
 
+#circ-row1 {
+	display: grid;
+	grid-template-columns: 15% 15% 55% 15%;
+	gap: .2vw;
+}
+
 #circ-field {
 	width: 85%;
 	height: auto;
@@ -72,41 +78,42 @@
 
 #circ-mod-field {
 	display: grid;
-	width: 85%;
-	height: auto;
-	padding: 4px;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-}
-
-#circ-mod-value {
-	width: 100%;
-	height: auto;
-	padding: 4px;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-#circ-mod-math {
-	display: grid;
-	width: 100%;
+	width: 97%;
 	height: auto;
 	padding: 4px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	font-family: 'Monda', Verdana;
-	font-size: 70%;
+	font-size: 90%;
+	color: #245681;
+}
+
+#circ-mod-value {
+	display: none;
+	grid-template-columns: 15% 20% 65%;
+	width: 100%;
+	height: auto;
+	padding: 4px;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .4s ease-out;
+	transition: all .3s ease-out;
+}
+
+#circ-mod-math {
+	display: none;
+	width: 100%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 20% 15% 25% 20% 20%;
+	grid-auto-rows: auto; 
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
 }
 
 #circ-mod-math input[type="text"] {
 	width: 80%; 
-	margin-top: .2vw;
-	margin-bottom: .2vh;
-	height: .6vw; 
+	height: 1.2vw; 
 	font-size: 110%;
 }
 
@@ -121,15 +128,15 @@
 }
 
 #circ-mod-adjust {
-	display: grid;
+	display: none;
 	width: 100%;
 	height: auto;
 	padding: 4px;
-	grid-template-columns: 100%;
+	grid-template-columns: 20% 20% 15% 29% 25%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .4s ease-out;
+	transition: all .3s ease-out;
 }
 
 #circ-mod-adjust div {

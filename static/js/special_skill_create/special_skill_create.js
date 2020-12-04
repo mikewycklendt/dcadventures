@@ -267,6 +267,22 @@ function delete_function(button, divs, route) {
 	}
 };
 
+function shrink_entry(entry_input, div_input) {
+	const entry = document.getElementById(entry_input);
+	const div = document.getElementById(div_input);
+
+	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
+}
+
+function grow_entry(entry_input, div_input) {
+	const entry = document.getElementById(entry_input);
+	const div = document.getElementById(div_input);
+
+	setTimeout(function(){
+		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
+	}, 300)
+}
+
 function show_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
@@ -296,6 +312,39 @@ function value_type_maxheight(select, math, value) {
 	} else {
 		hide_maxheight(value);
 		hide_maxheight(math);
+	}
+}
+
+function select_maxheight_entry(select, options, entry) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+	const adiv = document.getElementById(options[0].div);
+
+	for (option of options) {
+		let value = option.value;
+		let div_input = option.div;
+		let div = document.getElementById(div_input);
+
+		if (val != value) {
+			hide_maxheight(div);
+		} else {
+			show_maxheight(div);
+		}
+	};
+
+	if (val == '') {
+		shrink_entry(entry, adiv)
+	} else {
+		for (option of options) {
+			let value = option.value;
+			let div_input = option.div;
+			let div = document.getElementById(div_input);
+	
+			if (val == value) {
+				grow_entry(entry, div);
+			}
+		}
 	}
 }
 

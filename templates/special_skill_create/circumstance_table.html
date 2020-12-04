@@ -29,25 +29,24 @@
 
 <div id="circ-entry" style="display: none;">
 
-	<div id="circ-entry-title">
-		Modifier:
-	</div>
+	<div id="circ-row1">
 
-	<div id="circ-entry-title">
-		Lasts:
-	</div>
+		<div id="circ-entry-title">
+			Modifier:
+		</div>
 
-	<div id="circ-entry-title">
-		Circumstance
-	</div>
+		<div id="circ-entry-title">
+			Lasts:
+		</div>
 
-	<div id="circ-entry-title">
-	</div>
+		<div id="circ-entry-title">
+			Circumstance
+		</div>
 
-	<div>
+		<div id="circ-entry-title">
+		</div>
 
 		<div>
-
 			<select class="entry-select" id="circ_mod_type" name="circ_mod_type" onchange="circ_mod()">
 				<option value="">Modifier</option>
 				<option value="value">Value</option>
@@ -55,50 +54,54 @@
 				<option value="adjust">Adjust</option>
 				<option value="noequip">No equipment</option>
 			</select>
-			
 		</div>
 
-	</div>
+		<div>
+			<select class="entry-select" id="circ_mod_rounds" name="circ_mod_rounds">
+				<option value="">Rounds</option>
+				<option value=500>Indefinite</option>
+				{% for class in dcclasses %}
+					<option value={{class}}>{{class}}</option>
+				{% endfor %}
+			</select>	
+		</div>
 
-	<div>
+		<div id="circ-field" style="width: 95%;" >
+			<input type="text" id="circumstance_entry" name="circumstance_entry">
+		</div>
 
-		<select class="entry-select" id="circ_mod_rounds" name="circ_mod_rounds">
-			<option value="">Rounds</option>
-			<option value=500>Indefinite</option>
-			{% for class in dcclasses %}
-				<option value={{class}}>{{class}}</option>
-			{% endfor %}
-		</select>
-		
-	</div>
-
+		<div id="circ-add">
+			<div class="btn-small" id="circ_add" onclick="circ_submit()">
+				Add
+			</div>
+		</div>
 	
-
-	<div id="circ-field" style="width: 95%;" >
-		<input type="text" id="circumstance_entry" name="circumstance_entry">
-	</div>
-
-	<div id="circ-add">
-		<div class="btn-small" id="circ_add" onclick="circ_submit()">
-			Add
-		</div>
 	</div>
 
 	<div id="circ-mod-field">
 		<div id="circ-mod-value" style="display: none;">
-			<select class="select-sml" id="circ_modifier" name="circ_modifier">
-				<option value="">Modifier</option>
-				{% for number in numbers %}
-					<option value={{number}}>{{number}}</option>
-				{% endfor %}
-			</select>
+			
+			<div>
+				Modifier:
+			</div>
+
+			<div>
+				<select class="select-sml" id="circ_modifier" name="circ_modifier">
+					<option value="">Modifier</option>
+					{% for number in numbers %}
+						<option value={{number}}>{{number}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div></div>
 		</div>
 
 		<div id="circ-mod-math" style="display: none;">
 
 			<div>
 
-				<select class="circ-mod-select" id="circ_mod" name="circ_mod">
+				<select class="select-sml" id="circ_mod" name="circ_mod">
 					<option value="">Modifier</option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
@@ -117,7 +120,7 @@
 
 			<div>
 
-				<select  class="circ-mod-select" id="circ_mod_unit" name="circ_mod_unit" >
+				<select  class="select-sml" id="circ_mod_unit" name="circ_mod_unit" >
 					<option value="">unit</option>
 					{% for unit in units %}
 						<option value={{unit.id}}>{{unit.name}}</option>
@@ -126,9 +129,15 @@
 
 			</div>
 
+			<div></div>
+
 		</div>
 
 		<div id="circ-mod-adjust" style="display: none;">
+
+			<div>
+				Check Modified By:
+			</div>
 
 			<div>
 
@@ -140,10 +149,14 @@
 				</select>
 
 			</div>
+
+			<div>
+				For Every
+			</div>
 			
 			<div>
 				<select class="select-sml" id="circ_adjust_mod" name="circ_adjust_mod" >
-					<option value="">Modifies</option>
+					<option value=""></option>
 					{% for number in numbers %}
 						<option value={{number}}>{{number}}</option>
 					{% endfor %}
@@ -154,7 +167,7 @@
 			<div>
 
 				<select class="select-sml" id="circ_adjust_rank" name="circ_adjust_rank" >
-					<option value="">Modifier</option>
+					<option value="">Measure</option>
 					{% for rank in measure_rank %}
 						<option value={{rank.id}}>{{rank.name}}</option>
 					{% endfor %}

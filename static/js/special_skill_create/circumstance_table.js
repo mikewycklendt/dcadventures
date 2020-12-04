@@ -17,60 +17,14 @@ function circ_base() {
 
 
 function circ_mod() {
-	let circ_mod_type_field = document.getElementById('circ_mod_type');
-	let circ_mod_type_value =  circ_mod_type_field.options[circ_mod_type_field.selectedIndex].value;
-	let mod_field = document.getElementById('circ-mod-field');
-	const value_field = document.getElementById('circ-mod-value');
-	const math_field = document.getElementById('circ-mod-math');
-	const adjust_field = document.getElementById('circ-mod-adjust');
-	const circ_entry = document.getElementById("circ-entry");
+	const select = 'circ_mod_type';
+	const options = [{'value': 'value', 'div': 'circ-mod-value'},
+					{'value': 'noequip', 'div': 'circ-mod-value'},
+					{'value': 'math', 'div': 'circ-mod-math'},
+					{'value': 'adjust', 'div': 'circ-mod-adjust'}];
+	const entry = "circ-entry";
 
-	if (circ_mod_type_value == 'value') {
-		value_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + value_field.scrollHeight + "px";
-		value_field.style.padding = "1%";
-		value_field.style.maxHeight = value_field.scrollHeight + "px";
-		math_field.style.display = "none";
-		math_field.style.maxHeight = "0px";
-		adjust_field.style.display = "none";
-		adjust_field.style.maxHeight = "0px";
-	} else if (circ_mod_type_value == 'math') {
-		math_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + math_field.scrollHeight + "px";
-		math_field.style.padding = "1%";
-		math_field.style.maxHeight = math_field.scrollHeight + "px";
-		value_field.style.display = "none";
-		value_field.style.maxHeight = "0px";
-		adjust_field.style.display = "none";
-		adjust_field.style.maxHeight = "0px";
-	} else if (circ_mod_type_value == 'adjust') {
-		adjust_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + adjust_field.scrollHeight+ "px";
-		adjust_field.style.padding = "1%";
-		adjust_field.style.maxHeight = adjust_field.scrollHeight + "px";
-		value_field.style.display = "none";
-		value_field.style.maxHeight = "0px";
-		math_field.style.display = "none";
-		math_field.style.maxHeight = "0px";
-	} else if (circ_mod_type_value == 'noequip') {
-		value_field.style.display = "grid";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + value_field.scrollHeight + "px";
-		value_field.style.padding = "1%";
-		value_field.style.maxHeight = value_field.scrollHeight + "px";
-		adjust_field.style.display = "none"
-		adjust_field.style.maxHeight = "0px";
-		math_field.style.display = "none";
-		math_field.style.maxHeight = "0px";
-	} else {
-		math_field.style.display = "none";
-		math_field.style.maxHeight = "0px";
-		value_field.style.display = "none";
-		value_field.style.maxHeight = "0px";
-		adjust_field.style.display = "none";
-		adjust_field.style.maxHeight = "0px";
-		circ_entry.style.maxHeight = circ_entry.scrollHeight + "px";
-	}
-
+	select_maxheight_entry(select, options, entry);
 };
 
 circ_enter = 0;
