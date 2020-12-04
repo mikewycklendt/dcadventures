@@ -460,7 +460,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (key_check.checked == true && key_value == '') { 
+		if (key_check == true && key_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You enter a keyword or uncheck the keyword box';
@@ -471,7 +471,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (dam_check.checked == true && dam_value == '') { 
+		if (dam_check == true && dam_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You enter a damage value or uncheck the damage box';
@@ -482,7 +482,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (def_check.checked == true && def_value == '') { 
+		if (def_check == true && def_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You choose a defense or uncheck the defense box';
@@ -493,7 +493,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (act_check.checked == true && act_value == '') { 
+		if (act_check == true && act_value == '') { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You choose an action type or uncheck the action box';
@@ -504,7 +504,7 @@ function dc_submit() {
 			errors_height = errors_height + error.scrollHeight; 
 		}
 
-		if (con_check.checked == true && (con1_value == '' || con2_value == '')) { 
+		if (con_check == true && (con1_value == '' || con2_value == '')) { 
 			const error = document.createElement('div');
 			error.className = 'dc-err-line'
 			error.innerHTML = ' You choose both conditions or uncheck the condition box';
