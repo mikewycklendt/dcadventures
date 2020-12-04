@@ -120,12 +120,9 @@ function math_div_select(select, valuediv, mathdiv, containdiv ) {
 	}
 }
 
-function math_mod_div_select(select, valuediv, mathdiv, moddiv, containdiv ) {
+function math_mod_div_select(select, value, math, mod, containdiv ) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById(valuediv)
-	const math = document.getElementById(mathdiv)
-	const mod = document.getElementById(moddiv)
 	const div = document.getElementById(containdiv)
 
 	if (value == 'math') {
@@ -151,11 +148,9 @@ function math_mod_div_select(select, valuediv, mathdiv, moddiv, containdiv ) {
 	}
 }
 
-function value_type(select, mathdiv, valuediv) {
+function value_type(select, math, value) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById(valuediv)
-	const math = document.getElementById(mathdiv)
 
 	if (value == 'math') {
 		hide_opacity(val);

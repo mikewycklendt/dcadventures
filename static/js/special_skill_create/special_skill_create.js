@@ -394,11 +394,9 @@ function check_drop(field, divdrop) {
 	}
 }
 
-function value_type(select, mathdiv, valuediv) {
+function value_type(select, math, value) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
-	const val = document.getElementById(valuediv)
-	const math = document.getElementById(mathdiv)
 
 	if (value == 'math') {
 		hide_opacity(val);
