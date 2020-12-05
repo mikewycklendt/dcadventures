@@ -116,6 +116,18 @@ class Action(db.Model):
 			'description': self.description
 		}
 
+class ConflictAction(db.Model):
+	__tablename__ = 'conflict_actions'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	action_id = db.Column(db.Integer, db.ForeignKey('actions.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'action_id': self.action_id
+		}
 class Skill(db.Model):
 	__tablename__ = 'skills'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
