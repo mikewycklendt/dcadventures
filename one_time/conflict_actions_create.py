@@ -37,6 +37,7 @@ def conflict_action_create():
 
 	for result in results:
 		print (result.id)
+		print(result.action_id)
 		print (result.name)
 
-	return ('medium added')
+	return ('actions added')
