@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Defense, Damage, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
+from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -52,6 +52,52 @@ def home():
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+
+
+
+@app.route('/conflictaction/create')
+def conflict_action_create():
+
+	actions = ['Aid', 'Aim', 'Attack', 'Charge', 'Defend', 'Disarm', 'Grab', 'Ready', 'Recover', 'Smash', 'Trip']
+
+	for i in actions:
+
+		entry = ConflictAction(name=i, action_id=1)
+		db.session.add(entry)
+		db.session.commit()
+
+	actions = ['Command', 'Crawl', 'Escape', 'Stand']
+
+	for i in actions:
+
+		entry = ConflictAction(name=i, action_id=2)
+		db.session.add(entry)
+		db.session.commit()
+
+	actions = ['Drop Prone', 'Drop an Item']
+
+	for i in actions:
+
+		entry = ConflictAction(name=i, action_id=3)
+		db.session.add(entry)
+		db.session.commit()
+
+	actions = ['Delay']
+
+	for i in actions:
+
+		entry = ConflictAction(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = ConflictAction.query.all()
+
+	for result in results:
+		print (result.id)
+		print(result.action_id)
+		print (result.name)
+
+	return ('actions added')
 
 '''
 @app.route('/debilitated/create')
