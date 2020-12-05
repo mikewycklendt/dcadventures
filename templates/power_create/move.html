@@ -325,12 +325,6 @@
 		</div>
 
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="move_objects_damage" class="medium-checkbox med-checkbox" > Inflicts Damage
-			</div>
-		</div>
-
-		<div>
 			<select class="select-sml" id="move_objects_check" name="move_objects_check" onchange="move_objects_check()">
 				<option value="">Check Type</option>
 				{% for c in checks %}
@@ -368,6 +362,35 @@
 					</select>
 				</div>
 			</div>
+		</div>
+
+		<div></div>
+
+		<div>
+			<select class="select-sml" id="move_objects_direction" name="move_objects_direction">
+				{% for m in move_objects %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="move-objects-damage">
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="move_objects_damage" class="medium-checkbox med-checkbox" onclick="move_objects_damage()"> Inflicts Damage
+				</div>
+			</div>
+
+			<div id="move-objects-damage-type">
+				<select class="select-sml" id="move_objects_damage_type" name="move_objects_damage_type">
+					<option value="">Damage Dealt By</option>
+					<option value="effect">Effect Rank</option>
+					{% for a in abilities %}
+						<option value={{a.id}}>{{a.name}} Rank</option>
+					{% endfor %}
+				</select>
+			</div>
+
 		</div>
 
 	</div>

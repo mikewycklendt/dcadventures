@@ -110,3 +110,10 @@ function move_objects_check() {
 
 	select_opacity(select, options);
 }
+
+function move_objects_damage() {
+	const check = 'move_objects_damage';
+	const div = 'move-objects-damage-type';
+
+	check_opacity(check, div);
+}
