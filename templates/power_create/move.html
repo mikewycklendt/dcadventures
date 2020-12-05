@@ -202,6 +202,36 @@
 		
 	</div>
 
+	<div id="move-row4">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_check_type" class="medium-checkbox med-checkbox" onclick="move_check_type()"> Requires Check
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Move Objects
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_through_objects" class="medium-checkbox med-checkbox" onclick="move_through_objects()"> Through Objects
+			</div>
+		</div>
+
+		<div id="move-through-objects">
+			<select class="select-sml" id="move_openings" name="move_openings">
+				{% for o in openings %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+	</div>
+
 	<div id="move-ground">
 		<div>
 			<select class="select-sml" id="move_ground_type" name="move_ground_type">
@@ -398,27 +428,12 @@
 	<div id="move-button-row">
 		
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="move_check_type" class="medium-checkbox med-checkbox" onclick="move_check_type()"> Requires Check
-			</div>
 		</div>
 
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Move Objects
-			</div>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="move_through_objects" class="medium-checkbox med-checkbox" onclick="move_through_objects()"> Through Objects
-			</div>
-		</div>
-
-		<div id="move-through-objects">
-			<select class="select-sml" id="move_openings" name="move_openings">
-				{% for o in openings %}
-					<option value="{{o.type}}">{{o.name}}</option>
+			<select class="entry-select" id="move_ranks" name="move_ranks">
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>

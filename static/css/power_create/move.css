@@ -65,6 +65,20 @@
 	gap: 3px;
 }
 
+#move-row4 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	gap: 3px;
+}
+
+#move-button-row {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 65% 15% 20%;
+	gap: 3px;
+}
+
 #move-distance {
 	display: none;
 }
@@ -169,13 +183,6 @@
 	grid-template-columns: 40% 60%;
 	gap: .2vw;
 	width: 95%;
-}
-
-#move-button-row {
-	display: grid;
-	width: 98%;
-	grid-template-columns: 20% 20% 20% 20% 20%;
-	gap: 3px;
 }
 
 #move-check-type {
