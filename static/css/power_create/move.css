@@ -128,7 +128,7 @@
 	grid-auto-rows: auto;
 }
 
-#move-objects {
+#move-through-objects {
 	opacity: 0%;
 	transition: all .4s ease-in;
 }

@@ -67,9 +67,9 @@ function move_flight() {
 	check_drop(check, div, move_entry);
 }
 
-function move_objects() {
-	const check = 'move_objects';
-	const div = 'move-objects';
+function move_through_objects() {
+	const check = 'move_through_objects';
+	const div = 'move-through-objects';
 
 	check_opacity(check, div);
 }
