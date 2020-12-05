@@ -607,7 +607,7 @@ textarea:focus {
 	padding: 2%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	margin-bottom: 20px;
+	margin-bottom: 2vw;
 }
 
 .power-title {
