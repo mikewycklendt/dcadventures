@@ -102,11 +102,19 @@ trait amount
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 30% 45%;
+	grid-template-columns: 25% 20% 55%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#char-appear input[type="text"] {
+	height: 1.1vw;
+	width: 93%;
+	padding: .1vw;
+	font-size: 90%;
+	background-color: lightblue;
 }
 
 #char-emotion {

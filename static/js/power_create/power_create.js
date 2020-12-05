@@ -489,7 +489,8 @@ power_create = function() {
 			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 			edit_button.style.display = "block";
 			add_power.style.display = "none";
-			all_fields.style.opacity = "100%";
+			all_fields.style.display = "grid";
+			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
 
 			errors_delete = document.getElementsByClassName('name-err-line');
 
