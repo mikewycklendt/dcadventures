@@ -117,3 +117,26 @@ function move_objects_damage() {
 
 	check_opacity(check, div);
 }
+
+function move_permeate() {
+	const check = 'move_permeate';
+	const div = 'move-permeate';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_dimension() {
+	const check = 'move_dimension';
+	const div = 'move-dimension';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_dimension_type() {
+	const select = 'move_dimension_type';
+	const options = [{'val': 'descriptor', 'div': 'move-dimension-descriptor'}]
+
+	select_opacity(select, options);
+}

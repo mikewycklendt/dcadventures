@@ -51,17 +51,19 @@
 	gap: 3px;
 }
 
-#move-row3 {
-	display: grid;
-	width: 98%;
-	grid-template-columns: 20% 20% 20% 20% 20%;
-	gap: 3px;
-}
+
 
 #move-row2 {
 	display: grid;
 	width: 98%;
 	grid-template-columns: auto auto auto auto;
+	gap: 3px;
+}
+
+#move-row3 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	gap: 3px;
 }
 
@@ -142,11 +144,6 @@
 	grid-auto-rows: auto;
 }
 
-#move-through-objects {
-	opacity: 0%;
-	transition: all .4s ease-in;
-}
-
 #move-objects {
 	display: grid;
 	grid-template-columns: 15% 20% 65%;
@@ -183,6 +180,33 @@
 	grid-template-columns: 40% 60%;
 	gap: .2vw;
 	width: 95%;
+}
+
+#move-permeate {
+	display: grid;
+	grid-template-columns: 15% 20% 25% 20% 20%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-dimension {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-dimension-descriptor {
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 #move-check-type {

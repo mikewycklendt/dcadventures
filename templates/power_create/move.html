@@ -166,6 +166,10 @@
 
 	<div id="move-row3">
 
+	</div>
+
+	<div id="move-row4">
+
 		<div>
 			<select class="select-sml" id="move_dc" name="move_dc">
 				<option value="">DC</option>
@@ -202,7 +206,7 @@
 		
 	</div>
 
-	<div id="move-row4">
+	<div id="move-row5">
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="move_check_type" class="medium-checkbox med-checkbox" onclick="move_check_type()"> Requires Check
@@ -217,19 +221,88 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_through_objects" class="medium-checkbox med-checkbox" onclick="move_through_objects()"> Through Objects
+				<input type="checkbox" id="move_through_objects" class="medium-checkbox med-checkbox" onclick="move_permeate()"> Permeate
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_dimension" class="medium-checkbox med-checkbox" onclick="move_dimension()"> Dimension Travel
+			</div>
+		</div>	
+
+
+
+		
+
+		<div></div>
+	</div>
+
+	<div id="move-permeate">
+		<div>
+			Permeate:
+		</div>
+
 		<div id="move-through-objects">
-			<select class="select-sml" id="move_openings" name="move_openings">
+			<select class="select-sml" id="move_permeate" name="move_permeate">
 				{% for o in openings %}
 					<option value="{{o.type}}">{{o.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div></div>
+		<div>
+			Speed Rank Modifier:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_permeate_speed" name="move_permeate_speed">
+				<option value="">Modifier</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_permeate_cover" class="medium-checkbox med-checkbox" > Provides Cover
+			</div>
+		</div>	
+
+	</div>
+
+	<div id="move-dimension">
+		<div>
+			Dimension Travel:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_dimension_type" name="move_dimension_type" onchange="move_dimension_type()">
+				{% for d in dimensions %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
+				<option value="">Carry Mass Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+			</select>
+		</div>
+
+		<div id="move-dimension-descriptor">
+			<select class="descriptor-sml" id="move_dimension_descriptor" name="move_dimension_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use Above Form to put descriptors here</option>
+			</select>
+		</div>
 	</div>
 
 	<div id="move-ground">
@@ -432,6 +505,7 @@
 
 		<div>
 			<select class="entry-select" id="move_ranks" name="move_ranks">
+				<option value="">Ranks</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
