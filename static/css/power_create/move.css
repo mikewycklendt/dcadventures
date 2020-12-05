@@ -195,7 +195,7 @@
 
 #move-dimension {
 	display: grid;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 18% 25% 20% 37%;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
