@@ -79,14 +79,50 @@ visibility traittype trait modifier costperrank
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 20% auto auto;
+	grid-template-columns: 15% 15% auto auto;
 	grid-auto-rows: auto;
 }
 
-#env-immune {
+#env-immunity {
+	display: none;
+	font-size: 90%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 15% 15% 70%;
+}
+
+#env-immunity-condition {
 	display: none;
 	opacity: 0%;
-	transition: all .3s linear;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
+#env-immunity-other {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	gap: .2vw;
+	grid-template-columns: 20% 80%;
+}
+
+#env-immunity-other input[type="text"] {
+	height: 1.1vw;
+	width: 93%;
+	padding: .1vw;
+	font-size: 90%;
+	background-color: lightblue;
+}
+
+#env-immunity-environment {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 35% 35% 30%;
+	gap: .2vw;
 }
 
 #env-condition {

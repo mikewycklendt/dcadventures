@@ -66,9 +66,25 @@ function env_visibility_trait_type() {
 	trait_select(select, fill)
 }
 
-function env_immune() {
+function env_immunity() {
 	const check = 'env_immune';
 	const div = 'env-immune'
 
 	check_display(check, div)
+}
+
+function env_immunity_environment() {
+	const select = 'env_immunity_environment';
+	const options = [{'val': 'other', 'div': 'env-immunity-other'}]
+	const entry = 'env-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
+function env_immunity_type() {
+	const select = 'env_immunity_type';
+	const options = [{'val': 'condition', 'div': 'env-immunity-condition'},
+					{'val': 'environment', 'div': 'env-immunity-environment'}]
+
+	select_opacity(select, options);
 }
