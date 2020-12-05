@@ -46,6 +46,7 @@ function mod_limited_type() {
 					{'val': 'language', 'div': 'mod-limited-language'},
 					{'val': 'degree', 'div': 'mod-limited-degree'},
 					{'val': 'sense', 'div': 'mod-limited-sense'},
+					{'val': 'range', 'div': 'mod-limited-range'},
 					{'val': 'descriptor', 'div': 'mod-limited-descriptor'}];
 	const field = 'mod_limited_type';
 

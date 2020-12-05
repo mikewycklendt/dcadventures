@@ -337,6 +337,18 @@
 
 				<div></div>
 			</div>
+
+			<div id="mod-limited-range">
+				<div>
+					<select class="select-sml" id="mod_limited_range" name="mod_limited_range">
+						{% for r in ranges %}
+							<option value="{{r.type}}">{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
 		</div>
 	</div>
 
