@@ -89,7 +89,7 @@ visibility traittype trait modifier costperrank
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 15% 15% 70%;
+	grid-template-columns: 10% 20% 70%;
 }
 
 #env-immunity-condition {
