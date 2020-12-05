@@ -319,6 +319,59 @@
 		</div>
 	</div>
 
+	<div id="move-objects">
+		<div>
+			Move Objects:
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_objects_damage" class="medium-checkbox med-checkbox" > Inflicts Damage
+			</div>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_objects_check" name="move_objects_check" onchange="move_objects_check()">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="move-objects-attack">
+				<div>
+					<select class="select-sml" id="move_objects_attack" name="move_objects_attack">
+						<option value="">Attack Check Type</option>
+						{% for c in conflicts %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="move-objects-skill">
+				<div>
+					<select class="select-sml" id="move_objects_skill_type" name="move_objects_skill_type" onchange="move_objects_skill_type()">
+						<option value="">Skill Type</option>
+						<option value="skill">Skill</option>
+						<option value="bonus">Enhanced Skill</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_objects_skill" name="move_objects_skill">
+						<option value="">Skill</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 	<div id="move-button-row">
 		
 		<div>
@@ -329,7 +382,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" > Move Objects
+				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Move Objects
 			</div>
 		</div>
 

@@ -93,6 +93,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	actions = Action.query.all()
 
+	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+
 	skills = Skill.query.all()
 
 	abilities = Ability.query.all()
@@ -288,7 +290,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											character=character, updown=updown, condition_type=condition_type, descriptors=descriptors, origins=origins, sources=sources, mediums=mediums, medium=medium, 
 											materials=materials, energies=energies, descriptor_type=descriptor_type, resistance_type=resistance_type, bonus_type=bonus_type, time_effect=time_effect, 
 											limited_type=limited_type, possess=possess, hundred=hundred, game_rule=game_rule, damage=damage, insub=insub, openings=openings, spend=spend, result=result, 
-											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages)
+											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages, conflicts=conflicts)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():

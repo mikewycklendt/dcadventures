@@ -88,3 +88,25 @@ function move_check_type() {
 
 	check_drop(check, div, entry);
 }
+
+function move_objects_skill_type() {
+	const select = 'move_objects_skill_type';
+	const fill = 'move_objects_skill';
+
+	trait_select(select, fill);
+}
+
+function move_objects() {
+	const check = 'move_objects';
+	const div = 'move-objects';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_objects_check() {
+	const select = 'move_objects_check';
+	const options = [{'val': 1, 'div': 'move-objects-skill'}, {'val': 5, 'div': 'move-objects-attack'}]
+
+	select_opacity(select, options);
+}

@@ -133,6 +133,30 @@
 	transition: all .4s ease-in;
 }
 
+#move-objects {
+	display: grid;
+	grid-template-columns: 15% 25% 20% 40%;
+	gap: .2vw;
+	width: 97%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-objects-attack {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 75% 25%;
+}
+
+#move-objects-skill {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+	width: 95%;
+}
+
 #move-button-row {
 	display: grid;
 	width: 98%;
