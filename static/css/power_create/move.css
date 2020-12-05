@@ -135,7 +135,7 @@
 
 #move-objects {
 	display: grid;
-	grid-template-columns: 15% 25% 20% 40%;
+	grid-template-columns: 15% 20% 20% 45%;
 	gap: .2vw;
 	width: 97%;
 	max-height: 0;
