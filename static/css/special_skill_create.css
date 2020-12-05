@@ -28,11 +28,10 @@
 }
 
 .skill-grid {
-	display: grid;
+	display: block;
 	width: 80%;
 	margin-top: 2px;
 	margin-left: 10%;
-	grid-template-columns: 100%;
 	grid-template-areas: "contentpage";
 }
 
@@ -318,6 +317,7 @@ textarea:focus {
 }
 
 #all-fields {
+	display: none;
 	opacity: 0%;
 	transition: all .4s linear;
 } 
