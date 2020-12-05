@@ -67,7 +67,7 @@ function env_visibility_trait_type() {
 }
 
 function env_immunity() {
-	const check = 'env_immuity';
+	const check = 'env_immunity';
 	const div = 'env-immunity'
 
 	check_display(check, div)
