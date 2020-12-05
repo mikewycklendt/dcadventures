@@ -71,7 +71,7 @@ function env_immunity() {
 	const div = 'env-immunity'
 	const entry = 'env-entry';
 
-	check_display(check, div, entry);
+	check_drop(check, div, entry);
 }
 
 function env_immunity_environment() {
