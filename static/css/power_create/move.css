@@ -70,7 +70,7 @@
 #move-row4 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 20% 20% 15% 25% 20%;
+	grid-template-columns: 20% 18% 15% 22% 25%;
 	gap: 3px;
 }
 
