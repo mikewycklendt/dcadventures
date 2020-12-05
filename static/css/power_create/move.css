@@ -184,7 +184,7 @@
 
 #move-permeate {
 	display: grid;
-	grid-template-columns: 15% 20% 25% 20% 20%;
+	grid-template-columns: 10% 25% 25% 15% 20% 5%;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
