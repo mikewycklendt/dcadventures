@@ -41,7 +41,7 @@
 }
 
 #box-title {
-	display: table-cell;
+	display: flex;
 	width: 65%;
 	height: 4.5vw;
 	margin-top: 2%;
