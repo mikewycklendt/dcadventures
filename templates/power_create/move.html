@@ -610,28 +610,7 @@
 		</div>
 
 	</div>
-
-	<div id="move-button-row">
-		
-		<div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="move_ranks" name="move_ranks">
-				<option value="">Ranks</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="btn-entry" id="move_submit" onclick="move_submit()">
-				 Add
-			</div>
-		</div>
-	</div>
-
+	
 	<div id="move-check-type">
 		<div>
 			Check Type:
@@ -654,6 +633,27 @@
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="move_check_free" class="medium-checkbox med-checkbox" > Free Check
+			</div>
+		</div>
+	</div>
+
+	<div id="move-button-row">
+		
+		<div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="move_ranks" name="move_ranks">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="move_submit" onclick="move_submit()">
+				 Add
 			</div>
 		</div>
 	</div>
