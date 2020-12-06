@@ -254,7 +254,43 @@
 			<div class="check-div">
 				<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Requires Material
 			</div>
-		</div>	
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_concealment" class="medium-checkbox med-checkbox" onclick="move_concealment()"> Requires Material
+			</div>
+		</div>
+	</div>
+
+	<div id="move-concealment">
+		<div>
+			Concealed From:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_concealment_sense" name="move_concealment_sense">
+				<option value="">Sense</option>
+				{% for s in senses %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_concealment_trait_type" name="move_concealment_trait_type" onchange="move_concealment_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_concealment_trait" name="move_concealment_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
 	</div>
 
 	<div id="move-permeate">

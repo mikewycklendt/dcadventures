@@ -149,3 +149,17 @@ function move_special_type() {
 
 	select_opacity(select, options);
 }
+
+function move_concealment() {
+	const check = 'move_concealment';
+	const div = 'move-concealment';
+
+	check_drop(check, div);
+}
+
+function move_concealment_trait_type() {
+	const select = 'move_concealment_trait_type';
+	const fill = 'move_concealment_trait';
+
+	trait_select(select, fill);
+}
