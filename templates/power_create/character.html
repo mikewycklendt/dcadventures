@@ -18,7 +18,7 @@
 	<div id="char-row1">
 
 		<div>
-			<select class="select-sml" id="char_trait_type" name="char_trait_type">
+			<select class="select-sml" id="char_trait_type" name="char_trait_type" onchange="char_trait_type()">
 				<option value="">Trait Type</option>
 				{% for c in character %}
 					<option value="{{c.type}}">{{c.name}}</option>
@@ -72,7 +72,7 @@
 				<input type="checkbox" id="char_reduced" class="medium-checkbox med-checkbox" onclick="char_reduced()"> Reduces Trait
 			</div>
 		</div>
-		
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="char_limbs" class="medium-checkbox med-checkbox" onclick="char_limbs()"> Extra Limbs
@@ -172,7 +172,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_reduced_trait_type" name="char_reduced_trait_type">
+			<select class="select-sml" id="char_reduced_trait_type" name="char_reduced_trait_type" onchange="char_reduced_trait_type()">
 				<option value="">Trait Type</option>
 				{% for c in character %}
 					<option value="{{c.type}}">{{c.name}}</option>
