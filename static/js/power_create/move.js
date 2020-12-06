@@ -126,9 +126,9 @@ function move_permeate() {
 	check_drop(check, div, entry);
 }
 
-function move_dimension() {
-	const check = 'move_dimension';
-	const div = 'move-dimension';
+function move_special() {
+	const check = 'move_special';
+	const div = 'move-special';
 	const entry = 'move-entry';
 
 	check_drop(check, div, entry);
@@ -137,6 +137,14 @@ function move_dimension() {
 function move_dimension_type() {
 	const select = 'move_dimension_type';
 	const options = [{'val': 'descriptor', 'div': 'move-dimension-descriptor'}]
+
+	select_opacity(select, options);
+}
+
+function move_special_type() {
+	const select = 'move_special_type';
+	const options = [{'val': 'space', 'div': 'move-special-space'},
+					{'val': 'dimension', 'div': 'move-special-dimension'}]
 
 	select_opacity(select, options);
 }

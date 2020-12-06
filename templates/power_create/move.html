@@ -223,7 +223,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_dimension" class="medium-checkbox med-checkbox" onclick="move_dimension()"> Dimension Travel
+				<input type="checkbox" id="move_special" class="medium-checkbox med-checkbox" onclick="move_special()"> Special Travel
 			</div>
 		</div>	
 
@@ -277,35 +277,68 @@
 
 	</div>
 
-	<div id="move-dimension">
+	<div id="move-special">
+
 		<div>
-			Dimension Travel:
+			Special Travel:
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_dimension_type" name="move_dimension_type" onchange="move_dimension_type()">
-				{% for d in dimensions %}
-					<option value="{{d.type}}">{{d.name}}</option>
+			<select class="select-sml" id="move_special_type" name="move_special_type" onchange="move_special_type()">
+				{% for t in travel %}
+					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
-				<option value="">Carry Mass Rank</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-			</select>
+
+			<div id="move-special-dimension">
+
+				<div>
+					<select class="select-sml" id="move_dimension_type" name="move_dimension_type" onchange="move_dimension_type()">
+						{% for d in dimensions %}
+							<option value="{{d.type}}">{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
+						<option value="">Carry Mass Rank</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+					</select>
+				</div>
+	
+				<div id="move-dimension-descriptor">
+					<select class="descriptor-sml" id="move_dimension_descriptor" name="move_dimension_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use Above Form to put descriptors here</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="move-special-space">
+				<div>
+					<select class="select-sml" id="move_special_space" name="move_special_space">
+						{% for s in space %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+		
+				<div>
+
+				</div>
+			</div>
+
 		</div>
 
-		<div id="move-dimension-descriptor">
-			<select class="descriptor-sml" id="move_dimension_descriptor" name="move_dimension_descriptor">
-				<option value="">Descriptor</option>
-				<option value="">Use Above Form to put descriptors here</option>
-			</select>
-		</div>
 	</div>
+
+	
 
 	<div id="move-ground">
 		<div>

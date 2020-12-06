@@ -193,10 +193,9 @@
 	transition: all .4s ease-out;
 }
 
-#move-dimension {
+#move-special {
 	display: grid;
-	grid-template-columns: 18% 25% 20% 37%;
-	grid-auto-rows: auto;
+	grid-template-columns: 20% 20% 60%;
 	gap: .2vw;
 	width: 97%;
 	max-height: 0;
@@ -204,7 +203,27 @@
 	transition: all .4s ease-out;
 }
 
+#move-special-dimension {
+	display: none;
+	grid-template-columns: 25% 20% 37%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #move-dimension-descriptor {
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-special-space {
+	display: none;
+	grid-template-columns: 70% 30%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
