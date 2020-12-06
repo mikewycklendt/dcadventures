@@ -181,11 +181,20 @@
 	transition: all .3s ease-out;
 }
 
-#mod-limited-task {
+#mod-limited-task-type {
 	display: none;
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 25% 75%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#mod-limited-task {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 85%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
