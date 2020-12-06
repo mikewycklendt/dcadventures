@@ -96,17 +96,17 @@
 		<div>
 			<div id="damage-immunity-trait">
 				<div>
-					<select class="damage_immunity_trait_type" name="damage_immunity_trait_type" onchange="damage_immunity_trait_type()">
+					<select  class="select-sml" id="damage_immunity_trait_type" name="damage_immunity_trait_type" onchange="damage_immunity_trait_type()">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
+				</div>
 
-					<div>
-						<select class="select-sml" id="damage_immunity_trait" name="damage_immunity_trait">
-							<option value="">Trait</option>
-						</select>
-					</div>
+				<div>
+					<select class="select-sml" id="damage_immunity_trait" name="damage_immunity_trait">
+						<option value="">Trait</option>
+					</select>
 				</div>
 			</div>
 

@@ -62,12 +62,13 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 10% 15% 75%;
+	grid-template-columns: 15% 20% 65%;
 }
 
 #damage-immunity-descriptor {
 	display: none;
 	opacity: 0%;
+	transition: all .3s ease-out;
 	grid-template-columns: 50% 50%;
 	gap: .2vw;
 }
@@ -75,14 +76,15 @@
 #damage-immunity-damage {
 	display: none;
 	opacity: 0%;
+	transition: all .3s ease-out;
 	grid-template-columns: 50% 50%;
 	gap: .2vw;
 }
 
-
 #damage-immunity-trait {
 	display: none;
 	opacity: 0%;
+	transition: all .3s ease-out;
 	grid-template-columns: 40% 60%;
 	gap: .2vw;
 }
