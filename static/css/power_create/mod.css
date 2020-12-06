@@ -185,7 +185,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 35% 70%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
