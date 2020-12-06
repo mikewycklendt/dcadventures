@@ -46,9 +46,9 @@
 
 #move-row1 {
 	display: grid;
-	width: 98%;
+	width: 97%;
 	grid-template-columns: 40% 16% 12% 12% 20%;
-	gap: 3px;
+	gap: .2vw;
 }
 
 
