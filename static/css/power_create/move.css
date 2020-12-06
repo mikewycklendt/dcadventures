@@ -77,7 +77,7 @@
 #move-row5 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 22% 20% 20% 20% 18%;
+	grid-template-columns: 22% 22% 20% 20% 16%;
 	gap: 3px;
 }
 
