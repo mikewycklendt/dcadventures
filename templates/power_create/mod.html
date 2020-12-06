@@ -538,14 +538,18 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_side" name="mod_side">
+			<select class="select-sml" id="mod_side" name="mod_side" onchange="mod_side()">
 				{% for s in side_effects %}
 					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div></div>
+		<div>
+			<div id="mod-side-other">
+				<input type="text" id="mod_side_other" name="mod_side_other">
+			</div>
+		</div>
 
 	</div>
 

@@ -44,10 +44,11 @@
 }
 
 #mod-entry input[type="text"] {
-	height: 1.2vw;
+	height: 1.1vw;
 	padding: .1vw;
 	font-size: 90%;
 	width: 95%;
+	background-color: lightblue;
 }
 
 #mod-row1 {
@@ -358,6 +359,13 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#mod-side-other {
+	display: none;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 #mod-table {
