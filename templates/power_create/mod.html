@@ -285,6 +285,7 @@
 		<div>
 			<select class="select-sml" id="mod_limited_mod" name="mod_limited_mod">
 				<option value="">Modifier</option>
+				<option value="null">Effect Nullified</option>
 				<option value="rank">Power Rank</option>
 				<option value="X">X</option>
 				{% for i in negatives %}
@@ -294,6 +295,17 @@
 		</div>
 	
 		<div>
+
+			<div id="mod-limited-task">
+				<div>
+					<select class="select-sml" id="mod_limited_task_type" name="mod_limited_task_type">
+						{% for t in task_type %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
 			<div id="mod-limited-trait">
 				<div>
 					<select class="select-sml" id="mod_limited_trait_type" name="mod_limited_trait_type">

@@ -47,7 +47,8 @@ function mod_limited_type() {
 					{'val': 'degree', 'div': 'mod-limited-degree'},
 					{'val': 'sense', 'div': 'mod-limited-sense'},
 					{'val': 'range', 'div': 'mod-limited-range'},
-					{'val': 'descriptor', 'div': 'mod-limited-descriptor'}];
+					{'val': 'descriptor', 'div': 'mod-limited-descriptor'},
+					{'val': 'task', 'div': 'mod-limited-task'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);
