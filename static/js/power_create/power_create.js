@@ -1,3 +1,29 @@
+function descriptor_add_type()  {
+	const fields = document.getElementsByClassName('descriptor-sml');
+	
+	options = [{'type': 'rare', 'name': 'Any Chosen Rare'}, 
+				{'type': 'uncommon', 'name': 'Any Chosen Uncommon'}, 
+				{'type': 'common', 'name': 'Any Chosen Common'}, 
+				{'type': 'very', 'name': 'Any Chosen Very Common'}, 
+				{'type': 'damage', 'name': 'Any Chosen Damage'}]
+
+	let field;
+	let option;
+
+	for (field of fields) {
+		for (option of options) {
+			let o = document.createElement('option');
+			o.value = option.type;
+			o.text = option.name;
+			field.add(o);
+		}
+	}
+}
+
+descriptor_add_type()
+
+
+
 function trait_select(select, fill) {
 	const field = document.getElementById(select)
 	const trait = field.options[field.selectedIndex].value
