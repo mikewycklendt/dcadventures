@@ -308,7 +308,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											limited_type=limited_type, possess=possess, hundred=hundred, game_rule=game_rule, damage=damage, insub=insub, openings=openings, spend=spend, result=result, 
 											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages, conflicts=conflicts, move_objects=move_objects,
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, damage_immunity=damage_immunity, circ_null=circ_null, space=space,
-											travel=Travel)
+											travel=travel)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
