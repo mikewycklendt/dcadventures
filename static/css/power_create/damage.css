@@ -51,12 +51,49 @@
 	grid-auto-rows: auto;
 }
 
+#damage-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 20% 35% 45%;
+}
+
+#damage-row3 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 10% 15% 75%;
+}
+
+#damage-immunity-descriptor {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+}
+
+#damage-immunity-damage {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+}
+
+
+#damage-immunity-trait {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
 #damage-button-row {
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 17% 30% 38% 15%;
+	grid-template-columns: 80% 20%;
 }
+
 #damage-table {
 	display: none;
 	width: 94%;

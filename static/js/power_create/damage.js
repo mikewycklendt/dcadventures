@@ -20,3 +20,19 @@ function dam_trait_type() {
 
 	trait_select(select, fill)
 }
+
+function damage_immunity_trait_type() {
+	const select = 'damage_immunity_trait_type';
+	const fill = 'damage_immunity_trait';
+
+	trait_select(select, fill);
+}
+
+function damage_immunity_type() {
+	const select = 'damage_immunity_type';
+	const options = [{'val': 'trait', 'div': 'damage-immunity-trait'},
+					{'val': 'damage', 'div': 'damage-immunity-damage'},
+					{'val': 'descriptor', 'div': 'damage-immunity-descriptor'}]
+
+	select_opacity(select, options);
+}
