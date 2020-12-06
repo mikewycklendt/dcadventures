@@ -153,8 +153,9 @@ function move_special_type() {
 function move_concealment() {
 	const check = 'move_concealment';
 	const div = 'move-concealment';
+	const entry = 'move-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function move_concealment_trait_type() {
