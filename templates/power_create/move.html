@@ -20,6 +20,7 @@
 			<div>
 				<select class="select-sml" id="move_rank" name="move_rank">
 					<option value="">Speed Rank</option>
+					<option value="normal">Normal</option>
 					<option value="effect">This Power</option>
 					<option value="distance">Distance Rank</option>
 					{% for num in positives %}
@@ -47,6 +48,12 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_per_rank" class="medium-checkbox med-checkbox" > Per Rank
+			</div>
+		</div>
+		
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="move_flight" class="medium-checkbox med-checkbox" onclick="move_flight()"> Flight
@@ -233,11 +240,15 @@
 			</div>
 		</div>	
 
+	</div>
 
+	<div id="move-row5">
 
-		
-
-		<div></div>
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Through Obstacles
+			</div>
+		</div>	
 	</div>
 
 	<div id="move-permeate">

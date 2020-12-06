@@ -47,7 +47,7 @@
 #move-row1 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 40% 20% 20% 20%;
+	grid-template-columns: 40% 16% 12% 12% 20%;
 	gap: 3px;
 }
 
@@ -71,6 +71,13 @@
 	display: grid;
 	width: 98%;
 	grid-template-columns: 20% 18% 15% 22% 25%;
+	gap: 3px;
+}
+
+#move-row5 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 25% 25% 25% 25%;
 	gap: 3px;
 }
 
