@@ -133,6 +133,16 @@
 	transition: all .4s ease-out;
 }
 
+#move-aquatic {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 25% 65%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #move-flight {
 	display: none;
 	width: 98%;

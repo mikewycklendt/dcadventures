@@ -296,7 +296,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	time_travel = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
 
-	extras = db.session.query(Extra).order_by(Extra.name).all()
+	aquatic = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}]
 
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
@@ -312,7 +312,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											limited_type=limited_type, possess=possess, hundred=hundred, game_rule=game_rule, damage=damage, insub=insub, openings=openings, spend=spend, result=result, 
 											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages, conflicts=conflicts, move_objects=move_objects,
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, damage_immunity=damage_immunity, circ_null=circ_null, space=space,
-											travel=travel, time_travel=time_travel, extras=extras)
+											travel=travel, time_travel=time_travel, aquatic=aquatic)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():

@@ -164,3 +164,11 @@ function move_concealment_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function move_aquatic() {
+	const check = 'move_aquatic';
+	const div = 'move-aquatic';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}

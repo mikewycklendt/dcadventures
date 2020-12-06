@@ -264,6 +264,18 @@
 		</div>
 	</div>
 
+	<div id="move-aquatic">
+		<div>
+			Aquatic:
+		</div>
+
+		<select class="select-sml" id="move_acquatic_type" name="move_acquatic_type">
+			{% for a in aquatic %}
+				<option value="{{a.type}}">{{a.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
 	<div id="move-concealment">
 		<div>
 			Concealment From:
