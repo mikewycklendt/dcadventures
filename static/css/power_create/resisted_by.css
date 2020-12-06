@@ -70,7 +70,7 @@
 
 #resist-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 25% 55% 20%;
 	gap: .1vw;
 	padding: .2vw;
 }
