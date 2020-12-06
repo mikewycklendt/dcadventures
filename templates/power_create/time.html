@@ -125,13 +125,48 @@
 		</div>
 
 		<div>
-			
+			<div class="check-div">
+				<input type="checkbox" id="time_recovery" class="medium-checkbox med-checkbox" onclick="time_recovery()"> Recovery Time
+			</div>
 		</div>
 
 		<div>
 			<div class="btn-entry" id="time_submit" name="time_submit" onclick="time_submit()">
 				 Add
 			</div>
+		</div>
+	</div>
+
+	<div id="time-recovery">
+		<div>
+			Recovery Time:
+		</div>
+
+		<div style="font-size: 85%;">
+			Toughness Penalty Nullified:
+		</div>
+
+		<div>
+			<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
+				<option value="">Penalty</option>
+				<option value="effect">Effect Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			Each
+		</div>
+
+		<div>
+			<select class="select-sml" id="time_recovery_time" name="time_recovery_time">
+				<option value="">Time Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
 </div>

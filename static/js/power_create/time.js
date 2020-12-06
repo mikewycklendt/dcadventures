@@ -28,3 +28,11 @@ function time_value_type() {
 
 	value_type(select, math, value)
 }
+
+function time_recovery() {
+	const check = 'time_recovery';
+	const div = 'tim-recovery';
+	const entry = 'time-entry';
+
+	check_drop(check, div, entry);
+}
