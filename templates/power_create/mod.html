@@ -163,7 +163,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_side" class="medium-checkbox med-checkbox" onclick="mod_side()"> Side Effect
+				<input type="checkbox" id="mod_side_effect" class="medium-checkbox med-checkbox" onclick="mod_side_effect()"> Side Effect
 			</div>
 		</div>
 
@@ -538,7 +538,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_side" name="mod_side" onchange="mod_side()">
+			<select class="select-sml" id="mod_side_effect_type" name="mod_side_effect_type" onchange="mod_side_effect_type()">
 				{% for s in side_effects %}
 					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}

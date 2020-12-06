@@ -196,8 +196,8 @@ function mod_points_reerolls() {
 	}
 }
 
-function mod_side() {
-	const check = 'mod_side';
+function mod_side_effect() {
+	const check = 'mod_side_effect';
 	const div = 'mod-side';
 	const entry = 'mod-entry';
 
@@ -220,8 +220,8 @@ function mod_effortless() {
 	check_drop(check, div, entry);
 }
 
-function mod_side() {
-	const select = 'mod_side';
+function mod_side_effect_type() {
+	const select = 'mod_side_effect_type';
 	const options = [{'val': 'other', 'div': 'mod-side-other'}]
 
 	select_opacity(select, options);

@@ -68,6 +68,14 @@
 	grid-auto-rows: auto;
 }
 
+#defense-nullify {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	gap: .2vw;
+}
+
 #defense-reflect-action {
 	opacity: 0%;
 	transition: all .4s ease-out;
