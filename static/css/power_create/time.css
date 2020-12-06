@@ -80,6 +80,12 @@
 	grid-auto-rows: auto;
 }
 
+#time-button-row {
+	display: grid;
+	grid-template-columns: 20% 80%;
+	width: 95%;
+}
+
 #time-recovery {
 	display: none;
 	max-height: 0;
