@@ -31,7 +31,7 @@ function time_value_type() {
 
 function time_recovery() {
 	const check = 'time_recovery';
-	const div = 'tim-recovery';
+	const div = 'time-recovery';
 	const entry = 'time-entry';
 
 	check_drop(check, div, entry);
