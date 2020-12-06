@@ -70,14 +70,14 @@
 #move-row4 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 20% 18% 15% 22% 25%;
+	grid-template-columns: 23% 18% 15% 22% 22%;
 	gap: 3px;
 }
 
 #move-row5 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 22% 22% 18% 20% 18%;
+	grid-template-columns: 16% 22% 22% 20% 20%;
 	gap: 3px;
 }
 
