@@ -89,6 +89,30 @@
 		</div>
 	</div>
 
+	<div id="opposed-row3">
+		<div></div>
+
+		<div>
+			<select class="select-sml" id="opposed_player_check" name="opposed_player_check">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+
+		<div>
+			<select class="select-sml" id="opposed_opponent_check" name="opposed_opponent_check">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="opposed-button-row">
 		<div></div>
 	

@@ -60,6 +60,13 @@
 	grid-template-columns: 15% 25% 10% 15% 25% 10%;
 }
 
+#opposed-row3 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 10% 15% 25% 10%;
+}
+
 #opposed-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;

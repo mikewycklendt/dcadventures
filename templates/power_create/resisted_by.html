@@ -153,6 +153,26 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="resist-nullify">
+				<div>
+					<select class="descriptor-sml" id="resist_nullify_descriptor" name="resist_nullify_descriptor">
+						<option value="">Nullifies Effects With Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+					</select>
+				</div>
+			
+				<div>
+					<select class="select-sml" id="resist_nullify_alternate" name="resist_nullify_alternate">
+						<option value="">Alternate Resistance</option>
+						{% for d in defenses %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+
 	
 		</div>
 
