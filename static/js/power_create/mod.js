@@ -203,3 +203,11 @@ function mod_side() {
 
 	check_drop(check, div, entry);
 }
+
+function mod_simultaneous() {
+	const check = 'mod_simultaneous';
+	const div = 'mod-simultaneous';
+	const entry =  'mod-entry';
+
+	check_drop(check, div, entry)
+}
