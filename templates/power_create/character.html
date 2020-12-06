@@ -18,13 +18,19 @@
 	<div id="char-row1">
 
 		<div>
-			<select class="select-sml" id="char_affects" name="char_affects">
+			<select class="select-sml" id="char_trait_type" name="char_trait_type">
+				<option value="">Trait Type</option>
 				{% for c in character %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
-				{% for a in abilities %}
-					<option value={{a.id}}>{{a.name}}</option>
-				{% endfor %}
+				<option value="ability">Ability</option>
+				<option value="defense">Defense</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_trait" name="char_trait">
+				<option value="">Trait</option>
 			</select>
 		</div>
 
@@ -57,16 +63,16 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="char-row2">
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="char_reduced" class="medium-checkbox med-checkbox" onclick="char_reduced()"> Reduces Trait
 			</div>
 		</div>
-
-	</div>
-
-	<div id="char-row2">
-
+		
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="char_limbs" class="medium-checkbox med-checkbox" onclick="char_limbs()"> Extra Limbs
@@ -124,6 +130,10 @@
 	<div id="char-limited">
 
 		<div>
+			Limited:
+		</div>
+
+		<div>
 			<select class="select-sml" id="char_limited_by" name="char_limited_by" onchange="char_limited_by()">
 				{% for l in limited %}
 					<option value="{{l.type}}">{{l.name}}</option>
@@ -158,11 +168,23 @@
 
 	<div id="char-reduced">
 		<div>
+			Reduced Trait:
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_reduced_trait_type" name="char_reduced_trait_type">
+				<option value="">Trait Type</option>
+				{% for c in character %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+				<option value="ability">Ability</option>
+				<option value="defense">Defense</option>
+			</select>
+		</div>
+
+		<div>
 			<select class="select-sml" id="char_reduced_trait" name="char_reduced_trait">
 				<option value="">Trait</option>
-				{% for a in abilities %}
-					<option value={{a.id}}>{{a.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 

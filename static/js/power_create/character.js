@@ -108,3 +108,17 @@ function char_insub() {
 
 	check_drop(check, div, entry);
 }
+
+function char_reduced_trait_type() {
+	const select = 'char_reduced_trait_type';
+	const fill = 'char_reduced_trait';
+
+	trait_select(select, fill);
+}
+
+function char_trait_type() {
+	const select = 'char_trait_type';
+	const fill = 'char_trait';
+
+	trait_select(select, fill);
+}

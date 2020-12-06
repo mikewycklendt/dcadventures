@@ -61,7 +61,7 @@ trait amount
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 30% 15% 5% 10% 15% 25%;
+	grid-template-columns: 25% 30% 15% 5% 10% 15%;
 	grid-auto-rows: auto;
 }
 
@@ -69,7 +69,7 @@ trait amount
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	grid-auto-rows: auto;
 }
 
@@ -91,7 +91,7 @@ trait amount
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 12% 30% 58%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
@@ -141,7 +141,7 @@ trait amount
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 15% 60%;
+	grid-template-columns: 15% 20% 25% 15%25%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
