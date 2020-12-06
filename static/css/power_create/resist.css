@@ -94,10 +94,10 @@ descriptor
 	display: grid;
 	opacity: 0%;
 	transition: all .4s ease-in;
-	grid-template-columns: 25% 35% 40%;
+	grid-template-columns: 20% 25% 25% 30%;
+	width: 97%;
+	gap: .2vw;
 }
-
-
 
 #resistance-descriptor {
 	display: none;

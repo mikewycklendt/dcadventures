@@ -120,6 +120,15 @@
 			</div>
 
 			<div>
+				<select class="select-sml" id="resistance_check_type" name="resistance_check_type">
+					<option value="">Check Type</option>
+					{% for c in checks %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
 				<select class="select-sml" id="resistance_check_trait_type" name="resistance_check_trait_type" onchange="resistance_check_trait_type()">
 					{% for t in traits %}
 						<option value="{{t.type}}">{{t.name}}</option>
