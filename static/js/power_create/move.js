@@ -144,7 +144,8 @@ function move_dimension_type() {
 function move_special_type() {
 	const select = 'move_special_type';
 	const options = [{'val': 'space', 'div': 'move-special-space'},
-					{'val': 'dimension', 'div': 'move-special-dimension'}]
+					{'val': 'dimension', 'div': 'move-special-dimension'},
+					{'val': 'time', 'div': 'move-special-time'}]
 
 	select_opacity(select, options);
 }

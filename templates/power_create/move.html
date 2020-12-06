@@ -323,6 +323,9 @@
 				<div>
 					<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
 						<option value="">Carry Mass Rank</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
 							{% for i in positives %}
 								<option value={{i}}>{{i}}</option>
 							{% endfor %}
@@ -348,6 +351,28 @@
 		
 				<div>
 
+				</div>
+			</div>
+
+			<div id="move-special-time">
+				<div>
+					<select class="select-sml" id="move_special_time" name="move_special_time">
+						{% for t in time_travel %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_special_time_carry" name="move_special_time_carry">
+						<option value="">Carry Mass Rank</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 
