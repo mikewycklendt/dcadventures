@@ -178,7 +178,40 @@
 				<input type="checkbox" id="mod_simultaneous" class="medium-checkbox med-checkbox" onclick="mod_simultaneous()"> Simultaneous
 			</div>
 		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_effortless" class="medium-checkbox med-checkbox" onclick="mod_effortless()"> Effortless
+			</div>
+		</div>
 		
+	</div>
+
+	<div id="mod-effortless">
+		<div>
+			Effortless:
+		</div>
+
+		<div>
+			After Degree of Failure:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_effortless_degree" name="mod_effortless_degree">
+				<option value="">Degree</option>
+				<option value="">N/A</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}{}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_effortless_retries" class="medium-checkbox med-checkbox"> Unlimited Retries
+			</div>
+		</div>
+
 	</div>
 
 	<div id="mod-simultaneous">

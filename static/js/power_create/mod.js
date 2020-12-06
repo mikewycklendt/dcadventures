@@ -211,3 +211,11 @@ function mod_simultaneous() {
 
 	check_drop(check, div, entry)
 }
+
+function mod_effortless() {
+	const check =  'mod_effortless';
+	const div = 'mod-effortless';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
