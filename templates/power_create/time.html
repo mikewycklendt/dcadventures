@@ -110,13 +110,23 @@
 
 		<div>
 			<select class="descriptor-sml" id="time_descriptor" name="time_descriptor">
-				<option value="">Use above form for values</option>
+				<option value="">Applies to descriptor</option>
+				<option value="">Use above form to put descriptors here</option>
 			</select>
 		</div>
 
-		<div></div>
+		<div>
+			<select class="select-sml"	id="time_check_type" name="time_check_type" onchange="time_check_type()">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-		<div></div>
+		<div>
+			
+		</div>
 
 		<div>
 			<div class="btn-entry" id="time_submit" name="time_submit" onclick="time_submit()">
