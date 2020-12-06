@@ -101,7 +101,7 @@
 				{% endfor %}
 			</select>
 		</div>
-		
+
 		<div>
 			<select class="select-sml" id="circ_check_trait_type" name="circ_check_trait_type" onchange="circ_check_trait_type()">
 				{% for t in traits %}
@@ -117,6 +117,61 @@
 		</div>
 
 	</div>
+
+	<div id="circ-row2">
+		<div>
+			Nullify Circumstance:
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_null_type" name="circ_null_type" onchange="circ_null_type()">
+				{% for c in circ_null %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<div id="circ-null-condition">
+				<div>
+					<select class="select-sml" id="circ_null_condition" name="circ_null_condition">
+						<option value="">Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="circ-null-descriptor">
+				<div>
+					<select class="descriptor-sml" id="circ_null_descriptor" name="circ_null_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="circ-null-trait">
+				<div>
+					<select class="select-sml" id="circ_null_trait_type" name="circ_null_trait_type" onchange="circ_null_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_null_trait" name="circ_null_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		</div>
 
 </div>
 

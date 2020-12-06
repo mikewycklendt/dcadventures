@@ -23,3 +23,19 @@ function circ_type() {
 
 	select_maxheight_entry(field, options, entry);
 }
+
+function circ_null_type() {
+	const select = 'circ_null_type';
+	const options = [{'val': 'condition', 'div': 'circ-null-condition'},
+					{'val': 'descriptor', 'div': 'circ-null-descriptor'},
+					{'val': 'trait', 'div': 'circ-null-trait'}]
+
+	select_opacity(select, options);
+}
+
+function circ_null_trait_type() {
+	const select = 'circ_null_trait_type';
+	const fill = 'circ_null_trait';
+
+	trait_select(select, fill);
+}

@@ -125,6 +125,36 @@ depend modifier lasts circ button
 	transition: all .4s ease-out;
 }
 
+#circ-row2 {
+	display: grid;
+	grid-template-columns: 20% 20% 60%;
+	gap: .2vw;
+	width: 97%;
+}
+
+#circ-null-condition {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 70% 30%;
+	gap: .2vw;
+}
+
+#circ-null-trait {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
+#circ-null-descriptor {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 70% 30%;
+	gap: .2vw;
+}
 
 #circ-table {
 	display: none;
