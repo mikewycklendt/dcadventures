@@ -257,7 +257,7 @@
 
 #move-check-type {
 	display: none;
-	grid-template-columns: 20% 25% 35% 20%;
+	grid-template-columns: 12% 25% 35% 20% 8%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-in;
