@@ -127,7 +127,7 @@ depend modifier lasts circ button
 
 #circ-row2 {
 	display: grid;
-	grid-template-columns: 20% 20% 60%;
+	grid-template-columns: 25% 20% 55%;
 	gap: .2vw;
 	width: 97%;
 }
