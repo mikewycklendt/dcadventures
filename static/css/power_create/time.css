@@ -85,8 +85,8 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	font-size: 90%;
 	grid-template-columns: 20% 45% 15% 5% 15;
+	gap: .2vw;
 }
 
 
