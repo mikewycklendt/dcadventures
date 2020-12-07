@@ -77,7 +77,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 					{'type': 'close', 'name': 'Close'}, 
 					{'type': 'ranged', 'name': 'Ranged'}, 
 					{'type': 'perception', 'name': 'Perception'}, 
-					{'type': 'rank', 'name': 'Rank Table'}]
+					{'type': 'rank', 'name': 'Variable'}]
 
 	duration_type = [{'type': 'instant', 'name': 'Instant'}, 
 						{'type': 'conc', 'name': 'Concentration'}, 
