@@ -17,6 +17,7 @@ function defense_base() {
 function defense_reflect() {
 	const check = 'defense_reflect';
 	const base = 'defense-reflect';
+	const entry = 'defense-entry';
 
 	check_drop(check, base);
 }
