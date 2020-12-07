@@ -181,3 +181,24 @@ function creates() {
 		div.style.opacity = "0%"
 	}
 }
+
+function partner_trait_type() {
+	const select = 'partner_trait_type';
+	const fill = 'partner_trait_type';
+
+	trait_select(select, fill);
+}
+
+function partner() {
+	const field = document.getElementById('partner');
+	const val = field.options[field.selectedIndex].value;
+	const div = document.getElementById('power-partner');
+
+	if (val == 'kkill') {
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+	} else {
+		div.style.maxHeight = '0px';
+		setTimeout(function(){div.style.display = 'none'}, 400);
+	}
+}

@@ -179,15 +179,41 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Requires Partner:
+			Partner			
 		</div>
 	
 		<div>
-			<select class="select-sml" id="partner" name="partner">
+			<select class="select-sml" id="partner" name="partner" onchange="partner()">
 				{% for partner in partners %}
 					<option value="{{partner.type}}">{{partner.name}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		<div id="power-partner">
+			<div id="power-partner-type">
+				<select class="select-sml" id="partner_trait_type" name="partner_trait_type" onchange="partner_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="power-partner-dc">
+				<select class="select-sml" id="partner_dc" name="partner_dc">
+					<option value="">DC</option>
+					<option value="">N/A</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="power-partner-trait">
+				<select class="select-sml" id="partner_trait" name="partner_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
 		</div>
 
 	</div>
