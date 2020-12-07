@@ -54,6 +54,11 @@
 	grid-auto-rows: auto;
 }
 
+#sense-button-row {
+	display: grid;
+	grid-template-columns: 65% 15% 20%;
+}
+
 #sense-lighting {
 	opacity: 0%;
 	transition: all .4s ease-out;

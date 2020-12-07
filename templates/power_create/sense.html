@@ -410,6 +410,26 @@
 			</select>
 		</div>
 	</div>
+
+	<div id="sense-button-row">
+		<div></div>
+
+		<div>
+			<select class="entry-select" id="sense_ranks" name="sense_ranks">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="sense_submit" name="sense_submit" onclick="sense_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <div id="sense-err"></div>
