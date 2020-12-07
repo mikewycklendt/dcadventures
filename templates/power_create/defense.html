@@ -239,12 +239,73 @@
 			</select>
 		</div>
 
+		
+	</div>
+
+	
+	<div id="defense-immunity">
 		<div>
-			<select class="select-sml" id="defense_immunity_rule" name="defense_immunity_rule">
-				{% for g in game_rule %}
-					<option value="{{g.type}}">{{g.name}}</option>
+			Immunity:
+		</div>
+
+		<div>
+			<select class="select-sml" id="defense_immunity_type" name="defense_immunity_type" onchange="defense_immunity_type()">
+				{% for d in immunity_type %}
+					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		<div>
+			<div id="defense-immunity-trait">
+				<div>
+					<select  class="select-sml" id="defense_immunity_trait_type" name="defense_immunity_trait_type" onchange="defense_immunity_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="defense_immunity_trait" name="defense_immunity_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="defense-immunity-descriptor">
+				<div>
+					<select class="descriptor-sml" id="defense_immunity_descriptor" name="defense_immunity_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="defense-immunity-damage">
+				<div>
+					<select class="select-sml" id="defense_immunity_damage" name="defense_immunity_damage">
+						<option value="">Damage Type</option>
+						{% for d in damages %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="defense-immunity-rule">
+				<div>
+					<select class="select-sml" id="defense_immunity_rule" name="defense_immunity_rule">
+						{% for g in game_rule %}
+							<option value="{{g.type}}">{{g.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
 

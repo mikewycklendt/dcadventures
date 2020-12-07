@@ -79,62 +79,6 @@
 		</div>
 
 	</div>
-
-	<div id="damage-row3">
-		<div>
-			Immunity:
-		</div>
-
-		<div>
-			<select class="select-sml" id="damage_immunity_type" name="damage_immunity_type" onchange="damage_immunity_type()">
-				{% for d in damage_immunity %}
-					<option value="{{d.type}}">{{d.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div id="damage-immunity-trait">
-				<div>
-					<select  class="select-sml" id="damage_immunity_trait_type" name="damage_immunity_trait_type" onchange="damage_immunity_trait_type()">
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="damage_immunity_trait" name="damage_immunity_trait">
-						<option value="">Trait</option>
-					</select>
-				</div>
-			</div>
-
-			<div id="damage-immunity-descriptor">
-				<div>
-					<select class="descriptor-sml" id="damage_immunity_descriptor" name="damage_immunity_descriptor">
-						<option value="">Descriptor</option>
-						<option value="">Use above form to put descriptors here</option>
-					</select>
-				</div>
-
-				<div></div>
-			</div>
-
-			<div id="damage-immunity-damage">
-				<div>
-					<select class="select-sml" id="damage_immunity_damage" name="damage_immunity_damage">
-						<option value="">Damage Type</option>
-						{% for d in damages %}
-							<option value={{d.id}}>{{d.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div></div>
-			</div>
-		</div>
-	</div>
 	
 	<div id="damage-button-row">
 		<div>

@@ -117,15 +117,47 @@
 	gap: .2vw;
 }
 
+
 #defense-immunity {
 	display: none;
-	width: 98%;
-	gap: 3px;
-	grid-template-columns: 20% 25% 30% 25%;
-	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 12% 20% 68%;
+}
+
+#defense-immunity-descriptor {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+}
+
+#defense-immunity-damage {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+}
+
+#defense-immunity-rule {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+}
+
+#defense-immunity-trait {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
 }
 
 /*

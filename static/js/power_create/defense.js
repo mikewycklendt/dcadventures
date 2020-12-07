@@ -30,13 +30,6 @@ function defense_immunity() {
 	check_drop(check, div, entry);
 }
 
-function defense_immunity_trait_type() {
-	const select = 'defense_immunity_trait_type';
-	const fill = 'defense_immunity_trait';
-
-	trait_select(select, fill);
-}
-
 function defense_reflect_opposed_trait_type() {
 	const select = 'defense_reflect_opposed_trait_type';
 	const fill = 'defense_reflect_opposed_trait';
@@ -56,6 +49,23 @@ function defense_reflect_check() {
 	const options = [{'val': 1, 'div': 'defense-reflect-dc'},
 					{'val': 2, 'div': 'defense-reflect-opposed'},
 					{'val': 6, 'div': 'defense-reflect-resist'}];
+
+	select_opacity(select, options);
+}
+
+function defense_immunity_trait_type() {
+	const select = 'defense_immunity_trait_type';
+	const fill = 'defense_immunity_trait';
+
+	trait_select(select, fill);
+}
+
+function defense_immunity_type() {
+	const select = 'defense_immunity_type';
+	const options = [{'val': 'trait', 'div': 'defense-immunity-trait'},
+					{'val': 'damage', 'div': 'defense-immunity-damage'},
+					{'val': 'descriptor', 'div': 'defense-immunity-descriptor'},
+					{'val': 'rule', 'div': 'defense-immunity-rule'}]
 
 	select_opacity(select, options);
 }
