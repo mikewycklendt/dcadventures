@@ -151,7 +151,7 @@ def unit_type():
 
 	table = Unit.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('units.html', table=table, title=title, size=size)
 
 @tables.route('/ranks')
 def rank_type():

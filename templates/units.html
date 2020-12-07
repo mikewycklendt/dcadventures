@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{{ title }}</title>
+		<link type="text/css" rel="stylesheet" href="/static/css/table.css"  />
+	</head>
+
+	<body>
+		
+		<h1>{{ title }}</h1>
+		<div class="grid">
+		{% for row in table %}
+			<span>
+				<{{ size }}> <strong>{{ row.id }}</strong></{{size}}>
+			</span>
+			<span>
+				<{{ size }}> <strong>{{ row.type_id }}</strong></{{size}}>
+			</span>
+			<span>
+				<{{size}}><strong>{{ row.name }}</strong></{{size}}>
+			</span>
+			
+		{% endfor %}
+		</div>
+	</body>
+</html>
