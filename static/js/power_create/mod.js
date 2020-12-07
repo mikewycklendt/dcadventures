@@ -49,7 +49,8 @@ function mod_limited_type() {
 					{'val': 'range', 'div': 'mod-limited-range'},
 					{'val': 'descriptor', 'div': 'mod-limited-descriptor'},
 					{'val': 'task', 'div': 'mod-limited-task'},
-					{'val': 'task_type', 'div': 'mod-limited-task-type'}];
+					{'val': 'task_type', 'div': 'mod-limited-task-type'},
+					{'val': 'source', 'div': 'mod-limited-task-source'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);

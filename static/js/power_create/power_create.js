@@ -5,7 +5,13 @@ function descriptor_add_type()  {
 				{'type': 'uncommon', 'name': 'Any Chosen Uncommon'}, 
 				{'type': 'common', 'name': 'Any Chosen Common'}, 
 				{'type': 'very', 'name': 'Any Chosen Very Common'}, 
-				{'type': 'damage', 'name': 'Any Chosen Damage'}]
+				{'type': 'damage', 'name': 'Any Chosen Damage'},
+				{'type': 'origin', 'name': 'Any Chosen Origin'},
+				{'type': 'source', 'name': 'Any Chosen Source'},
+				{'type': 'type', 'name': 'Any Chosen Medium Type'},
+				{'type': 'subtype', 'name': 'Any Chosen Medium Subtype'},
+				{'type': 'medium', 'name': 'Any Chosen Medium'},
+				{'type': 'descriptor', 'name': 'Any Chosen Descriptor'}]
 
 	let field;
 	let option;

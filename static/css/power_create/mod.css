@@ -199,6 +199,15 @@
 	transition: all .3s ease-out;
 }
 
+#mod-limited-source {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 30% 50% 20%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #mod-limited-description {
 	display: none;
 	width: 98%;
