@@ -20,3 +20,17 @@ function defense_reflect() {
 
 	check_opacity(check, base);
 }
+
+function defense_immunity() {
+	const check = 'char_immunity';
+	const div = 'char-immunity';
+
+	check_drop(check, div, entry);
+}
+
+function defense_immunity_trait_type() {
+	const select = 'char_immunity_trait_type';
+	const fill = 'char_immunity_trait';
+
+	trait_select(select, fill);
+}

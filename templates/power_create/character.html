@@ -115,12 +115,6 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="char_immunity" class="medium-checkbox med-checkbox" onclick="char_immunity()"> Immunity
-			</div>
-		</div>
-
-		<div>
-			<div class="check-div">
 				<input type="checkbox" id="char_insub" class="medium-checkbox med-checkbox" onclick="char_insub()"> Insubstantial
 			</div>
 		</div>
@@ -306,37 +300,6 @@
 			<input type="text" id="char_appear_des" name="char_appear_des" placeholder="Description">
 		</div>
 
-	</div>
-
-	<div id="char-immunity">
-		<div>
-			<select class="select-sml" id="char_immunity_trait_type" name="char_immunity_trait_type" onchange="char_immunity_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="char_immunity_trait" name="char_immunity_trait_type">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="descriptor-sml" id="char_immunity_descriptor" name="char_immunity_descriptor">
-				<option value="">Descriptor</option>
-				<option value="">Use above form to put descriptors here</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="char_immunity_rule" name="char_immunity_rule">
-				{% for g in game_rule %}
-					<option value="{{g.type}}">{{g.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
 	</div>
 
 	<div id="char-insub">
