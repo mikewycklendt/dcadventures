@@ -242,7 +242,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="sense_ranged" class="medium-checkbox med-checkbox" onclick="sense_ranged()"> Ranged 
+				<input type="checkbox" id="sense_dimensional" class="medium-checkbox med-checkbox" onclick="sense_dimensional()"> Ranged 
 			</div>
 		</div>
 
@@ -394,6 +394,20 @@
 				</select>
 			</div>
 
+		</div>
+	</div>
+
+	<div id="sense-dimensional">
+		<div>
+			Dimensional:
+		</div>
+
+		<div>
+			<select class="select-sml" id="sense_dimensional_type" name="sense_dimensional_type">
+				{% for d in dimensions %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
 </div>

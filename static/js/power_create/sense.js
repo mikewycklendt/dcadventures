@@ -120,3 +120,11 @@ function sense_distance() {
 		fac.style.opacity = "0%";
 	}
 }
+
+function sense_dimensional() {
+	const check = 'sense_dimensional';
+	const div = 'sense-dimensional';
+	const entry = 'sense-entry';
+
+	check_drop(check, div, entry);
+}
