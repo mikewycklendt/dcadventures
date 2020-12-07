@@ -125,7 +125,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 30% 35% 35%;
+	grid-template-columns: 15% 25% 30% 30%;
 	grid-auto-rows: auto;
 	gap: .4vw;
 }
