@@ -194,7 +194,7 @@ function partner() {
 	const val = field.options[field.selectedIndex].value;
 	const div = document.getElementById('power-partner');
 
-	if (val == 'kkill') {
+	if (val == 'skill') {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
 	} else {
