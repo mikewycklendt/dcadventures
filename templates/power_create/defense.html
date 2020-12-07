@@ -135,15 +135,6 @@
 			<input type="checkbox" id="defense_reflect" class="medium-checkbox med-checkbox" onclick="defense_reflect()"> Reflects Attacks
 		</div>
 
-		<div id="defense-reflect-action">
-			<select class="select-sml" id="defense_reflect_action" name="defense_reflect_action">
-				<option value="">Reflect Action</option>
-				{% for a in actions %}
-					<option value="a.id">{{a.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="defense_immunity" class="medium-checkbox med-checkbox" onclick="defense_immunity()"> Immunity
@@ -152,9 +143,83 @@
 
 	</div>
 
+	<div id="defense-reflect">
+
+		<div>
+			Reflect Action:
+		</div>
+		
+		<div>
+			<select class="select-sml" id="defense_reflect_action" name="defense_reflect_action">
+				<option value="">Reflect Action</option>
+				{% for a in actions %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="defense_reflect_check" name="defense_reflect_check" onchange="defense_reflect_check()">
+				<option value="">Check Type</option>
+				<option value="none">No Check Needed</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}	
+			</select>
+		</div>
+
+		<div>
+			<div id="defense-reflect-dc">
+				<div>
+					<select class="select-sml" id="defense_reflect_dc" name="defense_reflect_dc">
+						<option value="">DC</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="defense-reflect-opposed">
+				<div>
+					<select class="select-sml" id="defense_reflect_opposed_trait_type" name="defense_reflect_opposed_trait_type" onchange="defense_reflect_opposed_trait_type()">
+						<option value="">Opposed Trait</option>
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="defense_reflect_opposed_trait" name="defense_reflect_opposed_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="defense-reflect-resist">
+				<div>
+					<select class="select-sml" id="defense_reflect_resist_trait_type" name="defense_reflect_resist_trait_type" onchange="defense_reflect_resist_trait_type()">
+						<option value="">Resistance Trait</option>
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="defense_reflect_resist_trait" name="defense_reflect_resist_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
 	<div id="defense-immunity">
 		<div>
-			<select class="select-sml" id="char_immunity_trait_type" name="char_immunity_trait_type" onchange="char_immunity_trait_type()">
+			<select class="select-sml" id="defense_immunity_trait_type" name="defense_immunity_trait_type" onchange="defense_immunity_trait_type()">
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -162,20 +227,20 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_immunity_trait" name="char_immunity_trait_type">
+			<select class="select-sml" id="defense_immunity_trait" name="defense_immunity_trait_type">
 				<option value="">Trait</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="descriptor-sml" id="char_immunity_descriptor" name="char_immunity_descriptor">
+			<select class="descriptor-sml" id="defense_immunity_descriptor" name="defense_immunity_descriptor">
 				<option value="">Descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_immunity_rule" name="char_immunity_rule">
+			<select class="select-sml" id="defense_immunity_rule" name="defense_immunity_rule">
 				{% for g in game_rule %}
 					<option value="{{g.type}}">{{g.name}}</option>
 				{% endfor %}

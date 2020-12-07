@@ -16,21 +16,45 @@ function defense_base() {
 
 function defense_reflect() {
 	const check = 'defense_reflect';
-	const base = 'defense-reflect-action';
+	const base = 'defense-reflect';
 
-	check_opacity(check, base);
+	check_drop(check, base);
 }
 
 function defense_immunity() {
-	const check = 'char_immunity';
-	const div = 'char-immunity';
+	const check = 'defense_immunity';
+	const div = 'defense-immunity';
+	const entry = 'defense-entry'
 
 	check_drop(check, div, entry);
 }
 
 function defense_immunity_trait_type() {
-	const select = 'char_immunity_trait_type';
-	const fill = 'char_immunity_trait';
+	const select = 'defense_immunity_trait_type';
+	const fill = 'defense_immunity_trait';
 
 	trait_select(select, fill);
+}
+
+function defense_reflect_opposed_trait_type() {
+	const select = 'defense_reflect_opposed_trait_type';
+	const fill = 'defense_reflect_opposed_trait';
+	
+	trait_select(select, fill);
+}
+
+function defense_reflect_resist_trait_type() {
+	const select = 'defense_reflect_resist_trait_type';
+	const fill = 'defense_reflect_resist_trait';
+	
+	trait_select(select, fill);
+}
+
+function defense_reflect_check() {
+	const select = 'defense_reflect_check';
+	const options = [{'val': 1, 'div': 'defense-reflect-dc'},
+					{'val': 2, 'div': 'defense-reflect-opposed'},
+					{'val': 6, 'div': 'defense-reflect-resist'}];
+
+	select_opacity(select, options);
 }
