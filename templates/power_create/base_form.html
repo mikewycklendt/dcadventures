@@ -312,6 +312,22 @@
 	</div>
 
 	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Circumstance Modifier:
+		</div>
+	
+		<div>
+			<select class="select-sml" id="power_condition" name="power_condition">
+				<option value="">Condition</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	
 </div>
 
 
