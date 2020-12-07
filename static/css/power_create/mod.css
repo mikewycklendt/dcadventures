@@ -203,7 +203,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 40% 60%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
