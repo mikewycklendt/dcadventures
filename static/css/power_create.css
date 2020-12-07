@@ -24,6 +24,7 @@
 @import "power_create/alt_check.css";
 @import "power_create/degree.css";
 @import "power_create/opposed.css";
+@import "power_create/ranged.css";
 
 .power-container {
 	display: grid;

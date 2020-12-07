@@ -1,4 +1,4 @@
-#damage-header {
+#ranged-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
@@ -7,12 +7,12 @@
 	grid-template-rows: auto;
 }
 
-#damage-base {
+#ranged-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
 
-#damage-title {
+#ranged-title {
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
@@ -21,7 +21,7 @@
 	transition: all .2s linear;
 }
 
-#damage-entry {
+#ranged-entry {
 	display: none;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
@@ -37,35 +37,144 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	gap: 4px;
+	gap: .4vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#damage-row1 {
+#ranged-entry input[type="text"]{
+	height: 1.5vw;
+	padding: .2vw;
+	font-size: 100%;
+	width: 94%;
+}
+
+#ranged-row1 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 30% 15% 35%;
+	grid-template-columns: 20% 80%;
 	grid-auto-rows: auto;
 }
 
-#damage-row2 {
+
+#ranged-type {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-flat-units {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-flat-distance-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-flat-rank-units {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 30% 30%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-flat-rank-distance {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+
+#ranged-units-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 25% 25% 20% 5% 25%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-rank-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 30% 30% 10% 30%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-effect-mod {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 30% 35% 35%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-check {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 20% 25% 20% 20% 15%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-trait-mod {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 20% 25% 20% 20% 15%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-distance-mod {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 20% 20% 20% 25% 15%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
+#ranged-dc {
+	display: grid;
+	opacity: 0%;
+	transition: .4s;
+	width: 95%;
+	grid-template-columns: 25% 35% 40%;
+	gap: .4vw;
+}
+
+
+#ranged-button-row {
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 20% 35% 45%;
+	grid-template-columns: 20% 65% 15%;
 }
 
-#damage-button-row {
-	display: grid;
-	width: 98%;
-	gap: .2vw;
-	grid-template-columns: 80% 20%;
-}
-
-#damage-table {
+#ranged-table {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -78,7 +187,7 @@
 	transition: all .4s ease-out;
 }
 
-.create-table-ext {
+.ranged-table-ext {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -90,7 +199,7 @@
 	transition: all .4s ease-out;
 }
 
-.damage-table-rnk {
+.ranged-table-rnk {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -101,19 +210,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
-.damage-table-des {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.damage-table-del {
+.ranged-table-des {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;
@@ -125,7 +222,19 @@
 	transition: all .4s ease-out;
 }
 
-#damage-err {
+.ranged-table-del {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#ranged-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -138,7 +247,7 @@
 	transition: all .4s ease-out;
 }
 
-.damage-err-line {
+.ranged-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -152,7 +261,7 @@
 	transition: all .4s ease-out;
 }
 
-.damage-err-line::before {
+.ranged-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;
