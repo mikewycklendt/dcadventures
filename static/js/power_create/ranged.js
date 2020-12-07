@@ -57,3 +57,10 @@ function ranged_type() {
 
 	select_opacity(select, options);
 }
+
+function ranged_dc_trait_type() {
+	const select = 'ranged_dc_trait_type';
+	const fill = 'ranged_dc_trait';
+
+	trait_select(select, fill);
+}

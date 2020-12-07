@@ -471,7 +471,7 @@
 			</div>
 
 			<div>
-				<select class="entry-select" id="ranged_dc_trait_type" name="ranged_dc_trait_type">
+				<select class="entry-select" id="ranged_dc_trait_type" name="ranged_dc_trait_type" onchange="ranged_dc_trait_type()">
 					<option value="">Trait to Check</option>
 					{% for t in traits %}
 						<option value="{{t.type}}">{{t.name}}</option>
