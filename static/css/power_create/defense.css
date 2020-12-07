@@ -68,6 +68,12 @@
 	grid-auto-rows: auto;
 }
 
+#defense-button-row {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	gap: .2vw;
+}
+
 #defense-nullify {
 	display: none;
 	max-height: 0;
@@ -88,6 +94,7 @@
 }
 
 #defense-reflect-dc {
+	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	grid-template-columns: 30% 70%;
@@ -95,6 +102,7 @@
 }
 
 #defense-reflect-opposed {
+	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	grid-template-columns: 40% 60%;
@@ -102,6 +110,7 @@
 }
 
 #defense-reflect-resist {
+	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	grid-template-columns: 40% 60%;
