@@ -45,7 +45,7 @@ function ranged_dc() {
 function ranged_type() {
 	const select = 'ranged_type';
 	const options = [{'val': 'flat_units', 'div': 'ranged-flat-units'}, 
-					{'val': 'distance_rank', 'div': 'ranged-distance-rank'}, 
+					{'val': 'distance_rank', 'div': 'ranged-flat-distance-rank'}, 
 					{'val': 'flat_rank_units', 'div': 'ranged-flat-rank-units'}, 
 					{'val': 'flat_rank_distance', 'div': 'ranged-flat-rank-distance'}, 
 					{'val': 'units_rank', 'div': 'ranged-units-rank'}, 
