@@ -184,7 +184,7 @@ function creates() {
 
 function partner_trait_type() {
 	const select = 'partner_trait_type';
-	const fill = 'partner_trait_type';
+	const fill = 'partner_trait';
 
 	trait_select(select, fill);
 }
