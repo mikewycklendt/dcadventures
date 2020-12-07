@@ -54,7 +54,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 21% 79%;
+	grid-template-columns: 22% 78%;
 	grid-auto-rows: auto;
 }
 
@@ -107,7 +107,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 25% 25% 20% 5% 25%;
+	grid-template-columns: 28% 22% 20% 5% 25%;
 	grid-auto-rows: auto;
 	gap: .4vw;
 }
