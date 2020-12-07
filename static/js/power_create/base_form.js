@@ -15,27 +15,36 @@ function range_type() {
 		power_range.style.maxHeight = "0px";
 		power_range.style.padding = "0px";
 		power_range.style.opacity = "0%";
+		check.checked = false;
 		setTimeout(function(){power_range.style.display = 'none'}, 400);
 	}
 }
 
 function power_type() {
 	const sense = document.getElementById("sense-entry");
+	const sense_check = document.getElementById("sense_check");
 	const move = document.getElementById("move-entry");
+	const move_check = document.getElementById('move_check')
 	const field_field = document.getElementById('type');
 	const field = field_field.options[field_field.selectedIndex].value;
 
 	if (field == 'sense') {
 		sense.style.display = "grid";
 		sense.style.maxHeight = sense.scrollHeight + "px";
+		sense_check.checked = true;
+		move_check.checked = false;
 		move.style.maxHeight = "0px";
 		setTimeout(function(){move.style.display = 'none'}, 400);
 	} else if (field == 'move') {
 		move.style.display = "grid";
 		move.style.maxHeight = move.scrollHeight + "px";
+		move_check.checked = true;
+		sense_check.checked = false;
 		sense.style.maxHeight = "0px";
 		setTimeout(function(){sense.style.display = 'none'}, 400);
 	} else {
+		move_check.checked = false;
+		sense_check.checked = false;
 		sense.style.maxHeight = "0px";
 		setTimeout(function(){sense.style.display = 'none'}, 400);
 		move.style.maxHeight = "0px";
