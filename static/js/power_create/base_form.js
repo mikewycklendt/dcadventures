@@ -2,10 +2,12 @@ function range_type() {
 	const range_field = document.getElementById("range");
 	let	range = range_field.options[range_field.selectedIndex].value;
 	const power_range = document.getElementById("ranged-entry");
+	const ranged_base = document.getElementById('ranged_base');
 	const check = document.getElementById('ranged_check');
 
 	if (range == 'rank') {
 		check.checked = true;
+		ranged_base.style.opacity = '100%';
 		power_range.style.display = "grid";
 		power_range.style.opacity = "100%"
 		power_range.style.padding = "1%";
@@ -14,7 +16,7 @@ function range_type() {
 	} else {
 		power_range.style.maxHeight = "0px";
 		power_range.style.padding = "0px";
-		power_range.style.opacity = "0%";
+		ranged_base.style.opacity = '0%';
 		check.checked = false;
 		setTimeout(function(){power_range.style.display = 'none'}, 400);
 	}
