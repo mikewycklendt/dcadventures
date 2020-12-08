@@ -138,8 +138,8 @@ function char_weaken_trait_type() {
 	trait_select(select, fill);
 }
 
-function char_weaken() {
-	const select = 'char_weaken';
+function char_weaken_type() {
+	const select = 'char_weaken_type';
 	const options = [{'val': 'trait', 'div': 'char-weaken-trait'},
 					{'val': 'type', 'div': 'char-weaken-type'},
 					{'val': 'descriptor', 'div': 'char-weaken-descriptor'}]
