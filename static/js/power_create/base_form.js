@@ -211,8 +211,8 @@ function routine_trait_type()   {
 }
 
 function routine() {
-	const check = 'routine';
-	const div = 'power-routine';
+	const check = document.getElementById('routine');
+	const div = document.getElementById('power-routine');
 
 	if (check.checked = true) {
 		div.style.display = 'grid';
