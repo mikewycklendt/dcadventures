@@ -166,7 +166,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_reduced_trait_type" name="char_reduced_trait_type" onchange="char_reduced_trait_type()">
+			<select class="select-sml" id="char_reduced_trait_type" name="char_reduced_trait_type" onchange="char_reduced_trait_type(); char_size()">
 				<option value="">Trait Type</option>
 				{% for c in character %}
 					<option value="{{c.type}}">{{c.name}}</option>
@@ -183,7 +183,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_reduced_value" name="char_reduced_value">
+			<select class="select-sml" id="char_reduced_value" name="char_reduced_value" onchange="char_size()">
 				<option value="">Amount</option>
 				<option value="">All</option>
 				{% for i in negatives %}
@@ -192,7 +192,11 @@
 			</select>
 		</div>
 
-		<div></div>
+		<div id="char-reduced-full">
+			<div class="check-div">
+				<input type="checkbox" id="char_reduced_full" class="medium-checkbox med-checkbox"> Normal Strength 	
+			</div>
+		</div>
 
 	</div>
 
@@ -324,7 +328,25 @@
 	<div id="char-button">
 
 		<div></div>
-		
+
+		<div>
+			<div class="vcenter">
+				Cost Per Rank:
+			</div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="char_cost" name="char_cost">
+				<option value="">Cost</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div>
 			<select class="entry-select" id="char_ranks" name="char_ranks">
 				<option value="">Ranks</option>

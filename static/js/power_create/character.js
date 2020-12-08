@@ -108,3 +108,17 @@ function char_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function char_size() {
+	const tra_field = document.getElementById('char_reduced_trait_type');
+	const tra = tra_field.options[tra_field.selectedIndex].value;
+	const mod_field = document.getElementById('char_reduced_value');
+	const mod = mod_field.options[mod_field.selectedIndex].value;
+	const div = document.getElementById('char-reduced-full');
+
+	if (tra == 'size' && mod < 0) {
+		div.style.opacity = '100%';
+	} else {
+		div.style.opacity = '0%';
+	}
+}
