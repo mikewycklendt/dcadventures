@@ -202,3 +202,23 @@ function partner() {
 		setTimeout(function(){div.style.display = 'none'}, 400);
 	}
 }
+
+function routine_trait_type()   {
+	const select = 'routine_trait_type';
+	const fill = 'routine_trait';
+
+	trait_select(select, fill);
+}
+
+function routine() {
+	const check = 'routine';
+	const div = 'power-routine';
+
+	if (check.checked = true) {
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+	} else {
+		div.style.maxHeight = '0px';
+		setTimeout(function(){div.style.display = 'none'}, 400);
+	}
+}

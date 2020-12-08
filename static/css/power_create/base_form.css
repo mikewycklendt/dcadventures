@@ -122,6 +122,15 @@
 	grid-template-columns: 50% 50%;
 }
 
+#power-routine {
+	display: grid;
+	grid-template-columns: 35% 65%;
+	gap: .2vw;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #power-partner {
 	display: none;
 	grid-template-columns: 70% 30%;

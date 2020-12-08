@@ -162,11 +162,27 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Categorized Power:
+			Can Make Routine Skill Check:
 		</div>
 	
 		<div>
-			<input type="checkbox" id="categorized" class="regular-checkbox big-checkbox" onclick="categorized()">
+			<input type="checkbox" id="routine" class="regular-checkbox big-checkbox" onclick="routine()">
+		</div>
+
+		<div id="power-routine">
+			<div>
+				<select class="select-sml" id="routine_trait_type" name="routine_trait_type" onchange="routine_trait_type()">
+					<option value="">Check Type</option>
+					<option value="skill">Skill</option>
+					<option value="bonus">Enhanced Skill</option>
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="routine_trait" name="routine_trait">
+					<option value="">Skill</option>
+				</select>
+			</div>
 		</div>
 
 	</div>
@@ -199,7 +215,7 @@
 		</div>
 	
 		<div>
-			<select class="select-sml" id="partner" name="partner" onchange="partner()">
+			<select class="base-select" id="partner" name="partner" onchange="partner()">
 				{% for partner in partners %}
 					<option value="{{partner.type}}">{{partner.name}}</option>
 				{% endfor %}
@@ -208,7 +224,7 @@
 
 		<div id="power-partner">
 			<div id="power-partner-type">
-				<select class="select-sml" id="partner_trait_type" name="partner_trait_type" onchange="partner_trait_type()">
+				<select class="base-select" id="partner_trait_type" name="partner_trait_type" onchange="partner_trait_type()">
 					{% for t in traits %}
 						<option value="{{t.type}}">{{t.name}}</option>
 					{% endfor %}
@@ -216,7 +232,7 @@
 			</div>
 
 			<div id="power-partner-dc">
-				<select class="select-sml" id="partner_dc" name="partner_dc">
+				<select class="base-select" id="partner_dc" name="partner_dc">
 					<option value="">DC</option>
 					<option value="">N/A</option>
 					{% for i in positives %}
@@ -226,7 +242,7 @@
 			</div>
 
 			<div id="power-partner-trait">
-				<select class="select-sml" id="partner_trait" name="partner_trait">
+				<select class="base-select" id="partner_trait" name="partner_trait">
 					<option value="">Trait</option>
 				</select>
 			</div>
@@ -242,7 +258,7 @@
 		<div id="power-circ-grid">
 			
 			<div>
-				<select class="select-sml" id="circ" name="circ" onchange="circ()">
+				<select class="base-select" id="circ" name="circ" onchange="circ()">
 					{% for circ in circumstances %}
 `						<option value="{{circ.type}}">{{circ.name}}</option>
 					{% endfor %}
@@ -250,7 +266,7 @@
 			</div>
 
 			<div id="circ-required" style="opacity: 0%;">
-				<select class="select-sml" id="circ_required" name="circ_required">
+				<select class="base-select" id="circ_required" name="circ_required">
 					<option value="">Required</option>
 						{% for req in required %}
 							<option value="{{req.type}}">{{req.name}}</option>
@@ -268,7 +284,7 @@
 		<div id="power-skill-grid">
 			
 			<div>
-				<select class="select-sml" id="skill" name="skill" onchange="skill()">
+				<select class="base-select" id="skill" name="skill" onchange="skill()">
 					<option value="">N/A</option>
 					{% for skill in skills %}
 `						<option value={{skill.id}}>{{skill.name}}</option>
@@ -279,7 +295,7 @@
 			<div id="skill-grid" style="opacity: 0%;">
 				
 				<div>	
-					<select class="select-sml" id="circ_required" name="circ_required">
+					<select class="base-select" id="circ_required" name="circ_required">
 						<option value="">Required</option>
 							{% for req in required %}
 								<option value="{{req.type}}">{{req.name}}</option>
@@ -288,7 +304,7 @@
 				</div>
 
 				<div>
-					<select class="select-sml" id="skill_when" name="skill_when">
+					<select class="base-select" id="skill_when" name="skill_when">
 						{% for w in whens %}
 							<option value="{{w.type}}">{{w.name}}</option>
 						{% endfor %}
@@ -334,7 +350,7 @@
 		</div>
 	
 		<div>
-			<select class="select-sml" id="power_condition" name="power_condition">
+			<select class="base-select" id="power_condition" name="power_condition">
 				<option value="">Condition</option>
 				{% for c in conditions %}
 					<option value="{{c}}">{{c}}</option>
