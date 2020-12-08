@@ -32,7 +32,7 @@ function minion_attitude() {
 
 function minion_resitable() {
 	const check = 'minion_resitable';
-	const div = 'minion_resitable';
+	const div = 'minion-resitable';
 	const entry = 'minion-entry';
 
 	check_drop(check, div, entry);
