@@ -107,6 +107,30 @@
 
 		<div>
 
+			<div id="resist-weaken">
+				<div>
+					Lost Points = Check Result - DC
+				</div>
+
+				<div>
+					<select class="select-sml" id="resist_weaken_max" name="resist_weaken_max">
+						<option value="">Maximum</option>
+						<option value="effect">Effect Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="resist_weaken_restored" name="resist_weaken_restored">
+						<option value="">Restored</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}} Per Round</option>
+						{% endfor %}
+					</select>
+				</div>
+
 			<div id="resist-condition">
 				<div>
 					From:

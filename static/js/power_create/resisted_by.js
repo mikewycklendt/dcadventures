@@ -25,7 +25,8 @@ function resist_effect() {
 	const field = "resist_eft";
 	const options = [{'val': 'condition', 'div': "resist-condition"},
 					{'val': 'damage', 'div': "resist-damage"},
-					{'val': 'nullify', 'div': "resist-nullify"}];
+					{'val': 'nullify', 'div': "resist-nullify"},
+					{'val': 'trait', 'div': "resist-weaken"}];
 
 	select_maxheight(field, options);
 }
