@@ -91,24 +91,12 @@
 	grid-auto-rows: auto;
 }
 
-#mod-row5 {
+#mod-row6 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 20% 20% 20%;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	grid-auto-rows: auto;
-}
-
-#mod-cover {
-	display: none;
-	font-size: 100%;
-	width: 98%;
-	gap: .2vw;
-	grid-template-columns: 25% 20% 55%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-
 }
 
 #mod-simultaneous {
