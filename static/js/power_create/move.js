@@ -145,7 +145,8 @@ function move_special_type() {
 	const select = 'move_special_type';
 	const options = [{'val': 'space', 'div': 'move-special-space'},
 					{'val': 'dimension', 'div': 'move-special-dimension'},
-					{'val': 'time', 'div': 'move-special-time'}]
+					{'val': 'time', 'div': 'move-special-time'},
+					{'val': 'teleport', 'div': 'move-special-teleport'}]
 
 	select_opacity(select, options);
 }
@@ -168,6 +169,22 @@ function move_concealment_trait_type() {
 function move_aquatic() {
 	const check = 'move_aquatic';
 	const div = 'move-aquatic';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_extended() {
+	const check = 'move_extended';
+	const div = 'move-extended';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_mass() {
+	const check = 'move_mass';
+	const div = 'move-mass';
 	const entry = 'move-entry';
 
 	check_drop(check, div, entry);

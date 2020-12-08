@@ -143,6 +143,16 @@
 	transition: all .4s ease-out;
 }
 
+#move-extended {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 13% 20% 67%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #move-flight {
 	display: none;
 	width: 98%;
@@ -210,6 +220,17 @@
 	transition: all .4s ease-out;
 }
 
+#move-mass {
+	display: grid;
+	grid-template-columns: 25% 20% 55%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #move-special {
 	display: grid;
 	grid-template-columns: 15% 20% 65%;
@@ -248,6 +269,16 @@
 #move-special-time {
 	display: none;
 	grid-template-columns: 60% 40%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-special-teleport {
+	display: none;
+	grid-template-columns: 25% 25% 25% 25;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;

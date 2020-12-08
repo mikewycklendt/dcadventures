@@ -21,6 +21,7 @@
 				<select class="select-sml" id="move_rank" name="move_rank">
 					<option value="">Speed Rank</option>
 					<option value="normal">Normal</option>
+					<option value="instant">Instant</option>
 					<option value="effect">This Power</option>
 					<option value="distance">Distance Rank</option>
 					{% for num in positives %}
@@ -262,6 +263,51 @@
 				<input type="checkbox" id="move_concealment" class="medium-checkbox med-checkbox" onclick="move_concealment()"> Concealment
 			</div>
 		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_extended" class="medium-checkbox med-checkbox" onclick="move_extended()"> Extended
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_mass" class="medium-checkbox med-checkbox" onclick="move_mass()"> Increased Mass
+			</div>
+		</div>
+	</div>
+
+	<div id="move-mass">
+		<div>
+			Increased Carry Mass:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_mass_value" name="move_mass_value">
+				<option value="">Mass Rank</option>
+				<option value="effect">Effect Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+
+	<div id="move-extended">
+		<div>
+			Extended:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
+				<option value="">Move Actions</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="move-aquatic">
@@ -358,6 +404,37 @@
 		</div>
 
 		<div>
+
+			<div id="move-special-teleport">
+				<div>
+					<select class="select-sml" id="move_teleport_type" name="move_teleport_type">
+						{% for t in teleport %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_teleport_change" name="move_teleport_change">
+						{% for t in teleport_change %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_portal" class="medium-checkbox med-checkbox" > Portal
+					</div>
+				</div>	
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Turnabout
+					</div>
+				</div>	
+
+			</div>
 
 			<div id="move-special-dimension">
 
