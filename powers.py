@@ -323,7 +323,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											all_traits=all_traits, side_effects=side_effects, check_type=check_type, null_type=null_type, damages=damages, conflicts=conflicts, move_objects=move_objects,
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, immunity_type=immunity_type, circ_null=circ_null, space=space,
 											travel=travel, time_travel=time_travel, aquatic=aquatic, task_type=task_type, distances=distances, ranged_type=ranged_type, who_check=who_check, cover=cover,
-											minion_type=minion_type)
+											minion_type=minion_type, minion_attitude=minion_attitude)
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
