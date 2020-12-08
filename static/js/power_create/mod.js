@@ -236,3 +236,11 @@ function mod_side_effect_type() {
 
 	select_opacity(select, options);
 }
+
+function mod_minion() {
+	const check = 'mod_minion';
+	const div = 'mod-minion';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}

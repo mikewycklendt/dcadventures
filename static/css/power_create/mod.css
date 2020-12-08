@@ -110,6 +110,17 @@
 	transition: all .4s ease-out;
 }
 
+#mod-minion {
+	display: none;
+	font-size: 100%;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 10% 25% 15% 15% 25% 10%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #mod-effortless {
 	display: none;
 	font-size: 100%;

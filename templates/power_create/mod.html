@@ -200,6 +200,45 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion" class="medium-checkbox med-checkbox" onclick="mod_minion()"> Minion
+			</div>
+		</div>
+
+	</div>
+
+	<div id="mod-minion">
+		<div>
+			Minion:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_condition" name="mod_minion_condition">
+				<option value="">Minion Condition</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion_heroic" class="medium-checkbox med-checkbox"> Heroic
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion_horde" class="medium-checkbox med-checkbox"> Horde
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion_link" class="medium-checkbox med-checkbox"> Mental Link
+			</div>
+		</div>
 	</div>
 
 	<div id="mod-effortless">
