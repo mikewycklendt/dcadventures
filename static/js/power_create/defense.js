@@ -69,3 +69,10 @@ function defense_immunity_type() {
 
 	select_opacity(select, options);
 }
+
+function defense_cover() {
+	const check = 'defense_cover';
+	const div = 'defense-cover';
+
+	check_opacity(check, div);
+}

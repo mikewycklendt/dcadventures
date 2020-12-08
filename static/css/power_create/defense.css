@@ -70,7 +70,7 @@
 
 #defense-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 25% 20% 35% 20%;
 	gap: .2vw;
 }
 
@@ -80,6 +80,11 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	gap: .2vw;
+}
+
+#defense-cover {
+	opacity: 0%;
+	transition: all .4s ease-out;
 }
 
 #defense-reflect {
