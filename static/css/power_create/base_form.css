@@ -123,7 +123,7 @@
 }
 
 #power-routine {
-	display: grid;
+	display: none;
 	grid-template-columns: 35% 65%;
 	gap: .2vw;
 	max-height: 0;
