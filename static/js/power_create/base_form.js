@@ -215,7 +215,7 @@ function routine_checkbox() {
 	const div = document.getElementById('power-routine');
 	const val = check.checked;
 
-	if (val = true) {
+	if (val == true) {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
 	} else {
