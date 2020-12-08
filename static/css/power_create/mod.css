@@ -142,14 +142,14 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 10% 15% 25% 20% 15% 15%;
+	grid-template-columns: 10% 13% 22% 20% 15% 20%;
 }
 
 #mod-minion-row2 {
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 10% 13% 12% auto auto auto auto;
+	grid-template-columns: 10% 15% 15% auto auto auto auto;
 }
 
 #mod-effortless {
