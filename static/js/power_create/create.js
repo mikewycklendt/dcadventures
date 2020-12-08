@@ -161,3 +161,11 @@ function create_support_strengthen() {
 
 	check_opacity(check, div);
 }
+
+function create_transform() {
+	const check = 'create_transform';
+	const div = 'create-transform';
+	const entry = 'create-entry';
+
+	check_drop(check, div, entry);
+}

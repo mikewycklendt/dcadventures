@@ -185,6 +185,71 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="create_transform" class="medium-checkbox med-checkbox" onclick="create_transform()"> Transform
+			</div>
+		</div>
+
+	</div>
+
+	<div id="create-transform">
+
+		<div id="create-transform-row1">
+			<div>
+				Transform:
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_transform_type" name="create_transform_type">
+					{% for t in transform %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="create_transform_start_mass" name="create_transform_start_mass">
+					<option value="">Starting Mass Rank</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		
+			<div>
+				<select class="select-sml" id="create_transfom_mass" name="create_transform_mass">
+					<option value=""> + Per Rank</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+		<div id="create-transform-row2">
+			<div></div>
+
+			<div>
+				<select class="descriptor-sml" id="create_start_descriptor" name="create_start_descriptor">
+					<option value="">Starting Descriptor</option>
+				</select>
+			</div>
+
+			<div></div>
+
+			<div>
+				<select class="descriptor-sml" id="create_end_descriptor" name="create_end_descriptor">
+					<option value="">Ending Descriptor</option>
+				</select>
+			</div>
+		</div>
 	</div>
 
 	<div id="create-move">

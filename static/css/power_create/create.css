@@ -67,18 +67,48 @@
 #create-row4 {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 20% 20% 22% 22% 16%;
 	gap: 3px;
+}
+
+#create-button-row {
+	display: grid;
+	width: 97%;
+	grid-template-columns: 30% 20% 15% 15% 20%;
 }
 
 #create-ranged {
 	display: none;
 	width: 98%;
 	grid-template-columns: 15% 20% 40% 15% 10%;
-	gap: 3px;
+	gap: .2vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#create-transform {
+	display: none;
+	width: 98%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#create-transform-row1 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 15% 25% 25% 25% 10%;
+	gap: .2vw;
+}
+
+#create-transform-row2 {
+	display: grid;
+	width: 98%;
+	grid-template-columns: 15% 40% 5% 40%;
+	gap: .2vw;
 }
 
 #create-ranged-dc {
