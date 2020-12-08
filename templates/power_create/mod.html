@@ -630,13 +630,25 @@
 			Subtle:
 		</div>
 
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_subtle_perception_check" class="medium-checkbox med-checkbox" onclick="mod_subtle_perception_check()"> Requires Perception Check
-			</div>
+		<div style="font-size: 85%;">
+			Opponent Check Type:
 		</div>
 
-		<div id="mod-subtle-dc">
+		<div>
+			<select class="select-sml" id="mod_subtle_opponent_trait_type" name="mod_subtle_opponent_trait_type">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_subtle_opponent_trait" name="mod_subtle_opponent_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
 			<select class="select-sml" id="mod_subtle_dc" name="mod_subtle_dc">
 				<option value="">DC</option>
 				{% for i in positives %}
@@ -645,8 +657,14 @@
 			</select>
 		</div>
 
+		<div></div>
+
+		<div style="font-size: 80%;">
+			Nullified if Opponent has Trait:
+		</div>
+
 		<div>
-			<select class="select-sml" id="mod_subtle_trait_type" name="mod_subtle_trait_type" onchange="mod_subtle_trait_type()">
+			<select class="select-sml" id="mod_subtle_null_trait_type" name="mod_subtle_null_trait_type" onchange="mod_subtle_trait_type()">
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -654,7 +672,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_subtle_trait" name="mod_subtle_trait">
+			<select class="select-sml" id="mod_subtle_null_trait" name="mod_subtle_null_trait">
 				<option value="">Nullified if Possessing Trait</option>
 			</select>
 		</div>

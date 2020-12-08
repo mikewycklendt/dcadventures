@@ -130,9 +130,16 @@ function mod_subtle_perception_check() {
 	check_opacity(check, div);
 }
 
-function mod_subtle_trait_type() {
-	const select = 'mod_subtle_trait_type';
-	const fill = 'mod_subtle_trait';
+function mod_subtle_null_trait_type() {
+	const select = 'mod_subtle_null_trait_type';
+	const fill = 'mod_subtle_null_trait';
+
+	trait_select(select, fill);
+}
+
+function mod_subtle_opponent_trait_type() {
+	const select = 'mod_subtle_opponent_trait_type';
+	const fill = 'mod_subtle_opponent_trait';
 
 	trait_select(select, fill);
 }

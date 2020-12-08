@@ -117,7 +117,8 @@
 	font-size: 100%;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 10% 35% 10% 15% 30%;
+	grid-template-columns: 10% 30% 20% 30% 10%;
+	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;

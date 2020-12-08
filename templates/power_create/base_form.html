@@ -129,6 +129,22 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Opponent DC:
+		</div>
+	
+		<div>
+			<select class="base-select" id="opponent_dc" name="opponent_dc">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Check Type:
 		</div>
 	
