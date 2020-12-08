@@ -130,7 +130,7 @@
 	<div id="char-weaken">
 		<div id="char-weaken-row1">
 			<div>
-				<select class="select-sml" id="char_weaken_type" name="char_weaken_type" onchange="char_weaken_type(); char_broad()">
+				<select class="select-sml" id="char_weaken_type" name="char_weaken_type" onchange="char_weaken_type(); char_weaken_broad()">
 					{% for w in weaken %}
 						<option value="{{w.type}}">{{w.name}}</option>
 					{% endfor %}
