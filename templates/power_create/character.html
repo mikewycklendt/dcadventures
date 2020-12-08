@@ -137,42 +137,43 @@
 				</select>
 			</div>
 
-			<div id="char-weaken-trait">
-				<div>
-					<select class="select-sml" id="char_weaken_trait_type" name="char_weaken_trait_type" onchange="char_weaken_trait_type()">
+			<div>
+				<div id="char-weaken-trait">
+					<div>
+						<select class="select-sml" id="char_weaken_trait_type" name="char_weaken_trait_type" onchange="char_weaken_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="char_weaken_trait" name="char_weaken_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="char-weaken-type">
+					<select class="select-sml" id="char_weaken_broad" name="char_weaken_broad">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
-				<div>
-					<select class="select-sml" id="char_weaken_trait" name="char_weaken_trait">
-						<option value="">Trait</option>
+				<div id="char-weaken-descriptor">
+					<select class="descriptor-sml" id="char_weaken_descriptor" name="char_weaken_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
 					</select>
 				</div>
-			</div>
-
-			<div id="char-weaken-type">
-				<select class="select-sml" id="char_weaken_broad" name="char_weaken_broad">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="char-weaken-descriptor">
-				<select class="descriptor-sml" id="char_weaken_descriptor" name="char_weaken_descriptor">
-					<option value="">Descriptor</option>
-					<option value="">Use above form to put descriptors here</option>
-				</select>
-			</div>
-		</div>
-
-		<div>
-			<div id="char-weaken-broad">
-				<div class="check-div">
-					<input type="checkbox" id="char_simultaneous" class="medium-checkbox med-checkbox" > Simultaneous
+		
+			<div>
+				<div id="char-weaken-broad">
+					<div class="check-div">
+						<input type="checkbox" id="char_simultaneous" class="medium-checkbox med-checkbox" > Simultaneous
+					</div>
 				</div>
 			</div>
 		</div>
