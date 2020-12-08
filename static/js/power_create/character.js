@@ -122,3 +122,36 @@ function char_size() {
 		div.style.opacity = '0%';
 	}
 }
+
+function char_weaken() {
+	const check = 'char_weaken';
+	const div = 'char-weaken';
+	const entry = 'char-entry';
+
+	check_drop(check, div, entry);
+}
+
+function char_weaken_trait_type() {
+	const select = 'char_weaken_trait_type';
+	const fill = 'char_weaken_trait';
+
+	trait_select(select, fill);
+}
+
+function char_weaken() {
+	const select = 'char_weaken';
+	const options = [{'val': 'trait', 'div': 'char-weaken-trait'},
+					{'val': 'type', 'div': 'char-weaken-type'},
+					{'val': 'descriptor', 'div': 'char-weaken-descriptor'}]
+
+	select_opacity(select, options)
+}
+
+function char_weaken_broad() {
+	const select = 'char_weaken_type'
+	const options = [{'val': 'type', 'div': 'char-weaken-broad'},
+					{'val': 'descriptor', 'div': 'char-weaken-broad'}]
+
+	select_opacity(select, options)
+
+}

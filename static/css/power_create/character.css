@@ -148,6 +148,54 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+#char-weaken {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#char-weaken-row1 {
+	display: grid;
+	gap: .2vw;
+	grid-template-columns: 20% 55% 25%; 
+}
+
+#char-weaken-trait {
+	display: none;
+	gap: .2vw;
+	grid-template-columns: 40% 60%;
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+#char-weaken-type {
+	display: none;
+	gap: .2vw;
+	grid-template-columns: 100%;
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+
+#char-weaken-descriptor {
+	display: none;
+	gap: .2vw;
+	grid-template-columns: 100%;
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+#char-weaken-broad {
+	opacity: 0%;
+	transition: all .3s ease-in;
+}
+
+
 #char-reduced-full {
 	opacity: 0%;
 	transition: all .4s ease-out;
