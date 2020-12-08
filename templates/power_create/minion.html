@@ -116,7 +116,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="minion_attitude_trait_type" name="minion_attitude_trait_type">
+			<select class="select-sml" id="minion_attitude_trait_type" name="minion_attitude_trait_type" onchange="minion_attitude_trait_type()">
 				<option value="interact">Any Interaction</option>
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>

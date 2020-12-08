@@ -44,3 +44,10 @@ function minion_sacrifice() {
 
 	check_display(check, div);
 }
+
+function minion_attitude_trait_type() {
+	const select = 'minion_attitude_trait_type';
+	const fill = 'minion_attitude_trait';
+
+	trait_select(select, fill);
+}
