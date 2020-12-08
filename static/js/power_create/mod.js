@@ -244,3 +244,24 @@ function mod_minion() {
 
 	check_drop(check, div, entry);
 }
+
+function mod_minion_variable() {
+	const check = 'mod_minion_variable';
+	const div = 'mod-minion-variable';
+
+	check_opacity(check, div);
+}
+
+function mod_minion_multiple() {
+	const check = 'mod_minion_multiple';
+	const div = 'mod-minion-multiple';
+
+	check_display(check, div);
+}
+
+function mod_minion_sacrifice() {
+	const check = 'mod_minion_sacrifice';
+	const div = 'mod-minion-sacrifice';
+
+	check_display(check, div);
+}

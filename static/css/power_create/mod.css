@@ -112,13 +112,44 @@
 
 #mod-minion {
 	display: none;
+	grid-auto-rows: auto;
+	width: 97%;
+	grid-template-columns: 100%;
 	font-size: 100%;
-	width: 98%;
-	gap: .2vw;
-	grid-template-columns: 10% 25% 15% 15% 25% 10%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
+}
+
+#mod-minion-variable {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#mod-minion-multiple {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#mod-minion-sacrifice {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#mod-minion-row1 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 10% 15% 25% 20% 15% 15%;
+}
+
+#mod-minion-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 10% 13% 12% auto auto auto auto;
 }
 
 #mod-effortless {
