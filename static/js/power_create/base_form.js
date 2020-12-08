@@ -213,8 +213,9 @@ function routine_trait_type()   {
 function routine_checkbox() {
 	const check = document.getElementById('routine_checkbox');
 	const div = document.getElementById('power-routine');
+	const val = check.checked;
 
-	if (check.checked = true) {
+	if (val = true) {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
 	} else {
