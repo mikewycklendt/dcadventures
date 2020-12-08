@@ -210,8 +210,8 @@ function routine_trait_type()   {
 	trait_select(select, fill);
 }
 
-function routine() {
-	const check = document.getElementById('routine');
+function routine_checkbox() {
+	const check = document.getElementById('routine_checkbox');
 	const div = document.getElementById('power-routine');
 
 	if (check.checked = true) {
