@@ -25,6 +25,7 @@
 @import "power_create/degree.css";
 @import "power_create/opposed.css";
 @import "power_create/ranged.css";
+@import "power_create/minion.css";
 
 .power-container {
 	display: grid;

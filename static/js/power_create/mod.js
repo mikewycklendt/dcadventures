@@ -236,32 +236,5 @@ function mod_side_effect_type() {
 
 	select_opacity(select, options);
 }
+	
 
-function mod_minion() {
-	const check = 'mod_minion';
-	const div = 'mod-minion';
-	const entry = 'mod-entry';
-
-	check_drop(check, div, entry);
-}
-
-function mod_minion_variable() {
-	const check = 'mod_minion_variable';
-	const div = 'mod-minion-variable';
-
-	check_opacity(check, div);
-}
-
-function mod_minion_multiple() {
-	const check = 'mod_minion_multiple';
-	const div = 'mod-minion-multiple';
-
-	check_display(check, div);
-}
-
-function mod_minion_sacrifice() {
-	const check = 'mod_minion_sacrifice';
-	const div = 'mod-minion-sacrifice';
-
-	check_display(check, div);
-}
