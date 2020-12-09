@@ -237,9 +237,9 @@ function mod_side_effect_type() {
 	select_opacity(select, options);
 }
 
-function mod_objects() {
-	const check = 'mod_objects';
-	const div = 'mod-objects';
+function mod_affects_objects() {
+	const check = 'mod_affects_objects';
+	const div = 'mod-affects-objects';
 	const entry = 'mod-entry';
 
 	check_drop(check, div, entry);

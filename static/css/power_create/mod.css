@@ -132,7 +132,7 @@
 	transition: all .4s ease-out;
 }
 
-#mod-objects {
+#mod-affects-objects {
 	display: none;
 	font-size: 100%;
 	width: 98%;
