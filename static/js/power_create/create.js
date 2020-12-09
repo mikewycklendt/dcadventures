@@ -169,3 +169,67 @@ function create_transform() {
 
 	check_drop(check, div, entry);
 }
+
+function create_submit() {
+
+	const extra = select("create_extra");
+	const solidity = select("create_solidity");
+	const visibility = select("create_visibility");
+	const complexity = select("create_complexity");
+	const volume = select("create_volume");
+	const toughness = select("create_toughness");
+	const mass = select("create_mass");
+	const damageable = check("create_damageable");
+	const maintained = check("create_maintained");
+	const repairable = check("create_repairable");
+	const moveable = check("create_moveable");
+	const stationary = check("create_stationary");
+	const trap = check("create_trap");
+	const ranged = check("create_ranged");
+	const weapon = check("create_weapon");
+	const support = check("create_support");
+	const real = check("create_real");
+	const cover = check("create_cover");
+	const conceal = check("create_conceal");
+	const incoming = check("create_incoming");
+	const outgoing = check("create_outgoing");
+	const transform = check("create_transform");
+	const transform_type = select("create_transform_type");
+	const transform_start_mass = select("create_transform_start_mass");
+	const transfom_mass = select("create_transfom_mass");
+	const transform_start_descriptor = select("create_transform_start_descriptor");
+	const transform_end_descriptor = select("create_transform_end_descriptor");
+	const move_player = select("create_move_player");
+	const move_player_trait = select("create_move_player_trait");
+	const move_opponent_check = check("create_move_opponent_check");
+	const move_opponent_ability = select("create_move_opponent_ability");
+	const move_opponent_rank = select("create_move_opponent_rank");
+	const trap_type = select("create_trap_type")
+	const trap_dc = select("create_trap_dc");
+	const trap_trait_type = select("create_trap_trait_type");
+	const trap_trait = select("create_trap_trait");
+	const trap_resist_check = select("create_trap_resist_check");
+	const trap_resist_trait = select("create_trap_resist_trait");
+	const trap_resist_dc = select("create_trap_resist_dc");
+	const trap_escape = check("create_trap_escape");
+	const ranged_type = select("create_ranged_type");
+	const ranged_dc = select("create_ranged_dc");
+	const ranged_trait_type = select("create_ranged_trait_type");
+	const ranged_trait = select("create_ranged_trait");
+	const ranged_damage_type = select("create_ranged_damage_type");
+	const ranged_damage_value = select("create_ranged_damage_value");
+	const weapon_trait_type = select("create_weapon_trait_type");
+	const weapon_trait = select("create_weapon_trait");
+	const weapon_mod = select("create_weapon_mod");
+	const weapon_damage_type = select("create_weapon_damage_type");
+	const weapon_damage = select("create_weapon_damage");
+	const support_strength = select("create_support_strength");
+	const support_strengthen = check("create_support_strengthen");
+	const support_action = select("create_support_action");
+	const support_action_rounds = select("create_support_action_rounds");
+	const support_effort = select("create_support_effort");
+	const support_effort_rounds = select("create_support_effort_rounds");
+	const cost = select("create_cost_per_rank");
+	const ranks = select("create_ranks");
+
+}

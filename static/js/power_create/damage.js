@@ -21,3 +21,14 @@ function dam_trait_type() {
 	trait_select(select, fill)
 }
 
+function damage_submit() {
+
+	const extra = select("damage_extra")
+	const trait_type = select("dam_trait_type");
+	const trait = select("dam_trait");
+	const mod = select("dam_mod");
+	const strength = check("dam_strength");
+	const damage_type = select("damage_damage_type");
+	const descriptor = select("damage_descriptor");
+
+}

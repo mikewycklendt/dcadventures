@@ -20,3 +20,15 @@ function check_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function check_submit() {
+
+	const extra = select("check_extra");
+	const check_type = select("check_check_type");
+	const mod = select("check_mod");
+	const circumstance = text("check_circ");
+	const when = select("check_when");
+	const trait_type = select("check_trait_type");
+	const trait = select("check_trait");
+
+}

@@ -14,6 +14,12 @@ function action_base() {
 	base(field, entry);
 }
 
+function action_submit() {
 
+	const extra = select("action_extra");
+	const action = select("action_change");
+	const mod = select("action_mod");
+	const objects = check("mod_objects");
+	const circumstance = text("action_circ");
 
-
+}

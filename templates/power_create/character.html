@@ -49,7 +49,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_rank" name="char_rank">
+			<select class="select-sml" id="char_per" name="char_per">
 				<option value="">Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -298,6 +298,9 @@
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -309,7 +312,7 @@
 
 	<div id="char-points">
 		<div>
-			<select class="select-sml" id="char_points" name="char_points">
+			<select class="select-sml" id="char_points_value" name="char_points_value">
 				<option value="">Points</option>
 				<option value="rank">Rank of Affected Trait</option>
 				<option value="power">This Power's Rank</option>
@@ -371,7 +374,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="chhar_insub" name="char_insub">
+			<select class="select-sml" id="char_insub_type" name="char_insub_type">
 				{% for i in insub %}
 					<option value="{{i.type}}">{{i.name}}</option>
 				{% endfor %}

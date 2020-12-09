@@ -94,7 +94,7 @@
 
 		<div>
 			<select class="select-sml" id="dc_math_trait" name="dc_math_trait">
-
+				<option value="">Trait</option>
 			</select>
 		</div>
 		
@@ -103,7 +103,7 @@
 	<div id="dc-row2">
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_descriptor" class="medium-checkbox med-checkbox" onclick="dc_descriptor()"> Descriptor
+				<input type="checkbox" id="dc_descriptor_check" class="medium-checkbox med-checkbox" onclick="dc_descriptor()"> Descriptor
 			</div>
 		</div>
 
@@ -115,7 +115,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_keyword" class="medium-checkbox med-checkbox" onclick="dc_keyword()"> Keyword
+				<input type="checkbox" id="dc_keyword_check" class="medium-checkbox med-checkbox" onclick="dc_keyword()"> Keyword
 			</div>
 		</div>
 
@@ -181,7 +181,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="dc_condition1" name="dc_condition1">
+			<select class="select-sml" id="dc_condition2" name="dc_condition2">
 				<option value="">Ending Condition</option>
 				<option value="any">Any</option>
 				{% for c in condition %}

@@ -42,7 +42,7 @@
 		</div>
 
 		<div id="circ-button">
-			<div class="btn-entry">
+			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
 				 Add
 			</div>
 		</div>
@@ -84,7 +84,7 @@
 
 	<div id="circ-range">
 		<div>
-			<select class="select-sml" id="circ_range" name="circ_name">
+			<select class="select-sml" id="circ_range" name="circ_range">
 				<option value="">Range</option>
 				{% for r in ranges %}
 					<option value={{r.id}}>{{r.name}}</option>

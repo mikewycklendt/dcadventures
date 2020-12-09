@@ -160,3 +160,52 @@ function char_weaken_broad() {
 		div.style.opacity = '0%';
 	}
 }
+
+function char_submit() {
+
+	const extra = select("char_extra");
+	const trait_type = select("char_trait_type");
+	const trait = select("char_trait");
+	const value = select("char_value");
+	const increase = select("char_per");
+	const limited = check("char_limited");
+	const reduced = check("char_reduced");
+	const limbs = check("char_limbs");
+	const carry = check("char_carry");
+	const sustained = check("char_sustained");
+	const permanent = check("char_permanent");
+	const points = check("char_points");
+	const appear = check("char_appear");
+	const insubstantial = check("char_insub");
+	const weaken = check("char_weaken");
+	const weaken_type = select("char_weaken_type");
+	const weaken_trait_type = select("char_weaken_trait_type");
+	const weaken_trait = select("char_weaken_trait");
+	const weaken_broad = select("char_weaken_broad");
+	const weaken_descriptor = select("char_weaken_descriptor");
+	const weaken_simultaneous = check("char_simultaneous");
+	const limited_by = select("char_limited_by");
+	const limited_other = text("char_other");
+	const limited_emotion = select("char_emotion");
+	const limited_emotion_other = text("char_emotion_other");
+	const reduced_trait_type = select("char_reduced_trait_type");
+	const reduced_trait = select("char_reduced_trait");
+	const reduced_value = select("char_reduced_value");
+	const reduced_full = check("char_reduced_full");
+	const limbs_continuous = check("char_continuous");
+	const limbs_sustained = check("char_sustained");
+	const limbs_distracting = check("char_distracting");
+	const limbs_projection = check("char_projection");
+	const carry_capacity = select("char_carry_capacity");
+	const points_value = select("char_points_value");
+	const points_trait_type = select("char_points_trait_type");
+	const points_trait = select("char_points_trait");
+	const points_descriptor = select("char_points_descriptor");
+	const appear_target = select("char_appear_target");
+	const appear_description = text("char_appear_des");
+	const insub_type = select("char_insub_type");
+	const insub_description = text("char_insub_des");
+	const cost = select("char_cost");
+	const ranks = select("char_ranks");
+
+}
