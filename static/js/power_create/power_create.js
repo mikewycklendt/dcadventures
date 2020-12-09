@@ -490,7 +490,27 @@ function check_title_small(check_input, title_input, base_input, entry_input) {
 		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
-	
+
+function select(field_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+
+	return value;
+}
+
+function text(text_input) {
+	const input = document.getElementById(text_input);
+	const value = input.value;
+
+	return value;
+}
+
+function check(check_input) {
+	const checkbox = document.getElementById(check_input);
+	const value = checkbox.checked;
+
+	return value;
+}
 
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;

@@ -542,6 +542,43 @@
 		</div>
 	</div>
 
+	<div id="create-button-row">
+		<div></div>
+
+		<div>
+			<div class="vcenter">
+				Cost Per Rank:
+			</div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="create_cost_per_rank" name="create_cost_per_rank">
+				<option value="">Cost</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="entry-select" id="create_rank" name="create_rank">
+				<option value="">Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="create_submit" name="create_submit" onclick="create_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <div id="create-table">
