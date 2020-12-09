@@ -132,6 +132,18 @@
 	transition: all .4s ease-out;
 }
 
+#mod-objects {
+	display: none;
+	font-size: 100%;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #mod-others {
 	display: none;
 	font-size: 100%;

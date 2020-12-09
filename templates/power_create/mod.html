@@ -18,7 +18,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox"> Affects Objects
+				<input type="checkbox" id="mod_objects" class="medium-checkbox med-checkbox" onclick="mod_objects()"> Affects Objects
 			</div>
 		</div>
 
@@ -200,6 +200,37 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="mod-objects">
+		<div>
+			Affects Objects:
+		</div>
+
+		<div class="vcenter" style="font-size: 85%;">
+			Object Alone:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_objects_alone" name="mod_objects_alone">
+				<option value="">Defense</option>
+				{% for d in defenses %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+		</div>
+
+		<div class="vcenter" style="font-size: 85%;">
+			With Character:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_objects_character" name="mod_objects_character">
+				<option value="">Defense</option>
+				{% for d in defenses %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+		</div>
+		
 	</div>
 
 	<div id="mod-effortless">
