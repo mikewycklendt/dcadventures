@@ -148,10 +148,15 @@ function char_weaken_type() {
 }
 
 function char_weaken_broad() {
-	const select = 'char_weaken_type'
-	const options = [{'val': 'type', 'div': 'char-weaken-broad'},
-					{'val': 'descriptor', 'div': 'char-weaken-broad'}]
-
-	select_opacity(select, options)
-
+	const select = document.getElementById('char_weaken_type');
+	const value = select.options[select.selectedIndex].value;
+	const div = document.getElementById('char-weaken-broad');
+	
+	if (value == 'type') {
+		div.style.opacity = '100%'
+	} else if (value == 'descriptor') {
+		div.style.opacity = '100%'
+	} else {
+		div.style.opacity = '0%';
+	}
 }
