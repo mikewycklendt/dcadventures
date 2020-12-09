@@ -29,3 +29,7 @@ function ranks_ranged() {
 		div.style.maxHeight = "0px";
 	}
 }
+
+function ranks_submit() {
+	
+}
