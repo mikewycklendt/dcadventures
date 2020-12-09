@@ -30,3 +30,25 @@ function resist_effect() {
 
 	select_maxheight(field, options);
 }
+
+function resist_submit() {
+
+	const extra = select("resist_extra");
+	const trait_type = select("resist_trait_type");
+	const dc = select("resist_dc");
+	const mod = select("resist_mod");
+	const description = text("range_desc");
+	const trait = select("resist_trait");
+	const effect = select("resist_eft");
+	const degree = select("resist_deg");
+	const descriptor = select("resist_descriptor");
+	const weaken_max = select("resist_weaken_max");
+	const weaken_restored = select("resist_weaken_restored");
+	const condition1 = select("resist_con1");
+	const condition2 = select("resist_con2");
+	const damage =  select("resist_dam");
+	const strength = check("resist_strength");
+	const nullify_descriptor = select("resist_nullify_descriptor");
+	const nullify_alternate = select("resist_nullify_alternate");
+	const extra_effort = check("resist_extra_effort");
+}

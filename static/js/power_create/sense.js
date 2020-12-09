@@ -128,3 +128,50 @@ function sense_dimensional() {
 
 	check_drop(check, div, entry);
 }
+
+function sense_submit() {
+	
+	const target = select("sense_target");
+	const extra = select("sense_extra");
+	const sense = select("sense_sense");
+	const subsense = select("sense_subsense");
+	const sense_cost = select("sense_sense_cost");
+	const subsense_cost = select("sense_subsense_cost");
+	const skill = select("sense_skill");
+	const skill_required = check("sense_skill_req");
+	const type = select("sense_type");
+	const height_trait_type = select("sense_height_trait_type");
+	const height_trait = select("sense_height_trait");
+	const  height_power_required = check("sense_height_power_req");
+	const height_ensense = select("sense_height_ensense");
+	const resist_trait_type = select("sense_resist_trait_type");
+	const resist_trait = select("sense_resist_trait");
+	const resist_immune = check("sense_resist_immune");
+	const resist_permanent = select("sense_resist_perm");
+	const resist_circ = select("sense_resist_circ");
+	const objects = check("sense_objects");
+	const exclusive = check("sense_exclusive");
+	const gm = check("sense_gm");
+	const dark = check("sense_dark");
+	const lighting = select("sense-lighting");
+	const time = check("sense_time");
+	const dimensional = check("sense_dimensional");
+	const radius = check("sense_radius");
+	const accurate = check("sense_accurate");
+	const acute = check("sense_acute");
+	const time_set = select("sense_time_set");
+	const time_value = text("sense_time_value");
+	const time_unit = select("sense_time_unit");
+	const time_skill = select("sense_time_skill");
+	const time_bonus = select("sense_time_bonus");
+	const time_factor = select("sense_time_factor");
+	const distance = select("sense_distance");
+	const distance_dc = select("sense_dis_dc");
+	const distance_mod = select("sense_dis_mod");
+	const distance_value= text("sense_dis_value");
+	const distance_unit = select("sense_dis_unit");
+	const distance_factor = select("sense_dis_factor");
+	const dimensional_type = select("sense_dimensional_type");
+	const ranks = select("sense_ranks");
+		
+}

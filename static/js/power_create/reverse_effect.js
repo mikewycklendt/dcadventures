@@ -46,3 +46,22 @@ function reverse_value_type() {
 
 	value_type(type_field, math, val);
 }
+
+function reverse_submit() {
+
+	const target = select("reverse_target");
+	const extra = select("reverse_extra");
+	const degree = select("reverse_degree");
+	const when = select("reverse_when");
+	const check_check = check("reverse_check_check");
+	const time_check = check("reverse_time_check");
+	const trait_type = select("reverse_trait_type");
+	const trait = select("reverse_trait");
+	const value_type = select("reverse_value_type");
+	const value_dc = select("reverse_value_dc");
+	const math_dc = select("reverse_math_dc");
+	const math = select("reverse_math");
+	const time_value = text("reverse_time");
+	const time_unit = select("reverse_time_unit");
+
+}

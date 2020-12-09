@@ -64,3 +64,43 @@ function ranged_dc_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function ranged_submit() {
+
+	const extra = select("ranged_extra");
+	const type = select("ranged_type");
+	const flat_value = text("ranged_flat_value");
+	const flat_units = select("ranged_flat_units");
+	const flat_rank = select("ranged_flat_rank");
+	const flat_rank_value = text("ranged_flat_rank_value");
+	const flat_rank_units = select("ranged_flat_rank_units");
+	const flat_rank_rank = select("ranged_flat_rank_rank");
+	const flat_rank_distance = select("ranged_flat_rank_distance");
+	const flat_rank_distance_rank = select("ranged_flat_rank_distance_rank");
+	const units_rank_start_value = text("ranged_units_rank_start_value");
+	const units_rank_value = text("ranged_units_rank_value");
+	const units_rank_units = select("ranged_units_rank_units");
+	const units_rank_rank = select("ranged_units_rank_rank");
+	const rank_distance_start = select("ranged_rank_distance_start");
+	const rank_distance = select("ranged_rank_distance");
+	const rank_effect_rank = select("ranged_rank_effect_rank");
+	const effect_mod_math = select("ranged_effect_mod_math");
+	const effect_mod = select("ranged_effect_mod");
+	const check_trait_type = select("ranged_check_trait_type");
+	const check_trait = select("ranged_check_trait");
+	const check_math = select("ranged_check_math");
+	const check_mod = select("ranged_check_mod");
+	const trait_trait_type = select("ranged_trait_trait_type");
+	const trait_trait = select("ranged_trait_trait");
+	const trait_math = select("ranged_trait_math");
+	const trait_mod = select("ranged_trait_mod");
+	const distance_mod_rank = select("ranged_distance_mod_rank");
+	const distance_mod_math = select("ranged_distance_mod_math");
+	const distance_mod_trait_type = select("ranged_distance_mod_trait_type");
+	const distance_mod_trait = select("ranged_distance_mod_trait");
+	const dc = check("ranged_dc");
+	const dc_value = select("ranged_dc_value");
+	const dc_trait_type = select("ranged_dc_trait_type");
+	const dc_trait = select("ranged_dc_trait");
+
+}

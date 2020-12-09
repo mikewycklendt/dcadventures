@@ -51,3 +51,27 @@ function minion_attitude_trait_type() {
 
 	trait_select(select, fill);
 }
+
+function minion_submit() {
+
+	const extra = select("minion_extra");
+	const points = select("mod_minion_points");
+	const condition = select("mod_minion_condition");
+	const player_condition = select("mod_minion_player_condition");
+	const link = check("mod_minion_link");
+	const variable_type = select("mod_minion_variable_type");
+	const multiple = check("minion_multiple");
+	const attitude = check("minion_attitude");
+	const resitable = check("minion_resitable");
+	const heroic = check("minion_heroic");
+	const sacrifice = check("minion_sacrifice");
+	const sacrifice_cost = select("mod_minion_sacrifice_cost");
+	const attitude_type = select("minion_attitude_type");
+	const attitude_trait_type = select("minion_attitude_trait_type");
+	const attitude_trait = select("minion_attitude_trait");
+	const resitable_checkc = select("minion_resitable_checkc");
+	const resitable_dc = select("minion_resitable_dc");
+	const multiple_value = select("mod_minion_multiple_value");
+	const horde = check("mod_minion_horde");
+
+}

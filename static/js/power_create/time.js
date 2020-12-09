@@ -36,3 +36,24 @@ function time_recovery() {
 
 	check_drop(check, div, entry);
 }
+
+function time_submit() {
+
+	const extra = select("time_extra");
+	const type = select("time_type");
+	const value_type = select("time_value_type");
+	const value = text("time_value");
+	const units = select("time_units");
+	const time_value = select("dc_time_value");
+	const math = select("time_math");
+	const trait_type = select("time_trait_type");
+	const trait = select("time_trait");
+	const dc = select("time_dc");
+	const descriptor = select("time_descriptor");
+	const check_type = select("time_check_type");
+	const recovery = check("time_recovery");
+	const recovery_penalty = select("time_recovery_penalty");
+	const recovery_time = select("time_recovery_time");
+	const recovery_incurable = check("time_recovery_incurable");
+
+}

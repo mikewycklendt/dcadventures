@@ -80,26 +80,26 @@ function dc_check_trait_type() {
 
 function dc_submit() {
 
-const target = select("dc_target");
-const extra = select("dc_extra");
-const dc = select("dc_dc");
-const description = text("dc_description");
-const value = select("dc_value_value");
-const math_vqlue = select("dc_math_vqlue");
-const math = select("dc_math_math");
-const math_trait_type = select("dc_math_trait_type");
-const math_trait = select("dc_math_trait");
-const descriptor_check = check("dc_descriptor_check");
-const condition = check("dc_condition");
-const keyword_check = check("dc_keyword_check");
-const check_type = check("dc_check_type");
-const descriptor = select("dc_descriptor");
-const descriptor_possess = select("dc_descriptor_possess");
-const condition1 = select("dc_condition1");
-const condition2 = select("dc_condition2");
-const keyword = text("dc_keyword");
-const check_trait_type = select("dc_check_trait_type");
-const check_trait = select("dc_check_trait");
-const check_mod = select("dc_check_mod");
+	const target = select("dc_target");
+	const extra = select("dc_extra");
+	const dc = select("dc_dc");
+	const description = text("dc_description");
+	const value = select("dc_value_value");
+	const math_vqlue = select("dc_math_vqlue");
+	const math = select("dc_math_math");
+	const math_trait_type = select("dc_math_trait_type");
+	const math_trait = select("dc_math_trait");
+	const descriptor_check = check("dc_descriptor_check");
+	const condition = check("dc_condition");
+	const keyword_check = check("dc_keyword_check");
+	const check_type = check("dc_check_type");
+	const descriptor = select("dc_descriptor");
+	const descriptor_possess = select("dc_descriptor_possess");
+	const condition1 = select("dc_condition1");
+	const condition2 = select("dc_condition2");
+	const keyword = text("dc_keyword");
+	const check_trait_type = select("dc_check_trait_type");
+	const check_trait = select("dc_check_trait");
+	const check_mod = select("dc_check_mod");
 
 }

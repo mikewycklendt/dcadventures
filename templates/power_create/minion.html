@@ -18,7 +18,7 @@
 		<div>
 			<select class="select-sml" id="mod_minion_points" name="mod_minion_points">
 				<option value="">Points</option>
-				{% for i in positives %}\
+				{% for i in positives %}
 					<option value={{i}}>Effect Rank X {{i}}</option>
 				{% endfor %}
 			</select>
@@ -34,7 +34,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_minion_condition" name="mod_minion_condition">
+			<select class="select-sml" id="mod_minion_player_condition" name="mod_minion_player_condition">
 				<option value="">Condition While Summoning</option>
 				{% for c in conditions %}
 					<option value="{{c}}">{{c}}</option>

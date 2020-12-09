@@ -512,6 +512,13 @@ function check(check_input) {
 	return value;
 }
 
+function multiple(multiple_input) {
+	let selectElement = document.getElementById(multiple_input);
+	let selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+
+	return selectedValues;
+}
+
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;
 	const add_power = document.getElementById('add-power');

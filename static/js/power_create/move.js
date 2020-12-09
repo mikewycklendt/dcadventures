@@ -189,3 +189,81 @@ function move_mass() {
 
 	check_drop(check, div, entry);
 }
+
+function move_submit() {
+
+	const extra = select("move_extra");
+	const rank = select("move_rank");
+	const math = select("move_math");
+	const mod = select("move_mod");
+	const per_rank = check("move_per_rank");
+	const flight = check("move_flight");
+	const aquatic = check("move_aquatic");
+	const ground = check("move_ground");
+	const condition = select("move_condition");
+	const direction = select("move_direction");
+	const distance_type = select("move_distance_type");
+	const distance_value = select("move_distance_value");
+	const distance_math_value = select("move_distance_math_value");
+	const distance_math = select("move_distance_math");
+	const distance_math_value2 = select("move_distance_math_value2");
+	const distance_mod = select("move_distance_mod");
+	const dc = select("move_dc");
+	const others = check("move_others");
+	const continuous = check("move_continuous");
+	const subtle = check("move_subtle");
+	const concentration = check("move_concentration");
+	const obstacles = check("move_obstacles");
+	const objects = check("move_objects");
+	const permeate = check("move_permeate");
+	const special = check("move_special");
+	const prone = check("move_prone");
+	const check_type = check("move_check_type");
+	const obstacles_check = check("move_obstacles");
+	const concealment = check("move_concealment");
+	const extended = check("move_extended");
+	const mass = check("move_mass");
+	const mass_value = select("move_mass_value");
+	const extended_actions = select("move_extended_actions");
+	const acquatic_type = select("move_acquatic_type");
+	const concealment_sense = select("move_concealment_sense");
+	const concealment_trait_type = select("move_concealment_trait_type");
+	const concealment_trait = select("move_concealment_trait");
+	const permeate_type = select("move_permeate_type");
+	const permeate_speed = select("move_permeate_speed");
+	const permeate_cover = check("move_permeate_cover");
+	const special_type = select("move_special_type");
+	const teleport_type = select("move_teleport_type");
+	const teleport_change = select("move_teleport_change");
+	const teleport_portal = check("move_teleport_portal");
+	const teleport_obstacles = check("move_teleport_obstacles");
+	const dimension_type = select("move_dimension_type");
+	const dimension_mass_rank = select("move_dimension_mass_rank");
+	const dimension_descriptor = select("move_dimension_descriptor");
+	const special_space = select("move_special_space");
+	const special_time = select("move_special_time");
+	const special_time_carry = select("move_special_time_carry");
+	const ground_type = select("move_ground_type");
+	const ground_permanence = select("move_ground_perm");
+	const ground_time = select("move_ground_time");
+	const ground_units = select("move_ground_units");
+	const ground_ranged = check("move_ground_ranged");
+	const subtle_trait_type = select("move_subtle_trait_type");
+	const subtle_trait = select("move_subtle_trait");
+	const subtle_mod = select("move_subtle_mod");
+	const flight_resist = check("move_flight_resist");
+	const flight_equip = check("move_flight_equip");
+	const flight_conditions = multiple("move_flight_conditions");
+	const objects_check = select("move_objects_check");
+	const objects_attack = select("move_objects_attack");
+	const objects_skill_type = select("move_objects_skill_type");
+	const objects_skill = select("move_objects_skill");
+	const objects_direction = select("move_objects_direction");
+	const objects_damage = check("move_objects_damage");
+	const damage_type = select("move_objects_damage_type");
+	const check_trait_type = select("move_check_trait_type");
+	const check_trait = select("move_check_trait");
+	const check_free = check("move_check_free");
+	const ranks = select("move_ranks");
+
+}

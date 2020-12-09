@@ -244,3 +244,88 @@ function mod_affects_objects() {
 
 	check_drop(check, div, entry);
 }
+
+
+function mod_submit() {
+
+	const extra = select("mod_extra");
+	const affects_objects = check("mod_affects_objects");
+	const area = check("mod_area");
+	const persistent = check("mod_persistent");
+	const incurable = check("mod_incurable");
+	const selective = check("mod_selective");
+	const limited = check("mod_limited");
+	const innate = check("mod_innate");
+	const others = check("mod_others");
+	const sustained = check("mod_sustained");
+	const reflect = check("mod_reflect");
+	const redirect = check("mod_redirect");
+	const half = check("mod_half");
+	const affects_corp = check("mod_affects_corp");
+	const continuous = check("mod_continuous");
+	const vulnerable = check("mod_vulnerable");
+	const precise = check("mod_precise");
+	const progressive = check("mod_progressive");
+	const subtle = check("mod_subtle");
+	const permanent = check("mod_permanent");
+	const points = check("mod_points");
+	const ranks = check("mod_ranks");
+	const action = check("mod_action");
+	const side_effect = check("mod_side_effect");
+	const concentration = check("mod_concentration");
+	const simultaneous = check("mod_simultaneous");
+	const effortless = check("mod_effortless");
+	const noticeable = check("mod_noticeable");
+	const unreliable = check("mod_unreliable");
+	const objects_alone = select("mod_objects_alone");
+	const objects_character = select("mod_objects_character");
+	const effortless_degree = select("mod_effortless_degree");
+	const effortless_retries = select("mod_effortless_retries");
+	const simultaneous_descriptor = select("mod_simultaneous_descriptor");
+	const area_mod = select("mod_area_mod");
+	const area_range = select("mod_area_range");
+	const area_per_rank = check("mod_area_per_rank");
+	const area_descriptor = select("mod_area_descriptor");
+	const limited_type = select("mod_limited_type");
+	const limited_mod = select("mod_limited_mod");
+	const limited_source = select("mod_limited_source");
+	const limited_task_type = select("mod_limited_task_type");
+	const limited_task = text("mod_limited_task");
+	const limited_trait_type = select("mod_limited_trait_type");
+	const _limited_trait = select("mod_limited_trait");
+	const limited_description = text("mod_limited_description");
+	const limited_subjects = select("mod_limited_subjects");
+	const limited_extra = select("mod_limited_extra");
+	const limited_language_type = select("mod_limited_language_type");
+	const limited_degree = select("mod_limited_degree");
+	const limited_sense = select("mod_limited_sense");
+	const limited_subsense = select("mod_limited_subsense");
+	const limited_descriptor = select("mod_limited_descriptor");
+	const limited_range = select("mod_limited_range");
+	const side_effect_type = select("mod_side_effect_type");
+	const side_other = text("mod_side_other");
+	const reflect_check = select("mod_reflect_check");
+	const reflect_trait_type = select("mod_reflect_trait_type");
+	const reflect_trait = select("mod_reflect_trait");
+	const reflect_descriptor = select("mod_reflect_descriptor");
+	const subtle_opponent_trait_type = select("mod_subtle_opponent_trait_type");
+	const subtle_opponent_trait = select("mod_subtle_opponent_trait");
+	const subtle_dc = select("mod_subtle_dc");
+	const subtle_null_trait_type = select("mod_subtle_null_trait_type");
+	const subtle_null_trait = select("mod_subtle_null_trait");
+	const others_carry = check("mod_others_carry");
+	const others_touch = check("mod_others_touch");
+	const others_touch_continuous = check("mod_others_touch_continuous");
+	const ranks_trait_type = select("mod_ranks_trait_type");
+	const ranks_trait = select("mod_ranks_trait");
+	const ranks_ranks = select("mod_ranks_ranks");
+	const ranks_mod = select("mod_ranks_mod");
+	const points_type = select("mod_points_type");
+	const points_reroll_target = select("mod_points_reroll_target");
+	const points_reroll_cost = select("mod_points_reroll_cost");
+	const points_rerolls = select("mod_points_rerolls");
+	const points_reroll_result = select("mod_points_reroll_result");
+	const ranks_cost = select("mod_ranks");
+	const cost = select("mod_cost");
+
+}

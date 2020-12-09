@@ -159,13 +159,13 @@
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="env_selective" class="medium-checkbox med-checkbox" > No Movement Penalty
+						<input type="checkbox" id="env_no_penalty" class="medium-checkbox med-checkbox" > No Movement Penalty
 					</div>
 				</div>
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="env_selective" class="medium-checkbox med-checkbox" > No Circumstance
+						<input type="checkbox" id="env_no_circumstance" class="medium-checkbox med-checkbox" > No Circumstance
 					</div>
 				</div>
 
@@ -192,7 +192,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_temp_type" name="env_temp_type">
+			<select class="select-sml" id="env_condition_temp_type" name="env_condition_temp_type">
 				{% for t in temp_type %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -317,7 +317,7 @@
 
 		<div>
 			<select class="select-sml" id="env_visibility_trait" name="env_visibility_trait">
-
+				<option value="">Trait</option>
 			</select>
 		</div>
 

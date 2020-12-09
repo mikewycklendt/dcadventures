@@ -358,7 +358,7 @@
 		</div>
 
 		<div id="move-through-objects">
-			<select class="select-sml" id="move_permeate" name="move_permeate">
+			<select class="select-sml" id="move_permeate_type" name="move_permeate_type">
 				{% for o in openings %}
 					<option value="{{o.type}}">{{o.name}}</option>
 				{% endfor %}
@@ -424,13 +424,13 @@
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="move_portal" class="medium-checkbox med-checkbox" > Portal
+						<input type="checkbox" id="move_teleport_portal" class="medium-checkbox med-checkbox" > Portal
 					</div>
 				</div>	
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Turnabout
+						<input type="checkbox" id="move_teleport_obstacles" class="medium-checkbox med-checkbox" > Turnabout
 					</div>
 				</div>	
 

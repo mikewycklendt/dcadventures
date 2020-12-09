@@ -14,3 +14,16 @@ function degree_base() {
 
 	base_text(field, type, entry);
 }
+
+function degree_submit() {
+	
+	const degree_type = text("degree_type");
+	const extra = select("degree_extra");
+	const degree = select("degree_degree");
+	const keyword = text("degree_keyword");
+	const desscription = text("degree_desscription");
+	const extra_effort = check("mod_extra_effort");
+	const cumulative = check("mod_cumulative");
+	const target = select("degree_target");
+
+}
