@@ -202,6 +202,15 @@
 	transition: all .3s ease-out;
 }
 
+#mod-limited-level {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 	50% 50%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #mod-limited-task-type {
 	display: none;
 	width: 98%;
@@ -411,6 +420,14 @@
 
 #mod-side-other {
 	display: none;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#mod-side-level {
+	display: none;
+	grid-template-columns: 50% 50%;
 	width: 97%;
 	opacity: 0%;
 	transition: all .3s ease-out;

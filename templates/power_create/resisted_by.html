@@ -39,6 +39,7 @@
 			<select class="select-sml" id="resist_mod" name="resist_mod">
 				<option value="">Mod</option>
 				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for num in negatives %}
 					<option value={{num}}>{{num}}</option>
 				{% endfor %}
@@ -107,6 +108,15 @@
 
 		<div>
 
+			<div id="resist-level">
+				<div>
+					<select class="levels-sml" id="resist_level" name="resist_level">
+						<option value="">Level</option>
+						<option value="">Use Levels form to put levels here</option>
+					</select>
+				</div>
+			</div>
+
 			<div id="resist-weaken">
 				<div style="font-size: 80%;">
 					Lost Points = Check Result - DC
@@ -115,7 +125,8 @@
 				<div>
 					<select class="select-sml" id="resist_weaken_max" name="resist_weaken_max">
 						<option value="">Maximum</option>
-						<option value="effect">Effect Rank</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -140,6 +151,8 @@
 				<div>
 					<select class="select-sml" id="resist_con1" name="resist_con1">
 						<option value="">Condition</option>
+						<option value="currebt">Current</option>
+						<option value="any">Any</option>
 						{% for condition in conditions %}
 							<option value="{{condition}}">{{condition}}</option>
 						{% endfor %}

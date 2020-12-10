@@ -104,6 +104,16 @@
 	gap: .2vw;
 }
 
+#dc-levels {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 50% 35%;
+	gap: .2vw;
+}
+
 #dc-descriptor {
 	display: none;
 	max-height: 0;

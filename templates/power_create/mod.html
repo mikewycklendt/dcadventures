@@ -306,6 +306,7 @@
 			<select class="select-sml" id="mod_area_mod" name="mod_area_mod">
 				<option value="">Modifier</option>
 				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -323,6 +324,7 @@
 			<select class="select-sml" id="mod_area_range" name="mod_area_range">
 				<option value="">Distance Rank</option>
 				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -336,7 +338,7 @@
 		<div>
 			<select class="descriptor-sml" id="mod_area_descriptor" name="mod_area_descriptor">
 				<option value="">Affects with Descriptor</option>
-				<option value="">Use above form for values</option>
+				<option value="">Use above form to put descriptors here</option>
 			</select>
 		</div>
 
@@ -357,7 +359,7 @@
 				<option value="">Modifier</option>
 				<option value="null">Effect Nullified</option>
 				<option value="rank">Power Rank</option>
-				<option value="X">X</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -365,6 +367,15 @@
 		</div>
 	
 		<div>
+
+			<div id="mod-limited-level">
+				<div>
+					<select class="levels-sml" id="mod_limited_level" name="mod_limited_level">
+						<option value="">Level</option>
+						<option value="">Use levels form to put levels here</option>
+					</select>
+				</div>
+			</div>
 
 			<div id="mod-limited-source">
 				<div>
@@ -505,7 +516,7 @@
 				<div>
 					<select class="select-sml" id="mod_limited_range" name="mod_limited_range">
 						{% for r in ranges %}
-							<option value="{{r.type}}">{{r.name}}</option>
+							<option value="{{r.id}}">{{r.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -654,7 +665,15 @@
 			<div id="mod-side-other">
 				<input type="text" id="mod_side_other" name="mod_side_other">
 			</div>
+
+			<div id="mod-side-level">
+				<select class="levels-sml" id="mod_side_level" name="mod_side_level">
+					<option value="">Level</option>
+					<option value="">Use Levels form to put levels here</option>
+				</select>
+			</div>
 		</div>
+
 
 	</div>
 
@@ -794,7 +813,8 @@
 		<div>
 			<select class="select-sml" id="mod_ranks_ranks" name="mod_ranks_ranks">
 				<option value="">Ranks</option>
-				<option value="effect">This Power</option>
+				<option value="rank">This Power</option>
+				<option value="extra">This Extra</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -803,7 +823,7 @@
 
 		<div>
 			<select class="select-sml" id="mod_ranks_mod" name="mod_ranks_mod">
-				<option value="">Modifier</option>
+				<option value="">Modifier to Trait</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -839,7 +859,7 @@
 
 				<div>
 					<select class="select-sml" id="mod_points_reroll_cost" name="mod_points_cost">
-						<option value="">Cost</option>
+						<option value="">Power Point Cost</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}

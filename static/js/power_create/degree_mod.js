@@ -19,7 +19,8 @@ function deg_mod_type() {
 	let select = 'deg_mod_type';
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
 					{'val': 'measure', 'div':  'deg-mod-measure'},
-					{'val': 'condition', 'div': 'deg-mod-condition'}];
+					{'val': 'condition', 'div': 'deg-mod-condition'},
+					{'val': 'level', 'div': 'deg-mod-level'}];
 	
 	select_opacity(select, options);
 }
@@ -55,6 +56,13 @@ function deg_mod_measure_type() {
 	value_type(field, math, value)
 }
 
+function deg_mod_measure_trait_type() {
+	const select = 'deg_mod_measure_trait_type';
+	const fill = 'deg_mod_measure_trait';
+
+	trait_select(select, fill);
+}
+
 deg_mod_enter = 0;
 
 function deg_mod_submit() {
@@ -71,8 +79,8 @@ function deg_mod_submit() {
 	const measure_type = select("deg_mod_measure_type");
 	const measure_val1 = select("deg_mod_measure_val1");
 	const measure_math = select("deg_mod_measure_math");
-	const measure_val2 = select("deg_mod_measure_val2");
-	const measure_math_rank = select("deg_mod_measure_math_rank");
+	const measure_trait_type = select("deg_mod_measure_trait_type");
+	const measure_trait = select("deg_mod_measure_trait");
 	const measure_value = select("deg_mod_measure_value");
 	const measure_rank = select("deg_mod_measure_rank");
 	const deg_condition_type = select("deg_mod_condition_type");
@@ -84,5 +92,6 @@ function deg_mod_submit() {
 	const nullify = select("deg_mod_nullify");
 	const cumulative = check("deg_mod_cumulative");
 	const linked = check("deg_mod_linked");
+	const level = select('deg_mod_level');
 
 };

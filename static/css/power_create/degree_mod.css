@@ -125,6 +125,14 @@
 	grid-template-columns: 20% 20% 20% 30% ;
 }
 
+#deg-mod-level {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 50% 50% ;
+}
+
 #deg-mod-measure {
 	display: none;
 	width: auto;

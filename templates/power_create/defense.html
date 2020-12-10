@@ -36,9 +36,9 @@
 		<div>
 			<select class="select-sml" id="defense_defense" name="defense_defense">
 				<option value="">Defense</option>
-				<option value="any">Any</option>
+				<option value=any>Any</option>
 				{% for d in defenses %}
-					<option value={{d.id}}>{{d.name}}</option>
+					<option value={{d.name}}>{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -161,7 +161,7 @@
 		<div>
 			<select class="select-sml" id="defense_reflect_check" name="defense_reflect_check" onchange="defense_reflect_check()">
 				<option value="">Check Type</option>
-				<option value="none">No Check Needed</option>
+				<option value=0>No Check Needed</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}	

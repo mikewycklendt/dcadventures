@@ -26,7 +26,8 @@ function resist_effect() {
 	const options = [{'val': 'condition', 'div': "resist-condition"},
 					{'val': 'damage', 'div': "resist-damage"},
 					{'val': 'nullify', 'div': "resist-nullify"},
-					{'val': 'trait', 'div': "resist-weaken"}];
+					{'val': 'trait', 'div': "resist-weaken"},
+					{'val': 'level', 'div': "resist-level"}];
 
 	select_maxheight(field, options);
 }
@@ -42,6 +43,7 @@ function resist_submit() {
 	const effect = select("resist_eft");
 	const degree = select("resist_deg");
 	const descriptor = select("resist_descriptor");
+	const level = select('resist_level');
 	const weaken_max = select("resist_weaken_max");
 	const weaken_restored = select("resist_weaken_restored");
 	const condition1 = select("resist_con1");

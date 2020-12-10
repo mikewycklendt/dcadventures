@@ -40,6 +40,7 @@
 
 		<div>
 			<select class="select-sml" id="env_distance" name="env_distance">
+				<option value="">Distance Rank</option>
 				{% for  i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -52,7 +53,8 @@
 
 		<div>
 			<select class="select-sml" id="env_rank" name="env_rank">
-				{% for  i in positives %}
+				<option value="">Effect Rank</option>
+				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
@@ -207,23 +209,7 @@
 			</select>
 		</div>
 
-		<div>
-			<select class="select-sml" id="env_temp_cost" name="env_temp_cost">
-				<option value="">Cost Per Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
 
-		<div>
-			<select class="select-sml" id="env_condition_rank" name="env_condition_rank">
-				<option value="">Ranks</option>
-				{% for i in hundred %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
 
 		<div></div>
 
@@ -253,12 +239,6 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_move_cost" name="env_move_cost">
-				<option value="">Cost Per Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
 		</div>
 
 		<div>
@@ -280,21 +260,14 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_conceal_reduce" name="env_conceal_reduce">
-				<option value="">Cost to Reduce</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="select-sml" id="env_conceal_type" name="env_conceal_type">
+				{% for c in conceal_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 		
 		<div>
-			<select class="select-sml" id="env_conceal_eliminate" name="env_conceal_eliminate">
-				<option value="">Cost to Eliminate</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
 		</div>
 
 		<div></div>
@@ -331,12 +304,6 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_visibility_cost" name="env_visibility_cost">
-				<option value="">Cost Per Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
 		</div>
 
 	</div>
@@ -345,6 +312,30 @@
 
 		<div>
 
+		</div>
+
+		<div>
+			<div class="vcenter">
+				Cost Per Rank:
+			</div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="env_cost" name="env_cost">
+				<option value="">Cost</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="env_ranks" name="env_ranks">
+				<option value="">Cost</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
 		</div>
 		
 		<div>

@@ -50,7 +50,8 @@ function mod_limited_type() {
 					{'val': 'descriptor', 'div': 'mod-limited-descriptor'},
 					{'val': 'task', 'div': 'mod-limited-task'},
 					{'val': 'task_type', 'div': 'mod-limited-task-type'},
-					{'val': 'source', 'div': 'mod-limited-source'}];
+					{'val': 'source', 'div': 'mod-limited-source'},
+					{'val': 'level', 'div': 'mod-limited-level'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);
@@ -232,7 +233,8 @@ function mod_effortless() {
 
 function mod_side_effect_type() {
 	const select = 'mod_side_effect_type';
-	const options = [{'val': 'other', 'div': 'mod-side-other'}]
+	const options = [{'val': 'other', 'div': 'mod-side-other'},
+					{'val': 'level', 'div': 'mod-side-level'}]
 
 	select_opacity(select, options);
 }
@@ -280,7 +282,7 @@ function mod_submit() {
 	const objects_alone = select("mod_objects_alone");
 	const objects_character = select("mod_objects_character");
 	const effortless_degree = select("mod_effortless_degree");
-	const effortless_retries = select("mod_effortless_retries");
+	const effortless_retries = check("mod_effortless_retries");
 	const simultaneous_descriptor = select("mod_simultaneous_descriptor");
 	const area_mod = select("mod_area_mod");
 	const area_range = select("mod_area_range");
@@ -288,11 +290,12 @@ function mod_submit() {
 	const area_descriptor = select("mod_area_descriptor");
 	const limited_type = select("mod_limited_type");
 	const limited_mod = select("mod_limited_mod");
+	const limited_level = select('mod_limited_level');
 	const limited_source = select("mod_limited_source");
 	const limited_task_type = select("mod_limited_task_type");
 	const limited_task = text("mod_limited_task");
 	const limited_trait_type = select("mod_limited_trait_type");
-	const _limited_trait = select("mod_limited_trait");
+	const limited_trait = select("mod_limited_trait");
 	const limited_description = text("mod_limited_description");
 	const limited_subjects = select("mod_limited_subjects");
 	const limited_extra = select("mod_limited_extra");
@@ -304,6 +307,7 @@ function mod_submit() {
 	const limited_range = select("mod_limited_range");
 	const side_effect_type = select("mod_side_effect_type");
 	const side_other = text("mod_side_other");
+	const side_level = select('mod_side_level');
 	const reflect_check = select("mod_reflect_check");
 	const reflect_trait_type = select("mod_reflect_trait_type");
 	const reflect_trait = select("mod_reflect_trait");

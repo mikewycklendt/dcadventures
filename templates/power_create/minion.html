@@ -90,7 +90,7 @@
 
 		<div id="minion-sacrifice">
 			<select class="select-sml" id="mod_minion_sacrifice_cost" name="mod_minion_sacrifice_cost">
-				<option value="">Cost Per Use</option>
+				<option value="">Power Point Cost Per Use</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}} Power Points</option>
 				{% endfor %}
@@ -104,10 +104,9 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="minion_attitude_type" name="minion_attitude_type">
-				{% for m in minion_attitude %}
-					<option value="{{m.type}}">{{m.name}}</option>
-				{% endfor %}
+			<select class="levels-sml" id="minion_attitude_type" name="minion_attitude_type">
+				<option value="">Attitude Level</option>
+				<option value="">Set Attitude Levels on levels and DC/Degree Modifier forms</option>
 			</select>
 		</div>
 

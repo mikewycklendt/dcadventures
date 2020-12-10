@@ -78,6 +78,14 @@ function dc_check_trait_type() {
 	trait_select(select, fill)
 }
 
+function dc_levels() {
+	const check = 'dc_levels';
+	const div = 'dc-levels';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry);
+}
+
 function dc_submit() {
 
 	const target = select("dc_target");
@@ -101,5 +109,6 @@ function dc_submit() {
 	const check_trait_type = select("dc_check_trait_type");
 	const check_trait = select("dc_check_trait");
 	const check_mod = select("dc_check_mod");
-
+	const levels = check('dc_levels');
+	const level = select('dc_level');
 }

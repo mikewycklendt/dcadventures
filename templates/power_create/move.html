@@ -22,7 +22,8 @@
 					<option value="">Speed Rank</option>
 					<option value="normal">Normal</option>
 					<option value="instant">Instant</option>
-					<option value="effect">This Power</option>
+					<option value="rank">This Power</option>
+					<option value="extra">This Extra</option>
 					<option value="distance">Distance Rank</option>
 					{% for num in positives %}
 						<option value={{num}}>{{num}}</option>
@@ -139,7 +140,8 @@
 				<div>
 					<select class="select-sml" id="move_distance_math_value2" name="move_distance_math_value2">
 						<option value="">Value</option>
-						<option value="effect">Effect Rank</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -158,7 +160,7 @@
 						{% for i in negatives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
-						{% for i in positives %}\
+						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
@@ -285,7 +287,7 @@
 		<div>
 			<select class="select-sml" id="move_mass_value" name="move_mass_value">
 				<option value="">Mass Rank</option>
-				<option value="effect">Effect Rank</option>
+				<option value="rank">Effect Rank</option>
 				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -690,9 +692,10 @@
 			<div id="move-objects-damage-type">
 				<select class="select-sml" id="move_objects_damage_type" name="move_objects_damage_type">
 					<option value="">Damage Dealt By</option>
-					<option value="effect">Effect Rank</option>
+					<option value="rank">Effect Rank</option>
+					<option value="extra">Extra Rank</option>
 					{% for a in abilities %}
-						<option value={{a.id}}>{{a.name}} Rank</option>
+						<option value={{a.name}}>{{a.name}} Rank</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -730,6 +733,22 @@
 	<div id="move-button-row">
 		
 		<div>
+		</div>
+
+		<div>
+			<div class="vcenter">
+				Cost Per Rank:
+			</div>
+		</div>
+
+		<div>
+			<select class="entry-select" id="move_cost" name="move_ranks">
+				<option value="">Cost</option>
+				{% for i in negatives %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>

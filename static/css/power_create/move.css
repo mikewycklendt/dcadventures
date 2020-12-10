@@ -84,7 +84,7 @@
 #move-button-row {
 	display: grid;
 	width: 98%;
-	grid-template-columns: 65% 15% 20%;
+	grid-template-columns: 30% 20% 15% 15% 20%;
 	gap: 3px;
 }
 

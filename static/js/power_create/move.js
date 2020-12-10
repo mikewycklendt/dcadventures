@@ -265,5 +265,6 @@ function move_submit() {
 	const check_trait = select("move_check_trait");
 	const check_free = check("move_check_free");
 	const ranks = select("move_ranks");
+	const cost = select("move_cost");
 
 }

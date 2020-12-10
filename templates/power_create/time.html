@@ -44,7 +44,6 @@
 					
 					<select class="select-sml" id="time_units" name="time_units">
 						<option value="">Units</option>
-						<option value="rank">Time Rank</option>
 						{% for t in times %}
 							<option value={{t.id}}>{{t.name}}</option>
 						{% endfor %}
@@ -59,6 +58,7 @@
 					<select class="select-sml" id="dc_time_value" name="dc_time_value">
 						<option value="">Value</option>
 						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
 						{% for i in time_numbers %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -146,7 +146,8 @@
 		<div>
 			<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
 				<option value="">Penalty</option>
-				<option value="effect">Effect Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}

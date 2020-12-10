@@ -173,5 +173,6 @@ function sense_submit() {
 	const distance_factor = select("sense_dis_factor");
 	const dimensional_type = select("sense_dimensional_type");
 	const ranks = select("sense_ranks");
-		
+	const cost = select("sense_cost");
+
 }

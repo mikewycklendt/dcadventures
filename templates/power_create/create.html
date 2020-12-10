@@ -68,7 +68,8 @@
 
 		<div>
 			<select class="select-sml" id="create_volume" name="create_volume">
-				<option value=>Effect Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -77,8 +78,9 @@
 
 		<div>
 			<select class="select-sml" id="create_toughness" name="create_toughness">
-				<option value=>Effect Rank</option>
-				<option value=1000>Impervious</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				<option value=imperv>Impervious</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -87,7 +89,8 @@
 
 		<div>
 			<select class="select-sml" id="create_mass" name="create_mass">
-				<option value=>Effect Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -283,7 +286,8 @@
 
 			<div>
 				<select class="select-sml" id="create_move_opponent_rank" name="create_move_opponent_rank">
-					<option value=>Effect Rank</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
 					{% for i in positives %}
 						<option  value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -310,7 +314,8 @@
 			<div id="create-trap-dc">
 				<select class="select-sml" id="create_trap_dc" name="create_trap_dc">
 					<option value="">DC</option>
-					<option value=0>Effect Rank</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -352,7 +357,8 @@
 		<div>
 			<select class="select-sml" id="create_trap_resist_dc" name="create_trap_resist_dc">
 				<option value="">DC</option>
-				<option value=>Effect Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -385,7 +391,8 @@
 			<div id="create-ranged-dc">
 				<select class="select-sml" id="create_ranged_dc" name="create_ranged_dc">
 					<option value="">DC</option>
-					<option value=>Effect Rank</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -484,8 +491,9 @@
 
 		<div>
 			<select class="select-sml" id="create_support_strength" name="create_support_strength">
-				<option value="">Strength Rank</option>
-				<option value=>Effect Rank</option>
+				<option value="">Support Strength Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -511,7 +519,8 @@
 				<div>
 					<select class="select-sml" id="create_support_action_rounds" name="create_support_action_rounds">
 						<option value="">Rounds</option>
-						<option value=>Permanent</option>
+						<option value="perm">Permanent</option>
+						<option value="turn">This Turn</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -532,7 +541,8 @@
 				<div>
 					<select class="select-sml" id="create_support_effort_rounds" name="create_support_effort_rounds">
 						<option value="">Rounds</option>
-						<option value=>Permanent</option>
+						<option value="perm">Permanent</option>
+						<option value="turn">This Turn</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}

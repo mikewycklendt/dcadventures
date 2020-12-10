@@ -69,7 +69,7 @@ function minion_submit() {
 	const attitude_type = select("minion_attitude_type");
 	const attitude_trait_type = select("minion_attitude_trait_type");
 	const attitude_trait = select("minion_attitude_trait");
-	const resitable_checkc = select("minion_resitable_checkc");
+	const resitable_check = select("minion_resitable_check");
 	const resitable_dc = select("minion_resitable_dc");
 	const multiple_value = select("mod_minion_multiple_value");
 	const horde = check("mod_minion_horde");

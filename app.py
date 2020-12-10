@@ -54,50 +54,26 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/units/create')
+def units_create():
 
-@app.route('/conflictaction/create')
-def conflict_action_create():
+	units = []
 
-	actions = ['Aid', 'Aim', 'Attack', 'Charge', 'Defend', 'Disarm', 'Grab', 'Ready', 'Recover', 'Smash', 'Trip']
+	units.append({
+		'name': 'Time Rank',
+		'type_id': 2
+	})
 
-	for i in actions:
+	for unit in units:
+		name = unit['name']
+		type_id = unit['type_id']
 
-		entry = ConflictAction(name=i, action_id=1)
+		entry = Unit(name=name, type_id=type_id)
 		db.session.add(entry)
 		db.session.commit()
 
-	actions = ['Command', 'Crawl', 'Escape', 'Stand']
+	return ('units created')
 
-	for i in actions:
-
-		entry = ConflictAction(name=i, action_id=2)
-		db.session.add(entry)
-		db.session.commit()
-
-	actions = ['Drop Prone', 'Drop an Item']
-
-	for i in actions:
-
-		entry = ConflictAction(name=i, action_id=3)
-		db.session.add(entry)
-		db.session.commit()
-
-	actions = ['Delay']
-
-	for i in actions:
-
-		entry = ConflictAction(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = ConflictAction.query.all()
-
-	for result in results:
-		print (result.id)
-		print(result.action_id)
-		print (result.name)
-
-	return ('actions added')
 
 '''
 @app.route('/debilitated/create')

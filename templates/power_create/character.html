@@ -37,7 +37,8 @@
 		<div>
 			<select class="select-sml" id="char_value" name="char_value">
 				<option value="">Increased By</option>
-				<option value="rank">Effect Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -205,7 +206,7 @@
 						<option value="">Emotion</option>
 						<option value="other">Other</option>
 						{% for e in emotions %}
-							<option value={{e.id}}>{{e.name}}</option>
+							<option value={{e.name}}>{{e.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -244,7 +245,7 @@
 		<div>
 			<select class="select-sml" id="char_reduced_value" name="char_reduced_value" onchange="char_size()">
 				<option value="">Amount</option>
-				<option value="">All</option>
+				<option value="all">All</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -314,8 +315,9 @@
 		<div>
 			<select class="select-sml" id="char_points_value" name="char_points_value">
 				<option value="">Points</option>
-				<option value="rank">Rank of Affected Trait</option>
-				<option value="power">This Power's Rank</option>
+				<option value="trait">Rank of Affected Trait</option>
+				<option value="rank">This Power's Rank</option>
+				<option value="extra">This Extra's Rank</option>
 				<option value="all">Lose All</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>

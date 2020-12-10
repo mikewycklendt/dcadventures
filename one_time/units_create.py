@@ -83,6 +83,11 @@ def units_create():
 		'type_id': 4
 	})
 
+	units.append({
+		'name': 'Time Rank',
+		'type_id': 2
+	})
+
 	for unit in units:
 		name = unit['name']
 		type_id = unit['type_id']

@@ -112,18 +112,15 @@ function env_submit() {
 	const immunity_other = text("env_immunity_other");
 	const condition_temp_type = select("env_condition_temp_type");
 	const temp_extremity = select("env_temp_extremity");
-	const temp_cost = select("env_temp_cost");
-	const condition_rank = select("env_condition_rank");
 	const move_nature = select("env_move_nature");
 	const move_speed = select("env_move_speed");
-	const move_cost = select("env_move_cost");
 	const move_cost_circ = check("env_move_cost_circ");
 	const move_other = text("env_move_other");
-	const conceal_reduce = select("env_conceal_reduce");
-	const conceal_eliminate = select("env_conceal_eliminate");
+	const conceal_type = check("env_conceal_type");
 	const visibility_trait_type = select("env_visibility_trait_type");
 	const visibility_trait = select("env_visibility_trait");
 	const visibility_mod = select("env_visibility_mod");
-	const visibility_cost = select("env_visibility_cost");
+	const cost = select("env_cost");
+	const ranks = select("env_ranks");
 
 }

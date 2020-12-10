@@ -120,6 +120,18 @@
 	transition: all .3s ease-out;
 }
 
+#resist-level {
+	display: none;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: auto;
+	width: 95%;
+	height: auto;
+	padding: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
 #resist-nullify {
 	display: none;
 	grid-template-columns: 60% 40%;

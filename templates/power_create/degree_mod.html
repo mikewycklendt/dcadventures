@@ -49,6 +49,16 @@
 	</div>
 
 	<div id="deg-mod-effect">
+
+		<div id="deg-mod-level">
+
+			<div>
+				<select class="levels-sml" id="deg_mod_level" name="deg_mod_level">
+					<option value="">Level</option>
+					<option value="">Use Levels form to put level here</option>
+				</select>
+			</div>
+		</div>
 		
 		<div id="deg-mod-circ">
 
@@ -107,8 +117,11 @@
 					<div>
 						<select class="select-sml" id="deg_mod_measure_val1" name="deg_mod_measure_val1" >
 							<option value="">Rank</option>
-							{% for number in numbers %}
-								<option value={{number}}>{{number}}</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -123,21 +136,17 @@
 					</div>
 					
 					<div>
-						<select class="select-sml" id="deg_mod_measure_val2" name="deg_mod_damage_val2" >
-							<option value="">Rank Type</option>
-							{% for rank in ranks %}
-								<option value={{rank.id}}>{{rank.name}}</option>
+						<select class="select-sml" id="deg_mod_measure_trait_type" name="deg_mod_measure_trait_type" onchange="deg_mod_measure_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
 
 					<div>
 
-						<select class="select-sml" id="deg_mod_measure_math_rank" name="deg_mod_measure_math_rank" >
-							<option value="">Rank Type</option>
-							{% for rank in measure_rank %}
-								<option value={{rank.id}}>{{rank.name}}</option>
-							{% endfor %}
+						<select class="select-sml" id="deg_mod_measure_trait" name="deg_mod_measure_trait" >
+							<option value="">Trait</option>
 						</select>
 
 					</div>
@@ -151,15 +160,15 @@
 					<div>
 						<select class="select-sml" id="deg_mod_measure_value" name="deg_measure_value" >
 							<option value="">Rank</option>
-							{% for number in numbers %}
-								<option value={{number}}>{{number}}</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
 							{% endfor %}
 						</select>
 					</div>
 
 					<div>
 
-						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank" >
+						<select class="select-sml" id="deg_mod_measure_value" name="deg_mod_measure_rank" >
 							<option value="">Rank Type</option>
 							{% for rank in measure_rank %}
 								<option value={{rank.id}}>{{rank.name}}</option>
@@ -257,9 +266,9 @@
 	<div>
 		<select class="select-sml" id="deg_mod_nullify" name="deg_mod_nullify" >
 			<option value="">DC to Nullify</option>
-			<option value="extra">Extra Check</option>
-			{% for class in dcclasses %}
-				<option value={{class}}>{{class}} DC</option>
+			<option value="check">Extra Check</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}} DC</option>
 			{% endfor %}
 		</select>
 	</div>

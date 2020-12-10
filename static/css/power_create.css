@@ -141,6 +141,12 @@ select:focus {
 	font-size: 80%;
 }
 
+.levels-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .header-select {
 	height: 2.5vw; 
 	font-size: 110%;
