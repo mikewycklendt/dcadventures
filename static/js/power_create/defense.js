@@ -110,4 +110,57 @@ function defense_submit() {
 	const cover_check = check("defense_cover_check");
 	const cover_type = select("defense_cover_type");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'defense-err';
+	const err_line = 'defense-err-line';
+
+	response = fetch('/power/defense/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'defense': self.defense,
+			'use': self.use,
+			'mod': self.mod,
+			'roll': self.roll,
+			'outcome': self.outcome,
+			'dodge': self.dodge,
+			'fortitude': self.fortitude,
+			'parry': self.parry,
+			'toughness': self.toughness,
+			'will': self.will,
+			'resist_area': self.resist_area,
+			'resist_perception': self.resist_perception,
+			'reflect': self.reflect,
+			'immunity': self.immunity,
+			'reflect_action': self.reflect_action,
+			'reflect_check': self.reflect_check,
+			'reflect_dc': self.reflect_dc,
+			'reflect_opposed_trait_type': self.reflect_opposed_trait_type,
+			'reflect_opposed_trait': self.reflect_opposed_trait,
+			'reflect_resist_trait_type': self.reflect_resist_trait_type,
+			'reflect_resist_trait': self.reflect_resist_trait,
+			'immunity_type': self.immunity_type,
+			'immunity_trait_type': self.immunity_trait_type,
+			'immunity_trait': self.immunity_trait,
+			'immunity_descriptor': self.immunity_descriptor,
+			'immunity_damage': self.immunity_damage,
+			'immunity_rule': self.immunity_rule,
+			'cover_check': self.cover_check,
+			'cover_type': self.cover_type
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

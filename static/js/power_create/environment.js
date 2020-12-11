@@ -123,4 +123,56 @@ function env_submit() {
 	const cost = select("env_cost");
 	const ranks = select("env_ranks");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'env-err';
+	const err_line = 'env-err-line';
+
+	response = fetch('/power/environment/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'radius': self.radius,
+			'distance': self.distance,
+			'rank': self.rank,
+			'condition_check': self.condition_check,
+			'impede': self.impede,
+			'conceal': self.conceal,
+			'visibility': self.visibility,
+			'selective': self.selective,
+			'immunity': self.immunity,
+			'immunity_type': self.immunity_type,
+			'temp_type': self.temp_type,
+			'immunity_extremity': self.immunity_extremity,
+			'immunity_environment': self.immunity_environment,
+			'no_penalty': self.no_penalty,
+			'no_circumstance': self.no_circumstance,
+			'immunity_other': self.immunity_other,
+			'condition_temp_type': self.condition_temp_type,
+			'temp_extremity': self.temp_extremity,
+			'move_nature': self.move_nature,
+			'move_speed': self.move_speed,
+			'move_cost_circ': self.move_cost_circ,
+			'move_other': self.move_other,
+			'conceal_type': self.conceal_type,
+			'visibility_trait_type': self.visibility_trait_type,
+			'visibility_trait': self.visibility_trait,
+			'visibility_mod': self.visibility_mod,
+			'cost': self.cost,
+			'ranks': self.ranks
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

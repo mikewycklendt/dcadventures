@@ -332,4 +332,108 @@ function mod_submit() {
 	const ranks_cost = select("mod_ranks");
 	const cost = select("mod_cost");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'mod-err';
+	const err_line = 'mod-err-line';
+
+	response = fetch('/power/mod/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'affects_objects': self.affects_objects,
+			'area': self.area,
+			'persistent': self.persistent,
+			'incurable': self.incurable,
+			'selective': self.selective,
+			'limited': self.limited,
+			'innate': self.innate,
+			'others': self.others,
+			'sustained': self.sustained,
+			'reflect': self.reflect,
+			'redirect': self.redirect,
+			'half': self.half,
+			'affects_corp': self.affects_corp,
+			'continuous': self.continuous,
+			'vulnerable': self.vulnerable,
+			'precise': self.precise,
+			'progressive': self.progressive,
+			'subtle': self.subtle,
+			'permanent': self.permanent,
+			'points': self.points,
+			'ranks': self.ranks,
+			'action': self.action,
+			'side_effect': self.side_effect,
+			'concentration': self.concentration,
+			'simultaneous': self.simultaneous,
+			'effortless': self.effortless,
+			'noticeable': self.noticeable,
+			'unreliable': self.unreliable,
+			'objects_alone': self.objects_alone,
+			'objects_character': self.objects_character,
+			'effortless_degree': self.effortless_degree,
+			'effortless_retries': self.effortless_retries,
+			'simultaneous_descriptor': self.simultaneous_descriptor,
+			'area_mod': self.area_mod,
+			'area_range': self.area_range,
+			'area_per_rank': self.area_per_rank,
+			'area_descriptor': self.area_descriptor,
+			'limited_type': self.limited_type,
+			'limited_mod': self.limited_mod,
+			'limited_level': self.limited_level,
+			'limited_source': self.limited_source,
+			'limited_task_type': self.limited_task_type,
+			'limited_task': self.limited_task,
+			'limited_trait_type': self.limited_trait_type,
+			'limited_trait': self.limited_trait,
+			'limited_description': self.limited_description,
+			'limited_subjects': self.limited_subjects,
+			'limited_extra': self.limited_extra,
+			'limited_language_type': self.limited_language_type,
+			'limited_degree': self.limited_degree,
+			'limited_sense': self.limited_sense,
+			'limited_subsense': self.limited_subsense,
+			'limited_descriptor': self.limited_descriptor,
+			'limited_range': self.limited_range,
+			'side_effect_type': self.side_effect_type,
+			'side_level': self.side_level,
+			'side_other': self.side_other,
+			'reflect_check': self.reflect_check,
+			'reflect_trait_type': self.reflect_trait_type,
+			'reflect_trait': self.reflect_trait,
+			'reflect_descriptor': self.reflect_descriptor,
+			'subtle_opponent_trait_type': self.subtle_opponent_trait_type,
+			'subtle_opponent_trait': self.subtle_opponent_trait,
+			'subtle_dc': self.subtle_dc,
+			'subtle_null_trait_type': self.subtle_null_trait_type,
+			'subtle_null_trait': self.subtle_null_trait,
+			'others_carry': self.others_carry,
+			'others_touch': self.others_touch,
+			'others_touch_continuous': self.others_touch_continuous,
+			'ranks_trait_type': self.ranks_trait_type,
+			'ranks_trait': self.ranks_trait,
+			'ranks_ranks': self.ranks_ranks,
+			'ranks_mod': self.ranks_mod,
+			'points_type': self.points_type,
+			'points_reroll_target': self.points_reroll_target, 
+			'points_reroll_cost': self.points_reroll_cost,
+			'points_rerolls': self.points_rerolls,
+			'points_reroll_result': self.points_reroll_result,
+			'ranks_cost': self.ranks_cost,
+			'cost': self.cost
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

@@ -94,4 +94,52 @@ function deg_mod_submit() {
 	const linked = check("deg_mod_linked");
 	const level = select('deg_mod_level');
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'deg-mod-err';
+	const err_line = 'deg-mod-err-line';
+
+	response = fetch('/power/degree_mod/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'target': self.target,
+			'value': self.value,
+			'deg_type': self.deg_type,
+			'circ_value': self.circ_value,
+			'circ_turns': self.circ_turns,
+			'circ_trait_type': self.circ_trait_type,
+			'circ_trait': self.circ_trait,
+			'measure_type': self.measure_type,
+			'measure_val1': self.measure_val1,
+			'measure_math': self.measure_math,
+			'measure_trait_type': self.measure_trait_type,
+			'measure_trait': self.measure_trait,
+			'measure_value': self.measure_value,
+			'measure_rank': self.measure_rank,
+			'deg_condition_type': self.deg_condition_type,
+			'condition_damage_value': self.condition_damage_value,
+			'condition_damage': self.condition_damage,
+			'condition1': self.condition1,
+			'condition2': self.condition2,
+			'keyword': self.keyword,
+			'nullify': self.nullify,
+			'cumulative': self.cumulative,
+			'linked': self.linked,
+			'level': self.level
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 };

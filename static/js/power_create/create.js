@@ -232,4 +232,86 @@ function create_submit() {
 	const cost = select("create_cost_per_rank");
 	const ranks = select("create_ranks");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'create-err';
+	const err_line = 'create-err-line';
+
+	response = fetch('/power/create/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'solidity': self.solidity,
+			'visibility': self.visibility,
+			'complexity': self.complexity,
+			'volume': self.volume,
+			'toughness': self.toughness,
+			'mass': self.mass,
+			'damageable': self.damageable,
+			'maintained': self.maintained,
+			'repairable': self.repairable,
+			'moveable': self.moveable,
+			'stationary': self.stationary,
+			'trap': self.trap,
+			'ranged': self.ranged,
+			'weapon': self.weapon,
+			'support': self.support,
+			'real': self.real,
+			'cover': self.cover,
+			'conceal': self.conceal,
+			'incoming': self.incoming,
+			'outgoing': self.outgoing,
+			'transform': self.transform,
+			'transform_type': self.transform_type,
+			'transform_start_mass': self.transform_start_mass,
+			'transfom_mass': self.transfom_mass,
+			'transform_start_descriptor': self.transform_start_descriptor,
+			'transform_end_descriptor': self.transform_end_descriptor,
+			'move_player': self.move_player,
+			'move_player_trait': self.move_player_trait,
+			'move_opponent_check': self.move_opponent_check,
+			'move_opponent_ability': self.move_opponent_ability,
+			'move_opponent_rank': self.move_opponent_rank,
+			'trap_type': self.trap_type,
+			'trap_dc': self.trap_dc,
+			'trap_trait_type': self.trap_trait_type,
+			'trap_trait': self.trap_trait,
+			'trap_resist_check': self.trap_resist_check,
+			'trap_resist_trait': self.trap_resist_trait,
+			'trap_resist_dc': self.trap_resist_dc,
+			'trap_escape': self.trap_escape,
+			'ranged_type': self.ranged_type,
+			'ranged_dc': self.ranged_dc,
+			'ranged_trait_type': self.ranged_trait_type,
+			'ranged_trait': self.ranged_trait,
+			'ranged_damage_type': self.ranged_damage_type,
+			'ranged_damage_value': self.ranged_damage_value,
+			'weapon_trait_type': self.weapon_trait_type,
+			'weapon_trait': self.weapon_trait,
+			'weapon_mod': self.weapon_mod,
+			'weapon_damage_type': self.weapon_damage_type,
+			'weapon_damage': self.weapon_damage,
+			'support_strength': self.support_strength,
+			'support_strengthen': self.support_strengthen,
+			'support_action': self.support_action,
+			'support_action_rounds': self.support_action_rounds,
+			'support_effort': self.support_effort,
+			'support_effort_rounds': self.support_effort_rounds,
+			'cost': self.cost,
+			'ranks': self.ranks
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

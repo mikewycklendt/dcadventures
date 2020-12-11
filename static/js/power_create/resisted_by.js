@@ -53,4 +53,48 @@ function resist_submit() {
 	const nullify_descriptor = select("resist_nullify_descriptor");
 	const nullify_alternate = select("resist_nullify_alternate");
 	const extra_effort = check("resist_extra_effort");
+
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'resist-err';
+	const err_line = 'resist-err-line';
+
+	response = fetch('/power/resisted_by/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'trait_type': self.trait_type,
+			'dc': self.dc,
+			'mod': self.mod,
+			'description': self.description,
+			'trait': self.trait,
+			'effect': self.effect,
+			'level': self.level,
+			'degree': self.degree,
+			'descriptor': self.descriptor,
+			'weaken_max': self.weaken_max,
+			'weaken_restored': self.weaken_restored,
+			'condition1': self.condition1,
+			'condition2': self.condition2,
+			'damage': self.damage,
+			'strength': self.strength,
+			'nullify_descriptor': self.nullify_descriptor,
+			'nullify_alternate': self.nullify_alternate,
+			'extra_effort': self.extra_effort
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
+
 }

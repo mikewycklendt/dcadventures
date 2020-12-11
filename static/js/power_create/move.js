@@ -267,4 +267,101 @@ function move_submit() {
 	const ranks = select("move_ranks");
 	const cost = select("move_cost");
 
+	const power_id = document.getElementById('power_id').value;
+	
+	const errors = 'move-err';
+	const err_line = 'move-err-line';
+
+	response = fetch('/power/move/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'rank': self.rank,
+			'math': self.math,
+			'mod': self.mod,
+			'per_rank': self.per_rank,
+			'flight': self.flight,
+			'aquatic': self.aquatic,
+			'ground': self.ground,
+			'condition': self.condition,
+			'direction': self.direction,
+			'distance_type': self.distance_type,
+			'distance_value': self.distance_value,
+			'distance_math_value': self.distance_math_value,
+			'distance_math': self.distance_math,
+			'distance_math_value2': self.distance_math_value2,
+			'distance_mod': self.distance_mod,
+			'dc': self.dc,
+			'others': self.others,
+			'continuous': self.continuous,
+			'subtle': self.subtle,
+			'concentration': self.concentration,
+			'obstacles': self.obstacles,
+			'objects': self.objects,
+			'permeate': self.permeate,
+			'special': self.special,
+			'prone': self.prone,
+			'check_type': self.check_type,
+			'obstacles_check': self.obstacles_check,
+			'concealment': self.concealment,
+			'extended': self.extended,
+			'mass': self.mass,
+			'mass_value': self.mass_value,
+			'extended_actions': self.extended_actions,
+			'acquatic_type': self.acquatic_type,
+			'concealment_sense': self.concealment_sense,
+			'concealment_trait_type': self.concealment_trait_type,
+			'concealment_trait': self.concealment_trait,
+			'permeate_type': self.permeate_type,
+			'permeate_speed': self.permeate_speed,
+			'permeate_cover': self.permeate_cover,
+			'special_type': self.special_type,
+			'teleport_type': self.teleport_type,
+			'teleport_change': self.teleport_change,
+			'teleport_portal': self.teleport_portal,
+			'teleport_obstacles': self.teleport_obstacles,
+			'dimension_type': self.dimension_type,
+			'dimension_mass_rank': self.dimension_mass_rank,
+			'dimension_descriptor': self.dimension_descriptor,
+			'special_space': self.special_space,
+			'special_time': self.special_time,
+			'special_time_carry': self.special_time_carry,
+			'ground_type': self.ground_type,
+			'ground_permanence': self.ground_permanence,
+			'ground_time': self.ground_time,
+			'ground_units': self.ground_units,
+			'ground_ranged': self.ground_ranged,
+			'subtle_trait_type': self.subtle_trait_type,
+			'subtle_trait': self.subtle_trait,
+			'subtle_mod': self.subtle_mod,
+			'flight_resist': self.flight_resist,
+			'flight_equip': self.flight_equip,
+			'flight_conditions': self.flight_conditions,
+			'objects_check': self.objects_check,
+			'objects_attack': self.objects_attack,
+			'objects_skill_type': self.objects_skill_type,
+			'objects_skill': self.objects_skill,
+			'objects_direction': self.objects_direction,
+			'objects_damage': self.objects_damage,
+			'damage_type': self.damage_type,
+			'check_trait_type': self.check_trait_type,
+			'check_trait': self.check_trait,
+			'check_free': self.check_free,
+			'ranks': self.ranks,
+			'cost': self.cost
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

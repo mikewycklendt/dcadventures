@@ -40,7 +40,7 @@ function time_recovery() {
 function time_submit() {
 
 	const extra = select("time_extra");
-	const type = select("time_type");
+	const time_type = select("time_type");
 	const value_type = select("time_value_type");
 	const value = text("time_value");
 	const units = select("time_units");
@@ -56,4 +56,43 @@ function time_submit() {
 	const recovery_time = select("time_recovery_time");
 	const recovery_incurable = check("time_recovery_incurable");
 
+	const power_id = document.getElementById('power_id').value;
+	
+	const errors = 'time-err';
+	const err_line = 'time-err-line';
+
+	response = fetch('/power/time/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'time_type': self.time_type,
+			'value_type': self.value_type,
+			'value': self.value,
+			'units': self.units,
+			'time_value': self.time_value,
+			'math': self.math,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'dc': self.dc,
+			'descriptor': self.descriptor,
+			'check_type': self.check_type,
+			'recovery': self.recovery,
+			'recovery_penalty': self.recovery_penalty,
+			'recovery_time': self.recovery_time,
+			'recovery_incurable': self.recovery_incurable
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

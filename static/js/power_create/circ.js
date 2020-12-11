@@ -58,4 +58,42 @@ function circ_submit() {
 	const null_trait_type = select("circ_null_trait_type");
 	const null_trait = select("circ_null_trait")
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'circ-err';
+	const err_line = 'circ-err-line';
+
+	response = fetch('/power/circ/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'target': self.target,
+			'mod': self.mod,
+			'rounds': self.rounds,
+			'description': self.description,
+			'circ_type': self.circ_type,
+			'circ_range': self.circ_range,
+			'check_who': self.check_who,
+			'check_trait_type': self.check_trait_type,
+			'check_trait': self.check_trait,
+			'null_type': self.null_type,
+			'null_condition': self.null_condition,
+			'null_descriptor': self.null_descriptor,
+			'null_trait_type': self.null_trait_type,
+			'null_trait': self.null_trait
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

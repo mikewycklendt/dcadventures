@@ -59,4 +59,41 @@ function resistance() {
 	const check_type = select("resistance_check_type");
 	const check_trait_type = select("resistance_check_trait_type");
 	const check_trait = select("resistance_check_trait");
+
+	const power_id = document.getElementById('power_id').value;
+	
+	const errors = 'resistance-err';
+	const err_line = 'resistance-err-line';
+
+	response = fetch('/power/resist/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'mod': self.mod,
+			'rounds': self.rounds,
+			'circumstance': self.circumstance,
+			'resist_check_type': self.resist_check_type,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'descriptor': self.descriptor,
+			'requires_check': self.requires_check,
+			'check_type': self.check_type,
+			'check_trait_type': self.check_trait_type,
+			'check_trait': self.check_trait
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
+
 }

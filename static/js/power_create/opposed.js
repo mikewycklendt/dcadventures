@@ -41,4 +41,36 @@ function opposed_submit() {
 	const player_check = select("opposed_player_check");
 	const opponent_check = select("opposed_opponent_check");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'opposed-err';
+	const err_line = 'opposed-err-line';
+
+	response = fetch('/power/opposed/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'mod': self.mod,
+			'opponent_trait_type': self.opponent_trait_type,
+			'opponent_trait': self.opponent_trait,
+			'opponent_mod': self.opponent_mod,
+			'player_check': self.player_check,
+			'opponent_check': self.opponent_check
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

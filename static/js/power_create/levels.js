@@ -25,4 +25,31 @@ function levels_submit() {
 	const level = text("level");
 	const level_effect = text("level_effect");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'level-err';
+	const err_line = 'level-err-line';
+
+	response = fetch('/power/levels/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'level_type': self.level_type,
+			'level': self.level,
+			'level_effect': self.level_effect
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 };

@@ -111,4 +111,52 @@ function dc_submit() {
 	const check_mod = select("dc_check_mod");
 	const levels = check('dc_levels');
 	const level = select('dc_level');
+
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'dc-err';
+	const err_line = 'dc-err-line';
+
+	response = fetch('/power/dc_table/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'target': self.target,
+			'dc': self.dc,
+			'description': self.description,
+			'value': self.value,
+			'math_vqlue': self.math_vqlue,
+			'math': self.math,
+			'math_trait_type': self.math_trait_type,
+			'math_trait': self.math_trait,
+			'descriptor_check': self.descriptor_check,
+			'condition': self.condition,
+			'keyword_check': self.keyword_check,
+			'check_type': self.check_type,
+			'descriptor': self.descriptor,
+			'descriptor_possess': self.descriptor_possess,
+			'condition1': self.condition1,
+			'condition2': self.condition2,
+			'keyword': self.keyword,
+			'check_trait_type': self.check_trait_type,
+			'check_trait': self.check_trait,
+			'check_mod': self.check_mod,
+			'levels': self.levels,
+			'level': self.level
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
+
 }

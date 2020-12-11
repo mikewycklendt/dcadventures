@@ -208,4 +208,71 @@ function char_submit() {
 	const cost = select("char_cost");
 	const ranks = select("char_ranks");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'char-err';
+	const err_line = 'char-err-line';
+
+	response = fetch('/power/character/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'value': self.value,
+			'increase': self.increase,
+			'limited': self.limited,
+			'reduced': self.reduced,
+			'limbs': self.limbs,
+			'carry': self.carry,
+			'sustained': self.sustained,
+			'permanent': self.permanent,
+			'points': self.points,
+			'appear': self.appear,
+			'insubstantial': self.insubstantial,
+			'weaken': self.weaken,
+			'weaken_type': self.weaken_type,
+			'weaken_trait_type': self.weaken_trait_type,
+			'weaken_trait': self.weaken_trait,
+			'weaken_broad': self.weaken_broad,
+			'weaken_descriptor': self.weaken_descriptor,
+			'weaken_simultaneous': self.weaken_simultaneous,
+			'limited_by': self.limited_by,
+			'limited_other': self.limited_other,
+			'limited_emotion': self.limited_emotion,
+			'limited_emotion_other': self.limited_emotion_other,
+			'reduced_trait_type': self.reduced_trait_type,
+			'reduced_trait': self.reduced_trait,
+			'reduced_value': self.reduced_value,
+			'reduced_full': self.reduced_full,
+			'limbs_continuous': self.limbs_continuous,
+			'limbs_sustained': self.limbs_sustained,
+			'limbs_distracting': self.limbs_distracting,
+			'limbs_projection': self.limbs_projection,
+			'carry_capacity': self.carry_capacity,
+			'points_value': self.points_value,
+			'points_trait_type': self.points_trait_type,
+			'points_trait': self.points_trait,
+			'points_descriptor': self.points_descriptor,
+			'appear_target': self.appear_target,
+			'appear_description': self.appear_description,
+			'insub_type': self.insub_type,
+			'insub_description': self.insub_description,
+			'cost': self.cost,
+			'ranks': self.ranks
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

@@ -74,4 +74,46 @@ function minion_submit() {
 	const multiple_value = select("mod_minion_multiple_value");
 	const horde = check("mod_minion_horde");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'minion-err';
+	const err_line = 'minion-err-line';
+
+	response = fetch('/power/minion/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'points': self.points,
+			'condition': self.condition,
+			'player_condition': self.player_condition,
+			'link': self.link,
+			'variable_type': self.variable_type,
+			'multiple': self.multiple,
+			'attitude': self.attitude,
+			'resitable': self.resitable,
+			'heroic': self.heroic,
+			'sacrifice': self.sacrifice,
+			'sacrifice_cost': self.sacrifice_cost,
+			'attitude_type': self.attitude_type,
+			'attitude_trait_type': self.attitude_trait_type,
+			'attitude_trait': self.attitude_trait,
+			'resitable_check': self.resitable_check,
+			'resitable_dc': self.resitable_dc,
+			'multiple_value': self.multiple_value,
+			'horde': self.horde
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

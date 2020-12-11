@@ -31,4 +31,34 @@ function damage_submit() {
 	const damage_type = select("damage_damage_type");
 	const descriptor = select("damage_descriptor");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'damage-err';
+	const err_line = 'damage-err-line';
+
+	response = fetch('/power/damage/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'mod': self.mod,
+			'strength': self.strength,
+			'damage_type': self.damage_type,
+			'descriptor': self.descriptor
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

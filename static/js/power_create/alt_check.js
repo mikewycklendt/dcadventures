@@ -31,4 +31,35 @@ function check_submit() {
 	const trait_type = select("check_trait_type");
 	const trait = select("check_trait");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'check-err';
+	const err_line = 'check-err-line';
+
+
+	response = fetch('/power/alt_check/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'check_type': self.check_type,
+			'mod': self.mod,
+			'circumstance': self.circumstance,
+			'when': self.when,
+			'trait_type': self.trait_type,
+			'trait': self.trait
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }

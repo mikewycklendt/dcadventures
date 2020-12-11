@@ -26,4 +26,35 @@ function degree_submit() {
 	const cumulative = check("mod_cumulative");
 	const target = select("degree_target");
 
+	const power_id = document.getElementById('power_id').value;
+
+	const errors = 'degree-err';
+	const err_line = 'degree-err-line';
+
+	response = fetch('/power/degree/create', {
+		method: 'POST',
+		body: JSON.stringify({
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'degree_type': self.degree_type,
+			'degree': self.degree,
+			'keyword': self.keyword,
+			'desscription': self.desscription,
+			'extra_effort': self.extra_effort,
+			'cumulative': self.cumulative,
+			'target': self.target
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+		} else {
+
+		}
+	})
 }
