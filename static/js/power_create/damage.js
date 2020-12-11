@@ -23,7 +23,7 @@ function dam_trait_type() {
 
 function damage_submit() {
 
-	const extra = select("damage_extra")
+	const extra_id = select("damage_extra")
 	const trait_type = select("dam_trait_type");
 	const trait = select("dam_trait");
 	const mod = select("dam_mod");
@@ -39,14 +39,14 @@ function damage_submit() {
 	response = fetch('/power/damage/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'trait_type': self.trait_type,
-			'trait': self.trait,
-			'mod': self.mod,
-			'strength': self.strength,
-			'damage_type': self.damage_type,
-			'descriptor': self.descriptor
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'trait_type': trait_type,
+			'trait': trait,
+			'mod': mod,
+			'strength': strength,
+			'damage_type': damage_type,
+			'descriptor': descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

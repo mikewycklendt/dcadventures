@@ -47,7 +47,7 @@ function resistance_requires_check() {
 function resistance() {
 
 	const target = select("resistance_target");
-	const extra = select("resistance_extra");
+	const extra_id = select("resistance_extra");
 	const mod = select("resistance_mod");
 	const rounds = select("resistance_rounds");
 	const circumstance = text("resistance_circ");
@@ -68,19 +68,20 @@ function resistance() {
 	response = fetch('/power/resist/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'mod': self.mod,
-			'rounds': self.rounds,
-			'circumstance': self.circumstance,
-			'resist_check_type': self.resist_check_type,
-			'trait_type': self.trait_type,
-			'trait': self.trait,
-			'descriptor': self.descriptor,
-			'requires_check': self.requires_check,
-			'check_type': self.check_type,
-			'check_trait_type': self.check_trait_type,
-			'check_trait': self.check_trait
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'mod': mod,
+			'rounds': rounds,
+			'circumstance': circumstance,
+			'resist_check_type': resist_check_type,
+			'trait_type': trait_type,
+			'trait': trait,
+			'descriptor': descriptor,
+			'requires_check': requires_check,
+			'check_type': check_type,
+			'check_trait_type': check_trait_type,
+			'check_trait': check_trait
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

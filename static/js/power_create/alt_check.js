@@ -23,7 +23,7 @@ function check_trait_type() {
 
 function check_submit() {
 
-	const extra = select("check_extra");
+	const extra_id = select("check_extra");
 	const check_type = select("check_check_type");
 	const mod = select("check_mod");
 	const circumstance = text("check_circ");
@@ -40,14 +40,14 @@ function check_submit() {
 	response = fetch('/power/alt_check/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'check_type': self.check_type,
-			'mod': self.mod,
-			'circumstance': self.circumstance,
-			'when': self.when,
-			'trait_type': self.trait_type,
-			'trait': self.trait
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'check_type': check_type,
+			'mod': mod,
+			'circumstance': circumstance,
+			'when': when,
+			'trait_type': trait_type,
+			'trait': trait
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

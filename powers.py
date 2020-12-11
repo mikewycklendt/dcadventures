@@ -1202,688 +1202,943 @@ def delete_powerdes(power_id):
 @powers.route('/power/alt_check/create', methods=['POST'])
 def power_post_alt_check():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	check_type = request.get_json()
-	mod = request.get_json()
-	circumstance = request.get_json()
-	when = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	check_type = request.get_json()['check_type']
+	mod = request.get_json()['mod']
+	circumstance = request.get_json()['circumstance']
+	when = request.get_json()['when']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/change_action/create', methods=['POST'])
 def power_post_change_action():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	action = request.get_json()
-	mod = request.get_json()
-	objects = request.get_json()
-	circumstance = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	action = request.get_json()['action']
+	mod = request.get_json()['mod']
+	objects = request.get_json()['objects']
+	circumstance = request.get_json()['circumstance']
+
+
+
+
+
+
+
+
 
 @powers.route('/power/character/create', methods=['POST'])
 def power_post_character():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	value = request.get_json()
-	increase = request.get_json()
-	limited = request.get_json()
-	reduced = request.get_json()
-	limbs = request.get_json()
-	carry = request.get_json()
-	sustained = request.get_json()
-	permanent = request.get_json()
-	points = request.get_json()
-	appear = request.get_json()
-	insubstantial = request.get_json()
-	weaken = request.get_json()
-	weaken_type = request.get_json()
-	weaken_trait_type = request.get_json()
-	weaken_trait = request.get_json()
-	weaken_broad = request.get_json()
-	weaken_descriptor = request.get_json()
-	weaken_simultaneous = request.get_json()
-	limited_by = request.get_json()
-	limited_other = request.get_json()
-	limited_emotion = request.get_json()
-	limited_emotion_other = request.get_json()
-	reduced_trait_type = request.get_json()
-	reduced_trait = request.get_json()
-	reduced_value = request.get_json()
-	reduced_full = request.get_json()
-	limbs_continuous = request.get_json()
-	limbs_sustained = request.get_json()
-	limbs_distracting = request.get_json()
-	limbs_projection = request.get_json()
-	carry_capacity = request.get_json()
-	points_value = request.get_json()
-	points_trait_type = request.get_json()
-	points_trait = request.get_json()
-	points_descriptor = request.get_json()
-	appear_target = request.get_json()
-	appear_description = request.get_json()
-	insub_type = request.get_json()
-	insub_description = request.get_json()
-	cost = request.get_json()
-	ranks = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	value = request.get_json()['value']
+	increase = request.get_json()['increase']
+	limited = request.get_json()['limited']
+	reduced = request.get_json()['reduced']
+	limbs = request.get_json()['limbs']
+	carry = request.get_json()['carry']
+	sustained = request.get_json()['sustained']
+	permanent = request.get_json()['permanent']
+	points = request.get_json()['points']
+	appear = request.get_json()['appear']
+	insubstantial = request.get_json()['insubstantial']
+	weaken = request.get_json()['weaken']
+	weaken_type = request.get_json()['weaken_type']
+	weaken_trait_type = request.get_json()['weaken_trait_type']
+	weaken_trait = request.get_json()['weaken_trait']
+	weaken_broad = request.get_json()['weaken_broad']
+	weaken_descriptor = request.get_json()['weaken_descriptor']
+	weaken_simultaneous = request.get_json()['weaken_simultaneous']
+	limited_by = request.get_json()['limited_by']
+	limited_other = request.get_json()['limited_other']
+	limited_emotion = request.get_json()['limited_emotion']
+	limited_emotion_other = request.get_json()['limited_emotion_other']
+	reduced_trait_type = request.get_json()['reduced_trait_type']
+	reduced_trait = request.get_json()['reduced_trait']
+	reduced_value = request.get_json()['reduced_value']
+	reduced_full = request.get_json()['reduced_full']
+	limbs_continuous = request.get_json()['limbs_continuous']
+	limbs_sustained = request.get_json()['limbs_sustained']
+	limbs_distracting = request.get_json()['limbs_distracting']
+	limbs_projection = request.get_json()['limbs_projection']
+	carry_capacity = request.get_json()['carry_capacity']
+	points_value = request.get_json()['points_value']
+	points_trait_type = request.get_json()['points_trait_type']
+	points_trait = request.get_json()['points_trait']
+	points_descriptor = request.get_json()['points_descriptor']
+	appear_target = request.get_json()['appear_target']
+	appear_description = request.get_json()['appear_description']
+	insub_type = request.get_json()['insub_type']
+	insub_description = request.get_json()['insub_description']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/circ/create', methods=['POST'])
 def power_post_circ():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	target = request.get_json()
-	mod = request.get_json()
-	rounds = request.get_json()
-	description = request.get_json()
-	circ_type = request.get_json()
-	circ_range = request.get_json()
-	check_who = request.get_json()
-	check_trait_type = request.get_json()
-	check_trait = request.get_json()
-	null_type = request.get_json()
-	null_condition = request.get_json()
-	null_descriptor = request.get_json()
-	null_trait_type = request.get_json()
-	null_trait = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	mod = request.get_json()['mod']
+	rounds = request.get_json()['rounds']
+	description = request.get_json()['description']
+	circ_type = request.get_json()['circ_type']
+	circ_range = request.get_json()['circ_range']
+	check_who = request.get_json()['check_who']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	null_type = request.get_json()['null_type']
+	null_condition = request.get_json()['null_condition']
+	null_descriptor = request.get_json()['null_descriptor']
+	null_trait_type = request.get_json()['null_trait_type']
+	null_trait = request.get_json()['null_trait']
+
+
+
+
+
+
+
+
 
 @powers.route('/power/create/create', methods=['POST'])
 def power_post_create():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	solidity = request.get_json()
-	visibility = request.get_json()
-	complexity = request.get_json()
-	volume = request.get_json()
-	toughness = request.get_json()
-	mass = request.get_json()
-	damageable = request.get_json()
-	maintained = request.get_json()
-	repairable = request.get_json()
-	moveable = request.get_json()
-	stationary = request.get_json()
-	trap = request.get_json()
-	ranged = request.get_json()
-	weapon = request.get_json()
-	support = request.get_json()
-	real = request.get_json()
-	cover = request.get_json()
-	conceal = request.get_json()
-	incoming = request.get_json()
-	outgoing = request.get_json()
-	transform = request.get_json()
-	transform_type = request.get_json()
-	transform_start_mass = request.get_json()
-	transfom_mass = request.get_json()
-	transform_start_descriptor = request.get_json()
-	transform_end_descriptor = request.get_json()
-	move_player = request.get_json()
-	move_player_trait = request.get_json()
-	move_opponent_check = request.get_json()
-	move_opponent_ability = request.get_json()
-	move_opponent_rank = request.get_json()
-	trap_type = request.get_json()
-	trap_dc = request.get_json()
-	trap_trait_type = request.get_json()
-	trap_trait = request.get_json()
-	trap_resist_check = request.get_json()
-	trap_resist_trait = request.get_json()
-	trap_resist_dc = request.get_json()
-	trap_escape = request.get_json()
-	ranged_type = request.get_json()
-	ranged_dc = request.get_json()
-	ranged_trait_type = request.get_json()
-	ranged_trait = request.get_json()
-	ranged_damage_type = request.get_json()
-	ranged_damage_value = request.get_json()
-	weapon_trait_type = request.get_json()
-	weapon_trait = request.get_json()
-	weapon_mod = request.get_json()
-	weapon_damage_type = request.get_json()
-	weapon_damage = request.get_json()
-	support_strength = request.get_json()
-	support_strengthen = request.get_json()
-	support_action = request.get_json()
-	support_action_rounds = request.get_json()
-	support_effort = request.get_json()
-	support_effort_rounds = request.get_json()
-	cost = request.get_json()
-	ranks = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	solidity = request.get_json()['solidity']
+	visibility = request.get_json()['visibility']
+	complexity = request.get_json()['complexity']
+	volume = request.get_json()['volume']
+	toughness = request.get_json()['toughness']
+	mass = request.get_json()['mass']
+	damageable = request.get_json()['damageable']
+	maintained = request.get_json()['maintained']
+	repairable = request.get_json()['repairable']
+	moveable = request.get_json()['moveable']
+	stationary = request.get_json()['stationary']
+	trap = request.get_json()['trap']
+	ranged = request.get_json()['ranged']
+	weapon = request.get_json()['weapon']
+	support = request.get_json()['support']
+	real = request.get_json()['real']
+	cover = request.get_json()['cover']
+	conceal = request.get_json()['conceal']
+	incoming = request.get_json()['incoming']
+	outgoing = request.get_json()['outgoing']
+	transform = request.get_json()['transform']
+	transform_type = request.get_json()['transform_type']
+	transform_start_mass = request.get_json()['transform_start_mass']
+	transfom_mass = request.get_json()['transfom_mass']
+	transform_start_descriptor = request.get_json()['transform_start_descriptor']
+	transform_end_descriptor = request.get_json()['transform_end_descriptor']
+	move_player = request.get_json()['move_player']
+	move_player_trait = request.get_json()['move_player_trait']
+	move_opponent_check = request.get_json()['move_opponent_check']
+	move_opponent_ability = request.get_json()['move_opponent_ability']
+	move_opponent_rank = request.get_json()['move_opponent_rank']
+	trap_type = request.get_json()['trap_type']
+	trap_dc = request.get_json()['trap_dc']
+	trap_trait_type = request.get_json()['trap_trait_type']
+	trap_trait = request.get_json()['trap_trait']
+	trap_resist_check = request.get_json()['trap_resist_check']
+	trap_resist_trait = request.get_json()['trap_resist_trait']
+	trap_resist_dc = request.get_json()['trap_resist_dc']
+	trap_escape = request.get_json()['trap_escape']
+	ranged_type = request.get_json()['ranged_type']
+	ranged_dc = request.get_json()['ranged_dc']
+	ranged_trait_type = request.get_json()['ranged_trait_type']
+	ranged_trait = request.get_json()['ranged_trait']
+	ranged_damage_type = request.get_json()['ranged_damage_type']
+	ranged_damage_value = request.get_json()['ranged_damage_value']
+	weapon_trait_type = request.get_json()['weapon_trait_type']
+	weapon_trait = request.get_json()['weapon_trait']
+	weapon_mod = request.get_json()['weapon_mod']
+	weapon_damage_type = request.get_json()['weapon_damage_type']
+	weapon_damage = request.get_json()['weapon_damage']
+	support_strength = request.get_json()['support_strength']
+	support_strengthen = request.get_json()['support_strengthen']
+	support_action = request.get_json()['support_action']
+	support_action_rounds = request.get_json()['support_action_rounds']
+	support_effort = request.get_json()['support_effort']
+	support_effort_rounds = request.get_json()['support_effort_rounds']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 @powers.route('/power/damage/create', methods=['POST'])
 def power_post_damage():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	mod = request.get_json()
-	strength = request.get_json()
-	damage_type = request.get_json()
-	descriptor = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	strength = request.get_json()['strength']
+	damage_type = request.get_json()['damage_type']
+	descriptor = request.get_json()['descriptor']
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/dc_table/create', methods=['POST'])
 def power_post_dc_table():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	target = request.get_json()
-	dc = request.get_json()
-	description = request.get_json()
-	value = request.get_json()
-	math_vqlue = request.get_json()
-	math = request.get_json()
-	math_trait_type = request.get_json()
-	math_trait = request.get_json()
-	descriptor_check = request.get_json()
-	condition = request.get_json()
-	keyword_check = request.get_json()
-	check_type = request.get_json()
-	descriptor = request.get_json()
-	descriptor_possess = request.get_json()
-	condition1 = request.get_json()
-	condition2 = request.get_json()
-	keyword = request.get_json()
-	check_trait_type = request.get_json()
-	check_trait = request.get_json()
-	check_mod = request.get_json()
-	levels = request.get_json()
-	level = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	dc = request.get_json()['dc']
+	description = request.get_json()['description']
+	value = request.get_json()['value']
+	math_value = request.get_json()['math_value']
+	math = request.get_json()['math']
+	math_trait_type = request.get_json()['math_trait_type']
+	math_trait = request.get_json()['math_trait']
+	descriptor_check = request.get_json()['descriptor_check']
+	condition = request.get_json()['condition']
+	keyword_check = request.get_json()['keyword_check']
+	check_type = request.get_json()['check_type']
+	descriptor = request.get_json()['descriptor']
+	descriptor_possess = request.get_json()['descriptor_possess']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	keyword = request.get_json()['keyword']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	check_mod = request.get_json()['check_mod']
+	levels = request.get_json()['levels']
+	level = request.get_json()['level']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	defense = request.get_json()
-	use = request.get_json()
-	mod = request.get_json()
-	roll = request.get_json()
-	outcome = request.get_json()
-	dodge = request.get_json()
-	fortitude = request.get_json()
-	parry = request.get_json()
-	toughness = request.get_json()
-	will = request.get_json()
-	resist_area = request.get_json()
-	resist_perception = request.get_json()
-	reflect = request.get_json()
-	immunity = request.get_json()
-	reflect_action = request.get_json()
-	reflect_check = request.get_json()
-	reflect_dc = request.get_json()
-	reflect_opposed_trait_type = request.get_json()
-	reflect_opposed_trait = request.get_json()
-	reflect_resist_trait_type = request.get_json()
-	reflect_resist_trait = request.get_json()
-	immunity_type = request.get_json()
-	immunity_trait_type = request.get_json()
-	immunity_trait = request.get_json()
-	immunity_descriptor = request.get_json()
-	immunity_damage = request.get_json()
-	immunity_rule = request.get_json()
-	cover_check = request.get_json()
-	cover_type = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	defense = request.get_json()['defense']
+	use = request.get_json()['use']
+	mod = request.get_json()['mod']
+	roll = request.get_json()['roll']
+	outcome = request.get_json()['outcome']
+	dodge = request.get_json()['dodge']
+	fortitude = request.get_json()['fortitude']
+	parry = request.get_json()['parry']
+	toughness = request.get_json()['toughness']
+	will = request.get_json()['will']
+	resist_area = request.get_json()['resist_area']
+	resist_perception = request.get_json()['resist_perception']
+	reflect = request.get_json()['reflect']
+	immunity = request.get_json()['immunity']
+	reflect_action = request.get_json()['reflect_action']
+	reflect_check = request.get_json()['reflect_check']
+	reflect_dc = request.get_json()['reflect_dc']
+	reflect_opposed_trait_type = request.get_json()['reflect_opposed_trait_type']
+	reflect_opposed_trait = request.get_json()['reflect_opposed_trait']
+	reflect_resist_trait_type = request.get_json()['reflect_resist_trait_type']
+	reflect_resist_trait = request.get_json()['reflect_resist_trait']
+	immunity_type = request.get_json()['immunity_type']
+	immunity_trait_type = request.get_json()['immunity_trait_type']
+	immunity_trait = request.get_json()['immunity_trait']
+	immunity_descriptor = request.get_json()['immunity_descriptor']
+	immunity_damage = request.get_json()['immunity_damage']
+	immunity_rule = request.get_json()['immunity_rule']
+	cover_check = request.get_json()['cover_check']
+	cover_type = request.get_json()['cover_type']
+
+
+
+
+
+
 	
 @powers.route('/power/degree_mod/create', methods=['POST'])
 def power_post_degree_mod():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	target = request.get_json()
-	value = request.get_json()
-	deg_type = request.get_json()
-	circ_value = request.get_json()
-	circ_turns = request.get_json()
-	circ_trait_type = request.get_json()
-	circ_trait = request.get_json()
-	measure_type = request.get_json()
-	measure_val1 = request.get_json()
-	measure_math = request.get_json()
-	measure_trait_type = request.get_json()
-	measure_trait = request.get_json()
-	measure_value = request.get_json()
-	measure_rank = request.get_json()
-	deg_condition_type = request.get_json()
-	condition_damage_value = request.get_json()
-	condition_damage = request.get_json()
-	condition1 = request.get_json()
-	condition2 = request.get_json()
-	keyword = request.get_json()
-	nullify = request.get_json()
-	cumulative = request.get_json()
-	linked = request.get_json()
-	level = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	value = request.get_json()['value']
+	deg_type = request.get_json()['deg_type']
+	circ_value = request.get_json()['circ_value']
+	circ_turns = request.get_json()['circ_turns']
+	circ_trait_type = request.get_json()['circ_trait_type']
+	circ_trait = request.get_json()['circ_trait']
+	measure_type = request.get_json()['measure_type']
+	measure_val1 = request.get_json()['measure_val1']
+	measure_math = request.get_json()['measure_math']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_value = request.get_json()['measure_value']
+	measure_rank = request.get_json()['measure_rank']
+	deg_condition_type = request.get_json()['deg_condition_type']
+	condition_damage_value = request.get_json()['condition_damage_value']
+	condition_damage = request.get_json()['condition_damage']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	keyword = request.get_json()['keyword']
+	nullify = request.get_json()['nullify']
+	cumulative = request.get_json()['cumulative']
+	linked = request.get_json()['linked']
+	level = request.get_json()['level']
+
+
+
+
+
+
+
 	
 @powers.route('/power/degree/create', methods=['POST'])
 def power_post_degree():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	degree_type = request.get_json()
-	degree = request.get_json()
-	keyword = request.get_json()
-	desscription = request.get_json()
-	extra_effort = request.get_json()
-	cumulative = request.get_json()
-	target = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	degree_type = request.get_json()['degree_type']
+	degree = request.get_json()['degree']
+	keyword = request.get_json()['keyword']
+	desscription = request.get_json()['desscription']
+	extra_effort = request.get_json()['extra_effort']
+	cumulative = request.get_json()['cumulative']
+	target = request.get_json()['target']
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/environment/create', methods=['POST'])
 def power_post_environment():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	radius = request.get_json()
-	distance = request.get_json()
-	rank = request.get_json()
-	condition_check = request.get_json()
-	impede = request.get_json()
-	conceal = request.get_json()
-	visibility = request.get_json()
-	selective = request.get_json()
-	immunity = request.get_json()
-	immunity_type = request.get_json()
-	temp_type = request.get_json()
-	immunity_extremity = request.get_json()
-	immunity_environment = request.get_json()
-	no_penalty = request.get_json()
-	no_circumstance = request.get_json()
-	immunity_other = request.get_json()
-	condition_temp_type = request.get_json()
-	temp_extremity = request.get_json()
-	move_nature = request.get_json()
-	move_speed = request.get_json()
-	move_cost_circ = request.get_json()
-	move_other = request.get_json()
-	conceal_type = request.get_json()
-	visibility_trait_type = request.get_json()
-	visibility_trait = request.get_json()
-	visibility_mod = request.get_json()
-	cost = request.get_json()
-	ranks = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	radius = request.get_json()['radius']
+	distance = request.get_json()['distance']
+	rank = request.get_json()['rank']
+	condition_check = request.get_json()['condition_check']
+	impede = request.get_json()['impede']
+	conceal = request.get_json()['conceal']
+	visibility = request.get_json()['visibility']
+	selective = request.get_json()['selective']
+	immunity = request.get_json()['immunity']
+	immunity_type = request.get_json()['immunity_type']
+	temp_type = request.get_json()['temp_type']
+	immunity_extremity = request.get_json()['immunity_extremity']
+	immunity_environment = request.get_json()['immunity_environment']
+	no_penalty = request.get_json()['no_penalty']
+	no_circumstance = request.get_json()['no_circumstance']
+	immunity_other = request.get_json()['immunity_other']
+	condition_temp_type = request.get_json()['condition_temp_type']
+	temp_extremity = request.get_json()['temp_extremity']
+	move_nature = request.get_json()['move_nature']
+	move_speed = request.get_json()['move_speed']
+	move_cost_circ = request.get_json()['move_cost_circ']
+	move_other = request.get_json()['move_other']
+	conceal_type = request.get_json()['conceal_type']
+	visibility_trait_type = request.get_json()['visibility_trait_type']
+	visibility_trait = request.get_json()['visibility_trait']
+	visibility_mod = request.get_json()['visibility_mod']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
+
+
+
+
+
+
+
+
 
 @powers.route('/power/levels/create', methods=['POST'])
 def power_post_levels():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	level_type = request.get_json()
-	level = request.get_json()
-	level_effect = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	level_effect = request.get_json()['level_effect']
+
+
+
+
+
+
 
 @powers.route('/power/minion/create', methods=['POST'])
 def power_post_minion():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	points = request.get_json()
-	condition = request.get_json()
-	player_condition = request.get_json()
-	link = request.get_json()
-	variable_type = request.get_json()
-	multiple = request.get_json()
-	attitude = request.get_json()
-	resitable = request.get_json()
-	heroic = request.get_json()
-	sacrifice = request.get_json()
-	sacrifice_cost = request.get_json()
-	attitude_type = request.get_json()
-	attitude_trait_type = request.get_json()
-	attitude_trait = request.get_json()
-	resitable_check = request.get_json()
-	resitable_dc = request.get_json()
-	multiple_value = request.get_json()
-	horde = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	points = request.get_json()['points']
+	condition = request.get_json()['condition']
+	player_condition = request.get_json()['player_condition']
+	link = request.get_json()['link']
+	variable_type = request.get_json()['variable_type']
+	multiple = request.get_json()['multiple']
+	attitude = request.get_json()['attitude']
+	resitable = request.get_json()['resitable']
+	heroic = request.get_json()['heroic']
+	sacrifice = request.get_json()['sacrifice']
+	sacrifice_cost = request.get_json()['sacrifice_cost']
+	attitude_type = request.get_json()['attitude_type']
+	attitude_trait_type = request.get_json()['attitude_trait_type']
+	attitude_trait = request.get_json()['attitude_trait']
+	resitable_check = request.get_json()['resitable_check']
+	resitable_dc = request.get_json()['resitable_dc']
+	multiple_value = request.get_json()['multiple_value']
+	horde = request.get_json()['horde']
+
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/mod/create', methods=['POST'])
 def power_post_mod():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	affects_objects = request.get_json()
-	area = request.get_json()
-	persistent = request.get_json()
-	incurable = request.get_json()
-	selective = request.get_json()
-	limited = request.get_json()
-	innate = request.get_json()
-	others = request.get_json()
-	sustained = request.get_json()
-	reflect = request.get_json()
-	redirect = request.get_json()
-	half = request.get_json()
-	affects_corp = request.get_json()
-	continuous = request.get_json()
-	vulnerable = request.get_json()
-	precise = request.get_json()
-	progressive = request.get_json()
-	subtle = request.get_json()
-	permanent = request.get_json()
-	points = request.get_json()
-	ranks = request.get_json()
-	action = request.get_json()
-	side_effect = request.get_json()
-	concentration = request.get_json()
-	simultaneous = request.get_json()
-	effortless = request.get_json()
-	noticeable = request.get_json()
-	unreliable = request.get_json()
-	objects_alone = request.get_json()
-	objects_character = request.get_json()
-	effortless_degree = request.get_json()
-	effortless_retries = request.get_json()
-	simultaneous_descriptor = request.get_json()
-	area_mod = request.get_json()
-	area_range = request.get_json()
-	area_per_rank = request.get_json()
-	area_descriptor = request.get_json()
-	limited_type = request.get_json()
-	limited_mod = request.get_json()
-	limited_level = request.get_json()
-	limited_source = request.get_json()
-	limited_task_type = request.get_json()
-	limited_task = request.get_json()
-	limited_trait_type = request.get_json()
-	limited_trait = request.get_json()
-	limited_description = request.get_json()
-	limited_subjects = request.get_json()
-	limited_extra = request.get_json()
-	limited_language_type = request.get_json()
-	limited_degree = request.get_json()
-	limited_sense = request.get_json()
-	limited_subsense = request.get_json()
-	limited_descriptor = request.get_json()
-	limited_range = request.get_json()
-	side_effect_type = request.get_json()
-	side_level = request.get_json()
-	side_other = request.get_json()
-	reflect_check = request.get_json()
-	reflect_trait_type = request.get_json()
-	reflect_trait = request.get_json()
-	reflect_descriptor = request.get_json()
-	subtle_opponent_trait_type = request.get_json()
-	subtle_opponent_trait = request.get_json()
-	subtle_dc = request.get_json()
-	subtle_null_trait_type = request.get_json()
-	subtle_null_trait = request.get_json()
-	others_carry = request.get_json()
-	others_touch = request.get_json()
-	others_touch_continuous = request.get_json()
-	ranks_trait_type = request.get_json()
-	ranks_trait = request.get_json()
-	ranks_ranks = request.get_json()
-	ranks_mod = request.get_json()
-	points_type = request.get_json()
-	points_reroll_target = request.get_json()
-	points_reroll_cost = request.get_json()
-	points_rerolls = request.get_json()
-	points_reroll_result = request.get_json()
-	ranks_cost = request.get_json()
-	cost = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	affects_objects = request.get_json()['affects_objects']
+	area = request.get_json()['area']
+	persistent = request.get_json()['persistent']
+	incurable = request.get_json()['incurable']
+	selective = request.get_json()['selective']
+	limited = request.get_json()['limited']
+	innate = request.get_json()['innate']
+	others = request.get_json()['others']
+	sustained = request.get_json()['sustained']
+	reflect = request.get_json()['reflect']
+	redirect = request.get_json()['redirect']
+	half = request.get_json()['half']
+	affects_corp = request.get_json()['affects_corp']
+	continuous = request.get_json()['continuous']
+	vulnerable = request.get_json()['vulnerable']
+	precise = request.get_json()['precise']
+	progressive = request.get_json()['progressive']
+	subtle = request.get_json()['subtle']
+	permanent = request.get_json()['permanent']
+	points = request.get_json()['points']
+	ranks = request.get_json()['ranks']
+	action = request.get_json()['action']
+	side_effect = request.get_json()['side_effect']
+	concentration = request.get_json()['concentration']
+	simultaneous = request.get_json()['simultaneous']
+	effortless = request.get_json()['effortless']
+	noticeable = request.get_json()['noticeable']
+	unreliable = request.get_json()['unreliable']
+	objects_alone = request.get_json()['objects_alone']
+	objects_character = request.get_json()['objects_character']
+	effortless_degree = request.get_json()['effortless_degree']
+	effortless_retries = request.get_json()['effortless_retries']
+	simultaneous_descriptor = request.get_json()['simultaneous_descriptor']
+	area_mod = request.get_json()['area_mod']
+	area_range = request.get_json()['area_range']
+	area_per_rank = request.get_json()['area_per_rank']
+	area_descriptor = request.get_json()['area_descriptor']
+	limited_type = request.get_json()['limited_type']
+	limited_mod = request.get_json()['limited_mod']
+	limited_level = request.get_json()['limited_level']
+	limited_source = request.get_json()['limited_source']
+	limited_task_type = request.get_json()['limited_task_type']
+	limited_task = request.get_json()['limited_task']
+	limited_trait_type = request.get_json()['limited_trait_type']
+	limited_trait = request.get_json()['limited_trait']
+	limited_description = request.get_json()['limited_description']
+	limited_subjects = request.get_json()['limited_subjects']
+	limited_extra = request.get_json()['limited_extra']
+	limited_language_type = request.get_json()['limited_language_type']
+	limited_degree = request.get_json()['limited_degree']
+	limited_sense = request.get_json()['limited_sense']
+	limited_subsense = request.get_json()['limited_subsense']
+	limited_descriptor = request.get_json()['limited_descriptor']
+	limited_range = request.get_json()['limited_range']
+	side_effect_type = request.get_json()['side_effect_type']
+	side_level = request.get_json()['side_level']
+	side_other = request.get_json()['side_other']
+	reflect_check = request.get_json()['reflect_check']
+	reflect_trait_type = request.get_json()['reflect_trait_type']
+	reflect_trait = request.get_json()['reflect_trait']
+	reflect_descriptor = request.get_json()['reflect_descriptor']
+	subtle_opponent_trait_type = request.get_json()['subtle_opponent_trait_type']
+	subtle_opponent_trait = request.get_json()['subtle_opponent_trait']
+	subtle_dc = request.get_json()['subtle_dc']
+	subtle_null_trait_type = request.get_json()['subtle_null_trait_type']
+	subtle_null_trait = request.get_json()['subtle_null_trait']
+	others_carry = request.get_json()['others_carry']
+	others_touch = request.get_json()['others_touch']
+	others_touch_continuous = request.get_json()['others_touch_continuous']
+	ranks_trait_type = request.get_json()['ranks_trait_type']
+	ranks_trait = request.get_json()['ranks_trait']
+	ranks_ranks = request.get_json()['ranks_ranks']
+	ranks_mod = request.get_json()['ranks_mod']
+	points_type = request.get_json()['points_type']
+	points_reroll_target = request.get_json()['points_reroll_target']
+	points_reroll_cost = request.get_json()['points_reroll_cost']
+	points_rerolls = request.get_json()['points_rerolls']
+	points_reroll_result = request.get_json()['points_reroll_result']
+	ranks_cost = request.get_json()['ranks_cost']
+	cost = request.get_json()['cost']
+
+
+
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/move/create', methods=['POST'])
 def power_post_move():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	rank = request.get_json()
-	math = request.get_json()
-	mod = request.get_json()
-	per_rank = request.get_json()
-	flight = request.get_json()
-	aquatic = request.get_json()
-	ground = request.get_json()
-	condition = request.get_json()
-	direction = request.get_json()
-	distance_type = request.get_json()
-	distance_value = request.get_json()
-	distance_math_value = request.get_json()
-	distance_math = request.get_json()
-	distance_math_value2 = request.get_json()
-	distance_mod = request.get_json()
-	dc = request.get_json()
-	others = request.get_json()
-	continuous = request.get_json()
-	subtle = request.get_json()
-	concentration = request.get_json()
-	obstacles = request.get_json()
-	objects = request.get_json()
-	permeate = request.get_json()
-	special = request.get_json()
-	prone = request.get_json()
-	check_type = request.get_json()
-	obstacles_check = request.get_json()
-	concealment = request.get_json()
-	extended = request.get_json()
-	mass = request.get_json()
-	mass_value = request.get_json()
-	extended_actions = request.get_json()
-	acquatic_type = request.get_json()
-	concealment_sense = request.get_json()
-	concealment_trait_type = request.get_json()
-	concealment_trait = request.get_json()
-	permeate_type = request.get_json()
-	permeate_speed = request.get_json()
-	permeate_cover = request.get_json()
-	special_type = request.get_json()
-	teleport_type = request.get_json()
-	teleport_change = request.get_json()
-	teleport_portal = request.get_json()
-	teleport_obstacles = request.get_json()
-	dimension_type = request.get_json()
-	dimension_mass_rank = request.get_json()
-	dimension_descriptor = request.get_json()
-	special_space = request.get_json()
-	special_time = request.get_json()
-	special_time_carry = request.get_json()
-	ground_type = request.get_json()
-	ground_permanence = request.get_json()
-	ground_time = request.get_json()
-	ground_units = request.get_json()
-	ground_ranged = request.get_json()
-	subtle_trait_type = request.get_json()
-	subtle_trait = request.get_json()
-	subtle_mod = request.get_json()
-	flight_resist = request.get_json()
-	flight_equip = request.get_json()
-	flight_conditions = request.get_json()
-	objects_check = request.get_json()
-	objects_attack = request.get_json()
-	objects_skill_type = request.get_json()
-	objects_skill = request.get_json()
-	objects_direction = request.get_json()
-	objects_damage = request.get_json()
-	damage_type = request.get_json()
-	check_trait_type = request.get_json()
-	check_trait = request.get_json()
-	check_free = request.get_json()
-	ranks = request.get_json()
-	cost = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	rank = request.get_json()['rank']
+	math = request.get_json()['math']
+	mod = request.get_json()['mod']
+	per_rank = request.get_json()['per_rank']
+	flight = request.get_json()['flight']
+	aquatic = request.get_json()['aquatic']
+	ground = request.get_json()['ground']
+	condition = request.get_json()['condition']
+	direction = request.get_json()['direction']
+	distance_type = request.get_json()['distance_type']
+	distance_value = request.get_json()['distance_value']
+	distance_math_value = request.get_json()['distance_math_value']
+	distance_math = request.get_json()['distance_math']
+	distance_math_value2 = request.get_json()['distance_math_value2']
+	distance_mod = request.get_json()['distance_mod']
+	dc = request.get_json()['dc']
+	others = request.get_json()['others']
+	continuous = request.get_json()['continuous']
+	subtle = request.get_json()['subtle']
+	concentration = request.get_json()['concentration']
+	obstacles = request.get_json()['obstacles']
+	objects = request.get_json()['objects']
+	permeate = request.get_json()['permeate']
+	special = request.get_json()['special']
+	prone = request.get_json()['prone']
+	check_type = request.get_json()['check_type']
+	obstacles_check = request.get_json()['obstacles_check']
+	concealment = request.get_json()['concealment']
+	extended = request.get_json()['extended']
+	mass = request.get_json()['mass']
+	mass_value = request.get_json()['mass_value']
+	extended_actions = request.get_json()['extended_actions']
+	acquatic_type = request.get_json()['acquatic_type']
+	concealment_sense = request.get_json()['concealment_sense']
+	concealment_trait_type = request.get_json()['concealment_trait_type']
+	concealment_trait = request.get_json()['concealment_trait']
+	permeate_type = request.get_json()['permeate_type']
+	permeate_speed = request.get_json()['permeate_speed']
+	permeate_cover = request.get_json()['permeate_cover']
+	special_type = request.get_json()['special_type']
+	teleport_type = request.get_json()['teleport_type']
+	teleport_change = request.get_json()['teleport_change']
+	teleport_portal = request.get_json()['teleport_portal']
+	teleport_obstacles = request.get_json()['teleport_obstacles']
+	dimension_type = request.get_json()['dimension_type']
+	dimension_mass_rank = request.get_json()['dimension_mass_rank']
+	dimension_descriptor = request.get_json()['dimension_descriptor']
+	special_space = request.get_json()['special_space']
+	special_time = request.get_json()['special_time']
+	special_time_carry = request.get_json()['special_time_carry']
+	ground_type = request.get_json()['ground_type']
+	ground_permanence = request.get_json()['ground_permanence']
+	ground_time = request.get_json()['ground_time']
+	ground_units = request.get_json()['ground_units']
+	ground_ranged = request.get_json()['ground_ranged']
+	subtle_trait_type = request.get_json()['subtle_trait_type']
+	subtle_trait = request.get_json()['subtle_trait']
+	subtle_mod = request.get_json()['subtle_mod']
+	flight_resist = request.get_json()['flight_resist']
+	flight_equip = request.get_json()['flight_equip']
+	flight_conditions = request.get_json()['flight_conditions']
+	objects_check = request.get_json()['objects_check']
+	objects_attack = request.get_json()['objects_attack']
+	objects_skill_type = request.get_json()['objects_skill_type']
+	objects_skill = request.get_json()['objects_skill']
+	objects_direction = request.get_json()['objects_direction']
+	objects_damage = request.get_json()['objects_damage']
+	damage_type = request.get_json()['damage_type']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	check_free = request.get_json()['check_free']
+	ranks = request.get_json()['ranks']
+	cost = request.get_json()['cost']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/opposed/create', methods=['POST'])
 def power_post_opposed():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	mod = request.get_json()
-	opponent_trait_type = request.get_json()
-	opponent_trait = request.get_json()
-	opponent_mod = request.get_json()
-	player_check = request.get_json()
-	opponent_check = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	opponent_trait_type = request.get_json()['opponent_trait_type']
+	opponent_trait = request.get_json()['opponent_trait']
+	opponent_mod = request.get_json()['opponent_mod']
+	player_check = request.get_json()['player_check']
+	opponent_check = request.get_json()['opponent_check']
+
+
+
+
+
+
+
+
+
+
+
 
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	range_type = request.get_json()
-	flat_value = request.get_json()
-	flat_units = request.get_json()
-	flat_rank = request.get_json()
-	flat_rank_value = request.get_json()
-	flat_rank_units = request.get_json()
-	flat_rank_rank = request.get_json()
-	flat_rank_distance = request.get_json()
-	flat_rank_distance_rank = request.get_json()
-	units_rank_start_value = request.get_json()
-	units_rank_value = request.get_json()
-	units_rank_units = request.get_json()
-	units_rank_rank = request.get_json()
-	rank_distance_start = request.get_json()
-	rank_distance = request.get_json()
-	rank_effect_rank = request.get_json()
-	effect_mod_math = request.get_json()
-	effect_mod = request.get_json()
-	check_trait_type = request.get_json()
-	check_trait = request.get_json()
-	check_math = request.get_json()
-	check_mod = request.get_json()
-	trait_trait_type = request.get_json()
-	trait_trait = request.get_json()
-	trait_math = request.get_json()
-	trait_mod = request.get_json()
-	distance_mod_rank = request.get_json()
-	distance_mod_math = request.get_json()
-	distance_mod_trait_type = request.get_json()
-	distance_mod_trait = request.get_json()
-	dc = request.get_json()
-	dc_value = request.get_json()
-	dc_trait_type = request.get_json()
-	dc_trait = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	range_type = request.get_json()['range_type']
+	flat_value = request.get_json()['flat_value']
+	flat_units = request.get_json()['flat_units']
+	flat_rank = request.get_json()['flat_rank']
+	flat_rank_value = request.get_json()['flat_rank_value']
+	flat_rank_units = request.get_json()['flat_rank_units']
+	flat_rank_rank = request.get_json()['flat_rank_rank']
+	flat_rank_distance = request.get_json()['flat_rank_distance']
+	flat_rank_distance_rank = request.get_json()['flat_rank_distance_rank']
+	units_rank_start_value = request.get_json()['units_rank_start_value']
+	units_rank_value = request.get_json()['units_rank_value']
+	units_rank_units = request.get_json()['units_rank_units']
+	units_rank_rank = request.get_json()['units_rank_rank']
+	rank_distance_start = request.get_json()['rank_distance_start']
+	rank_distance = request.get_json()['rank_distance']
+	rank_effect_rank = request.get_json()['rank_effect_rank']
+	effect_mod_math = request.get_json()['effect_mod_math']
+	effect_mod = request.get_json()['effect_mod']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	check_math = request.get_json()['check_math']
+	check_mod = request.get_json()['check_mod']
+	trait_trait_type = request.get_json()['trait_trait_type']
+	trait_trait = request.get_json()['trait_trait']
+	trait_math = request.get_json()['trait_math']
+	trait_mod = request.get_json()['trait_mod']
+	distance_mod_rank = request.get_json()['distance_mod_rank']
+	distance_mod_math = request.get_json()['distance_mod_math']
+	distance_mod_trait_type = request.get_json()['distance_mod_trait_type']
+	distance_mod_trait = request.get_json()['distance_mod_trait']
+	dc = request.get_json()['dc']
+	dc_value = request.get_json()['dc_value']
+	dc_trait_type = request.get_json()['dc_trait_type']
+	dc_trait = request.get_json()['dc_trait']
+
+
+
+
+
+
+
 	
 @powers.route('/power/resist/create', methods=['POST'])
 def power_post_resist():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	mod = request.get_json()
-	rounds = request.get_json()
-	circumstance = request.get_json()
-	resist_check_type = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	descriptor = request.get_json()
-	requires_check = request.get_json()
-	check_type = request.get_json()
-	check_trait_type = request.get_json()
-	check_trait = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	mod = request.get_json()['mod']
+	rounds = request.get_json()['rounds']
+	circumstance = request.get_json()['circumstance']
+	resist_check_type = request.get_json()['resist_check_type']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	descriptor = request.get_json()['descriptor']
+	requires_check = request.get_json()['requires_check']
+	check_type = request.get_json()['check_type']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/resisted_by/create', methods=['POST'])
 def power_post_resisted_by():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	trait_type = request.get_json()
-	dc = request.get_json()
-	mod = request.get_json()
-	description = request.get_json()
-	trait = request.get_json()
-	effect = request.get_json()
-	level = request.get_json()
-	degree = request.get_json()
-	descriptor = request.get_json()
-	weaken_max = request.get_json()
-	weaken_restored = request.get_json()
-	condition1 = request.get_json()
-	condition2 = request.get_json()
-	damage = request.get_json()
-	strength = request.get_json()
-	nullify_descriptor = request.get_json()
-	nullify_alternate = request.get_json()
-	extra_effort = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	trait_type = request.get_json()['trait_type']
+	dc = request.get_json()['dc']
+	mod = request.get_json()['mod']
+	description = request.get_json()['description']
+	trait = request.get_json()['trait']
+	effect = request.get_json()['effect']
+	level = request.get_json()['level']
+	degree = request.get_json()['degree']
+	descriptor = request.get_json()['descriptor']
+	weaken_max = request.get_json()['weaken_max']
+	weaken_restored = request.get_json()['weaken_restored']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	damage = request.get_json()['damage']
+	strength = request.get_json()['strength']
+	nullify_descriptor = request.get_json()['nullify_descriptor']
+	nullify_alternate = request.get_json()['nullify_alternate']
+	extra_effort = request.get_json()['extra_effort']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/reverse_effect/create', methods=['POST'])
 def power_post_reverse_effect():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	target = request.get_json()
-	degree = request.get_json()
-	when = request.get_json()
-	check_check = request.get_json()
-	time_check = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	value_type = request.get_json()
-	value_dc = request.get_json()
-	math_dc = request.get_json()
-	math = request.get_json()
-	time_value = request.get_json()
-	time_unit = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	degree = request.get_json()['degree']
+	when = request.get_json()['when']
+	check_check = request.get_json()['check_check']
+	time_check = request.get_json()['time_check']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	value_type = request.get_json()['value_type']
+	value_dc = request.get_json()['value_dc']
+	math_dc = request.get_json()['math_dc']
+	math = request.get_json()['math']
+	time_value = request.get_json()['time_value']
+	time_unit = request.get_json()['time_unit']
+
+
+
+
+
+
+
 	
 @powers.route('/power/sense/create', methods=['POST'])
 def power_post_sense():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	target = request.get_json()
-	sense = request.get_json()
-	subsense = request.get_json()
-	sense_cost = request.get_json()
-	subsense_cost = request.get_json()
-	skill = request.get_json()
-	skill_required = request.get_json()
-	sense_type = request.get_json()
-	height_trait_type = request.get_json()
-	height_trait = request.get_json()
-	height_power_required = request.get_json()
-	height_ensense = request.get_json()
-	resist_trait_type = request.get_json()
-	resist_trait = request.get_json()
-	resist_immune = request.get_json()
-	resist_permanent = request.get_json()
-	resist_circ = request.get_json()
-	objects = request.get_json()
-	exclusive = request.get_json()
-	gm = request.get_json()
-	dark = request.get_json()
-	lighting = request.get_json()
-	time = request.get_json()
-	dimensional = request.get_json()
-	radius = request.get_json()
-	accurate = request.get_json()
-	acute = request.get_json()
-	time_set = request.get_json()
-	time_value = request.get_json()
-	time_unit = request.get_json()
-	time_skill = request.get_json()
-	time_bonus = request.get_json()
-	time_factor = request.get_json()
-	distance = request.get_json()
-	distance_dc = request.get_json()
-	distance_mod = request.get_json()
-	distance_value = request.get_json()
-	distance_unit = request.get_json()
-	distance_factor = request.get_json()
-	dimensional_type = request.get_json()
-	ranks = request.get_json()
-	cost = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	sense = request.get_json()['sense']
+	subsense = request.get_json()['subsense']
+	sense_cost = request.get_json()['sense_cost']
+	subsense_cost = request.get_json()['subsense_cost']
+	skill = request.get_json()['skill']
+	skill_required = request.get_json()['skill_required']
+	sense_type = request.get_json()['sense_type']
+	height_trait_type = request.get_json()['height_trait_type']
+	height_trait = request.get_json()['height_trait']
+	height_power_required = request.get_json()['height_power_required']
+	height_ensense = request.get_json()['height_ensense']
+	resist_trait_type = request.get_json()['resist_trait_type']
+	resist_trait = request.get_json()['resist_trait']
+	resist_immune = request.get_json()['resist_immune']
+	resist_permanent = request.get_json()['resist_permanent']
+	resist_circ = request.get_json()['resist_circ']
+	objects = request.get_json()['objects']
+	exclusive = request.get_json()['exclusive']
+	gm = request.get_json()['gm']
+	dark = request.get_json()['dark']
+	lighting = request.get_json()['lighting']
+	time = request.get_json()['time']
+	dimensional = request.get_json()['dimensional']
+	radius = request.get_json()['radius']
+	accurate = request.get_json()['accurate']
+	acute = request.get_json()['acute']
+	time_set = request.get_json()['time_set']
+	time_value = request.get_json()['time_value']
+	time_unit = request.get_json()['time_unit']
+	time_skill = request.get_json()['time_skill']
+	time_bonus = request.get_json()['time_bonus']
+	time_factor = request.get_json()['time_factor']
+	distance = request.get_json()['distance']
+	distance_dc = request.get_json()['distance_dc']
+	distance_mod = request.get_json()['distance_mod']
+	distance_value = request.get_json()['distance_value']
+	distance_unit = request.get_json()['distance_unit']
+	distance_factor = request.get_json()['distance_factor']
+	dimensional_type = request.get_json()['dimensional_type']
+	ranks = request.get_json()['ranks']
+	cost = request.get_json()['cost']
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 @powers.route('/power/time/create', methods=['POST'])
 def power_post_time():
 
-	power_id = request.get_json()
-	extra_id = request.get_json()
-	time_type = request.get_json()
-	value_type = request.get_json()
-	value = request.get_json()
-	units = request.get_json()
-	time_value = request.get_json()
-	math = request.get_json()
-	trait_type = request.get_json()
-	trait = request.get_json()
-	dc = request.get_json()
-	descriptor = request.get_json()
-	check_type = request.get_json()
-	recovery = request.get_json()
-	recovery_penalty = request.get_json()
-	recovery_time = request.get_json()
-	recovery_incurable = request.get_json()
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	time_type = request.get_json()['time_type']
+	value_type = request.get_json()['value_type']
+	value = request.get_json()['value']
+	units = request.get_json()['units']
+	time_value = request.get_json()['time_value']
+	math = request.get_json()['math']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	dc = request.get_json()['dc']
+	descriptor = request.get_json()['descriptor']
+	check_type = request.get_json()['check_type']
+	recovery = request.get_json()['recovery']
+	recovery_penalty = request.get_json()['recovery_penalty']
+	recovery_time = request.get_json()['recovery_time']
+	recovery_incurable = request.get_json()['recovery_incurable']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

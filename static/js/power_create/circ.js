@@ -43,7 +43,7 @@ function circ_null_trait_type() {
 function circ_submit() {
 
 	const target = select("circ_target");
-	const extra = select("circ_extra");
+	const extra_id = select("circ_extra");
 	const mod = select("circ_mod");
 	const rounds = select("circ_rounds");
 	const description = text("circ_des");
@@ -66,22 +66,22 @@ function circ_submit() {
 	response = fetch('/power/circ/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'mod': self.mod,
-			'rounds': self.rounds,
-			'description': self.description,
-			'circ_type': self.circ_type,
-			'circ_range': self.circ_range,
-			'check_who': self.check_who,
-			'check_trait_type': self.check_trait_type,
-			'check_trait': self.check_trait,
-			'null_type': self.null_type,
-			'null_condition': self.null_condition,
-			'null_descriptor': self.null_descriptor,
-			'null_trait_type': self.null_trait_type,
-			'null_trait': self.null_trait
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'mod': mod,
+			'rounds': rounds,
+			'description': description,
+			'circ_type': type,
+			'circ_range': range,
+			'check_who': check_who,
+			'check_trait_type': check_trait_type,
+			'check_trait': check_trait,
+			'null_type': null_type,
+			'null_condition': null_condition,
+			'null_descriptor': null_descriptor,
+			'null_trait_type': null_trait_type,
+			'null_trait': null_trait
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ let bonus_level = true;
 function levels_submit() {
 
 	const level_type = text("level_type");
-	const extra = select("levels_extra");
+	const extra_id = select("levels_extra");
 	const level = text("level");
 	const level_effect = text("level_effect");
 
@@ -33,11 +33,11 @@ function levels_submit() {
 	response = fetch('/power/levels/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'level_type': self.level_type,
-			'level': self.level,
-			'level_effect': self.level_effect
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'level_type': level_type,
+			'level': level,
+			'level_effect': level_effect
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

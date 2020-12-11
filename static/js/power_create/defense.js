@@ -79,7 +79,7 @@ function defense_cover() {
 
 function defense_submit() {
 
-	const extra = select("defense_extra");
+	const extra_id = select("defense_extra");
 	const defense = select("defense_defense");
 	const use = select("defense_use");
 	const mod = select("defense_mod");
@@ -118,37 +118,37 @@ function defense_submit() {
 	response = fetch('/power/defense/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'defense': self.defense,
-			'use': self.use,
-			'mod': self.mod,
-			'roll': self.roll,
-			'outcome': self.outcome,
-			'dodge': self.dodge,
-			'fortitude': self.fortitude,
-			'parry': self.parry,
-			'toughness': self.toughness,
-			'will': self.will,
-			'resist_area': self.resist_area,
-			'resist_perception': self.resist_perception,
-			'reflect': self.reflect,
-			'immunity': self.immunity,
-			'reflect_action': self.reflect_action,
-			'reflect_check': self.reflect_check,
-			'reflect_dc': self.reflect_dc,
-			'reflect_opposed_trait_type': self.reflect_opposed_trait_type,
-			'reflect_opposed_trait': self.reflect_opposed_trait,
-			'reflect_resist_trait_type': self.reflect_resist_trait_type,
-			'reflect_resist_trait': self.reflect_resist_trait,
-			'immunity_type': self.immunity_type,
-			'immunity_trait_type': self.immunity_trait_type,
-			'immunity_trait': self.immunity_trait,
-			'immunity_descriptor': self.immunity_descriptor,
-			'immunity_damage': self.immunity_damage,
-			'immunity_rule': self.immunity_rule,
-			'cover_check': self.cover_check,
-			'cover_type': self.cover_type
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'defense': defense,
+			'use': use,
+			'mod': mod,
+			'roll': roll,
+			'outcome': outcome,
+			'dodge': dodge,
+			'fortitude': fortitude,
+			'parry': parry,
+			'toughness': toughness,
+			'will': will,
+			'resist_area': resist_area,
+			'resist_perception': resist_perception,
+			'reflect': reflect,
+			'immunity': immunity,
+			'reflect_action': reflect_action,
+			'reflect_check': reflect_check,
+			'reflect_dc': reflect_dc,
+			'reflect_opposed_trait_type': reflect_opposed_trait_type,
+			'reflect_opposed_trait': reflect_opposed_trait,
+			'reflect_resist_trait_type': reflect_resist_trait_type,
+			'reflect_resist_trait': reflect_resist_trait,
+			'immunity_type': immunity_type,
+			'immunity_trait_type': immunity_trait_type,
+			'immunity_trait': immunity_trait,
+			'immunity_descriptor': immunity_descriptor,
+			'immunity_damage': immunity_damage,
+			'immunity_rule': immunity_rule,
+			'cover_check': cover_check,
+			'cover_type': cover_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

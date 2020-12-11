@@ -54,7 +54,7 @@ function minion_attitude_trait_type() {
 
 function minion_submit() {
 
-	const extra = select("minion_extra");
+	const extra_id = select("minion_extra");
 	const points = select("mod_minion_points");
 	const condition = select("mod_minion_condition");
 	const player_condition = select("mod_minion_player_condition");
@@ -82,26 +82,26 @@ function minion_submit() {
 	response = fetch('/power/minion/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'points': self.points,
-			'condition': self.condition,
-			'player_condition': self.player_condition,
-			'link': self.link,
-			'variable_type': self.variable_type,
-			'multiple': self.multiple,
-			'attitude': self.attitude,
-			'resitable': self.resitable,
-			'heroic': self.heroic,
-			'sacrifice': self.sacrifice,
-			'sacrifice_cost': self.sacrifice_cost,
-			'attitude_type': self.attitude_type,
-			'attitude_trait_type': self.attitude_trait_type,
-			'attitude_trait': self.attitude_trait,
-			'resitable_check': self.resitable_check,
-			'resitable_dc': self.resitable_dc,
-			'multiple_value': self.multiple_value,
-			'horde': self.horde
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'points': points,
+			'condition': condition,
+			'player_condition': player_condition,
+			'link': link,
+			'variable_type': variable_type,
+			'multiple': multiple,
+			'attitude': attitude,
+			'resitable': resitable,
+			'heroic': heroic,
+			'sacrifice': sacrifice,
+			'sacrifice_cost': sacrifice_cost,
+			'attitude_type': attitude_type,
+			'attitude_trait_type': attitude_trait_type,
+			'attitude_trait': attitude_trait,
+			'resitable_check': resitable_check,
+			'resitable_dc': resitable_dc,
+			'multiple_value': multiple_value,
+			'horde': horde
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ function resist_effect() {
 
 function resist_submit() {
 
-	const extra = select("resist_extra");
+	const extra_id = select("resist_extra");
 	const trait_type = select("resist_trait_type");
 	const dc = select("resist_dc");
 	const mod = select("resist_mod");
@@ -62,26 +62,26 @@ function resist_submit() {
 	response = fetch('/power/resisted_by/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'trait_type': self.trait_type,
-			'dc': self.dc,
-			'mod': self.mod,
-			'description': self.description,
-			'trait': self.trait,
-			'effect': self.effect,
-			'level': self.level,
-			'degree': self.degree,
-			'descriptor': self.descriptor,
-			'weaken_max': self.weaken_max,
-			'weaken_restored': self.weaken_restored,
-			'condition1': self.condition1,
-			'condition2': self.condition2,
-			'damage': self.damage,
-			'strength': self.strength,
-			'nullify_descriptor': self.nullify_descriptor,
-			'nullify_alternate': self.nullify_alternate,
-			'extra_effort': self.extra_effort
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'trait_type': trait_type,
+			'dc': dc,
+			'mod': mod,
+			'description': description,
+			'trait': trait,
+			'effect': effect,
+			'level': level,
+			'degree': degree,
+			'descriptor': descriptor,
+			'weaken_max': weaken_max,
+			'weaken_restored': weaken_restored,
+			'condition1': condition1,
+			'condition2': condition2,
+			'damage': damage,
+			'strength': strength,
+			'nullify_descriptor': nullify_descriptor,
+			'nullify_alternate': nullify_alternate,
+			'extra_effort': extra_effort
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

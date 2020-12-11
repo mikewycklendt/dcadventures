@@ -1096,7 +1096,7 @@ class PowerDC(db.Model):
 	dc = db.Column(db.String())
 	description = db.Column(db.String())
 	value = db.Column(db.Integer)
-	math_vqlue = db.Column(db.Integer)
+	math_value = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_trait_type = db.Column(db.String())
 	math_trait = db.Column(db.String())
@@ -1124,7 +1124,7 @@ class PowerDC(db.Model):
 			'dc': self.dc,
 			'description': self.description,
 			'value': self.value,
-			'math_vqlue': self.math_vqlue,
+			'math_value': self.math_vqlue,
 			'math': self.math,
 			'math_trait_type': self.math_trait_type,
 			'math_trait': self.math_trait,
@@ -1887,6 +1887,7 @@ class PowerResist(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	target = db.Column(db.String())
 	mod = db.Column(db.Integer)
 	rounds = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
@@ -1904,6 +1905,7 @@ class PowerResist(db.Model):
 			'id': self.id,
 			'power_id': self.power_id,
 			'extra_id': self.extra_id,
+			'target': self.target,
 			'mod': self.mod,
 			'rounds': self.rounds,
 			'circumstance': self.circumstance,

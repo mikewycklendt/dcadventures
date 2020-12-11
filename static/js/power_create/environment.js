@@ -93,7 +93,7 @@ function env_immunity_type() {
 function env_submit() {
 
 
-	const extra = select("env_extra");
+	const extra_id = select("env_extra");
 	const radius = text("env_radius");
 	const distance = select("env_distance");
 	const rank = select("env_rank");
@@ -131,36 +131,36 @@ function env_submit() {
 	response = fetch('/power/environment/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'radius': self.radius,
-			'distance': self.distance,
-			'rank': self.rank,
-			'condition_check': self.condition_check,
-			'impede': self.impede,
-			'conceal': self.conceal,
-			'visibility': self.visibility,
-			'selective': self.selective,
-			'immunity': self.immunity,
-			'immunity_type': self.immunity_type,
-			'temp_type': self.temp_type,
-			'immunity_extremity': self.immunity_extremity,
-			'immunity_environment': self.immunity_environment,
-			'no_penalty': self.no_penalty,
-			'no_circumstance': self.no_circumstance,
-			'immunity_other': self.immunity_other,
-			'condition_temp_type': self.condition_temp_type,
-			'temp_extremity': self.temp_extremity,
-			'move_nature': self.move_nature,
-			'move_speed': self.move_speed,
-			'move_cost_circ': self.move_cost_circ,
-			'move_other': self.move_other,
-			'conceal_type': self.conceal_type,
-			'visibility_trait_type': self.visibility_trait_type,
-			'visibility_trait': self.visibility_trait,
-			'visibility_mod': self.visibility_mod,
-			'cost': self.cost,
-			'ranks': self.ranks
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'radius': radius,
+			'distance': distance,
+			'rank': rank,
+			'condition_check': condition_check,
+			'impede': impede,
+			'conceal': conceal,
+			'visibility': visibility,
+			'selective': selective,
+			'immunity': immunity,
+			'immunity_type': immunity_type,
+			'temp_type': temp_type,
+			'immunity_extremity': immunity_extremity,
+			'immunity_environment': immunity_environment,
+			'no_penalty': no_penalty,
+			'no_circumstance': no_circumstance,
+			'immunity_other': immunity_other,
+			'condition_temp_type': condition_temp_type,
+			'temp_extremity': temp_extremity,
+			'move_nature': move_nature,
+			'move_speed': move_speed,
+			'move_cost_circ': move_cost_circ,
+			'move_other': move_other,
+			'conceal_type': conceal_type,
+			'visibility_trait_type': visibility_trait_type,
+			'visibility_trait': visibility_trait,
+			'visibility_mod': visibility_mod,
+			'cost': cost,
+			'ranks': ranks
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

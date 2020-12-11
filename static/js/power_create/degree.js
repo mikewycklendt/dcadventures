@@ -18,7 +18,7 @@ function degree_base() {
 function degree_submit() {
 	
 	const degree_type = text("degree_type");
-	const extra = select("degree_extra");
+	const extra_id = select("degree_extra");
 	const degree = select("degree_degree");
 	const keyword = text("degree_keyword");
 	const desscription = text("degree_desscription");
@@ -34,15 +34,15 @@ function degree_submit() {
 	response = fetch('/power/degree/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'degree_type': self.degree_type,
-			'degree': self.degree,
-			'keyword': self.keyword,
-			'desscription': self.desscription,
-			'extra_effort': self.extra_effort,
-			'cumulative': self.cumulative,
-			'target': self.target
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'degree_type': degree_type,
+			'degree': degree,
+			'keyword': keyword,
+			'desscription': desscription,
+			'extra_effort': extra_effort,
+			'cumulative': cumulative,
+			'target': target
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

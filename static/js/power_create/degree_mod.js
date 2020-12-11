@@ -69,7 +69,7 @@ function deg_mod_submit() {
 
 	
 	const target = select("deg_mod_target");
-	const extra = select("deg_mod_extra");
+	const extra_id = select("deg_mod_extra");
 	const value = select("deg_value");
 	const type = select("deg_mod_type");
 	const circ_value = select("deg_mod_circ_value");
@@ -102,32 +102,32 @@ function deg_mod_submit() {
 	response = fetch('/power/degree_mod/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'value': self.value,
-			'deg_type': self.deg_type,
-			'circ_value': self.circ_value,
-			'circ_turns': self.circ_turns,
-			'circ_trait_type': self.circ_trait_type,
-			'circ_trait': self.circ_trait,
-			'measure_type': self.measure_type,
-			'measure_val1': self.measure_val1,
-			'measure_math': self.measure_math,
-			'measure_trait_type': self.measure_trait_type,
-			'measure_trait': self.measure_trait,
-			'measure_value': self.measure_value,
-			'measure_rank': self.measure_rank,
-			'deg_condition_type': self.deg_condition_type,
-			'condition_damage_value': self.condition_damage_value,
-			'condition_damage': self.condition_damage,
-			'condition1': self.condition1,
-			'condition2': self.condition2,
-			'keyword': self.keyword,
-			'nullify': self.nullify,
-			'cumulative': self.cumulative,
-			'linked': self.linked,
-			'level': self.level
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'value': value,
+			'deg_type': type,
+			'circ_value': circ_value,
+			'circ_turns': circ_turns,
+			'circ_trait_type': circ_trait_type,
+			'circ_trait': circ_trait,
+			'measure_type': measure_type,
+			'measure_val1': measure_val1,
+			'measure_math': measure_math,
+			'measure_trait_type': measure_trait_type,
+			'measure_trait': measure_trait,
+			'measure_value': measure_value,
+			'measure_rank': measure_rank,
+			'deg_condition_type': deg_condition_type,
+			'condition_damage_value': condition_damage_value,
+			'condition_damage': condition_damage,
+			'condition1': condition1,
+			'condition2': condition2,
+			'keyword': keyword,
+			'nullify': nullify,
+			'cumulative': cumulative,
+			'linked': linked,
+			'level': level
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

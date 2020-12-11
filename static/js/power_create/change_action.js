@@ -16,7 +16,7 @@ function action_base() {
 
 function action_submit() {
 
-	const extra = select("action_extra");
+	const extra_id = select("action_extra");
 	const action = select("action_change");
 	const mod = select("action_mod");
 	const objects = check("mod_objects");
@@ -30,12 +30,12 @@ function action_submit() {
 	response = fetch('/power/change_action/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'action': self.action,
-			'mod': self.mod,
-			'objects': self.objects,
-			'circumstance': self.circumstance
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'action': action,
+			'mod': mod,
+			'objects': objects,
+			'circumstance': circumstance
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -132,7 +132,7 @@ function sense_dimensional() {
 function sense_submit() {
 	
 	const target = select("sense_target");
-	const extra = select("sense_extra");
+	const extra_id = select("sense_extra");
 	const sense = select("sense_sense");
 	const subsense = select("sense_subsense");
 	const sense_cost = select("sense_sense_cost");
@@ -142,7 +142,7 @@ function sense_submit() {
 	const sense_type = select("sense_type");
 	const height_trait_type = select("sense_height_trait_type");
 	const height_trait = select("sense_height_trait");
-	const  height_power_required = check("sense_height_power_req");
+	const height_power_required = check("sense_height_power_req");
 	const height_ensense = select("sense_height_ensense");
 	const resist_trait_type = select("sense_resist_trait_type");
 	const resist_trait = select("sense_resist_trait");
@@ -183,50 +183,50 @@ function sense_submit() {
 	response = fetch('/power/sense/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'sense': self.sense,
-			'subsense': self.subsense,
-			'sense_cost': self.sense_cost,
-			'subsense_cost': self.subsense_cost,
-			'skill': self.skill,
-			'skill_required': self.skill_required,
-			'sense_type': self.sense_type,
-			'height_trait_type': self.height_trait_type,
-			'height_trait': self.height_trait,
-			'height_power_required': self.height_power_required,
-			'height_ensense': self.height_ensense,
-			'resist_trait_type': self.resist_trait_type,
-			'resist_trait': self.resist_trait,
-			'resist_immune': self.resist_immune,
-			'resist_permanent': self.resist_permanent,
-			'resist_circ': self.resist_circ,
-			'objects': self.objects,
-			'exclusive': self.exclusive,
-			'gm': self.gm,
-			'dark': self.dark,
-			'lighting': self.lighting,
-			'time': self.time,
-			'dimensional': self.dimensional,
-			'radius': self.radius,
-			'accurate': self.accurate,
-			'acute': self.acute,
-			'time_set': self.time_set,
-			'time_value': self.time_value,
-			'time_unit': self.time_unit,
-			'time_skill': self.time_skill,
-			'time_bonus': self.time_bonus,
-			'time_factor': self.time_factor,
-			'distance': self.distance,
-			'distance_dc': self.distance_dc,
-			'distance_mod': self.distance_mod,
-			'distance_value': self.distance_value,
-			'distance_unit': self.distance_unit,
-			'distance_factor': self.distance_factor,
-			'dimensional_type': self.dimensional_type,
-			'ranks': self.ranks,
-			'cost': self.cost
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'sense': sense,
+			'subsense': subsense,
+			'sense_cost': sense_cost,
+			'subsense_cost': subsense_cost,
+			'skill': skill,
+			'skill_required': skill_required,
+			'sense_type': sense_type,
+			'height_trait_type': height_trait_type,
+			'height_trait': height_trait,
+			'height_power_required': height_power_required,
+			'height_ensense': height_ensense,
+			'resist_trait_type': resist_trait_type,
+			'resist_trait': resist_trait,
+			'resist_immune': resist_immune,
+			'resist_permanent': resist_permanent,
+			'resist_circ': resist_circ,
+			'objects': objects,
+			'exclusive': exclusive,
+			'gm': gm,
+			'dark': dark,
+			'lighting': lighting,
+			'time': time,
+			'dimensional': dimensional,
+			'radius': radius,
+			'accurate': accurate,
+			'acute': acute,
+			'time_set': time_set,
+			'time_value': time_value,
+			'time_unit': time_unit,
+			'time_skill': time_skill,
+			'time_bonus': time_bonus,
+			'time_factor': time_factor,
+			'distance': distance,
+			'distance_dc': distance_dc,
+			'distance_mod': distance_mod,
+			'distance_value': distance_value,
+			'distance_unit': distance_unit,
+			'distance_factor': distance_factor,
+			'dimensional_type': dimensional_type,
+			'ranks': ranks,
+			'cost': cost
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

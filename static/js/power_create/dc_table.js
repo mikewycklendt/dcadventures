@@ -89,11 +89,11 @@ function dc_levels() {
 function dc_submit() {
 
 	const target = select("dc_target");
-	const extra = select("dc_extra");
+	const extra_id = select("dc_extra");
 	const dc = select("dc_dc");
 	const description = text("dc_description");
 	const value = select("dc_value_value");
-	const math_vqlue = select("dc_math_vqlue");
+	const math_value = select("dc_math_vqlue");
 	const math = select("dc_math_math");
 	const math_trait_type = select("dc_math_trait_type");
 	const math_trait = select("dc_math_trait");
@@ -120,30 +120,30 @@ function dc_submit() {
 	response = fetch('/power/dc_table/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'dc': self.dc,
-			'description': self.description,
-			'value': self.value,
-			'math_vqlue': self.math_vqlue,
-			'math': self.math,
-			'math_trait_type': self.math_trait_type,
-			'math_trait': self.math_trait,
-			'descriptor_check': self.descriptor_check,
-			'condition': self.condition,
-			'keyword_check': self.keyword_check,
-			'check_type': self.check_type,
-			'descriptor': self.descriptor,
-			'descriptor_possess': self.descriptor_possess,
-			'condition1': self.condition1,
-			'condition2': self.condition2,
-			'keyword': self.keyword,
-			'check_trait_type': self.check_trait_type,
-			'check_trait': self.check_trait,
-			'check_mod': self.check_mod,
-			'levels': self.levels,
-			'level': self.level
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'dc': dc,
+			'description': description,
+			'value': value,
+			'math_value': math_value,
+			'math': math,
+			'math_trait_type': math_trait_type,
+			'math_trait': math_trait,
+			'descriptor_check': descriptor_check,
+			'condition': condition,
+			'keyword_check': keyword_check,
+			'check_type': check_type,
+			'descriptor': descriptor,
+			'descriptor_possess': descriptor_possess,
+			'condition1': condition1,
+			'condition2': condition2,
+			'keyword': keyword,
+			'check_trait_type': check_trait_type,
+			'check_trait': check_trait,
+			'check_mod': check_mod,
+			'levels': levels,
+			'level': level
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

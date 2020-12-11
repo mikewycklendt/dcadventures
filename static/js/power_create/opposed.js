@@ -31,7 +31,7 @@ function opposed_opponent_trait_type() {
 
 function opposed_submit() {
 
-	const extra = select("opposed_extra");
+	const extra_id = select("opposed_extra");
 	const trait_type = select("opposed_trait_type");
 	const trait = select("opposed_trait");
 	const mod = select("opposed_mod");
@@ -49,16 +49,16 @@ function opposed_submit() {
 	response = fetch('/power/opposed/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'trait_type': self.trait_type,
-			'trait': self.trait,
-			'mod': self.mod,
-			'opponent_trait_type': self.opponent_trait_type,
-			'opponent_trait': self.opponent_trait,
-			'opponent_mod': self.opponent_mod,
-			'player_check': self.player_check,
-			'opponent_check': self.opponent_check
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'trait_type': trait_type,
+			'trait': trait,
+			'mod': mod,
+			'opponent_trait_type': opponent_trait_type,
+			'opponent_trait': opponent_trait,
+			'opponent_mod': opponent_mod,
+			'player_check': player_check,
+			'opponent_check': opponent_check
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

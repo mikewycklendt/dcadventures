@@ -39,7 +39,7 @@ function time_recovery() {
 
 function time_submit() {
 
-	const extra = select("time_extra");
+	const extra_id = select("time_extra");
 	const time_type = select("time_type");
 	const value_type = select("time_value_type");
 	const value = text("time_value");
@@ -64,23 +64,23 @@ function time_submit() {
 	response = fetch('/power/time/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'time_type': self.time_type,
-			'value_type': self.value_type,
-			'value': self.value,
-			'units': self.units,
-			'time_value': self.time_value,
-			'math': self.math,
-			'trait_type': self.trait_type,
-			'trait': self.trait,
-			'dc': self.dc,
-			'descriptor': self.descriptor,
-			'check_type': self.check_type,
-			'recovery': self.recovery,
-			'recovery_penalty': self.recovery_penalty,
-			'recovery_time': self.recovery_time,
-			'recovery_incurable': self.recovery_incurable
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'time_type': time_type,
+			'value_type': value_type,
+			'value': value,
+			'units': units,
+			'time_value': time_value,
+			'math': math,
+			'trait_type': trait_type,
+			'trait': trait,
+			'dc': dc,
+			'descriptor': descriptor,
+			'check_type': check_type,
+			'recovery': recovery,
+			'recovery_penalty': recovery_penalty,
+			'recovery_time': recovery_time,
+			'recovery_incurable': recovery_incurable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

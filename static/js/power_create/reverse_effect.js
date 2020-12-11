@@ -50,7 +50,7 @@ function reverse_value_type() {
 function reverse_submit() {
 
 	const target = select("reverse_target");
-	const extra = select("reverse_extra");
+	const extra_id = select("reverse_extra");
 	const degree = select("reverse_degree");
 	const when = select("reverse_when");
 	const check_check = check("reverse_check_check");
@@ -72,21 +72,21 @@ function reverse_submit() {
 	response = fetch('/power/reverse_effect/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'degree': self.degree,
-			'when': self.when,
-			'check_check': self.check_check,
-			'time_check': self.time_check,
-			'trait_type': self.trait_type,
-			'trait': self.trait,
-			'value_type': self.value_type,
-			'value_dc': self.value_dc,
-			'math_dc': self.math_dc,
-			'math': self.math,
-			'time_value': self.time_value,
-			'time_unit': self.time_unit
+			'power_id': power_id,
+			'extra_id': extra_id,
+			'target': target,
+			'degree': degree,
+			'when': when,
+			'check_check': check_check,
+			'time_check': time_check,
+			'trait_type': trait_type,
+			'trait': trait,
+			'value_type': value_type,
+			'value_dc': value_dc,
+			'math_dc': math_dc,
+			'math': math,
+			'time_value': time_value,
+			'time_unit': time_unit
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
