@@ -773,7 +773,7 @@ class PowerAltCheck(db.Model):
 		}
 
 class PowerAction(db.Model):
-	__tablename__ = 'power_alt_check'
+	__tablename__ = 'power_change_action'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
