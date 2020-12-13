@@ -1932,14 +1932,12 @@ class PowerResistBy(db.Model):
 	effect = db.Column(db.String())
 	level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	degree = db.Column(db.Integer)
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	weaken_max = db.Column(db.Integer)
 	weaken_restored = db.Column(db.Integer)
 	condition1 = db.Column(db.String())
 	condition2 = db.Column(db.String())
 	damage =  db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
-	nullify_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	nullify_alternate = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	extra_effort = db.Column(db.Boolean)
 
@@ -1956,14 +1954,12 @@ class PowerResistBy(db.Model):
 			'effect': self.effect,
 			'level': self.level,
 			'degree': self.degree,
-			'descriptor': self.descriptor,
 			'weaken_max': self.weaken_max,
 			'weaken_restored': self.weaken_restored,
 			'condition1': self.condition1,
 			'condition2': self.condition2,
 			'damage': self.damage,
 			'strength': self.strength,
-			'nullify_descriptor': self.nullify_descriptor,
 			'nullify_alternate': self.nullify_alternate,
 			'extra_effort': self.extra_effort
 		}
