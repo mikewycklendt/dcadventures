@@ -1894,7 +1894,6 @@ class PowerResist(db.Model):
 	resist_check_type = db.Column(db.String())
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	requires_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	check_trait_type = db.Column(db.String())
@@ -1912,7 +1911,6 @@ class PowerResist(db.Model):
 			'resist_check_type': self.resist_check_type,
 			'trait_type': self.trait_type,
 			'trait': self.trait,
-			'descriptor': self.descriptor,
 			'requires_check': self.requires_check,
 			'check_type': self.check_type,
 			'check_trait_type': self.check_trait_type,
