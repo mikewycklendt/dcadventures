@@ -1924,10 +1924,7 @@ class PowerResistBy(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
-
-
-	def format(self):
-		return {	trait_type = db.Column(db.String())
+	trait_type = db.Column(db.String())
 	dc = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	description = db.Column(db.String())
@@ -1945,6 +1942,9 @@ class PowerResistBy(db.Model):
 	nullify_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	nullify_alternate = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	extra_effort = db.Column(db.Boolean)
+
+	def format(self):
+		return {
 			'id': self.id,
 			'power_id': self.power_id,
 			'extra_id': self.extra_id,
