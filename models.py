@@ -2118,6 +2118,7 @@ class PowerTime(db.Model):
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
 	dc = db.Column(db.Integer)
+	descriptor = db.Column(db.Integer)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	recovery = db.Column(db.Boolean)
 	recovery_penalty = db.Column(db.Integer)
@@ -2138,6 +2139,7 @@ class PowerTime(db.Model):
 			'trait_type': self.trait_type,
 			'trait': self.trait,
 			'dc': self.dc,
+			'descriptor': self.descriptor,
 			'check_type': self.check_type,
 			'recovery': self.recovery,
 			'recovery_penalty': self.recovery_penalty,
