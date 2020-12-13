@@ -1664,7 +1664,6 @@ class PowerMove(db.Model):
 	teleport_obstacles = db.Column(db.Boolean)
 	dimension_type = db.Column(db.String())
 	dimension_mass_rank = db.Column(db.Integer)
-	dimension_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	special_space = db.Column(db.String())
 	special_time = db.Column(db.String())
 	special_time_carry = db.Column(db.Integer)
@@ -1743,7 +1742,6 @@ class PowerMove(db.Model):
 			'teleport_obstacles': self.teleport_obstacles,
 			'dimension_type': self.dimension_type,
 			'dimension_mass_rank': self.dimension_mass_rank,
-			'dimension_descriptor': self.dimension_descriptor,
 			'special_space': self.special_space,
 			'special_time': self.special_time,
 			'special_time_carry': self.special_time_carry,
