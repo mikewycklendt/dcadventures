@@ -1223,7 +1223,7 @@ def power_post_alt_check():
 							trait_type = trait_type,
 							trait = trait)
 
-	return ('power')
+
 
 
 @powers.route('/power/change_action/create', methods=['POST'])
