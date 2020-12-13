@@ -16,6 +16,8 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
+from power_errors import integer, extra_convert, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
+from power_posts import alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
 
 load_dotenv()
 
@@ -1202,6 +1204,20 @@ def delete_powerdes(power_id):
 @powers.route('/power/alt_check/create', methods=['POST'])
 def power_post_alt_check():
 
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = alt_check_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
 	check_type = request.get_json()['check_type']
@@ -1211,8 +1227,16 @@ def power_post_alt_check():
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
 
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	check_type = integer(check_type)
+	mod = integer(mod)
 
 
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
 
 	entry = PowerAltCheck(power_id = power_id,
 							extra_id = extra_id,
@@ -1223,11 +1247,25 @@ def power_post_alt_check():
 							trait_type = trait_type,
 							trait = trait)
 
-
+	body = alt_check_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/change_action/create', methods=['POST'])
 def power_post_change_action():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = change_action_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1236,9 +1274,10 @@ def power_post_change_action():
 	objects = request.get_json()['objects']
 	circumstance = request.get_json()['circumstance']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	action = integer(action)
+	mod = integer(mod)
 
 	entry = PowerAction(power_id = power_id,
 						extra_id = extra_id,
@@ -1247,11 +1286,26 @@ def power_post_change_action():
 						objects =objects, 
 						circumstance = circumstance)
 
-	return ('power')
+	body = change_action_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/character/create', methods=['POST'])
 def power_post_character():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = character_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1299,8 +1353,17 @@ def power_post_character():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	value = integer(value)
+	increase = integer(increase)
+	weaken_descriptor = integer(weaken_descriptor)
+	reduced_value = integer(reduced_value)
+	carry_capacity = integer(carry_capacity)
+	points_value = integer(points_value)
+	points_descriptor = integer(points_descriptor)
+	cost = integer(cost)
+	ranks = integer(ranks)	 
 
 	entry = PowerChar(power_id = power_id,
 						extra_id = extra_id,
@@ -1348,15 +1411,25 @@ def power_post_character():
 						cost = cost,
 						ranks = ranks)
 
-	return ('power')
-
-
-
-
-
+	body = character_post(entry)
+	return jsonify(body)
 
 @powers.route('/power/circ/create', methods=['POST'])
 def power_post_circ():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = circ_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1375,7 +1448,12 @@ def power_post_circ():
 	null_trait_type = request.get_json()['null_trait_type']
 	null_trait = request.get_json()['null_trait']
 
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	mod = integer(mod)
+	rounds = integer(rounds)
+	circ_range = integer(circ_range)
+	null_descriptor = integer(null_descriptor)
 
 	entry = PowerCirc(power_id = power_id,
 						extra_id = extra_id,
@@ -1394,13 +1472,25 @@ def power_post_circ():
 						null_trait_type = null_trait_type,
 						null_trait = null_trait)
 
-	return ('power')
-
-
-
+	body = circ_post(entry)
+	return jsonify(body)
 
 @powers.route('/power/create/create', methods=['POST'])
 def power_post_create():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = create_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1463,8 +1553,31 @@ def power_post_create():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	complexity = integer(complexity)
+	volume = integer(volume)
+	toughness = integer(toughness)
+	mass = integer(mass)
+	transform_start_mass = integer(transform_start_mass)
+	transfom_mass = integer(transfom_mass)
+	transform_start_descriptor = integer(transform_start_descriptor)
+	transform_end_descriptor = integer(transform_end_descriptor)
+	move_opponent_ability = integer(move_opponent_ability)
+	move_opponent_rank = integer(move_opponent_rank)
+	trap_dc = integer(trap_dc)
+	trap_resist_dc = integer(trap_resist_dc)
+	ranged_dc = integer(ranged_dc)
+	ranged_damage_value = integer(ranged_damage_value)
+	weapon_mod = integer(weapon_mod)
+	weapon_damage = intege(weapon_damage)
+	support_strength = integer(support_strength)
+	support_action = integer(support_action)
+	support_action_rounds = integer(support_action_rounds)
+	support_effort = integer(support_effort)
+	support_effort_rounds = integer(support_effort_rounds)
+	cost = integer(cost)
+	ranks = integer(ranks)
 
 	entry = PowerCreate(power_id = power_id,
 						extra_id = extra_id,
@@ -1527,15 +1640,25 @@ def power_post_create():
 						cost = cost,
 						ranks = ranks)
 
-	return ('power')
-
-
-
-
-
+	body = create_post(entry)
+	return jsonify(body)
 
 @powers.route('/power/damage/create', methods=['POST'])
 def power_post_damage():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = damage_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1546,9 +1669,11 @@ def power_post_damage():
 	damage_type = request.get_json()['damage_type']
 	descriptor = request.get_json()['descriptor']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	mod = integer(mod)
+	damage_type = integer(damage_type)
+	descriptor = integer(descriptor)
 
 
 	entry = PowerDamage(power_id = power_id,
@@ -1560,12 +1685,26 @@ def power_post_damage():
 						damage_type = damage_type,
 						descriptor = descriptor)
 
-	return ('power')
-
+	body = damage_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/dc_table/create', methods=['POST'])
 def power_post_dc_table():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = dc_table_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1592,6 +1731,14 @@ def power_post_dc_table():
 	levels = request.get_json()['levels']
 	level = request.get_json()['level']
 
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	value = integer(value)
+	math_value = integer(math_value)
+	math = integer(math)
+	descriptor = integer(descriptor)
+	check_mod = integer(check_mod)
+	level = integer(level)
 
 
 	entry = PowerDC(power_id = power_id,
@@ -1619,16 +1766,26 @@ def power_post_dc_table():
 					levels = levels,
 					level = level)
 
-	return ('power')
-
-
-
-
-
+	body = dc_table_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = defense_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1662,9 +1819,15 @@ def power_post_defense():
 	cover_check = request.get_json()['cover_check']
 	cover_type = request.get_json()['cover_type']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	mod = integer(mod)
+	roll = integer(roll)
+	reflect_action = integer(reflect_action)
+	reflect_check = integer(reflect_check)
+	reflect_dc = integer(reflect_dc)
+	immunity_descriptor = integer(immunity_descriptor)
+	immunity_damage = integer(immunity_damage)
 
 	entry = PowerDefense(power_id = power_id,
 							extra_id = extra_id,
@@ -1698,13 +1861,26 @@ def power_post_defense():
 							cover_check = cover_check,
 							cover_type = cover_type)
 
-	return ('power')
-
-
+	body = defense_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/degree_mod/create', methods=['POST'])
 def power_post_degree_mod():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = degree_mod_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1733,7 +1909,19 @@ def power_post_degree_mod():
 	linked = request.get_json()['linked']
 	level = request.get_json()['level']
 
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	value = integer(value)
+	circ_value = integer(circ_value)
+	circ_turns = integer(circ_turns)
+	measure_val1 = integer(measure_val1)
+	measure_math = integer(measure_math)
+	measure_value = integer(measure_value)
+	measure_rank = integer(measure_rank)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	nullify = integer(nullify)
+	level = integer(level)
 
 	entry = PowerDegMod(power_id = power_id,
 						extra_id = extra_id,
@@ -1762,12 +1950,26 @@ def power_post_degree_mod():
 						linked = linked,
 						level = level)
 
-	return ('power')
-
+	body = degree_mod_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/degree/create', methods=['POST'])
 def power_post_degree():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = degree_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1779,9 +1981,9 @@ def power_post_degree():
 	cumulative = request.get_json()['cumulative']
 	target = request.get_json()['target']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	degree = integer(degree)
 
 	entry = PowerDegree(power_id = power_id,
 						extra_id = extra_id,
@@ -1793,14 +1995,26 @@ def power_post_degree():
 						cumulative = cumulative,
 						target = target)
 
-	return ('power')
-
-
-
+	body = degree_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/environment/create', methods=['POST'])
 def power_post_environment():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = environment_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1833,8 +2047,15 @@ def power_post_environment():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	radius = integer(radius)
+	distance = integer(distance)
+	rank = integer(rank)
+	move_speed = integer(move_speed)
+	visibility_mod = integer(visibility_mod)
+	cost = integer(cost)
+	ranks = integer(ranks)
 
 
 	entry = PowerEnv(power_id = power_id,
@@ -1868,11 +2089,26 @@ def power_post_environment():
 						cost = cost,
 						ranks = ranks)
 
-	return ('power')
+	body = environment_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/levels/create', methods=['POST'])
 def power_post_levels():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = levels_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1880,6 +2116,8 @@ def power_post_levels():
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
 
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
 
 
 	entry = PowerLevels(power_id = power_id,
@@ -1888,13 +2126,26 @@ def power_post_levels():
 						level = level,
 						level_effect = level_effect)
 
-	return ('power')
-
-
+	body = levels_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/minion/create', methods=['POST'])
 def power_post_minion():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = minion_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -1917,10 +2168,14 @@ def power_post_minion():
 	multiple_value = request.get_json()['multiple_value']
 	horde = request.get_json()['horde']
 
-
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	points = integer(points)
+	sacrifice_cost = integer(sacrifice_cost)
+	attitude_type = integer(attitude_type)
+	resitable_check = integer(resitable_check)
+	resitable_dc = integer(resitable_dc)
+	multiple_value = integer(multiple_value)
 
 
 	entry = PowerMinion(power_id = power_id,
@@ -1944,13 +2199,26 @@ def power_post_minion():
 						multiple_value = multiple_value,
 						horde = horde)
 
-	return ('power')
-
-
+	body = minion_post(entry)
+	return jsonify(body)
 
 	
 @powers.route('/power/mod/create', methods=['POST'])
 def power_post_mod():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = mod_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2035,9 +2303,35 @@ def power_post_mod():
 	ranks_cost = request.get_json()['ranks_cost']
 	cost = request.get_json()['cost']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	objects_alone = integer(objects_alone)
+	objects_character = integer(objects_character)
+	effortless_degree = integer(effortless_degree)
+	simultaneous_descriptor = integer(simultaneous_descriptor)
+	area_mod = integer(area_mod)
+	area_range = integer(area_range)
+	area_descriptor = integer(area_descriptor)
+	limited_mod = integer(limited_mod)
+	limited_level = integer(limited_level)
+	limited_source = integer(limited_source)
+	limited_subjects = integer(limited_subjects)
+	limited_extra = integer(limited_extra)
+	limited_degree = integer(limited_degree)
+	limited_sense = integer(limited_sense)
+	limited_descriptor = integer(limited_descriptor)
+	limited_range = integer(limited_range)
+	side_level = integer(side_level)
+	reflect_check = integer(reflect_check)
+	reflect_descriptor = integer(reflect_descriptor)
+	subtle_dc = integer(subtle_dc)
+	ranks_ranks = integer(ranks_ranks)
+	ranks_mod = integer(ranks_mod)
+	points_reroll_cost = integer(points_reroll_cost)
+	points_rerolls = integer(points_rerolls)
+	points_reroll_result = integer(points_reroll_result)
+	ranks_cost = integer(ranks_cost)
+	cost = integer(cost)
 
 	entry = PowerMod(power_id = power_id,
 						extra_id = extra_id,
@@ -2122,14 +2416,26 @@ def power_post_mod():
 						ranks_cost = ranks_cost,
 						cost = cost)
 
-	return ('power')
-
-
-
+	body = mod_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/move/create', methods=['POST'])
 def power_post_move():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = move_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2207,10 +2513,32 @@ def power_post_move():
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 
-
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	rank = integer(rank)
+	math = integer(math)
+	mod = integer(mod)
+	distance_value = integer(distance_value)
+	distance_math_value = integer(distance_math_value)
+	distance_math = integer(distance_math)
+	distance_math_value2 = integer(distance_math_value2)
+	distance_mod = integer(distance_mod)
+	dc = integer(dc)
+	mass_value = integer(mass_value)
+	extended_actions = integer(extended_actions)
+	concealment_sense = integer(concealment_sense)
+	permeate_speed = integer(permeate_speed)
+	dimension_mass_rank = integer(dimension_mass_rank)
+	dimension_descriptor = integer(dimension_descriptor)
+	special_time_carry = integer(special_time_carry)
+	ground_type = integer(ground_type)
+	ground_time = integer(ground_time)
+	ground_units = integer(ground_units)
+	subtle_mod = integer(subtle_mod)
+	objects_check = integer(objects_check)
+	objects_attack = integer(objects_attack)
+	ranks = integer(ranks)
+	cost = integer(cost)
 
 	entry = PowerMove(power_id = power_id,
 						extra_id = extra_id,
@@ -2288,21 +2616,26 @@ def power_post_move():
 						ranks = ranks,
 						cost = cost)
 
-	return ('power')
-
-
-
-
-
-
-
-
-
-
+	body = move_post(entry)
+	return jsonify(body)
 
 	
 @powers.route('/power/opposed/create', methods=['POST'])
 def power_post_opposed():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = opposed_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2315,9 +2648,12 @@ def power_post_opposed():
 	player_check = request.get_json()['player_check']
 	opponent_check = request.get_json()['opponent_check']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	mod = integer(mod)
+	opponent_mod = integer(opponent_mod)
+	player_check = integer(player_check)
+	opponent_check = integer(opponent_check)
 
 	entry = PowerOpposed(power_id = power_id,
 							extra_id = extra_id,
@@ -2330,14 +2666,26 @@ def power_post_opposed():
 							player_check = player_check,
 							opponent_check = opponent_check)
 
-	return ('power')
-
-
-
+	body = opposed_post(entry)
+	return jsonify(body)
 
 
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = ranged_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2376,7 +2724,32 @@ def power_post_ranged():
 	dc_trait_type = request.get_json()['dc_trait_type']
 	dc_trait = request.get_json()['dc_trait']
 
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	flat_value = integer(flat_value)
+	flat_units = integer(flat_units)
+	flat_rank = integer(flat_rank)
+	flat_rank_value = integer(flat_rank_value)
+	flat_rank_units = integer(flat_rank_units)
+	flat_rank_rank = integer(flat_rank_rank)
+	flat_rank_distance = inter(flat_rank_distance)
+	flat_rank_distance_rank = integer(flat_rank_distance_rank)
+	units_rank_start_value = integer(units_rank_start_value)
+	units_rank_value = integer(units_rank_value)
+	units_rank_units = integer(units_rank_units)
+	units_rank_rank = integer(units_rank_rank)
+	rank_distance_start = integer(rank_distance_start)
+	rank_distance = integer(rank_distance)
+	rank_effect_rank = integer(rank_effect_rank)
+	effect_mod_math = integer(effect_mod_math)
+	effect_mod = integer(effect_mod)
+	check_math = integer(check_math)
+	check_mod = integer(check_mod)
+	trait_math = integer(trait_math)
+	trait_mod = integer(trait_mod)
+	distance_mod_rank = integer(distance_mod_rank)
+	distance_mod_math = integer(distance_mod_math)
+	dc_value = integer(dc_value)
 
 	entry = PowerRanged(power_id = power_id,
 						extra_id = extra_id,
@@ -2415,11 +2788,26 @@ def power_post_ranged():
 						dc_trait_type = dc_trait_type,
 						dc_trait = dc_trait)
 
-	return ('power')
+	body = ranged_post(entry)
+	return jsonify(body)
 
 	
 @powers.route('/power/resist/create', methods=['POST'])
 def power_post_resist():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = resist_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2436,12 +2824,12 @@ def power_post_resist():
 	check_trait_type = request.get_json()['check_trait_type']
 	check_trait = request.get_json()['check_trait']
 
-
-
-
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	mod = integer(mod)
+	rounds = integer(rounds)
+	descriptor = integer(descriptor)
+	check_type = integer(check_type)
 
 	entry = PowerResist(power_id = power_id,
 						extra_id = extra_id,
@@ -2458,7 +2846,8 @@ def power_post_resist():
 						check_trait_type = check_trait_type,
 						check_trait = check_trait)
 
-	return ('power')
+	body = resist_post(entry)
+	return jsonify(body)
 
 
 
@@ -2467,6 +2856,20 @@ def power_post_resist():
 	
 @powers.route('/power/resisted_by/create', methods=['POST'])
 def power_post_resisted_by():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = resisted_by_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2489,6 +2892,18 @@ def power_post_resisted_by():
 	nullify_alternate = request.get_json()['nullify_alternate']
 	extra_effort = request.get_json()['extra_effort']
 
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	dc = integer(dc)
+	mod = integer(mod)
+	level = integer(level)
+	degree = integer(degree)
+	descriptor = integer(descriptor)
+	weaken_max = integer(weaken_max)
+	weaken_restored = integer(weaken_restored)
+	damage =  integer(damage)
+	nullify_descriptor = integer(nullify_descriptor)
+	nullify_alternate = integer(nullify_alternate)
 
 	entry = PowerResistBy(power_id = power_id,
 							extra_id = extra_id,
@@ -2511,15 +2926,28 @@ def power_post_resisted_by():
 							nullify_alternate = nullify_alternate,
 							extra_effort = extra_effort)
 
-
-	return ('power')
-
+	body = resisted_by_post(entry)
+	return jsonify(body)
 
 
 
 
 @powers.route('/power/reverse_effect/create', methods=['POST'])
 def power_post_reverse_effect():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = reverse_effect_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2537,9 +2965,14 @@ def power_post_reverse_effect():
 	time_value = request.get_json()['time_value']
 	time_unit = request.get_json()['time_unit']
 
-
-
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	degree = integer(degree)
+	value_dc = integer(value_dc)
+	math_dc = integer(math_dc)
+	math = integer(math)
+	time_value = integer(time_value)
+	time_unit = integer(time_unit)
 
 	entry = PowerReverse(power_id = power_id,
 							extra_id = extra_id,
@@ -2557,12 +2990,27 @@ def power_post_reverse_effect():
 							time_value = time_value,
 							time_unit = time_unit)
 
-	return ('power')
+	body = reverse_effect_post(entry)
+	return jsonify(body)
 
 
 	
 @powers.route('/power/sense/create', methods=['POST'])
 def power_post_sense():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = sense_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2609,7 +3057,25 @@ def power_post_sense():
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 
-
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	sense = db.Column(db.Integer)
+	subsense = db.Column(db.Integer)
+	sense_cost = db.Column(db.Integer)
+	subsense_cost = db.Column(db.Integer)
+	skill = integer(skill)
+	resist_circ = integer(resist_circ)
+	time_value = integer(time_value)
+	time_unit = integer(time_unit)
+	time_skill = integer(time_skill)
+	time_factor = integer(time_factor)
+	distance_dc = integer(distance_dc)
+	distance_mod = integer(distance_mod)
+	distance_value = integer(distance_value)
+	distance_unit = integer(distance_unit)
+	distance_factor = integer(distance_factor)
+	ranks = integer(ranks)
+	cost = integer(cost)
 
 	entry = PowerSense(power_id = power_id,
 						extra_id = extra_id,
@@ -2656,12 +3122,27 @@ def power_post_sense():
 						ranks = ranks,
 						cost = cost)
 
-	return ('power')
+	body = sense_post(entry)
+	return jsonify(body)
 
 
 
 @powers.route('/power/time/create', methods=['POST'])
 def power_post_time():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = time_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -2681,6 +3162,18 @@ def power_post_time():
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
 
+	power_id = integer(power_id)
+	extra_id = extra_convert(extra_id)
+	value = integer(value)
+	units = integer(units)
+	time_value = integer(time_value)
+	math = integer(math)
+	trait = integer(trait)
+	dc = integer(descriptor)
+	descriptor = integer(descriptor)
+	check_type = integer(check_type)
+	recovery_penalty = integer(recovery_penalty)
+	recovery_time = integer(recovery_time)
 
 
 	entry = PowerTime(power_id = power_id,
@@ -2701,4 +3194,5 @@ def power_post_time():
 						recovery_time = recovery_time,
 						recovery_incurable = recovery_incurable)
 
-	return ('power')
+	body = time_post(entry)
+	return jsonify(body)

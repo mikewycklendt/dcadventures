@@ -1924,7 +1924,10 @@ class PowerResistBy(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
-	trait_type = db.Column(db.String())
+
+
+	def format(self):
+		return {	trait_type = db.Column(db.String())
 	dc = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	description = db.Column(db.String())
@@ -1942,9 +1945,6 @@ class PowerResistBy(db.Model):
 	nullify_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	nullify_alternate = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	extra_effort = db.Column(db.Boolean)
-
-	def format(self):
-		return {
 			'id': self.id,
 			'power_id': self.power_id,
 			'extra_id': self.extra_id,
@@ -2118,7 +2118,6 @@ class PowerTime(db.Model):
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
 	dc = db.Column(db.Integer)
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	recovery = db.Column(db.Boolean)
 	recovery_penalty = db.Column(db.Integer)
@@ -2139,7 +2138,6 @@ class PowerTime(db.Model):
 			'trait_type': self.trait_type,
 			'trait': self.trait,
 			'dc': self.dc,
-			'descriptor': self.descriptor,
 			'check_type': self.check_type,
 			'recovery': self.recovery,
 			'recovery_penalty': self.recovery_penalty,

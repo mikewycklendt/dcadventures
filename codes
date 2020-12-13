@@ -3,24 +3,24 @@
 
 power integers
 
-perm  
-rank
-any
-always
-round
-extra
-null
-normal
-instant
-distance - distance rank
-vert = vertical height
-free
-result
-all
-trait
-imperv
-check
-turn
+perm = 1234
+rank = 0000
+any = 5678
+always = 2222
+round = 3333
+extra = 1111
+null = 4444
+normal = 5555
+instant = 6666
+distance = 7777 - distance rank
+vert = 8888 = vertical height
+free = 9999
+result = 4321
+all = 7788
+trait = 1122
+imperv = 3344
+check = 5566
+turn = 9900
 
 
 
