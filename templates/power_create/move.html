@@ -745,6 +745,8 @@
 			<select class="entry-select" id="move_cost" name="move_ranks">
 				<option value="">Cost</option>
 				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
