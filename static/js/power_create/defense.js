@@ -71,7 +71,7 @@ function defense_immunity_type() {
 }
 
 function defense_cover() {
-	const check = 'defense_cover';
+	const check = 'defense_cover_check';
 	const div = 'defense-cover';
 
 	check_opacity(check, div);
