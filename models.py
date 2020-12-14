@@ -1477,12 +1477,15 @@ class PowerMod(db.Model):
 	objects_character = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	effortless_degree = db.Column(db.Integer)
 	effortless_retries = db.Column(db.Boolean)
+	simultaneous_descriptor = db.Column(db.Integer)
 	area_mod =db.Column(db.Integer)
 	area_range = db.Column(db.Integer)
 	area_per_rank = db.Column(db.Boolean)
+	area_descriptor = db.Column(db.Integer)
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
 	limited_level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
+	limited_source = db.Column(db.Integer)
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
 	limited_trait_type = db.Column(db.String())
@@ -1494,6 +1497,7 @@ class PowerMod(db.Model):
 	limited_degree = db.Column(db.Integer)
 	limited_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	limited_subsense = db.Column(db.String())
+	limited_descriptor = db.Column(db.Integer)
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
@@ -1501,6 +1505,7 @@ class PowerMod(db.Model):
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	reflect_trait_type = db.Column(db.String())
 	reflect_trait = db.Column(db.String())
+	reflect_descriptor = db.Column(db.Integer)
 	subtle_opponent_trait_type = db.Column(db.String())
 	subtle_opponent_trait = db.Column(db.String())
 	subtle_dc = db.Column(db.Integer)
@@ -1558,12 +1563,15 @@ class PowerMod(db.Model):
 			'objects_character': self.objects_character,
 			'effortless_degree': self.effortless_degree,
 			'effortless_retries': self.effortless_retries,
+			'simultaneous_descriptor': self.simultaneous_descriptor,
 			'area_mod': self.area_mod,
 			'area_range': self.area_range,
 			'area_per_rank': self.area_per_rank,
+			'area_descriptor': self.area_descriptor,
 			'limited_type': self.limited_type,
 			'limited_mod': self.limited_mod,
 			'limited_level': self.limited_level,
+			'limited_source': self.limited_source,
 			'limited_task_type': self.limited_task_type,
 			'limited_task': self.limited_task,
 			'limited_trait_type': self.limited_trait_type,
@@ -1575,6 +1583,7 @@ class PowerMod(db.Model):
 			'limited_degree': self.limited_degree,
 			'limited_sense': self.limited_sense,
 			'limited_subsense': self.limited_subsense,
+			'limited_descriptor': self.limited_descriptor,
 			'limited_range': self.limited_range,
 			'side_effect_type': self.side_effect_type,
 			'side_level': self.side_level,
@@ -1582,6 +1591,7 @@ class PowerMod(db.Model):
 			'reflect_check': self.reflect_check,
 			'reflect_trait_type': self.reflect_trait_type,
 			'reflect_trait': self.reflect_trait,
+			'reflect_descriptor': self.reflect_descriptor,
 			'subtle_opponent_trait_type': self.subtle_opponent_trait_type,
 			'subtle_opponent_trait': self.subtle_opponent_trait,
 			'subtle_dc': self.subtle_dc,
