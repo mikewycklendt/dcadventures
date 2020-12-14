@@ -1072,7 +1072,6 @@ class PowerDamage(db.Model):
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -1083,8 +1082,7 @@ class PowerDamage(db.Model):
 			'trait': self.trait,
 			'mod': self.mod,
 			'strength': self.strength,
-			'damage_type': self.damage_type,
-			'descriptor': self.descriptor
+			'damage_type': self.damage_type
 		}
 
 class PowerDC(db.Model):
@@ -1104,7 +1102,6 @@ class PowerDC(db.Model):
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Boolean)
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	descriptor_possess = db.Column(db.String())
 	condition1 = db.Column(db.String())
 	condition2 = db.Column(db.String())
@@ -1132,7 +1129,6 @@ class PowerDC(db.Model):
 			'condition': self.condition,
 			'keyword_check': self.keyword_check,
 			'check_type': self.check_type,
-			'descriptor': self.descriptor,
 			'descriptor_possess': self.descriptor_possess,
 			'condition1': self.condition1,
 			'condition2': self.condition2,

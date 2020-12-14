@@ -292,6 +292,10 @@ def dc_table_post(entry):
 	check_mod = entry.check_mod
 	levels = entry.level
 
+	extra = extra_name(extra_id)
+	math = name(Math, math)
+	descriptor = descriptor_name(descriptor)
+	level = name(PowerLevels, level)
 
 def defense_post(entry):
 
@@ -333,6 +337,11 @@ def defense_post(entry):
 	cover_check = entry.cover_check
 	cover_type = entry.cover_type
 
+	extra = extra_name(extra_id)
+	reflect_action = name(Action, reflect_action)
+	reflect_check = name(Check, reflect_check)
+	immunity_descriptor = descriptor_name(immunity_descriptor)
+	immunity_damage = name(Descriptor, immunity_damage)
 
 def degree_mod_post(entry):
 
@@ -369,6 +378,10 @@ def degree_mod_post(entry):
 	linked = entry.linked
 	level = entry.level
 
+	extra = extra_name(extra_id)
+	measure_math = name(Math, measure_math)
+	measure_rank = name(Rank, measure_rank)
+	level = name(PowerLevels, level)
 
 def degree_post(entry):
 
@@ -387,6 +400,9 @@ def degree_post(entry):
 	extra_effort = entry.extra_effort
 	cumulative = entry.cumulative
 	target = entry.target
+
+	extra = extra_name(extra_id)
+
 
 def environment_post(entry):
 
@@ -427,6 +443,9 @@ def environment_post(entry):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	extra = extra_name(extra_id)
+
+
 def levels_post(entry):
 
 	body = {}
@@ -442,6 +461,7 @@ def levels_post(entry):
 	level_effect = entry.level_effect
 
 
+	extra = extra_name(extra_id)
 
 def minion_post(entry):
 
@@ -471,6 +491,10 @@ def minion_post(entry):
 	resitable_dc = entry.resitable_dc
 	multiple_value = entry.multiple_value
 	horde = entry.horde
+
+	extra = extra_name(extra_id)	
+	attitude_type = name(PowerLevels, attitude_type)
+	resitable_check = name(Defense, resitable_check)
 
 def mod_post(entry):
 
