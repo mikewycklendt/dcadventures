@@ -146,6 +146,7 @@ def character_post(entry):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	extra = extra_name(extra_id)
 
 def circ_post(entry):
 
@@ -171,6 +172,11 @@ def circ_post(entry):
 	null_descriptor = entry.null_descriptor
 	null_trait_type = entry.null_trait_type
 	null_trait = entry.null_trait
+
+	extra = extra_name(extra_id)
+	circ_range = name(Range, circ_range)
+	null_descriptor = descriptor_name(null_descriptor)
+
 
 def create_post(entry):
 
@@ -241,6 +247,11 @@ def create_post(entry):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	extra = extra_name(extra_id)
+	complexity = name(Complex, complexity)
+	transform_start_descriptor = descriptor_name(transform_start_descriptor)
+	transform_end_descriptor = descriptor_name(transform_end_descriptor)
+	move_opponent_ability = name(Ability, move_opponent_ability)
 
 def damage_post(entry):
 
@@ -259,6 +270,9 @@ def damage_post(entry):
 	damage_type = entry.damage_type
 	descriptor = entry.descriptor
 
+	extra = extra_name(extra_id)
+	damage_type = name(Descriptor, damage_type)
+	descriptor = descriptor_name(descriptor)
 
 def dc_table_post(entry):
 

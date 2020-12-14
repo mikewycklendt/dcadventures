@@ -908,7 +908,6 @@ class PowerCirc(db.Model):
 	check_trait = db.Column(db.String())
 	null_type = db.Column(db.String())
 	null_condition = db.Column(db.String())
-	null_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.String())
 
@@ -928,7 +927,6 @@ class PowerCirc(db.Model):
 			'check_trait': self.check_trait,
 			'null_type': self.null_type,
 			'null_condition': self.null_condition,
-			'null_descriptor': self.null_descriptor,
 			'null_trait_type': self.null_trait_type,
 			'null_trait': self.null_trait
 		}
@@ -962,8 +960,6 @@ class PowerCreate(db.Model):
 	transform_type = db.Column(db.String())
 	transform_start_mass = db.Column(db.Integer)
 	transfom_mass = db.Column(db.Integer)
-	transform_start_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	transform_end_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	move_player = db.Column(db.String())
 	move_player_trait = db.Column(db.String())
 	move_opponent_check = db.Column(db.Boolean)
@@ -1026,8 +1022,6 @@ class PowerCreate(db.Model):
 			'transform_type': self.transform_type,
 			'transform_start_mass': self.transform_start_mass,
 			'transfom_mass': self.transfom_mass,
-			'transform_start_descriptor': self.transform_start_descriptor,
-			'transform_end_descriptor': self.transform_end_descriptor,
 			'move_player': self.move_player,
 			'move_player_trait': self.move_player_trait,
 			'move_opponent_check': self.move_opponent_check,
@@ -1072,6 +1066,7 @@ class PowerDamage(db.Model):
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+	descriptor = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -1082,7 +1077,8 @@ class PowerDamage(db.Model):
 			'trait': self.trait,
 			'mod': self.mod,
 			'strength': self.strength,
-			'damage_type': self.damage_type
+			'damage_type': self.damage_type,
+			'descriptor': self.descriptor
 		}
 
 class PowerDC(db.Model):
@@ -1102,6 +1098,7 @@ class PowerDC(db.Model):
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Boolean)
+	descriptor = db.Column(db.Integer)
 	descriptor_possess = db.Column(db.String())
 	condition1 = db.Column(db.String())
 	condition2 = db.Column(db.String())
@@ -1129,6 +1126,7 @@ class PowerDC(db.Model):
 			'condition': self.condition,
 			'keyword_check': self.keyword_check,
 			'check_type': self.check_type,
+			'descriptor': self.descriptor,
 			'descriptor_possess': self.descriptor_possess,
 			'condition1': self.condition1,
 			'condition2': self.condition2,
