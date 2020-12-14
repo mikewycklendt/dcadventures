@@ -178,7 +178,7 @@ def cell(width, content, cells):
 def row():
 
 
-def alt_check_post(entry):
+def alt_check_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -204,7 +204,7 @@ def alt_check_post(entry):
 	mod = integer_convert(mod)
 
 
-def change_action_post(entry):
+def change_action_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -224,7 +224,7 @@ def change_action_post(entry):
 
 	mod = integer_convert(mod)
 
-def character_post(entry):
+def character_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -302,7 +302,7 @@ def character_post(entry):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)	 
 
-def circ_post(entry):
+def circ_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -350,7 +350,7 @@ def circ_post(entry):
 
 
 
-def create_post(entry):
+def create_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -469,7 +469,7 @@ def create_post(entry):
 	ranks = integer_convert(ranks)
 
 
-def damage_post(entry):
+def damage_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -496,7 +496,7 @@ def damage_post(entry):
 
 
 
-def dc_table_post(entry):
+def dc_table_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -546,7 +546,7 @@ def dc_table_post(entry):
 	math_value = integer_convert(math_value)
 	check_mod = integer_convert(check_mod)
 
-def defense_post(entry):
+def defense_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -612,7 +612,7 @@ def defense_post(entry):
 	reflect_dc = integer_convert(reflect_dc)
 	
 
-def degree_mod_post(entry):
+def degree_mod_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -680,7 +680,7 @@ def degree_mod_post(entry):
 
 
 
-def degree_post(entry):
+def degree_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -705,7 +705,7 @@ def degree_post(entry):
 
 	degree = integer_convert(degree)
 
-def environment_post(entry):
+def environment_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -776,7 +776,7 @@ def environment_post(entry):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)
 
-def levels_post(entry):
+def levels_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -792,7 +792,7 @@ def levels_post(entry):
 
 	extra = extra_name(extra_id)
 
-def minion_post(entry):
+def minion_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -833,7 +833,7 @@ def minion_post(entry):
 	resitable_dc = integer_convert(resitable_dc)
 	multiple_value = integer_convert(multiple_value)
 
-def mod_post(entry):
+def mod_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -978,7 +978,7 @@ def mod_post(entry):
 
 
 	
-def move_post(entry):
+def move_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1127,7 +1127,7 @@ def move_post(entry):
 
 
 
-def opposed_post(entry):
+def opposed_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1154,7 +1154,7 @@ def opposed_post(entry):
 	opponent_mod = integer_convert(opponent_mod)
 
 
-def ranged_post(entry):
+def ranged_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1228,7 +1228,7 @@ def ranged_post(entry):
 	dc_value = integer_convert(dc_value)
 
 
-def resist_post(entry):
+def resist_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1264,7 +1264,7 @@ def resist_post(entry):
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
 
-def resisted_by_post(entry):
+def resisted_by_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1309,7 +1309,7 @@ def resisted_by_post(entry):
 	weaken_restored = integer_convert(weaken_restored)
 	damage =  integer_convert(damage)
 	
-def reverse_effect_post(entry):
+def reverse_effect_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1349,7 +1349,7 @@ def reverse_effect_post(entry):
 	time_value = integer_convert(time_value)
 
 
-def sense_post(entry):
+def sense_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
@@ -1445,7 +1445,7 @@ def sense_post(entry):
 	cost = integer_convert(cost)
 
 
-def time_post(entry):
+def time_post(entry, columns):
 
 	body = {}
 	body['id'] = entry.id
