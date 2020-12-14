@@ -139,6 +139,45 @@ def select_multiple(values):
 	return (result)
 
 
+def entry(cells, rows):
+
+	columns = '10%'
+	empty = 15
+
+	for cell in cells:
+		
+		width = cell['width']
+		columns += ' ' + str(width) + '%'
+		empty += width
+
+	if empty < 100:
+		empty = 100 - empty
+		columns += ' ' + str(empty) + '%'
+
+	columns += ' 5%;'
+
+	body = {'class': 'table-row',
+			'cells': cells,
+			'rows': rows,
+			'columns': columns 
+			}
+
+	return (body)
+
+def cell(width, content, cells):
+
+	cell = {'width': width,
+			'content': content
+			'class': 
+			}
+
+	cells.append(cell)
+
+	return (cells)
+
+def row():
+
+
 def alt_check_post(entry):
 
 	body = {}

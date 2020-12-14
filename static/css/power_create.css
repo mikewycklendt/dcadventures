@@ -709,3 +709,106 @@ textarea:focus {
 	text-align: center;
 	border-radius: 5px;
 }
+
+.xbox {
+	display: flex;
+	height: 1.4vw;
+	width: 90%;
+	align-items: center;
+	text-align: center;
+	color: #245681;
+	border: none;
+	background-color: white;
+	transition: all .2s linear;
+	cursor: pointer;
+}
+
+.xbox:hover {
+	color: #af0101;
+}
+
+.xbox::before {
+	font-family: 'FontAwesome';
+	font-size: 1.3vw;
+	content: '\f056';
+	display: inline-block;
+}
+
+.power-table {
+	display: none;
+	margin: 1%;
+	height: auto;
+	width: auto;
+	grid-template-columns: 97%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	border-radius: .4vw;
+	padding-bottom: 2%;
+	margin-bottom: 3%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.table-row {
+	display: grid;
+	width: 95%;
+	text-align: left;
+	grid-template-rows: auto;	
+	background-color: white;
+	transition: all .3s ease-out;
+	font-family: 'Monda', Verdana;
+	font-size: 89%;
+	color: #245681;
+	border-bottom: 0vw solid white;
+}
+
+.table-row:hover {
+	background-color: lightblue;
+	border-bottom: .3vw solid #245681;
+}
+
+.table-cell {
+	display: grid;
+}
+
+.check {
+	display: grid;
+	color: #245681;
+	text-align: center;
+	font-size: 1.3vw;
+}
+
+.check:hover {
+	color: #af0101;
+	font-size: 1.6vw;
+}
+
+.check::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.mod-row {
+	display: grid;
+	grid-auto-columns: auto;
+}
+
+.mod-row-empty {
+	display: grid;
+	width: 10%;
+}
+
+.mod-cell-mod {
+	display: grid;
+	border-left: .1vw solid #245681;
+	border-bottom: .1vw solid #245681;
+	background-color: lightblue;
+}
+
+.mod-cell {
+	text-align: left;
+	border-bottom: .1vw solid #245681;
+	background-color: lightblue;
+}
