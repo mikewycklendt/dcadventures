@@ -138,37 +138,56 @@ def select_multiple(values):
 
 	return (result)
 
+def grid_check(cells, columns):
 
-def entry(cells, rows):
+	if columns == []:
+		for cell in cells:
+			columns.append({'class': cell['class'], 'width': cell['width']})
+	else:
+		for column in columns:
+			for cell in cells:
+				if column['class'] == cell['class']:
+					if column['width'] > cell['width']:
+						cell['width'] = column['width']
+					else:
+						column['width'] = cell['width']
 
-	columns = '10%'
+	return (columns)
+
+def entry(cells, rows, columns):
+
+	grid_columns = '10%'
 	empty = 15
 
 	for cell in cells:
 		
 		width = cell['width']
-		columns += ' ' + str(width) + '%'
+		grid_columns += ' ' + str(width) + '%'
 		empty += width
 
 	if empty < 100:
 		empty = 100 - empty
-		columns += ' ' + str(empty) + '%'
+	else:
+		empty = .2
+		grid_columns += ' ' + str(empty) + '%'
 
 	columns += ' 5%;'
 
 	body = {'class': 'table-row',
 			'cells': cells,
 			'rows': rows,
+			'grid_columns': grid_columns,
 			'columns': columns 
 			}
 
 	return (body)
 
-def cell(width, content, cells):
+def cell(title, width, content, classname, cells):
 
-	cell = {'width': width,
-			'content': content
-			'class': 
+	cell = {'title': title,
+			'width': width,
+			'content': content,
+			'class': classname 
 			}
 
 	cells.append(cell)
