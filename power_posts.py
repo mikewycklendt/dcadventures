@@ -1,3 +1,61 @@
+from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerLevels, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSense, PowerTime 
+
+
+def name(Table, name):
+	try:
+		query = db.session,query(Table).filter_by(id=name).one()
+		name = query.name
+	except:
+		print('invalid id')
+	
+	return (name)
+
+def extra_name(name):
+	if name is None:
+		name = 'Base Power'
+	else:
+		try:
+			query = db.session,query(Extra).filter_by(id=name).one()
+			name = query.name
+		except:
+			print('invalid id')
+	
+	return (name)
+
+def descriptor_name(name):
+
+	if name = 1111111:
+		name = 'Any Chosen Rare' 
+	elif name = 2222222:
+		name = 'Any Chosen Uncommon'
+	elif name = 3333333:
+		name = 'Any Chosen Common' 
+	elif name = 4444444:
+		name = 'Any Chosen Very Common' 
+	elif name = 5555555:
+		name = 'Any Chosen Damage'
+	elif name = 6666666:
+		name = 'Any Chosen Origin'
+	elif name = 7777777:
+		name = 'Any Chosen Source'
+	elif name = 8888888:
+		name = 'Any Chosen Medium Type'
+	elif name = 9999999:
+		name = 'Any Chosen Medium Subtype'
+	elif name = 11111111:
+		name = 'Any Chosen Medium'
+	elif name = 22222222:
+		name = 'Any Chosen Descriptor'
+	else:
+		try:
+			query = db.session,query(PowerDes).filter_by(id=name).one()
+			name = query.name
+		except:
+			print('invalid id')
+	
+	return (name)
+
 
 def alt_check_post(entry):
 
@@ -505,6 +563,21 @@ def mod_post(entry):
 	ranks_cost = entry.ranks_cost
 	cost = entry.cost
 
+	extra = extra_name(extra_id)
+	objects_alone = name(Defense, objects_alone)
+	objects_character = name(Defense, objects_character)
+	simultaneous_descriptor = descriptor_name(simultaneous_descriptor)
+	area_descriptor = descriptor_name(area_descriptor)
+	limited_level = name(PowerLevels, limited_level)
+	limited_source = descriptor_name(limited_source)
+	limited_extra = name(Extra, limited_extra)
+	limited_sense = name(Sense, limited_sense)
+	limited_descriptor = descriptor_name(limited_descriptor)
+	limited_range = name(Range, limited_range)
+	side_level = name(PowerLevels, side_level)
+	reflect_check = name(Check, reflect_check)
+	reflect_descriptor = descriptor_name(reflect_descriptor)
+	
 def move_post(entry):
 
 	body = {}
@@ -589,6 +662,15 @@ def move_post(entry):
 	ranks = entry.ranks
 	cost = entry.cost
 
+	extra = extra_name(extra_id)
+	math = name(Math, math)
+	distance_math = name(Math, distance_math)
+	concealment_sense = name(Sense, concealment_sense)
+	dimension_descriptor = descriptor_name(dimension_descriptor)
+	ground_type = name(Ground, ground_type)
+	ground_units = name(Unit, ground_units)
+	objects_check = name(Check, objects_check)
+	objects_attack = name(ConflictAction, objects_attack)
 
 def opposed_post(entry):
 
@@ -609,7 +691,9 @@ def opposed_post(entry):
 	player_check = entry.player_check
 	opponent_check = entry.opponent_check
 
-
+	extra = extra_name(extra_id)
+	player_check = name(Check, player_check)
+	opponent_check = name(Check, opponent_check)
 
 def ranged_post(entry):
 
@@ -656,6 +740,15 @@ def ranged_post(entry):
 	dc_trait_type = entry.dc_trait_type
 	dc_trait = entry.dc_trait
 
+	extra = extra_name(extra_id)
+	flat_units = name(Unit, flat_units)
+	flat_rank_units = name(Unit, flat_rank_units)
+	units_rank_units = name(Unit, units_rank_units)
+	effect_mod_math = name(Math, effect_mod_math)
+	check_math = name(Math, check_math)
+	trait_math = name(Math, trait_math)
+	distance_mod_math = name(Math, distance_mod_math)
+
 def resist_post(entry):
 
 	body = {}
@@ -679,6 +772,9 @@ def resist_post(entry):
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
 
+	extra = extra_name(extra_id)
+	descriptor = descriptor_name(descriptor)
+	check_type = name(Check, check_type)
 
 def resisted_by_post(entry):
 
@@ -709,6 +805,13 @@ def resisted_by_post(entry):
 	nullify_alternate = entry.nullify_alternate
 	extra_effort = entry.extra_effort
 
+	extra = extra_name(extra_id)
+	level = name(PowerLevels, level)
+	descriptor = descriptor_name(descriptor)
+	nullify_descriptor = descriptor_name(nullify_descriptor)
+	nullify_alternate = name(Defense, nullify_alternate)
+
+
 def reverse_effect_post(entry):
 
 	body = {}
@@ -732,6 +835,11 @@ def reverse_effect_post(entry):
 	math = entry.math
 	time_value = entry.time_value
 	time_unit = entry.time_unit
+
+
+	extra = extra_name(extra_id)
+	math = name(Math, math)
+	time_unit = name(Unit, time_unit)
 
 
 def sense_post(entry):
@@ -788,7 +896,11 @@ def sense_post(entry):
 	cost = entry.cost
 
 
-
+	extra = extra_name(extra_id)
+	skill = name(Skill, skill)
+	time_unit = name(Unit, time_unit)
+	time_skill = name(Skill, time_skill)
+	distance_unit = name(Unit, distance_unit)
 
 
 
@@ -817,4 +929,10 @@ def time_post(entry):
 	recovery = entry.recovery
 	recovery_penalty = entry.recovery_penalty
 	recovery_time = entry.recovery_time
-	recovery_incurable = entry.recovery_incurable	
+	recovery_incurable = entry.recovery_incurable
+
+	extra = extra_name(extra_id)
+	units = name(Unit, units)
+	math = name(Math, math)
+	descriptor = descriptor_name(descriptor)
+	check_type = name(Check, check_type)

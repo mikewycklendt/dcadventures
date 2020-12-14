@@ -1,17 +1,17 @@
 function descriptor_add_type()  {
 	const fields = document.getElementsByClassName('descriptor-sml');
 	
-	options = [{'type': 'rare', 'name': 'Any Chosen Rare'}, 
-				{'type': 'uncommon', 'name': 'Any Chosen Uncommon'}, 
-				{'type': 'common', 'name': 'Any Chosen Common'}, 
-				{'type': 'very', 'name': 'Any Chosen Very Common'}, 
-				{'type': 'damage', 'name': 'Any Chosen Damage'},
-				{'type': 'origin', 'name': 'Any Chosen Origin'},
-				{'type': 'source', 'name': 'Any Chosen Source'},
-				{'type': 'type', 'name': 'Any Chosen Medium Type'},
-				{'type': 'subtype', 'name': 'Any Chosen Medium Subtype'},
-				{'type': 'medium', 'name': 'Any Chosen Medium'},
-				{'type': 'descriptor', 'name': 'Any Chosen Descriptor'}]
+	options = [{'type': 1111111, 'name': 'Any Chosen Rare'}, 
+				{'type': 2222233, 'name': 'Any Chosen Uncommon'}, 
+				{'type': 3333344, 'name': 'Any Chosen Common'}, 
+				{'type': 4444444, 'name': 'Any Chosen Very Common'}, 
+				{'type': 5555555, 'name': 'Any Chosen Damage'},
+				{'type': 6666666, 'name': 'Any Chosen Origin'},
+				{'type': 7777777, 'name': 'Any Chosen Source'},
+				{'type': 8888888, 'name': 'Any Chosen Medium Type'},
+				{'type': 9999999, 'name': 'Any Chosen Medium Subtype'},
+				{'type': 11111111, 'name': 'Any Chosen Medium'},
+				{'type': 22222222, 'name': 'Any Chosen Descriptor'}]
 
 	let field;
 	let option;
