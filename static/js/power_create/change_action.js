@@ -14,7 +14,12 @@ function action_base() {
 	base(field, entry);
 }
 
+let action_grid = {'titles': false,
+					'columns': []}
+
 function action_submit() {
+
+	const columns = action_grid.columns;
 
 	const extra_id = select("action_extra");
 	const action = select("action_change");
@@ -35,7 +40,9 @@ function action_submit() {
 			'action': action,
 			'mod': mod,
 			'objects': objects,
-			'circumstance': circumstance
+			'circumstance': circumstance,
+			'columns': columns
+			
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

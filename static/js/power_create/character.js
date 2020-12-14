@@ -161,7 +161,12 @@ function char_weaken_broad() {
 	}
 }
 
+let char_grid = {'titles': false,
+					'columns': []}
+
 function char_submit() {
+
+	const columns = char_grid.columns;
 
 	const extra_id = select("char_extra");
 	const trait_type = select("char_trait_type");
@@ -260,7 +265,8 @@ function char_submit() {
 			'insub_type': insub_type,
 			'insub_description': insub_description,
 			'cost': cost,
-			'ranks': ranks
+			'ranks': ranks,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

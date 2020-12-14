@@ -86,7 +86,12 @@ function dc_levels() {
 	check_drop(check, div, entry);
 }
 
+let dc_grid = {'titles': false,
+					'columns': []}
+
 function dc_submit() {
+
+	const columns = dc_grid.columns;
 
 	const target = select("dc_target");
 	const extra_id = select("dc_extra");
@@ -143,7 +148,8 @@ function dc_submit() {
 			'check_trait': check_trait,
 			'check_mod': check_mod,
 			'levels': levels,
-			'level': level
+			'level': level,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

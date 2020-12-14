@@ -77,7 +77,12 @@ function defense_cover() {
 	check_opacity(check, div);
 }
 
+let check_grid = {'titles': false,
+					'columns': []}
+
 function defense_submit() {
+
+	const columns = char_grid.columns;
 
 	const extra_id = select("defense_extra");
 	const defense = select("defense_defense");
@@ -148,7 +153,8 @@ function defense_submit() {
 			'immunity_damage': immunity_damage,
 			'immunity_rule': immunity_rule,
 			'cover_check': cover_check,
-			'cover_type': cover_type
+			'cover_type': cover_type,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

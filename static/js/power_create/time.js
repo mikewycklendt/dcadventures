@@ -37,7 +37,12 @@ function time_recovery() {
 	check_drop(check, div, entry);
 }
 
+let time_grid = {'titles': false,
+					'columns': []}
+
 function time_submit() {
+
+	const columns = time_grid.columns;
 
 	const extra_id = select("time_extra");
 	const time_type = select("time_type");
@@ -80,7 +85,8 @@ function time_submit() {
 			'recovery': recovery,
 			'recovery_penalty': recovery_penalty,
 			'recovery_time': recovery_time,
-			'recovery_incurable': recovery_incurable
+			'recovery_incurable': recovery_incurable,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

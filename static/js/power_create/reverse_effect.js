@@ -47,7 +47,12 @@ function reverse_value_type() {
 	value_type(type_field, math, val);
 }
 
+let reverse_grid = {'titles': false,
+					'columns': []}
+
 function reverse_submit() {
+
+	const columns = reverse_grid.columns;
 
 	const target = select("reverse_target");
 	const extra_id = select("reverse_extra");
@@ -86,7 +91,8 @@ function reverse_submit() {
 			'math_dc': math_dc,
 			'math': math,
 			'time_value': time_value,
-			'time_unit': time_unit
+			'time_unit': time_unit,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

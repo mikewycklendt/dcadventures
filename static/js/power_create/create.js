@@ -170,7 +170,12 @@ function create_transform() {
 	check_drop(check, div, entry);
 }
 
+let create_grid = {'titles': false,
+					'columns': []}
+
 function create_submit() {
+
+	const columns = create_grid.columns;
 
 	const extra_id = select("create_extra");
 	const solidity = select("create_solidity");
@@ -299,7 +304,8 @@ function create_submit() {
 			'support_effort': support_effort,
 			'support_effort_rounds': support_effort_rounds,
 			'cost': cost,
-			'ranks': ranks
+			'ranks': ranks,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

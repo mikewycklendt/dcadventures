@@ -44,7 +44,12 @@ function resistance_requires_check() {
 	check_opacity(check, div);
 }
 
+let resistance_grid = {'titles': false,
+					'columns': []}
+
 function resistance() {
+
+	const columns = resistance_grid.columns;
 
 	const target = select("resistance_target");
 	const extra_id = select("resistance_extra");
@@ -81,7 +86,8 @@ function resistance() {
 			'requires_check': requires_check,
 			'check_type': check_type,
 			'check_trait_type': check_trait_type,
-			'check_trait': check_trait
+			'check_trait': check_trait,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

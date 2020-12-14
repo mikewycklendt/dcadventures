@@ -90,8 +90,12 @@ function env_immunity_type() {
 	select_opacity(select, options);
 }
 
+let env_grid = {'titles': false,
+					'columns': []}
+
 function env_submit() {
 
+	const columns = env_grid.columns;
 
 	const extra_id = select("env_extra");
 	const radius = text("env_radius");
@@ -160,7 +164,8 @@ function env_submit() {
 			'visibility_trait': visibility_trait,
 			'visibility_mod': visibility_mod,
 			'cost': cost,
-			'ranks': ranks
+			'ranks': ranks,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

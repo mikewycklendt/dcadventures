@@ -40,7 +40,12 @@ function circ_null_trait_type() {
 	trait_select(select, fill);
 }
 
+let circ_grid = {'titles': false,
+					'columns': []}
+
 function circ_submit() {
+
+	const columns = circ_grid.columns;
 
 	const target = select("circ_target");
 	const extra_id = select("circ_extra");
@@ -81,7 +86,8 @@ function circ_submit() {
 			'null_condition': null_condition,
 			'null_descriptor': null_descriptor,
 			'null_trait_type': null_trait_type,
-			'null_trait': null_trait
+			'null_trait': null_trait,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

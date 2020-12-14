@@ -15,8 +15,13 @@ function degree_base() {
 	base_text(field, type, entry);
 }
 
+let degree_grid = {'titles': false,
+					'columns': []}
+
 function degree_submit() {
 	
+	const columns = degree_grid.columns;
+
 	const degree_type = text("degree_type");
 	const extra_id = select("degree_extra");
 	const degree = select("degree_degree");
@@ -42,7 +47,8 @@ function degree_submit() {
 			'desscription': desscription,
 			'extra_effort': extra_effort,
 			'cumulative': cumulative,
-			'target': target
+			'target': target,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

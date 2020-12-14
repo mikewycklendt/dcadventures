@@ -32,7 +32,12 @@ function resist_effect() {
 	select_maxheight(field, options);
 }
 
+let resist_grid = {'titles': false,
+					'columns': []}
+
 function resist_submit() {
+
+	const columns = resist_grid.columns;
 
 	const extra_id = select("resist_extra");
 	const trait_type = select("resist_trait_type");
@@ -81,7 +86,8 @@ function resist_submit() {
 			'strength': strength,
 			'nullify_descriptor': nullify_descriptor,
 			'nullify_alternate': nullify_alternate,
-			'extra_effort': extra_effort
+			'extra_effort': extra_effort,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

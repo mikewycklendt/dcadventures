@@ -21,7 +21,12 @@ function check_trait_type() {
 	trait_select(select, fill);
 }
 
+let check_grid = {'titles': false,
+					'columns': []}
+
 function check_submit() {
+
+	const columns = check_grid.columns;
 
 	const extra_id = select("check_extra");
 	const check_type = select("check_check_type");
@@ -47,7 +52,8 @@ function check_submit() {
 			'circumstance': circumstance,
 			'when': when,
 			'trait_type': trait_type,
-			'trait': trait
+			'trait': trait,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -121,6 +121,8 @@ function sense_distance() {
 	}
 }
 
+
+
 function sense_dimensional() {
 	const check = 'sense_dimensional';
 	const div = 'sense-dimensional';
@@ -129,8 +131,13 @@ function sense_dimensional() {
 	check_drop(check, div, entry);
 }
 
+let sense_grid = {'titles': false,
+					'columns': []}
+
 function sense_submit() {
 	
+	const columns = sense_grid.columns;
+
 	const target = select("sense_target");
 	const extra_id = select("sense_extra");
 	const sense = select("sense_sense");
@@ -226,7 +233,8 @@ function sense_submit() {
 			'distance_factor': distance_factor,
 			'dimensional_type': dimensional_type,
 			'ranks': ranks,
-			'cost': cost
+			'cost': cost,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

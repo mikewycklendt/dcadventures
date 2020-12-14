@@ -65,7 +65,12 @@ function ranged_dc_trait_type() {
 	trait_select(select, fill);
 }
 
+let ranged_grid = {'titles': false,
+					'columns': []}
+
 function ranged_submit() {
+
+	const columns = ranged_grid.columns;
 
 	const extra_id = select("ranged_extra");
 	const range_type = select("ranged_type");
@@ -146,7 +151,8 @@ function ranged_submit() {
 			'dc': dc,
 			'dc_value': dc_value,
 			'dc_trait_type': dc_trait_type,
-			'dc_trait': dc_trait
+			'dc_trait': dc_trait,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

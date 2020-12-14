@@ -248,7 +248,12 @@ function mod_affects_objects() {
 }
 
 
+let mod_grid = {'titles': false,
+					'columns': []}
+
 function mod_submit() {
+
+	const columns = mod_grid.columns;
 
 	const extra_id = select("mod_extra");
 	const affects_objects = check("mod_affects_objects");
@@ -421,7 +426,8 @@ function mod_submit() {
 			'points_rerolls': points_rerolls,
 			'points_reroll_result': points_reroll_result,
 			'ranks_cost': ranks_cost,
-			'cost': cost
+			'cost': cost,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -63,10 +63,12 @@ function deg_mod_measure_trait_type() {
 	trait_select(select, fill);
 }
 
-deg_mod_enter = 0;
+let deg_mod_grid = {'titles': false,
+					'columns': []}
 
 function deg_mod_submit() {
 
+	const columns = deg_mod_grid.columns;
 	
 	const target = select("deg_mod_target");
 	const extra_id = select("deg_mod_extra");
@@ -127,7 +129,8 @@ function deg_mod_submit() {
 			'nullify': nullify,
 			'cumulative': cumulative,
 			'linked': linked,
-			'level': level
+			'level': level,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -29,7 +29,12 @@ function opposed_opponent_trait_type() {
 	trait_select(select, fill)
 }
 
+let opposed_grid = {'titles': false,
+					'columns': []}
+
 function opposed_submit() {
+
+	const columns = opposed_grid.columns;
 
 	const extra_id = select("opposed_extra");
 	const trait_type = select("opposed_trait_type");
@@ -58,7 +63,8 @@ function opposed_submit() {
 			'opponent_trait': opponent_trait,
 			'opponent_mod': opponent_mod,
 			'player_check': player_check,
-			'opponent_check': opponent_check
+			'opponent_check': opponent_check,
+			'columns': columns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
