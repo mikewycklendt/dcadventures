@@ -816,7 +816,6 @@ class PowerChar(db.Model):
 	weaken_trait_type = db.Column(db.String())
 	weaken_trait = db.Column(db.String())
 	weaken_broad = db.Column(db.String())
-	weaken_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	weaken_simultaneous = db.Column(db.Boolean)
 	limited_by = db.Column(db.String())
 	limited_other = db.Column(db.String())
@@ -834,7 +833,6 @@ class PowerChar(db.Model):
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
 	points_trait = db.Column(db.String())
-	points_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	appear_target = db.Column(db.String())
 	appear_description = db.Column(db.String())
 	insub_type = db.Column(db.String())
@@ -865,7 +863,6 @@ class PowerChar(db.Model):
 			'weaken_trait_type': self.weaken_trait_type,
 			'weaken_trait': self.weaken_trait,
 			'weaken_broad': self.weaken_broad,
-			'weaken_descriptor': self.weaken_descriptor,
 			'weaken_simultaneous': self.weaken_simultaneous,
 			'limited_by': self.limited_by,
 			'limited_other': self.limited_other,
@@ -883,7 +880,6 @@ class PowerChar(db.Model):
 			'points_value': self.points_value,
 			'points_trait_type': self.points_trait_type,
 			'points_trait': self.points_trait,
-			'points_descriptor': self.points_descriptor,
 			'appear_target': self.appear_target,
 			'appear_description': self.appear_description,
 			'insub_type': self.insub_type,
@@ -908,6 +904,7 @@ class PowerCirc(db.Model):
 	check_trait = db.Column(db.String())
 	null_type = db.Column(db.String())
 	null_condition = db.Column(db.String())
+	null_descriptor = db.Column(db.Integer)
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.String())
 
@@ -927,6 +924,7 @@ class PowerCirc(db.Model):
 			'check_trait': self.check_trait,
 			'null_type': self.null_type,
 			'null_condition': self.null_condition,
+			'null_descriptor': self.null_descriptor,
 			'null_trait_type': self.null_trait_type,
 			'null_trait': self.null_trait
 		}
@@ -960,6 +958,8 @@ class PowerCreate(db.Model):
 	transform_type = db.Column(db.String())
 	transform_start_mass = db.Column(db.Integer)
 	transfom_mass = db.Column(db.Integer)
+	transform_start_descriptor = db.Column(db.Integer)
+	transform_end_descriptor = db.Column(db.Integer)
 	move_player = db.Column(db.String())
 	move_player_trait = db.Column(db.String())
 	move_opponent_check = db.Column(db.Boolean)
@@ -1022,6 +1022,8 @@ class PowerCreate(db.Model):
 			'transform_type': self.transform_type,
 			'transform_start_mass': self.transform_start_mass,
 			'transfom_mass': self.transfom_mass,
+			'transform_start_descriptor': self.transform_start_descriptor,
+			'transform_end_descriptor': self.transform_end_descriptor,
 			'move_player': self.move_player,
 			'move_player_trait': self.move_player_trait,
 			'move_opponent_check': self.move_opponent_check,
