@@ -816,6 +816,7 @@ class PowerChar(db.Model):
 	weaken_trait_type = db.Column(db.String())
 	weaken_trait = db.Column(db.String())
 	weaken_broad = db.Column(db.String())
+	weaken_descriptor = db.Column(db.Integer)
 	weaken_simultaneous = db.Column(db.Boolean)
 	limited_by = db.Column(db.String())
 	limited_other = db.Column(db.String())
@@ -833,6 +834,7 @@ class PowerChar(db.Model):
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
 	points_trait = db.Column(db.String())
+	points_descriptor = db.Column(db.Integer)
 	appear_target = db.Column(db.String())
 	appear_description = db.Column(db.String())
 	insub_type = db.Column(db.String())
@@ -863,6 +865,7 @@ class PowerChar(db.Model):
 			'weaken_trait_type': self.weaken_trait_type,
 			'weaken_trait': self.weaken_trait,
 			'weaken_broad': self.weaken_broad,
+			'weaken_descriptor': self.weaken_descriptor,
 			'weaken_simultaneous': self.weaken_simultaneous,
 			'limited_by': self.limited_by,
 			'limited_other': self.limited_other,
@@ -880,6 +883,7 @@ class PowerChar(db.Model):
 			'points_value': self.points_value,
 			'points_trait_type': self.points_trait_type,
 			'points_trait': self.points_trait,
+			'points_descriptor': self.points_descriptor,
 			'appear_target': self.appear_target,
 			'appear_description': self.appear_description,
 			'insub_type': self.insub_type,
