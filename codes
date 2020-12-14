@@ -3,26 +3,39 @@
 
 power integers
 
-perm = 1234
-rank = 0000
-any = 5678
-always = 2222
-round = 3333
-extra = 1111
-null = 4444
-normal = 5555
-instant = 6666
-distance = 7777 - distance rank
-vert = 8888 = vertical height
-free = 9999
-result = 4321
-all = 7788
-trait = 1122
-imperv = 3344
-check = 5566
-turn = 9900
+perm = 123	= "Permanent"
+rank = 121 = "Power Rank"
+any = 567	= "Any"
+always = 222 = "Always"
+round = 333 = "One Round"
+extra = 111 = "Extra Rank"
+null = 444 = "Nullified"
+normal = 555 = "Normal"
+instant = 666= "Instant"
+distance = 777 - "Distance rank"
+vert = 888 = "Vertical Height"
+free = 999 = "No Check"
+result = 432 = "Result"
+all = 778 = "All"
+trait = 112 = "Trait"
+imperv = 334 = "Impervious"
+check = 556 = "Check"
+turn = 990 = "Turn"
 
 
+descriptors:
+
+11223344 = 'Any Chosen Rare'
+22334455 = 'Any Chosen Uncommon' 
+33445566 = 'Any Chosen Common'
+44556677 = 'Any Chosen Very Common' 
+55667788 = 'Any Chosen Damage'
+66778899 = 'Any Chosen Origin'
+77889900 = 'Any Chosen Source'
+88990011 = 'Any Chosen Medium Type'
+99001122 = 'Any Chosen Medium Subtype'
+11002233 = 'Any Chosen Medium'
+12121212 = 'Any Chosen Descriptor'
 
 
 defense

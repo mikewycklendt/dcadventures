@@ -3,11 +3,15 @@ from models import PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate
 
 
 def name(Table, name):
-	try:
-		query = db.session,query(Table).filter_by(id=name).one()
-		name = query.name
-	except:
-		print('invalid id')
+
+	if name = 0:
+		name = 'All'
+	else:
+		try:
+			query = db.session,query(Table).filter_by(id=name).one()
+			name = query.name
+		except:
+			print('invalid id')
 	
 	return (name)
 
@@ -25,27 +29,27 @@ def extra_name(name):
 
 def descriptor_name(name):
 
-	if name = 1111111:
-		name = 'Any Chosen Rare' 
-	elif name = 2222222:
-		name = 'Any Chosen Uncommon'
-	elif name = 3333333:
-		name = 'Any Chosen Common' 
-	elif name = 4444444:
+	if name == 11223344: 
+		name = 'Any Chosen Rare'
+	elif name == 22334455:
+		name = 'Any Chosen Uncommon' 
+	elif name == 33445566:
+		name = 'Any Chosen Common'
+	elif name == 44556677:
 		name = 'Any Chosen Very Common' 
-	elif name = 5555555:
+	elif name == 55667788:
 		name = 'Any Chosen Damage'
-	elif name = 6666666:
+	elif name == 66778899:
 		name = 'Any Chosen Origin'
-	elif name = 7777777:
+	elif name == 77889900:
 		name = 'Any Chosen Source'
-	elif name = 8888888:
+	elif name == 88990011:
 		name = 'Any Chosen Medium Type'
-	elif name = 9999999:
+	elif name == 99001122:
 		name = 'Any Chosen Medium Subtype'
-	elif name = 11111111:
+	elif name == 11002233:
 		name = 'Any Chosen Medium'
-	elif name = 22222222:
+	elif name == 12121212:
 		name = 'Any Chosen Descriptor'
 	else:
 		try:
@@ -55,6 +59,84 @@ def descriptor_name(name):
 			print('invalid id')
 	
 	return (name)
+
+def integer_convert(value):
+
+	if value == 123:
+		value = "Permanent"
+		print(value)
+	elif value == 121:
+		value = "Power Rank"
+		print(value)
+	elif value == 567:
+		value = "Any"
+		print(value)
+	elif value == 222:
+		value = "Always"
+		print(value)
+	elif value == 333:
+		value = "One Round"
+		print(value)
+	elif value == 111:
+		value = "Extra Rank"
+		print(value)
+	elif value == 444:
+		value = "Nullified"
+		print(value)
+	elif value == 555:
+		value = "Normal"
+		print(value)
+	elif value == 666:
+		value = "Instant"
+		print(value)
+	elif value == 777:
+		value = "Distance rank"
+		print(value)
+	elif value == 888:
+		value = "Vertical Height"
+		print(value)
+	elif value == 999:
+		value = "No Check"
+		print(value)
+	elif value == 432:
+		value = "Result"
+		print(value)
+	elif value == 778:
+		value = "All"
+		print(value)
+	elif value == 112:
+		value = "Trait"
+		print(value)
+	elif value == 334:
+		value = "Impervious"
+		print(value)
+	elif value == 556:
+		value = "Check"
+		print(value)
+	elif value == 990:
+		value = "Turn"
+		print(value)
+	else:
+		value = value
+
+	return (value)
+
+def selects(value, options):
+
+	if value != '':
+		for option in options:
+			if value == option['type']:
+				value = option['name']
+
+	return (value)
+
+def select_multiple(values):
+	result = ''
+
+	for value in values:
+		result += value + ' '
+
+	return (result)
 
 
 def alt_check_post(entry):
@@ -74,7 +156,13 @@ def alt_check_post(entry):
 	trait_type = entry.trait_type
 	trait = entry.trait
 
+	extra = extra_name(extra_id)
+	check_type = name(Check, check_type)
 
+	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
+	when = selects(when, check_types)
+
+	mod = integer_convert(mod)
 
 
 def change_action_post(entry):
@@ -91,6 +179,11 @@ def change_action_post(entry):
 	mod = entry.mod
 	objects = entry.objects
 	circumstance = entry.circumstance
+
+	extra = extra_name(extra_id)
+	action = name(Action, action)
+
+	mod = integer_convert(mod)
 
 def character_post(entry):
 
@@ -147,6 +240,28 @@ def character_post(entry):
 	ranks = entry.ranks
 
 	extra = extra_name(extra_id)
+	weaken_descriptor = descriptor_name(weaken_descriptor)
+	points_descriptor = descriptor_name(points_descriptor)
+
+	weaken_select = [{'type': '', 'name': 'Weaken Type'}, {'type': 'trait', 'name': 'Specific'}, {'type': 'type', 'name': 'Broad Trait'}, {'type': 'descriptor', 'name': 'Broad Descriptor'}]
+	weaken_type = selects(weaken_type, weaken_select)
+
+	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
+	limited_by = selects(limited_by, limited_select)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	appear_target =  selects(appear_target, targets_select)
+
+	insub_select = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
+	insub_type = selects(insub_type, insub_select)
+
+	value = integer_convert(value)
+	increase = integer_convert(increase)
+	reduced_value = integer_convert(reduced_value)
+	carry_capacity = integer_convert(carry_capacity)
+	points_value = integer_convert(points_value)
+	cost = integer_convert(cost)
+	ranks = integer_convert(ranks)	 
 
 def circ_post(entry):
 
@@ -176,6 +291,24 @@ def circ_post(entry):
 	extra = extra_name(extra_id)
 	circ_range = name(Range, circ_range)
 	null_descriptor = descriptor_name(null_descriptor)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	circ_type_select = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
+	circ_type = selects(circ_type, circ_type_select)
+
+	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
+	check_who = selects(check_who, who_check_select)
+
+	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
+	null_type = selects(null_type, circ_null_select)
+
+	mod = integer_convert(mod)
+	rounds = integer_convert(rounds)
+	circ_range = integer_convert(circ_range)
+
+
 
 
 def create_post(entry):
@@ -253,6 +386,50 @@ def create_post(entry):
 	transform_end_descriptor = descriptor_name(transform_end_descriptor)
 	move_opponent_ability = name(Ability, move_opponent_ability)
 
+	solidity_select = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
+	solidity = selects(solidity, solidity_select)
+
+	visibility_select = [{'type': '', 'name': 'Visibility'}, {'type': 'visible', 'name': 'Visible'}, {'type': 'invisible', 'name': 'Invisible'}, {'type': 'select', 'name': 'Selective'}]
+	visibility = selects(visibility, visibility_select)
+
+	transform_select = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
+	transform_type = selects(transform_type, transform_select)
+
+	moveable_select = [{'type': '', 'name': 'Moveable With'}, {'type': None, 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+	move_player = selects(move_player, moveable_select)
+
+	against_select = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
+	trap_type = selects(trap_type, against_select)
+
+	determined_select = [{'type': '', 'name': 'Determined By'}, {'type': 'dc', 'name': 'DC'}, {'type': 'target', 'name': 'Target Trait'}, {'type': 'player', 'name': 'Player Trait'}]
+	ranged_type = selects(ranged_type, determined_select)
+
+	object_damage_select = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'effect', 'name': 'Effect Rank'}, {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
+	ranged_damage_type = selects(ranged_damage_type, object_damage_select)
+
+	weapon_damage_type = selects(weapon_damage_type, object_damage_select)
+
+	volume = integer_convert(volume)
+	toughness = integer_convert(toughness)
+	mass = integer_convert(mass)
+	transform_start_mass = integer_convert(transform_start_mass)
+	transfom_mass = integer_convert(transfom_mass)
+	move_opponent_rank = integer_convert(move_opponent_rank)
+	trap_dc = integer_convert(trap_dc)
+	trap_resist_dc = integer_convert(trap_resist_dc)
+	ranged_dc = integer_convert(ranged_dc)
+	ranged_damage_value = integer_convert(ranged_damage_value)
+	weapon_mod = integer_convert(weapon_mod)
+	weapon_damage = integer_convert(weapon_damage)
+	support_strength = integer_convert(support_strength)
+	support_action = integer_convert(support_action)
+	support_action_rounds = integer_convert(support_action_rounds)
+	support_effort = integer_convert(support_effort)
+	support_effort_rounds = integer_convert(support_effort_rounds)
+	cost = integer_convert(cost)
+	ranks = integer_convert(ranks)
+
+
 def damage_post(entry):
 
 	body = {}
@@ -273,6 +450,12 @@ def damage_post(entry):
 	extra = extra_name(extra_id)
 	damage_type = name(Descriptor, damage_type)
 	descriptor = descriptor_name(descriptor)
+
+	mod = integer_convert(mod)
+	damage_type = integer_convert(damage_type)
+
+
+
 
 def dc_table_post(entry):
 
@@ -310,6 +493,19 @@ def dc_table_post(entry):
 	math = name(Math, math)
 	descriptor = descriptor_name(descriptor)
 	level = name(PowerLevels, level)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	value_type_select = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+	dc = selects(dc, value_type_select)
+
+	possess_select = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
+	descriptor_possess = selects(descriptor_possess, possess_select)
+
+	value = integer_convert(value)
+	math_value = integer_convert(math_value)
+	check_mod = integer_convert(check_mod)
 
 def defense_post(entry):
 
@@ -357,6 +553,26 @@ def defense_post(entry):
 	immunity_descriptor = descriptor_name(immunity_descriptor)
 	immunity_damage = name(Descriptor, immunity_damage)
 
+	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
+	use = selects(use, use_type_select)
+
+	outcome_select = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
+	outcome = selects(outcome, outcome_select)
+
+	immunity_type_select = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'rule', 'name': 'Game Rule'}]
+	immunity_type = selects(immunity_type, immunity_type_select)
+
+	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
+	immunity_rule = selects(immunity_rule, game_rule_select)
+
+	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
+	cover_type = selects(cover_type, cover_select)
+
+	mod = integer_convert(mod)
+	roll = integer_convert(roll)
+	reflect_dc = integer_convert(reflect_dc)
+	
+
 def degree_mod_post(entry):
 
 	body = {}
@@ -397,6 +613,34 @@ def degree_mod_post(entry):
 	measure_rank = name(Rank, measure_rank)
 	level = name(PowerLevels, level)
 
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	deg_mod_type_select = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}]
+	deg_type = selects(deg_type, deg_mod_type_select)
+
+	value_type_select = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+	measure_type = selects(measure_type, value_type_select)
+
+	condition_type_select = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	deg_condition_type = selects(deg_condition_type, condition_type_select)
+
+	updown_select = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+	condition_damage = selects(condition_damage, updown_select)
+
+	value = integer_convert(value)
+	circ_value = integer_convert(circ_value)
+	circ_turns = integer_convert(circ_turns)
+	measure_val1 = integer_convert(measure_val1)
+	measure_value = integer_convert(measure_value)
+	measure_rank = integer_convert(measure_rank)
+	condition_damage_value = integer_convert(condition_damage_value)
+	condition_damage = integer_convert(condition_damage)
+	nullify = integer_convert(nullify)
+
+
+
+
 def degree_post(entry):
 
 	body = {}
@@ -417,6 +661,10 @@ def degree_post(entry):
 
 	extra = extra_name(extra_id)
 
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	degree = integer_convert(degree)
 
 def environment_post(entry):
 
@@ -459,6 +707,35 @@ def environment_post(entry):
 
 	extra = extra_name(extra_id)
 
+	environment_immunity_select = [{'type': '', 'name': 'Immune From'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'condition', 'name': 'Condition'}]
+	immunity_type = selects(immunity_type, environment_immunity_select)
+
+	temp_type_select = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
+	temp_type = selects(temp_type, temp_type_select)
+
+	extremity_select = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
+	immunity_extremity = selects(immunity_extremity, extremity_select)
+
+	environment_select = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
+	immunity_environment = selects(immunity_environment, environment_select)
+
+	condition_temp_type = selects(condition_temp_type, temp_type_select)
+
+	temp_extremity = selects(temp_extremity, extremity_select)
+
+	nature_select = [{'type': '', 'name': 'Nature'}, {'type': 'ice', 'name': 'Ice'}, {'type': 'rain', 'name': 'Rain'}, {'type': 'snow', 'name': 'Snow'}, {'type': 'wind', 'name': 'Wind'}, {'type': 'other', 'name': 'Other'}]
+	move_nature = selects(move_nature, nature_select)
+
+	conceal_type_select = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
+	conceal_type = selects(conceal_type, conceal_type_select)
+
+	radius = integer_convert(radius)
+	distance = integer_convert(distance)
+	rank = integer_convert(rank)
+	move_speed = integer_convert(move_speed)
+	visibility_mod = integer_convert(visibility_mod)
+	cost = integer_convert(cost)
+	ranks = integer_convert(ranks)
 
 def levels_post(entry):
 
@@ -473,7 +750,6 @@ def levels_post(entry):
 	level_type = entry.level_type
 	level = entry.level
 	level_effect = entry.level_effect
-
 
 	extra = extra_name(extra_id)
 
@@ -509,6 +785,14 @@ def minion_post(entry):
 	extra = extra_name(extra_id)	
 	attitude_type = name(PowerLevels, attitude_type)
 	resitable_check = name(Defense, resitable_check)
+
+	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
+	variable_type = selects(variable_type, minion_type_select)
+
+	points = integer_convert(points)
+	sacrifice_cost = integer_convert(sacrifice_cost)
+	resitable_dc = integer_convert(resitable_dc)
+	multiple_value = integer_convert(multiple_value)
 
 def mod_post(entry):
 
@@ -615,6 +899,45 @@ def mod_post(entry):
 	side_level = name(PowerLevels, side_level)
 	reflect_check = name(Check, reflect_check)
 	reflect_descriptor = descriptor_name(reflect_descriptor)
+
+	limited_type_select = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
+	limited_type   = selects(limited_type, limited_type_select)
+
+	task_type_select = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
+	limited_task_type = selects(limited_task_type, task_type_select)
+
+	null_type_select = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
+	limited_language_type = selects(limited_language_type, null_type_select)
+
+	side_effects_select = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
+	side_effect_type = selects(side_effect_type, side_effects_select)
+
+	spend_select = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
+	points_type = selects(points_type, spend_select)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	points_reroll_target = selects(points_reroll_target, targets_select)
+
+	result_select = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
+	points_reroll_result = selects(points_reroll_result, result_select)
+
+	effortless_degree = integer_convert(effortless_degree)
+	area_mod = integer_convert(area_mod)
+	area_range = integer_convert(area_range)
+	limited_mod = integer_convert(limited_mod)
+	limited_subjects = integer_convert(limited_subjects)
+	limited_degree = integer_convert(limited_degree)
+	subtle_dc = integer_convert(subtle_dc)
+	ranks_ranks = integer_convert(ranks_ranks)
+	ranks_mod = integer_convert(ranks_mod)
+	points_reroll_cost = integer_convert(points_reroll_cost)
+	points_rerolls = integer_convert(points_rerolls)
+	points_reroll_result = integer_convert(points_reroll_result)
+	ranks_cost = integer_convert(ranks_cost)
+	cost = integer_convert(cost)
+
+
+
 	
 def move_post(entry):
 
@@ -710,6 +1033,61 @@ def move_post(entry):
 	objects_check = name(Check, objects_check)
 	objects_attack = name(ConflictAction, objects_attack)
 
+	directions_select = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
+	direction = selects(direction, directions_select)
+
+	aquatic_select = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}]
+	acquatic_type = selects(acquatic_type, aquatic_select)
+
+	openings_select = [{'type': '', 'name': 'Move through'}, {'type': 'opening', 'name': 'Less than water tight'}, {'type': 'water', 'name': 'Less than air tight'}, {'type': 'solid', 'name': 'Through Solid'}, {'type': 'any', 'name': 'Throughh anything'}]
+	permeate_type = selects(permeate_type, openings_select)
+
+	travel_select = [{'type': '', 'name': 'Travel Type'}, {'type': 'dimension', 'name': 'Dimension Travel'}, {'type': 'space', 'name': 'Space Travel'}, {'type': 'time', 'name': 'Time Travel'}, {'type': 'teleport', 'name': 'Teleport'}]
+	special_type = selects(special_type, travel_select)
+
+	teleport_change_select = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
+	teleport_change = selects(teleport_change, teleport_change_select)
+
+	teleport_select = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
+	teleport_type = selects(teleport_type, teleport_select)
+
+	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
+	dimension_type = selects(dimension_type, dimensions_select)
+
+	space_select = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
+	special_space = selects(special_space, space_select)
+
+	time_travel_select = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
+	special_time = selects(special_time, time_travel_select)
+
+	permanence_select = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	ground_permanence = selects(ground_permanence, permanence_select)
+
+	flight_conditions = select_multiple(flight_conditions)
+
+	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
+	objects_direction = selects(objects_direction, move_objects_select)
+
+	rank = integer_convert(rank)
+	mod = integer_convert(mod)
+	distance_value = integer_convert(distance_value)
+	distance_math_value = integer_convert(distance_math_value)
+	distance_math_value2 = integer_convert(distance_math_value2)
+	distance_mod = integer_convert(distance_mod)
+	dc = integer_convert(dc)
+	mass_value = integer_convert(mass_value)
+	extended_actions = integer_convert(extended_actions)
+	permeate_speed = integer_convert(permeate_speed)
+	dimension_mass_rank = integer_convert(dimension_mass_rank)
+	special_time_carry = integer_convert(special_time_carry)
+	ground_time = integer_convert(ground_time)
+	subtle_mod = integer_convert(subtle_mod)
+	ranks = integer_convert(ranks)
+	cost = integer_convert(cost)
+	
+
+
+
 def opposed_post(entry):
 
 	body = {}
@@ -732,6 +1110,10 @@ def opposed_post(entry):
 	extra = extra_name(extra_id)
 	player_check = name(Check, player_check)
 	opponent_check = name(Check, opponent_check)
+
+	mod = integer_convert(mod)
+	opponent_mod = integer_convert(opponent_mod)
+
 
 def ranged_post(entry):
 
@@ -787,6 +1169,26 @@ def ranged_post(entry):
 	trait_math = name(Math, trait_math)
 	distance_mod_math = name(Math, distance_mod_math)
 
+	flat_value = integer_convert(flat_value)
+	flat_rank = integer_convert(flat_rank)
+	flat_rank_value = integer_convert(flat_rank_value)
+	flat_rank_rank = integer_convert(flat_rank_rank)
+	flat_rank_distance = integer_convert(flat_rank_distance)
+	flat_rank_distance_rank = integer_convert(flat_rank_distance_rank)
+	units_rank_start_value = integer_convert(units_rank_start_value)
+	units_rank_value = integer_convert(units_rank_value)
+	units_rank_units = integer_convert(units_rank_units)
+	units_rank_rank = integer_convert(units_rank_rank)
+	rank_distance_start = integer_convert(rank_distance_start)
+	rank_distance = integer_convert(rank_distance)
+	rank_effect_rank = integer_convert(rank_effect_rank)
+	effect_mod = integer_convert(effect_mod)
+	check_mod = integer_convert(check_mod)
+	trait_mod = integer_convert(trait_mod)
+	distance_mod_rank = integer_convert(distance_mod_rank)
+	dc_value = integer_convert(dc_value)
+
+
 def resist_post(entry):
 
 	body = {}
@@ -813,6 +1215,15 @@ def resist_post(entry):
 	extra = extra_name(extra_id)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	resistance_type_select = [{'type': '', 'name': 'Applies to'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Check Type'}, {'type': 'harmed', 'name': 'Subject Harmed'}]
+	resist_check_type = selects(resist_check_type, resistance_type_select)
+
+	mod = integer_convert(mod)
+	rounds = integer_convert(rounds)
 
 def resisted_by_post(entry):
 
@@ -849,7 +1260,16 @@ def resisted_by_post(entry):
 	nullify_descriptor = descriptor_name(nullify_descriptor)
 	nullify_alternate = name(Defense, nullify_alternate)
 
+	effects_select = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
+	effect = selects(effect, effects_select)
 
+	dc = integer_convert(dc)
+	mod = integer_convert(mod)
+	degree = integer_convert(degree)
+	weaken_max = integer_convert(weaken_max)
+	weaken_restored = integer_convert(weaken_restored)
+	damage =  integer_convert(damage)
+	
 def reverse_effect_post(entry):
 
 	body = {}
@@ -874,10 +1294,20 @@ def reverse_effect_post(entry):
 	time_value = entry.time_value
 	time_unit = entry.time_unit
 
-
 	extra = extra_name(extra_id)
 	math = name(Math, math)
 	time_unit = name(Unit, time_unit)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
+
+	whens_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
+	when = selects(when, whens_select)
+
+	degree = integer_convert(degree)
+	value_dc = integer_convert(value_dc)
+	math_dc = integer_convert(math_dc)
+	time_value = integer_convert(time_value)
 
 
 def sense_post(entry):
@@ -939,8 +1369,41 @@ def sense_post(entry):
 	time_unit = name(Unit, time_unit)
 	time_skill = name(Skill, time_skill)
 	distance_unit = name(Unit, distance_unit)
+	sense = name(Sense, sense)
+	subsense = name(SubSense, subsense)
 
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	target = selects(target, targets_select)
 
+	sense_type_select =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
+	sense_type = selects(sense_type, sense_type_select)
+
+	all_some_select = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
+	resist_permanent = selects(resist_permanent, all_some_select)
+
+	darkness_select = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
+	lighting = selects(lighting, darkness_select)
+
+	sense_time_select = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+	time_set = selects(time_set, sense_time_select)
+
+	sense_distance_select = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
+	distance = selects(distance, sense_distance_select)
+
+	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
+	dimensional_type = selects(dimensional_type, dimensions_select)
+
+	sense_cost = db.Column_convert(db.Integer)
+	subsense_cost = db.Column_convert(db.Integer)
+	resist_circ = integer_convert(resist_circ)
+	time_value = integer_convert(time_value)
+	time_factor = integer_convert(time_factor)
+	distance_dc = integer_convert(distance_dc)
+	distance_mod = integer_convert(distance_mod)
+	distance_value = integer_convert(distance_value)
+	distance_factor = integer_convert(distance_factor)
+	ranks = integer_convert(ranks)
+	cost = integer_convert(cost)
 
 
 def time_post(entry):
@@ -974,3 +1437,13 @@ def time_post(entry):
 	math = name(Math, math)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
+
+	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+	time_type = selects(time_type, time_effect_select)
+
+	value = integer_convert(value)
+	time_value = integer_convert(time_value)
+	trait = integer_convert(trait)
+	dc = integer_convert(descriptor)
+	recovery_penalty = integer_convert(recovery_penalty)
+	recovery_time = integer_convert(recovery_time)
