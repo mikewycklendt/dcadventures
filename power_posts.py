@@ -218,13 +218,19 @@ def entry(cells, mods, body):
 	rows = body['columns']
 
 	rows = add_row(entry_id, rows, cells)
+	grid = grid_columns(rows)
 
 	if mods == []:
 		mod_check = False
 	else:
 		mod_check = True
+		body['mods'] = mods
 
-			'cells': cells,
+	
+	body['grid'] = grid
+	body['mod_check'] = mod_check
+	body['cells'] = cells
+				'cells': cells,
 			'mod_check': mod_check,
 			'mods': mods,
 			'grid': grid,
@@ -296,28 +302,39 @@ def cell(title, width, contentlist, classname, cells):
 
 	return (cells)
 
-def mod_title(width, title):
+def mod_create(width, title, variable=False):
 	
-	grid = '10% ' + str(width)
+	grid = '10% ' + str(width) + '%'
 	
 	mod = {'class': 
 			'title': title,
 			'grid': grid,
-			'cells': []}
+			'cells': [],
+			'variable': variable}
 
 	return (mod)
 
-def mod_cell(width, title, data, mod):
+def mod_cell(width, title, data, mod, value=None, variable_data={'grid': '', 'cells': []}):
 
-	grid = mod['grid']
-	cells = mod['cells']
-	empty = True
+	variable = mod['varible']
+
+	if variable:
+		result = variable_data
+		result['value'] = value
+	else:
+		result = mod
+
+	cells = result['cells']
+	grid = result['grid']
+	content_cell = 'auto'
+	empty = True 
 
 	if data[0] == True or data[0] == False:
 		if data[0] == True:
 			content = data[0]
+			content_cell = '7%'
 		elif data[0] == False:
-			return (mod)			
+			return (result)			
 	else:
 		for var in data:
 			if var != '':
@@ -325,9 +342,9 @@ def mod_cell(width, title, data, mod):
 				break
 
 		if empty:
-			return (mod)
+			return (result)
 
-	content = data[0]
+	content = ' ' + data[0]
 
 	if len(data) > 1:
 		for i in range(1, len(data) - 1, 1):
@@ -336,13 +353,16 @@ def mod_cell(width, title, data, mod):
 			else:
 				content += ' ' + data[i]
 
-	if fill:
 		grid += str(width) + 'auto'
 		cells.append({'title': title,
-						'content': })
+						'content': content})
 
+	['grid'] = grid
 
+variable_mod(value, select, data, mod)
+	mod['variable'] = True
 
+	for
 
 def alt_check_post(entry, columns):
 
@@ -353,6 +373,8 @@ def alt_check_post(entry, columns):
 	body['success'] = True
 
 	rows = columns
+	mods = []
+	cells = []
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
