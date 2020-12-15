@@ -1227,6 +1227,7 @@ def power_post_alt_check():
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1248,7 +1249,7 @@ def power_post_alt_check():
 							trait_type = trait_type,
 							trait = trait)
 
-	body = alt_check_post(entry, columns)
+	body = alt_check_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1275,6 +1276,7 @@ def power_post_change_action():
 	objects = request.get_json()['objects']
 	circumstance = request.get_json()['circumstance']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1288,7 +1290,7 @@ def power_post_change_action():
 						objects =objects, 
 						circumstance = circumstance)
 
-	body = change_action_post(entry, columns)
+	body = change_action_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1355,6 +1357,7 @@ def power_post_character():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1414,7 +1417,7 @@ def power_post_character():
 						cost = cost,
 						ranks = ranks)
 
-	body = character_post(entry, columns)
+	body = character_post(entry, columns, created)
 	return jsonify(body)
 
 @powers.route('/power/circ/create', methods=['POST'])
@@ -1451,6 +1454,7 @@ def power_post_circ():
 	null_trait_type = request.get_json()['null_trait_type']
 	null_trait = request.get_json()['null_trait']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1476,7 +1480,7 @@ def power_post_circ():
 						null_trait_type = null_trait_type,
 						null_trait = null_trait)
 
-	body = circ_post(entry, columns)
+	body = circ_post(entry, columns, created)
 	return jsonify(body)
 
 @powers.route('/power/create/create', methods=['POST'])
@@ -1557,6 +1561,7 @@ def power_post_create():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1645,7 +1650,7 @@ def power_post_create():
 						cost = cost,
 						ranks = ranks)
 
-	body = create_post(entry, columns)
+	body = create_post(entry, columns, created)
 	return jsonify(body)
 
 @powers.route('/power/damage/create', methods=['POST'])
@@ -1674,6 +1679,7 @@ def power_post_damage():
 	damage_type = request.get_json()['damage_type']
 	descriptor = request.get_json()['descriptor']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1691,7 +1697,7 @@ def power_post_damage():
 						damage_type = damage_type,
 						descriptor = descriptor)
 
-	body = damage_post(entry, columns)
+	body = damage_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1737,6 +1743,7 @@ def power_post_dc_table():
 	levels = request.get_json()['levels']
 	level = request.get_json()['level']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1773,7 +1780,7 @@ def power_post_dc_table():
 					levels = levels,
 					level = level)
 
-	body = dc_table_post(entry, columns)
+	body = dc_table_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1826,6 +1833,7 @@ def power_post_defense():
 	cover_check = request.get_json()['cover_check']
 	cover_type = request.get_json()['cover_type']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1869,7 +1877,7 @@ def power_post_defense():
 							cover_check = cover_check,
 							cover_type = cover_type)
 
-	body = defense_post(entry, columns)
+	body = defense_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1917,6 +1925,7 @@ def power_post_degree_mod():
 	linked = request.get_json()['linked']
 	level = request.get_json()['level']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1959,7 +1968,7 @@ def power_post_degree_mod():
 						linked = linked,
 						level = level)
 
-	body = degree_mod_post(entry, columns)
+	body = degree_mod_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -1990,6 +1999,7 @@ def power_post_degree():
 	cumulative = request.get_json()['cumulative']
 	target = request.get_json()['target']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2005,7 +2015,7 @@ def power_post_degree():
 						cumulative = cumulative,
 						target = target)
 
-	body = degree_post(entry, columns)
+	body = degree_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2057,6 +2067,7 @@ def power_post_environment():
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2100,7 +2111,7 @@ def power_post_environment():
 						cost = cost,
 						ranks = ranks)
 
-	body = environment_post(entry, columns)
+	body = environment_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2127,6 +2138,7 @@ def power_post_levels():
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2138,7 +2150,7 @@ def power_post_levels():
 						level = level,
 						level_effect = level_effect)
 
-	body = levels_post(entry, columns)
+	body = levels_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2180,6 +2192,7 @@ def power_post_minion():
 	multiple_value = request.get_json()['multiple_value']
 	horde = request.get_json()['horde']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2212,7 +2225,7 @@ def power_post_minion():
 						multiple_value = multiple_value,
 						horde = horde)
 
-	body = minion_post(entry, columns)
+	body = minion_post(entry, columns, created)
 	return jsonify(body)
 
 	
@@ -2316,6 +2329,7 @@ def power_post_mod():
 	ranks_cost = request.get_json()['ranks_cost']
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2430,7 +2444,7 @@ def power_post_mod():
 						ranks_cost = ranks_cost,
 						cost = cost)
 
-	body = mod_post(entry, columns)
+	body = mod_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2527,6 +2541,7 @@ def power_post_move():
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2631,7 +2646,7 @@ def power_post_move():
 						ranks = ranks,
 						cost = cost)
 
-	body = move_post(entry, columns)
+	body = move_post(entry, columns, created)
 	return jsonify(body)
 
 	
@@ -2663,6 +2678,7 @@ def power_post_opposed():
 	player_check = request.get_json()['player_check']
 	opponent_check = request.get_json()['opponent_check']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2682,7 +2698,7 @@ def power_post_opposed():
 							player_check = player_check,
 							opponent_check = opponent_check)
 
-	body = opposed_post(entry, columns)
+	body = opposed_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2740,6 +2756,7 @@ def power_post_ranged():
 	dc_trait_type = request.get_json()['dc_trait_type']
 	dc_trait = request.get_json()['dc_trait']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2805,7 +2822,7 @@ def power_post_ranged():
 						dc_trait_type = dc_trait_type,
 						dc_trait = dc_trait)
 
-	body = ranged_post(entry, columns)
+	body = ranged_post(entry, columns, created)
 	return jsonify(body)
 
 	
@@ -2841,6 +2858,7 @@ def power_post_resist():
 	check_trait_type = request.get_json()['check_trait_type']
 	check_trait = request.get_json()['check_trait']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2864,7 +2882,7 @@ def power_post_resist():
 						check_trait_type = check_trait_type,
 						check_trait = check_trait)
 
-	body = resist_post(entry, columns)
+	body = resist_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2910,6 +2928,7 @@ def power_post_resisted_by():
 	nullify_alternate = request.get_json()['nullify_alternate']
 	extra_effort = request.get_json()['extra_effort']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2945,7 +2964,7 @@ def power_post_resisted_by():
 							nullify_alternate = nullify_alternate,
 							extra_effort = extra_effort)
 
-	body = resisted_by_post(entry, columns)
+	body = resisted_by_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -2984,6 +3003,7 @@ def power_post_reverse_effect():
 	time_value = request.get_json()['time_value']
 	time_unit = request.get_json()['time_unit']
 	columns = request.get_json()['columns']
+	created = request.get_json()['created']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3010,7 +3030,7 @@ def power_post_reverse_effect():
 							time_value = time_value,
 							time_unit = time_unit)
 
-	body = reverse_effect_post(entry, columns)
+	body = reverse_effect_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -3076,6 +3096,8 @@ def power_post_sense():
 	dimensional_type = request.get_json()['dimensional_type']
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
+	created = request.get_json()['created']
+	columns = request.get_json()['columns']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3142,7 +3164,7 @@ def power_post_sense():
 						ranks = ranks,
 						cost = cost)
 
-	body = sense_post(entry)
+	body = sense_post(entry, columns, created)
 	return jsonify(body)
 
 
@@ -3181,6 +3203,8 @@ def power_post_time():
 	recovery_penalty = request.get_json()['recovery_penalty']
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
+	created = request.get_json()['created']
+	columns = request.get_json()['columns']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3214,5 +3238,5 @@ def power_post_time():
 						recovery_time = recovery_time,
 						recovery_incurable = recovery_incurable)
 
-	body = time_post(entry)
+	body = time_post(entry, columns, created)
 	return jsonify(body)

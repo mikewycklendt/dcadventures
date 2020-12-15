@@ -53,6 +53,7 @@ let reverse_grid = {'titles': false,
 function reverse_submit() {
 
 	const columns = reverse_grid.columns;
+	const created = reverse_grid.titles;
 
 	const target = select("reverse_target");
 	const extra_id = select("reverse_extra");
@@ -92,7 +93,8 @@ function reverse_submit() {
 			'math': math,
 			'time_value': time_value,
 			'time_unit': time_unit,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

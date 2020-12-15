@@ -46,6 +46,7 @@ let circ_grid = {'titles': false,
 function circ_submit() {
 
 	const columns = circ_grid.columns;
+	const created = circ_grid.titles;
 
 	const target = select("circ_target");
 	const extra_id = select("circ_extra");
@@ -87,7 +88,8 @@ function circ_submit() {
 			'null_descriptor': null_descriptor,
 			'null_trait_type': null_trait_type,
 			'null_trait': null_trait,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -137,6 +137,7 @@ let sense_grid = {'titles': false,
 function sense_submit() {
 	
 	const columns = sense_grid.columns;
+	const created = sense_grid.titles;
 
 	const target = select("sense_target");
 	const extra_id = select("sense_extra");
@@ -234,7 +235,8 @@ function sense_submit() {
 			'dimensional_type': dimensional_type,
 			'ranks': ranks,
 			'cost': cost,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -176,6 +176,7 @@ let create_grid = {'titles': false,
 function create_submit() {
 
 	const columns = create_grid.columns;
+	const created = create_grid.titles;
 
 	const extra_id = select("create_extra");
 	const solidity = select("create_solidity");
@@ -305,7 +306,8 @@ function create_submit() {
 			'support_effort_rounds': support_effort_rounds,
 			'cost': cost,
 			'ranks': ranks,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

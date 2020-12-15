@@ -15,6 +15,19 @@ def name(Table, name):
 	
 	return (name)
 
+def math(Table, name):
+
+	if name = 0:
+		name = 'All'
+	else:
+		try:
+			query = db.session,query(Table).filter_by(id=name).one()
+			name = query.symbol
+		except:
+			print('invalid id')
+	
+	return (name)
+
 def extra_name(name):
 	if name is None:
 		name = 'Base Power'
@@ -116,8 +129,10 @@ def integer_convert(value):
 	elif value == 990:
 		value = "Turn"
 		print(value)
+	elif value is None:
+		value = ''
 	else:
-		value = value
+		value = str(value)
 
 	return (value)
 
@@ -138,51 +153,138 @@ def select_multiple(values):
 
 	return (result)
 
-def grid_check(cells, columns):
+def add_row(entry_id, rows, cells):
 
-	if columns == []:
-		for cell in cells:
-			columns.append({'class': cell['class'], 'width': cell['width']})
-	else:
-		for column in columns:
-			for cell in cells:
-				if column['class'] == cell['class']:
-					if column['width'] > cell['width']:
-						cell['width'] = column['width']
-					else:
-						column['width'] = cell['width']
-
-	return (columns)
-
-def entry(cells, rows, columns):
-
-	grid_columns = '10%'
-	empty = 15
-
+	widths = []
 	for cell in cells:
-		
-		width = cell['width']
-		grid_columns += ' ' + str(width) + '%'
-		empty += width
+		widths.append(cell['width'])
 
-	if empty < 100:
-		empty = 100 - empty
+	new_row = [{'id': entry_id, 'cells': widths}]
+
+	rows.append(new_row)
+
+	return (rows)
+
+def delete_row(entry_id, rows):
+
+	for i in range(0, len(rows) - 1, 1):
+		if rows[i]['id'] == entry_id:
+			del rows[i]
+
+	return (rows)
+
+def grid_columns(rows):
+
+	columns = []
+
+	if rows == []:
+		grid = 'hide'
 	else:
-		empty = .2
-		grid_columns += ' ' + str(empty) + '%'
+		gridrows = [row['cells'] for row in rows] 	
+		for row in gridrows:
+			if columns = []:
+				columns.append(row)
+			else:
+				for i in range(1, len(row) - 1, 1):
+					if row[i] > columns[i]:
+						columns[i] = row[i]
+		grid = ''
+		empty = 5
+		for column in columns:
+			grid += str(column) + '% '
+			empty += column
 
-	columns += ' 5%;'
+		if empty < 100:
+			empty = 100 - empty
+		else:
+			empty = .2
+		
+		grid += str(empty) + '%' + ' 5%;'
 
-	body = {'class': 'table-row',
+	return (grid)
+
+def create(entry_id, table_id, rows, created):
+	body = {'id': entry_id,
+			'table_id': table_id,
+			'mods': [],
+			'columns': rows
+			'created': created}
+	
+	return (body)
+
+def entry(cells, mods, body):
+
+	entry_id = body['id']
+	rows = body['columns']
+
+	rows = add_row(entry_id, rows, cells)
+
+	if mods == []:
+		mod_check = False
+	else:
+		mod_check = True
+
 			'cells': cells,
-			'rows': rows,
-			'grid_columns': grid_columns,
-			'columns': columns 
+			'mod_check': mod_check,
+			'mods': mods,
+			'grid': grid,
+			'columns': rows
 			}
 
 	return (body)
 
-def cell(title, width, content, classname, cells):
+
+def variable_cell(title, value, data, classname, cells):
+
+	content = ''
+	width = .2
+
+	for choice in data:
+		if choice['type'] == value:
+			contentlist = choice['c']
+			width = choice['w']
+	
+	content = contentlist[0]
+
+	if len(contentlist) > 1:	
+		for i in range(1, len(contentlist) -1, 1):
+			content += ' ' + contentlist[i]
+
+	cell = {'title': title,
+			'width': width,
+			'content': content,
+			'class': classname 
+			}
+
+	cells.append(cell)
+	
+
+def check_cell(title, check, classname, cells):
+
+	if check == True:
+		width = 5
+	else:
+		width = .2
+
+	cell = {'title': title,
+			'width': width,
+			'content': check,
+			'class': classname 
+			}
+
+	return (cells)
+
+def cell(title, width, contentlist, classname, cells):
+
+	content = contentlist[0]
+
+	if len(contentlist) > 1:	
+		for i in range(1, len(contentlist) -1, 1):
+			if contentlist[i] != '':
+				content += ' ' + contentlist[i]
+
+	if content == '':
+		width = .2
 
 	cell = {'title': title,
 			'width': width,
@@ -194,7 +296,52 @@ def cell(title, width, content, classname, cells):
 
 	return (cells)
 
-def row():
+def mod_title(width, title):
+	
+	grid = '10% ' + str(width)
+	
+	mod = {'class': 
+			'title': title,
+			'grid': grid,
+			'cells': []}
+
+	return (mod)
+
+def mod_cell(width, title, data, mod):
+
+	grid = mod['grid']
+	cells = mod['cells']
+	empty = True
+
+	if data[0] == True or data[0] == False:
+		if data[0] == True:
+			content = data[0]
+		elif data[0] == False:
+			return (mod)			
+	else:
+		for var in data:
+			if var != '':
+				empty = False
+				break
+
+		if empty:
+			return (mod)
+
+	content = data[0]
+
+	if len(data) > 1:
+		for i in range(1, len(data) - 1, 1):
+			if content = '':
+				content = data[i]
+			else:
+				content += ' ' + data[i]
+
+	if fill:
+		grid += str(width) + 'auto'
+		cells.append({'title': title,
+						'content': })
+
+
 
 
 def alt_check_post(entry, columns):
@@ -204,6 +351,8 @@ def alt_check_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -222,6 +371,8 @@ def alt_check_post(entry, columns):
 
 	mod = integer_convert(mod)
 
+def mod_cell
+
 
 def change_action_post(entry, columns):
 
@@ -230,6 +381,8 @@ def change_action_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -250,6 +403,8 @@ def character_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -329,6 +484,8 @@ def circ_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	target = entry.target
@@ -376,6 +533,8 @@ def create_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -496,6 +655,8 @@ def damage_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	trait_type = entry.trait_type
@@ -523,6 +684,8 @@ def dc_table_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	target = entry.target
@@ -548,7 +711,7 @@ def dc_table_post(entry, columns):
 	levels = entry.level
 
 	extra = extra_name(extra_id)
-	math = name(Math, math)
+	math = math(Math, math)
 	descriptor = descriptor_name(descriptor)
 	level = name(PowerLevels, level)
 
@@ -572,6 +735,8 @@ def defense_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -639,6 +804,8 @@ def degree_mod_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	target = entry.target
@@ -667,7 +834,7 @@ def degree_mod_post(entry, columns):
 	level = entry.level
 
 	extra = extra_name(extra_id)
-	measure_math = name(Math, measure_math)
+	measure_math = math(Math, measure_math)
 	measure_rank = name(Rank, measure_rank)
 	level = name(PowerLevels, level)
 
@@ -707,6 +874,8 @@ def degree_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	degree_type = entry.degree_type
@@ -731,6 +900,8 @@ def environment_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -803,6 +974,8 @@ def levels_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	level_type = entry.level_type
@@ -818,6 +991,8 @@ def minion_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -859,6 +1034,8 @@ def mod_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1005,6 +1182,8 @@ def move_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	rank = entry.rank
@@ -1082,8 +1261,8 @@ def move_post(entry, columns):
 	cost = entry.cost
 
 	extra = extra_name(extra_id)
-	math = name(Math, math)
-	distance_math = name(Math, distance_math)
+	math = math(Math, math)
+	distance_math = math(Math, distance_math)
 	concealment_sense = name(Sense, concealment_sense)
 	dimension_descriptor = descriptor_name(dimension_descriptor)
 	ground_type = name(Ground, ground_type)
@@ -1154,6 +1333,8 @@ def opposed_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	trait_type = entry.trait_type
@@ -1180,6 +1361,8 @@ def ranged_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1222,10 +1405,10 @@ def ranged_post(entry, columns):
 	flat_units = name(Unit, flat_units)
 	flat_rank_units = name(Unit, flat_rank_units)
 	units_rank_units = name(Unit, units_rank_units)
-	effect_mod_math = name(Math, effect_mod_math)
-	check_math = name(Math, check_math)
-	trait_math = name(Math, trait_math)
-	distance_mod_math = name(Math, distance_mod_math)
+	effect_mod_math = math(Math, effect_mod_math)
+	check_math = math(Math, check_math)
+	trait_math = math(Math, trait_math)
+	distance_mod_math = math(Math, distance_mod_math)
 
 	flat_value = integer_convert(flat_value)
 	flat_rank = integer_convert(flat_rank)
@@ -1254,6 +1437,8 @@ def resist_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1290,6 +1475,8 @@ def resisted_by_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id	
@@ -1336,6 +1523,8 @@ def reverse_effect_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	target = entry.target
@@ -1353,7 +1542,7 @@ def reverse_effect_post(entry, columns):
 	time_unit = entry.time_unit
 
 	extra = extra_name(extra_id)
-	math = name(Math, math)
+	math = math(Math, math)
 	time_unit = name(Unit, time_unit)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
@@ -1375,6 +1564,8 @@ def sense_post(entry, columns):
 	error = False
 	error_msg = []
 	body['success'] = True
+
+	rows = columns
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1472,6 +1663,8 @@ def time_post(entry, columns):
 	error_msg = []
 	body['success'] = True
 
+	rows = columns
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	time_type = entry.time_type
@@ -1492,7 +1685,7 @@ def time_post(entry, columns):
 
 	extra = extra_name(extra_id)
 	units = name(Unit, units)
-	math = name(Math, math)
+	math = math(Math, math)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
 

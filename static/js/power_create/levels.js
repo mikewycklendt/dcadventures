@@ -24,6 +24,7 @@ let levels_grid = {'titles': false,
 function levels_submit() {
 
 	const columns = levels_grid.columns;
+	const created = levels_grid.titles;
 
 	const level_type = text("level_type");
 	const extra_id = select("levels_extra");
@@ -43,7 +44,8 @@ function levels_submit() {
 			'level_type': level_type,
 			'level': level,
 			'level_effect': level_effect,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

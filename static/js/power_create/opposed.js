@@ -35,6 +35,7 @@ let opposed_grid = {'titles': false,
 function opposed_submit() {
 
 	const columns = opposed_grid.columns;
+	const created = opposed_grid.titles;
 
 	const extra_id = select("opposed_extra");
 	const trait_type = select("opposed_trait_type");
@@ -64,7 +65,8 @@ function opposed_submit() {
 			'opponent_mod': opponent_mod,
 			'player_check': player_check,
 			'opponent_check': opponent_check,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

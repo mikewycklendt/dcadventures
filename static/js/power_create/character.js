@@ -167,6 +167,7 @@ let char_grid = {'titles': false,
 function char_submit() {
 
 	const columns = char_grid.columns;
+	const created = char_grid.titles;
 
 	const extra_id = select("char_extra");
 	const trait_type = select("char_trait_type");
@@ -266,7 +267,8 @@ function char_submit() {
 			'insub_description': insub_description,
 			'cost': cost,
 			'ranks': ranks,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

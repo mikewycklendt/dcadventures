@@ -71,6 +71,7 @@ let ranged_grid = {'titles': false,
 function ranged_submit() {
 
 	const columns = ranged_grid.columns;
+	const created = ranged_grid.titles;
 
 	const extra_id = select("ranged_extra");
 	const range_type = select("ranged_type");
@@ -152,7 +153,8 @@ function ranged_submit() {
 			'dc_value': dc_value,
 			'dc_trait_type': dc_trait_type,
 			'dc_trait': dc_trait,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

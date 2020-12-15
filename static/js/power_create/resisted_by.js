@@ -38,6 +38,7 @@ let resist_grid = {'titles': false,
 function resist_submit() {
 
 	const columns = resist_grid.columns;
+	const created = resist_grid.titles;
 
 	const extra_id = select("resist_extra");
 	const trait_type = select("resist_trait_type");
@@ -87,7 +88,8 @@ function resist_submit() {
 			'nullify_descriptor': nullify_descriptor,
 			'nullify_alternate': nullify_alternate,
 			'extra_effort': extra_effort,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

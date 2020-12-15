@@ -58,6 +58,7 @@ let minion_grid = {'titles': false,
 function minion_submit() {
 
 	const columns = minion_grid.columns;
+	const created = minion_grid.titles;
 
 	const extra_id = select("minion_extra");
 	const points = select("mod_minion_points");
@@ -107,7 +108,8 @@ function minion_submit() {
 			'resitable_dc': resitable_dc,
 			'multiple_value': multiple_value,
 			'horde': horde,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

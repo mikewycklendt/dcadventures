@@ -96,6 +96,7 @@ let env_grid = {'titles': false,
 function env_submit() {
 
 	const columns = env_grid.columns;
+	const created = env_grid.titles;
 
 	const extra_id = select("env_extra");
 	const radius = text("env_radius");
@@ -165,7 +166,8 @@ function env_submit() {
 			'visibility_mod': visibility_mod,
 			'cost': cost,
 			'ranks': ranks,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

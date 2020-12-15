@@ -92,6 +92,7 @@ let dc_grid = {'titles': false,
 function dc_submit() {
 
 	const columns = dc_grid.columns;
+	const created = dc_grid.titles;
 
 	const target = select("dc_target");
 	const extra_id = select("dc_extra");
@@ -149,7 +150,8 @@ function dc_submit() {
 			'check_mod': check_mod,
 			'levels': levels,
 			'level': level,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

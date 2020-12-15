@@ -27,6 +27,7 @@ let check_grid = {'titles': false,
 function check_submit() {
 
 	const columns = check_grid.columns;
+	const created = check_grid.titles;
 
 	const extra_id = select("check_extra");
 	const check_type = select("check_check_type");
@@ -53,7 +54,8 @@ function check_submit() {
 			'when': when,
 			'trait_type': trait_type,
 			'trait': trait,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

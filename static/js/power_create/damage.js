@@ -27,6 +27,7 @@ let damage_grid = {'titles': false,
 function damage_submit() {
 
 	const columns = damage_grid.columns;
+	const created = damage_grid.titles;
 
 	const extra_id = select("damage_extra")
 	const trait_type = select("dam_trait_type");
@@ -52,7 +53,8 @@ function damage_submit() {
 			'strength': strength,
 			'damage_type': damage_type,
 			'descriptor': descriptor,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

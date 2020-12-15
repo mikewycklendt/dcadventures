@@ -43,6 +43,7 @@ let time_grid = {'titles': false,
 function time_submit() {
 
 	const columns = time_grid.columns;
+	const created = time_grid.titles;
 
 	const extra_id = select("time_extra");
 	const time_type = select("time_type");
@@ -86,7 +87,8 @@ function time_submit() {
 			'recovery_penalty': recovery_penalty,
 			'recovery_time': recovery_time,
 			'recovery_incurable': recovery_incurable,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

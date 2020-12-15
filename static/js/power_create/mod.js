@@ -254,6 +254,7 @@ let mod_grid = {'titles': false,
 function mod_submit() {
 
 	const columns = mod_grid.columns;
+	const created = mod_grid.titles;
 
 	const extra_id = select("mod_extra");
 	const affects_objects = check("mod_affects_objects");
@@ -427,7 +428,8 @@ function mod_submit() {
 			'points_reroll_result': points_reroll_result,
 			'ranks_cost': ranks_cost,
 			'cost': cost,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

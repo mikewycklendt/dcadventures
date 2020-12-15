@@ -196,6 +196,7 @@ let move_grid = {'titles': false,
 function move_submit() {
 
 	const columns = move_grid.columns;
+	const created = move_grid.titles;
 
 	const extra_id = select("move_extra");
 	const rank = select("move_rank");
@@ -355,7 +356,8 @@ function move_submit() {
 			'check_free': check_free,
 			'ranks': ranks,
 			'cost': cost,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

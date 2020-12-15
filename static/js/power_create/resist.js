@@ -50,6 +50,7 @@ let resistance_grid = {'titles': false,
 function resistance() {
 
 	const columns = resistance_grid.columns;
+	const created = resistance_grid.titles;
 
 	const target = select("resistance_target");
 	const extra_id = select("resistance_extra");
@@ -87,7 +88,8 @@ function resistance() {
 			'check_type': check_type,
 			'check_trait_type': check_trait_type,
 			'check_trait': check_trait,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

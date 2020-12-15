@@ -69,6 +69,7 @@ let deg_mod_grid = {'titles': false,
 function deg_mod_submit() {
 
 	const columns = deg_mod_grid.columns;
+	const created = deg_mod_grid.titles;
 	
 	const target = select("deg_mod_target");
 	const extra_id = select("deg_mod_extra");
@@ -130,7 +131,8 @@ function deg_mod_submit() {
 			'cumulative': cumulative,
 			'linked': linked,
 			'level': level,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

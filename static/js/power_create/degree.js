@@ -21,6 +21,7 @@ let degree_grid = {'titles': false,
 function degree_submit() {
 	
 	const columns = degree_grid.columns;
+	const created = degree_grid.titles;
 
 	const degree_type = text("degree_type");
 	const extra_id = select("degree_extra");
@@ -48,7 +49,8 @@ function degree_submit() {
 			'extra_effort': extra_effort,
 			'cumulative': cumulative,
 			'target': target,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

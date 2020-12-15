@@ -77,12 +77,13 @@ function defense_cover() {
 	check_opacity(check, div);
 }
 
-let check_grid = {'titles': false,
+let defense_grid = {'titles': false,
 					'columns': []}
 
 function defense_submit() {
 
-	const columns = char_grid.columns;
+	const columns = defense_grid.columns;
+	const created = defense_grid.titles;
 
 	const extra_id = select("defense_extra");
 	const defense = select("defense_defense");
@@ -154,7 +155,8 @@ function defense_submit() {
 			'immunity_rule': immunity_rule,
 			'cover_check': cover_check,
 			'cover_type': cover_type,
-			'columns': columns
+			'columns': columns,
+			'created': created
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -20,6 +20,7 @@ let action_grid = {'titles': false,
 function action_submit() {
 
 	const columns = action_grid.columns;
+	const created = action_grid.titles;
 
 	const extra_id = select("action_extra");
 	const action = select("action_change");
@@ -41,7 +42,8 @@ function action_submit() {
 			'mod': mod,
 			'objects': objects,
 			'circumstance': circumstance,
-			'columns': columns
+			'columns': columns,
+			'created': created
 			
 		}),
 		headers: {
