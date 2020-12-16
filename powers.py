@@ -2139,6 +2139,7 @@ def power_post_levels():
 	level_effect = request.get_json()['level_effect']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	old_level_type = request.get_json()['old_level_type']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2150,7 +2151,7 @@ def power_post_levels():
 						level = level,
 						level_effect = level_effect)
 
-	body = levels_post(entry, columns, created)
+	body = levels_post(entry, columns, created, old_level_type)
 	return jsonify(body)
 
 
