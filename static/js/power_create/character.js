@@ -278,7 +278,10 @@ function char_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			char_grid.columns = jsonResponse.columns;
+			char_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

@@ -317,7 +317,10 @@ function create_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			create_grid.columns = jsonResponse.columns;
+			create_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

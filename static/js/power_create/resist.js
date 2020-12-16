@@ -99,7 +99,10 @@ function resistance() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			resistance_grid.columns = jsonResponse.columns;
+			resistance_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

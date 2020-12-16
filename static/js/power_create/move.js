@@ -367,7 +367,10 @@ function move_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			move_grid.columns = jsonResponse.columns;
+			move_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

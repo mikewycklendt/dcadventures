@@ -439,7 +439,10 @@ function mod_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			mod_grid.columns = jsonResponse.columns;
+			mod_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

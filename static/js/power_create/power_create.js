@@ -997,3 +997,58 @@ power_save = function() {
 	}
 }
 ```
+
+function create_table(jsonResponse) {
+
+	const spot_string = jsonResponse.spot;
+	const table_id = jsonResponse.table_id;
+	const created = jsonResponse.created;
+	const id = jsonResponse.id; 
+	const title_string = jsonResponse.title;
+	const grid = jsonResponse.grid;
+	const mods = jsonResponse.mods;
+	const cells = jsonResponse.cells;
+
+	if (created == false) {
+		const spot = document.getElementById(spot_string);
+		if (title != '') {
+			const title = document.createElement('div');
+			title.className = 'power-table-title';
+			title.innerHTML = title_string
+			spot.appendChild(title)
+		}
+		const new_table = document.createElement('div');
+		new_table.className = 'power-table';
+		new_table.id = table_id;
+
+		const title_row = document.createElement('div');
+		title_row.className = 'power-table-row';
+		title_row.style.gridTemplateColumns = grid;
+		new_table.appendChild(title_row)
+
+		let cell;
+		for (cell of cells) {
+			const cell_title = document.createElement('div');
+			cell_title.className = 'power-table-cell-title';
+			cell.innerHTML = cell.title;
+			cell.appendChild(title_row)
+		}
+
+		title_row.style.maxHeight = title_row.scrollHeight + 'px';
+		new.ta
+	}
+
+	const table = document.getElementById
+
+	let new_cell;
+	for (new_cell of cells) {
+		if (new_cell == false)
+		const cell = document.createElement('div');
+		cell.cl
+	}
+
+	const table = document.getElementById(table_id);
+
+
+
+}

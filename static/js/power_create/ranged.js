@@ -164,7 +164,10 @@ function ranged_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			ranged_grid.columns = jsonResponse.columns;
+			ranged_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

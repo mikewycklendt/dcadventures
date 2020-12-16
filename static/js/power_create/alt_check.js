@@ -65,6 +65,10 @@ function check_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			check_grid.columns = jsonResponse.columns;
+			check_grid.titles = jsonResponse.created;
+
+			create_table(jsonResponse);
 
 		} else {
 

@@ -142,7 +142,10 @@ function deg_mod_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			deg_mod_grid.columns = jsonResponse.columns;
+			deg_mod_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

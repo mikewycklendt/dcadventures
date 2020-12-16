@@ -55,7 +55,10 @@ function levels_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			levels_grid.columns = jsonResponse.columns;
+			levels_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

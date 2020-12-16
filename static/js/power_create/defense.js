@@ -166,7 +166,10 @@ function defense_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			defense_grid.columns = jsonResponse.columns;
+			defense_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

@@ -750,20 +750,30 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
-.table-row {
+.power-table-cell-title {
+	display: grid;
+	font-family: 'Monda', Verdana;
+	font-size: 90%;
+	border-bottom: 1px solid #af0101;
+	color: #245681;
+}
+
+.power-table-row {
 	display: grid;
 	width: 95%;
 	text-align: left;
 	grid-template-rows: auto;	
 	background-color: white;
-	transition: all .3s ease-out;
 	font-family: 'Monda', Verdana;
-	font-size: 89%;
+	font-size: 80%;
 	color: #245681;
 	border-bottom: 0vw solid white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height .4s ease-out, background-color .2s linear;
 }
 
-.table-row:hover {
+.-power-table-row:hover {
 	background-color: lightblue;
 	border-bottom: .3vw solid #245681;
 }
@@ -811,4 +821,11 @@ textarea:focus {
 	text-align: left;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
+}
+
+.power-table-title {
+	display: grid;
+	font-size: 165%;
+	font-family: Comic, 'Monda', Verdana;
+	text-align: center;
 }

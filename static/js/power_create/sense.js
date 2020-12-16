@@ -246,7 +246,10 @@ function sense_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			sense_grid.columns = jsonResponse.columns;
+			sense_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

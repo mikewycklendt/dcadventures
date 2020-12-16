@@ -161,7 +161,10 @@ function dc_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			dc_grid.columns = jsonResponse.columns;
+			dc_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

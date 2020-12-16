@@ -60,7 +60,10 @@ function degree_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			degree_grid.columns = jsonResponse.columns;
+			degree_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}

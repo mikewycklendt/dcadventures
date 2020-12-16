@@ -119,7 +119,10 @@ function minion_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			minion_grid.columns = jsonResponse.columns;
+			minion_grid.titles = jsonResponse.created;
 
+			create_table(jsonResponse);
 		} else {
 
 		}
