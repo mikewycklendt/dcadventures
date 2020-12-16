@@ -710,7 +710,7 @@ textarea:focus {
 	border-radius: 5px;
 }
 
-.xbox {
+.-xbox {
 	display: flex;
 	height: 1.4vw;
 	width: 90%;
@@ -723,11 +723,11 @@ textarea:focus {
 	cursor: pointer;
 }
 
-.xbox:hover {
+.-xbox:hover {
 	color: #af0101;
 }
 
-.xbox::before {
+.-xbox::before {
 	font-family: 'FontAwesome';
 	font-size: 1.3vw;
 	content: '\f056';
@@ -738,13 +738,13 @@ textarea:focus {
 	display: none;
 	margin: 1%;
 	height: auto;
-	width: auto;
+	width: 97%;
 	grid-template-columns: 97%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	border-radius: .4vw;
-	padding-bottom: 2%;
-	margin-bottom: 3%;
+	padding: 2%;
+	margin-bottom: 6vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -762,18 +762,23 @@ textarea:focus {
 	display: grid;
 	width: 95%;
 	text-align: left;
-	grid-template-rows: auto;	
+	grid-auto-columns: auto;	
 	background-color: white;
 	font-family: 'Monda', Verdana;
 	font-size: 80%;
 	color: #245681;
+}
+
+.power-table-cells {
+	display: grid;
+	width: 97%;
 	border-bottom: 0vw solid white;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height .4s ease-out, background-color .2s linear;
+	transition: max-height .4s ease-out, background-color .2s linear, border-bottom .2s linear;
 }
 
-.-power-table-row:hover {
+.-power-table-cells:hover {
 	background-color: lightblue;
 	border-bottom: .3vw solid #245681;
 }
@@ -782,32 +787,52 @@ textarea:focus {
 	display: grid;
 }
 
-.check {
+.power-check {
 	display: grid;
 	color: #245681;
 	text-align: center;
 	font-size: 1.3vw;
 }
 
-.check:hover {
-	color: #af0101;
-	font-size: 1.6vw;
-}
-
-.check::before {
+.power-check::before {
 	font-family: 'FontAwesome';
 	content: '\f00c';
 	display: inline-block;
 }
 
+.power-check-button {
+	display: flex;
+	height: 1.4vw;
+	width: 90%;
+	align-items: center;
+	text-align: center;
+	color: #245681;
+	border: none;
+	background-color: transparent;
+	transition: all .2s linear;
+	cursor: pointer;
+	font-size: 1.3vw;
+}
+
+.power-check-button::before {
+	font-family: 'FontAwesome';
+	content: '\f00c';
+	display: inline-block;
+}
+
+.power-check-button:hover {
+	color: #af0101;
+	font-size: 1.6vw;
+}
+
+
 .mod-row {
 	display: grid;
-	grid-auto-columns: auto;
 }
 
 .mod-row-empty {
 	display: grid;
-	width: 10%;
+	background-color: white;
 }
 
 .mod-cell-mod {
@@ -815,6 +840,14 @@ textarea:focus {
 	border-left: .1vw solid #245681;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
+	text-align: center;
+}
+
+.mod-cell-sub {
+	display: grid;
+	border-bottom: .1vw solid #245681;
+	background-color: lightblue;
+	text-align: center;
 }
 
 .mod-cell {

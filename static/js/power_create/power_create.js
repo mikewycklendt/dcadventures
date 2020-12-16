@@ -1008,10 +1008,14 @@ function create_table(jsonResponse) {
 	const grid = jsonResponse.grid;
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
+	const rows = jsonResponse.columns;
+
+	const row_class = table-id + '-row';
+
 
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
-		if (title != '') {
+		if (title_string != '') {
 			const title = document.createElement('div');
 			title.className = 'power-table-title';
 			title.innerHTML = title_string
@@ -1019,10 +1023,10 @@ function create_table(jsonResponse) {
 		}
 		const new_table = document.createElement('div');
 		new_table.className = 'power-table';
-		new_table.id = table_id;
+		new_table.id = table_id + '-table';
 
 		const title_row = document.createElement('div');
-		title_row.className = 'power-table-row';
+		title_row.className = row_class;
 		title_row.style.gridTemplateColumns = grid;
 		new_table.appendChild(title_row)
 
@@ -1035,20 +1039,84 @@ function create_table(jsonResponse) {
 		}
 
 		title_row.style.maxHeight = title_row.scrollHeight + 'px';
-		new.ta
+		new_table.style.display = 'grid';
+		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
-	const table = document.getElementById
-
-	let new_cell;
-	for (new_cell of cells) {
-		if (new_cell == false)
-		const cell = document.createElement('div');
-		cell.cl
-	}
+	const entry_class = 'power-table-row ' + row_class;
 
 	const table = document.getElementById(table_id);
+	const entry = document.createElement('div');
+	entry.className = entry_class;
+	const row = document.createElement('div');
+	row.className = 'power-table-cells';	
+	row.style.gridTemplateColumns = grid;
+	entry.appendChild(row);
+	table.appendChild(entry);
+	const rows = document.getElementsByClassName(row_class);
+	let row_grid;
+	for (row_grid of rows) {
+		row_grid.style.gridTemplateColumns = grid;
+	}
 
 
+	let new_cell;
+	const cell_heights = [];
+	for (new_cell of cells) {
+		const cell_class = new_cell.class;
+		const cell = document.createElement('div');
+		cell.className = 'power-table-cell ' + 'power-table-' + cell_class;
+		if (new_cell.content == false) {
+			cell.innerHTML = '';
+		} else if (new_cell == true) {
+			if (new_cell.mod_check == false) {
+				const check = document.createElement('div');
+				check.className = 'power-check';
+			} else {
+				const check = document.createElement('button');
+				check.className = 'power-check-button ' + 'power-table-' + cell_class;
+			}
+		}
+		const cell = document.createElement('div');
+		cell.className = 'power-table-cell ' + cell.class;
+		cell.innerHTML = cell.content;
+		cell_heights.push(cell.scrollHeight);
+		row.appendChild(cell);
+	}
 
+	let height;
+	let max = 0;
+	for (height in cell_heights) {
+		if (height > max) {
+			max = height;
+		}
+	}
+
+	const delete_class = table_id + '-xbox';
+
+	const delete_cell = document.createElement('div');
+	delete_cell.className = 'power-table-cell';
+	const delete_btn = document.createElement('button');
+	delete_btn.className = delete_class;
+	delete_btn.setAttribute('data-id', id);
+
+	row.style.maxHeight = max + 'px';
+	tsble.style.maxHeight = table.scrollHeight + max + 'px'; 
+
+	const route = '/power/' + table_id + '/delete/'
+
+	row_delete(delete_class, row_class, id, route)
+
+}
+
+function row_delete(delete_class, row_class, id, route) {
+	const deletes = document.getElementsByClassName(delete_class);
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click');
+
+			const
+		}
+	}
 }

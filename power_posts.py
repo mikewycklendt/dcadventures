@@ -269,6 +269,7 @@ def check_cell(title, check, classname, cells, mod_check=False):
 		width = 5
 	else:
 		width = .2
+		mod_check = False
 
 	cell = {'title': title,
 			'width': width,
@@ -285,7 +286,9 @@ def cell(title, width, contentlist, classname, cells):
 
 	if len(contentlist) > 1:	
 		for i in range(1, len(contentlist) -1, 1):
-			if contentlist[i] != '':
+			if content == '':
+				content += contentlist[i]
+			else:
 				content += ' ' + contentlist[i]
 
 	if content == '':
@@ -384,8 +387,7 @@ def variable_mod(value, select, data, mod)
 	for option in select:
 		if option['type'] == value:
 			sub_title = option['name']
-			sub_title_cell['title'] = sub_title
-			cells.append(sub_title_cell)
+			mod['sub_title'] = sub_title
 			width = option['w']
 	for d in data:
 		if d['value'] == value:
@@ -424,7 +426,7 @@ def alt_check_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'alt-check-table'
+	table_id = 'alt-check'
 	spot = "alt-check-spot"
 
 	body['table_id'] = table_id
@@ -463,7 +465,7 @@ def change_action_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'action-table'
+	table_id = 'action'
 	spot = "action-spot"
 
 	body['table_id'] = table_id
@@ -494,7 +496,7 @@ def character_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'char-table'
+	table_id = 'char'
 	spot = "char-spot"
 
 	body['table_id'] = table_id
@@ -583,7 +585,7 @@ def circ_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'circ-table'
+	table_id = 'circ'
 	spot = "circ-spot"
 
 	body['table_id'] = table_id
@@ -642,7 +644,7 @@ def create_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'create-table'
+	table_id = 'create'
 	spot = "create-spot"
 
 	body['table_id'] = table_id
@@ -772,7 +774,7 @@ def damage_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'damage-table'
+	table_id = 'damage'
 	spot = "damage-spot"
 
 	body['table_id'] = table_id
@@ -810,7 +812,7 @@ def dc_table_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'dc-table'
+	table_id = 'dc'
 	spot = "dc-spot"
 
 	body['table_id'] = table_id
@@ -871,7 +873,7 @@ def defense_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'defense-table'
+	table_id = 'defense'
 	spot = "defense-spot"
 
 	body['table_id'] = table_id
@@ -948,7 +950,7 @@ def degree_mod_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'deg-mod-table'
+	table_id = 'deg-mod'
 	spot = "deg-mod-spot"
 
 	body['table_id'] = table_id
@@ -1027,7 +1029,7 @@ def degree_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'degree-table'
+	table_id = 'degree'
 	spot = "degree-spot"
 
 	body['table_id'] = table_id
@@ -1063,7 +1065,7 @@ def environment_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'env-table'
+	table_id = 'env'
 	spot = "env-spot"
 
 	body['table_id'] = table_id
@@ -1152,7 +1154,7 @@ def levels_post(entry, columns, created, old_level_type):
 
 	mods = []
 	cells = []
-	table_id = 'levels-table-' + level_type
+	table_id = 'levels-' + level_type
 	spot = "levels-spot"
 
 	body['table_id'] = table_id
@@ -1178,7 +1180,7 @@ def minion_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'minion-table'
+	table_id = 'minion'
 	spot = "minion-spot"
 
 	body['table_id'] = table_id
@@ -1230,7 +1232,7 @@ def mod_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'mod-table'
+	table_id = 'mod'
 	spot = 'mod-spot'
 
 	body['table_id'] = table_id
@@ -1386,7 +1388,7 @@ def move_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'move-table'
+	table_id = 'move'
 	spot = "move-spot"
 
 	body['table_id'] = table_id
@@ -1547,7 +1549,7 @@ def opposed_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'opposed-table'
+	table_id = 'opposed'
 	spot = "opposed-spot"
 
 	body['table_id'] = table_id
@@ -1586,7 +1588,7 @@ def ranged_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'ranged-table'
+	table_id = 'ranged'
 	spot = "ranged-spot"
 
 	body['table_id'] = table_id
@@ -1671,7 +1673,7 @@ def resist_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'resistance-table'
+	table_id = 'resistance'
 	spot = "resistance-spot"
 
 	body['table_id'] = table_id
@@ -1719,7 +1721,7 @@ def resisted_by_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'resist-table'
+	table_id = 'resist'
 	spot = "resist-spot"
 
 	body['table_id'] = table_id
@@ -1776,7 +1778,7 @@ def reverse_effect_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'reverse-table'
+	table_id = 'reverse'
 	spot = "reverse-spot"
 
 	body['table_id'] = table_id
@@ -1828,7 +1830,7 @@ def sense_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'sense-table'
+	table_id = 'sense'
 	spot = "sense-spot"
 
 	body['table_id'] = table_id
@@ -1936,7 +1938,7 @@ def time_post(entry, columns, created):
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'time-table'
+	table_id = 'time'
 	spot = "time-spot"
 
 	body['table_id'] = table_id
