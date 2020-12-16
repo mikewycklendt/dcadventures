@@ -1107,7 +1107,19 @@ function create_table(jsonResponse) {
 
 }
 
-function row_delete(delete_class, row_class, id, route, rows) {
+function row_delete(jsonResponse, route, object) {
+	const table_id = jsonResponse.table_id;
+	const created = jsonResponse.created;
+	const id = jsonResponse.id; 
+	const title_string = jsonResponse.title;
+	const grid = jsonResponse.grid;
+	const mods = jsonResponse.mods;
+	const cells = jsonResponse.cells;
+	const rows = jsonResponse.columns;
+
+	const row_class = table-id + '-row';
+	const delete_class = table_id + '-xbox';
+
 	const deletes = document.getElementsByClassName(delete_class);
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
@@ -1122,20 +1134,18 @@ function row_delete(delete_class, row_class, id, route, rows) {
 				response = fetch('/power/grid', {
 					method: 'POST',
 					body: JSON.stringify({
-						'rows': rows					}),
+						'rows': rows,
+						'id': delId				}),
 					headers: {
 					  'Content-Type': 'application/json',
 					}
 				})
 				.then(response => response.json())
 				.then(jsonResponse => {
-					console.log(jsonResponse)
 					if (jsonResponse.success) {
-						levels_grid.columns = jsonResponse.columns;
-						levels_grid.titles = jsonResponse.created;
-			
-						create_table(jsonResponse);
+						const all
 					} else {
+						console.log('error')
 			
 					}
 				})
