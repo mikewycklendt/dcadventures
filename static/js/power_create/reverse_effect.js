@@ -104,11 +104,19 @@ function reverse_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
 			reverse_grid.columns = jsonResponse.columns;
 			reverse_grid.titles = jsonResponse.created;
 
+			const table_id = jsonResponse.table_id;
+			const route = '/power/' + table_id + '/delete/'
 			create_table(jsonResponse);
+			delete_row(jsonResponse, route, reverse_grid)
+			clear_errors(err_line, errors)
+
+
 		} else {
+			back_errors(err_line, errors, jsonResponse)
 
 		}
 	})

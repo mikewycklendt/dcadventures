@@ -60,11 +60,19 @@ function degree_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
 			degree_grid.columns = jsonResponse.columns;
 			degree_grid.titles = jsonResponse.created;
 
+			const table_id = jsonResponse.table_id;
+			const route = '/power/' + table_id + '/delete/'
 			create_table(jsonResponse);
+			const rows = delete_row(jsonResponse, route, degree_grid)
+			clear_errors(err_line, errors)
+
+
 		} else {
+			back_errors(err_line, errors, jsonResponse)
 
 		}
 	})

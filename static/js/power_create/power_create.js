@@ -1103,20 +1103,94 @@ function create_table(jsonResponse) {
 	row.style.maxHeight = max + 'px';
 	tsble.style.maxHeight = table.scrollHeight + max + 'px'; 
 
-	const route = '/power/' + table_id + '/delete/'
-
-	row_delete(delete_class, row_class, id, route)
+	
 
 }
 
-function row_delete(delete_class, row_class, id, route) {
+function row_delete(delete_class, row_class, id, route, rows) {
 	const deletes = document.getElementsByClassName(delete_class);
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
 			console.log('click');
 
-			const
+			const delId = e.target.dataset['id']
+			fetch(route + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				response = fetch('/power/grid', {
+					method: 'POST',
+					body: JSON.stringify({
+						'rows': rows					}),
+					headers: {
+					  'Content-Type': 'application/json',
+					}
+				})
+				.then(response => response.json())
+				.then(jsonResponse => {
+					console.log(jsonResponse)
+					if (jsonResponse.success) {
+						levels_grid.columns = jsonResponse.columns;
+						levels_grid.titles = jsonResponse.created;
+			
+						create_table(jsonResponse);
+					} else {
+			
+					}
+				})
+			
+			})
 		}
 	}
 }
+
+function back_errors(line, table, jsonResponse) {
+	const errors = document.getElementById(table);
+
+	errors.style.display = "grid";
+	errors.style.padding = "1%";
+
+	const error_msgs = jsonResponse.error_msgs;
+	let i;
+
+	for (i of error_msgs) {
+		const error = document.createElement('div');
+		error.className = line;
+		error.innerHTML = i;
+			
+		errors.appendChild(error);
+				
+		error.style.maxHeight = error.scrollHeight + "px";
+
+		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+		errors.style.padding = "1%";	
+	}
+}
+
+
+function clear_errors(line, div) {
+	errors_delete = document.getElementsByClassName(line);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		};
+		setTimeout(function(){
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.display = 'none';
+			}
+		}, 400);
+
+		errors = document.getElementById(div);
+
+		errors.style.display = "none";
+		errors.style.padding = "0px";
+		errors.style.maxHeight = "0px";
+	}
+}
+

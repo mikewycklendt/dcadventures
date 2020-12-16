@@ -320,8 +320,14 @@ function create_submit() {
 			create_grid.columns = jsonResponse.columns;
 			create_grid.titles = jsonResponse.created;
 
+			const table_id = jsonResponse.table_id;
+			const route = '/power/' + table_id + '/delete/'
 			create_table(jsonResponse);
+			delete_row(jsonResponse, route, create_grid)
+			clear_errors(err_line, errors)
+
 		} else {
+			back_errors(err_line, errors, jsonResponse)
 
 		}
 	})
