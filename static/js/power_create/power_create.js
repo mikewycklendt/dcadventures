@@ -1049,6 +1049,20 @@ function create_table(jsonResponse) {
 	const table_class = table_id + '-table';
 
 
+	const table = document.getElementById(table_class);
+	const entry = document.createElement('div');
+	entry.className = entry_class;
+	table.appendChild(entry);
+	const row = document.createElement('div');
+	row.className = 'power-table-cells';	
+	row.style.gridTemplateColumns = grid;
+	entry.appendChild(row);
+	const rows_grid = document.getElementsByClassName(row_class);
+	let row_grid;
+	for (row_grid of rows_grid) {
+		row_grid.style.gridTemplateColumns = grid;
+	}
+
 	let new_cell;
 	let cell_heights = [];
 	for (new_cell of cells) {
