@@ -999,6 +999,122 @@ power_save = function() {
 ```
 
 
+function create_table(jsonResponse) {
+
+	const spot_string = jsonResponse.spot;
+	const table_id = jsonResponse.table_id;
+	const created = jsonResponse.created;
+	const id = jsonResponse.id; 
+	const title_string = jsonResponse.title;
+	const grid = jsonResponse.grid;
+	const mods = jsonResponse.mods;
+	const cells = jsonResponse.cells;
+	const rows = jsonResponse.columns;
+
+	const row_class = table_id + '-row';
+
+
+	if (created == false) {
+		const spot = document.getElementById(spot_string);
+		if (title_string != '') {
+			const title = document.createElement('div');
+			title.className = 'power-table-title';
+			title.innerHTML = title_string;
+			spot.appendChild(title)
+		}
+		const new_table = document.createElement('div');
+		new_table.className = 'power-table';
+		new_table.id = table_id + '-table';
+
+		const title_row = document.createElement('div');
+		title_row.className = row_class;
+		title_row.style.gridTemplateColumns = grid;
+		new_table.appendChild(title_row);
+
+		let cell;
+		for (cell of cells) {
+			const cell_title = document.createElement('div');
+			cell_title.className = 'power-table-cell-title';
+			cell.innerHTML = cell.title;
+			title_row.appendChild(cell);
+		}
+
+		title_row.style.maxHeight = title_row.scrollHeight + 'px';
+		new_table.style.display = 'grid';
+		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
+	}
+
+	const entry_class = 'power-table-row ' + row_class;
+
+	const table_class = table_id + '-table';
+
+	const table = document.getElementById(table_class);
+	const entry = document.createElement('div');
+	entry.className = entry_class;
+	table.appendChild(entry);
+	const row = document.createElement('div');
+	row.className = 'power-table-cells';	
+	row.style.gridTemplateColumns = grid;
+	entry.appendChild(row);
+	const rows = document.getElementsByClassName(row_class);
+	let row_grid;
+	for (row_grid of rows) {
+		row_grid.style.gridTemplateColumns = grid;
+	}
+
+	let new_cell;
+	let cell_heights = [];
+	for (new_cell of cells) {
+		const cell_class = table_id + '-' + new_cell.class;
+		const cell = document.createElement('div');
+		cell.className = 'power-table-cell ' + cell_class;
+		if (new_cell.content == false) {
+			cell.innerHTML = '';
+		} else if (new_cell.content == true) {
+			if (new_cell.mod_check == false) {
+				let check = document.createElement('div');
+				check.className = 'power-check';
+				cell.appendChild(check)
+			} else {
+				let check = document.createElement('button');
+				check.className = 'power-check-button ' + cell_class;
+				check.setAttribute('data-id', 0);
+				cell.appendChild(check);
+				mod_create(mods, id, cell_class, check, entry);
+			}
+		} else {
+			cell.innerHTML = new_cell.content;
+			const cell_height = cell.scrollHeight;
+			cell_heights.push(cell_height);
+			row.appendChild(cell);
+		}
+	}
+
+	let height;
+	let max = 0;
+	for (height of cell_heights) {
+		if (height > max) {
+			max = height;
+		}
+	}
+
+	const delete_class = table_id + '-xbox';
+
+	const delete_cell = document.createElement('div');
+	delete_cell.className = 'power-table-cell';
+	row.appendChild(delete_cell)
+	const delete_btn = document.createElement('button');
+	delete_btn.className = delete_class;
+	delete_btn.setAttribute('data-id', id);
+	delete_cell.appendChild(delete_btn)
+
+	row.style.maxHeight = max + 'px';
+	table.style.maxHeight = table.scrollHeight + max + 'px'; 
+
+	
+
+}
+
 function mod_create(mods, id, cell_class, check, entry) {
 
 	let new_mod;
