@@ -1063,7 +1063,7 @@ function create_table(jsonResponse) {
 	}
 
 	let new_cell;
-	const cell_heights = [];
+	let cell_heights = [];
 	for (new_cell of cells) {
 		const cell_class = table_id + '-' + new_cell.class;
 		const cell = document.createElement('div');
