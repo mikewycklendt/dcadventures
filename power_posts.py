@@ -4,7 +4,7 @@ from models import PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate
 
 def name(Table, name):
 
-	if name = 0:
+	if name == 0:
 		name = 'All'
 	else:
 		try:
