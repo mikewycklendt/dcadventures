@@ -1090,7 +1090,7 @@ function create_table(jsonResponse) {
 
 	let height;
 	let max = 0;
-	for (height in cell_heights) {
+	for (height of cell_heights) {
 		if (height > max) {
 			max = height;
 		}
