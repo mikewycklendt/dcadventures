@@ -1078,9 +1078,8 @@ function create_table(jsonResponse) {
 			} else {
 				const check = document.createElement('button');
 				check.className = 'power-check-button ' + cell_class;
-				cell.appendChild(check);
 				check.setAttribute('data-id', 0);
-
+				cell.appendChild(check);
 				mod_create(mods, id, cell_class, check, entry);
 			}
 		} else {
