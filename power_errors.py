@@ -24,6 +24,60 @@ def extra_convert(extra_id):
 	else:
 		integer(extra_id)
 
+def one(name, value):
+
+	data = {'name': name, 'value': value}
+
+	return (data)
+
+def field(name, value, data=[]):
+
+	field = {'name': name, 'value': value}
+
+	data.append(field)
+
+	return (data)
+
+def data(name, fields, value='', data=[]):
+
+	option = {'value': value,
+				'choice': name,
+				'values': values}
+
+	data.append(option)
+
+	return (data)
+
+def variable(field, data, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+	
+	for d in data:
+		value = d['value']
+		values = d['values']
+		choice = d['choice']
+
+		if field == value:
+			for val in values:
+				v = val['value']
+				missing = val['name']
+				if v == '':
+					message = 'All required ' choice ' fields must be complete.'
+					error = True
+					error_msgs.append(message)
+					break
+			for val in values:
+				if v == '':
+					message = missing ' field cannot be empty.'
+					error = True
+					error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (error)
+
 def select(fields, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -37,7 +91,7 @@ def select(fields, errors):
 				error = True
 				
 		if error:
-			message = 'You must choose all required ' + name + ' fields.'
+			message = 'All required ' + name + ' fields.'
 			error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -45,6 +99,47 @@ def select(fields, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def together(name, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	for value in values:
+		if value == '':
+			error = True
+				
+	if error:
+		message = 'If thid power uses ' + name + ', all of those fields must be complete.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def check_fields(check, name, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if check:
+		for value in values:
+			if value == '':
+				error = True
+				
+	if error:
+		message = 'You must complete all required ' + name + ' fields.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 
 def multiple(options, errors):
 	error_msgs = errors['error_msgs']
@@ -485,6 +580,34 @@ def defense_post_errors(data, errors):
 	errors = id_check(Action, reflect_action, 'Action', errors)
 	errors = id_check(Check, reflect_check, 'Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
+
+	errors = together('a die roll', [roll, outcome], errors)
+	errors = check_fields(reflect, 'Reflects Attacks', [reflect_action, reflect_check], errors)
+
+	fields = field('Trait Type', reflect_opposed_trait_type)
+	fields = field('Trait', reflect_opposed_trait, fields)
+	data = data('Opposed Check', fields, 2)
+	fields = field('DC', reflect_dc)
+	data = data('Skill Check', fields, 1, data)
+	fields = field('Trait Type', reflect_resist_trait)
+	fields = field('Trait', reflect_resist_trait_type, fields)
+	data = data('Resistance Check', fields, 6, data)
+
+	errors = variable(reflect_check, data, errors)
+
+	errors = check_fields(immunity, [immunity_type], errors)
+
+	fields = field('Trait Type', immunity_trait_type)
+	fields = field('Trait', immunity_trait, fields)
+	data = data('Trait Immunity', fields, 'trait')
+	fields = field('Damage Type', immunity_damage)
+	data = data('Damage Immunity', fields, 'damage', data)
+	fields = field('Descriptor', immunity_descriptor)
+	data = data('Descriptor Immunity', fields, 'descriptor', data)
+	fields = field('Rule', immunity_rule)
+	data = data('Game Rule Immunity', fields, 'rule', data)
+
+	errors = variable(immunity_type, data, errors)
 
 	return (errors)
 

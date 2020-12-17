@@ -275,14 +275,14 @@ def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	return (cells)
 
-def cell(title, width, contentlist, classname, cells):
+def cell(title, width, contentlist, classname, cells=[]):
 
 	content = contentlist[0]
 
 	if len(contentlist) > 1:	
 		for i in range(1, len(contentlist) -1, 1):
 			if content == '':
-				content += contentlist[i]
+				break
 			else:
 				content += ' ' + contentlist[i]
 
@@ -311,7 +311,7 @@ def mod_create(title, width, classname, variable=False):
 
 	return (mod)
 
-def mod_cell(width, title, data, mod, value=None, variable_data=[]):
+def mod_cell(title, width, data, mod, value=None, variable_data=[]):
 
 	variable = mod['variable']
 
@@ -907,28 +907,76 @@ def defense_post(entry, columns, created):
 
 	extra = extra_name(extra_id)
 	reflect_action = name(Action, reflect_action)
-	reflect_check = name(Check, reflect_check)
 	immunity_descriptor = descriptor_name(immunity_descriptor)
 	immunity_damage = name(Descriptor, immunity_damage)
-
-	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
-	use = selects(use, use_type_select)
-
-	outcome_select = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
-	outcome = selects(outcome, outcome_select)
-
-	immunity_type_select = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'rule', 'name': 'Game Rule'}]
-	immunity_type = selects(immunity_type, immunity_type_select)
 
 	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 	immunity_rule = selects(immunity_rule, game_rule_select)
 
-	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
-	cover_type = selects(cover_type, cover_select)
-
 	mod = integer_convert(mod)
 	roll = integer_convert(roll)
 	reflect_dc = integer_convert(reflect_dc)
+
+	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
+	use = selects(use, use_type_select)
+
+	cells = cell('Defense', 15, [defense], 'defense')
+	cells = cell('Use', 10, [use], 'use', cells)
+	cells = cell('Mod', 5, [mod], 'mod', cells)
+	cells = cell('Roll', 15, [roll, 'or', outcome], 'roll', cells)
+	cells = check_cell('Dodge', 5, dodge, 'dodge', cells)
+	cells = check_cell('Fortitude', 7, fortitude, 'fort', cells)
+	cells = check_cell('Parry', 5, parry, 'parry', cells)
+	cells = check_cell('Toughness', 7, toughness, 'tough', cells)
+	cells = check_cell('Will', 5, will, 'will', cells)
+	cells = check_cell('Resists Area', 10, resist_area, 'area', cells)
+	cells = check_cell('Resists Perception', 15, resist_perception, 'perc', cells)
+	
+	classname = 'reflect'
+	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
+	new_mod = mod_create('Reflects Attacks', 17, classname, True)
+	value = 1
+	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	data = mod_cell('DC:', 7, [reflect_dc], new_mod, value, data)
+	value = 2
+	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value, data)
+	data = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value, data)
+	value = 6
+	data = mod_cell('Action Type', 15, [reflect_action], new_mod, value, data)
+	data = mod_cell('Resisted By', 15, [reflect_action], new_mod, value, data)
+	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}]
+	new_mod = variable_mod(reflect_check, select, data, new_mod)
+	body = mod_add(reflect, new_mod, body)
+	
+	classname = 'immunity'
+	cells = check_cell('Immunity', 10, immunity, classname, cells, True)
+	new_mod = mod_create('Immunity', 17, classname, True)
+	value = 'trait'
+	data = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
+	value = 'damage'
+	data = mod_cell('Damage:', 10, [immunity_damage], new_mod, value, data)
+	value = 'descriptor'
+	data = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value, data)
+	value = 'rule'
+	data = mod_cell('Rule:', 10, [immunity_rule], new_mod, value, data)
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
+	new_mod = variable_mod(immunity_type, select, data, new_mod)
+	body = mod_add(immunity, new_mod, body)	
+
+	classname = cover
+	cells = check_cell('Cover', 10, cover_check, classname, cells, True)
+	new_mod = mod_create('Provides Cover', 17, classname)
+	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
+	body = mod_add(cover_check, new_mod, body)
+		"""
+		docstring
+		"""
+		pass)
+
+
+	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
+	cover_type = selects(cover_type, cover_select)
+
 	
 
 def degree_mod_post(entry, columns, created):

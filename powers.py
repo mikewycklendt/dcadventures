@@ -1266,6 +1266,18 @@ def power_post_alt_check():
 	return jsonify(body)
 
 
+@powers.route('/power/alt_check/delete/<power_id>', methods=['DELETE'])
+def delete_power_altcheck(power_id):
+	try:
+		db.session.query(PowerAltCheck).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/change_action/create', methods=['POST'])
 def power_post_change_action():
 
@@ -1306,6 +1318,17 @@ def power_post_change_action():
 	body = change_action_post(entry, columns, created)
 	return jsonify(body)
 
+@powers.route('/power/action/delete/<power_id>', methods=['DELETE'])
+def delete_power_action(power_id):
+	try:
+		db.session.query(PowerAction).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/character/create', methods=['POST'])
 def power_post_character():
@@ -1433,6 +1456,19 @@ def power_post_character():
 	body = character_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/char/delete/<power_id>', methods=['DELETE'])
+def delete_power_char(power_id):
+	try:
+		db.session.query(PowerChar).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/circ/create', methods=['POST'])
 def power_post_circ():
 
@@ -1495,6 +1531,19 @@ def power_post_circ():
 
 	body = circ_post(entry, columns, created)
 	return jsonify(body)
+
+
+@powers.route('/power/circ/delete/<power_id>', methods=['DELETE'])
+def delete_power_circ(power_id):
+	try:
+		db.session.query(PowerCirc).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/create/create', methods=['POST'])
 def power_post_create():
@@ -1666,6 +1715,19 @@ def power_post_create():
 	body = create_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/create/delete/<power_id>', methods=['DELETE'])
+def delete_power_create(power_id):
+	try:
+		db.session.query(PowerCreate).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/damage/create', methods=['POST'])
 def power_post_damage():
 
@@ -1713,6 +1775,18 @@ def power_post_damage():
 	body = damage_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/damage/delete/<power_id>', methods=['DELETE'])
+def delete_power_damage(power_id):
+	try:
+		db.session.query(PowerDamage).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/dc_table/create', methods=['POST'])
 def power_post_dc_table():
@@ -1796,6 +1870,18 @@ def power_post_dc_table():
 	body = dc_table_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/dc/delete/<power_id>', methods=['DELETE'])
+def delete_power_dc(power_id):
+	try:
+		db.session.query(PowerDC).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
@@ -1894,6 +1980,18 @@ def power_post_defense():
 	return jsonify(body)
 
 
+@powers.route('/power/defense/delete/<power_id>', methods=['DELETE'])
+def delete_power_defense(power_id):
+	try:
+		db.session.query(PowerDefense).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/degree_mod/create', methods=['POST'])
 def power_post_degree_mod():
 
@@ -1985,6 +2083,18 @@ def power_post_degree_mod():
 	return jsonify(body)
 
 
+@powers.route('/power/degree_mod/delete/<power_id>', methods=['DELETE'])
+def delete_power_degree_mod(power_id):
+	try:
+		db.session.query(PowerDegMod).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/degree/create', methods=['POST'])
 def power_post_degree():
 
@@ -2031,6 +2141,18 @@ def power_post_degree():
 	body = degree_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/degree/delete/<power_id>', methods=['DELETE'])
+def delete_power_degree(power_id):
+	try:
+		db.session.query(PowerDegree).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/environment/create', methods=['POST'])
 def power_post_environment():
@@ -2128,6 +2250,18 @@ def power_post_environment():
 	return jsonify(body)
 
 
+@powers.route('/power/env/delete/<power_id>', methods=['DELETE'])
+def delete_power_env(power_id):
+	try:
+		db.session.query(PowerEnv).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/levels/create', methods=['POST'])
 def power_post_levels():
 
@@ -2166,6 +2300,19 @@ def power_post_levels():
 
 	body = levels_post(entry, columns, created, old_level_type)
 	return jsonify(body)
+
+
+@powers.route('/power/levels/delete/<power_id>', methods=['DELETE'])
+def delete_power_levels(power_id):
+	try:
+		db.session.query(PowerLevels).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 
 @powers.route('/power/minion/create', methods=['POST'])
@@ -2242,7 +2389,20 @@ def power_post_minion():
 	body = minion_post(entry, columns, created)
 	return jsonify(body)
 
-	
+
+@powers.route('/power/minion/delete/<power_id>', methods=['DELETE'])
+def delete_power_minion(power_id):
+	try:
+		db.session.query(PowerMinion).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
 @powers.route('/power/mod/create', methods=['POST'])
 def power_post_mod():
 
@@ -2462,6 +2622,18 @@ def power_post_mod():
 	return jsonify(body)
 
 
+@powers.route('/power/mod/delete/<power_id>', methods=['DELETE'])
+def delete_power_mod(power_id):
+	try:
+		db.session.query(PowerMod).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
 @powers.route('/power/move/create', methods=['POST'])
 def power_post_move():
 
@@ -2663,6 +2835,18 @@ def power_post_move():
 	body = move_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/move/delete/<power_id>', methods=['DELETE'])
+def delete_power_move(power_id):
+	try:
+		db.session.query(PowerMove).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 	
 @powers.route('/power/opposed/create', methods=['POST'])
 def power_post_opposed():
@@ -2715,6 +2899,18 @@ def power_post_opposed():
 	body = opposed_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/opposed/delete/<power_id>', methods=['DELETE'])
+def delete_power_opposed(power_id):
+	try:
+		db.session.query(PowerOpposed).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
@@ -2839,6 +3035,18 @@ def power_post_ranged():
 	body = ranged_post(entry, columns, created)
 	return jsonify(body)
 
+
+@powers.route('/power/ranged/delete/<power_id>', methods=['DELETE'])
+def delete_power_ranged(power_id):
+	try:
+		db.session.query(PowerRanged).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 	
 @powers.route('/power/resist/create', methods=['POST'])
 def power_post_resist():
@@ -2900,9 +3108,17 @@ def power_post_resist():
 	return jsonify(body)
 
 
-
-
-
+@powers.route('/power/resistance/delete/<power_id>', methods=['DELETE'])
+def delete_power_resistance(power_id):
+	try:
+		db.session.query(PowerResist).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 	
 @powers.route('/power/resisted_by/create', methods=['POST'])
 def power_post_resisted_by():
@@ -2982,6 +3198,17 @@ def power_post_resisted_by():
 	return jsonify(body)
 
 
+@powers.route('/power/resist/delete/<power_id>', methods=['DELETE'])
+def delete_power_resist(power_id):
+	try:
+		db.session.query(PowerResistBy).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 
 @powers.route('/power/reverse_effect/create', methods=['POST'])
@@ -3048,6 +3275,17 @@ def power_post_reverse_effect():
 	return jsonify(body)
 
 
+@powers.route('/power/reverse/delete/<power_id>', methods=['DELETE'])
+def delete_power_reverse(power_id):
+	try:
+		db.session.query(PowerReverse).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 	
 @powers.route('/power/sense/create', methods=['POST'])
 def power_post_sense():
@@ -3182,6 +3420,17 @@ def power_post_sense():
 	return jsonify(body)
 
 
+@powers.route('/power/sense/delete/<power_id>', methods=['DELETE'])
+def delete_power_sense(power_id):
+	try:
+		db.session.query(PowerSense).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/time/create', methods=['POST'])
 def power_post_time():
@@ -3254,3 +3503,16 @@ def power_post_time():
 
 	body = time_post(entry, columns, created)
 	return jsonify(body)
+
+
+@powers.route('/power/time/delete/<power_id>', methods=['DELETE'])
+def delete_power_time(power_id):
+	try:
+		db.session.query(PowerTime).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})

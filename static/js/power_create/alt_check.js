@@ -42,6 +42,7 @@ function check_submit() {
 	const errors = 'check-err';
 	const err_line = 'check-err-line';
 
+	const route = '/power/alt_check/delete/'
 
 	response = fetch('/power/alt_check/create', {
 		method: 'POST',
@@ -68,8 +69,6 @@ function check_submit() {
 			check_grid.columns = jsonResponse.columns;
 			check_grid.titles = jsonResponse.created;
 
-			const table_id = jsonResponse.table_id;
-			const route = '/power/' + table_id + '/delete/'
 			create_table(jsonResponse);
 			delete_row(jsonResponse, route, check_grid)
 			clear_errors(err_line, errors)
