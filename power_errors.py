@@ -33,7 +33,7 @@ def select(fields, errors):
 				error = True
 				
 		if error:
-			message = 'You must choose all required ' name ' fields.'
+			message = 'You must choose all required ' + name + ' fields.'
 			error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
