@@ -1,3 +1,7 @@
+from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerLevels, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSense, PowerTime 
+
+
 def required(value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -93,13 +97,13 @@ def id_check(Table, value_id, name, errors):
 			errors['error_msgs'] = error_msgs
 
 			return (errors)
-			
-	try:
-		query = db.session.query(Table).filter_by(id=value_id).one()
-	except:
-		message = 'Could not find ' + name
-		error = True
-		error_msgs.append(message) 
+
+		try:
+			query = db.session.query(Table).filter_by(id=value_id).one()
+		except:
+			message = 'Could not find ' + name
+			error = True
+			error_msgs.append(message) 
 
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -186,7 +190,11 @@ def alt_check_post_errors(data, errors):
 	trait_type = data['trait_type']
 	trait = data['trait']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Check, check_type, 'Check', errors)
+	
 
 	return (errors)
 
@@ -202,6 +210,11 @@ def change_action_post_errors(data, errors):
 	objects = data['objects']
 	circumstance = data['circumstance']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Action, action, 'Action', errors)
+	
 
 
 	return (errors)
@@ -257,6 +270,10 @@ def character_post_errors(data, errors):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	
 
 
 	return (errors)
@@ -282,7 +299,10 @@ def circ_post_errors(data, errors):
 	null_trait_type = data['null_trait_type']
 	null_trait = data['null_trait']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Range, circ_range, 'range', errors)
 
 	return (errors)
 
@@ -351,6 +371,12 @@ def create_post_errors(data, errors):
 	cost = data['cost']
 	ranks = ['ranks']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Complex, complexity, 'complexity', errors)
+	errors = id_check(Ability, move_opponent_ability, 'ability', errors)
+	
 
 
 	return (errors)
@@ -368,6 +394,11 @@ def damage_post_errors(data, errors):
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Descriptor, damage_type, 'descriptor', errors)
+	
 
 
 	return (errors)
@@ -401,6 +432,12 @@ def dc_table_post_errors(data, errors):
 	levels = data['levels']
 	level = data['level']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Math, math, 'math', errors)
+	errors = id_check(PowerLevels, level, 'level', errors)
+	
 
 
 	return (errors)
@@ -441,40 +478,13 @@ def defense_post_errors(data, errors):
 	cover_check = data['cover_check']
 	cover_type = data['cover_type']
 
-
-	id_check(Power, power_id, 'Power', errors)
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
 	
-	required(extra_id,)
-	id_check(Extra, extra_id, 'Extra', errors)
-	defense = db.Column(db.String())
-	use = db.Column(db.String())
-	mod = db.Column(db.Integer)
-	roll = db.Column(db.Integer)
-	outcome = db.Column(db.String())
-	dodge = db.Column(db.Boolean)
-	fortitude = db.Column(db.Boolean)
-	parry = db.Column(db.Boolean)
-	toughness = db.Column(db.Boolean)
-	will = db.Column(db.Boolean)
-	resist_area = db.Column(db.Boolean)
-	resist_perception = db.Column(db.Boolean)
-	reflect = db.Column(db.Boolean)
-	immunity = db.Column(db.Boolean)
-	reflect_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	reflect_dc = db.Column(db.Integer)
-	reflect_opposed_trait_type = db.Column(db.String())
-	reflect_opposed_trait = db.Column(db.String())
-	reflect_resist_trait_type = db.Column(db.String())
-	reflect_resist_trait = db.Column(db.String())
-	immunity_type = db.Column(db.String())
-	immunity_trait_type = db.Column(db.String())
-	immunity_trait = db.Column(db.String())
-	immunity_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	immunity_damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-	immunity_rule = db.Column(db.String())
-	cover_check = db.Column(db.Boolean)
-	cover_type = db.Column(db.String())
+	errors = id_check(Action, reflect_action, 'Action', errors)
+	errors = id_check(Check, reflect_check, 'Check', errors)
+	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
 
 	return (errors)
 
@@ -509,7 +519,12 @@ def degree_mod_post_errors(data, errors):
 	linked = data['linked']
 	level = data['level']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Math, measure_math, 'math', errors)
+	errors = id_check(Rank, measure_rank, 'rank', errors)
+	errors = id_check(PowerLevels, level, 'level', errors)
 
 	return (errors)
 
@@ -527,7 +542,10 @@ def degree_post_errors(data, errors):
 	cumulative = data['cumulative']
 	target = data['target']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	
 
 	return (errors)
 
@@ -566,6 +584,10 @@ def environment_post_errors(data, errors):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	
 
 
 	return (errors)
@@ -580,7 +602,10 @@ def levels_post_errors(data, errors):
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	
 
 	return (errors)
 
@@ -609,6 +634,12 @@ def minion_post_errors(data, errors):
 	multiple_value = request.get_json()['multiple_value']
 	horde = request.get_json()['horde']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(PowerLevels, attitude_type, 'level', errors)
+	errors = id_check(Defense, resitable_check, 'defense', errors)
+	
 
 
 	return (errors)
@@ -700,6 +731,18 @@ def mod_post_errors(data, errors):
 	ranks_cost = data['ranks_cost']
 	cost = data['cost']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Defense, objects_alone, 'defense', errors)
+	errors = id_check(Defense, objects_character, 'defense', errors)
+ 	errors = id_check(PowerLevels, limited_level, 'level', errors)
+	errors = id_check(Extra, limited_extra, 'extra', errors)
+	errors = id_check(Sense, limited_sense, 'sense', errors)
+	errors = id_check(Range, limited_range, 'range', errors)
+	errors = id_check(PowerLevels, side_level, 'level', errors)
+	errors = id_check(Check, reflect_check, 'check', errors)
+	
 	return (errors)
 
 def move_post_errors(data, errors):
@@ -782,7 +825,16 @@ def move_post_errors(data, errors):
 	ranks = data['ranks']
 	cost = data['cost']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Math, math, 'math', errors)
+	errors = id_check(Math, distance_math, 'math', errors)
+	errors = id_check(Sense, concealment_sense, 'sense', errors)
+	errors = id_check(Ground, ground_type, 'ground', errors)
+	errors = id_check(Unit, ground_units, 'unit', errors)
+	errors = id_check(Check, objects_check, 'check', errors)
+	errors = id_check(ConflictAction, objects_attack, 'action', errors)
 
 	return (errors)
 
@@ -801,7 +853,11 @@ def opposed_post_errors(data, errors):
 	player_check = data['player_check']
 	opponent_check = data['opponent_check']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Check, player_check, 'check', errors)
+	errors = id_check(Check, opponent_check, 'check', errors)
 
 	return (errors)
 
@@ -847,6 +903,16 @@ def ranged_post_errors(data, errors):
 	dc_trait_type = data['dc_trait_type']
 	dc_trait = data['dc_trait']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Unit, flat_units, 'unit', errors)
+	errors = id_check(Unit, flat_rank_units, 'unit', errors)
+	errors = id_check(Unit, units_rank_units, 'unit', errors)
+	errors = id_check(Math, effect_mod_math, 'math', errors)
+	errors = id_check(Math, check_math, 'math', errors)
+	errors = id_check(Math, trait_math, 'math', errors)
+	errors = id_check(Math, distance_mod_math, 'math', errors)
 
 
 	return (errors)
@@ -871,8 +937,12 @@ def resist_post_errors(data, errors):
 	check_trait_type = data['check_trait_type']
 	check_trait = data['check_trait']
 
-	errors['success'] = error
-	errors['error_msgs'] = error_msgs
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Check, check_type, 'check', errors)
+	
+	return (errors)
 
 def resisted_by_post_errors(data, errors):
 
@@ -899,6 +969,12 @@ def resisted_by_post_errors(data, errors):
 	nullify_alternate = data['nullify_alternate']
 	extra_effort = data['extra_effort']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(PowerLevels, level, 'level', errors)
+	errors = id_check(Defense, nullify_alternate, 'defense', errors)
+		
 
 
 	return (errors)
@@ -924,6 +1000,12 @@ def reverse_effect_post_errors(data, errors):
 	time_value = data['time_value']
 	time_unit = data['time_unit']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Math, math, 'math', errors)
+	errors = id_check(Unit, time_unit, 'unit', errors)
+	
 
 
 	return (errors)
@@ -978,7 +1060,13 @@ def sense_post_errors(data, errors):
 	ranks = data['ranks']
 	cost = data['cost']
 
-
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Skill, skill, 'skill', errors)
+	errors = id_check(Unit, time_unit, 'unit', errors)
+	errors = id_check(Skill, time_skill, 'skill', errors)
+	errors = id_check(Unit, distance_unit, 'unit', errors)
 
 	return (errors)
 
@@ -1005,6 +1093,13 @@ def time_post_errors(data, errors):
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = id_check(Unit, units, 'unit', errors)
+	errors = id_check(Math, math, 'math', errors)
+	errors = id_check(Check, check_type, 'check', errors)
+	
 
 
 	return (errors)
