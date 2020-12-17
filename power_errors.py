@@ -52,7 +52,7 @@ def multiple(options, errors):
 
 		if value == '':
 			error = True
-			message = name ' field cannot be empty.'
+			message = name + ' field cannot be empty.'
 			error_msgs.appwnd(message)
 
 	errors['error_msgs'] = error_msgs
