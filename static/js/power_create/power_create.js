@@ -1060,12 +1060,13 @@ function create_table(jsonResponse) {
 	}
 
 
+
 	let new_cell;
 	const cell_heights = [];
 	for (new_cell of cells) {
-		const cell_class = new_cell.class;
+		const cell_class = table_id + '-' + new_cell.class;
 		const cell = document.createElement('div');
-		cell.className = 'power-table-cell ' + 'power-table-' + cell_class;
+		cell.className = 'power-table-cell ' + cell_class;
 		if (new_cell.content == false) {
 			cell.innerHTML = '';
 		} else if (new_cell == true) {
@@ -1074,11 +1075,13 @@ function create_table(jsonResponse) {
 				check.className = 'power-check';
 			} else {
 				const check = document.createElement('button');
-				check.className = 'power-check-button ' + 'power-table-' + cell_class;
+				check.className = 'power-check-button ' + cell_class;
+				check.setAttribute('data-id', 0)
+				mod_create(mods, id, cell_class, check, entry)
 			}
 		}
 		const cell = document.createElement('div');
-		cell.className = 'power-table-cell ' + cell.class;
+		cell.className = 'power-table-cell ' + cell_class;
 		cell.innerHTML = cell.content;
 		cell_heights.push(cell.scrollHeight);
 		row.appendChild(cell);
@@ -1107,17 +1110,86 @@ function create_table(jsonResponse) {
 
 }
 
+function mod_create(mods, id, cell_class, check, entry) {
+
+	let new_mod;
+	for (new_mod of mods) {
+		const cells = new_mod.cells;
+		const mod_title = new_mod.title;
+		const variable = new_mod.vaeiable;
+
+		const mod = document.createElement('div');
+		mod.classname = 'mod-row ' + cell_class;
+		mod.setAttribute('data-id', id);
+		mod.style.gridTemplateColumns = new_mod.grid;
+	
+		const empty = document.createElement('div');
+		empty.className = 'mod-cell-empty';
+		mod.appendChild(empty);
+
+		const title = document.createElement('div');
+		title.className = 'mod-cell-mod';
+		title.innerHTML = mod_title;
+		mod.appendChild(title);
+
+		if (variable == true) {
+			const sub_title = new_mod.sub_title;
+			const sub = document.createElement('div');
+			sub.className = 'mod-cell-sub';
+			sub.innerHTML = sub_title;
+			mod.appendChild(sub)
+		}
+
+		let new_cell;
+		for (new_cell of cells) {
+			const tit = document.createElement('div');
+			tit.className = 'mod-cell-title';
+			tit.innerHTML = new_cell.title;
+			mod.appendChild(tit);
+
+			const con = document.createElement('div');
+			
+			if (new_cell.content == true) {
+				con.className = 'mod-cell-content power-check';
+			} else {
+				con.className = 'mod-cell-content';
+				con.innerHTML = new_cell.content;
+			}
+			mod.appendChild(con);
+		}
+
+		entry.appendChild(new_mod);
+	}
+
+	setTimeout(function(){
+		check.onclick = function(e) {
+			console.log('click');
+
+			const divs = document.getElementsByClassName(cell_class);
+			let div;
+			for (div of divs) {
+				let data = div.dataset['id']
+				if (data == id) {
+					const status = div.style.display;
+					if (status == 'grid') {
+						div.style.maxHeight = '0px';
+						setTimeout(function(){div.style.display = 'none'}, 400);
+					} else {
+						div.style.display = 'grid';
+						div.style.maxHeight = div.scrollHeight + 'px';
+					} 
+				}
+			}
+		}
+	}, 10);
+
+}
+
 function row_delete(jsonResponse, route, object) {
 	const table_id = jsonResponse.table_id;
-	const created = jsonResponse.created;
-	const id = jsonResponse.id; 
-	const title_string = jsonResponse.title;
-	const grid = jsonResponse.grid;
-	const mods = jsonResponse.mods;
-	const cells = jsonResponse.cells;
 	const rows = jsonResponse.columns;
 
-	const row_class = table-id + '-row';
+	const row_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 
 	const deletes = document.getElementsByClassName(delete_class);
@@ -1143,7 +1215,22 @@ function row_delete(jsonResponse, route, object) {
 				.then(response => response.json())
 				.then(jsonResponse => {
 					if (jsonResponse.success) {
-						const all
+						const grid = jsonResponse.grid;
+						const new_rows = jsonResponse.rows
+						const all_rows = document.getElementsByClassName(row_class)
+
+						object.columns = new_rows;
+						
+						let row;
+
+						for (row of all_rows) {
+							row.style.gridTemplateColumns = grid;
+						}
+
+						all_rows[i].style.maxHeight = '0px';
+						setTimeout(function(){all_rows[i].style.display = 'none'}, 400);
+
+						
 					} else {
 						console.log('error')
 			

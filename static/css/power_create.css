@@ -830,7 +830,7 @@ textarea:focus {
 	display: grid;
 }
 
-.mod-row-empty {
+.mod-cell-empty {
 	display: grid;
 	background-color: white;
 }
@@ -850,8 +850,14 @@ textarea:focus {
 	text-align: center;
 }
 
-.mod-cell {
+.mod-cell-content {
 	text-align: left;
+	border-bottom: .1vw solid #245681;
+	background-color: lightblue;
+}
+
+.mod-cell-title {
+	text-align: center;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 }

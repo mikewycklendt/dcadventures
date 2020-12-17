@@ -318,7 +318,7 @@ def mod_create(title, width, classname, variable=False):
 
 def mod_cell(width, title, data, mod, value=None, variable_data=[]):
 
-	variable = mod['varible']
+	variable = mod['variable']
 
 	if variable:
 		if variable_data == []:
@@ -382,7 +382,6 @@ def variable_mod(value, select, data, mod)
 
 	grid = mod['grid']
 	cells = mod['cells']
-	sub_title_cell = {}
 
 	for option in select:
 		if option['type'] == value:

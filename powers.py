@@ -17,7 +17,7 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
 from power_errors import integer, extra_convert, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
-from power_posts import alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
+from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
 
 load_dotenv()
 
@@ -1200,6 +1200,19 @@ def delete_powerdes(power_id):
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': power_id})
 
+
+@powers.route('/power/grid', methods=['POST'])
+def power_grid():
+
+	row_id = request.get_json()['id']
+	rows = request.get_json()['rows']
+
+	new_rows = delete_row(row_id, rows)
+	grid = grid_columns(new_rows)
+
+	body = {'rows': new_rows, 'grid': grid}
+
+	return jsonify(body)
 
 @powers.route('/power/alt_check/create', methods=['POST'])
 def power_post_alt_check():
