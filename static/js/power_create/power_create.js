@@ -1084,7 +1084,8 @@ function create_table(jsonResponse) {
 		const cell = document.createElement('div');
 		cell.className = 'power-table-cell ' + cell_class;
 		cell.innerHTML = cell.content;
-		cell_heights.push(cell.scrollHeight);
+		const cell_height = cell.scrollHeight;
+		cell_heights.push(cell_height);
 		row.appendChild(cell);
 	}
 
