@@ -255,7 +255,7 @@ def character_post_errors(data, errors):
 	insub_type = data['insub_type']
 	insub_description = data['insub_description']
 	cost = data['cost']
-	ranks = data'ranks']
+	ranks = data['ranks']
 
 
 
