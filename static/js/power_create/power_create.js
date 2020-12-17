@@ -1036,7 +1036,7 @@ function create_table(jsonResponse) {
 			const cell_title = document.createElement('div');
 			cell_title.className = 'power-table-cell-title';
 			cell.innerHTML = cell.title;
-			cell.appendChild(title_row)
+			title_row.appendChild(cell);
 		}
 
 		title_row.style.maxHeight = title_row.scrollHeight + 'px';
@@ -1046,7 +1046,9 @@ function create_table(jsonResponse) {
 
 	const entry_class = 'power-table-row ' + row_class;
 
-	const table = document.getElementById(table_id);
+	const table_class = table_id + '-table';
+
+	const table = document.getElementById(table_class);
 	const entry = document.createElement('div');
 	entry.className = entry_class;
 	const row = document.createElement('div');
@@ -1059,8 +1061,6 @@ function create_table(jsonResponse) {
 	for (row_grid of rows) {
 		row_grid.style.gridTemplateColumns = grid;
 	}
-
-
 
 	let new_cell;
 	const cell_heights = [];
@@ -1077,8 +1077,8 @@ function create_table(jsonResponse) {
 			} else {
 				const check = document.createElement('button');
 				check.className = 'power-check-button ' + cell_class;
-				check.setAttribute('data-id', 0)
-				mod_create(mods, id, cell_class, check, entry)
+				check.setAttribute('data-id', 0);
+				mod_create(mods, id, cell_class, check, entry);
 			}
 		}
 		const cell = document.createElement('div');
