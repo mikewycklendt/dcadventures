@@ -1019,7 +1019,7 @@ function create_table(jsonResponse) {
 		if (title_string != '') {
 			const title = document.createElement('div');
 			title.className = 'power-table-title';
-			title.innerHTML = title_string
+			title.innerHTML = title_string;
 			spot.appendChild(title)
 		}
 		const new_table = document.createElement('div');
@@ -1029,7 +1029,7 @@ function create_table(jsonResponse) {
 		const title_row = document.createElement('div');
 		title_row.className = row_class;
 		title_row.style.gridTemplateColumns = grid;
-		new_table.appendChild(title_row)
+		new_table.appendChild(title_row);
 
 		let cell;
 		for (cell of cells) {
@@ -1051,11 +1051,11 @@ function create_table(jsonResponse) {
 	const table = document.getElementById(table_class);
 	const entry = document.createElement('div');
 	entry.className = entry_class;
+	table.appendChild(entry);
 	const row = document.createElement('div');
 	row.className = 'power-table-cells';	
 	row.style.gridTemplateColumns = grid;
 	entry.appendChild(row);
-	table.appendChild(entry);
 	const rows = document.getElementsByClassName(row_class);
 	let row_grid;
 	for (row_grid of rows) {
