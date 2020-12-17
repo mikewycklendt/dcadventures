@@ -1062,42 +1062,6 @@ function create_table(jsonResponse) {
 		row_grid.style.gridTemplateColumns = grid;
 	}
 
-	let new_cell;
-	let cell_heights = [];
-	for (new_cell of cells) {
-		const cell_class = table_id + '-' + new_cell.class;
-		const cell = document.createElement('div');
-		cell.className = 'power-table-cell ' + cell_class;
-		if (new_cell.content == false) {
-			cell.innerHTML = '';
-		} else if (new_cell.content == true) {
-			if (new_cell.mod_check == false) {
-				let check = document.createElement('div');
-				check.className = 'power-check';
-				cell.appendChild(check)
-			} else {
-				let check = document.createElement('button');
-				check.className = 'power-check-button ' + cell_class;
-				check.setAttribute('data-id', 0);
-				cell.appendChild(check);
-				mod_create(mods, id, cell_class, check, entry);
-			}
-		} else {
-			cell.innerHTML = new_cell.content;
-			const cell_height = cell.scrollHeight;
-			cell_heights.push(cell_height);
-			row.appendChild(cell);
-		}
-	}
-
-	let height;
-	let max = 0;
-	for (height of cell_heights) {
-		if (height > max) {
-			max = height;
-		}
-	}
-
 	const delete_class = table_id + '-xbox';
 
 	const delete_cell = document.createElement('div');
