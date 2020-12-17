@@ -399,7 +399,7 @@ def variable_mod(value, select, data, mod):
 
 	return (mod)
 
-def mod_add(check, mod, body)
+def mod_add(check, mod, body):
 
 	mods = body['mods']
 
