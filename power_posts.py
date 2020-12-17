@@ -260,11 +260,9 @@ def variable_cell(value, width, contentlist, data=[]):
 
 	return (data)
 
-def check_cell(title, check, classname, cells, mod_check=False):
+def check_cell(title, width, check, classname, cells, mod_check=False):
 
-	if check == True:
-		width = 5
-	else:
+	if check == False:
 		width = .2
 		mod_check = False
 
