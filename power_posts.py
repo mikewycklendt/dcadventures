@@ -920,6 +920,10 @@ def defense_post(entry, columns, created):
 	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
 	use = selects(use, use_type_select)
 
+	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
+	cover_type = selects(cover_type, cover_select)
+
+
 	cells = cell('Defense', 15, [defense], 'defense')
 	cells = cell('Use', 10, [use], 'use', cells)
 	cells = cell('Mod', 5, [mod], 'mod', cells)
@@ -968,14 +972,7 @@ def defense_post(entry, columns, created):
 	new_mod = mod_create('Provides Cover', 17, classname)
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
-		"""
-		docstring
-		"""
-		pass)
 
-
-	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
-	cover_type = selects(cover_type, cover_select)
 
 	
 
