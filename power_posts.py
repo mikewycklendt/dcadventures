@@ -375,7 +375,7 @@ def mod_cell(width, title, data, mod, value=None, variable_data=[]):
 
 	return (result)
 
-def variable_mod(value, select, data, mod)
+def variable_mod(value, select, data, mod):
 
 	grid = mod['grid']
 	cells = mod['cells']
