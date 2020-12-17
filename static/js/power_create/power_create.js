@@ -1074,15 +1074,16 @@ function create_table(jsonResponse) {
 			if (new_cell.mod_check == false) {
 				const check = document.createElement('div');
 				check.className = 'power-check';
+				cell.appendChild(check)
 			} else {
 				const check = document.createElement('button');
 				check.className = 'power-check-button ' + cell_class;
+				cell.appendChild(check);
 				check.setAttribute('data-id', 0);
+
 				mod_create(mods, id, cell_class, check, entry);
 			}
 		} else {
-			const cell = document.createElement('div');
-			cell.className = 'power-table-cell ' + cell_class;
 			cell.innerHTML = cell.content;
 			const cell_height = cell.scrollHeight;
 			cell_heights.push(cell_height);
