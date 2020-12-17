@@ -1044,6 +1044,9 @@ function create_table(jsonResponse) {
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
+	const entry_class = 'power-table-row ' + row_class;
+
+	const table_class = table_id + '-table';
 
 
 	let new_cell;
