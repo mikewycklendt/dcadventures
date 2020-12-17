@@ -17,14 +17,11 @@ def name(Table, name):
 
 def math(Table, name):
 
-	if name = 0:
-		name = 'All'
-	else:
-		try:
-			query = db.session,query(Table).filter_by(id=name).one()
-			name = query.symbol
-		except:
-			print('invalid id')
+	try:
+		query = db.session,query(Table).filter_by(id=name).one()
+		name = query.symbol
+	except:
+		print('invalid id')
 	
 	return (name)
 
