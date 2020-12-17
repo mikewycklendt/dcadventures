@@ -736,7 +736,7 @@ def mod_post_errors(data, errors):
 	errors = id_check(Extra, extra_id, 'Extra', errors)
 	errors = id_check(Defense, objects_alone, 'defense', errors)
 	errors = id_check(Defense, objects_character, 'defense', errors)
- 	errors = id_check(PowerLevels, limited_level, 'level', errors)
+	errors = id_check(PowerLevels, limited_level, 'level', errors)
 	errors = id_check(Extra, limited_extra, 'extra', errors)
 	errors = id_check(Sense, limited_sense, 'sense', errors)
 	errors = id_check(Range, limited_range, 'range', errors)
