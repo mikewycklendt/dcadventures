@@ -179,7 +179,7 @@ def grid_columns(rows):
 	else:
 		gridrows = [row['cells'] for row in rows] 	
 		for row in gridrows:
-			if columns = []:
+			if columns == []:
 				columns.append(row)
 			else:
 				for i in range(1, len(row) - 1, 1):
