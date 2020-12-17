@@ -1083,7 +1083,7 @@ function create_table(jsonResponse) {
 				mod_create(mods, id, cell_class, check, entry);
 			}
 		} else {
-			cell.innerHTML = cell.content;
+			cell.innerHTML = new_cell.content;
 			const cell_height = cell.scrollHeight;
 			cell_heights.push(cell_height);
 			row.appendChild(cell);
