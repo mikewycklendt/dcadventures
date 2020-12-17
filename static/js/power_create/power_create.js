@@ -998,6 +998,138 @@ power_save = function() {
 }
 ```
 
+function mod_create(mods, id, cell_class, check, entry) {
+
+	let new_mod;
+	for (new_mod of mods) {
+		const cells = new_mod.cells;
+		const mod_title = new_mod.title;
+		const variable = new_mod.vaeiable;
+
+		const mod = document.createElement('div');
+		mod.classname = 'mod-row ' + cell_class;
+		mod.setAttribute('data-id', id);
+		mod.style.gridTemplateColumns = new_mod.grid;
+	
+		const empty = document.createElement('div');
+		empty.className = 'mod-cell-empty';
+		mod.appendChild(empty);
+
+		const title = document.createElement('div');
+		title.className = 'mod-cell-mod';
+		title.innerHTML = mod_title;
+		mod.appendChild(title);
+
+		if (variable == true) {
+			const sub_title = new_mod.sub_title;
+			const sub = document.createElement('div');
+			sub.className = 'mod-cell-sub';
+			sub.innerHTML = sub_title;
+			mod.appendChild(sub)
+		}
+
+		let new_cell;
+		for (new_cell of cells) {
+			const tit = document.createElement('div');
+			tit.className = 'mod-cell-title';
+			tit.innerHTML = new_cell.title;
+			mod.appendChild(tit);
+
+			const con = document.createElement('div');
+			
+			if (new_cell.content == true) {
+				con.className = 'mod-cell-content power-check';
+			} else {
+				con.className = 'mod-cell-content';
+				con.innerHTML = new_cell.content;
+			}
+			mod.appendChild(con);
+		}
+
+		entry.appendChild(new_mod);
+	}
+
+	setTimeout(function(){
+		check.onclick = function(e) {
+			console.log('click');
+
+			const divs = document.getElementsByClassName(cell_class);
+			let div;
+			for (div of divs) {
+				let data = div.dataset['id']
+				if (data == id) {
+					const status = div.style.display;
+					if (status == 'grid') {
+						div.style.maxHeight = '0px';
+						setTimeout(function(){div.style.display = 'none'}, 400);
+					} else {
+						div.style.display = 'grid';
+						div.style.maxHeight = div.scrollHeight + 'px';
+					} 
+				}
+			}
+		}
+	}, 10);
+
+}
+
+
+function row_delete(jsonResponse, route, object) {
+	const table_id = jsonResponse.table_id;
+	const rows = jsonResponse.columns;
+
+	const row_class = table_id + '-row';
+	const delete_class = table_id + '-xbox';
+
+	const deletes = document.getElementsByClassName(delete_class);
+	for (let i = 0; i < deletes.length; i++) {
+		const btn = deletes[i];
+		btn.onclick = function(e) {
+			console.log('click');
+
+			const delId = e.target.dataset['id']
+			fetch(route + delId, {
+				method: 'DELETE'
+			})
+			.then(function() {
+				response = fetch('/power/grid', {
+					method: 'POST',
+					body: JSON.stringify({
+						'rows': rows,
+						'id': delId				}),
+					headers: {
+					  'Content-Type': 'application/json',
+					}
+				})
+				.then(response => response.json())
+				.then(jsonResponse => {
+					if (jsonResponse.success) {
+						const grid = jsonResponse.grid;
+						const new_rows = jsonResponse.rows
+						const all_rows = document.getElementsByClassName(row_class)
+
+						object.columns = new_rows;
+						
+						let row;
+
+						for (row of all_rows) {
+							row.style.gridTemplateColumns = grid;
+						}
+
+						all_rows[i].style.maxHeight = '0px';
+						setTimeout(function(){all_rows[i].style.display = 'none'}, 400);
+
+						
+					} else {
+						console.log('error')
+			
+					}
+				})
+			
+			})
+		}
+	}
+}
 
 function back_errors(line, table, jsonResponse) {
 	const errors = document.getElementById(table);
