@@ -1070,7 +1070,7 @@ function create_table(jsonResponse) {
 		cell.className = 'power-table-cell ' + cell_class;
 		if (new_cell.content == false) {
 			cell.innerHTML = '';
-		} else if (new_cell == true) {
+		} else if (new_cell.content == true) {
 			if (new_cell.mod_check == false) {
 				const check = document.createElement('div');
 				check.className = 'power-check';
