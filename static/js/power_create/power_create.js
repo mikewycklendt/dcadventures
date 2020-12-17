@@ -1185,63 +1185,6 @@ function mod_create(mods, id, cell_class, check, entry) {
 
 }
 
-function row_delete(jsonResponse, route, object) {
-	const table_id = jsonResponse.table_id;
-	const rows = jsonResponse.columns;
-
-	const row_class = table_id + '-row';
-	const delete_class = table_id + '-xbox';
-
-	const deletes = document.getElementsByClassName(delete_class);
-	for (let i = 0; i < deletes.length; i++) {
-		const btn = deletes[i];
-		btn.onclick = function(e) {
-			console.log('click');
-
-			const delId = e.target.dataset['id']
-			fetch(route + delId, {
-				method: 'DELETE'
-			})
-			.then(function() {
-				response = fetch('/power/grid', {
-					method: 'POST',
-					body: JSON.stringify({
-						'rows': rows,
-						'id': delId				}),
-					headers: {
-					  'Content-Type': 'application/json',
-					}
-				})
-				.then(response => response.json())
-				.then(jsonResponse => {
-					if (jsonResponse.success) {
-						const grid = jsonResponse.grid;
-						const new_rows = jsonResponse.rows
-						const all_rows = document.getElementsByClassName(row_class)
-
-						object.columns = new_rows;
-						
-						let row;
-
-						for (row of all_rows) {
-							row.style.gridTemplateColumns = grid;
-						}
-
-						all_rows[i].style.maxHeight = '0px';
-						setTimeout(function(){all_rows[i].style.display = 'none'}, 400);
-
-						
-					} else {
-						console.log('error')
-			
-					}
-				})
-			
-			})
-		}
-	}
-}
-
 function back_errors(line, table, jsonResponse) {
 	const errors = document.getElementById(table);
 
