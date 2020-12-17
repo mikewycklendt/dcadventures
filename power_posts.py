@@ -447,8 +447,6 @@ def alt_check_post(entry, columns, created):
 
 	mod = integer_convert(mod)
 
-def mod_cell
-
 
 def change_action_post(entry, columns, created):
 
