@@ -893,7 +893,7 @@ def resisted_by_post_errors(data, errors):
 	weaken_restored = data['weaken_restored']
 	condition1 = data['condition1']
 	condition2 = data['condition2']
-	damage = data'damage']
+	damage = data['damage']
 	strength = data['strength']
 	nullify_descriptor = data['nullify_descriptor']
 	nullify_alternate = data['nullify_alternate']
