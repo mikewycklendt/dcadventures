@@ -1072,11 +1072,11 @@ function create_table(jsonResponse) {
 			cell.innerHTML = '';
 		} else if (new_cell.content == true) {
 			if (new_cell.mod_check == false) {
-				const check = document.createElement('div');
+				let check = document.createElement('div');
 				check.className = 'power-check';
 				cell.appendChild(check)
 			} else {
-				const check = document.createElement('button');
+				let check = document.createElement('button');
 				check.className = 'power-check-button ' + cell_class;
 				check.setAttribute('data-id', 0);
 				cell.appendChild(check);
