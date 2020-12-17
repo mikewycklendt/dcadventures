@@ -62,7 +62,7 @@ def variable(field, data, errors):
 				v = val['value']
 				missing = val['name']
 				if v == '':
-					message = 'All required ' choice ' fields must be complete.'
+					message = 'All required ' + choice + ' fields must be complete.'
 					error = True
 					error_msgs.append(message)
 					break
