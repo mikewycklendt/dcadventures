@@ -1080,13 +1080,14 @@ function create_table(jsonResponse) {
 				check.setAttribute('data-id', 0);
 				mod_create(mods, id, cell_class, check, entry);
 			}
+		} else {
+			const cell = document.createElement('div');
+			cell.className = 'power-table-cell ' + cell_class;
+			cell.innerHTML = cell.content;
+			const cell_height = cell.scrollHeight;
+			cell_heights.push(cell_height);
+			row.appendChild(cell);
 		}
-		const cell = document.createElement('div');
-		cell.className = 'power-table-cell ' + cell_class;
-		cell.innerHTML = cell.content;
-		const cell_height = cell.scrollHeight;
-		cell_heights.push(cell_height);
-		row.appendChild(cell);
 	}
 
 	let height;
