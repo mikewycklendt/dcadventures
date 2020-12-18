@@ -150,7 +150,7 @@ def select_multiple(values):
 
 	return (result)
 
-def entry(cells):
+def entry(cells, body):
 
 	rows = body['rows']
 	entry_id = body['id']
@@ -986,7 +986,7 @@ def defense_post(entry, columns, created):
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 
-	body = entry(cells)
+	body = entry(cells, body)
 
 	return (body)
 	
