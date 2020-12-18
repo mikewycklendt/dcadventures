@@ -1275,7 +1275,7 @@ function back_errors(line, table, jsonResponse) {
 				errors_delete[i].style.display = 'none';
 			}
 		}, 400);
-
+	}
 
 
 	setTimeout(function(){
