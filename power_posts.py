@@ -339,6 +339,7 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 
 	print('\n\n\n\n')
 	print(variable_data)
+	print(len(variable_data))
 
 	if variable:
 		if variable_data == []:
@@ -348,12 +349,12 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 			
 			d['grid'] = ''
 		else:
-			for var in variable_data:
-				print(var)
+			for i in range(0, len(variable_data), 1):
+				print(variable_data[i])
 				print('\n\n\n\n')
 
-				if var['value'] == val:
-					d = var
+				if variable_data[i]['value'] == val:
+					d = variable_data[i]
 					break
 				else:
 					d = {}
