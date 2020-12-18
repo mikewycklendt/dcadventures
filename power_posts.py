@@ -329,7 +329,7 @@ def mod_create(title, width, classname, variable=False):
 
 	return (mod)
 
-def mod_cell(title, width, data, mod, value=None, variable_data=[]):
+def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 
 	if variable_data == ['e']:
 		new_v_data = []
