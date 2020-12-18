@@ -610,6 +610,7 @@ def defense_post_errors(data):
 
 	for d in data:
 		print(data)
+		print('\n\n\n')
 
 	errors = variable(immunity_type, data, errors)
 
