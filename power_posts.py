@@ -329,7 +329,7 @@ def mod_create(title, width, classname, variable=False):
 
 	return (mod)
 
-def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
+def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 
 	if variable_data == ['e']:
 		new_v_data = []
@@ -340,7 +340,7 @@ def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 	if variable:
 		if variable_data == []:
 			d = {}
-			d['value'] = value
+			d['value'] = val
 			d['cells'] = []
 			
 			d['grid'] = ''
@@ -348,13 +348,13 @@ def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 			for var in variable_data:
 				print(var)
 				print('\n\n\n\n')
-				
-				if var['value'] == value:
+
+				if var['value'] == val:
 					d = var
 					break
 				else:
 					d = {}
-					d['value'] = value
+					d['value'] = val
 					d['cells'] = []
 					d['grid'] = ''
 		result = d
