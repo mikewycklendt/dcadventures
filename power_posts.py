@@ -393,11 +393,12 @@ def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 	result['grid'] = grid
 	result['cells'] = cells
 
-	if variable:
+	if variable == False:
+		return (result)
+	else:
 		variable_data.append(result)
 		return (variable_data)
-	else:
-		return (result)
+		
 
 def variable_mod(value, select, data, mod):
 
