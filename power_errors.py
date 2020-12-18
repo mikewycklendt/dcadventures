@@ -42,7 +42,7 @@ def data(name, fields, value='', data=[]):
 
 	option = {'value': value,
 				'choice': name,
-				'values': values}
+				'values': fields}
 
 	data.append(option)
 
