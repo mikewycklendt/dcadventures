@@ -331,7 +331,7 @@ def mod_create(title, width, classname, variable=False):
 
 def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 
-	if variable_data = ['e']
+	if variable_data == ['e']:
 		new_v_data = []
 		variable_data = new_v_data
 
