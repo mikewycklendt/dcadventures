@@ -30,11 +30,16 @@ def one(name, value):
 
 	return (data)
 
-def field(name, value, data=[]):
+def field(name, value, data=['empty']):
+
 
 	field = {'name': name, 'value': value}
 
-	data.append(field)
+	if data = ['empty']
+		new_data = []
+		new_data.append(field)
+	else:
+		data.append(field)
 
 	return (data)
 
@@ -45,6 +50,7 @@ def data_add(name, fields, value='', data=[]):
 				'values': fields}
 
 	data.append(option)
+	fie
 
 	return (data)
 
