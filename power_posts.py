@@ -337,6 +337,9 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 
 	variable = mod['variable']
 
+	print('\n\n\n\n')
+	print(variable_data)
+
 	if variable:
 		if variable_data == []:
 			d = {}
