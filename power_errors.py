@@ -599,6 +599,7 @@ def defense_post_errors(data):
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
 	fields = []
+	data =  []
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
 	data = data_add('Trait Immunity', fields, 'trait')
