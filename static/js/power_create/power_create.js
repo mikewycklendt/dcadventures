@@ -1279,7 +1279,7 @@ function back_errors(line, table, jsonResponse) {
 		error.style.maxHeight = error.scrollHeight + "px";
 
 		errors_height = errors_height + error.scrollHeight;
-
+		console.log(errors_height)
 		errors.style.padding = "1%";	
 	}
 
