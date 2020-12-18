@@ -592,12 +592,12 @@ def defense_post_errors(data):
 	fields = field('Trait', reflect_resist_trait_type, fields)
 	data = data_add('Resistance Check', fields, 6, data)
 
-	
+
+	print(errors)
+	print('\n\n\n\n\n\n')	
 
 	errors = variable(reflect_check, data, errors)
 
-	print(errors)
-	print('\n\n\n\n\n\n')
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
