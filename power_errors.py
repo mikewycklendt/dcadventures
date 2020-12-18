@@ -272,9 +272,9 @@ def int_check(value, name, errors):
 
 	return (errors)
 
-def alt_check_post_errors(data, errors):
+def alt_check_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -293,10 +293,9 @@ def alt_check_post_errors(data, errors):
 
 	return (errors)
 
-def change_action_post_errors(data, errors):
+def change_action_post_errors(data):
 
-	errors = errors
-
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -315,9 +314,9 @@ def change_action_post_errors(data, errors):
 	return (errors)
 
 
-def character_post_errors(data, errors):
+def character_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -373,9 +372,9 @@ def character_post_errors(data, errors):
 
 	return (errors)
 
-def circ_post_errors(data, errors):
+def circ_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -401,9 +400,9 @@ def circ_post_errors(data, errors):
 
 	return (errors)
 
-def create_post_errors(data, errors):
+def create_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -476,9 +475,9 @@ def create_post_errors(data, errors):
 
 	return (errors)
 
-def damage_post_errors(data, errors):
+def damage_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -498,9 +497,9 @@ def damage_post_errors(data, errors):
 
 	return (errors)
 
-def dc_table_post_errors(data, errors):
+def dc_table_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -537,9 +536,9 @@ def dc_table_post_errors(data, errors):
 
 	return (errors)
 
-def defense_post_errors(data, errors):
+def defense_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -609,11 +608,13 @@ def defense_post_errors(data, errors):
 
 	errors = variable(immunity_type, data, errors)
 
+	errors = check_fields(cover_check, 'cover', [cover_type], errors)
+
 	return (errors)
 
-def degree_mod_post_errors(data, errors):
+def degree_mod_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -651,9 +652,9 @@ def degree_mod_post_errors(data, errors):
 
 	return (errors)
 
-def degree_post_errors(data, errors):
+def degree_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -672,9 +673,9 @@ def degree_post_errors(data, errors):
 
 	return (errors)
 
-def environment_post_errors(data, errors):
+def environment_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -715,9 +716,9 @@ def environment_post_errors(data, errors):
 
 	return (errors)
 
-def levels_post_errors(data, errors):
+def levels_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -732,9 +733,9 @@ def levels_post_errors(data, errors):
 
 	return (errors)
 
-def minion_post_errors(data, errors):
+def minion_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
@@ -767,9 +768,9 @@ def minion_post_errors(data, errors):
 
 	return (errors)
 
-def mod_post_errors(data, errors):
+def mod_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 	
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -868,9 +869,9 @@ def mod_post_errors(data, errors):
 	
 	return (errors)
 
-def move_post_errors(data, errors):
+def move_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -961,9 +962,9 @@ def move_post_errors(data, errors):
 
 	return (errors)
 
-def opposed_post_errors(data, errors):
+def opposed_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -985,9 +986,9 @@ def opposed_post_errors(data, errors):
 	return (errors)
 
 
-def ranged_post_errors(data, errors):
+def ranged_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -1041,9 +1042,9 @@ def ranged_post_errors(data, errors):
 	return (errors)
 
 
-def resist_post_errors(data, errors):
+def resist_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -1067,9 +1068,9 @@ def resist_post_errors(data, errors):
 	
 	return (errors)
 
-def resisted_by_post_errors(data, errors):
+def resisted_by_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -1103,9 +1104,9 @@ def resisted_by_post_errors(data, errors):
 	return (errors)
 
 
-def reverse_effect_post_errors(data, errors):
+def reverse_effect_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -1134,9 +1135,9 @@ def reverse_effect_post_errors(data, errors):
 	return (errors)
 
 
-def sense_post_errors(data, errors):
+def sense_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
@@ -1194,9 +1195,9 @@ def sense_post_errors(data, errors):
 	return (errors)
 
 
-def time_post_errors(data, errors):
+def time_post_errors(data):
 
-	errors = errors
+	errors = {'error': False, 'error_msgs': []}
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
