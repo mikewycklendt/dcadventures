@@ -218,6 +218,38 @@ def id_check(Table, value_id, name, errors):
 
 	return (errors)
 
+def extra_check(value_id, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value_id != '':
+		try:
+			value_id = int(value_id)
+		except:
+			message = 'Not a valid ' + name
+			error_msgs.append(message)	
+			error = True
+			errors['error'] = True
+			errors['error_msgs'] = error_msgs
+
+			return (errors)
+
+		if value_id == '0':
+			return (errors)
+
+		try:
+			query = db.session.query(Extra).filter_by(id=value_id).one()
+		except:
+			message = 'Could not find ' + name
+			error = True
+			error_msgs.append(message) 
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def integer(value):
 
 	if value == 'perm':
@@ -299,7 +331,7 @@ def alt_check_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Check, check_type, 'Check', errors)
 	
 
@@ -318,7 +350,7 @@ def change_action_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Action, action, 'Action', errors)
 	
 
@@ -378,7 +410,7 @@ def character_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	
 
 
@@ -407,7 +439,7 @@ def circ_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Range, circ_range, 'range', errors)
 
 	return (errors)
@@ -479,7 +511,7 @@ def create_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Complex, complexity, 'complexity', errors)
 	errors = id_check(Ability, move_opponent_ability, 'ability', errors)
 	
@@ -502,7 +534,7 @@ def damage_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Descriptor, damage_type, 'descriptor', errors)
 	
 
@@ -540,7 +572,7 @@ def dc_table_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
 	
@@ -586,7 +618,7 @@ def defense_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	
 	errors = id_check(Action, reflect_action, 'Action', errors)
 	errors = id_check(Check, reflect_check, 'Check', errors)
@@ -660,7 +692,7 @@ def degree_mod_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, measure_math, 'math', errors)
 	errors = id_check(Rank, measure_rank, 'rank', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
@@ -683,7 +715,7 @@ def degree_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	
 
 	return (errors)
@@ -725,7 +757,7 @@ def environment_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	
 
 
@@ -743,7 +775,7 @@ def levels_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	
 
 	return (errors)
@@ -775,7 +807,7 @@ def minion_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(PowerLevels, attitude_type, 'level', errors)
 	errors = id_check(Defense, resitable_check, 'defense', errors)
 	
@@ -872,7 +904,7 @@ def mod_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Defense, objects_alone, 'defense', errors)
 	errors = id_check(Defense, objects_character, 'defense', errors)
 	errors = id_check(PowerLevels, limited_level, 'level', errors)
@@ -966,7 +998,7 @@ def move_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(Math, distance_math, 'math', errors)
 	errors = id_check(Sense, concealment_sense, 'sense', errors)
@@ -994,7 +1026,7 @@ def opposed_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Check, player_check, 'check', errors)
 	errors = id_check(Check, opponent_check, 'check', errors)
 
@@ -1044,7 +1076,7 @@ def ranged_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Unit, flat_units, 'unit', errors)
 	errors = id_check(Unit, flat_rank_units, 'unit', errors)
 	errors = id_check(Unit, units_rank_units, 'unit', errors)
@@ -1078,7 +1110,7 @@ def resist_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Check, check_type, 'check', errors)
 	
 	return (errors)
@@ -1110,7 +1142,7 @@ def resisted_by_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
 	errors = id_check(Defense, nullify_alternate, 'defense', errors)
 		
@@ -1141,7 +1173,7 @@ def reverse_effect_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(Unit, time_unit, 'unit', errors)
 	
@@ -1201,7 +1233,7 @@ def sense_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Skill, skill, 'skill', errors)
 	errors = id_check(Unit, time_unit, 'unit', errors)
 	errors = id_check(Skill, time_skill, 'skill', errors)
@@ -1234,7 +1266,7 @@ def time_post_errors(data):
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
-	errors = id_check(Extra, extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Unit, units, 'unit', errors)
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(Check, check_type, 'check', errors)
