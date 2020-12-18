@@ -594,7 +594,7 @@ def defense_post_errors(data):
 
 	errors = variable(reflect_check, data, errors)
 
-	errors = check_fields(immunity, [immunity_type], errors)
+	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
