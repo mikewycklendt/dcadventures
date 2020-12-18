@@ -76,7 +76,7 @@ def variable(field, data, errors):
 	if error:
 		errors['error'] = error
 
-	return (error)
+	return (errors)
 
 def select(fields, errors):
 	error_msgs = errors['error_msgs']
@@ -592,12 +592,7 @@ def defense_post_errors(data):
 	fields = field('Trait', reflect_resist_trait_type, fields)
 	data = data_add('Resistance Check', fields, 6, data)
 
-
-	print(errors)
-	print('\n\n\n\n\n\n')	
-
 	errors = variable(reflect_check, data, errors)
-
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
