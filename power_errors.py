@@ -38,7 +38,7 @@ def field(name, value, data=[]):
 
 	return (data)
 
-def data(name, fields, value='', data=[]):
+def data_add(name, fields, value='', data=[]):
 
 	option = {'value': value,
 				'choice': name,
@@ -585,12 +585,12 @@ def defense_post_errors(data):
 
 	fields = field('Trait Type', reflect_opposed_trait_type)
 	fields = field('Trait', reflect_opposed_trait, fields)
-	data = data('Opposed Check', fields, 2, [])
+	data = data_add('Opposed Check', fields, 2, [])
 	fields = field('DC', reflect_dc)
-	data = data('Skill Check', fields, 1, data)
+	data = data_add('Skill Check', fields, 1, data)
 	fields = field('Trait Type', reflect_resist_trait)
 	fields = field('Trait', reflect_resist_trait_type, fields)
-	data = data('Resistance Check', fields, 6, data)
+	data = data_add('Resistance Check', fields, 6, data)
 
 	errors = variable(reflect_check, data, errors)
 
@@ -598,13 +598,13 @@ def defense_post_errors(data):
 
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
-	data = data('Trait Immunity', fields, 'trait')
+	data = data_add('Trait Immunity', fields, 'trait')
 	fields = field('Damage Type', immunity_damage)
-	data = data('Damage Immunity', fields, 'damage', data)
+	data = data_add('Damage Immunity', fields, 'damage', data)
 	fields = field('Descriptor', immunity_descriptor)
-	data = data('Descriptor Immunity', fields, 'descriptor', data)
+	data = data_add('Descriptor Immunity', fields, 'descriptor', data)
 	fields = field('Rule', immunity_rule)
-	data = data('Game Rule Immunity', fields, 'rule', data)
+	data = data_add('Game Rule Immunity', fields, 'rule', data)
 
 	errors = variable(immunity_type, data, errors)
 
