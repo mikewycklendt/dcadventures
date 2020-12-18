@@ -405,6 +405,8 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 	result['grid'] = grid
 	result['cells'] = cells
 
+	print(variable)
+
 	if variable == False:
 		return (result)
 	else:
