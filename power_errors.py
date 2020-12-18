@@ -50,7 +50,6 @@ def data_add(name, fields, value='', data=[]):
 				'values': fields}
 
 	data.append(option)
-	fie
 
 	return (data)
 
