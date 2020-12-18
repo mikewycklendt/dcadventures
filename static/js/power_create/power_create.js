@@ -1303,7 +1303,7 @@ function back_errors(line, table, jsonResponse) {
 		}
 
 		errors.style.maxHeight = errors.scrollHeight + errors_height + 'px';
-	}, 400)
+	}, 420)
 }
 
 
