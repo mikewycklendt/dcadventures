@@ -1302,7 +1302,7 @@ function back_errors(line, table, jsonResponse) {
 			errors.style.padding = "1%";	
 		}
 
-		errors.style.maxHeight = errors.scrollHeight + errors_height + 'px';
+		errors.style.maxHeight = errors.scrollHeight + errors_height + 20 + 'px';
 	}, 420)
 }
 
