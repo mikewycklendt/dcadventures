@@ -67,11 +67,12 @@ function check_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			check_grid.columns = jsonResponse.columns;
-			check_grid.titles = jsonResponse.created;
 
 			create_table(jsonResponse);
 			delete_row(jsonResponse, route, check_grid)
 			clear_errors(err_line, errors)
+
+			check_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

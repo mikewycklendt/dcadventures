@@ -166,7 +166,6 @@ function ranged_submit() {
 		if (jsonResponse.success) {
 
 			ranged_grid.columns = jsonResponse.columns;
-			ranged_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -174,6 +173,7 @@ function ranged_submit() {
 			delete_row(jsonResponse, route, ranged_grid)
 			clear_errors(err_line, errors)
 
+			ranged_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

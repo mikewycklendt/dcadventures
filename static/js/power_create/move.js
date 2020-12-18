@@ -369,7 +369,6 @@ function move_submit() {
 		if (jsonResponse.success) {
 
 			move_grid.columns = jsonResponse.columns;
-			move_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -377,6 +376,8 @@ function move_submit() {
 			delete_row(jsonResponse, route, move_grid)
 			clear_errors(err_line, errors)
 
+			move_grid.titles = true;
+			
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 

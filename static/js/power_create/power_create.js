@@ -1011,8 +1011,8 @@ function create_table(jsonResponse) {
 	const cells = jsonResponse.cells;
 	const rows = jsonResponse.columns;
 
-	const row_class = table_id + '-row';
-
+	const cells_class = table_id + '-cells';
+	const table_class = table_id + '-table'
 
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
@@ -1024,10 +1024,10 @@ function create_table(jsonResponse) {
 		}
 		const new_table = document.createElement('div');
 		new_table.className = 'power-table';
-		new_table.id = table_id + '-table';
+		new_table.id = table_class;
 
 		const title_row = document.createElement('div');
-		title_row.className = row_class;
+		title_row.className = 'power-table-cells ' + cells_class;
 		title_row.style.gridTemplateColumns = grid;
 		new_table.appendChild(title_row);
 
@@ -1044,20 +1044,18 @@ function create_table(jsonResponse) {
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
-	const entry_class = 'power-table-row ' + row_class;
-
-	const table_class = table_id + '-table';
+	const entry_class = table_id + '-row';
 
 
 	const table = document.getElementById(table_class);
 	const entry = document.createElement('div');
-	entry.className = entry_class;
+	entry.className = 'power-table-row ' + entry_class;
 	table.appendChild(entry);
 	const row = document.createElement('div');
-	row.className = 'power-table-cells';	
+	row.className = 'power-table-cells ' + cells_class;	
 	row.style.gridTemplateColumns = grid;
 	entry.appendChild(row);
-	const rows_grid = document.getElementsByClassName(row_class);
+	const rows_grid = document.getElementsByClassName(cells_class);
 	let row_grid;
 	for (row_grid of rows_grid) {
 		row_grid.style.gridTemplateColumns = grid;
@@ -1073,15 +1071,15 @@ function create_table(jsonResponse) {
 			cell.innerHTML = '';
 		} else if (new_cell.content == true) {
 			if (new_cell.mod_check == false) {
-				let check = document.createElement('div');
+				const check = document.createElement('div');
 				check.className = 'power-check';
 				cell.appendChild(check)
 			} else {
-				let check = document.createElement('button');
+				const check = document.createElement('button');
 				check.className = 'power-check-button ' + cell_class;
 				check.setAttribute('data-id', 0);
 				cell.appendChild(check);
-				mod_create(mods, id, cell_class, check, entry);
+				mod_create(mods, id, cells_class, entry_class, check, entry, table, table_id);
 			}
 		} else {
 			cell.innerHTML = new_cell.content;
@@ -1106,7 +1104,7 @@ function create_table(jsonResponse) {
 	delete_cell.className = 'power-table-cell';
 	row.appendChild(delete_cell)
 	const delete_btn = document.createElement('button');
-	delete_btn.className = delete_class;
+	delete_btn.className = 'xbox ' + delete_class;
 	delete_btn.setAttribute('data-id', id);
 	delete_cell.appendChild(delete_btn)
 
@@ -1117,55 +1115,62 @@ function create_table(jsonResponse) {
 
 }
 
-function mod_create(mods, id, cell_class, check, entry) {
+function mod_create(mods, id, cell_class, check, entry, table, table_id) {
 
 	let new_mod;
 	for (new_mod of mods) {
 		const cells = new_mod.cells;
 		const mod_title = new_mod.title;
 		const variable = new_mod.vaeiable;
+		const mod_class = table_id + '-' + new_mod.class;
 
-		const mod = document.createElement('div');
-		mod.classname = 'mod-row ' + cell_class;
-		mod.setAttribute('data-id', id);
-		mod.style.gridTemplateColumns = new_mod.grid;
-	
-		const empty = document.createElement('div');
-		empty.className = 'mod-cell-empty';
-		mod.appendChild(empty);
+		if (mod_class == cell_class) {
 
-		const title = document.createElement('div');
-		title.className = 'mod-cell-mod';
-		title.innerHTML = mod_title;
-		mod.appendChild(title);
+			const mod = document.createElement('div');
+			mod.classname = 'mod-row ' + mod_class;
+			mod.setAttribute('data-id', id);
+			mod.style.gridTemplateColumns = new_mod.grid;
+		
+			const empty = document.createElement('div');
+			empty.className = 'mod-cell-empty';
+			mod.appendChild(empty);
 
-		if (variable == true) {
-			const sub_title = new_mod.sub_title;
-			const sub = document.createElement('div');
-			sub.className = 'mod-cell-sub';
-			sub.innerHTML = sub_title;
-			mod.appendChild(sub)
-		}
+			const title = document.createElement('div');
+			title.className = 'mod-cell-mod';
+			title.innerHTML = mod_title;
+			mod.appendChild(title);
 
-		let new_cell;
-		for (new_cell of cells) {
-			const tit = document.createElement('div');
-			tit.className = 'mod-cell-title';
-			tit.innerHTML = new_cell.title;
-			mod.appendChild(tit);
-
-			const con = document.createElement('div');
-			
-			if (new_cell.content == true) {
-				con.className = 'mod-cell-content power-check';
-			} else {
-				con.className = 'mod-cell-content';
-				con.innerHTML = new_cell.content;
+			if (variable == true) {
+				const sub_title = new_mod.sub_title;
+				const sub = document.createElement('div');
+				sub.className = 'mod-cell-sub';
+				sub.innerHTML = sub_title;
+				mod.appendChild(sub)
 			}
-			mod.appendChild(con);
-		}
 
-		entry.appendChild(new_mod);
+			let new_cell;
+			for (new_cell of cells) {
+				const tit = document.createElement('div');
+				tit.className = 'mod-cell-title';
+				tit.innerHTML = new_cell.title;
+				mod.appendChild(tit);
+
+				const con = document.createElement('div');
+				con.className = 'mod-cell-content';
+				
+				if (new_cell.content == true) {
+					mod.appendChild(con);
+					const check = document.createElement('div');
+					check.className = 'power-check';
+					con.appendChild(check)
+				} else {
+					con.innerHTML = new_cell.content;
+					mod.appendChild(con);
+				}
+			}
+
+			entry.appendChild(new_mod);
+		}
 	}
 
 	setTimeout(function(){
@@ -1178,12 +1183,14 @@ function mod_create(mods, id, cell_class, check, entry) {
 				let data = div.dataset['id']
 				if (data == id) {
 					const status = div.style.display;
+					console.log(status)
 					if (status == 'grid') {
 						div.style.maxHeight = '0px';
 						setTimeout(function(){div.style.display = 'none'}, 400);
 					} else {
 						div.style.display = 'grid';
 						div.style.maxHeight = div.scrollHeight + 'px';
+						table.style.maxHeight = div.scrollHeight + table.scrollHeight + 'px';
 					} 
 				}
 			}
@@ -1197,7 +1204,9 @@ function row_delete(jsonResponse, route, object) {
 	const table_id = jsonResponse.table_id;
 	const rows = jsonResponse.columns;
 
-	const row_class = table_id + '-row';
+	const entry_class = 'power-table-row-' + table_id;
+	const cells_class = 'power-table-cells-' + table_id;
+
 	const delete_class = table_id + '-xbox';
 
 	const deletes = document.getElementsByClassName(delete_class);
@@ -1225,13 +1234,14 @@ function row_delete(jsonResponse, route, object) {
 					if (jsonResponse.success) {
 						const grid = jsonResponse.grid;
 						const new_rows = jsonResponse.rows
-						const all_rows = document.getElementsByClassName(row_class)
+						const all_rows = document.getElementsByClassName(entry_class)
+						const all_cells = document.getElementsByClassName(cells_class)
 
 						object.columns = new_rows;
 						
-						let row;
+						let cells;
 
-						for (row of all_rows) {
+						for (cells of all_cells) {
 							row.style.gridTemplateColumns = grid;
 						}
 
@@ -1241,7 +1251,6 @@ function row_delete(jsonResponse, route, object) {
 						
 					} else {
 						console.log('error')
-			
 					}
 				})
 			

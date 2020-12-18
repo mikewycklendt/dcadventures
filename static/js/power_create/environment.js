@@ -179,7 +179,6 @@ function env_submit() {
 		if (jsonResponse.success) {
 
 			env_grid.columns = jsonResponse.columns;
-			env_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -187,6 +186,7 @@ function env_submit() {
 			delete_row(jsonResponse, route, env_grid)
 			clear_errors(err_line, errors)
 
+			env_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

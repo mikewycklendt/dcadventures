@@ -78,7 +78,6 @@ function opposed_submit() {
 		if (jsonResponse.success) {
 
 			opposed_grid.columns = jsonResponse.columns;
-			opposed_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -86,6 +85,7 @@ function opposed_submit() {
 			delete_row(jsonResponse, route, opposed_grid)
 			clear_errors(err_line, errors)
 
+			opposed_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

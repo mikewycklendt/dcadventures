@@ -65,7 +65,6 @@ function damage_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			damage_grid.columns = jsonResponse.columns;
-			damage_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -73,6 +72,7 @@ function damage_submit() {
 			delete_row(jsonResponse, route, damage_grid)
 			clear_errors(err_line, errors)
 
+			damage_grid.titles = true;
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 

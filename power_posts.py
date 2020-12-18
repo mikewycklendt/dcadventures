@@ -150,7 +150,10 @@ def select_multiple(values):
 
 	return (result)
 
-def add_row(entry_id, rows, cells):
+def entry(cells):
+
+	rows = body['rows']
+	entry_id = body['id']
 
 	widths = []
 	for cell in cells:
@@ -160,7 +163,24 @@ def add_row(entry_id, rows, cells):
 
 	rows.append(new_row)
 
-	return (rows)
+	grid = grid_columns(rows)
+
+	body['grid'] = grid
+	body['rows'] = rows
+
+	for cell in cells:
+		print(cell)
+	print('\n')
+	for row in rows:
+		print(row)
+	print('\n')
+	for mod in mod:
+		print(mod)
+	print('\n')
+	print(grid)
+
+	return (body)
+
 
 def delete_row(entry_id, rows):
 
@@ -199,21 +219,6 @@ def grid_columns(rows):
 		grid += str(empty) + '%' + ' 5%;'
 
 	return (grid)
-
-def entry(cells, mods, body):
-
-	entry_id = body['id']
-	rows = body['columns']
-
-	rows = add_row(entry_id, rows, cells)
-	grid = grid_columns(rows)
-
-	body['mods'] = mods
-	body['grid'] = grid
-	body['cells'] = cells
-	body['columns'] = rows
-
-	return (body)
 
 
 def variable_cell_add(title, value, data, classname, cells=[]):
@@ -427,7 +432,8 @@ def alt_check_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-
+	body['rows'] = rows
+	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	check_type = entry.check_type
@@ -464,7 +470,8 @@ def change_action_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-
+	body['rows'] = rows
+	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	action = entry.action
@@ -495,6 +502,7 @@ def character_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -584,6 +592,7 @@ def circ_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -643,7 +652,8 @@ def create_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-		
+	body['rows'] = rows
+	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	solidity = entry.solidity
@@ -773,7 +783,8 @@ def damage_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-		
+	body['rows'] = rows
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	trait_type = entry.trait_type
@@ -802,6 +813,7 @@ def dc_table_post(entry, columns, created):
 	body['success'] = True
 
 	rows = columns
+	body['rows'] = rows
 	mods = []
 	cells = []
 	table_id = 'dc'
@@ -872,7 +884,8 @@ def defense_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-		
+	body['rows'] = rows
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	defense = entry.defense
@@ -973,7 +986,9 @@ def defense_post(entry, columns, created):
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 
+	body = entry(cells)
 
+	return (body)
 	
 
 def degree_mod_post(entry, columns, created):
@@ -994,7 +1009,8 @@ def degree_mod_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-		
+	body['rows'] = rows
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	target = entry.target
@@ -1073,7 +1089,8 @@ def degree_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
-		
+	body['rows'] = rows
+
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	degree_type = entry.degree_type
@@ -1109,6 +1126,7 @@ def environment_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1196,7 +1214,8 @@ def levels_post(entry, columns, created, old_level_type):
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-
+	body['rows'] = rows
+	
 	if old_level_type != level_type:
 		body['created'] = False
 	else:
@@ -1224,6 +1243,7 @@ def minion_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1276,6 +1296,7 @@ def mod_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1432,6 +1453,7 @@ def move_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1593,6 +1615,7 @@ def opposed_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1632,6 +1655,7 @@ def ranged_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1717,6 +1741,7 @@ def resist_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1765,6 +1790,7 @@ def resisted_by_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1822,6 +1848,7 @@ def reverse_effect_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1874,6 +1901,7 @@ def sense_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 
 	power_id = entry.power_id
@@ -1982,6 +2010,7 @@ def time_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['rows'] = rows
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id

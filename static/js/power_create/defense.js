@@ -168,7 +168,6 @@ function defense_submit() {
 		if (jsonResponse.success) {
 
 			defense_grid.columns = jsonResponse.columns;
-			defense_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -176,6 +175,7 @@ function defense_submit() {
 			delete_row(jsonResponse, route, defense_grid)
 			clear_errors(err_line, errors)
 
+			defense_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

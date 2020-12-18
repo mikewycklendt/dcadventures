@@ -162,7 +162,6 @@ function dc_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			dc_grid.columns = jsonResponse.columns;
-			dc_grid.titles = jsonResponse.created;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
@@ -170,6 +169,7 @@ function dc_submit() {
 			delete_row(jsonResponse, route, dc_grid)
 			clear_errors(err_line, errors)
 
+			dc_grid.titles = true;
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 
