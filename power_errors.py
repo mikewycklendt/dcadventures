@@ -67,6 +67,8 @@ def variable(field, data, errors):
 					error_msgs.append(message)
 					break
 			for val in values:
+				v = val['value']
+				missing = val['name']
 				if v == '':
 					message = missing + ' field cannot be empty.'
 					error = True
