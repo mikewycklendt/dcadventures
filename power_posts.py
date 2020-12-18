@@ -339,7 +339,9 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 
 	print('\n\n\n\n')
 	print(variable_data)
+	print('\n')
 	print(len(variable_data))
+	print('\n')
 
 	if variable:
 		if variable_data == []:
@@ -361,10 +363,11 @@ def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
 					d['value'] = val
 					d['cells'] = []
 					d['grid'] = ''
+		print(d)
+		print('\n\n\n\n')
 		result = d
 	else:
 		result = mod
-
 	cells = result['cells']
 	grid = result['grid']
 	content_cell = 'auto'
