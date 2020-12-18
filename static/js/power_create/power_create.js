@@ -1283,13 +1283,13 @@ function back_errors(line, table, jsonResponse) {
 	errors.style.padding = "1%";
 
 	const error_msgs = jsonResponse.error_msgs;
-	let i;
+	let li;
 
 	let errors_height = errors.scrollHeight;
-	for (i of error_msgs) {
+	for (li of error_msgs) {
 		const error = document.createElement('div');
 		error.className = line;
-		error.innerHTML = i;
+		error.innerHTML = li;
 			
 		errors.appendChild(error);
 				
