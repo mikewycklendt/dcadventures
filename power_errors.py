@@ -608,16 +608,9 @@ def defense_post_errors(data):
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
-	fields = []
-	data =  []
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
 	data = data_add('Trait Immunity', fields, 'trait')
-
-	for f in fields:
-		print(f)
-		print('/n/n/n')
-
 	fields = field('Damage Type', immunity_damage)
 	data = data_add('Damage Immunity', fields, 'damage', data)
 	fields = field('Descriptor', immunity_descriptor)
@@ -625,6 +618,9 @@ def defense_post_errors(data):
 	fields = field('Rule', immunity_rule)
 	data = data_add('Game Rule Immunity', fields, 'rule', data)
 
+	for d in data:
+		print(d)
+		print('\n\n\n')
 	errors = variable(immunity_type, data, errors)
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
