@@ -345,8 +345,6 @@ def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 			d['grid'] = ''
 		else:
 			for var in variable_data:
-				print(var)
-				print('\n\n\n\n\n')
 				if str(var['value']) == str(value):
 					d = var
 				else:
@@ -971,8 +969,12 @@ def defense_post(entry, columns, created):
 	classname = 'reflect'
 	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
 	new_mod = mod_create('Reflects Attacks', 17, classname, True)
+	print(new_mod)
+	print('\n\n\n')
 	value = 1
 	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	print(data)
+	print('\n\n\n')
 	data = mod_cell('DC:', 7, [reflect_dc], new_mod, value, data)
 	value = 2
 	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value, data)

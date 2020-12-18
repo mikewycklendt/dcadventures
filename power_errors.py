@@ -650,9 +650,6 @@ def defense_post_errors(data):
 	fields = field('Rule', immunity_rule)
 	data = data_add('Game Rule Immunity', fields, 'rule', data)
 
-	for d in data:
-		print(d)
-		print('\n\n\n')
 	errors = variable(immunity_type, data, errors)
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
