@@ -38,6 +38,7 @@ def field(name, value, data=['empty']):
 	if data == ['empty']:
 		new_data = []
 		new_data.append(field)
+		data = new_data
 	else:
 		data.append(field)
 
