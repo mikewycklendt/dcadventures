@@ -221,7 +221,8 @@ def grid_columns(rows):
 	return (grid)
 
 
-def variable_cell_add(title, value, data, classname, cells=[]):
+def variable_cell_add(title, value, data, classname, cells=['e']):
+
 
 	content = ''
 	width = .2
@@ -244,9 +245,13 @@ def variable_cell_add(title, value, data, classname, cells=[]):
 			'class': classname 
 			}
 
+	if cells == ['e']:
+		new_cells = []
+		cells = new_cells
+
 	cells.append(cell)
 
-def variable_cell(value, width, contentlist, data=[]):
+def variable_cell(value, width, contentlist, data=['e']):
 	content = contentlist[0]
 
 	if len(contentlist) > 1:	
@@ -260,6 +265,10 @@ def variable_cell(value, width, contentlist, data=[]):
 	cell = {'value': value,
 			'width': width,
 			'content': content}
+
+	if data == ['e']:
+		new_data = []
+		data = new_data
 
 	data.append(cell)
 
@@ -280,7 +289,7 @@ def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	return (cells)
 
-def cell(title, width, contentlist, classname, cells=[]):
+def cell(title, width, contentlist, classname, cells=['e']):
 
 	content = contentlist[0]
 
@@ -300,6 +309,10 @@ def cell(title, width, contentlist, classname, cells=[]):
 			'class': classname 
 			}
 
+	if cells == ['e']:
+		new_cells = []
+		cells = new_cells
+
 	cells.append(cell)
 
 	return (cells)
@@ -316,7 +329,11 @@ def mod_create(title, width, classname, variable=False):
 
 	return (mod)
 
-def mod_cell(title, width, data, mod, value=None, variable_data=[]):
+def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
+
+	if variable_data = ['e']
+		new_v_data = []
+		variable_data = new_v_data
 
 	variable = mod['variable']
 
