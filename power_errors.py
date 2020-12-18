@@ -593,7 +593,7 @@ def defense_post_errors(data):
 
 	fields = field('Trait Type', reflect_opposed_trait_type)
 	fields = field('Trait', reflect_opposed_trait, fields)
-	data = data_add('Opposed Check', fields, 2, [])
+	data = data_add('Opposed Check', fields, 2)
 	fields = field('DC', reflect_dc)
 	data = data_add('Skill Check', fields, 1, data)
 	fields = field('Trait Type', reflect_resist_trait)
