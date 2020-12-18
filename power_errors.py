@@ -234,7 +234,7 @@ def extra_check(value_id, name, errors):
 
 			return (errors)
 
-		if value_id == '0':
+		if value_id == 0:
 			return (errors)
 
 		try:
