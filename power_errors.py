@@ -44,14 +44,18 @@ def field(name, value, data=['empty']):
 
 	return (data)
 
-def data_add(name, fields, value='', data=[]):
+def data_add(name, fields, value='', data=['empty']):
 
 	option = {'value': value,
 				'choice': name,
 				'values': fields}
 
-	data.append(option)
-
+	if data == ['empty']:
+		new_data = []
+		new_data.append(option)
+		data = new_data
+	else:
+		data.append(option)
 	return (data)
 
 def variable(field, data, errors):
