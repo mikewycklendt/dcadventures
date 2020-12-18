@@ -977,9 +977,9 @@ def defense_post(entry, columns, created):
 	print('\n\n\n')
 	value = 1
 	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	data = mod_cell('DC:', 7, [reflect_dc], new_mod, value, data)
 	print(data)
 	print('\n\n\n')
-	data = mod_cell('DC:', 7, [reflect_dc], new_mod, value, data)
 	value = 2
 	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value, data)
 	data = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value, data)
