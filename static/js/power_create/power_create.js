@@ -1260,6 +1260,23 @@ function row_delete(jsonResponse, route, object) {
 }
 
 function back_errors(line, table, jsonResponse) {
+	errors_delete = document.getElementsByClassName(line);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		};
+		setTimeout(function(){
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.display = 'none';
+			}
+		}, 400);
+	}
+
 	const errors = document.getElementById(table);
 
 	errors.style.display = "grid";
@@ -1307,9 +1324,8 @@ function clear_errors(line, div) {
 
 		errors = document.getElementById(div);
 
-		errors.style.display = "none";
-		errors.style.padding = "0px";
 		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
 	}
 }
 
