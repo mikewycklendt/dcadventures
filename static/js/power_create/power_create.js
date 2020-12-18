@@ -1268,6 +1268,7 @@ function back_errors(line, table, jsonResponse) {
 	const error_msgs = jsonResponse.error_msgs;
 	let i;
 
+	let errors_height = errors.scrollHeight;
 	for (i of error_msgs) {
 		const error = document.createElement('div');
 		error.className = line;
@@ -1277,9 +1278,13 @@ function back_errors(line, table, jsonResponse) {
 				
 		error.style.maxHeight = error.scrollHeight + "px";
 
-		errors.style.maxHeight = error.scrollHeight + errors.scrollHeight + 15 + "px";
+		errors_height = errors_height + error.scrollHeight
+
 		errors.style.padding = "1%";	
 	}
+
+	errors.style.maxHeight = errors_height + 'px';
+	
 }
 
 
