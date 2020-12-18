@@ -345,7 +345,7 @@ def mod_cell(title, width, data, mod, value=None, variable_data=['e']):
 			d['grid'] = ''
 		else:
 			for var in variable_data:
-				if var['value'] == value:
+				if str(var['value']) == str(value):
 					d = var
 				else:
 					d = {}
