@@ -174,6 +174,7 @@ def send(cells, body):
 
 	rows = body['rows']
 	entry_id = body['id']
+	mods = body['mods']
 
 	widths = []
 	for cell in cells:
@@ -200,7 +201,7 @@ def send(cells, body):
 	for row in rows:
 		print(row)
 	print('\n')
-	for mod in mod:
+	for mod in mods:
 		print(mod)
 	print('\n')
 	print(grid)
