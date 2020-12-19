@@ -1127,7 +1127,7 @@ function create_table(jsonResponse) {
 	} 
 }
 
-function mod_create(mods, id, check, entry, table_class, table_id) {
+function mod_create(mods, id, entry, table_id) {
 
 	const mod_class = table_id + '-mod'; 
 	const base_mod = 'mod-row ';
