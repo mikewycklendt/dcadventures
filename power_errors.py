@@ -194,6 +194,8 @@ def of_multiple(values, message, errors):
 def id_check(Table, value_id, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
+	
+	db = SQLAlchemy()
 
 	if value_id != '':
 		try:
