@@ -258,7 +258,7 @@ def vcell(selection, width, content, cell, cells):
 			else:
 				text += ' ' + content[i]
 
-	if text = '':
+	if text == '':
 		width = .2
 
 	cell['width'] = width
