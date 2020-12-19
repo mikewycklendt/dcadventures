@@ -53,18 +53,18 @@ def variable(name, value, field, fields, errors):
 	if value == field:
 		for val in fields:
 			v = val['value']
-			if val['value'] == '':
+			if v == '':
 				message = 'All required ' + name + ' fields must be complete.'
 				error = True
 				error_msgs.append(message)
 				break
 		for val in fields:
 			v = val['value']
-				missing = val['name']
-				if v == '':
-					message = missing + ' field cannot be empty.'
-					error = True
-					error_msgs.append(message)
+			missing = val['name']
+			if v == '':
+				message = missing + ' field cannot be empty.'
+				error = True
+				error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
 	if error:
