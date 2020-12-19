@@ -228,7 +228,10 @@ def grid_columns(rows):
 		for row in rows:
 			row_cells = row['cells']
 			gridrows.append(row_cells)
-
+		
+		print('\n\n')
+		print(gridrows)
+		print('\n\n')
 		for row in gridrows:
 			if columns == []:
 				columns = row[0]
