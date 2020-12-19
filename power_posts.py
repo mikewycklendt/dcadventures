@@ -9,10 +9,13 @@ def name(Table, name):
 
 	if name == 0:
 		name = 'All'
+		return (name)
 
-	query = db.session.query(Table).filter_by(id=name).one()
-	name = query.name
-
+	if name is not None:
+		query = db.session.query(Table).filter_by(id=name).one()
+		name = query.name
+	else:
+		name = ''
 
 	
 	return (name)
