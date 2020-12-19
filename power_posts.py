@@ -9,12 +9,9 @@ def name(Table, name):
 
 	if name == 0:
 		name = 'All'
-	else:
-		try:
-			query = db.session.query(Table).filter_by(id=name).one()
-			name = query.name
-		except:
-			print('invalid id')
+
+		query = db.session.query(Table).filter_by(id=name).one()
+		name = query.name
 	
 	return (name)
 
