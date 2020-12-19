@@ -371,7 +371,7 @@ def mod_cell(title, width, content, mod, value='e'):
 	contentwidth = 'auto'
 
 	if variable:
-		mod['value'] = val
+		val = mod['value']
 		if value != val:
 			return (mod)
 
