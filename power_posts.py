@@ -308,6 +308,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 	cell = {}
 	cell['title'] = title
 	cell['class'] = classname
+	cell['width'] = width
 		
 	for c in contentlist:
 		if c is None:
