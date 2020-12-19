@@ -1016,6 +1016,13 @@ def defense_post(entry, columns, created):
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 
+	for c in cells:
+		print('\n')
+		print('\n')
+		print(c)
+		print('\n')
+		print('\n')
+		
 
 	body = send(cells, body)
 
