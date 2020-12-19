@@ -51,10 +51,6 @@ def variable(name, value, field, fields, errors):
 	error = False
 	
 	
-	print('\n\n\n')
-	print(fields)
-	print('\n\n\n')
-	
 	if value == field:
 		for val in fields:
 			v = val['value']
@@ -627,12 +623,12 @@ def defense_post_errors(data):
 	value = reflect_check
 	fields = field('Trait Type', reflect_opposed_trait_type)
 	fields = field('Trait', reflect_opposed_trait, fields)
-	errors = variable('Opposed Check', 2, value, fields, errors)
+	errors = variable('Opposed Check', '2', value, fields, errors)
 	fields = field('DC', reflect_dc)
-	errors = variable('Skill Check', 1, value, fields, errors)
+	errors = variable('Skill Check', '1', value, fields, errors)
 	fields = field('Trait Type', reflect_resist_trait)
 	fields = field('Trait', reflect_resist_trait_type, fields)
-	errors = variable('Resistance Check', 6, value, fields, errors)
+	errors = variable('Resistance Check', '6', value, fields, errors)
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
