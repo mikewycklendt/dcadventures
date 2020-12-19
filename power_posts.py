@@ -172,6 +172,7 @@ def select_multiple(values):
 
 def send(cells, body):
 
+	body['cells'] = cells 
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
