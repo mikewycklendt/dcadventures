@@ -232,13 +232,13 @@ def grid_columns(rows):
 		print('\n\n')
 		print(gridrows)
 		print('\n\n')
-		for row in gridrows:
-			if columns == []:
-				columns = row[0]
-			else:
-				for i in range(1, len(row) - 1, 1):
-					if row[i] > columns[i]:
-						columns[i] = row[i]
+		
+		if columns == []:
+			columns = gridrows[0] 
+		if len(gridrows) > 1:
+			for i in range(1, len(row) - 1, 1):
+				if row[i] > columns[i]:
+					columns[i] = row[i]
 		grid = ''
 		empty = 5
 		for column in columns:
