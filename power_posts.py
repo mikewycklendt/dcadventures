@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 def name(Table, name):
+	
+	db = SQLAlchemy()
 
 	if name == 0:
 		name = 'All'
@@ -17,6 +19,8 @@ def name(Table, name):
 	return (name)
 
 def math(Table, name):
+	
+	db = SQLAlchemy()
 
 	try:
 		query = db.session,query(Table).filter_by(id=name).one()
@@ -27,6 +31,9 @@ def math(Table, name):
 	return (name)
 
 def extra_name(name):
+	
+	db = SQLAlchemy()
+
 	if name is None:
 		name = 'Base Power'
 	else:
@@ -39,6 +46,8 @@ def extra_name(name):
 	return (name)
 
 def descriptor_name(name):
+	
+	db = SQLAlchemy()
 
 	if name == 11223344: 
 		name = 'Any Chosen Rare'

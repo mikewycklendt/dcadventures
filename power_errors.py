@@ -209,11 +209,12 @@ def id_check(Table, value_id, name, errors):
 
 			return (errors)
 
-		query = db.session.query(Table).filter_by(id=value_id).one()
-		
-		message = 'Could not find ' + name
-		error = True
-		error_msgs.append(message) 
+		try:
+			query = db.session.query(Table).filter_by(id=value_id).one()
+		except:	
+			message = 'Could not find ' + name
+			error = True
+			error_msgs.append(message) 
 
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -224,6 +225,8 @@ def id_check(Table, value_id, name, errors):
 def extra_check(value_id, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
+	
+	db = SQLAlchemy()
 
 	if value_id != '':
 		try:
