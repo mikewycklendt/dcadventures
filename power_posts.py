@@ -231,7 +231,7 @@ def grid_columns(rows):
 
 		for row in gridrows:
 			if columns == []:
-				columns.append(row)
+				columns = row[0]
 			else:
 				for i in range(1, len(row) - 1, 1):
 					if row[i] > columns[i]:
