@@ -167,7 +167,8 @@ def send(cells, body):
 
 	widths = []
 	for cell in cells:
-		widths.append(cell['width'])
+		width = cell['width']
+		widths.append(width)
 
 	new_row = [{'id': entry_id, 'cells': widths}]
 
