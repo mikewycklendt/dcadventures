@@ -223,7 +223,11 @@ def grid_columns(rows):
 	if rows == []:
 		grid = 'hide'
 	else:
-		gridrows = [row['cells'] for row in rows] 	
+		gridrows = []
+		for row in rows:
+			row_cells = row['cells']
+			gridrows.append(row_cells)
+			
 		for row in gridrows:
 			if columns == []:
 				columns.append(row)
