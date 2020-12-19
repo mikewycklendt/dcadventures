@@ -11,7 +11,7 @@ def name(Table, name):
 		name = 'All'
 	else:
 		try:
-			query = db.session,query(Table).filter_by(id=name).one()
+			query = db.session.query(Table).filter_by(id=name).one()
 			name = query.name
 		except:
 			print('invalid id')
@@ -23,7 +23,7 @@ def math(Table, name):
 	db = SQLAlchemy()
 
 	try:
-		query = db.session,query(Table).filter_by(id=name).one()
+		query = db.session.query(Table).filter_by(id=name).one()
 		name = query.symbol
 	except:
 		print('invalid id')
@@ -38,7 +38,7 @@ def extra_name(name):
 		name = 'Base Power'
 	else:
 		try:
-			query = db.session,query(Extra).filter_by(id=name).one()
+			query = db.session.query(Extra).filter_by(id=name).one()
 			name = query.name
 		except:
 			print('invalid id')
@@ -73,7 +73,7 @@ def descriptor_name(name):
 		name = 'Any Chosen Descriptor'
 	else:
 		try:
-			query = db.session,query(PowerDes).filter_by(id=name).one()
+			query = db.session.query(PowerDes).filter_by(id=name).one()
 			name = query.name
 		except:
 			print('invalid id')
