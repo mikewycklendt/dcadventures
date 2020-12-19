@@ -12,8 +12,11 @@ def name(Table, name):
 		return (name)
 
 	if name is not None:
-		query = db.session.query(Table).filter_by(id=name).one()
-		name = query.name
+		try:
+			query = db.session.query(Table).filter_by(id=name).one()
+			name = query.name
+		except:
+			print('no entry')
 	else:
 		name = ''
 
@@ -24,11 +27,14 @@ def math(Table, name):
 	
 	db = SQLAlchemy()
 
-	try:
-		query = db.session.query(Table).filter_by(id=name).one()
-		name = query.symbol
-	except:
-		print('invalid id')
+	if name is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=name).one()
+			name = query.symbol
+		except:
+			print('invalid id')
+	else:
+		name = ''
 	
 	return (name)
 
@@ -73,6 +79,8 @@ def descriptor_name(name):
 		name = 'Any Chosen Medium'
 	elif name == 12121212:
 		name = 'Any Chosen Descriptor'
+	elif name is None:
+		name = ''
 	else:
 		try:
 			query = db.session.query(PowerDes).filter_by(id=name).one()
