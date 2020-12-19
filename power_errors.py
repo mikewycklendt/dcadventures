@@ -619,28 +619,28 @@ def defense_post_errors(data):
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_action, reflect_check], errors)
 
-	field = reflect_check
+	value = reflect_check
 	fields = field('Trait Type', reflect_opposed_trait_type)
 	fields = field('Trait', reflect_opposed_trait, fields)
-	errors = variable('Opposed Check', 2, field, fields, errors)
+	errors = variable('Opposed Check', 2, value, fields, errors)
 	fields = field('DC', reflect_dc)
-	errors = variable('Skill Check', 1, field, fields, errors)
+	errors = variable('Skill Check', 1, value, fields, errors)
 	fields = field('Trait Type', reflect_resist_trait)
 	fields = field('Trait', reflect_resist_trait_type, fields)
-	errors = variable('Resistance Check', 6, field, fields, errors)
+	errors = variable('Resistance Check', 6, value, fields, errors)
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
-	field = immunity_type
+	value = immunity_type
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
-	errors = variable('Trait Immunity', 'trait', field, fields, errors)
+	errors = variable('Trait Immunity', 'trait', value, fields, errors)
 	fields = field('Damage Type', immunity_damage)
-	errors = variable('Damage Immunity', 'damage', field, fields, errors)
+	errors = variable('Damage Immunity', 'damage', value, fields, errors)
 	fields = field('Descriptor', immunity_descriptor)
-	errors = variable('Descriptor Immunity', 'descriptor', field, fields, errors)
+	errors = variable('Descriptor Immunity', 'descriptor', value, fields, errors)
 	fields = field('Rule', immunity_rule)
-	errors = variable('Game Rule Immunity', 'rule', field, fields, errors)
+	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
 
