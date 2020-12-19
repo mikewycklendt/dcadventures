@@ -752,6 +752,7 @@ textarea:focus {
 
 .power-table-cell-title {
 	display: grid;
+	overflow: hidden;
 	font-family: 'Monda', Verdana;
 	font-size: 90%;
 	border-bottom: 1px solid #af0101;
@@ -774,6 +775,7 @@ textarea:focus {
 	width: 97%;
 	border-bottom: 0vw solid white;
 	font-size: 80%;
+	color: #245681;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height .4s ease-out, background-color .2s linear, border-bottom .2s linear;
@@ -784,13 +786,14 @@ textarea:focus {
 	border-bottom: .3vw solid #245681;
 }
 
-.table-cell {
+.power-table-cell {
 	display: grid;
+	text-align: left;
 }
 
 .power-check {
 	display: grid;
-	color: #245681;
+	color: #af0101;
 	text-align: center;
 	font-size: 1.3vw;
 }
@@ -807,7 +810,7 @@ textarea:focus {
 	width: 90%;
 	align-items: center;
 	text-align: center;
-	color: #245681;
+	color: #af0101;
 	border: none;
 	background-color: transparent;
 	transition: all .2s linear;
@@ -822,13 +825,16 @@ textarea:focus {
 }
 
 .power-check-button:hover {
-	color: #af0101;
+	color: #245681;
 	font-size: 1.6vw;
 }
 
 
 .mod-row {
-	display: grid;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 .mod-cell-empty {
@@ -838,6 +844,7 @@ textarea:focus {
 
 .mod-cell-mod {
 	display: grid;
+	font-size: 110%;
 	border-left: .1vw solid #245681;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
@@ -846,19 +853,24 @@ textarea:focus {
 
 .mod-cell-sub {
 	display: grid;
+	font-size: 100%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 	text-align: center;
 }
 
 .mod-cell-content {
+	display: grid;
 	text-align: left;
+	font-size: 80%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 }
 
 .mod-cell-title {
+	display: grid;
 	text-align: center;
+	font-size: 90%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 }

@@ -221,65 +221,61 @@ def grid_columns(rows):
 	return (grid)
 
 
-def variable_cell_add(title, value, data, classname, cells=['e']):
 
+def variable_cell(title, classname, value):
+	cell = {}
+	cell['title'] = title
+	cell['class'] = classname
+	cell['value'] = value
 
-	content = ''
-	width = .2
+	return (cell)
 
-	for choice in data:
-		if choice['value'] == value:
-			contentlist = choice['content']
-			width = choice['width']
+def vcell(selection, width, content, cell, cells):
+	value = cell['value']
 
+	if value != selection:
+		return (cells)
 
-	content = contentlist[0]
+	for c in content:
+		if c is None:
+			c = ''
+		else:
+			try:
+				c = str(c)
+			except:
+				try:
+					cells = check_cell(title, width, c, classname)
+					return (cells)
+				except:
+					c = ''
 
-	if len(contentlist) > 1:	
-		for i in range(1, len(contentlist) -1, 1):
-			content += ' ' + contentlist[i]
+	text = content[0]
 
-	cell = {'title': title,
-			'width': width,
-			'content': content,
-			'class': classname 
-			}
+	if len(content) > 1:
+		for i in range(1, len(content) - 1, 1):
+			if text = '':
+				text = content[i]
+			else:
+				text += ' ' + content[i]
 
-	if cells == ['e']:
-		new_cells = []
-		cells = new_cells
+	if text = '':
+		width = .2
+
+	cell['width'] = width
+	cell['content'] = text
 
 	cells.append(cell)
 
-def variable_cell(value, width, contentlist, data=['e']):
-	content = contentlist[0]
+	return (cells)
 
-	if len(contentlist) > 1:	
-		for i in range(1, len(contentlist) -1, 1):
-			if contentlist[i] != '':
-				content += ' ' + contentlist[i]
 
-	if content == '':
-		width = .2
-
-	cell = {'value': value,
-			'width': width,
-			'content': content}
-
-	if data == ['e']:
-		new_data = []
-		data = new_data
-
-	data.append(cell)
-
-	return (data)
 
 def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	if check == False:
 		width = .2
 		mod_check = False
-
+	
 	cell = {'title': title,
 			'width': width,
 			'content': check,
@@ -287,158 +283,129 @@ def check_cell(title, width, check, classname, cells, mod_check=False):
 			'mod_check': mod_check
 			}
 
+	cells.append(cell)
+
 	return (cells)
 
-def cell(title, width, contentlist, classname, cells=['e']):
+def cell(title, width, contentlist, classname, cells=[]):
 
+	cell = {}
+	cell['title'] = title
+	cell['class'] = classname
+		
+	for c in contentlist:
+		if c is None:
+			c = ''
+		else:
+			try:
+				c = str(c)
+			except:
+				try:
+					cells = check_cell(title, width, c, classname)
+					return (cells)
+				except:
+					c = ''
+				
 	content = contentlist[0]
 
 	if len(contentlist) > 1:	
 		for i in range(1, len(contentlist) -1, 1):
 			if content == '':
-				break
+				content = contentlist[i]
 			else:
 				content += ' ' + contentlist[i]
 
 	if content == '':
 		width = .2
 
-	cell = {'title': title,
-			'width': width,
-			'content': content,
-			'class': classname 
-			}
-
-	if cells == ['e']:
-		new_cells = []
-		cells = new_cells
+	cell['content']
 
 	cells.append(cell)
 
 	return (cells)
 
-def mod_create(title, width, classname, variable=False):
-	
-	grid = '10% ' + str(width) + '%'
-	
+def mod_create(title, width, classname, value='e', select='e'):
+
 	mod = {'class': classname,
 			'title': title,
-			'grid': grid,
 			'cells': [],
-			'variable': variable}
+			'variable': False
+			}
 
-	return (mod)
-
-def mod_cell(title, width, data, mod, val=None, variable_data=['e']):
-
-	if variable_data == ['e']:
-		new_v_data = []
-		variable_data = new_v_data
+	if value != 'e' and select != 'e':
+		mod['value'] = value
+		for option in select:
+			if option['type'] == value:
+				sub_title = option['name']
+				mod['sub_title'] = sub_title
+				sub_width = option['w']
+				mod['variable'] = True
 
 	variable = mod['variable']
 
-	print('\n\n\n\n')
-	print(variable_data)
-	print('\n')
-	print(len(variable_data))
-	print('\n')
-
 	if variable:
-		if variable_data == []:
-			d = {}
-			d['value'] = val
-			d['cells'] = []
-			
-			d['grid'] = ''
-		else:
-			for i in range(0, len(variable_data), 1):
-				print(variable_data[i])
-				print('\n\n\n\n')
-
-				if variable_data[i]['value'] == val:
-					d = variable_data[i]
-					break
-				else:
-					d = {}
-					d['value'] = val
-					d['cells'] = []
-					d['grid'] = ''
-		print(d)
-		print('\n\n\n\n')
-		result = d
+		grid = '15% ' + str(width) + '% ' + str(sub_width) + '%' 
 	else:
-		result = mod
-	cells = result['cells']
-	grid = result['grid']
-	content_cell = 'auto'
-	empty = True 
-
-	if data[0] == True or data[0] == False:
-		if data[0] == True:
-			content = data[0]
-			content_cell = '5%'
-		elif data[0] == False:
-			return (result)			
-	else:
-		for var in data:
-			if var != '':
-				empty = False
-				break
-
-		if empty:
-			return (result)
-
-	content = data[0]
-
-	if len(data) > 1:
-		for i in range(1, len(data) - 1, 1):
-			if content == '':
-				content = data[i]
-			else:
-				content += ' ' + data[i]
-
-
-	grid += ' ' + str(width) + '% ' + content_cell
-	cells.append({'title': title,
-					'content': content})
-
-	result['grid'] = grid
-	result['cells'] = cells
-
-	print(variable)
-
-	if variable == False:
-		return (result)
-	else:
-		variable_data.append(result)
-		return (variable_data)
-		
-
-def variable_mod(value, select, data, mod):
-
-	grid = mod['grid']
-	cells = mod['cells']
-
-	for option in select:
-		if option['type'] == value:
-			sub_title = option['name']
-			mod['sub_title'] = sub_title
-			width = option['w']
-	for d in data:
-		if d['value'] == value:
-			variable_grid = d['grid']
-			variable_cellS = d['cells']
-
-	grid += ' ' + str(width) + '%'
-	grid += variable_grid
-	cells.append(variable_cellS)
-
+		grid = '15% ' + str(width) + '%'
+	
 	mod['grid'] = grid
-	mod['cells'] = celld
 
 	return (mod)
 
+def mod_cell(title, width, content, mod, value='e'):
+
+	variable = mod['variable']
+	cells = mod['cells']
+	grid = mod['grid']
+	cell = {}
+	contentwidth = 'auto'
+
+	if variable:
+		mod['value'] = val
+		if value != val:
+			return (mod)
+
+	for c in content:
+		if c is None:
+			c = ''
+		try:
+			c = str(c)
+		except:
+			if c == True:
+				contentwidth = '7%'
+			elif c == False:
+				return (mod)
+	
+	text = content[0]
+
+	if text != True:
+		if len(content) > 1:
+			for i in range(1, len(content) - 1, 1):
+				if text == '':
+					text += content[i]
+				else:
+					text += ' ' + content[i]
+
+	if text == '':
+		return (mod)
+
+	cell['title'] = title
+	cell['content'] = text
+	cells.append(cell)
+	mod['cells'] = cells
+
+	grid += ' ' + str(width) + '% ' + contentwidth
+
+	mod['grid'] = grid 
+
+	return (mod)
+
+		
 def mod_add(check, mod, body):
+
+	grid = mod['grid']
+	grid += ';'
+	mod['grid'] += ';'
 
 	mods = body['mods']
 
@@ -449,7 +416,6 @@ def mod_add(check, mod, body):
 	return (body)
 
 	
-
 def alt_check_post(entry, columns, created):
 
 	body = {}
@@ -987,38 +953,37 @@ def defense_post(entry, columns, created):
 	
 	classname = 'reflect'
 	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
-	new_mod = mod_create('Reflects Attacks', 17, classname, True)
-	print(new_mod)
-	print('\n\n\n')
-	value = 1
-	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	print(data)
-	print('\n\n\n')
-	data = mod_cell('DC:', 7, [reflect_dc], new_mod, value, data)
-	
-	value = 2
-	data = mod_cell('Action Type:', 15, [reflect_action], new_mod, value, data)
-	data = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value, data)
-	value = 6
-	data = mod_cell('Action Type', 15, [reflect_action], new_mod, value, data)
-	data = mod_cell('Resisted By', 15, [reflect_action], new_mod, value, data)
 	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}]
-	new_mod = variable_mod(reflect_check, select, data, new_mod)
+	new_mod = mod_create('Reflects Attacks', 17, classname, reflect_check, select)
+	print('\n\n\n\n')
+	print(new_mod)
+	print('\n')
+	value = 1
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	print(new_mod)
+	print('\n')
+	new_mod = mod_cell('DC:', 7, [reflect_dc], new_mod, value)
+	print(new_mod)
+	value = 2
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	new_mod = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value)
+	value = 6
+	new_mod = mod_cell('Action Type', 15, [reflect_action], new_mod, value)
+	new_mod = mod_cell('Resisted By', 15, [reflect_action], new_mod, value)
 	body = mod_add(reflect, new_mod, body)
 	
 	classname = 'immunity'
 	cells = check_cell('Immunity', 10, immunity, classname, cells, True)
-	new_mod = mod_create('Immunity', 17, classname, True)
-	value = 'trait'
-	data = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
-	value = 'damage'
-	data = mod_cell('Damage:', 10, [immunity_damage], new_mod, value, data)
-	value = 'descriptor'
-	data = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value, data)
-	value = 'rule'
-	data = mod_cell('Rule:', 10, [immunity_rule], new_mod, value, data)
 	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
-	new_mod = variable_mod(immunity_type, select, data, new_mod)
+	new_mod = mod_create('Immunity', 17, classname, immunity_type, select)
+	value = 'trait'
+	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
+	value = 'damage'
+	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value, data)
+	value = 'descriptor'
+	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value, data)
+	value = 'rule'
+	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value, data)
 	body = mod_add(immunity, new_mod, body)	
 
 	classname = cover
