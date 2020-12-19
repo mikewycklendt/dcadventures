@@ -328,7 +328,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 	if content == '':
 		width = .2
 
-	cell['content']
+	cell['content'] = CONTENT
 
 	cells.append(cell)
 
