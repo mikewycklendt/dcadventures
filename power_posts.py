@@ -1015,7 +1015,7 @@ def defense_post(entry, columns, created):
 		print(c)
 		print('\n')
 
-	for m in body['mods']
+	for m in body['mods']:
 		print('\n')
 		print('\n')
 		print('\n')
