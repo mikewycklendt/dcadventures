@@ -619,8 +619,13 @@ def defense_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	print('\n\n\n\n\n')
+	print(reflect_action)
 	
 	errors = id_check(Action, reflect_action, 'Action', errors)
+
+	print(reflect_check)
 	errors = id_check(Check, reflect_check, 'Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
 
