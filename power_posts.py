@@ -167,6 +167,11 @@ def send(cells, body):
 
 	widths = []
 	for cell in cells:
+		print('\n')
+		print('\n')
+		print(cell)
+		print('\n')
+		print('\n')
 		width = cell['width']
 		widths.append(width)
 
@@ -1011,19 +1016,6 @@ def defense_post(entry, columns, created):
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 
-	for c in cells:
-		print('\n')
-		print(c)
-		print('\n')
-
-	for m in body['mods']:
-		print('\n')
-		print('\n')
-		print('\n')
-		print(m)
-		print('\n')
-		print('\n')
-		print('\n')
 
 	body = send(cells, body)
 
