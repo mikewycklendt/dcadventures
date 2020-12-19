@@ -997,11 +997,11 @@ def defense_post(entry, columns, created):
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
 	value = 'damage'
-	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value, data)
+	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value)
 	value = 'descriptor'
-	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value, data)
+	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value)
 	value = 'rule'
-	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value, data)
+	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	classname =  'cover'

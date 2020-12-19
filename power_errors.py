@@ -50,6 +50,11 @@ def variable(name, value, field, fields, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	
+	
+	print('\n\n\n')
+	print(fields)
+	print('\n\n\n')
+	
 	if value == field:
 		for val in fields:
 			v = val['value']
