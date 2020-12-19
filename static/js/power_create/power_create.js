@@ -1084,7 +1084,7 @@ function create_table(jsonResponse) {
 		} else if (cell.content == true) {
 			if (cell.mod_check == true) {
 				const data_id = cell_class + '-' + id;
-				mod_check = true;
+				create_mod = true;
 				const check = document.createElement('button');
 				check.className = base_button_check + check_button_class;
 				check.setAttribute('data-id', data_id);
@@ -1124,6 +1124,7 @@ function create_table(jsonResponse) {
 
 	if (create_mod) {
 		mod_create(mods, id, entry, table_class, table_id);
+		check_buttons(table_id);
 	} 
 }
 
