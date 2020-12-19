@@ -253,7 +253,7 @@ def vcell(selection, width, content, cell, cells):
 
 	if len(content) > 1:
 		for i in range(1, len(content) - 1, 1):
-			if text = '':
+			if text == '':
 				text = content[i]
 			else:
 				text += ' ' + content[i]
