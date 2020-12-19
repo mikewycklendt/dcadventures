@@ -1154,7 +1154,7 @@ function mod_create(mods, id, check, entry, table_class, table_id) {
 		mod.appendChild(empty);
 
 		const title = document.createElement('div');
-		title.className = mod_cell_title;
+		title.className = mod_cell_mod;
 		title.innerHTML = mod_title;
 		mod.appendChild(title);
 

@@ -986,7 +986,7 @@ def defense_post(entry, columns, created):
 	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value, data)
 	body = mod_add(immunity, new_mod, body)	
 
-	classname = cover
+	classname =  'cover'
 	cells = check_cell('Cover', 10, cover_check, classname, cells, True)
 	new_mod = mod_create('Provides Cover', 17, classname)
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
