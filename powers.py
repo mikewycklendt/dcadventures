@@ -1261,6 +1261,7 @@ def power_post_alt_check():
 							when = when,
 							trait_type = trait_type,
 							trait = trait)
+	
 
 	body = alt_check_post(entry, columns, created)
 	return jsonify(body)
@@ -1975,6 +1976,8 @@ def power_post_defense():
 							immunity_rule = immunity_rule,
 							cover_check = cover_check,
 							cover_type = cover_type)
+	db.session.add(entry)
+	db.session.commit()
 
 	body = defense_post(entry, columns, created)
 	return jsonify(body)
