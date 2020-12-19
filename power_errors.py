@@ -32,54 +32,34 @@ def one(name, value):
 
 	return (data)
 
-def field(name, value, data=['empty']):
+def field(name, value, fields=['empty']):
 
 
 	field = {'name': name, 'value': value}
 
-	if data == ['empty']:
+	if fields == ['empty']:
 		new_data = []
 		new_data.append(field)
-		data = new_data
+		fields = new_data
 	else:
-		data.append(field)
+		fields.append(field)
 
-	return (data)
+	return (fields)
 
-def data_add(name, fields, value='', data=['empty']):
-
-	option = {'value': value,
-				'choice': name,
-				'values': fields}
-
-	if data == ['empty']:
-		new_data = []
-		new_data.append(option)
-		data = new_data
-	else:
-		data.append(option)
-	return (data)
-
-def variable(field, data, errors):
+def variable(name, value, field, fields, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	
-	for d in data:
-		value = d['value']
-		values = d['values']
-		choice = d['choice']
-
-		if field == value:
-			for val in values:
-				v = val['value']
-				missing = val['name']
-				if v == '':
-					message = 'All required ' + choice + ' fields must be complete.'
-					error = True
-					error_msgs.append(message)
-					break
-			for val in values:
-				v = val['value']
+	if value == field:
+		for val in fields:
+			v = val['value']
+			if val['value'] == '':
+				message = 'All required ' + name + ' fields must be complete.'
+				error = True
+				error_msgs.append(message)
+				break
+		for val in fields:
+			v = val['value']
 				missing = val['name']
 				if v == '':
 					message = missing + ' field cannot be empty.'
@@ -91,6 +71,7 @@ def variable(field, data, errors):
 		errors['error'] = error
 
 	return (errors)
+
 
 def select(fields, errors):
 	error_msgs = errors['error_msgs']
@@ -638,30 +619,30 @@ def defense_post_errors(data):
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_action, reflect_check], errors)
 
+	field = reflect_check
 	fields = field('Trait Type', reflect_opposed_trait_type)
 	fields = field('Trait', reflect_opposed_trait, fields)
-	data = data_add('Opposed Check', fields, 2)
+	errors = variable('Opposed Check', 2, field, fields, errors)
 	fields = field('DC', reflect_dc)
-	data = data_add('Skill Check', fields, 1, data)
+	errors = variable('Skill Check', 1, field, fields, errors)
 	fields = field('Trait Type', reflect_resist_trait)
 	fields = field('Trait', reflect_resist_trait_type, fields)
-	data = data_add('Resistance Check', fields, 6, data)
+	errors = variable('Resistance Check', 6, field, fields, errors)
 
 	errors = variable(reflect_check, data, errors)
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
+	field = immunity_type
 	fields = field('Trait Type', immunity_trait_type)
 	fields = field('Trait', immunity_trait, fields)
-	data = data_add('Trait Immunity', fields, 'trait')
+	errors = variable('Trait Immunity', 'trait', field, fields, errors)
 	fields = field('Damage Type', immunity_damage)
-	data = data_add('Damage Immunity', fields, 'damage', data)
+	errors = variable('Damage Immunity', 'damage', field, fields, errors)
 	fields = field('Descriptor', immunity_descriptor)
-	data = data_add('Descriptor Immunity', fields, 'descriptor', data)
+	errors = variable('Descriptor Immunity', 'descriptor', field, fields, errors)
 	fields = field('Rule', immunity_rule)
-	data = data_add('Game Rule Immunity', fields, 'rule', data)
-
-	errors = variable(immunity_type, data, errors)
+	errors = variable('Game Rule Immunity', 'rule', field, fields, errors)
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
 

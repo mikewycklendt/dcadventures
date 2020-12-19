@@ -445,6 +445,7 @@ def alt_check_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -483,6 +484,7 @@ def change_action_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -515,6 +517,7 @@ def character_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -605,6 +608,7 @@ def circ_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -665,6 +669,7 @@ def create_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -796,6 +801,7 @@ def damage_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -835,6 +841,7 @@ def dc_table_post(entry, columns, created):
 	body['spot'] = spot
 	body['created'] = created
 	body['title'] = ''
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -897,6 +904,7 @@ def defense_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1026,6 +1034,7 @@ def degree_mod_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1106,6 +1115,7 @@ def degree_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1143,6 +1153,7 @@ def environment_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1231,6 +1242,7 @@ def levels_post(entry, columns, created, old_level_type):
 	body['table_id'] = table_id
 	body['spot'] = spot
 	body['rows'] = rows
+	body['mods'] = []
 	
 	if old_level_type != level_type:
 		body['created'] = False
@@ -1260,6 +1272,7 @@ def minion_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1313,6 +1326,7 @@ def mod_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1470,6 +1484,7 @@ def move_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -1632,6 +1647,7 @@ def opposed_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -1672,6 +1688,7 @@ def ranged_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1758,6 +1775,7 @@ def resist_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -1807,6 +1825,7 @@ def resisted_by_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -1865,6 +1884,7 @@ def reverse_effect_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -1918,6 +1938,7 @@ def sense_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 
 	power_id = entry.power_id
@@ -2027,6 +2048,7 @@ def time_post(entry, columns, created):
 	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
+	body['mods'] = []
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
