@@ -1011,6 +1011,7 @@ function create_table(jsonResponse) {
 	const cells = jsonResponse.cells;
 	const rows = jsonResponse.columns;
 
+	console.log(created)
 	console.log(cells)
 
 	const cells_class = table_id + '-cells';
