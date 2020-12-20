@@ -253,7 +253,7 @@ def grid_columns(rows):
 		else:
 			empty = .2
 		
-		grid += str(empty) + '%' + ' 5%;'
+		grid += str(empty) + '%' + ' 5%'
 
 	return (grid)
 
@@ -442,8 +442,6 @@ def mod_cell(title, width, content, mod, value='e'):
 def mod_add(check, mod, body):
 
 	grid = mod['grid']
-	grid += ';'
-	mod['grid'] += ';'
 
 	mods = body['mods']
 

@@ -1191,7 +1191,6 @@ function mod_create(mods, id, entry, table_id) {
 				mod.appendChild(con);
 			}
 		}
-
 		entry.appendChild(mod);
 		
 	}
