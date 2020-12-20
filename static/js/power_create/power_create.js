@@ -1013,6 +1013,7 @@ function create_table(jsonResponse) {
 
 	console.log(created)
 	console.log(cells)
+	console.log(grid)
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
@@ -1057,10 +1058,6 @@ function create_table(jsonResponse) {
 		}
 		
 		new_table.appendChild(title_row);
-
-		title_row.style.maxHeight = title_row.scrollHeight + 'px';
-		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
 
