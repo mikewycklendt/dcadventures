@@ -249,6 +249,8 @@ def grid_columns(rows):
 		
 		grid += str(empty) + '%' + ' 5%'
 
+		print(grid)
+
 	return (grid)
 
 
