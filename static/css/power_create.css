@@ -796,7 +796,6 @@ textarea:focus {
 .power-table-titles {
 	display: grid;
 	width: 97%;
-	grid-template-columns: 15% 10% 5% 15% 5% 7% 1% 1% 1% 1% 1% 1% 1% 1% 30% 5%;
 	grid-template-rows: auto;
 }
 
