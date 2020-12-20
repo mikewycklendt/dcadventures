@@ -1096,13 +1096,13 @@ function create_table(jsonResponse) {
 			} else {
 				const check = document.createElement('div');
 				check.className = base_check;
-				cell.appendChild(check)
+				new_cell.appendChild(check)
 			}``
 		} else {
-			cell.innerHTML = new_cell.content;
-			const cell_height = cell.scrollHeight;
+			new_cell.innerHTML = cell.content;
+			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
-			row.appendChild(cell);
+			row.appendChild(new_cell);
 		}
 	}
 
