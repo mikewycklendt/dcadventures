@@ -186,7 +186,7 @@ def send(cells, body):
 	new_row = {'id': entry_id, 'cells': widths}
 
 	rows.append(new_row)
-	for row in row:
+	for row in rows:
 		print(row)
 
 	grid = grid_columns(rows)
