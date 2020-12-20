@@ -1028,6 +1028,7 @@ function create_table(jsonResponse) {
 	const base_check = 'power-check ';
 	const base_title = 'power-table-title'
 	const base_cell = 'power-table-cell '
+	const base_titles = 'power-table-titles ';
 
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
@@ -1043,16 +1044,16 @@ function create_table(jsonResponse) {
 		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
-		title_row.className = base_cells + cells_class;
-		title_row.style.gridTemplateColumns = grid;
+		title_row.className = base_titles + cells_class;
 		new_table.appendChild(title_row);
+		title_row.style.gridTemplateColumns = grid;
 
 		let title_cell;
 		for (title_cell of cells) {
 			console.log(title_cell.title);
 			const cell_title = document.createElement('div');
 			cell_title.className = base_cell_title;
-			cell_title.innerHTML = title_cell.title;
+			cell_title.innerText = title_cell.title;
 			title_row.appendChild(cell_title);
 		}
 

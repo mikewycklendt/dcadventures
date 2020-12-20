@@ -791,6 +791,11 @@ textarea:focus {
 	text-align: left;
 }
 
+.power-table-titles {
+	display: grid;
+	width: 97%;
+}
+
 .power-check {
 	display: grid;
 	color: #af0101;
