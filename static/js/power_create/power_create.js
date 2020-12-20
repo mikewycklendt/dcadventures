@@ -1048,13 +1048,12 @@ function create_table(jsonResponse) {
 		title_row.className = base_titles + cells_class;
 		title_row.style.gridTemplateColumns = grid;
 
-		
 		new_table.appendChild(title_row);
 		
 		let title_cell;
 		for (title_cell of cells) {
 			console.log(title_cell.title);
-			const cell_title = document.createElement('div');
+			let cell_title = document.createElement('div');
 			cell_title.className = base_cell_title;
 			cell_title.innerText = title_cell.title;
 			title_row.appendChild(cell_title);
