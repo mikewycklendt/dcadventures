@@ -176,7 +176,6 @@ def send(cells, body):
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
-	print(cells)
 
 	widths = []
 	for cell in cells:
@@ -186,8 +185,6 @@ def send(cells, body):
 	new_row = {'id': entry_id, 'cells': widths}
 
 	rows.append(new_row)
-	for row in rows:
-		print(row)
 
 	grid = grid_columns(rows)
 
@@ -206,7 +203,6 @@ def delete_row(entry_id, rows):
 	return (rows)
 
 def grid_columns(rows):
-	print(rows)
 
 	columns = []
 
@@ -217,10 +213,7 @@ def grid_columns(rows):
 		for row in rows:
 			row_cells = row['cells']
 			gridrows.append(row_cells)
-		
-		print('\n\n')
-		print(gridrows)
-		print('\n\n')
+
 		
 		if columns == []:
 			columns = gridrows[0]
@@ -923,6 +916,8 @@ def defense_post(entry, columns, created):
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
+
+	print(cells)
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
