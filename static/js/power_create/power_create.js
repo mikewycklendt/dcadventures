@@ -1043,7 +1043,7 @@ function create_table(jsonResponse) {
 		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
-		title_row.className = base_cell_title + cells_class;
+		title_row.className = base_cells + cells_class;
 		title_row.style.gridTemplateColumns = grid;
 		new_table.appendChild(title_row);
 
