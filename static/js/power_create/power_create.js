@@ -1192,7 +1192,7 @@ function mod_create(mods, id, entry, table_id) {
 			}
 		}
 
-		entry.appendChild(new_mod);
+		entry.appendChild(mod);
 		
 	}
 
