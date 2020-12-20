@@ -1048,6 +1048,9 @@ function create_table(jsonResponse) {
 		title_row.className = base_titles + cells_class;
 		title_row.style.gridTemplateColumns = grid;
 
+		
+		new_table.appendChild(title_row);
+		
 		let title_cell;
 		for (title_cell of cells) {
 			console.log(title_cell.title);
@@ -1057,13 +1060,81 @@ function create_table(jsonResponse) {
 			title_row.appendChild(cell_title);
 		}
 		
-		new_table.appendChild(title_row);
 
 		new_table.style.display = 'grid';
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
 
+
+	const table = document.getElementById(table_class);
+	const entry = document.createElement('div');
+	entry.className = base_entry + entry_class;
+	table.appendChild(entry);
+	const row = document.createElement('div');
+	row.className = base_cells + cells_class;	
+	row.style.gridTemplateColumns = grid;
+	entry.appendChild(row);
+	const rows_grid = document.getElementsByClassName(cells_class);
+	let row_grid;
+	for (row_grid of rows_grid) {
+		row_grid.style.gridTemplateColumns = grid;
+	}
+
+	let create_mod = false;
+	let cell;
+	let cell_heights = [];
+	for (cell of cells) {
+		const cell_class = table_id + '-' + cell.class;
+		const new_cell = document.createElement('div');
+		new_cell.className = base_cell + cell_class;
+		if (cell.content == false) {
+			new_cell.innerHTML = '';
+		} else if (cell.content == true) {
+			if (cell.mod_check == true) {
+				const data_id = cell_class + '-' + id;
+				create_mod = true;
+				const check = document.createElement('button');
+				check.className = base_button_check + check_button_class;
+				check.setAttribute('data-id', data_id);
+				new_cell.appendChild(check);
+			} else {
+				const check = document.createElement('div');
+				check.className = base_check;
+				new_cell.appendChild(check)
+			}``
+		} else {
+			new_cell.innerHTML = cell.content;
+			const cell_height = new_cell.scrollHeight;
+			cell_heights.push(cell_height);
+		}
+		row.append(new_cell);
+	}
+
+	let height;
+	let max = 0;
+	for (height of cell_heights) {
+		if (height > max) {
+			max = height;
+		}
+	}
+
+	const delete_cell = document.createElement('div');
+	delete_cell.className = base_cell;
+	row.appendChild(delete_cell)
+	const delete_btn = document.createElement('button');
+	delete_btn.className = base_delete + delete_class;
+	delete_btn.setAttribute('data-id', id);
+	delete_cell.appendChild(delete_btn)
+
+	table.style.display = 'grid';
+	row.style.maxHeight = max + 'px';
+	table.style.maxHeight = table.scrollHeight + max + 'px'; 
+
+	if (create_mod) {
+		mod_create(mods, id, entry, table_id);
+		check_buttons(table_id);
+	} 
 }
 
 function mod_create(mods, id, entry, table_id) {
