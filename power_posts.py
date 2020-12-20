@@ -180,7 +180,7 @@ def send(cells, body):
 	print('\n\n\n\n')
 	print(len(cells))
 	print('\n')
-	
+	print(cells)
 
 	widths = []
 	for cell in cells:
@@ -1027,7 +1027,7 @@ def defense_post(entry, columns, created):
 
 	body = send(cells, body)
 
-	print(body)
+	cells.clear()
 
 	return (body)
 	
