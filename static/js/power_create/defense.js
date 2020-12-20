@@ -169,7 +169,7 @@ function defense_submit() {
 
 			console.log(degree_grid)
 
-			defense_grid.columns = jsonResponse.columns;
+			defense_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

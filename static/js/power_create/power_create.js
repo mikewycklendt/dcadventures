@@ -1009,7 +1009,7 @@ function create_table(jsonResponse) {
 	const grid = jsonResponse.grid;
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
-	const rows = jsonResponse.columns;
+	const rows = jsonResponse.rows;
 
 	console.log(created)
 	console.log(cells)
