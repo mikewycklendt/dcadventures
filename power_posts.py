@@ -176,14 +176,10 @@ def send(cells, body):
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
+	print(cells)
 
 	widths = []
 	for cell in cells:
-		print('\n')
-		print('\n')
-		print(cell)
-		print('\n')
-		print('\n')
 		width = cell['width']
 		widths.append(width)
 
@@ -195,17 +191,6 @@ def send(cells, body):
 
 	body['grid'] = grid
 	body['rows'] = rows
-
-	for cell in cells:
-		print(cell)
-	print('\n')
-	for row in rows:
-		print(row)
-	print('\n')
-	for mod in mods:
-		print(mod)
-	print('\n')
-	print(grid)
 
 	return (body)
 
@@ -1035,13 +1020,6 @@ def defense_post(entry, columns, created):
 	new_mod = mod_create('Provides Cover', 17, classname)
 	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
-
-	for c in cells:
-		print('\n')
-		print('\n')
-		print(c)
-		print('\n')
-		print('\n')
 		
 
 	body = send(cells, body)
