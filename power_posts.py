@@ -902,6 +902,8 @@ def dc_table_post(entry, columns, created):
 
 def defense_post(entry, columns, created):
 
+
+	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
