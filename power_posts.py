@@ -902,9 +902,6 @@ def dc_table_post(entry, columns, created):
 
 def defense_post(entry, columns, created):
 
-	body = 'x'
-	if body == 'x':
-		body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
@@ -912,7 +909,9 @@ def defense_post(entry, columns, created):
 
 	rows = columns
 	mods = []
-	cells = []
+	cells = 'x'
+	if cells == 'x':
+		cells = []
 	table_id = 'defense'
 	spot = "defense-spot"
 
