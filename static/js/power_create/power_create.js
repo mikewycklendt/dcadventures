@@ -1127,7 +1127,7 @@ function create_table(jsonResponse) {
 	table.style.maxHeight = table.scrollHeight + max + 'px'; 
 
 	if (create_mod) {
-		mod_create(mods, id, entry, table_class, table_id);
+		mod_create(mods, id, entry, table_id);
 		check_buttons(table_id);
 	} 
 }
