@@ -1980,6 +1980,9 @@ def power_post_defense():
 	db.session.commit()
 
 	body = defense_post(entry, columns, created)
+
+	db.session.close()
+	
 	return jsonify(body)
 
 
