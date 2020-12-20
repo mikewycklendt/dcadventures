@@ -177,6 +177,11 @@ def send(cells, body):
 	entry_id = body['id']
 	mods = body['mods']
 
+	print('\n\n\n\n')
+	print(len(cells))
+	print('\n')
+	
+
 	widths = []
 	for cell in cells:
 		width = cell['width']
@@ -917,8 +922,6 @@ def defense_post(entry, columns, created):
 	body['rows'] = rows
 	body['mods'] = []
 
-	print(cells)
-
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	defense = entry.defense
@@ -986,15 +989,12 @@ def defense_post(entry, columns, created):
 	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
 	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}]
 	new_mod = mod_create('Reflects Attacks', 17, classname, reflect_check, select)
-	print('\n\n\n\n')
-	print(new_mod)
-	print('\n')
+
 	value = 1
 	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	print(new_mod)
-	print('\n')
+
 	new_mod = mod_cell('DC:', 7, [reflect_dc], new_mod, value)
-	print(new_mod)
+
 	value = 2
 	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
 	new_mod = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value)
