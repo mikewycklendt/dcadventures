@@ -972,6 +972,7 @@ def defense_post(entry, columns, created):
 	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
 	cover_type = selects(cover_type, cover_select)
 
+	cells.clear()
 
 	cells = cell('Defense', 15, [defense], 'defense')
 	cells = cell('Use', 10, [use], 'use', cells)
