@@ -1040,6 +1040,7 @@ function create_table(jsonResponse) {
 		const new_table = document.createElement('div');
 		new_table.className = base_table;
 		new_table.setAttribute('id', table_class);
+		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
 		title_row.className = base_cell_title + cells_class;
