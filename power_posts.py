@@ -225,8 +225,8 @@ def grid_columns(rows):
 		if columns == []:
 			columns = gridrows[0] 
 		if len(gridrows) > 1:
-			for i in range(1, len(row) - 1, 1):
-				if row[i] > columns[i]:
+			for i in range(1, len(gridrows) - 1, 1):
+				if gridrows[i] > columns[i]:
 					columns[i] = row[i]
 		grid = ''
 		empty = 5
