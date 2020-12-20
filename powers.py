@@ -1978,7 +1978,6 @@ def power_post_defense():
 							cover_type = cover_type)
 	db.session.add(entry)
 	db.session.commit()
-	db.session.close()
 
 	body = defense_post(entry, columns, created)
 	return jsonify(body)
