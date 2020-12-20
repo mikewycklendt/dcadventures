@@ -1045,7 +1045,6 @@ function create_table(jsonResponse) {
 
 		const title_row = document.createElement('div');
 		title_row.className = base_titles + cells_class;
-		new_table.appendChild(title_row);
 		title_row.style.gridTemplateColumns = grid;
 
 		let title_cell;
@@ -1056,6 +1055,8 @@ function create_table(jsonResponse) {
 			cell_title.innerText = title_cell.title;
 			title_row.appendChild(cell_title);
 		}
+		
+		new_table.appendChild(title_row);
 
 		title_row.style.maxHeight = title_row.scrollHeight + 'px';
 		new_table.style.display = 'grid';
