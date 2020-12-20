@@ -763,6 +763,7 @@ textarea:focus {
 	display: grid;
 	width: 95%;
 	text-align: left;
+	grid-template-columns: 97%;
 	grid-auto-rows: auto;	
 	background-color: white;
 	font-family: 'Monda', Verdana;
@@ -774,6 +775,7 @@ textarea:focus {
 	display: grid;
 	width: 97%;
 	border-bottom: 0vw solid white;
+	grid-template-rows: auto;
 	font-size: 80%;
 	color: #245681;
 	max-height: 0;
