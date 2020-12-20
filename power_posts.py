@@ -249,6 +249,7 @@ def grid_columns(rows):
 
 		if empty < 100:
 			empty = 100 - empty
+			empty = int(empty)
 		else:
 			empty = .2
 		
