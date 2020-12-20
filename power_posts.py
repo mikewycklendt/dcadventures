@@ -1027,8 +1027,6 @@ def defense_post(entry, columns, created):
 
 	body = send(cells, body)
 
-	cells.clear()
-
 	print(body)
 
 	return (body)
