@@ -233,6 +233,8 @@ def grid_columns(rows):
 						columns[i] = row[i]
 		print('\n\n')
 		print(columns)
+
+		print('\n\n')
 		grid = ''
 		empty = 5
 		for column in columns:
@@ -1033,8 +1035,6 @@ def defense_post(entry, columns, created):
 	body = send(cells, body)
 
 	cells.clear()
-
-	print(body)
 
 	return (body)
 
