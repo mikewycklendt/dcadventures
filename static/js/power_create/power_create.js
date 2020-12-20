@@ -1102,8 +1102,8 @@ function create_table(jsonResponse) {
 			new_cell.innerHTML = cell.content;
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
-			row.appendChild(new_cell);
 		}
+		row.append(new_cell);
 	}
 
 	let height;
