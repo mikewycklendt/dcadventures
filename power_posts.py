@@ -1027,9 +1027,9 @@ def defense_post(entry, columns, created):
 
 	body = send(cells, body)
 
-	cells.clear()
-
 	return (body)
+
+	cells.clear()
 	
 
 def degree_mod_post(entry, columns, created):
