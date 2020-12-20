@@ -1,6 +1,8 @@
 from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
 from models import PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerLevels, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSense, PowerTime 
 from flask_sqlalchemy import SQLAlchemy
+from copy import deepcopy
+
 db = SQLAlchemy()
 
 def name(Table, name):
@@ -172,15 +174,13 @@ def select_multiple(values):
 
 def send(cells, body):
 
-	body['cells'] = cells 
+	body['cells'] = deepcopy(cells)
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
 
 	print('\n\n\n\n')
 	print(len(cells))
-	print('\n')
-	print(cells)
 
 	widths = []
 	for cell in cells:
@@ -1027,9 +1027,10 @@ def defense_post(entry, columns, created):
 
 	body = send(cells, body)
 
-
 	cells.clear()
-	
+
+	print(body)
+
 	return (body)
 
 	
