@@ -167,6 +167,8 @@ function defense_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			console.log(degree_grid)
+
 			defense_grid.columns = jsonResponse.columns;
 
 			const table_id = jsonResponse.table_id;
