@@ -1050,7 +1050,7 @@ function create_table(jsonResponse) {
 			const cell_title = document.createElement('div');
 			cell_title.className = base_cell_title;
 			cell_title.innerHTML = title_cell.title;
-			title_row.appendChild(titlr_cell);
+			title_row.appendChild(cell_title);
 		}
 
 		title_row.style.maxHeight = title_row.scrollHeight + 'px';
