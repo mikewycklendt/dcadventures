@@ -101,9 +101,16 @@ def together(name, values, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
+	check = False
+
 	for value in values:
-		if value == '':
-			error = True
+		if value != '':
+			check = True
+
+	if check:
+		for value in values:
+			if value == '':
+				error = True
 				
 	if error:
 		message = 'If thid power uses ' + name + ', all of those fields must be complete.'
