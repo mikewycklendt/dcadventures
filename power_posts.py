@@ -234,7 +234,7 @@ def grid_columns(rows):
 		print(columns)
 		print('\n\n')
 		if len(gridrows) > 1:
-			for x in range(1, len(gridrows) - 1, 1):
+			for x in range(0, len(gridrows) - 1, 1):
 				row = gridrows[x]
 				print(row)
 				for i in range(0, len(columns) - 1, 1):
