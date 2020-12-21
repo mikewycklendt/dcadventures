@@ -999,61 +999,33 @@ power_save = function() {
 ```
 
 
-function create_table(jsonResponse) {	
-
-	const table_id = jsonResponse.table_id;
-	const table_class = table_id + '-table'
-	let grow = 0;
-
-	if (created == false) {
-		titles_create(grow, table_id jsonResponse)	
-	} else {
-		const table = document.getElementById(table_class)
-		grid_update()
-	}
-
-}
-
-function grid_update(table_id) {
-
-	for (let i = 0; i < cells.length; i++) {
-		const title_id = table_id + '-' + cells[i].class + '-title';
-		const cell_title = document.getElementById(title_id)
-		if (cells[i].width > 1) {
-			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-			cell_title.style.opacity = '100%';
-		}
-		else {
-			cell_title.style.opacity = '0%';
-			cell_title.style.maxHeight = '0px'
-		}
-	}
-
-	const cells_rows = document.getElementsByClassName(cells_class);
-	for (let i = 0; i < cells_rows.length; i++) {
-		cells_rows[i].style.gridTemplateColumns = grid;
-	}
-}
-
-function titles_create(grow, table_id, jsonResponse) {
+function create_table(jsonResponse) {
 
 	const spot_string = jsonResponse.spot;
+	const table_id = jsonResponse.table_id;
 	const created = jsonResponse.created;
+	const id = jsonResponse.id; 
 	const title_string = jsonResponse.title;
 	const grid = jsonResponse.grid;
+	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
+	const rows = jsonResponse.rows;
 
 	console.log(created)
 	console.log(cells)
 	console.log(grid)
 
 	const cells_class = table_id + '-cells';
+	const table_class = table_id + '-table'
 	const base_table = 'power-table-table';
 	const base_cell_title = 'power-table-cell-title ';
 	const base_title = 'power-table-title'
 	const base_titles = 'power-table-titles';
 
-	const spot = document.getElementById(spot_string);
+	let grow = 0;
+
+	if (created == false) {
+		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
 			const title = document.createElement('div');
 			title.className = base_title;
@@ -1084,28 +1056,35 @@ function titles_create(grow, table_id, jsonResponse) {
 			}
 			title_row.appendChild(cell_title);
 		}
-
-
-
 		grow = grow + title_row.scrollHeight;	
 		new_table.style.display = 'grid';
 		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
+	}
+
+	const table = document.getElementById(table_class)
+
+	for (let i = 0; i < cells.length; i++) {
+		const title_id = table_id + '-' + cells[i].class + '-title';
+		const cell_title = document.getElementById(title_id)
+		if (cells[i].width > 1) {
+			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+			cell_title.style.opacity = '100%';
+		}
+		else {
+			cell_title.style.opacity = '0%';
+			cell_title.style.maxHeight = '0px'
+		}
+	}
+
+	const cells_rows = document.getElementsByClassName(cells_class);
+	for (let i = 0; i < cells_rows.length; i++) {
+		cells_rows[i].style.gridTemplateColumns = grid;
+	}
+
+
 }
 
-function cells_create(table, grow, table_id, jsonResponse) {
-	
-	const table_id = jsonResponse.table_id;
-	const id = jsonResponse.id; 
-	const grid = jsonResponse.grid;
-	const mods = jsonResponse.mods;
-	const cells = jsonResponse.cells;
-	const entry = document.createElement('div');
-	entry.className = base_entry
-	title_row.classList.add(entry_class);
-	const row = document.createElement('div');
-	row.className = base_cells
-	title_row.classList.add(cells_class);	
-	row.style.gridTemplateColumns = grid;
+function cells_create(table, cells_class, cells, mods, id, entry, table_id, grow) {
 
 	const base_cell = 'power-table-cell '
 	const base_button_check = 'power-check-button ';
@@ -1117,6 +1096,13 @@ function cells_create(table, grow, table_id, jsonResponse) {
 	const check_button_class = table_id + '-button'
 	const base_cells = 'power-table-cells ';
 
+	const entry = document.createElement('div');
+	entry.className = base_entry
+	title_row.classList.add(entry_class);
+	const row = document.createElement('div');
+	row.className = base_cells
+	title_row.classList.add(cells_class);	
+	row.style.gridTemplateColumns = grid;
 
 	let create_mod = false;
 	let cell;
