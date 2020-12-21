@@ -1070,6 +1070,7 @@ function create_table(jsonResponse) {
 		
 	}
 
+	console.log(grow);
 	let table;
 	if (created == false) {
 		table = new_table;
