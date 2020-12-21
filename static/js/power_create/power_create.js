@@ -1073,6 +1073,8 @@ function create_table(jsonResponse) {
 		
 		new_table.style.display = 'grid';
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
+
+		grid__update(cells, table_id)
 	} else {
 		grid__update(cells, table_id)
 	}
