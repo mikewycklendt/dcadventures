@@ -230,19 +230,9 @@ def grid_columns(rows):
 		
 		print('gridrows:')
 		for g in gridrows:
-			print(g)
-		print('\n')
-
-		print(len(gridrows))
-		print('\n')
-
-		print(columns)
-		print('\n\n')
-		for num in range(0, len(gridrows) - 1, 1):
-			row = gridrows[num]
-			print(row)
 			for i in range(0, len(columns) - 1, 1):
-				if row[i] > columns[i]:
+				print(g)
+				if g[i] > columns[i]:
 					columns[i] = row[i]
 		print('\n\n')
 		print(columns)
