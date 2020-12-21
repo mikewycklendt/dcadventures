@@ -1031,8 +1031,6 @@ function create_table(jsonResponse) {
 	const base_cell = 'power-table-cell '
 	const base_titles = 'power-table-titles';
 
-	let grow = 0;
-
 	let new_table;
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
@@ -1083,7 +1081,7 @@ function create_table(jsonResponse) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
 			if (cell_title.scrollHeight > grow) {
-				grow = cell_title.scrollHeight
+				grow = cell_title.scrollHeight;
 			}
 		}
 		else {
