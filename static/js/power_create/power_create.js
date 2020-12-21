@@ -1037,9 +1037,8 @@ function create_table(jsonResponse) {
 
 
 		grid__update(cells, table_id, grid, cells_class)
-		```
+
 		grow_table(table, grow)
-		```
 	}
 
 
@@ -1092,7 +1091,7 @@ function create_titles(jsonResponse, grow) {
 		}
 		title_row.appendChild(cell_title);
 	}
-	
+
 	grow += title_row.scrollHeight
 
 	grow_table(new_table, grow)
@@ -1103,9 +1102,7 @@ function create_titles(jsonResponse, grow) {
 function grow_table(table, grow) {
 
 	table.style.display = 'grid';
-	```
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
-	```
 }
 
 function grid__update(cells, table_id, grid, cells_class) {
@@ -1174,14 +1171,10 @@ function cells_create(table, grow, jsonResponse) {
 				check.className = base_button_check;
 				title_row.classList.add(check_button_class);
 				new_cell.appendChild(check);
-				const cell_height = new_cell.scrollHeight;
-				cell_heights.push(cell_height);
 			} else {
 				const check = document.createElement('div');
 				check.className = base_check;
-				new_cell.appendChild(check);
-				const cell_height = new_cell.scrollHeight;
-				cell_heights.push(cell_height);
+				new_cell.appendChild(check)
 			}``
 		} else {
 			new_cell.innerText = cell.content;
