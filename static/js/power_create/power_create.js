@@ -1051,7 +1051,6 @@ function create_table(jsonResponse) {
 		title_row.className = base_titles;
 		title_row.classList.add(cells_class);
 		title_row.style.gridTemplateColumns = grid;
-		grow = grow + title_row.scrollHeight;
 		new_table.appendChild(title_row);
 		
 		for (let i = 0; i < cells.length; i++) {
@@ -1067,6 +1066,8 @@ function create_table(jsonResponse) {
 			}
 			title_row.appendChild(cell_title);
 		}
+		
+		grow = grow + title_row.scrollHeight;
 		
 	}
 
