@@ -985,14 +985,14 @@ def defense_post(entry, columns, created):
 
 	cells = cell('Defense', 15, [defense], 'defense')
 	cells = cell('Use', 10, [use], 'use', cells)
-	cells = cell('Mod', 5, [mod], 'mod', cells)
+	cells = cell('Mod', 7, [mod], 'mod', cells)
 	cells = cell('Roll', 15, [roll, 'or', outcome], 'roll', cells)
-	cells = check_cell('Dodge', 5, dodge, 'dodge', cells)
-	cells = check_cell('Fortitude', 7, fortitude, 'fort', cells)
-	cells = check_cell('Parry', 5, parry, 'parry', cells)
-	cells = check_cell('Toughness', 7, toughness, 'tough', cells)
-	cells = check_cell('Will', 5, will, 'will', cells)
-	cells = check_cell('Resists Area', 10, resist_area, 'area', cells)
+	cells = check_cell('Dodge', 7, dodge, 'dodge', cells)
+	cells = check_cell('Fortitude', 10, fortitude, 'fort', cells)
+	cells = check_cell('Parry', 7, parry, 'parry', cells)
+	cells = check_cell('Toughness', 10, toughness, 'tough', cells)
+	cells = check_cell('Will', 7, will, 'will', cells)
+	cells = check_cell('Resists Area', 15, resist_area, 'area', cells)
 	cells = check_cell('Resists Perception', 15, resist_perception, 'perc', cells)
 	
 	classname = 'reflect'

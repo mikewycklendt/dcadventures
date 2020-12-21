@@ -1081,6 +1081,13 @@ function create_table(jsonResponse) {
 		}
 	}
 
+	const cells_rows = document.getElementsByClassName(cells_class);
+	let cells_row;
+	for (cells_row in cells_rows) {
+		cells_row.style.gridTemplateColumns = grid;
+	}
+
+
 }
 
 
