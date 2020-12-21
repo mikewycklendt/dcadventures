@@ -1071,6 +1071,9 @@ function create_table(jsonResponse) {
 
 		const table = document.getElementById(table_class)
 
+
+		grid__update(cells, table_id, grid, cells_class)
+
 		grow_table(table, grow)
 	}
 
