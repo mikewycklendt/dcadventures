@@ -1024,46 +1024,7 @@ function create_table(jsonResponse) {
 
 	if (created == false) {
 
-		let grow = 0;
-
-		const spot = document.getElementById(spot_string);
-		if (title_string != '') {
-			const title = document.createElement('div');
-			title.className = base_title;
-			title.innerHTML = title_string;
-			spot.appendChild(title)
-		}
-		const new_table = document.createElement('div');
-		new_table.className = base_table;
-		new_table.setAttribute('id', table_class);
-		spot.appendChild(new_table);
-
-		const title_row = document.createElement('div');
-		title_row.className = base_titles;
-		title_row.classList.add(cells_class);
-		title_row.style.gridTemplateColumns = grid;
-		grow = grow + title_row.scrollHeight;
-		new_table.appendChild(title_row);
-		
-		for (let i = 0; i < cells.length; i++) {
-			console.log(cells[i].title);
-			const cell_title = document.createElement('div');
-			const title_id = table_id + '-' + cells[i].class + '-title';
-			cell_title.setAttribute('id', title_id);
-			cell_title.className = base_cell_title + cells_class;
-			cell_title.innerText = cells[i].title;
-			if (cells[i].width > 1) {
-				cell_title.style.opacity = '100%';
-				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-			}
-			title_row.appendChild(cell_title);
-		}
-
-		grow += title_row.scrollHeight
-
-		grow_table(new_table, grow)
-		
-		grid__update(cells, table_id, grid, cells_class)
+		create_titles(jsonResponse);
 
 	
 	} else {
@@ -1079,9 +1040,63 @@ function create_table(jsonResponse) {
 	}
 
 
-		
+}
 
+function create_titles(jsonResponse) {
+	
+	const spot_string = jsonResponse.spot;
+	const table_id = jsonResponse.table_id;
+	const title_string = jsonResponse.title;
+	const grid = jsonResponse.grid;
+	const cells = jsonResponse.cells;
 
+	const cells_class = table_id + '-cells';
+	const table_class = table_id + '-table'
+	const base_table = 'power-table-table';
+	const base_cell_title = 'power-table-cell-title ';
+	const base_title = 'power-table-title'
+	const base_titles = 'power-table-titles';
+
+	let grow = 0;
+
+	const spot = document.getElementById(spot_string);
+	if (title_string != '') {
+		const title = document.createElement('div');
+		title.className = base_title;
+		title.innerHTML = title_string;
+		spot.appendChild(title)
+	}
+	const new_table = document.createElement('div');
+	new_table.className = base_table;
+	new_table.setAttribute('id', table_class);
+	spot.appendChild(new_table);
+
+	const title_row = document.createElement('div');
+	title_row.className = base_titles;
+	title_row.classList.add(cells_class);
+	title_row.style.gridTemplateColumns = grid;
+	grow = grow + title_row.scrollHeight;
+	new_table.appendChild(title_row);
+	
+	for (let i = 0; i < cells.length; i++) {
+		console.log(cells[i].title);
+		const cell_title = document.createElement('div');
+		const title_id = table_id + '-' + cells[i].class + '-title';
+		cell_title.setAttribute('id', title_id);
+		cell_title.className = base_cell_title + cells_class;
+		cell_title.innerText = cells[i].title;
+		if (cells[i].width > 1) {
+			cell_title.style.opacity = '100%';
+			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+		}
+		title_row.appendChild(cell_title);
+	}
+
+	grow += title_row.scrollHeight
+
+	grow_table(new_table, grow)
+	
+	grid__update(cells, table_id, grid, cells_class)
 }
 
 function grow_table(table, grow) {
