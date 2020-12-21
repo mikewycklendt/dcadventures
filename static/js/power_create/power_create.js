@@ -1063,15 +1063,11 @@ function create_table(jsonResponse) {
 			if (cells[i].width > 1) {
 				cell_title.style.opacity = '100%';
 				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-				if (cell_title.scrollHeight > grow) {
-					grow = cell_title.scrollHeight
-				}
 			}
 			title_row.appendChild(cell_title);
 		}
 	}
 
-	console.log(grow);
 	let table;
 	if (created == false) {
 		table = new_table;
@@ -1079,12 +1075,16 @@ function create_table(jsonResponse) {
 		table = document.getElementById(table_class)
 	}
 
+	let grow = 0;
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
 		if (cells[i].width > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
+			if (cell_title.scrollHeight > grow) {
+				grow = cell_title.scrollHeight
+			}
 		}
 		else {
 			cell_title.style.opacity = '0%';
@@ -1097,7 +1097,7 @@ function create_table(jsonResponse) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 	}
 
-
+	console.log(grow)
 	table.style.display = 'grid';
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
