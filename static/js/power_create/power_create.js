@@ -1069,12 +1069,7 @@ function create_table(jsonResponse) {
 		
 	}
 
-	let table;
-	if (created == false) {
-		table = new_table;
-	} else {
-		table = document.getElementById(table_class)
-	}
+	const table = document.getElementById(table_class)
 
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
