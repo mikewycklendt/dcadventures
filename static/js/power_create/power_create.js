@@ -1105,6 +1105,7 @@ function grow_table(table, grow) {
 	table.style.display = 'grid';
 	```
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
+	```
 }
 
 function grid__update(cells, table_id, grid, cells_class) {
