@@ -1022,6 +1022,8 @@ function create_table(jsonResponse) {
 	const base_title = 'power-table-title'
 	const base_titles = 'power-table-titles';
 
+
+	
 	let grow = 0;
 
 	if (created == false) {
@@ -1084,7 +1086,7 @@ function create_table(jsonResponse) {
 
 }
 
-function cells_create(table, cells_class, cells, mods, id, entry, table_id, grow) {
+function cells_create(table, cells_class) {
 
 	const base_cell = 'power-table-cell '
 	const base_button_check = 'power-check-button ';
@@ -1099,10 +1101,12 @@ function cells_create(table, cells_class, cells, mods, id, entry, table_id, grow
 	const entry = document.createElement('div');
 	entry.className = base_entry
 	title_row.classList.add(entry_class);
+	table.appendChild(entry);
 	const row = document.createElement('div');
 	row.className = base_cells
 	title_row.classList.add(cells_class);	
 	row.style.gridTemplateColumns = grid;
+	entry.appendChild(row);
 
 	let create_mod = false;
 	let cell;
@@ -1133,14 +1137,12 @@ function cells_create(table, cells_class, cells, mods, id, entry, table_id, grow
 		}
 		row.append(new_cell);
 	}
-	entry.appendChild(row);
-	table.appendChild(entry);
-
 
 	let height;
+	let max = 0;
 	for (height of cell_heights) {
-		if (height > grow) {
-			grow = height;
+		if (height > max) {
+			max = height;
 		}
 	}
 
@@ -1153,8 +1155,8 @@ function cells_create(table, cells_class, cells, mods, id, entry, table_id, grow
 	delete_cell.appendChild(delete_btn)
 
 	table.style.display = 'grid';
-	row.style.maxHeight = grow + 'px';
-	table.style.maxHeight = table.scrollHeight + grow + 'px'; 
+	row.style.maxHeight = max + 'px';
+	table.style.maxHeight = table.scrollHeight + max + 'px'; 
 
 	if (create_mod) {
 		mod_create(mods, id, entry, table_id);
