@@ -1061,8 +1061,10 @@ function create_table(jsonResponse) {
 
 		grow += title_row.scrollHeight
 
-
 		grow_table(new_table, grow)
+		
+		grid__update(cells, table_id, grid, cells_class)
+
 	
 	} else {
 
