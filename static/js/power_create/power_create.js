@@ -1055,6 +1055,9 @@ function create_table(jsonResponse) {
 			const cell_title = document.createElement('div');
 			cell_title.className = base_cell_title;
 			cell_title.innerText = cells[i].title;
+			if (cells[i].width < 2) {
+				cell_title.style.maxWidth = '0px';
+			}
 			title_row.appendChild(cell_title);
 		}
 		

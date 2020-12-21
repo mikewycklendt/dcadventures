@@ -754,7 +754,7 @@ textarea:focus {
 	display: grid;
 	overflow: hidden;
 	font-family: 'Monda', Verdana;
-	font-size: 90%;
+	font-size: 80%;
 	border-bottom: 1px solid #af0101;
 	color: #245681;
 }
