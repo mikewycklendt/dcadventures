@@ -1031,6 +1031,8 @@ function create_table(jsonResponse) {
 	const base_cell = 'power-table-cell '
 	const base_titles = 'power-table-titles';
 
+	let grow = 0;
+
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
@@ -1048,7 +1050,7 @@ function create_table(jsonResponse) {
 		title_row.className = base_titles;
 		title_row.classList.add(cells_class);
 		title_row.style.gridTemplateColumns = grid;
-
+		grow += title_row.scrollHeight;
 		new_table.appendChild(title_row);
 		
 		for (let i = 0; i < cells.length; i++) {
@@ -1064,10 +1066,9 @@ function create_table(jsonResponse) {
 			}
 			title_row.appendChild(cell_title);
 		}
-		
-		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
+
+	const table = document.getElementById(table_class);
 
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
@@ -1086,8 +1087,9 @@ function create_table(jsonResponse) {
 	for (let i = 0; i < cells_rows.length; i++) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 	}
-
-
+	
+	table.style.display = 'grid';
+	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
 
