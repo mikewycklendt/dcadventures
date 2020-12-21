@@ -1029,7 +1029,7 @@ function create_table(jsonResponse) {
 	const base_check = 'power-check ';
 	const base_title = 'power-table-title'
 	const base_cell = 'power-table-cell '
-	const base_titles = 'power-table-titles ';
+	const base_titles = 'power-table-titles';
 
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
@@ -1045,7 +1045,8 @@ function create_table(jsonResponse) {
 		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
-		title_row.className = base_titles + cells_class;
+		title_row.className = base_titles;
+		title_row.classList.add(cells_class);
 		title_row.style.gridTemplateColumns = grid;
 
 		new_table.appendChild(title_row);
@@ -1055,7 +1056,7 @@ function create_table(jsonResponse) {
 			const cell_title = document.createElement('div');
 			const title_id = table_id + '-' + cells[i].class + '-title';
 			cell_title.setAttribute('id', title_id);
-			cell_title.className = base_cell_title;
+			cell_title.className = base_cell_title + cells_class;
 			cell_title.innerText = cells[i].title;
 			if (cells[i].width > 1) {
 				cell_title.style.opacity = '100%';
@@ -1082,9 +1083,8 @@ function create_table(jsonResponse) {
 	}
 
 	const cells_rows = document.getElementsByClassName(cells_class);
-	let cells_row;
-	for (cells_row in cells_rows) {
-		cells_row.style.gridTemplateColumns = grid;
+	for (let i = 0; i < cells_rows.length; i++) {
+		cells_rows[i].style.gridTemplateColumns = grid;
 	}
 
 
