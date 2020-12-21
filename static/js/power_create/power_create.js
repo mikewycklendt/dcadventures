@@ -1096,7 +1096,7 @@ function grid__update(cells, table_id, grid, cells_class) {
 	}
 }
 
-function cells_create {
+function cells_create() {
 
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
