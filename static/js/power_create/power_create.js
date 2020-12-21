@@ -1033,6 +1033,7 @@ function create_table(jsonResponse) {
 
 	let grow = 0;
 
+	let new_table;
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
@@ -1041,7 +1042,7 @@ function create_table(jsonResponse) {
 			title.innerHTML = title_string;
 			spot.appendChild(title)
 		}
-		const new_table = document.createElement('div');
+		new_table = document.createElement('div');
 		new_table.className = base_table;
 		new_table.setAttribute('id', table_class);
 		spot.appendChild(new_table);
@@ -1069,7 +1070,12 @@ function create_table(jsonResponse) {
 		
 	}
 
-	const table = document.getElementById(table_class)
+	let table;
+	if (created == false) {
+		table = new_table;
+	} else {
+		const table = document.getElementById(table_class)
+	}
 
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
