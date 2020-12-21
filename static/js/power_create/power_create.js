@@ -1057,13 +1057,10 @@ function create_table(jsonResponse) {
 			}
 			title_row.appendChild(cell_title);
 		}
-		
-		grow += title_row.scrollHeight
-
-		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
-
+	
 		grid__update(cells, table_id, grid, cells_class)
+	
+		grow_table(new_table, grow)
 	} else {
 		grid__update(cells, table_id, grid, cells_class)
 	}
@@ -1073,6 +1070,13 @@ function create_table(jsonResponse) {
 
 }
 
+function grow_table(table, grow) {
+	
+	grow += title_row.scrollHeight
+
+	table.style.display = 'grid';
+	table.style.maxHeight = table.scrollHeight + grow + 'px';
+}
 
 function grid__update(cells, table_id, grid, cells_class) {
 	for (let i = 0; i < cells.length; i++) {
