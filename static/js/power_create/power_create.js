@@ -1067,8 +1067,13 @@ function create_table(jsonResponse) {
 			title_row.appendChild(cell_title);
 		}
 		
-		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
+	}
+
+	let table;
+	if (created == false) {
+		table = new_table;
+	} else {
+		table = document.getElementById(table_class)
 	}
 
 	for (let i = 0; i < cells.length; i++) {
@@ -1090,6 +1095,8 @@ function create_table(jsonResponse) {
 	}
 
 
+	table.style.display = 'grid';
+	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
 
