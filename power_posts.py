@@ -228,6 +228,10 @@ def grid_columns(rows):
 		if columns == []:
 			columns = gridrows[0]
 		
+		print('columns:')
+		print(columns)
+		print('\n')
+
 		print('gridrows:')
 		for g in gridrows:
 			print(g)
