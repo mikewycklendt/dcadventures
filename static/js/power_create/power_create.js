@@ -1019,7 +1019,7 @@ function create_table(jsonResponse) {
 	const base_titles = 'power-table-titles';
 
 	
-	
+	console.log(created)
 
 
 	let grow = 0;
@@ -1060,16 +1060,17 @@ function create_table(jsonResponse) {
 
 		grow += title_row.scrollHeight
 
-		grow_table(new_table, grow)
-
-		
 		grid__update(cells, table_id, grid, cells_class)
+
 	
 	} else {
-		grid__update(cells, table_id, grid, cells_class)
+		const table = document.getElementById(table_class)
+
+		grow_table(new_table, grow)
 	}
 
 
+		
 
 
 }
