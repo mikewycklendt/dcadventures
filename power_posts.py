@@ -237,7 +237,7 @@ def grid_columns(rows):
 			print(g)
 			for i in range(0, len(columns) - 1, 1):
 				if g[i] > columns[i]:
-					columns[i] = row[i]
+					columns[i] = g[i]
 		print('\n\n')
 		print(columns)
 
