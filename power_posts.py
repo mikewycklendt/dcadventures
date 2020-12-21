@@ -238,8 +238,8 @@ def grid_columns(rows):
 
 		print(columns)
 		print('\n\n')
-		for x in range(0, len(gridrows) - 1, 1):
-			row = gridrows[x]
+		for num in range(0, len(gridrows) - 1, 1):
+			row = gridrows[num]
 			print(row)
 			for i in range(0, len(columns) - 1, 1):
 				if row[i] > columns[i]:
