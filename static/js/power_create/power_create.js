@@ -1017,62 +1017,25 @@ function create_table(jsonResponse) {
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
-	const entry_class = table_id + '-row';
-	const delete_class = table_id + '-xbox';
-	const check_button_class = table_id + '-button'
-	const base_cells = 'power-table-cells ';
 	const base_table = 'power-table-table';
-	const base_entry = 'power-table-row ';
-	const base_delete = 'xbox ';
 	const base_cell_title = 'power-table-cell-title ';
-	const base_button_check = 'power-check-button ';
-	const base_check = 'power-check ';
 	const base_title = 'power-table-title'
-	const base_cell = 'power-table-cell '
 	const base_titles = 'power-table-titles';
 
+
+	
 	let grow = 0;
 
 	if (created == false) {
-		const spot = document.getElementById(spot_string);
-		if (title_string != '') {
-			const title = document.createElement('div');
-			title.className = base_title;
-			title.innerHTML = title_string;
-			spot.appendChild(title)
-		}
-		const new_table = document.createElement('div');
-		new_table.className = base_table;
-		new_table.setAttribute('id', table_class);
-		spot.appendChild(new_table);
-
-		const title_row = document.createElement('div');
-		title_row.className = base_titles;
-		title_row.classList.add(cells_class);
-		title_row.style.gridTemplateColumns = grid;
-	
-		new_table.appendChild(title_row);
-		
-		for (let i = 0; i < cells.length; i++) {
-			console.log(cells[i].title);
-			const cell_title = document.createElement('div');
-			const title_id = table_id + '-' + cells[i].class + '-title';
-			cell_title.setAttribute('id', title_id);
-			cell_title.className = base_cell_title + cells_class;
-			cell_title.innerText = cells[i].title;
-			if (cells[i].width > 1) {
-				cell_title.style.opacity = '100%';
-				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-			}
-			title_row.appendChild(cell_title);
-		}
-		grow = grow + title_row.scrollHeight;	
-		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
+		titles_create(grow)	
+	} else {
+		grid_update()
 	}
 
-	const table = document.getElementById(table_class)
+}
 
+function grid_update() {
+	
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
@@ -1090,84 +1053,124 @@ function create_table(jsonResponse) {
 	for (let i = 0; i < cells_rows.length; i++) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 	}
-
-
 }
 
+function titles_create(grow) {
+	const spot = document.getElementById(spot_string);
+		if (title_string != '') {
+			const title = document.createElement('div');
+			title.className = base_title;
+			title.innerHTML = title_string;
+			spot.appendChild(title)
+		}
+		const new_table = document.createElement('div');
+		new_table.className = base_table;
+		new_table.setAttribute('id', table_class);
+		spot.appendChild(new_table);
 
-```
+		const title_row = document.createElement('div');
+		title_row.className = base_titles;
+		title_row.style.gridTemplateColumns = grid;
+	
+		new_table.appendChild(title_row);
+		
+		for (let i = 0; i < cells.length; i++) {
+			console.log(cells[i].title);
+			const cell_title = document.createElement('div');
+			const title_id = table_id + '-' + cells[i].class + '-title';
+			cell_title.setAttribute('id', title_id);
+			cell_title.className = base_cell_title + cells_class;
+			cell_title.innerText = cells[i].title;
+			if (cells[i].width > 1) {
+				cell_title.style.opacity = '100%';
+				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+			}
+			title_row.appendChild(cell_title);
+		}
 
-const table = document.getElementById(table_class);
-const entry = document.createElement('div');
-entry.className = base_entry + entry_class;
-table.appendChild(entry);
-const row = document.createElement('div');
-row.className = base_cells + cells_class;	
-row.style.gridTemplateColumns = grid;
-entry.appendChild(row);
-const rows_grid = document.getElementsByClassName(cells_class);
-let row_grid;
-for (row_grid of rows_grid) {
-	row_grid.style.gridTemplateColumns = grid;
+
+
+		grow = grow + title_row.scrollHeight;	
+		new_table.style.display = 'grid';
+		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
 }
 
-let create_mod = false;
-let cell;
-let cell_heights = [];
-for (cell of cells) {
-	const cell_class = table_id + '-' + cell.class;
-	const new_cell = document.createElement('div');
-	new_cell.className = base_cell + cell_class;
-	if (cell.content == false) {
-		new_cell.innerHTML = '';
-	} else if (cell.content == true) {
-		if (cell.mod_check == true) {
-			const data_id = cell_class + '-' + id;
-			create_mod = true;
-			const check = document.createElement('button');
-			check.className = base_button_check + check_button_class;
-			check.setAttribute('data-id', data_id);
-			new_cell.appendChild(check);
+function cells_create(table, grow) {
+	const base_cell = 'power-table-cell '
+	const base_button_check = 'power-check-button ';
+	const base_check = 'power-check ';
+	const base_entry = 'power-table-row ';
+	const base_delete = 'xbox ';
+	const entry_class = table_id + '-row';
+	const delete_class = table_id + '-xbox';
+	const check_button_class = table_id + '-button'
+	const base_cells = 'power-table-cells ';
+
+	const entry = document.createElement('div');
+	entry.className = base_entry
+	title_row.classList.add(entry_class);
+	const row = document.createElement('div');
+	row.className = base_cells
+	title_row.classList.add(cells_class);	
+	row.style.gridTemplateColumns = grid;
+
+	let create_mod = false;
+	let cell;
+	let cell_heights = [];
+	for (cell of cells) {
+		const cell_class = table_id + '-' + cell.class;
+		const new_cell = document.createElement('div');
+		new_cell.className = base_cell + cell_class;
+		if (cell.content == false) {
+			new_cell.innerHTML = '';
+		} else if (cell.content == true) {
+			if (cell.mod_check == true) {
+				const data_id = cell_class + '-' + id;
+				create_mod = true;
+				const check = document.createElement('button');
+				check.className = base_button_check + check_button_class;
+				check.setAttribute('data-id', data_id);
+				new_cell.appendChild(check);
+			} else {
+				const check = document.createElement('div');
+				check.className = base_check;
+				new_cell.appendChild(check)
+			}``
 		} else {
-			const check = document.createElement('div');
-			check.className = base_check;
-			new_cell.appendChild(check)
-		}``
-	} else {
-		new_cell.innerHTML = cell.content;
-		const cell_height = new_cell.scrollHeight;
-		cell_heights.push(cell_height);
+			new_cell.innerHTML = cell.content;
+			const cell_height = new_cell.scrollHeight;
+			cell_heights.push(cell_height);
+		}
+		row.append(new_cell);
 	}
-	row.append(new_cell);
-}
+	entry.appendChild(row);
+	table.appendChild(entry);
 
-let height;
-let max = 0;
-for (height of cell_heights) {
-	if (height > max) {
-		max = height;
+
+	let height;
+	for (height of cell_heights) {
+		if (height > grow) {
+			grow = height;
+		}
 	}
+
+	const delete_cell = document.createElement('div');
+	delete_cell.className = base_cell;
+	row.appendChild(delete_cell)
+	const delete_btn = document.createElement('button');
+	delete_btn.className = base_delete + delete_class;
+	delete_btn.setAttribute('data-id', id);
+	delete_cell.appendChild(delete_btn)
+
+	table.style.display = 'grid';
+	row.style.maxHeight = grow + 'px';
+	table.style.maxHeight = table.scrollHeight + grow + 'px'; 
+
+	if (create_mod) {
+		mod_create(mods, id, entry, table_id);
+		check_buttons(table_id);
+	} 
 }
-
-const delete_cell = document.createElement('div');
-delete_cell.className = base_cell;
-row.appendChild(delete_cell)
-const delete_btn = document.createElement('button');
-delete_btn.className = base_delete + delete_class;
-delete_btn.setAttribute('data-id', id);
-delete_cell.appendChild(delete_btn)
-
-table.style.display = 'grid';
-row.style.maxHeight = max + 'px';
-table.style.maxHeight = table.scrollHeight + max + 'px'; 
-
-if (create_mod) {
-	mod_create(mods, id, entry, table_id);
-	check_buttons(table_id);
-} 
-```
-
-
 
 function mod_create(mods, id, entry, table_id) {
 
