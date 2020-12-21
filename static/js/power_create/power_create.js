@@ -1031,7 +1031,7 @@ function create_table(jsonResponse) {
 	const base_cell = 'power-table-cell '
 	const base_titles = 'power-table-titles';
 
-	let new_table;
+	let table;
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
@@ -1040,16 +1040,16 @@ function create_table(jsonResponse) {
 			title.innerHTML = title_string;
 			spot.appendChild(title)
 		}
-		new_table = document.createElement('div');
-		new_table.className = base_table;
-		new_table.setAttribute('id', table_class);
+		table = document.createElement('div');
+		table.className = base_table;
+		table.setAttribute('id', table_class);
 		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
 		title_row.className = base_titles;
 		title_row.classList.add(cells_class);
 		title_row.style.gridTemplateColumns = grid;
-		new_table.appendChild(title_row);
+		table.appendChild(title_row);
 		
 		for (let i = 0; i < cells.length; i++) {
 			console.log(cells[i].title);
@@ -1066,10 +1066,7 @@ function create_table(jsonResponse) {
 		}
 	}
 
-	let table;
-	if (created == false) {
-		table = new_table;
-	} else {
+	if (created == true) {
 		table = document.getElementById(table_class)
 	}
 
