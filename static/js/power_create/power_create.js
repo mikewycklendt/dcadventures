@@ -1053,10 +1053,13 @@ function create_table(jsonResponse) {
 		for (let i = 0; i < cells.length; i++) {
 			console.log(cells[i].title);
 			const cell_title = document.createElement('div');
+			const title_id = table_id + '-' + cells[i].class + '-title';
+			cell_title.setAttribute('id', title_id);
 			cell_title.className = base_cell_title;
 			cell_title.innerText = cells[i].title;
-			if (cells[i].width < 2) {
-				cell_title.style.maxWidth = '0px';
+			if (cells[i].width > 1) {
+				cell_title.style.opacity = '100%';
+				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			}
 			title_row.appendChild(cell_title);
 		}
@@ -1065,7 +1068,18 @@ function create_table(jsonResponse) {
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 	}
 
-
+	for (let i = 0; i < cells.length; i++) {
+		const title_id = table_id + '-' + cells[i].class + '-title';
+		const cell_title = document.getElementById(title_id)
+		if (cells[i].width > 1) {
+			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+			cell_title.style.opacity = '100%';
+		}
+		else {
+			cell_title.style.opacity = '0%';
+			cell_title.style.maxHeight = '0px'
+		}
+	}
 
 }
 

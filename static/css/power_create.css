@@ -757,6 +757,10 @@ textarea:focus {
 	font-size: 80%;
 	border-bottom: 1px solid #af0101;
 	color: #245681;
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 .power-table-row {
