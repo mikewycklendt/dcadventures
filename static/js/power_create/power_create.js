@@ -1024,25 +1024,28 @@ function create_table(jsonResponse) {
 
 	if (created == false) {
 
-		create_titles(jsonResponse);
+		let grow =  0;
+
+		create_titles(jsonResponse, grow);
 
 	
 	} else {
 
-		grow = 0
+		let grow = 0
 
 		const table = document.getElementById(table_class)
 
 
 		grid__update(cells, table_id, grid, cells_class)
-
+		```
 		grow_table(table, grow)
+		```
 	}
 
 
 }
 
-function create_titles(jsonResponse) {
+function create_titles(jsonResponse, grow) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1056,8 +1059,6 @@ function create_titles(jsonResponse) {
 	const base_cell_title = 'power-table-cell-title ';
 	const base_title = 'power-table-title'
 	const base_titles = 'power-table-titles';
-
-	let grow = 0;
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
@@ -1091,11 +1092,11 @@ function create_titles(jsonResponse) {
 		}
 		title_row.appendChild(cell_title);
 	}
-
+	```
 	grow += title_row.scrollHeight
 
 	grow_table(new_table, grow)
-	
+	```
 	grid__update(cells, table_id, grid, cells_class)
 }
 
@@ -1125,7 +1126,7 @@ function grid__update(cells, table_id, grid, cells_class) {
 	}
 }
 
-function cells_create() {
+function cells_create(table, grow, jsonResponse) {
 
 	const table_id = jsonResponse.table_id;
 	const id = jsonResponse.id; 
@@ -1134,8 +1135,6 @@ function cells_create() {
 	const cells = jsonResponse.cells;
 
 	const cells_class = table_id + '-cells';
-	const table_class = table_id + '-table'
-
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
@@ -1146,20 +1145,15 @@ function cells_create() {
 	const base_entry = 'power-table-row ';
 	const base_delete = 'xbox ';
 
-
-	const table = document.getElementById(table_class);
 	const entry = document.createElement('div');
-	entry.className = base_entry + entry_class;
+	entry.className = base_entry
+	title_row.classList.add(entry_class);
 	table.appendChild(entry);
 	const row = document.createElement('div');
-	row.className = base_cells + cells_class;	
+	row.className = base_cells;
+	title_row.classList.add(cells_class);	
 	row.style.gridTemplateColumns = grid;
 	entry.appendChild(row);
-	const rows_grid = document.getElementsByClassName(cells_class);
-	let row_grid;
-	for (row_grid of rows_grid) {
-		row_grid.style.gridTemplateColumns = grid;
-	}
 
 	let create_mod = false;
 	let cell;
@@ -1167,24 +1161,28 @@ function cells_create() {
 	for (cell of cells) {
 		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
-		new_cell.className = base_cell + cell_class;
+		new_cell.className = base_cell
+		title_row.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
 			if (cell.mod_check == true) {
-				const data_id = cell_class + '-' + id;
 				create_mod = true;
 				const check = document.createElement('button');
-				check.className = base_button_check + check_button_class;
-				check.setAttribute('data-id', data_id);
+				check.className = base_button_check;
+				title_row.classList.add(check_button_class);
 				new_cell.appendChild(check);
+				const cell_height = new_cell.scrollHeight;
+				cell_heights.push(cell_height);
 			} else {
 				const check = document.createElement('div');
 				check.className = base_check;
-				new_cell.appendChild(check)
+				new_cell.appendChild(check);
+				const cell_height = new_cell.scrollHeight;
+				cell_heights.push(cell_height);
 			}``
 		} else {
-			new_cell.innerHTML = cell.content;
+			new_cell.innerText = cell.content;
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
 		}
@@ -1192,10 +1190,9 @@ function cells_create() {
 	}
 
 	let height;
-	let max = 0;
 	for (height of cell_heights) {
-		if (height > max) {
-			max = height;
+		if (height > grow) {
+			grow += height;
 		}
 	}
 
