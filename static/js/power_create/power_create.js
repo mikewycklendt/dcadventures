@@ -1031,7 +1031,8 @@ function create_table(jsonResponse) {
 	const base_cell = 'power-table-cell '
 	const base_titles = 'power-table-titles';
 
-	let table;
+	let grow = 0;
+
 	if (created == false) {
 		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
@@ -1040,16 +1041,17 @@ function create_table(jsonResponse) {
 			title.innerHTML = title_string;
 			spot.appendChild(title)
 		}
-		table = document.createElement('div');
-		table.className = base_table;
-		table.setAttribute('id', table_class);
+		const new_table = document.createElement('div');
+		new_table.className = base_table;
+		new_table.setAttribute('id', table_class);
 		spot.appendChild(new_table);
 
 		const title_row = document.createElement('div');
 		title_row.className = base_titles;
 		title_row.classList.add(cells_class);
 		title_row.style.gridTemplateColumns = grid;
-		table.appendChild(title_row);
+	
+		new_table.appendChild(title_row);
 		
 		for (let i = 0; i < cells.length; i++) {
 			console.log(cells[i].title);
@@ -1064,22 +1066,19 @@ function create_table(jsonResponse) {
 			}
 			title_row.appendChild(cell_title);
 		}
+		grow = grow + title_row.scrollHeight;	
+		new_table.style.display = 'grid';
+		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
 	}
 
-	if (created == true) {
-		table = document.getElementById(table_class)
-	}
+	const table = document.getElementById(table_class)
 
-	let grow = 0;
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
 		if (cells[i].width > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
-			if (cell_title.scrollHeight > grow) {
-				grow = cell_title.scrollHeight;
-			}
 		}
 		else {
 			cell_title.style.opacity = '0%';
@@ -1092,9 +1091,7 @@ function create_table(jsonResponse) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 	}
 
-	console.log(grow)
-	table.style.display = 'grid';
-	table.style.maxHeight = table.scrollHeight + grow + 'px';
+
 }
 
 
