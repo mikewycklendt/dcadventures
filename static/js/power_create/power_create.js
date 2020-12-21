@@ -1074,7 +1074,7 @@ function create_table(jsonResponse) {
 	if (created == false) {
 		table = new_table;
 	} else {
-		const table = document.getElementById(table_class)
+		table = document.getElementById(table_class)
 	}
 
 	for (let i = 0; i < cells.length; i++) {
