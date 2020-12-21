@@ -4,3 +4,7 @@ TRUNCATE table_name;
 DELETE FROM table_name;
 
 sorted(lis, key = lambda i: i['age'])
+
+
+git fetch origin master
+git reset --hard FETCH_HEAD

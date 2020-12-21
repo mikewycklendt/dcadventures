@@ -744,7 +744,6 @@ textarea:focus {
 	border: 1px solid #af0101;
 	border-radius: .4vw;
 	padding: 2%;
-	margin-bottom: 6vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;

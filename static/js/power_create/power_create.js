@@ -1091,17 +1091,18 @@ function create_titles(jsonResponse, grow) {
 		}
 		title_row.appendChild(cell_title);
 	}
-
+	
 	grow += title_row.scrollHeight
 
 	grow_table(new_table, grow)
-
+	
 	grid__update(cells, table_id, grid, cells_class)
 }
 
 function grow_table(table, grow) {
 
 	table.style.display = 'grid';
+	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
 function grid__update(cells, table_id, grid, cells_class) {
