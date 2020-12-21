@@ -734,7 +734,7 @@ textarea:focus {
 	display: inline-block;
 }
 
-.power-table {
+.power-table-table {
 	display: none;
 	margin: 1%;
 	height: auto;
@@ -883,7 +883,7 @@ textarea:focus {
 	background-color: lightblue;
 }
 
-.power-table-title {
+.power-table-title-table {
 	display: grid;
 	font-size: 165%;
 	font-family: Comic, 'Monda', Verdana;

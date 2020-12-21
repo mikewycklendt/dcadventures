@@ -98,65 +98,6 @@
 	grid-template-columns: 30% 20% 15% 15% 20%;
 }
 
-#minion-table {
-	display: none;
-	width: 94%;
-	padding: 1%;
-	margin: 2%;
-	grid-template-columns: 5% 15% 5% 5% 5% 5% 10% 10% 35% 5%;
-	grid-auto-rows: auto;
-	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.minion-table-ext {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.minion-table-rnk {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-.minion-table-des {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.minion-table-del {
-	font-family: 'Monda', Verdana;
-	font-size: 85%;
-	color: #245681;
-	margin-bottom: 4px;
-	width: 97%;
-	height: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
 
 #minion-err {
 	display: none;
