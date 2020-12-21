@@ -1011,10 +1011,6 @@ function create_table(jsonResponse) {
 	const cells = jsonResponse.cells;
 	const rows = jsonResponse.rows;
 
-	console.log(created)
-	console.log(cells)
-	console.log(grid)
-
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
 	const base_table = 'power-table-table';
@@ -1062,8 +1058,10 @@ function create_table(jsonResponse) {
 			title_row.appendChild(cell_title);
 		}
 		
+		grow += title_row.scrollHeight
+
 		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
+		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
 
 		grid__update(cells, table_id, grid, cells_class)
 	} else {
@@ -1097,6 +1095,15 @@ function grid__update(cells, table_id, grid, cells_class) {
 }
 
 function cells_create() {
+
+	const table_id = jsonResponse.table_id;
+	const id = jsonResponse.id; 
+	const grid = jsonResponse.grid;
+	const mods = jsonResponse.mods;
+	const cells = jsonResponse.cells;
+
+	const cells_class = table_id + '-cells';
+	const table_class = table_id + '-table'
 
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
