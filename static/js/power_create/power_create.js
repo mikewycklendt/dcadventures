@@ -1074,9 +1074,9 @@ function create_table(jsonResponse) {
 		new_table.style.display = 'grid';
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 
-		grid__update(cells, table_id, grid)
+		grid__update(cells, table_id, grid, cells_class)
 	} else {
-		grid__update(cells, table_id, grid)
+		grid__update(cells, table_id, grid, cells_class)
 	}
 
 
@@ -1085,7 +1085,7 @@ function create_table(jsonResponse) {
 }
 
 
-function grid__update(cells, table_id, grid) {
+function grid__update(cells, table_id, grid, cells_class) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
