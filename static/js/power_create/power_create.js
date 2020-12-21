@@ -1054,19 +1054,22 @@ function create_table(jsonResponse) {
 			if (cells[i].width > 1) {
 				cell_title.style.opacity = '100%';
 				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+				if (cell_title.scrollHeight > grow) {
+					grow = cell_title.scrollHeight
+				}
 			}
 			title_row.appendChild(cell_title);
 		}
 		
 		new_table.style.display = 'grid';
-		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
+		new_table.style.maxHeight = new_table.scrollHeight + grow + 'px';
 	} else {
 		grid_update(cells);
 	}
 
 }
 
-function grid_update(cells) {
+function grid_update(cells, table_id) {
 
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
