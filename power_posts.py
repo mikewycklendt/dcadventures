@@ -223,6 +223,7 @@ def grid_columns(rows):
 			row_cells = row['cells']
 			gridrows.append(row_cells)
 
+		print('gridrows:')
 		for g in gridrows:
 			print(g)
 		print('\n')
