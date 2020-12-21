@@ -223,6 +223,10 @@ def grid_columns(rows):
 			row_cells = row['cells']
 			gridrows.append(row_cells)
 
+		for g in gridrows:
+			print(g)
+		print('\n')
+
 		
 		if columns == []:
 			columns = gridrows[0]
