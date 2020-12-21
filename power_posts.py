@@ -233,13 +233,12 @@ def grid_columns(rows):
 			columns = gridrows[0]
 		print(columns)
 		print('\n\n')
-		if len(gridrows) > 1:
-			for x in range(0, len(gridrows) - 1, 1):
-				row = gridrows[x]
-				print(row)
-				for i in range(0, len(columns) - 1, 1):
-					if row[i] > columns[i]:
-						columns[i] = row[i]
+		for x in range(0, len(gridrows) - 1, 1):
+			row = gridrows[x]
+			print(row)
+			for i in range(0, len(columns) - 1, 1):
+				if row[i] > columns[i]:
+					columns[i] = row[i]
 		print('\n\n')
 		print(columns)
 
