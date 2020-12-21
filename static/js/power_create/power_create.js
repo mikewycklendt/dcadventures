@@ -1074,9 +1074,9 @@ function create_table(jsonResponse) {
 		new_table.style.display = 'grid';
 		new_table.style.maxHeight = new_table.scrollHeight + title_row.scrollHeight + 'px';
 
-		grid__update(cells, table_id)
+		grid__update(cells, table_id, grid)
 	} else {
-		grid__update(cells, table_id)
+		grid__update(cells, table_id, grid)
 	}
 
 
@@ -1085,7 +1085,7 @@ function create_table(jsonResponse) {
 }
 
 
-function grid__update(cells, table_id) {
+function grid__update(cells, table_id, grid) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
