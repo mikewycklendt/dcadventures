@@ -1063,12 +1063,12 @@ function create_table(jsonResponse) {
 			if (cells[i].width > 1) {
 				cell_title.style.opacity = '100%';
 				cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
+				if (cell_title.scrollHeight > grow) {
+					grow = cell_title.scrollHeight
+				}
 			}
 			title_row.appendChild(cell_title);
 		}
-		
-		grow = grow + title_row.scrollHeight;
-		
 	}
 
 	console.log(grow);
