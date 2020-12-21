@@ -1022,9 +1022,10 @@ function create_table(jsonResponse) {
 	console.log(created)
 
 
-	let grow = 0;
-
 	if (created == false) {
+
+		let grow = 0;
+
 		const spot = document.getElementById(spot_string);
 		if (title_string != '') {
 			const title = document.createElement('div');
@@ -1062,11 +1063,15 @@ function create_table(jsonResponse) {
 
 		grid__update(cells, table_id, grid, cells_class)
 
+		grow_table(new_table, grow)
 	
 	} else {
+
+		grow = 0
+
 		const table = document.getElementById(table_class)
 
-		grow_table(new_table, grow)
+		grow_table(table, grow)
 	}
 
 
