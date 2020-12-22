@@ -249,10 +249,11 @@ def grid_columns(rows):
 
 		if empty < 0:
 			while empty < 0:
-				empty = 95
+				x = 95
 				for w in columns:
 					w = w - 1
-					empty = empty - w
+					x = x - w
+				empty = x
 
 		for column in columns:
 			grid += str(column) + '% '
