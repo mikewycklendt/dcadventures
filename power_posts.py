@@ -296,7 +296,7 @@ def vcell(selection, width, content, cell, cells):
 				text += ' ' + content[i]
 
 	if text == '':
-		width = 1
+		width = .2
 
 	cell['width'] = width
 	cell['content'] = text
@@ -310,7 +310,7 @@ def vcell(selection, width, content, cell, cells):
 def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	if check == False:
-		width = 1
+		width = .2
 		mod_check = False
 	
 	cell = {'title': title,
@@ -354,7 +354,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 				content += ' ' + contentlist[i]
 
 	if content == '':
-		width = 1
+		width = .2
 
 	cell['content'] = content
 	cell['width'] = width
