@@ -1174,13 +1174,12 @@ function cells_create(table_input, grow, jsonResponse) {
 				check.className = base_check;
 				new_cell.appendChild(check);
 				const cell_height = new_cell.scrollHeight;
-				console.log(cell_height)
 				cell_heights.push(cell_height);
-			}``
+			}
 		} else {
 			new_cell.innerText = cell.content;
+			console.log(cell.content);
 			const cell_height = new_cell.scrollHeight;
-			console.log(cell_height)
 			cell_heights.push(cell_height);
 		}
 		row.appendChild(new_cell);

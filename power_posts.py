@@ -191,6 +191,9 @@ def send(cells, body):
 	entry_id = body['id']
 	mods = body['mods']
 
+	for cell in cells:
+		print(cell)
+
 	widths = []
 	for cell in cells:
 		width = cell['width']
