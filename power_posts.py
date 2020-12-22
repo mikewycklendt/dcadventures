@@ -270,6 +270,16 @@ def variable_cell(title, classname, value):
 
 	return (cell)
 
+def string(word, data):
+
+	output = ''
+
+	for d in data:
+		if d != '':
+			output = word
+	
+	return (output)
+
 def vcell(selection, width, content, cell, cells):
 	value = cell['value']
 
@@ -993,7 +1003,8 @@ def defense_post(entry, columns, created):
 	cells = cell('Defense', 15, [defense], 'defense')
 	cells = cell('Use', 10, [use], 'use', cells)
 	cells = cell('Mod', 7, [mod], 'mod', cells)
-	cells = cell('Roll', 15, [roll, 'or', outcome], 'roll', cells)
+	word = string('or', [roll, outcome])
+	cells = cell('Roll', 15, [roll, word, outcome], 'roll', cells)
 	cells = check_cell('Dodge', 7, dodge, 'dodge', cells)
 	cells = check_cell('Fortitude', 10, fortitude, 'fort', cells)
 	cells = check_cell('Parry', 7, parry, 'parry', cells)
