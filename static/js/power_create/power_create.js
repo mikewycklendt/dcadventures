@@ -1144,7 +1144,6 @@ function cells_create(table_input, grow, jsonResponse) {
 	const entry = document.createElement('div');
 	entry.className = base_entry
 	entry.classList.add(entry_class);
-	table.appendChild(entry);
 	const row = document.createElement('div');
 	row.className = base_cells;
 	row.classList.add(cells_class);	
@@ -1205,6 +1204,7 @@ function cells_create(table_input, grow, jsonResponse) {
 	row.appendChild(delete_cell)
 
 	entry.appendChild(row);
+	table.appendChild(entry);
 
 	table.style.display = 'grid';
 	row.style.maxHeight = grow + 'px'; 
