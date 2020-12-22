@@ -1102,26 +1102,7 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(cells, table_id, grid, cells_class, size) {
-
-	
-	const title_size = 'power-table-titles';
-	const cell_size = 'power-table-cells';
-
-	const title_fonts = document.getElementsByClassName(title_size);
-	const cell_fonts = document.getElementsByClassName(cell_size);
-
-	let titles;
-	for (titles of title_fonts) {
-		titles.style.fontSize = size + '%';
-	}
-
-	let cells;
-	for (cells of cell_fonts) {
-		cells.style.fontSize = size + '%';
-	}
-
-
+function grid__update(cells, table_id, grid, cells_class) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
@@ -1149,7 +1130,6 @@ function cells_create(table_input, grow, jsonResponse) {
 	const grid = jsonResponse.grid;
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
-	const size = jsonResponse.font;
 
 	const cells_class = table_id + '-cells';
 	const entry_class = table_id + '-row';
@@ -1237,7 +1217,7 @@ function cells_create(table_input, grow, jsonResponse) {
 	
 	grow_table(table, grow)
 	
-	grid__update(cells, table_id, grid, cells_class, size)
+	grid__update(cells, table_id, grid, cells_class)
 
 }
 
