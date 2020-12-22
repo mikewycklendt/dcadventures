@@ -87,12 +87,14 @@ function dc_levels() {
 }
 
 let dc_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function dc_submit() {
 
 	const columns = dc_grid.columns;
 	const created = dc_grid.titles;
+	const font = dc_grid.font;
 
 	const target = select("dc_target");
 	const extra_id = select("dc_extra");
@@ -151,7 +153,8 @@ function dc_submit() {
 			'levels': levels,
 			'level': level,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

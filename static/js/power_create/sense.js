@@ -132,12 +132,14 @@ function sense_dimensional() {
 }
 
 let sense_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function sense_submit() {
 	
 	const columns = sense_grid.columns;
 	const created = sense_grid.titles;
+	const font = sense_grid.font;
 
 	const target = select("sense_target");
 	const extra_id = select("sense_extra");
@@ -236,7 +238,8 @@ function sense_submit() {
 			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

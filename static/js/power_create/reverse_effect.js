@@ -48,12 +48,14 @@ function reverse_value_type() {
 }
 
 let reverse_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function reverse_submit() {
 
 	const columns = reverse_grid.columns;
 	const created = reverse_grid.titles;
+	const font = reverse_grid.font;
 
 	const target = select("reverse_target");
 	const extra_id = select("reverse_extra");
@@ -94,7 +96,8 @@ function reverse_submit() {
 			'time_value': time_value,
 			'time_unit': time_unit,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

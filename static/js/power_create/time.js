@@ -38,12 +38,14 @@ function time_recovery() {
 }
 
 let time_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function time_submit() {
 
 	const columns = time_grid.columns;
 	const created = time_grid.titles;
+	const font = time_grid.font;
 
 	const extra_id = select("time_extra");
 	const time_type = select("time_type");
@@ -88,7 +90,8 @@ function time_submit() {
 			'recovery_time': recovery_time,
 			'recovery_incurable': recovery_incurable,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

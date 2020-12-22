@@ -1241,6 +1241,7 @@ def power_post_alt_check():
 	trait = request.get_json()['trait']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1261,9 +1262,32 @@ def power_post_alt_check():
 							when = when,
 							trait_type = trait_type,
 							trait = trait)
-	
 
-	body = alt_check_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'alt-check'
+	spot = "alt-check-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+
+	body = alt_check_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1303,6 +1327,7 @@ def power_post_change_action():
 	circumstance = request.get_json()['circumstance']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1316,7 +1341,30 @@ def power_post_change_action():
 						objects =objects, 
 						circumstance = circumstance)
 
-	body = change_action_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'action'
+	spot = "action-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = change_action_post(entry, body, cells)
 	return jsonify(body)
 
 @powers.route('/power/action/delete/<power_id>', methods=['DELETE'])
@@ -1395,6 +1443,7 @@ def power_post_character():
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1454,7 +1503,31 @@ def power_post_character():
 						cost = cost,
 						ranks = ranks)
 
-	body = character_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'char'
+	spot = "char-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+
+	body = character_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1505,6 +1578,7 @@ def power_post_circ():
 	null_trait = request.get_json()['null_trait']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1530,7 +1604,30 @@ def power_post_circ():
 						null_trait_type = null_trait_type,
 						null_trait = null_trait)
 
-	body = circ_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'circ'
+	spot = "circ-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = circ_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1625,6 +1722,7 @@ def power_post_create():
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1713,7 +1811,30 @@ def power_post_create():
 						cost = cost,
 						ranks = ranks)
 
-	body = create_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'create'
+	spot = "create-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = create_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1756,6 +1877,7 @@ def power_post_damage():
 	descriptor = request.get_json()['descriptor']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1773,7 +1895,30 @@ def power_post_damage():
 						damage_type = damage_type,
 						descriptor = descriptor)
 
-	body = damage_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'damage'
+	spot = "damage-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = damage_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1832,6 +1977,7 @@ def power_post_dc_table():
 	level = request.get_json()['level']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1868,7 +2014,30 @@ def power_post_dc_table():
 					levels = levels,
 					level = level)
 
-	body = dc_table_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	body['rows'] = rows
+	mods = []
+	cells = []
+	table_id = 'dc'
+	spot = "dc-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['mods'] = []
+	body['font'] = font
+
+	body = dc_table_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -1934,6 +2103,7 @@ def power_post_defense():
 	cover_type = request.get_json()['cover_type']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -1979,10 +2149,32 @@ def power_post_defense():
 	db.session.add(entry)
 	db.session.commit()
 
-	body = defense_post(entry, columns, created)
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = 'x'
+	if cells == 'x':
+		cells = []
+	table_id = 'defense'
+	spot = "defense-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = defense_post(entry, body, cells)
 
 	db.session.close()
-	
+
 	return jsonify(body)
 
 
@@ -2043,6 +2235,7 @@ def power_post_degree_mod():
 	level = request.get_json()['level']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2085,7 +2278,30 @@ def power_post_degree_mod():
 						linked = linked,
 						level = level)
 
-	body = degree_mod_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'deg-mod'
+	spot = "deg-mod-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = degree_mod_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2129,6 +2345,7 @@ def power_post_degree():
 	target = request.get_json()['target']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2144,7 +2361,30 @@ def power_post_degree():
 						cumulative = cumulative,
 						target = target)
 
-	body = degree_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'degree'
+	spot = "degree-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = degree_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2209,6 +2449,7 @@ def power_post_environment():
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2252,7 +2493,30 @@ def power_post_environment():
 						cost = cost,
 						ranks = ranks)
 
-	body = environment_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'env'
+	spot = "env-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = environment_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2293,6 +2557,7 @@ def power_post_levels():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	old_level_type = request.get_json()['old_level_type']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2304,7 +2569,37 @@ def power_post_levels():
 						level = level,
 						level_effect = level_effect)
 
-	body = levels_post(entry, columns, created, old_level_type)
+	db.session.add(entry)
+	db.session.commit()
+
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+
+	mods = []
+	cells = []
+	table_id = 'levels-' + level_type
+	spot = "levels-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	if old_level_type != level_type:
+		body['created'] = False
+	else:
+		body['created'] = True
+	body['title'] = level_type
+	
+
+	body = levels_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2360,6 +2655,7 @@ def power_post_minion():
 	horde = request.get_json()['horde']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2392,7 +2688,30 @@ def power_post_minion():
 						multiple_value = multiple_value,
 						horde = horde)
 
-	body = minion_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'minion'
+	spot = "minion-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = minion_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2510,6 +2829,7 @@ def power_post_mod():
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2624,7 +2944,30 @@ def power_post_mod():
 						ranks_cost = ranks_cost,
 						cost = cost)
 
-	body = mod_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'mod'
+	spot = 'mod-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = mod_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2734,6 +3077,7 @@ def power_post_move():
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2838,7 +3182,30 @@ def power_post_move():
 						ranks = ranks,
 						cost = cost)
 
-	body = move_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'move'
+	spot = "move-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = move_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2883,6 +3250,7 @@ def power_post_opposed():
 	opponent_check = request.get_json()['opponent_check']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2902,7 +3270,30 @@ def power_post_opposed():
 							player_check = player_check,
 							opponent_check = opponent_check)
 
-	body = opposed_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'opposed'
+	spot = "opposed-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = opposed_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2973,6 +3364,7 @@ def power_post_ranged():
 	dc_trait = request.get_json()['dc_trait']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3038,7 +3430,30 @@ def power_post_ranged():
 						dc_trait_type = dc_trait_type,
 						dc_trait = dc_trait)
 
-	body = ranged_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'ranged'
+	spot = "ranged-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = ranged_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -3087,6 +3502,7 @@ def power_post_resist():
 	check_trait = request.get_json()['check_trait']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3110,7 +3526,30 @@ def power_post_resist():
 						check_trait_type = check_trait_type,
 						check_trait = check_trait)
 
-	body = resist_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'resistance'
+	spot = "resistance-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+		
+	body = resist_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -3165,6 +3604,7 @@ def power_post_resisted_by():
 	extra_effort = request.get_json()['extra_effort']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3200,7 +3640,30 @@ def power_post_resisted_by():
 							nullify_alternate = nullify_alternate,
 							extra_effort = extra_effort)
 
-	body = resisted_by_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'resist'
+	spot = "resist-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = resisted_by_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -3251,6 +3714,7 @@ def power_post_reverse_effect():
 	time_unit = request.get_json()['time_unit']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3277,7 +3741,30 @@ def power_post_reverse_effect():
 							time_value = time_value,
 							time_unit = time_unit)
 
-	body = reverse_effect_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'reverse'
+	spot = "reverse-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = reverse_effect_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -3356,6 +3843,7 @@ def power_post_sense():
 	cost = request.get_json()['cost']
 	created = request.get_json()['created']
 	columns = request.get_json()['columns']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3422,7 +3910,30 @@ def power_post_sense():
 						ranks = ranks,
 						cost = cost)
 
-	body = sense_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'sense'
+	spot = "sense-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = sense_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -3474,6 +3985,7 @@ def power_post_time():
 	recovery_incurable = request.get_json()['recovery_incurable']
 	created = request.get_json()['created']
 	columns = request.get_json()['columns']
+	font = request.get_json()['font']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -3507,7 +4019,31 @@ def power_post_time():
 						recovery_time = recovery_time,
 						recovery_incurable = recovery_incurable)
 
-	body = time_post(entry, columns, created)
+	db.session.add(entry)
+	db.session.commit()
+
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'time'
+	spot = "time-spot"
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+
+	body = time_post(entry, body, cells)
 	return jsonify(body)
 
 

@@ -45,12 +45,14 @@ function resistance_requires_check() {
 }
 
 let resistance_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function resistance() {
 
 	const columns = resistance_grid.columns;
 	const created = resistance_grid.titles;
+	const font = resistance_grid.font;
 
 	const target = select("resistance_target");
 	const extra_id = select("resistance_extra");
@@ -89,7 +91,8 @@ function resistance() {
 			'check_trait_type': check_trait_type,
 			'check_trait': check_trait,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

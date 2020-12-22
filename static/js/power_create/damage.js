@@ -22,12 +22,14 @@ function dam_trait_type() {
 }
 
 let damage_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function damage_submit() {
 
 	const columns = damage_grid.columns;
 	const created = damage_grid.titles;
+	const font = damage_grid.font;
 
 	const extra_id = select("damage_extra")
 	const trait_type = select("dam_trait_type");
@@ -54,7 +56,8 @@ function damage_submit() {
 			'damage_type': damage_type,
 			'descriptor': descriptor,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

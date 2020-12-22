@@ -162,12 +162,14 @@ function char_weaken_broad() {
 }
 
 let char_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function char_submit() {
 
 	const columns = char_grid.columns;
 	const created = char_grid.titles;
+	const font = char_grid.font;
 
 	const extra_id = select("char_extra");
 	const trait_type = select("char_trait_type");
@@ -268,7 +270,8 @@ function char_submit() {
 			'cost': cost,
 			'ranks': ranks,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -78,12 +78,14 @@ function defense_cover() {
 }
 
 let defense_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function defense_submit() {
 
 	const columns = defense_grid.columns;
 	const created = defense_grid.titles;
+	const font = defense_grid.font;
 
 	const extra_id = select("defense_extra");
 	const defense = select("defense_defense");
@@ -156,7 +158,8 @@ function defense_submit() {
 			'cover_check': cover_check,
 			'cover_type': cover_type,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

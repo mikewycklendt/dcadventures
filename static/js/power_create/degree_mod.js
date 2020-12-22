@@ -64,12 +64,14 @@ function deg_mod_measure_trait_type() {
 }
 
 let deg_mod_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function deg_mod_submit() {
 
 	const columns = deg_mod_grid.columns;
 	const created = deg_mod_grid.titles;
+	const font = deg_mod_grid.font;
 	
 	const target = select("deg_mod_target");
 	const extra_id = select("deg_mod_extra");
@@ -132,7 +134,8 @@ function deg_mod_submit() {
 			'linked': linked,
 			'level': level,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -153,7 +156,7 @@ function deg_mod_submit() {
 
 
 			deg_mod_grid.titles = true;
-			
+
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 

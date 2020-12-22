@@ -66,12 +66,14 @@ function ranged_dc_trait_type() {
 }
 
 let ranged_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function ranged_submit() {
 
 	const columns = ranged_grid.columns;
 	const created = ranged_grid.titles;
+	const font = ranged_grid.font;
 
 	const extra_id = select("ranged_extra");
 	const range_type = select("ranged_type");
@@ -154,7 +156,8 @@ function ranged_submit() {
 			'dc_trait_type': dc_trait_type,
 			'dc_trait': dc_trait,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

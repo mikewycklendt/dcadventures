@@ -53,12 +53,14 @@ function minion_attitude_trait_type() {
 }
 
 let minion_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function minion_submit() {
 
 	const columns = minion_grid.columns;
 	const created = minion_grid.titles;
+	const font = minion_grid.font;
 
 	const extra_id = select("minion_extra");
 	const points = select("mod_minion_points");
@@ -109,7 +111,8 @@ function minion_submit() {
 			'multiple_value': multiple_value,
 			'horde': horde,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

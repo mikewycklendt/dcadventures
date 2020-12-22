@@ -461,26 +461,7 @@ def mod_add(check, mod, body):
 	return (body)
 
 	
-def alt_check_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'alt-check'
-	spot = "alt-check-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def alt_check_post(entry, body, cells):
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -500,26 +481,7 @@ def alt_check_post(entry, columns, created):
 	mod = integer_convert(mod)
 
 
-def change_action_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'action'
-	spot = "action-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def change_action_post(entry, body, cells):
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -533,26 +495,7 @@ def change_action_post(entry, columns, created):
 
 	mod = integer_convert(mod)
 
-def character_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'char'
-	spot = "char-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def character_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -624,26 +567,7 @@ def character_post(entry, columns, created):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)	 
 
-def circ_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'circ'
-	spot = "circ-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def circ_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -685,26 +609,7 @@ def circ_post(entry, columns, created):
 
 
 
-def create_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'create'
-	spot = "create-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def create_post(entry, body, cells):
 	
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -817,26 +722,7 @@ def create_post(entry, columns, created):
 	ranks = integer_convert(ranks)
 
 
-def damage_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'damage'
-	spot = "damage-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def damage_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -857,26 +743,7 @@ def damage_post(entry, columns, created):
 
 
 
-def dc_table_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	body['rows'] = rows
-	mods = []
-	cells = []
-	table_id = 'dc'
-	spot = "dc-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['mods'] = []
+def dc_table_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -920,29 +787,7 @@ def dc_table_post(entry, columns, created):
 	math_value = integer_convert(math_value)
 	check_mod = integer_convert(check_mod)
 
-def defense_post(entry, columns, created):
-
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = 'x'
-	if cells == 'x':
-		cells = []
-	table_id = 'defense'
-	spot = "defense-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def defense_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1063,26 +908,7 @@ def defense_post(entry, columns, created):
 
 	
 
-def degree_mod_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'deg-mod'
-	spot = "deg-mod-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def degree_mod_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1144,26 +970,7 @@ def degree_mod_post(entry, columns, created):
 
 
 
-def degree_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'degree'
-	spot = "degree-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def degree_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1182,26 +989,7 @@ def degree_post(entry, columns, created):
 
 	degree = integer_convert(degree)
 
-def environment_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'env'
-	spot = "env-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def environment_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1266,15 +1054,7 @@ def environment_post(entry, columns, created):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)
 
-def levels_post(entry, columns, created, old_level_type):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
+def levels_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1282,45 +1062,11 @@ def levels_post(entry, columns, created, old_level_type):
 	level = entry.level
 	level_effect = entry.level_effect
 
-	mods = []
-	cells = []
-	table_id = 'levels-' + level_type
-	spot = "levels-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['rows'] = rows
-	body['mods'] = []
-	
-	if old_level_type != level_type:
-		body['created'] = False
-	else:
-		body['created'] = True
-	body['title'] = level_type
 	
 
 	extra = extra_name(extra_id)
 
-def minion_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'minion'
-	spot = "minion-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def minion_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1355,26 +1101,7 @@ def minion_post(entry, columns, created):
 	resitable_dc = integer_convert(resitable_dc)
 	multiple_value = integer_convert(multiple_value)
 
-def mod_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'mod'
-	spot = 'mod-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def mod_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1513,27 +1240,7 @@ def mod_post(entry, columns, created):
 
 
 	
-def move_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'move'
-	spot = "move-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def move_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1676,27 +1383,7 @@ def move_post(entry, columns, created):
 
 
 
-def opposed_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'opposed'
-	spot = "opposed-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def opposed_post(entry, body, cells):	
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1717,26 +1404,7 @@ def opposed_post(entry, columns, created):
 	opponent_mod = integer_convert(opponent_mod)
 
 
-def ranged_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'ranged'
-	spot = "ranged-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def ranged_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1804,27 +1472,7 @@ def ranged_post(entry, columns, created):
 	dc_value = integer_convert(dc_value)
 
 
-def resist_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'resistance'
-	spot = "resistance-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def resist_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1854,27 +1502,7 @@ def resist_post(entry, columns, created):
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
 
-def resisted_by_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'resist'
-	spot = "resist-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def resisted_by_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id	
@@ -1913,27 +1541,7 @@ def resisted_by_post(entry, columns, created):
 	weaken_restored = integer_convert(weaken_restored)
 	damage =  integer_convert(damage)
 	
-def reverse_effect_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'reverse'
-	spot = "reverse-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def reverse_effect_post(entry, body, cells):
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -1967,27 +1575,7 @@ def reverse_effect_post(entry, columns, created):
 	time_value = integer_convert(time_value)
 
 
-def sense_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'sense'
-	spot = "sense-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-		
+def sense_post(entry, body, cells):	
 
 	power_id = entry.power_id
 	extra_id = entry.extra_id
@@ -2077,26 +1665,7 @@ def sense_post(entry, columns, created):
 	cost = integer_convert(cost)
 
 
-def time_post(entry, columns, created):
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'time'
-	spot = "time-spot"
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
+def time_post(entry, body, cells):
 		
 	power_id = entry.power_id
 	extra_id = entry.extra_id

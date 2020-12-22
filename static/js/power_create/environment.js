@@ -91,12 +91,14 @@ function env_immunity_type() {
 }
 
 let env_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function env_submit() {
 
 	const columns = env_grid.columns;
 	const created = env_grid.titles;
+	const font = env_grid.font;
 
 	const extra_id = select("env_extra");
 	const radius = text("env_radius");
@@ -167,7 +169,8 @@ function env_submit() {
 			'cost': cost,
 			'ranks': ranks,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

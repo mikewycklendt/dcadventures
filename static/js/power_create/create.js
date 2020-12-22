@@ -171,12 +171,14 @@ function create_transform() {
 }
 
 let create_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function create_submit() {
 
 	const columns = create_grid.columns;
 	const created = create_grid.titles;
+	const font = create_grid.font;
 
 	const extra_id = select("create_extra");
 	const solidity = select("create_solidity");
@@ -307,7 +309,8 @@ function create_submit() {
 			'cost': cost,
 			'ranks': ranks,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

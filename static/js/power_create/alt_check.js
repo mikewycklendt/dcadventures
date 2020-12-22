@@ -22,12 +22,14 @@ function check_trait_type() {
 }
 
 let check_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function check_submit() {
 
 	const columns = check_grid.columns;
 	const created = check_grid.titles;
+	const font = check_grid.font;
 
 	const extra_id = select("check_extra");
 	const check_type = select("check_check_type");
@@ -56,7 +58,8 @@ function check_submit() {
 			'trait_type': trait_type,
 			'trait': trait,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

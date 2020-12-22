@@ -41,12 +41,14 @@ function circ_null_trait_type() {
 }
 
 let circ_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function circ_submit() {
 
 	const columns = circ_grid.columns;
 	const created = circ_grid.titles;
+	const font = circ_grid.font;
 
 	const target = select("circ_target");
 	const extra_id = select("circ_extra");
@@ -89,7 +91,8 @@ function circ_submit() {
 			'null_trait_type': null_trait_type,
 			'null_trait': null_trait,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

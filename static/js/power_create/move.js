@@ -191,12 +191,14 @@ function move_mass() {
 }
 
 let move_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function move_submit() {
 
 	const columns = move_grid.columns;
 	const created = move_grid.titles;
+	const font = move_grid.font;
 
 	const extra_id = select("move_extra");
 	const rank = select("move_rank");
@@ -357,7 +359,8 @@ function move_submit() {
 			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

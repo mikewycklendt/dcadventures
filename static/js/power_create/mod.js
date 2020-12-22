@@ -249,12 +249,14 @@ function mod_affects_objects() {
 
 
 let mod_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function mod_submit() {
 
 	const columns = mod_grid.columns;
 	const created = mod_grid.titles;
+	const font = mod_grid.font;
 
 	const extra_id = select("mod_extra");
 	const affects_objects = check("mod_affects_objects");
@@ -429,7 +431,8 @@ function mod_submit() {
 			'ranks_cost': ranks_cost,
 			'cost': cost,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

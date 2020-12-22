@@ -15,12 +15,14 @@ function action_base() {
 }
 
 let action_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function action_submit() {
 
 	const columns = action_grid.columns;
 	const created = action_grid.titles;
+	const font = action_grid.font;
 
 	const extra_id = select("action_extra");
 	const action = select("action_change");
@@ -43,7 +45,8 @@ function action_submit() {
 			'objects': objects,
 			'circumstance': circumstance,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 			
 		}),
 		headers: {

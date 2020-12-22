@@ -33,12 +33,14 @@ function resist_effect() {
 }
 
 let resist_grid = {'titles': false,
-					'columns': []}
+					'columns': [],
+					'font': 80}
 
 function resist_submit() {
 
 	const columns = resist_grid.columns;
 	const created = resist_grid.titles;
+	const font = resist_grid.font;
 
 	const extra_id = select("resist_extra");
 	const trait_type = select("resist_trait_type");
@@ -89,7 +91,8 @@ function resist_submit() {
 			'nullify_alternate': nullify_alternate,
 			'extra_effort': extra_effort,
 			'columns': columns,
-			'created': created
+			'created': created,
+			'font': font
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
