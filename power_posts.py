@@ -199,9 +199,6 @@ def send(cells, body):
 	new_row = {'id': entry_id, 'cells': widths}
 
 	rows.append(new_row)
-	for row in rows:
-		print(row)
-
 	print('\n\n')
 
 	grid = grid_columns(rows)
@@ -255,8 +252,6 @@ def grid_columns(rows):
 			empty = 1
 		
 		grid += str(empty) + '%' + ' 5%'
-
-		print(grid)
 
 	return (grid)
 
@@ -996,6 +991,10 @@ def defense_post(entry, columns, created):
 	cells = cell('Use', 10, [use], 'use', cells)
 	cells = cell('Mod', 7, [mod], 'mod', cells)
 	word = string('or', [roll, outcome])
+	print('\n\n\n')
+	print(word)
+	print(roll)
+	print(outcome)
 	cells = cell('Roll', 15, [roll, word, outcome], 'roll', cells)
 	cells = check_cell('Dodge', 7, dodge, 'dodge', cells)
 	cells = check_cell('Fortitude', 10, fortitude, 'fort', cells)
