@@ -238,7 +238,7 @@ def grid_columns(rows):
 			columns = gridrows[0]
 		
 		for g in gridrows:
-			for i in range(0, len(columns) - 1, 1):
+			for i in range(0, len(columns), 1):
 				if g[i] > columns[i]:
 					columns[i] = g[i]
 
@@ -250,9 +250,9 @@ def grid_columns(rows):
 		if empty < 0:
 			while empty < 0:
 				x = 95
-				for w in columns:
-					w = w - 1
-					x = x - w
+				for i in range(0, len(columns), 1):
+					columns[i] = columns[i] - 1
+					x = x - columns[i]
 				empty = x
 
 		for column in columns:
