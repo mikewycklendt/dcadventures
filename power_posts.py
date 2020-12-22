@@ -292,7 +292,7 @@ def vcell(selection, width, content, cell, cells):
 	text =  ''
 	
 	for c in content:
-		if text = '':
+		if text == '':
 			text = c
 		else:
 			text += ' ' + c
@@ -348,7 +348,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 	content = ''
 
 	for c in contentlist:
-		if content = '':
+		if content == '':
 			content = c
 		else:
 			content += ' ' + c
@@ -415,15 +415,16 @@ def mod_cell(title, width, content, mod, value='e'):
 			elif c == False:
 				return (mod)
 	
-	text = content[0]
+	if content[0] != True
+		text = ''
+	else:
+		text = content[0]
 
-	if text != True:
-		if len(content) > 1:
-			for i in range(1, len(content) - 1, 1):
-				if text == '':
-					text += content[i]
-				else:
-					text += ' ' + content[i]
+	for c in content:
+		if text == '':
+			text = c
+		else:
+			text = ' ' + c
 
 	if text == '':
 		return (mod)
