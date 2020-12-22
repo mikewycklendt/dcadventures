@@ -1035,10 +1035,7 @@ function create_table(jsonResponse) {
 
 		const table = document.getElementById(table_class)
 
-
-		grid__update(cells, table_id, grid, cells_class)
-
-		grow_table(table, grow)
+		cells_create(table, grow, jsonResponse)
 	}
 
 
@@ -1094,9 +1091,7 @@ function create_titles(jsonResponse, grow) {
 	
 	grow += title_row.scrollHeight
 
-	grow_table(new_table, grow)
 	
-	grid__update(cells, table_id, grid, cells_class)
 }
 
 function grow_table(table, grow) {
@@ -1147,11 +1142,11 @@ function cells_create(table_input, grow, jsonResponse) {
 
 	const entry = document.createElement('div');
 	entry.className = base_entry
-	title_row.classList.add(entry_class);
+	entry.classList.add(entry_class);
 	table.appendChild(entry);
 	const row = document.createElement('div');
 	row.className = base_cells;
-	title_row.classList.add(cells_class);	
+	row.classList.add(cells_class);	
 	row.style.gridTemplateColumns = grid;
 	entry.appendChild(row);
 
@@ -1162,7 +1157,7 @@ function cells_create(table_input, grow, jsonResponse) {
 		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
 		new_cell.className = base_cell
-		title_row.classList.add(cell_class);
+		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
@@ -1170,7 +1165,7 @@ function cells_create(table_input, grow, jsonResponse) {
 				create_mod = true;
 				const check = document.createElement('button');
 				check.className = base_button_check;
-				title_row.classList.add(check_button_class);
+				check.classList.add(check_button_class);
 				new_cell.appendChild(check);
 				const cell_height = new_cell.scrollHeight;
 				cell_heights.push(cell_height);
@@ -1215,7 +1210,11 @@ function cells_create(table_input, grow, jsonResponse) {
 	if (create_mod) {
 		mod_create(mods, id, entry, table_id);
 		check_buttons(table_id);
-	} 
+	}
+	
+	grow_table(table, grow)
+	
+	grid__update(cells, table_id, grid, cells_class)
 
 }
 
