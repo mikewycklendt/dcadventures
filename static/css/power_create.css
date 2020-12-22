@@ -765,7 +765,7 @@ textarea:focus {
 
 .power-table-row {
 	display: grid;
-	width: 95%;
+	width: 100%;
 	text-align: left;
 	grid-template-columns: 97%;
 	grid-auto-rows: auto;	
