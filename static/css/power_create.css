@@ -777,7 +777,7 @@ textarea:focus {
 
 .power-table-cells {
 	display: grid;
-	width: 97%;
+	width: 100%;
 	border-bottom: 0vw solid white;
 	grid-template-rows: auto;
 	font-size: 80%;
