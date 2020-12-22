@@ -1075,14 +1075,15 @@ function create_titles(jsonResponse, grow) {
 	grow = grow + title_row.scrollHeight;
 	new_table.appendChild(title_row);
 	
-	for (let i = 0; i < cells.length; i++) {
-		console.log(cells[i].title);
+	let cell;
+	for (cell of cells) {
+		console.log(cell.title);
 		const cell_title = document.createElement('div');
-		const title_id = table_id + '-' + cells[i].class + '-title';
+		const title_id = table_id + '-' + cell.class + '-title';
 		cell_title.setAttribute('id', title_id);
 		cell_title.className = base_cell_title + cells_class;
-		cell_title.innerText = cells[i].title;
-		if (cells[i].width > 1) {
+		cell_title.innerHTML = cell.title;
+		if (cell.width > 1) {
 			cell_title.style.opacity = '100%';
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 		}
