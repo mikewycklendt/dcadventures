@@ -289,14 +289,13 @@ def vcell(selection, width, content, cell, cells):
 				except:
 					c = ''
 
-	text = content[0]
-
-	if len(content) > 1:
-		for i in range(1, len(content) - 1, 1):
-			if text == '':
-				text = content[i]
-			else:
-				text += ' ' + content[i]
+	text =  ''
+	
+	for c in content:
+		if text = '':
+			text = c
+		else:
+			text += ' ' + c
 
 	if text == '':
 		width = 0
@@ -346,15 +345,13 @@ def cell(title, width, contentlist, classname, cells=[]):
 				except:
 					c = ''
 				
-	content = contentlist[0]
+	content = ''
 
-	if len(contentlist) > 1:	
-		for i in range(1, len(contentlist) -1, 1):
-			if content == '':
-				content = contentlist[i]
-			else:
-				print('space')
-				content += ' ' + contentlist[i]
+	for c in contentlist:
+		if content = '':
+			content = c
+		else:
+			content += ' ' + c
 
 	if content == '':
 		width = 0
@@ -988,6 +985,9 @@ def defense_post(entry, columns, created):
 
 	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
 	cover_type = selects(cover_type, cover_select)
+
+	outcome_select = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
+	outcome = selects(outcome, outcome_select)
 
 	cells.clear()
 
