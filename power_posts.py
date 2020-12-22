@@ -1002,8 +1002,8 @@ def defense_post(entry, columns, created):
 	cells = check_cell('Parry', 7, parry, 'parry', cells)
 	cells = check_cell('Toughness', 10, toughness, 'tough', cells)
 	cells = check_cell('Will', 7, will, 'will', cells)
-	cells = check_cell('Resists Area', 15, resist_area, 'area', cells)
-	cells = check_cell('Resists Perception', 15, resist_perception, 'perc', cells)
+	cells = check_cell('Resists Area', 18, resist_area, 'area', cells)
+	cells = check_cell('Resists Perception', 24, resist_perception, 'perc', cells)
 	
 	classname = 'reflect'
 	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
