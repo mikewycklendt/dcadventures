@@ -415,7 +415,7 @@ def mod_cell(title, width, content, mod, value='e'):
 			elif c == False:
 				return (mod)
 	
-	if content[0] != True
+	if content[0] != True:
 		text = ''
 	else:
 		text = content[0]
