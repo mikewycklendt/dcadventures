@@ -204,8 +204,13 @@ def send(cells, body):
 	rows.append(new_row)
 	print('\n\n')
 
-	grid = grid_columns(rows)
+	grid_update = grid_columns(rows)
 
+	grid = grid_update['grid']
+	font = grid_update['font']
+
+
+	body['font'] = font
 	body['grid'] = grid
 	body['rows'] = rows
 
@@ -220,7 +225,9 @@ def delete_row(entry_id, rows):
 
 	return (rows)
 
-def grid_columns(rows):
+def grid_columns(rows, font):
+
+	result = {}
 
 	columns = []
 
@@ -254,6 +261,7 @@ def grid_columns(rows):
 					if columns[i] != 0:
 						columns[i] = columns[i] - 1
 					x = x - columns[i]
+				font = font - 2
 				empty = x
 
 		for column in columns:
@@ -262,6 +270,9 @@ def grid_columns(rows):
 		grid += str(empty) + '%' + ' 5%'
 
 		print(grid)
+
+	result['grid'] = grid
+	result['font'] = font
 
 	return (grid)
 
