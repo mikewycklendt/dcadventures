@@ -243,16 +243,19 @@ def grid_columns(rows):
 					columns[i] = g[i]
 
 		grid = ''
-		empty = 5
+		empty = 95
+		for w in columns:
+			empty = empty - w
+
+		if empty < 0:
+			while empty < 0:
+				empty = 95
+				for w in columns:
+					w = w - 1
+					empty = empty - w
+
 		for column in columns:
 			grid += str(column) + '% '
-			empty += column
-
-		if empty < 100:
-			empty = 100 - empty
-			empty = int(empty)
-		else:
-			empty = 0
 		
 		grid += str(empty) + '%' + ' 5%'
 
@@ -992,7 +995,7 @@ def defense_post(entry, columns, created):
 
 	cells.clear()
 
-	cells = cell('Defense', 15, [defense], 'defense')
+	cells = cell('Defense', 12, [defense], 'defense')
 	cells = cell('Use', 10, [use], 'use', cells)
 	cells = cell('Mod', 7, [mod], 'mod', cells)
 	word = string('or', [roll, outcome])
@@ -1006,8 +1009,8 @@ def defense_post(entry, columns, created):
 	cells = check_cell('Parry', 7, parry, 'parry', cells)
 	cells = check_cell('Toughness', 10, toughness, 'tough', cells)
 	cells = check_cell('Will', 5, will, 'will', cells)
-	cells = check_cell('Resists Area', 18, resist_area, 'area', cells)
-	cells = check_cell('Resists Perception', 24, resist_perception, 'perc', cells)
+	cells = check_cell('Resists Area', 12, resist_area, 'area', cells)
+	cells = check_cell('Resists Perception', 19, resist_perception, 'perc', cells)
 	
 	classname = 'reflect'
 	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
