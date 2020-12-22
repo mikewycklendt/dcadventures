@@ -738,8 +738,8 @@ textarea:focus {
 	display: none;
 	margin: 1%;
 	height: auto;
-	width: 94%;
-	grid-template-columns: 97%;
+	width: 90%;
+	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	border-radius: .4vw;
