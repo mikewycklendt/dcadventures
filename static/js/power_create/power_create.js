@@ -1191,6 +1191,10 @@ function create_cells(table, grow, jsonResponse) {
 		}
 	}
 
+	const empty = document.createElement('div');
+	empty.className = base_cell;
+	row.appendChild(empty)
+
 	const delete_cell = document.createElement('div');
 	delete_cell.className = base_cell;
 	row.appendChild(delete_cell)
