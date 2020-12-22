@@ -1134,11 +1134,11 @@ function cells_create(table_input, grow, jsonResponse) {
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'power-table-cells ';
-	const base_cell = 'power-table-cell '
+	const base_cells = 'power-table-cells';
+	const base_cell = 'power-table-cell'
 	const base_button_check = 'power-check-button ';
-	const base_check = 'power-check ';
-	const base_entry = 'power-table-row ';
+	const base_check = 'power-check';
+	const base_entry = 'power-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
@@ -1149,7 +1149,6 @@ function cells_create(table_input, grow, jsonResponse) {
 	row.className = base_cells;
 	row.classList.add(cells_class);	
 	row.style.gridTemplateColumns = grid;
-	entry.appendChild(row);
 
 	let create_mod = false;
 	let cell;
@@ -1175,14 +1174,16 @@ function cells_create(table_input, grow, jsonResponse) {
 				check.className = base_check;
 				new_cell.appendChild(check);
 				const cell_height = new_cell.scrollHeight;
+				console.log(cell_height)
 				cell_heights.push(cell_height);
 			}``
 		} else {
 			new_cell.innerText = cell.content;
 			const cell_height = new_cell.scrollHeight;
+			console.log(cell_height)
 			cell_heights.push(cell_height);
 		}
-		row.append(new_cell);
+		row.appendChild(new_cell);
 	}
 
 	let height;
@@ -1198,11 +1199,13 @@ function cells_create(table_input, grow, jsonResponse) {
 
 	const delete_cell = document.createElement('div');
 	delete_cell.className = base_cell;
-	row.appendChild(delete_cell)
 	const delete_btn = document.createElement('button');
 	delete_btn.className = base_delete + delete_class;
 	delete_btn.setAttribute('data-id', id);
 	delete_cell.appendChild(delete_btn)
+	row.appendChild(delete_cell)
+
+	entry.appendChild(row);
 
 	table.style.display = 'grid';
 	row.style.maxHeight = grow + 'px'; 
