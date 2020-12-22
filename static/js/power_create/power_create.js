@@ -1091,6 +1091,7 @@ function create_titles(jsonResponse, grow) {
 	
 	grow += title_row.scrollHeight
 
+	cells_create(new_table, grow, jsonResponse)
 	
 }
 
@@ -1204,8 +1205,7 @@ function cells_create(table_input, grow, jsonResponse) {
 	delete_cell.appendChild(delete_btn)
 
 	table.style.display = 'grid';
-	row.style.maxHeight = max + 'px';
-	table.style.maxHeight = table.scrollHeight + max + 'px'; 
+	row.style.maxHeight = grow + 'px'; 
 
 	if (create_mod) {
 		mod_create(mods, id, entry, table_id);
