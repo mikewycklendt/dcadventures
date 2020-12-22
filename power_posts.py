@@ -351,6 +351,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 			if content == '':
 				content = contentlist[i]
 			else:
+				print('space')
 				content += ' ' + contentlist[i]
 
 	if content == '':
