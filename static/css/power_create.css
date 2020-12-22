@@ -750,7 +750,7 @@ textarea:focus {
 }
 
 .power-table-cell-title {
-	display: grid;
+	display: block;
 	overflow: hidden;
 	font-family: 'Monda', Verdana;
 	border-bottom: 1px solid #af0101;
