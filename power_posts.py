@@ -249,7 +249,7 @@ def grid_columns(rows):
 			empty = 100 - empty
 			empty = int(empty)
 		else:
-			empty = 1
+			empty = .1
 		
 		grid += str(empty) + '%' + ' 5%'
 
@@ -296,7 +296,7 @@ def vcell(selection, width, content, cell, cells):
 				text += ' ' + content[i]
 
 	if text == '':
-		width = .2
+		width = .1
 
 	cell['width'] = width
 	cell['content'] = text
@@ -310,7 +310,7 @@ def vcell(selection, width, content, cell, cells):
 def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	if check == False:
-		width = .2
+		width = .1
 		mod_check = False
 	
 	cell = {'title': title,
@@ -354,7 +354,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 				content += ' ' + contentlist[i]
 
 	if content == '':
-		width = .2
+		width = .1
 
 	cell['content'] = content
 	cell['width'] = width
