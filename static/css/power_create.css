@@ -807,7 +807,7 @@ textarea:focus {
 	display: grid;
 	color: #af0101;
 	text-align: center;
-	font-size: 1.3vw;
+	font-size: 1.1vw;
 }
 
 .power-check::before {
@@ -827,7 +827,7 @@ textarea:focus {
 	background-color: transparent;
 	transition: all .2s linear;
 	cursor: pointer;
-	font-size: 1.3vw;
+	font-size: 1.1vw;
 }
 
 .power-check-button::before {
@@ -838,7 +838,7 @@ textarea:focus {
 
 .power-check-button:hover {
 	color: #245681;
-	font-size: 1.6vw;
+	font-size: 1.3vw;
 }
 
 
