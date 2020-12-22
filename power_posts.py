@@ -172,6 +172,16 @@ def select_multiple(values):
 
 	return (result)
 
+def string(word, data):
+
+	output = ''
+
+	for d in data:
+		if d != '' and d is not None:
+			output = word
+	
+	return (output)
+
 def send(cells, body):
 
 	body['cells'] = deepcopy(cells)
@@ -270,15 +280,7 @@ def variable_cell(title, classname, value):
 
 	return (cell)
 
-def string(word, data):
 
-	output = ''
-
-	for d in data:
-		if d != '':
-			output = word
-	
-	return (output)
 
 def vcell(selection, width, content, cell, cells):
 	value = cell['value']
