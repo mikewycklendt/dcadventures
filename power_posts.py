@@ -249,7 +249,7 @@ def grid_columns(rows):
 			empty = 100 - empty
 			empty = int(empty)
 		else:
-			empty = .1
+			empty = 0
 		
 		grid += str(empty) + '%' + ' 5%'
 

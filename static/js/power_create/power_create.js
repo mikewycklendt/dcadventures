@@ -1125,8 +1125,9 @@ function grid__update(cells, table_id, grid, cells_class) {
 	}
 }
 
-function cells_create(table, grow, jsonResponse) {
+function cells_create(table_input, grow, jsonResponse) {
 
+	const table = table_input;
 	const table_id = jsonResponse.table_id;
 	const id = jsonResponse.id; 
 	const grid = jsonResponse.grid;
@@ -1195,6 +1196,10 @@ function cells_create(table, grow, jsonResponse) {
 		}
 	}
 
+	const empty_cell = document.createElement('div');
+	empty_cell.className = base_cell;
+	row.appendChild(empty_cell);
+
 	const delete_cell = document.createElement('div');
 	delete_cell.className = base_cell;
 	row.appendChild(delete_cell)
@@ -1216,7 +1221,12 @@ function cells_create(table, grow, jsonResponse) {
 
 
 
-function mod_create(mods, id, entry, table_id) {
+function mod_create(mods_input, id_input, entry_input, table_id_input) {
+
+	const mods = mods_input;
+	const id = id_input;
+	const entry = entry_input;
+	const table_id = table_id_input;
 
 	const mod_class = table_id + '-mod'; 
 	const base_mod = 'mod-row ';
