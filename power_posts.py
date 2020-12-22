@@ -176,7 +176,9 @@ def string(word, data):
 
 	output = ''
 
+	print('\n\n\n\n')
 	for d in data:
+		print(d)
 		if d != '' and d is not None:
 			output = word
 	
@@ -188,9 +190,6 @@ def send(cells, body):
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
-
-	print('\n\n\n\n')
-	print(len(cells))
 
 	widths = []
 	for cell in cells:
@@ -238,20 +237,11 @@ def grid_columns(rows):
 		if columns == []:
 			columns = gridrows[0]
 		
-		print('columns:')
-		print(columns)
-		print('\n')
-
-		print('gridrows:')
 		for g in gridrows:
-			print(g)
 			for i in range(0, len(columns) - 1, 1):
 				if g[i] > columns[i]:
 					columns[i] = g[i]
-		print('\n\n')
-		print(columns)
 
-		print('\n\n')
 		grid = ''
 		empty = 5
 		for column in columns:
