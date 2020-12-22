@@ -190,6 +190,7 @@ def send(cells, body):
 	rows = body['rows']
 	entry_id = body['id']
 	mods = body['mods']
+	font = body['font']
 
 	for cell in cells:
 		print(cell)
@@ -204,10 +205,13 @@ def send(cells, body):
 	rows.append(new_row)
 	print('\n\n')
 
-	grid_update = grid_columns(rows)
+	grid_update = grid_columns(rows, font)
 
 	grid = grid_update['grid']
 	font = grid_update['font']
+
+	print('\n\n\n')
+	print(font)
 
 
 	body['font'] = font
