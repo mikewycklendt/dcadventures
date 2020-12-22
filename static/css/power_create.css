@@ -753,7 +753,6 @@ textarea:focus {
 	display: grid;
 	overflow: hidden;
 	font-family: 'Monda', Verdana;
-	font-size: 80%;
 	border-bottom: 1px solid #af0101;
 	width: 97%;
 	color: #245681;
@@ -771,7 +770,6 @@ textarea:focus {
 	grid-auto-rows: auto;	
 	background-color: white;
 	font-family: 'Monda', Verdana;
-	font-size: 80%;
 	color: #245681;
 }
 
@@ -780,11 +778,11 @@ textarea:focus {
 	width: 100%;
 	border-bottom: 0vw solid white;
 	grid-template-rows: auto;
-	font-size: 80%;
+	font-size: 75%;
 	color: #245681;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height .4s ease-out, background-color .2s linear, border-bottom .2s linear;
+	transition: max-height .4s ease-out, background-color .2s linear, border-bottom .2s linear, font-size .3s ease-out;
 }
 
 .power-table-cells:hover {
@@ -799,6 +797,7 @@ textarea:focus {
 
 .power-table-titles {
 	display: grid;
+	font-size: 80%;
 	width: 97%;
 	grid-template-rows: auto;
 }
