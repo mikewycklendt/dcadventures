@@ -1033,9 +1033,12 @@ function create_table(jsonResponse) {
 
 		let grow = 0
 
-		const table = document.getElementById(table_class);
+		const table = document.getElementById(table_class)
 
-		create_cells(table, grow, jsonResponse);
+
+		grid__update(cells, table_id, grid, cells_class)
+
+		grow_table(table, grow)
 	}
 
 
@@ -1091,7 +1094,9 @@ function create_titles(jsonResponse, grow) {
 	
 	grow += title_row.scrollHeight
 
-	create_cells(new_table, grow, jsonResponse)
+	grow_table(new_table, grow)
+	
+	grid__update(cells, table_id, grid, cells_class)
 }
 
 function grow_table(table, grow) {
@@ -1120,9 +1125,8 @@ function grid__update(cells, table_id, grid, cells_class) {
 	}
 }
 
-function create_cells(table, grow, jsonResponse) {
+function cells_create(table, grow, jsonResponse) {
 
-	const table = table;
 	const table_id = jsonResponse.table_id;
 	const id = jsonResponse.id; 
 	const grid = jsonResponse.grid;
@@ -1191,10 +1195,6 @@ function create_cells(table, grow, jsonResponse) {
 		}
 	}
 
-	const empty = document.createElement('div');
-	empty.className = base_cell;
-	row.appendChild(empty)
-
 	const delete_cell = document.createElement('div');
 	delete_cell.className = base_cell;
 	row.appendChild(delete_cell)
@@ -1212,21 +1212,11 @@ function create_cells(table, grow, jsonResponse) {
 		check_buttons(table_id);
 	} 
 
-	
-	grow_table(new_table, grow)
-	
-	grid__update(cells, table_id, grid, cells_class)
-
 }
 
 
 
 function mod_create(mods, id, entry, table_id) {
-
-	const mods = mods;
-	const id = id;
-	const entry = entry
-	const table_id = table_id
 
 	const mod_class = table_id + '-mod'; 
 	const base_mod = 'mod-row ';
