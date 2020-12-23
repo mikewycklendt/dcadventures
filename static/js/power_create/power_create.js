@@ -1258,6 +1258,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 		mod.className = base_mod;
 		mod.classList.add(mod_class);
 		mod.style.gridTemplateColumns = grid;
+		entry.appendChild(mod);
 		
 		const empty = document.createElement('div');
 		empty.className = mod_cell_empty
@@ -1296,7 +1297,6 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 				mod.appendChild(con);
 			}
 		}
-		entry.appendChild(mod);
 		
 	}
 
