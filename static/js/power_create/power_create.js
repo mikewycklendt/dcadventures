@@ -1124,9 +1124,9 @@ function grid__update(cells, table_id, grid, cells_class, size) {
 		cells_rows[i].style.fontSize = size + '%';
 	}
 
-	const cell = document.getElementsByClassName('power-table-cell');
+	const cells = document.getElementsByClassName('power-table-cell');
 	for (let i = 0; i < cells_rows.length; i++) {
-		cell[i].style.fontSize = size + '%';
+		cells[i].style.fontSize = size + '%';
 	}
 }
 
@@ -1168,7 +1168,8 @@ function cells_create(table_input, grow, jsonResponse) {
 	for (cell of cells) {
 		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
-		new_cell.className = cell_class
+		new_cell.className = base_cell
+		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
@@ -1188,7 +1189,6 @@ function cells_create(table_input, grow, jsonResponse) {
 				cell_heights.push(cell_height);
 			}
 		} else {
-			new_cell.classList.add(base_cell);
 			new_cell.innerText = cell.content;
 			console.log(cell.content);
 			const cell_height = new_cell.scrollHeight;
