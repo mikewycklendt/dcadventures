@@ -1079,7 +1079,6 @@ function create_titles(jsonResponse, grow) {
 	
 	let cell;
 	for (cell of cells) {
-		console.log(cell.title);
 		const cell_title = document.createElement('div');
 		const title_id = table_id + '-' + cell.class + '-title';
 		cell_title.setAttribute('id', title_id);
