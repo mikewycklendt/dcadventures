@@ -1048,7 +1048,7 @@ function create_table(jsonResponse) {
 function fontsize(table_id, size) {
 	const cells_class = table_id + '-cells';
 
-	const change = document.getElementsByClassNam(cells_class);
+	const change = document.getElementsByClassName(cells_class);
 
 	let c;
 	for (c in change) {
