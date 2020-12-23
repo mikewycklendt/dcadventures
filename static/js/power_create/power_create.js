@@ -1254,10 +1254,10 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 		const cells = new_mod.cells;
 		const mod_title = new_mod.title;
 		const variable = new_mod.variable;
-		const mod_id = table_id + '-' + new_mod.class + '-' + id;
 
 		const mod = document.createElement('div');
-		mod.classname = base_mod + mod_class;
+		mod.classname = base_mod;
+		mod.classList.add(mod_class);
 		mod.style.gridTemplateColumns = grid;
 		
 		const empty = document.createElement('div');
