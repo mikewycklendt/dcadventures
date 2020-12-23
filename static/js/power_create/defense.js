@@ -79,7 +79,8 @@ function defense_cover() {
 
 let defense_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function defense_submit() {
 
@@ -176,7 +177,7 @@ function defense_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
+			create_table(jsonResponse, defense_grid);
 			row_delete(jsonResponse, route, defense_grid)
 			clear_errors(err_line, errors)
 

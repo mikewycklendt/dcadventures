@@ -999,7 +999,7 @@ power_save = function() {
 ```
 
 
-function create_table(jsonResponse) {
+function create_table(jsonResponse, object) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1029,7 +1029,7 @@ function create_table(jsonResponse) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow);
+		create_titles(jsonResponse, grow, object);
 	
 	} else {
 
@@ -1037,13 +1037,13 @@ function create_table(jsonResponse) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse);
+		cells_create(table, grow, jsonResponse, object);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow) {
+function create_titles(jsonResponse, grow, object) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1093,7 +1093,7 @@ function create_titles(jsonResponse, grow) {
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse)
+	cells_create(new_table, grow, jsonResponse, object)
 	
 }
 
@@ -1129,7 +1129,7 @@ function grid__update(cells, table_id, grid, cells_class, size) {
 	}
 }
 
-function cells_create(table_input, grow, jsonResponse) {
+function cells_create(table_input, grow, jsonResponse, object) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -1220,8 +1220,8 @@ function cells_create(table_input, grow, jsonResponse) {
 	grow += row.scrollHeight; 
 
 	if (create_mod) {
-		mod_create(mods, id, entry, table_id);
-		check_buttons(table_id);
+		mod_create(mods, id, entry, table_id, object);
+		check_buttons(table_id, object);
 	}
 	
 	grow_table(table, grow)
@@ -1232,7 +1232,7 @@ function cells_create(table_input, grow, jsonResponse) {
 
 
 
-function mod_create(mods_input, id_input, entry_input, table_id_input) {
+function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
 
 	const mods = mods_input;
 	const id = id_input;
@@ -1253,6 +1253,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 		const cells = new_mod.cells;
 		const mod_title = new_mod.title;
 		const variable = new_mod.variable;
+		object.mod.push(false)
 
 		const mod = document.createElement('div');
 		mod.className = mod_class;
@@ -1318,7 +1319,7 @@ function check_buttons(table_id) {
 
 			const  mod = mods[i]
 
-			if (mod.style.display == 'grid') {
+			if (object.mod[i]) {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
 				setTimeout(function(){mod.style.display = 'none'}, 400);

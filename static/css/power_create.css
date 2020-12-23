@@ -844,7 +844,10 @@ textarea:focus {
 
 
 .mod-row {
-	display: grid;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 .mod-cell-empty {
@@ -853,7 +856,8 @@ textarea:focus {
 }
 
 .mod-cell-mod {
-	display: block;
+	display: table-cell;
+	vertical-align: middle;
 	font-size: 90%;
 	border-left: .1vw solid #245681;
 	border-bottom: .1vw solid #245681;
@@ -862,7 +866,8 @@ textarea:focus {
 }
 
 .mod-cell-sub {
-	display: block;
+	display: table-cell;
+	vertical-align: middle;
 	font-size: 85%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
@@ -870,7 +875,8 @@ textarea:focus {
 }
 
 .mod-cell-content {
-	display: block;
+	display: table-cell;
+	vertical-align: middle;
 	text-align: left;
 	font-size: 80%;
 	border-bottom: .1vw solid #245681;
@@ -878,7 +884,8 @@ textarea:focus {
 }
 
 .mod-cell-title {
-	display: block;
+	display: table-cell;
+	vertical-align: middle;
 	text-align: center;
 	font-size: 85%;
 	border-bottom: .1vw solid #245681;
