@@ -851,12 +851,12 @@ textarea:focus {
 }
 
 .mod-cell-empty {
-	display: grid;
+	display: block;
 	background-color: white;
 }
 
 .mod-cell-mod {
-	display: grid;
+	display: block;
 	font-size: 110%;
 	border-left: .1vw solid #245681;
 	border-bottom: .1vw solid #245681;
@@ -865,7 +865,7 @@ textarea:focus {
 }
 
 .mod-cell-sub {
-	display: grid;
+	display: block;
 	font-size: 100%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
@@ -873,7 +873,7 @@ textarea:focus {
 }
 
 .mod-cell-content {
-	display: grid;
+	display: block;
 	text-align: left;
 	font-size: 80%;
 	border-bottom: .1vw solid #245681;
@@ -881,7 +881,7 @@ textarea:focus {
 }
 
 .mod-cell-title {
-	display: grid;
+	display: block;
 	text-align: center;
 	font-size: 90%;
 	border-bottom: .1vw solid #245681;

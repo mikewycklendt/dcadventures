@@ -1255,7 +1255,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 		const variable = new_mod.variable;
 
 		const mod = document.createElement('div');
-		mod.classname = base_mod;
+		mod.className = base_mod;
 		mod.classList.add(mod_class);
 		mod.style.gridTemplateColumns = grid;
 		
