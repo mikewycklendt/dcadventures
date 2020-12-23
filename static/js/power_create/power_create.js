@@ -1394,7 +1394,7 @@ function row_delete(jsonResponse, route, object) {
 							if (grid == 'none') {
 								table.style.maxHeight = '0px'
 							} else {
-								all_cells.style.gridTemplateColumns = grid;
+								cells.style.gridTemplateColumns = grid;
 							}
 						}
 
