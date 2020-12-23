@@ -213,6 +213,9 @@ def send(cells, body):
 	print('\n\n\n')
 	print(font)
 
+	for mod in mods:
+		print(mod)
+
 
 	body['font'] = font
 	body['grid'] = grid
