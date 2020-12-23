@@ -854,7 +854,7 @@ textarea:focus {
 
 .mod-cell-mod {
 	display: block;
-	font-size: 110%;
+	font-size: 90%;
 	border-left: .1vw solid #245681;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
@@ -863,7 +863,7 @@ textarea:focus {
 
 .mod-cell-sub {
 	display: block;
-	font-size: 100%;
+	font-size: 85%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 	text-align: center;
@@ -880,7 +880,7 @@ textarea:focus {
 .mod-cell-title {
 	display: block;
 	text-align: center;
-	font-size: 90%;
+	font-size: 85%;
 	border-bottom: .1vw solid #245681;
 	background-color: lightblue;
 }

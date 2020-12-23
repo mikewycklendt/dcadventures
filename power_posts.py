@@ -913,8 +913,8 @@ def defense_post(entry, body, cells):
 
 	classname =  'cover'
 	cells = check_cell('Cover', 10, cover_check, classname, cells, True)
-	new_mod = mod_create('Provides Cover', 17, classname)
-	new_mod = mod_cell('Cover Type', 10, [cover_type], new_mod)
+	new_mod = mod_create('Provides Cover', 20, classname)
+	new_mod = mod_cell('Cover Type', 18, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 		
 
