@@ -1168,7 +1168,7 @@ function cells_create(table_input, grow, jsonResponse) {
 	for (cell of cells) {
 		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
-		new_cell.className = base_cell
+		new_cell.className = base_cell;
 		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
