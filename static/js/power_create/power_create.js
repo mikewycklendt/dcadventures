@@ -1405,7 +1405,6 @@ function row_delete(jsonResponse, route, object) {
 						}, 400)
 
 						all_rows[i].style.maxHeight = '0px';
-						setTimeout(function(){all_rows[i].style.display = 'none'}, 400);
 
 						
 					} else {
