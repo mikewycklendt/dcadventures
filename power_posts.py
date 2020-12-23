@@ -228,7 +228,7 @@ def delete_row(entry_id, rows):
 
 	for i in range(0, len(rows), 1):
 		row = rows[i]
-		if row['id'] == entry_id:
+		if rows[i].get('id') == entry_id:
 			del rows[i]
 
 	return (rows)
