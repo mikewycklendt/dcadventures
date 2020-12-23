@@ -1322,12 +1322,16 @@ function check_buttons(table_id, object) {
 			console.log(object.mod)
 			console.log(object.mod[i])
 
+
 			const  mod = mods[i]
+
+			console.log(mod)
 
 			if (object.mod[i]) {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
 				setTimeout(function(){mod.style.display = 'none'}, 400);
+				object.mod[i] = true;
 			} else {
 				mod.style.display = 'grid';
 				mod.style.maxHeight = mod.scrollHeight + 'px';
