@@ -1322,10 +1322,7 @@ function check_buttons(table_id, object, entry) {
 			console.log(object.mod)
 			console.log(object.mod[i])
 
-
 			const  mod = mods[i]
-
-			console.log(mod)
 
 			if (object.mod[i]) {
 				mod.style.maxHeight = '0px';
@@ -1338,7 +1335,8 @@ function check_buttons(table_id, object, entry) {
 				entry.style.maxHeight = entry.scrollHeight + mod.scrollHeight + 'px';
 				object.mod[i] = true;
 			}
-			
+
+			console.log(mod)
 		}
 	}
 }
