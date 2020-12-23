@@ -1317,6 +1317,7 @@ function check_buttons(table_id, object) {
 		const btn = btns[i];
 		btn.onclick = function(e) {
 			console.log('click');
+			console.log(object.mod)
 
 			const  mod = mods[i]
 
