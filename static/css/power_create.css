@@ -777,8 +777,7 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	border-bottom: 0vw solid white;
-	grid-template-rows: auto;
-	font-size: 75%;
+	grid-template-rows: auto
 	color: #245681;
 	max-height: 0;
 	overflow: hidden;
@@ -800,7 +799,6 @@ textarea:focus {
 
 .power-table-titles {
 	display: grid;
-	font-size: 80%;
 	width: 97%;
 	grid-template-rows: auto;
 }
