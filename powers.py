@@ -1218,7 +1218,7 @@ def power_grid():
 	new_rows = delete_row(row_id, rows)
 	grid = grid_columns(new_rows, font)
 
-	body = {'rows': new_rows, 'grid': grid}
+	body = {'success': True, rows': new_rows, 'grid': grid}
 
 	return jsonify(body)
 
