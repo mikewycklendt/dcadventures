@@ -859,9 +859,9 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 90%;
-	border-left: .1vw solid #245681;
-	border-bottom: .1vw solid #245681;
-	background-color: lightblue;
+	border-left: .15vw solid #245681;
+	border-bottom: .15vw solid #245681;
+	background-color: #ceddea;
 	text-align: center;
 }
 
@@ -869,8 +869,8 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 85%;
-	border-bottom: .1vw solid #245681;
-	background-color: lightblue;
+	background-color: #ceddea;
+	border-bottom: .15vw solid #245681;
 	text-align: center;
 }
 
@@ -879,8 +879,8 @@ textarea:focus {
 	vertical-align: middle;
 	text-align: left;
 	font-size: 80%;
-	border-bottom: .1vw solid #245681;
-	background-color: lightblue;
+	background-color: #ceddea;
+	border-bottom: .15vw solid #245681;
 }
 
 .mod-cell-title {
@@ -888,8 +888,8 @@ textarea:focus {
 	vertical-align: middle;
 	text-align: center;
 	font-size: 85%;
-	border-bottom: .1vw solid #245681;
-	background-color: lightblue;
+	background-color: #ceddea;
+	border-bottom: .15vw solid #245681;
 }
 
 .power-table-title-table {
