@@ -1168,8 +1168,7 @@ function cells_create(table_input, grow, jsonResponse) {
 	for (cell of cells) {
 		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
-		new_cell.className = base_cell
-		new_cell.classList.add(cell_class);
+		new_cell.className = cell_class
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
@@ -1189,6 +1188,7 @@ function cells_create(table_input, grow, jsonResponse) {
 				cell_heights.push(cell_height);
 			}
 		} else {
+			new_cell.classList.add(base_cell);
 			new_cell.innerText = cell.content;
 			console.log(cell.content);
 			const cell_height = new_cell.scrollHeight;
