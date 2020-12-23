@@ -845,6 +845,8 @@ textarea:focus {
 
 .mod-row {
 	display: grid;
+	max-height: 0px;
+	transition: max-height .4s ease-out;
 }
 
 .mod-cell-empty {
