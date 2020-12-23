@@ -1123,6 +1123,11 @@ function grid__update(cells, table_id, grid, cells_class, size) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 		cells_rows[i].style.fontSize = size + '%';
 	}
+
+	const cells = document.getElementsByClassName('power-table-cell');
+	for (let i = 0; i < cells_rows.length; i++) {
+		cells[i].style.fontSize = size + '%';
+	}
 }
 
 function cells_create(table_input, grow, jsonResponse) {

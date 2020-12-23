@@ -793,6 +793,8 @@ textarea:focus {
 .power-table-cell {
 	display: grid;
 	text-align: left;
+	font-size: 80%;
+	transition: all .3s ease-out;
 }
 
 .power-table-titles {
