@@ -1204,6 +1204,12 @@ def delete_powerdes(power_id):
 @powers.route('/power/grid', methods=['POST'])
 def power_grid():
 
+	data = request.get_json()
+
+	print('\n\n\n')
+	print(data)
+	print('\n\n\n')
+
 	row_id = request.get_json()['id']
 	rows = request.get_json()['rows']
 
