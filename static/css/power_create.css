@@ -791,7 +791,8 @@ textarea:focus {
 }
 
 .power-table-cell {
-	display: grid;
+	display: flex;
+	align-items: center;
 	text-align: left;
 	font-size: 80%;
 	transition: all .3s ease-out;
