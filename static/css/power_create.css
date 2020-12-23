@@ -786,7 +786,7 @@ textarea:focus {
 }
 
 .power-table-cells:hover {
-	background-color: lightblue;
+	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
 }
 
