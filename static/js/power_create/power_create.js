@@ -1344,7 +1344,7 @@ function check_buttons(table_id, object, entry) {
 
 function row_delete(jsonResponse, route, object) {
 	const table_id = jsonResponse.table_id;
-	const rows = jsonResponse.columns;
+	const rows = jsonResponse.rows;
 	console.log(rows)
 
 	const cells_class = table_id + '-cells';
