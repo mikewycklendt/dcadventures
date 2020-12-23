@@ -1221,7 +1221,6 @@ function cells_create(table_input, grow, jsonResponse, object) {
 
 	if (create_mod) {
 		mod_create(mods, id, entry, table_id, object);
-		check_buttons(table_id, object);
 	}
 	
 	grow_table(table, grow)
@@ -1300,6 +1299,9 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
 		}
 		
 	}
+
+	
+	check_buttons(table_id, object);
 
 }
 
