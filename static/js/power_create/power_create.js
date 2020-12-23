@@ -1301,11 +1301,11 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
 	}
 
 	
-	check_buttons(table_id, object);
+	check_buttons(table_id, object, entry);
 
 }
 
-function check_buttons(table_id, object) {
+function check_buttons(table_id, object, entry) {
 	console.log(object)
 	const check_button_class = table_id + '-button'
 	const mod_class = table_id + '-mod';
@@ -1331,11 +1331,12 @@ function check_buttons(table_id, object) {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
 				setTimeout(function(){mod.style.display = 'none'}, 400);
-				object.mod[i] = true;
 			} else {
 				mod.style.display = 'grid';
 				mod.style.maxHeight = mod.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + mod.scrollHeight + 'px';
+				entry.style.maxHeight = entry.scrollHeight + mod.scrollHeight + 'px';
+				object.mod[i] = true;
 			}
 			
 		}
