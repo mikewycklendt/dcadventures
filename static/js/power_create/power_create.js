@@ -1347,6 +1347,7 @@ function check_buttons(table_id, object, entry) {
 function row_delete(jsonResponse, route, object) {
 	const table_id = jsonResponse.table_id;
 	const rows = jsonResponse.rows;
+	const size = jsonResponse.font;
 	console.log(rows)
 
 	const cells_class = table_id + '-cells';
@@ -1370,6 +1371,7 @@ function row_delete(jsonResponse, route, object) {
 					method: 'POST',
 					body: JSON.stringify({
 						'rows': rows,
+						'font': size,
 						'id': delId				}),
 					headers: {
 					  'Content-Type': 'application/json',

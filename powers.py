@@ -1212,9 +1212,11 @@ def power_grid():
 
 	row_id = request.get_json()['id']
 	rows = request.get_json()['rows']
+	font = request.get_json()['font']
+
 
 	new_rows = delete_row(row_id, rows)
-	grid = grid_columns(new_rows)
+	grid = grid_columns(new_rows, font)
 
 	body = {'rows': new_rows, 'grid': grid}
 
