@@ -858,9 +858,10 @@ textarea:focus {
 .mod-cell-mod {
 	display: table-cell;
 	vertical-align: middle;
-	font-size: 90%;
+	font-size: 85%;
 	border-left: .15vw solid #245681;
 	border-bottom: .15vw solid #245681;
+	border-top: .15vw solid #245681;
 	background-color: #ceddea;
 	text-align: center;
 }
@@ -868,8 +869,9 @@ textarea:focus {
 .mod-cell-sub {
 	display: table-cell;
 	vertical-align: middle;
-	font-size: 85%;
+	font-size: 80%;
 	background-color: #ceddea;
+	border-top: .15vw solid #245681;
 	border-bottom: .15vw solid #245681;
 	text-align: center;
 }
@@ -878,8 +880,9 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 80%;
+	font-size: 75%;
 	background-color: #ceddea;
+	border-top: .15vw solid #245681;
 	border-bottom: .15vw solid #245681;
 }
 
@@ -889,6 +892,7 @@ textarea:focus {
 	text-align: center;
 	font-size: 85%;
 	background-color: #ceddea;
+	border-top: .15vw solid #245681;
 	border-bottom: .15vw solid #245681;
 }
 
