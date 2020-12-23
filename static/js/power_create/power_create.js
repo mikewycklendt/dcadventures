@@ -1010,6 +1010,9 @@ function create_table(jsonResponse) {
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
 	const rows = jsonResponse.rows;
+	const size = jsonResponse.font;
+
+	console.log(size);
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
