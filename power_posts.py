@@ -228,8 +228,10 @@ def delete_row(entry_id, rows):
 
 	for i in range(0, len(rows), 1):
 		row = rows[i]
+		print(rowsi)
 		if rows[i].get('id') == entry_id:
 			del rows[i]
+			break
 
 	return (rows)
 
