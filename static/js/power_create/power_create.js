@@ -1030,7 +1030,6 @@ function create_table(jsonResponse) {
 		let grow =  0;
 
 		create_titles(jsonResponse, grow);
-		fontsize(table_id, size);
 	
 	} else {
 
@@ -1039,21 +1038,8 @@ function create_table(jsonResponse) {
 		const table = document.getElementById(table_class)
 
 		cells_create(table, grow, jsonResponse);
-		fontsize(table_id, size);
 	}
 
-
-}
-
-function fontsize(table_id, size) {
-	const cells_class = table_id + '-cells';
-
-	const change = document.getElementsByClassName(cells_class);
-
-	let c;
-	for (c in change) {
-		c.style.fontSize = size + '%';
-	}
 
 }
 
