@@ -1240,7 +1240,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input) {
 	const table_id = table_id_input;
 
 	const mod_class = table_id + '-mod'; 
-	const base_mod = 'mod-row ';
+	const base_mod = 'mod-row';
 	const mod_cell_empty = 'mod-cell-empty';
 	const mod_cell_mod = 'mod-cell-mod';
 	const mod_cell_sub = 'mod-cell-sub';
