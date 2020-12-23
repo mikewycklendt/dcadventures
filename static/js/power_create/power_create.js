@@ -1014,6 +1014,8 @@ function create_table(jsonResponse, object) {
 
 	console.log(size);
 
+	console.log(id)
+
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
 	const base_table = 'power-table-table';
