@@ -262,7 +262,7 @@ def grid_columns(rows, font):
 			while empty < 0:
 				x = 95
 				for i in range(0, len(columns), 1):
-					if columns[i] != 0:
+					if columns[i] > 4:
 						columns[i] = columns[i] - 1
 					x = x - columns[i]
 				font = font - 2
