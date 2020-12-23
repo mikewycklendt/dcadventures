@@ -1345,6 +1345,7 @@ function check_buttons(table_id, object, entry) {
 function row_delete(jsonResponse, route, object) {
 	const table_id = jsonResponse.table_id;
 	const rows = jsonResponse.columns;
+	console.log(rows)
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
@@ -1380,6 +1381,7 @@ function row_delete(jsonResponse, route, object) {
 						const all_rows = document.getElementsByClassName(entry_class)
 						const all_cells = document.getElementsByClassName(cells_class)
 
+						console.log(new_rows)
 						object.columns = new_rows;
 						
 						let cells;
@@ -1388,7 +1390,7 @@ function row_delete(jsonResponse, route, object) {
 							if (grid == 'none') {
 								table.style.maxHeight = '0px'
 							} else {
-								cells.style.gridTemplateColumns = grid;
+								all_cells.style.gridTemplateColumns = grid;
 							}
 						}
 
