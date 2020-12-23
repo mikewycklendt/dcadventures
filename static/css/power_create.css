@@ -777,7 +777,7 @@ textarea:focus {
 	display: grid;
 	width: 100%;
 	border-bottom: 0vw solid white;
-	grid-template-rows: auto
+	grid-template-rows: auto;
 	color: #245681;
 	max-height: 0;
 	overflow: hidden;
