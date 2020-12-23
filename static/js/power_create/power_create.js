@@ -1303,7 +1303,8 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
 
 }
 
-function check_buttons(table_id) {
+function check_buttons(table_id, object) {
+	console.log(object)
 	const check_button_class = table_id + '-button'
 	const mod_class = table_id + '-mod';
 	const table_class = table_id + '-table'
