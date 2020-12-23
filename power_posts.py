@@ -912,7 +912,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(immunity, new_mod, body)	
 
 	classname =  'cover'
-	cells = check_cell('Cover', 10, cover_check, classname, cells, True)
+	cells = check_cell('Cover', 7, cover_check, classname, cells, True)
 	new_mod = mod_create('Provides Cover', 20, classname)
 	new_mod = mod_cell('Cover Type', 18, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
