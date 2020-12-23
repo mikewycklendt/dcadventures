@@ -1214,9 +1214,7 @@ def power_grid():
 	rows = request.get_json()['rows']
 	font = request.get_json()['font']
 
-	print(row_id)
-	for row in rows:
-		print(row)
+	row_id = int(row_id)
 
 
 	new_rows = delete_row(row_id, rows)
