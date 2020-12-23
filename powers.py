@@ -1216,6 +1216,8 @@ def power_grid():
 
 	row_id = int(row_id)
 
+	for row in rows:
+		print(row)
 
 	new_rows = delete_row(row_id, rows)
 	grid = grid_columns(new_rows, font)
