@@ -238,7 +238,7 @@ def check_field(check, checkname, name, value, errors):
 				error = True
 				
 	if error:
-		message = name + ' field is required or uncheck the ' checkname ' checkbox.'
+		message = name + ' field is required or uncheck the ' + checkname + ' checkbox.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
