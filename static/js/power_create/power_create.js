@@ -1225,7 +1225,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 	grow += row.scrollHeight; 
 
 	if (create_mod) {
-		mod_create(mods, id, entry, table_id, object);
+		mod_create(mods, id, entry, table_id, object, table);
 	}
 	
 	grow_table(table, grow)
@@ -1237,7 +1237,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 
 
 
-function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
+function mod_create(mods_input, id_input, entry_input, table_id_input, object, table) {
 
 	const mods = mods_input;
 	const id = id_input;
@@ -1307,17 +1307,17 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object) {
 	}
 
 	
-	check_buttons(table_id, object, entry);
+	check_buttons(table_id, object, table);
 
 }
 
-function check_buttons(table_id, object, entry) {
+function check_buttons(table_id, object, table) {
 	console.log(object)
 	const check_button_class = table_id + '-button'
 	const mod_class = table_id + '-mod';
-	const table_class = table_id + '-table'
+	const entry_class = table_id + '-row';
 
-	const table = document.getElementById(table_class)
+	const entries = document.getElementsByClassName(entry_class)
 	const btns = document.getElementsByClassName(check_button_class);
 	const mods = document.getElementsByClassName(mod_class);
 
@@ -1328,11 +1328,13 @@ function check_buttons(table_id, object, entry) {
 			console.log(object.mod)
 			console.log(object.mod[i])
 
-			const  mod = mods[i]
+			const mod = mods[i]
+			const entry = entries[i]
 
 			if (object.mod[i] == true) {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
+				entry.style.maxHeight = entry.scrollHeight - mod.scrollHeight;
 				setTimeout(function(){mod.style.display = 'none'}, 400);
 				object.mod[i] = false;
 			} else {

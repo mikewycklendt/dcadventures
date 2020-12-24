@@ -772,7 +772,7 @@ textarea:focus {
 	background-color: white;
 	font-family: 'Monda', Verdana;
 	color: #245681;
-	max-height: 1.2vw;
+	max-height: 1.3vw;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
