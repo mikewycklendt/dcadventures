@@ -202,15 +202,14 @@ def send(cells, body):
 	rows.append(new_row)
 	print('\n\n')
 
-	
-	body['rows'] = rows
-
 	grid_update = grid_columns(rows, font)
 
 	grid = grid_update['grid']
 	font = grid_update['font']
 	columns = grid_update['columns']
+	saverows = grid_update['rows']
 
+	body['rows'] = saverows
 	print('\n')
 	print(font)
 
@@ -245,6 +244,7 @@ def grid_columns(rows, font):
 	for row in rows:
 		print(rows)
 
+	saverows = deepcopy(rows)
 
 	if not rows:
 		grid = 'hide'
@@ -295,6 +295,7 @@ def grid_columns(rows, font):
 	result['columns'] = columns
 	result['grid'] = grid
 	result['font'] = font
+	result['rows'] = saverows
 
 	return (result)
 
