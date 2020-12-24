@@ -910,7 +910,7 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value)
 	value = 6
 	new_mod = mod_cell('Action Type', 15, [reflect_action], new_mod, value)
-	new_mod = mod_cell('Resisted By', 15, [reflect_action], new_mod, value)
+	new_mod = mod_cell('Resisted By', 15, [reflect_resist_trait], new_mod, value)
 	body = mod_add(reflect, new_mod, body)
 	
 	classname = 'immunity'
