@@ -1383,7 +1383,9 @@ function row_delete(jsondata, route, object) {
 						rows.splice(i, 1);
 					}
 				}
-
+				
+				all_rows[i].style.maxHeight = '0px';
+				
 				response = fetch('/power/grid', {
 					method: 'POST',
 					body: JSON.stringify({
@@ -1401,7 +1403,6 @@ function row_delete(jsondata, route, object) {
 
 						console.log(rows);
 
-						all_rows[i].style.maxHeight = '0px';
 					
 
 
