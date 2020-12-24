@@ -1383,8 +1383,6 @@ function row_delete(jsondata, route, object) {
 						rows.splice(i, 1);
 					}
 				}
-				
-				all_rows[i].style.maxHeight = '0px';
 			
 			})
 		}
