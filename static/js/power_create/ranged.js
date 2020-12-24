@@ -67,7 +67,7 @@ function ranged_dc_trait_type() {
 
 let ranged_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 100,
 					'mod': []}
 
 function ranged_submit() {

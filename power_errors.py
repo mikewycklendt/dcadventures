@@ -19,6 +19,24 @@ def required(value, name, errors):
 
 	return (errors)
 
+def power(value):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value == '' or value is None:
+		error = True
+		message = 'You must create a power name first.'
+		error_msgs.append(message)
+
+			message = name + ' field cannot be empty.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def extra_convert(extra_id):
 
 	if extra_id == 0:
@@ -79,7 +97,7 @@ def select(fields, errors):
 	error = False
 
 	for field in fields:
-		name = field['name']
+		name = field['type']
 		values = field['values']
 
 		for value in values:
@@ -95,6 +113,36 @@ def select(fields, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def variable(field, value, name, fields, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		for f in fields:
+			if f['value'] == '':
+				error = True
+				
+		if error:
+			message = 'You must enter all required ' + name + ' fields.'
+			error_msgs.append(message)
+
+			for f in fields:
+				field_value = f['value']
+				field_name = f['name']
+				if field_value == '' or field_value is None:
+					message = field_name ' field is required.'
+					error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 
 def together(name, values, errors):
 
@@ -142,7 +190,24 @@ def check_fields(check, name, values, errors):
 
 	return (errors)
 
+def check_field(check, name, value, errors):
 
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if check:
+		if value == '' or value is None:
+				error = True
+				
+	if error:
+		message = name + ' field is required.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def multiple(options, errors):
 	error_msgs = errors['error_msgs']
@@ -1079,6 +1144,62 @@ def ranged_post_errors(data):
 	errors = id_check(Math, check_math, 'math', errors)
 	errors = id_check(Math, trait_math, 'math', errors)
 	errors = id_check(Math, distance_mod_math, 'math', errors)
+
+	integer(flat_value)
+	integer(flat_rank)
+	integer(flat_rank_value)
+	integer(flat_rank_units)
+	integer(flat_rank_rank)
+	integer(flat_rank_distance)
+	integer(flat_rank_distance_rank)
+	integer(units_rank_start_value)
+	integer(units_rank_value)
+	integer(units_rank_rank)
+	integer(rank_distance_start)
+	integer(rank_distance)
+	integer(rank_effect_rank)
+	integer(effect_mod)
+	integer(check_mod)
+	integer(trait_mod)
+	integer(distance_mod_rank)
+	integer(dc_value)
+	
+
+	errors = int_check(flat_value, 'Flat Value', errors)
+	errors = int_check(flat_rank, 'Rank', errors)
+	errors = int_check(flat_rank_value, 'Value', errors)
+	errors = int_check(flat_rank_rank, 'Rank', errors)
+	errors = int_check(flat_rank_distance, 'Distance', errors)
+	errors = int_check(flat_rank_distance_rank, 'Rank', errors)
+	errors = int_check(units_rank_start_value, 'Start Value', errors)
+	errors = int_check(units_rank_value, 'Value', errors)
+	errors = int_check(units_rank_rank, 'Rank', errors)
+	errors = int_check(rank_distance_start, 'Start Distance', errors)
+	errors = int_check(rank_distance, 'Distance', errors)
+	errors = int_check(rank_effect_rank, 'Rank', errors)
+	errors = int_check(effect_mod, 'Mod Value', errors)
+	errors = int_check(check_mod, 'Mod Value', errors)
+	errors = int_check(trait_mod, 'Mod Value', errors)
+	errors = int_check(distance_mod_rank, 'Rank', errors)
+	errors = int_check(dc_value, 'DC Value', errors)
+
+	errors = check_fields(dc, 'DC', dc_value, dc_trait_type, dc_trait], errors)
+	errors - check_field(dc, 'DC', dc_value, errors)
+	errors - check_field(dc, 'Trait Type', dc_trait_type, errors)
+	errors - check_field(dc, 'Trait', dc_trait, errors)
+	
+	errors = variable(range_type, 'flat_units', 'Flat Units', [{'value': flat_value, 'name': 'Distanve'}, {'value': flat_units, 'name': 'Unita'}], errors)
+	errors = variable(range_type, 'distance_rank', 'Flat Distance Rank', [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
+	errors = variable(range_type, 'flat_rank_units', 'Flat Units By Rank', [{'value': flat_rank_value, 'name': 'Distance'}, {'value': flat_rank_units, 'name': 'Units'}, {'value': flat_rank_rank, 'name': 'Rank'}], errors)
+	errors = variable(range_type, 'flat_rank_distance', 'Flat Distance Rank By Rank', [{'value': flat_rank_distance, 'name': 'Distance Rank'}, {'value': flat_rank_distance_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable(range_type, 'units_rank', 'Units Per Rank', [{'value': units_rank_start_value, 'name': 'Starting Distance'}, {'value': units_rank_value, 'name': 'Distance'}, {'value': units_rank_units, 'name': 'Units'}, {'value': units_rank_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable(range_type, 'rank_rank', 'Distance Rank Per Rank', [{'value': rank_distance_start, 'name': 'Starting Distance'}, {'value': rank_distance, 'name': 'Distance Rank'}, {'value': rank_effect_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable(range_type, 'effect_mod', 'Effect Rank Modifier', [{'value': effect_mod_math, 'name': 'Math'}, {'value': effect_mod, 'name': 'Modifier'}], errors)
+	errors = variable(range_type, 'trait_mod', 'Trait Rank Modifier', [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}{'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
+	errors = variable(range_type, 'distance_mod', 'Distance Rank Modifier', [{'value': trait_trait_type, 'name': 'Trait Type'}, {'value': trait_trait, 'name': 'Trait'}, {'value': trait_math, 'name': 'Math'}, {'value': trait_mod, 'name': 'Modifier'}], errors)
+	errors = variable(range_type, 'check', 'Check Result', [{'value': distance_mod_rank, 'name': 'Distance'}, {'value': distance_mod_math, 'name': 'Math'}, {'value': distance_mod_trait_type, 'name': 'Trait Type'}, {'value': distance_mod_trait, 'name': 'Trait'}], errors)
+
+
 
 
 	return (errors)
