@@ -281,7 +281,7 @@ def grid_columns(rows, font):
 					if columns[i] > 4:
 						columns[i] = columns[i] - 1
 					x = x - columns[i]
-				font = font - 2
+				font = font - 3
 				empty = x
 
 		for column in columns:
