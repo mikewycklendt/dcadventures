@@ -742,12 +742,12 @@ textarea:focus {
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
-	font-size: 130%;
+	font-size: 80%;
 	border-radius: .4vw;
 	padding: 2%;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height .4s ease-out;
+	transition: max-height .4s ease-out, font-size .2s linear;
 }
 
 .power-table-cell-title {
