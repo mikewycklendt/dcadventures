@@ -1144,7 +1144,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 	const size = jsonResponse.font;
 	const columns = jsonResponse.columns;
 
-	console.log(columns)
+	console.log(size)
 
 
 	const cells_class = table_id + '-cells';
@@ -1197,6 +1197,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 		} else {
 			new_cell.innerText = cell.content;
 			console.log(cell.content);
+			console.log(size)
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
 		}
