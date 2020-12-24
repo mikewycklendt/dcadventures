@@ -1370,7 +1370,8 @@ function row_delete(jsondata, route, object) {
 		btn.onclick = function(e) {
 			console.log('click');
 			
-			entry[i].style.maxHeight = '0px';
+			entry[i].style.maxHeight = '0vw';
+
 			const delId = e.target.dataset['id']
 			fetch(route + delId, {
 				method: 'DELETE'

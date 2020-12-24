@@ -177,8 +177,7 @@ function defense_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, defense_grid);
-			row_delete(jsonResponse, route, defense_grid)
+			create_table(jsonResponse, defense_grid, route);
 			clear_errors(err_line, errors)
 
 			defense_grid.titles = true;
