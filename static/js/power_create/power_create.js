@@ -1387,6 +1387,7 @@ function row_delete(jsondata, route, object) {
 					if (jsonResponse.success) {
 						const grid = jsonResponse.grid;
 						const new_rows = jsonResponse.rows
+						const columns = jsonResponse.columns;
 						const all_rows = document.getElementsByClassName('power-table-row')
 						const all_cells = document.getElementsByClassName(cells_class)
 
