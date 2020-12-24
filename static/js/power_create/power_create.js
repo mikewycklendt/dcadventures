@@ -1331,6 +1331,8 @@ function check_buttons(table_id, object, table) {
 			const mod = mods[i]
 			const entry = mod.parentNode;
 
+			console.log(mod.style.maxHeight);
+
 			if (mod.style.maxHeight != '0px') {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
