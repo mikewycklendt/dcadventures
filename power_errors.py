@@ -130,7 +130,7 @@ def variable(field, value, name, fields, errors):
 				field_value = f['value']
 				field_name = f['name']
 				if field_value == '' or field_value is None:
-					message = field_name ' field is required.'
+					message = field_name + ' field is required.'
 					error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
