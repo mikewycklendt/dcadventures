@@ -1105,11 +1105,11 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(cells, columns, table_id, grid, size, cell_class) {
+function grid__update(cells, table_id, grid, cells_class, size) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
-		if (columns[i].width > 1) {
+		if (cells[i].width > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
 		}
@@ -1118,9 +1118,6 @@ function grid__update(cells, columns, table_id, grid, size, cell_class) {
 			cell_title.style.maxHeight = '0px'
 		}
 	}
-
-	
-	const cells_class = table_id + '-cells';
 
 	const cells_rows = document.getElementsByClassName(cells_class);
 	for (let i = 0; i < cells_rows.length; i++) {
@@ -1147,11 +1144,10 @@ function cells_create(table_input, grow, jsonResponse, object) {
 
 
 	const cells_class = table_id + '-cells';
-	const cell_class = table_id + '-cell';
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'power-table-cells';	
+	const base_cells = 'power-table-cells';
 	const base_cell = 'power-table-cell'
 	const base_button_check = 'power-check-button ';
 	const base_check = 'power-check';
@@ -1172,10 +1168,10 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	let cell;
 	let cell_heights = [];
 	for (cell of cells) {
+		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
-		new_cell.className = cell_class;
-		new_cell.classList.add(base_cell);
-		console.log(cell_class)
+		new_cell.className = base_cell;
+		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
@@ -1232,7 +1228,7 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	
 	grow_table(table, grow)
 	
-	grid__update(cells, columns, table_id, grid, size, cell_class)
+	grid__update(columns, cells, table_id, grid, cells_class, size)
 
 }
 
