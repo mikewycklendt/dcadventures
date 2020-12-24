@@ -742,7 +742,7 @@ textarea:focus {
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
-	font-size: 110%;
+	font-size: 130%;
 	border-radius: .4vw;
 	padding: 2%;
 	max-height: 0;
