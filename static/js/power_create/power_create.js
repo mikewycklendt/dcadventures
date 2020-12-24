@@ -1352,7 +1352,7 @@ function check_buttons(table_id, object, entry) {
 
 function row_delete(jsondata, route, object) {
 	const table_id = jsondata.table_id;
-	let rows = object.columns;
+	const rows = object.columns;
 	const size = jsondata.font;
 	console.log(rows)
 
@@ -1373,6 +1373,14 @@ function row_delete(jsondata, route, object) {
 				method: 'DELETE'
 			})
 			.then(function() {
+
+				for (i = 0; i < rows.length; i++) {
+					if (rows[i].id == delId){
+						console.log(delId)
+						rows.splice(i, 1);
+					}
+				}
+
 				response = fetch('/power/grid', {
 					method: 'POST',
 					body: JSON.stringify({
