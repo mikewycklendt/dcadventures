@@ -1210,11 +1210,8 @@ def power_grid():
 	print(data)
 	print('\n\n\n')
 
-	row_id = request.get_json()['id']
 	rows = request.get_json()['rows']
 	font = request.get_json()['font']
-
-	row_id = int(row_id)
 
 	for row in rows:
 		print(row)

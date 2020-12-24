@@ -1387,7 +1387,7 @@ function row_delete(jsondata, route, object) {
 
 				console.log(rows);
 
-				response = fetch('/power/levels/create', {
+				response = fetch('/power/grid', {
 					method: 'POST',
 					body: JSON.stringify({
 						'font': size,
