@@ -1192,7 +1192,7 @@ def ranged_post_errors(data):
 	errors = variable(range_type, 'units_rank', 'Units Per Rank', [{'value': units_rank_start_value, 'name': 'Starting Distance'}, {'value': units_rank_value, 'name': 'Distance'}, {'value': units_rank_units, 'name': 'Units'}, {'value': units_rank_rank, 'name': 'Effect Rank'}], errors)
 	errors = variable(range_type, 'rank_rank', 'Distance Rank Per Rank', [{'value': rank_distance_start, 'name': 'Starting Distance'}, {'value': rank_distance, 'name': 'Distance Rank'}, {'value': rank_effect_rank, 'name': 'Effect Rank'}], errors)
 	errors = variable(range_type, 'effect_mod', 'Effect Rank Modifier', [{'value': effect_mod_math, 'name': 'Math'}, {'value': effect_mod, 'name': 'Modifier'}], errors)
-	errors = variable(range_type, 'trait_mod', 'Trait Rank Modifier', [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}{'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
+	errors = variable(range_type, 'trait_mod', 'Trait Rank Modifier', [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}, {'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
 	errors = variable(range_type, 'distance_mod', 'Distance Rank Modifier', [{'value': trait_trait_type, 'name': 'Trait Type'}, {'value': trait_trait, 'name': 'Trait'}, {'value': trait_math, 'name': 'Math'}, {'value': trait_mod, 'name': 'Modifier'}], errors)
 	errors = variable(range_type, 'check', 'Check Result', [{'value': distance_mod_rank, 'name': 'Distance'}, {'value': distance_mod_math, 'name': 'Math'}, {'value': distance_mod_trait_type, 'name': 'Trait Type'}, {'value': distance_mod_trait, 'name': 'Trait'}], errors)
 
