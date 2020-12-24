@@ -873,6 +873,7 @@ textarea:focus {
 	font-size: 95%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
+	border-left: 1vw solid #245681;
 	text-align: center;
 }
 
@@ -883,6 +884,7 @@ textarea:focus {
 	font-size: 85%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
+	border-right: 1vw solid #245681;
 }
 
 .mod-cell-title {
@@ -892,6 +894,7 @@ textarea:focus {
 	font-size: 90%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
+	border-left: .1vw solid #245681;
 }
 
 .power-table-title-table {
