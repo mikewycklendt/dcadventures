@@ -1105,7 +1105,7 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(cells, columns, table_id, grid, size) {
+function grid__update(cells, columns, table_id, grid, size, cell_class) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
@@ -1127,8 +1127,6 @@ function grid__update(cells, columns, table_id, grid, size) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 		cells_rows[i].style.fontSize = size + '%';
 	}
-
-	const cell_class = table_id + '-cell';
 
 	const cell = document.getElementsByClassName(cell_class);
 	for (let i = 0; i < cells_rows.length; i++) {
@@ -1234,7 +1232,7 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	
 	grow_table(table, grow)
 	
-	grid__update(cells, columns, table_id, grid, size)
+	grid__update(cells, columns, table_id, grid, size, cell_class)
 
 }
 
