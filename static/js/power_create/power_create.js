@@ -1393,6 +1393,7 @@ function row_delete(jsondata, route, object) {
 
 						console.log(new_rows)
 						object.columns = new_rows;
+						console.log(object.columns)
 						
 						let cells;
 
