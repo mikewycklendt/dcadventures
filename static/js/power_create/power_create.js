@@ -1126,7 +1126,6 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 	}
 
 	const cell_class = table_id + 'cell';
-	console.log(cell_class)
 	const cell = document.getElementsByClassName(cell_class);
 	for (let i = 0; i < cell.length; i++) {
 		cell[i].style.fontSize = size + '%';
