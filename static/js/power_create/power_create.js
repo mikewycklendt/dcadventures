@@ -1385,32 +1385,6 @@ function row_delete(jsondata, route, object) {
 				}
 				
 				all_rows[i].style.maxHeight = '0px';
-				
-				response = fetch('/power/grid', {
-					method: 'POST',
-					body: JSON.stringify({
-						'rows': rows,
-						'font': size,
-						'id': delId				}),
-					headers: {
-					  'Content-Type': 'application/json',
-					}
-				})
-				.then(response => response.json())
-				.then(jsonResponse => {
-					if (jsonResponse.success) {
-						const grid = jsonResponse.grid;
-
-						console.log(rows);
-
-					
-
-
-						
-					} else {
-						console.log('error')
-					}
-				})
 			
 			})
 		}
