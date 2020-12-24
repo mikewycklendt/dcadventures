@@ -1206,15 +1206,9 @@ def power_grid():
 
 	data = request.get_json()
 
-	print('\n\n\n')
-	print(data)
-	print('\n\n\n')
 
 	rows = request.get_json()['rows']
 	font = request.get_json()['font']
-
-	for row in rows:
-		print(row)
 
 	result = grid_columns(rows, font)
 
