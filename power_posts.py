@@ -244,7 +244,7 @@ def grid_columns(rows, font):
 		print(row)
 	print('\n')
 
-	if rows == []:
+	if not rows:
 		grid = 'hide'
 	else:
 		gridrows = []
