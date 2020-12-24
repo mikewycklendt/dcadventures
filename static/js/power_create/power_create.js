@@ -1105,11 +1105,11 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(cells, table_id, grid, cells_class, size) {
+function grid__update(cells, columns, table_id, grid, size) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
-		if (cells[i].width > 1) {
+		if (columns[i].width > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
 		}
@@ -1119,13 +1119,18 @@ function grid__update(cells, table_id, grid, cells_class, size) {
 		}
 	}
 
+	
+	const cells_class = table_id + '-cells';
+
 	const cells_rows = document.getElementsByClassName(cells_class);
 	for (let i = 0; i < cells_rows.length; i++) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 		cells_rows[i].style.fontSize = size + '%';
 	}
 
-	const cell = document.getElementsByClassName('power-table-cell');
+	const cell_class = table_id + '-cell';
+
+	const cell = document.getElementsByClassName(cell_class);
 	for (let i = 0; i < cells_rows.length; i++) {
 		cell[i].style.fontSize = size + '%';
 	}
@@ -1140,13 +1145,15 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
 	const size = jsonResponse.font;
+	const columns = jsonResponse.columns;
 
 
 	const cells_class = table_id + '-cells';
+	const cell_class = table_id + '-cell';
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'power-table-cells';
+	const base_cells = 'power-table-cells';	
 	const base_cell = 'power-table-cell'
 	const base_button_check = 'power-check-button ';
 	const base_check = 'power-check';
@@ -1167,7 +1174,6 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	let cell;
 	let cell_heights = [];
 	for (cell of cells) {
-		const cell_class = table_id + '-' + cell.class;
 		const new_cell = document.createElement('div');
 		new_cell.className = base_cell;
 		new_cell.classList.add(cell_class);
@@ -1227,7 +1233,7 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	
 	grow_table(table, grow)
 	
-	grid__update(cells, table_id, grid, cells_class, size)
+	grid__update(cells, columns, table_id, grid, size)
 
 }
 

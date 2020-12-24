@@ -209,6 +209,7 @@ def send(cells, body):
 
 	grid = grid_update['grid']
 	font = grid_update['font']
+	columns = grid_update['columns']
 
 	print('\n\n\n')
 	print(font)
@@ -220,6 +221,7 @@ def send(cells, body):
 	body['font'] = font
 	body['grid'] = grid
 	body['rows'] = rows
+	body['columns'] = columns
 
 	return (body)
 
@@ -259,6 +261,8 @@ def grid_columns(rows, font):
 				if g[i] > columns[i]:
 					columns[i] = g[i]
 
+		
+
 		grid = ''
 		empty = 95
 		for w in columns:
@@ -281,6 +285,7 @@ def grid_columns(rows, font):
 
 		print(grid)
 
+	result['columns'] = columns
 	result['grid'] = grid
 	result['font'] = font
 

@@ -1220,13 +1220,17 @@ def power_grid():
 		print(row)
 
 	new_rows = delete_row(row_id, rows)
-	grid = grid_columns(new_rows, font)
+	result = grid_columns(new_rows, font)
+
+	result['columns'] = columns
+	result['grid'] = grid
+	result['font'] = font
 
 	print('\n\n')
 	for row in new_rows:
 		print(row)
 
-	body = {'success': True, 'rows': new_rows, 'grid': grid}
+	body = {'success': True, 'rows': new_rows, 'grid': grid, 'font': font, 'columns' = columns}
 
 	return jsonify(body)
 
