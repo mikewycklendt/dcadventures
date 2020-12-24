@@ -1125,7 +1125,9 @@ function grid__update(cells, table_id, grid, cells_class, size) {
 		cells_rows[i].style.fontSize = size + '%';
 	}
 
-	const cell = document.getElementsByClassName('power-table-cell');
+	const cell_class = table_id + 'cell';
+	console.log(cell_class)
+	const cell = document.getElementsByClassName(cell_class);
 	for (let i = 0; i < cells_rows.length; i++) {
 		cell[i].style.fontSize = size + '%';
 	}
@@ -1167,7 +1169,8 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	let cell;
 	let cell_heights = [];
 	for (cell of cells) {
-		const cell_class = table_id + '-' + cell.class;
+		const cell_class = table_id + 'cell';
+		console.log(cell_class)
 		const new_cell = document.createElement('div');
 		new_cell.className = base_cell;
 		new_cell.classList.add(cell_class);
@@ -1344,10 +1347,10 @@ function check_buttons(table_id, object, entry) {
 	}
 }
 
-function row_delete(jsonResponse, route, object) {
-	const table_id = jsonResponse.table_id;
+function row_delete(jsondata, route, object) {
+	const table_id = jsondata.table_id;
 	const rows = object.columns;
-	const size = jsonResponse.font;
+	const size = jsondata.font;
 	console.log(rows)
 
 	const cells_class = table_id + '-cells';
