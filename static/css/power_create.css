@@ -860,7 +860,7 @@ textarea:focus {
 .mod-cell-mod {
 	display: table-cell;
 	vertical-align: middle;
-	font-size: 80%;
+	font-size: 100%;
 	border-left: .15vw solid #245681;
 	border-bottom: .15vw solid #245681;
 	background-color: #ceddea;
@@ -870,7 +870,7 @@ textarea:focus {
 .mod-cell-sub {
 	display: table-cell;
 	vertical-align: middle;
-	font-size: 75%;
+	font-size: 95%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
 	text-align: center;
@@ -880,7 +880,7 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 70%;
+	font-size: 90%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
 }
