@@ -1128,7 +1128,7 @@ function grid__update(cells, columns, table_id, grid, size, cell_class) {
 		cells_rows[i].style.fontSize = size + '%';
 	}
 
-	const cell = document.getElementsByClassName(cell_class);
+	const cell = document.getElementsByClassName('power-table-cell');
 	for (let i = 0; i < cells_rows.length; i++) {
 		cell[i].style.fontSize = size + '%';
 	}
