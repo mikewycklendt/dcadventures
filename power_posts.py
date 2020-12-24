@@ -211,8 +211,8 @@ def send(cells, body):
 	print('\n')
 	print(font)
 
-	for mod in mods:
-		print(mod)
+	for row in rows:
+		print(rows)
 
 
 	body['font'] = font
@@ -294,6 +294,7 @@ def grid_columns(rows, font):
 	result['columns'] = columns
 	result['grid'] = grid
 	result['font'] = font
+	result['rows']
 
 	return (result)
 
