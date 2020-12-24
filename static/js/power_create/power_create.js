@@ -1344,8 +1344,8 @@ function check_buttons(table_id, object, entry) {
 	}
 }
 
-function row_delete(firstjson, route, object) {
-	const table_id = firstjson.table_id;
+function row_delete(jsonResponse, route, object) {
+	const table_id = jsonResponse.table_id;
 	const rows = object.columns;
 	const size = jsonResponse.font;
 	console.log(rows)
