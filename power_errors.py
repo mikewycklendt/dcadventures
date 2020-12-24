@@ -401,7 +401,26 @@ def int_check(value, name, errors):
 	error = False
 
 	try:
-		if value != '':
+		if value != '' 	and 
+		value != 'perm' and 
+		value != 'rank' and 
+		value != 'any' and 
+		value != 'always' and 
+		value != 'round' and 
+		value != 'extra' and 
+		value != 'null' and 
+		value != 'normal' and 
+		value != 'instant' and 
+		value != 'distance' and 
+		value != 'vert' and 
+		value != 'free' and 
+		value != 'result' and 
+		value != 'all' and 
+		value != 'trait' and 
+		value != 'imperv' and 
+		value != 'check' and 
+		value != 'turn' and 
+		value is not None:
 			value = int(value)
 	except:
 		error = True
@@ -1105,6 +1124,80 @@ def move_post_errors(data):
 	errors = id_check(Check, objects_check, 'check', errors)
 	errors = id_check(ConflictAction, objects_attack, 'action', errors)
 
+	rank
+	math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	mod = db.Column(db.Integer)
+	per_rank = db.Column(db.Boolean)
+	flight = db.Column(db.Boolean)
+	aquatic = db.Column(db.Boolean)
+	ground = db.Column(db.Boolean)
+	condition = db.Column(db.String())
+	direction = db.Column(db.String())
+	distance_type = db.Column(db.String())
+	distance_value = db.Column(db.Integer)
+	distance_math_value = db.Column(db.Integer)
+	distance_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	distance_math_value2 = db.Column(db.Integer)
+	distance_mod = db.Column(db.Integer)
+	dc = db.Column(db.Integer)
+	others = db.Column(db.Boolean)
+	continuous = db.Column(db.Boolean)
+	subtle = db.Column(db.Boolean)
+	concentration = db.Column(db.Boolean)
+	obstacles = db.Column(db.Boolean)
+	objects = db.Column(db.Boolean)
+	permeate = db.Column(db.Boolean)
+	special = db.Column(db.Boolean)
+	prone = db.Column(db.Boolean)
+	check_type = db.Column(db.Boolean)
+	obstacles_check = db.Column(db.Boolean)
+	concealment = db.Column(db.Boolean)
+	extended = db.Column(db.Boolean)
+	mass = db.Column(db.Boolean)
+	mass_value = db.Column(db.Integer)
+	extended_actions = db.Column(db.Integer)
+	acquatic_type = db.Column(db.String())
+	concealment_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	concealment_trait_type = db.Column(db.String())
+	concealment_trait = db.Column(db.String())
+	permeate_type = db.Column(db.String())
+	permeate_speed = db.Column(db.Integer)
+	permeate_cover = db.Column(db.Boolean)
+	special_type = db.Column(db.String())
+	teleport_type = db.Column(db.String())
+	teleport_change = db.Column(db.String())
+	teleport_portal = db.Column(db.Boolean)
+	teleport_obstacles = db.Column(db.Boolean)
+	dimension_type = db.Column(db.String())
+	dimension_mass_rank = db.Column(db.Integer)
+	dimension_descriptor = db.Column(db.Integer)
+	special_space = db.Column(db.String())
+	special_time = db.Column(db.String())
+	special_time_carry = db.Column(db.Integer)
+	ground_type = db.Column(db.Integer, db.ForeignKey('ground.id'))
+	ground_permanence = db.Column(db.String())
+	ground_time = db.Column(db.Integer)
+	ground_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	ground_ranged = db.Column(db.Boolean)
+	subtle_trait_type = db.Column(db.String())
+	subtle_trait = db.Column(db.String())
+	subtle_mod = db.Column(db.Integer)
+	flight_resist = db.Column(db.Boolean)
+	flight_equip = db.Column(db.Boolean)
+	flight_conditions = db.Column(db.ARRAY(db.String))
+	objects_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	objects_attack = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	objects_skill_type = db.Column(db.String())
+	objects_skill = db.Column(db.String())
+	objects_direction = db.Column(db.String())
+	objects_damage = db.Column(db.Boolean)
+	damage_type = db.Column(db.String())
+	check_trait_type = db.Column(db.String())
+	check_trait = db.Column(db.String())
+	check_free = db.Column(db.Boolean)
+	ranks = db.Column(db.Integer)
+	cost = db.Column(db.Integer)
+
 	return (errors)
 
 def opposed_post_errors(data):
@@ -1183,13 +1276,13 @@ def ranged_post_errors(data):
 	errors = id_check(Math, trait_math, 'math', errors)
 	errors = id_check(Math, distance_mod_math, 'math', errors)
 
-	integer(flat_value)
-	integer(flat_rank)
-	integer(flat_rank_value)
-	integer(flat_rank_units)
-	integer(flat_rank_rank)
-	integer(flat_rank_distance)
-	integer(flat_rank_distance_rank)
+	flat_value = integer(flat_value)
+	flat_rank = integer(flat_rank)
+	flat_rank_value = integer(flat_rank_value)
+	flat_rank_units = integer(flat_rank_units)
+	flat_rank_rank = integer(flat_rank_rank)
+	flat_rank_distance = integer(flat_rank_distance)
+	flat_rank_distance_rank = integer(flat_rank_distance_rank)
 	integer(units_rank_start_value)
 	integer(units_rank_value)
 	integer(units_rank_rank)
