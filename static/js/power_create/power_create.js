@@ -1262,8 +1262,8 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 		const cells = new_mod.cells;
 		const mod_title = new_mod.title;
 		const variable = new_mod.variable;
-		object.mod.push(false)
 		console.log(entries.length)
+		object.mod.push(false)
 
 		const mod = document.createElement('div');
 		mod.className = mod_class;
@@ -1413,6 +1413,10 @@ function row_delete(jsondata, route, object, table) {
 						const columns = jsonResponse.columns;
 						console.log(grid)
 
+						if (grid == 'hide') {
+							table.style.maxHeight = '0px';
+							setTimeout(function(){table.style.display = 'none'}, 400);
+						}
 						grid__update(columns, cells, table_id, grid, cells_class, newsize, table)
 					} else {
 						console.log('error')
