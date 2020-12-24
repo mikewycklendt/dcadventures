@@ -1352,7 +1352,7 @@ function check_buttons(table_id, object, entry) {
 
 function row_delete(jsondata, route, object) {
 	const table_id = jsondata.table_id;
-	const rows = object.columns;
+	let rows = object.columns;
 	const size = jsondata.font;
 	console.log(rows)
 
