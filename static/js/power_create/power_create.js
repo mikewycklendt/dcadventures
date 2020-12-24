@@ -1251,6 +1251,10 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 	const mod_cell_sub = 'mod-cell-sub';
 	const mod_cell_title = 'mod-cell-title';
 	const mod_cell_content = 'mod-cell-content';
+	
+	const entry_class = table_id + '-row';
+
+	const entries = document.getElementsByClassName(entry_class);
 
 	let new_mod;
 	for (new_mod of mods) {
@@ -1259,6 +1263,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 		const mod_title = new_mod.title;
 		const variable = new_mod.variable;
 		object.mod.push(false)
+		console.log(entries.length)
 
 		const mod = document.createElement('div');
 		mod.className = mod_class;
@@ -1333,7 +1338,7 @@ function check_buttons(table_id, object, table) {
 
 			console.log(mod.style.maxHeight);
 
-			if (mod.style.maxHeight != '0px') {
+			if (object.mod[i] == true) {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - mod.scrollHeight;
