@@ -1416,8 +1416,9 @@ function row_delete(jsondata, route, object, table) {
 						if (grid == 'hide') {
 							table.style.maxHeight = '0px';
 							setTimeout(function(){table.style.display = 'none'}, 400);
+						} else {
+							grid__update(columns, cells, table_id, grid, cells_class, newsize, table)
 						}
-						grid__update(columns, cells, table_id, grid, cells_class, newsize, table)
 					} else {
 						console.log('error')
 					}
