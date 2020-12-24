@@ -1399,7 +1399,8 @@ function row_delete(jsondata, route, object) {
 					if (jsonResponse.success) {
 						const grid = jsonResponse.grid;
 
-						
+						console.log(rows);
+												
 						all_rows[i].style.maxHeight = '0px';
 						
 						let cells;
