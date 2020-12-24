@@ -1175,8 +1175,9 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	let cell_heights = [];
 	for (cell of cells) {
 		const new_cell = document.createElement('div');
-		new_cell.className = base_cell;
-		new_cell.classList.add(cell_class);
+		new_cell.className = cell_class;
+		new_cell.classList.add(base_cell);
+		console.log(cell_class)
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
 		} else if (cell.content == true) {
