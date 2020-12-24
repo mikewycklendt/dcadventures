@@ -294,7 +294,6 @@ def grid_columns(rows, font):
 	result['columns'] = columns
 	result['grid'] = grid
 	result['font'] = font
-	result['rows']
 
 	return (result)
 
