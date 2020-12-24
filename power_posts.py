@@ -239,6 +239,7 @@ def grid_columns(rows, font):
 	result = {}
 
 	columns = []
+	columns.clear()
 
 	for row in rows:
 		print(row)
@@ -287,7 +288,7 @@ def grid_columns(rows, font):
 		
 		grid += str(empty) + '%' + ' 5%'
 
-		print(grid)
+	print(grid)
 
 	result['columns'] = columns
 	result['grid'] = grid
