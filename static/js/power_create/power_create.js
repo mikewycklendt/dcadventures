@@ -1105,12 +1105,9 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(columns, cells, table_id, grid, cells_class, size) {
-	
-	
-	const table_class = table_id + '-table'
+function grid__update(columns, cells, table_id, grid, cells_class, size, table) {
 
-	const table = document.getElementById(table_class);
+	table.style.fontSize = size + '%';
 
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
@@ -1121,7 +1118,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 		}
 		else {
 			cell_title.style.opacity = '0%';
-			cell_title.style.maxHeight = '0px'
+			cell_title.style.maxHeight = '0px';
 		}
 	}
 
@@ -1131,7 +1128,6 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 		console.log(size)
 	}
 
-	table.style.fontSize = size + '%';
 }
 
 function cells_create(table_input, grow, jsonResponse, object, route) {
@@ -1234,7 +1230,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 	
 	grow_table(table, grow)
 	
-	grid__update(columns, cells, table_id, grid, cells_class, size)
+	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
 	row_delete(jsonResponse, route, object) 
 }
