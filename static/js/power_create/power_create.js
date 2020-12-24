@@ -1109,7 +1109,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
-		if (columns[i].width > 1) {
+		if (columns[i] > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
 		}
