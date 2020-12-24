@@ -192,9 +192,6 @@ def send(cells, body):
 	mods = body['mods']
 	font = body['font']
 
-	for cell in cells:
-		print(cell)
-
 	widths = []
 	for cell in cells:
 		width = cell['width']
@@ -211,7 +208,7 @@ def send(cells, body):
 	font = grid_update['font']
 	columns = grid_update['columns']
 
-	print('\n\n\n')
+	print('\n')
 	print(font)
 
 	for mod in mods:
@@ -242,6 +239,10 @@ def grid_columns(rows, font):
 	result = {}
 
 	columns = []
+
+	for row in rows:
+		print(row)
+	print('\n')
 
 	if rows == []:
 		grid = 'hide'
