@@ -133,7 +133,8 @@ function sense_dimensional() {
 
 let sense_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function sense_submit() {
 	

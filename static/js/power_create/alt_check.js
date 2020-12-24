@@ -23,7 +23,8 @@ function check_trait_type() {
 
 let check_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function check_submit() {
 

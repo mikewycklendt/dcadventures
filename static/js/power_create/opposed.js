@@ -31,7 +31,8 @@ function opposed_opponent_trait_type() {
 
 let opposed_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function opposed_submit() {
 

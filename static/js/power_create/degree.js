@@ -17,7 +17,8 @@ function degree_base() {
 
 let degree_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function degree_submit() {
 	

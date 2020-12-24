@@ -65,7 +65,8 @@ function deg_mod_measure_trait_type() {
 
 let deg_mod_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function deg_mod_submit() {
 

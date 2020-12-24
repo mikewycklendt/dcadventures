@@ -20,7 +20,8 @@ let bonus_level = true;
 
 let levels_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function levels_submit() {
 

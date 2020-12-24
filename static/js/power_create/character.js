@@ -163,7 +163,8 @@ function char_weaken_broad() {
 
 let char_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function char_submit() {
 

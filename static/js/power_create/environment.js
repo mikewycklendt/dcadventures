@@ -92,7 +92,8 @@ function env_immunity_type() {
 
 let env_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function env_submit() {
 

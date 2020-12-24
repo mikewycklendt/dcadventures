@@ -49,7 +49,8 @@ function reverse_value_type() {
 
 let reverse_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function reverse_submit() {
 

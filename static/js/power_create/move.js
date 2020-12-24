@@ -192,7 +192,8 @@ function move_mass() {
 
 let move_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function move_submit() {
 

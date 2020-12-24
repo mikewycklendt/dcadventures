@@ -54,7 +54,8 @@ function minion_attitude_trait_type() {
 
 let minion_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function minion_submit() {
 

@@ -172,7 +172,8 @@ function create_transform() {
 
 let create_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function create_submit() {
 

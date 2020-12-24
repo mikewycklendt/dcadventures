@@ -88,7 +88,8 @@ function dc_levels() {
 
 let dc_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function dc_submit() {
 

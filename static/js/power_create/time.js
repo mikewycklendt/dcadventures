@@ -39,7 +39,8 @@ function time_recovery() {
 
 let time_grid = {'titles': false,
 					'columns': [],
-					'font': 80}
+					'font': 80,
+					'mod': []}
 
 function time_submit() {
 
