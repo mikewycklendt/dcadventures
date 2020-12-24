@@ -28,9 +28,6 @@ def power(value):
 		message = 'You must create a power name first.'
 		error_msgs.append(message)
 
-			message = name + ' field cannot be empty.'
-		error_msgs.append(message)
-
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
