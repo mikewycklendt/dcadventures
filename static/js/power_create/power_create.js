@@ -1106,6 +1106,12 @@ function grow_table(table, grow) {
 }
 
 function grid__update(columns, cells, table_id, grid, cells_class, size) {
+	
+	
+	const table_class = table_id + '-table'
+
+	const table = document.getElementById(table_class);
+
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
@@ -1124,11 +1130,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 		cells_rows[i].style.gridTemplateColumns = grid;
 	}
 
-	const cell_class = table_id + 'cell';
-	const cell = document.getElementsByClassName(cell_class);
-	for (let i = 0; i < cell.length; i++) {
-		console.log(i)
-	}
+	table.style.fontSize = size + '%';
 }
 
 function cells_create(table_input, grow, jsonResponse, object, route) {
