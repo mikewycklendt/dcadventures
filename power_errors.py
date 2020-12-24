@@ -228,7 +228,7 @@ def check_fields(check, name, values, errors):
 
 	return (errors)
 
-def check_field(check, name, value, errors):
+def check_field(check, checkname, name, value, errors):
 
 	error_msgs = errors['error_msgs']
 	error = False
@@ -238,7 +238,7 @@ def check_field(check, name, value, errors):
 				error = True
 				
 	if error:
-		message = name + ' field is required.'
+		message = name + ' field is required or uncheck the ' checkname ' checkbox.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -405,7 +405,7 @@ def int_check(value, name, errors):
 			value = int(value)
 	except:
 		error = True
-		message = name + ' value must be a number.'
+		message = name + ' value is not valid.'
 		error_msgs.append
 	
 	errors['error_msgs'] = error_msgs
@@ -729,6 +729,8 @@ def defense_post_errors(data):
 
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_action, reflect_check], errors)
+	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Action Type', reflect_action, errors)
+	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Check Type', reflect_check, errors)
 
 	value = reflect_check
 	fields = field('Trait Type', reflect_opposed_trait_type)
@@ -1105,79 +1107,31 @@ def move_post_errors(data):
 	errors = id_check(Check, objects_check, 'check', errors)
 	errors = id_check(ConflictAction, objects_attack, 'action', errors)
 
-	rank
-	math = db.Column(db.Integer, db.ForeignKey('math.id'))
-	mod = db.Column(db.Integer)
-	per_rank = db.Column(db.Boolean)
-	flight = db.Column(db.Boolean)
-	aquatic = db.Column(db.Boolean)
-	ground = db.Column(db.Boolean)
-	condition = db.Column(db.String())
-	direction = db.Column(db.String())
-	distance_type = db.Column(db.String())
-	distance_value = db.Column(db.Integer)
-	distance_math_value = db.Column(db.Integer)
-	distance_math = db.Column(db.Integer, db.ForeignKey('math.id'))
-	distance_math_value2 = db.Column(db.Integer)
-	distance_mod = db.Column(db.Integer)
-	dc = db.Column(db.Integer)
-	others = db.Column(db.Boolean)
-	continuous = db.Column(db.Boolean)
-	subtle = db.Column(db.Boolean)
-	concentration = db.Column(db.Boolean)
-	obstacles = db.Column(db.Boolean)
-	objects = db.Column(db.Boolean)
-	permeate = db.Column(db.Boolean)
-	special = db.Column(db.Boolean)
-	prone = db.Column(db.Boolean)
-	check_type = db.Column(db.Boolean)
-	obstacles_check = db.Column(db.Boolean)
-	concealment = db.Column(db.Boolean)
-	extended = db.Column(db.Boolean)
-	mass = db.Column(db.Boolean)
-	mass_value = db.Column(db.Integer)
-	extended_actions = db.Column(db.Integer)
-	acquatic_type = db.Column(db.String())
-	concealment_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
-	concealment_trait_type = db.Column(db.String())
-	concealment_trait = db.Column(db.String())
-	permeate_type = db.Column(db.String())
-	permeate_speed = db.Column(db.Integer)
-	permeate_cover = db.Column(db.Boolean)
-	special_type = db.Column(db.String())
-	teleport_type = db.Column(db.String())
-	teleport_change = db.Column(db.String())
-	teleport_portal = db.Column(db.Boolean)
-	teleport_obstacles = db.Column(db.Boolean)
-	dimension_type = db.Column(db.String())
-	dimension_mass_rank = db.Column(db.Integer)
-	dimension_descriptor = db.Column(db.Integer)
-	special_space = db.Column(db.String())
-	special_time = db.Column(db.String())
-	special_time_carry = db.Column(db.Integer)
-	ground_type = db.Column(db.Integer, db.ForeignKey('ground.id'))
-	ground_permanence = db.Column(db.String())
-	ground_time = db.Column(db.Integer)
-	ground_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	ground_ranged = db.Column(db.Boolean)
-	subtle_trait_type = db.Column(db.String())
-	subtle_trait = db.Column(db.String())
-	subtle_mod = db.Column(db.Integer)
-	flight_resist = db.Column(db.Boolean)
-	flight_equip = db.Column(db.Boolean)
-	flight_conditions = db.Column(db.ARRAY(db.String))
-	objects_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	objects_attack = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	objects_skill_type = db.Column(db.String())
-	objects_skill = db.Column(db.String())
-	objects_direction = db.Column(db.String())
-	objects_damage = db.Column(db.Boolean)
-	damage_type = db.Column(db.String())
-	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
-	check_free = db.Column(db.Boolean)
-	ranks = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
+	errors = int_check(rank, 'Speed Rank', errors)
+	errors = int_check(mod, 'Speed Rank Modifier', errors)
+	errors = int_check(distance_value, 'Distance Value', errors)
+	errors = int_check(distance_math_value, 'First Distance Math Value', errors)
+	errors = int_check(distance_math_value2, 'Second Distance Math Value', errors)
+	errors = int_check(distance_mod, 'Distance Modifier', errors)
+	errors = int_check(dc, 'DC Value', errors)
+	errors = int_check(mass_value, 'Mass Value', errors)
+	errors = int_check(extended_actions, 'Move Actions', errors)
+	errors = int_check(permeate_speed, 'Permeate Speed', errors)
+	errors = int_check(dimension_mass_rank, 'Dimensional Carry Mass Rank', errors)
+	errors = int_check(special_time_carry, 'Time Travel Carry Mass Rank', errors)
+	errors = int_check(ground_time, 'Through Ground Time Value', errors)
+	errors = int_check(subtle_mod, 'Subtle Modifier', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+	errors = int_check(cost, 'Cost', errors)
+
+	errors = required(rank, 'Speed Rank' , errors)
+	errors = required(math, 'Speed Rank Math', errors)
+	errors = required(mod, 'Speed Rank Modifier', errors)
+	errors = check_fields(aquatic, 'Aquatic', [acquatic_type], errors)
+	check_field = check_field(aquatic, 'Aquatic Type','Aquatic', acquatic_type, errors)
+
+
+
 
 	return (errors)
 
@@ -1296,9 +1250,9 @@ def ranged_post_errors(data):
 	errors = int_check(dc_value, 'DC Value', errors)
 
 	errors = check_fields(dc, 'DC', [dc_value, dc_trait_type, dc_trait], errors)
-	errors - check_field(dc, 'DC', dc_value, errors)
-	errors - check_field(dc, 'Trait Type', dc_trait_type, errors)
-	errors - check_field(dc, 'Trait', dc_trait, errors)
+	errors - check_field(dc, 'DC', 'DC', dc_value, errors)
+	errors - check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
+	errors - check_field(dc, 'Trait', 'DC', dc_trait, errors)
 	
 	errors = variable(range_type, 'flat_units', 'Flat Units', [{'value': flat_value, 'name': 'Distanve'}, {'value': flat_units, 'name': 'Unita'}], errors)
 	errors = variable(range_type, 'distance_rank', 'Flat Distance Rank', [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
