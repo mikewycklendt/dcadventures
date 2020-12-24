@@ -880,7 +880,7 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 90%;
+	font-size: 85%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
 }
@@ -889,7 +889,7 @@ textarea:focus {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 75%;
+	font-size: 90%;
 	background-color: #ceddea;
 	border-bottom: .15vw solid #245681;
 }
