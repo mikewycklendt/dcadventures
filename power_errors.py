@@ -139,6 +139,47 @@ def variable(field, value, name, fields, errors):
 
 	return (errors)
 
+def variable_fields(value, name, field, fields, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		for f in fields:
+			if f == '':
+				error = True
+				
+		if error:
+			message = 'You must enter all required ' + name + ' fields.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
+def variable_field(value, field, name, f, fields, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		if f == '':
+			error = True
+				
+	if error:
+		message = name + ' field is required.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 
 def together(name, values, errors):
