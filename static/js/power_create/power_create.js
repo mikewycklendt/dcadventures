@@ -1105,11 +1105,11 @@ function grow_table(table, grow) {
 	table.style.maxHeight = table.scrollHeight + grow + 'px';
 }
 
-function grid__update(columns, cells, table_id, grid, cells_class, size) {
+function grid__update(cells, table_id, grid, cells_class, size) {
 	for (let i = 0; i < cells.length; i++) {
 		const title_id = table_id + '-' + cells[i].class + '-title';
 		const cell_title = document.getElementById(title_id)
-		if (columns[i].width > 1) {
+		if (cells[i].width > 1) {
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
 			cell_title.style.opacity = '100%';
 		}
@@ -1140,7 +1140,6 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	const mods = jsonResponse.mods;
 	const cells = jsonResponse.cells;
 	const size = jsonResponse.font;
-	const columns = jsonResponse.columns;
 
 
 	const cells_class = table_id + '-cells';
@@ -1228,7 +1227,7 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	
 	grow_table(table, grow)
 	
-	grid__update(columns, cells, table_id, grid, cells_class, size)
+	grid__update(cells, table_id, grid, cells_class, size)
 
 }
 
@@ -1348,7 +1347,7 @@ function check_buttons(table_id, object, entry) {
 function row_delete(firstjson, route, object) {
 	const table_id = firstjson.table_id;
 	const rows = object.columns;
-	const size = firstjson.font;
+	const size = jsonResponse.font;
 	console.log(rows)
 
 	const cells_class = table_id + '-cells';
