@@ -258,9 +258,12 @@ def grid_columns(rows, font):
 			columns = gridrows[0]
 		
 		for g in gridrows:
-			for i in range(0, len(columns), 1):
-				if g[i] > columns[i]:
-					columns[i] = g[i]
+			if not columns:
+				columns = g
+			else:
+				for i in range(0, len(columns), 1):
+					if g[i] > columns[i]:
+						columns[i] = g[i]
 
 		
 
