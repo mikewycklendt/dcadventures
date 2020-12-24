@@ -1232,7 +1232,7 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object) 
+	row_delete(jsonResponse, route, object, table) 
 }
 
 
@@ -1348,7 +1348,7 @@ function check_buttons(table_id, object, entry) {
 	}
 }
 
-function row_delete(jsondata, route, object) {
+function row_delete(jsondata, route, object, table) {
 	const table_id = jsondata.table_id;
 	const cells = jsondata.cells;
 	const rows = object.columns;
@@ -1405,7 +1405,7 @@ function row_delete(jsondata, route, object) {
 						const columns = jsonResponse.columns;
 						console.log(grid)
 
-						grid__update(columns, cells, table_id, grid, cells_class, newsize)
+						grid__update(columns, cells, table_id, grid, cells_class, newsize, table)
 					} else {
 						console.log('error')
 					}
