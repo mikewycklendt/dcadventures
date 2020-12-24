@@ -747,7 +747,7 @@ textarea:focus {
 	padding: 2%;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .4s ease-out;
+	transition: max-height .4s ease-out;
 }
 
 .power-table-cell-title {
