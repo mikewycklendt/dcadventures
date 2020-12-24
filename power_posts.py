@@ -214,8 +214,7 @@ def send(cells, body):
 	print('\n')
 	print(font)
 
-	for row in rows:
-		print(rows)
+	print(body['rows'])
 
 
 	body['font'] = font
