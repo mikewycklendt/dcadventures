@@ -1351,6 +1351,7 @@ function check_buttons(table_id, object, entry) {
 
 function row_delete(jsondata, route, object) {
 	const table_id = jsondata.table_id;
+	const cells = jsondata.cells;
 	const rows = object.columns;
 	const size = jsondata.font;
 	console.log(rows)
@@ -1401,8 +1402,11 @@ function row_delete(jsondata, route, object) {
 					console.log(jsonResponse)
 					if (jsonResponse.success) {
 						const grid = jsonResponse.grid;
-
+						const newsize = jsonResponse.font;
+						const columns = jsonResponse.columns;
 						console.log(grid)
+
+						grid__update(columns, cells, table_id, grid, cells_class, newsize)
 					} else {
 						console.log('error')
 					}
