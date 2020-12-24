@@ -1329,7 +1329,7 @@ function check_buttons(table_id, object, table) {
 			console.log(object.mod[i])
 
 			const mod = mods[i]
-			const entry = entries[i]
+			const entry = mod.parentNode;
 
 			if (object.mod[i] == true) {
 				mod.style.maxHeight = '0px';
