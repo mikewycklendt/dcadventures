@@ -1358,7 +1358,6 @@ function row_delete(jsondata, route, object, table) {
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
 	const entry_class = table_id + '-row';
-	const table = document.getElementById(table_class);
 	const delete_class = table_id + '-xbox';
 
 	const entry = document.getElementsByClassName(entry_class)
