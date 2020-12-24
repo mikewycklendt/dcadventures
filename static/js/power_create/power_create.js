@@ -1385,6 +1385,30 @@ function row_delete(jsondata, route, object) {
 					}
 				}
 
+				console.log(rows);
+
+				response = fetch('/power/levels/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						'font': size,
+						'rows': rows
+					}),
+					headers: {
+					  'Content-Type': 'application/json',
+					}
+				})
+				.then(response => response.json())
+				.then(jsonResponse => {
+					console.log(jsonResponse)
+					if (jsonResponse.success) {
+						const grid = jsonResponse.grid;
+
+						console.log(grid)
+					} else {
+						console.log('error')
+					}
+				})
+
 			
 			})
 		}
