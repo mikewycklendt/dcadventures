@@ -999,7 +999,7 @@ power_save = function() {
 ```
 
 
-function create_table(jsonResponse, object) {
+function create_table(jsonResponse, object, route) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1031,7 +1031,7 @@ function create_table(jsonResponse, object) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object);
+		create_titles(jsonResponse, grow, object, route);
 	
 	} else {
 
@@ -1039,13 +1039,13 @@ function create_table(jsonResponse, object) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object);
+		cells_create(table, grow, jsonResponse, object, route);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow, object) {
+function create_titles(jsonResponse, grow, object, route) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1095,7 +1095,7 @@ function create_titles(jsonResponse, grow, object) {
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object)
+	cells_create(new_table, grow, jsonResponse, object, route)
 	
 }
 
@@ -1133,7 +1133,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 	}
 }
 
-function cells_create(table_input, grow, jsonResponse, object) {
+function cells_create(table_input, grow, jsonResponse, object, route) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -1234,6 +1234,7 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size)
 
+	row_delete(jsonResponse, route, object) 
 }
 
 
