@@ -1180,7 +1180,7 @@ def ranged_post_errors(data):
 	errors = int_check(distance_mod_rank, 'Rank', errors)
 	errors = int_check(dc_value, 'DC Value', errors)
 
-	errors = check_fields(dc, 'DC', dc_value, dc_trait_type, dc_trait], errors)
+	errors = check_fields(dc, 'DC', [dc_value, dc_trait_type, dc_trait], errors)
 	errors - check_field(dc, 'DC', dc_value, errors)
 	errors - check_field(dc, 'Trait Type', dc_trait_type, errors)
 	errors - check_field(dc, 'Trait', dc_trait, errors)
