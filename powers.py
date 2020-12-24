@@ -1225,10 +1225,6 @@ def power_grid():
 	grid = result['grid']
 	font = result['font']
 
-	print('\n\n')
-	for row in new_rows:
-		print(row)
-
 	body = {'success': True, 'grid': grid, 'font': font, 'columns': columns}
 
 	return jsonify(body)
