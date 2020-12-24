@@ -1122,13 +1122,12 @@ function grid__update(columns, cells, table_id, grid, cells_class, size) {
 	const cells_rows = document.getElementsByClassName(cells_class);
 	for (let i = 0; i < cells_rows.length; i++) {
 		cells_rows[i].style.gridTemplateColumns = grid;
-		cells_rows[i].style.fontSize = size + '%';
 	}
 
 	const cell_class = table_id + 'cell';
 	const cell = document.getElementsByClassName(cell_class);
 	for (let i = 0; i < cell.length; i++) {
-		cell[i].style.fontSize = size + '%';
+		console.log(i)
 	}
 }
 
