@@ -1362,8 +1362,7 @@ function row_delete(jsondata, route, object) {
 	const table = document.getElementById(table_class);
 	const delete_class = table_id + '-xbox';
 
-	
-	const all_rows = document.getElementsByClassName(entry_class);
+	const entry = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
 	for (let i = 0; i < deletes.length; i++) {
@@ -1383,6 +1382,8 @@ function row_delete(jsondata, route, object) {
 						rows.splice(i, 1);
 					}
 				}
+
+				entry[i].style.maxHeight = '0px';
 			
 			})
 		}
