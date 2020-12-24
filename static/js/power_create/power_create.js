@@ -1400,24 +1400,9 @@ function row_delete(jsondata, route, object) {
 						const grid = jsonResponse.grid;
 
 						console.log(rows);
-												
+
 						all_rows[i].style.maxHeight = '0px';
-						
-						let cells;
-
-						for (cells of all_cells) {
-							if (grid == 'none') {
-								table.style.maxHeight = '0px'
-							} else {
-								cells.style.gridTemplateColumns = grid;
-							}
-						}
-
-						setTimeout(function() {
-							if (grid == 'none') {
-								table.style.maxHeight = '0px'
-							}
-						}, 400)
+					
 
 
 						
