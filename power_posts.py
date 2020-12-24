@@ -202,6 +202,9 @@ def send(cells, body):
 	rows.append(new_row)
 	print('\n\n')
 
+	
+	body['rows'] = rows
+
 	grid_update = grid_columns(rows, font)
 
 	grid = grid_update['grid']
@@ -217,7 +220,6 @@ def send(cells, body):
 
 	body['font'] = font
 	body['grid'] = grid
-	body['rows'] = rows
 	body['columns'] = columns
 
 	return (body)
