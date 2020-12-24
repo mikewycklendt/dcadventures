@@ -1144,6 +1144,8 @@ function cells_create(table_input, grow, jsonResponse, object) {
 	const size = jsonResponse.font;
 	const columns = jsonResponse.columns;
 
+	console.log(columns)
+
 
 	const cells_class = table_id + '-cells';
 	const entry_class = table_id + '-row';
