@@ -401,7 +401,7 @@ def int_check(value, name, errors):
 	error = False
 
 	try:
-		if value != '' 	
+		if value != '' 
 		and value != 'perm' 
 		and value != 'rank' 
 		and value != 'any' 
