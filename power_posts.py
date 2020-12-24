@@ -241,9 +241,6 @@ def grid_columns(rows, font):
 	columns = []
 	columns.clear()
 
-	for row in rows:
-		print(row)
-	print('\n')
 
 	if not rows:
 		grid = 'hide'
@@ -289,6 +286,7 @@ def grid_columns(rows, font):
 		grid += str(empty) + '%' + ' 5%'
 
 	print(grid)
+	print(columns)
 
 	result['columns'] = columns
 	result['grid'] = grid
