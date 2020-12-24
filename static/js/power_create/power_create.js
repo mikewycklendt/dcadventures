@@ -1317,7 +1317,7 @@ function check_buttons(table_id, object, entry) {
 
 	const table = document.getElementById(table_class)
 	const btns = document.getElementsByClassName(check_button_class);
-	const mods = document.getElementsByClassName('mod-row');
+	const mods = document.getElementsByClassName(mod_class);
 
 	for (let i = 0; i < btns.length; i++) {
 		const btn = btns[i];

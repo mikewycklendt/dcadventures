@@ -847,7 +847,7 @@ textarea:focus {
 
 .mod-row {
 	display: grid;
-	max-height: 0;
+	max-height: 0px;
 	overflow: hidden;
 	transition: max-height .4s ease-out;
 }
