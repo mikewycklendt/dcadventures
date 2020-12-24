@@ -1395,12 +1395,9 @@ function row_delete(jsondata, route, object) {
 				.then(jsonResponse => {
 					if (jsonResponse.success) {
 						const grid = jsonResponse.grid;
-						const new_rows = jsonResponse.rows
 						const all_rows = document.getElementsByClassName('power-table-row')
 						const all_cells = document.getElementsByClassName(cells_class)
 
-						console.log(new_rows)
-						object.columns = new_rows;
 						console.log(object.columns)
 						
 						let cells;
