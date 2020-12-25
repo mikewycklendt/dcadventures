@@ -266,7 +266,7 @@ def multiple(options, errors):
 
 	return (errors)
 
-def check_of_multiple(check, name, values, message, errors)
+def check_of_multiple(check, name, values, message, errors):
 	error_msgs = errors['error_msgs']
 	error = True
 	complete = False
