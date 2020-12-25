@@ -1523,6 +1523,9 @@ def resist_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Check, check_type, 'check', errors)
 	
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(rounds, 'Rounds', errors)
+	
 	return (errors)
 
 def resisted_by_post_errors(data):
@@ -1579,15 +1582,7 @@ def resisted_by_post_errors(data):
 	errors = variable_fields('trait', 'Weakened Trait', effect, [weaken_max, weaken_restored], errors)
 	errors = variable_field('trait', effect, 'Maximum Lost Points', weaken_max, errors)
 	errors = variable_field('trait', effect, 'Restored Points Rate', weaken_restored, errors)
-
-
-
-
-	'level', 'Level'
-
-
-
-
+	errors = variable_fields('level', 'Level', effect, [level], errors)
 
 	return (errors)
 

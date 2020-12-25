@@ -71,7 +71,7 @@
 
 	<div id="resistance-row2">
 		<div>
-			<select class="select-sml" id="resistance_resist_check_type" name="resistance_resist_check_type" onchange="resistance_check_type()">
+			<select class="select-sml" id="resistance_check_type" name="resistance_check_type" onchange="resistance_check_type()">
 				{% for r in resistance_type %}
 					<option value="{{r.type}}">{{r.name}}</option>
 				{% endfor %}
