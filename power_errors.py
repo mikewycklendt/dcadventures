@@ -160,7 +160,7 @@ def variable_fields(value, name, field, fields, errors):
 
 	return (errors)
 	
-def variable_field(value, field, name, f, fields, errors):
+def variable_field(value, field, name, f, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -219,7 +219,7 @@ def check_fields(check, name, values, errors):
 				error = True
 				
 	if error:
-		message = 'You must complete all required ' + name + ' fields.'
+		message = 'You must complete all required ' + name + ' fields or uncheck the ' + name + ' checkbox.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -266,9 +266,82 @@ def multiple(options, errors):
 
 	return (errors)
 
+def check_of_multiple(check, name, values, message, errors)
+	error_msgs = errors['error_msgs']
+	error = True
+	complete = False
+
+	if check:
+		for value in values:
+			for v in value:
+				if v != '' or value == True:
+					complete = True
+				else:
+					complete = False
+			if complete:
+				error = False
+	else:
+		error = False
+
+	if error:
+		message = message + ' or uncheck the ' name + ' checkbox.' 
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def of_multiple(values, message, errors):
 	error_msgs = errors['error_msgs']
 	error = True
+	complete = False
+
+	for value in values:
+		for v in value:
+			if v != '' or value == True:
+				complete = True
+			else:
+				complete = False
+		if complete:
+			error = False
+
+	if error:
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def check_of(check, name, values, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+	sub_error = False
+
+	if check:
+		for value in values:
+			if value != '' or value == True:
+				error = False
+	else:
+		error = False
+
+	if error:
+		message = 'You must select of of the required ' + name + ' options or uncheck the ' + name + ' checkbox.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def of(values, message, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+	sub_error = False
 
 	for value in values:
 		if value != '' or value == True:
@@ -1129,6 +1202,90 @@ def move_post_errors(data):
 	errors = required(mod, 'Speed Rank Modifier', errors)
 	errors = check_fields(aquatic, 'Aquatic', [acquatic_type], errors)
 	check_field = check_field(aquatic, 'Aquatic Type','Aquatic', acquatic_type, errors)
+
+	errors = check_fields(flight, 'Flight', [flight_conditions], errors)
+	errors = check_field(flight, 'Flight Conditions', 'Flight', flight_conditions, errors)
+	
+	errors = check_fields(ground, 'Through Ground', [ground_type, ground_permanence], errors)
+	errors = check_field(ground, 'Through Ground', 'Through Ground Type', ground_type, errors)
+	errors = check_field(ground, 'Through Ground', 'Ground Permanance', ground_permanence, errors)
+
+	errors = variable_fields('temp', 'Temporary Ground Permanace', ground_permanence, [ground_time, ground_units], errors)
+	errors = variable_field('temp', ground_permanence, 'Time', ground_time, errors)
+	errors = variable_field('temp', ground_permanence, 'Units', ground_units, errors)
+
+	errors = required(direction, 'Direction', errors)
+
+	errors = required(distance_type, 'Distance', errors)
+	errors = variable_field('value', distance_type, 'Distance Rank', distance_value, errors)
+	errors = variable_fields('math', 'Distance Math', distance_type, [distance_math_value, distance_math, distance_math_value2], errors)
+	errors = variable_field('math', distance_type, 'First Distance Math Value', distance_math_value, errors)
+	errors = variable_field('math', distance_type, 'Distance Math', distance_math, errors)
+	errors = variable_field('math', distance_type, 'Second Distance Math Value', distance_math_value2, errors)
+	errors = variable_fields('mod', 'Distance Modifier', distance_type, [distance_mod], errors)
+	errors = variable_field('mod', distance_type, 'Distance Modifier', distance_mod, errors)
+
+	errors = check_fields(subtle, 'Subtle', [subtle_trait_type, subtle_trait, subtle_mod], errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Trait Type', subtle_trait_type, errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Trait', subtle_trait, errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Modifier', subtle_mod, errors)
+
+	errors = check_fields(objects, 'Move Objects', [objects_check, objects_direction], errors)
+	errors - variable_fields('1', 'Move Objects Skill Check', objects_check, [objects_skill_type, objects_skill], errors)
+	errors = variable_field('1', objects_check, 'Move Objects Skill Tyoe', objects_skill_type, errors)
+	errors = variable_field('1', objects_check, 'Move Objects Skill', objects_skill, errors)
+	errors - variable_fields('5', 'Move Objects Attack Check', objects_check, [objects_attack], errors)
+	errors = variable_field('5', objects_check, 'Move Objects Attack Check Type', objects_attack, errors)
+	errors = check_fields(objects_damage, 'Move Objects Damage Inflict', [damage_type], errors)
+	errors = check_field(objects_damage, 'Move Objects Damage Inflict', 'Damage Dealt By', damage_type, errors)
+
+	errors = check_fields(permeate, 'Permeate', [permeate_type, permeate_speed], errors)
+	errors = check_field(permeate, 'Permeate', 'Permeate Type', permeate_type, errors)
+	errors = check_fields(permeate, 'Permeate', 'Permeate Speed Rank Modifier', permeate_speed, errors)
+
+	errors = check_fields(special, 'Special Travel', [special_type], errors)
+	errors = variable_fields('dimension', 'Dimension Travel', special_type, [dimension_type, dimension_mass_rank], errors)
+	errors = variable_field('dimension', special_type, 'Dimension Travel Type', dimension_type, errors)
+	errors = variable_field('dimension', special_type, 'Dimension Travel Carry Mass', dimension_mass_rank, errors)
+	errors - variable_fields('descriptor', 'Dimension Descriptor', dimension_type, [dimension_descriptor], errors)
+	errors = variable_fields('space', 'Space Travel', special_type, [special_space], errors)
+	errors = variable_field('space', special_type, 'Space Travel Type', special_space, errors) 
+	errors = variable_fields('time', 'Time Travel', special_type, [special_time, special_time_carry], errors)
+	errors = variable_field('time', special_type, 'Time Travel Type', special_time, errors)
+	errors = variable_field('time', special_type, 'Time Travel Carry Mass', special_time_carry, errors)
+	errors = variable_fields('teleport', 'Teleport', special_type, [teleport_type], errors)
+	errors = variable_field('teleport',  special_type, 'Teleport Type', teleport_type, errors)
+
+	errors = check_of_multiple(check_type, 'Check Type', [[check_trait_type, check_trait], [check_free]], 'You mest eitherr set a trait type and trait or specify that this is a free check', errors)
+
+	errors = check_fields(concealment, 'Concealment', [concealment_sense, concealment_trait, concealment_trait_type], errors)
+	errors = check_field(concealment, 'Concealment', 'Concealed from Sense', concealment_sense, errors)
+	errors = check_field(concealment, 'Concealment', 'Concealment Detection Trait Type', concealment_trait_type, errors)
+	errors = check_field(concealment, 'Concealment', 'Concealment Detection Trait', concealment_trait, errors)
+
+	errors = check_fields(extended, 'Extended', [extended_actions], errors)
+	errors = check_field(extended, 'Extended', 'Extended Actions', extended_actions, errors)
+
+	errors = check_fields(mass, 'Increased Mass', [mass_value], errors)
+	errors = check_field(mass, 'Increased Mass', 'Increased Mass Amount', mass_value, errors)
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
 
 
 

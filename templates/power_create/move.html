@@ -343,6 +343,7 @@
 
 		<div>
 			<select class="select-sml" id="move_concealment_trait_type" name="move_concealment_trait_type" onchange="move_concealment_trait_type()">
+				<option value="">Check to Detect</option>
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -589,6 +590,7 @@
 			<select class="select-sml" id="move_subtle_mod" name="move_subtle_mod">
 				<option value="">Bonus</option>
 				<option value="free">No Check</option>
+				<option value=0>0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
