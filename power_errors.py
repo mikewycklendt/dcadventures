@@ -1554,7 +1554,7 @@ def sense_post_errors(data):
 	errors = variable_field('resist', sense_type, 'Resistant Trait', resist_trait, errors)
 	errors = check_field(resist_immune, 'Immunity', 'Immunity Type', resist_permanent, errors)
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
-	errors = check_field(time, 'Time Effect'. 'Time Set By', time_set, errors)
+	errors = check_field(time, 'Time Effect', 'Time Set By', time_set, errors)
 	errors = variable_fields('value', 'Time Set by Value', time_set, [time_value, time_unit], errors)
 	errors = variable_field('value', time_set, 'Value', time_value, errors)
 	errors = variable_field('value', time_set, 'Units', time_unit, errors)
@@ -1563,7 +1563,7 @@ def sense_post_errors(data):
 	errors = variable_fields('bonus', 'Time Set by Enhanced Skill', time_set, [time_bonus], errors)
 	errors = variable_field('bonus', time_set, 'Enhanced Skill', time_bonus, errors)
 	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)
-	
+
 
 
 
