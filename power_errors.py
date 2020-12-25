@@ -302,7 +302,7 @@ def check_of(check, name, values, errors):
 		error = False
 
 	if error:
-		message = 'You must select of of the required ' + name + ' options or uncheck the ' + name + ' checkbox.'
+		message = 'You must select one of the required ' + name + ' options or uncheck the ' + name + ' checkbox.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -555,6 +555,66 @@ def character_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = int_check(value, 'Increased By', errors)
+	errors = int_check(increase, 'Per Rank', errors)
+	errors = int_check(reduced_value, 'Reduced', errors)
+	errors = int_check(carry_capacity, 'Carry Capacity', errors)
+	errors = int_check(points_value, 'Points', errors)
+	errors = int_check(cost, 'Cost', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+
+	errors = together('an Increased Trait', [trait_type, value, increase], errors)
+	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
+	errors = variable_fields('emotion', 'Emotional State', limited_by, [emotion], errors)
+	errors = variable_fields('other', 'Other Condition', limited_by, [other], errors)
+
+	errors = check_fields(reduced, 'Reduced Trait', [reduced_trait_type, reduced_value], errors)
+	errors = check_field(reduced, 'Reduced Trait', 'Reduced Trait Type', reduced_trait_type, errors)
+	errors = check_field(reduced, 'Reduced Trait', 'Reduced By Value', reduced_value, errors)
+	errors = variable_fields('ability', 'Reduced Ability', reduced_trait_type, [reduced_trait], errors)
+	errors = variable_field('ability', reduced_trait_type, 'Ability', reduced_trait, errors)
+	errors = variable_fields('defense', 'Reduced Defense', reduced_trait_type, [reduced_trait], errors)
+	errors = variable_fields('defense', reduced_trait_type, 'Defense', reduced_trait, errors)
+
+	errors = check_of(limbs, 'Extra Limbs', [limbs_continuous, limbs_sustained, limbs_distracting, limbs_projection], errors)
+	errors = check_field(carry, 'Extra Carry', 'Carry Capacity', carry_capacity, errors)
+	errors = check_fields(points, 'Hero Points', [points_value, points_trait_type, points_trait])
+	errors = check_field(points, 'Hero Points', 'Points Value', points_value, errors)
+	errors = check_field(points, 'Hero Points', 'Trait Type', points_trait_type, errors)
+	errors = check_field(points, 'Hero Points', 'Trait', points_trait, errors)
+
+	errors = check_fields(appear, 'Alters Appearance', [appear_target, appear_description], errors)
+	errors = check_field(appear, 'Alters Appearance', 'Target' appear_target, errors)
+	errors = check_field(appear, 'Alters Appearance', 'Description', appear_description, errors)
+
+	errors = check_fields(insubstantial, 'Insubstantial', [insub_type, insub_description], errors)
+	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)
+	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Description', insub_description, errors)
+
+	errors = check_fields(weaken, 'Weaken', [weaken_type], errors)
+	errors = check_field(weaken, 'Weaken', 'Weaken Type', weaken_type, errors)
+	errors = variable_fields()
+
+ errors = variable_fields('trait', 'Specific', weaken_type, [weaken_trait_type, weaken_trait], errors)
+ errors = variable_field('trait', weaken_type, 'Trait Type', weaken_trait_type, errors)
+ errors = variable_field('trait', weaken_type, 'Trait', weaken_trait, errors) 
+ errors = variable_fields('type', weaken_type, 'Broad Trait', [weaken_broad], errors)
+ errors = variable_field('type', weaken_type, 'Broad Trait Type', weaken_broad, errors)
+ errors = variable_fields('descriptor', 'Broad Descriptor', weaken_type, [weaken_descriptor], errors)
+ errors = variable_fields('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
+
+
+
+
+
+
+
+
+
+
+
+
 	
 
 
