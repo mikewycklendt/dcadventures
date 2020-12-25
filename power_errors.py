@@ -339,9 +339,9 @@ def select_of(value, selected_name, field_name, field, values, names, errors):
 
 	last = len(names) - 1
 	for_message = names[0]
-	if len(names) > 2
+	if len(names) > 2:
 		for i in range(1, len(names) - 1, 1):
-			for_message += ', ' names[i]
+			for_message += ', ' + names[i]
 		for_message += ' or ' + names[last]
 
 	message = 'If this effect ' + selected_name + ', you must complete one of the ' + for_message + ' fields or make a different selection in the ' + field_name + ' field.'
@@ -1575,8 +1575,14 @@ def resisted_by_post_errors(data):
 	errors = variable_field('condition', effect, 'Ending Condition', condition2, errors) 
 	errors = variable_fields('damage', 'Damage', effect, [damage], errors) 
 	errors = variable_field('damage', effect, 'Damage Type', damage, errors)
-	'nullify', 'Nullifies Opponent Effect', effect, [], errors
-	'trait', 'Weakened Trait' 
+	errors = select_of('nullify', 'Nullifies an Opponent Effect', 'Effect Type', effect, [nullify_descriptor, nullify_alternate], ['Nullified by Descriptor', 'Alternate Resistance'], errors)
+	errors = variable_fields('trait', 'Weakened Trait', effect, [weaken_max, weaken_restored], errors)
+	errors = variable_field('trait', effect, 'Maximum Lost Points', weaken_max, errors)
+	errors = variable_field('trait', effect, 'Restored Points Rate', weaken_restored, errors)
+
+
+
+
 	'level', 'Level'
 
 
