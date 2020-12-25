@@ -1526,6 +1526,21 @@ def resist_post_errors(data):
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(rounds, 'Rounds', errors)
 	
+	errors = required(mod, 'Modifier', errors)
+	errors = required(rounds, 'Rounds', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = variable_fields('descriptor', 'Descriptor', resist_check_type, [descriptor], errors)
+	errors = variable_fields('trait', 'Check Type', resist_check_type, [check_trait_type, check_trait], errors)
+	errors = variable_field('trait', resist_check_type, 'Trait Type', check_trait_type, errors)
+	errors = variable_field('trait', resist_check_type, 'Trait', check_trait, errors)
+	errors = check_fields(requires_check, 'Requires Check', [check_type, check_trait_type, check_trait], errors)
+	errors = check_field(requires_check, 'Requires Check', 'Check Type', check_type, errors)
+	errors = check_fields(requires_check, 'Requires Check', 'Check Trait Type', check_trait_type, errors)
+	errors = check_fields(requires_check, 'Requires Check', 'Check Trait', check_trait, errors)
+
+
 	return (errors)
 
 def resisted_by_post_errors(data):
