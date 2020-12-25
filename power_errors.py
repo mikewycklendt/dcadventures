@@ -284,7 +284,7 @@ def check_of_multiple(check, name, values, message, errors):
 		error = False
 
 	if error:
-		message = message + ' or uncheck the ' name + ' checkbox.' 
+		message = message + ' or uncheck the ' + name + ' checkbox.' 
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
