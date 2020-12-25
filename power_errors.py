@@ -314,11 +314,37 @@ def check_of(check, name, values, errors):
 def of(values, message, errors):
 	error_msgs = errors['error_msgs']
 	error = True
-	sub_error = False
 
 	for value in values:
 		if value != '' or value == True:
 			error = False
+
+	if error:
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def select_of(value, selected_name, field_name, field, values, names, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if value == field:
+		for value in values:
+			if value != '' or value == True:
+				error = False
+
+	last = len(names) - 1
+	for_message = names[0]
+	if len(names) > 2
+		for i in range(1, len(names) - 1, 1):
+			for_message += ', ' names[i]
+		for_message += ' or ' + names[last]
+
+	message = 'If this effect ' + selected_name + ', you must complete one of the ' + for_message + ' fields or make a different selection in the ' + field_name + ' field.'
 
 	if error:
 		error_msgs.append(message)
@@ -1529,7 +1555,32 @@ def resisted_by_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
 	errors = id_check(Defense, nullify_alternate, 'defense', errors)
-		
+
+	errors = int_check(dc, 'DC', errors)
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(degree, 'Degree', errors)
+	errors = int_check(weaken_max, 'Weaken Maximum', errors)
+	errors = int_check(weaken_restored, 'Weaken Restored', errors)
+	errors = int_check(damage, 'Damage', errors)
+
+	errors = required(dc, 'DC', errors)
+	errors = required(mod, 'Modifier', errors)
+	errors = required(description, 'Circumstance', errors)
+	errors = required(trait_type, 'Resisted by Trait Type', errors)
+	errors = required(trait, 'Resisted by Trait', errors)
+	errors = required(degree, 'Degree', errors)
+
+	errors = variable_fields('condition', 'Condition', effect, [condition1, condition2], errors)
+	errors = variable_field('condition', effect, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', effect, 'Ending Condition', condition2, errors) 
+	errors = variable_fields('damage', 'Damage', effect, [damage], errors) 
+	errors = variable_field('damage', effect, 'Damage Type', damage, errors)
+	'nullify', 'Nullifies Opponent Effect', effect, [], errors
+	'trait', 'Weakened Trait' 
+	'level', 'Level'
+
+
+
 
 
 	return (errors)
