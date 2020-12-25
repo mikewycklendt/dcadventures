@@ -596,13 +596,13 @@ def character_post_errors(data):
 	errors = check_field(weaken, 'Weaken', 'Weaken Type', weaken_type, errors)
 	errors = variable_fields()
 
- errors = variable_fields('trait', 'Specific', weaken_type, [weaken_trait_type, weaken_trait], errors)
- errors = variable_field('trait', weaken_type, 'Trait Type', weaken_trait_type, errors)
- errors = variable_field('trait', weaken_type, 'Trait', weaken_trait, errors) 
- errors = variable_fields('type', weaken_type, 'Broad Trait', [weaken_broad], errors)
- errors = variable_field('type', weaken_type, 'Broad Trait Type', weaken_broad, errors)
- errors = variable_fields('descriptor', 'Broad Descriptor', weaken_type, [weaken_descriptor], errors)
- errors = variable_fields('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
+	errors = variable_fields('trait', 'Specific', weaken_type, [weaken_trait_type, weaken_trait], errors)
+	errors = variable_field('trait', weaken_type, 'Trait Type', weaken_trait_type, errors)
+	errors = variable_field('trait', weaken_type, 'Trait', weaken_trait, errors) 
+	errors = variable_fields('type', weaken_type, 'Broad Trait', [weaken_broad], errors)
+	errors = variable_field('type', weaken_type, 'Broad Trait Type', weaken_broad, errors)
+	errors = variable_fields('descriptor', 'Broad Descriptor', weaken_type, [weaken_descriptor], errors)
+	errors = variable_field('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
 
 
 
@@ -645,6 +645,39 @@ def circ_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Range, circ_range, 'range', errors)
+
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(rounds, 'Rounds', errors)
+
+	errors = required(mod, 'Modifier', errors)
+	errors = required(rounds, 'Rounds', errors)
+	errors = required(target, 'Targwt', errors)
+	errors = required(description, 'Circumstance', errors)
+
+	errors = variable_fields()
+
+	errors = variable_fields('range', 'Triggered by Range', circ_type, [circ_range], errors)
+	errors = variable_field('range', circ_type, 'Range Distance', circ_range, errors) 
+	errors = variable_fields('check', 'Triggered by Check Type', circ_type, [check_who, check_trait_type, check_trait], errors)
+	errors = variable_field('check', circ_type, 'Whose Check',  check_who, errors)
+	errors = variable_field('check', circ_type, 'Trait Type',  check_trait_type, errors)
+	errors = variable_field('check', circ_type, 'Trait',  check_trait, errors)
+
+	errors = variable_fields('trait', 'Nullified From Trait', null_type, [null_trait_type, null_trait], errors)
+	errors = variable_field('trait', null_type, 'Trait Type', null_trait_type, errors)
+	errors = variable_field('trait', null_type, 'Trait', null_trait, errors)
+	errors = variable_fields('descriptor', 'Nullified From Descriptor', null_type, [null_descriptor], errors)
+	errors = variable_field('descriptor', null_type, 'Descriptor', null_descriptor, errors)
+	errors = variable_fields('condition', 'Nullified From Condition', null_type, [null_condition], errors)
+	errors = variable_field('condition', null_type, 'Condition', null_condition, errors)
+
+
+
+
+
+	
+
+
 
 	return (errors)
 
@@ -1604,6 +1637,7 @@ def sense_post_errors(data):
 
 	errors = required(sense, 'Sense', errors)
 	errors = required(sense_type, 'Sense Effect Type')
+	errors = required(target, 'Target', errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
