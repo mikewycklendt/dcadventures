@@ -1628,7 +1628,27 @@ def reverse_effect_post_errors(data):
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(Unit, time_unit, 'unit', errors)
 	
+	errors = int_check(degree, 'Degree', errors)
+	errors = int_check(value_dc, 'DC', errors)
+	errors = int_check(math_dc, 'DC', errors)
+	errors = int_check(time_value, 'Time', errors)
 
+	errors = required(degree, 'Degree', errors)
+	errors = required(when, 'When', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = of([check_check, time_check], 'You must choose if this effect is reversed by a check or time or both', errors)
+	errors = check_fields(check_check, 'Reversed by Check', [trait_type, trait, value_type], errors)
+	errors = check_field(check_check, 'Reversed by Check', 'Trait Type', trait_type, errors)
+	errors = check_field(check_check, 'Reversed by Check', 'Trait', trait, errors)
+	errors = check_field(check_check, 'Reversed by Check', 'DC Type', value_type, errors)
+	errors = variable_fields('value', 'DC Value', value_type, [value_dc], errors)
+	errors = variable_fields('math', 'DC Math', value_type, [math_dc, math], errors)
+	errors = variable_fields('math', value_type, 'DC', math_dc, errors)
+	errors = variable_fields('math', value_type, ' Math', math, errors)
+	errors = check_fields(time_check, 'Reversed by Time', [time_value, time_unit], errors)
+	errors = check_fields(time_check, 'Reversed by Time', 'Time', time_value, errors)
+	errors = check_fields(time_check, 'Reversed by Time', 'Time Units', time_unit, errors)
 
 	return (errors)
 
