@@ -111,33 +111,6 @@ def select(fields, errors):
 
 	return (errors)
 
-def variable(field, value, name, fields, errors):
-	error_msgs = errors['error_msgs']
-	error = False
-
-	if field != value:
-		return (errors)
-	else:
-		for f in fields:
-			if f['value'] == '':
-				error = True
-				
-		if error:
-			message = 'You must enter all required ' + name + ' fields.'
-			error_msgs.append(message)
-
-			for f in fields:
-				field_value = f['value']
-				field_name = f['name']
-				if field_value == '' or field_value is None:
-					message = field_name + ' field is required.'
-					error_msgs.append(message)
-
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)
 
 def variable_fields(value, name, field, fields, errors):
 	error_msgs = errors['error_msgs']
@@ -1269,27 +1242,6 @@ def move_post_errors(data):
 	errors = check_fields(mass, 'Increased Mass', [mass_value], errors)
 	errors = check_field(mass, 'Increased Mass', 'Increased Mass Amount', mass_value, errors)
 
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
 	return (errors)
 
 def opposed_post_errors(data):
@@ -1577,6 +1529,49 @@ def sense_post_errors(data):
 	errors = id_check(Unit, time_unit, 'unit', errors)
 	errors = id_check(Skill, time_skill, 'skill', errors)
 	errors = id_check(Unit, distance_unit, 'unit', errors)
+
+	errors = int_check(sense_cost, 'Sense Cost', errors)
+	errors = int_check(subsense_cost, 'Subsense Cost', errors)
+	errors = int_check(resist_circ, 'Resistance Circumstance Modifier', errors)
+	errors = int_check(time_value, 'Time', errors)
+	errors = int_check(time_factor, 'Time Factor', errors)
+	errors = int_check(distance_dc, 'Distance DC', errors)
+	errors = int_check(distance_mod, 'Distance Modifier', errors)
+	errors = int_check(distance_value, 'Distance', errors)
+	errors = int_check(distance_factor, 'Distance Factor', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+	errors = int_check(cost, 'Cost', errors)
+
+	errors = required(sense, 'Sense', errors)
+	errors = required(sense_type, 'Sense Effect Type')
+
+	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
+	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
+	errors = variable_field('height', sense_type, 'Heightened Sense Trait', height_trait, errors)
+	errors = check_field(height_power_required, 'Needs Sense Power', 'Enhanced Sense', height_ensense, errors)
+	errors = variable_fields('resist', 'Resistant Sense', sense_type, [resist_trait_type, resist_trait], errors)
+	errors = variable_field('resist', sense_type, 'Resistant Trait Type', resist_trait_type, errors)
+	errors = variable_field('resist', sense_type, 'Resistant Trait', resist_trait, errors)
+	errors = check_field(resist_immune, 'Immunity', 'Immunity Type', resist_permanent, errors)
+	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
+	errors = check_field(time, 'Time Effect'. 'Time Set By', time_set, errors)
+	errors = variable_fields('value', 'Time Set by Value', time_set, [time_value, time_unit], errors)
+	errors = variable_field('value', time_set, 'Value', time_value, errors)
+	errors = variable_field('value', time_set, 'Units', time_unit, errors)
+	errors = variable_fields('skill', 'Time Set by Skill', time_set, [time_skill], errors)
+	errors = variable_field('skill', time_set, 'Skill', time_skill, errors)
+	errors = variable_fields('bonus', 'Time Set by Enhanced Skill', time_set, [time_bonus], errors)
+	errors = variable_field('bonus', time_set, 'Enhanced Skill', time_bonus, errors)
+	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)
+	
+
+
+
+	
+
+	
+
+
 
 	return (errors)
 
