@@ -934,14 +934,6 @@ def create_post_errors(data):
 
 	errors = together('a Transform Descriptor', [transform_start_descriptor, transform_end_descriptor], errors)
 
-
-	
-	
-
-
-	
-
-
 	return (errors)
 
 def damage_post_errors(data):
@@ -1185,7 +1177,43 @@ def environment_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = int_check(radius, 'Starting Radius', errors)
+	errors = int_check(distance, 'Distance', errors)
+	errors = int_check(rank, 'Per Rank', errors)
+	errors = int_check(move_speed, 'Movement Speed', errors)
+	errors = int_check(visibility_mod, 'Visibility Modifier', errors)
+	errors = int_check(cost, 'Cost', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+
+	errors = together_names('an Environmental Effect Range', ['Starting Radius', 'Distance Rank', 'Cost Per Rank'], [radius, distance, rank], errors)
+	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type, temp_extremity], errors)
+	errors = check_field(condition_check, 'Environmental Condition', 'Temperature Type', condition_temp_type, errors)
+	errors = check_field(condition_check, 'Environmental Condition', 'Temperature Extremity', temp_extremity, errors)
+	errors = check_fields(impede, 'Impedes Movement', [move_nature, move_speed], errors)
+	errors = check_fields(impede, 'Impedes Movement', 'Impedes Movement Nature Type', move_nature, errors)
+	errors = check_fields(impede, 'Impedes Movement', 'Impedes Movement Speed Modifier', move_speed, errors)
+	errors = select_variable('other', move_nature, 'another nature type for impeding movement', 'other', move_other, errors)
+	errors = check_fields(conceal, 'Light', [conceal_type], errors)
+	errors = check_field(conceal, 'Light', 'Counters Concealment Type', conceal_type, errors)
+	errors = check_fields(visibility, 'Visibility', [visibility_trait_type, visibility_trait, visibility_mod], errors)
+	errors = check_field(visibility, 'Visibility', 'Visibility Trait Type', visibility_trait_type, errors)
+	errors = check_field(visibility, 'Visibility', 'Visibility Trait', visibility_trait, errors)
+	errors = check_field(visibility, 'Visibility', 'Visibility Modifier', visibility_mod, errors)
 	
+	errors = check_fields(immunity, 'Immunity', [immunity_type], errors)
+	errors = check_field(immunity, 'Immunity', 'Immunity Type', immunity_type, errors)
+
+	errors = variable_fields('environment', 'Environment Immunity', immunity_type, [immunity_environment], errors)
+	errors = variable_field('environment', immunity_type, 'Environment Type', immunity_environment, errors)
+	errors = variable_fields('condition', 'Condition Immunity', immunity_type, [temp_type, immunity_extremity], errors)
+	errors = variable_field('condition', immunity_type, 'Condition Type', temp_type, errors)
+	errors = variable_fields('condition', immunity_type, 'Condition Extremity', immunity_extremity, errors)
+
+	
+
+
+
 
 
 	return (errors)
