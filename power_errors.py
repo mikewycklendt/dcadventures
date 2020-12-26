@@ -586,6 +586,15 @@ def alt_check_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Check, check_type, 'Check', errors)
 	
+	errors = int_check(mod, 'Modifier'), errors)
+
+	errors = required(mod, 'Modifier', errors)
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(when, 'When', errors)
+	errors = required(trait_type, 'Trait Type', errors)
+	errors = required(trait, 'Trait', errors)
+
 
 	return (errors)
 
@@ -605,7 +614,7 @@ def change_action_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Action, action, 'Action', errors)
 	
-	errors int_check(mod, 'Modifier', errors)
+	errors = int_check(mod, 'Modifier', errors)
 
 	errors = required(mod, 'Modifier', errors)
 	errors = required(circumstance, 'Circumstance', errors)
