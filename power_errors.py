@@ -1187,7 +1187,7 @@ def degree_mod_post_errors(data):
 	
 	errors = variable_fields('condition', 'Condition', deg_type, [deg_condition_type], errors)
 	errors = variable_fields('condition', 'Condition Change', deg_condition_type, [condition1, condition2], errors)
-	errors = variable_field('condition', deg_condition_type, 'Starting Condition', condition1,, errors)
+	errors = variable_field('condition', deg_condition_type, 'Starting Condition', condition1, errors)
 	errors = variable_field('condition', deg_condition_type, 'Ending Condition', condition2, errors)
 	errors = variable_fields('damage', 'Damage Condition', deg_condition_type, [condition_damage_value, condition_damage], errors)
 	errors = variable_field('damage', deg_condition_type, 'Condition Damage Value', condition_damage_value, errors)
