@@ -165,7 +165,7 @@ def select_variable(value, field, select, name, f, errors):
 			error = True
 				
 	if error:
-		message = 'If this effect uses ' + select + ' the ' name + ' field is required.'
+		message = 'If this effect uses ' + select + ' the ' + name + ' field is required.'
 		error_msgs.append(message)
 
 
@@ -934,7 +934,7 @@ def create_post_errors(data):
 
 	errors = together('a Transform Descriptor', [transform_start_descriptor, transform_end_descriptor], errors)
 
-	
+
 	
 	
 
