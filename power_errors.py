@@ -1223,7 +1223,15 @@ def degree_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
-	
+
+	errors = int_check(degree, 'Degree', errors)
+
+	errors = required(degree_type, 'Degree Type', errors)
+	errors = required(degree, 'Degree', errors)
+	errors = required(keyword, 'Keywprd', errors)
+	errors = required(desscription, 'Description', errors)
+	errors = required(target, 'Target', errors)
+
 
 	return (errors)
 
