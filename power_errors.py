@@ -154,6 +154,27 @@ def variable_field(value, field, name, f, errors):
 
 	return (errors)
 
+def select_variable(value, field, select, name, f, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		if f == '':
+			error = True
+				
+	if error:
+		message = 'If this effect uses ' + select + ' the ' name + ' field is required.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 
 def together(name, values, errors):
 
@@ -172,8 +193,69 @@ def together(name, values, errors):
 				error = True
 				
 	if error:
-		message = 'If thid power uses ' + name + ', all of those fields must be complete.'
+		message = 'If thid power requires ' + name + ', all of those fields must be complete.'
 		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def check_together_var(check, checkname, message, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if check:
+		for value in values:
+			for v in value: 
+				if v != '' and v is not None and v != False:
+					error = False
+				else:
+					error = True
+			if error == False:
+				break
+
+	if error:
+		message += ' or uncheck the ' + checkname +  ' box.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def together_names(name, names, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	check = False
+
+	for value in values:
+		if value != '':
+			check = True
+
+	if check:
+		for value in values:
+			if value == '':
+				error = True
+
+	all_names = names[0]
+	last_name = len(names) - 1
+
+	if len(names) > 2:
+		for i in range(1, len(names) - 1, 1):
+			all_names += ', ' + names[i]
+
+	all_names += names[last_name]
+
+	if error:
+		message = 'If thid power requires ' + name + ' the ' + names ' fields must be complete.'
+		error_msgs.append(message)
+
 
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -777,6 +859,86 @@ def create_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Complex, complexity, 'complexity', errors)
 	errors = id_check(Ability, move_opponent_ability, 'ability', errors)
+
+	errors = int_check(volume, 'Volume', errors)
+	errors = int_check(toughness, 'Toughness', errors)
+	errors = int_check(mass, 'Mass', errors)
+	errors = int_check(transform_start_mass, 'Transform Starting Mass', errors)
+	errors = int_check(transfom_mass, 'Transform Ending Mass', errors)
+	errors = int_check(move_opponent_rank, 'Rank for Opponent to Move', errors)
+	errors = int_check(trap_dc, 'Trap DC', errors)
+	errors = int_check(trap_resist_dc, 'Trap Resistance DC', errors)
+	errors = int_check(ranged_dc, 'Ranged DC', errors)
+	errors = int_check(ranged_damage_value, 'Ranged Damage Value', errors)
+	errors = int_check(weapon_mod, 'Weapon Modifier', errors)
+	errors = int_check(weapon_damage, 'Weapon Damage', errors)
+	errors = int_check(support_strength, 'Support Strength Rank', errors)
+	errors = int_check(support_action, 'Strengthen With Action Modifier', errors)
+	errors = int_check(support_action_rounds, 'Strengthen with Action Number of Rounds', errors)
+	errors = int_check(support_effort, 'Strengthen with Extra Effort Bonus', errors)
+	errors = int_check(support_effort_rounds, 'Strengthen with Extra Effort Number of Rounds', errors)
+	errors = int_check(cost, 'Cost', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+
+	errors = together_names('Creating an object', ['Solidity', 'Visibility', 'Complexity', 'Volume Rank', 'Toughness', 'Mass Rank'], [solidity, visibility, complexity, volume, toughness, mass], errors)
+	errors = check_fields(moveable, 'Moveable', [move_player], errors)
+	errors = check_field(moveable, 'Moveable', 'Moveable With', move_player, errors)
+	errors = select_variable('ability', move_player, 'an Ability', 'Trait',  errors)
+	errors = select_variable('skill', move_player, 'a Skill', 'Trait',  errors)
+	errors = select_variable('bonus', move_player, 'an Enhanced Skill', 'Trait',  errors)
+	errors = select_variable('defense', move_player, 'a Defense', 'Trait',  errors)
+	errors = select_variable('power', move_player, 'a Power', 'Trait',  errors)
+	errors = check_fields(move_opponent_check, 'Opponent Can Move the Object', [move_opponent_ability, move_opponent_rank, errors], errors)
+	errors = check_field(move_opponent_check, 'Opponent Can Move the Object', 'Ability', move_opponent_ability, errors)
+	errors = check_field(move_opponent_check, 'Opponent Can Move the Object', 'Rank', move_opponent_rank, errors)
+	errors = check_fields(stationary, 'Stationary', [move_player], errors)
+	errors = check_field(stationary, 'Stationary', 'Moveable With', move_player, errors)
+	
+	errors = check_fields(trap, 'Trap', [trap_type, trap_resist_check, trap_resist_trait, trap_resist_dc], errors)
+	errors = check_field(trap, 'Trap', 'Trap Check Type', trap_type, errors)
+	errors = check_field(trap, 'Trap', 'Trap Resistance Trait Type', trap_type trap_resist_check, errors)
+	errors = check_field(trap, 'Trap', 'Trap Resistance Trait', trap_resist_trait, errors)
+	errors = check_field(trap, 'Trap', 'Trap Resistance DC' trap_resist_dc], errors)
+	errors = variable_fields('dc', 'Trap DC', trap_type, [trap_dc], errors)
+	errors = variable_fields('trait', 'Trap Check Against Trait', trap_type, [trap_trait_type, trap_trait], errors)
+	errors = variable_field('trait', trap_type, 'Trap Check Against Trait Type', trap_trait_type, errors)
+	errors = variable_field('trait', trap_type, 'Trap Check Against Trait', trap_trait, errors)
+
+	errors = check_fields(ranged, 'Ranged Attack', [ranged_type, ranged_damage_type], errors)
+	errors = check_field(ranged, 'Ranged Attack', 'Ranged Check Type', ranged_type, errors)
+	errors = check_field(ranged, 'Ranged Attack', 'Ranged Damage Type', ranged_damage_type, errors)
+	errors = variable_fields('dc', 'Ranged DC', ranged_type, [ranged_dc], errors)
+	errors = variable_fields('target', 'Ranged Target Trait', ranged_type, [ranged_trait_type, ranged_trait], errors)
+	errors = variable_fields('player', 'Ranged Player Trait', ranged_type, [ranged_trait_type, ranged_trait], errors)
+	errors = variable_field('target', ranged_type, 'Ranged Target Trait Type', ranged_trait_type, errors)
+	errors = variable_field('target', ranged_type, 'Ranged Target Trait', ranged_trait, errors)
+	errors = variable_field('player', ranged_type, 'Ranged Player Trait Type', ranged_trait_type, errors)
+	errors = variable_field('player', ranged_type, 'Ranged Player Trait', ranged_trait, errors)
+	errors = variable_fields('value', 'Ranged Damage Value', ranged_damage_type, [ranged_damage_value], errors)
+
+	errors = check_fields(weapon, 'Weapon', [weapon_trait_type, weapon_trait, weapon_mod, weapon_damage_type], errors)
+	errors = check_field(weapon, 'Weapon', 'Weapon Trait Type', weapon_trait_type, errors)
+	errors = check_field(weapon, 'Weapon', 'Wespon Trait', weapon_trait, errors)
+	errors = check_fields(weapon, 'Weapon', 'Weapon Modifier', weapon_mod, errors)
+	errors = check_fields(weapon, 'Weapon', 'Weapon Damage Type', weapon_damage_type, errors)
+	errors = variable_fields('value', 'Weapon Damage Value', weapon_damage_type, [weapon_damage], errors)
+
+	errors = check_fields(support, 'Supports Weight', [support_strength], errors)
+	errors = check_field(support, 'Supports Weight', 'Supports Weight Strength Rank', support_strength, errors)
+	errors = check_together_var(support_strengthen, 'Suupports Weight and Can Strengthen', 'Complete the action fields or extra effort fields (or all)', [[support_action, support_action_rounds], [support_effort, support_effort_rounds]], errors)
+
+	errors = check_fields(transform, 'Transform', [transform_type, transform_start_mass, transfom_mass], errors)
+	errors = check_field(transform, 'Transform', 'Transform Type', errors)
+	errors = check_field(transform, 'Transform', 'Transform Starting Mass', transform_start_mass, errors)
+	errors = check_field(transform, 'Transform', 'Transform Ending Mass', transfom_mass, errors)
+
+	errors = together('a Transform Descriptor', [transform_start_descriptor, transform_end_descriptor], errors)
+
+	
+	
+	
+
+
 	
 
 
@@ -1041,6 +1203,10 @@ def levels_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = required(level_type, 'Level Type', errors)
+	errors = required(level, 'Level', errors)
+	errors = required(level_effect, 'Level Effect', errors)
 	
 
 	return (errors)
