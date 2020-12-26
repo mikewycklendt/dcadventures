@@ -1687,6 +1687,18 @@ def opposed_post_errors(data):
 	errors = id_check(Check, player_check, 'check', errors)
 	errors = id_check(Check, opponent_check, 'check', errors)
 
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
+
+	errors = required(trait_type, 'Trait Type', errors)
+	errors = required(trait, 'Trait', errors)
+	errors = required(mod, 'Modifier', errors)
+	errors = required(opponent_trait_type, 'Opponent Trait Type', errors)
+	errors = required(opponent_trait, 'Opponent Trait', errors)
+	errors = required(opponent_mod, 'Opponent Modifier', errors)
+	errors = required(player_check, 'Check Type', errors)
+	errors = required(opponent_check, 'Opponent Check Type', errors)
+
 	return (errors)
 
 
