@@ -1012,6 +1012,7 @@ def dc_table_post_errors(data):
 
 	errors = required(dc, 'DC Type', errors)
 	errors = required(description, 'Description', errors)
+	errors = required(target, 'Target', errors)
 
 	errors = variable_fields('value', 'DC Value', dc, [value], errors)
 	errors = variable_field('value', dc, 'DC Value', value, errors)
@@ -1037,16 +1038,6 @@ def dc_table_post_errors(data):
 	errors = check_field(check_type, 'Check Type', 'Check Modifier', check_mod, errors)
 
 	errors = check_field(levels, 'Level', 'Level', level, errors)
-
-
-
-
-
-
-
-
-
-
 
 	return (errors)
 
@@ -1168,6 +1159,50 @@ def degree_mod_post_errors(data):
 	errors = id_check(Math, measure_math, 'math', errors)
 	errors = id_check(Rank, measure_rank, 'rank', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
+
+
+	errors = int_check(value, 'Degree', errors)
+	errors = int_check(circ_value, 'Circumstance Modifier', errors)
+	errors = int_check(circ_turns, 'Circxumstance Turns', errors)
+	errors = int_check(measure_val1, 'Measurement Math Value', errors)
+	errors = int_check(measure_value, 'Measurement Value', errors)
+	errors = int_check(condition_damage_value, 'Condition Damage Value', errors) 
+	errors = int_check(condition_damage, 'Condition Damage', errors)
+	errors = int_check(nullify, 'Nullify Value', errors)
+
+	errors = required(value, 'Degree', errors)
+	errors = required(deg_type, 'Result Type', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = variable_fields('measure', 'Measurement', deg_type, [measure_type], errors)
+	errors = variable_fields('math', 'Measurement Math', measure_type, [measure_val1, measure_math, measure_trait_type, measure_trait], errors)
+	errors = variable_field('math', measure_type, 'Measurement Math Value', measure_val1, errors)
+	errors = variable_field('math', measure_type, 'Measurement Math', measure_math, errors)
+	errors = variable_field('math', measure_type, 'Measurement Trait Type', measure_trait_type, errors)
+	errors = variable_field('math', measure_type, 'Measurement Trait', measure_trait, errors)
+
+	errors = variable_fields('value', 'Measurement Value', measure_type, [measure_value, measure_rank], errors)
+	errors = variable_field('value', measure_type, 'Measurement Value', measure_value, errors)
+	errors = variable_field('value', measure_type, 'Measurement Rank Type', measure_rank, errors)
+	
+	errors = variable_fields('condition', 'Condition', deg_type, [deg_condition_type], errors)
+	errors = variable_fields('condition', 'Condition Change', deg_condition_type, [condition1, condition2], errors)
+	errors = variable_field('condition', deg_condition_type, 'Starting Condition', condition1,, errors)
+	errors = variable_field('condition', deg_condition_type, 'Ending Condition', condition2, errors)
+	errors = variable_fields('damage', 'Damage Condition', deg_condition_type, [condition_damage_value, condition_damage], errors)
+	errors = variable_field('damage', deg_condition_type, 'Condition Damage Value', condition_damage_value, errors)
+	errors = variable_field('damage', deg_condition_type, 'Condition Damage Change', condition_damage, errors)
+	errors = variable_fields('circ', 'Circumstance', deg_type, [circ_value, circ_turns, circ_trait_type, circ_trait], errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Value', circ_value, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Turns', circ_turns, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Trait Type', circ_trait_type, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Trait',  circ_trait, errors)
+
+	errors = variable_fields('level', 'Level', deg_type, [level], errors)
+
+	errors = required(keyword, 'Keyword', errors)
+
+
 
 	return (errors)
 
