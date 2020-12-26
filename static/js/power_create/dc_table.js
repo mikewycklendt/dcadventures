@@ -56,7 +56,7 @@ function dc_condition() {
 }
 
 function dc_keyword() {
-	const check = 'dc_keyword';
+	const check = 'dc_keyword_check';
 	const div = 'dc-keyword';
 	const entry = 'dc-entry';
 

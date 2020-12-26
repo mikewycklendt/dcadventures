@@ -1021,7 +1021,31 @@ def dc_table_post_errors(data):
 	errors = variable_field('math', dc, 'DC Math Trait Type', math_trait_type, errors)
 	errors = variable_field('math', dc, 'DC Math Trait', math_trait, errors)
 
-	
+	errors = check_fields(descriptor_check, 'Descriptor', [descriptor, descriptor_possess], errors)
+	errors = check_field(descriptor_check, 'Descriptor', 'Descriptor', descriptor, errors)
+	errors = check_field(descriptor_check, 'Descriptor', 'Descriptor Possession', descriptor_possess, errors)
+
+	errors = check_fields(condition, 'Condition', [condition1, condition2], errors)
+	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
+	errors = check_field(condition, 'Condition', 'Ending Condition', condition2, errors)
+
+	errors = check_field(keyword_check, 'Keyword', 'Keyword', keyword, errors)
+
+	errors = check_fields(check_type, 'Check Type', [check_trait_type, check_trait, check_mod], errors)
+	errors = check_field(check_type, 'Check Type', 'Trait Type', check_trait_type, errors)
+	errors = check_field(check_type, 'Check Type', 'Trait', check_trait, errors)
+	errors = check_field(check_type, 'Check Type', 'Check Modifier', check_mod, errors)
+
+	errors = check_field(levels, 'Level', 'Level', level, errors)
+
+
+
+
+
+
+
+
+
 
 
 	return (errors)
