@@ -2060,15 +2060,6 @@ def sense_post_errors(data):
 	errors = variable_field('bonus', time_set, 'Enhanced Skill', time_bonus, errors)
 	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)
 
-
-
-
-	
-
-	
-
-
-
 	return (errors)
 
 
@@ -2101,6 +2092,11 @@ def time_post_errors(data):
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(Check, check_type, 'check', errors)
 	
+	errors = int_check(value, 'Time Value', errors)
+	errors = int_check(time_value, 'Math Time Value', errors)
+	errors = int_check(dc, 'DC', errors)
+	errors = int_check(recovery_penalty, 'Recovery Penalty', errors)
+	errors = int_check(recovery_time, 'Recovery Time', errors)
 
 
 	return (errors)
