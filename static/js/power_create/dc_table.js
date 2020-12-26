@@ -40,7 +40,7 @@ function dc_time() {
 }
 
 function dc_descriptor() {
-	const check = 'dc_descriptor';
+	const check = 'dc_descriptor_check';
 	const div = 'dc-descriptor';
 	const entry = 'dc-entry';
 

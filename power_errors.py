@@ -962,7 +962,7 @@ def damage_post_errors(data):
 
 	errors = of([damage_type, descriptor], 'You must choose a damage type or descriptor for the damage effect.', errors)
 
-	
+
 
 
 
@@ -1005,6 +1005,22 @@ def dc_table_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, math, 'math', errors)
 	errors = id_check(PowerLevels, level, 'level', errors)
+	
+	errors = int_check(value, 'DC Value', errors)
+	errors = int_check(math_value, 'Math DC Value', errors)
+	errors = int_check(check_mod, 'Check Modifier', errors)
+
+	errors = required(dc, 'DC Type', errors)
+	errors = required(description, 'Description', errors)
+
+	errors = variable_fields('value', 'DC Value', dc, [value], errors)
+	errors = variable_field('value', dc, 'DC Value', value, errors)
+	errors = variable_fields('math', 'DC Math', dc, [math_value, math, math_trait_type, math_trait], errors)
+	errors = variable_field('math', dc, 'DC Math Value', math_value, errors)
+	errors = variable_field('math', dc, 'DC Math', math, errors)
+	errors = variable_field('math', dc, 'DC Math Trait Type', math_trait_type, errors)
+	errors = variable_field('math', dc, 'DC Math Trait', math_trait, errors)
+
 	
 
 
