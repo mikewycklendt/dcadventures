@@ -1379,6 +1379,32 @@ def minion_post_errors(data):
 	errors = id_check(PowerLevels, attitude_type, 'level', errors)
 	errors = id_check(Defense, resitable_check, 'defense', errors)
 	
+	errors  = int_check(points, 'Points', errors)
+	errors  = int_check(sacrifice_cost, 'Sacrifice Cost', errors)
+	errors  = int_check(resitable_dc, 'Resistable DC', errors)
+	errors  = int_check(multiple_value, 'Multiple Minion Value', errors)
+
+	errors = required(points, 'Points', errors)
+	errors = required(condition, 'Minion Condition', errors)
+	errors = required(player_condition, 'Player Condition While Summoning', errors)
+	errors = required(variable_type, 'Minion Type', errors)
+
+	errors = check_fields(multiple, 'Multiple Minions', [multiple_value], errors)
+	errors = check_field(multiple, 'Multiple Minions', 'Multiple Value', multiple_value, errors)
+	errors = check_fields(attitude, 'Attitude', [attitude_type, attitude_trait_type, attitude_trait], errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Level', attitude_type, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Trait Type to Control', attitude_trait_type, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Trait to Control', attitude_trait, errors)
+	errors = check_fields(resistable, 'Resistable', [resistable_check, resistable_dc], errors)
+	errors = check_field(resistable, 'Resistable', 'Resistable Check Type', resistable_check, errors)
+	errors = check_field(resistable, 'Resistable', 'Resistable DC', resistable_dc, errors)
+	errors = check_fields(sacrifice, 'Sacrifice', [sacrifice_cost], errors)
+	errors = check_field(sacrifice, 'Sacrifice', 'Sacrifice Cost', sacrifice_cost, errors)
+
+
+
+	
+
 
 
 	return (errors)
@@ -2098,6 +2124,16 @@ def time_post_errors(data):
 	errors = int_check(recovery_penalty, 'Recovery Penalty', errors)
 	errors = int_check(recovery_time, 'Recovery Time', errors)
 
+	errors = required(time_type, 'Time Type', errors)
+
+	errors = variable_fields('value', 'Time Value' value_type, [value, units], errors)
+	errors = variable_field('value', value_type,'Time Value', value, errors)
+	errors = variable_field('value', value_type,'Time Units' , units, errors)
+	errors = variable_fields('math', 'Time Math', value_type, [time_value, math, trait_type, trait], errors)
+	errors = variable_field('math', value_type, 'Time Valuea', time_value, errors)
+	errors = variable_field('math', value_type, 'Time Math', math, errors)
+	errors = variable_field('math', value_type, 'Trait Type', trait_type, errors)
+	errors = variable_field('math', value_type, 'Trait', trait, errors)
 
 	return (errors)
 
