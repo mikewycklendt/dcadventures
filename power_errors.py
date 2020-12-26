@@ -953,6 +953,19 @@ def damage_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Descriptor, damage_type, 'descriptor', errors)
+
+	errors = int_check(mod, 'Modifier', errors)
+
+	errors = required(trait_type, 'Trait Type', errors)
+	errors = required(trait, 'Trait', errors)
+	errors = required(mod, 'Mod', errors)
+
+	errors = of([damage_type, descriptor], 'You must choose a damage type or descriptor for the damage effect.', errors)
+
+	
+
+
+
 	
 
 
@@ -1210,7 +1223,7 @@ def environment_post_errors(data):
 	errors = variable_field('condition', immunity_type, 'Condition Type', temp_type, errors)
 	errors = variable_fields('condition', immunity_type, 'Condition Extremity', immunity_extremity, errors)
 
-	
+
 
 
 
