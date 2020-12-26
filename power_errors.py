@@ -896,9 +896,9 @@ def create_post_errors(data):
 	
 	errors = check_fields(trap, 'Trap', [trap_type, trap_resist_check, trap_resist_trait, trap_resist_dc], errors)
 	errors = check_field(trap, 'Trap', 'Trap Check Type', trap_type, errors)
-	errors = check_field(trap, 'Trap', 'Trap Resistance Trait Type', trap_type trap_resist_check, errors)
+	errors = check_field(trap, 'Trap', 'Trap Resistance Trait Type', trap_resist_check, errors)
 	errors = check_field(trap, 'Trap', 'Trap Resistance Trait', trap_resist_trait, errors)
-	errors = check_field(trap, 'Trap', 'Trap Resistance DC' trap_resist_dc], errors)
+	errors = check_field(trap, 'Trap', 'Trap Resistance DC', trap_resist_dc, errors)
 	errors = variable_fields('dc', 'Trap DC', trap_type, [trap_dc], errors)
 	errors = variable_fields('trait', 'Trap Check Against Trait', trap_type, [trap_trait_type, trap_trait], errors)
 	errors = variable_field('trait', trap_type, 'Trap Check Against Trait Type', trap_trait_type, errors)
