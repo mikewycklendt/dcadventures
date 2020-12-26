@@ -605,6 +605,11 @@ def change_action_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Action, action, 'Action', errors)
 	
+	errors int_check(mod, 'Modifier', errors)
+
+	errors = required(mod, 'Modifier', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(action, 'Action Type', errors)
 
 
 	return (errors)
@@ -1231,7 +1236,6 @@ def degree_post_errors(data):
 	errors = required(keyword, 'Keywprd', errors)
 	errors = required(desscription, 'Description', errors)
 	errors = required(target, 'Target', errors)
-
 
 	return (errors)
 
