@@ -182,7 +182,8 @@ function env_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			env_grid.columns = jsonResponse.columns;
+			env_grid.columns.length = 0;
+			env_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

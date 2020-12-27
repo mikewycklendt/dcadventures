@@ -250,7 +250,9 @@ function sense_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			sense_grid.columns = jsonResponse.columns;
+			
+			sense_grid.columns.length = 0;
+			sense_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

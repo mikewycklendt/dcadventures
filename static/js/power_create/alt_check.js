@@ -70,7 +70,9 @@ function check_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			check_grid.columns = jsonResponse.columns;
+
+			check_grid.columns.length = 0;
+			check_grid.columns = jsonResponse.rows;
 
 			create_table(jsonResponse, check_grid, route);
 			clear_errors(err_line, errors)

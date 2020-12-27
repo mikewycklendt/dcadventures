@@ -104,7 +104,8 @@ function resistance() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			resistance_grid.columns = jsonResponse.columns;
+			resistance_grid.columns.length = 0;
+			resistance_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

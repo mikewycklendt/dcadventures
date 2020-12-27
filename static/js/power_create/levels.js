@@ -60,7 +60,8 @@ function levels_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			levels_grid.columns = jsonResponse.columns;
+			levels_grid.columns.length = 0;
+			levels_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/levels/delete/'

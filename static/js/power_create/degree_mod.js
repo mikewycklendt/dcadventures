@@ -147,7 +147,8 @@ function deg_mod_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			deg_mod_grid.columns = jsonResponse.columns;
+			deg_mod_grid.columns.length = 0;
+			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/degree_mod/delete/'

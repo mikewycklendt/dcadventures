@@ -81,7 +81,8 @@ function opposed_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			opposed_grid.columns = jsonResponse.columns;
+			opposed_grid.columns.length = 0;
+			opposed_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

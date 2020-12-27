@@ -68,7 +68,9 @@ function damage_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			damage_grid.columns = jsonResponse.columns;
+			
+			damage_grid.columns.length = 0;
+			damage_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

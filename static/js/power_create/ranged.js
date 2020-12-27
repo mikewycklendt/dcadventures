@@ -169,7 +169,8 @@ function ranged_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			ranged_grid.columns = jsonResponse.columns;
+			ranged_grid.columns.length = 0;
+			ranged_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

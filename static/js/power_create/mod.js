@@ -444,7 +444,8 @@ function mod_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			mod_grid.columns = jsonResponse.columns;
+			mod_grid.columns.length = 0;
+			mod_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

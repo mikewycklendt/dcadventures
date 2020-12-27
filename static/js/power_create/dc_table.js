@@ -165,7 +165,9 @@ function dc_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			dc_grid.columns = jsonResponse.columns;
+			
+			dc_grid.columns.length = 0;
+			dc_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

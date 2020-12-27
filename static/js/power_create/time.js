@@ -102,7 +102,9 @@ function time_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			time_grid.columns = jsonResponse.columns;
+			
+			time_grid.columns.length = 0;
+			time_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

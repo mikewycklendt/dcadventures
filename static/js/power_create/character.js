@@ -282,7 +282,9 @@ function char_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			char_grid.columns = jsonResponse.columns;
+			
+			char_grid.columns.length = 0;
+			char_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

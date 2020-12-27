@@ -65,7 +65,8 @@ function degree_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			degree_grid.columns = jsonResponse.columns;
+			degree_grid.columns.length = 0;
+			degree_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

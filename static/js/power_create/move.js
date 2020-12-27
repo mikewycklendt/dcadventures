@@ -372,7 +372,8 @@ function move_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			move_grid.columns = jsonResponse.columns;
+			move_grid.columns.length = 0;
+			move_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

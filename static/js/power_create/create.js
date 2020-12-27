@@ -321,7 +321,9 @@ function create_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			create_grid.columns = jsonResponse.columns;
+			
+			create_grid.columns.length = 0;
+			create_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'

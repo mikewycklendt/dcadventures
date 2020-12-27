@@ -124,7 +124,8 @@ function minion_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			minion_grid.columns = jsonResponse.columns;
+			minion_grid.columns.length = 0;
+			minion_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
