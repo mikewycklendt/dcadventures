@@ -69,8 +69,7 @@ function degree_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			const rows = delete_row(jsonResponse, route, degree_grid)
+			create_table(jsonResponse, degree_grid, route);
 			clear_errors(err_line, errors)
 
 			degree_grid.titles = true;

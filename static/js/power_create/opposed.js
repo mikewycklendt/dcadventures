@@ -85,8 +85,7 @@ function opposed_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, opposed_grid)
+			create_table(jsonResponse, opposed_grid, route);
 			clear_errors(err_line, errors)
 
 			opposed_grid.titles = true;

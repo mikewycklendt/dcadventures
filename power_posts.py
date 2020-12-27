@@ -314,7 +314,7 @@ def vcell_add(title, field, vcells, cells):
 
 	cell['content'] = content
 	cell['width'] = width
-	
+
 	cells.append(cell)
 
 	return (cells)
@@ -335,10 +335,15 @@ def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e'):
 			try:
 				c = str(c)
 			except:
-				try:
-					cells = check_cell(title, width, c)
-					return (cells)
-				except:
+				if c == True:
+					cell['width'] = width
+					cell['content'] = c
+					return (vcells)
+				elif c == False:
+					cell['width'] = 0
+					cell['content'] = c
+					return (vcells)
+				else:
 					c = ''
 
 	content = ''

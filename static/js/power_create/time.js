@@ -106,8 +106,7 @@ function time_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, time_grid)
+			create_table(jsonResponse, time_grid, route);
 			clear_errors(err_line, errors)
 
 			time_grid.titles = true;

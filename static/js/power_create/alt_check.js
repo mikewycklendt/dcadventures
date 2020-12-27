@@ -72,8 +72,7 @@ function check_submit() {
 		if (jsonResponse.success) {
 			check_grid.columns = jsonResponse.columns;
 
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, check_grid)
+			create_table(jsonResponse, check_grid, route);
 			clear_errors(err_line, errors)
 
 			check_grid.titles = true;

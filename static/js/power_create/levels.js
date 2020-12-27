@@ -64,8 +64,7 @@ function levels_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/levels/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, levels_grid)
+			create_table(jsonResponse, levels_grid, route);
 			clear_errors(err_line, errors)
 
 			levels_grid.titles = true;

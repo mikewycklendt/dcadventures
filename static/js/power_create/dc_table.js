@@ -169,8 +169,7 @@ function dc_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, dc_grid)
+			create_table(jsonResponse, dc_grid, route);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;

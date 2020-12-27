@@ -186,8 +186,7 @@ function env_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, env_grid)
+			create_table(jsonResponse, env_grid, route);
 			clear_errors(err_line, errors)
 
 			env_grid.titles = true;

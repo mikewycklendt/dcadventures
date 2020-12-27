@@ -108,8 +108,7 @@ function resist_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse);
-			delete_row(jsonResponse, route, resist_grid)
+			create_table(jsonResponse, resist_grid, route);
 			clear_errors(err_line, errors)
 
 			resist_grid.titles = true;
