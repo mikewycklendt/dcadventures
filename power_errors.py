@@ -1508,6 +1508,111 @@ def mod_post_errors(data):
 	errors = id_check(PowerLevels, side_level, 'level', errors)
 	errors = id_check(Check, reflect_check, 'check', errors)
 	
+	errors = int_check(effortless_degree, 'Effortless Degree', errors)
+	errors = int_check(area_mod, 'Area Modifier', errors)
+	errors = int_check(area_range, 'Area Range', errors)
+	errors = int_check(limited_mod, 'Limited Modifier', errors)
+	errors = int_check(limited_subjects, 'limited by Number of Subjects', errors)
+	errors = int_check(limited_degree, 'limited by Degree', errors)
+	errors = int_check(subtle_dc, 'Subtle DC', errors)
+	errors = int_check(ranks_ranks, 'Number of Ranks', errors)
+	errors = int_check(ranks_mod, 'Ranks Modifier', errors)
+	errors = int_check(points_reroll_cost, 'Reroll Cost', errors)
+	errors = int_check(points_rerolls, 'Number of Rerolls', errors)
+	errors = int_check(ranks_cost, 'Ranks', errors)
+	errors = int_check(cost, 'Cost', errors)
+
+	errors = check_fields(affects_objects, 'Affects Objects', [], errors)
+	
+	errors = check_fields(area, 'Area', [objects_alone, objects_character], errors)
+	errors = check_field(area, 'Area', 'Affect Object Alone', objects_alone, errors)
+	errors = check_field(area, 'Area', 'Affect Object with Character', objects_character, errors)
+	
+	errors = check_fields(limited, 'Limited', [limited_type, limited_mod], errors)
+	errors = check_field(limited, 'Limited', 'Limited Type', limited_type, errors)
+	errors = check_field(limited, 'Limited', 'Limited Modifier', limited_mod, errors)
+
+
+	errors = variable_fields('task_type', 'Limited by Task Type', limited_type, [limited_task_type], errors)
+	errors = variable_field('task_type', limited_type, 'Task Type', limited_task_type, errors)
+
+	errors = variable_fields('task', 'Limited to All tasks but One', limited_type, [limited_task], errors)
+	errors = variable_field('task', limited_type, 'Task', limited_task, errors)
+
+	errors = variable_fields('trait', 'Limited by Trait', limited_type, [limited_trait_type, limited_trait], errors)
+	errors = variable_field('trait', limited_type, 'Trait Type', limited_trait_type, errors)
+	errors = variable_field('trait',  limited_type,'Trait', limited_trait, errors)
+
+	errors = variable_fields('descriptor', 'Limited by Descriptor', limited_type, [limited_descriptor], errors)
+	errors = variable_field('descriptor', limited_type, 'Descriptor', limited_descriptor, errors)
+
+	errors = variable_fields('subjects', 'Limited by Number of Subjects', limited_type, [limited_subjects], errors)
+	errors = variable_field('subjects', limited_type, 'Number of Subjects', limited_subjects, errors)
+
+	errors = variable_fields('language', 'Limited by Different Language', limited_type, [limited_language_type], errors)
+	errors = variable_field('language', limited_type, 'Different Language Effect', limited_language_type, errors)
+
+	errors = variable_fields('extra', 'Limited to Extra Effect', limited_type, [limited_extra], errors)
+	errors = variable_field('extra', limited_type, 'Extra', limited_extra, errors)
+
+	errors = variable_fields('degree', 'Limited by Degree of Success', limited_type, [limited_degree], errors)
+	errors = variable_field('degree', limited_type, 'Degree of Success', limited_degree, errors)
+
+	errors = variable_fields('sense', 'Limited by Sense', limited_type, [limited_sense], errors)
+	errors = variable_field('sense', limited_type, 'Sense', limited_sense, errors)
+
+	errors = variable_fields('range', 'Limited by Range', limited_type, [limited_range], errors)
+	errors = variable_field('range', limited_type, 'Range', limited_range, errors)
+
+	errors = variable_fields('source', 'Requires Descriptor', limited_type, [limited_source], errors)
+	errors = variable_field('source', limited_type, 'Required Descriptor', limited_source, errors)
+
+	errors = variable_fields('other', 'Limited by Other', limited_type, [limited_description], errors)
+	errors = variable_field('other', limited_type, 'Other Factor', limited_description, errors)
+
+	errors = variable_fields('level', 'Limited by Level', limited_type, [limited_level], errors)
+	errors = variable_field('level', limited_type, 'Level', limited_level, errors)
+
+
+	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)
+
+	errors = check_fields(reflect, 'Reflect', [reflect_check, reflect_trait_type, reflect_trait, reflect_descriptor], errors)
+	errors = check_field(reflect, 'Reflect', 'Reflect Check Type', reflect_check, errors)
+	errors = check_field(reflect, 'Reflect', 'Reflect Trait Type', reflect_trait_type, errors)
+	errors = check_field(reflect, 'Reflect', 'Reflect Trait', reflect_trait, errors)
+	errors = check_field(reflect, 'Reflect', 'Reflect Descriptor', reflect_descriptor, errors)
+
+	errors = check_fields(subtle, 'Subtle', [subtle_opponent_trait_type, subtle_opponent_trait, subtle_dc], errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle DC', subtle_dc, errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Trait Type', subtle_opponent_trait_type, errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Trait', subtle_opponent_trait, errors)
+
+	errors = check_fields(points, 'Spend Points', [points_type], errors)
+	errors = check_field(points, 'Spend Points', 'Spend Points Type', points_type, errors)
+	errors = variable_fields('reroll', 'Re-roll', points_type, [points_reroll_target, points_reroll_cost, points_rerolls], errors)
+	errors = variable_field('reroll', points_type, 'Re-roll', 'Number of Rerolls', points_rerolls, errors)
+	errors = variable_field('reroll', points_type, 'Re-roll Cost', points_reroll_cost, errors)
+	errors = variable_field('reroll', points_type, 'Re-roll Target', points_reroll_target, errors)
+	
+	errors = check_fields(ranks, 'Gain Trait', [ranks_trait_type, ranks_trait, ranks_ranks, ranks_mod], errors)
+	errors = check_field(ranks, 'Gain Trait', 'Trait Type', ranks_trait_type, errors)
+	errors = check_field(ranks, 'Gain Trait', 'Trait', ranks_trait, errors)
+	errors = check_field(ranks, 'Gain Trait', 'Ranks', ranks_ranks, errors)
+	errors = check_field(ranks, 'Gain Trait', Modifier, ranks_mod, errors)
+	
+	errors = check_fields(side_effect, 'Side Effect', [side_effect_type], errors)
+	errors = check_field(side_effect, 'Side Effect', 'Side Effect Type', side_effect_type, errors)
+	errors = variable_fields('level', 'Side Effect Level', side_effect_type, [side_level], errors) 
+	errors = variable_field('other', 'Side Effect Other', side_effect_type, [side_other], errors)
+
+	errors = check_fields(simultaneous, 'Simultaneous', [simultaneous_descriptor], errors)
+	errors = check_field(simultaneous, 'Simultaneous', 'Descriptor', simultaneous_descriptor, errors)
+	
+	errors = check_fields(effortless, 'Effortless', [effortless_degree], errors)
+	errors = check_field(effortless, 'Effortless', 'Degree of Failure', effortless_degree, errors)
+
+
+
 	return (errors)
 
 def move_post_errors(data):
