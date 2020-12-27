@@ -922,22 +922,27 @@ def defense_post(entry, body, cells):
 	cells = check_cell('Resists Perception', 19, resist_perception, cells)
 	
 	cells = check_cell('Reflect', 10, reflect, cells, True)
-	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}]
+	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 3, 'name': 'Routine Check', 'w': 15}, {'type': 4, 'name': 'Team Check', 'w': 15}, {'type': 5, 'name': 'Attack Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}, {'type': 7, 'name': 'Comparison Check', 'w': 15}]
 	new_mod = mod_create('Reflects Attacks', 17, reflect_check, select)
 
 	value = 1
 	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-
 	new_mod = mod_cell('DC:', 7, [reflect_dc], new_mod, value)
-
 	value = 2
 	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
 	new_mod = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value)
+	value = 3
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	value = 4
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+	value = 5
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
 	value = 6
 	new_mod = mod_cell('Action Type', 15, [reflect_action], new_mod, value)
 	new_mod = mod_cell('Resisted By', 15, [reflect_resist_trait], new_mod, value)
 	body = mod_add(reflect, new_mod, body)
-	
+	value = 7
+	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
 	cells = check_cell('Immunity', 10, immunity, cells, True)
 	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
