@@ -2231,7 +2231,7 @@ def time_post_errors(data):
 
 	errors = required(time_type, 'Time Type', errors)
 
-	errors = variable_fields('value', 'Time Value' value_type, [value, units], errors)
+	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
 	errors = variable_field('value', value_type,'Time Value', value, errors)
 	errors = variable_field('value', value_type,'Time Units' , units, errors)
 	errors = variable_fields('math', 'Time Math', value_type, [time_value, math, trait_type, trait], errors)
