@@ -299,25 +299,33 @@ def grid_columns(rows, font):
 
 	return (result)
 
-
-
-def variable_cell(title, classname, value):
+def vcell_add(title, field, vcells, cells):
 	cell = {}
 	cell['title'] = title
-	cell['class'] = classname
+	content = ''
+
+	for vcell in vcells:
+		vcell['value'] = value
+		vcell['content'] = con
+		if value == field:
+			content = con
+
+	cell['content'] = content
+
+	cells.append(cell)
+
+	return (cells)
+
+def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e')
+
+	if vcells == 'e':
+		new_vcells = []
+		vcells = new_vcells
+
+	cell = {}
 	cell['value'] = value
 
-	return (cell)
-
-
-
-def vcell(selection, width, content, cell, cells):
-	value = cell['value']
-
-	if value != selection:
-		return (cells)
-
-	for c in content:
+	for c in contentlist:
 		if c is None:
 			c = ''
 		else:
@@ -325,32 +333,43 @@ def vcell(selection, width, content, cell, cells):
 				c = str(c)
 			except:
 				try:
-					cells = check_cell(title, width, c, classname)
+					cells = check_cell(title, width, c)
 					return (cells)
 				except:
 					c = ''
 
-	text =  ''
-	
-	for c in content:
-		if text == '':
-			text = c
-		else:
-			text += ' ' + c
+	content = ''
 
-	if text == '':
+	for c in contentlist:
+		if content == '':
+			content += c
+		else:
+			content += ' ' + c
+
+	if content == '':
 		width = 0
 
+	cell['content'] = content
 	cell['width'] = width
-	cell['content'] = text
 
-	cells.append(cell)
+	if value2 == 'e':
+		vcells.append(cell)
+		return (vcells)
 
-	return (cells)
+	if selection2 is None or selection2 == '':
+		for vcell in vcells:
+			vcell['value'] = val
+			if value == val:
+				return (vcells)
+		
+		vcells.append(cell)
+		return (vcells)
 
+	if value2 == selection2:
+		vcells.append(cell)
+		return (vcells)
 
-
-def check_cell(title, width, check, classname, cells, mod_check=False):
+def check_cell(title, width, check, cells, mod_check=False):
 
 	if check == False:
 		width = 0
@@ -359,7 +378,6 @@ def check_cell(title, width, check, classname, cells, mod_check=False):
 	cell = {'title': title,
 			'width': width,
 			'content': check,
-			'class': classname,
 			'mod_check': mod_check
 			}
 
@@ -367,11 +385,10 @@ def check_cell(title, width, check, classname, cells, mod_check=False):
 
 	return (cells)
 
-def cell(title, width, contentlist, classname, cells=[]):
+def cell(title, width, contentlist, cells=[]):
 
 	cell = {}
 	cell['title'] = title
-	cell['class'] = classname
 		
 	for c in contentlist:
 		if c is None:
@@ -381,7 +398,7 @@ def cell(title, width, contentlist, classname, cells=[]):
 				c = str(c)
 			except:
 				try:
-					cells = check_cell(title, width, c, classname)
+					cells = check_cell(title, width, c)
 					return (cells)
 				except:
 					c = ''
@@ -404,10 +421,9 @@ def cell(title, width, contentlist, classname, cells=[]):
 
 	return (cells)
 
-def mod_create(title, width, classname, value='e', select='e'):
+def mod_create(title, width, value='e', select='e'):
 
-	mod = {'class': classname,
-			'title': title,
+	mod = {'title': title,
 			'cells': [],
 			'variable': False
 			}
@@ -878,27 +894,26 @@ def defense_post(entry, body, cells):
 
 	cells.clear()
 
-	cells = cell('Defense', 12, [defense], 'defense')
-	cells = cell('Use', 10, [use], 'use', cells)
-	cells = cell('Mod', 7, [mod], 'mod', cells)
+	cells = cell('Defense', 12, [defense])
+	cells = cell('Use', 10, [use], cells)
+	cells = cell('Mod', 7, [mod], cells)
 	word = string('or', [roll, outcome])
 	print('\n\n\n')
 	print(word)
 	print(roll)
 	print(outcome)
-	cells = cell('Roll', 10, [roll, word, outcome], 'roll', cells)
-	cells = check_cell('Dodge', 7, dodge, 'dodge', cells)
-	cells = check_cell('Fortitude', 10, fortitude, 'fort', cells)
-	cells = check_cell('Parry', 7, parry, 'parry', cells)
-	cells = check_cell('Toughness', 10, toughness, 'tough', cells)
-	cells = check_cell('Will', 5, will, 'will', cells)
-	cells = check_cell('Resists Area', 12, resist_area, 'area', cells)
-	cells = check_cell('Resists Perception', 19, resist_perception, 'perc', cells)
-	
-	classname = 'reflect'
-	cells = check_cell('Reflect', 10, reflect, classname, cells, True)
+	cells = cell('Roll', 10, [roll, word, outcome], cells)
+	cells = check_cell('Dodge', 7, dodge, cells)
+	cells = check_cell('Fortitude', 10, fortitude, cells)
+	cells = check_cell('Parry', 7, parry, cells)
+	cells = check_cell('Toughness', 10, toughness, cells)
+	cells = check_cell('Will', 5, will, cells)
+	cells = check_cell('Resists Area', 12, resist_area, cells)
+	cells = check_cell('Resists Perception', 19, resist_perception, cells)
+
+	cells = check_cell('Reflect', 10, reflect, cells, True)
 	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}]
-	new_mod = mod_create('Reflects Attacks', 17, classname, reflect_check, select)
+	new_mod = mod_create('Reflects Attacks', 17, reflect_check, select)
 
 	value = 1
 	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
@@ -913,10 +928,9 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Resisted By', 15, [reflect_resist_trait], new_mod, value)
 	body = mod_add(reflect, new_mod, body)
 	
-	classname = 'immunity'
-	cells = check_cell('Immunity', 10, immunity, classname, cells, True)
+	cells = check_cell('Immunity', 10, immunity, cells, True)
 	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
-	new_mod = mod_create('Immunity', 17, classname, immunity_type, select)
+	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
 	value = 'damage'
@@ -927,9 +941,8 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
-	classname =  'cover'
-	cells = check_cell('Cover', 7, cover_check, classname, cells, True)
-	new_mod = mod_create('Provides Cover', 20, classname)
+	cells = check_cell('Cover', 7, cover_check, cells, True)
+	new_mod = mod_create('Provides Cover', 20)
 	new_mod = mod_cell('Cover Type', 18, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 		
