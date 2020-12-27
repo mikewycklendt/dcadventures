@@ -450,9 +450,9 @@ def mod_create(title, width, value='e', select='e'):
 	variable = mod['variable']
 
 	if variable:
-		grid = '15% ' + str(width) + '% ' + str(sub_width) + '%' 
+		grid = '8% ' + str(width) + '% ' + str(sub_width) + '%' 
 	else:
-		grid = '15% ' + str(width) + '%'
+		grid = '8% ' + str(width) + '%'
 	
 	mod['grid'] = grid
 
