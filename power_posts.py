@@ -307,11 +307,14 @@ def vcell_add(title, field, vcells, cells):
 	for vcell in vcells:
 		vcell['value'] = value
 		vcell['content'] = con
+		vcell['width'] = wid
 		if value == field:
 			content = con
+			width = wid
 
 	cell['content'] = content
-
+	cell['width'] = width
+	
 	cells.append(cell)
 
 	return (cells)
