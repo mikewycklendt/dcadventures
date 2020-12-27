@@ -1056,7 +1056,7 @@ function create_titles(jsonResponse, grow, object, route) {
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
 	const base_table = 'power-table-table';
-	const base_cell_title = 'power-table-cell-title ';
+	const base_cell_title = 'power-table-cell-title';
 	const base_title = 'power-table-title'
 	const base_titles = 'power-table-titles';
 
@@ -1082,9 +1082,7 @@ function create_titles(jsonResponse, grow, object, route) {
 	let cell;
 	for (cell of cells) {
 		const cell_title = document.createElement('div');
-		const title_id = table_id + '-' + cell.class + '-title';
-		cell_title.setAttribute('id', title_id);
-		cell_title.className = base_cell_title + cells_class;
+		cell_title.className = base_cell_title;
 		cell_title.innerHTML = cell.title;
 		if (cell.width > 1) {
 			cell_title.style.opacity = '100%';
@@ -1108,17 +1106,18 @@ function grow_table(table, grow) {
 function grid__update(columns, cells, table_id, grid, cells_class, size, table) {
 
 	table.style.fontSize = size + '%';
+	
+	const base_cell_title = 'power-table-cell-title';
+	const titles = document.getElementsByClassName(base_cell_title)
 
 	for (let i = 0; i < cells.length; i++) {
-		const title_id = table_id + '-' + cells[i].class + '-title';
-		const cell_title = document.getElementById(title_id)
 		if (columns[i] > 1) {
-			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-			cell_title.style.opacity = '100%';
+			titles[i].style.maxHeight = titles[i].scrollHeight + 'px';
+			titles[i].style.opacity = '100%';
 		}
 		else {
-			cell_title.style.opacity = '0%';
-			cell_title.style.maxHeight = '0px';
+			titles[i].style.opacity = '0%';
+			titles[i].style.maxHeight = '0px';
 		}
 	}
 
