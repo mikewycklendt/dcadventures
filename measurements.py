@@ -30,3 +30,81 @@ def measure(measurements):
 	print (measurements)
 
 	return measurements
+
+
+def vcell_add(title, field, vcells, cells):
+	cell = {}
+	cell['title'] = title
+	content = ''
+
+	for vcell in vcells:
+		vcell['value'] = value
+		vcell['content'] = con
+		vcell['width'] = wid
+		if value == field:
+			content = con
+			width = wid
+
+	cell['content'] = content
+	cell['width'] = width
+
+	cells.append(cell)
+
+	return (cells)
+
+def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e'):
+
+	if vcells == 'e':
+		new_vcells = []
+		vcells = new_vcells
+
+	cell = {}
+	cell['value'] = value
+
+	for c in contentlist:
+		if c is None:
+			c = ''
+		else:
+			try:
+				c = str(c)
+			except:
+				if c == True:
+					cell['width'] = width
+					cell['content'] = c
+					return (vcells)
+				elif c == False:
+					cell['width'] = 0
+					cell['content'] = c
+				else:
+					c = ''
+
+	content = ''
+
+	for c in contentlist:
+		if content == '':
+			content += c
+		else:
+			content += ' ' + c
+
+	if content == '':
+		width = 0
+
+	cell['content'] = content
+	cell['width'] = width
+
+	if value2 == 'e':
+		vcells.append(cell)
+		return (vcells)
+
+	if selection2 is None or selection2 == '':
+		for vcell in vcells:
+			vcell['value'] = val
+			if value == val:
+				return (vcells)
+		
+		vcells.append(cell)
+		return (vcells)
+
+	if value2 == selection2:
+		vcells.append(cell)
+		return (vcells)
