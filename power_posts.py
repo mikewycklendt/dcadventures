@@ -184,6 +184,14 @@ def string(word, data):
 	
 	return (output)
 
+def check_convert(word, check):
+	output = ''
+
+	if check:
+		output = word
+
+	return (output)
+
 def send(cells, body):
 
 	body['cells'] = deepcopy(cells)
@@ -304,6 +312,7 @@ def vcell_add(title, field, vcells, cells):
 	cell = {}
 	cell['title'] = title
 	content = ''
+	width = 0
 
 	for vcell in vcells:
 		vcell['value'] = value
@@ -541,6 +550,16 @@ def alt_check_post(entry, body, cells):
 	mod = integer_convert(mod)
 
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
+
 def change_action_post(entry, body, cells):
 	
 	power_id = entry.power_id
@@ -554,6 +573,16 @@ def change_action_post(entry, body, cells):
 	action = name(Action, action)
 
 	mod = integer_convert(mod)
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 
 def character_post(entry, body, cells):
 		
@@ -627,6 +656,16 @@ def character_post(entry, body, cells):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)	 
 
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 def circ_post(entry, body, cells):
 		
 	power_id = entry.power_id
@@ -667,6 +706,14 @@ def circ_post(entry, body, cells):
 	circ_range = integer_convert(circ_range)
 
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 def create_post(entry, body, cells):
@@ -782,6 +829,16 @@ def create_post(entry, body, cells):
 	ranks = integer_convert(ranks)
 
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
+
 def damage_post(entry, body, cells):
 
 	power_id = entry.power_id
@@ -801,6 +858,14 @@ def damage_post(entry, body, cells):
 	damage_type = integer_convert(damage_type)
 
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 def dc_table_post(entry, body, cells):
@@ -846,6 +911,16 @@ def dc_table_post(entry, body, cells):
 	value = integer_convert(value)
 	math_value = integer_convert(math_value)
 	check_mod = integer_convert(check_mod)
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 
 def defense_post(entry, body, cells):
 
@@ -904,6 +979,7 @@ def defense_post(entry, body, cells):
 
 	cells.clear()
 
+	cells = cell('Extra', 15, [extra])
 	cells = cell('Defense', 12, [defense])
 	cells = cell('Use', 10, [use], cells)
 	cells = cell('Mod', 7, [mod], cells)
@@ -1029,6 +1105,14 @@ def degree_mod_post(entry, body, cells):
 	condition_damage = integer_convert(condition_damage)
 	nullify = integer_convert(nullify)
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 
@@ -1050,6 +1134,16 @@ def degree_post(entry, body, cells):
 	target = selects(target, targets_select)
 
 	degree = integer_convert(degree)
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 
 def environment_post(entry, body, cells):
 		
@@ -1116,6 +1210,16 @@ def environment_post(entry, body, cells):
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
+
 def levels_post(entry, body, cells):
 
 	power_id = entry.power_id
@@ -1127,6 +1231,16 @@ def levels_post(entry, body, cells):
 	
 
 	extra = extra_name(extra_id)
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 
 def minion_post(entry, body, cells):
 		
@@ -1162,6 +1276,16 @@ def minion_post(entry, body, cells):
 	sacrifice_cost = integer_convert(sacrifice_cost)
 	resitable_dc = integer_convert(resitable_dc)
 	multiple_value = integer_convert(multiple_value)
+
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 def mod_post(entry, body, cells):
 		
@@ -1299,6 +1423,14 @@ def mod_post(entry, body, cells):
 	ranks_cost = integer_convert(ranks_cost)
 	cost = integer_convert(cost)
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 	
@@ -1387,7 +1519,6 @@ def move_post(entry, body, cells):
 	dimension_descriptor = descriptor_name(dimension_descriptor)
 	ground_type = name(Ground, ground_type)
 	ground_units = name(Unit, ground_units)
-	objects_check = name(Check, objects_check)
 	objects_attack = name(ConflictAction, objects_attack)
 
 	directions_select = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
@@ -1400,7 +1531,6 @@ def move_post(entry, body, cells):
 	permeate_type = selects(permeate_type, openings_select)
 
 	travel_select = [{'type': '', 'name': 'Travel Type'}, {'type': 'dimension', 'name': 'Dimension Travel'}, {'type': 'space', 'name': 'Space Travel'}, {'type': 'time', 'name': 'Time Travel'}, {'type': 'teleport', 'name': 'Teleport'}]
-	special_type = selects(special_type, travel_select)
 
 	teleport_change_select = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
 	teleport_change = selects(teleport_change, teleport_change_select)
@@ -1442,6 +1572,83 @@ def move_post(entry, body, cells):
 	ranks = integer_convert(ranks)
 	cost = integer_convert(cost)
 	
+	
+	cells = cell('Extra', 15, [extra])
+	per = check_convert('Per Rank', per_rank)
+	cells = cell('Speed', 29, [rank, math, mod, per], cells)
+	cells = cell('Condition', 12, [condition], cells)
+	cells = cell('Direction', 13, [direction], cells)
+	
+	vcells = vcell('unlimited', 12, ['Unlimited'])
+	vcells = vcell('value', 12, [distance_value], vcells)
+	vcells = vcell('math', 20, [distance_math_value, distance_math, distance_math_value2], vcells)
+	vcells = vcell('mod', 20, ['Effect Rank', '-', distance_mod], vcells)
+	cells = vcell_add('Distance', distance_type, vcells, cells)
+
+	cells = cell('DC', 7, dc, cells)
+
+	cells = check_cell('Flight', 10, flight, cells, True)
+	new_mod = mod_create('Flight', 10)
+	new_mod = mod_cell('Conditions:', 10, flight_conditions, new_mod)
+	new_mod = mod_cell('Perception Check:', 15, [flight_resist], new_mod)
+	new_mod = mod_cell('Requires Equipment:', 20, [flight_equip], new_mod)
+	body = mod_add(flight, new_mod, body)
+
+	cells = check_cell('Aquatic', 10, aquatic, cells, True)
+	new_mod = mod_create('Aquatic', 10)
+	new_mod = mod_cell('Type:', 7, [acquatic_type], new_mod)
+	body = mod_add(aquatic, new_mod, body)
+
+	cells = check_cell('Ground', 10, ground, cells, True)
+	new_mod = mod_create('Through Geound', 17)
+	new_mod = mod_cell('Type:', 7, [ground_type], new_mod)
+	new_mod = mod_cell('Permanance:', 10, [ground_permanence], new_mod)
+	new_mod = mod_cell('Lasts:', 5, [ground_time, ground_units], new_mod)
+	new_mod = mod_cell('Rsnged', 7, [ground_ranged], new_mod)
+	body = mod_add(ground, new_mod, body)
+
+	cells = check_cell('Affects Others', 18, others, cells)
+	cells = check_cell('Continuous', 13, continuous, cells)
+	
+	cells = check_cell('Subtle', 8, subtle, True)
+	new_mod = mod_create('Subtle', 10)
+
+	body = mod_add(subtle, new_mod, body)
+
+	cells = check_cell('Concentration', 15, concentration, cells)
+	cells = check_cell('Through Obstacles', 20, obstacles, cells)
+
+	cells = check_cell('Move Objects', 18, objects, cells, True)
+	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 3, 'name': 'Routine Check', 'w': 15}, {'type': 4, 'name': 'Team Check', 'w': 15}, {'type': 5, 'name': 'Attack Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}, {'type': 7, 'name': 'Comparison Check', 'w': 15}]
+	new_mod = mod_create('Move Objects', 17, objects_check, select)
+
+	body = mod_add(objects, new_mod, body)
+
+	cells = check_cell('Permeate', 10, permeate, cells, True)
+	new_mod = mod_create('Permeate', 12)
+
+	body = mod_add(permeate, new_mod, body)
+
+	cells = check_cell('Special', 12, special, cells, True)
+	travel_select = [{'type': 'dimension', 'name': 'Dimension Travel', 'w': 20}, {'type': 'space', 'name': 'Space Travel', 'w': 18}, {'type': 'time', 'name': 'Time Travel', 'w': 15}, {'type': 'teleport', 'name': 'Teleport', 'w': 10}]
+	new_mod = mod_create('Special Travel', 19, special_type, travel_select)
+
+	body = mod_add(special, new_mod, body)
+
+	cells = check_cell('While Prone', 18, prone, cells)
+
+	cells = check_cell('Check', 8, check_type, cells, True)
+	new_mod = mod_create('Check Type', 18)
+
+	body = mod_add(check_type, new_mod, body)
+
+	cells = check_cell('Material', 12, obstacles_check, cells)
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 
@@ -1465,6 +1672,14 @@ def opposed_post(entry, body, cells):
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
 
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 def ranged_post(entry, body, cells):
 		
@@ -1534,6 +1749,59 @@ def ranged_post(entry, body, cells):
 	dc_value = integer_convert(dc_value)
 
 
+	cells = cell('Extra', 15, [extra])
+
+	vcells = vcell('flat_units', 30, [flat_value, flat_units])
+
+	distance_rank = ('Rank Distance', [flat_rank])
+	vcells = vcell('distance_rank', 30, [flat_rank, distance_rank], vcells)
+
+	rank = string('Rank:', [flat_rank_rank, flat_rank_value, flat_rank_units])
+	equals = string('=', [flat_rank_rank, flat_rank_value, flat_rank_units])
+	vcells = vcell('flat_rank_units', 30, [rank, flat_rank_rank, equals, flat_rank_value, flat_rank_units] vcells)
+	
+	rank = string('Rank:', [flat_rank_distance, flat_rank_distance_rank])
+	equals = string('=', [flat_rank_distance, flat_rank_distance_rank])
+	distance_rank = string('Rank Distance', [flat_rank_distance, flat_rank_distance_rank])
+	vcells = vcell('flat_rank_distance', 35, [rank, flat_rank_distance_rank, equals, flat_rank_distance, distance_rank], vcells)
+	
+	start = string('Starts at', [units_rank_start_value, units_rank_value, units_rank_units, units_rank_rank])
+	then = string('then', [units_rank_start_value, units_rank_value, units_rank_units, units_rank_rank])
+	per = string('Per', [units_rank_start_value, units_rank_value, units_rank_units, units_rank_rank])
+	rank = string('Rank', [units_rank_start_value, units_rank_value, units_rank_units, units_rank_rank])
+	vcells = vcell('units_rank', 75, [start, units_rank_start_value, units_rank_units, then, units_rank_value, units_rank_units, per, units_rank_rank, rank], vcells)
+	
+	start = string('Starts at', [rank_distance_start, rank_distance, rank_effect_rank])
+	rankdistance = string('Rank Distance', [rank_distance_start, rank_distance, rank_effect_rank])
+	then = string('then', [rank_distance_start, rank_distance, rank_effect_rank])
+	per = string('Per', [rank_distance_start, rank_distance, rank_effect_rank])
+	rank = string('Rank', [rank_distance_start, rank_distance, rank_effect_rank])
+	vcells = vcell('rank_rank', 75, [start, rank_distance_start, rankdistance, then, rank_distance, rankdistance, per, rank_effect_rank, rank], vcells)
+	
+	effect_rank = string('Effect Rank', [effect_mod_math, effect_mod])
+	distance_rank = string('= Distance Rank')
+	vcells = vcell('effect_mod', 50, [effect_rank, effect_mod_math, effect_mod, distance_rank], vcells) 
+	
+	distance_rank = string('= Distance Rank', [trait_trait, trait_math, trait_mod])
+	vcells = vcell('trait_mod', 45, [trait_trait, trait_math, trait_mod], vcells)
+	
+	distance_rank = string('= Distance Rank', [distance_mod_rank, distance_mod_math, distance_mod_trait])
+	vcells = vcell('distance_mod', 70, [distance_mod_rank, distance_mod_math, distance_mod_trait, distance_rank], vcells)
+	
+	distance_rank = string('= Distance Rank', [check_trait, check_math, check_mod, distance_rank])
+	vcells = vcell('check', 70, [check_trait, check_math, check_mod, distance_rank], vcells)
+	cells = vcell_add('Range', range_type, vcells, cells)
+
+	cells - check_cell('DC', 10, dc, cells, True)
+	new_mod = mod_create('DC', 10)
+	new_mod = mod_cell('DC Value:', 15, [dc_value], new_mod)
+	new_mod = mod_cell('DC Trait:', 15, [dc_trait], new_mod)
+	body = body(dc, new_mod, body)
+
+	body = send(cells, body)
+
+	return (body)
+
 def resist_post(entry, body, cells):
 
 	power_id = entry.power_id
@@ -1563,6 +1831,17 @@ def resist_post(entry, body, cells):
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
+
+
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+
 
 def resisted_by_post(entry, body, cells):
 
@@ -1603,6 +1882,14 @@ def resisted_by_post(entry, body, cells):
 	weaken_restored = integer_convert(weaken_restored)
 	damage =  integer_convert(damage)
 	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
+	
 def reverse_effect_post(entry, body, cells):
 
 	power_id = entry.power_id
@@ -1635,6 +1922,14 @@ def reverse_effect_post(entry, body, cells):
 	value_dc = integer_convert(value_dc)
 	math_dc = integer_convert(math_dc)
 	time_value = integer_convert(time_value)
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 def sense_post(entry, body, cells):	
@@ -1725,6 +2020,14 @@ def sense_post(entry, body, cells):
 	distance_factor = integer_convert(distance_factor)
 	ranks = integer_convert(ranks)
 	cost = integer_convert(cost)
+	
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
 
 
 def time_post(entry, body, cells):
@@ -1762,3 +2065,12 @@ def time_post(entry, body, cells):
 	dc = integer_convert(descriptor)
 	recovery_penalty = integer_convert(recovery_penalty)
 	recovery_time = integer_convert(recovery_time)
+
+		
+	cells = cell('Extra', 15, [extra])
+
+
+
+	body = send(cells, body)
+
+	return (body)
