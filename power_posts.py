@@ -1758,7 +1758,7 @@ def ranged_post(entry, body, cells):
 
 	rank = string('Rank:', [flat_rank_rank, flat_rank_value, flat_rank_units])
 	equals = string('=', [flat_rank_rank, flat_rank_value, flat_rank_units])
-	vcells = vcell('flat_rank_units', 30, [rank, flat_rank_rank, equals, flat_rank_value, flat_rank_units] vcells)
+	vcells = vcell('flat_rank_units', 30, [rank, flat_rank_rank, equals, flat_rank_value, flat_rank_units], vcells)
 	
 	rank = string('Rank:', [flat_rank_distance, flat_rank_distance_rank])
 	equals = string('=', [flat_rank_distance, flat_rank_distance_rank])
