@@ -201,10 +201,10 @@ function char_submit() {
 	const reduced_trait = select("char_reduced_trait");
 	const reduced_value = select("char_reduced_value");
 	const reduced_full = check("char_reduced_full");
-	const limbs_continuous = check("char_continuous");
-	const limbs_sustained = check("char_sustained");
-	const limbs_distracting = check("char_distracting");
-	const limbs_projection = check("char_projection");
+	const limbs_continuous = check("char_limbs_continuous");
+	const limbs_sustained = check("char_limbs_sustained");
+	const limbs_distracting = check("char_limbs_distracting");
+	const limbs_projection = check("char_limbs_projection");
 	const carry_capacity = select("char_carry_capacity");
 	const points_value = select("char_points_value");
 	const points_trait_type = select("char_points_trait_type");

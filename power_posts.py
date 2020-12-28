@@ -192,6 +192,12 @@ def check_convert(word, check):
 
 	return (output)
 
+def width(width, adjust, field):
+	if field != '' and field is not None and field != False:
+		width += adjust
+
+	return (width)
+
 def send(cells, body):
 
 	body['cells'] = deepcopy(cells)
@@ -557,6 +563,9 @@ def alt_check_post(entry, body, cells):
 
 	body = send(cells, body)
 
+	
+	cells.clear()
+
 	return (body)
 
 
@@ -580,6 +589,8 @@ def change_action_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -636,8 +647,6 @@ def character_post(entry, body, cells):
 	weaken_descriptor = descriptor_name(weaken_descriptor)
 	points_descriptor = descriptor_name(points_descriptor)
 
-	weaken_select = [{'type': '', 'name': 'Weaken Type'}, {'type': 'trait', 'name': 'Specific'}, {'type': 'type', 'name': 'Broad Trait'}, {'type': 'descriptor', 'name': 'Broad Descriptor'}]
-	weaken_type = selects(weaken_type, weaken_select)
 
 	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 	limited_by = selects(limited_by, limited_select)
@@ -659,10 +668,75 @@ def character_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Trait', 14, [trait], cells)
+	wid = 8
+	perrank = string('Per', increase)
+	rank = string('Rank', increase)
+	wid = width(wid, 8)
+	cells = cell('Increase', wid, [value, perrank, increase, rank], cells)
 
+	cells = check_cell('Limited', 8, limited, cells, True)
+	new_mod = mod_create('Limited', 12)
+	new_mod = mod_cell('Limited While:', 15, [limited_by], new_mod)
+	body = mod_add(limited, new_mod, body)
 
+	cells = check_cell('Reduced', 9, reduced, cells, True)
+	new_mod = mod_create('Reduced Trait', 16)
+	new_mod = mod_cell('Trait:', 8, [reduced_trait], new_mod)
+	new_mod = mod_cell('Reduced By:' 12, [reduced_value], new_mod)
+	new_mod = mod_cell('Normal Strength:', 16, [reduced_full], new_mod)
+	body = mod_add(reduced, new_mod, body)
+
+	cells = check_cell('Limbs', 8, limbs, cells, True)
+	new_mod = mod_create('Extra Limbs', 14)
+	new_mod = mod_cell('Continuous:', 11, [limbs_continuous], new_mod)
+	new_mod = mod_cell('Sustained:', 10, [limbs_sustained], new_mod)
+	new_mod = mod_cell('Distracting:', 12, [limbs_distracting], new_mod)
+	new_mod = mod_cell('Projection:', 12, [limbs_projection], new_mod)
+	body = mod_add(limbs, new_mod, body)
+
+	cells = check_cell('Carry', 7, carry, cells, True)
+	new_mod = mod_create('Extra Carry Capacity:', 25)
+	sizerank = string('- Size Rank', [carry_capacity])
+	new_mod = mod_cell('Maximum Size Rank', 22, [carry_capacity, sizerank], new_mod)
+	body = mod_add(carry, new_mod, body)
+
+	cells = check_cell('Sustained', 11, sustained, cells)
+	cells = check_cell('Permanent', 10, permanent, cells)
+
+	cells = check_cell('Points', 8, points, cells, True)
+	new_mod = mod_create('Hero Points', 14)
+	new_mod = mod_cell('Affected Trait', 18, [points_trait], new_mod)
+	new_mod = mod_cell('Points:', 9, [points_value], new_mod)
+	new_mod = mod_cell('Descriptor:', 12, [points_descriptor], new_mod)
+	body = mod_add(points, new_mod, body)
+
+	cells = check_cell('Appearance', 14, appear, cells, True)
+	new_mod = mod_create('Alters Appearance', 20)
+	new_mod = mod_cell('Target:', 7, [appear_target], new_mod)
+	new_mod = mod_cell('Description:', 11, [appear_description], new_mod)
+	body = mod_add(appear, new_mod, body)
+
+	cells = check_cell('Insubstantial', 14, insubstantial, cells, True)
+	new_mod = mod_create('Insubstantial', 16)
+	new_mod = mod_cell('Type:', 6, [insub_type], new_mod)
+	new_mod = mod_cell('Description:', 11, [insub_description], new_mod)
+	body = mod_add(insubstantial, new_mod, body)
+
+	cells = check_cell('Weaken', 8, weaken, cells, True)
+	weaken_select = [{'type': 'trait', 'name': 'Specific', 'w': 12}, {'type': 'type', 'name': 'Broad Trait', 'w': 16}, {'type': 'descriptor', 'name': 'Broad Descriptor', 'w': 20}]
+	new_mod = mod_create('Weaken', 10, weaken_type, weaken_select)
+	value = 'trait'
+	new_mod = mod_cell('Trait:', 8, [weaken_trait], new_mod, value)	
+	value = 'type'
+	new_mod = mod_cell('Trait Type:', 12, [weaken_broad], new_mod, value)	
+	value = 'descriptor'
+	new_mod = mod_cell('Descriptor:', 8, [weaken_descriptor], new_mod, value)	
+	body = mod_add(weaken, new_mod, body)
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -712,6 +786,9 @@ def circ_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+
+	cells.clear()
 
 	return (body)
 
@@ -836,6 +913,9 @@ def create_post(entry, body, cells):
 
 	body = send(cells, body)
 
+
+	cells.clear()
+
 	return (body)
 
 
@@ -864,6 +944,8 @@ def damage_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -918,6 +1000,9 @@ def dc_table_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+
+	cells.clear()
 
 	return (body)
 
@@ -1112,6 +1197,8 @@ def degree_mod_post(entry, body, cells):
 
 	body = send(cells, body)
 
+	cells.clear()
+
 	return (body)
 
 
@@ -1141,6 +1228,8 @@ def degree_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1217,6 +1306,8 @@ def environment_post(entry, body, cells):
 
 	body = send(cells, body)
 
+	cells.clear()
+
 	return (body)
 
 
@@ -1238,6 +1329,8 @@ def levels_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1284,6 +1377,8 @@ def minion_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1429,6 +1524,8 @@ def mod_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1699,8 +1796,13 @@ def move_post(entry, body, cells):
 	new_mod = mod_create('Increased Carry Mass', 30)
 	new_mod = mod_cell('Mass Rank:', 13, [mass_value], new_mod)
 	body = mod_add(mass, new_mod, body)
+	
+	cells = cell('Cost/Rank', 9, [cost], cells)
+	cells = cell('Ranks', 7, [ranks], cells)
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1732,6 +1834,8 @@ def opposed_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1854,6 +1958,8 @@ def ranged_post(entry, body, cells):
 
 	body = send(cells, body)
 
+	cells.clear()
+
 	return (body)
 
 def resist_post(entry, body, cells):
@@ -1893,6 +1999,8 @@ def resist_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -1942,6 +2050,8 @@ def resisted_by_post(entry, body, cells):
 
 	body = send(cells, body)
 
+	cells.clear()
+
 	return (body)
 	
 def reverse_effect_post(entry, body, cells):
@@ -1982,6 +2092,8 @@ def reverse_effect_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -2045,18 +2157,13 @@ def sense_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
 
-	sense_type_select =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
-	sense_type = selects(sense_type, sense_type_select)
-
 	all_some_select = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 	resist_permanent = selects(resist_permanent, all_some_select)
 
 	darkness_select = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
 	lighting = selects(lighting, darkness_select)
 
-	sense_time_select = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
-	time_set = selects(time_set, sense_time_select)
-
+	
 	sense_distance_select = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
 	distance = selects(distance, sense_distance_select)
 
@@ -2076,10 +2183,66 @@ def sense_post(entry, body, cells):
 	cost = integer_convert(cost)
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 15, [target], cells)
+	cells = cell('Sense', 13, [sense], cells)
+	cells = cell('Cost', 6, [sense_cost], cells)
+	cells = cell('Subsense', 14, [subsense], cells)
+	cells = cell('Cost', 6, [subsense_cost], cells)
+	cells = cell('Check', 16, [skill], cells)
 
+	wid = 17
+	affects = string('Affects', [height_trait])
+	word = string('Requires', [height_ensense])
+	wid = width(wid, 17, height_ensense)
+	vcells = vcell('height', wid, [affects, height_trait, word, height_ensense])
+	wid = 17
+	affects =  string('Affects', [resist_trait])
+	word = check_convert('Immune', resist_immune)
+	wid = width(wid, 10, resist_immune)
+	perm = string(resist_permanent, word)
+	wid = width(wid, 12, resist_permanent)
+	circ = string('Modifier', resist_circ)
+	wid = width(wid, 12, resist_circ)
+	vcells = vcell('resist', wid, [affects, resist_trait, word, perm, resist_circ, circ], vcells)
+	vcell_add('Effect', sense_type, vcells, cells)
 
+	cells = check_cell('Penetrates', 12, objects, cells)
+	cells = check_cell('Exclusive', 10, exclusive, cells)
+	cells = check_cell('GM Trigger', 11, gm, cells)
+
+	cells = check_cell('Counters Dark', 16, dark, cells, True)
+	new_mod = mod_create('Counters Darkness', 22)
+	new_mod = mod_cell('See In:', 8, lighting, new_mod)
+	body = mod_add(dark, new_mod, body)
+
+	cells = check_cell('Time Effect', 14, time, cells, True)
+	sense_time_select = [{'type': 'value', 'name': 'Set by Value', 'w': 15}, {'type': 'skill', 'name': 'Set by Skill', 'w': 15}, {'type': 'bonus', 'name': 'Set by Enhanced Skill', 'w': 22}]
+	new_mod = mod_create('Time Effect', 15, time_set, sense_time_select)
+	value = 'value'
+	new_mod = mod_cell('Time:', 8, [time_value, time_unit], new_mod, value)
+	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
+	value = 'skill' 
+	new_mod = mod_cell('Skill:', 8, [time_skill], new_mod, value)
+	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
+	value = 'bonus'
+	new_mod = mod_cell('Enhanced Skill:', 18, [time_bonus], new_mod, value)
+	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
+	body = mod_add(time, new_mod, body)
+
+	cells = check_cell('Dimensional', 14, dimensional, cells, True)
+	new_mod = mod_create('Dimensional', 15)
+	new_mod = mod_cell('Type', 6, [dimensional_type], new_mod)
+	body = mod_add(dimensional, new_mod, body)
+
+	cells = check_cell('Radius', 8, radius, cells)
+	cells = check_cell('Accurate', 10, accurate, cells)
+	cells = check_cell('Acute', 7, acute, cells)
+	cells = cell('Cost/Rank', 9, [cost], cells)
+	cells = cell('Ranks', 7, [ranks], cells)
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)
 
@@ -2126,5 +2289,7 @@ def time_post(entry, body, cells):
 
 
 	body = send(cells, body)
+
+	cells.clear()
 
 	return (body)

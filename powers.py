@@ -313,7 +313,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
 
-	teleport_change = [{'type': '', 'name': 'C, an Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
+	teleport_change = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
 
 	teleport = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
 
@@ -398,9 +398,17 @@ def power_trait_select():
 		body['options'] = extras
 	elif trait == 'this_power':
 		body['options'] = ['This Power']
+	elif trait == 'sense':
+		body['options'] = ['Sense']
+	elif trait == 'size':
+ 		body['options'] = ['Size Rank'] 
+ 	elif trait == 'intim': 
+ 		body['options'] = ['Intimidation Rank']
 	else:
 		body['success'] = False
 		body['options'] = ['']
+
+ 
 
 	print(body)
 	return jsonify(body)
@@ -3036,7 +3044,7 @@ def power_post_move():
 	special = request.get_json()['special']
 	prone = request.get_json()['prone']
 	check_type = request.get_json()['check_type']
-	obstacles_check = request.get_json()['obstacles_check']
+	materials = request.get_json()['materials']
 	concealment = request.get_json()['concealment']
 	extended = request.get_json()['extended']
 	mass = request.get_json()['mass']
@@ -3142,7 +3150,7 @@ def power_post_move():
 						special = special,
 						prone = prone,
 						check_type = check_type,
-						obstacles_check = obstacles_check,
+						materials = materials,
 						concealment = concealment,
 						extended = extended,
 						mass = mass,

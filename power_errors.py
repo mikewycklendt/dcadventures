@@ -1647,7 +1647,6 @@ def move_post_errors(data):
 	special = data['special']
 	prone = data['prone']
 	check_type = data['check_type']
-	obstacles_check = data['obstacles_check']
 	concealment = data['concealment']
 	extended = data['extended']
 	mass = data['mass']
