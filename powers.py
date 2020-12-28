@@ -401,9 +401,9 @@ def power_trait_select():
 	elif trait == 'sense':
 		body['options'] = ['Sense']
 	elif trait == 'size':
- 		body['options'] = ['Size Rank'] 
- 	elif trait == 'intim': 
- 		body['options'] = ['Intimidation Rank']
+		body['options'] = ['Size Rank'] 
+	elif trait == 'intim':
+		body['options'] = ['Intimidation Rank']
 	else:
 		body['success'] = False
 		body['options'] = ['']
