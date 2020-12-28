@@ -683,7 +683,7 @@ def character_post(entry, body, cells):
 	cells = check_cell('Reduced', 9, reduced, cells, True)
 	new_mod = mod_create('Reduced Trait', 16)
 	new_mod = mod_cell('Trait:', 8, [reduced_trait], new_mod)
-	new_mod = mod_cell('Reduced By:' 12, [reduced_value], new_mod)
+	new_mod = mod_cell('Reduced By:', 12, [reduced_value], new_mod)
 	new_mod = mod_cell('Normal Strength:', 16, [reduced_full], new_mod)
 	body = mod_add(reduced, new_mod, body)
 
