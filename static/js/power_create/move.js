@@ -228,7 +228,7 @@ function move_submit() {
 	const special = check("move_special");
 	const prone = check("move_prone");
 	const check_type = check("move_check_type");
-	const obstacles_check = check("move_obstacles");
+	const materials = check("move_materials");
 	const concealment = check("move_concealment");
 	const extended = check("move_extended");
 	const mass = check("move_mass");
@@ -312,7 +312,7 @@ function move_submit() {
 			'special': special,
 			'prone': prone,
 			'check_type': check_type,
-			'obstacles_check': obstacles_check,
+			'materials': materials,
 			'concealment': concealment,
 			'extended': extended,
 			'mass': mass,

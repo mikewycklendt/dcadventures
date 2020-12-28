@@ -1644,7 +1644,6 @@ class PowerMove(db.Model):
 	special = db.Column(db.Boolean)
 	prone = db.Column(db.Boolean)
 	check_type = db.Column(db.Boolean)
-	obstacles_check = db.Column(db.Boolean)
 	concealment = db.Column(db.Boolean)
 	extended = db.Column(db.Boolean)
 	mass = db.Column(db.Boolean)
