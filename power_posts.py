@@ -1464,7 +1464,7 @@ def move_post(entry, body, cells):
 	special = entry.special
 	prone = entry.prone
 	check_type = entry.check_type
-	obstacles_check = entry.obstacles_check
+	materials = entry.materials
 	concealment = entry.concealment
 	extended = entry.extended
 	mass = entry.mass
@@ -1604,7 +1604,7 @@ def move_post(entry, body, cells):
 	new_mod = mod_cell('Type:', 7, [ground_type], new_mod)
 	new_mod = mod_cell('Permanance:', 10, [ground_permanence], new_mod)
 	new_mod = mod_cell('Lasts:', 5, [ground_time, ground_units], new_mod)
-	new_mod = mod_cell('Rsnged', 7, [ground_ranged], new_mod)
+	new_mod = mod_cell('Ranged', 7, [ground_ranged], new_mod)
 	body = mod_add(ground, new_mod, body)
 
 	cells = check_cell('Affects Others', 18, others, cells)
@@ -1612,7 +1612,8 @@ def move_post(entry, body, cells):
 	
 	cells = check_cell('Subtle', 8, subtle, True)
 	new_mod = mod_create('Subtle', 10)
-
+	new_mod = mod_cell('Bonus Against:', 15, [subtle_trait], new_mod)
+	new_mod = mod_cell('Bonus:', 8, [subtle_mod], new_mod)
 	body = mod_add(subtle, new_mod, body)
 
 	cells = check_cell('Concentration', 15, concentration, cells)
@@ -1621,30 +1622,83 @@ def move_post(entry, body, cells):
 	cells = check_cell('Move Objects', 18, objects, cells, True)
 	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 3, 'name': 'Routine Check', 'w': 15}, {'type': 4, 'name': 'Team Check', 'w': 15}, {'type': 5, 'name': 'Attack Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}, {'type': 7, 'name': 'Comparison Check', 'w': 15}]
 	new_mod = mod_create('Move Objects', 17, objects_check, select)
-
+	value = 1
+	new_mod = mod_cell('Skill:', 7, [objects_skill], new_mod, value)
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 2
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 3
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 4
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 5
+	new_mod = mod_cell('Check Type:', 12, [objects_attack], new_mod, value)
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 6
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
+	value = 7
+	new_mod = mod_cell('Direction:', 12, [objects_direction], new_mod, value)
+	new_mod = mod_cell('Damage Dealt By:', 20, [damage_type], new_mod, value)
 	body = mod_add(objects, new_mod, body)
 
 	cells = check_cell('Permeate', 10, permeate, cells, True)
 	new_mod = mod_create('Permeate', 12)
-
+	new_mod = mod_cell('Type:', 8, [permeate_type], new_mod)
+	new_mod = mod_cell('Speed Modifier:', 18, [permeate_speed], new_mod)
+	new_mod = mod_cell('Provides Cover:', 18, [permeate_cover], new_mod)
 	body = mod_add(permeate, new_mod, body)
 
 	cells = check_cell('Special', 12, special, cells, True)
 	travel_select = [{'type': 'dimension', 'name': 'Dimension Travel', 'w': 20}, {'type': 'space', 'name': 'Space Travel', 'w': 18}, {'type': 'time', 'name': 'Time Travel', 'w': 15}, {'type': 'teleport', 'name': 'Teleport', 'w': 10}]
 	new_mod = mod_create('Special Travel', 19, special_type, travel_select)
-
+	value = 'dimension'
+	new_mod = mod_cell('Type:', 8, [dimension_type], new_mod, value)
+	new_mod = mod_cell('Carry Mass:', 12, [dimension_mass_rank], new_mod, value)
+	new_mod = mod_cell('Descriptor:', 13, [dimension_descriptor], new_mod, value)
+	value = 'space'
+	new_mod = mod_cell('Type:', 8, [special_space], new_mod, value)
+	value = 'time'
+	new_mod = mod_cell('Type:', 8, [special_time], new_mod, value)
+	new_mod = mod_cell('Carry Mass:', 12, [special_time_carry], new_mod, value)
+	value = 'teleport'
+	new_mod = mod_cell('Type:', 8, [teleport_type], new_mod, value)
+	new_mod = mod_cell('Can Change:', 12, [teleport_change], new_mod, value)
+	new_mod = mod_cell('Portal:', 9, [teleport_portal], new_mod, value)
+	new_mod = mod_cell('Turnabout:', 9, [teleport_obstacles], new_mod, value)
 	body = mod_add(special, new_mod, body)
 
 	cells = check_cell('While Prone', 18, prone, cells)
 
 	cells = check_cell('Check', 8, check_type, cells, True)
 	new_mod = mod_create('Check Type', 18)
-
+	new_mod = mod_cell('Trait:', 10, [check_trait], new_mod)
+	new_mod = mod_cell('Free Check:', 12, [check_free], new_mod)
 	body = mod_add(check_type, new_mod, body)
 
-	cells = check_cell('Material', 12, obstacles_check, cells)
+	cells = check_cell('Material', 12, materials, cells)
 
+	cells = check_cell('Concealment', 14, concealment, cells, True)
+	new_mod = mod_create('Concealment', 15)
+	new_mod = mod_cell('Concealed From:', 18, [concealment_sense], new_mod)
+	new_mod = mod_cell('Detected By:', 15, [concealment_trait], new_mod)
+	body = mod_add(concealment, new_mod, body)
 
+	cells = check_cell('Extended', 11, extended, cells, True)
+	new_mod = mod_create('Extended', 10)
+	word = string('Actions', [extended_actions])
+	new_mod = mod_cell('For:', 5, [extended_actions, word], new_mod)
+	body = mod_add(extended, new_mod, body)
+
+	cells = check_cell('Carry Mass', 14, mass, cells, True)
+	new_mod = mod_create('Increased Carry Mass', 30)
+	new_mod = mod_cell('Mass Rank:', 13, [mass_value], new_mod)
+	body = mod_add(mass, new_mod, body)
 
 	body = send(cells, body)
 

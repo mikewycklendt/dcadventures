@@ -102,9 +102,8 @@
 			<select class="select-sml" id="move_distance_type" name="move_distance_type" onchange="move_distance_type()">
 				<option value="">Max Distance</option>
 				<option value="unlimited">Unlimited</option>
-				{% for v in value_type %}
-					<option value="{{v.type}}">{{v.name}}</option>
-				{% endfor %}
+				<option value="value">Value</option>
+				<option value="math">Math</option>
 				<option value="mod">Rank Modifier</option>
 			</select>
 		</div>
@@ -259,7 +258,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Requires Material
+				<input type="checkbox" id="move_materials" class="medium-checkbox med-checkbox" > Requires Material
 			</div>
 		</div>
 		
