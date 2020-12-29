@@ -1110,7 +1110,7 @@ def dc_table_post(entry, body, cells):
 
 	cells = check_cell('Check', 7, [check_type], cells, True)
 	new_mod = mod_create('Check Type', 15)
-	new_mod = mod_cell('Trait':, 7, [check_trait], new_mod)
+	new_mod = mod_cell('Trait:', 7, [check_trait], new_mod)
 	new_mod = mod_cell('Modifier:', 12, [check_mod], new_mod)
 	body = mod_add(check_type, new_mod, body)
 
