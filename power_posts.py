@@ -953,7 +953,7 @@ def create_post(entry, body, cells):
 	body = mod_add(trap, new_mod, body)
 
 	cells = check_cell('Ranged', 8, ranged, cells, True)
-	determined_select = [{'type': 'dc', 'name': 'DC', 'w': 5}, {'type': 'target', 'name': 'Target Trait', 'w': 16}, {'type': 'player', 'name': 'Player Trait', , 'w': 16}]
+	determined_select = [{'type': 'dc', 'name': 'DC', 'w': 5}, {'type': 'target', 'name': 'Target Trait', 'w': 16}, {'type': 'player', 'name': 'Player Trait', 'w': 16}]
 	new_mod = mod_create('Ranged', 9, ranged_type, determined_select)
 	value = 'dc'
 	new_mod = mod_cell('Value:', 8, [ranged_dc], new_mod, value)
