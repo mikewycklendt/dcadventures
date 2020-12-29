@@ -201,7 +201,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
-	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': None, 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
 
 	complexity = Complex.query.all()
 
@@ -404,11 +404,14 @@ def power_trait_select():
 		body['options'] = ['Size Rank'] 
 	elif trait == 'intim':
 		body['options'] = ['Intimidation Rank']
+	elif trait == 'auto':
+		body['options'] = ['Automatic']
+	elif trait == 'immoveable':
+		body['options'] = ['Immoveable']
 	else:
 		body['success'] = False
 		body['options'] = ['']
 
- 
 
 	print(body)
 	return jsonify(body)

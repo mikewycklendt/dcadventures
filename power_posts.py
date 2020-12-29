@@ -883,7 +883,7 @@ def create_post(entry, body, cells):
 	transform_select = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
 	transform_type = selects(transform_type, transform_select)
 
-	moveable_select = [{'type': '', 'name': 'Moveable With'}, {'type': None, 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+	moveable_select = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
 	move_player = selects(move_player, moveable_select)
 
 	against_select = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
@@ -920,11 +920,91 @@ def create_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Solidity', 12, [solidity], cells)
+	cells = cell('Visibility', 13, [visibility], cells)
+	cells = cell('Complexity', 14, [complexity], cells)
+	cells = cell('Volume', 12, [volume], cells)
+	cells = cell('Toughness', 13, [toughness], cells)
+	cells = cell('Mass', 11, [mass], cells)
+	cells = check_cell('Damageable', 12, damageable, cells)
+	cells = check_cell('Maintained', 12, maintained, cells)
+	cells = check_cell('Repairable', 12, repairable, cells)
+	
+	cells = check_cell('Moveable', 10, moveable, cells, True)
+	new_mod = mod_create('Moveable', 13)
+	new_mod = mod_cell('Trait:', 8, [move_player_trait], new_mod)
+	new_mod = mod_cell('Ability to Move:', 16, [move_opponent_ability], new_mod)
+	new_mod = mod_cell('Rank:', 8, [move_opponent_rank], new_mod)
+	body = mod_add(moveable, new_mod, body)
 
+	cells = check_cell('Stationary', 13, stationary, cells, True)
+	new_mod = mod_create('Stationary', 14)
+	new_mod = mod_cell('Trait:', 8, [move_player_trait], new_mod)
+	new_mod = mod_cell('Ability to Move:', 16, [move_opponent_ability], new_mod)
+	new_mod = mod_cell('Rank:', 8, [move_opponent_rank], new_mod)
+	body = mod_add(stationary, new_mod, body)
 
+	cells = check_cell('Trap', 7, trap, cells, True)
+	new_mod = mod_create('Trap', 6)
+	new_mod = mod_cell('DC:', 4, [trap_dc], new_mod)
+	new_mod = mod_cell('Trait:', 15, [trap_trait], new_mod)
+	new_mod = mod_cell('Resistance Trait:', 29, [trap_resist_trait], new_mod)
+	new_mod = mod_cell('Resistance DCL', 18, [trap_resist_dc], new_mod)
+	body = mod_add(trap, new_mod, body)
+
+	cells = check_cell('Ranged', 8, ranged, cells, True)
+	determined_select = [{'type': 'dc', 'name': 'DC', 'w': 5}, {'type': 'target', 'name': 'Target Trait', 'w': 16}, {'type': 'player', 'name': 'Player Trait', , 'w': 16}]
+	new_mod = mod_create('Ranged', 9, ranged_type, determined_select)
+	value = 'dc'
+	new_mod = mod_cell('Value:', 8, [ranged_dc], new_mod, value)
+	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
+	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
+	value = 'target'
+	new_mod = mod_cell('Trait:', 7, [ranged_trait], new_mod, value)
+	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
+	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
+	value = 'player'
+	new_mod = mod_cell('Trait:', 7, [ranged_trait], new_mod, value)
+	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
+	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
+	body = mod_add(ranged, new_mod, body)
+
+	cells = check_cell('Weapon', 9, weapon, cells, True)
+	new_mod = mod_create('Weapon', 10)
+	new_mod = mod_cell('Trait:', 7, [weapon_trait], new_mod)
+	new_mod = mod_cell('Modifier:', 9, [weapon_mod], new_mod)
+	new_mod = mod_cell('Damage Type:', 14, [weapon_damage_type], new_mod)
+	new_mod = mod_cell('Damage:', 8, [weapon_damage], new_mod)
+	body = mod_add(weapon, new_mod, body)
+
+	cells = check_cell('Support', 9, support, cells, True)
+	new_mod = mod_create('Supports Weight', 19)
+	new_mod = mod_cell('Strength Rank:', 14, [support_strength], new_mod)
+	new_mod = mod_cell('Can Strengthen:', 14, [support_strengthen], new_mod)
+	new_mod = mod_cell('Strength with Action:', 14, [support_action], new_mod)
+	new_mod = mod_cell('Rounds:', 7, [support_action_rounds], new_mod)
+	new_mod = mod_cell('With Extra Efffort:', 14, [support_effort], new_mod)
+	new_mod = mod_cell('Extra Effort Rounds:', 14, [support_effort_rounds], new_mod)
+	body = mod_add(support, new_mod, body)
+
+	cells = check_cell('Appears Real', 15, real, cells)
+	cells = check_cell('Cover', 8, cover, cells)
+	cells = check_cell('Conceal', 8, conceal, cells)
+	cells = check_cell('Blocks Incoming', 16, incoming, cells)
+	cells = check_cell('Blocks Outgoing', 16, outgoing, cells)
+	cells = check_cell('Transform', 10, transform, cells, True)
+	new_mod = mod_create('Transform', 12)
+	new_mod = mod_cell('Type', 5, [transform_type], new_mod)
+	word = string('Per Rank', [transform_start_mass, transfom_mass])
+	new_mod = mod_cell('Mass', 6, [transform_start_mass, transfom_mass, word], new_mod)
+	new_mod = mod_cell('Start Descriptor', 17, [transform_start_descriptor], new_mod)
+	new_mod = mod_cell('End Descriptor', 15, [transform_end_descriptor], new_mod)
+	body = mod_add(transform, new_mod, body)
+
+	cells = cell('Cost/Rank', 10, [cost], cells)
+	cells - cell('Ranks', 8, [ranks], cells)
 
 	body = send(cells, body)
-
 
 	cells.clear()
 
@@ -1281,8 +1361,6 @@ def environment_post(entry, body, cells):
 
 	extra = extra_name(extra_id)
 
-	environment_immunity_select = [{'type': '', 'name': 'Immune From'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'condition', 'name': 'Condition'}]
-	immunity_type = selects(immunity_type, environment_immunity_select)
 
 	temp_type_select = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 	temp_type = selects(temp_type, temp_type_select)
@@ -1313,8 +1391,50 @@ def environment_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Start Radius', 16, [radius]. cells)
+	word = string('Per', [distance, rank], cells)
+	word2 = string('Rank', [distance, rank], cells)
+	cells = cell('Radius', 14, [distance, word, rank, word2], cells)
+	cells = check_cell('Condition', 9, condition, cells, True)
+	new_mod = mod_create('Temperature Condition', 25)
+	new_mod = mod_cell('Temperature Type:', 20, [condition_temp_type], new_mod)
+	new_mod = mod_cell('Extremity:', 10, [temp_extremity], new_mod)
+	body = mod_add(condition, new_mod, body)
 
+	cells = check_cell('Impede', 7, impede, cells, True)
+	new_mod = mod_create('Impede Movement', 20)
+	new_mod = mod_cell('Nature Type:', 12, [move_nature], new_mod)
+	new_mod = mod_cell('Other:', 7, [move_other], new_mod)
+	new_mod = mod_cell('Speed:', 7, [move_speed], new_mod)
+	new_mod = mod_cell('Surface Modifier:', 18, [move_cost_circ], new_mod)
+	body = mod_add(impede, new_mod, body)
 
+	cells = check_cell('Counter Conceal', 17, conceal, cells, True)
+	new_mod = mod_create('Counters Concealment', 23)
+	new_mod = mod_cell('Type:', 7, [conceal_type], new_mod)
+	body = mod_add(conceal, new_mod, body)
+
+	cells = check_cell('Visibility', 13, visibility, cells, True)
+	new_mod = mod_create('Lessen Visibility', 22)
+	new_mod = mod_cell('Trait:', 7, [visibility_trait], new_mod)
+	new_mod = mod_cell('Modifier:', 11, [visibility_mod], new_mod)
+	body = mod_add(visibility, new_mod, body)
+
+	cells = check_cell('Selective', 10, selective, cells)
+	cells = check_cell('Immunity', 11, immunity, cells, True)
+	environment_immunity_select = [{'type': 'environment', 'name': 'Environment', 'w': 13}, {'type': 'condition', 'name': 'Condition', 'w': 12}]
+	new_mod = mod_create('Immunity', 12, immunity_type, environment_immunity_select)
+	value = 'environment'
+	new_mod = mod_cell('Type', 6, [immunity_environment], new_mod, value)
+	new_mod = mod_cell('No Penalty', 13, [no_penalty], new_mod, value)
+	new_mod = mod_cell('No Circumstance', 16, [no_circumstance], new_mod, value)
+	value = 'condition'
+	new_mod = mod_cell('Type', 6, [temp_type], new_mod, value)
+	new_mod = mod_cell('Extremity', 10, [immunity_extremity], new_mod, value)
+	body = mod_add(immunity, new_mod, body)
+
+	cells = cell('Cost/Rank', 10, [cost], cells)
+	cells = cell('Ranks', 6, [ranks], cells)
 
 	body = send(cells, body)
 
