@@ -916,8 +916,6 @@ def create_post(entry, body, cells):
 	support_effort_rounds = integer_convert(support_effort_rounds)
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)
-
-
 	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Solidity', 12, [solidity], cells)
@@ -1032,8 +1030,11 @@ def damage_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
-
-
+	cells = cell('Trait', 8, [trait], cells)
+	cells = cell('Modifier', 11, [mod], cells)
+	cells = check_cell('Strength Based', 16, strength, cells)
+	cells = cell('Damage Type', 14, [damage_type], cells)
+	cells = cell('Descriptor', 12, [descriptor], cells)
 
 	body = send(cells, body)
 
@@ -1076,9 +1077,7 @@ def dc_table_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
 
-	value_type_select = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
-	dc = selects(dc, value_type_select)
-
+	
 	possess_select = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 	descriptor_possess = selects(descriptor_possess, possess_select)
 
@@ -1088,11 +1087,41 @@ def dc_table_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 14, [target], cells)
+	vcells = vcell('value', 7, [value])
+	vcells = vcell('math', 15, [math_value, math, math_trait], vcells)
+	cells = vcell_add('DC', dc, vcells, crlls)
 
+	cells = check_cell('Descriptor', 14, [descriptor_check], cells, True)
+	new_mod = mod_cell('Descriptor', 12, [descriptor], new_mod)
+	new_mod = mod_cell('Possession', 12, [descriptor_possess], new_mod)	
+	body = mod_add(descriptor_check, new_mod, body)
 
+	cells = check_cell('Condition', 13, [condition], cells, True)
+	new_mod = mod_create('Condition', 12)
+	word = string('to', [condition1, condition2])
+	new_mod = mod_cell('Conditions', 14, [condition1, word, condition2], new_mod)
+	body = mod_add(condition, new_mod, body)
+
+	cells = check_cell('Keyword', 10, [keyword_check], cells, True)
+	new_mod = mod_create('Keyword', 10)
+	new_mod = mod_cell('Key:', 7, [keyword], new_mod)
+ 	body = mod_add(keyword_check, new_mod, body)
+
+	cells = check_cell('Check', 7, [check_type], cells, True)
+	new_mod = mod_create('Check Typoe', 15)
+	new_mod = mod_cell('Trait':, 7, [check_trait], new_mod)
+	new_mod = mod_cell('Modifier:', 12, [check_mod], new_mod)
+	body = mod_add(check_type, new_mod, body)
+
+	cells = check_cell('Level', 7, [levels], cells, True)
+	new_mod = mod_create('Level', 8)
+	new_mod = mod_cell('Level:', 7, [level], new_mod)
+	body = mod_add(levels, new_mod, body)
+
+	cells = cell('Description', 40, [description], cells)
 
 	body = send(cells, body)
-
 
 	cells.clear()
 
@@ -1284,6 +1313,9 @@ def degree_mod_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 14, [target], cells)
+	cells = cell('Degree', 7, [value], cells)
+	vcells = vcell()
 
 
 
