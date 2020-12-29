@@ -734,6 +734,9 @@ def character_post(entry, body, cells):
 	new_mod = mod_cell('Descriptor:', 8, [weaken_descriptor], new_mod, value)	
 	body = mod_add(weaken, new_mod, body)
 
+	cells = cell('Cost/Rank', 10, [cost], cells)
+	cells = cell('Ranks', 8, [ranks], cells)
+
 	body = send(cells, body)
 
 	cells.clear()
@@ -766,15 +769,11 @@ def circ_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
 
-	circ_type_select = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
-	circ_type = selects(circ_type, circ_type_select)
 
 	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
 	check_who = selects(check_who, who_check_select)
 
-	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
-	null_type = selects(null_type, circ_null_select)
-
+	
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
 	circ_range = integer_convert(circ_range)
@@ -782,8 +781,21 @@ def circ_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 12, [target], cells)
+	cells = cell('Modifier', 9, [mod], cells)
+	cells = cell('Lasts', 8, [rounds], cells)
 
+	circrange = string('Range', [circ_range])
+	vcells = vcell('range', 20, [circ_range, circrange])
+	vcells = vcell('check', 25, [check_who, check_trait], vcells)
+	cells = vcell_add('Trigger', circ_type, vcells, cells)
 
+	vcells = vcell('trait', 17, [null_trait])
+	vcells = vcell('descriptor', 19, [null_descriptor], vcells)
+	vcells = vcell('condition', 17, [null_condition], vcells)	
+	cells = vcell_add('Nullified', null_type, vcells, cells)
+
+	cells = cell('Circumstance', 35, [description], cells)
 
 	body = send(cells, body)
 
@@ -1986,17 +1998,28 @@ def resist_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
 
-	resistance_type_select = [{'type': '', 'name': 'Applies to'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Check Type'}, {'type': 'harmed', 'name': 'Subject Harmed'}]
-	resist_check_type = selects(resist_check_type, resistance_type_select)
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
-
-
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 16, [target], cells)
+	cells = cell('Mod', 7, [mod], cells)
+	cells - cell('Rounds', 8, [rounds], cells)
 
+	vcells = vcell('descriptor', 18, [descriptor])
+	vcells = vcell('trait', 16, [trait], vcells) 
+	vcells = vcell('harmed', 18, ['Subject Harmed'], vcells)
 
+	cells = vcell_add('Applies to', resist_check_type, vcells, cells)
+
+	cells = check_cell('Check', 8, requires_check, cells, True)
+	new_mod = mod_create('Requires Check'. 17)
+	new_mod = mod_cell('Check Type:', 12, [check_type], new_mod)
+	new_mod = mod_cell('TraitL', 7, [check_trait], new_mod)
+	body = mod_add(requires_check, new_mod, body)
+
+	cells = cell('Circumstance', 35, [circumstance], cells)
 
 	body = send(cells, body)
 
@@ -2034,8 +2057,6 @@ def resisted_by_post(entry, body, cells):
 	nullify_descriptor = descriptor_name(nullify_descriptor)
 	nullify_alternate = name(Defense, nullify_alternate)
 
-	effects_select = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
-	effect = selects(effect, effects_select)
 
 	dc = integer_convert(dc)
 	mod = integer_convert(mod)
@@ -2045,8 +2066,25 @@ def resisted_by_post(entry, body, cells):
 	damage =  integer_convert(damage)
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Trait', 15, [trait], cells)
+	cells = cell('DC', 7, [dc], cells)
+	cells = cell('Mod', 7, [mod], cells)
+	cells = cell('Degree', 7, [degree], cells)
+	cells = cell('Descriptor', 22, [descriptor], cells)
 
-
+	word = string('to', [condition1, condition2])
+	vcells = vcell('condition', 27, [condition1, word, condition2])
+	vcells = vcell('damage', 18, [damage], vcells)
+	wid = width(18, 10, nullify_alternate)
+	vcells = vcell('nullify', wid, [nullify_descriptor, nullify_alternate]. vcells)
+	wid = width(10, 15, weaken_restored)
+	word =  string('Max:', [weaken_max])
+	word2 = string('Restored')
+	vcells = vcell('trait', wid, [word, weaken_max, word2, weaken_restored], vcells) 
+	vcells = vcell('level', 18, [level], vcells)
+	cells = vcell_add('Effect', effect, vcells, cells)
+	cells = check_cell('Extra Effort', 14, extra_effort, cells)
+	cells = cell('Circumstaance', 35, [description], cells)
 
 	body = send(cells, body)
 
