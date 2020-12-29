@@ -2126,8 +2126,26 @@ def reverse_effect_post(entry, body, cells):
 	time_value = integer_convert(time_value)
 	
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 16, [target], cells)
+	cells = cell('Degree', 8, [degree], cells)
+	cells - cell('When', 10, [when], cells)
 
+	cells = check_cell('Reverse by Check', 25, check_check, cells, True)
+	select =  [{'type': 'value', 'name': 'DC', 'w': 10}, {'type': 'math', 'name': 'DC', 'w': 10}]
+	new_mod = mod_create('Reverse by Check', 23, value_type, select)
+	value = 'value
+	new_mod = mod_cell('Value:' 13, [value_dc], new_mod, value)
+	new_mod = mod_cell('Trait:', 10, [trait], new_mod, value)
+	value = 'math'
+	word = string('Rank', [math_dc, math])
+	new_mod = mod_cell('Math:', 10, [math_dc, math, word], new_mod, value)
+	new_mod = mod_cell('Trait:', 10, [trait], new_mod, value)
+	body = mod_add(check_check, new_mod, body)
 
+	cells = check_cell('Reverse by Time', 25, time_check, cells, True)
+	new_mod = mod_create('Reverse by Time', 23)
+	new_mod = mod_cell('Time:', 10, [time_value, time_unit], new_mod)
+	body = mod_add(time_check, new_mod, body)
 
 	body = send(cells, body)
 
