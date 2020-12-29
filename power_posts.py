@@ -2134,7 +2134,7 @@ def reverse_effect_post(entry, body, cells):
 	select =  [{'type': 'value', 'name': 'DC', 'w': 10}, {'type': 'math', 'name': 'DC', 'w': 10}]
 	new_mod = mod_create('Reverse by Check', 23, value_type, select)
 	value = 'value'
-	new_mod = mod_cell('Value:' 13, [value_dc], new_mod, value)
+	new_mod = mod_cell('Value:', 13, [value_dc], new_mod, value)
 	new_mod = mod_cell('Trait:', 10, [trait], new_mod, value)
 	value = 'math'
 	word = string('Rank', [math_dc, math])
