@@ -1107,7 +1107,7 @@ def dc_table_post(entry, body, cells):
 	new_mod = mod_create('Keyword', 10)
 	new_mod = mod_cell('Key:', 7, [keyword], new_mod)
 	body = mod_add(keyword_check, new_mod, body)
-	
+
 	cells = check_cell('Check', 7, [check_type], cells, True)
 	new_mod = mod_create('Check Typoe', 15)
 	new_mod = mod_cell('Trait':, 7, [check_trait], new_mod)
