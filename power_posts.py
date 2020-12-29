@@ -2014,7 +2014,7 @@ def resist_post(entry, body, cells):
 	cells = vcell_add('Applies to', resist_check_type, vcells, cells)
 
 	cells = check_cell('Check', 8, requires_check, cells, True)
-	new_mod = mod_create('Requires Check'. 17)
+	new_mod = mod_create('Requires Check', 17)
 	new_mod = mod_cell('Check Type:', 12, [check_type], new_mod)
 	new_mod = mod_cell('TraitL', 7, [check_trait], new_mod)
 	body = mod_add(requires_check, new_mod, body)
