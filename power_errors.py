@@ -1923,9 +1923,9 @@ def ranged_post_errors(data):
 	errors = int_check(dc_value, 'DC Value', errors)
 
 	errors = check_fields(dc, 'DC', [dc_value, dc_trait_type, dc_trait], errors)
-	errors - check_field(dc, 'DC', 'DC', dc_value, errors)
-	errors - check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
-	errors - check_field(dc, 'Trait', 'DC', dc_trait, errors)
+	errors = check_field(dc, 'DC', 'DC', dc_value, errors)
+	errors = check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
+	errors = check_field(dc, 'Trait', 'DC', dc_trait, errors)
 	
 	errors = variable(range_type, 'flat_units', 'Flat Units', [{'value': flat_value, 'name': 'Distanve'}, {'value': flat_units, 'name': 'Unita'}], errors)
 	errors = variable(range_type, 'distance_rank', 'Flat Distance Rank', [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
