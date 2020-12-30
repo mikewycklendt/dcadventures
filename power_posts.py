@@ -364,8 +364,11 @@ def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e'):
 
 	content = ''
 
+	print(content)
+
 	for c in contentlist:
 		if content == '':
+			print
 			content += c
 		else:
 			content += ' ' + c
@@ -2261,7 +2264,7 @@ def ranged_post(entry, body, cells):
 
 	vcells = vcell('flat_units', 30, [flat_value, flat_units])
 
-	distance_rank = ('Rank Distance', [flat_rank])
+	distance_rank = string('Rank Distance', [flat_rank])
 	vcells = vcell('distance_rank', 30, [flat_rank, distance_rank], vcells)
 
 	rank = string('Rank:', [flat_rank_rank, flat_rank_value, flat_rank_units])
