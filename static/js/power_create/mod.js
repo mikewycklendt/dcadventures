@@ -288,6 +288,9 @@ function mod_submit() {
 	const effortless = check("mod_effortless");
 	const noticeable = check("mod_noticeable");
 	const unreliable = check("mod_unreliable");
+	const radius = check("ranks_radius");
+	const accurate = check("ranks_accurate");
+	const acute = check("ranks_acute");
 	const objects_alone = select("mod_objects_alone");
 	const objects_character = select("mod_objects_character");
 	const effortless_degree = select("mod_effortless_degree");
@@ -379,6 +382,9 @@ function mod_submit() {
 			'effortless': effortless,
 			'noticeable': noticeable,
 			'unreliable': unreliable,
+			'radius': radius,
+			'accurate': accurate,
+			'acute': acute,
 			'objects_alone': objects_alone,
 			'objects_character': objects_character,
 			'effortless_degree': effortless_degree,

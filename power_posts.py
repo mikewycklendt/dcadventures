@@ -335,6 +335,7 @@ def vcell_add(title, field, vcells, cells):
 
 	return (cells)
 
+
 def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e'):
 
 	if vcells == 'e':
@@ -550,19 +551,19 @@ def alt_check_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	check_type = name(Check, check_type)
 
-	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
+	check_type = [{'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_types)
 
 	mod = integer_convert(mod)
 
-
-	
 	cells = cell('Extra', 15, [extra])
-
-
-
+	cells = cell('Check', 14, [check_type], cells)
+	cells = cell('Mod', 8, [mod], cells)
+	cells = cell('Trait', 17, [trait], cells)
+	cells = cell('When', 12, [when], cells)
+	cells = cell('Circumstabce', 35, [circumstance], cells)
+	
 	body = send(cells, body)
-
 	
 	cells.clear()
 
@@ -585,8 +586,10 @@ def change_action_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
-
-
+	cells = cell('Action', 17, [action], cells)
+	cells = cell('Modifier', 12, [mod], cells)
+	cells = check_cell('No Check', 9 objects, cells)
+	cells = cell('Circumstance', 40, [circumstance], cells)
 
 	body = send(cells, body)
 
@@ -1311,14 +1314,26 @@ def degree_mod_post(entry, body, cells):
 	condition_damage = integer_convert(condition_damage)
 	nullify = integer_convert(nullify)
 
-	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Target', 14, [target], cells)
 	cells = cell('Degree', 7, [value], cells)
-	vcells = vcell()
-
-
-
+	cells = cell('Keyword', 14, [keyword], cells)
+	cells = cell('Nullify DC', 10, [value], cells)
+	cells = check_cell('Cumulative', 12, cumulative, cells)
+	cells = check_cell('Linked', 7, linked, cells)
+	word = string('for', [circ_trait, circ_value, circ_turns])
+	word2 = stromg('Turns', [circ_trait, circ_value, circ_turns])
+	vcells = vcell('circ', 24, [circ_trait, circ_value, word, circ_turns, word2], vcells) 
+	vcells = vcell('uncontrolled', 12, ['Uncontrolled'], vcells)
+	vcells = vcell('level', 10, [level], vcells)
+	vcells = vcell('measure', 17, [measure_value, measure_rank], vcells, 'value', measure_type)
+	vcells = vcell('measure', 18, [measure_val1, measure_math, measure_trait], vcells, 'math', measure_type)
+	word = string('to', [condition1, condition2])
+	vcells = vcell('condition', 25, [condition1, word, condition2], vcells, 'condition', deg_condition_type)
+	word = string('Condition', [condition_damage_value, condition_damage])
+	vcells = vcell('condition', 17, [condition_damage_value, word, condition_damage], vcells, 'damage', deg_condition_type)
+	vcell_add('Effect', deg_type, vcells, cells)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -1534,12 +1549,35 @@ def minion_post(entry, body, cells):
 	resitable_dc = integer_convert(resitable_dc)
 	multiple_value = integer_convert(multiple_value)
 
-
-	
 	cells = cell('Extra', 15, [extra])
-
-
-
+	cells = cell('Points', 8, [points], cells)
+	cells = cell('Minion Condition', 16, [condition], cells)
+	cells = cell('Player Condition', 16, [player_condition], cells)
+	cells = cell('Type', 10, [variable_type], cells)
+	cells = check_cell('Link', 7, [link], cells)
+	cells = check_cell('Multiple', 9, multiple, cells, True)
+	new_mod = mod_create('Multiple Minions', 20)
+	new_mod  = mod_cell('Count', 7, [multiple_value], new_mod)
+	new_mod  = mod_cell('Horde', 7, [horde], new_mod)
+	body = mod_add(multiple, new_mod, body)
+	
+	cells = check_cell('Attitide', 9, attitude, cells, True)
+	new_mod = mod_create('Attitude', 11)
+	new_mod  = mod_cell('Level', 7, [attitude_type], new_mod)
+	new_mod  = mod_cell('Trait to Control', 18, [attitude_trait], new_mod)
+	body = mod_add(attitude, new_mod, body)
+	
+	cells = check_cell('Resistable', 9, resitable, cells, True)
+	new_mod = mod_create('Resistable', 11)
+	new_mod  = mod_cell('Defense', 9, [resitable_check], new_mod)
+	new_mod  = mod_cell('DC', 4, [resitable_dc], new_mod)
+	body = mod_add(resitable, new_mod, body)
+	
+	cells = check_cell('Heroic', 7, [heroic], cells)
+	cells = check_cell('Sacrifice', 9, sacrifice, cells, True)
+	new_mod = mod_create('Sacrifice', 11)
+	new_mod  = mod_cell('Cost', 6, [sacrifice_cost], new_mod)
+	body = mod_add(sacrifice, new_mod, body)
 	body = send(cells, body)
 
 	cells.clear()
@@ -1578,6 +1616,9 @@ def mod_post(entry, body, cells):
 	effortless = entry.effortless
 	noticeable = entry.noticeable
 	unreliable = entry.unreliable
+	radius = entry.radius
+	accurate = entry.accurate
+	acute = entry.acute
 	objects_alone = entry.objects_alone
 	objects_character = entry.objects_character
 	effortless_degree = entry.effortless_degree
@@ -1684,6 +1725,47 @@ def mod_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
+	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
+
+	cells = check_cell('Area', 7, area, cells, True)
+
+	cells = check_cell('Persistant', 10, persistent, cells)
+	cells = check_cell('Incurable', 8, incurable, cells)
+	cells = check_cell('Selective', 9, selective, cells)
+	cells = check_cell('Limited', 8, limited, cells, True)
+
+	cells = check_cell('Innate', 8, innate, cells)
+	cells = check_cell('Affects Others', 15, others, cells, True)
+	
+	cells = check_cell('Sustained', 9, sustained, cells)
+	cells = check_cell('Reflect', 8, reflect, cells, True)
+	
+	cells = check_cell('Redirect', 8, redirect, cells)
+	cells = check_cell('Half', 7, half, cells)
+	cells = check_cell('Affects Corporeal', 17, affects_corp, cells)
+	cells = check_cell('Continuous', 10, continuous, cells)
+	cells = check_cell('Vulnerable', 11, vulnerable, cells)
+	cells = check_cell('Precise', 8, precise, cells)
+	cells = check_cell('Progressive', 11, progressive, cells)
+	cells = check_cell('Subtle', 7, subtle, cells, True)
+	
+	cells = check_cell('Permanent', 10, permanent, cells)
+	cells = check_cell('Points', 8, points, cells, True)
+
+	cells = check_cell('Ranks', 7, ranks, cells, True)
+	
+	cells = check_cell('Action', 7, action, cells)
+	cells = check_cell('Side Effect', 12, side_effect, cells, True)
+	
+	cells = check_cell('Concentration', 13, concentration, cells)
+	cells = check_cell('Simultaneous', 13, simultaneous, cells, True)
+	
+	cells = check_cell('Effortless', 11, effortless, cells, True)
+	
+	cells = check_cell('Noticeable', 11, noticeable, cells)
+	cells = check_cell('Unreliable', 11, unreliable, cells)
+	cells = check_cell('Radius', 7, ranks, cells)
+	cells = check_cell('Accurate', 9, accurate, cells, True)
 
 
 
@@ -1995,8 +2077,13 @@ def opposed_post(entry, body, cells):
 	
 	cells = cell('Extra', 15, [extra])
 
-
-
+	cells = cell('Player Trait', 18, [trait], cells)
+	cells = cell('Mod', 6, [mod], cells)
+	cells = cell('Player Check', 18, [player_check], cells)
+	cells = cell('Opponent Trait', 18, [opponent_trait], cells)
+	cells = cell('Mod', 6, [opponent_mod], cells)
+	cells = cell('Opponent Check', 18, [opponent_check], cells)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -2493,8 +2580,22 @@ def time_post(entry, body, cells):
 
 		
 	cells = cell('Extra', 15, [extra])
+	cells = cell('Type', 18, [time_type], cells)
+	vcells = vcell('value', 18, [value, units])
+	word = string('= Time Rank', [time_value, math, trait])
+	vcells = vcell('math', 26, [time_value, math, trait, word], vcells)
+	vcell_add('Time', value_type, vcells, cells)
+	cells = cell('DC', 7, [dc], cells)
+	cells = cell('Descriptor', 15, [descriptor], cells)
+	cells = cell('Check', 18, [check_type], cells)
 
-
+	cells = check_cell('Recovery', 10, recovery, cells, True)
+	new_mod = mod_create('Recovery Time', 18)
+	word = ('Every', [recovery_penalty, recovery_time])
+	word2 = ('Time Rank', [recovery_penalty, recovery_time])
+	new_mod = mod_cell('Toughness Penalty Nullified', 27, [recovery_penalty, word, recovery_time, word2])
+	new_mod = mod_cell('Includes Incurable', 16, [recovery_incurable])
+	body = mod_add(recovery, new_mod, body)
 
 	body = send(cells, body)
 
