@@ -588,7 +588,7 @@ def change_action_post(entry, body, cells):
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Action', 17, [action], cells)
 	cells = cell('Modifier', 12, [mod], cells)
-	cells = check_cell('No Check', 9 objects, cells)
+	cells = check_cell('No Check', 9, objects, cells)
 	cells = cell('Circumstance', 40, [circumstance], cells)
 
 	body = send(cells, body)
