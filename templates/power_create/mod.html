@@ -299,6 +299,10 @@
 
 	<div id="mod-area">
 		<div>
+			Area
+		</div>
+
+		<div>
 			Modifier to check:
 		</div>
 
@@ -687,6 +691,15 @@
 				<option value="">Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_reflect_dc" name="mod_reflect_dc">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>

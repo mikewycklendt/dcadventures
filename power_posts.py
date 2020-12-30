@@ -1648,7 +1648,8 @@ def mod_post(entry, body, cells):
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
-	reflect_check = entry.reflect
+	reflect_check = entry.reflect_check
+	reflect_dc = entry.reflect_dc
 	reflect_trait_type = entry.reflect_trait_type
 	reflect_trait = entry.reflect_trait
 	reflect_descriptor = entry.reflect_descriptor
@@ -1688,16 +1689,12 @@ def mod_post(entry, body, cells):
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 
 	limited_type_select = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
-	limited_type   = selects(limited_type, limited_type_select)
 
 	task_type_select = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
 	limited_task_type = selects(limited_task_type, task_type_select)
 
 	null_type_select = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
 	limited_language_type = selects(limited_language_type, null_type_select)
-
-	side_effects_select = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
-	side_effect_type = selects(side_effect_type, side_effects_select)
 
 	spend_select = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
 	points_type = selects(points_type, spend_select)
@@ -1726,20 +1723,87 @@ def mod_post(entry, body, cells):
 	
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
+	new_mod = mod_create('Affects Objects', 20)
+	new_mod = mod_cell('Objects Alone', 17, [objects_alone], new_mod)
+	new_mod = mod_cell('With Character', 15, [objects_character], new_mod)
+	body = mod_add(affects_objects, new_mod, body)
 
 	cells = check_cell('Area', 7, area, cells, True)
+	new_mod = mod_create('Area', 6)
+	new_mod = mod_cell('Modifier', 9, [area_mod], new_mod)
+	new_mod = mod_cell('Range', 7, [area_range], new_mod)
+	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
 	cells = check_cell('Incurable', 8, incurable, cells)
 	cells = check_cell('Selective', 9, selective, cells)
+
 	cells = check_cell('Limited', 8, limited, cells, True)
+	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}]
+	new_mod = mod_create('Limited', 9, limited_type, limited_type_select)
+	value = 'task_type'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell("Doesn't Work On:", 16, [limited_task_type], new_mod, value)
+	value = 'task'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Task:', 6, [limited_task], new_mod, value)
+	value = 'trait'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Trait:', 7, [limited_trait], new_mod, value)
+	value = 'descriptor'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Descriptor:', 12, [limited_descriptor], new_mod, value)
+	value = 'subjects'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Number of Affected Characters:', 28, [limited_subjects], new_mod, value)
+	value = 'language'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Effect:', 8, [limited_language_type], new_mod, value)
+	value = 'extra'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Extra Effect:', 15, [limited_extra], new_mod, value)
+	value = 'degree'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Degree:', 8, [limited_degree], new_mod, value)
+	value = 'sense'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Sense:', 7, [limited_sense], new_mod, value)
+	new_mod = mod_cell('Subsense:', 10, [limited_subsense], new_mod, value)
+	value = 'range'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Range:', 7, [limited_range], new_mod, value)
+	value = 'source'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Required Descriptor:', 20, [limited_source], new_mod, value)
+	value = 'other'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Other Factor:', 16, [limited_description], new_mod, value)
+	value = 'level'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Level:', 7, [limited_level], new_mod, value)
+	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Innate', 8, innate, cells)
+
 	cells = check_cell('Affects Others', 15, others, cells, True)
-	
+	new_mod = mod_create('Affects Others', 17)
+	new_mod = mod_cell('Requires Carrying:', 18, [others_carry], new_mod)
+	new_mod = mod_cell('Requires Touch:', 18, [others_touch], new_mod)
+	new_mod = mod_cell('Continous Touch:', 18, [others_touch_continuous], new_mod)
+	body = mod_add(others, new_mod, body)
+
 	cells = check_cell('Sustained', 9, sustained, cells)
+
 	cells = check_cell('Reflect', 8, reflect, cells, True)
+	new_mod = mod_create('Reflect', 8)
+	new_mod = mod_cell('Check:', 7, [reflect_check], new_mod)
+	new_mod = mod_cell('DC:', 5, [reflect_dc], new_mod)
+	new_mod = mod_cell('Trait:', 8, [reflect_trait], new_mod)
+	new_mod = mod_cell('Descriptor:', 12, [reflect_descriptor], new_mod)
+	body = mod_add(others, new_mod, body)
 	
+	body = mod_add(reflect, new_mod, body)
+
 	cells = check_cell('Redirect', 8, redirect, cells)
 	cells = check_cell('Half', 7, half, cells)
 	cells = check_cell('Affects Corporeal', 17, affects_corp, cells)
@@ -1747,27 +1811,62 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Vulnerable', 11, vulnerable, cells)
 	cells = check_cell('Precise', 8, precise, cells)
 	cells = check_cell('Progressive', 11, progressive, cells)
+
 	cells = check_cell('Subtle', 7, subtle, cells, True)
-	
+	new_mod = mod_create('Subtle', 8)
+	new_mod = mod_cell('Opponent Trait:', 17, [subtle_opponent_trait], new_mod)
+	new_mod = mod_cell('DC:', 4, [subtle_dc], new_mod)
+	new_mod = mod_cell('Nullfied Trait:', 17, [subtle_null_trait], new_mod)
+	body = mod_add(subtle, new_mod, body)
+
 	cells = check_cell('Permanent', 10, permanent, cells)
+
 	cells = check_cell('Points', 8, points, cells, True)
+	new_mod = mod_create('Points Rerolls', 17)
+	new_mod = mod_cell('Target:', 8, [points_reroll_target], new_mod)
+	new_mod = mod_cell('Cost:', 6, [points_reroll_cost], new_mod)
+	new_mod = mod_cell('Rerolls:', 10, [points_reroll_result], new_mod)
+
+	body = mod_add(points, new_mod, body)
 
 	cells = check_cell('Ranks', 7, ranks, cells, True)
-	
+	new_mod = mod_create('Gain Trait', 12)
+	new_mod = mod_cell('Trait:', 7, [ranks_trait], new_mod)
+	new_mod = mod_cell('Ranks:', 6, [ranks_ranks], new_mod)
+	new_mod = mod_cell('Modifier:', 9, [ranks_mod], new_mod)	
+	body = mod_add(ranks, new_mod, body)
 	cells = check_cell('Action', 7, action, cells)
+	
 	cells = check_cell('Side Effect', 12, side_effect, cells, True)
+	side_effects_select = [{'type': 'complication', 'name': 'Complication', 'w': 14}, {'type': 'level', 'name': 'Level', 'w': 8}, {'type': 'other', 'name': 'Other', 'w': 8}]
+	new_mod = mod_create('Side Effect', 13, side_effect_type, side_effects_select)
+	value = 'complication'
+	value = 'level'	
+	new_mod = mod_cell('Level:', 8, [side_level], new_mod, value)
+	value = 'other'
+	new_mod = mod_cell('Other Side Effect:', 22, [side_other], new_mod, value)
+	body = mod_add(side_effect, new_mod, body)
 	
 	cells = check_cell('Concentration', 13, concentration, cells)
+	
 	cells = check_cell('Simultaneous', 13, simultaneous, cells, True)
+	new_mod = mod_create('Simultaneous', 14)
+	new_mod = mod_cell('Descriptor:',13 , [simultaneous_descriptor], new_mod)
+	body = mod_add(simultaneous, new_mod, body)
 	
 	cells = check_cell('Effortless', 11, effortless, cells, True)
+	new_mod = mod_create('Effortless', 12)
+	new_mod = mod_cell('Degree:', 8, [effortless_degree], new_mod)
+	new_mod = mod_cell('Unlimited Retries:', 20, [effortless_retries], new_mod)	
+	body = mod_add(effortless, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
 	cells = check_cell('Unreliable', 11, unreliable, cells)
 	cells = check_cell('Radius', 7, ranks, cells)
-	cells = check_cell('Accurate', 9, accurate, cells, True)
-
-
+	cells = check_cell('Accurate', 9, accurate, cells)
+	cells = check_cell('Acute', 7, acute, cells)
+	cells = cell('Cost/Rank', 10, cost, cells)
+	cells = cell('Ranks', 10, ranks_cost, cells)
 
 	body = send(cells, body)
 

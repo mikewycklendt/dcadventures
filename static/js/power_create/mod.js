@@ -321,6 +321,7 @@ function mod_submit() {
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
 	const reflect_check = select("mod_reflect_check");
+	const reflect_dc = select("mod_reflect_dc");
 	const reflect_trait_type = select("mod_reflect_trait_type");
 	const reflect_trait = select("mod_reflect_trait");
 	const reflect_descriptor = select("mod_reflect_descriptor");
@@ -415,6 +416,7 @@ function mod_submit() {
 			'side_level': side_level,
 			'side_other': side_other,
 			'reflect_check': reflect_check,
+			'reflect_dc': reflect_dc,
 			'reflect_trait_type': reflect_trait_type,
 			'reflect_trait': reflect_trait,
 			'reflect_descriptor': reflect_descriptor,
