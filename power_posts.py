@@ -2307,7 +2307,7 @@ def ranged_post(entry, body, cells):
 	new_mod = mod_create('DC', 10)
 	new_mod = mod_cell('DC Value:', 15, [dc_value], new_mod)
 	new_mod = mod_cell('DC Trait:', 15, [dc_trait], new_mod)
-	body = body(dc, new_mod, body)
+	body = mod_add(dc, new_mod, body)
 
 	body = send(cells, body)
 
