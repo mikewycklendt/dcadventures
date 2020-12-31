@@ -1766,7 +1766,7 @@ def move_post_errors(data):
 
 	errors = check_fields(permeate, 'Permeate', [permeate_type, permeate_speed], errors)
 	errors = check_field(permeate, 'Permeate', 'Permeate Type', permeate_type, errors)
-	errors = check_fields(permeate, 'Permeate', 'Permeate Speed Rank Modifier', permeate_speed, errors)
+	errors = check_field(permeate, 'Permeate', 'Permeate Speed Rank Modifier', permeate_speed, errors)
 
 	errors = check_fields(special, 'Special Travel', [special_type], errors)
 	errors = variable_fields('dimension', 'Dimension Travel', special_type, [dimension_type, dimension_mass_rank], errors)
