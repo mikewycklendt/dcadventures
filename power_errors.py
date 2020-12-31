@@ -1942,22 +1942,22 @@ def ranged_post_errors(data):
 	errors = variable_field('effect_mod', range_type, 'Modifier', effect_mod, errors)
 
 	errors = variable_fields('trait_mod', 'Trait Rank Modifier', range_type, [trait_trait_type, trait_trait, trait_math, trait_mod], errors)
-	errors = variable_field('distance_mod', range_type, 'Trait Type', trait_trait_type, errors)
-	errors = variable_field('distance_mod', range_type, 'Trait', trait_trait, errors)
-	errors = variable_field('distance_mod', range_type, 'Math', trait_math, errors)
-	errors = variable_field('distance_mod', range_type, 'Modifier', trait_mod, errors)
+	errors = variable_field('trait_mod', range_type, 'Trait Type', trait_trait_type, errors)
+	errors = variable_field('trait_mod', range_type, 'Trait', trait_trait, errors)
+	errors = variable_field('trait_mod', range_type, 'Math', trait_math, errors)
+	errors = variable_field('trait_mod', range_type, 'Modifier', trait_mod, errors)
 
 	errors = variable_fields('distance_mod', 'Distance Rank Modifier', range_type, [distance_mod_rank, distance_mod_math, distance_mod_trait_type, distance_mod_trait], errors)
-	errors = variable_field('check', range_type, 'Distance', distance_mod_rank, errors)
-	errors = variable_field('check', range_type, 'Math', distance_mod_math, errors)
-	errors = variable_field('check',  range_type, 'Trait Type', distance_mod_trait_type, errors)
-	errors = variable_field('check', range_type, 'Trait', distance_mod_trait, errors)
+	errors = variable_field('distance_mod', range_type, 'Distance', distance_mod_rank, errors)
+	errors = variable_field('distance_mod', range_type, 'Math', distance_mod_math, errors)
+	errors = variable_field('distance_mod', range_type, 'Trait Type', distance_mod_trait_type, errors)
+	errors = variable_field('distance_mod', range_type, 'Trait', distance_mod_trait, errors)
 
 	errors = variable_fields('check', 'Check Result', range_type, [check_trait_type, check_trait, check_math, check_mod], errors)
-	errors = variable_field('trait_mod', range_type, 'Trait Type', check_trait_type, errors)
-	errors = variable_field('trait_mod', range_type, 'Trait', check_trait, errors)
-	errors = variable_field('trait_mod', range_type, 'Math', check_math, errors)
-	errors = variable_field('trait_mod', range_type, 'Modifier', check_mod, errors)
+	errors = variable_field('check', range_type, 'Trait Type', check_trait_type, errors)
+	errors = variable_field('check', range_type, 'Trait', check_trait, errors)
+	errors = variable_field('check', range_type, 'Math', check_math, errors)
+	errors = variable_field('check', range_type, 'Modifier', check_mod, errors)
 
 
 
