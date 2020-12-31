@@ -2039,7 +2039,7 @@ def move_post(entry, body, cells):
 
 	cells = check_cell('Flight', 10, flight, cells, True)
 	new_mod = mod_create('Flight', 10)
-	new_mod = mod_cell('Conditions:', 10, flight_conditions, new_mod)
+	new_mod = mod_cell('Conditions:', 10, [flight_conditions], new_mod)
 	new_mod = mod_cell('Perception Check:', 15, [flight_resist], new_mod)
 	new_mod = mod_cell('Requires Equipment:', 20, [flight_equip], new_mod)
 	body = mod_add(flight, new_mod, body)
