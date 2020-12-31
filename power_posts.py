@@ -2303,7 +2303,7 @@ def ranged_post(entry, body, cells):
 	vcells = vcell('check', 70, [check_trait, check_math, check_mod, distance_rank], vcells)
 	cells = vcell_add('Range', range_type, vcells, cells)
 
-	cells - check_cell('DC', 10, dc, cells, True)
+	cells = check_cell('DC', 10, dc, cells, True)
 	new_mod = mod_create('DC', 10)
 	new_mod = mod_cell('DC Value:', 15, [dc_value], new_mod)
 	new_mod = mod_cell('DC Trait:', 15, [dc_trait], new_mod)
