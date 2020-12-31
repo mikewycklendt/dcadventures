@@ -493,6 +493,8 @@ def mod_cell(title, width, content, mod, value='e'):
 	for c in content:
 		if c is None:
 			c = ''
+		elif c == False:
+			c = ''
 		try:
 			c = str(c)
 		except:
