@@ -1942,7 +1942,7 @@ def ranged_post_errors(data):
 	errors = variable_field('effect_mod', range_type, 'Modifier', effect_mod, errors)
 
 	errors = variable_fields('trait_mod', 'Trait Rank Modifier', range_type, [trait_trait_type, trait_trait, trait_math, trait_mod], errors)
-	errors = variable_field('distance_mod', range_type, trait_trait_type, 'Trait Type', errors)
+	errors = variable_field('distance_mod', range_type, 'Trait Type', trait_trait_type, errors)
 	errors = variable_field('distance_mod', range_type, 'Trait', trait_trait, errors)
 	errors = variable_field('distance_mod', range_type, 'Math', trait_math, errors)
 	errors = variable_field('distance_mod', range_type, 'Modifier', trait_mod, errors)
