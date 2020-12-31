@@ -491,15 +491,15 @@ def mod_cell(title, width, content, mod, value='e'):
 			return (mod)
 
 	for c in content:
-		if c is None or c == False:
+		if c == False:
+			return (mod)
+		elif c is None:
 			c = ''
 		try:
 			c = str(c)
 		except:
 			if c == True:
 				contentwidth = '7%'
-			elif c == False:
-				return (mod)
 	
 	if content[0] != True:
 		text = ''
