@@ -2947,7 +2947,7 @@ def power_post_mod():
 						side_level = side_level,
 						side_other = side_other,
 						reflect_check = reflect_check,
-						refect_dc = reflect_dc
+						refect_dc = reflect_dc,
 						reflect_trait_type = reflect_trait_type,
 						reflect_trait = reflect_trait,
 						reflect_descriptor = reflect_descriptor,
