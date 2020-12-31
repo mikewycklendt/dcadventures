@@ -508,7 +508,7 @@ def mod_cell(title, width, content, mod, value='e'):
 		if c == True:
 			text = c
 		else:
-			if text == '' or text == True:
+			if text == '':
 				text = c
 			else:
 				text = ' ' + c
