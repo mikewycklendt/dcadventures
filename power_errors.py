@@ -1744,6 +1744,7 @@ def move_post_errors(data):
 	errors = required(distance_type, 'Distance', errors)
 	errors = variable_field('value', distance_type, 'Distance Rank', distance_value, errors)
 	errors = variable_fields('math', 'Distance Math', distance_type, [distance_math_value, distance_math, distance_math_value2], errors)
+	print
 	errors = variable_field('math', distance_type, 'First Distance Math Value', distance_math_value, errors)
 	errors = variable_field('math', distance_type, 'Distance Math', distance_math, errors)
 	errors = variable_field('math', distance_type, 'Second Distance Math Value', distance_math_value2, errors)
@@ -2189,7 +2190,7 @@ def sense_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 
 	errors = required(sense, 'Sense', errors)
-	errors = required(sense_type, 'Sense Effect Type')
+	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
