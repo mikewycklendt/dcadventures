@@ -2033,7 +2033,7 @@ def move_post(entry, body, cells):
 	cells = cell('DC', 7, dc, cells)
 
 	print('\n\n\n\n')
-	print(flight_conditions)
+	print(ground_time)
 	print('\n\n\n')
 	
 
@@ -2050,7 +2050,7 @@ def move_post(entry, body, cells):
 	body = mod_add(aquatic, new_mod, body)
 
 	cells = check_cell('Ground', 10, ground, cells, True)
-	new_mod = mod_create('Through Geound', 17)
+	new_mod = mod_create('Through Ground', 17)
 	new_mod = mod_cell('Type:', 7, [ground_type], new_mod)
 	new_mod = mod_cell('Permanance:', 10, [ground_permanence], new_mod)
 	new_mod = mod_cell('Lasts:', 5, [ground_time, ground_units], new_mod)
