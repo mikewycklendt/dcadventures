@@ -1430,7 +1430,7 @@ function row_delete(jsondata, route, object, table) {
 }
 
 function back_errors(line, table, jsonResponse) {
-	errors_delete = document.getElementsByClassName(line);
+	const errors_delete = document.getElementsByClassName(line);
 
 	if (typeof errors_delete[0] === "undefined") {
 		console.log('no errors defined')
@@ -1478,7 +1478,11 @@ function back_errors(line, table, jsonResponse) {
 
 
 function clear_errors(line, div) {
-	errors_delete = document.getElementsByClassName(line);
+	const errors_delete = document.getElementsByClassName(line);
+	const errors = document.getElementById(div);
+
+	errors.style.maxHeight = "0px";
+	errors.style.padding = "0px";
 
 	if (typeof errors_delete[0] === "undefined") {
 		console.log('no errors defined')
@@ -1491,13 +1495,10 @@ function clear_errors(line, div) {
 		setTimeout(function(){
 			for (i = 0; i < errors_delete.length; i++) {
 				errors_delete[i].style.display = 'none';
+				errors.style.display = 'none';
 			}
 		}, 400);
 
-		errors = document.getElementById(div);
-
-		errors.style.maxHeight = "0px";
-		errors.style.padding = "0px";
 	}
 }
 
