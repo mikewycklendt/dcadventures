@@ -1887,6 +1887,7 @@ def ranged_post_errors(data):
 	
 
 	errors = int_check(flat_value, 'Flat Value', errors)
+	print(errors)
 	errors = int_check(flat_rank, 'Rank', errors)
 	errors = int_check(flat_rank_value, 'Value', errors)
 	errors = int_check(flat_rank_rank, 'Rank', errors)
@@ -1909,16 +1910,16 @@ def ranged_post_errors(data):
 	errors = check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
 	errors = check_field(dc, 'Trait', 'DC', dc_trait, errors)
 	
-	errors = variable(range_type, 'flat_units', 'Flat Units', [{'value': flat_value, 'name': 'Distanve'}, {'value': flat_units, 'name': 'Unita'}], errors)
-	errors = variable(range_type, 'distance_rank', 'Flat Distance Rank', [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
-	errors = variable(range_type, 'flat_rank_units', 'Flat Units By Rank', [{'value': flat_rank_value, 'name': 'Distance'}, {'value': flat_rank_units, 'name': 'Units'}, {'value': flat_rank_rank, 'name': 'Rank'}], errors)
-	errors = variable(range_type, 'flat_rank_distance', 'Flat Distance Rank By Rank', [{'value': flat_rank_distance, 'name': 'Distance Rank'}, {'value': flat_rank_distance_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable(range_type, 'units_rank', 'Units Per Rank', [{'value': units_rank_start_value, 'name': 'Starting Distance'}, {'value': units_rank_value, 'name': 'Distance'}, {'value': units_rank_units, 'name': 'Units'}, {'value': units_rank_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable(range_type, 'rank_rank', 'Distance Rank Per Rank', [{'value': rank_distance_start, 'name': 'Starting Distance'}, {'value': rank_distance, 'name': 'Distance Rank'}, {'value': rank_effect_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable(range_type, 'effect_mod', 'Effect Rank Modifier', [{'value': effect_mod_math, 'name': 'Math'}, {'value': effect_mod, 'name': 'Modifier'}], errors)
-	errors = variable(range_type, 'trait_mod', 'Trait Rank Modifier', [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}, {'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
-	errors = variable(range_type, 'distance_mod', 'Distance Rank Modifier', [{'value': trait_trait_type, 'name': 'Trait Type'}, {'value': trait_trait, 'name': 'Trait'}, {'value': trait_math, 'name': 'Math'}, {'value': trait_mod, 'name': 'Modifier'}], errors)
-	errors = variable(range_type, 'check', 'Check Result', [{'value': distance_mod_rank, 'name': 'Distance'}, {'value': distance_mod_math, 'name': 'Math'}, {'value': distance_mod_trait_type, 'name': 'Trait Type'}, {'value': distance_mod_trait, 'name': 'Trait'}], errors)
+	errors = variable('Flat Units', 'flat_units', range_type [{'value': flat_value, 'name': 'Distance'}, {'value': flat_units, 'name': 'Unita'}], errors)
+	errors = variable('Flat Distance Rank', 'distance_rank', range_type [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
+	errors = variable('Flat Units By Rank', 'flat_rank_units', range_type [{'value': flat_rank_value, 'name': 'Distance'}, {'value': flat_rank_units, 'name': 'Units'}, {'value': flat_rank_rank, 'name': 'Rank'}], errors)
+	errors = variable('Flat Distance Rank By Rank', 'flat_rank_distance', range_type [{'value': flat_rank_distance, 'name': 'Distance Rank'}, {'value': flat_rank_distance_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable('Units Per Rank', 'units_rank', range_type [{'value': units_rank_start_value, 'name': 'Starting Distance'}, {'value': units_rank_value, 'name': 'Distance'}, {'value': units_rank_units, 'name': 'Units'}, {'value': units_rank_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable('Distance Rank Per Rank', 'rank_rank', range_type [{'value': rank_distance_start, 'name': 'Starting Distance'}, {'value': rank_distance, 'name': 'Distance Rank'}, {'value': rank_effect_rank, 'name': 'Effect Rank'}], errors)
+	errors = variable('Effect Rank Modifier', 'effect_mod', range_type [{'value': effect_mod_math, 'name': 'Math'}, {'value': effect_mod, 'name': 'Modifier'}], errors)
+	errors = variable('Trait Rank Modifier', 'trait_mod', range_type [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}, {'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
+	errors = variable('Distance Rank Modifier', 'distance_mod', range_type [{'value': trait_trait_type, 'name': 'Trait Type'}, {'value': trait_trait, 'name': 'Trait'}, {'value': trait_math, 'name': 'Math'}, {'value': trait_mod, 'name': 'Modifier'}], errors)
+	errors = variable('Check Result', 'check', range_type [{'value': distance_mod_rank, 'name': 'Distance'}, {'value': distance_mod_math, 'name': 'Math'}, {'value': distance_mod_trait_type, 'name': 'Trait Type'}, {'value': distance_mod_trait, 'name': 'Trait'}], errors)
 
 
 
