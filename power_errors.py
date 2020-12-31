@@ -560,7 +560,7 @@ def int_check(value, name, errors):
 	except:
 		error = True
 		message = name + ' value is not valid.'
-		error_msgs.append
+		error_msgs.append(message)
 	
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -1910,16 +1910,54 @@ def ranged_post_errors(data):
 	errors = check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
 	errors = check_field(dc, 'Trait', 'DC', dc_trait, errors)
 	
-	errors = variable('Flat Units', 'flat_units', range_type [{'value': flat_value, 'name': 'Distance'}, {'value': flat_units, 'name': 'Unita'}], errors)
-	errors = variable('Flat Distance Rank', 'distance_rank', range_type [{'value': flat_rank, 'name': 'Distance Rank'}], errors)
-	errors = variable('Flat Units By Rank', 'flat_rank_units', range_type [{'value': flat_rank_value, 'name': 'Distance'}, {'value': flat_rank_units, 'name': 'Units'}, {'value': flat_rank_rank, 'name': 'Rank'}], errors)
-	errors = variable('Flat Distance Rank By Rank', 'flat_rank_distance', range_type [{'value': flat_rank_distance, 'name': 'Distance Rank'}, {'value': flat_rank_distance_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable('Units Per Rank', 'units_rank', range_type [{'value': units_rank_start_value, 'name': 'Starting Distance'}, {'value': units_rank_value, 'name': 'Distance'}, {'value': units_rank_units, 'name': 'Units'}, {'value': units_rank_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable('Distance Rank Per Rank', 'rank_rank', range_type [{'value': rank_distance_start, 'name': 'Starting Distance'}, {'value': rank_distance, 'name': 'Distance Rank'}, {'value': rank_effect_rank, 'name': 'Effect Rank'}], errors)
-	errors = variable('Effect Rank Modifier', 'effect_mod', range_type [{'value': effect_mod_math, 'name': 'Math'}, {'value': effect_mod, 'name': 'Modifier'}], errors)
-	errors = variable('Trait Rank Modifier', 'trait_mod', range_type [{'value': check_trait_type, 'name': 'Trait Type'}, {'value': check_trait, 'name': 'Trait'}, {'value': check_math, 'name': 'Math'}, {'value': check_mod, 'name': 'Modifier'}], errors)
-	errors = variable('Distance Rank Modifier', 'distance_mod', range_type [{'value': trait_trait_type, 'name': 'Trait Type'}, {'value': trait_trait, 'name': 'Trait'}, {'value': trait_math, 'name': 'Math'}, {'value': trait_mod, 'name': 'Modifier'}], errors)
-	errors = variable('Check Result', 'check', range_type [{'value': distance_mod_rank, 'name': 'Distance'}, {'value': distance_mod_math, 'name': 'Math'}, {'value': distance_mod_trait_type, 'name': 'Trait Type'}, {'value': distance_mod_trait, 'name': 'Trait'}], errors)
+	errors = variable_fields('flat_units', 'Flat Units', range_type, [flat_value, flat_units,], errors)
+	errors = variable('flat_units', range_type, 'Distance',  flat_value, errors)
+	errors = variable('flat_units', range_type, 'Units', flat_units, errors)
+
+	errors = variable_fields('distance_rank', 'Flat Distance Rank', range_type, [flat_rank], errors)
+	errors = variable_field('distance_rank', range_type, 'Distance Rank', flat_rank, errors)
+
+	errors = variable_fields('flat_rank_units', 'Flat Units By Rank', range_type, [flat_rank_value, flat_rank_units, flat_rank_rank], errors)
+	errors = variable_field('flat_rank_units', range_type, 'Distance', flat_rank_value, errors)
+	errors = variable_field('flat_rank_units', range_type, 'Units', flat_rank_units, errors)
+	errors = variable_field('flat_rank_units', range_type, 'Rank', flat_rank_rank, errors)
+
+	errors = variable_fields('flat_rank_distance', 'Flat Distance Rank By Rank', range_type, [flat_rank_distance, flat_rank_distance_rank], errors)
+	errors = variable_field('flat_rank_distance', range_type, 'Distance Rank', flat_rank_distance, errors)
+	errors = variable_field('flat_rank_distance', range_type, 'Effect Rank', flat_rank_distance_rank, errors)
+
+	errors = variable_fields('units_rank', 'Units Per Rank', range_type, [units_rank_start_value, units_rank_value, units_rank_units, units_rank_rank], errors)
+	errors = variable_field('units_rank', range_type, 'Starting Distance', units_rank_start_value, errors)
+	errors = variable_field('units_rank', range_type, 'Distance', units_rank_value, errors)
+	errors = variable_field('units_rank', range_type, 'Units', units_rank_units, errors)
+	errors = variable_field('units_rank', range_type, 'Effect Rank', units_rank_rank, errors)
+
+	errors = variable_fields('rank_rank', 'Distance Rank Per Rank', range_type, [rank_distance_start, rank_distance, rank_effect_rank], errors)
+	errors = variable_field('rank_rank', range_type, 'Starting Distance', rank_distance_start, errors)
+	errors = variable_field('rank_rank', range_type, 'Distance Rank', rank_distance, errors)
+	errors = variable_field('rank_rank', range_type, 'Effect Rank', rank_effect_rank, errors)
+
+	errors = variable_fields('effect_mod', 'Effect Rank Modifier', range_type, [effect_mod_math, effect_mod], errors)
+	errors = variable_field('effect_mod', range_type, 'Math', effect_mod_math, errors)
+	errors = variable_field('effect_mod', range_type, 'Modifier', effect_mod, errors)
+
+	errors = variable_fields('trait_mod', 'Trait Rank Modifier', range_type, [check_trait_type, check_trait, check_math, check_mod], errors)
+	errors = variable_field('trait_mod', range_type, 'Trait Type', check_trait_type, errors)
+	errors = variable_field('trait_mod', range_type, 'Trait', check_trait, errors)
+	errors = variable_field('trait_mod', range_type, 'Math', check_math, errors)
+	errors = variable_field('trait_mod', range_type, 'Modifier', check_mod, errors)
+
+	errors = variable_fields('distance_mod', 'Distance Rank Modifier', range_type, [trait_trait_type, trait_trait, trait_math, trait_mod], errors)
+	errors = variable_field('distance_mod', range_type, trait_trait_type, 'Trait Type', errors)
+	errors = variable_field('distance_mod', range_type, 'Trait', trait_trait, errors)
+	errors = variable_field('distance_mod', range_type, 'Math', trait_math, errors)
+	errors = variable_field('distance_mod', range_type, 'Modifier', trait_mod, errors)
+
+	errors = variable_fields('check', 'Check Result', range_type, [distance_mod_rank, distance_mod_math, distance_mod_trait_type, distance_mod_trait], errors)
+	errors = variable_field('check', range_type, 'Distance', distance_mod_rank, errors)
+	errors = variable_field('check', range_type, 'Math', distance_mod_math, errors)
+	errors = variable_field('check',  range_type, 'Trait Type', distance_mod_trait_type, errors)
+	errors = variable_field('check', range_type, 'Trait', distance_mod_trait, errors)
 
 
 
