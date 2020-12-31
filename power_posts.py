@@ -501,16 +501,17 @@ def mod_cell(title, width, content, mod, value='e'):
 			if c == True:
 				contentwidth = '7%'
 	
-	if content[0] != True:
-		text = ''
-	else:
-		text = content[0]
+
+	text = ''
 
 	for c in content:
-		if text == '' or text == True:
+		if c == True:
 			text = c
 		else:
-			text = ' ' + c
+			if text == '' or text == True:
+				text = c
+			else:
+				text = ' ' + c
 
 	if text == '':
 		return (mod)
