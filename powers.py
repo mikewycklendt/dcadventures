@@ -279,7 +279,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
-	check_type = [{'type': '', 'name': 'Trait Type'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	check_type = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 
 	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
 
@@ -2794,6 +2794,9 @@ def power_post_mod():
 	effortless = request.get_json()['effortless']
 	noticeable = request.get_json()['noticeable']
 	unreliable = request.get_json()['unreliable']
+	radius = request.get_json()['radius']
+	accurate = request.get_json()['accurate']
+	acute = request.get_json()['acute']
 	objects_alone = request.get_json()['objects_alone']
 	objects_character = request.get_json()['objects_character']
 	effortless_degree = request.get_json()['effortless_degree']
@@ -2824,6 +2827,7 @@ def power_post_mod():
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
 	reflect_check = request.get_json()['reflect_check']
+	reflect_dc = request.get_json()['reflect_dc']
 	reflect_trait_type = request.get_json()['reflect_trait_type']
 	reflect_trait = request.get_json()['reflect_trait']
 	reflect_descriptor = request.get_json()['reflect_descriptor']
@@ -2910,6 +2914,9 @@ def power_post_mod():
 						effortless = effortless,
 						noticeable = noticeable,
 						unreliable = unreliable,
+						radius = radius,
+						accurate = accurate,
+						acute = acute,
 						objects_alone = objects_alone,
 						objects_character = objects_character,
 						effortless_degree = effortless_degree,
@@ -2939,7 +2946,8 @@ def power_post_mod():
 						side_effect_type = side_effect_type,
 						side_level = side_level,
 						side_other = side_other,
-						reflect_check = reflect,
+						reflect_check = reflect_check,
+						refect_dc = reflect_dc
 						reflect_trait_type = reflect_trait_type,
 						reflect_trait = reflect_trait,
 						reflect_descriptor = reflect_descriptor,
