@@ -2294,7 +2294,7 @@ def ranged_post(entry, body, cells):
 	vcells = vcell('effect_mod', 50, [effect_rank, effect_mod_math, effect_mod, distance_rank], vcells) 
 	
 	distance_rank = string('= Distance Rank', [trait_trait, trait_math, trait_mod])
-	vcells = vcell('trait_mod', 45, [trait_trait, trait_math, trait_mod], vcells)
+	vcells = vcell('trait_mod', 45, [trait_trait, trait_math, trait_mod, distance_rank], vcells)
 	
 	distance_rank = string('= Distance Rank', [distance_mod_rank, distance_mod_math, distance_mod_trait])
 	vcells = vcell('distance_mod', 70, [distance_mod_rank, distance_mod_math, distance_mod_trait, distance_rank], vcells)
