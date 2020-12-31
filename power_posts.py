@@ -2060,7 +2060,7 @@ def move_post(entry, body, cells):
 	cells = check_cell('Affects Others', 18, others, cells)
 	cells = check_cell('Continuous', 13, continuous, cells)
 	
-	cells = check_cell('Subtle', 8, subtle, True)
+	cells = check_cell('Subtle', 8, subtle, cells, True)
 	new_mod = mod_create('Subtle', 10)
 	new_mod = mod_cell('Bonus Against:', 15, [subtle_trait], new_mod)
 	new_mod = mod_cell('Bonus:', 8, [subtle_mod], new_mod)
