@@ -321,9 +321,9 @@ def vcell_add(title, field, vcells, cells):
 	width = 0
 
 	for vcell in vcells:
-		vcell['value'] = value
-		vcell['content'] = con
-		vcell['width'] = wid
+		value = vcell['value']
+		con = vcell['content']
+		wid = vcell['width']
 		if value == field:
 			content = con
 			width = wid
