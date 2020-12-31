@@ -25,7 +25,7 @@ def name(Table, name):
 	
 	return (name)
 
-def math(Table, name):
+def math_convert(Table, name):
 	
 	db = SQLAlchemy()
 
@@ -1076,7 +1076,7 @@ def dc_table_post(entry, body, cells):
 	levels = entry.level
 
 	extra = extra_name(extra_id)
-	math = math(Math, math)
+	math = math_convert(Math, math)
 	descriptor = descriptor_name(descriptor)
 	level = name(PowerLevels, level)
 
@@ -1288,7 +1288,7 @@ def degree_mod_post(entry, body, cells):
 	level = entry.level
 
 	extra = extra_name(extra_id)
-	measure_math = math(Math, measure_math)
+	measure_math = math_convert(Math, measure_math)
 	measure_rank = name(Rank, measure_rank)
 	level = name(PowerLevels, level)
 
@@ -1958,8 +1958,8 @@ def move_post(entry, body, cells):
 	cost = entry.cost
 
 	extra = extra_name(extra_id)
-	math = math(Math, math)
-	distance_math = math(Math, distance_math)
+	math = math_convert(Math, math)
+	distance_math = math_convert(Math, distance_math)
 	concealment_sense = name(Sense, concealment_sense)
 	dimension_descriptor = descriptor_name(dimension_descriptor)
 	ground_type = name(Ground, ground_type)
@@ -2235,10 +2235,10 @@ def ranged_post(entry, body, cells):
 	flat_units = name(Unit, flat_units)
 	flat_rank_units = name(Unit, flat_rank_units)
 	units_rank_units = name(Unit, units_rank_units)
-	effect_mod_math = math(Math, effect_mod_math)
-	check_math = math(Math, check_math)
-	trait_math = math(Math, trait_math)
-	distance_mod_math = math(Math, distance_mod_math)
+	effect_mod_math = math_convert(Math, effect_mod_math)
+	check_math = math_convert(Math, check_math)
+	trait_math = math_convert(Math, trait_math)
+	distance_mod_math = math_convert(Math, distance_mod_math)
 
 	flat_value = integer_convert(flat_value)
 	flat_rank = integer_convert(flat_rank)
@@ -2452,7 +2452,7 @@ def reverse_effect_post(entry, body, cells):
 	time_unit = entry.time_unit
 
 	extra = extra_name(extra_id)
-	math = math(Math, math)
+	math = math_convert(Math, math)
 	time_unit = name(Unit, time_unit)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
@@ -2567,8 +2567,8 @@ def sense_post(entry, body, cells):
 	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
 	dimensional_type = selects(dimensional_type, dimensions_select)
 
-	sense_cost = db.Column_convert(db.Integer)
-	subsense_cost = db.Column_convert(db.Integer)
+	sense_cost = integer_convert(sense_cost)
+	subsense_cost = integer_convert(subsense_cost)
 	resist_circ = integer_convert(resist_circ)
 	time_value = integer_convert(time_value)
 	time_factor = integer_convert(time_factor)
@@ -2666,7 +2666,7 @@ def time_post(entry, body, cells):
 
 	extra = extra_name(extra_id)
 	units = name(Unit, units)
-	math = math(Math, math)
+	math = math_convert(Math, math)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
 
