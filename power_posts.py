@@ -491,9 +491,7 @@ def mod_cell(title, width, content, mod, value='e'):
 			return (mod)
 
 	for c in content:
-		if c is None:
-			c = ''
-		elif c == False:
+		if c is None or c == False:
 			c = ''
 		try:
 			c = str(c)
