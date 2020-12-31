@@ -2032,6 +2032,11 @@ def move_post(entry, body, cells):
 
 	cells = cell('DC', 7, dc, cells)
 
+	print('\n\n\n\n')
+	print(flight_conditions)
+	print('\n\n\n')
+	
+
 	cells = check_cell('Flight', 10, flight, cells, True)
 	new_mod = mod_create('Flight', 10)
 	new_mod = mod_cell('Conditions:', 10, flight_conditions, new_mod)
