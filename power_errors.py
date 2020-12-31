@@ -1704,7 +1704,7 @@ def move_post_errors(data):
 	errors = id_check(Unit, ground_units, 'unit', errors)
 	errors = id_check(Check, objects_check, 'check', errors)
 	errors = id_check(ConflictAction, objects_attack, 'action', errors)
-
+	print(mod)
 	errors = int_check(rank, 'Speed Rank', errors)
 	errors = int_check(mod, 'Speed Rank Modifier', errors)
 	errors = int_check(distance_value, 'Distance Value', errors)
