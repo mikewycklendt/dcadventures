@@ -1726,7 +1726,7 @@ def move_post_errors(data):
 	errors = required(math, 'Speed Rank Math', errors)
 	errors = required(mod, 'Speed Rank Modifier', errors)
 	errors = check_fields(aquatic, 'Aquatic', [acquatic_type], errors)
-	check_field = check_field(aquatic, 'Aquatic Type','Aquatic', acquatic_type, errors)
+	errors = check_field(aquatic, 'Aquatic Type','Aquatic', acquatic_type, errors)
 
 	errors = check_fields(flight, 'Flight', [flight_conditions], errors)
 	errors = check_field(flight, 'Flight Conditions', 'Flight', flight_conditions, errors)
