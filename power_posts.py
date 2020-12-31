@@ -2020,7 +2020,7 @@ def move_post(entry, body, cells):
 	
 	cells = cell('Extra', 15, [extra])
 	per = check_convert('Per Rank', per_rank)
-	cells = cell('Speed', 29, [rank, math, mod, per], cells)
+	cells = cell('Speed', 18, [rank, math, mod, per], cells)
 	cells = cell('Condition', 12, [condition], cells)
 	cells = cell('Direction', 13, [direction], cells)
 	
