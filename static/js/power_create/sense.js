@@ -164,7 +164,7 @@ function sense_submit() {
 	const exclusive = check("sense_exclusive");
 	const gm = check("sense_gm");
 	const dark = check("sense_dark");
-	const lighting = select("sense-lighting");
+	const lighting = select("sense_lighting");
 	const time = check("sense_time");
 	const dimensional = check("sense_dimensional");
 	const radius = check("sense_radius");
