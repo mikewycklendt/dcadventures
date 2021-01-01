@@ -1980,13 +1980,6 @@ class PowerResistBy(db.Model):
 class PowerSenseEffect(db.Model):
 	__tablename__ = 'power_sense_effect'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	power_id = db.Column(db.Integer)
-	extra_id = db.Column(db.Integer)
-	target = db.Column(db.String())
-	sense = db.Column(db.Integer)
-	subsense = db.Column(db.Integer)
-	sense_cost = db.Column(db.Integer)
-	subsense_cost = db.Column(db.Integer)
 	skill = db.Column(db.Integer)
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
@@ -1999,6 +1992,7 @@ class PowerSenseEffect(db.Model):
 	resist_immune = db.Column(db.Boolean)
 	resist_permanent = db.Column(db.String())
 	resist_circ = db.Column(db.Integer)
+	objects = db.Column(db.Boolean)
 	exclusive = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	dark = db.Column(db.Boolean)
@@ -2024,54 +2018,6 @@ class PowerSenseEffect(db.Model):
 	ranks = db.Column(db.Integer)
 	cost = db.Column(db.Integer)
 
-	def format(self):
-		return {
-			'id': self.id,
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'target': self.target,
-			'sense': self.sense,
-			'subsense': self.subsense,
-			'sense_cost': self.sense_cost,
-			'subsense_cost': self.subsense_cost,
-			'skill': self.skill,
-			'skill_required': self.skill_required,
-			'sense_type': self.sense_type,
-			'height_trait_type': self.height_trait_type,
-			'height_trait': self.height_trait,
-			'height_power_required': self.height_power_required,
-			'height_ensense': self.height_ensense,
-			'resist_trait_type': self.resist_trait_type,
-			'resist_trait': self.resist_trait,
-			'resist_immune': self.resist_immune,
-			'resist_permanent': self.resist_permanent,
-			'resist_circ': self.resist_circ,
-			'objects': self.objects,
-			'exclusive': self.exclusive,
-			'gm': self.gm,
-			'dark': self.dark,
-			'lighting': self.lighting,
-			'time': self.time,
-			'dimensional': self.dimensional,
-			'radius': self.radius,
-			'accurate': self.accurate,
-			'acute': self.acute,
-			'time_set': self.time_set,
-			'time_value': self.time_value,
-			'time_unit': self.time_unit,
-			'time_skill': self.time_skill,
-			'time_bonus': self.time_bonus,
-			'time_factor': self.time_factor,
-			'distance': self.distance,
-			'distance_dc': self.distance_dc,
-			'distance_mod': self.distance_mod,
-			'distance_value': self.distance_value,
-			'distance_unit': self.distance_unit,
-			'distance_factor': self.distance_factor,
-			'dimensional_type': self.dimensional_type,
-			'ranks': self.ranks,
-			'cost': self.cost
-		}
 
 
 class PowerReverse(db.Model):
