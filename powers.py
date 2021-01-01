@@ -3911,6 +3911,7 @@ def power_post_sense():
 								resist_immune = resist_immune,
 								resist_permanent = resist_permanent,
 								resist_circ = resist_circ,
+								objects = objects,
 								exclusive = exclusive,
 								gm = gm,
 								dark = dark,

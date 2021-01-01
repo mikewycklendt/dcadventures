@@ -2609,15 +2609,6 @@ def sense_post(entry, body, cells):
 	vcells = vcell('resist', wid, [affects, resist_trait, word, perm, resist_circ, circ], vcells)
 	vcell_add('Effect', sense_type, vcells, cells)
 
-	print('\n\n\n')
-	print(objects)
-	print(objects)
-	print(objects)
-	print(exclusive)
-	print(exclusive)
-	print(exclusive)
-	print('\n\n\n')
-
 	cells = check_cell('Penetrates', 12, objects, cells)
 	cells = check_cell('Exclusive', 10, exclusive, cells)
 	cells = check_cell('GM Trigger', 11, gm, cells)
