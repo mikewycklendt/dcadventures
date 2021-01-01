@@ -3892,7 +3892,12 @@ def power_post_sense():
 	ranks = integer(ranks)
 	cost = integer(cost)
 
-	entry = PowerSenseEffect(sense_cost = sense_cost,
+	entry = PowerSenseEffect(power_id = power_id,
+								extra_id = extra_id,
+								target = target,
+								sense = sense,
+								subsense = subsense,
+								sense_cost = sense_cost,
 								subsense_cost = subsense_cost,
 								skill = skill,
 								skill_required = skill_required,
@@ -3910,7 +3915,7 @@ def power_post_sense():
 								gm = gm,
 								dark = dark,
 								lighting = lighting,
-								time = time,
+								time_check = time,
 								dimensional = dimensional,
 								radius = radius,
 								accurate = accurate,
