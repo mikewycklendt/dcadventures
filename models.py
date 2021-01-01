@@ -2004,7 +2004,6 @@ class PowerSenseEffect(db.Model):
 	gm = db.Column(db.Boolean)
 	dark = db.Column(db.Boolean)
 	lighting = db.Column(db.String())
-	time_check = db.Column(db.Boolean)
 	dimensional = db.Column(db.Boolean)
 	radius = db.Column(db.Boolean)
 	accurate = db.Column(db.Boolean)
