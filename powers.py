@@ -3898,19 +3898,7 @@ def power_post_sense():
 								sense = sense,
 								subsense = subsense,
 								sense_cost = sense_cost,
-								subsense_cost = subsense_cost,
-								skill = skill,
-								skill_required = skill_required,
-								sense_type = sense_type,
-								height_trait_type = height_trait_type,
-								height_trait = height_trait,
-								height_power_required = height_power_required,
-								height_ensense = height_ensense,
-								resist_trait_type = resist_trait_type,
-								resist_trait = resist_trait,
-								resist_immune = resist_immune,
-								resist_permanent = resist_permanent,
-								resist_circ = resist_circ)
+								subsense_cost = subsense_cost)
 
 	db.session.add(entry)
 	db.session.commit()
