@@ -3915,7 +3915,7 @@ def power_post_sense():
 								gm = gm,
 								dark = dark,
 								lighting = lighting,
-								time_check = time,
+								time = time,
 								dimensional = dimensional,
 								radius = radius,
 								accurate = accurate,
