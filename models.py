@@ -1980,6 +1980,8 @@ class PowerResistBy(db.Model):
 class PowerSenseEffect(db.Model):
 	__tablename__ = 'power_sense_effect'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	sense_cost = db.Column(db.Integer)
+	subsense_cost = db.Column(db.Integer)
 	skill = db.Column(db.Integer)
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
