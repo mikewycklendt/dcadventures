@@ -1987,18 +1987,6 @@ class PowerSenseEffect(db.Model):
 	subsense = db.Column(db.Integer)
 	sense_cost = db.Column(db.Integer)
 	subsense_cost = db.Column(db.Integer)
-	skill = db.Column(db.Integer)
-	skill_required = db.Column(db.Boolean)
-	sense_type = db.Column(db.String())
-	height_trait_type = db.Column(db.String())
-	height_trait = db.Column(db.String())
-	height_power_required = db.Column(db.Boolean)
-	height_ensense = db.Column(db.String())
-	resist_trait_type = db.Column(db.String())
-	resist_trait = db.Column(db.String())
-	resist_immune = db.Column(db.Boolean)
-	resist_permanent = db.Column(db.String())
-	resist_circ = db.Column(db.Integer)
 
 
 class PowerReverse(db.Model):
