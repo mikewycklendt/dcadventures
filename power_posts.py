@@ -2587,7 +2587,7 @@ def sense_post(entry, body, cells):
 	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Target', 15, [target], cells)
-	cells = cell('Sense', 13, [sense], cells)
+	cells = cell('Sense', 9, [sense], cells)
 	cells = cell('Cost', 6, [sense_cost], cells)
 	cells = cell('Subsense', 14, [subsense], cells)
 	cells = cell('Cost', 6, [subsense_cost], cells)
@@ -2611,7 +2611,7 @@ def sense_post(entry, body, cells):
 
 	cells = check_cell('Penetrates', 12, objects, cells)
 	cells = check_cell('Exclusive', 10, exclusive, cells)
-	cells = check_cell('GM Trigger', 11, gm, cells)
+	cells = check_cell('GM', 6, gm, cells)
 
 	cells = check_cell('Counters Dark', 16, dark, cells, True)
 	new_mod = mod_create('Counters Darkness', 22)
