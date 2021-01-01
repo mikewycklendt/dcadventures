@@ -3910,16 +3910,7 @@ def power_post_sense():
 								resist_trait = resist_trait,
 								resist_immune = resist_immune,
 								resist_permanent = resist_permanent,
-								resist_circ = resist_circ,
-								exclusive = exclusive,
-								gm = gm,
-								dark = dark,
-								lighting = lighting,
-								time_check = time,
-								dimensional = dimensional,
-								radius = radius,
-								accurate = accurate,
-								acute = acute)
+								resist_circ = resist_circ)
 
 	db.session.add(entry)
 	db.session.commit()
