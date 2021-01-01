@@ -3892,9 +3892,7 @@ def power_post_sense():
 	ranks = integer(ranks)
 	cost = integer(cost)
 
-	entry = PowerSense(power_id = power_id,
-						extra_id = extra_id,
-						target = target,
+	entry = PowerSense(target = target,
 						sense = sense,
 						subsense = subsense,
 						sense_cost = sense_cost,
