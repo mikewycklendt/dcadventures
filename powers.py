@@ -3874,10 +3874,10 @@ def power_post_sense():
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
-	sense = db.Column(db.Integer)
-	subsense = db.Column(db.Integer)
-	sense_cost = db.Column(db.Integer)
-	subsense_cost = db.Column(db.Integer)
+	sense = integer(sense)
+	subsense = integer(subsense)
+	sense_cost = integer(sense_cost)
+	subsense_cost = integer(subsense_cost)
 	skill = integer(skill)
 	resist_circ = integer(resist_circ)
 	time_value = integer(time_value)
@@ -3897,6 +3897,8 @@ def power_post_sense():
 								target = target,
 								sense = sense,
 								subsense = subsense,
+								sense_cost = sense_cost,
+								subsense_cost = subsense_cost,
 								skill = skill,
 								skill_required = skill_required,
 								sense_type = sense_type,
