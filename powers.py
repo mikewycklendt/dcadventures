@@ -3919,22 +3919,7 @@ def power_post_sense():
 								dimensional = dimensional,
 								radius = radius,
 								accurate = accurate,
-								acute = acute,
-								time_set = time_set,
-								time_value = time_value,
-								time_unit = time_unit,
-								time_skill = time_skill,
-								time_bonus = time_bonus,
-								time_factor = time_factor,
-								distance = distance,
-								distance_dc = distance_dc,
-								distance_mod = distance_mod,
-								distance_value = distance_value,
-								distance_unit = distance_unit,
-								distance_factor = distance_factor,
-								dimensional_type = dimensional_type,
-								ranks = ranks,
-								cost = cost)
+								acute = acute)
 
 	db.session.add(entry)
 	db.session.commit()

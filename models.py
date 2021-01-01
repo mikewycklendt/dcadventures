@@ -2009,22 +2009,6 @@ class PowerSenseEffect(db.Model):
 	radius = db.Column(db.Boolean)
 	accurate = db.Column(db.Boolean)
 	acute = db.Column(db.Boolean)
-	time_set = db.Column(db.String())
-	time_value = db.Column(db.Integer)
-	time_unit = db.Column(db.Integer)
-	time_skill = db.Column(db.Integer)
-	time_bonus = db.Column(db.String())
-	time_factor = db.Column(db.Integer)
-	distance = db.Column(db.String())
-	distance_dc = db.Column(db.Integer)
-	distance_mod = db.Column(db.Integer)
-	distance_value = db.Column(db.Integer)
-	distance_unit = db.Column(db.Integer)
-	distance_factor = db.Column(db.Integer)
-	dimensional_type = db.Column(db.String())
-	ranks = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
-
 
 
 class PowerReverse(db.Model):
