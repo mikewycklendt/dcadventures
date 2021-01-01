@@ -2613,6 +2613,9 @@ def sense_post(entry, body, cells):
 	print(objects)
 	print(objects)
 	print(objects)
+	print(exclusive)
+	print(exclusive)
+	print(exclusive)
 	print('\n\n\n')
 
 	cells = check_cell('Penetrates', 12, objects, cells)
