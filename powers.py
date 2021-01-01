@@ -3895,6 +3895,8 @@ def power_post_sense():
 	entry = PowerSenseEffect(power_id = power_id,
 								extra_id = extra_id,
 								target = target,
+								sense = sense,
+								subsense = subsense,
 								skill = skill,
 								skill_required = skill_required,
 								sense_type = sense_type,
