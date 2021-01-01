@@ -1999,7 +1999,6 @@ class PowerSenseEffect(db.Model):
 	resist_immune = db.Column(db.Boolean)
 	resist_permanent = db.Column(db.String())
 	resist_circ = db.Column(db.Integer)
-	objects = db.Column(db.Boolean)
 	exclusive = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	dark = db.Column(db.Boolean)
