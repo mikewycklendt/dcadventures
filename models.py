@@ -1983,8 +1983,6 @@ class PowerSenseEffect(db.Model):
 	power_id = db.Column(db.Integer)
 	extra_id = db.Column(db.Integer)
 	target = db.Column(db.String())
-	sense_cost = db.Column(db.Integer)
-	subsense_cost = db.Column(db.Integer)
 	skill = db.Column(db.Integer)
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
