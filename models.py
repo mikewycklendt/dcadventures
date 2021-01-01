@@ -1983,10 +1983,6 @@ class PowerSenseEffect(db.Model):
 	power_id = db.Column(db.Integer)
 	extra_id = db.Column(db.Integer)
 	target = db.Column(db.String())
-	sense = db.Column(db.Integer)
-	subsense = db.Column(db.Integer)
-	sense_cost = db.Column(db.Integer)
-	subsense_cost = db.Column(db.Integer)
 
 
 class PowerReverse(db.Model):

@@ -3894,11 +3894,7 @@ def power_post_sense():
 
 	entry = PowerSenseEffect(power_id = power_id,
 								extra_id = extra_id,
-								target = target,
-								sense = sense,
-								subsense = subsense,
-								sense_cost = sense_cost,
-								subsense_cost = subsense_cost)
+								target = target)
 
 	db.session.add(entry)
 	db.session.commit()
