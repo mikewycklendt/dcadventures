@@ -933,7 +933,7 @@ def create_post_errors(data):
 	errors = check_together_var(support_strengthen, 'Suupports Weight and Can Strengthen', 'Complete the action fields or extra effort fields (or all)', [[support_action, support_action_rounds], [support_effort, support_effort_rounds]], errors)
 
 	errors = check_fields(transform, 'Transform', [transform_type, transform_start_mass, transfom_mass], errors)
-	errors = check_field(transform, 'Transform', 'Transform Type', errors)
+	errors = check_field(transform, 'Transform', 'Transform Type', transform_type, errors)
 	errors = check_field(transform, 'Transform', 'Transform Starting Mass', transform_start_mass, errors)
 	errors = check_field(transform, 'Transform', 'Transform Ending Mass', transfom_mass, errors)
 
