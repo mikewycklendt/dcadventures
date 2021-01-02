@@ -124,7 +124,7 @@ function env_submit() {
 	const move_speed = select("env_move_speed");
 	const move_cost_circ = check("env_move_cost_circ");
 	const move_other = text("env_move_other");
-	const conceal_type = check("env_conceal_type");
+	const conceal_type = select("env_conceal_type");
 	const visibility_trait_type = select("env_visibility_trait_type");
 	const visibility_trait = select("env_visibility_trait");
 	const visibility_mod = select("env_visibility_mod");
