@@ -1506,6 +1506,7 @@ class PowerMod(db.Model):
 	side_level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	side_other = db.Column(db.String())
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	reflect_dc = db.Column(db.Integer)
 	reflect_trait_type = db.Column(db.String())
 	reflect_trait = db.Column(db.String())
 	reflect_descriptor = db.Column(db.Integer)
@@ -1595,6 +1596,7 @@ class PowerMod(db.Model):
 			'side_level': self.side_level,
 			'side_other': self.side_other,
 			'reflect_check': self.reflect_check,
+			'reflect_dc': self.reflect_dc,
 			'reflect_trait_type': self.reflect_trait_type,
 			'reflect_trait': self.reflect_trait,
 			'reflect_descriptor': self.reflect_descriptor,
