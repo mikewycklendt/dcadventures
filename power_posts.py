@@ -2481,7 +2481,7 @@ def reverse_effect_post(entry, body, cells):
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Target', 16, [target], cells)
 	cells = cell('Degree', 8, [degree], cells)
-	cells - cell('When', 10, [when], cells)
+	cells = cell('When', 10, [when], cells)
 
 	cells = check_cell('Reverse by Check', 25, check_check, cells, True)
 	select =  [{'type': 'value', 'name': 'DC', 'w': 10}, {'type': 'math', 'name': 'DC', 'w': 10}]
