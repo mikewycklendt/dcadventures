@@ -2246,6 +2246,7 @@ def time_post_errors(data):
 	errors = int_check(recovery_time, 'Recovery Time', errors)
 
 	errors = required(time_type, 'Time Type', errors)
+	errors = required(value_type, 'Time Value Type', errors)
 
 	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
 	errors = variable_field('value', value_type,'Time Value', value, errors)
