@@ -1585,7 +1585,7 @@ def mod_post_errors(data):
 	errors = check_fields(points, 'Spend Points', [points_type], errors)
 	errors = check_field(points, 'Spend Points', 'Spend Points Type', points_type, errors)
 	errors = variable_fields('reroll', 'Re-roll', points_type, [points_reroll_target, points_reroll_cost, points_rerolls], errors)
-	errors = variable_field('reroll', points_type, 'Re-roll', 'Number of Rerolls', points_rerolls, errors)
+	errors = variable_field('reroll', points_type, 'Number of Rerolls', points_rerolls, errors)
 	errors = variable_field('reroll', points_type, 'Re-roll Cost', points_reroll_cost, errors)
 	errors = variable_field('reroll', points_type, 'Re-roll Target', points_reroll_target, errors)
 	
