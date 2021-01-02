@@ -189,7 +189,7 @@
 			<select class="select-sml" id="dc_condition1" name="dc_condition1">
 				<option value="">Starting Condition</option>
 				<option value="current">Current</option>
-				{% for c in condition %}
+				{% for c in conditions %}
 					<option value="{{c}}">{{c}}</option>
 				{% endfor %}
 			</select> 
@@ -203,7 +203,7 @@
 			<select class="select-sml" id="dc_condition2" name="dc_condition2">
 				<option value="">Ending Condition</option>
 				<option value="any">Any</option>
-				{% for c in condition %}
+				{% for c in conditions %}
 					<option value="{{c}}">{{c}}</option>
 				{% endfor %}
 			</select> 
