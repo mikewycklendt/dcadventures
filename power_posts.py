@@ -735,10 +735,13 @@ def character_post(entry, body, cells):
 	new_mod = mod_create('Weaken', 10, weaken_type, weaken_select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 8, [weaken_trait], new_mod, value)	
+	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
 	value = 'type'
-	new_mod = mod_cell('Trait Type:', 12, [weaken_broad], new_mod, value)	
+	new_mod = mod_cell('Trait Type:', 12, [weaken_broad], new_mod, value)
+	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
 	value = 'descriptor'
-	new_mod = mod_cell('Descriptor:', 8, [weaken_descriptor], new_mod, value)	
+	new_mod = mod_cell('Descriptor:', 8, [weaken_descriptor], new_mod, value)
+	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
 	body = mod_add(weaken, new_mod, body)
 
 	cells = cell('Cost/Rank', 10, [cost], cells)
