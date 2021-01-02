@@ -1101,7 +1101,7 @@ def dc_table_post(entry, body, cells):
 	cells = cell('Target', 14, [target], cells)
 	vcells = vcell('value', 7, [value])
 	vcells = vcell('math', 15, [math_value, math, math_trait], vcells)
-	cells = vcell_add('DC', dc, vcells, crlls)
+	cells = vcell_add('DC', dc, vcells, cells)
 
 	cells = check_cell('Descriptor', 14, [descriptor_check], cells, True)
 	new_mod = mod_cell('Descriptor', 12, [descriptor], new_mod)
