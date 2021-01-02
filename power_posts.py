@@ -1324,7 +1324,7 @@ def degree_mod_post(entry, body, cells):
 	vcells = vcell('measure', 18, [measure_val1, measure_math, measure_trait], vcells, 'math', measure_type)
 	word = string('to', [condition1, condition2])
 	vcells = vcell('condition', 25, [condition1, word, condition2], vcells, 'condition', deg_condition_type)
-	word = string('Condition', [condition_damage_value, condition_damage])
+	word = string('Conditions', [condition_damage_value, condition_damage])
 	vcells = vcell('condition', 17, [condition_damage_value, word, condition_damage], vcells, 'damage', deg_condition_type)
 	vcell_add('Effect', deg_type, vcells, cells)
 	
