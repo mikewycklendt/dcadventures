@@ -1332,7 +1332,7 @@ def degree_mod_post(entry, body, cells):
 	cells = check_cell('Linked', 7, linked, cells)
 	word = string('for', [circ_trait, circ_value, circ_turns])
 	word2 = string('Turns', [circ_trait, circ_value, circ_turns])
-	vcells = vcell('circ', 24, [circ_trait, circ_value, word, circ_turns, word2], vcells) 
+	vcells = vcell('circ', 24, [circ_trait, circ_value, word, circ_turns, word2]) 
 	vcells = vcell('uncontrolled', 12, ['Uncontrolled'], vcells)
 	vcells = vcell('level', 10, [level], vcells)
 	vcells = vcell('measure', 17, [measure_value, measure_rank], vcells, 'value', measure_type)
