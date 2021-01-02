@@ -2677,7 +2677,7 @@ def time_post(entry, body, cells):
 
 		
 	cells = cell('Extra', 15, [extra])
-	cells = cell('Type', 18, [time_type], cells)
+	cells = cell('Type', 25, [time_type], cells)
 	vcells = vcell('value', 18, [value, units])
 	word = string('= Time Rank', [time_value, math, trait])
 	vcells = vcell('math', 26, [time_value, math, trait, word], vcells)
