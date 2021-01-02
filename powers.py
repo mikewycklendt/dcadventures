@@ -618,6 +618,8 @@ def get_subsense_select():
 
 	sense_id_str = request.get_json()['sense_id']
 
+	print(sense_id_str)
+
 	options = []
 
 	if sense_id_str == '':
