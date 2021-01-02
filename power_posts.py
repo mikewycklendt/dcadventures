@@ -1290,13 +1290,10 @@ def degree_mod_post(entry, body, cells):
 	target = selects(target, targets_select)
 
 	deg_mod_type_select = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}]
-	deg_type = selects(deg_type, deg_mod_type_select)
 
 	value_type_select = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
-	measure_type = selects(measure_type, value_type_select)
 
 	condition_type_select = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
-	deg_condition_type = selects(deg_condition_type, condition_type_select)
 
 	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown_select)
