@@ -2593,12 +2593,12 @@ def sense_post(entry, body, cells):
 	cells = cell('Cost', 6, [subsense_cost], cells)
 	cells = cell('Check', 16, [skill], cells)
 
-	wid = 17
+	wid = 14
 	affects = string('Affects', [height_trait])
 	word = string('Requires', [height_ensense])
 	wid = width(wid, 17, height_ensense)
 	vcells = vcell('height', wid, [affects, height_trait, word, height_ensense])
-	wid = 17
+	wid = 14
 	affects =  string('Affects', [resist_trait])
 	word = check_convert('Immune', resist_immune)
 	wid = width(wid, 10, resist_immune)
