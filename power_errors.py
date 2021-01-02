@@ -2105,8 +2105,8 @@ def reverse_effect_post_errors(data):
 	errors = variable_fields('math', value_type, 'DC', math_dc, errors)
 	errors = variable_fields('math', value_type, ' Math', math, errors)
 	errors = check_fields(time_check, 'Reversed by Time', [time_value, time_unit], errors)
-	errors = check_fields(time_check, 'Reversed by Time', 'Time', time_value, errors)
-	errors = check_fields(time_check, 'Reversed by Time', 'Time Units', time_unit, errors)
+	errors = check_field(time_check, 'Reversed by Time', 'Time', time_value, errors)
+	errors = check_field(time_check, 'Reversed by Time', 'Time Units', time_unit, errors)
 
 	return (errors)
 
