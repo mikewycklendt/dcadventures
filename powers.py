@@ -1821,7 +1821,7 @@ def power_post_create():
 						trap_trait_type = trap_trait_type,
 						trap_trait = trap_trait,
 						trap_resist_check = trap_resist_check,
-						trap_resist_trait = trap_resist_check,
+						trap_resist_trait = trap_resist_trait,
 						trap_resist_dc = trap_resist_dc,
 						trap_escape = trap_escape,
 						ranged_type = ranged_type,
