@@ -33,6 +33,13 @@ function circ_null_type() {
 	select_opacity(select, options);
 }
 
+function circ_check_trait_type() {
+	const select = 'circ_check_trait_type';
+	const fill = 'circ_check_trait';
+	
+	trait_select(select, fill);
+}
+
 function circ_null_trait_type() {
 	const select = 'circ_null_trait_type';
 	const fill = 'circ_null_trait';
