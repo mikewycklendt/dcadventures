@@ -336,7 +336,7 @@ def vcell_add(title, field, vcells, cells):
 	return (cells)
 
 
-def vcell(value, width, contentlist, vcells='e', value2='e', seletion2='e'):
+def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 
 	if vcells == 'e':
 		new_vcells = []
