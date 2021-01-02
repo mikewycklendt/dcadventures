@@ -454,6 +454,12 @@ function mod_submit() {
 
 			mod_grid.columns.length = 0;
 			mod_grid.columns = jsonResponse.rows;
+			cells = jsonResponse.cells
+
+			let c;
+			for (c of cells){
+				console.log(c)
+			}
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
