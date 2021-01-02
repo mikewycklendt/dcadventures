@@ -679,7 +679,7 @@ def character_post(entry, body, cells):
 	wid = 8
 	perrank = string('Per', increase)
 	rank = string('Rank', increase)
-	wid = width(wid, 8)
+	wid = width(wid, 8, increase)
 	cells = cell('Increase', wid, [value, perrank, increase, rank], cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
