@@ -1310,7 +1310,7 @@ def degree_mod_post(entry, body, cells):
 	condition_type_select = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 	deg_condition_type = selects(deg_condition_type, condition_type_select)
 
-	updown_select = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown_select)
 
 	value = integer_convert(value)
