@@ -49,7 +49,7 @@ let resistance_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
-function resistance() {
+function resistance_submit() {
 
 	const columns = resistance_grid.columns;
 	const created = resistance_grid.titles;
