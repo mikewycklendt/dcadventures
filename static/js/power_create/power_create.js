@@ -1360,7 +1360,7 @@ function row_delete(jsondata, route, object, table) {
 	const table_id = jsondata.table_id;
 	const cells = jsondata.cells;
 	const rows = object.columns;
-	const size = jsondata.font;
+	const size = object.font;
 	console.log(rows)
 
 	const cells_class = table_id + '-cells';
