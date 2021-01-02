@@ -205,6 +205,7 @@ def together(name, values, errors):
 def check_together_var(check, checkname, message, values, errors):
 
 	error_msgs = errors['error_msgs']
+	error = False
 	
 	if check:
 		error = True
