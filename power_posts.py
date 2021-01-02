@@ -1862,7 +1862,14 @@ def mod_post(entry, body, cells):
 	cells = cell('Cost/Rank', 10, cost, cells)
 	cells = cell('Ranks', 10, ranks_cost, cells)
 
+	
+
 	body = send(cells, body)
+
+	print('\n\n\n')
+	for cell in cells:
+		print(cell)
+
 
 	cells.clear()
 
