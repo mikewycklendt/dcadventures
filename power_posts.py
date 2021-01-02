@@ -543,7 +543,7 @@ def alt_check_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	check_type = name(Check, check_type)
 
-	check_type = [{'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	check_types = [{'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_types)
 
 	mod = integer_convert(mod)
