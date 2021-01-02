@@ -384,10 +384,11 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 		return (vcells)
 
 	if selection2 is None or selection2 == '':
-		for vcell in vcells:
-			vcell['value'] = val
-			if value == val:
-				return (vcells)
+		if vcells != []
+			for vcell in vcells:
+				vcell['value'] = val
+				if value == val:
+					return (vcells)
 		
 		vcells.append(cell)
 		return (vcells)
