@@ -1867,8 +1867,8 @@ def mod_post(entry, body, cells):
 	body = send(cells, body)
 
 	print('\n\n\n')
-	for cell in cells:
-		print(cell)
+	for c in cells:
+		print(c)
 
 
 	cells.clear()
