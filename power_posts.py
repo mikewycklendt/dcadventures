@@ -2688,8 +2688,8 @@ def time_post(entry, body, cells):
 
 	cells = check_cell('Recovery', 10, recovery, cells, True)
 	new_mod = mod_create('Recovery Time', 18)
-	word = ('Every', [recovery_penalty, recovery_time])
-	word2 = ('Time Rank', [recovery_penalty, recovery_time])
+	word = string('Every', [recovery_penalty, recovery_time])
+	word2 = string('Time Rank', [recovery_penalty, recovery_time])
 	new_mod = mod_cell('Toughness Penalty Nullified', 27, [recovery_penalty, word, recovery_time, word2], new_mod)
 	new_mod = mod_cell('Includes Incurable', 16, [recovery_incurable], new_mod)
 	body = mod_add(recovery, new_mod, body)
