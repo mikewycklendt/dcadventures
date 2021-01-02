@@ -2422,11 +2422,11 @@ def resisted_by_post(entry, body, cells):
 	cells = cell('Trait', 15, [trait], cells)
 	cells = cell('DC', 7, [dc], cells)
 	cells = cell('Mod', 7, [mod], cells)
-	cells = cell('Degree', 7, [degree], cells)
+	cells = cell('Degree', 9, [degree], cells)
 	cells = cell('Descriptor', 22, [descriptor], cells)
 
 	word = string('to', [condition1, condition2])
-	vcells = vcell('condition', 20, [condition1, word, condition2])
+	vcells = vcell('condition', 25, [condition1, word, condition2])
 	vcells = vcell('damage', 18, [damage], vcells)
 	wid = width(18, 10, nullify_alternate)
 	vcells = vcell('nullify', wid, [nullify_descriptor, nullify_alternate], vcells)
@@ -2437,7 +2437,7 @@ def resisted_by_post(entry, body, cells):
 	vcells = vcell('level', 18, [level], vcells)
 	cells = vcell_add('Effect', effect, vcells, cells)
 	cells = check_cell('Extra Effort', 14, extra_effort, cells)
-	cells = cell('Circumstaance', 35, [description], cells)
+	cells = cell('Circumstaance', 30, [description], cells)
 
 	body = send(cells, body)
 
