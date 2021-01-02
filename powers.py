@@ -4035,7 +4035,7 @@ def power_post_time():
 	time_value = integer(time_value)
 	math = integer(math)
 	trait = integer(trait)
-	dc = integer(descriptor)
+	dc = integer(dc)
 	descriptor = integer(descriptor)
 	check_type = integer(check_type)
 	recovery_penalty = integer(recovery_penalty)
