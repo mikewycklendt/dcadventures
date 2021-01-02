@@ -1548,7 +1548,7 @@ def minion_post(entry, body, cells):
 	cells = cell('Minion Condition', 16, [condition], cells)
 	cells = cell('Player Condition', 16, [player_condition], cells)
 	cells = cell('Type', 10, [variable_type], cells)
-	cells = check_cell('Link', 7, [link], cells)
+	cells = check_cell('Link', 7, link, cells)
 	cells = check_cell('Multiple', 9, multiple, cells, True)
 	new_mod = mod_create('Multiple Minions', 20)
 	new_mod  = mod_cell('Count', 7, [multiple_value], new_mod)
@@ -1567,7 +1567,7 @@ def minion_post(entry, body, cells):
 	new_mod  = mod_cell('DC', 4, [resitable_dc], new_mod)
 	body = mod_add(resitable, new_mod, body)
 	
-	cells = check_cell('Heroic', 7, [heroic], cells)
+	cells = check_cell('Heroic', 7, heroic, cells)
 	cells = check_cell('Sacrifice', 9, sacrifice, cells, True)
 	new_mod = mod_create('Sacrifice', 11)
 	new_mod  = mod_cell('Cost', 6, [sacrifice_cost], new_mod)
