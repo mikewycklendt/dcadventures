@@ -989,7 +989,6 @@ def create_post(entry, body, cells):
 	cells = check_cell('Support', 9, support, cells, True)
 	new_mod = mod_create('Supports Weight', 19)
 	new_mod = mod_cell('Strength Rank:', 14, [support_strength], new_mod)
-	new_mod = mod_cell('Can Strengthen:', 14, [support_strengthen], new_mod)
 	new_mod = mod_cell('Strength with Action:', 14, [support_action], new_mod)
 	new_mod = mod_cell('Rounds:', 7, [support_action_rounds], new_mod)
 	new_mod = mod_cell('With Extra Efffort:', 14, [support_effort], new_mod)
