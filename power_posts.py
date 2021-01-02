@@ -1013,7 +1013,7 @@ def create_post(entry, body, cells):
 	body = mod_add(transform, new_mod, body)
 
 	cells = cell('Cost/Rank', 10, [cost], cells)
-	cells - cell('Ranks', 8, [ranks], cells)
+	cells = cell('Ranks', 8, [ranks], cells)
 
 	body = send(cells, body)
 
