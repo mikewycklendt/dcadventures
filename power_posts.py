@@ -1104,6 +1104,7 @@ def dc_table_post(entry, body, cells):
 	cells = vcell_add('DC', dc, vcells, cells)
 
 	cells = check_cell('Descriptor', 14, [descriptor_check], cells, True)
+	new_mod = mod_create('Descriptor DC', 16)
 	new_mod = mod_cell('Descriptor', 12, [descriptor], new_mod)
 	new_mod = mod_cell('Possession', 12, [descriptor_possess], new_mod)	
 	body = mod_add(descriptor_check, new_mod, body)
