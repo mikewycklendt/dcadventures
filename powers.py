@@ -622,12 +622,14 @@ def get_subsense_select():
 
 	options = []
 
-	if sense_id_str is None:
+	if sense_id_str == '':
 		options.append({'id': '', 'name': 'Any'})
+		return jsonify(body)
 
-	if sense_id_str == 0:
+	if sense_id_str == '0':
+		options.append({'id': '', 'name': 'Any'})
 		options.append({'id': 0, 'name': 'All'})
-
+		return jsonify(body)
 
 	try:
 		sense_id = int(sense_id_str)
