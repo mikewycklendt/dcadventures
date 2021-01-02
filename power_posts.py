@@ -858,7 +858,7 @@ def create_post(entry, body, cells):
 	trap_trait_type = entry.trap_trait_type
 	trap_trait = entry.trap_trait
 	trap_resist_check = entry.trap_resist_check
-	trap_resist_trait = entry.trap_resist_check
+	trap_resist_trait = entry.trap_resist_trait
 	trap_resist_dc = entry.trap_resist_dc
 	trap_escape = entry.trap_escape
 	ranged_type = entry.ranged_type
