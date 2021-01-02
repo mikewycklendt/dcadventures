@@ -716,7 +716,10 @@ def character_post_errors(data):
 
 	errors = check_fields(weaken, 'Weaken', [weaken_type], errors)
 	errors = check_field(weaken, 'Weaken', 'Weaken Type', weaken_type, errors)
-	errors = variable_fields()
+	errors = variable_fields('trait', 'Weaken Specific Trait', weaken_type, [weaken_trait_type, weaken_trait], errors)
+	errors = variable_fields('type', 'Weaken Broad Trait', weaken_type, [weaken_broad], errors)
+	errors = variable_fields('descriptor', 'Weaken Broad Descriptor', weaken_type, [weaken_descriptor], errors)
+
 
 	errors = variable_fields('trait', 'Specific', weaken_type, [weaken_trait_type, weaken_trait], errors)
 	errors = variable_field('trait', weaken_type, 'Trait Type', weaken_trait_type, errors)
