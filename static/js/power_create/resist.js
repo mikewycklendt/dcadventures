@@ -60,7 +60,7 @@ function resistance_submit() {
 	const mod = select("resistance_mod");
 	const rounds = select("resistance_rounds");
 	const circumstance = text("resistance_circ");
-	const resist_check_type = select("resistance_check_type");
+	const resist_check_type = select("resistance_resist_check_type");
 	const trait_type = select("resistance_trait_type");
 	const trait = select("resistance_trait");
 	const descriptor = select("resistance_descriptor");
