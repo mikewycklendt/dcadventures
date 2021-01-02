@@ -2888,6 +2888,7 @@ def power_post_mod():
 	limited_range = integer(limited_range)
 	side_level = integer(side_level)
 	reflect_check = integer(reflect_check)
+	reflect_dc = integer(reflect_dc)
 	reflect_descriptor = integer(reflect_descriptor)
 	subtle_dc = integer(subtle_dc)
 	ranks_ranks = integer(ranks_ranks)
