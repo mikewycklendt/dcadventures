@@ -2586,7 +2586,6 @@ def sense_post(entry, body, cells):
 	cost = integer_convert(cost)
 	
 	cells = cell('Extra', 15, [extra])
-	cells = cell('Target', 15, [target], cells)
 	cells = cell('Sense', 9, [sense], cells)
 	cells = cell('Cost', 6, [sense_cost], cells)
 	cells = cell('Subsense', 14, [subsense], cells)

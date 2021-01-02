@@ -688,8 +688,8 @@ def character_post_errors(data):
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
-	errors = variable_fields('emotion', 'Emotional State', limited_by, [emotion], errors)
-	errors = variable_fields('other', 'Other Condition', limited_by, [other], errors)
+	errors = variable_fields('emotion', 'Emotional State', limited_by, [limited_emotion], errors)
+	errors = variable_fields('other', 'Other Condition', limited_by, [limited_other], errors)
 
 	errors = check_fields(reduced, 'Reduced Trait', [reduced_trait_type, reduced_value], errors)
 	errors = check_field(reduced, 'Reduced Trait', 'Reduced Trait Type', reduced_trait_type, errors)
@@ -697,7 +697,7 @@ def character_post_errors(data):
 	errors = variable_fields('ability', 'Reduced Ability', reduced_trait_type, [reduced_trait], errors)
 	errors = variable_field('ability', reduced_trait_type, 'Ability', reduced_trait, errors)
 	errors = variable_fields('defense', 'Reduced Defense', reduced_trait_type, [reduced_trait], errors)
-	errors = variable_fields('defense', reduced_trait_type, 'Defense', reduced_trait, errors)
+	errors = variable_field('defense', reduced_trait_type, 'Defense', reduced_trait, errors)
 
 	errors = check_of(limbs, 'Extra Limbs', [limbs_continuous, limbs_sustained, limbs_distracting, limbs_projection], errors)
 	errors = check_field(carry, 'Extra Carry', 'Carry Capacity', carry_capacity, errors)
