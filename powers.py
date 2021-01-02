@@ -617,16 +617,24 @@ def get_subsense_select():
 	body['success'] = True
 
 	sense_id_str = request.get_json()['sense_id']
-	sense_id = int(sense_id_str)
+
+	options = []
+
+	if sense_id_str == '':
+		options.append({'id': '', 'name': 'Any'})
+
+	if sense_id_str == '0':
+		options.append({'id': '', 'name': 'All'})
+
 
 	try:
+		sense_id = int(sense_id_str)
 		sense = db.session.query(Sense).filter_by(id=sense_id).one()
 		subsenses = db.session.query(SubSense).filter_by(sense_id=sense_id).order_by(SubSense.name).all()
 		
 		any_sense = 'Any ' + sense.name
 		all_sense = 'All ' + sense.name
 
-		options = []
 
 		options.append({'id': '', 'name': any_sense})
 		options.append({'id': 0, 'name': all_sense})
