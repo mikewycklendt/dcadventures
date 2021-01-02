@@ -1859,8 +1859,8 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Radius', 7, ranks, cells)
 	cells = check_cell('Accurate', 9, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
-	cells = cell('Cost/Rank', 10, cost, cells)
-	cells = cell('Ranks', 10, ranks_cost, cells)
+	cells = cell('Cost/Rank', 10, [cost], cells)
+	cells = cell('Ranks', 10, [ranks_cost], cells)
 
 	
 
