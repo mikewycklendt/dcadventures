@@ -63,7 +63,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="opposed_opponent_trait_type" name="opposed_opponent_trait_type" onchange="opposed_trait_type()">
+			<select class="select-sml" id="opposed_opponent_trait_type" name="opposed_opponent_trait_type" onchange="opposed_opponent_trait_type()">
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
