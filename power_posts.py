@@ -1445,7 +1445,7 @@ def environment_post(entry, body, cells):
 
 	
 	cells = cell('Extra', 15, [extra])
-	cells = cell('Start Radius', 16, [radius]. cells)
+	cells = cell('Start Radius', 16, [radius], cells)
 	word = string('Per', [distance, rank], cells)
 	word2 = string('Rank', [distance, rank], cells)
 	cells = cell('Radius', 14, [distance, word, rank, word2], cells)
