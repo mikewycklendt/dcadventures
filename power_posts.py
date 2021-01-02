@@ -2426,10 +2426,9 @@ def resisted_by_post(entry, body, cells):
 	cells = cell('Descriptor', 22, [descriptor], cells)
 
 	word = string('to', [condition1, condition2])
-	vcells = vcell('condition', 27, [condition1, word, condition2])
+	vcells = vcell('condition', 20, [condition1, word, condition2])
 	vcells = vcell('damage', 18, [damage], vcells)
 	wid = width(18, 10, nullify_alternate)
-	word = string('Alternate:', nullify_alternate)
 	vcells = vcell('nullify', wid, [nullify_descriptor, nullify_alternate], vcells)
 	wid = width(10, 15, weaken_restored)
 	word =  string('Max:', [weaken_max])
