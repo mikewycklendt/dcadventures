@@ -414,9 +414,12 @@ def select_of(value, selected_name, field_name, field, values, names, errors):
 	error_msgs = errors['error_msgs']
 	error = True
 
+	if value != field:
+		return (errors)
+
 	if value == field:
-		for value in values:
-			if value != '' or value == True:
+		for v in values:
+			if v != '' or v == True:
 				error = False
 
 	last = len(names) - 1
@@ -424,7 +427,7 @@ def select_of(value, selected_name, field_name, field, values, names, errors):
 	if len(names) > 2:
 		for i in range(1, len(names) - 1, 1):
 			for_message += ', ' + names[i]
-		for_message += ' or ' + names[last]
+	for_message += ' or ' + names[last]
 
 	message = 'If this effect ' + selected_name + ', you must complete one of the ' + for_message + ' fields or make a different selection in the ' + field_name + ' field.'
 
