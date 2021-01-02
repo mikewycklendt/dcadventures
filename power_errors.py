@@ -205,9 +205,9 @@ def together(name, values, errors):
 def check_together_var(check, checkname, message, values, errors):
 
 	error_msgs = errors['error_msgs']
-	error = True
-
+	
 	if check:
+		error = True
 		for value in values:
 			for v in value: 
 				if v != '' and v is not None and v != False:
@@ -857,7 +857,7 @@ def create_post_errors(data):
 	support_effort = data['support_effort']
 	support_effort_rounds = data['support_effort_rounds']
 	cost = data['cost']
-	ranks = ['ranks']
+	ranks = data['ranks']
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
