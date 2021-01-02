@@ -959,7 +959,7 @@ def create_post(entry, body, cells):
 	new_mod = mod_create('Trap', 6)
 	new_mod = mod_cell('DC:', 4, [trap_dc], new_mod)
 	new_mod = mod_cell('Trait:', 15, [trap_trait], new_mod)
-	new_mod = mod_cell('Resistance Trait:', 29, [trap_resist_trait], new_mod)
+	new_mod = mod_cell('Resistance Trait:', 19, [trap_resist_trait], new_mod)
 	new_mod = mod_cell('Resistance DC:', 18, [trap_resist_dc], new_mod)
 	new_mod = mod_cell('Can Escape:', 11, [trap_escape], new_mod)
 	body = mod_add(trap, new_mod, body)
