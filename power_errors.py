@@ -730,19 +730,6 @@ def character_post_errors(data):
 	errors = variable_field('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
 
 
-
-
-
-
-
-
-
-
-
-
-	
-
-
 	return (errors)
 
 def circ_post_errors(data):
@@ -778,8 +765,6 @@ def circ_post_errors(data):
 	errors = required(rounds, 'Rounds', errors)
 	errors = required(target, 'Targwt', errors)
 	errors = required(description, 'Circumstance', errors)
-
-	errors = variable_fields()
 
 	errors = variable_fields('range', 'Triggered by Range', circ_type, [circ_range], errors)
 	errors = variable_field('range', circ_type, 'Range Distance', circ_range, errors) 
