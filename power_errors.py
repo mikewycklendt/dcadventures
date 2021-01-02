@@ -1990,9 +1990,9 @@ def resist_post_errors(data):
 	errors = required(target, 'Target', errors)
 
 	errors = variable_fields('descriptor', 'Descriptor', resist_check_type, [descriptor], errors)
-	errors = variable_fields('trait', 'Check Type', resist_check_type, [check_trait_type, check_trait], errors)
-	errors = variable_field('trait', resist_check_type, 'Trait Type', check_trait_type, errors)
-	errors = variable_field('trait', resist_check_type, 'Trait', check_trait, errors)
+	errors = variable_fields('trait', 'Check Type', resist_check_type, [trait_type, trait], errors)
+	errors = variable_field('trait', resist_check_type, 'Trait Type', trait_type, errors)
+	errors = variable_field('trait', resist_check_type, 'Trait', trait, errors)
 	errors = check_fields(requires_check, 'Requires Check', [check_type, check_trait_type, check_trait], errors)
 	errors = check_field(requires_check, 'Requires Check', 'Check Type', check_type, errors)
 	errors = check_field(requires_check, 'Requires Check', 'Check Trait Type', check_trait_type, errors)
