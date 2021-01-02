@@ -2358,7 +2358,7 @@ def resist_post(entry, body, cells):
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Target', 16, [target], cells)
 	cells = cell('Mod', 7, [mod], cells)
-	cells - cell('Rounds', 8, [rounds], cells)
+	cells = cell('Rounds', 8, [rounds], cells)
 
 	vcells = vcell('descriptor', 18, [descriptor])
 	vcells = vcell('trait', 16, [trait], vcells) 
