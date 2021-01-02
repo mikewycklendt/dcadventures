@@ -622,10 +622,10 @@ def get_subsense_select():
 
 	options = []
 
-	if sense_id_str == '':
+	if sense_id_str is None:
 		options.append({'id': '', 'name': 'Any'})
 
-	if sense_id_str == '0':
+	if sense_id_str == 0:
 		options.append({'id': '', 'name': 'All'})
 
 
