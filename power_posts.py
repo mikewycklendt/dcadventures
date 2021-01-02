@@ -1449,7 +1449,7 @@ def environment_post(entry, body, cells):
 	word = string('Per', [distance, rank])
 	word2 = string('Rank', [distance, rank])
 	cells = cell('Radius', 14, [distance, word, rank, word2], cells)
-	cells = check_cell('Condition', 9, condition, cells, True)
+	cells = check_cell('Condition', 9, condition_check, cells, True)
 	new_mod = mod_create('Temperature Condition', 25)
 	new_mod = mod_cell('Temperature Type:', 20, [condition_temp_type], new_mod)
 	new_mod = mod_cell('Extremity:', 10, [temp_extremity], new_mod)
