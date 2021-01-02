@@ -924,8 +924,8 @@ def create_post_errors(data):
 	errors = check_fields(weapon, 'Weapon', [weapon_trait_type, weapon_trait, weapon_mod, weapon_damage_type], errors)
 	errors = check_field(weapon, 'Weapon', 'Weapon Trait Type', weapon_trait_type, errors)
 	errors = check_field(weapon, 'Weapon', 'Wespon Trait', weapon_trait, errors)
-	errors = check_fields(weapon, 'Weapon', 'Weapon Modifier', weapon_mod, errors)
-	errors = check_fields(weapon, 'Weapon', 'Weapon Damage Type', weapon_damage_type, errors)
+	errors = check_field(weapon, 'Weapon', 'Weapon Modifier', weapon_mod, errors)
+	errors = check_field(weapon, 'Weapon', 'Weapon Damage Type', weapon_damage_type, errors)
 	errors = variable_fields('value', 'Weapon Damage Value', weapon_damage_type, [weapon_damage], errors)
 
 	errors = check_fields(support, 'Supports Weight', [support_strength], errors)
