@@ -931,7 +931,7 @@ def create_post(entry, body, cells):
 	ranks = integer_convert(ranks)
 	
 	cells = cell('Extra', 15, [extra])
-	cells = cell('Solidity', 9, [solidity], cells)
+	cells = cell('Solidity', 11, [solidity], cells)
 	cells = cell('Visibility', 9, [visibility], cells)
 	cells = cell('Complexity', 12, [complexity], cells)
 	cells = cell('Volume', 8, [volume], cells)
