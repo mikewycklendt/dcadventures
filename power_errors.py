@@ -254,7 +254,10 @@ def together_names(name, names, values, errors):
 	all_names += names[last_name]
 
 	if error:
-		message = 'If thid power requires ' + name + ' the ' + names + ' fields must be complete.'
+		message = 'If thid power requires ' + name + ' the'
+		for n in names:
+			message += ' ' + n
+		message += ' fields must be complete.'
 		error_msgs.append(message)
 
 
