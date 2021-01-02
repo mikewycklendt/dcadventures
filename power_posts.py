@@ -1453,7 +1453,7 @@ def environment_post(entry, body, cells):
 	new_mod = mod_create('Temperature Condition', 25)
 	new_mod = mod_cell('Temperature Type:', 20, [condition_temp_type], new_mod)
 	new_mod = mod_cell('Extremity:', 10, [temp_extremity], new_mod)
-	body = mod_add(condition, new_mod, body)
+	body = mod_add(condition_check, new_mod, body)
 
 	cells = check_cell('Impede', 7, impede, cells, True)
 	new_mod = mod_create('Impede Movement', 20)
