@@ -1077,7 +1077,8 @@ def dc_table_post(entry, body, cells):
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
 	check_mod = entry.check_mod
-	levels = entry.level
+	level = entry.level
+	levels = entry.levels
 
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
