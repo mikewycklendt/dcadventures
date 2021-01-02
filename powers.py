@@ -2998,7 +2998,7 @@ def power_post_mod():
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'mod'
+	table_id = 'modifiers'
 	spot = 'mod-spot'
 
 	body['table_id'] = table_id
