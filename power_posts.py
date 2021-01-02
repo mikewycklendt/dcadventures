@@ -2671,14 +2671,14 @@ def time_post(entry, body, cells):
 	value = integer_convert(value)
 	time_value = integer_convert(time_value)
 	trait = integer_convert(trait)
-	dc = integer_convert(descriptor)
+	dc = integer_convert(dc)
 	recovery_penalty = integer_convert(recovery_penalty)
 	recovery_time = integer_convert(recovery_time)
 
 		
 	cells = cell('Extra', 15, [extra])
-	cells = cell('Type', 25, [time_type], cells)
-	vcells = vcell('value', 18, [value, units])
+	cells = cell('Type', 22, [time_type], cells)
+	vcells = vcell('value', 14, [value, units])
 	word = string('= Time Rank', [time_value, math, trait])
 	vcells = vcell('math', 26, [time_value, math, trait, word], vcells)
 	vcell_add('Time', value_type, vcells, cells)
