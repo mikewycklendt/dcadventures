@@ -57,7 +57,7 @@ let minion_grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
-function minion_submit() {
+function minions_submit() {
 
 	const columns = minion_grid.columns;
 	const created = minion_grid.titles;
