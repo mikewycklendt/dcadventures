@@ -1390,7 +1390,7 @@ def minion_post_errors(data):
 	errors = check_field(attitude, 'Attitude', 'Attitude Level', attitude_type, errors)
 	errors = check_field(attitude, 'Attitude', 'Attitude Trait Type to Control', attitude_trait_type, errors)
 	errors = check_field(attitude, 'Attitude', 'Attitude Trait to Control', attitude_trait, errors)
-	errors = check_fields(resistable, 'Resistable', [resistable_check, resistable_dc], errors)
+	errors = check_fields(resitable, 'Resistable', [resistable_check, resistable_dc], errors)
 	errors = check_field(resistable, 'Resistable', 'Resistable Check Type', resistable_check, errors)
 	errors = check_field(resistable, 'Resistable', 'Resistable DC', resistable_dc, errors)
 	errors = check_fields(sacrifice, 'Sacrifice', [sacrifice_cost], errors)
