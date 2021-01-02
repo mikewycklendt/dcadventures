@@ -2432,7 +2432,7 @@ def resisted_by_post(entry, body, cells):
 	vcells = vcell('nullify', wid, [nullify_descriptor, nullify_alternate], vcells)
 	wid = width(10, 15, weaken_restored)
 	word =  string('Max:', [weaken_max])
-	word2 = string('Restored')
+	word2 = string('Restored', [weaken_max, weaken_restored])
 	vcells = vcell('trait', wid, [word, weaken_max, word2, weaken_restored], vcells) 
 	vcells = vcell('level', 18, [level], vcells)
 	cells = vcell_add('Effect', effect, vcells, cells)
