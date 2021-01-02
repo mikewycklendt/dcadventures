@@ -95,6 +95,12 @@
 	grid-template-columns: 25% 17% 18% 15% 25%;
 }
 
+#deg-mod-button-row {
+	display: grid;
+	width: 97%;
+	grid-template-columns: 80% 20%;
+}
+
 #deg-mod-deg {
 	width:95%;
 	height: auto;
