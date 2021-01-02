@@ -1043,8 +1043,8 @@ def damage_post(entry, body, cells):
 	cells = cell('Trait', 8, [trait], cells)
 	cells = cell('Modifier', 11, [mod], cells)
 	cells = check_cell('Strength Based', 16, strength, cells)
-	cells = cell('Damage Type', 14, [damage_type], cells)
-	cells = cell('Descriptor', 12, [descriptor], cells)
+	cells = cell('Damage Type', 24, [damage_type], cells)
+	cells = cell('Descriptor', 22, [descriptor], cells)
 
 	body = send(cells, body)
 
