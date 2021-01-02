@@ -2683,7 +2683,7 @@ def time_post(entry, body, cells):
 	vcells = vcell('math', 26, [time_value, math, trait, word], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 	cells = cell('DC', 7, [dc], cells)
-	cells = cell('Descriptor', 15, [descriptor], cells)
+	cells = cell('Descriptor', 20, [descriptor], cells)
 	cells = cell('Check', 18, [check_type], cells)
 
 	cells = check_cell('Recovery', 10, recovery, cells, True)
