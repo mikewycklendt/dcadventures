@@ -624,11 +624,13 @@ def get_subsense_select():
 
 	if sense_id_str == '':
 		options.append({'id': '', 'name': 'Any'})
+		body['options'] = options
 		return jsonify(body)
 
 	if sense_id_str == '0':
 		options.append({'id': '', 'name': 'Any'})
 		options.append({'id': 0, 'name': 'All'})
+		body['options'] = options
 		return jsonify(body)
 
 	try:
