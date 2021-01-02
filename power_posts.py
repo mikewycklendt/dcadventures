@@ -345,6 +345,9 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 	cell = {}
 	cell['value'] = value
 
+	if value2 != selection2:
+		return (vcells)
+
 	for c in contentlist:
 		if c is None:
 			c = ''
@@ -379,24 +382,8 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 	cell['content'] = content
 	cell['width'] = width
 
-	if value2 == 'e':
-		vcells.append(cell)
-		return (vcells)
-
-	if selection2 is None or selection2 == '':
-		if vcells != []:
-			for vcell in vcells:
-				vcell['value'] = val
-				if value == val:
-					return (vcells)
-		
-		vcells.append(cell)
-		return (vcells)
-
-	if value2 == selection2:
-		vcells.append(cell)
-		return (vcells)
-
+	vcells.append(cell)
+	return (vcells)
 
 
 def check_cell(title, width, check, cells, mod_check=False):
