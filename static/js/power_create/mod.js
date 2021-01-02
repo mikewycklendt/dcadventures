@@ -342,7 +342,7 @@ function mod_submit() {
 	const points_reroll_cost = select("mod_points_reroll_cost");
 	const points_rerolls = select("mod_points_rerolls");
 	const points_reroll_result = select("mod_points_reroll_result");
-	const ranks_cost = select("mod_ranks");
+	const ranks_cost = select("mod_ranks_cost");
 	const cost = select("mod_cost");
 
 	const power_id = document.getElementById('power_id').value;
