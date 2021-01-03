@@ -145,6 +145,15 @@
 		</div>
 
 		<div>
+			<select class="level-type-sml" id="dc_level_type" name="dc_level_type" onchange="dc_level_type()">
+				<option value="">Level Type</option>
+				{% for l in level_types %}
+					<option value={{l.id}}>{{l.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="levels-sml" id="dc_level" name="dc_level">
 				<option value="">Level</option>
 				<option value="">Use Levels form to put levels here</option>

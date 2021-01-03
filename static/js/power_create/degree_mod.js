@@ -63,6 +63,13 @@ function deg_mod_measure_trait_type() {
 	trait_select(select, fill);
 }
 
+function deg_mod_level_type() {
+	const select = 'deg_mod_level_type';
+	const fill = 'deg_mod_level';
+
+	level_select(select, fill)
+}
+
 let deg_mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

@@ -122,7 +122,7 @@
 
 #resist-level {
 	display: none;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 40% 60%;
 	grid-template-rows: auto;
 	width: 95%;
 	height: auto;

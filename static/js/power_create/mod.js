@@ -247,6 +247,20 @@ function mod_affects_objects() {
 	check_drop(check, div, entry);
 }
 
+function mod_side_level_type() {
+	const select = 'mod_side_level_type';
+	const fill = 'mod_side_level';
+
+	level_select(select, fill);
+}
+
+function mod_limited_level_type() {
+	const select = 'mod_limited_level_type';
+	const fill = 'mod_limited_level';
+
+	level_select(select, fill);
+}
+
 
 let mod_grid = {'titles': false,
 					'columns': [],

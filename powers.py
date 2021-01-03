@@ -249,6 +249,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	medium = Medium.query.order_by(Medium.name).all()
 
+	level_types = LevelType.query.order_by(LevelType.name).all()
+
 	mediums = MediumType.query.order_by(MediumType.name).all()
 
 	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(MediumSubType.name)
@@ -339,7 +341,37 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, immunity_type=immunity_type, circ_null=circ_null, space=space,
 											travel=travel, time_travel=time_travel, aquatic=aquatic, task_type=task_type, distances=distances, ranged_type=ranged_type, who_check=who_check, cover=cover,
 											minion_type=minion_type, minion_attitude=minion_attitude, teleport=teleport, teleport_change=teleport_change, transform=transform, weaken=weaken, measure_rank=measure_rank, 
-											conceal_type=conceal_type)
+											conceal_type=conceal_type, level_types=level_types)
+
+@powers.route('/power/level/select', methods=['POST'])
+def power_level_select():
+	body = {}
+	success = False
+	options = []
+	level_type_id = request.get_json()['level_type_id']
+
+	try:
+		level_type_id = int(level_type_id)
+	except:
+		print('not an int')
+		options.append({'id': '', 'name': ''})
+
+	try:
+		levels = db.session.query(Levels).filter_by(type_id=level_type_id).all()
+		for level in levels:
+			options.append({'id': level.id, 'name': level.level})
+		success = True
+	except:
+		print('no matching level type')
+		options.append({'id': '', 'name': ''})
+
+	body['success'] = success
+	body
+
+	print(body)
+	return jsonify(body)
+
+
 
 @powers.route('/power/trait/select', methods=['POST'])
 def power_trait_select():
@@ -2592,16 +2624,36 @@ def power_post_levels():
 	old_level_type = request.get_json()['old_level_type']
 	font = request.get_json()['font']
 
+	power = True
+
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
 
+	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
+	if level_check is None:
 
-	entry = PowerLevels(power_id = power_id,
+		level_add = LevelType(power_id=power_id,
+								name=level_type)
+
+		db.session.add(level_add)
+		db.session.commit()
+
+		type_id = level_add.id
+
+		body['level_type_id'] = type_id
+		body['level_type'] = level_add.name
+		body['created'] = False
+	else:
+		type_id = level_check.id
+		body['created'] = True
+
+	entry = Levels(power_id = power_id,
 						extra_id = extra_id,
 						type_id=type_id
 						level_type = level_type,
 						level = level,
-						level_effect = level_effect)
+						level_effect = level_effect,
+						power=power)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -2625,14 +2677,8 @@ def power_post_levels():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
-	
-	if old_level_type != level_type:
-		body['created'] = False
-	else:
-		body['created'] = True
 	body['title'] = level_type
 	
-
 	body = levels_post(entry, body, cells)
 	return jsonify(body)
 

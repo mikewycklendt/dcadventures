@@ -109,6 +109,16 @@
 		<div>
 
 			<div id="resist-level">
+
+				<div>
+					<select class="level-type-sml" id="resist_level_type" name="resist_level_type" onchange="resist_level_type()">
+						<option value="">Level Type</option>
+						{% for l in level_types %}
+							<option value={{l.id}}>{{l.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
 				<div>
 					<select class="levels-sml" id="resist_level" name="resist_level">
 						<option value="">Level</option>

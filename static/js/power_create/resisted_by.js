@@ -32,6 +32,13 @@ function resist_effect() {
 	select_maxheight(field, options);
 }
 
+function resist_level_type() {
+	const select = 'resist_level_type';
+	const fill = 'resist_level';
+
+	level_select(select, fill);
+}
+
 let resist_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

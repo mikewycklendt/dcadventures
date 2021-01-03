@@ -86,6 +86,13 @@ function dc_levels() {
 	check_drop(check, div, entry);
 }
 
+function dc_level_type() {
+	const select = 'dc_level_type';
+	const fill = 'dc_level';
+
+	level_select(select, fill);
+}
+
 let dc_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

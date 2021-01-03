@@ -1492,14 +1492,11 @@ def levels_post(entry, body, cells):
 	level = entry.level
 	level_effect = entry.level_effect
 
-	
-
 	extra = extra_name(extra_id)
 
-	
 	cells = cell('Extra', 15, [extra])
-
-
+	cells = cell('Level', 25, [level], cells)
+	cells = cell('Effect', 50, [level_effect], cells)
 
 	body = send(cells, body)
 

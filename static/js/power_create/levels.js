@@ -20,7 +20,7 @@ let bonus_level = true;
 
 let levels_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 100,
 					'mod': [],
 					'old_level_type': ''}
 
@@ -41,6 +41,7 @@ function levels_submit() {
 
 	const errors = 'level-err';
 	const err_line = 'level-err-line';
+	const level_selects = 'level-type-sml';
 
 	response = fetch('/power/levels/create', {
 		method: 'POST',
@@ -63,6 +64,23 @@ function levels_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			const add_level = jsonResponse.created;
+
+			if (add_level == false) {
+				const selects = document.getElementsByClassName(level_selects);
+
+				level_type_id = jsonResponse.level_type_id		
+				level_type_name = jsonResponse.level_type
+
+				let s;
+				for (s of selects) {	
+					const o = document.createElement("option")
+					o.value = level_type_id;
+					o.text = level_type_name;
+					s.add(o);
+				}
+			}
 
 			levels_grid.columns.length = 0;
 			levels_grid.columns = jsonResponse.rows;

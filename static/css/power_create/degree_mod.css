@@ -136,7 +136,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: 3px;
-	grid-template-columns: 50% 50% ;
+	grid-template-columns: 300% 40% 30%;
 }
 
 #deg-mod-measure {
