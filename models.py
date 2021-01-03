@@ -1464,7 +1464,6 @@ class PowerMod(db.Model):
 	area_descriptor = db.Column(db.Integer)
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
-	limited_level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	limited_source = db.Column(db.Integer)
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
@@ -1553,7 +1552,6 @@ class PowerMod(db.Model):
 			'area_descriptor': self.area_descriptor,
 			'limited_type': self.limited_type,
 			'limited_mod': self.limited_mod,
-			'limited_level': self.limited_level,
 			'limited_source': self.limited_source,
 			'limited_task_type': self.limited_task_type,
 			'limited_task': self.limited_task,
