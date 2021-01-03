@@ -1911,7 +1911,6 @@ class PowerResistBy(db.Model):
 	description = db.Column(db.String())
 	trait = db.Column(db.String())
 	effect = db.Column(db.String())
-	level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	degree = db.Column(db.Integer)
 	descriptor = db.Column(db.Integer)
 	weaken_max = db.Column(db.Integer)
@@ -1935,7 +1934,6 @@ class PowerResistBy(db.Model):
 			'description': self.description,
 			'trait': self.trait,
 			'effect': self.effect,
-			'level': self.level,
 			'degree': self.degree,
 			'descriptor': self.descriptor,
 			'weaken_max': self.weaken_max,
