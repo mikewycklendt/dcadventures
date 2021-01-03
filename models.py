@@ -129,24 +129,7 @@ class ConflictAction(db.Model):
 			'action_id': self.action_id
 		}
 
-class PowerLevels(db.Model):
-	__tablename__ = 'power_levels'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
-	level_type = db.Column(db.String())
-	level = db.Column(db.String())
-	level_effect = db.Column(db.String())
 
-	def format(self):
-		return {
-			'id': self.id,
-			'power_id': self.power_id,
-			'extra_id': self.extra_id,
-			'level_type': self.level_type,
-			'level': self.level,
-			'level_effect': self.level_effect
-		}
 		
 class Skill(db.Model):
 	__tablename__ = 'skills'
