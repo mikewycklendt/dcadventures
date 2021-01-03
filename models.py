@@ -129,6 +129,7 @@ class ConflictAction(db.Model):
 			'action_id': self.action_id
 		}
 
+
 class Skill(db.Model):
 	__tablename__ = 'skills'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -1114,7 +1115,6 @@ class PowerDC(db.Model):
 	check_trait = db.Column(db.String())
 	check_mod = db.Column(db.Integer)
 	levels = db.Column(db.Boolean)
-	level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 
 	def format(self):
 		return {
@@ -1141,8 +1141,7 @@ class PowerDC(db.Model):
 			'check_trait_type': self.check_trait_type,
 			'check_trait': self.check_trait,
 			'check_mod': self.check_mod,
-			'levels': self.levels,
-			'level': self.level
+			'levels': self.levels
 		}
 
 class PowerDefense(db.Model):
@@ -1244,7 +1243,6 @@ class PowerDegMod(db.Model):
 	nullify = db.Column(db.Integer)
 	cumulative = db.Column(db.Boolean)
 	linked = db.Column(db.Boolean)
-	level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 
 	def format(self):
 		return {
@@ -1273,8 +1271,7 @@ class PowerDegMod(db.Model):
 			'keyword': self.keyword,
 			'nullify': self.nullify,
 			'cumulative': self.cumulative,
-			'linked': self.linked,
-			'level': self.level
+			'linked': self.linked
 		}
 
 class PowerDegree(db.Model):
@@ -1389,7 +1386,6 @@ class PowerMinion(db.Model):
 	heroic = db.Column(db.Boolean)
 	sacrifice = db.Column(db.Boolean)
 	sacrifice_cost = db.Column(db.Integer)
-	attitude_type = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	attitude_trait_type = db.Column(db.String())
 	attitude_trait = db.Column(db.String())
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
@@ -1413,7 +1409,6 @@ class PowerMinion(db.Model):
 			'heroic': self.heroic,
 			'sacrifice': self.sacrifice,
 			'sacrifice_cost': self.sacrifice_cost,
-			'attitude_type': self.attitude_type,
 			'attitude_trait_type': self.attitude_trait_type,
 			'attitude_trait': self.attitude_trait,
 			'resitable_check': self.resitable_check,
