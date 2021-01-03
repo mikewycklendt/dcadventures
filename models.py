@@ -130,7 +130,59 @@ class ConflictAction(db.Model):
 		}
 
 
-		
+class LevelType(db.Model):
+	__tablename__ = 'level_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'power_id': self.power_id,
+			'name': self.name
+		}
+
+class Levels(db.Model):
+	__tablename__ = 'levels'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	type_id = db.Column(db.Integer, db.ForeignKey('level_type.id'))
+	level_type = db.Column(db.String())
+	level = db.Column(db.String())
+	level_effect = db.Column(db.String())
+	power_dc_id = db.Column(db.Integer, db.ForeignKey('power_dc.id'))
+	power_degree_id = db.Column(db.Integer, db.ForeignKey('power_degree_mod.id'))
+	skill_dc_id = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	skill_degree_id = db.Column(db.Integer, db.ForeignKey('skill_degree_mod.id'))
+	power = db.Column(db.Boolean)
+	skill = db.Column(db.Boolean)
+	bonus = db.Column(db.Boolean)
+	
+	def format(self):
+		return {
+			'id': self.id
+			'power_id': self.power_id
+			'skill_id': self.skill_id
+			'extra_id': self.extra_id
+			'type_id': self.type_id
+			'level_type': self.level_type
+			'level': self.level
+			'level_effect': self.level_effect
+			'power_dc_id': self.power_dc_id
+			'power_degree_id': self.power_degree_id
+			'bonus_dc_id': self.bonus_dc_id
+			'bonus_degree_id': self.bonus_degree_id
+			'skill_dc_id': self.skill_dc_id
+			'skill_degree_id': self.skill_degree_id
+			'power': self.power
+			'skill': self.skill
+			'bonus': self.bonus
+		}
+
+
 class Skill(db.Model):
 	__tablename__ = 'skills'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -1116,6 +1168,7 @@ class PowerDC(db.Model):
 	check_trait = db.Column(db.String())
 	check_mod = db.Column(db.Integer)
 	levels = db.Column(db.Boolean)
+	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 
 	def format(self):
 		return {
@@ -1142,7 +1195,8 @@ class PowerDC(db.Model):
 			'check_trait_type': self.check_trait_type,
 			'check_trait': self.check_trait,
 			'check_mod': self.check_mod,
-			'levels': self.levels
+			'levels': self.levels,
+			'level': self.level
 		}
 
 class PowerDefense(db.Model):
@@ -1244,6 +1298,7 @@ class PowerDegMod(db.Model):
 	nullify = db.Column(db.Integer)
 	cumulative = db.Column(db.Boolean)
 	linked = db.Column(db.Boolean)
+	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 
 	def format(self):
 		return {
@@ -1272,7 +1327,8 @@ class PowerDegMod(db.Model):
 			'keyword': self.keyword,
 			'nullify': self.nullify,
 			'cumulative': self.cumulative,
-			'linked': self.linked
+			'linked': self.linked,
+			'level': self.level
 		}
 
 class PowerDegree(db.Model):
@@ -1387,6 +1443,7 @@ class PowerMinion(db.Model):
 	heroic = db.Column(db.Boolean)
 	sacrifice = db.Column(db.Boolean)
 	sacrifice_cost = db.Column(db.Integer)
+	attitude_type = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	attitude_trait_type = db.Column(db.String())
 	attitude_trait = db.Column(db.String())
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
@@ -1410,6 +1467,7 @@ class PowerMinion(db.Model):
 			'heroic': self.heroic,
 			'sacrifice': self.sacrifice,
 			'sacrifice_cost': self.sacrifice_cost,
+			'attitude_type': self.attitude_type,
 			'attitude_trait_type': self.attitude_trait_type,
 			'attitude_trait': self.attitude_trait,
 			'resitable_check': self.resitable_check,
@@ -1465,6 +1523,7 @@ class PowerMod(db.Model):
 	area_descriptor = db.Column(db.Integer)
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
+	limited_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	limited_source = db.Column(db.Integer)
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
@@ -1480,6 +1539,7 @@ class PowerMod(db.Model):
 	limited_descriptor = db.Column(db.Integer)
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	side_effect_type = db.Column(db.String())
+	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	side_other = db.Column(db.String())
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	reflect_dc = db.Column(db.Integer)
@@ -1553,6 +1613,7 @@ class PowerMod(db.Model):
 			'area_descriptor': self.area_descriptor,
 			'limited_type': self.limited_type,
 			'limited_mod': self.limited_mod,
+			'limited_level': self.limited_level,
 			'limited_source': self.limited_source,
 			'limited_task_type': self.limited_task_type,
 			'limited_task': self.limited_task,
@@ -1568,6 +1629,7 @@ class PowerMod(db.Model):
 			'limited_descriptor': self.limited_descriptor,
 			'limited_range': self.limited_range,
 			'side_effect_type': self.side_effect_type,
+			'side_level': self.side_level,
 			'side_other': self.side_other,
 			'reflect_check': self.reflect_check,
 			'reflect_dc': self.reflect_dc,
@@ -1912,6 +1974,7 @@ class PowerResistBy(db.Model):
 	description = db.Column(db.String())
 	trait = db.Column(db.String())
 	effect = db.Column(db.String())
+	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	degree = db.Column(db.Integer)
 	descriptor = db.Column(db.Integer)
 	weaken_max = db.Column(db.Integer)
@@ -1935,6 +1998,7 @@ class PowerResistBy(db.Model):
 			'description': self.description,
 			'trait': self.trait,
 			'effect': self.effect,
+			'level': self.level,
 			'degree': self.degree,
 			'descriptor': self.descriptor,
 			'weaken_max': self.weaken_max,
