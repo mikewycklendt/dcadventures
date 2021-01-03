@@ -1480,7 +1480,6 @@ class PowerMod(db.Model):
 	limited_descriptor = db.Column(db.Integer)
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	side_effect_type = db.Column(db.String())
-	side_level = db.Column(db.Integer, db.ForeignKey('power_levels.id'))
 	side_other = db.Column(db.String())
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	reflect_dc = db.Column(db.Integer)
@@ -1570,7 +1569,6 @@ class PowerMod(db.Model):
 			'limited_descriptor': self.limited_descriptor,
 			'limited_range': self.limited_range,
 			'side_effect_type': self.side_effect_type,
-			'side_level': self.side_level,
 			'side_other': self.side_other,
 			'reflect_check': self.reflect_check,
 			'reflect_dc': self.reflect_dc,
