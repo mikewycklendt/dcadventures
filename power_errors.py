@@ -1326,11 +1326,11 @@ def levels_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	level_type = request.get_json()['level_type']
-	level = request.get_json()['level']
-	level_effect = request.get_json()['level_effect']
+	power_id = data['power_id']
+	extra_id = data['extra_id']
+	level_type = data['level_type']
+	level = data['level']
+	level_effect = data['level_effect']
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
