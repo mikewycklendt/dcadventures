@@ -21,7 +21,8 @@ let bonus_level = true;
 let levels_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
-					'mod': []}
+					'mod': [],
+					'old_level_type': ''}
 
 function levels_submit() {
 
@@ -33,6 +34,8 @@ function levels_submit() {
 	const extra_id = select("levels_extra");
 	const level = text("level");
 	const level_effect = text("level_effect");
+
+	const old_level_type = levels_grid.old_level_type;
 
 	const power_id = document.getElementById('power_id').value;
 
@@ -49,7 +52,8 @@ function levels_submit() {
 			'level_effect': level_effect,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'old_level_type': old_level_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
