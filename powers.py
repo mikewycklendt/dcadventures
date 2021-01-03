@@ -2649,7 +2649,7 @@ def power_post_levels():
 
 	entry = Levels(power_id = power_id,
 						extra_id = extra_id,
-						type_id=type_id
+						type_id=type_id,
 						level_type = level_type,
 						level = level,
 						level_effect = level_effect,
