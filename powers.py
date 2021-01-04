@@ -2631,6 +2631,7 @@ def power_post_levels():
 	bonus_degree = False
 
 	body = {}
+	body['success'] = True
 
 	power = True
 
@@ -2652,6 +2653,14 @@ def power_post_levels():
 		body['level_type'] = level_add.name
 		body['created'] = False
 	else:
+		level_power = level_check.power_id
+		print(power_id)
+		print(level_power)
+		if power_id != level_power:
+			body['success'] = False
+			body['error_msgs'] = ['There is already a level type with that name.']
+			return jsonify(body)
+
 		type_id = level_check.id
 		body['created'] = True
 
@@ -2676,7 +2685,6 @@ def power_post_levels():
 	body['id'] = entry.id
 	error = False
 	error_msg = []
-	body['success'] = True
 
 	rows = columns
 
