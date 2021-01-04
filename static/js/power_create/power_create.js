@@ -1126,10 +1126,6 @@ function create_titles(jsonResponse, grow, object, route) {
 		cell_title.className = base_cell_title;
 		cell_title.innerHTML = cell.title;
 		console.log(cell.title);
-		if (cell.width > 1) {
-			cell_title.style.opacity = '100%';
-			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
-		}
 		title_row.appendChild(cell_title);
 	}
 	
