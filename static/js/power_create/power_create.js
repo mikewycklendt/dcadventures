@@ -1098,7 +1098,7 @@ function create_titles(jsonResponse, grow, object, route) {
 	const table_class = table_id + '-table'
 	const base_table = 'power-table-table';
 	const base_cell_title = 'power-table-cell-title';
-	const base_title = 'power-table-title'
+	const base_title = 'power-table-title-table'
 	const base_titles = 'power-table-titles';
 
 	const spot = document.getElementById(spot_string);
