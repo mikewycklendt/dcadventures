@@ -25,7 +25,7 @@ def power_check(value, errors):
 
 	if value == '' or value is None:
 		error = True
-		message = name + 'You must create a power name first.'
+		message = 'You must create a power name first.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -2291,7 +2291,7 @@ def time_post_errors(data):
 	recovery_incurable = data['recovery_incurable']
 
 	errors = power_check(power_id, errors)
-	
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
