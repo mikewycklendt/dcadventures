@@ -1013,7 +1013,7 @@ def dc_table_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, math, 'math', errors)
-	errors = id_check(PowerLevels, level, 'level', errors)
+	errors = id_check(Levels, level, 'level', errors)
 	
 	errors = int_check(value, 'DC Value', errors)
 	errors = int_check(math_value, 'Math DC Value', errors)
@@ -1167,7 +1167,7 @@ def degree_mod_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Math, measure_math, 'math', errors)
 	errors = id_check(Rank, measure_rank, 'rank', errors)
-	errors = id_check(PowerLevels, level, 'level', errors)
+	errors = id_check(Levels, level, 'level', errors)
 
 
 	errors = int_check(value, 'Degree', errors)
@@ -1371,7 +1371,7 @@ def minion_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
-	errors = id_check(PowerLevels, attitude_type, 'level', errors)
+	errors = id_check(Levels, attitude_type, 'level', errors)
 	errors = id_check(Defense, resitable_check, 'defense', errors)
 	
 	errors  = int_check(points, 'Points', errors)
@@ -1496,11 +1496,11 @@ def mod_post_errors(data):
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Defense, objects_alone, 'defense', errors)
 	errors = id_check(Defense, objects_character, 'defense', errors)
-	errors = id_check(PowerLevels, limited_level, 'level', errors)
+	errors = id_check(Levels, limited_level, 'level', errors)
 	errors = id_check(Extra, limited_extra, 'extra', errors)
 	errors = id_check(Sense, limited_sense, 'sense', errors)
 	errors = id_check(Range, limited_range, 'range', errors)
-	errors = id_check(PowerLevels, side_level, 'level', errors)
+	errors = id_check(Levels, side_level, 'level', errors)
 	errors = id_check(Check, reflect_check, 'check', errors)
 	
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
@@ -2033,7 +2033,7 @@ def resisted_by_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
-	errors = id_check(PowerLevels, level, 'level', errors)
+	errors = id_check(Levels, level, 'level', errors)
 	errors = id_check(Defense, nullify_alternate, 'defense', errors)
 
 	errors = int_check(dc, 'DC', errors)

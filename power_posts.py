@@ -1071,7 +1071,7 @@ def dc_table_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
 	descriptor = descriptor_name(descriptor)
-	level = name(PowerLevels, level)
+	level = name(Levels, level)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1284,7 +1284,7 @@ def degree_mod_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	measure_math = math_convert(Math, measure_math)
 	measure_rank = name(Rank, measure_rank)
-	level = name(PowerLevels, level)
+	level = name(Levels, level)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1529,7 +1529,7 @@ def minion_post(entry, body, cells):
 	horde = entry.horde
 
 	extra = extra_name(extra_id)	
-	attitude_type = name(PowerLevels, attitude_type)
+	attitude_type = name(Levels, attitude_type)
 	resitable_check = name(Defense, resitable_check)
 
 	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
@@ -1669,13 +1669,13 @@ def mod_post(entry, body, cells):
 	objects_character = name(Defense, objects_character)
 	simultaneous_descriptor = descriptor_name(simultaneous_descriptor)
 	area_descriptor = descriptor_name(area_descriptor)
-	limited_level = name(PowerLevels, limited_level)
+	limited_level = name(Levels, limited_level)
 	limited_source = descriptor_name(limited_source)
 	limited_extra = name(Extra, limited_extra)
 	limited_sense = name(Sense, limited_sense)
 	limited_descriptor = descriptor_name(limited_descriptor)
 	limited_range = name(Range, limited_range)
-	side_level = name(PowerLevels, side_level)
+	side_level = name(Levels, side_level)
 	reflect_check = name(Check, reflect_check)
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 
@@ -2393,7 +2393,7 @@ def resisted_by_post(entry, body, cells):
 	extra_effort = entry.extra_effort
 
 	extra = extra_name(extra_id)
-	level = name(PowerLevels, level)
+	level = name(Levels, level)
 	descriptor = descriptor_name(descriptor)
 	nullify_descriptor = descriptor_name(nullify_descriptor)
 	nullify_alternate = name(Defense, nullify_alternate)

@@ -2624,6 +2624,8 @@ def power_post_levels():
 	old_level_type = request.get_json()['old_level_type']
 	font = request.get_json()['font']
 
+	body = {}
+
 	power = True
 
 	power_id = integer(power_id)
@@ -2659,7 +2661,7 @@ def power_post_levels():
 	db.session.commit()
 
 
-	body = {}
+	
 	body['id'] = entry.id
 	error = False
 	error_msg = []

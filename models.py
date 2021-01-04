@@ -156,13 +156,12 @@ class Levels(db.Model):
 	level_type = db.Column(db.String())
 	level = db.Column(db.String())
 	level_effect = db.Column(db.String())
-	power_dc_id = db.Column(db.Integer, db.ForeignKey('power_dc.id'))
-	power_degree_id = db.Column(db.Integer, db.ForeignKey('power_degree_mod.id'))
-	skill_dc_id = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
-	skill_degree_id = db.Column(db.Integer, db.ForeignKey('skill_degree_mod.id'))
-	power = db.Column(db.Boolean)
-	skill = db.Column(db.Boolean)
-	bonus = db.Column(db.Boolean)
+	power_dc = db.Column(db.Boolean)
+	power_degree = db.Column(db.Boolean)
+	skill_dc = db.Column(db.Boolean)
+	skill_degree = db.Column(db.Boolean)
+	bonus_dc = db.Column(db.Boolean)
+	bonus_degree = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
