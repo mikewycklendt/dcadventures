@@ -2654,7 +2654,7 @@ def power_post_levels():
 			body['level_type'] = level_add.name
 			body['created'] = False
 		except:
-		error = True
+			error = True
 			body['success'] = False
 			body['error'] = 'There was an error processing the request'
 			db.session.rollback()
