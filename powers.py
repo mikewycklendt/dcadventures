@@ -1319,40 +1319,50 @@ def power_post_alt_check():
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 
-	entry = PowerAltCheck(power_id = power_id,
-							extra_id = extra_id,
-							check_type = check_type,
-							mod = mod,
-							circumstance = circumstance,
-							when = when,
-							trait_type = trait_type,
-							trait = trait)
 
-	db.session.add(entry)
-	db.session.commit()
+	try:
+		entry = PowerAltCheck(power_id = power_id,
+								extra_id = extra_id,
+								check_type = check_type,
+								mod = mod,
+								circumstance = circumstance,
+								when = when,
+								trait_type = trait_type,
+								trait = trait)
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		db.session.add(entry)
+		db.session.commit()
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'alt-check'
-	spot = "alt-check-spot"
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'alt-check'
+		spot = "alt-check-spot"
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
 
-	body = alt_check_post(entry, body, cells)
+		body = alt_check_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1399,37 +1409,47 @@ def power_post_change_action():
 	action = integer(action)
 	mod = integer(mod)
 
-	entry = PowerAction(power_id = power_id,
-						extra_id = extra_id,
-						action = action,
-						mod = mod,
-						objects =objects, 
-						circumstance = circumstance)
+	try:
+		entry = PowerAction(power_id = power_id,
+							extra_id = extra_id,
+							action = action,
+							mod = mod,
+							objects =objects, 
+							circumstance = circumstance)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'action'
-	spot = "action-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'action'
+		spot = "action-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = change_action_post(entry, body, cells)
+		body = change_action_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	
 	return jsonify(body)
 
 @powers.route('/power/action/delete/<power_id>', methods=['DELETE'])
@@ -1522,77 +1542,86 @@ def power_post_character():
 	cost = integer(cost)
 	ranks = integer(ranks)	 
 
-	entry = PowerChar(power_id = power_id,
-						extra_id = extra_id,
-						trait_type = trait_type,
-						trait = trait,
-						value = value,
-						increase = increase,
-						limited = limited,
-						reduced = reduced,
-						limbs = limbs,
-						carry = carry,
-						sustained = sustained,
-						permanent = permanent,
-						points = points,
-						appear = appear,
-						insubstantial = insubstantial,
-						weaken = weaken,
-						weaken_type = weaken_type,
-						weaken_trait_type = weaken_trait_type,
-						weaken_trait = weaken_trait,
-						weaken_broad = weaken_broad,
-						weaken_descriptor = weaken_descriptor,
-						weaken_simultaneous = weaken_simultaneous,
-						limited_by = limited_by,
-						limited_other = limited_other,
-						limited_emotion = limited_emotion,
-						limited_emotion_other = limited_emotion_other,
-						reduced_trait_type = reduced_trait_type,
-						reduced_trait = reduced_trait,
-						reduced_value = reduced_value,
-						reduced_full = reduced_full,
-						limbs_continuous = limbs_continuous,
-						limbs_sustained = limbs_sustained,
-						limbs_distracting = limbs_distracting,
-						limbs_projection = limbs_projection,
-						carry_capacity = carry_capacity,
-						points_value = points_value,
-						points_trait_type = points_trait_type,
-						points_trait = points_trait,
-						points_descriptor = points_descriptor,
-						appear_target = appear_target,
-						appear_description = appear_description,
-						insub_type = insub_type,
-						insub_description = insub_description,
-						cost = cost,
-						ranks = ranks)
+	try:
+		entry = PowerChar(power_id = power_id,
+							extra_id = extra_id,
+							trait_type = trait_type,
+							trait = trait,
+							value = value,
+							increase = increase,
+							limited = limited,
+							reduced = reduced,
+							limbs = limbs,
+							carry = carry,
+							sustained = sustained,
+							permanent = permanent,
+							points = points,
+							appear = appear,
+							insubstantial = insubstantial,
+							weaken = weaken,
+							weaken_type = weaken_type,
+							weaken_trait_type = weaken_trait_type,
+							weaken_trait = weaken_trait,
+							weaken_broad = weaken_broad,
+							weaken_descriptor = weaken_descriptor,
+							weaken_simultaneous = weaken_simultaneous,
+							limited_by = limited_by,
+							limited_other = limited_other,
+							limited_emotion = limited_emotion,
+							limited_emotion_other = limited_emotion_other,
+							reduced_trait_type = reduced_trait_type,
+							reduced_trait = reduced_trait,
+							reduced_value = reduced_value,
+							reduced_full = reduced_full,
+							limbs_continuous = limbs_continuous,
+							limbs_sustained = limbs_sustained,
+							limbs_distracting = limbs_distracting,
+							limbs_projection = limbs_projection,
+							carry_capacity = carry_capacity,
+							points_value = points_value,
+							points_trait_type = points_trait_type,
+							points_trait = points_trait,
+							points_descriptor = points_descriptor,
+							appear_target = appear_target,
+							appear_description = appear_description,
+							insub_type = insub_type,
+							insub_description = insub_description,
+							cost = cost,
+							ranks = ranks)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'char'
-	spot = "char-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'char'
+		spot = "char-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
 
-	body = character_post(entry, body, cells)
+		body = character_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1652,47 +1681,56 @@ def power_post_circ():
 	circ_range = integer(circ_range)
 	null_descriptor = integer(null_descriptor)
 
-	entry = PowerCirc(power_id = power_id,
-						extra_id = extra_id,
-						target = target,
-						mod = mod,
-						rounds = rounds,
-						description = description,
-						circ_type = circ_type,
-						circ_range = circ_range,
-						check_who = check_who,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						null_type = null_type,
-						null_condition = null_condition,
-						null_descriptor = null_descriptor,
-						null_trait_type = null_trait_type,
-						null_trait = null_trait)
+	try:
+		entry = PowerCirc(power_id = power_id,
+							extra_id = extra_id,
+							target = target,
+							mod = mod,
+							rounds = rounds,
+							description = description,
+							circ_type = circ_type,
+							circ_range = circ_range,
+							check_who = check_who,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait,
+							null_type = null_type,
+							null_condition = null_condition,
+							null_descriptor = null_descriptor,
+							null_trait_type = null_trait_type,
+							null_trait = null_trait)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'circ'
-	spot = "circ-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'circ'
+		spot = "circ-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = circ_post(entry, body, cells)
+		body = circ_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1815,91 +1853,100 @@ def power_post_create():
 	cost = integer(cost)
 	ranks = integer(ranks)
 
-	entry = PowerCreate(power_id = power_id,
-						extra_id = extra_id,
-						solidity = solidity,
-						visibility = visibility,
-						complexity = complexity,
-						volume = volume,
-						toughness = toughness,
-						mass = mass,
-						damageable = damageable,
-						maintained = maintained,
-						repairable = repairable,
-						moveable = moveable,
-						stationary = stationary,
-						trap = trap,
-						ranged = ranged,
-						weapon = weapon,
-						support = support,
-						real = real,
-						cover = cover,
-						conceal = conceal,
-						incoming = incoming,
-						outgoing = outgoing,
-						transform = transform,
-						transform_type = transform_type,
-						transform_start_mass = transform_start_mass,
-						transfom_mass = transfom_mass,
-						transform_start_descriptor = transform_start_descriptor,
-						transform_end_descriptor = transform_end_descriptor,
-						move_player = move_player,
-						move_player_trait = move_player_trait,
-						move_opponent_check = move_opponent_check,
-						move_opponent_ability = move_opponent_ability,
-						move_opponent_rank = move_opponent_rank,
-						trap_type = trap_type,
-						trap_dc = trap_dc,
-						trap_trait_type = trap_trait_type,
-						trap_trait = trap_trait,
-						trap_resist_check = trap_resist_check,
-						trap_resist_trait = trap_resist_trait,
-						trap_resist_dc = trap_resist_dc,
-						trap_escape = trap_escape,
-						ranged_type = ranged_type,
-						ranged_dc = ranged_dc,
-						ranged_trait_type = ranged_trait_type,
-						ranged_trait = ranged_trait,
-						ranged_damage_type = ranged_damage_type,
-						ranged_damage_value = ranged_damage_value,
-						weapon_trait_type = weapon_trait_type,
-						weapon_trait = weapon_trait,
-						weapon_mod = weapon_mod,
-						weapon_damage_type = weapon_damage_type,
-						weapon_damage = weapon_damage,
-						support_strength = support_strength,
-						support_strengthen = support_strengthen,
-						support_action = support_action,
-						support_action_rounds = support_action_rounds,
-						support_effort = support_effort,
-						support_effort_rounds = support_effort_rounds,
-						cost = cost,
-						ranks = ranks)
+	try:
+		entry = PowerCreate(power_id = power_id,
+							extra_id = extra_id,
+							solidity = solidity,
+							visibility = visibility,
+							complexity = complexity,
+							volume = volume,
+							toughness = toughness,
+							mass = mass,
+							damageable = damageable,
+							maintained = maintained,
+							repairable = repairable,
+							moveable = moveable,
+							stationary = stationary,
+							trap = trap,
+							ranged = ranged,
+							weapon = weapon,
+							support = support,
+							real = real,
+							cover = cover,
+							conceal = conceal,
+							incoming = incoming,
+							outgoing = outgoing,
+							transform = transform,
+							transform_type = transform_type,
+							transform_start_mass = transform_start_mass,
+							transfom_mass = transfom_mass,
+							transform_start_descriptor = transform_start_descriptor,
+							transform_end_descriptor = transform_end_descriptor,
+							move_player = move_player,
+							move_player_trait = move_player_trait,
+							move_opponent_check = move_opponent_check,
+							move_opponent_ability = move_opponent_ability,
+							move_opponent_rank = move_opponent_rank,
+							trap_type = trap_type,
+							trap_dc = trap_dc,
+							trap_trait_type = trap_trait_type,
+							trap_trait = trap_trait,
+							trap_resist_check = trap_resist_check,
+							trap_resist_trait = trap_resist_trait,
+							trap_resist_dc = trap_resist_dc,
+							trap_escape = trap_escape,
+							ranged_type = ranged_type,
+							ranged_dc = ranged_dc,
+							ranged_trait_type = ranged_trait_type,
+							ranged_trait = ranged_trait,
+							ranged_damage_type = ranged_damage_type,
+							ranged_damage_value = ranged_damage_value,
+							weapon_trait_type = weapon_trait_type,
+							weapon_trait = weapon_trait,
+							weapon_mod = weapon_mod,
+							weapon_damage_type = weapon_damage_type,
+							weapon_damage = weapon_damage,
+							support_strength = support_strength,
+							support_strengthen = support_strengthen,
+							support_action = support_action,
+							support_action_rounds = support_action_rounds,
+							support_effort = support_effort,
+							support_effort_rounds = support_effort_rounds,
+							cost = cost,
+							ranks = ranks)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'create'
-	spot = "create-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'create'
+		spot = "create-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = create_post(entry, body, cells)
+		body = create_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1950,40 +1997,48 @@ def power_post_damage():
 	damage_type = integer(damage_type)
 	descriptor = integer(descriptor)
 
+	try:
+		entry = PowerDamage(power_id = power_id,
+							extra_id = extra_id,
+							trait_type = trait_type,
+							trait = trait,
+							mod = mod,
+							strength = strength,
+							damage_type = damage_type,
+							descriptor = descriptor)
 
-	entry = PowerDamage(power_id = power_id,
-						extra_id = extra_id,
-						trait_type = trait_type,
-						trait = trait,
-						mod = mod,
-						strength = strength,
-						damage_type = damage_type,
-						descriptor = descriptor)
+		db.session.add(entry)
+		db.session.commit()
 
-	db.session.add(entry)
-	db.session.commit()
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'damage'
+		spot = "damage-spot"
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'damage'
-	spot = "damage-spot"
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-
-	body = damage_post(entry, body, cells)
+		body = damage_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2053,56 +2108,76 @@ def power_post_dc_table():
 	check_mod = integer(check_mod)
 	level = integer(level)
 
+	if level is not None:
+		try:
+			level_dc = db.session.query(Levels).filter(Levels.id == level).one()
+			level_dc.power_dc = True
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+		finally:
+			db.session.close()
+	try:
+		entry = PowerDC(power_id = power_id,
+						extra_id = extra_id,
+						target = target,
+						dc = dc,
+						description = description,
+						value = value,
+						math_value = math_value,
+						math = math,
+						math_trait_type = math_trait_type,
+						math_trait = math_trait,
+						descriptor_check = descriptor_check,
+						condition = condition,
+						keyword_check = keyword_check,
+						check_type = check_type,
+						descriptor = descriptor,
+						descriptor_possess = descriptor_possess,
+						condition1 = condition1,
+						condition2 = condition2,
+						keyword = keyword,
+						check_trait_type = check_trait_type,
+						check_trait = check_trait,
+						check_mod = check_mod,
+						levels = levels,
+						level = level)
 
-	entry = PowerDC(power_id = power_id,
-					extra_id = extra_id,
-					target = target,
-					dc = dc,
-					description = description,
-					value = value,
-					math_value = math_value,
-					math = math,
-					math_trait_type = math_trait_type,
-					math_trait = math_trait,
-					descriptor_check = descriptor_check,
-					condition = condition,
-					keyword_check = keyword_check,
-					check_type = check_type,
-					descriptor = descriptor,
-					descriptor_possess = descriptor_possess,
-					condition1 = condition1,
-					condition2 = condition2,
-					keyword = keyword,
-					check_trait_type = check_trait_type,
-					check_trait = check_trait,
-					check_mod = check_mod,
-					levels = levels,
-					level = level)
+		db.session.add(entry)
+		db.session.commit()
 
-	db.session.add(entry)
-	db.session.commit()
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		rows = columns
+		body['rows'] = rows
+		mods = []
+		cells = []
+		table_id = 'dc'
+		spot = "dc-spot"
 
-	rows = columns
-	body['rows'] = rows
-	mods = []
-	cells = []
-	table_id = 'dc'
-	spot = "dc-spot"
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['mods'] = []
+		body['font'] = font
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['mods'] = []
-	body['font'] = font
-
-	body = dc_table_post(entry, body, cells)
+		body = dc_table_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2180,66 +2255,73 @@ def power_post_defense():
 	immunity_descriptor = integer(immunity_descriptor)
 	immunity_damage = integer(immunity_damage)
 
-	entry = PowerDefense(power_id = power_id,
-							extra_id = extra_id,
-							defense = defense,
-							use = use,
-							mod = mod,
-							roll = roll,
-							outcome = outcome,
-							dodge = dodge,
-							fortitude = fortitude,
-							parry = parry,
-							toughness = toughness,
-							will = will,
-							resist_area = resist_area,
-							resist_perception = resist_perception,
-							reflect = reflect,
-							immunity = immunity,
-							reflect_action = reflect_action,
-							reflect_check = reflect_check,
-							reflect_dc = reflect_dc,
-							reflect_opposed_trait_type = reflect_opposed_trait_type, 
-							reflect_opposed_trait = reflect_opposed_trait,
-							reflect_resist_trait_type = reflect_resist_trait_type,
-							reflect_resist_trait = reflect_resist_trait,
-							immunity_type = immunity_type,
-							immunity_trait_type = immunity_trait_type,
-							immunity_trait =immunity_trait,
-							immunity_descriptor = immunity_descriptor,
-							immunity_damage = immunity_damage,
-							immunity_rule = immunity_rule,
-							cover_check = cover_check,
-							cover_type = cover_type)
-	db.session.add(entry)
-	db.session.commit()
+	try:
+		entry = PowerDefense(power_id = power_id,
+								extra_id = extra_id,
+								defense = defense,
+								use = use,
+								mod = mod,
+								roll = roll,
+								outcome = outcome,
+								dodge = dodge,
+								fortitude = fortitude,
+								parry = parry,
+								toughness = toughness,
+								will = will,
+								resist_area = resist_area,
+								resist_perception = resist_perception,
+								reflect = reflect,
+								immunity = immunity,
+								reflect_action = reflect_action,
+								reflect_check = reflect_check,
+								reflect_dc = reflect_dc,
+								reflect_opposed_trait_type = reflect_opposed_trait_type, 
+								reflect_opposed_trait = reflect_opposed_trait,
+								reflect_resist_trait_type = reflect_resist_trait_type,
+								reflect_resist_trait = reflect_resist_trait,
+								immunity_type = immunity_type,
+								immunity_trait_type = immunity_trait_type,
+								immunity_trait =immunity_trait,
+								immunity_descriptor = immunity_descriptor,
+								immunity_damage = immunity_damage,
+								immunity_rule = immunity_rule,
+								cover_check = cover_check,
+								cover_type = cover_type)
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = 'x'
-	if cells == 'x':
-		cells = []
-	table_id = 'defense'
-	spot = "defense-spot"
+		rows = columns
+		mods = []
+		cells = 'x'
+		if cells == 'x':
+			cells = []
+		table_id = 'defense'
+		spot = "defense-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = defense_post(entry, body, cells)
+		body = defense_post(entry, body, cells)
 
-	db.session.close()
-
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2316,57 +2398,79 @@ def power_post_degree_mod():
 	nullify = integer(nullify)
 	level = integer(level)
 
-	entry = PowerDegMod(power_id = power_id,
-						extra_id = extra_id,
-						target = target,
-						value = value,
-						deg_type = deg_type,
-						circ_value = circ_value,
-						circ_turns = circ_turns,
-						circ_trait_type = circ_trait_type,
-						circ_trait = circ_trait,
-						measure_type = measure_type,
-						measure_val1 = measure_val1,
-						measure_math = measure_math,
-						measure_trait_type = measure_trait_type,
-						measure_trait = measure_trait,
-						measure_value = measure_value,
-						measure_rank = measure_rank,
-						deg_condition_type = deg_condition_type,
-						condition_damage_value = condition_damage_value,
-						condition_damage = condition_damage,
-						condition1 = condition1,
-						condition2 = condition2,
-						keyword = keyword,
-						nullify = nullify,
-						cumulative = cumulative,
-						linked = linked,
-						level = level)
+	if level is not None:
+		try:
+			level_degree = db.session.query(Levels).filter(Levels.id == level).one()
+			level_degree.power_degree = True
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+		finally:
+			db.session.close()
 
-	db.session.add(entry)
-	db.session.commit()
+	try:
+		entry = PowerDegMod(power_id = power_id,
+							extra_id = extra_id,
+							target = target,
+							value = value,
+							deg_type = deg_type,
+							circ_value = circ_value,
+							circ_turns = circ_turns,
+							circ_trait_type = circ_trait_type,
+							circ_trait = circ_trait,
+							measure_type = measure_type,
+							measure_val1 = measure_val1,
+							measure_math = measure_math,
+							measure_trait_type = measure_trait_type,
+							measure_trait = measure_trait,
+							measure_value = measure_value,
+							measure_rank = measure_rank,
+							deg_condition_type = deg_condition_type,
+							condition_damage_value = condition_damage_value,
+							condition_damage = condition_damage,
+							condition1 = condition1,
+							condition2 = condition2,
+							keyword = keyword,
+							nullify = nullify,
+							cumulative = cumulative,
+							linked = linked,
+							level = level)
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		db.session.add(entry)
+		db.session.commit()
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'deg-mod'
-	spot = "deg-mod-spot"
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'deg-mod'
+		spot = "deg-mod-spot"
 
-	body = degree_mod_post(entry, body, cells)
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+
+		body = degree_mod_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2416,40 +2520,49 @@ def power_post_degree():
 	extra_id = extra_convert(extra_id)
 	degree = integer(degree)
 
-	entry = PowerDegree(power_id = power_id,
-						extra_id = extra_id,
-						degree_type = degree_type,
-						degree = degree,
-						keyword = keyword,
-						desscription = desscription,
-						extra_effort = extra_effort,
-						cumulative = cumulative,
-						target = target)
+	try:
+		entry = PowerDegree(power_id = power_id,
+							extra_id = extra_id,
+							degree_type = degree_type,
+							degree = degree,
+							keyword = keyword,
+							desscription = desscription,
+							extra_effort = extra_effort,
+							cumulative = cumulative,
+							target = target)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'degree'
-	spot = "degree-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'degree'
+		spot = "degree-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = degree_post(entry, body, cells)
+		body = degree_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2526,62 +2639,70 @@ def power_post_environment():
 	cost = integer(cost)
 	ranks = integer(ranks)
 
+	try:
+		entry = PowerEnv(power_id = power_id,
+							extra_id = extra_id,
+							radius = radius,
+							distance = distance,
+							rank = rank,
+							condition_check = condition_check,
+							impede = impede,
+							conceal = conceal,
+							visibility = visibility,
+							selective = selective,
+							immunity = immunity,
+							immunity_type = immunity_type,
+							temp_type = temp_type,
+							immunity_extremity = immunity_extremity,
+							immunity_environment = immunity_environment,
+							no_penalty = no_penalty,
+							no_circumstance = no_circumstance,
+							immunity_other = immunity_other,
+							condition_temp_type = condition_temp_type,
+							temp_extremity = temp_extremity,
+							move_nature = move_nature,
+							move_speed = move_speed,
+							move_cost_circ = move_cost_circ,
+							move_other = move_other,
+							conceal_type = conceal_type,
+							visibility_trait_type = visibility_trait_type,
+							visibility_trait = visibility_trait,
+							visibility_mod = visibility_mod,
+							cost = cost,
+							ranks = ranks)
 
-	entry = PowerEnv(power_id = power_id,
-						extra_id = extra_id,
-						radius = radius,
-						distance = distance,
-						rank = rank,
-						condition_check = condition_check,
-						impede = impede,
-						conceal = conceal,
-						visibility = visibility,
-						selective = selective,
-						immunity = immunity,
-						immunity_type = immunity_type,
-						temp_type = temp_type,
-						immunity_extremity = immunity_extremity,
-						immunity_environment = immunity_environment,
-						no_penalty = no_penalty,
-						no_circumstance = no_circumstance,
-						immunity_other = immunity_other,
-						condition_temp_type = condition_temp_type,
-						temp_extremity = temp_extremity,
-						move_nature = move_nature,
-						move_speed = move_speed,
-						move_cost_circ = move_cost_circ,
-						move_other = move_other,
-						conceal_type = conceal_type,
-						visibility_trait_type = visibility_trait_type,
-						visibility_trait = visibility_trait,
-						visibility_mod = visibility_mod,
-						cost = cost,
-						ranks = ranks)
+		db.session.add(entry)
+		db.session.commit()
 
-	db.session.add(entry)
-	db.session.commit()
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'env'
+		spot = "env-spot"
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'env'
-	spot = "env-spot"
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-
-	body = environment_post(entry, body, cells)
+		body = environment_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
