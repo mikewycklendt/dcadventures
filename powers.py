@@ -2641,17 +2641,27 @@ def power_post_levels():
 	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
 	if level_check is None:
 
-		level_add = LevelType(power_id=power_id,
-								name=level_type)
+		try:
+			level_add = LevelType(power_id=power_id,
+									name=level_type)
 
-		db.session.add(level_add)
-		db.session.commit()
+			db.session.add(level_add)
+			db.session.commit()
 
-		type_id = level_add.id
+			type_id = level_add.id
 
-		body['level_type_id'] = type_id
-		body['level_type'] = level_add.name
-		body['created'] = False
+			body['level_type_id'] = type_id
+			body['level_type'] = level_add.name
+			body['created'] = False
+		except:
+		error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+
+		finally:
+			db.session.close()
+		
 	else:
 		level_power = level_check.power_id
 		print(power_id)
@@ -2664,49 +2674,59 @@ def power_post_levels():
 		type_id = level_check.id
 		body['created'] = True
 
-	entry = Levels(power_id = power_id,
-						extra_id = extra_id,
-						type_id=type_id,
-						level_type = level_type,
-						name = level,
-						level_effect = level_effect,
-						power_dc = power_dc,
-						power_degree = power_degree,
-						skill_dc = skill_dc,
-						skill_degree = skill_degree,
-						bonus_dc = bonus_dc,
-						bonus_degree = bonus_degree)
+	try:
+		entry = Levels(power_id = power_id,
+							extra_id = extra_id,
+							type_id=type_id,
+							level_type = level_type,
+							name = level,
+							level_effect = level_effect,
+							power_dc = power_dc,
+							power_degree = power_degree,
+							skill_dc = skill_dc,
+							skill_degree = skill_degree,
+							bonus_dc = bonus_dc,
+							bonus_degree = bonus_degree)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
 
+		
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+
+		rows = columns
+
+		mods = []
+		cells = []
+		spot = "levels-spot"
+
+		body['spot'] = spot
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['title'] = level_type
+		type_split = level_type.split(' ')
+		type_class = ''
+		for t in  type_split:
+			type_class += t 
+		
+		table_id = 'levels-' + type_class
+
+		body['table_id'] = table_id
+
+		body = levels_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-
-	rows = columns
-
-	mods = []
-	cells = []
-	spot = "levels-spot"
-
-	body['spot'] = spot
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-	body['title'] = level_type
-	type_split = level_type.split(' ')
-	type_class = ''
-	for t in  type_split:
-		type_class += t 
+	finally:
+		db.session.close()
 	
-	table_id = 'levels-' + type_class
-
-	body['table_id'] = table_id
-
-	body = levels_post(entry, body, cells)
 	return jsonify(body)
 
 
@@ -2773,52 +2793,62 @@ def power_post_minion():
 	resitable_dc = integer(resitable_dc)
 	multiple_value = integer(multiple_value)
 
+	try:
+		entry = PowerMinion(power_id = power_id,
+							extra_id = extra_id,
+							points = points,
+							condition = condition,
+							player_condition = player_condition,
+							link = link,
+							variable_type = variable_type,
+							multiple = multiple,
+							attitude = attitude,
+							resitable = resitable,
+							heroic = heroic,
+							sacrifice = sacrifice,
+							sacrifice_cost = sacrifice_cost,
+							attitude_type = attitude_type,
+							attitude_trait_type = attitude_trait_type,
+							attitude_trait = attitude_trait,
+							resitable_check = resitable_check,
+							resitable_dc = resitable_dc,
+							multiple_value = multiple_value,
+							horde = horde)
 
-	entry = PowerMinion(power_id = power_id,
-						extra_id = extra_id,
-						points = points,
-						condition = condition,
-						player_condition = player_condition,
-						link = link,
-						variable_type = variable_type,
-						multiple = multiple,
-						attitude = attitude,
-						resitable = resitable,
-						heroic = heroic,
-						sacrifice = sacrifice,
-						sacrifice_cost = sacrifice_cost,
-						attitude_type = attitude_type,
-						attitude_trait_type = attitude_trait_type,
-						attitude_trait = attitude_trait,
-						resitable_check = resitable_check,
-						resitable_dc = resitable_dc,
-						multiple_value = multiple_value,
-						horde = horde)
+		db.session.add(entry)
+		db.session.commit()
 
-	db.session.add(entry)
-	db.session.commit()
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'minion'
+		spot = "minion-spot"
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'minion'
-	spot = "minion-spot"
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body = minion_post(entry, body, cells)
 
-	body = minion_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+
 	return jsonify(body)
 
 
@@ -2973,117 +3003,127 @@ def power_post_mod():
 	ranks_cost = integer(ranks_cost)
 	cost = integer(cost)
 
-	entry = PowerMod(power_id = power_id,
-						extra_id = extra_id,
-						affects_objects = affects_objects,
-						area = area,
-						persistent = persistent,
-						incurable = incurable,
-						selective = selective,
-						limited = limited,
-						innate = innate,
-						others = others,
-						sustained = sustained,
-						reflect = reflect,
-						redirect = redirect,
-						half = half,
-						affects_corp = affects_corp,
-						continuous = continuous,
-						vulnerable = vulnerable,
-						precise = precise,
-						progressive = progressive,
-						subtle = subtle,
-						permanent = permanent,
-						points = points,
-						ranks = ranks,
-						action = action,
-						side_effect = side_effect,
-						concentration = concentration,
-						simultaneous = simultaneous,
-						effortless = effortless,
-						noticeable = noticeable,
-						unreliable = unreliable,
-						radius = radius,
-						accurate = accurate,
-						acute = acute,
-						objects_alone = objects_alone,
-						objects_character = objects_character,
-						effortless_degree = effortless_degree,
-						effortless_retries = effortless_retries,
-						simultaneous_descriptor = simultaneous_descriptor,
-						area_mod = area_mod,
-						area_range = area_range,
-						area_per_rank = area_per_rank,
-						area_descriptor = area_descriptor,
-						limited_type = limited_type,
-						limited_mod = limited_mod,
-						limited_level = limited_level,
-						limited_source = limited_source,
-						limited_task_type = limited_task_type,
-						limited_task = limited_task,
-						limited_trait_type = limited_trait_type,
-						limited_trait = limited_trait,
-						limited_description = limited_description,
-						limited_subjects = limited_subjects,
-						limited_extra = limited_extra,
-						limited_language_type = limited_language_type,
-						limited_degree = limited_degree,
-						limited_sense = limited_sense,
-						limited_subsense = limited_subsense,
-						limited_descriptor = limited_descriptor,
-						limited_range = limited_range,
-						side_effect_type = side_effect_type,
-						side_level = side_level,
-						side_other = side_other,
-						reflect_check = reflect_check,
-						reflect_dc = reflect_dc,
-						reflect_trait_type = reflect_trait_type,
-						reflect_trait = reflect_trait,
-						reflect_descriptor = reflect_descriptor,
-						subtle_opponent_trait_type = subtle_opponent_trait_type,
-						subtle_opponent_trait = subtle_opponent_trait,
-						subtle_dc = subtle_dc,
-						subtle_null_trait_type = subtle_null_trait_type,
-						subtle_null_trait = subtle_opponent_trait,
-						others_carry = others_carry,
-						others_touch = others_touch,
-						others_touch_continuous = others_touch_continuous,
-						ranks_trait_type = ranks_trait_type,
-						ranks_trait = ranks_trait,
-						ranks_ranks = ranks_ranks,
-						ranks_mod = ranks_mod,
-						points_type = points_type,
-						points_reroll_target = points_reroll_target,
-						points_reroll_cost = points_reroll_cost,
-						points_rerolls = points_rerolls,
-						points_reroll_result = points_reroll_result,
-						ranks_cost = ranks_cost,
-						cost = cost)
+	try:
+		entry = PowerMod(power_id = power_id,
+							extra_id = extra_id,
+							affects_objects = affects_objects,
+							area = area,
+							persistent = persistent,
+							incurable = incurable,
+							selective = selective,
+							limited = limited,
+							innate = innate,
+							others = others,
+							sustained = sustained,
+							reflect = reflect,
+							redirect = redirect,
+							half = half,
+							affects_corp = affects_corp,
+							continuous = continuous,
+							vulnerable = vulnerable,
+							precise = precise,
+							progressive = progressive,
+							subtle = subtle,
+							permanent = permanent,
+							points = points,
+							ranks = ranks,
+							action = action,
+							side_effect = side_effect,
+							concentration = concentration,
+							simultaneous = simultaneous,
+							effortless = effortless,
+							noticeable = noticeable,
+							unreliable = unreliable,
+							radius = radius,
+							accurate = accurate,
+							acute = acute,
+							objects_alone = objects_alone,
+							objects_character = objects_character,
+							effortless_degree = effortless_degree,
+							effortless_retries = effortless_retries,
+							simultaneous_descriptor = simultaneous_descriptor,
+							area_mod = area_mod,
+							area_range = area_range,
+							area_per_rank = area_per_rank,
+							area_descriptor = area_descriptor,
+							limited_type = limited_type,
+							limited_mod = limited_mod,
+							limited_level = limited_level,
+							limited_source = limited_source,
+							limited_task_type = limited_task_type,
+							limited_task = limited_task,
+							limited_trait_type = limited_trait_type,
+							limited_trait = limited_trait,
+							limited_description = limited_description,
+							limited_subjects = limited_subjects,
+							limited_extra = limited_extra,
+							limited_language_type = limited_language_type,
+							limited_degree = limited_degree,
+							limited_sense = limited_sense,
+							limited_subsense = limited_subsense,
+							limited_descriptor = limited_descriptor,
+							limited_range = limited_range,
+							side_effect_type = side_effect_type,
+							side_level = side_level,
+							side_other = side_other,
+							reflect_check = reflect_check,
+							reflect_dc = reflect_dc,
+							reflect_trait_type = reflect_trait_type,
+							reflect_trait = reflect_trait,
+							reflect_descriptor = reflect_descriptor,
+							subtle_opponent_trait_type = subtle_opponent_trait_type,
+							subtle_opponent_trait = subtle_opponent_trait,
+							subtle_dc = subtle_dc,
+							subtle_null_trait_type = subtle_null_trait_type,
+							subtle_null_trait = subtle_opponent_trait,
+							others_carry = others_carry,
+							others_touch = others_touch,
+							others_touch_continuous = others_touch_continuous,
+							ranks_trait_type = ranks_trait_type,
+							ranks_trait = ranks_trait,
+							ranks_ranks = ranks_ranks,
+							ranks_mod = ranks_mod,
+							points_type = points_type,
+							points_reroll_target = points_reroll_target,
+							points_reroll_cost = points_reroll_cost,
+							points_rerolls = points_rerolls,
+							points_reroll_result = points_reroll_result,
+							ranks_cost = ranks_cost,
+							cost = cost)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'modifiers'
-	spot = 'mod-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'modifiers'
+		spot = 'mod-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = mod_post(entry, body, cells)
+		body = mod_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+
 	return jsonify(body)
 
 
@@ -3222,106 +3262,115 @@ def power_post_move():
 	ranks = integer(ranks)
 	cost = integer(cost)
 
-	entry = PowerMove(power_id = power_id,
-						extra_id = extra_id,
-						rank = rank,
-						math = math,
-						mod = mod,
-						per_rank = per_rank,
-						flight = flight,
-						aquatic = aquatic,
-						ground = ground,
-						condition = condition,
-						direction = direction,
-						distance_type = distance_type,
-						distance_value = distance_value,
-						distance_math_value = distance_math_value,
-						distance_math = distance_math,
-						distance_math_value2 = distance_math_value2,
-						distance_mod = distance_mod,
-						dc = dc,
-						others = others,
-						continuous = continuous,
-						subtle = subtle,
-						concentration = concentration,
-						obstacles = obstacles,
-						objects = objects,
-						permeate = permeate,
-						special = special,
-						prone = prone,
-						check_type = check_type,
-						materials = materials,
-						concealment = concealment,
-						extended = extended,
-						mass = mass,
-						mass_value = mass_value,
-						extended_actions = extended_actions,
-						acquatic_type = acquatic_type,
-						concealment_sense = concealment_sense,
-						concealment_trait_type = concealment_trait_type,
-						concealment_trait = concealment_trait,
-						permeate_type = permeate_type,
-						permeate_speed = permeate_speed,
-						permeate_cover = permeate_cover,
-						special_type = special_type,
-						teleport_type = teleport_type,
-						teleport_change = teleport_change,
-						teleport_portal = teleport_portal,
-						teleport_obstacles = teleport_obstacles,
-						dimension_type = dimension_type,
-						dimension_mass_rank = dimension_mass_rank,
-						dimension_descriptor = dimension_descriptor,
-						special_space = special_space,
-						special_time = special_time,
-						special_time_carry = special_time_carry,
-						ground_type = ground_type,
-						ground_permanence = ground_permanence,
-						ground_time = ground_time,
-						ground_units = ground_units,
-						ground_ranged = ground_ranged,
-						subtle_trait_type = subtle_trait_type,
-						subtle_trait = subtle_trait,
-						subtle_mod = subtle_mod,
-						flight_resist = flight_resist,
-						flight_equip = flight_equip,
-						flight_conditions = flight_conditions,
-						objects_check = objects_check,
-						objects_attack = objects_attack,
-						objects_skill_type = objects_skill_type,
-						objects_skill = objects_skill,
-						objects_direction = objects_direction,
-						objects_damage = objects_damage,
-						damage_type = damage_type,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						check_free = check_free,
-						ranks = ranks,
-						cost = cost)
+	try:
+		entry = PowerMove(power_id = power_id,
+							extra_id = extra_id,
+							rank = rank,
+							math = math,
+							mod = mod,
+							per_rank = per_rank,
+							flight = flight,
+							aquatic = aquatic,
+							ground = ground,
+							condition = condition,
+							direction = direction,
+							distance_type = distance_type,
+							distance_value = distance_value,
+							distance_math_value = distance_math_value,
+							distance_math = distance_math,
+							distance_math_value2 = distance_math_value2,
+							distance_mod = distance_mod,
+							dc = dc,
+							others = others,
+							continuous = continuous,
+							subtle = subtle,
+							concentration = concentration,
+							obstacles = obstacles,
+							objects = objects,
+							permeate = permeate,
+							special = special,
+							prone = prone,
+							check_type = check_type,
+							materials = materials,
+							concealment = concealment,
+							extended = extended,
+							mass = mass,
+							mass_value = mass_value,
+							extended_actions = extended_actions,
+							acquatic_type = acquatic_type,
+							concealment_sense = concealment_sense,
+							concealment_trait_type = concealment_trait_type,
+							concealment_trait = concealment_trait,
+							permeate_type = permeate_type,
+							permeate_speed = permeate_speed,
+							permeate_cover = permeate_cover,
+							special_type = special_type,
+							teleport_type = teleport_type,
+							teleport_change = teleport_change,
+							teleport_portal = teleport_portal,
+							teleport_obstacles = teleport_obstacles,
+							dimension_type = dimension_type,
+							dimension_mass_rank = dimension_mass_rank,
+							dimension_descriptor = dimension_descriptor,
+							special_space = special_space,
+							special_time = special_time,
+							special_time_carry = special_time_carry,
+							ground_type = ground_type,
+							ground_permanence = ground_permanence,
+							ground_time = ground_time,
+							ground_units = ground_units,
+							ground_ranged = ground_ranged,
+							subtle_trait_type = subtle_trait_type,
+							subtle_trait = subtle_trait,
+							subtle_mod = subtle_mod,
+							flight_resist = flight_resist,
+							flight_equip = flight_equip,
+							flight_conditions = flight_conditions,
+							objects_check = objects_check,
+							objects_attack = objects_attack,
+							objects_skill_type = objects_skill_type,
+							objects_skill = objects_skill,
+							objects_direction = objects_direction,
+							objects_damage = objects_damage,
+							damage_type = damage_type,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait,
+							check_free = check_free,
+							ranks = ranks,
+							cost = cost)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'move'
-	spot = "move-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'move'
+		spot = "move-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = move_post(entry, body, cells)
+		body = move_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	finally:
+		db.session.close()
+
 	return jsonify(body)
 
 
@@ -3375,41 +3424,50 @@ def power_post_opposed():
 	player_check = integer(player_check)
 	opponent_check = integer(opponent_check)
 
-	entry = PowerOpposed(power_id = power_id,
-							extra_id = extra_id,
-							trait_type = trait_type,
-							trait = trait,
-							mod = mod,
-							opponent_trait_type = opponent_trait_type,
-							opponent_trait = opponent_trait,
-							opponent_mod = opponent_mod,
-							player_check = player_check,
-							opponent_check = opponent_check)
+	try:
+		entry = PowerOpposed(power_id = power_id,
+								extra_id = extra_id,
+								trait_type = trait_type,
+								trait = trait,
+								mod = mod,
+								opponent_trait_type = opponent_trait_type,
+								opponent_trait = opponent_trait,
+								opponent_mod = opponent_mod,
+								player_check = player_check,
+								opponent_check = opponent_check)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'opposed'
-	spot = "opposed-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'opposed'
+		spot = "opposed-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = opposed_post(entry, body, cells)
+		body = opposed_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -3509,67 +3567,76 @@ def power_post_ranged():
 	distance_mod_math = integer(distance_mod_math)
 	dc_value = integer(dc_value)
 
-	entry = PowerRanged(power_id = power_id,
-						extra_id = extra_id,
-						range_type = range_type,
-						flat_value = flat_value,
-						flat_units = flat_units,
-						flat_rank = flat_rank,
-						flat_rank_value = flat_rank_value,
-						flat_rank_units = flat_rank_units,
-						flat_rank_rank = flat_rank_rank,
-						flat_rank_distance = flat_rank_distance,
-						flat_rank_distance_rank = flat_rank_distance_rank,
-						units_rank_start_value = units_rank_start_value,
-						units_rank_value = units_rank_value,
-						units_rank_units = units_rank_units,
-						units_rank_rank = units_rank_rank,
-						rank_distance_start = rank_distance_start,
-						rank_distance = rank_distance,
-						rank_effect_rank = rank_effect_rank,
-						effect_mod_math = effect_mod_math,
-						effect_mod = effect_mod,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						check_math = check_math,
-						check_mod = check_mod,
-						trait_trait_type = trait_trait_type,
-						trait_trait = trait_trait,
-						trait_math = trait_math,
-						trait_mod = trait_mod,
-						distance_mod_rank = distance_mod_rank,
-						distance_mod_math = distance_mod_math,
-						distance_mod_trait_type = distance_mod_trait_type,
-						distance_mod_trait = distance_mod_trait,
-						dc = dc,
-						dc_value = dc_value,
-						dc_trait_type = dc_trait_type,
-						dc_trait = dc_trait)
+	try:
+		entry = PowerRanged(power_id = power_id,
+							extra_id = extra_id,
+							range_type = range_type,
+							flat_value = flat_value,
+							flat_units = flat_units,
+							flat_rank = flat_rank,
+							flat_rank_value = flat_rank_value,
+							flat_rank_units = flat_rank_units,
+							flat_rank_rank = flat_rank_rank,
+							flat_rank_distance = flat_rank_distance,
+							flat_rank_distance_rank = flat_rank_distance_rank,
+							units_rank_start_value = units_rank_start_value,
+							units_rank_value = units_rank_value,
+							units_rank_units = units_rank_units,
+							units_rank_rank = units_rank_rank,
+							rank_distance_start = rank_distance_start,
+							rank_distance = rank_distance,
+							rank_effect_rank = rank_effect_rank,
+							effect_mod_math = effect_mod_math,
+							effect_mod = effect_mod,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait,
+							check_math = check_math,
+							check_mod = check_mod,
+							trait_trait_type = trait_trait_type,
+							trait_trait = trait_trait,
+							trait_math = trait_math,
+							trait_mod = trait_mod,
+							distance_mod_rank = distance_mod_rank,
+							distance_mod_math = distance_mod_math,
+							distance_mod_trait_type = distance_mod_trait_type,
+							distance_mod_trait = distance_mod_trait,
+							dc = dc,
+							dc_value = dc_value,
+							dc_trait_type = dc_trait_type,
+							dc_trait = dc_trait)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'ranged'
-	spot = "ranged-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'ranged'
+		spot = "ranged-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = ranged_post(entry, body, cells)
+		body = ranged_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -3627,45 +3694,54 @@ def power_post_resist():
 	descriptor = integer(descriptor)
 	check_type = integer(check_type)
 
-	entry = PowerResist(power_id = power_id,
-						extra_id = extra_id,
-						target = target,
-						mod = mod,
-						rounds = rounds,
-						circumstance = circumstance,
-						resist_check_type = resist_check_type,
-						trait_type = trait_type,
-						trait = trait,
-						descriptor = descriptor,
-						requires_check = requires_check,
-						check_type = check_type,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait)
+	try:
+		entry = PowerResist(power_id = power_id,
+							extra_id = extra_id,
+							target = target,
+							mod = mod,
+							rounds = rounds,
+							circumstance = circumstance,
+							resist_check_type = resist_check_type,
+							trait_type = trait_type,
+							trait = trait,
+							descriptor = descriptor,
+							requires_check = requires_check,
+							check_type = check_type,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'resistance'
-	spot = "resistance-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'resistance'
+		spot = "resistance-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-		
-	body = resist_post(entry, body, cells)
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = resist_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -3735,51 +3811,60 @@ def power_post_resisted_by():
 	nullify_descriptor = integer(nullify_descriptor)
 	nullify_alternate = integer(nullify_alternate)
 
-	entry = PowerResistBy(power_id = power_id,
-							extra_id = extra_id,
-							trait_type = trait_type,
-							dc = dc,
-							mod = mod,
-							description = description,
-							trait = trait,
-							effect = effect,
-							level = level,
-							degree = degree,
-							descriptor = descriptor,
-							weaken_max = weaken_max,
-							weaken_restored = weaken_restored,
-							condition1 = condition1,
-							condition2 = condition2,
-							damage =  damage,
-							strength = strength,
-							nullify_descriptor = nullify_descriptor,
-							nullify_alternate = nullify_alternate,
-							extra_effort = extra_effort)
+	try:
+		entry = PowerResistBy(power_id = power_id,
+								extra_id = extra_id,
+								trait_type = trait_type,
+								dc = dc,
+								mod = mod,
+								description = description,
+								trait = trait,
+								effect = effect,
+								level = level,
+								degree = degree,
+								descriptor = descriptor,
+								weaken_max = weaken_max,
+								weaken_restored = weaken_restored,
+								condition1 = condition1,
+								condition2 = condition2,
+								damage =  damage,
+								strength = strength,
+								nullify_descriptor = nullify_descriptor,
+								nullify_alternate = nullify_alternate,
+								extra_effort = extra_effort)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'resist'
-	spot = "resist-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'resist'
+		spot = "resist-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = resisted_by_post(entry, body, cells)
+		body = resisted_by_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -3841,46 +3926,55 @@ def power_post_reverse_effect():
 	time_value = integer(time_value)
 	time_unit = integer(time_unit)
 
-	entry = PowerReverse(power_id = power_id,
-							extra_id = extra_id,
-							target = target,
-							degree = degree,
-							when = when,
-							check_check = check_check,
-							time_check = time_check,
-							trait_type = trait_type,
-							trait = trait,
-							value_type = value_type,
-							value_dc = value_dc,
-							math_dc = math_dc,
-							math = math,
-							time_value = time_value,
-							time_unit = time_unit)
+	try:
+		entry = PowerReverse(power_id = power_id,
+								extra_id = extra_id,
+								target = target,
+								degree = degree,
+								when = when,
+								check_check = check_check,
+								time_check = time_check,
+								trait_type = trait_type,
+								trait = trait,
+								value_type = value_type,
+								value_dc = value_dc,
+								math_dc = math_dc,
+								math = math,
+								time_value = time_value,
+								time_unit = time_unit)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'reverse'
-	spot = "reverse-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'reverse'
+		spot = "reverse-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = reverse_effect_post(entry, body, cells)
+		body = reverse_effect_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -3981,75 +4075,84 @@ def power_post_sense():
 	ranks = integer(ranks)
 	cost = integer(cost)
 
-	entry = PowerSenseEffect(power_id = power_id,
-								extra_id = extra_id,
-								target = target,
-								sense = sense,
-								subsense = subsense,
-								sense_cost = sense_cost,
-								subsense_cost = subsense_cost,
-								skill = skill,
-								skill_required = skill_required,
-								sense_type = sense_type,
-								height_trait_type = height_trait_type,
-								height_trait = height_trait,
-								height_power_required = height_power_required,
-								height_ensense = height_ensense,
-								resist_trait_type = resist_trait_type,
-								resist_trait = resist_trait,
-								resist_immune = resist_immune,
-								resist_permanent = resist_permanent,
-								resist_circ = resist_circ,
-								objects = objects,
-								exclusive = exclusive,
-								gm = gm,
-								dark = dark,
-								lighting = lighting,
-								time = time,
-								dimensional = dimensional,
-								radius = radius,
-								accurate = accurate,
-								acute = acute,
-								time_set = time_set,
-								time_value = time_value,
-								time_unit = time_unit,
-								time_skill = time_skill,
-								time_bonus = time_bonus,
-								time_factor = time_factor,
-								distance = distance,
-								distance_dc = distance_dc,
-								distance_mod = distance_mod,
-								distance_value = distance_value,
-								distance_unit = distance_unit,
-								distance_factor = distance_factor,
-								dimensional_type = dimensional_type,
-								ranks = ranks,
-								cost = cost)
+	try:
+		entry = PowerSenseEffect(power_id = power_id,
+									extra_id = extra_id,
+									target = target,
+									sense = sense,
+									subsense = subsense,
+									sense_cost = sense_cost,
+									subsense_cost = subsense_cost,
+									skill = skill,
+									skill_required = skill_required,
+									sense_type = sense_type,
+									height_trait_type = height_trait_type,
+									height_trait = height_trait,
+									height_power_required = height_power_required,
+									height_ensense = height_ensense,
+									resist_trait_type = resist_trait_type,
+									resist_trait = resist_trait,
+									resist_immune = resist_immune,
+									resist_permanent = resist_permanent,
+									resist_circ = resist_circ,
+									objects = objects,
+									exclusive = exclusive,
+									gm = gm,
+									dark = dark,
+									lighting = lighting,
+									time = time,
+									dimensional = dimensional,
+									radius = radius,
+									accurate = accurate,
+									acute = acute,
+									time_set = time_set,
+									time_value = time_value,
+									time_unit = time_unit,
+									time_skill = time_skill,
+									time_bonus = time_bonus,
+									time_factor = time_factor,
+									distance = distance,
+									distance_dc = distance_dc,
+									distance_mod = distance_mod,
+									distance_value = distance_value,
+									distance_unit = distance_unit,
+									distance_factor = distance_factor,
+									dimensional_type = dimensional_type,
+									ranks = ranks,
+									cost = cost)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'sense'
-	spot = "sense-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'sense'
+		spot = "sense-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = sense_post(entry, body, cells)
+		body = sense_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -4116,50 +4219,58 @@ def power_post_time():
 	recovery_penalty = integer(recovery_penalty)
 	recovery_time = integer(recovery_time)
 
+	try:
+		entry = PowerTime(power_id = power_id,
+							extra_id = extra_id,
+							time_type = time_type,
+							value_type = value_type,
+							value = value,
+							units = units,
+							time_value = time_value,
+							math = math,
+							trait_type = trait_type,
+							trait = trait,
+							dc = dc,
+							descriptor = descriptor,
+							check_type = check_type,
+							recovery = recovery,
+							recovery_penalty = recovery_penalty,
+							recovery_time = recovery_time,
+							recovery_incurable = recovery_incurable)
 
-	entry = PowerTime(power_id = power_id,
-						extra_id = extra_id,
-						time_type = time_type,
-						value_type = value_type,
-						value = value,
-						units = units,
-						time_value = time_value,
-						math = math,
-						trait_type = trait_type,
-						trait = trait,
-						dc = dc,
-						descriptor = descriptor,
-						check_type = check_type,
-						recovery = recovery,
-						recovery_penalty = recovery_penalty,
-						recovery_time = recovery_time,
-						recovery_incurable = recovery_incurable)
-
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'time'
-	spot = "time-spot"
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'time'
+		spot = "time-spot"
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
 
-	body = time_post(entry, body, cells)
+		body = time_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
