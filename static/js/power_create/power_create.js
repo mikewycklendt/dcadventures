@@ -80,7 +80,7 @@ function level_select(select, fill) {
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	response = fetch('/power/trait/select', {
+	response = fetch('/power/level/select', {
 		method: 'POST',
 		body: JSON.stringify({
 			'level_type_id': level_type_id
