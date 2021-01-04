@@ -1095,10 +1095,11 @@ function create_titles(jsonResponse, grow, object, route) {
 	const cells = jsonResponse.cells;
 
 	const cells_class = table_id + '-cells';
-	const table_class = table_id + '-table'
+	const table_class = table_id + '-table';
+	const title_class = table_id + '-title';
 	const base_table = 'power-table-table';
 	const base_cell_title = 'power-table-cell-title';
-	const base_title = 'power-table-title-table'
+	const base_title = 'power-table-title-table';
 	const base_titles = 'power-table-titles';
 
 	const spot = document.getElementById(spot_string);
@@ -1123,7 +1124,8 @@ function create_titles(jsonResponse, grow, object, route) {
 	let cell;
 	for (cell of cells) {
 		const cell_title = document.createElement('div');
-		cell_title.className = base_cell_title;
+		cell_title.className = title_class;
+		cell_title.classList.add(base_cell_title);
 		cell_title.innerHTML = cell.title;
 		console.log(cell.title);
 		title_row.appendChild(cell_title);
@@ -1145,9 +1147,9 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 	table.style.fontSize = size + '%';
 	
-	const base_cell_title = 'power-table-cell-title';
-	const titles = document.getElementsByClassName(base_cell_title)
-
+	const title_class = table_id + '-title';
+	const titles = document.getElementsByClassName(title_class)
+	
 	for (let i = 0; i < cells.length; i++) {
 		if (columns[i] > 1) {
 			titles[i].style.maxHeight = titles[i].scrollHeight + 'px';
