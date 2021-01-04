@@ -2623,6 +2623,12 @@ def power_post_levels():
 	created = request.get_json()['created']
 	old_level_type = request.get_json()['old_level_type']
 	font = request.get_json()['font']
+	power_dc = False
+	power_degree = False
+	skill_dc = False
+	skill_degree = False
+	bonus_dc = False
+	bonus_degree = False
 
 	body = {}
 
@@ -2655,7 +2661,12 @@ def power_post_levels():
 						level_type = level_type,
 						level = level,
 						level_effect = level_effect,
-						power=power)
+						power_dc = power_dc,
+						power_degree = power_degree,
+						skill_dc = skill_dc,
+						skill_degree = skill_degree,
+						bonus_dc = bonus_dc,
+						bonus_degree = bonus_degree)
 
 	db.session.add(entry)
 	db.session.commit()
