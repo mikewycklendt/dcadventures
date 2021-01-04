@@ -359,7 +359,7 @@ def power_level_select():
 	try:
 		levels = db.session.query(Levels).filter_by(type_id=level_type_id).all()
 		for level in levels:
-			options.append({'id': level.id, 'name': level.level})
+			options.append({'id': level.id, 'name': level.name})
 		success = True
 	except:
 		print('no matching level type')
@@ -2659,7 +2659,7 @@ def power_post_levels():
 						extra_id = extra_id,
 						type_id=type_id,
 						level_type = level_type,
-						level = level,
+						name = level,
 						level_effect = level_effect,
 						power_dc = power_dc,
 						power_degree = power_degree,

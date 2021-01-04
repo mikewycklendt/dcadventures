@@ -154,7 +154,7 @@ class Levels(db.Model):
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	type_id = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level_type = db.Column(db.String())
-	level = db.Column(db.String())
+	name = db.Column(db.String())
 	level_effect = db.Column(db.String())
 	power_dc = db.Column(db.Boolean)
 	power_degree = db.Column(db.Boolean)
@@ -171,7 +171,7 @@ class Levels(db.Model):
 			'extra_id': self.extra_id,
 			'type_id': self.type_id,
 			'level_type': self.level_type,
-			'level': self.level,
+			'name': self.name,
 			'level_effect': self.level_effect,
 			'power_dc': self.power_dc,
 			'power_degree': self.power_degree,
