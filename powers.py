@@ -2682,7 +2682,6 @@ def power_post_levels():
 
 	mods = []
 	cells = []
-	table_id = 'levels-' + level_type
 	spot = "levels-spot"
 
 	body['table_id'] = table_id
@@ -2691,6 +2690,12 @@ def power_post_levels():
 	body['mods'] = []
 	body['font'] = font
 	body['title'] = level_type
+	type_split = level_type.split(' ')
+	type_class = ''
+	for t in  type_split:
+		type_class += t 
+	
+	table_id = 'levels-' + type_class
 	
 	body = levels_post(entry, body, cells)
 	return jsonify(body)
