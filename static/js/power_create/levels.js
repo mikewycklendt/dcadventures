@@ -89,6 +89,8 @@ function levels_submit() {
 			const route = '/power/levels/delete/'
 			create_table(jsonResponse, levels_grid, route);
 			clear_errors(err_line, errors)
+			row_delete(jsonResponse, route, levels_grid) 
+
 
 			levels_grid.titles = true;
 
