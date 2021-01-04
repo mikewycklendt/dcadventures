@@ -19,6 +19,22 @@ def required(value, name, errors):
 
 	return (errors)
 
+def power_check(value, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value == '' or value is None:
+		error = True
+		message = name + 'You must create a power name first.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 def power(value):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -588,6 +604,8 @@ def alt_check_post_errors(data):
 	trait_type = data['trait_type']
 	trait = data['trait']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -615,6 +633,8 @@ def change_action_post_errors(data):
 	mod = data['mod']
 	objects = data['objects']
 	circumstance = data['circumstance']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -680,6 +700,8 @@ def character_post_errors(data):
 	insub_description = data['insub_description']
 	cost = data['cost']
 	ranks = data['ranks']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -759,6 +781,8 @@ def circ_post_errors(data):
 	null_descriptor = data['null_descriptor']
 	null_trait_type = data['null_trait_type']
 	null_trait = data['null_trait']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -863,6 +887,8 @@ def create_post_errors(data):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -958,6 +984,8 @@ def damage_post_errors(data):
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1008,6 +1036,8 @@ def dc_table_post_errors(data):
 	check_mod = data['check_mod']
 	levels = data['levels']
 	level = data['level']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -1086,6 +1116,8 @@ def defense_post_errors(data):
 	cover_check = data['cover_check']
 	cover_type = data['cover_type']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1162,6 +1194,8 @@ def degree_mod_post_errors(data):
 	linked = data['linked']
 	level = data['level']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1229,6 +1263,8 @@ def degree_post_errors(data):
 	cumulative = data['cumulative']
 	target = data['target']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1277,6 +1313,8 @@ def environment_post_errors(data):
 	visibility_mod = data['visibility_mod']
 	cost = data['cost']
 	ranks = data['ranks']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -1332,6 +1370,8 @@ def levels_post_errors(data):
 	level = data['level']
 	level_effect = data['level_effect']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1367,6 +1407,8 @@ def minion_post_errors(data):
 	resitable_dc = data['resitable_dc']
 	multiple_value = data['multiple_value']
 	horde = data['horde']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -1490,6 +1532,8 @@ def mod_post_errors(data):
 	points_reroll_result = data['points_reroll_result']
 	ranks_cost = data['ranks_cost']
 	cost = data['cost']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -1689,6 +1733,8 @@ def move_post_errors(data):
 	ranks = data['ranks']
 	cost = data['cost']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1807,6 +1853,8 @@ def opposed_post_errors(data):
 	player_check = data['player_check']
 	opponent_check = data['opponent_check']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -1868,6 +1916,8 @@ def ranged_post_errors(data):
 	dc_value = data['dc_value']
 	dc_trait_type = data['dc_trait_type']
 	dc_trait = data['dc_trait']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -1980,6 +2030,8 @@ def resist_post_errors(data):
 	check_trait_type = data['check_trait_type']
 	check_trait = data['check_trait']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -2029,6 +2081,8 @@ def resisted_by_post_errors(data):
 	nullify_descriptor = data['nullify_descriptor']
 	nullify_alternate = data['nullify_alternate']
 	extra_effort = data['extra_effort']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -2083,6 +2137,8 @@ def reverse_effect_post_errors(data):
 	math = data['math']
 	time_value = data['time_value']
 	time_unit = data['time_unit']
+
+	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -2164,6 +2220,8 @@ def sense_post_errors(data):
 	ranks = data['ranks']
 	cost = data['cost']
 
+	errors = power_check(power_id, errors)
+
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
@@ -2232,6 +2290,8 @@ def time_post_errors(data):
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 
+	errors = power_check(power_id, errors)
+	
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
