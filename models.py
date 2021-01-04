@@ -173,15 +173,12 @@ class Levels(db.Model):
 			'level_type': self.level_type,
 			'level': self.level,
 			'level_effect': self.level_effect,
-			'power_dc_id': self.power_dc_id,
-			'power_degree_id': self.power_degree_id,
-			'bonus_dc_id': self.bonus_dc_id,
-			'bonus_degree_id': self.bonus_degree_id,
-			'skill_dc_id': self.skill_dc_id,
-			'skill_degree_id': self.skill_degree_id,
-			'power': self.power,
-			'skill': self.skill,
-			'bonus': self.bonus
+			'power_dc': self.power_dc,
+			'power_degree': self.power_degree,
+			'skill_dc': self.skill_dc,
+			'skill_degree': self.skill_degree,
+			'bonus_dc': self.bonus_dc,
+			'bonus_degree': self.bonus_degree
 		}
 
 
