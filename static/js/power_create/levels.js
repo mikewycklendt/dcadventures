@@ -39,8 +39,8 @@ function levels_submit() {
 
 	const power_id = document.getElementById('power_id').value;
 
-	const errors = 'level-err';
-	const err_line = 'level-err-line';
+	const errors = 'levels-err';
+	const err_line = 'levels-err-line';
 	const level_selects = 'level-type-sml';
 
 	response = fetch('/power/levels/create', {
