@@ -1489,7 +1489,7 @@ def levels_post(entry, body, cells):
 	power_id = entry.power_id
 	extra_id = entry.extra_id
 	level_type = entry.level_type
-	level = entry.level
+	level = entry.name
 	level_effect = entry.level_effect
 
 	extra = extra_name(extra_id)
