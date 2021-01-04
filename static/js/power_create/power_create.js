@@ -1405,10 +1405,11 @@ function row_delete(jsondata, route, object, table) {
 	const table_class = table_id + '-table'
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
-
 	const entry = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
+	const table_change = document.getElementById(table_class) 
+
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
 		btn.onclick = function(e) {
@@ -1454,10 +1455,10 @@ function row_delete(jsondata, route, object, table) {
 						console.log(grid)
 
 						if (grid == 'hide') {
-							table.style.maxHeight = '0px';
-							setTimeout(function(){table.style.display = 'none'}, 400);
+							table_change.style.maxHeight = '0px';
+							setTimeout(function(){table_change.style.display = 'none'}, 400);
 						} else {
-							grid__update(columns, cells, table_id, grid, cells_class, newsize, table)
+							grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
 						}
 					} else {
 						console.log('error')
