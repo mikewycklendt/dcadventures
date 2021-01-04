@@ -1422,6 +1422,8 @@ function row_delete(jsondata, route, object, table) {
 			})
 			.then(function() {
 
+				console.log(rows)
+
 				for (i = 0; i < rows.length; i++) {
 					if (rows[i].id == delId){
 						console.log(delId)
