@@ -1125,6 +1125,7 @@ function create_titles(jsonResponse, grow, object, route) {
 		const cell_title = document.createElement('div');
 		cell_title.className = base_cell_title;
 		cell_title.innerHTML = cell.title;
+		console.log(cell.title);
 		if (cell.width > 1) {
 			cell_title.style.opacity = '100%';
 			cell_title.style.maxHeight = cell_title.scrollHeight + 'px';
@@ -1233,8 +1234,6 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 			}
 		} else {
 			new_cell.innerText = cell.content;
-			console.log(cell.content);
-			console.log(size)
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
 		}
