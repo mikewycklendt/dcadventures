@@ -366,7 +366,7 @@ def power_level_select():
 		options.append({'id': '', 'name': ''})
 
 	body['success'] = success
-	body
+	body['options'] = options
 
 	print(body)
 	return jsonify(body)
@@ -2697,7 +2697,7 @@ def power_post_levels():
 	table_id = 'levels-' + type_class
 
 	body['table_id'] = table_id
-		
+
 	body = levels_post(entry, body, cells)
 	return jsonify(body)
 
