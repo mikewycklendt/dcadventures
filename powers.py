@@ -88,7 +88,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 						{'type': 'cont', 'name': 'Continuous'},
 						{'type': 'perm', 'name': 'Permanent'}]
 
-	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
 	distance = db.session.query(Unit).filter_by(type_id=3)
 

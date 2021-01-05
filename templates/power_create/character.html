@@ -19,7 +19,6 @@
 
 		<div>
 			<select class="select-sml" id="char_trait_type" name="char_trait_type" onchange="char_trait_type()">
-				<option value="">Trait Type</option>
 				{% for c in character %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
