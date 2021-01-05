@@ -775,32 +775,32 @@ class Power(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	power_type = db.Column(db.String())
-	action = select("action")
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	power_range = db.Column(db.String())
 	duration = db.Column(db.String())
-	cost = select("cost")
-	limit = select("limit")
-	dc_type = select("power_dc_type")
-	dc_value = select("power_dc_value`")
-	dc_mod = select("power_dc_mod`")
-	opponent_dc = select("opponent_dc")
-	check_type = select("check")
+	cost = db.Column(db.Integer)
+	limit = db.Column(db.Integer)
+	dc_type = db.Column(db.String())
+	dc_value = db.Column(db.Integer)
+	dc_mod = db.Column(db.Integer)
+	opponent_dc = db.Column(db.Integer)
+	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	routine = db.Column(db.Boolean)
-	routine_trait_type = select("routine_trait_type")
-	routine_trait = select("routine_trait")
+	routine_trait_type = db.Column(db.String())
+	routine_trait = db.Column(db.String())
 	materials = db.Column(db.Boolean)
-	partner = select("partner")
-	partner_trait_type = select("partner_trait_type")
-	partner_dc = select("partner_dc")
-	partner_trait = select("partner_trait")
-	circ = select("circ")
-	circ_required = select("circ_required")
-	skill = select("skill")
-	skill_required = select("skill_required")
-	skill_when = select("skill_when")
-	grab = select("grab")
-	grab_type = select("grab_type")
-	condition = select("power_condition")
+	partner = db.Column(db.String())
+	partner_trait_type = db.Column(db.String())
+	partner_dc = db.Column(db.Integer)
+	partner_trait = db.Column(db.String())
+	circ = db.Column(db.String())
+	circ_required = db.Column(db.String())
+	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	skill_required = db.Column(db.String())
+	skill_when = db.Column(db.String())
+	grab = db.Column(db.Integer)
+	grab_type = db.Column(db.String())
+	condition = db.Column(db.String())
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -826,7 +826,56 @@ class Power(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'description': self.description,
+			'power_type': self.power_type,
+			'action': self.action,
+			'power_range': self.power_range,
+			'duration': self.duration,
+			'cost': self.cost,
+			'limit': self.limit,
+			'dc_type': self.dc_type,
+			'dc_value': self.dc_value,
+			'dc_mod': self.dc_mod,
+			'opponent_dc': self.opponent_dc,
+			'check_type': self.check_type,
+			'routine': self.routine,
+			'routine_trait_type': self.routine_trait_type,
+			'routine_trait': self.routine_trait,
+			'materials': self.materials,
+			'partner': self.partner,
+			'partner_trait_type': self.partner_trait_type,
+			'partner_dc': self.partner_dc,
+			'partner_trait': self.partner_trait,
+			'circ': self.circ,
+			'circ_required': self.circ_required,
+			'skill': self.skill,
+			'skill_required': self.skill_required,
+			'skill_when': self.skill_when,
+			'grab': self.grab,
+			'grab_type': self.grab_type,
+			'condition': self.condition,
+			'alt_check': self.alt_check,
+			'change_action': self.change_action,
+			'character': self.character,
+			'circumstance': self.circumstance,
+			'create	': self.create,
+			'damage': self.damage,
+			'dc': self.dc,
+			'defense': self.defense,
+			'degree': self.degree,
+			'environment': self.environment,
+			'levels': self.levels,
+			'minion': self.minion,
+			'modifier': self.modifier,
+			'move': self.move,
+			'opposed': self.opposed,
+			'ranged': self.ranged,
+			'resistance': self.resistance,
+			'resist_by': self.resist_by,
+			'reverse': self.reverse,
+			'sense': self.sense,
+			'time': self.time
 		}
 
 class Extra(db.Model):
