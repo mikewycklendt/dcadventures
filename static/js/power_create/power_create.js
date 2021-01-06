@@ -570,7 +570,7 @@ function select_entry(check_input, base_input, entry_input, field_input, value) 
 	if (field == value) {
 		base.style.opacity = '100%';
 		entry.style.display = "grid";
-		entry.maxHeight = entry.scrollHeight + "px";
+		entry.style.maxHeight = entry.scrollHeight + "px";
 		check.checked = true;
 	} else {
 		base.style.opacity = '0%';
