@@ -911,7 +911,7 @@ def save_power():
 def skill_save_success(power_id):	
 	power = db.session.query(Power).filter_by(id=power_id).one()
 	
-	flash('Power ' + -power.name + ' Successfully Created')
+	flash('Power ' + power.name + ' Successfully Created')
 	return redirect(url_for('home'))
 
 @powers.route('/power/edit_name', methods=['POST'])
