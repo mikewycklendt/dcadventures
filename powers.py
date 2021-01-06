@@ -976,7 +976,11 @@ def post_extra_create():
 	des = request.get_json()['des'] 
 	inherit = request.get_json()['inherit']
 
-	power = db.session.query(Extra).filter(Extra.name == name).first()
+	power_id = integer(power_id)
+	cost = integer(cost)
+	ranks = integer(ranks)
+
+	power = db.session.query(Extra).filter(Extra.power_id == power_id, Extra.name == name).first()
 
 	if power is not None:
 		error = True
@@ -987,30 +991,20 @@ def post_extra_create():
 	if error:
 		return jsonify(body)
 
-	try:
-		power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit)
-		db.session.add(power)
-		db.session.commit()
+	power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit)
+	db.session.add(power)
+	db.session.commit()
 
-		body['id'] = power.id
-		body['name'] = power.name
-		body['power_id'] = power.power_id
-		body['cost'] = power.cost
-		body['ranks'] = power.ranks
-		body['des'] = power.des
-		body['inherit'] = power.inherit
+	body['id'] = power.id
+	body['name'] = power.name
+	body['power_id'] = power.power_id
+	body['cost'] = power.cost
+	body['ranks'] = power.ranks
+	body['des'] = power.des
+	body['inherit'] = power.inherit
 
-	except:
-		error = True
-		body['success'] = False
-		error_msgs.append('There was an error processing the request')
-		body['error'] = error_msgs
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
-		print(body)
-		return jsonify(body)
+	print(body)
+	return jsonify(body)
 
 @powers.route('/power/extra/delete/<power_id>', methods=['DELETE'])
 def delete_extra(power_id):
