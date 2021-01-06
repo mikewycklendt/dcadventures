@@ -1112,6 +1112,8 @@ def power_save_errors(data):
 	sense = data['sense']
 	time = data['time']
 
+	power_id = integer(power_id)
+
 	errors = power_check(power_id, errors)
 	error = errors['error']
 	if error:
