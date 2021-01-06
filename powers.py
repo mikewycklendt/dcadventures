@@ -16,7 +16,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
-from power_errors import integer, extra_convert, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
+from power_errors import integer, extra_convert, power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
 from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
 
 load_dotenv()
@@ -764,6 +764,153 @@ def post_power():
 		error_msgs.append('There was an error processing the request')
 		errors['error'] = error_msgs
 		db.session.rollback()
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+@powers.route('/power/save', methods=['POST'])
+def save_power(): 
+	body = {}
+	body['success'] = True
+	error = False
+	error_msgs = []
+
+	data = request.get_json()
+	
+	errors = power_save_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = request.get_json()['power_id']
+	description = request.get_json()['description']
+	power_type = request.get_json()['power_type']
+	action = request.get_json()['action']
+	power_range = request.get_json()['power_range']
+	duration = request.get_json()['duration']
+	cost = request.get_json()['cost']
+	limit = request.get_json()['limit']
+	dc_type = request.get_json()['dc_type']
+	dc_value = request.get_json()['dc_value']
+	dc_mod = request.get_json()['dc_mod']
+	opponent_dc = request.get_json()['opponent_dc']
+	check_type = request.get_json()['check_type']
+	routine = request.get_json()['routine']
+	routine_trait_type = request.get_json()['routine_trait_type']
+	routine_trait = request.get_json()['routine_trait']
+	materials = request.get_json()['materials']
+	partner = request.get_json()['partner']
+	partner_trait_type = request.get_json()['partner_trait_type']
+	partner_dc = request.get_json()['partner_dc']
+	partner_trait = request.get_json()['partner_trait']
+	circ = request.get_json()['circ']
+	circ_required = request.get_json()['circ_required']
+	skill = request.get_json()['skill']
+	skill_required = request.get_json()['skill_required']
+	skill_when = request.get_json()['skill_when']
+	grab = request.get_json()['grab']
+	grab_type = request.get_json()['grab_type']
+	condition = request.get_json()['condition']
+	alt_check = request.get_json()['alt_check']
+	change_action = request.get_json()['change_action']
+	character = request.get_json()['character']
+	circumstance = request.get_json()['circumstance']
+	create = request.get_json()['create']
+	damage = request.get_json()['damage']
+	dc = request.get_json()['dc']
+	defense = request.get_json()['defense']
+	degree = request.get_json()['degree']
+	environment = request.get_json()['environment']
+	levels = request.get_json()['levels']
+	minion = request.get_json()['minion']
+	modifier = request.get_json()['modifier']
+	move = request.get_json()['move']
+	opposed = request.get_json()['opposed']
+	ranged = request.get_json()['ranged']
+	resistance = request.get_json()['resistance']
+	resist_by = request.get_json()['resist_by']
+	reverse = request.get_json()['reverse']
+	sense = request.get_json()['sense']
+	time = request.get_json()['time']
+
+	action = integer(action)
+	cost = integer(cost)
+	limit = integer(limit)
+	dc_value = integer(dc_value)
+	dc_mod = integer(dc_mod)
+	opponent_dc = integer(opponent_dc)
+	check_type = integer(check_type)
+	partner_dc = integer(partner_dc)
+	skill = integer(skill)
+	grab = integer(grab)
+
+	try:
+		power = db.session.query(Power).filter(Power.id == power_id).one
+
+		power.description = description
+		power.power_type = power_type
+		power.action = action
+		power.power_range = power_range
+		power.duration = duration
+		power.cost = cost
+		power.limit = limit
+		power.dc_type = dc_type
+		power.dc_value = dc_value
+		power.dc_mod = dc_mod
+		power.opponent_dc = opponent_dc
+		power.check_type = check_type
+		power.routine = routine
+		power.routine_trait_type = routine_trait_type
+		power.routine_trait = routine_trait
+		power.materials = materials
+		power.partner = partner
+		power.partner_trait_type = partner_trait_type
+		power.partner_dc = partner_dc
+		power.partner_trait = partner_trait
+		power.circ = circ
+		power.circ_required = circ_required
+		power.skill = skill
+		power.skill_required = skill_required
+		power.skill_when = skill_when
+		power.grab = grab
+		power.grab_type = grab_type
+		power.condition = condition
+		power.alt_check = alt_check	
+		power.change_action = change_action
+		power.character = character	
+		power.circumstance = circumstance
+		power.create = create
+		power.damage = damage
+		power.dc = dc
+		power.defense = defense
+		power.degree = degree
+		power.environment = environment
+		power.levels = levels
+		power.minion = minion
+		power.modifier = modifier
+		power.move = move
+		power.opposed = opposed
+		power.ranged = ranged
+		power.resistance = resistance
+		power.resist_by = resist_by
+		power.reverse = reverse
+		power.sense = sense
+		power.time = time
+
+		db.session.commit()
+		body['success'] = True
+			
+	except:
+		error = True
+		body['success'] = False
+		error_msgs.append('There was an error processing the request')
+		body['error'] = error_msgs
+		db.session.rollback()
+	
 	finally:
 		db.session.close()
 		print(body)

@@ -77,6 +77,72 @@ def field(name, value, fields=['empty']):
 
 	return (fields)
 
+def rule_check(check, name, table, power, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule = db.session.query(tsble).filter_by(power_id = power).first()
+
+	if check:
+		if rule is None:
+			error = True
+			message = 'You must create a ' + name + ' rule or uncheck the ' + name + ' checkbox.'
+			error_msgs.append(message)
+	else:
+		if rule is not None:
+			error = True
+			message = 'Delete the ' + name + ' rules you created or check the ' + name + ' checkbox.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def rule_select(value, field, name, table, power, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field == value:
+		rule = db.session.query(tsble).filter_by(power_id = power).first()
+
+		if rule is None:
+			message = 'If this rule has a ' + name + ' effect, you must add ' + name + ' rules for it.'
+			error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def cost_check(check, name, field, table, power, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule_check = db.session.query(table).filter_by(power_id=power).first()
+
+	if rule_check is not None:
+		if field != 'x':
+			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
+			for c in cost_check:
+				if c.cost != field:
+					message = 'You set a rule for a ' + name + ' effect thwt has a different cost than the main power effect.  Delete that rule or change the main power cost to X.'
+					error_msgs.append(message)
+		else:
+			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
+			for c in cost_check:
+				if c.cost != '':
+					message = 'You set a variable cost for this power, so you must specificy the cost for the base powers ' + name + ' effect.'
+					error_msgs.append(message)
+				
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def variable(name, value, field, fields, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -103,7 +169,6 @@ def variable(name, value, field, fields, errors):
 		errors['error'] = error
 
 	return (errors)
-
 
 def select(fields, errors):
 	error_msgs = errors['error_msgs']
@@ -590,6 +655,114 @@ def int_check(value, name, errors):
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
+
+	return (errors)
+
+def power_save_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	power_id = data['power_id']
+	description = data['description']
+	power_type = data['power_type']
+	action = data['action']
+	power_range = data['power_range']
+	duration = data['duration']
+	cost = data['cost']
+	limit = data['limit']
+	dc_type = data['dc_type']
+	dc_value = data['dc_value']
+	dc_mod = data['dc_mod']
+	opponent_dc = data['opponent_dc']
+	check_type = data['check_type']
+	routine = data['routine']
+	routine_trait_type = data['routine_trait_type']
+	routine_trait = data['routine_trait']
+	materials = data['materials']
+	partner = data['partner']
+	partner_trait_type = data['partner_trait_type']
+	partner_dc = data['partner_dc']
+	partner_trait = data['partner_trait']
+	circ = data['circ']
+	circ_required = data['circ_required']
+	skill = data['skill']
+	skill_required = data['skill_required']
+	skill_when = data['skill_when']
+	grab = data['grab']
+	grab_type = data['grab_type']
+	condition = data['condition']
+	alt_check = data['alt_check	']
+	change_action = data['change_action']
+	character = data['character	']
+	circumstance = data['circumstance']
+	create = data['create']
+	damage = data['damage']
+	dc = data['dc']
+	defense = data['defense']
+	degree = data['degree']
+	environment = data['environment']
+	levels = data['levels']
+	minion = data['minion']
+	modifier = data['modifier']
+	move = data['move']
+	opposed = data['opposed']
+	ranged = data['ranged']
+	resistance = data['resistance']
+	resist_by = data['resist_by']
+	reverse = data['reverse']
+	sense = data['sense']
+	time = data['time']
+
+	errors = required(description, 'Description', errors)
+	errors = required(power_type, 'Power Type'. errors)
+	errors = required(action, 'Action Type', errors)
+	errors = required(power_range, 'Range', errors)
+	errors = required(duration, 'Duration', errors)
+	errors = required(cost, 'Cost', errors)
+	errors = required(check_type, 'Check Type', errors)
+	errors = check_fields(routine, 'Routine Skill Check', [routine_trait_type, routine_trait], errors)
+	errors = check_fields(routine, 'Routine Skill Check', 'Routine Check Skill Type', routine_trait_type, errors)
+	errors = check_fields(routine, 'Routine Skill Check', 'Routine Check Skill', routine_trait, errors)
+	errors = variable_fields('skill', 'Partner Skill Check', partner, [partner_trait_type, partner_dc, partner_trait], errors)
+	errors = variable_field('skill', partner, 'Partner Trait Type', partner_trait_type, errors)
+	errors = variable_field('skill', partner, 'Partner Trait', partner_trait, errors)
+	errors = variable_field('skill', partner, 'Partner DC', partner_dc, errors)
+
+	errors = rule_check(alt_check, 'Alternate Check', PowerAltCheck, power_id, errors)
+	errors = rule_check(change_action, 'Change Action', PowerAction, power_id, errors)
+	errors = rule_check(character, 'Changes Character Traits', PowerChar, power_id, errors)
+	errors = rule_check(circumstance, 'Circumstance Modifier', PowerCirc, power_id, errors)
+	errors = rule_check(create, 'Create', PowerCreate, power_id, errors)
+	errors = rule_check(damage, 'Damage Effect', PowerDamage, power_id, errors)
+	errors = rule_check(dc, 'DC Table', PowerDC, power_id, errors)
+	errors = rule_check(defense, 'Defense Effect', PowerDefense, power_id, errors)
+	errors = rule_check(degree, 'Degree of Success/Failure', PowerDegMod, power_id, errors)
+	errors = rule_check(environment, 'Environment', PowerEnv, power_id, errors)
+	errors = rule_check(levels, 'Levels', Levels, power_id, errors)
+	errors = rule_check(minion, 'Minion', PowerMinion, power_id, errors)
+	errors = rule_check(modifier, 'Modifiers', PowerMod, power_id, errors)
+	errors = rule_check(move, 'Movement Effect', PowerMove, power_id, errors)
+	errors = rule_check(opposed, 'Opposed Check', PowerOpposed, power_id, errors)
+	errors = rule_check(ranged, 'Ranged Effect', PowerRanged, power_id, errors)
+	errors = rule_check(resistance, 'Resistance Modifier', PowerResist, power_id, errors)
+	errors = rule_check(resist_by, 'Resisted By', PowerResistBy, power_id, errors)
+	errors = rule_check(reverse, 'Reverse Effect', PowerReverse, power_id, errors)
+	errors = rule_check(sense, 'Sense Effect', PowerSenseEffect, power_id, errors)
+	errors = rule_check(time, 'Time Effect', PowerTime, power_id, errors)
+
+	errors = rule_select('table', circ, 'Circumstance Modifier', PowerCirc, power_id, errors)
+	errors = rule_select('table', dc_type, 'DC Table', PowerDC, power_id, errors)
+	errors = rule_select('2', action, 'Movement', PowerCirc, power_id, errors)
+	errors = rule_select('rank', power_range, 'Ranged', PowerRanged, power_id, errors)
+	errors = rule_select('sense', power_type, 'Sense', PowerSenseEffect, power_id, errors)
+	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
+
+	errors = cost_check(move, 'Movement Effect', cost, PowerMove, power_id, errors)
+	errors = cost_check(sense, 'Sense Effect', cost, PowerSenseEffect, power_id, errors)
+	errors = cost_check(character, 'Changes Character Traits', cost, PowerChar, power_id, errors)
+	errors = cost_check(create, 'Create', cost, PowerCreate, power_id, errors)
+	errors = cost_check(environment, 'Environment', cost, PowerEnv, power_id, errors)
+	errors = cost_check(modifier, 'Modifiers', cost, PowerMod, power_id, errors)
 
 	return (errors)
 
