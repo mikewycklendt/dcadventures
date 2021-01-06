@@ -68,7 +68,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name)
 
 
-@powers.route('/advantage/create', methods=['POST'])
+@advantage.route('/advantage/create', methods=['POST'])
 def post_advantage(): 
 	body = {}
 	error = False
