@@ -101,7 +101,7 @@ def power_rules(power, errors):
 	if rule is not None:
 		error = False
 
-	rule = db.session.query(PowerLevels).filter_by(power_id = power).first()
+	rule = db.session.query(Levels).filter_by(power_id = power).first()
 	if rule is not None:
 		error = False
 
