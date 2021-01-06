@@ -838,6 +838,7 @@ def power_save_errors(data):
 	errors = rule_select('rank', power_range, 'Ranged', PowerRanged, power_id, errors)
 	errors = rule_select('sense', power_type, 'Sense', PowerSenseEffect, power_id, errors)
 	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
+	errors = rule_select('2', check_type, 'Opposed Check', PowerOpposed, power_id, errors)
 
 	errors = cost_check(move, 'Movement Effect', cost, PowerMove, power_id, errors)
 	errors = cost_check(sense, 'Sense Effect', cost, PowerSenseEffect, power_id, errors)
