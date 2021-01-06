@@ -565,7 +565,7 @@ function select_entry(check_input, base_input, entry_input, field_input, value) 
 	const check = document.getElementById(check_input);
 	const base = document.getElementById(base_input);
 	const entry = document.getElementById(entry_input);
-	const field = document.getElementById(field_input);
+	const field = select(field_input);
 
 	if (field == value) {
 		base.style.opacity = '100%';
