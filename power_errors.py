@@ -34,22 +34,6 @@ def power_check(value, errors):
 
 	return (errors)
 
-
-def power(value):
-	error_msgs = errors['error_msgs']
-	error = False
-
-	if value == '' or value is None:
-		error = True
-		message = 'You must create a power name first.'
-		error_msgs.append(message)
-
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)
-
 def extra_convert(extra_id):
 
 	if extra_id == 0:
