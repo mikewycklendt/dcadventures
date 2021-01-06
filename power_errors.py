@@ -698,6 +698,9 @@ def power_save_errors(data):
 	time = data['time']
 
 	errors = power_check(power_id, errors)
+	error = errors['error']
+	if error:
+		return (errors)
 
 	errors = required(description, 'Description', errors)
 	errors = required(power_type, 'Power Type', errors)
