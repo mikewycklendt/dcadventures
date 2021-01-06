@@ -50,6 +50,7 @@
 	<div id="extras-points">
 		<select class="entry-select" id="extra_cost" name="extra_cost">
 			<option value="">Points</option>
+			<option value="x">Variable</option>
 			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
@@ -58,6 +59,7 @@
 
 	<div id="extras-ranks">
 		<select class="entry-select" id="extra_rank" name="extra_rank">
+			<option value="">Ranks</option>
 			<option value=>Flat</option>
 			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
