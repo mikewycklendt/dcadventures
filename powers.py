@@ -4315,6 +4315,9 @@ def power_post_sense():
 	columns = request.get_json()['columns']
 	font = request.get_json()['font']
 
+	print('\n\n\n\n\n')
+	print(extra_id)
+
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
 	sense = integer(sense)
@@ -4334,6 +4337,9 @@ def power_post_sense():
 	distance_factor = integer(distance_factor)
 	ranks = integer(ranks)
 	cost = integer(cost)
+
+	print(extra_id)
+	print('\n\n\n\n')
 
 	try:
 		entry = PowerSenseEffect(power_id = power_id,
