@@ -848,73 +848,71 @@ def save_power():
 	skill = integer(skill)
 	grab = integer(grab)
 
-	try:
-		power = db.session.query(Power).filter(Power.id == power_id).one
+	power = db.session.query(Power).filter(Power.id == power_id).one
 
-		power.description = description
-		power.power_type = power_type
-		power.action = action
-		power.power_range = power_range
-		power.duration = duration
-		power.cost = cost
-		power.limit = limit
-		power.dc_type = dc_type
-		power.dc_value = dc_value
-		power.dc_mod = dc_mod
-		power.opponent_dc = opponent_dc
-		power.check_type = check_type
-		power.routine = routine
-		power.routine_trait_type = routine_trait_type
-		power.routine_trait = routine_trait
-		power.materials = materials
-		power.partner = partner
-		power.partner_trait_type = partner_trait_type
-		power.partner_dc = partner_dc
-		power.partner_trait = partner_trait
-		power.circ = circ
-		power.circ_required = circ_required
-		power.skill = skill
-		power.skill_required = skill_required
-		power.skill_when = skill_when
-		power.grab = grab
-		power.grab_type = grab_type
-		power.condition = condition
-		power.alt_check = alt_check	
-		power.change_action = change_action
-		power.character = character	
-		power.circumstance = circumstance
-		power.create = create
-		power.damage = damage
-		power.dc = dc
-		power.defense = defense
-		power.degree = degree
-		power.environment = environment
-		power.levels = levels
-		power.minion = minion
-		power.modifier = modifier
-		power.move = move
-		power.opposed = opposed
-		power.ranged = ranged
-		power.resistance = resistance
-		power.resist_by = resist_by
-		power.reverse = reverse
-		power.sense = sense
-		power.time = time
+	power.description = description
+	power.power_type = power_type
+	power.action = action
+	power.power_range = power_range
+	power.duration = duration
+	power.cost = cost
+	power.limit = limit
+	power.dc_type = dc_type
+	power.dc_value = dc_value
+	power.dc_mod = dc_mod
+	power.opponent_dc = opponent_dc
+	power.check_type = check_type
+	power.routine = routine
+	power.routine_trait_type = routine_trait_type
+	power.routine_trait = routine_trait
+	power.materials = materials
+	power.partner = partner
+	power.partner_trait_type = partner_trait_type
+	power.partner_dc = partner_dc
+	power.partner_trait = partner_trait
+	power.circ = circ
+	power.circ_required = circ_required
+	power.skill = skill
+	power.skill_required = skill_required
+	power.skill_when = skill_when
+	power.grab = grab
+	power.grab_type = grab_type
+	power.condition = condition
+	power.alt_check = alt_check	
+	power.change_action = change_action
+	power.character = character	
+	power.circumstance = circumstance
+	power.create = create
+	power.damage = damage
+	power.dc = dc
+	power.defense = defense
+	power.degree = degree
+	power.environment = environment
+	power.levels = levels
+	power.minion = minion
+	power.modifier = modifier
+	power.move = move
+	power.opposed = opposed
+	power.ranged = ranged
+	power.resistance = resistance
+	power.resist_by = resist_by
+	power.reverse = reverse
+	power.sense = sense
+	power.time = time
 
-		db.session.commit()
-		body['success'] = True
+	db.session.commit()
+	body['success'] = True
 			
-	except:
-		error = True
-		body['success'] = False
-		error_msgs.append('There was an error processing the request')
-		body['error'] = error_msgs
-		db.session.rollback()
+	db.session.close()
+	print(body)
+	return jsonify(body)
+
+@powers.route('/power/save/success/<power_id>')
+def skill_save_success(power_id):	
+	power = db.session.query(Power).filter_by(id=power_id).one()
 	
-	finally:
-		db.session.close()
-		print(body)
-		return jsonify(body)
+	flash('Power ' + -power.name + ' Successfully Created')
+	return redirect(url_for('home'))
 
 @powers.route('/power/edit_name', methods=['POST'])
 def edit_power_name(): 
