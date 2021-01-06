@@ -4425,7 +4425,7 @@ def power_post_sense():
 @powers.route('/power/sense/delete/<power_id>', methods=['DELETE'])
 def delete_power_sense(power_id):
 	try:
-		db.session.query(PowerSense).filter_by(id=power_id).delete()
+		db.session.query(PowerSenseEffect).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
