@@ -72,8 +72,8 @@ function power_dc_table() {
 
 function circ() {
 	const check = 'circ_check';
-	const base = 'circ_base';
-	const entry = 'circ_entry';
+	const base = 'circ-base';
+	const entry = 'circ-entry';
 	const field = 'circ';
 	const value = 'table';
 
