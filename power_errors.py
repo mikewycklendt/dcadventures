@@ -65,7 +65,7 @@ def rule_check(check, name, table, power, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	rule = db.session.query(tsble).filter_by(power_id = power).first()
+	rule = db.session.query(table).filter_by(power_id = power).first()
 
 	if check:
 		if rule is None:
@@ -89,7 +89,7 @@ def rule_select(value, field, name, table, power, errors):
 	error = False
 
 	if field == value:
-		rule = db.session.query(tsble).filter_by(power_id = power).first()
+		rule = db.session.query(table).filter_by(power_id = power).first()
 
 		if rule is None:
 			message = 'If this rule has a ' + name + ' effect, you must add ' + name + ' rules for it.'
