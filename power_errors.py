@@ -1112,7 +1112,6 @@ def power_save_errors(data):
 	if error:
 		return (errors)
 
-	print(power+id)
 	errors = power_rules(power_id, errors)
 
 	errors = valid_extra(power_id, errors)
