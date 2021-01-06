@@ -785,11 +785,12 @@ def valid_extra(power, errors):
 		name = 'Alternate Check'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerAction).filter_by(power_id = power).first()
 	if rule is not None:
@@ -797,11 +798,12 @@ def valid_extra(power, errors):
 		name = 'Action Change'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 				
 	rule = db.session.query(PowerChar).filter_by(power_id = power).first()
 	if rule is not None:
@@ -809,12 +811,12 @@ def valid_extra(power, errors):
 		name = 'Changes Character Trait'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
-
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerCirc).filter_by(power_id = power).first()
 	if rule is not None:
@@ -822,11 +824,12 @@ def valid_extra(power, errors):
 		name = 'Circumstance Modifier'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerCreate).filter_by(power_id = power).first()
 	if rule is not None:
@@ -834,11 +837,12 @@ def valid_extra(power, errors):
 		name = 'Create'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerDamage).filter_by(power_id = power).first()
 	if rule is not None:
@@ -846,11 +850,12 @@ def valid_extra(power, errors):
 		name = 'Damage'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
 	if rule is not None:
@@ -859,11 +864,12 @@ def valid_extra(power, errors):
 		'Defense'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerDegMod).filter_by(power_id = power).first()
 	if rule is not None:
@@ -871,11 +877,12 @@ def valid_extra(power, errors):
 		name = 'Degree of Success/Failure Modifier'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerEnv).filter_by(power_id = power).first()
 	if rule is not None:
@@ -883,11 +890,12 @@ def valid_extra(power, errors):
 		name = 'Environment Effect'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(Levels).filter_by(power_id = power).first()
 	if rule is not None:
@@ -895,11 +903,12 @@ def valid_extra(power, errors):
 		name = 'Level'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerMinion).filter_by(power_id = power).first()
 	if rule is not None:
@@ -907,11 +916,12 @@ def valid_extra(power, errors):
 		name = 'Minion'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerMod).filter_by(power_id = power).first()
@@ -920,11 +930,12 @@ def valid_extra(power, errors):
 		name = 'Modifier'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	rule = db.session.query(PowerMove).filter_by(power_id = power).first()
 	if rule is not None:
@@ -932,11 +943,12 @@ def valid_extra(power, errors):
 		name = 'Movement'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	
 	rule = db.session.query(PowerOpposed).filter_by(power_id = power).first()
@@ -945,11 +957,12 @@ def valid_extra(power, errors):
 		name = 'Opposed Check'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerRanged).filter_by(power_id = power).first()
@@ -958,11 +971,12 @@ def valid_extra(power, errors):
 		name = 'Ranged'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 	
 	rule = db.session.query(PowerResist).filter_by(power_id = power).first()
@@ -971,11 +985,12 @@ def valid_extra(power, errors):
 		name = 'Resistance Modifier'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerResistBy).filter_by(power_id = power).first()
@@ -984,11 +999,12 @@ def valid_extra(power, errors):
 		name = 'Resisted By'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerReverse).filter_by(power_id = power).first()
@@ -997,11 +1013,12 @@ def valid_extra(power, errors):
 		name = 'Reverse Effect'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).first()
@@ -1010,11 +1027,12 @@ def valid_extra(power, errors):
 		name = 'Sense Effect'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	rule = db.session.query(PowerTime).filter_by(power_id = power).first()
@@ -1023,11 +1041,12 @@ def valid_extra(power, errors):
 		name = 'Time Effect'
 		for r in rule:
 			extra_id = r.extra_id
-			extra = db.session.query(Extra).filter_by(id = extra_id).first()
-			if extra is None:
-				error = True
-				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
-				error_msgs.append(message)
+			if extra_id is not None:
+				extra = db.session.query(Extra).filter_by(id = extra_id).first()
+				if extra is None:
+					error = True
+					message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+					error_msgs.append(message)
 
 
 	if error:
