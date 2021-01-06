@@ -34,13 +34,6 @@ def power_check(value, errors):
 
 	return (errors)
 
-def extra_convert(extra_id):
-
-	if extra_id == 0:
-		extra_id = None
-	else:
-		integer(extra_id)
-
 def one(name, value):
 
 	data = {'name': name, 'value': value}
@@ -661,6 +654,15 @@ def integer(value):
 			print('not an int')
 
 	return (value)
+
+def extra_convert(extra_id):
+
+	if extra_id == '0':
+		extra_id = None
+	else:
+		integer(extra_id)
+
+	return (extra_id)
 
 def int_check(value, name, errors):
 	error_msgs = errors['error_msgs']
