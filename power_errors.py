@@ -677,7 +677,7 @@ def power_save_errors(data):
 	condition = data['condition']
 	alt_check = data['alt_check']
 	change_action = data['change_action']
-	character = data['character	']
+	character = data['character']
 	circumstance = data['circumstance']
 	create = data['create']
 	damage = data['damage']
