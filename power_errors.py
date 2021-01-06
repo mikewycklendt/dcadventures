@@ -704,7 +704,7 @@ def integer(value):
 	elif value == 'turn':
 		value = 990
 	elif value == 'x':
-		value - None
+		value = None
 	elif value == '':
 		value = None
 	else:
