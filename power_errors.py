@@ -203,7 +203,7 @@ def cost_check(check, name, field, table, power, errors):
 			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
 			for c in cost_check:
 				if c.cost != '':
-					if cost != field:
+					if c.cost != field:
 						message = 'You set a rule for a ' + name + ' effect thwt has a different cost than the main power effect.  Delete that rule or change the main power cost to X.'
 						error_msgs.append(message)
 		else:
