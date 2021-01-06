@@ -140,17 +140,10 @@ def extra_cost(name, table, power, errors):
 							error = True
 							message = 'You set a rule for a ' + name + ' effect that was assigned to the ' + extra_check.name + ' extra that has its own cost.  If you want to set an alternate cost for this rule it cannot be assigned to this extra or you can delete the extra and recreate it, this time setting a variable cost for the extra and delete and recreate the rule and setting it to the recreated extra with its variable cost.'
 							error_msgs.append(message)
-				else:
-					for c in cost_check:
-						extra_id = c.extra_id
-						if extra_id is not None:
-							extra_check = db.session.query(Extra).filter_by(id=extra_id).first()	
-							if extra_check is not None:
-								if extra_check.cost is None:
-									if c.cost is None:
-										error = True
-										message = 'You set a variable cost for the ' + extra_check.name + ' extra and created a ' + name + ' rule was assigned to i, so you must delete and recreate the ' + name + ' rule for that extra and specify the cost.'
-										error_msgs.append(message)
+						else:
+							error = True
+							message = 'You set a variable cost for the ' + extra_check.name + ' extra and created a ' + name + ' rule was assigned to i, so you must delete and recreate the ' + name + ' rule for that extra and specify the cost.'
+							error_msgs.append(message)
 				
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -777,7 +770,7 @@ def power_rules(power, errors):
 
 def valid_extra(power, errors):
 	error_msgs = errors['error_msgs']
-	error = True
+	error = False
 
 	rule = db.session.query(PowerAltCheck).filter_by(power_id = power).first()
 	if rule is not None:
@@ -1119,6 +1112,7 @@ def power_save_errors(data):
 	if error:
 		return (errors)
 
+	print(power+id)
 	errors = power_rules(power_id, errors)
 
 	errors = valid_extra(power_id, errors)

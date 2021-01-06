@@ -998,7 +998,10 @@ def post_extra_create():
 	body['id'] = power.id
 	body['name'] = power.name
 	body['power_id'] = power.power_id
-	body['cost'] = power.cost
+	if power.cost is None:
+		body['cost'] = 'Variable'
+	else:
+		body['cost'] = power.cost
 	body['ranks'] = power.ranks
 	body['des'] = power.des
 	body['inherit'] = power.inherit
