@@ -834,7 +834,7 @@ def power_save_errors(data):
 
 	errors = rule_select('table', circ, 'Circumstance Modifier', PowerCirc, power_id, errors)
 	errors = rule_select('table', dc_type, 'DC Table', PowerDC, power_id, errors)
-	errors = rule_select('2', action, 'Movement', PowerCirc, power_id, errors)
+	errors = rule_select('2', action, 'Movement', PowerMove, power_id, errors)
 	errors = rule_select('rank', power_range, 'Ranged', PowerRanged, power_id, errors)
 	errors = rule_select('sense', power_type, 'Sense', PowerSenseEffect, power_id, errors)
 	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
