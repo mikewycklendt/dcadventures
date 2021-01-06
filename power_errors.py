@@ -209,8 +209,8 @@ def cost_check(check, name, field, table, power, errors):
 		else:
 			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
 			for c in cost_check:
-				if c.cost != '':
-					message = 'You set a variable cost for this power, so you must specificy the cost for the base powers ' + name + ' effect.'
+				if c.cost == '':
+					message = 'You set a variable cost for this power, so you must delete and recreate the ' + name + ' rule and specify the cost or set a cost for the base power.'
 					error_msgs.append(message)
 				
 	errors['error_msgs'] = error_msgs
