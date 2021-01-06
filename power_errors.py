@@ -700,7 +700,7 @@ def power_save_errors(data):
 	errors = power_check(power_id, errors)
 
 	errors = required(description, 'Description', errors)
-	errors = required(power_type, 'Power Type'. errors)
+	errors = required(power_type, 'Power Type', errors)
 	errors = required(action, 'Action Type', errors)
 	errors = required(power_range, 'Range', errors)
 	errors = required(duration, 'Duration', errors)
