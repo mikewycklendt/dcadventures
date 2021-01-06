@@ -11,8 +11,8 @@ function range_type() {
 function power_type() {
 	const sense = document.getElementById("sense-entry");
 	const sense_check = document.getElementById("sense_check");
-	const sense_base = document.getElementById('sense_base');
-	const move_base = document.getElementById('move_base');
+	const sense_base = document.getElementById('sense-base');
+	const move_base = document.getElementById('move-base');
 	const move = document.getElementById("move-entry");
 	const move_check = document.getElementById('move_check')
 	const field_field = document.getElementById('type');
