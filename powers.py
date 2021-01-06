@@ -848,7 +848,7 @@ def save_power():
 	skill = integer(skill)
 	grab = integer(grab)
 
-	power = db.session.query(Power).filter(Power.id == power_id).one
+	power = db.session.query(Power).filter(Power.id == power_id).one()
 
 	power.description = description
 	power.power_type = power_type
