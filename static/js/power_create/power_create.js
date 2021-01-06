@@ -564,7 +564,7 @@ function multiple(multiple_input) {
 function select_entry(check_input, base_input, entry_input, field_input, value) {
 	const check = document.getElementById(check_input);
 	const base = document.getElementById(base_input);
-	const entry = document.getElementsById(entry_input);
+	const entry = document.getElementById(entry_input);
 	const field = document.getElementById(field_input);
 
 	if (field == value) {
@@ -851,6 +851,7 @@ power_save = function() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			window.location.replace('/power/save/success/' + power_id)
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)
