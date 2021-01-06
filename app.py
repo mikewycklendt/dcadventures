@@ -17,6 +17,7 @@ import sys
 from tables import tables
 from skills import skills
 from powers import powers
+from advantage import advantage
 from dotenv import load_dotenv
 
 load_dotenv()
