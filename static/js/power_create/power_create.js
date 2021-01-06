@@ -824,7 +824,7 @@ power_save = function() {
 			'change_action': change_action,
 			'character': character,
 			'circumstance': circumstance,
-			'create	': create,
+			'create': create,
 			'damage': damage,
 			'dc': dc,
 			'defense': defense,
