@@ -61,97 +61,6 @@ def field(name, value, fields=['empty']):
 
 	return (fields)
 
-def power_rules(power, errors):
-	error_msgs = errors['error_msgs']
-	error = True
-
-	rule = db.session.query(PowerAltCheck).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerAction).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerChar).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerCirc).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerCreate).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerDamage).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-	
-	rule = db.session.query(PowerDegMod).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerEnv).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(Levels).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerMinion).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerMod).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerMove).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-	
-	rule = db.session.query(PowerOpposed).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerRanged).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-	
-	rule = db.session.query(PowerResist).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerResistBy).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerReverse).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	rule = db.session.query(PowerTime).filter_by(power_id = power).first()
-	if rule is not None:
-		error = False
-
-	if error:
-		message = 'You must create at least one rule before you can save this power.'
-		error_msgs.append(message)
-		errors['error_msgs'] = error_msgs
-		errors['error'] = error
-
-	return (errors)
 def rule_check(check, name, table, power, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -203,10 +112,9 @@ def cost_check(check, name, field, table, power, errors):
 			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
 			for c in cost_check:
 				if c.cost is not None:
-					if c.cost != field:
-						error = True
-						message = 'You set a rule for a ' + name + ' effect thwt has a different cost than the main power effect.  Delete that rule or change the main power cost to X.'
-						error_msgs.append(message)
+					error = True
+					message = 'You set a rule for a ' + name + ' that has a cost of its own but you set a cost for the base power.  If you want to set a different cost for this rule you must set the base power cost to variable.'
+					error_msgs.append(message)
 		else:
 			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
 			for c in cost_check:
@@ -214,6 +122,42 @@ def cost_check(check, name, field, table, power, errors):
 					error = True
 					message = 'You set a variable cost for this power, so you must delete and recreate the ' + name + ' rule and specify the cost or set a cost for the base power.'
 					error_msgs.append(message)
+				
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def extra_cost(name, table, power, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule_check = db.session.query(table).filter_by(power_id=power).first()
+
+	if rule_check is not None:
+		cost_check = db.session.query(table).filter_by(power_id=power).all() 
+		for c in cost_check:
+			extra_id = c.extra_id
+			if extra_id is not None:
+				extra_check = db.session.query(Extra).filter_by(id=extra_id).first()	
+				if extra_check is not None:
+					if extra_check.cost is not None:
+						if c.cost is not None:
+							error = True
+							message = 'You set a rule for a ' + name + ' effect that was assigned to the ' + extra_check.name + ' extra that has its own cost.  If you want to set an alternate cost for this rule it cannot be assigned to this extra or you can delete the extra and recreate it, this time setting a variable cost for the extra and delete and recreate the rule and setting it to the recreated extra with its variable cost.'
+							error_msgs.append(message)
+				else:
+					for c in cost_check:
+						extra_id = c.extra_id
+						if extra_id is not None:
+							extra_check = db.session.query(Extra).filter_by(id=extra_id).first()	
+							if extra_check is not None:
+								if extra_check.cost is None:
+									if c.cost is None:
+										error = True
+										message = 'You set a variable cost for the ' + extra_check.name + ' extra and created a ' + name + ' rule was assigned to i, so you must delete and recreate the ' + name + ' rule for that extra and specify the cost.'
+										error_msgs.append(message)
 				
 	errors['error_msgs'] = error_msgs
 	if error:
@@ -736,6 +680,362 @@ def int_check(value, name, errors):
 
 	return (errors)
 
+
+def power_rules(power, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	rule = db.session.query(PowerAltCheck).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerAction).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerChar).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerCirc).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerCreate).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerDamage).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerDegMod).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerEnv).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(Levels).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMinion).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMod).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMove).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerOpposed).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerRanged).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerResist).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerResistBy).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerReverse).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerTime).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	if error:
+		message = 'You must create at least one rule before you can save this power.'
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
+def valid_extra(power, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	rule = db.session.query(PowerAltCheck).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerAltCheck).filter_by(power_id = power).all()
+		name = 'Alternate Check'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerAction).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerAction).filter_by(power_id = power).all()	
+		name = 'Action Change'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+				
+	rule = db.session.query(PowerChar).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerChar).filter_by(power_id = power).all()
+		name = 'Changes Character Trait'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerCirc).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerCirc).filter_by(power_id = power).all()
+		name = 'Circumstance Modifier'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerCreate).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerCreate).filter_by(power_id = power).all()
+		name = 'Create'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerDamage).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerDamage).filter_by(power_id = power).all()
+		name = 'Damage'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerDefense).filter_by(power_id = power).all()
+		name = 
+		'Defense'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerDegMod).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerDegMod).filter_by(power_id = power).all()
+		name = 'Degree of Success/Failure Modifier'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerEnv).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerEnv).filter_by(power_id = power).all()
+		name = 'Environment Effect'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(Levels).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(Levels).filter_by(power_id = power).all()
+		name = 'Level'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerMinion).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerMinion).filter_by(power_id = power).all()
+		name = 'Minion'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerMod).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerMod).filter_by(power_id = power).all()
+		name = 'Modifier'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	rule = db.session.query(PowerMove).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerMove).filter_by(power_id = power).all()
+		name = 'Movement'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	
+	rule = db.session.query(PowerOpposed).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerOpposed).filter_by(power_id = power).all()
+		name = 'Opposed Check'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerRanged).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerRanged).filter_by(power_id = power).all()
+		name = 'Ranged'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+	
+	rule = db.session.query(PowerResist).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerResist).filter_by(power_id = power).all()
+		name = 'Resistance Modifier'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerResistBy).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerResistBy).filter_by(power_id = power).all()		
+		name = 'Resisted By'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerReverse).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerReverse).filter_by(power_id = power).all()
+		name = 'Reverse Effect'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).all()
+		name = 'Sense Effect'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	rule = db.session.query(PowerTime).filter_by(power_id = power).first()
+	if rule is not None:
+		rule = db.session.query(PowerTime).filter_by(power_id = power).all()
+		name = 'Time Effect'
+		for r in rule:
+			extra_id = r.extra_id
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is None:
+				error = True
+				message = 'You created a ' + name + ' rule that is assigned to an extra you must have created and deleted. You must delete that ' + name + ' rule.'
+				error_msgs.append(message)
+
+
+	if error:
+		message = 'You must create at least one rule before you can save this power.'
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 def power_save_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
@@ -798,6 +1098,8 @@ def power_save_errors(data):
 
 	errors = power_rules(power_id, errors)
 
+	errors = valid_extra(power_id, errors)
+
 	errors = required(description, 'Description', errors)
 	errors = required(power_type, 'Power Type', errors)
 	errors = required(action, 'Action Type', errors)
@@ -849,6 +1151,13 @@ def power_save_errors(data):
 	errors = cost_check(create, 'Create', cost, PowerCreate, power_id, errors)
 	errors = cost_check(environment, 'Environment', cost, PowerEnv, power_id, errors)
 	errors = cost_check(modifier, 'Modifiers', cost, PowerMod, power_id, errors)
+
+	errors = extra_cost('Movement Effect', PowerMove, power_id, errors)
+	errors = extra_cost('Sense Effect', PowerSenseEffect, power_id, errors)
+	errors = extra_cost('Changes Character Traits', PowerChar, power_id, errors)
+	errors = extra_cost('Create', PowerCreate, power_id, errors)
+	errors = extra_cost('Environment', PowerEnv, power_id, errors)
+	errors = extra_cost('Modifiers', PowerMod, power_id, errors)
 
 	return (errors)
 
