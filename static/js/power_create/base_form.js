@@ -97,7 +97,17 @@ function movement() {
 	const base = 'move-base';
 	const entry = "move-entry"
 	const field = "action";
-	const value = 2
+	const value = 2;
+
+	select_entry(check, base, entry, field, value);
+}
+
+function check_type() {
+	const check = 'opposed_check';
+	const base = 'opposed-base';
+	const entry = 'opposed-entry';
+	const field = 'check';
+	const value = 2;
 
 	select_entry(check, base, entry, field, value);
 }
