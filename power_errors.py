@@ -61,6 +61,97 @@ def field(name, value, fields=['empty']):
 
 	return (fields)
 
+def power_rules(power, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	rule = db.session.query(PowerAltCheck).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerAction).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerChar).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerCirc).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerCreate).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerDamage).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerDegMod).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerEnv).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerLevels).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMinion).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMod).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerMove).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerOpposed).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerRanged).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+	
+	rule = db.session.query(PowerResist).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerResistBy).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerReverse).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerSenseEffect).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	rule = db.session.query(PowerTime).filter_by(power_id = power).first()
+	if rule is not None:
+		error = False
+
+	if error:
+		message = 'You must create at least one rule before you can save this power.'
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
 def rule_check(check, name, table, power, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -701,6 +792,8 @@ def power_save_errors(data):
 	error = errors['error']
 	if error:
 		return (errors)
+
+	errors = power_rules(power_id, errors)
 
 	errors = required(description, 'Description', errors)
 	errors = required(power_type, 'Power Type', errors)
