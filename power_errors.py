@@ -853,7 +853,7 @@ def valid_extra(power, errors):
 	rule = db.session.query(PowerDefense).filter_by(power_id = power).first()
 	if rule is not None:
 		rule = db.session.query(PowerDefense).filter_by(power_id = power).all()
-		name = 
+		name = 'Defensive Effect'
 		'Defense'
 		for r in rule:
 			extra_id = r.extra_id
