@@ -140,7 +140,8 @@ def extra_cost(name, table, power, errors):
 							error = True
 							message = 'You set a rule for a ' + name + ' effect that was assigned to the ' + extra_check.name + ' extra that has its own cost.  If you want to set an alternate cost for this rule it cannot be assigned to this extra or you can delete the extra and recreate it, this time setting a variable cost for the extra and delete and recreate the rule and setting it to the recreated extra with its variable cost.'
 							error_msgs.append(message)
-						else:
+					else:
+						if c.cost is None:
 							error = True
 							message = 'You set a variable cost for the ' + extra_check.name + ' extra and created a ' + name + ' rule was assigned to i, so you must delete and recreate the ' + name + ' rule for that extra and specify the cost.'
 							error_msgs.append(message)
