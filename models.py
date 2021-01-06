@@ -2291,22 +2291,6 @@ class PowerTime(db.Model):
 			'recovery_incurable': self.recovery_incurable
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class PowerDes(db.Model):
 	__tablename__ = 'power_descriptors'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -2337,6 +2321,19 @@ class PowerDes(db.Model):
 			'descriptor': self.descriptor,
 			'damage': self.damage
 		}
+
+class Advantage(db.Model):
+	__tablename__ = 'advantages'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+		}
+
+
 
 class Descriptor(db.Model):
 	__tablename__ = 'descriptors'

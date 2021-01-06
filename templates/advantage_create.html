@@ -1,0 +1,104 @@
+<div class="advantage-container" style="justify-content: center; background:url(/static/img/bg/wonderwwoman.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="advantage-grid">
+		
+		<br>
+
+		<div id="box-title">
+			<img src="/static/img/title/create_advantage.png" width="100%">
+		</div>
+
+
+		<br><br>
+		
+
+		<div id="addadvantagegrid">
+
+			<div id="add-advantage">
+
+				<div id="addadvantageunderline">
+					Advantage Name
+				</div>
+
+				<div id="addadvantageform">
+					<div id="nameadvantage">
+						<input type="text" id="power_advantage" placeholder="Advantage Name">
+					</div>
+						
+					<div id="namebutton">
+						<div class="btn" id="advantage_create" onclick="advantage_create()" >
+							 Create Advantage
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div id="advantage-name-grid">
+
+				<div id="advantage-name">
+
+				</div>
+
+				<div id="advantage-edit">
+					<div id="edit-button" style="display: none;">
+						<button  style="font-size: 260%;" onclick="advantage_form()"><i class="fa fa-edit"></i></button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="advantage-edit-grid" style="display: none;">
+				<div id="advantage-edit-field">
+					<input type="text" id="advantage_name_edit">
+				</div>
+
+				<div id="advantage-edit-btn">
+					<div class="edit-btn" id="advantage_edit" onclick="advantage_edit()">
+						Save
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
+		
+			</div>
+			
+		</div>
+
+		<br>
+
+		<span>
+
+		<div id="all-fields">
+
+			<div id="base-form">
+				{% include advantage_includes.base_form %}
+			</div>
+
+			<br>
+
+		<br>
+
+		<div id="advantage-err"></div>
+
+		<br><br>
+
+		<div id="save-div">
+			<div class="save-btn" onclick="advantage_save()"> Save Advantage</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+
+		</span>
+		
+	</div>
+	
+</div>
+
+	<script src="/static/js/power_create/advantage_create.js"></script>
+	<script src="/static/js/power_create/base_form.js"></script>
+	
+	<input type="hidden" id="advantage_id" name="advantage_id" value=>

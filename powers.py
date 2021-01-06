@@ -908,7 +908,7 @@ def save_power():
 	return jsonify(body)
 
 @powers.route('/power/save/success/<power_id>')
-def skill_save_success(power_id):	
+def power_save_success(power_id):	
 	power = db.session.query(Power).filter_by(id=power_id).one()
 	
 	flash('Power ' + power.name + ' Successfully Created')
@@ -943,7 +943,7 @@ def edit_power_name():
 	if error:
 		return jsonify(body)
 	try:
-		edit_power = db.session.query(Power).filter(Power.id == edit_power).one()
+		edit_power = db.session.query(Power).filter(Power.id == power_id).one()
 		edit_power.name = name
 		db.session.commit()
 		body['success'] = True

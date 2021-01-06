@@ -51,6 +51,9 @@
 		<select class="entry-select" id="extra_cost" name="extra_cost">
 			<option value="">Points</option>
 			<option value="x">Variable</option>
+			{% for i in negatives %}
+				<option value={{i}}>{i}</option>
+			{% endfor %}
 			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}

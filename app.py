@@ -33,6 +33,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 app.register_blueprint(tables)
 app.register_blueprint(skills)
 app.register_blueprint(powers)
+app.register_blueprint(advantage)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
