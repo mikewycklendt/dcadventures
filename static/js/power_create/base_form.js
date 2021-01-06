@@ -109,6 +109,12 @@ function check_type() {
 	const field = 'check';
 	const value = 2;
 
+	const select = document.getElementById(field)
+	const field_value = select.options[select.selectedIndex].value;
+
+	console.log(field_value)
+
+
 	select_entry(check, base, entry, field, value);
 }
 

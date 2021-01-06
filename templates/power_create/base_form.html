@@ -72,7 +72,7 @@
 		
 		<select class="base-select" id="cost" name="cost">
 			<option value="">Cost</option>
-			<option value="x">X</option>
+			<option value="x">Variable</option>
 			<option value=0>0</option>
 			{% for num in positives %}
 				<option value={{num}}>{{num}}</option>
@@ -156,7 +156,7 @@
 		</div>
 	
 		<div>
-			<select class="base-select" id="check" name="check">
+			<select class="base-select" id="check" name="check" onchange="check_type()">
 				<option value="">Check Type</option>
 				<option value=>None</option>
 				{% for check in checks %}
