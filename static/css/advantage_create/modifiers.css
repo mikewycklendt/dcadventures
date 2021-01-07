@@ -18,7 +18,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 35% 35% 30%;
+	grid-template-columns: 35% 15% 35% 15%;
 	grid-auto-rows: auto;
 }
 
