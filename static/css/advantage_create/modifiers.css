@@ -1,0 +1,21 @@
+#modifiers-header {
+	grid-template-columns: 70% 30%;
+}
+
+#modifiers-base {
+	grid-template-columns: 100%;
+}
+
+#modifiers-row1 {
+	display: grid;
+	width: 98%;
+	height: 1.2vw;
+	gap: 3px;
+	grid-template-columns: 12% 13% 12% 13% 50%;
+	grid-auto-rows: auto;
+}
+
+#modifiers-button-row {
+	display: grid;
+	grid-template-columns: 80% 20%;
+}

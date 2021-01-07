@@ -464,6 +464,58 @@ function base(field_inputs, entry_input) {
 	}
 }
 
+
+function base_text(field_inputs, textfield_input, entry_input) {
+	const entry = document.getElementById(entry_input);
+	const textfield = document.getElementById(textfield_input);
+	const text = textfield.value;
+
+	let satisfied = true
+	let field;
+	for (field of field_inputs) {
+		const f = document.getElementById(field);
+		const select = f.options[f.selectedIndex].value;
+
+		if (select == '') {
+			satisfied = false
+		}
+	} 
+
+	if (text == '') {
+		satisfied = false
+	}
+
+	if (satisfied == true) {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function entry_check(check_input, title_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const entry = document.getElementById(entry_input);
+	const title = document.getElementById(title_input);
+	
+	if (check.checked == true) {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		entry.style.maxHeight = "0px";
+		setTimeout(function(){entry.style.display = 'none';}, 400);
+		title.style.color = "#245681";
+	}
+}
+
 function base_two(field_input, field2_input, entry_input) {
 	const field = document.getElementById(field_input);
 	const value = field.options[field.selectedIndex].value;
@@ -1238,6 +1290,7 @@ function back_errors(line, table, jsonResponse) {
 		for (li of error_msgs) {
 			const error = document.createElement('div');
 			error.className = line;
+			error.classList.add('err-line');
 			error.innerHTML = li;
 				
 			errors.appendChild(error);

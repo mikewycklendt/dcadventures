@@ -128,7 +128,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'DC Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
-	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
 
 	whens = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
 
@@ -430,6 +430,8 @@ def power_trait_select():
 		body['options'] = extras
 	elif trait == 'this_power':
 		body['options'] = ['This Power']
+	elif trait == 'this_advantage':
+		body['options'] = ['This Advantage']
 	elif trait == 'sense':
 		body['options'] = ['Sense']
 	elif trait == 'size':

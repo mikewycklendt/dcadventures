@@ -1,0 +1,81 @@
+<div class="advantage-header" id="modifiers-header">
+
+	<div class="advantage-title" id="modifiers-title">
+		<input type="checkbox" id="modifiers_check" class="regular-checkbox big-checkbox" onclick="modifiers_check()"> Bonus/Penalty Modifier:
+	</div>
+	
+	<div class="advantage-base" id="modifiers-base">
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="modifiers-entry">
+
+	<div id="modifiers-row1">
+		<div>
+			Bonus:
+		</div>
+
+		<div></div>
+
+		<div>
+			Penalty:
+		</div>
+
+		<div></div>
+
+		<div></div>
+
+		<div>
+			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
+				<option value="">Bonus</option>
+				<option value="0">0</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_bonus_type" name="modifiers_bonus_type">
+				{% for m in modifier_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
+				<option value="">Penalty</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_penalty_type" name="modifiers_penalty_type">
+				{% for m in modifier_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+	
+	<div id="modifiers-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="modifiesrs_submit" name="modifiers_submit" onclick="modifiers_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="modifiers-spot"></div>
+
+<div class="err" id="modifiers-err"></div>
