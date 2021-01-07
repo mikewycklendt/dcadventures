@@ -11,8 +11,9 @@ function modifiers_bonus_effect() {
 	const select = 'modifiers_bonus_effect';
 	const options = [{'val': 'trait', 'div': 'modifiers-row3'}]
 	const div = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}]
+	const entry = 'modifiers-entry';
 
-	select_maxheight_entry(select, options);
+	select_maxheight_entry(select, options, entry);
 	select_opacity(select, div)
 }
 
@@ -21,8 +22,9 @@ function modifiers_penalty_effect() {
 	const select = 'modifiers_penalty_effect';
 	const options = [{'val': 'trait', 'div': 'modifiers-row3'}]
 	const div = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}]
+	const entry = 'modifiers-entry';
 
-	select_maxheight_entry(select, options);
+	select_maxheight_entry(select, options, entry);
 	select_opacity(select, div)
 }
 
