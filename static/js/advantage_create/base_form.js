@@ -179,7 +179,7 @@ function invent_trait_type() {
 
 function invent() {
 	const check = 'invent';
-	const div1 = 'base-invent-perrmanence';
+	const div1 = 'base-invent-permanence';
 	const div2 = 'base-field-invent';
 
 	check_opacity(check, div1);
