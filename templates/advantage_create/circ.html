@@ -1,0 +1,181 @@
+<div id="circ-header">
+
+	<div id="circ-title">
+		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()"> Circumstance Modifier:
+	</div>
+
+	<div id="circ-base">
+
+		<div>
+			<select class="header-select" id="circ_target" name="circ_target" onchange="circ_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<diV>
+			<select class="extra-select" id="circ_extra" name="circ_extra" onchange="circ_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="circ-entry">
+
+	<div id="circ-row1">
+
+		<div id="circ-mod-title">
+			Modifier:
+		</div>
+
+		<div id="circ-round-title">
+			Lasts:
+		</div>
+
+		<div id="circ-des-title">
+			Circumstance:
+		</div>
+
+		<div id="circ-button">
+			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
+				 Add
+			</div>
+		</div>
+
+		<div id="circ-mod">
+			<select class="select-sml" id="circ_mod" name="circ_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="circ-round">
+			<select class="select-sml" id="circ_rounds" name="circ_rrounds">
+				<option value="0">Once</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="circ-des">
+			<textarea id="circ_des" name="circ_des"></textarea>
+		</div>
+
+		<div id="circ-type">
+			<select class="select-sml" id="circ_type" name="circ_type" onchange="circ_type()">
+				{% for c in circ_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="circ-range">
+		<div>
+			<select class="select-sml" id="circ_range" name="circ_range">
+				<option value="">Range</option>
+				{% for r in ranges %}
+					<option value={{r.id}}>{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="circ-check">
+		<div>
+			<select class="select-sml" id="circ_check_who" name="circ_check_who">
+				{% for w in who_check %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_check_trait_type" name="circ_check_trait_type" onchange="circ_check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_check_trait" name="circ_check_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div id="circ-row2">
+		<div>
+			Nullify Circumstance:
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_null_type" name="circ_null_type" onchange="circ_null_type()">
+				{% for c in circ_null %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<div id="circ-null-condition">
+				<div>
+					<select class="select-sml" id="circ_null_condition" name="circ_null_condition">
+						<option value="">Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="circ-null-descriptor">
+				<div>
+					<select class="descriptor-sml" id="circ_null_descriptor" name="circ_null_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="circ-null-trait">
+				<div>
+					<select class="select-sml" id="circ_null_trait_type" name="circ_null_trait_type" onchange="circ_null_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_null_trait" name="circ_null_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="circ-spot"></div>
+
+<div id="circ-err"></div>
