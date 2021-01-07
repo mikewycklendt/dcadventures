@@ -724,9 +724,9 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 			if extra is not None:
 				cost = extra.cost
 				power_name = extra.name + ' Extra'
-		else:
-			cost = power_cost
-			power_name = 'Base Power'
+	else:
+		cost = power_cost
+		power_name = 'Base Power'
 
 	multiple = 0
 	for	e in effects_cost:
