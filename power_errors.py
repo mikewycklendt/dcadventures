@@ -2900,10 +2900,13 @@ def sense_post_errors(data):
 	errors = int_check(ranks, 'Ranks', errors)
 	errors = int_check(cost, 'Cost', errors)
 	
-	errors = required(sense, 'Sense', errors)
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
+	power_cost = integer(power_cost)
+	extra_id = extra_convert(extra_id)
+
+	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
