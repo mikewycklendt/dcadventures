@@ -8,10 +8,10 @@ function dc_check() {
 }
 
 function dc_base() {
-	const fields = ['dc_target'];
+	const field = 'dc_target';
 	const entry = "dc-entry";
 
-	base(fields, entry);
+	base(field, entry);
 }
 
 function dc_math_trait_type() {
