@@ -693,7 +693,8 @@ def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id,
 		if effect_cost == '':
 			error = True
 			message = 'You selected a varible value for the ' + sense + ' field so you must set a cost for it.'
-
+			error_msgs.append(message)
+			
 	if effect_cost != '':
 		if cost is not None:
 			error = True
