@@ -2895,7 +2895,7 @@ def sense_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 	
 	power_cost = integer(power_cost)
-	extra_id = integer(extra_id)
+	extra_id = extra_convert(extra_id)
 
 	errors = required(sense, 'Sense', errors)
 	errors = required(sense_type, 'Sense Effect Type', errors)
