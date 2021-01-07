@@ -185,6 +185,7 @@ function sense_submit() {
 	const dimensional_type = select("sense_dimensional_type");
 	const ranks = select("sense_ranks");
 	const cost = select("sense_cost");
+	const power_cost = select("cost");
 
 	const power_id = document.getElementById('power_id').value;
 
@@ -240,7 +241,8 @@ function sense_submit() {
 			'cost': cost,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'power_cost': power_cost
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

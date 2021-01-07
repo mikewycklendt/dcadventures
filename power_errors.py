@@ -676,6 +676,42 @@ def int_check(value, name, errors):
 
 	return (errors)
 
+def field_cost(name, field, effects_cost, rule_cost, power_cost, extra_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if extra_id is not None:
+		extra = db.session.query(Extra).filter_by(id = extra_id).first()
+		if extra is not None:
+			cost = extra.cost
+			power_name = extra.name + ' Extra'
+	else:
+		cost = power_cost
+		power_name = 'Base Power'
+
+	if field is None:
+		if cost is not None::
+			message = 'You have selected a variable value for the ' + name + ' field so the cost for thw ' + power_name + ' must be set as variable.'
+			error_msgs.append(message)
+		for e in effects_cost:
+			if e != rule_cost:
+				message = 'You set a cost for the ' + name + ' field thst is different thsn the cost you set for the rule.'
+				error_msgs.append(message)
+			multiple = 0
+			if e != '':
+				multiple += 1
+			if multiple > 1:
+				if rule_cost != '':
+					message = 'You set multiple possible costs for this rule so you cannot set a iverakk ccst for this rule.'
+					error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 
 def power_rules(power, errors):
 	error_msgs = errors['error_msgs']
@@ -2806,6 +2842,7 @@ def sense_post_errors(data):
 	dimensional_type = data['dimensional_type']
 	ranks = data['ranks']
 	cost = data['cost']
+	power_cost = data['power_cost']]
 
 	errors = power_check(power_id, errors)
 
@@ -2828,10 +2865,22 @@ def sense_post_errors(data):
 	errors = int_check(distance_factor, 'Distance Factor', errors)
 	errors = int_check(ranks, 'Ranks', errors)
 	errors = int_check(cost, 'Cost', errors)
+	
+	power_cost = integer(power_cost)
+	extra_id = integer(extra_id)
+	power_cost = integer(power_cost)
 
 	errors = required(sense, 'Sense', errors)
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
+
+	errors = variable_fields(None, 'Sense', sense, [sense_cost], errors)
+	errors = variable_field(None, sense, 'Sense Cost', sense_cost, errors)
+	errors = variable_fields(None, 'Sense', subsense, [subsense_cost], errors)
+	errors = variable_field(None, sense, 'Sense Cost', sense_cost, errors)
+	errors = field_cost('Sense', sense, sense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('SubSense', subsense, subsense_cost, cost, power_cost, extra_id, errors)
+
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
