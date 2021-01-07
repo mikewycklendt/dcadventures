@@ -2906,9 +2906,6 @@ def sense_post_errors(data):
 	power_cost = integer(power_cost)
 	extra_id = extra_convert(extra_id)
 
-	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
-	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
-
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait', height_trait, errors)
