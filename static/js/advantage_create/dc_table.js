@@ -8,11 +8,10 @@ function dc_check() {
 }
 
 function dc_base() {
-	const field = 'dc_extra';
-	const field2 = 'dc_target';
+	const fields = ['dc_target'];
 	const entry = "dc-entry";
 
-	base_two(field, field2, entry);
+	base(fields, entry);
 }
 
 function dc_math_trait_type() {

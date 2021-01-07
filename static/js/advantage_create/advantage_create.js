@@ -437,12 +437,22 @@ function select_maxheight(select, options) {
 	};
 }
 
-function base(field_input, entry_input) {
-	const field = document.getElementById(field_input)
-	const value = field.options[field.selectedIndex].value;
+
+function base(field_inputs, entry_input) {
 	const entry = document.getElementById(entry_input)
 
-	if (value != '') {
+	let satisfied = true
+	let field;
+	for (field of field_inputs) {
+		const f = document.getElementById(field);
+		const select = f.options[f.selectedIndex].value;
+
+		if (select == '') {
+			satisfied = false
+		}
+	} 
+
+	if (satisfied == true) {
 		entry.style.display = "grid";
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";
