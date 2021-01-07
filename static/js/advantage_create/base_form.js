@@ -80,6 +80,16 @@ function circ() {
 	select_entry(check, base, entry, field, value);
 }
 
+function skill_type() {
+	const check = 'skill_check';
+	const base = 'skill-base';
+	const entry = 'skill-entry';
+	const field = 'type';
+	const value = 'skill';
+
+	select_entry(check, base, entry, field, value);
+}
+
 function skill() {
 	const type_field = document.getElementById("skill");
 	const type = type_field.options[type_field.selectedIndex].value;

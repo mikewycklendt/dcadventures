@@ -1,6 +1,7 @@
 @import "advantage_create/base_form.css";
 @import "advantage_create/dc_table.css";
 @import "advantage_create/modifiers.css";
+@import "advantage_create/skill.css";
 
 .advantage-container {
 	display: grid;

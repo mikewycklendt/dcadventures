@@ -18,7 +18,7 @@
 			Power Type:
 		</div>
 
-		<select class="base-select" id="type" name="type">
+		<select class="base-select" id="type" name="type" onchange="skill_type()">
 			{% for a in advantage_type %}
 				<option value="{{a.type}}">{{a.name}}</option>
 			{% endfor %}
