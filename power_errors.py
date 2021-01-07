@@ -736,11 +736,11 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 	if multiple > 1:
 		if rule_cost != '':
 			error = True
-			message = 'You set multiple possible costs for the ' + names + ' fields so so you cannot set a iverakk ccst for this rule.'
+			message = 'You set multiple possible costs for the ' + names + ' fields so so you cannot set a overall cost for this rule.'
 			error_msgs.append(message)
 		if cost is not None:
 			error = True
-			message = 'Since you set multiple costs for ' + names + ' fields y0o must set a variable cost for the ' + power_name + '.'
+			message = 'Since you set multiple costs for ' + names + ' fields you must set a variable cost for the ' + power_name + '.'
 			error_msgs.append(message)
 			
 	errors['error_msgs'] = error_msgs
@@ -749,6 +749,45 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 
 	return (errors)
 
+def variablw_cost(values, names, rule_cost, power_cost, extra_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if extra_id != '' and extra_id != '0':
+		extra_id = integer(extra_id)
+		if extra_id is not None:
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is not None:
+				cost = extra.cost
+				power_name = extra.name + ' Extra'
+	else:
+		cost = power_cost
+		power_name = 'Base Power'
+
+	if cost is None:
+		error = True
+		for v in values:
+			if v != '':
+`	`			error = False
+		if rule_cost != '':
+			error = False
+
+	names_string = ''
+	for n in names:
+		if names_string = '':
+			names_string = n
+		else:
+			names_string += ' or ' + n
+
+	if error:
+		message = 'You set a variable cost for the ' + power_name + ' so you must set a cost for it or set a cost for this rule or set a cost for one of the ' + names_string + ' fields.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 
 def power_rules(power, errors):
@@ -1237,14 +1276,12 @@ def power_save_errors(data):
 	errors = rule_select('2', check_type, 'Opposed Check', PowerOpposed, power_id, errors)
 
 	errors = cost_check(move, 'Movement Effect', cost, PowerMove, power_id, errors)
-	errors = cost_check(sense, 'Sense Effect', cost, PowerSenseEffect, power_id, errors)
 	errors = cost_check(character, 'Changes Character Traits', cost, PowerChar, power_id, errors)
 	errors = cost_check(create, 'Create', cost, PowerCreate, power_id, errors)
 	errors = cost_check(environment, 'Environment', cost, PowerEnv, power_id, errors)
 	errors = cost_check(modifier, 'Modifiers', cost, PowerMod, power_id, errors)
 
 	errors = extra_cost('Movement Effect', PowerMove, power_id, errors)
-	errors = extra_cost('Sense Effect', PowerSenseEffect, power_id, errors)
 	errors = extra_cost('Changes Character Traits', PowerChar, power_id, errors)
 	errors = extra_cost('Create', PowerCreate, power_id, errors)
 	errors = extra_cost('Environment', PowerEnv, power_id, errors)
@@ -2912,6 +2949,7 @@ def sense_post_errors(data):
 	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
 	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
 	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
+	errors = variablw_cost([sense_cost, subsense_cost], ['Sense', 'Subsense'], cost, power_cost, extra_id, errors)	
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
