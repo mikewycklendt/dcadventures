@@ -414,15 +414,6 @@ function double_select_maxheight_entry(select1_input, select2_input, option1, op
 			grow_entry(entry, div);
 		}
 	}
-
-	if (val1 == option1) {
-		console.log('already grown');
-	} else {
-		if (val2 == option2) {
-			show_maxheight(div);
-			grow_entry(entry, div);
-		}
-	}
 	
 	if (val1 != option1 && val2 != option2) {
 		shrink_entry(entry, div);
