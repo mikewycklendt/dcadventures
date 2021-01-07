@@ -28,10 +28,10 @@
 	transition: all .4s ease-out;
 }
 
+
 #modifiers-row1 {
 	display: grid;
 	width: 98%;
-	height: 1.2vw;
 	gap: 3px;
 	grid-template-columns: 17% 18% 17% 18% 30%;
 	grid-auto-rows: auto;
