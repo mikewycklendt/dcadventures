@@ -434,8 +434,10 @@ def power_trait_select():
 		body['options'] = ['This Advantage']
 	elif trait == 'sense':
 		body['options'] = ['Sense']
-	elif trait == 'size':
-		body['options'] = ['Size Rank'] 
+	elif trait == 'size':	
+		body['options'] = ['Size Rank']
+	elif trait == 'speed':	
+		body['options'] = ['Speed Rank'] 
 	elif trait == 'intim':
 		body['options'] = ['Intimidation Rank']
 	elif trait == 'auto':

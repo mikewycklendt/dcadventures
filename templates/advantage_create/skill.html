@@ -13,6 +13,46 @@
 
 	<div id="skill-row1">
 
+		<div>
+			Trait to Use
+		</div>
+
+		<div></div>
+
+		<div>
+			In Place Of
+		</div>
+	
+		<div></div>
+
+		<div>
+			<select class="select-sml" name="skill_trait_type" id="skill_trait_type" onchange="skill_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="skill_trait" name="skill_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" name="skill_replaced_trait_type" id="skill_replaced_trait_type" onchange="skill_replaced_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="skill_replaced_trait" name="skill_replaced_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
 	</div>
 
 	<div id="skill-button-row">

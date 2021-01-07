@@ -127,7 +127,7 @@ function dc_submit() {
 	const levels = check('dc_levels');
 	const level = select('dc_level');
 
-	const power_id = document.getElementById('power_id').value;
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
@@ -135,7 +135,7 @@ function dc_submit() {
 	response = fetch('/advantage/dc_table/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': power_id,
+			'advantage_id': advantage_id,
 			'extra_id': extra_id,
 			'target': target,
 			'dc': dc,
