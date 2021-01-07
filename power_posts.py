@@ -2548,8 +2548,16 @@ def sense_post(entry, body, cells):
 	time_unit = name(Unit, time_unit)
 	time_skill = name(Skill, time_skill)
 	distance_unit = name(Unit, distance_unit)
-	sense = name(Sense, sense)
-	subsense = name(SubSense, subsense)
+
+	if sense is None:
+		sense = 'Any'
+	else:
+		sense = name(Sense, sense)
+
+	if subsense is None:
+		subsense = 'Any'
+	else:
+		subsense = name(SubSense, subsense)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
