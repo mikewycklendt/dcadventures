@@ -690,7 +690,7 @@ def field_cost(name, field, effects_cost, rule_cost, power_cost, extra_id, error
 		power_name = 'Base Power'
 
 	if field is None:
-		if cost is not None::
+		if cost is not None:
 			message = 'You have selected a variable value for the ' + name + ' field so the cost for thw ' + power_name + ' must be set as variable.'
 			error_msgs.append(message)
 		for e in effects_cost:
