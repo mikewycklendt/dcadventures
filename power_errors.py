@@ -680,14 +680,16 @@ def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id,
 	error_msgs = errors['error_msgs']
 	error = False
 
-	if extra_id is not None:
-		extra = db.session.query(Extra).filter_by(id = extra_id).first()
-		if extra is not None:
-			cost = extra.cost
-			power_name = extra.name + ' Extra'
-	else:
-		cost = power_cost
-		power_name = 'Base Power'
+	if extra_id != '' and extra_id != '0':
+		extra_id = integer(extra_id)
+		if extra_id is not None:
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is not None:
+				cost = extra.cost
+				power_name = extra.name + ' Extra'
+		else:
+			cost = power_cost
+			power_name = 'Base Power'
 
 	if field == value:
 		if effect_cost == '':
@@ -715,14 +717,16 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	if extra_id is not None:
-		extra = db.session.query(Extra).filter_by(id = extra_id).first()
-		if extra is not None:
-			cost = extra.cost
-			power_name = extra.name + ' Extra'
-	else:
-		cost = power_cost
-		power_name = 'Base Power'
+	if extra_id != '' and extra_id != '0':
+		extra_id = integer(extra_id)
+		if extra_id is not None:
+			extra = db.session.query(Extra).filter_by(id = extra_id).first()
+			if extra is not None:
+				cost = extra.cost
+				power_name = extra.name + ' Extra'
+		else:
+			cost = power_cost
+			power_name = 'Base Power'
 
 	for	e in effects_cost:
 		multiple = 0
@@ -2904,7 +2908,10 @@ def sense_post_errors(data):
 	errors = required(target, 'Target', errors)
 
 	power_cost = integer(power_cost)
-	extra_id = extra_convert(extra_id)
+
+	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
+	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
