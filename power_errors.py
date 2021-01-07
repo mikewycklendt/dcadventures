@@ -2906,12 +2906,8 @@ def sense_post_errors(data):
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
-	errors = variable_fields('', 'Sense', sense, [sense_cost], errors)
-	errors = variable_field('', sense, 'Sense Cost', sense_cost, errors)
-	errors = variable_fields('', 'Sense', subsense, [subsense_cost], errors)
-	errors = variable_field('', sense, 'Sense Cost', sense_cost, errors)
-	errors = field_cost('Sense', sense_cost, cost, power_cost, extra_id, errors)
-	errors = field_cost('SubSense', subsense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('Sense', sense, sense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('SubSense', subsense, subsense_cost, cost, power_cost, extra_id, errors)
 	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
