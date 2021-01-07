@@ -7,7 +7,7 @@
 	<div id="dc-base">
 
 		<div>
-			<select class="header-select" id="dc_target" name="dc_target" onchange="base()">
+			<select class="header-select" id="dc_target" name="dc_target" onchange="dc_base()">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
