@@ -768,7 +768,7 @@ def variablw_cost(values, names, rule_cost, power_cost, extra_id, errors):
 		error = True
 		for v in values:
 			if v != '':
-`	`			error = False
+				error = False
 		if rule_cost != '':
 			error = False
 
