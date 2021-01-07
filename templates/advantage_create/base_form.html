@@ -115,9 +115,9 @@
 			Invent Devices:
 		</div>
 	
-		<div id="base-trait">
+		<div class="base-trait">
 			<div>
-
+				<input type="checkbox" id="invent" class="regular-checkbox big-checkbox" onclick="invent()">
 			</div>
 
 			<div id="base-invent-perrmanence">
@@ -136,7 +136,7 @@
 			Trait to Invent:
 		</div>
 	
-		<div id="base-trait">
+		<div class="base-trait">
 			<div>
 				<select class="base-select" id="invent_trait_type" name="invent_trait_type" onchange="invent_trait_type()">
 					{% for t in traits %}
