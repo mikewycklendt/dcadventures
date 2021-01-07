@@ -676,7 +676,7 @@ def int_check(value, name, errors):
 
 	return (errors)
 
-def field_cost(name, field, effects_cost, rule_cost, power_cost, extra_id, errors):
+def field_cost(name, effect_cost, rule_cost, power_cost, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -689,22 +689,50 @@ def field_cost(name, field, effects_cost, rule_cost, power_cost, extra_id, error
 		cost = power_cost
 		power_name = 'Base Power'
 
-	if field is None:
+	if effect_cost != '':
 		if cost is not None:
+			error = True
 			message = 'You have selected a variable value for the ' + name + ' field so the cost for thw ' + power_name + ' must be set as variable.'
 			error_msgs.append(message)
-		for e in effects_cost:
-			if e != rule_cost:
-				message = 'You set a cost for the ' + name + ' field thst is different thsn the cost you set for the rule.'
-				error_msgs.append(message)
-			multiple = 0
-			if e != '':
-				multiple += 1
-			if multiple > 1:
-				if rule_cost != '':
-					message = 'You set multiple possible costs for this rule so you cannot set a iverakk ccst for this rule.'
-					error_msgs.append(message)
+		if rule_cost != '':
+			error = True
+			message = 'Since you set a cost for the ' + name + ' field, you cannot set another cost for this rule.'
+			error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
 
+	return (errors)
+	
+def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if extra_id is not None:
+		extra = db.session.query(Extra).filter_by(id = extra_id).first()
+		if extra is not None:
+			cost = extra.cost
+			power_name = extra.name + ' Extra'
+	else:
+		cost = power_cost
+		power_name = 'Base Power'
+
+	for	e in effects cost:
+		multiple = 0
+		if e != '':
+			multiple += 1
+			
+	if multiple > 1:
+		if rule_cost != '':
+			error = True
+			message = 'You set multiple possible costs for the ' + names + ' fields so so you cannot set a iverakk ccst for this rule.'
+			error_msgs.append(message)
+		if cost is not None:
+			error = True
+			message = 'Since you set multiple costs for ' + names + ' fields y0o must set a variable cost for the ' + power_name + '.'
+			error_msgs.append(message)
+			
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
@@ -2873,13 +2901,13 @@ def sense_post_errors(data):
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
-	errors = variable_fields(None, 'Sense', sense, [sense_cost], errors)
-	errors = variable_field(None, sense, 'Sense Cost', sense_cost, errors)
-	errors = variable_fields(None, 'Sense', subsense, [subsense_cost], errors)
-	errors = variable_field(None, sense, 'Sense Cost', sense_cost, errors)
-	errors = field_cost('Sense', sense, sense_cost, cost, power_cost, extra_id, errors)
-	errors = field_cost('SubSense', subsense, subsense_cost, cost, power_cost, extra_id, errors)
-
+	errors = variable_fields('', 'Sense', sense, [sense_cost], errors)
+	errors = variable_field('', sense, 'Sense Cost', sense_cost, errors)
+	errors = variable_fields('', 'Sense', subsense, [subsense_cost], errors)
+	errors = variable_field('', sense, 'Sense Cost', sense_cost, errors)
+	errors = field_cost('Sense', sense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('SubSense', subsense_cost, cost, power_cost, extra_id, errors)
+	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
