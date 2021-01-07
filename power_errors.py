@@ -94,7 +94,7 @@ def rule_select(value, field, name, table, power, errors):
 
 	return (errors)
 
-def cost_check(check, name, field, table, power, errors):
+def cost_check(check, name, field, table, power, errors, values='e'):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -749,7 +749,7 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 
 	return (errors)
 
-def variablw_cost(values, names, rule_cost, power_cost, extra_id, errors):
+def variable_cost(values, names, rule_cost, power_cost, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -789,6 +789,108 @@ def variablw_cost(values, names, rule_cost, power_cost, extra_id, errors):
 
 	return (errors)
 
+def sense_cost(power, field, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule_check = db.session.query(PowerSenseEffect).filter_by(power_id=power).first()
+
+	if rule_check is None:
+		return (errors)
+
+	rules = db.session.query(PowerSenseEffect).filter_by(power_id=power, extra_id=None).all()
+	if field != 'x':
+		for r in rules:
+			if r.cost is not None:
+				error = True
+				message = 'You created a Sense rule with its own cost.  You must delete that rule or set this powers cost to vsrisble.'
+				error_msgs.append(message)
+			if r.sense_cost is not None:
+				error = True
+				message = 'You created a Sense rule that defined a cost for a sense.  You must delete that rule or set this powers cost to vsrisble.'
+				error_msgs.append(message)
+			if r.subsense_cost is not None:
+				error = True
+				message = 'You created a Sense rule that defined a cost for a subsense.  You must delete that rule or set this powers cost to vsrisble.'
+				error_msgs.append(message)
+	else:
+		for r in rules:
+			error = True
+			if r.cost is not None:
+				error = False
+			if r.sense_cost is not None:
+				error = False
+			if r.subsense_cost is not None:
+				error = False
+			if error:
+				message = 'You set a variable cost for this power but created a Sense rule that did not set a cost.  Set a cost for this power or delete the rule and recreate it, this time setting a cost for the rule or for a sense and/or subsense.'
+				error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+		
+			
+def cost_check(check, name, field, table, power, errors, values='e'):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule_check = db.session.query(table).filter_by(power_id=power).first()
+
+	if rule_check is not None:
+		if field != 'x':
+			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
+			for c in cost_check:
+				if c.cost is not None:
+					error = True
+					message = 'You set a rule for a ' + name + ' that has a cost of its own but you set a cost for the base power.  If you want to set a different cost for this rule you must set the base power cost to variable.'
+					error_msgs.append(message)
+		else:
+			cost_check = db.session.query(table).filter_by(power_id=power, extra_id=None).all()
+			for c in cost_check:
+				if c.cost is None:
+					error = True
+					message = 'You set a variable cost for this power, so you must delete and recreate the ' + name + ' rule and specify the cost or set a cost for the base power.'
+					error_msgs.append(message)
+				
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def extra_cost(name, table, power, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	rule_check = db.session.query(table).filter_by(power_id=power).first()
+
+	if rule_check is not None:
+		cost_check = db.session.query(table).filter_by(power_id=power).all() 
+		for c in cost_check:
+			extra_id = c.extra_id
+			if extra_id is not None:
+				extra_check = db.session.query(Extra).filter_by(id=extra_id).first()	
+				if extra_check is not None:
+					if extra_check.cost is not None:
+						if c.cost is not None:
+							error = True
+							message = 'You set a rule for a ' + name + ' effect that was assigned to the ' + extra_check.name + ' extra that has its own cost.  If you want to set an alternate cost for this rule it cannot be assigned to this extra or you can delete the extra and recreate it, this time setting a variable cost for the extra and delete and recreate the rule and setting it to the recreated extra with its variable cost.'
+							error_msgs.append(message)
+					else:
+						if c.cost is None:
+							error = True
+							message = 'You set a variable cost for the ' + extra_check.name + ' extra and created a ' + name + ' rule was assigned to i, so you must delete and recreate the ' + name + ' rule for that extra and specify the cost.'
+							error_msgs.append(message)
+				
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (erro
 
 def power_rules(power, errors):
 	error_msgs = errors['error_msgs']
@@ -1280,6 +1382,7 @@ def power_save_errors(data):
 	errors = cost_check(create, 'Create', cost, PowerCreate, power_id, errors)
 	errors = cost_check(environment, 'Environment', cost, PowerEnv, power_id, errors)
 	errors = cost_check(modifier, 'Modifiers', cost, PowerMod, power_id, errors)
+	errors = sense_cost(power_id, cost, errors)
 
 	errors = extra_cost('Movement Effect', PowerMove, power_id, errors)
 	errors = extra_cost('Changes Character Traits', PowerChar, power_id, errors)
@@ -2949,7 +3052,7 @@ def sense_post_errors(data):
 	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
 	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
 	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
-	errors = variablw_cost([sense_cost, subsense_cost], ['Sense', 'Subsense'], cost, power_cost, extra_id, errors)	
+	errors = variable_cost([sense_cost, subsense_cost], ['Sense', 'Subsense'], cost, power_cost, extra_id, errors)	
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
