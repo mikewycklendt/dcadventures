@@ -2842,7 +2842,7 @@ def sense_post_errors(data):
 	dimensional_type = data['dimensional_type']
 	ranks = data['ranks']
 	cost = data['cost']
-	power_cost = data['power_cost']]
+	power_cost = data['power_cost']
 
 	errors = power_check(power_id, errors)
 
