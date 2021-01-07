@@ -676,7 +676,7 @@ def int_check(value, name, errors):
 
 	return (errors)
 
-def field_cost(name, effect_cost, rule_cost, power_cost, extra_id, errors):
+def field_cost(name, field, effect_cost, rule_cost, power_cost, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -688,6 +688,11 @@ def field_cost(name, effect_cost, rule_cost, power_cost, extra_id, errors):
 	else:
 		cost = power_cost
 		power_name = 'Base Power'
+
+	if field == '':
+		if effect_cost == '':
+			error = True
+			message = 'You selected a varible value for the ' + sense + ' field so you must set a cost for it.'
 
 	if effect_cost != '':
 		if cost is not None:
