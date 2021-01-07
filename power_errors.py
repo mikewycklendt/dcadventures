@@ -704,7 +704,7 @@ def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id,
 			error_msgs.append(message)
 		if rule_cost != '':
 			error = True
-			message = 'Since you set a cost for the ' + name + ' field, you cannot set another cost for this rule.'
+			message = 'Since you set a cost for the ' + name + ' field, you cannot set an overall cost for this rule.'
 			error_msgs.append(message)
 	
 	errors['error_msgs'] = error_msgs
@@ -728,8 +728,8 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 			cost = power_cost
 			power_name = 'Base Power'
 
+	multiple = 0
 	for	e in effects_cost:
-		multiple = 0
 		if e != '':
 			multiple += 1
 			
