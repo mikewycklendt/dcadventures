@@ -81,7 +81,7 @@
 		<div></div>
 
 		<div>
-			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_penalty_effect(); modifiersa_effect()">
+			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_penalty_effect(); modifiers_effect()">
 				{% for m in modifier_effect %}
 					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
