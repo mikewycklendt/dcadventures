@@ -132,7 +132,7 @@ function dc_submit() {
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
 
-	response = fetch('/power/dc_table/create', {
+	response = fetch('/advantage/dc_table/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'power_id': power_id,
