@@ -399,6 +399,36 @@ function select_maxheight_entry(select, options, entry) {
 	}
 }
 
+
+function double_select_maxheight_entry(select1_input, select2_input, option1, option2, div, entry) {
+	const field1 = document.getElementById(select1_input);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2_input);
+	const val2 = field1.options[field1.selectedIndex].value;
+
+	if (val2 == option2) {
+		console.log('already grown');
+	} else {
+		if (val1 == option1) {
+			show_maxheight(div);
+			grow_entry(entry, div);
+		}
+	}
+
+	if (val1 == option1) {
+		console.log('already grown');
+	} else {
+		if (val2 == option2) {
+			show_maxheight(div);
+			grow_entry(entry, div);
+		}
+	}
+	
+	if (val1 != option1 && val2 == option2) {
+		shrink_entry(entry, div);
+	}
+}
+
 function select_opacity(select, options) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
