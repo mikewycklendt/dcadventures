@@ -169,3 +169,19 @@ function routine_checkbox() {
 		setTimeout(function(){div.style.display = 'none'}, 400);
 	}
 }
+
+function invent_trait_type() {
+	const select = 'invent_trait_type';
+	const fill = 'invent_trait';
+
+	trait_select(select, fill);
+}
+
+function invent() {
+	const check = 'invent';
+	const div1 = 'base-invent-perrmanence';
+	const div2 = 'base-field-invent';
+
+	check_opacity(check, div1);
+	check_display(check, div2);
+}

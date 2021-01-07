@@ -83,6 +83,24 @@
 	color: #245681
 }
 
+
+#base-field-invent {
+	display: none;
+	opacity: 0%;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
+	color: #245681
+}
+
+#base-invent-permanence {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #advantage-dc-field {
 	display: grid;
 	width: 100%;
@@ -106,6 +124,13 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 }
+
+.base-trait {
+	display: grid;
+	grid-template-columns: 40% 60%;
+}
+
+
 
 .check-fade{
 	opacity: 0%;

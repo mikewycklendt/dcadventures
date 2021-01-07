@@ -95,9 +95,11 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
 
+	permanence = [{'type': '', 'name': 'Permanence'}, {'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type, modifier_type=modifier_type, targets=targets, modifier_effect=modifier_effect,
-							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null)
+							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null, permanence=permanence)
 
 
 @advantage.route('/advantage/create', methods=['POST'])

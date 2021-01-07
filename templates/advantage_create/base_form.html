@@ -109,6 +109,50 @@
 			</select>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Invent Devices:
+		</div>
+	
+		<div id="base-trait">
+			<div>
+
+			</div>
+
+			<div id="base-invent-perrmanence">
+				<select class="base-select" id="invent_permanence" name="invent_permanence">
+					{% for p in permanence %}
+						<option value="{{p.type}}">{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class="base-field-invent">
+		<div id="multiple-attr-title">
+			Trait to Invent:
+		</div>
+	
+		<div id="base-trait">
+			<div>
+				<select class="base-select" id="invent_trait_type" name="invent_trait_type" onchange="invent_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="invent_trait" name="invent_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+
+		</div>
+	</div>
 
 	
 </div>
