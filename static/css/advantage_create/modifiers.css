@@ -38,7 +38,7 @@
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 40% 60%;
 	gap: .3vw;
 }
 
@@ -47,7 +47,7 @@
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 40% 60%;
 	gap: .3vw;
 }
 
