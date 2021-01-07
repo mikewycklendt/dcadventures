@@ -1,0 +1,184 @@
+#dc-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto;
+}
+
+#dc-base {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#dc-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#dc-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#dc-entry input[type="text"] {
+	height: 1.7vw;
+	padding: .2vw;
+	width: 95%;
+}
+
+#dc-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 16% 84%;
+	grid-auto-rows: auto;
+}
+
+#dc-value {
+	display: none;
+	grid-template-columns: 15% 85%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
+#dc-math {
+	display: none;
+	grid-template-columns: 15% 20% 25% 40%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
+#dc-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 18% 18% 15% 20% 17% 12%;
+	grid-auto-rows: auto;
+}
+
+#dc-check {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 25% 35% 20%;
+	gap: .2vw;
+}
+
+#dc-condition {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 10% 30% 10% 30% 5%;
+	gap: .2vw;
+}
+
+#dc-levels {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 30% 40% 15%;
+	gap: .2vw;
+}
+
+#dc-descriptor {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 40% 30% 10%;
+	gap: .2vw;
+}
+
+#dc-keyword {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 40% 45%;
+	gap: .2vw;
+}
+
+#dc-keyword input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+	font-size: 85%;
+	width: 95%;
+}
+
+#dc-button-row {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	grid-template-rows: auto;
+	height: 1.8vw;
+}
+
+
+#dc-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.dc-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

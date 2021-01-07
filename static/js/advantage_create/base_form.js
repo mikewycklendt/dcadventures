@@ -55,7 +55,7 @@ function power_type() {
 
 function advantage_dc_type() {
 	const select = 'power_dc_type';
-	const options = [{'val': 'value', 'div': "power-dc-value"}, {'val': 'mod', 'div': "power-dc-mod"}]
+	const options = [{'val': 'value', 'div': "advantage-dc-value"}, {'val': 'mod', 'div': "advantage-dc-mod"}]
 
 	select_opacity(select, options)
 }
@@ -64,7 +64,7 @@ function advantage_dc_table() {
 	const check = "dc_check";
 	const base = 'dc-base';
 	const entry = 'dc-entry';
-	const field = 'power_dc_type';
+	const field = 'advantage_dc_type';
 	const value = 'table';
 
 	select_entry(check, base, entry, field, value);

@@ -60,9 +60,9 @@
 			Difficulty Class:
 		</div>
 		
-		<div id="power-dc-field">
+		<div id="advantage-dc-field">
 			<div>
-				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="advantage_dc_type(); advantage_dc_table()">
+				<select class="base-select" id="advantage_dc_type" name="advantage_dc_type" onchange="advantage_dc_type(); advantage_dc_table()">
 					{% for dc in dc_type %}
 						<option value={{dc.type}}>{{dc.name}}</option>
 					{% endfor %}

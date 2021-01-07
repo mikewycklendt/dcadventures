@@ -1,4 +1,5 @@
 @import "advantage_create/base_form.css";
+@import "advantage_create/dc_table.css";
 
 .advantage-container {
 	display: grid;
