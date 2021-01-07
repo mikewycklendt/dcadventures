@@ -694,7 +694,7 @@ def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id,
 			error = True
 			message = 'You selected a varible value for the ' + sense + ' field so you must set a cost for it.'
 			error_msgs.append(message)
-			
+
 	if effect_cost != '':
 		if cost is not None:
 			error = True
@@ -2901,9 +2901,6 @@ def sense_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 	
 	power_cost = integer(power_cost)
-	extra_id = extra_convert(extra_id)
-
-	errors = required(sense, 'Sense', errors)
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
