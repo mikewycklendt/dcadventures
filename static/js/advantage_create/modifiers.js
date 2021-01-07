@@ -7,6 +7,39 @@ function modifiers_check() {
 	entry_check(check, title, entry);
 }
 
+function modifiers_bonus_effect() {
+	const select = 'modifiers_bonus_effect';
+	const options = [{'val': 'trait', 'div': 'modifiers-row3'}]
+	const div = [{'val': 'trait', 'div': 'modifierws-bonus-trait'}]
+
+	select_maxheight_entry(select, options);
+	select_opacity(select, div)
+}
+
+
+function modifiers_penalty_effect() {
+	const select = 'modifiers_penalty_effect';
+	const options = [{'val': 'trait', 'div': 'modifiers-row3'}]
+	const div = [{'val': 'trait', 'div': 'modifierws-penalty-trait'}]
+
+	select_maxheight_entry(select, options);
+	select_opacity(select, div)
+}
+
+function modifiers_penalty_trait_type() {
+	const select = 'modifiers_penalty_trait_type';
+	const fill = 'modifiers_penalty_trait';
+
+	trait_select(select, fill);
+}
+
+function modifiers_bonus_trait_type() {
+	const select = 'modifiers_bonus_trait_type';
+	const fill = 'modifiers_bonus_trait';
+
+	trait_select(select, fill);
+}
+
 let modifiers_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

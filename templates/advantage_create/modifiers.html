@@ -18,6 +18,8 @@
 
 		<div></div>
 
+		<div></div>
+
 		<div>
 			Penalty:
 		</div>
@@ -44,6 +46,8 @@
 			</select>
 		</div>
 
+		<div></div>
+
 		<div>
 			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
 				<option value="">Penalty</option>
@@ -67,7 +71,7 @@
 
 	<div id="modifiers-row2">
 		<div>
-			<select class="select-entry" id="modifiers_bonus_effect" name="modifiers_bonus_effect">
+			<select class="select-entry" id="modifiers_bonus_effect" name="modifiers_bonus_effect" onchange="modifiers_bonus_effect()">
 				{% for m in modifier_effect %}
 					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
@@ -75,12 +79,48 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect">
+			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_penalty_effect()">
 				{% for m in modifier_effect %}
 					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="modifiers-row3">
+		<div id="modifiers-bonus-trait">
+			<div>
+				<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" onchange="modifiers_bonus_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="selewct-sml" id="modifiers_bonus_trait" name="modifiers_bonus_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+
+		
+		<div id="modifiers-penalty-trait">
+			<div>
+				<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" onchange="modifiers_penalty_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="selewct-sml" id="modifiers_penalty_trait" name="modifiers_penalty_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+
 	</div>
 	
 	<div id="modifiers-button-row">

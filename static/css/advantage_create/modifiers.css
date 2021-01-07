@@ -10,7 +10,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 17% 18% 17% 18% 30%;
+	grid-template-columns: 17% 18% 15% 17% 18% 15%;
 	grid-auto-rows: auto;
 }
 
@@ -20,6 +20,35 @@
 	gap: .2VW;
 	grid-template-columns: 35% 35% 30%;
 	grid-auto-rows: auto;
+}
+
+#modifiers-row3 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#modifiers-bonus-trait {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 35% 65%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-trait {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 35% 65%;
+	gap: .3vw;
 }
 
 #modifiers-button-row {
