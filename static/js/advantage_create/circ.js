@@ -8,11 +8,10 @@ function circ_check() {
 }
 
 function circ_base() {
-	const field = 'circ_extra';
-	const field2 = 'circ_target';
+	const field = 'circ_target';
 	const entry = "circ-entry";
 
-	base_two(field, field2, entry);
+	base(field, entry);
 }
 
 function circ_type() {
