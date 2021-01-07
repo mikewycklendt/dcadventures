@@ -7,6 +7,20 @@ function skill_check() {
 	entry_check(check, title, entry);
 }
 
+function skill_replaced_trait_type() {
+	const select = 'skill_replaced_trait_type';
+	const fill = 'skill_replaced_trait';
+
+	trait_select(select, fill);
+}
+
+function skill_trait_type() {
+	const select = 'skill_trait_type';
+	const fill = 'skill_trait';
+
+	trait_select(select, fill);
+}
+
 let skill_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
