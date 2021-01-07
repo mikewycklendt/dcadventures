@@ -1,0 +1,283 @@
+<div id="dc-header">
+
+	<div id="dc-title">
+		<input type="checkbox" id="dc_check" class="regular-checkbox big-checkbox" onclick="dc_check()"> DC Table:
+	</div>
+	
+	<div id="dc-base">
+
+		<div>
+			<select class="header-select" id="dc_target" name="dc_target" onchange="dc_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="extra-select" id="dc_extra" name="dc_extra" onchange="dc_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div id="dc-entry">
+	<div id="dc-row1">
+
+		<div>
+			DC:
+		</div>
+
+		<div>
+			Description of Action:
+		</div>
+
+		<div>
+			<select class="entry-select" id="dc_dc" name="dc_dc" onchange="dc_dc()">
+				<option value="">DC</option>
+				{% for v in value_type %}
+					<option value={{v.type}}>{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="dc_description" name="dc_description">
+		</div>
+
+	</div>
+
+	<div id="dc-value">
+		<div>
+			<select class="select-sml" id="dc_value_value" name="dc_value_value">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+		</div>
+	</div>
+
+	<div id="dc-math">
+		<div>
+			<select class="select-sml" id="dc_math_vqlue" name="dc_math_value">
+				<option value="">DC</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_math" name="dc_math_math">
+				<option value="">Math</option>
+				{% for m in maths %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_trait_type" name="dc_math_trait_type" onchange="dc_math_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option> 
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_math_trait" name="dc_math_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+		
+	</div>
+
+	<div id="dc-row2">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_descriptor_check" class="medium-checkbox med-checkbox" onclick="dc_descriptor()"> Descriptor
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_condition" class="medium-checkbox med-checkbox" onclick="dc_condition()"> Condition
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_keyword_check" class="medium-checkbox med-checkbox" onclick="dc_keyword()"> Keyword
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_check_type" class="medium-checkbox med-checkbox" onclick="dc_check_type()"> Check Type
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_levels" class="medium-checkbox med-checkbox" onclick="dc_levels()"> Level
+			</div>
+		</div>
+
+		<div>
+			
+		</div>
+	</div>
+
+	<div id="dc-levels">
+		<div>
+			Level:
+		</div>
+
+		<div>
+			<select class="level-type-sml" id="dc_level_type" name="dc_level_type" onchange="dc_level_type()">
+				<option value="">Level Type</option>
+				{% for l in level_types %}
+					<option value={{l.id}}>{{l.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="levels-sml" id="dc_level" name="dc_level">
+				<option value="">Level</option>
+				<option value="">Use Levels form to put levels here</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="dc-descriptor">
+
+		<div>
+			Descriptor:
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
+				<option value="">Use above form for values</option>
+			</select>
+		</div>
+	
+		<div>
+			<select class="select-sml" id="dc_descriptor_possess" name="dc_descriptor_possess">
+				{% for p in possess %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div></div>
+	</div>
+
+	<div id="dc-condition">
+
+		<div>
+			Condition:
+		</div>
+
+		<div>
+			From:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_condition1" name="dc_condition1">
+				<option value="">Starting Condition</option>
+				<option value="current">Current</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			To:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_condition2" name="dc_condition2">
+				<option value="">Ending Condition</option>
+				<option value="any">Any</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div></div>
+	</div>
+
+	<div id="dc-keyword">
+
+		<div>
+			Keyword:
+		</div>
+
+		<div>
+			<input type="text" id="dc_keyword" name="dc_keyword">
+		</div>
+
+		<div></div>
+	</div>
+
+	<div id="dc-check">
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_trait_type" name="dc_check_trait_type" onchange="dc_check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_trait" name="dc_check_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_check_mod" name="dc_check_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="dc-button-row">
+		<div></div>
+
+		<div>
+			<div class="btn-entry" id="dc_submit" name="dc_submit" onclick="dc_submit()">
+				Add
+		   </div>
+		</div>
+	</div>
+
+</div>
+
+<div id="dc-spot"></div>
+
+<div id="dc-err"></div>

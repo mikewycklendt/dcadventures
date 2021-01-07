@@ -42,7 +42,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Advantage'
 	stylesheets.append({"style": "/static/css/advantage_create.css"})
 
-	advantage_includes = {'base_form': 'advantage_create/base_form.html'}
+	advantage_includes = {'base_form': 'advantage_create/base_form.html', 'dc_table': 'advantage_create/dc_table.html'}
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -64,8 +64,24 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
+	advantage_type = [{'type': '', 'name': 'Advantage Type'}, {'type': 'combat', 'name': 'Combat'}, {'type': 'fortune', 'name': 'Fortune'}, {'type': 'General', 'name': 'General'}, {'type': 'skill', 'name': 'Skill'}]
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name)
+	actions = db.session.query(Action).all()
+
+	checks = db.session.query(Check).all()
+	
+	base_conditions = Condition.query.all()
+	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	conditions_raw = []
+	for condition in base_conditions:
+		conditions_raw.append(condition.name)
+	for condition in combined_conditions:
+		conditions_raw.append(condition)
+	conditions = sorted(conditions_raw)
+
+
+	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions)
 
 
 @advantage.route('/advantage/create', methods=['POST'])

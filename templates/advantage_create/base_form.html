@@ -18,10 +18,9 @@
 			Power Type:
 		</div>
 
-		<select class="base-select" id="type" name="type" onchange="power_type()">
-			<option value=''>Power Type</option>
-			{% for type in power_type %}
-				<option value="{{type.type}}">{{type.name}}</option>
+		<select class="base-select" id="type" name="type">
+			{% for a in advantage_type %}
+				<option value="{{a.type}}">{{a.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -31,7 +30,7 @@
 			Action Type:
 		</div>
 		
-		<select class="base-select" id="action" name="action" onchange="movement()">
+		<select class="base-select" id="action" name="action">
 			<option value=''>Action Type</option>
 			{% for type in actions %}
 				<option value={{type.id}}>{{type.name}}</option>
@@ -41,57 +40,19 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Range:
+			Check Type:
 		</div>
-		
-		<select class="base-select" id="range" name="range"   onchange="range_type()">
-			<option value="">Range</option>
-			{% for range in range_type %}
-				<option value="{{range.type}}">{{range.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Duration:
-		</div>
-		
-		<select class="base-select" id="duration" name="duration">
-			<option value="">Duration</option>
-			{% for duration in duration_type %}
-				<option value="{{duration.type}}">{{duration.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Cost Per Rank:
-		</div>
-		
-		<select class="base-select" id="cost" name="cost">
-			<option value="">Cost</option>
-			<option value="x">Variable`</option>
-			<option value=0>0</option>
-			{% for num in positives %}
-				<option value={{num}}>{{num}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Rank Limit:
-		</div>
-		
-		<select class="base-select" id="limit" name="limit" >
-			<option value=>None</option>
-			{% for num in positives %}
-				<option value={{num}}>{{num}}</option>
-			{% endfor %}
-		</select>
 	
+		<div>
+			<select class="base-select" id="check" name="check">
+				<option value="">Check Type</option>
+				<option value=>None</option>
+				{% for check in checks %}
+					<option value={{check.id}}>{{check.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 	</div>
 
 	<div class="base-field">
@@ -101,7 +62,7 @@
 		
 		<div id="power-dc-field">
 			<div>
-				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="power_dc_type(); power_dc_table()">
+				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="advantage_dc_type(); advantage_dc_table()">
 					{% for dc in dc_type %}
 						<option value={{dc.type}}>{{dc.name}}</option>
 					{% endfor %}
@@ -133,213 +94,7 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Opponent DC:
-		</div>
-	
-		<div>
-			<select class="base-select" id="opponent_dc" name="opponent_dc">
-				<option value="">DC</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Check Type:
-		</div>
-	
-		<div>
-			<select class="base-select" id="check" name="check" onchange="check_type()">
-				<option value="">Check Type</option>
-				<option value=>None</option>
-				{% for check in checks %}
-					<option value={{check.id}}>{{check.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Routine Skill Check:
-		</div>
-	
-		<div>
-			<input type="checkbox" id="routine_checkbox" class="regular-checkbox big-checkbox" onclick="routine_checkbox()">
-		</div>
-
-		<div id="power-routine">
-			<div>
-				<select class="base-select" id="routine_trait_type" name="routine_trait_type" onchange="routine_trait_type()">
-					<option value="">Check Type</option>
-					<option value="skill">Skill</option>
-					<option value="bonus">Enhanced Skill</option>
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="routine_trait" name="routine_trait">
-					<option value="">Skill</option>
-				</select>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Requires Materials:
-		</div>
-
-		<div>
-			<input type="checkbox" id="materials" class="regular-checkbox big-checkbox">
-		</div>
-
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Partner			
-		</div>
-	
-		<div>
-			<select class="base-select" id="partner" name="partner" onchange="partner()">
-				{% for partner in partners %}
-					<option value="{{partner.type}}">{{partner.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="power-partner">
-			<div id="power-partner-type">
-				<select class="base-select" id="partner_trait_type" name="partner_trait_type" onchange="partner_trait_type()">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="power-partner-dc">
-				<select class="base-select" id="partner_dc" name="partner_dc">
-					<option value="">DC</option>
-					<option value="">N/A</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="power-partner-trait">
-				<select class="base-select" id="partner_trait" name="partner_trait">
-					<option value="">Trait</option>
-				</select>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Circumstance Modifier:
-		</div>
-	
-		<div id="power-circ-grid">
-			
-			<div>
-				<select class="base-select" id="circ" name="circ" onchange="circ()">
-					{% for circ in circumstances %}
-`						<option value="{{circ.type}}">{{circ.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="circ-required" style="opacity: 0%;">
-				<select class="base-select" id="circ_required" name="circ_required">
-					<option value="">Required</option>
-						{% for req in required %}
-							<option value="{{req.type}}">{{req.name}}</option>
-						{% endfor %}
-				</select>
-			</div>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Requires Skill Check:
-		</div>
-	
-		<div id="power-skill-grid">
-			
-			<div>
-				<select class="base-select" id="skill" name="skill" onchange="skill()">
-					<option value="">N/A</option>
-					{% for skill in skills %}
-`						<option value={{skill.id}}>{{skill.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="skill-grid" style="opacity: 0%;">
-				
-				<div>	
-					<select class="base-select" id="skill_required" name="skill_required">
-						<option value="">Required</option>
-							{% for req in required %}
-								<option value="{{req.type}}">{{req.name}}</option>
-							{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="base-select" id="skill_when" name="skill_when">
-						{% for w in whens %}
-							<option value="{{w.type}}">{{w.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Grab Bonus:
-		</div>
-
-		<div class="base-split">
-	
-			<div>
-				<select class="base-select" id="grab" name="grab">
-					<option value="">N/A</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="grab_type" class="grab_type">
-					{% for b in bonus_type %}
-						<option value="{{b.type}}">{{b.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-		</div>
-
-	</div>
-
-	
+		
 	<div class="base-field">
 		<div id="multiple-attr-title">
 			Condition While Using:
