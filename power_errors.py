@@ -718,7 +718,7 @@ def multiple_cost(names, effects_cost, rule_cost, power_cost, extra_id, errors):
 		cost = power_cost
 		power_name = 'Base Power'
 
-	for	e in effects cost:
+	for	e in effects_cost:
 		multiple = 0
 		if e != '':
 			multiple += 1
