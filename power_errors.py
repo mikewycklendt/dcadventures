@@ -774,7 +774,7 @@ def variablw_cost(values, names, rule_cost, power_cost, extra_id, errors):
 
 	names_string = ''
 	for n in names:
-		if names_string = '':
+		if names_string == '':
 			names_string = n
 		else:
 			names_string += ' or ' + n
