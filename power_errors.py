@@ -676,7 +676,7 @@ def int_check(value, name, errors):
 
 	return (errors)
 
-def field_cost(name, field, effect_cost, rule_cost, power_cost, extra_id, errors):
+def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -689,7 +689,7 @@ def field_cost(name, field, effect_cost, rule_cost, power_cost, extra_id, errors
 		cost = power_cost
 		power_name = 'Base Power'
 
-	if field == '':
+	if field == value:
 		if effect_cost == '':
 			error = True
 			message = 'You selected a varible value for the ' + sense + ' field so you must set a cost for it.'
@@ -2906,8 +2906,8 @@ def sense_post_errors(data):
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
-	errors = field_cost('Sense', sense, sense_cost, cost, power_cost, extra_id, errors)
-	errors = field_cost('SubSense', subsense, subsense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
+	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
 	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
