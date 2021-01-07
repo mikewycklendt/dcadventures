@@ -687,9 +687,9 @@ def field_cost(name, field, value, effect_cost, rule_cost, power_cost, extra_id,
 			if extra is not None:
 				cost = extra.cost
 				power_name = extra.name + ' Extra'
-		else:
-			cost = power_cost
-			power_name = 'Base Power'
+	else:
+		cost = power_cost
+		power_name = 'Base Power'
 
 	if field == value:
 		if effect_cost == '':
