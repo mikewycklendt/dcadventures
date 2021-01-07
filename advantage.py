@@ -66,6 +66,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	advantage_type = [{'type': '', 'name': 'Advantage Type'}, {'type': 'combat', 'name': 'Combat'}, {'type': 'fortune', 'name': 'Fortune'}, {'type': 'General', 'name': 'General'}, {'type': 'skill', 'name': 'Skill'}]
 
+	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+
 	actions = db.session.query(Action).all()
 
 	checks = db.session.query(Check).all()
@@ -81,7 +83,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions)
+							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type)
 
 
 @advantage.route('/advantage/create', methods=['POST'])
