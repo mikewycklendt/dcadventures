@@ -464,7 +464,7 @@ function double_select_maxheight_entry(select_input1, option1, option2, div, ent
 		grow_entry(entry, div);
 	}
 	
-	if (val1 != option1 && val2 != option2) {
+	if (val1 != option1 && val1 != option2) {
 		shrink_entry(entry, div);
 		hide_maxheight(div);
 	}
