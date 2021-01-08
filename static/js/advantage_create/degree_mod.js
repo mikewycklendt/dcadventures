@@ -15,7 +15,7 @@ function deg_mod_base() {
 }
 
 function deg_mod_type() {
-	let select = 'deg_mod_type';
+	const select = 'deg_mod_type';
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
 					{'val': 'measure', 'div':  'deg-mod-measure'},
 					{'val': 'condition', 'div': 'deg-mod-condition'},
@@ -26,7 +26,7 @@ function deg_mod_type() {
 }
 
 function deg_mod_knowledge() {
-	let select = 'deg_mod_type';
+	const select = 'deg_mod_knowledge';
 	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'}];
 	
 	select_opacity(select, options);
