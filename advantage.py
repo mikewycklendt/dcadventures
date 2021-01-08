@@ -274,12 +274,12 @@ def advantage_action_select():
 	base = []
 	actions = db.session.query(Action).all()
 	for a in actions:
-		base.append({'id': a.id 'name': a.name})
+		base.append({'id': a.id, 'name': a.name})
 		
 	conflict = []
 	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
 	for c in conflicts:
-		conflict.append({'id': c.id 'name': c.name})
+		conflict.append({'id': c.id, 'name': c.name})
 
 
 	if trait == 'auto':
