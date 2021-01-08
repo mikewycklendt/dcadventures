@@ -455,21 +455,32 @@ function select_maxheight_entry(select, options, entry) {
 }
 
 
-function double_select_maxheight_entry(select_input1, option1, option2, div, entry) {
+function double_select_maxheight_entry(select_input1, select_input2, option1, option2, div, entry) {
 	const field1 = document.getElementById(select_input1);
 	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select_input2);
+	const val2 = field2.options[field2.selectedIndex].value;
 
-	if (val1 == option1 || val1 != option2)  {
+	if (val1 == option1 && val2 != option1)  {
+		show_maxheight(div);
+		grow_entry(entry, div);
+	}
+
+	
+	if (val1 == option2 && val2 != option2)  {
 		show_maxheight(div);
 		grow_entry(entry, div);
 	}
 	
-	if (val1 != option1 && val1 != option2) {
+	if (val1 != option1 && val2 != option1) {
 		shrink_entry(entry, div);
 		hide_maxheight(div);
 	}
-
 	
+	if (val1 != option2 && val2 != option2) {
+		shrink_entry(entry, div);
+		hide_maxheight(div);
+	}
 }
 
 function double_select_maxheight_hide_entry(select1_input, select2_input, option1, option2, div, entry) {
