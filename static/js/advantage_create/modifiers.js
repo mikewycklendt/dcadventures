@@ -15,11 +15,11 @@ function modifiers_bonus_effect() {
 	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}]
 	const options = [{'val': 'trait', 'div':'modifiers-row3'}, {'val': 'check', 'div':'modifiers-row3'} ];
 	const entry = 'modifiers-entry';
+	const div = 'modifiers-row3';
+	double_select_maxheight_entry(select1, option1, option2, div, entry)
+	double_select_maxheight_entry(select2, option1, option2, div, entry)
 	
-	double_select_maxheight_entry(select1, option1, option2, entry)
-	double_select_maxheight_entry(select2, option1, option2, entry)
-	
-	select_opacity(select, divs)
+	select_opacity(select1, divs)
 }
 
 
@@ -32,12 +32,13 @@ function modifiers_penalty_effect() {
 	const option2 = 'check';
 	const row3 = 'modifiers-row3'; 
 	const entry = 'modifiers-entry';
+	const div = 'modifiers-row3';
 	
 	
-	double_select_maxheight_entry(select1, option1, option2, entry)
-	double_select_maxheight_entry(select2, option1, option2, entry)
+	double_select_maxheight_entry(select1, option1, option2, div, entry)
+	double_select_maxheight_entry(select2, option1, option2, div, entry)
 	
-	select_opacity(select, divs)
+	select_opacity(select1, divs)
 }
 
 function modifiers_penalty_trait_type() {
