@@ -458,8 +458,6 @@ function select_maxheight_entry(select, options, entry) {
 function double_select_maxheight_entry(select_input, option1, option2, div, entry) {
 	const field1 = document.getElementById(select_input);
 	const val = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select2_input);
-	const val2 = field2.options[field2.selectedIndex].value;
 1
 	if (val == option1 || val == option2)  {
 		show_maxheight(div);
