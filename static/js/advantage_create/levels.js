@@ -9,10 +9,9 @@ function levels_check() {
 
 function levels_base() {
 	const type = "level_type";
-	const extra_field = 'levels_extra';
 	const entry = "levels-entry";
 
-	base_text(extra_field, type, entry);
+	base(type, entry);
 }
 
 
