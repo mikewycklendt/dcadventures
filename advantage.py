@@ -119,7 +119,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	points = [{'type': '', 'name': 'Benefit'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}]
+	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}]
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type, modifier_type=modifier_type, targets=targets, modifier_effect=modifier_effect,
