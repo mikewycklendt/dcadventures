@@ -18,6 +18,7 @@ function modifiers_bonus_effect() {
 	const div = 'modifiers-row3';
 
 	double_select_maxheight_entry(select1, select2, option1, option2, div, entry)
+	double_select_maxheight_entry(select2, select1, option1, option2, div, entry)
 	
 	select_opacity(select1, divs)
 }
@@ -35,6 +36,7 @@ function modifiers_penalty_effect() {
 	const div = 'modifiers-row3';
 	
 	double_select_maxheight_entry(select1, select2, option1, option2, div, entry)
+	double_select_maxheight_entry(select2, select1, option1, option2, div, entry)
 	
 	select_opacity(select1, divs)
 }
