@@ -20,7 +20,30 @@ function deg_mod_type() {
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
 					{'val': 'measure', 'div':  'deg-mod-measure'},
 					{'val': 'condition', 'div': 'deg-mod-condition'},
-					{'val': 'level', 'div': 'deg-mod-level'}];
+					{'val': 'level', 'div': 'deg-mod-level'},
+					{'val': 'knowledge', 'div': 'deg-mod-knowledge'},
+					{'val': 'consequence', 'div': 'deg-mod-consequence'}];
+	
+	select_opacity(select, options);
+}
+
+function deg_mod_consequence_action_type() {
+	const select = 'deg_mod_consequence_action_type';
+	const fill = 'deg_mod_consequence_action';
+
+	action_select(select, fill)
+}
+
+function deg_mod_consequence_trait_type() {
+	const select = 'deg_mod_consequence_trait_type';
+	const fill = 'deg_mod_consequence_trait';
+
+	trait_select(select, fill);
+}
+
+function deg_mod_knowledge() {
+	const select = 'deg_mod_knowledge';
+	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'}];
 	
 	select_opacity(select, options);
 }

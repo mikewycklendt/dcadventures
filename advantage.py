@@ -72,6 +72,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	actions = db.session.query(Action).all()
 
 	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	
+	consequences = db.session.query(Consequence).order_by(Consequence).name).all()
 
 	checks = db.session.query(Check).all()
 	
@@ -104,7 +106,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	low_high = [{'type': '', 'name': 'Lower or Higher'}, {'type': 'lower', 'name': 'Lower'}, {'type': 'high', 'name': 'Higher'}, {'type': 'equal', 'name': 'Equal'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, , {'type': 'consequence', 'name': 'Consequence'}]
 
 	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
 
@@ -124,11 +126,13 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}]
 
+	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type, modifier_type=modifier_type, targets=targets, modifier_effect=modifier_effect,
 							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null, permanence=permanence, low_high=low_high, deg_mod_type=deg_mod_type, level_types=level_types, 
 							value_type= value_type, maths=maths, measure_rank=measure_rank, condition_type=condition_type, updown=updown, knowledge=knowledge, specificity=specificity, negatives=negatives, 
-							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts)
+							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts, consequences=consequences)
 
 
 @advantage.route('/advantage/create', methods=['POST'])
@@ -256,3 +260,32 @@ def edit_advantage_name():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+
+@advantage.route('/advantage/action/select', methods=['POST'])
+def advantage_action_select():
+	body = {}
+	body['success'] = True
+
+	action = request.get_json()['action'] 
+
+	base = []
+	actions = db.session.query(Action).all()
+	for a in actions:
+		base.append({'id': a.id 'name': a.name})
+		
+	conflict = []
+	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	for c in conflicts:
+		conflict.append({'id': c.id 'name': c.name})
+
+
+	if trait == 'auto':
+		body['options'] = [{'id': 'auto', 'name': 'Automatic'}]
+	elif trait == 'base':
+		body['options'] = base
+	elif trait == 'conflict':
+		body['options'] = conflict
+
+	print(body)
+	return jsonify(body)

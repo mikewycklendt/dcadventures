@@ -15,4 +15,4 @@ def consequence_create():
 		print (result.id)
 		print (result.name)
 
-	return ('origins added')
+	return ('consequences added')

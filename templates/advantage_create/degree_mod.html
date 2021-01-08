@@ -43,6 +43,46 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-consequence">
+			<div>
+				<select class="select-sml" id="deg_mod_consequence_action_type" name="deg_mod_consequence_action_type" onchange="deg_mod_consequence_action_type()">
+					{% for a in action_type %}
+						<option value="{{a.type}}">{{a.name}}</option>
+					{% endfor %}
+				</select>			
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_consequence_action" name="deg_mod_consequence_action">
+					<option value="">Action</option>
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_consequence_trait_type" name="deg_mod_consequence_trait_type" onchange="deg_mod_consequence_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor  %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_consequence_trait" name="deg_mod_consequence_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_consequence" name="deg_mod_consequence">
+					<option value="">Consequence</option>				
+					{% for c in consequences %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
 		<div id="deg-mod-knowledge">
 			<div>
 				<select class="select-sml" id="deg_mod_knowledge" name="deg_mod_knowledge" onchange="deg_mod_knowledge()">

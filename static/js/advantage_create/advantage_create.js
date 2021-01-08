@@ -110,6 +110,46 @@ function level_select(select, fill) {
 	})	
 }
 
+function action_select(select, fill) {
+	const field = document.getElementById(select)
+	const action = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch('/power/level/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'action': action
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
 
 function subsense_select(select, fill) {
 	const field = document.getElementById(select);
