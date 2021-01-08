@@ -1,0 +1,87 @@
+<div class="advantage-header" id="points-header">
+
+	<div class="advantage-title" id="points-title">
+		<input type="checkbox" id="points_check" class="regular-checkbox big-checkbox" onclick="points_check()"> Spend Points:
+	</div>
+	
+	<div class="advantage-base" id="points-base">
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="points-entry">
+
+	<div id="points-row1">
+		<div>
+			<select class="select-entry" id="points_benefit" name="`points_benefit" onchange="points_benefit()">
+				{% for p in points %}
+					<option value="{{p.typr}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="points-ranks">
+				<div class="vcenter">
+					<select class="select-sml" id="points_ranks_gained" name="points_ranks_gained">
+						<option value="">Ranks Gained</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					<select class="select-sml" id="points_ranks_max" name="points_ranks_max">
+						<option value="">Max Existing Ranks</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					<select class="select-sml" id="points_ranks_lasts" name="points_ranks_lasts">
+						<option value="">Rounds</option>
+						<option value="turn">Turn</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					<select class="select-sml" id="points_ranks_trait_type" name="points_ranks_trait_type" onchange="points_ranks_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					<select class="select-sml" id="points_ranks_trait" name="points_ranks_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="points-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="points_submit" name="points_submit" onclick="points_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="points-spot"></div>
+
+<div class="err" id="points-err"></div>

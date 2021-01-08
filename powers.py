@@ -440,6 +440,8 @@ def power_trait_select():
 		body['options'] = ['Speed Rank'] 
 	elif trait == 'intim':
 		body['options'] = ['Intimidation Rank']
+	elif trait == 'any':
+		body['options'] = ['Any Trait']
 	elif trait == 'auto':
 		body['options'] = ['Automatic']
 	elif trait == 'immoveable':

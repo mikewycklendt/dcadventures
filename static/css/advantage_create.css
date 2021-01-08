@@ -6,6 +6,7 @@
 @import "advantage_create/circ.css";
 @import "advantage_create/degree_mod.css";
 @import "advantage_create/levels.css";
+@import "advantage_create/points.css";
 
 .advantage-container {
 	display: grid;
