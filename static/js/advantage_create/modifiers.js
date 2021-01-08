@@ -23,6 +23,23 @@ function modifiers_bonus_effect() {
 }
 
 
+function modifiers_effect() {
+	const select1 = 'modifiers_bonus_effect';
+	const select2 = 'modifiers_penalty_effect';
+	const option1 = 'trait';
+	const option2 = 'check';
+	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}]
+	const options = [{'val': 'trait', 'div':'modifiers-row3'}, {'val': 'check', 'div':'modifiers-row3'} ];
+	const entry = 'modifiers-entry';
+	const div = 'modifiers-row3';
+
+	double_select_maxheight_entry(select1, select2, option1, option2, div, entry)
+	
+	select_opacity(select1, divs)
+	select_opacity(select2, divs)
+}
+
+
 function modifiers_penalty_effect() {
 	const select1 = 'modifiers_penalty_effect';
 	const select2 = 'modifiers_bonus_effect';
