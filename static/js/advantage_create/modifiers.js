@@ -17,7 +17,8 @@ function modifiers_bonus_effect() {
 	const check = 'modifiers-check';
 	const entry = 'modifiers-entry';
 	
-	double_select_maxheight_entry(select, select2, option1, option2, row3, entry)
+	double_select_maxheight_entry(select, select2, option1, row3, entry)
+	double_select_maxheight_entry(select, select2, option2, row3, entry)
 
 	select_opacity(select, divs)
 }
@@ -32,7 +33,8 @@ function modifiers_penalty_effect() {
 	const row3 = 'modifiers-row3'; 
 	const entry = 'modifiers-entry';
 	
-	double_select_maxheight_entry(select, select2, option1, option2, row3, entry)
+	double_select_maxheight_entry(select, select2, option1, row3, entry)
+	double_select_maxheight_entry(select, select2, option2, row3, entry)
 
 	select_opacity(select, divs)
 }
