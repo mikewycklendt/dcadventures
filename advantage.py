@@ -73,7 +73,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
 	
-	consequences = db.session.query(Consequence).order_by(Consequence).name).all()
+	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
 	checks = db.session.query(Check).all()
 	
