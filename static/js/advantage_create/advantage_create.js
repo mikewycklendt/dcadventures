@@ -398,10 +398,20 @@ function show_maxheight(div_input) {
 	}, 300)
 }
 
-function hide_maxheight(div_input) {
+function show_maxheight_value(div_input, div2_input) {
+	const div = document.getElementById(div_input);
+	const div2 = document.getElementById(div2_input);
+
+	setTimeout(function(){
+		div.style.display = 'grid';
+		div.style.maxHeight = div2.scrollHeight + 'px';
+	}, 300)
+}
+
+function hide_maxheight_value(div_input) {
 	const div = document.getElementById(div_input);
 
-	div.style.maxHeight = '0px';
+	div.style.maxHeight = div.scrollHeight - div.scrollHeight + 'px';
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
 
@@ -462,13 +472,13 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 	const val2 = field2.options[field2.selectedIndex].value;
 
 	if (val1 == option1 || val1 == option2)  {
-		show_maxheight(div);
-		grow_entry(entry, div);
+		show_maxheight_value(div, select_input1);
+		grow_entry(entry, select_input1);
 	}
 	
 	if (val1 != option1 && val2 != option1) {
 		if (val1 != option2 && val2 != option2) {
-			hide_maxheight(div);
+			hide_maxheight_value(div);
 		 }
 	}
 }
