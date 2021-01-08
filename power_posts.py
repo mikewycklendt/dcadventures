@@ -167,6 +167,8 @@ def integer_convert(value):
 		value = 'Scene'
 	elif value == 433:
 		value = 'Automatic'
+	elif value == 544:
+		value = 'Advantage Rank'
 	elif value is None:
 		value = ''
 	else:

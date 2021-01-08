@@ -22,11 +22,34 @@
 
 		<div>
 
+			<div id="points-check">
+				<div>
+					<select class="select-sml" id="points_check_bonus" name="points_check_bonus">
+						<option value="">Bonus</option>
+						<option value="auto">Automatic</option>
+						<option value="advantage">Advantage Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="points_check_cost" name="points_check_cost">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+
 			<div id="points-benefit">
 				<div>
 					<input type="text" id="points_benefit_name" name="points_benefit_name" placeholder="Name">
 				</div>
-				
+
 				<div>
 					<input type="text" id="points_benefit" name="points_benefit" placeholder="Description">
 				</div>

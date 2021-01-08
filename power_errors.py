@@ -643,6 +643,8 @@ def integer(value):
 		value = 322
 	elif value == 'auto':
 		value = 433
+	elif value == 'advantage':
+		value = 544
 	elif value == 'x':
 		value = None
 	elif value == '':

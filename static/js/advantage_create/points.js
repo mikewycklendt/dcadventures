@@ -10,7 +10,8 @@ function points_check() {
 function points_benefit() {
 	const select = 'points_benefit';
 	const options = [{'val': 'ranks', 'div': 'points-ranks'},
-					{'val': 'benefit', 'div': 'points-benefit'}]
+					{'val': 'benefit', 'div': 'points-benefit'},
+					{'val': 'check', 'div': 'points-check'}]
 
 	select_opacity(select, options)
 }
