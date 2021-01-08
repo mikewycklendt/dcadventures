@@ -78,6 +78,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	checks = db.session.query(Check).all()
 	
 	ranges = Range.query.all()
+	
+	times = db.session.query(Unit).filter_by(type_id=2)
 
 	base_conditions = Condition.query.all()
 	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
@@ -131,6 +133,9 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
 	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}, {'type': 'check', 'name': 'Check Bonus'}]
+
+	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type, modifier_type=modifier_type, targets=targets, modifier_effect=modifier_effect,
