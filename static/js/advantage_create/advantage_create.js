@@ -476,7 +476,7 @@ function double_select_maxheight_hide_entry(select1_input, select2_input, option
 	const field2 = document.getElementById(select2_input);
 	const val2 = field2.options[field2.selectedIndex].value;
 
-	if ((val1 != option1 && val1 != option2) && (val2 != option1 && val2 != option2)) {
+	if ((val1 != option1 || val1 != option2) && (val2 != option1 || val2 != option2)) {
 		shrink_entry(entry, div);
 		hide_maxheight(div);
 	}
