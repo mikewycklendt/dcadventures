@@ -33,6 +33,35 @@
 	transition: all .4s ease-out;
 }
 
+#modifiers-check {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#modifiers-bonus-check {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-check {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
 #modifiers-bonus-trait {
 	display: grid;
 	width: 100%;

@@ -9,31 +9,32 @@ function modifiers_check() {
 
 function modifiers_bonus_effect() {
 	const select = 'modifiers_bonus_effect';
-	const div = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}]
+	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}]
 	const select2 = 'modifiers_penalty_effect';
 	const option1 = 'trait';
-	const option2 = 'trait';
-	const row3 = 'modifiers-row3'; 
+	const option2 = 'check';
+	const row3 = 'modifiers-row3';
+	const check = 'modifiers-check';
 	const entry = 'modifiers-entry';
 	
 	double_select_maxheight_entry(select, select2, option1, option2, row3, entry)
 
-	select_opacity(select, div)
+	select_opacity(select, divs)
 }
 
 
 function modifiers_penalty_effect() {
 	const select = 'modifiers_penalty_effect';
-	const div = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}]
+	const divs = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, {'val': 'check', 'div': 'modifiers-penalty-check'}]
 	const select2 = 'modifiers_bonus_effect';
 	const option1 = 'trait';
-	const option2 = 'trait';
+	const option2 = 'check';A
 	const row3 = 'modifiers-row3'; 
 	const entry = 'modifiers-entry';
 	
 	double_select_maxheight_entry(select, select2, option1, option2, row3, entry)
 
-	select_opacity(select, div)
+	select_opacity(select, divs)
 }
 
 function modifiers_penalty_trait_type() {

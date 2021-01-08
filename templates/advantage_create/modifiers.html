@@ -92,39 +92,84 @@
 	</div>
 
 	<div id="modifiers-row3">
-		<div id="modifiers-bonus-trait">
-			<div>
-				<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" onchange="modifiers_bonus_trait_type();">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
 
-			<div>
-				<select class="select-sml" id="modifiers_bonus_trait" name="modifiers_bonus_trait">
-					<option value="">Trait</option>
-				</select>
-			</div>
-		</div>
+		<div>	
+			<div id="modifiers-bonus-trait">
+				<div>
+					<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" onchange="modifiers_bonus_trait_type();">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 
+				<div>
+					<select class="select-sml" id="modifiers_bonus_trait" name="modifiers_bonus_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
 		
-		<div id="modifiers-penalty-trait">
-			<div>
-				<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" onchange="modifiers_penalty_trait_type()">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
+			<div id="modifiers-bonus-check">
+				<div>
+					<select class="select-entry" id="modifiers_bonus_check" name="modifiers_bonus_check">
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-entry" id="modifiers_bonus_check_range" name="modifiers_bonus_check_range">
+						{% for r in ranges %}
+						<option value="0">All</option>
+							<option value={{r.id}}>{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 
-			<div>
-				<select class="select-sml" id="modifiers_penalty_trait" name="modifiers_penalty_trait">
-					<option value="">Trait</option>
-				</select>
-			</div>
 		</div>
 
+		<div>
+
+			<div id="modifiers-penalty-trait">
+				<div>
+					<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" onchange="modifiers_penalty_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="modifiers_penalty_trait" name="modifiers_penalty_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		
+			<div id="modifiers-penalty-check">
+				<div>
+					<select class="select-entry" id="modifiers_penalty_check" name="modifiers_pe4nalty_check">
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-entry" id="modifiers_penalty_check_range" name="modifiers_penalty_check_range">
+						{% for r in ranges %}
+						<option value="0">All</option>
+							<option value={{r.id}}>{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		</div>
+		
 	</div>
 	
 	<div id="modifiers-button-row">
