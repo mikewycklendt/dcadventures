@@ -71,7 +71,7 @@
 
 	<div id="modifiers-row2">
 		<div>
-			<select class="select-entry" id="modifiers_bonus_effect" name="modifiers_bonus_effect" onchange="modifiers_effect(); modifiers_bonus_effect()">
+			<select class="select-entry" id="modifiers_bonus_effect" name="modifiers_bonus_effect" onchange="modifiers_bonus_effect()">
 				{% for m in modifier_effect %}
 					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
@@ -81,7 +81,7 @@
 		<div></div>
 
 		<div>
-			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_effect(); modifiers_penalty_effect()">
+			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_penalty_effect()">
 				{% for m in modifier_effect %}
 					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
