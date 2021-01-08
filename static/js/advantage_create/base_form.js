@@ -199,3 +199,10 @@ function gm_trait_type() {
 
 	trait_select(select, fill)
 }
+
+function trait_type() {
+	const select = 'trait_type';
+	const fill = 'trait'
+
+	trait_select(select, fill);
+}
