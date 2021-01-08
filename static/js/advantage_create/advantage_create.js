@@ -470,6 +470,18 @@ function double_select_maxheight_entry(select1_input, select2_input, option1, op
 	}
 }
 
+function double_select_maxheight_hide_entry(select1_input, select2_input, option1, option2, div, entry) {
+	const field1 = document.getElementById(select1_input);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2_input);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	if ((val1 != option1 && val1 != option2) && (val2 != option1 && val2 != option2)) {
+		shrink_entry(entry, div);
+		hide_maxheight(div);
+	}
+}
+
 function select_opacity(select, options) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
