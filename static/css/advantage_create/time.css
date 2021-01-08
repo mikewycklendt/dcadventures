@@ -1,0 +1,131 @@
+#time-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 70% 30%;
+	grid-template-rows: auto;
+}
+
+#time-base {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#time-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#time-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#time-entry input[type="text"] {
+	height: 1.2vw;
+	width: 95%;
+	font-size: 85%;
+	padding: .1vw;
+}
+
+#time-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 10% 70%;
+	grid-auto-rows: auto;
+}
+
+#time-value {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 40% 60%;
+	transition: all .3s ease-in;
+}
+
+#time-math {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 15% 15% 20% 30% 20%;
+	transition: all .3s ease-in;
+}
+
+#time-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 30% 20% 25% 15%;
+	grid-auto-rows: auto;
+}
+
+#time-button-row {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	width: 95%;
+}
+
+#time-recovery {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 17% 23% 11% 6% 15% 28%;
+	gap: .2vw;
+}
+
+
+#time-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.time-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.time-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}
