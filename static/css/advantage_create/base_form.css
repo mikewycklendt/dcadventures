@@ -131,7 +131,11 @@
 	grid-template-columns: 40% 60%;
 }
 
-
+#gm-check {
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
 
 .check-fade{
 	opacity: 0%;

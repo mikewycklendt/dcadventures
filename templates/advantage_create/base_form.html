@@ -154,6 +154,34 @@
 		</div>
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Secret GM Check:
+		</div>
+	
+		<div class="base-trait">
+			<div>
+				<input type="checkbox" id="gm_secret_check" class="regular-checkbox big-checkbox" onclick="gm_secret_check()">
+			</div>
+
+		</div>
+
+		<div class="base-trait" id="gm-check">
+			<div>
+				<select class="base-select" id="gm_trait_type" name="gm_trait_type" onchange="gm_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="gm_trait" name="gm_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+	</div>
 	
 </div>
 

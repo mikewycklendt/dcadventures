@@ -245,6 +245,21 @@ function check_drop(field, divdrop, entrydrop) {
 	}
 }
 
+
+function check_maxheight(field, divdrop) {
+	const check = document.getElementById(field);
+	const div = document.getElementById(divdrop);
+
+	if (check.checked == true) {
+		div.style.display = 'grid';
+		div.style.maxHeight = div.scrollHeight + 'px';
+	} else {
+		div.style.maxHeight = '0px';
+		entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
+		setTimeout(function(){div.style.display = 'none'}, 400);
+	}
+}
+
 function check_opacity(field, divopacity) {
 	const check = document.getElementById(field);
 	const div = document.getElementById(divopacity);

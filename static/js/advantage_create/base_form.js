@@ -185,3 +185,17 @@ function invent() {
 	check_opacity(check, div1);
 	check_display(check, div2);
 }
+
+function gm_secret_check() {
+	const check = 'gm_secret_check';
+	const div = 'gm-check';
+
+	check_maxheight(check, div);
+}
+
+function gm_trait_type() {
+	const select = 'gm_trait_type';
+	const fill = 'gm_trait';
+
+	trait_select(select, fill)
+}
