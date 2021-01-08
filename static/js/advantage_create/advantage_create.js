@@ -461,7 +461,7 @@ function double_select_maxheight_entry(select1_input, select2_input, option1, op
 	const field2 = document.getElementById(select2_input);
 	const val2 = field2.options[field2.selectedIndex].value;
 1
-	if ((val1 == option1) && (val2 != option1 && val2 != option1))  {
+	if ((val1 == option1) && (val2 != option1)  {
 		show_maxheight(div);
 		grow_entry(entry, div);
 	}
@@ -471,7 +471,7 @@ function double_select_maxheight_entry(select1_input, select2_input, option1, op
 		hide_maxheight(div);
 	}
 
-	if ((val1 == option2) && (val2 != option2 && val2 != option2))  {
+	if ((val1 == option2) && (val2 != option2)  {
 		show_maxheight(div);
 		grow_entry(entry, div);
 	}
