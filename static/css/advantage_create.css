@@ -8,6 +8,7 @@
 @import "advantage_create/levels.css";
 @import "advantage_create/points.css";
 @import "advantage_create/time.css";
+@import "advantage_create/combined.css";
 
 .advantage-container {
 	display: grid;

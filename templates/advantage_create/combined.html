@@ -1,0 +1,49 @@
+<div class="advantage-header" id="combined-header">
+
+	<div class="advantage-title" id="combined-title">
+		<input type="checkbox" id="combined_check" class="regular-checkbox big-checkbox" onclick="combined_check()"> Combined Advantage:
+	</div>
+	
+	<div class="advantage-base" id="combined-base">
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="combined-entry">
+
+	<div id="combined-row1">
+		<div>
+			<select class="select-entry" id="combined_ranks" name="combined_ranks">
+				<option value="">Ranks</option>
+				<option value="any">Any</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="combined_advantage" name="combined_advantage">	
+				{% for a in advantages %}
+					<option value="{{a}}">{{a}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="combined-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="combined_submit" name="combined_submit" onclick="combined_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="combined-spot"></div>
+
+<div class="err" id="combined-err"></div>
