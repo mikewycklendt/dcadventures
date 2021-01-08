@@ -150,6 +150,8 @@ def integer_convert(value):
 		print(value)
 	elif value == 211:
 		value = 'One Per Degree'
+	elif value == 322:
+		value = 'Scene'
 	elif value is None:
 		value = ''
 	else:

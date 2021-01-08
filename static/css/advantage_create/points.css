@@ -21,6 +21,20 @@
 	grid-template-columns: 15% 20% 15% 20% 30%
 }
 
+#points-benefit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+}
+
+#points-benefit input[type="text"] {
+	height: 1.4vw;
+	width: 97%;
+	background-color: lightblue;
+	padding: .3vw;
+}
+
 #points-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;
