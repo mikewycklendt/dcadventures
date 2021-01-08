@@ -637,6 +637,8 @@ def integer(value):
 		value = 556
 	elif value == 'turn':
 		value = 990
+	elif value == 'degree':
+		value = 211
 	elif value == 'x':
 		value = None
 	elif value == '':
