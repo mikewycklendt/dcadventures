@@ -20,7 +20,15 @@ function deg_mod_type() {
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
 					{'val': 'measure', 'div':  'deg-mod-measure'},
 					{'val': 'condition', 'div': 'deg-mod-condition'},
-					{'val': 'level', 'div': 'deg-mod-level'}];
+					{'val': 'level', 'div': 'deg-mod-level'},
+					{'val': 'knowledge', 'div': 'deg-mod-knowledge'}];
+	
+	select_opacity(select, options);
+}
+
+function deg_mod_knowledge() {
+	let select = 'deg_mod_type';
+	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'}];
 	
 	select_opacity(select, options);
 }
@@ -107,15 +115,15 @@ function deg_mod_submit() {
 	const linked = check("deg_mod_linked");
 	const level = select('deg_mod_level');
 
-	const power_id = document.getElementById('power_id').value;
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';
 
-	response = fetch('/power/degree_mod/create', {
+	response = fetch('/advantage/degree_mod/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'power_id': power_id,
+			'advantage_id': advantage_id,
 			'extra_id': extra_id,
 			'target': target,
 			'value': value,

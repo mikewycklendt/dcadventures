@@ -43,6 +43,38 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-knowledge">
+			<div>
+				<select class="select-sml" id="deg_mod_knowledge" name="deg_mod_knowledge" onchange="deg_mod_knowledge()">
+					{% for k in knowledge %}
+						<option value="{{k.type}}">{{k.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div id="deg-mod-knowledge-bonus">
+					<div>
+						<select class="select-sml" id="deg_mod_knowledge_count" name="deg_mod_knowledge_count">
+							<option value="">Amount</option>
+							<option value="degree">One Per Degree</P></option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_knowledge_specificity" name="deg_mod_knowledge_specificity">
+							{% for s in specificity %}
+								<option value="{{s.type}}">{{s.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="deg-mod-level">
 
 			<div>

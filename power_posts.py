@@ -148,6 +148,8 @@ def integer_convert(value):
 	elif value == 990:
 		value = "Turn"
 		print(value)
+	elif value == 211:
+		value = 'One Per Degree'
 	elif value is None:
 		value = ''
 	else:
