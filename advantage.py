@@ -282,11 +282,11 @@ def advantage_action_select():
 		conflict.append({'id': c.id, 'name': c.name})
 
 
-	if trait == 'auto':
+	if action == 'auto':
 		body['options'] = [{'id': 'auto', 'name': 'Automatic'}]
-	elif trait == 'base':
+	elif action == 'base':
 		body['options'] = base
-	elif trait == 'conflict':
+	elif action == 'conflict':
 		body['options'] = conflict
 
 	print(body)
