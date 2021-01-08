@@ -27,7 +27,6 @@ function modifiers_penalty_effect() {
 	const select2 = 'modifiers_bonus_effect';
 	const divs = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, {'val': 'check', 'div': 'modifiers-penalty-check'}]
 	const options = [{'val': 'trait', 'div':'modifiers-row3'}, {'val': 'check', 'div':'modifiers-row3'} ];
-	const select2 = 'modifiers_bonus_effect';
 	const option1 = 'trait';
 	const option2 = 'check';
 	const row3 = 'modifiers-row3'; 
