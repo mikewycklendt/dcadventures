@@ -30,6 +30,10 @@
 			Lasts:
 		</div>
 
+		<div id="circ-ranks-title">
+			Ranks:
+		</div>
+
 		<div id="circ-des-title">
 			Circumstance:
 		</div>
@@ -55,6 +59,15 @@
 		<div id="circ-round">
 			<select class="select-sml" id="circ_rounds" name="circ_rrounds">
 				<option value="0">Once</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div id="circ-ranks">
+			<select class="select-sml" id="circ_ranks" name="circ_ranks">
+				<option value="">Ranks</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
