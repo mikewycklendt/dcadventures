@@ -54,7 +54,7 @@
 }
 
 #modifiers-penalty-check {
-	display: grid;
+	display: none;
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
