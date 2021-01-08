@@ -1,7 +1,7 @@
 @app.route('/consequence/create')
 def consequence_create():
 
-	consequence = ['Accidental', 'Bestowed', 'Invented', 'Metahuman', 'Training']
+	consequence = ['Heat', 'Cold', 'Starvation', 'Thirst', 'Suffocation', 'Fall', 'Poison', 'Disease', 'Radiation', 'Critical Hit', 'Critical Miss']
 
 	for i in concequence:
 

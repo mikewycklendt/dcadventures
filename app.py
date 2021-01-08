@@ -11,6 +11,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime
+from models import Advantage, Consequence
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -56,28 +57,24 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/consequence/create')
+def consequence_create():
 
-@app.route('/units/create')
-def units_create():
+	consequence = ['Heat', 'Cold', 'Starvation', 'Thirst', 'Suffocation', 'Fall', 'Poison', 'Disease', 'Radiation', 'Critical Hit', 'Critical Miss']
 
-	units = []
+	for i in concequence:
 
-	units.append({
-		'name': 'Time Rank',
-		'type_id': 2
-	})
-
-	for unit in units:
-		name = unit['name']
-		type_id = unit['type_id']
-
-		entry = Unit(name=name, type_id=type_id)
+		entry = Consequence(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	return ('units created')
+	results = Consequence.query.all()
 
+	for result in results:
+		print (result.id)
+		print (result.name)
 
+	return ('consequences added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
