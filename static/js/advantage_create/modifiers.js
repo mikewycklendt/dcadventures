@@ -10,13 +10,14 @@ function modifiers_check() {
 function modifiers_bonus_effect() {
 	const select1 = 'modifiers_bonus_effect';
 	const select2 = 'modifiers_penalty_effect';
-	
+	const option1 = 'trait';
+	const option2 = 'check';
 	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}]
 	const options = [{'val': 'trait', 'div':'modifiers-row3'}, {'val': 'check', 'div':'modifiers-row3'} ];
 	const entry = 'modifiers-entry';
 	
-	select_maxheight_entry(select1, options, entry)
-	select_maxheight_entry(select2, options, entry)
+	double_select_maxheight_entry(select1, option1, option2, entry)
+	double_select_maxheight_entry(select2, option1, option2, entry)
 	
 	select_opacity(select, divs)
 }
@@ -33,8 +34,8 @@ function modifiers_penalty_effect() {
 	const entry = 'modifiers-entry';
 	
 	
-	select_maxheight_entry(select1, options, entry)
-	select_maxheight_entry(select2, options, entry)
+	double_select_maxheight_entry(select1, option1, option2, entry)
+	double_select_maxheight_entry(select2, option1, option2, entry)
 	
 	select_opacity(select, divs)
 }
