@@ -136,6 +136,7 @@ class LevelType(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	name = db.Column(db.String())
 
 	def format(self):
@@ -151,6 +152,7 @@ class Levels(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	type_id = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level_type = db.Column(db.String())
@@ -162,6 +164,8 @@ class Levels(db.Model):
 	skill_degree = db.Column(db.Boolean)
 	bonus_dc = db.Column(db.Boolean)
 	bonus_degree = db.Column(db.Boolean)
+	advantage_dc = db.Column(db.Boolean)
+	advantage_degree = db.Column(db.Boolean)
 	
 	def format(self):
 		return {

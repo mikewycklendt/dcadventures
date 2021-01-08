@@ -1,0 +1,308 @@
+<div id="deg-mod-header">
+
+	<div id="deg-mod-title">
+		<input type="checkbox" id="deg_mod_check" class="regular-checkbox big-checkbox" onclick="deg_mod_check()">  Degree of Success/Failure (Modifier) Table:
+	</div>
+
+	<div id="deg-mod-base-form" >
+		<div>
+			<select class="header-select" id="deg_mod_target" name="deg_mod_target" onchange="deg_mod_base()">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+	</div>
+
+</div>
+
+<div id="deg-mod-entry" style="display: none;">
+<div id="deg-mod-row1">
+
+	<div id="deg-mod-deg">
+		<select class="select-sml" id="deg_value" name="deg_value" >
+			<option value="">Degree</option>
+			{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="deg-mod-type">
+		<select class="select-sml" id="deg_mod_type" name="deg_mod_type" onchange="deg_mod_type()">
+			<option value="">Result Type</option>
+			{% for type in deg_mod_type %}
+				<option value="{{type.type}}">{{type.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="deg-mod-effect">
+
+		<div id="deg-mod-level">
+
+			<div>
+				<select class="level-type-sml" id="deg_mod_level_type" name="deg_mod_level_type" onchange="deg_mod_level_type()">
+					<option value="">Level Type</option>
+					{% for l in level_types %}
+						<option value={{l.id}}>{{l.name}}</option>
+					{% endfor %}
+				</select> 
+			</div>
+
+			<div>
+				<select class="levels-sml" id="deg_mod_level" name="deg_mod_level">
+					<option value="">Level</option>
+					<option value="">Use Levels form to put level here</option>
+				</select>
+			</div>
+		</div>
+		
+		<div id="deg-mod-circ">
+
+			<div>
+				<select class="select-sml" id="deg_mod_circ_value" name="deg_mod_circ_value">
+					<option value="">Modifier</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_circ_turns" name="deg_mod_circ_turns">
+					<option value="">Turns</option>
+					<option value="round">Round</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_circ_trait_type" name="deg_mod_circ_trait_type" onchange="deg_mod_circ_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_circ_trait" name="deg_mod_circ_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+
+		</div>
+
+		<div id="deg-mod-measure" style="display: none;">
+
+			<div id="deg-mod-field">
+				<select class="select-sml" id="deg_mod_measure_type" name="deg_mod_measure_type" onchange="deg_mod_measure_type()">
+					<option value="">Type</option>
+					{% for type in value_type %}
+						<option value="{{type.type}}">{{type.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div id="deg-mod-measure-math" style="display: none;">
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_val1" name="deg_mod_measure_val1" >
+							<option value="">Rank</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_math" name="deg_mod_measure_math" >
+							<option value="">Math</option>
+							{% for math in maths %}
+								<option value={{math.id}}>{{math.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div>
+						<select class="select-sml" id="deg_mod_measure_trait_type" name="deg_mod_measure_trait_type" onchange="deg_mod_measure_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+
+						<select class="select-sml" id="deg_mod_measure_trait" name="deg_mod_measure_trait" >
+							<option value="">Trait</option>
+						</select>
+
+					</div>
+
+				</div>
+
+		
+		
+				<div id="deg-mod-measure-value" style="display: none">
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_value" name="deg_measure_value" >
+							<option value="">Rank</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+
+						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank" >
+							<option value="">Rank Type</option>
+							{% for rank in measure_rank %}
+								<option value={{rank.id}}>{{rank.name}}</option>
+							{% endfor %}
+						</select>
+
+					</div>
+
+				</div>
+			
+			</div>
+		</div>
+
+		<div id="deg-mod-condition" style="display: none;">
+
+			<div>
+				<select class="select-sml" id="deg_mod_condition_type" name="deg_mod_condition_type" onchange="deg_mod_condition_type()">
+					{% for c in condition_type %}
+						<option value="{{c.type}}">{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div id="deg-mod-condition-damage">
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition_damage_value" name="deg_mod_condition_damage_value">
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div style="text-align: center;">
+						Condition
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition_damage" name="deg_mod_condition_damage">
+							{% for u in updown %}
+								<option value={{u.id}}>{{u.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+				</div>
+			
+			
+				<div id="deg-mod-conditions">
+					<div>
+						From: 
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
+							<option value="">Condition</option>
+							<option value="current">Current</option>
+							{% for condition in conditions %}
+								<option value="{{condition}}">{{condition}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div id="deg-mod-condition-text" >
+						To: 		
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
+							<option value="">Condition</option>
+							<option value="any">Any</option>
+							<option value="linked_first">Linked Starting</option>
+							<option value="linked_second">Linked Ending</option>
+							{% for condition in conditions %}
+								<option value="{{condition}}">{{condition}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="deg-mod-row2">
+
+	<div>
+		<input type="text" id="deg_mod_keyword" name="deg_mod_keyword" placeholder="Keyword">
+	</div>
+
+	<div>
+		<select class="select-sml" id="deg_mod_nullify" name="deg_mod_nullify" >
+			<option value="">DC to Nullify</option>
+			<option value="check">Extra Check</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}} DC</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div>
+		<div class="check-div">
+			<input type="checkbox" id="deg_mod_cumulative" class="medium-checkbox med-checkbox"> Cumulative
+		</div>
+	</div>
+
+	<div>
+		<div class="check-div">
+			<input type="checkbox" id="deg_mod_linked" class="medium-checkbox med-checkbox"> Linked
+		</div>
+	</div>
+
+	<div></div>
+</div>
+
+<div id="deg-mod-button-row">
+	<div>
+	</div>
+
+	<div>
+		<div class="btn-entry" id="deg_mod_submit" name="deg_mod_submit" onclick="deg_mod_submit()">
+			Add
+		</div>
+	</div>
+</div>
+
+</div>
+
+<div id="deg-mod-spot"></div>
+
+<div id="deg-mod-err"></div>

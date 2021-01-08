@@ -42,7 +42,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Advantage'
 	stylesheets.append({"style": "/static/css/advantage_create.css"})
 
-	advantage_includes = {'base_form': 'advantage_create/base_form.html', 'dc_table': 'advantage_create/dc_table.html', 'modifiers': 'advantage_create/modifiers.html', 'skill': 'advantage_create/skill.html', 'opposed': 'advantage_create/opposed.html', 'circ': 'advantage_create/circ.html'}
+	advantage_includes = {'base_form': 'advantage_create/base_form.html', 'dc_table': 'advantage_create/dc_table.html', 'modifiers': 'advantage_create/modifiers.html', 'skill': 'advantage_create/skill.html', 'opposed': 'advantage_create/opposed.html', 'circ': 'advantage_create/circ.html', 'degree_mod': 'advantage_create/degree_mod.html', 'levels': 'advantage_create/levels.html'}
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -97,9 +97,26 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	permanence = [{'type': '', 'name': 'Permanence'}, {'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 
+	low_high = [{'type': '', 'name': 'Lower or Higher'}, {'type': 'lower', 'name': 'Lower'}, {'type': 'high', 'name': 'Higher'}, {'type': 'equal', 'name': 'Equal'}]
+
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}]
+
+	level_types = LevelType.query.order_by(LevelType.name).all()
+
+	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+
+	maths = Math.query.all()
+
+	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
+
+	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}
+
+	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, advantage_includes=advantage_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							advantage_type=advantage_type, actions=actions, checks=checks, conditions=conditions, dc_type=dc_type, modifier_type=modifier_type, targets=targets, modifier_effect=modifier_effect,
-							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null, permanence=permanence)
+							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null, permanence=permanence, low_high=low_high, deg_mod_type=deg_mod_type, level_types=level_types, 
+							value_type= value_type, maths=maths, measure_rank=measure_rank, condition_type=condition_type, updown=updown)
 
 
 @advantage.route('/advantage/create', methods=['POST'])

@@ -1,0 +1,253 @@
+#degrees_mod {
+	display: grid;
+	width: 100%;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	margin-bottom: 20px;
+}
+
+#deg-mod-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 70% 30%;
+	grid-template-rows: auto;
+}
+
+
+#deg-mod-title {
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+#deg-mod-condition-text {
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 110%;
+	text-align: center;
+	color: #245681;
+}
+
+#deg-mod-base-form {
+	opacity: 0%; 
+	display: grid;
+	grid-template-columns: 100%;
+	gap: 4px;
+	transition: all .3s ease-out; 
+	margin-bottom: .3vw; 
+}
+
+#deg-mod-entry {
+	display: grid;
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#deg-mod-entry input[type="text"] {
+	width: 90%; 
+	height: 1.2vw; 
+	font-size: 100%; 
+	padding: 2%;
+}
+
+#deg-mod-entry-title {
+	border-bottom: 1px solid lightblue;
+	width: 70%;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	margin-bottom: 4px;
+}
+
+#deg-mod-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 15% 75%;
+}
+
+#deg-mod-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 25% 17% 18% 15% 25%;
+}
+
+#deg-mod-button-row {
+	display: grid;
+	width: 97%;
+	grid-template-columns: 80% 20%;
+}
+
+#deg-mod-deg {
+	width:95%;
+	height: auto;
+	padding: 4px;
+}
+
+#deg-mod-type {
+	width: 95%;
+	height: auto;
+	padding: 4px;
+}
+
+
+#deg-mod-effect {
+	display: grid;
+	width: 100%;
+	height: auto;
+	padding: 4px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
+#deg-mod-circ {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 20% 20% 20% 30% ;
+}
+
+#deg-mod-level {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 300% 40% 30%;
+}
+
+#deg-mod-measure {
+	display: none;
+	width: auto;
+	height: auto;
+	grid-template-columns: 25% 75%;
+	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-condition {
+	display: none;
+	width: 98%;
+	grid-template-columns: 25% 75%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-conditions {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 10% 40% 10% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#deg-mod-condition-damage {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 40% 20% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#deg-mod-measure-math {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 15% 30% 30% 25%;
+	opacity: 0%;
+	transition: opacity .3s ease-out;
+}
+
+#deg-mod-measure-value {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 30% 70%;
+	opacity: 0%;
+	transition: opacity .3s ease-out;
+}
+
+#deg-mod-damage-math {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	opacity: 0%;
+	transition: opacity .3s ease-out;
+}
+
+#deg-mod-damage-value {
+	display: grid;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 25% 25% auto;
+	opacity: 0%;
+	transition: opacity .2s ease-out;
+}
+
+#deg-mod-add {
+	grid-area: button;
+	width: 100%;
+	padding: 3px;
+}
+
+
+#deg-mod-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.deg-mod-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.deg-mod-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}

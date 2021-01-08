@@ -3,7 +3,9 @@
 @import "advantage_create/modifiers.css";
 @import "advantage_create/skill.css";
 @import "advantage_create/opposed.css";
-@import "advantage_create/circ.css";	
+@import "advantage_create/circ.css";
+@import "advantage_create/degree_mod.css";
+@import "advantage_create/levels.css";
 
 .advantage-container {
 	display: grid;
