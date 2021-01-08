@@ -1,8 +1,8 @@
 function points_check() {
-	const check = "modifiers_check";
-	const title = "modifiers-title";
-	const base = 'modifiers-base';
-	const entry = "modifiers-entry";
+	const check = "points_check";
+	const title = "points-title";
+	const base = 'points-base';
+	const entry = "points-entry";
 
 	entry_check(check, title, entry);
 }
