@@ -1400,6 +1400,14 @@ class PowerDegMod(db.Model):
 	cumulative = db.Column(db.Boolean)
 	linked = db.Column(db.Boolean)
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
+	consequence_action_type = db.Column(db.String())
+	consequence_action = db.Column(db.Integer)
+	consequence_trait_type = db.Column(db.String())
+	consequence_trait = db.Column(db.String())
+	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	knowledge =db.Column(db.String())
+	knowledge_count = db.Column(db.Integer)
+	knowledge_specificity = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -1429,7 +1437,15 @@ class PowerDegMod(db.Model):
 			'nullify': self.nullify,
 			'cumulative': self.cumulative,
 			'linked': self.linked,
-			'level': self.level
+			'level': self.level,
+			'consequence_action_type': self.consequence_action_type,
+			'consequence_action': self.consequence_action,
+			'consequence_trait_type': self.consequence_trait_type,
+			'consequence_trait': self.consequence_trait,
+			'consequence': self.consequence,
+			'knowledge': self.knowledge,
+			'knowledge_count': self.knowledge_count,
+			'knowledge_specificity': self.knowledge_specificity
 		}
 
 class PowerDegree(db.Model):

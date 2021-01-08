@@ -25,6 +25,19 @@ def name(Table, name):
 	
 	return (name)
 
+def action_type(value, action_value):
+
+	if value == 'auto':
+		a = 'Automatic'
+	if value == 'base':
+		action = db.seession.query(Action).filter_by(id=action_value).one()
+		a = action.name
+	if value == 'conflict':
+		action = db.seession.query(ConflictAction).filter_by(id=action_value).one()
+		a = action.name
+
+	return (a)
+
 def math_convert(Table, name):
 	
 	db = SQLAlchemy()
@@ -152,6 +165,8 @@ def integer_convert(value):
 		value = 'One Per Degree'
 	elif value == 322:
 		value = 'Scene'
+	elif value == 433:
+		value = 'Automatic'
 	elif value is None:
 		value = ''
 	else:
@@ -1284,6 +1299,14 @@ def degree_mod_post(entry, body, cells):
 	cumulative = entry.cumulative
 	linked = entry.linked
 	level = entry.level
+	consequence_action_type = entry.consequence_action_type
+	consequence_action = entry.consequence_action
+	consequence_trait_type = entry.consequence_trait_type
+	consequence_trait = entry.consequence_trait
+	consequence = entry.consequence
+	knowledge = entry.knowledge
+	knowledge_count = entry.knowledge_count
+	knowledge_specificity = entry.knowledge_specificity
 
 	extra = extra_name(extra_id)
 	measure_math = math_convert(Math, measure_math)

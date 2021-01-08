@@ -641,6 +641,8 @@ def integer(value):
 		value = 211
 	elif value == 'scene':
 		value = 322
+	elif value == 'auto':
+		value = 433
 	elif value == 'x':
 		value = None
 	elif value == '':
@@ -1939,6 +1941,14 @@ def degree_mod_post_errors(data):
 	cumulative = data['cumulative']
 	linked = data['linked']
 	level = data['level']
+	consequence_action_type = data['consequence_action_type']
+	consequence_action = data['consequence_action']
+	consequence_trait_type = data['consequence_trait_type']
+	consequence_trait = data['consequence_trait']
+	consequence = data['consequence']
+	knowledge = data['knowledge']
+	knowledge_count = data['knowledge_count']
+	knowledge_specificity = data['knowledge_specificity']
 
 	errors = power_check(power_id, errors)
 

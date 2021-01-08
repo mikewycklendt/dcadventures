@@ -123,6 +123,27 @@
 	grid-auto-rows: auto;
 }
 
+#deg-mod-consequence {
+	display: none;
+	width: auto;
+	height: auto;
+	grid-template-columns: 15% 20% 15% 25% 25%;
+	gap: .4vw;
+	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-knowledge-bonus {
+	display: none;
+	width: auto;
+	height: auto;
+	grid-template-columns: 30% 30% 40%;
+	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
 #deg-mod-circ {
 	display: none;
 	opacity: 0%;

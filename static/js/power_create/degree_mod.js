@@ -129,6 +129,14 @@ function deg_mod_submit() {
 	const cumulative = check("deg_mod_cumulative");
 	const linked = check("deg_mod_linked");
 	const level = select('deg_mod_level');
+	const consequence_action_type = select("deg_mod_consequence_action_type")
+	const consequence_action = select("deg_mod_consequence_action")
+	const consequence_trait_type = select("deg_mod_consequence_trait_type")
+	const consequence_trait = select("deg_mod_consequence_trait")
+	const consequence = select("deg_mod_consequence")
+	const knowledge = select("deg_mod_knowledge")
+	const knowledge_count = select("deg_mod_knowledge_count")
+	const knowledge_specificity = select("deg_mod_knowledge_specificity")
 
 	const power_id = document.getElementById('power_id').value;
 
@@ -166,7 +174,15 @@ function deg_mod_submit() {
 			'level': level,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,			
+			'consequence_action_type': consequence_action_type,
+			'consequence_action': consequence_action,
+			'consequence_trait_type': consequence_trait_type,
+			'consequence_trait': consequence_trait,
+			'consequence': consequence,
+			'knowledge': knowledge,
+			'knowledge_count': knowledge_count,
+			'knowledge_specificity': knowledge_specificity
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

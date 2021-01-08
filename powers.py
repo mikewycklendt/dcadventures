@@ -208,6 +208,12 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
 
+	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+
+	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
+	
+	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
+	
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
 	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
@@ -2532,6 +2538,14 @@ def power_post_degree_mod():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	consequence_action_type = request.get_json()['consequence_action_type']
+	consequence_action = request.get_json()['consequence_action']
+	consequence_trait_type = request.get_json()['consequence_trait_type']
+	consequence_trait = request.get_json()['consequence_trait']
+	consequence = request.get_json()['consequence']
+	knowledge = request.get_json()['knowledge']
+	knowledge_count = request.get_json()['knowledge_count']
+	knowledge_specificity = request.get_json()['knowledge_specificity']
 
 	power_id = integer(power_id)
 	extra_id = extra_convert(extra_id)
@@ -2546,6 +2560,8 @@ def power_post_degree_mod():
 	condition_damage = integer(condition_damage)
 	nullify = integer(nullify)
 	level = integer(level)
+	consequence_action = integer(consequence_action)
+	knowledge_count = integer(knowledge_count)
 
 	if level is not None:
 		try:
@@ -2586,7 +2602,15 @@ def power_post_degree_mod():
 							nullify = nullify,
 							cumulative = cumulative,
 							linked = linked,
-							level = level)
+							level = level,
+							consequence_action_type = consequence_action_type,
+							consequence_action = consequence_action,
+							consequence_trait_type = consequence_trait_type,
+							consequence_trait = consequence_trait,
+							consequence = consequence,
+							knowledge = knowledge,
+							knowledge_count = knowledge_count,
+							knowledge_specificity = knowledge_specificity)
 
 		db.session.add(entry)
 		db.session.commit()
