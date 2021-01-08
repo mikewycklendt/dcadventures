@@ -120,7 +120,7 @@ function action_select(select, fill) {
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	response = fetch('/power/level/select', {
+	response = fetch('/advantage/action/select', {
 		method: 'POST',
 		body: JSON.stringify({
 			'action': action
