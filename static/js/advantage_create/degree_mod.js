@@ -9,10 +9,9 @@ function deg_mod_check() {
 
 function deg_mod_base() {
 	const target_field = "deg_mod_target";
-	const extra_field = 'deg_mod_extra';
 	const entry = "deg-mod-entry";
 
-	base_two(target_field, extra_field, entry);
+	base(target_field, entry);
 }
 
 function deg_mod_type() {
