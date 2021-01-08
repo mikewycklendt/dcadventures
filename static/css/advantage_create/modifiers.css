@@ -34,21 +34,21 @@
 }
 
 #modifiers-check {
-	display: grid;
+	display: none;
 	width: 98%;
 	gap: .2VW;
 	grid-template-columns: 50% 50%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .4s ease-out;
+	transition: all .3s ease-out;
 }
 
 #modifiers-bonus-check {
-	display: grid;
+	display: none;
 	width: 100%;
 	opacity: 0%;
-	transition: all .4s ease-out;
+	transition: all .3s ease-out;
 	grid-template-columns: 50% 50%;
 	gap: .3vw;
 }
