@@ -116,6 +116,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
+	value_type_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'Modifier'}]
+
 	maths = Math.query.all()
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
