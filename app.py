@@ -62,7 +62,7 @@ def consequence_create():
 
 	consequence = ['Heat', 'Cold', 'Starvation', 'Thirst', 'Suffocation', 'Fall', 'Poison', 'Disease', 'Radiation', 'Critical Hit', 'Critical Miss']
 
-	for i in concequence:
+	for i in consequence:
 
 		entry = Consequence(name=i)
 		db.session.add(entry)
