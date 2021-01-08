@@ -2337,7 +2337,16 @@ class Advantage(db.Model):
 			'name': self.name,
 		}
 
+class Consequence(db.Model):
+	__tablename__ = 'consequences'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
 
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
 
 class Descriptor(db.Model):
 	__tablename__ = 'descriptors'
@@ -2352,7 +2361,7 @@ class Descriptor(db.Model):
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
 
-	def format(self):
+		def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
