@@ -2361,7 +2361,7 @@ class Descriptor(db.Model):
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
 
-		def format(self):
+	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
