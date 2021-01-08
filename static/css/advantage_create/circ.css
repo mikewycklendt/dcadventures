@@ -58,7 +58,7 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 15% 15% 15% 40% 15%;
-	grid-template-rows: 1.5vw auto auto;
+	grid-template-rows: 1.8vw auto auto;
 	grid-template-areas: "mod-title round-title ranks-title des-title button"
 							"mod round ranks des des"
 							"type type type des des" ;
