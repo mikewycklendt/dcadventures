@@ -4,7 +4,7 @@ function benefit_check() {
 	const base = 'benefit-base';
 	const entry = "benefit-entry";
 
-	entry_check_simple(check, title, base, entry);
+	entry_check(check, title, base, entry);
 }
 
 let benefit_grid = {'titles': false,
