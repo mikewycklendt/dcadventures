@@ -66,12 +66,6 @@
 	margin-bottom: 20px;
 }
 
-#advantage-base select {
-	height: 1.2vw;
-	padding: .1vw;
-	font-size: 85%;
-}
-
 #advantage-base input[type="text"] {
 	height: 1.4vw;
 	width: 94%;
@@ -80,9 +74,9 @@
 }
 
 .base-select {
-	height: 1.2vw;
+	height: 1.8vw;
 	padding: .1vw;
-	font-size: 85%;
+	font-size: 95%;
 }
 
 .base-field {
