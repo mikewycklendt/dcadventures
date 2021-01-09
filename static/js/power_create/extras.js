@@ -8,6 +8,7 @@ function extras_submit() {
 	let rank = rank_field.options[rank_field.selectedIndex].value;
 	let inherit_field = document.getElementById('extra_inherit');
 	let inherit = inherit_field.options[inherit_field.selectedIndex].value;
+	const alternate = check('extra_alternate')
 
 	const power_id = document.getElementById('power_id').value;
 	
@@ -21,7 +22,8 @@ function extras_submit() {
 				'cost': cost,
 				'ranks': rank,
 				'des': des,
-				'inherit': inherit
+				'inherit': inherit,
+				'alternate': alternate
 			}),
 			headers: {
 			  'Content-Type': 'application/json',
@@ -71,6 +73,15 @@ function extras_submit() {
 				const inh = document.createElement('div');
 				inh.className = 'extras-table-inh'
 				inh.innerHTML = jsonResponse.des;
+
+				
+				const alt = document.createElement('div');
+				alt.className = 'extras-table-alt'
+				if (jsonResponse.alternate == true) {
+					alt.classList.add('power-check');
+				} else {
+					alt.innerHTML = '';
+				}
 			
 				const exDelete = document.createElement('div');
 				exDelete.className = 'extras-table-del'
@@ -90,8 +101,9 @@ function extras_submit() {
 				table.appendChild(nam);
 				table.appendChild(pnt);
 				table.appendChild(rnk);
-				table.appendChild(des)
-				table.appendChild(inh)
+				table.appendChild(des);
+				table.appendChild(inh);
+				table.appendChild(alt);
 				table.appendChild(exDelete);
 
 				rows = [nam.scrollHeight, pnt.scrollHeight, rnk.scrollHeight, des.scrollHeight, inh.scrollHeight];
@@ -107,6 +119,7 @@ function extras_submit() {
 				pnt.style.maxHeight = pnt.scrollHeight + "px";
 				rnk.style.maxHeight = rnk.scrollHeight + "px";
 				des.style.maxHeight = des.scrollHeight + "px";
+				alt.style.maxHeight = alt.scrollHeight + "px";
 				exDelete.style.maxHeight = exDelete.scrollHeight + "px";
 				table.style.maxHeight = table.scrollHeight + row_height + 15 + "px";
 
@@ -219,6 +232,7 @@ extras_delete = function() {
 	const pnts = document.getElementsByClassName('extras-table-pnt');
 	const dess = document.getElementsByClassName('extras-table-des');
 	const inhs = document.getElementsByClassName('extras-table-inh');
+	const alts = document.getElementsByClassName('extras-table-alt');
 	const deletesDiv = document.getElementsByClassName('extras-table-del');
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
@@ -261,6 +275,9 @@ extras_delete = function() {
 				inhs[i].style.maxHeight = "0px";
 				inhs[i].style.padding = "0px";
 				inhs[i].style.marginBottom = "0px";
+				alts[i].style.maxHeight = "0px";
+				alts[i].style.padding = "0px";
+				alts[i].style.marginBottom = "0px";
 				deletesDiv[i].style.maxHeight = "0px";
 				deletesDiv[i].style.padding = "0px";
 				deletesDiv[i].style.marginBottom = "0px";

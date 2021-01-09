@@ -992,6 +992,7 @@ def post_extra_create():
 	ranks = request.get_json()['ranks'] 
 	des = request.get_json()['des'] 
 	inherit = request.get_json()['inherit']
+	alternate = request.get_json()['alternate']
 
 	power_id = integer(power_id)
 	cost = integer(cost)
@@ -1008,7 +1009,7 @@ def post_extra_create():
 	if error:
 		return jsonify(body)
 
-	power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit)
+	power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit, alternate=alternate)
 	db.session.add(power)
 	db.session.commit()
 
@@ -1022,6 +1023,7 @@ def post_extra_create():
 	body['ranks'] = power.ranks
 	body['des'] = power.des
 	body['inherit'] = power.inherit
+	body['alternate'] = power.alternate
 
 	print(body)
 	return jsonify(body)

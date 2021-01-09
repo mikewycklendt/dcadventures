@@ -35,7 +35,8 @@
 	grid-template-areas: "name-title name-title des-title inherits"
 							"name name des des"
 							"points-title ranks-title des des"
-							"points ranks des des";
+							"points ranks des des"
+							"alt alt des des";
 	gap: 4px;
 }
 
@@ -57,6 +58,10 @@
 
 #extras-name{
 	grid-area: name;
+}
+
+#extras-alt{
+	grid-area: alt;
 }
 
 #extras-des{
@@ -91,7 +96,7 @@
 	width: 94%;
 	padding: 1%;
 	margin: 2%;
-	grid-template-columns: 15% 10% 12% 38% 20% 5%;
+	grid-template-columns: 14% 9% 11% 32% 19% 10% 5%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
 	max-height: 0;
@@ -148,6 +153,18 @@
 }
 
 .extras-table-inh {
+	font-family: 'Monda', Verdana;
+	font-size: 85%;
+	color: #245681;
+	margin-bottom: 4px;
+	width: 97%;
+	height: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.extras-table-alt {
 	font-family: 'Monda', Verdana;
 	font-size: 85%;
 	color: #245681;

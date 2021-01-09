@@ -12,6 +12,7 @@
 @import "advantage_create/resist.css";
 @import "advantage_create/variable.css";
 @import "advantage_create/alt_check.css";
+@import "advantage_create/effort.css";
 
 .advantage-container {
 	display: grid;
