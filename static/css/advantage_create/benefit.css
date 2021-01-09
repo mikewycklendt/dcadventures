@@ -10,7 +10,7 @@
 	display: grid;
 	width: 98%;
 	gap: .3vw;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 30% 70%;
 	grid-template-rows: auto auto;
 	grid-template-areas: "name-title des-title"
 							"name des"
@@ -18,9 +18,9 @@
 }
 
 #benefit-row1 input[type="text"] {
-	height: 1.5vw;
+	height: 1.3vw;
 	padding: .3vw;
-	width: 95%;
+	width: 90%;
 }
 
 #benefit-name-title {
