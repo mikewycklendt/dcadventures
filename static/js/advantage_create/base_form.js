@@ -213,6 +213,13 @@ function trait_type() {
 	trait_select(select, fill);
 }
 
+function skill_type() {
+	const select = 'skill_type';
+	const options = [{'val': 'skill', 'div': 'base-skill-description'}, {'val': 'bonus', 'div': 'base-skill-description'}]
+
+	select_maxheight(select, options)
+}
+
 function ranked() {
 	const check = 'ranked';
 	const div = 'base-ranked';
