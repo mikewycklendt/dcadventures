@@ -18,8 +18,127 @@
 <div class="advantage-entry" id="effort-entry">
 
 	<div id="effort-row1">
+		<div>
+			<select class="select-sml" id="effort_effect" name="effort_effect" onchange="effort_effect()">
+				{% for e in effort %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="effort_condition_type" name="effort_condition_type" onchange="effort_condition_type()">
+				{% for c in condition_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="effort-condition-damage">
+
+				<div>
+					<select class="select-sml" id="effort_condition_damage_value" name="effort_condition_damage_value">
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div style="text-align: center;">
+					Conditions
+				</div>
+
+				<div>
+					<select class="select-sml" id="effort_condition_damage" name="effort_condition_damage">
+						{% for u in updown %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+		
+		
+			<div id="effort-conditions">
+				<div>
+					From: 
+				</div>
+
+				<div>
+					<select class="select-sml" id="effort_condition1" name="effort_condition1" >
+						<option value="">Condition</option>
+						<option value="current">Current</option>
+						{% for condition in conditions %}
+							<option value="{{condition}}">{{condition}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter" style="text-align: center;" >
+					To: 		
+				</div>
+
+				<div>
+					<select class="select-sml" id="effort_condition2" name="effort_condition2" >
+						<option value="">Condition</option>
+						<option value="any">Any</option>
+						<option value="linked_first">Linked Starting</option>
+						<option value="linked_second">Linked Ending</option>
+						{% for condition in conditions %}
+							<option value="{{condition}}">{{condition}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div></div>
+			</div>
+		</div>
 
 	</div>
+
+	<div id="effort-benefit">
+		<div>
+			<select class="benefit-entry" id="effort_benefit_choice" name="effort_benefit_choice" onchange="effort_benefit_choice()">
+				<option value="">Benefit</option>
+				<option value="x">Variable</option>
+				{% for b in benefits %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="effort_benefit_turns" name="effort_benefit_turns">
+				<option value="">Turns</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div id="effort-benefit-count">
+			
+			<div>
+				<select class="select-entry" id="effort_benefit_count" name="effort_benefit_count">
+					<option value="">Count</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="effort_benefit_effort" class="medium-checkbox med-checkbox" > Only Effort Benefits
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 
 	<div id="effort-button-row">
 		<div>

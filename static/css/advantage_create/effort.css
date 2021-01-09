@@ -14,40 +14,42 @@
 	grid-auto-rows: auto;
 }
 
+#effort-conditions {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 10% 40% 10% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#effort-condition-damage {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 40% 20% 40%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+
 #effort-benefit {
 	display: none;
-	width: 98%;
-	grid-template-columns: 30% 70%;
-	gap: .3vw;
 	max-height: 0;
 	overflow: hidden;
-	transition: all .3s;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 15% 45%;
+	gap: .3vw;
 }
 
-#effort-benefit-other {
+#effort-benefit-count {
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	gap: .4vw;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 40% 60%;
 }
 
-#effort-benefit-any {
-	display: none;
-	opacity: 0%;
-	transition: all .3s ease-out;
-	gap: .4vw;
-	grid-template-columns: 30% 70%;
-}
-
-#effort-benefit-other input[type="text"] {
-	height: 1.4vw;
-	padding: .2vw;
-	width: 95%;
-	background-color: lightblue;
-}
-
-#modifiers-button-row {
+#effort-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;
 	width: 97%;

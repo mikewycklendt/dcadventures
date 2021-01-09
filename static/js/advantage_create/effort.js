@@ -7,6 +7,30 @@ function effort_check() {
 	entry_check(check, title, base, entry);
 }
 
+function effort_effect() {
+	const select = 'effort_effect';
+	const options = [{'val': 'benefit', 'div': 'effort-benefit'}]
+	const entry = 'effort-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
+
+function effort_condition_type() {
+	const field = 'effort_condition_type';
+	const options = [{'val': 'damage', 'div': 'effort-condition-damage'},
+					{'val': 'condition', 'div': 'effort-conditions'}];
+
+	select_opacity(field, options);
+}
+
+function effort_benefit_choice() {
+	const select = 'effort_benefit_choice';
+	const options = [{'val': 'x', 'div': 'effort-benefit-count'}]
+
+	select_opacity(select, options);
+}
+
 let effort_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
