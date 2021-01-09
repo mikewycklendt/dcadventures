@@ -60,11 +60,11 @@ def home():
 
 @app.route('/benefit/create')
 def benefit_create():
-	
+
 	results = Benefit.query.all()
 
 	for result in results:
-		approve = db.session.query(Benefit).filter(Benefit.id == result.id)
+		approve = db.session.query(Benefit).filter(Benefit.id == result.id).one()
 		approve.approved = True
 		db.session.commit()
 		db.session.close()
