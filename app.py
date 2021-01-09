@@ -57,25 +57,6 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/benefit/create')
-def benefit_create():
-
-	benefit = ['Action', 'Bonus', 'Power', 'Power Stunt', 'Resistance', 'Retry', 'Speed', 'Strength']
-
-	for i in benefit:
-
-		entry = Benefit(name=i, effort=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Benefit.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('benefit added')
-
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
