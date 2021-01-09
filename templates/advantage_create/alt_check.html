@@ -1,0 +1,134 @@
+<div id="check-header">
+
+	<div id="check-title">
+		<input type="checkbox" id="check_check" class="regular-checkbox big-checkbox" onclick="check_check()"> Alternate Check:
+	</div>
+	
+	<div id="check-base">
+	</div>
+
+</div>
+
+<div id="check-entry">
+	<div id="check-row1">
+
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			Circumstance:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_check_type" name="check_check_type">
+				<option value="">Check Type</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_mod" name="check_mod">
+				<option value="">Modifier</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<input type="text" id="check_circ" name="check_circ">
+		</div>
+	</div>
+
+	<div id="check-row2">
+
+		<div>
+			<select class="entry-select" id="check_trigger" name="check_trigger" onchange="check_trigger()">
+				{% for c in check_trigger %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_when" name="check_when">
+				{% for c in check_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_trait_type" name="check_trait_type" onchange="check_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_trait" name="check_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div id="check-condition">
+		<div style="text-align: left;">
+			Triggered by Condition:
+		</div>
+
+		<div>
+			From:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_condition1" name="check_condition2">
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endffor %}
+			</select>
+		</div>
+
+		<div>
+			To:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_condition1" name="check_condition2">
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endffor %}
+			</select>
+		</div>
+	</div>
+	<div id="check-button-row">
+		<div></div>
+
+		<div>
+			<div class="btn-entry" id="check_submit" name="check_submit" onclick="check_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+<div id="alt-check-spot"></div>
+
+<div id="check-err"></div>

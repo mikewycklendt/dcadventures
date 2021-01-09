@@ -11,6 +11,7 @@
 @import "advantage_create/combined.css";
 @import "advantage_create/resist.css";
 @import "advantage_create/variable.css";
+@import "advantage_create/alt_check.css";
 
 .advantage-container {
 	display: grid;
@@ -97,6 +98,12 @@ select:focus {
 }
 
 .select-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.entry-select {
 	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;

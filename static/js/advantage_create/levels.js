@@ -42,7 +42,7 @@ function levels_submit() {
 	const err_line = 'levels-err-line';
 	const level_selects = 'level-type-sml';
 
-	response = fetch('/power/levels/create', {
+	response = fetch('/advantage/levels/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
