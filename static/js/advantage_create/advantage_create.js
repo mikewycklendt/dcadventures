@@ -408,7 +408,7 @@ function show_maxheight_value(div_input, div2_input) {
 	}, 300)
 }
 
-function hide_maxheight_value(div_input) {
+function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
 	div.style.maxHeight = div.scrollHeight - div.scrollHeight + 'px';
