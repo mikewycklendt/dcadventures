@@ -58,7 +58,7 @@
 	grid-auto-rows: auto;
 }
 
-#check--row2 {
+#check-row2 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
