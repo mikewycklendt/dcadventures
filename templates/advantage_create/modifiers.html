@@ -31,6 +31,7 @@
 		<div>
 			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
 				<option value="">Bonus</option>
+				<option value="advantage">This Rank</option>
 				<option value="0">0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -51,6 +52,8 @@
 		<div>
 			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
 				<option value="">Penalty</option>
+				<option value="advantage">This Rank</option>
+				<option value="bonus">Bonus Value</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -170,6 +173,33 @@
 
 		</div>
 
+	</div>
+
+	<div id="modifiers-row4">
+
+		<div>
+
+			<div id="modifiers-bonus-defense">
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="modifiers_bonus_active_defense" class="medium-checkbox med-checkbox"> Becomes Active Defense
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<div>
+
+			<div id="modifiers-penalty-defense">
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="modifiers_penalty_active_defense" class="medium-checkbox med-checkbox"> Becomes Active Defense
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
 	
 	<div id="modifiers-button-row">

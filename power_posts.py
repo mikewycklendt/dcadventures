@@ -169,6 +169,8 @@ def integer_convert(value):
 		value = 'Automatic'
 	elif value == 544:
 		value = 'Advantage Rank'
+	elif value == 655:
+		value = 'Same as Bonus'
 	elif value is None:
 		value = ''
 	else:

@@ -645,6 +645,8 @@ def integer(value):
 		value = 433
 	elif value == 'advantage':
 		value = 544
+	elif value == 'bonus':
+		value = 655
 	elif value == 'x':
 		value = None
 	elif value == '':

@@ -478,7 +478,7 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 	
 	if (val1 != option1 && val2 != option1) {
 		if (val1 != option2 && val2 != option2) {
-			hide_maxheight_value(div);
+			hide_maxheight_value(div, div2);
 		 }
 	}
 }
