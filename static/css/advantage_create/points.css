@@ -29,6 +29,14 @@
 	gap: .3vw;
 }
 
+#points-equipment {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 25% 35% 40%;
+	gap: .3vw;
+}
+
 #points-benefit {
 	display: none;
 	opacity: 0%;

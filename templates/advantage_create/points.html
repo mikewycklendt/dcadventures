@@ -22,6 +22,27 @@
 
 		<div>
 
+			<div id="points-equipment">
+				<div>
+					<select class="select-entry" id="equipment_points" name="equipment_points">
+						<option value="">Points/Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="equipment_vehicles" class="medium-checkbox med-checkbox" > Vehicles
+					</div>
+				</div>
+
+				<div>
+					<input type="checkbox" id="equipment_headquarters" class="medium-checkbox med-checkbox" > Headquarters
+				</div>
+			</div>
+
 			<div id="points-check">
 				<div>
 					<select class="select-sml" id="points_check_bonus" name="points_check_bonus">
