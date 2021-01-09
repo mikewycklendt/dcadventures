@@ -49,7 +49,7 @@ function benefit_submit() {
 			const id = jsonResponse.id;
 			const benefit_name = jsonResponse.name;
 					
-			let benefits_select = document.getElementsByClassName(benefit-sml);
+			let benefits_selects = document.getElementsByClassName(benefit-sml);
 			let benefit;
 					
 			for (benefit in benefits_select) {
@@ -60,7 +60,7 @@ function benefit_submit() {
 			}
 					
 								
-			let benefits_select = document.getElementsByClassName(benefit-entry);
+			let benefits_selects = document.getElementsByClassName(benefit-entry);
 			let benefit;
 					
 			for (benefit in benefits_select) {
