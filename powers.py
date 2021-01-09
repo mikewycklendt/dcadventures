@@ -453,6 +453,8 @@ def power_trait_select():
 		body['options'] = ['Variable']
 	elif trait == 'auto':
 		body['options'] = ['Automatic']
+	elif trait == '':
+		body['options'] = ['Trait']
 	elif trait == 'immoveable':
 		body['options'] = ['Immoveable']
 	else:
