@@ -49,10 +49,10 @@ function benefit_submit() {
 			const id = jsonResponse.id;
 			const benefit_name = jsonResponse.name;
 					
-			let benefits_selects = document.getElementsByClassName(benefit-sml);
+			let benefits_selects = document.getElementsByClassName('benefit-sml');
 			let benefit;
 					
-			for (benefit in benefits_select) {
+			for (benefit in benefits_selects) {
 				const o = document.createElement('option');
 				o.value = id;
 				o.text = benefit_name;
@@ -60,10 +60,10 @@ function benefit_submit() {
 			}
 					
 								
-			let benefits_selects = document.getElementsByClassName(benefit-entry);
+			benefits_selects = document.getElementsByClassName('benefit-entry');
 			let benefit;
 					
-			for (benefit in benefits_select) {
+			for (benefit in benefits_selects) {
 				const o = document.createElement('option');
 				o.value = id;
 				o.text = benefit_name;
