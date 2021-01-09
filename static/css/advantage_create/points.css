@@ -29,6 +29,15 @@
 	gap: .3vw;
 }
 
+#points-check {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 15% 8% 35% 7% 35%;
+	gap: .3vw;
+	text-align: center;
+}
+
 #points-equipment {
 	display: none;
 	opacity: 0%;

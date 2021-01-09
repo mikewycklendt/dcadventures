@@ -22,9 +22,46 @@
 
 		<div>
 
+			<div id="points-condition">
+				<div>
+					<select class="select-entry" id="points_condition_cost" name="points_condition_cost">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{i}>{{}i}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					From:
+				</div>
+
+				<div>
+					<select class="select-entry" id="points_condition1" name="points_condition1">
+						<option value="">Starting Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					To:
+				</div>
+				
+				<div>
+					<select class="select-entry" id="points_condition2" name="points_condition2">
+						<option value="">Ending Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="points-equipment">
 				<div>
-					<select class="select-entry" id="equipment_points" name="equipment_points">
+					<select class="select-entry" id="points_equipment_points" name="equipment_points">
 						<option value="">Points to Spend Per Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
@@ -34,13 +71,13 @@
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="equipment_vehicles" class="medium-checkbox med-checkbox" > Vehicles
+						<input type="checkbox" id="points_equipment_vehicles" class="medium-checkbox med-checkbox" > Vehicles
 					</div>
 				</div>
 
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="equipment_headquarters" class="medium-checkbox med-checkbox" > Headquarters
+						<input type="checkbox" id="points_equipment_headquarters" class="medium-checkbox med-checkbox" > Headquarters
 					</div>
 				</div>
 			</div>

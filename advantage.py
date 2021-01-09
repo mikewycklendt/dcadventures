@@ -135,7 +135,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}, {'type': 'check', 'name': 'Check Bonus'}, {'type': 'equip', 'name': 'Equipment'}]
+	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}, {'type': 'check', 'name': 'Check Bonus'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'condition', 'name': 'Change Condition'}]
 
 	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
 
