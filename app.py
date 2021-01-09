@@ -57,6 +57,28 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+
+@app.route('/benefit/create')
+def benefit_create():
+	
+	results = Benefit.query.all()
+
+	for result in results:
+		approve = db.session.query(Benefit).filter(Benefit.id == result.id)
+		approve.approved = True
+		db.session.commit()
+		db.session.close()
+		print (result.id)
+		print (result.name)
+	
+	results = Benefit.query.all()
+
+	for r in results:
+		print (r.id)
+		print (r.name)
+		print (r.approved)
+
+	return ('approved')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
