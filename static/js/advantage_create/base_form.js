@@ -203,6 +203,12 @@ function gm_trait_type() {
 function trait_type() {
 	const select = 'trait_type';
 	const fill = 'trait'
+	const check = "variable_check";
+	const base = 'variable-base';
+	const entry = 'variable-entry';
+	const value = 'x';
+
+	select_entry(check, base, entry, select, value);
 
 	trait_select(select, fill);
 }

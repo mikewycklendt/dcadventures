@@ -69,7 +69,6 @@
 				<div>
 					<select class="base-select" id="ranked_ranks" name="ranked_ranks">
 						<option value="">Ranks</option>
-						<option value="x">Variable</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -97,10 +96,11 @@
 	
 		<div class="base-trait">
 			<div>
-				<select class="base-select" id="trait_type" name="trait_type" onchange="trait_type()">
+				<select class="base-select" id="trait_type" name="trait_type" onchange="trait_type();">
 					{% for t in traits %}
 						<option value="{{t.type}}">{{t.name}}</option>
 					{% endfor %}
+					<option value="x">Variable</option>
 				</select>
 			</div>
 

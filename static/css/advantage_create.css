@@ -9,6 +9,8 @@
 @import "advantage_create/points.css";
 @import "advantage_create/time.css";
 @import "advantage_create/combined.css";
+@import "advantage_create/resist.css";
+@import "advantage_create/variable.css";
 
 .advantage-container {
 	display: grid;

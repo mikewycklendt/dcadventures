@@ -1,0 +1,90 @@
+<div class="advantage-header" id="resist-header">
+
+	<div class="advantage-title" id="resist-title">
+		<input type="checkbox" id="resist_check" class="regular-checkbox big-checkbox" onclick="resist_check()"> Resistance Check:
+	</div>
+	
+	<div class="advantage-base" id="resist-base">
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="resist-entry">
+
+	<div id="resist-row1">
+
+		<div>
+			Resisted By:
+		</div>
+
+		<div></div>
+
+		<div>
+			Modifier:
+		</div>
+
+		<div>
+			If Multiple:
+		</div>
+
+		<div>
+			<select class="select-entry" id="resist_trait_type" name="resist_trait_type" onchange="resist_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="resist_trait_type" name="resist_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="resist_mod" name="resist_mod">
+				<option value="">Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="resist_which" name="resist_which">
+				{% for w in which %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="resist-button-row">
+		<div>
+		</div>
+
+		<div>
+			<select class="select-entry" id="resist_ranks" name="resist_ranks">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="resist_submit" name="resist_submit" onclick="resist_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="resist-spot"></div>
+
+<div class="err" id="resist-err"></div>

@@ -1,0 +1,40 @@
+<div class="advantage-header" id="variable-header">
+
+	<div class="advantage-title" id="variable-title">
+		<input type="checkbox" id="variable_check" class="regular-checkbox big-checkbox" onclick="variable_check()"> Variable Trait:
+	</div>
+	
+	<div class="advantage-base" id="variable-base">
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="variable-entry">
+
+	<div id="variable-row1">
+		<div>
+			<select class="select-entry" id="variable_trait_type" name="variable_trait_type" onchange="variable_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="variable_trait" name="variable_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="variable_submit" name="variable_submit" onclick="variable_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="variable-spot"></div>
+
+<div class="err" id="variable-err"></div>

@@ -1,0 +1,15 @@
+#variable-header {
+	grid-template-columns: 70% 30%;
+}
+
+#variable-base {
+	grid-template-columns: 100%;
+}
+
+#variable-row1 {
+	display: grid;
+	width: 98%;
+	gap: .4VW;
+	grid-template-columns: 35% 45% 20%;
+	grid-auto-rows: auto;
+}
