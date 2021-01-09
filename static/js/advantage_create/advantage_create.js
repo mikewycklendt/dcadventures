@@ -527,7 +527,14 @@ function select_maxheight(select, options) {
 
 		if (val != valu) {
 			hide_maxheight(div);
-		} else {
+		};
+	}
+	
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val == valu) {
 			show_maxheight(div);
 		}
 	};
