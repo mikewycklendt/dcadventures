@@ -7,8 +7,8 @@ function points_check() {
 	entry_check(check, title, base, entry);
 }
 
-function points_benefit() {
-	const select = 'points_benefit';
+function points_spend() {
+	const select = 'points_spend';
 	const options = [{'val': 'ranks', 'div': 'points-ranks'},
 					{'val': 'benefit', 'div': 'points-benefit'},
 					{'val': 'check', 'div': 'points-check'},

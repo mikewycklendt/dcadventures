@@ -19,7 +19,7 @@
 
 	<div id="points-row1">
 		<div>
-			<select class="select-entry" id="points_benefit" name="`points_benefit" onchange="points_benefit()">
+			<select class="select-entry" id="points_spend" name="`points_spend" onchange="points_spend()">
 				{% for p in points %}
 					<option value="{{p.type}}">{{p.name}}</option>
 				{% endfor %}
