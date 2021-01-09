@@ -206,3 +206,10 @@ function trait_type() {
 
 	trait_select(select, fill);
 }
+
+function ranked() {
+	const check = 'ranked';
+	const div = 'base-ranked';
+
+	check_opacity(check, div);
+}
