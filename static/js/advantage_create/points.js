@@ -4,7 +4,7 @@ function points_check() {
 	const base = 'points-base';
 	const entry = "points-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function points_benefit() {

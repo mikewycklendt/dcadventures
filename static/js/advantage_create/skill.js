@@ -4,7 +4,7 @@ function skill_check() {
 	const base = 'skill-base';
 	const entry = "skill-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function skill_replaced_trait_type() {

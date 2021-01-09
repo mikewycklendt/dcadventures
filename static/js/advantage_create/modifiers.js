@@ -4,7 +4,7 @@ function modifiers_check() {
 	const base = 'modifiers-base';
 	const entry = "modifiers-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function modifiers_bonus_effect() {

@@ -4,7 +4,7 @@ function effort_check() {
 	const base = 'effort-base';
 	const entry = "effort-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 let effort_grid = {'titles': false,

@@ -4,7 +4,7 @@ function time_check() {
 	const base = 'time-base';
 	const entry = "time-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function time_base() {

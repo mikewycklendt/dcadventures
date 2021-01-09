@@ -616,12 +616,14 @@ function base_multiple_text(field_inputs, textfield_input, entry_input) {
 	}
 }
 
-function entry_check(check_input, title_input, entry_input) {
+function entry_check(check_input, title_input, base_input, entry_input) {
 	const check = document.getElementById(check_input);
 	const entry = document.getElementById(entry_input);
 	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input)
 	
 	if (check.checked == true) {
+		base.style.opacity = '100%'
 		entry.style.display = "grid";
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";
@@ -629,6 +631,7 @@ function entry_check(check_input, title_input, entry_input) {
 		title.style.fontSize = "207%";
 		setTimeout(function(){title.style.fontSize = "200%"}, 75);
 	} else {
+		base.style.opacity = '0%'
 		entry.style.maxHeight = "0px";
 		setTimeout(function(){entry.style.display = 'none';}, 400);
 		title.style.color = "#245681";

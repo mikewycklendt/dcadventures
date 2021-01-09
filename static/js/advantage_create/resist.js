@@ -4,7 +4,7 @@ function resist_check() {
 	const base = 'resist-base';
 	const entry = "resist-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function resist_trait_type() {

@@ -4,7 +4,7 @@ function opposed_check() {
 	const base = 'opposed-base';
 	const entry = "opposed-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function opposed_base() {

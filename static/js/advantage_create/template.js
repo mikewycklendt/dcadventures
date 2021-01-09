@@ -7,23 +7,23 @@ function modifiers_check() {
 	entry_check(check, title, entry);
 }
 
-let modifiers_grid = {'titles': false,
+let benefit_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
 					'mod': []}
 
-function modifiers_submit() {
+function benefit_submit() {
 
-	const columns = modifiers_grid.columns;
-	const created = modifiers_grid.titles;
-	const font = modifiers_grid.font;
+	const columns = benefit_grid.columns;
+	const created = benefit_grid.titles;
+	const font = benefit_grid.font;
 
 	const advantage_id = document.getElementById('advantage_id').value;
+	
+	const errors = 'benefit-err';
+	const err_line = 'benefit-err-line';
 
-	const errors = 'modifiers-err';
-	const err_line = 'modifiers-err-line';
-
-	response = fetch('/advantage/modifiers/create', {
+	response = fetch('/advantage/benefit/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,

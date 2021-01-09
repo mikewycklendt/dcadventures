@@ -12,7 +12,11 @@ def benefit_create():
 	results = Benefit.query.all()
 
 	for result in results:
+		approve = db.session.query(Benefit).filter(Benefit.id == result.id)
+		approve.approved = True
+		db.session.commit()
+		db.session.close()
 		print (result.id)
 		print (result.name)
 
-	return ('origins added')
+	return ('benefit added')

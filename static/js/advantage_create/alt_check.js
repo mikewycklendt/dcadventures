@@ -4,7 +4,7 @@ function check_check() {
 	const base = 'check-base';
 	const entry = "check-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function check_base() {
