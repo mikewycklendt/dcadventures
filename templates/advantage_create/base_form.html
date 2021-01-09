@@ -54,29 +54,6 @@
 		</div>
 
 	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Trait to Check:
-		</div>
-	
-		<div class="base-trait">
-			<div>
-				<select class="base-select" id="trait_type" name="trait_type" onchange="trait_type()">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="trait" name="trait">
-					<option value="">Trait</option>
-				</select>
-			</div>
-		</div>
-
-	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -110,6 +87,29 @@
 
 			</div>
 		</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Trait to Check:
+		</div>
+	
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="trait_type" name="trait_type" onchange="trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="trait" name="trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+
+	</div>
 
 	</div>
 
