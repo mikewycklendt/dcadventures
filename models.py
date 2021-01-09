@@ -913,6 +913,7 @@ class Benefit(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	effort = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -920,7 +921,8 @@ class Benefit(db.Model):
 			'advantage_id': self.advantage_id,
 			'name': self.name,
 			'description': self.description,
-			'effort': self.effort
+			'effort': self.effort,
+			'approved': self.approved
 		}
 
 class PowerAltCheck(db.Model):
