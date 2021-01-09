@@ -25,7 +25,7 @@
 			<div id="points-equipment">
 				<div>
 					<select class="select-entry" id="equipment_points" name="equipment_points">
-						<option value="">Points/Rank</option>
+						<option value="">Points to Spend Per Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -39,7 +39,9 @@
 				</div>
 
 				<div>
-					<input type="checkbox" id="equipment_headquarters" class="medium-checkbox med-checkbox" > Headquarters
+					<div class="check-div">
+						<input type="checkbox" id="equipment_headquarters" class="medium-checkbox med-checkbox" > Headquarters
+					</div>
 				</div>
 			</div>
 

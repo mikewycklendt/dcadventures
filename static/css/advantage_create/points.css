@@ -33,7 +33,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 25% 35% 40%;
+	grid-template-columns: 50% 20% 30%;
 	gap: .3vw;
 }
 
