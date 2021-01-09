@@ -66,6 +66,13 @@
 	margin-bottom: 20px;
 }
 
+#advantage-base input[type="text"] {
+	height: 1.4vw;
+	width: 94%;
+	padding: .3vw;
+	background-color: lightblue;
+}
+
 .base-select {
 	height: 1.9vw;
 	padding: .1vw;
@@ -150,4 +157,11 @@
 #base-ranked {
 	opacity: 0%;
 	transition: all .4s ease-out;
+}
+
+#base-skill-description {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
 }
