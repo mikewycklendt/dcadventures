@@ -891,6 +891,7 @@ class Extra(db.Model):
 	ranks = db.Column(db.Integer)
 	des = db.Column(db.String())
 	inherit = db.Column(db.String())
+	alternate = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -900,7 +901,8 @@ class Extra(db.Model):
 			'cost': self.cost,
 			'ranks': self.ranks,
 			'des': self.des,
-			'inherit': self.inherit
+			'inherit': self.inherit,
+			'alternate': self.alternate
 		}
 
 class PowerAltCheck(db.Model):
