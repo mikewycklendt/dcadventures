@@ -61,7 +61,6 @@ function benefit_submit() {
 					
 								
 			benefits_selects = document.getElementsByClassName('benefit-entry');
-			let benefit;
 					
 			for (benefit in benefits_selects) {
 				const o = document.createElement('option');
