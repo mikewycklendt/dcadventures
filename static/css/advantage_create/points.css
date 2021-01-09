@@ -50,8 +50,14 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 40% 20% 20% 20%;
 	gap: .3vw;
+}
+
+#points-benefit-count {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 #points-benefit input[type="text"] {

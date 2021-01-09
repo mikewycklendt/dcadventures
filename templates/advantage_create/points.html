@@ -113,11 +113,42 @@
 
 			<div id="points-benefit">
 				<div>
-					<input type="text" id="points_benefit_name" name="points_benefit_name" placeholder="Name">
+					<select class="benefit-entry" id="points_benefit_choice" name="points_benefit_choice" onchange="points_benefit_choice()">
+						<option value="">Benefit</option>
+						<option value="x">Variable</option>
+						{% for b in benefits %}
+							<option value={{b.id}}>{{b.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="points-benefit-count">
+					<select class="select-entry" id="points_benefit_count" name="points_benefit_count">
+						<option value="">Count</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
 				</div>
 
 				<div>
-					<input type="text" id="points_benefit" name="points_benefit" placeholder="Description">
+					<select class="select-entry" id="points_benefit_cost" name="points_benefit_cost">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{I}}>{{I}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="points_benefit_turns" name="points_benefit_turns">
+						<option value="">Turns</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 

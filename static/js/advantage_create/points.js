@@ -18,6 +18,13 @@ function points_spend() {
 	select_opacity(select, options)
 }
 
+function points_benefit_choice() {
+	const select = 'points_benefit_choice';
+	const options = [{'val': 'x', 'div': 'points-benefit-count'}]
+
+	select_opacity(select, options);
+}
+
 function points_ranks_trait_type() {
 	const select = 'points_ranks_trait_type';
 	const fill = 'points_ranks_trait';
