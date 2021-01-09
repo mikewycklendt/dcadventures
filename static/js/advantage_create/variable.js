@@ -4,7 +4,7 @@ function variable_check() {
 	const base = 'variable-base';
 	const entry = "variable-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 function variable_trait_type() {

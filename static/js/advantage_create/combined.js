@@ -4,7 +4,7 @@ function combined_check() {
 	const base = 'combined-base';
 	const entry = "combined-entry";
 
-	entry_check(check, title, entry);
+	entry_check(check, title, base, entry);
 }
 
 let combined_grid = {'titles': false,
