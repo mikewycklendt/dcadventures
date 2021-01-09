@@ -213,7 +213,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 	
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
-	
+
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
 	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
@@ -449,6 +449,8 @@ def power_trait_select():
 		body['options'] = ['Intimidation Rank']
 	elif trait == 'any':
 		body['options'] = ['Any Trait']
+	elif trait == 'x':
+		body['options'] = ['Variable']
 	elif trait == 'auto':
 		body['options'] = ['Automatic']
 	elif trait == 'immoveable':
