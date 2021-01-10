@@ -428,9 +428,10 @@ function shrink_entry(entry_input, div_input) {
 
 function grow_entry(entry_input, val) {
 	const entry = document.getElementById(entry_input);
+	const div = document.getElementById(div_input);
 
 	setTimeout(function(){
-		entry.style.maxHeight = val;
+		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
 	}, 300)
 }
 
@@ -544,7 +545,7 @@ function double_select(select_input1, select_input2, options, object, div, div_g
 	if (grow == true) {
 		console.log('grow')
 		show_maxheight_value(div, div_grow);
-		grow_entry(entry, div_grow);	
+		grow_entry(entry, div);	
 		object.status = true
 	}
 }
