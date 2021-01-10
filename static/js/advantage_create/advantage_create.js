@@ -489,21 +489,36 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 }
 
 
-function double_select(select_input1, select_input2, options, div, div_grow, entry) {
+function double_select(select_input1, select_input2, options, status, div, div_grow, entry) {
 	const field1 = document.getElementById(select_input1);
 	const val1 = field1.options[field1.selectedIndex].value;
 	const field2 = document.getElementById(select_input2);
 	const val2 = field2.options[field2.selectedIndex].value;
 
 	let shrink = true;
+	let grow = false;
 	let option;
 
-	let grow = false
 	for (option in options) {
-		if (val1 == option && val2 != option ) {
-			grow = true;
-			shrink = false;
+		if (val1 == option) {
+			grow == true
 		}
+		console.log(option);
+		console.log(grow)	
+		if  (val2 == option) {
+			grow == false
+		}
+		console.log(grow)
+
+		if (val1 == option || val2 == option) {
+			shrink = false;
+			status = false;
+		}
+		console.log(shrink)
+	}
+
+	if (status == true) {
+		grow = false;
 	}
 
 	console.log(shrink)

@@ -7,6 +7,8 @@ function modifiers_check() {
 	entry_check(check, title, base, entry);
 }
 
+let modifiers_effect = {'status': false}
+
 function modifiers_bonus_effect() {
 	const select1 = 'modifiers_bonus_effect';
 	const select2 = 'modifiers_penalty_effect';
@@ -18,9 +20,11 @@ function modifiers_bonus_effect() {
 	const div = 'modifiers-row3';
 	const div_grow = 'modifiers-bonus-trait';
 
+	console.log(modifiers_effect.status)
+
 	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 
-	double_select(select1, select2, options, div_grow, div, entry);
+	double_select(select1, select2, options, modifiers_effect.status, div_grow, div, entry);
 	select_opacity(select1, divs)
 }
 
