@@ -405,7 +405,6 @@ function show_maxheight(div_input) {
 
 function show_maxheight_value(div_input, val) {
 	const div = document.getElementById(div_input);
-	const div2 = document.getElementById(div2_input);
 
 	setTimeout(function(){
 		div.style.display = 'grid';
