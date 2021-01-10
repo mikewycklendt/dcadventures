@@ -415,6 +415,13 @@ function show_maxheight_value(div_input, val) {
 function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
+	div.style.maxHeight = '0';
+	setTimeout(function(){div.style.display = 'none'}, 300)
+}
+
+function hide_maxheight_value(div_input) {
+	const div = document.getElementById(div_input);
+
 	div.style.maxHeight = '0vw';
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
