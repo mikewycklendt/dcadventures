@@ -489,7 +489,7 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 }
 
 
-function double_select(select_input1, select_input2, options, status, div, div_grow, entry) {
+function double_select(select_input1, select_input2, options, object, div, div_grow, entry) {
 	const field1 = document.getElementById(select_input1);
 	const val1 = field1.options[field1.selectedIndex].value;
 	const field2 = document.getElementById(select_input2);
@@ -498,7 +498,7 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 	let shrink;
 	let grow;
 	let option;
-
+	const status = object.status;
 	console.log(status)
 	
 	if (status == false) {
@@ -538,7 +538,7 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 	if (shrink == true) {
 		console.log('shrink')
 		hide_maxheight(div);
-		status = false;
+		object.status = false;
 	} else if (shrink == false) {
 		console.log('dont shrink')
 	}
@@ -547,7 +547,7 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 		console.log('grow')
 		show_maxheight_value(div, div_grow);
 		grow_entry(entry, select_input1);	
-		status = true
+		object.status = true
 	}
 }
 
