@@ -2,7 +2,7 @@ function rounds_check() {
 	const check = "rounds_check";
 	const title = "rounds-title";
 	const base = 'rounds-base';
-	const entry = "roundsentry";
+	const entry = "rounds-entry";
 
 	entry_check(check, title, base, entry);
 }
