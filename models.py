@@ -2824,6 +2824,17 @@ class VolumeCovert(db.Model):
 			'million': self.million 
 		}
 
+class Environment(db.Model):
+	__tablename__ = 'environments'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+		
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)

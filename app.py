@@ -11,7 +11,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime
-from models import Advantage, Consequence, Benefit
+from models import Advantage, Consequence, Benefit, Environment
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -56,6 +56,27 @@ def home():
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+
+
+@app.route('/env/create')
+def env_create():
+
+		environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
+
+
+	for i in environment:
+
+		entry = Environment(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Environment.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('environments added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
