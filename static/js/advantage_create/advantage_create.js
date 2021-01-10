@@ -495,28 +495,23 @@ function double_select(select_input1, select_input2, options, div, div_grow, ent
 	const field2 = document.getElementById(select_input2);
 	const val2 = field2.options[field2.selectedIndex].value;
 
-	let shrink = false;
+	let shrink = true;
 	let option;
 
-	
-	for (option in options) {
-		if (val1 != option && val2 != option ) {
-			shrink = true;
-		}
-	}
-
-	if (shrink == true) {
-		hide_maxheight(div);
-	}
-
+	let grow = false
 	for (option in options) {
 		if (val1 == option && val2 != option ) {
-			show_maxheight_value(div, div_grow);
-			show_maxheight_value(div, div_grow);
-			grow_entry(entry, select_input1);
+			grow = true;
+			shrink = false;
 		}
 	}
 	
+	if (shrink == true) {
+		hide_maxheight(div);
+	} else {
+		show_maxheight_value(div, div_grow);
+		grow_entry(entry, select_input1);
+	}
 }
 
 function double_select_maxheight_hide_entry(select1_input, select2_input, option1, option2, div, entry) {
