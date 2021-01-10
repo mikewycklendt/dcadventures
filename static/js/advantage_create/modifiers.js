@@ -41,7 +41,7 @@ function modifiers_penalty_effect() {
 	
 	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 	
-	double_select(select1, select2, options, div_grow, div, entry);
+	double_select(select1, select2, options, modifiers_effect.status, div_grow, div, entry);
 	select_opacity(select1, divs)
 }
 
