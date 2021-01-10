@@ -514,7 +514,7 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 			if (val2 == option) {
 				grow = false;
 			}
-			console.lo(option)
+			console.log(option)
 			console.log(grow)
 		}
 	} else {
