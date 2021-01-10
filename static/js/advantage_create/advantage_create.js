@@ -426,12 +426,11 @@ function shrink_entry(entry_input, div_input) {
 	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 }
 
-function grow_entry(entry_input, div_input) {
+function grow_entry(entry_input, val) {
 	const entry = document.getElementById(entry_input);
-	const div = document.getElementById(div_input);
 
 	setTimeout(function(){
-		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
+		entry.style.maxHeight = val;
 	}, 300)
 }
 
