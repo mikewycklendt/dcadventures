@@ -496,38 +496,31 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 	const val2 = field2.options[field2.selectedIndex].value;
 
 	let shrink = true;
-	let grow = false;
 	let option;
-
-	for (option in options) {
-		if (val1 == option) {
-			grow == true
+	
+	console.log(status);
+	if (status == false) {
+		for (option in options) {
+			if (val1 == option && val2 != option) {
+				show_maxheight_value(div, div_grow);
+				grow_entry(entry, select_input1);
+				status = true;
+			}
+			console.log(option);
+			console.log(status);
+		} 
+	} else {
+		for (option in options) {
+			if (val1 == option || val2 == option) {
+				shrink = false;
+			}
 		}
-		console.log(option);
-		console.log(grow)	
-		if  (val2 == option) {
-			grow == false
-		}
-		console.log(grow)
-
-		if (val1 == option || val2 == option) {
-			shrink = false;
-			status = false;
-		}
-		console.log(shrink)
 	}
-
-	if (status == true) {
-		grow = false;
-	}
-
 	console.log(shrink)
 	
 	if (shrink == true) {
 		hide_maxheight(div);
-	} else {
-		show_maxheight_value(div, div_grow);
-		grow_entry(entry, select_input1);
+		status = false;
 	}
 }
 
