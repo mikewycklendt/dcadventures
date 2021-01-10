@@ -18,7 +18,7 @@ function modifiers_bonus_effect() {
 	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}];
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
-	const div_grow = '1.4vw';
+	const div_grow = '1.8vw';
 
 	console.log(modifiers_effect.status)
 
@@ -37,7 +37,7 @@ function modifiers_penalty_effect() {
 	const options = ['trait', 'check']
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
-	const div_grow = '1.4vw';
+	const div_grow = '1.8vw';
 	
 	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 	
