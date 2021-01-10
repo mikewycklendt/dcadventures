@@ -432,7 +432,7 @@ function grow_entry(entry_input, div_input) {
 
 	setTimeout(function(){
 		entry.style.maxHeight = entry.scrollHeight + div.scrollHeight + 'px';
-	}, 300)
+	}, 310)
 }
 
 function select_maxheight_entry(select, options, entry) {
