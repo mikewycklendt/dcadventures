@@ -513,29 +513,38 @@ function double_select(select_input1, select_input2, options, status, div, div_g
 		for (option of options) {
 			if (val2 == option) {
 				grow = false;
-				console.log(grow)
 			}
+			console.lo(option)
+			console.log(grow)
 		}
 	} else {
+		shrink = true;
 		for (option of options) {
-			if (val1 == option || val2 == option) {
+			if (val1 == option) {
 				shrink = false;
-				status = true
+			}
+		}
+
+		for (option of options) {
+			if (val2 == option) {
+				shrink = false;
 			}
 		}
 	}
 
 	console.log(shrink)
 	console.log(status)
-	
-	if (shrink == false) {
-		console.log('dont shrink')
-	} else {
+	console.log(grow)
+	if (shrink == true) {
+		console.log('shrink')
 		hide_maxheight(div);
 		status = false;
+	} else if (shrink == false) {
+		console.log('dont shrink')
 	}
 
 	if (grow == true) {
+		console.log('grow')
 		show_maxheight_value(div, div_grow);
 		grow_entry(entry, select_input1);	
 		status = true
