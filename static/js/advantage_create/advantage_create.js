@@ -415,7 +415,7 @@ function show_maxheight_value(div_input, val) {
 function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
-	div.style.maxHeight = '0';
+	div.style.maxHeight = '0px';
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
 
@@ -543,7 +543,7 @@ function double_select(select_input1, select_input2, options, object, div, div_g
 	console.log(grow)
 	if (shrink == true) {
 		console.log('shrink')
-		hide_maxheight(div);
+		hide_maxheight_value(div);
 		object.status = false;
 	} else if (shrink == false) {
 		console.log('dont shrink')
