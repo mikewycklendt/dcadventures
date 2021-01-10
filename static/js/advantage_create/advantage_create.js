@@ -505,6 +505,8 @@ function double_select(select_input1, select_input2, options, div, div_grow, ent
 			shrink = false;
 		}
 	}
+
+	console.log(shrink)
 	
 	if (shrink == true) {
 		hide_maxheight(div);
