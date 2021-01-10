@@ -21,6 +21,13 @@ function check_trait_type() {
 	trait_select(select, fill);
 }
 
+function check_action_type() {
+	const select = 'check_action_type';
+	const fill = 'check_action';
+
+	action_select(select, fill);
+}
+
 function check_trigger() {
 	const select = 'check_trigger';
 	const options = [{'val': 'condition', 'div': 'check-condition'}];

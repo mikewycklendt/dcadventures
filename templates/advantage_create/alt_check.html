@@ -123,6 +123,28 @@
 		</div>
 	</div>
 	<div id="check-button-row">
+		<div>
+			<select class="entry-select" id="check_action_type" name="check_action_type" onchange="check_action_type()">
+				{% for a in action_type %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_action" name="check_action">
+				<option value="">Action</option>
+			</select> 
+		</div>
+
+		<div>
+			
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="check_free" class="medium-checkbox med-checkbox"> Free Check
+			</div>
+		</div>
+
 		<div></div>
 
 		<div>

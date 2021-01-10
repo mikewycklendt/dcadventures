@@ -58,8 +58,8 @@ function trait_select(select, fill) {
 			let option;
 		
 			let o = document.createElement("option")
-			o.value = 'Variable';
-			o.text = 'Variable';
+			o.value = 'x';
+			o.text = 'x';
 			update.add(o);
 
 			for (option of options)  {
