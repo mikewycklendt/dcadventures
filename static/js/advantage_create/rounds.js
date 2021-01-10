@@ -7,6 +7,13 @@ function rounds_check() {
 	entry_check(check, title, base, entry);
 }
 
+function rounds_trait_type() {
+	const select = 'rounds_trait_type';
+	const fill = 'rounds_trait';
+
+	trait_select(select, fill);
+}
+
 let rounds_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
