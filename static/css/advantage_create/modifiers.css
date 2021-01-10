@@ -10,7 +10,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 17% 18% 15% 17% 18% 15%;
+	grid-template-columns: 15% 15% 20% 15% 15% 20%;
 	grid-auto-rows: auto;
 }
 
@@ -18,8 +18,44 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 35% 15% 35% 15%;
+	grid-template-columns: 30% 20% 30% 20%;
 	grid-auto-rows: auto;
+}
+
+#modifiers-environment {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-sense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-condition {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-subsense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
 }
 
 #modifiers-row3 {
@@ -48,6 +84,24 @@
 	opacity: 0%;
 	transition: all .4s ease-out;
 	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
+#modifiers-bonus-conflict {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-conflict {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 100%;
 	gap: .3vw;
 }
 

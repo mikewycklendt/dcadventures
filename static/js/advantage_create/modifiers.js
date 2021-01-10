@@ -7,15 +7,25 @@ function modifiers_check() {
 	entry_check(check, title, base, entry);
 }
 
+function modifiers_trigger() {
+	const select = 'modifiers_trigger';
+	const options = [{'val': 'environment', 'div': 'modifiers-environment'}, 
+					{'val': 'sense', 'div': 'modifiers-sense'},
+					{'val': 'subsense', 'div': 'modifiers-subsense'},
+					{'val': 'condition', 'div': 'modifiers-condition'}]
+
+	select_opacity(select, options);
+}
+
 let modifiers_effect = {'status': false}
 
 function modifiers_bonus_effect() {
 	const select1 = 'modifiers_bonus_effect';
 	const select2 = 'modifiers_penalty_effect';
-	const option1 = 'trait';
-	const option2 = 'check';
-	const options = ['trait', 'check']
-	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}];
+	const options = ['trait', 'check', 'conflict']
+	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, 
+					{'val': 'check', 'div': 'modifiers-bonus-check'}, 
+					{'val': 'conflict', 'div': 'modifiers-bonus-conflict'}];
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
@@ -31,10 +41,10 @@ function modifiers_bonus_effect() {
 function modifiers_penalty_effect() {
 	const select1 = 'modifiers_penalty_effect';
 	const select2 = 'modifiers_bonus_effect';
-	const divs = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, {'val': 'check', 'div': 'modifiers-penalty-check'}];
-	const option1 = 'trait';
-	const option2 = 'check';
-	const options = ['trait', 'check']
+	const divs = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, 
+					{'val': 'check', 'div': 'modifiers-penalty-check'}, 
+					{'val': 'conflict', 'div': 'modifiers-penalty-conflict'}];
+	const options = ['trait', 'check', 'conflict']
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';

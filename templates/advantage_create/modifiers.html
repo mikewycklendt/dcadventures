@@ -24,15 +24,13 @@
 
 		<div></div>
 
-		<div></div>
-
 		<div>
 			Penalty:
 		</div>
 
 		<div></div>
 
-		<div></div>
+		<div>Trigger:</div>
 
 		<div>
 			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
@@ -53,8 +51,6 @@
 			</select>
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
 				<option value="">Penalty</option>
@@ -74,7 +70,13 @@
 			</select>
 		</div>
 
-		<div></div>
+		<div>
+			<select class="select-entry" id="modifiers_trigger" name="modifiers_trigger" onchange="modifiers_trigger()">
+				{% for m in modifier_trigger %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
 	</div>
 
@@ -87,8 +89,6 @@
 			</select>
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" onchange="modifiers_penalty_effect()">
 				{% for m in modifier_effect %}
@@ -97,7 +97,43 @@
 			</select>
 		</div>
 
-		<div></div>
+		<div>
+			<div id="modifiers-environment">
+				<select class="select-entry" id="modifiers_environment" name="modifiers_environment">
+					<option value="">Environment</option>
+					{% for e in environments %}
+						<option value={{e.id}}>{{e.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-sense">
+				<select class="select-entry" id="modifiers_sense" name="modifiers_sense">
+					<option value="">Sense</option>
+					{% for s in sense %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-subsense">
+				<select class="select-entry" id="modifiers_subsense" name="modifiers_subsense">
+					<option value="">SubSense</option>
+					{% for s in subsense %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-condition">
+				<select class="select-entry" id="modifiers_condition" name="modifiers_condition">
+					<option value="">Condition</option>
+					{% for c in conditions %}
+						<option value="{{c}}">{{c}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 	</div>
 
 	<div id="modifiers-row3">
@@ -138,6 +174,15 @@
 				</div>
 			</div>
 
+			<div id="modifiers-bonus-conflict">
+				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict">
+					<option value="">Conflict Action</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 		</div>
 
 		<div>
@@ -175,6 +220,15 @@
 						{% endfor %}
 					</select>
 				</div>
+			</div>
+
+			<div id="modifiers-penalty-conflict">
+				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict">
+					<option value="">Conflict Action</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
 
 		</div>

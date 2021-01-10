@@ -82,6 +82,12 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	times = db.session.query(Unit).filter_by(type_id=2)
 
+	environments = db.session.query(Environment).order_by(Environment.name).all()
+	
+	sense = db.session.query(Sense).order_by(Sense.name).all()
+
+	subsense = db.session.query(SubSense).order_by(SubSense.name).all()
+
 	base_conditions = Condition.query.all()
 	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
 	conditions_raw = []
@@ -100,8 +106,10 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	modifier_type = [{'type': '', 'name': 'Type'}, {'type': 'up', 'name': 'Up to'}, {'type': 'value', 'name': 'Exact'}, {'type': 'rank', 'name': 'Per Rank'}]
 	
-	modifier_effect = [{'type': '', 'name': 'Affects'}, {'type': 'effect', 'name': 'Effect Modifier'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'check', 'name': 'Check Type'}]
-	
+	modifier_effect = [{'type': '', 'name': 'Affects'}, {'type': 'effect', 'name': 'Effect Modifier'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
+
+	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}]
+
 	who_check = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
@@ -155,7 +163,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							traits=traits, who_check=who_check, circ_type=circ_type, circ_null=circ_null, permanence=permanence, low_high=low_high, deg_mod_type=deg_mod_type, level_types=level_types, 
 							value_type= value_type, maths=maths, measure_rank=measure_rank, condition_type=condition_type, updown=updown, knowledge=knowledge, specificity=specificity, negatives=negatives, 
 							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts, consequences=consequences, action_type=action_type, ranges=ranges,
-							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end)
+							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
+							environments=environments, sense=sense, subsense=subsense, modifier_trigger=modifier_trigger)
 
 
 @advantage.route('/advantage/create', methods=['POST'])

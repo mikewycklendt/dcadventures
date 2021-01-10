@@ -400,7 +400,7 @@ function show_maxheight(div_input) {
 	setTimeout(function(){
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
-	}, 310)
+	}, 300)
 }
 
 function show_maxheight_value(div_input, val) {
