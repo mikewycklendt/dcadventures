@@ -512,6 +512,7 @@ function double_select(select_input1, select_input2, options, div, div_grow, ent
 	for (option in options) {
 		if (val1 == option && val2 != option ) {
 			show_maxheight_value(div, div_grow);
+			show_maxheight_value(div, div_grow);
 			grow_entry(entry, select_input1);
 		}
 	}
