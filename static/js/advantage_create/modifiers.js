@@ -18,7 +18,7 @@ function modifiers_bonus_effect() {
 	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, {'val': 'check', 'div': 'modifiers-bonus-check'}];
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
-	const div_grow = 'modifiers-row2';
+	const div_grow = '1.4vw';
 
 	console.log(modifiers_effect.status)
 
