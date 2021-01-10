@@ -515,11 +515,6 @@ function double_select(select_input1, select_input2, options, div, div_grow, ent
 			grow_entry(entry, select_input1);
 		}
 	}
-
-	if (val1 == option1 || val1 == option2)  {
-		show_maxheight_value(div, div_grow);
-		grow_entry(entry, select_input1);
-	}
 	
 }
 
