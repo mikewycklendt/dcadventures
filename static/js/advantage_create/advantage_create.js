@@ -488,6 +488,41 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 	}
 }
 
+
+function double_select(select_input1, select_input2, options, div, div_grow, entry) {
+	const field1 = document.getElementById(select_input1);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select_input2);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	let shrink = false;
+	let option;
+
+	
+	for (option in options) {
+		if (val1 == option || val2 == option ) {
+			shrink = true;
+		}
+	}
+
+	if (shrink == true) {
+		hide_maxheight(div);
+	}
+
+	for (option in options) {
+		if (val1 == option || val2 == option ) {
+			show_maxheight_value(div, div_grow);
+			grow_entry(entry, select_input1);
+		}
+	}
+
+	if (val1 == option1 || val1 == option2)  {
+		show_maxheight_value(div, div_grow);
+		grow_entry(entry, select_input1);
+	}
+	
+}
+
 function double_select_maxheight_hide_entry(select1_input, select2_input, option1, option2, div, entry) {
 	const field1 = document.getElementById(select1_input);
 	const val1 = field1.options[field1.selectedIndex].value;
