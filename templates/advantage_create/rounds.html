@@ -40,7 +40,7 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="rounds_rounds" name="roundsrounds">
+			<select class="select-sml" id="rounds_rounds" name="roundsrounds">
 				<option value="">Turns</option>
 				<option value="round">Round</option>
 				<option value="scene">Scene</option>
@@ -51,7 +51,7 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="rounds_cost" name="roundscost">
+			<select class="select-sml" id="rounds_cost" name="roundscost">
 				<option value="">Action</option>
 				{% for a in actions %}
 					<option value="{{a.id}}">{{a.name}}</option>
@@ -59,24 +59,24 @@
 			</select>
 		</div>
 
-		<select class="select-entry" id="rounds_check" name="rounds_check">
+		<select class="select-sml" id="rounds_check" name="rounds_check">
 			<option value="">Check</option>
 			{% for c in checks %}
 				<option value={{c.id}}>{{c.name}}</option>
 			{% endfor %}
 		</select>
 
-		<select class="select-entry" id="rounds_trait_type" name="rounds_trait_type" onchange="rounds_trait_type()">
+		<select class="select-sml" id="rounds_trait_type" name="rounds_trait_type" onchange="rounds_trait_type()">
 			{% for t in traits %}
 				<option value="{{t.type}}">{{t.name}}</option>
 			{% endfor %}
 		</select>
 
-		<select class="select-entry" id="rounds_trait" name="rounds_trait">
+		<select class="select-sml" id="rounds_trait" name="rounds_trait">
 			<option value="">Trait</option>
 		</select>
 
-		<select class="select-entry" id="rounds_end" name="rounds_end">
+		<select class="select-sml" id="rounds_end" name="rounds_end">
 			{% for r in rounds_end %}
 				<option value="{{r.type}}">{{r.name}}</option>
 			{% endfor %}
