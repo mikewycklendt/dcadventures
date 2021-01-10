@@ -110,6 +110,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}]
 
+	multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'advantage', 'name': 'Choose When Choosing Advantage'} ]
+
 	who_check = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
@@ -164,7 +166,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							value_type= value_type, maths=maths, measure_rank=measure_rank, condition_type=condition_type, updown=updown, knowledge=knowledge, specificity=specificity, negatives=negatives, 
 							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts, consequences=consequences, action_type=action_type, ranges=ranges,
 							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
-							environments=environments, sense=sense, subsense=subsense, modifier_trigger=modifier_trigger)
+							environments=environments, sense=sense, subsense=subsense, modifier_trigger=modifier_trigger, multiple=multiple)
 
 
 @advantage.route('/advantage/create', methods=['POST'])

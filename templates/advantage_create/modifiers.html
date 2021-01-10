@@ -233,6 +233,16 @@
 
 		</div>
 
+		<div>
+			<div id="modifiers-multiple">
+				<select class="select-sml" id="modifiers_multiple" name="modifiers_multiple">
+					{% for m in multiple %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 	</div>
 
 	<div id="modifiers-row4">

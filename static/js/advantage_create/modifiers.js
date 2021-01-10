@@ -124,6 +124,10 @@ function modifiers_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const multiple_div = document.getElementById('modifiers-multiple')
+			multiple_div.style.display = 'grid';
+			setTimeout(function(){multiple_div.style.opacity = '100%'}, 10);
+
 			modifiers_grid.columns.length = 0;
 			modifiers_grid.columns = jsonResponse.rows;
 
