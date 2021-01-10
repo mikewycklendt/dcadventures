@@ -11,7 +11,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime
-from models import Advantage, Consequence, Benefit, Environment
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -57,24 +57,45 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/creatures/create')
+def creatures_create():
 
-@app.route('/env/create')
-def env_create():
+	entries = ['Alien', 'Animal', 'Construct', 'mETAHUMAN', 'Undead']
 
-	environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
-	
-	for i in environment:
-		entry = Environment(name=i)
+	for i in entries:
+
+		entry = Creature(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Environment.query.all()
+	results = Creature.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('environments added')
+	return ('creatures added')
+
+@app.route('/job/create')
+def job_create():
+
+	entries = ['Soldier', 'Police', 'Yakuza', 'Lawyer', 'Artist', 'Business', 'Carpentry', 'Chef', 'Criminal', 'Dancer', 'Historian', 'Journalist', 'Doctor', 'Musician', 'Magiccian',  'Philosopher', 'Politician', 'Actor', 'Psychiatrist', 'Psychologist', 'Scientist', 'Sociologist', 'Gangster', 'Theologist']
+
+	for i in entries:
+
+		entry = Job(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Job.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('professions added')
+
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
