@@ -1,0 +1,101 @@
+<div class="advantage-header" id="rounds-header">
+
+	<div class="advantage-title" id="rounds-title">
+		<input type="checkbox" id="rounds_check" class="regular-checkbox big-checkbox" onclick="rounds_check()"> Multiple Round Effect:
+	</div>
+	
+	<div class="advantage-base" id="rounds-base">
+		<div>
+			<select class="benwefit-entry" id="rounds_benefit" name="rounds_benefit">
+				<option value="">Benefit</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="rounds-entry">
+
+	<div id="rounds-row1">
+		<div>
+			Lasts:
+		</div>
+
+		<div>
+			Action:
+		</div>
+
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			Trait:
+		</div>
+
+		<div></div>
+
+		<div>
+			Ends:
+		</div>
+
+		<div>
+			<select class="select-entry" id="rounds_rounds" name="roundsrounds">
+				<option value="">Turns</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="rounds_cost" name="roundscost">
+				<option value="">Action</option>
+				{% for a in actions %}
+					<option value="{{a.id}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<select class="select-entry" id="rounds_check" name="rounds_check">
+			<option value="">Check</option>
+			{% for c in checks %}
+				<option value={{c.id}}>{{c.name}}</option>
+			{% endfor %}
+		</select>
+
+		<select class="select-entry" id="rounds_trait_type" name="rounds_trait_type" onchange="rounds_trait_type()">
+			{% for t in traits %}
+				<option value="{{t.type}}">{{t.name}}</option>
+			{% endfor %}
+		</select>
+
+		<select class="select-entry" id="rounds_trait" name="rounds_trait">
+			<option value="">Trait</option>
+		</select>
+
+		<select class="select-entry" id="rounds_end" name="rounds_end">
+			{% for r in rounds_end %}
+				<option value="{{r.type}}">{{r.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="rounds-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="rounds_submit" name="rounds_submit" onclick="rounds_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="rounds-spot"></div>
+
+<div class="err" id="rounds-err"></div>

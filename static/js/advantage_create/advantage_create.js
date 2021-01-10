@@ -56,6 +56,11 @@ function trait_select(select, fill) {
 
 			const options = jsonResponse.options;
 			let option;
+		
+			let o = document.createElement("option")
+			o.value = 'Variable';
+			o.text = 'Variable';
+			update.add(o);
 
 			for (option of options)  {
 				let o = document.createElement("option")

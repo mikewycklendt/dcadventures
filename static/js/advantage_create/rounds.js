@@ -1,29 +1,29 @@
-function modifiers_check() {
-	const check = "modifiers_check";
-	const title = "modifiers-title";
-	const base = 'modifiers-base';
-	const entry = "modifiers-entry";
+function rounds_check() {
+	const check = "rounds_check";
+	const title = "rounds-title";
+	const base = 'rounds-base';
+	const entry = "roundsentry";
 
 	entry_check(check, title, base, entry);
 }
 
-let benefit_grid = {'titles': false,
+let rounds_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
 					'mod': []}
 
-function benefit_submit() {
+function rounds_submit() {
 
-	const columns = benefit_grid.columns;
-	const created = benefit_grid.titles;
-	const font = benefit_grid.font;
+	const columns = rounds_grid.columns;
+	const created = rounds_grid.titles;
+	const font = rounds_grid.font;
 
 	const advantage_id = document.getElementById('advantage_id').value;
+	
+	const errors = 'rounds-err';
+	const err_line = 'rounds-err-line';
 
-	const errors = 'benefit-err';
-	const err_line = 'benefit-err-line';
-
-	response = fetch('/advantage/benefit/create', {
+	response = fetch('/advantage/rounds/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
@@ -40,15 +40,15 @@ function benefit_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			modifiers_grid.columns.length = 0;
-			modifiers_grid.columns = jsonResponse.rows;
+			rounds_grid.columns.length = 0;
+			rounds_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, modifiers_grid, route);
+			create_table(jsonResponse, rounds_grid, route);
 			clear_errors(err_line, errors)
 
-			modifiers_grid.titles = true;
+			rounds_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)
