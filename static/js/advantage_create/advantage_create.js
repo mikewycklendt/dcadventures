@@ -546,7 +546,7 @@ function double_select(select_input1, select_input2, options, object, div, div_g
 	if (grow == true) {
 		console.log('grow')
 		show_maxheight_value(div, div_grow);
-		grow_entry(entry, select_input1);	
+		grow_entry(entry, div_grow);	
 		object.status = true
 	}
 }
