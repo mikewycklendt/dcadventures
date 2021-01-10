@@ -61,11 +61,9 @@ def home():
 @app.route('/env/create')
 def env_create():
 
-		environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
-
+	environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
 
 	for i in environment:
-
 		entry = Environment(name=i)
 		db.session.add(entry)
 		db.session.commit()

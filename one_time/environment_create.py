@@ -1,7 +1,7 @@
 @app.route('/env/create')
 def env_create():
 
-		environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands']
+	environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
 
 
 	for i in environment:
@@ -10,10 +10,10 @@ def env_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Origin.query.all()
+	results = Environment.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('origins added')
+	return ('environments added')
