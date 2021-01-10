@@ -62,7 +62,7 @@ def home():
 def env_create():
 
 	environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
-
+	
 	for i in environment:
 		entry = Environment(name=i)
 		db.session.add(entry)

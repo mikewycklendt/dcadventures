@@ -1514,7 +1514,6 @@ class PowerEnv(db.Model):
 	immunity_type = db.Column(db.String())
 	temp_type = db.Column(db.String())
 	immunity_extremity = db.Column(db.String())
-	immunity_environment = db.Column(db.String())
 	no_penalty = db.Column(db.Boolean)
 	no_circumstance = db.Column(db.Boolean)
 	immunity_other = db.Column(db.String())
@@ -1548,7 +1547,6 @@ class PowerEnv(db.Model):
 			'immunity_type': self.immunity_type,
 			'temp_type': self.temp_type,
 			'immunity_extremity': self.immunity_extremity,
-			'immunity_environment': self.immunity_environment,
 			'no_penalty': self.no_penalty,
 			'no_circumstance': self.no_circumstance,
 			'immunity_other': self.immunity_other,
@@ -2834,7 +2832,7 @@ class Environment(db.Model):
 			'id': self.id,
 			'name': self.name
 		}
-		
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
