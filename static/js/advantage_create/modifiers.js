@@ -37,7 +37,7 @@ function modifiers_penalty_effect() {
 	const options = ['trait', 'check']
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
-	const div_grow = 'modifiers-row2';
+	const div_grow = '1.4vw';
 	
 	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 	
