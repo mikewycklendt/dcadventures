@@ -99,6 +99,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
 
+	environments = db.session.query(Environment).order_by(Environment.name).all()
+
 	skills = Skill.query.all()
 
 	abilities = Ability.query.all()
@@ -348,7 +350,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, immunity_type=immunity_type, circ_null=circ_null, space=space,
 											travel=travel, time_travel=time_travel, aquatic=aquatic, task_type=task_type, distances=distances, ranged_type=ranged_type, who_check=who_check, cover=cover,
 											minion_type=minion_type, minion_attitude=minion_attitude, teleport=teleport, teleport_change=teleport_change, transform=transform, weaken=weaken, measure_rank=measure_rank, 
-											conceal_type=conceal_type, level_types=level_types)
+											conceal_type=conceal_type, level_types=level_types, environments=environments)
 
 @powers.route('/power/level/select', methods=['POST'])
 def power_level_select():
@@ -2812,6 +2814,7 @@ def power_post_environment():
 	extra_id = extra_convert(extra_id)
 	radius = integer(radius)
 	distance = integer(distance)
+	immunity_environment = integer(immunity_environment)
 	rank = integer(rank)
 	move_speed = integer(move_speed)
 	visibility_mod = integer(visibility_mod)
