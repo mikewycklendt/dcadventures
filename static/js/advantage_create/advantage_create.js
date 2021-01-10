@@ -426,7 +426,7 @@ function shrink_entry(entry_input, div_input) {
 	entry.style.maxHeight = entry.scrollHeight - div.scrollHeight + 'px';
 }
 
-function grow_entry(entry_input, val) {
+function grow_entry(entry_input, div_input) {
 	const entry = document.getElementById(entry_input);
 	const div = document.getElementById(div_input);
 
