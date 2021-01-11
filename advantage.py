@@ -263,7 +263,7 @@ def advantage_trait_select():
 		body['options'] = [{'id': 'Immoveable', 'name': 'Immoveable'}]
 	else:
 		body['success'] = False
-		body['options'] = [{'id': '', 'name': '']
+		body['options'] = [{'id': '', 'name': ''}]
 
 
 	print(body)
