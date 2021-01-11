@@ -216,7 +216,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 30% 30% 40%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
@@ -229,7 +229,7 @@
 	width: 100%;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 80% 20%;
 	gap: .3vw;
 }
 
@@ -239,7 +239,7 @@
 	width: 100%;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 80% 20%;
 	gap: .3vw;
 }
 
