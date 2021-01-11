@@ -69,8 +69,6 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Advantaage Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
 	actions = db.session.query(Action).all()
-	
-	ranges = Range.query.all()
 
 	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
 	
@@ -178,7 +176,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts, consequences=consequences, action_type=action_type, ranges=ranges,
 							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
 							environments=environments, senses=senses, subsenses=subsenses, modifier_trigger=modifier_trigger, multiple=multiple, creatures=creatures, professions=professions, powers=powers,
-							emotions=emotions, ranges=ranges)
+							emotions=emotions)
 
 @advantage.route('/advantage/trait/select', methods=['POST'])
 def advantage_trait_select():
