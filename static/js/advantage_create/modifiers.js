@@ -16,7 +16,8 @@ function modifiers_trigger() {
 					{'val': 'profession', 'div': 'modifiers-profession'},
 					{'val': 'creature', 'div': 'modifiers-creature'},
 					{'val': 'db', 'div': 'modifiers-profession-other'},
-					{'val': 'db', 'div': 'modifiers-creature-other'}]
+					{'val': 'db', 'div': 'modifiers-creature-other'},
+					{'val': 'db', 'div': 'modifiers-environment-other'}]
 
 	select_opacity(select, options);
 }
