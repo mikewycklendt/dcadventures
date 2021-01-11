@@ -622,6 +622,82 @@ function select_opacity(select, options) {
 	};
 }
 
+function double_select_opacity(select1, select2, options, row, entry) {
+	const field1 = document.getElementById(select1);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	field1.setAttribute('previousValue', val1);
+	const old1 = field1.getAttribute('previousValue');
+	const old2 = field2.getAttribute('previousValue');
+	console.log('old1');
+	console.log(old1);
+	console.log('old2')
+	console.log(old2);
+
+	let o;
+	let grown = false;
+	let grow = false;
+	let div;
+	let shrink = true;
+
+	for (o of options) {
+		let val = o.val;
+		if (old1 == val ) {
+			grown = true;
+			div = o.div;
+		}
+
+		if (val2 == val) {
+			grown = true
+			shrink = false;
+		}
+
+		if (val1 == val) {
+			grow = true;
+			shrink = false;
+			div = o.div;
+		}
+	}
+	
+	console.log('grow');
+	console.log(grow);
+	console.log('shrink');
+	console.log(shrink);
+	console.log('grown')
+	console.log(grown);
+	console.log('div');
+	console.log(div);
+
+	if (grown == false) {
+		if (grow == true) {
+			const d = document.getElementById(div);
+			d.style.display = 'grid';
+			grow_entry(entry, div);
+			show_maxheight(row)
+		}
+	} 
+	
+	if (shrink == false) {
+		let option;
+
+		for (option of options) {
+			let valu = option.val;
+			let di = option.div;
+
+			if (val1 != valu) {
+				hide_opacity(di);
+			} else {
+				show_opacity(di);
+			}
+		}
+	} else {
+		hide_maxheight(row)
+		shrink_entry(entry, div)
+	}
+}
+
 function select_other(select, options, db) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;

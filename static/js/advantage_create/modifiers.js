@@ -63,17 +63,18 @@ let modifiers_effect = {'status': false}
 function modifiers_bonus_effect() {
 	const select1 = 'modifiers_bonus_effect';
 	const select2 = 'modifiers_penalty_effect';
-	const options = ['trait', 'check', 'conflict']
-	const divs = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, 
+	const option = ['trait', 'check', 'conflict']
+	const options = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, 
 					{'val': 'check', 'div': 'modifiers-bonus-check'}, 
 					{'val': 'conflict', 'div': 'modifiers-bonus-conflict'}];
 	const entry = 'modifiers-entry';
-	const div = 'modifiers-row3';
+	const row = 'modifiers-row3';
 	const div_grow = '1.8vw';
 	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 
-	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
-	select_opacity(select1, divs);
+	double_select_opacity(select1, select2, options, row, entry)
+	//double_select(select1, select2, option, modifiers_effect, row, div_grow, entry);
+	//select_opacity(select1, options);
 	hide_secondary_double(select1, select2, second, entry);
 	
 }
@@ -81,17 +82,19 @@ function modifiers_bonus_effect() {
 function modifiers_penalty_effect() {
 	const select1 = 'modifiers_penalty_effect';
 	const select2 = 'modifiers_bonus_effect';
-	const divs = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, 
+	const options = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, 
 					{'val': 'check', 'div': 'modifiers-penalty-check'}, 
 					{'val': 'conflict', 'div': 'modifiers-penalty-conflict'}];
-	const options = ['trait', 'check', 'conflict']
+	const option = ['trait', 'check', 'conflict']
 	const entry = 'modifiers-entry';
-	const div = 'modifiers-row3';
+	const row = 'modifiers-row3';
 	const div_grow = '1.8vw';
 	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 	
-	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
-	select_opacity(select1, divs);
+	
+	double_select_opacity(select1, select2, options, row, entry)
+	//double_select(select1, select2, option, modifiers_effect, row, div_grow, entry);
+	//select_opacity(select1, options);
 	hide_secondary_double(select1, select2, second, entry);
 }
 
