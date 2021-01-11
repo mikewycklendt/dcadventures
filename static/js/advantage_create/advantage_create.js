@@ -533,12 +533,10 @@ function double_select(select1, select2, options, row, entry) {
 	for (o in options) {
 		let val = o.val
 		if (val1 == val) {
-			start == true
+			start = true
 		}
 	}
-
-	console.log(start)
-
+	
 	if (start == true) { 
 		for (o of options) {
 			let val = o.val;
