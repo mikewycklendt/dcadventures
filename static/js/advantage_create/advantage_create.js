@@ -541,7 +541,7 @@ function double_select(select1, select2, options, row, entry) {
 		}
 	}
 
-	console.log(START)
+	console.log(start)
 
 	if (start == true) { 
 		for (o of options) {
