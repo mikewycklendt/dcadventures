@@ -403,26 +403,10 @@ function show_maxheight(div_input) {
 	}, 300)
 }
 
-function show_maxheight_value(div_input, val) {
-	const div = document.getElementById(div_input);
-
-	setTimeout(function(){
-		div.style.display = 'grid';
-		div.style.maxHeight = val;
-	}, 300)
-}
-
 function hide_maxheight(div_input) {
 	const div = document.getElementById(div_input);
 
 	div.style.maxHeight = '0px';
-	setTimeout(function(){div.style.display = 'none'}, 300)
-}
-
-function hide_maxheight_value(div_input) {
-	const div = document.getElementById(div_input);
-
-	div.style.maxHeight = '0vw';
 	setTimeout(function(){div.style.display = 'none'}, 300)
 }
 
@@ -510,99 +494,6 @@ function hide_secondary_double(select1_input, select2_input, options, entry) {
 	} 
 }
 
-function double_select_maxheight_entry(select_input1, select_input2, option1, option2, div, div_grow, entry) {
-	const field1 = document.getElementById(select_input1);
-	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select_input2);
-	const val2 = field2.options[field2.selectedIndex].value;
-
-	if (val1 == option1 || val1 == option2)  {
-		show_maxheight_value(div, div_grow);
-		grow_entry(entry, select_input1);
-	}
-	
-	if (val1 != option1 && val2 != option1) {
-		if (val1 != option2 && val2 != option2) {
-			hide_maxheight(div);
-		 }
-	}
-}
-
-function double_select(select_input1, select_input2, options, object, div, div_grow, entry) {
-	const field1 = document.getElementById(select_input1);
-	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select_input2);
-	const val2 = field2.options[field2.selectedIndex].value;
-
-	let shrink;
-	let grow;
-	let option;
-	const status = object.status;
-	console.log(status)
-	
-	if (status == false) {
-		for (option of options) {
-			if (val1 == option) {
-				grow = true
-				console.log(option);
-				console.log(grow);
-			}
-		}
-
-		for (option of options) {
-			if (val2 == option) {
-				grow = false;
-			}
-			console.log(option)
-			console.log(grow)
-		}
-	} else {
-		shrink = true;
-		for (option of options) {
-			if (val1 == option) {
-				shrink = false;
-			}
-		}
-
-		for (option of options) {
-			if (val2 == option) {
-				shrink = false;
-			}
-		}
-	}
-
-	console.log(shrink)
-	console.log(status)
-	console.log(grow)
-	if (shrink == true) {
-		console.log('shrink')
-		hide_maxheight_value(div);
-		object.status = false;
-	} else if (shrink == false) {
-		console.log('dont shrink')
-	}
-
-	if (grow == true) {
-		console.log('grow')
-		show_maxheight_value(div, div_grow);
-		grow_entry(entry, div);	
-		object.status = true
-	}
-}
-
-
-function double_select_maxheight_hide_entry(select1_input, select2_input, option1, option2, div, entry) {
-	const field1 = document.getElementById(select1_input);
-	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select2_input);
-	const val2 = field2.options[field2.selectedIndex].value;
-
-	if (val1 != option1 && val2 != option2 && val2 != option1 && val2 != option2) {
-		shrink_entry(entry, div);
-		hide_maxheight(div);
-	}
-}
-
 function select_opacity(select, options) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
@@ -622,7 +513,7 @@ function select_opacity(select, options) {
 	};
 }
 
-function double_select_opacity(select1, select2, options, row, entry) {
+function double_select(select1, select2, options, row, entry) {
 	const field1 = document.getElementById(select1);
 	const val1 = field1.options[field1.selectedIndex].value;
 	const field2 = document.getElementById(select2);
@@ -630,11 +521,6 @@ function double_select_opacity(select1, select2, options, row, entry) {
 
 	const old1 = field1.getAttribute('previousValue');
 	field1.setAttribute('previousValue', val1);
-	const old2 = field2.getAttribute('previousValue');
-	console.log('old1');
-	console.log(old1);
-	console.log('old2')
-	console.log(old2);
 
 	let o;
 	let grown = false;
@@ -660,15 +546,6 @@ function double_select_opacity(select1, select2, options, row, entry) {
 			div = o.div;
 		}
 	}
-	
-	console.log('grow');
-	console.log(grow);
-	console.log('shrink');
-	console.log(shrink);
-	console.log('grown')
-	console.log(grown);
-	console.log('div');
-	console.log(div);
 
 	if (grown == false) {
 		if (grow == true) {

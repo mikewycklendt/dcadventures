@@ -63,18 +63,14 @@ let modifiers_effect = {'status': false}
 function modifiers_bonus_effect() {
 	const select1 = 'modifiers_bonus_effect';
 	const select2 = 'modifiers_penalty_effect';
-	const option = ['trait', 'check', 'conflict']
 	const options = [{'val': 'trait', 'div': 'modifiers-bonus-trait'}, 
 					{'val': 'check', 'div': 'modifiers-bonus-check'}, 
 					{'val': 'conflict', 'div': 'modifiers-bonus-conflict'}];
 	const entry = 'modifiers-entry';
-	const row = 'modifiers-row3';
-	const div_grow = '1.8vw';
+	const row = 'modifiers-row3'
 	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 
-	double_select_opacity(select1, select2, options, row, entry)
-	//double_select(select1, select2, option, modifiers_effect, row, div_grow, entry);
-	//select_opacity(select1, options);
+	double_select(select1, select2, options, row, entry)
 	hide_secondary_double(select1, select2, second, entry);
 	
 }
@@ -85,16 +81,12 @@ function modifiers_penalty_effect() {
 	const options = [{'val': 'trait', 'div': 'modifiers-penalty-trait'}, 
 					{'val': 'check', 'div': 'modifiers-penalty-check'}, 
 					{'val': 'conflict', 'div': 'modifiers-penalty-conflict'}];
-	const option = ['trait', 'check', 'conflict']
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row3';
-	const div_grow = '1.8vw';
 	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 	
 	
-	double_select_opacity(select1, select2, options, row, entry)
-	//double_select(select1, select2, option, modifiers_effect, row, div_grow, entry);
-	//select_opacity(select1, options);
+	double_select(select1, select2, options, row, entry);
 	hide_secondary_double(select1, select2, second, entry);
 }
 
@@ -104,16 +96,11 @@ function modifiers_penalty_trait_type() {
 	const select1 = 'modifiers_penalty_trait_type';
 	const fill = 'modifiers_penalty_trait';
 	const select2 = 'modifiers_bonus_trait_type';
-	const divs = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
-	const options = ['defense', 'defense']
+	const options = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
 	const entry = 'modifiers-entry';
-	const div = 'modifiers-row4';
-	const div_grow = '1.8vw';
-
+	const row = 'modifiers-row4';
 	
-	double_select(select1, select2, options, modifiers_trait_type, div, div_grow, entry)
-	select_opacity(select1, divs)
-
+	double_select(select1, select2, options, row, entry);
 	trait_select(select1, fill);
 }
 
@@ -121,16 +108,12 @@ function modifiers_bonus_trait_type() {
 	const select1 = 'modifiers_bonus_trait_type';
 	const select2 = 'modifiers_penalty_trait_type';
 	const fill = 'modifiers_bonus_trait';
-	const options = ['defense', 'defense']
-	const divs = [{'val': 'defense', 'div': 'modifiers-bonus-defense'}];
+	const options = [{'val': 'defense', 'div': 'modifiers-bonus-defense'}];
 	const entry = 'modifiers-entry';
-	const div = 'modifiers-row4';
-	const div_grow = '1.8vw';
+	const row = 'modifiers-row4';
 
 	
-	double_select(select1, select2, options, modifiers_trait_type, div, div_grow, entry)
-	select_opacity(select1, divs)
-
+	double_select(select1, select2, options, row, entry)
 	trait_select(select1, fill);
 }
 
