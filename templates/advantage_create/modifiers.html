@@ -150,6 +150,15 @@
 					{% endfor %}
 				</select>
 			</div>
+			
+			<div id="modifiers-consequence">
+				<select class="select-entry" id="modifiers_consequence" name="modifiers_consequence">
+					<option value="">Consequence</option>
+					{% for c in consequences %}
+						<option value="{{c.id}}">{c.name}</option>
+					{% endfor %}
+				</select>
+			</div>
 
 			<div id="modifiers-creature">
 				<select class="select-entry" id="modifiers_creature" name="modifiers_creature" onchange="modifiers_creature()">
