@@ -649,6 +649,8 @@ def integer(value):
 		value = 655
 	elif value == 'immune':
 		value = 766
+	elif value == 'penalty':
+		value = 877
 	elif value == 'x':
 		value = None
 	elif value == '':

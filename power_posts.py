@@ -173,6 +173,8 @@ def integer_convert(value):
 		value = 'Same as Bonus'
 	elif value == 766:
 		value = 'Immune'
+	elif value == 877:
+		value = 'No Penalties'
 	elif value is None:
 		value = ''
 	else:

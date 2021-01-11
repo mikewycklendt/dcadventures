@@ -37,6 +37,7 @@
 				<option value="">Bonus</option>
 				<option value="advantage">This Rank</option>
 				<option value="immune">Immune</option>
+				<option value="penalty">No Penalties</option>
 				<option value="0">0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -124,6 +125,15 @@
 				</select>
 			</div>
 			
+			<div id="modifiers-range">
+				<select class="select-entry" id="modifiers_range" name="modifiers_range">
+					<option value="">Range</option>
+					{% for r in ranges %}
+						<option value={{r.id}}>{{r.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 			<div id="modifiers-subsense">
 				<select class="select-entry" id="modifiers_subsense" name="modifiers_subsense">
 					<option value="">SubSense</option>

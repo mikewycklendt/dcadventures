@@ -129,6 +129,15 @@
 	gap: .3vw;
 }
 
+#modifiers-range {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
 #modifiers-creature-other {
 	display: none;
 	width: 100%;
