@@ -170,7 +170,7 @@
 				<select class="select-entry" id="modifiers_emotion" name="modifiers_emotion" onchange="modifiers_emotion()">
 					<option value="">Emotion</option>
 					<option value="x">Variable</option>
-					{% for e in emotion %}
+					{% for e in emotions %}
 						<option value={{e.id}}>{{e.name}}</option>
 					{% endfor %}
 					<option value="other">Other</option>
