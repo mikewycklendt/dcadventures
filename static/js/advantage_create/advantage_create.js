@@ -497,10 +497,15 @@ function hide_secondary_double(select1_input, select2_input, options, entry) {
 
 	for (o of options) {
 		const val = o.val;
-		const div = o.div;
+		const row = o.row;
 		if (val1 != val && val2 != val) {
-			hide_maxheight(div);
-			shrink_entry(entry, div)
+			hide_maxheight(row);
+			shrink_entry(entry, row)
+		}
+
+		if (val1 != val) {
+			const div = o.div
+			hide_opacity(div);
 		}
 	} 
 }

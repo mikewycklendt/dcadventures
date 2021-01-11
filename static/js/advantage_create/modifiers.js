@@ -70,7 +70,7 @@ function modifiers_bonus_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
-	const second = [{'val': 'trait', 'div': 'modifiers-row4'}];
+	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
 	select_opacity(select1, divs);
@@ -88,7 +88,7 @@ function modifiers_penalty_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
-	const second = [{'val': 'trait', 'div': 'modifiers-row4'}];
+	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
 	
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
 	select_opacity(select1, divs);
