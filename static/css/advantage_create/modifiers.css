@@ -6,6 +6,13 @@
 	grid-template-columns: 100%;
 }
 
+#modifiers-entry input[type="text"] {
+	height: 1.6vw;
+	padding: .2vw;
+	width: 94%;
+	background-color: lightblue;
+}
+
 #modifiers-row1 {
 	display: grid;
 	width: 98%;
