@@ -604,6 +604,7 @@ function select_other(select, option, field) {
 			show_opacity(field)
 		} else {
 			show_opacity(div);
+			hide_opacity(field);
 		}
 	};
 }
