@@ -24,17 +24,17 @@ function modifiers_trigger() {
 function modifiers_profession() {
 	const select = 'modifiers_profession';
 	const options = [{'val': 'other', 'div': 'modifiers-profession-other'}]
-	const field = 'modifiers-profession';
+	const div = 'modifiers-profession';
 
-	select_other(select, options, field)
-}
+	select_other(select, options, div)
+} 
 
 function modifiers_creature() {
 	const select = 'modifiers_creature';
 	const options = [{'val': 'other', 'div': 'modifiers-creature-other'}]
-	const field = 'modifiers-creature';
+	const div = 'modifiers-creature';
 
-	select_other(select, options, field)
+	select_other(select, options, div)
 }
 
 let modifiers_effect = {'status': false}
