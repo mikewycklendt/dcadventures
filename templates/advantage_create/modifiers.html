@@ -36,6 +36,7 @@
 			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
 				<option value="">Bonus</option>
 				<option value="advantage">This Rank</option>
+				<option value="immune">Immune</option>
 				<option value="0">0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -141,6 +142,15 @@
 				</select>
 			</div>
 
+			<div id="modifiers-power">
+				<select class="select-entry" id="modifiers_power" name="modifiers_power">
+					<option value="">Power</option>
+					{% for p in powers %}
+						<option value="{{p}}">{{p}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 			<div id="modifiers-creature">
 				<select class="select-entry" id="modifiers_creature" name="modifiers_creature" onchange="modifiers_creature()">
 					<option value="">Creature</option>
@@ -156,6 +166,21 @@
 				<input type="text" id="modifiers_creature_other" name="modifiers_creature_other" placeholder="Creature Type">
 			</div>
 			
+			<div id="modifiers-emotion">
+				<select class="select-entry" id="modifiers_emotion" name="modifiers_emotion" onchange="modifiers_emotion()">
+					<option value="">Emotion</option>
+					<option value="x">Variable</option>
+					{% for e in emotion %}
+						<option value={{e.id}}>{{e.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-emotion-other">
+				<input type="text" id="modifiers_emotion_other" name="modifiers_emotion_other" placeholder="Emotion">
+			</div>
+		
 			<div id="modifiers-profession">
 				<select class="select-entry" id="modifiers_profession" name="modifiers_profession" onchange="modifiers_profession()">
 					<option value="">Profession</option>

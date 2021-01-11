@@ -171,6 +171,8 @@ def integer_convert(value):
 		value = 'Advantage Rank'
 	elif value == 655:
 		value = 'Same as Bonus'
+	elif value == 766:
+		value = 'Immune'
 	elif value is None:
 		value = ''
 	else:

@@ -15,8 +15,11 @@ function modifiers_trigger() {
 					{'val': 'condition', 'div': 'modifiers-condition'},
 					{'val': 'profession', 'div': 'modifiers-profession'},
 					{'val': 'creature', 'div': 'modifiers-creature'},
+					{'val': 'emotion', 'div': 'modifiers-emotion'},
+					{'val': 'power', 'div': 'modifiers-power'},
 					{'val': 'db', 'div': 'modifiers-profession-other'},
 					{'val': 'db', 'div': 'modifiers-creature-other'},
+					{'val': 'db', 'div': 'modifiers-emotion-other'},
 					{'val': 'db', 'div': 'modifiers-environment-other'}]
 
 	select_opacity(select, options);
@@ -34,6 +37,14 @@ function modifiers_creature() {
 	const select = 'modifiers_creature';
 	const options = [{'val': 'other', 'div': 'modifiers-creature-other'}]
 	const div = 'modifiers-creature';
+
+	select_other(select, options, div)
+}
+
+function modifiers_emotion() {
+	const select = 'modifiers_emotion';
+	const options = [{'val': 'other', 'div': 'modifiers-emotion-other'}]
+	const div = 'modifiers-emotion';
 
 	select_other(select, options, div)
 }
