@@ -170,7 +170,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							value_type= value_type, maths=maths, measure_rank=measure_rank, condition_type=condition_type, updown=updown, knowledge=knowledge, specificity=specificity, negatives=negatives, 
 							positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, points=points, conflicts=conflicts, consequences=consequences, action_type=action_type, ranges=ranges,
 							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
-							environments=environments, senses=senses, subsenses=subsenses modifier_trigger=modifier_trigger, multiple=multiple, creatures=creatures, professions=professions)
+							environments=environments, senses=senses, subsenses=subsenses, modifier_trigger=modifier_trigger, multiple=multiple, creatures=creatures, professions=professions)
 
 
 @advantage.route('/advantage/create', methods=['POST'])
