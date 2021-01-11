@@ -1,9 +1,9 @@
 @app.route('/consequence/create')
 def consequence_create():
 
-	consequence = ['Heat', 'Cold', 'Starvation', 'Thirst', 'Suffocation', 'Fall', 'Poison', 'Disease', 'Radiation', 'Critical Hit', 'Critical Miss']
+	consequence = ['Heat', 'Cold', 'Starvation', 'Thirst', 'Suffocation', 'Fall', 'Poison', 'Disease', 'Radiation', 'Critical Hit', 'Critical Miss', 'Drowning']
 
-	for i in concequence:
+	for i in consequence:
 
 		entry = Consequence(name=i)
 		db.session.add(entry)

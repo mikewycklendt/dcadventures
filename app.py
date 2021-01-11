@@ -63,7 +63,7 @@ def consequence_create():
 
 	consequence = ['Drowning']
 
-	for i in concequence:
+	for i in consequence:
 
 		entry = Consequence(name=i)
 		db.session.add(entry)
