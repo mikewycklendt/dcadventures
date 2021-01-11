@@ -627,10 +627,11 @@ function double_select_opacity(select1, select2, options, row, entry) {
 	const val1 = field1.options[field1.selectedIndex].value;
 	const field2 = document.getElementById(select2);
 	const val2 = field2.options[field2.selectedIndex].value;
+	
+	const old2 = field2.getAttribute('previousValue');
 
 	field1.setAttribute('previousValue', val1);
 	const old1 = field1.getAttribute('previousValue');
-	const old2 = field2.getAttribute('previousValue');
 	console.log('old1');
 	console.log(old1);
 	console.log('old2')
