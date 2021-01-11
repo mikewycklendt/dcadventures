@@ -70,9 +70,12 @@ function modifiers_bonus_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
+	const second = [{'val': 'trait', 'div': 'modifiers-row4'}];
 
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
-	select_opacity(select1, divs)
+	select_opacity(select1, divs);
+	hide_secondary_double(select1, select2, second, entry);
+	
 }
 
 function modifiers_penalty_effect() {
@@ -85,45 +88,47 @@ function modifiers_penalty_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
+	const second = [{'val': 'trait', 'div': 'modifiers-row4'}];
 	
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
-	select_opacity(select1, divs)
+	select_opacity(select1, divs);
+	hide_secondary_double(select1, select2, second, entry);
 }
 
+let modifiers_trait_type = {'status': false}
+
 function modifiers_penalty_trait_type() {
-	const select = 'modifiers_penalty_trait_type';
+	const select1 = 'modifiers_penalty_trait_type';
 	const fill = 'modifiers_penalty_trait';
 	const select2 = 'modifiers_bonus_trait_type';
-	const option1 = 'defense';
-	const option2 = 'defense';
 	const divs = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
+	const options = ['defense', 'defense']
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row4';
-	const div_grow = 'modifiers_penalty_effect';
+	const div_grow = '1.8vw';
 
 	
-	double_select_maxheight_entry(select, select2, option1, option2, div, div_grow, entry)
-	select_opacity(select, divs)
+	double_select(select1, select2, options, modifiers_trait_type, div, div_grow, entry)
+	select_opacity(select1, divs)
 
-	trait_select(select, fill);
+	trait_select(select1, fill);
 }
 
 function modifiers_bonus_trait_type() {
-	const select = 'modifiers_bonus_trait_type';
+	const select1 = 'modifiers_bonus_trait_type';
 	const select2 = 'modifiers_penalty_trait_type';
 	const fill = 'modifiers_bonus_trait';
-	const option1 = 'defense';
-	const option2 = 'defense';
+	const options = ['defense', 'defense']
 	const divs = [{'val': 'defense', 'div': 'modifiers-bonus-defense'}];
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row4';
-	const div_grow = 'modifiers_penalty_effect';
+	const div_grow = '1.8vw';
 
 	
-	double_select_maxheight_entry(select, select2, option1, option2, div, div_grow, entry)
-	select_opacity(select, divs)
+	double_select(select1, select2, options, modifiers_trait_type, div, div_grow, entry)
+	select_opacity(select1, divs)
 
-	trait_select(select, fill);
+	trait_select(select1, fill);
 }
 
 let modifiers_grid = {'titles': false,

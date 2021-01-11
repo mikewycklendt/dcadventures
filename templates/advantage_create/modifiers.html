@@ -306,13 +306,6 @@
 		</div>
 
 		<div>
-			<div id="modifiers-multiple">
-				<select class="select-sml" id="modifiers_multiple" name="modifiers_multiple">
-					{% for m in multiple %}
-						<option value="{{m.type}}">{{m.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
 		</div>
 
 	</div>
@@ -346,6 +339,28 @@
 	
 	<div id="modifiers-button-row">
 		<div></div>
+
+		<div>
+			<div id="modifiers-multiple">
+				<select class="select-entry" id="modifiers_multiple" name="modifiers_multiple" onchange="modifiers_multiple()">
+					{% for m in multiple %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div>
+			<div id="modifiers-multiple-count">
+				<select class="select-entry" id="modifiers_multiple_count" name="modifiers_multiple_count">
+					<option value="">Choose</option>
+					<option value=0>All</option>
+					{% for i in positives %}
+						<option value="{{i}}">Any {{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div>
 			<div class="btn-entry" id="modifiers_submit" name="modifiers_submit" onclick="modifiers_submit()">
