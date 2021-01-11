@@ -532,7 +532,7 @@ function double_select(select1, select2, options, row, entry) {
 		let val = o.val;
 		if (old1 == val ) {
 			grown = true;
-			div = o.div;
+			field1.setAttribute('lastDiv', o.div)
 		}
 
 		if (val2 == val) {
@@ -570,6 +570,7 @@ function double_select(select1, select2, options, row, entry) {
 			}
 		}
 	} else {
+		const olddiv = field1.getAttribute('oldDiv');
 		hide_maxheight(row)
 		shrink_entry(entry, div)
 	}
