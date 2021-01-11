@@ -23,18 +23,18 @@ function modifiers_trigger() {
 
 function modifiers_profession() {
 	const select = 'modifiers_profession';
-	const options = [{'val': 'other', 'div': 'modifiers-profession-other'},
-					{'val': 'db', 'div': 'modifiers-profession'}]
+	const options = [{'val': 'other', 'div': 'modifiers-profession-other'}]
+	const field = 'modifiers-profession';
 
-	select_opacity(select, options)
+	select_other(select, options, field)
 }
 
 function modifiers_creature() {
 	const select = 'modifiers_creature';
-	const options = [{'val': 'other', 'div': 'modifiers-creature-other'},
-					{'val': 'db', 'div': 'modifiers-creature'}]
+	const options = [{'val': 'other', 'div': 'modifiers-creature-other'}]
+	const field = 'modifiers-creature';
 
-	select_opacity(select, options)
+	select_other(select, options, field)
 }
 
 let modifiers_effect = {'status': false}

@@ -588,6 +588,26 @@ function select_opacity(select, options) {
 	};
 }
 
+function select_other(select, option, field) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity(div);
+			show_opacity(field)
+		} else {
+			show_opacity(div);
+		}
+	};
+}
+
 function select_maxheight(select, options) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
