@@ -590,6 +590,15 @@ function double_select(select1, select2, options, row, entry) {
 				}
 			}
 		} else {
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di)
+				}
+			}
+
 			hide_maxheight(row)
 			shrink_entry(entry, div)
 		}
