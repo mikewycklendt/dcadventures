@@ -40,7 +40,7 @@ function trait_select(select, fill) {
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	response = fetch('/power/trait/select', {
+	response = fetch('/advantage/trait/select', {
 		method: 'POST',
 		body: JSON.stringify({
 			'trait': trait
@@ -56,16 +56,11 @@ function trait_select(select, fill) {
 
 			const options = jsonResponse.options;
 			let option;
-		
-			let o = document.createElement("option")
-			o.value = 'x';
-			o.text = 'x';
-			update.add(o);
 
 			for (option of options)  {
 				let o = document.createElement("option")
-				o.value = option;
-				o.text = option;
+				o.value = option.id;
+				o.text = option.name;
 				update.add(o);
 			}
 
