@@ -240,27 +240,27 @@ def advantage_trait_select():
 	elif trait == 'extra':
 		body['options'] = extras
 	elif trait == 'this_power':
-		body['options'] = ['This Power']
+		body['options'] = [{'id': 'This Power', 'name': 'This Power'}]
 	elif trait == 'this_advantage':
-		body['options'] = ['This Advantage']
+		body['options'] = [{'id': 'This Advantage', 'name': 'This Advantage'}]
 	elif trait == 'sense':
-		body['options'] = ['Sense']
+		body['options'] = [{'id': 'Sense', 'name': 'Sense'}]
 	elif trait == 'size':	
-		body['options'] = ['Size Rank']
+		body['options'] = [{'id': 'Size Rank', 'name': 'Size Rank'}]
 	elif trait == 'speed':	
-		body['options'] = ['Speed Rank'] 
+		body['options'] = [{'id': 'Speed Rank', 'name': 'Speed Rank'}] 
 	elif trait == 'intim':
-		body['options'] = ['Intimidation Rank']
+		body['options'] = [{'id': 'Intimidation Rank', 'name': 'Intimidation Rank'}]
 	elif trait == 'any':
-		body['options'] = ['Any Trait']
+		body['options'] = [{'id': 'Any Trait', 'name': 'Any Trait'}]
 	elif trait == 'x':
-		body['options'] = ['Variable']
+		body['options'] = [{'id': 'Variable', 'name': 'Variable'}]
 	elif trait == 'auto':
-		body['options'] = ['Automatic']
+		body['options'] = [{'id': 'Automatic', 'name': 'Automatic'}]
 	elif trait == '':
-		body['options'] = ['Trait']
+		body['options'] = [{'id': 'Trait', 'name': 'Trait'}]
 	elif trait == 'immoveable':
-		body['options'] = ['Immoveable']
+		body['options'] = [{'id': 'Immoveable', 'name': 'Immoveable'}]
 	else:
 		body['success'] = False
 		body['options'] = ['']
