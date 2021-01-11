@@ -526,53 +526,64 @@ function double_select(select1, select2, options, row, entry) {
 	let grown = false;
 	let grow = false;
 	let div;
+	
 	let shrink = true;
+	let start = false;
 
-	for (o of options) {
-		let val = o.val;
-		if (old1 == val ) {
-			grown = true;
-			field1.setAttribute('lastDiv', o.div)
-		}
-
-		if (val2 == val) {
-			grown = true
-			shrink = false;
-		}
-
-		if (val1 == val) {
-			grow = true;
-			shrink = false;
-			div = o.div;
+	for (o in options) {
+		if (val1 == o.val) {
+			start == true
 		}
 	}
 
-	if (grown == false) {
-		if (grow == true) {
-			const d = document.getElementById(div);
-			d.style.display = 'grid';
-			grow_entry(entry, div);
-			show_maxheight(row)
-		}
-	} 
-	
-	if (shrink == false) {
-		let option;
+	if (start == true) { 
+		for (o of options) {
+			let val = o.val;
+			if (old1 == val ) {
+				grown = true;
+				div = o.div;
+			} 
 
-		for (option of options) {
-			let valu = option.val;
-			let di = option.div;
+			if (val2 == val) {
+				grown = true
+				shrink = false;
+			}
 
-			if (val1 != valu) {
-				hide_opacity(di);
-			} else {
-				show_opacity(di);
+			if (val1 == val) {
+				grow = true;
+				shrink = false;
+				div = o.div;
 			}
 		}
+
+		if (grown == false) {
+			if (grow == true) {
+				const d = document.getElementById(div);
+				d.style.display = 'grid';
+				grow_entry(entry, div);
+				show_maxheight(row)
+			}
+		} 
+		
+		if (shrink == false) {
+			let option;
+
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di);
+				} else {
+					show_opacity(di);
+				}
+			}
+		} else {
+			hide_maxheight(row)
+			shrink_entry(entry, div)
+		}
 	} else {
-		const olddiv = field1.getAttribute('oldDiv');
-		hide_maxheight(row)
-		shrink_entry(entry, div)
+		console.log('nothing')
 	}
 }
 
