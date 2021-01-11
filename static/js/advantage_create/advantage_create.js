@@ -539,6 +539,10 @@ function double_select(select1, select2, options, row, entry) {
 		if (old1 == val) {
 			start = true;
 		}
+
+		if (val2 == val) {
+			start = true;
+		}
 	}
 
 	console.log(start)
