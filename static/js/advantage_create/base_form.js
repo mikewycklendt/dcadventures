@@ -213,6 +213,13 @@ function trait_type() {
 	trait_select(select, fill);
 }
 
+function replaced_trait_type() {
+	const select = 'replaced_trait_type';
+	const fill = 'replaced_trait';
+
+	trait_select(select, fill);
+}
+
 function skill_type() {
 	const select = 'skill_type';
 	const fill = 'skill';

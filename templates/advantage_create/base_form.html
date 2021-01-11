@@ -142,6 +142,50 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			In Place of Trait:
+		</div>
+	
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="replaced_trait_type" name="replaced_trait_type" onchange="replaced_trait_type()">
+					{% for t in traits %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="replaced_trait" name="replaced_trait">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+
+		<div id="base-skill-description">
+			<input type="text" id="skill_description" name="skill-description" placeholder="Circumstance">
+		</div>
+
+	</div>
+
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Applies to Conflict Action:
+		</div>
+	
+		<div>
+			<select class="base-select" id="check" name="check">
+				<option value="">Action</option>
+				{% for c in conflicts %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Difficulty Class:
 		</div>
 		
