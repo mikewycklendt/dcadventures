@@ -588,7 +588,7 @@ function select_opacity(select, options) {
 	};
 }
 
-function select_other(select, option, field) {
+function select_other(select, options, db) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
 	let option;
@@ -601,10 +601,10 @@ function select_other(select, option, field) {
 
 		if (val != valu) {
 			hide_opacity(div);
-			show_opacity(field)
+			show_opacity(db)
 		} else {
 			show_opacity(div);
-			hide_opacity(field);
+			hide_opacity(db);
 		}
 	};
 }
