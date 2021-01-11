@@ -57,45 +57,6 @@ def home():
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/creatures/create')
-def creatures_create():
-
-	entries = ['Alien', 'Animal', 'Construct', 'mETAHUMAN', 'Undead']
-
-	for i in entries:
-
-		entry = Creature(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Creature.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('creatures added')
-
-@app.route('/job/create')
-def job_create():
-
-	entries = ['Soldier', 'Police', 'Yakuza', 'Lawyer', 'Artist', 'Business', 'Carpentry', 'Chef', 'Criminal', 'Dancer', 'Historian', 'Journalist', 'Doctor', 'Musician', 'Magiccian',  'Philosopher', 'Politician', 'Actor', 'Psychiatrist', 'Psychologist', 'Scientist', 'Sociologist', 'Gangster', 'Theologist']
-
-	for i in entries:
-
-		entry = Job(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Job.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('professions added')
-
-
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

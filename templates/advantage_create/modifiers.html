@@ -133,6 +133,37 @@
 					{% endfor %}
 				</select>
 			</div>
+
+			<div id="modifiers-creature">
+				<select class="select-entry" id="modifier_creature" name="modifiers_creature" onchange="modifiers_creature()">
+					<option value="">Creature</option>
+					<option value="x">Variable</option>
+					{% for c in creatures %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-creature-other">
+				<input type="text" id="modifiers_creature_other" name="modifiers_creature_other" placeholder="Creature Type">
+			</div>
+			
+			<div id="modifiers-profession">
+				<select class="select-entry" id="modifiers_profession" name="modifiers_profession" onchange="modifiers_profession()">
+					<option value="">Profession</option>
+					<option value="x">Variable</option>
+					{% for p in professsions %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-profession-other">
+				<input type="text" id="modifiers_profession_other" name="modifiers_profession_other" placeholder="Job Title">
+			</div>
+
 		</div>
 	</div>
 

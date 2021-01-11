@@ -17,6 +17,22 @@ function modifiers_trigger() {
 	select_opacity(select, options);
 }
 
+function modifiers_profession() {
+	const select = 'modifiers_profession';
+	const options = [{'val': 'other', 'div': 'modifiers-profession-other'},
+					{'val': 'db', 'div': 'modifiers-profession'}]
+
+	select_opacity(select, options)
+}
+
+function modifiers_creature() {
+	const select = 'modifiers_creature';
+	const options = [{'val': 'other', 'div': 'modifiers-creature-other'},
+					{'val': 'db', 'div': 'modifiers-creature'}]
+
+	select_opacity(select, options)
+}
+
 let modifiers_effect = {'status': false}
 
 function modifiers_bonus_effect() {
@@ -29,10 +45,6 @@ function modifiers_bonus_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
-
-	console.log(modifiers_effect.status)
-
-	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
 	select_opacity(select1, divs)
@@ -48,8 +60,6 @@ function modifiers_penalty_effect() {
 	const entry = 'modifiers-entry';
 	const div = 'modifiers-row3';
 	const div_grow = '1.8vw';
-	
-	//double_select_maxheight_entry(select1, select2, option1, option2, div, select1, entry)
 	
 	double_select(select1, select2, options, modifiers_effect, div, div_grow, entry);
 	select_opacity(select1, divs)

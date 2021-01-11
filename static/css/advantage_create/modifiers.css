@@ -49,6 +49,43 @@
 	gap: .3vw;
 }
 
+#modifiers-profession {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-profession-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+
+#modifiers-creature {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-creature-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
 #modifiers-subsense {
 	display: none;
 	width: 100%;
@@ -80,6 +117,8 @@
 
 #modifiers-bonus-check {
 	display: none;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -89,6 +128,8 @@
 
 #modifiers-penalty-check {
 	display: none;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
@@ -98,6 +139,8 @@
 
 #modifiers-bonus-conflict {
 	display: none;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -107,6 +150,8 @@
 
 #modifiers-penalty-conflict {
 	display: none;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
@@ -116,6 +161,8 @@
 
 #modifiers-bonus-trait {
 	display: grid;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;
@@ -125,6 +172,8 @@
 
 #modifiers-penalty-trait {
 	display: grid;
+	max-height: 0;
+	overflow: hidden;
 	width: 100%;
 	opacity: 0%;
 	transition: all .4s ease-out;

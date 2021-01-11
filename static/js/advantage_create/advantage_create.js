@@ -494,7 +494,6 @@ function double_select_maxheight_entry(select_input1, select_input2, option1, op
 	}
 }
 
-
 function double_select(select_input1, select_input2, options, object, div, div_grow, entry) {
 	const field1 = document.getElementById(select_input1);
 	const val1 = field1.options[field1.selectedIndex].value;
