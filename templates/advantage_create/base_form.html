@@ -115,33 +115,6 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Can Make Skill Check:
-		</div>
-	
-		<div class="base-trait">
-			<div>
-				<select class="base-select" id="skill_type" name="skill_type" onchange="skill_type()">
-					<option value="">Skill Type</option>
-					<option value="skill">Skill</option>
-					<option value="bonus">Enhanced Skill</option>
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="skill" name="skill">
-					<option value="">Skill</option>
-				</select>
-			</div>
-		</div>
-
-		<div id="base-skill-description">
-			<input type="text" id="skill_description" name="skill-description" placeholder="Circumstance">
-		</div>
-
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
 			In Place of Trait:
 		</div>
 	
@@ -164,10 +137,54 @@
 		<div id="base-skill-description">
 			<input type="text" id="skill_description" name="skill-description" placeholder="Circumstance">
 		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Can Make Skill Check:
+		</div>
+	
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="skill_type" name="skill_type" onchange="skill_type()">
+					<option value="">Skill Type</option>
+					<option value="skill">Skill</option>
+					<option value="bonus">Enhanced Skill</option>
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="skill" name="skill" >
+					<option value="">Skill</option>
+				</select>
+			</div>
+		</div>
+
+		<div id="base-skill-description">
+			<input type="text" id="skill_description" name="skill-description" placeholder="Circumstance">
+		</div>
+
+	</div>
+
+	<div class="base-field" id="base-pre-check">
+		<div id="multiple-attr-title">
+			No Pre-Checks:
+		</div>
+	
+		<div class="base-trait">
+			<div>
+				<input type="checkbox" id="no_pre_check" class="regular-checkbox big-checkbox" >
+			</div>
+
+			<div>
+				
+			</div>
+		</div>
 
 	</div>
 
 	
+
 	<div class="base-field">
 		<div id="multiple-attr-title">
 			For Conflict Action:

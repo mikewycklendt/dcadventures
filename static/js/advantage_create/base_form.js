@@ -224,7 +224,9 @@ function skill_type() {
 	const select = 'skill_type';
 	const fill = 'skill';
 	const options = [{'val': 'bonus', 'div': 'base-skill-description'}, {'val': 'skill', 'div': 'base-skill-description'}]
+	const div = 'base-pre-check';
 
+	select_opacity_any(select, div);
 	select_maxheight(select, options)
 	trait_select(select, fill);
 }

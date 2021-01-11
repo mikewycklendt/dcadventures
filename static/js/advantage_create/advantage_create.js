@@ -508,6 +508,19 @@ function select_opacity(select, options) {
 	};
 }
 
+
+function select_opacity_any(select, div) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+
+	if (val != '') {
+		show_opacity(div);
+	} else {
+		hide_opacity(div);
+	}
+
+}
+
 function double_select(select1, select2, options, row, entry) {
 	const field1 = document.getElementById(select1);
 	const val1 = field1.options[field1.selectedIndex].value;
