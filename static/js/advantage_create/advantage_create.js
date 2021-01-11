@@ -530,7 +530,7 @@ function double_select(select1, select2, options, row, entry) {
 	let shrink = true;
 	let start = false;
 
-	for (o in options) {
+	for (o of options) {
 		let val = o.val
 		if (val1 == val) {
 			start = true
