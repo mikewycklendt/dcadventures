@@ -110,7 +110,7 @@
 			<div id="modifiers-sense">
 				<select class="select-entry" id="modifiers_sense" name="modifiers_sense">
 					<option value="">Sense</option>
-					{% for s in sense %}
+					{% for s in senses %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
 				</select>
@@ -119,7 +119,7 @@
 			<div id="modifiers-subsense">
 				<select class="select-entry" id="modifiers_subsense" name="modifiers_subsense">
 					<option value="">SubSense</option>
-					{% for s in subsense %}
+					{% for s in subsenses %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
 				</select>

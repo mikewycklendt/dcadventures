@@ -12,7 +12,11 @@ function modifiers_trigger() {
 	const options = [{'val': 'environment', 'div': 'modifiers-environment'}, 
 					{'val': 'sense', 'div': 'modifiers-sense'},
 					{'val': 'subsense', 'div': 'modifiers-subsense'},
-					{'val': 'condition', 'div': 'modifiers-condition'}]
+					{'val': 'condition', 'div': 'modifiers-condition'},
+					{'val': 'profession', 'div': 'modifiers-profession'},
+					{'val': 'creature', 'div': 'modifiers-creature'},
+					{'val': 'db', 'div': 'modifiers-profession-other'},
+					{'val': 'db', 'div': 'modifiers-creature-other'}]
 
 	select_opacity(select, options);
 }
