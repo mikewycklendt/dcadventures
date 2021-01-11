@@ -153,7 +153,7 @@
 				<select class="select-entry" id="modifiers_profession" name="modifiers_profession" onchange="modifiers_profession()">
 					<option value="">Profession</option>
 					<option value="x">Variable</option>
-					{% for p in professsions %}
+					{% for p in professions %}
 						<option value={{p.id}}>{{p.name}}</option>
 					{% endfor %}
 					<option value="other">Other</option>
