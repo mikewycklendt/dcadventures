@@ -37,6 +37,14 @@ function modifiers_creature() {
 	select_other(select, options, div)
 }
 
+function modifiers_environment() {
+	const select = 'modifiers_environment';
+	const options = [{'val': 'other', 'div': 'modifiers-environment-other'}]
+	const div = 'modifiers-environment';
+
+	select_other(select, options, div)
+}
+
 let modifiers_effect = {'status': false}
 
 function modifiers_bonus_effect() {

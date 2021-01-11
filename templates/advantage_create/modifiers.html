@@ -99,13 +99,20 @@
 
 		<div>
 			<div id="modifiers-environment">
-				<select class="select-entry" id="modifiers_environment" name="modifiers_environment">
+				<select class="select-entry" id="modifiers_environment" name="modifiers_environment" onchange="modifiers_environment()">
 					<option value="">Environment</option>
+					<option value="x">Variable</option>
 					{% for e in environments %}
 						<option value={{e.id}}>{{e.name}}</option>
 					{% endfor %}
+					<option value="other">Other</option>
 				</select>
 			</div>
+
+			<div id="modifiers-environment-other">
+				<input type="text" id="modifiers_environment_other" name="modifiers_environment_other" placeholder="Environment">
+			</div>
+
 
 			<div id="modifiers-sense">
 				<select class="select-entry" id="modifiers_sense" name="modifiers_sense">
