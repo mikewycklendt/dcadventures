@@ -585,6 +585,11 @@ function double_select(select1, select2, options, row, entry) {
 			}
 		}
 
+		console.log('start');
+		console.log(start);
+		console.log('grown');
+		console.log(grown);
+
 		if (grown == false) {
 			if (grow == true) {
 				const d = document.getElementById(div);
