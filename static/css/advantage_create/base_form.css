@@ -114,6 +114,11 @@
 	transition: all .4s ease-out;
 }
 
+#base-simultaneous{
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #advantage-dc-field {
 	display: grid;
 	width: 100%;

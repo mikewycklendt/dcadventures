@@ -186,6 +186,13 @@ function invent() {
 	check_display(check, div2);
 }
 
+function simultaneous() {
+	const check = 'simultaneous';
+	const div = 'base-simultaneous';
+
+	check_opacity(check, div);
+}
+
 function gm_secret_check() {
 	const check = 'gm_secret_check';
 	const div = 'gm-check';

@@ -297,7 +297,7 @@
 		
 			<div id="modifiers-penalty-check">
 				<div>
-					<select class="select-sml" id="modifiers_penalty_check" name="modifiers_pe4nalty_check">
+					<select class="select-sml" id="modifiers_penalty_check" name="modifiers_penalty_check">
 						{% for c in checks %}
 							<option value={{c.id}}>{{c.name}}</option>
 						{% endfor %}
@@ -306,8 +306,9 @@
 	
 				<div>
 					<select class="select-sml" id="modifiers_penalty_check_range" name="modifiers_penalty_check_range">
-						{% for r in ranges %}
+						<option value="">Range</option>
 						<option value="0">All</option>
+						{% for r in ranges %}
 							<option value={{r.id}}>{{r.name}}</option>
 						{% endfor %}
 					</select>
