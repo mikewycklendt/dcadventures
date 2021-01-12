@@ -506,7 +506,7 @@ function hide_secondary_double(select1_input, select2_input, options, row, entry
 			select2.selectedIndex=0;
 		}
 
-		if (val1 != val) {
+		if (val1 != v) {
 			const divs = o.divs;
 			let div;
 			for (div of divs) {
