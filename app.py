@@ -61,13 +61,12 @@ def home():
 @app.route('/check/create')
 def check_create():
 
-	check = ['Initiative']
+	check = db.session.query(Check).filter(Check.id == 8).one()
 
-	for i in check:
-
-		entry = Check(name=i)
-		db.session.add(entry)
-		db.session.commit()
+	check.name = 'Initiative Check'
+	
+	db.session.commit()
+	db.session.close()
 
 	results = Check.query.all()
 
@@ -75,7 +74,7 @@ def check_create():
 		print (result.id)
 		print (result.name)
 
-	return ('check added')
+	return ('check edited')
 
 '''
 @app.route('/debilitated/create')
