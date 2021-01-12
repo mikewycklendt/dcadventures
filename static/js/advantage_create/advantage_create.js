@@ -483,8 +483,11 @@ function hide_secondary_double(select1_input, select2_input, options, entry) {
 		}
 
 		if (val1 != val) {
-			const div = o.div
-			hide_opacity(div);
+			const divs = o.divs;
+			let div;
+			for (div of divs) {
+				hide_opacity(div);
+			}
 		}
 	} 
 }
