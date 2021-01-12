@@ -109,7 +109,7 @@ def check_create():
 		db.session.commit()
 		db.seession.close()
 
-	check = ['Initiative']
+	check = ['Initiative Check']
 
 	for i in check:
 
