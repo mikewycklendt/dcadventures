@@ -84,7 +84,7 @@ function modifiers_penalty_effect() {
 					{'val': 'conflict', 'div': 'modifiers-penalty-conflict'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row3';
-	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'divs': ['modifiers-penalty-defense']}];
+	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'divs': ['modifiers-penalty-defense'], 'select1': 'modifiers_penalty_trait_type', 'select2': 'modifiers_bonus_trait_type'}];
 	
 	
 	double_select(select1, select2, options, row, entry);
@@ -95,8 +95,8 @@ let modifiers_trait_type = {'status': false}
 
 function modifiers_penalty_trait_type() {
 	const select1 = 'modifiers_penalty_trait_type';
-	const fill = 'modifiers_penalty_trait';
 	const select2 = 'modifiers_bonus_trait_type';
+	const fill = 'modifiers_penalty_trait';
 	const options = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';
