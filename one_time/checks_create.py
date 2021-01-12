@@ -107,6 +107,15 @@ def check_create():
 		entry = Check(name=name, critical=critical, dc=dc, opposed=opposed, automatic=automatic, routine=routine, graded=graded, fail=fail)
 		db.session.add(entry)
 		db.session.commit()
+		db.seession.close()
+
+	check = ['Initiative']
+
+	for i in check:
+
+		entry = Check(name=i)
+		db.session.add(entry)
+		db.session.commit()
 
 	results = Check.query.all()
 
@@ -114,8 +123,4 @@ def check_create():
 		print (result.id)
 		print (result.name)
 
-	return ('Checks Added')
-
-
-
-
+	return ('check added')

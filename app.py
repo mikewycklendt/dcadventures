@@ -58,24 +58,24 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/consequence/create')
-def consequence_create():
+@app.route('/check/create')
+def check_create():
 
-	consequence = ['Drowning']
+	check = ['Initiative']
 
-	for i in consequence:
+	for i in check:
 
-		entry = Consequence(name=i)
+		entry = Check(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Consequence.query.all()
+	results = Check.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('consequences added')
+	return ('check added')
 
 '''
 @app.route('/debilitated/create')
