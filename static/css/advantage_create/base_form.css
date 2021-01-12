@@ -148,6 +148,11 @@
 	grid-template-columns: 40% 60%;
 }
 
+.base-check {
+	display: grid;
+	grid-template-columns: 10% 60% 30%;
+}
+
 #gm-check {
 	max-height: 0;
 	overflow: hidden;
