@@ -187,8 +187,24 @@
 		</div>
 	
 		<div>
-			<select class="base-select" id="check" name="check">
+			<select class="base-select" id="conflict" name="conflict">
 				<option value="">Action</option>
+				{% for c in conflicts %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Invulnerable Against:
+		</div>
+	
+		<div>
+			<select class="base-select" id="conflict_immune" name="conflict_immune">
+				<option value="">Conflict Action</option>
 				{% for c in conflicts %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}

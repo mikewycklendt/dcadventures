@@ -17,7 +17,8 @@ function circ_base() {
 function circ_type() {
 	const field = 'circ_type';
 	const options = [{'val': 'range', 'div': 'circ-range'},
-					{'val': 'check', 'div': 'circ-check'}] 
+					{'val': 'check', 'div': 'circ-check'},
+					{'val': 'conflict', 'div': 'circ-conflict'}]
 	const entry = 'circ-entry';
 
 	select_maxheight_entry(field, options, entry);

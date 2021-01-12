@@ -101,6 +101,17 @@
 			</select>
 		</div>
 	</div>
+	
+	<div id="circ-conflict">
+		<div>
+			<select class="select-sml" id="circ_conflict" name="circ_conflict">
+				<option value="">Conflict Action</option>
+				{% for c in conflicts %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 
 	<div id="circ-check">
 		<div>

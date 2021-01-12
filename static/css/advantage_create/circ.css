@@ -133,6 +133,15 @@ depend modifier lasts circ button
 	transition: all .4s ease-out;
 }
 
+#circ-conflict {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 80%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #circ-check {
 	display: none;
 	width: 98%;
