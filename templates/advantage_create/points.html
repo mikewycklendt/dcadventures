@@ -91,9 +91,12 @@
 			<div id="points-check">
 				<div>
 					<select class="select-sml" id="points_check_bonus" name="points_check_bonus">
-						<option value="">Bonus</option>
-						<option value="auto">Automatic</option>
+						<option value="">Modifier</option>
+						<option value="auto">Automatic Success</option>
 						<option value="advantage">Advantage Rank</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -107,6 +110,31 @@
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="points_check_turns" name="points_check_turns">
+						<option value="">Turns</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="points_check_target" name="points_check_target">
+						{% for t in targets %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="points_check_all" class="medium-checkbox med-checkbox" > All Checks 
+					</div>
 				</div>
 
 			</div>
