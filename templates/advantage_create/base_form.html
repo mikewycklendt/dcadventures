@@ -267,6 +267,32 @@
 			</select>
 		</div>
 	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Changes Condition:
+		</div>
+	
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="power_condition1" name="power_condition1">
+					<option value="">Start Condition</option>
+					{% for c in conditions %}
+						<option value="{{c}}">{{c}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="power_condition2" name="power_condition2">
+					<option value="">End Condition</option>
+					{% for c in conditions %}
+						<option value="{{c}}">{{c}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
