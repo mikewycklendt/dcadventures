@@ -481,12 +481,12 @@ function hide_secondary_double(select1_input, select2_input, options, entry) {
 		const s2 = o.select2;
 		const select1 = document.getElementById(s1);
 		const select2 = document.getElementById(s2);
-		select1.setAttribute('previousValue', 'empty');
-		select2.setAttribute('previousValue', 'empty');
-		select1.selectedIndex=0;
-		select2.selectedIndex=0;
 
 		if (val1 != val && val2 != val) {
+			select1.setAttribute('previousValue', 'empty');
+			select2.setAttribute('previousValue', 'empty');
+			select1.selectedIndex=0;
+			select2.selectedIndex=0;
 			hide_maxheight(row);
 			shrink_entry(entry, row)
 		}
