@@ -105,8 +105,9 @@ function modifiers_penalty_trait_type() {
 	const options = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';
+	const others = [{'select': 'modifiers_bonus_conflict', 'values': ['5']}];
 	
-	double_select(select1, select2, options, row, entry);
+	double_select_second(select1, select2, options, others, row, entry);
 	trait_select(select1, fill);
 }
 
@@ -117,8 +118,9 @@ function modifiers_bonus_trait_type() {
 	const options = [{'val': 'defense', 'div': 'modifiers-bonus-defense'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';
+	const others = [{'select': 'modifiers_penalty_conflict', 'values': ['5']}];
 
-	double_select(select1, select2, options, row, entry)
+	double_select_second(select1, select2, options, others, row, entry)
 	trait_select(select1, fill);
 }
 
@@ -128,8 +130,9 @@ function modifiers_penalty_conflict() {
 	const options = [{'val': '5', 'div': 'modifier-penalty-conflict-defend'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';
+	const others = [{'select': 'modifiers_bonus_trait_type', 'values': ['defense']}];
 
-	double_select(select1, select2, options, row, entry)
+	double_select_second(select1, select2, options, others, row, entry)
 }
 
 function modifiers_bonus_conflict() {
@@ -138,8 +141,9 @@ function modifiers_bonus_conflict() {
 	const options = [{'val': '5', 'div': 'modifier-bonus-conflict-defend'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';
+	const others = [{'select': 'modifiers_penalty_trait_type', 'values': ['defense']}];
 
-	double_select(select1, select2, options, row, entry)
+	double_select_second(select1, select2, options, others, row, entry)
 }
 
 let modifiers_grid = {'titles': false,

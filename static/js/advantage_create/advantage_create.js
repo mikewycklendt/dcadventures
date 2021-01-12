@@ -664,6 +664,122 @@ function double_select(select1, select2, options, row, entry) {
 }
 
 
+function double_select_second(select1, select2, options, others, row, entry) {
+	const field1 = document.getElementById(select1);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	const old1 = field1.getAttribute('previousValue');
+	field1.setAttribute('previousValue', val1);
+
+	let o;
+	let grown = false;
+	let grow = false;
+	let div;
+	
+	let shrink = true;
+	let start = false;
+
+	for (o of options) {
+		let val = o.val
+		if (val1 == val) {
+			start = true
+		}
+
+		if (old1 == val) {
+			start = true;
+		}
+
+		if (val2 == val) {
+			start = true;
+		}
+	}
+
+	console.log(start)
+
+	if (start == true) { 
+		for (o of options) {
+			let val = o.val;
+			if (old1 == val ) {
+				grown = true;
+				div = o.div;
+			} 
+
+			if (val2 == val) {
+				grown = true
+				shrink = false;
+			}
+
+			if (val1 == val) {
+				grow = true;
+				shrink = false;
+				div = o.div;
+			}
+		}
+
+		console.log('start');
+		console.log(start);
+		console.log('grown');
+		console.log(grown);
+
+		if (grown == false) {
+			if (grow == true) {
+				const d = document.getElementById(div);
+				d.style.display = 'grid';
+				grow_entry(entry, div);
+				show_maxheight(row)
+			}
+		} 
+		
+		if (shrink == false) {
+			let option;
+
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di);
+				} else {
+					show_opacity(di);
+				}
+			}
+		} else {
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di)
+				}
+			}
+
+			let clear = true;
+			let other;
+			for (other of others) {
+				const s = document.getElementById(other.select);
+				const value = s.options[s.selectedIndex].value;
+				const values = other.values;
+				let v;
+				for (v of values) {
+					if (v == value) {
+						clear = false
+					}
+				}
+			}
+
+			if (clear == true) { 
+				hide_maxheight(row)
+				shrink_entry(entry, div)
+			}
+		}
+	} else {
+		console.log('nothing')
+	}
+}
+
+
 function select_other(select, options, db) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
