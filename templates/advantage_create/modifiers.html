@@ -195,6 +195,16 @@
 					<option value="other">Other</option>
 				</select>
 			</div>
+			
+			<div id="modifiers-conflict">
+				<select class="select-entry" id="modifiers_conflict" name="modifiers_conflict" >
+				<option value="">Conflict Action</option>
+					<option value="x">Variable</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 
 			<div id="modifiers-emotion-other">
 				<input type="text" id="modifiers_emotion_other" name="modifiers_emotion_other" placeholder="Emotion">

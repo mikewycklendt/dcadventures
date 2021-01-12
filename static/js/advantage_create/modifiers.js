@@ -10,7 +10,8 @@ function modifiers_check() {
 function modifiers_trigger() {
 	const select = 'modifiers_trigger';
 	const options = [{'val': 'environment', 'div': 'modifiers-environment'}, 
-					{'val': 'sense', 'div': 'modifiers-sense'},
+					{'val': 'sense', 'div': 'modifiers-sense'}, 
+					{'val': 'conflict', 'div': 'modifiers-conflict'},
 					{'val': 'subsense', 'div': 'modifiers-subsense'},
 					{'val': 'condition', 'div': 'modifiers-condition'},
 					{'val': 'profession', 'div': 'modifiers-profession'},
