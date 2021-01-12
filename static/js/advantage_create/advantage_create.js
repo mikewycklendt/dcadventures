@@ -521,6 +521,22 @@ function select_opacity(select, options) {
 }
 
 
+function select_reset(select_input, selects) {
+	const field = document.getElementById(select_input);
+	const val = field.options[field.selectedIndex].value;
+	let s;
+
+	for (s of selects) {
+		const select = document.getElementById(s);
+		const value = select.options[select.selectedIndex].value
+
+		if (val != value) {
+			select.selectedIndex=0;
+		}
+	};
+}
+
+
 function select_opacity_any(select, div) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;

@@ -23,8 +23,10 @@ function modifiers_trigger() {
 					{'val': 'db', 'div': 'modifiers-creature-other'},
 					{'val': 'db', 'div': 'modifiers-emotion-other'},
 					{'val': 'db', 'div': 'modifiers-environment-other'}]
+	const selects = ['modifiers_profession', 'modifiers_creature', 'modifiers_emotion', 'modifiers_environment'];
 
 	select_opacity(select, options);
+	select_reset(select, selects);
 }
 
 function modifiers_profession() {
