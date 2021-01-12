@@ -473,6 +473,9 @@ function hide_secondary_double(select1_input, select2_input, options, entry) {
 	const val1 = select1.options[select1.selectedIndex].value;
 	const select2 = document.getElementById(select2_input)
 	const val2 = select2.options[select2.selectedIndex].value;
+	
+	select1.setAttribute('previousValue', 'empty')
+	select2.setAttribute('previousValue', 'empty');
 
 	for (o of options) {
 		const val = o.val;
