@@ -150,7 +150,7 @@
 
 .base-check {
 	display: grid;
-	grid-template-columns: 10% 60% 30%;
+	grid-template-columns: 15% 65% 20%;
 }
 
 #gm-check {
