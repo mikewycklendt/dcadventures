@@ -223,7 +223,7 @@
 		<div>	
 			<div id="modifiers-bonus-trait">
 				<div>
-					<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_bonus_trait_type(); modifiers_bonus_conflict();">
+					<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_bonus_trait_type(); modifiers_penalty_conflict(); modifiers_bonus_conflict();">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
@@ -257,7 +257,7 @@
 			</div>
 
 			<div id="modifiers-bonus-conflict">
-				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict" previousValue="empty" onchange="modifiers_bonus_conflict(); modifiers_bonus_trait_type();">
+				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict" previousValue="empty" onchange="modifiers_bonus_conflict(); modifiers_penalty_trait_type(); modifiers_bonus_trait_type();">
 					<option value="">Conflict Action</option>
 					{% for c in conflicts %}
 						<option value={{c.id}}>{{c.name}}</option>
@@ -271,7 +271,7 @@
 
 			<div id="modifiers-penalty-trait">
 				<div>
-					<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_penalty_trait_type(); modifiers_penalty_conflict();">
+					<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_penalty_trait_type();	modifiers_bonus_conflict(); modifiers_penalty_conflict();">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
@@ -305,7 +305,7 @@
 			</div>
 
 			<div id="modifiers-penalty-conflict">
-				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict" previousValue="empty" onchange="modifiers_penalty_conflict(); modifiers_penalty_trait_type();">
+				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict" previousValue="empty" onchange="modifiers_penalty_conflict(); modifiers_bonus_trait_type(); modifiers_penalty_trait_type();">
 					<option value="">Conflict Action</option>
 					<option value="x">Variable</option>
 					{% for c in conflicts %}
