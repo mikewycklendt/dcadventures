@@ -99,9 +99,9 @@ function modifiers_penalty_effect() {
 let modifiers_trait_type = {'status': false}
 
 function modifiers_penalty_trait_type() {
+	const fill = 'modifiers_penalty_trait';
 	const select1 = 'modifiers_penalty_trait_type';
 	const select2 = 'modifiers_bonus_trait_type';
-	const fill = 'modifiers_penalty_trait';
 	const options = [{'val': 'defense', 'div': 'modifiers-penalty-defense'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row4';

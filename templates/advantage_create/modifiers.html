@@ -386,6 +386,18 @@
 		</div>
 
 		<div>
+			<select class="select-entry" id="modifier_lasts" name="modifier_lasts">
+				<option value="">Turns</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				<option value="always">Always</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<div class="btn-entry" id="modifiers_submit" name="modifiers_submit" onclick="modifiers_submit()">
 				 Add
 			</div>
