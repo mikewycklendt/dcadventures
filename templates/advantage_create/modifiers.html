@@ -257,7 +257,7 @@
 			</div>
 
 			<div id="modifiers-bonus-conflict">
-				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict">
+				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict" previousValue="empty" onchange="modifiers_bonus_conflict()">
 					<option value="">Conflict Action</option>
 					{% for c in conflicts %}
 						<option value={{c.id}}>{{c.name}}</option>
@@ -305,7 +305,7 @@
 			</div>
 
 			<div id="modifiers-penalty-conflict">
-				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict">
+				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict" previousValue="empty" onchange="modifiers_penalty_conflict()">
 					<option value="">Conflict Action</option>
 					<option value="x">Variable</option>
 					{% for c in conflicts %}
@@ -326,11 +326,17 @@
 		<div>
 
 			<div id="modifiers-bonus-defense">
-					<div class="check-div">
-						<input type="checkbox" id="modifiers_bonus_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
-					</div>
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_bonus_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
+				</div>
 
-					<div></div>
+				<div></div>
+			</div>
+
+			<div id="modifier-bonus-conflict-defend">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_bonus_conflict_defend" class="medium-checkbox med-checkbox"> Only Active Defenses
+				</div>
 			</div>
 
 		</div>
@@ -338,11 +344,17 @@
 		<div>
 
 			<div id="modifiers-penalty-defense">
-					<div class="check-div">
-						<input type="checkbox" id="modifiers_penalty_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
-					</div>
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_penalty_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
+				</div>
 
-					<div></div>
+				<div></div>
+			</div>
+
+			<div id="modifier-penalty-conflict-defend">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_penalty_conflict_defend" class="medium-checkbox med-checkbox"> Only Active Defenses
+				</div>
 			</div>
 
 		</div>
