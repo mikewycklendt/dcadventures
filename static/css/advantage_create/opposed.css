@@ -67,9 +67,15 @@
 	grid-template-columns: 15% 25% 10% 15% 25% 10%;
 }
 
+#opposed-multiple {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #opposed-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 55% 25% 20%;
 }
 
 #opposed-err {

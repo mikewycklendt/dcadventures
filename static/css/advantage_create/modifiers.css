@@ -47,6 +47,15 @@
 	gap: .3vw;
 }
 
+#modifiers-tools {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
 #modifiers-environment-other {
 	display: none;
 	width: 100%;

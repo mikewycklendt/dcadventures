@@ -117,6 +117,16 @@
 
 	<div id="opposed-button-row">
 		<div></div>
+
+		<div>
+			<div id="opposed-multiple">
+				<select class="select-entry" id="opposed_multiple" name="oppiosed_multiple">
+					{% for o in opposed_multiple %}
+						<option value="{{o.type}}">{{o.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 	
 		<div>
 			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">
