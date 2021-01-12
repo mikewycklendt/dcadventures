@@ -71,11 +71,12 @@ function modifiers_bonus_effect() {
 					{'val': 'conflict', 'div': 'modifiers-bonus-conflict'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row3'
-	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'divs': ['modifiers-penalty-defense', 'modifiers-bonus-defense'], 'select1': 'modifiers_penalty_trait_type', 'select2': 'modifiers_bonus_trait_type'},
-					{'val': 'conflict', 'row': 'modifiers-row4', 'divs': ['modifier-penalty-conflict-defend', 'modifier-bonus-conflict-defend'], 'select1': 'modifiers_penalty_conflict', 'select2': 'modifiers_bonus_conflict'}];
-	
+	const second = [{'val': 'trait', 'divs': ['modifiers-penalty-defense', 'modifiers-bonus-defense'], 'select1': 'modifiers_penalty_trait_type', 'select2': 'modifiers_bonus_trait_type'},
+					{'val': 'conflict', 'divs': ['modifier-penalty-conflict-defend', 'modifier-bonus-conflict-defend'], 'select1': 'modifiers_penalty_conflict', 'select2': 'modifiers_bonus_conflict'}];
+	const row4 = 'modifiers-row4';
+
 	double_select(select1, select2, options, row, entry)
-	hide_secondary_double(select1, select2, second, entry);
+	hide_secondary_double(select1, select2, second, row4, entry);
 	
 }
 
@@ -87,11 +88,12 @@ function modifiers_penalty_effect() {
 					{'val': 'conflict', 'div': 'modifiers-penalty-conflict'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row3';
-	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'divs': ['modifiers-penalty-defense', 'modifiers-bonus-defense'], 'select1': 'modifiers_penalty_trait_type', 'select2': 'modifiers_bonus_trait_type'},
-					{'val': 'conflict', 'row': 'modifiers-row4', 'divs': ['modifier-penalty-conflict-defend', 'modifier-bonus-conflict-defend'], 'select1': 'modifiers_penalty_conflict', 'select2': 'modifiers_bonus_conflict'}];
-	
+	const second = [{'val': 'trait', 'divs': ['modifiers-penalty-defense', 'modifiers-bonus-defense'], 'select1': 'modifiers_penalty_trait_type', 'select2': 'modifiers_bonus_trait_type'},
+					{'val': 'conflict', 'divs': ['modifier-penalty-conflict-defend', 'modifier-bonus-conflict-defend'], 'select1': 'modifiers_penalty_conflict', 'select2': 'modifiers_bonus_conflict'}];
+	const row4 = 'modifiers-row4';
+
 	double_select(select1, select2, options, row, entry);
-	hide_secondary_double(select1, select2, second, entry);
+	hide_secondary_double(select1, select2, second, row4, entry);
 }
 
 let modifiers_trait_type = {'status': false}

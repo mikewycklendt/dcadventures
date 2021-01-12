@@ -468,27 +468,42 @@ function hide_secondary(select_input, options, entry) {
 	} 
 }
 
-function hide_secondary_double(select1_input, select2_input, options, entry) {
+function hide_secondary_double(select1_input, select2_input, options, row, entry) {
 	const field1 = document.getElementById(select1_input)
 	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select2_input)
-	const val2 = field2.options[field2.selectedIndex].value
+	const field2 = document.getElementById(select2_input);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	let shrink = true;
 
 	for (o of options) {
 		const val = o.val;
-		const row = o.row;
+		if (val1 == val) {
+			shrink = false;
+		}
+
+		if (val2 == val) {
+			shrink = false;
+		}
+	}
+
+	if (shrink == true) {
+		hide_maxheight(row);
+		shrink_entry(entry, row);
+	}
+
+	for (o of options) {
+		const v = o.val;
 		const s1 = o.select1;
 		const s2 = o.select2;
 		const select1 = document.getElementById(s1);
 		const select2 = document.getElementById(s2);
 
-		if (val1 != val && val2 != val) {
+		if (val1 != v && val2 != v) {
 			select1.setAttribute('previousValue', 'empty');
 			select2.setAttribute('previousValue', 'empty');
 			select1.selectedIndex=0;
 			select2.selectedIndex=0;
-			hide_maxheight(row);
-			shrink_entry(entry, row)
 		}
 
 		if (val1 != val) {
