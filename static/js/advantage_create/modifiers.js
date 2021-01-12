@@ -69,7 +69,7 @@ function modifiers_bonus_effect() {
 					{'val': 'conflict', 'div': 'modifiers-bonus-conflict'}];
 	const entry = 'modifiers-entry';
 	const row = 'modifiers-row3'
-	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-penalty-defense'}];
+	const second = [{'val': 'trait', 'row': 'modifiers-row4', 'div': 'modifiers-bonus-defense'}];
 
 	double_select(select1, select2, options, row, entry)
 	hide_secondary_double(select1, select2, second, entry);

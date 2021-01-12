@@ -307,6 +307,7 @@
 			<div id="modifiers-penalty-conflict">
 				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict">
 					<option value="">Conflict Action</option>
+					<option value="x">Variable</option>
 					{% for c in conflicts %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}
@@ -371,6 +372,8 @@
 				</select>
 			</div>
 		</div>
+
+		<
 
 		<div>
 			<div class="btn-entry" id="modifiers_submit" name="modifiers_submit" onclick="modifiers_submit()">
