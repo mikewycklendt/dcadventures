@@ -206,6 +206,22 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			For Consequence:
+		</div>
+	
+		<div>
+			<select class="base-select" id="consequence" name="consequence">
+				<option value="">Consequence</option>
+				{% for c in consequences %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Invulnerable Against:
 		</div>
 	
