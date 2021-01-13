@@ -143,6 +143,15 @@
 				</select>
 			</div>
 			
+			<div id="modifiers-maneuvers">
+				<select class="select-entry" id="modifiers_maneuver" name="modifiers_maneuver">
+					<option value="">Maneuver</option>
+					{% for m in maneuvers %}
+						<option value={{m.id}}>{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
 			<div id="modifiers-tools">
 				<select class="select-entry" id="modifiers_tools" name="modifiers_tools">
 					{% for t in tools %}

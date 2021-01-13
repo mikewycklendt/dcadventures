@@ -651,6 +651,10 @@ def integer(value):
 		value = 766
 	elif value == 'penalty':
 		value = 877
+	elif value == 'double':
+		value = 988
+	elif value == 'flat':
+		value = 998
 	elif value == 'x':
 		value = None
 	elif value == '':
