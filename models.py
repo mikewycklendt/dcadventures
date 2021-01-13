@@ -2584,6 +2584,18 @@ class Phase(db.Model):
 			'name': self.name
 		}
 
+
+class Maneuver(db.Model):
+	__tablename__ = 'maneuvers'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class MeasureType(db.Model):
 	__tablename__ = 'measurement_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
