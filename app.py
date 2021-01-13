@@ -56,6 +56,8 @@ def home():
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+
+	
 @app.route('/conflictaction/create')
 def conflict_action_create():
 

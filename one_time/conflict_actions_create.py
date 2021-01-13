@@ -9,7 +9,7 @@ def conflict_action_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	actions = ['Command', 'Crawl', 'Escape', 'Stand']
+	actions = ['Command', 'Crawl', 'Escape', 'Stand', 'Draw Weapon']
 
 	for i in actions:
 
