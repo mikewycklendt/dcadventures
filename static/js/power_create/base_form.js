@@ -3,7 +3,7 @@ function range_type() {
 	const base = 'ranged-base';
 	const entry = 'ranged-entry';
 	const field = 'range';
-	const value = 'rank';
+	const value = '5';
 	
 	select_entry(check, base, entry, field, value);
 }

@@ -47,7 +47,7 @@
 		<select class="base-select" id="range" name="range"   onchange="range_type()">
 			<option value="">Range</option>
 			{% for range in range_type %}
-				<option value="{{range.type}}">{{range.name}}</option>
+				<option value="{{range.id}}">{{range.name}}</option>
 			{% endfor %}
 		</select>
 	</div>

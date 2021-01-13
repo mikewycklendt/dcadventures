@@ -77,11 +77,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 					{'type': 'reaction', 'name': 'Reaction'},
 					{'type': 'none', 'name': 'None'}]
 
-	range_type = [{'type': 'personal', 'name': 'Personal'}, 
-					{'type': 'close', 'name': 'Close'}, 
-					{'type': 'ranged', 'name': 'Ranged'}, 
-					{'type': 'perception', 'name': 'Perception'}, 
-					{'type': 'rank', 'name': 'Variable'}]
+	range_type = Ranged.query.all()
 
 
 
