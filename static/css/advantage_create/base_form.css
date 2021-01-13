@@ -176,6 +176,8 @@
 
 #base-skill-description {
 	display: none;
+	grid-auto-rows: auto;
+	padding: .3vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .3s ease-out;
