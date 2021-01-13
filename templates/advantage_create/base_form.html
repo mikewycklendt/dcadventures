@@ -255,59 +255,6 @@
 		
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Condition While Using:
-		</div>
-	
-		<div>
-			<select class="base-select" id="power_condition" name="power_condition">
-				<option value="">Condition</option>
-				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Changes Condition:
-		</div>
-	
-		<div class="base-split">
-			<div>
-				<select class="base-select" id="power_condition1" name="power_condition1">
-					<option value="">Start Condition</option>
-					{% for c in conditions %}
-						<option value="{{c}}">{{c}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="base-select" id="power_condition2" name="power_condition2">
-					<option value="">End Condition</option>
-					{% for c in conditions %}
-						<option value="{{c}}">{{c}}</option>
-					{% endfor %}
-				</select>
-			</div>
-		</div>
-	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			No Action Conditions:
-		</div>
-	
-		<div>
-			<div>
-				<input type="checkbox" id="null_condition" class="regular-checkbox big-checkbox" >
-			</div>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
 			Simultaneous Action:
 		</div>
 	
