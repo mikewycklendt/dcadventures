@@ -56,44 +56,25 @@ def home():
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+@app.route('/conflictaction/create')
+def conflict_action_create():
 
-@app.route('/cover/create')
-def cover_create():
+	actions = ['Draw Weapon']
 
-	entries = ['No Cover', 'Partial Cover', 'Total Cover']
+	for i in actions:
 
-	for i in entries:
-
-		entry = Cover(name=i)
+		entry = ConflictAction(name=i, action_id=2)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Cover.query.all()
+	results = ConflictAction.query.all()
 
 	for result in results:
 		print (result.id)
+		print(result.action_id)
 		print (result.name)
 
-	return ('cover added')
-
-@app.route('/conceal/create')
-def conceal_create():
-
-	entries = ['No Concealment', 'Partial Concealment', 'Total Concealment']
-
-	for i in entries:
-
-		entry = Conceal(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Conceal.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('concealment added')
+	return ('actions added')
 
 
 
