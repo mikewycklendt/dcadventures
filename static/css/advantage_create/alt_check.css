@@ -81,7 +81,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 30% 25% 20% 25%;
+	grid-template-columns: 28% 25% 20% 27%;
 }
 
 #check-button-row {
