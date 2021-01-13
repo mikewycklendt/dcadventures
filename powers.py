@@ -18,7 +18,7 @@ import sys
 from dotenv import load_dotenv
 from power_errors import integer, extra_convert, power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
 from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
-from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged
 
 load_dotenv()
 
@@ -82,6 +82,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 					{'type': 'ranged', 'name': 'Ranged'}, 
 					{'type': 'perception', 'name': 'Perception'}, 
 					{'type': 'rank', 'name': 'Variable'}]
+
+
 
 	duration_type = [{'type': 'instant', 'name': 'Instant'}, 
 						{'type': 'conc', 'name': 'Concentration'}, 
