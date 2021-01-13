@@ -280,6 +280,44 @@
 
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Extra Action:
+		</div>
+	
+		<div class="base-check-wide">
+			<div>
+				<input type="checkbox" id="extra_action" class="regular-checkbox big-checkbox" onclick="extra_action()">
+			</div>
+
+			<div class="base-split check-fade" id="extra-action">
+
+				<div>
+					<select class="base-select" id="action1" name="action1">
+						<option value="">First Action</option>
+						<option value="0">Any</option>
+						{% for a in actions %}
+							<option value={{a.id}}>{{a.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="base-select" id="action2" name="action2">
+						<option value="">First Action</option>
+						<option value="0">Any</option>
+						{% for a in actions %}
+							<option value={{a.id}}>{{a.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -420,6 +458,7 @@
 		</div>
 
 	</div>
+	
 
 	<div class="base-field">
 		<div id="multiple-attr-title">

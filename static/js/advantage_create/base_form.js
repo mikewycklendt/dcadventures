@@ -200,6 +200,13 @@ function language() {
 	check_opacity(check, div)
 }
 
+function extra_action() {
+	const check = 'extra_action';
+	const div = 'extra-action';
+
+	check_opacity(check, div);
+}
+
 function gm_secret_check() {
 	const check = 'gm_secret_check';
 	const div = 'gm-check';
