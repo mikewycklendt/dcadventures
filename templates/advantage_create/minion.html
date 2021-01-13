@@ -1,0 +1,201 @@
+<div id="minion-header">
+
+	<div id="minion-title">
+		<input type="checkbox" id="minion_check" class="regular-checkbox big-checkbox" onclick="minion_check()"> Minions:
+	</div>
+	
+	<div id="minion-base">
+	</div>
+
+</div>
+
+<div id="minion-entry">
+	<div id="minion-row1">
+		<div>
+			<select class="select-sml" id="mod_minion_points" name="mod_minion_points">
+				<option value="">Points</option>
+				{% for i in positives %}
+					<option value={{i}}>Effect Rank X {{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_condition" name="mod_minion_condition">
+				<option value="">Minion Condition</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_player_condition" name="mod_minion_player_condition">
+				<option value="">Condition While Summoning</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion_link" class="medium-checkbox med-checkbox"> Mental Link
+			</div>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_variable_type" name="mod_minion_variable_type">
+				{% for m in minion_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="minion-row2">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="minion_multiple" class="medium-checkbox med-checkbox" onclick="minion_multiple()"> Multiple
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="minion_attitude" class="medium-checkbox med-checkbox" onclick="minion_attitude()"> Attitude
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="minion_resitable" class="medium-checkbox med-checkbox" onclick="minion_resitable()"> Resistable
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="minion_heroic" class="medium-checkbox med-checkbox"> Heroic
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="minion_sacrifice" class="medium-checkbox med-checkbox" onclick="minion_sacrifice()"> Sacrifice
+			</div>
+		</div>
+
+		<div id="minion-sacrifice">
+			<select class="select-sml" id="mod_minion_sacrifice_cost" name="mod_minion_sacrifice_cost">
+				<option value="">Power Point Cost Per Use</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}} Power Points</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="minion-attitude">
+		<div>
+			Attitude:
+		</div>
+
+		<div>
+			<select class="levels-sml" id="minion_attitude_type" name="minion_attitude_type">
+				<option value="">Attitude Level</option>
+				<option value="">Set Attitude Levels on levels and DC/Degree Modifier forms</option>
+			</select>
+		</div>
+
+		<div>
+			Check to Control:
+		</div>
+
+		<div>
+			<select class="select-sml" id="minion_attitude_trait_type" name="minion_attitude_trait_type" onchange="minion_attitude_trait_type()">
+				<option value="interact">Any Interaction</option>
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="minion_attitude_trait" name="minion_attitude_trait">
+				<option value="">Trait</option>"
+			</select>
+		</div>
+	</div>
+
+	<div id="minion-resitable">
+		<div>
+			Resistable:
+		</div>
+
+		<div>
+			<select class="select-sml" id="minion_resitable_check" name="minion_resitable_check">
+				<option value="">Minion Check</option>
+				{% for d in defenses %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="minion_resitable_dc" name="minion_resitable_dc">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			+ Effect Rank
+		</div>
+	</div>
+
+	<div id="minion-multiple">
+		<div>
+			Multiple Minions:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_multiple_value" name="mod_minion_multiple_value">
+				<option value="">Minions</option>
+				{% for i in positives %}
+					<option value={{i}}>Rank X {{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_minion_horde" class="medium-checkbox med-checkbox"> Horde
+			</div>
+		</div>
+	</div>
+	
+	<div id="minion-button-row">
+		<div></div>
+
+		<div>
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="minions_submit" name="minions_submit" onclick="minions_submit()">
+				Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="minion-spot"></div>
+
+<div id="minion-err"></div>
