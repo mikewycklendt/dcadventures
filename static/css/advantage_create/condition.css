@@ -27,7 +27,7 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 15% 15% 15% 55%;
+	grid-template-columns: 20% 25% 20% 35%;
 	opacity: 0%;
 	transition: all .3s linear;
 }
@@ -36,7 +36,7 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 25% 40% 35%;
+	grid-template-columns: 30% 40% 30%;
 	opacity: 0%;
 	transition: all .3s linear;
 }
@@ -45,7 +45,7 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 25% 40% 35%;
+	grid-template-columns: 30% 40% 30%;
 	opacity: 0%;
 	transition: all .3s linear;
 }

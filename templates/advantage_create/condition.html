@@ -18,7 +18,7 @@
 
 	<div id="condition-row1">
 		<div>
-			<select class="sekect-entry" id="condition_type" name="condition_type" onchange="condition_type()">
+			<select class="select-entry" id="condition_type" name="condition_type" onchange="condition_type()">
 				{% for c in condition %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
@@ -92,7 +92,7 @@
 			<div id="condition-damage">
 
 				<div>
-					<select class="select-sml" id="condition_damage_value" name="condition_damage_value">
+					<select class="select-entry" id="condition_damage_value" name="condition_damage_value">
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -104,7 +104,7 @@
 				</div>
 
 				<div>
-					<select class="select-sml" id="condition_damage" name="condition_damage">
+					<select class="select-entry" id="condition_damage" name="condition_damage">
 						{% for u in updown %}
 							<option value={{u.id}}>{{u.name}}</option>
 						{% endfor %}
