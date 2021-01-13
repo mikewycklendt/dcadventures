@@ -1,4 +1,4 @@
-@app.route('/conflictaction/create')
+@app.route('/conflict/create')
 def conflict_action_create():
 
 	actions = ['Aid', 'Aim', 'Attack', 'Charge', 'Defend', 'Disarm', 'Grab', 'Ready', 'Recover', 'Smash', 'Trip']
