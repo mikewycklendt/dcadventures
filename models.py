@@ -2914,19 +2914,7 @@ class WeaponCat(db.Model):
 			'name': self.name
 		}
 
-class WeaponType(db.Model):
-	__tablename__ = 'weapon_type'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	type_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
 
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name,
-			'type_id': self.type_id
-		}
 
 		
 if __name__ == '__main__':
