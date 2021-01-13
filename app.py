@@ -61,7 +61,7 @@ def home():
 @app.route('/ranged/create')
 def ranged_create():
 
-	entries = ['Personal', 'Close', 'Ranged', 'Perception'} 
+	entries = ['Personal', 'Close', 'Ranged', 'Perception']
 
 	for i in entries:
 
