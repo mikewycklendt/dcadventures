@@ -10,7 +10,7 @@ def ranged_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Ranked'} 
+	entries = ['Ranked']
 
 	for i in entries:
 
