@@ -104,7 +104,7 @@ def weapontype_create():
 		print (result.type_id)
 		print (result.name)
 
-	return ('weqpon category added')
+	return ('weqpon type added')
 
 
 '''
