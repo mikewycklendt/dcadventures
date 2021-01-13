@@ -82,7 +82,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	cover = Cover.query.all()
 
-	concealment = Conceal.query.aLL()
+	concealment = Conceal.query.all()
 	
 	times = db.session.query(Unit).filter_by(type_id=2)
 
