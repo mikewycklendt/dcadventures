@@ -21,6 +21,20 @@
 	grid-template-columns: 15% 20% 15% 20% 30%
 }
 
+#points-twenty {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 18% 82%
+}
+
+#points-initiative {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 18% 82%
+}
+
 #points-check {
 	display: none;
 	opacity: 0%;

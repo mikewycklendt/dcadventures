@@ -13,7 +13,9 @@ function points_spend() {
 					{'val': 'benefit', 'div': 'points-benefit'},
 					{'val': 'check', 'div': 'points-check'},
 					{'val': 'equip', 'div': 'points-equipment'},
-					{'val': 'condition', 'div': 'points-condition'}]
+					{'val': 'condition', 'div': 'points-condition'},
+					{'val': 'initiative', 'div': 'points-initiative'},
+					{'val': '20', 'div': 'points-twenty'}]
 
 	select_opacity(select, options)
 }
