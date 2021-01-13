@@ -259,6 +259,21 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Alter Target:
+		</div>
+	
+		<div>
+			<select class="base-select" id="alter_target" name="alter_target">
+				{% for t in target %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
 		
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -405,21 +420,6 @@
 		</div>
 
 	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Force Target:
-		</div>
-	
-		<div>
-			<div>
-				<input type="checkbox" id="force_target" class="regular-checkbox big-checkbox">
-			</div>
-
-		</div>
-
-	</div>
-
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
