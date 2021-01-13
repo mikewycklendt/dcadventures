@@ -780,7 +780,6 @@ class Power(db.Model):
 	description = db.Column(db.String())
 	power_type = db.Column(db.String())
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	power_range = db.Column(db.String())
 	duration = db.Column(db.String())
 	cost = db.Column(db.Integer)
 	limit = db.Column(db.Integer)
@@ -834,7 +833,6 @@ class Power(db.Model):
 			'description': self.description,
 			'power_type': self.power_type,
 			'action': self.action,
-			'power_range': self.power_range,
 			'duration': self.duration,
 			'cost': self.cost,
 			'limit': self.limit,
@@ -2661,6 +2659,17 @@ class Range(db.Model):
 			'id': self.id,
 			'name': self.name,
 			'distance': self.distance
+		}
+
+class Ranged(db.Model):
+	__tablename__ = 'ranged'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
 		}
 
 class Unit(db.Model):
