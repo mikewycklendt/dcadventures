@@ -183,6 +183,24 @@
 	gap: .3vw;
 }
 
+#modifiers-ranged {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-melee {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
 #modifiers-creature-other {
 	display: none;
 	width: 100%;
@@ -314,6 +332,7 @@
 	grid-template-columns: 100%;
 	gap: .3vw;
 }
+
 
 #modifiers-multiple {
 	display: none;

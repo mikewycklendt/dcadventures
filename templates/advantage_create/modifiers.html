@@ -170,6 +170,24 @@
 				</select>
 			</div>
 			
+			<div id="modifiers-melee">
+				<select class="select-entry" id="modifiers_weapon_melee" name="modifiers_weapon_melee">
+					<option value="">Melee Weapon</option>
+					{% for w in weapon_melee %}
+						<option value={{w.id}}>{{w.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-ranged">
+				<select class="select-entry" id="modifiers_weapon_ranged" name="modifiers_weapon_ranged">
+					<option value="">Ranged Weapon</option>
+					{% for w in weapon_ranged %}
+						<option value={{w.id}}>{{w.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
 			<div id="modifiers-tools">
 				<select class="select-entry" id="modifiers_tools" name="modifiers_tools">
 					{% for t in tools %}
@@ -293,8 +311,8 @@
 	
 				<div>
 					<select class="select-sml" id="modifiers_bonus_check_range" name="modifiers_bonus_check_range">
-						{% for r in ranged %}
 						<option value="0">All</option>
+						{% for r in ranged %}
 							<option value={{r.id}}>{{r.name}}</option>
 						{% endfor %}
 					</select>

@@ -88,6 +88,17 @@
 				</div>
 			</div>
 
+			<div id="points-initiative">
+				<div>
+					<select class="select-entry" id="points_initiative_cost" name="points_initiative_cost">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="points-check">
 				<div>
 					<select class="select-sml" id="points_check_bonus" name="points_check_bonus">

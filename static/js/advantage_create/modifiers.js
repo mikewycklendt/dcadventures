@@ -13,6 +13,8 @@ function modifiers_trigger() {
 					{'val': 'sense', 'div': 'modifiers-sense'}, 
 					{'val': 'tools', 'div': 'modifiers-tools'}, 
 					{'val': 'cover', 'div': 'modifiers-cover'}, 
+					{'val': 'ranged', 'div': 'modifiers-ranged'},
+					{'val': 'melee', 'div': 'modifiers-melee'},  
 					{'val': 'conceal', 'div': 'modifiers-conceal'},
 					{'val': 'conflict', 'div': 'modifiers-conflict'},
 					{'val': 'maneuver', 'div': 'modifiers-maneuvers'},
