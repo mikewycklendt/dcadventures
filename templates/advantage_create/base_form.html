@@ -382,6 +382,45 @@
 
 	</div>
 
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Languages:
+		</div>
+	
+		<div class="base-check-wide">
+			<div>
+				<input type="checkbox" id="language" class="regular-checkbox big-checkbox" onclick="language()">
+			</div>
+
+			<div class="base-split check-fade" id="language-field">
+
+				<div>
+					<select class="base-select" id="languages" name="languages">
+						<option value="">Languages</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="base-select" id="language_rank" name="language_rank">
+						<option value="">Languages/Rank</option>
+						<option value="flat">Flat</option>
+						<option value="double">Doubles</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
+
 	<div class="base-field">
 		<div id="multiple-attr-title">
 			Can Take Variations:

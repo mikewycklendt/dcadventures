@@ -193,6 +193,13 @@ function simultaneous() {
 	check_opacity(check, div);
 }
 
+function language() {
+	const check = 'language';
+	const div = 'language-field';
+
+	check_opacity(check, div)
+}
+
 function gm_secret_check() {
 	const check = 'gm_secret_check';
 	const div = 'gm-check';

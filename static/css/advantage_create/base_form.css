@@ -153,6 +153,11 @@
 	grid-template-columns: 15% 65% 20%;
 }
 
+.base-check-wide {
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+
 #gm-check {
 	max-height: 0;
 	overflow: hidden;
@@ -161,7 +166,7 @@
 
 .check-fade{
 	opacity: 0%;
-	transition: all .3s linear;
+	transition: all .4s linear;
 }
 
 .base-3 {

@@ -175,6 +175,10 @@ def integer_convert(value):
 		value = 'Immune'
 	elif value == 877:
 		value = 'No Penalties'
+	elif value == 988:
+		value = 'Doubles Per Rank'
+	elif value == 998:
+		value = 'Flat Value'
 	elif value is None:
 		value = ''
 	else:
