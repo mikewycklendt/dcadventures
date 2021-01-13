@@ -855,6 +855,7 @@ def save_power():
 	time = request.get_json()['time']
 
 	action = integer(action)
+	power_range = integer(power_range)
 	cost = integer(cost)
 	limit = integer(limit)
 	dc_value = integer(dc_value)
