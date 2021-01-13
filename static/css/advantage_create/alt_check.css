@@ -75,6 +75,15 @@
 	grid-template-columns: 27% 7% 30% 6% 30%;
 }
 
+#check-condition {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 30% 25% 20% 25%;
+}
+
 #check-button-row {
 	display: grid;
 	width: 98%;

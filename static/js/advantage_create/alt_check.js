@@ -30,7 +30,8 @@ function check_action_type() {
 
 function check_trigger() {
 	const select = 'check_trigger';
-	const options = [{'val': 'condition', 'div': 'check-condition'}];
+	const options = [{'val': 'condition', 'div': 'check-condition'},
+					{'val': 'conflict', 'div': 'check-conflict'}];
 	const entry = 'check-entry';
 
 	select_maxheight_entry(select, options, entry);

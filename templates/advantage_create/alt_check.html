@@ -1,7 +1,7 @@
 <div id="check-header">
 
 	<div id="check-title">
-		<input type="checkbox" id="check_check" class="regular-checkbox big-checkbox" onclick="check_check()"> Alternate Check:
+		<input type="checkbox" id="check_check" class="regular-checkbox big-checkbox" onclick="check_check()"> Variable Check:
 	</div>
 	
 	<div id="check-base">
@@ -89,6 +89,37 @@
 			</select>
 		</div>
 
+	</div>
+
+	<div id="check-conflict">
+		
+		<div class="vcenter" style="text-align: left;">
+			Following Conflict Action:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_conflict" name="check_conflict">
+				<option value="">Conflict Action</option>
+				{% for c in conflicts %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_conflict_range" name="check_conflict_range">
+				<option value="">Range</option>
+				{% for r in ranged %}
+					<option value={{r.id}}>{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="check_conflict_weapon" class="medium-checkbox med-checkbox" > Weapons
+			</div>
+		</div>
 	</div>
 
 	<div id="check-condition">
