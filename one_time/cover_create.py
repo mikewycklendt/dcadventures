@@ -1,3 +1,4 @@
+
 @app.route('/cover/create')
 def cover_create():
 
@@ -5,14 +6,14 @@ def cover_create():
 
 	for i in entries:
 
-		entry = Maneuver(name=i)
+		entry = Cover(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Maneuver.query.all()
+	results = Cover.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('MANEUVERS added')
+	return ('cover added')
