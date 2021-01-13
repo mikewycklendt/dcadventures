@@ -143,6 +143,24 @@
 				</select>
 			</div>
 			
+			<div id="modifiers-cover">
+				<select class="select-entry" id="modifiers_cover" name="modifiers_cover">
+					<option value="">Cover</option>
+					{% for c in cover %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-conceal">
+				<select class="select-entry" id="modifiers_conceal" name="modifiers_conceal">
+					<option value="">Concealment</option>
+					{% for c in concealment %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
 			<div id="modifiers-maneuvers">
 				<select class="select-entry" id="modifiers_maneuver" name="modifiers_maneuver">
 					<option value="">Maneuver</option>

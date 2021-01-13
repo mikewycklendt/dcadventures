@@ -11,7 +11,9 @@ function modifiers_trigger() {
 	const select = 'modifiers_trigger';
 	const options = [{'val': 'environment', 'div': 'modifiers-environment'}, 
 					{'val': 'sense', 'div': 'modifiers-sense'}, 
-					{'val': 'tools', 'div': 'modifiers-tools'},
+					{'val': 'tools', 'div': 'modifiers-tools'}, 
+					{'val': 'cover', 'div': 'modifiers-cover'}, 
+					{'val': 'conceal', 'div': 'modifiers-conceal'},
 					{'val': 'conflict', 'div': 'modifiers-conflict'},
 					{'val': 'maneuver', 'div': 'modifiers-maneuvers'},
 					{'val': 'subsense', 'div': 'modifiers-subsense'},

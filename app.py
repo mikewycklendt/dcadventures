@@ -74,7 +74,7 @@ def cover_create():
 		print (result.id)
 		print (result.name)
 
-	return ('MANEUVERS added')
+	return ('cover added')
 
 @app.route('/conceal/create')
 def conceal_create():
@@ -93,7 +93,7 @@ def conceal_create():
 		print (result.id)
 		print (result.name)
 
-	return ('MANEUVERS added')
+	return ('concealment added')
 
 
 
