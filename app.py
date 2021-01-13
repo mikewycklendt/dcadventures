@@ -11,7 +11,7 @@ from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime
-from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponCat, WeaponType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -58,33 +58,53 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/ranged/create')
-def ranged_create():
+@app.route('/weaponcat/create')
+def weaponcat_create():
 
-	entries = ['Personal', 'Close', 'Ranged', 'Perception']
-
-	for i in entries:
-
-		entry = Ranged(name=i, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Ranked']
+	entries = ['Melee', 'Ranged']
 
 	for i in entries:
 
-		entry = Ranged(name=i, show=False)
+		entry = WeaponCat(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Ranged.query.all()
+	results = WeaponCat.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('ranged added')
+	return ('weqpon category added')
 
+
+@app.route('/weapontype/create')
+def weapontype_create():
+
+	entries = ['Simple', 'Aechaic', 'Exotic']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=1)
+		db.session.add(entry)
+		db.session.commit()
+		
+	entries = ['Projectile', 'Energy', 'Heavy', 'Thrown']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=1)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = WeaponType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.type_id)
+		print (result.name)
+
+	return ('weqpon category added')
 
 
 '''
