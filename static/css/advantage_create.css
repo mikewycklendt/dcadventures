@@ -15,6 +15,7 @@
 @import "advantage_create/effort.css";
 @import "advantage_create/benefit.css";
 @import "advantage_create/rounds.css";
+@import "advantage_create/condition.css";
 
 .advantage-container {
 	display: grid;

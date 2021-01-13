@@ -81,9 +81,7 @@ function opposed_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const multiple = document.getElementById('opposed-multiple');
-			multiple.style.display = 'grid';
-			setTimeout(function(){multiple.style.opacity = '100%'}, 10);
+			multiple_field('opposed-multiple');
 
 			opposed_grid.columns.length = 0;
 			opposed_grid.columns = jsonResponse.rows;

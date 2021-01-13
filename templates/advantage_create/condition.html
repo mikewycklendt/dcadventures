@@ -1,0 +1,135 @@
+<div class="advantage-header" id="condition-header">
+
+	<div class="advantage-title" id="condition-title">
+		<input type="checkbox" id="condition_check" class="regular-checkbox big-checkbox" onclick="condition_check()"> Conditions:
+	</div>
+	
+	<div class="advantage-base" id="condition-base">
+		<div>
+			<select class="benwefit-entry" id="condition_benefit" name="condition_benefit">
+				<option value="">Benefit</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="condition-entry">
+
+	<div id="condition-row1">
+		<div>
+			<select class="sekect-entry" id="condition_type" name="condition_type" onchange="condition_type()">
+				{% for c in condition %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="condition-active">
+				<div class="vcenter">
+					Active condition:
+				</div>
+
+				
+				<div>
+					<select class="select-entry" id="condition_condition" name="condition_conditio">
+						<option value="">Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="condition-null">
+				<div class="vcenter">
+					Nullified condition:
+				</div>
+
+				
+				<div>
+					<select class="select-entry" id="condition_null" name="condition_null">
+						<option value="">Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="condition-change">
+		
+				<div class="vcenter">
+					From:
+				</div>
+
+				<div>
+					<select class="select-entry" id="condition_condition1" name="condition_condition1">
+						<option value="">Starting Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					To:
+				</div>
+				
+				<div>
+					<select class="select-entry" id="condition_condition2" name="condition_condition2">
+						<option value="">Ending Condition</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			
+			<div id="condition-damage">
+
+				<div>
+					<select class="select-sml" id="condition_damage_value" name="condition_damage_value">
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div style="text-align: center;">
+					Conditions
+				</div>
+
+				<div>
+					<select class="select-sml" id="condition_damage" name="condition_damage">
+						{% for u in updown %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="condition-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="condition_submit" name="condition_submit" onclick="condition_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="condition-spot"></div>
+
+<div class="err" id="condition-err"></div>

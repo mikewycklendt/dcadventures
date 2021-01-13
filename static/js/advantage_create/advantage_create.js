@@ -663,6 +663,14 @@ function double_select(select1, select2, options, row, entry) {
 	}
 }
 
+function multiple_field(div_input) {
+	const div = document.getElementById(div_input);
+	
+	div.style.display = 'grid';
+	setTimeout(function(){div.style.opacity = '100%'}, 10);
+	
+}
+
 
 function double_select_second(select1, select2, options, others, row, entry) {
 	const field1 = document.getElementById(select1);
