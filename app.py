@@ -93,7 +93,7 @@ def weapontype_create():
 
 	for i in entries:
 
-		entry = WeaponType(name=i, type_id=1)
+		entry = WeaponType(name=i, type_id=2)
 		db.session.add(entry)
 		db.session.commit()
 
