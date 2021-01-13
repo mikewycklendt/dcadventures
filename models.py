@@ -2667,11 +2667,13 @@ class Ranged(db.Model):
 	__tablename__ = 'ranged'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'show': self.show
 		}
 
 class Unit(db.Model):

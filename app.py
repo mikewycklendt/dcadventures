@@ -65,7 +65,15 @@ def ranged_create():
 
 	for i in entries:
 
-		entry = Ranged(name=i)
+		entry = Ranged(name=i, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Ranked'} 
+
+	for i in entries:
+
+		entry = Ranged(name=i, show=False)
 		db.session.add(entry)
 		db.session.commit()
 
