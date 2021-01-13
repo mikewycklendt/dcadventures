@@ -16,4 +16,4 @@ def ranged_create():
 		print (result.id)
 		print (result.name)
 
-	return ('cover added')
+	return ('ranged added')

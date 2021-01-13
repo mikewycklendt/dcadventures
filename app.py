@@ -58,25 +58,24 @@ def home():
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/conflict/create')
-def conflict_action_create():
+@app.route('/ranged/create')
+def ranged_create():
 
-	actions = ['Draw Weapon']
+	entries = ['Personal', 'Close', 'Ranged', 'Perception'} 
 
-	for i in actions:
+	for i in entries:
 
-		entry = ConflictAction(name=i, action_id=2)
+		entry = Ranged(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = ConflictAction.query.all()
+	results = Ranged.query.all()
 
 	for result in results:
 		print (result.id)
-		print(result.action_id)
 		print (result.name)
 
-	return ('actions added')
+	return ('ranged added')
 
 
 
