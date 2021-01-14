@@ -65,6 +65,17 @@ function effort_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'benefit': benefit,
+			'effect': effect,
+			'condition_type': condition_type,
+			'condition_damage_value': condition_damage_value,
+			'condition_damage': condition_damage,
+			'condition1': condition1,
+			'condition2': condition2,
+			'benefit_choice': benefit_choice,
+			'benefit_turns': benefit_turns,
+			'benefit_count': benefit_count,
+			'benefit_effort': benefit_effort
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

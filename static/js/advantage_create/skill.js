@@ -50,7 +50,13 @@ function skill_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'benefit': benefit,
+			'trait_type': trait_type,
+			'trait': trait,
+			'replaced_trait_type': replaced_trait_type,
+			'replaced_trait': replaced_trait,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

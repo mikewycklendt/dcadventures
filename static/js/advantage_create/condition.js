@@ -49,6 +49,14 @@ function condition_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'benefit': benefit,
+			'condition_type': condition_type,
+			'condition': condition,
+			'condition_null': condition_null,
+			'condition1': condition1,
+			'condition2': condition2,
+			'damage_value': damage_value,
+			'damage': damage
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

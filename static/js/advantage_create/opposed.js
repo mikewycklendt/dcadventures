@@ -64,6 +64,16 @@ function opposed_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'benefit': benefit,
+			'trait_type': trait_type,
+			'trait': trait,
+			'mod': mod,
+			'opponent_trait_type': opponent_trait_type,
+			'opponent_trait': opponent_trait,
+			'opponent_mod': opponent_mod,
+			'player_check': player_check,
+			'opponent_check': opponent_check,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

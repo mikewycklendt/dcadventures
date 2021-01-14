@@ -2420,6 +2420,7 @@ class AdvCirc(db.Model):
 	__tablename__ = 'advantage_circumstance'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	target = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	mod = db.Column(db.Integer)
 	rounds = db.Column(db.Integer)
@@ -2439,6 +2440,7 @@ class AdvCirc(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
+			'advantage_id': self.advantage_id,
 			'target': self.target,
 			'benefit': self.benefit,
 			'mod': self.mod,
@@ -2460,6 +2462,7 @@ class AdvCirc(db.Model):
 class AdvCombined(db.Model):
 	__tablename__ = 'advantage_combined'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	ranks = db.Column(db.Integer)
 	advantage = db.Column(db.String())
 
@@ -2473,6 +2476,7 @@ class AdvCombined(db.Model):
 class AdvCondition(db.Model):
 	__tablename__ = 'advantage_condition'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	condition_type = db.Column(db.String())
 	condition = db.Column(db.String())
@@ -2498,6 +2502,7 @@ class AdvCondition(db.Model):
 class AdvDC(db.Model):
 	__tablename__ = 'advantage_dc'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	target = db.Column(db.String())
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	dc = db.Column(db.Integer)
@@ -2549,6 +2554,7 @@ class AdvDC(db.Model):
 class AdvDegree(db.Model):
 	__tablename__ = 'advantage_degree'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	target = db.Column(db.String())
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	value = db.Column(db.Integer)
@@ -2626,6 +2632,7 @@ class AdvDegree(db.Model):
 class AdvEffort(db.Model):
 	__tablename__ = 'advantage_effort'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	effect = db.Column(db.String())
 	condition_type = db.Column(db.String())
@@ -2657,6 +2664,7 @@ class AdvEffort(db.Model):
 class AdvMinion(db.Model):
 	__tablename__ = 'advantage_minion'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	points = db.Column(db.Integer)
 	condition = db.Column(db.String())
 	player_condition = db.Column(db.String())
@@ -2705,6 +2713,7 @@ class AdvMod(db.Model):
 	__tablename__ = 'advantage_modifiers'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	bonus = db.Column(db.Integer)
 	bonus_type = db.Column(db.String())
 	penalty = db.Column(db.Integer)
@@ -2805,6 +2814,7 @@ class AdvMod(db.Model):
 class AdvOpposed(db.Model):
 	__tablename__ = 'advantage_opposed'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
@@ -2834,6 +2844,7 @@ class AdvOpposed(db.Model):
 class AdvPoints(db.Model):
 	__tablename__ = 'advantage_points'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	spend = db.Column(db.String())
 	condition_cost = db.Column(db.Integer)
@@ -2891,6 +2902,7 @@ class AdvPoints(db.Model):
 class AdvResist(db.Model):
 	__tablename__ = 'advantage_resist'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
@@ -2910,6 +2922,7 @@ class AdvResist(db.Model):
 class AdvRounds(db.Model):
 	__tablename__ = 'advantage_rounds'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	rounds = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('actions.id'))
@@ -2934,6 +2947,7 @@ class AdvRounds(db.Model):
 class AdvSkill(db.Model):
 	__tablename__ = 'advantage_skill'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
@@ -2955,6 +2969,7 @@ class AdvSkill(db.Model):
 class AdvTime(db.Model):
 	__tablename__ = 'advantage_time'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	time_type = db.Column(db.String())
 	value_type = db.Column(db.String())
@@ -2994,6 +3009,7 @@ class AdvTime(db.Model):
 class AdvVariable(db.Model):
 	__tablename__ = 'advantage_variable'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
 

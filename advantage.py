@@ -468,9 +468,48 @@ def advantage_post_alt_check():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	check_type = request.get_json()['check_type']
+	mod = request.get_json()['mod']
+	circumstance = request.get_json()['circumstance']
+	trigger = request.get_json()['trigger']
+	when = request.get_json()['when']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	conflict = request.get_json()['conflict']
+	conflict_range = request.get_json()['conflict_range']
+	conflict_weapon = request.get_json()['conflict_weapon']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	action_type = request.get_json()['action_type']
+	action = request.get_json()['action']
+	free = request.get_json()['free']
 
 	try:
-		entry = AdvAltCheck()
+		entry = AdvAltCheck(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							check_type = check_type,
+							mod = mod,
+							circumstance = circumstance,
+							trigger = trigger,
+							when = when,
+							trait_type = trait_type,
+							trait = trait,
+							conflict = conflict,
+							conflict_range = conflict_range,
+							conflict_weapon = conflict_weapon,
+							condition1 = condition1,
+							condition2 = condition2,
+							action_type = action_type,
+							action = action,
+							free = free)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -528,7 +567,7 @@ def advantage_post_benefit():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = adv_benefit_post errors(data)
+	errors = adv_benefit_post_errors(data)
 
 	error = errors['error']
 	if error:
@@ -536,9 +575,22 @@ def advantage_post_benefit():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	name = request.get_json()['name']
+	description = request.get_json()['description']
+	effort = request.get_json()['effort']
 
 	try:
-		entry = Benefit()
+		entry = Benefit(advantage_id = advantage_id,
+						columns = columns,
+						created = created,
+						font = font,
+						name = name,
+						description = description,
+						effort = effort)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -604,9 +656,49 @@ def advantage_post_circ():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	target = request.get_json()['target']
+	benefit = request.get_json()['benefit']
+	mod = request.get_json()['mod']
+	rounds = request.get_json()['rounds']
+	ranks = request.get_json()['ranks']
+	circumstance = request.get_json()['circumstance']
+	circ_type = request.get_json()['circ_type']
+	circ_range = request.get_json()['circ_range']
+	conflict = request.get_json()['conflict']
+	check_who = request.get_json()['check_who']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	null_type = request.get_json()['null_type']
+	null_condition = request.get_json()['null_condition']
+	null_trait_type = request.get_json()['null_trait_type']
+	null_trait = request.get_json()['null_trait']
+
 
 	try:
-		entry = AdvCirc()
+		entry = AdvCirc(advantage_id = advantage_id,
+						columns = columns,
+						created = created,
+						font = font,
+						target = target,
+						benefit = benefit,
+						mod = mod,
+						rounds = rounds,
+						ranks = ranks,
+						circumstance = circumstance,
+						circ_type = circ_type,
+						circ_range = circ_range,
+						conflict = conflict,
+						check_who = check_who,
+						check_trait_type = check_trait_type,
+						check_trait = check_trait,
+						null_type = null_type,
+						null_condition = null_condition,
+						null_trait_type = null_trait_type,
+						null_trait = null_trait)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -672,9 +764,20 @@ def advantage_post_combined():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	ranks = request.get_json()['ranks']
+	advantage = request.get_json()['advantage']
 
 	try:
-		entry = AdvCombined()
+		entry = AdvCombined(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							ranks = ranks,
+							advantage = advantage)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -700,6 +803,7 @@ def advantage_post_combined():
 		body['font'] = font
 			
 		body = adv_combined_post(entry, body, cells)
+
 	except:
 		error = True
 		body['success'] = False
@@ -741,9 +845,32 @@ def advantage_post_condition():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	Created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	condition_type = request.get_json()['condition_type']
+	condition = request.get_json()['condition']
+	condition_null = request.get_json()['condition_null']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	damage_value = request.get_json()['damage_value']
+	damage = request.get_json()['damage']
 
 	try:
-		entry = AdvCondition()
+		entry = AdvCondition(advantage_id = advantage_id,
+								columns = columns,
+								Created = created,
+								font = font,
+								benefit = benefit,
+								condition_type = condition_type,
+								condition = condition,
+								condition_null = condition_null,
+								condition1 = condition1,
+								condition2 = condition2,
+								damage_value = damage_value,
+								damage = damage)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -768,7 +895,7 @@ def advantage_post_condition():
 		body['mods'] = []
 		body['font'] = font
 			
-		body = adv_conditiom_post(entry, body, cells)
+		body = adv_condition_post(entry, body, cells)
 	except:
 		error = True
 		body['success'] = False
@@ -809,10 +936,59 @@ def advantage_post_dc():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	target = request.get_json()['target']
+	benefit = request.get_json()['benefit']
+	dc = request.get_json()['dc']
+	description = request.get_json()['description']
+	value_value = request.get_json()['value_value']
+	math_value = request.get_json()['math_value']
+	math_math = request.get_json()['math_math']
+	math_trait_type = request.get_json()['math_trait_type']
+	math_trait = request.get_json()['math_trait']
+	condition = request.get_json()['condition']
+	keyword_check = request.get_json()['keyword_check']
+	check_type = request.get_json()['check_type']
+	levels = request.get_json()['levels']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	keyword = request.get_json()['keyword']
+	check_trait_type = request.get_json()['check_trait_type']
+	check_trait = request.get_json()['check_trait']
+	check_mod = request.get_json()['check_mod']
 
 	try:
-		entry = AdvDC()
-
+		entry = AdvDC(advantage_id = advantage_id,
+						columns = columns,
+						created = created,
+						font = font,
+						target = target,
+						benefit = benefit,
+						dc = dc,
+						description = description,
+						value_value = value_value,
+						math_value = math_value,
+						math_math = math_math,
+						math_trait_type = math_trait_type,
+						math_trait = math_trait,
+						condition = condition,
+						keyword_check = keyword_check,
+						check_type = check_type,
+						levels = levels,
+						level_type = level_type,
+						level = level,
+						condition1 = condition1,
+						condition2 = condition2,
+						keyword = keyword,
+						check_trait_type = check_trait_type,
+						check_trait = check_trait,
+						check_mod = check_mod)
+						
 		db.session.add(entry)
 		db.session.commit()
 
@@ -878,9 +1054,84 @@ def advantage_post_deg_mod():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	Created = request.get_json()['created']
+	font = request.get_json()['font']
+	target = request.get_json()['target']
+	benefit = request.get_json()['benefit']
+	value = request.get_json()['value']
+	deg_mod_type = request.get_json()['deg_mod_type']
+	consequence_action_type = request.get_json()['consequence_action_type']
+	consequence_action = request.get_json()['consequence_action']
+	consequence_trait_type = request.get_json()['consequence_trait_type']
+	consequence_trait = request.get_json()['consequence_trait']
+	consequence = request.get_json()['consequence']
+	knowledge = request.get_json()['knowledge']
+	knowledge_count = request.get_json()['knowledge_count']
+	knowledge_specificity = request.get_json()['knowledge_specificity']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	circ_value = request.get_json()['circ_value']
+	circ_turns = request.get_json()['circ_turns']
+	circ_trait_type = request.get_json()['circ_trait_type']
+	circ_trait = request.get_json()['circ_trait']
+	measure_type = request.get_json()['measure_type']
+	measure_val1 = request.get_json()['measure_val1']
+	measure_math = request.get_json()['measure_math']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_value = request.get_json()['measure_value']
+	measure_rank = request.get_json()['measure_rank']
+	condition_type = request.get_json()['condition_type']
+	condition_damage_value = request.get_json()['condition_damage_value']
+	condition_damage = request.get_json()['condition_damage']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	keyword = request.get_json()['keyword']
+	nullify = request.get_json()['nullify']
+	cumulative = request.get_json()['cumulative']
+	linked = request.get_json()['linked']
+	
 	try:
-		entry = AdvDegree()
+		entry = AdvDegree(advantage_id = advantage_id,
+							columns = columns,
+							Created = created,
+							font = font,
+							target = target,
+							benefit = benefit,
+							value = value,
+							deg_mod_type = deg_mod_type,
+							consequence_action_type = consequence_action_type,
+							consequence_action = consequence_action,
+							consequence_trait_type = consequence_trait_type,
+							consequence_trait = consequence_trait,
+							consequence = consequence,
+							knowledge = knowledge,
+							knowledge_count = knowledge_count,
+							knowledge_specificity = knowledge_specificity,
+							level_type = level_type,
+							level = level,
+							circ_value = circ_value,
+							circ_turns = circ_turns,
+							circ_trait_type = circ_trait_type,
+							circ_trait = circ_trait,
+							measure_type = measure_type,
+							measure_val1 = measure_val1,
+							measure_math = measure_math,
+							measure_trait_type = measure_trait_type,
+							measure_trait = measure_trait,
+							measure_value = measure_value,
+							measure_rank = measure_rank,
+							condition_type = condition_type,
+							condition_damage_value = condition_damage_value,
+							condition_damage = condition_damage,
+							condition1 = condition1,
+							condition2 = condition2,
+							keyword = keyword,
+							nullify = nullify,
+							cumulative = cumulative,
+							linked = linked)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -947,9 +1198,38 @@ def advantage_post_effort():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	effect = request.get_json()['effect']
+	condition_type = request.get_json()['condition_type']
+	condition_damage_value = request.get_json()['condition_damage_value']
+	condition_damage = request.get_json()['condition_damage']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	benefit_choice = request.get_json()['benefit_choice']
+	benefit_turns = request.get_json()['benefit_turns']
+	benefit_count = request.get_json()['benefit_count']
+	benefit_effort = request.get_json()['benefit_effort']
 
 	try:
-		entry = AdvEffort()
+		entry = AdvEffort(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							effect = effect,
+							condition_type = condition_type,
+							condition_damage_value = condition_damage_value,
+							condition_damage = condition_damage,
+							condition1 = condition1,
+							condition2 = condition2,
+							benefit_choice = benefit_choice,
+							benefit_turns = benefit_turns,
+							benefit_count = benefit_count,
+							benefit_effort = benefit_effort)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1016,9 +1296,54 @@ def advantage_post_minion():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	points = request.get_json()['points']
+	condition = request.get_json()['condition']
+	player_condition = request.get_json()['player_condition']
+	link = request.get_json()['link']
+	variable_type = request.get_json()['variable_type']
+	multiple = request.get_json()['multiple']
+	attitude = request.get_json()['attitude']
+	resitable = request.get_json()['resitable']
+	heroic = request.get_json()['heroic']
+	sacrifice = request.get_json()['sacrifice']
+	sacrifice_cost = request.get_json()['sacrifice_cost']
+	attitude_type = request.get_json()['attitude_type']
+	attitude_attitude = request.get_json()['attitude_attitude']
+	attitude_trait_type = request.get_json()['attitude_trait_type']
+	attitude_trait = request.get_json()['attitude_trait']
+	resitable_check = request.get_json()['resitable_check']
+	resitable_dc = request.get_json()['resitable_dc']
+	multiple_value = request.get_json()['multiple_value']
+	horde = request.get_json()['horde']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
 
 	try:
-		entry = AdvMinion()
+		entry = AdvMinion(advantage_id = advantage_id,
+							points = points,
+							condition = condition,
+							player_condition = player_condition,
+							link = link,
+							variable_type = variable_type,
+							multiple = multiple,
+							attitude = attitude,
+							resitable = resitable,
+							heroic = heroic,
+							sacrifice = sacrifice,
+							sacrifice_cost = sacrifice_cost,
+							attitude_type = attitude_type,
+							attitude_attitude = attitude_attitude,
+							attitude_trait_type = attitude_trait_type,
+							attitude_trait = attitude_trait,
+							resitable_check = resitable_check,
+							resitable_dc = resitable_dc,
+							multiple_value = multiple_value,
+							horde = horde,
+							columns = columns,
+							created = created,
+							font = font)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1079,17 +1404,58 @@ def advantage_post_modifiers():
 
 	errors = adv_modifiers_post_errors(data)
 
-
-
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	Benefit = request.get_json()['benefit']
+	bonus = request.get_json()['bonus']
+	bonus_type = request.get_json()['bonus_type']
+	penalty = request.get_json()['penalty']
+	penalty_type = request.get_json()['penalty_type']
+	trigger = request.get_json()['trigger']
+	bonus_effect = request.get_json()['bonus_effect']
+	penalty_effect = request.get_json()['penalty_effect']
 	environment = request.get_json()['environment']
 	environment_other = request.get_json()['environment_other']
+	sense = request.get_json()['sense']
+	mod_range = request.get_json()['mod_range']
+	subsense = request.get_json()['subsense']
+	cover = request.get_json()['cover']
+	conceal = request.get_json()['conceal']
+	maneuver = request.get_json()['maneuver']
+	weapon_melee = request.get_json()['weapon_melee']
+	weapon_ranged = request.get_json()['weapon_ranged']
+	tools = request.get_json()['tools']
+	condition = request.get_json()['condition']
+	power = request.get_json()['power']
+	consequence = request.get_json()['consequence']
 	creature = request.get_json()['creature']
 	creature_other = request.get_json()['creature_other']
+	emotion = request.get_json()['emotion']
+	emotion_other = request.get_json()['emotion_other']
+	conflict = request.get_json()['conflict']
 	profession = request.get_json()['profession']
 	profession_other = request.get_json()['profession_other']
-	em0tion = request.get_json()['em0tion']
-	em0tion_other = request.get_json()['em0tion_other'] 
-
+	bonus_trait_type = request.get_json()['bonus_trait_type']
+	bonus_trait = request.get_json()['bonus_trait']
+	bonus_check = request.get_json()['bonus_check']
+	bonus_check_range = request.get_json()['bonus_check_range']
+	bonus_conflict = request.get_json()['bonus_conflict']
+	penalty_trait_type = request.get_json()['penalty_trait_type']
+	penalty_trait = request.get_json()['penalty_trait']
+	penalty_check = request.get_json()['penalty_check']
+	penalty_check_range = request.get_json()['penalty_check_range']
+	penalty_conflict = request.get_json()['penalty_conflict']
+	bonus_active_defense = request.get_json()['bonus_active_defense']
+	bonus_conflict_defend = request.get_json()['bonus_conflict_defend']
+	penalty_active_defense = request.get_json()['penalty_active_defense']
+	penalty_conflict_defend = request.get_json()['penalty_conflict_defend']
+	multiple = request.get_json()['multiple']
+	multiple_count = request.get_json()['multiple_count']
+	if em0tion == 'other':	
+	lasts = request.get_json()['lasts
+	
 	if em0tion == 'other':	
 		entry = Emotion(name=em0tion_other)
 		db.session.add(entry)
@@ -1125,7 +1491,56 @@ def advantage_post_modifiers():
 
 
 	try:
-		entry = AdvMod()
+		entry = AdvMod(advantage_id = advantage_id,
+						columns = columns,
+						created = created,
+						font = font,
+						Benefit = benefit,
+						bonus = bonus,
+						bonus_type = bonus_type,
+						penalty = penalty,
+						penalty_type = penalty_type,
+						trigger = trigger,
+						bonus_effect = bonus_effect,
+						penalty_effect = penalty_effect,
+						environment = environment,
+						environment_other = environment_other,
+						sense = sense,
+						mod_range = mod_range,
+						subsense = subsense,
+						cover = cover,
+						conceal = conceal,
+						maneuver = maneuver,
+						weapon_melee = weapon_melee,
+						weapon_ranged = weapon_ranged,
+						tools = tools,
+						condition = condition,
+						power = power,
+						consequence = consequence,
+						creature = creature,
+						creature_other = creature_other,
+						emotion = emotion,
+						emotion_other = emotion_other,
+						conflict = conflict,
+						profession = profession,
+						profession_other = profession_other,
+						bonus_trait_type = bonus_trait_type,
+						bonus_trait = bonus_trait,
+						bonus_check = bonus_check,
+						bonus_check_range = bonus_check_range,
+						bonus_conflict = bonus_conflict,
+						penalty_trait_type = penalty_trait_type,
+						penalty_trait = penalty_trait,
+						penalty_check = penalty_check,
+						penalty_check_range = penalty_check_range,
+						penalty_conflict = penalty_conflict,
+						bonus_active_defense = bonus_active_defense,
+						bonus_conflict_defend = bonus_conflict_defend,
+						penalty_active_defense = penalty_active_defense,
+						penalty_conflict_defend = penalty_conflict_defend,
+						multiple = multiple,
+						multiple_count = multiple_count,
+						lasts = lasts)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1192,9 +1607,36 @@ def advantage_post_opposed():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	opponent_trait_type = request.get_json()['opponent_trait_type']
+	opponent_trait = request.get_json()['opponent_trait']
+	opponent_mod = request.get_json()['opponent_mod']
+	player_check = request.get_json()['player_check']
+	opponent_check = request.get_json()['opponent_check']
+	multiple = request.get_json()['multiple']
 
 	try:
-		entry = AdvOpposed()
+		entry = AdvOpposed(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							trait_type = trait_type,
+							trait = trait,
+							mod = mod,
+							opponent_trait_type = opponent_trait_type,
+							opponent_trait = opponent_trait,
+							opponent_mod = opponent_mod,
+							player_check = player_check,
+							opponent_check = opponent_check,
+							multiple = multiple)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1261,9 +1703,64 @@ def advantage_post_points():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	spend = request.get_json()['spend']
+	condition_cost = request.get_json()['condition_cost']
+	condition1 = request.get_json()['conditioon1']
+	condition2 = request.get_json()['condition2']
+	equipment_points = request.get_json()['equipment_points']
+	equipment_vehicles = request.get_json()['equipment_vehicles']
+	equipment_headquarters = request.get_json()['equipment_headquarters']
+	initiative_cost = request.get_json()['initiative_cost']
+	twenty = request.get_json()['twenty']
+	check_bonus = request.get_json()['check_bonus']
+	check_cost = request.get_json()['check_cost']
+	check_turns = request.get_json()['check_turns']
+	check_target = request.get_json()['check_target']
+	check_all = request.get_json()['check_all']
+	benefit_choice = request.get_json()['benefit_choice']
+	benefit_count = request.get_json()['benefit_count']
+	benefit_cost = request.get_json()['benefit_cost']
+	benefit_turns = request.get_json()['benefit_turns']
+	ranks_gained = request.get_json()['ranks_gained']
+	ranks_max = request.get_json()['ranks_max']
+	ranks_lasts = request.get_json()['ranks_lasts']
+	ranks_trait_type = request.get_json()['ranks_trait_type']
+	ranks_trait = request.get_json()['ranks_trait']
 
 	try:
-		entry = AdvPoints()
+		entry = AdvPoints(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							spend = spend,
+							condition_cost = condition_cost,
+							condition1 = conditioon1,
+							condition2 = condition2,
+							equipment_points = equipment_points,
+							equipment_vehicles = equipment_vehicles,
+							equipment_headquarters = equipment_headquarters,
+							initiative_cost = initiative_cost,
+							twenty = twenty,
+							check_bonus = check_bonus,
+							check_cost = check_cost,
+							check_turns = check_turns,
+							check_target = check_target,
+							check_all = check_all,
+							benefit_choice = benefit_choice,
+							benefit_count = benefit_count,
+							benefit_cost = benefit_cost,
+							benefit_turns = benefit_turns,
+							ranks_gained = ranks_gained,
+							ranks_max = ranks_max,
+							ranks_lasts = ranks_lasts,
+							ranks_trait_type = ranks_trait_type,
+							ranks_trait = ranks_trait)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1329,9 +1826,26 @@ def advantage_post_resist():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	which = request.get_json()['which']
 
 	try:
-		entry = AdvResist()
+		entry = AdvResist(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							trait_type = trait_type,
+							trait = trait,
+							mod = mod,
+							which = which)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1397,9 +1911,30 @@ def advantage_post_rounds():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	rounds = request.get_json()['rounds']
+	cost = request.get_json()['cost']
+	check = request.get_json()['check']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	end = request.get_json()['end']
 
 	try:
-		entry = AdvRounds()
+		entry = AdvRounds(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							rounds = rounds,
+							cost = cost,
+							check = check,
+							trait_type = trait_type,
+							trait = trait,
+							end = end)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1465,9 +2000,28 @@ def advantage_skill_minion():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	replaced_trait_type = request.get_json()['replaced_trait_type']
+	replaced_trait = request.get_json()['replaced_trait']
+	multiple = request.get_json()['multiple']
 
 	try:
-		entry = AdvSkill()
+		entry = AdvSkill(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							benefit = benefit,
+							trait_type = trait_type,
+							trait = trait,
+							replaced_trait_type = replaced_trait_type,
+							replaced_trait = replaced_trait,
+							multiple = multiple)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1517,7 +2071,7 @@ def delete_advantage_skill(advantage_id):
 		return jsonify({'success': True, 'id': power_id})
 
 	
-@advantage.route('/advantage/timr/create', methods=['POST'])
+@advantage.route('/advantage/time/create', methods=['POST'])
 def advantage_post_timr():
 
 	body = {}
@@ -1533,9 +2087,46 @@ def advantage_post_timr():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	time_type = request.get_json()['time_type']
+	value_type = request.get_json()['value_type']
+	value = request.get_json()['value']
+	units = request.get_json()['units']
+	time_value = request.get_json()['time_value']
+	math = request.get_json()['math']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	dc = request.get_json()['dc']
+	check_type = request.get_json()['check_type']
+	recovery = request.get_json()['recovery']
+	recovery_penalty = request.get_json()['recovery_penalty']
+	recovery_time = request.get_json()['recovery_time']
+	recovery_incurable = request.get_json()['recovery_incurable']
 
 	try:
-		entry = AdvTime()
+		entry = AdvTime(advantage_id = advantage_id,
+						columns = columns,
+						created = created,
+						font = font,
+						benefit = benefit,
+						time_type = time_type,
+						value_type = value_type,
+						value = value,
+						units = units,
+						time_value = time_value,
+						math = math,
+						trait_type = trait_type,
+						trait = trait,
+						dc = dc,
+						check_type = check_type,
+						recovery = recovery,
+						recovery_penalty = recovery_penalty,
+						recovery_time = recovery_time,
+						recovery_incurable = recovery_incurable)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -1601,9 +2192,20 @@ def advantage_post_variable():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	advantage_id = request.get_json()['advantage_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
 
 	try:
-		entry = AdvVariable()
+		entry = AdvVariable(advantage_id = advantage_id,
+							columns = columns,
+							created = created,
+							font = font,
+							trait_type = trait_type,
+							trait = trait)
 
 		db.session.add(entry)
 		db.session.commit()

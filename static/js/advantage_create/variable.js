@@ -40,7 +40,9 @@ function variable_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'trait_type': trait_type,
+			'trait': trait
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

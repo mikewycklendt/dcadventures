@@ -33,6 +33,8 @@ function combined_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'ranks': ranks,
+			'advantage': advantage
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

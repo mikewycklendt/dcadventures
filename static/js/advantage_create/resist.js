@@ -42,6 +42,11 @@ function resist_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'benefit': benefit,
+			'trait_type': trait_type,
+			'trait': trait,
+			'mod': mod,
+			'which': which
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

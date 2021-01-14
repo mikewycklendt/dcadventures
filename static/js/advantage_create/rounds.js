@@ -44,6 +44,13 @@ function rounds_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'benefit': benefit,
+			'rounds': rounds,
+			'cost': cost,
+			'check': check,
+			'trait_type': trait_type,
+			'trait': trait,
+			'end': end
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
