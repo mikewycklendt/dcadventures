@@ -2375,21 +2375,6 @@ class Advantage(db.Model):
 			'name': self.name,
 		}
 
-class Benefit(db.Model):
-	__tablename__ = 'benefits'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	description = db.Column(db.String())
-	effort = db.Column(db.Boolean)
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name,
-			'description': self.description,
-			'effort': self.effort
-		}
-
 class AdvAltCheck(db.Model):
 	__tablename__ = 'advantage_alt_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
