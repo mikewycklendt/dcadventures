@@ -2953,7 +2953,7 @@ class AdvSkill(db.Model):
 		}
 
 class AdvTime(db.Model):
-	__tablename__ = 'advantage_condition'
+	__tablename__ = 'advantage_time'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	time_type = db.Column(db.String())
