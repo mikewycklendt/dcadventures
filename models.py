@@ -2832,7 +2832,7 @@ class AdvOpposed(db.Model):
 		}
 
 class AdvPoints(db.Model):
-	__tablename__ = 'advantage_condition'
+	__tablename__ = 'advantage_points'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	spend = db.Column(db.String())
