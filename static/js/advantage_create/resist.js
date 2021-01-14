@@ -25,6 +25,11 @@ function resist_submit() {
 	const created = resist_grid.titles;
 	const font = resist_grid.font;
 
+	const benefit = select("resist_benefit");
+	const trait_type = select("resist_trait_type");
+	const trait = select("resist_trait");
+	const mod = select("resist_mod");
+	const which = select("resist_which");
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'resist-err';
@@ -36,7 +41,7 @@ function resist_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -46,6 +51,8 @@ function resist_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			multiple_field('resist-multiple');
 
 			resist_grid.columns.length = 0;
 			resist_grid.columns = jsonResponse.rows;

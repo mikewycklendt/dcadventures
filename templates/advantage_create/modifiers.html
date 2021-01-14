@@ -429,25 +429,24 @@
 
 		<div>
 			<div id="modifiers-multiple">
-				<select class="select-entry" id="modifiers_multiple" name="modifiers_multiple" onchange="modifiers_multiple()">
-					{% for m in multiple %}
-						<option value="{{m.type}}">{{m.name}}</option>
-					{% endfor %}
-				</select>
+				<div>
+					<select class="select-entry" id="modifiers_multiple" name="modifiers_multiple" onchange="modifiers_multiple()">
+						{% for m in multiple %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-entry" id="modifiers_multiple_count" name="modifiers_multiple_count">
+						<option value="">Choose</option>
+						<option value=0>All</option>
+						{% for i in positives %}
+							<option value="{{i}}">Any {{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
-		</div>
-
-		<div>
-			<div id="modifiers-multiple-count">
-				<select class="select-entry" id="modifiers_multiple_count" name="modifiers_multiple_count">
-					<option value="">Choose</option>
-					<option value=0>All</option>
-					{% for i in positives %}
-						<option value="{{i}}">Any {{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-		</div>
 
 		<div>
 			<select class="select-entry" id="modifier_lasts" name="modifier_lasts">

@@ -42,7 +42,7 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="resist_trait_type" name="resist_trait">
+			<select class="select-entry" id="resist_trait" name="resist">
 				<option value="">Trait</option>
 			</select>
 		</div>
@@ -59,7 +59,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div id="resst-multiple">
 			<select class="select-entry" id="resist_which" name="resist_which">
 				{% for w in which %}
 					<option value="{{w.type}}">{{w.name}}</option>

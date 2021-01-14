@@ -104,28 +104,26 @@ function dc_submit() {
 	const font = dc_grid.font;
 
 	const target = select("dc_target");
-	const extra_id = select("dc_extra");
+	const benefit = select("dc_benefit");
 	const dc = select("dc_dc");
 	const description = text("dc_description");
-	const value = select("dc_value_value");
+	const value_value = select("dc_value_value");
 	const math_value = select("dc_math_vqlue");
-	const math = select("dc_math_math");
+	const math_math = select("dc_math_math");
 	const math_trait_type = select("dc_math_trait_type");
 	const math_trait = select("dc_math_trait");
-	const descriptor_check = check("dc_descriptor_check");
 	const condition = check("dc_condition");
 	const keyword_check = check("dc_keyword_check");
 	const check_type = check("dc_check_type");
-	const descriptor = select("dc_descriptor");
-	const descriptor_possess = select("dc_descriptor_possess");
+	const levels = check("dc_levels");
+	const level_type = select("dc_level_type");
+	const level = select("dc_level");
 	const condition1 = select("dc_condition1");
 	const condition2 = select("dc_condition2");
 	const keyword = text("dc_keyword");
 	const check_trait_type = select("dc_check_trait_type");
 	const check_trait = select("dc_check_trait");
 	const check_mod = select("dc_check_mod");
-	const levels = check('dc_levels');
-	const level = select('dc_level');
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -136,32 +134,9 @@ function dc_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
-			'target': target,
-			'dc': dc,
-			'description': description,
-			'value': value,
-			'math_value': math_value,
-			'math': math,
-			'math_trait_type': math_trait_type,
-			'math_trait': math_trait,
-			'descriptor_check': descriptor_check,
-			'condition': condition,
-			'keyword_check': keyword_check,
-			'check_type': check_type,
-			'descriptor': descriptor,
-			'descriptor_possess': descriptor_possess,
-			'condition1': condition1,
-			'condition2': condition2,
-			'keyword': keyword,
-			'check_trait_type': check_trait_type,
-			'check_trait': check_trait,
-			'check_mod': check_mod,
-			'levels': levels,
-			'level': level,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

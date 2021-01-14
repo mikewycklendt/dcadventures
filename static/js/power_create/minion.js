@@ -30,6 +30,13 @@ function minion_attitude() {
 	check_drop(check, div, entry);
 }
 
+function minion_attitude_type() {
+	const select = 'minion_attitude_type';
+	const fill = 'minion_attitude_attitude';
+
+	level_select(select, fill);
+}
+
 function minion_resitable() {
 	const check = 'minion_resitable';
 	const div = 'minion-resitable';
@@ -76,6 +83,7 @@ function minions_submit() {
 	const sacrifice = check("minion_sacrifice");
 	const sacrifice_cost = select("mod_minion_sacrifice_cost");
 	const attitude_type = select("minion_attitude_type");
+	const attitude_attitude = select('minion_attitude_attitude');
 	const attitude_trait_type = select("minion_attitude_trait_type");
 	const attitude_trait = select("minion_attitude_trait");
 	const resitable_check = select("minion_resitable_check");
@@ -105,6 +113,7 @@ function minions_submit() {
 			'sacrifice': sacrifice,
 			'sacrifice_cost': sacrifice_cost,
 			'attitude_type': attitude_type,
+			'attitude_attitude': attitude_attitude,
 			'attitude_trait_type': attitude_trait_type,
 			'attitude_trait': attitude_trait,
 			'resitable_check': resitable_check,

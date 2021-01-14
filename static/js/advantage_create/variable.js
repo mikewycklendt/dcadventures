@@ -25,6 +25,10 @@ function variable_submit() {
 	const created = variable_grid.titles;
 	const font = variable_grid.font;
 
+	
+	const trait_type = select("variable_trait_type");
+	const trait = select("variable_trait");
+
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'variable-err';

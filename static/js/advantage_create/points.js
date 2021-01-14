@@ -45,6 +45,31 @@ function points_submit() {
 	const created = points_grid.titles;
 	const font = points_grid.font;
 
+
+	const benefit = select("points_benefit");
+	const spend = select("points_spend");
+	const condition_cost = select("points_condition_cost");
+	const condition1 = select("points_condition1");
+	const condition2 = select("points_condition2");
+	const equipment_points = select("points_equipment_points");
+	const equipment_vehicles = check("points_equipment_vehicles");
+	const equipment_headquarters = check("points_equipment_headquarters");
+	const initiative_cost = select("points_initiative_cost");
+	const twenty = select("points_twenty");
+	const check_bonus = select("points_check_bonus");
+	const check_cost = select("points_check_cost");
+	const check_turns = select("points_check_turns");
+	const check_target = select("points_check_target");
+	const check_all = check("points_check_all");
+	const benefit_choice = select("points_benefit_choice");
+	const benefit_count = select("points_benefit_count");
+	const benefit_cost = select("points_benefit_cost");
+	const benefit_turns = select("points_benefit_turns");
+	const ranks_gained = select("points_ranks_gained");
+	const ranks_max = select("points_ranks_max");
+	const ranks_lasts = select("points_ranks_lasts");
+	const ranks_trait_type = select("points_ranks_trait_type");
+	const ranks_trait = select("points_ranks_trait");
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'points-err';

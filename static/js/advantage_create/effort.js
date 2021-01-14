@@ -42,6 +42,17 @@ function effort_submit() {
 	const created = effort_grid.titles;
 	const font = effort_grid.font;
 
+	const benefit = select("effort_benefit");
+	const effect = select("effort_effect");
+	const condition_type = select("effort_condition_type");
+	const condition_damage_value = select("effort_condition_damage_value");
+	const condition_damage = select("effort_condition_damage");
+	const condition1 = select("effort_condition1");
+	const condition2 = select("effort_condition2");
+	const benefit_choice = select("effort_benefit_choice");
+	const benefit_turns = select("effort_benefit_turns");
+	const benefit_count = select("effort_benefit_count");
+	const benefit_effort = check("effort_benefit_effort");
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'effort-err';
@@ -53,7 +64,7 @@ function effort_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

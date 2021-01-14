@@ -14,9 +14,15 @@
 	grid-auto-rows: auto;
 }
 
+#skill-multiple {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out
+}
+
 #skill-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 55% 25% 20%;
 	width: 97%;
 	grid-template-rows: auto;
 }

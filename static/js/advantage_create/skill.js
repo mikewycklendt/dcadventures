@@ -32,6 +32,13 @@ function skill_submit() {
 	const created = skill_grid.titles;
 	const font = skill_grid.font;
 
+
+	const benefit = select("skill_benefit")
+	const trait_type = select("skill_trait_type")
+	const trait = select("skill_trait")
+	const replaced_trait_type = select("skill_replaced_trait_type")
+	const replaced_trait = select("skill_replaced_trait")
+	const multiple = select("skill_multiple")
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'skill-err';
@@ -53,6 +60,8 @@ function skill_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			multiple_field('skill-multiple');
 
 			skill_grid.columns.length = 0;
 			skill_grid.columns = jsonResponse.rows;

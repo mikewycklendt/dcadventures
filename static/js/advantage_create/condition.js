@@ -28,6 +28,15 @@ function condition_submit() {
 	const created = condition_grid.titles;
 	const font = condition_grid.font;
 
+	const benefit = select("condition_benefit");
+	const condition_type = select("condition_type");
+	const condition = select("condition_condition");
+	const condition_null = select("condition_null");
+	const condition1 = select("condition_condition1");
+	const condition2 = select("condition_condition2");
+	const damage_value = select("condition_damage_value");
+	const damage = select("condition_damage");
+
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'condition-err';
@@ -39,7 +48,7 @@ function condition_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

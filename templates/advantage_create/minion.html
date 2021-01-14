@@ -15,7 +15,7 @@
 			<select class="select-sml" id="mod_minion_points" name="mod_minion_points">
 				<option value="">Points</option>
 				{% for i in positives %}
-					<option value={{i}}>Effect Rank X {{i}}</option>
+					<option value={{i}}>Advantage Rank X {{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -100,25 +100,31 @@
 		</div>
 
 		<div>
-			<select class="levels-sml" id="minion_attitude_type" name="minion_attitude_type">
-				<option value="">Attitude Level</option>
-				<option value="">Set Attitude Levels on levels and DC/Degree Modifier forms</option>
+			<select class="level-type-sml" id="minion_attitude_type" name="minion_attitude_type" onchange="minion_attitude_type()">
+				<option value="">Level Type</option>
+				{% for l in level_types %}
+					<option value={{l.id}}>{{l.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			Check to Control:
+			<select class="levels-sml" id="minion_attitude_attitude" name="minion_attitude_attitude">
+				<option value="">Level</option>
+				<option value="">Use Levels form to put levels here</option>
+			</select>
 		</div>
 
 		<div>
 			<select class="select-sml" id="minion_attitude_trait_type" name="minion_attitude_trait_type" onchange="minion_attitude_trait_type()">
+				<option value="">Check to Control</option>
 				<option value="interact">Any Interaction</option>
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-
+		
 		<div>
 			<select class="select-sml" id="minion_attitude_trait" name="minion_attitude_trait">
 				<option value="">Trait</option>"

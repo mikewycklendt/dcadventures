@@ -18,6 +18,9 @@ function combined_submit() {
 	const created = modifiers_grid.titles;
 	const font = modifiers_grid.font;
 
+	const ranks = select("combined_ranks");
+	const advantage = select("combined_advantage");
+
 	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'combined-err';
@@ -29,7 +32,7 @@ function combined_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

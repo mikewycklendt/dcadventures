@@ -40,7 +40,8 @@ function opposed_submit() {
 	const created = opposed_grid.titles;
 	const font = opposed_grid.font;
 
-	const extra_id = select("opposed_extra");
+	
+	const benefit = select("opposed_benefit");
 	const trait_type = select("opposed_trait_type");
 	const trait = select("opposed_trait");
 	const mod = select("opposed_mod");
@@ -49,6 +50,7 @@ function opposed_submit() {
 	const opponent_mod = select("opposed_opponent_mod");
 	const player_check = select("opposed_player_check");
 	const opponent_check = select("opposed_opponent_check");
+	const multiple = select("opposed_multiple");
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -59,18 +61,9 @@ function opposed_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
-			'trait_type': trait_type,
-			'trait': trait,
-			'mod': mod,
-			'opponent_trait_type': opponent_trait_type,
-			'opponent_trait': opponent_trait,
-			'opponent_mod': opponent_mod,
-			'player_check': player_check,
-			'opponent_check': opponent_check,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

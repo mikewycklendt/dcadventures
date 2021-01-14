@@ -47,14 +47,23 @@ function check_submit() {
 	const columns = check_grid.columns;
 	const created = check_grid.titles;
 	const font = check_grid.font;
-
-	const extra_id = select("check_extra");
-	const check_type = select("check_check_type");
-	const mod = select("check_mod");
-	const circumstance = text("check_circ");
-	const when = select("check_when");
-	const trait_type = select("check_trait_type");
-	const trait = select("check_trait");
+	
+	const benefit = select("check_benefit")
+	const check_type = select("check_check_type")
+	const mod = select("check_mod")
+	const circumstance = text("check_circ")
+	const trigger = select("check_trigger")
+	const when = select("check_when")
+	const trait_type = select("check_trait_type")
+	const trait = select("check_trait")
+	const conflict = select("check_conflict")
+	const conflict_range = select("check_conflict_range")
+	const conflict_weapon = check("check_conflict_weapon")
+	const condition1 = select("check_condition1")
+	const condition2 = select("check_condition2")
+	const action_type = select("check_action_type")
+	const action = select("check_action")
+	const free = check("check_free")
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -67,13 +76,6 @@ function check_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
-			'check_type': check_type,
-			'mod': mod,
-			'circumstance': circumstance,
-			'when': when,
-			'trait_type': trait_type,
-			'trait': trait,
 			'columns': columns,
 			'created': created,
 			'font': font

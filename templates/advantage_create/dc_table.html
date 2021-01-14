@@ -105,11 +105,6 @@
 	</div>
 
 	<div id="dc-row2">
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dc_descriptor_check" class="medium-checkbox med-checkbox" onclick="dc_descriptor()"> Descriptor
-			</div>
-		</div>
 
 		<div>
 			<div class="check-div">
@@ -160,29 +155,6 @@
 				<option value="">Use Levels form to put levels here</option>
 			</select>
 		</div>
-	</div>
-
-	<div id="dc-descriptor">
-
-		<div>
-			Descriptor:
-		</div>
-
-		<div>
-			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
-				<option value="">Use above form for values</option>
-			</select>
-		</div>
-	
-		<div>
-			<select class="select-sml" id="dc_descriptor_possess" name="dc_descriptor_possess">
-				{% for p in possess %}
-					<option value="{{p.type}}">{{p.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div></div>
 	</div>
 
 	<div id="dc-condition">

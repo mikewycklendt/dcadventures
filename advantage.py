@@ -18,7 +18,7 @@ import sys
 from dotenv import load_dotenv
 from power_errors import integer, extra_convert, power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
 from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
-from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 
 load_dotenv()
 
@@ -147,7 +147,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
-	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
+	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
 
 	permanence = [{'type': '', 'name': 'Permanence'}, {'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 
@@ -450,8 +450,636 @@ def advantage_action_select():
 	print(body)
 	return jsonify(body)
 
-@advantage.route('/power/modifiers/create', methods=['POST'])
+
+	
+@advantage.route('/advantage/alt_check/create', methods=['POST'])
+def advantage_post_alt_check():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_alt_check_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvAltCheck()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'check'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_alt_check_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/alt_check/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_alt_check(advantage_id):
+	try:
+		db.session.query(AdvAltCheck).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/benefit/create', methods=['POST'])
+def advantage_post_benefit():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_benefit_post errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = Benefit()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'benefit'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_benefit_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/benefit/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_benefit(advantage_id):
+	try:
+		db.session.query(Benefit).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/circ/create', methods=['POST'])
+def advantage_post_circ():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_circ_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvCirc()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'circ'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_circ_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/circ/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_circ(advantage_id):
+	try:
+		db.session.query(AdvCirc).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/combined/create', methods=['POST'])
+def advantage_post_combined():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_combined_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvCombined()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'combined'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_combined_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/combined/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_combined(advantage_id):
+	try:
+		db.session.query(AdvCombined).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/condition/create', methods=['POST'])
+def advantage_post_condition():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_condition_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvCondition()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'condition'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_conditiom_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/condition/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_condition(advantage_id):
+	try:
+		db.session.query(AdvCondition).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/dc/create', methods=['POST'])
+def advantage_post_dc():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_dc_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvDC()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'dc'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_dc_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/dc/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_dc(advantage_id):
+	try:
+		db.session.query(AdvDC).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/deg_mod/create', methods=['POST'])
+def advantage_post_deg_mod():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_deg_mod_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvDegree()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'deg-mod'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_deg_mod_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/deg_mod/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_deg_mod(advantage_id):
+	try:
+		db.session.query(AdvDegree).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/effort/create', methods=['POST'])
+def advantage_post_effort():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_effort_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvEffort()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'effort'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_effort_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/effort/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_effort(advantage_id):
+	try:
+		db.session.query(AdvEffort).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/minion/create', methods=['POST'])
+def advantage_post_minion():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_minion_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvMinion()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'minion'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_minion_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/minion/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_minion(advantage_id):
+	try:
+		db.session.query(AdvMinion).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/modifiers/create', methods=['POST'])
 def advantage_post_modifiers():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_modifiers_post_errors(data)
+
+
 
 	environment = request.get_json()['environment']
 	environment_other = request.get_json()['environment_other']
@@ -489,3 +1117,537 @@ def advantage_post_modifiers():
 		db.session.commit()
 		profession = entry.id
 		db.session.close()
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvMod()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'modifiers'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_modifiers_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/modifiers/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_modifiers(advantage_id):
+	try:
+		db.session.query(AdvMod).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/opposed/create', methods=['POST'])
+def advantage_post_opposed():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_opposed_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvOpposed()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'opposed'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_opposed_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/opposed/delete/<advantage_id>', methods=['DELETE'])
+def delete_opposed_minion(advantage_id):
+	try:
+		db.session.query(AdvOpposed).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+
+	
+@advantage.route('/advantage/points/create', methods=['POST'])
+def advantage_post_points():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_points_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvPoints()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'points'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_points_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/points/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_points(advantage_id):
+	try:
+		db.session.query(AdvPoints).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/resist/create', methods=['POST'])
+def advantage_post_resist():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_resist_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvResist()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'resist'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_resist_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/resist/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_minion(advantage_id):
+	try:
+		db.session.query(AdvResist).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/rounds/create', methods=['POST'])
+def advantage_post_rounds():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_rounds_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvRounds()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'rounds'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_rounds_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/rounds/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_rounds(advantage_id):
+	try:
+		db.session.query(AdvRounds).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/skill/create', methods=['POST'])
+def advantage_skill_minion():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_skill_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvSkill()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'skill'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_skill_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/skill/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_skill(advantage_id):
+	try:
+		db.session.query(AdvSkill).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/timr/create', methods=['POST'])
+def advantage_post_timr():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_time_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvTime()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'timr'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_time_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/time/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_time(advantage_id):
+	try:
+		db.session.query(AdvTime).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})
+
+	
+@advantage.route('/advantage/variable/create', methods=['POST'])
+def advantage_post_variable():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_variable_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	try:
+		entry = AdvVariable()
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'variabke'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+			
+		body = adv_variable_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	return jsonify(body)
+
+
+@advantage.route('/advantage/variable/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_minion(advantage_id):
+	try:
+		db.session.query(AdvVariable).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': power_id})

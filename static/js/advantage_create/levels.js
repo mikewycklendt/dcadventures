@@ -30,7 +30,6 @@ function levels_submit() {
 	const font = levels_grid.font;
 
 	const level_type = text("level_type");
-	const extra_id = select("levels_extra");
 	const level = text("level");
 	const level_effect = text("level_effect");
 
@@ -46,7 +45,6 @@ function levels_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
 			'level_type': level_type,
 			'level': level,
 			'level_effect': level_effect,

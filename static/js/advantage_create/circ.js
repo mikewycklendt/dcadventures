@@ -60,20 +60,21 @@ function circ_submit() {
 	const font = circ_grid.font;
 
 	const target = select("circ_target");
-	const extra_id = select("circ_extra");
+	const benefit = select("circ_benefit");
 	const mod = select("circ_mod");
 	const rounds = select("circ_rounds");
-	const description = text("circ_des");
-	const type = select("circ_type");
-	const range = select("circ_range");
+	const ranks = select("circ_ranks");
+	const circumstance = text("circ_des");
+	const circ_type = select("circ_type");
+	const circ_range = select("circ_range");
+	const conflict = select("circ_conflict");
 	const check_who = select("circ_check_who");
 	const check_trait_type = select("circ_check_trait_type");
 	const check_trait = select("circ_check_trait");
 	const null_type = select("circ_null_type");
 	const null_condition = select("circ_null_condition");
-	const null_descriptor = select("circ_null_descriptor");
 	const null_trait_type = select("circ_null_trait_type");
-	const null_trait = select("circ_null_trait")
+	const null_trait = select("circ_null_trait");
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -84,24 +85,9 @@ function circ_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
-			'target': target,
-			'mod': mod,
-			'rounds': rounds,
-			'description': description,
-			'circ_type': type,
-			'circ_range': range,
-			'check_who': check_who,
-			'check_trait_type': check_trait_type,
-			'check_trait': check_trait,
-			'null_type': null_type,
-			'null_condition': null_condition,
-			'null_descriptor': null_descriptor,
-			'null_trait_type': null_trait_type,
-			'null_trait': null_trait,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -25,6 +25,13 @@ function rounds_submit() {
 	const created = rounds_grid.titles;
 	const font = rounds_grid.font;
 
+	const benefit = select("rounds_benefit");
+	const rounds = select("rounds_rounds");
+	const cost = select("rounds_cost");
+	const check = select("rounds_check");
+	const trait_type = select("rounds_trait_type");
+	const trait = select("rounds_trait");
+	const end = select("rounds_end");
 	const advantage_id = document.getElementById('advantage_id').value;
 	
 	const errors = 'rounds-err';
@@ -36,7 +43,7 @@ function rounds_submit() {
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

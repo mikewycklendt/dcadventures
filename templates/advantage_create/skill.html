@@ -1,7 +1,7 @@
 <div class="advantage-header" id="skill-header">
 
 	<div class="advantage-title" id="skill-title">
-		<input type="checkbox" id="skill_check" class="regular-checkbox big-checkbox" onclick="skill_check()"> Skill Effect:
+		<input type="checkbox" id="skill_check" class="regular-checkbox big-checkbox" onclick="skill_check()"> Bonus Swap:
 	</div>
 	
 	<div class="advantage-base" id="skill-base">
@@ -32,7 +32,7 @@
 		<div></div>
 
 		<div>
-			<select class="select-sml" name="skill_trait_type" id="skill_trait_type" onchange="skill_trait_type()">
+			<select class="select-entry" name="skill_trait_type" id="skill_trait_type" onchange="skill_trait_type()">
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -40,13 +40,13 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="skill_trait" name="skill_trait">
+			<select class="select-entry" id="skill_trait" name="skill_trait">
 				<option value="">Trait</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml" name="skill_replaced_trait_type" id="skill_replaced_trait_type" onchange="skill_replaced_trait_type()">
+			<select class="select-entry" name="skill_replaced_trait_type" id="skill_replaced_trait_type" onchange="skill_replaced_trait_type()">
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -54,7 +54,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="skill_replaced_trait" name="skill_replaced_trait">
+			<select class="select-entry" id="skill_replaced_trait" name="skill_replaced_trait">
 				<option value="">Trait</option>
 			</select>
 		</div>
@@ -65,6 +65,13 @@
 		<div>
 		</div>
 
+		<div id="skill-multiple">
+			<select class="select-entry" id="skill_multiple" name="skill_multiple">
+				{% for m in multiple %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 		<div>
 			<div class="btn-entry" id="skill_submit" name="skill_submit" onclick="skill_submit()">
 				 Add

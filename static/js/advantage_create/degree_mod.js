@@ -104,9 +104,19 @@ function deg_mod_submit() {
 	const font = deg_mod_grid.font;
 	
 	const target = select("deg_mod_target");
-	const extra_id = select("deg_mod_extra");
+	const benefit = select("deg_mod_benefit");
 	const value = select("deg_value");
-	const type = select("deg_mod_type");
+	const deg_mod_type = select("deg_mod_type");
+	const consequence_action_type = select("deg_mod_consequence_action_type");
+	const consequence_action = select("deg_mod_consequence_action");
+	const consequence_trait_type = select("deg_mod_consequence_trait_type");
+	const consequence_trait = select("deg_mod_consequence_trait");
+	const consequence = select("deg_mod_consequence");
+	const knowledge = select("deg_mod_knowledge");
+	const knowledge_count = select("deg_mod_knowledge_count");
+	const knowledge_specificity = select("deg_mod_knowledge_specificity");
+	const level_type = select("deg_mod_level_type");
+	const level = select("deg_mod_level");
 	const circ_value = select("deg_mod_circ_value");
 	const circ_turns = select("deg_mod_circ_turns");
 	const circ_trait_type = select("deg_mod_circ_trait_type");
@@ -118,16 +128,15 @@ function deg_mod_submit() {
 	const measure_trait = select("deg_mod_measure_trait");
 	const measure_value = select("deg_mod_measure_value");
 	const measure_rank = select("deg_mod_measure_rank");
-	const deg_condition_type = select("deg_mod_condition_type");
+	const condition_type = select("deg_mod_condition_type");
 	const condition_damage_value = select("deg_mod_condition_damage_value");
 	const condition_damage = select("deg_mod_condition_damage");
-	const condition1 = select("deg_mod_condition1");	
+	const condition1 = select("deg_mod_condition1");
 	const condition2 = select("deg_mod_condition2");
 	const keyword = text("deg_mod_keyword");
 	const nullify = select("deg_mod_nullify");
 	const cumulative = check("deg_mod_cumulative");
 	const linked = check("deg_mod_linked");
-	const level = select('deg_mod_level');
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -138,34 +147,9 @@ function deg_mod_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'extra_id': extra_id,
-			'target': target,
-			'value': value,
-			'deg_type': type,
-			'circ_value': circ_value,
-			'circ_turns': circ_turns,
-			'circ_trait_type': circ_trait_type,
-			'circ_trait': circ_trait,
-			'measure_type': measure_type,
-			'measure_val1': measure_val1,
-			'measure_math': measure_math,
-			'measure_trait_type': measure_trait_type,
-			'measure_trait': measure_trait,
-			'measure_value': measure_value,
-			'measure_rank': measure_rank,
-			'deg_condition_type': deg_condition_type,
-			'condition_damage_value': condition_damage_value,
-			'condition_damage': condition_damage,
-			'condition1': condition1,
-			'condition2': condition2,
-			'keyword': keyword,
-			'nullify': nullify,
-			'cumulative': cumulative,
-			'linked': linked,
-			'level': level,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
