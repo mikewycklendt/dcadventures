@@ -1582,7 +1582,6 @@ class PowerMinion(db.Model):
 	heroic = db.Column(db.Boolean)
 	sacrifice = db.Column(db.Boolean)
 	sacrifice_cost = db.Column(db.Integer)
-	attitude_type = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	attitude_trait_type = db.Column(db.String())
 	attitude_trait = db.Column(db.String())
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
@@ -1606,7 +1605,6 @@ class PowerMinion(db.Model):
 			'heroic': self.heroic,
 			'sacrifice': self.sacrifice,
 			'sacrifice_cost': self.sacrifice_cost,
-			'attitude_type': self.attitude_type,
 			'attitude_trait_type': self.attitude_trait_type,
 			'attitude_trait': self.attitude_trait,
 			'resitable_check': self.resitable_check,

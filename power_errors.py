@@ -1322,6 +1322,14 @@ def degree_mod_post_errors(data):
 	errors = variable_field('circ', deg_type, 'Circumstance Trait',  circ_trait, errors)
 
 	errors = variable_fields('level', 'Level', deg_type, [level], errors)
+	
+	errors = variable_fields('knowledge' , 'Knowledge', deg_type, [knowledge], errors)
+	errors = variable_fields('bonus', 'Learn Bonus', knowledge, [knowledge_count, knowledge_specificity], errors)
+	errors = variable_field('bonus', knowledge, 'Knowledge Count', knowledge_count, errors)
+	errors = variable_field('bonus', knowledge, 'Knowledge Specificity', knowledge_specificity, errors)
+
+	errors = variable_fields('consequence', 'Consequence', deg_type, [consequence], errors)
+	errors = variable_field('consequence', deg_type, 'Consequence', consequence, errors)
 
 	errors = required(keyword, 'Keyword', errors)
 

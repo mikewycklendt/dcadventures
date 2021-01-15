@@ -138,7 +138,7 @@ def adv_circ_post_errors(data):
 	errors = variable_fields('override', 'Override Trait Circumstance', null_type, [null_override_trait_type, null_override_trait], errors)
 	errors = variable_field('override', null_type, 'Trait Type', null_override_trait_type, errors)
 	errors = variable_field('override', null_type, 'Trait', null_override_trait, errors)
-	
+
 	return(errors)
 
 def adv_combined_post_errors(data):
@@ -331,6 +331,50 @@ def adv_deg_mod_post_errors(data):
 	errors = db_check(Math, measure_math, 'Math', errors)
 	errors = db_check(Rank, measure_rank, 'Measurement Rank', errors)
 
+	errors = required(value, 'Degree', errors)
+	errors = required(deg_type, 'Result Type', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = variable_fields('measure', 'Measurement', deg_type, [measure_type], errors)
+	errors = variable_fields('math', 'Measurement Math', measure_type, [measure_val1, measure_math, measure_trait_type, measure_trait], errors)
+	errors = variable_field('math', measure_type, 'Measurement Math Value', measure_val1, errors)
+	errors = variable_field('math', measure_type, 'Measurement Math', measure_math, errors)
+	errors = variable_field('math', measure_type, 'Measurement Trait Type', measure_trait_type, errors)
+	errors = variable_field('math', measure_type, 'Measurement Trait', measure_trait, errors)
+
+	errors = variable_fields('value', 'Measurement Value', measure_type, [measure_value, measure_rank], errors)
+	errors = variable_field('value', measure_type, 'Measurement Value', measure_value, errors)
+	errors = variable_field('value', measure_type, 'Measurement Rank Type', measure_rank, errors)
+	
+	errors = variable_fields('condition', 'Condition', deg_type, [deg_condition_type], errors)
+	errors = variable_fields('condition', 'Condition Change', deg_condition_type, [condition1, condition2], errors)
+	errors = variable_field('condition', deg_condition_type, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', deg_condition_type, 'Ending Condition', condition2, errors)
+	errors = variable_fields('damage', 'Damage Condition', deg_condition_type, [condition_damage_value, condition_damage], errors)
+	errors = variable_field('damage', deg_condition_type, 'Condition Damage Value', condition_damage_value, errors)
+	errors = variable_field('damage', deg_condition_type, 'Condition Damage Change', condition_damage, errors)
+	errors = variable_fields('circ', 'Circumstance', deg_type, [circ_value, circ_turns, circ_trait_type, circ_trait], errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Value', circ_value, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Turns', circ_turns, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Trait Type', circ_trait_type, errors)
+	errors = variable_field('circ', deg_type, 'Circumstance Trait',  circ_trait, errors)
+
+	errors = variable_fields('level', 'Level', deg_type, [level_type, level], errors)
+	
+	errors = variable_fields('knowledge' , 'Knowledge', deg_type, [knowledge], errors)
+	errors = variable_fields('bonus', 'Learn Bonus', knowledge, [knowledge_count, knowledge_specificity], errors)
+	errors = variable_field('bonus', knowledge, 'Knowledge Count', knowledge_count, errors)
+	errors = variable_field('bonus', knowledge, 'Knowledge Specificity', knowledge_specificity, errors)
+
+	errors = variable_fields('consequence', 'Consequence', deg_type, [consequence], errors)
+	errors = variable_field('consequence', deg_type, 'Consequence', consequence, errors)
+
+
+	errors = variable_fields('level', 'Level', deg_type, [level], errors)
+
+	errors = required(keyword, 'Keyword', errors)
+
+
 	return(errors)
 
 def adv_effort_post_errors(data):
@@ -361,6 +405,20 @@ def adv_effort_post_errors(data):
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Benefit, benefit_choice, 'Benefit', errors)
+
+	errors = required(effect, 'Effect', errors)
+	errors = variable_fields('benefit', 'Benefit', effect, [benefit_choice, benefit_turns], errors)
+	errors = variable_fields('benefit', effect, 'Turns', benefit_turns, errors)
+	errors = variable_field('benefit', effect, 'Benefit Choice', benefit_choice, errors)
+	errors = variable_fields('x', 'Variable Benefit', benefit_choice, [benefit_count], errors)
+	errors = variable_field('x', benefit_choice, 'Count', benefit_count, errors)
+
+	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2], errors)
+	errors = variable_field('condition', condition_type, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', condition_type, 'Ending Condition', condition2, errors)
+	errors = variable_fields('damage', 'Condition Damage', condition_type, [condition_damage_value, condition_damage], errors)
+	errors = variable_field('damage', condition_type, 'Damage Degrees', condition_damage_value, errors)
+	errors = variable_field('damage', condition_type, 'Damage Direction', condition_damage, errors)
 
 	return(errors)
 
@@ -401,6 +459,24 @@ def adv_minion_post_errors(data):
 	errors = db_check(LevelType, attitude_type, 'Attitude Type', errors)
 	errors = db_check(Levels, attitude_attitude, 'Attitude', errors)
 	errors = db_check(Check, resitable_check, 'Check', errors)
+	
+	errors = required(points, 'Points', errors)
+	errors = required(condition, 'Minion Condition', errors)
+	errors = required(player_condition, 'Player Condition While Summoning', errors)
+	errors = required(variable_type, 'Minion Type', errors)
+
+	errors = check_fields(multiple, 'Multiple Minions', [multiple_value], errors)
+	errors = check_field(multiple, 'Multiple Minions', 'Multiple Value', multiple_value, errors)
+	errors = check_fields(attitude, 'Attitude', [attitude_type, attitude_attitude, attitude_trait_type, attitude_trait], errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Level Type', attitude_type, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Level', attitude_attitude, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Trait Type to Control', attitude_trait_type, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Trait to Control', attitude_trait, errors)
+	errors = check_fields(resitable, 'Resistable', [resitable_check, resitable_dc], errors)
+	errors = check_field(resitable, 'Resistable', 'Resistable Check Type', resitable_check, errors)
+	errors = check_field(resitable, 'Resistable', 'Resistable DC', resitable_dc, errors)
+	errors = check_fields(sacrifice, 'Sacrifice', [sacrifice_cost], errors)
+	errors = check_field(sacrifice, 'Sacrifice', 'Sacrifice Cost', sacrifice_cost, errors)
 
 	return(errors)
 
