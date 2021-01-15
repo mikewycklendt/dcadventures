@@ -1007,6 +1007,7 @@ def minion_post(entry, body, cells):
 	heroic = entry.heroic
 	sacrifice = entry.sacrifice
 	sacrifice_cost = entry.sacrifice_cost
+	attitude_attitude = entry.attitude_attitude
 	attitude_type = entry.attitude_type
 	attitude_trait_type = entry.attitude_trait_type
 	attitude_trait = entry.attitude_trait
@@ -1041,7 +1042,7 @@ def minion_post(entry, body, cells):
 	
 	cells = check_cell('Attitide', 9, attitude, cells, True)
 	new_mod = mod_create('Attitude', 11)
-	new_mod  = mod_cell('Level', 7, [attitude_type], new_mod)
+	new_mod  = mod_cell('Level', 7, [attitude_attitude], new_mod)
 	new_mod  = mod_cell('Trait to Control', 18, [attitude_trait], new_mod)
 	body = mod_add(attitude, new_mod, body)
 	

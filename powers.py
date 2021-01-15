@@ -3080,6 +3080,7 @@ def power_post_minion():
 	sacrifice = request.get_json()['sacrifice']
 	sacrifice_cost = request.get_json()['sacrifice_cost']
 	attitude_type = request.get_json()['attitude_type']
+	attitude_attitude = request.get_json()['attitude_attitude']
 	attitude_trait_type = request.get_json()['attitude_trait_type']
 	attitude_trait = request.get_json()['attitude_trait']
 	resitable_check = request.get_json()['resitable_check']
@@ -3113,6 +3114,7 @@ def power_post_minion():
 							heroic = heroic,
 							sacrifice = sacrifice,
 							sacrifice_cost = sacrifice_cost,
+							attitude_attitude = attitude_attitude,
 							attitude_type = attitude_type,
 							attitude_trait_type = attitude_trait_type,
 							attitude_trait = attitude_trait,

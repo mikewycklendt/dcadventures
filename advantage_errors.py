@@ -563,6 +563,37 @@ def adv_modifiers_post_errors(data):
 	errors = db_check(Ranged, penalty_check_range, 'Penalty Check Range', errors)
 	errors = db_check(ConflictAction, penalty_conflict, 'Penalty Conflict Action', errors)
 
+	errors = of([bonus, penalty], 'You must set a value for either a bonus or a penalty.', errors)
+
+	errors = if_fields('Bonus', bonus, [bonus_type, bonus_effect], errors)
+	errors = if_fields('Penalty', penalty, [penalty_type, penalty_effect], errors)
+
+	errors = variable_fields('trait', 'Bonus Trait', bonus_effect, [bonus_trait_type, bonus_trait], errors)
+	errors = variable_fields('check', 'Bonus Check', bonus_effect, [bonus_check], errors)
+	errors = variable_fields('conflict', 'Bonus Conflict Action', bonus_effect, [bonus_conflict], errors)
+
+	errors = variable_fields('trait', 'Penalty Trait', penalty_effect, [penalty_trait_type, penalty_trait], errors)
+	errors = variable_fields('check', 'Penalty Check', penalty_effect, [penalty_check], errors)
+	errors = variable_fields('conflict', 'Penalty Conflict Action', penalty_effect, [penalty_conflict], errors)
+
+	errors = variable_fields('environment', 'Environment', trigger, [environment], errors)
+	errors = variable_fields('cover', 'Cover', trigger, [cover], errors)
+	errors = variable_fields('conceal', 'Concealment', trigger, [conceal], errors)
+	errors = variable_fields('sense', 'Sense', trigger, [sense], errors)
+	errors = variable_fields('subsense', 'Subsense', trigger, [subsense], errors)
+	errors = variable_fields('condition', 'Condition', trigger, [condition], errors)
+	errors = variable_fields('profession', 'Characters Profession', trigger, [profession], errors)
+	errors = variable_fields('creature', 'Creature', trigger, [creature], errors)
+	errors = variable_fields('power', 'Power', trigger, [power], errors)
+	errors = variable_fields('emotion', 'Emotion', trigger, [emotion], errors)
+	errors = variable_fields('consequence', 'Consequence', trigger, [consequence], errors)
+	errors = variable_fields('range', 'Range', trigger, [mod_range], errors)
+	errors = variable_fields('conflict', 'Conflict Action', trigger, [conflict], errors)
+	errors = variable_fields('maneuver', 'Maneuver', trigger, [maneuver], errors)
+	errors = variable_fields('tools', 'Tool Requirement', trigger, [tools], errors)
+	errors = variable_fields('ranged', 'Ranged Weapon', trigger, [weapon_ranged], errors)
+	errors = variable_fields('melee', 'Melee Weapon', trigger, [weapon_melee], errors)
+
 	return(errors)
 
 def adv_opposed_post_errors(data):
@@ -591,6 +622,15 @@ def adv_opposed_post_errors(data):
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Check, player_check, 'Player Check', errors)
 	errors = db_check(Check, opponent_check, 'Opponent Check', errors)
+
+	errors =  required(trait_type, 'Trait Type', errors)
+	errors =  required(trait, 'Trait', errors)
+	errors =  required(mod, 'Modifier', errors)
+	errors =  required(opponent_trait_type, 'Opponent Trqait Type', errors)
+	errors =  required(opponent_trait, 'Opponent Trait', errors)
+	errors =  required(opponent_mod, 'Opponent Modifier', errors)
+	errors =  required(player_check, 'Player Check', errors)
+	errors =  required(opponent_check, 'Opponent Check', errors)
 
 	return(errors)
 
@@ -644,6 +684,18 @@ def adv_points_post_errors(data):
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Benefit, benefit_choice, 'Bemefit', errors)
+
+	errors = required(spend, 'Points Type', errors)
+
+errors = variable_fields('ranks', 'Gain Ranks', spend, [], errors)
+errors = variable_fields('benefit', 'Benefit', spend, [], errors)
+errors = variable_fields('check', 'Circumstance Modifier', spend, [], errors)
+errors = variable_fields('equip', 'Equipment', spend, [], errors)
+errors = variable_fields('condition', 'Change Condition', spend, [condition_cost], errors)
+errors = variable_fields('initiative', 'Gain Initiative', spend, [], errors)
+errors = variable_fields('20', 'Automatic 20', spend, [], errors)
+
+v 
 
 	return(errors)
 

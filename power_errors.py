@@ -1488,6 +1488,7 @@ def minion_post_errors(data):
 	heroic = data['heroic']
 	sacrifice = data['sacrifice']
 	sacrifice_cost = data['sacrifice_cost']
+	attitude_attitude = data['attitude_attitude']
 	attitude_type = data['attitude_type']
 	attitude_trait_type = data['attitude_trait_type']
 	attitude_trait = data['attitude_trait']
@@ -1516,8 +1517,9 @@ def minion_post_errors(data):
 
 	errors = check_fields(multiple, 'Multiple Minions', [multiple_value], errors)
 	errors = check_field(multiple, 'Multiple Minions', 'Multiple Value', multiple_value, errors)
-	errors = check_fields(attitude, 'Attitude', [attitude_type, attitude_trait_type, attitude_trait], errors)
-	errors = check_field(attitude, 'Attitude', 'Attitude Level', attitude_type, errors)
+	errors = check_fields(attitude, 'Attitude', [attitude_type, attitude_attitude, attitude_trait_type, attitude_trait], errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Level Type', attitude_type, errors)
+	errors = check_field(attitude, 'Attitude', 'Attitude Level', attitude_attitude, errors)
 	errors = check_field(attitude, 'Attitude', 'Attitude Trait Type to Control', attitude_trait_type, errors)
 	errors = check_field(attitude, 'Attitude', 'Attitude Trait to Control', attitude_trait, errors)
 	errors = check_fields(resitable, 'Resistable', [resitable_check, resitable_dc], errors)
@@ -2411,6 +2413,10 @@ def time_post_errors(data):
 	errors = variable_field('math', value_type, 'Time Math', math, errors)
 	errors = variable_field('math', value_type, 'Trait Type', trait_type, errors)
 	errors = variable_field('math', value_type, 'Trait', trait, errors)
+	
+	errors = check_fields(recovery, 'Recovery', [recovery_penalty, recovery_time], errors)
+	errors = check_field(recovery, 'Recovery', 'Recovery Penalty', recovery_penalty, errors)
+	errors = check_field(recovery, 'Recovery', 'Recovery Time', recovery_time, errors)
 
 	return (errors)
 
