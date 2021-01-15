@@ -2380,6 +2380,7 @@ class AdvAltCheck(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	check_trigger = db.Column(db.String())
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	mod = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
@@ -2400,6 +2401,7 @@ class AdvAltCheck(db.Model):
 		return {
 			'id': self.id,
 			'benefit': self.benefit,
+			'check_trigger': self.check_trigger,
 			'check_type': self.check_type,
 			'mod': self.mod,
 			'circumstance': self.circumstance,

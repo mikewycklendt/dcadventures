@@ -49,6 +49,7 @@ function check_submit() {
 	const font = check_grid.font;
 	
 	const benefit = select("check_benefit")
+	const check_trigger = select('check_trigger');
 	const check_type = select("check_check_type")
 	const mod = select("check_mod")
 	const circumstance = text("check_circ")
@@ -80,6 +81,7 @@ function check_submit() {
 			'created': created,
 			'font': font,
 			'benefit': benefit,
+			'check_trigger': check_trigger,
 			'check_type': check_type,
 			'mod': mod,
 			'circumstance': circumstance,
