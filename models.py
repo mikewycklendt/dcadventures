@@ -2427,7 +2427,6 @@ class AdvCirc(db.Model):
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	mod = db.Column(db.Integer)
 	rounds = db.Column(db.Integer)
-	ranks = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
 	circ_type = db.Column(db.String())
 	circ_range = db.Column(db.Integer, db.ForeignKey('range.id'))
@@ -2448,7 +2447,6 @@ class AdvCirc(db.Model):
 			'benefit': self.benefit,
 			'mod': self.mod,
 			'rounds': self.rounds,
-			'ranks': self.ranks,
 			'circumstance': self.circumstance,
 			'circ_type': self.circ_type,
 			'circ_range': self.circ_range,

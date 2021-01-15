@@ -688,7 +688,6 @@ def advantage_post_circ():
 	benefit = request.get_json()['benefit']
 	mod = request.get_json()['mod']
 	rounds = request.get_json()['rounds']
-	ranks = request.get_json()['ranks']
 	circumstance = request.get_json()['circumstance']
 	circ_type = request.get_json()['circ_type']
 	circ_range = request.get_json()['circ_range']
@@ -721,7 +720,6 @@ def advantage_post_circ():
 						benefit = benefit,
 						mod = mod,
 						rounds = rounds,
-						ranks = ranks,
 						circumstance = circumstance,
 						circ_type = circ_type,
 						circ_range = circ_range,

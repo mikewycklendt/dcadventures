@@ -63,7 +63,6 @@ function circ_submit() {
 	const benefit = select("circ_benefit");
 	const mod = select("circ_mod");
 	const rounds = select("circ_rounds");
-	const ranks = select("circ_ranks");
 	const circumstance = text("circ_des");
 	const circ_type = select("circ_type");
 	const circ_range = select("circ_range");
@@ -92,7 +91,6 @@ function circ_submit() {
 			'benefit': benefit,
 			'mod': mod,
 			'rounds': rounds,
-			'ranks': ranks,
 			'circumstance': circumstance,
 			'circ_type': circ_type,
 			'circ_range': circ_range,

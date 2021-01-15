@@ -86,7 +86,6 @@ def adv_circ_post(entry, body, cells):
 	benefit = entry.benefit
 	mod = entry.mod
 	rounds = entry.rounds
-	ranks = entry.ranks
 	circumstance = entry.circumstance
 	circ_type = entry.circ_type
 	circ_range = entry.circ_range
