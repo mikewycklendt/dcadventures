@@ -109,16 +109,16 @@ def adv_circ_post_errors(data):
 	null_trait = data['null_trait']
 	null_override_trait_type = data['null_override_trait_type']
 	null_override_trait = data['null_override_trait']
-
+	
 	errors = int_check(mod, 'Modifier', errprs)
 	errors = int_check(rounds, 'Rounds', errprs)
 	errors = int_check(ranks, 'Ranks', errprs)
-
+	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Range, circ_range, 'Range', errors)
 	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
-
+	
 	errors = required(target, 'Target', errors)
 	errors = required(mod, 'Modifier', errors)
 	errors = required(rounds, 'Lasts', errors)
