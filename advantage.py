@@ -20,7 +20,8 @@ from power_errors import extra_convert, power_save_errors, alt_check_post_errors
 from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
 from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, field_cost, db_integer
-
+from advantage_posts import adv_benefit_post, adv_alt_check_post, adv_circ_post, adv_combined_post, adv_condition_post, adv_dc_post, adv_deg_mod_post, adv_effort_post, adv_minion_post, adv_modifiers_post, adv_opposed_post, adv_points_post, adv_resist_post, adv_rounds_post, adv_skill_post, adv_time_post, adv_variable_post
+from advantage_errors import adv_benefit_post_errors, adv_alt_check_post_errors, adv_circ_post_errors, adv_combined_post_errors, adv_condition_post_errors, adv_dc_post_errors, adv_deg_mod_post_errors, adv_effort_post_errors, adv_minion_post_errors, adv_modifiers_post_errors, adv_opposed_post_errors, adv_points_post_errors, adv_resist_post_errors, adv_rounds_post_errors, adv_skill_post_errors, adv_time_post_errors, adv_variable_post_errors
 load_dotenv()
 
 import os
@@ -475,6 +476,7 @@ def advantage_post_alt_check():
 	font = request.get_json()['font']
 	benefit = request.get_json()['benefit']
 	check_type = request.get_json()['check_type']
+	check_trigger = request.get_json()['check_trigger']
 	mod = request.get_json()['mod']
 	circumstance = request.get_json()['circumstance']
 	trigger = request.get_json()['trigger']
@@ -506,6 +508,7 @@ def advantage_post_alt_check():
 							created = created,
 							font = font,
 							benefit = benefit,
+							check_trigger = check_trigger,
 							check_type = check_type,
 							mod = mod,
 							circumstance = circumstance,

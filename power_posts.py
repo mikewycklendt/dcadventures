@@ -783,6 +783,10 @@ def degree_mod_post(entry, body, cells):
 	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown_select)
 
+	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
+	condition1 = selects(condition1, condition_select)
+	condition2 = selects(condition2, condition_select)
+
 	value = integer_convert(value)
 	circ_value = integer_convert(circ_value)
 	circ_turns = integer_convert(circ_turns)

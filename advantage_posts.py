@@ -1,3 +1,12 @@
+from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import Environment, Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+
+from flask_sqlalchemy import SQLAlchemy
+from copy import deepcopy
+
+db = SQLAlchemy()
+
 from post_functions import name, name_variable, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add. vcell, check_cell, cell, mod_create, mod_cell, mod_add
 
 def adv_benefit_post(entry, body, cells):
@@ -24,6 +33,7 @@ def adv_alt_check_post(entry, body, cells):
 	created = entry.created
 	font = entry.font
 	benefit = entry.benefit
+	check_trigger = entry.check_trigger
 	check_type = entry.check_type
 	mod = entry.mod
 	circumstance = entry.circumstance
@@ -44,10 +54,20 @@ def adv_alt_check_post(entry, body, cells):
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 
-	benefit = name(, )
-	check_type = name(, )
-	conflict = name(, )
-	conflict_range = name(, )
+	benefit = name(Benefit, benefit)
+	check_type = name(Check, check_type)
+	conflict = name(ConflictAction, conflict)
+	conflict_range = name(Ranged, conflict_range)
+
+	check_trigger_select = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+	trigger = selects(check_trigger, check_trigger_select)
+
+	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	when = selects(when, check_type_select)
+
+
+
+
 
 	body = send(cells, body)
 	
@@ -83,10 +103,21 @@ def adv_circ_post(entry, body, cells):
 	rounds = integer_convert(rounds)
 	ranks = integer_convert(ranks)
 
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	target = selects(target, targets_select)
 
-	benefit = name(, )
-	circ_range = name(, )
-	conflict = name(, )
+	circ_type_select = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
+	circ_type = selects(circ_type, circ_type_select)
+
+	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
+	who = selects(who, who_check_select)
+
+	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
+	null_type = selects(null_type, circ_null_select)
+
+	benefit = name(Benefit, benefit)
+	circ_range = name(Range, circ_range)
+	conflict = name(ConflictAction, conflict)
 
 
 	body = send(cells, body)
@@ -131,10 +162,12 @@ def adv_condition_post(entry, body, cells):
 	damage_value = entry.damage_value
 	damage = entry.damage
 
+	updown_select = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+	damage = selects(damage, updown_select)
 
 	damage_value = integer_convert(damage_value)
 
-	benefit = name(, )
+	benefit = name(Benefit, benefit)
 
 	body = send(cells, body)
 	
@@ -177,10 +210,13 @@ def adv_dc_post(entry, body, cells):
 	math_value = integer_convert(math_value)
 	check_mod = integer_convert(check_mod)
 
-	benefit = name(, )
-	math_math = name(, )
-	level_type = name(, )
-	level = name(, )
+	benefit = name(Benefit, benefit)
+	math_math = name(Math, math_math)
+	level_type = name(LevelType, level_type)
+	level = name(Levels, level)
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	target = selects(target, targets_select)
 
 
 
@@ -243,12 +279,28 @@ def adv_deg_mod_post(entry, body, cells):
 	condition_damage = integer_convert(condition_damage)
 	nullify = integer_convert(nullify)
 
-	benefit = name(, )
-	consequence = name(, )
-	level_type = name(, )
-	level = name(, )
-	measure_math = name(, )
-	measure_rank = name(, )
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	target = selects(target, targets_select)
+
+	knowledge_select = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+	knowledge = selects(knowledge, knowledge_select)
+
+	specificity_select = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
+	knowledge_specificity = selects(knowledge_specificity, specificity_select)
+
+	updown_select = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+	condition_damage = selects(condition_damage, updown_select)
+
+	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
+	condition1 = selects(condition1, condition_select)
+	condition2 = selects(condition2, condition_select)
+
+	benefit = name(Benefit, benefit)
+	consequence = name(Consequence, consequence)
+	level_type = name(LevelType, level_type)
+	level = name(Levels, level)
+	measure_math = name(Math, measure_math)
+	measure_rank = name(Rank, measure_rank)
 
 	body = send(cells, body)
 	
@@ -280,8 +332,13 @@ def adv_effort_post(entry, body, cells):
 	benefit_turns = integer_convert(benefit_turns)
 	benefit_count = integer_convert(benefit_count)
 
-	benefit = name(, )
-	benefit_choice = name(, )
+	
+	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
+	condition1 = selects(condition1, condition_select)
+	condition2 = selects(condition2, condition_select)	
+
+	benefit = name(Benefit, benefit)
+	benefit_choice = name(Benefit, benefit_choice)
 
 
 	body = send(cells, body)
