@@ -132,6 +132,7 @@ def adv_circ_post_errors(data):
 	errors = variable_field('check', circ_type, 'Trait', check_trait, errors)
 	errors = variable_fields('conflict', 'Triggered by Conflict Action', circ_type, [conflict], errors)
 	errors = variable_field('conflict', circ_type, 'Conflict Action', conflict, errors)
+	
 	return(errors)
 
 def adv_combined_post_errors(data):
