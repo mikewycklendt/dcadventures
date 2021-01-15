@@ -225,7 +225,7 @@ def adv_dc_post(entry, body, cells):
 	cells.clear()
 
 	return (body)
-`
+
 
 def adv_deg_mod_post(entry, body, cells):
 
