@@ -687,15 +687,30 @@ def adv_points_post_errors(data):
 
 	errors = required(spend, 'Points Type', errors)
 
-errors = variable_fields('ranks', 'Gain Ranks', spend, [], errors)
-errors = variable_fields('benefit', 'Benefit', spend, [], errors)
-errors = variable_fields('check', 'Circumstance Modifier', spend, [], errors)
-errors = variable_fields('equip', 'Equipment', spend, [], errors)
-errors = variable_fields('condition', 'Change Condition', spend, [condition_cost], errors)
-errors = variable_fields('initiative', 'Gain Initiative', spend, [], errors)
-errors = variable_fields('20', 'Automatic 20', spend, [], errors)
-
-v 
+	errors = variable_fields('ranks', 'Gain Ranks', spend, [ranks_gained, ranks_max, ranks_lasts, ranks_trait_type, ranks_trait], errors)
+	errors = variable_field('ranks', spend, 'Ranks Gained', ranks_gained, errors)
+	errors = variable_field('ranks', spend, 'Maximum Ranks', ranks_max, errors)
+	errors = variable_field('ranks', spend, 'Ranks Duration', ranks_lasts, errors)
+	errors = variable_field('ranks', spend, 'Trait Type', ranks_trait_type, errors)
+	errors = variable_field('ranks', spend, 'Trait', ranks_trait, errors)
+	errors = variable_fields('benefit', 'Benefit', spend, [benefit_choice, benefit_cost, benefit_turns], errors)
+	errors = variable_field('x', benefit_choice, 'Benefit Count', benefit_count, errors)
+	errors = variable_field('benefit', spend, 'Benefit', benefit_choice, errors)
+	errors = variable_field('benefit', spend, 'Benefit Cost', benefit_cost, errors)
+	errors = variable_field('benefit', spend, 'Benefit Turns', benefit_turns, errors)
+	errors = variable_fields('check', 'Circumstance Modifier', spend, [check_bonus, check_cost, check_turns, check_target], errors)
+	errors = variable_field('check', spend, 'Modifier', check_bonus, errors)
+	errors = variable_field('check', spend, 'Circumstance Cost', check_cost, errors)
+	errors = variable_field('check', spend, 'Circumstance Turns', check_turns, errors)
+	errors = variable_field('check', spend, 'Circumstance Target', check_target, errors)
+	errors = variable_fields('equip', 'Equipment', spend, [equipment_points], errors)
+	errors = variable_field('equip', spend, 'Equipment Cost', equipment_points, errors)
+	errors = variable_fields('condition', 'Change Condition', spend, [condition_cost, condition1, condition2], errors)
+	errors = variable_field('condition', spend, 'Condition Cost', condition_cost, errors)
+	errors = variable_field('condition', spend, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', spend, 'Ending Condition', condition2, errors)
+	errors = variable_fields('initiative', 'Gain Initiative', spend, [initiative_cost], errors)
+	errors = variable_fields('20', 'Automatic 20', spend, [twenty], errors)
 
 	return(errors)
 
@@ -713,10 +728,14 @@ def adv_resist_post_errors(data):
 	mod = data['mod']
 	which = data['which']
 
-	errors = int_check(mod, 'Modifier', errprs)
+	errors = int_check(mod, 'Modifier', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
+
+	errors = required(trait_type, 'Trait Type', errors)
+	errors = required(trait, 'Trait', errors)
+	errors = required(mod, 'Modifier', errors)
 
 	return(errors)
 
@@ -736,12 +755,16 @@ def adv_rounds_post_errors(data):
 	trait = data['trait']
 	end = data['end']
 
-	errors = int_check(rounds, 'Rounds', errprs)
+	errors = int_check(rounds, 'Rounds', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Action, cost, 'Action Cost', errors)
 	errors = db_check(Check, check, 'Check Type', errors)
+
+	errors = required(rounds, 'Turns', errors)
+	errors = required(cost, 'Action', errors)
+	errors = required(end, 'Endss', errors)
 
 	return(errors)
 
@@ -762,6 +785,11 @@ def adv_skill_post_errors(data):
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
+
+	errors = required(trait_type, 'Trait Type to Use', errors)
+	errors = required(trait, 'Trait to Use', errors)
+	errors = required(replaced_trait_type, 'Replaced by Trait Type', errors)
+	errors = required(replaced_trait, 'Replaced by Trait', errors)
 
 	return(errors)
 
@@ -800,6 +828,23 @@ def adv_time_post_errors(data):
 	errors = db_check(Unit, units, 'Units', errors)
 	errors = db_check(Math, math, 'Math', errors)
 	errors = db_check(Check, check_type, 'Check Type', errors)
+
+	errors = required(time_type, 'Time Type', errors)
+	errors = required(value_type, 'Time Value Type', errors)
+
+	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
+	errors = variable_field('value', value_type,'Time Value', value, errors)
+	errors = variable_field('value', value_type,'Time Units' , units, errors)
+	errors = variable_fields('math', 'Time Math', value_type, [time_value, math, trait_type, trait], errors)
+	errors = variable_field('math', value_type, 'Time Valuea', time_value, errors)
+	errors = variable_field('math', value_type, 'Time Math', math, errors)
+	errors = variable_field('math', value_type, 'Trait Type', trait_type, errors)
+	errors = variable_field('math', value_type, 'Trait', trait, errors)
+
+	errors = check_fields(recovery, 'Recovery', [recovery_penalty, recovery_time], errors)
+	errors = check_field(recovery, 'Recovery', 'Recovery Penalty', recovery_penalty, errors)
+	errors = check_field(recovery, 'Recovery', 'Recovery Time', recovery_time, errors)
+
 
 	return(errors)
 
