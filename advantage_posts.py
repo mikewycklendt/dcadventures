@@ -1,3 +1,5 @@
+from post_functions import name, name_variable, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add. vcell, check_cell, cell, mod_create, mod_cell, mod_add
+
 def adv_benefit_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
@@ -38,6 +40,15 @@ def adv_alt_check_post(entry, body, cells):
 	action = entry.action
 	free = entry.free
 
+
+	mod = integer_convert(mod)
+	action = action_convert(action_type, action)
+
+	benefit = name(, )
+	check_type = name(, )
+	conflict = name(, )
+	conflict_range = name(, )
+
 	body = send(cells, body)
 	
 	cells.clear()
@@ -68,6 +79,16 @@ def adv_circ_post(entry, body, cells):
 	null_trait_type = entry.null_trait_type
 	null_trait = entry.null_trait
 
+	mod = integer_convert(mod)
+	rounds = integer_convert(rounds)
+	ranks = integer_convert(ranks)
+
+
+	benefit = name(, )
+	circ_range = name(, )
+	conflict = name(, )
+
+
 	body = send(cells, body)
 	
 	cells.clear()
@@ -83,6 +104,10 @@ def adv_combined_post(entry, body, cells):
 	font = entry.font
 	ranks = entry.ranks
 	advantage = entry.advantage
+
+	ranks = integer_convert(ranks)
+
+
 
 	body = send(cells, body)
 	
@@ -105,6 +130,11 @@ def adv_condition_post(entry, body, cells):
 	condition2 = entry.condition2
 	damage_value = entry.damage_value
 	damage = entry.damage
+
+
+	damage_value = integer_convert(damage_value)
+
+	benefit = name(, )
 
 	body = send(cells, body)
 	
@@ -140,6 +170,19 @@ def adv_dc_post(entry, body, cells):
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
 	check_mod = entry.check_mod
+
+	
+	dc = integer_convert(dc)
+	value_value = integer_convert(value_value)
+	math_value = integer_convert(math_value)
+	check_mod = integer_convert(check_mod)
+
+	benefit = name(, )
+	math_math = name(, )
+	level_type = name(, )
+	level = name(, )
+
+
 
 	body = send(cells, body)
 
@@ -189,6 +232,23 @@ def adv_deg_mod_post(entry, body, cells):
 	cumulative = entry.cumulative
 	linked = entry.linked
 
+	value = integer_convert(value)
+	consequence_action = action_convert(consequence_action_type, consequence_action)
+	knowledge_count = integer_convert(knowledge_count)
+	circ_value = integer_convert(circ_value)
+	circ_turns = integer_convert(circ_turns)
+	measure_val1 = integer_convert(measure_val1)
+	measure_value = integer_convert(measure_value)
+	condition_damage_value = integer_convert(condition_damage_value)
+	condition_damage = integer_convert(condition_damage)
+	nullify = integer_convert(nullify)
+
+	benefit = name(, )
+	consequence = name(, )
+	level_type = name(, )
+	level = name(, )
+	measure_math = name(, )
+	measure_rank = name(, )
 
 	body = send(cells, body)
 	
@@ -214,6 +274,14 @@ def adv_effort_post(entry, body, cells):
 	benefit_turns = entry.benefit_turns
 	benefit_count = entry.benefit_count
 	benefit_effort = entry.benefit_effort
+
+	condition_damage_value = integer_convert(condition_damage_value)
+	condition_damage = integer_convert(condition_damage)
+	benefit_turns = integer_convert(benefit_turns)
+	benefit_count = integer_convert(benefit_count)
+
+	benefit = name(, )
+	benefit_choice = name(, )
 
 
 	body = send(cells, body)
@@ -249,6 +317,16 @@ def adv_minion_post(entry, body, cells):
 	columns = entry.columns
 	created = entry.created
 	font = entry.font
+
+	points = integer_convert(points)
+	sacrifice_cost = integer_convert(sacrifice_cost)
+	resitable_dc = integer_convert(resitable_dc)
+	multiple_value = integer_convert(multiple_value)
+
+	
+	attitude_type = name(, )
+	attitude_attitude = name(, )
+	resitable_check = name(, )
 
 
 	body = send(cells, body)
@@ -311,6 +389,31 @@ def adv_modifiers_post(entry, body, cells):
 	multiple_count = entry.multiple_count
 	lasts = entry.lasts
 
+	bonus = integer_convert(bonus)
+	penalty = integer_convert(penalty)
+	multiple_count = integer_convert(multiple_count)
+	lasts = integer_convert(lasts)
+
+	environment = name(, , '')
+	sense = name(, , '')
+	mod_range = name(, , '')
+	subsense = name(, , '')
+	cover = name(, , '')
+	conceal = name(, , '')
+	maneuver = name(, , '')
+	weapon_melee = name(, , '')
+	weapon_ranged = name(, , '')
+	consequence = name(, , '')
+	creature = name(, , '')
+	emotion = name(, , '')
+	conflict = name(, , '')
+	profession = name(, , '')
+	bonus_check = name(, , '')
+	bonus_check_range = name(, , '')
+	bonus_conflict = name(, , '')
+	penalty_check = name(, , '')
+	penalty_check_range = name(, , '')
+	penalty_conflict = name(, , '')
 
 	body = send(cells, body)
 	
@@ -337,6 +440,12 @@ def adv_opposed_post(entry, body, cells):
 	multiple = entry.multiple
 
 
+	mod = integer_convert(mod)
+	opponent_mod = integer_convert(opponent_mod)
+
+	benefit = name(, )
+	player_check = name(, )
+	opponent_check = name(, )
 
 	body = send(cells, body)
 	
@@ -377,6 +486,25 @@ def adv_points_post(entry, body, cells):
 	ranks_trait = entry.ranks_trait
 
 
+	condition_cost = integer_convert(condition_cost)
+	equipment_points = integer_convert(equipment_points)
+	initiative_cost = integer_convert(initiative_cost)
+	twenty = integer_convert(twenty)
+	check_bonus = integer_convert(check_bonus)
+	check_cost = integer_convert(check_cost)
+	check_turns = integer_convert(check_turns)
+	benefit_count = integer_convert(benefit_count)
+	benefit_cost = integer_convert(benefit_cost)
+	benefit_turns = integer_convert(benefit_turns)
+	ranks_gained = integer_convert(ranks_gained)
+	ranks_max = integer_convert(ranks_max)
+	ranks_lasts = integer_convert(ranks_lasts)
+
+	benefit = name(, )
+	benefit_choice = name(, )
+
+
+
 	body = send(cells, body)
 	
 	cells.clear()
@@ -395,6 +523,10 @@ def adv_resist_post(entry, body, cells):
 	trait = entry.trait
 	mod = entry.mod
 	which = entry.which
+
+	mod = integer_convert(mod)
+
+	benefit = name(, )
 
 
 	body = send(cells, body)
@@ -418,6 +550,11 @@ def adv_rounds_post(entry, body, cells):
 	trait = entry.trait
 	end = entry.end
 
+	rounds = integer_convert(rounds)
+
+	benefit = name(, )
+	cost = name(, )
+	check = name(, )
 
 	body = send(cells, body)
 	
@@ -440,6 +577,7 @@ def adv_skill_post(entry, body, cells):
 	replaced_trait = entry.replaced_trait
 	multiple = entry.multiple
 
+	benefit = name(, )
 
 	body = send(cells, body)
 	
@@ -470,6 +608,17 @@ def adv_time_post(entry, body, cells):
 	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
 
+
+	value = integer_convert(value)
+	time_value = integer_convert(time_value)
+	dc = integer_convert(dc)
+	recovery_penalty = integer_convert(recovery_penalty)
+	recovery_time = integer_convert(recovery_time)
+
+	benefit = name(, )
+	units = name(, )
+	math = name(, )
+	check_type = name(, )
 
 	body = send(cells, body)
 	

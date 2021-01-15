@@ -2378,6 +2378,7 @@ class Advantage(db.Model):
 class AdvAltCheck(db.Model):
 	__tablename__ = 'advantage_alt_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	mod = db.Column(db.Integer)
@@ -2426,7 +2427,7 @@ class AdvCirc(db.Model):
 	rounds = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
-	circ_type = db.Column(db.String())
+	circ_type = db.Column(db.String())`
 	circ_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	check_who = db.Column(db.String())
@@ -2721,37 +2722,17 @@ class AdvMod(db.Model):
 	trigger = db.Column(db.String())
 	bonus_effect = db.Column(db.String())
 	penalty_effect = db.Column(db.String())
-	environment = db.Column(db.Integer, db.ForeignKey('environments.id'))
 	environment_other = db.Column(db.String())
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
-	mod_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
-	cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
-	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
 	tools = db.Column(db.String())
 	condition = db.Column(db.String())
 	power = db.Column(db.String())
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
 	creature_other = db.Column(db.String())
-	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 	emotion_other = db.Column(db.String())
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
 	bonus_trait = db.Column(db.String())
-	bonus_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	bonus_check_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.String())
-	penalty_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	penalty_check_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	bonus_active_defense = db.Column(db.Boolean)
 	bonus_conflict_defend = db.Column(db.Boolean)
 	penalty_active_defense = db.Column(db.Boolean)
@@ -2771,37 +2752,17 @@ class AdvMod(db.Model):
 			'trigger': self.trigger,
 			'bonus_effect': self.bonus_effect,
 			'penalty_effect': self.penalty_effect,
-			'environment': self.environment,
 			'environment_other': self.environment_other,
-			'sense': self.sense,
-			'mod_range': self.mod_range,
-			'subsense': self.subsense,
-			'cover': self.cover,
-			'conceal': self.conceal,
-			'maneuver': self.maneuver,
-			'weapon_melee': self.weapon_melee,
-			'weapon_ranged': self.weapon_ranged,
 			'tools': self.tools,
 			'condition': self.condition,
 			'power': self.power,
-			'consequence': self.consequence,
-			'creature': self.creature,
 			'creature_other': self.creature_other,
-			'emotion': self.emotion,
 			'emotion_other': self.emotion_other,
-			'conflict': self.conflict,
-			'profession': self.profession,
 			'profession_other': self.profession_other,
 			'bonus_trait_type': self.bonus_trait_type,
 			'bonus_trait': self.bonus_trait,
-			'bonus_check': self.bonus_check,
-			'bonus_check_range': self.bonus_check_range,
-			'bonus_conflict': self.bonus_conflict,
 			'penalty_trait_type': self.penalty_trait_type,
 			'penalty_trait': self.penalty_trait,
-			'penalty_check': self.penalty_check,
-			'penalty_check_range': self.penalty_check_range,
-			'penalty_conflict': self.penalty_conflict,
 			'bonus_active_defense': self.bonus_active_defense,
 			'bonus_conflict_defend': self.bonus_conflict_defend,
 			'penalty_active_defense': self.penalty_active_defense,

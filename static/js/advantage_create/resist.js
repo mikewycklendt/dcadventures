@@ -35,7 +35,7 @@ function resist_submit() {
 	const errors = 'resist-err';
 	const err_line = 'resist-err-line';
 
-	response = fetch('/advantage/modifiers/create', {
+	response = fetch('/advantage/resist/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,

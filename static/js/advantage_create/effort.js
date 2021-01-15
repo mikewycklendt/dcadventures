@@ -58,7 +58,7 @@ function effort_submit() {
 	const errors = 'effort-err';
 	const err_line = 'effort-err-line';
 
-	response = fetch('/advantage/modifiers/create', {
+	response = fetch('/advantage/effort/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,

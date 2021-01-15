@@ -1,4 +1,13 @@
 
+from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+from error_functions import db_check, integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, field_cost, db_integer
+
+
 def adv_alt_check_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
@@ -25,6 +34,15 @@ def adv_alt_check_post_errors(data):
 	action = data['action']
 	free = data['free']
 
+	errors = int_check(mod, 'Modifier', errprs)
+	errors = int_check(action, 'Action', errprs)
+	
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Check, check_type, 'Check Type', errors)
+	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
+	errors = db_check(Ranged, conflict_range, 'Range', errors)
+
 	return(errors)
 
 def adv_benefit_post_errors(data):
@@ -39,6 +57,7 @@ def adv_benefit_post_errors(data):
 	description = data['description']
 	effort = data['effort']
 
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	return(errors)
 
@@ -68,6 +87,15 @@ def adv_circ_post_errors(data):
 	null_trait_type = data['null_trait_type']
 	null_trait = data['null_trait']
 
+	errors = int_check(mod, 'Modifier', errprs)
+	errors = int_check(rounds, 'Rounds', errprs)
+	errors = int_check(ranks, 'Ranks', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Range, circ_range, 'Range', errors)
+	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
+
 
 	return(errors)
 
@@ -82,6 +110,9 @@ def adv_combined_post_errors(data):
 	ranks = data['ranks']
 	advantage = data['advantage']
 
+	errors = int_check(ranks, 'Ranks', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	return(errors)
 
@@ -103,7 +134,11 @@ def adv_condition_post_errors(data):
 	damage_value = data['damage_value']
 	damage = data['damage']
 
+	errors = int_check(damage_value, 'Condition Damage', errprs)
+	errors = int_check(damage, 'Damage Direction', errprs)
 
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
 
 	return(errors)
 
@@ -136,6 +171,16 @@ def adv_dc_post_errors(data):
 	check_trait_type = data['check_trait_type']
 	check_trait = data['check_trait']
 	check_mod = data['check_mod']
+
+	errors = int_check(dc, 'DC', errprs)
+	errors = int_check(math_value, 'Math Value', errprs)
+	errors = int_check(check_mod, 'Check Modifier', errprs)
+	
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Math, math_math, 'Math', errors)
+	errors = db_check(LevelType, level_type, 'Level Type', errors)
+	errors = db_check(Levels, level, 'Level', errors)
 
 
 	return(errors)
@@ -183,6 +228,24 @@ def adv_deg_mod_post_errors(data):
 	cumulative = data['cumulative']
 	linked = data['linked']
 
+	errors = int_check(value, 'Circumstance Modifier', errprs)
+	errors = int_check(consequence_action, 'Consequence Action', errprs)
+	errors = int_check(knowledge_count, 'Knowledge Amount', errprs)
+	errors = int_check(circ_value, 'Circumstance Value', errprs)
+	errors = int_check(circ_turns, 'Turns', errprs)
+	errors = int_check(measure_val1, 'Neasurement Rank', errprs)
+	errors = int_check(measure_value, 'Measurement Value', errprs)
+	errors = int_check(condition_damage_value, 'Condition Damage Value', errprs)
+	errors = int_check(condition_damage, 'Condition Direction', errprs)
+	errors = int_check(nullify, 'Nullify DC', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Consequence, consequence, 'Consequence', errors)
+	errors = db_check(LevelType, level_type, 'Level Type', errors)
+	errors = db_check(Levels, level, 'Level', errors)
+	errors = db_check(Math, measure_math, 'Math', errors)
+	errors = db_check(Rank, measure_rank, 'Measurement Rank', errors)
 
 	return(errors)
 
@@ -206,6 +269,14 @@ def adv_effort_post_errors(data):
 	benefit_count = data['benefit_count']
 	benefit_effort = data['benefit_effort']
 
+	errors = int_check(condition_damage_value, 'Condition Damage Value', errprs)
+	errors = int_check(condition_damage, 'Condition Damage Direction', errprs)
+	errors = int_check(benefit_turns, 'Benefit Turns', errprs)
+	errors = int_check(benefit_count, 'Benefit Count', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Benefit, benefit_choice, 'Benefit', errors)
 
 	return(errors)
 
@@ -237,6 +308,15 @@ def adv_minion_post_errors(data):
 	created = data['created']
 	font = data['font']
 
+	errors = int_check(points, 'Points', errprs)
+	errors = int_check(sacrifice_cost, 'Sacrifice Cost', errprs)
+	errors = int_check(resitable_dc, 'Sacrifice DC', errprs)
+	errors = int_check(multiple_value, 'Multiple Value', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(LevelType, attitude_type, 'Attitude Type', errors)
+	errors = db_check(Levels, attitude_attitude, 'Attitude', errors)
+	errors = db_check(Check, resitable_check, 'Check', errors)
 
 	return(errors)
 
@@ -295,6 +375,33 @@ def adv_modifiers_post_errors(data):
 	multiple_count = data['multiple_count']
 	lasts = data['lasts']
 
+	errors = int_check(bonus, 'Bonus', errprs)
+	errors = int_check(penalty, 'Penalty', errprs)
+	errors = int_check(multiple_count, 'Multiple Count', errprs)
+	errors = int_check(lasts, 'Lasts', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Environment, environment, 'Environment', errors)
+	errors = db_check(Sense, sense, 'Sense', errors)
+	errors = db_check(Ranged, mod_range, 'Range', errors)
+	errors = db_check(SubSense, subsense, 'Subsense', errors)
+	errors = db_check(Cover, cover, 'Cover', errors)
+	errors = db_check(Conceal, conceal, 'Concealment', errors)
+	errors = db_check(Maneuver, maneuver, 'Maneuver', errors)
+	errors = db_check(WeaponType, weapon_melee, 'Melee Weapon Type', errors)
+	errors = db_check(WeaponType, weapon_ranged, 'Ranged Weapon Type', errors)
+	errors = db_check(Consequence, consequence, 'Consequence', errors)
+	errors = db_check(Creature, creature, 'Creature', errors)
+	errors = db_check(Emotion, emotion, 'Emotion', errors)
+	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
+	errors = db_check(Job, profession, 'Profession', errors)
+	errors = db_check(Check, bonus_check, 'Bonus Check Type', errors)
+	errors = db_check(Ranged, bonus_check_range, 'Bonus Check Range', errors)
+	errors = db_check(ConflictAction, bonus_conflict, 'Bonus Conflict Action', errors)
+	errors = db_check(Check, penalty_check, 'Penalty Check Type', errors)
+	errors = db_check(Ranged, penalty_check_range, 'Penalty Check Range', errors)
+	errors = db_check(ConflictAction, penalty_conflict, 'Penalty Conflict Action', errors)
 
 	return(errors)
 
@@ -317,6 +424,13 @@ def adv_opposed_post_errors(data):
 	opponent_check = data['opponent_check']
 	multiple = data['multiple']
 
+	errors = int_check(mod, 'Modifier', errprs)
+	errors = int_check(opponent_mod, 'Opponent Modifier', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Check, player_check, 'Player Check', errors)
+	errors = db_check(Check, opponent_check, 'Opponent Check', errors)
 
 	return(errors)
 
@@ -353,6 +467,23 @@ def adv_points_post_errors(data):
 	ranks_trait_type = data['ranks_trait_type']
 	ranks_trait = data['ranks_trait']
 
+	errors = int_check(condition_cost, 'Condition Cost', errprs)
+	errors = int_check(equipment_points, 'Equipment Points', errprs)
+	errors = int_check(initiative_cost, 'Initiative Cost', errprs)
+	errors = int_check(twenty, '20 Cost', errprs)
+	errors = int_check(check_bonus, 'Check Bonus', errprs)
+	errors = int_check(check_cost, 'Check Bonus Cost', errprs)
+	errors = int_check(check_turns, 'Check Bonus Turns', errprs)
+	errors = int_check(benefit_count, 'Benefit Count', errprs)
+	errors = int_check(benefit_cost, 'Benefit Cost', errprs)
+	errors = int_check(benefit_turns, 'Benefit Turns', errprs)
+	errors = int_check(ranks_gained, 'Ranks Gained', errprs)
+	errors = int_check(ranks_max, 'Maximum Ranks', errprs)
+	errors = int_check(ranks_lasts, 'Ranks Last', errprs)
+	
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Benefit, benefit_choice, 'Bemefit', errors)
 
 	return(errors)
 
@@ -370,6 +501,10 @@ def adv_resist_post_errors(data):
 	mod = data['mod']
 	which = data['which']
 
+	errors = int_check(mod, 'Modifier', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
 
 	return(errors)
 
@@ -389,6 +524,12 @@ def adv_rounds_post_errors(data):
 	trait = data['trait']
 	end = data['end']
 
+	errors = int_check(rounds, 'Rounds', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Action, cost, 'Action Cost', errors)
+	errors = db_check(Check, check, 'Check Type', errors)
 
 	return(errors)
 
@@ -407,6 +548,8 @@ def adv_skill_post_errors(data):
 	replaced_trait = data['replaced_trait']
 	multiple = data['multiple']
 
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
 
 	return(errors)
 
@@ -434,6 +577,17 @@ def adv_time_post_errors(data):
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 
+	errors = int_check(value, 'Time Value', errprs)
+	errors = int_check(time_value, 'Time Math Value', errprs)
+	errors = int_check(dc, 'DC', errprs)
+	errors = int_check(recovery_penalty, 'Recovery Penalty', errprs)	
+	errors = int_check(recovery_time, 'Recovery Time', errprs)
+
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = db_check(Benefit, benefit, 'Benefit', errors)
+	errors = db_check(Unit, units, 'Units', errors)
+	errors = db_check(Math, math, 'Math', errors)
+	errors = db_check(Check, check_type, 'Check Type', errors)
 
 	return(errors)
 
@@ -448,5 +602,6 @@ def adv_variable_post_errors(data):
 	trait_type = data['trait_type']
 	trait = data['trait']
 
+	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	return(errors)

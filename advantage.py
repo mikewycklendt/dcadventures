@@ -16,9 +16,10 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
-from power_errors import integer, extra_convert, power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
+from power_errors import extra_convert, power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
 from power_posts import delete_row, grid_columns, alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
 from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, field_cost, db_integer
 
 load_dotenv()
 
@@ -489,6 +490,16 @@ def advantage_post_alt_check():
 	action = request.get_json()['action']
 	free = request.get_json()['free']
 
+	conflict = db_integer(conflict)
+	conflict_range = db_integer(conflict_range)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	mod = integer(mod)
+	conflict = integer(conflict)
+	conflict_range = integer(conflict_range)
+	action = integer(action)	
+
 	try:
 		entry = AdvAltCheck(advantage_id = advantage_id,
 							columns = columns,
@@ -582,6 +593,10 @@ def advantage_post_benefit():
 	name = request.get_json()['name']
 	description = request.get_json()['description']
 	effort = request.get_json()['effort']
+
+
+	advantage_id = integer(advantage_id)
+
 
 	try:
 		entry = Benefit(advantage_id = advantage_id,
@@ -677,7 +692,17 @@ def advantage_post_circ():
 	null_trait_type = request.get_json()['null_trait_type']
 	null_trait = request.get_json()['null_trait']
 
+	circ_range = db_integer(circ_range)
+	conflict = db_integer(conflict)
 
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	mod = integer(mod)
+	rounds = integer(rounds)
+	ranks = integer(ranks)
+	circ_range = integer(circ_range)
+	conflict = integer(conflict)
+	
 	try:
 		entry = AdvCirc(advantage_id = advantage_id,
 						columns = columns,
@@ -771,6 +796,9 @@ def advantage_post_combined():
 	ranks = request.get_json()['ranks']
 	advantage = request.get_json()['advantage']
 
+	advantage_id = request.get_json()['advantage_id']
+	ranks = integer(ranks)
+
 	try:
 		entry = AdvCombined(advantage_id = advantage_id,
 							columns = columns,
@@ -857,6 +885,10 @@ def advantage_post_condition():
 	condition2 = request.get_json()['condition2']
 	damage_value = request.get_json()['damage_value']
 	damage = request.get_json()['damage']
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	damage_value = integer(damage_value)
 
 	try:
 		entry = AdvCondition(advantage_id = advantage_id,
@@ -961,6 +993,20 @@ def advantage_post_dc():
 	check_trait_type = request.get_json()['check_trait_type']
 	check_trait = request.get_json()['check_trait']
 	check_mod = request.get_json()['check_mod']
+
+	math_math = db_integer(math_math)
+	level_type = db_integer(level_type)
+	level = db_integer(level)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	dc = integer(dc)
+	value_value = integer(value_value)
+	math_value = integer(math_value)
+	math_math = integer(math_math)
+	level_type = integer(level_type)
+	level = integer(level)
+	check_mod = integer(check_mod)
 
 	try:
 		entry = AdvDC(advantage_id = advantage_id,
@@ -1093,6 +1139,30 @@ def advantage_post_deg_mod():
 	cumulative = request.get_json()['cumulative']
 	linked = request.get_json()['linked']
 	
+	consequence = db_integer(consequence)
+	level_type = db_integer(level_type)
+	level = db_integer(level)
+	measure_math = db_integer(measure_math)
+	measure_rank = db_integer(measure_rank)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	value = integer(value)
+	consequence_action = integer(consequence_action)
+	consequence = integer(consequence)
+	knowledge_count = integer(knowledge_count)
+	level_type = integer(level_type)
+	level = integer(level)
+	circ_value = integer(circ_value)
+	circ_turns = integer(circ_turns)
+	measure_val1 = integer(measure_val1)
+	measure_math = integer(measure_math)
+	measure_value = integer(measure_value)
+	measure_rank = integer(measure_rank)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	nullify = integer(nullify)
+
 	try:
 		entry = AdvDegree(advantage_id = advantage_id,
 							columns = columns,
@@ -1214,6 +1284,17 @@ def advantage_post_effort():
 	benefit_count = request.get_json()['benefit_count']
 	benefit_effort = request.get_json()['benefit_effort']
 
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	benefit_choice = integer(benefit_choice)
+	benefit_turns = integer(benefit_turns)
+	benefit_count = integer(benefit_count)
+	
+
+
 	try:
 		entry = AdvEffort(advantage_id = advantage_id,
 							columns = columns,
@@ -1320,6 +1401,18 @@ def advantage_post_minion():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
+	attitude_type = db_integer(attitude_type)
+	attitude_attitude = db_integer(attitude_attitude)
+	resitable_check = db_integer(resitable_check)
+
+	advantage_id = integer(advantage_id)
+	points = integer(points)
+	sacrifice_cost = integer(sacrifice_cost)
+	attitude_type = integer(attitude_type)
+	attitude_attitude = integer(attitude_attitude)
+	resitable_check = integer(resitable_check)
+	resitable_dc = integer(resitable_dc)
+	multiple_value = integer(multiple_value)
 	try:
 		entry = AdvMinion(advantage_id = advantage_id,
 							points = points,
@@ -1453,9 +1546,57 @@ def advantage_post_modifiers():
 	penalty_conflict_defend = request.get_json()['penalty_conflict_defend']
 	multiple = request.get_json()['multiple']
 	multiple_count = request.get_json()['multiple_count']
-	if em0tion == 'other':	
-	lasts = request.get_json()['lasts
-	
+	lasts = request.get_json()['lasts']
+
+	environment = db_integer(environment)
+	sense = db_integer(sense)
+	mod_range = db_integer(mod_range)
+	subsense = db_integer(subsense)
+	cover = db_integer(cover)
+	conceal = db_integer(Conceal)
+	maneuver = db_integer(maneuver)
+	weapon_melee = db_integer(weapon_melee)
+	weapon_ranged = db_integer(weapon_ranged)
+	consequence = db_integer(consequence)
+	creature = db_integer(creature)
+	emotion = db_integer(emotion)
+	conflict = db_integer(conflict)
+	profession = db_integer(profession)
+	bonus_check = db_integer(bonus_check)
+	bonus_check_range = db_integer(bonus_check_range)
+	bonus_conflict = db_integer(bonus_conflict)
+	penalty_check = db_integer(penalty_check)
+	penalty_check_range = db_integer(penalty_check_range)
+	penalty_conflict = db_integer(penalty_conflict)
+
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	bonus = integer(bonus)
+	environment = integer(environment)
+	sense = integer(sense)
+	mod_range = mod_range(mod_range)
+	subsense = integer(subsense)
+	cover = integer(cover)
+	conceal = integer(conceal)
+	maneuver = integer(maneuver)
+	weapon_melee = integer(weapon_melee)
+	weapon_ranged = integer(weapon_ranged)
+	consequence = integer(consequence)
+	creature = integer(creature)
+	emotion = integer(emotion)
+	conflict = integer(conflict)
+	profession = integer(profession)
+	bonus_check = integer(bonus_check)
+	bonus_check_range = integer(bonus_check_range)
+	bonus_conflict = integer(bonus_conflict)
+	penalty_check = integer(penalty_check)
+	penalty_check_range = integer(penalty_check_range)
+	penalty_conflict = integer(penalty_conflict)
+	multiple = integer(multiple)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
+
 	if em0tion == 'other':	
 		entry = Emotion(name=em0tion_other)
 		db.session.add(entry)
@@ -1622,6 +1763,17 @@ def advantage_post_opposed():
 	opponent_check = request.get_json()['opponent_check']
 	multiple = request.get_json()['multiple']
 
+	player_check = db_integer(opponent_check)
+	opponent_check = db_integer(opponent_check)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	mod = integer(mod)
+	opponent_mod = integer(opponent_mod)
+	player_check = integer(player_check)
+	opponent_check = integer(opponent_check)
+
+
 	try:
 		entry = AdvOpposed(advantage_id = advantage_id,
 							columns = columns,
@@ -1732,6 +1884,23 @@ def advantage_post_points():
 	ranks_trait_type = request.get_json()['ranks_trait_type']
 	ranks_trait = request.get_json()['ranks_trait']
 
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	condition_cost = integer(condition_cost)
+	equipment_points = integer(equipment_points)
+	initiative_cost = integer(initiative_cost)
+	twenty = integer(twenty)
+	check_bonus = integer(check_bonus)
+	check_cost = integer(check_cost)
+	check_turns = integer(check_turns)
+	benefit_choice = integer(benefit_choice)
+	benefit_count = integer(benefit_count)
+	benefit_cost = integer(benefit_cost)
+	benefit_turns = integer(benefit_turns)
+	ranks_gained = integer(ranks_gained)
+	ranks_max = integer(ranks_max)
+	ranks_lasts = integer(ranks_lasts)
+
 	try:
 		entry = AdvPoints(advantage_id = advantage_id,
 							columns = columns,
@@ -1836,6 +2005,10 @@ def advantage_post_resist():
 	mod = request.get_json()['mod']
 	which = request.get_json()['which']
 
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	mod = integer(mod)
+
 	try:
 		entry = AdvResist(advantage_id = advantage_id,
 							columns = columns,
@@ -1922,6 +2095,15 @@ def advantage_post_rounds():
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
 	end = request.get_json()['end']
+
+	cost = db_integer(cost)
+	check = db_integer(check)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	rounds = integer(rounds)
+	cost = integer(cost)
+	check = integer(check)
 
 	try:
 		entry = AdvRounds(advantage_id = advantage_id,
@@ -2010,6 +2192,9 @@ def advantage_skill_minion():
 	replaced_trait_type = request.get_json()['replaced_trait_type']
 	replaced_trait = request.get_json()['replaced_trait']
 	multiple = request.get_json()['multiple']
+	
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
 
 	try:
 		entry = AdvSkill(advantage_id = advantage_id,
@@ -2107,6 +2292,21 @@ def advantage_post_timr():
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
 
+	units = db_integer(units)
+	math = db_integer(units)
+	check_type = db_integer(units)
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	value = integer(value)
+	units = integer(units)
+	time_value = integer(time_value)
+	math = integer(math)
+	dc = integer(dc)
+	check_type = integer(check_type)
+	recovery_penalty = integer(recovery_penalty)
+	recovery_time = integer(recovery_time)
+
 	try:
 		entry = AdvTime(advantage_id = advantage_id,
 						columns = columns,
@@ -2198,6 +2398,8 @@ def advantage_post_variable():
 	font = request.get_json()['font']
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
+
+	advantage_id = integer(advantage_id)
 
 	try:
 		entry = AdvVariable(advantage_id = advantage_id,
