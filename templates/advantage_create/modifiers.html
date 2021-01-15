@@ -440,13 +440,14 @@
 				<div>
 					<select class="select-entry" id="modifiers_multiple_count" name="modifiers_multiple_count">
 						<option value="">Choose</option>
-						<option value=0>All</option>
+						<option value='sll'>All</option>
 						{% for i in positives %}
 							<option value="{{i}}">Any {{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
 			</div>
+		</div>
 
 		<div>
 			<select class="select-entry" id="modifier_lasts" name="modifier_lasts">
