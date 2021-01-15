@@ -331,7 +331,6 @@ def adv_effort_post(entry, body, cells):
 	condition_damage = integer_convert(condition_damage)
 	benefit_turns = integer_convert(benefit_turns)
 	benefit_count = integer_convert(benefit_count)
-
 	
 	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
 	condition1 = selects(condition1, condition_select)
@@ -380,10 +379,13 @@ def adv_minion_post(entry, body, cells):
 	resitable_dc = integer_convert(resitable_dc)
 	multiple_value = integer_convert(multiple_value)
 
+	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
+	variable_type = selects(variable_type, minion_type_select)
 	
-	attitude_type = name(, )
-	attitude_attitude = name(, )
-	resitable_check = name(, )
+
+	attitude_type = name(LevelType, attitude_type)
+	attitude_attitude = name(Levels, attitude_attitude)
+	resitable_check = name(Defense, resitable_check)
 
 
 	body = send(cells, body)
@@ -451,26 +453,33 @@ def adv_modifiers_post(entry, body, cells):
 	multiple_count = integer_convert(multiple_count)
 	lasts = integer_convert(lasts)
 
-	environment = name(, , '')
-	sense = name(, , '')
-	mod_range = name(, , '')
-	subsense = name(, , '')
-	cover = name(, , '')
-	conceal = name(, , '')
-	maneuver = name(, , '')
-	weapon_melee = name(, , '')
-	weapon_ranged = name(, , '')
-	consequence = name(, , '')
-	creature = name(, , '')
-	emotion = name(, , '')
-	conflict = name(, , '')
-	profession = name(, , '')
-	bonus_check = name(, , '')
-	bonus_check_range = name(, , '')
-	bonus_conflict = name(, , '')
-	penalty_check = name(, , '')
-	penalty_check_range = name(, , '')
-	penalty_conflict = name(, , '')
+	modifier_type = [{'type': '', 'name': 'Type'}, {'type': 'up', 'name': 'Up to'}, {'type': 'value', 'name': 'Exact'}, {'type': 'rank', 'name': 'Per Rank'},  {'type': '-1', 'name': 'Rank - 1'}]
+	bonus_type = selects(bonus_type, modifier_type)
+	penalty_type = selects(penalty_type, modifier_type)
+
+	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
+	multiple = selects(multiple, multiple_select)
+
+	environment = name(Environment, environment, 'Variable Environment')
+	sense = name(Sense, sense, 'Variable ')
+	mod_range = name(Ranged, mod_range, 'Variable ')
+	subsense = name(SubSense, subsense, 'Variable Subssense')
+	cover = name(Cover, cover, 'Variable Cover')
+	conceal = name(Conceal, conceal, 'Variable Concealment')
+	maneuver = name(Maneuver, maneuver, 'Variable Maneuver')
+	weapon_melee = name(WeaponType, weapon_melee, 'Variable Melee Weapon')
+	weapon_ranged = name(WeaponType, weapon_ranged, 'Variable Ranged Weapon')
+	consequence = name(Consequence, consequence, 'Variable Consequence')
+	creature = name(Creature, creature, 'Variable Creature')
+	emotion = name(Emotion, emotion, 'Variable Emotion')
+	conflict = name(ConflictAction, conflict, 'Variable Conflict Action')
+	profession = name(Job, profession, 'Variable Profession')
+	bonus_check = name(Check, bonus_check,)
+	bonus_check_range = name(Ranged, bonus_check_range)
+	bonus_conflict = name(ConflictAction, bonus_conflict, 'Variable Conflict Action')
+	penalty_check = name(Check, penalty_check)
+	penalty_check_range = name(Ranged, penalty_check_range)
+	penalty_conflict = name(ConflictAction, penalty_conflict, 'Variable Conflict Action')
 
 	body = send(cells, body)
 	
@@ -496,13 +505,15 @@ def adv_opposed_post(entry, body, cells):
 	opponent_check = entry.opponent_check
 	multiple = entry.multiple
 
+	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'opponent', 'name': 'Opponent Choice'}]
+	multiple = selects(multiple, multiple_opposed)
 
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
 
-	benefit = name(, )
-	player_check = name(, )
-	opponent_check = name(, )
+	benefit = name(Benefit, benefit)
+	player_check = name(Check, player_check)
+	opponent_check = name(Check, opponent_check)
 
 	body = send(cells, body)
 	
@@ -557,8 +568,11 @@ def adv_points_post(entry, body, cells):
 	ranks_max = integer_convert(ranks_max)
 	ranks_lasts = integer_convert(ranks_lasts)
 
-	benefit = name(, )
-	benefit_choice = name(, )
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	check_target = selects(check_target, targets)
+
+	benefit = name(Benefit, benefit)
+	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
 
 
 
@@ -583,8 +597,10 @@ def adv_resist_post(entry, body, cells):
 
 	mod = integer_convert(mod)
 
-	benefit = name(, )
+	benefit = name(Benefit, benefit)
 
+	which_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Value'}, {'type': 'low', 'name': 'Lower Value'}]
+	which = selects(which, which_select)
 
 	body = send(cells, body)
 	
@@ -609,9 +625,14 @@ def adv_rounds_post(entry, body, cells):
 
 	rounds = integer_convert(rounds)
 
-	benefit = name(, )
-	cost = name(, )
-	check = name(, )
+	benefit = name(Benefit, benefit)
+	cost = name(Action, cost)
+	check = name(Check, check)
+
+	rounds_end = [{'type': '', 'name': 'Ends'}, {'type': 'action', 'name': 'Stop Taking Action'}, {'type': 'resist', 'name': 'Successful Resistance'}, {'type': 'danger', 'name': 'Danger'}]
+	end = select(end, rounds_end)
+
+	
 
 	body = send(cells, body)
 	
@@ -634,7 +655,10 @@ def adv_skill_post(entry, body, cells):
 	replaced_trait = entry.replaced_trait
 	multiple = entry.multiple
 
-	benefit = name(, )
+	benefit = name(Benefit, benefit)\
+
+	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
+	multiple = selects(multiple, multiple_select)
 
 	body = send(cells, body)
 	
@@ -672,10 +696,13 @@ def adv_time_post(entry, body, cells):
 	recovery_penalty = integer_convert(recovery_penalty)
 	recovery_time = integer_convert(recovery_time)
 
-	benefit = name(, )
-	units = name(, )
-	math = name(, )
-	check_type = name(, )
+	benefit = name(Benefit, benefit)
+	units = name(Unit, units)
+	math = math_convert(Math, math)
+	check_type = name(Check, check_type)
+
+	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+	time_type = selects(time_type, time_effect)
 
 	body = send(cells, body)
 	
