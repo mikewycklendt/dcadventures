@@ -2176,7 +2176,7 @@ def delete_advantage_rounds(advantage_id):
 
 	
 @advantage.route('/advantage/skill/create', methods=['POST'])
-def advantage_skill_minion():
+def advantage_poat_skill():
 
 	body = {}
 	body['success'] = True
@@ -2266,7 +2266,7 @@ def delete_advantage_skill(advantage_id):
 
 	
 @advantage.route('/advantage/time/create', methods=['POST'])
-def advantage_post_timr():
+def advantage_post_time():
 
 	body = {}
 	body['success'] = True
@@ -2454,7 +2454,7 @@ def advantage_post_variable():
 
 
 @advantage.route('/advantage/variable/delete/<advantage_id>', methods=['DELETE'])
-def delete_advantage_minion(advantage_id):
+def delete_advantage_post_variable(advantage_id):
 	try:
 		db.session.query(AdvVariable).filter_by(id=power_id).delete()
 		db.session.commit()
