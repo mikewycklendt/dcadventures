@@ -27,7 +27,6 @@ function circ_type() {
 function circ_null_type() {
 	const select = 'circ_null_type';
 	const options = [{'val': 'condition', 'div': 'circ-null-condition'},
-					{'val': 'descriptor', 'div': 'circ-null-descriptor'},
 					{'val': 'trait', 'div': 'circ-null-trait'},
 					{'val': 'override', 'div': 'circ-null-trait'}]
 
