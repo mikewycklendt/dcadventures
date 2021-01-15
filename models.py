@@ -2722,17 +2722,37 @@ class AdvMod(db.Model):
 	trigger = db.Column(db.String())
 	bonus_effect = db.Column(db.String())
 	penalty_effect = db.Column(db.String())
+	environment = db.Column(db.Integer)
 	environment_other = db.Column(db.String())
+	sense = db.Column(db.Integer)
+	mod_range = db.Column(db.Integer)
+	subsense = db.Column(db.Integer)
+	cover = db.Column(db.Integer)
+	conceal = db.Column(db.Integer)
+	maneuver = db.Column(db.Integer)
+	weapon_melee = db.Column(db.Integer)
+	weapon_ranged = db.Column(db.Integer)
 	tools = db.Column(db.String())
 	condition = db.Column(db.String())
 	power = db.Column(db.String())
+	consequence = db.Column(db.Integer)
+	creature = db.Column(db.Integer)
 	creature_other = db.Column(db.String())
+	emotion = db.Column(db.Integer)
 	emotion_other = db.Column(db.String())
+	conflict = db.Column(db.Integer)
+	profession = db.Column(db.Integer)
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
 	bonus_trait = db.Column(db.String())
+	bonus_check = db.Column(db.Integer)
+	bonus_check_range = db.Column(db.Integer)
+	bonus_conflict = db.Column(db.Integer)
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.String())
+	penalty_check = db.Column(db.Integer)
+	penalty_check_range = db.Column(db.Integer)
+	penalty_conflict = db.Column(db.Integer)
 	bonus_active_defense = db.Column(db.Boolean)
 	bonus_conflict_defend = db.Column(db.Boolean)
 	penalty_active_defense = db.Column(db.Boolean)
@@ -2752,17 +2772,37 @@ class AdvMod(db.Model):
 			'trigger': self.trigger,
 			'bonus_effect': self.bonus_effect,
 			'penalty_effect': self.penalty_effect,
+			'environment': self.environment,
 			'environment_other': self.environment_other,
+			'sense': self.sense,
+			'mod_range': self.mod_range,
+			'subsense': self.subsense,
+			'cover': self.cover,
+			'conceal': self.conceal,
+			'maneuver': self.maneuver,
+			'weapon_melee': self.weapon_melee,
+			'weapon_ranged': self.weapon_ranged,
 			'tools': self.tools,
 			'condition': self.condition,
 			'power': self.power,
+			'consequence': self.consequence,
+			'creature': self.creature,
 			'creature_other': self.creature_other,
+			'emotion': self.emotion,
 			'emotion_other': self.emotion_other,
+			'conflict': self.conflict,
+			'profession': self.profession,
 			'profession_other': self.profession_other,
 			'bonus_trait_type': self.bonus_trait_type,
 			'bonus_trait': self.bonus_trait,
+			'bonus_check': self.bonus_check,
+			'bonus_check_range': self.bonus_check_range,
+			'bonus_conflict': self.bonus_conflict,
 			'penalty_trait_type': self.penalty_trait_type,
 			'penalty_trait': self.penalty_trait,
+			'penalty_check': self.penalty_check,
+			'penalty_check_range': self.penalty_check_range,
+			'penalty_conflict': self.penalty_conflict,
 			'bonus_active_defense': self.bonus_active_defense,
 			'bonus_conflict_defend': self.bonus_conflict_defend,
 			'penalty_active_defense': self.penalty_active_defense,
