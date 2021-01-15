@@ -58,9 +58,7 @@ def adv_alt_check_post_errors(data):
 	errors = variable_field('condition', trigger, 'Ending Condition', ondition2, errors)
 
  	errors = variable_fields('conflict', 'Triggered by Conflict Action', trigger, [conflict], errors)
- 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
-
-``
+	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 
 	return(errors)
 
