@@ -2427,7 +2427,7 @@ class AdvCirc(db.Model):
 	rounds = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
-	circ_type = db.Column(db.String())`
+	circ_type = db.Column(db.String())
 	circ_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	check_who = db.Column(db.String())
