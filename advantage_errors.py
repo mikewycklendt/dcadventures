@@ -113,7 +113,6 @@ def adv_circ_post_errors(data):
 	errors = int_check(mod, 'Modifier', errprs)
 	errors = int_check(rounds, 'Rounds', errprs)
 	errors = int_check(ranks, 'Ranks', errprs)
-	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Range, circ_range, 'Range', errors)
@@ -123,7 +122,7 @@ def adv_circ_post_errors(data):
 	errors = required(mod, 'Modifier', errors)
 	errors = required(rounds, 'Lasts', errors)
 	errors = required(circumstance, 'Circumstance', errors)
-
+	
 	errors = variable_fields('range', 'Triggered by Range', circ_type, [circ_range], errors)
 	errors = variable_field('range', circ_type, 'Range', circ_range, errors)
 	errors = variable_fields('check', 'Triggered by Check Type', circ_type, [check_who, check_trait_type, check_trait], errors)
@@ -132,7 +131,7 @@ def adv_circ_post_errors(data):
 	errors = variable_field('check', circ_type, 'Trait', check_trait, errors)
 	errors = variable_fields('conflict', 'Triggered by Conflict Action', circ_type, [conflict], errors)
 	errors = variable_field('conflict', circ_type, 'Conflict Action', conflict, errors)
-	
+
 	return(errors)
 
 def adv_combined_post_errors(data):
