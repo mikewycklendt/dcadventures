@@ -727,4 +727,4 @@ def adv_variable_post(entry, body, cells):
 	cells.clear()
 
 	return (body)
-``
+
