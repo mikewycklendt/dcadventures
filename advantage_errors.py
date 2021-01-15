@@ -138,8 +138,7 @@ def adv_circ_post_errors(data):
 	errors = variable_fields('override', 'Override Trait Circumstance', null_type, [null_override_trait_type, null_override_trait], errors)
 	errors = variable_field('override', null_type, 'Trait Type', null_override_trait_type, errors)
 	errors = variable_field('override', null_type, 'Trait', null_override_trait, errors)
-
-'
+	
 	return(errors)
 
 def adv_combined_post_errors(data):
@@ -241,6 +240,31 @@ def adv_dc_post_errors(data):
 	errors = db_check(Math, math_math, 'Math', errors)
 	errors = db_check(LevelType, level_type, 'Level Type', errors)
 	errors = db_check(Levels, level, 'Level', errors)
+
+	errors = required(dc, 'DC Type', errors)
+	errors = required(description, 'Description', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = variable_fields('value', 'DC Value', dc, [value], errors)
+	errors = variable_field('value', dc, 'DC Value', value, errors)
+	errors = variable_fields('math', 'DC Math', dc, [math_value, math, math_trait_type, math_trait], errors)
+	errors = variable_field('math', dc, 'DC Math Value', math_value, errors)
+	errors = variable_field('math', dc, 'DC Math', math, errors)
+	errors = variable_field('math', dc, 'DC Math Trait Type', math_trait_type, errors)
+	errors = variable_field('math', dc, 'DC Math Trait', math_trait, errors)
+
+	errors = check_fields(condition, 'Condition', [condition1, condition2], errors)
+	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
+	errors = check_field(condition, 'Condition', 'Ending Condition', condition2, errors)
+
+	errors = check_field(keyword_check, 'Keyword', 'Keyword', keyword, errors)
+
+	errors = check_fields(check_type, 'Check Type', [check_trait_type, check_trait, check_mod], errors)
+	errors = check_field(check_type, 'Check Type', 'Trait Type', check_trait_type, errors)
+	errors = check_field(check_type, 'Check Type', 'Trait', check_trait, errors)
+	errors = check_field(check_type, 'Check Type', 'Check Modifier', check_mod, errors)
+
+	errors = check_field(levels, 'Level', 'Level', level, errors)
 
 
 	return(errors)
