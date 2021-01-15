@@ -59,7 +59,7 @@ def adv_alt_check_post_errors(data):
 	
 	errors = variable_fields('conflict', 'Triggered by Conflict Action', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
-	
+
 	return(errors)
 
 def adv_benefit_post_errors(data):
@@ -130,6 +130,16 @@ def adv_circ_post_errors(data):
 	errors = variable_fields('conflict', 'Triggered by Conflict Action', circ_type, [conflict], errors)
 	errors = variable_field('conflict', circ_type, 'Conflict Action', conflict, errors)
 
+	errors = variable_fields('trait', 'Nullified by Trait', null_type, [null_trait_type, null_trait], errors)
+	errors = variable_field('trait', null_type, 'Trait Type', null_trait_type, errors)
+	errors = variable_field('trait', null_type, 'Trait', null_trait, errors)
+	errors = variable_fields('condition', 'Nullified by Condition', null_type, [null_condition], errors)
+	errors = variable_field('condition', null_type, 'Condition', null_condition, errors)
+	errors = variable_fields('override', 'Override Trait Circumstance', null_type, [null_override_trait_type, null_override_trait], errors)
+	errors = variable_field('override', null_type, 'Trait Type', null_override_trait_type, errors)
+	errors = variable_field('override', null_type, 'Trait', null_override_trait, errors)
+
+'
 	return(errors)
 
 def adv_combined_post_errors(data):
@@ -146,6 +156,9 @@ def adv_combined_post_errors(data):
 	errors = int_check(ranks, 'Ranks', errprs)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
+
+	errors = required(ranks, 'Ranks', errors)
+	errors = required(advantage, 'Advantage', errors)
 
 	return(errors)
 
@@ -172,6 +185,20 @@ def adv_condition_post_errors(data):
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
+
+	errors = required(condition_type, 'Condition Type', errors)
+
+	errors = variable_fields('active', 'Active Condition', condition_type, [condition], errors)
+	errors = variable_field('active', condition_type, 'Condition', condition, errors)
+	errors = variable_fields('change', 'CondItion Change', condition_type, [condition1, condition2], errors)
+	errors = variable_field('change', condition_type, 'sTARTING CondItion', condition1, errors)
+	errors = variable_field('change', condition_type, 'eNDINGCondItion', condition2, errors)
+	errors = variable_fields('damage', 'Condition Damage', condition_type, [damage_value, damage], errors)
+	errors = variable_field('damage', condition_type, 'Damage Degrees', damage_value, errors)
+	errors = variable_field('damage', condition_type, 'Condition Damage Direction ', damage, errors)
+	errors = variable_fields('null', 'Nullify Condition', condition_type, [condition_null], errors)
+	errors = variable_field('null', condition_type, 'NullifIED Condition', condition_null, errors)
+
 
 	return(errors)
 
