@@ -1835,7 +1835,7 @@ def advantage_post_opposed():
 
 
 @advantage.route('/advantage/opposed/delete/<advantage_id>', methods=['DELETE'])
-def delete_opposed_minion(advantage_id):
+def delete_post_opposed(advantage_id):
 	try:
 		db.session.query(AdvOpposed).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2065,7 +2065,7 @@ def advantage_post_resist():
 
 
 @advantage.route('/advantage/resist/delete/<advantage_id>', methods=['DELETE'])
-def delete_advantage_minion(advantage_id):
+def delete_advantage_resist(advantage_id):
 	try:
 		db.session.query(AdvResist).filter_by(id=power_id).delete()
 		db.session.commit()
