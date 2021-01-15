@@ -167,6 +167,22 @@
 					</select>
 				</div>
 			</div>
+
+			<div id="circ-null-override">
+				<div>
+					<select class="select-sml" id="circ_null_override_trait_type" name="circ_null_trait_type" onchange="circ_null_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_override_null_trait" name="circ_null_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
 		</div>
 	</div>
 

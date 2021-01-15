@@ -43,6 +43,25 @@ def adv_alt_check_post_errors(data):
 	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
 	errors = db_check(Ranged, conflict_range, 'Range', errors)
 
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+
+
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(mod, 'Modifier', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(when, 'When', errors)
+	errors = required(action_type, 'Action Type', errors)
+	errors = required(action, 'Action', errors)
+
+	errors = variable_fields('condition', 'Triggered by Condition', trigger, [condition1, condition2], errors)
+	errors = variable_field('condition', trigger, 'Starting Condition', ondition1, errors)
+	errors = variable_field('condition', trigger, 'Ending Condition', ondition2, errors)
+
+ 	errors = variable_fields('conflict', 'Triggered by Conflict Action', trigger, [conflict], errors)
+ 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
+
+``
+
 	return(errors)
 
 def adv_benefit_post_errors(data):
@@ -59,6 +78,9 @@ def adv_benefit_post_errors(data):
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
+	errors = required(name, 'Name', errors)
+	errors = required(description, 'Description')
+
 	return(errors)
 
 def adv_circ_post_errors(data):
@@ -74,7 +96,6 @@ def adv_circ_post_errors(data):
 	benefit = data['benefit']
 	mod = data['mod']
 	rounds = data['rounds']
-	ranks = data['ranks']
 	circumstance = data['circumstance']
 	circ_type = data['circ_type']
 	circ_range = data['circ_range']
@@ -86,6 +107,8 @@ def adv_circ_post_errors(data):
 	null_condition = data['null_condition']
 	null_trait_type = data['null_trait_type']
 	null_trait = data['null_trait']
+	null_override_trait_type = data['null_override_trait_type']
+	null_override_trait = data['null_override_trait']
 
 	errors = int_check(mod, 'Modifier', errprs)
 	errors = int_check(rounds, 'Rounds', errprs)
@@ -95,6 +118,20 @@ def adv_circ_post_errors(data):
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Range, circ_range, 'Range', errors)
 	errors = db_check(ConflictAction, conflict, 'Conflict Action', errors)
+
+	errors = required(target, 'Target', errors)
+	errors = required(mod, 'Modifier', errors)
+	errors = required(rounds, 'Lasts', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+
+	errors = variable_fields('range', 'Triggered by Range', circ_type, [circ_range], errors)
+	errors = variable_field('range', circ_type, 'Range', circ_range, errors)
+	errors = variable_fields('check', 'Triggered by Check Type', circ_type, [check_who, check_trait_type, check_trait], errors)
+	errors = variable_field('check', circ_type, 'Whose Check', check_who, errors)
+	errors = variable_field('check', circ_type, 'Trait Type', check_trait_type, errors)
+	errors = variable_field('check', circ_type, 'Trait', check_trait, errors)
+	errors = variable_fields('conflict', 'Triggered by Conflict Action', circ_type, [conflict], errors)
+	errors = variable_field('conflict', circ_type, 'Conflict Action', conflict, errors)
 
 
 	return(errors)

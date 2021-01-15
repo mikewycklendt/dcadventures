@@ -28,7 +28,7 @@ function circ_null_type() {
 	const select = 'circ_null_type';
 	const options = [{'val': 'condition', 'div': 'circ-null-condition'},
 					{'val': 'trait', 'div': 'circ-null-trait'},
-					{'val': 'override', 'div': 'circ-null-trait'}]
+					{'val': 'override', 'div': 'circ-null-override'}]
 
 	select_opacity(select, options);
 }
@@ -73,6 +73,9 @@ function circ_submit() {
 	const null_condition = select("circ_null_condition");
 	const null_trait_type = select("circ_null_trait_type");
 	const null_trait = select("circ_null_trait");
+	const null_override_trait_type = select("circ_null_override__trait_type");
+	const null_override_trait = select("circ_null_override__trait");
+	
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -100,7 +103,9 @@ function circ_submit() {
 			'null_type': null_type,
 			'null_condition': null_condition,
 			'null_trait_type': null_trait_type,
-			'null_trait': null_trait
+			'null_trait': null_trait,
+			'null_override_trait_type': null_override_trait_type,
+			'null_override_trait': null_override_trait			
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

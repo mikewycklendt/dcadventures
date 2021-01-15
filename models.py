@@ -2438,6 +2438,8 @@ class AdvCirc(db.Model):
 	null_condition = db.Column(db.String())
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.String())
+	null_override_trait_type = db.Column(db.String())
+	null_override_trait = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -2457,7 +2459,9 @@ class AdvCirc(db.Model):
 			'null_type': self.null_type,
 			'null_condition': self.null_condition,
 			'null_trait_type': self.null_trait_type,
-			'null_trait': self.null_trait
+			'null_trait': self.null_trait,
+			'null_override_trait_type': self.null_override_trait_type,
+			'null_override_trait': self.null_override_trait
 		}
 		
 class AdvCombined(db.Model):

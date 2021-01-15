@@ -97,6 +97,8 @@ def adv_circ_post(entry, body, cells):
 	null_condition = entry.null_condition
 	null_trait_type = entry.null_trait_type
 	null_trait = entry.null_trait
+	null_override_trait_type = entry.null_override_trait_type
+	null_override_trait = entry.null_override_trait
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)

@@ -699,6 +699,8 @@ def advantage_post_circ():
 	null_condition = request.get_json()['null_condition']
 	null_trait_type = request.get_json()['null_trait_type']
 	null_trait = request.get_json()['null_trait']
+	null_override_trait_type = request.get_json()['null_override_trait_type']
+	null_override_trait = request.get_json()['null_override_trait']
 
 	circ_range = db_integer(circ_range)
 	conflict = db_integer(conflict)
@@ -730,7 +732,9 @@ def advantage_post_circ():
 						null_type = null_type,
 						null_condition = null_condition,
 						null_trait_type = null_trait_type,
-						null_trait = null_trait)
+						null_trait = null_trait,
+						null_override_trait_type = null_trait_type,
+						null_override_trait = null_trait)
 
 		db.session.add(entry)
 		db.session.commit()
