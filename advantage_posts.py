@@ -338,7 +338,7 @@ def adv_effort_post(entry, body, cells):
 	condition2 = selects(condition2, condition_select)	
 
 	benefit = name(Benefit, benefit)
-	benefit_choice = name(Benefit, benefit_choice)
+	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
 
 
 	body = send(cells, body)

@@ -2863,7 +2863,6 @@ class AdvPoints(db.Model):
 	check_turns = db.Column(db.Integer)
 	check_target = db.Column(db.String())
 	check_all = db.Column(db.Boolean)
-	benefit_choice = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	benefit_count = db.Column(db.Integer)
 	benefit_cost = db.Column(db.Integer)
 	benefit_turns = db.Column(db.Integer)
@@ -2891,7 +2890,6 @@ class AdvPoints(db.Model):
 			'check_turns': self.check_turns,
 			'check_target': self.check_target,
 			'check_all': self.check_all,
-			'benefit_choice': self.benefit_choice,
 			'benefit_count': self.benefit_count,
 			'benefit_cost': self.benefit_cost,
 			'benefit_turns': self.benefit_turns,

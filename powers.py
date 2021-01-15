@@ -457,6 +457,8 @@ def power_trait_select():
 		body['options'] = ['Trait']
 	elif trait == 'immoveable':
 		body['options'] = ['Immoveable']
+	elif trait == 'interact':
+		body['options'] = ['Any Interarction']
 	else:
 		body['success'] = False
 		body['options'] = ['']
