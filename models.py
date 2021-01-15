@@ -2643,6 +2643,7 @@ class AdvEffort(db.Model):
 	condition_damage = db.Column(db.Integer)
 	condition1 = db.Column(db.String())
 	condition2 = db.Column(db.String())
+	benefit_choice = db.Column(db.Integer)
 	benefit_turns = db.Column(db.Integer)
 	benefit_count = db.Column(db.Integer)
 	benefit_effort = db.Column(db.Boolean)
@@ -2657,6 +2658,7 @@ class AdvEffort(db.Model):
 			'condition_damage': self.condition_damage,
 			'condition1': self.condition1,
 			'condition2': self.condition2,
+			'benefit_choice': self.benefit_choice,
 			'benefit_turns': self.benefit_turns,
 			'benefit_count': self.benefit_count,
 			'benefit_effort': self.benefit_effort
