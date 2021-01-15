@@ -54,12 +54,12 @@ def adv_alt_check_post_errors(data):
 	errors = required(action, 'Action', errors)
 
 	errors = variable_fields('condition', 'Triggered by Condition', trigger, [condition1, condition2], errors)
-	errors = variable_field('condition', trigger, 'Starting Condition', ondition1, errors)
-	errors = variable_field('condition', trigger, 'Ending Condition', ondition2, errors)
-
- 	errors = variable_fields('conflict', 'Triggered by Conflict Action', trigger, [conflict], errors)
+	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', trigger, 'Ending Condition', condition2, errors)
+	
+	errors = variable_fields('conflict', 'Triggered by Conflict Action', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
-
+	
 	return(errors)
 
 def adv_benefit_post_errors(data):
