@@ -249,7 +249,7 @@ def adv_dc_post_errors(data):
 	errors = variable_field('value', dc, 'DC Value', value_value, errors)
 	errors = variable_fields('math', 'DC Math', dc, [math_value, math, math_trait_type, math_trait], errors)
 	errors = variable_field('math', dc, 'DC Math Value', math_value, errors)
-	errors = variable_field('math', dc, 'DC Math', math, errors)
+	errors = variable_field('math', dc, 'DC Math', math_math, errors)
 	errors = variable_field('math', dc, 'DC Math Trait Type', math_trait_type, errors)
 	errors = variable_field('math', dc, 'DC Math Trait', math_trait, errors)
 

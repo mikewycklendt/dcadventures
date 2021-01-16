@@ -243,7 +243,7 @@ def adv_dc_post(entry, body, cells):
 	check_mod = integer_convert(check_mod)
 
 	benefit = name(Benefit, benefit)
-	math_math = name(Math, math_math)
+	math_math = math_convert(Math, math_math)
 	level_type = name(LevelType, level_type)
 	level = name(Levels, level)
 
@@ -253,7 +253,7 @@ def adv_dc_post(entry, body, cells):
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Target', 18, [target], cells)
 	vcells = vcell('value', 10, [value_value])
-	vcells = vcell('math', 20, [math_value, math, math_trait], vcells)
+	vcells = vcell('math', 20, [math_value, math_math, math_trait], vcells)
 	cells = vcell_add('DC', dc, vcells, cells)
 
 	cells = check_cell('Condition', 13, condition, cells, True)
@@ -359,7 +359,7 @@ def adv_deg_mod_post(entry, body, cells):
 	consequence = name(Consequence, consequence)
 	level_type = name(LevelType, level_type)
 	level = name(Levels, level)
-	measure_math = name(Math, measure_math)
+	measure_math = math_convert(Math, measure_math)
 	measure_rank = name(Rank, measure_rank)
 
 	cells = cell('Benefit', 20, [benefit])
