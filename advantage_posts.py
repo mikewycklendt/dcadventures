@@ -146,7 +146,7 @@ def adv_circ_post(entry, body, cells):
 	vcells = vcell('condition', 17, [null_condition], vcells)	
 	cells = vcell_add('Nullified', null_type, vcells, cells)
 
-	cells = cell('Circumstance', 35, [description], cells)
+	cells = cell('Circumstance', 35, [circumstance], cells)
 
 
 	body = send(cells, body)
