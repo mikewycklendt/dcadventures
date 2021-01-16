@@ -71,7 +71,6 @@ def adv_alt_check_post(entry, body, cells):
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Check Type', 15, [check_type], cells)
 	cells = cell('Modifier', 10, [mod], cells)
-	cells = cell('', , [], cells)
 
 	vcells = vcell('condition', 30, [condition1, 'to', condition2]) 
 	vcells = vcell('conflict', 30, ['Action: ', conflict, 'Range: ', conflict_range], vcells)
