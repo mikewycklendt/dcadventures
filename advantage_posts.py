@@ -122,7 +122,7 @@ def adv_circ_post(entry, body, cells):
 	circ_type = selects(circ_type, circ_type_select)
 
 	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
-	who = selects(who, who_check_select)
+	check_who = selects(check_who, who_check_select)
 
 	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
 	null_type = selects(null_type, circ_null_select)
