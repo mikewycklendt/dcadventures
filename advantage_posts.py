@@ -970,9 +970,13 @@ def adv_variable_post(entry, body, cells):
 	font = entry.font
 	trait_type = entry.trait_type
 	trait = entry.trait
+	active = entry.active
+	effort = entry.effort
 
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Trait', 40, [trait], cells)
+	cells = check_cell('Only Active', 13, active, cells)
+	cells = check_cell('Only Extra Effort', 18, effort, cells)
 
 	body = send(cells, body)
 	

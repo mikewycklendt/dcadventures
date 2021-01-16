@@ -3019,12 +3019,16 @@ class AdvVariable(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.String())
+	active = db.Column(db.Boolean)
+	effort = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'trait_type': self.trait_type,
-			'trait': self.trait
+			'trait': self.trait,
+			'active': self.active,
+			'effort': self.effort
 		}
 
 

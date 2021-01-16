@@ -219,35 +219,35 @@ def advantage_trait_select():
 	this = ['This Power']
 
 	skills_query = db.session.query(Skill).order_by(Skill.name).all()
-	skills = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	skills = [{'id': 'x', 'name': 'Variable Skill'}, {'id': 'all', 'name': 'All'}]
 	for skill in skills_query:
 		skills.append({'id': skill.name, 'name': skill.name})
 
 	abilities_query = db.session.query(Ability).order_by(Ability.name).all()
-	abilities = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	abilities = [{'id': 'x', 'name': 'Variable Ability'}, {'id': 'all', 'name': 'All'}]
 	for a in abilities_query:
 		abilities.append({'id': a.name, 'name': a.name})
 
 	defenses_query = db.session.query(Defense).order_by(Defense.name).all()
-	defenses = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	defenses = [{'id': 'x', 'name': 'Variable Defense'}, {'id': 'all', 'name': 'All'}]
 	for d in defenses_query:
 		defenses.append({'id': d.name, 'name': d.name})
 
 	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
 	powers_sorted = sorted(powers_raw)
-	powers = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	powers = [{'id': 'x', 'name': 'Variable Power'}, {'id': 'all', 'name': 'All'}]
 	for p in powers_sorted:
 		powers.append({'id': p, 'name': p})
 
 	bonuses_raw = ['Balancing', 'Maneuvering', 'Standing', 'Tumbling', 'Climbing', 'Jumping', 'Running', 'Swimming', 'Bluffing', 'Disguise', 'Feinting', 'Innuendo', 'Tricking', 'Detect Illusion', 'Detect Influence', 'Evaluate', 'Innuendo', 'Resist Influence', 'Coercing', 'Demoralizing', 'Intimidating Minions', 'Search', 'Gather Evidence', 'Analyze Evidence', 'Gather Information', 'Surveillance', 'Hearing', 'Seeing', 'Other Senses', 'Concealing', 'Contorting', 'Escaping', 'Legerdemain', 'Stealing', 'Hiding', 'Tailing', 'Operating', 'Building', 'Repairing', 'Jury-Rigging', 'Demolitions', 'Inventing', 'Security', 'Diagnosis', 'Provide Care', 'Revive', 'Stabalize', 'Treat Disease and Poison']
 	bonuses_sorted = sorted(bonuses_raw)
-	bonuses = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	bonuses = [{'id': 'x', 'name': 'Variable Enhanced Skill'}, {'id': 'all', 'name': 'All'}]
 	for b in bonuses_sorted:
 		bonuses.append({'id': b, 'name': b})
 
 	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
 	advantages_sorted = sorted(advantages_raw)
-	advantages = [{'id': 'x', 'name': 'Variable'}, {'id': 'all', 'name': 'All'}]
+	advantages = [{'id': 'x', 'name': 'Variable Advantage'}, {'id': 'all', 'name': 'All'}]
 	for a in advantages_sorted:
 		advantages.append({'id': a, 'name': a})
 
@@ -2280,13 +2280,17 @@ def advantage_post_variable():
 	font = request.get_json()['font']
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
+	active = request.get_json()['active']
+	effort = request.get_json()['effort']
 
 	advantage_id = integer(advantage_id)
 
 
 	entry = AdvVariable(advantage_id = advantage_id,
 							trait_type = trait_type,
-							trait = trait)
+							trait = trait, 
+							active = active,
+							effort = effort)
 
 	db.session.add(entry)
 	db.session.commit()

@@ -28,6 +28,8 @@ function variable_submit() {
 	
 	const trait_type = select("variable_trait_type");
 	const trait = select("variable_trait");
+	const active = select("variable_active");
+	const effort = select("variable_effort");
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
@@ -42,7 +44,9 @@ function variable_submit() {
 			'created': created,
 			'font': font,
 			'trait_type': trait_type,
-			'trait': trait
+			'trait': trait,
+			'active': active,
+			'effort': effort
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
