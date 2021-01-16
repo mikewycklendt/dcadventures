@@ -6,10 +6,6 @@
 	grid-template-columns: 100%;
 }
 
-#variable-defense {
-	grid-template-columns: auto auto;
-}
-
 #variable-active {
 	display: none;
 	opacity: 0%;
@@ -20,6 +16,12 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-in;
+}
+
+#variable-checks{
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: .4vw;
 }
 
 #variable-row1 {
