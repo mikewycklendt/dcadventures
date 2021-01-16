@@ -5,7 +5,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field
 
 
 def adv_alt_check_post_errors(data):
@@ -566,7 +566,11 @@ def adv_modifiers_post_errors(data):
 	errors = of([bonus, penalty], 'You must set a value for either a bonus or a penalty.', errors)
 
 	errors = if_fields('Bonus', bonus, [bonus_type, bonus_effect], errors)
+	errors = if_field('Bonus', bonus, bonus_type, 'Bonus Type', errors)
+	errors = if_field('Bonus', bonus, bonus_effect, 'Bonus Effect' errors)
 	errors = if_fields('Penalty', penalty, [penalty_type, penalty_effect], errors)
+	errors = if_field('Penalty', penalty, penalty_type, 'Penalty Type', errors)
+	errors = if_field('Penalty', penalty, penalty_effect, 'Penalty Effect', errors)
 
 	errors = variable_fields('trait', 'Bonus Trait', bonus_effect, [bonus_trait_type, bonus_trait], errors)
 	errors = variable_fields('check', 'Bonus Check', bonus_effect, [bonus_check], errors)

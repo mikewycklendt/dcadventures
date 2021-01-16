@@ -245,6 +245,25 @@ def if_fields(name, field, fields, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def if_field(main, field, select, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field == '':
+		return (errors)
+	
+	if select == '':
+		error = True
+		message = 'If this rule involves a ' + main + ', the ' + name + ' field is required.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 	
 def variable_field(value, field, name, f, errors):
 	error_msgs = errors['error_msgs']
