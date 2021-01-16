@@ -1161,7 +1161,7 @@ edit_form = function() {
 	edit_grid.style.padding = "1%";
 }
 
-power_edit = function() {
+advantage_edit = function() {
 	const id = document.getElementById('advantage_id').value;
 	const name = document.getElementById('advantage_name_edit').value;
 	
