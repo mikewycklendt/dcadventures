@@ -130,7 +130,7 @@ function dc_submit() {
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
 
-	response = fetch('/advantage/dc_table/create', {
+	response = fetch('/advantage/dc/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
