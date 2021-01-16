@@ -1552,6 +1552,7 @@ def advantage_post_modifiers():
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
 	bonus = integer(bonus)
+	penalty = integer(penalty)
 	environment = integer(environment)
 	sense = integer(sense)
 	mod_range = integer(mod_range)
