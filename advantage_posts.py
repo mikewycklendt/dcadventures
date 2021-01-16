@@ -917,9 +917,6 @@ def adv_time_post(entry, body, cells):
 def adv_variable_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	trait_type = entry.trait_type
 	trait = entry.trait
 	active = entry.active
