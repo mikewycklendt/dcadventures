@@ -601,7 +601,7 @@ def check_string(word, value):
 
 def variable_trait(value):
 	
-	if value == 'x_skill'
+	if value == 'x_skill':
 		value = 'Variable Skill'
 	elif value == 'x_ability':
 		value = 'Variable Ability'
