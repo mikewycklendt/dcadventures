@@ -1572,7 +1572,6 @@ def advantage_post_modifiers():
 	penalty_check = integer(penalty_check)
 	penalty_check_range = integer(penalty_check_range)
 	penalty_conflict = integer(penalty_conflict)
-	multiple = integer(multiple)
 	multiple_count = integer(multiple_count)
 	lasts = integer(lasts)
 
