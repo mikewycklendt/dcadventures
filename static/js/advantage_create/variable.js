@@ -34,7 +34,7 @@ function variable_submit() {
 	const errors = 'variable-err';
 	const err_line = 'variable-err-line';
 
-	response = fetch('/advantage/modifiers/create', {
+	response = fetch('/advantage/variable/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
