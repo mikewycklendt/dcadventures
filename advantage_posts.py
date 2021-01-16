@@ -621,10 +621,14 @@ def adv_modifiers_post(entry, body, cells):
 	word = string(', Range:', [bonus_check_range])
 	vcells = vcell('check', 24, [bonus_check, word, bonus_check_range], vcells)
 	vcells = vcell('conflict', 16, [bonus_conflict], vcells)
+	cells = vcell_add('Bonus Effect', bonus_effect, vcells, cells)
+
 	cells = check_cell('Active', 8, bonus_active_defense, cells)
 	cells = check_cell('Only Active', 11, bonus_conflict_defend, cells)
+	
 	cells = cell('Penalty', 12, [penalty], cells)
 	cells = cell('Type', 12, [penalty_type], cells)
+	
 	vcells = vcell('effect', 15, ['Effect Modifier'])
 	vcells = vcell('attack', 12, ['Attack Bonus'], vcells)
 	vcells = vcell('damage', 13, ['Damage Bonus'], vcells)
@@ -633,6 +637,9 @@ def adv_modifiers_post(entry, body, cells):
 	word = string(', Range:', [penalty_check_range])
 	vcells = vcell('check', 24, [penalty_check, word, penalty_check_range], vcells)
 	vcells = vcell('conflict', 16, [penalty_conflict], vcells)
+	
+	cells = vcell_add('Affects', penalty_effect, vcells, cells)
+
 	cells = check_cell('Active', 8, penalty_active_defense, cells)
 	cells = check_cell('Only Active', 11, penalty_conflict_defend, cells)
 	
