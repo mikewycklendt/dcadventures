@@ -922,8 +922,7 @@ def adv_variable_post(entry, body, cells):
 	active = entry.active
 	effort = entry.effort
 
-	cells = cell('Benefit', 20, [benefit])
-	cells = cell('Trait', 40, [trait], cells)
+	cells = cell('Trait', 40, [trait])
 	cells = check_cell('Only Active', 13, active, cells)
 	cells = check_cell('Only Extra Effort', 18, effort, cells)
 
