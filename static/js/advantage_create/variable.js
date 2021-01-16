@@ -30,8 +30,8 @@ function variable_submit() {
 	
 	const trait_type = select("variable_trait_type");
 	const trait = select("variable_trait");
-	const active = select("variable_active");
-	const effort = select("variable_effort");
+	const active = check("variable_active");
+	const effort = check("variable_effort");
 
 	const advantage_id = document.getElementById('advantage_id').value;
 
