@@ -647,7 +647,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('emotion', 20, [emotion], vcells)
 	vcells = vcell('consequence', 20, [consequence], vcells)
 	vcells = vcell('range', 20, [mod_range], vcells)
-	vcells = vcell('critical', 20 ['Critical Attempt'], vcells)
+	vcells = vcell('critical', 20, ['Critical Attempt'], vcells)
 	vcells = vcell('conflict', 20, [conflict], vcells)
 	vcells = vcell('maneuver', 20, [maneuver], vcells)
 	vcells = vcell('tools', 20, [tools], vcells)
