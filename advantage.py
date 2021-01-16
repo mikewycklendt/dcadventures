@@ -2304,7 +2304,7 @@ def advantage_post_variable():
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'variabke'
+	table_id = 'variable'
 	spot = table_id + '-spot'
 
 	body['table_id'] = table_id
