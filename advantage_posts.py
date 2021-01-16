@@ -946,7 +946,7 @@ def adv_variable_post(entry, body, cells):
 
 	cells = cell('Trait', 40, [trait])
 	cells = check_cell('Only Active', 13, active, cells)
-	cells = check_cell('Only Extra Effort', 18, effort, cells)
+	cells = check_cell('Only Extra Effort', 22, effort, cells)
 
 	body = send(cells, body)
 	
