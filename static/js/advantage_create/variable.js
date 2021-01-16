@@ -10,6 +10,8 @@ function variable_check() {
 function variable_trait_type() {
 	const select = 'variable_trait_type';
 	const fill = 'variable_trait';
+	const options = [{'val': 'defense', 'div': 'variable-active'},
+					{'val': 'advantage', 'div': 'variable-effort'}]
 
 	trait_select(select, fill);
 }
