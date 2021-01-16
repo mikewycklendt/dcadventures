@@ -786,7 +786,7 @@ textarea:focus {
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 	border: 1px solid #af0101;
-	font-size: 80%;
+	font-size: 100%;
 	border-radius: .4vw;
 	padding: 2%;
 	max-height: 0;
@@ -816,7 +816,7 @@ textarea:focus {
 	background-color: white;
 	font-family: 'Monda', Verdana;
 	color: #245681;
-	max-height: auto;
+	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
