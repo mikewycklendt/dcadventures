@@ -510,9 +510,6 @@ def advantage_post_alt_check():
 
 
 	entry = AdvAltCheck(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							check_trigger = check_trigger,
 							check_type = check_type,
@@ -604,9 +601,6 @@ def advantage_post_benefit():
 
 	
 	entry = Benefit(advantage_id = advantage_id,
-						columns = columns,
-						created = created,
-						font = font,
 						name = name,
 						description = description,
 						effort = effort)
@@ -704,9 +698,6 @@ def advantage_post_circ():
 	conflict = integer(conflict)
 	
 	entry = AdvCirc(advantage_id = advantage_id,
-						columns = columns,
-						created = created,
-						font = font,
 						target = target,
 						benefit = benefit,
 						mod = mod,
@@ -795,9 +786,6 @@ def advantage_post_combined():
 	ranks = integer(ranks)
 
 	entry = AdvCombined(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							ranks = ranks,
 							advantage = advantage)
 
@@ -880,9 +868,6 @@ def advantage_post_condition():
 	damage_value = integer(damage_value)
 
 	entry = AdvCondition(advantage_id = advantage_id,
-								columns = columns,
-								Created = created,
-								font = font,
 								benefit = benefit,
 								condition_type = condition_type,
 								condition = condition,
@@ -993,9 +978,6 @@ def advantage_post_dc():
 
 
 	entry = AdvDC(advantage_id = advantage_id,
-						columns = columns,
-						created = created,
-						font = font,
 						target = target,
 						benefit = benefit,
 						dc = dc,
@@ -1143,9 +1125,6 @@ def advantage_post_deg_mod():
 	
 	
 	entry = AdvDegree(advantage_id = advantage_id,
-							columns = columns,
-							Created = created,
-							font = font,
 							target = target,
 							benefit = benefit,
 							value = value,
@@ -1269,9 +1248,6 @@ def advantage_post_effort():
 
 
 	entry = AdvEffort(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							effect = effect,
 							condition_type = condition_type,
@@ -1594,10 +1570,7 @@ def advantage_post_modifiers():
 		return jsonify(body)
 
 	entry = AdvMod(advantage_id = advantage_id,
-						columns = columns,
-						created = created,
-						font = font,
-						Benefit = benefit,
+						benefit = benefit,
 						bonus = bonus,
 						bonus_type = bonus_type,
 						penalty = penalty,
@@ -1732,9 +1705,6 @@ def advantage_post_opposed():
 
 
 	entry = AdvOpposed(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							trait_type = trait_type,
 							trait = trait,
@@ -1854,9 +1824,6 @@ def advantage_post_points():
 
 
 	entry = AdvPoints(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							spend = spend,
 							condition_cost = condition_cost,
@@ -1957,9 +1924,6 @@ def advantage_post_resist():
 
 
 	entry = AdvResist(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							trait_type = trait_type,
 							trait = trait,
@@ -2049,9 +2013,6 @@ def advantage_post_rounds():
 
 
 	entry = AdvRounds(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							rounds = rounds,
 							cost = cost,
@@ -2135,9 +2096,6 @@ def advantage_poat_skill():
 
 
 	entry = AdvSkill(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
 							benefit = benefit,
 							trait_type = trait_type,
 							trait = trait,
@@ -2241,9 +2199,6 @@ def advantage_post_time():
 
 
 	entry = AdvTime(advantage_id = advantage_id,
-						columns = columns,
-						created = created,
-						font = font,
 						benefit = benefit,
 						time_type = time_type,
 						value_type = value_type,
@@ -2329,10 +2284,7 @@ def advantage_post_variable():
 	advantage_id = integer(advantage_id)
 
 
-		entry = AdvVariable(advantage_id = advantage_id,
-							columns = columns,
-							created = created,
-							font = font,
+	entry = AdvVariable(advantage_id = advantage_id,
 							trait_type = trait_type,
 							trait = trait)
 
