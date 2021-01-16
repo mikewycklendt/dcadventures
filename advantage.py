@@ -561,14 +561,14 @@ def advantage_post_alt_check():
 @advantage.route('/advantage/alt_check/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_alt_check(advantage_id):
 	try:
-		db.session.query(AdvAltCheck).filter_by(id=power_id).delete()
+		db.session.query(AdvAltCheck).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/benefit/create', methods=['POST'])
@@ -649,14 +649,14 @@ def advantage_post_benefit():
 @advantage.route('/advantage/benefit/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_benefit(advantage_id):
 	try:
-		db.session.query(Benefit).filter_by(id=power_id).delete()
+		db.session.query(Benefit).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/circ/create', methods=['POST'])
@@ -760,14 +760,14 @@ def advantage_post_circ():
 @advantage.route('/advantage/circ/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_circ(advantage_id):
 	try:
-		db.session.query(AdvCirc).filter_by(id=power_id).delete()
+		db.session.query(AdvCirc).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/combined/create', methods=['POST'])
@@ -834,14 +834,14 @@ def advantage_post_combined():
 @advantage.route('/advantage/combined/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_combined(advantage_id):
 	try:
-		db.session.query(AdvCombined).filter_by(id=power_id).delete()
+		db.session.query(AdvCombined).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -921,14 +921,14 @@ def advantage_post_condition():
 @advantage.route('/advantage/condition/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_condition(advantage_id):
 	try:
-		db.session.query(AdvCondition).filter_by(id=power_id).delete()
+		db.session.query(AdvCondition).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/dc/create', methods=['POST'])
@@ -1044,14 +1044,14 @@ def advantage_post_dc():
 @advantage.route('/advantage/dc/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_dc(advantage_id):
 	try:
-		db.session.query(AdvDC).filter_by(id=power_id).delete()
+		db.session.query(AdvDC).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1204,14 +1204,14 @@ def advantage_post_deg_mod():
 @advantage.route('/advantage/deg_mod/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_deg_mod(advantage_id):
 	try:
-		db.session.query(AdvDegree).filter_by(id=power_id).delete()
+		db.session.query(AdvDegree).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1303,14 +1303,14 @@ def advantage_post_effort():
 @advantage.route('/advantage/effort/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_effort(advantage_id):
 	try:
-		db.session.query(AdvEffort).filter_by(id=power_id).delete()
+		db.session.query(AdvEffort).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1425,14 +1425,14 @@ def advantage_post_minion():
 @advantage.route('/advantage/minion/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_minion(advantage_id):
 	try:
-		db.session.query(AdvMinion).filter_by(id=power_id).delete()
+		db.session.query(AdvMinion).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1661,14 +1661,14 @@ def advantage_post_modifiers():
 @advantage.route('/advantage/modifiers/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_modifiers(advantage_id):
 	try:
-		db.session.query(AdvMod).filter_by(id=power_id).delete()
+		db.session.query(AdvMod).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1760,14 +1760,14 @@ def advantage_post_opposed():
 @advantage.route('/advantage/opposed/delete/<advantage_id>', methods=['DELETE'])
 def delete_post_opposed(advantage_id):
 	try:
-		db.session.query(AdvOpposed).filter_by(id=power_id).delete()
+		db.session.query(AdvOpposed).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 
 	
@@ -1893,14 +1893,14 @@ def advantage_post_points():
 @advantage.route('/advantage/points/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_points(advantage_id):
 	try:
-		db.session.query(AdvPoints).filter_by(id=power_id).delete()
+		db.session.query(AdvPoints).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/resist/create', methods=['POST'])
@@ -1974,14 +1974,14 @@ def advantage_post_resist():
 @advantage.route('/advantage/resist/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_resist(advantage_id):
 	try:
-		db.session.query(AdvResist).filter_by(id=power_id).delete()
+		db.session.query(AdvResist).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/rounds/create', methods=['POST'])
@@ -2065,14 +2065,14 @@ def advantage_post_rounds():
 @advantage.route('/advantage/rounds/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_rounds(advantage_id):
 	try:
-		db.session.query(AdvRounds).filter_by(id=power_id).delete()
+		db.session.query(AdvRounds).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/skill/create', methods=['POST'])
@@ -2147,14 +2147,14 @@ def advantage_poat_skill():
 @advantage.route('/advantage/skill/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_skill(advantage_id):
 	try:
-		db.session.query(AdvSkill).filter_by(id=power_id).delete()
+		db.session.query(AdvSkill).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/time/create', methods=['POST'])
@@ -2259,14 +2259,14 @@ def advantage_post_time():
 @advantage.route('/advantage/time/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_time(advantage_id):
 	try:
-		db.session.query(AdvTime).filter_by(id=power_id).delete()
+		db.session.query(AdvTime).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
 
 	
 @advantage.route('/advantage/variable/create', methods=['POST'])
@@ -2336,11 +2336,11 @@ def advantage_post_variable():
 @advantage.route('/advantage/variable/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_post_variable(advantage_id):
 	try:
-		db.session.query(AdvVariable).filter_by(id=power_id).delete()
+		db.session.query(AdvVariable).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify({'success': True, 'id': advantage_id})
