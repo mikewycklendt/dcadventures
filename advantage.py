@@ -1503,7 +1503,7 @@ def advantage_post_modifiers():
 	mod_range = db_integer(mod_range)
 	subsense = db_integer(subsense)
 	cover = db_integer(cover)
-	conceal = db_integer(Conceal)
+	conceal = db_integer(conceal)
 	maneuver = db_integer(maneuver)
 	weapon_melee = db_integer(weapon_melee)
 	weapon_ranged = db_integer(weapon_ranged)
