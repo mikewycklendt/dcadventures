@@ -705,7 +705,6 @@ def advantage_post_circ():
 	benefit = integer(benefit)
 	mod = integer(mod)
 	rounds = integer(rounds)
-	ranks = integer(ranks)
 	circ_range = integer(circ_range)
 	conflict = integer(conflict)
 	
