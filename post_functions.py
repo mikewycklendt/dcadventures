@@ -608,7 +608,7 @@ def variable_trait(value):
 	elif value == 'x_defense':
 		value = 'Variable Defense'
 	elif value == 'x_power':
-		value = 'Variable Power': 
+		value = 'Variable Power'
 	elif value == 'x_bonus':
 		value = 'Variable Enhanced Skill'
 	elif value == 'x_advantage':
