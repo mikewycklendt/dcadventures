@@ -1554,7 +1554,7 @@ def advantage_post_modifiers():
 	bonus = integer(bonus)
 	environment = integer(environment)
 	sense = integer(sense)
-	mod_range = mod_range(mod_range)
+	mod_range = integer(mod_range)
 	subsense = integer(subsense)
 	cover = integer(cover)
 	conceal = integer(conceal)
