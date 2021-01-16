@@ -520,7 +520,7 @@ def adv_minion_post(entry, body, cells):
 def adv_modifiers_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	Benefit = entry.benefit
+	benefit = entry.benefit
 	bonus = entry.bonus
 	bonus_type = entry.bonus_type
 	penalty = entry.penalty
