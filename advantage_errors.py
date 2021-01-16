@@ -77,7 +77,7 @@ def adv_benefit_post_errors(data):
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	errors = required(name, 'Name', errors)
-	errors = required(description, 'Description')
+	errors = required(description, 'Description', errors)
 
 	return(errors)
 
