@@ -1520,7 +1520,7 @@ def advantage_post_modifiers():
 	penalty_conflict = db_integer(penalty_conflict)
 
 	if emotion == 'other':	
-		entry = Emotion(name=em0tion_other)
+		entry = Emotion(name=emotion_other)
 		db.session.add(entry)
 		db.session.commit()
 		emotion = entry.id
