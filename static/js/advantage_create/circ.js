@@ -73,7 +73,7 @@ function circ_submit() {
 	const null_condition = select("circ_null_condition");
 	const null_trait_type = select("circ_null_trait_type");
 	const null_trait = select("circ_null_trait");
-	const null_override_trait_type = select("circ_null_override__trait_type");
+	const null_override_trait_type = select("circ_null_override_trait_type");
 	const null_override_trait = select("circ_null_override__trait");
 	
 
