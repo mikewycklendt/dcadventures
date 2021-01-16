@@ -1519,7 +1519,7 @@ def advantage_post_modifiers():
 	penalty_check_range = db_integer(penalty_check_range)
 	penalty_conflict = db_integer(penalty_conflict)
 
-	if em0tion == 'other':	
+	if emotion == 'other':	
 		entry = Emotion(name=em0tion_other)
 		db.session.add(entry)
 		db.session.commit()
