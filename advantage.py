@@ -595,6 +595,17 @@ def advantage_post_benefit():
 	description = request.get_json()['description']
 	effort = request.get_json()['effort']
 
+	benefit = db.session.query(Benefit).filter(Benefit.name == name).first()
+
+	if benefit is not None:
+		error = True
+		error_msgs = []
+		body['success'] = False
+		error_msgs.append('There is already an advantage with that name')
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 
 	advantage_id = integer(advantage_id)
 
