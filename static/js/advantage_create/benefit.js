@@ -69,7 +69,7 @@ function benefit_submit() {
 				benefit.add(o)
 			}
 
-			const benefit_delete = true
+			const benefit_delete = true;
 					
 			benefit_grid.columns.length = 0;
 			benefit_grid.columns = jsonResponse.rows;

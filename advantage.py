@@ -1523,7 +1523,7 @@ def advantage_post_modifiers():
 		entry = Emotion(name=em0tion_other)
 		db.session.add(entry)
 		db.session.commit()
-		em0tion = entry.id
+		emotion = entry.id
 		db.session.close()
 
 	if environment == 'other':	
