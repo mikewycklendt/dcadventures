@@ -119,7 +119,7 @@ def adv_circ_post(entry, body, cells):
 	target = selects(target, targets_select)
 
 	circ_type_select = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
-	circ_type = selects(circ_type, circ_type_select)
+
 
 	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
 	check_who = selects(check_who, who_check_select)
@@ -139,6 +139,8 @@ def adv_circ_post(entry, body, cells):
 	circrange = string('Range', [circ_range])
 	vcells = vcell('range', 20, [circ_range, circrange])
 	vcells = vcell('check', 25, [check_who, check_trait], vcells)
+	vcells = vcell('use', 20, ['Use of this Advantage'], vcells)
+	vcells = vcell('conflict', 16, [conflict], vcells)
 	cells = vcell_add('Trigger', circ_type, vcells, cells)
 
 	vcells = vcell('trait', 17, [null_trait])
