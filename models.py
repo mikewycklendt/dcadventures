@@ -2512,7 +2512,6 @@ class AdvDC(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	target = db.Column(db.String())
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	dc = db.Column(db.Integer)
 	description = db.Column(db.String())
 	value_value = db.Column(db.Integer)
 	math_value = db.Column(db.Integer)
@@ -2537,7 +2536,6 @@ class AdvDC(db.Model):
 			'id': self.id,
 			'target': self.target,
 			'benefit': self.benefit,
-			'dc': self.dc,
 			'description': self.description,
 			'value_value': self.value_value,
 			'math_value': self.math_value,
