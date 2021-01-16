@@ -801,8 +801,8 @@ def advantage_post_combined():
 							ranks = ranks,
 							advantage = advantage)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
 	body = {}
 	body['id'] = entry.id
