@@ -52,7 +52,7 @@ function benefit_submit() {
 			let benefits_selects = document.getElementsByClassName('benefit-sml');
 			let benefit;
 					
-			for (benefit in benefits_selects) {
+			for (benefit of benefits_selects) {
 				const o = document.createElement('option');
 				o.value = id;
 				o.text = benefit_name;
