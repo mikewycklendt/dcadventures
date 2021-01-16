@@ -68,13 +68,15 @@ function benefit_submit() {
 				o.text = benefit_name;
 				benefit.add(o)
 			}
+
+			const benefit_delete = true
 					
 			benefit_grid.columns.length = 0;
 			benefit_grid.columns = jsonResponse.rows;
 					
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, benefit_grid, route);
+			create_table(jsonResponse, benefit_grid, route, benefit_delete);
 			clear_errors(err_line, errors)
 					
 			benefit_grid.titles = true;

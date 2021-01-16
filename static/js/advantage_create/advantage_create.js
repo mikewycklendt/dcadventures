@@ -1261,7 +1261,7 @@ advantage_save = function() {
 
 
 
-function create_table(jsonResponse, object, route) {
+function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1307,7 +1307,7 @@ function create_table(jsonResponse, object, route) {
 
 }
 
-function create_titles(jsonResponse, grow, object, route) {
+function create_titles(jsonResponse, grow, object, route, benefit_delete=false) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1390,7 +1390,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 }
 
-function cells_create(table_input, grow, jsonResponse, object, route) {
+function cells_create(table_input, grow, jsonResponse, object, route, benefit_delete=false) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -1615,7 +1615,7 @@ function check_buttons(table_id, object, table) {
 	}
 }
 
-function row_delete(jsondata, route, object) {
+function row_delete(jsondata, route, object, benefit_delete=false) {
 	const table_id = jsondata.table_id;
 	const cells = jsondata.cells;
 	const rows = object.columns;
@@ -1643,6 +1643,23 @@ function row_delete(jsondata, route, object) {
 				method: 'DELETE'
 			})
 			.then(function() {
+
+				if (benefit_delete == true) {
+					const selects = document.getElementsByClassName('benefit-entry');
+					let select;
+
+					for (select of selects) {
+						options = select.options;
+						let option;
+
+						for (option of options) {
+							if (option.value == delId) {
+								console.log(option.value);
+								option.remove();
+							}
+						}
+					}
+				}
 
 				console.log(delId)
 				console.log(rows)
