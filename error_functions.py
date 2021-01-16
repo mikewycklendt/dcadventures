@@ -737,6 +737,7 @@ def integer(value):
 			value = int(value)
 		except:
 			print('not an int')
+			print(value)
 
 	return (value)
 
