@@ -428,7 +428,7 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 
 def check_cell(title, width, check, cells, mod_check=False):
 
-	if check == False:
+	if check == False or check == '':
 		width = 0
 		mod_check = False
 	
@@ -567,3 +567,35 @@ def mod_add(check, mod, body):
 
 	body['mods'] = mods
 	return (body)
+
+def variable_value(option, field, value):
+
+	if option == field:
+		return (value)
+	else:
+		value = ''
+		
+	return (value)
+
+def add_plus(value):
+
+	try:
+		value = int(value)
+		if value > 0:
+			value = str(value)
+			value = '+' + value
+		else:
+			value = str(value)
+		return (value)
+	except:
+		return (value)
+
+def check_string(word, value):
+
+	if value == True:
+		value = word
+	else:
+		value = ''
+
+	return (value)
+	

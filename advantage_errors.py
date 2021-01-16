@@ -861,4 +861,7 @@ def adv_variable_post_errors(data):
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
+	errors = required(trait_type, 'Trait Type', errors)
+	errors = required(trait, 'Trait', errors)
+
 	return(errors)

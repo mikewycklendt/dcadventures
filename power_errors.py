@@ -1528,12 +1528,6 @@ def minion_post_errors(data):
 	errors = check_fields(sacrifice, 'Sacrifice', [sacrifice_cost], errors)
 	errors = check_field(sacrifice, 'Sacrifice', 'Sacrifice Cost', sacrifice_cost, errors)
 
-
-
-	
-
-
-
 	return (errors)
 
 def mod_post_errors(data):
@@ -2416,7 +2410,7 @@ def time_post_errors(data):
 	
 	errors = check_fields(recovery, 'Recovery', [recovery_penalty, recovery_time], errors)
 	errors = check_field(recovery, 'Recovery', 'Recovery Penalty', recovery_penalty, errors)
-	errors = check_field(recovery, 'Recovery', 'Recovery Time', recovery_time, errors)
+	errors = check_field(recovery, 'Recovery', 'Recovery Time', recovery_time, errors)	
 
 	return (errors)
 

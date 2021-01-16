@@ -815,6 +815,10 @@ def degree_mod_post(entry, body, cells):
 	vcells = vcell('condition', 25, [condition1, word, condition2], vcells, 'condition', deg_condition_type)
 	word = string('Conditions', [condition_damage_value, condition_damage])
 	vcells = vcell('condition', 17, [condition_damage_value, word, condition_damage], vcells, 'damage', deg_condition_type)
+	vcells = vcell('knowledge', 28, [knowledge_count, knowledge_specificity, 'Bonuses'], vcells, 'bonus', knowledge)
+	vcells = vcell('knowledge', 25, ['Gain Knowledge but GM may lie'], vcells, 'lie', knowledge)
+	vcells = vcell('consequence', 33, [consequence, 'for', consequence_trait, consequence_action], vcells)
+	
 	vcell_add('Effect', deg_type, vcells, cells)
 	
 	body = send(cells, body)
@@ -1017,7 +1021,8 @@ def minion_post(entry, body, cells):
 	horde = entry.horde
 
 	extra = extra_name(extra_id)	
-	attitude_type = name(Levels, attitude_type)
+	attitude_type = name(LevelType, attitude_type)
+	attitude_attitude = name(Levels, attitude_attitude)
 	resitable_check = name(Defense, resitable_check)
 
 	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
