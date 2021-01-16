@@ -403,7 +403,7 @@ def edit_advantage_name():
 
 	advantage = db.session.query(Advantage).filter(Advantage.name == name).first()
 	
-	if power is not None:
+	if advantage is not None:
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already an advantage with that name')
