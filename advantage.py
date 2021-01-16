@@ -2240,7 +2240,7 @@ def advantage_post_time():
 	recovery_time = integer(recovery_time)
 
 
-		entry = AdvTime(advantage_id = advantage_id,
+	entry = AdvTime(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
 						font = font,
