@@ -252,7 +252,7 @@ def adv_dc_post(entry, body, cells):
 
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Target', 18, [target], cells)
-	vcells = vcell('value', 10, [value])
+	vcells = vcell('value', 10, [value_value])
 	vcells = vcell('math', 20, [math_value, math, math_trait], vcells)
 	cells = vcell_add('DC', dc, vcells, cells)
 
