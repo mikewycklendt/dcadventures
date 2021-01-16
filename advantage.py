@@ -508,8 +508,8 @@ def advantage_post_alt_check():
 	conflict_range = integer(conflict_range)
 	action = integer(action)	
 
-	try:
-		entry = AdvAltCheck(advantage_id = advantage_id,
+
+	entry = AdvAltCheck(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -531,38 +531,33 @@ def advantage_post_alt_check():
 							action = action,
 							free = free)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'check'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'check'	
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []	
+	body['font'] = font
 			
-		body = adv_alt_check_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_alt_check_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -607,8 +602,8 @@ def advantage_post_benefit():
 	advantage_id = integer(advantage_id)
 
 
-	try:
-		entry = Benefit(advantage_id = advantage_id,
+	
+	entry = Benefit(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
 						font = font,
@@ -616,38 +611,33 @@ def advantage_post_benefit():
 						description = description,
 						effort = effort)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'benefit'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'benefit'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_benefit_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_benefit_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -713,8 +703,7 @@ def advantage_post_circ():
 	circ_range = integer(circ_range)
 	conflict = integer(conflict)
 	
-	try:
-		entry = AdvCirc(advantage_id = advantage_id,
+	entry = AdvCirc(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
 						font = font,
@@ -736,38 +725,33 @@ def advantage_post_circ():
 						null_override_trait_type = null_trait_type,
 						null_override_trait = null_trait)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}	
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'circ'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []	
+	cells = []
+	table_id = 'circ'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot	
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_circ_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
+	body = adv_circ_post(entry, body, cells)
 	
-	finally:
-		db.session.close()
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -810,8 +794,7 @@ def advantage_post_combined():
 	advantage_id = request.get_json()['advantage_id']
 	ranks = integer(ranks)
 
-	try:
-		entry = AdvCombined(advantage_id = advantage_id,
+	entry = AdvCombined(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -821,36 +804,31 @@ def advantage_post_combined():
 		db.session.add(entry)
 		db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'combined'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'combined'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_combined_post(entry, body, cells)
+	body = adv_combined_post(entry, body, cells)
 
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -901,8 +879,7 @@ def advantage_post_condition():
 	benefit = integer(benefit)
 	damage_value = integer(damage_value)
 
-	try:
-		entry = AdvCondition(advantage_id = advantage_id,
+	entry = AdvCondition(advantage_id = advantage_id,
 								columns = columns,
 								Created = created,
 								font = font,
@@ -915,38 +892,33 @@ def advantage_post_condition():
 								damage_value = damage_value,
 								damage = damage)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)	
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'condition'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'condition'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-			
-		body = adv_condition_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+					
+	body = adv_condition_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1019,8 +991,8 @@ def advantage_post_dc():
 	level = integer(level)
 	check_mod = integer(check_mod)
 
-	try:
-		entry = AdvDC(advantage_id = advantage_id,
+
+	entry = AdvDC(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
 						font = font,
@@ -1046,38 +1018,33 @@ def advantage_post_dc():
 						check_trait = check_trait,
 						check_mod = check_mod)
 						
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'dc'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'dc'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_dc_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_dc_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1173,9 +1140,9 @@ def advantage_post_deg_mod():
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	nullify = integer(nullify)
-
-	try:
-		entry = AdvDegree(advantage_id = advantage_id,
+	
+	
+	entry = AdvDegree(advantage_id = advantage_id,
 							columns = columns,
 							Created = created,
 							font = font,
@@ -1214,38 +1181,33 @@ def advantage_post_deg_mod():
 							cumulative = cumulative,
 							linked = linked)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'deg-mod'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'deg-mod'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_deg_mod_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_deg_mod_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1306,8 +1268,7 @@ def advantage_post_effort():
 	
 
 
-	try:
-		entry = AdvEffort(advantage_id = advantage_id,
+	entry = AdvEffort(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -1323,38 +1284,32 @@ def advantage_post_effort():
 							benefit_count = benefit_count,
 							benefit_effort = benefit_effort)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)	
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'effort'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []	
+	table_id = 'effort'	
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_effort_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_effort_post(entry, body, cells)
+
+	db.session.close()
 	return jsonify(body)
 
 
@@ -1424,8 +1379,9 @@ def advantage_post_minion():
 	resitable_check = integer(resitable_check)
 	resitable_dc = integer(resitable_dc)
 	multiple_value = integer(multiple_value)
-	try:
-		entry = AdvMinion(advantage_id = advantage_id,
+
+
+	entry = AdvMinion(advantage_id = advantage_id,
 							points = points,
 							condition = condition,
 							player_condition = player_condition,
@@ -1449,38 +1405,33 @@ def advantage_post_minion():
 							created = created,
 							font = font)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}	
+	body['id'] = entry.id
+	error = False	
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'minion'
-		spot = table_id + '-spot'
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'minion'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []	
+	body['font'] = font
 			
-		body = adv_minion_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_minion_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1580,34 +1531,6 @@ def advantage_post_modifiers():
 	penalty_check_range = db_integer(penalty_check_range)
 	penalty_conflict = db_integer(penalty_conflict)
 
-
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	bonus = integer(bonus)
-	environment = integer(environment)
-	sense = integer(sense)
-	mod_range = mod_range(mod_range)
-	subsense = integer(subsense)
-	cover = integer(cover)
-	conceal = integer(conceal)
-	maneuver = integer(maneuver)
-	weapon_melee = integer(weapon_melee)
-	weapon_ranged = integer(weapon_ranged)
-	consequence = integer(consequence)
-	creature = integer(creature)
-	emotion = integer(emotion)
-	conflict = integer(conflict)
-	profession = integer(profession)
-	bonus_check = integer(bonus_check)
-	bonus_check_range = integer(bonus_check_range)
-	bonus_conflict = integer(bonus_conflict)
-	penalty_check = integer(penalty_check)
-	penalty_check_range = integer(penalty_check_range)
-	penalty_conflict = integer(penalty_conflict)
-	multiple = integer(multiple)
-	multiple_count = integer(multiple_count)
-	lasts = integer(lasts)
-
 	if em0tion == 'other':	
 		entry = Emotion(name=em0tion_other)
 		db.session.add(entry)
@@ -1636,14 +1559,41 @@ def advantage_post_modifiers():
 		profession = entry.id
 		db.session.close()
 	error = errors['error']
+
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	bonus = integer(bonus)
+	environment = integer(environment)
+	sense = integer(sense)
+	mod_range = mod_range(mod_range)
+	subsense = integer(subsense)
+	cover = integer(cover)
+	conceal = integer(conceal)
+	maneuver = integer(maneuver)
+	weapon_melee = integer(weapon_melee)
+	weapon_ranged = integer(weapon_ranged)
+	consequence = integer(consequence)
+	creature = integer(creature)
+	emotion = integer(emotion)
+	conflict = integer(conflict)
+	profession = integer(profession)
+	bonus_check = integer(bonus_check)
+	bonus_check_range = integer(bonus_check_range)
+	bonus_conflict = integer(bonus_conflict)
+	penalty_check = integer(penalty_check)
+	penalty_check_range = integer(penalty_check_range)
+	penalty_conflict = integer(penalty_conflict)
+	multiple = integer(multiple)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
+
 	if error:
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-
-	try:
-		entry = AdvMod(advantage_id = advantage_id,
+	entry = AdvMod(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
 						font = font,
@@ -1694,38 +1644,33 @@ def advantage_post_modifiers():
 						multiple_count = multiple_count,
 						lasts = lasts)
 
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'modifiers'
-		spot = table_id + '-spot'
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-			
-		body = adv_modifiers_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
+	db.session.add(entry)
+	db.session.commit()
 	
-	finally:
-		db.session.close()
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []	
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'modifiers'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+			
+	body = adv_modifiers_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1785,8 +1730,8 @@ def advantage_post_opposed():
 	opponent_check = integer(opponent_check)
 
 
-	try:
-		entry = AdvOpposed(advantage_id = advantage_id,
+
+	entry = AdvOpposed(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -1801,38 +1746,33 @@ def advantage_post_opposed():
 							opponent_check = opponent_check,
 							multiple = multiple)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'opposed'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []	
+	cells = []
+	table_id = 'opposed'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot	
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_opposed_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_opposed_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -1912,8 +1852,8 @@ def advantage_post_points():
 	ranks_max = integer(ranks_max)
 	ranks_lasts = integer(ranks_lasts)
 
-	try:
-		entry = AdvPoints(advantage_id = advantage_id,
+
+	entry = AdvPoints(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -1942,38 +1882,33 @@ def advantage_post_points():
 							ranks_trait_type = ranks_trait_type,
 							ranks_trait = ranks_trait)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'points'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'points'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_points_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_points_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -2020,8 +1955,8 @@ def advantage_post_resist():
 	benefit = integer(benefit)
 	mod = integer(mod)
 
-	try:
-		entry = AdvResist(advantage_id = advantage_id,
+
+	entry = AdvResist(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -2031,38 +1966,33 @@ def advantage_post_resist():
 							mod = mod,
 							which = which)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'resist'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'resist'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_resist_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_resist_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -2116,8 +2046,9 @@ def advantage_post_rounds():
 	cost = integer(cost)
 	check = integer(check)
 
-	try:
-		entry = AdvRounds(advantage_id = advantage_id,
+
+
+	entry = AdvRounds(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -2129,38 +2060,33 @@ def advantage_post_rounds():
 							trait = trait,
 							end = end)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)	
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'rounds'
-		spot = table_id + '-spot'
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-			
-		body = adv_rounds_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
+	body = {}
+	body['id'] = entry.id	
+	error = False
+	error_msg = []
+	body['success'] = True
 	
-	finally:
-		db.session.close()
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'rounds'	
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot	
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+			
+	body = adv_rounds_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -2207,8 +2133,8 @@ def advantage_poat_skill():
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
 
-	try:
-		entry = AdvSkill(advantage_id = advantage_id,
+
+	entry = AdvSkill(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
 							font = font,
@@ -2219,38 +2145,33 @@ def advantage_poat_skill():
 							replaced_trait = replaced_trait,
 							multiple = multiple)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False	
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'skill'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	Xells = []
+	table_id = 'skill'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_skill_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_skill_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -2318,7 +2239,7 @@ def advantage_post_time():
 	recovery_penalty = integer(recovery_penalty)
 	recovery_time = integer(recovery_time)
 
-	try:
+
 		entry = AdvTime(advantage_id = advantage_id,
 						columns = columns,
 						created = created,
@@ -2339,38 +2260,33 @@ def advantage_post_time():
 						recovery_time = recovery_time,
 						recovery_incurable = recovery_incurable)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'timr'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'timr'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows	
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_time_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_time_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
@@ -2412,7 +2328,7 @@ def advantage_post_variable():
 
 	advantage_id = integer(advantage_id)
 
-	try:
+
 		entry = AdvVariable(advantage_id = advantage_id,
 							columns = columns,
 							created = created,
@@ -2420,38 +2336,33 @@ def advantage_post_variable():
 							trait_type = trait_type,
 							trait = trait)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
 
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'variabke'
-		spot = table_id + '-spot'
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'variabke'
+	spot = table_id + '-spot'
 
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
 			
-		body = adv_variable_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
-	finally:
-		db.session.close()
+	body = adv_variable_post(entry, body, cells)
+
+	db.session.close()
+
 	return jsonify(body)
 
 
