@@ -13,12 +13,13 @@ function variable_trait_type() {
 	const options = [{'val': 'defense', 'div': 'variable-active'},
 					{'val': 'advantage', 'div': 'variable-effort'}]
 
+	select_opacity(select, options);
 	trait_select(select, fill);
 }
 
 let variable_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 100,
 					'mod': []}
 
 function variable_submit() {
