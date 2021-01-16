@@ -12,10 +12,14 @@
 
 #variable-active {
 	display: none;
+	opacity: 0%;
+	transition: all .3s ease-in;
 }
 
 #variable-effort {
 	display: none;
+	opacity: 0%;
+	transition: all .3s ease-in;
 }
 
 #variable-row1 {
