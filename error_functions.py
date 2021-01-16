@@ -754,3 +754,4 @@ def db_integer(value):
 		value = None
 
 	return (value)
+

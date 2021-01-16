@@ -598,4 +598,23 @@ def check_string(word, value):
 		value = ''
 
 	return (value)
+
+def variable_trait(value):
+	
+	if value == 'x_skill'
+		value = 'Variable Skill'
+	elif value == 'x_ability':
+		value = 'Variable Ability'
+	elif value == 'x_defense':
+		value = 'Variable Defense'
+	elif value == 'x_power':
+		value = 'Variable Power': 
+	elif value == 'x_bonus':
+		value = 'Variable Enhanced Skill'
+	elif value == 'x_advantage':
+		value = 'Variable Advantage' 
+	elif value == 'x_extra':
+		value = 'Variable Extra'
+
+	return (value)
 	
