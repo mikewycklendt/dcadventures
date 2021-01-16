@@ -601,9 +601,9 @@ def advantage_post_benefit():
 		error = True
 		error_msgs = []
 		body['success'] = False
-		error_msgs.append('There is already an advantage with that name')
+		error_msgs.append('There is already a benefit with that name')
 		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
+		body['error_msgs'] = error_msgs
 		return jsonify(body)
 
 
