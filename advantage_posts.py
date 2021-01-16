@@ -12,9 +12,6 @@ from post_functions import name, action_convert, math_convert, extra_name, descr
 def adv_benefit_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	name = entry.name
 	description = entry.description
 	effort = entry.effort
@@ -33,9 +30,6 @@ def adv_benefit_post(entry, body, cells):
 def adv_alt_check_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	check_trigger = entry.check_trigger
 	check_type = entry.check_type
@@ -95,9 +89,6 @@ def adv_alt_check_post(entry, body, cells):
 def adv_circ_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	target = entry.target
 	benefit = entry.benefit
 	mod = entry.mod
@@ -164,9 +155,6 @@ def adv_circ_post(entry, body, cells):
 def adv_combined_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	ranks = entry.ranks
 	advantage = entry.advantage
 
@@ -185,9 +173,6 @@ def adv_combined_post(entry, body, cells):
 def adv_condition_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	Created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	condition_type = entry.condition_type
 	condition = entry.condition
@@ -222,9 +207,6 @@ def adv_condition_post(entry, body, cells):
 def adv_dc_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	target = entry.target
 	benefit = entry.benefit
 	dc = entry.dc
@@ -301,9 +283,6 @@ def adv_dc_post(entry, body, cells):
 def adv_deg_mod_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	Created = entry.created
-	font = entry.font
 	target = entry.target
 	benefit = entry.benefit
 	value = entry.value
@@ -412,9 +391,6 @@ def adv_deg_mod_post(entry, body, cells):
 def adv_effort_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns= entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	effect = entry.effect
 	condition_type = entry.condition_type
@@ -480,9 +456,6 @@ def adv_minion_post(entry, body, cells):
 	resitable_dc = entry.resitable_dc
 	multiple_value = entry.multiple_value
 	horde = entry.horde
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 
 	points = integer_convert(points)
 	sacrifice_cost = integer_convert(sacrifice_cost)
@@ -536,9 +509,6 @@ def adv_minion_post(entry, body, cells):
 def adv_modifiers_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	Benefit = entry.benefit
 	bonus = entry.bonus
 	bonus_type = entry.bonus_type
@@ -682,9 +652,6 @@ def adv_modifiers_post(entry, body, cells):
 def adv_opposed_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
@@ -725,9 +692,6 @@ def adv_opposed_post(entry, body, cells):
 def adv_points_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	spend = entry.spend
 	condition_cost = entry.condition_cost
@@ -806,9 +770,6 @@ def adv_points_post(entry, body, cells):
 def adv_resist_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
@@ -837,9 +798,6 @@ def adv_resist_post(entry, body, cells):
 def adv_rounds_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	rounds = entry.rounds
 	cost = entry.cost
@@ -875,9 +833,6 @@ def adv_skill_post(entry, body, cells):
 
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
@@ -905,9 +860,6 @@ def adv_skill_post(entry, body, cells):
 def adv_time_post(entry, body, cells):
 
 	advantage_id = entry.advantage_id
-	columns = entry.columns
-	created = entry.created
-	font = entry.font
 	benefit = entry.benefit
 	time_type = entry.time_type
 	value_type = entry.value_type
