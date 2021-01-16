@@ -34,8 +34,8 @@ def adv_alt_check_post_errors(data):
 	action = data['action']
 	free = data['free']
 
-	errors = int_check(mod, 'Modifier', errprs)
-	errors = int_check(action, 'Action', errprs)
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(action, 'Action', errors)
 	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -108,9 +108,9 @@ def adv_circ_post_errors(data):
 	null_override_trait_type = data['null_override_trait_type']
 	null_override_trait = data['null_override_trait']
 	
-	errors = int_check(mod, 'Modifier', errprs)
-	errors = int_check(rounds, 'Rounds', errprs)
-	errors = int_check(ranks, 'Ranks', errprs)
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(rounds, 'Rounds', errors)
+	errors = int_check(ranks, 'Ranks', errors)
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Range, circ_range, 'Range', errors)
@@ -152,7 +152,7 @@ def adv_combined_post_errors(data):
 	ranks = data['ranks']
 	advantage = data['advantage']
 
-	errors = int_check(ranks, 'Ranks', errprs)
+	errors = int_check(ranks, 'Ranks', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
@@ -179,8 +179,8 @@ def adv_condition_post_errors(data):
 	damage_value = data['damage_value']
 	damage = data['damage']
 
-	errors = int_check(damage_value, 'Condition Damage', errprs)
-	errors = int_check(damage, 'Damage Direction', errprs)
+	errors = int_check(damage_value, 'Condition Damage', errors)
+	errors = int_check(damage, 'Damage Direction', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -231,9 +231,9 @@ def adv_dc_post_errors(data):
 	check_trait = data['check_trait']
 	check_mod = data['check_mod']
 
-	errors = int_check(dc, 'DC', errprs)
-	errors = int_check(math_value, 'Math Value', errprs)
-	errors = int_check(check_mod, 'Check Modifier', errprs)
+	errors = int_check(dc, 'DC', errors)
+	errors = int_check(math_value, 'Math Value', errors)
+	errors = int_check(check_mod, 'Check Modifier', errors)
 	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -312,16 +312,16 @@ def adv_deg_mod_post_errors(data):
 	cumulative = data['cumulative']
 	linked = data['linked']
 
-	errors = int_check(value, 'Circumstance Modifier', errprs)
-	errors = int_check(consequence_action, 'Consequence Action', errprs)
-	errors = int_check(knowledge_count, 'Knowledge Amount', errprs)
-	errors = int_check(circ_value, 'Circumstance Value', errprs)
-	errors = int_check(circ_turns, 'Turns', errprs)
-	errors = int_check(measure_val1, 'Neasurement Rank', errprs)
-	errors = int_check(measure_value, 'Measurement Value', errprs)
-	errors = int_check(condition_damage_value, 'Condition Damage Value', errprs)
-	errors = int_check(condition_damage, 'Condition Direction', errprs)
-	errors = int_check(nullify, 'Nullify DC', errprs)
+	errors = int_check(value, 'Circumstance Modifier', errors)
+	errors = int_check(consequence_action, 'Consequence Action', errors)
+	errors = int_check(knowledge_count, 'Knowledge Amount', errors)
+	errors = int_check(circ_value, 'Circumstance Value', errors)
+	errors = int_check(circ_turns, 'Turns', errors)
+	errors = int_check(measure_val1, 'Neasurement Rank', errors)
+	errors = int_check(measure_value, 'Measurement Value', errors)
+	errors = int_check(condition_damage_value, 'Condition Damage Value', errors)
+	errors = int_check(condition_damage, 'Condition Direction', errors)
+	errors = int_check(nullify, 'Nullify DC', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -397,10 +397,10 @@ def adv_effort_post_errors(data):
 	benefit_count = data['benefit_count']
 	benefit_effort = data['benefit_effort']
 
-	errors = int_check(condition_damage_value, 'Condition Damage Value', errprs)
-	errors = int_check(condition_damage, 'Condition Damage Direction', errprs)
-	errors = int_check(benefit_turns, 'Benefit Turns', errprs)
-	errors = int_check(benefit_count, 'Benefit Count', errprs)
+	errors = int_check(condition_damage_value, 'Condition Damage Value', errors)
+	errors = int_check(condition_damage, 'Condition Damage Direction', errors)
+	errors = int_check(benefit_turns, 'Benefit Turns', errors)
+	errors = int_check(benefit_count, 'Benefit Count', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -450,10 +450,10 @@ def adv_minion_post_errors(data):
 	created = data['created']
 	font = data['font']
 
-	errors = int_check(points, 'Points', errprs)
-	errors = int_check(sacrifice_cost, 'Sacrifice Cost', errprs)
-	errors = int_check(resitable_dc, 'Sacrifice DC', errprs)
-	errors = int_check(multiple_value, 'Multiple Value', errprs)
+	errors = int_check(points, 'Points', errors)
+	errors = int_check(sacrifice_cost, 'Sacrifice Cost', errors)
+	errors = int_check(resitable_dc, 'Sacrifice DC', errors)
+	errors = int_check(multiple_value, 'Multiple Value', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(LevelType, attitude_type, 'Attitude Type', errors)
@@ -535,10 +535,10 @@ def adv_modifiers_post_errors(data):
 	multiple_count = data['multiple_count']
 	lasts = data['lasts']
 
-	errors = int_check(bonus, 'Bonus', errprs)
-	errors = int_check(penalty, 'Penalty', errprs)
-	errors = int_check(multiple_count, 'Multiple Count', errprs)
-	errors = int_check(lasts, 'Lasts', errprs)
+	errors = int_check(bonus, 'Bonus', errors)
+	errors = int_check(penalty, 'Penalty', errors)
+	errors = int_check(multiple_count, 'Multiple Count', errors)
+	errors = int_check(lasts, 'Lasts', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -615,8 +615,8 @@ def adv_opposed_post_errors(data):
 	opponent_check = data['opponent_check']
 	multiple = data['multiple']
 
-	errors = int_check(mod, 'Modifier', errprs)
-	errors = int_check(opponent_mod, 'Opponent Modifier', errprs)
+	errors = int_check(mod, 'Modifier', errors)
+	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -667,19 +667,19 @@ def adv_points_post_errors(data):
 	ranks_trait_type = data['ranks_trait_type']
 	ranks_trait = data['ranks_trait']
 
-	errors = int_check(condition_cost, 'Condition Cost', errprs)
-	errors = int_check(equipment_points, 'Equipment Points', errprs)
-	errors = int_check(initiative_cost, 'Initiative Cost', errprs)
-	errors = int_check(twenty, '20 Cost', errprs)
-	errors = int_check(check_bonus, 'Check Bonus', errprs)
-	errors = int_check(check_cost, 'Check Bonus Cost', errprs)
-	errors = int_check(check_turns, 'Check Bonus Turns', errprs)
-	errors = int_check(benefit_count, 'Benefit Count', errprs)
-	errors = int_check(benefit_cost, 'Benefit Cost', errprs)
-	errors = int_check(benefit_turns, 'Benefit Turns', errprs)
-	errors = int_check(ranks_gained, 'Ranks Gained', errprs)
-	errors = int_check(ranks_max, 'Maximum Ranks', errprs)
-	errors = int_check(ranks_lasts, 'Ranks Last', errprs)
+	errors = int_check(condition_cost, 'Condition Cost', errors)
+	errors = int_check(equipment_points, 'Equipment Points', errors)
+	errors = int_check(initiative_cost, 'Initiative Cost', errors)
+	errors = int_check(twenty, '20 Cost', errors)
+	errors = int_check(check_bonus, 'Check Bonus', errors)
+	errors = int_check(check_cost, 'Check Bonus Cost', errors)
+	errors = int_check(check_turns, 'Check Bonus Turns', errors)
+	errors = int_check(benefit_count, 'Benefit Count', errors)
+	errors = int_check(benefit_cost, 'Benefit Cost', errors)
+	errors = int_check(benefit_turns, 'Benefit Turns', errors)
+	errors = int_check(ranks_gained, 'Ranks Gained', errors)
+	errors = int_check(ranks_max, 'Maximum Ranks', errors)
+	errors = int_check(ranks_lasts, 'Ranks Last', errors)
 	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -817,11 +817,11 @@ def adv_time_post_errors(data):
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 
-	errors = int_check(value, 'Time Value', errprs)
-	errors = int_check(time_value, 'Time Math Value', errprs)
-	errors = int_check(dc, 'DC', errprs)
-	errors = int_check(recovery_penalty, 'Recovery Penalty', errprs)	
-	errors = int_check(recovery_time, 'Recovery Time', errprs)
+	errors = int_check(value, 'Time Value', errors)
+	errors = int_check(time_value, 'Time Math Value', errors)
+	errors = int_check(dc, 'DC', errors)
+	errors = int_check(recovery_penalty, 'Recovery Penalty', errors)	
+	errors = int_check(recovery_time, 'Recovery Time', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
