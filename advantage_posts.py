@@ -284,7 +284,7 @@ def adv_dc_post(entry, body, cells):
 	new_mod = mod_cell('Modifier:', 12, [check_mod], new_mod)
 	body = mod_add(check_type, new_mod, body)
 
-	cells = check_cell('Level', `12`, levels, cells, True)
+	cells = check_cell('Level', 12, levels, cells, True)
 	new_mod = mod_create('Level', 8)
 	new_mod = mod_cell('Level:', 7, [level], new_mod)
 	body = mod_add(levels, new_mod, body)
