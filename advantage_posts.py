@@ -581,6 +581,7 @@ def adv_modifiers_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
+	benefit = name(Benefit, benefit)
 	environment = name(Environment, environment, 'Variable Environment')
 	sense = name(Sense, sense, 'Variable ')
 	mod_range = name(Ranged, mod_range, 'Variable ')
@@ -609,8 +610,8 @@ def adv_modifiers_post(entry, body, cells):
 
 	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}]
 
-	cells = cell('Benefit', 20, [benefit])
-	cells = cell('Bonus', 8, [bonus], cells)
+	cells = cell('Benefit', 15, [benefit])
+	cells = cell('Bonus', 12, [bonus], cells)
 	cells = cell('Type', 12, [bonus_type], cells)
 	vcells = vcell('effect', 15, ['Effect Modifier'])
 	vcells = vcell('attack', 12, ['Attack Bonus'], vcells)
@@ -622,7 +623,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('conflict', 16, [bonus_conflict], vcells)
 	cells = check_cell('Active', 8, bonus_active_defense, cells)
 	cells = check_cell('Only Active', 11, bonus_conflict_defend, cells)
-	cells = cell('Penalty', 8, [penalty], cells)
+	cells = cell('Penalty', 12, [penalty], cells)
 	cells = cell('Type', 12, [penalty_type], cells)
 	vcells = vcell('effect', 15, ['Effect Modifier'])
 	vcells = vcell('attack', 12, ['Attack Bonus'], vcells)
