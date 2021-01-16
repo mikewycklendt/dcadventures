@@ -1318,10 +1318,10 @@ function create_titles(jsonResponse, grow, object, route) {
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table';
 	const title_class = table_id + '-title';
-	const base_table = 'power-table-table';
-	const base_cell_title = 'power-table-cell-title';
-	const base_title = 'power-table-title-table';
-	const base_titles = 'power-table-titles';
+	const base_table = 'advantage-table-table';
+	const base_cell_title = 'advantage-table-cell-title';
+	const base_title = 'advantage-table-title-table';
+	const base_titles = 'advantage-table-titles';
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
@@ -1408,11 +1408,11 @@ function cells_create(table_input, grow, jsonResponse, object, route) {
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'power-table-cells';
-	const base_cell = 'power-table-cell'
-	const base_button_check = 'power-check-button ';
-	const base_check = 'power-check';
-	const base_entry = 'power-table-row';
+	const base_cells = 'advantage-table-cells';
+	const base_cell = 'advantage-table-cell'
+	const base_button_check = 'advantage-check-button ';
+	const base_check = 'advantage-check';
+	const base_entry = 'advantage-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
