@@ -488,7 +488,7 @@ def adv_modifiers_post_errors(data):
 	columns = data['columns']
 	created = data['created']
 	font = data['font']
-	Benefit = data['benefit']
+	benefit = data['benefit']
 	bonus = data['bonus']
 	bonus_type = data['bonus_type']
 	penalty = data['penalty']
