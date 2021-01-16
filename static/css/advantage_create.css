@@ -816,7 +816,7 @@ textarea:focus {
 	background-color: white;
 	font-family: 'Monda', Verdana;
 	color: #245681;
-	max-height: 1.3vw;
+	max-height: auto;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
@@ -846,6 +846,7 @@ textarea:focus {
 .advantage-table-titles {
 	display: grid;
 	width: 97%;
+	height: auto;
 	grid-template-rows: auto;
 }
 
