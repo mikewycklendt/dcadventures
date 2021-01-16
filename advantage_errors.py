@@ -231,7 +231,7 @@ def adv_dc_post_errors(data):
 	check_trait = data['check_trait']
 	check_mod = data['check_mod']
 
-	errors = int_check(dc, 'DC', errors)
+	errors = int_check(value_value, 'DC', errors)
 	errors = int_check(math_value, 'Math Value', errors)
 	errors = int_check(check_mod, 'Check Modifier', errors)
 	
