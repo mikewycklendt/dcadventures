@@ -792,7 +792,7 @@ def adv_points_post(entry, body, cells):
 	check_all = variable_value('check', spend, check_all)
 	cells = check_cell('All Checks', 12, check_all, cells)
 	equipment_vehicles = variable_value('equip', spend, equipment_vehicles)
-	cells = check_cell('Vehicles', 12, equipment_vehicles, cells)\
+	cells = check_cell('Vehicles', 12, equipment_vehicles, cells)
 	equipment_headquarters = variable_value('equip', spend, equipment_headquarters)
 	cells = check_cell('Headquarters', 15, equipment_headquarters, cells)
 
