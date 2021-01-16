@@ -1293,7 +1293,7 @@ function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route);
+		create_titles(jsonResponse, grow, object, route, benefit_delete);
 	
 	} else {
 
@@ -1301,7 +1301,7 @@ function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route);
+		cells_create(table, grow, jsonResponse, object, route, benefit_delete);
 	}
 
 
@@ -1354,7 +1354,7 @@ function create_titles(jsonResponse, grow, object, route, benefit_delete=false) 
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object, route)
+	cells_create(new_table, grow, jsonResponse, object, route, benefit_delete)
 	
 }
 
@@ -1490,7 +1490,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, benefit_de
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object) 
+	row_delete(jsonResponse, route, object, benefit_delete) 
 }
 
 
