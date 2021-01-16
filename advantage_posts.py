@@ -114,7 +114,6 @@ def adv_circ_post(entry, body, cells):
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
-	ranks = integer_convert(ranks)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)

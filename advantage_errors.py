@@ -110,7 +110,6 @@ def adv_circ_post_errors(data):
 	
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(rounds, 'Rounds', errors)
-	errors = int_check(ranks, 'Ranks', errors)
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 	errors = db_check(Range, circ_range, 'Range', errors)
