@@ -2196,7 +2196,7 @@ def advantage_post_time():
 	recovery_incurable = request.get_json()['recovery_incurable']
 
 	units = db_integer(units)
-	math = db_integer(units)
+	math = db_integer(math)
 	check_type = db_integer(check_type)
 
 	advantage_id = integer(advantage_id)
