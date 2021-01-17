@@ -1073,7 +1073,7 @@ def advantage_post_deg_mod():
 
 	advantage_id = request.get_json()['advantage_id']
 	columns = request.get_json()['columns']
-	Created = request.get_json()['created']
+	created = request.get_json()['created']
 	font = request.get_json()['font']
 	target = request.get_json()['target']
 	benefit = request.get_json()['benefit']
