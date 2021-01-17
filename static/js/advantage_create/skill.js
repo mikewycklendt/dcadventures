@@ -74,7 +74,7 @@ function skill_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, modifiers_grid, route);
+			create_table(jsonResponse, skill_grid, route);
 			clear_errors(err_line, errors)
 
 			skill_grid.titles = true;
