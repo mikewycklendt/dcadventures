@@ -785,7 +785,7 @@ def degree_mod_post(entry, body, cells):
 
 	specificity_select = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 	knowledge_specificity = selects(knowledge_specificity, specificity_select)
-	
+
 	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
 	condition1 = selects(condition1, condition_select)
 	condition2 = selects(condition2, condition_select)
@@ -1057,7 +1057,7 @@ def minion_post(entry, body, cells):
 	cells = check_cell('Resistable', 9, resitable, cells, True)
 	new_mod = mod_create('Resistable', 11)
 	new_mod  = mod_cell('Defense', 9, [resitable_check], new_mod)
-	new_mod  = mod_cell('DC', 4, [resitable_dc], new_mod)
+	new_mod  = mod_cell('DC', 4, [resitable_dc, '+ Effect Rank'], new_mod)
 	body = mod_add(resitable, new_mod, body)
 	
 	cells = check_cell('Heroic', 7, heroic, cells)

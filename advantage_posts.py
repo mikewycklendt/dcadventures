@@ -500,7 +500,7 @@ def adv_minion_post(entry, body, cells):
 	cells = check_cell('Resistable', 12, resitable, cells, True)
 	new_mod = mod_create('Resistable', 11)
 	new_mod  = mod_cell('Defense', 9, [resitable_check], new_mod)
-	new_mod  = mod_cell('DC', 4, [resitable_dc], new_mod)
+	new_mod  = mod_cell('DC', 4, [resitable_dc, '+ Advantage Rank'], new_mod)
 	body = mod_add(resitable, new_mod, body)
 	
 	cells = check_cell('Heroic', 19, heroic, cells)
