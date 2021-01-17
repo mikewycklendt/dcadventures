@@ -14,9 +14,9 @@ let combined_grid = {'titles': false,
 
 function combined_submit() {
 
-	const columns = modifiers_grid.columns;
-	const created = modifiers_grid.titles;
-	const font = modifiers_grid.font;
+	const columns = combined_grid.columns;
+	const created = combined_grid.titles;
+	const font = combined_grid.font;
 
 	const ranks = select("combined_ranks");
 	const advantage = select("combined_advantage");
