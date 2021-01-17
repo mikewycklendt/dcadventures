@@ -1795,7 +1795,7 @@ def advantage_post_points():
 	benefit = request.get_json()['benefit']
 	spend = request.get_json()['spend']
 	condition_cost = request.get_json()['condition_cost']
-	condition1 = request.get_json()['conditioon1']
+	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	equipment_points = request.get_json()['equipment_points']
 	equipment_vehicles = request.get_json()['equipment_vehicles']
