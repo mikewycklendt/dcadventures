@@ -727,8 +727,8 @@ def advantage_post_circ():
 						null_condition = null_condition,
 						null_trait_type = null_trait_type,
 						null_trait = null_trait,
-						null_override_trait_type = null_trait_type,
-						null_override_trait = null_trait)
+						null_override_trait_type = null_override_trait_type,
+						null_override_trait = null_override_trait)
 
 	db.session.add(entry)
 	db.session.commit()
