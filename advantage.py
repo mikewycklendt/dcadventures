@@ -1055,7 +1055,7 @@ def delete_advantage_dc(advantage_id):
 
 
 	
-@advantage.route('/advantage/deg_mod/create', methods=['POST'])
+@advantage.route('/advantage/degree_mod/create', methods=['POST'])
 def advantage_post_deg_mod():
 
 	body = {}
@@ -1201,7 +1201,7 @@ def advantage_post_deg_mod():
 	return jsonify(body)
 
 
-@advantage.route('/advantage/deg_mod/delete/<advantage_id>', methods=['DELETE'])
+@advantage.route('/advantage/degree_mod/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_deg_mod(advantage_id):
 	try:
 		db.session.query(AdvDegree).filter_by(id=advantage_id).delete()
