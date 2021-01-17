@@ -125,14 +125,13 @@ def adv_circ_post(entry, body, cells):
 	check_who = selects(check_who, who_check_select)
 
 	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
-	null_type = selects(null_type, circ_null_select)
 
 	benefit = name(Benefit, benefit)
 	circ_range = name(Range, circ_range)
 	conflict = name(ConflictAction, conflict)
 
 	cells = cell('Benefit', 15, [benefit])
-	cells = cell('Target', 18, [target], cells)
+	cells = cell('Target', 15, [target], cells)
 	cells = cell('Modifier', 10, [mod], cells)
 	cells = cell('Lasts', 8, [rounds], cells)
 
