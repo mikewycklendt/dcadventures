@@ -480,7 +480,7 @@ def adv_minion_post(entry, body, cells):
 	attitude_attitude = name(Levels, attitude_attitude)
 	resitable_check = name(Defense, resitable_check)
 
-	cells = cell('Points', 19, [points])
+	cells = cell('Points', 19, ['Advantage Rank x', points])
 	cells = cell('Minion Condition', 20, [condition], cells)
 	cells = cell('Player Condition', 20, [player_condition], cells)
 	cells = cell('Type', 15, [variable_type], cells)
