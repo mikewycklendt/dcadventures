@@ -2125,7 +2125,7 @@ def advantage_poat_skill():
 
 	rows = columns
 	mods = []
-	Xells = []
+	cells = []
 	table_id = 'skill'
 	spot = table_id + '-spot'
 
