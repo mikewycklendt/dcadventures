@@ -842,10 +842,10 @@ def adv_rounds_post(entry, body, cells):
 	end = selects(end, rounds_end)
 
 	cells = cell('Benefit', 20, [benefit])
-	cells = cell('Turns', 12, [rounds], cells)
-	cells = cell('Action', 22, [cost], cells)
-	cells = cell('Check', 22, [check], cells)
-	cells = cell('Trait', 22, [trait], cells)
+	cells = cell('Turns', 8, [rounds], cells)
+	cells = cell('Action', 16, [cost], cells)
+	cells = cell('Check', 14, [check], cells)
+	cells = cell('Trait', 17, [trait], cells)
 	cells = cell('Ends', 22, [end], cells)
 
 	body = send(cells, body)
