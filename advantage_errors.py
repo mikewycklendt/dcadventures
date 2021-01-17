@@ -767,7 +767,7 @@ def adv_rounds_post_errors(data):
 
 	errors = required(rounds, 'Turns', errors)
 	errors = required(cost, 'Action', errors)
-	errors = required(end, 'Endss', errors)
+	errors = required(end, 'Ends', errors)
 
 	return(errors)
 

@@ -839,7 +839,7 @@ def adv_rounds_post(entry, body, cells):
 	check = name(Check, check)
 
 	rounds_end = [{'type': '', 'name': 'Ends'}, {'type': 'action', 'name': 'Stop Taking Action'}, {'type': 'resist', 'name': 'Successful Resistance'}, {'type': 'danger', 'name': 'Danger'}]
-	end = select(end, rounds_end)
+	end = selects(end, rounds_end)
 
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Turns', 12, [rounds], cells)
