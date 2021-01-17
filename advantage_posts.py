@@ -360,9 +360,9 @@ def adv_deg_mod_post(entry, body, cells):
 	measure_rank = name(Rank, measure_rank)
 
 	cells = cell('Benefit', 15, [benefit])
-	cells = cell('Target', 18, [target], cells)
+	cells = cell('Target', 14, [target], cells)
 	cells = cell('Degree',10, [value], cells)
-	cells = cell('Keyword', 18, [keyword], cells)
+	cells = cell('Keyword', 14, [keyword], cells)
 	cells = cell('Nullify DC', 14, [value], cells)
 	cells = check_cell('Cumulative', 15, cumulative, cells)
 	cells = check_cell('Linked', 9, linked, cells)

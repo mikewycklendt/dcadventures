@@ -777,3 +777,44 @@ def db_integer(value):
 
 	return (value)
 
+def create_check(name, item_id, table, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if item_id == '':
+		error = True
+		message = 'You must create a ' + name + ' name first.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def db_insert(table_name, table, field, entry, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != 'other':
+		return (errors)
+
+	if entry == '':
+		error = True
+		message = 'You must set a name for the new ' + table_name + ' or make a different selection.'
+		error_msgs.append(message)
+	else:
+		check = db.session.query(table).filter(table.name == entry).first()
+
+		if check is not None:
+			error = True
+			message = 'There is already a ' + table_name + ' with that name.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)

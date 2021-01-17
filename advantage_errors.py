@@ -5,7 +5,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert
 
 
 def adv_alt_check_post_errors(data):
@@ -33,6 +33,8 @@ def adv_alt_check_post_errors(data):
 	action_type = data['action_type']
 	action = data['action']
 	free = data['free']
+
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
 
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(action, 'Action', errors)
@@ -74,6 +76,7 @@ def adv_benefit_post_errors(data):
 	description = data['description']
 	effort = data['effort']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	errors = required(name, 'Name', errors)
@@ -108,6 +111,8 @@ def adv_circ_post_errors(data):
 	null_override_trait_type = data['null_override_trait_type']
 	null_override_trait = data['null_override_trait']
 	
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(rounds, 'Rounds', errors)
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
@@ -151,6 +156,8 @@ def adv_combined_post_errors(data):
 	ranks = data['ranks']
 	advantage = data['advantage']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(ranks, 'Ranks', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
@@ -178,6 +185,8 @@ def adv_condition_post_errors(data):
 	damage_value = data['damage_value']
 	damage = data['damage']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(damage_value, 'Condition Damage', errors)
 	errors = int_check(damage, 'Damage Direction', errors)
 
@@ -230,6 +239,8 @@ def adv_dc_post_errors(data):
 	check_trait = data['check_trait']
 	check_mod = data['check_mod']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(value_value, 'DC', errors)
 	errors = int_check(math_value, 'Math Value', errors)
 	errors = int_check(check_mod, 'Check Modifier', errors)
@@ -311,6 +322,8 @@ def adv_deg_mod_post_errors(data):
 	cumulative = data['cumulative']
 	linked = data['linked']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(value, 'Circumstance Modifier', errors)
 	errors = int_check(consequence_action, 'Consequence Action', errors)
 	errors = int_check(knowledge_count, 'Knowledge Amount', errors)
@@ -396,6 +409,8 @@ def adv_effort_post_errors(data):
 	benefit_count = data['benefit_count']
 	benefit_effort = data['benefit_effort']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(condition_damage_value, 'Condition Damage Value', errors)
 	errors = int_check(condition_damage, 'Condition Damage Direction', errors)
 	errors = int_check(benefit_turns, 'Benefit Turns', errors)
@@ -451,6 +466,8 @@ def adv_minion_post_errors(data):
 	created = data['created']
 	font = data['font']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(points, 'Points', errors)
 	errors = int_check(sacrifice_cost, 'Sacrifice Cost', errors)
 	errors = int_check(resitable_dc, 'Sacrifice DC', errors)
@@ -536,10 +553,17 @@ def adv_modifiers_post_errors(data):
 	multiple_count = data['multiple_count']
 	lasts = data['lasts']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(bonus, 'Bonus', errors)
 	errors = int_check(penalty, 'Penalty', errors)
 	errors = int_check(multiple_count, 'Multiple Count', errors)
 	errors = int_check(lasts, 'Lasts', errors)
+
+	errors = db_insert('Environment', Environment, environment, environment_other, errors)
+	errors = db_insert('Emotion', Emotion, emotion, emotion_other, errors)
+	errors = db_insert('Creature', Creature, creature, creature_other, errors)
+	errors = db_insert('Profession', Job, profession, profession_other, errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
@@ -620,6 +644,8 @@ def adv_opposed_post_errors(data):
 	opponent_check = data['opponent_check']
 	multiple = data['multiple']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
 
@@ -672,6 +698,8 @@ def adv_points_post_errors(data):
 	ranks_trait_type = data['ranks_trait_type']
 	ranks_trait = data['ranks_trait']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(condition_cost, 'Condition Cost', errors)
 	errors = int_check(equipment_points, 'Equipment Points', errors)
 	errors = int_check(initiative_cost, 'Initiative Cost', errors)
@@ -732,6 +760,8 @@ def adv_resist_post_errors(data):
 	mod = data['mod']
 	which = data['which']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(mod, 'Modifier', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
@@ -759,6 +789,8 @@ def adv_rounds_post_errors(data):
 	trait = data['trait']
 	end = data['end']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(rounds, 'Rounds', errors)
 
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
@@ -787,6 +819,8 @@ def adv_skill_post_errors(data):
 	replaced_trait = data['replaced_trait']
 	multiple = data['multiple']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = db_check(Benefit, benefit, 'Benefit', errors)
 
@@ -821,6 +855,8 @@ def adv_time_post_errors(data):
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = int_check(value, 'Time Value', errors)
 	errors = int_check(time_value, 'Time Math Value', errors)
 	errors = int_check(dc, 'DC', errors)
@@ -863,6 +899,8 @@ def adv_variable_post_errors(data):
 	trait_type = data['trait_type']
 	trait = data['trait']
 
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	
 	errors = db_check(Advantage, advantage_id, 'Advantage', errors)
 
 	errors = required(trait_type, 'Trait Type', errors)
