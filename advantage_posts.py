@@ -64,7 +64,7 @@ def adv_alt_check_post(entry, body, cells):
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_type_select)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Check Type', 15, [check_type], cells)
 	cells = cell('Modifier', 13, [mod], cells)
 
@@ -131,7 +131,7 @@ def adv_circ_post(entry, body, cells):
 	circ_range = name(Range, circ_range)
 	conflict = name(ConflictAction, conflict)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Target', 18, [target], cells)
 	cells = cell('Modifier', 10, [mod], cells)
 	cells = cell('Lasts', 8, [rounds], cells)
@@ -195,7 +195,7 @@ def adv_condition_post(entry, body, cells):
 
 	benefit = name(Benefit, benefit)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 
 	vcells = vcell('active', 40, [condition, 'Active'])
 	vcells = vcell('change', 60, [condition1, 'to', condition2], vcells)
@@ -251,7 +251,7 @@ def adv_dc_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Target', 18, [target], cells)
 	vcells = vcell('value', 10, [value_value])
 	vcells = vcell('math', 20, [math_value, math_math, math_trait], vcells)
@@ -360,7 +360,7 @@ def adv_deg_mod_post(entry, body, cells):
 	measure_math = math_convert(Math, measure_math)
 	measure_rank = name(Rank, measure_rank)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Target', 18, [target], cells)
 	cells = cell('Degree',10, [value], cells)
 	cells = cell('Keyword', 18, [keyword], cells)
@@ -695,7 +695,7 @@ def adv_opposed_post(entry, body, cells):
 	player_check = name(Check, player_check)
 	opponent_check = name(Check, opponent_check)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Player Trait', 18, [trait], cells)
 	cells = cell('Player Check', 15, [player_check], cells)
 	cells = cell('Modifier', 9, [mod], cells)
@@ -808,7 +808,7 @@ def adv_resist_post(entry, body, cells):
 	which_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Value'}, {'type': 'low', 'name': 'Lower Value'}]
 	which = selects(which, which_select)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Resisted By', 30, [trait], cells)
 	cells = cell('Modifier', 12, [mod], cells)
 	cells = cell('If Kultiple', 20, [which], cells)
@@ -841,7 +841,7 @@ def adv_rounds_post(entry, body, cells):
 	rounds_end = [{'type': '', 'name': 'Ends'}, {'type': 'action', 'name': 'Stop Taking Action'}, {'type': 'resist', 'name': 'Successful Resistance'}, {'type': 'danger', 'name': 'Danger'}]
 	end = selects(end, rounds_end)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Turns', 8, [rounds], cells)
 	cells = cell('Action', 16, [cost], cells)
 	cells = cell('Check', 14, [check], cells)
@@ -873,7 +873,7 @@ def adv_skill_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Replace', 25, [replaced_trait], cells)
 	cells = cell('Replace With', 25, [trait], cells)
 	cells = cell('If Multiple', 20, [multiple], cells)
@@ -920,7 +920,7 @@ def adv_time_post(entry, body, cells):
 	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
 	time_type = selects(time_type, time_effect)
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Type', 22, [time_type], cells)
 	vcells = vcell('value', 14, [value, units])
 	word = string('= Time Rank', [time_value, math, trait])
