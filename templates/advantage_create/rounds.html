@@ -59,28 +59,36 @@
 			</select>
 		</div>
 
-		<select class="select-sml" id="rounds_check" name="rounds_check">
-			<option value="">Check</option>
-			{% for c in checks %}
-				<option value={{c.id}}>{{c.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select class="select-sml" id="rounds_check" name="rounds_check">
+				<option value="">Check</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
+		
+		<div>
+			<select class="select-sml" id="rounds_trait_type" name="rounds_trait_type" onchange="rounds_trait_type()">
+				{% for t in traits %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-		<select class="select-sml" id="rounds_trait_type" name="rounds_trait_type" onchange="rounds_trait_type()">
-			{% for t in traits %}
-				<option value="{{t.type}}">{{t.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select class="select-sml" id="rounds_trait" name="rounds_trait">
+				<option value="">Trait</option>
+			</select>
+		</div>
 
-		<select class="select-sml" id="rounds_trait" name="rounds_trait">
-			<option value="">Trait</option>
-		</select>
-
-		<select class="select-sml" id="rounds_end" name="rounds_end">
-			{% for r in rounds_end %}
-				<option value="{{r.type}}">{{r.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select class="select-sml" id="rounds_end" name="rounds_end">
+				{% for r in rounds_end %}
+					<option value="{{r.type}}">{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="rounds-button-row">
