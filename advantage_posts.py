@@ -718,7 +718,7 @@ def adv_points_post(entry, body, cells):
 	benefit = entry.benefit
 	spend = entry.spend
 	condition_cost = entry.condition_cost
-	condition1 = entry.conditioon1
+	condition1 = entry.condition1
 	condition2 = entry.condition2
 	equipment_points = entry.equipment_points
 	equipment_vehicles = entry.equipment_vehicles
