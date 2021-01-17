@@ -281,6 +281,11 @@ function modifiers_submit() {
 
 			multiple_field('modifiers-multiple');
 
+			const insert = jsonResponse.new;
+			const items = jsonResponse.new_items;
+
+			new_items(insert, items);
+
 			modifiers_grid.columns.length = 0;
 			modifiers_grid.columns = jsonResponse.rows;
 

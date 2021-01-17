@@ -1568,6 +1568,9 @@ def advantage_post_modifiers():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+
+	body = {}
+
 	try:
 		environment = db_integer(environment)
 		sense = db_integer(sense)
@@ -1590,11 +1593,21 @@ def advantage_post_modifiers():
 		penalty_check_range = db_integer(penalty_check_range)
 		penalty_conflict = db_integer(penalty_conflict)
 
+		body['new'] = False
+		new_items = []
+
 		if emotion == 'other':	
 			entry = Emotion(name=emotion_other)
 			db.session.add(entry)
 			db.session.commit()
 			emotion = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_emotion'
+			new_items.append(item)
 			db.session.close()
 
 		if environment == 'other':	
@@ -1602,6 +1615,13 @@ def advantage_post_modifiers():
 			db.session.add(entry)
 			db.session.commit()
 			environment = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_environment'
+			new_items.append(item)
 			db.session.close()
 
 		if creature == 'other':	
@@ -1609,6 +1629,13 @@ def advantage_post_modifiers():
 			db.session.add(entry)
 			db.session.commit()
 			creature = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_creature'
+			new_items.append(item)
 			db.session.close()
 
 		if profession == 'other':	
@@ -1616,7 +1643,16 @@ def advantage_post_modifiers():
 			db.session.add(entry)
 			db.session.commit()
 			profession = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_profession'
+			new_items.append(item)
 			db.session.close()
+
+		body['new_items'] = new_items
 
 		advantage_id = integer(advantage_id)
 		benefit = integer(benefit)
@@ -1696,7 +1732,6 @@ def advantage_post_modifiers():
 		db.session.add(entry)
 		db.session.commit()
 		
-		body = {}
 		body['id'] = entry.id
 		error = False
 		error_msg = []	

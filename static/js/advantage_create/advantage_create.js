@@ -1076,6 +1076,37 @@ function select_entry(check_input, base_input, entry_input, field_input, value) 
 	}
 }
 
+function new_items(insert, items) {
+	
+	if (insert == true) {
+		let i;
+		for (i of items) {
+			const id = i.id;
+			const name = i.name;
+			const class_check = i.class;
+			const field = i.field;
+
+			if (class_check == true) {
+				const selects = document.getElementsByClassName(field);
+				let select;
+					
+				for (select of selects) {
+					const o = document.createElement('option');
+					o.value = id;
+					o.text = name;
+					select.add(o);
+				}
+			} else {
+				const select = document.getElementById(field);
+				const o = document.createElement('option');
+				o.value = id;
+				o.text = name;
+				select.add(o);
+			}
+		}
+	}
+}
+
 advantage_create = function() {
 	const advantage_name = document.getElementById('advantage_name').value;
 	const add_advantage = document.getElementById('add-advantage');
