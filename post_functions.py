@@ -39,10 +39,10 @@ def action_convert(value, action_value):
 	if value == 'auto':
 		a = 'Automatic'
 	elif value == 'base':
-		action = db.seession.query(Action).filter_by(id=action_value).one()
+		action = db.session.query(Action).filter_by(id=action_value).one()
 		a = action.name
 	elif value == 'conflict':
-		action = db.seession.query(ConflictAction).filter_by(id=action_value).one()
+		action = db.session.query(ConflictAction).filter_by(id=action_value).one()
 		a = action.name
 	else:
 		a = ''
