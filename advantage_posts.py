@@ -191,8 +191,6 @@ def adv_condition_post(entry, body, cells):
 	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	damage = selects(damage, updown_select)
 
-	damage_value = integer_convert(damage_value)
-
 	benefit = name(Benefit, benefit)
 
 	cells = cell('Benefit', 20, [benefit])
@@ -349,7 +347,7 @@ def adv_deg_mod_post(entry, body, cells):
 	specificity_select = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 	knowledge_specificity = selects(knowledge_specificity, specificity_select)
 
-	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
+	updown_select = [{'type': '1', 'name': 'Up'}, {'type': '-1', 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown_select)
 
 	condition_select = [{'type': 'current', 'name': 'Current'}, {'type': 'any', 'name': 'Any'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
