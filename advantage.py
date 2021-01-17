@@ -291,7 +291,7 @@ def advantage_trait_select():
 	elif trait == 'auto':
 		body['options'] = [{'id': 'Automatic', 'name': 'Automatic'}]
 	elif trait == '':
-		body['options'] = [{'id': 'Trait', 'name': 'Trait'}]
+		body['options'] = [{'id': '', 'name': 'Trait'}]
 	elif trait == 'immoveable':
 		body['options'] = [{'id': 'Immoveable', 'name': 'Immoveable'}]
 	else:
