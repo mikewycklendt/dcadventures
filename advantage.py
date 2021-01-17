@@ -110,6 +110,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	emotions = db.session.query(Emotion).order_by(Emotion.name).all()
 
+	defenses = Defense.query.all()
+
 	base_conditions = Condition.query.all()
 	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
 	conditions_raw = []
@@ -208,7 +210,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
 							environments=environments, senses=senses, subsenses=subsenses, modifier_trigger=modifier_trigger, multiple=multiple, creatures=creatures, professions=professions, powers=powers,
 							emotions=emotions, simultaneous=simultaneous, multiple_opposed=multiple_opposed, tools=tools, condition=condition, maneuvers=maneuvers, cover=cover, concealment=concealment,
-							ranged=ranged, target=target, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, minion_type=minion_type, benefits_all=benefits_all)
+							ranged=ranged, target=target, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, minion_type=minion_type, benefits_all=benefits_all, defenses=defenses)
 
 @advantage.route('/advantage/trait/select', methods=['POST'])
 def advantage_trait_select():
