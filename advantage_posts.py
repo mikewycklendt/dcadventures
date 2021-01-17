@@ -487,7 +487,7 @@ def adv_minion_post(entry, body, cells):
 	cells = check_cell('Link', 7, link, cells)
 	cells = check_cell('Multiple', 12, multiple, cells, True)
 	new_mod = mod_create('Multiple Minions', 20)
-	new_mod  = mod_cell('Count', 7, [multiple_value], new_mod)
+	new_mod  = mod_cell('Count', 7, ['Rank x', multiple_value], new_mod)
 	new_mod  = mod_cell('Horde', 7, [horde], new_mod)
 	body = mod_add(multiple, new_mod, body)
 	
