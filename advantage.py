@@ -1839,7 +1839,7 @@ def advantage_post_points():
 							benefit = benefit,
 							spend = spend,
 							condition_cost = condition_cost,
-							condition1 = conditioon1,
+							condition1 = condition1,
 							condition2 = condition2,
 							equipment_points = equipment_points,
 							equipment_vehicles = equipment_vehicles,
