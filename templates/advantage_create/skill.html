@@ -65,12 +65,15 @@
 		<div>
 		</div>
 
-		<div id="skill-multiple">
-			<select class="select-entry" id="skill_multiple" name="skill_multiple">
-				{% for m in multiple %}
-					<option value="{{m.type}}">{{m.name}}</option>
-				{% endfor %}
-			</select>
+
+		<div>
+			<div id="skill-multiple">
+				<select class="select-entry" id="skill_multiple" name="skill_multiple">
+					{% for m in multiple %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 		<div>
 			<div class="btn-entry" id="skill_submit" name="skill_submit" onclick="skill_submit()">
