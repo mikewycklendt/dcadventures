@@ -78,7 +78,7 @@ def adv_alt_check_post(entry, body, cells):
 	cells = cell('Trait', 20, [trait], cells)
 	cells = cell('Action', 17, [action], cells)
 	cells = cell('When', 10, [when], cells)
-	cells = check_cell('Free Check', 12, [free], cells)
+	cells = check_cell('Free Check', 12, free, cells)
 	cells = cell('Circumstance', 35, [circumstance], cells)
 
 	body = send(cells, body)
