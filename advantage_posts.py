@@ -427,14 +427,14 @@ def adv_effort_post(entry, body, cells):
 	benefit = name(Benefit, benefit)
 	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
 
-	cells = cell('Benefit', 20, [benefit])
-	vcells = vcell('condition', 25, [condition1, 'tO', condition2])
+	cells = cell('Benefit', 15, [benefit])
+	vcells = vcell('condition', 25, [condition1, 'to', condition2])
 	vcells = vcell('damage', 23, [condition_damage_value, 'Conditions', condition_damage], vcells)
 	cells = vcell_add('Condition Effect', condition_type, vcells, cells)
 	cells = cell('Benefits', 8, [benefit_count], cells)
-	cells = cell('Benefit Gained', 23, [benefit_choice], cells)
+	cells = cell('Benefit Gained', 17, [benefit_choice], cells)
 	cells = cell('Turns', 7, [benefit_turns], cells)
-	cells = check_cell('Only Extra Effort', 15, benefit_effort, cells)
+	cells = check_cell('Only Extra Effort', 17, benefit_effort, cells)
 
 	body = send(cells, body)
 	
