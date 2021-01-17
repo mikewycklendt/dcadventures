@@ -501,62 +501,70 @@ def advantage_post_alt_check():
 	action = request.get_json()['action']
 	free = request.get_json()['free']
 
-	conflict = db_integer(conflict)
-	conflict_range = db_integer(conflict_range)
+	try:
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	mod = integer(mod)
-	conflict = integer(conflict)
-	conflict_range = integer(conflict_range)
-	action = integer(action)	
+		conflict = db_integer(conflict)
+		conflict_range = db_integer(conflict_range)
+
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		mod = integer(mod)
+		conflict = integer(conflict)
+		conflict_range = integer(conflict_range)
+		action = integer(action)	
 
 
-	entry = AdvAltCheck(advantage_id = advantage_id,
-							benefit = benefit,
-							check_trigger = check_trigger,
-							check_type = check_type,
-							mod = mod,
-							circumstance = circumstance,
-							trigger = trigger,
-							when = when,
-							trait_type = trait_type,
-							trait = trait,
-							conflict = conflict,
-							conflict_range = conflict_range,
-							conflict_weapon = conflict_weapon,
-							condition1 = condition1,
-							condition2 = condition2,
-							action_type = action_type,
-							action = action,
-							free = free)
+		entry = AdvAltCheck(advantage_id = advantage_id,
+								benefit = benefit,
+								check_trigger = check_trigger,
+								check_type = check_type,
+								mod = mod,
+								circumstance = circumstance,
+								trigger = trigger,
+								when = when,
+								trait_type = trait_type,
+								trait = trait,
+								conflict = conflict,
+								conflict_range = conflict_range,
+								conflict_weapon = conflict_weapon,
+								condition1 = condition1,
+								condition2 = condition2,
+								action_type = action_type,
+								action = action,
+								free = free)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'check'	
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'check'	
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []	
-	body['font'] = font
-			
-	body = adv_alt_check_post(entry, body, cells)
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []	
+		body['font'] = font
+				
+		body = adv_alt_check_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -609,43 +617,49 @@ def advantage_post_benefit():
 		body['error_msgs'] = error_msgs
 		return jsonify(body)
 
+	try:
+		advantage_id = integer(advantage_id)
 
-	advantage_id = integer(advantage_id)
 
+		
+		entry = Benefit(advantage_id = advantage_id,
+							name = name,
+							description = description,
+							effort = effort)
 
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		body['name'] = entry.name
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'benefit'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_benefit_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	entry = Benefit(advantage_id = advantage_id,
-						name = name,
-						description = description,
-						effort = effort)
-
-	db.session.add(entry)
-	db.session.commit()
-
-	body = {}
-	body['id'] = entry.id
-	body['name'] = entry.name
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'benefit'
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_benefit_post(entry, body, cells)
-
-	db.session.close()
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -701,61 +715,70 @@ def advantage_post_circ():
 	null_override_trait_type = request.get_json()['null_override_trait_type']
 	null_override_trait = request.get_json()['null_override_trait']
 
-	circ_range = db_integer(circ_range)
-	conflict = db_integer(conflict)
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	mod = integer(mod)
-	rounds = integer(rounds)
-	circ_range = integer(circ_range)
-	conflict = integer(conflict)
+	try:
+		circ_range = db_integer(circ_range)
+		conflict = db_integer(conflict)
+
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		mod = integer(mod)
+		rounds = integer(rounds)
+		circ_range = integer(circ_range)
+		conflict = integer(conflict)
+		
+		entry = AdvCirc(advantage_id = advantage_id,
+							target = target,
+							benefit = benefit,
+							mod = mod,
+							rounds = rounds,
+							circumstance = circumstance,
+							circ_type = circ_type,
+							circ_range = circ_range,
+							conflict = conflict,
+							check_who = check_who,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait,
+							null_type = null_type,
+							null_condition = null_condition,
+							null_trait_type = null_trait_type,
+							null_trait = null_trait,
+							null_override_trait_type = null_override_trait_type,
+							null_override_trait = null_override_trait)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}	
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []	
+		cells = []
+		table_id = 'circ'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot	
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_circ_post(entry, body, cells)
+		
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	entry = AdvCirc(advantage_id = advantage_id,
-						target = target,
-						benefit = benefit,
-						mod = mod,
-						rounds = rounds,
-						circumstance = circumstance,
-						circ_type = circ_type,
-						circ_range = circ_range,
-						conflict = conflict,
-						check_who = check_who,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						null_type = null_type,
-						null_condition = null_condition,
-						null_trait_type = null_trait_type,
-						null_trait = null_trait,
-						null_override_trait_type = null_override_trait_type,
-						null_override_trait = null_override_trait)
-
-	db.session.add(entry)
-	db.session.commit()
-
-	body = {}	
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []	
-	cells = []
-	table_id = 'circ'
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot	
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_circ_post(entry, body, cells)
-	
-	db.session.close()
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -796,40 +819,46 @@ def advantage_post_combined():
 	ranks = request.get_json()['ranks']
 	advantage = request.get_json()['advantage']
 
-	advantage_id = integer(advantage_id)
-	ranks = integer(ranks)
+	try:
+		advantage_id = integer(advantage_id)
+		ranks = integer(ranks)
 
-	entry = AdvCombined(advantage_id = advantage_id,
-							ranks = ranks,
-							advantage = advantage)
+		entry = AdvCombined(advantage_id = advantage_id,
+								ranks = ranks,
+								advantage = advantage)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'combined'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'combined'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_combined_post(entry, body, cells)
-
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_combined_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -877,47 +906,54 @@ def advantage_post_condition():
 	damage_value = request.get_json()['damage_value']
 	damage = request.get_json()['damage']
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	damage_value = integer(damage_value)
-	damage = integer(damage)
+	try:
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		damage_value = integer(damage_value)
+		damage = integer(damage)
 
-	entry = AdvCondition(advantage_id = advantage_id,
-								benefit = benefit,
-								condition_type = condition_type,
-								condition = condition,
-								condition_null = condition_null,
-								condition1 = condition1,
-								condition2 = condition2,
-								damage_value = damage_value,
-								damage = damage)
+		entry = AdvCondition(advantage_id = advantage_id,
+									benefit = benefit,
+									condition_type = condition_type,
+									condition = condition,
+									condition_null = condition_null,
+									condition1 = condition1,
+									condition2 = condition2,
+									damage_value = damage_value,
+									damage = damage)
 
-	db.session.add(entry)	
-	db.session.commit()
+		db.session.add(entry)	
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'condition'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'condition'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-					
-	body = adv_condition_post(entry, body, cells)
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+						
+		body = adv_condition_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -977,70 +1013,77 @@ def advantage_post_dc():
 	check_trait = request.get_json()['check_trait']
 	check_mod = request.get_json()['check_mod']
 
-	math_math = db_integer(math_math)
-	level_type = db_integer(level_type)
-	level = db_integer(level)
+	try:
+		math_math = db_integer(math_math)
+		level_type = db_integer(level_type)
+		level = db_integer(level)
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	dc = integer(dc)
-	value_value = integer(value_value)
-	math_value = integer(math_value)
-	math_math = integer(math_math)
-	level_type = integer(level_type)
-	level = integer(level)
-	check_mod = integer(check_mod)
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		dc = integer(dc)
+		value_value = integer(value_value)
+		math_value = integer(math_value)
+		math_math = integer(math_math)
+		level_type = integer(level_type)
+		level = integer(level)
+		check_mod = integer(check_mod)
 
 
-	entry = AdvDC(advantage_id = advantage_id,
-						target = target,
-						benefit = benefit,
-						dc = dc,
-						description = description,
-						value_value = value_value,
-						math_value = math_value,
-						math_math = math_math,
-						math_trait_type = math_trait_type,
-						math_trait = math_trait,
-						condition = condition,
-						keyword_check = keyword_check,
-						check_type = check_type,
-						levels = levels,
-						level_type = level_type,
-						level = level,
-						condition1 = condition1,
-						condition2 = condition2,
-						keyword = keyword,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						check_mod = check_mod)
-						
-	db.session.add(entry)
-	db.session.commit()
+		entry = AdvDC(advantage_id = advantage_id,
+							target = target,
+							benefit = benefit,
+							dc = dc,
+							description = description,
+							value_value = value_value,
+							math_value = math_value,
+							math_math = math_math,
+							math_trait_type = math_trait_type,
+							math_trait = math_trait,
+							condition = condition,
+							keyword_check = keyword_check,
+							check_type = check_type,
+							levels = levels,
+							level_type = level_type,
+							level = level,
+							condition1 = condition1,
+							condition2 = condition2,
+							keyword = keyword,
+							check_trait_type = check_trait_type,
+							check_trait = check_trait,
+							check_mod = check_mod)
+							
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'dc'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'dc'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_dc_post(entry, body, cells)
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_dc_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -1113,94 +1156,101 @@ def advantage_post_deg_mod():
 	nullify = request.get_json()['nullify']
 	cumulative = request.get_json()['cumulative']
 	linked = request.get_json()['linked']
+
+	try:
+		consequence = db_integer(consequence)
+		level_type = db_integer(level_type)
+		level = db_integer(level)
+		measure_math = db_integer(measure_math)
+		measure_rank = db_integer(measure_rank)
+
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		value = integer(value)
+		consequence_action = integer(consequence_action)
+		consequence = integer(consequence)
+		knowledge_count = integer(knowledge_count)
+		level_type = integer(level_type)
+		level = integer(level)
+		circ_value = integer(circ_value)
+		circ_turns = integer(circ_turns)
+		measure_val1 = integer(measure_val1)
+		measure_math = integer(measure_math)
+		measure_value = integer(measure_value)
+		measure_rank = integer(measure_rank)
+		condition_damage_value = integer(condition_damage_value)
+		condition_damage = integer(condition_damage)
+		nullify = integer(nullify)
+		
+		
+		entry = AdvDegree(advantage_id = advantage_id,
+								target = target,
+								benefit = benefit,
+								value = value,
+								deg_mod_type = deg_mod_type,
+								consequence_action_type = consequence_action_type,
+								consequence_action = consequence_action,
+								consequence_trait_type = consequence_trait_type,
+								consequence_trait = consequence_trait,
+								consequence = consequence,
+								knowledge = knowledge,
+								knowledge_count = knowledge_count,
+								knowledge_specificity = knowledge_specificity,
+								level_type = level_type,
+								level = level,
+								circ_value = circ_value,
+								circ_turns = circ_turns,
+								circ_trait_type = circ_trait_type,
+								circ_trait = circ_trait,
+								measure_type = measure_type,
+								measure_val1 = measure_val1,
+								measure_math = measure_math,
+								measure_trait_type = measure_trait_type,
+								measure_trait = measure_trait,
+								measure_value = measure_value,
+								measure_rank = measure_rank,
+								condition_type = condition_type,
+								condition_damage_value = condition_damage_value,
+								condition_damage = condition_damage,
+								condition1 = condition1,
+								condition2 = condition2,
+								keyword = keyword,
+								nullify = nullify,
+								cumulative = cumulative,
+								linked = linked)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'deg-mod'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_deg_mod_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	consequence = db_integer(consequence)
-	level_type = db_integer(level_type)
-	level = db_integer(level)
-	measure_math = db_integer(measure_math)
-	measure_rank = db_integer(measure_rank)
-
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	value = integer(value)
-	consequence_action = integer(consequence_action)
-	consequence = integer(consequence)
-	knowledge_count = integer(knowledge_count)
-	level_type = integer(level_type)
-	level = integer(level)
-	circ_value = integer(circ_value)
-	circ_turns = integer(circ_turns)
-	measure_val1 = integer(measure_val1)
-	measure_math = integer(measure_math)
-	measure_value = integer(measure_value)
-	measure_rank = integer(measure_rank)
-	condition_damage_value = integer(condition_damage_value)
-	condition_damage = integer(condition_damage)
-	nullify = integer(nullify)
-	
-	
-	entry = AdvDegree(advantage_id = advantage_id,
-							target = target,
-							benefit = benefit,
-							value = value,
-							deg_mod_type = deg_mod_type,
-							consequence_action_type = consequence_action_type,
-							consequence_action = consequence_action,
-							consequence_trait_type = consequence_trait_type,
-							consequence_trait = consequence_trait,
-							consequence = consequence,
-							knowledge = knowledge,
-							knowledge_count = knowledge_count,
-							knowledge_specificity = knowledge_specificity,
-							level_type = level_type,
-							level = level,
-							circ_value = circ_value,
-							circ_turns = circ_turns,
-							circ_trait_type = circ_trait_type,
-							circ_trait = circ_trait,
-							measure_type = measure_type,
-							measure_val1 = measure_val1,
-							measure_math = measure_math,
-							measure_trait_type = measure_trait_type,
-							measure_trait = measure_trait,
-							measure_value = measure_value,
-							measure_rank = measure_rank,
-							condition_type = condition_type,
-							condition_damage_value = condition_damage_value,
-							condition_damage = condition_damage,
-							condition1 = condition1,
-							condition2 = condition2,
-							keyword = keyword,
-							nullify = nullify,
-							cumulative = cumulative,
-							linked = linked)
-
-	db.session.add(entry)
-	db.session.commit()
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'deg-mod'
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_deg_mod_post(entry, body, cells)
-
-	db.session.close()
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -1251,56 +1301,62 @@ def advantage_post_effort():
 	benefit_count = request.get_json()['benefit_count']
 	benefit_effort = request.get_json()['benefit_effort']
 
+	try:
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		condition_damage_value = integer(condition_damage_value)
+		condition_damage = integer(condition_damage)
+		benefit_choice = integer(benefit_choice)
+		benefit_turns = integer(benefit_turns)
+		benefit_count = integer(benefit_count)
+		
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	condition_damage_value = integer(condition_damage_value)
-	condition_damage = integer(condition_damage)
-	benefit_choice = integer(benefit_choice)
-	benefit_turns = integer(benefit_turns)
-	benefit_count = integer(benefit_count)
+
+		entry = AdvEffort(advantage_id = advantage_id,
+								benefit = benefit,
+								effect = effect,
+								condition_type = condition_type,
+								condition_damage_value = condition_damage_value,
+								condition_damage = condition_damage,
+								condition1 = condition1,
+								condition2 = condition2,
+								benefit_choice = benefit_choice,
+								benefit_turns = benefit_turns,
+								benefit_count = benefit_count,
+								benefit_effort = benefit_effort)
+
+		db.session.add(entry)	
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []	
+		table_id = 'effort'	
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_effort_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-
-
-	entry = AdvEffort(advantage_id = advantage_id,
-							benefit = benefit,
-							effect = effect,
-							condition_type = condition_type,
-							condition_damage_value = condition_damage_value,
-							condition_damage = condition_damage,
-							condition1 = condition1,
-							condition2 = condition2,
-							benefit_choice = benefit_choice,
-							benefit_turns = benefit_turns,
-							benefit_count = benefit_count,
-							benefit_effort = benefit_effort)
-
-	db.session.add(entry)	
-	db.session.commit()
-
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []	
-	table_id = 'effort'	
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_effort_post(entry, body, cells)
-
-	db.session.close()
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1358,67 +1414,74 @@ def advantage_post_minion():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	attitude_type = db_integer(attitude_type)
-	attitude_attitude = db_integer(attitude_attitude)
-	resitable_check = db_integer(resitable_check)
+	try:
+		attitude_type = db_integer(attitude_type)
+		attitude_attitude = db_integer(attitude_attitude)
+		resitable_check = db_integer(resitable_check)
 
-	advantage_id = integer(advantage_id)
-	points = integer(points)
-	sacrifice_cost = integer(sacrifice_cost)
-	attitude_type = integer(attitude_type)
-	attitude_attitude = integer(attitude_attitude)
-	resitable_check = integer(resitable_check)
-	resitable_dc = integer(resitable_dc)
-	multiple_value = integer(multiple_value)
+		advantage_id = integer(advantage_id)
+		points = integer(points)
+		sacrifice_cost = integer(sacrifice_cost)
+		attitude_type = integer(attitude_type)
+		attitude_attitude = integer(attitude_attitude)
+		resitable_check = integer(resitable_check)
+		resitable_dc = integer(resitable_dc)
+		multiple_value = integer(multiple_value)
 
 
-	entry = AdvMinion(advantage_id = advantage_id,
-							points = points,
-							condition = condition,
-							player_condition = player_condition,
-							link = link,
-							variable_type = variable_type,
-							multiple = multiple,
-							attitude = attitude,
-							resitable = resitable,
-							heroic = heroic,
-							sacrifice = sacrifice,
-							sacrifice_cost = sacrifice_cost,
-							attitude_type = attitude_type,
-							attitude_attitude = attitude_attitude,
-							attitude_trait_type = attitude_trait_type,
-							attitude_trait = attitude_trait,
-							resitable_check = resitable_check,
-							resitable_dc = resitable_dc,
-							multiple_value = multiple_value,
-							horde = horde)
+		entry = AdvMinion(advantage_id = advantage_id,
+								points = points,
+								condition = condition,
+								player_condition = player_condition,
+								link = link,
+								variable_type = variable_type,
+								multiple = multiple,
+								attitude = attitude,
+								resitable = resitable,
+								heroic = heroic,
+								sacrifice = sacrifice,
+								sacrifice_cost = sacrifice_cost,
+								attitude_type = attitude_type,
+								attitude_attitude = attitude_attitude,
+								attitude_trait_type = attitude_trait_type,
+								attitude_trait = attitude_trait,
+								resitable_check = resitable_check,
+								resitable_dc = resitable_dc,
+								multiple_value = multiple_value,
+								horde = horde)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}	
-	body['id'] = entry.id
-	error = False	
-	error_msg = []
-	body['success'] = True
+		body = {}	
+		body['id'] = entry.id
+		error = False	
+		error_msg = []
+		body['success'] = True
 
-	rows = columns	
-	mods = []
-	cells = []
-	table_id = 'minion'
-	spot = table_id + '-spot'
+		rows = columns	
+		mods = []
+		cells = []
+		table_id = 'minion'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []	
-	body['font'] = font
-			
-	body = adv_minion_post(entry, body, cells)
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []	
+		body['font'] = font
+				
+		body = adv_minion_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -1498,163 +1561,170 @@ def advantage_post_modifiers():
 	multiple_count = request.get_json()['multiple_count']
 	lasts = request.get_json()['lasts']
 
-	environment = db_integer(environment)
-	sense = db_integer(sense)
-	mod_range = db_integer(mod_range)
-	subsense = db_integer(subsense)
-	cover = db_integer(cover)
-	conceal = db_integer(conceal)
-	maneuver = db_integer(maneuver)
-	weapon_melee = db_integer(weapon_melee)
-	weapon_ranged = db_integer(weapon_ranged)
-	consequence = db_integer(consequence)
-	creature = db_integer(creature)
-	emotion = db_integer(emotion)
-	conflict = db_integer(conflict)
-	profession = db_integer(profession)
-	bonus_check = db_integer(bonus_check)
-	bonus_check_range = db_integer(bonus_check_range)
-	bonus_conflict = db_integer(bonus_conflict)
-	penalty_check = db_integer(penalty_check)
-	penalty_check_range = db_integer(penalty_check_range)
-	penalty_conflict = db_integer(penalty_conflict)
-
-	if emotion == 'other':	
-		entry = Emotion(name=emotion_other)
-		db.session.add(entry)
-		db.session.commit()
-		emotion = entry.id
-		db.session.close()
-
-	if environment == 'other':	
-		entry = Environment(name=environment_other)
-		db.session.add(entry)
-		db.session.commit()
-		environment = entry.id
-		db.session.close()
-
-	if creature == 'other':	
-		entry = Creature(name=creature_other)
-		db.session.add(entry)
-		db.session.commit()
-		creature = entry.id
-		db.session.close()
-
-	if profession == 'other':	
-		entry = Job(name=profession_other)
-		db.session.add(entry)
-		db.session.commit()
-		profession = entry.id
-		db.session.close()
 	error = errors['error']
-
-
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	bonus = integer(bonus)
-	penalty = integer(penalty)
-	environment = integer(environment)
-	sense = integer(sense)
-	mod_range = integer(mod_range)
-	subsense = integer(subsense)
-	cover = integer(cover)
-	conceal = integer(conceal)
-	maneuver = integer(maneuver)
-	weapon_melee = integer(weapon_melee)
-	weapon_ranged = integer(weapon_ranged)
-	consequence = integer(consequence)
-	creature = integer(creature)
-	emotion = integer(emotion)
-	conflict = integer(conflict)
-	profession = integer(profession)
-	bonus_check = integer(bonus_check)
-	bonus_check_range = integer(bonus_check_range)
-	bonus_conflict = integer(bonus_conflict)
-	penalty_check = integer(penalty_check)
-	penalty_check_range = integer(penalty_check_range)
-	penalty_conflict = integer(penalty_conflict)
-	multiple_count = integer(multiple_count)
-	lasts = integer(lasts)
 
 	if error:
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	entry = AdvMod(advantage_id = advantage_id,
-						benefit = benefit,
-						bonus = bonus,
-						bonus_type = bonus_type,
-						penalty = penalty,
-						penalty_type = penalty_type,
-						trigger = trigger,
-						bonus_effect = bonus_effect,
-						penalty_effect = penalty_effect,
-						environment = environment,
-						environment_other = environment_other,
-						sense = sense,
-						mod_range = mod_range,
-						subsense = subsense,
-						cover = cover,
-						conceal = conceal,
-						maneuver = maneuver,
-						weapon_melee = weapon_melee,
-						weapon_ranged = weapon_ranged,
-						tools = tools,
-						condition = condition,
-						power = power,
-						consequence = consequence,
-						creature = creature,
-						creature_other = creature_other,
-						emotion = emotion,
-						emotion_other = emotion_other,
-						conflict = conflict,
-						profession = profession,
-						profession_other = profession_other,
-						bonus_trait_type = bonus_trait_type,
-						bonus_trait = bonus_trait,
-						bonus_check = bonus_check,
-						bonus_check_range = bonus_check_range,
-						bonus_conflict = bonus_conflict,
-						penalty_trait_type = penalty_trait_type,
-						penalty_trait = penalty_trait,
-						penalty_check = penalty_check,
-						penalty_check_range = penalty_check_range,
-						penalty_conflict = penalty_conflict,
-						bonus_active_defense = bonus_active_defense,
-						bonus_conflict_defend = bonus_conflict_defend,
-						penalty_active_defense = penalty_active_defense,
-						penalty_conflict_defend = penalty_conflict_defend,
-						multiple = multiple,
-						multiple_count = multiple_count,
-						lasts = lasts)
+	try:
+		environment = db_integer(environment)
+		sense = db_integer(sense)
+		mod_range = db_integer(mod_range)
+		subsense = db_integer(subsense)
+		cover = db_integer(cover)
+		conceal = db_integer(conceal)
+		maneuver = db_integer(maneuver)
+		weapon_melee = db_integer(weapon_melee)
+		weapon_ranged = db_integer(weapon_ranged)
+		consequence = db_integer(consequence)
+		creature = db_integer(creature)
+		emotion = db_integer(emotion)
+		conflict = db_integer(conflict)
+		profession = db_integer(profession)
+		bonus_check = db_integer(bonus_check)
+		bonus_check_range = db_integer(bonus_check_range)
+		bonus_conflict = db_integer(bonus_conflict)
+		penalty_check = db_integer(penalty_check)
+		penalty_check_range = db_integer(penalty_check_range)
+		penalty_conflict = db_integer(penalty_conflict)
 
-	db.session.add(entry)
-	db.session.commit()
+		if emotion == 'other':	
+			entry = Emotion(name=emotion_other)
+			db.session.add(entry)
+			db.session.commit()
+			emotion = entry.id
+			db.session.close()
+
+		if environment == 'other':	
+			entry = Environment(name=environment_other)
+			db.session.add(entry)
+			db.session.commit()
+			environment = entry.id
+			db.session.close()
+
+		if creature == 'other':	
+			entry = Creature(name=creature_other)
+			db.session.add(entry)
+			db.session.commit()
+			creature = entry.id
+			db.session.close()
+
+		if profession == 'other':	
+			entry = Job(name=profession_other)
+			db.session.add(entry)
+			db.session.commit()
+			profession = entry.id
+			db.session.close()
+
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		bonus = integer(bonus)
+		penalty = integer(penalty)
+		environment = integer(environment)
+		sense = integer(sense)
+		mod_range = integer(mod_range)
+		subsense = integer(subsense)
+		cover = integer(cover)
+		conceal = integer(conceal)
+		maneuver = integer(maneuver)
+		weapon_melee = integer(weapon_melee)
+		weapon_ranged = integer(weapon_ranged)
+		consequence = integer(consequence)
+		creature = integer(creature)
+		emotion = integer(emotion)
+		conflict = integer(conflict)
+		profession = integer(profession)
+		bonus_check = integer(bonus_check)
+		bonus_check_range = integer(bonus_check_range)
+		bonus_conflict = integer(bonus_conflict)
+		penalty_check = integer(penalty_check)
+		penalty_check_range = integer(penalty_check_range)
+		penalty_conflict = integer(penalty_conflict)
+		multiple_count = integer(multiple_count)
+		lasts = integer(lasts)
+
+		entry = AdvMod(advantage_id = advantage_id,
+							benefit = benefit,
+							bonus = bonus,
+							bonus_type = bonus_type,
+							penalty = penalty,
+							penalty_type = penalty_type,
+							trigger = trigger,
+							bonus_effect = bonus_effect,
+							penalty_effect = penalty_effect,
+							environment = environment,
+							environment_other = environment_other,
+							sense = sense,
+							mod_range = mod_range,
+							subsense = subsense,
+							cover = cover,
+							conceal = conceal,
+							maneuver = maneuver,
+							weapon_melee = weapon_melee,
+							weapon_ranged = weapon_ranged,
+							tools = tools,
+							condition = condition,
+							power = power,
+							consequence = consequence,
+							creature = creature,
+							creature_other = creature_other,
+							emotion = emotion,
+							emotion_other = emotion_other,
+							conflict = conflict,
+							profession = profession,
+							profession_other = profession_other,
+							bonus_trait_type = bonus_trait_type,
+							bonus_trait = bonus_trait,
+							bonus_check = bonus_check,
+							bonus_check_range = bonus_check_range,
+							bonus_conflict = bonus_conflict,
+							penalty_trait_type = penalty_trait_type,
+							penalty_trait = penalty_trait,
+							penalty_check = penalty_check,
+							penalty_check_range = penalty_check_range,
+							penalty_conflict = penalty_conflict,
+							bonus_active_defense = bonus_active_defense,
+							bonus_conflict_defend = bonus_conflict_defend,
+							penalty_active_defense = penalty_active_defense,
+							penalty_conflict_defend = penalty_conflict_defend,
+							multiple = multiple,
+							multiple_count = multiple_count,
+							lasts = lasts)
+
+		db.session.add(entry)
+		db.session.commit()
+		
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []	
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'modifiers'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_modifiers_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []	
-	body['success'] = True
-
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'modifiers'
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_modifiers_post(entry, body, cells)
-
-	db.session.close()
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -1704,57 +1774,63 @@ def advantage_post_opposed():
 	opponent_check = request.get_json()['opponent_check']
 	multiple = request.get_json()['multiple']
 
-	player_check = db_integer(opponent_check)
-	opponent_check = db_integer(opponent_check)
+	try:
+		player_check = db_integer(opponent_check)
+		opponent_check = db_integer(opponent_check)
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	mod = integer(mod)
-	opponent_mod = integer(opponent_mod)
-	player_check = integer(player_check)
-	opponent_check = integer(opponent_check)
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		mod = integer(mod)
+		opponent_mod = integer(opponent_mod)
+		player_check = integer(player_check)
+		opponent_check = integer(opponent_check)
 
 
 
-	entry = AdvOpposed(advantage_id = advantage_id,
-							benefit = benefit,
-							trait_type = trait_type,
-							trait = trait,
-							mod = mod,
-							opponent_trait_type = opponent_trait_type,
-							opponent_trait = opponent_trait,
-							opponent_mod = opponent_mod,
-							player_check = player_check,
-							opponent_check = opponent_check,
-							multiple = multiple)
+		entry = AdvOpposed(advantage_id = advantage_id,
+								benefit = benefit,
+								trait_type = trait_type,
+								trait = trait,
+								mod = mod,
+								opponent_trait_type = opponent_trait_type,
+								opponent_trait = opponent_trait,
+								opponent_mod = opponent_mod,
+								player_check = player_check,
+								opponent_check = opponent_check,
+								multiple = multiple)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []	
-	cells = []
-	table_id = 'opposed'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []	
+		cells = []
+		table_id = 'opposed'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot	
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_opposed_post(entry, body, cells)
-
-	db.session.close()
-
+		body['table_id'] = table_id
+		body['spot'] = spot	
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_opposed_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -1817,76 +1893,83 @@ def advantage_post_points():
 	ranks_trait_type = request.get_json()['ranks_trait_type']
 	ranks_trait = request.get_json()['ranks_trait']
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	condition_cost = integer(condition_cost)
-	equipment_points = integer(equipment_points)
-	initiative_cost = integer(initiative_cost)
-	twenty = integer(twenty)
-	check_bonus = integer(check_bonus)
-	check_cost = integer(check_cost)
-	check_turns = integer(check_turns)
-	benefit_choice = integer(benefit_choice)
-	benefit_count = integer(benefit_count)
-	benefit_cost = integer(benefit_cost)
-	benefit_turns = integer(benefit_turns)
-	ranks_gained = integer(ranks_gained)
-	ranks_max = integer(ranks_max)
-	ranks_lasts = integer(ranks_lasts)
+	try:
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		condition_cost = integer(condition_cost)
+		equipment_points = integer(equipment_points)
+		initiative_cost = integer(initiative_cost)
+		twenty = integer(twenty)
+		check_bonus = integer(check_bonus)
+		check_cost = integer(check_cost)
+		check_turns = integer(check_turns)
+		benefit_choice = integer(benefit_choice)
+		benefit_count = integer(benefit_count)
+		benefit_cost = integer(benefit_cost)
+		benefit_turns = integer(benefit_turns)
+		ranks_gained = integer(ranks_gained)
+		ranks_max = integer(ranks_max)
+		ranks_lasts = integer(ranks_lasts)
 
 
-	entry = AdvPoints(advantage_id = advantage_id,
-							benefit = benefit,
-							spend = spend,
-							condition_cost = condition_cost,
-							condition1 = condition1,
-							condition2 = condition2,
-							equipment_points = equipment_points,
-							equipment_vehicles = equipment_vehicles,
-							equipment_headquarters = equipment_headquarters,
-							initiative_cost = initiative_cost,
-							twenty = twenty,
-							check_bonus = check_bonus,
-							check_cost = check_cost,
-							check_turns = check_turns,
-							check_target = check_target,
-							check_all = check_all,
-							benefit_choice = benefit_choice,
-							benefit_count = benefit_count,
-							benefit_cost = benefit_cost,
-							benefit_turns = benefit_turns,
-							ranks_gained = ranks_gained,
-							ranks_max = ranks_max,
-							ranks_lasts = ranks_lasts,
-							ranks_trait_type = ranks_trait_type,
-							ranks_trait = ranks_trait)
+		entry = AdvPoints(advantage_id = advantage_id,
+								benefit = benefit,
+								spend = spend,
+								condition_cost = condition_cost,
+								condition1 = condition1,
+								condition2 = condition2,
+								equipment_points = equipment_points,
+								equipment_vehicles = equipment_vehicles,
+								equipment_headquarters = equipment_headquarters,
+								initiative_cost = initiative_cost,
+								twenty = twenty,
+								check_bonus = check_bonus,
+								check_cost = check_cost,
+								check_turns = check_turns,
+								check_target = check_target,
+								check_all = check_all,
+								benefit_choice = benefit_choice,
+								benefit_count = benefit_count,
+								benefit_cost = benefit_cost,
+								benefit_turns = benefit_turns,
+								ranks_gained = ranks_gained,
+								ranks_max = ranks_max,
+								ranks_lasts = ranks_lasts,
+								ranks_trait_type = ranks_trait_type,
+								ranks_trait = ranks_trait)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'points'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'points'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_points_post(entry, body, cells)
-
-	db.session.close()
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_points_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 
 	return jsonify(body)
 
@@ -1930,45 +2013,51 @@ def advantage_post_resist():
 	mod = request.get_json()['mod']
 	which = request.get_json()['which']
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	mod = integer(mod)
+	try:
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		mod = integer(mod)
 
 
-	entry = AdvResist(advantage_id = advantage_id,
-							benefit = benefit,
-							trait_type = trait_type,
-							trait = trait,
-							mod = mod,
-							which = which)
+		entry = AdvResist(advantage_id = advantage_id,
+								benefit = benefit,
+								trait_type = trait_type,
+								trait = trait,
+								mod = mod,
+								which = which)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'resist'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'resist'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_resist_post(entry, body, cells)
-
-	db.session.close()
-
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_resist_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2013,53 +2102,57 @@ def advantage_post_rounds():
 	trait = request.get_json()['trait']
 	end = request.get_json()['end']
 
-	cost = db_integer(cost)
-	check = db_integer(check)
+	try:
+		cost = db_integer(cost)
+		check = db_integer(check)
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	rounds = integer(rounds)
-	cost = integer(cost)
-	check = integer(check)
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		rounds = integer(rounds)
+		cost = integer(cost)
+		check = integer(check)
 
+		entry = AdvRounds(advantage_id = advantage_id,
+								benefit = benefit,
+								rounds = rounds,
+								cost = cost,
+								check = check,
+								trait_type = trait_type,
+								trait = trait,
+								end = end)
 
+		db.session.add(entry)	
+		db.session.commit()
 
-	entry = AdvRounds(advantage_id = advantage_id,
-							benefit = benefit,
-							rounds = rounds,
-							cost = cost,
-							check = check,
-							trait_type = trait_type,
-							trait = trait,
-							end = end)
+		body = {}
+		body['id'] = entry.id	
+		error = False
+		error_msg = []
+		body['success'] = True
+		
+		rows = columns	
+		mods = []
+		cells = []
+		table_id = 'rounds'	
+		spot = table_id + '-spot'
 
-	db.session.add(entry)	
-	db.session.commit()
-
-	body = {}
-	body['id'] = entry.id	
-	error = False
-	error_msg = []
-	body['success'] = True
+		body['table_id'] = table_id
+		body['spot'] = spot	
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_rounds_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
 	
-	rows = columns	
-	mods = []
-	cells = []
-	table_id = 'rounds'	
-	spot = table_id + '-spot'
-
-	body['table_id'] = table_id
-	body['spot'] = spot	
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_rounds_post(entry, body, cells)
-
-	db.session.close()
-
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2103,45 +2196,51 @@ def advantage_poat_skill():
 	replaced_trait = request.get_json()['replaced_trait']
 	multiple = request.get_json()['multiple']
 	
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
+	try:
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
 
 
-	entry = AdvSkill(advantage_id = advantage_id,
-							benefit = benefit,
-							trait_type = trait_type,
-							trait = trait,
-							replaced_trait_type = replaced_trait_type,
-							replaced_trait = replaced_trait,
-							multiple = multiple)
+		entry = AdvSkill(advantage_id = advantage_id,
+								benefit = benefit,
+								trait_type = trait_type,
+								trait = trait,
+								replaced_trait_type = replaced_trait_type,
+								replaced_trait = replaced_trait,
+								multiple = multiple)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False	
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False	
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'skill'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'skill'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_skill_post(entry, body, cells)
-
-	db.session.close()
-
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_skill_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2194,66 +2293,72 @@ def advantage_post_time():
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
 
-	units = db_integer(units)
-	math = db_integer(math)
-	check_type = db_integer(check_type)
+	try:
+		units = db_integer(units)
+		math = db_integer(math)
+		check_type = db_integer(check_type)
 
-	advantage_id = integer(advantage_id)
-	benefit = integer(benefit)
-	value = integer(value)
-	units = integer(units)
-	time_value = integer(time_value)
-	math = integer(math)
-	dc = integer(dc)
-	check_type = integer(check_type)
-	recovery_penalty = integer(recovery_penalty)
-	recovery_time = integer(recovery_time)
+		advantage_id = integer(advantage_id)
+		benefit = integer(benefit)
+		value = integer(value)
+		units = integer(units)
+		time_value = integer(time_value)
+		math = integer(math)
+		dc = integer(dc)
+		check_type = integer(check_type)
+		recovery_penalty = integer(recovery_penalty)
+		recovery_time = integer(recovery_time)
 
 
-	entry = AdvTime(advantage_id = advantage_id,
-						benefit = benefit,
-						time_type = time_type,
-						value_type = value_type,
-						value = value,
-						units = units,
-						time_value = time_value,
-						math = math,
-						trait_type = trait_type,
-						trait = trait,
-						dc = dc,
-						check_type = check_type,
-						recovery = recovery,
-						recovery_penalty = recovery_penalty,
-						recovery_time = recovery_time,
-						recovery_incurable = recovery_incurable)
+		entry = AdvTime(advantage_id = advantage_id,
+							benefit = benefit,
+							time_type = time_type,
+							value_type = value_type,
+							value = value,
+							units = units,
+							time_value = time_value,
+							math = math,
+							trait_type = trait_type,
+							trait = trait,
+							dc = dc,
+							check_type = check_type,
+							recovery = recovery,
+							recovery_penalty = recovery_penalty,
+							recovery_time = recovery_time,
+							recovery_incurable = recovery_incurable)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'time'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'time'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows	
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_time_post(entry, body, cells)
-
-	db.session.close()
-
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows	
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_time_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
@@ -2295,42 +2400,48 @@ def advantage_post_variable():
 	active = request.get_json()['active']
 	effort = request.get_json()['effort']
 
-	advantage_id = integer(advantage_id)
+	try:
+		advantage_id = integer(advantage_id)
 
 
-	entry = AdvVariable(advantage_id = advantage_id,
-							trait_type = trait_type,
-							trait = trait, 
-							active = active,
-							effort = effort)
+		entry = AdvVariable(advantage_id = advantage_id,
+								trait_type = trait_type,
+								trait = trait, 
+								active = active,
+								effort = effort)
 
-	db.session.add(entry)
-	db.session.commit()
+		db.session.add(entry)
+		db.session.commit()
 
-	body = {}
-	body['id'] = entry.id
-	error = False
-	error_msg = []
-	body['success'] = True
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
 
-	rows = columns
-	mods = []
-	cells = []
-	table_id = 'variable'
-	spot = table_id + '-spot'
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'variable'
+		spot = table_id + '-spot'
 
-	body['table_id'] = table_id
-	body['spot'] = spot
-	body['created'] = created
-	body['title'] = ''
-	body['rows'] = rows
-	body['mods'] = []
-	body['font'] = font
-			
-	body = adv_variable_post(entry, body, cells)
-
-	db.session.close()
-
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+				
+		body = adv_variable_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
 	return jsonify(body)
 
 
