@@ -135,7 +135,7 @@ function minions_submit() {
 			minion_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/power/' + table_id + '/delete/'
+			const route = '/advantage/' + table_id + '/delete/'
 			create_table(jsonResponse, minion_grid, route);
 			clear_errors(err_line, errors)
 
