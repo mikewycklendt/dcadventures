@@ -1389,10 +1389,7 @@ def advantage_post_minion():
 							resitable_check = resitable_check,
 							resitable_dc = resitable_dc,
 							multiple_value = multiple_value,
-							horde = horde,
-							columns = columns,
-							created = created,
-							font = font)
+							horde = horde)
 
 	db.session.add(entry)
 	db.session.commit()
