@@ -294,7 +294,7 @@ def adv_deg_mod_post(entry, body, cells):
 	target = entry.target
 	benefit = entry.benefit
 	value = entry.value
-	deg_mod_type = entry.deg_mod_type
+	deg_type = entry.deg_mod_type
 	consequence_action_type = entry.consequence_action_type
 	consequence_action = entry.consequence_action
 	consequence_trait_type = entry.consequence_trait_type

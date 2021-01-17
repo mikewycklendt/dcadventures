@@ -279,7 +279,7 @@ def adv_deg_mod_post_errors(data):
 	target = data['target']
 	benefit = data['benefit']
 	value = data['value']
-	deg_mod_type = data['deg_mod_type']
+	deg_type = data['deg_mod_type']
 	consequence_action_type = data['consequence_action_type']
 	consequence_action = data['consequence_action']
 	consequence_trait_type = data['consequence_trait_type']
