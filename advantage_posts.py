@@ -121,7 +121,7 @@ def adv_circ_post(entry, body, cells):
 	circ_type_select = [{'type': '', 'name': 'Triggered By'}, {'type': 'use', 'name': 'Use of this Advantage'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
 
-	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
+	who_check_select = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player'}, {'type': 'opponent', 'name': 'Opponent'}]
 	check_who = selects(check_who, who_check_select)
 
 	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
@@ -143,7 +143,7 @@ def adv_circ_post(entry, body, cells):
 	cells = vcell_add('Trigger', circ_type, vcells, cells)
 
 	vcells = vcell('trait', 17, [null_trait])
-	vcells = vcell('override', 19, [null_override_trait], vcells)
+	vcells = vcell('override', 19, ['Override', null_override_trait], vcells)
 	vcells = vcell('condition', 17, [null_condition], vcells)	
 	cells = vcell_add('Nullified', null_type, vcells, cells)
 
