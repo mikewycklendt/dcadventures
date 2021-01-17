@@ -75,7 +75,7 @@ function points_submit() {
 	const errors = 'points-err';
 	const err_line = 'points-err-line';
 
-	response = fetch('/advantage/modifiers/create', {
+	response = fetch('/advantage/points/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
