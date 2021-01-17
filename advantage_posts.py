@@ -131,7 +131,7 @@ def adv_circ_post(entry, body, cells):
 	conflict = name(ConflictAction, conflict)
 
 	cells = cell('Benefit', 15, [benefit])
-	cells = cell('Target', 15, [target], cells)
+	cells = cell('Target', 13, [target], cells)
 	cells = cell('Modifier', 10, [mod], cells)
 	cells = cell('Lasts', 8, [rounds], cells)
 
@@ -147,7 +147,7 @@ def adv_circ_post(entry, body, cells):
 	vcells = vcell('condition', 17, [null_condition], vcells)	
 	cells = vcell_add('Nullified', null_type, vcells, cells)
 
-	cells = cell('Circumstance', 35, [circumstance], cells)
+	cells = cell('Circumstance', 25, [circumstance], cells)
 
 
 	body = send(cells, body)
