@@ -2197,7 +2197,7 @@ def advantage_post_time():
 
 	units = db_integer(units)
 	math = db_integer(units)
-	check_type = db_integer(units)
+	check_type = db_integer(check_type)
 
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
