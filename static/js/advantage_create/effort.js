@@ -28,7 +28,9 @@ function effort_benefit_choice() {
 	const select = 'effort_benefit_choice';
 	const options = [{'val': 'x', 'div': 'effort-benefit-count'}]
 	const benefit_count = document.getElementById('effort_benefit_count');
-	
+	const check = document.getElementById('effort_benefit_effort');
+
+	check.checked = false;
 	benefit_count.selectedIndex=0;
 
 	select_opacity(select, options);
