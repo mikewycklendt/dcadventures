@@ -421,14 +421,14 @@ def adv_effort_post(entry, body, cells):
 	condition1 = selects(condition1, condition_select)
 	condition2 = selects(condition2, condition_select)	
 
-	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
+	updown_select = [{'type': '1', 'name': 'Up'}, {'type': '-1', 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown_select)
 
 	benefit = name(Benefit, benefit)
 	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
 
 	cells = cell('Benefit', 20, [benefit])
-	vcells = vcell('condition', 35, [condition1, 'tO', condition2])
+	vcells = vcell('condition', 25, [condition1, 'tO', condition2])
 	vcells = vcell('damage', 23, [condition_damage_value, 'Conditions', condition_damage], vcells)
 	cells = vcell_add('Condition Effect', condition_type, vcells, cells)
 	cells = cell('Benefits', 8, [benefit_count], cells)
@@ -766,7 +766,7 @@ def adv_points_post(entry, body, cells):
 	benefit = name(Benefit, benefit)
 	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefits')
 
-	cells = cell('Benefit', 20, [benefit])
+	cells = cell('Benefit', 15, [benefit])
 	word = string('if existing ranks is less than', ranks_max)
 	vcells = vcell('ranks', 70, ['Gain', ranks_gained, 'of', ranks_trait, 'for', ranks_lasts, word, ranks_max])
 	word = string('Per Benefit', benefit_count)

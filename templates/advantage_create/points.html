@@ -166,7 +166,7 @@
 					<select class="benefit-entry" id="points_benefit_choice" name="points_benefit_choice" onchange="points_benefit_choice()">
 						<option value="">Benefit</option>
 						<option value="x">Variable</option>
-						{% for b in benefits_all %}
+						{% for b in benefits %}
 							<option value={{b.id}}>{{b.name}}</option>
 						{% endfor %}
 					</select>
