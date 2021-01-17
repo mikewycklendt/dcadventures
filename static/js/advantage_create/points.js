@@ -23,6 +23,9 @@ function points_spend() {
 function points_benefit_choice() {
 	const select = 'points_benefit_choice';
 	const options = [{'val': 'x', 'div': 'points-benefit-count'}]
+	const benefit_count = document.getElementById('points_benefit_count');
+	
+	benefit_count.selectedIndex=0;
 
 	select_opacity(select, options);
 }
