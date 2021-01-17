@@ -407,7 +407,6 @@ def adv_effort_post_errors(data):
 
 	errors = required(effect, 'Effect', errors)
 	errors  = required(condition_type, 'Condition Type', errors)
-	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2], errors)
 
 	errors = variable_fields('benefit', 'Benefit', effect, [benefit_choice, benefit_turns], errors)
 	errors = variable_field('benefit', effect, 'Turns', benefit_turns, errors)
