@@ -188,9 +188,9 @@ def adv_condition_post(entry, body, cells):
 	damage_value = entry.damage_value
 	damage = entry.damage
 
-	damage = integer_convert(damage)
+	damage_value = integer_convert(damage_value)
 
-	updown_select = [{'type': '1', 'name': 'Up'}, {'type': '-1', 'name': 'Down'}]
+	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	damage = selects(damage, updown_select)
 
 	benefit = name(Benefit, benefit)

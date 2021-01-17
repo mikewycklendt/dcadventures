@@ -877,6 +877,7 @@ def advantage_post_condition():
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
 	damage_value = integer(damage_value)
+	damage = integer(damage)
 
 	entry = AdvCondition(advantage_id = advantage_id,
 								benefit = benefit,
