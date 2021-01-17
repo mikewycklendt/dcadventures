@@ -47,6 +47,13 @@ function circ_null_trait_type() {
 	trait_select(select, fill);
 }
 
+function circ_null_override_trait_type() {
+	const select = 'circ_null_override_trait_type';
+	const fill = 'circ_null_override_trait';
+
+	trait_select(select, fill);
+}
+
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
