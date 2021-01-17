@@ -648,7 +648,7 @@ def adv_points_post_errors(data):
 	benefit = data['benefit']
 	spend = data['spend']
 	condition_cost = data['condition_cost']
-	condition1 = data['conditioon1']
+	condition1 = data['condition1']
 	condition2 = data['condition2']
 	equipment_points = data['equipment_points']
 	equipment_vehicles = data['equipment_vehicles']
