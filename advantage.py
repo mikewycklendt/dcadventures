@@ -863,7 +863,7 @@ def advantage_post_condition():
 
 	advantage_id = request.get_json()['advantage_id']
 	columns = request.get_json()['columns']
-	Created = request.get_json()['created']
+	created = request.get_json()['created']
 	font = request.get_json()['font']
 	benefit = request.get_json()['benefit']
 	condition_type = request.get_json()['condition_type']
