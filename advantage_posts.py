@@ -773,8 +773,8 @@ def adv_points_post(entry, body, cells):
 	vcells = vcell('check', 65, [check_bonus, 'on', check_target, 'for', check_turns, 'for', check_cost], vcells)
 	vcells = vcell('equip', 55, [equipment_points, 'of Equipment Per Rank'], vcells)
 	vcells = vcell('condition', 65, [condition1, 'to', condition2, 'for', condition_cost, 'Points'], vcells)
-	vcells = vcell('initiative', 35 ['Gain Initiative for', initiative_cost, 'Points'], vcells)
-	vcells = vcell('20', 30 ['Automatic 20', 'for', twenty, 'Points'], vcells)
+	vcells = vcell('initiative', 35, ['Gain Initiative for', initiative_cost, 'Points'], vcells)
+	vcells = vcell('20', 30, ['Automatic 20', 'for', twenty, 'Points'], vcells)
 	cells = vcell_add('Effect', spend, vcells, cells)
 
 	check_all = variable_value('check', spend, check_all)
