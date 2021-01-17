@@ -189,13 +189,13 @@ def adv_condition_post_errors(data):
 	errors = variable_fields('active', 'Active Condition', condition_type, [condition], errors)
 	errors = variable_field('active', condition_type, 'Condition', condition, errors)
 	errors = variable_fields('change', 'CondItion Change', condition_type, [condition1, condition2], errors)
-	errors = variable_field('change', condition_type, 'sTARTING CondItion', condition1, errors)
-	errors = variable_field('change', condition_type, 'eNDINGCondItion', condition2, errors)
+	errors = variable_field('change', condition_type, 'Starting CondItion', condition1, errors)
+	errors = variable_field('change', condition_type, 'Ending CondItion', condition2, errors)
 	errors = variable_fields('damage', 'Condition Damage', condition_type, [damage_value, damage], errors)
 	errors = variable_field('damage', condition_type, 'Damage Degrees', damage_value, errors)
 	errors = variable_field('damage', condition_type, 'Condition Damage Direction ', damage, errors)
 	errors = variable_fields('null', 'Nullify Condition', condition_type, [condition_null], errors)
-	errors = variable_field('null', condition_type, 'NullifIED Condition', condition_null, errors)
+	errors = variable_field('null', condition_type, 'Nullified Condition', condition_null, errors)
 
 
 	return(errors)
