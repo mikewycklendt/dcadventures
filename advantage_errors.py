@@ -406,7 +406,7 @@ def adv_effort_post_errors(data):
 	errors = db_check(Benefit, benefit_choice, 'Benefit', errors)
 
 	errors = required(effect, 'Effect', errors)
-	errors  = required(condition_type, 'Condition Type')
+	errors  = required(condition_type, 'Condition Type', errors)
 	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2], errors)
 	errors = variable_field('condition', condition_type, 'Starting Condition', condition1, errors)
 	errors = variable_field('condition', condition_type, 'Ending Condition', condition2, errors)
