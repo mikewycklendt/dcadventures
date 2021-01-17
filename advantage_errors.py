@@ -690,9 +690,8 @@ def adv_points_post_errors(data):
 
 	errors = required(spend, 'Points Type', errors)
 
-	errors = variable_fields('ranks', 'Gain Ranks', spend, [ranks_gained, ranks_max, ranks_lasts, ranks_trait_type, ranks_trait], errors)
+	errors = variable_fields('ranks', 'Gain Ranks', spend, [ranks_gained, ranks_lasts, ranks_trait_type, ranks_trait], errors)
 	errors = variable_field('ranks', spend, 'Ranks Gained', ranks_gained, errors)
-	errors = variable_field('ranks', spend, 'Maximum Ranks', ranks_max, errors)
 	errors = variable_field('ranks', spend, 'Ranks Duration', ranks_lasts, errors)
 	errors = variable_field('ranks', spend, 'Trait Type', ranks_trait_type, errors)
 	errors = variable_field('ranks', spend, 'Trait', ranks_trait, errors)
