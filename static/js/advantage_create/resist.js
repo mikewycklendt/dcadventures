@@ -58,6 +58,7 @@ function resist_submit() {
 		if (jsonResponse.success) {
 
 			multiple_field('resist-multiple');
+			multiple_field('resist-multiple-title');
 
 			resist_grid.columns.length = 0;
 			resist_grid.columns = jsonResponse.rows;
