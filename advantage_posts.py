@@ -379,7 +379,7 @@ def adv_deg_mod_post(entry, body, cells):
 	vcells = vcell('knowledge', 28, [knowledge_count, knowledge_specificity, 'Bonuses'], vcells, 'bonus', knowledge)
 	vcells = vcell('knowledge', 25, ['Gain Knowledge but GM may lie'], vcells, 'lie', knowledge)
 	word = string('for', consequence_trait)
-	vcells = vcell('consequence', 33, [consequence, 'for', consequence_trait, consequence_action], vcells)
+	vcells = vcell('consequence', 33, [consequence, word, consequence_trait, consequence_action], vcells)
 	
 	vcell_add('Effect', deg_type, vcells, cells)
 	
