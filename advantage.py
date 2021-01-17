@@ -2240,7 +2240,7 @@ def advantage_post_time():
 	rows = columns
 	mods = []
 	cells = []
-	table_id = 'timr'
+	table_id = 'time'
 	spot = table_id + '-spot'
 
 	body['table_id'] = table_id

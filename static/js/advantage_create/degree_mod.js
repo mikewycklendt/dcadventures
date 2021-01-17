@@ -198,7 +198,7 @@ function deg_mod_submit() {
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
-			const route = '/power/degree_mod/delete/'
+			const route = '/advantage/degree_mod/delete/'
 			create_table(jsonResponse, deg_mod_grid, route);
 			clear_errors(err_line, errors)
 
