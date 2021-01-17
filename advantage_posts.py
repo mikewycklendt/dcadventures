@@ -68,8 +68,8 @@ def adv_alt_check_post(entry, body, cells):
 	cells = cell('Check Type', 15, [check_type], cells)
 	cells = cell('Modifier', 13, [mod], cells)
 
-	vcells = vcell('condition', 25, [condition1, 'to', condition2]) 
-	vcells = vcell('conflict', 25, ['Action: ', conflict, 'Range: ', conflict_range], vcells)
+	vcells = vcell('condition', 20, [condition1, 'to', condition2]) 
+	vcells = vcell('conflict', 20, ['Action: ', conflict, 'Range: ', conflict_range], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	conflict_weapon = variable_value('conflict', trigger, conflict_weapon)
