@@ -508,7 +508,6 @@ def adv_minion_post(entry, body, cells):
 	new_mod = mod_create('Sacrifice', 11)
 	new_mod  = mod_cell('Cost', 6, [sacrifice_cost], new_mod)
 	body = mod_add(sacrifice, new_mod, body)
-	body = send(cells, body)
 
 	body = send(cells, body)
 	
