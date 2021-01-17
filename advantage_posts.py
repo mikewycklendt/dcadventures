@@ -764,14 +764,14 @@ def adv_points_post(entry, body, cells):
 	check_target = selects(check_target, targets)
 
 	benefit = name(Benefit, benefit)
-	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
+	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefits')
 
 	cells = cell('Benefit', 20, [benefit])
 	word = string('if existing ranks is less than', ranks_max)
 	vcells = vcell('ranks', 70, ['Gain', ranks_gained, 'of', ranks_trait, 'for', ranks_lasts, word, ranks_max])
 	word = string('Per Benefit', benefit_count)
 	vcells = vcell('benefit', 55, ['Gain', benefit_count, benefit_choice, 'for', benefit_turns, 'for', benefit_cost, 'Points', word], vcells)
-	vcells = vcell('check', 65, [check_bonus, 'on', check_target, 'for', check_turns, 'for', check_cost], vcells)
+	vcells = vcell('check', 65, [check_bonus, 'on', check_target, 'for', check_turns, 'for', check_cost, 'Points'], vcells)
 	vcells = vcell('equip', 55, [equipment_points, 'of Equipment Per Rank'], vcells)
 	vcells = vcell('condition', 65, [condition1, 'to', condition2, 'for', condition_cost, 'Points'], vcells)
 	vcells = vcell('initiative', 35, ['Gain Initiative for', initiative_cost, 'Points'], vcells)
