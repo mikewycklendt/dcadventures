@@ -1559,7 +1559,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			if (new_cell.content == true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
-				check.className = 'power-check';
+				check.className = 'advantage-check';
 				con.appendChild(check)
 			} else {
 				con.innerHTML = new_cell.content;
