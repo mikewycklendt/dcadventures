@@ -796,7 +796,7 @@ def advantage_post_combined():
 	ranks = request.get_json()['ranks']
 	advantage = request.get_json()['advantage']
 
-	advantage_id = request.get_json()['advantage_id']
+	advantage_id = integer(advantage_id)
 	ranks = integer(ranks)
 
 	entry = AdvCombined(advantage_id = advantage_id,
