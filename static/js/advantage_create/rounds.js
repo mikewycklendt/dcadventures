@@ -28,7 +28,7 @@ function rounds_submit() {
 	const benefit = select("rounds_benefit");
 	const rounds = select("rounds_rounds");
 	const cost = select("rounds_cost");
-	const check = select("rounds_check");
+	const check = select("rounds_check_type");
 	const trait_type = select("rounds_trait_type");
 	const trait = select("rounds_trait");
 	const end = select("rounds_end");
