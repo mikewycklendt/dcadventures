@@ -66,7 +66,7 @@ def adv_alt_check_post(entry, body, cells):
 
 	cells = cell('Benefit', 20, [benefit])
 	cells = cell('Check Type', 15, [check_type], cells)
-	cells = cell('Modifier', 10, [mod], cells)
+	cells = cell('Modifier', 13, [mod], cells)
 
 	vcells = vcell('condition', 30, [condition1, 'to', condition2]) 
 	vcells = vcell('conflict', 30, ['Action: ', conflict, 'Range: ', conflict_range], vcells)
@@ -77,9 +77,9 @@ def adv_alt_check_post(entry, body, cells):
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)
 	cells = cell('Trait', 20, [trait], cells)
 	cells = cell('Action', 17, [action], cells)
-	cells = cell('When', 10, [when], cells)
+	cells = cell('When', 13, [when], cells)
 	cells = check_cell('Free Check', 12, free, cells)
-	cells = cell('Circumstance', 35, [circumstance], cells)
+	cells = cell('Circumstance', 28, [circumstance], cells)
 
 	body = send(cells, body)
 	
