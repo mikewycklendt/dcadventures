@@ -38,12 +38,14 @@ def action_convert(value, action_value):
 
 	if value == 'auto':
 		a = 'Automatic'
-	if value == 'base':
+	elif value == 'base':
 		action = db.seession.query(Action).filter_by(id=action_value).one()
 		a = action.name
-	if value == 'conflict':
+	elif value == 'conflict':
 		action = db.seession.query(ConflictAction).filter_by(id=action_value).one()
 		a = action.name
+	else:
+		a = ''
 
 	return (a)
 
