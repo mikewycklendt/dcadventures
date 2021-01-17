@@ -53,7 +53,7 @@ function time_submit() {
 	const value_type = select("time_value_type");
 	const value = text("time_value");
 	const units = select("time_units");
-	const time_value = select("time_value");
+	const time_value = select("time_math_value");
 	const math = select("time_math");
 	const trait_type = select("time_trait_type");
 	const trait = select("time_trait");
