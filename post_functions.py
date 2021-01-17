@@ -601,22 +601,23 @@ def check_string(word, value):
 
 	return (value)
 
-def variable_trait(value):
+def variable_trait(value, trait):
 	
-	if value == 'x_skill':
-		value = 'Variable Skill'
-	elif value == 'x_ability':
-		value = 'Variable Ability'
-	elif value == 'x_defense':
-		value = 'Variable Defense'
-	elif value == 'x_power':
-		value = 'Variable Power'
-	elif value == 'x_bonus':
-		value = 'Variable Enhanced Skill'
-	elif value == 'x_advantage':
-		value = 'Variable Advantage' 
-	elif value == 'x_extra':
-		value = 'Variable Extra'
+	if value == 'x':
+		if trait == 'ability':
+			value = 'Variable Ability'
+		elif trait == 'defense':
+			value = 'Variable Defense'
+		elif trait == 'skill':
+			value = 'Variable Skill'
+		elif trait == 'bonus':
+			value = 'Variable Enhanced Skill'
+		elif trait == 'power':
+			value = 'Variable Power'
+		elif trait == 'advantage':
+			value = 'Variable Advantage'
+		elif trait == 'extra':
+			value = 'Variable Extra'
 
 	return (value)
 	

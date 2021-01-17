@@ -48,7 +48,7 @@ def adv_alt_check_post(entry, body, cells):
 	action = entry.action
 	free = entry.free
 
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 
 
 	mod = integer_convert(mod)
@@ -102,15 +102,15 @@ def adv_circ_post(entry, body, cells):
 	check_who = entry.check_who
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
-	check_trait = variable_trait(check_trait)
+	check_trait = variable_trait(check_trait, check_trait_type)
 	null_type = entry.null_type
 	null_condition = entry.null_condition
 	null_trait_type = entry.null_trait_type
 	null_trait = entry.null_trait
-	null_trait = variable_trait(null_trait)
+	null_trait = variable_trait(null_trait, null_trait_type)
 	null_override_trait_type = entry.null_override_trait_type
 	null_override_trait = entry.null_override_trait
-	null_override_trait = variable_trait(null_override_trait)
+	null_override_trait = variable_trait(null_override_trait, null_override_trait_type)
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
@@ -222,7 +222,7 @@ def adv_dc_post(entry, body, cells):
 	math_math = entry.math_math
 	math_trait_type = entry.math_trait_type
 	math_trait = entry.math_trait
-	math_trait = variable_trait(math_trait)
+	math_trait = variable_trait(math_trait, math_trait_type)
 	condition = entry.condition
 	keyword_check = entry.keyword_check
 	check_type = entry.check_type
@@ -234,7 +234,7 @@ def adv_dc_post(entry, body, cells):
 	keyword = entry.keyword
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
-	check_trait = variable_trait(check_trait)
+	check_trait = variable_trait(check_trait, check_trait_type)
 	check_mod = entry.check_mod
 
 	
@@ -299,7 +299,7 @@ def adv_deg_mod_post(entry, body, cells):
 	consequence_action = entry.consequence_action
 	consequence_trait_type = entry.consequence_trait_type
 	consequence_trait = entry.consequence_trait
-	consequence_trait = variable_trait(consequence_trait)
+	consequence_trait = variable_trait(consequence_trait, consequence_trait_type)
 	consequence = entry.consequence
 	knowledge = entry.knowledge
 	knowledge_count = entry.knowledge_count
@@ -310,13 +310,13 @@ def adv_deg_mod_post(entry, body, cells):
 	circ_turns = entry.circ_turns
 	circ_trait_type = entry.circ_trait_type
 	circ_trait = entry.circ_trait
-	circ_trait = variable_trait(circ_trait)
+	circ_trait = variable_trait(circ_trait, circ_trait_type)
 	measure_type = entry.measure_type
 	measure_val1 = entry.measure_val1
 	measure_math = entry.measure_math
 	measure_trait_type = entry.measure_trait_type
 	measure_trait = entry.measure_trait
-	measure_trait = variable_trait(measure_trait)
+	measure_trait = variable_trait(measure_trait, measure_trait_type)
 	measure_value = entry.measure_value
 	measure_rank = entry.measure_rank
 	condition_type = entry.condition_type
@@ -462,7 +462,7 @@ def adv_minion_post(entry, body, cells):
 	attitude_attitude = entry.attitude_attitude
 	attitude_trait_type = entry.attitude_trait_type
 	attitude_trait = entry.attitude_trait
-	attitude_trait = variable_trait(attitude_trait)
+	attitude_trait = variable_trait(attitude_trait, attitude_trait_type)
 	resitable_check = entry.resitable_check
 	resitable_dc = entry.resitable_dc
 	multiple_value = entry.multiple_value
@@ -550,13 +550,13 @@ def adv_modifiers_post(entry, body, cells):
 	profession_other = entry.profession_other
 	bonus_trait_type = entry.bonus_trait_type
 	bonus_trait = entry.bonus_trait
-	bonus_trait = variable_trait(bonus_trait)
+	bonus_trait = variable_trait(bonus_trait, bonus_trait_type)
 	bonus_check = entry.bonus_check
 	bonus_check_range = entry.bonus_check_range
 	bonus_conflict = entry.bonus_conflict
 	penalty_trait_type = entry.penalty_trait_type
 	penalty_trait = entry.penalty_trait
-	penalty_trait = variable_trait(penalty_trait)
+	penalty_trait = variable_trait(penalty_trait, penalty_trait_type)
 	penalty_check = entry.penalty_check
 	penalty_check_range = entry.penalty_check_range
 	penalty_conflict = entry.penalty_conflict
@@ -675,11 +675,11 @@ def adv_opposed_post(entry, body, cells):
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	mod = entry.mod
 	opponent_trait_type = entry.opponent_trait_type
 	opponent_trait = entry.opponent_trait
-	opponent_trait = variable_trait(opponent_trait)
+	opponent_trait = variable_trait(opponent_trait, opponent_trait_type)
 	opponent_mod = entry.opponent_mod
 	player_check = entry.player_check
 	opponent_check = entry.opponent_check
@@ -738,7 +738,7 @@ def adv_points_post(entry, body, cells):
 	ranks_lasts = entry.ranks_lasts
 	ranks_trait_type = entry.ranks_trait_type
 	ranks_trait = entry.ranks_trait
-	ranks_trait = variable_trait(ranks_trait)
+	ranks_trait = variable_trait(ranks_trait, ranks_trait_type)
 
 	
 
@@ -797,7 +797,7 @@ def adv_resist_post(entry, body, cells):
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	mod = entry.mod
 	which = entry.which
 
@@ -829,7 +829,7 @@ def adv_rounds_post(entry, body, cells):
 	check = entry.check
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	end = entry.end
 
 	rounds = integer_convert(rounds)
@@ -862,10 +862,10 @@ def adv_skill_post(entry, body, cells):
 	benefit = entry.benefit
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	replaced_trait_type = entry.replaced_trait_type
 	replaced_trait = entry.replaced_trait
-	replaced_trait = variable_trait(replaced_trait)
+	replaced_trait = variable_trait(replaced_trait, replaced_trait_type)
 	multiple = entry.multiple
 
 	benefit = name(Benefit, benefit)\
@@ -897,7 +897,7 @@ def adv_time_post(entry, body, cells):
 	math = entry.math
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	dc = entry.dc
 	check_type = entry.check_type
 	recovery = entry.recovery
@@ -948,7 +948,7 @@ def adv_variable_post(entry, body, cells):
 	advantage_id = entry.advantage_id
 	trait_type = entry.trait_type
 	trait = entry.trait
-	trait = variable_trait(trait)
+	trait = variable_trait(trait, trait_type)
 	active = entry.active
 	effort = entry.effort
 
