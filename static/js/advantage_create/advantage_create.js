@@ -1115,7 +1115,7 @@ function selects_add(id, name, selects_input) {
 		const o = document.createElement('option');
 		o.value = id;
 		o.text = name;
-		benefit.add(o);
+		select.add(o);
 	}
 }
 
