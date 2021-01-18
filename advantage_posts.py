@@ -961,3 +961,19 @@ def adv_variable_post(entry, body, cells):
 
 	return (body)
 
+def adv_levels_post(entry, body, cells):
+
+	advantage_id = entry.advantage_id
+	level_type = entry.level_type
+	level = entry.name
+	level_effect = entry.level_effect
+
+
+	cells = cell('Level', 17, [level], cells)
+	cells = cell('Effect', 58, [level_effect], cells)
+
+	body = send(cells, body)
+
+	cells.clear()
+
+	return (body)

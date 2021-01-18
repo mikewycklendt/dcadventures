@@ -138,6 +138,26 @@ def adv_save_errors(data):
 
 	return (errors)
 
+def adv_levels_post_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	advantage_id = data['advantage_id'
+	level_type = data['level_type']
+	level = data['level']
+	level_effect = data['level_effect']
+
+	errors = create_check('Advantage', advantage_id, Advantage, errors)
+
+	errors = id_check(Advantage, advantage_id, 'Advantage', errors)
+
+	errors = required(level_type, 'Level Type', errors)
+	errors = required(level, 'Level', errors)
+	errors = required(level_effect, 'Level Effect', errors)
+	
+
+	return (errors)
+
 def adv_alt_check_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
