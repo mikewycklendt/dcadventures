@@ -119,7 +119,7 @@ def adv_save_errors(data):
 	errors = variable_field('mod', dc_type, 'DC Modifier', dc_mod, errors)
 
 	errors = check_fields(simultaneous, 'Simultaneous Action', [simultaneous_type], errors)
-	errors = check_field(simultaneous, 'Simultaneous Action', 'Simultaneous Action Type', simultaneous_type. errors)
+	errors = check_field(simultaneous, 'Simultaneous Action', 'Simultaneous Action Type', simultaneous_type, errors)
 
 	errors = check_fields(extra_action, 'Third Action', [action1, action2], errors)
 	errors = check_field(extra_action, 'Third Action', 'First Action', action1, errors)
