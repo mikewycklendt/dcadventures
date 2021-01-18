@@ -774,8 +774,14 @@ def int_check(value, name, errors):
 
 def db_integer(value):
 
-	if value == 'none' or value == 'x':
+	if value == 'none' or value == 'x' or value == '':
 		value = None
+	else:
+		try:
+			value = value(int)
+		except:
+			print('not an int')
+			print(value)
 
 	return (value)
 
