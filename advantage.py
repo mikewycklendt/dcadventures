@@ -453,6 +453,7 @@ def save_advantage():
 	dc_mod = integer(dc_mod)
 	languages = integer(languages)
 	language_rank = integer(language_rank)
+	mods_count = integer(mods_count)
 
 	entry = db.session.query(Advantage).filter(Advantage.id == advantage_id).one()
 
