@@ -913,8 +913,10 @@ def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id,
 		if multiple:
 			count = db.session.query(table).filter_by(advantage_id=advantage_id).count()
 			if count < 2:
-				error = 'Since you chose the ' + option + ' for the ' + fieldname + ' field, you must create at least two entries for the ' + rule + ' rule or make a different selection for the ' + fieldname + ' field.'
-	
+				error = True
+				message = 'Since you chose the ' + option + ' for the ' + fieldname + ' field, you must create at least two entries for the ' + rule + ' rule or make a different selection for the ' + fieldname + ' field.'
+				error_msgs.append(message)
+				
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
