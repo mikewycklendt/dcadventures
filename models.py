@@ -2370,11 +2370,144 @@ class Advantage(db.Model):
 	__tablename__ = 'advantages'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	description = db.Column(db.String())
+	adv_type = db.Column(db.String())
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	ranked = db.Column(db.Boolean)
+	ranked_ranks = db.Column(db.Integer)
+	ranked_max = db.Column(db.Integer)
+	trait_type = db.Column(db.String())
+	trait = db.Column(db.String())
+	replaced_trait_type = db.Column(db.String())
+	replaced_trait =  db.Column(db.String())
+	skill_type = db.Column(db.String())
+	skill = db.Column(db.String())
+	skill_description = db.Column(db.String())
+	skill_untrained = db.Column(db.Boolean)
+	no_pre_check = db.Column(db.Boolean)
+	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	conflict_immune = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	dc_type = db.Column(db.String())
+	dc_value = db.Column(db.Integer)
+	dc_mod = db.Column(db.Integer)
+	alter_target = db.Column(db.String())
+	simultaneous = db.Column(db.Boolean)
+	simultaneous_type = db.Column(db.String())
+	extra_action = db.Column(db.Boolean)
+	action1 = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	action2 = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	invent = db.Column(db.Boolean)
+	invent_permanence = db.Column(db.String())
+	invent_trait_type = db.Column(db.String())
+	invent_trait = db.Column(db.String())
+	rituals = db.Column(db.Boolean)
+	gm_secret_check = db.Column(db.Boolean)
+	gm_trait_type = db.Column(db.String())
+	gm_trait = db.Column(db.String())
+	gm_veto = db.Column(db.Boolean)
+	language = db.Column(db.Boolean)
+	languages = db.Column(db.Integer)
+	language_rank = db.Column(db.Integer)
+	multiple = db.Column(db.Boolean)
+	groups = db.Column(db.Boolean)
+	pressure = db.Column(db.Boolean)
+	check_check = db.Column(db.Boolean)
+	circumstance = db.Column(db.Boolean)
+	combined = db.Column(db.Boolean)
+	condition = db.Column(db.Boolean)
+	dc = db.Column(db.Boolean)
+	degree = db.Column(db.Boolean)
+	effort = db.Column(db.Boolean)
+	levels = db.Column(db.Boolean)
+	minion = db.Column(db.Boolean)
+	mods = db.Column(db.Boolean)
+	mods_multiple = db.Column(db.String())
+	mods_count = db.Column(db.Integer)
+	opposed = db.Column(db.Boolean)
+	opposed_multiple = db.Column(db.String())
+	points = db.Column(db.Boolean)
+	resist = db.Column(db.Boolean)
+	resist_multiple = db.Column(db.String())
+	rounds = db.Column(db.Boolean)
+	swap = db.Column(db.Boolean)
+	swap_multiple = db.Column(db.String())
+	time = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
+			'description': self.description,
+			'adv_type': self.adv_type,
+			'action': self.action,
+			'check_type': self.check_type,
+			'ranked': self.ranked,
+			'ranked_ranks': self.ranked_ranks,
+			'ranked_max': self.ranked_max,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'replaced_trait_type': self.replaced_trait_type,
+			'replaced_trait': self.replaced_trait,
+			'skill_type': self.skill_type,
+			'skill': self.skill,
+			'skill_description': self.skill_description,
+			'skill_untrained': self.skill_untrained,
+			'no_pre_check': self.no_pre_check,
+			'expertise': self.expertise,
+			'conflict': self.conflict,
+			'consequence': self.consequence,
+			'conflict_immune': self.conflict_immune,
+			'dc_type': self.dc_type,
+			'dc_value': self.dc_value,
+			'dc_mod': self.dc_mod,
+			'alter_target': self.alter_target,
+			'simultaneous': self.simultaneous,
+			'simultaneous_type': self.simultaneous_type,
+			'extra_action': self.extra_action,
+			'action1': self.action1,
+			'action2': self.action2,
+			'invent': self.invent,
+			'invent_permanence': self.invent_permanence,	
+			'invent_trait_type': self.invent_trait_type,
+			'invent_trait': self.invent_trait,
+			'rituals': self.rituals,
+			'gm_secret_check': self.gm_secret_check,
+			'gm_trait_type': self.gm_trait_type,
+			'gm_trait': self.gm_trait,
+			'gm_veto': self.gm_veto,
+			'language': self.language,
+			'languages': self.languages,
+			'language_rank': self.language_rank,
+			'multiple': self.multiple,
+			'groups': self.groups,
+			'pressure': self.pressure,
+			'check_check': self.check_check,
+			'circumstance': self.circumstance,
+			'combined': self.combined,
+			'condition': self.condition,
+			'dc': self.dc,
+			'degree': self.degree,
+			'effort': self.effort,
+			'levels': self.levels,
+			'minion': self.minion,
+			'mods': self.mods,
+			'mods_multiple': self.mods_multiple,
+			'mods_count': self.mods_count,
+			'opposed': self.opposed,
+			'opposed_multiple': self.opposed_multiple,
+			'points': self.points,
+			'resist': self.resist,
+			'resist_multiple': self.resist_multiple,
+			'rounds': self.rounds,
+			'swap': self.swap,
+			'swap_multiple': self.swap_multiple,
+			'time': self.time,
+			'variable': self.variable
 		}
 
 class AdvAltCheck(db.Model):

@@ -84,15 +84,17 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	ranges = Range.query.all()
 
+	expertise = db.session.query(SkillBonus).filter_by(skill_id=5).all()
+
 	cover = Cover.query.all()
 
 	concealment = Conceal.query.all()
 	
-	times = db.session.query(Unit).filter_by(type_id=2)
+	times = db.session.query(Unit).filter_by(type_id=2).all()
 
-	weapon_melee = db.session.query(WeaponType).filter_by(type_id=1)
+	weapon_melee = db.session.query(WeaponType).filter_by(type_id=1).all()
 	
-	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2)
+	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2).all()
 
 	ranged = db.session.query(Ranged).filter_by(show=True)
 
@@ -210,7 +212,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							times=times, time_effect=time_effect, advantages=advantages, which=which, check_trigger=check_trigger, check_type=check_type, benefits=benefits, effort=effort, rounds_end=rounds_end,
 							environments=environments, senses=senses, subsenses=subsenses, modifier_trigger=modifier_trigger, multiple=multiple, creatures=creatures, professions=professions, powers=powers,
 							emotions=emotions, simultaneous=simultaneous, multiple_opposed=multiple_opposed, tools=tools, condition=condition, maneuvers=maneuvers, cover=cover, concealment=concealment,
-							ranged=ranged, target=target, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, minion_type=minion_type, benefits_all=benefits_all, defenses=defenses)
+							ranged=ranged, target=target, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, minion_type=minion_type, benefits_all=benefits_all, defenses=defenses, expertise=expertise)
 
 @advantage.route('/advantage/trait/select', methods=['POST'])
 def advantage_trait_select():

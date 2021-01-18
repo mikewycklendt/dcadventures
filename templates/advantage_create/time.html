@@ -111,7 +111,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml"	id="time_check_type" name="time_check_type" onchange="time_check_type()">
+			<select class="select-sml"	id="time_check_type" name="time_check_type">
 				<option value="">Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>

@@ -186,7 +186,21 @@
 
 	</div>
 
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Expertise:
+		</div>
 	
+		<div>
+			<select class="base-select" id="expertise" name="expertise">
+				<option value="">Expertise</option>
+				{% for e in expertise %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -327,7 +341,7 @@
 				<div>
 					<select class="base-select" id="action1" name="action1">
 						<option value="">First Action</option>
-						<option value="0">Any</option>
+						<option value="x">Any</option>
 						{% for a in actions %}
 							<option value={{a.id}}>{{a.name}}</option>
 						{% endfor %}
@@ -337,7 +351,7 @@
 				<div>
 					<select class="base-select" id="action2" name="action2">
 						<option value="">Second</option>
-						<option value="0">Any</option>
+						<option value="x">Any</option>
 						{% for a in actions %}
 							<option value={{a.id}}>{{a.name}}</option>
 						{% endfor %}
@@ -525,7 +539,7 @@
 	
 		<div>
 			<div>
-				<input type="checkbox" id="groups" class="regular-checkbox big-checkbox">
+				<input type="checkbox" id="pressure" class="regular-checkbox big-checkbox">
 			</div>
 
 		</div>
