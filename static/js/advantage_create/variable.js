@@ -59,9 +59,6 @@ function variable_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-
-			const errors = jsonResponse.table_id + '-err';
-			const err_line = jsonResponse.table_id + '-err-line';
 		
 			variable_grid.columns.length = 0;
 			variable_grid.columns = jsonResponse.rows;

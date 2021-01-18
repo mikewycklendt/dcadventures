@@ -110,7 +110,7 @@ function check_submit() {
 			check_grid.columns.length = 0;
 			check_grid.columns = jsonResponse.rows;
 
-			create_table(jsonResponse, check_grid, route, err_line, errors);
+			create_table(jsonResponse, check_grid, route);
 			clear_errors(err_line, errors)
 
 			check_grid.titles = true;
