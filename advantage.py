@@ -2645,7 +2645,7 @@ def advantage_post_levels():
 		return jsonify(body)
 
 
-	advantage_id = request.get_json()['power_id']
+	advantage_id = request.get_json()['advantage_id']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
