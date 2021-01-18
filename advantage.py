@@ -438,6 +438,21 @@ def save_advantage():
 	time = request.get_json()['time']
 	variable = request.get_json()['variable']
 
+	action = db_integer(action)
+	check_type = db_integer(check_type)
+	expertise = db_integer(expertise)
+	conflict = db_integer(conflict)
+	consequence = db_integer(consequence)
+	conflict_immune = db_integer(conflict_immune)
+	action1 = db_integer(action1)
+	action2 = db_integer(action2)
+
+	ranked_ranks = integer(ranked_ranks)
+	ranked_max = integer(ranked_max)
+	dc_value = integer(dc_value)
+	dc_mod = integer(dc_mod)
+	languages = integer(languages)
+	language_rank = integer(language_rank)
 
 	entry = db.session.query(Advantage).filter(Advantage.id == advantage_id).one()
 
