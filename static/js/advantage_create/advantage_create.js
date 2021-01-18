@@ -1107,6 +1107,18 @@ function new_items(insert, items) {
 	}
 }
 
+function selects_add(id, name, selects_input) {
+	let selects = document.getElementsByClassName(selects_input);
+	let select;
+
+	for (select of selects) {
+		const o = document.createElement('option');
+		o.value = id;
+		o.text = name;
+		benefit.add(o);
+	}
+}
+
 advantage_create = function() {
 	const advantage_name = document.getElementById('advantage_name').value;
 	const add_advantage = document.getElementById('add-advantage');
@@ -1795,6 +1807,9 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
 	const table_change = document.getElementById(table_class) 
+	
+	const errors = table_id + '-err';
+	const err_line = table_id + '-err-line';
 
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];
@@ -1807,67 +1822,74 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 			fetch(route + delId, {
 				method: 'DELETE'
 			})
-			.then(function() {
+			.then(response => response.json())
+			.then(jsonResponse => {
+			console.log(jsonResponse)
+				if (jsonResponse.success) {
 
-				if (benefit_delete == true) {
-					const selects = document.getElementsByClassName('benefit-entry');
-					let select;
+					clear_errors(err_line, errors)
 
-					for (select of selects) {
-						options = select.options;
-						let option;
+					if (benefit_delete == true) {
+						const selects = document.getElementsByClassName('benefit-entry');
+						let select;
 
-						for (option of options) {
-							if (option.value == delId) {
-								console.log(option.value);
-								option.remove();
+						for (select of selects) {
+							options = select.options;
+							let option;
+
+							for (option of options) {
+								if (option.value == delId) {
+									console.log(option.value);
+									option.remove();
+								}
 							}
 						}
 					}
-				}
 
-				console.log(delId)
-				console.log(rows)
+					console.log(delId)
+					console.log(rows)
 
-				for (i = 0; i < rows.length; i++) {
-					if (rows[i].id == delId){
-						console.log(delId)
-						rows.splice(i, 1);
-					}
-				}
-
-				console.log(rows);
-
-				response = fetch('/power/grid', {
-					method: 'POST',
-					body: JSON.stringify({
-						'font': size,
-						'rows': rows
-					}),
-					headers: {
-					  'Content-Type': 'application/json',
-					}
-				})
-				.then(response => response.json())
-				.then(jsonResponse => {
-					console.log(jsonResponse)
-					if (jsonResponse.success) {
-						const grid = jsonResponse.grid;
-						const newsize = jsonResponse.font;
-						const columns = jsonResponse.columns;
-						console.log(grid)
-
-						if (grid == 'hide') {
-							table_change.style.maxHeight = '0px';
-							setTimeout(function(){table_change.style.display = 'none'}, 400);
-						} else {
-							grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+					for (i = 0; i < rows.length; i++) {
+						if (rows[i].id == delId){
+							console.log(delId)
+							rows.splice(i, 1);
 						}
-					} else {
-						console.log('error')
 					}
-				})
 
+					console.log(rows);
+
+					response = fetch('/power/grid', {
+						method: 'POST',
+						body: JSON.stringify({
+							'font': size,
+							'rows': rows
+						}),
+						headers: {
+						'Content-Type': 'application/json',
+						}
+					})
+					.then(response => response.json())
+					.then(jsonResponse => {
+						console.log(jsonResponse)
+						if (jsonResponse.success) {
+							const grid = jsonResponse.grid;
+							const newsize = jsonResponse.font;
+							const columns = jsonResponse.columns;
+							console.log(grid)
+
+							if (grid == 'hide') {
+								table_change.style.maxHeight = '0px';
+								setTimeout(function(){table_change.style.display = 'none'}, 400);
+							} else {
+								grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+							}
+						} else {
+							console.log('error')
+						}
+					})
+				} else {
+					back_errors(err_line, errors, jsonResponse)
+				}
 			
 			})
 		}

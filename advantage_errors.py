@@ -8,6 +8,82 @@ db = SQLAlchemy()
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert
 
 
+def adv_save_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	advantage_id = request.get_json()['advantage_id']
+	description = data['description']
+	adv_type = data['adv_type']
+	action = data['action']
+	check_type = data['check_type']
+	ranked = data['ranked']
+	ranked_ranks = data['ranked_ranks']
+	ranked_max = data['ranked_max']
+	trait_type = data['trait_type']
+	trait = data['trait']
+	replaced_trait_type = data['replaced_trait_type']
+	replaced_trait = data['replaced_trait']
+	skill_type = data['skill_type']
+	skill = data['skill']
+	skill_description = data['skill_description']
+	skill_untrained = data['skill_untrained']
+	no_pre_check = data['no_pre_check']
+	expertise = data['expertise']
+	conflict = data['conflict']
+	consequence = data['consequence']
+	conflict_immune = data['conflict_immune']
+	dc_type = data['dc_type']
+	dc_value = data['dc_value']
+	dc_mod = data['dc_mod']
+	alter_target = data['alter_target']
+	simultaneous = data['simultaneous']
+	simultaneous_type = data['simultaneous_type']
+	extra_action = data['extra_action']
+	action1 = data['action1']
+	action2 = data['action2']
+	invent = data['invent']
+	invent_permanence = data['invent_permanence']
+	invent_trait_type = data['invent_trait_type']
+	invent_trait = data['invent_trait']
+	rituals = data['rituals']
+	gm_secret_check = data['gm_secret_check']
+	gm_trait_type = data['gm_trait_type']
+	gm_trait = data['gm_trait']
+	gm_veto = data['gm_veto']
+	language = data['language']
+	languages = data['languages']
+	language_rank = data['language_rank']
+	multiple = data['multiple']
+	groups = data['groups']
+	pressure = data['pressure']
+	check_check = data['check_check']
+	circumstance = data['circumstance']
+	combined = data['combined']
+	condition = data['condition']
+	dc = data['dc']
+	degree = data['degree']
+	effort = data['effort']
+	levels = data['levels']
+	minion = data['minion']
+	mods = data['mods']
+	mods_multiple = data['mods_multiple']	
+	mods_count = data['mods_count']
+	opposed = data['opposed']
+	opposed_multiple = data['opposed_multiple']
+	points = data['points']
+	resist = data['resist']
+	resist_multiple = data['resist_multiple']
+	rounds = data['rounds']
+	swap = data['swap']
+	swap_multiple = data['swap_multiple']
+	time = data['time']
+	variable = data['variable']
+
+
+
+	return (errors)
+
 def adv_alt_check_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}

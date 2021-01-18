@@ -49,27 +49,10 @@ function benefit_submit() {
 			const id = jsonResponse.id;
 			const benefit_name = jsonResponse.name;
 					
-			let benefits_selects = document.getElementsByClassName('benefit-sml');
-			let benefit;
-					
-			for (benefit of benefits_selects) {
-				const o = document.createElement('option');
-				o.value = id;
-				o.text = benefit_name;
-				benefit.add(o);
-			}
-					
-								
-			benefits_selects = document.getElementsByClassName('benefit-entry');
-					
-			for (benefit of benefits_selects) {
-				const o = document.createElement('option');
-				o.value = id;
-				o.text = benefit_name;
-				benefit.add(o)
-			}
+			selects_add(id, name, 'benefit-sml');
+			selects_add(id, name, 'benefit-entry');
 
-			const benefit_delete = true;
+			const benefit_delete = true
 					
 			benefit_grid.columns.length = 0;
 			benefit_grid.columns = jsonResponse.rows;
