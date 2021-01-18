@@ -1949,12 +1949,13 @@ function clear_errors(line, div) {
 	const errors_delete = document.getElementsByClassName(line);
 	const errors = document.getElementById(div);
 
-	errors.style.maxHeight = "0px";
-	errors.style.padding = "0px";
-
 	if (typeof errors_delete[0] === "undefined") {
 		console.log('no errors defined')
 	} else {
+
+		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
+		
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.maxHeight = "0px";
 			errors_delete[i].style.padding = "0px";
