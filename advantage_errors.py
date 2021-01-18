@@ -142,7 +142,7 @@ def adv_levels_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	advantage_id = data['advantage_id'
+	advantage_id = data['advantage_id']
 	level_type = data['level_type']
 	level = data['level']
 	level_effect = data['level_effect']
