@@ -12,7 +12,7 @@ def adv_save_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	advantage_id = request.get_json()['advantage_id']
+	advantage_id = data['advantage_id']
 	description = data['description']
 	adv_type = data['adv_type']
 	action = data['action']
