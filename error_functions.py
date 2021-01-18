@@ -897,6 +897,9 @@ def adv_check_multiple_fields(name, table, fields, id, errors):
 
 def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id, errors, multiple=False):
 
+	error_msgs = errors['error_msgs']
+	error = False
+
 	if value != field:
 		return (errors)
 	
