@@ -887,10 +887,11 @@ def adv_check_multiple_fields(name, table, fields, id, errors):
 				if field == '':
 					error = True
 					message = 'You created a ' + name + ' rule that has more than one entry but you did not make a selection for one of the multiple value fields.  Go bavk and make that selection before you can proceed.'
-					error_msgs.append(message)				
+									
 
-	errors['error_msgs'] = error_msgs
 	if error:
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
 		errors['error'] = error
 
 	return (errors)
@@ -916,7 +917,7 @@ def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id,
 				error = True
 				message = 'Since you chose the ' + option + ' for the ' + fieldname + ' field, you must create at least two entries for the ' + rule + ' rule or make a different selection for the ' + fieldname + ' field.'
 				error_msgs.append(message)
-				
+
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
