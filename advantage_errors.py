@@ -5,7 +5,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry
 
 
 def adv_save_errors(data):
@@ -80,7 +80,61 @@ def adv_save_errors(data):
 	time = data['time']
 	variable = data['variable']
 
+	errors = adv_entry_check('Variable Trait', AdvVariable, variable, advantage_id, errors)
+	errors = adv_entry_check('DC Table', AdvDC, dc, advantage_id, errors)
+	errors = adv_entry_check('Bonus/Penalty Modifier', AdvMod, mods, advantage_id, errors)
+	errors = adv_entry_check('Opposed Check', AdvOpposed, opposed, advantage_id, errors)
+	errors = adv_entry_check('Circumstance', AdvCirc, circumstance, advantage_id, errors)
+	errors = adv_entry_check('Degree of Success/Failure', AdvDegree, degree, advantage_id, errors)
+	errors = adv_entry_check('Resistance Check', AdvResist, resist, advantage_id, errors)
+	errors = adv_entry_check('Bonus Swap', AdvSkill, swap, advantage_id, errors)
+	errors = adv_entry_check('Condition', AdvCondition, condition, advantage_id, errors)
+	errors = adv_entry_check('Levels', Levels, levels, advantage_id, errors)
+	errors = adv_entry_check('Variable Check', AdvAltCheck, check_check, advantage_id, errors)
+	errors = adv_entry_check('Multiple Round', AdvRounds, rounds, advantage_id, errors)
+	errors = adv_entry_check('Spend Points', AdvPoints, points, advantage_id, errors)
+	errors = adv_entry_check('Extra Effort', AdvEffort, effort, advantage_id, errors)
+	errors = adv_entry_check('Time Effect', AdvTime, time, advantage_id, errors)
+	errors = adv_entry_check('Minions', AdvMinion, minion, advantage_id, errors)
+	errors = adv_entry_check('Combined Advantage', AdvCombined, combined, advantage_id, errors)
 
+	errors = adv_check_multiple('Swap Bonus', AdvSkill, swap_multiple, advantage_id, errors)
+	errors = adv_check_multiple('Opposed Check', AdvOpposed, opposed_multiple, advantage_id, errors)
+	errors = adv_check_multiple('Resistance Check', AdvResist, resist_multiple, advantage_id, errors)
+	errors = adv_check_multiple_fields('Bonus/Penalty Modifier', AdvMod, [mods_multiple, mods_count], advantage_id, errors)
+
+	errors = required(adv_type, 'Advantage Type', errors)
+	errors = required(action. 'Action Type', errors)
+	errors = required(check_type. 'Check Type', errors)
+
+	errors = adv_select_entry('x', 'Variable Trait', 'Trait Type', 'Variable Trait', trait_type, AdvVariable, advantage_id, errors, True)
+	errors = if_field('Skill Check', skill_type, skill_description, 'Circumstance', errors)
+	errors = adv_select_entry('table', 'DC Table', 'Difficulty Class', 'DC Table', dc_type, AdvDC, advantage_id, errors)
+
+	errors = variable_fields('value', 'DC', dc_type, [dc_value], errors)
+	
+	errors = variable_fields('value', 'DC', dc_type, [dc_value], errors)
+	errors = variable_field('value', dc_type, 'DC Value', dc_value, errors)
+	errors = variable_fields('mod', 'DC', dc_type, [dc_mod], errors)
+	errors = variable_field('mod', dc_type, 'DC Modifier', dc_mod, errors)
+
+	errors = check_fields(simultaneous, 'Simultaneous Action', [simultaneous_type], errors)
+	errors = check_field(simultaneous, 'Simultaneous Action', 'Simultaneous Action Type', simultaneous_type. errors)
+
+	errors = check_fields(extra_action, 'Third Action', [action1, action2], errors)
+	errors = check_field(extra_action, 'Third Action', 'First Action', action1, errors)
+	errors = check_field(extra_action, 'Third Action', 'Second Action', action2, errors)
+
+	errors = check_fields(invent, 'Invent Devices', [invent_permanence, invent_trait_type, invent_trait], errors)
+	errors = check_field(invent, 'Invent Devices', 'Invent Permanenve', invent_permanence, errors)
+	errors = check_field(invent, 'Invent Devices', 'Inventing Trait Type', invent_trait_type, errors)
+	errors = check_field(invent, 'Invent Devices', 'Inventing Trait', invent_trait, errors)
+
+	errors = check_fields(gm_secret_check, 'Secret GM Check', [gm_trait, gm_trait_type], errors)
+	errors = check_field(gm_secret_check, 'Secret GM Check', 'Secret GM Check Trait Type', gm_trait_type, errors)
+	errors = check_field(gm_secret_check, 'Secret GM Check', 'Secret GM Check Trait Type', gm_trait, errors)\
+	
+	errors = check_of(language, 'Languages', [languages, language_rank], errors)
 
 	return (errors)
 

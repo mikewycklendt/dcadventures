@@ -65,25 +65,18 @@ function levels_submit() {
 			const add_level = jsonResponse.created;
 
 			if (add_level == false) {
-				const selects = document.getElementsByClassName(level_selects);
+				
+				const id = jsonResponse.level_type_id		
+				const name = jsonResponse.level_type
 
-				level_type_id = jsonResponse.level_type_id		
-				level_type_name = jsonResponse.level_type
-
-				let s;
-				for (s of selects) {	
-					const o = document.createElement("option")
-					o.value = level_type_id;
-					o.text = level_type_name;
-					s.add(o);
-				}
+				selects_add(id, name, level_selects)
 			}
 
 			levels_grid.columns.length = 0;
 			levels_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/power/levels/delete/'
+			const route = '/advantage/levels/delete/'
 			create_table(jsonResponse, levels_grid, route);
 			clear_errors(err_line, errors)
 			row_delete(jsonResponse, route, levels_grid) 

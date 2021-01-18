@@ -2627,3 +2627,149 @@ def delete_advantage_post_variable(advantage_id):
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': advantage_id})
+
+@advantage.route('/advantage/levels/create', methods=['POST'])
+def advantage_post_levels():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = adv_levels_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	advantage_id = request.get_json()['power_id']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	level_effect = request.get_json()['level_effect']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	old_level_type = request.get_json()['old_level_type']
+	font = request.get_json()['font']
+	power_dc = False
+	power_degree = False
+	skill_dc = False
+	skill_degree = False
+	bonus_dc = False
+	bonus_degree = False
+	advantage_dc = False
+	advantage_degree = False
+
+	body = {}
+	body['success'] = True
+
+	power = True
+
+	advantage_id = integer(advantage_id)
+
+	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
+	if level_check is None:
+
+		try:
+			level_add = LevelType(advantage_id=advantage_id,
+									name=level_type)
+
+			db.session.add(level_add)
+			db.session.commit()
+
+			type_id = level_add.id
+
+			body['level_type_id'] = type_id
+			body['level_type'] = level_add.name
+			body['created'] = False
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+
+		finally:
+			db.session.close()
+		
+	else:
+		level_advantage = level_check.advantage_id
+		print(advantage_id)
+		print(level_advantage)
+		if advantage_id != level_advantage:
+			body['success'] = False
+			body['error_msgs'] = ['There is already a level type with that name.']
+			return jsonify(body)
+
+		type_id = level_check.id
+		body['created'] = True
+
+	try:
+		entry = Levels(advantage_id = advantage_id,
+							type_id=type_id,
+							level_type = level_type,
+							name = level,
+							level_effect = level_effect,
+							power_dc = power_dc,
+							power_degree = power_degree,
+							skill_dc = skill_dc,
+							skill_degree = skill_degree,
+							bonus_dc = bonus_dc,
+							bonus_degree = bonus_degree,
+							advantage_dc = advantage_dc,
+							advantage_degree = advantage_degree)
+
+		db.session.add(entry)
+		db.session.commit()
+
+
+		
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+
+		rows = columns
+
+		mods = []
+		cells = []
+		spot = "levels-spot"
+
+		body['spot'] = spot
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['title'] = level_type
+		type_split = level_type.split(' ')
+		type_class = ''
+		for t in  type_split:
+			type_class += t 
+		
+		table_id = 'levels-' + type_class
+
+		body['table_id'] = table_id
+
+		body = adv_levels_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	
+	return jsonify(body)
+
+
+@advantage.route('/advantage/levels/delete/<advantage_id>', methods=['DELETE'])
+def delete_advantage_levels(advantage_id):
+	try:
+		db.session.query(Levels).filter_by(id=advantage_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': advantage_id})

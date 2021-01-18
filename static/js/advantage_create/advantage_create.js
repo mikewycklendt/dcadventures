@@ -1426,7 +1426,7 @@ advantage_save = function() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			window.location.replace('/advantage/save/success/' + power_id)
+			window.location.replace('/advantage/save/success/' + advantage_id)
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

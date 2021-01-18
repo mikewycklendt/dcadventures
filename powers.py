@@ -2935,6 +2935,8 @@ def power_post_levels():
 	skill_degree = False
 	bonus_dc = False
 	bonus_degree = False
+	advantage_dc = False
+	advantage_degree = False
 
 	body = {}
 	body['success'] = True
@@ -2992,7 +2994,9 @@ def power_post_levels():
 							skill_dc = skill_dc,
 							skill_degree = skill_degree,
 							bonus_dc = bonus_dc,
-							bonus_degree = bonus_degree)
+							bonus_degree = bonus_degree,
+							advantage_dc = advantage_dc,
+							advantage_degree = advantage_degree)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -3039,7 +3043,7 @@ def power_post_levels():
 @powers.route('/power/levels/delete/<power_id>', methods=['DELETE'])
 def delete_power_levels(power_id):
 	try:
-		db.session.query(PowerLevels).filter_by(id=power_id).delete()
+		db.session.query(Levels).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()

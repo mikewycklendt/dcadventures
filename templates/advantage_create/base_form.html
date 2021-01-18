@@ -15,7 +15,7 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Power Type:
+			Advantage Type:
 		</div>
 
 		<select class="base-select" id="type" name="type" onchange="skill_type()">
@@ -46,7 +46,7 @@
 		<div>
 			<select class="base-select" id="check" name="check">
 				<option value="">Check Type</option>
-				<option value=>None</option>
+				<option value="none">None</option>
 				{% for check in checks %}
 					<option value={{check.id}}>{{check.name}}</option>
 				{% endfor %}

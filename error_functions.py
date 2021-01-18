@@ -255,7 +255,7 @@ def if_field(main, field, select, name, errors):
 	
 	if select == '':
 		error = True
-		message = 'If this rule involves a ' + main + ', the ' + name + ' field is required.'
+		message = 'If this effect involves a ' + main + ', the ' + name + ' field is required.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -325,7 +325,7 @@ def together(name, values, errors):
 				error = True
 				
 	if error:
-		message = 'If thid power requires ' + name + ', all of those fields must be complete.'
+		message = 'If thid effect requires ' + name + ', all of those fields must be complete.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -386,7 +386,7 @@ def together_names(name, names, values, errors):
 	all_names += names[last_name]
 
 	if error:
-		message = 'If thid power requires ' + name + ' the'
+		message = 'If this effect requires ' + name + ' the'
 		for n in names:
 			message += ' ' + n
 		message += ' fields must be complete.'
@@ -732,6 +732,8 @@ def integer(value):
 		value = 1234
 	elif value == '':
 		value = None
+	elif value == 'none':
+		value = None
 	else:
 		try:
 			value = int(value)
@@ -813,6 +815,97 @@ def db_insert(table_name, table, field, entry, errors):
 			message = 'There is already a ' + table_name + ' with that name.'
 			error_msgs.append(message)
 
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def adv_entry_check(name, table, check, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	entry = db.session.query(table).filter_by(advantage_id=id).first()
+
+	if check == True:
+		if entry is None:
+			error = True
+			message = 'You checked the ' + name + ' box.  Either create a ' + name + ' rule or uncheck the box.'
+			error_msgs.append(message)
+	else:
+		if entry is not None:
+			error = True
+			message = 'You created a ' + name + ' rule but the box for that rule is not checked.  Check that box or delete that rule.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def adv_check_multiple(name, table, field, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	entry = db.session.query(table).filter_by(advantage_id=id).first()
+
+	if entry is not None:
+		count = db.session.query(table).filter_by(advantage_id=id).count()
+		if count > 1:
+			if field == '':
+				error = True
+				message = 'You created a ' + name + ' rule that has more than one entry but you did not make a selection for the multiple values.  Go bavk and make that selection before you can proceed.'
+				error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def adv_check_multiple_fields(name, table, fields, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	entry = db.session.query(table).filter_by(advantage_id=id).first()
+
+	if entry is not None:
+		count = db.session.query(table).filter_by(advantage_id=id).count()
+		if count > 1:
+			for field in fields:
+				if field == '':
+					error = True
+					message = 'You created a ' + name + ' rule that has more than one entry but you did not make a selection for one of the multiple value fields.  Go bavk and make that selection before you can proceed.'
+					error_msgs.append(message)				
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id, errors, multiple=False):
+
+	if value != field:
+		return (errors)
+	
+	entry = db.session.query(table).filter_by(advantage_id=id).first()
+
+	if entry is None:
+		error = True
+		message = 'You chose the ' + option + ' option for the ' + fieldname + ' field so you must create a ' + rule + ' rule or make a different selection for the ' + fieldname + ' field.'
+		error_msgs.append(message)
+	else:
+		if multiple:
+			count = db.session.query(table).filter_by(advantage_id=id).count()
+			if count < 2:
+				error = 'Since you chose the ' + option + ' for the ' + fieldname + ' field, you must create at least two entries for the ' + rulw + ' rule or make a different selection for the ' + fieldname + ' field.'
+	
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
