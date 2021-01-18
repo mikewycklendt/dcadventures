@@ -900,7 +900,7 @@ def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id,
 	if value != field:
 		return (errors)
 	
-	entry = db.session.query(table).filter_by(advantage_id=id).first()
+	entry = db.session.query(table).filter_by(advantage_id=advantage_id).first()
 
 	if entry is None:
 		error = True
@@ -908,7 +908,7 @@ def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id,
 		error_msgs.append(message)
 	else:
 		if multiple:
-			count = db.session.query(table).filter_by(advantage_id=id).count()
+			count = db.session.query(table).filter_by(advantage_id=advantage_id).count()
 			if count < 2:
 				error = 'Since you chose the ' + option + ' for the ' + fieldname + ' field, you must create at least two entries for the ' + rulw + ' rule or make a different selection for the ' + fieldname + ' field.'
 	
