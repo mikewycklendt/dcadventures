@@ -19,6 +19,7 @@ from tables import tables
 from skills import skills
 from powers import powers
 from advantage import advantage
+from equipment import equipment
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,6 +37,7 @@ app.register_blueprint(tables)
 app.register_blueprint(skills)
 app.register_blueprint(powers)
 app.register_blueprint(advantage)
+app.register_blueprint(equipment)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)

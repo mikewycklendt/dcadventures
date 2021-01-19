@@ -12,11 +12,11 @@ let _grid = {'titles': false,
 					'font': 80,
 					'mod': []}
 
-function benefit_submit() {
+function _submit() {
 
-	const columns = benefit_grid.columns;
-	const created = benefit_grid.titles;
-	const font = benefit_grid.font;
+	const columns = _grid.columns;
+	const created = _grid.titles;
+	const font = _grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
 
