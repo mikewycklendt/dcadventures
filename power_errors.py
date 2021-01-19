@@ -1441,7 +1441,7 @@ def environment_post_errors(data):
 	errors = variable_field('condition', immunity_type, 'Condition Type', temp_type, errors)
 	errors = variable_fields('condition', immunity_type, 'Condition Extremity', immunity_extremity, errors)
 
-	errors = db_insert('Environment', Environment, environment, immunity_environment_other, errors)
+	errors = db_insert('Environment', Environment, immunity_environment, immunity_environment_other, errors)
 
 
 
