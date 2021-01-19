@@ -1709,6 +1709,29 @@ def power_post_character():
 	ranks = integer(ranks)	 
 
 	try:
+
+		
+		body = {}
+	
+		body['new'] = False
+		new_items = []
+
+		if limited_emotion == 'other':	
+			entry = Emotion(name=limited_emotion_other)
+			db.session.add(entry)
+			db.session.commit()
+			limited_emotion = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = True
+			item['field'] = 'emotion-sml'
+			body['new_items'] = new_items
+			new_items.append(item)
+			db.session.close()
+
+
 		entry = PowerChar(power_id = power_id,
 							extra_id = extra_id,
 							trait_type = trait_type,
@@ -1758,7 +1781,6 @@ def power_post_character():
 		db.session.add(entry)
 		db.session.commit()
 
-		body = {}
 		body['id'] = entry.id
 		error = False
 		error_msg = []
