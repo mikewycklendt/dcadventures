@@ -19,7 +19,7 @@ from tables import tables
 from skills import skills
 from powers import powers
 from advantage import advantage
-from equipment import equipment
+from equipment import equip
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -38,7 +38,7 @@ app.register_blueprint(tables)
 app.register_blueprint(skills)
 app.register_blueprint(powers)
 app.register_blueprint(advantage)
-app.register_blueprint(equipment)
+app.register_blueprint(equip)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)

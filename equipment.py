@@ -28,10 +28,10 @@ import os
 
 db_path = os.environ.get("db_path")
 
-equipment = Blueprint('equipment', __name__)
+equip = Blueprint('equipment', __name__)
 db = SQLAlchemy()
 
-@equipment.route('/equipment/create')
+@equip.route('/equipment/create')
 def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'equipment_create.html'
 
@@ -65,7 +65,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
 
 
-@equipment.route('/equipment/create', methods=['POST'])
+@equip.route('/equipment/create', methods=['POST'])
 def post_equipment(): 
 	body = {}
 	error = False
@@ -110,7 +110,7 @@ def post_equipment():
 		print(body)
 		return jsonify(body)
 
-@equipment.route('/equipment/save', methods=['POST'])
+@equip.route('/equipment/save', methods=['POST'])
 def save_equipment(): 
 	body = {}
 	body['success'] = True
@@ -140,14 +140,14 @@ def save_equipment():
 	print(body)
 	return jsonify(body)
 
-@equipment.route('/equipment/save/success/<equipment_id>')
+@equip.route('/equipment/save/success/<equipment_id>')
 def equipment_save_success(equipment_id):	
 	equipment = db.session.query(Equipment).filter_by(id=equipment_id).one()
 	
 	flash('Equipment ' + equipment.name + ' Successfully Created')
 	return redirect(url_for('home'))
 
-@equipment.route('/equipment/edit_name', methods=['POST'])
+@equip.route('/equipment/edit_name', methods=['POST'])
 def edit_equipment_name(): 
 	body = {}
 	error = False
