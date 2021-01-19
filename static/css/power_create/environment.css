@@ -106,7 +106,7 @@ visibility traittype trait modifier costperrank
 	overflow: hidden;
 	transition: all .3s ease-out;
 	gap: .2vw;
-	grid-template-columns: 23% 77%;
+	grid-template-columns: 23% 27% 50;
 }
 
 #env-immunity-other input[type="text"] {

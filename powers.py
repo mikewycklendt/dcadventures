@@ -2797,7 +2797,6 @@ def power_post_environment():
 	immunity_environment_other = request.get_json()['immunity_environment_other']
 	no_penalty = request.get_json()['no_penalty']
 	no_circumstance = request.get_json()['no_circumstance']
-	immunity_other = request.get_json()['immunity_other']
 	condition_temp_type = request.get_json()['condition_temp_type']
 	temp_extremity = request.get_json()['temp_extremity']
 	move_nature = request.get_json()['move_nature']
@@ -2863,7 +2862,6 @@ def power_post_environment():
 							immunity_environment = immunity_environment,
 							no_penalty = no_penalty,
 							no_circumstance = no_circumstance,
-							immunity_other = immunity_other,
 							condition_temp_type = condition_temp_type,
 							temp_extremity = temp_extremity,
 							move_nature = move_nature,

@@ -1386,6 +1386,7 @@ def environment_post_errors(data):
 	temp_type = data['temp_type']
 	immunity_extremity = data['immunity_extremity']
 	immunity_environment = data['immunity_environment']
+	immunity_environment_other = data['immunity_environment_other']
 	no_penalty = data['no_penalty']
 	no_circumstance = data['no_circumstance']
 	immunity_other = data['immunity_other']
@@ -1436,6 +1437,7 @@ def environment_post_errors(data):
 
 	errors = variable_fields('environment', 'Environment Immunity', immunity_type, [immunity_environment], errors)
 	errors = variable_field('environment', immunity_type, 'Environment Type', immunity_environment, errors)
+	errors = variable_fields('other', 'Other Environment', immunity_environment, [immunity_environment_other], errors)
 	errors = variable_fields('condition', 'Condition Immunity', immunity_type, [temp_type, immunity_extremity], errors)
 	errors = variable_field('condition', immunity_type, 'Condition Type', temp_type, errors)
 	errors = variable_fields('condition', immunity_type, 'Condition Extremity', immunity_extremity, errors)

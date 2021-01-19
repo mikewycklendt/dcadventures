@@ -115,9 +115,9 @@ function env_submit() {
 	const temp_type = select("env_temp_type");
 	const immunity_extremity = select("env_immunity_extremity");
 	const immunity_environment = select("env_immunity_environment");
+	const immunity_environment_other = text("env_immunity_environment_other");
 	const no_penalty = check("env_no_penalty");
 	const no_circumstance = check("env_no_circumstance");
-	const immunity_other = text("env_immunity_other");
 	const condition_temp_type = select("env_condition_temp_type");
 	const temp_extremity = select("env_temp_extremity");
 	const move_nature = select("env_move_nature");
@@ -154,9 +154,9 @@ function env_submit() {
 			'temp_type': temp_type,
 			'immunity_extremity': immunity_extremity,
 			'immunity_environment': immunity_environment,
+			'immunity_environment_other': immunity_environment_other,
 			'no_penalty': no_penalty,
 			'no_circumstance': no_circumstance,
-			'immunity_other': immunity_other,
 			'condition_temp_type': condition_temp_type,
 			'temp_extremity': temp_extremity,
 			'move_nature': move_nature,
