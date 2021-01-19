@@ -111,8 +111,6 @@ visibility traittype trait modifier costperrank
 
 #env-immunity-environment-db {
 	display: grid;
-	max-height: 0;
-	overflow: hidden;
 	transition: all .3s ease-out;
 	gap: .2vw;
 	grid-template-columns: 100%;
