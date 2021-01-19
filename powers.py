@@ -2842,8 +2842,10 @@ def power_post_environment():
 			item['name'] = entry.name
 			item['class'] = True
 			item['field'] = 'env-sml'
+			body['new_items'] = new_items
 			new_items.append(item)
 			db.session.close()
+
 
 		entry = PowerEnv(power_id = power_id,
 							extra_id = extra_id,
