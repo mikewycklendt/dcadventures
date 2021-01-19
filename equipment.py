@@ -90,7 +90,7 @@ def post_equipment():
 
 	equipment = db.session.query(Equipment).filter(Equipment.name == name).first()
 
-	if equipment` is not None:
+	if equipment is not None:
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already an item of equipment with that name')
@@ -173,7 +173,7 @@ def edit_equipment_name():
 
 	equipment = db.session.query(Equipment).filter(Equipment.name == name).first()
 	
-	if advantage is not None:
+	if equipment is not None:
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already an item of equipment with that name')
