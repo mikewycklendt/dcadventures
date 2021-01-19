@@ -120,6 +120,7 @@ def character_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	weaken_descriptor = descriptor_name(weaken_descriptor)
 	points_descriptor = descriptor_name(points_descriptor)
+	limited_emotion = name(Emotion, limited_emotion)
 
 
 	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
@@ -155,6 +156,7 @@ def character_post(entry, body, cells):
 	cells = check_cell('Limited', 8, limited, cells, True)
 	new_mod = mod_create('Limited', 12)
 	new_mod = mod_cell('Limited While:', 15, [limited_by], new_mod)
+	new_mod = mod_cell('Emotion:', 12, [limited_emotion], new_mod)
 	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Reduced', 9, reduced, cells, True)
