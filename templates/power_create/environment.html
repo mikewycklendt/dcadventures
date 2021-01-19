@@ -152,11 +152,18 @@
 			<div id="env-immunity-environment">
 
 				<div>
-					<select class="select-sml" id="env_immunity_environment" name="env_immunity_environment" onchange="env_immunity_environment()">
-						{% for e in environments %}
-							<option value="{{e.id}}">{{e.name}}</option>
-						{% endfor %}
-					</select> 
+					<div id="env-immunity-environment-db">
+						<select class="env-sml" id="env_immunity_environment" name="env_immunity_environment" onchange="env_immunity_environment()">
+							{% for e in environments %}
+								<option value="{{e.id}}">{{e.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+					
+					<div id="env-immunity-environment-other">
+						<input type="text" id="env_immunity_environment_other" name="env_immunity_environment_other">
+					</div>
+		
 				</div>
 
 				<div>

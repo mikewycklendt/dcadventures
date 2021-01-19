@@ -551,6 +551,12 @@ function select_reset(select_input, selects) {
 	};
 }
 
+function reset(select_input) {
+	const select = document.getElementById(select_input);
+
+	select.selectedIndex=0;
+
+}
 
 function select_opacity_any(select, div) {
 	const field = document.getElementById(select);
@@ -1955,7 +1961,7 @@ function clear_errors(line, div) {
 
 		errors.style.maxHeight = "0px";
 		errors.style.padding = "0px";
-		
+
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.maxHeight = "0px";
 			errors_delete[i].style.padding = "0px";

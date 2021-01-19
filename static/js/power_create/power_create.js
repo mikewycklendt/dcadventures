@@ -622,6 +622,82 @@ function select_entry(check_input, base_input, entry_input, field_input, value) 
 	}
 }
 
+
+function new_items(insert, items) {
+	
+	if (insert == true) {
+		let i;
+		for (i of items) {
+			const id = i.id;
+			const name = i.name;
+			const class_check = i.class;
+			const field = i.field;
+
+			if (class_check == true) {
+				const selects = document.getElementsByClassName(field);
+				let select;
+					
+				for (select of selects) {
+					const o = document.createElement('option');
+					o.value = id;
+					o.text = name;
+					select.add(o);
+				}
+			} else {
+				const select = document.getElementById(field);
+				const o = document.createElement('option');
+				o.value = id;
+				o.text = name;
+				select.add(o);
+			}
+		}
+	}
+}
+
+function select_other(select, options, db) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity(div);
+			show_opacity(db)
+		} else {
+			show_opacity(div);
+			hide_opacity(db);
+		}
+	};
+}
+
+
+function select_reset(select_input, selects) {
+	const field = document.getElementById(select_input);
+	const val = field.options[field.selectedIndex].value;
+	let s;
+
+	for (s of selects) {
+		const select = document.getElementById(s);
+		const value = select.options[select.selectedIndex].value
+
+		if (val != value) {
+			select.selectedIndex=0;
+		}
+	};
+}
+
+function reset(select_input) {
+	const select = document.getElementById(select_input);
+
+	select.selectedIndex=0;
+
+}
+
 power_create = function() {
 	const power_name = document.getElementById('power_name').value;
 	const add_power = document.getElementById('add-power');
