@@ -21,6 +21,7 @@ from powers import powers
 from advantage import advantage
 from equipment import equipment
 from dotenv import load_dotenv
+from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
 load_dotenv()
 
@@ -45,26 +46,12 @@ migrate = Migrate(app, db)
 
 
 @app.route('/')
-def home():
+def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 
-	stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
-	meta_name="DC Adventures Online"
-	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
-	title = 'DC Adventures Online Roleplaying Game'
-	sidebar = sidebar_create()
-	title = 'DC Adventures Online: Create a Special Skill'
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
-
-
-
-def sidebar_create():
-
-	sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
-
-	return (sidebar)
 
 
 '''
