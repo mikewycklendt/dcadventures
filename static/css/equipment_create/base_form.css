@@ -1,0 +1,189 @@
+
+#advantage-form {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	grid-template-columns: 100%;
+	margin-bottom: 20px;
+	grid-auto-rows: auto;
+}
+
+#advantage-desc {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 100%;
+	margin-bottom: 20px;
+}
+
+#description-field {
+	display: grid;
+	width: 70%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-template-areas: "descriptionfield";
+}
+
+#description-field textarea{
+	border: 2px solid lightblue;
+}
+
+#multiple-attr-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+}
+
+#advantage-attr-title{
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+}
+
+
+#advantage-base {
+	display: grid;
+	width: 100%;
+	margin: 0px;
+	border: 1px solid #af0101;
+	border-radius: 15px;
+	padding: 2%;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	margin-bottom: 20px;
+}
+
+#advantage-base input[type="text"] {
+	height: 1.4vw;
+	width: 94%;
+	padding: .3vw;
+	background-color: lightblue;
+}
+
+.base-select {
+	height: 1.8vw;
+	padding: .1vw;
+	font-size: 95%;
+}
+
+.base-field {
+	display: grid;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
+	color: #245681
+}
+
+#base-pre-check {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#base-field-invent {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	width: 85%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	font-family: 'Monda', Verdana;
+	font-size: 120%;
+	color: #245681
+}
+
+#base-invent-permanence {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#base-simultaneous{
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#advantage-dc-field {
+	display: grid;
+	width: 100%;
+	margin: 2%;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto;
+}
+
+#advantage-dc-mod{
+	display: none;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#advantage-dc-value{
+	display: none;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+.base-split {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.base-trait {
+	display: grid;
+	grid-template-columns: 40% 60%;
+}
+
+.base-check {
+	display: grid;
+	grid-template-columns: 15% 65% 20%;
+}
+
+.base-check-wide {
+	display: grid;
+	grid-template-columns: 15% 85%;
+}
+
+#gm-check {
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.check-fade{
+	opacity: 0%;
+	transition: all .4s linear;
+}
+
+.base-3 {
+	display: grid;
+	grid-template-columns: 20% 80%;
+}
+
+#base-ranked {
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#base-skill-description {
+	display: none;
+	grid-auto-rows: auto;
+	padding: .3vw;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
