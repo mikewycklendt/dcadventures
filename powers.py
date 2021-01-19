@@ -1706,7 +1706,8 @@ def power_post_character():
 	points_value = integer(points_value)
 	points_descriptor = integer(points_descriptor)
 	cost = integer(cost)
-	ranks = integer(ranks)	 
+	ranks = integer(ranks)
+	limited_emotion = integer(limited_emotion)
 
 	try:
 
