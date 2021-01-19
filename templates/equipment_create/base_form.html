@@ -15,13 +15,35 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Equipment Type:
 		</div>
 
 		<div>
-
+			<select class="base-select" id="equip_type" name="equip_type">
+				{% for e in equipment_type %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
-	
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Cost:
+		</div>
+
+		<div class="base-check">
+			<div>
+				<select class="base-select" id="cost" name="cost">
+					<option value="">Cost</option>
+					{% for i in positives %}
+						<option value="{{i}}">{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 

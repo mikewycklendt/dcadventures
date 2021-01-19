@@ -40,6 +40,8 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	equipment_includes = {'base_form': 'equipment_create/base_form.html'}
 
+	equipment = Equipment.query.all()
+
 	negatives = []
 	for i in range(-20, 1, 1):
 		negatives.append(i)
@@ -60,9 +62,14 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
+	equipment_type = [{'type': '', 'name': 'Equipment Type'}, {'type': 'general', 'name': 'General Equipment'}, {'type': 'electronics', 'name': 'Electronics'}, {'type': 'criminal', 'name': 'Criminal Gear'}, {'type': 'surveil', 'name': 'Surveillance Gear'}, {'type': 'survival', 'name': 'Survival Gear'}, {'type': 'utility', 'name': 'Utility Belt'}]
+
+	damaged = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
+
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged)
 
 
 @equip.route('/equipment/create', methods=['POST'])
