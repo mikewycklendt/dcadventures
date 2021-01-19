@@ -52,13 +52,19 @@ def home():
 	meta_name="DC Adventures Online"
 	meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 	title = 'DC Adventures Online Roleplqying Game'
-	sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
-
+	sidebar = sidebar_create()
 	title = 'DC Adventures Online: Create a Special Skill'
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+
+
+def sidebar_create():
+
+	sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
+
+	return (sidebar)
 
 
 '''
