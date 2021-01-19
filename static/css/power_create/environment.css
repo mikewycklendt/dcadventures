@@ -100,23 +100,16 @@ visibility traittype trait modifier costperrank
 	gap: .2vw;
 }
 
-#env-immunity-environment-other {
+#env-immunity-other {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .3s ease-out;
 	gap: .2vw;
-	grid-template-columns: 100%;
+	grid-template-columns: 23% 77%;
 }
 
-#env-immunity-environment-db {
-	display: grid;
-	transition: all .3s ease-out;
-	gap: .2vw;
-	grid-template-columns: 100%;
-}
-
-#env-immunity-environment-other input[type="text"] {
+#env-immunity-other input[type="text"] {
 	height: 1.1vw;
 	width: 93%;
 	padding: .1vw;

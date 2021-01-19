@@ -70,26 +70,23 @@ function env_immunity() {
 	const check = 'env_immunity';
 	const div = 'env-immunity'
 	const entry = 'env-entry';
-	reset('env_immunity_environment')
+
 	check_drop(check, div, entry);
 }
 
 function env_immunity_environment() {
 	const select = 'env_immunity_environment';
-	const options = [{'val': 'other', 'div': 'env-immunity-environment-other'}]
-	const div = 'env-immunity-environment-db';
+	const options = [{'val': 'other', 'div': 'env-immunity-other'}]
 	const entry = 'env-entry';
 
-	select_other(select, options, div);
+	select_maxheight_entry(select, options, entry);
 }
 
 function env_immunity_type() {
 	const select = 'env_immunity_type';
 	const options = [{'val': 'condition', 'div': 'env-immunity-condition'},
-					{'val': 'environment', 'div': 'env-immunity-environment'},
-					{'val': 'other', 'div': 'env-immunity-environment-other'},
-					{'val': 'environment', 'div': 'env-immunity-environment-db'}]
-	reset('env_immunity_environment')
+					{'val': 'environment', 'div': 'env-immunity-environment'}]
+
 	select_opacity(select, options);
 }
 
