@@ -264,6 +264,515 @@ class SkillType(db.Model):
 			'description': self.description
 		}
 
+class SkillBonus(db.Model):
+	__tablename__ = 'skill_bonus'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	description = db.Column(db.String())
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	condition = db.Column(db.String())
+	speed_mod = db.Column(db.Integer)
+	skill_type = db.Column(db.Integer, db.ForeignKey('skill_type.id'))
+	dc_set = db.Column(db.String())
+	time_type = db.Column(db.String())
+	time_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	time_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))	
+	time_mod = db.Column(db.Integer)
+	time_val = db.Column(db.Integer)
+	time_val_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	sub_check = db.Column(db.Boolean)
+	cover_check = db.Column(db.Boolean)
+	materials_check = db.Column(db.Boolean)
+	hidden_check = db.Column(db.Boolean)
+	hidden_mod = db.Column(db.Integer)
+	untrained_check = db.Column(db.Boolean)
+	untrained_limit = db.Column(db.Integer)
+	untrained_mod = db.Column(db.Integer)
+	level_type = db.Column(db.String())
+	level_change = db.Column(db.String())
+	subskill = db.Column(db.String())
+	subskill_description = db.Column(db.String())
+	move_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	move_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	move_val = db.Column(db.Integer)
+	action_change = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	action_mod = db.Column(db.Integer)
+	public = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+	other = db.Column(db.Boolean)
+	other_check = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+	round = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
+	levels = db.Column(db.Boolean)
+	circ_mod = db.Column(db.Boolean)
+	degree_key = db.Column(db.Boolean)
+	degree_mod = db.Column(db.Boolean)
+	resist_check = db.Column(db.Boolean)
+	resist_effect = db.Column(db.Boolean)
+	opp_condition = db.Column(db.Boolean)
+	char_check = db.Column(db.Boolean)
+	alt_check = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id,
+			'description': self.description,
+			'action': self.action,
+			'check_id': self.check_id,
+			'condition': self.condition,
+			'speed_mod': self.speed_mod,
+			'skill_type': self.skill_type,
+			'dc_set': self.dc_set,
+			'time_type': self.time_type,
+			'time_unit': self.time_unit,
+			'time_rank': self.time_rank,
+			'time_mod': self.time_mod,
+			'time_val': self.time_val,
+			'time_val_unit': self.time_val_unit,
+			'sub_check': self.sub_check,
+			'cover_check': self.cover_check,
+			'materials_check': self.materials_check,
+			'hidden_check': self.hidden_check,
+			'hidden_mod': self.hidden_mod,
+			'untrained_check': self.untrained_check,
+			'untrained_limit': self.untrained_limit,
+			'untrained_mod': self.untrained_mod,
+			'level_type': self.level_type,
+			'level_change': self.level_change,
+			'subskill': self.subskill,
+			'subskill_description': self.subskill_description,
+			'move_rank': self.move_rank,
+			'move_math': self.move_math,
+			'move_val': self.move_val,
+			'action_change': self.action_change,
+			'action_mod': self.action_mod,
+			'public': self.public,
+			'approved': self.approved,
+			'other': self.other,
+			'other_check': self.other_check,
+			'opposed': self.opposed,
+			'round': self.round,
+			'power': self.power,
+			'levels': self.levels,
+			'circ_mod': self.circ_mod,
+			'degree_key': self.degree_key,
+			'degree_mod': self.degree_mod,
+			'resist_check': self.resist_check,
+			'resist_effect': self.resist_effect,
+			'opp_condition': self.opp_condition,
+			'char_check': self.char_check,
+			'alt_check': self.alt_check
+		}
+
+class SkillOther(db.Model):
+	__tablename__ = 'skill_other'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'skill_id': self.skill_id,
+			'description': self.description
+		}
+
+class SkillAlt(db.Model):
+	__tablename__ = 'skill_alt_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	dc = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'dc': self.dc,
+			'description': self.description
+		}
+
+class SkillOtherCheck(db.Model):
+	__tablename__ = 'skill_other_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	check_type = db.Column(db.String())
+	when = db.Column(db.String())
+	check = db.Column(db.String())
+	opposed_check = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'check_type': self.check_type,
+			'when': self.when,
+			'check': self.check,
+			'opposed_check': self.opposed_check,
+			'description': self.description
+		}
+
+class SkillOpposed(db.Model):
+	__tablename__ = 'skill_opposed'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	priority = db.Column(db.String())
+	opposed = db.Column(db.String())
+	mod = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'priority': self.priority,
+			'opposed': self.opposed,
+			'mod': self.mod,
+			'description': self.description
+		}
+
+class SkillRound(db.Model):
+	__tablename__ = 'skill_round'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	dc = db.Column(db.Integer)
+	degree = db.Column(db.Integer)
+	rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	mod = db.Column(db.Integer)
+	rounds = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'dc': self.dc,
+			'degree': self.degree,
+			'rank': self.rank,
+			'mod': self.mod,
+			'rounds': self.rounds
+		}
+
+class SkillPower(db.Model):
+	__tablename__ = 'skill_power'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	power = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'power': self.power,
+			'description': self.description
+		}
+
+class SkillDC(db.Model):
+	__tablename__ = 'skill_dc'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+	val = db.Column(db.Integer)
+	math_val = db.Column(db.Integer)
+	math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_type = db.Column(db.String())
+	measure_val = db.Column(db.Integer)
+	measure_val_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	measure_math_val = db.Column(db.Integer)
+	measure_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	damage = db.Column(db.Integer)
+	keyword = db.Column(db.String())
+	condition_one = db.Column(db.String())
+	condition_two = db.Column(db.String())
+	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	description = db.Column(db.String())
+	measure_check = db.Column(db.Boolean)
+	damage_check = db.Column(db.Boolean)
+	keyword_check = db.Column(db.Boolean)
+	defense_check = db.Column(db.Boolean)
+	condition_check = db.Column(db.Boolean)
+	action_check = db.Column(db.Boolean)
+
+
+	def format(self):
+		return {	
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type,
+			'val': self.val,
+			'math_val': self.math_val,
+			'math': self.math,
+			'math_rank': self.math_rank,
+			'measure_type': self.measure_type,
+			'measure_val': self.measure_val,
+			'measure_val_unit': self.measure_val_unit,
+			'measure_math_val': self.measure_math_val,
+			'measure_math': self.measure_math,
+			'measure_rank': self.measure_rank,
+			'damage': self.damage,
+			'keyword': self.keyword,
+			'condition_one': self.condition_one,
+			'condition_two': self.condition_two,
+			'defense': self.defense,
+			'action': self.action,
+			'description': self.description,
+			'measure_check': self.measure_check,
+			'damage_check': self.damage_check,
+			'keyword_check': self.keyword_check,
+			'defense_check': self.defense_check,
+			'condition_check': self.condition_check,
+			'action_check': self.action_check
+		}
+
+class SkillLevels(db.Model):
+	__tablename__ = 'skill_levels'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+	target = db.Column(db.String())
+	degree = db.Column(db.Integer) 
+	keyword = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type,
+			'target': self.target,
+			'degree': self.degree,
+			'keyword': self.keyword,
+			'description': self.description
+		}
+
+class SkillLevelsType(db.Model):
+	__tablename__ = 'skill_levels_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type
+		}
+
+class SkillCircMod(db.Model):
+	__tablename__ = 'skill_circ_mod'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	target = db.Column(db.String())
+	type = db.Column(db.String())
+	mod = db.Column(db.Integer)
+	unit_mod = db.Column(db.Integer)
+	unit_value = db.Column(db.Integer)
+	unit_type = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	adjust_check_mod = db.Column(db.Integer)
+	adjust_mod = db.Column(db.Integer)
+	adjust_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	equip_mod = db.Column(db.Integer)
+	rounds = db.Column(db.Integer)
+	description = db.Column(db.String())
+	noequip = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'skill': self.skill,
+			'target': self.target,
+			'type': self.type,
+			'mod': self.mod,
+			'unit_mod': self.unit_mod,
+			'unit_value': self.unit_value,
+			'unit_type': self.unit_type,
+			'adjust_check_mod': self.adjust_check_mod,
+			'adjust_mod': self.adjust_mod,
+			'adjust_rank': self.adjust_rank,
+			'equip_mod': self.equip_mod,
+			'rounds': self.rounds, 
+			'description': self.description,
+			'noequip': self.noequip
+		}
+
+
+class SkillDegreeKey(db.Model):
+	__tablename__ = 'skill_degree_key'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	target = db.Column(db.String())
+	degree = db.Column(db.Integer)
+	keyword = db.Column(db.String())
+	description = db.Column(db.String())
+	type = db.Column(db.String())
+	
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'skill_id': self.skill_id,
+			'target': self.target,
+			'degree': self.degree,
+			'keyword': self.keyword,
+			'description': self.description,
+			'type': self.type			
+		}
+
+class SkillDegreeType(db.Model):
+	__tablename__ = 'skill_degree_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type = db.Column(db.String())
+	
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'type': self.type			
+		}
+
+class SkillDegreeMod(db.Model):
+	__tablename__ = 'skill_degree_mod'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	target = db.Column(db.String())
+	degree = db.Column(db.Integer)
+	type = db.Column(db.String())
+	damage_value_degree = db.Column(db.Integer)
+	damage_value_value = db.Column(db.Integer)
+	damage_math_damage = db.Column(db.Integer)
+	damage_math_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	damage_math_value = db.Column(db.Integer)
+	damage_math_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	damage_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_value = db.Column(db.Integer)
+	measure_value_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_math_value = db.Column(db.Integer)
+	measure_math_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_math_measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	condition_1 = db.Column(db.String())
+	condition_2 = db.Column(db.String())
+	keyword = db.Column(db.String())
+	description = db.Column(db.String())
+	nullify = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'target': self.target,
+			'degree': self.degree,
+			'type': self.type,
+			'damage_value_degree': self.damage_value_degree,
+			'damage_value_value': self.damage_value_value,
+			'damage_math_damage': self.damage_math_damage,
+			'damage_math_math1': self.damage_math_math1,
+			'damage_math_value': self.damage_math_value,
+			'damage_math_math2': self.damage_math_math2,
+			'damage_math_rank': self.damage_math_rank,
+			'measure_value': self.measure_value,
+			'measure_value_rank': self.measure_value_rank,
+			'measure_math_value': self.measure_math_value,
+			'measure_math_math': self.measure_math_math,
+			'measure_math_rank': self.measure_math_rank,
+			'measure_math_measure_rank': self.measure_math_measure_rank,
+			'condition_1': self.condition_1,
+			'condition_2': self.condition_2,
+			'keyword': self.keyword,
+			'description': self.description,
+			'nullify': self.nullify
+		}
+
+class SkillResistCheck(db.Model):
+	__tablename__ = 'skill_resist_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	target = db.Column(db.String())
+	mod = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'target': self.target,
+			'mod': self.mod,
+			'description': self.description
+		}
+
+class SkillResistEffect(db.Model):
+	__tablename__ = 'skill_resist_effect'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	effect = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'effect': self.effect,
+			'description': self.description
+		}
+
+class SkillOppCondition(db.Model):
+	__tablename__ = 'skill_opp_condition'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	degree = db.Column(db.Integer)
+	condition = db.Column(db.String())
+	rounds = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'degree': self.degree,
+			'condition': self.condition,
+			'rounds': self.rounds,
+			'description': self.description
+		}
+
+class SkillCharCheck(db.Model):
+	__tablename__ = 'skill_char_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	target = db.Column(db.String())
+	degree = db.Column(db.Integer)
+	rank = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'bonus_id': self.bonus_id,
+			'check_id': self.check_id,
+			'target': self.target,
+			'degree': self.degree,
+			'rank': self.rank,
+			'description': self.description
+		}
+
 class Power(db.Model):
 	__tablename__ = 'powers'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
