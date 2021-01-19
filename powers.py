@@ -2831,7 +2831,7 @@ def power_post_environment():
 		body['new'] = False
 		new_items = []
 
-		if immunity_environment_other == 'other':	
+		if immunity_environment == 'other':	
 			entry = Environment(name=immunity_environment_other)
 			db.session.add(entry)
 			db.session.commit()
