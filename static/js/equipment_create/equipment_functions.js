@@ -1145,10 +1145,10 @@ function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
-	const base_table = 'power-table-table';
-	const base_cell_title = 'power-table-cell-title ';
-	const base_title = 'power-table-title'
-	const base_titles = 'power-table-titles';
+	const base_table = 'equip-table-table';
+	const base_cell_title = 'equip-table-cell-title ';
+	const base_title = 'equip-table-title'
+	const base_titles = 'equip-table-titles';
 
 	
 	console.log(created)
@@ -1183,10 +1183,10 @@ function create_titles(jsonResponse, grow, object, route, benefit_delete=false) 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table';
 	const title_class = table_id + '-title';
-	const base_table = 'advantage-table-table';
-	const base_cell_title = 'advantage-table-cell-title';
-	const base_title = 'advantage-table-title-table';
-	const base_titles = 'advantage-table-titles';
+	const base_table = 'equip-table-table';
+	const base_cell_title = 'equip-table-cell-title';
+	const base_title = 'equip-table-title-table';
+	const base_titles = 'equip-table-titles';
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
@@ -1273,11 +1273,11 @@ function cells_create(table_input, grow, jsonResponse, object, route, benefit_de
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'advantage-table-cells';
-	const base_cell = 'advantage-table-cell'
-	const base_button_check = 'advantage-check-button ';
-	const base_check = 'advantage-check';
-	const base_entry = 'advantage-table-row';
+	const base_cells = 'equip-table-cells';
+	const base_cell = 'equip-table-cell'
+	const base_button_check = 'equip-check-button ';
+	const base_check = 'equip-check';
+	const base_entry = 'equip-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
@@ -1424,7 +1424,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			if (new_cell.content == true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
-				check.className = 'advantage-check';
+				check.className = 'equip-check';
 				con.appendChild(check)
 			} else {
 				con.innerHTML = new_cell.content;
@@ -1518,7 +1518,7 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 					clear_errors(err_line, errors)
 
 					if (benefit_delete == true) {
-						const selects = document.getElementsByClassName('benefit-entry');
+						const selects = document.getElementsByClassName('feature-entry');
 						let select;
 
 						for (select of selects) {

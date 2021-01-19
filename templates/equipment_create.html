@@ -1,45 +1,45 @@
-<div class="advantage-container" style="justify-content: center; background:url(/static/img/bg/wonderwoman.png); background-repeat: no-repeat; background-size: 100%;">
-	<div class="advantage-grid">
+<div class="equip-container" style="justify-content: center; background:url(/static/img/bg/batman2.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="equip-grid">
 		
 		<br>
 
 		<div id="box-title">
-			<img src="/static/img/title/create_advantage.png" width="100%">
+			<img src="/static/img/title/create_equipment.png" width="100%">
 		</div>
 
 
 		<br><br>
 		
 
-		<div id="addadvantagegrid">
+		<div id="addequipgrid">
 
-			<div id="add-advantage">
+			<div id="add-equip">
 
-				<div id="addadvantageunderline">
-					Advantage Name
+				<div id="addequipunderline">
+					Equipment Name
 				</div>
 
-				<div id="addadvantageform">
-					<div id="nameadvantage">
-						<input type="text" id="advantage_name" placeholder="Advantage Name">
+				<div id="addequipform">
+					<div id="nameequip">
+						<input type="text" id="equip_name" placeholder="Equipment Name">
 					</div>
 						
 					<div id="namebutton">
-						<div class="btn" id="advantage_create" onclick="advantage_create()" >
-							 Create Advantage
+						<div class="btn" id="equip_create" onclick="equip_create()" >
+							 Create Equipment
 						</div>
 					</div>
 				</div>
 			
 			</div>
 
-			<div id="advantage-name-grid">
+			<div id="equip-name-grid">
 
-				<div id="advantage-name">
+				<div id="equip-name">
 
 				</div>
 
-				<div id="advantage-edit">
+				<div id="equip-edit">
 					<div id="edit-button" style="display: none;">
 						<button  style="font-size: 260%;" onclick="edit_form()"><i class="fa fa-edit"></i></button>
 					</div>
@@ -47,13 +47,13 @@
 
 			</div>
 
-			<div id="advantage-edit-grid" style="display: none;">
-				<div id="advantage-edit-field">
-					<input type="text" id="advantage_name_edit">
+			<div id="equip-edit-grid" style="display: none;">
+				<div id="equip-edit-field">
+					<input type="text" id="equip_name_edit">
 				</div>
 
-				<div id="advantage-edit-btn">
-					<div class="edit-btn" id="advantage_edit" onclick="advantage_edit()">
+				<div id="equip-edit-btn">
+					<div class="edit-btn" id="equip_edit" onclick="equip_edit()">
 						Save
 					</div>
 				</div>
@@ -73,91 +73,22 @@
 		<div id="all-fields">
 
 			<div id="base-form">
-				{% include advantage_includes.base_form %}
+				{% include equipment_includes.base_form %}
 			</div>
 
 			<br>
 
-			<div class="advantage-box" id="advantage-variable">
-				{% include advantage_includes.variable %}
-			</div>
-
-			<div class="advantage-box" id="advantage-benefit">
-				{% include advantage_includes.benefit %}
-			</div>
-
-			<div class="advantage-box" id="advantage-dc">
-				{% include advantage_includes.dc_table %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-modifiers">
-				{% include advantage_includes.modifiers %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-opposed">
-				{% include advantage_includes.opposed %}
-			</div>
-
-			<div class="advantage-box" id="advantage-circ">
-				{% include advantage_includes.circ %}
-			</div>
-
-			<div class="advantage-box" id="advantage-degree_mod">
-				{% include advantage_includes.degree_mod %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-resist">
-				{% include advantage_includes.resist %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-skill">
-				{% include advantage_includes.skill %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-condition">
-				{% include advantage_includes.condition %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-levels">
-				{% include advantage_includes.levels %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-alt_check">
-				{% include advantage_includes.alt_check %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-rounds">
-				{% include advantage_includes.rounds %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-points">
-				{% include advantage_includes.points %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-effort">
-				{% include advantage_includes.effort %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-time">
-				{% include advantage_includes.time %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-minion">
-				{% include advantage_includes.minion %}
-			</div>
-			
-			<div class="advantage-box" id="advantage-combined">
-				{% include advantage_includes.combined %}
+			<div class="equip-box" id="equip-">
 			</div>
 
 		<br>
 
-		<div id="advantage-err"></div>
+		<div id="equip-err"></div>
 
 		<br><br>
 
 		<div id="save-div">
-			<div class="save-btn" onclick="advantage_save()"> Save Advantage</div>
+			<div class="save-btn" onclick="equip_save()"> Save Equipment</div>
 		</div>
 
 		<br><br><br><br><br><br><br><br><br><br>
@@ -170,25 +101,7 @@
 	
 </div>
 
-	<script src="/static/js/advantage_create/advantage_create.js"></script>
-	<script src="/static/js/advantage_create/base_form.js"></script>
-	<script src="/static/js/advantage_create/dc_table.js"></script>
-	<script src="/static/js/advantage_create/modifiers.js"></script>
-	<script src="/static/js/advantage_create/skill.js"></script>
-	<script src="/static/js/advantage_create/opposed.js"></script>
-	<script src="/static/js/advantage_create/circ.js"></script>
-	<script src="/static/js/advantage_create/degree_mod.js"></script>
-	<script src="/static/js/advantage_create/levels.js"></script>
-	<script src="/static/js/advantage_create/points.js"></script>
-	<script src="/static/js/advantage_create/time.js"></script>
-	<script src="/static/js/advantage_create/combined.js"></script>
-	<script src="/static/js/advantage_create/resist.js"></script>
-	<script src="/static/js/advantage_create/variable.js"></script>
-	<script src="/static/js/advantage_create/alt_check.js"></script>
-	<script src="/static/js/advantage_create/effort.js"></script>
-	<script src="/static/js/advantage_create/benefit.js"></script>
-	<script src="/static/js/advantage_create/rounds.js"></script>
-	<script src="/static/js/advantage_create/condition.js"></script>
-	<script src="/static/js/advantage_create/minion.js"></script>
+	<script src="/static/js/equipment_create/equipment_functions.js"></script>
+	<script src="/static/js/equipment_create/equipment_create.js"></script>
 	
-	<input type="hidden" id="advantage_id" name="advantage_id" value=>
+	<input type="hidden" id="equip_id" name="equip_id" value=>
