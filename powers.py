@@ -2794,6 +2794,7 @@ def power_post_environment():
 	temp_type = request.get_json()['temp_type']
 	immunity_extremity = request.get_json()['immunity_extremity']
 	immunity_environment = request.get_json()['immunity_environment']
+	immunity_environment_other = request.get_json()['immunity_environment_other']
 	no_penalty = request.get_json()['no_penalty']
 	no_circumstance = request.get_json()['no_circumstance']
 	immunity_other = request.get_json()['immunity_other']
@@ -2825,6 +2826,26 @@ def power_post_environment():
 	ranks = integer(ranks)
 
 	try:
+
+		body = {}
+	
+		body['new'] = False
+		new_items = []
+
+		if immunity_environment_other == 'other':	
+			entry = Environment(name=immunity_environment_other)
+			db.session.add(entry)
+			db.session.commit()
+			environment = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = True
+			item['field'] = 'env-sml'
+			new_items.append(item)
+			db.session.close()
+
 		entry = PowerEnv(power_id = power_id,
 							extra_id = extra_id,
 							radius = radius,
@@ -2859,7 +2880,6 @@ def power_post_environment():
 		db.session.add(entry)
 		db.session.commit()
 
-		body = {}
 		body['id'] = entry.id
 		error = False
 		error_msg = []
