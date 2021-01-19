@@ -998,6 +998,7 @@ class PowerChar(db.Model):
 	weaken_simultaneous = db.Column(db.Boolean)
 	limited_by = db.Column(db.String())
 	limited_other = db.Column(db.String())
+	limited_emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 	limited_emotion_other = db.Column(db.String())
 	reduced_trait_type = db.Column(db.String())
 	reduced_trait = db.Column(db.String())
@@ -1046,6 +1047,7 @@ class PowerChar(db.Model):
 			'weaken_simultaneous': self.weaken_simultaneous,
 			'limited_by': self.limited_by,
 			'limited_other': self.limited_other,
+			'limited_emotion': self.limited_emotion,
 			'limited_emotion_other': self.limited_emotion_other,
 			'reduced_trait_type': self.reduced_trait_type,
 			'reduced_trait': self.reduced_trait,
