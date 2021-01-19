@@ -379,9 +379,9 @@ textarea:focus {
 }
 
 #all-fields {
-	display: block;
-	opacity: 100%;
-	transition: all .3s linear;
+	display: none;
+	opacity: 0%;
+	transition: all .4s linear;
 } 
 
 .edit-btn {
