@@ -21,7 +21,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from error_functions import db_check, integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
 from power_errors import power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
-
+from base_files import sidebar, stylesheets, meta_name, meta_content, title
 load_dotenv()
 
 import os
@@ -30,12 +30,6 @@ db_path = os.environ.get("db_path")
 
 powers = Blueprint('powers', __name__)
 db = SQLAlchemy()
-
-stylesheets = [{"style": "/static/css/template.css"}, {"style": "/static/css/sidebar.css"}, {"style": "/static/css/font-awesome.min.css"}]
-meta_name="DC Adventures Online"
-meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
-title = 'DC Adventures Online Roleplqying Game'
-sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
 
 @powers.route('/power/create')
 def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
