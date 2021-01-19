@@ -2835,7 +2835,7 @@ def power_post_environment():
 			entry = Environment(name=immunity_environment_other)
 			db.session.add(entry)
 			db.session.commit()
-			environment = entry.id
+			immunity_environment = entry.id
 			item = {}
 			body['new'] = True
 			item['id'] = entry.id
