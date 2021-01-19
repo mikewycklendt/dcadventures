@@ -182,6 +182,11 @@ function env_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const insert = jsonResponse.new;
+			const items = jsonResponse.new_items;
+
+			new_items(insert, items);
+
 			env_grid.columns.length = 0;
 			env_grid.columns = jsonResponse.rows;
 
