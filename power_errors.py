@@ -1389,7 +1389,6 @@ def environment_post_errors(data):
 	immunity_environment_other = data['immunity_environment_other']
 	no_penalty = data['no_penalty']
 	no_circumstance = data['no_circumstance']
-	immunity_other = data['immunity_other']
 	condition_temp_type = data['condition_temp_type']
 	temp_extremity = data['temp_extremity']
 	move_nature = data['move_nature']
