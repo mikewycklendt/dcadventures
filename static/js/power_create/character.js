@@ -282,7 +282,12 @@ function char_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			
+
+			const insert = jsonResponse.new;
+			const items = jsonResponse.new_items;
+
+			new_items(insert, items);
+
 			char_grid.columns.length = 0;
 			char_grid.columns = jsonResponse.rows;
 

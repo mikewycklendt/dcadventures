@@ -831,6 +831,8 @@ def character_post_errors(data):
 	errors = variable_field('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
 
 
+	errors = db_insert('Emotion', Emotion, limited_emotion, limited_emotion_other, errors)
+
 	return (errors)
 
 def circ_post_errors(data):
