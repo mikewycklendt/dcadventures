@@ -790,6 +790,7 @@ def character_post_errors(data):
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
 	errors = variable_fields('emotion', 'Emotional State', limited_by, [limited_emotion], errors)
+	errors = variable_fields('other', 'Other Emotion', limited_emotion, [limited_emotion_other], errors)
 	errors = variable_fields('other', 'Other Condition', limited_by, [limited_other], errors)
 
 	errors = check_fields(reduced, 'Reduced Trait', [reduced_trait_type, reduced_value], errors)
