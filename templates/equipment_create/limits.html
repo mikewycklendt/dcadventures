@@ -41,12 +41,7 @@
 		<div></div>
 
 		<div>
-			<select class="base-select" id="limits_battery_time" name="limits_battery_time">
-				<option value="">Time</option>
-				{% for i in time_numbers %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
+			<input type="text" id="limits_battery_time" name="limits_battery_time" placeholder="Tune" >
 		</div>
 
 		<div>
@@ -59,7 +54,7 @@
 		</div>
 
 		<div>
-			<input type="text" id="equip_range" name="limits_range" placeholder="Range" >
+			<input type="text" id="limits_range" name="limits_range" placeholder="Range" >
 		</div>
 
 		<div>
@@ -79,7 +74,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Internet Access
+				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Extends
 			</div>
 		</div>
 
