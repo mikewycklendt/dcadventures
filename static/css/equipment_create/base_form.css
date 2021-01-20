@@ -119,3 +119,9 @@
 	display: grid;
 	grid-template-columns: 20% 80%;
 }
+
+#base-extend {
+	display: none;
+	opacity: 0%;
+	transform: all .4s ease-out;
+}
