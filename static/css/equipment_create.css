@@ -3,6 +3,7 @@
 @import "equipment_create/opposed.css";
 @import "equipment_create/modifiers.css";
 @import "equipment_create/check.css";
+@import "equipment_create/limits.css";
 
 .equip-container {
 	display: grid;
