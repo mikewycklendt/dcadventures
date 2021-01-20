@@ -56,14 +56,14 @@
 		<div>
 			<select class="select-entry" id="damaged_skill" name="damaged_skill">
 				<option value="">Enhanced Skill</option>
-			</select>
+				</select>
 		</div>
 	</div>
 
 	<div id="damaged-button-row">
 		
 		<div>
-			<select class="base-select" id="toughness" name="toughness">
+			<select class="select-entry" id="damaged_toughness" name="toughness">
 				<option value="">Toughness</option>
 				{% for i in positives %}
 					<option value="{{i}}">{{i}}</option>
@@ -72,7 +72,7 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="equip_type" name="equip_type">
+			<select class="select-entry" id="damaged_effect" name="damaged_effect">
 				{% for d in damaged %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
