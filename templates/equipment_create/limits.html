@@ -1,0 +1,104 @@
+<div class="equip-header" id="limits-header">
+
+	<div class="equip-title" id="limits-title">
+		<input type="checkbox" id="limits_check" class="regular-checkbox big-checkbox" onclick="limits_check()"> Limits:
+	</div>
+	
+	<div class="equip-base" id="limits-base">
+		<div>
+			<select class="effect-entry" id="limits_effect" name="limits_effect">
+				<option value="">Effect</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="feature-entry" id="limits_feature" name="limits_feature">
+				<option value="">Feature</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="equip-entry" id="limits-entry">
+
+	<div id="limits-row1">
+
+		<div>
+			Battery:
+		</div>
+
+		<div></div>
+
+		<div>
+			Range:
+		</div>
+
+		<div></div>
+
+		<div></div>
+
+		<div></div>
+
+		<div>
+			<select class="base-select" id="limits_battery_time" name="limits_battery_time">
+				<option value="">Time</option>
+				{% for i in time_numbers %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="limits_battery_units" name="limits_battery_units">
+				<option value="">Units</option>
+				{% for t in times %}
+					<option value={{t.id}}>{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="equip_range" name="limits_range" placeholder="Range" >
+		</div>
+
+		<div>
+			<select class="select-entry" id="limits_range_units" name="range_units">
+				<option value="">Units</option>
+				{% for d in distances %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_extend" class="medium-checkbox med-checkbox" > Extendable
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Internet Access
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="limits-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="limits_submit" name="limits_submit" onclick="limits_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="limits-spot"></div>
+
+<div class="err" id="limits-err"></div>
