@@ -42,7 +42,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	equipment = Equipment.query.all()
 
-	skills = Skill.quey.all()
+	skills = Skill.query.all()
 
 	times = db.session.query(Unit).filter_by(type_id=2).all()
 
