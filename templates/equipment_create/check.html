@@ -1,0 +1,76 @@
+<div class="equip-header" id="check-header">
+
+	<div class="equip-title" id="check-title">
+		<input type="checkbox" id="check_check" class="regular-checkbox big-checkbox" onclick="check_check()"> Skill Check:
+	</div>
+	
+	<div class="equip-base" id="check-base">
+		<div>
+			<select class="effect-entry" id="check_effect" name="check_effect">
+				<option value="">Effect</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="feature-entry" id="check_feature" name="check_feature">
+				<option value="">Feature</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="equip-entry" id="check-entry">
+
+	<div id="check-row1">
+		<div>
+			When
+		</div>
+
+		<div>
+			Skill Type
+		</div>
+
+		<div>
+		</div>
+
+		<div>
+			<select class="select-entry" id="check_when" name="check_when">
+				{% for w in when %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="check_skill_type" name="check_skill_type" onchange="check_skill_type()">
+				<option value="">Skill</option>
+				{% for s in skills %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-entry" id="check_skill" name="check_skill">
+				<option value="">Enhanced Skill</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="check-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="check_submit" name="check_submit" onclick="check_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="check-spot"></div>
+
+<div class="err" id="check-err"></div>

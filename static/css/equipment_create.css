@@ -1,6 +1,8 @@
 @import "equipment_create/base_form.css";
 @import "equipment_create/damaged.css";
 @import "equipment_create/opposed.css";
+@import "equipment_create/modifiers.css";
+@import "equipment_create/check.css";
 
 .equip-container {
 	display: grid;
@@ -111,6 +113,18 @@ select:focus {
 }
 
 .descriptor-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.effect-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.feature-entry {
 	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;

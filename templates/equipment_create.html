@@ -81,14 +81,19 @@
 			<div class="equip-box" id="equip-modifiers">
 				{% include equipment_includes.modifiers %}
 			</div>
+			
+			<div class="equip-box" id="equip-check">
+				{% include equipment_includes.check %}
+			</div>
+
+			<div class="equip-box" id="equip-opposed">
+				{% include equipment_includes.opposed %}
+			</div>
 
 			<div class="equip-box" id="equip-damaged">
 				{% include equipment_includes.damaged %}
 			</div>
 			
-			<div class="equip-box" id="equip-opposed">
-				{% include equipment_includes.opposed %}
-			</div>
 
 		<br>
 
@@ -116,5 +121,6 @@
 	<script src="/static/js/equipment_create/base_form.js"></script>
 	<script src="/static/js/equipment_create/opposed.js"></script>
 	<script src="/static/js/equipment_create/modifiers.js"></script>
+	<script src="/static/js/equipment_create/check.js"></script>
 	
 	<input type="hidden" id="equip_id" name="equip_id" value=>
