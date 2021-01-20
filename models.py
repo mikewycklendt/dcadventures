@@ -2182,6 +2182,7 @@ class PowerSenseEffect(db.Model):
 	exclusive = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	dark = db.Column(db.Boolean)
+	lighting = db.Column(db.Integer, db.ForeignKey('light.id'))
 	time = db.Column(db.Boolean)
 	dimensional = db.Column(db.Boolean)
 	radius = db.Column(db.Boolean)
@@ -2229,6 +2230,7 @@ class PowerSenseEffect(db.Model):
 			'exclusive': self.exclusive,
 			'gm': self.gm,
 			'dark': self.dark,
+			'lighting': self.lighting,
 			'time': self.time,
 			'dimensional': self.dimensional,
 			'radius': self.radius,
