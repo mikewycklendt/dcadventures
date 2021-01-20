@@ -54,6 +54,8 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	checks = db.session.query(Check).all()
 
+	actions = Action.query.all()
+
 	light = Light.query.all()
 	
 	environments = db.session.query(Environment).order_by(Environment.name).all()
@@ -147,7 +149,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
-							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits)
+							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])

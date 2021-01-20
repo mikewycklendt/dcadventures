@@ -117,6 +117,33 @@
 		</div>
 	</div>
 
+	<div id="limits-row3">
+		<div class="vcenter">
+			Area Effect:		
+		</div>
+		
+		<div>
+			<input type="text" id="limits_area_long" name="limits_area_long" placeholder="Long" >
+		</div>
+
+		<div>
+			X
+		</div>
+
+		<div>
+			<input type="text" id="limits_area_wide" name="limits_area_wide" placeholder="Wide" >
+		</div>
+
+		<div>
+			<select class="select-entry" id="limits_area_units" name="limits_area_units">
+				<option value="">Units</option>
+				{% for d in distances %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="limits-button-row">
 		<div>
 		</div>

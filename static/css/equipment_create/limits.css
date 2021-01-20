@@ -22,6 +22,14 @@
 	grid-auto-rows: auto;
 }
 
+#limits-row3 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 15% 16% 3% 16% 15% 35%;
+	grid-auto-rows: auto;
+}
+
 #limits-entry input[type="text"] {
 	height: 1.3vw;
 	padding: .3vw;
