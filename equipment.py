@@ -93,7 +93,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
-							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages)
+							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])

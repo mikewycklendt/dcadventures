@@ -65,7 +65,9 @@
 		<div>
 			<select class="select-entry" id="opposed_check" name="opposed_check">
 				<option value="">Check Type</option>
-				<option value={{c.id}}>{{c.name}}</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}	
 			</select>
 		</div>
 
