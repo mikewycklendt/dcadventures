@@ -12,6 +12,8 @@ function modifiers_trigger() {
 	const options = [{'val': 'environment', 'div': 'modifiers-environment'}, 
 					{'val': 'sense', 'div': 'modifiers-sense'}, 
 					{'val': 'tools', 'div': 'modifiers-tools'}, 
+					{'val': 'skill', 'div': 'modifiers-skill'}, 
+					{'val': 'light', 'div': 'modifiers-light'}, 
 					{'val': 'cover', 'div': 'modifiers-cover'}, 
 					{'val': 'ranged', 'div': 'modifiers-ranged'},
 					{'val': 'melee', 'div': 'modifiers-melee'},  
