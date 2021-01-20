@@ -46,51 +46,6 @@
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Toughness Rank:
-		</div>
-
-		<div class="base-trait">
-			<div>
-				<select class="base-select" id="toughness" name="toughness">
-					<option value="">Toughness</option>
-					{% for i in positives %}
-						<option value="{{i}}">{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Damaged Effect:
-		</div>
-
-		<div>
-			<select class="base-select" id="equip_type" name="equip_type">
-				{% for d in damaged %}
-					<option value="{{d.type}}">{{d.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Skill Check to Repair:
-		</div>
-
-		<div>
-			<select class="base-select" id="equip_type" name="equip_type">
-				{% for s in skills %}
-					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
 			Relevent Expertise:
 		</div>
 
