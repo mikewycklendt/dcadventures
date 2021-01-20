@@ -1,0 +1,118 @@
+<div class="equip-header" id="opposed-header">
+
+	<div class="equip-title" id="opposed-title">
+		<input type="checkbox" id="opposed_check" class="regular-checkbox big-checkbox" onclick="opposed_check()"> Opposing Check:
+	</div>
+	
+	<div class="equip-base" id="opposed-base">
+		<div>
+			<select class="effect-entry" id="opposed_effect" name="opposed_effect">
+				<option value="">Effect</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="feature-entry" id="opposed_feature" name="opposed_feature">
+				<option value="">Feature</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="equip-entry" id="opposed-entry">
+
+	<div id="opposed-row1">
+
+		<div>
+			DC:
+		</div>
+
+		<div>
+			Skill Type:
+		</div>
+
+		<div></div>
+
+		<div>
+			Check Type:
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_dc" name="opposed_dc">
+				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_skill_type" name="opposed_skill_type" onchange="opposed_skill_type()">
+				<option value="">Skill</option>
+				{% for s in skills %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_skill" name="opposed_skill">
+				<option value="">Enhanced Skill</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_check" name="opposed_check">
+				<option value="">Check Type</option>
+				<option value={{c.id}}>{{c.name}}</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div id="opposed-row2">
+		<div>
+			<select class="select-entry" id="opposed_when" name="opposed_when">
+				{% for w in when %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<option value="select-entry" id="opposed_condition1" name="opposed_condition1">
+				<option value="">Required Opponent Condition</option>
+				<option value="">N/A</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</option>
+		</div>
+		
+		<div>
+			<option value="select-entry" id="opposed_condition2" name="opposed_condition2">
+				<option value="">Opponent Condition After Use</option>
+				{% for c in conditions %}
+					<option value="{{c}}">{{c}}</option>
+				{% endfor %}
+			</option>
+		</div>
+	</div>
+
+	<div id="opposed-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="opposed-spot"></div>
+
+<div class="err" id="opposed-err"></div>

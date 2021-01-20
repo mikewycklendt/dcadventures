@@ -32,7 +32,7 @@
 			Cost:
 		</div>
 
-		<div class="base-check">
+		<div class="base-trait">
 			<div>
 				<select class="base-select" id="cost" name="cost">
 					<option value="">Cost</option>
@@ -43,6 +43,162 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Toughness Rank:
+		</div>
+
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="toughness" name="toughness">
+					<option value="">Toughness</option>
+					{% for i in positives %}
+						<option value="{{i}}">{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Damaged Effect:
+		</div>
+
+		<div>
+			<select class="base-select" id="equip_type" name="equip_type">
+				{% for d in damaged %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Skill Check to Repair:
+		</div>
+
+		<div>
+			<select class="base-select" id="equip_type" name="equip_type">
+				{% for s in skills %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Relevent Expertise:
+		</div>
+
+		<div>
+			<select class="base-select" id="equip_type" name="equip_type">
+				{% for e in expertise %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Battery Life:
+		</div>
+
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="battery_time" name="battery_time">
+					<option value="">Time</option>
+					{for i in time numbers}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="battery_units" name="battery_units">
+					<option value="">Units</option>
+					{% for t in times %}
+						<option value={{t.id}}>{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Range:
+		</div>
+
+		<div class="base-trait">
+			<div>
+				<input type="text" id="equip_range" name="equip_range" placeholder="Range" onblur="equip_range()">
+			</div>
+
+			<div>
+				<select class="base-select" id="range_units" name="range_units">
+					<option value="">Units</option>
+					{% for d in distances %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="base-field" id="base-extend">
+		<div id="multiple-attr-title">
+			Extendable:
+		</div>
+	
+		<div>
+			<div>
+				<input type="checkbox" id="range_extend" class="regular-checkbox big-checkbox">
+			</div>
+		</div>
+
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Internet Access:
+		</div>
+	
+		<div>
+			<div>
+				<input type="checkbox" id="groups" class="regular-checkbox big-checkbox">
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Time Capacity:
+		</div>
+
+		<div class="base-trait">
+			<div>
+				<select class="base-select" id="battery_time" name="battery_time">
+					<option value="">Time</option>
+					{for i in hundred}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				Hours
+			</div>
+		</div>
+	</div>	
 
 </div>
 

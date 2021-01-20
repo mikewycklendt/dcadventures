@@ -1,4 +1,6 @@
 @import "equipment_create/base_form.css";
+@import "equipment_create/damaged.css";
+@import "equipment_create/opposed.css";
 
 .equip-container {
 	display: grid;

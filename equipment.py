@@ -38,9 +38,30 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Equipment'
 	stylesheets.append({"style": "/static/css/equipment_create.css"})
 
-	equipment_includes = {'base_form': 'equipment_create/base_form.html'}
+	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html'}
 
 	equipment = Equipment.query.all()
+
+	skills = Skill.quey.all()
+
+	times = db.session.query(Unit).filter_by(type_id=2).all()
+
+	distances = db.session.query(Unit).filter_by(type_id=3)
+	
+	expertise = db.session.query(SkillBonus).filter_by(skill_id=5).all()
+
+	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
+	
+	checks = db.session.query(Check).all()
+
+	base_conditions = Condition.query.all()
+	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	conditions_raw = []
+	for condition in base_conditions:
+		conditions_raw.append(condition.name)
+	for condition in combined_conditions:
+		conditions_raw.append(condition)
+	conditions = sorted(conditions_raw)
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -66,10 +87,37 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	damaged = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
 
+	when = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
+
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
+							times=times, distances=distances, expertise=expertise)
+
+
+@equip.route('/equipment/skill/select', methods=['POST'])
+def advantage_action_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	skill_id = request.get_json()['skill_id'] 
+
+	try:
+		skill = db.session.query(Skilll).filter_by(id=skill_id).one()
+		bonuses = db.session.query(SkillBonus).filter_by(skill_id=skill_id).order_by(SkillBonus.name).all()
+		skill_name = skill.name + ' Skill'
+		options.append({'id': '', 'name': skill_name})
+		for b in bonuses:
+			options.append({'id': b.id, 'name': b.name})
+	except:
+		options.append({'id': '', 'name': 'Enhanced Skill'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
 
 
 @equip.route('/equipment/create', methods=['POST'])

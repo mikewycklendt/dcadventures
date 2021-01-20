@@ -1,0 +1,75 @@
+<div class="equip-header" id="damaged-header">
+
+	<div class="equip-title" id="damaged-title">
+		<input type="checkbox" id="damaged_check" class="regular-checkbox big-checkbox" onclick="damaged_check()">Damaged:
+	</div>
+	
+	<div class="equip-base" id="damaged-base">
+		<div>
+			<select class="effect-entry" id="damaged_effect" name="damaged_effect">
+				<option value="">Effect</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="feature-entry" id="damaged_feature" name="damaged_feature">
+				<option value="">Feature</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="equip-entry" id="damaged-entry">
+
+	<div id="damaged-row1">
+
+		<div>
+			Vulnerable Against:
+		</div>
+
+		<div>
+			Skill to Repair
+		</div>
+
+		<div>
+			<select class="saelect-entry" id="damaged_damage" id="damaged_damaged">
+				<option value="">Damage Type</option>
+				{% for d in damagws %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="damaged_skill_type" name="damaged_skill_type" onchange="damaged_skill_type()">
+				<option value="">Skill</option>
+				{% for s in skills %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="damaged_skill" name="damaged_skill">
+				<option value="">Enhanced Skill</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="damaged-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="damaged_submit" name="damaged_submit" onclick="damaged_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="damaged-spot"></div>
+
+<div class="err" id="damaged-err"></div>

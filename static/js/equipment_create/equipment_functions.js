@@ -151,6 +151,46 @@ function action_select(select, fill) {
 }
 
 
+function skill_select(select, fill) {
+	const field = document.getElementById(select)
+	const skill_id = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch('/equipment/skill/select', {
+		method: 'POST',
+		body: JSON.stringify({
+			'skill_id': skill_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
 function subsense_select(select, fill) {
 	const field = document.getElementById(select);
 	const sense_id = field.options[field.selectedIndex].value;
