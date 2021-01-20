@@ -123,5 +123,5 @@
 #base-extend {
 	display: none;
 	opacity: 0%;
-	transform: all .4s ease-out;
+	transition: all .4s ease-out;
 }
