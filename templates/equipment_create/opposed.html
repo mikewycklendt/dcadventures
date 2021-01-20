@@ -83,7 +83,7 @@
 		</div>
 
 		<div>
-			<option value="select-entry" id="opposed_condition1" name="opposed_condition1">
+			<select class="select-entry" id="opposed_condition1" name="opposed_condition1">
 				<option value="">Required Opponent Condition</option>
 				<option value="">N/A</option>
 				{% for c in conditions %}
@@ -93,7 +93,7 @@
 		</div>
 		
 		<div>
-			<option value="select-entry" id="opposed_condition2" name="opposed_condition2">
+			<select class="select-entry" id="opposed_condition2" name="opposed_condition2">
 				<option value="">Opponent Condition After Use</option>
 				{% for c in conditions %}
 					<option value="{{c}}">{{c}}</option>
