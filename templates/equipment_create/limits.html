@@ -41,7 +41,7 @@
 		<div></div>
 
 		<div>
-			<input type="text" id="limits_battery_time" name="limits_battery_time" placeholder="Tune" >
+			<input type="text" id="limits_battery_time" name="limits_battery_time" placeholder="Battery Time" >
 		</div>
 
 		<div>
@@ -79,6 +79,42 @@
 		</div>
 
 
+	</div>
+
+	<div id="limits-row2">
+		<div>
+			<input type="text" id="limits_time_capacity" name="limits_time_capacity" placeholder="Time Capacity" >
+		</div>
+
+		<div>
+			<select class="select-entry" id="limits_time_capacity_units" name="limits_time_capacity_units">
+				<option value="">Units</option>
+				{% for t in times %}
+					<option value={{t.id}}>{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="limits_light" name="limits_light">
+				<option value="">Lighting</option>
+				{% for l in light %}
+					<option value={{l.id}}>{{l.name}}</option>
+				{% endfdor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Provides Internet
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_needs_internet" class="medium-checkbox med-checkbox" > Needs Internet
+			</div>
+		</div>
 	</div>
 
 	<div id="limits-button-row">

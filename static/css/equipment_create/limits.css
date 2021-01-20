@@ -10,7 +10,15 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 15% 15% 15% 15% 20% 20%;
+	grid-template-columns: 17% 15% 17% 15% 20% 16%;
+	grid-auto-rows: auto;
+}
+
+#limits-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 17% 15% 18% 25% 25%;
 	grid-auto-rows: auto;
 }
 
