@@ -4429,6 +4429,7 @@ def power_post_sense():
 	distance_factor = integer(distance_factor)
 	ranks = integer(ranks)
 	cost = integer(cost)
+	lighting = integer(lighting)
 
 	print(extra_id)
 	print('\n\n\n\n')

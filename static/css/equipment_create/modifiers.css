@@ -1,0 +1,378 @@
+#modifiers-header {
+	grid-template-columns: 70% 30%;
+}
+
+#modifiers-base {
+	grid-template-columns: 100%;
+}
+
+#modifiers-entry input[type="text"] {
+	height: 1.6vw;
+	padding: .2vw;
+	width: 94%;
+	background-color: lightblue;
+}
+
+#modifiers-row1 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 17% 18% 17% 18% 30%;
+	grid-auto-rows: auto;
+}
+
+#modifiers-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 35% 35% 30%;
+	grid-auto-rows: auto;
+}
+
+#modifiers-environment {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-skill {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-light {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-conflict {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-cover {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-conceal {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-tools {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-maneuvers {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-environment-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-sense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-power {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-consequence {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-emotion {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-emotion-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-condition {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-profession {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-profession-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+
+#modifiers-creature {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-range {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-ranged {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-melee {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-creature-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-subsense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-row3 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 35% 35% 30%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#modifiers-bonus-check {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-check {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
+#modifiers-bonus-conflict {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-conflict {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-bonus-trait {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .3vw;
+}
+
+#modifiers-penalty-trait {
+	display: grid;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .3vw;
+}
+
+#modifiers-row4 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 35% 35% 30%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+
+#modifiers-bonus-defense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 80% 20%;
+	gap: .3vw;
+}
+
+
+#modifiers-penalty-defense {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 80% 20%;
+	gap: .3vw;
+}
+
+#modifier-bonus-conflict-defend {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifier-penalty-conflict-defend {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+
+#modifiers-multiple {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}
+
+#modifiers-multiple-count {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-button-row {
+	display: grid;
+	grid-template-columns: 25% 40% 15% 20%;
+	width: 97%;
+	grid-template-rows: auto;
+}

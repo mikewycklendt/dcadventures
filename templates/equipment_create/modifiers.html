@@ -1,0 +1,493 @@
+<div class="advantage-header" id="modifiers-header">
+
+	<div class="advantage-title" id="modifiers-title">
+		<input type="checkbox" id="modifiers_check" class="regular-checkbox big-checkbox" onclick="modifiers_check()"> Bonus/Penalty Modifier:
+	</div>
+	
+	<div class="advantage-base" id="modifiers-base">
+		
+		<div>
+			<select class="benefit-entry" id="modifiers_benefit" name="modifiers_benefit">
+				<option value="">Benefit</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div class="advantage-entry" id="modifiers-entry">
+
+	<div id="modifiers-row1">
+		<div>
+			Bonus:
+		</div>
+
+		<div></div>
+
+		<div>
+			Penalty:
+		</div>
+
+		<div></div>
+
+		<div>Trigger:</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
+				<option value="">Bonus</option>
+				<option value="advantage">This Rank</option>
+				<option value="immune">Immune</option>
+				<option value="penalty">No Penalties</option>
+				<option value="0">0</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_bonus_type" name="modifiers_bonus_type">
+				{% for m in modifier_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
+				<option value="">Penalty</option>
+				<option value="advantage">This Rank</option>
+				<option value="bonus">Bonus Value</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_penalty_type" name="modifiers_penalty_type">
+				{% for m in modifier_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_trigger" name="modifiers_trigger" onchange="modifiers_trigger()">
+				{% for m in modifier_trigger %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="modifiers-row2">
+		<div>
+			<select class="select-entry" id="modifiers_bonus_effect" name="modifiers_bonus_effect" previousValue="empty" lastDiv="" onchange="modifiers_bonus_effect()">
+				{% for m in modifier_effect %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifiers_penalty_effect" name="modifiers_penalty_effect" previousValue="empty" lastDiv="" onchange="modifiers_penalty_effect()">
+				{% for m in modifier_effect %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="modifiers-environment">
+				<select class="select-entry" id="modifiers_environment" name="modifiers_environment" onchange="modifiers_environment()">
+					<option value="">Environment</option>
+					<option value="x">Variable</option>
+					{% for e in environments %}
+						<option value={{e.id}}>{{e.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-environment-other">
+				<input type="text" id="modifiers_environment_other" name="modifiers_environment_other" placeholder="Environment">
+			</div>
+
+
+			<div id="modifiers-sense">
+				<select class="select-entry" id="modifiers_sense" name="modifiers_sense">
+					<option value="">Sense</option>
+					{% for s in senses %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-range">
+				<select class="select-entry" id="modifiers_range" name="modifiers_range">
+					<option value="">Range</option>
+					{% for r in ranged %}
+						<option value={{r.id}}>{{r.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-subsense">
+				<select class="select-entry" id="modifiers_subsense" name="modifiers_subsense">
+					<option value="">SubSense</option>
+					{% for s in subsenses %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-cover">
+				<select class="select-entry" id="modifiers_cover" name="modifiers_cover">
+					<option value="">Cover</option>
+					{% for c in cover %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-conceal">
+				<select class="select-entry" id="modifiers_conceal" name="modifiers_conceal">
+					<option value="">Concealment</option>
+					{% for c in concealment %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-skill">
+				<select class="select-entry" id="modifiers_skill" name="modifiers_skill">
+					<option value="">Skill Check</option>
+					{% for s in skills %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-light">
+				<select class="select-entry" id="modifiers_light" name="modifiers_light">
+					<option value="">Light</option>
+					{% for l in light %}
+						<option value={{l.id}}>{{l.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-maneuvers">
+				<select class="select-entry" id="modifiers_maneuver" name="modifiers_maneuver">
+					<option value="">Maneuver</option>
+					{% for m in maneuvers %}
+						<option value={{m.id}}>{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-melee">
+				<select class="select-entry" id="modifiers_weapon_melee" name="modifiers_weapon_melee">
+					<option value="">Melee Weapon</option>
+					{% for w in weapon_melee %}
+						<option value={{w.id}}>{{w.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-ranged">
+				<select class="select-entry" id="modifiers_weapon_ranged" name="modifiers_weapon_ranged">
+					<option value="">Ranged Weapon</option>
+					{% for w in weapon_ranged %}
+						<option value={{w.id}}>{{w.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-tools">
+				<select class="select-entry" id="modifiers_tools" name="modifiers_tools">
+					{% for t in tools %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-condition">
+				<select class="select-entry" id="modifiers_condition" name="modifiers_condition">
+					<option value="">Condition</option>
+					{% for c in conditions %}
+						<option value="{{c}}">{{c}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-power">
+				<select class="select-entry" id="modifiers_power" name="modifiers_power">
+					<option value="">Power</option>
+					{% for p in powers %}
+						<option value="{{p}}">{{p}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="modifiers-consequence">
+				<select class="select-entry" id="modifiers_consequence" name="modifiers_consequence">
+					<option value="">Consequence</option>
+					{% for c in consequences %}
+						<option value="{{c.id}}">{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-creature">
+				<select class="select-entry" id="modifiers_creature" name="modifiers_creature" onchange="modifiers_creature()">
+					<option value="">Creature</option>
+					<option value="x">Variable</option>
+					{% for c in creatures %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-creature-other">
+				<input type="text" id="modifiers_creature_other" name="modifiers_creature_other" placeholder="Creature Type">
+			</div>
+			
+			<div id="modifiers-emotion">
+				<select class="select-entry" id="modifiers_emotion" name="modifiers_emotion" onchange="modifiers_emotion()">
+					<option value="">Emotion</option>
+					<option value="x">Variable</option>
+					{% for e in emotions %}
+						<option value={{e.id}}>{{e.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+			
+			<div id="modifiers-conflict">
+				<select class="select-entry" id="modifiers_conflict" name="modifiers_conflict" >
+				<option value="">Conflict Action</option>
+					<option value="x">Variable</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="modifiers-emotion-other">
+				<input type="text" id="modifiers_emotion_other" name="modifiers_emotion_other" placeholder="Emotion">
+			</div>
+		
+			<div id="modifiers-profession">
+				<select class="select-entry" id="modifiers_profession" name="modifiers_profession" onchange="modifiers_profession()">
+					<option value="">Profession</option>
+					<option value="x">Variable</option>
+					{% for p in professions %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-profession-other">
+				<input type="text" id="modifiers_profession_other" name="modifiers_profession_other" placeholder="Job Title">
+			</div>
+
+		</div>
+	</div>
+
+	<div id="modifiers-row3">
+
+		<div>	
+			<div id="modifiers-bonus-trait">
+				<div>
+					<select class="select-sml" id="modifiers_bonus_trait_type" name="modifiers_bonus_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_bonus_trait_type(); modifiers_bonus_conflict();">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="modifiers_bonus_trait" name="modifiers_bonus_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		
+			<div id="modifiers-bonus-check">
+				<div>
+					<select class="select-sml" id="modifiers_bonus_check" name="modifiers_bonus_check">
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="modifiers_bonus_check_range" name="modifiers_bonus_check_range">
+						<option value="0">All</option>
+						{% for r in ranged %}
+							<option value={{r.id}}>{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="modifiers-bonus-conflict">
+				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict" previousValue="empty" onchange="modifiers_bonus_conflict(); modifiers_bonus_trait_type();">
+					<option value="">Conflict Action</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+		<div>
+
+			<div id="modifiers-penalty-trait">
+				<div>
+					<select class="select-sml" id="modifiers_penalty_trait_type" name="modifiers_penalty_trait_type" previousValue="empty" lastDiv="" onchange="modifiers_penalty_trait_type(); modifiers_penalty_conflict();">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="modifiers_penalty_trait" name="modifiers_penalty_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+		
+			<div id="modifiers-penalty-check">
+				<div>
+					<select class="select-sml" id="modifiers_penalty_check" name="modifiers_penalty_check">
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="modifiers_penalty_check_range" name="modifiers_penalty_check_range">
+						<option value="">Range</option>
+						<option value="0">All</option>
+						{% for r in ranged %}
+							<option value={{r.id}}>{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="modifiers-penalty-conflict">
+				<select class="select-sml" id="modifiers_penalty_conflict" name="modifiers_penalty_conflict" previousValue="empty" onchange="modifiers_penalty_conflict();  modifiers_penalty_trait_type();">
+					<option value="">Conflict Action</option>
+					<option value="x">Variable</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+		<div>
+		</div>
+
+	</div>
+
+	<div id="modifiers-row4">
+
+		<div>
+
+			<div id="modifiers-bonus-defense">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_bonus_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="modifier-bonus-conflict-defend">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_bonus_conflict_defend" class="medium-checkbox med-checkbox"> Only Active Defenses
+				</div>
+			</div>
+
+		</div>
+		
+		<div>
+
+			<div id="modifiers-penalty-defense">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_penalty_active_defense" class="medium-checkbox med-checkbox"> Becomes Active
+				</div>
+
+				<div></div>
+			</div>
+
+			<div id="modifier-penalty-conflict-defend">
+				<div class="check-div">
+					<input type="checkbox" id="modifiers_penalty_conflict_defend" class="medium-checkbox med-checkbox"> Only Active Defenses
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="modifiers-button-row">
+		<div></div>
+
+		<div>
+			<div id="modifiers-multiple">
+				<div>
+					<select class="select-entry" id="modifiers_multiple" name="modifiers_multiple" onchange="modifiers_multiple()">
+						{% for m in multiple %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-entry" id="modifiers_multiple_count" name="modifiers_multiple_count">
+						<option value="">Choose</option>
+						<option value='all'>All</option>
+						{% for i in positives %}
+							<option value="{{i}}">Any {{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<select class="select-entry" id="modifier_lasts" name="modifier_lasts">
+				<option value="">Turns</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				<option value="always">Always</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="modifiers_submit" name="modifiers_submit" onclick="modifiers_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="modifiers-spot"></div>
+
+<div class="err" id="modifiers-err"></div>
