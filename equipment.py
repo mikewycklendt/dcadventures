@@ -146,7 +146,8 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
-							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions)
+							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
+							modifier_trigger=modifier_trigger, tools=tools, multiple=multiple, traits=traits)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])
