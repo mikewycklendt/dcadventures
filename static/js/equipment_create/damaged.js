@@ -7,6 +7,13 @@ function damaged_check() {
 	entry_check(check, title, base, entry);
 }
 
+function damaged_skill_type() {
+	const select = 'damaged_skill_type';
+	const fill = 'damaged_skill';
+
+	skill_select(select, fill);
+}
+
 let damaged_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
