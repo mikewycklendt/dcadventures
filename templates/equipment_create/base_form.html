@@ -188,7 +188,7 @@
 			<div>
 				<select class="base-select" id="battery_time" name="battery_time">
 					<option value="">Time</option>
-					{for i in hundred}
+					{% for i in hundred %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
 				</select>
