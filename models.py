@@ -3720,6 +3720,16 @@ class WeaponType(db.Model):
 			'type_id': self.type_id
 		}
 
+class Light(db.Model):
+	__tablename__ = 'light'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
 
 class Equipment(db.Model):
 	__tablename__ = 'equipment'
