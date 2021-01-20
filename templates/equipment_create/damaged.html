@@ -61,6 +61,24 @@
 	</div>
 
 	<div id="damaged-button-row">
+		
+		<div>
+			<select class="base-select" id="toughness" name="toughness">
+				<option value="">Toughness</option>
+				{% for i in positives %}
+					<option value="{{i}}">{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="base-select" id="equip_type" name="equip_type">
+				{% for d in damaged %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div>
 		</div>
 
