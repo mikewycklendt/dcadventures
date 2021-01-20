@@ -105,6 +105,7 @@ def advantage_action_select():
 	skill_id = request.get_json()['skill_id'] 
 
 	try:
+		skill_id = int(skill_id)
 		skill = db.session.query(Skilll).filter_by(id=skill_id).one()
 		bonuses = db.session.query(SkillBonus).filter_by(skill_id=skill_id).order_by(SkillBonus.name).all()
 		skill_name = skill.name + ' Skill'
