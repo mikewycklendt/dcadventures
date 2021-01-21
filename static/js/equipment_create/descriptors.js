@@ -193,10 +193,8 @@ function descriptor() {
 	
 	if ((origin != 'all' && origin != '') || (source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
 		(medium_subtype != 'all' && medium_subtype != '') || (medium != 'all' && medium != '')) {
-		des_title_row1.style.opacity = '100%';
 		des_field.style.opacity = '100%';
 	} else {
-		des_title_row1.style.opacity = '0%';
 		des_field.style.opacity = '0%';
 	}
 
