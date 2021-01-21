@@ -1,4 +1,4 @@
-function effect_check() {
+function alternate() {
 	const check = "effect_check";
 	const alt = 'alternate';
 	const title = "effect-title";
