@@ -48,7 +48,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	sources = db.session.query(Source).order_by(Source.name).all()
 	
-	mediums = db.session.query(MediumType).order_by(MediumType).name).all()
+	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
 
 	times = db.session.query(Unit).filter_by(type_id=2).all()
 
