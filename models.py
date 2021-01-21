@@ -3743,7 +3743,7 @@ class Weapon(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'cat_id': 
+			'cat_id': self.cat_id,
 			'type_id': self.type_id
 		}
 
