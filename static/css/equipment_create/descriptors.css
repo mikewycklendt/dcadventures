@@ -7,6 +7,7 @@
 }
 
 #descriptor-entry {
+	display: none;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
 	color: #245681;
