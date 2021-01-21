@@ -40,7 +40,7 @@
 		<div>
 			<select class="select-entry" id="modifiers_bonus" name="modifiers_bonus">
 				<option value="">Bonus</option>
-				<option value="advantage">This Rank</option>
+				<option value="auto">Automatic Success</option>
 				<option value="immune">Immune</option>
 				<option value="penalty">No Penalties</option>
 				<option value="0">0</option>
@@ -61,7 +61,6 @@
 		<div>
 			<select class="select-entry" id="modifiers_penalty" name="modifiers_penalty">
 				<option value="">Penalty</option>
-				<option value="advantage">This Rank</option>
 				<option value="bonus">Bonus Value</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
