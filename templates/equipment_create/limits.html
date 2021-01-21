@@ -25,27 +25,11 @@
 	<div id="limits-row1">
 
 		<div>
-			Battery:
-		</div>
-
-		<div></div>
-
-		<div>
-			Range:
-		</div>
-
-		<div></div>
-
-		<div></div>
-
-		<div></div>
-
-		<div>
-			<input type="text" id="limits_battery_time" name="limits_battery_time" placeholder="Battery Time" >
+			<input type="text" id="limits_time" name="limits_time" placeholder="Duration" >
 		</div>
 
 		<div>
-			<select class="select-entry" id="limits_battery_units" name="limits_battery_units">
+			<select class="select-entry" id="limits_time" name="limits_time">
 				<option value="">Units</option>
 				{% for t in times %}
 					<option value={{t.id}}>{{t.name}}</option>
@@ -78,7 +62,6 @@
 			</div>
 		</div>
 
-
 	</div>
 
 	<div id="limits-row2">
@@ -96,25 +79,27 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="limits_light" name="limits_light">
-				<option value="">Lighting</option>
-				{% for l in light %}
-					<option value={{l.id}}>{{l.name}}</option>
-				{% endfor %}
-			</select>
+			<input type="text" id="limits_capacity" name="limits_capacity" placeholder="Capacity" >
+		</div>
+		
+		<div>
+			<input type="text" id="limits_item" name="limits_item" placeholder="Item Type" >
 		</div>
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Provides Internet
+				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Ammunition
 			</div>
 		</div>
-		
+
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_needs_internet" class="medium-checkbox med-checkbox" > Needs Internet
+				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Fuel
 			</div>
 		</div>
+
+
+
 	</div>
 
 	<div id="limits-row3">
@@ -142,10 +127,50 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Rechargeable
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Refills
+			</div>
+		</div>
+
+
 	</div>
 
 	<div id="limits-button-row">
 		<div>
+			<select class="select-entry" id="limits_uses" name="limits_uses">
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="select-entry" id="limits_light" name="limits_light">
+				<option value="">Lighting</option>
+				{% for l in light %}
+					<option value={{l.id}}>{{l.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Provides Internet
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="limits_needs_internet" class="medium-checkbox med-checkbox" > Needs Internet
+			</div>
 		</div>
 
 		<div>
