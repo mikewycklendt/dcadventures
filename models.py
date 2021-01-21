@@ -3770,7 +3770,33 @@ class Equipment(db.Model):
 			'name': self.name,
 			'type_id': self.type_id
 		}
-		
+
+class Feature(db.Model):
+	__tablename__ = 'features'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'description': self.description
+		}
+
+class EquipEffect(db.Model):
+	__tablename__ = 'equipment_effect'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'description': self.description
+		}
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=80)
