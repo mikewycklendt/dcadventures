@@ -10,8 +10,31 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 29% 80%;
+	grid-template-columns: 15% 80%;
+	grid-template-areas: "name-title des-title"
+						"name des"
+						"btn des";
 	grid-auto-rows: auto;
+}
+
+#feature-name-title {
+	grid-area: name-title;
+}
+
+#feature-des {
+	grid-area: des;
+}
+
+#feature-name {
+	grid-area: name;
+}
+
+#feature-btn {
+	grid-area: btn;
+}
+
+#feature-des-title {
+	grid-area: des-title;
 }
 
 #feature-entry input[type="text"] {
