@@ -1166,7 +1166,7 @@ function selects_add(id, name, selects_input) {
 }
 
 
-function create_table(jsonResponse, object, route, benefit_delete=false) {
+function create_table(jsonResponse, object, route, selects=false) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1198,7 +1198,7 @@ function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route, benefit_delete);
+		create_titles(jsonResponse, grow, object, route, selects);
 	
 	} else {
 
@@ -1206,13 +1206,13 @@ function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route, benefit_delete);
+		cells_create(table, grow, jsonResponse, object, route, selects);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow, object, route, benefit_delete=false) {
+function create_titles(jsonResponse, grow, object, route, selects=false) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1259,7 +1259,7 @@ function create_titles(jsonResponse, grow, object, route, benefit_delete=false) 
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object, route, benefit_delete)
+	cells_create(new_table, grow, jsonResponse, object, route, selects)
 	
 }
 
@@ -1295,7 +1295,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 }
 
-function cells_create(table_input, grow, jsonResponse, object, route, benefit_delete=false) {
+function cells_create(table_input, grow, jsonResponse, object, route, selects=false) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -1395,7 +1395,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, benefit_de
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object, benefit_delete) 
+	row_delete(jsonResponse, route, object, selects) 
 }
 
 
@@ -1520,7 +1520,7 @@ function check_buttons(table_id, object, table) {
 	}
 }
 
-function row_delete(jsondata, route, object, benefit_delete=false) {
+function row_delete(jsondata, route, object, selects=false) {
 	const table_id = jsondata.table_id;
 	const cells = jsondata.cells;
 	const rows = object.columns;
@@ -1557,18 +1557,20 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 
 					clear_errors(err_line, errors)
 
-					if (benefit_delete == true) {
-						const selects = document.getElementsByClassName('feature-entry');
-						let select;
+					if (selects != false) {
+						for (s of selects) {
+							const select = document.getElementsByClassName(s);
+							let drop;
 
-						for (select of selects) {
-							options = select.options;
-							let option;
+							for (drop of select) {
+								options = select.options;
+								let option;
 
-							for (option of options) {
-								if (option.value == delId) {
-									console.log(option.value);
-									option.remove();
+								for (option of options) {
+									if (option.value == delId) {
+										console.log(option.value);
+										option.remove();
+									}
 								}
 							}
 						}

@@ -47,7 +47,6 @@ function benefit_submit() {
 		if (jsonResponse.success) {
 					
 			const id = jsonResponse.id;
-			const benefit_name = jsonResponse.name;
 					
 			selects_add(id, name, 'benefit-sml');
 			selects_add(id, name, 'benefit-entry');

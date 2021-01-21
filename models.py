@@ -3695,6 +3695,17 @@ class Creature(db.Model):
 			'name': self.name
 		}
 
+class Light(db.Model):
+	__tablename__ = 'light'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class WeaponCat(db.Model):
 	__tablename__ = 'weapon_category'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -3720,8 +3731,24 @@ class WeaponType(db.Model):
 			'type_id': self.type_id
 		}
 
-class Light(db.Model):
-	__tablename__ = 'light'
+class Weapon(db.Model):
+	__tablename__ = 'weapons'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
+	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
+
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'cat_id': 
+			'type_id': self.type_id
+		}
+
+class EquipType(db.Model):
+	__tablename__ = 'equipment_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
@@ -3735,11 +3762,13 @@ class Equipment(db.Model):
 	__tablename__ = 'equipment'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'type_id': self.type_id
 		}
 		
 if __name__ == '__main__':

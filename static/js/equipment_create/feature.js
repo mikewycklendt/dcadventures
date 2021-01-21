@@ -19,6 +19,8 @@ function feature_submit() {
 	const font = feature_grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
+	const name = text('feature_name')
+	const description = text('feature_description')
 
 	const errors = 'feature-err';
 	const err_line = 'feature-err-line';
@@ -29,7 +31,9 @@ function feature_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'name': name,
+			'description': description
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -40,12 +44,17 @@ function feature_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+			const selects = ['feature-entry']
+
+			selects_add(id, name, 'feature-entry');
+
 			feature_grid.columns.length = 0;
 			feature_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/equipment/' + table_id + '/delete/'
-			create_table(jsonResponse, feature_grid, route);
+			create_table(jsonResponse, feature_grid, route, selects);
 			clear_errors(err_line, errors)
 
 			feature_grid.titles = true;

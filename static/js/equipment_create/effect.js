@@ -19,6 +19,8 @@ function effect_submit() {
 	const font = effect_grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
+	const name = text('effect_name')
+	const description = text('effect_description')
 
 	const errors = 'effect-err';
 	const err_line = 'effect-err-line';
@@ -29,7 +31,9 @@ function effect_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'name': name,
+			'description': description
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -40,12 +44,16 @@ function effect_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const selects = ['effect-entry']
+			const id = jsonResponse.id
+			selects_add(id, name, 'effect-entry');
+			
 			effect_grid.columns.length = 0;
 			effect_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/equipment/' + table_id + '/delete/'
-			create_table(jsonResponse, effect_grid, route);
+			create_table(jsonResponse, effect_grid, route, selects);
 			clear_errors(err_line, errors)
 
 			effect_grid.titles = true;
