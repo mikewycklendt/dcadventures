@@ -11,7 +11,6 @@ function descriptor_check() {
 function get_medium_subtypes() {
 
 	const title = document.getElementById('descriptor-medium-subtype-title')
-	const des_title = document.getElementById('descriptor-medium-subtype-des-title')
 
 	const medium_type_field  = document.getElementById('descriptor_medium_type');
 	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
@@ -43,8 +42,6 @@ function get_medium_subtypes() {
 
 			title.innerText = jsonResponse.title;
 			title.style.opacity = '100%';
-
-			des_title.innerText = jsonResponse.des_title;
 
 			const options = jsonResponse.options;
 			let option;
