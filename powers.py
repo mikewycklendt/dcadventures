@@ -1121,6 +1121,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				origin_id = entry.id
+				entry = Descriptor(name=origin_name, origin=entry.id, result=origin_des, damage=damage)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
 				if name == '':
@@ -1172,6 +1173,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				source_id = entry.id
+				entry = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_source', 'id': entry.id, 'name': entry.name})
 				if name == '':
@@ -1242,6 +1244,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_subtype_id = entry.id
+				entry = Descriptor(name=medium_subtype_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=damage)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_medium_subtype', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name
@@ -1289,6 +1292,7 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_id = entry.id
+				entry = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, medium=entry.id, result=medium_des, damage=damage)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_medium', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name

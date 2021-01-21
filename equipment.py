@@ -38,7 +38,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Equipment'
 	stylesheets.append({"style": "/static/css/equipment_create.css"})
 
-	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html'}
+	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html'}
 
 	equipment = Equipment.query.all()
 
@@ -175,6 +175,91 @@ def advantage_action_select():
 
 	print(body)
 	return jsonify(body)
+
+
+@equip.route('/equipment/medium/subtype/select', methods=['POST'])
+def equip_medium_subtype_select():
+	body = {}
+	body['success'] = True
+
+	medium_type_id = request.get_json()['medium_type']
+
+	print('id ' + medium_type_id)
+
+	try:
+		medium_type = db.session.query(MediumType).filter_by(id=medium_type_id).one()
+		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=medium_type_id).order_by(MediumSubType.name).all()
+		mediums = db.session.query(Medium).filter_by(medium_type=medium_type_id).order_by(Medium.name).all()
+		
+		all_medium_type = 'Any ' + medium_type.name
+
+		title = medium_type.name + ' Type'
+
+		des_title = 'New ' + medium_type.name + ' Type Description'
+
+		medium_type_medium = medium_type.name + ' Mediums'
+
+		options = []
+
+		options_medium = []
+		
+		options.append({'id': '', 'name': medium_type.name})
+
+		options_medium.append({'id': '', 'name': medium_type.name})
+
+		for subtype in medium_subtypes:
+			options.append({'id': subtype.id, 'name': subtype.name})
+
+		for medium in mediums:
+			options_medium.append({'id': medium.id, 'name': medium.name})
+
+		body['options'] = options
+		body['options_medium'] = options_medium
+		body['title'] = title
+		body['des_title'] = des_title
+
+	except:
+		body['success'] = False
+		body['options'] = 'no results'
+
+	print(body)
+	return jsonify(body)
+
+@equip.route('/equipment/medium/select', methods=['POST'])
+def equip_medium_select():
+	body = {}
+	body['success'] = True
+	
+	medium_subtype = request.get_json()['medium_subtype']
+	options = []
+
+	print('id ' + medium_subtype)
+
+	if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
+		try:
+			subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
+			mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype).order_by(Medium.name).all()
+			
+			all_subtype = 'Any ' + subtype.name
+
+			options.append({'id': '', 'name': subtype.name})
+
+
+			for medium in mediums:
+				options.append({'id': medium.id, 'name': medium.name})
+
+		except:
+			db.session.rollback()
+			options.append({'id': '', 'name': 'Medium'})
+		finally:
+			db.session.close()
+	else:
+		options.append({'id': '', 'name': 'Medium'})
+
+	body['options'] = options
+	print(body)
+	return jsonify(body)
+
 
 
 @equip.route('/equipment/create', methods=['POST'])
