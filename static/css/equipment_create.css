@@ -5,6 +5,7 @@
 @import "equipment_create/check.css";
 @import "equipment_create/limits.css";
 @import "equipment_create/descriptors.css";
+@import "equipment_create/feature.css";
 
 .equip-container {
 	display: grid;
