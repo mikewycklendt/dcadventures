@@ -20,7 +20,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
-from models import Equipment, Light
+from models import Equipment, Light, EquipType, Feature. WeaponCat,
 
 load_dotenv()
 
@@ -41,6 +41,10 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html'}
 
 	equipment = Equipment.query.all()
+
+	weapon_cat = WeaponCat.query.all()
+
+	features = db.session.query(Feature).order_by(Feature.name).all()
 
 	skills = Skill.query.all()
 
@@ -125,8 +129,8 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
-	equipment_type = [{'type': '', 'name': 'Equipment Type'}, {'type': 'general', 'name': 'General Equipment'}, {'type': 'electronics', 'name': 'Electronics'}, {'type': 'criminal', 'name': 'Criminal Gear'}, {'type': 'surveil', 'name': 'Surveillance Gear'}, {'type': 'survival', 'name': 'Survival Gear'}, {'type': 'utility', 'name': 'Utility Belt'}]
-
+	equipment_type = EquipType.query.all()
+	
 	damaged = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
 
 	when = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
@@ -155,7 +159,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
-							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums)
+							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])

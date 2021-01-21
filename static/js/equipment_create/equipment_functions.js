@@ -575,6 +575,25 @@ function select_opacity(select, options) {
 	};
 }
 
+function select_opacity_reverse(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val == valu) {
+			hide_opacity(div);
+		} else {
+			show_opacity(div);
+		}
+	};
+}
+
 
 function select_reset(select_input, selects) {
 	const field = document.getElementById(select_input);
