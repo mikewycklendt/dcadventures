@@ -371,7 +371,7 @@ function belt_info(select, route, entry) {
 function reset_all(selects) {
 	let select;
 
-	for (select in selects) {
+	for (select of selects) {
 		reset(select)
 	}
 }
