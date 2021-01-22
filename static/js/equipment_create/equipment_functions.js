@@ -319,7 +319,7 @@ function belt_info(select, route, entry) {
 	const item_cost = document.getElementById('item-cost');
 	const item_description = document.getElementById('item-description');
 	const cost_div = document.getElementById('belt-item-cost');
-	const item = document.getElementById('belt-item');
+	const item = 'belt-item';
 
 	response = fetch(route, {
 		method: 'POST',
