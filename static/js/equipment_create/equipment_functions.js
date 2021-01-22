@@ -321,11 +321,6 @@ function belt_info(select, route, entry) {
 	const cost_div = document.getElementById('belt-item-cost');
 	const item = document.getElementById('belt-item');
 
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
 	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
