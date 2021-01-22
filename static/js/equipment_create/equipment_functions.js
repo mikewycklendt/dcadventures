@@ -313,8 +313,7 @@ function equipment_select(select, fill) {
 
 function belt_info(select, route, entry) {
 	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
+	const type_id = field.options[field.selectedIndex].value;
 		
 	const item_name = document.getElementById('item-name');
 	const item_cost = document.getElementById('item-cost');
