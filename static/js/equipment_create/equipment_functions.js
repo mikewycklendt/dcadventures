@@ -347,9 +347,9 @@ function belt_info(select, route, entry) {
 				item_name.innerHTML = name;
 				item_cost.innerHTML = cost;
 				item_description.innerHTML = description;
-				item_name.style.display = '100%';
-				cost_div.style.display = '100%';
-				item_description.style.display = '100%';
+				item_name.style.opacity = '100%';
+				cost_div.style.opacity = '100%';
+				item_description.style.opacity = '100%';
 				show_maxheight(item);
 				grow_entry(entry, item);
 			}, 300);
