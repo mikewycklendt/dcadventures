@@ -201,8 +201,8 @@ def equip_weapon_type_select():
 		weapon_type = db.session.query(WeaponType).filter_by(type_id=cat_id).order_by(WeaponType.name).all()
 		weapon_name = cat.name + ' Weapon Type'
 		options.append({'id': '', 'name': weapon_name})
-		for b in bonuses:
-			options.append({'id': b.id, 'name': b.name})
+		for w in weapon_type:
+			options.append({'id': w.id, 'name': w.name})
 	except:
 		options.append({'id': '', 'name': 'Weapon Type'})
 	
@@ -226,8 +226,8 @@ def equip_weapon_select():
 		weapons = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).all()
 		weapon_name = weapontype.name + ' Weapons'
 		options.append({'id': '', 'name': weapon_name})
-		for b in bonuses:
-			options.append({'id': b.id, 'name': b.name})
+		for w in weapons:
+			options.append({'id': w.id, 'name': w.name})
 	except:
 		options.append({'id': '', 'name': 'Weapon Type'})
 	
@@ -250,8 +250,8 @@ def equip_equipment_select():
 		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
 		equipment = db.session.query(Equipment).filter_by(type_id=type_id).order_by(Equipment.name).all()
 		options.append({'id': '', 'name': equip_type.name})
-		for b in bonuses:
-			options.append({'id': b.id, 'name': b.name})
+		for e in equipment:
+			options.append({'id': e.id, 'name': e.name})
 	except:
 		options.append({'id': '', 'name': 'Weapon Type'})
 	

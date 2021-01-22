@@ -3738,6 +3738,7 @@ class Weapon(db.Model):
 	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
 	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
 	cost = db.Column(db.Integer)
+	description = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -3745,7 +3746,9 @@ class Weapon(db.Model):
 			'name': self.name,
 			'cat_id': self.cat_id,
 			'type_id': self.type_id,
-			'cost': self.cost
+			'cost': self.cost,
+			'description': self.description
+
 		}
 
 class EquipType(db.Model):
@@ -3765,13 +3768,15 @@ class Equipment(db.Model):
 	name = db.Column(db.String())
 	type_id = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 	cost = db.Column(db.Integer)
+	description = db.Column(db.String())
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'type_id': self.type_id,
-			'cost': self.cost
+			'cost': self.cost,
+			'description': self.description
 		}
 
 class Feature(db.Model):

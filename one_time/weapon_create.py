@@ -6,7 +6,7 @@ def equipment_create():
 
 	for i in entries:
 		description = ''
-		description = 'This is the description for ' + i + '.  '
+		description = 'This is the description for ' + i '.  '
 		description = description + description + description + description + description + description
 
 		entry = Equipment(name=i, type_id=2, cost=2, description=description)
@@ -17,7 +17,7 @@ def equipment_create():
 
 	for i in entries:
 		description = ''
-		description = 'This is the description for ' + i + '.  '
+		description = 'This is the description for ' + i '.  '
 		description = description + description + description + description + description + description
 
 		entry = Equipment(name=i, type_id=3, cost=3 description=description)
@@ -28,7 +28,7 @@ def equipment_create():
 
 	for i in entries:
 		description = ''
-		description = 'This is the description for ' + i + '.  '
+		description = 'This is the description for ' + i '.  '
 		description = description + description + description + description + description + description
 
 		entry = Equipment(name=i, type_id=4, cost=4, description=description)
@@ -39,7 +39,7 @@ def equipment_create():
 
 	for i in entries:
 		description = ''
-		description = 'This is the description for ' + i + '.  '
+		description = 'This is the description for ' + i '.  '
 		description = description + description + description + description + description + description
 
 		entry = Equipment(name=i, type_id=5, cost=5, description=description)

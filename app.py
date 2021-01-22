@@ -12,7 +12,7 @@ from datetime import datetime
 from models import setup_db, Ability, Defense, Damage, ConflictAction, DamageType, Modifier, Descriptor, SkillAlt, Origin, Source, Medium, PowerDes, MediumType, MediumSubType, Range, Power, Emotion, Extra, Complex, Ground, Action, Skill, SkillType, Check, Material, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck 
 from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime
 from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponCat, WeaponType, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
-from models import Equipment, Light, EquipType
+from models import Equipment, Light, EquipType, Weapon
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -54,25 +54,63 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/equipment/create')
+def equipment_create():
 
-@app.route('/equiptype/create')
-def equiptype_create():
-
-	entries = ['General Equipment', 'Electronics', 'Criminal Gear', 'Surveillance Gear', 'Survival Gear', 'Utility Belt']
+	entries = ['Camera', 'Cell Phone', 'Commlink', 'Computer', 'Audio Recorder', 'Video Camera']
 
 	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
 
-		entry = EquipType(name=i)
+		entry = Equipment(name=i, type_id=2, cost=2, description=description)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = EquipType.query.all()
+	entries = ['Handcuffs', 'Lock Release Gun', 'Restraints']
+
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
+
+		entry = Equipment(name=i, type_id=3, cost=3 description=description)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Binoculars', 'Concealable Microphone', 'Mini-Tracer', 'Night-Vision Goggles', 'Parabolic Microphone']
+
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
+
+		entry = Equipment(name=i, type_id=4, cost=4, description=description)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Camo Clothing', 'Flashh Goggles', 'Fire Extinguisher', 'Gas Mask', 'GPS', 'Multi-Tool', 'Rebreather', 'SCUBA Gear']
+
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
+
+		entry = Equipment(name=i, type_id=5, cost=5, description=description)
+		db.session.add(entry)
+		db.session.commit()
+
+
+	results = Equipment.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('equipment type added')
+	return ('equipment added')
+
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
