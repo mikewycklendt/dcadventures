@@ -1,5 +1,5 @@
 
-@app.route('/weapon/create')
+@app.route('/weapons/create')
 def weapon_create():
 
 	entries = ['Brass Knuckles', 'Club', 'Knife', 'Pepper Spray', 'Stun Gun']
@@ -101,13 +101,10 @@ def weapon_create():
 		db.session.add(entry)
 		db.session.commit()
 
-
-
-
 	results = Weapon.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('equipment added')
+	return ('weapons added')

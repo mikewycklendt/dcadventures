@@ -222,6 +222,7 @@ def equip_weapon_select():
 
 	try:
 		type_id = int(type_id)
+		print(type_id)
 		weapontype = db.session.query(WeaponType).filter_by(id=type_id).one()
 		weapons = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).all()
 		weapon_name = weapontype.name + ' Weapons'
@@ -229,7 +230,7 @@ def equip_weapon_select():
 		for w in weapons:
 			options.append({'id': w.id, 'name': w.name})
 	except:
-		options.append({'id': '', 'name': 'Weapon Type'})
+		options.append({'id': '', 'name': 'Weapon'})
 	
 	body['options'] = options
 
