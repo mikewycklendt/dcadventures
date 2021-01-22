@@ -52,6 +52,8 @@
 }
 
 #belt-item-cost {
+	font-size: 135%;
+	font-family: Comic, 'Monda', Verdana;
 	display: grid;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -59,6 +61,8 @@
 }
 
 #item-name {
+	font-size: 135%;
+	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
