@@ -52,19 +52,20 @@
 }
 
 #belt-item-cost {
+	display: grid;
 	opacity: 0%;
-	transition: all .3 ease-out;
+	transition: all .3s ease-out;
 	grid-template-columns: 65% 35%;
 }
 
 #item-name {
 	opacity: 0%;
-	transition: all .3 ease-out;
+	transition: all .3s ease-out;
 }
 
 #item-description {
 	opacity: 0%;
-	transition: all .3 ease-out;
+	transition: all .3s ease-out;
 }
 
 #belt-button-row {

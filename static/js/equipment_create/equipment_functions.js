@@ -341,7 +341,7 @@ function belt_info(select, route, entry) {
 
 			item_name.style.opacity = '0%';
 			cost_div.style.opacity = '0%';
-			item_description.style.opacity = '9%'
+			item_description.style.opacity = '0%'
 
 			setTimeout(function(){
 				item_name.innerHTML = name;
