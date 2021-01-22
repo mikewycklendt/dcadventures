@@ -3744,7 +3744,7 @@ class Weapon(db.Model):
 			'id': self.id,
 			'name': self.name,
 			'cat_id': self.cat_id,
-			'type_id': self.type_id
+			'type_id': self.type_id,
 			'cost': self.cost
 		}
 
