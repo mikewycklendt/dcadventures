@@ -37,7 +37,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 25% 30% 45%;
+	grid-template-columns: 30% 30% 40%;
 }
 
 #belt-item {
@@ -57,12 +57,12 @@
 	grid-template-columns: 65% 35%;
 }
 
-#belt-item-name {
+#item-name {
 	opacity: 0%;
 	transition: all .3 ease-out;
 }
 
-#belt-item-description {
+#item-description {
 	opacity: 0%;
 	transition: all .3 ease-out;
 }
