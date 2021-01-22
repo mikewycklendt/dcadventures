@@ -271,7 +271,7 @@ def equip_equipment_info_select():
 
 	try:
 		type_id = int(type_id)
-		equipment = db.session.query(Equipment).filter_by(type_id=type_id).order_by(Equipment.name).one()
+		equipment = db.session.query(Equipment).filter_by(id=type_id).order_by(Equipment.name).one()
 		name = equipment.name
 		cost = equipment.cost
 		description = equipment.description
@@ -298,7 +298,7 @@ def equip_weapon_info_select():
 
 	try:
 		type_id = int(type_id)
-		weapon = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).one()
+		weapon = db.session.query(Weapon).filter_by(id=type_id).order_by(Weapon.name).one()
 		name = weapon.name
 		cost = weapon.cost
 		description = weapon.description
@@ -325,7 +325,7 @@ def equip_feature_info_select():
 
 	try:
 		type_id = int(type_id)
-		feature = db.session.query(Feature).filter_by(type_id=type_id).order_by(Feature.name).one()
+		feature = db.session.query(Feature).filter_by(id=type_id).order_by(Feature.name).one()
 		name = feature.name
 		cost = '1'
 		description = feature.description
