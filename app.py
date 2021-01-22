@@ -54,62 +54,30 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/equipments/create')
-def equipment_create():
 
-	entries = ['Camera', 'Cell Phone', 'Commlink', 'Computer', 'Audio Recorder', 'Video Camera']
+@app.route('/weapontype/create')
+def weapontype_create():
+
+	entries = ['Grenades and Explosives', 'Accessories', 'Other']
 
 	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=2, cost=2, description=description)
+		entry = WeaponType(name=i, type_id=2)
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Handcuffs', 'Lock Release Gun', 'Restraints']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=3, cost=3, description=description)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Binoculars', 'Concealable Microphone', 'Mini-Tracer', 'Night-Vision Goggles', 'Parabolic Microphone']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=4, cost=4, description=description)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Camo Clothing', 'Flashh Goggles', 'Fire Extinguisher', 'Gas Mask', 'GPS', 'Multi-Tool', 'Rebreather', 'SCUBA Gear']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=5, cost=5, description=description)
-		db.session.add(entry)
-		db.session.commit()
-
-
-	results = Equipment.query.all()
+	results = WeaponType.query.all()
 
 	for result in results:
 		print (result.id)
+		print (result.type_id)
 		print (result.name)
 
-	return ('equipment added')
+	return ('weqpon category added')
 
+
+
+	return ('weqpon category added')
 
 '''
 @app.route('/debilitated/create')

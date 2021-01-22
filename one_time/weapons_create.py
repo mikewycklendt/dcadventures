@@ -30,11 +30,11 @@ def weapontype_create():
 		db.session.add(entry)
 		db.session.commit()
 		
-	entries = ['Projectile', 'Energy', 'Heavy', 'Thrown']
+	entries = ['Grenades and Explosives', 'Accessories', 'Other']
 
 	for i in entries:
 
-		entry = WeaponType(name=i, type_id=1)
+		entry = WeaponType(name=i, type_id=2)
 		db.session.add(entry)
 		db.session.commit()
 
