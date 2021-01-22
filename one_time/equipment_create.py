@@ -20,7 +20,7 @@ def equipment_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=3, cost=3 description=description)
+		entry = Equipment(name=i, type_id=3, cost=3, description=description)
 		db.session.add(entry)
 		db.session.commit()
 
