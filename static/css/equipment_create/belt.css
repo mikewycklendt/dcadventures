@@ -67,7 +67,7 @@
 	transition: all .3 ease-out;
 }
 
-#modifiers-button-row {
+#belt-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;
 	width: 97%;
