@@ -2,7 +2,9 @@
 	grid-template-columns: 75% 25%;
 }
 
-#modifiers-base {
+#belt-base {
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 170%;
 	grid-template-columns: 15% 10%;
 }
 
