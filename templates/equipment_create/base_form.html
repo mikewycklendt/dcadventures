@@ -19,15 +19,16 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="equip_type" name="equip_type">
+			<select class="base-select" id="equip_type" name="equip_type" onchange="equip_type()">
+				<option value="">Equipment Type</option>
 				{% for e in equipment_type %}
-					<option value="{{e.type}}">{{e.name}}</option>
+					<option value="{{e.id}}">{{e.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 	</div>
 
-	<div class="base-field">
+	<div class="base-field" id="equip-cost">
 		<div id="multiple-attr-title">
 			Cost:
 		</div>

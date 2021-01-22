@@ -1,0 +1,122 @@
+<div class="equip-header" id="belt-header">
+
+	<div class="equip-title" id="belt-title">
+		Create Utility Belt:
+	</div>
+	
+	<div class="equip-base" id="belt-base">
+		<div>
+			Cost:
+		</div>
+
+		<div id="belt-cost"></div>
+		
+		<input type="hidden" id="belt_cost" name="belt_cost" value=>
+
+	</div>
+
+</div>
+
+<div class="equip-entry" id="belt-entry">
+
+	<div id="belt-row1">
+		<div>
+			<select class="select-entry" id="belt_item_type" name="belt_item_type" onchange="belt_item_type()">
+				{% for b in belt %}
+					<option value="{{b.type}}">{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="belt-feature">
+				<div>
+					<select class="select-entry" id="belt_feature" name="belt_feature" onchange="belt_feature()">
+						<option value="">Feature</option>
+						{% for f in features %}
+							<option value={{f.id}}>{{f.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="belt-weapon">
+				<div>
+					<select class="select-entry" id="belt_weapon_cat" name="belt_weapon_cat" onchange="belt_weapon_cat()">
+						<option value="">Weapon Type</option>
+						{% for w in weapon_cat %}
+							<option value={{w.id}}>{{w.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="belt_weapon_type" name="belt_weapon_type" onchange="belt_weapon_type()">
+						<option value=""></option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="belt_weapon" name="belt_weapon" onchange="belt_weapon()">
+						<option value="">Weapon</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="belt-equipment">
+				<div>
+					<select class="select-entry" id="belt_equipment_type" name="belt_equipment_type" onchange="belt_equipment_type()">
+						<option value="">Equipment Type</option>
+						{% for e in equipment_type %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="belt_equipment" name="belt_equipment" onchange="belt_equipment()">
+						<option value="">Equipment</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="belt-item">
+		<div>
+			<div id="item-name">
+
+			</div>
+
+			<div id="belt-item-cost">
+				<div>
+					Cost:
+				</div>
+
+				<div id="item-cost">
+
+				</div>
+			</div>
+		</div>
+
+		<div id="item-description">
+
+		</div>
+	</div>
+
+	<div id="belt-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="belt_submit" name="belt_submit" onclick="belt_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="belt-spot"></div>
+
+<div class="err" id="belt-err"></div>

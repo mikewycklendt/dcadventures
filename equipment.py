@@ -38,7 +38,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Equipment'
 	stylesheets.append({"style": "/static/css/equipment_create.css"})
 
-	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html'}
+	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html', 'belt': 'equipment_create/belt.html'}
 
 	equipment = Equipment.query.all()
 
@@ -151,7 +151,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_advantage', 'name': 'This Advantage'}, {'type': 'any', 'name': 'Any Trait'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'extra', 'name': 'Power Extra'}, {'type': 'advantage', 'name': 'Advantage'}]
 
-
+	belt = [{'type': '', 'name': 'Add Item'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'Weapon', 'name': 'Weapon'}, {'type': 'feature', 'name': 'Feature'}]
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
@@ -159,11 +159,11 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
-							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features)
+							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features, belt=belt)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])
-def advantage_action_select():
+def equip_skill_select():
 	body = {}
 	body['success'] = True
 	options = []
@@ -186,6 +186,160 @@ def advantage_action_select():
 	print(body)
 	return jsonify(body)
 
+
+@equip.route('/equipment/weapontype/select', methods=['POST'])
+def equip_weapon_type_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	cat_id = request.get_json()['id'] 
+
+	try:
+		cat_id = int(cat_id)
+		cat = db.session.query(WeaponCat).filter_by(id=cat_id).one()
+		weapon_type = db.session.query(WeaponType).filter_by(type_id=cat_id).order_by(WeaponType.name).all()
+		weapon_name = cat.name + ' Weapon Type'
+		options.append({'id': '', 'name': weapon_name})
+		for b in bonuses:
+			options.append({'id': b.id, 'name': b.name})
+	except:
+		options.append({'id': '', 'name': 'Weapon Type'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
+
+
+@equip.route('/equipment/weapons/select', methods=['POST'])
+def equip_weapon_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		weapontype = db.session.query(WeaponType).filter_by(id=type_id).one()
+		weapons = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).all()
+		weapon_name = weapontype.name + ' Weapons'
+		options.append({'id': '', 'name': weapon_name})
+		for b in bonuses:
+			options.append({'id': b.id, 'name': b.name})
+	except:
+		options.append({'id': '', 'name': 'Weapon Type'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
+
+
+@equip.route('/equipment/select', methods=['POST'])
+def equip_equipment_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
+		equipment = db.session.query(Equipment).filter_by(type_id=type_id).order_by(Equipment.name).all()
+		options.append({'id': '', 'name': equip_type.name})
+		for b in bonuses:
+			options.append({'id': b.id, 'name': b.name})
+	except:
+		options.append({'id': '', 'name': 'Weapon Type'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
+
+@equip.route('/equipment/equipment/select/info', methods=['POST'])
+def equip_equipment_info_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		equipment = db.session.query(Equipment).filter_by(type_id=type_id).order_by(Equipment.name).one()
+		name = equipment.name
+		cost = equipment.cost
+		description = equipment.description
+	except:
+		name = 'Unavailable'
+		cost = 'Unavailable'
+		description = 'Unavailable'
+		body['success'] = False
+
+	body['name'] = name
+	body['description'] = description
+	body['cost'] = cost
+
+	print(body)
+	return jsonify(body)
+
+@equip.route('/equipment/weapon/select/info', methods=['POST'])
+def equip_weapon_info_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		weapon = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).one()
+		name = weapon.name
+		cost = weapon.cost
+		description = weapon.description
+	except:
+		name = 'Unavailable'
+		cost = 'Unavailable'
+		description = 'Unavailable'
+		body['success'] = False
+
+	body['name'] = name
+	body['description'] = description
+	body['cost'] = cost
+
+	print(body)
+	return jsonify(body)
+
+@equip.route('/equipment/feature/select/info', methods=['POST'])
+def equip_feature_info_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		feature = db.session.query(Feature).filter_by(type_id=type_id).order_by(Feature.name).one()
+		name = feature.name
+		cost = '1'
+		description = feature.description
+	except:
+		name = 'Unavailable'
+		cost = 'Unavailable'
+		description = 'Unavailable'
+		body['success'] = False
+
+	body['name'] = name
+	body['description'] = description
+	body['cost'] = cost
+
+	print(body)
+	return jsonify(body)
 
 @equip.route('/equipment/medium/subtype/select', methods=['POST'])
 def equip_medium_subtype_select():
