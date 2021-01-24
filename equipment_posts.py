@@ -220,7 +220,7 @@ def equip_limits_post(entry, body, cells):
 	cells = cell('Range', 16, [range, range_units], cells)
 	cells = cell('Time Capacity', 18, [time_capacity, time_capacity_units], cells)
 	cells = cell('Capacity', 18, [capacity, item], cells)
-	word = string('x'. [area_long, area_wide])
+	word = string('x', [area_long, area_wide])
 	cells = cell('Area', 18, [area_long, word, area_wide, area_units], cells)
 	cells = cell('Uses', 6, [uses], cells)
 	cells = cell('Lighting', 14, [light], cells)
