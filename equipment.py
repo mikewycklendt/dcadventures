@@ -558,7 +558,7 @@ def edit_equipment_name():
 
 	
 @equip.route('/equipment/belt/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_belt():
 
 	body = {}
 	body['success'] = True
@@ -665,7 +665,7 @@ def delete_equipment_belt(equipment_id):
 
 	
 @equip.route('/equipment/check/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_check():
 
 	body = {}
 	body['success'] = True
@@ -755,7 +755,7 @@ def delete_equipment_check(equipment_id):
 		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
 	
 @equip.route('/equipment/damaged/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_damaged():
 
 	body = {}
 	body['success'] = True
@@ -843,7 +843,7 @@ def delete_equipment_damaged(equipment_id):
 		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
 	
 @equip.route('/equipment/descriptor/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_descriptor():
 
 	body = {}
 	body['success'] = True
@@ -922,7 +922,7 @@ def delete_equipment_descriptor(equipment_id):
 
 	
 @equip.route('/equipment/effect/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_effect():
 
 	body = {}
 	body['success'] = True
@@ -995,7 +995,7 @@ def delete_equipment_effect(equipment_id):
 
 	
 @equip.route('/equipment/feature/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_feature():
 
 	body = {}
 	body['success'] = True
@@ -1055,7 +1055,7 @@ def equipment_post_():
 
 
 @equip.route('/equipment/feature/delete/<equipment_id>', methods=['DELETE'])
-def delete_equipment_(equipment_id):
+def delete_equipment_feature(equipment_id):
 	try:
 		db.session.query(Feature).filter_by(id=equipment_id).delete()
 		db.session.commit()
@@ -1068,7 +1068,7 @@ def delete_equipment_(equipment_id):
 
 	
 @equip.route('/equipment/limits/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_limits():
 
 	body = {}
 	body['success'] = True
@@ -1486,7 +1486,7 @@ def delete_equipment_modifiers(equipment_id):
 
 
 @equip.route('/equipment/opposed/create', methods=['POST'])
-def equipment_post_():
+def equipment_post_opposed():
 
 	body = {}
 	body['success'] = True
@@ -1566,7 +1566,7 @@ def equipment_post_():
 
 
 @equip.route('/equipment/opposed/delete/<equipment_id>', methods=['DELETE'])
-def delete_equipment_(equipment_id):
+def delete_equipment_opposed(equipment_id):
 	try:
 		db.session.query(EquipOpposed).filter_by(id=equipment_id).delete()
 		db.session.commit()
