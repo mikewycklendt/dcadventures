@@ -3860,7 +3860,7 @@ class EquipDamage(db.Model):
 	damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	toughness = db.Colun(db.Integer)
+	toughness = db.Column(db.Integer)
 	penalty = db.Column(db.String())
 	
 	def format(self):
