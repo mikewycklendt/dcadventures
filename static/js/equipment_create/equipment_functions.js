@@ -1785,7 +1785,7 @@ function row_delete(jsondata, route, object, selects=false) {
 							let drop;
 
 							for (drop of select) {
-								options = select.options;
+								options = drop.options;
 								let option;
 
 								for (option of options) {
