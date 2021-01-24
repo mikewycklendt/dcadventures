@@ -166,7 +166,6 @@ function modifiers_submit() {
 	const created = modifiers_grid.titles;
 	const font = modifiers_grid.font;
 
-	const benefit = select("modifiers_benefit");
 	const bonus = select("modifiers_bonus");
 	const bonus_type = select("modifiers_bonus_type");
 	const penalty = select("modifiers_penalty");
