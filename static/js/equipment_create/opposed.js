@@ -45,7 +45,16 @@ function opposed_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'effect': effect,
+			'feature': feature,
+			'dc': dc,
+			'skill_type': skill_type,
+			'skill': skill,
+			'check': check,
+			'when': when,
+			'condition1': condition1,
+			'condition2': condition2
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

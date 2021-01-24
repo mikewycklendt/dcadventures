@@ -42,7 +42,7 @@ function limits_submit() {
 	const light = select("limits_light")
 	const internet = check("limits_internet")
 	const needs_internet = check("limits_needs_internet")
-	
+
 	const errors = 'limits-err';
 	const err_line = 'limits-err-line';
 
@@ -52,7 +52,30 @@ function limits_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'effect': effect,
+			'feature': feature,
+			'time': time,
+			'time_units': time_units,
+			'range': range,
+			'range_units': range_units,
+			'extend': extend,
+			'extendable': extendable,
+			'time_capacity': time_capacity,
+			'time_capacity_units': time_capacity_units,
+			'capacity': capacity,
+			'item': item,
+			'ammo': ammo,
+			'fuel': fuel,
+			'area_long': area_long,
+			'area_wide': area_wide,
+			'area_units': area_units,
+			'recharge': recharge,
+			'refill': refill,
+			'uses': uses,
+			'light': light,
+			'internet': internet,
+			'needs_interneT': needs_internet
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

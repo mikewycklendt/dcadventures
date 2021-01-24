@@ -38,7 +38,15 @@ function check_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'effect': effect,
+			'feature': feature,
+			'when': when,
+			'skill_type': skill_type,
+			'skill': skill,
+			'check_type': check_type,
+			'action': action,
+			'action_time': action_time
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

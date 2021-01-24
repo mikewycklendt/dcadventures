@@ -76,6 +76,14 @@ function belt_submit() {
 
 	const equip_id = document.getElementById('equip_id').value;
 
+	const item_type = select("belt_item_type");
+	const feature = select("belt_feature");
+	const weapon = select("belt_weapon");
+	const equipment = select("belt_equipment");
+	const belt_item_type = select('belt_item_type');
+	const belt_cost = document.getElementById("belt-cost");
+	const cost = document.getElementById('belt_cost');
+
 	const errors = 'belt-err';
 	const err_line = 'belt-err-line';
 
@@ -85,7 +93,11 @@ function belt_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'feature': feature,
+			'weapon': weapon,
+			'equipment': equipment,
+			'belt_item_type': belt_item_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -95,6 +107,10 @@ function belt_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			
+			const total_cost = jsonResponse.total_cost;
+			belt_cost.innerHTML = total_cost;
+			cost.value = total_cost;
 
 			belt_grid.columns.length = 0;
 			belt_grid.columns = jsonResponse.rows;

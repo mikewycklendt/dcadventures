@@ -227,7 +227,10 @@ function descriptor_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'effect': effect,
+			'feature': feature,
+			'descriptor': descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

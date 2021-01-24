@@ -757,7 +757,7 @@ def int_check(value, name, errors):
 	error = False
 
 	try:
-		if value != 'perm' and value != 'rank' and value != 'any' and value != 'always' and value != 'round' and value != 'extra' and value != 'null' and value != 'normal' and value != 'instant' and value != 'distance' and value != 'vert' and value != 'free' and value != 'result' and value != 'all' and value != 'trait' and value != 'imperv' and value != 'check' and value != 'turn' and value != 'degree' and value != 'scene' and value != 'auto' and value != 'advantage' and value != 'bonus' and value != 'immune' and value != 'penalty' and value != 'double' and value != 'flat' and value != 'x' and value != '':
+		if value != 'perm' and value != 'rank' and value != 'any' and value != 'always' and value != 'round' and value != 'extra' and value != 'null' and value != 'normal' and value != 'instant' and value != 'distance' and value != 'vert' and value != 'free' and value != 'result' and value != 'all' and value != 'trait' and value != 'imperv' and value != 'check' and value != 'turn' and value != 'degree' and value != 'scene' and value != 'auto' and value != 'advantage' and value != 'bonus' and value != 'immune' and value != 'penalty' and value != 'double' and value != 'flat' and value != 'x' and value != '' and value != 'none':
 			value = int(value)
 	except:
 		error = True

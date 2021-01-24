@@ -44,7 +44,14 @@ function damaged_submit() {
 			'equip_id': equip_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'effect': effect,
+			'feature': feature,
+			'damage': damage,
+			'skill_type': skill_type,
+			'skill': skill,
+			'toughness': toughness,
+			'penalty': penalty
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
