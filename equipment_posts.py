@@ -60,7 +60,7 @@ def equip_check_post(entry, body, cells):
 	when_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
 	when = selects(when, when_select)
 
-	cells = cell('Effect'. 15, [effect])
+	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
 	cells = cell('When', 14, [when], cells)
 	cells = cell('Skill', 15, [skill_type], cells)
@@ -100,7 +100,7 @@ def equip_damaged_post(entry, body, cells):
 	damaged_select = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
 	damaged = selects(damaged, damaged_select)
 
-	cells = cell('Effect'. 15, [effect])
+	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
 	cells = cell('Damage', 15, [damage], cells)
 	cells = cell('Skill', 18, [skill_type], cells)
@@ -126,7 +126,7 @@ def equip_descriptor_post(entry, body, cells):
 	feature = name(Feature, feature)
 	descriptor = name(Descriptor, descriptor)
 	
-	cells = cell('Effect'. 15, [effect])
+	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
 	cells = cell('Descriptor', 25, [descriptor], cells)
 
@@ -212,7 +212,7 @@ def equip_limits_post(entry, body, cells):
 	area_wide = integer_convert(area_wide)
 	uses = integer_convert(uses)
 
-	cells = cell('Effect'. 15, [effect])
+	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
 
 	
@@ -427,7 +427,7 @@ def equip_opposed_post(entry, body, cells):
 	when_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
 	when = selects(when, when_select)
 	
-	cells = cell('Effect'. 15, [effect])
+	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
 	cells = cell('DC', 6, [dc], cells)
 	cells = cell('Skill', 16, [skill_type], cells)
