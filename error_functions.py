@@ -929,7 +929,7 @@ def name_exist(name, table, value, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	name_check = db.session.query(table).filter(tsble.nsme == value).first()
+	name_check = db.session.query(table).filter(table.nsme == value).first()
 
 	if name_check is not None:
 		error = True
