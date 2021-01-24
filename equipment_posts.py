@@ -18,18 +18,17 @@ def equip_belt_post(entry, body, cells):
 	feature = entry.feature
 	weapon = entry.weapon
 	equipment = entry.equipment
+	cost = entry.cost
 
 	feature = name(Feature, feature)
 	weapon = name(Weapon, weapon)
 	equipment = name(Equipment, equipment)
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	cost = integer_convert(cost)
 
-	belt = [{'type': '', 'name': 'Add Item'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'feature', 'name': 'Feature'}]
+	'equip' 
+	'weapon' 
+	'feature'
 
 
 	body = send(cells, body)

@@ -3813,6 +3813,7 @@ class EquipBelt(db.Model):
 	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	cost = db.Column(db.Integer)
+	belt_item_type = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -3821,7 +3822,8 @@ class EquipBelt(db.Model):
 			'feature': self.feature,
 			'weapon': self.weapon,
 			'equipment': self.equipment,
-			'cost': self.cost
+			'cost': self.cost,
+			'belt_item_type': self.belt_item_type
 		}
 	
 class EquipCheck(db.Model):

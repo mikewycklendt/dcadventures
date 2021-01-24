@@ -608,7 +608,8 @@ def equipment_post_belt():
 						feature = feature,
 						weapon = weapon,
 						equipment = equipment,
-						cost = cost)
+						cost = cost,
+						belt_item_type = belt_item_type)
 
 	db.session.add(entry)
 	db.session.commit()
