@@ -923,3 +923,21 @@ def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id,
 		errors['error'] = error
 
 	return (errors)
+
+def name_exist(name, table, value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	name_check = db.session.query(table).filter(tsble.nsme == value).first()
+
+	if name_check is not None:
+		error = True
+		messqge = 'There is already a ' + name + ' with that name.'
+		error_msgs.append(messqge)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
