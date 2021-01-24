@@ -227,7 +227,6 @@ function modifiers_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'benefit': benefit,
 			'bonus': bonus,
 			'bonus_type': bonus_type,
 			'penalty': penalty,
