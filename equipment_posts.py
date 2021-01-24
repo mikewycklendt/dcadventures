@@ -224,7 +224,7 @@ def equip_limits_post(entry, body, cells):
 	cells = cell('Area', 18, [area_long, word, area_wide, area_units], cells)
 	cells = cell('Uses', 6, [uses], cells)
 	cells = cell('Lighting', 14, [light], cells)
-	cells = check_cell('Extendable'. 13, extendable, cells)
+	cells = check_cell('Extendable', 13, extendable, cells)
 	cells = check_cell('Extends', 8, extend, cells)
 	cells = check_cell('Ammo', 7, ammo, cells)
 	cells = check_cell('Fuel', 6, fuel, cells)
