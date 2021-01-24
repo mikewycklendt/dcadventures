@@ -26,6 +26,15 @@ function opposed_submit() {
 	const font = opposed_grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
+	const effect = select("opposed_effect");
+	const feature = select("opposed_feature");
+	const dc = select("opposed_dc");
+	const skill_type = select("opposed_skill_type");
+	const skill = select("opposed_skill");
+	const check = select ("opposed_check");
+	const when = select("opposed_when");
+	const condition1 = select("opposed_condition1");
+	const condition2 = select("opposed_condition2");
 
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';

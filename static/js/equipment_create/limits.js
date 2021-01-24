@@ -19,7 +19,30 @@ function limits_submit() {
 	const font = limits_grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
-
+	const effect = select("limits_effect")
+	const feature = select("limits_feature")
+	const time = text("limits_time")
+	const time_units = select("limits_time_units")
+	const range = text("limits_range")
+	const range_units = select("limits_range_units")
+	const extend = check("limits_extend")
+	const extendable = check("limits_extends")
+	const time_capacity = text("limits_time_capacity")
+	const time_capacity_units = select("limits_time_capacity_units")
+	const capacity = text("limits_capacity")
+	const item = text("limits_item")
+	const ammo = check("limits_ammo")
+	const fuel = check("limits_fuel")
+	const area_long = text("limits_area_long")
+	const area_wide = text("limits_area_wide")
+	const area_units = select("limits_area_units")
+	const recharge = check("limits_recharge")
+	const refill = check("limits_refill")
+	const uses = select("limits_uses")
+	const light = select("limits_light")
+	const internet = check("limits_internet")
+	const needs_internet = check("limits_needs_internet")
+	
 	const errors = 'limits-err';
 	const err_line = 'limits-err-line';
 

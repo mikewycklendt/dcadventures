@@ -214,6 +214,9 @@ function descriptor_submit() {
 	const font = descriptor_grid.font;
 
 	const equip_id = document.getElementById('equip_id').value;
+	const effect = select("descriptor_effect");
+	const feature = select("descriptor_feature");
+	const descriptor = select("descriptor_field");
 
 	const errors = 'descriptor-err';
 	const err_line = 'descriptor-err-line';

@@ -27,6 +27,14 @@ function damaged_submit() {
 
 	const equip_id = document.getElementById('equip_id').value;
 
+	const effect = select("damaged_effect");
+	const feature = select("damaged_feature");
+	const damage = select("damaged_damage");
+	const skill_type = select("damaged_skill_type");
+	const skill = select("damaged_skill");
+	const toughness = select("damaged_toughness");
+	const penalty = select("damaged_penalty");
+
 	const errors = 'damaged-err';
 	const err_line = 'damaged-err-line';
 

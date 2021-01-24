@@ -212,6 +212,9 @@ function modifiers_submit() {
 	const multiple = select("modifiers_multiple");
 	const multiple_count = select("modifiers_multiple_count");
 	const lasts = select("modifier_lasts");
+	
+	const skill = select("modifiers_skill")
+	const light = select("modifiers_light")
 
 	const equip_id = document.getElementById('equip_id').value;
 
@@ -270,7 +273,9 @@ function modifiers_submit() {
 			'penalty_conflict_defend': penalty_conflict_defend,
 			'multiple': multiple,
 			'multiple_count': multiple_count,
-			'lasts': lasts
+			'lasts': lasts,
+			'skill': skill,
+			'light': light
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

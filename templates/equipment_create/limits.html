@@ -29,7 +29,7 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="limits_time" name="limits_time">
+			<select class="select-entry" id="limits_time_units" name="limits_time_units">
 				<option value="">Units</option>
 				{% for t in times %}
 					<option value={{t.id}}>{{t.name}}</option>
@@ -88,13 +88,13 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Ammunition
+				<input type="checkbox" id="limits_ammo" class="medium-checkbox med-checkbox" > Ammunition
 			</div>
 		</div>
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Fuel
+				<input type="checkbox" id="limits_fuel" class="medium-checkbox med-checkbox" > Fuel
 			</div>
 		</div>
 
@@ -130,13 +130,13 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Recharges
+				<input type="checkbox" id="limits_recharge" class="medium-checkbox med-checkbox" > Recharges
 			</div>
 		</div>
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_extends" class="medium-checkbox med-checkbox" > Refills
+				<input type="checkbox" id="limits_refill" class="medium-checkbox med-checkbox" > Refills
 			</div>
 		</div>
 
@@ -164,7 +164,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Provides Internet
+				<input type="checkbox" id="limits_internet" class="medium-checkbox med-checkbox" > Internet Access
 			</div>
 		</div>
 		

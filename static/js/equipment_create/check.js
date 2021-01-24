@@ -20,6 +20,15 @@ function check_submit() {
 
 	const equip_id = document.getElementById('equip_id').value;
 
+	const effect = select("check_effect");
+	const feature = select("check_feature");
+	const when = select("check_when");
+	const skill_type = select("check_skill_type");
+	const skill = select("check_skill");
+	const check_type = select("check_check_type");
+	const action = select("check_action");
+	const action_time = check("check_action_time");
+
 	const errors = 'check-err';
 	const err_line = 'check-err-line';
 
