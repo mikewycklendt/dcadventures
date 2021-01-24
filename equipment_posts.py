@@ -203,7 +203,6 @@ def equip_modifiers_post(entry, body, cells):
 	equip_id = entry.equip_id
 	feature = entry.feature
 	effect = entry.effect
-	benefit = entry.benefit
 	bonus = entry.bonus
 	bonus_type = entry.bonus_type
 	penalty = entry.penalty
@@ -250,7 +249,9 @@ def equip_modifiers_post(entry, body, cells):
 	penalty_conflict_defend = entry.penalty_conflict_defend
 	multiple = entry.multiple
 	multiple_count = entry.multiple_count
-	lasts = entry.lasts~
+	lasts = entry.lasts
+	skill = entry.skill
+	light = entry.light
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)
