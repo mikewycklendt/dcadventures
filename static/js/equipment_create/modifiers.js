@@ -166,6 +166,8 @@ function modifiers_submit() {
 	const created = modifiers_grid.titles;
 	const font = modifiers_grid.font;
 
+	const effect = select("limits_effect")
+	const feature = select("limits_feature")
 	const bonus = select("modifiers_bonus");
 	const bonus_type = select("modifiers_bonus_type");
 	const penalty = select("modifiers_penalty");
@@ -224,6 +226,8 @@ function modifiers_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'equip_id': equip_id,
+			'effect': effect,
+			'feature': feature,
 			'columns': columns,
 			'created': created,
 			'font': font,
