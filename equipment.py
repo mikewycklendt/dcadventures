@@ -650,7 +650,7 @@ def delete_equipment_belt(equipment_id):
 
 		total_cost = 0
 		cost_query = db.session.query(EquipBelt).filter_by(id=equipment_id).first()
-		if cost_query is None
+		if cost_query is None:
 			total_cost = 0
 		else:
 			cost_query = db.session.query(EquipBelt).filter_by(id=equipment_id).all()
@@ -1522,7 +1522,7 @@ def equipment_post_():
 	skill_type = db_integer(skill_type)
 	skill = db_integer(skill)
 	check = db_integer(check)
-	
+
 	entry = EquipOpposed(equip_id = equip_id,
 						effect = effect,
 						feature = feature,
