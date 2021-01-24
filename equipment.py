@@ -1114,7 +1114,7 @@ def equipment_post_():
 	
 	equip_id = db_integer(equip_id)
 	effect = db_integer(effect)
-	feature = db_integer(feature)time = db.Column(db.Integer)
+	feature = db_integer(feature)
 	time = integer(time)
 	time_units = db_integer(time_units)
 	range = integer(range)
