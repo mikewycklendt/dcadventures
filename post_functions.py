@@ -444,6 +444,23 @@ def check_cell(title, width, check, cells, mod_check=False):
 
 	return (cells)
 
+
+def if_cell(name, width, values, cells):
+	cell = {}
+	cell['title'] = title
+	cell['width'] = 0
+	cell['content'] = ''
+
+	for v in value:
+		if v != '' and v is not None and v != False:
+			cell['content'] = v
+			cell['width'] = width
+			cells.append(cell)
+			return (cells)
+
+	cells.append(cell)
+	return (cells)
+
 def cell(title, width, contentlist, cells=[]):
 
 	cell = {}

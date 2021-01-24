@@ -565,7 +565,7 @@ def adv_modifiers_post(entry, body, cells):
 	penalty_conflict_defend = entry.penalty_conflict_defend
 	multiple = entry.multiple
 	multiple_count = entry.multiple_count
-	lasts = entry.lasts
+	lasts = entry.lasts~
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)

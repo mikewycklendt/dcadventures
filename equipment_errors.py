@@ -27,6 +27,8 @@ def equip_belt_post_errors(data):
 	equipment = id_check(Equipment, equipment, 'Equipment', errors)
 	cost = int_check(cost, 'Cost', errors)
 
+	errors = of([feature, weapon, equipment], 'You must choose a weapon, feature or equipment to add to the belt', errors)
+
 
 	return (errors)
 
@@ -54,6 +56,10 @@ def equip_check_post_errors(data):
 	skill = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
 	check_type = id_check(Check, check_type, 'Check', errors)
 	action = id_check(Action, action, 'Action', errors)
+
+	errors = required(when, 'When', errors)
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(action, 'Action Type', errors)
 
 	return (errors)
 
@@ -102,6 +108,8 @@ def equip_descriptor_post_errors(data):
 	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
 	feature = id_check(Feature, feature, 'Feature', errors)
 	descriptor = id_check(Descriptor, descriptor, 'Descriptor', errors)
+
+	errors = required(descriptor, 'Descriptor', errors)
 
 
 
@@ -185,6 +193,8 @@ def equip_limits_post_errors(data):
 	area_long = int_check(area_long, 'Area Long Value', errors)
 	area_wide = int_check(area_wide, 'Area Wide Value', errors)
 	uses = int_check(uses, 'Uses Value', errors)
+
+	errors = together('a Feature', [toughness], errors)
 
 
 
@@ -351,5 +361,8 @@ def equip_opposed_post_errors(data):
 
 	dc = int_check(dc, 'DC Value', errors)
 
+	errors = required(skill_type, 'Skill', errors)
+	errors = required(check, 'Check Type', errors)
+	errors = required(when, 'When', errors)
 
 	return (errors)

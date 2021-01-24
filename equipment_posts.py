@@ -19,6 +19,7 @@ def equip_belt_post(entry, body, cells):
 	weapon = entry.weapon
 	equipment = entry.equipment
 	cost = entry.cost
+	belt_item_type = entry.belt_item_type
 
 	feature = name(Feature, feature)
 	weapon = name(Weapon, weapon)
@@ -26,11 +27,11 @@ def equip_belt_post(entry, body, cells):
 	
 	cost = integer_convert(cost)
 
-	'equip' 
-	'weapon' 
-	'feature'
-
-
+	vcells = vcell('equip', 30, [equipment])
+	vcells = vcell('weapon', 30, [weapon], vcells)
+	vcells = vcell('feature', 30, [feature], vcells)
+	cells = vcell_add('Item', belt_item_type, vcells, cells) 
+	cells - cell('Cost', 10, [cost], cells)
 	body = send(cells, body)
 	
 	cells.clear()
@@ -58,6 +59,15 @@ def equip_check_post(entry, body, cells):
 	
 	when_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
 	when = selects(when, when_select)
+
+	cells = cell('Effect'. 15, [effect])
+	cells = cell('Feature', 15, [feature], cells)
+	cells = cell('When', 14, [when], cells)
+	cells = cell('Skill', 15, [skill_type], cells)
+	cells = cell('Enhanced Skill', 20, [skill], cells)
+	cells = cell('Check', 14, [check], cells)
+	cells = cell('Action', 15, [action], cells)
+	cells = check_cell('Action Time', 12, action_time, cells)
 	
 
 	body = send(cells, body)
@@ -90,6 +100,14 @@ def equip_damaged_post(entry, body, cells):
 	damaged_select = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
 	damaged = selects(damaged, damaged_select)
 
+	cells = cell('Effect'. 15, [effect])
+	cells = cell('Feature', 15, [feature], cells)
+	cells = cell('Damage', 15, [damage], cells)
+	cells = cell('Skill', 18, [skill_type], cells)
+	cells = cell('Enhanced Skill', 20, [skill], cells)
+	cells = cell('Toughness', 12, [toughness], cells)
+	cells = cell('Penalty', 17, [penalty], cells)
+
 	body = send(cells, body)
 	
 	cells.clear()
@@ -108,6 +126,9 @@ def equip_descriptor_post(entry, body, cells):
 	feature = name(Feature, feature)
 	descriptor = name(Descriptor, descriptor)
 	
+	cells = cell('Effect'. 15, [effect])
+	cells = cell('Feature', 15, [feature], cells)
+	cells = cell('Descriptor', 25, [descriptor], cells)
 
 
 	body = send(cells, body)
@@ -191,6 +212,27 @@ def equip_limits_post(entry, body, cells):
 	area_wide = integer_convert(area_wide)
 	uses = integer_convert(uses)
 
+	cells = cell('Effect'. 15, [effect])
+	cells = cell('Feature', 15, [feature], cells)
+
+	
+	cells = cell('Duration', 16, [time, time_units], cells)
+	cells = cell('Range', 16, [range, range_units], cells)
+	cells = cell('Time Capacity', 18, [time_capacity, time_capacity_units], cells)
+	cells = cell('Capacity', 18, [capacity, item], cells)
+	word = string('x'. [area_long, area_wide])
+	cells = cell('Area', 18, [area_long, word, area_wide, area_units], cells)
+	cells = cell('Uses', 6, [uses], cells)
+	cells = cell('Lighting', 14, [light], cells)
+	cells = check_cell('Extendable'. 13, extendable, cells)
+	cells = check_cell('Extends', 8, extend, cells)
+	cells = check_cell('Ammo', 7, ammo, cells)
+	cells = check_cell('Fuel', 6, fuel, cells)
+	cells = check_cell('Recharges', 10, recharge, cells)
+	cells = check_cell('Refills', 9, refill, cells)
+	cells = check_cell('Internet', 9, internet, cells)
+	cells = check_cell('Needs Internet', 14, needs_interneT, cells)
+
 	body = send(cells, body)
 	
 	cells.clear()
@@ -264,7 +306,6 @@ def equip_modifiers_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
-	benefit = name(Benefit, benefit)
 	environment = name(Environment, environment, 'Variable Environment')
 	sense = name(Sense, sense, 'Variable ')
 	mod_range = name(Ranged, mod_range, 'Variable ')
@@ -386,6 +427,14 @@ def equip_opposed_post(entry, body, cells):
 	when_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]
 	when = selects(when, when_select)
 	
+	cells = cell('Effect'. 15, [effect])
+	cells = cell('Feature', 15, [feature], cells)
+	cells = cell('DC', 6, [dc], cells)
+	cells = cell('Skill', 16, [skill_type], cells)
+	cells = cell('Enhanced Skill', 20, [skill], cells)
+	cells = cell('Check', 14, [check], cells)
+	cells = cell('Required Condition', 18, [condition1], cells)
+	cells = cell('Result Condition', 18, [condition2], cells)
 	
 	body = send(cells, body)
 	
