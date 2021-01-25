@@ -595,7 +595,7 @@ def equipment_post_belt():
 		cost_query = db.session.query(Weapon).filter_by(id=weapon).one()
 		cost = cost_query.cost
 	elif belt_item_type == 'feature':
-		cost = 1
+		cost = int(1)
 	else:
 		cost = None
 
