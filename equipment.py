@@ -599,10 +599,6 @@ def equipment_post_belt():
 	else:
 		cost = None
 
-	total_cost = 0
-	total_cost_query =  db.session.query(EquipBelt).filter_by(id=equip_id).one()
-	for c in total_cost_query:
-		total_cost += total_cost_query.cost
 
 	entry = EquipBelt(equip_id = equip_id,
 						feature = feature,
@@ -633,6 +629,12 @@ def equipment_post_belt():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+
+	total_cost = 0
+	total_cost_query =  db.session.query(EquipBelt).filter_by(id=equip_id).all()
+	for c in total_cost_query:
+		total_cost += total_cost_query.cost
+
 	body['total_cost'] = total_cost
 
 	body = equip_belt_post(entry, body, cells)
