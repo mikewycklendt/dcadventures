@@ -1047,7 +1047,7 @@ def feature_check(equip_id, errors):
 	features = db.session.query(Feature).filter_by(equip_id=equip_id).all()
 
 	for f in features:
-		if name != '':
+		if f.name != '':
 			if f.toughness is None:
 				error = True
 				message = 'You created the feature ' + f.name + ' without setting the toughness  Check the damaged box, select the feature from the dropdown and set the toughness.'
