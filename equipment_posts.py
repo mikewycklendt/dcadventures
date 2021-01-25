@@ -27,6 +27,10 @@ def equip_belt_post(entry, body, cells):
 	
 	cost = integer_convert(cost)
 
+	print('\n\n')
+	print(cost)
+	print('\n')
+
 	vcells = vcell('equip', 30, [equipment])
 	vcells = vcell('weapon', 30, [weapon], vcells)
 	vcells = vcell('feature', 30, [feature], vcells)
