@@ -405,7 +405,7 @@ def together_names(name, names, values, errors):
 	if error:
 		message = 'If this effect requires ' + name + ' the '
 		for n in names:
-			if all_names = '':
+			if all_names == '':
 				all_names = n
 				end_message = n + ' field is required'
 			else:
