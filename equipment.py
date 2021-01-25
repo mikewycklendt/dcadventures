@@ -45,7 +45,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	weapon_cat = WeaponCat.query.all()
 
-	features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
+	features = db.session.query(Feature).filter_by(Feature != '').order_by(name).all()
 
 	skills = Skill.query.all()
 
@@ -164,7 +164,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
 							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features, belt=belt,
-							move=move)
+							move=move, locks=locks)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])
