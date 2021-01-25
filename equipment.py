@@ -872,8 +872,7 @@ def equipment_post_descriptor():
 	entry = EquipDescriptor(equip_id = equip_id,
 							effect = effect,
 							feature = feature,
-							descriptor = descriptor,
-							cost = cost)
+							descriptor = descriptor)
 
 	db.session.add(entry)
 	db.session.commit()
