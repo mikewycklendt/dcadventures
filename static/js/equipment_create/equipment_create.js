@@ -113,6 +113,18 @@ equip_save = function() {
 	const lock_type = select("lock_type");
 	const mod_multiple = select("modifiers_multiple");
 	const mod_multiple_count = select("modifiers_multiple_count");
+	const check_check = check('check_check');
+	const damaged = check('damaged_check');
+	const descriptor = check('descriptor_check');
+	const feature = check('feature_check');
+	const limits = check('limits_check');
+	const modifiers = check('modifiers_check');
+	const opposed = check('opposed_check');
+
+
+
+
+
 	const belt_cost = document.getElementById('belt_cost').value;
 
 	if (type == '6')  {
@@ -138,7 +150,14 @@ equip_save = function() {
 			'locks': locks,
 			'lock_type': lock_type,
 			'mod_multiple': mod_multiple,
-			'mod_multiple_count': mod_multiple_count
+			'mod_multiple_count': mod_multiple_count,
+			'check': check_check,
+			'damaged': damaged,
+			'descriptor': descriptor,
+			'feature': feature,
+			'limits': limits,
+			'modifiers': modifiers,
+			'opposed': opposed
 		}),
 		headers: {
 		'Content-Type': 'application/json',

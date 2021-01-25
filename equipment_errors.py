@@ -6,7 +6,7 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check
 
 
 def equip_save_errors(data):
@@ -27,7 +27,36 @@ def equip_save_errors(data):
 	lock_type = data['lock_type']
 	mod_multiple = data['mod_multiple']
 	mod_multiple_count = data['mod_multiple_count']
+	check = data['check']
+	damaged = data['damaged']
+	descriptor = data['descriptor']
+	feature = data['feature']
+	limits = data['limits']
+	modifiers = data['modifiers']
+	opposed = data['opposed']
 
+	errors = required(type_id, 'Equipment Type', errors)
+	errors = required(cost, 'Cost', errors)
+	errors = required(toughness, 'Toughness', errors)
+
+	errors = check_fields(move, 'Movement Effect', [speed_mod, direction], errors)
+	errors = check_field(move, 'Movement Effect', 'Speed Rank Modifier', speed_mod, errors)
+	errors = check_field(move, 'Movement Effect', 'Direction', direction, errors)
+
+	errors = check_field(locks, 'Opens Locks', 'Lock Type', lock_type, errors)
+
+	errors = equip_check_multiple_fields('Bonus/Penalty Modifier', EquipMod, [mod_multiple, mod_multiple_count], equip_id, errors)
+
+	errors = feature_check(equip_id, errors)
+
+	errors = equip_entry_check('Add Feature', Feature, feature, equip_id, errors)
+	errors = equip_entry_check('Bonus/Penalty Modifier', EquipMod, modifiers, equip_id, errors)
+	errors = equip_entry_check('Check', EquipCheck, check, equip_id, errors)
+	errors = equip_entry_check('Opposing Check', EquipOpposed, opposed, equip_id, errors)
+	errors = equip_entry_check('Limits', EquipLimit, limits, equip_id, errors)
+	errors = equip_entry_check('Damaged', EquipDamage, damaged, equip_id, errors)
+	errors = equip_entry_check('Counters Descriptor', EquipDescriptor, descriptor, equip_id, errors)
+	errors = equip_entry_check('Alternate Effect', EquipEffect, alternate, equip_id, errors)	
 
 	return (errors)
 

@@ -510,6 +510,13 @@ def save_equipment():
 	lock_type = request.get_json()['lock_type']
 	mod_multiple = request.get_json()['mod_multiple']
 	mod_multiple_count = request.get_json()['mod_multiple_count']
+	check check
+	damaged damaged
+	descriptor descriptor
+	feature feature
+	limits limits
+	modifiers modifiers
+	opposed opposed
 
 	type_id = db_integer(type_id)
 	cost = integer(cost)
@@ -533,8 +540,15 @@ def save_equipment():
 	entry.lock_type = lock_type
 	entry.mod_multiple = mod_multiple
 	entry.mod_multiple_count = mod_multiple_count
-
-	db.session.commit()
+	entry.check = check
+	entry.damaged = damaged
+	entry.descriptor = descriptor
+	entry.feature = feature
+	entry.limits = limits
+	entry.modifiers = modifiers
+	entry.opposed = opposed
+	
+	entry.db.session.commit()
 
 	body['success'] = True
 			
