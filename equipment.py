@@ -510,13 +510,13 @@ def save_equipment():
 	lock_type = request.get_json()['lock_type']
 	mod_multiple = request.get_json()['mod_multiple']
 	mod_multiple_count = request.get_json()['mod_multiple_count']
-	check check
-	damaged damaged
-	descriptor descriptor
-	feature feature
-	limits limits
-	modifiers modifiers
-	opposed opposed
+	check = request.get_json()['check']
+	damaged = request.get_json()['damaged']
+	descriptor = request.get_json()['descriptor']
+	feature = request.get_json()['feature']
+	limits = request.get_json()['limits']
+	modifiers = request.get_json()['modifiers']
+	opposed = request.get_json()['opposed']
 
 	type_id = db_integer(type_id)
 	cost = integer(cost)
@@ -547,7 +547,7 @@ def save_equipment():
 	entry.limits = limits
 	entry.modifiers = modifiers
 	entry.opposed = opposed
-	
+
 	entry.db.session.commit()
 
 	body['success'] = True
