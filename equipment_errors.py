@@ -199,6 +199,14 @@ def equip_limits_post_errors(data):
 	area_wide = int_check(area_wide, 'Area Wide Value', errors)
 	uses = int_check(uses, 'Uses Value', errors)
 
+	errors = together('Duration', [time, time_units], errors)
+	errors = together('Range', [range, range_units], errors)
+	errors = together('Time Capacity', [time_capacity, time_capacity_units], errors)
+	errors = together('Capacity', [capacity, item], errors)
+	errors = together('Area Effect', [area_long, area_wide, area_units], errors)
+	errors = of([time, range, time_capacity, capacity, extend, extendable, ammo, fuel, area_long, recharge, refill, uses, light, internet, needs_internet], 'You must specify at least one limit', errors)
+
+
 
 
 	return (errors)
