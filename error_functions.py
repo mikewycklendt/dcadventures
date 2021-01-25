@@ -1038,6 +1038,16 @@ def feature_check(equip_id, errors):
 
 	equip_id = int(equip_id)
 
+	features = db.session.query(Feature).filter_by(equip_id=equip_id).first()
+
+	if features is None:
+		return (errors)
+
+	damages = db.session.query(EquipDamage).filter_by(equip_id=equip_id).first()
+
+	if damages is None:
+		return (errors)
+
 	damages = db.session.query(EquipDamage).filter_by(equip_id=equip_id).all()
 
 	for d in damages:
@@ -1045,9 +1055,12 @@ def feature_check(equip_id, errors):
 			feature_id = d.feature
 			try:
 				feature = db.session.query(Feature).filter_by(feature_id).one()
-				if feature.toughness is None:
-					message = 'You created a feature but did not set the toughness.  Check the damaged box, select the feature from the dropdown and set the toughness.'
-					error_msgs.append(message)
+			except:
+				message = 'The feature selected for the Damaged rule is invalid.  You may have deleted that feature.  Delete that damaged rule.'
+			message = ''
+			if feature.toughness is None:
+				message = 'You created a feature but did not set the toughness.  Check the damaged box, select the feature from the dropdown and set the toughness.'
+				error_msgs.append(message)
 	
 	errors['error_msgs'] = error_msgs
 	if error:
