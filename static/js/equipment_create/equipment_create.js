@@ -127,7 +127,7 @@ equip_save = function() {
 
 	const belt_cost = document.getElementById('belt_cost').value;
 
-	if (type == '6')  {
+	if (type_id == '6')  {
 		cost = belt_cost;
 	}
 
