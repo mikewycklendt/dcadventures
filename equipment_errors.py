@@ -195,7 +195,6 @@ def equip_limits_post_errors(data):
 	time = int_check(time, 'Time Value', errors)
 	range = int_check(range, 'Range Value', errors)
 	time_capacity = int_check(time_capacity, 'Time Capacity Value', errors)
-	capacity = int_check(capacity, 'Capacity Value', errors)
 	area_long = int_check(area_long, 'Area Long Value', errors)
 	area_wide = int_check(area_wide, 'Area Wide Value', errors)
 	uses = int_check(uses, 'Uses Value', errors)
