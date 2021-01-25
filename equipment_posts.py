@@ -338,8 +338,8 @@ def equip_modifiers_post(entry, body, cells):
 
 	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}]
 
-	cells = cell('Feature', 15, [feature])
-	cells = cell('Effect', 15, [effect], cells)
+	cells = cell('Feature', 11, [feature])
+	cells = cell('Effect', 11, [effect], cells)
 	cells = cell('Bonus', 12, [bonus], cells)
 	cells = cell('Type', 8, [bonus_type], cells)
 	vcells = vcell('effect', 15, ['Effect Modifier'])
