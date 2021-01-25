@@ -98,11 +98,11 @@ def equip_damaged_post(entry, body, cells):
 	toughness = integer_convert(toughness)
 
 	damaged_select = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
-	damage = selects(damage, damaged_select)
+	penalty = selects(penalty, damaged_select)
 
 	cells = cell('Effect', 15, [effect])
 	cells = cell('Feature', 15, [feature], cells)
-	cells = cell('Damage', 15, [damage], cells)
+	cells = cell('Damage', 25, [damage], cells)
 	cells = cell('Skill', 18, [skill_type], cells)
 	cells = cell('Enhanced Skill', 20, [skill], cells)
 	cells = cell('Toughness', 12, [toughness], cells)
