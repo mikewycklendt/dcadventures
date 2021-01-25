@@ -65,7 +65,7 @@ def equip_check_post(entry, body, cells):
 	cells = cell('When', 14, [when], cells)
 	cells = cell('Skill', 15, [skill_type], cells)
 	cells = cell('Enhanced Skill', 20, [skill], cells)
-	cells = cell('Check', 14, [check], cells)
+	cells = cell('Check', 14, [check_type], cells)
 	cells = cell('Action', 15, [action], cells)
 	cells = check_cell('Action Time', 12, action_time, cells)
 	
