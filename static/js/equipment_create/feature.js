@@ -21,6 +21,7 @@ function feature_submit() {
 	const equip_id = document.getElementById('equip_id').value;
 	const name = text('feature_name')
 	const description = text('feature_description')
+	const feature = select('feature_feature');
 
 	const errors = 'feature-err';
 	const err_line = 'feature-err-line';
@@ -33,7 +34,8 @@ function feature_submit() {
 			'created': created,
 			'font': font,
 			'name': name,
-			'description': description
+			'description': description,
+			'feature': feature
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

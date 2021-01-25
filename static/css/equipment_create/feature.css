@@ -10,7 +10,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 20% 80%;
+	grid-template-columns: 30% 70%;
 	grid-template-areas: "name-title des-title"
 						"name des"
 						"btn des";

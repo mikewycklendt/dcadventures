@@ -29,11 +29,24 @@
 		</div>
 
 		<div id="feature-btn">
+			<select class="select-entry" id="feature_feature" name="feature_feature" onchange="feature_feature()">
+				<option value="">Feature</option>
+				{% for f in features %}
+					<option value={{f.id}}>{{f.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="feature-button-row">
+		<div></div>
+
+		<div>
 			<div class="btn-entry" id="feature_submit" name="feature_submit" onclick="feature_submit()">
 				Add
 		   </div>
 		</div>
-
 	</div>
 
 </div>

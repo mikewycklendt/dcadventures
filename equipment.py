@@ -1018,12 +1018,15 @@ def equipment_post_feature():
 	font = request.get_json()['font']
 	name = request.get_json()['name']
 	description = request.get_json()['description']
+	feature = request.get_json()['feature']
 
 	equip_id = db_integer(equip_id)
+	feature = db_integer(feature)
 
 	entry = Feature(equip_id = equip_id,
 					name = name,
-					description = description)
+					description = description,
+					feature = feature)
 
 	db.session.add(entry)
 	db.session.commit()
