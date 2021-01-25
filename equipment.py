@@ -1215,7 +1215,6 @@ def equipment_post_modifiers():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
-	benefit = request.get_json()['benefit']
 	bonus = request.get_json()['bonus']
 	bonus_type = request.get_json()['bonus_type']
 	penalty = request.get_json()['penalty']
