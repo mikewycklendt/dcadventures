@@ -38,7 +38,7 @@ def equip_save_errors(data):
 	errors = required(description, 'Description', errors)
 	errors = required(type_id, 'Equipment Type', errors)
 	errors = required(cost, 'Cost', errors)
-	if toughness != '6':
+	if type_id != '6':
 		errors = required(toughness, 'Toughness', errors)
 
 	errors = check_fields(move, 'Movement Effect', [speed_mod, direction], errors)
