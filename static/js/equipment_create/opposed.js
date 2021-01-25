@@ -31,7 +31,7 @@ function opposed_submit() {
 	const dc = select("opposed_dc");
 	const skill_type = select("opposed_skill_type");
 	const skill = select("opposed_skill");
-	const check = select ("opposed_check");
+	const check = select ("opposed_check_type");
 	const when = select("opposed_when");
 	const condition1 = select("opposed_condition1");
 	const condition2 = select("opposed_condition2");
