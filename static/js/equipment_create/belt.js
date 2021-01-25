@@ -109,8 +109,7 @@ function belt_submit() {
 		if (jsonResponse.success) {
 			
 			const total_cost = jsonResponse.total_cost;
-			console.log('total cost')
-			console.log(total_cost)
+			belt_cost.style.opacity = '100%';
 			belt_cost.innerHTML = total_cost;
 			cost.value = total_cost;
 
