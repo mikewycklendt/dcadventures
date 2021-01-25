@@ -633,7 +633,7 @@ def equipment_post_belt():
 	total_cost = 0
 	total_cost_query =  db.session.query(EquipBelt).filter_by(equip_id=equip_id).all()
 	for c in total_cost_query:
-		total_cost += total_cost_query.cost
+		total_cost += c.cost
 
 	body['total_cost'] = total_cost
 
