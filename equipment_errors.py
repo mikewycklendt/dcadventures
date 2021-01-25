@@ -9,6 +9,28 @@ db = SQLAlchemy()
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either
 
 
+def equip_save_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	equip_id = data['equip_id']
+	type_id = data['type_id']
+	cost = data['cost']
+	description = data['description']
+	toughness = data['toughness']
+	expertise = data['expertise']
+	alternate = data['alternate']
+	move = data['move']
+	speed_mod = data['speed_mod']
+	direction = data['direction']
+	locks = data['locks']
+	lock_type = data['lock_type']
+	mod_multiple = data['mod_multiple']
+	mod_multiple_count = data['mod_multiple_count']
+
+
+	return (errors)
+
 def equip_belt_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
@@ -87,9 +109,8 @@ def equip_damaged_post_errors(data):
 	
 	errors = int_check(toughness, 'Toughness', errors)
 
-	
 	errors = of([damage, skill_type, skill, toughness, penalty], 'You must set ar least one rule for the damaged effect.', errors)
-	errors = together('a Feature', [toughness], errors)
+	errors = together_names('a Feature', ['Toughness'], [toughness], errors)
 
 
 	return (errors)

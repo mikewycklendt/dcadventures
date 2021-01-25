@@ -158,7 +158,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	move = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}]
 
-	locks = [{'type': '', 'name': 'Opens Locks'}, {'type': 'keys', 'name': 'Keys'}, {'type': 'electric', 'name': 'Electronic'}, {'type': 'both', 'name': 'Both'}]
+	locks = [{'type': '', 'name': 'Lock Type'}, {'type': 'keys', 'name': 'Keys'}, {'type': 'electric', 'name': 'Electronic'}, {'type': 'both', 'name': 'Both'}]
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
@@ -497,9 +497,42 @@ def save_equipment():
 		return jsonify(body)
 
 	equip_id = request.get_json()['equip_id']
+	type_id = request.get_json()['type_id']
+	cost = request.get_json()['cost']
+	description = request.get_json()['description']
+	toughness = request.get_json()['toughness']
+	expertise = request.get_json()['expertise']
+	alternate = request.get_json()['alternate']
+	move = request.get_json()['move']
+	speed_mod = request.get_json()['speed_mod']
+	direction = request.get_json()['direction']
+	locks = request.get_json()['locks']
+	lock_type = request.get_json()['lock_type']
+	mod_multiple = request.get_json()['mod_multiple']
+	mod_multiple_count = request.get_json()['mod_multiple_count']
+
+	type_id = db_integer(type_id)
+	cost = integer(cost)
+	toughness = integer(toughness)
+	expertise = db_integer(expertise)
+	speed_mod = integer(speed_mod)
+	mod_multiple_count = integer(mod_multiple_count)
 
 	entry = db.session.query(Equipment).filter(Equipment.id == equip_id).one()
 
+	entry.type_id = type_id
+	entry.cost = cost
+	entry.description = description
+	entry.toughness = toughness
+	entry.expertise = expertise
+	entry.alternate = alternate
+	entry.move = move
+	entry.speed_mod = speed_mod
+	entry.direction = direction
+	entry.locks = locks
+	entry.lock_type = lock_type
+	entry.mod_multiple = mod_multiple
+	entry.mod_multiple_count = mod_multiple_count
 
 	db.session.commit()
 
@@ -801,6 +834,11 @@ def equipment_post_damaged():
 	skill_type = db_integer(skill_type)
 	skill = db_integer(skill)
 	toughness = integer(toughness)
+
+	if feature is not None:
+		try:
+			f = db.session.query(Feature).filter_by(id=feature).one()
+			f.toughness = toughness
 
 	entry = EquipDamage(equip_id = equip_id,
 						effect = effect,

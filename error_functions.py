@@ -400,20 +400,18 @@ def together_names(name, names, values, errors):
 			if value == '':
 				error = True
 
-	all_names = names[0]
-	last_name = len(names) - 1
-
-	if len(names) > 2:
-		for i in range(1, len(names) - 1, 1):
-			all_names += ', ' + names[i]
-
-	all_names += names[last_name]
+	all_names = ''
 
 	if error:
-		message = 'If this effect requires ' + name + ' the'
+		message = 'If this effect requires ' + name + ' the '
 		for n in names:
-			message += ' ' + n
-		message += ' fields must be complete.'
+			if all_names = '':
+				all_names = n
+				end_message = n + ' field is required'
+			else:
+				all_names += ' and ' + n
+				end_message += all_names + ' fields must be complete.'
+		message += end_message
 		error_msgs.append(message)
 
 
@@ -940,6 +938,29 @@ def adv_check_multiple_fields(name, table, fields, id, errors):
 
 	return (errors)
 
+def equip_check_multiple_fields(name, table, fields, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	entry = db.session.query(table).filter_by(equip_id=id).first()
+
+	if entry is not None:
+		count = db.session.query(table).filter_by(equip_id=id).count()
+		if count > 1:
+			for field in fields:
+				if field == '':
+					error = True
+					message = 'You created a ' + name + ' rule that has more than one entry but you did not make a selection for one of the multiple value fields.  Go bavk and make that selection before you can proceed.'
+									
+
+	if error:
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 def adv_select_entry(value, option, fieldname, rule, field, table, advantage_id, errors, multiple=False):
 
 	error_msgs = errors['error_msgs']
@@ -979,6 +1000,30 @@ def name_exist(name, table, value, errors):
 		error = True
 		messqge = 'There is already a ' + name + ' with that name.'
 		error_msgs.append(messqge)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def feature_check(equip_id, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	equip_id = int(equip_id)
+
+	damages = db.session.query(EquipDamage).filter_by(equip_id=equip_id).all()
+
+	for d in damages:
+		if d.feature is not None:
+			feature_id = d.feature
+			try:
+				feature = db.session.query(Feature).filter_by(feature_id).one()
+				if feature.toughness is None:
+					message = 'You created a feature but did not set the toughness.  Check the damaged box, select the feature from the dropdown and set the toughness.'
+					error_msgs.append(message)
 	
 	errors['error_msgs'] = error_msgs
 	if error:

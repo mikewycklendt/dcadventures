@@ -3769,6 +3769,24 @@ class Equipment(db.Model):
 	type_id = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 	cost = db.Column(db.Integer)
 	description = db.Column(db.String())
+	toughness = db.Column(db.Integer)
+	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	alternate = db.Column(db.Boolean)
+	move = db.Column(db.Boolean)
+	speed_mod = db.Column(db.Integer)
+	direction = db.Column(db.String())
+	locks = db.Column(db.Boolean)
+	lock_type = db.Column(db.String())
+	mod_multiple = db.Column(db.String())
+	mod_multiple_count = db.Column(db.Integer)
+	check = db.Column(db.Boolean)
+	damaged = db.Column(db.Boolean)
+	descriptor = db.Column(db.Boolean)
+	feature = db.Column(db.Boolean)
+	limits = db.Column(db.Boolean)
+	modifiers = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+
 
 	def format(self):
 		return {
@@ -3776,7 +3794,24 @@ class Equipment(db.Model):
 			'name': self.name,
 			'type_id': self.type_id,
 			'cost': self.cost,
-			'description': self.description
+			'description': self.description,
+			'toughness': self.toughness,
+			'expertise': self.expertise,
+			'alternate': self.alternate,
+			'move': self.move,
+			'speed_mod': self.speed_mod,
+			'direction': self.direction,
+			'locks': self.locks,
+			'lock_type': self.lock_type,
+			'mod_multiple': self.mod_multiple,
+			'mod_multiple_count': self.mod_multiple_count,
+			'check': self.check,
+			'damaged': self.damaged,
+			'descriptor': self.descriptor,
+			'feature': self.feature,
+			'limits': self.limits,
+			'modifiers': self.modifiers,
+			'opposed': self.opposed
 		}
 
 class Feature(db.Model):

@@ -100,6 +100,24 @@ equip_save = function() {
 
 	const equip_id = document.getElementById('equip_id').value;
 
+	const description = text("description");
+	const type_id = select("equip_type");
+	let cost = select("cost");
+	const toughness = select("toughness");
+	const expertise = select("expertise");
+	const alternate = check("alternate");
+	const move = check("move");
+	const speed_mod = select("speed_mod");
+	const direction = select("direction");
+	const locks = check("locks");
+	const lock_type = select("lock_type");
+	const mod_multiple = select("modifiers_multiple");
+	const mod_multiple_count = select("modifiers_multiple_count");
+	const belt_cost = document.getElementById('belt_cost').value;
+
+	if (type == '6')  {
+		cost = belt_cost;
+	}
 
 	const errors = 'equip-err';
 	const err_line = 'equip-err-line';
@@ -108,7 +126,19 @@ equip_save = function() {
 		method: 'POST',
 		body: JSON.stringify({
 			'equip_id': equip_id,
-			
+			'type_id': type_id,
+			'cost': cost,
+			'description': description,
+			'toughness': toughness,
+			'expertise': expertise,
+			'alternate': alternate,
+			'move': move,
+			'speed_mod': speed_mod,
+			'direction': direction,
+			'locks': locks,
+			'lock_type': lock_type,
+			'mod_multiple': mod_multiple,
+			'mod_multiple_count': mod_multiple_count
 		}),
 		headers: {
 		'Content-Type': 'application/json',
