@@ -190,6 +190,7 @@ def equip_limits_post_errors(data):
 	area_units = id_check(Unit, area_units, 'Area Unit Type', errors)
 	light = id_check(Light, light, 'Light Type', errors)
 
+	print(capacity)
 
 	time = int_check(time, 'Time Value', errors)
 	range = int_check(range, 'Range Value', errors)
