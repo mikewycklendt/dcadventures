@@ -1059,7 +1059,8 @@ def feature_check(equip_id, errors):
 				message = 'The feature selected for the Damaged rule is invalid.  You may have deleted that feature.  Delete that damaged rule.'
 			message = ''
 			if feature.toughness is None:
-				message = 'You created a feature but did not set the toughness.  Check the damaged box, select the feature from the dropdown and set the toughness.'
+				error = True
+				message = 'You created the feature ' + feature.name ' but did not set the toughness.  Check the damaged box, select the feature from the dropdown and set the toughness.'
 				error_msgs.append(message)
 	
 	errors['error_msgs'] = error_msgs

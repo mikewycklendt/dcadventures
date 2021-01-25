@@ -166,8 +166,10 @@ def equip_feature_post(entry, body, cells):
 
 	feature = name(Feature, feature)
 
-	cells = cell('Feature', 20, [feature])
-	cells = cell('New Feature', 20, [feature_name], cells)
+	if feature_name == '':
+		cells = cell('Feature', 20, [feature])
+	else:
+		cells = cell('Feature', 20, [feature_name], cells)
 	cells = cell('Description', 60, [description], cells)
 
 	body = send(cells, body)
