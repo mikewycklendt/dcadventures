@@ -518,12 +518,17 @@ def save_equipment():
 	modifiers = request.get_json()['modifiers']
 	opposed = request.get_json()['opposed']
 
+	equip_id = integer(equip_id)
 	type_id = db_integer(type_id)
 	cost = integer(cost)
 	toughness = integer(toughness)
 	expertise = db_integer(expertise)
 	speed_mod = integer(speed_mod)
 	mod_multiple_count = integer(mod_multiple_count)
+
+	if feature:
+		features = db.session.query(Feature).filter_by(equip_id = equip_id).count()
+		cost += features
 
 	entry = db.session.query(Equipment).filter(Equipment.id == equip_id).one()
 

@@ -49,8 +49,10 @@ function feature_submit() {
 			const id = jsonResponse.id;
 			const selects = ['feature-entry']
 
-			selects_add(id, name, 'feature-entry');
-
+			if (name != '') {
+				selects_add(id, name, 'feature-entry');	
+			}
+			
 			feature_grid.columns.length = 0;
 			feature_grid.columns = jsonResponse.rows;
 
