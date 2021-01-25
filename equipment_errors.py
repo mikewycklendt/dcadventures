@@ -199,6 +199,10 @@ def equip_limits_post_errors(data):
 	area_wide = int_check(area_wide, 'Area Wide Value', errors)
 	uses = int_check(uses, 'Uses Value', errors)
 
+	print('\n\n')
+	print(capacity)
+	print('\n')
+
 	errors = together('Duration', [time, time_units], errors)
 	errors = together('Range', [range, range_units], errors)
 	errors = together('Time Capacity', [time_capacity, time_capacity_units], errors)
