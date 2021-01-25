@@ -75,7 +75,7 @@ function limits_submit() {
 			'uses': uses,
 			'light': light,
 			'internet': internet,
-			'needs_interneT': needs_internet
+			'needs_internet': needs_internet
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
