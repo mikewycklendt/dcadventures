@@ -820,6 +820,8 @@ def equipment_post_damaged():
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
+	write = True
+	error_msgs = []
 
 	errors = equip_damaged_post_errors(data)
 
@@ -853,7 +855,10 @@ def equipment_post_damaged():
 		try:
 			f = db.session.query(Feature).filter_by(id=feature).one()
 			f.toughness = toughness
-
+		except:
+			write = False
+			error_msgs.append('The feature you selected for this rule is invalid.  You may have deleted it.')
+		
 	entry = EquipDamage(equip_id = equip_id,
 						effect = effect,
 						feature = feature,
