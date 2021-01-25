@@ -20,3 +20,17 @@ function equip_type() {
 	select_opacity_reverse(select, options);
 	select_entry_nocheck(base, entry, select, value)
 }
+
+function move() {
+	const check = 'move';
+	const div = 'base-move';
+
+	check_opacity(check, div);
+}
+
+function locks() {
+	const check = 'locks';
+	const div = 'base-locks';
+
+	check_opacity(check, div);
+}

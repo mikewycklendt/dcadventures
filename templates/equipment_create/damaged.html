@@ -12,7 +12,7 @@
 		</div>
 		
 		<div>
-			<select class="feature-entry" id="damaged_feature" name="damaged_feature">
+			<select class="feature-entry" id="damaged_feature" name="damaged_feature" onchange="damaged_feature()">
 				<option value="">Feature</option>
 			</select>
 		</div>
@@ -61,15 +61,6 @@
 	</div>
 
 	<div id="damaged-button-row">
-		
-		<div>
-			<select class="select-entry" id="damaged_toughness" name="toughness">
-				<option value="">Toughness</option>
-				{% for i in positives %}
-					<option value="{{i}}">{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
 
 		<div>
 			<select class="select-entry" id="damaged_penalty" name="damaged_penalty">
@@ -78,6 +69,18 @@
 				{% endfor %}
 			</select>
 		</div>
+		
+		<div>
+			<div id="damaged-toughness">
+				<select class="select-entry" id="damaged_toughness" name=damaged_toughness>
+					<option value="">Toughness</option>
+					{% for i in positives %}
+						<option value="{{i}}">{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 
 		<div>
 		</div>

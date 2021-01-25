@@ -154,13 +154,17 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	belt = [{'type': '', 'name': 'Add Item'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'feature', 'name': 'Feature'}]
 
+	move = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}]
+
+	locks = [{'type': '', 'name': 'Opens Locks'}, {'type': 'keys', 'name': 'Keys'}, {'type': 'electric', 'name': 'Electronic'}, {'type': 'both', 'name': 'Both'}]
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,
 							consequences=consequences, creatures=creatures, emotions=emotions, conflicts=conflicts, professions=professions, modifier_type=modifier_type, modifier_effect=modifier_effect,
-							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features, belt=belt)
+							modifier_trigger=modifier_trigger, multiple=multiple, traits=traits, actions=actions, origins=origins, sources=sources, mediums=mediums, weapon_cat=weapon_cat, features=features, belt=belt,
+							move=move)
 
 
 @equip.route('/equipment/skill/select', methods=['POST'])

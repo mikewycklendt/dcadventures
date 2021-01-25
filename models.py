@@ -3786,6 +3786,7 @@ class Feature(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
+	toughness = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -3793,7 +3794,8 @@ class Feature(db.Model):
 			'equip_id': self.equip_id,
 			'name': self.name,
 			'description': self.description,
-			'feature': self.feature
+			'feature': self.feature,
+			'toughness': self.toughness
 		}
 
 class EquipEffect(db.Model):

@@ -7,6 +7,13 @@ function damaged_check() {
 	entry_check(check, title, base, entry);
 }
 
+function damaged_feature() {
+	const select = 'damaged_feature';
+	const div = 'damaged-toughness';
+
+	select_opacity_any(select, div);
+}
+
 function damaged_skill_type() {
 	const select = 'damaged_skill_type';
 	const fill = 'damaged_skill';
