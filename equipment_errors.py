@@ -146,7 +146,9 @@ def equip_feature_post_errors(data):
 	errors = of([feature, name], 'You must create a new feature or select an existing one.', errors)
 	errors = either([feature, name], 'You must add a new feature and and existing feature seperately.', errors)
 	errors = dependent('New Feature', name, [description], errors)
-	errors = name_exist('Feature', Feature, name, errors)
+
+	if name != '':
+		errors = name_exist('Feature', Feature, name, errors)
 
 	return (errors)
 
