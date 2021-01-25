@@ -89,6 +89,8 @@ def equip_damaged_post_errors(data):
 	toughness = int_check(toughness, 'Toughness', errors)
 	
 
+	errors = together('a Feature', [toughness], errors)
+
 
 	return (errors)
 
@@ -149,7 +151,7 @@ def equip_feature_post_errors(data):
 def equip_limits_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
-	
+
 	equip_id = data['equip_id']
 	columns = data['columns']
 	created = data['created']
@@ -196,8 +198,6 @@ def equip_limits_post_errors(data):
 	area_long = int_check(area_long, 'Area Long Value', errors)
 	area_wide = int_check(area_wide, 'Area Wide Value', errors)
 	uses = int_check(uses, 'Uses Value', errors)
-
-	errors = together('a Feature', [toughness], errors)
 
 
 
