@@ -1105,7 +1105,7 @@ def equipment_post_limits():
 	uses = request.get_json()['uses']
 	light = request.get_json()['light']
 	internet = request.get_json()['internet']
-	needs_interneT = request.get_json()['needs_internet']
+	needs_internet = request.get_json()['needs_internet']
 
 	
 	equip_id = db_integer(equip_id)
