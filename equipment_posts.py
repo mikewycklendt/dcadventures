@@ -435,6 +435,7 @@ def equip_opposed_post(entry, body, cells):
 	cells = cell('Check', 14, [check], cells)
 	cells = cell('Required Condition', 18, [condition1], cells)
 	cells = cell('Result Condition', 18, [condition2], cells)
+	cells = cell('When', 11, [when], cells)
 	
 	body = send(cells, body)
 	
