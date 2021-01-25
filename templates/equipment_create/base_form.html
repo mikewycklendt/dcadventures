@@ -97,30 +97,32 @@
 		</div>
 
 		<div class="base-check-wide">
-			<input type="checkbox" id="move" class="regular-checkbox big-checkbox" onclick="move()">	
-		</div>
-
-		<div class="base-fade base-split" id="base-move">
 			<div>
-				<select class="base-select" id="speed_mod" name="speed_mod">
-					<option value="">Speed Modifier</option>
-					{% for i in negatives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
+				<input type="checkbox" id="move" class="regular-checkbox big-checkbox" onclick="move()">	
+			</div>
+
+			<div class="base-fade base-split" id="base-move">
+				<div>
+					<select class="base-select" id="speed_mod" name="speed_mod">
+						<option value="">Speed Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						</select>
+				</div>
+
+				<div>
+					<select class="base-select" id="direction" name="direction">
+						{% for m in move %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
 					</select>
-			</div>
+				</div>
 
-			<div>
-				<select class="base-select" id="direction" name="direction">
-					{% for m in move %}
-						<option value="{{m.type}}">{{m.name}}</option>
-					{% endfor %}
-				</select>
 			</div>
-
 		</div>
 	</div>
 
@@ -130,19 +132,21 @@
 		</div>
 
 		<div class="base-check-wide">
-			<input type="checkbox" id="locks" class="regular-checkbox big-checkbox" onclick="locks()">	
-		</div>
-
-		<div class="base-fade base-split" id="base-locks">
-
 			<div>
-				<select class="base-select" id="lock_type" name="lock_type">
-					{% for l in locks %}
-						<option value="{{l.type}}">{{l.name}}</option>
-					{% endfor %}
-				</select>
+				<input type="checkbox" id="locks" class="regular-checkbox big-checkbox" onclick="locks()">	
 			</div>
 
+			<div class="base-fade base-split" id="base-locks">
+
+				<div>
+					<select class="base-select" id="lock_type" name="lock_type">
+						{% for l in locks %}
+							<option value="{{l.type}}">{{l.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
 		</div>
 	</div>
 
