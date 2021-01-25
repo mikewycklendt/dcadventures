@@ -340,7 +340,7 @@ def equip_modifiers_post(entry, body, cells):
 
 	cells = cell('Feature', 11, [feature])
 	cells = cell('Effect', 11, [effect], cells)
-	cells = cell('Bonus', 12, [bonus], cells)
+	cells = cell('Bonus', 8, [bonus], cells)
 	cells = cell('Type', 8, [bonus_type], cells)
 	vcells = vcell('effect', 15, ['Effect Modifier'])
 	vcells = vcell('attack', 12, ['Attack Bonus'], vcells)
@@ -355,7 +355,7 @@ def equip_modifiers_post(entry, body, cells):
 	cells = check_cell('Active', 8, bonus_active_defense, cells)
 	cells = check_cell('Only Active', 11, bonus_conflict_defend, cells)
 	
-	cells = cell('Penalty', 12, [penalty], cells)
+	cells = cell('Penalty', 8, [penalty], cells)
 	cells = cell('Type', 8, [penalty_type], cells)
 	
 	vcells = vcell('effect', 15, ['Effect Modifier'])

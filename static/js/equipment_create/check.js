@@ -7,6 +7,13 @@ function check_check() {
 	entry_check(check, title, base, entry);
 }
 
+function check_skill_type() {
+	const select = 'check_skill_type';
+	const fill = 'check_skill';
+
+	skill_select(select, fill);
+}
+
 let check_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
