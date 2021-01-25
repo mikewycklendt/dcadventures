@@ -1044,6 +1044,8 @@ def feature_check(equip_id, errors):
 	if features is None:
 		return (errors)
 
+	features = db.session.query(Feature).filter_by(equip_id=equip_id).all()
+
 	for f in features:
 		if name != '':
 			if f.toughness is None:
