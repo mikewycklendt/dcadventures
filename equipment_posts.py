@@ -160,14 +160,14 @@ def equip_effect_post(entry, body, cells):
 def equip_feature_post(entry, body, cells):
 
 	equip_id = entry.equip_id
-	name = entry.name
+	feature_name = entry.name
 	description = entry.description
 	feature = entry.feature
 
 	feature = name(Feature, feature)
 
 	cells = cell('Feature', 20, [feature])
-	cells = cell('New Feature', 20, [name], cells)
+	cells = cell('New Feature', 20, [feature_name], cells)
 	cells = cell('Description', 80, [description], cells)
 
 	body = send(cells, body)
