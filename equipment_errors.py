@@ -148,6 +148,8 @@ def equip_feature_post_errors(data):
 
 def equip_limits_post_errors(data):
 
+	errors = {'error': False, 'error_msgs': []}
+	
 	equip_id = data['equip_id']
 	columns = data['columns']
 	created = data['created']
