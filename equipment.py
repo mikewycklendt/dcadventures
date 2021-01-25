@@ -657,7 +657,7 @@ def delete_equipment_belt(equipment_id):
 		else:
 			cost_query = db.session.query(EquipBelt).filter_by(equip_id=equipment_id).all()
 			for c in cost_query:
-				total_cost += cost_query.cost
+				total_cost += c.cost
 	except:
 		db.session.rollback()
 	finally:
