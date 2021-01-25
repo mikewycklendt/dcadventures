@@ -35,7 +35,7 @@ def equip_save_errors(data):
 	modifiers = data['modifiers']
 	opposed = data['opposed']
 
-	errors = required(description. 'Description', errors)
+	errors = required(description, 'Description', errors)
 	errors = required(type_id, 'Equipment Type', errors)
 	errors = required(cost, 'Cost', errors)
 	errors = required(toughness, 'Toughness', errors)
