@@ -647,15 +647,20 @@ def equipment_post_belt():
 @equip.route('/equipment/belt/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_belt(equipment_id):
 	try:
+		
+		get_id = db.session.query(EquipBelt).filter_by(id=equipment_id).one()
+		equip_id = get_id.equip_id
+
 		db.session.query(EquipBelt).filter_by(id=equipment_id).delete()
 		db.session.commit()
 
+
 		total_cost = 0
-		cost_query = db.session.query(EquipBelt).filter_by(equip_id=equipment_id).first()
+		cost_query = db.session.query(EquipBelt).filter_by(equip_id=equip_id).first()
 		if cost_query is None:
 			total_cost = 0
 		else:
-			cost_query = db.session.query(EquipBelt).filter_by(equip_id=equipment_id).all()
+			cost_query = db.session.query(EquipBelt).filter_by(equip_id=equip_id).all()
 			for c in cost_query:
 				total_cost += c.cost
 	except:
