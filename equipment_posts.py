@@ -31,7 +31,7 @@ def equip_belt_post(entry, body, cells):
 	vcells = vcell('weapon', 30, [weapon], vcells)
 	vcells = vcell('feature', 30, [feature], vcells)
 	cells = vcell_add('Item', belt_item_type, vcells, cells) 
-	cells - cell('Cost', 10, [cost], cells)
+	cells = cell('Cost', 10, [cost], cells)
 	body = send(cells, body)
 	
 	cells.clear()
