@@ -21,11 +21,11 @@ def equip_belt_post_errors(data):
 	weapon = data['weapon']
 	equipment = data['equipment']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
-	weapon = id_check(Weapon, weapon, 'Weapon', errors)
-	equipment = id_check(Equipment, equipment, 'Equipment', errors)
-	cost = int_check(cost, 'Cost', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Weapon, weapon, 'Weapon', errors)
+	errors = id_check(Equipment, equipment, 'Equipment', errors)
+	errors = int_check(cost, 'Cost', errors)
 
 	errors = of([feature, weapon, equipment], 'You must choose a weapon, feature or equipment to add to the belt', errors)
 
@@ -49,13 +49,13 @@ def equip_check_post_errors(data):
 	action = data['action']
 	action_time = data['action_time']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
-	skill_type = id_check(Skill, skill_type, 'Skill', errors)
-	skill = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
-	check_type = id_check(Check, check_type, 'Check', errors)
-	action = id_check(Action, action, 'Action', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Skill, skill_type, 'Skill', errors)
+	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
+	errors = id_check(Check, check_type, 'Check', errors)
+	errors = id_check(Action, action, 'Action', errors)
 
 	errors = required(when, 'When', errors)
 	errors = required(check_type, 'Check Type', errors)
@@ -79,12 +79,12 @@ def equip_damaged_post_errors(data):
 	toughness = data['toughness']
 	penalty = data['penalty']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
-	damage = id_check(Descriptor, damage, 'Damage Type', errors)
-	skill_type = id_check(Skill, skill_type, 'Skill', errors)
-	skill = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Descriptor, damage, 'Damage Type', errors)
+	errors = id_check(Skill, skill_type, 'Skill', errors)
+	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
 	
 	toughness = int_check(toughness, 'Toughness', errors)
 	
@@ -106,10 +106,10 @@ def equip_descriptor_post_errors(data):
 	feature = data['feature']
 	descriptor = data['descriptor']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
-	descriptor = id_check(Descriptor, descriptor, 'Descriptor', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Descriptor, descriptor, 'Descriptor', errors)
 
 	errors = required(descriptor, 'Descriptor', errors)
 
@@ -125,7 +125,7 @@ def equip_effect_post_errors(data):
 	name = data['name']
 	description = data['description']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
 	errors = required(name, 'Name', errors)
 	description = required(description, 'Description', errors)
@@ -140,10 +140,10 @@ def equip_feature_post_errors(data):
 	name = data['name']
 	description = data['description']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
 	errors = required(name, 'Name', errors)
-	description = required(description, 'Description', errors)
+	errors = required(description, 'Description', errors)
 	errors = name_exist('Feature', Feature, name, errors)
 
 	return (errors)
@@ -180,28 +180,23 @@ def equip_limits_post_errors(data):
 	internet = data['internet']
 	needs_internet = data['needs_internet']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
 
-	time_units = id_check(Unit, time_units, 'Time Unit Type', errors)
-	range_units = id_check(Unit, range_units, 'Range Unit Type', errors)
-	time_capacity_units = id_check(Unit, time_capacity_units, 'Time Capacity Unit Type', errors)
-	area_units = id_check(Unit, area_units, 'Area Unit Type', errors)
-	light = id_check(Light, light, 'Light Type', errors)
+	errors = id_check(Unit, time_units, 'Time Unit Type', errors)
+	errors = id_check(Unit, range_units, 'Range Unit Type', errors)
+	errors = id_check(Unit, time_capacity_units, 'Time Capacity Unit Type', errors)
+	errors = id_check(Unit, area_units, 'Area Unit Type', errors)
+	errors = id_check(Light, light, 'Light Type', errors)
 
-	print(capacity)
-
-	time = int_check(time, 'Time Value', errors)
-	range = int_check(range, 'Range Value', errors)
-	time_capacity = int_check(time_capacity, 'Time Capacity Value', errors)
-	area_long = int_check(area_long, 'Area Long Value', errors)
-	area_wide = int_check(area_wide, 'Area Wide Value', errors)
-	uses = int_check(uses, 'Uses Value', errors)
-
-	print('\n\n')
-	print(capacity)
-	print('\n')
+	errors = int_check(time, 'Time Value', errors)
+	errors = int_check(range, 'Range Value', errors)
+	errors = int_check(time_capacity, 'Time Capacity Value', errors)
+	errors = int_check(capacity, 'Capacity Value', errors)
+	errors = int_check(area_long, 'Area Long Value', errors)
+	errors = int_check(area_wide, 'Area Wide Value', errors)
+	errors = int_check(uses, 'Uses Value', errors)
 
 	errors = together('Duration', [time, time_units], errors)
 	errors = together('Range', [range, range_units], errors)
@@ -366,15 +361,15 @@ def equip_opposed_post_errors(data):
 	condition1 = data['condition1']
 	condition2 = data['condition2']
 
-	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
-	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)
-	feature = id_check(Feature, feature, 'Feature', errors)
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
+	errors = id_check(Feature, feature, 'Feature', errors)
 
-	skill_type = id_check(Skill, skill_type, 'Skill', errors)
-	skill = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
-	check = id_check(Check, check, 'Check Type', errors)
+	errors = id_check(Skill, skill_type, 'Skill', errors)
+	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
+	errors = id_check(Check, check, 'Check Type', errors)
 
-	dc = int_check(dc, 'DC Value', errors)
+	errors = int_check(dc, 'DC Value', errors)
 
 	errors = required(skill_type, 'Skill', errors)
 	errors = required(check, 'Check Type', errors)
