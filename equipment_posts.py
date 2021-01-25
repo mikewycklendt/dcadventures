@@ -25,7 +25,7 @@ def equip_belt_post(entry, body, cells):
 	weapon = name(Weapon, weapon)
 	equipment = name(Equipment, equipment)
 	
-	cost = integer_convert(cost)
+	cost = str(cost)
 
 
 	vcells = vcell('equip', 30, [equipment])
@@ -40,7 +40,7 @@ def equip_belt_post(entry, body, cells):
 	print('\n\n')
 	print(cost)
 	print('\n')
-	
+
 	return (body)
 
 def equip_check_post(entry, body, cells):
