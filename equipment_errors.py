@@ -86,9 +86,10 @@ def equip_damaged_post_errors(data):
 	errors = id_check(Skill, skill_type, 'Skill', errors)
 	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
 	
-	toughness = int_check(toughness, 'Toughness', errors)
-	
+	errors = int_check(toughness, 'Toughness', errors)
 
+	
+	errors = of([damage, skill_type, skill, toughness, penalty], 'You must set ar least one rule for the damaged effect.', errors)
 	errors = together('a Feature', [toughness], errors)
 
 
