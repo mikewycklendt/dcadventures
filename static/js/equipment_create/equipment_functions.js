@@ -1554,7 +1554,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
-		} else if (cell.content == true) {
+		} else if (cell.content == true && cell.content != 1 && cell.content != '1') {
 			if (cell.mod_check == true) {
 				create_mod = true;
 				const check = document.createElement('button');
