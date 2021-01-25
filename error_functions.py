@@ -534,7 +534,7 @@ def of(values, message, errors):
 	error = True
 
 	for value in values:
-		if value != '' or value == True:
+		if value != '' and value != False:
 			error = False
 
 	if error:
