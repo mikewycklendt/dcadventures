@@ -1748,8 +1748,7 @@ function row_delete(jsondata, route, object, selects=false) {
 	const entry = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
-	const table_change = document.getElementById(table_class) 
-	const belt_cost = document.getElementById("belt-cost");
+	const table_change = document.getElementById(table_class)
 	
 	const errors = table_id + '-err';
 	const err_line = table_id + '-err-line';
@@ -1772,9 +1771,13 @@ function row_delete(jsondata, route, object, selects=false) {
 
 					const cost = jsonResponse.cost;
 	
-					if (cost == true) {
+					if (cost == true) { 
+						const belt_cost = document.getElementById("belt-cost");
+						const cost_field = document.getElementById('belt_cost');
 						const total_cost = jsonResponse.total_cost;
 						belt_cost.innerHTML = total_cost;
+						cost_field.value = total_cost;
+						
 					}
 
 					clear_errors(err_line, errors)
