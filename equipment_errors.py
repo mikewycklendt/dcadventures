@@ -178,7 +178,7 @@ def equip_limits_post_errors(data):
 	uses = data['uses']
 	light = data['light']
 	internet = data['internet']
-	needs_interneT = data['needs_internet']
+	needs_internet = data['needs_internet']
 
 	equip_id = id_check(Equipment, equip_id, 'Equipment', errors)
 	effect = id_check(EquipEffect, effect, 'Alternate Effect', errors)

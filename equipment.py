@@ -1148,7 +1148,7 @@ def equipment_post_limits():
 						uses = uses,
 						light = light,
 						internet = internet,
-						needs_interneT = needs_internet)
+						needs_internet = needs_internet)
 
 	db.session.add(entry)
 	db.session.commit()
