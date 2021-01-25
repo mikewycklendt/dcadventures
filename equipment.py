@@ -616,7 +616,6 @@ def equipment_post_belt():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -717,7 +716,6 @@ def equipment_post_check():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -805,7 +803,6 @@ def equipment_post_damaged():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -883,7 +880,6 @@ def equipment_post_descriptor():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -956,7 +952,6 @@ def equipment_post_effect():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -1160,7 +1155,6 @@ def equipment_post_limits():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -1546,7 +1540,6 @@ def equipment_post_opposed():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
