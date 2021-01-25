@@ -1,0 +1,108 @@
+<div class="weapon-container" style="justify-content: center; background:url(/static/img/bg/aquaman.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="weapon-grid">
+		
+		<br>
+
+		<div id="box-title">
+			<img src="/static/img/title/create_weapon.png" width="100%">
+		</div>
+
+
+		<br><br>
+		
+
+		<div id="addweapongrid">
+
+			<div id="add-weapon">
+
+				<div id="addweaponunderline">
+					Weapon Name
+				</div>
+
+				<div id="addweaponform">
+					<div id="nameweapon">
+						<input type="text" id="weapon_name" placeholder="Weapon Name">
+					</div>
+						
+					<div id="namebutton">
+						<div class="btn" id="weapon_create" onclick="weapon_create()" >
+							 Create Weapon
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div id="weapon-name-grid">
+
+				<div id="weapon-name">
+
+				</div>
+
+				<div id="weapon-edit">
+					<div id="edit-button" style="display: none;">
+						<button  style="font-size: 260%;" onclick="edit_form()"><i class="fa fa-edit"></i></button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="weapon-edit-grid" style="display: none;">
+				<div id="weapon-edit-field">
+					<input type="text" id="weapon_name_edit">
+				</div>
+
+				<div id="weapon-edit-btn">
+					<div class="edit-btn" id="weapon_edit" onclick="weapon_edit()">
+						Save
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
+		
+			</div>
+			
+		</div>
+
+		<br>
+
+		<span>
+
+		<div id="all-fields">
+			
+			<div id="base-form">
+				{% include weapon_includes.base_form %}
+			</div>
+
+
+			<br>
+
+			
+
+		<br>
+
+		<div id="weapon-err"></div>
+
+		<br><br>
+
+		<div id="save-div">
+			<div class="save-btn" onclick="weapon_save()"> Save Weapon</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+
+		</span>
+		
+	</div>
+	
+</div>
+
+	<script src="/static/js/weapon_create/weapon_functions.js"></script>
+	<script src="/static/js/weapon_create/weapon_create.js"></script>
+	<script src="/static/js/weapon_create/base_form.js"></script>
+	
+	<input type="hidden" id="weapon_id" name="weapon_id" value=>
