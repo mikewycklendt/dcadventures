@@ -457,7 +457,8 @@ def post_equipment():
 	if equipment is not None:
 		error = True
 		body['success'] = False
-		error_msgs.append('There is already an item of equipment with that name')
+		message = 'There is already an item of equipment with that name'
+		error_msgs.append(message)
 		body['error'] = error_msgs
 
 	if error:
