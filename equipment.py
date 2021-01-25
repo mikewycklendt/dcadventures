@@ -631,7 +631,7 @@ def equipment_post_belt():
 	body['font'] = font
 
 	total_cost = 0
-	total_cost_query =  db.session.query(EquipBelt).filter_by(id=equip_id).all()
+	total_cost_query =  db.session.query(EquipBelt).filter_by(equip_id=equip_id).all()
 	for c in total_cost_query:
 		total_cost += total_cost_query.cost
 
@@ -651,11 +651,11 @@ def delete_equipment_belt(equipment_id):
 		db.session.commit()
 
 		total_cost = 0
-		cost_query = db.session.query(EquipBelt).filter_by(id=equipment_id).first()
+		cost_query = db.session.query(EquipBelt).filter_by(equip_id=equipment_id).first()
 		if cost_query is None:
 			total_cost = 0
 		else:
-			cost_query = db.session.query(EquipBelt).filter_by(id=equipment_id).all()
+			cost_query = db.session.query(EquipBelt).filter_by(equip_id=equipment_id).all()
 			for c in cost_query:
 				total_cost += cost_query.cost
 	except:
