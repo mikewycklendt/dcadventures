@@ -554,7 +554,7 @@ def save_equipment():
 	entry.modifiers = modifiers
 	entry.opposed = opposed
 
-	entry.db.session.commit()
+	db.session.commit()
 
 	body['success'] = True
 			
