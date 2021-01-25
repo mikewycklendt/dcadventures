@@ -45,7 +45,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	weapon_cat = WeaponCat.query.all()
 
-	features = db.session.query(Feature).order_by(Feature.name).all()
+	features = db.session.query(Feature).filter(Feature.name != None).order_by(Feature.name).all()
 
 	skills = Skill.query.all()
 
@@ -1022,6 +1022,10 @@ def equipment_post_feature():
 
 	equip_id = db_integer(equip_id)
 	feature = db_integer(feature)
+
+	if feature is not None:
+		old_feature = db.session.query(Feature).filter_by(id=feature).one()
+		description = old_feature.description
 
 	entry = Feature(equip_id = equip_id,
 					name = name,
