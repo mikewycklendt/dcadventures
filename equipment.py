@@ -47,7 +47,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	old_feature = ''
 
-	features = db.session.query(Feature).filter_by(name != old_feature).order_by(Feature.name).all()
+	features = db.session.query(Feature).filter(Feature.name != old_feature).order_by(Feature.name).all()
 
 	skills = Skill.query.all()
 
