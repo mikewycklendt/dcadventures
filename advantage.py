@@ -331,7 +331,7 @@ def post_advantage():
 		error = True
 		body['success'] = False
 		error_msgs.append('There is already an advantage with that name')
-		body['error'] = error_msgs
+		body['error_msgs'] = error_msgs
 
 	if error:
 		return jsonify(body)

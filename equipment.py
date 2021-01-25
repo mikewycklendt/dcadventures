@@ -459,7 +459,7 @@ def post_equipment():
 		body['success'] = False
 		message = 'There is already an item of equipment with that name'
 		error_msgs.append(message)
-		body['error'] = error_msgs
+		body['error_msgs'] = error_msgs
 
 	if error:
 		return jsonify(body)
