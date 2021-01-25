@@ -1261,7 +1261,7 @@ def equipment_post_modifiers():
 	multiple_count = request.get_json()['multiple_count']
 	lasts = request.get_json()['lasts']
 	skill = request.get_json()['skill']
-	light = request.get_json()['lighht']
+	light = request.get_json()['light']
 
 	error = errors['error']
 
