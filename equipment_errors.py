@@ -6,7 +6,7 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either
 
 
 def equip_belt_post_errors(data):
@@ -139,11 +139,13 @@ def equip_feature_post_errors(data):
 	equip_id = data['equip_id']
 	name = data['name']
 	description = data['description']
+	feature = data['feature']
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
-	errors = required(name, 'Name', errors)
-	errors = required(description, 'Description', errors)
+	errors = of([feature, name], 'You must create a new feature or select an existing one.', errors)
+	errors = either([feature, name], 'You must add a new feature and and existing feature seperately.', errors)
+	errors = dependent('New Feature', name, [description], errors)
 	errors = name_exist('Feature', Feature, name, errors)
 
 	return (errors)

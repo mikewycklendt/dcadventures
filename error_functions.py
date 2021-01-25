@@ -333,6 +333,30 @@ def together(name, values, errors):
 		errors['error'] = error
 
 	return (errors)
+	
+def dependent(name, value, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	check = False
+
+	if value == '':
+		return (errors)
+
+	for value in values:
+		if value == '':
+			error = True
+				
+	if error:
+		message = 'All  required ' + name + ' fields must be complete.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def check_together_var(check, checkname, message, values, errors):
 
@@ -536,6 +560,26 @@ def of(values, message, errors):
 	for value in values:
 		if value != '' and value != False:
 			error = False
+
+	if error:
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def either(values, message, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+	together = False
+
+	for value in values:
+		if together == True and value != '':
+			error = True
+		if value != '':
+			together = True
 
 	if error:
 		error_msgs.append(message)

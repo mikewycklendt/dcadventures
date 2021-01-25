@@ -162,8 +162,12 @@ def equip_feature_post(entry, body, cells):
 	equip_id = entry.equip_id
 	name = entry.name
 	description = entry.description
+	feature = entry.feature
 
-	cells = cell('Name', 20, [name])
+	feature = name(Feature, feature)
+
+	cells = cell('Feature', 20, [feature])
+	cells = cell('New Feature', 20, [name], cells)
 	cells = cell('Description', 80, [description], cells)
 
 	body = send(cells, body)
