@@ -1296,6 +1296,10 @@ def equipment_post_modifiers():
 		penalty_conflict = db_integer(penalty_conflict)
 		skill = db_integer(skill)
 		light = db_integer(light)
+		equip_id = db_integer(equip_id)
+		feature = db_integer(feature)
+		effect = db_integer(effect)
+
 
 		body['new'] = False
 		new_items = []
@@ -1358,8 +1362,11 @@ def equipment_post_modifiers():
 
 		body['new_items'] = new_items
 
-		advantage_id = integer(advantage_id)
-		benefit = integer(benefit)
+		equip_id = integer(equip_id)
+		feature = integer(feature)
+		effect = integer(effect)
+		skill = integer(skill)
+		light = integer(light)
 		bonus = integer(bonus)
 		penalty = integer(penalty)
 		environment = integer(environment)
