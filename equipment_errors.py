@@ -25,7 +25,6 @@ def equip_belt_post_errors(data):
 	errors = id_check(Feature, feature, 'Feature', errors)
 	errors = id_check(Weapon, weapon, 'Weapon', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
-	errors = int_check(cost, 'Cost', errors)
 
 	errors = of([feature, weapon, equipment], 'You must choose a weapon, feature or equipment to add to the belt', errors)
 
