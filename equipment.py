@@ -474,7 +474,7 @@ def post_equipment():
 		error = True
 		errors['success'] = False
 		error_msgs.append('There was an error processing the request')
-		errors['error'] = error_msgs
+		errors['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
