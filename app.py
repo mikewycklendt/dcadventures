@@ -58,6 +58,80 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+
+
+@app.route('/weapontype/create')
+def weapontype_create():
+	
+	
+	entries = ['Accessory']
+	
+	for i in entries:
+
+		entry = WeaponCat(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = WeaponCat.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+	
+	
+	
+	
+	entries = ['Grenades and Explosives', 'Accessories', 'Other']
+
+	for i in entries:
+		try:
+			db.session.query(WeaponType).filter_by(name=i.name).delete()
+			db.session.commit()
+		except:
+			db.session.rollback()
+		finally:
+			db.session.close()
+	
+	results = WeaponType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.type_id)
+		print (result.name)
+
+	return ('weqpon category added')
+
+
+	entries = ['Fragmentation Grenade', 'Smoke Grenade', 'Flash Bang Grenade', 'Sleep Gas Grenade', 'Tear Gas Grrenade', 'Dynamite', 'Plastic Explosives']
+
+	for i in entries:
+		try:
+			db.session.query(Weapon).filter_by(name=i.name).delete()
+			db.session.commit()
+		except:
+			db.session.rollback()
+		finally:
+		db.session.close()
+
+	entries = ['Laser Sight', 'Stun Ammo', 'Suppressor', 'Targeting Scope']
+
+	for i in entries:
+		try:
+			db.session.query(Weapon).filter_by(name=i.name).delete()
+			db.session.commit()
+		except:
+			db.session.rollback()
+		finally:
+			db.session.close()
+	
+	results = Weapon.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('weapons deleted')
+
 @app.route('/weapon/create')
 def weapon_create():
 
