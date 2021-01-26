@@ -84,6 +84,8 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	
 	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
 	
+	defenses = Defense.query.all()
+
 	benefits = db.session.query(Benefit).filter_by(approved=True).order_by(Benefit.name).all()
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
@@ -94,7 +96,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
-							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits)
+							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits, defenses=defenses)
 
 @weap.route('/weapon/create', methods=['POST'])
 def post_weapon(): 

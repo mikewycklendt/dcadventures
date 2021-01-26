@@ -137,6 +137,32 @@
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Resistance
+		</div>
+
+		<div class="base-3">
+			<div>
+				<select class="base-select" id="resist_dc" name="resist_dc">
+					<option value="">DC</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="resistance" name="resistance">
+					<option value="">Defense</option>
+					{% for d in defenses %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Strength Based
 		</div>
 
