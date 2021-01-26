@@ -3706,6 +3706,50 @@ class Light(db.Model):
 			'name': self.name
 		}
 
+class WeaponCat(db.Model):
+	__tablename__ = 'weapon_category'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
+class WeaponType(db.Model):
+	__tablename__ = 'weapon_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
+
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'type_id': self.type_id
+		}
+
+class Weapon(db.Model):
+	__tablename__ = 'weapons'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
+	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
+	cost = db.Column(db.Integer)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'cat_id': self.cat_id,
+			'type_id': self.type_id,
+			'cost': self.cost,
+			'description': self.description
+
+		}
 
 class EquipType(db.Model):
 	__tablename__ = 'equipment_type'
@@ -3802,6 +3846,27 @@ class EquipEffect(db.Model):
 			'equip_id': self.equip_id,
 			'name': self.name,
 			'description': self.description
+		}
+	
+class EquipBelt(db.Model):
+	__tablename__ = 'equipment_belt'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	cost = db.Column(db.Integer)
+	belt_item_type = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'equip_id': self.equip_id,
+			'feature': self.feature,
+			'weapon': self.weapon,
+			'equipment': self.equipment,
+			'cost': self.cost,
+			'belt_item_type': self.belt_item_type
 		}
 	
 class EquipCheck(db.Model):
