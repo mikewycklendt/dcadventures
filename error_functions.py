@@ -22,13 +22,13 @@ def required(value, name, errors):
 
 	return (errors)
 
-def required_multiple(field, values, name, errors):
+def required_multiple(field, values, value_field, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	check = False
 
 	for value in values:
-		if value == field:
+		if value == value_field:
 			check = True
 
 	if check == False:
