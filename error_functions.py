@@ -925,6 +925,8 @@ def equip_entry_check(name, table, check, id, errors):
 	try:
 		if id != '':
 			id = int(id)
+		else:
+			return(errors)
 	except:
 		print('invalid id')
 
@@ -955,6 +957,8 @@ def weap_entry_check(name, table, check, id, errors):
 	try:
 		if id != '':
 			id = int(id)
+		else:
+			return(errors)
 	except:
 		print('invalid id')
 
