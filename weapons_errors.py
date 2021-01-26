@@ -76,7 +76,7 @@ def weap_benefit_post_errors(data):
 	benefit = data['benefit']
 
 	errors = id_check(Weapon, weapon_id, 'Weapon', errors)
-	errors = id_check(Benefit, descriptor, 'Benefit', errors)
+	errors = id_check(Benefit, benefit, 'Benefit', errors)
 
 	errors = required(benefit, 'Benefit', errors)
 
