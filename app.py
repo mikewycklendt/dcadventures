@@ -111,7 +111,7 @@ def weapontype_create():
 		except:
 			db.session.rollback()
 		finally:
-		db.session.close()
+			db.session.close()
 
 	entries = ['Laser Sight', 'Stun Ammo', 'Suppressor', 'Targeting Scope']
 
