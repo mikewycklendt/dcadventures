@@ -59,7 +59,7 @@ def weap_benefit_post(entry, body, cells):
 	weapon_id = entry.weapon_id
 	benefit = entry.benefit
 
-	benefit = name(benefit, descriptor)
+	benefit = name(Benefit, benefit)
 	
 	cells = cell('Benefit', 25, [benefit], cells)
 
