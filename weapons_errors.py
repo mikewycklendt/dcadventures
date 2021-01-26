@@ -82,7 +82,7 @@ def weap_save_errors(data):
 	errors = id_check(Conceal, conceal, 'Concealment', errors)
 	errors = id_check(Sense, sense, 'Sense', errors)
 	errors = int_check(double_mod, 'Doubling Modifier', errors)
-	
+
 	errors = required(cat_id, 'Weapon Category', errors)
 	errors = required(type_id, 'Weapon Type', errors)
 	errors = required(cost, 'Weapon Cost', errors)
@@ -97,7 +97,7 @@ def weap_save_errors(data):
 	errors = variable_field('burst', ranged_area, 'Burst Rank', ranged_burst, errors)
 	errors = together_names('Area Effect', ['Area Effect', 'Area Damage'], [ranged_area, ranged_area_damage], errors)
 	errors = variable_fields('burst', 'Burst Area Effect', grenade_area, [grenade_burst], errors)
-	errors = variable_field('burst', ranged_area, 'Burst Rank', grenade_burst, errors)
+	errors = variable_field('burst', grenade_area, 'Burst Rank', grenade_burst, errors)
 	errors = together_names('Area Effect', ['Area Effect', 'Area Damage'], [grenade_area, grenade_area_damage], errors)
 	errors = check_field(double, 'Doubling Effect', 'Damage Per x2', double_mod, errors)
 	
