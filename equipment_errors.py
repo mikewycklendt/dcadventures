@@ -35,6 +35,36 @@ def equip_save_errors(data):
 	modifiers = data['modifiers']
 	opposed = data['opposed']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+
+	errors = id_check(WeaponCat, cat_id, 'Weapon Category', errors)
+	errors = id_check(WeaponType, type_id, 'Weapon Type', errors)
+	errors = int_check(cost, 'Cost', errors)
+	errors = int_check(critical, 'Critical Hit', errors)
+	errors = int_check(damage, 'Damage', errors)
+	errors = int_check(toughness, 'Toughness', errors)
+	errors = id_check(Material, material, 'Material', errors)
+	errors = int_check(length, 'Length', errors)
+	errors = id_check(Unit, length_units, 'Length Units', errors)
+	errors = int_check(resist_dc, 'Resistance DC', errors)
+	errors = id_check(Defense, resistance, 'Resistance Defense', errors)
+	errors = int_check(power_rank, 'Power Rank', errors)
+	errors = int_check(hands, 'Held With', errors)
+	errors = int_check(reach, 'Reach', errors)
+	errors = int_check(ranged_attack_bonus, 'Attack Bonus', errors)
+	errors = int_check(protect, 'Protection Modifier', errors)
+	errors = int_check(ranged_burst, 'Burst Rank', errors)
+	errors = int_check(ranged_area_damage, 'Area Damage', errors)
+	errors = int_check(attack_bonus, 'Attack Bonus', errors)
+	errors = int_check(perception_dc, 'Perception DC', errors)
+	errors = int_check(grenade_burst, 'Burst Rank', errors)
+	errors = int_check(grenade_area_damage, 'Area Damage', errors)
+	errors = id_check(Conceal, conceal, 'Concealment', errors)
+	errors = id_check(Sense, sense, 'Sense', errors)
+	errors = int_check(double_mod, 'Doubling Modifier', errors)
+	
 	errors = required(description, 'Description', errors)
 	errors = required(type_id, 'Equipment Type', errors)
 	errors = required(cost, 'Cost', errors)
@@ -74,6 +104,8 @@ def equip_belt_post_errors(data):
 	weapon = data['weapon']
 	equipment = data['equipment']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
 	errors = id_check(Weapon, weapon, 'Weapon', errors)
@@ -100,6 +132,8 @@ def equip_check_post_errors(data):
 	check_type = data['check_type']
 	action = data['action']
 	action_time = data['action_time']
+
+	create_check('Equipment Name', equip_id, Equipment, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
@@ -131,6 +165,8 @@ def equip_damaged_post_errors(data):
 	toughness = data['toughness']
 	penalty = data['penalty']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
@@ -158,6 +194,8 @@ def equip_descriptor_post_errors(data):
 	feature = data['feature']
 	descriptor = data['descriptor']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
@@ -177,6 +215,8 @@ def equip_effect_post_errors(data):
 	name = data['name']
 	description = data['description']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
 	errors = required(name, 'Name', errors)
@@ -192,6 +232,8 @@ def equip_feature_post_errors(data):
 	name = data['name']
 	description = data['description']
 	feature = data['feature']
+
+	create_check('Equipment Name', equip_id, Equipment, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
@@ -236,6 +278,8 @@ def equip_limits_post_errors(data):
 	internet = data['internet']
 	needs_internet = data['needs_internet']
 
+	create_check('Equipment Name', equip_id, Equipment, errors)
+
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
@@ -270,7 +314,7 @@ def equip_modifiers_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	advantage_id = data['equip_id']
+	equip_id = data['equip_id']
 	columns = data['columns']
 	created = data['created']
 	font = data['font']
@@ -324,8 +368,10 @@ def equip_modifiers_post_errors(data):
 	effect = data['effect']
 	feature = data['feature']
 
-	errors = create_check('Advantage', advantage_id, Advantage, errors)
+	create_check('Equipment Name', equip_id, Equipment, errors)
 	
+	errors = id_check(Equipment, equip_id, 'Equipment', errors)
+
 	errors = int_check(bonus, 'Bonus', errors)
 	errors = int_check(penalty, 'Penalty', errors)
 	errors = int_check(multiple_count, 'Multiple Count', errors)
@@ -416,6 +462,8 @@ def equip_opposed_post_errors(data):
 	when = data['when']
 	condition1 = data['condition1']
 	condition2 = data['condition2']
+
+	create_check('Equipment Name', equip_id, Equipment, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)

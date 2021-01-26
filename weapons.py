@@ -216,7 +216,32 @@ def save_weapon():
 	descriptor = request.get_json()['descriptor']
 
 	weapon_id = integer(weapon_id)
-
+	cat_id = db_integer(cat_id)
+	type_id = db_integer(type_id)
+	cost = integer(cost)
+	critical = integer(critical)
+	damage = integer(damage)
+	toughness = integer(toughness)
+	material = db_integer(material)
+	length = integer(length)
+	length_units = db_integer(length_units)
+	resist_dc = integer(resist_dc)
+	resistance = db_integer(resistance)
+	power_rank = integer(power_rank)
+	hands = integer(hands)
+	reach = integer(reach)
+	ranged_attack_bonus = integer(ranged_attack_bonus)
+	protect = integer(protect)
+	ranged_burst = integer(ranged_burst)
+	ranged_area_damage = integer(ranged_area_damage)
+	attack_bonus = integer(attack_bonus)
+	perception_dc = integer(perception_dc)
+	grenade_burst = integer(grenade_burst)
+	grenade_area_damage = integer(grenade_area_damage)
+	conceal = db_integer(conceal)
+	sense = db_integer(sense)
+	double_mod = integer(double_mod)
+	
 	entry = db.session.query(Weapon).filter(Weapon.id == weapon_id).one()
 
 	entry.cat_id = cat_id

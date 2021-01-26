@@ -53,6 +53,9 @@ def weap_save_errors(data):
 	condition = data['condition']
 	descriptor = data['descriptor']
 
+	errors = create_check('Weapon Name', weapon_id, Weapon, errors)
+
+	errors = id_check(Weapon, weapon_id, 'Weapon', errors)
 
 	errors = required(cat_id, 'Weapon Category', errors)
 	errors = required(type_id, 'Weapon Type', errors)
@@ -96,6 +99,8 @@ def weap_condition_post_errors(data):
 
 	errors = create_check('Weapon', weapon_id, Weapon, errors)
 	
+	errors = id_check(Weapon, weapon_id, 'Weapon', errors)
+
 	errors = int_check(damage_value, 'Condition Damage', errors)
 	errors = int_check(damage, 'Damage Direction', errors)
 
@@ -127,6 +132,8 @@ def weap_descriptor_post_errors(data):
 	font = data['font']
 	descriptor = data['descriptor']
 
+	errors = create_check('Weapon', weapon_id, Weapon, errors)
+
 	errors = id_check(Weapon, weapon_id, 'Weapon', errors)
 	errors = id_check(Descriptor, descriptor, 'Descriptor', errors)
 
@@ -143,6 +150,8 @@ def weap_benefit_post_errors(data):
 	created = data['created']
 	font = data['font']
 	benefit = data['benefit']
+
+	errors = create_check('Weapon', weapon_id, Weapon, errors)
 
 	errors = id_check(Weapon, weapon_id, 'Weapon', errors)
 	errors = id_check(Benefit, benefit, 'Benefit', errors)
