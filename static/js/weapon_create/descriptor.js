@@ -213,23 +213,19 @@ function descriptor_submit() {
 	const created = descriptor_grid.titles;
 	const font = descriptor_grid.font;
 
-	const equip_id = document.getElementById('equip_id').value;
-	const effect = select("descriptor_effect");
-	const feature = select("descriptor_feature");
+	const weapon_id = document.getElementById('weapon_id').value;
 	const descriptor = select("descriptor_field");
 
 	const errors = 'descriptor-err';
 	const err_line = 'descriptor-err-line';
 
-	response = fetch('/equipment/descriptor/create', {
+	response = fetch('/weapon/descriptor/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'equip_id': equip_id,
+			'weapon_id': weapon_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'effect': effect,
-			'feature': feature,
 			'descriptor': descriptor
 		}),
 		headers: {
@@ -245,7 +241,7 @@ function descriptor_submit() {
 			descriptor_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/equipment/' + table_id + '/delete/'
+			const route = '/weapon/' + table_id + '/delete/'
 			create_table(jsonResponse, descriptor_grid, route);
 			clear_errors(err_line, errors)
 

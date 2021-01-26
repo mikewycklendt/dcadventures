@@ -78,6 +78,10 @@
 
 			<br>
 
+			<div class="weapon-box" id="weapon-condition">
+				{% include weapon_includes.condition %}
+			</div>
+
 			<div class="weapon-box" id="weapon-descriptor">
 				{% include weapon_includes.descriptor %}
 			</div>
@@ -107,5 +111,6 @@
 	<script src="/static/js/weapon_create/weapon_create.js"></script>
 	<script src="/static/js/weapon_create/base_form.js"></script>
 	<script src="/static/js/weapon_create/descriptor.js"></script>
+	<script src="/static/js/weapon_create/condition.js"></script>
 	
 	<input type="hidden" id="weapon_id" name="weapon_id" value=>

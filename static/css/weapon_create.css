@@ -1,5 +1,6 @@
 @import "weapon_create/base_form.css";
 @import "weapon_create/descriptor.css";
+@import "weapon_create/condition.css";
 
 .weapon-container {
 	display: grid;

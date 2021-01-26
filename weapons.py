@@ -37,7 +37,7 @@ db = SQLAlchemy()
 def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'weapon_create.html'
 
-	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html'}
+	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html'}
 
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
 	stylesheets.append({"style": "/static/css/weapon_create.css"})
