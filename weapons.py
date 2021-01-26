@@ -23,7 +23,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from equipment_posts import equip_belt_post, equip_check_post, equip_damaged_post, equip_descriptor_post, equip_effect_post, equip_feature_post, equip_limits_post, equip_modifiers_post, equip_opposed_post
 from equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors
-
+from models import WeapBenefit, WeapCondition, WeapDescriptor
 load_dotenv()
 
 import os
@@ -239,3 +239,198 @@ def edit_weapon_name():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+@weap.route('/weapon/condition/create', methods=['POST'])
+def weapon_post_condition():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = weap_condition_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	weapon_id = request.get_json()['weapon_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	condition_type = request.get_json()['condition_type']
+	condition = request.get_json()['condition']
+	condition_null = request.get_json()['condition_null']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	damage_value = request.get_json()['damage_value']
+	damage = request.get_json()['damage']
+
+	try:
+		weapon_id = integer(weapon_id)
+		damage_value = integer(damage_value)
+		damage = integer(damage)
+
+		entry = WeapCondition(weapon_id = weapon_id,
+									condition_type = condition_type,
+									condition = condition,
+									condition_null = condition_null,
+									condition1 = condition1,
+									condition2 = condition2,
+									damage_value = damage_value,
+									damage = damage)
+
+		db.session.add(entry)	
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'condition'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+						
+		body = weap_condition_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+
+	return jsonify(body)
+
+
+@weap.route('/weapon/descriptor/create', methods=['POST'])
+def weapon_post_descriptor():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = weap_descriptor_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	weapon_id = request.get_json()['weapon_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	descriptor = request.get_json()['descriptor']
+
+	weapon_id = db_integer(weapon_id)
+	descriptor = db_integer(descriptor)
+
+	entry = WeapDescriptor(weapon_id = weapon_id,
+							descriptor = descriptor)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'descriptor'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = weap_descriptor_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@weap.route('/weapon/benefit/create', methods=['POST'])
+def weapon_post_benefit():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = weap_benefit_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	weapon_id = request.get_json()['weapon_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+
+	weapon_id = db_integer(weapon_id)
+	benefit = db_integer(benefit)
+
+	entry = WeapBenefit(weapon_id = weapon_id,
+						benefit = benefit)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'benefit'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = weap_benefit_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+
+

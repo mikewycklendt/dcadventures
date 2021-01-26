@@ -3751,6 +3751,57 @@ class Weapon(db.Model):
 
 		}
 
+class WeapDescriptor(db.Model):
+	__tablename__ = 'weapon_descriptor'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'equip_id': self.equip_id,
+			'descriptor': self.descriptor
+		}	
+
+class WeapBenefit(db.Model):
+	__tablename__ = 'weapon_benefit'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'weapon_id': self.weapon_id,
+			'benefit': self.benefit
+		}
+
+
+class WeapCondition(db.Model):
+	__tablename__ = 'weapon_condition'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+	condition_type = db.Column(db.String())
+	condition = db.Column(db.String())
+	condition_null = db.Column(db.String())
+	condition1 = db.Column(db.String())
+	condition2 = db.Column(db.String())
+	damage_value = db.Column(db.Integer)
+	damage = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'condition_type': self.condition_type,
+			'condition': self.condition,
+			'condition_null': self.condition_null,
+			'condition1': self.condition1,
+			'condition2': self.condition2,
+			'damage_value': self.damage_value,
+			'damage': self.damage
+		}
+
 class EquipType(db.Model):
 	__tablename__ = 'equipment_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
