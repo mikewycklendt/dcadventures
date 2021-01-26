@@ -449,4 +449,27 @@
 				</select>
 			</div>
 		</div>
+	</div>
+
+	
+	<div class="base-field base-hidden grenade">
+		<div id="multiple-attr-title">
+			Doubling Effect
+		</div>
+
+		<div class="base-3">
+			<div>
+				<input type="checkbox" id="double" class="regular-checkbox big-checkbox" onclick="double()">	
+			</div>
+
+			<div class="base-fade" id="double-mod">
+				<select class="base-select" id="double_mod" name="double_mod">
+					<option value="">Damage Per x2</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
 </div>

@@ -41,3 +41,10 @@ function subtle() {
 
 	check_opacity(check, div);
 }
+
+function double() {
+	const check = 'double';
+	const div = 'double-mod';
+
+	check_opacity(check, div);
+}
