@@ -3706,17 +3706,6 @@ class Light(db.Model):
 			'name': self.name
 		}
 
-class WeaponCat(db.Model):
-	__tablename__ = 'weapon_category'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
 
 class EquipType(db.Model):
 	__tablename__ = 'equipment_type'
