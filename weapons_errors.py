@@ -6,9 +6,11 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple
 
 def weap_save_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
 
 	weapon_id = data['weapon_id']
 	cat_id = data['cat_id']
@@ -51,6 +53,30 @@ def weap_save_errors(data):
 	condition = data['condition']
 	descriptor = data['descriptor']
 
+
+	errors = required(cat_id, 'Weapon Category', errors)
+	errors = required(type_id, 'Weapon Type', errors)
+	errors = required(cost, 'Weapon Cost', errors)
+	errors = required(description, 'Description', errors)
+	errors = required_multiple(damage, ['1', '2', '3'] 'Damage', errors)
+	errors = required_multiple(toughness, ['1', '2', '3'] 'Toughness', errors)
+	errors = required_multiple(material, ['1'] 'Material', errors)
+	errors = required_multiple(length, ['1', '2'] 'Length', errors)
+	errors = together('a Ranged Weapon or Melee Weapon', [length, length_units], errors)
+	errors = required_multiple(hands, ['1', '2'] 'Held With', errors)
+	errors = variable_fields('burst', 'Burst Area Effect', ranged_area, [ranged_burst], errors)
+	errors = variable_field('burst', ranged_area, 'Burst Rank', ranged_burst, errors)
+	errors = together_names('Area Effect', ['Area Effect', 'Area Damage'], [ranged_area, ranged_area_damage], errors)
+	errors = variable_fields('burst', 'Burst Area Effect', grenade_area, [grenade_burst], errors)
+	errors = variable_field('burst', ranged_area, 'Burst Rank', grenade_burst, errors)
+	errors = together_names('Area Effect', ['Area Effect', 'Area Damage'], [grenade_area, grenade_area_damage], errors)
+	errors = check_field(double, 'Doubling Effect', 'Damage Per x2', double_mod, errors)
+	
+	equip_entry_check('Conditions', condition, WeapCondition, weapon_id, errors)
+	equip_entry_check('Benefits', benefit, WeapBenefit, weapon_id, errors)
+	equip_entry_check('Effect Descriptors', descriptor, WeapDescriptor, weapon_id, errors)
+
+	return (errors)
 
 def weap_condition_post_errors(data):
 

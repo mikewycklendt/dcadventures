@@ -922,7 +922,35 @@ def equip_entry_check(name, table, check, id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
+	id = int(id)
+
 	entry = db.session.query(table).filter_by(equip_id=id).first()
+
+	if check == True:
+		if entry is None:
+			error = True
+			message = 'You checked the ' + name + ' box.  Either create a ' + name + ' rule or uncheck the box.'
+			error_msgs.append(message)
+	else:
+		if entry is not None:
+			error = True
+			message = 'You created a ' + name + ' rule but the box for that rule is not checked.  Check that box or delete that rule.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def equip_entry_check(name, table, check, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	id = int(id)
+
+	entry = db.session.query(table).filter_by(weapon_id=id).first()
 
 	if check == True:
 		if entry is None:
