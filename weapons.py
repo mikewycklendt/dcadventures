@@ -37,7 +37,7 @@ db = SQLAlchemy()
 def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'weapon_create.html'
 
-	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html'}
+	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html', 'benefit': 'weapon_create/benefit.html'}
 
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
 	stylesheets.append({"style": "/static/css/weapon_create.css"})
@@ -84,7 +84,9 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	
 	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
 	
-	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
+	benefits = db.session.query(Benefit).filter_by(approved=True).order_by(Benefit.name).all()
+
+	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
@@ -92,7 +94,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
-							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown)
+							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits)
 
 @weap.route('/weapon/create', methods=['POST'])
 def post_weapon(): 

@@ -44,7 +44,7 @@ function condition_submit() {
 	response = fetch('/weapon/condition/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'advantage_id': advantage_id,
+			'weapon_id': weapon_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
