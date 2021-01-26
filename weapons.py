@@ -92,7 +92,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	area  = [{'type': '', 'name': 'Area Effect'}, {'type': 'cone', 'name': 'Cone'}, {'type': 'line', 'name': 'Line'}, {'type': 'either', 'name': 'Cone or Line'}, {'type': 'burst', 'name': 'Burst'}]
+	area  = [{'type': '', 'name': 'Area Type'}, {'type': 'cone', 'name': 'Cone'}, {'type': 'line', 'name': 'Line'}, {'type': 'either', 'name': 'Cone or Line'}, {'type': 'burst', 'name': 'Burst'}]
 
 
 

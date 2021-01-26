@@ -424,6 +424,25 @@ function hide_opacity(div_input) {
 	setTimeout(function(){div.style.display = 'none';}, 300);
 }
 
+
+function show_opacity_class(div_input) {
+	const divs = document.getElementsByClassName(div_input);
+	let div;
+	for (div of divs) {
+		setTimeout(function(){div.style.display = 'grid';}, 300);
+		setTimeout(function(){div.style.opacity = '100%';}, 310);
+	}
+}
+
+function hide_opacity_class(div_input) {
+	const divs = document.getElementsByClassName(div_input);
+	let div;
+	for (div of divs) {
+		div.style.opacity = '0%';
+		setTimeout(function(){div.style.display = 'none';}, 300);
+	}
+}
+
 function math_div_select(select, val, math, containdiv ) {
 	const field = document.getElementById(select);
 	const value = field.options[field.selectedIndex].value;
@@ -750,6 +769,26 @@ function select_opacity(select, options) {
 			hide_opacity(div);
 		} else {
 			show_opacity(div);
+		}
+	};
+}
+
+
+function select_opacity_class(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity_class(div);
+		} else {
+			show_opacity_class(div);
 		}
 	};
 }

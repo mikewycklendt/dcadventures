@@ -212,7 +212,7 @@
 		</div>
 	</div>
 
-	<div class="base-field base-hidden" id="base-thrown">
+	<div class="base-field base-hidden melee">
 		<div id="multiple-attr-title">
 			Thrown as Ranged
 		</div>
@@ -222,7 +222,7 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="base-unarmed">
+	<div class="base-field base-hidden melee">
 		<div id="multiple-attr-title">
 			Unarmed
 		</div>
@@ -232,7 +232,7 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="base-reach">
+	<div class="base-field base-hidden melee">
 		<div id="multiple-attr-title">
 			Reach (1 = 5ft)
 		</div>
@@ -247,13 +247,13 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="base-accurate">
+	<div class="base-field base-hidden ranged">
 		<div id="multiple-attr-title">
 			Accurate Rank
 		</div>
 
 		<div>
-			<select class="base-select" id="accurate" name="accurate">
+			<select class="base-select" id="ranged-accurate" name="ranged-accurate">
 				<option value="">Accurate Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -262,7 +262,7 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="base-protection">
+	<div class="base-field base-hidden ranged">
 		<div id="multiple-attr-title">
 			Protection Modifier
 		</div>
@@ -277,7 +277,7 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="base-area">
+	<div class="base-field base-hidden ranged">
 		<div id="multiple-attr-title">
 			Area Effect
 		</div>
@@ -292,7 +292,7 @@
 			</div>
 		
 			<div class="base-fade" id="burst">
-				<select class="base-select" id="accurate" name="accurate">
+				<select class="base-select" id="burst" name="burst">
 					<option value="">Burst Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
@@ -318,7 +318,7 @@
 	</div>
 
 	
-	<div class="base-field base-hidden" id="base-penetrate">
+	<div class="base-field base-hidden ranged">
 		<div id="multiple-attr-title">
 			Penetrating
 		</div>
@@ -328,5 +328,6 @@
 		</div>
 	</div>
 </div>
+
 
 
