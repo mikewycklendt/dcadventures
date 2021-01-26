@@ -26,13 +26,13 @@ weapon_create = function() {
 			const name_div = document.getElementById('weapon-name');
 			const weapon_id = document.getElementById('weapon_id');
 			name_div.innerHTML = jsonResponse.name;
-			equip_id.value = jsonResponse.id;
+			weapon_id.value = jsonResponse.id;
 			name_div.style.display = "block"
 			name_div.style.opacity = "100%"
 			name_div.style.fontSize = "460%";
 			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
 			edit_button.style.display = "block";
-			add_equip.style.display = "none";
+			add_weapon.style.display = "none";
 			all_fields.style.display = "grid";
 			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
 
