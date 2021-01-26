@@ -327,6 +327,22 @@
 			<input type="checkbox" id="penetrate" class="regular-checkbox big-checkbox" >	
 		</div>
 	</div>
+
+	
+	<div class="base-field base-hidden access">
+		<div id="multiple-attr-title">
+			Attack Check Bonus
+		</div>
+
+		<div>
+			<select class="base-select" id="attack_bonus" name="attack_bonus">
+				<option value="">Protection Modifier</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 </div>
 
 
