@@ -86,7 +86,7 @@ def weapon_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Weapon(name=i, cat_id=2, type_id=8, cost=8, description=description)
+		entry = Weapon(name=i, cat_id=4, type_id=8, cost=8, description=description)
 		db.session.add(entry)
 		db.session.commit()
 

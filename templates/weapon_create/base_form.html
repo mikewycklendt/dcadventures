@@ -39,7 +39,51 @@
 			</select>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Damage
+		</div>
 
+		<div>
+			<select class="base-select" id="damage" name="damage">
+				<option value="">Damage</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Power Effect
+		</div>
+
+		<div>
+			<select class="base-select" id="power" name="power" onchange="power()">
+				<option value="">Power Effect</option>
+				{% for p in powers %}
+					<option value="{{p}}">{{p}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field base-hidden" id="base-power-rank">
+		<div id="multiple-attr-title">
+			Damage
+		</div>
+
+		<div>
+			<select class="base-select" id="power_rank" name="power_rank">
+				<option value="">Damage</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 </div>
 
 

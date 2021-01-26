@@ -1,0 +1,108 @@
+<div class="equip-header" id="descriptor-header">
+
+	<div class="equip-title" id="descriptor-title">
+		<input type="checkbox" id="descriptor_check" class="regular-checkbox big-checkbox" onclick="descriptor_check()"> Counters Descriptor:
+	</div>
+	
+	<div class="equip-base" id="descriptor-base">
+		<div>
+			<select class="effect-entry" id="descriptor_effect" name="descriptor_effect">
+				<option value="">Effect</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="feature-entry" id="descriptor_feature" name="descriptor_feature">
+				<option value="">Feature</option>
+			</select>
+		</div>
+	</div>
+
+</div>
+
+<div id="descriptor-entry">
+	<div id="descriptor-row1">
+		<div>
+			Origin:
+		</div>
+
+		<div>
+			Source:
+		</div>
+
+		<div>
+			Medium Type:
+		</div>
+
+		<div id="descriptor-medium-subtype-title">
+	
+		</div>
+
+		<div id="descriptor-medium-title">
+			Medium:	
+		</div>
+
+		<div>
+			<select class="entry-select" id="descriptor_origin" name="descriptor_origin" onchange="descriptor()">
+				<option value="">Origin</option>
+				{% for o in origins %}
+					<option value={{o.id}}>{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="descriptor_source" name="descriptor_source" onchange="descriptor()">
+				<option value="">Source</option>
+				{% for s in sources %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="descriptor_medium_type" name="descriptor_medium_type" onchange="get_medium_subtypes(); descriptor()">
+				<option value="">Medium Type</option>
+				{% for m in mediums %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="descriptor-medium-subtype">
+				<select class="entry-select" id="descriptor_medium_subtype" name="descriptor_medium_subtype" onchange="get_medium(); descriptor()">
+					<option value="">Medium Subtype</option>
+				</select>
+		</div>
+
+
+		<div id="descriptor-medium">
+			<select class="entry-select" id="descriptor_medium" name="descriptor_medium" onchange="descriptor()">
+				<option value="">Medium</option>
+			</select>
+		</div>
+
+	</div>
+
+	
+	<div id="descriptor-button-row">
+		<div>
+		</div>
+		
+		<div id="descriptor-field">
+			<select class="header-select" id="descriptor_field" name="descriptor_field">
+				<option value="">Descriptor</option>
+			</select>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="descriptor_submit" name="descriptor_submit" onclick="descriptor_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="descriptor-spot"></div>
+
+<div class="err" id="descriptor-err"></div>

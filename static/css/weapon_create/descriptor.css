@@ -1,0 +1,76 @@
+#descriptor-header {
+	grid-template-columns: 50% 50%;
+}
+
+#descriptor-base {
+	grid-template-columns: 50% 50%;
+}
+
+#descriptor-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 96%;
+	margin-top: 0px;
+	margin-left: 1.5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+
+
+#descriptor-row1 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
+#descriptor-medium-subtype-title {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-medium-subtype {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-field-title {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-field {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-medium-title {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-medium {
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
+#descriptor-button-row {
+	display: grid;
+	grid-template-columns: 45% 35% 20%;
+	width: 97%;
+	grid-template-rows: auto;
+}
