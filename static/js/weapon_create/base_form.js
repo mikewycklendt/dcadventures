@@ -24,3 +24,10 @@ function ranged_area() {
 	select_opacity(select, options);
 	select_opacity_any(select, div);
 }
+
+function subtle() {
+	const check = 'subtle';
+	const div = 'subtle-dc';
+
+	check_opacity(check, div);
+}

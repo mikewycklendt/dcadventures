@@ -345,7 +345,26 @@
 			</div>
 		</div>
 	</div>
-</div>
 
+	<div class="base-field base-hidden access">
+		<div id="multiple-attr-title">
+			Subtle
+		</div>
 
+		<div class="base-3">
+			<div>
+				<input type="checkbox" id="subtle" class="regular-checkbox big-checkbox" onclick="subtle()">	
+			</div>
 
+			<div class="base-fade" id="subtle-dc">
+				<select class="base-select" id="attack_bonus" name="attack_bonus">
+					<option value="">Perception DC</option>
+					<option value="">Undetectable</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+	
