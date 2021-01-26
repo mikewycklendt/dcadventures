@@ -276,6 +276,31 @@
 			</select>
 		</div>
 	</div>
+	
+	<div class="base-field base-hidden" id="base-area">
+		<div id="multiple-attr-title">
+			Area Effect
+		</div>
+
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="ranged_area" name="ranged_area" onchange="ranged_area()">
+					{% for a in area %}
+						<option value={{a.type}}>{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		
+			<div id="burst">
+				<select class="base-select" id="accurate" name="accurate">
+					<option value="">Burst Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
 </div>
 
 
