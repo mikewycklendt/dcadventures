@@ -3731,25 +3731,6 @@ class WeaponType(db.Model):
 			'type_id': self.type_id
 		}
 
-class Weapon(db.Model):
-	__tablename__ = 'weapons'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
-	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	cost = db.Column(db.Integer)
-	description = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name,
-			'cat_id': self.cat_id,
-			'type_id': self.type_id,
-			'cost': self.cost,
-			'description': self.description
-
-		}
 
 class EquipType(db.Model):
 	__tablename__ = 'equipment_type'
