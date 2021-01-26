@@ -3,7 +3,7 @@ function category() {
 	const fill = 'type';
 	const options = [{'val': '1', 'div': 'melee'},
 					{'val': '2', 'div': 'ranged'},
-					{'val': '2', 'div': 'grenade'},
+					{'val': '3', 'div': 'grenade'},
 					{'val': '4', 'div': 'access'}]
 
 	weapon_type_select(select, fill);
