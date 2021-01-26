@@ -160,16 +160,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Strength Based
-		</div>
-
-		<div>
-			<input type="checkbox" id="strength" class="regular-checkbox big-checkbox" >	
-		</div>
-	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -179,7 +169,7 @@
 		<div class="base-trait">
 			<div>
 				<select class="base-select" id="power_rank" name="power_rank">
-					<option value="">Effect Rank</option>
+					<option value="">Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -209,6 +199,16 @@
 				<option value=2>Two Hands</option>
 				<option value=3>Either</option>
 			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Strength Based
+		</div>
+
+		<div>
+			<input type="checkbox" id="strength" class="regular-checkbox big-checkbox" >	
 		</div>
 	</div>
 	
