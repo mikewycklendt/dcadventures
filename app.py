@@ -63,11 +63,11 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/weapontype/create')
 def weapontype_create():
 		
-	entries = ['Grenades and Explosives', 'Accessories', 'Other']
+	entries = [8, 9, 10]
 
 	for i in entries:
 		try:
-			db.session.query(WeaponType).filter(WeaponType.name==i.name).delete()
+			db.session.query(WeaponType).filter_by(id=i).delete()
 			db.session.commit()
 		except:
 			db.session.rollback()
@@ -81,28 +81,17 @@ def weapontype_create():
 		print (result.type_id)
 		print (result.name)
 
-	entries = ['Fragmentation Grenade', 'Smoke Grenade', 'Flash Bang Grenade', 'Sleep Gas Grenade', 'Tear Gas Grrenade', 'Dynamite', 'Plastic Explosives']
+	entries = [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
 
 	for i in entries:
 		try:
-			db.session.query(Weapon).filter(Weapon.name==i.name).delete()
+			db.session.query(Weapon).filter_by(id=i).delete()
 			db.session.commit()
 		except:
 			db.session.rollback()
 		finally:
 			db.session.close()
 
-	entries = ['Laser Sight', 'Stun Ammo', 'Suppressor', 'Targeting Scope']
-
-	for i in entries:
-		try:
-			db.session.query(Weapon).filter(Weapon.name==i.name).delete()
-			db.session.commit()
-		except:
-			db.session.rollback()
-		finally:
-			db.session.close()
-	
 	results = Weapon.query.all()
 
 	for result in results:
