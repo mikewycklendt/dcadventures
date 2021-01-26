@@ -334,13 +334,15 @@
 			Attack Check Bonus
 		</div>
 
-		<div>
-			<select class="base-select" id="attack_bonus" name="attack_bonus">
-				<option value="">Protection Modifier</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="attack_bonus" name="attack_bonus">
+					<option value="">Attack Bonus</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
 </div>
