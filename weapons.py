@@ -24,6 +24,8 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 from equipment_posts import equip_belt_post, equip_check_post, equip_damaged_post, equip_descriptor_post, equip_effect_post, equip_feature_post, equip_limits_post, equip_modifiers_post, equip_opposed_post
 from equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors
 from models import WeapBenefit, WeapCondition, WeapDescriptor
+from weapons_errors import weap_benefit_post_errors, weap_condition_post_errors, weap_descriptor_post_errors
+from weapons_posts import weap_benefit_post, weap_condition_post, weap_descriptor_post
 load_dotenv()
 
 import os
