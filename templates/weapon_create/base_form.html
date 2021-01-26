@@ -91,7 +91,7 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="damage" name="damage">
+			<select class="base-select" id="toughness" name="toughness">
 				<option value="">Toughness</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -253,8 +253,8 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="ranged-accurate" name="ranged-accurate">
-				<option value="">Accurate Rank</option>
+			<select class="base-select" id="ranged_attack_bonus" name="ranged_attack_bonus">
+				<option value="">Accurate Attack Check Bonus</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -269,7 +269,7 @@
 
 		<div>
 			<select class="base-select" id="protect" name="protect">
-				<option value="">Protection Modifier</option>
+				<option value="">Opponent Protection Damage Modifier</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -357,7 +357,7 @@
 			</div>
 
 			<div class="base-fade" id="subtle-dc">
-				<select class="base-select" id="attack_bonus" name="attack_bonus">
+				<select class="base-select" id="perception_dc" name="perception_dc">
 					<option value="">Perception Check DC</option>
 					<option value="">Undetectable</option>
 					{% for i in positives %}
@@ -443,6 +443,7 @@
 			<div>
 				<select class="base-select" id="sense" name="sense">
 					<option value="">Sense</option>
+					<option value="">All</option>
 					{% for s in senses %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
