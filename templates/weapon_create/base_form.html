@@ -42,6 +42,36 @@
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Cost
+		</div>
+
+		<div>
+			<select class="base-select" id="cost" name="cost">
+				<option value="">Cost</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Critical Hit
+		</div>
+
+		<div>
+			<select class="base-select" id="critical" name="critical">
+				<option value="">Critical</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Damage
 		</div>
 
@@ -52,6 +82,46 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Toughness
+		</div>
+
+		<div>
+			<select class="base-select" id="damage" name="damage">
+				<option value="">Toughness</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Material
+		</div>
+
+		<div>
+			<select class="base-select" id="material" name="material" >
+				<option value="">Material</option>
+				{% for m in materials %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Strength Based
+		</div>
+
+		<div>
+			<input type="checkbox" id="strength" class="regular-checkbox big-checkbox" >	
 		</div>
 	</div>
 
@@ -72,12 +142,12 @@
 	
 	<div class="base-field base-hidden" id="base-power-rank">
 		<div id="multiple-attr-title">
-			Damage
+			Power Effect Rank
 		</div>
 
 		<div>
 			<select class="base-select" id="power_rank" name="power_rank">
-				<option value="">Damage</option>
+				<option value="">Power Effect Rank</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
