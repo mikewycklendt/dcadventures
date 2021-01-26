@@ -107,7 +107,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
 							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits, defenses=defenses, area=area, advantages=advantages, conceal=conceal,
-							senses)
+							senses=senses)
 
 @weap.route('/weapon/create', methods=['POST'])
 def post_weapon(): 
