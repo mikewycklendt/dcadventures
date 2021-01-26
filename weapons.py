@@ -62,11 +62,20 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
-	weapon_cat = WeaponCat.query.all()
-	
 	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
 	powers = sorted(powers_raw)
 
+	base_conditions = Condition.query.all()
+	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	conditions_raw = []
+	for condition in base_conditions:
+		conditions_raw.append(condition.name)
+	for condition in combined_conditions:
+		conditions_raw.append(condition)
+	conditions = sorted(conditions_raw)
+
+	weapon_cat = WeaponCat.query.all()
+	
 	materials = db.session.query(Material).order_by(Material.name).all()
 
 	origins = db.session.query(Origin).order_by(Origin.name).all()
@@ -74,11 +83,16 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	sources = db.session.query(Source).order_by(Source.name).all()
 	
 	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
+	
+	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
+
+	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
-							sources=sources, mediums=mediums)
+							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown)
 
 @weap.route('/weapon/create', methods=['POST'])
 def post_weapon(): 
