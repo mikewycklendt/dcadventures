@@ -462,7 +462,7 @@ def weapon_post_benefit():
 
 
 @weap.route('/weapon/benefit/delete/<weapon_id>', methods=['DELETE'])
-def delete_weapon_descriptor(weapon_id):
+def delete_weapon_benefit(weapon_id):
 	try:
 		db.session.query(WeapBenefit).filter_by(id=weapon_id).delete()
 		db.session.commit()
