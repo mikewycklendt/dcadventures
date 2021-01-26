@@ -6,7 +6,8 @@ function category() {
 					{'val': '1', 'div': 'base-unarmed'},
 					{'val': '2', 'div': 'base-accurate'},
 					{'val': '2', 'div': 'base-protection'},
-					{'val': '2', 'div': 'base-area'}]
+					{'val': '2', 'div': 'base-area'},
+					{'val': '2', 'div': 'base-penetrate'}]
 
 	weapon_type_select(select, fill);
 	select_opacity(select, options)
@@ -22,6 +23,8 @@ function power() {
 function ranged_area() {
 	const select = 'ranged_area';
 	const options = [{'val': 'burst', 'div': 'burst'}]
-
+	const div = 'area-damage';
+	
 	select_opacity(select, options);
+	select_opacity_any(select, div);
 }
