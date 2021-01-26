@@ -2,7 +2,7 @@
 @app.route('/weaponcat/create')
 def weaponcat_create():
 
-	entries = ['Melee', 'Ranged']
+	entries = ['Melee', 'Ranged', 'Grenades and Explosives', 'Accessory']
 
 	for i in entries:
 
@@ -30,11 +30,29 @@ def weapontype_create():
 		db.session.add(entry)
 		db.session.commit()
 		
-	entries = ['Grenades and Explosives', 'Accessories', 'Other']
+	entries = ['Projectile', 'Energy', 'Heavy', 'Thrown']
 
 	for i in entries:
 
 		entry = WeaponType(name=i, type_id=2)
+		db.session.add(entry)
+		db.session.commit()
+		
+		
+	entries = ['Grenades', 'Explosives']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=3)
+		db.session.add(entry)
+		db.session.commit()
+
+
+	entries = ['Accessories', 'Other']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=4)
 		db.session.add(entry)
 		db.session.commit()
 
