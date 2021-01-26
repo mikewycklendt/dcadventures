@@ -922,7 +922,11 @@ def equip_entry_check(name, table, check, id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	id = int(id)
+	try:
+		if id != '':
+			id = int(id)
+	except:
+		print('invalid id')
 
 	entry = db.session.query(table).filter_by(equip_id=id).first()
 
@@ -943,12 +947,17 @@ def equip_entry_check(name, table, check, id, errors):
 
 	return (errors)
 
-def equip_entry_check(name, table, check, id, errors):
+def weap_entry_check(name, table, check, id, errors):
 
 	error_msgs = errors['error_msgs']
 	error = False
 
-	id = int(id)
+	try:
+		if id != '':
+			id = int(id)
+	except:
+		print('invalid id')
+
 
 	entry = db.session.query(table).filter_by(weapon_id=id).first()
 
