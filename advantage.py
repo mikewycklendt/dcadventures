@@ -1029,7 +1029,7 @@ def delete_advantage_combined(advantage_id):
 		return jsonify({'success': True, 'id': advantage_id})
 
 
-	
+
 @advantage.route('/advantage/condition/create', methods=['POST'])
 def advantage_post_condition():
 

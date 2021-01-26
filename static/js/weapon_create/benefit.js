@@ -9,7 +9,7 @@ function benefit_check() {
 
 let benefit_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 110,
 					'mod': []}
 
 function benefit_submit() {

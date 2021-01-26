@@ -204,7 +204,7 @@ function descriptor() {
 
 let descriptor_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 110,
 					'mod': []}
 
 function descriptor_submit() {

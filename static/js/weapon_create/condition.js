@@ -19,7 +19,7 @@ function condition_type() {
 
 let condition_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 110,
 					'mod': []}
 
 function condition_submit() {
