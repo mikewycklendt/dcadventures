@@ -291,8 +291,8 @@
 				</select>
 			</div>
 		
-			<div class="base-fade" id="burst">
-				<select class="base-select" id="burst" name="burst">
+			<div class="base-fade" id="ranged-burst">
+				<select class="base-select" id="ranged_burst" name="ranged_burst">
 					<option value="">Burst Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
@@ -302,13 +302,13 @@
 		</div>
 	</div>
 	
-	<div class="base-field base-hidden" id="area-damage">
+	<div class="base-field base-hidden" id="ranged-area-damage">
 		<div id="multiple-attr-title">
 			Area Damage
 		</div>
 
 		<div>
-			<select class="base-select" id="area_damage" name="area_damage">
+			<select class="base-select" id="ranged_area_damage" name="ranged_area_damage">
 				<option value="">Area Damage</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -382,4 +382,71 @@
 			</select>
 		</div>
 	</div>
+
+	
+	<div class="base-field base-hidden grenade">
+		<div id="multiple-attr-title">
+			Area Effect
+		</div>
+
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="grenade_area" name="grenade_area" onchange="grenade_area()">
+					{% for a in area %}
+						<option value={{a.type}}>{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		
+			<div class="base-fade" id="grenade-burst">
+				<select class="base-select" id="grenade_burst" name="grenade_burst">
+					<option value="">Burst Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="base-field base-hidden" id="grenade-area-damage">
+		<div id="multiple-attr-title">
+			Area Damage
+		</div>
+
+		<div>
+			<select class="base-select" id="grenade_area_damage" name="grenade_area_damage">
+				<option value="">Area Damage</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	
+	<div class="base-field base-hidden grenade">
+		<div id="multiple-attr-title">
+			Concealment
+		</div>
+
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="conceal" name="conceal">
+					<option value="">Concealment</option>
+					{% for c in conceal %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		
+			<div>
+				<select class="base-select" id="sense" name="sense">
+					<option value="">Sense</option>
+					{% for s in senses %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 </div>
