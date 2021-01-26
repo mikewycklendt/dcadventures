@@ -320,6 +320,19 @@ def weapon_post_condition():
 	return jsonify(body)
 
 
+@weap.route('/weapon/descriptor/delete/<weapon_id>', methods=['DELETE'])
+def delete_weapon_descriptor(weapon_id):
+	try:
+		db.session.query(WeapCondition).filter_by(id=weapon_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(weapon_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': weapon_id, 'cost': False})
+
+
 @weap.route('/weapon/descriptor/create', methods=['POST'])
 def weapon_post_descriptor():
 
@@ -377,6 +390,19 @@ def weapon_post_descriptor():
 
 	return jsonify(body)
 
+
+@weap.route('/weapon/descriptor/delete/<weapon_id>', methods=['DELETE'])
+def delete_weapon_descriptor(weapon_id):
+	try:
+		db.session.query(WeapDescriptor).filter_by(id=weapon_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(weapon_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': weapon_id, 'cost': False})
+
 @weap.route('/weapon/benefit/create', methods=['POST'])
 def weapon_post_benefit():
 
@@ -433,6 +459,19 @@ def weapon_post_benefit():
 	db.session.close()
 
 	return jsonify(body)
+
+
+@weap.route('/weapon/benefit/delete/<weapon_id>', methods=['DELETE'])
+def delete_weapon_descriptor(weapon_id):
+	try:
+		db.session.query(WeapBenefit).filter_by(id=weapon_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(weapon_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': weapon_id, 'cost': False})
 
 
 
