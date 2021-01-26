@@ -175,11 +175,89 @@ def save_weapon():
 		return jsonify(body)
 
 	weapon_id = request.get_json()['weapon_id']
+	cat_id = request.get_json()['cat_id']
+	type_id = request.get_json()['type_id']
+	cost = request.get_json()['cost']
+	description = request.get_json()['description']
+	critical = request.get_json()['critical']
+	damage = request.get_json()['damage']
+	toughness = request.get_json()['toughness']
+	material = request.get_json()['material']
+	length = request.get_json()['length']
+	length_units = request.get_json()['length_units']
+	resist_dc = request.get_json()['resist_dc']
+	resistance = request.get_json()['resistance']
+	power_rank = request.get_json()['power_rank']
+	power = request.get_json()['power']
+	hands = request.get_json()['hands']
+	strength = request.get_json()['strength']
+	thrown = request.get_json()['thrown']
+	unarmed = request.get_json()['unarmed']
+	reach = request.get_json()['reach']
+	ranged_attack_bonus = request.get_json()['ranged_attack_bonus']
+	protect = request.get_json()['protect']
+	ranged_area = request.get_json()['ranged_area']
+	ranged_burst = request.get_json()['ranged_burst']
+	ranged_area_damage = request.get_json()['ranged_area_damage']
+	penetrate = request.get_json()['penetrate']
+	attack_bonus = request.get_json()['attack_bonus']
+	subtle = request.get_json()['subtle']
+	perception_dc = request.get_json()['perception_dc']
+	advantage = request.get_json()['advantage']
+	grenade_area = request.get_json()['grenade_area']
+	grenade_burst = request.get_json()['grenade_burst']
+	grenade_area_damage = request.get_json()['grenade_area_damage']
+	conceal = request.get_json()['conceal']
+	sense = request.get_json()['sense']
+	double = request.get_json()['double']
+	double_mod = request.get_json()['double_mod']
+	benefit = request.get_json()['benefit']
+	condition = request.get_json()['condition']
+	descriptor = request.get_json()['descriptor']
 
 	weapon_id = integer(weapon_id)
 
 	entry = db.session.query(Weapon).filter(Weapon.id == weapon_id).one()
 
+	entry.cat_id = cat_id
+	entry.type_id = type_id
+	entry.cost = cost
+	entry.description = description
+	entry.critical = critical
+	entry.damage = damage
+	entry.toughness = toughness
+	entry.material = material
+	entry.length = length
+	entry.length_units = length_units
+	entry.resist_dc = resist_dc
+	entry.resistance = resistance
+	entry.power_rank = power_rank
+	entry.power = power
+	entry.hands = hands
+	entry.strength = strength
+	entry.thrown = thrown
+	entry.unarmed = unarmed
+	entry.reach = reach
+	entry.ranged_attack_bonus = ranged_attack_bonus
+	entry.protect = protect
+	entry.ranged_area = ranged_area
+	entry.ranged_burst = ranged_burst
+	entry.ranged_area_damage = ranged_area_damage
+	entry.penetrate = penetrate
+	entry.attack_bonus = attack_bonus
+	entry.subtle = subtle
+	entry.perception_dc = perception_dc
+	entry.advantage = advantage
+	entry.grenade_area = grenade_area
+	entry.grenade_burst = grenade_burst
+	entry.grenade_area_damage = grenade_area_damage
+	entry.conceal = conceal
+	entry.sense = sense
+	entry.double = double
+	entry.double_mod = double_mod
+	entry.benefit = benefit
+	entry.condition = condition
+	entry.descriptor = descriptor
 
 	db.session.commit()
 

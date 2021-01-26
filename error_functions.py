@@ -22,6 +22,29 @@ def required(value, name, errors):
 
 	return (errors)
 
+def required_multiple(field, values, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+	check = False
+
+	for value in values:
+		if value == field:
+			check = True
+
+	if check == False:
+		return (errors)
+
+	if field == '':
+		error = True
+		message = name + ' field is required.'
+		error_msgs.append(message)
+
+	if error:
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 def power_check(value, errors):
 	error_msgs = errors['error_msgs']
 	error = False

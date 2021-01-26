@@ -8,6 +8,49 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields
 
+def weap_save_errors(data):
+
+	weapon_id = data['weapon_id']
+	cat_id = data['cat_id']
+	type_id = data['type_id']
+	cost = data['cost']
+	description = data['description']
+	critical = data['critical']
+	damage = data['damage']
+	toughness = data['toughness']
+	material = data['material']
+	length = data['length']
+	length_units = data['length_units']
+	resist_dc = data['resist_dc']
+	resistance = data['resistance']
+	power_rank = data['power_rank']
+	power = data['power']
+	hands = data['hands']
+	strength = data['strength']
+	thrown = data['thrown']
+	unarmed = data['unarmed']
+	reach = data['reach']
+	ranged_attack_bonus = data['ranged_attack_bonus']
+	protect = data['protect']
+	ranged_area = data['ranged_area']
+	ranged_burst = data['ranged_burst']
+	ranged_area_damage = data['ranged_area_damage']
+	penetrate = data['penetrate']
+	attack_bonus = data['attack_bonus']
+	subtle = data['subtle']
+	perception_dc = data['perception_dc']
+	advantage = data['advantage']
+	grenade_area = data['grenade_area']
+	grenade_burst = data['grenade_burst']
+	grenade_area_damage = data['grenade_area_damage']
+	conceal = data['conceal']
+	sense = data['sense']
+	double = data['double']
+	double_mod = data['double_mod']
+	benefit = data['benefit']
+	condition = data['condition']
+	descriptor = data['descriptor']
+
 
 def weap_condition_post_errors(data):
 
