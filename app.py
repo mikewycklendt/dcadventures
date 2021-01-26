@@ -63,7 +63,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/weapontype/create')
 def weapontype_create():
 		
-	entries = [8, 9, 10]
+	entries = [8, 9]
 
 	for i in entries:
 		try:
@@ -81,7 +81,7 @@ def weapontype_create():
 		print (result.type_id)
 		print (result.name)
 
-	entries = [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+	entries = [40]
 
 	for i in entries:
 		try:
