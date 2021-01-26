@@ -4252,7 +4252,19 @@ class EquipOpposed(db.Model):
 			'condition1': self.condition1,
 			'condition2': self.condition2
 		}	
-	
+
+class Armor(db.Model):
+	__tablename__ = 'armor'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'description': self.description
+		}
 
 if __name__ == '__main__':
     app.debug = True
