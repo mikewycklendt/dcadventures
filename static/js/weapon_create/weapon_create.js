@@ -196,7 +196,7 @@ weapon_save = function() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			window.location.replace('/weapon/save/success/' + equip_id);
+			window.location.replace('/weapon/save/success/' + weapon_id);
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)
