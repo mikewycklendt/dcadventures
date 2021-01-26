@@ -75,9 +75,9 @@ def weap_save_errors(data):
 	errors = together_names('Area Effect', ['Area Effect', 'Area Damage'], [grenade_area, grenade_area_damage], errors)
 	errors = check_field(double, 'Doubling Effect', 'Damage Per x2', double_mod, errors)
 	
-	weap_entry_check('Conditions', condition, WeapCondition, weapon_id, errors)
-	weap_entry_check('Benefits', benefit, WeapBenefit, weapon_id, errors)
-	weap_entry_check('Effect Descriptors', descriptor, WeapDescriptor, weapon_id, errors)
+	weap_entry_check('Conditions', WeapCondition, condition, weapon_id, errors)
+	weap_entry_check('Benefits', WeapBenefit, benefit, weapon_id, errors)
+	weap_entry_check('Effect Descriptors', WeapDescriptor, descriptor, weapon_id, errors)
 
 	return (errors)
 
