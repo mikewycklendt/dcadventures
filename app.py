@@ -23,6 +23,7 @@ from powers import powers
 from advantage import advantage
 from equipment import equip
 from weapons import weap
+from armor import arm
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -43,6 +44,7 @@ app.register_blueprint(powers)
 app.register_blueprint(advantage)
 app.register_blueprint(equip)
 app.register_blueprint(weap)
+app.register_blueprint(arm)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)

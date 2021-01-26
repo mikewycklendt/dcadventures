@@ -1,0 +1,108 @@
+<div class="armor-container" style="justify-content: center; background:url(/static/img/bg/cyborg.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="weapon-grid">
+		
+		<br>
+
+		<div id="box-title">
+			<img src="/static/img/title/create_armor.png" width="100%">
+		</div>
+
+
+		<br><br>
+		
+
+		<div id="addarmorgrid">
+
+			<div id="add-armor">
+
+				<div id="addarmorunderline">
+					Armor Name
+				</div>
+
+				<div id="addarmorform">
+					<div id="namearmor">
+						<input type="text" id="armor_name" placeholder="armor Name">
+					</div>
+						
+					<div id="namebutton">
+						<div class="btn" id="armor_create" onclick="armor_create()" >
+							 Create Armor
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div id="armor-name-grid">
+
+				<div id="armor-name">
+
+				</div>
+
+				<div id="armor-edit">
+					<div id="edit-button" style="display: none;">
+						<button  style="font-size: 260%;" onclick="edit_form()"><i class="fa fa-edit"></i></button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="armor-edit-grid" style="display: none;">
+				<div id="armor-edit-field">
+					<input type="text" id="armor_name_edit">
+				</div>
+
+				<div id="armor-edit-btn">
+					<div class="edit-btn" id="armor_edit" onclick="armor_edit()">
+						Save
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
+		
+			</div>
+			
+		</div>
+
+		<br>
+
+		<span>
+
+		<div id="all-fields">
+			
+			<div id="base-form">
+				{% include armor_includes.base_form %}
+			</div>
+
+			<br>
+
+			<div class="armor-box" id="armor-">
+			</div>
+
+			<br>
+
+		<div id="armor-err"></div>
+
+		<br><br>
+
+		<div id="save-div">
+			<div class="save-btn" onclick="armor_save()"> Save Armor</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+
+		</span>
+		
+	</div>
+	
+</div>
+
+	<script src="/static/js/armor_create/armor_functions.js"></script>
+	<script src="/static/js/armor_create/armor_create.js"></script>
+	<script src="/static/js/armor_create/base_form.js"></script>
+	
+	<input type="hidden" id="armor_id" name="armor_id" value=>
