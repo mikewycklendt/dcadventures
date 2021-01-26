@@ -7,7 +7,6 @@ def weap_condition_post_errors(data):
 	columns = data['columns']
 	Created = data['created']
 	font = data['font']
-	benefit = data['benefit']
 	condition_type = data['condition_type']
 	condition = data['condition']
 	condition_null = data['condition_null']
