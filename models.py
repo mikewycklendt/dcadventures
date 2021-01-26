@@ -3848,27 +3848,6 @@ class EquipEffect(db.Model):
 			'description': self.description
 		}
 	
-class EquipBelt(db.Model):
-	__tablename__ = 'equipment_belt'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	cost = db.Column(db.Integer)
-	belt_item_type = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'equip_id': self.equip_id,
-			'feature': self.feature,
-			'weapon': self.weapon,
-			'equipment': self.equipment,
-			'cost': self.cost,
-			'belt_item_type': self.belt_item_type
-		}
-	
 class EquipCheck(db.Model):
 	__tablename__ = 'equipment_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
