@@ -47,7 +47,7 @@ function benefit_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/weapon/' + table_id + '/delete/'
-			create_table(jsonResponse, _grid, route);
+			create_table(jsonResponse, benefit_grid, route);
 			clear_errors(err_line, errors)
 
 			benefit_grid.titles = true;
