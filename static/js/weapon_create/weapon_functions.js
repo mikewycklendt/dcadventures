@@ -428,10 +428,17 @@ function hide_opacity(div_input) {
 function show_opacity_class(div_input) {
 	const divs = document.getElementsByClassName(div_input);
 	let div;
-	for (div of divs) {
-		setTimeout(function(){div.style.display = 'grid';}, 300);
-		setTimeout(function(){div.style.opacity = '100%';}, 310);
-	}
+	
+	setTimeout(function(){
+		for (div of divs) {			
+			div.style.display = 'grid';
+		}
+	}, 300);
+	setTimeout(function(){
+		for (div of divs) {
+			div.style.opacity = '100%';
+		}
+	}, 310);
 }
 
 function hide_opacity_class(div_input) {
@@ -439,8 +446,13 @@ function hide_opacity_class(div_input) {
 	let div;
 	for (div of divs) {
 		div.style.opacity = '0%';
-		setTimeout(function(){div.style.display = 'none';}, 300);
 	}
+
+	setTimeout(function(){
+		for (div of divs) {
+			div.style.display = 'none';
+		}
+	}, 300);		
 }
 
 function math_div_select(select, val, math, containdiv ) {
