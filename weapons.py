@@ -320,8 +320,8 @@ def weapon_post_condition():
 	return jsonify(body)
 
 
-@weap.route('/weapon/descriptor/delete/<weapon_id>', methods=['DELETE'])
-def delete_weapon_descriptor(weapon_id):
+@weap.route('/weapon/condition/delete/<weapon_id>', methods=['DELETE'])
+def delete_weapon_condition(weapon_id):
 	try:
 		db.session.query(WeapCondition).filter_by(id=weapon_id).delete()
 		db.session.commit()
