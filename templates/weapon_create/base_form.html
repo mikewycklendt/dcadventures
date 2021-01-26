@@ -211,7 +211,7 @@
 			<input type="checkbox" id="strength" class="regular-checkbox big-checkbox" >	
 		</div>
 	</div>
-	
+
 	<div class="base-field base-hidden" id="base-thrown">
 		<div id="multiple-attr-title">
 			Thrown as Ranged
@@ -241,6 +241,36 @@
 			<select class="base-select" id="reach" name="reach">
 				<option value="">Reach</option>
 				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field base-hidden" id="base-accurate">
+		<div id="multiple-attr-title">
+			Accurate Rank
+		</div>
+
+		<div>
+			<select class="base-select" id="accurate" name="accurate">
+				<option value="">Accurate Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field base-hidden" id="base-protection">
+		<div id="multiple-attr-title">
+			Protection Modifier
+		</div>
+
+		<div>
+			<select class="base-select" id="protect" name="protect">
+				<option value="">Protection Modifier</option>
+				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>

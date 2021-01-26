@@ -3,7 +3,9 @@ function category() {
 	const fill = 'type';
 	const options = [{'val': '1', 'div': 'base-thrown'},
 					{'val': '1', 'div': 'base-reach'},
-					{'val': '1', 'div': 'base-unarmed'}]
+					{'val': '1', 'div': 'base-unarmed'},
+					{'val': '2', 'div': 'base-accurate'},
+					{'val': '2', 'div': 'base-protection'}]
 
 	weapon_type_select(select, fill);
 	select_opacity(select, options)
