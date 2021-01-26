@@ -60,20 +60,63 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
-@app.route('/weapontype/create')
-def weapontype_create():
-		
-	entries = [8, 9]
+@app.route('/weaponcat/create')
+def weaponcat_create():
+
+	entries = ['Melee', 'Ranged', 'Grenades and Explosives', 'Accessory']
 
 	for i in entries:
-		try:
-			db.session.query(WeaponType).filter_by(id=i).delete()
-			db.session.commit()
-		except:
-			db.session.rollback()
-		finally:
-			db.session.close()
-	
+
+		entry = WeaponCat(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = WeaponCat.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('weqpon category added')
+
+
+@app.route('/weapontype/create')
+def weapontype_create():
+
+	entries = ['Simple', 'Aechaic', 'Exotic']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=1)
+		db.session.add(entry)
+		db.session.commit()
+		
+	entries = ['Projectile', 'Energy', 'Heavy', 'Thrown']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=2)
+		db.session.add(entry)
+		db.session.commit()
+		
+		
+	entries = ['Grenades', 'Explosives']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=3)
+		db.session.add(entry)
+		db.session.commit()
+
+
+	entries = ['Accessories', 'Other']
+
+	for i in entries:
+
+		entry = WeaponType(name=i, type_id=4)
+		db.session.add(entry)
+		db.session.commit()
+
 	results = WeaponType.query.all()
 
 	for result in results:
@@ -81,24 +124,7 @@ def weapontype_create():
 		print (result.type_id)
 		print (result.name)
 
-	entries = [40]
-
-	for i in entries:
-		try:
-			db.session.query(Weapon).filter_by(id=i).delete()
-			db.session.commit()
-		except:
-			db.session.rollback()
-		finally:
-			db.session.close()
-
-	results = Weapon.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('weapons deleted')
+	return ('weqpon category added')
 
 @app.route('/weapon/create')
 def weapon_create():
