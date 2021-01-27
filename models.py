@@ -778,6 +778,7 @@ class Power(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
+	power_type = db.Column(db.Integer, db.ForeignKey('power_type.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	power_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	duration = db.Column(db.String())
@@ -831,6 +832,7 @@ class Power(db.Model):
 			'id': self.id,
 			'name': self.name,
 			'description': self.description,
+			'power_type': self.power_type,
 			'action': self.action,
 			'power_range': self.power_range,
 			'duration': self.duration,
