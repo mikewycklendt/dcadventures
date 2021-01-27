@@ -39,7 +39,7 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html'}
 	
-	title = 'DC Adventures Online Roleplaying Game: Create Armor'
+	title = 'DC Adventures Online Roleplaying Game: Create Vehicle'
 	stylesheets.append({"style": "/static/css/vehicle_create.css"})
 
 	negatives = []
