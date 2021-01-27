@@ -4266,8 +4266,8 @@ class Armor(db.Model):
 			'description': self.description
 		}
 
-class Armortype(db.Model):
-	__tablename__ = 'armor'
+class ArmorType(db.Model):
+	__tablename__ = 'armor_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
