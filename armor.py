@@ -255,10 +255,10 @@ def armor_post_descriptor():
 	return jsonify(body)
 
 
-@aem.route('/qrmor/armor/delete/<qrmor_id>', methods=['DELETE'])
-def delete_armor_descriptor(qrmor_id):
+@aem.route('/armor/descriptor/delete/<armor_id>', methods=['DELETE'])
+def delete_armor_descriptor(armor_id):
 	try:
-		db.session.query(Armor).filter_by(id=armor_id).delete()
+		db.session.query(ArmDescriptor).filter_by(id=armor_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()

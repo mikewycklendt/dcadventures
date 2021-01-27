@@ -4277,6 +4277,18 @@ class ArmorType(db.Model):
 			'name': self.name
 		}
 
+class ArmDescriptor(db.Model):
+	__tablename__ = 'armor_descriptor'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
+	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'equip_id': self.equip_id,
+			'descriptor': self.descriptor
+		}	
 
 
 
