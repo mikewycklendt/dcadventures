@@ -4258,12 +4258,32 @@ class Armor(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('armor_type.id'))
+	cost = db.Column(db.Integer)
+	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
+	toughness = db.Column(db.Integer)
+	active = db.Column(db.Integer)
+	subtle = db.Column(db.Boolean)
+	perception = db.Column(db.Integer)
+	impervious = db.Column(db.Boolean)
+	defense = db.Column(db.Boolean)
+	descriptor = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'description': self.description
+			'description': self.description,
+			'type_id': self.type_id,
+			'cost': self.cost,
+			'material': self.material,
+			'toughness': self.toughness,
+			'active': self.active,
+			'subtle': self.subtle,
+			'perception': self.perception,
+			'impervious': self.impervious,
+			'defense': self.defense,
+			'descriptor': self.descriptor
 		}
 
 class ArmorType(db.Model):
@@ -4286,8 +4306,24 @@ class ArmDescriptor(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'equip_id': self.equip_id,
+			'armor_id': self.armor_id,
 			'descriptor': self.descriptor
+		}
+
+
+class ArmDefense(db.Model):
+	__tablename__ = 'armor_defense'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
+	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
+	bonus = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'armor_id': self.armor_id,
+			'defense': self.defense,
+			'bonus': self.bonus
 		}	
 
 

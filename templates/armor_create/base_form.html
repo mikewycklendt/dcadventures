@@ -49,7 +49,7 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="type" name="type">
+			<select class="base-select" id="material" name="material">
 				<option value="">Material</option>
 				{% for m in materials %}
 					<option value={{m.id}}>{{m.name}}</option>
@@ -64,7 +64,7 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="type" name="type">
+			<select class="base-select" id="toughness" name="toughness">
 				<option value="">Toughness Bonus</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
@@ -79,7 +79,7 @@
 		</div>
 
 		<div>
-			<select class="base-select" id="type" name="type">
+			<select class="base-select" id="active" name="active">
 				<option value="">Active Defense Bonus</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>

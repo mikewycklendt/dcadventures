@@ -100,6 +100,16 @@ armor_save = function() {
 	const armor_id = document.getElementById('armor_id').value;
 
 	const description = text("description");
+	const type_id = select("type");
+	const cost = select("cost");
+	const material = select("material");
+	const toughness = select("toughness");
+	const active = select("active");
+	const subtle = check("subtle");
+	const perception = select("perception_dc");
+	const impervious = check("impervious");
+	const defense = check("defense_check")
+	const descriptor = check("descriptor_check")
 	
 	const errors = 'armor-err';
 	const err_line = 'armor-err-line';
@@ -109,6 +119,16 @@ armor_save = function() {
 		body: JSON.stringify({
 			'armor_id': armor_id,
 			'description': description,
+			'type_id': type_id,
+			'cost': cost,
+			'material': material,
+			'toughness': toughness,
+			'active': active,
+			'subtle': subtle,
+			'perception': perception,
+			'impervious': impervious,
+			'defense': defense,
+			'descriptor': descriptor
 		}),
 		headers: {
 		'Content-Type': 'application/json',

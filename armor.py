@@ -21,10 +21,8 @@ from error_functions import integer, required, power_check, one, field, rule_che
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
-from equipment_posts import equip_belt_post, equip_check_post, equip_damaged_post, equip_descriptor_post, equip_effect_post, equip_feature_post, equip_limits_post, equip_modifiers_post, equip_opposed_post
-from equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors
 from models import WeapBenefit, WeapCondition, WeapDescriptor
-from models import Armor, ArmorType, ArmDescriptor
+from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from armor_errors import arm_descriptor_post_errors, arm_save_errors
 from armor_posts import arm_descriptor_post
 load_dotenv()
@@ -147,9 +145,31 @@ def save_armor():
 		return jsonify(body)
 
 	armor_id = request.get_json()['armor_id']
+	description = request.get_json()['description']
+	type_id = request.get_json()['type_id']
+	cost = request.get_json()['cost']
+	material = request.get_json()['material']
+	toughness = request.get_json()['toughness']
+	active = request.get_json()['active']
+	subtle = request.get_json()['subtle']
+	perception = request.get_json()['perception']
+	impervious = request.get_json()['impervious']
+	defense = request.get_json()['defense']
+	descriptor = request.get_json()['descriptor']
 	
 	entry = db.session.query(Armor).filter(Armor.id == armor_id).one()
 
+	entry.description = description
+	entry.type_id = type_id
+	entry.cost = cost
+	entry.material = material
+	entry.toughness = toughness
+	entry.active = active
+	entry.subtle = subtle
+	entry.perception = perception
+	entry.impervious = impervious
+	entry.defense = defense
+	entry.descriptor = descriptor
 
 	db.session.commit()
 
@@ -275,6 +295,80 @@ def armor_post_descriptor():
 def delete_armor_descriptor(armor_id):
 	try:
 		db.session.query(ArmDescriptor).filter_by(id=armor_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(armor_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': armor_id, 'cost': False})
+
+
+@arm.route('/armor/defense/create', methods=['POST'])
+def armor_post_defensev():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = arm_defense_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	armor_id = request.get_json()['armor_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	defense = request.get_json()['defense']
+	bonus = request.get_json()['bonus']
+
+	armor_id = db_integer(armor_id)
+	bonus = integer(bonus)
+	defense = db_integer(defense)
+
+	entry = ArmDefense(armor_id = armor_id,
+							defense = defense,
+							bonus = bonus)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'defense'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = arm_defense_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+
+@arm.route('/armor/defense/delete/<armor_id>', methods=['DELETE'])
+def delete_armor_defense(armor_id):
+	try:
+		db.session.query(ArmDefense).filter_by(id=armor_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()

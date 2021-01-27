@@ -3,6 +3,7 @@ from models import Environment, Levels, LevelType, PowerAltCheck, PowerAction, P
 from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
+from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
 
@@ -18,6 +19,24 @@ def arm_descriptor_post(entry, body, cells):
 	descriptor = name(Descriptor, descriptor)
 	
 	cells = cell('Descriptor', 25, [descriptor], cells)
+
+	body = send(cells, body)
+	
+	cells.clear()
+
+	return (body)
+
+def arm_defense_post(entry, body, cells):
+
+	armor_id = entry.armor_id
+	defense = entry.defense
+	bonus = entry.bonus
+
+	defense = name(Defense, defense)
+	bonus = integer_convert(bonus)
+	
+	cells = cell('Defense', 30, [defense], cells)
+	cells = cell('Bonus', 12, [bonus], cells)
 
 	body = send(cells, body)
 	

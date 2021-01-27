@@ -19,6 +19,8 @@ function defense_submit() {
 	const font = defense_grid.font;
 
 	const armor_id = document.getElementById('armor_id').value;
+	const defense = select("defense_defense");
+	const bonus = select("defense_bonus");
 
 	const errors = 'defense-err';
 	const err_line = 'defense-err-line';
@@ -29,7 +31,9 @@ function defense_submit() {
 			'armor_id': armor_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'defense': defense,
+			'bonus': bonus
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
