@@ -22,7 +22,7 @@ function feature_submit() {
 	const name = text('feature_name')
 	const description = text('feature_description')
 	const feature = select('feature_feature');
-	let feature_count = document.getElementById('feature_count');
+	let feature_count = document.getElementById('feature_count').value;
 
 	const errors = 'feature-err';
 	const err_line = 'feature-err-line';
@@ -53,6 +53,7 @@ function feature_submit() {
 			if (name != '') {
 				selects_add(id, name, 'feature-entry');
 				feature_count += 1;
+
 			}
 			
 			feature_grid.columns.length = 0;
