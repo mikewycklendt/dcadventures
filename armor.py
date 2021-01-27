@@ -241,7 +241,7 @@ def armor_post_descriptor():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = armor_descriptor_post_errors(data)
+	errors = arm_descriptor_post_errors(data)
 
 	error = errors['error']
 	if error:
