@@ -1432,22 +1432,55 @@ function selects_add(id, name, selects_input) {
 
 function calculate_cost() {
 	
-	const size_strength = costs.size_strength
-	const size_toughness = costs.size_toughness
-	const size_defense = costs.size_defense
-	const strength = costs.strength
-	const strengths = costs.strengths
-	const speed = costs.speed
-	const toughness = costs.toughness
-	const toughnesses = costs.toughnesses
-	const defense = costs.defense
-	const defenses = costs.defenses
-	const feature = costs.feature
-	const features = costs.features
-	const power = costs.power
-	const powers = costs.powers
-	const cost = costs.cost
+	const size = costs.size;
+	const size_strength = costs.size_strength;
+	const size_toughness = costs.size_toughness;
+	const size_defense = costs.size_defense;
+	const strength = costs.strength;
+	const strengths = costs.strengths;
+	const speed = costs.speed;
+	const toughness = costs.toughness;
+	const toughnesses = costs.toughnesses;
+	const defense = costs.defense;
+	const defenses = costs.defenses;
+	let feature = 0;
+	const features = costs.features;
+	let power = 0;
+	const powers = costs.powers;
+	let cost = costs.cost;
+	
+	const size_div = document.getElementById("cost-size");
+	const strength_div = document.getElementById("cost-strength");
+	const speed_div = document.getElementById("cost-speed");
+	const toughness_div = document.getElementById("cost-toughness");
+	const defense_div = document.getElementById("cost-defense");
+	const features_div = document.getElementById("cost-features");
+	const powers_div = document.getElementById("cost-powers");
+	const total_div = document.getElementById("cost-total");
 
+	strength = strengths + size_strength;
+	speed = speed;
+	toughness = toughnesses + size_toughness;
+	defense = defenses + size_defense;
+	let f;
+	for (f of features) {
+		feature += f;
+	};
+	let p;
+	for (p of powers) {
+		power += p;
+	};
+	
+	cost = strength + speed + toughness + defense + feaure + power;
+	
+	size_div.innerHTML = size;
+	strength_div.innerHTML = strength;
+	speed_div.innerHTML = speed;
+	toughness_div.innerHTML = toughness;
+	defense_div.innerHTML = defense;
+	features_div.innerHTML = features;
+	powers_div.innerHTML = powers;
+	total_div.innerHTML = cost;
 }
 
 function create_table(jsonResponse, object, route, selects=false) {

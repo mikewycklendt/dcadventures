@@ -14,40 +14,50 @@
 <div class="vehicle-box">
 
 	<div id="cost-traits">
-		Vehicle Trait Cost
+		Cost Per Vehicle Trait
 	</div>
 
 	<div id="cost-grid">
 		<div class="cost-title">
 			Size Rank
+			<input type="hidden" id="size_strength_cost" name="size_strength_cost" value=>
+			<input type="hidden" id="size_toughness_cost" name="size_toughness_cost" value=>
+			<input type="hidden" id="size_defense_cost" name="size_strength_cost" value=>
 		</div>
 
 		<div class="cost-title">
 			Strength
+			<input type="hidden" id="strength_cost" name="strength_cost" value=>
 		</div>
 
 		<div class="cost-title">
-			Speed		
+			Speed
+			<input type="hidden" id="speed_cost" name="speed_cost" value=>
 		</div>
 
 		<div class="cost-title">
 			Toughness
+			<input type="hidden" id="toughness_cost" name="toughness_cost" value=>
 		</div>
 
 		<div class="cost-title">
-			Defense			
+			Defense
+			<input type="hidden" id="defense_cost" name="defense_cost" value=>
 		</div>
 
 		<div class="cost-title">
 			Features
+			<input type="hidden" id="features_cost" name="features_cost" value=>
 		</div>
 
 		<div class="cost-title">
 			Powers
+			<input type="hidden" id="powers_cost" name="powers_cost" value=>
 		</div>
 
 		<div class="cost-title" style="color: #af0101;">
 			Vehicle Cost
+			<input type="hidden" id="cost" name="cost" value=>
 		</div>
 
 		<div class="cost-value" id="cost-size">
@@ -111,7 +121,7 @@
 				<select class="base-select" id="size" name="size">
 					<option value=""> Vehicle Size</option>
 					{% for v in vehicle_size %}
-						<option value={{v.id}}>{{v.name}} (Size Rank {{v.size}})</option>
+						<option value={{v.id}}>{{v.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
