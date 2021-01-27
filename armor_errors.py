@@ -42,8 +42,8 @@ def arm_save_errors(data):
 	errors = required(material, 'Msterial', errors)
 	errors = of([toughness, active, defense], 'You must set a toughness bonus, active defense bonus or at least one defense bonus', errors)
 
-	arm_entry_check('Armor Descriptors', ArmDescriptor. descriptor, armor_id, errors)
-	arm_entry_check('Defense Bonus', ArmDefense. defense, armor_id, errors)
+	arm_entry_check('Armor Descriptors', ArmDescriptor, descriptor, armor_id, errors)
+	arm_entry_check('Defense Bonus', ArmDefense, defense, armor_id, errors)
 
 	return (errors)
 
