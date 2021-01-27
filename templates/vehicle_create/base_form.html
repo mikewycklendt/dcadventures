@@ -129,6 +129,67 @@
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
+				Speed Rank
+			</div>
+
+			<div style="width: 75%;">
+				<select class="base-select" id="speed" name="speed">
+					<option value="">Speed Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Strength Bonus
+			</div>
+
+			<div style="width: 75%;">
+				<select class="base-select" id="strengths" name="strengths" cost_name="strength">
+					<option value=""> Strength Bonus</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Toughness Bonus
+			</div>
+
+			<div style="width: 75%;">
+				<select class="base-select" id="toughnesses" name="toughnesses" cost_name="toughnesses">
+					<option value=""> Toughness Bonus</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Defense Bonus
+			</div>
+
+			<div style="width: 75%;">
+				<select class="base-select" id="defenses" name="defenses" cost_name="defenses">
+					<option value=""> Strength Bonus</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
 			
 			</div>
 
