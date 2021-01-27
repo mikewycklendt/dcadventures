@@ -26,15 +26,15 @@ def feature_save_errors(data):
 	locks = data['locks']
 	lock_type = data['lock_type']
 
-	fields = {'val': type_id, 'name': 'Equipment Type',
-		'val': cost, 'name': 'Cost',
-		'val': description, 'name': 'Equipment Descriptiomn',
-		'val': toughness, 'name': 'Toughness',
-		'val': expertise, 'name': 'Expertise',
-		'val': speed_mod, 'name': 'Speed Modifier',
-		'val': direction, 'name': 'Movement Direction',
-		'val': locks, 'name': 'Locks',
-		'val': lock_type, 'name': 'Lock Type'}
+	fields = [{'val': type_id, 'name': 'Equipment Type'},
+		{'val': cost, 'name': 'Cost'},
+		{'val': description, 'name': 'Equipment Descriptiomn'},
+		{'val': toughness, 'name': 'Toughness'},
+		{'val': expertise, 'name': 'Expertise'},
+		{'val': speed_mod, 'name': 'Speed Modifier'},
+		{'val': direction, 'name': 'Movement Direction'},
+		{'val': locks, 'name': 'Locks'},
+		{'val': lock_type, 'name': 'Lock Type'}]
 	
 	errors = unsaved(fields, equip_id, errors)
 
