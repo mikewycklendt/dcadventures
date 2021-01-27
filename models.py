@@ -4266,17 +4266,6 @@ class Armor(db.Model):
 			'description': self.description
 		}
 
-class ArmorType(db.Model):
-	__tablename__ = 'armor_type'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
 class ArmDescriptor(db.Model):
 	__tablename__ = 'armor_descriptor'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
