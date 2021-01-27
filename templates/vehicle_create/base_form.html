@@ -11,6 +11,7 @@
 
 <br>
 
+<div class="vehicle-box">
 <div id="vehicle-base">
 
 	<div class="base-field">
@@ -20,11 +21,29 @@
 
 		<div>
 			<select class="base-select" id="type_id" name="type_id">
-				<option value=""> Vehicle Type</option>}
+				<option value=""> Vehicle Type</option>
+				{% for v in vehicle_type %}
+					<option value={{v.id}}>{{v.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
-	
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Vehicle Size
+		</div>
+
+		<div>
+			<select class="base-select" id="size" name="size">
+				<option value=""> Vehicle Type</option>
+				{% for v in vehicle_size %}
+					<option value={{v.id}}>{{v.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div class="base-field">
 		<div id="multiple-attr-title">
 			
@@ -36,4 +55,7 @@
 			</di>
 		</div>
 	</div>
+
+
+</div>
 </div>
