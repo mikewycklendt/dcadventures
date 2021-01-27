@@ -73,7 +73,7 @@ def armor_type_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Cover.query.all()
+	results = ArmorType.query.all()
 
 	for result in results:
 		print (result.id)
