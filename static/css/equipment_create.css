@@ -452,7 +452,7 @@ textarea:focus {
 
 .save-btn::before {
 	font-family: 'FontAwesome';
-	padding-right: 1vw;
+	padding-right: .6vw;
 	content: '\f0c7';
 	display: inline-block;
 }
