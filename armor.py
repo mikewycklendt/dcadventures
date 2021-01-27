@@ -69,9 +69,16 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defenses = Defense.query.all()
 
+	origins = db.session.query(Origin).order_by(Origin.name).all()
+	
+	sources = db.session.query(Source).order_by(Source.name).all()
+	
+	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, armor_includes=armor_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, armor_type=armor_type, defenses=defenses)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, armor_type=armor_type, defenses=defenses, origins=origins, sources=sources,
+							mediums=mediums)
 							
 
 @arm.route('/armor/create', methods=['POST'])

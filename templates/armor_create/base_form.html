@@ -57,4 +57,38 @@
 			</select>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Subtle
+		</div>
+
+		<div class="base-3">
+			<div>
+				<input type="checkbox" id="subtle" class="regular-checkbox big-checkbox" onclick="subtle()">	
+			</div>
+
+			<div class="base-fade" id="subtle-dc">
+				<select class="base-select" id="perception_dc" name="perception_dc">
+					<option value="">Perception Check DC</option>
+					<option value="">Undetectable</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Impervious
+		</div>
+
+		<div class="base-3">
+			<div>
+				<input type="checkbox" id="impervious" class="regular-checkbox big-checkbox">	
+			</di>
+		</div>
+	</div>
 </div>
