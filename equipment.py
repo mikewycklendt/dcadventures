@@ -23,7 +23,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from equipment_posts import equip_belt_post, equip_check_post, equip_damaged_post, equip_descriptor_post, equip_effect_post, equip_feature_post, equip_limits_post, equip_modifiers_post, equip_opposed_post
-from equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors
+from equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors, feature_save_errors
 
 load_dotenv()
 
@@ -564,6 +564,36 @@ def save_equipment():
 	print(body)
 	return jsonify(body)
 
+@equip.route('/feature/save', methods=['POST'])
+def save_feature(): 
+	body = {}
+	body['success'] = True
+	error = False
+	error_msgs = []
+
+	data = request.get_json()
+	
+	errors = feature_save_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	body['success'] = True
+			
+	db.session.close()
+	print(body)
+	return jsonify(body)
+
+@equip.route('/feature/save/success')
+def feature_save_success():
+	
+	flash('Fwatures Successfully Created')
+	return redirect(url_for('home'))
+
+
 @equip.route('/equipment/save/success/<equipment_id>')
 def equipment_save_success(equipment_id):	
 	equipment = db.session.query(Equipment).filter_by(id=equipment_id).one()
@@ -729,7 +759,7 @@ def delete_equipment_belt(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': True, 'total_cost': total_cost})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': True, 'total_cost': total_cost, 'feature': False})
 
 	
 @equip.route('/equipment/check/create', methods=['POST'])
@@ -819,7 +849,7 @@ def delete_equipment_check(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 	
 @equip.route('/equipment/damaged/create', methods=['POST'])
 def equipment_post_damaged():
@@ -916,7 +946,7 @@ def delete_equipment_damaged(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 	
 @equip.route('/equipment/descriptor/create', methods=['POST'])
 def equipment_post_descriptor():
@@ -992,7 +1022,7 @@ def delete_equipment_descriptor(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 
 	
 @equip.route('/equipment/effect/create', methods=['POST'])
@@ -1064,7 +1094,7 @@ def delete_equipment_effect(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 
 	
 @equip.route('/equipment/feature/create', methods=['POST'])
@@ -1144,7 +1174,7 @@ def delete_equipment_feature(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': True})
 
 	
 @equip.route('/equipment/limits/create', methods=['POST'])
@@ -1274,7 +1304,7 @@ def delete_equipment_limits(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 
 	
 @equip.route('/equipment/modifiers/create', methods=['POST'])
@@ -1567,7 +1597,7 @@ def delete_equipment_modifiers(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 
 
 @equip.route('/equipment/opposed/create', methods=['POST'])
@@ -1659,6 +1689,6 @@ def delete_equipment_opposed(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
 
 

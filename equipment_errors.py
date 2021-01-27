@@ -6,8 +6,48 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, unsaved
 
+
+def feature_save_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	equip_id = data['equip_id']
+	type_id = data['type_id']
+	cost = data['cost']
+	description = data['description']
+	toughness = data['toughness']
+	expertise = data['expertise']
+	alternate = data['alternate']
+	move = data['move']
+	speed_mod = data['speed_mod']
+	direction = data['direction']
+	locks = data['locks']
+	lock_type = data['lock_type']
+	mod_multiple = data['mod_multiple']
+	mod_multiple_count = data['mod_multiple_count']
+	check = data['check']
+	damaged = data['damaged']
+	descriptor = data['descriptor']
+	feature = data['feature']
+	limits = data['limits']
+	modifiers = data['modifiers']
+	opposed = data['opposed']
+
+	fields = {'val': type_id, 'name': 'Equipment Type',
+		'val': cost, 'name': 'Cost',
+		'val': description, 'name': 'Equipment Descriptiomn',
+		'val': toughness, 'name': 'Toughness',
+		'val': expertise, 'name': 'Expertise'
+		'val': speed_mod, 'name': 'Speed Modifier',
+		'val': direction, 'name': 'Movement Direction',
+		'val': locks, 'name': 'Locks',
+		'val': lock_type, 'name': 'Lock Type'}
+	
+	errors = unsaved(fields, equip_id)
+
+	return (errors)
 
 def equip_save_errors(data):
 
@@ -39,11 +79,6 @@ def equip_save_errors(data):
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	
-	errors = required(description, 'Description', errors)
-	errors = required(type_id, 'Equipment Type', errors)
-	errors = required(cost, 'Cost', errors)
-	if type_id != '6':
-		errors = required(toughness, 'Toughness', errors)
 
 	errors = check_fields(move, 'Movement Effect', [speed_mod, direction], errors)
 	errors = check_field(move, 'Movement Effect', 'Speed Rank Modifier', speed_mod, errors)

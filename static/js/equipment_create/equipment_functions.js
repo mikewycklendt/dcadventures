@@ -1770,7 +1770,7 @@ function row_delete(jsondata, route, object, selects=false) {
 				if (jsonResponse.success) {
 
 					const cost = jsonResponse.cost;
-	
+ 	
 					if (cost == true) { 
 						const belt_cost = document.getElementById("belt-cost");
 						const cost_field = document.getElementById('belt_cost');

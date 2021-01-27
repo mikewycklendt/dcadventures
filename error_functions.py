@@ -856,9 +856,29 @@ def create_check(name, item_id, table, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	if item_id == '':
+	if item_id != '':
+		return (errors)
+	else:
 		error = True
 		message = 'You must create a ' + name + ' name first.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def equip_create_check(item_id, feature_id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if item_id != '' or feature_id != '':
+		return (errors)
+	else:
+		error = True
+		message = 'You must set an advantage name or create and select a feature first.'
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -913,6 +933,30 @@ def adv_entry_check(name, table, check, id, errors):
 
 	errors['error_msgs'] = error_msgs
 	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def unsaved(fields, equip_id):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if equip_id != '':
+		error = True
+		message = 'You have started creating equipment.  Finish setting the values for the equipment and click the save equipment button.  Any features you have created will still be saved.'
+
+	for f in fields:
+		name = f['name']
+		field = f['val']
+		if field != '':
+			error = True
+			message = 'The ' + name + ', ' 
+			
+	if error:		
+		message += 'fields are just for equioment.  If you need that setting, create a new equipment item and assign save the equipment.  The features will be saved on their own and be assigned to the new equipment.'
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
 		errors['error'] = error
 
 	return (errors)
