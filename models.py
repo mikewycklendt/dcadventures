@@ -4326,6 +4326,16 @@ class ArmDefense(db.Model):
 			'bonus': self.bonus
 		}	
 
+class Vehicle(db.Model):
+	__tablename__ = 'vehicles'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
 
 
 if __name__ == '__main__':
