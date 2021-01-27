@@ -169,6 +169,7 @@ def save_armor():
 	entry.description = description
 	entry.type_id = type_id
 	entry.cost = cost
+	entry.material = material
 	entry.toughness = toughness
 	entry.active = active
 	entry.subtle = subtle
