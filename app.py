@@ -63,26 +63,24 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/powertype/create')
+def powertype_create():
 
-@app.route('/armortype/create')
-def armor_type_create():
-
-	entries = ['Archaic', 'Modern', 'Shield']
+	entries = ['Attack', 'Movement', 'Sensory', 'Control', 'Defense', 'General']
 
 	for i in entries:
 
-		entry = ArmorType(name=i)
+		entry = PowerType(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = ArmorType.query.all()
+	results = PowerType.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('armor type added')
-
+	return 'power types added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
