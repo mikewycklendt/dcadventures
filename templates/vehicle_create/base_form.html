@@ -12,7 +12,6 @@
 <br>
 
 <div class="vehicle-box">
-<div id="vehicle-base">
 
 	<div id="cost-grid">
 		<div class="cost-title">
@@ -48,7 +47,7 @@
 		</div>
 
 		<div id="cost-size">
-			Size Rank
+			0
 		</div>
 
 		<div id="cost-strength">
@@ -81,49 +80,50 @@
 
 
 	</div>
+	
+	<div id="vehicle-base">
 
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Vehicle Type
-		</div>
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Vehicle Type
+			</div>
 
-		<div>
-			<select class="base-select" id="type_id" name="type_id">
-				<option value=""> Vehicle Type</option>
-				{% for v in vehicle_type %}
-					<option value={{v.id}}>{{v.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Vehicle Size
-		</div>
-
-		<div>
-			<select class="base-select" id="size" name="size">
-				<option value=""> Vehicle Type</option>
-				{% for v in vehicle_size %}
-					<option value={{v.id}}>{{v.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			
-		</div>
-
-		<div class="base-3">
 			<div>
-				<input type="checkbox" id="" class="regular-checkbox big-checkbox">	
-			</di>
+				<select class="base-select" id="type_id" name="type_id">
+					<option value=""> Vehicle Type</option>
+					{% for v in vehicle_type %}
+						<option value={{v.id}}>{{v.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
-	</div>
 
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Vehicle Size
+			</div>
+
+			<div>
+				<select class="base-select" id="size" name="size">
+					<option value=""> Vehicle Type</option>
+					{% for v in vehicle_size %}
+						<option value={{v.id}}>{{v.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
+			
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="" class="regular-checkbox big-checkbox">	
+				</di>
+			</div>
+		</div>
 
 </div>
 </div>

@@ -134,14 +134,21 @@
 	width: 85%;
 	margin-bottom: 5px;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 160%;
+	font-size: 120%;
 	color: #245681;
 	padding: 0px;
+}
+
+.cost-value {
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 170%;
+	color: #245681;
 }
 
 #cost-grid {
 	display: grid;
 	grid-auto-rows: auto;
+	width: 98%;
 	grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 16%;
 	border-bottom: .1vw solid lightblue;
 	border-top: .1vw solid lightblue;
