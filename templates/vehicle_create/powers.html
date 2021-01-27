@@ -1,0 +1,33 @@
+<div class="vehicle-header" id="powers-header">
+
+	<div class="vehicle-title" id="powers-title">
+		<input type="checkbox" id="powers_check" class="regular-checkbox big-checkbox" onclick="powers_check()"> Multiple Round Effect:
+	</div>
+	
+	<div class="vehicle-base" id="powers-base">
+	
+	</div>
+
+</div>
+
+<div class="vehicle-entry" id="powers-entry">
+
+	<div class="trait-title">
+		Power Type
+	</div>
+
+	<div id="powers-row1">
+		{% for p in power_type %}
+			<div>
+				<div class="btn-power-type" data-id="{{p.id}}">
+					{{p.name}}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+
+<div id="rounds-spot"></div>
+
+<div class="err" id="rounds-err"></div>

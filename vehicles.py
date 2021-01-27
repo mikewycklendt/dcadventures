@@ -37,7 +37,7 @@ db = SQLAlchemy()
 def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'vehicle_create.html'
 
-	vehicle_includes = {'base_form': 'vehicle_create/base_form.html'}
+	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
 	stylesheets.append({"style": "/static/css/vehicle_create.css"})
@@ -66,9 +66,11 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	vehicle_size = VehicleSize.query.all()
 
+	power_type = PowerType.query.all()
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type)
 
 
 
