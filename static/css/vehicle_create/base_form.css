@@ -137,7 +137,7 @@
 	font-size: 140%;
 	text-align: center;
 	color: #245681;
-	padding-top: .4vw;
+	padding-top: .2vw;
 }
 
 .cost-value {
@@ -145,6 +145,8 @@
 	font-size: 200%;
 	text-align: center;
 	color: #245681;
+	padding-top: 0vw;
+	margin-top: 0vw;
 }
 
 #cost-grid {
@@ -155,5 +157,5 @@
 	border-bottom: .1vw solid lightblue;
 	border-top: .1vw solid lightblue;
 	margin-bottom: 2vw;
-	margin-top: .6vw;
+	margin-top: .5vw;
 }
