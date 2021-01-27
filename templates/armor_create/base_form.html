@@ -27,6 +27,36 @@
 			</select>
 		</div>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Cost
+		</div>
+
+		<div>
+			<select class="base-select" id="cost" name="cost">
+				<option value="">Cost</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Material Type
+		</div>
+
+		<div>
+			<select class="base-select" id="type" name="type">
+				<option value="">Material</option>
+				{% for m in materials %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
