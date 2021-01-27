@@ -36,7 +36,7 @@ def feature_save_errors(data):
 		'val': locks, 'name': 'Locks',
 		'val': lock_type, 'name': 'Lock Type'}
 	
-	errors = unsaved(fields, equip_id)
+	errors = unsaved(fields, equip_id, errors)
 
 	return (errors)
 

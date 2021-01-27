@@ -937,7 +937,7 @@ def adv_entry_check(name, table, check, id, errors):
 
 	return (errors)
 
-def unsaved(fields, equip_id):
+def unsaved(fields, equip_id, errors):
 
 	error_msgs = errors['error_msgs']
 	error = False
