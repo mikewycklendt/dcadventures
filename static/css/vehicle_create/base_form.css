@@ -134,7 +134,7 @@
 	width: 95%;
 	margin-bottom: .1vw;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 140%;
+	font-size: 130%;
 	text-align: center;
 	color: #245681;
 	padding-top: .2vw;
@@ -142,7 +142,7 @@
 
 .cost-value {
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 200%;
+	font-size: 190%;
 	text-align: center;
 	color: #245681;
 	padding-top: 0vw;
@@ -153,7 +153,7 @@
 	display: grid;
 	grid-auto-rows: auto;
 	width: 98%;
-	grid-template-columns: 15% 12% 8% 16% 12% 12% 9% 16%;
+	grid-template-columns: 8% 14% 11% 7% 15% 11% 11% 8% 15%;
 	border-bottom: .2vw solid lightblue;
 	border-top: .2vw solid lightblue;
 	margin-bottom: 1vw;
@@ -162,7 +162,7 @@
 
 .cost-total {
 	color: #af0101;
-	font-size: 215%
+	font-size: 205%
 }
 
 #cost-traits {

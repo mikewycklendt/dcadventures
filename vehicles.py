@@ -71,6 +71,27 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size)
 
 
+
+@vehicle.route('/vehicle/size/select', methods=['POST'])
+def vehicle_size_select():
+	body = {}
+	body['success'] = True
+	
+	size_id = request.get_json()['id'] 
+
+	try:
+		size_id = int(size_id)
+		size = db.session.query(VehicleSize).filter_by(id=size_id).one()
+		body['cost'] = size.cost
+		body['defense'] = size.defense
+		body['strength'] = size.strength
+		body['toughness'] = size.toughness
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)
+
 @vehicle.route('/vehicle/create', methods=['POST'])
 def post_vehicle(): 
 	body = {}
