@@ -132,7 +132,7 @@
 .cost-title {
 	border-bottom: 2px solid lightblue;
 	width: 95%;
-	margin-bottom: 5px;
+	margin-bottom: .1vw;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 140%;
 	text-align: center;
