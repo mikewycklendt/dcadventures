@@ -38,7 +38,7 @@ db = SQLAlchemy()
 def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'armor_create.html'
 
-	armor_includes = {'base_form': 'armor_create/base_form.html'}
+	armor_includes = {'base_form': 'armor_create/base_form.html', 'base_form': 'armor_create/descriptor.html'}
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
 	stylesheets.append({"style": "/static/css/armor_create.css"})
 
@@ -195,3 +195,74 @@ def edit_armor_name():
 		db.session.close()
 		print(body)
 		return jsonify(body)
+
+
+@aem.route('/armor/descriptor/create', methods=['POST'])
+def armor_post_descriptor():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = armor_descriptor_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	armor_id = request.get_json()['armor_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	descriptor = request.get_json()['descriptor']
+
+	armor_id = db_integer(armor_id)
+	descriptor = db_integer(descriptor)
+
+	entry = ArmDescriptor(armor_id = armor_id,
+							descriptor = descriptor)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'descriptor'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = arm_descriptor_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+
+@aem.route('/qrmor/armor/delete/<qrmor_id>', methods=['DELETE'])
+def delete_armor_descriptor(qrmor_id):
+	try:
+		db.session.query(Armor).filter_by(id=armor_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(armor_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': armor_id, 'cost': False})

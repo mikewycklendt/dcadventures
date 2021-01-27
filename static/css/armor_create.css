@@ -1,4 +1,5 @@
 @import "armor_create/base_form.css";
+@import "armor_create/descriptor.css";
 
 .armor-container {
 	display: grid;
