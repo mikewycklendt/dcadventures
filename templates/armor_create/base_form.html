@@ -15,11 +15,46 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Armor Category
+			Armor Type
 		</div>
 
 		<div>
+			<select class="base-select" id="type" name="type">
+				<option value="">Armor Type</option>
+				{% for a in armor_type %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
-	
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Toughness Bonus
+		</div>
+
+		<div>
+			<select class="base-select" id="type" name="type">
+				<option value="">Toughness Bonus</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Active Defense Bonus
+		</div>
+
+		<div>
+			<select class="base-select" id="type" name="type">
+				<option value="">Active Defense Bonus</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 </div>

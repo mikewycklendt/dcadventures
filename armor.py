@@ -40,7 +40,8 @@ db = SQLAlchemy()
 def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'armor_create.html'
 
-	armor_includes = {'base_form': 'armor_create/base_form.html', 'base_form': 'armor_create/descriptor.html'}
+	armor_includes = {'base_form': 'armor_create/base_form.html', 'descriptor': 'armor_create/descriptor.html', 'defense': 'armor_create/defense.html'}
+	
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
 	stylesheets.append({"style": "/static/css/armor_create.css"})
 
@@ -64,9 +65,13 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
+	armor_type = ArmorType.query.all()
+
+	defenses = Defense.query.all()
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, armor_includes=armor_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, armor_type=armor_type, defenses=defenses)
 							
 
 @arm.route('/armor/create', methods=['POST'])
