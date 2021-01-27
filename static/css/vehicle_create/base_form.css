@@ -128,6 +128,21 @@
 	transition: all .4s ease-out;
 }
 
+
+.cost-title {
+	border-bottom: 2px solid lightblue;
+	width: 85%;
+	margin-bottom: 5px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
+	color: #245681;
+	padding: 0px;
+}
+
 #cost-grid {
 	display: grid;
+	grid-auto-rows: auto;
+	grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 16%;
+	border-bottom: .1vw solid lightblue;
+	border-top: .1vw solid lightblue;
 }
