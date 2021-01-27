@@ -39,7 +39,7 @@ def feature_save_errors(data):
 		'val': cost, 'name': 'Cost',
 		'val': description, 'name': 'Equipment Descriptiomn',
 		'val': toughness, 'name': 'Toughness',
-		'val': expertise, 'name': 'Expertise'
+		'val': expertise, 'name': 'Expertise',
 		'val': speed_mod, 'name': 'Speed Modifier',
 		'val': direction, 'name': 'Movement Direction',
 		'val': locks, 'name': 'Locks',
