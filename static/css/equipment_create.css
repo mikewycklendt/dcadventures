@@ -626,13 +626,13 @@ textarea:focus {
 #save-div{
 	display: grid;
 	width: 50%;
-	margin-left: 15%;
+	margin-left: 20%;
 	grid-template-columns: auto auto;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
 	justify-items: center;
-	margin-right: 4vw ;
+	gap: 4vw ;
 }
 
 .equip-box {
