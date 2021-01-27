@@ -134,7 +134,7 @@
 	width: 85%;
 	margin-bottom: 5px;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 120%;
+	font-size: 140%;
 	color: #245681;
 	padding: 0px;
 }
@@ -142,6 +142,7 @@
 .cost-value {
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 170%;
+	text-align: center;
 	color: #245681;
 }
 
