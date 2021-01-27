@@ -1774,7 +1774,8 @@ function row_delete(jsondata, route, object, selects=false) {
 
 					if (feature_check == true) {
 						let feature_count = document.getElementById('feature_count').value;
-						feature_count = feature_count - 1
+						let feature_count_div = document.getElementById('feature_count');
+						feature_count_div.value = feature_count - 1
 					}
  	
 					if (cost == true) { 
