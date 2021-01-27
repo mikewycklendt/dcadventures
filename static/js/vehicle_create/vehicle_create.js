@@ -95,6 +95,7 @@ armor_edit = function() {
 }
 
 let costs = {'size': 0,
+			'size_cost': 0,
 			'size_strength': 0,
 			'size_toughness': 0,
 			'size_defense': 0,

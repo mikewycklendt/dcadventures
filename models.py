@@ -4381,7 +4381,31 @@ class VehicleSize(db.Model):
 			'cost': self.cost
 		}
 
+class VehPower(db.Model):
+	__tablename__ = 'vehicle_powers'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	cost = db.Column(db.Integer)
+	ranks = db.Column(db.Integer)
 
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+			'cost': self.cost,
+			'ranks': self.ranks
+		}
+
+class VehFeature(db.Model):
+	__tablename__ = 'vehicle_features'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	feature_id = db.Column(db.Integer, db.ForeignKey('features.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'feature_id': self.feature_id
+		}
 
 if __name__ == '__main__':
     app.debug = True

@@ -289,4 +289,4 @@ def delete_vehicle_(vehicle_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': vehicle_id, 'cost': False})
+		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': False })
