@@ -949,7 +949,7 @@ def unsaved(fields, equip_id, errors):
 	for f in fields:
 		name = f['name']
 		field = f['val']
-		if field != '':
+		if field != '' and field != False:
 			error = True
 			message = 'The ' + name + ', ' 
 			
