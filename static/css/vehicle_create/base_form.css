@@ -154,4 +154,5 @@
 	grid-template-columns: 15% 12% 8% 16% 12% 12% 9% 16%;
 	border-bottom: .1vw solid lightblue;
 	border-top: .1vw solid lightblue;
+	margin-bottom: 4vw;
 }
