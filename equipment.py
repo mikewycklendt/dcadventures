@@ -564,7 +564,7 @@ def save_equipment():
 	print(body)
 	return jsonify(body)
 
-@equip.route('/feature/save', methods=['POST'])
+@equip.route('/equipment/feature/save', methods=['POST'])
 def save_feature(): 
 	body = {}
 	body['success'] = True
