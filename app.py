@@ -64,44 +64,6 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/powertype/create')
-def powertype_create():
-
-	entries = ['Attack', 'Movement', 'Sensory', 'Control', 'Defense', 'General']
-
-	for i in entries:
-
-		entry = PowerType(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = PowerType.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('power types added')
-
-
-@app.route('/vehicletype/create')
-def vehicletype_create():
-
-	entries = ['Ground', 'Water', 'Air', 'Space', 'Special']
-
-	for i in entries:
-
-		entry = VehicleType(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = VehicleType.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('vehicle types added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
