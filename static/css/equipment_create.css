@@ -623,9 +623,10 @@ textarea:focus {
 }
 
 #save-div{
-	display: block;
+	display: grid;
 	width: 50%;
-	margin-left: 35%;
+	margin-left: 15%;
+	grid-template-columns: auto auto;
 	align-items: center;
 	align-content: center;
 	justify-content: center;

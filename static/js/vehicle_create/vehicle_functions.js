@@ -1430,6 +1430,25 @@ function selects_add(id, name, selects_input) {
 	}
 }
 
+function calculate_cost() {
+	
+	const size_strength = costs.size_strength
+	const size_toughness = costs.size_toughness
+	const size_defense = costs.size_defense
+	const strength = costs.strength
+	const strengths = costs.strengths
+	const speed = costs.speed
+	const toughness = costs.toughness
+	const toughnesses = costs.toughnesses
+	const defense = costs.defense
+	const defenses = costs.defenses
+	const feature = costs.feature
+	const features = costs.features
+	const power = costs.power
+	const powers = costs.powers
+	const cost = costs.cost
+
+}
 
 function create_table(jsonResponse, object, route, selects=false) {
 

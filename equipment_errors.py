@@ -35,7 +35,7 @@ def equip_save_errors(data):
 	modifiers = data['modifiers']
 	opposed = data['opposed']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = create_check('Equipment', equip_id, Equipment, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	
@@ -78,7 +78,7 @@ def equip_belt_post_errors(data):
 	weapon = data['weapon']
 	equipment = data['equipment']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
@@ -107,7 +107,7 @@ def equip_check_post_errors(data):
 	action = data['action']
 	action_time = data['action_time']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
@@ -139,7 +139,7 @@ def equip_damaged_post_errors(data):
 	toughness = data['toughness']
 	penalty = data['penalty']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
@@ -168,7 +168,7 @@ def equip_descriptor_post_errors(data):
 	feature = data['feature']
 	descriptor = data['descriptor']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
@@ -206,10 +206,6 @@ def equip_feature_post_errors(data):
 	name = data['name']
 	description = data['description']
 	feature = data['feature']
-
-	create_check('Equipment Name', equip_id, Equipment, errors)
-
-	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
 	errors = of([feature, name], 'You must create a new feature or select an existing one.', errors)
 	errors = either([feature, name], 'You must add a new feature and and existing feature seperately.', errors)
@@ -252,7 +248,7 @@ def equip_limits_post_errors(data):
 	internet = data['internet']
 	needs_internet = data['needs_internet']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)
@@ -292,6 +288,7 @@ def equip_modifiers_post_errors(data):
 	columns = data['columns']
 	created = data['created']
 	font = data['font']
+	feature = data['feature']
 	bonus = data['bonus']
 	bonus_type = data['bonus_type']
 	penalty = data['penalty']
@@ -342,7 +339,7 @@ def equip_modifiers_post_errors(data):
 	effect = data['effect']
 	feature = data['feature']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 	
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 
@@ -437,7 +434,7 @@ def equip_opposed_post_errors(data):
 	condition1 = data['condition1']
 	condition2 = data['condition2']
 
-	create_check('Equipment Name', equip_id, Equipment, errors)
+	errors = equip_create_check(equip_id, feature, errors)
 
 	errors = id_check(Equipment, equip_id, 'Equipment', errors)
 	errors = id_check(EquipEffect, effect, 'Alternate Effect', errors)

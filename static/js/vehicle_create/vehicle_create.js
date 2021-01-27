@@ -94,6 +94,23 @@ armor_edit = function() {
 	})
 }
 
+let costs = {'size': 0,
+			'size_strength': 0,
+			'size_toughness': 0,
+			'size_defense': 0,
+			'strength': 0,
+			'strengths': 0,
+			'speed': 0,
+			'toughness': 0,
+			'toughnesses': 0,
+			'defense': 0,
+			'defenses': 0,
+			'feature': 0,
+			'features': [],
+			'power': 0,
+			'powers': [],
+			'cost': 0}
+
 armor_save = function() {
 
 	const vehicle_id = document.getElementById('vehicle_id').value;
