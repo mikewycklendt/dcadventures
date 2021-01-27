@@ -156,6 +156,13 @@ def save_armor():
 	impervious = request.get_json()['impervious']
 	defense = request.get_json()['defense']
 	descriptor = request.get_json()['descriptor']
+
+	type_id = db_integer(type_id)
+	cost = integer(cost)
+	material = db_integer(material)
+	toughness = integer(toughness)
+	active = integer(active)
+	perception = integer(perception)
 	
 	entry = db.session.query(Armor).filter(Armor.id == armor_id).one()
 
