@@ -157,7 +157,7 @@
 	border-bottom: .2vw solid lightblue;
 	border-top: .2vw solid lightblue;
 	margin-bottom: 1vw;
-	margin-top: .5vw;
+	margin-top: .1vw;
 }
 
 .cost-total {
@@ -170,4 +170,5 @@
 	font-size: 200%;
 	text-align: center;
 	color: #245681;
+	margin-bottom: .1vw;
 }
