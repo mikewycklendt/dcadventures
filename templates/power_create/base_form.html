@@ -20,8 +20,8 @@
 
 		<select class="base-select" id="type" name="type" onchange="power_type()">
 			<option value=''>Power Type</option>
-			{% for type in power_type %}
-				<option value="{{type.type}}">{{type.name}}</option>
+			{% for p in power_type %}
+				<option value="{{p.id}}">{{p.name}}</option>
 			{% endfor %}
 		</select>
 	</div>

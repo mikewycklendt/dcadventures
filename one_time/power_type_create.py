@@ -16,4 +16,4 @@ def powertype_create():
 		print (result.id)
 		print (result.name)
 
-	return 'power types added')
+	return ('power types added')

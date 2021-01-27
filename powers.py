@@ -11,7 +11,7 @@ from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
 from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
-from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
+from models import Levels, LevelType, PowerAltCheck, PowerType, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -64,12 +64,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
-	power_type = [{'type': 'attack', 'name': 'Attack'}, 
-					{'type': 'move', 'name': 'Movement'},  
-					{'type': 'sense', 'name': 'Sensory'},
-					{'type': 'control', 'name': 'Control'}, 
-					{'type': 'defense', 'name': 'Defense'}, 
-					{'type': 'general', 'name': 'General'}]
+	power_type = PowerType.query.all()
 
 	action_type = [{'type': 'standard', 'name': 'Standard Action'},
 					{'type': 'move', 'name': 'Move Action'},
@@ -858,6 +853,7 @@ def save_power():
 	sense = request.get_json()['sense']
 	time = request.get_json()['time']
 
+	power_type = integer(power_type)
 	action = integer(action)
 	power_range = integer(power_range)
 	cost = integer(cost)

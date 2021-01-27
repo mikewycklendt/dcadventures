@@ -15,6 +15,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor
+from models import Vehicle, VehicleType, PowerType
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -80,7 +81,27 @@ def powertype_create():
 		print (result.id)
 		print (result.name)
 
-	return 'power types added')
+	return ('power types added')
+
+
+@app.route('/vehicletype/create')
+def vehicletype_create():
+
+	entries = ['Ground', 'Water', 'Air', 'Space', 'Special']
+
+	for i in entries:
+
+		entry = VehicleType(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = VehicleType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('vehicle types added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
