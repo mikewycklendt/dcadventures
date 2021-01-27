@@ -954,7 +954,7 @@ def unsaved(fields, equip_id):
 			message = 'The ' + name + ', ' 
 			
 	if error:		
-		message += 'fields are just for equioment.  If you need that setting, create a new equipment item and assign save the equipment.  The features will be saved on their own and be assigned to the new equipment.'
+		message += 'fields are just for equioment.  If you need that setting, create a new equipment item and assign save the equipment.  Otherwise reset those settings to continue.  The features will be saved on their own and be assigned to the new equipment.'
 		error_msgs.append(message)
 		errors['error_msgs'] = error_msgs
 		errors['error'] = error
