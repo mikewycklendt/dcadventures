@@ -131,10 +131,11 @@
 
 .cost-title {
 	border-bottom: 2px solid lightblue;
-	width: 85%;
+	width: 95%;
 	margin-bottom: 5px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 140%;
+	text-align: center;
 	color: #245681;
 	padding: 0px;
 }
@@ -150,7 +151,7 @@
 	display: grid;
 	grid-auto-rows: auto;
 	width: 98%;
-	grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 16%;
+	grid-template-columns: 15% 12% 8% 16% 12% 12% 9% 16%;
 	border-bottom: .1vw solid lightblue;
 	border-top: .1vw solid lightblue;
 }
