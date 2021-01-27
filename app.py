@@ -63,6 +63,54 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+
+@app.route('/vehiclesize/create')
+def vehiclesize_create():
+
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 1).one()
+	cost_change.cost = 6
+	db.session.commit()
+	db.session.close()
+
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 2).one()
+	cost_change.cost = 5
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 3).one()
+	cost_change.cost = 4
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 4).one()
+	cost_change.cost = 3
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 5).one()
+	cost_change.cost = 2
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 6).one()
+	cost_change.cost = 1
+	db.session.commit()
+	db.session.close()
+	
+
+	results = VehicleSize.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+		print ('size: ' + str(result.size))
+		print ('strength: ' + str(result.strength))
+		print ('toughness: ' + str(result.toughness))
+		print ('defense: ' + str(result.defense))
+		print ('cost: ' + str(result.cost))
+
+	return ('vehicle sizes added')
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

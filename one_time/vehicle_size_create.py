@@ -56,6 +56,37 @@ def vehiclesize_create():
 		db.session.add(entry)
 		db.session.commit()
 
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 1).one()
+	cost_change.cost = 6
+	db.session.commit()
+	db.session.close()
+
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 2).one()
+	cost_change.cost = 5
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 3).one()
+	cost_change.cost = 4
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 4).one()
+	cost_change.cost = 3
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 5).one()
+	cost_change.cost = 2
+	db.session.commit()
+	db.session.close()
+	
+	cost_change = db.session.query(VehicleSize).filter(VehicleSize.id == 6).one()
+	cost_change.cost = 1
+	db.session.commit()
+	db.session.close()
+	
+
 	results = VehicleSize.query.all()
 
 	for result in results:
