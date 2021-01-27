@@ -4391,7 +4391,7 @@ class VehPower(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
 			'cost': self.cost,
 			'ranks': self.ranks
 		}
