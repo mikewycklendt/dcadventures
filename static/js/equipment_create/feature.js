@@ -74,7 +74,7 @@ function feature_submit() {
 }
 
 function feature_save() {
-	const feature_count = document.getElementById('feature_count');
+	const feature_count = document.getElementById('feature_count').value;
 	const equip_id = document.getElementById('equip_id').value;
 	const errors = 'equip-err';
 	const err_line = 'equip-err-line';
