@@ -590,7 +590,7 @@ def save_feature():
 @equip.route('/feature/save/success')
 def feature_save_success():
 	
-	flash('Fwatures Successfully Created')
+	flash('Features Successfully Created')
 	return redirect(url_for('home'))
 
 
@@ -1167,6 +1167,11 @@ def equipment_post_feature():
 @equip.route('/equipment/feature/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_feature(equipment_id):
 	try:
+		name_check = db.session.query(Feature).filter_by(id=equipment_id).one()
+		if name_check.name != '':
+			feature = True
+		else:
+			feature = False
 		db.session.query(Feature).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
@@ -1174,7 +1179,7 @@ def delete_equipment_feature(equipment_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': True})
+		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': feature})
 
 	
 @equip.route('/equipment/limits/create', methods=['POST'])
