@@ -4359,6 +4359,25 @@ class VehicleType(db.Model):
 			'name': self.name
 		}
 
+		
+class VehicleSize(db.Model):
+	__tablename__ = 'vehicle_size'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	strength = db.Column(db.Integer)
+	toughness = db.Column(db.Integer)
+	defense = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'strength': self.strength,
+			'toughness': self.toughness,
+			'defense': self.defense
+		}
+
+
 
 if __name__ == '__main__':
     app.debug = True

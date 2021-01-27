@@ -62,10 +62,12 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
+	vehicle_type = VehicleType.query.all()
+
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type)
 
 
 @vehicle.route('/vehicle/create', methods=['POST'])
