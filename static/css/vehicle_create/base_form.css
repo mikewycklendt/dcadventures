@@ -162,5 +162,12 @@
 
 .cost-total {
 	color: #af0101;
-	font-size: 215%;
+	font-size: 215%
+}
+
+#cost-traits {
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	text-align: center;
+	color: #245681;
 }
