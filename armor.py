@@ -199,7 +199,7 @@ def edit_armor_name():
 		return jsonify(body)
 
 
-@aem.route('/armor/descriptor/create', methods=['POST'])
+@arm.route('/armor/descriptor/create', methods=['POST'])
 def armor_post_descriptor():
 
 	body = {}
@@ -257,7 +257,7 @@ def armor_post_descriptor():
 	return jsonify(body)
 
 
-@aem.route('/armor/descriptor/delete/<armor_id>', methods=['DELETE'])
+@arm.route('/armor/descriptor/delete/<armor_id>', methods=['DELETE'])
 def delete_armor_descriptor(armor_id):
 	try:
 		db.session.query(ArmDescriptor).filter_by(id=armor_id).delete()
