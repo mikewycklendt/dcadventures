@@ -4367,11 +4367,13 @@ class VehicleSize(db.Model):
 	strength = db.Column(db.Integer)
 	toughness = db.Column(db.Integer)
 	defense = db.Column(db.Integer)
+	size = db.Column(db.Integer)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
+			'size': self.size,
 			'strength': self.strength,
 			'toughness': self.toughness,
 			'defense': self.defense
