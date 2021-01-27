@@ -58,12 +58,8 @@
 	display: grid;
 	width: 100%;
 	margin: 0px;
-	border: 1px solid #af0101;
-	border-radius: 15px;
-	padding: 2%;
 	grid-template-columns: 50% 50%;
 	grid-auto-rows: auto;
-	margin-bottom: 20px;
 }
 
 #vehicle-base input[type="text"] {
