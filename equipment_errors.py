@@ -25,15 +25,6 @@ def feature_save_errors(data):
 	direction = data['direction']
 	locks = data['locks']
 	lock_type = data['lock_type']
-	mod_multiple = data['mod_multiple']
-	mod_multiple_count = data['mod_multiple_count']
-	check = data['check']
-	damaged = data['damaged']
-	descriptor = data['descriptor']
-	feature = data['feature']
-	limits = data['limits']
-	modifiers = data['modifiers']
-	opposed = data['opposed']
 
 	fields = {'val': type_id, 'name': 'Equipment Type',
 		'val': cost, 'name': 'Cost',
