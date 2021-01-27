@@ -92,7 +92,7 @@
 				Vehicle Type
 			</div>
 
-			<div>
+			<div style="width: 65%;">
 				<select class="base-select" id="type_id" name="type_id">
 					<option value=""> Vehicle Type</option>
 					{% for v in vehicle_type %}
@@ -107,11 +107,11 @@
 				Vehicle Size
 			</div>
 
-			<div>
+			<div style="width: 75%;">
 				<select class="base-select" id="size" name="size">
-					<option value=""> Vehicle Type</option>
+					<option value=""> Vehicle Size</option>
 					{% for v in vehicle_size %}
-						<option value={{v.id}}>{{v.name}}</option>
+						<option value={{v.id}}>{{v.name}} (Size Rank {{v.size}})</option>
 					{% endfor %}
 				</select>
 			</div>
