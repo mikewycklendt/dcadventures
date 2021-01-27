@@ -35,12 +35,12 @@ db = SQLAlchemy()
 
 @vehicle.route('/vehicle/create')
 def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
-	includehtml = 'armor_create.html'
+	includehtml = 'vehicle_create.html'
 
 	vehicle_includes = {'base_form': 'vehicle_create/base_form.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
-	stylesheets.append({"style": "/static/css/armor_create.css"})
+	stylesheets.append({"style": "/static/css/vehicle_create.css"})
 
 	negatives = []
 	for i in range(-20, 1, 1):
