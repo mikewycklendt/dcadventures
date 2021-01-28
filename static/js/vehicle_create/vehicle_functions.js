@@ -117,13 +117,6 @@ function feature_info(select, entry) {
 	})	
 }
 
-function reset_all(selects) {
-	let select;
-
-	for (select of selects) {
-		reset(select)
-	}
-}
 
 
 function show_opacity(div_input) {
@@ -563,6 +556,14 @@ function reset(select_input) {
 
 }
 
+function reset_all(selects) {
+	let select;
+
+	for (select of selects) {
+		reset(select)
+	}
+}
+
 function select_opacity_any(select, div) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
@@ -572,7 +573,6 @@ function select_opacity_any(select, div) {
 	} else {
 		hide_opacity(div);
 	}
-
 }
 
 function multiple_field(div_input) {
@@ -669,11 +669,14 @@ function base(field_inputs, entry_input, texts=false) {
 	}
 }
 
-function entry_check(check_input, title_input, base_input, entry_input) {
+function entry_check(check_input, title_input, base_input, entry_input, size=200) {
 	const check = document.getElementById(check_input);
 	const entry = document.getElementById(entry_input);
 	const title = document.getElementById(title_input);
 	const base = document.getElementById(base_input)
+
+	const size2 = size + '%';
+	const size1 = size + 8 + '%';
 	
 	if (check.checked == true) {
 		base.style.opacity = '100%'
@@ -681,8 +684,8 @@ function entry_check(check_input, title_input, base_input, entry_input) {
 		entry.style.padding = "1%";
 		entry.style.maxHeight = entry.scrollHeight + "px";
 		title.style.color = "#af0101";
-		title.style.fontSize = "207%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+		title.style.fontSize = size1;
+		setTimeout(function(){title.style.fontSize = size2}, 75);
 	} else {
 		base.style.opacity = '0%'
 		entry.style.maxHeight = "0px";
@@ -691,37 +694,20 @@ function entry_check(check_input, title_input, base_input, entry_input) {
 	}
 }
 
-function check_title(check_input, title_input, base_input, entry_input) {
+function check_title(check_input, title_input, base_input, entry_input, size=200) {
 	const check = document.getElementById(check_input);
 	const title = document.getElementById(title_input);
 	const base = document.getElementById(base_input);
 	const entry = document.getElementById(entry_input);
 
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = "220%";
-		setTimeout(function(){title.style.fontSize = "200%"}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function check_title_small(check_input, title_input, base_input, entry_input) {
-	const check = document.getElementById(check_input);
-	const title = document.getElementById(title_input);
-	const base = document.getElementById(base_input);
-	const entry = document.getElementById(entry_input);
+	const size2 = size + '%';
+	const size1 = size + 8 + '%';
 
 	if (check.checked == true) {
 		base.style.opacity = '100%';
 		title.style.color = "#af0101";
-		title.style.fontSize = "165%";
-		setTimeout(function(){title.style.fontSize = "160%"}, 75);
+		title.style.fontSize = size1;
+		setTimeout(function(){title.style.fontSize = size2}, 75);
 	} else {
 		base.style.opacity = '0%'
 		title.style.color = "#245681";
@@ -821,6 +807,29 @@ function new_items(insert, items) {
 				o.value = id;
 				o.text = name;
 				select.add(o);
+			}
+		}
+	}
+}
+
+function deleted_item(divs, id) {
+	
+	if (divs != false) {
+		let div;
+		for (div of divs) {
+			const selects = document.getElementsByClassName(div);
+			let select;
+
+			for (select of selects) {
+				options = select.options;
+				let option;
+
+				for (option of options) {
+					if (option.value == id) {
+						console.log(option.value);
+						option.remove();
+					}
+				}
 			}
 		}
 	}
@@ -1545,27 +1554,16 @@ function row_delete(jsondata, route, object, selects=false) {
 
 					if (jsonResponse.feature) {
 						costs.features = jsonResponse.features;
-						calculate_cost()
+						calculate_cost();
 					}
 
-					if (selects != false) {
-						for (s of selects) {
-							const select = document.getElementsByClassName(s);
-							let drop;
-
-							for (drop of select) {
-								options = drop.options;
-								let option;
-
-								for (option of options) {
-									if (option.value == delId) {
-										console.log(option.value);
-										option.remove();
-									}
-								}
-							}
-						}
+					if (jsonResponse.power) {
+						costs.powers_cost = jsonResponse.cost;
+						costs.powers_rank = jsonResponse.rank;
+						calculate_cost();
 					}
+
+					deleted_item(selects, delId)
 
 					console.log(delId)
 					console.log(rows)
