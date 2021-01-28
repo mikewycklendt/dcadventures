@@ -124,7 +124,7 @@
 		</div>
 
 		<div class="cost-value" id="rank-features">
-			5
+			-
 		</div>
 
 		<div class="cost-value" id="rank-powers">
@@ -176,7 +176,7 @@
 
 			<div style="width: 75%;">
 				<select class="base-select" id="speed" name="speed">
-					<option value="">Speed Rank</option>
+					<option value=0>Speed Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -191,7 +191,7 @@
 
 			<div style="width: 75%;">
 				<select class="base-select" id="strengths" name="strengths" cost_name="strength">
-					<option value="">Strength Bonus</option>
+					<option value0=0>Strength Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -206,7 +206,7 @@
 
 			<div style="width: 75%;">
 				<select class="base-select" id="toughnesses" name="toughnesses" cost_name="toughnesses">
-					<option value="">Toughness Bonus</option>
+					<option value=0>Toughness Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -220,8 +220,8 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="defenses" name="defenses" cost_name="defenses">
-					<option value="">Defense Bonus</option>
+				<select class="base-select" id="defenses" name="defenses" cost_name="defenses" onchange="defenses()">
+					<option value=0>Defense Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}

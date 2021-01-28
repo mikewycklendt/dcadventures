@@ -1,354 +1,72 @@
-function descriptor_add_type()  {
-	const fields = document.getElementsByClassName('descriptor-sml');
+
+const trait_select = '/advantage/trait/select';
+const level_select = '/power/level/select';
+const action_select = '/advantage/action/select';
+const skill_select = '/equipment/skill/select';
+const weapon_type_select = '/equipment/weapontype/select';
+const weapon_select = '/equipment/weapons/select';
+const subsense_select = '/sense/subsense/select';
+const equipment_select = '/equipment/select';
+
+function calculate_cost() {
 	
-	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
-				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
-				{'type': 33445566, 'name': 'Any Chosen Common'}, 
-				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
-				{'type': 55667788, 'name': 'Any Chosen Damage'},
-				{'type': 66778899, 'name': 'Any Chosen Origin'},
-				{'type': 77889900, 'name': 'Any Chosen Source'},
-				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
-				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
-				{'type': 11002233, 'name': 'Any Chosen Medium'},
-				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
+	const size_cost = costs.size_cost;
+	const size_rank = costs.size_rank
+	const size_strength = costs.size_strength;
+	const size_toughness = costs.size_toughness;
+	const size_defense = costs.size_defense;
+	const strengths = select('strengths');
+	const speed = select('speed');
+	const toughnesses = select('toughnesses');
+	const defenses = select('defenses');
+	const features = costs.features;
+	const powers_rank = costs.powers_rank;
+	const powers_cost = costs.powers_cost;
+	
+	const size_div = document.getElementById("cost-size");
+	const strength_div = document.getElementById("cost-strength");
+	const speed_div = document.getElementById("cost-speed");
+	const toughness_div = document.getElementById("cost-toughness");
+	const defense_div = document.getElementById("cost-defense");
+	const features_div = document.getElementById("cost-features");
+	const powers_div = document.getElementById("cost-powers");
+	
+	const size_rank_div = document.getElementById("rank-size");
+	const strength_rank_div = document.getElementById("rank-strength");
+	const speed_rank_div = document.getElementById("rank-speed");
+	const toughness_rank_div = document.getElementById("rank-toughness");
+	const defense_rank_div = document.getElementById("rank-defense");
+	const powers_rank_div = document.getElementById("rank-powers");
 
-	let field;
-	let option;
+	const total_div = document.getElementById("cost-total");
 
-	for (field of fields) {
-		for (option of options) {
-			let o = document.createElement('option');
-			o.value = option.type;
-			o.text = option.name;
-			field.add(o);
-		}
-	}
-}
+	const strength_rank = strengths + size_strength;
+	const toughness_rank = toughnesses + size_toughness;
+	const defense_rank = defenses + size_defense;
 
-descriptor_add_type()
+	size_rank_div.innerHTML = size_rank;
+	strength_rank_div.innerHTML = strength_rank;
+	speed_rank_div.innerHTML = speed;
+	toughness_rank_div.innerHTML = toughness_rank;
+	defense_rank_div.innerHTML = defense_rank;
+	powers_rank_div.innerHTML = powers_rank;
+	
+	const cost = strengths + speed + toughnesses + defenses + features + powers_cost;
+	
+	size_div.innerHTML = size_cost;
+	strength_div.innerHTML = strengths;
+	speed_div.innerHTML = speed;
+	toughness_div.innerHTML = toughnesses;
+	defense_div.innerHTML = defenses;
+	features_div.innerHTML = features;
+	powers_div.innerHTML = powers_cost;
+	total_div.innerHTML = cost;
 
-
-
-function trait_select(select, fill) {
-	const field = document.getElementById(select)
-	const trait = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/advantage/trait/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'trait': trait
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function level_select(select, fill) {
-	const field = document.getElementById(select)
-	const level_type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/power/level/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'level_type_id': level_type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function action_select(select, fill) {
-	const field = document.getElementById(select)
-	const action = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/advantage/action/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'action': action
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-
-function skill_select(select, fill) {
-	const field = document.getElementById(select)
-	const skill_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/skill/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'skill_id': skill_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function weapon_type_select(select, fill) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/weapontype/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function weapon_select(select, fill) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/weapons/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function equipment_select(select, fill) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function id_select(select, fill, route) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch(route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	costs.cost = cost;
+	costs.speed = speed;
+	costs.strength = strength_rank;
+	costs.toughness = toughness_rank;
+	costs.defense = defense_rank;
 }
 
 function feature_info(select, entry) {
@@ -407,45 +125,6 @@ function reset_all(selects) {
 	}
 }
 
-function subsense_select(select, fill) {
-	const field = document.getElementById(select);
-	const sense_id = field.options[field.selectedIndex].value;
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/sense/subsense/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'sense_id': sense_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
 
 function show_opacity(div_input) {
 	const div = document.getElementById(div_input);
@@ -896,105 +575,6 @@ function select_opacity_any(select, div) {
 
 }
 
-function double_select(select1, select2, options, row, entry) {
-	const field1 = document.getElementById(select1);
-	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select2);
-	const val2 = field2.options[field2.selectedIndex].value;
-
-	const old1 = field1.getAttribute('previousValue');
-	field1.setAttribute('previousValue', val1);
-
-	let o;
-	let grown = false;
-	let grow = false;
-	let div;
-	
-	let shrink = true;
-	let start = false;
-
-	for (o of options) {
-		let val = o.val
-		if (val1 == val) {
-			start = true
-		}
-
-		if (old1 == val) {
-			start = true;
-		}
-
-		if (val2 == val) {
-			start = true;
-		}
-	}
-
-	console.log(start)
-
-	if (start == true) { 
-		for (o of options) {
-			let val = o.val;
-			if (old1 == val ) {
-				grown = true;
-				div = o.div;
-			} 
-
-			if (val2 == val) {
-				grown = true
-				shrink = false;
-			}
-
-			if (val1 == val) {
-				grow = true;
-				shrink = false;
-				div = o.div;
-			}
-		}
-
-		console.log('start');
-		console.log(start);
-		console.log('grown');
-		console.log(grown);
-
-		if (grown == false) {
-			if (grow == true) {
-				const d = document.getElementById(div);
-				d.style.display = 'grid';
-				grow_entry(entry, div);
-				show_maxheight(row)
-			}
-		} 
-		
-		if (shrink == false) {
-			let option;
-
-			for (option of options) {
-				let valu = option.val;
-				let di = option.div;
-
-				if (val1 != valu) {
-					hide_opacity(di);
-				} else {
-					show_opacity(di);
-				}
-			}
-		} else {
-			for (option of options) {
-				let valu = option.val;
-				let di = option.div;
-
-				if (val1 != valu) {
-					hide_opacity(di)
-				}
-			}
-
-			hide_maxheight(row)
-			shrink_entry(entry, div)
-		}
-	} else {
-		console.log('nothing')
-	}
-}
-
 function multiple_field(div_input) {
 	const div = document.getElementById(div_input);
 	
@@ -1003,121 +583,6 @@ function multiple_field(div_input) {
 	
 }
 
-
-function double_select_second(select1, select2, options, others, row, entry) {
-	const field1 = document.getElementById(select1);
-	const val1 = field1.options[field1.selectedIndex].value;
-	const field2 = document.getElementById(select2);
-	const val2 = field2.options[field2.selectedIndex].value;
-
-	const old1 = field1.getAttribute('previousValue');
-	field1.setAttribute('previousValue', val1);
-
-	let o;
-	let grown = false;
-	let grow = false;
-	let div;
-	
-	let shrink = true;
-	let start = false;
-
-	for (o of options) {
-		let val = o.val
-		if (val1 == val) {
-			start = true
-		}
-
-		if (old1 == val) {
-			start = true;
-		}
-
-		if (val2 == val) {
-			start = true;
-		}
-	}
-
-	console.log(start)
-
-	if (start == true) { 
-		for (o of options) {
-			let val = o.val;
-			if (old1 == val ) {
-				grown = true;
-				div = o.div;
-			} 
-
-			if (val2 == val) {
-				grown = true
-				shrink = false;
-			}
-
-			if (val1 == val) {
-				grow = true;
-				shrink = false;
-				div = o.div;
-			}
-		}
-
-		console.log('start');
-		console.log(start);
-		console.log('grown');
-		console.log(grown);
-
-		if (grown == false) {
-			if (grow == true) {
-				const d = document.getElementById(div);
-				d.style.display = 'grid';
-				grow_entry(entry, div);
-				show_maxheight(row)
-			}
-		} 
-		
-		if (shrink == false) {
-			let option;
-
-			for (option of options) {
-				let valu = option.val;
-				let di = option.div;
-
-				if (val1 != valu) {
-					hide_opacity(di);
-				} else {
-					show_opacity(di);
-				}
-			}
-		} else {
-			for (option of options) {
-				let valu = option.val;
-				let di = option.div;
-
-				if (val1 != valu) {
-					hide_opacity(di)
-				}
-			}
-
-			let clear = true;
-			let other;
-			for (other of others) {
-				const s = document.getElementById(other.select);
-				const value = s.options[s.selectedIndex].value;
-				const values = other.values;
-				let v;
-				for (v of values) {
-					if (v == value) {
-						clear = false
-					}
-				}
-			}
-
-			if (clear == true) { 
-				hide_maxheight(row)
-				shrink_entry(entry, div)
-			}
-		}
-	} else {
-		console.log('nothing')
-	}
-}
 
 
 function select_other(select, options, db) {
@@ -1167,24 +632,7 @@ function select_maxheight(select, options) {
 	};
 }
 
-function base(field_input, entry_input) {
-	const field = document.getElementById(field_input)
-	const value = field.options[field.selectedIndex].value;
-	const entry = document.getElementById(entry_input)
-
-	if (value != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";	
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function base_multiple(field_inputs, entry_input) {
+function base(field_inputs, entry_input, texts=false) {
 	const entry = document.getElementById(entry_input)
 
 	let satisfied = true
@@ -1196,39 +644,17 @@ function base_multiple(field_inputs, entry_input) {
 		if (select == '') {
 			satisfied = false
 		}
-	} 
-
-	if (satisfied == true) {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";	
-		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
-}
 
-
-function base_multiple_text(field_inputs, textfield_input, entry_input) {
-	const entry = document.getElementById(entry_input);
-	const textfield = document.getElementById(textfield_input);
-	const text = textfield.value;
-
-	let satisfied = true
-	let field;
-	for (field of field_inputs) {
-		const f = document.getElementById(field);
-		const select = f.options[f.selectedIndex].value;
-
-		if (select == '') {
-			satisfied = false
+	if (texts != false) {
+		let text;
+		for (text of texts) {
+			const field = document.getElementById(text);
+			const value = field.value;
+			if (value == '') {
+				satisfied = false;
+			}
 		}
-	} 
-
-	if (text == '') {
-		satisfied = false
 	}
 
 	if (satisfied == true) {
@@ -1262,61 +688,6 @@ function entry_check(check_input, title_input, base_input, entry_input) {
 		entry.style.maxHeight = "0px";
 		setTimeout(function(){entry.style.display = 'none';}, 400);
 		title.style.color = "#245681";
-	}
-}
-
-function base_two(field_input, field2_input, entry_input) {
-	const field = document.getElementById(field_input);
-	const value = field.options[field.selectedIndex].value;
-	
-	const field2 = document.getElementById(field2_input);
-	const target = field2.options[field2.selectedIndex].value;
-	const entry = document.getElementById(entry_input);
-
-	if (value != '' && target != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function base_text(field_input, text_input, entry_input) {
-	const field = document.getElementById(field_input);
-	const value = field.options[field.selectedIndex].value;
-	const type = document.getElementById(text_input).value;
-	const entry = document.getElementById(entry_input);
-
-	if (value != '' && type != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-
-function base_only_text(text_input, entry_input) {
-	const type = document.getElementById(text_input).value;
-	const entry = document.getElementById(entry_input);
-
-	if (type != '') {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
 	}
 }
 
@@ -1468,68 +839,318 @@ function selects_add(id, name, selects_input) {
 }
 
 
-function calculate_cost() {
-	
-	const size = costs.size_cost;
-	const size_strength = costs.size_strength;
-	const size_toughness = costs.size_toughness;
-	const size_defense = costs.size_defense;
-	const strength = costs.strength;
-	const strengths = costs.strengths;
-	const speed = costs.speed;
-	const toughness = costs.toughness;
-	const toughnesses = costs.toughnesses;
-	const defense = costs.defense;
-	const defenses = costs.defenses;
-	let feature = 0;
-	const features = costs.features;
-	let power = 0;
-	const powers = costs.powers;
-	let cost = costs.cost;
-	
-	const size_div = document.getElementById("cost-size");
-	const strength_div = document.getElementById("cost-strength");
-	const speed_div = document.getElementById("cost-speed");
-	const toughness_div = document.getElementById("cost-toughness");
-	const defense_div = document.getElementById("cost-defense");
-	const features_div = document.getElementById("cost-features");
-	const powers_div = document.getElementById("cost-powers");
-	
-	const size_rank_div = document.getElementById("rank-size");
-	const strength_rank_div = document.getElementById("rank-strength");
-	const speed_rank_div = document.getElementById("rank-speed");
-	const toughness_rank_div = document.getElementById("rank-toughness");
-	const defense_rank_div = document.getElementById("rank-defense");
-	const features_rank_div = document.getElementById("rank-features");
-	const powers_rank_div = document.getElementById("rank-powers");
+function id_select(select, fill, route) {
+	const field = document.getElementById(select)
+	const type_id = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
 
-	const total_div = document.getElementById("cost-total");
+	update.innerText = null;
 
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 
-	const strength_rank = strengths + size_strength;
-	const speed_rank = speed;
-	const toughness_rank = toughnesses + size_toughness;
-	const defense_rank = defenses + size_defense;
-	let f;
-	for (f of features) {
-		feature += f;
-	};
-	let p;
-	for (p of powers) {
-		power += p;
-	};
-	
-	cost = strength + speed + toughness + defense + feaure + power;
-	
-	size_div.innerHTML = size;
-	strength_div.innerHTML = strength;
-	speed_div.innerHTML = speed;
-	toughness_div.innerHTML = toughness;
-	defense_div.innerHTML = defense;
-	features_div.innerHTML = features;
-	powers_div.innerHTML = powers;
-	total_div.innerHTML = cost;
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
 }
+
+function double_select(select1, select2, options, row, entry) {
+	const field1 = document.getElementById(select1);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	const old1 = field1.getAttribute('previousValue');
+	field1.setAttribute('previousValue', val1);
+
+	let o;
+	let grown = false;
+	let grow = false;
+	let div;
+	
+	let shrink = true;
+	let start = false;
+
+	for (o of options) {
+		let val = o.val
+		if (val1 == val) {
+			start = true
+		}
+
+		if (old1 == val) {
+			start = true;
+		}
+
+		if (val2 == val) {
+			start = true;
+		}
+	}
+
+	console.log(start)
+
+	if (start == true) { 
+		for (o of options) {
+			let val = o.val;
+			if (old1 == val ) {
+				grown = true;
+				div = o.div;
+			} 
+
+			if (val2 == val) {
+				grown = true
+				shrink = false;
+			}
+
+			if (val1 == val) {
+				grow = true;
+				shrink = false;
+				div = o.div;
+			}
+		}
+
+		console.log('start');
+		console.log(start);
+		console.log('grown');
+		console.log(grown);
+
+		if (grown == false) {
+			if (grow == true) {
+				const d = document.getElementById(div);
+				d.style.display = 'grid';
+				grow_entry(entry, div);
+				show_maxheight(row)
+			}
+		} 
+		
+		if (shrink == false) {
+			let option;
+
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di);
+				} else {
+					show_opacity(di);
+				}
+			}
+		} else {
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di)
+				}
+			}
+
+			hide_maxheight(row)
+			shrink_entry(entry, div)
+		}
+	} else {
+		console.log('nothing')
+	}
+}
+
+
+function double_select_second(select1, select2, options, others, row, entry) {
+	const field1 = document.getElementById(select1);
+	const val1 = field1.options[field1.selectedIndex].value;
+	const field2 = document.getElementById(select2);
+	const val2 = field2.options[field2.selectedIndex].value;
+
+	const old1 = field1.getAttribute('previousValue');
+	field1.setAttribute('previousValue', val1);
+
+	let o;
+	let grown = false;
+	let grow = false;
+	let div;
+	
+	let shrink = true;
+	let start = false;
+
+	for (o of options) {
+		let val = o.val
+		if (val1 == val) {
+			start = true
+		}
+
+		if (old1 == val) {
+			start = true;
+		}
+
+		if (val2 == val) {
+			start = true;
+		}
+	}
+
+	console.log(start)
+
+	if (start == true) { 
+		for (o of options) {
+			let val = o.val;
+			if (old1 == val ) {
+				grown = true;
+				div = o.div;
+			} 
+
+			if (val2 == val) {
+				grown = true
+				shrink = false;
+			}
+
+			if (val1 == val) {
+				grow = true;
+				shrink = false;
+				div = o.div;
+			}
+		}
+
+		console.log('start');
+		console.log(start);
+		console.log('grown');
+		console.log(grown);
+
+		if (grown == false) {
+			if (grow == true) {
+				const d = document.getElementById(div);
+				d.style.display = 'grid';
+				grow_entry(entry, div);
+				show_maxheight(row)
+			}
+		} 
+		
+		if (shrink == false) {
+			let option;
+
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di);
+				} else {
+					show_opacity(di);
+				}
+			}
+		} else {
+			for (option of options) {
+				let valu = option.val;
+				let di = option.div;
+
+				if (val1 != valu) {
+					hide_opacity(di)
+				}
+			}
+
+			let clear = true;
+			let other;
+			for (other of others) {
+				const s = document.getElementById(other.select);
+				const value = s.options[s.selectedIndex].value;
+				const values = other.values;
+				let v;
+				for (v of values) {
+					if (v == value) {
+						clear = false
+					}
+				}
+			}
+
+			if (clear == true) { 
+				hide_maxheight(row)
+				shrink_entry(entry, div)
+			}
+		}
+	} else {
+		console.log('nothing')
+	}
+}
+
+
+function clear_errors(line, div) {
+	const errors_delete = document.getElementsByClassName(line);
+	const errors = document.getElementById(div);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+
+		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		};
+		setTimeout(function(){
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.display = 'none';
+				errors.style.display = 'none';
+			}
+		}, 400);
+
+	}
+}
+
+function descriptor_add_type()  {
+	const fields = document.getElementsByClassName('descriptor-sml');
+	
+	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
+				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
+				{'type': 33445566, 'name': 'Any Chosen Common'}, 
+				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
+				{'type': 55667788, 'name': 'Any Chosen Damage'},
+				{'type': 66778899, 'name': 'Any Chosen Origin'},
+				{'type': 77889900, 'name': 'Any Chosen Source'},
+				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
+				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
+				{'type': 11002233, 'name': 'Any Chosen Medium'},
+				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
+
+	let field;
+	let option;
+
+	for (field of fields) {
+		for (option of options) {
+			let o = document.createElement('option');
+			o.value = option.type;
+			o.text = option.name;
+			field.add(o);
+		}
+	}
+}
+
+descriptor_add_type()
+
 
 function create_table(jsonResponse, object, route, selects=false) {
 
@@ -1920,7 +1541,12 @@ function row_delete(jsondata, route, object, selects=false) {
 			console.log(jsonResponse)
 				if (jsonResponse.success) {
 
-					clear_errors(err_line, errors)
+					clear_errors(err_line, errors);
+
+					if (jsonResponse.feature) {
+						costs.features = jsonResponse.features;
+						calculate_cost()
+					}
 
 					if (selects != false) {
 						for (s of selects) {
@@ -2037,32 +1663,5 @@ function back_errors(line, table, jsonResponse) {
 
 		errors.style.maxHeight = errors.scrollHeight + errors_height + 20 + 'px';
 	}, 420)
-}
-
-
-function clear_errors(line, div) {
-	const errors_delete = document.getElementsByClassName(line);
-	const errors = document.getElementById(div);
-
-	if (typeof errors_delete[0] === "undefined") {
-		console.log('no errors defined')
-	} else {
-
-		errors.style.maxHeight = "0px";
-		errors.style.padding = "0px";
-
-		for (i = 0; i < errors_delete.length; i++) {
-			errors_delete[i].style.maxHeight = "0px";
-			errors_delete[i].style.padding = "0px";
-			errors_delete[i].style.marginBottom = "0px";
-		};
-		setTimeout(function(){
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.display = 'none';
-				errors.style.display = 'none';
-			}
-		}, 400);
-
-	}
 }
 

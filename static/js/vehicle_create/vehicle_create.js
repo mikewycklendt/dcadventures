@@ -94,7 +94,7 @@ armor_edit = function() {
 	})
 }
 
-let costs = {'size': 0,
+let costs = {'size_rsnk': 0,
 			'size_cost': 0,
 			'size_strength': 0,
 			'size_toughness': 0,
@@ -106,10 +106,9 @@ let costs = {'size': 0,
 			'toughnesses': 0,
 			'defense': 0,
 			'defenses': 0,
-			'feature': 0,
-			'features': [],
-			'power': 0,
-			'powers': [],
+			'features': 0,
+			'powers_rank': 0,
+			'powers_cost': 0,
 			'cost': 0}
 
 vehicle_save = function() {

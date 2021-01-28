@@ -93,7 +93,7 @@ def vehicle_size_select():
 		size_id = int(size_id)
 		size = db.session.query(VehicleSize).filter_by(id=size_id).one()
 		body['cost'] = size.cost
-		body['size'] = size.size
+		body['rank'] = size.size
 		body['defense'] = size.defense
 		body['strength'] = size.strength
 		body['toughness'] = size.toughness
@@ -413,8 +413,11 @@ def vehicle_post_feature():
 	db.session.add(entry)
 	db.session.commit()
 
+	count = db.session.query(VehFeature).filter_by(VehFeature.vehicle_id == vehicle_id).count()
+
 	body = {}
 	body['id'] = entry.id
+	body['features'] = count
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -440,14 +443,17 @@ def vehicle_post_feature():
 	return jsonify(body)
 
 
-@vehicle.route('/vehicle/feature/delete/<vehicle_id>', methods=['DELETE'])
-def delete_vehicle_feature(vehicle_id):
+@vehicle.route('/vehicle/feature/delete/<id>', methods=['DELETE'])
+def delete_vehicle_feature(id):
 	try:
-		db.session.query(VehFeature).filter_by(id=vehicle_id).delete()
+		entry = db.session.query(VehFeature).filter_by(id=id).one()
+		vehicle_id = entry.id
+		count = db.session.query(VehFeature).filter_by(VehFeature.vehicle_id == vehicle_id).count()
+		db.session.query(VehFeature).filter_by(id=id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True })
+		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True, 'features': count })
