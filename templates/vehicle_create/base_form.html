@@ -18,120 +18,117 @@
 	</div>
 
 	<div id="cost-grid">
-		<div></div>
+		<div style="grid-area: blank;"></div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: size-title;">
 			Size
 			<input type="hidden" id="size_strength_cost" name="size_strength_cost" value=>
 			<input type="hidden" id="size_toughness_cost" name="size_toughness_cost" value=>
 			<input type="hidden" id="size_defense_cost" name="size_strength_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: strength-title;">
 			Strength
 			<input type="hidden" id="strength_cost" name="strength_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: speed-title;">
 			Speed
 			<input type="hidden" id="speed_cost" name="speed_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: toughness-title;">
 			Toughness
 			<input type="hidden" id="toughness_cost" name="toughness_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: defense-title;">
 			Defense
 			<input type="hidden" id="defense_cost" name="defense_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: features-title;">
 			Features
 			<input type="hidden" id="features_cost" name="features_cost" value=>
 		</div>
 
-		<div class="cost-title">
+		<div class="cost-title" style="grid-area: powers-title;">
 			Powers
 			<input type="hidden" id="powers_cost" name="powers_cost" value=>
 		</div>
 
-		<div class="cost-title" style="color: #af0101;">
+		<div class="cost-title" style="color: #af0101; grid-area: total-title;">
 			Vehicle Cost
 			<input type="hidden" id="cost" name="cost" value=>
 		</div>
 
-		<div class="cost-title" style="border-bottom: none;">
+		<div class="cost-title" style="border-bottom: none; grid-area: cost-title;">
 			Cost:
 			<input type="hidden" id="cost" name="cost" value=>
 		</div>
 
-		<div class="cost-value" id="cost-size">
+		<div class="cost-value" id="cost-size" style="grid-area: cost-size;">
 			0
 		</div>
 
-		<div class="cost-value" id="cost-strength">
+		<div class="cost-value" id="cost-strength" style="grid-area: cost-strength;">
 			9
 		</div>
 
-		<div class="cost-value" id="cost-speed">
+		<div class="cost-value" id="cost-speed" style="grid-area: cost-speed;">
 			4		
 		</div>
 
-		<div class="cost-value" id="cost-toughness">
+		<div class="cost-value" id="cost-toughness" style="grid-area: cost-toughness;">
 			8
 		</div>
 
-		<div class="cost-value" id="cost-defense">
+		<div class="cost-value" id="cost-defense" style="grid-area: cost-defense;">
 			12			
 		</div>
 
-		<div class="cost-value" id="cost-features">
+		<div class="cost-value" id="cost-features" style="grid-area: cost-features;">
 			5
 		</div>
 
-		<div class="cost-value" id="cost-powers">
+		<div class="cost-value" id="cost-powers" style="grid-area: cost-powers;">
 			10
 		</div>
 
-		<div class="cost-value cost-total" id="cost-total" >
+		<div class="cost-value cost-total" id="cost-total"  style="grid-area: cost-total;">
 			20
 		</div>
 
-		<div class="cost-title" style="border-bottom: none;">
+		<div class="cost-title" style="border-bottom: none; grid-area: rank-title;">
 			Rank:
 		</div>
 
-		<div class="cost-value" id="rank-size">
+		<div class="cost-value" id="rank-size" style="grid-area: rank-size;">
 			0
 		</div>
 
-		<div class="cost-value" id="rank-strength">
+		<div class="cost-value" id="rank-strength" style="grid-area: rank-strength;">
 			9
 		</div>
 
-		<div class="cost-value" id="rank-speed">
+		<div class="cost-value" id="rank-speed" style="grid-area: rank-speed;">
 			4		
 		</div>
 
-		<div class="cost-value" id="rank-toughness">
+		<div class="cost-value" id="rank-defense" style="grid-area: rank-defense;">
 			8
 		</div>
 
-		<div class="cost-value" id="rank-defense">
+		<div class="cost-value" id="rank-defense" style="grid-area: rank-defense;">
 			12			
 		</div>
 
-		<div class="cost-value" id="rank-features">
+		<div class="cost-value" id="rank-features" style="grid-area: rank-features;">
 			-
 		</div>
 
-		<div class="cost-value" id="rank-powers">
+		<div class="cost-value" id="rank-powers" style="grid-area: rank-powers;">
 			10
-		</div>
-
-		<div class="cost-value cost-total" id="cost-total" >
 		</div>
 
 
@@ -160,7 +157,7 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="size" name="size">
+				<select class="base-select" id="size" name="size" onchange="size()">
 					<option value=""> Vehicle Size</option>
 					{% for v in vehicle_size %}
 						<option value={{v.id}}>{{v.name}}</option>
@@ -175,7 +172,7 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="speed" name="speed">
+				<select class="base-select" id="speed" name="speed" onchange="calculate_cost()">
 					<option value=0>Speed Rank</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
@@ -190,7 +187,7 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="strengths" name="strengths" cost_name="strength">
+				<select class="base-select" id="strengths" name="strengths" cost_name="strength" onchange="calculate_cost()">
 					<option value0=0>Strength Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
@@ -205,7 +202,7 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="toughnesses" name="toughnesses" cost_name="toughnesses">
+				<select class="base-select" id="toughnesses" name="toughnesses" cost_name="toughnesses" onchange="calculate_cost()">
 					<option value=0>Toughness Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
@@ -220,7 +217,7 @@
 			</div>
 
 			<div style="width: 75%;">
-				<select class="base-select" id="defenses" name="defenses" cost_name="defenses" onchange="defenses()">
+				<select class="base-select" id="defenses" name="defenses" cost_name="defenses" onchange="calculate_cost()">
 					<option value=0>Defense Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
