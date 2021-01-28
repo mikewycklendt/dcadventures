@@ -156,7 +156,7 @@
 	grid-template-rows: auto auto auto;
 	grid-template-areas: "blank size-title strength-title speed-title toughness-title defense-title features-title powers-title total-title"
 							"cost-title cost-size cost-strength cost-speed cost-toughness cost-defense cost-features cost-powers cost-total"
-	 						"rank-title rank-size rank-strength  rank-speed rank-defense rank-defense rank-features rank-powers cost-total";
+	 						"rank-title rank-size rank-strength  rank-speed rank-toughness rank-defense rank-features rank-powers cost-total";
 	border-bottom: .2vw solid lightblue;
 	border-top: .2vw solid lightblue;
 	margin-bottom: 1vw;
