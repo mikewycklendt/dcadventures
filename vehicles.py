@@ -447,12 +447,12 @@ def delete_vehicle_feature(id):
 	try:
 		entry = db.session.query(VehFeature).filter_by(id=id).one()
 		vehicle_id = entry.id
-		count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()
 		db.session.query(VehFeature).filter_by(id=id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
 	finally:
 		db.session.close()
+		count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True, 'features': count })
