@@ -4385,6 +4385,7 @@ class VehPower(db.Model):
 	__tablename__ = 'vehicle_powers'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))
+	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
 
@@ -4392,6 +4393,7 @@ class VehPower(db.Model):
 		return {
 			'id': self.id,
 			'vehicle_id': self.vehicle_id,
+			'power': self.power,
 			'cost': self.cost,
 			'ranks': self.ranks
 		}
@@ -4400,11 +4402,13 @@ class VehFeature(db.Model):
 	__tablename__ = 'vehicle_features'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))
+	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 
 	def format(self):
 		return {
 			'id': self.id,
-			'vehicle_id': self.vehicle_id
+			'vehicle_id': self.vehicle_id,
+			'feature': self.feature
 		}
 
 if __name__ == '__main__':
