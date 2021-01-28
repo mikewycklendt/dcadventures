@@ -311,17 +311,56 @@ function equipment_select(select, fill) {
 	})	
 }
 
-function belt_info(select, route, entry) {
+function id_select(select, fill, route) {
+	const field = document.getElementById(select)
+	const type_id = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+function feature_info(select, entry) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;
 		
 	const item_name = document.getElementById('item-name');
 	const item_cost = document.getElementById('item-cost');
 	const item_description = document.getElementById('item-description');
-	const cost_div = document.getElementById('belt-item-cost');
-	const item = 'belt-item';
+	const item = 'feature-item';
 
-	response = fetch(route, {
+	response = fetch('/vehicle/feature/info', {
 		method: 'POST',
 		body: JSON.stringify({
 			'id': type_id
@@ -1430,9 +1469,11 @@ function selects_add(id, name, selects_input) {
 	}
 }
 
+function cost_select()
+
 function calculate_cost() {
 	
-	const size = costs.size;
+	const size = costs.size_cost;
 	const size_strength = costs.size_strength;
 	const size_toughness = costs.size_toughness;
 	const size_defense = costs.size_defense;
@@ -1456,12 +1497,22 @@ function calculate_cost() {
 	const defense_div = document.getElementById("cost-defense");
 	const features_div = document.getElementById("cost-features");
 	const powers_div = document.getElementById("cost-powers");
+	
+	const size_rank_div = document.getElementById("rank-size");
+	const strength_rank_div = document.getElementById("rank-strength");
+	const speed_rank_div = document.getElementById("rank-speed");
+	const toughness_rank_div = document.getElementById("rank-toughness");
+	const defense_rank_div = document.getElementById("rank-defense");
+	const features_rank_div = document.getElementById("rank-features");
+	const powers_rank_div = document.getElementById("rank-powers");
+
 	const total_div = document.getElementById("cost-total");
 
-	strength = strengths + size_strength;
-	speed = speed;
-	toughness = toughnesses + size_toughness;
-	defense = defenses + size_defense;
+
+	const strength_rank = strengths + size_strength;
+	const speed_rank = speed;
+	const toughness_rank = toughnesses + size_toughness;
+	const defense_rank = defenses + size_defense;
 	let f;
 	for (f of features) {
 		feature += f;

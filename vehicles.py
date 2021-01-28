@@ -37,7 +37,7 @@ db = SQLAlchemy()
 def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'vehicle_create.html'
 
-	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html'}
+	vehicle_includes = {'base_form': 'vehicle_create/base_form.html', 'powers': 'vehicle_create/powers.html', 'feature': 'vehicle_create/feature.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Vehicle'
 	stylesheets.append({"style": "/static/css/vehicle_create.css"})
@@ -68,11 +68,15 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	power_type = PowerType.query.all()
 
+	features = Feature.query.all()
+
+	equipment = db.session.query(Equipment).order_by(Equipment.name).all()
+
+	equipment_type = EquipType.query.all()
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type)
-
-
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type,
+							features=features, equioment=equipment, equipment_type=equipment_type)
 
 @vehicle.route('/vehicle/size/select', methods=['POST'])
 def vehicle_size_select():
@@ -85,11 +89,64 @@ def vehicle_size_select():
 		size_id = int(size_id)
 		size = db.session.query(VehicleSize).filter_by(id=size_id).one()
 		body['cost'] = size.cost
+		body['size'] = size.size
 		body['defense'] = size.defense
 		body['strength'] = size.strength
 		body['toughness'] = size.toughness
 	except:
 		body['success'] = False
+
+	print(body)
+	return jsonify(body)
+
+@vehicle.route('/vehicle/feature/info', methods=['POST'])
+def vehicle_size_select():
+	body = {}
+	body['success'] = True
+	
+	feature_id = request.get_json()['id'] 
+
+	try:
+		feature_id = int(feature_id)
+		feature = db.session.query(Feature).filter_by(id=feature_id).one()
+		body['cost'] = 1
+		body['name'] = feature.name 
+		body['description'] = feature.description
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)
+
+
+@equip.route('/vehicle/feature/select', methods=['POST'])
+def equip_weapon_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+	
+	try:
+		type_id = int(type_id)
+		print(type_id)
+		equipment = db.session.query(Equipment).filter_by(id=type_id).one()
+		features = db.session.query(Feature).filter_by(equip_id=type_id).order_by(Feature.name).first()
+		if features is None:
+			options.appwnd({'id': '', 'name': 'Equipmwnt has no Features'})
+		else:
+			features = db.session.query(Feature).filter_by(equip_id=type_id).order_by(Feature.name).all()
+			equipment_name = equipment.name + "'s Features"
+			options.append({'id': '', 'name': equipment_name})
+			for f in features:
+				options.append({'id': f.id, 'name': f.name})
+	except:
+		options.append({'id': '', 'name': 'All Features'})
+		features = db.session.query(Feature).order_by(Feature.name).all()
+		for f in features:
+			options.append({'id': f.id, 'name': f.name})
+
+	body['options'] = options
 
 	print(body)
 	return jsonify(body)

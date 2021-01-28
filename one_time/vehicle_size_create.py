@@ -96,5 +96,6 @@ def vehiclesize_create():
 		print ('strength: ' + str(result.strength))
 		print ('toughness: ' + str(result.toughness))
 		print ('defense: ' + str(result.defense))
+		print ('cost: ' + str(result.cost))
 
 	return ('vehicle sizes added')

@@ -112,7 +112,7 @@ let costs = {'size': 0,
 			'powers': [],
 			'cost': 0}
 
-armor_save = function() {
+vehicle_save = function() {
 
 	const vehicle_id = document.getElementById('vehicle_id').value;
 

@@ -1,5 +1,6 @@
 @import "vehicle_create/base_form.css";
 @import "vehicle_create/powers.css";
+@import "vehicle_create/feature.css";
 
 .vehicle-container {
 	display: grid;
@@ -994,12 +995,9 @@ textarea:focus {
 }
 
 .trait-title {
-	border-bottom: .2vw solid lightblue;
-	width: 95%;
-	margin-bottom: .1vw;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 140%;
+	font-size: 200%;
 	text-align: center;
 	color: #245681;
-	padding-top: .2vw;
+	margin-bottom: .01vw;
 }
