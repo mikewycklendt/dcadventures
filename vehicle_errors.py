@@ -25,7 +25,7 @@ def veh_feature_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	equip_id = data['equip_id']
+	vehicle_id = data['vehicle_id']
 	name = data['name']
 	description = data['description']
 	feature = data['feature']
