@@ -398,7 +398,7 @@ def vehicle_post_feature():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	vehicle_id = request.get_json()['equip_id']
+	vehicle_id = request.get_json()['vehicle_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
