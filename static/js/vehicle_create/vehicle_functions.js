@@ -8,67 +8,6 @@ const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
 
-function calculate_cost() {
-	
-	const size_cost = costs.size_cost;
-	const size_rank = costs.size_rank
-	const size_strength = costs.size_strength;
-	const size_toughness = costs.size_toughness;
-	const size_defense = costs.size_defense;
-	const strengths = select('strengths');
-	const speed = select('speed');
-	const toughnesses = select('toughnesses');
-	const defenses = select('defenses');
-	const features = costs.features;
-	const powers_rank = costs.powers_rank;
-	const powers_cost = costs.powers_cost;
-	
-	const size_div = document.getElementById("cost-size");
-	const strength_div = document.getElementById("cost-strength");
-	const speed_div = document.getElementById("cost-speed");
-	const toughness_div = document.getElementById("cost-toughness");
-	const defense_div = document.getElementById("cost-defense");
-	const features_div = document.getElementById("cost-features");
-	const powers_div = document.getElementById("cost-powers");
-	
-	const size_rank_div = document.getElementById("rank-size");
-	const strength_rank_div = document.getElementById("rank-strength");
-	const speed_rank_div = document.getElementById("rank-speed");
-	const toughness_rank_div = document.getElementById("rank-toughness");
-	const defense_rank_div = document.getElementById("rank-defense");
-	const powers_rank_div = document.getElementById("rank-powers");
-
-	const total_div = document.getElementById("cost-total");
-
-	const strength_rank = strengths + size_strength;
-	const toughness_rank = toughnesses + size_toughness;
-	const defense_rank = defenses + size_defense;
-
-	size_rank_div.innerHTML = size_rank;
-	strength_rank_div.innerHTML = strength_rank;
-	speed_rank_div.innerHTML = speed;
-	toughness_rank_div.innerHTML = toughness_rank;
-	defense_rank_div.innerHTML = defense_rank;
-	powers_rank_div.innerHTML = powers_rank;
-	
-	const cost = strengths + speed + toughnesses + defenses + features + powers_cost;
-	
-	size_div.innerHTML = size_cost;
-	strength_div.innerHTML = strengths;
-	speed_div.innerHTML = speed;
-	toughness_div.innerHTML = toughnesses;
-	defense_div.innerHTML = defenses;
-	features_div.innerHTML = features;
-	powers_div.innerHTML = powers_cost;
-	total_div.innerHTML = cost;
-
-	costs.cost = cost;
-	costs.speed = speed;
-	costs.strength = strength_rank;
-	costs.toughness = toughness_rank;
-	costs.defense = defense_rank;
-}
-
 function feature_info(select, entry) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;

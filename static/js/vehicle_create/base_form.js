@@ -42,10 +42,12 @@ function size_calculate(costs, route) {
 		if (jsonResponse.success) {
 	
 			costs.size_cost = jsonResponse.cost;
-			costs.size_rank = jsonResponse.rank;
+			costs.size_rank = jsonResponse.rank;			
 			costs.size_defense = jsonResponse.defense;
 			costs.size_strength = jsonResponse.strength;
 			costs.size_toughness = jsonResponse.toughness;
+			
+			
 			calculate_cost();
 
 		} else {
