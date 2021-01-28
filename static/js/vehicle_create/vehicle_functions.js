@@ -311,6 +311,96 @@ function equipment_select(select, fill) {
 	})	
 }
 
+function id_select(select, fill, route) {
+	const field = document.getElementById(select)
+	const type_id = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+function feature_info(select, entry) {
+	const field = document.getElementById(select)
+	const type_id = field.options[field.selectedIndex].value;
+		
+	const item_name = document.getElementById('item-name');
+	const item_cost = document.getElementById('item-cost');
+	const item_description = document.getElementById('item-description');
+	const item = 'feature-item';
+
+	response = fetch('/vehicle/feature/info', {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const name = jsonResponse.name;
+			const cost = jsonResponse.cost;
+			const description = jsonResponse.description;
+
+			item_name.style.opacity = '0%';
+			cost_div.style.opacity = '0%';
+			item_description.style.opacity = '0%'
+
+			setTimeout(function(){
+				item_name.innerHTML = name;
+				item_cost.innerHTML = cost;
+				item_description.innerHTML = description;
+				item_name.style.opacity = '100%';
+				cost_div.style.opacity = '100%';
+				item_description.style.opacity = '100%';
+				show_maxheight(item);
+				grow_entry(entry, item);
+			}, 300);
+
+		} else {
+			console.log(jsonResponse.options);
+			hide_maxheight(item);
+			shrink_entry(entry, item);
+		}
+	})	
+}
+
 function reset_all(selects) {
 	let select;
 
@@ -1379,7 +1469,6 @@ function selects_add(id, name, selects_input) {
 	}
 }
 
-function cost_select()
 
 function calculate_cost() {
 	
