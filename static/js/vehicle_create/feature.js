@@ -66,7 +66,7 @@ function feature_submit() {
 
 			feature_grid.columns.length = 0;
 			feature_grid.columns = jsonResponse.rows;
-			cost.features = jsonResponse.features;
+			costs.features = jsonResponse.features;
 			calculate_cost()
 
 			const table_id = jsonResponse.table_id;
