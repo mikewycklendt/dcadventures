@@ -20,11 +20,11 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 20% 75%;
 }
 
 #item-name {
-	font-size: 135%;
+	font-size: 155%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -35,8 +35,8 @@
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 50% 59%;
-	text-align: right;
+	grid-template-columns: 29% 59%;
+	text-align: left;
 }
 
 #item-description {
