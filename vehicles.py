@@ -100,7 +100,7 @@ def vehicle_size_select():
 	return jsonify(body)
 
 @vehicle.route('/vehicle/feature/info', methods=['POST'])
-def vehicle_size_select():
+def vehicle_feature_info():
 	body = {}
 	body['success'] = True
 	
