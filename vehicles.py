@@ -415,7 +415,6 @@ def vehicle_post_feature():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	error = False
 	error_msg = []
 	body['success'] = True
