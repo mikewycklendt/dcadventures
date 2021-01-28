@@ -51,10 +51,10 @@ function calculate_cost() {
 	const size_strength = costs.size_strength;
 	const size_toughness = costs.size_toughness;
 	const size_defense = costs.size_defense;
-	const strengths = select('strengths');
-	const speed = select('speed');
-	const toughnesses = select('toughnesses');
-	const defenses = select('defenses');
+	const strengths = parseInt(select('strengths'));
+	const speed = parseInt(select('speed'));
+	const toughnesses = parseInt(select('toughnesses'));
+	const defenses = parseInt(select('defenses'));
 	const features = costs.features;
 	const powers_rank = costs.powers_rank;
 	const powers_cost = costs.powers_cost;
