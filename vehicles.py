@@ -369,10 +369,10 @@ def vehicle_post_():
 	return jsonify(body)
 
 
-@vehicle.route('/vehicle/vehicle/delete/<vehicle_id>', methods=['DELETE'])
+@vehicle.route('/vehicle//delete/<vehicle_id>', methods=['DELETE'])
 def delete_vehicle_(vehicle_id):
 	try:
-		db.session.query(Vehicle).filter_by(id=vehicle_id).delete()
+		db.session.query().filter_by(id=vehicle_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
@@ -441,10 +441,10 @@ def vehicle_post_feature():
 	return jsonify(body)
 
 
-@vehicle.route('/vehicle/vehicle/delete/<vehicle_id>', methods=['DELETE'])
-def delete_vehicle_(vehicle_id):
+@vehicle.route('/vehicle/feature/delete/<vehicle_id>', methods=['DELETE'])
+def delete_vehicle_feature(vehicle_id):
 	try:
-		db.session.query(Vehicle).filter_by(id=vehicle_id).delete()
+		db.session.query(VehFeature).filter_by(id=vehicle_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
