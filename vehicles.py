@@ -446,7 +446,7 @@ def vehicle_post_feature():
 def delete_vehicle_feature(id):
 	try:
 		entry = db.session.query(VehFeature).filter_by(id=id).one()
-		vehicle_id = entry.id
+		vehicle_id = entry.vehicle_id
 		db.session.query(VehFeature).filter_by(id=id).delete()
 		db.session.commit()
 	except:
