@@ -83,11 +83,6 @@ function calculate_cost() {
 	costs.strength = strength_rank;
 	costs.toughness = toughness_rank;
 	costs.defense = defense_rank;
-	costs.size_cost = jsonResponse.cost;
-	costs.size_rank = jsonResponse.rank;			
-	costs.size_defense = jsonResponse.defense;
-	costs.size_strength = jsonResponse.strength;
-	costs.size_toughness = jsonResponse.toughness;
 }
 
 function size_calculate(costs, route) {
