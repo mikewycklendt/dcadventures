@@ -19,7 +19,7 @@
 	<div id="powers-row1">
 		{% for p in power_type %}
 			<div>
-				<div class="btn-power-type" data-id="{{p.id}}">
+				<div class="btn-power-type" data-id="{{p.id}}" onclick="powers_submit()">
 					{{p.name}}
 				</div>
 			</div>
