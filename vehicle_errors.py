@@ -51,7 +51,7 @@ def veh_powers_post_errors(data):
 
 	errors = id_check(Vehicle, vehicle_id, 'Vehicle', errors)
 	errors = id_check(Power, power, 'Power', errors)
-`
+	
 	errors = no_zero(cost, 'Cost', errors)
 	errors = no_zero(ranks, 'Ranks', errors)`
 
