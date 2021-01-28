@@ -380,8 +380,7 @@ def delete_vehicle_(vehicle_id):
 		db.session.close()
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': False })
-135```
-	rfds6yktm1`
+
 @vehicle.route('/vehicle/feature/create', methods=['POST'])
 def vehicle_post_feature():
 
