@@ -375,19 +375,17 @@ function feature_info(select, entry) {
 		if (jsonResponse.success) {
 
 			const name = jsonResponse.name;
-			const cost = jsonResponse.cost;
 			const description = jsonResponse.description;
 
 			item_name.style.opacity = '0%';
-			cost_div.style.opacity = '0%';
+			item_cost.style.opacity = '0%';
 			item_description.style.opacity = '0%'
 
 			setTimeout(function(){
 				item_name.innerHTML = name;
-				item_cost.innerHTML = cost;
 				item_description.innerHTML = description;
 				item_name.style.opacity = '100%';
-				cost_div.style.opacity = '100%';
+				item_cost.style.opacity = '100%';
 				item_description.style.opacity = '100%';
 				show_maxheight(item);
 				grow_entry(entry, item);
