@@ -24,38 +24,6 @@ function size_field() {
 	size_calculate(costs, route);
 }
 
-function size_calculate(costs, route) {
-	const type_id = select('size_field');
-
-	response = fetch(route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-	
-			costs.size_cost = jsonResponse.cost;
-			costs.size_rank = jsonResponse.rank;			
-			costs.size_defense = jsonResponse.defense;
-			costs.size_strength = jsonResponse.strength;
-			costs.size_toughness = jsonResponse.toughness;
-			
-			
-			calculate_cost();
-
-		} else {
-			console.log('error');``
-		}
-	})	
-}
-
 function calculate_cost() {
 	
 	const size_cost = costs.size_cost;
@@ -115,4 +83,36 @@ function calculate_cost() {
 	costs.strength = strength_rank;
 	costs.toughness = toughness_rank;
 	costs.defense = defense_rank;
+}
+
+function size_calculate(costs, route) {
+	const type_id = select('size_field');
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+	
+			costs.size_cost = jsonResponse.cost;
+			costs.size_rank = jsonResponse.rank;			
+			costs.size_defense = jsonResponse.defense;
+			costs.size_strength = jsonResponse.strength;
+			costs.size_toughness = jsonResponse.toughness;
+			
+			
+			calculate_cost();
+
+		} else {
+			console.log('error');``
+		}
+	})	
 }
