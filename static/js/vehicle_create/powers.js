@@ -7,6 +7,10 @@ function powers_check() {
 	entry_check(check, title, base, entry);
 }
 
+let power_data = {'cost': 5,
+					'ranks': 5,
+					'power': 1}
+
 let powers_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -19,7 +23,10 @@ function powers_submit() {
 	const font = powers_grid.font;
 
 	const vehicle_id = document.getElementById('vehicle_id').value;
-
+	const cost = power_data.cost;
+	const ranks = power_data.ranks;
+	const power = power_data.power;
+	
 	const errors = 'powers-err';
 	const err_line = 'powers-err-line';
 
@@ -29,7 +36,10 @@ function powers_submit() {
 			'vehicle_id': vehicle_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'cost':  cost,
+			'ranks':  ranks,
+			'power': power
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -42,6 +52,10 @@ function powers_submit() {
 
 			powers_grid.columns.length = 0;
 			powers_grid.columns = jsonResponse.rows;
+			
+			costs.powers_cost = jsonResponse.cost;
+			costs.powers_rank = jsonResponse.rank;
+			calculate_cost();
 
 			const table_id = jsonResponse.table_id;
 			const route = '/vehicle/' + table_id + '/delete/'
