@@ -25,7 +25,7 @@ def veh_feature_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	vehicle_id = data['vehicle_id'
+	vehicle_id = data['vehicle_id']
 	feature = data['feature']
 
 	create_check('vehicle Name', vehicle_id, Vehicle, errors)
