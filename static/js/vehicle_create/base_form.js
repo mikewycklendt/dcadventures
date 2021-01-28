@@ -67,7 +67,7 @@ function calculate_cost() {
 	defense_rank_div.innerHTML = defense_rank;
 	powers_rank_div.innerHTML = powers_rank;
 	
-	const cost = strengths + speed + toughnesses + defenses + features + powers_cost;
+	const cost = strengths + speed + toughnesses + defenses + features + powers_cost + size_cost;
 	
 	size_div.innerHTML = size_cost;
 	strength_div.innerHTML = strengths;
@@ -83,6 +83,11 @@ function calculate_cost() {
 	costs.strength = strength_rank;
 	costs.toughness = toughness_rank;
 	costs.defense = defense_rank;
+	costs.size_cost = jsonResponse.cost;
+	costs.size_rank = jsonResponse.rank;			
+	costs.size_defense = jsonResponse.defense;
+	costs.size_strength = jsonResponse.strength;
+	costs.size_toughness = jsonResponse.toughness;
 }
 
 function size_calculate(costs, route) {
