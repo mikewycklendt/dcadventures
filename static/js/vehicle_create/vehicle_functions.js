@@ -1217,7 +1217,7 @@ function item_edit_form(item_name_edit, name_div, item_edit_grid) {
 	edit_grid.style.padding = "1%";
 }
 
-item_edit = function(item_id, item_name_edit, edit_route, item_name_div, item_edit_grid) {
+function item_edit(item_id, item_name_edit, edit_route, item_name_div, item_edit_grid) {
 	const id = document.getElementById(item_id).value;
 	const name = document.getElementById(item_name_edit).value;
 
