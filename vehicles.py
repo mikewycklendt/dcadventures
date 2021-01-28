@@ -413,7 +413,7 @@ def vehicle_post_feature():
 	db.session.add(entry)
 	db.session.commit()
 
-	count = db.session.query(VehFeature).filter_by(VehFeature.vehicle_id == vehicle_id).count()
+	count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()
 
 	body = {}
 	body['id'] = entry.id
@@ -448,7 +448,7 @@ def delete_vehicle_feature(id):
 	try:
 		entry = db.session.query(VehFeature).filter_by(id=id).one()
 		vehicle_id = entry.id
-		count = db.session.query(VehFeature).filter_by(VehFeature.vehicle_id == vehicle_id).count()
+		count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()
 		db.session.query(VehFeature).filter_by(id=id).delete()
 		db.session.commit()
 	except:
