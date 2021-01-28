@@ -1,97 +1,29 @@
-vehicle_create = function() {
-	const vehicle_name = document.getElementById('vehicle_name').value;
-	const add_vehicle = document.getElementById('add-vehicle');
-	const edit_button = document.getElementById('edit-button');
+function vehicle_create() {
+	const create_name = 'vehicle_name'
+	const create_add = 'add-vehicle'
+	const create_route = '/vehicle/create'
+	const create_name_div = 'vehicle-name'
+	const hidden_id = 'vehicle_id'
 
-	const err_line = 'name-err-line';
-	const errors = 'name-err';
-
-
-	response = fetch('/vehicle/create', {
-		method: 'POST',
-		body: JSON.stringify({
-		  'name': vehicle_name,
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-			const all_fields = document.getElementById('all-fields');
-			const name_div = document.getElementById('vehicle-name');
-			const vehicle_id = document.getElementById('vehicle_id');
-			name_div.innerHTML = jsonResponse.name;
-			vehicle_id.value = jsonResponse.id;
-			name_div.style.display = "block"
-			name_div.style.opacity = "100%"
-			name_div.style.fontSize = "460%";
-			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
-			edit_button.style.display = "block";
-			add_vehicle.style.display = "none";
-			all_fields.style.display = "grid";
-			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
-
-			clear_errors(err_line, errors);
-
-		} else {
-
-			back_errors(err_line, errors, jsonResponse);
-
-		}
-	})
+	create_id(create_name, create_add, create_route, create_name_div, hidden_id);
 }
 
-edit_form = function() {
-	const vehicle_id = document.getElementById('vehicle_id').value;
-	const edit_field = document.getElementById('vehicle_name_edit');
-	const name = document.getElementById('vehicle-name').innerHTML;
-	const edit_grid = document.getElementById('vehicle-edit-grid');
+function edit_form() {
+	const item_name_edit = 'vehicle_name_edit'
+	const name_div =  'vehicle-name'
+	const item_edit_grid = 'vehicle-edit-grid'
 
-	edit_field.value = name;
-	edit_grid.style.display = "grid";
-	edit_grid.style.maxHeight = edit_grid.scrollHeight + "px";
-	edit_grid.style.padding = "1%";
+	item_edit_form(item_name_edit, name_div, item_edit_grid);
 }
 
-armor_edit = function() {
-	const id = document.getElementById('vehicle_id').value;
-	const name = document.getElementById('vehicle_name_edit').value;
-
-	const err_line = 'name-err-line';
-	const errors = 'name-err';
+function vehicle_edit() {
+	const item_id = 'vehicle_id'
+	const item_name_edit = 'vehicle_name_edit'
+	const edit_route = '/vehicle/edit_name'
+	const item_name_div = 'vehicle-name'
+	const item_edit_grid = 'vehicle-edit-grid'
 	
-		response = fetch('/vehicle/edit_name', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': id,
-			'name': name
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-			const name_div = document.getElementById('vehicle-name');
-			const edit_grid = document.getElementById('vehicle-edit-grid');
-			edit_grid.style.display = "none";
-			name_div.innerHTML = jsonResponse.name;
-			name_div.style.fontSize = "460%";
-			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
-
-			clear_errors(err_line, errors);
-
-		} else {
-				
-			back_errors(err_line, errors, jsonResponse);
-
-		}
-	})
+	item_edit(item_id, item_name_edit, edit_route, item_name_div, item_edit_grid)
 }
 
 let costs = {'size_rsnk': 0,
