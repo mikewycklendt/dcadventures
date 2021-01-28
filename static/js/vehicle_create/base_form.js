@@ -19,12 +19,12 @@ let costs = {'size_rank': 0,
 			'cost': 0}
 
 function size_field() {
-	const size_id = select('size_field');
-	
+	const type_id = select('size_field');
+
 	response = fetch('/vehicle/size/select', {
 		method: 'POST',
 		body: JSON.stringify({
-		  'id': size_id,
+			'id': type_id
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -34,17 +34,18 @@ function size_field() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-
+	
 			costs.size_cost = jsonResponse.cost;
 			costs.size_rank = jsonResponse.rank;
 			costs.size_defense = jsonResponse.defense;
 			costs.size_strength = jsonResponse.strength;
 			costs.size_toughness = jsonResponse.toughness;
 			calculate_cost();
+
 		} else {
-			console.log('error')
+			console.log('error');``
 		}
-	})
+	})	
 }
 
 function calculate_cost() {
