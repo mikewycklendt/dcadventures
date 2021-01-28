@@ -119,8 +119,8 @@ def vehicle_size_select():
 	return jsonify(body)
 
 
-@equip.route('/vehicle/feature/select', methods=['POST'])
-def equip_weapon_select():
+@vehicle.route('/vehicle/feature/select', methods=['POST'])
+def vehicle_feature_select():
 	body = {}
 	body['success'] = True
 	options = []
