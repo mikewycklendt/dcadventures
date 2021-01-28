@@ -407,7 +407,7 @@ def vehicle_post_feature():
 	vehicle_id = db_integer(vehicle_id)
 	feature = db_integer(feature)
 
-	entry = Feature(vehicle_id = vehicle_id,
+	entry = VehFeature(vehicle_id = vehicle_id,
 					feature = feature)
 
 	db.session.add(entry)
