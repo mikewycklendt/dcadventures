@@ -21,7 +21,7 @@ let costs = {'size_rank': 0,
 function size_field() {
 	const size_id = select('size_field');
 	
-	response = fetch(create_route, {
+	response = fetch('/vehicle/size/select', {
 		method: 'POST',
 		body: JSON.stringify({
 		  'id': size_id,
