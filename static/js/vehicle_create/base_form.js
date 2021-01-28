@@ -19,9 +19,15 @@ let costs = {'size_rank': 0,
 			'cost': 0}
 
 function size_field() {
+	const route = '/vehicle/size/select'
+
+	size_calculate(costs, route);
+}
+
+function size_calculate(costs, route) {
 	const type_id = select('size_field');
 
-	response = fetch('/vehicle/size/select', {
+	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
 			'id': type_id
