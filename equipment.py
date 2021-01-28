@@ -263,7 +263,10 @@ def equip_equipment_select():
 		for e in equipment:
 			options.append({'id': e.id, 'name': e.name})
 	except:
-		options.append({'id': '', 'name': 'Weapon Type'})
+		options.append({'id': '', 'name': 'All Equipment'})
+		equipment = db.session.query(Equipment).order_by(Equipment.name).all()
+		for e in equipment:
+			options.append({'id': e.id, 'name': e.name})
 	
 	body['options'] = options
 

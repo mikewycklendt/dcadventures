@@ -119,6 +119,33 @@ def vehicle_feature_info():
 	return jsonify(body)
 
 
+@vehicle.route('/vehicle/equipment/select', methods=['POST'])
+def vehicle_equipment_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
+		equipment = db.session.query(Equipment).filter_by(type_id=type_id).order_by(Equipment.name).all()
+		options.append({'id': '', 'name': equip_type.name})
+		options.append({'id': 'all', 'name': 'All Features'})
+		for e in equipment:
+			options.append({'id': e.id, 'name': e.name})
+	except:
+		options.append({'id': '', 'name': 'No Equipment of that Type'})
+		options.append({'id': 'all', 'name': 'All Features'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
+
+
+
 @vehicle.route('/vehicle/feature/select', methods=['POST'])
 def vehicle_feature_select():
 	body = {}
@@ -133,7 +160,7 @@ def vehicle_feature_select():
 		equipment = db.session.query(Equipment).filter_by(id=type_id).one()
 		features = db.session.query(Feature).filter(Feature.equip_id==type_id).order_by(Feature.name).first()
 		if features is None:
-			options.append({'id': '', 'name': 'Equipmwnt has no Features'})
+			options.append({'id': '', 'name': 'Equipment has no Features'})
 		else:
 			features = db.session.query(Feature).filter(Feature.equip_id==type_id, Feature.name != '').order_by(Feature.name).all()
 			equipment_name = equipment.name + "'s Features"
@@ -142,7 +169,7 @@ def vehicle_feature_select():
 				options.append({'id': f.id, 'name': f.name})
 	except:
 		options.append({'id': '', 'name': 'All Features'})
-		features = db.session.query(Feature).order_by(Feature.name).all()
+		features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
 		for f in features:
 			options.append({'id': f.id, 'name': f.name})
 
