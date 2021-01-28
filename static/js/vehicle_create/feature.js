@@ -31,7 +31,7 @@ function feature_equipment_type() {
 }
 let feature_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 110,
 					'mod': []}
 
 function feature_submit() {

@@ -23,7 +23,11 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
-from models import Vehicle, VehicleType, PowerType, VehicleSize
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
+from vehicle_errors import veh_feature_post_errors, veh_save_errors
+from vehicle_posts import veh_feature_post
+
+
 load_dotenv()
 
 import os
@@ -376,3 +380,75 @@ def delete_vehicle_(vehicle_id):
 		db.session.close()
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': False })
+
+	
+@vehicle.route('/vehicle/feature/create', methods=['POST'])
+def vehicle_post_feature():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = veh_feature_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	vehicle_id = request.get_json()['equip_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	feature = request.get_json()['feature']
+	
+	vehicle_id = db_integer(vehicle_id)
+	feature = db_integer(feature)
+
+	entry = Feature(vehicle_id = vehicle_id,
+					feature = feature)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	body['name'] = entry.name	
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'feature'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = veh_feature_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+
+@vehicle.route('/vehicle/vehicle/delete/<vehicle_id>', methods=['DELETE'])
+def delete_vehicle_(vehicle_id):
+	try:
+		db.session.query(Vehicle).filter_by(id=vehicle_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True })
