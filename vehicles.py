@@ -320,6 +320,7 @@ def vehicle_post_powers():
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
+	print(data)
 
 	errors = veh_powers_post_errors(data)
 
