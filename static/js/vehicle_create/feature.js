@@ -21,6 +21,14 @@ function feature_equipment() {
 	id_select(select, fill, route);
 
 }
+
+function feature_equipment_type() {
+	const select = 'feature_equipment_type';
+	const fill = 'feature_equipment';
+	const route =  '/equipment/select';
+
+	id_select(select, fill, route);	
+}
 let feature_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
