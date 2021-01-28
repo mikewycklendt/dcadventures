@@ -1160,6 +1160,100 @@ function descriptor_add_type()  {
 
 descriptor_add_type()
 
+function create_id(create_name, create_add, create_route, create_name_div, hidden_id) {
+	const item_name = document.getElementById(create_name).value;
+	const add_item = document.getElementById(create_add);
+	const edit_button = document.getElementById('edit-button');
+
+	const err_line = 'name-err-line';
+	const errors = 'name-err';
+
+
+	response = fetch(create_route, {
+		method: 'POST',
+		body: JSON.stringify({
+		  'name': item_name,
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+			const all_fields = document.getElementById('all-fields');
+			const name_div = document.getElementById(create_name_div);
+			const item_id = document.getElementById(hidden_id);
+			name_div.innerHTML = jsonResponse.name;
+			item_id.value = jsonResponse.id;
+			name_div.style.display = "block"
+			name_div.style.opacity = "100%"
+			name_div.style.fontSize = "460%";
+			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
+			edit_button.style.display = "block";
+			add_item.style.display = "none";
+			all_fields.style.display = "grid";
+			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
+
+			clear_errors(err_line, errors);
+
+		} else {
+
+			back_errors(err_line, errors, jsonResponse);
+
+		}
+	})
+}
+
+function item_edit_form(item_name_edit, name_div, item_edit_grid) {
+	const edit_field = document.getElementById(item_name_edit);
+	const name = document.getElementById(name_div).innerHTML;
+	const edit_grid = document.getElementById(item_edit_grid);
+
+	edit_field.value = name;
+	edit_grid.style.display = "grid";
+	edit_grid.style.maxHeight = edit_grid.scrollHeight + "px";
+	edit_grid.style.padding = "1%";
+}
+
+item_edit = function(item_id, item_name_edit, edit_route, item_name_div, item_edit_grid) {
+	const id = document.getElementById(item_id).value;
+	const name = document.getElementById(item_name_edit).value;
+
+	const err_line = 'name-err-line';
+	const errors = 'name-err';
+	
+		response = fetch(edit_route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': id,
+			'name': name
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+			const name_div = document.getElementById(item_name_div);
+			const edit_grid = document.getElementById(item_edit_grid);
+			edit_grid.style.display = "none";
+			name_div.innerHTML = jsonResponse.name;
+			name_div.style.fontSize = "460%";
+			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
+
+			clear_errors(err_line, errors);
+
+		} else {
+				
+			back_errors(err_line, errors, jsonResponse);
+
+		}
+	})
+}
 
 function create_table(jsonResponse, object, route, selects=false) {
 
