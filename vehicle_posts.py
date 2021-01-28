@@ -28,3 +28,23 @@ def veh_feature_post(entry, body, cells):
 	cells.clear()
 
 	return (body)
+
+
+def veh_powers_post(entry, body, cells):
+
+	vehicle_id = entry.vehicle_id
+	cost = entry.cost
+	ranks  = entry.ranks
+	power = entry.power
+
+	power = name(Power, power)
+
+	cells = cell('Power', 35, [power])
+	cells = cell('Cost', 12, [cost], cells)
+	cells = cell('Ranks', 12, [ranks], cells)
+
+	body = send(cells, body)
+	
+	cells.clear()
+
+	return (body)

@@ -9,7 +9,7 @@ from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFe
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero
 
 
 def veh_save_errors(data):
@@ -34,5 +34,25 @@ def veh_feature_post_errors(data):
 	errors = id_check(Feature, feature, 'Feature', errors)
 	
 	errors = required(feature, 'Feature', errors)
+
+	return (errors)
+
+
+def veh_powers_post_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	vehicle_id = data['vehicle_id']
+	cost = data['cost']
+	ranks  = data['ranks']
+	power = data['power']
+
+	create_check('vehicle Name', vehicle_id, Vehicle, errors)
+
+	errors = id_check(Vehicle, vehicle_id, 'Vehicle', errors)
+	errors = id_check(Power, power, 'Power', errors)
+`
+	errors = no_zero(cost, 'Cost', errors)
+	errors = no_zero(ranks, 'Ranks', errors)`
 
 	return (errors)

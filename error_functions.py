@@ -22,6 +22,21 @@ def required(value, name, errors):
 
 	return (errors)
 
+def no_zero(value, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value == '0' or value == 0:
+		error = True
+		message = 'You did not set a ' + name + ' value.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def required_multiple(field, values, value_field, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
