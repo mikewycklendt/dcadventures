@@ -131,9 +131,9 @@ def vehicle_feature_select():
 		type_id = int(type_id)
 		print(type_id)
 		equipment = db.session.query(Equipment).filter_by(id=type_id).one()
-		features = db.session.query(Feature).filter_by(equip_id=type_id).order_by(Feature.name).first()
+		features = db.session.query(Feature).filter(Feature.equip_id==type_id).order_by(Feature.name).first()
 		if features is None:
-			options.appwnd({'id': '', 'name': 'Equipmwnt has no Features'})
+			options.append({'id': '', 'name': 'Equipmwnt has no Features'})
 		else:
 			features = db.session.query(Feature).filter(Feature.equip_id==type_id, Feature.name != '').order_by(Feature.name).all()
 			equipment_name = equipment.name + "'s Features"
