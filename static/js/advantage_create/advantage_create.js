@@ -1812,7 +1812,6 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 	const entry = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
-	const table_change = document.getElementById(table_class) 
 	
 	const errors = table_id + '-err';
 	const err_line = table_id + '-err-line';
@@ -1823,6 +1822,8 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 			console.log('click');
 			
 			entry[i].style.maxHeight = '0vw';
+			const get_table = entry[i];
+			const table_change = document.get_table.parentNode; 
 
 			const delId = e.target.dataset['id']
 			fetch(route + delId, {

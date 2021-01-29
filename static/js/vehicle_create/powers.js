@@ -13,7 +13,7 @@ let power_data = {'cost': 5,
 
 let powers_grid = {'titles': false,
 					'columns': [],
-					'font': 80,
+					'font': 110,
 					'mod': []}
 
 function powers_submit() {
