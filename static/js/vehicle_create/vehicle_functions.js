@@ -8,7 +8,7 @@ const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
 
-function feature_info(select, entry) {
+function item_info(select, entry, route) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;
 		
@@ -17,7 +17,7 @@ function feature_info(select, entry) {
 	const item_description = document.getElementById('item-description');
 	const item = 'feature-item';
 
-	response = fetch('/vehicle/feature/info', {
+	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
 			'id': type_id

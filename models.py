@@ -4422,12 +4422,14 @@ class VehFeature(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
+	cost = db.Column(db.Integer)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'vehicle_id': self.vehicle_id,
-			'feature': self.feature
+			'feature': self.feature,
+			'cost': self.cost
 		}
 
 class Headquarters(db.Model):

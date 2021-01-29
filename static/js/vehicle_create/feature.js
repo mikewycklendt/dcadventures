@@ -9,8 +9,9 @@ function feature_check() {
 function feature_feature() {
 	const select = 'feature_feature';
 	const entry = 'feature-entry';
+	const route = '/vehicle/feature/info'
 
-	feature_info(select, entry);
+	item_info(select, entry, route);
 }
 
 function feature_equipment() {

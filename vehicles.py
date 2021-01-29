@@ -78,9 +78,11 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	equipment_type = EquipType.query.all()
 
+	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type,
-							features=features, equioment=equipment, equipment_type=equipment_type)
+							features=features, equioment=equipment, equipment_type=equipment_type, addons=addons)
 
 @vehicle.route('/vehicle/size/select', methods=['POST'])
 def vehicle_size_select():

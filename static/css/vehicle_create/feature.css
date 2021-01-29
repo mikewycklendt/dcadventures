@@ -6,13 +6,47 @@
 	grid-template-columns: 50% 50%;
 }
 
-#feature-row1 {
-	display: grid;
+
+#feature-weapon {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
 	width: 98%;
 	gap: .2VW;
 	grid-template-columns: 30% 35% 35%;
 	grid-auto-rows: auto;
 }
+
+#feature-equipment {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+}
+
+#feature-feature {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 35% 35%;
+	grid-auto-rows: auto;
+}
+
+
+#feature-row1 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 15% 85%;
+	grid-auto-rows: auto;
+}
+
+
 
 #feature-item {
 	display: none;
