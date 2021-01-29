@@ -15,7 +15,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor
-from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature, VehicleSub
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys

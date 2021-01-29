@@ -23,7 +23,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
-from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature, VehicleSub
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 from vehicle_errors import veh_feature_post_errors, veh_save_errors, veh_powers_post_errors
 from vehicle_posts import veh_feature_post, veh_powers_post
 
@@ -265,7 +265,7 @@ def save_vehicle():
 	toughness = integer(toughness)
 	defense = integer(defense)
 	cost = integer(cost)
-	
+
 	entry = db.session.query(Vehicle).filter(Vehicle.id == vehicle_id).one()
 
 	entry.description = description
