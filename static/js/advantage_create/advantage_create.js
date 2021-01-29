@@ -1885,7 +1885,9 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 							console.log(grid)
 
 							if (grid == 'hide') {
-								if (jsonResponse.level == true) {
+								if (jsonResponse.level) {
+									console.log('show')
+								} else {
 									table_change.style.maxHeight = '0px';
 									setTimeout(function(){table_change.style.display = 'none'}, 400);
 								}
