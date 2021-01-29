@@ -1,0 +1,110 @@
+<div class="head-container" style="justify-content: center; background:url(/static/img/bg/watchtower.png); background-repeat: no-repeat; background-size: 100%;">
+	<div class="head-grid">
+		
+		<br>
+
+		<div id="box-title">
+			<img src="/static/img/title/create_headquarters.png" width="100%">
+		</div>
+
+
+		<br><br>
+		
+
+		<div id="addheadgrid">
+
+			<div id="add-head">
+
+				<div id="addheadunderline">
+					Headquarters Name
+				</div>
+
+				<div id="addheadform">
+					<div id="namehead">
+						<input type="text" id="head_name" placeholder="Headquarters Name">
+					</div>
+						
+					<div id="namebutton">
+						<div class="btn" id="head_create" onclick="head_create()" >
+							 Create Headquarters
+						</div>
+					</div>
+				</div>
+			
+			</div>
+
+			<div id="head-name-grid">
+
+				<div id="head-name">
+
+				</div>
+
+				<div id="head-edit">
+					<div id="edit-button" style="display: none;">
+						<button style="font-size: 260%;" onclick="edit_form()">
+							<i class="fa fa-edit"></i>
+						</button>
+					</div>
+				</div>
+
+			</div>
+
+			<div id="head-edit-grid" style="display: none;">
+				<div id="head-edit-field">
+					<input type="text" id="head_name_edit">
+				</div>
+
+				<div id="head-edit-btn">
+					<div class="edit-btn" id="head_edit" onclick="head_edit()">
+						Save
+					</div>
+				</div>
+			</div>
+
+
+			<div id="name-err">
+		
+			</div>
+			
+		</div>
+
+		<br>
+
+		<span>
+
+		<div id="all-fields">
+			
+			<div id="base-form">
+				{% include headquarters_includes.base_form %}
+			</div>
+
+			<br>
+
+			<div class="head-box">
+			</div>
+
+			<br>
+
+		<div id="head-err"></div>
+
+		<br><br>
+
+		<div id="save-div">
+			<div class="save-btn" onclick="head_save()"> Save Headquarters</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+
+		</span>
+		
+	</div>
+	
+</div>
+
+	<script src="/static/js/headquarters_create/headquarters_functions.js"></script>
+	<script src="/static/js/headquarters_create/base_form.js"></script>
+	<script src="/static/js/headquarters_create/headquarters_create.js"></script>
+	
+	<input type="hidden" id="head_id" name="head_id" value=>

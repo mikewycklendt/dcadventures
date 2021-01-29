@@ -24,8 +24,7 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
-from vehicle_errors import veh_feature_post_errors, veh_save_errors, veh_powers_post_errors
-from vehicle_posts import veh_feature_post, veh_powers_post
+from models import Headquarters
 
 
 load_dotenv()
@@ -34,12 +33,12 @@ import os
 
 db_path = os.environ.get("db_path")
 
-vehicle = Blueprint('vehicle', __name__)
+head = Blueprint('head', __name__)
 db = SQLAlchemy()
 
-@vehicle.route('/vehicle/create')
-def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
-	includehtml = 'vehicle_create.html'
+@head.route('/headquarters/create')
+def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
+	includehtml = 'headquarters_create.html'
 
 	headquarters_includes = {'base_form': 'headquarters_create/base_form.html'}
 	
@@ -69,3 +68,182 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
+
+
+@head.route('/headquarters/create', methods=['POST'])
+def post_headquarters(): 
+	body = {}
+	error = False
+	error_msgs = []
+
+	name = request.get_json()['name']
+	print(name)
+
+	name_split = name.split(' ')
+	name = name_split[0].capitalize()
+	i = 1
+	while i < len(name_split):
+		name += ' ' 
+		name += name_split[i].capitalize()
+		i += 1
+
+	try:
+		new_head = Headquarters(name=name)
+		db.session.add(new_head)
+		db.session.commit()
+		body['success'] = True
+		body['id'] = new_head.id
+		body['name'] = new_head.name
+	except:
+		error = True
+		errors['success'] = False
+		error_msgs.append('There was an error processing the request')
+		errors['error_msgs'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+@head.route('/headquarters/save', methods=['POST'])
+def save_headquarters(): 
+	body = {}
+	body['success'] = True
+	error = False
+	error_msgs = []
+
+	data = request.get_json()
+	
+	errors = head_save_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	head_id = request.get_json()['head_id']
+
+	head_id = integer(head_id)
+
+	entry = db.session.query(Headquarters).filter(Headquarters.id == head_id).one()
+
+
+	db.session.commit()
+
+	body['success'] = True
+			
+	db.session.close()
+	print(body)
+	return jsonify(body)
+
+@vehicle.route('/headquarters/save/success/<head_id>')
+def headquarters_save_success(head_id):	
+	headquarters = db.session.query(Headquarters).filter_by(id=head_id).one()
+	
+	flash('Headquarters ' + headquarters.name + ' Successfully Created')
+	return redirect(url_for('home'))
+
+@head.route('/headquarters/edit_name', methods=['POST'])
+def edit_headquarters_name(): 
+	body = {}
+	error = False
+	error_msgs = []
+
+	head_id = request.get_json()['id']
+	name = request.get_json()['name']
+	print(name)
+
+	name_split = name.split(' ')
+	name = name_split[0].capitalize()
+	i = 1
+	while i < len(name_split):
+		name += ' ' 
+		name += name_split[i].capitalize()
+		i += 1
+
+	try:
+		edit_head = db.session.query(Headquarters).filter(Headquarters.id == head_id).one()
+		edit_head.name = name
+		db.session.commit()
+		body['success'] = True
+		body['id'] = edit_head.id
+		body['name'] = edit_head.name
+	except:
+		error = True
+		body['success'] = False
+		error_msgs.append('There was an error processing the request')
+		body['error_msgs'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print(body)
+		return jsonify(body)
+
+
+
+@head.route('/headquarters//create', methods=['POST'])
+def head_post_():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = head__post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	head_id = request.get_json()['head_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	head_id = db_integer(head_id)
+
+	entry = Headquarters(head_id = head_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = ''
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = head__post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@head.route('/headquarters//delete/<id>', methods=['DELETE'])
+def delete_head_(id):
+	try:
+		db.session.query().filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id })
