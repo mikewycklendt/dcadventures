@@ -196,7 +196,7 @@ textarea:focus {
 
 .btn {
 	display: table-cell;
-	width: 19vw;
+	width: 20vw;
 	height:  3.6vw;
 	background-color: #af0101;
 	cursor: crosshair;
@@ -206,7 +206,7 @@ textarea:focus {
 	vertical-align: middle;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
-	font-size: 130%;
+	font-size: 20%;
 	color: white;
 	outline: 2px solid white;
 	outline-offset: -4px;
@@ -223,7 +223,7 @@ textarea:focus {
 
 .btn::before {
 	font-family: 'FontAwesome';
-	font-size: 190%;
+	font-size: 150%;
 	content: '\f055';
 	display: inline-block;
 }
