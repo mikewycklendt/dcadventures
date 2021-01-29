@@ -2789,4 +2789,4 @@ def delete_advantage_levels(advantage_id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify({'success': True, 'id': advantage_id, 'level': True})

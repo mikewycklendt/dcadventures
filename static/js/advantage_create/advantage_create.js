@@ -1885,8 +1885,10 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 							console.log(grid)
 
 							if (grid == 'hide') {
-								table_change.style.maxHeight = '0px';
-								setTimeout(function(){table_change.style.display = 'none'}, 400);
+								if (jsonResponse.level == true) {
+									table_change.style.maxHeight = '0px';
+									setTimeout(function(){table_change.style.display = 'none'}, 400);
+								}
 							} else {
 								grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
 							}
