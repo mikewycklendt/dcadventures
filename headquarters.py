@@ -137,7 +137,7 @@ def save_headquarters():
 	print(body)
 	return jsonify(body)
 
-@vehicle.route('/headquarters/save/success/<head_id>')
+@head.route('/headquarters/save/success/<head_id>')
 def headquarters_save_success(head_id):	
 	headquarters = db.session.query(Headquarters).filter_by(id=head_id).one()
 	
