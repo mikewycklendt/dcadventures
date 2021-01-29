@@ -1,5 +1,5 @@
 
-#vehicle-form {
+#head-form {
 	display: grid;
 	width: 100%;
 	margin: 0px;
@@ -9,7 +9,7 @@
 	grid-auto-rows: auto;
 }
 
-#vehicle-desc {
+#head-desc {
 	display: grid;
 	width: 100%;
 	margin: 0px;
@@ -43,7 +43,7 @@
 	padding: 0px;
 }
 
-#vehicle-attr-title{
+#head-attr-title{
 	border-bottom: 2px solid lightblue;
 	width: 85%;
 	margin-bottom: 5px;
@@ -54,7 +54,7 @@
 }
 
 
-#vehicle-base {
+#head-base {
 	display: grid;
 	width: 100%;
 	margin: 0px;
@@ -62,7 +62,7 @@
 	grid-auto-rows: auto;
 }
 
-#vehicle-base input[type="text"] {
+#head-base input[type="text"] {
 	height: 1.3vw;
 	width: 87%;
 	padding: .3vw;

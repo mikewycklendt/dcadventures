@@ -25,6 +25,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 
 load_dotenv()
 

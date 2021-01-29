@@ -18,15 +18,15 @@ function _submit() {
 	const created = _grid.titles;
 	const font = _grid.font;
 
-	const vehicle_id = document.getElementById('vehicle_id').value;
+	const head_id = document.getElementById('head_id').value;
 
 	const errors = '-err';
 	const err_line = '-err-line';
 
-	response = fetch('/vehicle//create', {
+	response = fetch('/headquarters//create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'vehicle_id': vehicle_id,
+			'head_id': head_id,
 			'columns': columns,
 			'created': created,
 			'font': font
@@ -44,7 +44,7 @@ function _submit() {
 			_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/vehicle/' + table_id + '/delete/'
+			const route = '/headquarters/' + table_id + '/delete/'
 			create_table(jsonResponse, _grid, route);
 			clear_errors(err_line, errors)
 

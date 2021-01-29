@@ -1213,10 +1213,10 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
-	const base_table = 'vehicle-table-table';
-	const base_cell_title = 'vehicle-table-cell-title ';
-	const base_title = 'vehicle-table-title'
-	const base_titles = 'vehicle-table-titles';
+	const base_table = 'head-table-table';
+	const base_cell_title = 'head-table-cell-title ';
+	const base_title = 'head-table-title'
+	const base_titles = 'head-table-titles';
 
 	
 	console.log(created)
@@ -1251,10 +1251,10 @@ function create_titles(jsonResponse, grow, object, route, selects=false) {
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table';
 	const title_class = table_id + '-title';
-	const base_table = 'vehicle-table-table';
-	const base_cell_title = 'vehicle-table-cell-title';
-	const base_title = 'vehicle-table-title-table';
-	const base_titles = 'vehicle-table-titles';
+	const base_table = 'head-table-table';
+	const base_cell_title = 'head-table-cell-title';
+	const base_title = 'head-table-title-table';
+	const base_titles = 'head-table-titles';
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
@@ -1341,11 +1341,11 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'vehicle-table-cells';
-	const base_cell = 'vehicle-table-cell'
-	const base_button_check = 'vehicle-check-button ';
-	const base_check = 'vehicle-check';
-	const base_entry = 'vehicle-table-row';
+	const base_cells = 'head-table-cells';
+	const base_cell = 'head-table-cell'
+	const base_button_check = 'head-check-button ';
+	const base_check = 'head-check';
+	const base_entry = 'head-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
@@ -1492,7 +1492,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			if (new_cell.content == true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
-				check.className = 'vehicle-check';
+				check.className = 'head-check';
 				con.appendChild(check)
 			} else {
 				con.innerHTML = new_cell.content;
@@ -1584,17 +1584,6 @@ function row_delete(jsondata, route, object, selects=false) {
 				if (jsonResponse.success) {
 
 					clear_errors(err_line, errors);
-
-					if (jsonResponse.feature) {
-						costs.features = jsonResponse.features;
-						calculate_cost();
-					}
-
-					if (jsonResponse.power) {
-						costs.powers_cost = jsonResponse.cost;
-						costs.powers_rank = jsonResponse.rank;
-						calculate_cost();
-					}
 
 					deleted_item(selects, delId)
 

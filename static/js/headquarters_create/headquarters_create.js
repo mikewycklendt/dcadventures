@@ -1,4 +1,4 @@
-function vehicle_create() {
+function head_create() {
 	const create_name = 'head_name'
 	const create_add = 'add-head'
 	const create_route = '/headquarters/create'
@@ -16,7 +16,7 @@ function edit_form() {
 	item_edit_form(item_name_edit, name_div, item_edit_grid);
 }
 
-function vehicle_edit() {
+function head_edit() {
 	const item_id = 'head_id'
 	const item_name_edit = 'head_name_edit'
 	const edit_route = '/headquarters/edit_name'
