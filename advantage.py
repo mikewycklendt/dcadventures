@@ -23,6 +23,7 @@ from advantage_errors import adv_benefit_post_errors, adv_alt_check_post_errors,
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 
 load_dotenv()
 

@@ -27,6 +27,7 @@ from equipment import equip
 from weapons import weap
 from armor import arm
 from vehicles import vehicle
+from headquarters import head
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -49,6 +50,7 @@ app.register_blueprint(equip)
 app.register_blueprint(weap)
 app.register_blueprint(arm)
 app.register_blueprint(vehicle)
+app.register_blueprint(head)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
