@@ -4341,11 +4341,31 @@ class Vehicle(db.Model):
 	__tablename__ = 'vehicles'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	description = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('vehicle_type.id'))
+	size = db.Column(db.Integer, db.ForeignKey('vehicle_size.id'))
+	strength = db.Column(db.Integer)
+	speed = db.Column(db.Integer)
+	toughness = db.Column(db.Integer)
+	defense = db.Column(db.Integer)
+	cost = db.Column(db.Integer)
+	feature = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'description': self.description,
+			'type_id': self.type_id,
+			'size': self.size,
+			'strength': self.strength,
+			'speed': self.speed,
+			'toughness': self.toughness,
+			'defense': self.defense,
+			'cost': self.cost,
+			'feature': self.feature,
+			'power': self.power
 		}
 		
 class VehicleType(db.Model):
@@ -4364,6 +4384,7 @@ class VehicleSub(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	type_id = db.Column(db.Integer, db.ForeignKey('vehicle_type.id'))
+	size = 
 
 	def format(self):
 		return {

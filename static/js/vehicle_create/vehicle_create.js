@@ -32,6 +32,15 @@ vehicle_save = function() {
 	const vehicle_id = document.getElementById('vehicle_id').value;
 
 	const description = text("description");
+	const type_id = select("type_id");
+	const size = select("size_field");
+	const strength = costs.strength;
+	const speed = costs.speed;
+	const toughness = costs.toughness;
+	const defense = costs.defense;
+	const cost = costs.cost;
+	const feature = check('feature_check');
+	const power = check('powers_check');
 	
 	const errors = 'vehicle-err';
 	const err_line = 'vehicle-err-line';
@@ -41,6 +50,15 @@ vehicle_save = function() {
 		body: JSON.stringify({
 			'vehicle_id': vehicle_id,
 			'description': description,
+			'type_id': type_id,
+			'size': size,
+			'strength': strength,
+			'speed': speed,
+			'toughness': toughness,
+			'defense': defense,
+			'cost': cost,
+			'feature': feature,
+			'power': power
 		}),
 		headers: {
 		'Content-Type': 'application/json',

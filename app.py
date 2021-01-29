@@ -15,7 +15,7 @@ from models import Advantage, Consequence, Benefit, Environment, Job, Creature, 
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor
-from models import Vehicle, VehicleType, PowerType, VehicleSize
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature, VehicleSub
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
@@ -63,7 +63,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-	
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

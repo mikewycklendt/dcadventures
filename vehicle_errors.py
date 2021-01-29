@@ -16,7 +16,37 @@ def veh_save_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
+	vehicle_id = data['vehicle_id']
+	description = data['description']
+	type_id = data['type_id']
+	size = data['size']
+	strength = data['strength']
+	speed = data['speed']
+	toughness = data['toughness']
+	defense = data['defense']
+	cost = data['cost']
+	feature = data['feature']
+	power = data['power']
 
+	create_check('vehicle Name', vehicle_id, Vehicle, errors)
+
+	errors = id_check(Vehicle, vehicle_id, 'Vehicle', errors)
+	errors = id_check(VehicleType, type_id, 'Vehicle Type', errors)
+	errors = id_check(VehicleSize, size, 'Vehicle Size', errors)
+
+	errors = int_check(type_id, 'Vehicle Type', errors)
+	errors = int_check(size, 'Vehicle Size', errors)
+	errors = int_check(strength, 'Strength', errors)
+	errors = int_check(speed, 'Speed', errors)
+	errors = int_check(toughness, 'Toughness', errors)
+	errors = int_check(defense, 'Defense', errors)
+	errors = int_check(cost, 'Cost', errors)
+
+	errors = required(type_id, 'Vehicle Type', errors)
+	errors = required(size, 'Vehicle Size', errors)
+
+	errors = no_zero(cost, 'Cost', errors)
+	
 	return (errors)
 
 

@@ -23,7 +23,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
-from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
+from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature, VehicleSub
 from vehicle_errors import veh_feature_post_errors, veh_save_errors, veh_powers_post_errors
 from vehicle_posts import veh_feature_post, veh_powers_post
 
@@ -246,11 +246,38 @@ def save_vehicle():
 		return jsonify(body)
 
 	vehicle_id = request.get_json()['vehicle_id']
+	description = request.get_json()['description']
+	type_id = request.get_json()['type_id']
+	size = request.get_json()['size']
+	strength = request.get_json()['strength']
+	speed = request.get_json()['speed']
+	toughness = request.get_json()['toughness']
+	defense = request.get_json()['defense']
+	cost = request.get_json()['cost']
+	feature = request.get_json()['feature']
+	power = request.get_json()['power']
 
 	vehicle_id = db_integer(vehicle_id)
-
+	type_id = integer(type_id)
+	size = integer(size)
+	strength = integer(strength)
+	speed = integer(speed)
+	toughness = integer(toughness)
+	defense = integer(defense)
+	cost = integer(cost)
+	
 	entry = db.session.query(Vehicle).filter(Vehicle.id == vehicle_id).one()
 
+	entry.description = description
+	entry.type_id = type_id
+	entry.size = size
+	entry.strength = strength
+	entry.speed = speed
+	entry.toughness = toughness
+	entry.defense = defense
+	entry.cost = cost
+	entry.feature = feature
+	entry.power = power
 
 	db.session.commit()
 
