@@ -42,7 +42,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 15% 85%;
+	grid-template-columns: 22% 78%;
 	grid-auto-rows: auto;
 }
 
@@ -64,12 +64,12 @@
 	transition: all .3s ease-out;
 }
 
-#item-cost {
+#feature-cost {
 	font-size: 135%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 29% 59%;
+	grid-template-columns: 30% 30% 40%;
 	text-align: left;
 }
 
