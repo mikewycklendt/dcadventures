@@ -6,12 +6,65 @@ function feature_check() {
 
 	entry_check(check, title, base, entry);
 }
+
+function addon() {
+	const select = 'addon';
+	const options = [{'val': 'feature', 'div': 'feature-feature'},
+					{'val': 'weapon', 'div': 'feature-weapon'},
+					{'val': 'equipment', 'div': 'feature-equipment'}]
+
+	select_opacity(select, options)
+}
+
+let item_cost = {'cost': 0}
+
 function feature_feature() {
 	const select = 'feature_feature';
 	const entry = 'feature-entry';
 	const route = '/vehicle/feature/info'
+	const item = 'feature-item';
 
-	item_info(select, entry, route);
+	item_info(select, entry, item, route);
+}
+
+function equipment()  {
+	const select = 'equipment';
+	const entry = 'feature-entry';
+	const route = '/equipment/equipment/select/info';
+	const item = 'feature-item';
+
+	item_info(select, entry, item, route);
+}
+
+function weapon() {
+	const select = 'weapon';
+	const entry = 'feature-entry';
+	const route = '/equipment/weapon/select/info';
+	const item = 'feature-item';
+
+	item_info(select, entry, item, route);
+}
+
+function weapon_cat() {
+	const select = 'weapon_cat';
+	const fill = 'weapon_type';
+
+	id_select(select, fill, weapon_type_select);
+}
+
+function weapon_type() {
+	const select = 'weapon_type';
+	const fill = 'weapon';
+
+	id_select(select, fill, weapon_select);
+}
+
+function equipment_type() {
+	const select = 'equipment_type';
+	const fill = 'equipment';
+	const route =  '/vehicle/equipment/select';
+
+	id_select(select, fill, route);	
 }
 
 function feature_equipment() {

@@ -8,14 +8,14 @@ const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
 
-function item_info(select, entry, route) {
+function item_info(select, entry, item_div, route) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;
 		
 	const item_name = document.getElementById('item-name');
 	const item_cost = document.getElementById('item-cost');
 	const item_description = document.getElementById('item-description');
-	const item = 'feature-item';
+	const item = item_div;
 
 	response = fetch(route, {
 		method: 'POST',
@@ -33,6 +33,7 @@ function item_info(select, entry, route) {
 
 			const name = jsonResponse.name;
 			const description = jsonResponse.description;
+			const cost = jsonResponse.cost
 
 			item_name.style.opacity = '0%';
 			item_cost.style.opacity = '0%';
@@ -41,6 +42,7 @@ function item_info(select, entry, route) {
 			setTimeout(function(){
 				item_name.innerHTML = name;
 				item_description.innerHTML = description;
+				item_cost.innerHTML = cost;
 				item_name.style.opacity = '100%';
 				item_cost.style.opacity = '100%';
 				item_description.style.opacity = '100%';
