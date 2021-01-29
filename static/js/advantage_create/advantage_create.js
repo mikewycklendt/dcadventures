@@ -1809,7 +1809,7 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 	const table_class = table_id + '-table'
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
-	const entry = document.getElementsByClassName(entry_class)
+	const entries = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
 	
@@ -1821,9 +1821,9 @@ function row_delete(jsondata, route, object, benefit_delete=false) {
 		btn.onclick = function(e) {
 			console.log('click');
 			
-			entry[i].style.maxHeight = '0vw';
-			const get_table = entry[i];
-			const table_change = document.get_table.parentNode; 
+			entry = entries[i];
+			entry.style.maxHeight = '0vw';
+			const table_change = entry.parentNode; 
 
 			const delId = e.target.dataset['id']
 			fetch(route + delId, {
