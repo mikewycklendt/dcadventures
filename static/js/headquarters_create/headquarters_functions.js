@@ -843,9 +843,9 @@ function get_data(field, route) {
 	.then(response => response.json())
 	.then(jsonResponse => {
 		if (jsonResponse.success) {
-			console.log(jsonResponse)
 			const data = jsonResponse;
-
+			console.log('DATA')
+			console.log(data)
 			return data;
 
 		} else {
