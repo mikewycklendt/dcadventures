@@ -27,8 +27,8 @@ from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFe
 
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
-from weapons_errors import weap_benefit_post_errors, weap_condition_post_errors, weap_descriptor_post_errors, weap_save_errors
-from weapons_posts import weap_benefit_post, weap_condition_post, weap_descriptor_post
+from errors.weapons_errors import weap_benefit_post_errors, weap_condition_post_errors, weap_descriptor_post_errors, weap_save_errors
+from posts.weapons_posts import weap_benefit_post, weap_condition_post, weap_descriptor_post
 
 load_dotenv()
 
