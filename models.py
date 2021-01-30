@@ -4424,7 +4424,7 @@ class VehFeature(db.Model):
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	cost = db.Column(db.Integer)
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapon.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
 	addon = db.Column(db.String())
 
 
@@ -4498,7 +4498,7 @@ class HeadFeatAddon(db.Model):
 	head_id = db.Column(db.Integer, db.ForeignKey('headquarters.id'))
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapon.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
 	addon = db.Column(db.String())
 
 	def format(self):
