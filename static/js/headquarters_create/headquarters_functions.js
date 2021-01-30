@@ -842,10 +842,11 @@ function get_data(field, route) {
 	})
 	.then(response => response.json())
 	.then(jsonResponse => {
-		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			console.log(jsonResponse)
+			const data = jsonResponse;
 
-			return jsonResponse;
+			return data;
 
 		} else {
 			console.log('error');``
