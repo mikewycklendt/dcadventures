@@ -80,11 +80,11 @@ def headquarters_size_select():
 	body = {}
 	body['success'] = True
 	
-	size_id = request.get_json()['id'] 
+	id = request.get_json()['id'] 
 
 	try:
-		size_id = int(size_id)
-		size = db.session.query(HeadSize).filter_by(id=size_id).one()
+		id = int(id)
+		size = db.session.query(HeadSize).filter_by(id=id).one()
 		body['cost'] = size.size
 		body['rank'] = size.name
 	except:
