@@ -122,7 +122,7 @@ def headquarters_traits_create():
 
 	entry = HeadSize(name=name, size=size)
 	db.session.add(entry)
-	db.session.commit())
+	db.session.commit()
 
 	name = 'Diminutive'
 	size = -2
