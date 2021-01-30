@@ -74,9 +74,17 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
+	features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
 
+	equipment = db.session.query(Equipment).order_by(Equipment.name).all()
+
+	equipment_type = EquipType.query.all()
+
+	weapon_cat = WeaponCat.query.all()
+	
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons, features=features9,
+							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat)
 
 @head.route('/headquarters/size/select', methods=['POST'])
 def headquarters_size_select():
