@@ -154,6 +154,19 @@
 	margin-top: 0vw;
 }
 
+.cost-text {
+	display: flex;
+	height: 1.7vw;
+	align-items: center;
+	justify-content: center;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
+	text-align: center;
+	color: #245681;
+	padding-top: 0vw;
+	margin-top: 0vw;
+}
+
 #cost-grid {
 	display: grid;
 	width: 98%;
