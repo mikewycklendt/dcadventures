@@ -142,11 +142,11 @@
 }
 
 .cost-value {
-	display: grid;
-	grid-auto-rows: auto;
-	grid-template-columns: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 190%;
+	font-size: 160%;
 	text-align: center;
 	color: #245681;
 	padding-top: 0vw;
