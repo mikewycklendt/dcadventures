@@ -8,7 +8,7 @@ const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
 
-function item_info(select, entry, item_div, route) {
+function item_info(select, entry, item_div, route, object) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;
 		
@@ -34,6 +34,8 @@ function item_info(select, entry, item_div, route) {
 			const name = jsonResponse.name;
 			const description = jsonResponse.description;
 			const cost = jsonResponse.cost
+
+			object.cost = cost;
 
 			item_name.style.opacity = '0%';
 			item_cost.style.opacity = '0%';
@@ -1588,7 +1590,7 @@ function row_delete(jsondata, route, object, selects=false) {
 					clear_errors(err_line, errors);
 
 					if (jsonResponse.feature) {
-						costs.features = jsonResponse.features;
+						costs.features = jsonResponse.cost;
 						calculate_cost();
 					}
 

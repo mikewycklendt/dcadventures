@@ -54,6 +54,23 @@ function belt_equipment_type() {
 	equipment_select(select, fill);
 }
 
+function belt_feature_equipment() {
+	const select = 'feature_equipment';
+	const fill = 'feature_feature';
+	const route = '/vehicle/feature/select';
+
+	id_select(select, fill, route);
+
+}
+
+function belt_feature_equipment_type() {
+	const select = 'feature_equipment_type';
+	const fill = 'feature_equipment';
+	const route =  '/vehicle/equipment/select';
+
+	id_select(select, fill, route);	
+}
+
 function belt_check() {
 	const check = "belt_check";
 	const title = "belt-title";

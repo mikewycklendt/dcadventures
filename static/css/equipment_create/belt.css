@@ -25,8 +25,10 @@
 #belt-feature {
 	display: none;
 	opacity: 0%;
-	transition: all .4s ease-out;
-	grid-template-columns: 50% 50%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 35% 35%;
 }
 
 #belt-equipment {

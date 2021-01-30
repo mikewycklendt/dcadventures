@@ -4423,13 +4423,20 @@ class VehFeature(db.Model):
 	vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	cost = db.Column(db.Integer)
+	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapon.id'))
+	addon = db.Column(db.String())
+
 
 	def format(self):
 		return {
 			'id': self.id,
 			'vehicle_id': self.vehicle_id,
 			'feature': self.feature,
-			'cost': self.cost
+			'cost': self.cost,
+			'equipment': self.equipment,
+			'weapon': self.weapon,
+			'addon': self.addon
 		}
 
 class Headquarters(db.Model):

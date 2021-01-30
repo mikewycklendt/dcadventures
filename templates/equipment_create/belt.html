@@ -31,8 +31,27 @@
 		<div>
 			<div id="belt-feature">
 				<div>
-					<select class="feature-entry" id="belt_feature" name="belt_feature" onchange="belt_feature()">
-						<option value="">Feature</option>
+					<select class="select-entry" id="belt_feature_equipment_type" name="belt_feature_equipment_type" onchange="belt_feature_equipment_type()">
+						<option value="">Equipment Type</option>
+						{% for e in equipment_type %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="belt_feature_equipment" name="belt_feature_equipment" onchange="belt_feature_equipment()">
+						<option value="">Equipment</option>
+						<option value="all">All Features</option>
+						{% for e in equipment %}
+							<option valuue={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="belt_feature" name="belt_feature" onchange="belt_feature()">
+						<option value="">Features</option>
 						{% for f in features %}
 							<option value={{f.id}}>{{f.name}}</option>
 						{% endfor %}

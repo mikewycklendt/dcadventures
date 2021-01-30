@@ -362,6 +362,48 @@ function belt_info(select, route, entry) {
 	})	
 }
 
+
+function id_select(select, fill, route) {
+	const field = document.getElementById(select)
+	const type_id = field.options[field.selectedIndex].value
+	const update = document.getElementById(fill);
+
+	update.innerText = null;
+
+	update.style.backgroundColor = 'lightblue';
+	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': type_id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const options = jsonResponse.options;
+			let option;
+
+			for (option of options)  {
+				let o = document.createElement("option")
+				o.value = option.id;
+				o.text = option.name;
+				update.add(o);
+			}
+
+		} else {
+			console.log(jsonResponse.options);
+		}
+	})	
+}
+
+
 function reset_all(selects) {
 	let select;
 

@@ -10,22 +10,25 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
-from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
-from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
-from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
+
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
+
+from models import Advantage, Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, WeaponType, WeaponCat, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+from models import setup_db, Ability, Power, Extra, ConflictAction, Damage, DamageType, Descriptor, Origin, Source, Medium, MediumSubType, SkillAlt, PowerDes, MediumType, Range, Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank, SkillBonus, SkillOther, SkillOtherCheck, SkillOpposed, SkillRound, SkillPower, SkillDC, SkillLevels, SkillOppCondition, SkillResistCheck, SkillResistEffect, SkillCircMod, SkillDegreeKey, SkillDegreeMod, SkillCharCheck, SkillLevelsType, SkillDegreeType
+from models import Levels, LevelType, PowerAltCheck, PowerAction, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime 
 from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, EquipEffect, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipLimit, EquipMod, EquipOpposed
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
-from vehicle_errors import veh_feature_post_errors, veh_save_errors, veh_powers_post_errors
-from vehicle_posts import veh_feature_post, veh_powers_post
+
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
+from errors.vehicle_errors import veh_feature_post_errors, veh_save_errors, veh_powers_post_errors
+from posts.vehicle_posts import veh_feature_post, veh_powers_post
 
 
 load_dotenv()
@@ -65,6 +68,11 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 	time_numbers = []
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
+
+	head_toughness = []
+	for i in range(0, 21, 1):
+		toughness = i * 2
+		positives.append({'type': i, 'name'})
 
 	vehicle_type = VehicleType.query.all()
 
@@ -466,21 +474,37 @@ def vehicle_post_feature():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 	feature = request.get_json()['feature']
+	cost = request.get_json()['cost']
+	equipment = request.get_json()['equipment']
+	weapon = request.get_json()['weapon']
+	addon = request.get_json()['addon']
 	
 	vehicle_id = db_integer(vehicle_id)
 	feature = db_integer(feature)
+	equipment = db_integer(equipment)
+	weapon = db_integer(weapon)
+	cost = integer(cost)
 
 	entry = VehFeature(vehicle_id = vehicle_id,
-					feature = feature)
+					feature = feature,
+					cost = cost,
+					equipment = equipment,
+					weapon = weapon,
+					addon = addon)
 
 	db.session.add(entry)
 	db.session.commit()
 
-	count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()		
+	items = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).all()
+
+	total_cost = 0
+
+	for i in items:
+		total_cost += i.cost
 
 	body = {}
 	body['id'] = entry.id
-	body['features'] = count
+	body['cost'] = total_cost
 	error = False
 	error_msg = []
 	body['success'] = True
@@ -517,10 +541,15 @@ def delete_vehicle_feature(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		count = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).count()
+		total_cost = 0
+		items = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).first()
+		if powers is not None:
+			items = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).all()
+			for i in items:
+				total_cost += i.cost
 		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
 		print(count)
-		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True, 'features': count })
+		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'feature': True, 'cost': total_cost })
 
 
 

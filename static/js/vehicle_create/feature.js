@@ -16,7 +16,7 @@ function addon() {
 	select_opacity(select, options)
 }
 
-let item_cost = {'cost': 0}
+let addon_cost = {'cost': 0}
 
 function feature_feature() {
 	const select = 'feature_feature';
@@ -24,7 +24,7 @@ function feature_feature() {
 	const route = '/vehicle/feature/info'
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route);
+	item_info(select, entry, item, route, addon_cost);
 }
 
 function equipment()  {
@@ -33,7 +33,7 @@ function equipment()  {
 	const route = '/equipment/equipment/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route);
+	item_info(select, entry, item, route, addon_cost);
 }
 
 function weapon() {
@@ -42,7 +42,7 @@ function weapon() {
 	const route = '/equipment/weapon/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route);
+	item_info(select, entry, item, route, addon_cost);
 }
 
 function weapon_cat() {
@@ -96,6 +96,10 @@ function feature_submit() {
 
 	const vehicle_id = document.getElementById('vehicle_id').value;
 	const feature = select('feature_feature');
+	const cost = addon_cost.cost;
+	const equipment = select("equipment");
+	const weapon = select("weapon");
+	const addon = select("addon")
 
 	const errors = 'feature-err';
 	const err_line = 'feature-err-line';
@@ -107,7 +111,12 @@ function feature_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'feature': feature
+			'feature': feature,
+			'cost': cost,
+			'equipment': equipment,
+			'weapon': weapon,
+			'addon': addon
+	
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -120,7 +129,7 @@ function feature_submit() {
 
 			feature_grid.columns.length = 0;
 			feature_grid.columns = jsonResponse.rows;
-			costs.features = jsonResponse.features;
+			costs.features = jsonResponse.cost;
 			calculate_cost()
 
 			const table_id = jsonResponse.table_id;
