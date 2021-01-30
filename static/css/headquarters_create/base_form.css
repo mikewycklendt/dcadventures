@@ -143,6 +143,7 @@
 
 .cost-value {
 	display: flex;
+	height: 1.5vw;
 	align-items: center;
 	justify-content: center;
 	font-family: Comic, 'Monda', Verdana;
