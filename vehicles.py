@@ -109,7 +109,7 @@ def vehicle_size_select():
 
 	print(body)
 	return jsonify(body)
-
+	
 @vehicle.route('/vehicle/feature/info', methods=['POST'])
 def vehicle_feature_info():
 	body = {}

@@ -75,6 +75,24 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size)
 
+@head.route('/headquarters/size/select', methods=['POST'])
+def headquarters_size_select():
+	body = {}
+	body['success'] = True
+	
+	size_id = request.get_json()['id'] 
+
+	try:
+		size_id = int(size_id)
+		size = db.session.query(HeadSize).filter_by(id=size_id).one()
+		body['cost'] = size.size
+		body['rank'] = size.name
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)
+	
 
 @head.route('/headquarters/create', methods=['POST'])
 def post_headquarters(): 

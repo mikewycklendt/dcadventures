@@ -827,6 +827,41 @@ function id_select(select, fill, route) {
 	})	
 }
 
+
+function get_data(field, route) {
+	const id = select(field);
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': id
+		}),
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			return jsonResponse;
+
+		} else {
+			console.log('error');``
+		}
+	})	
+}
+
+function update_divs(data) {
+	for (d of data) {
+		const div = document.getElementById(d.div);
+		const text = d.val;
+
+		div.innerHTML = text;
+	}
+}
+
 function double_select(select1, select2, options, row, entry) {
 	const field1 = document.getElementById(select1);
 	const val1 = field1.options[field1.selectedIndex].value;
