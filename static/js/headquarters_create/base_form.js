@@ -9,10 +9,7 @@ let costs = {'size_rank': 'Small',
 function size() {
 	const route = '/headquarters/size/select';
 	const select = 'size';
-
-	let data = get_data(select, route);
-	costs.size_rank = data.rank;
-	costs.size_cost = data.cost;
+	
 	calculate_cost();
 }
 
