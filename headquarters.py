@@ -72,8 +72,11 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	head_size = HeadSize.query.all()
 
+	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
+
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons)
 
 @head.route('/headquarters/size/select', methods=['POST'])
 def headquarters_size_select():
