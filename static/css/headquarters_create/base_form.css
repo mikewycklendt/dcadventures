@@ -158,10 +158,10 @@
 	display: flex;
 	height: 1.7vw;
 	align-items: center;
-	justify-content: right;
+	justify-content: center;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 160%;
-	text-align: right;
+	text-align: center;
 	color: #af0101;
 	padding-top: 0vw;
 	margin-top: 0vw;
