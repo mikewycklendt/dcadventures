@@ -40,7 +40,7 @@ db = SQLAlchemy()
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'headquarters_create.html'
 
-	headquarters_includes = {'base_form': 'headquarters_create/base_form.html'}
+	headquarters_includes = {'base_form': 'headquarters_create/base_form.html', 'feature': 'headquarters_create/feature.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Headquarters'
 	stylesheets.append({"style": "/static/css/headquarters_create.css"})
