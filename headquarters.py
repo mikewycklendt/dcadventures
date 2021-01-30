@@ -68,7 +68,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	head_toughness = []
 	for i in range(0, 21, 1):
 		toughness = i * 2
-		positives.append({'cost': i, 'value': toughness})
+		head_toughness.append({'cost': i, 'value': toughness})
 
 	head_size = HeadSize.query.all()
 
