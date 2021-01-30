@@ -8,19 +8,41 @@ let costs = {'size_rank': 'Small',
 }
 
 function size_calculate() {
-	const route = '/headquarters/size/select';
 	const select = 'size';
+	const route = '/headquarters/size/select';
 
-	let data = {}
-	get_data(select, route, data).then(data => {calculate_cost(data)})
-	
+	get_size(select, route)
+}
+
+function get_size(field, route) {
+	const id = select(field);
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': id
+		}),
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		if (jsonResponse.success) {
+			
+			costs.size_cost = jsonResponse.cost;
+			costs.size_rank = jsonResponse.rank;
+			calculate_cost()
+
+		} else {
+			console.log('error');``
+		}
+	})	
 }
 
 
-function calculate_cost(data=false) {
 
-	costs.size_cost = data.cost;
-	costs.size_rank = data.rank;
+function calculate_cost() {
 
 	const size_cost = costs.size_cost;
 	const size_rank = costs.size_rank;
