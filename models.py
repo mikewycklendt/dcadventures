@@ -4444,11 +4444,74 @@ class Headquarters(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 
+
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name
 		}
+
+class HeadSize(db.Model):
+	__tablename__ = 'headquarters_size'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	size = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'size': self.size
+		}
+
+
+class HeadFeature(db.Model):
+	__tablename__ = 'headquarters_features'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'description': self.description
+		}
+
+
+class HeadCharFeat(db.Model):
+	__tablename__ = 'headquarters_character_features'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	head_id = db.Column(db.Integer, db.ForeignKey('headquarters.id'))
+	feature = db.Column(db.Integer, db.ForeignKey('headquarters_features.id'))
+	def format(self):
+		return {
+			'id': self.id,
+			'head_id': self.head_id,
+			'feature': self.feature
+		}
+
+
+class HeadFeatAddon(db.Model):
+	__tablename__ = 'vehicle_features'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	head_id = db.Column(db.Integer, db.ForeignKey('headquarters.id'))
+	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
+	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapon.id'))
+	addon = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'vehicle_id': self.vehicle_id,
+			'feature': self.feature,
+			'equipment': self.equipment,
+			'weapon': self.weapon,
+			'addon': self.addon
+		}
+
+
 
 
 if __name__ == '__main__':
