@@ -188,7 +188,7 @@
 #cost-traits {
 	display: grid;
 	width: 100%;
-	grid-template-columns: 2.3vw auto auto auto;
+	grid-template-columns: 2.6vw auto auto auto;
 	grid-auto-rows: auto;
 }
 
