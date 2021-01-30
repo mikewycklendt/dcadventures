@@ -69,11 +69,6 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 
-	head_toughness = []
-	for i in range(0, 21, 1):
-		toughness = i * 2
-		positives.append({'type': i, 'name'})
-
 	vehicle_type = VehicleType.query.all()
 
 	vehicle_size = VehicleSize.query.all()

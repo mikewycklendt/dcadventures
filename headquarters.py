@@ -24,7 +24,7 @@ from models import Equipment, Light, EquipType, Feature, WeaponCat, Weapon, Equi
 from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
-from models import Headquarters
+from models import Headquarters, HeadFeature, HeadFeatAddon, HeadSize, HeadCharFeat
 
 
 load_dotenv()
@@ -65,6 +65,10 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 	
+	head_toughness = []
+	for i in range(0, 21, 1):
+		toughness = i * 2
+		positives.append({'cost': i, 'toughness': toughness})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers)
