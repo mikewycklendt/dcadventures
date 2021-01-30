@@ -110,7 +110,7 @@
 			<div class="base-trait">
 				<div>
 					<select class="base-select" id="toughness" name="toughness" onchange="calculate_cost()">
-						<option value="">Toughness</option>
+						<option value=0>Toughness</option>
 						{% for h in head_toughness %}
 							<option value={{h.cost}}>{{h.value}}</option>
 						{% endfor %}
