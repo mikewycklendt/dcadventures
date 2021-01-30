@@ -89,17 +89,44 @@
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
-				Headquarters Type
+				Headquarters Size
 			</div>
 
 			<div style="width: 65%;">
+				<select class="base-select" id="size" name="size" onchange="size()">
+					<option value="">Size</option>
+					{% for h in head_size %}
+						<option value={{h.id}}>{{h.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Toughness Bonus
+			</div>
+
+			<div class="base-trait">
+				<div>
+					<select class="base-select" id="size" name="size" onchange="size()">
+						<option value="">Toughness</option>
+						{% for h in head_toughness %}
+							<option value={{h.id}}>{{h.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					1 point per +2 Toughness
+				</div>
 			</div>
 		</div>
 
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
-				Headquarters
+				Shared
 			</div>
 
 			<div class="base-3">
