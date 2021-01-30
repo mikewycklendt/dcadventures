@@ -93,7 +93,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="size" name="size" onchange="size()">
+				<select class="base-select" id="size" name="size" onchange="size_calculate()">
 					<option value="">Size</option>
 					{% for h in head_size %}
 						<option value={{h.id}}>{{h.name}}</option>
