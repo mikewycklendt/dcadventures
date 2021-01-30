@@ -4493,7 +4493,7 @@ class HeadCharFeat(db.Model):
 
 
 class HeadFeatAddon(db.Model):
-	__tablename__ = 'vehicle_features'
+	__tablename__ = 'headquarters_feature_addon'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	head_id = db.Column(db.Integer, db.ForeignKey('headquarters.id'))
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
