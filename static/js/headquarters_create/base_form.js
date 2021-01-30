@@ -12,6 +12,7 @@ function size_calculate() {
 	const select = 'size';
 
 	let data = get_data(select, route);
+	console.log('returned data')
 	console.log(data)
 	calculate_cost();
 }
