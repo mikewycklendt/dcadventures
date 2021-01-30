@@ -12,8 +12,7 @@ function size_calculate() {
 	const select = 'size';
 
 	let data = get_data(select, route);
-	costs.size_cost = data.cost;
-	costs.size_rank = data.rank;
+	console.log(data)
 	calculate_cost();
 }
 
