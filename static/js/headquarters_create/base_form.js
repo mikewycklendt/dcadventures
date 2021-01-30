@@ -11,13 +11,16 @@ function size_calculate() {
 	const route = '/headquarters/size/select';
 	const select = 'size';
 
-	let data = get_data(select, route);
-	console.log('returned data')
-	console.log(data)
-	calculate_cost();
+	const data = get_data(select, route);
+	calculate_cost(data);
 }
 
-function calculate_cost() {
+function calculate_cost(data=false) {
+
+	if (data != false) {
+		costs.size_rank = data.rank;
+		costs.size_cost = data.cost;
+	}
 
 	const size_cost = costs.size_cost;
 	const size_rank = costs.size_rank;
