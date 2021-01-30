@@ -183,12 +183,12 @@
 	display: grid;
 	width: 100%;
 	grid-template-columns: 100%;
-	grid-auto-rows: auto;
+	grid-template-rows: 1.5vw auto;
 }
-
 
 #cost-total {
 	display: flex;
+	font-family: Comic, 'Monda', Verdana;
 	align-items: center;
 	justify-content: center;
 	color: #af0101;
