@@ -828,7 +828,7 @@ function id_select(select, fill, route) {
 }
 
 
-function get_data(field, route) {
+function get_data(field, route, data) {
 	const id = select(field);
 
 	response = fetch(route, {
@@ -841,17 +841,7 @@ function get_data(field, route) {
 		}
 	})
 	.then(response => response.json())
-	.then(jsonResponse => {
-		if (jsonResponse.success) {
-			const data = jsonResponse;
-			console.log('DATA')
-			console.log(data)
-			return (data);
-
-		} else {
-			console.log('error');``
-		}
-	})	
+	
 }
 
 function update_divs(data) {
