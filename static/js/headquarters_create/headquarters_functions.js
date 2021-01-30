@@ -846,7 +846,7 @@ function get_data(field, route) {
 			const data = jsonResponse;
 			console.log('DATA')
 			console.log(data)
-			return data;
+			return (data);
 
 		} else {
 			console.log('error');``
