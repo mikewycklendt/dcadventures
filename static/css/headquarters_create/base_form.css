@@ -132,7 +132,7 @@
 .cost-title {
 	border-bottom: .2vw solid lightblue;
 	width: 95%;
-	height: 2.5vw;
+	height: 1.5vw;
 	margin-bottom: .1vw;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 140%;
@@ -174,7 +174,7 @@
 #cost-traits {
 	display: grid;
 	width: 100%;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	grid-auto-rows: auto;
 }
 
