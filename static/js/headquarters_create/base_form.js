@@ -24,7 +24,7 @@ function calculate_cost() {
 
 	const size_div = document.getElementById("cost-size");
 	const toughness_div = document.getElementById("cost-toughness");
-	const features_div = document.getElementById("rank-features");
+	const features_div = document.getElementById("cost-features");
 
 	const size_rank_div = document.getElementById("rank-size");
 	const toughness_rank_div = document.getElementById("rank-toughness");
