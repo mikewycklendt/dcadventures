@@ -63,7 +63,7 @@
 }
 
 .feature-item-title::before {
-	padding-right: .9vw;
+	padding-right: .1vw;
 }
 
 
@@ -96,10 +96,13 @@
 	display: grid;
 	font-size: 135%;
 	font-family: Comic, 'Monda', Verdana;
-	opacity: 0%;
-	transition: all .3s ease-out;
 	grid-template-columns: 30% 30% 40%;
 	text-align: left;
+}
+
+#feature-cost  {
+	opacity: 0%;
+	transition: all .3s ease-out;
 }
 
 #head-feature-description {
