@@ -323,7 +323,7 @@ def head_post_feature():
 	print('\n\n')
 
 	body = {}
-	body['id'] = entry.id
+	body['id'] = feature
 	body['cost'] = total_cost
 	error = False
 	error_msg = []
