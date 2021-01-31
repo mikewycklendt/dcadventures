@@ -394,13 +394,13 @@ def head_post_adddon():
 	addon = request.get_json()['addon']
 	head_feature = request.get_json()['head_feature']
 	
-	vehicle_id = db_integer(vehicle_id)
+	head_id = db_integer(head_id)
 	feature = db_integer(feature)
 	equipment = db_integer(equipment)
 	weapon = db_integer(weapon)
 	head_feature = db_integer(head_feature)
 
-	entry = HeadFeatAddon(vehicle_id = vehicle_id,
+	entry = HeadFeatAddon(head_id = head_id,
 					feature = feature,
 					equipment = equipment,
 					weapon = weapon,
