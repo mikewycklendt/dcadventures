@@ -81,13 +81,11 @@
 #head-feature-row1 {
 	display: grid;
 	width: 98%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 	grid-template-columns: 20% 75%;
 }
 
 #head-feature-name {
+	display: grid;
 	font-size: 155%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
@@ -95,6 +93,7 @@
 }
 
 #head-feature-cost {
+	display: grid;
 	font-size: 135%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
@@ -104,6 +103,7 @@
 }
 
 #head-feature-description {
+	display: grid;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
@@ -111,9 +111,6 @@
 #head-feature-row2 {
 	display: grid;
 	width: 98%;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
 	grid-template-columns: auto auto auto;
 }
 
