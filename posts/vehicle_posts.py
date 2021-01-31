@@ -24,6 +24,8 @@ def veh_feature_post(entry, body, cells):
 	addon = entry.addon
 
 	feature = name(Feature, feature)
+	equipment = name(Equipment, equipment)
+	weapon = name(Weapon, weapon)
 
 	vcells = vcell('equipment', 30, [equipment])
 	vcells = vcell('weapon', 30, [weapon], vcells)
