@@ -33,6 +33,21 @@ def name(Table, value, name=''):
 	
 	return (value)
 
+def description(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			description = query.description
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	return (description)
+
 
 def action_convert(value, action_value):
 

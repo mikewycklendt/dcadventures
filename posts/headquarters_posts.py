@@ -12,7 +12,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, description
 
 
 def head_feature_post(entry, body, cells):
@@ -20,9 +20,11 @@ def head_feature_post(entry, body, cells):
 	head_id = entry.head_id
 	feature = entry.feature
 
-	head_feature = name(HeadFeature, head_feature)
-	
-	cells = cell('Feature', 10, [feature], cells)
+	head_feature = name(HeadFeature, feature)
+	description = description(HeadFeature, feature)
+
+	cells = cell('Feature', 25, [feature], cells)
+	cells = description('Description', 70 [description], cells)
 
 	body = send(cells, body)
 	
