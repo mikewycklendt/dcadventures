@@ -1214,3 +1214,27 @@ def feature_check(equip_id, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def head_feature_duplicate(value, id, table, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value == '':
+		return (errors)
+
+	try:
+		check = db.session.query(table).filter_by(head_id=id).all()
+		for c in check:
+			if c.feature == value:
+				error = True
+	except:
+		print('new feature')
+	
+	if error:
+		message = 'You have already added that feature.
+		error_msgs.append(message)	
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
