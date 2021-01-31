@@ -355,6 +355,7 @@ def head_post_feature():
 def delete_head_feature(id):
 	try:
 		get_id = db.session.query(HeadCharFeat).filter_by(id=id).one()
+		feature = get_id.feature
 		head_id = get_id.head_id
 		db.session.query(HeadCharFeat).filter_by(id=id).delete()
 		db.session.commit()
@@ -367,7 +368,7 @@ def delete_head_feature(id):
 		if remaining is not None:
 			cost = db.session.query(HeadCharFeat).filter_by(head_id=head_id).count()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': True, 'cost': cost})
+		return jsonify({'success': True, 'id': feature, 'feature': True, 'cost': cost})
 
 
 @head.route('/headquarters/addon/create', methods=['POST'])

@@ -1630,8 +1630,8 @@ function row_delete(jsondata, route, object, selects=false) {
 				if (jsonResponse.success) {
 
 					clear_errors(err_line, errors);
-
-					deleted_item(selects, delId)
+					const remove = jsonResponse.id;
+					deleted_item(selects, remove)
 
 					if (jsonResponse.feature) {
 						costs.features = jsonResponse.cost;
