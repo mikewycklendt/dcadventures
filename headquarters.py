@@ -302,8 +302,7 @@ def head_post_feature():
 	if name != '':
 		entry = HeadFeature(head_id = head_id,
 						name = name,
-						description = description,
-						feature = feature)
+						description = description)
 
 		db.session.add(entry)
 		db.session.commit()
