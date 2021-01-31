@@ -119,7 +119,7 @@ def head_feature_info_select():
 
 	type_id = int(type_id)
 	item = db.session.query(HeadFeature).filter_by(id=type_id).one()
-	items = db.session.query.filter_by(HeadFeatAddon).filter_by(id=type_id).all()
+	items = db.session.query(HeadFeatAddon).filter_by(id=type_id).all()
 	weapons = []
 	weapon_check = False
 	equipment = []
@@ -154,8 +154,7 @@ def head_feature_info_select():
 	body['weapons'] = weapons
 	body['equipment'] = equipment
 	body['features'] = features
-	
-	body['success'] = False
+
 
 	print(body)
 	return jsonify(body)
