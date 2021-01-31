@@ -132,10 +132,10 @@
 .cost-title {
 	border-bottom: .2vw solid lightblue;
 	width: 95%;
-	font-size: 60%;
 	height: 1.5vw;
 	margin-bottom: .1vw;
 	font-family: Comic, 'Monda', Verdana;
+	font-size: 160%;
 	text-align: center;
 	color: #245681;
 	padding-top: .2vw;
@@ -197,6 +197,7 @@
 	display: grid;
 	width: 100%;
 	grid-template-columns: 100%;
+	font-size: 100%;
 	grid-template-rows: 1.5vw auto;
 }
 
