@@ -345,7 +345,7 @@ def head_post_feature():
 	return jsonify(body)
 
 @head.route('/headquarters/feature/delete/<id>', methods=['DELETE'])
-def delete_head_(id):
+def delete_head_feature(id):
 	try:
 		head_id = db.session.query(HeadCharFeat).filter_by(id=id).one()
 		db.session.query(HeadCharFeat).filter_by(id=id).delete()
