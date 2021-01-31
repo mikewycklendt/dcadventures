@@ -1630,6 +1630,7 @@ function row_delete(jsondata, route, object, selects=false) {
 
 					if (jsonResponse.feature) {
 						costs.features = jsonResponse.cost;
+						calculate_cost()
 					}
 
 					console.log(delId)
