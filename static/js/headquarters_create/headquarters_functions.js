@@ -16,7 +16,7 @@ function addon_info(field, route) {
 	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
-			'id': type_id
+			'id': id
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
