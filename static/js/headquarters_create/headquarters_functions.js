@@ -37,8 +37,6 @@ function show_info(item, divs, entry, multiple=false, icon=false) {
 				const contents = d.val;
 				setTimeout(function(){
 					spot.style.opacity = '100%';
-					show_maxheight(item);
-					grow_entry(entry, item);
 					let content;
 					let item_text = ''
 					for (content of contents) {
@@ -69,9 +67,7 @@ function show_info(item, divs, entry, multiple=false, icon=false) {
 				setTimeout(function(){
 					spot.innerHTML = text;
 					spot.style.opacity = '100%';
-					show_maxheight(item);
-					grow_entry(entry, item);
-				}, 300);
+	``			}, 300);
 			}
 		}
 	} else {
@@ -81,11 +77,12 @@ function show_info(item, divs, entry, multiple=false, icon=false) {
 			setTimeout(function(){
 				div.innerHTML = text;
 				div.style.opacity = '100%';
-				show_maxheight(item);
-				grow_entry(entry, item);
 			}, 300);
 		}
 	}
+
+	show_maxheight(item);
+	grow_entry(entry, item);
 }
 
 
