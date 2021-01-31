@@ -63,7 +63,7 @@ migrate = Migrate(app, db)
 def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 
-	stylesheets.append({"style": "/static/css/home.css"})
+	stylesheets.append({"style": "/static/css/home/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 

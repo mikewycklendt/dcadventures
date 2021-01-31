@@ -40,10 +40,10 @@ db = SQLAlchemy()
 
 @equip.route('/equipment/create')
 def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
-	includehtml = 'equipment_create.html'
+	includehtml = 'equipment_create/equipment_create.html'
 
 	title = 'DC Adventures Online Roleplqying Game: Create Equipment'
-	stylesheets.append({"style": "/static/css/equipment_create.css"})
+	stylesheets.append({"style": "/static/css/equipment_create/equipment_create.css"})
 
 	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html', 'belt': 'equipment_create/belt.html'}
 

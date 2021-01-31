@@ -41,12 +41,12 @@ db = SQLAlchemy()
 
 @weap.route('/weapon/create')
 def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
-	includehtml = 'weapon_create.html'
+	includehtml = 'weapon_create/weapon_create.html'
 
 	weapon_includes = {'base_form': 'weapon_create/base_form.html', 'descriptor': 'weapon_create/descriptor.html', 'condition': 'weapon_create/condition.html', 'benefit': 'weapon_create/benefit.html'}
 
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
-	stylesheets.append({"style": "/static/css/weapon_create.css"})
+	stylesheets.append({"style": "/static/css/weapon_create/weapon_create.css"})
 
 	negatives = []
 	for i in range(-20, 1, 1):

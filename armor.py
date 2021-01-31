@@ -41,12 +41,12 @@ db = SQLAlchemy()
 
 @arm.route('/armor/create')
 def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
-	includehtml = 'armor_create.html'
+	includehtml = 'advantage_create/armor_create.html'
 
 	armor_includes = {'base_form': 'armor_create/base_form.html', 'descriptor': 'armor_create/descriptor.html', 'defense': 'armor_create/defense.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
-	stylesheets.append({"style": "/static/css/armor_create.css"})
+	stylesheets.append({"style": "/static/css/advantage_create/armor_create.css"})
 
 	negatives = []
 	for i in range(-20, 1, 1):
