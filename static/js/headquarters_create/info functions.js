@@ -22,12 +22,10 @@ function addon_info(field, route) {
 			const entry = 'addon-entry';
 			
 			show_info(item, divs, entry);
-			
-			show_info(item, divs, entry);
-
 
 		} else {
-			console.log('error');
+			hide_maxheight(item);
+			shrink_entry(entry, item);
 		}
 	})	
 }
@@ -59,8 +57,8 @@ function feature_info(field, item, entry, route) {
 			show_info(item, divs, entry, true);
 
 		} else {
-			hide_maxheight(item)
-			shrink_entry(entry, item)
+			hide_maxheight(item);
+			shrink_entry(entry, item);
 		}
 	})	
 }
