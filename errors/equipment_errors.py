@@ -233,6 +233,8 @@ def equip_feature_post_errors(data):
 	description = data['description']
 	feature = data['feature']
 
+	errors = id_check(Feature, feature, 'Feature', errors)
+
 	errors = of([feature, name], 'You must create a new feature or select an existing one.', errors)
 	errors = either([feature, name], 'You must add a new feature and and existing feature seperately.', errors)
 	errors = dependent('New Feature', name, [description], errors)

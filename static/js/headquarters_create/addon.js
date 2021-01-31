@@ -91,7 +91,8 @@ function addon_submit() {
 	const feature = select('addon_feature');
 	const equipment = select("equipment");
 	const weapon = select("weapon");
-	const addon = select("addon")
+	const addon = select("addon");
+	const head_feature = select("addon_head_feature");
 
 	const errors = 'addon-err';
 	const err_line = 'addon-err-line';
@@ -106,7 +107,8 @@ function addon_submit() {
 			'feature': feature,
 			'equipment': equipment,
 			'weapon': weapon,
-			'addon': addon
+			'addon': addon,
+			'head_feature': head_feature
 	
 		}),
 		headers: {

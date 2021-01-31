@@ -26,6 +26,8 @@ from models import Armor, ArmorType, ArmDescriptor, ArmDefense
 from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 from models import Headquarters, HeadFeature, HeadFeatAddon, HeadSize, HeadCharFeat
 
+from errors.headquarters_errors import head_addon_post_errors, head_feature_post_errors
+
 
 load_dotenv()
 
@@ -40,7 +42,7 @@ db = SQLAlchemy()
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'headquarters_create.html'
 
-	headquarters_includes = {'base_form': 'headquarters_create/base_form.html', 'addon': 'headquarters_create/addon.html'}
+	headquarters_includes = {'base_form': 'headquarters_create/base_form.html', 'addon': 'headquarters_create/addon.html', 'feature': 'headquarters_create/feature.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Headquarters'
 	stylesheets.append({"style": "/static/css/headquarters_create.css"})
@@ -82,9 +84,11 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	weapon_cat = WeaponCat.query.all()
 
+	head_features = HeadFeature.query.all()
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons, features=features,
-							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat)
+							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat, head_features=head_features)
 
 @head.route('/headquarters/size/select', methods=['POST'])
 def headquarters_size_select():
@@ -98,6 +102,58 @@ def headquarters_size_select():
 		size = db.session.query(HeadSize).filter_by(id=id).one()
 		body['cost'] = size.size
 		body['rank'] = size.name
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)
+
+@head.route('/headquarters/feature/select/info', methods=['POST'])
+def head_feature_info_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+
+	try:
+		type_id = int(type_id)
+		item = db.session.query(HeadFeature).filter_by(id=type_id).one()
+		items = db.session.query.filter_by(HeadFeatAddon).filter_by(id=type_id).all()
+		weapons = []
+		weapon_check = False
+		equipment = []
+		equipment_check = False
+		features = []
+		feature_check = False
+		for i in items:
+			if i.weapon is not None:
+				weapon_check = True
+				weapon = db.session.query(Weapon).filter_by(id=i.weapon).one()
+				weapons.append(weaopon.name)
+			if i.equipment is not None:
+				equipment_check = True
+				equip = db.session.query(Equipment).filter_by(id=i.equipment).one()
+				equipment.append(equip.name)
+			if i.feature is not None:
+				feature_check = True
+				feature = db.session.query(Feature).filter_by(id=i.feature).one()
+				equipment.append(feature.name)
+		if weapon_check == False:
+			weapons.append('No Weaopons')
+		if equipment_check == False:
+			equipment.append('No Equipment')
+		if feature_check == False:
+			features.append('No Features')
+		name = item.name
+		cost = 1
+		description = item.description
+		body['name'] = name
+		body['description'] = description
+		body['cost'] = cost
+		body['weapons'] = weapons
+		body['equipment'] = equipment
+		body['features'] = features
 	except:
 		body['success'] = False
 
@@ -216,6 +272,96 @@ def edit_headquarters_name():
 		return jsonify(body)
 
 
+@head.route('/headquarters/feature/create', methods=['POST'])
+def head_post_feature():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = head_feature_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	head_id = request.get_json()['head_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	name = request.get_json()['name']
+	description = request.get_json()['description']
+	feature = request.get_json()['feature']
+
+	equip_id = db_integer(equip_id)
+	feature = db_integer(feature)
+
+	if feature is not None:
+		entry = HeadFeature(head_id = head_id,
+						name = name,
+						description = description,
+						feature = feature)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		feature = entry.id
+		db.session.close()
+
+	entry = HeadCharFeat(head_id = head_id,
+						feature = feature)
+
+	total_cost = db.session.query(HeadCharFeat).filter(HeadCharFeat.head_id == head_id).count()
+
+	body = {}
+	body['id'] = entry.id
+	body['name'] = entry.name	
+	body['cost'] = total_cost
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'feature'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = head_feature_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@head.route('/headquarters/feature/delete/<id>', methods=['DELETE'])
+def delete_head_(id):
+	try:
+		head_id = db.session.query(HeadCharFeat).filter_by(id=id).one()
+		db.session.query(HeadCharFeat).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		cost = 0
+		remaining = db.session.query(HeadCharFeat).filter_by(head_id=head_id).first()
+		if remaining is not None:
+			cost = db.session.query(HeadCharFeat).filter_by(head_id=head_id).count()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': True, 'cost': cost})
+
+
 @head.route('/headquarters/addon/create', methods=['POST'])
 def head_post_adddon():
 
@@ -240,17 +386,20 @@ def head_post_adddon():
 	equipment = request.get_json()['equipment']
 	weapon = request.get_json()['weapon']
 	addon = request.get_json()['addon']
+	head_feature = request.get_json()['head_feature']
 	
 	vehicle_id = db_integer(vehicle_id)
 	feature = db_integer(feature)
 	equipment = db_integer(equipment)
 	weapon = db_integer(weapon)
+	head_feature = db_integer(head_feature)
 
-	entry = VehFeature(vehicle_id = vehicle_id,
+	entry = HeadFeatAddon(vehicle_id = vehicle_id,
 					feature = feature,
 					equipment = equipment,
 					weapon = weapon,
-					addon = addon)
+					addon = addon,
+					head_feature = head_feature)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -293,7 +442,7 @@ def delete_head_addon(id):
 	finally:	
 		print('\n\n' + str(id) + ' DELETED\n\n')
 		print(count)
-		return jsonify({'success': True, 'id': vehicle_id, 'feature': False })
+		return jsonify({'success': True, 'id': id, 'feature': False })
 
 
 @head.route('/headquarters//create', methods=['POST'])
@@ -360,4 +509,4 @@ def delete_head_(id):
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id })
+		return jsonify({'success': True, 'id': id, 'feature': False })

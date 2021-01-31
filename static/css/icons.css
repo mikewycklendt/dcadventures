@@ -1,0 +1,24 @@
+
+.weapon-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f71d';
+	display: inline-block;
+}
+
+.equipment-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f8b2';
+	display: inline-block;
+}
+
+.feature-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f7d9';
+	display: inline-block;
+}
+
+.power-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f2dd';
+	display: inline-block;
+}

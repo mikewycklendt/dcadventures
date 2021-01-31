@@ -10,6 +10,8 @@ const equipment_select = '/equipment/select';
 const feature_info_select = '/vehicle/feature/info';
 const equipment_info_select = '/equipment/equipment/select/info';
 const weapon_info_select = '/equipment/weapon/select/info';
+const head_feature_info_select = '/headquarters/feature/select/info';
+
 
 
 function null_hide_maxheight(field, item) {
@@ -21,15 +23,55 @@ function null_hide_maxheight(field, item) {
 	}
 }
 
-function show_info(item, divs, entry, classname=false) {
+function show_info(item, divs, entry, multiple=false, icon=false) {
 	let d;
 	for (d of divs) {
 		const div = document.getElementById(d.div);
 		div.style.opacity = '0%';
 	}
-	
-	for (d of divs) {
-		if (classname == false) {
+
+	if (multiple == true) {
+		for (d of divs) {
+			const spot = document.getElementById(d.div);
+			if (d.multiple) {
+				const contents = d.val;
+				setTimeout(function(){
+					spot.style.opacity = '100%';
+					show_maxheight(item);
+					grow_entry(entry, item);
+					let content;
+					let item_text = ''
+					for (content of contents) {
+						if (d.class) {
+							const item = document.createElement('div');
+							const classname = content.class;
+							div.className = classname;
+							div.innerHTML = content;
+							spot.appendChild(div);
+						} else {
+							if (item_text == '') {
+								item_text += content;
+							} else {
+								item_text += ', ' + content;
+							}
+						}
+					}
+					if (item_text != '') {
+						spot.innerHTML = item_text
+					}
+				}, 300);
+			} else {
+				const text = d.val;
+				setTimeout(function(){
+					spot.innerHTML = text;
+					spot.style.opacity = '100%';
+					show_maxheight(item);
+					grow_entry(entry, item);
+				}, 300);
+			}
+		}
+	} else {
+		for (d of divs) {
 			const div = document.getElementById(d.div);
 			const text = d.val;
 			setTimeout(function(){
@@ -37,21 +79,6 @@ function show_info(item, divs, entry, classname=false) {
 				div.style.opacity = '100%';
 				show_maxheight(item);
 				grow_entry(entry, item);
-			}, 300);
-		} else {
-			const spot = document.getElementById(d.div);
-			const contents = d.val;
-			setTimeout(function(){
-				spot.style.opacity = '100%';
-				show_maxheight(item);
-				grow_entry(entry, item);
-				let content;
-				for (content of contents) {
-					const div = document.createElement('div');
-					div.className = classname;
-					div.innerHTML = content;
-					spot.appendChild(div);
-				}
 			}, 300);
 		}
 	}
@@ -1599,6 +1626,10 @@ function row_delete(jsondata, route, object, selects=false) {
 					clear_errors(err_line, errors);
 
 					deleted_item(selects, delId)
+
+					if (jsonResponse.feature) {
+						costs.features = jsonResponse.cost;
+					}
 
 					console.log(delId)
 					console.log(rows)
