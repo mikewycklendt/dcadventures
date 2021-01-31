@@ -43,9 +43,13 @@ function show_info(item, divs, entry, multiple=false, icon=false) {
 					let item_text = ''
 					for (content of contents) {
 						if (d.class) {
-							const item = document.createElement('div');
+							const div = document.createElement('div');
 							const classname = content.class;
 							div.className = classname;
+							if (d.icon) {
+								const icon = d.icon
+								div.classList.add(icon)
+							}
 							div.innerHTML = content;
 							spot.appendChild(div);
 						} else {
