@@ -358,6 +358,7 @@ def delete_head_feature(id):
 		feature = get_id.feature
 		head_id = get_id.head_id
 		db.session.query(HeadCharFeat).filter_by(id=id).delete()
+		db.session.query(HeadFeature).filter_by(id=head_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
