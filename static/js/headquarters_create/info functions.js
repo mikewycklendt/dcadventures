@@ -19,7 +19,7 @@ function addon_info(field, route) {
 			const item = 'addon-item';
 			const divs = [{'val': jsonResponse.name, 'div': 'addon-name'},
 					{'val': jsonResponse.description, 'div': 'addon-description'}]
-			const entry = 'feature-entry';
+			const entry = 'addon-entry';
 			
 			show_info(item, divs, entry);
 			
