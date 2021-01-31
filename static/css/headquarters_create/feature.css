@@ -101,6 +101,7 @@
 }
 
 #feature-cost  {
+	padding-left: .8vw;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
