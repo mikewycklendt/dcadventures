@@ -49,8 +49,6 @@ function feature_info(field, item, entry, route) {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-
-			
 			const divs = [{'val': jsonResponse.name, 'div': 'head-feature-name'},
 					{'val': jsonResponse.description, 'div': 'head-feature-description'},
 					{'val': jsonResponse.cost, 'div': 'feature-cost'},
@@ -60,11 +58,7 @@ function feature_info(field, item, entry, route) {
 			
 			show_info(item, divs, entry, true);
 
-			
-
 		} else {
-			console.log('error');
-
 			hide_maxheight(item)
 			shrink_entry(entry, item)
 		}
