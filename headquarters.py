@@ -119,7 +119,7 @@ def head_feature_info_select():
 	try:
 		type_id = int(type_id)
 		item = db.session.query(HeadFeature).filter_by(id=type_id).one()
-		items = db.session.query(HeadFeatAddon).filter_by(id=type_id).all()
+		items = db.session.query(HeadFeatAddon).filter_by(head_feature=type_id).all()
 		weapons = []
 		weapon_check = False
 		equipment = []
