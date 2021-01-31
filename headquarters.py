@@ -352,7 +352,8 @@ def head_post_feature():
 @head.route('/headquarters/feature/delete/<id>', methods=['DELETE'])
 def delete_head_feature(id):
 	try:
-		head_id = db.session.query(HeadCharFeat).filter_by(id=id).one()
+		get_id = db.session.query(HeadCharFeat).filter_by(id=id).one()
+		head_id = get_id.head_id
 		db.session.query(HeadCharFeat).filter_by(id=id).delete()
 		db.session.commit()
 	except:
