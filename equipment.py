@@ -284,12 +284,13 @@ def equip_equipment_info_select():
 	options = []
 
 	type_id = request.get_json()['id'] 
-	print(type_id)
+
 	type_id = int(type_id)
-	equipment = db.session.query(Equipment).filter_by(id=type_id).order_by(Equipment.name).one()
+	equipment = db.session.query(Equipment).filter_by(id=type_id).one()
 	name = equipment.name
 	cost = equipment.cost
 	description = equipment.description
+
 
 	body['name'] = name
 	body['description'] = description
