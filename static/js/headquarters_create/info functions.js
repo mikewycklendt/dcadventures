@@ -16,9 +16,9 @@ function addon_info(field, route) {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const item = 'feature-item';
-			const divs = [{'val': jsonResponse.name, 'div': 'item-name'},
-					{'val': jsonResponse.description, 'div': 'item-description'}]
+			const item = 'addon-item';
+			const divs = [{'val': jsonResponse.name, 'div': 'addon-name'},
+					{'val': jsonResponse.description, 'div': 'addon-description'}]
 			const entry = 'feature-entry';
 			
 			show_info(item, divs, entry);

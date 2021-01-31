@@ -48,7 +48,7 @@
 
 
 
-#feature-item {
+#addon-item {
 	display: none;
 	width: 98%;
 	max-height: 0;
@@ -57,7 +57,7 @@
 	grid-template-columns: 20% 75%;
 }
 
-#item-name {
+#addon-name {
 	font-size: 155%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
@@ -73,7 +73,7 @@
 	text-align: left;
 }
 
-#item-description {
+#addon-description {
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
