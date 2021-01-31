@@ -15,6 +15,7 @@ function item_info(select, entry, item_div, route, object) {
 	const item_name = document.getElementById('item-name');
 	const item_cost = document.getElementById('item-cost');
 	const item_description = document.getElementById('item-description');
+	const feature_cost = document.getElementById('feature-cost');
 	const item = item_div;
 
 	response = fetch(route, {
@@ -45,6 +46,7 @@ function item_info(select, entry, item_div, route, object) {
 				item_name.innerHTML = name;
 				item_description.innerHTML = description;
 				item_cost.innerHTML = cost;
+				feature_cost.style.opacity = '100%'
 				item_name.style.opacity = '100%';
 				item_cost.style.opacity = '100%';
 				item_description.style.opacity = '100%';
