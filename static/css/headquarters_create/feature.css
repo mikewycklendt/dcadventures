@@ -129,6 +129,7 @@
 
 .head-feature-item::before {
 	padding-right: .7vw;
+	font-size: 90%;
 }
 
 
