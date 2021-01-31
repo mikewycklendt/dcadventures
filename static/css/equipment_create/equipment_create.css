@@ -1,13 +1,13 @@
-@import "equipment_create/base_form.css";
-@import "equipment_create/damaged.css";
-@import "equipment_create/opposed.css";
-@import "equipment_create/modifiers.css";
-@import "equipment_create/check.css";
-@import "equipment_create/limits.css";
-@import "equipment_create/descriptors.css";
-@import "equipment_create/feature.css";
-@import "equipment_create/effect.css";
-@import "equipment_create/belt.css";
+@import "base_form.css";
+@import "damaged.css";
+@import "opposed.css";
+@import "modifiers.css";
+@import "check.css";
+@import "limits.css";
+@import "descriptors.css";
+@import "feature.css";
+@import "effect.css";
+@import "belt.css";
 
 .equip-container {
 	display: grid;

@@ -1,6 +1,6 @@
-@import "headquarters_create/base_form.css";
-@import "headquarters_create/addon.css";
-@import "headquarters_create/feature.css";
+@import "base_form.css";
+@import "addon.css";
+@import "feature.css";
 
 .head-container {
 	display: grid;

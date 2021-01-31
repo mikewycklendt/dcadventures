@@ -1,6 +1,6 @@
-@import "vehicle_create/base_form.css";
-@import "vehicle_create/powers.css";
-@import "vehicle_create/feature.css";
+@import "base_form.css";
+@import "powers.css";
+@import "feature.css";
 
 .vehicle-container {
 	display: grid;
