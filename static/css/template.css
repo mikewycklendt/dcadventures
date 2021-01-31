@@ -70,7 +70,7 @@
 }
 
 @font-face {
-	font-family: "usticeMidItalic";
+	font-family: "JusticeMidItalic";
 	src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff2') format("woff2"); /* Modern Browsers */ 
 	src: url('/static/font/justice_mid_italic/fonts/justicemiditalic.woff') format("woff"), /* Modern Browsers */
 			url('/static/font/justice_mid_italic/fonts/justicemiditalic.eot?#iefix') format("embedded-opentype"), /* IE6-IE8 */
@@ -78,6 +78,18 @@
 			url('/static/font/justice_mid_italic/fonts/justicemiditalic.otf') format("opentype"), /* Open Type Font */
 			url('/static/font/justice_mid_italic/fonts/justicemiditalic.ttf') format("truetype"), /* Safari, Android, iOS */
 			url('/static/font/justice_mid_italic/fonts/justicemiditalic.svg') format("svg"); /* Legacy iOS */
+	  
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "FontAwesomePro";
+	src: url('/static/fontawesome/webfonts/fa-regular-400.woff2') format("woff2"); /* Modern Browsers */ 
+	src: url('/static/fontawesome/webfonts/fa-regular-400.woff') format("woff"), /* Modern Browsers */
+			url('/static/fontawesome/webfonts/fa-regular-400.eot') format("embedded-opentype"), /* IE6-IE8 */
+			url('/static/fontawesome/webfonts/fa-regular-400.ttf') format("truetype"), /* Safari, Android, iOS */
+			url('/static/fontawesome/webfonts/fa-regular-400.svg') format("svg"); /* Legacy iOS */
 	  
 	font-weight: normal;
 	font-style: normal;

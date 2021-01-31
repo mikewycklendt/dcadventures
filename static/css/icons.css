@@ -1,18 +1,18 @@
 
 .weapon-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f71d';
 	display: inline-block;
 }
 
 .equipment-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f8b2';
 	display: inline-block;
 }
 
 .feature-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f7d9';
 	display: inline-block;
 }
