@@ -314,6 +314,10 @@ def head_post_feature():
 
 	total_cost = db.session.query(HeadCharFeat).filter(HeadCharFeat.head_id == head_id).count()
 
+	print('\n\n\n')
+	print(total_cost)
+	print('\n\n')
+
 	body = {}
 	body['id'] = entry.id
 	body['cost'] = total_cost
