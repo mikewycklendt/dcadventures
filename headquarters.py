@@ -299,7 +299,7 @@ def head_post_feature():
 	head_id = db_integer(head_id)
 	feature = db_integer(feature)
 
-	if feature is not None:
+	if name != '':
 		entry = HeadFeature(head_id = head_id,
 						name = name,
 						description = description,
@@ -318,7 +318,6 @@ def head_post_feature():
 
 	body = {}
 	body['id'] = entry.id
-	body['name'] = entry.name	
 	body['cost'] = total_cost
 	error = False
 	error_msg = []
