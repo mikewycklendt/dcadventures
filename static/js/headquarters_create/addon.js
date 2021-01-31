@@ -1,25 +1,25 @@
-function feature_check() {
-	const check = "feature_check";
-	const title = "feature-title";
-	const base = 'feature-base';
-	const entry = "feature-entry";
+function addon_check() {
+	const check = "addon_check";
+	const title = "addon-title";
+	const base = 'addon-base';
+	const entry = "addon-entry";
 
 	entry_check(check, title, base, entry);
 }
 
 function addon() {
 	const select = 'addon';
-	const options = [{'val': 'feature', 'div': 'feature-feature'},
-					{'val': 'weapon', 'div': 'feature-weapon'},
-					{'val': 'equipment', 'div': 'feature-equipment'}]
+	const options = [{'val': 'feature', 'div': 'addon-feature'},
+					{'val': 'weapon', 'div': 'addon-weapon'},
+					{'val': 'equipment', 'div': 'addon-equipment'}]
 
 	select_opacity(select, options)
 }
 
 let addon_cost = {'cost': 0}
 
-function feature_feature() {
-	const select = 'feature_feature';
+function addon_feature() {
+	const select = 'addon_feature';
 
 	addon_info(select, feature_info_select);
 }
@@ -58,43 +58,43 @@ function equipment_type() {
 	id_select(select, fill, route);	
 }
 
-function feature_equipment() {
-	const select = 'feature_equipment';
-	const fill = 'feature_feature';
+function addon_equipment() {
+	const select = 'addon_equipment';
+	const fill = 'addon_feature';
 	const route = '/vehicle/feature/select';
 
 	id_select(select, fill, route);
 
 }
 
-function feature_equipment_type() {
-	const select = 'feature_equipment_type';
-	const fill = 'feature_equipment';
+function addon_equipment_type() {
+	const select = 'addon_equipment_type';
+	const fill = 'addon_equipment';
 	const route =  '/vehicle/equipment/select';
 
 	id_select(select, fill, route);	
 }
-let feature_grid = {'titles': false,
+let addon_grid = {'titles': false,
 					'columns': [],
 					'font': 110,
 					'mod': []}
 
 
 
-function feature_submit() {
+function addon_submit() {
 
-	const columns = feature_grid.columns;
-	const created = feature_grid.titles;
-	const font = feature_grid.font;
+	const columns = addon_grid.columns;
+	const created = addon_grid.titles;
+	const font = addon_grid.font;
 
 	const head_id = document.getElementById('head_id').value;
-	const feature = select('feature_feature');
+	const feature = select('addon_feature');
 	const equipment = select("equipment");
 	const weapon = select("weapon");
 	const addon = select("addon")
 
-	const errors = 'feature-err';
-	const err_line = 'feature-err-line';
+	const errors = 'addon-err';
+	const err_line = 'addon-err-line';
 
 	response = fetch('/headquarters/addon/create', {
 		method: 'POST',
@@ -118,17 +118,15 @@ function feature_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			feature_grid.columns.length = 0;
-			feature_grid.columns = jsonResponse.rows;
-			costs.features = jsonResponse.cost;
-			calculate_cost()
+			addon_grid.columns.length = 0;
+			addon_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/headquarters/' + table_id + '/delete/'
-			create_table(jsonResponse, feature_grid, route);
+			create_table(jsonResponse, addon_grid, route);
 			clear_errors(err_line, errors)
 
-			feature_grid.titles = true;
+			addon_grid.titles = true;
 
 		} else {
 			back_errors(err_line, errors, jsonResponse)

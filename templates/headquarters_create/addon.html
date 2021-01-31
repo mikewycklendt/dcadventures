@@ -1,0 +1,134 @@
+<div class="head-header" id="addon-header">
+
+	<div class="head-title" id="addon-title">
+		<input type="checkbox" id="addon_check" class="regular-checkbox big-checkbox" onclick="addon_check()"> Feature Addons:
+	</div>
+	
+	<div class="head-base" id="feature-base">
+	
+	</div>
+
+</div>
+
+<div class="head-entry" id="addon-entry">
+	<div id="addon-row1">
+
+		<div>
+			<select class="select-entry" id="addon" name="addon" onchange="addon()">
+				{% for a in addons %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="addon-feature">
+				<div>
+					<select class="select-entry" id="addon_equipment_type" name="addon_equipment_type" onchange="addon_equipment_type()">
+						<option value="">Equipment Type</option>
+						{% for e in equipment_type %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="addon_equipment" name="addon_equipment" onchange="addon_equipment()">
+						<option value="">Equipment</option>
+						<option value="all">All Features</option>
+						{% for e in equipment %}
+							<option valuue={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="addon_feature" name="addon_feature" onchange="addon_feature()">
+						<option value="">Features</option>
+						{% for f in features %}
+							<option value={{f.id}}>{{f.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		
+			<div id="addon-equipment">
+				<div>
+					<select class="select-entry" id="equipment_type" name="equipment_type" onchange="equipment_type()">
+						<option value="">Equipment Type</option>
+						{% for e in equipment_type %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="equipment" name="equipment" onchange="equipment()">
+						<option value="">Equipment</option>
+						<option value="all">All Features</option>
+						{% for e in equipment %}
+							<option valuue={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="feature-weapon">
+				
+				<div>
+					<select class="select-entry" id="weapon_cat" name="weapon_cat" onchange="weapon_cat()">
+						<option value="">Weapon Type</option>
+						{% for w in weapon_cat %}
+							<option value={{w.id}}>{{w.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="weapon_type" name="weapon_type" onchange="weapon_type()">
+						<option value=""></option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-entry" id="weapon" name="weapon" onchange="weapon()">
+						<option value="">Weapon</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="addon-item">
+		<div>
+			<div id="addon-name"></div>
+
+			<div id="addon-cost">
+				<div></div>
+
+				<div>
+				</div>
+
+				<div id="addon-addon-cost"></div>
+			</div>
+		</div>
+
+		<div id="addon-description"></div>
+	</div>
+
+	<div id="addon-button-row">
+		<div></div>
+		
+		<div>
+			<div class="btn-entry" id="addon_submit" name="addon_submit" onclick="addon_submit()">
+				 Add Feature
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="addon-spot"></div>
+
+<div class="err" id="addon-err"></div>

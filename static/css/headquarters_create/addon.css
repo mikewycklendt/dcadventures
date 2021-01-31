@@ -1,13 +1,13 @@
-#feature-header {
+#addon-header {
 	grid-template-columns: 50% 50%;
 }
 
-#feature-base {
+#addon-base {
 	grid-template-columns: 50% 50%;
 }
 
 
-#feature-weapon {
+#addon-weapon {
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -17,7 +17,7 @@
 	grid-auto-rows: auto;
 }
 
-#feature-equipment {
+#addon-equipment {
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -27,7 +27,7 @@
 	grid-auto-rows: auto;
 }
 
-#feature-feature {
+#addon-feature {
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -38,7 +38,7 @@
 }
 
 
-#feature-row1 {
+#addon-row1 {
 	display: grid;
 	width: 98%;
 	gap: .2VW;
@@ -64,7 +64,7 @@
 	transition: all .3s ease-out;
 }
 
-#feature-cost {
+#addon-cost {
 	font-size: 135%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
@@ -78,7 +78,7 @@
 	transition: all .3s ease-out;
 }
 
-#feature-button-row {
+#addon-button-row {
 	display: grid;
 	grid-template-columns: 80% 20%;
 	width: 97%;
