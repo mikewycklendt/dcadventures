@@ -41,8 +41,10 @@ function show_info(item, divs, entry, multiple=false) {
 					let item_text = ''
 					for (content of contents) {
 						if (d.class) {
-							const div = document.createElement('div');
 							const classname = d.class;
+							const olds = document.getElementsByClassName(classname);
+							while (olds.length > 0) {olds[0].remove()};
+							const div = document.createElement('div');
 							div.className = classname;
 							if (d.icon) {
 								const icon = d.icon
