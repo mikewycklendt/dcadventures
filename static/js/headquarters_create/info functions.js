@@ -17,16 +17,15 @@ function addon_info(field, route) {
 		if (jsonResponse.success) {
 
 			const item = 'head-feature';
-			const divs = [{'val': jsonResponse.name, 'class': false, 'icon': false, 'div': 'head-feature-name'},
-					{'val': jsonResponse.description, 'class': false, 'icon': false, 'div': 'head-feature-description'},
-					{'val': jsonResponse.description, 'class': 'head-feature-item', 'icon': 'weapon-icon', 'div': 'head-feature-description'}]
+			const divs = [{'val': jsonResponse.name, 'div': 'head-feature-name'},
+					{'val': jsonResponse.description, 'div': 'head-feature-description'},
+					{'val': jsonResponse.weapons, 'class': 'head-feature-item', 'icon': 'weapon-icon', 'div': 'head-feature-weapon'},
+					{'val': jsonResponse.features, 'class': 'head-feature-item', 'icon': 'feature-icon', 'div': 'head-feature-features'},
+					{'val': jsonResponse.equipment, 'class': 'head-feature-item', 'icon': 'equipment-icon', 'div': 'head-feature-equipment'}]
 			const entry = 'addon-entry';
 			
 			show_info(item, divs, entry, true);
 
-			const item = 'head-feature';
-			const divs = [{'val': jsonResponse.name, 'div': 'head-feature-name'}]
-			const entry = 'addon-entry';
 			
 			show_info(item, divs, entry);
 
