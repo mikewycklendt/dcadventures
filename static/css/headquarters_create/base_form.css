@@ -197,7 +197,7 @@
 	display: grid;
 	width: 100%;
 	grid-template-columns: 100%;
-	font-size: 100%;
+	font-size: 120%;
 	grid-template-rows: 1.5vw auto;
 }
 
