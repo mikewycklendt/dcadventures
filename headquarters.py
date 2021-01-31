@@ -157,7 +157,7 @@ def head_feature_info_select():
 		body['features'] = features
 	except:
 		body['success'] = False
-			
+
 	print(body)
 	return jsonify(body)
 	
@@ -324,7 +324,8 @@ def head_post_feature():
 	print('\n\n')
 
 	body = {}
-	body['id'] = feature
+	body['id'] = entry.id
+	body['select_id'] = feature
 	body['cost'] = total_cost
 	error = False
 	error_msg = []

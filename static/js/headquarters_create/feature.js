@@ -54,7 +54,7 @@ function feature_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const id = jsonResponse.id;
+			const id = jsonResponse.select_id;
 			const selects = ['feature-entry']
 
 
