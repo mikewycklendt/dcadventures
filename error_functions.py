@@ -1225,6 +1225,7 @@ def head_feature_duplicate(value, id, table, errors):
 
 	try:
 		id = int(id)
+		value = int(value)
 		check = db.session.query(table).filter_by(head_id=id).all()
 		for c in check:
 			if c.feature == value:
