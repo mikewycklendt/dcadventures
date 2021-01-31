@@ -34,6 +34,10 @@ function show_info(item, divs, entry, multiple=false) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {
+				if (d.class) {
+					const olds = document.getElementsByClassName(classname);
+					while (olds.length > 0) {olds[0].remove()};
+				}
 				const contents = d.val;
 				setTimeout(function(){
 					spot.style.opacity = '100%';
@@ -42,8 +46,6 @@ function show_info(item, divs, entry, multiple=false) {
 					for (content of contents) {
 						if (d.class) {
 							const classname = d.class;
-							const olds = document.getElementsByClassName(classname);
-							while (olds.length > 0) {olds[0].remove()};
 							const div = document.createElement('div');
 							div.className = classname;
 							if (d.icon) {
