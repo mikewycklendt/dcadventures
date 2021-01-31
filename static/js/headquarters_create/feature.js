@@ -9,8 +9,10 @@ function feature_check() {
 
 function feature_feature() {
 	const select = 'feature_feature';
+	const item = 'head-feature';
+	const entry = 'feature-entry';
 
-	feature_info(select, head_feature_info_select);
+	feature_info(select, item, entry, head_feature_info_select);
 }
 
 let feature_grid = {'titles': false,
