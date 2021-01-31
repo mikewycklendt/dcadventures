@@ -65,6 +65,7 @@
 }
 
 #feature-cost {
+	display: grid;
 	font-size: 135%;
 	font-family: Comic, 'Monda', Verdana;
 	opacity: 0%;
