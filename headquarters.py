@@ -117,46 +117,45 @@ def head_feature_info_select():
 
 	type_id = request.get_json()['id'] 
 
-	try:
-		type_id = int(type_id)
-		item = db.session.query(HeadFeature).filter_by(id=type_id).one()
-		items = db.session.query.filter_by(HeadFeatAddon).filter_by(id=type_id).all()
-		weapons = []
-		weapon_check = False
-		equipment = []
-		equipment_check = False
-		features = []
-		feature_check = False
-		for i in items:
-			if i.weapon is not None:
-				weapon_check = True
-				weapon = db.session.query(Weapon).filter_by(id=i.weapon).one()
-				weapons.append(weaopon.name)
-			if i.equipment is not None:
-				equipment_check = True
-				equip = db.session.query(Equipment).filter_by(id=i.equipment).one()
-				equipment.append(equip.name)
-			if i.feature is not None:
-				feature_check = True
-				feature = db.session.query(Feature).filter_by(id=i.feature).one()
-				equipment.append(feature.name)
-		if weapon_check == False:
-			weapons.append('No Weaopons')
-		if equipment_check == False:
-			equipment.append('No Equipment')
-		if feature_check == False:
-			features.append('No Features')
-		name = item.name
-		cost = 1
-		description = item.description
-		body['name'] = name
-		body['description'] = description
-		body['cost'] = cost
-		body['weapons'] = weapons
-		body['equipment'] = equipment
-		body['features'] = features
-	except:
-		body['success'] = False
+	type_id = int(type_id)
+	item = db.session.query(HeadFeature).filter_by(id=type_id).one()
+	items = db.session.query.filter_by(HeadFeatAddon).filter_by(id=type_id).all()
+	weapons = []
+	weapon_check = False
+	equipment = []
+	equipment_check = False
+	features = []
+	feature_check = False
+	for i in items:
+		if i.weapon is not None:
+			weapon_check = True
+			weapon = db.session.query(Weapon).filter_by(id=i.weapon).one()
+			weapons.append(weaopon.name)
+		if i.equipment is not None:	
+			equipment_check = True
+			equip = db.session.query(Equipment).filter_by(id=i.equipment).one()
+			equipment.append(equip.name)
+		if i.feature is not None:
+			feature_check = True
+			feature = db.session.query(Feature).filter_by(id=i.feature).one()
+			features.append(feature.name)
+	if weapon_check == False:
+		weapons.append('No Weaopons')
+	if equipment_check == False:
+		equipment.append('No Equipment')
+	if feature_check == False:
+		features.append('No Features')
+	name = item.name
+	cost = 1
+	description = item.description
+	body['name'] = name
+	body['description'] = description
+	body['cost'] = cost
+	body['weapons'] = weapons
+	body['equipment'] = equipment
+	body['features'] = features
+	
+	body['success'] = False
 
 	print(body)
 	return jsonify(body)
