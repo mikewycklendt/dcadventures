@@ -57,7 +57,7 @@ function feature_info(field, route) {
 					{'val': jsonResponse.weapons, 'multiple': true, 'class': 'head-feature-item', 'icon': 'weapon-icon', 'div': 'head-feature-weapons'},
 					{'val': jsonResponse.features, 'multiple': true, 'class': 'head-feature-item', 'icon': 'feature-icon', 'div': 'head-feature-features'},
 					{'val': jsonResponse.equipment, 'multiple': true, 'class': 'head-feature-item', 'icon': 'equipment-icon', 'div': 'head-feature-equipment'}]
-			const entry = 'addon-entry';
+			const entry = 'feature-entry';
 			
 			show_info(item, divs, entry, true);
 
