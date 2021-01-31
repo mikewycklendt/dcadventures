@@ -88,15 +88,16 @@ let feature_grid = {'titles': false,
 					'font': 110,
 					'mod': []}
 
+
+
 function feature_submit() {
 
 	const columns = feature_grid.columns;
 	const created = feature_grid.titles;
 	const font = feature_grid.font;
 
-	const vehicle_id = document.getElementById('vehicle_id').value;
+	const head_id = document.getElementById('head_id').value;
 	const feature = select('feature_feature');
-	const cost = addon_cost.cost;
 	const equipment = select("equipment");
 	const weapon = select("weapon");
 	const addon = select("addon")
@@ -104,15 +105,14 @@ function feature_submit() {
 	const errors = 'feature-err';
 	const err_line = 'feature-err-line';
 
-	response = fetch('/vehicle/feature/create', {
+	response = fetch('/headquarters/addon/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'vehicle_id': vehicle_id,
+			'head_id': head_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
 			'feature': feature,
-			'cost': cost,
 			'equipment': equipment,
 			'weapon': weapon,
 			'addon': addon
@@ -133,7 +133,7 @@ function feature_submit() {
 			calculate_cost()
 
 			const table_id = jsonResponse.table_id;
-			const route = '/vehicle/' + table_id + '/delete/'
+			const route = '/headquarters/' + table_id + '/delete/'
 			create_table(jsonResponse, feature_grid, route);
 			clear_errors(err_line, errors)
 

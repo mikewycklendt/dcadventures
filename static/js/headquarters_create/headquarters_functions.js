@@ -8,16 +8,12 @@ const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
 
-function feature_info(select, entry) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value;
-		
-	const item_name = document.getElementById('item-name');
-	const item_cost = document.getElementById('item-cost');
-	const item_description = document.getElementById('item-description');
-	const item = 'feature-item';
 
-	response = fetch('/vehicle/feature/info', {
+
+function addon_info(field, route) {
+	const id = select(field);
+
+	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
 			'id': type_id
@@ -31,30 +27,65 @@ function feature_info(select, entry) {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const name = jsonResponse.name;
-			const description = jsonResponse.description;
-
-			item_name.style.opacity = '0%';
-			item_cost.style.opacity = '0%';
-			item_description.style.opacity = '0%'
-
-			setTimeout(function(){
-				item_name.innerHTML = name;
-				item_description.innerHTML = description;
-				item_name.style.opacity = '100%';
-				item_cost.style.opacity = '100%';
-				item_description.style.opacity = '100%';
-				show_maxheight(item);
-				grow_entry(entry, item);
-			}, 300);
+			const item = 'feature-item';
+			const divs = [{'val': jsonResponse.name, 'div': 'item-name'},
+					{'val': jsonResponse.description, 'div': 'item-description'}]
+			const entry = 'feature-entry';
+			
+			show_info(item, divs, entry);
 
 		} else {
-			console.log(jsonResponse.options);
-			hide_maxheight(item);
-			shrink_entry(entry, item);
+			console.log('error');
 		}
 	})	
 }
+
+function null_hide_maxheight(field, item) {
+	val = select(field);
+
+	if (val == '' ) {
+		hide_maxheight(item);
+		shrink_entry(entry, item);
+	}
+}
+
+function show_info(item, divs, entry, classname=false) {
+	let d;
+	for (d of divs) {
+		const div = document.getElementById(d.div);
+		div.style.opacity = '0%';
+	}
+	
+	for (d of divs) {
+		if (classname == false) {
+			const div = document.getElementById(d.div);
+			const text = d.val;
+			setTimeout(function(){
+				div.innerHTML = text;
+				div.style.opacity = '100%';
+				show_maxheight(item);
+				grow_entry(entry, item);
+			}, 300);
+		} else {
+			const spot = document.getElementById(d.div);
+			const contents = d.val;
+			setTimeout(function(){
+				spot.style.opacity = '100%';
+				show_maxheight(item);
+				grow_entry(entry, item);
+				let content;
+				for (content of contents) {
+					const div = document.createElement('div');
+					div.className = classname;
+					div.innerHTML = content;
+					spot.appendChild(div);
+				}
+			}, 300);
+		}
+	}
+}
+
+
 
 
 
@@ -827,22 +858,6 @@ function id_select(select, fill, route) {
 	})	
 }
 
-
-function get_data(field, route, data) {
-	const id = select(field);
-
-	response = fetch(route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': id
-		}),
-		headers: {
-			'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	
-}
 
 function update_divs(data) {
 	for (d of data) {
