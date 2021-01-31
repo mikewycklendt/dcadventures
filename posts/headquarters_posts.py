@@ -18,7 +18,6 @@ from post_functions import name, action_convert, math_convert, extra_name, descr
 def head_feature_post(entry, body, cells):
 
 	head_id = entry.head_id
-	feature = entry.name
 
 	head_feature = name(HeadFeature, feature)
 	description = description(HeadFeature, feature)

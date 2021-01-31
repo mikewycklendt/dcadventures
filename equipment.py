@@ -285,12 +285,17 @@ def equip_equipment_info_select():
 
 	type_id = request.get_json()['id'] 
 
-	type_id = int(type_id)
-	equipment = db.session.query(Equipment).filter_by(id=type_id).one()
-	name = equipment.name
-	cost = equipment.cost
-	description = equipment.description
-
+	try:
+		type_id = int(type_id)
+		equipment = db.session.query(Equipment).filter_by(id=type_id).one()
+		name = equipment.name
+		cost = equipment.cost
+		description = equipment.description
+	except:
+		name = 'Unavailable'
+		cost = 'Unavailable'
+		description = 'Unavailable'
+		body['success'] = False
 
 	body['name'] = name
 	body['description'] = description
