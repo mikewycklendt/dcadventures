@@ -313,10 +313,10 @@ def head_post_feature():
 	entry = HeadCharFeat(head_id = head_id,
 						feature = feature)
 
-	total_cost = db.session.query(HeadCharFeat).filter(HeadCharFeat.head_id == head_id).count()
-
 	db.session.add(entry)
 	db.session.commit()
+
+	total_cost = db.session.query(HeadCharFeat).filter(HeadCharFeat.head_id == head_id).count()
 
 	print('\n\n\n')
 	print(total_cost)
