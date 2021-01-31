@@ -42,7 +42,7 @@ function show_info(item, divs, entry, multiple=false) {
 					for (content of contents) {
 						if (d.class) {
 							const div = document.createElement('div');
-							const classname = content.class;
+							const classname = d.class;
 							div.className = classname;
 							if (d.icon) {
 								const icon = d.icon
