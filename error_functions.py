@@ -1232,7 +1232,7 @@ def head_feature_duplicate(value, id, table, errors):
 		print('new feature')
 	
 	if error:
-		message = 'You have already added that feature.
+		message = 'You have already added that feature.'
 		error_msgs.append(message)	
 		errors['error_msgs'] = error_msgs
 		errors['error'] = error
