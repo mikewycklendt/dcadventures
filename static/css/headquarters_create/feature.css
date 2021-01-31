@@ -79,7 +79,7 @@
 
 
 #head-feature-row1 {
-	display: none;
+	display: grid;
 	width: 98%;
 	max-height: 0;
 	overflow: hidden;
@@ -109,7 +109,7 @@
 }
 
 #head-feature-row2 {
-	display: none;
+	display: grid;
 	width: 98%;
 	max-height: 0;
 	overflow: hidden;
