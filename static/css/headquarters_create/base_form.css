@@ -197,8 +197,8 @@
 	display: grid;
 	width: 100%;
 	grid-template-columns: 100%;
-	font-size: 120%;
-	grid-template-rows: 1.5vw auto;
+	font-size: 110%;
+	grid-template-rows: 1.6vw auto;
 }
 
 #cost-total {
