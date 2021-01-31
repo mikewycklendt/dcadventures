@@ -24,7 +24,7 @@ function feature_feature() {
 	const route = '/vehicle/feature/info'
 	const item = 'feature-item';
 
-	item_info(select, entry);
+	addon_info(select, route;
 }
 
 function equipment()  {
@@ -33,7 +33,7 @@ function equipment()  {
 	const route = '/equipment/equipment/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry);
+	addon_info(select, route);
 }
 
 function weapon() {
@@ -42,7 +42,7 @@ function weapon() {
 	const route = '/equipment/weapon/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry);
+	addon_info(select, route);
 }
 
 function weapon_cat() {
