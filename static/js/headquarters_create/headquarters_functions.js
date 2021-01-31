@@ -23,7 +23,7 @@ function null_hide_maxheight(field, item) {
 	}
 }
 
-function show_info(item, divs, entry, multiple=false, icon=false) {
+function show_info(item, divs, entry, multiple=false) {
 	let d;
 	for (d of divs) {
 		const div = document.getElementById(d.div);
