@@ -33,7 +33,6 @@ function show_info(item, divs, entry, multiple=false) {
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
-			spot.style.opacity = '0%';
 			if (d.multiple) {
 				if (d.class) {
 					const classname = d.class;
