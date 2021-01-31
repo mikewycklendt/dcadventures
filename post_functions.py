@@ -33,7 +33,31 @@ def name(Table, value, name=''):
 	
 	return (value)
 
-def description(Table, value, name=''):
+def get_name(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value == 0:
+		value = 'All'
+		return (value)
+
+	if value == 1234:
+		value = name
+		return (value)
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			value = query.name
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	
+	return (value)
+
+def get_description(Table, value, name=''):
 	
 	db = SQLAlchemy()
 
