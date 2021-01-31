@@ -24,7 +24,7 @@ function feature_feature() {
 	const route = '/vehicle/feature/info'
 	const item = 'feature-item';
 
-	addon_info(select, route;
+	addon_info(select, route);
 }
 
 function equipment()  {
