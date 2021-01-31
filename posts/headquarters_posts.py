@@ -39,7 +39,6 @@ def head_addon_post(entry, body, cells):
 	head_id = entry.head_id
 	head_feature = entry.head_feature
 	feature = entry.feature
-	cost = entry.cost
 	equipment = entry.equipment
 	weapon = entry.weapon
 	addon = entry.addon
@@ -51,8 +50,7 @@ def head_addon_post(entry, body, cells):
 	vcells = vcell('equipment', 30, [equipment])
 	vcells = vcell('weapon', 30, [weapon], vcells)
 	vcells = vcell('feature', 30, [feature], vcells)
-	cells = vcell_add('Item', addon, vcells, cells) 
-	cells = cell('Cost', 10, [cost], cells)
+	cells = vcell_add('Item', addon, vcells, cells)
 
 	body = send(cells, body)
 	
