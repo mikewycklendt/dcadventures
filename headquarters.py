@@ -216,6 +216,102 @@ def edit_headquarters_name():
 		return jsonify(body)
 
 
+@vehicle.route('/vehicle/feature/create', methods=['POST'])
+def vehicle_post_feature():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = veh_feature_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	vehicle_id = request.get_json()['vehicle_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	feature = request.get_json()['feature']
+	cost = request.get_json()['cost']
+	equipment = request.get_json()['equipment']
+	weapon = request.get_json()['weapon']
+	addon = request.get_json()['addon']
+	
+	vehicle_id = db_integer(vehicle_id)
+	feature = db_integer(feature)
+	equipment = db_integer(equipment)
+	weapon = db_integer(weapon)
+	cost = integer(cost)
+
+	entry = VehFeature(vehicle_id = vehicle_id,
+					feature = feature,
+					cost = cost,
+					equipment = equipment,
+					weapon = weapon,
+					addon = addon)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	items = db.session.query(VehFeature).filter(VehFeature.vehicle_id == vehicle_id).all()
+
+	total_cost = 0
+
+	for i in items:
+		total_cost += i.cost
+
+	body = {}
+	body['id'] = entry.id
+	body['cost'] = total_cost
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'feature'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = veh_feature_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+
+@vehicle.route('/vehicle/feature/delete/<id>', methods=['DELETE'])
+def delete_vehicle_feature(id):
+	try:
+		entry = db.session.query(HeadFeatAddon).filter_by(id=id).one()
+		Feature = entry.feature
+		db.session.query(HeadFeatAddon).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		total_cost = 0
+		items = db.session.query(HeadFeatAddon).filter(HeadFeatAddon.feature == Feature).first()
+		if powers is not None:
+			items = db.session.query(HeadFeatAddon).filter(HeadFeatAddon.feature == Feature).count()
+		print('\n\n' + str(vehicle_id) + ' DELETED\n\n')
+		print(count)
+		return jsonify({'success': True, 'id': vehicle_id, 'power': False, 'addon': True, 'feature': False 'cost': total_cost })
+
 
 @head.route('/headquarters//create', methods=['POST'])
 def head_post_():

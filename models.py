@@ -4496,6 +4496,7 @@ class HeadFeatAddon(db.Model):
 	__tablename__ = 'headquarters_feature_addon'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	head_id = db.Column(db.Integer, db.ForeignKey('headquarters.id'))
+	head_feature = db.Column(db.Integer, db.ForeignKey('headquarters_features.id'))
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
@@ -4504,7 +4505,8 @@ class HeadFeatAddon(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'vehicle_id': self.vehicle_id,
+			'head_id': self.head_id,
+			'head_feature': self.head_feature,
 			'feature': self.feature,
 			'equipment': self.equipment,
 			'weapon': self.weapon,
