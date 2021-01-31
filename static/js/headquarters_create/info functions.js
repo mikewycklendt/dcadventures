@@ -64,6 +64,9 @@ function feature_info(field, item, entry, route) {
 
 		} else {
 			console.log('error');
+
+			hide_maxheight(item)
+			shrink_entry(entry, item)
 		}
 	})	
 }
