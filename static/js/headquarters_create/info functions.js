@@ -32,7 +32,7 @@ function addon_info(field, route) {
 	})	
 }
 
-function feature_info(field, route) {
+function feature_info(field, item, entry, route) {
 	const id = select(field);
 
 	response = fetch(route, {
@@ -51,14 +51,12 @@ function feature_info(field, route) {
 
 
 			
-			const item = 'head-feature';
 			const divs = [{'val': jsonResponse.name, 'div': 'head-feature-name'},
 					{'val': jsonResponse.description, 'div': 'head-feature-description'},
 					{'val': jsonResponse.cost, 'div': 'feature-cost'},
 					{'val': jsonResponse.weapons, 'multiple': true, 'class': 'head-feature-item', 'icon': 'weapon-icon', 'div': 'head-feature-weapons'},
 					{'val': jsonResponse.features, 'multiple': true, 'class': 'head-feature-item', 'icon': 'feature-icon', 'div': 'head-feature-features'},
 					{'val': jsonResponse.equipment, 'multiple': true, 'class': 'head-feature-item', 'icon': 'equipment-icon', 'div': 'head-feature-equipment'}]
-			const entry = 'feature-entry';
 			
 			show_info(item, divs, entry, true);
 
