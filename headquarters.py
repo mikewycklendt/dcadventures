@@ -27,6 +27,7 @@ from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFe
 from models import Headquarters, HeadFeature, HeadFeatAddon, HeadSize, HeadCharFeat
 
 from errors.headquarters_errors import head_addon_post_errors, head_feature_post_errors
+from posts.headquarters_posts import head_feature_post, head_addon_post
 
 
 load_dotenv()
