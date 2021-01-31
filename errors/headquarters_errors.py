@@ -27,7 +27,6 @@ def head_addon_post_errors(data):
 	head_id = data['head_id']
 	head_feature = data['head_feature']
 	feature = data['feature']
-	cost = data['cost']
 	equipment = data['equipment']
 	weapon = data['weapon']
 
