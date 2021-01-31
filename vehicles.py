@@ -81,7 +81,7 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	equipment_type = EquipType.query.all()
 
-	weapon_cat = WeaponCat.query.all()~
+	weapon_cat = WeaponCat.query.all()
 
 	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
