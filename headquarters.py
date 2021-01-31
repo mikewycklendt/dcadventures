@@ -307,12 +307,16 @@ def head_post_feature():
 		db.session.commit()
 
 		feature = entry.id
+
 		db.session.close()
 
 	entry = HeadCharFeat(head_id = head_id,
 						feature = feature)
 
 	total_cost = db.session.query(HeadCharFeat).filter(HeadCharFeat.head_id == head_id).count()
+
+	db.session.add(entry)
+	db.session.commit()
 
 	print('\n\n\n')
 	print(total_cost)
