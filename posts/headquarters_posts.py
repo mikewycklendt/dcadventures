@@ -45,6 +45,9 @@ def head_addon_post(entry, body, cells):
 
 	head_feature = name(HeadFeature, head_feature)
 	feature = name(Feature, feature)
+	equipment = name(Equipment, equipment)
+	weapon = name(Weapon, weapon)
+
 
 	cells = cell('Feature', 25, [head_feature])
 	vcells = vcell('equipment', 30, [equipment])
