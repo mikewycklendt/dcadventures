@@ -20,10 +20,10 @@ def head_feature_post(entry, body, cells):
 	head_id = entry.head_id
 	feature = entry.feature
 
-	head_feature = name(HeadFeature, feature)
+	feature_name = name(HeadFeature, feature)
 	description = get_description(HeadFeature, feature)
 
-	cells = cell('Feature', 25, [feature], cells)
+	cells = cell('Feature', 25, [feature_name], cells)
 	cells = cell('Description', 70 [description], cells)
 
 	body = send(cells, body)
