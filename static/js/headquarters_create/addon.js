@@ -12,8 +12,10 @@ function addon() {
 	const options = [{'val': 'feature', 'div': 'addon-feature'},
 					{'val': 'weapon', 'div': 'addon-weapon'},
 					{'val': 'equipment', 'div': 'addon-equipment'}]
+	const selects = ['addon_feature', 'equipment', 'weapon']
 
 	select_opacity(select, options)
+	reset_all(selects);
 }
 
 let addon_cost = {'cost': 0}
