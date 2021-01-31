@@ -7,38 +7,10 @@ const weapon_type_select = '/equipment/weapontype/select';
 const weapon_select = '/equipment/weapons/select';
 const subsense_select = '/sense/subsense/select';
 const equipment_select = '/equipment/select';
+const feature_info_select = '/vehicle/feature/info';
+const equipment_info_select = '/equipment/equipment/select/info';
+const weapon_info_select = '/equipment/weapon/select/info';
 
-
-
-function addon_info(field, route) {
-	const id = select(field);
-
-	response = fetch(route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const item = 'feature-item';
-			const divs = [{'val': jsonResponse.name, 'div': 'item-name'},
-					{'val': jsonResponse.description, 'div': 'item-description'}]
-			const entry = 'feature-entry';
-			
-			show_info(item, divs, entry);
-
-		} else {
-			console.log('error');
-		}
-	})	
-}
 
 function null_hide_maxheight(field, item) {
 	val = select(field);

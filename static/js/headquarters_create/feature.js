@@ -20,29 +20,20 @@ let addon_cost = {'cost': 0}
 
 function feature_feature() {
 	const select = 'feature_feature';
-	const entry = 'feature-entry';
-	const route = '/vehicle/feature/info'
-	const item = 'feature-item';
 
-	addon_info(select, route);
+	addon_info(select, feature_info_select);
 }
 
 function equipment()  {
 	const select = 'equipment';
-	const entry = 'feature-entry';
-	const route = '/equipment/equipment/select/info';
-	const item = 'feature-item';
 
-	addon_info(select, route);
+	addon_info(select, equipment_info_select);
 }
 
 function weapon() {
 	const select = 'weapon';
-	const entry = 'feature-entry';
-	const route = '/equipment/weapon/select/info';
-	const item = 'feature-item';
 
-	addon_info(select, route);
+	addon_info(select, weapon_info_select);
 }
 
 function weapon_cat() {
