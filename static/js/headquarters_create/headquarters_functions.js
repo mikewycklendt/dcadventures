@@ -35,6 +35,7 @@ function show_info(item, divs, entry, multiple=false) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {
 				if (d.class) {
+					const classname = d.class;
 					const olds = document.getElementsByClassName(classname);
 					while (olds.length > 0) {olds[0].remove()};
 				}
