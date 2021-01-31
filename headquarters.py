@@ -296,7 +296,7 @@ def head_post_feature():
 	description = request.get_json()['description']
 	feature = request.get_json()['feature']
 
-	equip_id = db_integer(equip_id)
+	head_id = db_integer(head_id)
 	feature = db_integer(feature)
 
 	if feature is not None:
