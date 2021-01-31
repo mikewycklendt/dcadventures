@@ -1,5 +1,5 @@
 
-function addon_info(field, route) {
+function addon_info(field, item, entry, route) {
 	const id = select(field);
 
 	response = fetch(route, {

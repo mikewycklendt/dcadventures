@@ -20,20 +20,26 @@ let addon_cost = {'cost': 0}
 
 function addon_feature() {
 	const select = 'addon_feature';
+	const item = 'addon-item';
+	const entry = 'addon-entry';
 
-	addon_info(select, feature_info_select);
+	addon_info(select, item, entry, feature_info_select);
 }
 
 function equipment()  {
 	const select = 'equipment';
+	const item = 'addon-item';
+	const entry = 'addon-entry';
 
-	addon_info(select, equipment_info_select);
+	addon_info(select, item, entry, equipment_info_select);
 }
 
 function weapon() {
 	const select = 'weapon';
+	const item = 'addon-item';
+	const entry = 'addon-entry';
 
-	addon_info(select, weapon_info_select);
+	addon_info(select, item, entry, weapon_info_select);
 }
 
 function weapon_cat() {
