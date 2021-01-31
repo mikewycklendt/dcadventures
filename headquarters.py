@@ -129,7 +129,7 @@ def head_feature_info_select():
 		if i.weapon is not None:
 			weapon_check = True
 			weapon = db.session.query(Weapon).filter_by(id=i.weapon).one()
-			weapons.append(weaopon.name)
+			weapons.append(weapon.name)
 		if i.equipment is not None:	
 			equipment_check = True
 			equip = db.session.query(Equipment).filter_by(id=i.equipment).one()
