@@ -25,6 +25,11 @@ def head_save_errors(data):
 	addon = data['addon']
 	feature = data['feature']
 
+	create_check('HHeadquarters Name', head_id, Headquarters, errors)
+
+	errors = id_check(Headquarters, head_id, 'Headquarters', errors)
+
+	errors = required(size, 'Size', errors)
 
 	return (errors)
 
@@ -41,7 +46,7 @@ def head_addon_post_errors(data):
 	create_check('HHeadquarters Name', head_id, Headquarters, errors)
 
 	errors = id_check(Headquarters, head_id, 'Headquarters', errors)
-	errors = id_check(HeadFeature, head_feature, 'Headquarters', errors)
+	errors = id_check(HeadFeature, head_feature, 'Headquarters Feature', errors)
 	errors = id_check(Feature, feature, 'Feature', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
 	errors = id_check(Weapon, weapon, 'Weapon', errors)
@@ -60,6 +65,11 @@ def head_feature_post_errors(data):
 	name = data['name']
 	description = data['description']
 	feature = data['feature']
+
+	create_check('HHeadquarters Name', head_id, Headquarters, errors)
+
+	errors = id_check(Headquarters, head_id, 'Headquarters', errors)
+	errors = id_check(HeadFeature, feature, 'Headquarters Feature', errors)
 
 	errors = of([feature, name], 'You must create a new feature or select an existing one.', errors)
 	errors = either([feature, name], 'You must add a new feature and and existing feature seperately.', errors)

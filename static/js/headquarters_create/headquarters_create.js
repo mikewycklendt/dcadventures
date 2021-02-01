@@ -45,6 +45,13 @@ head_save = function() {
 		method: 'POST',
 		body: JSON.stringify({
 			'head_id': head_id,
+			'description': description,
+			'size': size,
+			'toughness': toughness,
+			'cost': cost,
+			'shared': shared,
+			'addon': addon,
+			'feature': feature
 
 		}),
 		headers: {
