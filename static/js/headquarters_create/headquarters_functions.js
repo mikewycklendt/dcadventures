@@ -44,11 +44,12 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 			if (d.multiple) {
 				const contents = d.val;
 				setTimeout(function(){
-					
 					if (d.class) {
-						const classname = d.class;
-						const olds = document.getElementsByClassName(classname);
-						for (o of olds) {o.remove()};
+					const classname = d.class;
+					const deletes = document.getElementsByClassName(classname);
+						for (let i = deletes.length -1 ; i >  0; i++) {
+							deletes[i].remove();
+						}
 					}
 					spot.style.opacity = '100%';
 					let content;
