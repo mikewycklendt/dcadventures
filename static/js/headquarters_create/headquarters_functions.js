@@ -32,7 +32,8 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 			if (d.class) {
 				const classname = d.class;
 				const shrink = document.getElementsByClassName(classname);
-				while (shrink.length > 0) {shrink[0].style.maxHeight = '0px'}			
+				let s;
+				for (s of shrink) {s.style.maxHeight = '0px'};		
 			}
 		}
 	}
