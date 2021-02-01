@@ -31,25 +31,23 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 		if (height = true) {
 			if (d.class) {
 				const classname = d.class;
-				const shrink = document.getElementsByClassName(classname);
-				while (shrink.length > 0) {shrink[0].style.maxHeight = '0px'}			
+				const olds = document.getElementsByClassName(olds);
+				while (olds.length > 0) {olds[0].style.maxHeight = '0px'}			
 			}
 		}
 	}
-	
+
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
-			if (d.multiple) {		
+			if (d.multiple) {
+				if (d.class) {
+					const classname = d.class;
+					const olds = document.getElementsByClassName(classname);
+					while (olds.length > 0) {olds[0].remove()};
+				}
 				const contents = d.val;
 				setTimeout(function(){
-					if (d.class) {
-						const classname = d.class;
-						const olds = document.getElementsByClassName(classname);
-						for (i = olds.length - 1; i > -1; i--) {
-							olds[i].remove();
-						}
-				}
 					spot.style.opacity = '100%';
 					let content;
 					let item_text = ''
