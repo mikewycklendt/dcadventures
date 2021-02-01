@@ -50,6 +50,10 @@ function show_info(item, divs, entry, multiple=false) {
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
+			let icon;
+			if (d.icon) {
+				icon = d.iconl
+			}
 			if (d.multiple) {
 			//	if (d.class) {
 			//		const classname = d.class;
@@ -67,7 +71,6 @@ function show_info(item, divs, entry, multiple=false) {
 							const div = document.createElement('div');
 							div.className = classname;
 							if (d.icon) {
-								const icon = d.icon
 								div.classList.add(icon)
 							}
 							div.innerHTML = content;

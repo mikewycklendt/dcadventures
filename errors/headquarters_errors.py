@@ -16,6 +16,14 @@ def head_save_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
+	head_id = data['head_id']
+	description = data['description']
+	size = data['size']
+	toughness = data['toughness']
+	cost = data['cost']
+	shared = data['shared']
+	addon = data['addon']
+	feature = data['feature']
 
 
 	return (errors)

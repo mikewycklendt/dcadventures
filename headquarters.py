@@ -215,10 +215,28 @@ def save_headquarters():
 		return jsonify(body)
 
 	head_id = request.get_json()['head_id']
+	description = request.get_json()['description']
+	size = request.get_json()['size']
+	toughness = request.get_json()['toughness']
+	cost = request.get_json()['cost']
+	shared = request.get_json()['shared']
+	addon = request.get_json()['addon']
+	feature = request.get_json()['feature']
 
 	head_id = integer(head_id)
+	size =  integer(size)
+	toughness = integer(toughness)
+	cost = integer(cost)
 
 	entry = db.session.query(Headquarters).filter(Headquarters.id == head_id).one()
+
+	entry.description = description
+	entry.size = size
+	entry.toughness = toughness
+	entry.cost = cost
+	entry.shared = shared
+	entry.addon = addon
+	entry.feature = feature
 
 
 	db.session.commit()
