@@ -54,7 +54,7 @@ function feature_info(field, item, entry, route) {
 					{'val': jsonResponse.features, 'multiple': true, 'class': 'head-feature-item', 'icon': 'feature-icon', 'div': 'head-feature-features'},
 					{'val': jsonResponse.equipment, 'multiple': true, 'class': 'head-feature-item', 'icon': 'equipment-icon', 'div': 'head-feature-equipment'}]
 			
-			show_info(item, divs, entry, true);
+			show_info(item, divs, entry, true, true);
 
 		} else {
 			hide_maxheight(item);
