@@ -38,7 +38,7 @@ function show_info(item, divs, entry, multiple=false) {
 				if (d.class) {
 					const classname = d.class;
 					const olds = document.getElementsByClassName(classname);
-					while (olds.length > 0) {olds[0].remove()};
+					while (olds.length > 0) {setTimeout(function(){olds[0].remove()}, 300)};
 				}
 				const contents = d.val;
 				setTimeout(function(){
