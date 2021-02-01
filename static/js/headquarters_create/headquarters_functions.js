@@ -37,24 +37,19 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 		}
 	}
 	
-	for (d of divs) {
-		setTimeout(function() {
-			if (d.class) {
-				const classname = d.class;	
-				const olds = document.getElementsByClassName(classname);
-				for (i = olds.length - 1; i > -1; i--) {
-					olds[i].remove();
-				}
-			}
-		}, 300)
-	}
-
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {		
 				const contents = d.val;
 				setTimeout(function(){
+					if (d.class) {
+						const classname = d.class;
+						const olds = document.getElementsByClassName(classname);
+						for (i = olds.length - 1; i > -1; i--) {
+							olds[i].remove();
+						}
+				}
 					spot.style.opacity = '100%';
 					let content;
 					let item_text = ''
