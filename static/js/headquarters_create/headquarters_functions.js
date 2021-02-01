@@ -83,7 +83,7 @@ function show_info(item, divs, entry, multiple=false) {
 					if (item_text != '') {
 						spot.innerHTML = item_text
 					}
-				}, 310);
+				}, 400);
 			} else {
 				const text = d.val;
 				setTimeout(function(){
