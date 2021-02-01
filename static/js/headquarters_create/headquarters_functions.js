@@ -43,7 +43,7 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 				const classname = d.class;
 				const olds = document.getElementsByClassName(classname);
 				for (i = olds.length - 1; i > -1; i--) {
-					{olds[i].remove()};
+					olds[i].remove();
 				}
 			}
 		}
