@@ -52,7 +52,7 @@ function show_info(item, divs, entry, multiple=false) {
 			const spot = document.getElementById(d.div);
 			let icon;
 			if (d.icon) {
-				icon = d.iconl
+				icon = d.icon;
 			}
 			if (d.multiple) {
 			//	if (d.class) {
