@@ -127,6 +127,7 @@
 	font-size: 120%;
 	font-family: Comic, 'Monda', Verdana;
 	color: #245681;
+	transition: all .3s ease-out;
 }
 
 .head-feature-item::before {

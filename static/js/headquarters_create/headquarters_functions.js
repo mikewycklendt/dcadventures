@@ -23,11 +23,21 @@ function null_hide_maxheight(field, item) {
 	}
 }
 
-function show_info(item, divs, entry, multiple=false) {
+function show_info(item, divs, entry, multiple=false, height=false) {
 	let d;
 	for (d of divs) {
 		const div = document.getElementById(d.div);
 		div.style.opacity = '0%';
+		if (height == true) {
+			if (d.multiple) {
+				if (d.class) {
+					const classname = d.class;
+					const olds = document.getElementsByClassName(classname);
+					let o;
+					for (o of olds) {o.style.maxHeight = '0px'};
+				}
+			}
+		}
 	}
 
 	setTimeout(function(){
