@@ -36,19 +36,18 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 			}
 		}
 	}
-
 	
-		for (d of divs) {
-			setTimeout(function() {
-				if (d.class) {
-					const classname = d.class;
-					const olds = document.getElementsByClassName(classname);
-					for (i = olds.length - 1; i > -1; i--) {
-						olds[i].remove();
-					}
+	for (d of divs) {
+		setTimeout(function() {
+			if (d.class) {
+				const classname = d.class;	
+				const olds = document.getElementsByClassName(classname);
+				for (i = olds.length - 1; i > -1; i--) {
+					olds[i].remove();
 				}
-			}, 300)
-		}
+			}
+		}, 300)
+	}
 
 	if (multiple == true) {
 		for (d of divs) {
