@@ -30,16 +30,31 @@ function show_info(item, divs, entry, multiple=false) {
 		div.style.opacity = '0%';
 	}
 
-
-	if (multiple == true) {
+	setTimeout(function(){
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {
 				if (d.class) {
 					const classname = d.class;
 					const olds = document.getElementsByClassName(classname);
-					while (olds.length > 0) {setTimeout(function(){olds[0].remove()}, 300)};
+					for (i = olds.length -1; i > -1; i-- ) {
+						olds[i].remove();
+					}
 				}
+			}
+		}
+	}, 300)
+
+
+	if (multiple == true) {
+		for (d of divs) {
+			const spot = document.getElementById(d.div);
+			if (d.multiple) {
+			//	if (d.class) {
+			//		const classname = d.class;
+			//		const olds = document.getElementsByClassName(classname);
+			//		while (olds.length > 0) {olds[0].remove()};
+			//	}
 				const contents = d.val;
 				setTimeout(function(){
 					spot.style.opacity = '100%';
@@ -73,7 +88,7 @@ function show_info(item, divs, entry, multiple=false) {
 				setTimeout(function(){
 					spot.innerHTML = text;
 					spot.style.opacity = '100%';
-	``			}, 300);
+	``			}, 310);
 			}
 		}
 	} else {
