@@ -31,8 +31,8 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 		if (height = true) {
 			if (d.class) {
 				const classname = d.class;
-				const olds = document.getElementsByClassName(olds);
-				while (olds.length > 0) {olds[0].style.maxHeight = '0px'}			
+				const shrink = document.getElementsByClassName(shrink);
+				while (shrink.length > 0) {shrink[0].style.maxHeight = '0px'}			
 			}
 		}
 	}
