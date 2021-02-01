@@ -37,6 +37,7 @@ function show_info(item, divs, entry, multiple=false) {
 				if (d.class) {
 					const classname = d.class;
 					const olds = document.getElementsByClassName(classname);
+					if (olds.length > 1)
 					for (i = olds.length -1; i > -1; i-- ) {
 						olds[i].remove();
 					}
@@ -82,7 +83,7 @@ function show_info(item, divs, entry, multiple=false) {
 					if (item_text != '') {
 						spot.innerHTML = item_text
 					}
-				}, 310);
+				}, 300);
 			} else {
 				const text = d.val;
 				setTimeout(function(){
