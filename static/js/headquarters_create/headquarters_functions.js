@@ -41,14 +41,14 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
-			if (d.multiple) {
-				if (d.class) {
-					const classname = d.class;
-					const olds = document.getElementsByClassName(classname);
-					while (olds.length > 0) {olds[0].remove()};
-				}
+			if (d.multiple) 
 				const contents = d.val;
 				setTimeout(function(){
+					if (d.class) {
+						const classname = d.class;
+						const olds = document.getElementsByClassName(classname);
+						while (olds.length > 0) {olds[0].remove()};
+					}
 					spot.style.opacity = '100%';
 					let content;
 					let item_text = ''
