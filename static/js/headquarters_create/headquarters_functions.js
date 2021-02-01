@@ -48,7 +48,6 @@ function show_info(item, divs, entry, multiple=false) {
 
 
 	if (multiple == true) {
-		setTimeout(function(){
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {
@@ -58,6 +57,7 @@ function show_info(item, divs, entry, multiple=false) {
 			//		while (olds.length > 0) {olds[0].remove()};
 			//	}
 				const contents = d.val;
+				setTimeout(function(){
 					spot.style.opacity = '100%';
 					let content;
 					let item_text = ''
@@ -83,13 +83,15 @@ function show_info(item, divs, entry, multiple=false) {
 					if (item_text != '') {
 						spot.innerHTML = item_text
 					}
+				}, 300);
 			} else {
-				const text = d.val;		
-				spot.innerHTML = text;
-				spot.style.opacity = '100%';
+				const text = d.val;
+				setTimeout(function(){
+					spot.innerHTML = text;
+					spot.style.opacity = '100%';
+				}, 310);
 			}
 		}
-		}, 310)
 	} else {
 		for (d of divs) {
 			const div = document.getElementById(d.div);
