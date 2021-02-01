@@ -23,11 +23,16 @@ function null_hide_maxheight(field, item) {
 	}
 }
 
-function show_info(item, divs, entry, multiple=false) {
+function show_info(item, divs, entry, multiple=false, height=false) {
 	let d;
 	for (d of divs) {
 		const div = document.getElementById(d.div);
 		div.style.opacity = '0%';
+		if (height = true) {
+			const classname = d.class;
+			const olds = document.getElementsByClassName(olds);
+			while (olds.length > 0) {olds[0].style.maxHeight = '0px'}			
+		}
 	}
 
 	if (multiple == true) {

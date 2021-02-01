@@ -60,6 +60,7 @@
 	text-align: center;
 	color: #245681;
 	padding-top: .2vw;
+	transition: all .3s ease-out;
 }
 
 .feature-item-title::before {
