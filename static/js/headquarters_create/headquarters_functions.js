@@ -45,11 +45,11 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 				const contents = d.val;
 				setTimeout(function(){
 					
-				if (d.class) {
-					const classname = d.class;
-					const olds = document.getElementsByClassName(classname);
-					for (o of olds) {o.remove()};
-				}
+					if (d.class) {
+						const classname = d.class;
+						const olds = document.getElementsByClassName(classname);
+						for (o of olds) {o.remove()};
+					}
 					spot.style.opacity = '100%';
 					let content;
 					let item_text = ''
