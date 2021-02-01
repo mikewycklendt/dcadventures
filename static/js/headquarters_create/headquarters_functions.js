@@ -42,7 +42,9 @@ function show_info(item, divs, entry, multiple=false, height=false) {
 			if (d.class) {
 				const classname = d.class;
 				const olds = document.getElementsByClassName(classname);
-				while (olds.length > 0) {olds[0].remove()};
+				for (i = olds.length - 1; i > -1; i--) {
+					{olds[i].remove()};
+				}
 			}
 		}
 	}, 300)
