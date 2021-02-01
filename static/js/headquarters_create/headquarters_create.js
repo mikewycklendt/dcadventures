@@ -30,7 +30,13 @@ function head_edit() {
 head_save = function() {
 
 	const head_id = document.getElementById('head_id').value;
-
+	const description = text("description");
+	const size = select("size");
+	const toughness = costs.toughness;
+	const cost = costs.cost;
+	const shared = check("shared");
+	const addon = check("addon_check");
+	const feature = check("feature_check");
 	
 	const errors = 'head-err';
 	const err_line = 'head-err-line';
@@ -39,6 +45,7 @@ head_save = function() {
 		method: 'POST',
 		body: JSON.stringify({
 			'head_id': head_id,
+
 		}),
 		headers: {
 		'Content-Type': 'application/json',
