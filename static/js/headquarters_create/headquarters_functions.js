@@ -30,29 +30,16 @@ function show_info(item, divs, entry, multiple=false) {
 		div.style.opacity = '0%';
 	}
 
-	for (d of divs) {
-		const spot = document.getElementById(d.div);
-		if (d.multiple) {
-			if (d.class) {
-				const classname = d.class;
-				const olds = document.getElementsByClassName(classname);
-				for (i = olds.length - 1; i > -1; i--){
-					setTimeout(function(){olds[i].remove()}, 300)
-				}
-			}
-		}
-	}
-
 
 	if (multiple == true) {
 		for (d of divs) {
 			const spot = document.getElementById(d.div);
 			if (d.multiple) {
-			//	if (d.class) {
-			//		const classname = d.class;
-			//		const olds = document.getElementsByClassName(classname);
-			//		while (olds.length > 0) {olds[0].remove()};
-			//	}
+				if (d.class) {
+					const classname = d.class;
+					const olds = document.getElementsByClassName(classname);
+					while (olds.length > 0) {olds[0].remove()};
+				}
 				const contents = d.val;
 				setTimeout(function(){
 					spot.style.opacity = '100%';
