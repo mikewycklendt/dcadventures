@@ -18,8 +18,9 @@
 </div>
 
 <div id="deg-mod-entry" style="display: none;">
-<div id="deg-mod-row1">
 
+<div id="deg-mod=top-row">
+	
 	<div>
 		Degree
 	</div>
@@ -31,6 +32,11 @@
 	<div>
 		Result
 	</div>
+	
+</div>
+
+
+<div id="deg-mod-row1">
 
 	<div id="deg-mod-deg">
 		<select class="select-sml" id="deg_value" name="deg_value" >
@@ -46,7 +52,7 @@
 
 	<div id="deg-mod-type">
 		<select class="select-sml" id="deg_mod_type" name="deg_mod_type" onchange="deg_mod_type()">
-			<option value="">Result</option>
+			<option value="">Effect</option>
 			{% for type in deg_mod_type %}
 				<option value="{{type.type}}">{{type.name}}</option>
 			{% endfor %}

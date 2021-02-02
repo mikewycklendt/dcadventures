@@ -81,12 +81,19 @@
 	margin-bottom: 4px;
 }
 
+#deg-mod-top-row {
+	display: grid;
+	width: 98%;
+	height: 1.1vw;
+	gap: 3px;
+	grid-template-columns: 10% 15% 75%;
+}
+
 #deg-mod-row1 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 10% 15% 75%;
-	grid-auto-rows: auto;
 }
 
 #deg-mod-row2 {
