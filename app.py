@@ -67,6 +67,128 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/skill/icon/create')
+def skill_icon_create():
+
+	id = 2
+	icon = 'athletics-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 1
+	icon = 'acrobatics-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 3
+	icon = 'close-combat-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 4
+	icon = 'deception-icoN'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 5
+	icon = 'expertise-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 6
+	icon = 'insight-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 7
+	icon = 'intimidation-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 8
+	icon = 'investigation-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 9
+	icon = 'perception-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 10
+	icon = 'persuasion-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 11
+	icon = 'ranged-combat-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 12
+	icon = 'sleight-of-hand-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 13
+	icon = 'stealth-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 14
+	icon = 'technology-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 15
+	icon = 'treatment-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	id = 16
+	icon = 'vehicles-icon
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icons
+	db.session.commit()
+	db.session.close()
+
+	results = Skill.query.all()
+
+	for result in results:
+		print(skiresult.name)
+		print(result.icon)
+
+	return ('icons added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
