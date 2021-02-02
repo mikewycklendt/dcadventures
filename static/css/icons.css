@@ -17,6 +17,12 @@
 	display: inline-block;
 }
 
+.athletics-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f70c';
+	display: inline-block;
+}
+
 .acrobatics-icon::before {
 	font-family: 'FontAwesomePro';
 	content: '\e023';
@@ -31,7 +37,7 @@
 
 .deception-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f6fa';
+	content: '\f6ef';
 	display: inline-block;
 }
 
@@ -65,15 +71,57 @@
 	display: inline-block;
 }
 
-.-icon::before {
+.persuasion-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f5db';
+	content: '\f4c4';
 	display: inline-block;
 }
 
-.athletics-icon::before {
+.perception-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f70c';
+	content: '\f519';
+	display: inline-block;
+}
+
+.ranged-combat-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f6b9';
+	display: inline-block;
+}
+
+.sleight-of-hand-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f6e5';
+	display: inline-block;
+}
+
+.perception-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f519';
+	display: inline-block;
+}
+
+.stealth-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f504';
+	display: inline-block;
+}
+
+.technology-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f87a';
+	display: inline-block;
+}
+
+.treatment-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f470';
+	display: inline-block;
+}
+
+.vehicles-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f21c';
 	display: inline-block;
 }
 

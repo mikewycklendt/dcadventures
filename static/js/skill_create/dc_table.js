@@ -125,15 +125,15 @@ function dc_submit() {
 	const check_trait = select("dc_check_trait");
 	const check_mod = select("dc_check_mod");
 
-	const advantage_id = document.getElementById('advantage_id').value;
+	const skill_id = document.getElementById('skill_id').value;
 
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
 
-	response = fetch('/advantage/dc/create', {
+	response = fetch('/skill/dc/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'advantage_id': advantage_id,
+			'skill_id': skill_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
@@ -172,7 +172,7 @@ function dc_submit() {
 			dc_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/advantage/' + table_id + '/delete/'
+			const route = '/skill/' + table_id + '/delete/'
 			create_table(jsonResponse, dc_grid, route);
 			clear_errors(err_line, errors)
 

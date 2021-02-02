@@ -1,4 +1,6 @@
 @import "base_form.css";
+@import "dc_table.css";
+@import "levels.css";
 
 .skill-container {
 	display: grid;
