@@ -11,7 +11,7 @@ function levels_base() {
 	const type = "level_type";
 	const entry = "levels-entry";
 
-	base_only_text(type, entry);
+	base_text(type, entry);
 }
 
 

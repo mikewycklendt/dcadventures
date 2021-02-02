@@ -4,7 +4,7 @@ function dc_check() {
 	const base = 'dc-base';
 	const entry = "dc-entry";
 
-	check_title(check, title, base, entry);
+	entry_check(check, title, base, entry);
 }
 
 function dc_base() {

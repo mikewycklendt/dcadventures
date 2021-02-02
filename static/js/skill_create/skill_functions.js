@@ -664,6 +664,22 @@ function base(field_inputs, entry_input, texts=false) {
 	}
 }
 
+function base_text(textfield, entry_input) {
+	const entry = document.getElementById(entry_input);
+	const text = document.getElementsById(textfield);
+
+	if (text != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
 function entry_check(check_input, title_input, base_input, entry_input, size=200) {
 	const check = document.getElementById(check_input);
 	const entry = document.getElementById(entry_input);
