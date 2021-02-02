@@ -453,3 +453,23 @@ def unit_select():
 
 	print(body)
 	return jsonify(body)
+
+
+@skill.route('/skill/icon/select', methods=['POST'])
+def unit_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id']
+	options = []
+
+	try:
+		id = int(id)
+		get = db.session.query(Skill).filter_by(id=id).one()
+		icon = get.icon
+		body['icon'] = icon
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)

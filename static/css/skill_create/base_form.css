@@ -116,6 +116,18 @@
 	grid-template-columns: 20% 80%;
 }
 
+
+.base-icon {
+	display: grid;
+	height: 2.3vw;
+	grid-template-columns: 85% 15%;
+}
+
+#skill-icon {
+	text-align: center;
+	font-size: 160%;
+}
+
 #base-extend {
 	display: none;
 	opacity: 0%;

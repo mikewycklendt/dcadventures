@@ -12,6 +12,53 @@ const equipment_info_select = '/equipment/equipment/select/info';
 const weapon_info_select = '/equipment/weapon/select/info';
 const head_feature_info_select = '/headquarters/feature/select/info';
 const unit_select = '/unit/select'
+const skill_icon_select = '/skill/icon/select';
+
+
+function icon_select(field, route, divid=false, remove=false, classname=false) {
+	const id = select(field);
+
+	response = fetch(route, {
+		method: 'POST',
+		body: JSON.stringify({
+			'id': id
+		}),
+		headers: {
+		  'Content-Type': 'application/json',
+		}
+	})
+	.then(response => response.json())
+	.then(jsonResponse => {
+		console.log(jsonResponse)
+		if (jsonResponse.success) {
+
+			const icon = jsonResponse.icon;
+
+			if (divid != false) {
+				const div = document.getElementById(divid);
+				if (remove == true) {
+					div.removeAttribute('class');
+				}
+				setTimeout(function(){div.classList.add(icon)}, 10);
+			}
+			
+			if (classname != false) {
+				const divs = document.getElementsByClassName(classname);
+				let div; 
+				for (div of divs) {
+					if (remove == true) {
+						div.removeAttribute('class');
+					}
+					div.className = classname;
+					setTimeout(function(){div.classList.add(icon)}, 10);
+				}
+			}
+		
+		} else {
+			console.log('error');
+		}
+	})	
+}
 
 
 
@@ -899,7 +946,6 @@ function id_select(select, fill, route) {
 		}
 	})	
 }
-
 
 function update_divs(data) {
 	for (d of data) {
