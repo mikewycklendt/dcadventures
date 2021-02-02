@@ -185,7 +185,7 @@ def skill_icon_create():
 	results = Skill.query.all()
 
 	for result in results:
-		print(skiresult.name)
+		print(result.name)
 		print(result.icon)
 
 	return ('icons added')
