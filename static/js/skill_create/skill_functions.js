@@ -11,6 +11,7 @@ const feature_info_select = '/vehicle/feature/info';
 const equipment_info_select = '/equipment/equipment/select/info';
 const weapon_info_select = '/equipment/weapon/select/info';
 const head_feature_info_select = '/headquarters/feature/select/info';
+const unit_select = '/unit/select'
 
 
 

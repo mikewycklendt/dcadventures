@@ -93,6 +93,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
+	unit_type = MeasureType.query.all()
+
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
 	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_bonus', 'name': 'This Skill'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}]
@@ -111,12 +113,15 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	circ_effect = [{'type': '', 'name': 'Effect'}, {'type': 'condition', 'name': 'Condition Effect'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'measure', 'name': 'If Measurement'}]
+
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
-							consequences=consequences, specificity=specificity, measure_rank=measure_rank, condition_type=condition_type, updown=updown, circ_effect=circ_effect)
+							consequences=consequences, specificity=specificity, measure_rank=measure_rank, condition_type=condition_type, updown=updown, circ_effect=circ_effect, measure_effect=measure_effect,\
+							unit_type=unit_type)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -414,3 +419,25 @@ def skill_trait_select():
 	print(body)
 	return jsonify(body)
 
+
+@skill.route('/unit/select', methods=['POST'])
+def unit_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id']
+	options = []
+
+	try:
+		id = int(id)
+		get = db.session.query(MeasureType).filter_by(id=id).one()
+		name = get.name + ' Units'
+		results = db.session.query(Unit)filter_by(type_id=id).all()
+		options.append({'id': '', 'name': name})
+		for r in results:
+			options.append({'id': r.id, 'name': r.name}) 
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)

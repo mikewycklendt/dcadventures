@@ -614,7 +614,6 @@ def advantage_action_select():
 	print(body)
 	return jsonify(body)
 
-
 	
 @advantage.route('/advantage/alt_check/create', methods=['POST'])
 def advantage_post_alt_check():

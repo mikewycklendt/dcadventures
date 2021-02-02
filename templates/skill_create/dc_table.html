@@ -117,8 +117,107 @@
 		</div>
 
 		<div>
-			
+			<div class="check-div">
+				<input type="checkbox" id="dc_measure" class="medium-checkbox med-checkbox" onclick="dc_measure()"> Measurement
+			</div>
 		</div>
+	</div>
+
+	<div id="dc-measure">
+
+		<div>
+			Measurement
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_measure_effect" name="dc_measure_effect" onchange="dc_measure_effect()">
+				{% for m in measure_effect %}
+
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="dc-measure-rank">
+
+				<div>
+					<select class="select-sml" id="dc_measure_rank_value" name="dc_measure_rank_value">
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_measure_rank" name="dc_measure_rank">
+						{% for m in measure_rank %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</dv>
+			
+			<div id="dc-measure-unit">
+				<div>
+					<input type="text" id="dc_unit_value" name="dc_unit_value" placeholder="Value">
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_unit_type" name="dc_unit_type" onchange="dc_unit_type()">
+						<option value="">Unit Type</option>
+						{% for u in unit_type %}
+							<option value={{u.id}}>{{u.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="select-sml" id="dc_unit" name="dc_unit">
+					<option value="">Units</option>
+				</div>
+			</div>
+			
+			<div id="dc-measure-skill">
+				<div>
+					<select class="select-sml" id="dc_measure_trait_type" name="dc_measure_trait_type" onchange="dc_measure_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_measure_trait" name="dc_measure_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_measure_trait_math" name="dc_measure_trait_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_measure_mod" name="dc_measure_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 	<div id="dc-levels">

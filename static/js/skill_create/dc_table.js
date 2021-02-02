@@ -92,6 +92,34 @@ function dc_level_type() {
 	id_select(select, fill, level_select);
 }
 
+function dc_measure() {
+	const check = 'dc_measure';
+	const div = 'dc-measure';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry);
+}
+
+function dc_measure_effect() {
+	const select = 'dc_measure_effect';
+	const options = [{'div': 'rank', 'val': 'dc-measure-rank'},
+					{'div': 'unit', 'val': 'dc-measure-unit'},
+					{'div': 'skill', 'val': 'dc-measure-akill'}]
+}
+
+function dc_unit_type() {
+	const select = 'dc_unit_type';
+	const fill = 'dc_unit';
+
+	id_select(select, fill, unit_select);
+}
+
+function dc_measure_trait_type() {
+	const select = 'dc_measure_trait_type';
+	const fill = 'dc_measure_trait_type';
+
+	id_select(select, fill, trait_select);
+}
 let dc_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
