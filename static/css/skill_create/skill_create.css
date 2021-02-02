@@ -3,6 +3,7 @@
 @import "levels.css";
 @import "degree_mod.css";
 @import "circ.css";
+@import "alt_check.css";
 
 .skill-container {
 	display: grid;
