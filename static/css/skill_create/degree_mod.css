@@ -86,6 +86,7 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 10% 15% 75%;
+	grid-auto-rows: auto;
 }
 
 #deg-mod-row2 {
