@@ -197,6 +197,7 @@ class Skill(db.Model):
 	action_id = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	description = db.Column(db.String())
 	table = db.Column(db.Boolean)
+	icon = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -208,7 +209,8 @@ class Skill(db.Model):
 			'check_id': self.check_id,
 			'action_id': self.action_id,
 			'description': self.description,
-			'table': self.table
+			'table': self.table,
+			'icon': self.icon
 		}
 
 class SkillTable(db.Model):
