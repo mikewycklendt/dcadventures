@@ -7,7 +7,11 @@
 	<div class="skill-base" id="circ-base">
 
 		<div>
-			<select class="select-entry" id="circ_target" name="circ_target"
+			<select class="select-entry" id="circ_target" name="circ_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
  		</div>
 	
 	</div>
@@ -26,6 +30,7 @@
 		
 		<div>
 			<select class="select-sml" id="circ_mod" name="circ_mod">
+				<option value="">Modifier</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
