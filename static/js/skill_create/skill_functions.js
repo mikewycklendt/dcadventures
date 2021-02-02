@@ -60,22 +60,27 @@ function icon_select(field, route, divid=false, remove=false, classname=false) {
 	})	
 }
 
-function fade(div, classname=false) {
+function fade(div_input, classname=false) {
 	
 	if (classname == false) {
+		const div = document.getElementById(div_input);
 		div.style.opacity = '0%'
 		setTimeout(function(){div.style.opacity = '100%'}, 300);
+	}
 
-		if (classname != false) {
-			for (d of div) {
-				d.style.opacity = '0%';
-			}
+	if (classname != false) {
+		const divs = document.getElementsByClassName(div_input);
+		let div;
+		for (div of divs) {
+			div.style.opacity = '0%';
 		}
 	}
 	
 	if (classname != false) {
-		for (d of div) {
-			setTimeout(function(){d.style.opacity = '100%'}, 300);
+		const divs = document.getElementsByClassName(div_input);
+		let div;
+		for (div of divs) {
+			setTimeout(function(){div.style.opacity = '100%'}, 300);
 		}
 	}
 }
