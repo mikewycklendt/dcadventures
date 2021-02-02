@@ -39,7 +39,7 @@ function icon_select(field, route, divid=false, remove=false, classname=false) {
 				if (remove == true) {
 					div.removeAttribute('class');
 				}
-				setTimeout(function(){div.classList.add(icon)}, 10);
+				setTimeout(function(){div.classList.add(icon)}, 300);
 			}
 			
 			if (classname != false) {
@@ -50,7 +50,7 @@ function icon_select(field, route, divid=false, remove=false, classname=false) {
 						div.removeAttribute('class');
 					}
 					div.className = classname;
-					setTimeout(function(){div.classList.add(icon)}, 10);
+					setTimeout(function(){div.classList.add(icon)}, 300);
 				}
 			}
 		
