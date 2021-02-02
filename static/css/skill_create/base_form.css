@@ -126,6 +126,8 @@
 #skill-icon {
 	text-align: center;
 	font-size: 160%;
+	opacity: 100%;
+	transition: all .4s ease-out;
 }
 
 #base-extend {
