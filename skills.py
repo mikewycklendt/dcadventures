@@ -432,7 +432,7 @@ def unit_select():
 		id = int(id)
 		get = db.session.query(MeasureType).filter_by(id=id).one()
 		name = get.name + ' Units'
-		results = db.session.query(Unit)filter_by(type_id=id).all()
+		results = db.session.query(Unit).filter_by(type_id=id).all()
 		options.append({'id': '', 'name': name})
 		for r in results:
 			options.append({'id': r.id, 'name': r.name}) 
