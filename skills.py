@@ -72,11 +72,13 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	actions = Action.query.all()
 
+	skill_type = SkillType.query.all()
+
 	ranks = [{'type': 'speed', 'name': 'Speed Rank'}]
 
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
-							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions)
+							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type)
 
 
 @skill.route('/vehicle/create', methods=['POST'])
