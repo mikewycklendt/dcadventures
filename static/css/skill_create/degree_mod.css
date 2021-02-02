@@ -84,15 +84,15 @@
 #deg-mod-top-row {
 	display: grid;
 	width: 98%;
-	height: 1.1vw;
-	gap: 3px;
+	height: .9vw;
+	gap: .3vw;
 	grid-template-columns: 10% 15% 75%;
 }
 
 #deg-mod-row1 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
+	gap: .2vw;
 	grid-template-columns: 10% 15% 75%;
 }
 
