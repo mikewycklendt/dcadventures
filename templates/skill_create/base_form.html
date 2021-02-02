@@ -1,0 +1,48 @@
+
+<div id="skill-desc">
+	<div id="skill-attr-title">
+		Description
+	</div>
+
+	<div id="description-field">
+		<textarea id="description" name="description"></textarea>
+	</div>
+</div>
+
+<br>
+
+<div class="skill-box">
+
+	<div id="skill-base">
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Parent Skill
+			</div>
+
+			<div style="width: 65%;">
+				<select class="base-select" id="skill" name="skill">
+					<option value="">Skill</option>
+					{% for s in skills %}
+						<option value={{s.id}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Shared
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="shared" class="regular-checkbox big-checkbox">	
+				</di>
+			</div>
+		</div>
+
+	</div>
+
+</div>

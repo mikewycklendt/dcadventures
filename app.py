@@ -13,7 +13,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from tables import tables
-from skills import skills
+from skills import skill
 from powers import powers
 from advantage import advantage
 from equipment import equip
@@ -45,7 +45,7 @@ app = Flask(__name__)
 moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 app.register_blueprint(tables)
-app.register_blueprint(skills)
+app.register_blueprint(skill)
 app.register_blueprint(powers)
 app.register_blueprint(advantage)
 app.register_blueprint(equip)

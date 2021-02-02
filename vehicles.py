@@ -324,7 +324,7 @@ def edit_vehicle_name():
 	if vehicle is not None:
 		error = True
 		body['success'] = False
-		error_msgs.append('There is already a weapon with that name')
+		error_msgs.append('There is already a vehicle with that name')
 		body['error'] = error_msgs
 
 	if error:

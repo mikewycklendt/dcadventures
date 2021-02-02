@@ -17,6 +17,66 @@
 	display: inline-block;
 }
 
+.acrobatics-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\e023';
+	display: inline-block;
+}
+
+.close-combat-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f438';
+	display: inline-block;
+}
+
+.deception-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f6fa';
+	display: inline-block;
+}
+
+.expertise-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f5db';
+	display: inline-block;
+}
+
+.insight-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f78d';
+	display: inline-block;
+}
+
+.intimidation-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f455';
+	display: inline-block;
+}
+
+.investigation-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\e012';
+	display: inline-block;
+}
+
+.perception-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f519';
+	display: inline-block;
+}
+
+.-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f5db';
+	display: inline-block;
+}
+
+.athletics-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f70c';
+	display: inline-block;
+}
+
 .power-icon::before {
 	font-family: 'FontAwesome';
 	content: '\f2dd';
