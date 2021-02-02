@@ -666,7 +666,7 @@ function base(field_inputs, entry_input, texts=false) {
 
 function base_text(textfield, entry_input) {
 	const entry = document.getElementById(entry_input);
-	const text = document.getElementsById(textfield);
+	const text = document.getElementById(textfield);
 
 	if (text != '') {
 		entry.style.display = "grid";
