@@ -52,7 +52,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 20% 65%;
+	grid-template-columns: 30% 70%;
 }
 
 #circ-measure-rank {
