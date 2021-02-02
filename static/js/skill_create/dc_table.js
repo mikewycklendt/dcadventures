@@ -118,10 +118,11 @@ function dc_unit_type() {
 
 function dc_measure_trait_type() {
 	const select = 'dc_measure_trait_type';
-	const fill = 'dc_measure_trait_type';
+	const fill = 'dc_measure';
 
 	id_select(select, fill, trait_select);
 }
+
 let dc_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

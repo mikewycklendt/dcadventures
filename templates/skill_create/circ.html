@@ -120,6 +120,89 @@
 				</div>
 			</div>
 
+			<div id="circ-measure">
+				<div id="circ-measure-rank">
+
+					<div>
+						<select class="select-sml" id="circ_measure_rank_value" name="circ_measure_rank_value">
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_measure_rank" name="circ_measure_rank">
+							{% for m in measure_rank %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div id="dc-measure-unit">
+					<div>
+						<input type="text" id="circ_unit_value" name="circ_unit_value" placeholder="Value">
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_unit_type" name="circ_unit_type" onchange="circ_unit_type()">
+							<option value="">Unit Type</option>
+							{% for u in unit_type %}
+								<option value={{u.id}}>{{u.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_unit" name="circ_unit">
+							<option value="">Units</option>
+						</select>
+					</div>
+				</div>
+			
+				<div id="dc-measure-skill">
+					<div>
+						<select class="select-sml" id="circ_measure_trait_type" name="circ_measure_trait_type" onchange="circ_measure_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_measure_trait" name="circ_measure_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_measure_trait_math" name="circ_measure_trait_math">
+							<option value="">Math</option>
+							{% for m in maths %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="circ_measure_mod" name="circ_measure_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+								{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 

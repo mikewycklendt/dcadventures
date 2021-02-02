@@ -9,7 +9,8 @@ function circ_check() {
 
 function circ_effect() {
 	const select = 'circ_effect';
-	const options = [{'val': 'condition', 'div': 'circ-condition'}]
+	const options = [{'val': 'condition', 'div': 'circ-condition'},
+					{'val': 'measure', 'div': 'circ-measure'}]
 
 	select_opacity(select, options);
 }
@@ -21,6 +22,30 @@ function circ_condition_type() {
 
 	select_opacity(select, options);
 }
+
+function circ_measure_effect() {
+	const select = 'circ_measure_effect';
+	const options = [{'val': 'rank', 'div': 'circ-measure-rank'},
+					{'val': 'unit', 'div': 'circ-measure-unit'},
+					{'val': 'skill', 'div': 'circ-measure-skill'}]
+
+	select_opacity(select, options);
+}
+
+function circ_unit_type() {
+	const select = 'circ_unit_type';
+	const fill = 'circ_unit';
+
+	id_select(select, fill, unit_select);
+}
+
+function circ_measure_trait_type() {
+	const select = 'circ_measure_trait_type';
+	const fill = 'circ_measure';
+
+	id_select(select, fill, trait_select);
+}
+
 
 let circ_grid = {'titles': false,
 					'columns': [],
