@@ -92,6 +92,21 @@
 				</select>
 			</div>
 		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Active Condition
+			</div>
+
+			<div style="width: 65%;">
+				<select class="base-select" id="skill" name="skill">
+					<option value="">Condition</option>
+					{% for c in conditions %}
+						<option value="{{c}}">{{c}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div class="base-field">
 			<div id="multiple-attr-title">

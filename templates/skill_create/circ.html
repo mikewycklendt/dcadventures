@@ -1,0 +1,138 @@
+<div class="skill-header" id="circ-header">
+
+	<div class="skill-title" id="circ-title">
+		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()"> Circumstance Modifier:
+	</div>
+	
+	<div class="skill-base" id="circ-base">
+	
+	</div>
+
+</div>
+
+<div class="skill-entry" id="circ-entry">
+
+	<div id="circ-row1">
+
+		<div>Modifier</div>
+
+		<div>Effect Type</div>
+
+		<div>Effect</div>
+		
+		<div>
+			<select class="select-sml" id="circ_mod" name="circ_mod">
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor $}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="circ_effect" name="circ_effect" onchange="circ_effect()">
+				{% for c in circ_effect %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="circ-condition">
+				<div>
+					<select class="select-sml" id="circ_condition_type" name="circ_condition_type" onchange="circ_condition_type()">
+						{% for c in condition_type %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+
+					<div id="circ-condition-condition">
+
+						<div class="vcenter">
+							From:
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_condition1" name="circ_condition1">
+								<option value="">Start Condition</option>
+								{% for c in condition %}
+									<option value="{{c}}">{{c}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						
+						<div class="vcenter">
+							To:
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_condition2" name="circ_condition2">
+								<option value="">End Condition</option>
+								{% for c in condition %}
+									<option value="{{c}}">{{c}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+
+					
+					<div id="circ-condition-damage">
+
+						<div>
+							<select class="select-sml" id="circ_condition1" name="circ_condition1">
+								<option value="">Conditions</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						
+						<div class="vcenter">
+							Conditions
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_condition2" name="circ_condition2">
+								{% for u in updown %}
+									<option value="{{u.id}}">{{u.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="circ-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="circ_optional" class="medium-checkbox med-checkbox"> Optional
+			</div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="circ-spot"></div>
+
+<div class="err" id="circ-err"></div>
