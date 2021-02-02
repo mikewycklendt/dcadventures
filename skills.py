@@ -456,7 +456,7 @@ def unit_select():
 
 
 @skill.route('/skill/icon/select', methods=['POST'])
-def unit_select():
+def skill_icon_select():
 	body = {}
 	body['success'] = True
 
