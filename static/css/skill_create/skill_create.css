@@ -2,6 +2,7 @@
 @import "dc_table.css";
 @import "levels.css";
 @import "degree_mod.css";
+@import "circ.css";
 
 .skill-container {
 	display: grid;
