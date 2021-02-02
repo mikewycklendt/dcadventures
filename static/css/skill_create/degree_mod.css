@@ -141,13 +141,35 @@
 
 #deg-mod-measure {
 	display: none;
-	width: auto;
-	height: auto;
-	grid-template-columns: 25% 75%;
-	grid-auto-rows: auto;
 	opacity: 0%;
-	transition: all .3s ease-out
+	transition: all .3s ease-out;
+	grid-template-columns: 30% 70%;
 }
+
+#deg-mod-measure-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 40% 60%;
+}
+
+#deg-mod-measure-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 30% 35% 35%;
+}
+
+#deg-mod-measure-skill {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 25% 35% 20% 20%;
+}
+
 
 #deg-mod-knowledge {
 	display: none;
@@ -206,24 +228,6 @@
 	grid-template-columns: 40% 20% 40%;
 	opacity: 0%;
 	transition: all .3s linear;
-}
-
-#deg-mod-measure-math {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 15% 30% 30% 25%;
-	opacity: 0%;
-	transition: opacity .3s ease-out;
-}
-
-#deg-mod-measure-value {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 30% 70%;
-	opacity: 0%;
-	transition: opacity .3s ease-out;
 }
 
 #deg-mod-damage-math {

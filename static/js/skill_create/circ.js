@@ -41,7 +41,7 @@ function circ_unit_type() {
 
 function circ_measure_trait_type() {
 	const select = 'circ_measure_trait_type';
-	const fill = 'circ_measure';
+	const fill = 'circ_measure_trait';
 
 	id_select(select, fill, trait_select);
 }

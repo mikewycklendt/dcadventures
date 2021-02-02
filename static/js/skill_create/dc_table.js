@@ -118,7 +118,7 @@ function dc_unit_type() {
 
 function dc_measure_trait_type() {
 	const select = 'dc_measure_trait_type';
-	const fill = 'dc_measure';
+	const fill = 'dc_measure_trait';
 
 	id_select(select, fill, trait_select);
 }

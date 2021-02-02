@@ -92,6 +92,30 @@ function deg_mod_level_type() {
 	id_select(select, fill, level_select)
 }
 
+function deg_mod_measure_effect() {
+	const select = 'deg_mod_measure_effect';
+	const options = [{'val': 'rank', 'div': 'deg-mod-measure-rank'},
+					{'val': 'unit', 'div': 'deg-mod-measure-unit'},
+					{'val': 'skill', 'div': 'deg-mod-measure-skill'}]
+
+	select_opacity(select, options);
+}
+
+function deg_mod_unit_type() {
+	const select = 'deg_mod_unit_type';
+	const fill = 'deg_mod_unit';
+
+	id_select(select, fill, unit_select);
+}
+
+function deg_mod_measure_trait_type() {
+	const select = 'deg_mod_measure_trait_type';
+	const fill = 'deg_mod_measure_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+
 let deg_mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
