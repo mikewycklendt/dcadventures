@@ -320,7 +320,7 @@ def skill_trait_select():
 	body = {}
 	body['success'] = True
 
-	trait = request.get_json()['trait'] 
+	trait = request.get_json()['id'] 
 
 	this = ['This Power']
 
