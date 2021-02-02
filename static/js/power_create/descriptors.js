@@ -32,7 +32,7 @@ function get_medium_subtypes() {
 	response = fetch('/power/medium/subtype/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'medium_type': medium_type
+			'id': medium_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ function get_medium() {
 	response = fetch('/power/medium/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'medium_subtype': medium_subtype
+			'id': medium_subtype
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

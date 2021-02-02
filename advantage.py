@@ -591,7 +591,7 @@ def advantage_action_select():
 	body = {}
 	body['success'] = True
 
-	action = request.get_json()['action'] 
+	action = request.get_json()['id'] 
 
 	base = []
 	actions = db.session.query(Action).all()

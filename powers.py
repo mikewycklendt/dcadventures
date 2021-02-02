@@ -357,7 +357,7 @@ def power_level_select():
 	body = {}
 	success = False
 	options = []
-	level_type_id = request.get_json()['level_type_id']
+	level_type_id = request.get_json()['id']
 
 	try:
 		level_type_id = int(level_type_id)
@@ -617,7 +617,7 @@ def power_medium_subtype_select():
 	body = {}
 	body['success'] = True
 
-	medium_type_id = request.get_json()['medium_type']
+	medium_type_id = request.get_json()['id']
 
 	print('id ' + medium_type_id)
 
@@ -669,7 +669,7 @@ def get_subsense_select():
 	body = {}
 	body['success'] = True
 
-	sense_id_str = request.get_json()['sense_id']
+	sense_id_str = request.get_json()['id']
 
 	print(sense_id_str)
 
@@ -714,7 +714,7 @@ def power_medium_select():
 	body = {}
 	body['success'] = True
 	
-	medium_subtype = request.get_json()['medium_subtype']
+	medium_subtype = request.get_json()['id']
 	options = []
 
 	print('id ' + medium_subtype)

@@ -83,7 +83,7 @@ function level_select(select, fill) {
 	response = fetch('/power/level/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'level_type_id': level_type_id
+			'id': level_type_id
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ function subsense_select(select, fill) {
 	response = fetch('/sense/subsense/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'sense_id': sense_id
+			'id': sense_id
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ function action_select(select, fill) {
 	response = fetch('/advantage/action/select', {
 		method: 'POST',
 		body: JSON.stringify({
-			'action': action
+			'id': action
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
