@@ -435,7 +435,8 @@ def unit_select():
 		results = db.session.query(Unit).filter_by(type_id=id).all()
 		options.append({'id': '', 'name': name})
 		for r in results:
-			options.append({'id': r.id, 'name': r.name}) 
+			options.append({'id': r.id, 'name': r.name})
+		body['options'] = options 
 	except:
 		body['success'] = False
 
