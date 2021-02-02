@@ -67,23 +67,6 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/skill/icon/create')
-def skill_icon_create():
-
-	id = 4
-	icon = 'deception-icon'
-	skill = db.session.query(Skill).filter(Skill.id == id).one()
-	skill.icon = icon
-	db.session.commit()
-	db.session.close()
-
-	results = Skill.query.all()
-
-	for result in results:
-		print(result.name)
-		print(result.icon)
-
-	return ('icons added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
