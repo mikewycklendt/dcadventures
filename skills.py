@@ -41,7 +41,7 @@ db = SQLAlchemy()
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'skill_create/skill_create.html'
 
-	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html'}
+	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Enhanced Skill'
 	stylesheets.append({"style": "/static/css/skill_create/skill_create.css"})
