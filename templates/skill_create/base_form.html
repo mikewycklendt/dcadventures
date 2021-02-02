@@ -74,6 +74,24 @@
 				</select>
 			</div>
 		</div>
+	
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Speed Rank Modifier
+			</div>
+
+			<div style="width: 65%;">
+				<select class="base-select" id="skill" name="skill">
+					<option value="">Modifier</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
