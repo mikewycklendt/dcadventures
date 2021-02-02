@@ -176,7 +176,7 @@ def skill_icon_create():
 	db.session.close()
 
 	id = 16
-	icon = 'vehicles-icon
+	icon = 'vehicles-icon'
 	skill = db.session.query(Skill).filter(Skill.id == id).one()
 	skill.icon = icons
 	db.session.commit()
