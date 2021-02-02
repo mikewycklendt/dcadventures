@@ -32,7 +32,7 @@ def abilities():
 	size = 'h1' 
 	table = Ability.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/defense')
 def defense():
@@ -41,7 +41,7 @@ def defense():
 	size = 'h2'
 	table = Defense.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/modifiers')
 def modifiers():
@@ -52,7 +52,7 @@ def modifiers():
 
 	table = Modifier.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/actions')
 def actions():
@@ -63,7 +63,7 @@ def actions():
 
 	table = Action.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/skills')
 def skills():
@@ -74,7 +74,7 @@ def skills():
 
 	table = Skill.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/skill/type')
 def skill_type():
@@ -85,7 +85,7 @@ def skill_type():
 
 	table = SkillType.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/checks')
 def checks():
@@ -96,7 +96,7 @@ def checks():
 
 	table = Check.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/conditions')
 def conditions():
@@ -107,7 +107,7 @@ def conditions():
 
 	table = Condition.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/phases')
 def phases():
@@ -118,7 +118,7 @@ def phases():
 
 	table = Phase.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/senses')
 def senses():
@@ -129,7 +129,7 @@ def senses():
 
 	table = Sense.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/measuretype')
 def measurement_type():
@@ -140,7 +140,7 @@ def measurement_type():
 
 	table = MeasureType.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/units')
 def unit_type():
@@ -151,7 +151,7 @@ def unit_type():
 
 	table = Unit.query.all()
 
-	return render_template('units.html', table=table, title=title, size=size)
+	return render_template('tables/units.html', table=table, title=title, size=size)
 
 @tables.route('/ranks')
 def rank_type():
@@ -162,7 +162,7 @@ def rank_type():
 
 	table = Rank.query.all()
 
-	return render_template('ranks.html', table=table, title=title, size=size)
+	return render_template('tables/ranks.html', table=table, title=title, size=size)
 
 
 @tables.route('/math')
@@ -174,7 +174,7 @@ def math_type():
 
 	table = Math.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/measurements')
 def measurements():
@@ -191,7 +191,7 @@ def measurements():
 
 	table = measure(formatted)
 
-	return render_template('measurements.html', table=table, title=title, size=size)
+	return render_template('tables/measurements.html', table=table, title=title, size=size)
 
 @tables.route('/senses')
 def sense_type():
@@ -202,7 +202,7 @@ def sense_type():
 
 	table = Sense.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/materials')
 def materials():
@@ -213,7 +213,7 @@ def materials():
 
 	table = Material.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 @tables.route('/complexity')
 def complexity():
@@ -224,7 +224,7 @@ def complexity():
 
 	table = Complex.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
 
 
 @tables.route('/mediumsubtype')
@@ -236,4 +236,4 @@ def mediumsubtype():
 
 	table = MediumSubType.query.all()
 
-	return render_template('table.html', table=table, title=title, size=size)
+	return render_template('tables/table.html', table=table, title=title, size=size)
