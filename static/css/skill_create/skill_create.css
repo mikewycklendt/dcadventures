@@ -4,6 +4,7 @@
 @import "degree_mod.css";
 @import "circ.css";
 @import "alt_check.css";
+@import "opposed.css";
 
 .skill-container {
 	display: grid;
