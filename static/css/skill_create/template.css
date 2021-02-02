@@ -1,9 +1,9 @@
 #modifiers-header {
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 70% 30%;
 }
 
 #modifiers-base {
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 100%;
 }
 
 #modifiers-row1 {
