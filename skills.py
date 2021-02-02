@@ -315,8 +315,8 @@ def delete_skill_bonus_(id):
 
 
 
-@advantage.route('/skill/trait/select', methods=['POST'])
-def advantage_trait_select():
+@skill.route('/skill/trait/select', methods=['POST'])
+def skill_trait_select():
 	body = {}
 	body['success'] = True
 
