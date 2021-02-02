@@ -1,5 +1,5 @@
 
-const trait_select = '/advantage/trait/select';
+const trait_select = '/skill/trait/select';
 const level_select = '/power/level/select';
 const action_select = '/advantage/action/select';
 const skill_select = '/equipment/skill/select';

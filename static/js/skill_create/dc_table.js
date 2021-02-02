@@ -18,7 +18,7 @@ function dc_math_trait_type() {
 	const select  = 'dc_math_trait_type';
 	const fill = 'dc_math_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function dc_dc() {
@@ -74,7 +74,7 @@ function dc_check_trait_type() {
 	const select = 'dc_check_trait_type';
 	const fill = 'dc_check_trait';
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select)
 }
 
 function dc_levels() {
@@ -89,7 +89,7 @@ function dc_level_type() {
 	const select = 'dc_level_type';
 	const fill = 'dc_level';
 
-	level_select(select, fill);
+	id_select(select, fill, level_select);
 }
 
 let dc_grid = {'titles': false,
