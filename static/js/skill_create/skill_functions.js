@@ -60,6 +60,26 @@ function icon_select(field, route, divid=false, remove=false, classname=false) {
 	})	
 }
 
+function fade(div, classname=false) {
+	
+	if (classname == false) {
+		div.style.opacity = '0%'
+		setTimeout(function(){div.style.opacity = '100%'}, 300);
+
+		if (classname != false) {
+			for (d of div) {
+				d.style.opacity = '0%';
+			}
+		}
+	}
+	
+	if (classname != false) {
+		for (d of div) {
+			setTimeout(function(){d.style.opacity = '100%'}, 300);
+		}
+	}
+}
+
 
 
 function null_hide_maxheight(field, item) {
