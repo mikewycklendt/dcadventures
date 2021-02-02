@@ -89,6 +89,13 @@
 	grid-template-columns: 10% 15% 75%;
 }
 
+#deg-mod-top-row-result {
+	display: grid;
+	opacity: 100%;
+	transition: all .3s;
+	grid-template-columns: 100%;
+}
+
 #deg-mod-row1 {
 	display: grid;
 	width: 98%;

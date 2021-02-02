@@ -74,8 +74,6 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	actions = db.session.query(Action).all()
 
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
-	
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
 	checks = db.session.query(Check).all()
@@ -99,6 +97,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	ranged = db.session.query(Ranged).filter_by(show=True)
 
+	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	
 	environments = db.session.query(Environment).order_by(Environment.name).all()
 	
 	senses = db.session.query(Sense).order_by(Sense.name).all()

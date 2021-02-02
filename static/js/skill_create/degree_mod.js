@@ -70,21 +70,6 @@ function deg_mod_damage_type() {
 	value_type(field, math, value);
 }
 
-function deg_mod_measure_type() {
-	const field = 'deg_mod_measure_type';
-	const math = 'deg-mod-measure-math';
-	const value = 'deg-mod-measure-value';
-	
-	value_type(field, math, value)
-}
-
-function deg_mod_measure_trait_type() {
-	const select = 'deg_mod_measure_trait_type';
-	const fill = 'deg_mod_measure_trait';
-
-	id_select(select, fill, trait_select);
-}
-
 function deg_mod_level_type() {
 	const select = 'deg_mod_level_type';
 	const fill = 'deg_mod_level';

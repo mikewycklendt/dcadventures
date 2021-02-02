@@ -41,7 +41,7 @@ db = SQLAlchemy()
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'skill_create/skill_create.html'
 
-	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html'}
+	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Enhanced Skill'
 	stylesheets.append({"style": "/static/css/skill_create/skill_create.css"})
@@ -76,6 +76,10 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	conditions = sorted(conditions_raw)
 	
 	skills = Skill.query.all()
+	
+	ranged = db.session.query(Ranged).filter_by(show=True)
+
+	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
 
 	checks = Check.query.all()
 
@@ -116,12 +120,17 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'measure', 'name': 'If Measurement'}]
 
 	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+
+	check_type = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
 							consequences=consequences, specificity=specificity, measure_rank=measure_rank, condition_type=condition_type, updown=updown, circ_effect=circ_effect, measure_effect=measure_effect,
-							unit_type=unit_type)
+							unit_type=unit_type, check_trigger=check_trigger, check_type=check_type, conflicts=conflicts, ranged=ranged)
 
 
 @skill.route('/skill/create', methods=['POST'])
