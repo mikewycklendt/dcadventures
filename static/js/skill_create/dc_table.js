@@ -102,9 +102,9 @@ function dc_measure() {
 
 function dc_measure_effect() {
 	const select = 'dc_measure_effect';
-	const options = [{'div': 'rank', 'val': 'dc-measure-rank'},
-					{'div': 'unit', 'val': 'dc-measure-unit'},
-					{'div': 'skill', 'val': 'dc-measure-skill'}]
+	const options = [{'val': 'rank', 'div': 'dc-measure-rank'},
+					{'val': 'unit', 'div': 'dc-measure-unit'},
+					{'val': 'skill', 'div': 'dc-measure-skill'}]
 
 	select_opacity(select, options);
 }
