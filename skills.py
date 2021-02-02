@@ -109,7 +109,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
-	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
 	circ_effect = [{'type': '', 'name': 'Effect'}, {'type': 'condition', 'name': 'Condition Effect'}]
 
