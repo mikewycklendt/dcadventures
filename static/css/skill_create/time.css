@@ -76,7 +76,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 30% 25% 35%;
+	grid-template-columns: 22% 78%;
 	grid-auto-rows: auto;
 }
 
@@ -88,10 +88,9 @@
 
 #time-recovery {
 	display: none;
-	max-height: 0;
-	overflow: hidden;
+	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 17% 23% 11% 6% 15% 28%;
+	grid-template-columns: 30% 20% 10% 20% 20%;
 	gap: .2vw;
 }
 

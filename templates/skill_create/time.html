@@ -95,74 +95,55 @@
 	</div>
 
 	<div id="time-row2">
-		<div>
-			<select class="select-sml" id="time_dc" name="time_dc">
-				<option value="">DC</option>
-				<option value="">N/A</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml"	id="time_check_type" name="time_check_type">
-				<option value="">Check Type</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
+	
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="time_recovery" class="medium-checkbox med-checkbox" onclick="time_recovery()"> Recovery Time
 			</div>
 		</div>
 
-	</div>
-
-	<div id="time-recovery">
 		<div>
-			Recovery Time:
-		</div>
+			<div id="time-recovery">
 
-		<div style="font-size:70%;">
-			<div class="vcenter">
-				Toughness Penalty Nullified:
+				<div style="font-size:70%;">
+					<div class="vcenter">
+						Toughness Penalty Nullified:
+					</div>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
+						<option value="">Penalty</option>
+						<option value="skill">This Rank</option>
+						<option value="parent">Parent Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					Every
+				</div>
+	
+				<div>
+					<select class="select-sml" id="time_recovery_time" name="time_recovery_time">
+						<option value="">Time Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > Includes Incurable
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<div>
-			<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
-				<option value="">Penalty</option>
-				<option value="skill">This Rank</option>
-				<option value="parent">Parent Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			Every
-		</div>
-
-		<div>
-			<select class="select-sml" id="time_recovery_time" name="time_recovery_time">
-				<option value="">Time Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > Includes Incurable
-			</div>
-		</div>
 	</div>
+
 
 	<div id="time-button-row">
 		<div></div>
