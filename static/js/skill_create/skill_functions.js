@@ -15,7 +15,7 @@ const unit_select = '/unit/select'
 const skill_icon_select = '/skill/icon/select';
 
 
-function icon_select(field, route, divid=false, remove=false, classname=false) {
+function icon_select(field, route, divid=false, classname=false, remove=false, fade=false) {
 	const id = select(field);
 
 	response = fetch(route, {
@@ -33,6 +33,14 @@ function icon_select(field, route, divid=false, remove=false, classname=false) {
 		if (jsonResponse.success) {
 
 			const icon = jsonResponse.icon;
+
+			if (fade != false) {
+				if (divid != false) {
+					fade(divid);
+				} if (classname != false) {
+					fade(classname, true)
+				}
+			}
 
 			if (divid != false) {
 				const div = document.getElementById(divid);
