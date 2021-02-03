@@ -31,7 +31,7 @@ function opposed_opponent_trait_type() {
 
 function opposed_recurring() {
 	const check = 'opposed_recurring';
-	const div = 'opposed_recurring';
+	const div = 'opposed-recurring';
 
 	check_display(check, div);
 }
