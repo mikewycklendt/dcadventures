@@ -24,7 +24,8 @@ function dc_math_trait_type() {
 function dc_dc() {
 	const field = 'dc_dc';
 	const options = [{'val': 'value', 'div': 'dc-value'},
-				{'val': 'math', 'div': 'dc-math'}]
+				{'val': 'math', 'div': 'dc-math'},
+				{'val': 'mod', 'div': 'dc-mod'}]
 	const entry = 'dc-entry';
 
 	select_maxheight_entry(field, options, entry);
