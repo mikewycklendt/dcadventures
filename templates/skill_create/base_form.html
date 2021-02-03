@@ -80,6 +80,46 @@
 				</select>
 			</div>
 		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Difficulty Class:
+			</div>
+		
+			<div class="base-split" id="skill-dc-field">
+				<div>
+					<select class="base-select" id="skill_dc_type" name="skill_dc_type" onchange="skill_dc_type(); skill_dc_table()">
+						{% for dc in dc_type %}
+							<option value={{dc.type}}>{{dc.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="base-hidden" id="skill-dc-value">
+						<select class="base-select" id="skill_dc_value" name="skill_dc_mod" >
+							<option value=>DC</option>
+							{% for num in positives %}
+								<option value={{num}}>{{num}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="base-hidden" id="skill-dc-mod">
+						<select class="base-select" id="skill_dc_mod" name="skill_dc_mod">
+							<option value="">Modufuer</option>
+							{% for num in negatives %}
+								<option value={{num}}>{{num}}</option>
+							{% endfor %}
+							{% for num in positives %}
+								<option value={{num}}>{{num}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	
 		<div class="base-field">
 			<div id="multiple-attr-title">
