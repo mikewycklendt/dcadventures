@@ -53,3 +53,10 @@ function base_weapon_type() {
 
 	id_select(select, fill, weapon_select);
 }
+
+function secret() {
+	const check = 'secret';
+	const div = 'secret-frequency';
+
+	check_opacity(check, div);
+}

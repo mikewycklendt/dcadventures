@@ -281,14 +281,23 @@
 		
 		<div class="base-field">
 			<div id="multiple-attr-title" style="font-size: 150%;">
-				GM May Make Secret Check
+				GM Secret Check
 			</div>
 
 			<div class="base-3">
 				<div>
-					<input type="checkbox" id="secret" class="regular-checkbox big-checkbox">	
+					<input type="checkbox" id="secret" class="regular-checkbox big-checkbox" onclick="secret()"> 	
 				</div>
+
+				<div class="base-fade" id="secret-frequency">
+					<select class="base-select" id="secret_frequency" name="secret_frequency">
+						{% for f in frequency %}
+							<option value="{{f.type}}">{{f.name}}</option>
+						{% endfor %}
+					</select>
+ 				</div>
 			</div>
+
 		</div>
 
 	</div>
