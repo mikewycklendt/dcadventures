@@ -1,5 +1,5 @@
-function time_check() {
-	const check = "time_check";
+function time_check_check() {
+	const check = "time_check_check";
 	const title = "time-title";
 	const base = 'time-base';
 	const entry = "time-entry";
