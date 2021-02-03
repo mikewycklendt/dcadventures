@@ -129,7 +129,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 22% 78%;
 	gap: .2vw;
 }
 
