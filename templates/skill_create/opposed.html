@@ -136,22 +136,23 @@
 			</div>
 		</div>
 
-		<div class="split hidden" id="opposed-recurring">
-			<div>
-				<input type="text" id="opposed_recurring_value" name="opposed_recurring_value" placeholder="Time">
-			</div>
+		<div>
+			<div class="split hidden" id="opposed-recurring">
+				<div>
+					<input type="text" id="opposed_recurring_value" name="opposed_recurring_value" placeholder="Time">
+				</div>
 
-			<div>
-				<select class="select-entry" id="opposed_recurring_units" name="opposed_recurring_units">
-					<option value="">Units</option>
-					{% for t in times %}
-						<option value={{t.id}}>{{t.name}}</option>
-					{% endfor %}
-				</select>
-
+				<div>
+					<select class="select-entry" id="opposed_recurring_units" name="opposed_recurring_units">
+						<option value="">Units</option>
+						{% for t in times %}
+							<option value={{t.id}}>{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 		</div>
-	
+
 		<div>
 			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">
 				 Add
