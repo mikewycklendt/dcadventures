@@ -102,7 +102,7 @@ function dc_measure() {
 
 function dc_damage() {
 	const check = 'dc_damage';
-	const div = 'dc-amage';
+	const div = 'dc-damage';
 	const entry = 'dc-entry';
 
 	check_drop(check, div, entry);
