@@ -146,6 +146,7 @@
 	display: none;
 	max-height: 0;
 	overflow: hidden;
+	transition: all .3s ease-out;
 }
 
 .base-three {
