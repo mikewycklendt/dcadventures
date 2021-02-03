@@ -215,7 +215,7 @@
 				</div>
 
 				<div class="base-fade" id="base-weapon-cat" >
-					<select class="base-select" id="base_weapon_cat" name="base_weaoon_cat">
+					<select class="base-select" id="base_weapon_cat" name="base_weaoon_cat" onchange="base_weaoon_cat()">
 						<option value="">Weapon Category</option>
 						{% for w in weapon_cat %}
 							<option value="{{w.id}}">{{w.name}}</option>
