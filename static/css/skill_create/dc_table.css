@@ -129,7 +129,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 22% 78%;
+	grid-template-columns: 23% 78%;
 	gap: .2vw;
 }
 
@@ -158,7 +158,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 25% 35% 20% 20%;
+	grid-template-columns: 23% 33% 20% 24%;
 	gap: .2vw;
 }
 
