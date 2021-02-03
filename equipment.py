@@ -71,11 +71,11 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
 	
+	light = Light.query.all()
+	
 	checks = db.session.query(Check).all()
 
 	actions = Action.query.all()
-
-	light = Light.query.all()
 	
 	environments = db.session.query(Environment).order_by(Environment.name).all()
 	
