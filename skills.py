@@ -143,7 +143,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
 							consequences=consequences, specificity=specificity, measure_rank=measure_rank, condition_type=condition_type, updown=updown, circ_effect=circ_effect, measure_effect=measure_effect,
 							unit_type=unit_type, check_trigger=check_trigger, check_type=check_type, conflicts=conflicts, ranged=ranged, multiple_opposed=multiple_opposed, dc_type=dc_type, damage_type=damage_type,
-							inflict=inflict, direction=direction)
+							inflict=inflict, direction=direction, value_mod=value_mod)
 
 
 @skill.route('/skill/create', methods=['POST'])
