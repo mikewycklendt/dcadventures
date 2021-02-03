@@ -30,3 +30,26 @@ function speed_type() {
 
 	select_maxheight(select, options);
 }
+
+function for_weapon() {
+	const check = 'for_weapon';
+	const div = 'base-weapon-cat';
+
+	check_opacity(check, div);
+}
+
+function base_weapon_cat() {
+	const select = 'base_weapon_cat';
+	const div = 'base-weapon';
+	const fill = 'base_weapon_type';
+
+	select_maxheight_any(select, div);
+	id_select(select, fill, weapon_type_select);
+}
+
+function base_weapon_type() {
+	const select = 'base_weapon_type';
+	const fill = 'base_weapon';
+
+	id_select(select, fill, weapon_select);
+}

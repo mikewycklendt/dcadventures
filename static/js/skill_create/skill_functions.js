@@ -712,6 +712,18 @@ function select_maxheight(select, options) {
 	};
 }
 
+function select_maxheight_any(select, div) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+
+	if (val == '') {
+		hide_maxheight(div);
+	} else {
+		show_maxheight(div);
+	}
+	
+}
+
 function base(field_inputs, entry_input, texts=false) {
 	const entry = document.getElementById(entry_input)
 

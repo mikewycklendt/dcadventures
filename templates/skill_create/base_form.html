@@ -203,6 +203,47 @@
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
+				Applies to Weapon
+			</div>
+
+			<div class="base-3">
+				
+				<div class="base-3">
+					<div>
+						<input type="checkbox" id="for_weapon" class="regular-checkbox big-checkbox" onclick="for_weapon()">	
+					</div>
+				</div>
+
+				<div class="base-fade" id="base-weapon-cat" style="width: 70%;">
+					<select class="base-select" id="base_weapon_cat" name="base_weaoon_cat">
+						<option value="">Weapon Category</option>
+						{% for c in conditions %}
+							<option value="{{c}}">{{c}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+
+			<div class="base-split base-shrink" id="base-weapon">
+				<div>
+					<select class="base-select" id="base_weapon_type" name="base_weapon_type" onchange="base_weapon_type()">
+						<option value="">Weapon Type</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="base-select" id="base_weapon" name="base_weapon">
+						Weapon
+					</select>
+				</div>
+			</div>
+		</div>
+
+		
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
 				Can be Used Untrained
 			</div>
 
@@ -221,6 +262,18 @@
 			<div class="base-3">
 				<div>
 					<input type="checkbox" id="tools" class="regular-checkbox big-checkbox">	
+				</div>
+			</div>
+		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Subskill
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="subskill" class="regular-checkbox big-checkbox">	
 				</div>
 			</div>
 		</div>
