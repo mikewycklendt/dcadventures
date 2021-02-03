@@ -15,6 +15,33 @@ const unit_select = '/unit/select'
 const skill_icon_select = '/skill/icon/select';
 
 
+
+function fade(div_input, classname=false) {
+	
+	if (classname == false) {
+		const div = document.getElementById(div_input);
+		div.style.opacity = '0%'
+		setTimeout(function(){div.style.opacity = '100%'}, 300);
+	}
+
+	if (classname != false) {
+		const divs = document.getElementsByClassName(div_input);
+		let div;
+		for (div of divs) {
+			div.style.opacity = '0%';
+		}
+	}
+	
+	if (classname != false) {
+		const divs = document.getElementsByClassName(div_input);
+		let div;
+		for (div of divs) {
+			setTimeout(function(){div.style.opacity = '100%'}, 300);
+		}
+	}
+}
+
+
 function icon_select(field, route, divid=false, classname=false, remove=false, fade=false) {
 	const id = select(field);
 
@@ -68,31 +95,6 @@ function icon_select(field, route, divid=false, classname=false, remove=false, f
 			console.log('error');
 		}
 	})	
-}
-
-function fade(div_input, classname=false) {
-	
-	if (classname == false) {
-		const div = document.getElementById(div_input);
-		div.style.opacity = '0%'
-		setTimeout(function(){div.style.opacity = '100%'}, 300);
-	}
-
-	if (classname != false) {
-		const divs = document.getElementsByClassName(div_input);
-		let div;
-		for (div of divs) {
-			div.style.opacity = '0%';
-		}
-	}
-	
-	if (classname != false) {
-		const divs = document.getElementsByClassName(div_input);
-		let div;
-		for (div of divs) {
-			setTimeout(function(){div.style.opacity = '100%'}, 300);
-		}
-	}
 }
 
 
