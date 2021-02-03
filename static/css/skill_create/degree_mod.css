@@ -187,8 +187,7 @@
 
 #deg-mod-damage {
 	display: none;
-	max-height: 0;
-	overflow: hidden;
+	opacity: 0%;
 	transition: all .3s ease-out;
 	text-align: center;
 	grid-template-columns: 22% 78%;
