@@ -43,6 +43,12 @@
 	transition: all .4s ease-out;
 }
 
+#opposed-entry input[type="text"] {
+	height: 1.3vw;
+	padding: .3vw;
+	width: 93%;
+}
+
 #opposed-row1 {
 	display: grid;
 	width: 98%;
@@ -62,9 +68,9 @@
 
 #opposed-row3 {
 	display: grid;
-	width: 98%;
+	width: 96%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 10% 16% 14% 27%;
+	grid-template-columns: 15% 25% 10% 16% 16% 22%;
 }
 
 #opposed-multiple {
@@ -75,7 +81,7 @@
 
 #opposed-button-row {
 	display: grid;
-	grid-template-columns: 55% 25% 20%;
+	grid-template-columns: 25% 25% 30% 20%;
 }
 
 #opposed-err {

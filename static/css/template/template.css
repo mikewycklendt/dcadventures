@@ -314,3 +314,16 @@ body{
 	align-items: center;
 	justify-content: center;
 }
+
+
+.hidden {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+.split {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
+}

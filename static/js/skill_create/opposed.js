@@ -18,7 +18,7 @@ function opposed_trait_type() {
 	const select = 'opposed_trait_type'
 	const fill = 'opposed_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 
@@ -26,7 +26,14 @@ function opposed_opponent_trait_type() {
 	const select = 'opposed_opponent_trait_type'
 	const fill = 'opposed_opponent_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select)
+}
+
+function opposed_recurring() {
+	const check = 'opposed_recurring';
+	const div = 'opposed_recurring';
+
+	check_display(check, div);
 }
 
 let opposed_grid = {'titles': false,
