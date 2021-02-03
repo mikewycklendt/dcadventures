@@ -5,6 +5,7 @@
 @import "circ.css";
 @import "alt_check.css";
 @import "opposed.css";
+@import "modifiers";
 
 .skill-container {
 	display: grid;

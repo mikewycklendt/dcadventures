@@ -81,6 +81,10 @@
 			<br>
 
 			<div class="skill-box">
+				{% include skill_includes.modifiers %}
+			</div>
+
+			<div class="skill-box">
 				{% include skill_includes.dc %}
 			</div>
 			
@@ -135,5 +139,6 @@
 	<script src="/static/js/skill_create/circ.js"></script>
 	<script src="/static/js/skill_create/alt_check.js"></script>
 	<script src="/static/js/skill_create/opposed.js"></script>	
+	<script src="/static/js/skill_create/modifiers.js"></script>	
 	
 	<input type="hidden" id="skill_id" name="skill_id" value=>
