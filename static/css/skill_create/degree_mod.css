@@ -302,24 +302,6 @@
 	transition: all .3s linear;
 }
 
-#deg-mod-damage-math {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 20% 20% 20% 20% 20%;
-	opacity: 0%;
-	transition: opacity .3s ease-out;
-}
-
-#deg-mod-damage-value {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 25% 25% auto;
-	opacity: 0%;
-	transition: opacity .2s ease-out;
-}
-
 #deg-mod-add {
 	grid-area: button;
 	width: 100%;
