@@ -32,9 +32,8 @@ function time_value_type() {
 function time_recovery() {
 	const check = 'time_recovery';
 	const div = 'time-recovery';
-	const entry = 'time-entry';
 
-	check_drop(check, div, entry);
+	check_display(check, div);
 }
 
 let time_grid = {'titles': false,
