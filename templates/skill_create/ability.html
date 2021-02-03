@@ -1,0 +1,54 @@
+<div class="skill-header" id="ability-header">
+
+	<div class="skill-title" id="ability-title">
+		<input type="checkbox" id="ability_check" class="regular-checkbox big-checkbox" onclick="ability_check()"> Variable Ability:
+	</div>
+	
+	<div class="skill-base" id="ability-base">
+	
+	</div>
+
+</div>
+
+<div class="skill-entry" id="ability-entry">
+
+	<div id="ability-row1">
+
+		<div>
+			Ability:
+		</div>
+
+		<div>
+			Circumstance:
+		</div>
+
+		<div>
+			<select class="select-entry" id="ability_ability" name="ability_ability">
+			<option value="">Ability</option>
+			{% for a in abilities %}
+				<option value={{a.id}}>{{a.name}}</option>
+			{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="ability_circumstance" name="ability-circulstance">
+		</div>
+	</div>
+
+	<div id="ability-button-row">
+		<div>
+		</div>
+
+		<div>
+			<div class="btn-entry" id="ability_submit" name="ability_submit" onclick="ability_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="ability-spot"></div>
+
+<div class="err" id="ability-err"></div>
