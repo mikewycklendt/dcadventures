@@ -115,12 +115,125 @@
 				<input type="checkbox" id="dc_levels" class="medium-checkbox med-checkbox" onclick="dc_levels()"> Level
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_damage" class="medium-checkbox med-checkbox" onclick="dc_damage()"> Damage
+			</div>
+		</div>
 
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="dc_measure" class="medium-checkbox med-checkbox" onclick="dc_measure()"> Measurement
 			</div>
 		</div>
+	</div>
+
+	<div id="dc-damage">
+		<div>
+			Damage:
+		</div>
+	
+		<div>
+			<select class="select-sml" id="dc_damage_typw" name="dc_damage_typw" onchange="dc_damage_typw()">
+				{% for d in damage_type %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>	
+		</div>
+		
+		<div>
+			<div id="dc-damage-inflict">
+
+				<div>
+					<select class="select-sml" id="dc_inflict_type" name="dc_inflict_type" onchange="dc_inflict_type()">
+						{% foe i in inflict %}
+							<option value="{{i.type}}">{{i.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div id="dc-damage-inflict-flat">
+						<div>
+							<select class="select-sml" id="dc_inflict_flat" name="dc_inflict_flat">
+								<option value="">Degrees</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					<div id="dc-damage-inflict-math">
+						<div>
+							<select class="select-sml" id="dc_inflict_trait_type" name="dc_inflict_trait_type" onchange="dc_inflict_trait_type()">
+								{% for t in traits %}
+									<option value="{{t.type}}">{{t.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="dc_inflict_trait" name="dc_inflict_trait">
+								<option value="">Trait</option>
+							</select>
+						 </div>
+					 
+						 <div>
+							 <select class="select-sml" id="dc_inflict_math" name="dc_inflict_math">
+								 <option value="">Math</option>
+								 {% for m in maths %}
+									<option value={{m.id}}>{{m.name}}</option>
+								 {% endfor %}
+							 </select>
+					 	</div>
+
+						 <div>
+							 <select class="select-sml" id="dc_inflict_mod" name="dc_inflict_mod">
+								 <option value="">Modifier</option>
+								 {% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								 {% endfor %}
+							 </select>
+						 </div>
+
+					</div>
+				
+					<div id="dc-damage-inflict-bonus">
+						<div>
+							<select class="select-sml" id="dc_inflict_flat" name="dc_inflict_flat">
+								<option value="">Bonus</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="dc-damage-reduce">
+				<div>
+					<select class="select-sml" id="dc_damage_mod" name="dc_damage_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="se;ect-sml" id="dc_damage_consequence" name="dc_damage_consequence">
+						<option value="">Consequence</option>
+						{% for c in consequences %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+	
 	</div>
 
 	<div id="dc-measure">

@@ -100,6 +100,38 @@ function dc_measure() {
 	check_drop(check, div, entry);
 }
 
+function dc_damage() {
+	const check = 'dc_damage';
+	const div = 'dc-amage';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry);
+}
+
+function dc_damage_type() {
+	const select = 'dc_damage_type';
+	const options = [{'val': 'infli9ct', 'div': 'dc-damage-inflict'}, 
+					{'val': 'reduce', 'div': 'dc-damage-reduce'}];
+
+	select_opacity(select, options);
+}
+
+function dc_inflict_type() {
+	const select = 'dc_inflict_type';
+	const options = [{'val': 'flat', 'div': 'dc-damage-inflict-flat'},
+					{'val': 'bonus', 'div': 'dc-damage-inflict-bonus'},
+					{'val': 'math', 'div': 'dc-damage-inflict-math'}];
+	
+	select_opacity(select, options);
+}
+
+function dc_inflict_trait_type() {
+	const select = 'dc_inflict_trait_type';
+	const fill = 'dc_inflict_trait';
+
+	id_select(select, fill, trait_select);
+}
+
 function dc_measure_effect() {
 	const select = 'dc_measure_effect';
 	const options = [{'val': 'rank', 'div': 'dc-measure-rank'},
