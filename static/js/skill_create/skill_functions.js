@@ -42,7 +42,7 @@ function fade(div_input, classname=false) {
 }
 
 
-function icon_select(field, route, divid=false, classname=false, remove=false, fade=false) {
+function icon_select(field, route, divid=false, classname=false, remove=false, fade_check=false) {
 	const id = select(field);
 
 	response = fetch(route, {
@@ -61,7 +61,7 @@ function icon_select(field, route, divid=false, classname=false, remove=false, f
 
 			const icon = jsonResponse.icon;
 
-			if (fade != false) {
+			if (fade_check != false) {
 				if (divid != false) {
 					fade(divid);
 				} 
