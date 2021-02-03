@@ -10,7 +10,8 @@ function circ_check() {
 function circ_effect() {
 	const select = 'circ_effect';
 	const options = [{'val': 'condition', 'div': 'circ-condition'},
-					{'val': 'measure', 'div': 'circ-measure'}]
+					{'val': 'measure', 'div': 'circ-measure'},
+					{'val': 'level', 'div': 'circ-level'}]
 
 	select_opacity(select, options);
 }
@@ -46,6 +47,12 @@ function circ_measure_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function circ_level_type() {
+	const select = 'circ_level_type';
+	const fill = 'circ_level';
+
+	id_select(select, fill, level_select);
+}
 
 let circ_grid = {'titles': false,
 					'columns': [],
