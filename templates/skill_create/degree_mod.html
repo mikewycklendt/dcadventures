@@ -270,38 +270,9 @@
 		<div id="deg-mod-circ">
 
 			<div>
-				<select class="select-sml" id="deg_mod_circ_value" name="deg_mod_circ_value">
-					<option value="">Modifier</option>
-					{% for i in negatives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="deg_mod_circ_turns" name="deg_mod_circ_turns">
-					<option value="">Turns</option>
-					<option value="round">Round</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="deg_mod_circ_trait_type" name="deg_mod_circ_trait_type" onchange="deg_mod_circ_trait_type()">
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="deg_mod_circ_trait" name="deg_mod_circ_trait">
-					<option value="">Trait</option>
+				<select class="select-sml circ-sml" id="deg_mod_circumstance" name="deg_mod_circumstance">
+					<option value="">Circumstance</option>
+					<option value="">Use Circumstance Form to Put Options Here</option>
 				</select>
 			</div>
 

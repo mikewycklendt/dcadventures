@@ -60,8 +60,12 @@ function circ_submit() {
 
 	const skill_id = document.getElementById('skill_id').value;
 
+	const keyword  = text('circ_keyword');
+
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
+
+	const circ_selects = 'circ-sml'
 
 	response = fetch('/skill/circ/create', {
 		method: 'POST',
@@ -80,12 +84,16 @@ function circ_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id
+
+			selects_add(id, keyword, circ_selects);
+
 			circ_grid.columns.length = 0;
 			circ_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, circ_grid, route);
+			create_table(jsonResponse, circ_grid, route, [circ_selects]);
 			clear_errors(err_line, errors)
 
 			circ_grid.titles = true;

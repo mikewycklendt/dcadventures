@@ -172,6 +172,14 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<select class="select-sml" id="dc_action_when" name="dc_action_when">
+				{% for c in check_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="dc-damage">
