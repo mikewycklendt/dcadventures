@@ -229,6 +229,10 @@ def integer_convert(value):
 		value = 'Doubles Per Rank'
 	elif value == 998:
 		value = 'Flat Value'
+	elif value == 2345:
+		value = 'This Rank'
+	elif value == 3456:
+		value = 'Parent Skill'
 	elif value is None:
 		value = ''
 	else:

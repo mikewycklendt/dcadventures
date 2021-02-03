@@ -123,20 +123,67 @@
 	
 		<div class="base-field">
 			<div id="multiple-attr-title">
-				Speed Rank Modifier
+				Movement
 			</div>
 
-			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
-					<option value="">Modifier</option>
+			<div class="base-three">
+				<div>
+					<select class="base-select" id="speed_type" name="speed_type" onchange="speed_type()">
+						{% for v in value_mod %}
+							<option value="{{v.type}}">{{v.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+		
+				<div>
+					<select class="base-select" id="speed_turns" name="speed_turns">
+						<option value="">Turns</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						<option value="perm">Permanent</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="base-select" id="speed_direction" name="speed_direction">
+						{% for d in direction %}
+							<option value="{{d.type}}">{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div class="base-shrink" style="width: 65%;" id="base-speed-mod">
+				<select class="base-select" id="speed_mod" name="speed_mod">
+					<option value="">Speed Rank Modifier</option>
+					<option value="skill">This Rank</option>
+					<option value="parent">Parent Rank</option>
 					{% for i in negatives %}
-						<option value={{i}}>{{i}}</option>
+							<option value={{i}}>{{i}}</option>
 					{% endfor %}
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
 				</select>
 			</div>
+
+			<div class="base-shrink" style="width: 65%;" id="base-speed-value">
+				<select class="base-select" id="speed_value" name="speed_value">
+					<option value="">Speed Rank</option>
+					<option value="skill">This Rank</option>
+					<option value="parent">Parent Rank</option>
+					{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 		</div>
 		
 		<div class="base-field">

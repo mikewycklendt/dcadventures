@@ -811,6 +811,10 @@ def integer(value):
 		value = 998
 	elif value == 'x':
 		value = 1234
+	elif value == 'skill':
+		value = 2345
+	elif value == 'parent':
+		value = 3456
 	elif value == '':
 		value = None
 	elif value == 'none':

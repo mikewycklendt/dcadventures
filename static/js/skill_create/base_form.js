@@ -7,7 +7,8 @@ function skill() {
 
 function skill_dc_type() {
 	const select = 'skill_dc_type';
-	const options = [{'val': 'value', 'div': "skill-dc-value"}, {'val': 'mod', 'div': "skill-dc-mod"}]
+	const options = [{'val': 'value', 'div': "skill-dc-value"}, 
+					{'val': 'mod', 'div': "skill-dc-mod"}]
 
 	select_opacity(select, options)
 }
@@ -20,4 +21,12 @@ function skill_dc_table() {
 	const value = 'table';
 
 	select_entry(check, base, entry, field, value);
+}
+
+function speed_type() {
+	const select = 'speed_type';
+	const options = [{'val': 'value', 'div': 'base-speed-value'}, 
+					{'val': 'mod', 'div': 'base-speed-mod'}]
+
+	select_maxheight(select, options);
 }
