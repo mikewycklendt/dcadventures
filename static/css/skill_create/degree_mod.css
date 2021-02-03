@@ -154,6 +154,13 @@
 	grid-template-columns: 30% 40% 30%;
 }
 
+#deg-mod-action {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+}
+
 #deg-mod-measure {
 	display: none;
 	opacity: 0%;

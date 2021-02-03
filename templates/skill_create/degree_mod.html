@@ -61,6 +61,16 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-action">
+			<div>
+				<select class="select-sml" id="deg_mod_action" name="deg_mod_action">
+					<option value="">Changed Action</option>
+					{% for a in actions %}
+						<option value={{a.id}}>{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div id="deg-mod-damage">
 		
