@@ -104,12 +104,7 @@
 			</div>
 		</div>
 
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dc_check_type" class="medium-checkbox med-checkbox" onclick="dc_check_type()"> Check Type
-			</div>
-		</div>
-
+		
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="dc_levels" class="medium-checkbox med-checkbox" onclick="dc_levels()"> Level
@@ -122,10 +117,41 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="dc-row3">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_check_type" class="medium-checkbox med-checkbox" onclick="dc_check_type()"> Check Type
+			</div>
+		</div>
+
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="dc_measure" class="medium-checkbox med-checkbox" onclick="dc_measure()"> Measurement
 			</div>
+		</div>
+
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_change_action" class="medium-checkbox med-checkbox" onclick="dc_change_action()"> Action Change
+			</div>
+		</div>
+	</div>
+
+	<div id="dc-action">
+		<div>
+			Change Action Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_action" name="dc_action">
+				<option value="">Changed Action</option>
+				{% for a in actions %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
 
