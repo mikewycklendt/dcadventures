@@ -21,7 +21,7 @@ function fade(div_input, classname=false) {
 	if (classname == false) {
 		const div = document.getElementById(div_input);
 		div.style.opacity = '0%'
-		setTimeout(function(){div.style.opacity = '100%'}, 300);
+		setTimeout(function(){div.style.opacity = '100%'}, 310);
 	}
 
 	if (classname != false) {
@@ -36,7 +36,7 @@ function fade(div_input, classname=false) {
 		const divs = document.getElementsByClassName(div_input);
 		let div;
 		for (div of divs) {
-			setTimeout(function(){div.style.opacity = '100%'}, 300);
+			setTimeout(function(){div.style.opacity = '100%'}, 310);
 		}
 	}
 }
@@ -74,9 +74,9 @@ function icon_select(field, route, divid=false, classname=false, remove=false, f
 			if (divid != false) {
 				const div = document.getElementById(divid);
 				if (remove == true) {
-					div.removeAttribute('class');
+					setTimeout(function(){div.removeAttribute('class')}, 300);
 				}
-				setTimeout(function(){div.classList.add(icon)}, 300);
+				setTimeout(function(){div.classList.add(icon)}, 310);
 			}
 			
 			if (classname != false) {
@@ -84,10 +84,10 @@ function icon_select(field, route, divid=false, classname=false, remove=false, f
 				let div; 
 				for (div of divs) {
 					if (remove == true) {
-						div.removeAttribute('class');
+						setTimeout(function(){div.removeAttribute('class')}, 300);
 					}
 					div.className = classname;
-					setTimeout(function(){div.classList.add(icon)}, 300);
+					setTimeout(function(){div.classList.add(icon)}, 310);
 				}
 			}
 		
