@@ -61,6 +61,112 @@
 
 	<div id="deg-mod-effect">
 
+
+		<div id="deg-mod-damage">
+		
+			<div>
+				<select class="select-sml" id="deg_mod_damage_type" name="deg_mod_damage_type" onchange="deg_mod_damage_type()">
+					{% for d in damage_type %}
+						<option value="{{d.type}}">{{d.name}}</option>
+					{% endfor %}
+				</select>	
+			</div>
+			
+			<div>
+				<div id="deg-mod-damage-inflict">
+	
+					<div>
+						<select class="select-sml" id="deg_mod_inflict_type" name="deg_mod_inflict_type" onchange="deg_mod_inflict_type()">
+							{% for i in inflict %}
+								<option value="{{i.type}}">{{i.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<div id="deg-mod-damage-inflict-flat">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_flat" name="deg_mod_inflict_flat">
+									<option value="">Degrees</option>
+									{% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+	
+						<div id="deg-mod-damage-inflict-math">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_trait_type" name="deg_mod_inflict_trait_type" onchange="deg_mod_inflict_trait_type()">
+									{% for t in traits %}
+										<option value="{{t.type}}">{{t.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+	
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_trait" name="deg_mod_inflict_trait">
+									<option value="">Trait</option>
+								</select>
+							 </div>
+						 
+							 <div>
+								 <select class="select-sml" id="deg_mod_inflict_math" name="deg_mod_inflict_math">
+									 <option value="">Math</option>
+									 {% for m in maths %}
+										<option value={{m.id}}>{{m.name}}</option>
+									 {% endfor %}
+								 </select>
+							 </div>
+	
+							 <div>
+								 <select class="select-sml" id="deg_mod_inflict_mod" name="deg_mod_inflict_mod">
+									 <option value="">Modifier</option>
+									 {% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									 {% endfor %}
+								 </select>
+							 </div>
+	
+						</div>
+					
+						<div id="deg-mod-damage-inflict-bonus">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_flat" name="deg_mod_inflict_flat">
+									<option value="">Bonus</option>
+									{% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div id="deg-mod-damage-reduce">
+					<div>
+						<select class="select-sml" id="deg_mod_damage_mod" name="deg_mod_damage_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<select class="select-sml" id="deg_mod_damage_consequence" name="deg_mod_damage_consequence">
+							<option value="">Consequence</option>
+							{% for c in consequences %}
+								<option value={{c.id}}>{{c.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	
+
 		<div id="deg-mod-consequence">
 			<div>
 				<select class="select-sml" id="deg_mod_consequence_action_type" name="deg_mod_consequence_action_type" onchange="deg_mod_consequence_action_type()">

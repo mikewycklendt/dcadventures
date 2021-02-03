@@ -100,6 +100,30 @@ function dc_measure() {
 	check_drop(check, div, entry);
 }
 
+function dc_measure_effect() {
+	const select = 'dc_measure_effect';
+	const options = [{'val': 'rank', 'div': 'dc-measure-rank'},
+					{'val': 'unit', 'div': 'dc-measure-unit'},
+					{'val': 'skill', 'div': 'dc-measure-skill'}]
+
+	select_opacity(select, options);
+}
+
+function dc_unit_type() {
+	const select = 'dc_unit_type';
+	const fill = 'dc_unit';
+
+	id_select(select, fill, unit_select);
+}
+
+function dc_measure_trait_type() {
+	const select = 'dc_measure_trait_type';
+	const fill = 'dc_measure_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+
 function dc_damage() {
 	const check = 'dc_damage';
 	const div = 'dc-damage';
@@ -132,28 +156,6 @@ function dc_inflict_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
-function dc_measure_effect() {
-	const select = 'dc_measure_effect';
-	const options = [{'val': 'rank', 'div': 'dc-measure-rank'},
-					{'val': 'unit', 'div': 'dc-measure-unit'},
-					{'val': 'skill', 'div': 'dc-measure-skill'}]
-
-	select_opacity(select, options);
-}
-
-function dc_unit_type() {
-	const select = 'dc_unit_type';
-	const fill = 'dc_unit';
-
-	id_select(select, fill, unit_select);
-}
-
-function dc_measure_trait_type() {
-	const select = 'dc_measure_trait_type';
-	const fill = 'dc_measure_trait';
-
-	id_select(select, fill, trait_select);
-}
 
 let dc_grid = {'titles': false,
 					'columns': [],

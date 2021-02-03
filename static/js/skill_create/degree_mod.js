@@ -21,7 +21,8 @@ function deg_mod_type() {
 					{'val': 'condition', 'div': 'deg-mod-condition'},
 					{'val': 'level', 'div': 'deg-mod-level'},
 					{'val': 'knowledge', 'div': 'deg-mod-knowledge'},
-					{'val': 'consequence', 'div': 'deg-mod-consequence'}];
+					{'val': 'consequence', 'div': 'deg-mod-consequence'},
+					{'val': 'damage', 'div': 'deg-mod-damage'}];
 	
 	select_opacity(select, options);
 }
@@ -63,11 +64,27 @@ function deg_mod_condition_type() {
 }
 
 function deg_mod_damage_type() {
-	const field = 'deg_mod_damage_type';	
-	const math = 'deg-mod-damage-math';
-	const value = 'deg-mod-damage-value';
+	const select = 'deg_mod_damage_type';
+	const options = [{'val': 'inflict', 'div': 'deg-mod-damage-inflict'}, 
+					{'val': 'reduce', 'div': 'deg-mod-damage-reduce'}];
 
-	value_type(field, math, value);
+	select_opacity(select, options);
+}
+
+function deg_mod_inflict_type() {
+	const select = 'deg_mod_inflict_type';
+	const options = [{'val': 'flat', 'div': 'deg-mod-damage-inflict-flat'},
+					{'val': 'bonus', 'div': 'deg-mod-damage-inflict-bonus'},
+					{'val': 'math', 'div': 'deg-mod-damage-inflict-math'}];
+	
+	select_opacity(select, options);
+}
+
+function deg_mod_inflict_trait_type() {
+	const select = 'deg_mod_inflict_trait_type';
+	const fill = 'deg_mod_inflict_trait';
+
+	id_select(select, fill, trait_select);
 }
 
 function deg_mod_level_type() {
