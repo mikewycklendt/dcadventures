@@ -69,7 +69,7 @@ function time_submit() {
 	response = fetch('/skill/time/create', {
 		method: 'POST',
 		body: JSON.stringify({
-			'advantage_id': advantage_id,
+			'skill_id': skill_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
