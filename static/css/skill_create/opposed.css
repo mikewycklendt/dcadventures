@@ -64,7 +64,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 10% 20% 22% 18%;
+	grid-template-columns: 15% 25% 10% 16% 22% 22%;
 }
 
 #opposed-multiple {
