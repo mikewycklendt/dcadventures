@@ -28,6 +28,7 @@
 				{% for v in value_type %}
 					<option value={{v.type}}>{{v.name}}</option>
 				{% endfor %}
+				<option value="mod">DC Modifier</option>
 			</select>
 		</div>
 
@@ -41,6 +42,24 @@
 		<div>
 			<select class="select-sml" id="dc_value_value" name="dc_value_value">
 				<option value="">DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+		</div>
+	</div>
+
+	<div id="dc-mod">
+		<div>
+			<select class="select-sml" id="dc_value_value" name="dc_value_value">
+				<option value="">Modifier to DC</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}

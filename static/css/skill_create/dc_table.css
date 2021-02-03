@@ -68,6 +68,14 @@
 	transition: all .3s ease-out;
 }
 
+#dc-mod {
+	display: none;
+	grid-template-columns: 25% 85%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
 #dc-math {
 	display: none;
 	grid-template-columns: 15% 20% 25% 40%;
