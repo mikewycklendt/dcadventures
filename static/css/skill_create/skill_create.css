@@ -6,6 +6,7 @@
 @import "alt_check.css";
 @import "opposed.css";
 @import "modifiers.css";
+@import "time.css";
 
 .skill-container {
 	display: grid;
