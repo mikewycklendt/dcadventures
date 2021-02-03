@@ -110,7 +110,7 @@ function dc_damage() {
 
 function dc_damage_type() {
 	const select = 'dc_damage_type';
-	const options = [{'val': 'infli9ct', 'div': 'dc-damage-inflict'}, 
+	const options = [{'val': 'inflict', 'div': 'dc-damage-inflict'}, 
 					{'val': 'reduce', 'div': 'dc-damage-reduce'}];
 
 	select_opacity(select, options);
