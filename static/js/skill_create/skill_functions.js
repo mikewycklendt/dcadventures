@@ -37,7 +37,9 @@ function icon_select(field, route, divid=false, classname=false, remove=false, f
 			if (fade != false) {
 				if (divid != false) {
 					fade(divid);
-				} if (classname != false) {
+				} 
+				
+				if (classname != false) {
 					fade(classname, true)
 				}
 			}
