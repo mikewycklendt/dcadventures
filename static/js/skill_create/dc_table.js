@@ -46,6 +46,13 @@ function dc_descriptor() {
 	check_drop(check, div, entry);
 }
 
+function dc_change_action() {
+	const check = 'dc_change_action';
+	const div = 'dc-action';
+
+	check_drop(check, div);
+}
+
 function dc_condition() {
 	const check = 'dc_condition';
 	const div = 'dc-condition';
