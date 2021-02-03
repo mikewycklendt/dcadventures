@@ -444,7 +444,17 @@
 			</select> 
 		</div>
 
-		<div></div>
+		<div>
+			<select class="select-sml" id="dc_condition_turns" name="dc_condition_turns">
+				<option value="">Turns</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				<option value="perm">Permanent</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="dc-keyword">
