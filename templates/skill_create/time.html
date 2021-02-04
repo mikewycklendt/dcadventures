@@ -26,10 +26,45 @@
 				{% for v in value_type %}
 					<option value="{{v.type}}">{{v.name}}</option>
 				{% endfor %}
+				<option value="measure">Measurement</option>
 			</select>
 		</div>
 
 		<div>
+
+			<div id="time-mod">
+				<div>
+					<select class="select-sml" id="time_rank1" name="time_rank1">
+						{% for m in measure_rank %}
+							<option value="{{m.ud}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_rank1_value" name="time_rank1_value">
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				 </div>
+				 
+				<div>
+					<select class="select-sml" id="time_rank2" name="time_rank2">
+						{% for m in measure_rank %}
+							<option value="{{m.ud}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_rank2_value" name="time_rank2_value">
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+ 				</div>
+			</div>
 
 			<div id="time-value">
 				
