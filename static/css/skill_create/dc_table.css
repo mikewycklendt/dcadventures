@@ -120,6 +120,17 @@
 	gap: .2vw;
 }
 
+
+#dc-complexity {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 30% 50%;
+	gap: .2vw;
+}
+
 #dc-condition {
 	display: none;
 	max-height: 0;

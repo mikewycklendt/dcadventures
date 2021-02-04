@@ -80,6 +80,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	abilities = Ability.query.all()
 
+	complexity = Complex.query.all()
+
 	times = db.session.query(Unit).filter_by(type_id=2).all()
 
 	skills = Skill.query.all()
