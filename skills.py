@@ -186,7 +186,9 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
 
-	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'discretion', 'name': 'Discretion'}]
+	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
+
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}]
 
 	lasts = [{'type': '', 'name': 'Lasts'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'time', 'name': 'Time'}, {'type': 'rank', 'name': 'Time Rank'}]
 
@@ -198,7 +200,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							inflict=inflict, direction=direction, value_mod=value_mod, modifier_effect=modifier_effect, modifier_trigger=modifier_trigger, modifier_type=modifier_type, multiple=multiple, tools=tools,
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
-							abilities=abilities, frequency=frequency, lasts=lasts)
+							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached)
 
 
 @skill.route('/skill/create', methods=['POST'])
