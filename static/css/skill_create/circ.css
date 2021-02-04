@@ -41,7 +41,7 @@
 #circ-temp {
 	display: none;
 	width: 97%;
-	grid-template-columns: 45% 25% 30%;
+	grid-template-columns: 35% 25% 30%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .2vw;
