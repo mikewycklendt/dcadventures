@@ -23,10 +23,11 @@ function time_trait_type() {
 
 function time_value_type() {
 	const select = 'time_value_type';
-	const math = 'time-math';
-	const value = 'time-value';
+	const options = [{'val': 'math', 'div': 'time-math'}, 
+					{'val': 'value', 'div': 'time-value'}, 
+					{'val': 'rank', 'div': 'time-rank'}]
 
-	value_type(select, math, value)
+	select_opacity(select, options);
 }
 
 function time_recovery() {
