@@ -13,7 +13,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0,parentdir)
 
 os.chdir('../')
-from models import SkillBonus
+from models import *
 
 db_path = os.environ.get("db_path")
 
