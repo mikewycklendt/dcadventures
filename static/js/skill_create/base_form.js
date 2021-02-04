@@ -28,7 +28,7 @@ function ability() {
 	const base = 'ability-base';
 	const entry = 'ability-entry';
 	const field = 'ability';
-	const value = 'z';
+	const value = 'x';
 
 	select_entry(check, base, entry, field, value);
 }
