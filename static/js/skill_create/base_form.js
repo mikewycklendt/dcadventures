@@ -32,7 +32,7 @@ function ability() {
 	const div = 'ability-icon';
 
 	select_entry(check, base, entry, field, value);
-	icon_select(select, ability_icon_select, div, false, true, true);
+	icon_select(field, ability_icon_select, div, false, true, true);
 
 }
  
