@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, Response, flash, redirect, ur
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from models import setup_db
 from models import *
 
 from dotenv import load_dotenv
@@ -20,14 +21,6 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = db_path
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 db = SQLAlchemy()
-
-def setup_db(app):
-	database_path = db_path
-	app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-	app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-	db.app = app
-	db.init_app(app)
-	db.create_all()
 
 setup_db(app)
 migrate = Migrate(app, db)
