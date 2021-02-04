@@ -67,6 +67,84 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+
+
+
+@app.route('/abilities/create')
+def abilities_create():
+
+
+	id = 2
+	icon = 'athletics-icon'
+	skill = db.session.query(Skill).filter(Skill.id == id).one()
+	skill.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 1
+	icon = 'strength-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 2
+	icon = 'stamina-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 3
+	icon = 'agility-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 4
+	icon = 'dexterity-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 5
+	icon = 'fighting-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 6
+	icon = 'intellect-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 7
+	icon = 'awareness-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	id = 8
+	icon = 'presence-icon
+	ability = db.session.query(Ability).filter(Ability.id == id).one()
+	ability.icon = icon
+	db.session.commit()
+	db.session.close()
+
+	results = Ability.query.all()
+
+	for result in results:
+		print(result.name)
+		print(result.icon)
+
+	return ('abilities icons')
+
 '''
 @app.route('/debilitated/create')
 def debilitated_create():

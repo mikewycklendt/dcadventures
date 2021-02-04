@@ -39,6 +39,7 @@ class Ability(db.Model):
 	summary = db.Column(db.String())
 	absent = db.Column(db.String())
 	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+	icon = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -47,7 +48,8 @@ class Ability(db.Model):
 			'description': self.description,
 			'summary': self.summary,
 			'absent': self.absent,
-			'modifier_id': self.modifier_id
+			'modifier_id': self.modifier_id,
+			'icon': self.icon
 		}
 
 class Defense(db.Model):
