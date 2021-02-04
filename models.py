@@ -33,7 +33,7 @@ setup_db(app)
 migrate = Migrate(app, db)
 
 
-SkillAbility = Ability
+SkillAbility(db.Model) = Ability
 
 
 class Ability(db.Model):
