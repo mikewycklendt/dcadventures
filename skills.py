@@ -541,3 +541,22 @@ def skill_icon_select():
 
 	print(body)
 	return jsonify(body)
+
+@skill.route('/ability/icon/select', methods=['POST'])
+def skill_icon_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id']
+	options = []
+
+	try:
+		id = int(id)
+		get = db.session.query(Ability).filter_by(id=id).one()
+		icon = get.icon
+		body['icon'] = icon
+	except:
+		body['success'] = False
+
+	print(body)
+	return jsonify(body)

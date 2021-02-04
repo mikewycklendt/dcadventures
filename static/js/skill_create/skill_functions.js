@@ -13,6 +13,7 @@ const weapon_info_select = '/equipment/weapon/select/info';
 const head_feature_info_select = '/headquarters/feature/select/info';
 const unit_select = '/unit/select'
 const skill_icon_select = '/skill/icon/select';
+const ability_icon_select = '/ability/icon/select';
 
 
 

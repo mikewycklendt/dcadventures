@@ -130,6 +130,13 @@
 	transition: all .3s ease-out;
 }
 
+#ability-icon {
+	text-align: center;
+	font-size: 160%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #base-extend {
 	display: none;
 	opacity: 0%;

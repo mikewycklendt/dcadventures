@@ -21,14 +21,20 @@
 				Parent Ability
 			</div>
 
-			<div style="width: 65%;">
-				<select class="base-select" id="ability" name="ability" onchange="ability()">
-					<option value="">Ability</option>
-					<option value="x">Variable</option>
-					{% for a in abilities %}
-						<option value={{a.id}}>{{a.name}}</option>
-					{% endfor %}
+			<div class="base-icon">
+				<div>
+					<select class="base-select" id="ability" name="ability" onchange="ability()">
+						<option value="">Ability</option>
+						<option value="x">Variable</option>
+						{% for a in abilities %}
+							<option value={{a.id}}>{{a.name}}</option>
+						{% endfor %}
 					</select>
+				</div>
+				
+				<div>
+					<div id="ability-icon"></div>
+				</div>
 			</div>
 		</div>
 
