@@ -40,7 +40,7 @@ function dc_time() {
 }
 
 function dc_complex() {
-	const check = 'complex';
+	const check = 'dc_complex';
 	const div = 'dc-complexity';
 	const entry = 'dc-entry';
 
