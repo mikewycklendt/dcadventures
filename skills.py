@@ -543,7 +543,7 @@ def skill_icon_select():
 	return jsonify(body)
 
 @skill.route('/ability/icon/select', methods=['POST'])
-def skill_icon_select():
+def ability_icon_select():
 	body = {}
 	body['success'] = True
 
