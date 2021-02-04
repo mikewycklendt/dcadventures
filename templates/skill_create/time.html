@@ -50,7 +50,17 @@
 						{% endfor %}
 					</select>
 				 </div>
-				 
+				
+				<div>
+					<select class="select-sml" id="time_rank_math" name="time_rank_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+
 				<div>
 					<select class="select-sml" id="time_rank2" name="time_rank2">
 						<option value="">Rank</option>
@@ -67,7 +77,8 @@
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
- 				</div>
+				 </div>
+				 
 			</div>
 
 			<div id="time-value">
