@@ -20,11 +20,12 @@ db = SQLAlchemy()
 
 
 
-setup_db(app)
-migrate = Migrate(app, db)
-
 
 from models import setup_db, SkillBonus
+
+
+setup_db(app)
+migrate = Migrate(app, db)
 
 class SkillAbility(db.Model):
 	__tablename__ = 'skill_ability'
