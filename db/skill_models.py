@@ -7,14 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-import os,sys,inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir)
-
-os.chdir('../')
-from models import *
-
 
 
 class SkillAbility(db.Model):
