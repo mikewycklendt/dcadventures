@@ -7,13 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
-import os,sys,inspect
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0,parentdir)
-
-os.chdir('../')
-from models import *
 
 db_path = os.environ.get("db_path")
 
@@ -27,6 +20,16 @@ db = SQLAlchemy()
 
 setup_db(app)
 migrate = Migrate(app, db)
+
+
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir)
+
+os.chdir('../')
+from models import *
+
 
 
 class SkillAbility(db.Model):
