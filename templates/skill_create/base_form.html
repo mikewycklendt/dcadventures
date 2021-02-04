@@ -144,7 +144,33 @@
 			</div>
 		</div>
 
-	
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Effect Target
+			</div>
+
+			<div class="base-split">
+				<div>
+					<select class="base-select" id="target" name="target">
+						{% for t in targets %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+						<option value="any">Any</option>
+					</select>
+				</div>
+
+				<div style="width: 75%;">
+					<select class="base-select" id="targets" name="targets">
+						<option value="">Targets</option>
+						<option value="skill">This Rank</option>
+						<option value="parent">Parent Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>	
 		<div class="base-field">
 			<div id="multiple-attr-title">
 				Movement
