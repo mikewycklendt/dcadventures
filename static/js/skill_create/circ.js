@@ -13,7 +13,7 @@ function circ_effect() {
 					{'val': 'measure', 'div': 'circ-measure'},
 					{'val': 'level', 'div': 'circ-level'},
 					{'val': 'speed', 'div': 'circ-speed'},
-					{'val': 'time', 'div': 'circ-time'}]
+					{'val': 'time', 'div': 'circ-time-mod'}]
 
 	select_opacity(select, options);
 }

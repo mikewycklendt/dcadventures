@@ -37,10 +37,10 @@
 	gap: .2vw;
 }
 
-#circ-time {
+#circ-time-mod {
 	display: none;
 	width: 97%;
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 35% 65%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .2vw;
@@ -113,6 +113,22 @@
 }
 
 #circ-turns {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 50% 50%;
+}
+
+#circ-time {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 50% 50%;
+}
+
+#circ-time-rank {
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
