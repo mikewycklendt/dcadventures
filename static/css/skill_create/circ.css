@@ -40,7 +40,7 @@
 #circ-time {
 	display: none;
 	width: 97%;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 20% 80%;
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .2vw;
