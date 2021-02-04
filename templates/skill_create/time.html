@@ -23,10 +23,9 @@
 
 		<div>
 			<select class="select-sml" id="time_value_type" name="time_value_type" onchange="time_value_type()">
-				{% for v in value_type %}
-					<option value="{{v.type}}">{{v.name}}</option>
-				{% endfor %}
-				<option value="rank">Measurement</option>
+				{% for t in time_value %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %
 			</select>
 		</div>
 
