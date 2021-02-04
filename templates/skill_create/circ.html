@@ -82,6 +82,16 @@
 				</div>
 			</div>
 			
+			<div id="circ-target">
+				<div>
+					<select class="select-sml" id="circ_if_target" name="circ_if_target">
+						{% for c in circ_targets %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
 			<div id="circ-level">
 				<div>
 					<select class="level-type-sml" id="circ_level_type" name="circ_level_type" onchange="circ_level_type()">
