@@ -6,7 +6,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import os
 
+db_path = os.environ.get("db_path")
+
+app = Flask(__name__)
+moment = Moment(app)
+#app.config.from_object('config')
+project_dir = os.path.dirname(os.path.abspath(__file__))
+database_path = db_path
+app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+db = SQLAlchemy()
+
+
+
+setup_db(app)
+migrate = Migrate(app, db)
 
 
 class SkillAbility(db.Model):
