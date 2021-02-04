@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 
 # Import database models with app context
 with app.app_context():
-  from models, skill_models import *
+  import models, skill_models
 
 migrate = Migrate(app, db)
 
