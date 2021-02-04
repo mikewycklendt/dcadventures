@@ -33,15 +33,6 @@ setup_db(app)
 migrate = Migrate(app, db)
 
 
-SkillAbility = SkillAbility
-SkillCheck = SkillCheck
-SkillCirc = SkillCirc
-SkillDC = SkillDC
-SkillDegree = SkillDegree
-SkillMod = SkillMod
-SkillOpposed = SkillOpposed
-SkillTime = SkillTime
-
 class Ability(db.Model):
 	__tablename__ = 'abilities'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
