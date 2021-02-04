@@ -64,6 +64,27 @@
 					</select>
 				</div>
 			</div>
+
+			<div id="circ-temp">
+				<div>
+					Effect Only Lasts For
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_temp" name="circ_temp">
+						<option value="">Turns</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					Turns
+				</div>
+			</div>
 			
 			<div id="circ-level">
 				<div>
