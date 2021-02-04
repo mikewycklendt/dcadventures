@@ -373,19 +373,6 @@ class SkillBonus(db.Model):
 			'alt_check': self.alt_check
 		}
 
-class SkillLevelsType(db.Model):
-	__tablename__ = 'skill_levels_type'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	type = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'bonus_id': self.bonus_id,
-			'type': self.type
-		}
-
 class Power(db.Model):
 	__tablename__ = 'powers'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
