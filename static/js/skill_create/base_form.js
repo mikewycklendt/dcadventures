@@ -23,6 +23,16 @@ function skill_dc_table() {
 	select_entry(check, base, entry, field, value);
 }
 
+function ability() {
+	const check = "ability_check";
+	const base = 'ability-base';
+	const entry = 'ability-entry';
+	const field = 'ability';
+	const value = 'z';
+
+	select_entry(check, base, entry, field, value);
+}
+ 
 function speed_type() {
 	const select = 'speed_type';
 	const options = [{'val': 'value', 'div': 'base-speed-value'}, 
