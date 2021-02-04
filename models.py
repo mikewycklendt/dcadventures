@@ -3,6 +3,8 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+from db.skill import SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -30,6 +32,16 @@ def setup_db(app):
 
 setup_db(app)
 migrate = Migrate(app, db)
+
+
+SkillAbility = SkillAbility
+SkillCheck = SkillCheck
+SkillCirc = SkillCirc
+SkillDC = SkillDC
+SkillDegree = SkillDegree
+SkillMod = SkillMod
+SkillOpposed = SkillOpposed
+SkillTime = SkillTime
 
 class Ability(db.Model):
 	__tablename__ = 'abilities'
