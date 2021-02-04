@@ -29,10 +29,10 @@ function ability() {
 	const entry = 'ability-entry';
 	const field = 'ability';
 	const value = 'x';
-	const div = 'ability-icon;'
+	const div = 'ability-icon';
 
 	select_entry(check, base, entry, field, value);
-	icon_select(select, skill_icon_select, div, false, true, true);
+	icon_select(select, ability_icon_select, div, false, true, true);
 
 }
  
