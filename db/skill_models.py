@@ -27,7 +27,7 @@ from models import SkillBonus
 setup_db(app)
 
 
-class BonusAbility(db.Model):
+class SkillAbility(db.Model):
 	__tablename__ = 'skill_ability'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	skill_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))

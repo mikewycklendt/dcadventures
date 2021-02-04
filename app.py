@@ -32,6 +32,7 @@ from models import WeapBenefit, WeapCondition, WeapDescriptor
 from models import Armor, ArmorType, ArmDescriptor
 from models import Vehicle, VehicleType, PowerType, VehicleSize, VehPower, VehFeature
 from models import Headquarters, HeadFeature, HeadFeatAddon, HeadSize, HeadCharFeat
+from db.skill_models import SkillAbility
 
 load_dotenv()
 
