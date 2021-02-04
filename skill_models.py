@@ -21,6 +21,12 @@ db = SQLAlchemy()
 
 migrate = Migrate(app, db)
 
+from models import setup_db
+
+setup_db(app)
+
+from models import SkillBonus
+
 class BonusAbility(db.Model):
 	__tablename__ = 'skill_ability'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
