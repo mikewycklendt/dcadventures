@@ -54,6 +54,14 @@ function circ_level_type() {
 	id_select(select, fill, level_select);
 }
 
+function circ_lasts() {
+	const select = 'circ_lasts';
+	const options = [{'val': 'turns', 'div': 'circ-turns'}, 
+					{'val': 'time', 'div': 'circ-time'}, 
+					{'val': 'rank', 'div': 'circ-time-rank'}]
+
+	select_opacity(select, options);
+}
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
