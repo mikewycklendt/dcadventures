@@ -75,7 +75,7 @@
 #time-rank {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 25% 15% 20% 25% 15%;
+	grid-template-columns: 25% 15% 17% 25% 18%;
 	transition: all .3s ease-in;
 }
 
