@@ -3,7 +3,6 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-from models import setup_db, SkillBonus
 
 load_dotenv()
 
@@ -24,6 +23,8 @@ db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)
 
+
+from models import setup_db, SkillBonus
 
 class SkillAbility(db.Model):
 	__tablename__ = 'skill_ability'
