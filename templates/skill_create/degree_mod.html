@@ -265,6 +265,15 @@
 					<option value="">Level</option>
 				</select>
 			</div>
+			
+			<div>
+				<select class="select-sml" id="deg_mod_level_direction" name="deg_mod_level_direction">
+					<option value="">One Level</option>
+					{% for u in updown %}
+						<option value={{u.id}}>{{u.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 		
 		<div id="deg-mod-circ">
