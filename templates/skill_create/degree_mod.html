@@ -329,6 +329,14 @@
 				</select>
 			</div>
 
+			<div>
+				<select class="select-sml" id="deg_mod_circ_target" name="deg_mod_circ_target">
+					{% for t in targets %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 		</div>
 
 		<div id="deg-mod-measure" style="display: none;">
