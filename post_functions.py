@@ -233,6 +233,8 @@ def integer_convert(value):
 		value = 'This Rank'
 	elif value == 3456:
 		value = 'Parent Skill'
+	elif value == 4567:
+		value = 'Speed Rank'
 	elif value is None:
 		value = ''
 	else:

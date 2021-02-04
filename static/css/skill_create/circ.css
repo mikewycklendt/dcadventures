@@ -37,6 +37,16 @@
 	gap: .2vw;
 }
 
+
+#circ-speed {
+	display: none;
+	width: 97%;
+	grid-template-columns: 35% 65%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .2vw;
+}
+
 #circ-condition-condition {
 	display: none;
 	width: 97%;

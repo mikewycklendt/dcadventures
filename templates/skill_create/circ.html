@@ -49,6 +49,21 @@
 		</div>
 
 		<div>
+
+			<div id="circ-speed">
+				<div>
+					<select class="select-sml" id="circ_speed" name="circ_speed">
+						<option value="">Speed Rank</option>
+						<option value="speed">Full Speed</option>
+						{% for i in negatives %}
+							<option value={{i}}>Speed Rank {{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>Speed Rank {{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 			
 			<div id="circ-level">
 				<div>
