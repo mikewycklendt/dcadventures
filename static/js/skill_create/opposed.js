@@ -47,17 +47,21 @@ function opposed_submit() {
 	const created = opposed_grid.titles;
 	const font = opposed_grid.font;
 
-	
-	const benefit = select("opposed_benefit");
-	const trait_type = select("opposed_trait_type");
-	const trait = select("opposed_trait");
-	const mod = select("opposed_mod");
-	const opponent_trait_type = select("opposed_opponent_trait_type");
-	const opponent_trait = select("opposed_opponent_trait");
-	const opponent_mod = select("opposed_opponent_mod");
-	const player_check = select("opposed_player_check");
-	const opponent_check = select("opposed_opponent_check");
-	const multiple = select("opposed_multiple");
+	const attached = select("opposed_attached")
+	const frequency = select("opposed_frequency")
+	const trait_type = select("opposed_trait_type")
+	const trait = select("opposed_trait")
+	const mod = select("opposed_mod")
+	const opponent_trait_type = select("opposed_opponent_trait_type")
+	const opponent_trait = select("opposed_opponent_trait")
+	const opponent_mod = select("opposed_opponent_mod")
+	const player_check = select("opposed_player_check")
+	const opponent_check = select("opposed_opponent_check")
+	const secret = check("opposed_secret")
+	const recurring = check("opposed_recurring")
+	const multiple = select("opposed_multiple")
+	const recurring_value = text("opposed_recurring_value")
+	const recurring_units = select("opposed_recurring_units")
 
 	const skill_id = document.getElementById('skill_id').value;
 
@@ -71,16 +75,6 @@ function opposed_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'benefit': benefit,
-			'trait_type': trait_type,
-			'trait': trait,
-			'mod': mod,
-			'opponent_trait_type': opponent_trait_type,
-			'opponent_trait': opponent_trait,
-			'opponent_mod': opponent_mod,
-			'player_check': player_check,
-			'opponent_check': opponent_check,
-			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

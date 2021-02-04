@@ -185,27 +185,53 @@ function dc_submit() {
 	const created = dc_grid.titles;
 	const font = dc_grid.font;
 
-	const target = select("dc_target");
-	const benefit = select("dc_benefit");
-	const dc = select("dc_dc");
-	const description = text("dc_description");
-	const value_value = select("dc_value_value");
-	const math_value = select("dc_math_vqlue");
-	const math_math = select("dc_math_math");
-	const math_trait_type = select("dc_math_trait_type");
-	const math_trait = select("dc_math_trait");
-	const condition = check("dc_condition");
-	const keyword_check = check("dc_keyword_check");
-	const check_type = check("dc_check_type");
-	const levels = check("dc_levels");
-	const level_type = select("dc_level_type");
-	const level = select("dc_level");
-	const condition1 = select("dc_condition1");
-	const condition2 = select("dc_condition2");
-	const keyword = text("dc_keyword");
-	const check_trait_type = select("dc_check_trait_type");
-	const check_trait = select("dc_check_trait");
-	const check_mod = select("dc_check_mod");
+	const target = select("dc_target")
+	const dc = select("dc_dc")
+	const description = text("dc_description")
+	const value = select("dc_value_value")
+	const mod = select("dc_mod")
+	const math_value = select("dc_math_vqlue")
+	const math = select("dc_math_math")
+	const math_trait_type = select("dc_math_trait_type")
+	const math_trait = select("dc_math_trait")
+	const condition = check("dc_condition")
+	const keyword_check = check("dc_keyword_check")
+	const levels = check("dc_levels")
+	const damage = check("dc_damage")
+	const cover = check("dc_cover")
+	const complex = check("dc_complex")
+	const measure = check("dc_measure")
+	const change_action = check("dc_change_action")
+	const conceal = check("dc_conceal")
+	const action = select("dc_action")
+	const action_when = select("dc_action_when")
+	const damage_type = select("dc_damage_type")
+	const inflict_type = select("dc_inflict_type")
+	const inflict_flat = select("dc_inflict_flat")
+	const inflict_trait_type = select("dc_inflict_trait_type")
+	const inflict_trait = select("dc_inflict_trait")
+	const inflict_math = select("dc_inflict_math")
+	const inflict_mod = select("dc_inflict_mod")
+	const inflict_bonus = select("dc_inflict_bonus")
+	const damage_mod = select("dc_damage_mod")
+	const damage_consequence = select("dc_damage_consequence")
+	const measure_effect = select("dc_measure_effect")
+	const measure_rank_value = select("dc_measure_rank_value")
+	const measure_rank = select("dc_measure_rank")
+	const unit_value = text("dc_unit_value")
+	const unit_type = select("dc_unit_type")
+	const unit = select("dc_unit")
+	const measure_trait_type = select("dc_measure_trait_type")
+	const measure_trait = select("dc_measure_trait")
+	const measure_trait_math = select("dc_measure_trait_math")
+	const measure_mod = select("dc_measure_mod")
+	const level_type = select("dc_level_type")
+	const level = select("dc_level")
+	const condition1 = select("dc_condition1")
+	const condition2 = select("dc_condition2")
+	const condition_turns = select("dc_condition_turns")
+	const keyword = text("dc_keyword")
+	const complexity = select("dc_complexity")
 
 	const skill_id = document.getElementById('skill_id').value;
 
@@ -219,27 +245,6 @@ function dc_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'target': target,
-			'benefit': benefit,
-			'dc': dc,
-			'description': description,
-			'value_value': value_value,
-			'math_value': math_value,
-			'math_math': math_math,
-			'math_trait_type': math_trait_type,
-			'math_trait': math_trait,
-			'condition': condition,
-			'keyword_check': keyword_check,
-			'check_type': check_type,
-			'levels': levels,
-			'level_type': level_type,
-			'level': level,
-			'condition1': condition1,
-			'condition2': condition2,
-			'keyword': keyword,
-			'check_trait_type': check_trait_type,
-			'check_trait': check_trait,
-			'check_mod': check_mod
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -28,11 +28,9 @@
 		<div>
 			<select class="entry-select" id="dc_dc" name="dc_dc" onchange="dc_dc()">
 				<option value="">DC</option>
-				{% for v in value_type %}
-					<option value={{v.type}}>{{v.name}}</option>
+				{% for d in dc_value %}
+					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
-				<option value="mod">DC Modifier</option>
-				<option value="choice">Chosen by Player</option>
 			</select>
 		</div>
 
@@ -59,7 +57,7 @@
 
 	<div id="dc-mod">
 		<div>
-			<select class="select-sml" id="dc_value_value" name="dc_value_value">
+			<select class="select-sml" id="dc_mod" name="dc_mod">
 				<option value="">Modifier to DC</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
@@ -271,7 +269,7 @@
 				
 					<div id="dc-damage-inflict-bonus">
 						<div>
-							<select class="select-sml" id="dc_inflict_flat" name="dc_inflict_flat">
+							<select class="select-sml" id="dc_inflict_bonus" name="dc_inflict_bonus">
 								<option value="">Bonus</option>
 								{% for i in positives %}
 									<option value={{i}}>{{i}}</option>

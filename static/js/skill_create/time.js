@@ -48,20 +48,25 @@ function time_submit() {
 	const created = time_grid.titles;
 	const font = time_grid.font;
 
-	const time_type = select("time_type");
-	const value_type = select("time_value_type");
-	const value = text("time_value");
-	const units = select("time_units");
-	const time_value = select("time_math_value");
-	const math = select("time_math");
-	const trait_type = select("time_trait_type");
-	const trait = select("time_trait");
-	const dc = select("time_dc");
-	const check_type = select("time_check_type");
-	const recovery = check("time_recovery");
-	const recovery_penalty = select("time_recovery_penalty");
-	const recovery_time = select("time_recovery_time");
-	const recovery_incurable = check("time_recovery_incurable");
+	
+	const type = select("time_type")
+	const value_type = select("time_value_type")
+	const rank1 = select("time_rank1")
+	const rank1_value = select("time_rank1_value")
+	const rank_math = select("time_rank_math")
+	const rank2 = select("time_rank2")
+	const rank2_value = select("time_rank2_value")
+	const value = text("time_value")
+	const units = select("time_units")
+	const trait_type = select("time_trait_type")
+	const trait = select("time_trait")
+	const math = select("time_math")
+	const math_value = select("time_math_value")
+	const recovery = check("time_recovery")
+	const recovery_penalty = select("time_recovery_penalty")
+	const recovery_time = select("time_recovery_time")
+	const recovery_incurable = check("time_recovery_incurable")
+
 	const skill_id = document.getElementById('skill_id').value;
 	
 	const errors = 'time-err';
@@ -74,20 +79,6 @@ function time_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'time_type': time_type,
-			'value_type': value_type,
-			'value': value,
-			'units': units,
-			'time_value': time_value,
-			'math': math,
-			'trait_type': trait_type,
-			'trait': trait,
-			'dc': dc,
-			'check_type': check_type,
-			'recovery': recovery,
-			'recovery_penalty': recovery_penalty,
-			'recovery_time': recovery_time,
-			'recovery_incurable': recovery_incurable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

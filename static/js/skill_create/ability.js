@@ -19,6 +19,8 @@ function ability_submit() {
 	const font = ability_grid.font;
 
 	const skill_id = document.getElementById('skill_id').value;
+	const ability = select("ability_ability");
+	const circumstance = text("ability_circumstance");
 
 	const errors = 'ability-err';
 	const err_line = 'ability-err-line';

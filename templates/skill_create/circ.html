@@ -168,7 +168,7 @@
 					<div id="circ-condition-damage">
 
 						<div>
-							<select class="select-sml" id="circ_condition1" name="circ_condition1">
+							<select class="select-sml" id="circ_conditions" name="circ_condition1">
 								<option value="">Conditions</option>
 								{% for i in positives %}
 									<option value={{i}}>{{i}}</option>
@@ -181,7 +181,7 @@
 						</div>
 
 						<div>
-							<select class="select-sml" id="circ_condition2" name="circ_condition2">
+							<select class="select-sml" id="circ_conditions_effect" name="circ_condition2">
 								{% for u in updown %}
 									<option value="{{u.id}}">{{u.name}}</option>
 								{% endfor %}

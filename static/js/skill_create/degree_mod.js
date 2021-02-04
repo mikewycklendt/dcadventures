@@ -132,87 +132,71 @@ function deg_mod_submit() {
 	const created = deg_mod_grid.titles;
 	const font = deg_mod_grid.font;
 	
-	const target = select("deg_mod_target");
-	const benefit = select("deg_mod_benefit");
-	const value = select("deg_value");
-	const deg_mod_type = select("deg_mod_type");
-	const consequence_action_type = select("deg_mod_consequence_action_type");
-	const consequence_action = select("deg_mod_consequence_action");
-	const consequence_trait_type = select("deg_mod_consequence_trait_type");
-	const consequence_trait = select("deg_mod_consequence_trait");
-	const consequence = select("deg_mod_consequence");
-	const knowledge = select("deg_mod_knowledge");
-	const knowledge_count = select("deg_mod_knowledge_count");
-	const knowledge_specificity = select("deg_mod_knowledge_specificity");
-	const level_type = select("deg_mod_level_type");
-	const level = select("deg_mod_level");
-	const circ_value = select("deg_mod_circ_value");
-	const circ_turns = select("deg_mod_circ_turns");
-	const circ_trait_type = select("deg_mod_circ_trait_type");
-	const circ_trait = select("deg_mod_circ_trait");
-	const measure_type = select("deg_mod_measure_type");
-	const measure_val1 = select("deg_mod_measure_val1");
-	const measure_math = select("deg_mod_measure_math");
-	const measure_trait_type = select("deg_mod_measure_trait_type");
-	const measure_trait = select("deg_mod_measure_trait");
-	const measure_value = select("deg_mod_measure_value");
-	const measure_rank = select("deg_mod_measure_rank");
-	const condition_type = select("deg_mod_condition_type");
-	const condition_damage_value = select("deg_mod_condition_damage_value");
-	const condition_damage = select("deg_mod_condition_damage");
-	const condition1 = select("deg_mod_condition1");
-	const condition2 = select("deg_mod_condition2");
-	const keyword = text("deg_mod_keyword");
-	const nullify = select("deg_mod_nullify");
-	const cumulative = check("deg_mod_cumulative");
-	const linked = check("deg_mod_linked");
+	const target = select("deg_mod_target")
+	const value = select("deg_value")
+	const type = select("deg_mod_type")
+	const action = select("deg_mod_action")
+	const time = select("deg_mod_time")
+	const recovery = check("deg_mod_time_recovery")
+	const damage_type = select("deg_mod_damage_type")
+	const object = select("deg_mod_damage_object")
+	const object_effect = select("deg_mod_damage_object_effect")
+	const inflict_type = select("deg_mod_inflict_type")
+	const inflict_flat = select("deg_mod_inflict_flat")
+	const inflict_trait_type = select("deg_mod_inflict_trait_type")
+	const inflict_trait = select("deg_mod_inflict_trait")
+	const inflict_math = select("deg_mod_inflict_math")
+	const inflict_mod = select("deg_mod_inflict_mod")
+	const inflict_bonus = select("deg_mod_inflict_bonus")
+	const damage_mod = select("deg_mod_damage_mod")
+	const damage_consequence = select("deg_mod_damage_consequence")
+	const consequence_action_type = select("deg_mod_consequence_action_type")
+	const consequence_action = select("deg_mod_consequence_action")
+	const consequence_trait_type = select("deg_mod_consequence_trait_type")
+	const consequence_trait = select("deg_mod_consequence_trait")
+	const consequence = select("deg_mod_consequence")
+	const knowledge = select("deg_mod_knowledge")
+	const knowledge_count = select("deg_mod_knowledge_count")
+	const knowledge_specificity = select("deg_mod_knowledge_specificity")
+	const level_type = select("deg_mod_level_type")
+	const level = select("deg_mod_level")
+	const level_direction = select("deg_mod_level_direction")
+	const circumstance = select("deg_mod_circumstance")
+	const circ_target = select("deg_mod_circ_target")
+	const measure_effect = select("deg_mod_measure_effect")
+	const measure_rank_value = select("deg_mod_measure_rank_value")
+	const measure_rank = select("deg_mod_measure_rank")
+	const unit_value = text("deg_mod_unit_value")
+	const unit_type = select("deg_mod_unit_type")
+	const unit = select("deg_mod_unit")
+	const measure_trait_type = select("deg_mod_measure_trait_type")
+	const measure_trait = select("deg_mod_measure_trait")
+	const measure_trait_math = select("deg_mod_measure_trait_math")
+	const measure_mod = select("deg_mod_measure_mod")
+	const condition_type = select("deg_mod_condition_type")
+	const condition_damage_value = select("deg_mod_condition_damage_value")
+	const condition_damage = select("deg_mod_condition_damage")
+	const condition1 = select("deg_mod_condition1")
+	const condition2 = select("deg_mod_condition2")
+	const condition_turns = select("deg_mod_condition_turns")
+	const keyword = text("deg_mod_keyword")
+	const nullify = select("deg_mod_nullify")
+	const cumulative = check("deg_mod_cumulative")
+	const linked = check("deg_mod_linked")
 
-	const advantage_id = document.getElementById('advantage_id').value;
+	const skill_id = document.getElementById('skill_id').value;
 
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';
 
-	response = fetch('/advantage/degree_mod/create', {
+	response = fetch('/skill/degree_mod/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'target': target,
-			'benefit': benefit,
-			'value': value,
-			'deg_mod_type': deg_mod_type,
-			'consequence_action_type': consequence_action_type,
-			'consequence_action': consequence_action,
-			'consequence_trait_type': consequence_trait_type,
-			'consequence_trait': consequence_trait,
-			'consequence': consequence,
-			'knowledge': knowledge,
-			'knowledge_count': knowledge_count,
-			'knowledge_specificity': knowledge_specificity,
-			'level_type': level_type,
-			'level': level,
-			'circ_value': circ_value,
-			'circ_turns': circ_turns,
-			'circ_trait_type': circ_trait_type,
-			'circ_trait': circ_trait,
-			'measure_type': measure_type,
-			'measure_val1': measure_val1,
-			'measure_math': measure_math,
-			'measure_trait_type': measure_trait_type,
-			'measure_trait': measure_trait,
-			'measure_value': measure_value,
-			'measure_rank': measure_rank,
-			'condition_type': condition_type,
-			'condition_damage_value': condition_damage_value,
-			'condition_damage': condition_damage,
-			'condition1': condition1,
-			'condition2': condition2,
-			'keyword': keyword,
-			'nullify': nullify,
-			'cumulative': cumulative,
-			'linked': linked
+			'skill_id': skill_id,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -227,7 +211,7 @@ function deg_mod_submit() {
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
-			const route = '/advantage/degree_mod/delete/'
+			const route = '/skill/degree_mod/delete/'
 			create_table(jsonResponse, deg_mod_grid, route);
 			clear_errors(err_line, errors)
 

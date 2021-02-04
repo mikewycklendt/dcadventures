@@ -78,8 +78,39 @@ function circ_submit() {
 	const font = circ_grid.font;
 
 	const skill_id = document.getElementById('skill_id').value;
-
-	const keyword  = text('circ_keyword');
+	
+	const circ_target = select("circ_target")
+	const mod = select("circ_mod")
+	const effect = select("circ_effect")
+	const speed = select("circ_speed")
+	const temp = select("circ_temp")
+	const target = select("circ_if_target")
+	const level_type = select("circ_level_type")
+	const level = select("circ_level")
+	const time = select("circ_time")
+	const condition_type = select("circ_condition_type")
+	const condition1 = select("circ_condition1")
+	const condition2 = select("circ_condition2")
+	const conditions = select("circ_conditions")
+	const conditions_effect = select("circ_conditions_effect")
+	const measure_effect = select("circ_measure_effect")
+	const measure_rank_value = select("circ_measure_rank_value")
+	const measure_rank = select("circ_measure_rank")
+	const unit_value = text("circ_unit_value")
+	const unit_type = select("circ_unit_type")
+	const unit = select("circ_unit")
+	const measure_trait_type = select("circ_measure_trait_type")
+	const measure_trait = select("circ_measure_trait")
+	const measure_trait_math = select("circ_measure_trait_math")
+	const measure_mod = select("circ_measure_mod")
+	const keyword = text("circ_keyword")
+	const cumulative = check("circ_cumulative")
+	const optional = check("circ_optional")
+	const lasts = select("circ_lasts")
+	const turns = select("circ_turns")
+	const unit_time = text("circ_time")
+	const time_units = select("circ_time_units")
+	const time_rank = select("circ_time_rank")
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
