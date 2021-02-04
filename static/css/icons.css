@@ -19,7 +19,7 @@
 
 .athletics-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f70c';
+	content: '\f5c4';
 	display: inline-block;
 }
 
@@ -146,13 +146,13 @@
 
 .agility-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f8e1';
+	content: '\f70c';
 	display: inline-block;
 }
 
 .dexterity-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f470';
+	content: '\f47c';
 	display: inline-block;
 }
 
@@ -170,12 +170,12 @@
 
 .awareness-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f77a';
+	content: '\f5f2	';
 	display: inline-block;
 }
 
 .presence-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f77a';
+	content: '\f470';
 	display: inline-block;
 }
