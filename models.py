@@ -32,10 +32,6 @@ setup_db(app)
 migrate = Migrate(app, db)
 
 
-from db.skill_models import BonusAbility
-
-BonusAbility = BonusAbility
-
 
 class Ability(db.Model):
 	__tablename__ = 'abilities'
