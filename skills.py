@@ -188,7 +188,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}]
 
 	lasts = [{'type': '', 'name': 'Lasts'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'time', 'name': 'Time'}, {'type': 'rank', 'name': 'Time Rank'}]
 

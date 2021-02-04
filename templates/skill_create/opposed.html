@@ -5,11 +5,21 @@
 	</div>
 	
 	<div id="opposed-base">
-		<select class="select-entry" id="opposed_frequency" name="opposed_frequency">
-			{% for f in frequency %}
-				<option value="{{f.type}}">{{f.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select class="select-entry" id="opposed_attached" name="opposed_attached">
+				{% for a in attached %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_frequency" name="opposed_frequency">
+				{% for f in frequency %}
+					<option value="{{f.type}}">{{f.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 </div>
