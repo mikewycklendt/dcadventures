@@ -34,6 +34,7 @@ migrate = Migrate(app, db)
 
 
 class SkillAbility(BonusAbility):
+	__tablename__ = 'skill_ability'
 
 
 class Ability(db.Model):
