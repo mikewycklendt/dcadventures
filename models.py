@@ -272,7 +272,6 @@ class SkillType(db.Model):
 
 class SkillBonus(db.Model):
 	__tablename__ = 'skill_bonus'
-	__table_args__ = ({"schema": "public"})
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
