@@ -227,6 +227,21 @@
 		
 		<div class="base-field">
 			<div id="multiple-attr-title">
+				Requires Advantage
+			</div>
+
+			<div style="width: 65%;">
+				<select class="base-select" id="skill" name="skill">
+					<option value="">Advantage</option>
+					{% for a in advantages %}
+						<option value="{{a}}">{{a}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
 				Concealment
 			</div>
 
