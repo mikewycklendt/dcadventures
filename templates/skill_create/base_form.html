@@ -224,6 +224,21 @@
 				</select>
 			</div>
 		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title">
+				Gives Concealment
+			</div>
+
+			<div style="width: 65%;">
+				<select class="base-select" id="skill" name="skill">
+					<option value="">Concealment</option>
+					{% for c in conceal %}
+						<option value="{{c.id}}">{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div class="base-field">
 			<div id="multiple-attr-title">
