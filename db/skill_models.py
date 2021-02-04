@@ -19,15 +19,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 db = SQLAlchemy()
 
 
-
-
-from models import setup_db, SkillBonus
-
-
 setup_db(app)
 migrate = Migrate(app, db)
 
-class SkillAbility(db.Model):
+class Ability(db.Model):
 	__tablename__ = 'skill_ability'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	skill_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
