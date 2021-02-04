@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, Response, flash, redirect, ur
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from models import *
 
 from dotenv import load_dotenv
 
@@ -27,7 +28,7 @@ def setup_db(app):
 	db.app = app
 	db.init_app(app)
 	db.create_all()
-	
+
 setup_db(app)
 migrate = Migrate(app, db)
 
