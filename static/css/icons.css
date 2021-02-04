@@ -115,7 +115,7 @@
 
 .treatment-icon::before {
 	font-family: 'FontAwesomePro';
-	content: '\f470';
+	content: '\f809';
 	display: inline-block;
 }
 
@@ -128,5 +128,54 @@
 .power-icon::before {
 	font-family: 'FontAwesome';
 	content: '\f2dd';
+	display: inline-block;
+}
+
+
+.strength-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f44b';
+	display: inline-block;
+}
+
+.stamina-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f72e';
+	display: inline-block;
+}
+
+.agility-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f8e1';
+	display: inline-block;
+}
+
+.dexterity-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f470';
+	display: inline-block;
+}
+
+.fighting-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\e03d';
+	display: inline-block;
+}
+
+.intellect-icon::before {
+	font-family: 'FontAwesome';
+	content: '\f808';
+	display: inline-block;
+}
+
+.awareness-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f77a';
+	display: inline-block;
+}
+
+.presence-icon::before {
+	font-family: 'FontAwesomePro';
+	content: '\f77a';
 	display: inline-block;
 }
