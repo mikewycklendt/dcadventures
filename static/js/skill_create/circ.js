@@ -12,7 +12,8 @@ function circ_effect() {
 	const options = [{'val': 'condition', 'div': 'circ-condition'},
 					{'val': 'measure', 'div': 'circ-measure'},
 					{'val': 'level', 'div': 'circ-level'},
-					{'val': 'speed', 'div': 'circ-speed'}]
+					{'val': 'speed', 'div': 'circ-speed'},
+					{'val': 'time', 'div': 'circ-time'}]
 
 	select_opacity(select, options);
 }

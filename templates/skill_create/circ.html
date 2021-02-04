@@ -82,6 +82,20 @@
 				</div>
 			</div>
 
+			<div id="circ-time">
+				<div>
+					<select class="select-sml" id="circ_time" name="circ_time">
+						<option value="">Time Rank Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="circ-condition">
 				<div>
 					<select class="select-sml" id="circ_condition_type" name="circ_condition_type" onchange="circ_condition_type()">
