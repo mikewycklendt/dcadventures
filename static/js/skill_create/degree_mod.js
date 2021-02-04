@@ -67,7 +67,8 @@ function deg_mod_condition_type() {
 function deg_mod_damage_type() {
 	const select = 'deg_mod_damage_type';
 	const options = [{'val': 'inflict', 'div': 'deg-mod-damage-inflict'}, 
-					{'val': 'reduce', 'div': 'deg-mod-damage-reduce'}];
+					{'val': 'reduce', 'div': 'deg-mod-damage-reduce'}, 
+					{'val': 'object', 'div': 'deg-mod-damage-object'}];
 
 	select_opacity(select, options);
 }

@@ -83,6 +83,30 @@
 			</div>
 			
 			<div>
+				<div id="deg-mod-damage-object">
+
+					<div>
+						<select class="select-sml" id="deg_mod_damage_object" name="deg_mod_damage_object">
+							<option value="">Degrees</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="vcenter" style="text-align: center;">
+						More
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_damage_object_effect" name="deg_mod_damage_object_effect">
+							{% for r in repair %}
+								<option value="{{r.type}}">{{r.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+				</div>
 				<div id="deg-mod-damage-inflict">
 	
 					<div>
