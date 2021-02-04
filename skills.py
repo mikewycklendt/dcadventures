@@ -204,7 +204,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							inflict=inflict, direction=direction, value_mod=value_mod, modifier_effect=modifier_effect, modifier_trigger=modifier_trigger, modifier_type=modifier_type, multiple=multiple, tools=tools,
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
-							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity)
+							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair)
 
 
 @skill.route('/skill/create', methods=['POST'])
