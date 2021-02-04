@@ -133,19 +133,19 @@
 
 
 .strength-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f44b';
 	display: inline-block;
 }
 
 .stamina-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f72e';
 	display: inline-block;
 }
 
 .agility-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f8e1';
 	display: inline-block;
 }
@@ -163,7 +163,7 @@
 }
 
 .intellect-icon::before {
-	font-family: 'FontAwesome';
+	font-family: 'FontAwesomePro';
 	content: '\f808';
 	display: inline-block;
 }
