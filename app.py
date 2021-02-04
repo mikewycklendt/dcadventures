@@ -70,6 +70,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
+
 @app.route('/abilities/create')
 def abilities_create():
 
@@ -82,56 +83,56 @@ def abilities_create():
 	db.session.close()
 
 	id = 1
-	icon = 'strength-icon
+	icon = 'strength-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 2
-	icon = 'stamina-icon
+	icon = 'stamina-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 3
-	icon = 'agility-icon
+	icon = 'agility-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 4
-	icon = 'dexterity-icon
+	icon = 'dexterity-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 5
-	icon = 'fighting-icon
+	icon = 'fighting-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 6
-	icon = 'intellect-icon
+	icon = 'intellect-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 7
-	icon = 'awareness-icon
+	icon = 'awareness-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
 	db.session.close()
 
 	id = 8
-	icon = 'presence-icon
+	icon = 'presence-icon'
 	ability = db.session.query(Ability).filter(Ability.id == id).one()
 	ability.icon = icon
 	db.session.commit()
@@ -144,6 +145,7 @@ def abilities_create():
 		print(result.icon)
 
 	return ('abilities icons')
+
 
 '''
 @app.route('/debilitated/create')
