@@ -23,7 +23,8 @@ function deg_mod_type() {
 					{'val': 'knowledge', 'div': 'deg-mod-knowledge'},
 					{'val': 'consequence', 'div': 'deg-mod-consequence'},
 					{'val': 'damage', 'div': 'deg-mod-damage'},
-					{'val': 'action', 'div': 'deg-mod-action'}];
+					{'val': 'action', 'div': 'deg-mod-action'},
+					{'val': 'time', 'div': 'deg-mod-time'}];
 	
 	select_opacity(select, options);
 }

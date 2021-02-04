@@ -168,6 +168,13 @@
 	grid-template-columns: 30% 70%;
 }
 
+#deg-mod-time {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 30% 70%;
+}
+
 #deg-mod-measure-rank {
 	display: none;
 	opacity: 0%;
