@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, Response, flash, redirect, ur
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from db.skill_models import BonusAbility
 
 from dotenv import load_dotenv
 
@@ -33,9 +32,9 @@ setup_db(app)
 migrate = Migrate(app, db)
 
 
-class SkillAbility(db.Model):
-	__tablename__ = 'skill_ability'
-	BonusAbility
+from db.skill_models import BonusAbility
+
+BonusAbility = BonusAbility
 
 
 class Ability(db.Model):
