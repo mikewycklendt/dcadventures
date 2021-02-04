@@ -294,7 +294,7 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 10% 35% 5% 35% 15%;
+	grid-template-columns: 10% 33% 5% 33% 19%;
 	opacity: 0%;
 	transition: all .3s linear;
 }
