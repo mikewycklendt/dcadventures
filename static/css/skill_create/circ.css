@@ -47,7 +47,7 @@
 	gap: .2vw;
 }
 
-#circ-temp {
+#circ-target {
 	display: none;
 	width: 97%;
 	grid-template-columns: 35% 65%;
