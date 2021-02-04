@@ -39,7 +39,7 @@ function dc_time() {
 	check_drop(check, div, entry);
 }
 
-function complex() {
+function dc_complex() {
 	const check = 'complex';
 	const div = 'dc-complexity';
 	const entry = 'dc-entry';
