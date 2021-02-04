@@ -4,6 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 
+from models import setup_db
+from models import SkillBonus
+
+setup_db(app)
 load_dotenv()
 
 import os
@@ -21,10 +25,6 @@ db = SQLAlchemy()
 
 migrate = Migrate(app, db)
 
-from models import setup_db
-from models import SkillBonus
-
-setup_db(app)
 
 
 class SkillAbility(db.Model):
