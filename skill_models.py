@@ -3,13 +3,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-
-from inspect import getsourcefile
-import os.path as path, sys
-current_dir = path.dirname(path.abspath(getsourcefile(lambda:0)))
-sys.path.insert(0, current_dir[:current_dir.rfind(path.sep)])
-from .models import setup_db, SkillBonus  # Replace "my_module" here with the module name.
-sys.path.pop(0)
+from models import setup_db, SkillBonus
 
 load_dotenv()
 
