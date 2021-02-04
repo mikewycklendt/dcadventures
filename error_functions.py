@@ -815,6 +815,8 @@ def integer(value):
 		value = 2345
 	elif value == 'parent':
 		value = 3456
+	elif value == 'speed':
+		value = 4567
 	elif value == '':
 		value = None
 	elif value == 'none':
