@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, Response, flash, redirect, ur
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from models import SkillBonus
+from .models import SkillBonus
 
 from dotenv import load_dotenv
 
