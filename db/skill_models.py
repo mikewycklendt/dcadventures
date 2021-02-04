@@ -19,7 +19,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 db = SQLAlchemy()
 
 
-setup_db(app)
 migrate = Migrate(app, db)
 
 class Ability(db.Model):
