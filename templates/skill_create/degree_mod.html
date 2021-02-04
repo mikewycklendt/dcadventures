@@ -405,8 +405,7 @@
 						</select>
 					</div>
 
-				</div>
-			
+				</div>			
 			
 				<div id="deg-mod-conditions">
 					<div>
@@ -439,7 +438,17 @@
 						</select>
 					</div>
 
-					<div></div>
+					<div>
+						<select class="select-sml" id="deg_mod_condition_turns" name="deg_mod_condition_turns">
+							<option value="">Turns</option>
+							<option value="round">Round</option>
+							<option value="scene">Scene</option>
+							<option value="perm">Permanent</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
