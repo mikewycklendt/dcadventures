@@ -28,6 +28,7 @@ with app.app_context():
   from db.armor_models import *
   from db.vehicle_models import *
   from db.headquarters_models import *
+  from db.descriptor_models import *
 
 
 migrate = Migrate(app, db)
