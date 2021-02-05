@@ -381,10 +381,15 @@ def skill_bonus_post_ability():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	ability = request.get_json()['ability']
+	circumstance = request.get_json()['circumstance']
 
 	skill_id = db_integer(skill_id)
+	ability = db_integer(ability)
 
-	entry = SkillAbility(skill_id = skill_id)
+	entry = SkillAbility(skill_id = skill_id,
+							ability = ability,
+							circumstance = circumstance)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -448,10 +453,45 @@ def skill_bonus_post_check():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	check_type = request.get_json()['check_type']
+	mod = request.get_json()['mod']
+	circumstance = request.get_json()['circumstance']
+	trigger = request.get_json()['trigger']
+	when = request.get_json()['when']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	conflict = request.get_json()['conflict']
+	conflict_range = request.get_json()['conflict_range']
+	conflict_weapon = request.get_json()['conflict_weapon']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	action_type = request.get_json()['action_type']
+	action = request.get_json()['action']
+	free = request.get_json()['free']
 
 	skill_id = db_integer(skill_id)
+	check_type = db_integer(check_type)
+	mod = integer(mod)
+	conflict = integer(conflict)
+	conflict_range = db_integer(conflict_range)
+	action = integer(action)
 
-	entry = SkillCheck(skill_id = skill_id)
+	entry = SkillCheck(skill_id = skill_id,
+						check_type = check_type,
+						mod = mod,
+						circumstance = circumstance,
+						trigger = trigger,
+						when = when,
+						trait_type = trait_type,
+						trait = trait,
+						conflict = conflict,
+						conflict_range = conflict_range,
+						conflict_weapon = conflict_weapon,
+						condition1 = condition1,
+						condition2 = condition2,
+						action_type = action_type,
+						action = action,
+						free = free)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -515,10 +555,95 @@ def skill_bonus_post_circ():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	circ_target = request.get_json()['circ_target']
+	mod = request.get_json()['mod']
+	effect = request.get_json()['effect']
+	speed = request.get_json()['speed']
+	temp = request.get_json()['temp']
+	target = request.get_json()['target']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	time = request.get_json()['time']
+	condition_type = request.get_json()['condition_type']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	conditions = request.get_json()['conditions']
+	conditions_effect = request.get_json()['conditions_effect']
+	measure_effect = request.get_json()['measure_effect']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	keyword = request.get_json()['keyword']
+	cumulative = request.get_json()['cumulative']
+	optional = request.get_json()['optional']
+	lasts = request.get_json()['lasts']
+	turns = request.get_json()['turns']
+	unit_time = request.get_json()['unit_time']
+	time_units = request.get_json()['time_units']
+	time_rank = request.get_json()['time_rank']
+	circumstance = request.get_json()['circumstance']
 
 	skill_id = db_integer(skill_id)
+	mod = integer(mod)
+	speed = integer(speed)
+	temp = integer(temp)
+	level_type = db_integer(level_type)
+	level = db_integer(level)
+	time = integer(time)
+	conditions = integer(conditions)
+	conditions_effect = integer(conditions_effect)
+	measure_rank_value = integer(measure_rank_value)
+	measure_rank = db_integer(measure_rank)
+	unit_value = integer(unit_value)
+	unit_type = db_integer(unit_type)
+	unit = db_integer(unit)
+	measure_trait_math = db_integer(measure_trait_math)
+	measure_mod = integer(measure_mod)
+	turns = integer(turns)
+	unit_time = integer(unit_time)
+	time_units = db_integer(time_units)
+	time_rank = integer(time_rank)
 
-	entry = SkillCirc(skill_id = skill_id)
+	entry = SkillCirc(skill_id = skill_id,
+						circ_target = circ_target,
+						mod = mod,
+						effect = effect,
+						speed = speed,
+						temp = temp,
+						target = target,
+						level_type = level_type,
+						level = level,
+						time = time,
+						condition_type = condition_type,
+						condition1 = condition1,
+						condition2 = condition2,
+						conditions = conditions,
+						conditions_effect = conditions_effect,
+						measure_effect = measure_effect,
+						measure_rank_value = measure_rank_value,
+						measure_rank = measure_rank,
+						unit_value = unit_value,
+						unit_type = unit_type,
+						unit = unit,
+						measure_trait_type = measure_trait_type,
+						measure_trait = measure_trait,
+						measure_trait_math = measure_trait_math,
+						measure_mod = measure_mod,
+						keyword = keyword,
+						cumulative = cumulative,
+						optional = optional,
+						lasts = lasts,
+						turns = turns,
+						unit_time = unit_time,
+						time_units = time_units,
+						time_rank = time_rank,
+						circumstance = circumstance)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -582,10 +707,126 @@ def skill_bonus_post_dc():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	target = request.get_json()['target']
+	dc = request.get_json()['dc']
+	description = request.get_json()['description']
+	value = request.get_json()['value']
+	mod = request.get_json()['mod']
+	math_value = request.get_json()['math_value']
+	math = request.get_json()['math']
+	math_trait_type = request.get_json()['math_trait_type']
+	math_trait = request.get_json()['math_trait']
+	condition = request.get_json()['condition']
+	keyword_check = request.get_json()['keyword_check']
+	levels = request.get_json()['levels']
+	damage = request.get_json()['damage']
+	cover = request.get_json()['cover']
+	complex = request.get_json()['complex']
+	measure = request.get_json()['measure']
+	change_action = request.get_json()['change_action']
+	conceal = request.get_json()['conceal']
+	action = request.get_json()['action']
+	action_when = request.get_json()['action_when']
+	damage_type = request.get_json()['damage_type']
+	inflict_type = request.get_json()['inflict_type']
+	inflict_flat = request.get_json()['inflict_flat']
+	inflict_trait_type = request.get_json()['inflict_trait_type']
+	inflict_trait = request.get_json()['inflict_trait']
+	inflict_math = request.get_json()['inflict_math']
+	inflict_mod = request.get_json()['inflict_mod']
+	inflict_bonus = request.get_json()['inflict_bonus']
+	damage_mod = request.get_json()['damage_mod']
+	damage_consequence = request.get_json()['damage_consequence']
+	measure_effect = request.get_json()['measure_effect']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	condition_turns = request.get_json()['condition_turns']
+	keyword = request.get_json()['keyword']
+	complexity = request.get_json()['complexity']
 
 	skill_id = db_integer(skill_id)
+	value = integer(value)
+	mod = integer(mod)
+	math_value = integer(math_value)
+	math = db_integer(math)
+	action = db_integer(action)
+	inflict_flat = integer(inflict_flat)
+	inflict_math = db_integer(inflict_math)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	damage_consequence = db_integer(damage_consequence)
+	measure_rank_value = integer(measure_rank_value)
+	measure_rank = db_integer(measure_rank)
+	unit_value = integer(math_value)
+	unit_type = db_integer(unit_type)
+	unit = db_integer(unit)
+	measure_trait_math = db_integer(measure_trait_math)
+	measure_mod = integer(measure_mod)
+	level_type = db_integer(level_type)
+	level = db_integer(level)
+	condition_turns = integer(condition_turns)
+	complexity = db_integer(complexity)
 
-	entry = SkillDC(skill_id = skill_id)
+	entry = SkillDC(skill_id = skill_id,
+					target = target,
+					dc = dc,
+					description = description,
+					value = value,
+					mod = mod,
+					math_value = math_value,
+					math = math,
+					math_trait_type = math_trait_type,
+					math_trait = math_trait,
+					condition = condition,
+					keyword_check = keyword_check,
+					levels = levels,
+					damage = damage,
+					cover = cover,
+					complex = complex,
+					measure = measure,
+					change_action = change_action,
+					conceal = conceal,
+					action = action,
+					action_when = action_when,
+					damage_type = damage_type,
+					inflict_type = inflict_type,
+					inflict_flat = inflict_flat,
+					inflict_trait_type = inflict_trait_type,
+					inflict_trait = inflict_trait,
+					inflict_math = inflict_math,
+					inflict_mod = inflict_mod,
+					inflict_bonus = inflict_bonus,
+					damage_mod = damage_mod,
+					damage_consequence = damage_consequence,
+					measure_effect = measure_effect,
+					measure_rank_value = measure_rank_value,
+					measure_rank = measure_rank,
+					unit_value = unit_value,
+					unit_type = unit_type,
+					unit = unit,
+					measure_trait_type = measure_trait_type,
+					measure_trait = measure_trait,
+					measure_trait_math = measure_trait_math,
+					measure_mod = measure_mod,
+					level_type = level_type,
+					level = level,
+					condition1 = condition1,
+					condition2 = condition2,
+					condition_turns = condition_turns,
+					keyword = keyword,
+					complexity = complexity)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -649,10 +890,140 @@ def skill_bonus_post_degree():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	target = request.get_json()['target']
+	value = request.get_json()['value']
+	type = request.get_json()['type']
+	action = request.get_json()['action']
+	time = request.get_json()['time']
+	recovery = request.get_json()['recovery']
+	damage_type = request.get_json()['damage_type']
+	object = request.get_json()['object']
+	object_effect = request.get_json()['object_effect']
+	inflict_type = request.get_json()['inflict_type']
+	inflict_flat = request.get_json()['inflict_flat']
+	inflict_trait_type = request.get_json()['inflict_trait_type']
+	inflict_trait = request.get_json()['inflict_trait']
+	inflict_math = request.get_json()['inflict_math']
+	inflict_mod = request.get_json()['inflict_mod']
+	inflict_bonus = request.get_json()['inflict_bonus']
+	damage_mod = request.get_json()['damage_mod']
+	damage_consequence = request.get_json()['damage_consequence']
+	consequence_action_type = request.get_json()['consequence_action_type']
+	consequence_action = request.get_json()['consequence_action']
+	consequence_trait_type = request.get_json()['consequence_trait_type']
+	consequence_trait = request.get_json()['consequence_trait']
+	consequence = request.get_json()['consequence']
+	knowledge = request.get_json()['knowledge']
+	knowledge_count = request.get_json()['knowledge_count']
+	knowledge_specificity = request.get_json()['knowledge_specificity']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	level_direction = request.get_json()['level_direction']
+	circumstance = request.get_json()['circumstance']
+	circ_target = request.get_json()['circ_target']
+	measure_effect = request.get_json()['measure_effect']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	condition_type = request.get_json()['condition_type']
+	condition_damage_value = request.get_json()['condition_damage_value']
+	condition_damage = request.get_json()['condition_damage']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	condition_turns = request.get_json()['condition_turns']
+	keyword = request.get_json()['keyword']
+	nullify = request.get_json()['nullify']
+	cumulative = request.get_json()['cumulative']
+	linked = request.get_json()['linked']
 
 	skill_id = db_integer(skill_id)
+	value = integer(value)
+	action = db_integer(action)
+	time = integer(time)
+	object = integer(object)
+	inflict_flat = integer(inflict_flat)
+	inflict_math = db_integer(inflict_math)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	damage_consequence = db_integer(damage_consequence)
+	consequence_action = integer(consequence_action)
+	consequence = db_integer(consequence)
+	knowledge_count = integer(knowledge_count)
+	level_type = db_integer(level_type)
+	level = db_integer(level)
+	level_direction = integer(level_direction)
+	circumstance = db_integer(circumstance)
+	measure_rank_value = integer(measure_rank_value)
+	measure_rank = db_integer(measure_rank)
+	unit_value = integer(unit_value)
+	unit_type = db_integer(unit_type)
+	unit = db_integer(unit)
+	measure_trait_math = db_integer(measure_trait_math)
+	measure_mod = integer(measure_mod)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	condition_turns = integer(condition_turns)
+	nullify = integer(nullify)
 
-	entry = SkillDegree(skill_id = skill_id)
+	entry = SkillDegree(skill_id = skill_id,
+						target = target,
+						value = value,
+						type = type,
+						action = action,
+						time = time,
+						recovery = recovery,
+						damage_type = damage_type,
+						object = object,
+						object_effect = object_effect,
+						inflict_type = inflict_type,
+						inflict_flat = inflict_flat,
+						inflict_trait_type = inflict_trait_type,
+						inflict_trait = inflict_trait,
+						inflict_math = inflict_math,
+						inflict_mod = inflict_mod,
+						inflict_bonus = inflict_bonus,
+						damage_mod = damage_mod,
+						damage_consequence = damage_consequence,
+						consequence_action_type = consequence_action_type,
+						consequence_action = consequence_action,
+						consequence_trait_type = consequence_trait_type,
+						consequence_trait = consequence_trait,
+						consequence = consequence,
+						knowledge = knowledge,
+						knowledge_count = knowledge_count,
+						knowledge_specificity = knowledge_specificity,
+						level_type = level_type,
+						level = level,
+						level_direction = level_direction,
+						circumstance = circumstance,
+						circ_target = circ_target,
+						measure_effect = measure_effect,
+						measure_rank_value = measure_rank_value,
+						measure_rank = measure_rank,
+						unit_value = unit_value,
+						unit_type = unit_type,
+						unit = unit,
+						measure_trait_type = measure_trait_type,
+						measure_trait = measure_trait,
+						measure_trait_math = measure_trait_math,
+						measure_mod = measure_mod,
+						condition_type = condition_type,
+						condition_damage_value = condition_damage_value,
+						condition_damage = condition_damage,
+						condition1 = condition1,
+						condition2 = condition2,
+						condition_turns = condition_turns,
+						keyword = keyword,
+						nullify = nullify,
+						cumulative = cumulative,
+						linked = linked)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -716,10 +1087,46 @@ def skill_bonus_post_opposed():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	attached = request.get_json()['attached']
+	frequency = request.get_json()['frequency']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	opponent_trait_type = request.get_json()['opponent_trait_type']
+	opponent_trait = request.get_json()['opponent_trait']
+	opponent_mod = request.get_json()['opponent_mod']
+	player_check = request.get_json()['player_check']
+	opponent_check = request.get_json()['opponent_check']
+	secret = request.get_json()['secret']
+	recurring = request.get_json()['recurring']
+	multiple = request.get_json()['multiple']
+	recurring_value = request.get_json()['recurring_value']
+	recurring_units = request.get_json()['recurring_units']
 
 	skill_id = db_integer(skill_id)
+	mod = integer(mod)
+	opponent_mod = integer(opponent_mod)
+	player_check = db_integer(player_check)
+	opponent_check = db_integer(opponent_check)
+	recurring_value = integer(recurring_value)
+	recurring_units = db_integer(recurring_units)
 
-	entry = SkillOpposed(skill_id = skill_id)
+	entry = SkillOpposed(skill_id = skill_id,
+						attached = attached,
+						frequency = frequency,
+						trait_type = trait_type,
+						trait = trait,
+						mod = mod,
+						opponent_trait_type = opponent_trait_type,
+						opponent_trait = opponent_trait,
+						opponent_mod = opponent_mod,
+						player_check = player_check,
+						opponent_check = opponent_check,
+						secret = secret,
+						recurring = recurring,
+						multiple = multiple,
+						recurring_value = recurring_value,
+						recurring_units = recurring_units)			
 
 	db.session.add(entry)
 	db.session.commit()
@@ -783,10 +1190,55 @@ def skill_bonus_post_time():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	type = request.get_json()['type']
+	value_type = request.get_json()['value_type']
+	rank1 = request.get_json()['rank1']
+	rank1_value = request.get_json()['rank1_value']
+	rank_math = request.get_json()['rank_math']
+	rank2 = request.get_json()['rank2']
+	rank2_value = request.get_json()['rank2_value']
+	value = request.get_json()['value']
+	units = request.get_json()['units']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	math = request.get_json()['math']
+	math_value = request.get_json()['math_value']
+	recovery = request.get_json()['recovery']
+	recovery_penalty = request.get_json()['recovery_penalty']
+	recovery_time = request.get_json()['recovery_time']
+	recovery_incurable = request.get_json()['recovery_incurable']
 
 	skill_id = db_integer(skill_id)
+	rank1 = db_integer(rank1)
+	rank1_value = integer(rank1_value)
+	rank_math = db_integer(rank_math)
+	rank2 = db_integer(rank2)
+	rank2_value = integer(rank2_value)
+	value = integer(value)
+	units = db_integer(units)
+	math = db_integer(math)
+	math_value = integer(math_value)
+	recovery_penalty = integer(recovery_penalty)
+	recovery_time = integer(recovery_time)
 
-	entry = SkillTime(skill_id = skill_id)
+	entry = SkillTime(skill_id = skill_id,
+						type = type,
+						value_type = value_type,
+						rank1 = rank1,
+						rank1_value = rank1_value,
+						rank_math = rank_math,
+						rank2 = rank2,
+						rank2_value = rank2_value,
+						value = value,
+						units = units,
+						trait_type = trait_type,
+						trait = trait,
+						math = math,
+						math_value = math_value,
+						recovery = recovery,
+						recovery_penalty = recovery_penalty,
+						recovery_time = recovery_time,
+						recovery_incurable = recovery_incurable)
 
 	db.session.add(entry)
 	db.session.commit()

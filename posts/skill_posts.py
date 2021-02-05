@@ -20,12 +20,18 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ
 
 
 
 
 def skill_ability_post(entry, body, cells):
+
+	ability = entry.ability
+	circumstance = entry.circumstance
+
+	ability = get_name(Ability, ability)
+
 
 
 	body = send(cells, body)
@@ -36,6 +42,37 @@ def skill_ability_post(entry, body, cells):
 	
 def skill_check_post(entry, body, cells):
 
+	check_type = entry.check_type
+	mod = entry.mod
+	circumstance = entry.circumstance
+	trigger = entry.trigger
+	when = entry.when
+	trait_type = entry.trait_type
+	trait = entry.trait
+	conflict = entry.conflict
+	conflict_range = entry.conflict_range
+	conflict_weapon = entry.conflict_weapon
+	condition1 = entry.condition1
+	condition2 = entry.condition2
+	action_type = entry.action_type
+	action = entry.action
+	free = entry.free
+	
+	
+	check_type = get_name(Check, check_type)
+	mod = integer_convert(mod)
+	conflict = get_name(ConflictAction, conflict)
+	conflict_range = get_name(Ranged, conflict_range)
+	action = action_convert(action_type, action)
+	
+
+	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	when = selects(when, check_type_select)
+
+
+
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+
 
 	body = send(cells, body)
 
@@ -45,6 +82,77 @@ def skill_check_post(entry, body, cells):
 	
 def skill_circ_post(entry, body, cells):
 
+	circ_target = entry.circ_target
+	mod = entry.mod
+	effect = entry.effect
+	speed = entry.speed
+	temp = entry.temp
+	target = entry.target
+	level_type = entry.level_type
+	level = entry.level
+	time = entry.time
+	condition_type = entry.condition_type
+	condition1 = entry.condition1
+	condition2 = entry.condition2
+	conditions = entry.conditions
+	conditions_effect = entry.conditions_effect
+	measure_effect = entry.measure_effect
+	measure_rank_value = entry.measure_rank_value
+	measure_rank = entry.measure_rank
+	unit_value = entry.unit_value
+	unit_type = entry.unit_type
+	unit = entry.unit
+	measure_trait_type = entry.measure_trait_type
+	measure_trait = entry.measure_trait
+	measure_trait_math = entry.measure_trait_math
+	measure_mod = entry.measure_mod
+	keyword = entry.keyword
+	cumulative = entry.cumulative
+	optional = entry.optional
+	lasts = entry.lasts
+	turns = entry.turns
+	unit_time = entry.unit_time
+	time_units = entry.time_units
+	time_rank = entry.time_rank
+	circumstance = entry.circumstance
+
+	mod = integer_convert(mod)
+	speed = integer_convert(speed)
+	temp = integer_convert(temp)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	time = integer_convert(time)
+	conditions = integer_convert(conditions)	
+	measure_rank_value = integer_convert(measure_rank_value)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_value = integer_convert(unit_value)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_trait_math = math_convert()
+	measure_mod = integer_convert(measure_mod)
+	turns = integer_convert(turns)
+	unit_time = integer_convert(unit_time)
+	time_units = get_name(Unit, time_units)
+	time_rank = integer_convert(time_rank)
+
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	circ_target = selects(circ_target, targets_select)
+
+	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}]
+	target = selects(target, circ_targets_select)
+
+	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
+	conditions_effect = selects(conditions_effect, updown)
+
+
+	circ_effect_select = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'temp', 'name': 'Effect Temporary'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
+
+	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+
+	lasts = [{'type': '', 'name': 'Lasts'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'time', 'name': 'Time'}, {'type': 'rank', 'name': 'Time Rank'}]
 
 	body = send(cells, body)
 
@@ -53,6 +161,100 @@ def skill_circ_post(entry, body, cells):
 	return (body)
 	
 def skill_dc_post(entry, body, cells):
+
+	target = entry.target
+	dc = entry.dc
+	description = entry.description
+	value = entry.value
+	mod = entry.mod
+	math_value = entry.math_value
+	math = entry.math
+	math_trait_type = entry.math_trait_type
+	math_trait = entry.math_trait
+	condition = entry.condition
+	keyword_check = entry.keyword_check
+	levels = entry.levels
+	damage = entry.damage
+	cover = entry.cover
+	complex = entry.complex
+	measure = entry.measure
+	change_action = entry.change_action
+	conceal = entry.conceal
+	action = entry.action
+	action_when = entry.action_when
+	damage_type = entry.damage_type
+	inflict_type = entry.inflict_type
+	inflict_flat = entry.inflict_flat
+	inflict_trait_type = entry.inflict_trait_type
+	inflict_trait = entry.inflict_trait
+	inflict_math = entry.inflict_math
+	inflict_mod = entry.inflict_mod
+	inflict_bonus = entry.inflict_bonus
+	damage_mod = entry.damage_mod
+	damage_consequence = entry.damage_consequence
+	measure_effect = entry.measure_effect
+	measure_rank_value = entry.measure_rank_value
+	measure_rank = entry.measure_rank
+	unit_value = entry.unit_value
+	unit_type = entry.unit_type
+	unit = entry.unit
+	measure_trait_type = entry.measure_trait_type
+	measure_trait = entry.measure_trait
+	measure_trait_math = entry.measure_trait_math
+	measure_mod = entry.measure_mod
+	level_type = entry.level_type
+	level = entry.level
+	condition1 = entry.condition1
+	condition2 = entry.condition2
+	condition_turns = entry.condition_turns
+	keyword = entry.keyword
+	complexity = entry.complexity
+
+	value = integer_convert(value)
+	mod = integer_convert(mod)
+	math_value = integer_convert(math_value)
+	math = math_convert(math)
+	action = get_name(Action, action)
+	inflict_flat = integer_convert(inflict_flat)
+	inflict_math = math_convert(inflict_math)
+	inflict_mod = integer_convert(inflict_mod)
+	inflict_bonus = integer_convert(inflict_bonus)
+	damage_mod = integer_convert(damage_mod)
+	damage_consequence = get_name(Consequence, damage_consequence)
+	measure_rank_value = integer_convert(measure_rank_value)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_value = integer_convert(unit_value)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_trait_math = math_convert(measure_trait_math)
+	measure_mod = integer_convert(measure_mod)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition_turns = integer_convert(condition_turns)
+	complexity = get_name(Complex, complexity)
+
+
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	target = selects(target, targets_select)
+	
+	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	action_when = selects(action_when, check_type_select)
+
+	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}]
+	condition1 = selects(condition1, conditions_select)
+	condition2 = selects(condition2, conditions_select)
+
+	
+	
+	
+	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'choice', 'name': 'Chosen by Player'}]
+
+	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+
+	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+
 
 
 	body = send(cells, body)
@@ -63,6 +265,118 @@ def skill_dc_post(entry, body, cells):
 
 def skill_degree_post(entry, body, cells):
 
+	target = entry.target
+	value = entry.value
+	type = entry.type
+	action = entry.action
+	time = entry.time
+	recovery = entry.recovery
+	damage_type = entry.damage_type
+	object = entry.object
+	object_effect = entry.object_effect
+	inflict_type = entry.inflict_type
+	inflict_flat = entry.inflict_flat
+	inflict_trait_type = entry.inflict_trait_type
+	inflict_trait = entry.inflict_trait
+	inflict_math = entry.inflict_math
+	inflict_mod = entry.inflict_mod
+	inflict_bonus = entry.inflict_bonus
+	damage_mod = entry.damage_mod
+	damage_consequence = entry.damage_consequence
+	consequence_action_type = entry.consequence_action_type
+	consequence_action = entry.consequence_action
+	consequence_trait_type = entry.consequence_trait_type
+	consequence_trait = entry.consequence_trait
+	consequence = entry.consequence
+	knowledge = entry.knowledge
+	knowledge_count = entry.knowledge_count
+	knowledge_specificity = entry.knowledge_specificity
+	level_type = entry.level_type
+	level = entry.level
+	level_direction = entry.level_direction
+	circumstance = entry.circumstance
+	circ_target = entry.circ_target
+	measure_effect = entry.measure_effect
+	measure_rank_value = entry.measure_rank_value
+	measure_rank = entry.measure_rank
+	unit_value = entry.unit_value
+	unit_type = entry.unit_type
+	unit = entry.unit
+	measure_trait_type = entry.measure_trait_type
+	measure_trait = entry.measure_trait
+	measure_trait_math = entry.measure_trait_math
+	measure_mod = entry.measure_mod
+	condition_type = entry.condition_type
+	condition_damage_value = entry.condition_damage_value
+	condition_damage = entry.condition_damage
+	condition1 = entry.condition1
+	condition2 = entry.condition2
+	condition_turns = entry.condition_turns
+	keyword = entry.keyword
+	nullify = entry.nullify
+	cumulative = entry.cumulative
+	linked = entry.linked
+
+	value = integer_convert(value)
+	action = get_name(Action, action)
+	time = integer_convert(time)
+	object = integer_convert(object)
+	inflict_flat = integer_convert(inflict_flat)
+	inflict_math = math_convert(inflict_math)
+	inflict_mod = integer_convert(inflict_mod)
+	inflict_bonus = integer_convert(inflict_bonus)
+	damage_mod = integer_convert(damage_mod)
+	damage_consequence = get_name(Consequence, damage_consequence)
+	consequence_action = action_convert(consequence_action_type, consequence_action)
+	consequence = get_name(Consequence, consequence)
+	knowledge_count = integer_convert(knowledge_count)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	circumstance = get_circ(SkillCirc, circumstance)
+	measure_rank_value = integer_convert(measure_rank_value)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_value = integer_convert(unit_value)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_trait_math = math_convert(measure_trait_math)
+	measure_mod = integer_convert(measure_mod)
+	condition_damage_value = integer_convert(condition_damage_value)
+	condition_turns = integer_convert(condition_turns)
+	nullify = integer_convert(nullify)
+
+	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'One Level Up'}, {'type': -1, 'name': 'One Level Down'}]
+	level_direction = selects(level_direction, updown) 
+	
+	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
+	condition_damage = selects(condition_damage, updown)
+	
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	target = selects(target, targets_select)
+	circ_target = selects(circ_target, targets_select)
+
+	repair_select = [{'type': '', 'name': 'Effect'}, {'type': 'stable', 'name': 'Stable'}, {'type': 'broke', 'name': 'Broken'}]
+	object_effect = selects(object_effect, repair_select)
+
+	specificity_select = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
+	knowledge_specificity = selects(knowledge_specificity, specificity_select)
+
+	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
+	condition1 = selects(condition1, conditions_select)
+	condition2 = selects(condition2, conditions_select)
+
+
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
+
+	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+
+	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+
+	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+
+	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+
 
 	body = send(cells, body)
 
@@ -72,6 +386,34 @@ def skill_degree_post(entry, body, cells):
 	
 def skill_opposed_post(entry, body, cells):
 
+	attached = entry.attached
+	frequency = entry.frequency
+	trait_type = entry.trait_type
+	trait = entry.trait
+	mod = entry.mod
+	opponent_trait_type = entry.opponent_trait_type
+	opponent_trait = entry.opponent_trait
+	opponent_mod = entry.opponent_mod
+	player_check = entry.player_check
+	opponent_check = entry.opponent_check
+	secret = entry.secret
+	recurring = entry.recurring
+	multiple = entry.multiple
+	recurring_value = entry.recurring_value
+	recurring_units = entry.recurring_units
+
+	mod = integer_convert(mod)
+	opponent_mod = integer_convert(opponent_mod)
+	player_check = get_name(Check, player_check)
+	opponent_check = get_name(Check, opponent_check)
+	recurring_value = integer_convert(recurring_value)
+	recurring_units = get_name(Unit, recurring_units)
+
+	frequency_select = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
+	frequency = selects(frequency, frequency_select)
+
+	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}]
+	attached = selects(attached, attached_select)
 
 
 	body = send(cells, body)
@@ -81,6 +423,45 @@ def skill_opposed_post(entry, body, cells):
 	return (body)
 
 def skill_time_post(entry, body, cells):
+
+	type = entry.type
+	value_type = entry.value_type
+	rank1 = entry.rank1
+	rank1_value = entry.rank1_value
+	rank_math = entry.rank_math
+	rank2 = entry.rank2
+	rank2_value = entry.rank2_value
+	value = entry.value
+	units = entry.units
+	trait_type = entry.trait_type
+	trait = entry.trait
+	math = entry.math
+	math_value = entry.math_value
+	recovery = entry.recovery
+	recovery_penalty = entry.recovery_penalty
+	recovery_time = entry.recovery_time
+	recovery_incurable = entry.recovery_incurable
+
+	
+	rank1 = get_name(Rank, rank1)
+	rank1_value = integer_convert(rank1_value)
+	rank_math = math_convert(rank_math)
+	rank2 = get_name(Rank, rank2)
+	rank2_value = integer_convert(rank2_value)
+	value = integer_convert(value)
+	units = get_name(Unit, units)
+	math = math_convert(math)
+	math_value = integer_convert(math_value)
+	recovery_penalty = integer_convert(recovery_penalty)
+	recovery_time = integer_convert(recovery_time)
+
+	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+	type = selects(type, time_effect_select)
+
+
+
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Measurement'}, {'type': 'gm', 'name': 'Set by GM'}]
+
 
 
 	body = send(cells, body)

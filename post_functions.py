@@ -193,6 +193,30 @@ def get_name(Table, value, name=''):
 
 	
 	return (value)
+	
+def get_circ(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value == 0:
+		value = 'All'
+		return (value)
+
+	if value == 1234:
+		value = name
+		return (value)
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			value = query.keyword
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	
+	return (value)
 
 def get_description(Table, value, name=''):
 	
@@ -225,13 +249,13 @@ def action_convert(value, action_value):
 
 	return (a)
 
-def math_convert(Table, name):
+def math_convert(name):
 	
 	db = SQLAlchemy()
 
 	if name is not None:
 		try:
-			query = db.session.query(Table).filter_by(id=name).one()
+			query = db.session.query(Math).filter_by(id=name).one()
 			name = query.symbol
 		except:
 			print('invalid id')

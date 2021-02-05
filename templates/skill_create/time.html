@@ -36,7 +36,7 @@
 					<select class="select-sml" id="time_rank1" name="time_rank1">
 						<option value="">Rank</option>
 						{% for m in measure_rank %}
-							<option value="{{m.ud}}">{{m.name}}</option>
+							<option value="{{m.id}}">{{m.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -64,7 +64,7 @@
 					<select class="select-sml" id="time_rank2" name="time_rank2">
 						<option value="">Rank</option>
 						{% for m in measure_rank %}
-							<option value="{{m.ud}}">{{m.name}}</option>
+							<option value="{{m.id}}">{{m.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
