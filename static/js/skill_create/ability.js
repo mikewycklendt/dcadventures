@@ -31,7 +31,9 @@ function ability_submit() {
 			'skill_id': skill_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'ability': ability,
+			'circumstance': circumstance
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

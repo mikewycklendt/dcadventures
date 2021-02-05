@@ -108,9 +108,10 @@ function circ_submit() {
 	const optional = check("circ_optional")
 	const lasts = select("circ_lasts")
 	const turns = select("circ_turns")
-	const unit_time = text("circ_time")
+	const unit_time = text("circ_unit_time")
 	const time_units = select("circ_time_units")
 	const time_rank = select("circ_time_rank")
+	const circumstance = text("circ_circumstance")
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -123,7 +124,40 @@ function circ_submit() {
 			'skill_id': skill_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'circ_target': circ_target,
+			'mod': mod,
+			'effect': effect,
+			'speed': speed,
+			'temp': temp,
+			'target': target,
+			'level_type': level_type,
+			'level': level,
+			'time': time,
+			'condition_type': condition_type,
+			'condition1': condition1,
+			'condition2': condition2,
+			'conditions': conditions,
+			'conditions_effect': conditions_effect,
+			'measure_effect': measure_effect,
+			'measure_rank_value': measure_rank_value,
+			'measure_rank': measure_rank,
+			'unit_value': unit_value,
+			'unit_type': unit_type,
+			'unit': unit,
+			'measure_trait_type': measure_trait_type,
+			'measure_trait': measure_trait,
+			'measure_trait_math': measure_trait_math,
+			'measure_mod': measure_mod,
+			'keyword': keyword,
+			'cumulative': cumulative,
+			'optional': optional,
+			'lasts': lasts,
+			'turns': turns,
+			'unit_time': unit_time,
+			'time_units': time_units,
+			'time_rank': time_rank,
+			'circumstance': circumstance
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

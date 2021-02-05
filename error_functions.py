@@ -19,6 +19,83 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+def integer(value):
+
+	if value == 'perm':
+		value = 123
+	elif value == 'rank':
+		value = 121
+	elif value == 'any':
+		value = 567
+	elif value == 'always':
+		value = 222
+	elif value == 'round':
+		value = 333
+	elif value == 'extra':
+		value = 111
+	elif value == 'null':
+		value = 444
+	elif value == 'normal':
+		value = 555
+	elif value == 'instant':
+		value = 666
+	elif value == 'distance':
+		value = 777
+	elif value == 'vert':
+		value = 888
+	elif value == 'free':
+		value = 999
+	elif value == 'result':
+		value = 432
+	elif value == 'all':
+		value = 778
+	elif value == 'trait':
+		value = 112
+	elif value == 'imperv':
+		value = 334
+	elif value == 'check':
+		value = 556
+	elif value == 'turn':
+		value = 990	
+	elif value == 'degree':
+		value = 211
+	elif value == 'scene':
+		value = 322
+	elif value == 'auto':
+		value = 433
+	elif value == 'advantage':
+		value = 544
+	elif value == 'bonus':
+		value = 655
+	elif value == 'immune':
+		value = 766
+	elif value == 'penalty':
+		value = 877
+	elif value == 'double':
+		value = 988
+	elif value == 'flat':
+		value = 998
+	elif value == 'x':
+		value = 1234
+	elif value == 'skill':
+		value = 2345
+	elif value == 'parent':
+		value = 3456
+	elif value == 'speed':
+		value = 4567
+	elif value == '':
+		value = None
+	elif value == 'none':
+		value = None
+	else:
+		try:
+			value = int(value)
+		except:
+			print('not an int')
+			print(value)
+
+	return (value)
+	
 def required(value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -765,82 +842,6 @@ def extra_check(value_id, name, errors):
 
 	return (errors)
 
-def integer(value):
-
-	if value == 'perm':
-		value = 123
-	elif value == 'rank':
-		value = 121
-	elif value == 'any':
-		value = 567
-	elif value == 'always':
-		value = 222
-	elif value == 'round':
-		value = 333
-	elif value == 'extra':
-		value = 111
-	elif value == 'null':
-		value = 444
-	elif value == 'normal':
-		value = 555
-	elif value == 'instant':
-		value = 666
-	elif value == 'distance':
-		value = 777
-	elif value == 'vert':
-		value = 888
-	elif value == 'free':
-		value = 999
-	elif value == 'result':
-		value = 432
-	elif value == 'all':
-		value = 778
-	elif value == 'trait':
-		value = 112
-	elif value == 'imperv':
-		value = 334
-	elif value == 'check':
-		value = 556
-	elif value == 'turn':
-		value = 990	
-	elif value == 'degree':
-		value = 211
-	elif value == 'scene':
-		value = 322
-	elif value == 'auto':
-		value = 433
-	elif value == 'advantage':
-		value = 544
-	elif value == 'bonus':
-		value = 655
-	elif value == 'immune':
-		value = 766
-	elif value == 'penalty':
-		value = 877
-	elif value == 'double':
-		value = 988
-	elif value == 'flat':
-		value = 998
-	elif value == 'x':
-		value = 1234
-	elif value == 'skill':
-		value = 2345
-	elif value == 'parent':
-		value = 3456
-	elif value == 'speed':
-		value = 4567
-	elif value == '':
-		value = None
-	elif value == 'none':
-		value = None
-	else:
-		try:
-			value = int(value)
-		except:
-			print('not an int')
-			print(value)
-
-	return (value)
 
 def extra_convert(extra_id):
 

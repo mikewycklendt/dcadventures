@@ -21,116 +21,6 @@ from copy import deepcopy
 db = SQLAlchemy()
 
 
-
-def name(Table, value, name=''):
-	
-	db = SQLAlchemy()
-
-	if value == 0:
-		value = 'All'
-		return (value)
-
-	if value == 1234:
-		value = name
-		return (value)
-
-	if value is not None:
-		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			value = query.name
-		except:
-			print('no entry')
-	else:
-		value = ''
-
-	
-	return (value)
-
-def get_name(Table, value, name=''):
-	
-	db = SQLAlchemy()
-
-	if value == 0:
-		value = 'All'
-		return (value)
-
-	if value == 1234:
-		value = name
-		return (value)
-
-	if value is not None:
-		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			value = query.name
-		except:
-			print('no entry')
-	else:
-		value = ''
-
-	
-	return (value)
-
-def get_description(Table, value, name=''):
-	
-	db = SQLAlchemy()
-
-	if value is not None:
-		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			description = query.description
-		except:
-			print('no entry')
-	else:
-		value = ''
-
-	return (description)
-
-
-def action_convert(value, action_value):
-
-	if value == 'auto':
-		a = 'Automatic'
-	elif value == 'base':
-		action = db.session.query(Action).filter_by(id=action_value).one()
-		a = action.name
-	elif value == 'conflict':
-		action = db.session.query(ConflictAction).filter_by(id=action_value).one()
-		a = action.name
-	else:
-		a = ''
-
-	return (a)
-
-def math_convert(Table, name):
-	
-	db = SQLAlchemy()
-
-	if name is not None:
-		try:
-			query = db.session.query(Table).filter_by(id=name).one()
-			name = query.symbol
-		except:
-			print('invalid id')
-	else:
-		name = ''
-	
-	return (name)
-
-def extra_name(name):
-	
-	db = SQLAlchemy()
-
-	if name is None:
-		name = 'Base Power'
-	else:
-		try:
-			query = db.session.query(Extra).filter_by(id=name).one()
-			name = query.name
-		except:
-			print('invalid id')
-	
-	return (name)
-
 def descriptor_name(name):
 	
 	db = SQLAlchemy()
@@ -254,6 +144,116 @@ def integer_convert(value):
 		value = str(value)
 
 	return (value)
+
+
+def name(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value == 0:
+		value = 'All'
+		return (value)
+
+	if value == 1234:
+		value = name
+		return (value)
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			value = query.name
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	
+	return (value)
+
+def get_name(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value == 0:
+		value = 'All'
+		return (value)
+
+	if value == 1234:
+		value = name
+		return (value)
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			value = query.name
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	
+	return (value)
+
+def get_description(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			description = query.description
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	return (description)
+
+
+def action_convert(value, action_value):
+
+	if value == 'auto':
+		a = 'Automatic'
+	elif value == 'base':
+		action = db.session.query(Action).filter_by(id=action_value).one()
+		a = action.name
+	elif value == 'conflict':
+		action = db.session.query(ConflictAction).filter_by(id=action_value).one()
+		a = action.name
+	else:
+		a = ''
+
+	return (a)
+
+def math_convert(Table, name):
+	
+	db = SQLAlchemy()
+
+	if name is not None:
+		try:
+			query = db.session.query(Table).filter_by(id=name).one()
+			name = query.symbol
+		except:
+			print('invalid id')
+	else:
+		name = ''
+	
+	return (name)
+
+def extra_name(name):
+	
+	db = SQLAlchemy()
+
+	if name is None:
+		name = 'Base Power'
+	else:
+		try:
+			query = db.session.query(Extra).filter_by(id=name).one()
+			name = query.name
+		except:
+			print('invalid id')
+	
+	return (name)
 
 def selects(value, options):
 

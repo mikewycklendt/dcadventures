@@ -78,7 +78,6 @@ function check_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'check_trigger': trigger,
 			'check_type': check_type,
 			'mod': mod,
 			'circumstance': circumstance,
