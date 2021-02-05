@@ -318,7 +318,7 @@ class SkillDegree(db.Model):
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
-	unit_type = db.Column(db.Integer, db.ForeignKey('measurement_typw.id'))
+	unit_type = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
 	unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	measure_trait_type = db.Column(db.String())
 	measure_trait = db.Column(db.String())
