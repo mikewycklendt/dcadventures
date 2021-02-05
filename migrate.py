@@ -29,6 +29,7 @@ with app.app_context():
   from db.vehicle_models import *
   from db.headquarters_models import *
   from db.descriptor_models import *
+  from db.power_models import *
 
 
 migrate = Migrate(app, db)
