@@ -115,7 +115,7 @@ class SkillCirc(db.Model):
 	condition2 = db.Column(db.String())
 	conditions = db.Column(db.Integer)
 	conditions_effect = db.Column(db.Integer)
-	measure_effect = db.column(db.String())
+	measure_effect = db.Column(db.String())
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
