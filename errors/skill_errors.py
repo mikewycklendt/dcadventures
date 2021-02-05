@@ -43,7 +43,7 @@ def skill_ability_post_errors(data):
 
 
 	return (errors)
-s
+
 def skill_check_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}

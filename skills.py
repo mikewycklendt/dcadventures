@@ -377,14 +377,14 @@ def skill_bonus_post_ability():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillAbility(bonus_id = bonus_id)
+	entry = SkillAbility(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -444,14 +444,14 @@ def skill_bonus_post_check():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillCheck(bonus_id = bonus_id)
+	entry = SkillCheck(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -511,14 +511,14 @@ def skill_bonus_post_circ():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillCirc(bonus_id = bonus_id)
+	entry = SkillCirc(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -578,14 +578,14 @@ def skill_bonus_post_dc():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillDC(bonus_id = bonus_id)
+	entry = SkillDC(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -645,14 +645,14 @@ def skill_bonus_post_degree():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillDegree(bonus_id = bonus_id)
+	entry = SkillDegree(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -712,14 +712,14 @@ def skill_bonus_post_opposed():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillOpposed(bonus_id = bonus_id)
+	entry = SkillOpposed(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -779,14 +779,14 @@ def skill_bonus_post_time():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = SkillTime(bonus_id = bonus_id)
+	entry = SkillTime(skill_id = skill_id)
 
 	db.session.add(entry)
 	db.session.commit()
