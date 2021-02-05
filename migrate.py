@@ -22,6 +22,7 @@ db = SQLAlchemy(app)
 with app.app_context():
   from models import *
   from db.skill_models import *
+  from db.advanrtage_modeks import *
 
 migrate = Migrate(app, db)
 
