@@ -189,7 +189,7 @@ function deg_mod_submit() {
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';
 
-	response = fetch('/skill/degree_mod/create', {
+	response = fetch('/skill/degree/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
@@ -262,7 +262,7 @@ function deg_mod_submit() {
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
-			const route = '/skill/degree_mod/delete/'
+			const route = '/skill/degree/delete/'
 			create_table(jsonResponse, deg_mod_grid, route);
 			clear_errors(err_line, errors)
 

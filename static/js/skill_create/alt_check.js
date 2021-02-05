@@ -69,9 +69,9 @@ function check_submit() {
 	const errors = 'check-err';
 	const err_line = 'check-err-line';
 
-	const route = '/skill/alt_check/delete/'
+	const route = '/skill/check/delete/'
 
-	response = fetch('/skill/alt_check/create', {
+	response = fetch('/skill/check/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'skill_id': skill_id,

@@ -359,15 +359,15 @@ def edit_skill_bonus_name():
 
 
 
-@skill.route('/skill//create', methods=['POST'])
-def skill_bonus_post_():
+@skill.route('/skill/ability/create', methods=['POST'])
+def skill_bonus_post_ability():
 
 	body = {}
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill__post_errors(data)
+	errors = skill_ability_post_errors(data)
 
 	error = errors['error']
 	if error:
@@ -382,7 +382,7 @@ def skill_bonus_post_():
 
 	bonus_id = db_integer(bonus_id)
 
-	entry = Headquarters(bonus_id = bonus_id)
+	entry = SkillAbility(bonus_id = bonus_id)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -396,7 +396,7 @@ def skill_bonus_post_():
 	rows = columns	
 	mods = []
 	cells = []
-	table_id = 'TABLEID-------'
+	table_id = 'ability'
 	spot = table_id + '-spot'
 
 	body['table_id'] = table_id
@@ -407,16 +407,16 @@ def skill_bonus_post_():
 	body['mods'] = []
 	body['font'] = font
 	
-	body = skill__post(entry, body, cells)
+	body = skill_ability_post(entry, body, cells)
 
 	db.session.close()
 
 	return jsonify(body)
 
-@skill.route('/skill//delete/<id>', methods=['DELETE'])
-def delete_skill_bonus_(id):
+@skill.route('/skill/ability/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_ability(id):
 	try:
-		db.session.query().filter_by(id=id).delete()
+		db.session.query(SkillAbility).filter_by(id=id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
@@ -424,6 +424,840 @@ def delete_skill_bonus_(id):
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/check/create', methods=['POST'])
+def skill_bonus_post_check():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_check_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillCheck(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'check'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_check_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/check/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_check(id):
+	try:
+		db.session.query(SkillCheck).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/circ/create', methods=['POST'])
+def skill_bonus_post_circ():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_circ_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillCirc(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'circ'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_circ_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/circ/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_circ(id):
+	try:
+		db.session.query(SkillCirc).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/dc/create', methods=['POST'])
+def skill_bonus_post_dc():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_dc_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillDC(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'dc'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_dc_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/dc/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_dc(id):
+	try:
+		db.session.query(SkillDC).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/degree/create', methods=['POST'])
+def skill_bonus_post_degree():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_degree_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillDegree(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'deg-mod'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_degree_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/degree/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_degree(id):
+	try:
+		db.session.query(SkillDegree).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/opposed/create', methods=['POST'])
+def skill_bonus_post_opposed():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_opposed_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillOpposed(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'opposed'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_opposed_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/opposed/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_opposed(id):
+	try:
+		db.session.query(SkillOpposed).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/time/create', methods=['POST'])
+def skill_bonus_post_time():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_time_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	bonus_id = request.get_json()['bonus_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+
+	bonus_id = db_integer(bonus_id)
+
+	entry = SkillTime(bonus_id = bonus_id)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'time'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_time_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/time/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_time(id):
+	try:
+		db.session.query(SkillTime).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/modifiers/create', methods=['POST'])
+def skill_post_modifiers():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_modifiers_post_errors(data)
+
+	skill_id = request.get_json()['skill_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	bonus = request.get_json()['bonus']
+	bonus_type = request.get_json()['bonus_type']
+	penalty = request.get_json()['penalty']
+	penalty_type = request.get_json()['penalty_type']
+	trigger = request.get_json()['trigger']
+	bonus_effect = request.get_json()['bonus_effect']
+	penalty_effect = request.get_json()['penalty_effect']
+	environment = request.get_json()['environment']
+	environment_other = request.get_json()['environment_other']
+	sense = request.get_json()['sense']
+	mod_range = request.get_json()['mod_range']
+	subsense = request.get_json()['subsense']
+	cover = request.get_json()['cover']
+	conceal = request.get_json()['conceal']
+	maneuver = request.get_json()['maneuver']
+	weapon_melee = request.get_json()['weapon_melee']
+	weapon_ranged = request.get_json()['weapon_ranged']
+	tools = request.get_json()['tools']
+	condition = request.get_json()['condition']
+	power = request.get_json()['power']
+	consequence = request.get_json()['consequence']
+	creature = request.get_json()['creature']
+	creature_other = request.get_json()['creature_other']
+	emotion = request.get_json()['emotion']
+	emotion_other = request.get_json()['emotion_other']
+	conflict = request.get_json()['conflict']
+	profession = request.get_json()['profession']
+	profession_other = request.get_json()['profession_other']
+	bonus_trait_type = request.get_json()['bonus_trait_type']
+	bonus_trait = request.get_json()['bonus_trait']
+	bonus_check = request.get_json()['bonus_check']
+	bonus_check_range = request.get_json()['bonus_check_range']
+	bonus_conflict = request.get_json()['bonus_conflict']
+	penalty_trait_type = request.get_json()['penalty_trait_type']
+	penalty_trait = request.get_json()['penalty_trait']
+	penalty_check = request.get_json()['penalty_check']
+	penalty_check_range = request.get_json()['penalty_check_range']
+	penalty_conflict = request.get_json()['penalty_conflict']
+	bonus_active_defense = request.get_json()['bonus_active_defense']
+	bonus_conflict_defend = request.get_json()['bonus_conflict_defend']
+	penalty_active_defense = request.get_json()['penalty_active_defense']
+	penalty_conflict_defend = request.get_json()['penalty_conflict_defend']
+	multiple = request.get_json()['multiple']
+	multiple_count = request.get_json()['multiple_count']
+	lasts = request.get_json()['lasts']
+	skill = request.get_json()['skill']
+	light = request.get_json()['light']
+
+	error = errors['error']
+
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	body = {}
+
+	try:
+		environment = db_integer(environment)
+		sense = db_integer(sense)
+		mod_range = db_integer(mod_range)
+		subsense = db_integer(subsense)
+		cover = db_integer(cover)
+		conceal = db_integer(conceal)
+		maneuver = db_integer(maneuver)
+		weapon_melee = db_integer(weapon_melee)
+		weapon_ranged = db_integer(weapon_ranged)
+		consequence = db_integer(consequence)
+		creature = db_integer(creature)
+		emotion = db_integer(emotion)
+		conflict = db_integer(conflict)
+		profession = db_integer(profession)
+		bonus_check = db_integer(bonus_check)
+		bonus_check_range = db_integer(bonus_check_range)
+		bonus_conflict = db_integer(bonus_conflict)
+		penalty_check = db_integer(penalty_check)
+		penalty_check_range = db_integer(penalty_check_range)
+		penalty_conflict = db_integer(penalty_conflict)
+		skill = db_integer(skill)
+		light = db_integer(light)
+		skill_id = db_integer(skill_id)
+	
+
+		body['new'] = False
+		new_items = []
+
+		if emotion == 'other':	
+			entry = Emotion(name=emotion_other)
+			db.session.add(entry)
+			db.session.commit()
+			emotion = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_emotion'
+			new_items.append(item)
+			db.session.close()
+
+		if environment == 'other':	
+			entry = Environment(name=environment_other)
+			db.session.add(entry)
+			db.session.commit()
+			environment = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_environment'
+			new_items.append(item)
+			db.session.close()
+
+		if creature == 'other':	
+			entry = Creature(name=creature_other)
+			db.session.add(entry)
+			db.session.commit()
+			creature = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_creature'
+			new_items.append(item)
+			db.session.close()
+
+		if profession == 'other':	
+			entry = Job(name=profession_other)
+			db.session.add(entry)
+			db.session.commit()
+			profession = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = False
+			item['field'] = 'modifiers_profession'
+			new_items.append(item)
+			db.session.close()
+
+		body['new_items'] = new_items
+
+		skill_id = integer(skill_id)
+		skill = integer(skill)
+		light = integer(light)
+		bonus = integer(bonus)
+		penalty = integer(penalty)
+		environment = integer(environment)
+		sense = integer(sense)
+		mod_range = integer(mod_range)
+		subsense = integer(subsense)
+		cover = integer(cover)
+		conceal = integer(conceal)
+		maneuver = integer(maneuver)
+		weapon_melee = integer(weapon_melee)
+		weapon_ranged = integer(weapon_ranged)
+		consequence = integer(consequence)
+		creature = integer(creature)
+		emotion = integer(emotion)
+		conflict = integer(conflict)
+		profession = integer(profession)
+		bonus_check = integer(bonus_check)
+		bonus_check_range = integer(bonus_check_range)
+		bonus_conflict = integer(bonus_conflict)
+		penalty_check = integer(penalty_check)
+		penalty_check_range = integer(penalty_check_range)
+		penalty_conflict = integer(penalty_conflict)
+		multiple_count = integer(multiple_count)
+		lasts = integer(lasts)
+		skill = integer(skill)
+		light = integer(light)
+
+		entry = SkillMod(skill_id = skill_id,
+							bonus = bonus,
+							bonus_type = bonus_type,
+							penalty = penalty,
+							penalty_type = penalty_type,
+							trigger = trigger,
+							bonus_effect = bonus_effect,
+							penalty_effect = penalty_effect,
+							environment = environment,
+							environment_other = environment_other,
+							sense = sense,
+							mod_range = mod_range,
+							subsense = subsense,
+							cover = cover,
+							conceal = conceal,
+							maneuver = maneuver,
+							weapon_melee = weapon_melee,
+							weapon_ranged = weapon_ranged,
+							tools = tools,
+							condition = condition,
+							power = power,
+							consequence = consequence,
+							creature = creature,
+							creature_other = creature_other,
+							emotion = emotion,
+							emotion_other = emotion_other,
+							conflict = conflict,
+							profession = profession,
+							profession_other = profession_other,
+							bonus_trait_type = bonus_trait_type,
+							bonus_trait = bonus_trait,
+							bonus_check = bonus_check,
+							bonus_check_range = bonus_check_range,
+							bonus_conflict = bonus_conflict,
+							penalty_trait_type = penalty_trait_type,
+							penalty_trait = penalty_trait,
+							penalty_check = penalty_check,
+							penalty_check_range = penalty_check_range,
+							penalty_conflict = penalty_conflict,
+							bonus_active_defense = bonus_active_defense,
+							bonus_conflict_defend = bonus_conflict_defend,
+							penalty_active_defense = penalty_active_defense,
+							penalty_conflict_defend = penalty_conflict_defend,
+							multiple = multiple,
+							multiple_count = multiple_count,
+							lasts = lasts,
+							skill = skill,
+							light = light)
+
+		db.session.add(entry)
+		db.session.commit()
+		
+		body['id'] = entry.id
+		error = False
+		error_msg = []	
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'modifiers'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		
+		body = skill_modifiers_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/modifiers/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_modifiers(id):
+	try:
+		db.session.query(SkillMod).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'feature': False })
+
+
+@skill.route('/skill/levels/create', methods=['POST'])
+def skill_post_levels():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_levels_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	skill_id = request.get_json()['skill_id']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	level_effect = request.get_json()['level_effect']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	old_level_type = request.get_json()['old_level_type']
+	font = request.get_json()['font']
+	power_dc = False
+	power_degree = False
+	skill_dc = False
+	skill_degree = False
+	bonus_dc = False
+	bonus_degree = False
+	advantage_dc = False
+	advantage_degree = False
+
+	body = {}
+	body['success'] = True
+
+	power = True
+
+	skill_id = integer(skill_id)
+
+	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
+	if level_check is None:
+
+		try:
+			level_add = LevelType(bonus_id=skill_id,
+									name=level_type)
+
+			db.session.add(level_add)
+			db.session.commit()
+
+			type_id = level_add.id
+
+			body['level_type_id'] = type_id
+			body['level_type'] = level_add.name
+			body['created'] = False
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+
+		finally:
+			db.session.close()
+		
+	else:
+		level_skill = level_check.bonus_id
+		print(skill_id)
+		print(level_skill)
+		if skill_id != level_skill:
+			body['success'] = False
+			body['error_msgs'] = ['There is already a level type with that name.']
+			return jsonify(body)
+
+		type_id = level_check.id
+		body['created'] = True
+
+	try:
+		entry = Levels(bonus_id = skill_id,
+							type_id=type_id,
+							level_type = level_type,
+							name = level,
+							level_effect = level_effect,
+							power_dc = power_dc,
+							power_degree = power_degree,
+							skill_dc = skill_dc,
+							skill_degree = skill_degree,
+							bonus_dc = bonus_dc,
+							bonus_degree = bonus_degree,
+							advantage_dc = advantage_dc,
+							advantage_degree = advantage_degree)
+
+		db.session.add(entry)
+		db.session.commit()
+
+
+		
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+
+		rows = columns
+
+		mods = []
+		cells = []
+		spot = "levels-spot"
+
+		body['spot'] = spot
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['title'] = level_type
+		type_split = level_type.split(' ')
+		type_class = ''
+		for t in  type_split:
+			type_class += t 
+		
+		table_id = 'levels-' + type_class
+
+		body['table_id'] = table_id
+
+		body = skill_levels_post(entry, body, cells)
+	except:
+		error = True
+		body['success'] = False
+		body['error'] = 'There was an error processing the request'
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+	
+	return jsonify(body)
+
+
+@skill.route('/skill/levels/delete/<id>', methods=['DELETE'])
+def delete_skill_levels(id):
+	try:
+		db.session.query(Levels).filter_by(id=id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		return jsonify({'success': True, 'id': id, 'level': True})
 
 
 
