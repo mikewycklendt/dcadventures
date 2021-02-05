@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 from models import setup_db
-from models import SkillBonus
+from models import SkillBonus, db
 
 setup_db(app)
 load_dotenv()
@@ -20,7 +20,6 @@ moment = Moment(app)
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = db_path
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-db = SQLAlchemy()
 
 
 migrate = Migrate(app, db)
