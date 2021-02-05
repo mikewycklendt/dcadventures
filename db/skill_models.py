@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from models import setup_db
 from models import SkillBonus, db
 
-setup_db(app)
 load_dotenv()
 
 import os
@@ -20,6 +19,8 @@ moment = Moment(app)
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = db_path
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+
+setup_db(app)
 
 
 migrate = Migrate(app, db)
