@@ -25,7 +25,7 @@ def skill_save_errors(data):
 	errors = {'error': False, 'error_msgs': []}
 
 
-	skill_id skill_id
+	skill_id = data['skill_id']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
