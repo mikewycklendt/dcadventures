@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 from models import setup_db
-from models import SkillBonus, db
+from models import db
 
 load_dotenv()
 
