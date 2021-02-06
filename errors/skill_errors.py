@@ -605,7 +605,7 @@ def skill_opposed_post_errors(data):
 	errors = required(opponent_trait, 'Opponent Check Trait', errors)
 	errors = required(opponent_check, 'Opponennt Check', errors)
 	errors = check_fields(recurring, 'Recurring', [recurring_value, recurring_units], errors)
-	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value,, errors)
+	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Units', recurring_units, errors)
 
 	return (errors)
