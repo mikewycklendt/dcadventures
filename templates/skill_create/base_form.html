@@ -272,13 +272,23 @@
 				Concealment
 			</div>
 
-			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
-					<option value="">Concealment</option>
-					{% for c in concealment %}
-						<option value="{{c.id}}">{{c.name}}</option>
-					{% endfor %}
-				</select>
+			<div class="base-split">
+				<div>
+					<select class="base-select" id="concealment_type" name="concealment_type">
+						<option value="">Type</option>
+						{% for c in concealment_type %}
+						<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				<div>
+					<select class="base-select" id="skill" name="skill">
+						<option value="">Concealment</option>
+						{% for c in concealment %}
+							<option value="{{c.id}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 		</div>
 
