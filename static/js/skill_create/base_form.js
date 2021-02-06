@@ -22,6 +22,16 @@ function skill_dc_table() {
 
 	select_entry(check, base, entry, field, value);
 }
+``
+function check_type() {
+	const check = 'opposed_check'
+	const base = 'opposed-base';
+	const entry = 'opposed-entry';
+	const field = 'check_type';
+	const value = '2';
+
+	select_entry(check, base, entry, field, value);
+}
 
 function ability() {
 	const check = "ability_check";

@@ -317,6 +317,7 @@ def save_skill_bonus():
 	speed_value = request.get_json()['speed_value']
 	condition = request.get_json()['condition']
 	advantage = request.get_json()['advantage']
+	concealment_type = request.get_json()['concealment_type']
 	concealment = request.get_json()['concealment']
 	for_weapon = request.get_json()['for_weapon']
 	weapon_cat = request.get_json()['weapon_cat']
@@ -343,6 +344,22 @@ def save_skill_bonus():
 	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
 
 	skill_id = db_integer(skill_id)
+	ability = db_integer(ability)
+	skill = db_integer(skill)
+	check_type = db_integer(check_type)
+	action = db_integer(action)
+	type = db_integer(type)
+	dc_value = integer(dc_value)
+	dc_mod = integer(dc_mod)
+	targets = integer(targets)
+	speed_turns = integer(speed_turns)
+	speed_mod = integer(speed_mod)
+	speed_value = integer(speed_value)
+	concealment = db_integer(concealment)
+	weapon_cat = db_integer(weapon_cat)
+	weapon_type = db_integer(weapon_type)
+	weapon = db_integer(weapon)
+	modifiers_multiple_count = integer(modifiers_multiple_count)
 
 	entry = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
 
@@ -364,6 +381,7 @@ def save_skill_bonus():
 	entry.speed_value = speed_value
 	entry.condition = condition
 	entry.advantage = advantage
+	entry.concealment_type = concealment_type
 	entry.concealment = concealment
 	entry.for_weapon = for_weapon
 	entry.weapon_cat = weapon_cat

@@ -1333,3 +1333,54 @@ def head_feature_duplicate(value, id, table, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def skill_required_entry(value, field, name, table_name, table, id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if id == '':
+		return (errors)
+		
+	if value == field:
+		try:
+			id = int(id)
+			query = db.session.query(table).filter_by(skill_id=id).first()
+			if query is None:
+				message = 'If this skill involves a ' + name + ' you must create at least one entry on the ' + table_name + ' form.'
+				error_msgs.append(message)
+		except:
+			message = 'There was an error proceessing this request.'
+			error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def skill_required_entry_multiple(value, field, name, table_name, table, id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if id == '':
+		return (errors)
+		
+	if value == field:
+		try:
+			id = int(id)
+			query = db.session.query(table).filter_by(skill_id=id).count()
+			if query < 2:
+				message = 'If this skill involves a ' + name + ' you must create at least two entries on the ' + table_name + ' form.'
+				error_msgs.append(message)
+		except:
+			message = 'There was an error proceessing this request.'
+			error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)

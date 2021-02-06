@@ -17,7 +17,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple
 
 
 def skill_save_errors(data):
@@ -44,6 +44,7 @@ def skill_save_errors(data):
 	speed_value = data['speed_value']
 	condition = data['condition']
 	advantage = data['advantage']
+	concealment_type = data['concealment_type']
 	concealment = data['concealment']
 	for_weapon = data['for_weapon']
 	weapon_cat = data['weapon_cat']
@@ -51,6 +52,7 @@ def skill_save_errors(data):
 	weapon = data['weapon']
 	untrained = data['untrained']
 	tools = data['tools']
+	required_tools = data['required_tools']
 	subskill = data['subskill']
 	check_dc = data['check_dc']
 	secret = data['secret']
@@ -72,6 +74,42 @@ def skill_save_errors(data):
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 
+	errors = required(description, 'Description', errors)
+	errors = required(ability, 'Parent Ability', errors)
+	errors = required(skill, 'Parent Skill', errors)
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(action, 'Action Type', errors)
+	
+	errors = variable_fields('value', 'Speed Value', speed_type, [speed_value, speed_turns, speed_direction], errors)
+	errors = variable_field('value', speed_type, 'Movement Speed', speed_value, errors)
+	errors = variable_field('value', speed_type, 'Speed Turns', speed_turns, errors)
+	errors = variable_field('value', speed_type, 'Speed Direction', speed_direction, errors)
+
+	errors = variable_fields('mod', 'Speed Modifier', speed_type, [speed_mod, speed_turns, speed_direction], errors)
+	errors = variable_fields('mod', speed_type, 'Speed Modifier', speed_mod, errors)
+	errors = variable_fields('mod', speed_type, 'Speed Turns', speed_turns, errors)
+	errors = variable_fields('mod', speed_type, 'Speed Direction', speed_direction, errors)
+
+	errors = check_fields(secret, 'GM Secret Check', [secret_frequency], errors)
+	errors = check_field(secret, 'GM Secret Check', 'Secret Check Frequency', secret_frequency, errors)
+
+	errors = check_fields(tools, 'Tools', [required_tools], errors)
+	errors = check_field(tools, 'Tools', 'Tool Type', required_tools, errors)
+
+	errors = together_names('Concealment', ['Concealment Type', 'Concealment'], [concealment_type, concealment], errors)
+	
+	errors = skill_required_entry('table', dc_type, 'DC Table', 'DC Table', skill_id, errors)
+	errors = skill_required_entry('2', check_type, 'Opposed Check', 'Opponent Check', SkillOpposed, skill_id, errors)
+	errors = skill_required_entry_multiple('x', ability, 'Variable Ability', 'Variable Ability', SkillAbility, skill_id, errors)
+
+	errors = skill_entry_check('Bonus/Penalty Modifier', SkillMod, modifiers, skill_id, errors)
+	errors = skill_entry_check('DC Table', SkillDC, dc, skill_id, errors)
+	errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
+	errors = skill_entry_check('Circqumstance Modifier', SkillCirc, circumstance, skill_id, errors)
+	errors = skill_entry_check('Opponent Check',SkillOpposed, opposed, skill_id, errors)
+	errors = skill_entry_check('Time Effect', SkillTime, time, skill_id, errors)
+	errors = skill_entry_check('Variable Check', SkillCheck, check_check, skill_id, errors)
+	errors = skill_entry_check('Variable Ability', SkillAbility, ability_check, skill_id, errors)
 
 	return (errors)
 
