@@ -485,7 +485,7 @@ def skill_degree_post_errors(data):
 	errors = variable_field('measure', type, 'Measurement Type', measure_effect, errors) 
 
 	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
-	errors = variable_field('rank', measure_effect, 'Value', measure_rank_value,, errors)
+	errors = variable_field('rank', measure_effect, 'Value', measure_rank_value, errors)
 	errors = variable_field('rank', measure_effect, 'Rank', measure_rank, errors)
 
 	errors = variable_fields('unit', 'Measurement Unit Value', measure_effect, [unit_value, unit_type, unit], errors)
