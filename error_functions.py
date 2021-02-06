@@ -83,6 +83,8 @@ def integer(value):
 		value = 3456
 	elif value == 'speed':
 		value = 4567
+	elif value == 'unlimited':
+		value = 5678
 	elif value == '':
 		value = None
 	elif value == 'none':

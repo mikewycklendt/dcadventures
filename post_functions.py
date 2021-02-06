@@ -138,6 +138,8 @@ def integer_convert(value):
 		value = 'Parent Skill'
 	elif value == 4567:
 		value = 'Speed Rank'
+	elif value == 5678:
+		value = 'Unlimited'
 	elif value is None:
 		value = ''
 	else:

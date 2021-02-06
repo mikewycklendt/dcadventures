@@ -30,11 +30,93 @@ class SkillBonus(db.Model):
 	__tablename__ = 'skill_bonus'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-
+	description = db.Column(db.String())
+	ability = db.Column(db.Integer, db.ForeignKey('abilities.id'))
+	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	type = db.Column(db.Integer, db.ForeignKey('skill_type.id'))
+	dc_type = db.Column(db.String())
+	dc_value = db.Column(db.Integer)
+	dc_mod = db.Column(db.Integer)
+	target = db.Column(db.String())
+	targets = db.Column(db.Integer)
+	speed_type = db.Column(db.String())
+	speed_turns = db.Column(db.Integer)
+	speed_direction = db.Column(db.String())
+	speed_mod = db.Column(db.Integer)
+	speed_value = db.Column(db.Integer)
+	condition = db.Column(db.String())
+	advantage = db.Column(db.String())
+	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
+	for_weapon = db.Column(db.Boolean)
+	weapon_cat = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
+	weapon_type = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
+	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+	untrained = db.Column(db.Boolean)
+	tools = db.Column(db.Boolean)
+	subskill = db.Column(db.Boolean)
+	check_dc = db.Column(db.Boolean)
+	secret = db.Column(db.Boolean)
+	secret_frequency = db.Column(db.String())
+	ability_check = db.Column(db.Boolean)
+	check_check = db.Column(db.Boolean)
+	circumstance = db.Column(db.Boolean)
+	dc = db.Column(db.Boolean)
+	degree = db.Column(db.Boolean)
+	levels = db.Column(db.Boolean)
+	modifiers = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+	time = db.Column(db.Boolean)
+	opposed_multiple = db.Column(db.String())
+	modifiers_multiple = db.Column(db.String())
+	modifiers_multiple_count = db.Column(db.Integer)
+	
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'description': self.description,
+			'ability': self.ability,
+			'skill': self.skill,
+			'check_type': self.check_type,
+			'action': self.action,
+			'type': self.type,
+			'dc_type': self.dc_type,
+			'dc_value': self.dc_value,
+			'dc_mod': self.dc_mod,
+			'target': self.target,
+			'targets': self.targets,
+			'speed_type': self.speed_type,
+			'speed_turns': self.speed_turns,
+			'speed_direction': self.speed_direction,
+			'speed_mod': self.speed_mod,
+			'speed_value': self.speed_value,
+			'condition': self.condition,
+			'advantage': self.advantage,
+			'concealment': self.concealment,
+			'for_weapon': self.for_weapon,
+			'weapon_cat': self.weapon_cat,
+			'weapon_type': self.weapon_type,
+			'weapon': self.weapon,
+			'untrained': self.untrained,
+			'tools': self.tools,
+			'subskill': self.subskill,
+			'check_dc': self.check_dc,
+			'secret': self.secret,
+			'secret_frequency': self.secret_frequency,
+			'ability_check': self.ability_check,
+			'check_check': self.check_check,
+			'circumstance': self.circumstance,
+			'dc': self.dc,
+			'degree': self.degree,
+			'levels': self.levels,
+			'modifiers': self.modifiers,
+			'opposed': self.opposed,
+			'time': self.time,
+			'opposed_multiple': self.opposed_multiple,
+			'modifiers_multiple': self.modifiers_multiple,
+			'modifiers_multiple_count': self.modifiers_multiple_count
 		}
 
 

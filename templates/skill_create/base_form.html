@@ -66,7 +66,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
+				<select class="base-select" id="check" name="check">
 					<option value="">Check</option>
 					{% for c in checks %}
 						<option value={{c.id}}>{{c.name}}</option>
@@ -81,7 +81,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
+				<select class="base-select" id="action" name="action">
 					<option value="">Action</option>
 					{% for a in actions %}
 						<option value={{a.id}}>{{a.name}}</option>
@@ -96,7 +96,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
+				<select class="base-select" id="skill_type" name="skill_type">
 					<option value="">Skill Type</option>
 					{% for s in skill_type %}
 						<option value={{s.id}}>{{s.name}}</option>
@@ -131,7 +131,7 @@
 
 					<div class="base-hidden" id="skill-dc-mod">
 						<select class="base-select" id="skill_dc_mod" name="skill_dc_mod">
-							<option value="">Modufuer</option>
+							<option value="">Modifier</option>
 							{% for num in negatives %}
 								<option value={{num}}>{{num}}</option>
 							{% endfor %}
@@ -164,6 +164,7 @@
 						<option value="">Targets</option>
 						<option value="skill">This Rank</option>
 						<option value="parent">Parent Rank</option>
+						<option value="unlimited">Unlimited</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -242,7 +243,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
+				<select class="base-select" id="condition" name="condition">
 					<option value="">Condition</option>
 					{% for c in conditions %}
 						<option value="{{c}}">{{c}}</option>
@@ -257,7 +258,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="skill" name="skill">
+				<select class="base-select" id="concealment" name="concealment">
 					<option value="">Advantage</option>
 					{% for a in advantages %}
 						<option value="{{a}}">{{a}}</option>
@@ -329,7 +330,7 @@
 
 			<div class="base-3">
 				<div>
-					<input type="checkbox" id="Untrained" class="regular-checkbox big-checkbox">	
+					<input type="checkbox" id="untrained" class="regular-checkbox big-checkbox">	
 				</div>
 			</div>
 		</div>
