@@ -294,11 +294,94 @@ def save_skill_bonus():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	bonus_id = request.get_json()['bonus_id']
+	skill_id = request.get_json()['skill_id']
+	description = request.get_json()['description']
+	ability = request.get_json()['ability']
+	skill = request.get_json()['skill']
+	check_type = request.get_json()['check_type']
+	action = request.get_json()['action']
+	type = request.get_json()['type']
+	dc_type = request.get_json()['dc_type']
+	dc_value = request.get_json()['dc_value']
+	dc_mod = request.get_json()['dc_mod']
+	target = request.get_json()['target']
+	targets = request.get_json()['targets']
+	speed_type = request.get_json()['speed_type']
+	speed_turns = request.get_json()['speed_turns']
+	speed_direction = request.get_json()['speed_direction']
+	speed_mod = request.get_json()['speed_mod']
+	speed_value = request.get_json()['speed_value']
+	condition = request.get_json()['condition']
+	advantage = request.get_json()['advantage']
+	concealment = request.get_json()['concealment']
+	for_weapon = request.get_json()['for_weapon']
+	weapon_cat = request.get_json()['weapon_cat']
+	weapon_type = request.get_json()['weapon_type']
+	weapon = request.get_json()['weapon']
+	untrained = request.get_json()['untrained']
+	tools = request.get_json()['tools']
+	subskill = request.get_json()['subskill']
+	check_dc = request.get_json()['check_dc']
+	secret = request.get_json()['secret']
+	secret_frequency = request.get_json()['secret_frequency']
+	ability_check = request.get_json()['ability_check']
+	check_check = request.get_json()['check_check']
+	circumstance = request.get_json()['circumstance']
+	dc = request.get_json()['dc']
+	degree = request.get_json()['degree']
+	levels = request.get_json()['levels']
+	modifiers = request.get_json()['modifiers']
+	opposed = request.get_json()['opposed']
+	time = request.get_json()['time']
+	opposed_multiple = request.get_json()['opposed_multiple']
+	modifiers_multiple = request.get_json()['modifiers_multiple']
+	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
 
-	bonus_id = db_integer(bonus_id)
+	skill_id = db_integer(skill_id)
 
-	entry = db.session.query(SkillBonus).filter(SkillBonus.id == bonus_id).one()
+	entry = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
+
+	entry.description = description
+	entry.ability = ability
+	entry.skill = skill
+	entry.check_type = check_type
+	entry.action = action
+	entry.type = type
+	entry.dc_type = dc_type
+	entry.dc_value = dc_value
+	entry.dc_mod dc_= mod
+	entry.target = target
+	entry.targets = targets
+	entry.speed_type = speed_type
+	entry.speed_turns = speed_turns
+	entry.speed_direction = speed_direction
+	entry.speed_mod = speed_mod
+	entry.speed_value = speed_value
+	entry.condition = condition
+	entry.advantage = advantage
+	entry.concealment = concealment
+	entry.for_weapon = for_weapon
+	entry.weapon_cat = weapon_cat
+	entry.weapon_type = weapon_type
+	entry.weapon = weapon
+	entry.untrained = untrained
+	entry.tools = tools
+	entry.subskill = subskill
+	entry.check_dc = check_dc
+	entry.secret = secret
+	entry.secret_frequency = secret_frequency
+	entry.ability_check = ability_check
+	entry.check_check = check_check
+	entry.circumstance = circumstance
+	entry.dc = dc
+	entry.degree = degree
+	entry.levels = levels
+	entry.modifiers = modifiers
+	entry.opposed = opposed
+	entry.time = time
+	entry.opposed_multiple = opposed_multiple
+	entry.modifiers_multiple = modifiers_multiple
+	entry.modifiers_multiple_count = modifiers_multiple_count
 
 	db.session.commit()
 
