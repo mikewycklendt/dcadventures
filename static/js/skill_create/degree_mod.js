@@ -173,6 +173,7 @@ function deg_mod_submit() {
 	const measure_trait = select("deg_mod_measure_trait")
 	const measure_trait_math = select("deg_mod_measure_trait_math")
 	const measure_mod = select("deg_mod_measure_mod")
+	const measure_math_rank = select("deg_mod_measure_math_rank")
 	const condition_type = select("deg_mod_condition_type")
 	const condition_damage_value = select("deg_mod_condition_damage_value")
 	const condition_damage = select("deg_mod_condition_damage")
@@ -238,6 +239,7 @@ function deg_mod_submit() {
 			'measure_trait': measure_trait,
 			'measure_trait_math': measure_trait_math,
 			'measure_mod': measure_mod,
+			'measure_math_rank': measure_math_rank,
 			'condition_type': condition_type,
 			'condition_damage_value': condition_damage_value,
 			'condition_damage': condition_damage,

@@ -97,7 +97,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 25% 75%;
 }
 
 #circ-measure-rank {
@@ -121,7 +121,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .3vw;
-	grid-template-columns: 25% 35% 20% 20%;
+	grid-template-columns: 18% 27% 18% 18% 19%;
 }
 
 #circ-row2 {

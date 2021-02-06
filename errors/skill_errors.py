@@ -42,12 +42,13 @@ def skill_ability_post_errors(data):
 	ability = data['ability']
 	circumstance = data['circumstance']
 
-	errors = id_check(Ability, ability, 'Ability', errors)
-
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
+	errors = id_check(Ability, ability, 'Ability', errors)
 
+	errors = required(ability, 'Ability', errors)
+	errors = required(circumstance, 'Circumstance', errors)
 
 	return (errors)
 
@@ -81,9 +82,19 @@ def skill_check_post_errors(data):
 	errors = id_check(Ranged, conflict_range, 'Conflict Range', errors)
 	errors = int_check(action, 'Action', errors)
 
-	
-	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(when, 'When', errors)
+	errors = required(action_type, 'Action Type', errors)
+	errors = required(Action, 'Action', errors)
 
+	errors = variable_fields('condition', 'Trigger', trigger, [condition1, condition2], errors)
+	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', trigger, 'Ending Condition', condition2, errors)
+	errors = variable_fields('conflict', trigger, 'Trigger', trigger, [conflict], errors)
+	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
+
+	
 
 
 	return (errors)
@@ -117,6 +128,7 @@ def skill_circ_post_errors(data):
 	measure_trait = data['measure_trait']
 	measure_trait_math = data['measure_trait_math']
 	measure_mod = data['measure_mod']
+	measure_math_rank = data['measure_math_rank']
 	keyword = data['keyword']
 	cumulative = data['cumulative']
 	optional = data['optional']
@@ -150,16 +162,69 @@ def skill_circ_post_errors(data):
 	errors = id_check(Unit, time_units, 'Time Units', errors)
 	errors = int_check(time_rank, 'Time Rank', errors)
 
+	errors = required(m0d, 'Circumstance Modifier', errors)
+	errors = required(circumstance, 'Circumstance', errors)
+	errors = required(keyword, 'Keyword', errors)
+	errors = required(lasts, 'Lasts', errors)
+	errors = required(circ_target, 'Target', errors)
+	
 
-	circ_effect_select = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'temp', 'name': 'Effect Temporary'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
+	errors = variable_fields('turns', 'Lasts For', lasts, [turns], errors)
+	errors = variable_field('turns', lasts, 'Turns', turns, errors)
+	errors = variable_fields('time', 'Lasts For', lasts, [unit_time, time_units], errors)
+	errors = variable_field('time', lasts, 'Time Value', unit_time, errors)
+	errors = variable_field('time', lasts, 'Time Units', time_units, errors)
+	errors = variable_fields('rank', 'Lasts For', lasts, [time_rank], errors)
+	errors = variable_field('rank', lasts, 'Time Rank', time_rank, errors)
 
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	errors = variable_fields('condition', 'Circumstance Effect', effect, [condition_type], errors)
+	errors = variable_field('condition', effect, 'Condition Type', condition_type, errors)
+	errors = variable_fields('condition', 'Condition Type', condition_type, [], errors)
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	errors = variable_fields('damage', 'Condition Change', condition_type, [condition1, condition2], errors)
+	errors = variable_field('damage', condition_type, 'Starting Condition', condition1, errors)
+	errors = variable_field('damage', condition_type, 'Ending Condition', condition2, errors)
 
-	lasts = [{'type': '', 'name': 'Lasts'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'time', 'name': 'Time'}, {'type': 'rank', 'name': 'Time Rank'}]
+	errors = variable_fields('damage', 'Condition Damage', condition_type, [conditions, conditions_effect], errors)
+	errors = variable_field('damage', condition_type, 'Conditions', conditions, errors)
+	errors = variable_field('damage', condition_type, 'Condition Effect', conditions_effect, errors)
 
 
+	errors = variable_fields('time', 'Circumstance Effect', effect, [time], errors)
+	errors = variable_field('time', effect, 'Time Rank Modifier', time, errors)
+	
+	errors = variable_fields('temp', 'Circumstance Effect', effect, [temp], errors)
+	errors = variable_field('temp', effect, 'Lasts For', temp, errors)
+	
+	errors = variable_fields('measure', 'Circumstance Effect', effect, [measure_effect], errors)
+	errors = variable_field('measure', effect, 'Measurement Type', measure_effect, errors)
+	
+	errors = variable_fields('rank', 'Measurement Rank', measure_effect, [measure_rank_value, measure_rank], errors)
+	errors = variable_field('rank', measure_effect, 'Measurement Rank Value', measure_rank_value, errors)
+	errors = variable_field('rank', measure_effect, 'Measurement Rank', measure_rank errors)
+
+	errors = variable_fields('unit', 'Measurement Unit', measure_effect, [unit_value, unit_type, unit], errors)
+	errors = variable_field('unit', measure_effect, 'Measurement Value', unit_value, errors)
+	errors = variable_field('unit', measure_effect, 'Measurement Unit Type', unit_type, errors)
+	errors = variable_field('unit', measure_effect, 'Measurement Units', unit, errors)
+
+	errors = variable_fields('skill', 'Measurement Skill Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Trait Type', measure_trait_type, errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Trait', measure_trait, errors)
+	errors = variable_field('skill', measure_effect, 'Math', measure_trait_math, errors)
+	errors = variable_field('skill', measure_effect, 'Measuremet Modifier', measure_mod, errors)
+	errors = variable_field('skill', measure_effect, 'Rank', measure_math_rank, errors)
+
+	
+	errors = variable_fields('level', 'Circumstance Effect', effect, [level_type, level], errors)
+	errors = variable_field('level', effect, 'Level Type', level_type, errors)
+	errors = variable_field('level', effect, 'Level', level, errors)
+	
+	errors = variable_fields('speed', 'Circumstance Effect', effect, [speed], errors)
+	errors = variable_field('speed', effect, 'Speed Rank', speed, errors)
+	
+	errors = variable_fields('target', 'Circumstance Effect', effect, [target], errors)
+	errors = variable_field('target', effect, 'If Target', target, errors)
 
 	return (errors)
 
@@ -208,6 +273,7 @@ def skill_dc_post_errors(data):
 	measure_trait = data['measure_trait']
 	measure_trait_math = data['measure_trait_math']
 	measure_mod = data['measure_mod']
+	measure_math_rank = data['measure_math_rank']
 	level_type = data['level_type']
 	level = data['level']
 	condition1 = data['condition1']
@@ -237,25 +303,87 @@ def skill_dc_post_errors(data):
 	errors = id_check(Unit, unit, 'Unit', errors)
 	errors = id_check(Math, measure_trait_math, 'MeaSurement Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
+	errors = id_check(Rank, measure_math_rank, 'Measurement Rank', errors)
 	errors = id_check(LevelType, level_type, 'Level Type', errors)
 	errors = id_check(Levels, level, 'Level', errors)
 	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = id_check(Complex, complexity, 'Complexity', errors)
 
+	errors = required(target, 'Target', errors)
+	errors = required(dc, 'DC Type', errors)
+	errors = required(description, 'Description', errors)
 
+	errors = variable_fields('value', 'DC Value', dc, [value], errors) 
+	errors = variable_field('value', dc, 'DC', value, errors) 
 
-	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'choice', 'name': 'Chosen by Player'}]
+	errors = variable_fields('math', 'DC Math', dc, [math_value, math, math_trait_type, math_trait], errors)
+	errors = variable_field('math', dc, 'DC Math Value', math_value, errors)
+	errors = variable_field('math', dc, 'DC Math', math, errors)
+	errors = variable_field('math', dc, 'DC Math Trait Type', math_trait_type, errors)
+	errors = variable_field('math', dc, 'DC Math Trait', math_trait, errors)
+	
+	errors = variable_fields('mod', 'DC Modifier', dc, [mod], errors)
+	errors = variable_field('mod', dc, 'Modifier', mod, errors)
 
-	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+	errors = check_fields(condition, 'Condition', [condition1, condition2, condition_turns], errors)
+	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
+	errors = check_field(condition, 'Condition', 'Ending Condtion', condition2, errors)
+	errors = check_field(condition, 'Condition', 'Condition Turns', condition_turns, errors)
+	
+	errors = check_fields(keyword_check, 'Keyword', [keyword], errors)
+	errors = check_field(keyword_check, 'Keyword', 'Keyword', keyword, errors)
+	
+	errors = check_fields(levels, 'Levels', [level_type, level], errors)
+	errors = check_field(levels, 'Levels', ':evel Type', level_type, errors)
+	errors = check_field(levels, 'Levels', 'Level', level, errors)
 
-	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+	errors = check_fields(damage, 'Damage', [damage_type], errors)
+	errors = check_field(damage, 'Damage', 'Damage Type', damage_type, errors)
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	errors = variable_fields('inflict', 'Inflict Damage', damage_type, [inflict_type], errors)
+	errors = variable_field('inflict', damage_type, 'Inflict Damage Type', inflict_type, errors)
 
+	errors = variable_fields('flat', 'Flat Damage Value', inflict_type, [inflict_flat], errors)
+	errors = variable_field('flat', inflict_type, 'Damage', inflict_flat, errors)
 
+	errors = variable_fields('bonus', 'Flat Damage Bonus', inflict_type, [inflict_bonus], errors)
+	errors = variable_fields('bonus', inflict_type, 'Bonus', inflict_bonus, errors)
+	
+	errors = variable_fields('math', 'Math Damage', inflict_type, [inflict_trait_type, inflict_trait, inflict_math, inflict_mod], errors)
+	errors = variable_field('math', inflict_type, 'Math Damage Trait Type', inflict_trait_type, errors)
+	errors = variable_field('math', inflict_type, 'Math Damage Trait', inflict_trait, errors)
+	errors = variable_field('math', inflict_type, 'Math', inflict_math, errors)
+	errors = variable_field('math', inflict_type, 'Math Damage Modifier', inflict_mod, errors)
 
+	errors = variable_fields('reduce', 'Reduce Damage', damage_type, [damage_mod], errors)
+	errors = variable_field('reduce', damage_type, 'Damage Modifier', damage_mod, errors)
+	
+	
+	errors = check_fields(complex, 'Complexity', [complexity], errors)
+	errors = check_field(complex, 'Complexity', 'Complexity', complexity, errors)
+	
+	errors = check_fields(measure, 'Measurement', [measure_effect], errors)
+	errors = check_field(measure, 'Measurement', 'Measurement Effect', measure_effect, errors)
 
+	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
+	errors = variable_field('rank', measure_effect, 'Rank Value', measure_rank_value, errors)
+	errors = variable_field('rank', measure_effect, 'Measurement Rank', measure_rank, errors)
 
+	errors = variable_fields('unit', 'Measurement Unit Value', measure_effect, [unit_value, unit_type, unit], errors)
+	errors = variable_field('unit', measure_effect, 'Value', unit_value, errors)
+	errors = variable_field('unit', measure_effect, 'Measurement Unit Type', unit_type, errors)
+	errors = variable_field('unit', measure_effect, 'Measurement UnitS', unit, errors)
+
+	errors = variable_fields('skill', 'Measurement Skill Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Trait Type', measure_trait_type, errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Trait', measure_trait, errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Skill Modifier Math', measure_trait_math, errors)
+	errors = variable_field('skill', measure_effect, 'Skill Modifier', measure_mod, errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Rank', measure_math_rank, errors)
+	
+	errors = check_fields(change_action, 'Action Change', [action, action_when], errors)
+	errors = check_field(change_action, 'Action Change', 'Action', action, errors)
+	errors = check_field(change_action, 'Action Change', 'When', action_when, errors)
 
 	return (errors)
 
@@ -305,6 +433,7 @@ def skill_degree_post_errors(data):
 	measure_trait = data['measure_trait']
 	measure_trait_math = data['measure_trait_math']
 	measure_mod = data['measure_mod']
+	measure_math_rank = data['measure_math_rank']
 	condition_type = data['condition_type']
 	condition_damage_value = data['condition_damage_value']
 	condition_damage = data['condition_damage']
@@ -348,20 +477,91 @@ def skill_degree_post_errors(data):
 	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = int_check(nullify, 'Nullify DC', errors)
 	
+	errors = required(target, 'Target', errors)
+	errors = required(value, 'Degree', errors)
+	errors = required(keyword, 'Keyword', errors)
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect], errors)
+	errors = variable_field('measure', type, 'Measurement Type', measure_effect, errors) 
 
-	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
+	errors = variable_field('rank', measure_effect, 'Value', measure_rank_value,, errors)
+	errors = variable_field('rank', measure_effect, 'Rank', measure_rank, errors)
 
-	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+	errors = variable_fields('unit', 'Measurement Unit Value', measure_effect, [unit_value, unit_type, unit], errors)
+	errors = variable_field('unit', measure_effect, 'Value', unit_value, errors)
+	errors = variable_field('unit', measure_effect, 'Unit Type', unit_type, errors)
+	errors = variable_field('unit', measure_effect, 'Units', unit, errors)
 
-	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+	errors = variable_fields('skill', 'Measurement Skill Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
+	errors = variable_field('skill', measure_effect, 'Trait Type', measure_trait_type, errors)
+	errors = variable_field('skill', measure_effect, 'Trait', measure_trait, errors)
+	errors = variable_field('skill', measure_effect, 'Math', measure_trait_math, errors)
+	errors = variable_field('skill', measure_effect, 'Skill Modifier', measure_mod, errors)
+	errors = variable_field('skill', measure_effect, 'Measurement Rank', measure_math_rank, errors)
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	errors = variable_fields('condition', 'Condition Effect', type, [condition_type], errors)
+	errors = variable_field('condition', type, 'Condition Type', condition_type, errors)
 
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2, condition_turns], errors)
+	errors = variable_field('condition', condition_type, 'Starting Condition', condition1, errors)
+	errors = variable_field('condition', condition_type, 'Ending Condition Change', condition2, errors)
+	errors = variable_field('condition', condition_type, 'Turns', condition_turns, errors)
+
+	errors = variable_fields('damage', 'Damage Condition', condition_type, [condition_damage_value, condition_damage], errors)
+	errors = variable_field('damage', condition_type, 'Damage Value', condition_damage_value, errors)
+	errors = variable_field('damage', condition_type, 'Damage Direction', condition_damage, errors)
+
+	errors = variable_fields('action', 'Action Change Effect', type, [action], errors)
+	errors = variable_field('action', type, 'Changed Action', action, errors)
+	
+	errors = variable_fields('circ', 'Circumstance Effect', type, [circumstance, circ_target], errors)
+	errors = variable_field('circ', type, 'Circumstance', circumstance, errors)
+	errors = variable_field('circ', type, 'Circumstance Target', circ_target, errors)
+	
+	errors = variable_fields('time', 'Time Modifier Effect', type, [time], errors)
+	errors = variable_field('time', type, 'Time Modifier', time, errors)
+	
+	errors = variable_fields('damage', 'Damage Effect', type, [damage_type], errors)
+	errors = variable_field('damage', type, 'Damage Type', damage_type, errors)
+
+	errors = variable_fields('inflict', 'Inflict Damage', damage_type, [inflict_type], errors)
+	errors = variable_field('inflict', damage_type, 'Inflict Damage Type', inflict_type, errors)
+
+	errors = variable_fields('flat', 'Flat Damage', inflict_type, [inflict_flat], errors)
+	errors = variable_field('flat', inflict_type, 'Flat vALUE', inflict_flat, errors)
+
+	errors = variable_fields('bonus', 'Flat Damage Bonus', inflict_type, [inflict_bonus], errors)
+	errors = variable_field('bonus', inflict_type, 'Bonus', inflict_bonus, errors)
+
+	errors = variable_fields('math', 'Math Damage', inflict_type, [inflict_trait_type, inflict_trait, inflict_math, inflict_mod], errors)
+	errors = variable_field('math', inflict_type, 'Trait Type', inflict_trait_type, errors)
+	errors = variable_field('math', inflict_type, 'Trait', inflict_trait, errors)
+	errors = variable_field('math', inflict_type, 'Math', inflict_math, errors)
+	errors = variable_field('math', inflict_type, 'Math Value', inflict_mod, errors)
 
 
+	errors = variable_fields('reduce', 'Reduce Damage', damage_type, [damage_mod], errors)
+	errors = variable_field('reduce', damage_type, 'Modifier', damage_mod, errors)
+
+	errors = variable_fields('object', 'Damage Object', damage_type, [object, object_effect], errors)
+	errors = variable_field('object', damage_type, 'Degrees', object, errors)
+	errors = variable_field('object', damage_type, 'Effect', object_effect, errors)
+	
+	errors = variable_fields('level', 'Level Effect', type, [level_type], errors)
+	errors = variable_field('level', type, 'Level Type', level_type, errors)
+	
+	errors = variable_fields('knowledge', 'Gain Knowledge Effect', type, [knowledge], errors)
+	errors = variable_field('knowledge', type, 'Knowledge Type', knowledge, errors)
+
+	errors = variable_fields('bonus', 'Learn Bonus', knowledge, [knowledge_count, knowledge_specificity], errors)
+	errors = variable_field('bonus', knowledge, 'Amount', knowledge_count, errors)
+	errors = variable_field('bonus', knowledge, 'Specificity', knowledge_specificity, errors)
+	
+	errors = variable_fields('consequence', 'Consequence Effect', type, [consequence_action_type, consequence_action, consequence], errors)
+	errors = variable_field('consequence', type, 'Consequence Action Type', consequence_action_type, errors)
+	errors = variable_field('consequence', type, 'Consequence Action', consequence_action, errors)
+	errors = variable_field('consequence', type, 'Consequence', consequence, errors)
 
 	return (errors)
 
@@ -386,6 +586,10 @@ def skill_opposed_post_errors(data):
 	recurring_value = data['recurring_value']
 	recurring_units = data['recurring_units']
 
+	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
+
+	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
+
 	errors = int_check(mod, 'Player Modifier', errors)
 	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
 	errors = id_check(Check, player_check, 'Player Check', errors)
@@ -393,13 +597,17 @@ def skill_opposed_post_errors(data):
 	errors = int_check(recurring_value, 'Recurring Value', errors)
 	errors = id_check(Unit, recurring_units, 'Recurring Units', errors)
 
-
-
-
-	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
-
-	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
-
+	errors = required(attached, 'Attsched', errors)
+	errors = required(frequency, 'Frequency', errors)
+	errors = required(trait_type, 'Player Check Trait Typr', errors)
+	errors = required(trait, 'Player Check Trait', errors)
+	errors = required(opponent_trait_type, 'Opponent Check Trait Typr', errors)
+	errors = required(opponent_trait, 'Opponent Check Trait', errors)
+	errors = required(player_check, 'Player Check', errors)
+	errors = required(opponent_check, 'Opponennt Check', errors)
+	errors = check_fields(recurring, 'Recurring', [recurring_value, recurring_units], errors)
+	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value,, errors)
+	errors = check_field(recurring, 'Recurring', 'Recurring Units', recurring_units, errors)
 
 	return (errors)
 
@@ -441,10 +649,29 @@ def skill_time_post_errors(data):
 	errors = int_check(recovery_penalty, 'Recovery Penalty Modifier', errors)
 	errors = int_check(recovery_time, 'Recovery Time', errors)
 	
+	errors = required(type, 'Time Type', errors)
+	errors = required(value_type, 'Type', errors)
 
+	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
+	errors = variable_field('value', value_type, 'Time Value', 'Value', value, errors)
+	errors = variable_field('value', value_type, 'Time Value', 'Units', units, errors)
 
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Measurement'}, {'type': 'gm', 'name': 'Set by GM'}]
+	errors = variable_fields('math', 'Time Math', value_type, [trait_type, trait, math, math_value], errors)
+	errors = variable_field('math', value_type, 'Time Math', value_type, 'Trait Type', trait_type, errors)
+	errors = variable_field('math', value_type, 'Time Math', value_type, 'Trait', trait, errors)
+	errors = variable_field('math', value_type, 'Time Math', 'Math', math, errors)
+	errors = variable_field('math', value_type, 'Time Math', 'Value', math_value, errors)
 
+	errors = variable_fields('rank', 'Time Measurement', value_type, [rank1, rank1_value, rank_math, rank2, rank2_value], errors)
+	errors = variable_field('rank', value_type, 'Time Measurement', 'First Rank', rank1, errors)
+	errors = variable_field('rank', value_type, 'Time Measurement', 'First Rank Value', rank1_value,, errors)
+	errors = variable_field('rank', value_type, 'Time Measurement', 'Math', rank_math, errors)
+	errors = variable_field('rank', value_type, 'Time Measurement', 'Second Rank', rank2, errors)
+	errors = variable_field('rank', value_type, 'Time Measurement', 'Second Rank Value', rank2_value, errors)
+
+	errors = check_fields(recovery, 'Recovry Time', [recovery_penalty, recovery_time], errors)
+	errors = check_field(recovery, 'Recovry Time', 'Penalty', recovery_penalty, errors)
+	errors = check_field(recovery, 'Recovry Time', 'Time Rank', recovery_tim, errors)
 
 	return (errors)
 

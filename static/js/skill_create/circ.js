@@ -103,6 +103,7 @@ function circ_submit() {
 	const measure_trait = select("circ_measure_trait")
 	const measure_trait_math = select("circ_measure_trait_math")
 	const measure_mod = select("circ_measure_mod")
+	const measure_math_rank = select("circ_measure_math_rank");
 	const keyword = text("circ_keyword")
 	const cumulative = check("circ_cumulative")
 	const optional = check("circ_optional")
@@ -149,6 +150,7 @@ function circ_submit() {
 			'measure_trait': measure_trait,
 			'measure_trait_math': measure_trait_math,
 			'measure_mod': measure_mod,
+			'measure_math_rank': measure_math_rank,
 			'keyword': keyword,
 			'cumulative': cumulative,
 			'optional': optional,

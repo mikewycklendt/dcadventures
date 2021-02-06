@@ -20,7 +20,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word
 
 
 
@@ -32,7 +32,8 @@ def skill_ability_post(entry, body, cells):
 
 	ability = get_name(Ability, ability)
 
-
+	cells = cell('Ability', 15, [ability])
+	cells = cell('Circumstance', 75, [circumstance])
 
 	body = send(cells, body)
 
@@ -69,7 +70,21 @@ def skill_check_post(entry, body, cells):
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_type_select)
 
+	cells = cell('Check', 15, [check_type])
+	cells = cell('Modifier', 8, [mod], cells)
+	cells = cell('When', 8, [when], cells)
+	cells = cell('Check Trait', 14, [trait], cells)
+	cells = cell('Action', 14, [action], cells)
+	
+	vcells = vcell('condition', 25, [condition1, 'to', condition2])
+	w = width(10, 8, range)
+	vcells = vcell('conflict', w, [conflict, range], vcells)
+	cells = vcell_add('Trigger', trigger, vcells, cells)
 
+	cells = check_cell('Free', 7, free, cells)
+	cells = check_cell('Weapon', 8, Weapon, cells)
+
+	cells = cell('Circumstance', 30, [circumstance], cells)
 
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
@@ -106,6 +121,7 @@ def skill_circ_post(entry, body, cells):
 	measure_trait = entry.measure_trait
 	measure_trait_math = entry.measure_trait_math
 	measure_mod = entry.measure_mod
+	measure_math_rank = entry.measure_math_rank
 	keyword = entry.keyword
 	cumulative = entry.cumulative
 	optional = entry.optional
@@ -146,13 +162,41 @@ def skill_circ_post(entry, body, cells):
 	conditions_effect = selects(conditions_effect, updown)
 
 
-	circ_effect_select = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'temp', 'name': 'Effect Temporary'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
+	cells = cell('Target', 16, [circ_target])
+	cells = cell('Modifier', 8, [mod], cells)
+	cells = cell('Keyword', 12, [keyword], cells)
 
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	vcells = vcell('turns', 7, [turns])
+	vcells = vcell('time', 14, [unit_time, time_units], vcells)
+	vcells = vcell('rank', 6, [time_rank], vcells)
+	cells = vcell_add('Lasts', lasts, vcells, cells)
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
+	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')
+	
+	time = add_plus(time)
+	vcells = vcell('time', 14, [time, 'Time Rank'], vcells)
+	
+	temp = int_word(temp, 'Turns')
+	vcells = vcell('temp', 25, ['Effect Lasts for', temp], vcells)
 
-	lasts = [{'type': '', 'name': 'Lasts'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'time', 'name': 'Time'}, {'type': 'rank', 'name': 'Time Rank'}]
+	measure_rank_value = add_plus(measure_rank_value)
+	vcells = vcell('measure', 18, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
+
+	vcells = vcell('measure', 16, [unit_value, unit], vcells, measure_effect, 'unit')
+
+	vcells = vcell('measure', 35, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill')
+	
+	vcells = vcell('level', 16, [level], vcells)
+	
+	speed = add_plus(speed)
+	vcells = vcell('speed', 20, ['Speed Rank', speed], vcells)
+	
+	vcells = vcell('target', 30, ['If Target is', target], vcells)
+	
+	cells = vcell_add('Effect', effect, vcells, cells)
+
+	cells = cell('Circumstance', 30, [circumstance], cells)
 
 	body = send(cells, body)
 
@@ -202,6 +246,7 @@ def skill_dc_post(entry, body, cells):
 	measure_trait = entry.measure_trait
 	measure_trait_math = entry.measure_trait_math
 	measure_mod = entry.measure_mod
+	measure_math_rank = entry.measure_math_rank
 	level_type = entry.level_type
 	level = entry.level
 	condition1 = entry.condition1
@@ -228,6 +273,7 @@ def skill_dc_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
+	measure_math_rank = get_name(Rank, measure_math_rank)
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
 	condition_turns = integer_convert(condition_turns)
@@ -247,14 +293,71 @@ def skill_dc_post(entry, body, cells):
 	
 	
 	
-	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'choice', 'name': 'Chosen by Player'}]
-
-	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
-
+	
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
 
+	cells = cell('Target', 15, [target])
+	
+	vcells = vcell('value', 6, [value])
+	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
+	mod = add_plus(mod)
+	vcells = vcell('mod', 7, [mod], vcells)
+	vcells = vcell('choice', 14, ['Chosen by Player'], vcells)
+	cells = vcell_add('DC', dc, vcells, cells)
+
+	cells = check_cell('Condition', 9, condition, cells, True)
+	new_mod = mod_create('Condition', 12)
+
+	body = mod_add(condition, new_mod, body)
+
+	cells = check_cell('Keyword', 8, keyword_check, cells, True)
+	new_mod = mod_create('Keyword', 9)
+	
+	body = mod_add(keyword_check, new_mod, body)
+
+	cells = check_cell('Level', 7, levels, cells, True)
+	new_mod = mod_create('Level', 7)
+	
+	body = mod_add(levels, new_mod, body)
+
+	cells = check_cell('Damage', 8, damage, cells, True)	
+	select = [{'type': 'inflict', 'name': 'Inflict Damage', 'w': 16}, {'type': 'reduce', 'name': 'Reduce Damage', 'w': 14}, {'type': 'object', 'name': 'Object Damage', 'w': 14}]
+	new_mod = mod_create('Damage', 8, damage_type, select)
+	value = 'inflict'
+	value = 'reduce'
+	value = 'object'
+	
+	body = mod_add(damage, new_mod, body)
+
+	cells = check_cell('Complexity', 11, complex, cells, True)
+	new_mod = mod_create('Complexity', 11)
+	
+	body = mod_add(complex, new_mod, body)
+
+	cells = check_cell('Measurement', 12, measure, cells, True)
+	select = [{'type': 'rank', 'name': 'Measurement Rank', 'w': 17}, {'type': 'unit', 'name': 'Measurement Value', 'w': 17}, {'type': 'skill', 'name': 'Skill Modifier Measurement', 'w': 27}]
+	new_mod = mod_create('Measurement', 12, measure_effect, select)
+	value = 'rank'
+	new_mod = mod_cell('Value', 7, [measure_rank_value], new_mod, value)
+	new_mod = mod_cell('Rank', 5, [measure_rank], new_mod, value)
+	value = 'unit'
+	new_mod = mod_cell('Value', 6, [unit_value], new_mod, value)
+	new_mod = mod_cell('Units', 6, [unit], new_mod, value)
+	value = 'skill'
+	new_mod = mod_cell('Math', 5, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], new_mod, value)
+	
+	body = mod_add(measure, new_mod, body)
+
+	cells = check_cell('Action Change', 15, change_action, cells, True)
+	new_mod = mod_create('Action Change', 15)
+
+	body = mod_add(change_action, new_mod, body)
+
+	cells = check_cell('Cover', 7, cover, cells)
+	cells = check_cell('Concealmet', 10, conceal, cells)
+
+	cells = cell('Description', 35, [description], cells)
 
 
 	body = send(cells, body)
@@ -306,6 +409,7 @@ def skill_degree_post(entry, body, cells):
 	measure_trait = entry.measure_trait
 	measure_trait_math = entry.measure_trait_math
 	measure_mod = entry.measure_mod
+	measure_math_rank = entry.measure_math_rank
 	condition_type = entry.condition_type
 	condition_damage_value = entry.condition_damage_value
 	condition_damage = entry.condition_damage

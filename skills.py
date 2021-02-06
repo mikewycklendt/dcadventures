@@ -203,6 +203,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
 
+	dc_damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}]
+
 	repair = [{'type': '', 'name': 'Effect'}, {'type': 'stable', 'name': 'Stable'}, {'type': 'broke', 'name': 'Broken'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
@@ -579,6 +581,7 @@ def skill_bonus_post_circ():
 	measure_trait = request.get_json()['measure_trait']
 	measure_trait_math = request.get_json()['measure_trait_math']
 	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
 	keyword = request.get_json()['keyword']
 	cumulative = request.get_json()['cumulative']
 	optional = request.get_json()['optional']
@@ -605,6 +608,7 @@ def skill_bonus_post_circ():
 	unit = db_integer(unit)
 	measure_trait_math = db_integer(measure_trait_math)
 	measure_mod = integer(measure_mod)
+	measure_math_rank = db_integer(measure_math_rank)
 	turns = integer(turns)
 	unit_time = integer(unit_time)
 	time_units = db_integer(time_units)
@@ -635,6 +639,7 @@ def skill_bonus_post_circ():
 						measure_trait = measure_trait,
 						measure_trait_math = measure_trait_math,
 						measure_mod = measure_mod,
+						measure_math_rank = measure_math_rank,
 						keyword = keyword,
 						cumulative = cumulative,
 						optional = optional,
@@ -747,6 +752,7 @@ def skill_bonus_post_dc():
 	measure_trait = request.get_json()['measure_trait']
 	measure_trait_math = request.get_json()['measure_trait_math']
 	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	condition1 = request.get_json()['condition1']
@@ -774,6 +780,7 @@ def skill_bonus_post_dc():
 	unit = db_integer(unit)
 	measure_trait_math = db_integer(measure_trait_math)
 	measure_mod = integer(measure_mod)
+	measure_math_rank = db_integer(measure_math_rank)
 	level_type = db_integer(level_type)
 	level = db_integer(level)
 	condition_turns = integer(condition_turns)
@@ -820,6 +827,7 @@ def skill_bonus_post_dc():
 					measure_trait = measure_trait,
 					measure_trait_math = measure_trait_math,
 					measure_mod = measure_mod,
+					measure_math_rank = measure_math_rank,
 					level_type = level_type,
 					level = level,
 					condition1 = condition1,
@@ -931,6 +939,7 @@ def skill_bonus_post_degree():
 	measure_trait = request.get_json()['measure_trait']
 	measure_trait_math = request.get_json()['measure_trait_math']
 	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
 	condition_type = request.get_json()['condition_type']
 	condition_damage_value = request.get_json()['condition_damage_value']
 	condition_damage = request.get_json()['condition_damage']
@@ -967,6 +976,7 @@ def skill_bonus_post_degree():
 	unit = db_integer(unit)
 	measure_trait_math = db_integer(measure_trait_math)
 	measure_mod = integer(measure_mod)
+	measure_math_rank =  db_integer(measure_math_rank)
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	condition_turns = integer(condition_turns)
@@ -1014,6 +1024,7 @@ def skill_bonus_post_degree():
 						measure_trait = measure_trait,
 						measure_trait_math = measure_trait_math,
 						measure_mod = measure_mod,
+						measure_math_rank = measure_math_rank,
 						condition_type = condition_type,
 						condition_damage_value = condition_damage_value,
 						condition_damage = condition_damage,

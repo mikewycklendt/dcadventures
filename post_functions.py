@@ -691,6 +691,18 @@ def add_plus(value):
 	except:
 		return (value)
 
+def int_word(value, word):
+
+	try:
+		value = int(value)
+		value = str(value)
+		value = value + ' ' + word
+	except:
+		return (value)
+
+	return (value)
+	
+
 def check_string(word, value):
 
 	if value == True:

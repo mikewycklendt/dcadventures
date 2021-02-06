@@ -428,6 +428,15 @@
 								{% endfor %}
 						</select>
 					</div>
+					
+					<div>
+						<select class="select-sml" id="deg_mod_measure_math_rank" name="deg_mod_measure_math_rank">
+							<option value="">Rank</option>
+							{% for m in measure_rank %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
 				</div>
 			</div>
 		</div>

@@ -225,6 +225,7 @@ function dc_submit() {
 	const measure_trait = select("dc_measure_trait")
 	const measure_trait_math = select("dc_measure_trait_math")
 	const measure_mod = select("dc_measure_mod")
+	const measure_math_rank = select('dc_measure_math_rank')
 	const level_type = select("dc_level_type")
 	const level = select("dc_level")
 	const condition1 = select("dc_condition1")
@@ -285,6 +286,7 @@ function dc_submit() {
 			'measure_trait': measure_trait,
 			'measure_trait_math': measure_trait_math,
 			'measure_mod': measure_mod,
+			'measure_math_rank': measure_math_rank,
 			'level_type': level_type,
 			'level': level,
 			'condition1': condition1,

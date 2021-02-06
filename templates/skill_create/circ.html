@@ -59,7 +59,7 @@
 							<option value={{i}}>Speed Rank {{i}}</option>
 						{% endfor %}
 						{% for i in positives %}
-							<option value={{i}}>Speed Rank {{i}}</option>
+							<option value={{i}}>Speed Rank +{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -282,6 +282,15 @@
 									{% endfor %}
 							</select>
 						</div>
+						
+				<div>
+					<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
+						<option value="">Rank</option>
+						{% for m in measure_rank %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
 					</div>
 				</div>
 			</div>
