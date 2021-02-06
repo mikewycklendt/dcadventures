@@ -201,7 +201,7 @@ def skill_circ_post_errors(data):
 	
 	errors = variable_fields('rank', 'Measurement Rank', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Measurement Rank Value', measure_rank_value, errors)
-	errors = variable_field('rank', measure_effect, 'Measurement Rank', measure_rank errors)
+	errors = variable_field('rank', measure_effect, 'Measurement Rank', measure_rank, errors)
 
 	errors = variable_fields('unit', 'Measurement Unit', measure_effect, [unit_value, unit_type, unit], errors)
 	errors = variable_field('unit', measure_effect, 'Measurement Value', unit_value, errors)
