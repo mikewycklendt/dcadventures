@@ -344,6 +344,14 @@
 				<div>
 					<input type="checkbox" id="tools" class="regular-checkbox big-checkbox">	
 				</div>
+
+				<div class="base-fade" id="required-tools">
+					<select class="base-select" id="required_tools" name="required_tools">
+						{% for r in required_tools %}
+							<option value="{{r.type}}">{{r.name}}</option>
+						{% endfor %}
+					</select>
+				</div> 
 			</div>
 		</div>
 		

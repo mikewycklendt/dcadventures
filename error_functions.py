@@ -1069,6 +1069,38 @@ def equip_entry_check(name, table, check, id, errors):
 
 	return (errors)
 
+def skill_entry_check(name, table, check, id, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	try:
+		if id != '':
+			id = int(id)
+		else:
+			return(errors)
+	except:
+		print('invalid id')
+
+	entry = db.session.query(table).filter_by(skill_id=id).first()
+
+	if check == True:
+		if entry is None:
+			error = True
+			message = 'You checked the ' + name + ' box.  Either create a ' + name + ' rule or uncheck the box.'
+			error_msgs.append(message)
+	else:
+		if entry is not None:
+			error = True
+			message = 'You created a ' + name + ' rule but the box for that rule is not checked.  Check that box or delete that rule.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 
 def arm_entry_check(name, table, check, id, errors):
 

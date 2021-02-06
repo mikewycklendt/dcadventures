@@ -177,6 +177,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	tools = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
 
+	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}]
+
 	bonus_type = [{'type': '', 'name': 'Up to Type'}, {'type': '', 'name': '+1 Per R'}]
 
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
@@ -320,6 +322,7 @@ def save_skill_bonus():
 	weapon = request.get_json()['weapon']
 	untrained = request.get_json()['untrained']
 	tools = request.get_json()['tools']
+	required_tools = request.get_json()['required_tools']
 	subskill = request.get_json()['subskill']
 	check_dc = request.get_json()['check_dc']
 	secret = request.get_json()['secret']
@@ -366,6 +369,7 @@ def save_skill_bonus():
 	entry.weapon = weapon
 	entry.untrained = untrained
 	entry.tools = tools
+	entry.required_tools = required_tools
 	entry.subskill = subskill
 	entry.check_dc = check_dc
 	entry.secret = secret

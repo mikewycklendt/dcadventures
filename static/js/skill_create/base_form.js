@@ -73,3 +73,10 @@ function secret() {
 
 	check_opacity(check, div);
 }
+
+function required_tools() {
+	const check = 'required_tools';
+	const div =  'required-tools';
+
+	check_opacity(check, div);
+}

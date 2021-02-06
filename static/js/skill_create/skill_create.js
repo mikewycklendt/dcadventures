@@ -55,6 +55,7 @@ skill_save = function() {
 	const weapon = select("base_weapon");
 	const untrained = check("untrained");
 	const tools = check("tools");
+	const required_tools = select("required_tools");
 	const subskill = check("subskill");
 	const check_dc = check("check_dc");
 	const secret = check("secret");
@@ -79,7 +80,48 @@ skill_save = function() {
 		method: 'POST',
 		body: JSON.stringify({
 			'skill_id': skill_id,
-			'description': description
+			'description': description,
+			'ability': ability,
+			'skill': skill,
+			'check_type': check_type,
+			'action': action,
+			'type': type,
+			'dc_type': dc_type,
+			'dc_value': dc_value,
+			'dc_mod': dc_mod,
+			'target': target,
+			'targets': targets,
+			'speed_type': speed_type,
+			'speed_turns': speed_turns,
+			'speed_direction': speed_direction,
+			'speed_mod': speed_mod,
+			'speed_value': speed_value,
+			'condition': condition,
+			'advantage': advantage,
+			'concealment': concealment,
+			'for_weapon': for_weapon,
+			'weapon_cat': weapon_cat,
+			'weapon_type': weapon_type,
+			'weapon': weapon,
+			'untrained': untrained,
+			'tools': tools,
+			'required_tools': required_tools, 
+			'subskill': subskill,
+			'check_dc': check_dc,
+			'secret': secret,
+			'secret_frequency': secret_frequency,
+			'ability_check': ability_check,
+			'check_check': check_check,
+			'circumstance': circumstance,
+			'dc': dc,
+			'degree': degree,
+			'levels': levels,
+			'modifiers': modifiers,
+			'opposed': opposed,
+			'time': time,
+			'opposed_multiple': opposed_multiple,
+			'modifiers_multiple': modifiers_multiple,
+			'modifiers_multiple_count': modifiers_multiple_count
 		}),
 		headers: {
 		'Content-Type': 'application/json',

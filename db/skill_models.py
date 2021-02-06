@@ -55,6 +55,7 @@ class SkillBonus(db.Model):
 	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
 	untrained = db.Column(db.Boolean)
 	tools = db.Column(db.Boolean)
+	required_tools = db.Column(db.String())
 	subskill = db.Column(db.Boolean)
 	check_dc = db.Column(db.Boolean)
 	secret = db.Column(db.Boolean)
@@ -101,6 +102,7 @@ class SkillBonus(db.Model):
 			'weapon': self.weapon,
 			'untrained': self.untrained,
 			'tools': self.tools,
+			'required_tools': self.required_tools,
 			'subskill': self.subskill,
 			'check_dc': self.check_dc,
 			'secret': self.secret,
