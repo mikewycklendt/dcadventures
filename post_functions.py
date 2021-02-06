@@ -460,7 +460,7 @@ def vcell_add(title, field, vcells, cells):
 	return (cells)
 
 
-def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
+def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e', selection3='e', value3='e'):
 
 	if vcells == 'e':
 		new_vcells = []
@@ -470,6 +470,9 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 	cell['value'] = value
 
 	if value2 != selection2:
+		return (vcells)
+
+	if value3 != selection3:
 		return (vcells)
 
 	for c in contentlist:
@@ -495,7 +498,6 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 
 	for c in contentlist:
 		if content == '':
-			print
 			content += c
 		else:
 			content += ' ' + c
@@ -508,6 +510,22 @@ def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e'):
 
 	vcells.append(cell)
 	return (vcells)
+
+def one_of(value, contentlist, final=''):
+	if final != '':
+		return (final)
+
+	if value == '' or value == None:
+		value = ''
+		return (value)
+	else:
+		content = '`'
+		for c in contentlist:
+			if content == '':
+				content += c
+			else:
+				content += ' ' + c
+		return (content)
 
 
 def check_cell(title, width, check, cells, mod_check=False):

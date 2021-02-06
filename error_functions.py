@@ -95,7 +95,7 @@ def integer(value):
 			print(value)
 
 	return (value)
-	
+
 def required(value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -390,6 +390,46 @@ def if_field(main, field, select, name, errors):
 	if error:
 		errors['error'] = error
 
+	return (errors)
+
+
+def if_or(main, field, selects, names, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if field == '':
+		return (errors)
+	
+	for select in selects:
+		if select != '' :
+			error = False
+
+	message = 'If this effect involves a ' + main + ', the ' + names + ' field is required.'		
+	if error:
+		errors['error'] = error
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+	
+	return (errors)
+
+def seperate(selects, names, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	i = 0
+	
+	for select in selects:
+		if select != '' :
+			i += 1
+
+	if i > 1:			
+		error = True
+		message = 'You can only choose one of ' + names + ' fields at once.'		
+	if error:
+		errors['error'] = error
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+	
 	return (errors)
 
 	

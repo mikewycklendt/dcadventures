@@ -162,8 +162,11 @@ function dc_inflict_type() {
 	const options = [{'val': 'flat', 'div': 'dc-damage-inflict-flat'},
 					{'val': 'bonus', 'div': 'dc-damage-inflict-bonus'},
 					{'val': 'math', 'div': 'dc-damage-inflict-math'}];
-	
+	const fields = ["dc_inflict_flat", "dc_inflict_trait_type", "dc_inflict_trait", 
+					"dc_inflict_math", "dc_inflict_mod", "dc_inflict_bonus"]
+
 	select_opacity(select, options);
+	reset_all(fields)
 }
 
 function dc_inflict_trait_type() {

@@ -79,8 +79,11 @@ function deg_mod_inflict_type() {
 	const options = [{'val': 'flat', 'div': 'deg-mod-damage-inflict-flat'},
 					{'val': 'bonus', 'div': 'deg-mod-damage-inflict-bonus'},
 					{'val': 'math', 'div': 'deg-mod-damage-inflict-math'}];
-	
+	const selects = ["deg_mod_inflict_flat", "deg_mod_inflict_trait_type", "deg_mod_inflict_trait",
+					"deg_mod_inflict_math", "deg_mod_inflict_mod", "deg_mod_inflict_bonus"];
+
 	select_opacity(select, options);
+	reset_all(selects);
 }
 
 function deg_mod_inflict_trait_type() {

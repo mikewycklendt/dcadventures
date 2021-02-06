@@ -17,7 +17,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate
 
 
 def skill_save_errors(data):
@@ -527,7 +527,7 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('inflict', 'Inflict Damage', damage_type, [inflict_type], errors)
 	errors = variable_field('inflict', damage_type, 'Inflict Damage Type', inflict_type, errors)
-
+	
 	errors = variable_fields('flat', 'Flat Damage', inflict_type, [inflict_flat], errors)
 	errors = variable_field('flat', inflict_type, 'Flat vALUE', inflict_flat, errors)
 
@@ -546,10 +546,12 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('object', 'Damage Object', damage_type, [object, object_effect], errors)
 	errors = variable_field('object', damage_type, 'Degrees', object, errors)
-	errors = variable_field('object', damage_type, 'Effect', object_effect, errors)
+	errors = variable_field('object', damage_type, 'Object Condition', object_effect, errors)
 	
 	errors = variable_fields('level', 'Level Effect', type, [level_type], errors)
 	errors = variable_field('level', type, 'Level Type', level_type, errors)
+	errors = if_or('Level', level_type, [level, level_direction], 'Level or Level Change', errors)
+	errors = seperate([level, level_direction], 'Level or Level Change', errors)
 	
 	errors = variable_fields('knowledge', 'Gain Knowledge Effect', type, [knowledge], errors)
 	errors = variable_field('knowledge', type, 'Knowledge Type', knowledge, errors)
@@ -599,11 +601,8 @@ def skill_opposed_post_errors(data):
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
-	errors = required(trait_type, 'Player Check Trait Typr', errors)
-	errors = required(trait, 'Player Check Trait', errors)
 	errors = required(opponent_trait_type, 'Opponent Check Trait Typr', errors)
 	errors = required(opponent_trait, 'Opponent Check Trait', errors)
-	errors = required(player_check, 'Player Check', errors)
 	errors = required(opponent_check, 'Opponennt Check', errors)
 	errors = check_fields(recurring, 'Recurring', [recurring_value, recurring_units], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value,, errors)

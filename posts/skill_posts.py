@@ -20,10 +20,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word
-
-
-
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of
 
 def skill_ability_post(entry, body, cells):
 
@@ -88,7 +85,6 @@ def skill_check_post(entry, body, cells):
 
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
-
 	body = send(cells, body)
 
 	cells.clear()
@@ -146,6 +142,7 @@ def skill_circ_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert()
 	measure_mod = integer_convert(measure_mod)
+	measure_math_rank = get_name(Rank, measure_math_rank)
 	turns = integer_convert(turns)
 	unit_time = integer_convert(unit_time)
 	time_units = get_name(Unit, time_units)
@@ -290,13 +287,6 @@ def skill_dc_post(entry, body, cells):
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
-	
-	
-	
-	
-	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
-
-
 	cells = cell('Target', 15, [target])
 	
 	vcells = vcell('value', 6, [value])
@@ -308,31 +298,37 @@ def skill_dc_post(entry, body, cells):
 
 	cells = check_cell('Condition', 9, condition, cells, True)
 	new_mod = mod_create('Condition', 12)
-
+	word = string('for', condition_turns)
+	word2 = string('Turns', condition_turns)
+	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2, word, condition_turns, word2], new_mod)
 	body = mod_add(condition, new_mod, body)
 
 	cells = check_cell('Keyword', 8, keyword_check, cells, True)
 	new_mod = mod_create('Keyword', 9)
-	
+	new_mod = mod_cell('Keyword', 9, [keyword], new_mod)
 	body = mod_add(keyword_check, new_mod, body)
 
 	cells = check_cell('Level', 7, levels, cells, True)
 	new_mod = mod_create('Level', 7)
-	
+	new_mod = mod_cell('Level Type', 14, [level_type], new_mod)
+	new_mod = mod_cell('Leve;', 6, [level], new_mod)		
 	body = mod_add(levels, new_mod, body)
 
 	cells = check_cell('Damage', 8, damage, cells, True)	
-	select = [{'type': 'inflict', 'name': 'Inflict Damage', 'w': 16}, {'type': 'reduce', 'name': 'Reduce Damage', 'w': 14}, {'type': 'object', 'name': 'Object Damage', 'w': 14}]
+	select = [{'type': 'inflict', 'name': 'Inflict Damage', 'w': 16}, {'type': 'reduce', 'name': 'Reduce Damage', 'w': 14}]
 	new_mod = mod_create('Damage', 8, damage_type, select)
 	value = 'inflict'
+	new_mod = mod_cell('Value', 7, [inflict_flat], new_mod, value)
+	new_mod = mod_cell('Math', 6, [inflict_trait, inflict_math, inflict_mod], new_mod, value)
+	new_mod = mod_cell('Bonus', 7, [inflict_bonus], new_mod, value)
 	value = 'reduce'
-	value = 'object'
-	
+	new_mod = mod_cell('Modifier', 9, [damage_mod], new_mod, value)
+	new_mod = mod_cell('Consequence', 13, [damage_consequence], new_mod, value)
 	body = mod_add(damage, new_mod, body)
 
 	cells = check_cell('Complexity', 11, complex, cells, True)
 	new_mod = mod_create('Complexity', 11)
-	
+	new_mod = mod_cell('Complexity Type', 17, [complexity], new_mod)	
 	body = mod_add(complex, new_mod, body)
 
 	cells = check_cell('Measurement', 12, measure, cells, True)
@@ -351,14 +347,13 @@ def skill_dc_post(entry, body, cells):
 
 	cells = check_cell('Action Change', 15, change_action, cells, True)
 	new_mod = mod_create('Action Change', 15)
-
+	new_mod = mod_cell('Action Changed To', 20, [action], new_mod)
 	body = mod_add(change_action, new_mod, body)
 
 	cells = check_cell('Cover', 7, cover, cells)
 	cells = check_cell('Concealmet', 10, conceal, cells)
 
 	cells = cell('Description', 35, [description], cells)
-
 
 	body = send(cells, body)
 
@@ -444,6 +439,7 @@ def skill_degree_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
+	measure_math_rank = get_name(Rank, measure_math_rank)
 	condition_damage_value = integer_convert(condition_damage_value)
 	condition_turns = integer_convert(condition_turns)
 	nullify = integer_convert(nullify)
@@ -468,19 +464,51 @@ def skill_degree_post(entry, body, cells):
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
+	cells = cell('Target', 15, [target])
+	cells = cell('Degree', 8, [value], cells)
+	cells = cell('Keyword', 15, [keyword], cells)
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
+	vcells = vcell('action', 40, ['Action Changed to', action])
 
-	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+	vcells = vcell('measure', 20, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
+	vcells = vcell('measure', 20, [unit_value, unit], vcells, measure_effect, 'unit')	
+	vcells = vcell('measure', 35, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill')
 
-	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+	word = string('for', condition_turns)
+	word2 = string('Turns', condition_turns)
+	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2, word, condition_turns, word2], vcells, condition_type, 'condition')
+	vcells = vcell('condition', 25, [condition_damage_value, 'Conditions', condition_damage], vcells, condition_type, 'damage')
 
-	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+	vcells = vcell('circ', 40, [circumstance, 'on', circ_target], vcells)
+	time = add_plus(time)
+	vcells = vcell('time', 25, [time, 'Time Rank'], vcells)
+	
+	vcells = vcell('damage', 20, [inflict_flat, 'Rank Damage'], vcells, damage_type, 'inflict', inflict_type, 'flat')
+	inflict_bonus = add_plus(inflict_bonus)
+	vcells = vcell('damage', 20, [inflict_bonus, 'Rank Damage'], vcells, damage_type, 'inflict', inflict_type, 'bonus')
+	vcells = vcell('damage', 5, [inflict_trait, 'Rank', inflict_math, inflict_mod, '= Rank Damage'], vcells, damage_type, 'inflict', inflict_type, 'math')
+	word = string('if', damage_consequence)
+	w = width(10, 16, damage_consequence)
+	vcells = vcell('damage', w, [damage_mod, word, damage_consequence], vcells, damage_type, 'reduce')
+	vcells = vcell('damage', 25, [object, 'More', object_effect], vcells, damage_type, 'object')
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	level_value = one_of(level_type, [level])
+	level_value = one_of(level_type, [level_direction])
+	vcells = vcell('level', 20, [level_value], vcells)
 
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')
+	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
 
+	w = width(17, 13, consequence_action)
+	W = width(W, 13, consequence_trait)
+	word = string('with', [consequence_trait])
+	vcells = vcell('consequence', w, [consequence_action, word, consequence_trait, 'results in', consequence], vcells)
+
+	cells = vcell_add('Effect', type, vcells, cells)
+	
+	cells = cell('Nullify DC', 13, [nullify], cells)
+	cella = check_cell('Cumulative', 12, cumulative, cells)
+	cella = check_cell('Linked', 7, linked, cells)
 
 	body = send(cells, body)
 
@@ -519,6 +547,20 @@ def skill_opposed_post(entry, body, cells):
 	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}]
 	attached = selects(attached, attached_select)
 
+	cells = cell('When', 13, [attached])
+	cells = cell('Frequency', 13, [frequency], cells)
+	cells = cell('Player Check', 15, [trait], cells)
+	cells = cell('Modifier', 9, [mod], cells)
+	cells = cell('Check', 14, [player_check], cells)
+	cells = cell('Opponent Check', 15, [opponent_trait], cells)
+	cells = cell('Modifier', 9, [opponent_mod], cells)
+	cells = cell('Check', 14, [opponent_check], cells)
+	cells = check_cell('Secret', 8, secret, cells)
+
+	cells = check_cell('Recurring', 10, recurring, cells, True)\
+	new_mod = mod_create('Recurring Check', 17)
+	new_mod = mod_cell('Every', 7, [recurring_value, recurring_units], new_mod)
+	mod_add(recurring, new_mod, body)
 
 	body = send(cells, body)
 
@@ -562,11 +604,18 @@ def skill_time_post(entry, body, cells):
 	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
 	type = selects(type, time_effect_select)
 
+	cells = cell('Time Type', 24. [type])
 
+	vcells = vcell('value', 17, [value, units])
+	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
+	vcells = vcell('rank', 45, [rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
+	vcells = vcell('gm', 13, ['Set by GM'], vcells)
+	vcell_add('Time', value_type, vcells, cells)
 
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Measurement'}, {'type': 'gm', 'name': 'Set by GM'}]
-
-
+	cells = check_cell('Recovey', 12, recovery, cells, True)
+	new_mod = mod_create('Recovery Time', 18)
+	new_mod = mod_cell('Effect', 7, [recovery_penalty, 'Toughness Penalty Nullified Every'recovery_time, 'Time Rank'], new_mod)
+	mod_add(recovery, new_mod, body)
 
 	body = send(cells, body)
 

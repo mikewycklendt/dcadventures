@@ -32,10 +32,16 @@ function modifiers_trigger() {
 					{'val': 'db', 'div': 'modifiers-creature-other'},
 					{'val': 'db', 'div': 'modifiers-emotion-other'},
 					{'val': 'db', 'div': 'modifiers-environment-other'}]
-	const selects = ['modifiers_profession', 'modifiers_creature', 'modifiers_emotion', 'modifiers_environment'];
+	const selects = ["modifiers_environment", "modifiers_sense", "modifiers_range",
+					 "modifiers_subsense", "modifiers_cover", "modifiers_conceal", 
+					 "modifiers_skill", "modifiers_light", "modifiers_maneuver", 
+					 "modifiers_weapon_melee", "modifiers_weapon_ranged", "modifiers_tools", 
+					 "modifiers_condition", "modifiers_power", "modifiers_consequence", 
+					 "modifiers_creature", "modifiers_emotion", "modifiers_conflict",
+					 "modifiers_profession"]
 
 	select_opacity(select, options);
-	select_reset(select, selects);
+	reset_all(selects)
 }
 
 function modifiers_profession() {
