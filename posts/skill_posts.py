@@ -614,7 +614,7 @@ def skill_time_post(entry, body, cells):
 
 	cells = check_cell('Recovey', 12, recovery, cells, True)
 	new_mod = mod_create('Recovery Time', 18)
-	new_mod = mod_cell('Effect', 7, [recovery_penalty, 'Toughness Penalty Nullified Every'recovery_time, 'Time Rank'], new_mod)
+	new_mod = mod_cell('Effect', 7, [recovery_penalty, 'Toughness Penalty Nullified Every', recovery_time, 'Time Rank'], new_mod)
 	mod_add(recovery, new_mod, body)
 
 	body = send(cells, body)
