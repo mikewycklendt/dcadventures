@@ -58,3 +58,15 @@ class Armor(db.Model):
 			'defense': self.defense,
 			'descriptor': self.descriptor
 		}
+
+class ArmorType(db.Model):
+	__tablename__ = 'armor_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
