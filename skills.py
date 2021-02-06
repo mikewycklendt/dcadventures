@@ -349,7 +349,7 @@ def save_skill_bonus():
 	entry.type = type
 	entry.dc_type = dc_type
 	entry.dc_value = dc_value
-	entry.dc_mod dc_= mod
+	entry.dc_mod = dc_mod
 	entry.target = target
 	entry.targets = targets
 	entry.speed_type = speed_type
