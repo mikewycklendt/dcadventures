@@ -27,31 +27,7 @@ migrate = Migrate(app, db)
 
 
 
-class Headquarters(db.Model):
-	__tablename__ = 'headquarters'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	description = db.Column(db.String())
-	size = db.Column(db.Integer, db.ForeignKey('headquarters_size.id'))
-	toughness = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
-	shared = db.Column(db.Boolean)
-	addon = db.Column(db.Boolean)
-	feature = db.Column(db.Boolean)
 
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name,
-			'description': self.description,
-			'size': self.size,
-			'toughness': self.toughness,
-			'cost': self.cost,
-			'shared': self.shared,
-			'addon': self.addon,
-			'feature': self.feature
-		}
 
 class HeadSize(db.Model):
 	__tablename__ = 'headquarters_size'
