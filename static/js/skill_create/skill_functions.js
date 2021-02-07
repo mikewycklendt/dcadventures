@@ -964,8 +964,7 @@ function selects_add(id, name, selects_input) {
 
 
 function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false) {
-	const get_id = select(id_field);
-	const id = get_id.options[get_id.selectedIndex].value;
+	const id = select(id_field);
 
 	response = fetch(route, {
 		method: 'POST',
