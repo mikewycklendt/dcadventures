@@ -347,9 +347,9 @@ def post_descriptor():
 		else:
 			name = name + ', ' + one_medium_name
 
-	if rare = 1:
+	if rare == 1:
 		rarity = 'very'
-	if rare = 2:	
+	if rare == 2:	
 		rarity = 'common'
 	if 2 < rare < 5:
 		rarity = 'uncommon'
