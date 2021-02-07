@@ -23,13 +23,13 @@ with app.app_context():
   from models import *
   from db.skill_models import *
   from db.advanrtage_modeks import *
-  from db.equipment_models import *
-  from db.weapon_models import *
   from db.vehicle_models import *
   from db.descriptor_models import *
   from db.power_models import *
   from db.armor_models import *
   from db.headquarters_models import *
+  from db.equipment_models import *
+  from db.weapon_models import *
 
 
 migrate = Migrate(app, db)
