@@ -996,7 +996,7 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 
 			const options = jsonResponse.options;
 		
-			if (multiple != false) {	
+			if (multiple == false) {	
 				if (classname == false) {
 					const update = document.getElementById(fill);
 					update.innerText = null;
