@@ -20,7 +20,7 @@ from models import Consequence, Benefit, Environment, Job, Creature, Maneuver, C
 from models import setup_db, Ability,  ConflictAction, Damage, DamageType, flash
 from models import Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense
 from models import Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank 
-from models import Levels, LevelType
+from models import Levels, LevelType, Light
 
 from db.advanrtage_modeks import Advantage, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor

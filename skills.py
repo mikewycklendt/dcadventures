@@ -20,7 +20,7 @@ from error_functions import integer, required, power_check, one, field, rule_che
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
-from models import Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged 
+from models import Consequence, Benefit, Environment, Job, Creature, Maneuver, Cover, Conceal, Ranged, Light 
 from models import setup_db, Ability,  ConflictAction, Damage, DamageType, flash
 from models import Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense
 from models import Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank 
