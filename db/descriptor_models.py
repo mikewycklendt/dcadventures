@@ -51,7 +51,7 @@ class Descriptor(db.Model):
 			'medium_subtype': self.medium_subtype,
 			'result': self.result,
 			'description': self.description,
-			'damage': self.damage
+			'damage': self.damage,
 			'rarity': self.rarity
 		}
 
