@@ -73,7 +73,7 @@ def equip_skill_select():
 	print(body)
 	return jsonify(body)
 
-@advantage.route('/select/action', methods=['POST'])
+@select.route('/select/action', methods=['POST'])
 def advantage_action_select():
 	body = {}
 	body['success'] = True
