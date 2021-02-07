@@ -21,28 +21,25 @@ let addon_cost = {'cost': 0}
 function feature_feature() {
 	const select = 'feature_feature';
 	const entry = 'feature-entry';
-	const route = '/vehicle/feature/info'
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route, addon_cost);
+	item_info(select, entry, item, feature_info_select, addon_cost);
 }
 
 function equipment()  {
 	const select = 'equipment';
 	const entry = 'feature-entry';
-	const route = '/equipment/equipment/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route, addon_cost);
+	item_info(select, entry, item, equipment_info_select, addon_cost);
 }
 
 function weapon() {
 	const select = 'weapon';
 	const entry = 'feature-entry';
-	const route = '/equipment/weapon/select/info';
 	const item = 'feature-item';
 
-	item_info(select, entry, item, route, addon_cost);
+	item_info(select, entry, item, weapon_info_select, addon_cost);
 }
 
 function weapon_cat() {
@@ -62,17 +59,16 @@ function weapon_type() {
 function equipment_type() {
 	const select = 'equipment_type';
 	const fill = 'equipment';
-	const route =  '/vehicle/equipment/select';
+	const sub = 'feature'
 
-	id_select(select, fill, route);	
+	id_select(select, fill, equipment_select, sub);	
 }
 
 function feature_equipment() {
 	const select = 'feature_equipment';
 	const fill = 'feature_feature';
-	const route = '/vehicle/feature/select';
 
-	id_select(select, fill, route);
+	id_select(select, fill, feature_select);
 
 }
 

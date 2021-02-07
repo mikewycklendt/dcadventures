@@ -1,19 +1,25 @@
 
-const trait_select = '/skill/trait/select';
-const level_select = '/power/level/select';
-const action_select = '/advantage/action/select';
-const skill_select = '/equipment/skill/select';
-const weapon_type_select = '/equipment/weapontype/select';
-const weapon_select = '/equipment/weapons/select';
-const subsense_select = '/sense/subsense/select';
-const equipment_select = '/equipment/select';
-const feature_info_select = '/vehicle/feature/info';
-const equipment_info_select = '/equipment/equipment/select/info';
-const weapon_info_select = '/equipment/weapon/select/info';
-const head_feature_info_select = '/headquarters/feature/select/info';
-const unit_select = '/unit/select'
-const skill_icon_select = '/skill/icon/select';
-const ability_icon_select = '/ability/icon/select';
+const trait_select = '/select/trait';
+const level_select = '/select/level';
+const action_select = '/select/action';
+const skill_select = '/select/skill';
+const weapon_type_select = '/select/weapon/type';
+const weapon_select = '/select/weapon';
+const subsense_select = '/select/sense/subsense';
+const equipment_select = '/select/equipment';
+const unit_select = '/select/unit';
+const feature_select = '/select/feature';
+const medium_select = '/select/medium';
+const medium_subtype_select = '/select/medium/subtype';
+const descriptor_select = '/select/descriptor';
+
+const head_feature_info_select = '/info/headquarters/feature';
+const feature_info_select = '/info/feature';
+const equipment_info_select = '/info/equipment';
+const weapon_info_select = '/info/weapon';
+
+const skill_icon_select = '/select/icon/skill';
+const ability_icon_select = '/select/icon/ability';
 
 
 
@@ -957,20 +963,16 @@ function selects_add(id, name, selects_input) {
 }
 
 
-function id_select(select, fill, route) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false) {
+	const get_id = select(id_field);
+	const id = get_id.options[get_id.selectedIndex].value;
 
 	response = fetch(route, {
 		method: 'POST',
 		body: JSON.stringify({
-			'id': type_id
+			'id': id,
+			'sub': sub,
+			'fields': fill
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -981,19 +983,68 @@ function id_select(select, fill, route) {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const options = jsonResponse.options;
-			let option;
+			if (jsonResponse.titles) {
+				titles = jsonResponse.title;
+				let t;
+				for (t of titles) {
+					const div = document.getElementById(t.div)
+					const title = t.title
 
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
+					div.style.opacity = '100%';
+					div.innerText = title;
+				}
 			}
 
+			const options = jsonResponse.options;
+		
+			if (multiple != false) {	
+				if (classname == false) {
+					const update = document.getElementById(fill);
+					update.innerText = null;
+					update.style.backgroundColor = 'lightblue';
+					setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+					let option;
+					for (option of options)  {
+						let o = document.createElement("option")
+						o.value = option.id;
+						o.text = option.name;
+						update.add(o);
+					}
+				} else {
+					const selects = document.getElementsByClassName(fill);
+					let update;
+					for (update of selects) {
+						update.innerText = null;
+						update.style.backgroundColor = 'lightblue';
+						setTimeout(function(){update.style.backgroundColor = "white"}, 200)
+						let option;
+						for (option of options)  {
+							let o = document.createElement("option")
+							o.value = option.id;
+							o.text = option.name;
+							update.add(o);
+						}
+					}
+				}		
+			} else {
+				let field;
+				for (field of options) {
+					const select = field.select;
+					const update = document.getElementById(select)
+					const inserts = field.options;
+					let option;
+					for (option of inserts) {
+						let o = document.createElement("option")
+						o.value = option.id;
+						o.text = option.name;
+						update.add(o);
+					}
+				}
+			}
 		} else {
-			console.log(jsonResponse.options);
+			console.log('no results');
 		}
+
 	})	
 }
 

@@ -12,15 +12,6 @@ from datetime import datetime
 from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
-from tables import tables
-from skills import skill
-from powers import powers
-from advantage import advantage
-from equipment import equip
-from weapons import weap
-from armor import arm
-from vehicles import vehicle
-from headquarters import head
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -39,6 +30,20 @@ from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar,
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+
+from tables import tables
+from skills import skill
+from powers import powers
+from advantage import advantage
+from equipment import equip
+from weapons import weap
+from armor import arm
+from vehicles import vehicle
+from headquarters import head
+from selects import select
+from info_select import info
+from icon_select import icon
+from descriptor import descrip
 
 load_dotenv()
 
@@ -60,6 +65,10 @@ app.register_blueprint(weap)
 app.register_blueprint(arm)
 app.register_blueprint(vehicle)
 app.register_blueprint(head)
+app.register_blueprint(select)
+app.register_blueprint(info)
+app.register_blueprint(icon)
+app.register_blueprint(descrip)
 db = SQLAlchemy()
 setup_db(app)
 migrate = Migrate(app, db)

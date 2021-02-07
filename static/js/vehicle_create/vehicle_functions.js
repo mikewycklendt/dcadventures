@@ -1,12 +1,23 @@
 
-const trait_select = '/advantage/trait/select';
+const trait_select = '/select/trait';
 const level_select = '/power/level/select';
 const action_select = '/advantage/action/select';
-const skill_select = '/equipment/skill/select';
-const weapon_type_select = '/equipment/weapontype/select';
-const weapon_select = '/equipment/weapons/select';
+const skill_select = '/select/skill';
+const weapon_type_select = '/select/weapon/type';
+const weapon_select = '/select/weapon';
 const subsense_select = '/sense/subsense/select';
-const equipment_select = '/equipment/select';
+const equipment_select = '/select/equipment';
+const unit_select = '/select/unit'
+const feature_select = '/select/feature';
+
+const head_feature_info_select = '/info/headquarters/feature';
+const feature_info_select = '/info/feature';
+const equipment_info_select = '/info/equipment';
+const weapon_info_select = '/info/weapon';
+
+const skill_icon_select = '/select/icon/skill';
+const ability_icon_select = '/select/icon/ability';
+
 
 function item_info(select, entry, item_div, route, object) {
 	const field = document.getElementById(select)

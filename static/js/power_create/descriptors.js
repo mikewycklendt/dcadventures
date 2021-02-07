@@ -15,15 +15,11 @@ function descriptor_new(value, div) {
 
 function get_medium_subtypes() {
 
-	const title = document.getElementById('descriptor-medium-subtype-title')
-	const des_title = document.getElementById('descriptor-medium-subtype-des-title')
 
 	const medium_type_field  = document.getElementById('descriptor_medium_type');
 	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
 
-	const update = document.getElementById('descriptor_medium_subtype');
-	const update_medium  = document.getElementById('descriptor_medium');
-
+	
 	update.style.backgroundColor = 'lightblue';
 	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
 	update_medium.style.backgroundColor = 'lightblue';
@@ -43,13 +39,39 @@ function get_medium_subtypes() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			update.innerText = null;
-			update_medium.innerText = null;
 
-			title.innerText = jsonResponse.title;
-			title.style.opacity = '100%';
+			
+			if (jsonResponse.titles) {
+				titles = jsonResponse.title;
+				let t;
+				for (t of titles) {
+					const div = document.getElementById(t.div)
+					const title = t.title
 
-			des_title.innerText = jsonResponse.des_title;
+					div.style.opacity = '100%';
+					div.innerText = title;
+				}
+			}
+	
+			const options = jsonResponse.options;
+
+			if (multiple == false) {
+
+			} else {
+				let field;
+				for (field of options) {
+					const select = field.select;
+					const update = document.getElementById(select)
+					const inserts = field.options;
+					let option;
+					for (option of inserts) {
+						let o = document.createElement("option")
+						o.value = option.id;
+						o.text = option.name;
+						update.add(o);
+					}
+				}
+			}
 
 			const options = jsonResponse.options;
 			let option;

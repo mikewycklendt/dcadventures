@@ -38,6 +38,7 @@ class Descriptor(db.Model):
 	result = db.Column(db.String())
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	rarity = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -51,6 +52,7 @@ class Descriptor(db.Model):
 			'result': self.result,
 			'description': self.description,
 			'damage': self.damage
+			'rarity': self.rarity
 		}
 
 class Origin(db.Model):
