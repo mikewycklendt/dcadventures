@@ -221,7 +221,7 @@ def equip_medium_select():
 	medium_subtype = request.get_json()['medium_subtype']
 	options = []
 	sub = request.get_json()['sub']
-	body['titles'] = False`
+	body['titles'] = False
 	titles = []
 	print('id ' + medium_subtype)
 
