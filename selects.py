@@ -183,10 +183,10 @@ def equip_medium_subtype_select():
 
 			titles.append({'div': 'descriptor-medium-subtype-title', 'title': title})
 			titles.append({'div': 'descriptor-medium-subtype-des-title', 'title': description_title})			
-			body['titles'] = titles		
-
+			body['titles'] = titles
+			
 			all_medium_type = 'Any ' + medium_type.name
-	 		subtype_options.append({'id': 'all', 'name': all_medium_type})
+			subtype_options.append({'id': 'all', 'name': all_medium_type})
 			subtype_options.append({'id': 'new', 'name': 'New'})
 
 		for subtype in medium_subtypes:
