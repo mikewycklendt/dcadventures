@@ -67,16 +67,4 @@ class HeadSize(db.Model):
 		}
 
 
-class HeadFeature(db.Model):
-	__tablename__ = 'headquarters_features'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	description = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name,
-			'description': self.description
-		}
 
