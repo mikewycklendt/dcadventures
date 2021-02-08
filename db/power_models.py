@@ -145,6 +145,18 @@ class PowerType(db.Model):
 			'name': self.name
 		}
 
+		
+class PowerDuration(db.Model):
+	__tablename__ = 'power_duration'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class Extra(db.Model):
 	__tablename__ = 'extras'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

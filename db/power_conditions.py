@@ -1,39 +1,8 @@
-from flask import Flask, render_template, request, Response, flash, redirect, url_for
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from dotenv import load_dotenv
 
-from models import setup_db
-from models import db
-
-load_dotenv()
-
-import os
-
-db_path = os.environ.get("db_path")
-
-app = Flask(__name__)
-moment = Moment(app)
-#app.config.from_object('config')
-project_dir = os.path.dirname(os.path.abspath(__file__))
-database_path = db_path
-app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-
-setup_db(app)
-
-
-migrate = Migrate(app, db)
 
 class Power(db.Model):
-	__tablename__ = 'powers'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-	description = db.Column(db.String())
-	power_type = db.Column(db.Integer, db.ForeignKey('power_type.id'))
-	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	power_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	duration = db.Column(db.String())
+
+	duration = db.Column(db.Integer, db.ForeignKey('power_duration.id'))
 	cost = db.Column(db.Integer)
 	limit = db.Column(db.Integer)
 	dc_type = db.Column(db.String())

@@ -71,7 +71,6 @@
 				<div>
 					<select class="select-entry" id="equipment" name="equipment" onchange="equipment()">
 						<option value="">Equipment</option>
-						<option value="all">All Features</option>
 						{% for e in equipment %}
 							<option value={{e.id}}>{{e.name}}</option>
 						{% endfor %}
