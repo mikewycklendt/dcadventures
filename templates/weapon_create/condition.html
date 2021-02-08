@@ -32,7 +32,7 @@
 					<select class="select-entry" id="condition_condition" name="condition_conditio">
 						<option value="">Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -48,7 +48,7 @@
 					<select class="select-entry" id="condition_null" name="condition_null">
 						<option value="">Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -64,7 +64,7 @@
 					<select class="select-entry" id="condition_condition1" name="condition_condition1">
 						<option value="">Starting Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -77,7 +77,7 @@
 					<select class="select-entry" id="condition_condition2" name="condition_condition2">
 						<option value="">Ending Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
