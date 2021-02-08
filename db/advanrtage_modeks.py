@@ -170,6 +170,17 @@ class Advantage(db.Model):
 			'variable': self.variable
 		}
 
+class AdvantageType(db.Model):
+	__tablename__ = 'advantage_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 class AdvAltCheck(db.Model):
 	__tablename__ = 'advantage_alt_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
