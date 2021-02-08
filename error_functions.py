@@ -914,9 +914,16 @@ def int_check(value, name, errors):
 
 	
 
-def db_integer(value):
+def db_integer(table, value):
 
-	if value == 'none' or value == 'x' or value == '':
+	if value == '':
+		try:
+			query = db.session.query(table).filter_by(=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == '':
 		value = None
 	else:
 		try:
