@@ -22,12 +22,12 @@ from models import Defense, Modifier, Complex, Emotion, Action, Ground, Skill, S
 from models import Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank 
 from models import Levels, LevelType, Light
 
-from db.advanrtage_modeks import Advantage, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+from db.advanrtage_modeks import Advantage, AdvantageType, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -89,11 +89,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 
 
-	duration_type = [{'type': 'instant', 'name': 'Instant'}, 
-						{'type': 'conc', 'name': 'Concentration'}, 
-						{'type': 'sustained', 'name': 'Sustained'},
-						{'type': 'cont', 'name': 'Continuous'},
-						{'type': 'perm', 'name': 'Permanent'}]
+	duration_type = PowerDuration.query.all()
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
@@ -252,7 +248,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 
-	character = [{'type': '', 'name': 'Changed Trait'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'intim', 'name': 'Intimidation'}]
+	character = [{'type': 'size', 'name': 'Size Rank'}]
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
@@ -449,8 +445,9 @@ def save_power():
 	skill = request.get_json()['skill']
 	skill_required = request.get_json()['skill_required']
 	skill_when = request.get_json()['skill_when']
-	grab = request.get_json()['grab']
-	grab_type = request.get_json()['grab_type']
+	conflict = request.get_json()['conflict']
+	conflict_bonus = request.get_json()['conflict_bonus']
+	conflict_type = request.get_json()['conflict_type']
 	condition = request.get_json()['condition']
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
@@ -514,8 +511,9 @@ def save_power():
 	power.skill = skill
 	power.skill_required = skill_required
 	power.skill_when = skill_when
-	power.grab = grab
-	power.grab_type = grab_type
+	power.conflict = conflict
+	power.conflict_bonus = conflict_bonus
+	power.conflict_type conflict_type
 	power.condition = condition
 	power.alt_check = alt_check	
 	power.change_action = change_action

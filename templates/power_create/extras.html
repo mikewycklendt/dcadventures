@@ -25,8 +25,8 @@
 	<div id="extras-inherits">
 		<select class="header-select" id="extra_inherit" name="extra_inherit" style="font-size: 80%;">
 			<option value=>Inherits Effects of:</option>
-			{% for power in powers %}
-				<option value="{{power}}">{{power}}</option>
+			{% for p in powers %}
+				<option value="{{p.id}}">{{p.name}}</option>
 			{% endfor %}
 		</select>
 	</div>

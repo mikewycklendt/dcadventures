@@ -163,8 +163,8 @@
 						<option value="">Condition</option>
 						<option value="currebt">Current</option>
 						<option value="any">Any</option>
-						{% for condition in conditions %}
-							<option value="{{condition}}">{{condition}}</option>
+						{% for c in conditions %}
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -176,8 +176,8 @@
 				<div>
 					<select class="select-sml" id="resist_con2" name="resist_con2">
 						<option value="">Condition</option>
-						{% for condition in conditions %}
-							<option value="{{condition}}">{{condition}}</option>
+						{% for c in conditions %}
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

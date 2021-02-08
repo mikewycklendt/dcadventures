@@ -406,6 +406,7 @@ class Cover(db.Model):
 			'name': self.name
 		}
 
+
 class Conceal(db.Model):
 	__tablename__ = 'concealment'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

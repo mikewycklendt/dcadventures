@@ -21,12 +21,12 @@ from models import Defense, Modifier, Complex, Emotion, Action, Ground, Skill, S
 from models import Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank 
 from models import Levels, LevelType, Light
 
-from db.advanrtage_modeks import Advantage, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
+from db.advanrtage_modeks import Advantage, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -82,6 +82,65 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+
+@app.route('/nature/create')
+def nature_create():
+
+	entries = ['Ice', 'Rain', 'Snow', 'Wind']
+
+
+	for i in entries:
+
+		entry = PowerDuration(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = PowerDuration.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('advantage types added')
+
+@app.route('/advtype/create')
+def advtype_create():
+
+	entries = ['combat', 'Fortune', 'General', 'Skill']
+
+	for i in entries:
+
+		entry = AdvantageType(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = AdvantageType.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('advantage types added')
+
+@app.route('/power/duration')
+def powerduration_create():
+
+	entries = ['Instant', 'Concentration', 'Sustained', 'Continuous', 'Permanent']
+
+
+	for i in entries:
+
+		entry = PowerDuration(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = PowerDuration.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('advantage types added')
 
 
 @app.route('/conditions/extras')

@@ -308,8 +308,8 @@
 						<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
 							<option value="">Condition</option>
 							<option value="current">Current</option>
-							{% for condition in conditions %}
-								<option value="{{condition}}">{{condition}}</option>
+							{% for c in conditions %}
+								<option value="{{c.id}}">{{c.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -324,8 +324,8 @@
 							<option value="any">Any</option>
 							<option value="linked_first">Linked Starting</option>
 							<option value="linked_second">Linked Ending</option>
-							{% for condition in conditions %}
-								<option value="{{condition}}">{{condition}}</option>
+							{% for c in conditions %}
+								<option value="{{c.id}}">{{c.name}}</option>
 							{% endfor %}
 						</select>
 					</div>

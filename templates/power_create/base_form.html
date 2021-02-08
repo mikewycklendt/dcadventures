@@ -59,8 +59,8 @@
 		
 		<select class="base-select" id="duration" name="duration">
 			<option value="">Duration</option>
-			{% for duration in duration_type %}
-				<option value="{{duration.type}}">{{duration.name}}</option>
+			{% for d in duration_type %}
+				<option value="{{d.id}}">{{d.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -313,14 +313,23 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
-			Grab Bonus:
+			Conflict Bonus:
 		</div>
 
 		<div class="base-split">
 	
 			<div>
-				<select class="base-select" id="grab" name="grab">
+				<select class="base-select" id="conflict" name="conflict">
 					<option value="">N/A</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="conflict_bonus" name="conflict_bonus">
+					<option value="">Bonus</option>
 					{% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					{% endfor %}
@@ -328,7 +337,7 @@
 			</div>
 
 			<div>
-				<select class="base-select" id="grab_type" class="grab_type">
+				<select class="base-select" id="conflict_type" class="conflict_type">
 					{% for b in bonus_type %}
 						<option value="{{b.type}}">{{b.name}}</option>
 					{% endfor %}

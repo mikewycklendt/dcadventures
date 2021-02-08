@@ -18,8 +18,9 @@ function sense_base() {
 function sense_sense() {
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';
+	const sub = 'sense';
 
-	id_select(select, fill, subsense_select)
+	id_select(select, fill, subsense_select, sub)
 }
 
 function sense_skill() {

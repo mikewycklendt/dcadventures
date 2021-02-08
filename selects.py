@@ -385,19 +385,21 @@ def get_subsense_select():
 	body['success'] = True
 
 	sense_id_str = request.get_json()['id']
+	sub - request.get_json()['sub']
 
 	print(sense_id_str)
 
 	options = []
 
-	if sense_id_str == '':
-		options.append({'id': '', 'name': 'Any'})
+	if sense_id_str == 'any':
+		options.append({'id': 'any', 'name': 'Any'})
 		body['options'] = options
 		return jsonify(body)
 
-	if sense_id_str == '0':
-		options.append({'id': '', 'name': 'Any'})
-		options.append({'id': 0, 'name': 'All'})
+	if sense_id_str == 'all':
+		options.append({'id': 'any', 'name': 'Any'})
+		options.append({'id': 'all', 'name': 'All'})
+		
 		body['options'] = options
 		return jsonify(body)
 
@@ -408,10 +410,11 @@ def get_subsense_select():
 		
 		any_sense = 'Any ' + sense.name
 		all_sense = 'All ' + sense.name
+		variable_sense = 'Variable' + sense.name
 
-
-		options.append({'id': '', 'name': any_sense})
-		options.append({'id': 0, 'name': all_sense})
+		options.append({'id': 'any', 'name': any_sense})
+		options.append({'id': 'all', 'name': all_sense})
+		options.append({'id': 'x', 'name': variable_sense})
 
 		for subsense in subsenses:
 			options.append({'id': subsense.id, 'name': subsense.name})

@@ -933,7 +933,7 @@ def db_integer(table, value):
 	Creature
 	Emotion
 	Job
-
+	Ability
 
 	if value == 'all':
 		try:
@@ -971,6 +971,33 @@ def db_integer(table, value):
 			print(value)
 			return (value)
 
+	Ability
+	if value == 'power':
+		try:
+			query = db.session.query(table).filter_by(power=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+			
+	if value == 'extra':
+		try:
+			query = db.session.query(table).filter_by(extra=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+
+	CHECK
+	if value == 'free':
+		try:
+			query = db.session.query(table).filter_by(free=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+
+	CONDITION
 	if value == 'linked_first':
 		try:
 			query = db.session.query(table).filter_by(linked_first=True).first()

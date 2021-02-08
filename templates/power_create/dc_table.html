@@ -199,7 +199,7 @@
 				<option value="">Starting Condition</option>
 				<option value="current">Current</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select> 
 		</div>
@@ -213,7 +213,7 @@
 				<option value="">Ending Condition</option>
 				<option value="any">Any</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select> 
 		</div>

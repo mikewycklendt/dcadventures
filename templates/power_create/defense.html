@@ -161,7 +161,7 @@
 		<div>
 			<select class="select-sml" id="defense_reflect_check" name="defense_reflect_check" onchange="defense_reflect_check()">
 				<option value="">Check Type</option>
-				<option value=0>No Check Needed</option>
+				<option value=free>Free Check</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}	

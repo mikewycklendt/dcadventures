@@ -177,8 +177,9 @@ power_save = function() {
 	const skill = select("skill");
 	const skill_required = select("skill_required");
 	const skill_when = select("skill_when");
-	const grab = select("grab");
-	const grab_type = select("grab_type");
+	const conflict = select("conflict")
+	const conflict_bonus = select("conflict_bonus")
+	const conflict_type = select("conflict_type")
 	const condition = select("power_condition");
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
@@ -236,8 +237,9 @@ power_save = function() {
 			'skill': skill,
 			'skill_required': skill_required,
 			'skill_when': skill_when,
-			'grab': grab,
-			'grab_type': grab_type,
+			'conflict': conflict,
+			'conflict_bonus': conflict_bonus,
+			'conflict_type': conflict_type,
 			'condition': condition,
 			'alt_check': alt_check,
 			'change_action': change_action,

@@ -28,7 +28,7 @@
 			<select class="select-sml" id="mod_minion_condition" name="mod_minion_condition">
 				<option value="">Minion Condition</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -37,7 +37,7 @@
 			<select class="select-sml" id="mod_minion_player_condition" name="mod_minion_player_condition">
 				<option value="">Condition While Summoning</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -122,10 +122,10 @@
 		<div>
 			<select class="select-sml" id="minion_attitude_trait_type" name="minion_attitude_trait_type" onchange="minion_attitude_trait_type()">
 				<option value="">Check to Control</option>
-				<option value="interact">Any Interaction</option>
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
+				<option value="interact">Any Interaction</option>
 			</select>
 		</div>
 

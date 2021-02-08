@@ -153,6 +153,8 @@
 
 				<div>
 					<select class="env-sml" id="env_immunity_environment" name="env_immunity_environment" onchange="env_immunity_environment()">
+						<option value="">Environment Type</option>
+						<option value="x">Variable</option>
 						{% for e in environments %}
 							<option value="{{e.id}}">{{e.name}}</option>
 						{% endfor %}
@@ -224,8 +226,11 @@
 
 		<div>
 			<select class="select-sml" id="env_move_nature" name="env_move_nature" onchange="env_move_other()">
+				<option value="">Nature Type</option>
+				<option value="x">Variable</option>
+				<option value="other">Other</option>
 				{% for n in nature %}
-					<option value="{{n.type}}">{{n.name}}</option>
+					<option value="{{n.id}}">{{n.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

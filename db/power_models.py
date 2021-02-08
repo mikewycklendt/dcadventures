@@ -33,7 +33,7 @@ class Power(db.Model):
 	power_type = db.Column(db.Integer, db.ForeignKey('power_type.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	power_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	duration = db.Column(db.String())
+
 	cost = db.Column(db.Integer)
 	limit = db.Column(db.Integer)
 	dc_type = db.Column(db.String())
@@ -54,9 +54,10 @@ class Power(db.Model):
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	skill_required = db.Column(db.String())
 	skill_when = db.Column(db.String())
-	grab = db.Column(db.Integer)
-	grab_type = db.Column(db.String())
-	condition = db.Column(db.String())
+
+
+
+
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -165,7 +166,7 @@ class Extra(db.Model):
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
 	des = db.Column(db.String())
-	inherit = db.Column(db.String())
+	
 	alternate = db.Column(db.Boolean)
 
 	def format(self):
@@ -340,7 +341,7 @@ class PowerCirc(db.Model):
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
 	null_type = db.Column(db.String())
-	null_condition = db.Column(db.String())
+
 	null_descriptor = db.Column(db.Integer)
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.Integer)
@@ -540,8 +541,8 @@ class PowerDC(db.Model):
 	check_type = db.Column(db.Boolean)
 	descriptor = db.Column(db.Integer)
 	descriptor_possess = db.Column(db.String())
-	condition1 = db.Column(db.String())
-	condition2 = db.Column(db.String())
+
+
 	keyword = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
@@ -671,8 +672,8 @@ class PowerDegMod(db.Model):
 	deg_condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
-	condition1 = db.Column(db.String())	
-	condition2 = db.Column(db.String())
+
+
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
 	cumulative = db.Column(db.Boolean)
@@ -777,7 +778,7 @@ class PowerEnv(db.Model):
 	immunity_other = db.Column(db.String())
 	condition_temp_type = db.Column(db.String())
 	temp_extremity = db.Column(db.String())
-	move_nature = db.Column(db.String())
+
 	move_speed = db.Column(db.Integer)
 	move_cost_circ = db.Column(db.Boolean)
 	move_other = db.Column(db.String())
@@ -830,8 +831,8 @@ class PowerMinion(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	points = db.Column(db.Integer)
-	condition = db.Column(db.String())
-	player_condition = db.Column(db.String())
+
+
 	link = db.Column(db.Boolean)
 	variable_type = db.Column(db.String())
 	multiple = db.Column(db.Boolean)
@@ -1068,7 +1069,7 @@ class PowerMove(db.Model):
 	flight = db.Column(db.Boolean)
 	aquatic = db.Column(db.Boolean)
 	ground = db.Column(db.Boolean)
-	condition = db.Column(db.String())
+
 	direction = db.Column(db.String())
 	distance_type = db.Column(db.String())
 	distance_value = db.Column(db.Integer)
@@ -1128,7 +1129,7 @@ class PowerMove(db.Model):
 	objects_skill = db.Column(db.Integer)
 	objects_direction = db.Column(db.String())
 	objects_damage = db.Column(db.Boolean)
-	damage_type = db.Column(db.String())
+
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
 	check_free = db.Column(db.Boolean)
@@ -1378,8 +1379,8 @@ class PowerResistBy(db.Model):
 	descriptor = db.Column(db.Integer)
 	weaken_max = db.Column(db.Integer)
 	weaken_restored = db.Column(db.Integer)
-	condition1 = db.Column(db.String())
-	condition2 = db.Column(db.String())
+	
+	
 	damage =  db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	nullify_descriptor = db.Column(db.Integer)
@@ -1418,8 +1419,8 @@ class PowerSenseEffect(db.Model):
 	power_id = db.Column(db.Integer)
 	extra_id = db.Column(db.Integer)
 	target = db.Column(db.String())
-	sense = db.Column(db.Integer)
-	subsense = db.Column(db.Integer)
+
+
 	sense_cost = db.Column(db.Integer)
 	subsense_cost = db.Column(db.Integer)
 	skill = db.Column(db.Integer)
