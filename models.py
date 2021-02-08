@@ -406,6 +406,17 @@ class Cover(db.Model):
 			'name': self.name
 		}
 
+class Nqture(db.Model):
+	__tablename__ = 'nature'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name
+		}
+
 
 class Conceal(db.Model):
 	__tablename__ = 'concealment'
