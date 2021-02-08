@@ -935,6 +935,7 @@ def db_integer(table, value):
 	Job
 	Ability
 	Nqture
+	Benefit
 
 	if value == 'all':
 		try:

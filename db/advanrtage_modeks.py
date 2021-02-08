@@ -451,7 +451,7 @@ class AdvEffort(db.Model):
 	condition_damage = db.Column(db.Integer)
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	benefit_choice = db.Column(db.Integer)
+
 	benefit_turns = db.Column(db.Integer)
 	benefit_count = db.Column(db.Integer)
 	benefit_effort = db.Column(db.Boolean)
@@ -671,7 +671,7 @@ class AdvPoints(db.Model):
 	check_turns = db.Column(db.Integer)
 	check_target = db.Column(db.String())
 	check_all = db.Column(db.Boolean)
-	benefit_choice = db.Column(db.Integer)
+
 	benefit_count = db.Column(db.Integer)
 	benefit_cost = db.Column(db.Integer)
 	benefit_turns = db.Column(db.Integer)
