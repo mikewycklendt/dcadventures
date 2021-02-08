@@ -43,12 +43,12 @@ class Power(db.Model):
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	routine = db.Column(db.Boolean)
 	routine_trait_type = db.Column(db.String())
-	routine_trait = db.Column(db.String())
+
 	materials = db.Column(db.Boolean)
 	partner = db.Column(db.String())
 	partner_trait_type = db.Column(db.String())
+
 	partner_dc = db.Column(db.Integer)
-	partner_trait = db.Column(db.String())
 	circ = db.Column(db.String())
 	circ_required = db.Column(db.String())
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
@@ -178,7 +178,7 @@ class PowerAltCheck(db.Model):
 	circumstance = db.Column(db.String())
 	when = db.Column(db.String())
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -220,7 +220,7 @@ class PowerChar(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	value = db.Column(db.Integer)
 	increase = db.Column(db.Integer)
 	limited = db.Column(db.Boolean)
@@ -235,7 +235,7 @@ class PowerChar(db.Model):
 	weaken = db.Column(db.Boolean)
 	weaken_type = db.Column(db.String())
 	weaken_trait_type = db.Column(db.String())
-	weaken_trait = db.Column(db.String())
+
 	weaken_broad = db.Column(db.String())
 	weaken_descriptor = db.Column(db.Integer)
 	weaken_simultaneous = db.Column(db.Boolean)
@@ -244,7 +244,7 @@ class PowerChar(db.Model):
 	limited_emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 	limited_emotion_other = db.Column(db.String())
 	reduced_trait_type = db.Column(db.String())
-	reduced_trait = db.Column(db.String())
+
 	reduced_value = db.Column(db.Integer)
 	reduced_full = db.Column(db.Boolean)
 	limbs_continuous = db.Column(db.Boolean)
@@ -254,7 +254,7 @@ class PowerChar(db.Model):
 	carry_capacity = db.Column(db.Integer)
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
-	points_trait = db.Column(db.String())
+
 	points_descriptor = db.Column(db.Integer)
 	appear_target = db.Column(db.String())
 	appear_description = db.Column(db.String())
@@ -326,12 +326,12 @@ class PowerCirc(db.Model):
 	circ_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	check_who = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	null_type = db.Column(db.String())
 	null_condition = db.Column(db.String())
 	null_descriptor = db.Column(db.Integer)
 	null_trait_type = db.Column(db.String())
-	null_trait = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -386,26 +386,26 @@ class PowerCreate(db.Model):
 	transform_start_descriptor = db.Column(db.Integer)
 	transform_end_descriptor = db.Column(db.Integer)
 	move_player = db.Column(db.String())
-	move_player_trait = db.Column(db.String())
+
 	move_opponent_check = db.Column(db.Boolean)
 	move_opponent_ability = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 	move_opponent_rank = db.Column(db.Integer)
 	trap_type = db.Column(db.String())
 	trap_dc = db.Column(db.Integer)
 	trap_trait_type = db.Column(db.String())
-	trap_trait = db.Column(db.String())
+
 	trap_resist_check = db.Column(db.String())
-	trap_resist_trait = db.Column(db.String())
+
 	trap_resist_dc = db.Column(db.Integer)
 	trap_escape = db.Column(db.Boolean)
 	ranged_type = db.Column(db.String())
 	ranged_dc = db.Column(db.Integer)
 	ranged_trait_type = db.Column(db.String())
-	ranged_trait = db.Column(db.String())
+
 	ranged_damage_type = db.Column(db.String())
 	ranged_damage_value = db.Column(db.Integer)
 	weapon_trait_type = db.Column(db.String())
-	weapon_trait = db.Column(db.String())
+	
 	weapon_mod = db.Column(db.Integer)
 	weapon_damage_type = db.Column(db.String())
 	weapon_damage = db.Column(db.Integer)
@@ -489,7 +489,7 @@ class PowerDamage(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
@@ -520,7 +520,7 @@ class PowerDC(db.Model):
 	math_value = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_trait_type = db.Column(db.String())
-	math_trait = db.Column(db.String())
+
 	descriptor_check = db.Column(db.Boolean)
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
@@ -531,7 +531,7 @@ class PowerDC(db.Model):
 	condition2 = db.Column(db.String())
 	keyword = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	check_mod = db.Column(db.Integer)
 	levels = db.Column(db.Boolean)
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
@@ -570,7 +570,7 @@ class PowerDefense(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
-	defense = db.Column(db.String())
+
 	use = db.Column(db.String())
 	mod = db.Column(db.Integer)
 	roll = db.Column(db.Integer)
@@ -588,17 +588,17 @@ class PowerDefense(db.Model):
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	reflect_dc = db.Column(db.Integer)
 	reflect_opposed_trait_type = db.Column(db.String())
-	reflect_opposed_trait = db.Column(db.String())
+
 	reflect_resist_trait_type = db.Column(db.String())
-	reflect_resist_trait = db.Column(db.String())
+
 	immunity_type = db.Column(db.String())
 	immunity_trait_type = db.Column(db.String())
-	immunity_trait = db.Column(db.String())
+
 	immunity_descriptor = db.Column(db.Integer)
 	immunity_damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	immunity_rule = db.Column(db.String())
 	cover_check = db.Column(db.Boolean)
-	cover_type = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -647,12 +647,12 @@ class PowerDegMod(db.Model):
 	circ_value = db.Column(db.Integer)
 	circ_turns = db.Column(db.Integer)
 	circ_trait_type = db.Column(db.String())
-	circ_trait = db.Column(db.String())
+
 	measure_type = db.Column(db.String())
 	measure_val1 = db.Column(db.Integer)
 	measure_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_trait_type = db.Column(db.String())
-	measure_trait = db.Column(db.String())
+
 	measure_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	deg_condition_type = db.Column(db.String())
@@ -668,7 +668,7 @@ class PowerDegMod(db.Model):
 	consequence_action_type = db.Column(db.String())
 	consequence_action = db.Column(db.Integer)
 	consequence_trait_type = db.Column(db.String())
-	consequence_trait = db.Column(db.String())
+
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	knowledge =db.Column(db.String())
 	knowledge_count = db.Column(db.Integer)
@@ -770,7 +770,7 @@ class PowerEnv(db.Model):
 	move_other = db.Column(db.String())
 	conceal_type = db.Column(db.String())
 	visibility_trait_type = db.Column(db.String())
-	visibility_trait = db.Column(db.String())
+
 	visibility_mod = db.Column(db.Integer)
 	cost = db.Column(db.Integer)
 	ranks = db.Column(db.Integer)
@@ -830,7 +830,7 @@ class PowerMinion(db.Model):
 	attitude_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	attitude_attitude = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	attitude_trait_type = db.Column(db.String())
-	attitude_trait = db.Column(db.String())
+
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	resitable_dc = db.Column(db.Integer)
 	multiple_value = db.Column(db.Integer)
@@ -914,7 +914,7 @@ class PowerMod(db.Model):
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
 	limited_trait_type = db.Column(db.String())
-	limited_trait = db.Column(db.String())
+
 	limited_description = db.Column(db.String())
 	limited_subjects = db.Column(db.Integer)
 	limited_extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
@@ -930,18 +930,18 @@ class PowerMod(db.Model):
 	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	reflect_dc = db.Column(db.Integer)
 	reflect_trait_type = db.Column(db.String())
-	reflect_trait = db.Column(db.String())
+
 	reflect_descriptor = db.Column(db.Integer)
 	subtle_opponent_trait_type = db.Column(db.String())
-	subtle_opponent_trait = db.Column(db.String())
+	
 	subtle_dc = db.Column(db.Integer)
 	subtle_null_trait_type = db.Column(db.String())
-	subtle_null_trait = db.Column(db.String())
+
 	others_carry = db.Column(db.Boolean)
 	others_touch = db.Column(db.Boolean)
 	others_touch_continuous = db.Column(db.Boolean)
 	ranks_trait_type = db.Column(db.String())
-	ranks_trait = db.Column(db.String())
+
 	ranks_ranks = db.Column(db.Integer)
 	ranks_mod = db.Column(db.Integer)
 	points_type = db.Column(db.String())
@@ -1083,7 +1083,7 @@ class PowerMove(db.Model):
 	acquatic_type = db.Column(db.String())
 	concealment_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	concealment_trait_type = db.Column(db.String())
-	concealment_trait = db.Column(db.String())
+
 	permeate_type = db.Column(db.String())
 	permeate_speed = db.Column(db.Integer)
 	permeate_cover = db.Column(db.Boolean)
@@ -1104,7 +1104,7 @@ class PowerMove(db.Model):
 	ground_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	ground_ranged = db.Column(db.Boolean)
 	subtle_trait_type = db.Column(db.String())
-	subtle_trait = db.Column(db.String())
+
 	subtle_mod = db.Column(db.Integer)
 	flight_resist = db.Column(db.Boolean)
 	flight_equip = db.Column(db.Boolean)
@@ -1112,12 +1112,12 @@ class PowerMove(db.Model):
 	objects_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	objects_attack = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	objects_skill_type = db.Column(db.String())
-	objects_skill = db.Column(db.String())
+
 	objects_direction = db.Column(db.String())
 	objects_damage = db.Column(db.Boolean)
 	damage_type = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	check_free = db.Column(db.Boolean)
 	ranks = db.Column(db.Integer)
 	cost = db.Column(db.Integer)
@@ -1208,10 +1208,10 @@ class PowerOpposed(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+	
 	mod = db.Column(db.Integer)
 	opponent_trait_type = db.Column(db.String())
-	opponent_trait = db.Column(db.String())
+	
 	opponent_mod = db.Column(db.Integer)
 	player_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opponent_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
@@ -1255,22 +1255,22 @@ class PowerRanged(db.Model):
 	effect_mod_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	effect_mod = db.Column(db.Integer)
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	check_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	check_mod = db.Column(db.Integer)
 	trait_trait_type = db.Column(db.String())
-	trait_trait = db.Column(db.String())
+
 	trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	trait_mod = db.Column(db.Integer)
 	distance_mod_rank = db.Column(db.Integer)
 	distance_mod_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	distance_mod_trait_type = db.Column(db.String())
-	distance_mod_trait = db.Column(db.String())
+
 	dc = db.Column(db.Boolean)
 	dc_value = db.Column(db.Integer)
 	dc_trait_type = db.Column(db.String())
-	dc_trait = db.Column(db.String())
-
+	
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -1323,12 +1323,12 @@ class PowerResist(db.Model):
 	circumstance = db.Column(db.String())
 	resist_check_type = db.Column(db.String())
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	descriptor = db.Column(db.Integer)
 	requires_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -1355,10 +1355,10 @@ class PowerResistBy(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	trait_type = db.Column(db.String())
+
 	dc = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	description = db.Column(db.String())
-	trait = db.Column(db.String())
 	effect = db.Column(db.String())
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	degree = db.Column(db.Integer)
@@ -1413,11 +1413,11 @@ class PowerSenseEffect(db.Model):
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
 	height_trait_type = db.Column(db.String())
-	height_trait = db.Column(db.String())
+
 	height_power_required = db.Column(db.Boolean)
-	height_ensense = db.Column(db.String())
+
 	resist_trait_type = db.Column(db.String())
-	resist_trait = db.Column(db.String())
+	
 	resist_immune = db.Column(db.Boolean)
 	resist_permanent = db.Column(db.String())
 	resist_circ = db.Column(db.Integer)
@@ -1435,7 +1435,7 @@ class PowerSenseEffect(db.Model):
 	time_value = db.Column(db.Integer)
 	time_unit = db.Column(db.Integer)
 	time_skill = db.Column(db.Integer)
-	time_bonus = db.Column(db.String())
+	
 	time_factor = db.Column(db.Integer)
 	distance = db.Column(db.String())
 	distance_dc = db.Column(db.Integer)
@@ -1507,7 +1507,7 @@ class PowerReverse(db.Model):
 	check_check = db.Column(db.Boolean)
 	time_check = db.Column(db.Boolean)
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	value_type = db.Column(db.String())
 	value_dc = db.Column(db.Integer)
 	math_dc = db.Column(db.Integer)
@@ -1549,7 +1549,7 @@ class PowerTime(db.Model):
 	time_value = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	dc = db.Column(db.Integer)
 	descriptor = db.Column(db.Integer)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))

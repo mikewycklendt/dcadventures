@@ -145,7 +145,7 @@
 					<select class="select-sml" id="sense_height_ensense" name="sense_height_ensense">
 						<option value="">Enhanced Sense</option>
 						{% for s in power_sense %}
-							<option value="{{s}}">{{s}}</option>
+							<option value="{{p.id}}">{{p.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -312,7 +312,7 @@
 				<select class="select-sml" id="sense_time_bonus" name="sense_time_bonus">
 					<option value="">Enhanced Skill</option>
 					{% for t in bonuses %}
-						<option value="{{t}}">{{t}}</option>
+						<option value="{{t.id}}">{{t.name}}</option>
 					{% endfor %}
 				</select>
 			</div>

@@ -38,7 +38,7 @@
 				<option value="">Defense</option>
 				<option value=any>Any</option>
 				{% for d in defenses %}
-					<option value={{d.name}}>{{d.name}}</option>
+					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -294,7 +294,7 @@
 		<div id="defense-cover">
 			<select class="select-sml" id="defense_cover_type" name="defense_cover_type">
 				{% for c in cover %}
-					<option value="{{c.type}}">{{c.name}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
