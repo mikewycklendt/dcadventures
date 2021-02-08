@@ -778,7 +778,7 @@ class PowerEnv(db.Model):
 	immunity_other = db.Column(db.String())
 	condition_temp_type = db.Column(db.String())
 	temp_extremity = db.Column(db.String())
-
+	move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	move_speed = db.Column(db.Integer)
 	move_cost_circ = db.Column(db.Boolean)
 	move_other = db.Column(db.String())
