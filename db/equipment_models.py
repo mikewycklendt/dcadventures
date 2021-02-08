@@ -304,12 +304,12 @@ class EquipMod(db.Model):
 	profession = db.Column(db.Integer)
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
-	bonus_trait = db.Column(db.String())
+
 	bonus_check = db.Column(db.Integer)
 	bonus_check_range = db.Column(db.Integer)
 	bonus_conflict = db.Column(db.Integer)
 	penalty_trait_type = db.Column(db.String())
-	penalty_trait = db.Column(db.String())
+
 	penalty_check = db.Column(db.Integer)
 	penalty_check_range = db.Column(db.Integer)
 	penalty_conflict = db.Column(db.Integer)
