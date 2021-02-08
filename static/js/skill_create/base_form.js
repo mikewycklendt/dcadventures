@@ -65,16 +65,18 @@ function base_weapon_cat() {
 	const select = 'base_weapon_cat';
 	const div = 'base-weapon';
 	const fill = 'base_weapon_type';
+	const sub = 'skill_create';
 
 	select_maxheight_any(select, div);
-	id_select(select, fill, weapon_type_select);
+	id_select(select, fill, weapon_type_select, sub);
 }
 
 function base_weapon_type() {
 	const select = 'base_weapon_type';
 	const fill = 'base_weapon';
+	const sub = 'skill_create';
 
-	id_select(select, fill, weapon_select);
+	id_select(select, fill, weapon_select, sub);
 }
 
 function secret() {

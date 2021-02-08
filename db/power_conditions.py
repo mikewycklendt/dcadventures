@@ -47,7 +47,7 @@ class PowerDegMod(db.Model):
 	
 class PowerEnv(db.Model):
 	
-					move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
+	move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 
 
 class PowerMinion(db.Model):

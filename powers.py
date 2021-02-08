@@ -20,7 +20,7 @@ from models import Consequence, Benefit, Environment, Job, Creature, Maneuver, C
 from models import setup_db, Ability,  ConflictAction, Damage, DamageType, flash
 from models import Defense, Modifier, Complex, Emotion, Action, Ground, Skill, SkillType, Material, Check, SkillTable, Condition, Phase, Sense, SubSense
 from models import Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert, ModifierTable, MeasureType, Unit, Math, Rank 
-from models import Levels, LevelType, Light
+from models import Levels, LevelType, Light, Nqture
 
 from db.advanrtage_modeks import Advantage, AdvantageType, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -240,7 +240,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
-	nature = [{'type': '', 'name': 'Nature'}, {'type': 'ice', 'name': 'Ice'}, {'type': 'rain', 'name': 'Rain'}, {'type': 'snow', 'name': 'Snow'}, {'type': 'wind', 'name': 'Wind'}, {'type': 'other', 'name': 'Other'}]
+	nature = Nqture.query.all()
 
 	grounds = Ground.query.all()
 

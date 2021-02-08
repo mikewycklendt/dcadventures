@@ -107,13 +107,15 @@ def equip_weapon_type_select():
 	body['success'] = True
 	options = []
 
-	cat_id = request.get_json()['id'] 
+	cat_id = request.get_json()['id']
+
 
 	try:
 		cat_id = int(cat_id)
 		cat = db.session.query(WeaponCat).filter_by(id=cat_id).one()
 		weapon_type = db.session.query(WeaponType).filter_by(type_id=cat_id).order_by(WeaponType.name).all()
 		weapon_name = cat.name + ' Weapon Type'
+		
 		options.append({'id': '', 'name': weapon_name})
 		for w in weapon_type:
 			options.append({'id': w.id, 'name': w.name})
@@ -133,6 +135,7 @@ def equip_weapon_select():
 	options = []
 
 	type_id = request.get_json()['id'] 
+	sub = request.get_json()['sub']
 
 	try:
 		type_id = int(type_id)
@@ -140,7 +143,10 @@ def equip_weapon_select():
 		weapontype = db.session.query(WeaponType).filter_by(id=type_id).one()
 		weapons = db.session.query(Weapon).filter_by(type_id=type_id).order_by(Weapon.name).all()
 		weapon_name = weapontype.name + ' Weapons'
+		variable_name = 'Variable ' + weapontype.name
 		options.append({'id': '', 'name': weapon_name})
+		if sub == 'skill_create':
+			options.append({'id': 'x', 'name': variable_name})
 		for w in weapons:
 			options.append({'id': w.id, 'name': w.name})
 	except:

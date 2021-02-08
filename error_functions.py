@@ -934,6 +934,7 @@ def db_integer(table, value):
 	Emotion
 	Job
 	Ability
+	Nqture
 
 	if value == 'all':
 		try:
