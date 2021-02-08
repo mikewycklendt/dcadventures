@@ -26,39 +26,39 @@ class Extra(db.Model):
 
 class PowerCirc(db.Model):
 	
-	null_condition = db.Column(db.String())
+	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 
 
 
 
 class PowerDC(db.Model):
 	
-	condition1 = db.Column(db.String())
-	condition2 = db.Column(db.String())
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	
 	
 	
 class PowerDegMod(db.Model):
 	
-	condition1 = db.Column(db.String())	
-	condition2 = db.Column(db.String())
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	
 	
 	
 class PowerEnv(db.Model):
 	
-		move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
+					move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 
 
 class PowerMinion(db.Model):
 
-	condition = db.Column(db.String())
-	player_condition = db.Column(db.String())
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	player_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 
 
 class PowerMove(db.Model):
 	
-	condition = db.Column(db.String())
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	
 	damage_type = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 	
@@ -69,8 +69,8 @@ class PowerMove(db.Model):
 
 class PowerResistBy(db.Model):
 
-	condition1 = db.Column(db.String())
-	condition2 = db.Column(db.String())
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 
 
 
