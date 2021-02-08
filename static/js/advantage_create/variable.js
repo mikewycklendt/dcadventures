@@ -14,7 +14,7 @@ function variable_trait_type() {
 					{'val': 'advantage', 'div': 'variable-effort'}]
 
 	select_opacity(select, options);
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 let variable_grid = {'titles': false,

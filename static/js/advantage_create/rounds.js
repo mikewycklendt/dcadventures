@@ -11,7 +11,7 @@ function rounds_trait_type() {
 	const select = 'rounds_trait_type';
 	const fill = 'rounds_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 let rounds_grid = {'titles': false,

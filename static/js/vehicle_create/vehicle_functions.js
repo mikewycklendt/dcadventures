@@ -1,24 +1,4 @@
 
-const trait_select = '/select/trait';
-const level_select = '/power/level/select';
-const action_select = '/advantage/action/select';
-const skill_select = '/select/skill';
-const weapon_type_select = '/select/weapon/type';
-const weapon_select = '/select/weapon';
-const subsense_select = '/sense/subsense/select';
-const equipment_select = '/select/equipment';
-const unit_select = '/select/unit'
-const feature_select = '/select/feature';
-
-const head_feature_info_select = '/info/headquarters/feature';
-const feature_info_select = '/info/feature';
-const equipment_info_select = '/info/equipment';
-const weapon_info_select = '/info/weapon';
-
-const skill_icon_select = '/select/icon/skill';
-const ability_icon_select = '/select/icon/ability';
-
-
 function item_info(select, entry, item_div, route, object) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;
@@ -801,47 +781,6 @@ function selects_add(id, name, selects_input) {
 		o.text = name;
 		select.add(o);
 	}
-}
-
-
-function id_select(select, fill, route) {
-	const field = document.getElementById(select)
-	const type_id = field.options[field.selectedIndex].value
-	const update = document.getElementById(fill);
-
-	update.innerText = null;
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch(route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': type_id
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
 }
 
 function double_select(select1, select2, options, row, entry) {

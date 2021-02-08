@@ -11,7 +11,7 @@ function check_skill_type() {
 	const select = 'check_skill_type';
 	const fill = 'check_skill';
 
-	skill_select(select, fill);
+	id_select(select, fill, skill_select);
 }
 
 let check_grid = {'titles': false,

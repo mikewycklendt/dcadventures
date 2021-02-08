@@ -75,10 +75,10 @@ function feature_equipment() {
 function feature_equipment_type() {
 	const select = 'feature_equipment_type';
 	const fill = 'feature_equipment';
-	const route =  '/vehicle/equipment/select';
 
-	id_select(select, fill, route);	
+	id_select(select, fill, equipment_select);	
 }
+
 let feature_grid = {'titles': false,
 					'columns': [],
 					'font': 110,

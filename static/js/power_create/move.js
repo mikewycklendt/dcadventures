@@ -47,7 +47,7 @@ function move_subtle_trait_type() {
 	const select = 'move_subtle_trait_type';
 	const fill = 'move_subtle_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function move_distance_type() {
@@ -78,7 +78,7 @@ function move_check_trait_type() {
 	const select = 'move_check_trait_type';
 	const fill = 'move_check_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function move_check_type() {
@@ -93,7 +93,7 @@ function move_objects_skill_type() {
 	const select = 'move_objects_skill_type';
 	const fill = 'move_objects_skill';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function move_objects() {
@@ -163,7 +163,7 @@ function move_concealment_trait_type() {
 	const select = 'move_concealment_trait_type';
 	const fill = 'move_concealment_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function move_aquatic() {

@@ -1,11 +1,34 @@
-function null_hide_maxheight(field, item) {
-	val = select(field);
 
-	if (val == '' ) {
-		hide_maxheight(item);
-		shrink_entry(entry, item);
+
+function descriptor_add_type()  {
+	const fields = document.getElementsByClassName('descriptor-sml');
+	
+	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
+				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
+				{'type': 33445566, 'name': 'Any Chosen Common'}, 
+				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
+				{'type': 55667788, 'name': 'Any Chosen Damage'},
+				{'type': 66778899, 'name': 'Any Chosen Origin'},
+				{'type': 77889900, 'name': 'Any Chosen Source'},
+				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
+				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
+				{'type': 11002233, 'name': 'Any Chosen Medium'},
+				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
+
+	let field;
+	let option;
+
+	for (field of fields) {
+		for (option of options) {
+			let o = document.createElement('option');
+			o.value = option.type;
+			o.text = option.name;
+			field.add(o);
+		}
 	}
 }
+
+descriptor_add_type()
 
 function show_opacity(div_input) {
 	const div = document.getElementById(div_input);
@@ -19,37 +42,6 @@ function hide_opacity(div_input) {
 
 	div.style.opacity = '0%';
 	setTimeout(function(){div.style.display = 'none';}, 300);
-}
-
-
-function show_opacity_class(div_input) {
-	const divs = document.getElementsByClassName(div_input);
-	let div;
-	
-	setTimeout(function(){
-		for (div of divs) {			
-			div.style.display = 'grid';
-		}
-	}, 300);
-	setTimeout(function(){
-		for (div of divs) {
-			div.style.opacity = '100%';
-		}
-	}, 310);
-}
-
-function hide_opacity_class(div_input) {
-	const divs = document.getElementsByClassName(div_input);
-	let div;
-	for (div of divs) {
-		div.style.opacity = '0%';
-	}
-
-	setTimeout(function(){
-		for (div of divs) {
-			div.style.display = 'none';
-		}
-	}, 300);		
 }
 
 function math_div_select(select, val, math, containdiv ) {
@@ -383,45 +375,6 @@ function select_opacity(select, options) {
 }
 
 
-function select_opacity_class(select, options) {
-	const field = document.getElementById(select);
-	const val = field.options[field.selectedIndex].value;
-	let option;
-
-	console.log(val);
-
-	for (option of options) {
-		let valu = option.val;
-		let div = option.div;
-
-		if (val != valu) {
-			hide_opacity_class(div);
-		} else {
-			show_opacity_class(div);
-		}
-	};
-}
-
-function select_opacity_reverse(select, options) {
-	const field = document.getElementById(select);
-	const val = field.options[field.selectedIndex].value;
-	let option;
-
-	console.log(val);
-
-	for (option of options) {
-		let valu = option.val;
-		let div = option.div;
-
-		if (val == valu) {
-			hide_opacity(div);
-		} else {
-			show_opacity(div);
-		}
-	};
-}
-
-
 function select_reset(select_input, selects) {
 	const field = document.getElementById(select_input);
 	const val = field.options[field.selectedIndex].value;
@@ -444,14 +397,6 @@ function reset(select_input) {
 
 }
 
-function reset_all(selects) {
-	let select;
-
-	for (select of selects) {
-		reset(select)
-	}
-}
-
 function select_opacity_any(select, div) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
@@ -461,287 +406,7 @@ function select_opacity_any(select, div) {
 	} else {
 		hide_opacity(div);
 	}
-}
 
-function multiple_field(div_input) {
-	const div = document.getElementById(div_input);
-	
-	div.style.display = 'grid';
-	setTimeout(function(){div.style.opacity = '100%'}, 10);
-	
-}
-
-
-
-function select_other(select, options, db) {
-	const field = document.getElementById(select);
-	const val = field.options[field.selectedIndex].value;
-	let option;
-
-	console.log(val);
-
-	for (option of options) {
-		let valu = option.val;
-		let div = option.div;
-
-		if (val != valu) {
-			hide_opacity(div);
-			show_opacity(db)
-		} else {
-			show_opacity(div);
-			hide_opacity(db);
-		}
-	};
-}
-
-function select_maxheight(select, options) {
-	const field = document.getElementById(select);
-	const val = field.options[field.selectedIndex].value;
-	let option;
-
-	console.log(val);
-
-	for (option of options) {
-		let valu = option.val;
-		let div = option.div;
-
-		if (val != valu) {
-			hide_maxheight(div);
-		};
-	}
-	
-	for (option of options) {
-		let valu = option.val;
-		let div = option.div;
-
-		if (val == valu) {
-			show_maxheight(div);
-		}
-	};
-}
-
-function base(field_inputs, entry_input, texts=false) {
-	const entry = document.getElementById(entry_input)
-
-	let satisfied = true
-	let field;
-	for (field of field_inputs) {
-		const f = document.getElementById(field);
-		const select = f.options[f.selectedIndex].value;
-
-		if (select == '') {
-			satisfied = false
-		}
-	}
-
-	if (texts != false) {
-		let text;
-		for (text of texts) {
-			const field = document.getElementById(text);
-			const value = field.value;
-			if (value == '') {
-				satisfied = false;
-			}
-		}
-	}
-
-	if (satisfied == true) {
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		entry.style.padding = "1%";
-	} else {
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";	
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function entry_check(check_input, title_input, base_input, entry_input, size=200) {
-	const check = document.getElementById(check_input);
-	const entry = document.getElementById(entry_input);
-	const title = document.getElementById(title_input);
-	const base = document.getElementById(base_input)
-
-	const size2 = size + '%';
-	const size1 = size + 8 + '%';
-	
-	if (check.checked == true) {
-		base.style.opacity = '100%'
-		entry.style.display = "grid";
-		entry.style.padding = "1%";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		title.style.color = "#af0101";
-		title.style.fontSize = size1;
-		setTimeout(function(){title.style.fontSize = size2}, 75);
-	} else {
-		base.style.opacity = '0%'
-		entry.style.maxHeight = "0px";
-		setTimeout(function(){entry.style.display = 'none';}, 400);
-		title.style.color = "#245681";
-	}
-}
-
-function check_title(check_input, title_input, base_input, entry_input, size=200) {
-	const check = document.getElementById(check_input);
-	const title = document.getElementById(title_input);
-	const base = document.getElementById(base_input);
-	const entry = document.getElementById(entry_input);
-
-	const size2 = size + '%';
-	const size1 = size + 8 + '%';
-
-	if (check.checked == true) {
-		base.style.opacity = '100%';
-		title.style.color = "#af0101";
-		title.style.fontSize = size1;
-		setTimeout(function(){title.style.fontSize = size2}, 75);
-	} else {
-		base.style.opacity = '0%'
-		title.style.color = "#245681";
-		entry.style.maxHeight = "0px";
-		entry.style.padding = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function select(field_input) {
-	const field = document.getElementById(field_input);
-	const value = field.options[field.selectedIndex].value;
-
-	return value;
-}
-
-function text(text_input) {
-	const input = document.getElementById(text_input);
-	const value = input.value;
-
-	return value;
-}
-
-function check(check_input) {
-	const checkbox = document.getElementById(check_input);
-	const value = checkbox.checked;
-
-	return value;
-}
-
-function multiple(multiple_input) {
-	let selectElement = document.getElementById(multiple_input);
-	let selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
-
-	return selectedValues;
-}
-
-
-function select_entry(check_input, base_input, entry_input, field_input, value) {
-	const check = document.getElementById(check_input);
-	const base = document.getElementById(base_input);
-	const entry = document.getElementById(entry_input);
-	const field = select(field_input);
-
-	if (field == value) {
-		base.style.opacity = '100%';
-		entry.style.display = "grid";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-		check.checked = true;
-	} else {
-		base.style.opacity = '0%';
-		check.checked = false;
-		entry.style.maxHeight = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function select_entry_nocheck(base_input, entry_input, field_input, value) {
-	const base = document.getElementById(base_input);
-	const entry = document.getElementById(entry_input);
-	const field = select(field_input);
-
-	if (field == value) {
-		base.style.opacity = '100%';
-		entry.style.display = "grid";
-		entry.style.maxHeight = entry.scrollHeight + "px";
-	} else {
-		base.style.opacity = '0%';
-		entry.style.maxHeight = "0px";
-		setTimeout(function(){entry.style.display = 'none'}, 400);
-	}
-}
-
-function new_items(insert, items) {
-	
-	if (insert == true) {
-		let i;
-		for (i of items) {
-			const id = i.id;
-			const name = i.name;
-			const class_check = i.class;
-			const field = i.field;
-
-			if (class_check == true) {
-				const selects = document.getElementsByClassName(field);
-				let select;
-					
-				for (select of selects) {
-					const o = document.createElement('option');
-					o.value = id;
-					o.text = name;
-					select.add(o);
-				}
-			} else {
-				const select = document.getElementById(field);
-				const o = document.createElement('option');
-				o.value = id;
-				o.text = name;
-				select.add(o);
-			}
-		}
-	}
-}
-
-function deleted_item(divs, id) {
-	
-	if (divs != false) {
-		let div;
-		for (div of divs) {
-			const selects = document.getElementsByClassName(div);
-			let select;
-
-			for (select of selects) {
-				options = select.options;
-				let option;
-
-				for (option of options) {
-					if (option.value == id) {
-						console.log(option.value);
-						option.remove();
-					}
-				}
-			}
-		}
-	}
-}
-
-function selects_add(id, name, selects_input) {
-	let selects = document.getElementsByClassName(selects_input);
-	let select;
-
-	for (select of selects) {
-		const o = document.createElement('option');
-		o.value = id;
-		o.text = name;
-		select.add(o);
-	}
-}
-
-function update_divs(data) {
-	for (d of data) {
-		const div = document.getElementById(d.div);
-		const text = d.val;
-
-		div.innerHTML = text;
-	}
 }
 
 function double_select(select1, select2, options, row, entry) {
@@ -841,6 +506,14 @@ function double_select(select1, select2, options, row, entry) {
 	} else {
 		console.log('nothing')
 	}
+}
+
+function multiple_field(div_input) {
+	const div = document.getElementById(div_input);
+	
+	div.style.display = 'grid';
+	setTimeout(function(){div.style.opacity = '100%'}, 10);
+	
 }
 
 
@@ -960,158 +633,338 @@ function double_select_second(select1, select2, options, others, row, entry) {
 }
 
 
-function clear_errors(line, div) {
-	const errors_delete = document.getElementsByClassName(line);
-	const errors = document.getElementById(div);
-
-	if (typeof errors_delete[0] === "undefined") {
-		console.log('no errors defined')
-	} else {
-
-		errors.style.maxHeight = "0px";
-		errors.style.padding = "0px";
-
-		for (i = 0; i < errors_delete.length; i++) {
-			errors_delete[i].style.maxHeight = "0px";
-			errors_delete[i].style.padding = "0px";
-			errors_delete[i].style.marginBottom = "0px";
-		};
-		setTimeout(function(){
-			for (i = 0; i < errors_delete.length; i++) {
-				errors_delete[i].style.display = 'none';
-				errors.style.display = 'none';
-			}
-		}, 400);
-
-	}
-}
-
-function descriptor_add_type()  {
-	const fields = document.getElementsByClassName('descriptor-sml');
-	
-	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
-				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
-				{'type': 33445566, 'name': 'Any Chosen Common'}, 
-				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
-				{'type': 55667788, 'name': 'Any Chosen Damage'},
-				{'type': 66778899, 'name': 'Any Chosen Origin'},
-				{'type': 77889900, 'name': 'Any Chosen Source'},
-				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
-				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
-				{'type': 11002233, 'name': 'Any Chosen Medium'},
-				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
-
-	let field;
+function select_other(select, options, db) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
 	let option;
 
-	for (field of fields) {
-		for (option of options) {
-			let o = document.createElement('option');
-			o.value = option.type;
-			o.text = option.name;
-			field.add(o);
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_opacity(div);
+			show_opacity(db)
+		} else {
+			show_opacity(div);
+			hide_opacity(db);
+		}
+	};
+}
+
+function select_maxheight(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+
+	console.log(val);
+
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val != valu) {
+			hide_maxheight(div);
+		};
+	}
+	
+	for (option of options) {
+		let valu = option.val;
+		let div = option.div;
+
+		if (val == valu) {
+			show_maxheight(div);
+		}
+	};
+}
+
+function base(field_input, entry_input) {
+	const field = document.getElementById(field_input)
+	const value = field.options[field.selectedIndex].value;
+	const entry = document.getElementById(entry_input)
+
+	if (value != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_multiple(field_inputs, entry_input) {
+	const entry = document.getElementById(entry_input)
+
+	let satisfied = true
+	let field;
+	for (field of field_inputs) {
+		const f = document.getElementById(field);
+		const select = f.options[f.selectedIndex].value;
+
+		if (select == '') {
+			satisfied = false
+		}
+	} 
+
+	if (satisfied == true) {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+
+function base_multiple_text(field_inputs, textfield_input, entry_input) {
+	const entry = document.getElementById(entry_input);
+	const textfield = document.getElementById(textfield_input);
+	const text = textfield.value;
+
+	let satisfied = true
+	let field;
+	for (field of field_inputs) {
+		const f = document.getElementById(field);
+		const select = f.options[f.selectedIndex].value;
+
+		if (select == '') {
+			satisfied = false
+		}
+	} 
+
+	if (text == '') {
+		satisfied = false
+	}
+
+	if (satisfied == true) {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";	
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function entry_check(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const entry = document.getElementById(entry_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input)
+	
+	if (check.checked == true) {
+		base.style.opacity = '100%'
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		title.style.color = "#af0101";
+		title.style.fontSize = "207%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		entry.style.maxHeight = "0px";
+		setTimeout(function(){entry.style.display = 'none';}, 400);
+		title.style.color = "#245681";
+	}
+}
+
+function base_two(field_input, field2_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	
+	const field2 = document.getElementById(field2_input);
+	const target = field2.options[field2.selectedIndex].value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && target != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function base_text(field_input, text_input, entry_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+	const type = document.getElementById(text_input).value;
+	const entry = document.getElementById(entry_input);
+
+	if (value != '' && type != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+
+function base_only_text(text_input, entry_input) {
+	const type = document.getElementById(text_input).value;
+	const entry = document.getElementById(entry_input);
+
+	if (type != '') {
+		entry.style.display = "grid";
+		entry.style.padding = "1%";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		entry.style.padding = "1%";
+	} else {
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function check_title(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "220%";
+		setTimeout(function(){title.style.fontSize = "200%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function check_title_small(check_input, title_input, base_input, entry_input) {
+	const check = document.getElementById(check_input);
+	const title = document.getElementById(title_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+
+	if (check.checked == true) {
+		base.style.opacity = '100%';
+		title.style.color = "#af0101";
+		title.style.fontSize = "165%";
+		setTimeout(function(){title.style.fontSize = "160%"}, 75);
+	} else {
+		base.style.opacity = '0%'
+		title.style.color = "#245681";
+		entry.style.maxHeight = "0px";
+		entry.style.padding = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function select(field_input) {
+	const field = document.getElementById(field_input);
+	const value = field.options[field.selectedIndex].value;
+
+	return value;
+}
+
+function text(text_input) {
+	const input = document.getElementById(text_input);
+	const value = input.value;
+
+	return value;
+}
+
+function check(check_input) {
+	const checkbox = document.getElementById(check_input);
+	const value = checkbox.checked;
+
+	return value;
+}
+
+function multiple(multiple_input) {
+	let selectElement = document.getElementById(multiple_input);
+	let selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+
+	return selectedValues;
+}
+
+
+function select_entry(check_input, base_input, entry_input, field_input, value) {
+	const check = document.getElementById(check_input);
+	const base = document.getElementById(base_input);
+	const entry = document.getElementById(entry_input);
+	const field = select(field_input);
+
+	if (field == value) {
+		base.style.opacity = '100%';
+		entry.style.display = "grid";
+		entry.style.maxHeight = entry.scrollHeight + "px";
+		check.checked = true;
+	} else {
+		base.style.opacity = '0%';
+		check.checked = false;
+		entry.style.maxHeight = "0px";
+		setTimeout(function(){entry.style.display = 'none'}, 400);
+	}
+}
+
+function new_items(insert, items) {
+	
+	if (insert == true) {
+		let i;
+		for (i of items) {
+			const id = i.id;
+			const name = i.name;
+			const class_check = i.class;
+			const field = i.field;
+
+			if (class_check == true) {
+				const selects = document.getElementsByClassName(field);
+				let select;
+					
+				for (select of selects) {
+					const o = document.createElement('option');
+					o.value = id;
+					o.text = name;
+					select.add(o);
+				}
+			} else {
+				const select = document.getElementById(field);
+				const o = document.createElement('option');
+				o.value = id;
+				o.text = name;
+				select.add(o);
+			}
 		}
 	}
 }
 
-descriptor_add_type()
+function selects_add(id, name, selects_input) {
+	let selects = document.getElementsByClassName(selects_input);
+	let select;
 
-function create_id(create_name, create_add, create_route, create_name_div, hidden_id) {
-	const item_name = document.getElementById(create_name).value;
-	const add_item = document.getElementById(create_add);
-	const edit_button = document.getElementById('edit-button');
-
-	const err_line = 'name-err-line';
-	const errors = 'name-err';
-
-
-	response = fetch(create_route, {
-		method: 'POST',
-		body: JSON.stringify({
-		  'name': item_name,
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-			const all_fields = document.getElementById('all-fields');
-			const name_div = document.getElementById(create_name_div);
-			const item_id = document.getElementById(hidden_id);
-			name_div.innerHTML = jsonResponse.name;
-			item_id.value = jsonResponse.id;
-			name_div.style.display = "block"
-			name_div.style.opacity = "100%"
-			name_div.style.fontSize = "460%";
-			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
-			edit_button.style.display = "block";
-			add_item.style.display = "none";
-			all_fields.style.display = "grid";
-			setTimeout(function(){all_fields.style.opacity = "100%"}, 10);
-
-			clear_errors(err_line, errors);
-
-		} else {
-
-			back_errors(err_line, errors, jsonResponse);
-
-		}
-	})
+	for (select of selects) {
+		const o = document.createElement('option');
+		o.value = id;
+		o.text = name;
+		select.add(o);
+	}
 }
 
-function item_edit_form(item_name_edit, name_div, item_edit_grid) {
-	const edit_field = document.getElementById(item_name_edit);
-	const name = document.getElementById(name_div).innerHTML;
-	const edit_grid = document.getElementById(item_edit_grid);
-
-	edit_field.value = name;
-	edit_grid.style.display = "grid";
-	edit_grid.style.maxHeight = edit_grid.scrollHeight + "px";
-	edit_grid.style.padding = "1%";
-}
-
-function item_edit(item_id, item_name_edit, edit_route, item_name_div, item_edit_grid) {
-	const id = document.getElementById(item_id).value;
-	const name = document.getElementById(item_name_edit).value;
-
-	const err_line = 'name-err-line';
-	const errors = 'name-err';
-	
-		response = fetch(edit_route, {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': id,
-			'name': name
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-			const name_div = document.getElementById(item_name_div);
-			const edit_grid = document.getElementById(item_edit_grid);
-			edit_grid.style.display = "none";
-			name_div.innerHTML = jsonResponse.name;
-			name_div.style.fontSize = "460%";
-			setTimeout(function(){name_div.style.fontSize = "400%"}, 75);
-
-			clear_errors(err_line, errors);
-
-		} else {
-				
-			back_errors(err_line, errors, jsonResponse);
-
-		}
-	})
-}
-
-function create_table(jsonResponse, object, route, selects=false) {
+function create_table(jsonResponse, object, route, benefit_delete=false) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1130,10 +983,10 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
-	const base_table = 'head-table-table';
-	const base_cell_title = 'head-table-cell-title ';
-	const base_title = 'head-table-title'
-	const base_titles = 'head-table-titles';
+	const base_table = 'power-table-table';
+	const base_cell_title = 'power-table-cell-title ';
+	const base_title = 'power-table-title'
+	const base_titles = 'power-table-titles';
 
 	
 	console.log(created)
@@ -1143,7 +996,7 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route, selects);
+		create_titles(jsonResponse, grow, object, route, benefit_delete);
 	
 	} else {
 
@@ -1151,13 +1004,13 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route, selects);
+		cells_create(table, grow, jsonResponse, object, route, benefit_delete);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow, object, route, selects=false) {
+function create_titles(jsonResponse, grow, object, route, benefit_delete=false) {
 	
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -1168,10 +1021,10 @@ function create_titles(jsonResponse, grow, object, route, selects=false) {
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table';
 	const title_class = table_id + '-title';
-	const base_table = 'head-table-table';
-	const base_cell_title = 'head-table-cell-title';
-	const base_title = 'head-table-title-table';
-	const base_titles = 'head-table-titles';
+	const base_table = 'advantage-table-table';
+	const base_cell_title = 'advantage-table-cell-title';
+	const base_title = 'advantage-table-title-table';
+	const base_titles = 'advantage-table-titles';
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
@@ -1204,7 +1057,7 @@ function create_titles(jsonResponse, grow, object, route, selects=false) {
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object, route, selects)
+	cells_create(new_table, grow, jsonResponse, object, route, benefit_delete)
 	
 }
 
@@ -1240,7 +1093,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 }
 
-function cells_create(table_input, grow, jsonResponse, object, route, selects=false) {
+function cells_create(table_input, grow, jsonResponse, object, route, benefit_delete=false) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -1258,11 +1111,11 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'head-table-cells';
-	const base_cell = 'head-table-cell'
-	const base_button_check = 'head-check-button ';
-	const base_check = 'head-check';
-	const base_entry = 'head-table-row';
+	const base_cells = 'advantage-table-cells';
+	const base_cell = 'advantage-table-cell'
+	const base_button_check = 'advantage-check-button ';
+	const base_check = 'advantage-check';
+	const base_entry = 'advantage-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
@@ -1285,7 +1138,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 		new_cell.classList.add(cell_class);
 		if (cell.content == false) {
 			new_cell.innerHTML = '';
-		} else if (cell.content == true && cell.content != 1 && cell.content != '1') {
+		} else if (cell.content == true) {
 			if (cell.mod_check == true) {
 				create_mod = true;
 				const check = document.createElement('button');
@@ -1340,7 +1193,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object, selects) 
+	row_delete(jsonResponse, route, object, benefit_delete) 
 }
 
 
@@ -1409,7 +1262,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			if (new_cell.content == true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
-				check.className = 'head-check';
+				check.className = 'advantage-check';
 				con.appendChild(check)
 			} else {
 				con.innerHTML = new_cell.content;
@@ -1465,7 +1318,7 @@ function check_buttons(table_id, object, table) {
 	}
 }
 
-function row_delete(jsondata, route, object, selects=false) {
+function row_delete(jsondata, route, object, benefit_delete=false) {
 	const table_id = jsondata.table_id;
 	const cells = jsondata.cells;
 	const rows = object.columns;
@@ -1476,10 +1329,9 @@ function row_delete(jsondata, route, object, selects=false) {
 	const table_class = table_id + '-table'
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
-	const entry = document.getElementsByClassName(entry_class)
+	const entries = document.getElementsByClassName(entry_class)
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
-	const table_change = document.getElementById(table_class)
 	
 	const errors = table_id + '-err';
 	const err_line = table_id + '-err-line';
@@ -1489,7 +1341,9 @@ function row_delete(jsondata, route, object, selects=false) {
 		btn.onclick = function(e) {
 			console.log('click');
 			
-			entry[i].style.maxHeight = '0vw';
+			entry = entries[i];
+			entry.style.maxHeight = '0vw';
+			const table_change = entry.parentNode; 
 
 			const delId = e.target.dataset['id']
 			fetch(route + delId, {
@@ -1500,13 +1354,23 @@ function row_delete(jsondata, route, object, selects=false) {
 			console.log(jsonResponse)
 				if (jsonResponse.success) {
 
-					clear_errors(err_line, errors);
-					const remove = jsonResponse.id;
-					deleted_item(selects, remove)
+					clear_errors(err_line, errors)
 
-					if (jsonResponse.feature) {
-						costs.features = jsonResponse.cost;
-						calculate_cost()
+					if (benefit_delete == true) {
+						const selects = document.getElementsByClassName('benefit-entry');
+						let select;
+
+						for (select of selects) {
+							options = select.options;
+							let option;
+
+							for (option of options) {
+								if (option.value == delId) {
+									console.log(option.value);
+									option.remove();
+								}
+							}
+						}
 					}
 
 					console.log(delId)
@@ -1541,8 +1405,12 @@ function row_delete(jsondata, route, object, selects=false) {
 							console.log(grid)
 
 							if (grid == 'hide') {
-								table_change.style.maxHeight = '0px';
-								setTimeout(function(){table_change.style.display = 'none'}, 400);
+								if (jsonResponse.level) {
+									console.log('show')
+								} else {
+									table_change.style.maxHeight = '0px';
+									setTimeout(function(){table_change.style.display = 'none'}, 400);
+								}
 							} else {
 								grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
 							}
@@ -1605,5 +1473,32 @@ function back_errors(line, table, jsonResponse) {
 
 		errors.style.maxHeight = errors.scrollHeight + errors_height + 20 + 'px';
 	}, 420)
+}
+
+
+function clear_errors(line, div) {
+	const errors_delete = document.getElementsByClassName(line);
+	const errors = document.getElementById(div);
+
+	if (typeof errors_delete[0] === "undefined") {
+		console.log('no errors defined')
+	} else {
+
+		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
+
+		for (i = 0; i < errors_delete.length; i++) {
+			errors_delete[i].style.maxHeight = "0px";
+			errors_delete[i].style.padding = "0px";
+			errors_delete[i].style.marginBottom = "0px";
+		};
+		setTimeout(function(){
+			for (i = 0; i < errors_delete.length; i++) {
+				errors_delete[i].style.display = 'none';
+				errors.style.display = 'none';
+			}
+		}, 400);
+
+	}
 }
 

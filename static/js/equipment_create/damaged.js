@@ -18,7 +18,7 @@ function damaged_skill_type() {
 	const select = 'damaged_skill_type';
 	const fill = 'damaged_skill';
 
-	skill_select(select, fill);
+	id_select(select, fill, skill_select);
 }
 
 let damaged_grid = {'titles': false,

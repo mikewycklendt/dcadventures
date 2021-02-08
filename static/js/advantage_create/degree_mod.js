@@ -30,14 +30,14 @@ function deg_mod_consequence_action_type() {
 	const select = 'deg_mod_consequence_action_type';
 	const fill = 'deg_mod_consequence_action';
 
-	action_select(select, fill)
+	id_select(select, fill, action_select);
 }
 
 function deg_mod_consequence_trait_type() {
 	const select = 'deg_mod_consequence_trait_type';
 	const fill = 'deg_mod_consequence_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function deg_mod_knowledge() {
@@ -51,7 +51,7 @@ function deg_mod_circ_trait_type() {
 	const select = 'deg_mod_circ_trait_type'
 	const fill = 'deg_mod_circ_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function deg_mod_condition_type() {
@@ -82,14 +82,14 @@ function deg_mod_measure_trait_type() {
 	const select = 'deg_mod_measure_trait_type';
 	const fill = 'deg_mod_measure_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function deg_mod_level_type() {
 	const select = 'deg_mod_level_type';
 	const fill = 'deg_mod_level';
 
-	level_select(select, fill)
+	id_select(select, fill, level_select);
 }
 
 let deg_mod_grid = {'titles': false,

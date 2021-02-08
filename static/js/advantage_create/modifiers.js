@@ -120,7 +120,7 @@ function modifiers_penalty_trait_type() {
 	const others = [{'select': 'modifiers_bonus_conflict', 'values': ['5']}];
 	
 	double_select_second(select1, select2, options, others, row, entry);
-	trait_select(select1, fill);
+	id_select(select1, fill, trait_select, variable_sub);
 }
 
 function modifiers_bonus_trait_type() {
@@ -133,7 +133,7 @@ function modifiers_bonus_trait_type() {
 	const others = [{'select': 'modifiers_penalty_conflict', 'values': ['5']}];
 
 	double_select_second(select1, select2, options, others, row, entry)
-	trait_select(select1, fill);
+	id_select(select1, fill, trait_select, variable_sub);
 }
 
 function modifiers_penalty_conflict() {

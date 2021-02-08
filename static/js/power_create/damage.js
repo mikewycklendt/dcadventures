@@ -18,7 +18,7 @@ function dam_trait_type() {
 	const select = 'dam_trait_type'
 	const fill = 'dam_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 let damage_grid = {'titles': false,

@@ -6,7 +6,7 @@ function category() {
 					{'val': '3', 'div': 'grenade'},
 					{'val': '4', 'div': 'access'}]
 
-	weapon_type_select(select, fill);
+	id_select(select, fill, weapon_type_select);
 	select_opacity_class(select, options)
 }
 

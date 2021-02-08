@@ -64,10 +64,10 @@ function create_support() {
 }
 
 function create_move_player() {
-	const field = 'create_move_player';
-	const update = 'create_move_player_trait';
+	const select = 'create_move_player';
+	const fill = 'create_move_player_trait';
 
-	trait_select(field, update);
+	id_select(select, fill, trait_select);
 }
 
 function create_move_opponent_check() {
@@ -86,17 +86,17 @@ function create_trap_type() {
 }
 
 function create_trap_trait_type() {
-	const field = 'create_trap_trait_type';
-	const update = 'create_trap_trait';
+	const select = 'create_trap_trait_type';
+	const fill = 'create_trap_trait';
 
-	trait_select(field, update);
+	id_select(select, fill, trait_select);
 }
 
 function create_trap_resist_check() {
 	const field = 'create_trap_resist_check';
 	const update = 'create_trap_resist_trait';
 
-	trait_select(field, update);
+	id_select(field, update, trait_select);
 }
 
 function create_ranged_type() {
@@ -121,7 +121,7 @@ function create_ranged_trait_type() {
 	const field = 'create_ranged_trait_type';
 	const update = 'create_ranged_trait';
 
-	trait_select(field, update);
+	id_select(field, update, trait_select);
 }
 
 function create_ranged_damage_type() {
@@ -140,7 +140,7 @@ function create_weapon_trait_type() {
 	const field = 'create_weapon_trait_type';
 	const update = 'create_weapon_trait';
 
-	trait_select(field, update);
+	id_select(field, update, trait_select);
 }
 
 function create_weapon_damage_type() {

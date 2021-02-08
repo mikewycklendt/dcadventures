@@ -18,7 +18,7 @@ function check_trait_type() {
 	const select = 'check_trait_type';
 	const fill = 'check_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 let check_grid = {'titles': false,

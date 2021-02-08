@@ -61,26 +61,22 @@ function weapon_type() {
 function equipment_type() {
 	const select = 'equipment_type';
 	const fill = 'equipment';
-	const route =  '/vehicle/equipment/select';
 
-	id_select(select, fill, route);	
+	id_select(select, fill, equipment_select);	
 }
 
 function addon_equipment() {
 	const select = 'addon_equipment';
 	const fill = 'addon_feature';
-	const route = '/vehicle/feature/select';
 
-	id_select(select, fill, route);
-
+	id_select(select, fill, feature_select);
 }
 
 function addon_equipment_type() {
 	const select = 'addon_equipment_type';
 	const fill = 'addon_equipment';
-	const route =  '/vehicle/equipment/select';
 
-	id_select(select, fill, route);	
+	id_select(select, fill, equipment_select);	
 }
 let addon_grid = {'titles': false,
 					'columns': [],

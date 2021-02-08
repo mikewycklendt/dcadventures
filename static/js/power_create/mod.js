@@ -35,7 +35,7 @@ function mod_limited_trait_type() {
 	const select = 'mod_limited_trait_type';
 	const fill = 'mod_limited_trait'
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function mod_limited_type() {
@@ -61,7 +61,7 @@ function mod_limited_sense() {
 	const select = 'mod_limited_sense';
 	const fill = 'mod_limited_subsense';
 
-	subsense_select(select, fill);
+	id_select(select, fill, subsense_select);
 }
 
 function mod_ranged() {
@@ -86,7 +86,7 @@ function mod_ranged_math_trait_type() {
 	const select = 'mod_ranged_math_trait_type';
 	const fill = 'mod_ranged_math_trait'; 
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function mod_ranged_check() {
@@ -113,7 +113,7 @@ function mod_reflect_trait_type() {
 	const select = 'mod_reflect_trait_type';
 	const fill = 'mod_reflect_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function mod_subtle() {
@@ -135,14 +135,14 @@ function mod_subtle_null_trait_type() {
 	const select = 'mod_subtle_null_trait_type';
 	const fill = 'mod_subtle_null_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function mod_subtle_opponent_trait_type() {
 	const select = 'mod_subtle_opponent_trait_type';
 	const fill = 'mod_subtle_opponent_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function mod_others() {
@@ -180,7 +180,7 @@ function mod_ranks_trait_type() {
 	const select = 'mod_ranks_trait_type';
 	const fill = 'mod_ranks_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function mod_points_type() {
@@ -251,14 +251,14 @@ function mod_side_level_type() {
 	const select = 'mod_side_level_type';
 	const fill = 'mod_side_level';
 
-	level_select(select, fill);
+	id_select(select, fill, level_select);
 }
 
 function mod_limited_level_type() {
 	const select = 'mod_limited_level_type';
 	const fill = 'mod_limited_level';
 
-	level_select(select, fill);
+	id_select(select, fill, level_select);
 }
 
 

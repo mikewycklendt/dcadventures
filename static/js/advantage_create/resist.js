@@ -11,7 +11,7 @@ function resist_trait_type() {
 	const select = 'resist_trait_type';
 	const fill = 'resist_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 let resist_grid = {'titles': false,

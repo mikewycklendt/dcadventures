@@ -55,7 +55,7 @@ def equip_skill_select():
 	body['success'] = True
 	options = []
 
-	skill_id = request.get_json()['skill_id'] 
+	skill_id = request.get_json()['id'] 
 
 	try:
 		skill_id = int(skill_id)
@@ -157,32 +157,38 @@ def equip_medium_subtype_select():
 	body = {}
 	body['success'] = True
 	options = []
+	titles = []
+	subtype_options = []
+	medium_options = []
 	
 	id = request.get_json()['id']
 	sub = request.get_json()['sub']
+	get_titles = request.get_json()['titles']
 
 	print('id ' + medium_type_id)
+	
 
 	try:
-		titles = []
-		subtype_options = []
-		medium_options = []
 		medium_type = db.session.query(MediumType).filter_by(id=id).one()
 		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=id).order_by(MediumSubType.name).all()
 		mediums = db.session.query(Medium).filter_by(medium_type=id).order_by(Medium.name).all()
 		
+		if get_titles !=  False:
+			subtype_div = get_titles['title'] 'descriptor-medium-subtype-title'
+			description_div = get_titles['description'] 'descriptor-medium-subtype-des-title'
+
 		first_medium = medium_type.name + ' Mediums'
 		first_subtype = medium_type.name + 'Subtypes'
 		
 		subtype_options.append({'id': '', 'name': first_subtype})
 		medium_options.append({'id': '', 'name': first_medium})
-	
+
 		if sub == 'power_create':
 			title = medium_type.name + ' Type'
 			description_title = 'New ' + medium_type.name + ' Type Description'
 
-			titles.append({'div': 'descriptor-medium-subtype-title', 'title': title})
-			titles.append({'div': 'descriptor-medium-subtype-des-title', 'title': description_title})			
+			titles.append({'div': , 'title': title})
+			titles.append({'div': , 'title': description_title})			
 			body['titles'] = titles
 			
 			all_medium_type = 'Any ' + medium_type.name
@@ -196,8 +202,11 @@ def equip_medium_subtype_select():
 			medium_options.append({'id': medium.id, 'name': medium.name})
 
 		fields = request.get_json()['fields']
-		subtype_field = fields['subtypes']
-		medium_field = fields['mediums']
+		try:
+			subtype_field = fields['subtypes']
+			medium_field = fields['mediums']
+		except:
+			body['success']  = False
 
 		send_subtypes = {'select': subtype_field, 'options': subtype_options}
 		send_mediums = {'select': medium_field, 'options': medium_options}
@@ -218,7 +227,7 @@ def equip_medium_select():
 	body = {}
 	body['success'] = True
 	
-	medium_subtype = request.get_json()['medium_subtype']
+	medium_subtype = request.get_json()['id']
 	options = []
 	sub = request.get_json()['sub']
 	body['titles'] = False
@@ -233,7 +242,7 @@ def equip_medium_select():
 			
 			options.append({'id': '', 'name': first})
 
-			if sub == 'power':
+			if sub == 'power_create':
 				all_subtype = 'Any ' + subtype.name
 				ooptions.append({'id': 'all', 'name': all_subtype})
 				options.append({'id': 'new', 'name': 'New'})
@@ -265,9 +274,8 @@ def vehicle_equipment_select():
 	add = False
 
 	if sub != False:
-		if add:
-			if sub == 'feature':
-				add_options = [{'id': 'all', 'name': 'All Features'}]
+		if sub == 'feature':
+			options.append({'id': 'all', 'name': 'All Features'})
 
 	try:
 		type_id = int(type_id)
@@ -422,44 +430,59 @@ def skill_trait_select():
 	body['success'] = True
 
 	trait = request.get_json()['id'] 
+	sub = request.get_json()['sub']
 
 	this = ['This Power']
 
 	skills_query = db.session.query(Skill).order_by(Skill.name).all()
 	skills = [{'id': '', 'name': 'Skill'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for skill in skills_query:
 		skills.append({'id': skill.name, 'name': skill.name})
 
 	abilities_query = db.session.query(Ability).order_by(Ability.name).all()
 	abilities = [{'id': '', 'name': 'Ability'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for a in abilities_query:
 		abilities.append({'id': a.name, 'name': a.name})
 
 	defenses_query = db.session.query(Defense).order_by(Defense.name).all()
 	defenses = [{'id': '', 'name': 'Defense'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for d in defenses_query:
 		defenses.append({'id': d.name, 'name': d.name})
 
 	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
 	powers_sorted = sorted(powers_raw)
 	powers = [{'id': '', 'name': 'Power'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for p in powers_sorted:
 		powers.append({'id': p, 'name': p})
 
 	bonuses_raw = ['Balancing', 'Maneuvering', 'Standing', 'Tumbling', 'Climbing', 'Jumping', 'Running', 'Swimming', 'Bluffing', 'Disguise', 'Feinting', 'Innuendo', 'Tricking', 'Detect Illusion', 'Detect Influence', 'Evaluate', 'Innuendo', 'Resist Influence', 'Coercing', 'Demoralizing', 'Intimidating Minions', 'Search', 'Gather Evidence', 'Analyze Evidence', 'Gather Information', 'Surveillance', 'Hearing', 'Seeing', 'Other Senses', 'Concealing', 'Contorting', 'Escaping', 'Legerdemain', 'Stealing', 'Hiding', 'Tailing', 'Operating', 'Building', 'Repairing', 'Jury-Rigging', 'Demolitions', 'Inventing', 'Security', 'Diagnosis', 'Provide Care', 'Revive', 'Stabalize', 'Treat Disease and Poison']
 	bonuses_sorted = sorted(bonuses_raw)
 	bonuses = [{'id': '', 'name': 'Enhanced Skill'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for b in bonuses_sorted:
 		bonuses.append({'id': b, 'name': b})
 
 	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
 	advantages_sorted = sorted(advantages_raw)
 	advantages = [{'id': '', 'name': 'Advantage'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for a in advantages_sorted:
 		advantages.append({'id': a, 'name': a})
 
 	extras_query = db.session.query(Extra).order_by(Extra.name).all()
 	extras = [{'id': '', 'name': 'Extra'}]
+	if sub == 'variable':
+		skills.append({'id': 'x', 'name': 'Variable'})
 	for e in extras_query:
 		extras.append({'id': e.name, 'name': e.name})
 

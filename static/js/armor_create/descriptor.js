@@ -9,194 +9,38 @@ function descriptor_check() {
 
 
 function get_medium_subtypes() {
+	const select = 'descriptor_medium_type';
+	const fill = {'subtypes': 'descriptor_medium_subtype',
+					'mediums': 'descriptor_medium'};
 
-	const title = document.getElementById('descriptor-medium-subtype-title')
-
-	const medium_type_field  = document.getElementById('descriptor_medium_type');
-	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
-
-	const update = document.getElementById('descriptor_medium_subtype');
-	const update_medium  = document.getElementById('descriptor_medium');
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-	update_medium.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update_medium.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/medium/subtype/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'medium_type': medium_type
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			update.innerText = null;
-			update_medium.innerText = null;
-
-			title.innerText = jsonResponse.title;
-			title.style.opacity = '100%';
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-			const options_medium = jsonResponse.options_medium
-			let option_medium;
-
-			for (option_medium of options_medium) {
-				o = document.createElement('option')
-				o.value = option_medium.id;
-				o.text = option_medium.name;
-				update_medium.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	id_select(select, fill, medium_subtype_select, false, false, false, true);
 }
 
 function get_medium() {
+	const select = 'descriptor_medium_subtype';
+	const fill = 'descriptor_medium';
 
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
-	
-	const update  = document.getElementById('descriptor_medium');
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/equipment/medium/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'medium_subtype': medium_subtype
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			update.innerText = null;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	id_select(select, fill, medium_select);
 }
 
-function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/power/descriptor/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'origin': origin,
-			'source': source,
-			'medium_type': medium_type,
-			'medium_subtype': medium_subtype,
-			'medium': medium
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const select = document.getElementById('descriptor_field');
-			let old_options = select.options;
-			
-			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
-					console.log('keep');
-				} else {
-					old_options[i].remove();
-				}
-			}
-
-			let options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				console.log(option)
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function field_show(value, title, field) {
-	if (value != '' && value != 'all') {
-		title.style.opacity = '100%';
-		field.style.opacity = '100%';
-	} else {
-		title.style.opacity = '0%';
-		field.style.opacity = '0%';
-	}
-}
 function descriptor() {
-	const origin  = select('descriptor_origin');
-	const source  = select('descriptor_source');
-	const medium_type  = select('descriptor_medium_type');
-	const medium_subtype = select('descriptor_medium_subtype');
-	const medium  = select('descriptor_medium');
+	const origin  = 'descriptor_origin'
+	const source  = 'descriptor_source';
+	const medium_type  = 'descriptor_medium_type';
+	const medium_subtype = 'descriptor_medium_subtype';
+	const medium  = 'descriptor_medium';
+	const descriptor_field = 'descriptor_fIeld';
 
-	const descriptor_field  = document.getElementById('descriptor_field');
-	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
-
-	const sub_title_row1 = document.getElementById('descriptor-medium-subtype-title')
-	const med_title_row1 = document.getElementById('descriptor-medium-title');
-	const des_title_row1 = document.getElementById('descriptor-field-title');
-	const sub_row1 = document.getElementById('descriptor-medium-subtype');
-	const med_row1 = document.getElementById('descriptor-medium');
-	const des_field = document.getElementById('descriptor-field');
+	const sub_title_row1 = 'descriptor-medium-subtype-title';
+	const med_title_row1 = 'descriptor-medium-title';
+	const sub_row1 = 'descriptor-medium-subtype';
+	const med_row1 = 'descriptor-medium';
+	const des_field = 'descriptor-field';
 
 	field_show(medium_type, sub_title_row1, sub_row1)
 	field_show(medium_subtype, med_title_row1, med_row1)
-	
-	if ((origin != 'all' && origin != '') || (source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
-		(medium_subtype != 'all' && medium_subtype != '') || (medium != 'all' && medium != '')) {
-		des_field.style.opacity = '100%';
-	} else {
-		des_field.style.opacity = '0%';
-	}
+
+	show_descriptor_field(origin, source, medium_subtype, medium, des_field);
 
 	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor_field)
 }

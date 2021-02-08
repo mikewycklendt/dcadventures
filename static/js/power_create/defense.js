@@ -34,14 +34,14 @@ function defense_reflect_opposed_trait_type() {
 	const select = 'defense_reflect_opposed_trait_type';
 	const fill = 'defense_reflect_opposed_trait';
 	
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function defense_reflect_resist_trait_type() {
 	const select = 'defense_reflect_resist_trait_type';
 	const fill = 'defense_reflect_resist_trait';
 	
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function defense_reflect_check() {
@@ -57,7 +57,7 @@ function defense_immunity_trait_type() {
 	const select = 'defense_immunity_trait_type';
 	const fill = 'defense_immunity_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function defense_immunity_type() {

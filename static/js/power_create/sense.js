@@ -16,11 +16,10 @@ function sense_base() {
 }
 
 function sense_sense() {
-
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';
 
-	subsense_select(select, fill)
+	id_select(select, fill, subsense_select)
 }
 
 function sense_skill() {
@@ -47,14 +46,14 @@ function sense_height_trait() {
 	const select = 'sense_height_trait_type';
 	const fill = 'sense_height_trait';
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function sense_resist_trait() {
 	const select = 'sense_resist_trait_type';
 	const fill = 'sense_resist_trait';
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function sense_power_req() {

@@ -85,7 +85,7 @@ function char_points_trait_type() {
 	const select = 'char_points_trait_type'
 	const fill = 'char_points_trait'
 	
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function char_insub() {
@@ -99,14 +99,14 @@ function char_reduced_trait_type() {
 	const select = 'char_reduced_trait_type';
 	const fill = 'char_reduced_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function char_trait_type() {
 	const select = 'char_trait_type';
 	const fill = 'char_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function char_size() {
@@ -135,7 +135,7 @@ function char_weaken_trait_type() {
 	const select = 'char_weaken_trait_type';
 	const fill = 'char_weaken_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function char_weaken_type() {

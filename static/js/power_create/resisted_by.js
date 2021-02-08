@@ -18,7 +18,7 @@ function resist_type() {
 	const select = 'resist_trait_type';
 	const fill = 'resist_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function resist_effect() {
@@ -36,7 +36,7 @@ function resist_level_type() {
 	const select = 'resist_level_type';
 	const fill = 'resist_level';
 
-	level_select(select, fill);
+	id_select(select, fill, level_select);
 }
 
 let resist_grid = {'titles': false,

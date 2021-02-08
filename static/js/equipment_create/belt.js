@@ -12,63 +12,57 @@ function belt_item_type() {
 function belt_equipment() {
 	const entry = 'belt-entry';
 	const select = 'belt_equipment';
-	const route = '/equipment/equipment/select/info'
 
-	belt_info(select, route, entry)
+	belt_info(select, equipment_info_select, entry)
 }
 
 function belt_feature() {
 	const entry = 'belt-entry';
 	const select = 'belt_feature';
-	const route = '/equipment/feature/select/info'
 
-	belt_info(select, route, entry)
+	belt_info(select, feature_info_select, entry)
 }
 
 function belt_weapon() {
 	const entry = 'belt-entry';
 	const select = 'belt_weapon';
-	const route = '/equipment/weapon/select/info'
 
-	belt_info(select, route, entry)
+	belt_info(select, weapon_info_select, entry)
 }
 
 function belt_weapon_cat() {
 	const select = 'belt_weapon_cat';
 	const fill = 'belt_weapon_type';
 
-	weapon_type_select(select, fill);
+	id_select(select, fill, weapon_type_select);
 }
 
 function belt_weapon_type() {
 	const select = 'belt_weapon_type';
 	const fill = 'belt_weapon';
 
-	weapon_select(select, fill);
+	id_select(select, fill, weapon_select);
 }
 
 function belt_equipment_type() {
 	const select = 'belt_equipment_type';
 	const fill = 'belt_equipment';
 
-	equipment_select(select, fill);
+	id_select(select, fill, equipment_select);
 }
 
 function belt_feature_equipment() {
 	const select = 'feature_equipment';
 	const fill = 'feature_feature';
-	const route = '/vehicle/feature/select';
 
-	id_select(select, fill, route);
-
+	id_select(select, fill, feature_select);
 }
 
 function belt_feature_equipment_type() {
 	const select = 'feature_equipment_type';
 	const fill = 'feature_equipment';
-	const route =  '/vehicle/equipment/select';
 
-	id_select(select, fill, route);	
+	id_select(select, fill, equipment_select);	
 }
 
 function belt_check() {

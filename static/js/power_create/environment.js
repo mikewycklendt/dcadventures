@@ -63,7 +63,7 @@ function env_visibility_trait_type() {
 	const select = 'env_visibility_trait_type'
 	const fill = 'env_visibility_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function env_immunity() {

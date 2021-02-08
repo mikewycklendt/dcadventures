@@ -17,15 +17,15 @@ function check_base() {
 function check_trait_type() {
 	const select = 'check_trait_type';
 	const fill = 'check_trait';
-
-	trait_select(select, fill);
+	
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function check_action_type() {
 	const select = 'check_action_type';
 	const fill = 'check_action';
 
-	action_select(select, fill);
+	id_select(select, fill, action_select);
 }
 
 function check_trigger() {

@@ -34,7 +34,7 @@ function minion_attitude_type() {
 	const select = 'minion_attitude_type';
 	const fill = 'minion_attitude_attitude';
 
-	level_select(select, fill);
+	id_select(select, fill, level_select);
 }
 
 function minion_resitable() {
@@ -56,7 +56,7 @@ function minion_attitude_trait_type() {
 	const select = 'minion_attitude_trait_type';
 	const fill = 'minion_attitude_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 let minion_grid = {'titles': false,

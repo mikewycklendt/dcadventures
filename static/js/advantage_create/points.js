@@ -34,7 +34,7 @@ function points_ranks_trait_type() {
 	const select = 'points_ranks_trait_type';
 	const fill = 'points_ranks_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 let points_grid = {'titles': false,

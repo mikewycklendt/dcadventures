@@ -37,14 +37,14 @@ function circ_check_trait_type() {
 	const select = 'circ_check_trait_type';
 	const fill = 'circ_check_trait';
 	
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function circ_null_trait_type() {
 	const select = 'circ_null_trait_type';
 	const fill = 'circ_null_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 let circ_grid = {'titles': false,

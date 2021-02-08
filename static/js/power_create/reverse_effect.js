@@ -36,7 +36,7 @@ function reverse_trait_type() {
 	const select = 'reverse_trait_type';
 	const fill = 'reverse_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function reverse_value_type() {

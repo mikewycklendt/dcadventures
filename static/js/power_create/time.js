@@ -18,7 +18,7 @@ function time_trait_type() {
 	const select = 'time_trait_type'
 	const fill = 'time_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function time_value_type() {

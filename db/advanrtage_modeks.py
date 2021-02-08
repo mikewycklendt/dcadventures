@@ -38,11 +38,11 @@ class Advantage(db.Model):
 	ranked_ranks = db.Column(db.Integer)
 	ranked_max = db.Column(db.Integer)
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	replaced_trait_type = db.Column(db.String())
-	replaced_trait =  db.Column(db.String())
+	
 	skill_type = db.Column(db.String())
-	skill = db.Column(db.String())
+	
 	skill_description = db.Column(db.String())
 	skill_untrained = db.Column(db.Boolean)
 	no_pre_check = db.Column(db.Boolean)
@@ -62,11 +62,11 @@ class Advantage(db.Model):
 	invent = db.Column(db.Boolean)
 	invent_permanence = db.Column(db.String())
 	invent_trait_type = db.Column(db.String())
-	invent_trait = db.Column(db.String())
+	
 	rituals = db.Column(db.Boolean)
 	gm_secret_check = db.Column(db.Boolean)
 	gm_trait_type = db.Column(db.String())
-	gm_trait = db.Column(db.String())
+	
 	gm_veto = db.Column(db.Boolean)
 	language = db.Column(db.Boolean)
 	languages = db.Column(db.Integer)
@@ -110,9 +110,7 @@ class Advantage(db.Model):
 			'ranked_ranks': self.ranked_ranks,
 			'ranked_max': self.ranked_max,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'replaced_trait_type': self.replaced_trait_type,
-			'replaced_trait': self.replaced_trait,
 			'skill_type': self.skill_type,
 			'skill': self.skill,
 			'skill_description': self.skill_description,
@@ -134,11 +132,9 @@ class Advantage(db.Model):
 			'invent': self.invent,
 			'invent_permanence': self.invent_permanence,	
 			'invent_trait_type': self.invent_trait_type,
-			'invent_trait': self.invent_trait,
 			'rituals': self.rituals,
 			'gm_secret_check': self.gm_secret_check,
 			'gm_trait_type': self.gm_trait_type,
-			'gm_trait': self.gm_trait,
 			'gm_veto': self.gm_veto,
 			'language': self.language,
 			'languages': self.languages,
@@ -182,7 +178,7 @@ class AdvAltCheck(db.Model):
 	trigger = db.Column(db.String())
 	when = db.Column(db.String())
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	conflict_weapon = db.Column(db.Boolean)
@@ -203,7 +199,6 @@ class AdvAltCheck(db.Model):
 			'trigger': self.trigger,
 			'when': self.when,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'conflict': self.conflict,
 			'conflict_range': self.conflict_range,
 			'conflict_weapon': self.conflict_weapon,
@@ -228,13 +223,13 @@ class AdvCirc(db.Model):
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	check_who = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	null_type = db.Column(db.String())
 	null_condition = db.Column(db.String())
 	null_trait_type = db.Column(db.String())
-	null_trait = db.Column(db.String())
+	
 	null_override_trait_type = db.Column(db.String())
-	null_override_trait = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -311,7 +306,7 @@ class AdvDC(db.Model):
 	math_value = db.Column(db.Integer)
 	math_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_trait_type = db.Column(db.String())
-	math_trait = db.Column(db.String())
+
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Boolean)
@@ -322,7 +317,7 @@ class AdvDC(db.Model):
 	condition2 = db.Column(db.String())
 	keyword = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
-	check_trait = db.Column(db.String())
+
 	check_mod = db.Column(db.Integer)
 
 	def format(self):
@@ -362,7 +357,7 @@ class AdvDegree(db.Model):
 	consequence_action_type = db.Column(db.String())
 	consequence_action = db.Column(db.Integer)
 	consequence_trait_type = db.Column(db.String())
-	consequence_trait = db.Column(db.String())
+	
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	knowledge = db.Column(db.String())
 	knowledge_count = db.Column(db.Integer)
@@ -372,12 +367,12 @@ class AdvDegree(db.Model):
 	circ_value = db.Column(db.Integer)
 	circ_turns = db.Column(db.Integer)
 	circ_trait_type = db.Column(db.String())
-	circ_trait = db.Column(db.String())
+
 	measure_type = db.Column(db.String())
 	measure_val1 = db.Column(db.Integer)
 	measure_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_trait_type = db.Column(db.String())
-	measure_trait = db.Column(db.String())
+
 	measure_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	condition_type = db.Column(db.String())
@@ -479,7 +474,7 @@ class AdvMinion(db.Model):
 	attitude_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	attitude_attitude = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	attitude_trait_type = db.Column(db.String())
-	attitude_trait = db.Column(db.String())
+
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	resitable_dc = db.Column(db.Integer)
 	multiple_value = db.Column(db.Integer)
@@ -543,12 +538,12 @@ class AdvMod(db.Model):
 	profession = db.Column(db.Integer)
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
-	bonus_trait = db.Column(db.String())
+
 	bonus_check = db.Column(db.Integer)
 	bonus_check_range = db.Column(db.Integer)
 	bonus_conflict = db.Column(db.Integer)
 	penalty_trait_type = db.Column(db.String())
-	penalty_trait = db.Column(db.String())
+
 	penalty_check = db.Column(db.Integer)
 	penalty_check_range = db.Column(db.Integer)
 	penalty_conflict = db.Column(db.Integer)
@@ -617,10 +612,10 @@ class AdvOpposed(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	mod = db.Column(db.Integer)
 	opponent_trait_type = db.Column(db.String())
-	opponent_trait = db.Column(db.String())
+
 	opponent_mod = db.Column(db.Integer)
 	player_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opponent_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
@@ -668,7 +663,7 @@ class AdvPoints(db.Model):
 	ranks_max = db.Column(db.Integer)
 	ranks_lasts = db.Column(db.Integer)
 	ranks_trait_type = db.Column(db.String())
-	ranks_trait = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -705,7 +700,7 @@ class AdvResist(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	mod = db.Column(db.Integer)
 	which = db.Column(db.String())
 
@@ -714,7 +709,6 @@ class AdvResist(db.Model):
 			'id': self.id,
 			'benefit': self.benefit,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'mod': self.mod,
 			'which': self.which
 		}
@@ -728,7 +722,7 @@ class AdvRounds(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	end = db.Column(db.String())
 
 	def format(self):
@@ -739,7 +733,6 @@ class AdvRounds(db.Model):
 			'cost': self.cost,
 			'check': self.check,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'end': self.end
 		}
 
@@ -750,9 +743,9 @@ class AdvSkill(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	replaced_trait_type = db.Column(db.String())
-	replaced_trait = db.Column(db.String())
+
 	multiple = db.Column(db.String())
 
 	def format(self):
@@ -760,7 +753,6 @@ class AdvSkill(db.Model):
 			'id': self.id,
 			'benefit': self.benefit,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'replaced_trait_type': self.replaced_trait_type,
 			'replaced_trait': self.replaced_trait,
 			'multiple': self.multiple
@@ -778,7 +770,7 @@ class AdvTime(db.Model):
 	time_value = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	dc = db.Column(db.Integer)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	recovery = db.Column(db.Boolean)
@@ -797,7 +789,6 @@ class AdvTime(db.Model):
 			'time_value': self.time_value,
 			'math': self.math,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'dc': self.dc,
 			'check_type': self.check_type,
 			'recovery': self.recovery,
@@ -811,7 +802,7 @@ class AdvVariable(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	trait_type = db.Column(db.String())
-	trait = db.Column(db.String())
+
 	active = db.Column(db.Boolean)
 	effort = db.Column(db.Boolean)
 
@@ -819,7 +810,6 @@ class AdvVariable(db.Model):
 		return {
 			'id': self.id,
 			'trait_type': self.trait_type,
-			'trait': self.trait,
 			'active': self.active,
 			'effort': self.effort
 		}

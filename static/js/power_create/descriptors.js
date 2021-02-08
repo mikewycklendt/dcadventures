@@ -1,343 +1,96 @@
-	
-function descriptor_new(value, div) {
-	
-	const des_title_row1 = document.getElementById('descriptor-field-title');
-	const des_field = document.getElementById('descriptor-field');
 
-	if (value == 'new') {
-		div.style.opacity = '100%';
-		des_title_row1.style.opacity = '0%'
-		des_field.style.opacity = '0%'
-	} else {
-		div.style.opacity = '0%';
-	}
-}
 
 function get_medium_subtypes() {
+	const select = 'descriptor_medium_type';
+	const fill = {'subtypes': 'descriptor_medium_subtype',
+					'mediums': 'descriptor_medium'};
+	const sub = 'power_create';
+	const titles = {'title': 'descriptor-medium-subtype-title',
+					'description': 'descriptor-medium-subtype-des-title'};
 
-
-	const medium_type_field  = document.getElementById('descriptor_medium_type');
-	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
-
-	
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-	update_medium.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update_medium.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/power/medium/subtype/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': medium_type
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-
-			
-			if (jsonResponse.titles) {
-				titles = jsonResponse.title;
-				let t;
-				for (t of titles) {
-					const div = document.getElementById(t.div)
-					const title = t.title
-
-					div.style.opacity = '100%';
-					div.innerText = title;
-				}
-			}
-	
-			const options = jsonResponse.options;
-
-			if (multiple == false) {
-
-			} else {
-				let field;
-				for (field of options) {
-					const select = field.select;
-					const update = document.getElementById(select)
-					const inserts = field.options;
-					let option;
-					for (option of inserts) {
-						let o = document.createElement("option")
-						o.value = option.id;
-						o.text = option.name;
-						update.add(o);
-					}
-				}
-			}
-
-			const options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-			const options_medium = jsonResponse.options_medium
-			let option_medium;
-
-			for (option_medium of options_medium) {
-				o = document.createElement('option')
-				o.value = option_medium.id;
-				o.text = option_medium.name;
-				update_medium.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	id_select(select, fill, medium_subtype_select, sub, false, titles, true);
 }
 
 function get_medium() {
+	const select = 'descriptor_medium_subtype';
+	const fill = 'descriptor_medium';
+	const sub = 'power_create';
 
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
-	
-	const update  = document.getElementById('descriptor_medium');
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/power/medium/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'id': medium_subtype
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const options = jsonResponse.options;
-			let option;
-
-			update.innerText = null;
-
-			for (option of options)  {
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
+	id_select(select, fill, medium_select, sub);
 }
 
-function get_descriptors(origin, source, medium_type, medium_subtype, medium, update) {
-
-	update.style.backgroundColor = 'lightblue';
-	setTimeout(function(){update.style.backgroundColor = "white"}, 200)
-
-	response = fetch('/power/descriptor/select', {
-		method: 'POST',
-		body: JSON.stringify({
-			'origin': origin,
-			'source': source,
-			'medium_type': medium_type,
-			'medium_subtype': medium_subtype,
-			'medium': medium
-		}),
-		headers: {
-		  'Content-Type': 'application/json',
-		}
-	})
-	.then(response => response.json())
-	.then(jsonResponse => {
-		console.log(jsonResponse)
-		if (jsonResponse.success) {
-
-			const select = document.getElementById('descriptor_field');
-			let old_options = select.options;
-			
-			for (i = old_options.length - 1; i > -1; i--) {
-				if (old_options[i].value == 'new' || old_options[i].value == 'all' || old_options[i].value == '') {
-					console.log('keep');
-				} else {
-					old_options[i].remove();
-				}
-			}
-
-			let options = jsonResponse.options;
-			let option;
-
-			for (option of options)  {
-				console.log(option)
-				let o = document.createElement("option")
-				o.value = option.id;
-				o.text = option.name;
-				update.add(o);
-			}
-
-		} else {
-			console.log(jsonResponse.options);
-		}
-	})	
-}
-
-function descriptor_des(value, div) {
-	const row3 = document.getElementById('descriptor-row3') 
-	if (value == 'new') {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-		row3.style.display = 'grid';
-		row3.style.maxHeight = div.scrollHeight + row3.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		setTimeout(function(){div.style.display = 'none'}, 400);
-	}
-}
-
-function new_entry_show(row2, row3, damage) {
-	row2.style.display = 'grid';
-	row2.style.maxHeight = row2.scrollHeight + 'px';
-	row3.style.display = 'grid';
-	row3.style.maxHeight = row3.scrollHeight + 'px';
-	damage.style.display = 'grid';
-	damage.style.maxHeight = damage.scrollHeight + 'px';
-}
-
-function new_entry_hide(row2, row3, damage) {
-	row2.style.maxHeight = '0px';
-	setTimeout(function(){row2.style.display = 'none'}, 400);
-	row3.style.maxHeight = '0px';
-	setTimeout(function(){row3.style.display = 'none'}, 400);
-	damage.style.maxHeight = '0px';
-	setTimeout(function(){damage.style.display = 'none'}, 400);
-}
-
-function field_show(value, title, field) {
-	if (value != '' && value != 'all') {
-		title.style.opacity = '100%';
-		field.style.opacity = '100%';
-	} else {
-		title.style.opacity = '0%';
-		field.style.opacity = '0%';
-	}
-}
 function descriptor() {
-	const origin_field  = document.getElementById('descriptor_origin');
-	const origin = origin_field.options[origin_field.selectedIndex].value;
+	const origin  = 'descriptor_origin';
+	const source  = 'descriptor_source';
+	const medium_type  = 'descriptor_medium_type';
+	const medium_subtype = 'descriptor_medium_subtype';
+	const medium  = 'descriptor_medium';
+	const descriptor = 'descriptor_field';
 
-	const source_field  = document.getElementById('descriptor_source');
-	const source = source_field.options[source_field.selectedIndex].value;
+	const sub_title_row1 = 'descriptor-medium-subtype-title'
+	const med_title_row1 = 'descriptor-medium-title';
+	const sub_row1 = 'descriptor-medium-subtype';
+	const med_row1 = 'descriptor-medium';
+	const des_title_row1 = 'descriptor-field-title';
+	const des_field = 'descriptor-field';
 
-	const medium_type_field  = document.getElementById('descriptor_medium_type');
-	const medium_type = medium_type_field.options[medium_type_field.selectedIndex].value;
-	
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
+	const ori_text = 'descriptor-origin-field';
+	const sou_text = 'descriptor-source-field';
+	const sub_text = 'descriptor-medium-subtype-field';
+	const med_text = 'descriptor-medium-field';
+	const des_text = 'descriptor-descriptor-new';
 
-	const medium_field  = document.getElementById('descriptor_medium');
-	const medium = medium_field.options[medium_field.selectedIndex].value;
+	const ori_des = 'descriptor-origin-des';
+	const sou_des = 'descriptor-source-des';
+	const sub_des = 'descriptor-medium-subtype-des';
+	const med_des = 'descriptor-medium-des';
+	const des_des = 'descriptor-descriptor-result';
 
-	const descriptor_field  = document.getElementById('descriptor_field');
-	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
+	const row2 = 'descriptor-row2';
+	const row3 = 'descriptor-row3';
+	const damage = 'descriptor-damage-row';
 
-	const sub_title_row1 = document.getElementById('descriptor-medium-subtype-title')
-	const med_title_row1 = document.getElementById('descriptor-medium-title');
-	const des_title_row1 = document.getElementById('descriptor-field-title');
-	const sub_row1 = document.getElementById('descriptor-medium-subtype');
-	const med_row1 = document.getElementById('descriptor-medium');
-	const des_field = document.getElementById('descriptor-field');
 
-	const ori_text = document.getElementById('descriptor-origin-field');
-	const sou_text = document.getElementById('descriptor-source-field');
-	const sub_text = document.getElementById('descriptor-medium-subtype-field');
-	const med_text = document.getElementById('descriptor-medium-field');
-	const des_text = document.getElementById('descriptor-descriptor-new');
-
-	const ori_des = document.getElementById('descriptor-origin-des');
-	const sou_des = document.getElementById('descriptor-source-des');
-	const sub_des = document.getElementById('descriptor-medium-subtype-des');
-	const med_des = document.getElementById('descriptor-medium-des');
-	const des_des = document.getElementById('descriptor-descriptor-result');
-
-	const row2 = document.getElementById('descriptor-row2');
-	const row3 = document.getElementById('descriptor-row3');
-	const damage = document.getElementById('descriptor-damage-row');
-
-	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
-		new_entry_show(row2, row3, damage);
-	}
-
-	if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
-		new_entry_hide(row2, row3, damage);
-	}
-
-	descriptor_new(origin, ori_text);
-	descriptor_des(origin, ori_des);
-	descriptor_new(source, sou_text);
-	descriptor_des(source, sou_des);
-	descriptor_new(medium_subtype, sub_text)
-	descriptor_des(medium_subtype, sub_des)
-	descriptor_new(medium, med_text);
-	descriptor_des(medium, med_des);
+	descriptor_new(origin, ori_text, des_title_row1, des_field);
+	descriptor_des(origin, ori_des, row3);
+	descriptor_new(source, sou_text, des_title_row1, des_field);
+	descriptor_des(source, sou_des, row3);
+	descriptor_new(medium_subtype, sub_text, des_title_row1, des_field)
+	descriptor_des(medium_subtype, sub_des, row3)
+	descriptor_new(medium, med_text, des_title_row1, des_field);
+	descriptor_des(medium, med_des, row3);
 
 	field_show(medium_type, sub_title_row1, sub_row1)
 	field_show(medium_subtype, med_title_row1, med_row1)
-	
-	if ((origin != 'all' && origin != '') || (source != 'all' && source != '') || (medium_type != 'all' && medium_type != '') || 
-		(medium_subtype != 'all' && medium_subtype != '') || (medium != 'all' && medium != '')) {
-		des_title_row1.style.opacity = '100%';
-		des_field.style.opacity = '100%';
-	} else {
-		des_title_row1.style.opacity = '0%';
-		des_field.style.opacity = '0%';
-	}
 
-	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor_field)
+	descriptor_create_fields(origin, source, medium_subtype, medium, descriptor, row2, row3, damage)
+	show_descriptor_field(origin, source, medium_subtype, medium, des_field, des_title_row1);
+
+	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor)
 }
 
 function descriptor_field() {
 
-	const origin_field  = document.getElementById('descriptor_origin');
-	const origin = origin_field.options[origin_field.selectedIndex].value;
+	const origin  = 'descriptor_origin';
+	const source  = 'descriptor_source';
+	const medium_subtype = 'descriptor_medium_subtype';
+	const medium = 'descriptor_medium';
 
-	const source_field  = document.getElementById('descriptor_source');
-	const source = source_field.options[source_field.selectedIndex].value;
-	
-	const medium_subtype_field = document.getElementById('descriptor_medium_subtype');
-	const medium_subtype = medium_subtype_field.options[medium_subtype_field.selectedIndex].value;
-
-	const medium_field  = document.getElementById('descriptor_medium');
-	const medium = medium_field.options[medium_field.selectedIndex].valu
-
-	const descriptor_field  = document.getElementById('descriptor_field');
-	const descriptor = descriptor_field.options[descriptor_field.selectedIndex].value;
-	const des_text = document.getElementById('descriptor-descriptor-new');
-	const des_des = document.getElementById('descriptor-descriptor-result');
-	const row2 = document.getElementById('descriptor-row2');
-	const row3 = document.getElementById('descriptor-row3');
-	const damage = document.getElementById('descriptor-damage-row');
+	const descriptor  = 'descriptor_field';
+	const des_text = 'descriptor-descriptor-new';
+	const des_des = 'descriptor-descriptor-result';
+	const row2 = 'descriptor-row2';
+	const row3 = 'descriptor-row3';
+	const damage = 'descriptor-damage-row';
+	const des_title_row1 = 'descriptor-field-title';
+	const des_field = 'descriptor-field';
 	
 	console.log(descriptor)
 
-	if (origin == 'new' || source == 'new' || medium_subtype ==  'new' || medium == 'new' || descriptor == 'new') {
-		new_entry_show(row2, row3, damage)
-	} else if (origin != 'new' && source != 'new' && medium_subtype !=  'new' && medium != 'new' && descriptor != 'new') {
-		new_entry_hide(row2, row3, damage)
-	}
+	descriptor_create_fields(origin, source, medium_subtype, medium, descriptor, row2, row3, damage)
 
-	descriptor_new(descriptor, des_text)
-	descriptor_des(descriptor, des_des)
+	descriptor_new(descriptor, des_text, des_title_row1, des_field);
+	descriptor_des(descriptor, des_des, row3)
 }
 
 let des_counts = {'rows': 0, 'des_rows': 0, 'cha_count': 3, 'cha_rows': 0, 'rows_effect': 0, 'des_rows_effect': 0, 'cha_count_effect': 3, 'cha_rows_effect': 0, 'des_total': 0, 'eff_total': 0}

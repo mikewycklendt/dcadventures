@@ -18,21 +18,21 @@ function ranged_check_trait_type() {
 	const select = 'ranged_check_trait_type'
 	const fill = 'ranged_check_trait'
 
-	trait_select(select, fill)
+	id_select(select, fill, trait_select);
 }
 
 function ranged_distance_mod_trait_type() {
 	const select = 'ranged_distance_mod_trait_type';
 	const fill = 'ranged_distance_mod_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function ranged_trait_trait_type() {
 	const select = 'ranged_trait_trait_type';
 	const fill = 'ranged_trait_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 function ranged_dc() {
@@ -62,7 +62,7 @@ function ranged_dc_trait_type() {
 	const select = 'ranged_dc_trait_type';
 	const fill = 'ranged_dc_trait';
 
-	trait_select(select, fill);
+	id_select(select, fill, trait_select);
 }
 
 let ranged_grid = {'titles': false,

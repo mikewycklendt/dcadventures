@@ -2,7 +2,7 @@ function opposed_skill_type() {
 	const select = 'opposed_skill_type';
 	const fill = 'opposed_skill';
 
-	skill_select(select, fill);
+	id_select(select, fill, skill_select);
 }
 
 function opposed_check() {
