@@ -67,7 +67,7 @@ class Weapon(db.Model):
 	resist_dc = db.Column(db.Integer)
 	resistance = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	power_rank = db.Column(db.Integer)
-	power = db.Column(db.String())
+
 	hands = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	thrown = db.Column(db.Boolean)
@@ -82,7 +82,7 @@ class Weapon(db.Model):
 	attack_bonus = db.Column(db.Integer)
 	subtle = db.Column(db.Boolean)
 	perception_dc = db.Column(db.Integer)
-	advantage = db.Column(db.String())
+
 	grenade_area = db.Column(db.String())
 	grenade_burst = db.Column(db.Integer)
 	grenade_area_damage = db.Column(db.Integer)

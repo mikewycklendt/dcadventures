@@ -180,7 +180,7 @@
 				<select class="base-select" id="power" name="power">
 					<option value="">Power Effect</option>
 					{% for p in powers %}
-						<option value="{{p}}">{{p}}</option>
+						<option value="{{p.id}}">{{p.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
