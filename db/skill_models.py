@@ -46,7 +46,7 @@ class SkillBonus(db.Model):
 	speed_direction = db.Column(db.String())
 	speed_mod = db.Column(db.Integer)
 	speed_value = db.Column(db.Integer)
-
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	concealment_type = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
@@ -156,8 +156,8 @@ class SkillCheck(db.Model):
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	conflict_weapon = db.Column(db.Boolean)
-
-
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	action_type = db.Column(db.String())
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
@@ -197,8 +197,8 @@ class SkillCirc(db.Model):
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	time = db.Column(db.Integer)
 	condition_type = db.Column(db.String())
-	
-	
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	conditions = db.Column(db.Integer)
 	conditions_effect = db.Column(db.Integer)
 	measure_effect = db.Column(db.String())
@@ -309,8 +309,8 @@ class SkillDC(db.Model):
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-	
-	
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer)
 	keyword = db.Column(db.String())
 	complexity = db.Column(db.Integer, db.ForeignKey('complexity.id'))
@@ -418,8 +418,8 @@ class SkillDegree(db.Model):
 	condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
-	
-	
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer)
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
@@ -506,8 +506,8 @@ class SkillMod(db.Model):
 	weapon_melee = db.Column(db.Integer)
 	weapon_ranged = db.Column(db.Integer)
 	tools = db.Column(db.String())
-	
-	
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	consequence = db.Column(db.Integer)
 	creature = db.Column(db.Integer)
 	creature_other = db.Column(db.String())
