@@ -198,7 +198,7 @@ class AdvAltCheck(db.Model):
 	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	conflict_weapon = db.Column(db.Boolean)
 
-\
+
 	action_type = db.Column(db.String())
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
