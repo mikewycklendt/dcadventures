@@ -69,8 +69,8 @@
 					<select class="select-sml" id="effort_condition1" name="effort_condition1" >
 						<option value="">Condition</option>
 						<option value="current">Current</option>
-						{% for condition in conditions %}
-							<option value="{{condition}}">{{condition}}</option>
+						{% for c in conditions %}
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -83,8 +83,8 @@
 					<select class="select-sml" id="effort_condition2" name="effort_condition2" >
 						<option value="">Condition</option>
 						<option value="any">Any</option>
-						{% for condition in conditions %}
-							<option value="{{condition}}">{{condition}}</option>
+						{% for c in conditions %}
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

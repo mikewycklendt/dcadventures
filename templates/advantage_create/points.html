@@ -46,7 +46,7 @@
 					<select class="select-entry" id="points_condition1" name="points_condition1">
 						<option value="">Starting Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -59,7 +59,7 @@
 					<select class="select-entry" id="points_condition2" name="points_condition2">
 						<option value="">Ending Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

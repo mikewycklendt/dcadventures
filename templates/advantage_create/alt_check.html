@@ -135,7 +135,7 @@
 			<select class="entry-select" id="check_condition1" name="check_condition1">
 				<option value="">Start Condition</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -148,7 +148,7 @@
 			<select class="entry-select" id="check_condition2" name="check_condition2">
 				<option value="">End Condition</option>
 				{% for c in conditions %}
-					<option value="{{c}}">{{c}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

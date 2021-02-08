@@ -20,7 +20,7 @@
 
 		<select class="base-select" id="type" name="type" onchange="skill_type()">
 			{% for a in advantage_type %}
-				<option value="{{a.type}}">{{a.name}}</option>
+				<option value="{{a.id}}">{{a.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -194,6 +194,7 @@
 		<div>
 			<select class="base-select" id="expertise" name="expertise">
 				<option value="">Expertise</option>
+				<option value="x">Variable</option>
 				{% for e in expertise %}
 					<option value={{e.id}}>{{e.name}}</option>
 				{% endfor %}
@@ -341,7 +342,7 @@
 				<div>
 					<select class="base-select" id="action1" name="action1">
 						<option value="">First Action</option>
-						<option value="x">Any</option>
+						<option value="any">Any</option>
 						{% for a in actions %}
 							<option value={{a.id}}>{{a.name}}</option>
 						{% endfor %}
@@ -351,7 +352,7 @@
 				<div>
 					<select class="base-select" id="action2" name="action2">
 						<option value="">Second</option>
-						<option value="x">Any</option>
+						<option value="any">Any</option>
 						{% for a in actions %}
 							<option value={{a.id}}>{{a.name}}</option>
 						{% endfor %}

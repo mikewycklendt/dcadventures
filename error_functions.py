@@ -915,7 +915,70 @@ def int_check(value, name, errors):
 	
 
 def db_integer(table, value):
+	Check
+	SkillBonus
+	Action
+	Condition
+	Environment
+	Sense
+	SubSense
+	Maneuver
+	WeaponType
+	Ranged
+	ConflictAction
+	Benefit
 
+
+	if value == 'all':
+		try:
+			query = db.session.query(table).filter_by(all=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == 'current':
+		try:
+			query = db.session.query(table).filter_by(current=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == 'any':
+		try:
+			query = db.session.query(table).filter_by(any=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == 'x':
+		try:
+			query = db.session.query(table).filter_by(variable=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == 'none':
+		try:
+			query = db.session.query(table).filter_by(none=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+
+	if value == 'linked_first':
+		try:
+			query = db.session.query(table).filter_by(linked_first=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	if value == 'linked_second':
+		try:
+			query = db.session.query(table).filter_by(linked_second=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	if value == '':
 		try:
 			query = db.session.query(table).filter_by(=True).first()

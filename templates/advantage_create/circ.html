@@ -145,7 +145,7 @@
 					<select class="select-sml" id="circ_null_condition" name="circ_null_condition">
 						<option value="">Condition</option>
 						{% for c in conditions %}
-							<option value="{{c}}">{{c}}</option>
+							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

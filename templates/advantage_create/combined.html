@@ -26,7 +26,7 @@
 			<select class="select-entry" id="combined_advantage" name="combined_advantage">
 				<option value="">Advantage</option>
 				{% for a in advantages %}
-					<option value="{{a}}">{{a}}</option>
+					<option value="{{a.id}}">{{a.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
