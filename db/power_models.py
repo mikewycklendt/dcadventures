@@ -571,7 +571,7 @@ class PowerDefense(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
-	defense = db.Column(db.Integer, db.ForeignKey('defenses.id'))
+	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	use = db.Column(db.String())
 	mod = db.Column(db.Integer)
 	roll = db.Column(db.Integer)
