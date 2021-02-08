@@ -171,9 +171,10 @@ class WeapCondition(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
 	condition_type = db.Column(db.String())
-	
-	
-	
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	damage_value = db.Column(db.Integer)
 	damage = db.Column(db.Integer)
 
