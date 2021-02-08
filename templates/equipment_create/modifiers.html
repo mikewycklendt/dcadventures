@@ -123,6 +123,7 @@
 			<div id="modifiers-sense">
 				<select class="select-entry" id="modifiers_sense" name="modifiers_sense">
 					<option value="">Sense</option>
+					<option value="x">Variable</option>
 					{% for s in senses %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
@@ -141,6 +142,7 @@
 			<div id="modifiers-subsense">
 				<select class="select-entry" id="modifiers_subsense" name="modifiers_subsense">
 					<option value="">SubSense</option>
+					<option value="x">Variable</option>
 					{% for s in subsenses %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
@@ -168,6 +170,7 @@
 			<div id="modifiers-skill">
 				<select class="select-entry" id="modifiers_skill" name="modifiers_skill">
 					<option value="">Skill Check</option>
+					<option value="x">Variable</option>
 					{% for s in skills %}
 						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
@@ -186,6 +189,7 @@
 			<div id="modifiers-maneuvers">
 				<select class="select-entry" id="modifiers_maneuver" name="modifiers_maneuver">
 					<option value="">Maneuver</option>
+					<option value="x">Variable</option>
 					{% for m in maneuvers %}
 						<option value={{m.id}}>{{m.name}}</option>
 					{% endfor %}
@@ -195,6 +199,7 @@
 			<div id="modifiers-melee">
 				<select class="select-entry" id="modifiers_weapon_melee" name="modifiers_weapon_melee">
 					<option value="">Melee Weapon</option>
+					<option value="x">Variable</option>
 					{% for w in weapon_melee %}
 						<option value={{w.id}}>{{w.name}}</option>
 					{% endfor %}
@@ -204,6 +209,7 @@
 			<div id="modifiers-ranged">
 				<select class="select-entry" id="modifiers_weapon_ranged" name="modifiers_weapon_ranged">
 					<option value="">Ranged Weapon</option>
+					<option value="x">Variable</option>
 					{% for w in weapon_ranged %}
 						<option value={{w.id}}>{{w.name}}</option>
 					{% endfor %}
@@ -222,7 +228,7 @@
 				<select class="select-entry" id="modifiers_condition" name="modifiers_condition">
 					<option value="">Condition</option>
 					{% for c in conditions %}
-						<option value="{{c}}">{{c}}</option>
+						<option value="{{c.id}}">{{c.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -230,8 +236,9 @@
 			<div id="modifiers-power">
 				<select class="select-entry" id="modifiers_power" name="modifiers_power">
 					<option value="">Power</option>
+					<option value="x">Variable</option>
 					{% for p in powers %}
-						<option value="{{p}}">{{p}}</option>
+						<option value="{{p.id}}">{{p.name}}</option>
 					{% endfor %}
 				</select>
 			</div>

@@ -924,9 +924,15 @@ def db_integer(table, value):
 	SubSense
 	Maneuver
 	WeaponType
+	Weapon
 	Ranged
 	ConflictAction
 	Benefit
+	Power
+	Skill
+	Creature
+	Emotion
+	Job
 
 
 	if value == 'all':

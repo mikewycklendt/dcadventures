@@ -293,8 +293,8 @@ class EquipMod(db.Model):
 	weapon_melee = db.Column(db.Integer)
 	weapon_ranged = db.Column(db.Integer)
 	tools = db.Column(db.String())
-	condition = db.Column(db.String())
-	power = db.Column(db.String())
+	
+	
 	consequence = db.Column(db.Integer)
 	creature = db.Column(db.Integer)
 	creature_other = db.Column(db.String())
@@ -389,8 +389,8 @@ class EquipOpposed(db.Model):
 	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	when = db.Column(db.String())
-	condition1 = db.Column(db.String())
-	condition2 = db.Column(db.String())
+
+
 
 	def format(self):
 		return {

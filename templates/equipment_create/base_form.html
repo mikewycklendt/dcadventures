@@ -71,6 +71,7 @@
 		<div>
 			<select class="base-select" id="expertise" name="expertise">
 				<option value="">Expertise</option>
+				<option value="x">Variable</option>
 				{% for e in expertise %}
 					<option value={{e.id}}>{{e.name}}</option>
 				{% endfor %}
