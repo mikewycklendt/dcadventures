@@ -47,7 +47,7 @@ class SkillBonus(db.Model):
 	speed_mod = db.Column(db.Integer)
 	speed_value = db.Column(db.Integer)
 	condition = db.Column(db.String())
-
+	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	concealment_type = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
 	for_weapon = db.Column(db.Boolean)
@@ -152,7 +152,7 @@ class SkillCheck(db.Model):
 	trigger = db.Column(db.String())
 	when = db.Column(db.String())
 	trait_type = db.Column(db.String())
-
+	trait = db.Column(db.Integer)
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	conflict_weapon = db.Column(db.Boolean)
@@ -208,7 +208,7 @@ class SkillCirc(db.Model):
 	unit_type = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
 	unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	measure_trait_type = db.Column(db.String())
-
+	measure_trait = db.Column(db.Integer)
 	measure_trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_mod = db.Column(db.Integer)
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
@@ -274,7 +274,7 @@ class SkillDC(db.Model):
 	math_value = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_trait_type = db.Column(db.String())
-
+	math_trait = db.Column(db.Integer)
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	levels = db.Column(db.Boolean)
@@ -290,7 +290,7 @@ class SkillDC(db.Model):
 	inflict_type = db.Column(db.String())
 	inflict_flat = db.Column(db.Integer)
 	inflict_trait_type = db.Column(db.String())
-
+	inflict_trait = db.Column(db.Integer)
 	inflict_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	inflict_mod = db.Column(db.Integer)
 	inflict_bonus = db.Column(db.Integer)
@@ -303,7 +303,7 @@ class SkillDC(db.Model):
 	unit_type = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
 	unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	measure_trait_type = db.Column(db.String())
-
+	measure_trait = db.Column(db.Integer)
 	measure_trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_mod = db.Column(db.Integer)
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
@@ -385,7 +385,7 @@ class SkillDegree(db.Model):
 	inflict_type = db.Column(db.String())
 	inflict_flat = db.Column(db.Integer)
 	inflict_trait_type = db.Column(db.String())
-
+	inflict_trait = db.Column(db.Integer)
 	inflict_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	inflict_mod = db.Column(db.Integer)
 	inflict_bonus = db.Column(db.Integer)
@@ -394,7 +394,7 @@ class SkillDegree(db.Model):
 	consequence_action_type = db.Column(db.String())
 	consequence_action = db.Column(db.Integer)
 	consequence_trait_type = db.Column(db.String())
-
+	consequence_trait = db.Column(db.Integer)
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	knowledge = db.Column(db.String())
 	knowledge_count = db.Column(db.Integer)
@@ -411,7 +411,7 @@ class SkillDegree(db.Model):
 	unit_type = db.Column(db.Integer, db.ForeignKey('measurement_type.id'))
 	unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	measure_trait_type = db.Column(db.String())
-
+	measure_trait = db.Column(db.Integer)
 	measure_trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_mod = db.Column(db.Integer)
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
@@ -517,12 +517,12 @@ class SkillMod(db.Model):
 	profession = db.Column(db.Integer)
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
-
+	bonus_trait = db.Column(db.Integer)
 	bonus_check = db.Column(db.Integer)
 	bonus_check_range = db.Column(db.Integer)
 	bonus_conflict = db.Column(db.Integer)
 	penalty_trait_type = db.Column(db.String())
-
+	penalty_trait = db.Column(db.Integer)
 	penalty_check = db.Column(db.Integer)
 	penalty_check_range = db.Column(db.Integer)
 	penalty_conflict = db.Column(db.Integer)
@@ -596,10 +596,10 @@ class SkillOpposed(db.Model):
 	attached = db.Column(db.String())
 	frequency = db.Column(db.String())
 	trait_type = db.Column(db.String())
-
+	trait = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	opponent_trait_type = db.Column(db.String())
-	
+	opponent_trait = db.Column(db.Integer)
 	opponent_mod = db.Column(db.Integer)
 	player_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opponent_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
@@ -644,7 +644,7 @@ class SkillTime(db.Model):
 	value = db.Column(db.Integer)
 	units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	trait_type = db.Column(db.String())
-
+	trait = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_value = db.Column(db.Integer)
 	recovery = db.Column(db.Boolean)
