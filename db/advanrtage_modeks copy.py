@@ -62,7 +62,7 @@ class AdvMod(db.Model):
 
 class AdvPoints(db.Model):
 	
-	condition1 = 
-	condition2 = 
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	
 	

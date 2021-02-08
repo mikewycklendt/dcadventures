@@ -31,7 +31,7 @@ class Advantage(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
-	
+	adv_type = db.Column(db.Integer, db.ForeignKey('advantage_type.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	ranked = db.Column(db.Boolean)
@@ -197,8 +197,8 @@ class AdvAltCheck(db.Model):
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	conflict_weapon = db.Column(db.Boolean)
-
-
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	action_type = db.Column(db.String())
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
@@ -241,7 +241,7 @@ class AdvCirc(db.Model):
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
 	null_type = db.Column(db.String())
-
+	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.Integer)	
 	null_override_trait_type = db.Column(db.String())
@@ -275,7 +275,7 @@ class AdvCombined(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	ranks = db.Column(db.Integer)
-
+	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 
 	def format(self):
 		return {
@@ -290,10 +290,10 @@ class AdvCondition(db.Model):
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	condition_type = db.Column(db.String())
-
-
-
-
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	damage_value = db.Column(db.Integer)
 	damage = db.Column(db.Integer)
 
@@ -329,8 +329,8 @@ class AdvDC(db.Model):
 	levels = db.Column(db.Boolean)
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-
-
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	keyword = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
@@ -394,8 +394,8 @@ class AdvDegree(db.Model):
 	condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
-
-
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
 	cumulative = db.Column(db.Boolean)
@@ -449,8 +449,8 @@ class AdvEffort(db.Model):
 	condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
-
-
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	benefit_choice = db.Column(db.Integer)
 	benefit_turns = db.Column(db.Integer)
 	benefit_count = db.Column(db.Integer)
@@ -477,8 +477,8 @@ class AdvMinion(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	points = db.Column(db.Integer)
-
-
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	player_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	link = db.Column(db.Boolean)
 	variable_type = db.Column(db.String())
 	multiple = db.Column(db.Boolean)
@@ -543,8 +543,8 @@ class AdvMod(db.Model):
 	weapon_melee = db.Column(db.Integer)
 	weapon_ranged = db.Column(db.Integer)
 	tools = db.Column(db.String())
-
-	
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	consequence = db.Column(db.Integer)
 	creature = db.Column(db.Integer)
 	creature_other = db.Column(db.String())
@@ -659,8 +659,8 @@ class AdvPoints(db.Model):
 	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	spend = db.Column(db.String())
 	condition_cost = db.Column(db.Integer)
-	
-	
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	equipment_points = db.Column(db.Integer)
 	equipment_vehicles = db.Column(db.Boolean)
 	equipment_headquarters = db.Column(db.Boolean)
