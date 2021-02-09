@@ -495,37 +495,37 @@ class SkillMod(db.Model):
 	trigger = db.Column(db.String())
 	bonus_effect = db.Column(db.String())
 	penalty_effect = db.Column(db.String())
-
+	environment = db.Column(db.Integer, db.ForeignKey('environments.id'))
 	environment_other = db.Column(db.String())
-	
-	
-	
-	
-	
-	
-	
-
+	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	mod_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
+	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
+	cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
+	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
+	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
+	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
+	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
 	tools = db.Column(db.String())
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	
-
+	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
 	creature_other = db.Column(db.String())
-	
+	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 	emotion_other = db.Column(db.String())
-	
-
+	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
 	bonus_trait = db.Column(db.Integer)
 	bonus_check = db.Column(db.Integer)
 	bonus_check_range = db.Column(db.Integer)
-	
+	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.Integer)
 	penalty_check = db.Column(db.Integer)
 	penalty_check_range = db.Column(db.Integer)
-	
+	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	bonus_active_defense = db.Column(db.Boolean)
 	bonus_conflict_defend = db.Column(db.Boolean)
 	penalty_active_defense = db.Column(db.Boolean)
@@ -533,7 +533,8 @@ class SkillMod(db.Model):
 	multiple = db.Column(db.String())
 	multiple_count = db.Column(db.Integer)
 	lasts = db.Column(db.Integer)
-	
+	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	light = db.Column(db.Integer, db.ForeignKey('light.id'))
 
 	def format(self):
 		return {
