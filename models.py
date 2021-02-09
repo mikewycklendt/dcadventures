@@ -406,7 +406,7 @@ class Cover(db.Model):
 			'name': self.name
 		}
 
-class Nqture(db.Model):
+class Nature(db.Model):
 	__tablename__ = 'nature'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
