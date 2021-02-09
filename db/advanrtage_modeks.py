@@ -557,7 +557,7 @@ class AdvMod(db.Model):
 	bonus_trait = db.Column(db.Integer)
 	bonus_check = db.Column(db.Integer)
 	bonus_check_range = db.Column(db.Integer)
-	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_sctions.id'))
+	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.Integer)
 	penalty_check = db.Column(db.Integer)
