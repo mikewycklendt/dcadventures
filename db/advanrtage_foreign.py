@@ -19,8 +19,6 @@ class AdvMod(db.Model):
 	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
 	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
 	
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
 	
