@@ -2093,6 +2093,8 @@ def power_post_environment():
 	cost = integer(cost)
 	ranks = integer(ranks)
 
+
+
 	try:
 
 		body = {}
@@ -2114,7 +2116,21 @@ def power_post_environment():
 			body['new_items'] = new_items
 			new_items.append(item)
 			db.session.close()
-
+		
+		if move_nature == 'other':	
+			entry = Nature(name=move_other)
+			db.session.add(entry)
+			db.session.commit()
+			move_nature = entry.id
+			item = {}
+			body['new'] = True
+			item['id'] = entry.id
+			item['name'] = entry.name
+			item['class'] = True
+			item['field'] = 'nature-sml'
+			body['new_items'] = new_items
+			new_items.append(item)
+			db.session.close()
 
 		entry = PowerEnv(power_id = power_id,
 							extra_id = extra_id,

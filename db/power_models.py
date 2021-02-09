@@ -1416,14 +1416,14 @@ class PowerResistBy(db.Model):
 class PowerSenseEffect(db.Model):
 	__tablename__ = 'power_sense_effect'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	power_id = db.Column(db.Integer)
-	extra_id = db.Column(db.Integer)
+	
+	
 	target = db.Column(db.String())
 	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
 	sense_cost = db.Column(db.Integer)
 	subsense_cost = db.Column(db.Integer)
-	skill = db.Column(db.Integer)
+	
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
 	height_trait_type = db.Column(db.String())
@@ -1447,15 +1447,15 @@ class PowerSenseEffect(db.Model):
 	acute = db.Column(db.Boolean)
 	time_set = db.Column(db.String())
 	time_value = db.Column(db.Integer)
-	time_unit = db.Column(db.Integer)
-	time_skill = db.Column(db.Integer)
+	
+	
 	time_bonus = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	time_factor = db.Column(db.Integer)
 	distance = db.Column(db.String())
 	distance_dc = db.Column(db.Integer)
 	distance_mod = db.Column(db.Integer)
 	distance_value = db.Column(db.Integer)
-	distance_unit = db.Column(db.Integer)
+	
 	distance_factor = db.Column(db.Integer)
 	dimensional_type = db.Column(db.String())
 	ranks = db.Column(db.Integer)
