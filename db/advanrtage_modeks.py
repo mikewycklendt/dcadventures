@@ -96,6 +96,13 @@ class Advantage(db.Model):
 	swap_multiple = db.Column(db.String())
 	time = db.Column(db.Boolean)
 	variable = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -167,7 +174,14 @@ class Advantage(db.Model):
 			'swap': self.swap,
 			'swap_multiple': self.swap_multiple,
 			'time': self.time,
-			'variable': self.variable
+			'variable': self.variable,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class AdvantageType(db.Model):
