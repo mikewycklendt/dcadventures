@@ -23,6 +23,7 @@ with app.app_context():
   from models import *
   from db.rule_models import *
   from db.user_rules import *
+  from db.measure_models import *
   from db.skill_models import *
   from db.advanrtage_modeks import *
   from db.vehicle_models import *
