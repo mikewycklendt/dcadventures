@@ -38,6 +38,13 @@ class Headquarters(db.Model):
 	shared = db.Column(db.Boolean)
 	addon = db.Column(db.Boolean)
 	feature = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -50,7 +57,14 @@ class Headquarters(db.Model):
 			'cost': self.cost,
 			'shared': self.shared,
 			'addon': self.addon,
-			'feature': self.feature
+			'feature': self.feature,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class HeadSize(db.Model):
