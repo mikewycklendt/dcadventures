@@ -73,6 +73,13 @@ class SkillBonus(db.Model):
 	opposed_multiple = db.Column(db.String())
 	modifiers_multiple = db.Column(db.String())
 	modifiers_multiple_count = db.Column(db.Integer)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -120,7 +127,14 @@ class SkillBonus(db.Model):
 			'time': self.time,
 			'opposed_multiple': self.opposed_multiple,
 			'modifiers_multiple': self.modifiers_multiple,
-			'modifiers_multiple_count': self.modifiers_multiple_count
+			'modifiers_multiple_count': self.modifiers_multiple_count,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 
