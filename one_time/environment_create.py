@@ -6,7 +6,7 @@ def env_create():
 
 	for i in environment:
 
-		entry = Environment(name=i)
+		entry = Environment(name=i, show=True)
 		db.session.add(entry)
 		db.session.commit()
 

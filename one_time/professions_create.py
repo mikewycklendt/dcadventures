@@ -5,7 +5,7 @@ def job_create():
 
 	for i in entries:
 
-		entry = Job(name=i)
+		entry = Job(name=i, show=True)
 		db.session.add(entry)
 		db.session.commit()
 

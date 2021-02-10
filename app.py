@@ -92,7 +92,7 @@ def nature_create():
 
 	for i in entries:
 
-		entry = Nature(name=i)
+		entry = Nature(name=i, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -104,7 +104,82 @@ def nature_create():
 
 	return ('advantage types added')
 
+@app.route('/emotions/create')
+def emotions_create():
 
+	emotions = ['Anger', 'Fear', 'Sadness', 'Happiness', 'Surprise', 'Disgust']
+
+	for emotion in emotions:
+
+		entry = Emotion(name=emotion, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Emotion.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('emotions added')
+
+@app.route('/env/create')
+def env_create():
+
+	environment = ['Underwater', 'Zero Gravity', 'Mountains', 'Jungle', 'Desert', 'Volcano', 'Space', 'Woodlands', 'Arctic']
+
+
+	for i in environment:
+
+		entry = Environment(name=i, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Environment.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('environments added')
+
+@app.route('/job/create')
+def job_create():
+
+	entries = ['Soldier', 'Police', 'Yakuza', 'Lawyer', 'Artist', 'Business', 'Carpentry', 'Chef', 'Criminal', 'Dancer', 'Historian', 'Journalist', 'Doctor', 'Musician', 'Magiccian',  'Philosopher', 'Politician', 'Actor', 'Psychiatrist', 'Psychologist', 'Scientist', 'Sociologist', 'Gangster', 'Theologist']
+
+	for i in entries:
+
+		entry = Job(name=i, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Job.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('professions added')
+
+@app.route('/creatures/create')
+def creatures_create():
+
+	entries = ['Alien', 'Animal', 'Construct', 'mETAHUMAN', 'Undead']
+
+	for i in entries:
+
+		entry = Creature(name=i, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Creature.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('creatures added')
 
 
 @app.route('/conditions/db')

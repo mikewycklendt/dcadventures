@@ -6,7 +6,7 @@ def cover_create():
 
 	for i in entries:
 
-		entry = Cover(name=i)
+		entry = Cover(name=i, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
