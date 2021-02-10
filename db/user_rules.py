@@ -37,6 +37,7 @@ class Nature(db.Model):
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -48,7 +49,8 @@ class Nature(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide,
-			'approved': self.approved
+			'approved': self.approved,
+			'show': self.show
 		}
 
 class Emotion(db.Model):
@@ -62,6 +64,7 @@ class Emotion(db.Model):
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -73,7 +76,8 @@ class Emotion(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide,
-			'approved': self.approved
+			'approved': self.approved,
+			'show': self.show
 		}
 
 class Environment(db.Model):
@@ -87,6 +91,7 @@ class Environment(db.Model):
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -98,7 +103,8 @@ class Environment(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide,
-			'approved': self.approved
+			'approved': self.approved,
+			'show': self.show
 		}
 
 class Job(db.Model):
@@ -112,6 +118,7 @@ class Job(db.Model):
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -123,7 +130,8 @@ class Job(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide,
-			'approved': self.approved
+			'approved': self.approved,
+			'show': self.show
 		}
 
 class Creature(db.Model):
@@ -137,6 +145,7 @@ class Creature(db.Model):
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -148,5 +157,6 @@ class Creature(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide,
-			'approved': self.approved
+			'approved': self.approved,
+			'show': self.show
 		}	

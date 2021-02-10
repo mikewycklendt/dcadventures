@@ -104,44 +104,7 @@ def nature_create():
 
 	return ('advantage types added')
 
-@app.route('/advtype/create')
-def advtype_create():
 
-	entries = ['combat', 'Fortune', 'General', 'Skill']
-
-	for i in entries:
-
-		entry = AdvantageType(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = AdvantageType.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('advantage types added')
-
-@app.route('/power/duration')
-def powerduration_create():
-
-	entries = ['Instant', 'Concentration', 'Sustained', 'Continuous', 'Permanent']
-
-
-	for i in entries:
-
-		entry = PowerDuration(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = PowerDuration.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('advantage types added')
 
 
 @app.route('/conditions/db')
@@ -189,7 +152,7 @@ def conditions_extras_create():
 	db.session.add(entry)
 	db.session.commit()
 
-	results = Condition.query.all()
+	results = db.session.query(Condition).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)

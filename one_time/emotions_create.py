@@ -5,7 +5,7 @@ def emotions_create():
 
 	for emotion in emotions:
 
-		entry = Emotion(name=emotion)
+		entry = Emotion(name=emotion, )
 		db.session.add(entry)
 		db.session.commit()
 
