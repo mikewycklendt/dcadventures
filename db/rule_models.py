@@ -53,7 +53,16 @@ class Ability(db.Model):
 			'summary': self.summary,
 			'absent': self.absent,
 			'modifier_id': self.modifier_id,
-			'icon': self.icon
+			'icon': self.icon,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'power': self.power,
+			'extra': self.extra,
+			'skill': self.skill,
+			'hide': self.hide
 		}
 
 class Defense(db.Model):
@@ -76,7 +85,13 @@ class Defense(db.Model):
 			'name': self.name,
 			'description': self.description,
 			'ability_id': self.ability_id,
-			'modifier_id': self.modifier_id
+			'modifier_id': self.modifier_id,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Action(db.Model):
@@ -99,7 +114,13 @@ class Action(db.Model):
 			'name': self.name,
 			'cost': self.cost,
 			'turn': self.turn,
-			'description': self.description
+			'description': self.description,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class ConflictAction(db.Model):
@@ -118,7 +139,13 @@ class ConflictAction(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'action_id': self.action_id
+			'action_id': self.action_id,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Skill(db.Model):
@@ -151,7 +178,13 @@ class Skill(db.Model):
 			'action_id': self.action_id,
 			'description': self.description,
 			'table': self.table,
-			'icon': self.icon
+			'icon': self.icon,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Check(db.Model):
@@ -187,7 +220,14 @@ class Check(db.Model):
 			'graded': self.graded,
 			'roll': self.roll,
 			'compare': self.compare,	
-			'fail': self.fail
+			'fail': self.fail,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'free': self.free,
+			'hide': self.hide
 		}
 
 class Condition(db.Model):
@@ -222,7 +262,15 @@ class Condition(db.Model):
 			'time': self.time,
 			'unit': self.unit,
 			'effects': self.effects,
-			'description': self.description
+			'description': self.description,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'linked_first': self.linked_first,
+			'linked_second': self.linked_second,
+			'hide': self.hide
 		}
 
 class Maneuver(db.Model):
@@ -239,7 +287,13 @@ class Maneuver(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Ranged(db.Model):
@@ -258,7 +312,13 @@ class Ranged(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'show': self.show
+			'show': self.show,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Sense(db.Model):
@@ -275,7 +335,13 @@ class Sense(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class SubSense(db.Model):
@@ -294,7 +360,13 @@ class SubSense(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'sense_id': self.sense_id
+			'sense_id': self.sense_id,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Light(db.Model):
