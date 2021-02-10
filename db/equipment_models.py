@@ -60,6 +60,13 @@ class Equipment(db.Model):
 	limits = db.Column(db.Boolean)
 	modifiers = db.Column(db.Boolean)
 	opposed = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -85,7 +92,14 @@ class Equipment(db.Model):
 			'feature': self.feature,
 			'limits': self.limits,
 			'modifiers': self.modifiers,
-			'opposed': self.opposed
+			'opposed': self.opposed,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class Feature(db.Model):
