@@ -336,7 +336,7 @@ class PowerCirc(db.Model):
 	rounds = db.Column(db.Integer)
 	description = db.Column(db.String())
 	circ_type = db.Column(db.String())
-	
+	circ_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	check_who = db.Column(db.String())
 	check_trait_type = db.Column(db.String())
 	check_trait = db.Column(db.Integer)
