@@ -21,6 +21,7 @@ db = SQLAlchemy(app)
 # Import database models with app context
 with app.app_context():
   from models import *
+  from db.rule_models import *
   from db.skill_models import *
   from db.advanrtage_modeks import *
   from db.vehicle_models import *

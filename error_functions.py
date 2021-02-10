@@ -915,27 +915,30 @@ def int_check(value, name, errors):
 	
 
 def db_integer(table, value):
-	Check
-	SkillBonus
-	Action
+	
+	Ability
 	Defense
+	Action
+	ConflictAction
+	Skill
+	Check
 	Condition
-	Environment
+	Maneuver
+	Ranged
 	Sense
 	SubSense
-	Maneuver
+
+	Nature
+	Emotion
+	Environment
+	Job
+	Creature
+
+	SkillBonus
 	WeaponType
 	Weapon
-	Ranged
-	ConflictAction
 	Benefit
 	Power
-	Skill
-	Creature
-	Emotion
-	Job
-	Ability
-	Nature
 	Benefit
 
 		show
