@@ -514,7 +514,7 @@ def save_power():
 	power.skill_when = skill_when
 	power.conflict = conflict
 	power.conflict_bonus = conflict_bonus
-	power.conflict_type conflict_type
+	power.conflict_type = conflict_type
 	power.condition = condition
 	power.alt_check = alt_check	
 	power.change_action = change_action
