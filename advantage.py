@@ -93,7 +93,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	ranges = Range.query.all()
 
-	expertise = db.session.query(SkillBonus).filter_by(skill_id=5).all()
+	expertise = db.session.query(SkillBonus).filter_by(skill=5).all()
 
 	cover = Cover.query.all()
 
