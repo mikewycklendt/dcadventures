@@ -90,39 +90,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename = 'Defense'
+	tablename = 'Action'
 
-	name = 'All Defenses'
+	name = 'All Actions'
 
-	entry = Defense(all=True, name=name, hide=True )
+	entry = Action(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Defense(current=True, name=name, hide=True )
+	entry = Action(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Defense(any=True, name=name, hide=True )
+	entry = Action(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Defense(var=True, name=name, hide=True )
+	entry = Action(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Defense(none=True, name=name, hide=True )
+	entry = Action(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Defense).filter_by(hide=True).all()
+	results = db.session.query(Action).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
