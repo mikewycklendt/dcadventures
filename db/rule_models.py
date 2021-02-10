@@ -333,3 +333,58 @@ class Phase(db.Model):
 			'id': self.id,
 			'name': self.name
 		}
+
+
+class SkillTable(db.Model):
+	__tablename__ = 'skill_tables'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	dc = db.Column(db.Integer)
+	description = db.Column(db.String())
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+	degree = db.Column(db.Boolean)
+	measurement  = db.Column(db.Integer)
+	complexity = db.Column(db.String())
+	modifier = db.Column(db.Boolean)
+	circumstance = db.Column(db.Boolean)
+	requires_sub = db.Column(db.Boolean)
+
+
+	def format(self):
+		return {
+			'id': self.id,
+			'skill_id': self.skill_id,
+			'dc': self.dc,
+			'description': self.description,
+			'check_id': self.check_id,
+			'modifier_id': self.modifier_id,
+			'degree': self.degree,
+			'measurement': self.measurement,
+			'complexity': self.complexity,
+			'modifier': self.modifier,
+			'circumstance': self.circumstance,
+			'requires_sub': self.requires_sub
+		}
+
+class SkillType(db.Model):
+	__tablename__ = 'skill_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	check_id = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	group = db.Column(db.Boolean)
+	team = db.Column(db.Boolean)
+	gm = db.Column(db.Boolean)
+	description = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'check_id': self.check_id,
+			'group': self.group,
+			'team': self.team,
+			'gm': self.gm,
+			'description': self.description
+		}
+
