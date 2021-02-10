@@ -87,7 +87,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
-@app.route('/tsble/db')
+@app.route('/table/db')
 def table_db_columns_create():
 
 	tablename = 'Defense'
