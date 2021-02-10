@@ -142,12 +142,48 @@ def powerduration_create():
 	return ('advantage types added')
 
 
-@app.route('/conditions/extras')
+@app.route('/conditions/db')
 def conditions_extras_create():
 
-	name = 
+	name = 'All Conditions'
 
-	entry = Condition(=True, name=name, show=False )
+	entry = Condition(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current Condition'
+
+	entry = Condition(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any Condition'
+
+	entry = Condition(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable Condition'
+
+	entry = Condition(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No Condition'
+
+	entry = Condition(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Linked to First Condition'
+
+	entry = Condition(linked_first=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Linked to Second Condition'
+
+	entry = Condition(linked_second=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
@@ -157,7 +193,7 @@ def conditions_extras_create():
 		print (result.id)
 		print (result.name)
 
-	return ('concealment added')
+	return ('conditions db added')
 
 
 

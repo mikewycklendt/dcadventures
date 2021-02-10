@@ -978,8 +978,6 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
-
-	Ability
 	if value == 'power':
 		try:
 			query = db.session.query(table).filter_by(power=True).first()
@@ -987,15 +985,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
-
 	if value == 'skill':
 		try:
-			query = db.session.query(table).filter_by(power=True).first()
+			query = db.session.query(table).filter_by(skill=True).first()
 			value = query.id
 		except:
 			print(value)
 			return (value)
-			
 	if value == 'extra':
 		try:
 			query = db.session.query(table).filter_by(extra=True).first()
