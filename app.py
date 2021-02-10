@@ -102,7 +102,7 @@ def nature_create():
 		print (result.id)
 		print (result.name)
 
-	return ('advantage types added')
+	return ('nature added')
 
 @app.route('/emotions/create')
 def emotions_create():
