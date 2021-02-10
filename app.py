@@ -90,39 +90,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Range'
+	tablename =  'Sense'
 
-	name = 'All Ranges'
+	name = 'All Senses'
 
-	entry = Ranged(all=True, name=name, hide=True )
+	entry = Sense(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Ranged(current=True, name=name, hide=True )
+	entry = Sense(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Ranged(any=True, name=name, hide=True )
+	entry = Sense(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Ranged(var=True, name=name, hide=True )
+	entry = Sense(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Ranged(none=True, name=name, hide=True )
+	entry = Sense(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Ranged).filter_by(hide=True).all()
+	results = db.session.query(Sense).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
