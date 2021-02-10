@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
+from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType

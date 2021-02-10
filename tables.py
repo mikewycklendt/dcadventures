@@ -11,6 +11,7 @@ from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
 
+from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
