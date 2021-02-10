@@ -915,33 +915,6 @@ def int_check(value, name, errors):
 
 def db_integer(table, value):
 	
-	Ability
-	Defense
-	Action
-	ConflictAction
-	Skill
-	Check
-	Condition
-	Maneuver
-	Ranged
-	Sense
-	SubSense
-
-	Nature
-	Emotion
-	Environment
-	Job
-	Creature
-
-	SkillBonus
-	WeaponType
-	Weapon
-	Benefit
-	Power
-	Benefit
-
-		show
-		approved
 
 	if value == 'all':
 		try:
@@ -999,8 +972,6 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
-
-	CHECK
 	if value == 'free':
 		try:
 			query = db.session.query(table).filter_by(free=True).first()
@@ -1008,8 +979,6 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
-
-	CONDITION
 	if value == 'linked_first':
 		try:
 			query = db.session.query(table).filter_by(linked_first=True).first()

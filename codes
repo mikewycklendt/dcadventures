@@ -1,5 +1,31 @@
 
+	Ability
+	Defense
+	Action
+	ConflictAction
+	Skill
+	Check
+	Condition
+	Maneuver
+	Ranged
+	Sense
+	SubSense
 
+	Nature
+	Emotion
+	Environment
+	Job
+	Creature
+
+	SkillBonus
+	WeaponType
+	Weapon
+	Benefit
+	Power
+	Benefit
+
+		show
+		approved
 
 power integers
 

@@ -195,6 +195,159 @@ def conditions_extras_create():
 
 	return ('conditions db added')
 
+@app.route('/ability/db')
+def ability_extras_create():
+
+	tablename = 'Ability'
+
+	name = 'All Abilities'
+
+	entry = Ability(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Ability(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Ability(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Ability(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Ability(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Power Rank' 
+
+	entry = Ability(power=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Skill Rank'
+
+	entry = Ability(skill=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Extra Rank'
+
+	entry = Ability(extra=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Ability).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+@app.route('/check/db')
+def check_db_columns_create():
+
+	tablename = 'Check'
+
+	name = 'All Checks'
+
+	entry = Check(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Check(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Check(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Check(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Check(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Free ' + tablename
+
+	entry = Check(free=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Check).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+
+@app.route('/tsble/db')
+def table_db_columns_create():
+
+	tablename = 'Ability'
+
+	name = 'All ' + tablename
+
+	entry = Ability(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Ability(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Ability(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Ability(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Ability(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Ability).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
 
 
 '''
