@@ -39,6 +39,8 @@ class Descriptor(db.Model):
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
 	rarity = db.Column(db.String())
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -60,6 +62,8 @@ class Origin(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	description = db.Column(db.String())
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -74,6 +78,8 @@ class Source(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -89,6 +95,8 @@ class MediumType(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -105,6 +113,8 @@ class MediumSubType(db.Model):
 	medium_type = db.Column(db.Integer, db.ForeignKey('medium_type.id'))
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -123,6 +133,8 @@ class Medium(db.Model):
 	medium_subtype = db.Column(db.Integer, db.ForeignKey('medium_subtype.id'))
 	description = db.Column(db.String())
 	damage = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {

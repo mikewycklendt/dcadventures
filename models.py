@@ -74,6 +74,8 @@ class LevelType(db.Model):
 	bonus_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	name = db.Column(db.String())
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
