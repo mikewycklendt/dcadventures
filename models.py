@@ -121,24 +121,6 @@ class Levels(db.Model):
 			'bonus_degree': self.bonus_degree
 		}
 
-class Benefit(db.Model):
-	__tablename__ = 'benefits'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	name = db.Column(db.String())
-	description = db.Column(db.String())
-	effort = db.Column(db.Boolean)
-	approved = db.Column(db.Boolean)
-
-	def format(self):
-		return {
-			'id': self.id,
-			'advantage_id': self.advantage_id,
-			'name': self.name,
-			'description': self.description,
-			'effort': self.effort,
-			'approved': self.approved
-		}
 
 
 

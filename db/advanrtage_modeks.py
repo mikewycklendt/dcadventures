@@ -181,6 +181,25 @@ class AdvantageType(db.Model):
 			'name': self.name
 		}
 
+class Benefit(db.Model):
+	__tablename__ = 'benefits'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	name = db.Column(db.String())
+	description = db.Column(db.String())
+	effort = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'advantage_id': self.advantage_id,
+			'name': self.name,
+			'description': self.description,
+			'effort': self.effort,
+			'approved': self.approved
+		}
+
 class AdvAltCheck(db.Model):
 	__tablename__ = 'advantage_alt_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
