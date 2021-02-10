@@ -82,11 +82,11 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Advantaage Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
-	actions = db.session.query(Action).all()
+	actions = db.session.query(Action).filter(Action.hide != True).all()
 
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
-	checks = db.session.query(Check).all()
+	checks = db.session.query(Check).filter(Check.hide != True).all()
 
 	benefits = db.session.query(Benefit).filter_by(approved=True).order_by(Benefit.name).all()
 	benefits_all = db.session.query(Benefit).order_by(Benefit.name).all()
@@ -107,13 +107,13 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	ranged = db.session.query(Ranged).filter_by(show=True)
 
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide != True).order_by(ConflictAction.name).all()
 	
 	environments = db.session.query(Environment).order_by(Environment.name).all()
 	
-	senses = db.session.query(Sense).order_by(Sense.name).all()
+	senses = db.session.query(Sense).filter(Sense.hide != True).order_by(Sense.name).all()
 
-	subsenses = db.session.query(SubSense).order_by(SubSense.name).all()
+	subsenses = db.session.query(SubSense).filter(SubSense.hide != True).order_by(SubSense.name).all()
 	
 	creatures = db.session.query(Creature).order_by(Creature.name).all()
 	
@@ -123,7 +123,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	emotions = db.session.query(Emotion).order_by(Emotion.name).all()
 
-	defenses = Defense.query.all()
+	defenses = db.session.query(Defense).filter(Defense.hide != True).all()
 
 	base_conditions = Condition.query.all()
 	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
