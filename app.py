@@ -90,39 +90,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Sense'
+	tablename =  'Subsense'
 
-	name = 'All Senses'
+	name = 'All SubSenses'
 
-	entry = Sense(all=True, name=name, hide=True )
+	entry = SubSense(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Sense(current=True, name=name, hide=True )
+	entry = SubSense(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Sense(any=True, name=name, hide=True )
+	entry = SubSense(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Sense(var=True, name=name, hide=True )
+	entry = SubSense(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Sense(none=True, name=name, hide=True )
+	entry = SubSense(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Sense).filter_by(hide=True).all()
+	results = db.session.query(SubSense).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
