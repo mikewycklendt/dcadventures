@@ -35,6 +35,15 @@ class Ability(db.Model):
 	absent = db.Column(db.String())
 	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
 	icon = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
+	extra = db.Column(db.Boolean)
+	skill = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -54,6 +63,12 @@ class Defense(db.Model):
 	description = db.Column(db.String())
 	ability_id = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 	modifier_id = db.Column(db.Integer, db.ForeignKey('modifiers.id'))
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -71,6 +86,12 @@ class Action(db.Model):
 	cost = db.Column(db.Boolean)
 	turn = db.Column(db.Boolean)
 	description = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -86,6 +107,12 @@ class ConflictAction(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	action_id = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -106,6 +133,12 @@ class Skill(db.Model):
 	description = db.Column(db.String())
 	table = db.Column(db.Boolean)
 	icon = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -134,6 +167,13 @@ class Check(db.Model):
 	roll = db.Column(db.Boolean)
 	compare = db.Column(db.Boolean)
 	fail = db.Column(db.Integer)
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	free = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -162,6 +202,14 @@ class Condition(db.Model):
 	unit = db.Column(db.String())
 	effects = db.Column(db.String())
 	description = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	linked_first = db.Column(db.Boolean)
+	linked_second = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -181,6 +229,12 @@ class Maneuver(db.Model):
 	__tablename__ = 'maneuvers'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -193,6 +247,12 @@ class Ranged(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	show = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -205,6 +265,12 @@ class Sense(db.Model):
 	__tablename__ = 'senses'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -217,6 +283,12 @@ class SubSense(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	sense_id = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	all = db.Column(db.Boolean)
+ 	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	variable = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
