@@ -38,7 +38,7 @@ class Ability(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	power = db.Column(db.Boolean)
 	extra = db.Column(db.Boolean)
@@ -66,7 +66,7 @@ class Defense(db.Model):
 	all = db.Column(db.Boolean)	
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -89,7 +89,7 @@ class Action(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -110,7 +110,7 @@ class ConflictAction(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -136,7 +136,7 @@ class Skill(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -170,7 +170,7 @@ class Check(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	free = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
@@ -205,7 +205,7 @@ class Condition(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	linked_first = db.Column(db.Boolean)
 	linked_second = db.Column(db.Boolean)
@@ -232,7 +232,7 @@ class Maneuver(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -250,7 +250,7 @@ class Ranged(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -268,7 +268,7 @@ class Sense(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
@@ -286,7 +286,7 @@ class SubSense(db.Model):
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
-	
+	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 
