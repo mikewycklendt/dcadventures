@@ -113,8 +113,8 @@
 			<div class="base-split" id="skill-dc-field">
 				<div>
 					<select class="base-select" id="skill_dc_type" name="skill_dc_type" onchange="skill_dc_type(); skill_dc_table()">
-						{% for dc in dc_type %}
-							<option value={{dc.type}}>{{dc.name}}</option>
+						{% for d in dc_type %}
+							<option value={{d.type}}>{{d.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -123,8 +123,8 @@
 					<div class="base-hidden" id="skill-dc-value">
 						<select class="base-select" id="skill_dc_value" name="skill_dc_mod" >
 							<option value=>DC</option>
-							{% for num in positives %}
-								<option value={{num}}>{{num}}</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -132,11 +132,11 @@
 					<div class="base-hidden" id="skill-dc-mod">
 						<select class="base-select" id="skill_dc_mod" name="skill_dc_mod">
 							<option value="">Modifier</option>
-							{% for num in negatives %}
-								<option value={{num}}>{{num}}</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
 							{% endfor %}
-							{% for num in positives %}
-								<option value={{num}}>{{num}}</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
 							{% endfor %}
 						</select>
 					</div>					

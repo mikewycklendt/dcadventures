@@ -40,11 +40,11 @@
 				<option value="">Mod</option>
 				<option value="rank">Power Rank</option>
 				<option value="extra">Extra Rank</option>
-				{% for num in negatives %}
-					<option value={{num}}>{{num}}</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
-				{% for num in positives %}
-					<option value={{num}}>{{num}}</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -72,8 +72,8 @@
 			<div>
 				<select class="select-sml" id="resist_eft" name="resist_eft" onchange="resist_effect()">
 					<option value="">Effect</option>
-					{% for effect in effects %}
-						<option value="{{effect.type}}">{{effect.name}}</option>
+					{% for e in effects %}
+						<option value="{{e.type}}">{{e.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -85,11 +85,11 @@
 			<div>
 				<select class="select-sml" id="resist_deg" name="resist_deg">
 					<option value="">Degree</option>
-					{% for num in negatives %}
-						<option value={{num}}>{{num}}</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
 					{% endfor %}
-					{% for num in positives %}
-						<option value={{num}}>{{num}}</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -189,8 +189,8 @@
 						<option value="">Damage</option>
 						<option value="result">Result</option>
 						<option value="0">0</option>
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>

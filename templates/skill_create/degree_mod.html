@@ -53,8 +53,8 @@
 	<div id="deg-mod-type">
 		<select class="select-sml" id="deg_mod_type" name="deg_mod_type" onchange="deg_mod_type()">
 			<option value="">Effect</option>
-			{% for type in deg_mod_type %}
-				<option value="{{type.type}}">{{type.name}}</option>
+			{% for d in deg_mod_type %}
+				<option value="{{d.type}}">{{d.name}}</option>
 			{% endfor %}
 		</select>
 	</div>

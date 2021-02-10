@@ -918,6 +918,7 @@ def db_integer(table, value):
 	Check
 	SkillBonus
 	Action
+	Defense
 	Condition
 	Environment
 	Sense

@@ -49,11 +49,11 @@
 		<div>
 			<select class="select-sml" id="reverse_degree" name="reverse_degree">
 				<option value="">Degree</option>
-				{% for num in negatives %}
-					<option value={{num}}>{{num}}</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
-				{% for num in positives %}
-					<option value={{num}}>{{num}}</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -96,8 +96,8 @@
 		<div>
 			<select class="select-sml" id="reverse_trait_type" name="reverse_trait_type" onchange="reverse_trait_type()">
 				<option value="">Check Type</option>
-				{% for type in check_types %}
-					<option value="{{type.type}}">{{type.name}}</option>
+				{% for t in check_types %}
+					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -110,8 +110,8 @@
 
 		<div>
 			<select class="select-sml" id="reverse_value_type" name="reverse_value_type" onchange="reverse_value_type()">
-				{% for dc in dc_value %}
-					<option value="{{dc.type}}">{{dc.name}}</option>
+				{% for d in dc_value %}
+					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -122,8 +122,8 @@
 				<div>
 					<select class="select-sml" id="reverse_value_dc" name="reverse_value_dc">
 						<option value="">DC Value</option>
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -136,8 +136,8 @@
 				<div>
 					<select class="select-sml" id="reverse_math_dc" name="reverse_math_dc">
 						<option value="">DC Value</option>
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -145,8 +145,8 @@
 				<div>
 					<select class="select-sml" id="reverse_math" name="reverse_math">
 						<option value="">Math Type</option>
-						{% for math in maths %}
-							<option value={{math.id}}>{{math.name}}</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -177,8 +177,8 @@
 		<div>
 			<select class="select-sml" id="reverse_time_unit" name="reverse_time_unit">
 				<option value="">Units</option>
-				{% for time in times %}
-					<option value={{time.id}}>{{time.name}}</option>
+				{% for t in times %}
+					<option value={{t.id}}>{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

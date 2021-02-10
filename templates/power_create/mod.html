@@ -502,6 +502,7 @@
 				<div>
 					<select class="select-sml" id="mod_limited_sense" name="mod_limited_sense" onchange="mod_limited_sense()">
 						<option value="">Sense</option>
+						<option value="x">Variable</option>
 						{% for s in senses %}
 							<option value={{s.id}}>{{s.name}}</option>
 						{% endfor %}

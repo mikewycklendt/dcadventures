@@ -123,8 +123,8 @@
 			<div id="sense-height">
 				<div>
 					<select class="select-sml" id="sense_height_trait_type" name="sense_height_trait_type" onchange="sense_height_trait()">
-						{% for trait in heightened %}
-							<option value="{{trait.type}}">{{trait.name}}</option>
+						{% for t in heightened %}
+							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -146,7 +146,7 @@
 				<div id="sense-height-ensense">
 					<select class="select-sml" id="sense_height_ensense" name="sense_height_ensense">
 						<option value="">Enhanced Sense</option>
-						{% for s in power_sense %}
+						{% for p in power_sense %}
 							<option value="{{p.id}}">{{p.name}}</option>
 						{% endfor %}
 					</select>
@@ -156,8 +156,8 @@
 			<div id="sense-resist">
 				<div>
 					<select class="select-sml" id="sense_resist_trait_type" name="sense_resist_trait_type" onchange="sense_resist_trait()">
-						{% for trait in resistant %}
-							<option value="{{trait.type}}">{{trait.name}}</option>
+						{% for t in resistant %}
+							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
