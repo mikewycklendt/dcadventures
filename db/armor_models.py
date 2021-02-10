@@ -41,6 +41,13 @@ class Armor(db.Model):
 	impervious = db.Column(db.Boolean)
 	defense = db.Column(db.Boolean)
 	descriptor = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -56,7 +63,14 @@ class Armor(db.Model):
 			'perception': self.perception,
 			'impervious': self.impervious,
 			'defense': self.defense,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class ArmorType(db.Model):
