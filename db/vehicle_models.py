@@ -39,6 +39,13 @@ class Vehicle(db.Model):
 	cost = db.Column(db.Integer)
 	feature = db.Column(db.Boolean)
 	power = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -53,7 +60,14 @@ class Vehicle(db.Model):
 			'defense': self.defense,
 			'cost': self.cost,
 			'feature': self.feature,
-			'power': self.power
+			'power': self.power,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 		
 class VehicleType(db.Model):
