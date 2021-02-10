@@ -79,6 +79,13 @@ class Power(db.Model):
 	reverse = db.Column(db.Boolean)
 	sense = db.Column(db.Boolean)
 	time = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -132,7 +139,14 @@ class Power(db.Model):
 			'resist_by': self.resist_by,
 			'reverse': self.reverse,
 			'sense': self.sense,
-			'time': self.time
+			'time': self.time,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class PowerType(db.Model):
