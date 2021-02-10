@@ -41,7 +41,12 @@ class WeaponType(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	type_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
-
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	
 
 	def format(self):
 		return {
@@ -93,6 +98,13 @@ class Weapon(db.Model):
 	benefit = db.Column(db.Boolean)
 	condition = db.Column(db.Boolean)
 	descriptor = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -136,7 +148,14 @@ class Weapon(db.Model):
 			'double_mod': self.double_mod,
 			'benefit': self.benefit,
 			'condition': self.condition,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved
 		}
 
 class WeapDescriptor(db.Model):
