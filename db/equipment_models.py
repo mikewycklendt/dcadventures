@@ -282,8 +282,8 @@ class EquipMod(db.Model):
 	trigger = db.Column(db.String())
 	bonus_effect = db.Column(db.String())
 	penalty_effect = db.Column(db.String())
-	environment = db.Column(db.Integer)
-
+	
+	
 
 	def format(self):
 		return {
