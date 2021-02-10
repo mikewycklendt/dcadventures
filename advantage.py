@@ -82,7 +82,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Advantaage Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
-	actions = db.session.query(Action).filter(Action.hide != True).all()
+	actions = db.session.query(Action).filter(Action.hide == None).all()
 
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
