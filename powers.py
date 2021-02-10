@@ -85,7 +85,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 					{'type': 'reaction', 'name': 'Reaction'},
 					{'type': 'none', 'name': 'None'}]
 
-	range_type = Ranged.query.all()
+	range_type = db.session.query(Ranged).filter_by(show=True)
+
 
 
 

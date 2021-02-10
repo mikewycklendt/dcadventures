@@ -199,6 +199,7 @@
 			<div id="modifiers-melee">
 				<select class="select-entry" id="modifiers_weapon_melee" name="modifiers_weapon_melee">
 					<option value="">Melee Weapon</option>
+					<option value="any">Any</option>
 					<option value="x">Variable</option>
 					{% for w in weapon_melee %}
 						<option value={{w.id}}>{{w.name}}</option>
@@ -209,6 +210,7 @@
 			<div id="modifiers-ranged">
 				<select class="select-entry" id="modifiers_weapon_ranged" name="modifiers_weapon_ranged">
 					<option value="">Ranged Weapon</option>
+					<option value="any">Any</option>
 					<option value="x">Variable</option>
 					{% for w in weapon_ranged %}
 						<option value={{w.id}}>{{w.name}}</option>
@@ -340,7 +342,7 @@
 	
 				<div>
 					<select class="select-sml" id="modifiers_bonus_check_range" name="modifiers_bonus_check_range">
-						<option value="0">All</option>
+						<option value="all">All</option>
 						{% for r in ranged %}
 							<option value={{r.id}}>{{r.name}}</option>
 						{% endfor %}
@@ -351,6 +353,7 @@
 			<div id="modifiers-bonus-conflict">
 				<select class="select-sml" id="modifiers_bonus_conflict" name="modifiers_bonus_conflict" previousValue="empty" onchange="modifiers_bonus_conflict(); modifiers_bonus_trait_type();">
 					<option value="">Conflict Action</option>
+					<option value="x">Variable</option>
 					{% for c in conflicts %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}
@@ -389,7 +392,7 @@
 				<div>
 					<select class="select-sml" id="modifiers_penalty_check_range" name="modifiers_penalty_check_range">
 						<option value="">Range</option>
-						<option value="0">All</option>
+						<option value="all">All</option>
 						{% for r in ranged %}
 							<option value={{r.id}}>{{r.name}}</option>
 						{% endfor %}

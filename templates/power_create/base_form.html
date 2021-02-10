@@ -33,8 +33,8 @@
 		
 		<select class="base-select" id="action" name="action" onchange="movement()">
 			<option value=''>Action Type</option>
-			{% for type in actions %}
-				<option value={{type.id}}>{{type.name}}</option>
+			{% for a in actions %}
+				<option value={{a.id}}>{{a.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -46,8 +46,8 @@
 		
 		<select class="base-select" id="range" name="range"   onchange="range_type()">
 			<option value="">Range</option>
-			{% for range in range_type %}
-				<option value="{{range.id}}">{{range.name}}</option>
+			{% for r in range_type %}
+				<option value="{{r.id}}">{{r.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -74,8 +74,8 @@
 			<option value="">Cost</option>
 			<option value="x">Variable`</option>
 			<option value=0>0</option>
-			{% for num in positives %}
-				<option value={{num}}>{{num}}</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -87,8 +87,8 @@
 		
 		<select class="base-select" id="limit" name="limit" >
 			<option value=>None</option>
-			{% for num in positives %}
-				<option value={{num}}>{{num}}</option>
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</select>
 	
@@ -102,8 +102,8 @@
 		<div id="power-dc-field">
 			<div>
 				<select class="base-select" id="power_dc_type" name="power_dc_type" onchange="power_dc_type(); power_dc_table()">
-					{% for dc in dc_type %}
-						<option value={{dc.type}}>{{dc.name}}</option>
+					{% for d in dc_type %}
+						<option value={{d.type}}>{{d.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -112,20 +112,20 @@
 				<div id="power-dc-value">
 					<select class="base-select" id="power_dc_value" name="power_dc_mod" >
 						<option value=>DC</option>
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
 
 				<div id="power-dc-mod">
 					<select class="base-select" id="power_dc_mod" name="power_dc_mod">
-						<option value="">Modufuer</option>
-						{% for num in negatives %}
-							<option value={{num}}>{{num}}</option>
+						<option value="">Modufier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 
 					</select>
@@ -159,8 +159,8 @@
 			<select class="base-select" id="check" name="check" onchange="check_type()">
 				<option value="">Check Type</option>
 				<option value=>None</option>
-				{% for check in checks %}
-					<option value={{check.id}}>{{check.name}}</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -212,8 +212,8 @@
 	
 		<div>
 			<select class="base-select" id="partner" name="partner" onchange="partner()">
-				{% for partner in partners %}
-					<option value="{{partner.type}}">{{partner.name}}</option>
+				{% for p in partners %}
+					<option value="{{p.type}}">{{p.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -255,8 +255,8 @@
 			
 			<div>
 				<select class="base-select" id="circ" name="circ" onchange="circ()">
-					{% for circ in circumstances %}
-`						<option value="{{circ.type}}">{{circ.name}}</option>
+					{% for c in circumstances %}
+`						<option value="{{c.type}}">{{c.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -264,8 +264,8 @@
 			<div id="circ-required" style="opacity: 0%;">
 				<select class="base-select" id="circ_required" name="circ_required">
 					<option value="">Required</option>
-						{% for req in required %}
-							<option value="{{req.type}}">{{req.name}}</option>
+						{% for r in required %}
+							<option value="{{r.type}}">{{r.name}}</option>
 						{% endfor %}
 				</select>
 			</div>
@@ -282,8 +282,8 @@
 			<div>
 				<select class="base-select" id="skill" name="skill" onchange="skill()">
 					<option value="">N/A</option>
-					{% for skill in skills %}
-`						<option value={{skill.id}}>{{skill.name}}</option>
+					{% for s in skills %}
+`						<option value={{s.id}}>{{s.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -293,8 +293,8 @@
 				<div>	
 					<select class="base-select" id="skill_required" name="skill_required">
 						<option value="">Required</option>
-							{% for req in required %}
-								<option value="{{req.type}}">{{req.name}}</option>
+							{% for r in required %}
+								<option value="{{r.type}}">{{r.name}}</option>
 							{% endfor %}
 					</select>
 				</div>

@@ -86,7 +86,7 @@
 		<div>
 			<select class="select-sml" id="circ_range" name="circ_range">
 				<option value="">Range</option>
-				{% for r in ranges %}
+				{% for r in range_type %}
 					<option value={{r.id}}>{{r.name}}</option>
 				{% endfor %}
 			</select>

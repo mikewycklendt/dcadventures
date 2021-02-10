@@ -28,8 +28,8 @@
 		<div>
 			<select class="entry-select" id="action_change" name="action_change" aria-placeholder="0">
 				<option value=''>Action Type</option>
-				{% for action in actions %}
-					<option value={{action.id}}>{{action.name}}</option>
+				{% for a in actions %}
+					<option value={{a.id}}>{{a.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

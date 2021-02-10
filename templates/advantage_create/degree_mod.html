@@ -207,8 +207,8 @@
 					<div>
 						<select class="select-sml" id="deg_mod_measure_math" name="deg_mod_measure_math" >
 							<option value="">Math</option>
-							{% for math in maths %}
-								<option value={{math.id}}>{{math.name}}</option>
+							{% for m in maths %}
+								<option value={{m.id}}>{{m.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -248,8 +248,8 @@
 
 						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank" >
 							<option value="">Rank Type</option>
-							{% for rank in measure_rank %}
-								<option value={{rank.id}}>{{rank.name}}</option>
+							{% for r in measure_rank %}
+								<option value={{r.id}}>{{r.name}}</option>
 							{% endfor %}
 						</select>
 

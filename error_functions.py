@@ -937,6 +937,9 @@ def db_integer(table, value):
 	Nature
 	Benefit
 
+		show
+		approved
+
 	if value == 'all':
 		try:
 			query = db.session.query(table).filter_by(all=True).first()

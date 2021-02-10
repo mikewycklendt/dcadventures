@@ -269,8 +269,8 @@
 				<div id="advantage-dc-value">
 					<select class="base-select" id="advantage_dc_value" name="advantage_dc_mod" >
 						<option value=>DC</option>
-						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -278,11 +278,11 @@
 				<div id="advantage-dc-mod">
 					<select class="base-select" id="advantage_dc_mod" name="advantage_dc_mod">
 						<option value="">Modufuer</option>
-						{% for num in negatives %}
-							<option value={{num}}>{{num}}</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 						{% for num in positives %}
-							<option value={{num}}>{{num}}</option>
+							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 
 					</select>
