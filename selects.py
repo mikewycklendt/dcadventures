@@ -180,8 +180,7 @@ def equip_medium_subtype_select():
 		mediums = db.session.query(Medium).filter_by(medium_type=id).order_by(Medium.name).all()
 		
 		if get_titles !=  False:
-			subtype_div = get_titles['title'] 'descriptor-medium-subtype-title'
-			description_div = get_titles['description'] 'descriptor-medium-subtype-des-title'
+			subtype_div = get_titles['title']
 
 		first_medium = medium_type.name + ' Mediums'
 		first_subtype = medium_type.name + 'Subtypes'
@@ -190,11 +189,12 @@ def equip_medium_subtype_select():
 		medium_options.append({'id': '', 'name': first_medium})
 
 		if sub == 'power_create':
+			description_div = get_titles['description']
 			title = medium_type.name + ' Type'
 			description_title = 'New ' + medium_type.name + ' Type Description'
 
-			titles.append({'div': , 'title': title})
-			titles.append({'div': , 'title': description_title})			
+			titles.append({'div': subtype_div, 'title': title})
+			titles.append({'div': description_div, 'title': description_title})			
 			body['titles'] = titles
 			
 			all_medium_type = 'Any ' + medium_type.name
