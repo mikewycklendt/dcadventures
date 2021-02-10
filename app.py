@@ -90,39 +90,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Skill'
+	tablename =  'Maneuver'
 
-	name = 'All Skills'
+	name = 'All Maneuvers'
 
-	entry = Skill(all=True, name=name, hide=True )
+	entry = Maneuver(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Skill(current=True, name=name, hide=True )
+	entry = Maneuver(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Skill(any=True, name=name, hide=True )
+	entry = Maneuver(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Skill(var=True, name=name, hide=True )
+	entry = Maneuver(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Skill(none=True, name=name, hide=True )
+	entry = Maneuver(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Skill).filter_by(hide=True).all()
+	results = db.session.query(Maneuver).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
