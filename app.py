@@ -90,39 +90,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename = 'Action'
+	tablename =  'Conflict Action'
 
-	name = 'All Actions'
+	name = 'All Conflict Actions'
 
-	entry = Action(all=True, name=name, hide=True )
+	entry = ConflictAction(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Action(current=True, name=name, hide=True )
+	entry = ConflictAction(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Action(any=True, name=name, hide=True )
+	entry = ConflictAction(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Action(var=True, name=name, hide=True )
+	entry = ConflictAction(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Action(none=True, name=name, hide=True )
+	entry = ConflictAction(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Action).filter_by(hide=True).all()
+	results = db.session.query(ConflictAction).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
