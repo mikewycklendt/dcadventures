@@ -222,61 +222,7 @@ class Damage(db.Model):
 
 
 
-class Nature(db.Model):
-	__tablename__ = 'nature'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
 
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
-class Emotion(db.Model):
-	__tablename__ = 'emotions'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
-class Environment(db.Model):
-	__tablename__ = 'environments'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
-class Job(db.Model):
-	__tablename__ = 'jobs'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}
-
-class Creature(db.Model):
-	__tablename__ = 'creature'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	name = db.Column(db.String())
-
-	def format(self):
-		return {
-			'id': self.id,
-			'name': self.name
-		}	
-		
 class MeasureType(db.Model):
 	__tablename__ = 'measurement_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
