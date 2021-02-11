@@ -84,6 +84,274 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/skills/all')
+def skills_all_create():
+
+	names = ['Balancing',
+			'Maneuvering',
+			'Standing',
+			'Tumbling',
+			'Climbing',
+			'Jumping',
+			'Running',
+			'Swimming',
+			'Bluffing',
+			'Disguise',
+			'Feinting',
+			'Innuendo',
+			'Tricking',
+			'Detect Illusion',
+			'Detect Influence',
+			'Evaluate',
+			'Innuendo',
+			'Resist Influence',
+			'Coercing',
+			'Demoralizing',
+			'Intimidating Minions',
+			'Search',
+			'Gather Evidence',
+			'Analyze Evidence',
+			'Gather Information',
+			'Surveillance',
+			'Hearing',
+			'Seeing',
+			'Other Senses',
+			'Concealing',
+			'Contorting',
+			'Escaping',
+			'Legerdemain',
+			'Stealing',
+			'Hiding',
+			'Tailing',
+			'Operating',
+			'Building',
+			'Repairing',
+			'Jury-Rigging',
+			'Demolitions',
+			'Inventing',
+			'Security',
+			'Diagnosis',
+			'Provide Care',
+			'Revive',
+			'Stabalize',
+			'Treat Disease',
+			'Treat Poison']
+
+	for name in names:
+
+		entry = SkillBonus(show=True, name=name, base=True )
+		db.session.add(entry)
+		db.session.commit()
+
+	results = SkillBonus.query.all()
+
+	for r in results:
+		print(str(r.id) + ' ' + r.name)
+		
+@app.route('/powers/all')
+def powers_all_create():
+
+	names = ['Affliction',
+			'Alternate Form',
+			'Burrowing',
+			'Blast',
+			'Communication',
+			'Comprehend',
+			'Concealment',
+			'Create',
+			'Damage',
+			'Dazzle',
+			'Deflect',
+			'Elongation',
+			'Enhanced Trait',
+			'Environment',
+			'Heat',
+			'Cold',
+			'Light',
+			'Visibility',
+			'Extra Limbs',
+			'Insulating Fur',
+			'Internal Compartment',
+			'Iron Stomach',
+			'Mimicry',
+			'Quick Change',
+			'Specal Effect',
+			'Temporal Inertia',
+			'Flight',
+			'Force Field',
+			'Growth',
+			'Healing',
+			'Illusion',
+			'Immortality',
+			'Immunity',
+			'Insubstantial',
+			'Leaping',
+			'Luck Control',
+			'Mind Reading',
+			'Mimic',
+			'Mind Control',
+			'Mental Blast',
+			'Morph',
+			'Move Object',
+			'Dimension Travel',
+			'Environmental Adaptation',
+			'Permeate',
+			'Safe Fall',
+			'Slithering',
+			'Space Travel',
+			'Sure-Footed',
+			'Swinging',
+			'Time Travel',
+			'Trackless',
+			'Wall-Crawling',
+			'Water Walking',
+			'Nullify',
+			'Power Lifting',
+			'Protection',
+			'Quickness',
+			'Regeneration',
+			'Remote Sensing',
+			'Accurate Sense',
+			'Acute Sense',
+			'Analytical Sense',
+			'Awareness Sense',
+			'Communication Link',
+			'Counters Concealment Sense',
+			'Counters Illusion Sense',
+			'Danger Sense',
+			'Darkvision',
+			'Detect',
+			'Direction Sense',
+			'Distance Sense',
+			'Extended Sense',
+			'Infravision',
+			'Low-Light Vision',
+			'Microscopic Vision',
+			'Penetrates Concealment',
+			'Postcognition',
+			'Precognition',
+			'Radio Sense',
+			'Sense Radius',
+			'Ranged Sense',
+			'Rapid Sense',
+			'Time Sense',
+			'Tracking',
+			'Ultra Hearing',
+			'Ultravision',
+			'Shapeshift',
+			'Shrinking',
+			'Speed',
+			'Suffocation',
+			'Snare',
+			'Summon',
+			'Swimming',
+			'Super-speed',
+			'Teleport',
+			'Transform',
+			'Weaken']
+
+	for name in names:
+
+		entry = Power(show=True, name=name, base=True )
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Power.query.all()
+
+	for r in results:
+		print(str(r.id) + ' ' + r.name)
+
+
+@app.route('/advantages/all')
+def advantages_all_create():
+
+
+	nsmes = ['Accurate Attack',
+			'Agile Feint',
+			'All-Out Attack',
+			'Animal Empathy',
+			'Artificer',
+			'Assessment',
+			'Attractive',
+			'Beginners Luck',
+			'Benefit',
+			'Chokehold',
+			'Close Attack',
+			'Connected',
+			'Contacts',
+			'Daze',
+			'Defensive Attack',
+			'Defensive Roll',
+			'Diehard',
+			'Eidetic Memory',
+			'Equipment',
+			'Evasion',
+			'Extraordinary Effort',
+			'Fascinate',
+			'Fast Grab',
+			'Favored Environment',
+			'Favored Foe',
+			'Fearless',
+			'Grabbing Finesse',
+			'Great Endurance',
+			'Hide In Plain Sight',
+			'Improved Aim',
+			'Improved Critical',
+			'Improved Defense',
+			'Improved Disarm',
+			'Improved Grab',
+			'Improved Initiative',
+			'Improved Hold',
+			'Improved Smash',
+			'Impproved Trip',
+			'Improvised Tools',
+			'Inspire',
+			'Instant Up',
+			'Interpose',
+			'Inventor',
+			'Jack-of-All-Trades',
+			'Languages',
+			'Leadership',
+			'Luck',
+			'Minion',
+			'Move-By Action',
+			'Power Attack',
+			'Precise Attack',
+			'Prone Fighting',
+			'Quick Draw',
+			'Ranged Attack',
+			'Redirect',
+			'Ritualist',
+			'Second Chance',
+			'Seize Initiative',
+			'Set-Up',
+			'Sidekick',
+			'Skill Mastery',
+			'Startle',
+			'Takedown',
+			'Taunt',
+			'Teamwork',
+			'Throwing Mastery',
+			'Tracking',
+			'Trance',
+			'Ultimate Effort',
+			'Uncanny Dodge',
+			'Weapon Bind',
+			'Weapon Break',
+			'Well-Informed']
+
+	for name in names:
+
+		entry = Advantage(show=True, name=name, base=True )
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Advantage.query.all()
+
+	for r in results:
+		print(str(r.id) + ' ' + r.name)
+
+
 
 
 
