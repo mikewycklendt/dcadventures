@@ -85,61 +85,33 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/equipment/add')
-def equipment_create():
+@app.route('/armor/add')
+def armor_create():
 
-	entries = ['Camera', 'Cell Phone', 'Commlink', 'Computer', 'Audio Recorder', 'Video Camera']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=2, base=True, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Handcuffs', 'Lock Release Gun', 'Restraints']
+	entries = ['Leather',
+				'Chain Mail',
+				'Plate Mail',
+				'Full Plate',
+				'Undercover Shirt',
+				'Bulletproof Vest',
+				'Small Shield',
+				'Medium Shield',
+				'Lsrge Shield']
 
 	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=3, base=True, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Binoculars', 'Concealable Microphone', 'Mini-Tracer', 'Night-Vision Goggles', 'Parabolic Microphone']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=4, base=True, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Camo Clothing', 'Flashh Goggles', 'Fire Extinguisher', 'Gas Mask', 'GPS', 'Multi-Tool', 'Rebreather', 'SCUBA Gear']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Equipment(name=i, type_id=5, base=True, show=True)
+		entry = Armor(name=i, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
 
-	results = Equipment.query.all()
+	results = Armor.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('equipment added')
+	return ('armor added')
 
 @app.route('/table/db')
 def table_db_columns_create():
