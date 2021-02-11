@@ -342,6 +342,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
+	target_type = [{'type': '', 'name': 'Target Type'}, {'type': 'language', 'name': 'Any Language'}, {'type': 'animal', 'name': 'Animal'}, {'type': 'machine', 'name': 'Machine'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}, {'type': 'x', 'name': 'Variable'}]
 
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
@@ -444,6 +445,8 @@ def save_power():
 	partner_trait_type = request.get_json()['partner_trait_type']
 	partner_dc = request.get_json()['partner_dc']
 	partner_trait = request.get_json()['partner_trait']
+	target = request.get_json['target']
+	target_type = request.get_json['target_type']
 	circ = request.get_json()['circ']
 	circ_required = request.get_json()['circ_required']
 	skill = request.get_json()['skill']
@@ -510,6 +513,8 @@ def save_power():
 	power.partner_trait_type = partner_trait_type
 	power.partner_dc = partner_dc
 	power.partner_trait = partner_trait
+	power.tsrget = target
+	power.target_type = target_type
 	power.circ = circ
 	power.circ_required = circ_required
 	power.skill = skill

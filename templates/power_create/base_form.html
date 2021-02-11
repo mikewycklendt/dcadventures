@@ -248,6 +248,34 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Target:
+		</div>
+	
+		<div style="width: 70%;">
+			<select class="base-select" id="target" name="target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Target Type:
+		</div>
+	
+		<div style="width: 70%;">
+			<select class="base-select" id="target" name="target">
+				{% for t in target_type %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Circumstance Modifier:
 		</div>
 	

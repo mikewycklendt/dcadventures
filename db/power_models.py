@@ -58,6 +58,7 @@ class Power(db.Model):
 	conflict_bonus = db.Column(db.Integer)
 	conflict_type = db.Column(db.String())
 	target_type = db.Column(db.String())
+	target = db.Column(db.String())
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
