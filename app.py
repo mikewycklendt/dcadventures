@@ -85,115 +85,61 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/weapons/all')
-def weapon_create():
+@app.route('/equipment/add')
+def equipment_create():
 
-	entries = ['Brass Knuckles', 'Club', 'Knife', 'Pepper Spray', 'Stun Gun']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Weapon(name=i, cat_id=1, type_id=1, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Battleaxe', 'Sword', 'Spear', 'Warhammer']
+	entries = ['Camera', 'Cell Phone', 'Commlink', 'Computer', 'Audio Recorder', 'Video Camera']
 
 	for i in entries:
 		description = ''
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Weapon(name=i, cat_id=1, type_id=2, show=True, base=True)
+		entry = Equipment(name=i, type_id=2, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
-	
-	entries = ['Chain', 'Chainsaw', 'Nunchaku', 'Whip']
+
+	entries = ['Handcuffs', 'Lock Release Gun', 'Restraints']
 
 	for i in entries:
 		description = ''
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Weapon(name=i, cat_id=1, type_id=3, show=True, base=True)
+		entry = Equipment(name=i, type_id=3, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Holdout Pistol', 'Light Pistol', 'Heavy Pistol', 'Machine Pistol', 'Submachine Gun', 'Shotgun', 'Assault Rifle', 'Sniper Rifle', 'Bow', 'Crossbow']
+	entries = ['Binoculars', 'Concealable Microphone', 'Mini-Tracer', 'Night-Vision Goggles', 'Parabolic Microphone']
 
 	for i in entries:
 		description = ''
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Weapon(name=i, cat_id=2, type_id=4, show=True, base=True)
+		entry = Equipment(name=i, type_id=4, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Blaster Pistol', 'Blaster Rifle', 'Taser']
+	entries = ['Camo Clothing', 'Flashh Goggles', 'Fire Extinguisher', 'Gas Mask', 'GPS', 'Multi-Tool', 'Rebreather', 'SCUBA Gear']
 
 	for i in entries:
 		description = ''
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Weapon(name=i, cat_id=2, type_id=5, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-		
-	entries = ['Flamethrower', 'Grenade Launcher', 'Rocket Launcher']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Weapon(name=i, cat_id=2, type_id=6, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-		
-	entries = ['Bolos', 'Boomerang', 'Javelin', 'Shuriken']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Weapon(name=i, cat_id=2, type_id=7, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-		
-	entries = ['Fragmentation Grenade', 'Smoke Grenade', 'Flash Bang Grenade', 'Sleep Gas Grenade', 'Tear Gas Grrenade', 'Dynamite', 'Plastic Explosives']
-
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Weapon(name=i, cat_id=4, type_id=8, show=True, base=True)
+		entry = Equipment(name=i, type_id=5, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Laser Sight', 'Stun Ammo', 'Suppressor', 'Targeting Scope']
 
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
-
-		entry = Weapon(name=i, cat_id=2, type_id= 9, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Weapon.query.all()
+	results = Equipment.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('weapons added')
+	return ('equipment added')
 
 @app.route('/table/db')
 def table_db_columns_create():
