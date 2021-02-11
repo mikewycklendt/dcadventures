@@ -110,7 +110,6 @@ class Feature(db.Model):
 	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	name = db.Column(db.String())
 	description = db.Column(db.String())
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	toughness = db.Column(db.Integer)
 	approved = db.Column(db.Boolean)
 	show = db.Column(db.Boolean)
@@ -121,9 +120,22 @@ class Feature(db.Model):
 			'equip_id': self.equip_id,
 			'name': self.name,
 			'description': self.description,
-			'feature': self.feature,
 			'toughness': self.toughness
 		}
+
+class EquipFeature(db.Model):
+	__tablename__ = 'equipment_feature`'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	name = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'equip_id': self.equip_id,
+			'name': self.name,
+		}
+
 
 class EquipEffect(db.Model):
 	__tablename__ = 'equipment_effect'

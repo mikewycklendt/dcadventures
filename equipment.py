@@ -874,14 +874,10 @@ def equipment_post_feature():
 	equip_id = db_integer(equip_id)
 	feature = db_integer(feature)
 
-	if feature is not None:
-		old_feature = db.session.query(Feature).filter_by(id=feature).one()
-		description = old_feature.description
-
-	entry = Feature(equip_id = equip_id,
-					name = name,
-					description = description,
-					feature = feature)
+	if name != '':
+		entry = Feature(equip_id = equip_id,
+						name = name,
+						description = description)
 
 	db.session.add(entry)
 	db.session.commit()

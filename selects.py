@@ -61,7 +61,7 @@ def equip_skill_select():
 	try:
 		skill_id = int(skill_id)
 		skill = db.session.query(Skill).filter_by(id=skill_id).one()
-		bonuses = db.session.query(SkillBonus).filter_by(skill_id=skill_id).order_by(SkillBonus.name).all()
+		bonuses = db.session.query(SkillBonus).filter(SkillBonus.skill=skill_id, SkillBonus.show == True).order_by(SkillBonus.name).all()
 		skill_name = skill.name + ' Skill'
 		options.append({'id': '', 'name': skill_name})
 		for b in bonuses:
@@ -82,12 +82,12 @@ def advantage_action_select():
 	action = request.get_json()['id'] 
 
 	base = []
-	actions = db.session.query(Action).all()
+	actions = db.session.query(Action).filter(Action.hide == None).all()
 	for a in actions:
 		base.append({'id': a.id, 'name': a.name})
 		
 	conflict = []
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 	for c in conflicts:
 		conflict.append({'id': c.id, 'name': c.name})
 
@@ -142,7 +142,7 @@ def equip_weapon_select():
 		type_id = int(type_id)
 		print(type_id)
 		weapontype = db.session.query(WeaponType).filter_by(id=type_id).one()
-		weapons = db.session.query(Weapon).filter_by(type_id=type_id, show=True).order_by(Weapon.name).all()
+		weapons = db.session.query(Weapon).filter(Weapon.type_id=type_id, Weapon.show=True).order_by(Weapon.name).all()
 		weapon_name = weapontype.name + ' Weapons'
 		variable_name = 'Variable ' + weapontype.name
 		options.append({'id': '', 'name': weapon_name})
@@ -177,8 +177,8 @@ def equip_medium_subtype_select():
 
 	try:
 		medium_type = db.session.query(MediumType).filter_by(id=id).one()
-		medium_subtypes = db.session.query(MediumSubType).filter_by(medium_type=id, show=True).order_by(MediumSubType.name).all()
-		mediums = db.session.query(Medium).filter_by(medium_type=id, show=True).order_by(Medium.name).all()
+		medium_subtypes = db.session.query(MediumSubType).filter(MediumSubType.medium_type == id, MediumSubType.show == True).order_by(MediumSubType.name).all()
+		mediums = db.session.query(Medium).filter(Medium.medium_type == id, Medium.show == True).order_by(Medium.name).all()
 		
 		if get_titles !=  False:
 			subtype_div = get_titles['title']
@@ -244,7 +244,7 @@ def equip_medium_select():
 	if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
 		try:
 			subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-			mediums = db.session.query(Medium).filter_by(medium_subtype=medium_subtype, show=True).order_by(Medium.name).all()
+			mediums = db.session.query(Medium).filter(Medium.medium_subtype=medium_subtype, Medium.show=True).order_by(Medium.name).all()
 			first = subtype.name + ' Mediums'
 			
 			options.append({'id': '', 'name': first})
@@ -287,7 +287,7 @@ def vehicle_equipment_select():
 	try:
 		type_id = int(type_id)
 		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
-		equipment = db.session.query(Equipment).filter_by(type_id=type_id, show=True).order_by(Equipment.name).all()
+		equipment = db.session.query(Equipment).filter(Equipment.type_id == type_id, Equipment.show == True).order_by(Equipment.name).all()
 		options.append({'id': '', 'name': equip_type.name})
 		if add:
 			for special in add_options:
