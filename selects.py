@@ -61,7 +61,7 @@ def equip_skill_select():
 	try:
 		skill_id = int(skill_id)
 		skill = db.session.query(Skill).filter_by(id=skill_id).one()
-		bonuses = db.session.query(SkillBonus).filter(SkillBonus.skill=skill_id, SkillBonus.show == True).order_by(SkillBonus.name).all()
+		bonuses = db.session.query(SkillBonus).filter(SkillBonus.skill == skill_id, SkillBonus.show == True).order_by(SkillBonus.name).all()
 		skill_name = skill.name + ' Skill'
 		options.append({'id': '', 'name': skill_name})
 		for b in bonuses:
