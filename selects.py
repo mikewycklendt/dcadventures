@@ -244,7 +244,7 @@ def equip_medium_select():
 	if medium_subtype != '' and medium_subtype != 'all' and medium_subtype != 'new':
 		try:
 			subtype = db.session.query(MediumSubType).filter_by(id=medium_subtype).one()
-			mediums = db.session.query(Medium).filter(Medium.medium_subtype=medium_subtype, Medium.show=True).order_by(Medium.name).all()
+			mediums = db.session.query(Medium).filter(Medium.medium_subtype == medium_subtype, Medium.show == True).order_by(Medium.name).all()
 			first = subtype.name + ' Mediums'
 			
 			options.append({'id': '', 'name': first})
