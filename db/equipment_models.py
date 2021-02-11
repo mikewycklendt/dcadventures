@@ -127,6 +127,7 @@ class EquipFeature(db.Model):
 	__tablename__ = 'equipment_feature`'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	name = db.Column(db.String())
 
 	def format(self):
