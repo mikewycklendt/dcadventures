@@ -219,7 +219,7 @@ class Benefit(db.Model):
 			'name': self.name,
 			'description': self.description,
 			'effort': self.effort,
-			'approved': self.approved
+			'approved': self.approved,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
