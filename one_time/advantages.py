@@ -4,7 +4,7 @@
 def advantages_all_create():
 
 
-	nsmes = ['Accurate Attack',
+	names = ['Accurate Attack',
 			'Agile Feint',
 			'All-Out Attack',
 			'Animal Empathy',
