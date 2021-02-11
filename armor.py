@@ -79,13 +79,13 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	armor_type = ArmorType.query.all()
 
-	defenses = Defense.query.all()
+	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
 
-	origins = db.session.query(Origin).order_by(Origin.name).all()
+	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
 	
-	sources = db.session.query(Source).order_by(Source.name).all()
+	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
 	
-	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
+	mediums = db.session.query(MediumType).filter(MediumType.show == True).order_by(MediumType.name).all()
 
 	materials = db.session.query(Material).order_by(Material.name).all()
 

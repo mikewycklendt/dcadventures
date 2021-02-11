@@ -112,6 +112,8 @@ class Feature(db.Model):
 	description = db.Column(db.String())
 	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
 	toughness = db.Column(db.Integer)
+	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
 
 	def format(self):
 		return {
