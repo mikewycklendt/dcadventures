@@ -882,11 +882,15 @@ def equipment_post_feature():
 		db.session.add(entry)
 		db.session.commit()
 
-		feature_id = entry.id
+		feature = entry.id
 
 		db.session.close()
 
-		entry =
+	entry = EquipFeature(equip_id = equip_id,
+						feature = feature)
+
+	db.session.add(entry)
+	db.session.commit()
 
 	body = {}
 	body['id'] = entry.id

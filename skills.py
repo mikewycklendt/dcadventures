@@ -94,51 +94,51 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
 	advantages = Advantage.query.all()
 
-	abilities = Ability.query.all()
+	abilities = db.session.query(Ability).filter(Ability.hide == None).order_by(Ability.name).all()
 
 	complexity = Complex.query.all()
 
 	times = db.session.query(Unit).filter_by(type_id=2).all()
 
-	skills = Skill.query.all()
+	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 
 	weapon_cat = WeaponCat.query.all()
 
-	environments = db.session.query(Environment).order_by(Environment.name).all()
+	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
 	
-	senses = db.session.query(Sense).order_by(Sense.name).all()
+	senses = db.session.query(Sense).filter(Sense.hide == None).order_by(Sense.name).all()
 	
 	ranged = db.session.query(Ranged).filter_by(show=True)
 
-	subsenses = db.session.query(SubSense).order_by(SubSense.name).all()
+	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).order_by(SubSense.name).all()
 
 	cover = Cover.query.all()
 
 	concealment = Conceal.query.all()
 
-	maneuvers = db.session.query(Maneuver).order_by(Maneuver.name).all()
+	maneuvers = db.session.query(Maneuver).filter(Maneuver.hide == None).order_by(Maneuver.name).all()
 	
 	weapon_melee = db.session.query(WeaponType).filter_by(type_id=1).all()
 	
 	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2).all()
 
-	creatures = db.session.query(Creature).order_by(Creature.name).all()
+	creatures = db.session.query(Creature).filter(Creature.show == True).order_by(Creature.name).all()
 		
-	emotions = db.session.query(Emotion).order_by(Emotion.name).all()
+	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
 
-	professions = db.session.query(Job).order_by(Job.name).all()
+	professions = db.session.query(Job).filter(Job.show == True).order_by(Job.name).all()
 	
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 	
-	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
+	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
 	
 	light = Light.query.all()
 
-	checks = Check.query.all()
+	checks = db.session.query(Check).filter(Check.hide == None).order_by(Check.name).all()
 
-	actions = Action.query.all()
+	actions = db.session.query(Action).filter(Action.hide == None).order_by(Action.name).all()
 
-	defenses = Defense.query.all()
+	defenses = db.session.query(Defense).filter(Defense.hide == None).order_by(Defense.name).all()
 
 	skill_type = SkillType.query.all()
 
