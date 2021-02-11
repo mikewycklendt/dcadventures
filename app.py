@@ -84,70 +84,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/skills/all')
-def skills_all_create():
 
-	names = ['Balancing',
-			'Maneuvering',
-			'Standing',
-			'Tumbling',
-			'Climbing',
-			'Jumping',
-			'Running',
-			'Swimming',
-			'Bluffing',
-			'Disguise',
-			'Feinting',
-			'Innuendo',
-			'Tricking',
-			'Detect Illusion',
-			'Detect Influence',
-			'Evaluate',
-			'Innuendo',
-			'Resist Influence',
-			'Coercing',
-			'Demoralizing',
-			'Intimidating Minions',
-			'Search',
-			'Gather Evidence',
-			'Analyze Evidence',
-			'Gather Information',
-			'Surveillance',
-			'Hearing',
-			'Seeing',
-			'Other Senses',
-			'Concealing',
-			'Contorting',
-			'Escaping',
-			'Legerdemain',
-			'Stealing',
-			'Hiding',
-			'Tailing',
-			'Operating',
-			'Building',
-			'Repairing',
-			'Jury-Rigging',
-			'Demolitions',
-			'Inventing',
-			'Security',
-			'Diagnosis',
-			'Provide Care',
-			'Revive',
-			'Stabalize',
-			'Treat Disease',
-			'Treat Poison']
-
-	for name in names:
-
-		entry = SkillBonus(show=True, name=name, base=True )
-		db.session.add(entry)
-		db.session.commit()
-
-	results = SkillBonus.query.all()
-
-	for r in results:
-		print(str(r.id) + ' ' + r.name)
-		
 @app.route('/powers/all')
 def powers_all_create():
 
@@ -261,6 +198,7 @@ def powers_all_create():
 	for r in results:
 		print(str(r.id) + ' ' + r.name)
 
+	return ('powers added')
 
 @app.route('/advantages/all')
 def advantages_all_create():
@@ -351,6 +289,7 @@ def advantages_all_create():
 	for r in results:
 		print(str(r.id) + ' ' + r.name)
 
+	return ('advantages added')
 
 
 

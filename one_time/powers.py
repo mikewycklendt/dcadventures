@@ -113,3 +113,4 @@ def powers_all_create():
 	for r in results:
 		print(str(r.id) + ' ' + r.name)
 
+	return ('powers added')

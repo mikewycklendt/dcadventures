@@ -88,3 +88,5 @@ def advantages_all_create():
 
 	for r in results:
 		print(str(r.id) + ' ' + r.name)
+
+	return ('advantages added')
