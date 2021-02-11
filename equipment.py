@@ -65,11 +65,11 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	features = db.session.query(Feature).filter(Feature.name != old_feature).order_by(Feature.name).all()
 
-	skills = Skill.query.all()
+	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 
-	origins = db.session.query(Origin).order_by(Origin.name).all()
+	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
 	
-	sources = db.session.query(Source).order_by(Source.name).all()
+	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
 	
 	mediums = db.session.query(MediumType).order_by(MediumType.name).all()
 
@@ -77,29 +77,29 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	distances = db.session.query(Unit).filter_by(type_id=3)
 	
-	expertise = db.session.query(SkillBonus).filter_by(skill_id=5).all()
+	expertise = db.session.query(SkillBonus).filter(SkillBonus.skill=5, SkillBonus.show == True).all()
 
-	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
+	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
 	
 	light = Light.query.all()
 	
-	checks = db.session.query(Check).all()
+	checks = db.session.query(Check).filter(Check.hide == None).all()
 
-	actions = Action.query.all()
+	actions = db.session.query(Action).filter(Action.hide == None).all()
 	
-	environments = db.session.query(Environment).order_by(Environment.name).all()
+	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
 	
-	senses = db.session.query(Sense).order_by(Sense.name).all()
+	senses = db.session.query(Sense).filter(Sense.hide == None).order_by(Sense.name).all()
 	
 	ranged = db.session.query(Ranged).filter_by(show=True)
 
-	subsenses = db.session.query(SubSense).order_by(SubSense.name).all()
+	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).order_by(SubSense.name).all()
 
 	cover = Cover.query.all()
 
 	concealment = Conceal.query.all()
 
-	maneuvers = db.session.query(Maneuver).order_by(Maneuver.name).all()
+	maneuvers = db.session.query(Maneuver).filter(Maneuver.hide == None).order_by(Maneuver.name).all()
 	
 	weapon_melee = db.session.query(WeaponType).filter_by(type_id=1).all()
 	
@@ -107,13 +107,13 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
-	creatures = db.session.query(Creature).order_by(Creature.name).all()
+	creatures = db.session.query(Creature).filter(Creature.show == True).order_by(Creature.name).all()
 		
-	emotions = db.session.query(Emotion).order_by(Emotion.name).all()
+	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
 
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 
-	professions = db.session.query(Job).order_by(Job.name).all()
+	professions = db.session.query(Job).filter(Job.show == True).order_by(Job.name).all()
 	
 
 	base_conditions = Condition.query.all()

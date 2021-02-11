@@ -99,19 +99,19 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	distance = db.session.query(Unit).filter_by(type_id=3)
 
-	checks = Check.query.all()
+	checks = db.session.query(Check).filter(Check.hide == None).all()
 
-	actions = Action.query.all()
+	actions = db.session.query(Action).filter(Action.hide == None).all()
 
-	conflicts = db.session.query(ConflictAction).order_by(ConflictAction.name).all()
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 
-	environments = db.session.query(Environment).order_by(Environment.name).all()
+	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
 
-	skills = Skill.query.all()
+	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 
-	abilities = Ability.query.all()
+	abilities = db.session.query(Ability).filter(Ability.hide == None).all()
 
-	defenses = Defense.query.all()
+	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
 
 	light = Light.query.all()
 
@@ -153,9 +153,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
 
-	senses = Sense.query.all()
+	senses = db.session.query(Sense).filter(Sense.hide == None).all()
 
-	subsenses = SubSense.query.all()
+	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).all()
 
 	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
 
@@ -173,9 +173,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	special = db.session.query(SubSense).filter_by(sense_id=12)
 
-	damages = db.session.query(Descriptor).filter_by(damage=True).order_by(Descriptor.name).all()
+	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
 
-	power_sense = db.session.query(Power).filter_by(power_type=3).order_by(Power.name).all()
+	power_sense = db.session.query(Power).filter(Power.power_type == 3, Power.show == True).order_by(Power.name).all()
 
 	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
 
@@ -187,8 +187,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	bonuses_raw = ['Balancing', 'Maneuvering', 'Standing', 'Tumbling', 'Climbing', 'Jumping', 'Running', 'Swimming', 'Bluffing', 'Disguise', 'Feinting', 'Innuendo', 'Tricking', 'Detect Illusion', 'Detect Influence', 'Evaluate', 'Innuendo', 'Resist Influence', 'Coercing', 'Demoralizing', 'Intimidating Minions', 'Search', 'Gather Evidence', 'Analyze Evidence', 'Gather Information', 'Surveillance', 'Hearing', 'Seeing', 'Other Senses', 'Concealing', 'Contorting', 'Escaping', 'Legerdemain', 'Stealing', 'Hiding', 'Tailing', 'Operating', 'Building', 'Repairing', 'Jury-Rigging', 'Demolitions', 'Inventing', 'Security', 'Diagnosis', 'Provide Care', 'Revive', 'Stabalize', 'Treat Disease and Poison']
-	bonuses = db.session.query(SkillBonus).order_by(SkillBonus.name).all()
+	bonuses = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
@@ -238,13 +237,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	emotions = Emotion.query.all()
+	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
 
 	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
-	nature = Nqture.query.all()
+	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
 
 	grounds = Ground.query.all()
 
@@ -258,21 +257,21 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
-	descriptors = Descriptor.query.order_by(Descriptor.name).all()
+	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
 
-	origins = Origin.query.order_by(Origin.name).all()
+	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
 
-	sources = Source.query.order_by(Source.name).all()
+	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
 
-	medium = Medium.query.order_by(Medium.name).all()
+	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
 
 	level_types = LevelType.query.order_by(LevelType.name).all()
 
 	mediums = MediumType.query.order_by(MediumType.name).all()
 
-	materials = db.session.query(MediumSubType).filter_by(medium_type=1).order_by(MediumSubType.name)
+	materials = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
 	
-	energies = db.session.query(MediumSubType).filter_by(medium_type=2).order_by(MediumSubType.name)
+	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 

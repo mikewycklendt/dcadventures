@@ -8,3 +8,34 @@ sorted(lis, key = lambda i: i['age'])
 
 git fetch origin master
 git reset --hard FETCH_HEAD
+
+
+
+
+
+# Users whose age is 23 AND (firstname IS alex OR lastname IS watson)
+usrs = session.query(User) \
+    .filter(User.age === "23") \
+    .filter((User.firstname == 'alex') | (User.lastname == 'watson')) \
+    .all()
+hopefully, it helps other people coming here looking for it
+
+Share
+Edit
+Follow
+Flag
+answered Oct 28 '20 at 7:36
+
+Sahith Vibudhi
+2,98911 gold badge1818 silver badges2525 bronze badges
+Add a comment
+
+6
+
+I also needed this case today, I found the nice answer here:
+
+So, we can make OR logic like the below example:
+
+from sqlalchemy import or_
+db.session.query(User).filter(or_(User.email=='useremail@example.com', User.name=="username")).first()
+When using the filter() expression, you must use proper comparison operators, whereas filter_by() uses a shortened unPythonic form.

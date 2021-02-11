@@ -89,7 +89,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
 
-	equipment = db.session.query(Equipment).order_by(Equipment.name).all()
+	equipment = db.session.query(Equipment).filter(Equipment.show == True).order_by(Equipment.name).all()
 
 	equipment_type = EquipType.query.all()
 
