@@ -30,7 +30,7 @@ from db.user_rules import Nature, Emotion, Environment, Job, Creature
 from db.advanrtage_modeks import Advantage, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
-from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
+from db.equipment_models import Equipment, EquipFeature, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
@@ -315,14 +315,16 @@ def vehicle_feature_select():
 		type_id = int(type_id)
 		print(type_id)
 		equipment = db.session.query(Equipment).filter_by(id=type_id).one()
-		features = db.session.query(Feature).filter(Feature.equip_id==type_id, Feature.show == True).order_by(Feature.name).first()
+		features = db.session.query(EquipFeature).filter(EquipFeature.equip_id==type_id).order_by(Feature.name).first()
 		if features is None:
 			options.append({'id': '', 'name': 'Equipment has no Features'})
 		else:
 			equipment_name = equipment.name + "'s Features"
 			options.append({'id': '', 'name': equipment_name})
 			for f in features:
-				options.append({'id': f.id, 'name': f.name})
+				id = f.feature
+				feature = db.session.query(Feature).filter_by(id=id).one()
+				options.append({'id': id, 'name': feature.name})
 	except:
 		options.append({'id': '', 'name': 'All Features'})
 		features = db.session.query(Feature).filter(Feature.show == True).order_by(Feature.name).all()

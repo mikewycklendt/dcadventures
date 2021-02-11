@@ -261,3 +261,21 @@ def conditions_extras_create():
 		print (result.name)
 
 	return ('conditions db added')
+
+
+@app.route('/conditions/add')
+def conditions_create():
+
+	names = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	
+	for name in names:
+		entry = Condition(name=name)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Condition.query.all()
+
+	for r in results:
+		print (str(r.id) + ' ' + r.name)
+
+	return ('conditions added')
