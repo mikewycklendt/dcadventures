@@ -85,6 +85,16 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/conditions')
+def conditions_create():
+
+	names = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	
+	for name in names:
+		entry = Condition(name=name)
+		db.session.add(entry)
+		db.session.commit()
+
 
 @app.route('/table/db')
 def table_db_columns_create():
