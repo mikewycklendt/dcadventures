@@ -142,7 +142,7 @@ def equip_weapon_select():
 		type_id = int(type_id)
 		print(type_id)
 		weapontype = db.session.query(WeaponType).filter_by(id=type_id).one()
-		weapons = db.session.query(Weapon).filter(Weapon.type_id=type_id, Weapon.show=True).order_by(Weapon.name).all()
+		weapons = db.session.query(Weapon).filter(Weapon.type_id == type_id, Weapon.show == True).order_by(Weapon.name).all()
 		weapon_name = weapontype.name + ' Weapons'
 		variable_name = 'Variable ' + weapontype.name
 		options.append({'id': '', 'name': weapon_name})
