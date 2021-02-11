@@ -94,35 +94,35 @@ def table_db_columns_create():
 
 	name = 'All BenefitS'
 
-	entry = Benefit(all=True, name=name, hide=True )
+	entry = Benefit(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Benefit(current=True, name=name, hide=True )
+	entry = Benefit(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Benefit(any=True, name=name, hide=True )
+	entry = Benefit(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Benefit(var=True, name=name, hide=True )
+	entry = Benefit(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Benefit(none=True, name=name, hide=True )
+	entry = Benefit(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Benefit).filter_by(hide=True).all()
+	results = db.session.query(Benefit).filter_by(approved=None).all()
 
 	for result in results:
 		print (result.id)
