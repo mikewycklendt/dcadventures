@@ -95,6 +95,13 @@ def conditions_create():
 		db.session.add(entry)
 		db.session.commit()
 
+	results = Condition.query.all()
+
+	for r in results:
+		print (str(r.id) + ' ' + r.name)
+
+	return ('conditions added')
+
 
 @app.route('/table/db')
 def table_db_columns_create():
