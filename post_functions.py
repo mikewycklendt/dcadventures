@@ -827,6 +827,6 @@ def trait(value, trait):
 	elif trait == 'active':
 		value =  'Active Opponent Rank'
 	elif trait == 'choice':
-		value =  "Players Chosen DC
+		value =  'Players Chosen DC'
 	
 	return (value)
