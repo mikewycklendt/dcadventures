@@ -87,7 +87,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
-	features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
+	features = db.session.query(Feature).filter(Feature.show == True).order_by(Feature.name).all()
 
 	equipment = db.session.query(Equipment).filter(Equipment.show == True).order_by(Equipment.name).all()
 

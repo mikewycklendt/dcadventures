@@ -84,9 +84,9 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	power_type = PowerType.query.all()
 
-	features = db.session.query(Feature).filter(Feature.name != '').order_by(Feature.name).all()
+	features = db.session.query(Feature).filter(Feature.show == True).order_by(Feature.name).all()
 
-	equipment = db.session.query(Equipment).order_by(Equipment.name).all()
+	equipment = db.session.query(Equipment).filter(Equipment.show == True).order_by(Equipment.name).all()
 
 	equipment_type = EquipType.query.all()
 

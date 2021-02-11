@@ -125,14 +125,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
 
-	base_conditions = Condition.query.all()
-	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
-	conditions_raw = []
-	for condition in base_conditions:
-		conditions_raw.append(condition.name)
-	for condition in combined_conditions:
-		conditions_raw.append(condition)
-	conditions = sorted(conditions_raw)
+	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 
 	advantages = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
 

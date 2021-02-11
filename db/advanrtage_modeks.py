@@ -205,6 +205,12 @@ class Benefit(db.Model):
 	description = db.Column(db.String())
 	effort = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	
 
 	def format(self):
 		return {
@@ -214,6 +220,11 @@ class Benefit(db.Model):
 			'description': self.description,
 			'effort': self.effort,
 			'approved': self.approved
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none
 		}
 
 class AdvAltCheck(db.Model):

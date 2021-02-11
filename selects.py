@@ -445,57 +445,61 @@ def skill_trait_select():
 
 	this = ['This Power']
 
-	skills_query = db.session.query(Skill).order_by(Skill.name).all()
+	skills_query = db.session.query(Skill).filter(Skill.show == True).order_by(Skill.name).all()
 	skills = [{'id': '', 'name': 'Skill'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for skill in skills_query:
-		skills.append({'id': skill.name, 'name': skill.name})
+		skills.append({'id': skill.id, 'name': skill.name})
 
-	abilities_query = db.session.query(Ability).order_by(Ability.name).all()
+	abilities_query = db.session.query(Ability).filter(Ability.show == True).order_by(Ability.name).all()
 	abilities = [{'id': '', 'name': 'Ability'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for a in abilities_query:
-		abilities.append({'id': a.name, 'name': a.name})
+		abilities.append({'id': a.id, 'name': a.name})
 
-	defenses_query = db.session.query(Defense).order_by(Defense.name).all()
+	defenses_query = db.session.query(Defense).filter(Defense.show == True).order_by(Defense.name).all()
 	defenses = [{'id': '', 'name': 'Defense'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for d in defenses_query:
-		defenses.append({'id': d.name, 'name': d.name})
+		defenses.append({'id': d.id, 'name': d.name})
 
-	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
-	powers_sorted = sorted(powers_raw)
+	powers_query = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 	powers = [{'id': '', 'name': 'Power'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
-	for p in powers_sorted:
-		powers.append({'id': p, 'name': p})
+	for p in powers_query:
+		powers.append({'id': p.id, 'name': p.name})
 
-	bonuses_raw = ['Balancing', 'Maneuvering', 'Standing', 'Tumbling', 'Climbing', 'Jumping', 'Running', 'Swimming', 'Bluffing', 'Disguise', 'Feinting', 'Innuendo', 'Tricking', 'Detect Illusion', 'Detect Influence', 'Evaluate', 'Innuendo', 'Resist Influence', 'Coercing', 'Demoralizing', 'Intimidating Minions', 'Search', 'Gather Evidence', 'Analyze Evidence', 'Gather Information', 'Surveillance', 'Hearing', 'Seeing', 'Other Senses', 'Concealing', 'Contorting', 'Escaping', 'Legerdemain', 'Stealing', 'Hiding', 'Tailing', 'Operating', 'Building', 'Repairing', 'Jury-Rigging', 'Demolitions', 'Inventing', 'Security', 'Diagnosis', 'Provide Care', 'Revive', 'Stabalize', 'Treat Disease and Poison']
-	bonuses_sorted = sorted(bonuses_raw)
+	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Enhanced Skill'}]
 	if sub == 'variable':
-		skills.append({'id': 'x', 'name': 'Variable'})
-	for b in bonuses_sorted:
-		bonuses.append({'id': b, 'name': b})
+		skills.append({'id': 'x', 'name': 'Variable Enhanced Skill'})
+	for b in bonuses_query:
+		bonuses.append({'id': b.id, 'name': b.name})
 
-	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
-	advantages_sorted = sorted(advantages_raw)
+	
+	advantage_query = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
 	advantages = [{'id': '', 'name': 'Advantage'}]
 	if sub == 'variable':
-		skills.append({'id': 'x', 'name': 'Variable'})
-	for a in advantages_sorted:
-		advantages.append({'id': a, 'name': a})
+		skills.append({'id': 'x', 'name': 'Variable Advantage'})
+	for a in advantages_query:
+		advantages.append({'id': a.id, 'name': a.name})
 
-	extras_query = db.session.query(Extra).order_by(Extra.name).all()
+	extras_query = db.session.query(Extra).filter(Extra.show == True).order_by(Extra.name).all()
 	extras = [{'id': '', 'name': 'Extra'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for e in extras_query:
-		extras.append({'id': e.name, 'name': e.name})
+		try:
+			power = db.session.query(Power).filter_by(id=e.power_id).one()
+			name = e.name + ' (' + power.name + ')'
+			extras.append({'id': e.id, 'name': name})
+		except:
+			print('no power')
+			body['success'] = False
 
 	if trait == 'ability':
 		body['options'] = abilities
@@ -512,37 +516,37 @@ def skill_trait_select():
 	elif trait == 'extra':
 		body['options'] = extras
 	elif trait == 'interact':
-		body['options'] = [{'id': 'Any Interaction', 'name': 'Any Interarction'}]
+		body['options'] = [{'id': '0', 'name': 'Any Interarction'}]
 	elif trait == 'manipulate':
-		body['options'] = [{'id': 'Any Interaction', 'name': 'Any Manipulation'}]
+		body['options'] = [{'id': '0', 'name': 'Any Manipulation'}]
 	elif trait == 'this_power':
-		body['options'] = [{'id': 'This Power', 'name': 'This Power'}]
+		body['options'] = [{'id': '0', 'name': 'This Power'}]
 	elif trait == 'this_advantage':
-		body['options'] = [{'id': 'This Advantage', 'name': 'This Advantage'}]
+		body['options'] = [{'id': '0', 'name': 'This Advantage'}]
 	elif trait == 'sense':
-		body['options'] = [{'id': 'Sense', 'name': 'Sense'}]
+		body['options'] = [{'id': '0', 'name': 'Sense'}]
 	elif trait == 'size':	
-		body['options'] = [{'id': 'Size Rank', 'name': 'Size Rank'}]
+		body['options'] = [{'id': '0', 'name': 'Size Rank'}]
 	elif trait == 'speed':	
-		body['options'] = [{'id': 'Speed Rank', 'name': 'Speed Rank'}] 
+		body['options'] = [{'id': '0', 'name': 'Speed Rank'}] 
 	elif trait == 'intim':
-		body['options'] = [{'id': 'Intimidation Rank', 'name': 'Intimidation Rank'}]
+		body['options'] = [{'id': '0', 'name': 'Intimidation Rank'}]
 	elif trait == 'any':
-		body['options'] = [{'id': 'Any Trait', 'name': 'Any Trait'}]
+		body['options'] = [{'id': '0', 'name': 'Any Trait'}]
 	elif trait == 'x':
-		body['options'] = [{'id': 'Variable', 'name': 'Variable'}]
+		body['options'] = [{'id': '0', 'name': 'Variable'}]
 	elif trait == 'auto':
-		body['options'] = [{'id': 'Automatic', 'name': 'Automatic'}]
+		body['options'] = [{'id': '0', 'name': 'Automatic'}]
 	elif trait == '':
-		body['options'] = [{'id': '', 'name': 'Trait'}]
+		body['options'] = [{'id': '0', 'name': 'Trait'}]
 	elif trait == 'immoveable':
-		body['options'] = [{'id': 'Immoveable', 'name': 'Immoveable'}]
+		body['options'] = [{'id': '0', 'name': 'Immoveable'}]
 	elif trait == 'this_bonus':
-		body['options'] = [{'id': 'This Skill', 'name': 'This Skill'}]
+		body['options'] = [{'id': '0', 'name': 'This Skill'}]
 	elif trait == 'active':
-		body['options'] = [{'id': 'Active Opponent Rank', 'name': 'Active Opponent Rank'}]
+		body['options'] = [{'id': '0', 'name': 'Active Opponent Rank'}]
 	elif trait == 'choice':
-		body['options'] = [{'id': "Players Chosen DC", 'name': "Players Chosen DC"}]
+		body['options'] = [{'id': "0", 'name': "Players Chosen DC"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': ''}]

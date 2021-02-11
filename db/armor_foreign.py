@@ -23,37 +23,43 @@ from errors.equipment_errors import equip_belt_post_errors, equip_check_post_err
 
 
 
-class Weapon(db.Model):
+class Armor(db.Model):
 
-	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
-	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
+	type_id = db.Column(db.Integer, db.ForeignKey('armor_type.id'))
 	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
-	length_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	resistance = db.Column(db.Integer, db.ForeignKey('defense.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 
 
-class WeapDescriptor(db.Model):
 
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
+class ArmDescriptor(db.Model):
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
 	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 
 
-class WeapBenefit(db.Model):
-
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-
+class ArmDefense(db.Model):
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
+	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 
 
-class WeapCondition(db.Model):
 
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+
+
+
+'
+
+
+class Armor(db.Model):
+
+	type_id = db.Column(db.Integer, db.ForeignKey('armor_type.id'))
+	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
+
+
+
+class ArmDescriptor(db.Model):
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
+	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+
+
+class ArmDefense(db.Model):
+	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
+	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 

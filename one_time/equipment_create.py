@@ -9,7 +9,7 @@ def equipment_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=2, cost=2, description=description)
+		entry = Equipment(name=i, type_id=2, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -20,7 +20,7 @@ def equipment_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=3, cost=3, description=description)
+		entry = Equipment(name=i, type_id=3, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -31,7 +31,7 @@ def equipment_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=4, cost=4, description=description)
+		entry = Equipment(name=i, type_id=4, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -42,7 +42,7 @@ def equipment_create():
 		description = 'This is the description for ' + i + '.  '
 		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=5, cost=5, description=description)
+		entry = Equipment(name=i, type_id=5, base=True, show=True)
 		db.session.add(entry)
 		db.session.commit()
 

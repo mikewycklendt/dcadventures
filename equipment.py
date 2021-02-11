@@ -63,7 +63,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	old_feature = ''
 
-	features = db.session.query(Feature).filter(Feature.name != old_feature).order_by(Feature.name).all()
+	features = db.session.query(Feature).filter(Feature.show == True).order_by(Feature.name).all()
 
 	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 
@@ -115,18 +115,9 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	professions = db.session.query(Job).filter(Job.show == True).order_by(Job.name).all()
 	
+	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 
-	base_conditions = Condition.query.all()
-	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
-	conditions_raw = []
-	for condition in base_conditions:
-		conditions_raw.append(condition.name)
-	for condition in combined_conditions:
-		conditions_raw.append(condition)
-	conditions = sorted(conditions_raw)
-
-	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
-	powers = sorted(powers_raw)
+	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 
 	negatives = []
 	for i in range(-20, 1, 1):

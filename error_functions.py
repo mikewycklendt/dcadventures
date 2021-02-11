@@ -915,7 +915,6 @@ def int_check(value, name, errors):
 
 def db_integer(table, value):
 	
-
 	if value == 'all':
 		try:
 			query = db.session.query(table).filter_by(all=True).first()

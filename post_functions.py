@@ -750,4 +750,83 @@ def variable_trait(value, trait):
 			value = 'Variable Extra'
 
 	return (value)
+
+
+def trait(value, trait):
+
+	if trait == 'ability':
+		try:
+			query = db.session.query(Ability).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'defense':
+		try:
+			query = db.session.query(Defense).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'skill':
+		try:
+			query = db.session.query(Skill).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'bonus':
+		try:
+			query = db.session.query(SkillBonus).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'power':
+		try:
+			query = db.session.query(Power).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'advantage':
+		try:
+			query = db.session.query(Advantage).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'extra':
+		try:
+			query = db.session.query(Extra).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'interact':
+		value =  'Any Interarction'
+	elif trait == 'manipulate':
+		value =  'Any Manipulation'
+	elif trait == 'this_power':
+		value =  'This Power'
+	elif trait == 'this_advantage':
+		value =  'This Advantage'
+	elif trait == 'sense':
+		value =  'Sense'
+	elif trait == 'size':	
+		value =  'Size Rank'
+	elif trait == 'speed':	
+		value =  'Speed Rank'
+	elif trait == 'intim':
+		value =  'Intimidation Rank'
+	elif trait == 'any':
+		value =  'Any Trait'
+	elif trait == 'x':
+		value =  'Variable'
+	elif trait == 'auto':
+		value =  'Automatic'
+	elif trait == '':
+		 value = ''
+	elif trait == 'immoveable':
+		value =  'Immoveable'
+	elif trait == 'this_bonus':
+		value =  'This Skill'
+	elif trait == 'active':
+		value =  'Active Opponent Rank'
+	elif trait == 'choice':
+		value =  "Players Chosen DC
 	
+	return (value)
