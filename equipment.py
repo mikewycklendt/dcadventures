@@ -77,7 +77,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	distances = db.session.query(Unit).filter_by(type_id=3)
 	
-	expertise = db.session.query(SkillBonus).filter(SkillBonus.skill=5, SkillBonus.show == True).all()
+	expertise = db.session.query(SkillBonus).filter(SkillBonus.skill == 5, SkillBonus.show == True).all()
 
 	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
 	
