@@ -133,6 +133,10 @@ class AdvMod(db.Model):
 	profession = db_integer(Job, profession)
 	bonus_conflict = db_integer(ConflictAction, bonus_conflict)
 	penalty_conflict = db_integer(ConflictAction, penalty_conflict)
+	bonus_check = db_integer(Check, bonus_check)
+	bonus_check_range = db_integer(Ranged, bonus_check_range)
+	penalty_check = db_integer(Check, penalty_check)
+	penalty_check_range = db_integer(Ranged, penalty_check_range)
 	
 	
 class AdvOpposed(db.Model):
@@ -488,6 +492,10 @@ class AdvMod(db.Model):
 	profession = get_name(Job, profession)
 	bonus_conflict = get_name(ConflictAction, bonus_conflict)
 	penalty_conflict = get_name(ConflictAction, penalty_conflict)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
 	
 	
 class AdvOpposed(db.Model):

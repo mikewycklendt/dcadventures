@@ -125,6 +125,10 @@ class EquipMod(db.Model):
 	penalty_conflict = db_integer(ConflictAction, penalty_conflict)
 	skill = db_integer(Skill, skill)
 	light = db_integer(Light, light)
+	bonus_check = db_integer(Check, bonus_check)
+	bonus_check_range = db_integer(Ranged, bonus_check_range)
+	penalty_check = db_integer(Check, penalty_check)
+	penalty_check_range = db_integer(Ranged, penalty_check_range)
 
 	
 class EquipOpposed(db.Model):
@@ -177,21 +181,21 @@ class EquipOpposed(db.Model):
 
 class Equipment(db.Model):
 
-	cost = integer()
-	toughness = integer()
-	speed_mod = integer()
-	mod_multiple_count = integer()
+	cost = integer(cost)
+	toughness = integer(toughness)
+	speed_mod = integer(speed_mod)
+	mod_multiple_count = integer(mod_multiple_count)
 
 
 class Feature(db.Model):
 
-	toughness = integer()
+	toughness = integer(toughness)
 
 
 	
 class EquipBelt(db.Model):
 
-	cost = integer()
+	cost = integer(cost)
 
 	
 class EquipCheck(db.Model):
@@ -199,7 +203,7 @@ class EquipCheck(db.Model):
 
 class EquipDamage(db.Model):
 
-	toughness = integer()
+	toughness = integer(toughness)
 
 	
 class EquipDescriptor(db.Model):
@@ -207,32 +211,28 @@ class EquipDescriptor(db.Model):
 	
 class EquipLimit(db.Model):
 
-	time = integer()
-	range = integer()
-	time_capacity = integer()
-	capacity = integer()
-	area_long = integer()
-	area_wide = integer()
-	uses = integer()
+	time = integer(time)
+	range = integer(range)
+	time_capacity = integer(time_capacity)
+	capacity = integer(capacity)
+	area_long = integer(area_long)
+	area_wide = integer(area_wide)
+	uses = integer(uses)
 
 	
 class EquipMod(db.Model):
 
-	bonus = integer()
-	penalty = integer()
-	bonus_trait = integer()
-	bonus_check = integer()
-	bonus_check_range = integer()
-	penalty_trait = integer()
-	penalty_check = integer()
-	penalty_check_range = integer()
-	multiple_count = integer()
-	lasts = integer()
+	bonus = integer(bonus)
+	penalty = integer(penalty)
+	bonus_trait = integer(bonus_trait)
+	penalty_trait = integer(penalty_trait)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
 
 
 class EquipOpposed(db.Model):
 
-	dc = integer()
+	dc = integer(dc)
 
 
 
@@ -262,25 +262,16 @@ class Equipment(db.Model):
 	expertise = get_name(SkillBonus, expertise)
 	
 	
-class Feature(db.Model):
-	
-	equip_id = integer(equip_id)
-	
-	
-class EquipFeature(db.Model):
-	
-	equip_id = integer(equip_id)
-	feature = integer(feature)
 	
 
 class EquipEffect(db.Model):
 	
-	equip_id = integer(equip_id)
+	
 	
 	
 class EquipBelt(db.Model):
 	
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	weapon = get_name(Weapon, weapon)
 	equipment = get_name(Equipment, equipment)
@@ -288,7 +279,7 @@ class EquipBelt(db.Model):
 	
 class EquipCheck(db.Model):
 	
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 
@@ -300,7 +291,7 @@ class EquipCheck(db.Model):
 	
 class EquipDamage(db.Model):
 	
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 
@@ -311,7 +302,7 @@ class EquipDamage(db.Model):
 	
 class EquipDescriptor(db.Model):
 	
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 
@@ -320,7 +311,7 @@ class EquipDescriptor(db.Model):
 
 class EquipLimit(db.Model):
 
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 
@@ -334,7 +325,7 @@ class EquipLimit(db.Model):
 class EquipMod(db.Model):
 
 
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 
@@ -358,12 +349,16 @@ class EquipMod(db.Model):
 	penalty_conflict = get_name(ConflictAction, penalty_conflict)
 	skill = get_name(Skill, skill)
 	light = get_name(Light, light)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
 
 	
 class EquipOpposed(db.Model):
 
 
-	equip_id = integer(equip_id)
+	
 	feature = get_name(Feature, feature)
 	effect = get_name(EquipEffect, effect)
 

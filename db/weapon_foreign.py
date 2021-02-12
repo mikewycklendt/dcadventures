@@ -92,24 +92,24 @@ class WeapCondition(db.Model):
 
 class Weapon(db.Model):
 
-	cost = integer()
-	critical = integer()
-	damage = integer()
-	toughness = integer()
-	length = integer()
-	resist_dc = integer()
-	power_rank = integer()
-	hands = integer()
-	reach = integer()
-	ranged_attack_bonus = integer()
-	protect = integer()
-	ranged_burst = integer()
-	ranged_area_damage = integer()
-	attack_bonus = integer()
-	perception_dc = integer()
-	grenade_burst = integer()
-	grenade_area_damage = integer()
-	double_mod = integer()
+	cost = integer(cost)
+	critical = integer(critical)
+	damage = integer(damage)
+	toughness = integer(toughness)
+	length = integer(length)
+	resist_dc = integer(resist_dc)
+	power_rank = integer(power_rank)
+	hands = integer(hands)
+	reach = integer(reach)
+	ranged_attack_bonus = integer(ranged_attack_bonus)
+	protect = integer(protect)
+	ranged_burst = integer(ranged_burst)
+	ranged_area_damage = integer(ranged_area_damage)
+	attack_bonus = integer(attack_bonus)
+	perception_dc = integer(perception_dc)
+	grenade_burst = integer(grenade_burst)
+	grenade_area_damage = integer(grenade_area_damage)
+	double_mod = integer(double_mod)
 
 
 class WeapDescriptor(db.Model):
@@ -121,8 +121,8 @@ class WeapBenefit(db.Model):
 
 class WeapCondition(db.Model):
 
-	damage_value = integer()
-	damage = integer()
+	damage_value = integer(damage_value)
+	damage = integer(damage)
 
 
 

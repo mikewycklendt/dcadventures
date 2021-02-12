@@ -7,7 +7,7 @@ sorted(lis, key = lambda i: i['age'])
 
 
 git fetch origin master
-git reset --hard FETCH_HEAD
+git reset --hard FETCH_HEADsud
 
 
 

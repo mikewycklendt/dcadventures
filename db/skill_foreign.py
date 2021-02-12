@@ -130,6 +130,10 @@ class SkillMod(db.Model):
 	penalty_conflict = db_integer(ConflictAction, penalty_conflict)
 	skill = db_integer(Skill, skill)
 	light = db_integer(Light, light)
+	bonus_check = db_integer(Check, bonus_check)
+	bonus_check_range = db_integer(Ranged, bonus_check_range)
+	penalty_check = db_integer(Check, penalty_check)
+	penalty_check_range = db_integer(Ranged, penalty_check_range)
 
 
 class SkillOpposed(db.Model):
@@ -185,16 +189,15 @@ class SkillTime(db.Model):
 
 
 
-
 class SkillBonus(db.Model):
 
-	dc_value = db.Column(db.Integer)
-	dc_mod = db.Column(db.Integer)
-	targets = db.Column(db.Integer)
-	speed_turns = db.Column(db.Integer)
-	speed_mod = db.Column(db.Integer)
-	speed_value = db.Column(db.Integer)
-	modifiers_multiple_count = db.Column(db.Integer)
+	dc_value = integer(dc_value)
+	dc_mod = integer(dc_mod)
+	targets = integer(targets)
+	speed_turns = integer(speed_turns)
+	speed_mod = integer(speed_mod)
+	speed_value = integer(speed_value)
+	modifiers_multiple_count = integer(modifiers_multiple_count)
 
 
 
@@ -204,102 +207,98 @@ class SkillAbility(db.Model):
 
 class SkillCheck(db.Model):
 
-	mod = db.Column(db.Integer)
-	trait = db.Column(db.Integer)
-	action = db.Column(db.Integer)
+	mod = integer(mod)
+	trait = integer(trait)
+	action = integer(action)
 
 
 class SkillCirc(db.Model):
 
-	mod = db.Column(db.Integer)
-	speed = db.Column(db.Integer)
-	temp = db.Column(db.Integer)
-	time = db.Column(db.Integer)
-	conditions = db.Column(db.Integer)
-	conditions_effect = db.Column(db.Integer)
-	measure_rank_value = db.Column(db.Integer)
-	unit_value = db.Column(db.Integer)
-	measure_trait = db.Column(db.Integer)
-	measure_mod = db.Column(db.Integer)
-	turns = db.Column(db.Integer)
-	unit_time = db.Column(db.Integer)
-	time_rank = db.Column(db.Integer)
+	mod = integer(mod)
+	speed = integer(speed)
+	temp = integer(temp)
+	time = integer(time)
+	conditions = integer(conditions)
+	conditions_effect = integer(conditions_effect)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	turns = integer(turns)
+	unit_time = integer(unit_time)
+	time_rank = integer(time_rank)
 
 
 class SkillDC(db.Model):
 
-	value = db.Column(db.Integer)
-	mod = db.Column(db.Integer)
-	math_value = db.Column(db.Integer)
-	math_trait = db.Column(db.Integer)
-	inflict_flat = db.Column(db.Integer)
-	inflict_trait = db.Column(db.Integer)
-	inflict_mod = db.Column(db.Integer)
-	inflict_bonus = db.Column(db.Integer)
-	damage_mod = db.Column(db.Integer)
-	measure_rank_value = db.Column(db.Integer)
-	unit_value = db.Column(db.Integer)
-	measure_trait = db.Column(db.Integer)
-	measure_mod = db.Column(db.Integer)
-	condition_turns = db.Column(db.Integer)
+	value = integer(value)
+	mod = integer(mod)
+	math_value = integer(math_value)
+	math_trait = integer(math_trait)
+	inflict_flat = integer(inflict_flat)
+	inflict_trait = integer(inflict_trait)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	condition_turns = integer(condition_turns)
 
 
 class SkillDegree(db.Model):
 
-	value = db.Column(db.Integer)
-	time = db.Column(db.Integer)
-	object = db.Column(db.Integer)
-	inflict_flat = db.Column(db.Integer)
-	inflict_trait = db.Column(db.Integer)
-	inflict_mod = db.Column(db.Integer)
-	inflict_bonus = db.Column(db.Integer)
-	damage_mod = db.Column(db.Integer)
-	consequence_action = db.Column(db.Integer)
-	consequence_trait = db.Column(db.Integer)
-	knowledge_count = db.Column(db.Integer)
-	level_direction = db.Column(db.Integer)
-	measure_rank_value = db.Column(db.Integer)
-	unit_value = db.Column(db.Integer)
-	measure_trait = db.Column(db.Integer)
-	measure_mod = db.Column(db.Integer)
-	condition_damage_value = db.Column(db.Integer)
-	condition_damage = db.Column(db.Integer)
-	condition_turns = db.Column(db.Integer)
-	nullify = db.Column(db.Integer)
+	value = integer(value)
+	time = integer(time)
+	object = integer(object)
+	inflict_flat = integer(inflict_flat)
+	inflict_trait = integer(inflict_trait)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	consequence_action = integer(consequence_action)
+	consequence_trait = integer(consequence_trait)
+	knowledge_count = integer(knowledge_count)
+	level_direction = integer(level_direction)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	condition_turns = integer(condition_turns)
+	nullify = integer(nullify)
 
 
 class SkillMod(db.Model):
 
-	bonus = db.Column(db.Integer)
-	penalty = db.Column(db.Integer)
-	bonus_trait = db.Column(db.Integer)
-	bonus_check = db.Column(db.Integer)
-	bonus_check_range = db.Column(db.Integer)
-	penalty_trait = db.Column(db.Integer)
-	penalty_check = db.Column(db.Integer)
-	penalty_check_range = db.Column(db.Integer)
-	multiple_count = db.Column(db.Integer)
-	lasts = db.Column(db.Integer)
+	bonus = integer(bonus)
+	penalty = integer(penalty)
+	bonus_trait = integer(bonus_trait)
+	penalty_trait = integer(penalty_trait)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
 
 
 class SkillOpposed(db.Model):
 
-	trait = db.Column(db.Integer)
-	mod = db.Column(db.Integer)
-	opponent_trait = db.Column(db.Integer)
-	opponent_mod = db.Column(db.Integer)
-	recurring_value = db.Column(db.Integer)
+	trait = integer(trait)
+	mod = integer(mod)
+	opponent_trait = integer(opponent_trait)
+	opponent_mod = integer(opponent_mod)
+	recurring_value = integer(recurring_value)
 
 
 class SkillTime(db.Model):
 
-	rank1_value = db.Column(db.Integer)
-	rank2_value = db.Column(db.Integer)
-	value = db.Column(db.Integer)
-	trait = db.Column(db.Integer)
-	math_value = db.Column(db.Integer)
-	recovery_penalty = db.Column(db.Integer)
-	recovery_time = db.Column(db.Integer)
+	rank1_value = integer(rank1_value)
+	rank2_value = integer(rank2_value)
+	value = integer(value)
+	trait = integer(trait)
+	math_value = integer(math_value)
+	recovery_penalty = integer(recovery_penalty)
+	recovery_time = integer(recovery_time)
 
 
 
@@ -425,6 +424,10 @@ class SkillMod(db.Model):
 	penalty_conflict = get_name(ConflictAction, penalty_conflict)
 	skill = get_name(Skill, skill)
 	light = get_name(Light, light)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
 
 
 class SkillOpposed(db.Model):
