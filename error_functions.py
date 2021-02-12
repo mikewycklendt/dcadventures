@@ -898,8 +898,8 @@ def int_check(value, name, errors):
 	error = False
 
 	try:
-	if value != 'perm' and value != 'rank' and value != 'any' and value != 'always' and value != 'round' and value != 'extra' and value != 'null' and value != 'normal' and value != 'instant' and value != 'distance' and value != 'vert' and value != 'free' and value != 'result' and value != 'all' and value != 'trait' and value != 'imperv' and value != 'check' and value != 'turn' and value != 'degree' and value != 'scene' and value != 'auto' and value != 'advantage' and value != 'bonus' and value != 'immune' and value != 'penalty' and value != 'double' and value != 'flat' and value != 'x' and value != '' and value != 'none' and value != 'current' and value != 'all' and value != 'any' and value !- 'x' and value != 'power' and value !=  'skill' and value != 'extra' and value != 'free' and value != 'linked_first' and value != 'linked_second':
-		value = int(value)
+		if value != 'perm' and value != 'rank' and value != 'any' and value != 'always' and value != 'round' and value != 'extra' and value != 'null' and value != 'normal' and value != 'instant' and value != 'distance' and value != 'vert' and value != 'free' and value != 'result' and value != 'all' and value != 'trait' and value != 'imperv' and value != 'check' and value != 'turn' and value != 'degree' and value != 'scene' and value != 'auto' and value != 'advantage' and value != 'bonus' and value != 'immune' and value != 'penalty' and value != 'double' and value != 'flat' and value != 'x' and value != '' and value != 'none' and value != 'current' and value != 'all' and value != 'any' and value !- 'x' and value != 'power' and value !=  'skill' and value != 'extra' and value != 'free' and value != 'linked_first' and value != 'linked_second':
+			value = int(value)
 	except:
 		error = True
 		message = name + ' value is not valid.'
