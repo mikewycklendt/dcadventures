@@ -268,7 +268,7 @@ class PowerChar(db.Model):
 	weaken_trait_type = db.Column(db.String())
 	weaken_trait = db.Column(db.Integer)
 	weaken_broad = db.Column(db.String())
-	
+	weaken_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))	
 	weaken_simultaneous = db.Column(db.Boolean)
 	limited_by = db.Column(db.String())
 	limited_other = db.Column(db.String())
@@ -286,7 +286,7 @@ class PowerChar(db.Model):
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
 	points_trait = db.Column(db.Integer)
-
+	points_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	appear_target = db.Column(db.String())
 	appear_description = db.Column(db.String())
 	insub_type = db.Column(db.String())
@@ -360,7 +360,7 @@ class PowerCirc(db.Model):
 	check_trait = db.Column(db.Integer)
 	null_type = db.Column(db.String())
 	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-
+	null_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	null_trait_type = db.Column(db.String())
 	null_trait = db.Column(db.Integer)
 
@@ -415,8 +415,8 @@ class PowerCreate(db.Model):
 	transform_type = db.Column(db.String())
 	transform_start_mass = db.Column(db.Integer)
 	transfom_mass = db.Column(db.Integer)
-
-
+	transform_start_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	transform_end_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	move_player = db.Column(db.String())
 	move_player_trait = db.Column(db.Integer)
 	move_opponent_check = db.Column(db.Boolean)
@@ -525,7 +525,7 @@ class PowerDamage(db.Model):
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -557,7 +557,7 @@ class PowerDC(db.Model):
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Boolean)
-
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	descriptor_possess = db.Column(db.String())
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
@@ -626,7 +626,7 @@ class PowerDefense(db.Model):
 	immunity_type = db.Column(db.String())
 	immunity_trait_type = db.Column(db.String())
 	immunity_trait = db.Column(db.Integer)
-
+	immunity_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	immunity_damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	immunity_rule = db.Column(db.String())
 	cover_check = db.Column(db.Boolean)
@@ -934,15 +934,15 @@ class PowerMod(db.Model):
 	objects_character = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	effortless_degree = db.Column(db.Integer)
 	effortless_retries = db.Column(db.Boolean)
-
+	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	area_mod =db.Column(db.Integer)
 	area_range = db.Column(db.Integer)
 	area_per_rank = db.Column(db.Boolean)
-
+	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
 	limited_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-
+	limited_source = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
 	limited_trait_type = db.Column(db.String())
@@ -954,7 +954,7 @@ class PowerMod(db.Model):
 	limited_degree = db.Column(db.Integer)
 	limited_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	limited_subsense = db.Column(db.String())
-	
+	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
@@ -963,7 +963,7 @@ class PowerMod(db.Model):
 	reflect_dc = db.Column(db.Integer)
 	reflect_trait_type = db.Column(db.String())
 	reflect_trait = db.Column(db.Integer)
-	
+	reflect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	subtle_opponent_trait_type = db.Column(db.String())
 	subtle_opponent_trait = db.Column(db.Integer)
 	subtle_dc = db.Column(db.Integer)
@@ -1126,7 +1126,7 @@ class PowerMove(db.Model):
 	teleport_obstacles = db.Column(db.Boolean)
 	dimension_type = db.Column(db.String())
 	dimension_mass_rank = db.Column(db.Integer)
-
+	dimension_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	special_space = db.Column(db.String())
 	special_time = db.Column(db.String())
 	special_time_carry = db.Column(db.Integer)
@@ -1356,7 +1356,7 @@ class PowerResist(db.Model):
 	resist_check_type = db.Column(db.String())
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.Integer)
-
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	requires_check = db.Column(db.Boolean)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	check_trait_type = db.Column(db.String())
@@ -1394,14 +1394,14 @@ class PowerResistBy(db.Model):
 	effect = db.Column(db.String())
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	degree = db.Column(db.Integer)
-
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	weaken_max = db.Column(db.Integer)
 	weaken_restored = db.Column(db.Integer)
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	damage =  db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
-	
+	nullify_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	nullify_alternate = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	extra_effort = db.Column(db.Boolean)
 
@@ -1583,7 +1583,7 @@ class PowerTime(db.Model):
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.Integer)
 	dc = db.Column(db.Integer)
-
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	recovery = db.Column(db.Boolean)
 	recovery_penalty = db.Column(db.Integer)
