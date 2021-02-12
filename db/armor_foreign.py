@@ -23,43 +23,64 @@ from errors.equipment_errors import equip_belt_post_errors, equip_check_post_err
 
 
 
+class ArmDescriptor(db.Model):
+	armor_id = integer(aemor_id)
+	descriptor = db_integer(Descriptor, descriptor)
+
+
+class ArmDefense(db.Model):
+	armor_id = integer(aemor_id)
+	defense = db_integer(Defense, defense)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Armor(db.Model):
 
-	type_id = db.Column(db.Integer, db.ForeignKey('armor_type.id'))
-	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
+	cost = integer(cost)
+	toughness = integer(toughness)
+	active = integer(active)
+	perception = integer(perception)
+
+
+
+
+class ArmDefense(db.Model):
+
+	bonus = integer(bonus)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 class ArmDescriptor(db.Model):
-	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+	armor_id = integer(aemor_id)
+	descriptor = get_name(Descriptor, descriptor)
 
 
 class ArmDefense(db.Model):
-	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
-	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
+	armor_id = integer(aemor_id)
+	defense = get_name(Defense, defense)
 
-
-
-
-
-
-'
-
-
-class Armor(db.Model):
-
-	type_id = db.Column(db.Integer, db.ForeignKey('armor_type.id'))
-	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
-
-
-
-class ArmDescriptor(db.Model):
-	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-
-
-class ArmDefense(db.Model):
-	armor_id = db.Column(db.Integer, db.ForeignKey('armor.id'))
-	defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 

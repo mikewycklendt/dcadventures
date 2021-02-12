@@ -173,11 +173,6 @@ class AdvTime(db.Model):
 	units = db_integer(Unit, units)
 	math = db_integer(Math, math)
 	check_type = db_integer(Check, check_type)
-	
-	
-	
-	
-	
 
 
 
@@ -189,168 +184,351 @@ class AdvTime(db.Model):
 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Advantage(db.Model):
 
-	adv_type = db.Column(db.Integer, db.ForeignKey('advantage_type.id'))
-	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	conflict_immune = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	action1 = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	action2 = db.Column(db.Integer, db.ForeignKey('actions.id'))
+
+	ranked_ranks = integer(ranked_ranks)
+	ranked_max = integer(ranked_max)
+	trait = integer(trait)
+	replaced_trait = integer(replaced_trait)
+	skill = integer(skill)
+	dc_value = integer(dc_value)
+	dc_mod = integer(dc_mod)
+	invent_trait = integer(invent_trait)
+	gm_trait = integer(gm_trait)
+	languages = integer(languages)
+	language_rank = integer(language_rank)
+	mods_count = integer(mods_count)
+
+
+
+class AdvAltCheck(db.Model):
+
+	mod = integer(mod)
+	trait = integer(trait)
+	action = integer(action)
+
+class AdvCirc(db.Model):
+
+	mod = integer(mod)
+	rounds = integer(rounds)
+	check_trait = integer(check_trait)
+	null_trait = integer(null_trait)
+	null_override_trait = integer(null_override_trait)
+
+	
+class AdvCombined(db.Model):
+
+	ranks = integer(ranks)
+
+
+class AdvCondition(db.Model):
+
+	damage_value = integer(damage_value)
+	damage = integer(damage)
+
+
+class AdvDC(db.Model):
+
+	value_value = integer(value_value)
+	math_value = integer(math_value)
+	math_trait = integer(math_trait)
+	check_trait = integer(check_trait)
+	check_mod = integer(check_mod)
+
+
+
+class AdvDegree(db.Model):
+
+	value = integer(value)
+	consequence_action = integer(consequence_action)
+	consequence_trait = integer(consequence_trait)
+	knowledge_count = integer(knowledge_count)
+	circ_value = integer(circ_value)
+	circ_turns = integer(circ_turns)
+	circ_trait = integer(circ_trait)
+	measure_val1 = integer(measure_val1)
+	measure_trait = integer(measure_trait)
+	measure_value = integer(measure_value)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	nullify = integer(nullify)
+	
+	
+class AdvEffort(db.Model):
+	
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	benefit_turns = integer(benefit_turns)
+	benefit_count = integer(benefit_count)
+
+	
+class AdvMinion(db.Model):
+	
+	points = integer(points)
+	sacrifice_cost = integer(sacrifice_cost)
+	attitude_trait = integer(attitude_trait)
+	resitable_dc = integer(resitable_dc)
+	multiple_value = integer(multiple_value)
+	
+	
+class AdvMod(db.Model):
+
+	bonus = integer(bonus)
+	penalty = integer(penalty)
+	bonus_trait = integer(bonus_trait)
+	bonus_check = integer(bonus_check)
+	bonus_check_range = integer(bonus_check_range)
+	penalty_trait = integer(penalty_trait)
+	penalty_check = integer(penalty_check)
+	penalty_check_range = integer(penalty_check_range)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
+
+
+class AdvOpposed(db.Model):
+	
+	trait = integer(trait)
+	mod = integer(mod)
+	opponent_trait = integer(opponent_trait)
+	opponent_mod = integer(opponent_mod)
+
+
+class AdvPoints(db.Model):
+
+	condition_cost = integer(condition_cost)
+	equipment_points = integer(equipment_points)
+	initiative_cost = integer(initiative_cost)
+	twenty = integer(twenty)
+	check_bonus = integer(check_bonus)
+	check_cost = integer(check_cost)
+	check_turns = integer(check_turns)
+	benefit_count = integer(benefit_count)
+	benefit_cost = integer(benefit_cost)
+	benefit_turns = integer(benefit_turns)
+	ranks_gained = integer(ranks_gained)
+	ranks_max = integer(ranks_max)
+	ranks_lasts = integer(ranks_lasts)
+	ranks_trait = integer(ranks_trait)
+
+
+class AdvResist(db.Model):
+
+	trait = integer(trait)
+	mod = integer(mod)
+
+
+class AdvRounds(db.Model):
+
+	rounds = integer(rounds)
+	trait = integer(trait)
+
+
+class AdvSkill(db.Model):
+
+	trait = integer(trait)
+	replaced_trait = integer(replaced_trait)
+
+
+class AdvTime(db.Model):
+
+	value = integer(value)
+	time_value = integer(time_value)
+	trait = integer(trait)
+	dc = integer(dc)
+	recovery_penalty = integer(recovery_penalty)
+	recovery_time = integer(recovery_time)
+	
+	
+class AdvVariable(db.Model):
+	trait = integer(trait)
+	
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+class Advantage(db.Model):
+
+	adv_type = integer(adv_type)
+	action = get_name(Action, action)
+	check_type = get_name(Check, check_type)
+	expertise = get_name(SkillBonus, expertise)
+	conflict = get_name(ConflictAction, conflict)
+	consequence = get_name(Consequence, consequence)
+	conflict_immune = get_name(ConflictAction, conflict_immune)
+	action1 = get_name(Action, action1)
+	action2 = get_name(Action, action2)
 	
 	
 	
 class AdvAltCheck(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	conflict_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	check_type = get_name(Check, check_type)
+	conflict = get_name(ConflictAction, conflict)
+	conflict_range = get_name(Ranged, conflict_range)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 	
 	
 class AdvCirc(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	circ_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	
-		
-class AdvCombined(db.Model):
-	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	circ_range = get_name(Ranged, circ_range)
+	conflict = get_name(ConflictAction, conflict)
+	null_condition = get_name(Condition, null_condition)
 	
 	
 class AdvCondition(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	condition = get_name(Condition, condition)
+	condition_null = get_name(Condition, condition_null)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 	
 	
 class AdvDC(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	math_math = db.Column(db.Integer, db.ForeignKey('math.id'))
-	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
-	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	math_math = get_name(Math, math_math)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 	
 	
 class AdvDegree(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
-	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-	measure_math = db.Column(db.Integer, db.ForeignKey('math.id'))
-	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	consequence = get_name(Consequence, consequence)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	measure_math = get_name(Math, measure_math)
+	measure_rank = get_name(Rank, measure_rank)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 	
 	
 class AdvEffort(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	benefit_choice = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	benefit_choice = get_name(Benefit, benefit_choice)
 	
 	
 class AdvMinion(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	player_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	attitude_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
-	attitude_attitude = db.Column(db.Integer, db.ForeignKey('levels.id'))
-	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
+	advantage_id = integer(advantage_id)
+	condition = get_name(Condition, condition)
+	player_condition = get_name(Condition, player_condition)
+	attitude_type = get_name(LevelType, attitude_type)
+	attitude_attitude = get_name(Levels, attitude_attitude)
+	resitable_check = get_name(Defense, resitable_check)
 	
 	
 class AdvMod(db.Model):
 	
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
-	mod_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
-	cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
-	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
-	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
-	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+
+	sense = get_name(Sense, sense)
+	mod_range = get_name(Ranged, mod_range)
+	subsense = get_name(SubSense, subsense)
+	cover = get_name(Cover, cover)
+	conceal = get_name(Conceal, conceal)
+	maneuver = get_name(Maneuver, maneuver)
+	weapon_melee = get_name(WeaponType, weapon_melee)
+	weapon_ranged = get_name(WeaponType, weapon_ranged)
+	condition = get_name(Condition, condition)
+	power = get_name(Power, power)
+	consequence = get_name(Consequence, consequence)
+	creature = get_name(Creature, creature)
+	emotion = get_name(Emotion, emotion)
+	conflict = get_name(ConflictAction, conflict)
+	profession = get_name(Job, profession)
+	bonus_conflict = get_name(ConflictAction, bonus_conflict)
+	penalty_conflict = get_name(ConflictAction, penalty_conflict)
 	
 	
 class AdvOpposed(db.Model):
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	player_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	opponent_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	player_check = get_name(Check, player_check)
+	opponent_check = get_name(Check, opponent_check)
 
 
 class AdvPoints(db.Model):
+	
 	advantage_id = integer(advantage_id)
-	benefit = integer
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	benefit_choice = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	benefit = integer(benefit)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	benefit_choice = get_name(Benefit, benefit_choice)
 	
 	
 class AdvResist(db.Model):
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
 	
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
 	
 class AdvRounds(db.Model):
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	cost = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	
-		}
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	cost = get_name(Action, cost)
+	check = get_name(Check, check)
+	
 
-class AdvSkill(db.Model):
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	
-	
+
 class AdvTime(db.Model):
 	
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	math = db.Column(db.Integer, db.ForeignKey('math.id'))
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	advantage_id = integer(advantage_id)
+	benefit = integer(benefit)
+	units = get_name(Unit, units)
+	math = get_name(Math, math)
+	check_type = get_name(Check, check_type)
 	
-	
-class AdvVariable(db.Model):
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	
 	
 	

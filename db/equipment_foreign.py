@@ -25,113 +25,135 @@ from errors.equipment_errors import equip_belt_post_errors, equip_check_post_err
 
 class Equipment(db.Model):
 
-	type_id = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
-	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	type_id = integer(type_id)
+	expertise = db_integer(SkillBonus, expertise)
 	
 	
 class Feature(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	equip_id = integer(equip_id)
 	
 	
 class EquipFeature(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	
+	equip_id = integer(equip_id)
+	feature = integer(feature)
 	
 
 class EquipEffect(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	equip_id = integer(equip_id)
 	
 	
 class EquipBelt(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	weapon = db_integer(Weapon, weapon)
+	equipment = db_integer(Equipment, equipment)
 	
 	
 class EquipCheck(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
+	check_type = db_integer(Check, check_type)
+	action = db_integer(Action, action)
 	
 	
 class EquipDamage(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	damage = db_integer(Descriptor, damage)
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
 	
 	
 class EquipDescriptor(db.Model):
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	descriptor = db_integer(Descriptor, descriptor)
 
 
 class EquipLimit(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	time_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	range_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	time_capacity_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	area_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	light = db.Column(db.Integer, db.ForeignKey('light.id'))
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	time_units = db_integer(Unit, time_units)
+	range_units = db_integer(Unit, range_units)
+	time_capacity_units = db_integer(Unit, time_capacity_units)
+	area_units = db_integer(Unit, area_units)
+	light = db_integer(Light, light)
 
 	
 class EquipMod(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	environment = db.Column(db.Integer, db.ForeignKey('environments.id'))
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
-	mod_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
-	cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
-	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
-	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
-	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	light = db.Column(db.Integer, db.ForeignKey('light.id'))
+
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	environment = db_integer(Environment, environment)
+	sense = db_integer(Sense, sense)
+	mod_range = db_integer(Ranged, mod_range)
+	subsense = db_integer(SubSense, subsense)
+	cover = db_integer(Cover, cover)
+	conceal = db_integer(Conceal, conceal)
+	maneuver = db_integer(Maneuver, maneuver)
+	weapon_melee = db_integer(WeaponType, weapon_melee)
+	weapon_ranged = db_integer(WeaponType,  weapon_ranged)
+	condition = db_integer(Condition, condition)
+	power = db_integer(Power, power)
+	consequence = db_integer(Consequence, consequence)
+	creature = db_integer(Creature, creature)
+	emotion = db_integer(Emotion, emotion)
+	conflict = db_integer(ConflictAction, conflict)
+	profession = db_integer(Job, profession)
+	bonus_conflict = db_integer(ConflictAction, bonus_conflict)
+	penalty_conflict = db_integer(ConflictAction, penalty_conflict)
+	skill = db_integer(Skill, skill)
+	light = db_integer(Light, light)
 
 	
 class EquipOpposed(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
+	check = db_integer(Check, check)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,111 +177,207 @@ class EquipOpposed(db.Model):
 
 class Equipment(db.Model):
 
-	type_id = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
-	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	
-	
-class Feature(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	
-	
-class EquipFeature(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	
-	
+	cost = integer()
+	toughness = integer()
+	speed_mod = integer()
+	mod_multiple_count = integer()
 
-class EquipEffect(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	
+
+class Feature(db.Model):
+
+	toughness = integer()
+
+
 	
 class EquipBelt(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	weapon = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	
+
+	cost = integer()
+
 	
 class EquipCheck(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	
-	
+
+
 class EquipDamage(db.Model):
-	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	
+
+	toughness = integer()
+
 	
 class EquipDescriptor(db.Model):
+
 	
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-
-
 class EquipLimit(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	time_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	range_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	time_capacity_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	area_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	light = db.Column(db.Integer, db.ForeignKey('light.id'))
+	time = integer()
+	range = integer()
+	time_capacity = integer()
+	capacity = integer()
+	area_long = integer()
+	area_wide = integer()
+	uses = integer()
 
 	
 class EquipMod(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	environment = db.Column(db.Integer, db.ForeignKey('environments.id'))
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
-	mod_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
-	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
-	cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
-	weapon_melee = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	weapon_ranged = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
-	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
-	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
-	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
-	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	light = db.Column(db.Integer, db.ForeignKey('light.id'))
+	bonus = integer()
+	penalty = integer()
+	bonus_trait = integer()
+	bonus_check = integer()
+	bonus_check_range = integer()
+	penalty_trait = integer()
+	penalty_check = integer()
+	penalty_check_range = integer()
+	multiple_count = integer()
+	lasts = integer()
+
+
+class EquipOpposed(db.Model):
+
+	dc = integer()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Equipment(db.Model):
+
+	type_id = integer(type_id)
+	expertise = get_name(SkillBonus, expertise)
+	
+	
+class Feature(db.Model):
+	
+	equip_id = integer(equip_id)
+	
+	
+class EquipFeature(db.Model):
+	
+	equip_id = integer(equip_id)
+	feature = integer(feature)
+	
+
+class EquipEffect(db.Model):
+	
+	equip_id = integer(equip_id)
+	
+	
+class EquipBelt(db.Model):
+	
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	weapon = get_name(Weapon, weapon)
+	equipment = get_name(Equipment, equipment)
+	
+	
+class EquipCheck(db.Model):
+	
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	skill_type = get_name(Skill, skill_type)
+	skill = get_name(SkillBonus, skill)
+	check_type = get_name(Check, check_type)
+	action = get_name(Action, action)
+	
+	
+class EquipDamage(db.Model):
+	
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	damage = get_name(Descriptor, damage)
+	skill_type = get_name(Skill, skill_type)
+	skill = get_name(SkillBonus, skill)
+	
+	
+class EquipDescriptor(db.Model):
+	
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	descriptor = get_name(Descriptor, descriptor)
+
+
+class EquipLimit(db.Model):
+
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	time_units = get_name(Unit, time_units)
+	range_units = get_name(Unit, range_units)
+	time_capacity_units = get_name(Unit, time_capacity_units)
+	area_units = get_name(Unit, area_units)
+	light = get_name(Light, light)
+
+	
+class EquipMod(db.Model):
+
+
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	environment = get_name(Environment, environment)
+	sense = get_name(Sense, sense)
+	mod_range = get_name(Ranged, mod_range)
+	subsense = get_name(SubSense, subsense)
+	cover = get_name(Cover, cover)
+	conceal = get_name(Conceal, conceal)
+	maneuver = get_name(Maneuver, maneuver)
+	weapon_melee = get_name(WeaponType, weapon_melee)
+	weapon_ranged = get_name(WeaponType,  weapon_ranged)
+	condition = get_name(Condition, condition)
+	power = get_name(Power, power)
+	consequence = get_name(Consequence, consequence)
+	creature = get_name(Creature, creature)
+	emotion = get_name(Emotion, emotion)
+	conflict = get_name(ConflictAction, conflict)
+	profession = get_name(Job, profession)
+	bonus_conflict = get_name(ConflictAction, bonus_conflict)
+	penalty_conflict = get_name(ConflictAction, penalty_conflict)
+	skill = get_name(Skill, skill)
+	light = get_name(Light, light)
 
 	
 class EquipOpposed(db.Model):
 
-	equip_id = db.Column(db.Integer, db.ForeignKey('equipment.id'))
-	effect = db.Column(db.Integer, db.ForeignKey('equipment_effect.id'))
-	feature = db.Column(db.Integer, db.ForeignKey('features.id'))
-	skill_type = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	skill = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+
+	equip_id = integer(equip_id)
+	feature = get_name(Feature, feature)
+	effect = get_name(EquipEffect, effect)
+
+	skill_type = get_name(Skill, skill_type)
+	skill = get_name(SkillBonus, skill)
+	check = get_name(Check, check)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+
+
+
+
+
+
+
+
 

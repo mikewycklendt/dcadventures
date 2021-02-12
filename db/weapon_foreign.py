@@ -25,35 +25,137 @@ from errors.equipment_errors import equip_belt_post_errors, equip_check_post_err
 
 class Weapon(db.Model):
 
-	cat_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
-	type_id = db.Column(db.Integer, db.ForeignKey('weapon_type.id'))
-	material = db.Column(db.Integer, db.ForeignKey('materials.id'))
-	length_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	resistance = db.Column(db.Integer, db.ForeignKey('defense.id'))
-	power = db.Column(db.Integer, db.ForeignKey('powers.id'))
-	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	conceal = db.Column(db.Integer, db.ForeignKey('concealment.id'))
-	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	cat_id = db_integer(WeaponCat, cat_id)
+	type_id = db_integer(WeaponType, type_id)
+	material = db_integer(Material, material)
+	length_units = db_integer(Unit, length_units)
+	resistance = db_integer(Defense, resistance)
+	power = db_integer(Power, power)
+	advantage = db_integer(Advantage, advantage)
+	conceal = db_integer(Conceal, conceal)
+	sense = db_integer(Sense, sense)
 
 
 class WeapDescriptor(db.Model):
 
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
+	weapon_id = integer(weapon_id)
+	descriptor = db_integer(Descriptor, descriptor)
 
 
 class WeapBenefit(db.Model):
 
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	weapon_id = integer(weapon_id)
+	benefit = db_integer(Benefit, benefit)
 
 
 
 class WeapCondition(db.Model):
 
-	weapon_id = db.Column(db.Integer, db.ForeignKey('weapons.id'))
-	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	weapon_id = integer(weapon_id)
+	condition = db_integer(Condition, condition)
+	condition_null = db_integer(Condition, condition_null)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Weapon(db.Model):
+
+	cost = integer()
+	critical = integer()
+	damage = integer()
+	toughness = integer()
+	length = integer()
+	resist_dc = integer()
+	power_rank = integer()
+	hands = integer()
+	reach = integer()
+	ranged_attack_bonus = integer()
+	protect = integer()
+	ranged_burst = integer()
+	ranged_area_damage = integer()
+	attack_bonus = integer()
+	perception_dc = integer()
+	grenade_burst = integer()
+	grenade_area_damage = integer()
+	double_mod = integer()
+
+
+class WeapDescriptor(db.Model):
+
+
+class WeapBenefit(db.Model):
+
+
+
+class WeapCondition(db.Model):
+
+	damage_value = integer()
+	damage = integer()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class WeapDescriptor(db.Model):
+
+	weapon_id = integer(weapon_id)
+	descriptor = get_name(Descriptor, descriptor)
+
+
+class WeapBenefit(db.Model):
+
+	weapon_id = integer(weapon_id)
+	benefit = get_name(Benefit, benefit)
+
+
+
+class WeapCondition(db.Model):
+
+	weapon_id = integer(weapon_id)
+	condition = get_name(Condition, condition)
+	condition_null = get_name(Condition, condition_null)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 
