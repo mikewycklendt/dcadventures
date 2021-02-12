@@ -534,11 +534,13 @@ class SkillMod(db.Model):
 	profession_other = db.Column(db.String())
 	bonus_trait_type = db.Column(db.String())
 	bonus_trait = db.Column(db.Integer)
-	
+	bonus_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	bonus_check_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	bonus_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.Integer)
-	
+	penalty_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	penalty_check_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	penalty_conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	bonus_active_defense = db.Column(db.Boolean)
 	bonus_conflict_defend = db.Column(db.Boolean)
