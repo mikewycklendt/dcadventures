@@ -242,6 +242,9 @@
 			<div>
 				<select class="descriptor-sml" id="create_transform_start_descriptor" name="create_transform_start_descriptor">
 					<option value="">Starting Descriptor</option>
+					{% for d in descriptor_options %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
 				</select>
 			</div>
 
@@ -250,6 +253,9 @@
 			<div>
 				<select class="descriptor-sml" id="create_transform_end_descriptor" name="create_transform_end_descriptor">
 					<option value="">Ending Descriptor</option>
+					{% for d in descriptor_options %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
 				</select>
 			</div>
 		</div>

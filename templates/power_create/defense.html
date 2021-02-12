@@ -252,6 +252,9 @@
 					<select class="descriptor-sml" id="defense_immunity_descriptor" name="defense_immunity_descriptor">
 						<option value="">Descriptor</option>
 						<option value="">Use above form to put descriptors here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+				`		{% endfor %}
 					</select>
 				</div>
 

@@ -90,7 +90,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	base_ranged = db.session.query(Ranged).filter(Ranged.hide != True).all()
 
-
+	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True).all()
 
 
 	duration_type = PowerDuration.query.all()
@@ -359,7 +359,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, immunity_type=immunity_type, circ_null=circ_null, space=space,
 											travel=travel, time_travel=time_travel, aquatic=aquatic, task_type=task_type, distances=distances, ranged_type=ranged_type, who_check=who_check, cover=cover,
 											minion_type=minion_type, minion_attitude=minion_attitude, teleport=teleport, teleport_change=teleport_change, transform=transform, weaken=weaken, measure_rank=measure_rank, 
-											conceal_type=conceal_type, level_types=level_types, environments=environments, light=light, )
+											conceal_type=conceal_type, level_types=level_types, environments=environments, light=light, descriptor_options=descriptor_options)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

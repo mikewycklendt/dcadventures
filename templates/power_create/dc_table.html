@@ -170,6 +170,9 @@
 		<div>
 			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
 				<option value="">Use above form for values</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	

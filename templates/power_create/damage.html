@@ -75,6 +75,9 @@
 		<div>
 			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor">
 				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select> 
 		</div>
 

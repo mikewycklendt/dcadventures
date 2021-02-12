@@ -112,6 +112,9 @@
 			<select class="descriptor-sml" id="time_descriptor" name="time_descriptor">
 				<option value="">Applies to descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 

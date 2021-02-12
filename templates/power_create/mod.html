@@ -293,6 +293,9 @@
 			<select class="descriptor-sml" id="mod_simultaneous_descriptor" name="mod_simultaneous_descriptor">
 				<option value="">Descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
@@ -343,6 +346,9 @@
 			<select class="descriptor-sml" id="mod_area_descriptor" name="mod_area_descriptor">
 				<option value="">Affects with Descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -400,6 +406,9 @@
 					<select class="descriptor-sml" id="mod_limited_source" name="mod_limited_source">
 						<option value="">Descriptor</option>
 						<option value="">Use above form to put descriptors here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
 					</select>
 				</div>
 			</div>
@@ -521,6 +530,9 @@
 					<select class="descriptor-sml" id="mod_limited_descriptor" name="mod_limited_descriptor">
 						<option value="">Descriptor</option>
 						<option value="">Use above form to put descriptors here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
 					</select>
 				</div>
 
@@ -744,6 +756,9 @@
 			<select class="descriptor-sml" id="mod_reflect_descriptor" name="mod_reflect_descriptor">
 				<option value="">Descriptor</option>
 				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
