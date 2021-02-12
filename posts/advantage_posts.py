@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
 
 def adv_benefit_post(entry, body, cells):
 
@@ -59,6 +59,11 @@ def adv_alt_check_post(entry, body, cells):
 	action_type = entry.action_type
 	action = entry.action
 	free = entry.free
+
+	trait = trait_select(trait, trait_type)
+
+
+
 
 
 
@@ -119,6 +124,14 @@ def adv_circ_post(entry, body, cells):
 	null_trait = entry.null_trait
 	null_override_trait_type = entry.null_override_trait_type
 	null_override_trait = entry.null_override_trait
+
+	check_trait = trait_select(check_trait, check_trait_type)
+	null_trait = trait_select(null_trait, null_trait_type)
+	null_override_trait = trait_select(null_override_trait, null_override_trait_type)
+
+
+
+
 
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
@@ -242,6 +255,14 @@ def adv_dc_post(entry, body, cells):
 	check_trait = entry.check_trait
 	check_mod = entry.check_mod
 
+	math_trait = trait_select(math_trait, math_trait_type)
+	check_trait = trait_select(check_trait, check_trait_type)
+
+
+
+
+
+
 	
 	dc = integer_convert(dc)
 	value_value = integer_convert(value_value)
@@ -330,6 +351,13 @@ def adv_deg_mod_post(entry, body, cells):
 	nullify = entry.nullify
 	cumulative = entry.cumulative
 	linked = entry.linked
+
+	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
+	circ_trait = trait_select(circ_trait, circ_trait_type)
+	measure_trait = trait_select(measure_trait, measure_trait_type)
+
+
+
 
 	value = integer_convert(value)
 	consequence_action = action_convert(consequence_action_type, consequence_action)
@@ -469,6 +497,10 @@ def adv_minion_post(entry, body, cells):
 	multiple_value = entry.multiple_value
 	horde = entry.horde
 
+	attitude_trait = trait_select(attitude_trait, attitude_trait_type)
+
+
+
 	points = integer_convert(points)
 	sacrifice_cost = integer_convert(sacrifice_cost)
 	resitable_dc = integer_convert(resitable_dc)
@@ -566,6 +598,14 @@ def adv_modifiers_post(entry, body, cells):
 	multiple = entry.multiple
 	multiple_count = entry.multiple_count
 	lasts = entry.lasts
+
+	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
+	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
+
+
+
+
+
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)
@@ -682,6 +722,12 @@ def adv_opposed_post(entry, body, cells):
 	opponent_check = entry.opponent_check
 	multiple = entry.multiple
 
+	trait = trait_select(trait, trait_type)
+	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
+
+
+
+
 	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'opponent', 'name': 'Opponent Choice'}]
 	multiple = selects(multiple, multiple_opposed)
 
@@ -736,6 +782,7 @@ def adv_points_post(entry, body, cells):
 	ranks_trait_type = entry.ranks_trait_type
 	ranks_trait = entry.ranks_trait
 
+	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
 	
 
 
@@ -796,6 +843,11 @@ def adv_resist_post(entry, body, cells):
 	mod = entry.mod
 	which = entry.which
 
+	trait = trait_select(trait, trait_type)
+
+
+
+
 	mod = integer_convert(mod)
 
 	benefit = name(Benefit, benefit)
@@ -825,6 +877,11 @@ def adv_rounds_post(entry, body, cells):
 	trait_type = entry.trait_type
 	trait = entry.trait
 	end = entry.end
+
+	trait = trait_select(trait, trait_type)
+
+
+
 
 	rounds = integer_convert(rounds)
 
@@ -859,6 +916,12 @@ def adv_skill_post(entry, body, cells):
 	replaced_trait_type = entry.replaced_trait_type
 	replaced_trait = entry.replaced_trait
 	multiple = entry.multiple
+
+	trait = trait_select(trait, trait_type)
+	replaced_trait = trait_select(replaced_trait, replaced_trait_type)
+
+
+
 
 	benefit = name(Benefit, benefit)\
 
@@ -895,6 +958,9 @@ def adv_time_post(entry, body, cells):
 	recovery_penalty = entry.recovery_penalty
 	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
+
+	trait = trait_select(trait, trait_type)
+
 
 
 	value = integer_convert(value)
@@ -941,6 +1007,11 @@ def adv_variable_post(entry, body, cells):
 	trait = entry.trait
 	active = entry.active
 	effort = entry.effort
+
+
+
+	trait = trait_select(trait, trait_type)
+
 
 	cells = cell('Trait', 40, [trait])
 	cells = check_cell('Only Active', 13, active, cells)

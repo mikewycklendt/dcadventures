@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select
 
 def skill_ability_post(entry, body, cells):
 
@@ -55,6 +55,12 @@ def skill_check_post(entry, body, cells):
 	action = entry.action
 	free = entry.free
 	
+	trait = trait_select(trait, trait_type)
+
+
+
+
+
 	
 	check_type = get_name(Check, check_type)
 	mod = integer_convert(mod)
@@ -126,6 +132,19 @@ def skill_circ_post(entry, body, cells):
 	time_units = entry.time_units
 	time_rank = entry.time_rank
 	circumstance = entry.circumstance
+
+	measure_trait = trait_select(measure_trait, measure_trait_type)
+
+
+
+
+
+
+
+
+
+
+
 
 	mod = integer_convert(mod)
 	speed = integer_convert(speed)
@@ -250,6 +269,23 @@ def skill_dc_post(entry, body, cells):
 	condition_turns = entry.condition_turns
 	keyword = entry.keyword
 	complexity = entry.complexity
+
+	math_trait = trait_select(math_trait, math_trait_type)	
+	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
+	measure_trait = trait_select(measure_trait, measure_trait_type)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	value = integer_convert(value)
 	mod = integer_convert(mod)
@@ -415,6 +451,20 @@ def skill_degree_post(entry, body, cells):
 	cumulative = entry.cumulative
 	linked = entry.linked
 
+	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
+	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
+	measure_trait = trait_select(measure_trait, measure_trait_type)
+
+
+
+
+
+
+
+
+
+
+
 	value = integer_convert(value)
 	action = get_name(Action, action)
 	time = integer_convert(time)
@@ -533,6 +583,18 @@ def skill_opposed_post(entry, body, cells):
 	recurring_value = entry.recurring_value
 	recurring_units = entry.recurring_units
 
+	trait = trait_select(trait, trait_type)
+	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
+
+
+
+
+
+
+
+
+
+
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
 	player_check = get_name(Check, player_check)
@@ -586,6 +648,18 @@ def skill_time_post(entry, body, cells):
 	recovery_penalty = entry.recovery_penalty
 	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
+
+	trait = trait_select(trait, trait_type)
+
+
+
+
+
+
+
+
+
+
 
 	
 	rank1 = get_name(Rank, rank1)
@@ -674,6 +748,17 @@ def skill_modifiers_post(entry, body, cells):
 	lasts = entry.lasts
 	skill = entry.skill
 	light = entry.light
+
+	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
+	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
+
+
+
+
+
+
+
+
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)

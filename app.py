@@ -85,50 +85,79 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-
-
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Benefit'
 
-	name = 'All BenefitS'
 
-	entry = Benefit(all=True, name=name)
+	name = 'Any Chosen Rare' 
+
+	entry = PowerDes(rare=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Current ' + tablename
+	name = 'Any Chosen Uncommon' 
 
-	entry = Benefit(current=True, name=name)
+	entry = PowerDes(uncommon=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Any Chosen Common' 
+
+	entry = PowerDes(common=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Any Chosen Very Common' 
+
+	entry = PowerDes(very=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Any ' + tablename
+	name = 'Any Chosen Damage' 
 
-	entry = Benefit(any=True, name=name)
+	entry = PowerDes(any_damage=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Variable ' + tablename
+	name = 'Any Chosen Origin' 
 
-	entry = Benefit(var=True, name=name)
+	entry = PowerDes(any_origin=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'No ' + tablename
+	name = 'Any Chosen Source' 
 
-	entry = Benefit(none=True, name=name)
+	entry = PowerDes(any_source=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any Chosen Medium Type' 
+
+	entry = PowerDes(any_medium_type=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any Chosen Medium Subtype' 
+
+	entry = PowerDes(any_medium_subtype=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any Chosen Medium' 
+
+	entry = PowerDes(any_medium=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any Chosen Descriptor' 
+
+	entry = PowerDes(any_descriptor=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Benefit).filter_by(approved=None).all()
 
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
+	return ('descriptor columns added')
 
 '''
 @app.route('/debilitated/create')

@@ -17,7 +17,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
 
 db = SQLAlchemy()
 
@@ -32,6 +32,13 @@ def alt_check_post(entry, body, cells):
 	when = entry.when
 	trait_type = entry.trait_type
 	trait = entry.trait
+	
+	trait = trait_select(trait, trait_type)
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	check_type = name(Check, check_type)
@@ -130,6 +137,21 @@ def character_post(entry, body, cells):
 	insub_description = entry.insub_description
 	cost = entry.cost
 	ranks = entry.ranks
+
+	trait = trait_select(trait, trait_type)
+	weaken_trait = trait_select(weaken_trait, weaken_trait_type)
+	reduced_trait = trait_select(reduced_trait, reduced_trait_type)
+	points_trait = trait_select(points_trait, points_trait_type)
+
+
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	weaken_descriptor = descriptor_name(weaken_descriptor)
@@ -257,6 +279,16 @@ def circ_post(entry, body, cells):
 	null_descriptor = entry.null_descriptor
 	null_trait_type = entry.null_trait_type
 	null_trait = entry.null_trait
+	
+	check_trait = trait_select(check_trait, check_trait_type)
+	null_trait = trait_select(null_trait, null_trait_type)
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	circ_range = name(Range, circ_range)
@@ -363,6 +395,20 @@ def create_post(entry, body, cells):
 	support_effort_rounds = entry.support_effort_rounds
 	cost = entry.cost
 	ranks = entry.ranks
+
+	move_player_trait = trait_select(move_player_trait, move_player)
+	trap_trait = trait_select(trap_trait, trap_trait_type)
+	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
+	ranged_trait = trait_select(ranged_trait, ranged_trait_type)
+	weapon_trait = trait_select(weapon_trait, weapon_trait_type)
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	complexity = name(Complex, complexity)
@@ -513,6 +559,13 @@ def damage_post(entry, body, cells):
 	damage_type = entry.damage_type
 	descriptor = entry.descriptor
 
+	trait = trait_select(trait, trait_type)
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	damage_type = name(Descriptor, damage_type)
 	descriptor = descriptor_name(descriptor)
@@ -562,6 +615,16 @@ def dc_table_post(entry, body, cells):
 	check_mod = entry.check_mod
 	level = entry.level
 	levels = entry.levels
+
+	math_trait = trait_select(math_trait, math_trait_type)
+	check_trait = trait_select(check_trait, check_trait_type)
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
@@ -656,6 +719,20 @@ def defense_post(entry, body, cells):
 	immunity_rule = entry.immunity_rule
 	cover_check = entry.cover_check
 	cover_type = entry.cover_type
+	
+	reflect_opposed_trait = trait_select(reflect_opposed_trait, reflect_opposed_trait_type)
+	reflect_resist_trait = trait_select(reflect_resist_trait, reflect_resist_trait_type)
+	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
+	
+	
+	
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	reflect_action = name(Action, reflect_action)
@@ -783,6 +860,18 @@ def degree_mod_post(entry, body, cells):
 	knowledge = entry.knowledge
 	knowledge_count = entry.knowledge_count
 	knowledge_specificity = entry.knowledge_specificity
+
+	circ_trait = trait_select(circ_trait, circ_trait_type)
+	measure_trait = trait_select(measure_trait, measure_trait_type)
+	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	measure_math = math_convert(Math, measure_math)
@@ -914,6 +1003,16 @@ def environment_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	visibility_trait = trait_select(visibility_trait, visibility_trait_type)
+
+
+
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	immunity_environment = name(Environment, immunity_environment)
 
@@ -1040,6 +1139,16 @@ def minion_post(entry, body, cells):
 	resitable_dc = entry.resitable_dc
 	multiple_value = entry.multiple_value
 	horde = entry.horde
+
+	attitude_trait = trait_select(attitude_trait, attitude_trait_type)
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)	
 	attitude_type = name(LevelType, attitude_type)
@@ -1177,6 +1286,17 @@ def mod_post(entry, body, cells):
 	points_reroll_result = entry.points_reroll_result
 	ranks_cost = entry.ranks_cost
 	cost = entry.cost
+
+	limited_trait = trait_select(limited_trait, limited_trait_type)
+	reflect_trait = trait_select(reflect_trait, reflect_trait_type)
+	subtle_opponent_trait = trait_select(subtle_opponent_trait, subtle_opponent_trait_type)
+	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
+	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
+	
+
+
+
+
 
 	extra = extra_name(extra_id)
 	objects_alone = name(Defense, objects_alone)
@@ -1466,6 +1586,20 @@ def move_post(entry, body, cells):
 	ranks = entry.ranks
 	cost = entry.cost
 
+	concealment_trait = trait_select(concealment_trait, concealment_trait_type)
+	subtle_trait = trait_select(subtle_trait, subtle_trait_type)
+	objects_skill = trait_select(objects_skill, objects_skill_type)
+	check_trait = trait_select(check_trait, check_trait_type)
+
+
+
+
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
 	distance_math = math_convert(Math, distance_math)
@@ -1683,6 +1817,19 @@ def opposed_post(entry, body, cells):
 	player_check = entry.player_check
 	opponent_check = entry.opponent_check
 
+	trait = trait_select(trait, trait_type)
+	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
+	
+
+
+
+
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	player_check = name(Check, player_check)
 	opponent_check = name(Check, opponent_check)
@@ -1744,6 +1891,23 @@ def ranged_post(entry, body, cells):
 	dc_value = entry.dc_value
 	dc_trait_type = entry.dc_trait_type
 	dc_trait = entry.dc_trait
+	
+	check_trait = trait_select(check_trait, check_trait_type)
+	trait_trait = trait_select(trait_trait, trait_trait_type)
+	distance_mod_trait = trait_select(distance_mod_trait, distance_mod_trait_type)
+	dc_trait = trait_select(dc_trait, dc_trait_type)
+
+
+
+
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	flat_units = name(Unit, flat_units)
@@ -1846,6 +2010,23 @@ def resist_post(entry, body, cells):
 	check_trait_type = entry.check_trait_type
 	check_trait = entry.check_trait
 
+	trait = trait_select(trait, trait_type)
+	check_trait = trait_select(check_trait, check_trait_type)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
@@ -1906,6 +2087,19 @@ def resisted_by_post(entry, body, cells):
 	nullify_alternate = entry.nullify_alternate
 	extra_effort = entry.extra_effort
 
+	trait = trait_select(trait, trait_type)
+
+
+
+
+
+
+
+
+
+
+
+
 	extra = extra_name(extra_id)
 	level = name(Levels, level)
 	descriptor = descriptor_name(descriptor)
@@ -1964,6 +2158,21 @@ def reverse_effect_post(entry, body, cells):
 	math = entry.math
 	time_value = entry.time_value
 	time_unit = entry.time_unit
+
+	trait = trait_select(trait, trait_type)
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
@@ -2055,6 +2264,20 @@ def sense_post(entry, body, cells):
 	dimensional_type = entry.dimensional_type
 	ranks = entry.ranks
 	cost = entry.cost
+
+	height_trait = trait_select(height_trait, height_trait_type)
+	resist_trait = trait_select(resist_trait, resist_trait_type)
+
+
+
+
+
+
+
+
+
+
+
 
 
 	extra = extra_name(extra_id)
@@ -2185,6 +2408,11 @@ def time_post(entry, body, cells):
 	recovery_penalty = entry.recovery_penalty
 	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
+
+	trait = trait_select(trait, trait_type)
+
+
+
 
 	extra = extra_name(extra_id)
 	units = name(Unit, units)

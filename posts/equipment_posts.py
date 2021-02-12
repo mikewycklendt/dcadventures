@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
 
 
 
@@ -312,6 +312,9 @@ def equip_modifiers_post(entry, body, cells):
 	lasts = entry.lasts
 	skill = entry.skill
 	light = entry.light
+	
+	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
+	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)

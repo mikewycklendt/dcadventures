@@ -752,7 +752,7 @@ def variable_trait(value, trait):
 	return (value)
 
 
-def trait(value, trait):
+def trait_select(value, trait):
 
 	if trait == 'ability':
 		try:

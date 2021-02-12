@@ -1626,6 +1626,18 @@ class PowerDes(db.Model):
 	result = db.Column(db.String())
 	descriptor = db.Column(db.Boolean)
 	damage = db.Column(db.Boolean)
+	hidden = db.Column(db.Boolean)
+	rare = db.Column(db.Boolean)
+	uncommon = db.Column(db.Boolean)
+	common = db.Column(db.Boolean)
+	very = db.Column(db.Boolean)
+	any_damage = db.Column(db.Boolean)
+	any_origin = db.Column(db.Boolean)
+	any_source = db.Column(db.Boolean)
+	any_medium_type = db.Column(db.Boolean)
+	any_medium_subtype = db.Column(db.Boolean)
+	any_medium = db.Column(db.Boolean)
+	any_descriptor = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -1640,5 +1652,17 @@ class PowerDes(db.Model):
 			'medium_subtype': self.medium_subtype,
 			'result': self.result,
 			'descriptor': self.descriptor,
-			'damage': self.damage
+			'damage': self.damage,
+			'hidden': self.hidden,
+			'rare': self.rare,
+			'uncommon': self.uncommon,
+			'common': self.common,
+			'very': self.very,
+			'any_damage': self.any_damage,
+			'any_origin': self.any_origin,
+			'any_source': self.any_source,
+			'any_medium_type': self.any_medium_type,
+			'any_medium_subtype': self.any_medium_subtype,
+			'any_medium': self.any_medium,
+			'any_descriptor': self.any_descriptor
 		}

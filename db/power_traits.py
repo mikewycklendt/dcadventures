@@ -19,8 +19,6 @@ class PowerChar(db.Model):
 
 	weaken_trait = db.Column(db.Integer)
 
-		weaken_broad = db.Column(db.String())
-
 	reduced_trait = db.Column(db.Integer)
 	
 	points_trait = db.Column(db.Integer)
