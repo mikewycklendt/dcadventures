@@ -156,6 +156,9 @@ def table_db_columns_create():
 	db.session.add(entry)
 	db.session.commit()
 
+	results = db.session.query(PowerDes).filter_by(hidden=True).all()
+	for r in results:
+		print(r.name)
 
 	return ('descriptor columns added')
 
