@@ -334,7 +334,7 @@ def skill_dc_post_errors(data):
 	damage_type = data['damage_type']
 	inflict_type = data['inflict_type']
 	inflict_flat = data['inflict_flat']
-	inflict_trait_type= data[' inflict_trait_type']
+	inflict_trait_type= data['inflict_trait_type']
 	inflict_trait = data['inflict_trait']
 	inflict_math = data['inflict_math']
 	inflict_mod = data['inflict_mod']
@@ -748,7 +748,7 @@ def skill_time_post_errors(data):
 
 	errors = check_fields(recovery, 'Recovry Time', [recovery_penalty, recovery_time], errors)
 	errors = check_field(recovery, 'Recovry Time', 'Penalty', recovery_penalty, errors)
-	errors = check_field(recovery, 'Recovry Time', 'Time Rank', recovery_tim, errors)
+	errors = check_field(recovery, 'Recovry Time', 'Time Rank', recovery_time, errors)
 
 	return (errors)
 
