@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name 
 
 def weap_condition_post(entry, body, cells):
 
@@ -31,6 +31,11 @@ def weap_condition_post(entry, body, cells):
 	condition2 = entry.condition2
 	damage_value = entry.damage_value
 	damage = entry.damage
+
+	condition = get_name(Condition, condition)
+	condition_null = get_name(Condition, condition_null)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 
 	damage_value = integer_convert(damage_value)
 

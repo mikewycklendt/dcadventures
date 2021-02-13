@@ -57,15 +57,12 @@ def skill_check_post(entry, body, cells):
 	
 	trait = trait_select(trait, trait_type)
 
-
-
-
-
-	
 	check_type = get_name(Check, check_type)
-	mod = integer_convert(mod)
 	conflict = get_name(ConflictAction, conflict)
 	conflict_range = get_name(Ranged, conflict_range)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 	
 
@@ -135,35 +132,28 @@ def skill_circ_post(entry, body, cells):
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
-
-
-
-
-
-
-
-
-
-
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_math_rank = get_name(Rank, measure_math_rank)
+	time_units = get_name(Unit, time_units)
 
 	mod = integer_convert(mod)
 	speed = integer_convert(speed)
 	temp = integer_convert(temp)
-	level_type = get_name(LevelType, level_type)
-	level = get_name(Levels, level)
 	time = integer_convert(time)
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
-	measure_rank = get_name(Rank, measure_rank)
 	unit_value = integer_convert(unit_value)
-	unit_type = get_name(MeasureType, unit_type)
 	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert()
 	measure_mod = integer_convert(measure_mod)
-	measure_math_rank = get_name(Rank, measure_math_rank)
 	turns = integer_convert(turns)
 	unit_time = integer_convert(unit_time)
-	time_units = get_name(Unit, time_units)
 	time_rank = integer_convert(time_rank)
 
 
@@ -275,18 +265,17 @@ def skill_dc_post(entry, body, cells):
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+	action = get_name(Action, action)
+	damage_consequence = get_name(Consequence, damage_consequence)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_math_rank = get_name(Rank, measure_math_rank)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	complexity = get_name(Complex, complexity)
 	value = integer_convert(value)
 	mod = integer_convert(mod)
 	math_value = integer_convert(math_value)
@@ -297,19 +286,12 @@ def skill_dc_post(entry, body, cells):
 	inflict_mod = integer_convert(inflict_mod)
 	inflict_bonus = integer_convert(inflict_bonus)
 	damage_mod = integer_convert(damage_mod)
-	damage_consequence = get_name(Consequence, damage_consequence)
 	measure_rank_value = integer_convert(measure_rank_value)
-	measure_rank = get_name(Rank, measure_rank)
 	unit_value = integer_convert(unit_value)
-	unit_type = get_name(MeasureType, unit_type)
-	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
-	measure_math_rank = get_name(Rank, measure_math_rank)
-	level_type = get_name(LevelType, level_type)
-	level = get_name(Levels, level)
 	condition_turns = integer_convert(condition_turns)
-	complexity = get_name(Complex, complexity)
+
 
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
@@ -455,18 +437,19 @@ def skill_degree_post(entry, body, cells):
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
-
-
-
-
-
-
-
-
-
+	action = get_name(Action, action)
+	damage_consequence = get_name(Consequence, damage_consequence)
+	consequence = get_name(Consequence, consequence)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_math_rank = get_name(Rank, measure_math_rank)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 
 	value = integer_convert(value)
-	action = get_name(Action, action)
 	time = integer_convert(time)
 	object = integer_convert(object)
 	inflict_flat = integer_convert(inflict_flat)
@@ -474,21 +457,13 @@ def skill_degree_post(entry, body, cells):
 	inflict_mod = integer_convert(inflict_mod)
 	inflict_bonus = integer_convert(inflict_bonus)
 	damage_mod = integer_convert(damage_mod)
-	damage_consequence = get_name(Consequence, damage_consequence)
 	consequence_action = action_convert(consequence_action_type, consequence_action)
-	consequence = get_name(Consequence, consequence)
 	knowledge_count = integer_convert(knowledge_count)
-	level_type = get_name(LevelType, level_type)
-	level = get_name(Levels, level)
 	circumstance = get_circ(SkillCirc, circumstance)
 	measure_rank_value = integer_convert(measure_rank_value)
-	measure_rank = get_name(Rank, measure_rank)
 	unit_value = integer_convert(unit_value)
-	unit_type = get_name(MeasureType, unit_type)
-	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
-	measure_math_rank = get_name(Rank, measure_math_rank)
 	condition_damage_value = integer_convert(condition_damage_value)
 	condition_turns = integer_convert(condition_turns)
 	nullify = integer_convert(nullify)
@@ -586,15 +561,6 @@ def skill_opposed_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
 
-
-
-
-
-
-
-
-
-
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
 	player_check = get_name(Check, player_check)
@@ -651,17 +617,6 @@ def skill_time_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 
-
-
-
-
-
-
-
-
-
-
-	
 	rank1 = get_name(Rank, rank1)
 	rank1_value = integer_convert(rank1_value)
 	rank_math = math_convert(rank_math)
@@ -772,28 +727,30 @@ def skill_modifiers_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
-	environment = name(Environment, environment, 'Variable Environment')
-	sense = name(Sense, sense, 'Variable ')
-	mod_range = name(Ranged, mod_range, 'Variable ')
-	subsense = name(SubSense, subsense, 'Variable Subssense')
-	cover = name(Cover, cover, 'Variable Cover')
-	conceal = name(Conceal, conceal, 'Variable Concealment')
-	maneuver = name(Maneuver, maneuver, 'Variable Maneuver')
-	weapon_melee = name(WeaponType, weapon_melee, 'Variable Melee Weapon')
-	weapon_ranged = name(WeaponType, weapon_ranged, 'Variable Ranged Weapon')
-	consequence = name(Consequence, consequence, 'Variable Consequence')
-	creature = name(Creature, creature, 'Variable Creature')
-	emotion = name(Emotion, emotion, 'Variable Emotion')
-	conflict = name(ConflictAction, conflict, 'Variable Conflict Action')
-	profession = name(Job, profession, 'Variable Profession')
-	bonus_check = name(Check, bonus_check,)
-	bonus_check_range = name(Ranged, bonus_check_range)
-	bonus_conflict = name(ConflictAction, bonus_conflict, 'Variable Conflict Action')
-	penalty_check = name(Check, penalty_check)
-	penalty_check_range = name(Ranged, penalty_check_range)
-	penalty_conflict = name(ConflictAction, penalty_conflict, 'Variable Conflict Action')
-	skill = name(Skill, skill)
-	light = name(Light, light)
+	environment = get_name(Environment, environment)
+	sense = get_name(Sense, sense)
+	mod_range = get_name(Ranged, mod_range)
+	subsense = get_name(SubSense, subsense)
+	cover = get_name(Cover, cover)
+	conceal = get_name(Conceal, conceal)
+	maneuver = get_name(Maneuver, maneuver)
+	weapon_melee = get_name(WeaponType, weapon_melee)
+	weapon_ranged = get_name(WeaponType,  weapon_ranged)
+	condition = get_name(Condition, condition)
+	power = get_name(Power, power)
+	consequence = get_name(Consequence, consequence)
+	creature = get_name(Creature, creature)
+	emotion = get_name(Emotion, emotion)
+	conflict = get_name(ConflictAction, conflict)
+	profession = get_name(Job, profession)
+	bonus_conflict = get_name(ConflictAction, bonus_conflict)
+	penalty_conflict = get_name(ConflictAction, penalty_conflict)
+	skill = get_name(Skill, skill)
+	light = get_name(Light, light)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
 
 	bonus_active_defense = variable_value('trait', bonus_effect, bonus_active_defense)
 	bonus_conflict_defend = variable_value('conflict', bonus_effect, bonus_conflict_defend)

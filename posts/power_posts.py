@@ -17,7 +17,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select, get_name
 
 db = SQLAlchemy()
 
@@ -34,11 +34,6 @@ def alt_check_post(entry, body, cells):
 	trait = entry.trait
 	
 	trait = trait_select(trait, trait_type)
-
-
-
-
-
 
 	extra = extra_name(extra_id)
 	check_type = name(Check, check_type)
@@ -143,21 +138,10 @@ def character_post(entry, body, cells):
 	reduced_trait = trait_select(reduced_trait, reduced_trait_type)
 	points_trait = trait_select(points_trait, points_trait_type)
 
-
-
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
 	weaken_descriptor = descriptor_name(weaken_descriptor)
 	points_descriptor = descriptor_name(points_descriptor)
 	limited_emotion = name(Emotion, limited_emotion)
-
 
 	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 	limited_by = selects(limited_by, limited_select)
@@ -283,15 +267,9 @@ def circ_post(entry, body, cells):
 	check_trait = trait_select(check_trait, check_trait_type)
 	null_trait = trait_select(null_trait, null_trait_type)
 
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
-	circ_range = name(Range, circ_range)
+	circ_range = get_name(Ranged, circ_range)
+	null_condition = get_name(Condition, null_condition)
 	null_descriptor = descriptor_name(null_descriptor)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
@@ -401,14 +379,6 @@ def create_post(entry, body, cells):
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
 	ranged_trait = trait_select(ranged_trait, ranged_trait_type)
 	weapon_trait = trait_select(weapon_trait, weapon_trait_type)
-
-
-
-
-
-
-
-
 
 	extra = extra_name(extra_id)
 	complexity = name(Complex, complexity)
@@ -561,11 +531,6 @@ def damage_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 
-
-
-
-
-
 	extra = extra_name(extra_id)
 	damage_type = name(Descriptor, damage_type)
 	descriptor = descriptor_name(descriptor)
@@ -573,8 +538,6 @@ def damage_post(entry, body, cells):
 	mod = integer_convert(mod)
 	damage_type = integer_convert(damage_type)
 
-
-	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Trait', 8, [trait], cells)
 	cells = cell('Modifier', 11, [mod], cells)
@@ -619,17 +582,12 @@ def dc_table_post(entry, body, cells):
 	math_trait = trait_select(math_trait, math_trait_type)
 	check_trait = trait_select(check_trait, check_trait_type)
 
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
 	descriptor = descriptor_name(descriptor)
-	level = name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	level = get_name(Levels, level)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -724,20 +682,14 @@ def defense_post(entry, body, cells):
 	reflect_resist_trait = trait_select(reflect_resist_trait, reflect_resist_trait_type)
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
-	
-	
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
-	reflect_action = name(Action, reflect_action)
 	immunity_descriptor = descriptor_name(immunity_descriptor)
-	immunity_damage = name(Descriptor, immunity_damage)
+
+	defense = get_name(Defense, defense)
+	reflect_action = get_name(Action, reflect_action)
+	reflect_check = get_name(Check, reflect_check)
+	immunity_damage = get_name(Descriptor, immunity_damage)
+	cover_type = get_name(Cover, cover_type)
 
 	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 	immunity_rule = selects(immunity_rule, game_rule_select)
@@ -865,18 +817,13 @@ def degree_mod_post(entry, body, cells):
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
 
-
-
-
-
-
-
-
-
+	measure_rank = get_name(Rank, measure_rank)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	level = get_name(Levels, level)
+	consequence = get_name(Consequence, consequence)
 	extra = extra_name(extra_id)
 	measure_math = math_convert(Math, measure_math)
-	measure_rank = name(Rank, measure_rank)
-	level = name(Levels, level)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1005,17 +952,9 @@ def environment_post(entry, body, cells):
 
 	visibility_trait = trait_select(visibility_trait, visibility_trait_type)
 
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
-	immunity_environment = name(Environment, immunity_environment)
-
+	immunity_environment = get_name(Environment, immunity_environment)
+	move_nature = get_name(Nature, move_nature)
 
 	temp_type_select = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 	temp_type = selects(temp_type, temp_type_select)
@@ -1142,18 +1081,12 @@ def minion_post(entry, body, cells):
 
 	attitude_trait = trait_select(attitude_trait, attitude_trait_type)
 
-
-
-
-
-
-
-
-
-	extra = extra_name(extra_id)	
-	attitude_type = name(LevelType, attitude_type)
-	attitude_attitude = name(Levels, attitude_attitude)
-	resitable_check = name(Defense, resitable_check)
+	extra = extra_name(extra_id)
+	condition = get_name(Condition, condition)
+	player_condition = get_name(Condition, player_condition)
+	attitude_type = get_name(LevelType, attitude_type)
+	attitude_attitude = get_name(Levels, attitude_attitude)
+	resitable_check = get_name(Defense, resitable_check)
 
 	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
 	variable_type = selects(variable_type, minion_type_select)
@@ -1293,26 +1226,22 @@ def mod_post(entry, body, cells):
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
 	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
 	
-
-
-
-
-
 	extra = extra_name(extra_id)
-	objects_alone = name(Defense, objects_alone)
-	objects_character = name(Defense, objects_character)
+	objects_alone = get_name(Defense, objects_alone)
+	objects_character = get_name(Defense, objects_character)
+	limited_level = get_name(Levels, limited_level)
+	limited_extra = get_name(Extra, limited_extra)
+	limited_sense = get_name(Sense, limited_sense)
+	limited_range = get_name(Range, limited_range)
+	side_level = get_name(Levels, side_level)
+	reflect_check = get_name(Check, reflect_check)
+
+	reflect_descriptor = descriptor_name(reflect_descriptor)
+	limited_descriptor = descriptor_name(limited_descriptor)
+	limited_source = descriptor_name(limited_source)
 	simultaneous_descriptor = descriptor_name(simultaneous_descriptor)
 	area_descriptor = descriptor_name(area_descriptor)
-	limited_level = name(Levels, limited_level)
-	limited_source = descriptor_name(limited_source)
-	limited_extra = name(Extra, limited_extra)
-	limited_sense = name(Sense, limited_sense)
-	limited_descriptor = descriptor_name(limited_descriptor)
-	limited_range = name(Range, limited_range)
-	side_level = name(Levels, side_level)
-	reflect_check = name(Check, reflect_check)
-	reflect_descriptor = descriptor_name(reflect_descriptor)
-
+	
 	limited_type_select = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
 
 	task_type_select = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
@@ -1493,19 +1422,11 @@ def mod_post(entry, body, cells):
 	cells = cell('Cost/Rank', 10, [cost], cells)
 	cells = cell('Ranks', 10, [ranks_cost], cells)
 
-	
-
 	body = send(cells, body)
-
-	print('\n\n\n')
-	for c in cells:
-		print(c)
-
 
 	cells.clear()
 
 	return (body)
-
 
 	
 def move_post(entry, body, cells):
@@ -1591,23 +1512,18 @@ def move_post(entry, body, cells):
 	objects_skill = trait_select(objects_skill, objects_skill_type)
 	check_trait = trait_select(check_trait, check_trait_type)
 
-
-
-
-
-
-
-
-
-
+	condition = get_name(Condition, condition)
+	concealment_sense = get_name(Sense, concealment_sense)
+	ground_type = get_name(Ground, ground_type)
+	ground_units = get_name(Unit, ground_units)
+	objects_check = get_name(Check, objects_check)
+	objects_attack = get_name(ConflictAction, objects_attack)
+	damage_type = get_name(Ability, damage_type)
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
 	distance_math = math_convert(Math, distance_math)
-	concealment_sense = name(Sense, concealment_sense)
+
 	dimension_descriptor = descriptor_name(dimension_descriptor)
-	ground_type = name(Ground, ground_type)
-	ground_units = name(Unit, ground_units)
-	objects_attack = name(ConflictAction, objects_attack)
 
 	directions_select = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
 	direction = selects(direction, directions_select)
@@ -1820,16 +1736,6 @@ def opposed_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
 	
-
-
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
 	player_check = name(Check, player_check)
 	opponent_check = name(Check, opponent_check)
@@ -1837,7 +1743,6 @@ def opposed_post(entry, body, cells):
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
 
-	
 	cells = cell('Extra', 15, [extra])
 
 	cells = cell('Player Trait', 18, [trait], cells)
@@ -1896,18 +1801,6 @@ def ranged_post(entry, body, cells):
 	trait_trait = trait_select(trait_trait, trait_trait_type)
 	distance_mod_trait = trait_select(distance_mod_trait, distance_mod_trait_type)
 	dc_trait = trait_select(dc_trait, dc_trait_type)
-
-
-
-
-
-
-
-
-
-
-
-
 
 	extra = extra_name(extra_id)
 	flat_units = name(Unit, flat_units)
@@ -2013,20 +1906,6 @@ def resist_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	check_trait = trait_select(check_trait, check_trait_type)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
@@ -2088,24 +1967,14 @@ def resisted_by_post(entry, body, cells):
 	extra_effort = entry.extra_effort
 
 	trait = trait_select(trait, trait_type)
-
-
-
-
-
-
-
-
-
-
-
-
-	extra = extra_name(extra_id)
-	level = name(Levels, level)
 	descriptor = descriptor_name(descriptor)
 	nullify_descriptor = descriptor_name(nullify_descriptor)
-	nullify_alternate = name(Defense, nullify_alternate)
 
+	extra = extra_name(extra_id)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	nullify_alternate = get_name(Defense, nullify_alternate)
 
 	dc = integer_convert(dc)
 	mod = integer_convert(mod)
@@ -2161,19 +2030,6 @@ def reverse_effect_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
 	math = math_convert(Math, math)
 	time_unit = name(Unit, time_unit)
@@ -2268,34 +2124,16 @@ def sense_post(entry, body, cells):
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
 
-
-
-
-
-
-
-
-
-
-
-
-
 	extra = extra_name(extra_id)
-	skill = name(Skill, skill)
-	time_unit = name(Unit, time_unit)
-	time_skill = name(Skill, time_skill)
-	distance_unit = name(Unit, distance_unit)
-	lighting = name(Light, lighting)
-
-	if sense is None:
-		sense = 'Any'
-	else:
-		sense = name(Sense, sense)
-
-	if subsense is None:
-		subsense = 'Any'
-	else:
-		subsense = name(SubSense, subsense)
+	sense = get_name(Sense, sense)
+	subsense = get_name(SubSense, subsense)
+	skill = get_name(Skill, skill)
+	height_ensense = get_name(Power, height_ensense)
+	lighting = get_name(Light, lighting)
+	time_unit = get_name(Unit, time_unit)
+	time_skill = get_name(Skill, time_skill)
+	time_bonus = get_name(SkillBonus, time_bonus)
+	distance_unit = get_name(Unit, distance_unit)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -2410,9 +2248,6 @@ def time_post(entry, body, cells):
 	recovery_incurable = entry.recovery_incurable
 
 	trait = trait_select(trait, trait_type)
-
-
-
 
 	extra = extra_name(extra_id)
 	units = name(Unit, units)

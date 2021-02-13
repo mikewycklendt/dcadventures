@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select, get_name
 
 
 
@@ -32,10 +32,10 @@ def equip_belt_post(entry, body, cells):
 	cost = entry.cost
 	belt_item_type = entry.belt_item_type
 
-	feature = name(Feature, feature)
-	weapon = name(Weapon, weapon)
-	equipment = name(Equipment, equipment)
-	
+	feature = get_name(Feature, feature)
+	weapon = get_name(Weapon, weapon)
+	equipment = get_name(Equipment, equipment)
+		
 	cost = str(cost)
 
 
@@ -328,28 +328,30 @@ def equip_modifiers_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
-	environment = name(Environment, environment, 'Variable Environment')
-	sense = name(Sense, sense, 'Variable ')
-	mod_range = name(Ranged, mod_range, 'Variable ')
-	subsense = name(SubSense, subsense, 'Variable Subssense')
-	cover = name(Cover, cover, 'Variable Cover')
-	conceal = name(Conceal, conceal, 'Variable Concealment')
-	maneuver = name(Maneuver, maneuver, 'Variable Maneuver')
-	weapon_melee = name(WeaponType, weapon_melee, 'Variable Melee Weapon')
-	weapon_ranged = name(WeaponType, weapon_ranged, 'Variable Ranged Weapon')
-	consequence = name(Consequence, consequence, 'Variable Consequence')
-	creature = name(Creature, creature, 'Variable Creature')
-	emotion = name(Emotion, emotion, 'Variable Emotion')
-	conflict = name(ConflictAction, conflict, 'Variable Conflict Action')
-	profession = name(Job, profession, 'Variable Profession')
-	bonus_check = name(Check, bonus_check,)
-	bonus_check_range = name(Ranged, bonus_check_range)
-	bonus_conflict = name(ConflictAction, bonus_conflict, 'Variable Conflict Action')
-	penalty_check = name(Check, penalty_check)
-	penalty_check_range = name(Ranged, penalty_check_range)
-	penalty_conflict = name(ConflictAction, penalty_conflict, 'Variable Conflict Action')
-	skill = name(Skill, skill)
-	light = name(Light, light)
+	environment = get_name(Environment, environment)
+	sense = get_name(Sense, sense)
+	mod_range = get_name(Ranged, mod_range)
+	subsense = get_name(SubSense, subsense)
+	cover = get_name(Cover, cover)
+	conceal = get_name(Conceal, conceal)
+	maneuver = get_name(Maneuver, maneuver)
+	weapon_melee = get_name(WeaponType, weapon_melee)
+	weapon_ranged = get_name(WeaponType,  weapon_ranged)
+	condition = get_name(Condition, condition)
+	power = get_name(Power, power)
+	consequence = get_name(Consequence, consequence)
+	creature = get_name(Creature, creature)
+	emotion = get_name(Emotion, emotion)
+	conflict = get_name(ConflictAction, conflict)
+	profession = get_name(Job, profession)
+	bonus_conflict = get_name(ConflictAction, bonus_conflict)
+	penalty_conflict = get_name(ConflictAction, penalty_conflict)
+	skill = get_name(Skill, skill)
+	light = get_name(Light, light)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
 	effect = name(EquipEffect, effect)
 	feature = name(Feature, feature)
 
@@ -440,10 +442,12 @@ def equip_opposed_post(entry, body, cells):
 
 	effect = name(EquipEffect, effect)
 	feature = name(Feature, feature)
-	skill_type = name(Skill, skill_type)
-	skill = name(SkillBonus, skill)
-	check = name(Check, check)
-	
+	skill_type = get_name(Skill, skill_type)
+	skill = get_name(SkillBonus, skill)
+	check = get_name(Check, check)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+
 	dc = integer_convert(dc)
 
 	when_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Use'}, {'type': 'after', 'name': 'After Use'}]

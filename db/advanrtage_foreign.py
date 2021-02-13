@@ -55,7 +55,12 @@ class AdvCirc(db.Model):
 	null_condition = db_integer(Condition, null_condition)
 	
 		
-		
+	
+class AdvCombined(db.Model):
+	
+	advantage_id = integer(advantage_id)
+	
+	advantage = db_integer(Advantage, advantage)	
 	
 	
 class AdvCondition(db.Model):
@@ -116,6 +121,7 @@ class AdvMod(db.Model):
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
 
+	environment = db_integer(Environment, environment)
 	sense = db_integer(Sense, sense)
 	mod_range = db_integer(Ranged, mod_range)
 	subsense = db_integer(SubSense, subsense)
@@ -416,6 +422,11 @@ class AdvCirc(db.Model):
 	conflict = get_name(ConflictAction, conflict)
 	null_condition = get_name(Condition, null_condition)
 	
+class AdvCombined(db.Model):
+	
+	advantage_id = integer(advantage_id)
+	
+	advantage = get_name(Advantage, advantage)
 	
 class AdvCondition(db.Model):
 	
@@ -445,7 +456,7 @@ class AdvDegree(db.Model):
 	consequence = get_name(Consequence, consequence)
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
-	measure_math = get_name(Math, measure_math)
+	measure_math = math_convert(Math, measure_math)
 	measure_rank = get_name(Rank, measure_rank)
 	condition1 = get_name(Condition, condition1)
 	condition2 = get_name(Condition, condition2)
@@ -475,6 +486,7 @@ class AdvMod(db.Model):
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
 
+	environment = get_name(Environment, environment)
 	sense = get_name(Sense, sense)
 	mod_range = get_name(Ranged, mod_range)
 	subsense = get_name(SubSense, subsense)

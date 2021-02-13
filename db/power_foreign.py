@@ -750,16 +750,7 @@ class PowerMove(db.Model):
 
 	power_id = integer(power_id)
 	extra_id = get_name(Extra, extra_id)
-	math = get_name(Math, math)
-	condition = get_name(Condition, condition)
-	distance_math = get_name(Math, distance_math)
-	concealment_sense = get_name(Sense, concealment_sense)
-	ground_type = get_name(Ground, ground_type)
-	ground_units = get_name(Unit, ground_units)
-	objects_check = get_name(Check, objects_check)
-	objects_attack = get_name(ConflictAction, objects_attack)
-	damage_type = get_name(Ability, damage_type)
-
+	
 
 class PowerOpposed(db.Model):
 

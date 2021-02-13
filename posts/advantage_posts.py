@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, trait_select, get_name
 
 def adv_benefit_post(entry, body, cells):
 
@@ -62,19 +62,16 @@ def adv_alt_check_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 
-
-
-
-
-
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 
-	benefit = name(Benefit, benefit)
-	check_type = name(Check, check_type)
-	conflict = name(ConflictAction, conflict)
-	conflict_range = name(Ranged, conflict_range)
-
+	benefit = integer(benefit)
+	check_type = get_name(Check, check_type)
+	conflict = get_name(ConflictAction, conflict)
+	conflict_range = get_name(Ranged, conflict_range)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	
 	check_trigger_select = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
@@ -129,10 +126,6 @@ def adv_circ_post(entry, body, cells):
 	null_trait = trait_select(null_trait, null_trait_type)
 	null_override_trait = trait_select(null_override_trait, null_override_trait_type)
 
-
-
-
-
 	mod = integer_convert(mod)
 	rounds = integer_convert(rounds)
 
@@ -148,8 +141,9 @@ def adv_circ_post(entry, body, cells):
 	circ_null_select = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'condition', 'name': 'From Condition'}, {'type': 'override', 'name': 'Override Trait Circumstance'}]
 
 	benefit = name(Benefit, benefit)
-	circ_range = name(Range, circ_range)
-	conflict = name(ConflictAction, conflict)
+	circ_range = get_name(Ranged, circ_range)
+	conflict = get_name(ConflictAction, conflict)
+	null_condition = get_name(Condition, null_condition)
 
 	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Target', 13, [target], cells)
@@ -185,6 +179,8 @@ def adv_combined_post(entry, body, cells):
 	advantage = entry.advantage
 
 	ranks = integer_convert(ranks)
+	
+	advantage = get_name(Advantage, advantage)
 
 	cells = cell('Advantage', 35, [advantage])
 	cells = cell('Ranks', 10, [ranks], cells)
@@ -214,6 +210,10 @@ def adv_condition_post(entry, body, cells):
 	damage = selects(damage, updown_select)
 
 	benefit = name(Benefit, benefit)
+	condition = get_name(Condition, condition)
+	condition_null = get_name(Condition, condition_null)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 
 	cells = cell('Benefit', 15, [benefit])
 
@@ -258,12 +258,6 @@ def adv_dc_post(entry, body, cells):
 	math_trait = trait_select(math_trait, math_trait_type)
 	check_trait = trait_select(check_trait, check_trait_type)
 
-
-
-
-
-
-	
 	dc = integer_convert(dc)
 	value_value = integer_convert(value_value)
 	math_value = integer_convert(math_value)
@@ -271,8 +265,10 @@ def adv_dc_post(entry, body, cells):
 
 	benefit = name(Benefit, benefit)
 	math_math = math_convert(Math, math_math)
-	level_type = name(LevelType, level_type)
-	level = name(Levels, level)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
@@ -356,9 +352,6 @@ def adv_deg_mod_post(entry, body, cells):
 	circ_trait = trait_select(circ_trait, circ_trait_type)
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
-
-
-
 	value = integer_convert(value)
 	consequence_action = action_convert(consequence_action_type, consequence_action)
 	knowledge_count = integer_convert(knowledge_count)
@@ -384,11 +377,14 @@ def adv_deg_mod_post(entry, body, cells):
 	condition2 = selects(condition2, condition_select)
 
 	benefit = name(Benefit, benefit)
-	consequence = name(Consequence, consequence)
-	level_type = name(LevelType, level_type)
-	level = name(Levels, level)
+	consequence = get_name(Consequence, consequence)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
 	measure_math = math_convert(Math, measure_math)
-	measure_rank = name(Rank, measure_rank)
+	measure_rank = get_name(Rank, measure_rank)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+
 
 	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Target', 14, [target], cells)
@@ -455,8 +451,10 @@ def adv_effort_post(entry, body, cells):
 	condition_damage = selects(condition_damage, updown_select)
 
 	benefit = name(Benefit, benefit)
-	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefit')
-
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	benefit_choice = get_name(Benefit, benefit_choice)
+	
 	cells = cell('Benefit', 15, [benefit])
 	vcells = vcell('condition', 25, [condition1, 'to', condition2])
 	vcells = vcell('damage', 23, [condition_damage_value, 'Conditions', condition_damage], vcells)
@@ -499,8 +497,6 @@ def adv_minion_post(entry, body, cells):
 
 	attitude_trait = trait_select(attitude_trait, attitude_trait_type)
 
-
-
 	points = integer_convert(points)
 	sacrifice_cost = integer_convert(sacrifice_cost)
 	resitable_dc = integer_convert(resitable_dc)
@@ -509,10 +505,12 @@ def adv_minion_post(entry, body, cells):
 	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
 	variable_type = selects(variable_type, minion_type_select)
 	
-	attitude_type = name(LevelType, attitude_type)
-	attitude_attitude = name(Levels, attitude_attitude)
-	resitable_check = name(Defense, resitable_check)
-
+	condition = get_name(Condition, condition)
+	player_condition = get_name(Condition, player_condition)
+	attitude_type = get_name(LevelType, attitude_type)
+	attitude_attitude = get_name(Levels, attitude_attitude)
+	resitable_check = get_name(Defense, resitable_check)
+	
 	cells = cell('Points', 19, ['Advantage Rank x', points])
 	cells = cell('Minion Condition', 20, [condition], cells)
 	cells = cell('Player Condition', 20, [player_condition], cells)
@@ -602,11 +600,6 @@ def adv_modifiers_post(entry, body, cells):
 	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
 	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
 
-
-
-
-
-
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)
 	multiple_count = integer_convert(multiple_count)
@@ -620,27 +613,29 @@ def adv_modifiers_post(entry, body, cells):
 	multiple = selects(multiple, multiple_select)
 
 	benefit = name(Benefit, benefit)
-	environment = name(Environment, environment, 'Variable Environment')
-	sense = name(Sense, sense, 'Variable ')
-	mod_range = name(Ranged, mod_range, 'Variable ')
-	subsense = name(SubSense, subsense, 'Variable Subssense')
-	cover = name(Cover, cover, 'Variable Cover')
-	conceal = name(Conceal, conceal, 'Variable Concealment')
-	maneuver = name(Maneuver, maneuver, 'Variable Maneuver')
-	weapon_melee = name(WeaponType, weapon_melee, 'Variable Melee Weapon')
-	weapon_ranged = name(WeaponType, weapon_ranged, 'Variable Ranged Weapon')
-	consequence = name(Consequence, consequence, 'Variable Consequence')
-	creature = name(Creature, creature, 'Variable Creature')
-	emotion = name(Emotion, emotion, 'Variable Emotion')
-	conflict = name(ConflictAction, conflict, 'Variable Conflict Action')
-	profession = name(Job, profession, 'Variable Profession')
-	bonus_check = name(Check, bonus_check,)
-	bonus_check_range = name(Ranged, bonus_check_range)
-	bonus_conflict = name(ConflictAction, bonus_conflict, 'Variable Conflict Action')
-	penalty_check = name(Check, penalty_check)
-	penalty_check_range = name(Ranged, penalty_check_range)
-	penalty_conflict = name(ConflictAction, penalty_conflict, 'Variable Conflict Action')
-
+	environment = get_name(Environment, environment)
+	sense = get_name(Sense, sense)
+	mod_range = get_name(Ranged, mod_range)
+	subsense = get_name(SubSense, subsense)
+	cover = get_name(Cover, cover)
+	conceal = get_name(Conceal, conceal)
+	maneuver = get_name(Maneuver, maneuver)
+	weapon_melee = get_name(WeaponType, weapon_melee)
+	weapon_ranged = get_name(WeaponType, weapon_ranged)
+	condition = get_name(Condition, condition)
+	power = get_name(Power, power)
+	consequence = get_name(Consequence, consequence)
+	creature = get_name(Creature, creature)
+	emotion = get_name(Emotion, emotion)
+	conflict = get_name(ConflictAction, conflict)
+	profession = get_name(Job, profession)
+	bonus_conflict = get_name(ConflictAction, bonus_conflict)
+	penalty_conflict = get_name(ConflictAction, penalty_conflict)
+	bonus_check = get_name(Check, bonus_check)
+	bonus_check_range = get_name(Ranged, bonus_check_range)
+	penalty_check = get_name(Check, penalty_check)
+	penalty_check_range = get_name(Ranged, penalty_check_range)
+	
 	bonus_active_defense = variable_value('trait', bonus_effect, bonus_active_defense)
 	bonus_conflict_defend = variable_value('conflict', bonus_effect, bonus_conflict_defend)
 	penalty_active_defense = variable_value('trait', penalty_effect, penalty_active_defense)
@@ -725,9 +720,6 @@ def adv_opposed_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
 
-
-
-
 	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'opponent', 'name': 'Opponent Choice'}]
 	multiple = selects(multiple, multiple_opposed)
 
@@ -735,8 +727,8 @@ def adv_opposed_post(entry, body, cells):
 	opponent_mod = integer_convert(opponent_mod)
 
 	benefit = name(Benefit, benefit)
-	player_check = name(Check, player_check)
-	opponent_check = name(Check, opponent_check)
+	player_check = get_name(Check, player_check)
+	opponent_check = get_name(Check, opponent_check)
 
 	cells = cell('Benefit', 15, [benefit])
 	cells = cell('Player Trait', 18, [trait], cells)
@@ -784,8 +776,6 @@ def adv_points_post(entry, body, cells):
 
 	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
 	
-
-
 	condition_cost = integer_convert(condition_cost)
 	equipment_points = integer_convert(equipment_points)
 	initiative_cost = integer_convert(initiative_cost)
@@ -806,8 +796,10 @@ def adv_points_post(entry, body, cells):
 	check_target = selects(check_target, targets)
 
 	benefit = name(Benefit, benefit)
-	benefit_choice = name(Benefit, benefit_choice, 'Variable Benefits')
-
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	benefit_choice = get_name(Benefit, benefit_choice)
+	
 	cells = cell('Benefit', 15, [benefit])
 	word = string('if existing ranks is less than', ranks_max)
 	vcells = vcell('ranks', 70, ['Gain', ranks_gained, 'of', ranks_trait, 'for', ranks_lasts, word, ranks_max])
@@ -845,9 +837,6 @@ def adv_resist_post(entry, body, cells):
 
 	trait = trait_select(trait, trait_type)
 
-
-
-
 	mod = integer_convert(mod)
 
 	benefit = name(Benefit, benefit)
@@ -879,9 +868,6 @@ def adv_rounds_post(entry, body, cells):
 	end = entry.end
 
 	trait = trait_select(trait, trait_type)
-
-
-
 
 	rounds = integer_convert(rounds)
 
@@ -920,9 +906,6 @@ def adv_skill_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	replaced_trait = trait_select(replaced_trait, replaced_trait_type)
 
-
-
-
 	benefit = name(Benefit, benefit)\
 
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
@@ -960,8 +943,6 @@ def adv_time_post(entry, body, cells):
 	recovery_incurable = entry.recovery_incurable
 
 	trait = trait_select(trait, trait_type)
-
-
 
 	value = integer_convert(value)
 	time_value = integer_convert(time_value)
@@ -1008,10 +989,7 @@ def adv_variable_post(entry, body, cells):
 	active = entry.active
 	effort = entry.effort
 
-
-
 	trait = trait_select(trait, trait_type)
-
 
 	cells = cell('Trait', 40, [trait])
 	cells = check_cell('Only Active', 13, active, cells)

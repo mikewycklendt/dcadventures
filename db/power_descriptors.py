@@ -46,27 +46,26 @@ class PowerMod(db.Model):
 
 	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
-	reflect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	reflect_descriptor = 
 
 
 class PowerMove(db.Model):
 
-	dimension_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	dimension_descriptor = 
 
 
 
 class PowerResist(db.Model):
 	
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	descriptor = 
 	
 	
 
 class PowerResistBy(db.Model):
 	
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	descriptor = 
 	
-	nullify_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	
+	nullify_descriptor = 
 	
 	
 	
@@ -74,7 +73,6 @@ class PowerResistBy(db.Model):
 
 class PowerTime(db.Model):
 
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	
+	descriptor = get_name(PowerDes, )
 	
 	

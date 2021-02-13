@@ -24,36 +24,11 @@ def descriptor_name(name):
 	
 	db = SQLAlchemy()
 
-	if name == 11223344: 
-		name = 'Any Chosen Rare'
-	elif name == 22334455:
-		name = 'Any Chosen Uncommon' 
-	elif name == 33445566:
-		name = 'Any Chosen Common'
-	elif name == 44556677:
-		name = 'Any Chosen Very Common' 
-	elif name == 55667788:
-		name = 'Any Chosen Damage'
-	elif name == 66778899:
-		name = 'Any Chosen Origin'
-	elif name == 77889900:
-		name = 'Any Chosen Source'
-	elif name == 88990011:
-		name = 'Any Chosen Medium Type'
-	elif name == 99001122:
-		name = 'Any Chosen Medium Subtype'
-	elif name == 11002233:
-		name = 'Any Chosen Medium'
-	elif name == 12121212:
-		name = 'Any Chosen Descriptor'
-	elif name is None:
-		name = ''
-	else:
-		try:
-			query = db.session.query(PowerDes).filter_by(id=name).one()
-			name = query.name
-		except:
-			print('invalid id')
+	try:
+		query = db.session.query(PowerDes).filter_by(id=name).one()
+		name = query.name
+	except:
+		print('invalid id')
 	
 	return (name)
 
