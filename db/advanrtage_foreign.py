@@ -39,6 +39,7 @@ class AdvAltCheck(db.Model):
 	
 	advantage_id = integer(advantage_id)
 	benefit = integer(benefit)
+	
 	check_type = db_integer(Check, check_type)
 	conflict = db_integer(ConflictAction, conflict)
 	conflict_range = db_integer(Ranged, conflict_range)

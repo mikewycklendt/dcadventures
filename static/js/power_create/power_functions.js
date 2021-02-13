@@ -915,50 +915,56 @@ function row_delete(jsondata, route, object) {
 			fetch(route + delId, {
 				method: 'DELETE'
 			})
-			.then(function() {
+			.then(response => response.json())
+			.then(jsonResponse => {
+			console.log(jsonResponse)
+				if (jsonResponse.success) {
 
-				console.log(delId)
-				console.log(rows)
+					clear_errors(err_line, errors);
+					console.log(delId)
+					console.log(rows)
 
-				for (i = 0; i < rows.length; i++) {
-					if (rows[i].id == delId){
-						console.log(delId)
-						rows.splice(i, 1);
-					}
-				}
-
-				console.log(rows);
-
-				response = fetch('/power/grid', {
-					method: 'POST',
-					body: JSON.stringify({
-						'font': size,
-						'rows': rows
-					}),
-					headers: {
-					  'Content-Type': 'application/json',
-					}
-				})
-				.then(response => response.json())
-				.then(jsonResponse => {
-					console.log(jsonResponse)
-					if (jsonResponse.success) {
-						const grid = jsonResponse.grid;
-						const newsize = jsonResponse.font;
-						const columns = jsonResponse.columns;
-						console.log(grid)
-
-						if (grid == 'hide') {
-							table_change.style.maxHeight = '0px';
-							setTimeout(function(){table_change.style.display = 'none'}, 400);
-						} else {
-							grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+					for (i = 0; i < rows.length; i++) {
+						if (rows[i].id == delId){
+							console.log(delId)
+							rows.splice(i, 1);
 						}
-					} else {
-						console.log('error')
 					}
-				})
 
+					console.log(rows);
+
+					response = fetch('/power/grid', {
+						method: 'POST',
+						body: JSON.stringify({
+							'font': size,
+							'rows': rows
+						}),
+						headers: {
+						'Content-Type': 'application/json',
+						}
+					})
+					.then(response => response.json())
+					.then(jsonResponse => {
+						console.log(jsonResponse)
+						if (jsonResponse.success) {
+							const grid = jsonResponse.grid;
+							const newsize = jsonResponse.font;
+							const columns = jsonResponse.columns;
+							console.log(grid)
+
+							if (grid == 'hide') {
+								table_change.style.maxHeight = '0px';
+								setTimeout(function(){table_change.style.display = 'none'}, 400);
+							} else {
+								grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+							}
+						} else {
+							console.log('error')
+						}
+					})
+				} else {
+					back_errors(err_line, errors, jsonResponse)
+				}
 			
 			})
 		}
@@ -1017,12 +1023,12 @@ function clear_errors(line, div) {
 	const errors_delete = document.getElementsByClassName(line);
 	const errors = document.getElementById(div);
 
-	errors.style.maxHeight = "0px";
-	errors.style.padding = "0px";
-
 	if (typeof errors_delete[0] === "undefined") {
 		console.log('no errors defined')
 	} else {
+		errors.style.maxHeight = "0px";
+		errors.style.padding = "0px";
+	
 		for (i = 0; i < errors_delete.length; i++) {
 			errors_delete[i].style.maxHeight = "0px";
 			errors_delete[i].style.padding = "0px";

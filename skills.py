@@ -79,20 +79,11 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
 	
-	base_conditions = Condition.query.all()
-	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
-	conditions_raw = []
-	for condition in base_conditions:
-		conditions_raw.append(condition.name)
-	for condition in combined_conditions:
-		conditions_raw.append(condition)
-	conditions = sorted(conditions_raw)
+	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 	
-	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
-	powers = sorted(powers_raw)
+	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 
-	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
-	advantages = Advantage.query.all()
+	advantages = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
 
 	abilities = db.session.query(Ability).filter(Ability.hide == None).order_by(Ability.name).all()
 
@@ -344,22 +335,24 @@ def save_skill_bonus():
 	modifiers_multiple = request.get_json()['modifiers_multiple']
 	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
 
-	skill_id = db_integer(skill_id)
-	ability = db_integer(ability)
-	skill = db_integer(skill)
-	check_type = db_integer(check_type)
-	action = db_integer(action)
-	type = db_integer(type)
+	ability = db_integer(Ability, ability)
+	skill = db_integer(Skill, skill)
+	check_type = db_integer(Check, check_type)
+	action = db_integer(Action, action)
+	type = db_integer(SkillType, type)
+	condition = db_integer(Condition, condition)
+	advantage = db_integer(Advantage, advantage)
+	concealment = db_integer(Conceal, concealment)
+	weapon_cat = db_integer(WeaponCat, weapon_cat)
+	weapon_type = db_integer(WeaponType, weapon_type)
+	weapon = db_integer(Weapon, weapon)
+
 	dc_value = integer(dc_value)
 	dc_mod = integer(dc_mod)
 	targets = integer(targets)
 	speed_turns = integer(speed_turns)
 	speed_mod = integer(speed_mod)
 	speed_value = integer(speed_value)
-	concealment = db_integer(concealment)
-	weapon_cat = db_integer(weapon_cat)
-	weapon_type = db_integer(weapon_type)
-	weapon = db_integer(weapon)
 	modifiers_multiple_count = integer(modifiers_multiple_count)
 
 	entry = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
@@ -494,8 +487,8 @@ def skill_bonus_post_ability():
 	ability = request.get_json()['ability']
 	circumstance = request.get_json()['circumstance']
 
-	skill_id = db_integer(skill_id)
-	ability = db_integer(ability)
+	skill_id = integer(skill_id)
+	ability = db_integer(Ability, ability)
 
 	entry = SkillAbility(skill_id = skill_id,
 							ability = ability,
@@ -579,11 +572,15 @@ def skill_bonus_post_check():
 	action = request.get_json()['action']
 	free = request.get_json()['free']
 
-	skill_id = db_integer(skill_id)
-	check_type = db_integer(check_type)
+	skill_id = integer(skill_id)
+	check_type = db_integer(Check, check_type)
+	conflict = db_integer(ConflictAction, conflict)
+	conflict_range = db_integer(Ranged, conflict_range)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+
 	mod = integer(mod)
-	conflict = integer(conflict)
-	conflict_range = db_integer(conflict_range)
+	trait = integer(trait)
 	action = integer(action)
 
 	entry = SkillCheck(skill_id = skill_id,
@@ -700,26 +697,30 @@ def skill_bonus_post_circ():
 	time_rank = request.get_json()['time_rank']
 	circumstance = request.get_json()['circumstance']
 
-	skill_id = db_integer(skill_id)
+	skill_id = integer(skill_id)
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Math, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	time_units = db_integer(Unit, time_units)
+
 	mod = integer(mod)
 	speed = integer(speed)
 	temp = integer(temp)
-	level_type = db_integer(level_type)
-	level = db_integer(level)
 	time = integer(time)
 	conditions = integer(conditions)
 	conditions_effect = integer(conditions_effect)
 	measure_rank_value = integer(measure_rank_value)
-	measure_rank = db_integer(measure_rank)
 	unit_value = integer(unit_value)
-	unit_type = db_integer(unit_type)
-	unit = db_integer(unit)
-	measure_trait_math = db_integer(measure_trait_math)
+	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
-	measure_math_rank = db_integer(measure_math_rank)
 	turns = integer(turns)
 	unit_time = integer(unit_time)
-	time_units = db_integer(time_units)
 	time_rank = integer(time_rank)
 
 	entry = SkillCirc(skill_id = skill_id,
@@ -869,30 +870,36 @@ def skill_bonus_post_dc():
 	keyword = request.get_json()['keyword']
 	complexity = request.get_json()['complexity']
 
-	skill_id = db_integer(skill_id)
+	skill_id = integer(skill_id)
+	math = db_integer(Math, math)
+	action = db_integer(Action, action)
+	inflict_math = db_integer(Math, inflict_math)
+	damage_consequence = db_integer(Consequence, damage_consequence)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Math, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	complexity = db_integer(Complex, complexity)
+
 	value = integer(value)
 	mod = integer(mod)
 	math_value = integer(math_value)
-	math = db_integer(math)
-	action = db_integer(action)
+	math_trait = integer(math_trait)
 	inflict_flat = integer(inflict_flat)
-	inflict_math = db_integer(inflict_math)
+	inflict_trait = integer(inflict_trait)
 	inflict_mod = integer(inflict_mod)
 	inflict_bonus = integer(inflict_bonus)
 	damage_mod = integer(damage_mod)
-	damage_consequence = db_integer(damage_consequence)
 	measure_rank_value = integer(measure_rank_value)
-	measure_rank = db_integer(measure_rank)
-	unit_value = integer(math_value)
-	unit_type = db_integer(unit_type)
-	unit = db_integer(unit)
-	measure_trait_math = db_integer(measure_trait_math)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
-	measure_math_rank = db_integer(measure_math_rank)
-	level_type = db_integer(level_type)
-	level = db_integer(level)
 	condition_turns = integer(condition_turns)
-	complexity = db_integer(complexity)
 
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
@@ -1059,32 +1066,38 @@ def skill_bonus_post_degree():
 	cumulative = request.get_json()['cumulative']
 	linked = request.get_json()['linked']
 
-	skill_id = db_integer(skill_id)
+	skill_id = integer(skill_id)
+	action = db_integer(Action, action)
+	inflict_math = db_integer(Math, inflict_math)
+	damage_consequence = db_integer(Consequence, damage_consequence)
+	consequence = db_integer(Consequence, consequence)
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	circumstance = integer(circumstance)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Msth, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+
 	value = integer(value)
-	action = db_integer(action)
 	time = integer(time)
 	object = integer(object)
 	inflict_flat = integer(inflict_flat)
-	inflict_math = db_integer(inflict_math)
+	inflict_trait = integer(inflict_trait)
 	inflict_mod = integer(inflict_mod)
 	inflict_bonus = integer(inflict_bonus)
 	damage_mod = integer(damage_mod)
-	damage_consequence = db_integer(damage_consequence)
 	consequence_action = integer(consequence_action)
-	consequence = db_integer(consequence)
+	consequence_trait = integer(consequence_trait)
 	knowledge_count = integer(knowledge_count)
-	level_type = db_integer(level_type)
-	level = db_integer(level)
 	level_direction = integer(level_direction)
-	circumstance = db_integer(circumstance)
 	measure_rank_value = integer(measure_rank_value)
-	measure_rank = db_integer(measure_rank)
 	unit_value = integer(unit_value)
-	unit_type = db_integer(unit_type)
-	unit = db_integer(unit)
-	measure_trait_math = db_integer(measure_trait_math)
+	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
-	measure_math_rank =  db_integer(measure_math_rank)
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	condition_turns = integer(condition_turns)
@@ -1222,13 +1235,16 @@ def skill_bonus_post_opposed():
 	recurring_value = request.get_json()['recurring_value']
 	recurring_units = request.get_json()['recurring_units']
 
-	skill_id = db_integer(skill_id)
+	skill_id = integer(skill_id)
+	player_check = db_integer(Check, player_check)
+	opponent_check = db_integer(Check, opponent_check)
+	recurring_units = db_integer(Unit, recurring_units)
+
+	trait = integer(trait)
 	mod = integer(mod)
+	opponent_trait = integer(opponent_trait)
 	opponent_mod = integer(opponent_mod)
-	player_check = db_integer(player_check)
-	opponent_check = db_integer(opponent_check)
 	recurring_value = integer(recurring_value)
-	recurring_units = db_integer(recurring_units)
 
 	entry = SkillOpposed(skill_id = skill_id,
 						attached = attached,
@@ -1327,15 +1343,17 @@ def skill_bonus_post_time():
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
 
-	skill_id = db_integer(skill_id)
-	rank1 = db_integer(rank1)
+	skill_id = integer(skill_id)
+	rank1 = db_integer(Rank, rank1)
+	rank_math = db_integer(Math, rank_math)
+	rank2 = db_integer(Rank, rank2)
+	units = db_integer(Unit, units)
+	math = db_integer(Math, math)
+
 	rank1_value = integer(rank1_value)
-	rank_math = db_integer(rank_math)
-	rank2 = db_integer(rank2)
 	rank2_value = integer(rank2_value)
 	value = integer(value)
-	units = db_integer(units)
-	math = db_integer(math)
+	trait = integer(trait)
 	math_value = integer(math_value)
 	recovery_penalty = integer(recovery_penalty)
 	recovery_time = integer(recovery_time)
@@ -1474,31 +1492,6 @@ def skill_post_modifiers():
 	body = {}
 
 	try:
-		environment = db_integer(environment)
-		sense = db_integer(sense)
-		mod_range = db_integer(mod_range)
-		subsense = db_integer(subsense)
-		cover = db_integer(cover)
-		conceal = db_integer(conceal)
-		maneuver = db_integer(maneuver)
-		weapon_melee = db_integer(weapon_melee)
-		weapon_ranged = db_integer(weapon_ranged)
-		consequence = db_integer(consequence)
-		creature = db_integer(creature)
-		emotion = db_integer(emotion)
-		conflict = db_integer(conflict)
-		profession = db_integer(profession)
-		bonus_check = db_integer(bonus_check)
-		bonus_check_range = db_integer(bonus_check_range)
-		bonus_conflict = db_integer(bonus_conflict)
-		penalty_check = db_integer(penalty_check)
-		penalty_check_range = db_integer(penalty_check_range)
-		penalty_conflict = db_integer(penalty_conflict)
-		skill = db_integer(skill)
-		light = db_integer(light)
-		skill_id = db_integer(skill_id)
-	
-
 		body['new'] = False
 		new_items = []
 
@@ -1561,34 +1554,37 @@ def skill_post_modifiers():
 		body['new_items'] = new_items
 
 		skill_id = integer(skill_id)
-		skill = integer(skill)
-		light = integer(light)
+		environment = db_integer(Environment, environment)
+		sense = db_integer(Sense, sense)
+		mod_range = db_integer(Ranged, mod_range)
+		subsense = db_integer(SubSense, subsense)
+		cover = db_integer(Cover, cover)
+		conceal = db_integer(Conceal, conceal)
+		maneuver = db_integer(Maneuver, maneuver)
+		weapon_melee = db_integer(WeaponType, weapon_melee)
+		weapon_ranged = db_integer(WeaponType,  weapon_ranged)
+		condition = db_integer(Condition, condition)
+		power = db_integer(Power, power)
+		consequence = db_integer(Consequence, consequence)
+		creature = db_integer(Creature, creature)
+		emotion = db_integer(Emotion, emotion)
+		conflict = db_integer(ConflictAction, conflict)
+		profession = db_integer(Job, profession)
+		bonus_conflict = db_integer(ConflictAction, bonus_conflict)
+		penalty_conflict = db_integer(ConflictAction, penalty_conflict)
+		skill = db_integer(Skill, skill)
+		light = db_integer(Light, light)
+		bonus_check = db_integer(Check, bonus_check)
+		bonus_check_range = db_integer(Ranged, bonus_check_range)
+		penalty_check = db_integer(Check, penalty_check)
+		penalty_check_range = db_integer(Ranged, penalty_check_range)
+
 		bonus = integer(bonus)
 		penalty = integer(penalty)
-		environment = integer(environment)
-		sense = integer(sense)
-		mod_range = integer(mod_range)
-		subsense = integer(subsense)
-		cover = integer(cover)
-		conceal = integer(conceal)
-		maneuver = integer(maneuver)
-		weapon_melee = integer(weapon_melee)
-		weapon_ranged = integer(weapon_ranged)
-		consequence = integer(consequence)
-		creature = integer(creature)
-		emotion = integer(emotion)
-		conflict = integer(conflict)
-		profession = integer(profession)
-		bonus_check = integer(bonus_check)
-		bonus_check_range = integer(bonus_check_range)
-		bonus_conflict = integer(bonus_conflict)
-		penalty_check = integer(penalty_check)
-		penalty_check_range = integer(penalty_check_range)
-		penalty_conflict = integer(penalty_conflict)
+		bonus_trait = integer(bonus_trait)
+		penalty_trait = integer(penalty_trait)
 		multiple_count = integer(multiple_count)
 		lasts = integer(lasts)
-		skill = integer(skill)
-		light = integer(light)
 
 		entry = SkillMod(skill_id = skill_id,
 							bonus = bonus,

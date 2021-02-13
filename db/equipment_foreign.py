@@ -376,3 +376,60 @@ class EquipOpposed(db.Model):
 
 
 
+
+
+
+
+
+
+class Equipment(db.Model):
+
+	cost = integer(cost)
+	toughness = integer(toughness)
+	speed_mod = integer(speed_mod)
+	mod_multiple_count = integer(mod_multiple_count)
+
+
+class Feature(db.Model):
+
+	toughness = integer(toughness)
+
+
+
+	
+class EquipBelt(db.Model):
+
+	cost = integer(cost)
+
+
+
+class EquipDamage(db.Model):
+
+	toughness = integer(toughness)
+
+
+	
+class EquipLimit(db.Model):
+
+	time = integer(time)
+	range = integer(range)
+	time_capacity = integer(time_capacity)
+	capacity = integer(capacity)
+	area_long = integer(area_long)
+	area_wide = integer(area_wide)
+	uses = integer(uses)
+
+	
+class EquipMod(db.Model):
+
+	bonus = integer(bonus)
+	penalty = integer(penalty)
+	bonus_trait = integer(bonus_trait)
+	penalty_trait = integer(penalty_trait)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
+
+	
+class EquipOpposed(db.Model):
+
+	dc = integer(dc)

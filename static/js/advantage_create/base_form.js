@@ -56,7 +56,7 @@ function skill_type() {
 	const base = 'skill-base';
 	const entry = 'skill-entry';
 	const field = 'type';
-	const value = 'skill';
+	const value = '4';
 
 	select_entry(check, base, entry, field, value);	
 }

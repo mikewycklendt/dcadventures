@@ -92,10 +92,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True).all()
 
-
 	duration_type = PowerDuration.query.all()
-
-	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
 
 	distance = db.session.query(Unit).filter_by(type_id=3)
 
@@ -117,31 +114,11 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
-	powers_raw =['Affliction', 'Alternate Form', 'Burrowing', 'Communication', 'Comprehend', 'Concealment', 'Create', 'Damage', 'Deflect', 'Elongation', 'Enhanced Trait', 'Environment', 'Extra Limbs', 'Feature', 'Flight', 'Growth', 'Healing', 'Illusion', 'Immortality', 'Immunity', 'Insubstantial', 'Leaping', 'Luck Control', 'Mind Reading', 'Morph', 'Move Object', 'Movement', 'Dimension Travel', 'Environmental Adaptation', 'Permeate', 'Safe Fall', 'Slithering', 'Space Travel', 'Sure-Footed', 'Swinging', 'Time Travel', 'Trackless', 'Wall-Crawling', 'Water-Walking', 'Nullify', 'Protection', 'Quickness', 'Regeneration', 'Remote Sensing', 'Senses', 'Accurate Sense', 'Acute Sense', 'Analytical Sense', 'Awareness Sense', 'Communication Link', 'Counters Concealment', 'Counters Illusion', 'Danger Sense', 'Darkvision Sense', 'Detect Sense', 'Direction Sense', 'Distance Sense', 'Extended Sense', 'Infravision', 'Low-Light Vision', 'Microscopic Vision', 'Penetrates Concealment', 'Postcognition', 'Precognition', 'Radio', 'Radius', 'Radius', 'Ranged Sense', 'Rapid Sense', 'Time Sense', 'Tracking Sense', 'Ultra-Hearing', 'Ultra-Vision', 'Snare', 'Strike', 'Suffocation', 'Shrinking', 'Speed', 'Summon', 'Swimming', 'Teleport', 'Transform', 'Destructive Transformation', 'Transforming Beings', 'Variable', 'Weaken', 'Cold', 'Heat', 'Impede Movement', 'Light', 'Visibility', 'Strength and Damage', 'Strength-Based Damage', 'Damaging Objects', 'Dazzle', 'Duplication', 'Element Control', 'Energy Absorption', 'Created Objects, Cover and Concealment', 'Trapping with Objects', 'Dropping Objects', 'Supporting Weight', 'Comprehend Animals', 'Comprehend Languages', 'Comprehend Machines', 'Comprehend Objects', 'Comprehend Plants', 'Comprehend Spirits', 'Blast']
-	powers = sorted(powers_raw)
+	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 
-	advantages_raw = ['Accurate Attack', 'Agile Feint', 'All-out Attack', 'Animal Empathy', 'Artificer', 'Assessment', 'Attractive', "Beginner's Luck", 'Benefit', 'Chokehold', 'Close Attack', 'Connected', 'Contacts', 'Daze', 'Defensive Attack', 'Defensive Roll', 'Diehard', 'Eidetic Memory', 'Equipment', 'Evasion', 'Extraordinary Effort', 'Fascinate', 'Fast Grab', 'Favored Environment', 'Favored Foe', 'Fearless', 'Grabbing Finesse', 'Great Endurance', 'Hide in Plain Sight', 'Improved Aim', 'Improved Critical', 'Improved Defense', 'Improved Disarm', 'Improved Grab', 'Improved Initiative', 'Improved Hold', 'Improved Smash', 'Improved Trip', 'Improvised Tools', 'Improvised Weapon', 'Inspire', 'Instant Up', 'Interpose', 'Inventor', 'Jack-of-all-Trades', 'Languages', 'Leadership', 'Luck', 'Minion', 'Move-by Action', 'Power Attack', 'Precise Attack', 'Prone Fighting', 'Quick Draw', 'Ranged Attack', 'Redirect', 'Ritualist', 'Second Chance', 'Seize Initiative', 'Set-Up', 'Sidekick', 'Skill Mastery', 'Startle', 'Takedown', 'Taunt', 'Teamwork', 'Throwing Mastery', 'Tracking', 'Trance', 'Ultimate Effort', 'Uncanny Dodge', 'Weapon Bind', 'Weapon Break', 'Well-Informed']
-	advantages = sorted(advantages_raw)
+	advantages = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
 
-	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
-
-	base_conditions = Condition.query.all()
-
-	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
-	conditions_raw = []
-	for condition in base_conditions:
-		conditions_raw.append(condition.name)
-	for condition in combined_conditions:
-		conditions_raw.append(condition)
-	conditions = sorted(conditions_raw)
-
-	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
-
-	dc_value = [{'type': '', 'name': 'DC Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
-
-	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
-
-	whens = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
+	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 
 	maths = Math.query.all()
 
@@ -149,15 +126,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	distances = db.session.query(Unit).filter_by(type_id=3)
 
-	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
-	
-	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
-
 	senses = db.session.query(Sense).filter(Sense.hide == None).all()
 
 	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).all()
-
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
 
 	visual = db.session.query(SubSense).filter_by(sense_id=6)
 	
@@ -177,6 +148,58 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	power_sense = db.session.query(Power).filter(Power.power_type == 3, Power.show == True).order_by(Power.name).all()
 
+	bonuses = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
+
+	complexity = Complex.query.all()
+
+	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
+
+	ranges = Range.query.all()
+
+	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
+
+	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
+
+	grounds = Ground.query.all()
+
+	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
+
+	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
+
+	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
+
+	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
+
+	level_types = LevelType.query.order_by(LevelType.name).all()
+
+	mediums = MediumType.query.order_by(MediumType.name).all()
+
+	materials = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
+	
+	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
+
+	damage = Damage.query.order_by(Damage.name).all()
+
+	cover = Cover.query.all()
+
+	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+
+	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
+
+	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
+
+	dc_value = [{'type': '', 'name': 'DC Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
+
+	whens = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
+
+	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	
+	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
+
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
+	
 	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
 
 	required = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
@@ -186,8 +209,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	resistant = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
 	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
-
-	bonuses = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
@@ -213,16 +234,12 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
 
-	complexity = Complex.query.all()
-
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
 
 	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
 
 	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 	
-	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
-
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
 	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
@@ -231,21 +248,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
 
-	ranges = Range.query.all()
-
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
-
 	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
-
-	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
-
-	grounds = Ground.query.all()
 
 	directions = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
 
@@ -256,22 +265,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
-
-	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
-
-	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
-
-	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
-
-	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
-
-	level_types = LevelType.query.order_by(LevelType.name).all()
-
-	mediums = MediumType.query.order_by(MediumType.name).all()
-
-	materials = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
-	
-	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
@@ -284,8 +277,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
 	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
-
-	damage = Damage.query.order_by(Damage.name).all()
 
 	insub = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
 
@@ -325,8 +316,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}]
 
-	cover = Cover.query.all()
-	
 	minion_type = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
 
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
@@ -478,19 +467,24 @@ def save_power():
 	time = request.get_json()['time']
 
 	power_type = integer(power_type)
-	action = integer(action)
-	power_range = integer(power_range)
+	action = db_integer(Action, action)
+	power_range = db_integer(Ranged, power_range)
+	duration = integer(duration)
+	check_type = db_integer(Check, check_type)
+	skill = db_integer(Skill, skill)
+	conflict = db_integer(ConflictAction, conflict)
+	condition = db_integer(Condition, condition)
+	power = db.session.query(Power).filter(Power.id == power_id).one()
+
 	cost = integer(cost)
 	limit = integer(limit)
 	dc_value = integer(dc_value)
 	dc_mod = integer(dc_mod)
 	opponent_dc = integer(opponent_dc)
-	check_type = integer(check_type)
+	routine_trait = integer(routine_trait)
+	partner_trait = integer(partner_trait)
 	partner_dc = integer(partner_dc)
-	skill = integer(skill)
-	grab = integer(grab)
-
-	power = db.session.query(Power).filter(Power.id == power_id).one()
+	conflict_bonus = integer(conflict_bonus)
 
 	power.description = description
 	power.power_type = power_type
@@ -623,6 +617,7 @@ def post_extra_create():
 	alternate = request.get_json()['alternate']
 
 	power_id = integer(power_id)
+	inherit = integer(inherit)
 	cost = integer(cost)
 	ranks = integer(ranks)
 
@@ -729,10 +724,11 @@ def power_post_alt_check():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	check_type = integer(check_type)
-	mod = integer(mod)
+	extra_id = db_integer(Extra, extra_id)
+	check_type = db_integer(Check, check_type)
 
+	mod = integer(mod)
+	trait = integer(trait)
 
 	error = errors['error']
 	if error:
@@ -777,10 +773,12 @@ def power_post_alt_check():
 		body = alt_check_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -788,15 +786,22 @@ def power_post_alt_check():
 
 @powers.route('/power/alt_check/delete/<power_id>', methods=['DELETE'])
 def delete_power_altcheck(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerAltCheck).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/change_action/create', methods=['POST'])
 def power_post_change_action():
@@ -825,8 +830,9 @@ def power_post_change_action():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	action = integer(action)
+	extra_id = db_integer(Extra, extra_id)
+	action = db_integer(Action, action)
+
 	mod = integer(mod)
 
 	try:
@@ -863,10 +869,12 @@ def power_post_change_action():
 		body = change_action_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	
@@ -874,15 +882,22 @@ def power_post_change_action():
 
 @powers.route('/power/action/delete/<power_id>', methods=['DELETE'])
 def delete_power_action(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerAction).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/character/create', methods=['POST'])
 def power_post_character():
@@ -951,21 +966,24 @@ def power_post_character():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	limited_emotion = db_integer(Emotion, limited_emotion)
+
+	trait = integer(trait)
 	value = integer(value)
 	increase = integer(increase)
+	weaken_trait = integer(weaken_trait)
 	weaken_descriptor = integer(weaken_descriptor)
+	reduced_trait = integer(reduced_trait)
 	reduced_value = integer(reduced_value)
 	carry_capacity = integer(carry_capacity)
 	points_value = integer(points_value)
+	points_trait = integer(points_trait)
 	points_descriptor = integer(points_descriptor)
 	cost = integer(cost)
 	ranks = integer(ranks)
-	limited_emotion = integer(limited_emotion)
 
 	try:
-
-		
 		body = {}
 	
 		body['new'] = False
@@ -1059,10 +1077,12 @@ def power_post_character():
 		body = character_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1070,15 +1090,22 @@ def power_post_character():
 
 @powers.route('/power/char/delete/<power_id>', methods=['DELETE'])
 def delete_power_char(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerChar).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/circ/create', methods=['POST'])
 def power_post_circ():
@@ -1118,11 +1145,15 @@ def power_post_circ():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	circ_range = db_integer(Ranged, circ_range)
+	null_condition = db_integer(Condition, null_condition)
+
 	mod = integer(mod)
 	rounds = integer(rounds)
-	circ_range = integer(circ_range)
+	check_trait = integer(check_trait)
 	null_descriptor = integer(null_descriptor)
+	null_trait = integer(null_trait)
 
 	try:
 		entry = PowerCirc(power_id = power_id,
@@ -1168,10 +1199,12 @@ def power_post_circ():
 		body = circ_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1179,15 +1212,22 @@ def power_post_circ():
 
 @powers.route('/power/circ/delete/<power_id>', methods=['DELETE'])
 def delete_power_circ(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerCirc).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/create/create', methods=['POST'])
 def power_post_create():
@@ -1271,8 +1311,10 @@ def power_post_create():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	complexity = integer(complexity)
+	extra_id = db_integer(Extra, extra_id)
+	complexity = db_integer(Complex, complexity)
+	move_opponent_ability = db_integer(Ability, move_opponent_ability)
+
 	volume = integer(volume)
 	toughness = integer(toughness)
 	mass = integer(mass)
@@ -1280,12 +1322,16 @@ def power_post_create():
 	transfom_mass = integer(transfom_mass)
 	transform_start_descriptor = integer(transform_start_descriptor)
 	transform_end_descriptor = integer(transform_end_descriptor)
-	move_opponent_ability = integer(move_opponent_ability)
+	move_player_trait = integer(move_player_trait)
 	move_opponent_rank = integer(move_opponent_rank)
 	trap_dc = integer(trap_dc)
+	trap_trait = integer(trap_trait)
+	trap_resist_trait = integer(trap_resist_trait)
 	trap_resist_dc = integer(trap_resist_dc)
 	ranged_dc = integer(ranged_dc)
+	ranged_trait = integer(ranged_trait)
 	ranged_damage_value = integer(ranged_damage_value)
+	weapon_trait = integer(weapon_trait)
 	weapon_mod = integer(weapon_mod)
 	weapon_damage = integer(weapon_damage)
 	support_strength = integer(support_strength)
@@ -1384,10 +1430,12 @@ def power_post_create():
 		body = create_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1395,15 +1443,22 @@ def power_post_create():
 
 @powers.route('/power/create/delete/<power_id>', methods=['DELETE'])
 def delete_power_create(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerCreate).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/damage/create', methods=['POST'])
 def power_post_damage():
@@ -1435,9 +1490,11 @@ def power_post_damage():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	damage_type = db_integer(Descriptor, damage_type)
+
+	trait = integer(trait)
 	mod = integer(mod)
-	damage_type = integer(damage_type)
 	descriptor = integer(descriptor)
 
 	try:
@@ -1476,10 +1533,12 @@ def power_post_damage():
 		body = damage_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1487,15 +1546,22 @@ def power_post_damage():
 
 @powers.route('/power/damage/delete/<power_id>', methods=['DELETE'])
 def delete_power_damage(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerDamage).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/dc_table/create', methods=['POST'])
 def power_post_dc_table():
@@ -1543,13 +1609,18 @@ def power_post_dc_table():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	math = db_integer(Math, math)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	level = db_integer(Levels, level)
+
 	value = integer(value)
 	math_value = integer(math_value)
-	math = integer(math)
+	math_trait = integer(math_trait)
 	descriptor = integer(descriptor)
+	check_trait = integer(check_trait)
 	check_mod = integer(check_mod)
-	level = integer(level)
 
 	if level is not None:
 		try:
@@ -1615,10 +1686,12 @@ def power_post_dc_table():
 		body = dc_table_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1626,15 +1699,22 @@ def power_post_dc_table():
 
 @powers.route('/power/dc/delete/<power_id>', methods=['DELETE'])
 def delete_power_dc(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerDC).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
@@ -1689,14 +1769,20 @@ def power_post_defense():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	defense = db_integer(Defense, defense)
+	reflect_action = db_integer(Action, reflect_action)
+	reflect_check = db_integer(Check, reflect_check)
+	immunity_damage = db_integer(Descriptor, immunity_damage)
+	cover_type = db_integer(Cover, cover_type)
+
 	mod = integer(mod)
 	roll = integer(roll)
-	reflect_action = integer(reflect_action)
-	reflect_check = integer(reflect_check)
 	reflect_dc = integer(reflect_dc)
+	reflect_opposed_trait = integer(reflect_opposed_trait)
+	reflect_resist_trait = integer(reflect_resist_trait)
+	immunity_trait = integer(immunity_trait)
 	immunity_descriptor = integer(immunity_descriptor)
-	immunity_damage = integer(immunity_damage)
 
 	try:
 		entry = PowerDefense(power_id = power_id,
@@ -1759,10 +1845,12 @@ def power_post_defense():
 
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1770,15 +1858,22 @@ def power_post_defense():
 
 @powers.route('/power/defense/delete/<power_id>', methods=['DELETE'])
 def delete_power_defense(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerDefense).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/degree_mod/create', methods=['POST'])
 def power_post_degree_mod():
@@ -1836,19 +1931,26 @@ def power_post_degree_mod():
 	knowledge_specificity = request.get_json()['knowledge_specificity']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	measure_math = db_integer(Math, measure_math)
+	measure_rank = db_integer(Rank, measure_rank)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	level = db_integer(Levels, level)
+	consequence = db_integer(Consequence, consequence)
+
 	value = integer(value)
 	circ_value = integer(circ_value)
 	circ_turns = integer(circ_turns)
+	circ_trait = integer(circ_trait)
 	measure_val1 = integer(measure_val1)
-	measure_math = integer(measure_math)
+	measure_trait = integer(measure_trait)
 	measure_value = integer(measure_value)
-	measure_rank = integer(measure_rank)
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	nullify = integer(nullify)
-	level = integer(level)
 	consequence_action = integer(consequence_action)
+	consequence_trait = integer(consequence_trait)
 	knowledge_count = integer(knowledge_count)
 
 	if level is not None:
@@ -1926,10 +2028,12 @@ def power_post_degree_mod():
 		body = degree_mod_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -1937,15 +2041,22 @@ def power_post_degree_mod():
 
 @powers.route('/power/degree_mod/delete/<power_id>', methods=['DELETE'])
 def delete_power_degree_mod(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerDegMod).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/degree/create', methods=['POST'])
 def power_post_degree():
@@ -2018,10 +2129,12 @@ def power_post_degree():
 		body = degree_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -2091,20 +2204,20 @@ def power_post_environment():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	immunity_environment = db_integer(Environment, immunity_environment)
+	move_nature = db_integer(Nature, move_nature)
+
 	radius = integer(radius)
 	distance = integer(distance)
-	immunity_environment = integer(immunity_environment)
 	rank = integer(rank)
 	move_speed = integer(move_speed)
+	visibility_trait = integer(visibility_trait)
 	visibility_mod = integer(visibility_mod)
 	cost = integer(cost)
 	ranks = integer(ranks)
 
-
-
 	try:
-
 		body = {}
 	
 		body['new'] = False
@@ -2195,10 +2308,12 @@ def power_post_environment():
 		body = environment_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -2206,15 +2321,22 @@ def power_post_environment():
 
 @powers.route('/power/env/delete/<power_id>', methods=['DELETE'])
 def delete_power_env(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerEnv).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/levels/create', methods=['POST'])
 def power_post_levels():
@@ -2343,10 +2465,12 @@ def power_post_levels():
 		body = levels_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	
@@ -2355,16 +2479,22 @@ def power_post_levels():
 
 @powers.route('/power/levels/delete/<power_id>', methods=['DELETE'])
 def delete_power_levels(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(Levels).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this level.  You may have already used it on another rule.  Delete that rule first.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-
+		return jsonify(body)
 
 @powers.route('/power/minion/create', methods=['POST'])
 def power_post_minion():
@@ -2409,11 +2539,16 @@ def power_post_minion():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	condition = db_integer(Condition, condition)
+	player_condition = db_integer(Condition, player_condition)
+	attitude_type = db_integer(LevelType, attitude_type)
+	attitude_attitude = db_integer(Levels, attitude_attitude)
+	resitable_check = db_integer(Defense, resitable_check)
+
 	points = integer(points)
 	sacrifice_cost = integer(sacrifice_cost)
-	attitude_type = integer(attitude_type)
-	resitable_check = integer(resitable_check)
+	attitude_trait = integer(attitude_trait)
 	resitable_dc = integer(resitable_dc)
 	multiple_value = integer(multiple_value)
 
@@ -2467,10 +2602,12 @@ def power_post_minion():
 
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 
@@ -2479,16 +2616,22 @@ def power_post_minion():
 
 @powers.route('/power/minion/delete/<power_id>', methods=['DELETE'])
 def delete_power_minion(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerMinion).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-
+		return jsonify(body)
 
 @powers.route('/power/mod/create', methods=['POST'])
 def power_post_mod():
@@ -2598,33 +2741,39 @@ def power_post_mod():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	objects_alone = integer(objects_alone)
-	objects_character = integer(objects_character)
+	extra_id = db_integer(Extra, extra_id)
+	objects_alone = db_integer(Defense, objects_alone)
+	objects_character = db_integer(Defense, objects_character)
+	limited_level = db_integer(Levels, limited_level)
+	limited_extra = db_integer(Extra, limited_extra)
+	limited_sense = db_integer(Sense, limited_sense)
+	limited_range = db_integer(Range, limited_range)
+	side_level = db_integer(Levels, side_level)
+	reflect_check = db_integer(Check, reflect_check)
+
 	effortless_degree = integer(effortless_degree)
+	effortless_retries = integer(effortless_retries)
 	simultaneous_descriptor = integer(simultaneous_descriptor)
 	area_mod = integer(area_mod)
 	area_range = integer(area_range)
 	area_descriptor = integer(area_descriptor)
 	limited_mod = integer(limited_mod)
-	limited_level = integer(limited_level)
 	limited_source = integer(limited_source)
+	limited_trait = integer(limited_trait)
 	limited_subjects = integer(limited_subjects)
-	limited_extra = integer(limited_extra)
 	limited_degree = integer(limited_degree)
-	limited_sense = integer(limited_sense)
 	limited_descriptor = integer(limited_descriptor)
-	limited_range = integer(limited_range)
-	side_level = integer(side_level)
-	reflect_check = integer(reflect_check)
 	reflect_dc = integer(reflect_dc)
+	reflect_trait = integer(reflect_trait)
 	reflect_descriptor = integer(reflect_descriptor)
+	subtle_opponent_trait = integer(subtle_opponent_trait)
 	subtle_dc = integer(subtle_dc)
+	subtle_null_trait = integer(subtle_null_trait)
+	ranks_trait = integer(ranks_trait)
 	ranks_ranks = integer(ranks_ranks)
 	ranks_mod = integer(ranks_mod)
 	points_reroll_cost = integer(points_reroll_cost)
 	points_rerolls = integer(points_rerolls)
-	points_reroll_result = integer(points_reroll_result)
 	ranks_cost = integer(ranks_cost)
 	cost = integer(cost)
 
@@ -2742,10 +2891,12 @@ def power_post_mod():
 		body = mod_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 
@@ -2754,15 +2905,22 @@ def power_post_mod():
 
 @powers.route('/power/mod/delete/<power_id>', methods=['DELETE'])
 def delete_power_mod(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerMod).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/move/create', methods=['POST'])
 def power_post_move():
@@ -2861,29 +3019,36 @@ def power_post_move():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	math = db_integer(Math, math)
+	condition = db_integer(Condition, condition)
+	distance_math = db_integer(Math, distance_math)
+	concealment_sense = db_integer(Sense, concealment_sense)
+	ground_type = db_integer(Ground, ground_type)
+	ground_units = db_integer(Unit, ground_units)
+	objects_check = db_integer(Check, objects_check)
+	objects_attack = db_integer(ConflictAction, objects_attack)
+	damage_type = db_integer(Ability, damage_type)
+
 	rank = integer(rank)
-	math = integer(math)
 	mod = integer(mod)
 	distance_value = integer(distance_value)
 	distance_math_value = integer(distance_math_value)
-	distance_math = integer(distance_math)
 	distance_math_value2 = integer(distance_math_value2)
 	distance_mod = integer(distance_mod)
 	dc = integer(dc)
 	mass_value = integer(mass_value)
 	extended_actions = integer(extended_actions)
-	concealment_sense = integer(concealment_sense)
+	concealment_trait = integer(concealment_trait)
 	permeate_speed = integer(permeate_speed)
 	dimension_mass_rank = integer(dimension_mass_rank)
 	dimension_descriptor = integer(dimension_descriptor)
 	special_time_carry = integer(special_time_carry)
-	ground_type = integer(ground_type)
 	ground_time = integer(ground_time)
-	ground_units = integer(ground_units)
+	subtle_trait = integer(subtle_trait)
 	subtle_mod = integer(subtle_mod)
-	objects_check = integer(objects_check)
-	objects_attack = integer(objects_attack)
+	objects_skill = integer(objects_skill)
+	check_trait = integer(check_trait)
 	ranks = integer(ranks)
 	cost = integer(cost)
 
@@ -2990,8 +3155,11 @@ def power_post_move():
 		body = move_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
@@ -3001,16 +3169,23 @@ def power_post_move():
 
 @powers.route('/power/move/delete/<power_id>', methods=['DELETE'])
 def delete_power_move(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerMove).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-	
+		return jsonify(body)
+
 @powers.route('/power/opposed/create', methods=['POST'])
 def power_post_opposed():
 
@@ -3043,11 +3218,14 @@ def power_post_opposed():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	player_check = db_integer(Check, player_check)
+	opponent_check = db_integer(Check, opponent_check)
+
+	trait = integer(trait)
 	mod = integer(mod)
+	opponent_trait = integer(opponent_trait)
 	opponent_mod = integer(opponent_mod)
-	player_check = integer(player_check)
-	opponent_check = integer(opponent_check)
 
 	try:
 		entry = PowerOpposed(power_id = power_id,
@@ -3087,10 +3265,12 @@ def power_post_opposed():
 		body = opposed_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3098,15 +3278,22 @@ def power_post_opposed():
 
 @powers.route('/power/opposed/delete/<power_id>', methods=['DELETE'])
 def delete_power_opposed(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerOpposed).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)
 
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
@@ -3166,31 +3353,36 @@ def power_post_ranged():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	flat_units = db_integer(Unit, flat_units)
+	flat_rank_units = db_integer(Unit, flat_rank_units)
+	units_rank_units = db_integer(Unit, units_rank_units)
+	effect_mod_math = db_integer(Math, effect_mod_math)
+	check_math = db_integer(Math, check_math)
+	trait_math = db_integer(Math, trait_math)
+	distance_mod_math = db_integer(Math, distance_mod_math)
+
 	flat_value = integer(flat_value)
-	flat_units = integer(flat_units)
 	flat_rank = integer(flat_rank)
 	flat_rank_value = integer(flat_rank_value)
-	flat_rank_units = integer(flat_rank_units)
 	flat_rank_rank = integer(flat_rank_rank)
 	flat_rank_distance = integer(flat_rank_distance)
 	flat_rank_distance_rank = integer(flat_rank_distance_rank)
 	units_rank_start_value = integer(units_rank_start_value)
 	units_rank_value = integer(units_rank_value)
-	units_rank_units = integer(units_rank_units)
 	units_rank_rank = integer(units_rank_rank)
 	rank_distance_start = integer(rank_distance_start)
 	rank_distance = integer(rank_distance)
 	rank_effect_rank = integer(rank_effect_rank)
-	effect_mod_math = integer(effect_mod_math)
 	effect_mod = integer(effect_mod)
-	check_math = integer(check_math)
+	check_trait = integer(check_trait)
 	check_mod = integer(check_mod)
-	trait_math = integer(trait_math)
+	trait_trait = integer(trait_trait)
 	trait_mod = integer(trait_mod)
 	distance_mod_rank = integer(distance_mod_rank)
-	distance_mod_math = integer(distance_mod_math)
+	distance_mod_trait = integer(distance_mod_trait)
 	dc_value = integer(dc_value)
+	dc_trait = integer(dc_trait)
 
 	try:
 		entry = PowerRanged(power_id = power_id,
@@ -3256,10 +3448,12 @@ def power_post_ranged():
 		body = ranged_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3267,16 +3461,23 @@ def power_post_ranged():
 
 @powers.route('/power/ranged/delete/<power_id>', methods=['DELETE'])
 def delete_power_ranged(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerRanged).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-	
+		return jsonify(body)
+
 @powers.route('/power/resist/create', methods=['POST'])
 def power_post_resist():
 
@@ -3313,11 +3514,14 @@ def power_post_resist():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	check_type = db_integer(Check, check_type)
+
 	mod = integer(mod)
 	rounds = integer(rounds)
+	trait = integer(trait)
 	descriptor = integer(descriptor)
-	check_type = integer(check_type)
+	check_trait = integer(check_trait)
 
 	try:
 		entry = PowerResist(power_id = power_id,
@@ -3361,10 +3565,12 @@ def power_post_resist():
 		body = resist_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
-	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3372,16 +3578,23 @@ def power_post_resist():
 
 @powers.route('/power/resistance/delete/<power_id>', methods=['DELETE'])
 def delete_power_resistance(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerResist).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-	
+		return jsonify(body)
+
 @powers.route('/power/resisted_by/create', methods=['POST'])
 def power_post_resisted_by():
 
@@ -3424,17 +3637,21 @@ def power_post_resisted_by():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	level = db_integer(Levels, level)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	nullify_alternate = db_integer(Defense, nullify_alternate)
+
+	trait = integer(trait)
 	dc = integer(dc)
 	mod = integer(mod)
-	level = integer(level)
 	degree = integer(degree)
 	descriptor = integer(descriptor)
 	weaken_max = integer(weaken_max)
 	weaken_restored = integer(weaken_restored)
-	damage =  integer(damage)
+	damage = integer(damage)
 	nullify_descriptor = integer(nullify_descriptor)
-	nullify_alternate = integer(nullify_alternate)
 
 	try:
 		entry = PowerResistBy(power_id = power_id,
@@ -3484,10 +3701,12 @@ def power_post_resisted_by():
 		body = resisted_by_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3495,16 +3714,22 @@ def power_post_resisted_by():
 
 @powers.route('/power/resist/delete/<power_id>', methods=['DELETE'])
 def delete_power_resist(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerResistBy).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-
+		return jsonify(body)
 
 @powers.route('/power/reverse_effect/create', methods=['POST'])
 def power_post_reverse_effect():
@@ -3543,13 +3768,16 @@ def power_post_reverse_effect():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	math = db_integer(Math, math)
+	time_unit = db_integer(Unit, time_unit)
+
 	degree = integer(degree)
+	trait = integer(trait)
 	value_dc = integer(value_dc)
 	math_dc = integer(math_dc)
-	math = integer(math)
 	time_value = integer(time_value)
-	time_unit = integer(time_unit)
+
 
 	try:
 		entry = PowerReverse(power_id = power_id,
@@ -3594,10 +3822,12 @@ def power_post_reverse_effect():
 		body = reverse_effect_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
-	
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3605,16 +3835,23 @@ def power_post_reverse_effect():
 
 @powers.route('/power/reverse/delete/<power_id>', methods=['DELETE'])
 def delete_power_reverse(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerReverse).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-	
+		return jsonify(body)
+
 @powers.route('/power/sense/create', methods=['POST'])
 def power_post_sense():
 
@@ -3680,32 +3917,32 @@ def power_post_sense():
 	columns = request.get_json()['columns']
 	font = request.get_json()['font']
 
-	print('\n\n\n\n\n')
-	print(extra_id)
-
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	sense = integer(sense)
-	subsense = integer(subsense)
+	extra_id = db_integer(Extra, extra_id)
+	sense = db_integer(Sense, sense)
+	subsense = db_integer(SubSense, subsense)
+	skill = db_integer(Skill, skill)
+	height_ensense = db_integer(Power, height_ensense)
+	lighting = db_integer(Light, lighting)
+	time_unit = db_integer(Unit, time_unit)
+	time_skill = db_integer(Skill, time_skill)
+	time_bonus = db_integer(SkillBonus, time_bonus)
+	distance_unit = db_integer(Unit, distance_unit)
+
 	sense_cost = integer(sense_cost)
 	subsense_cost = integer(subsense_cost)
-	skill = integer(skill)
+	height_trait = integer(height_trait)
+	resist_trait = integer(resist_trait)
 	resist_circ = integer(resist_circ)
 	time_value = integer(time_value)
-	time_unit = integer(time_unit)
-	time_skill = integer(time_skill)
 	time_factor = integer(time_factor)
 	distance_dc = integer(distance_dc)
 	distance_mod = integer(distance_mod)
 	distance_value = integer(distance_value)
-	distance_unit = integer(distance_unit)
 	distance_factor = integer(distance_factor)
 	ranks = integer(ranks)
 	cost = integer(cost)
-	lighting = integer(lighting)
 
-	print(extra_id)
-	print('\n\n\n\n')
 
 	try:
 		entry = PowerSenseEffect(power_id = power_id,
@@ -3779,8 +4016,11 @@ def power_post_sense():
 		body = sense_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	
 	finally:
@@ -3790,16 +4030,22 @@ def power_post_sense():
 
 @powers.route('/power/sense/delete/<power_id>', methods=['DELETE'])
 def delete_power_sense(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerSenseEffect).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
-
+		return jsonify(body)
 @powers.route('/power/time/create', methods=['POST'])
 def power_post_time():
 
@@ -3839,15 +4085,16 @@ def power_post_time():
 	font = request.get_json()['font']
 
 	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
+	extra_id = db_integer(Extra, extra_id)
+	units = db_integer(Unit, units)
+	math = db_integer(Math, math)
+	check_type = db_integer(Check, check_type)
+
 	value = integer(value)
-	units = integer(units)
 	time_value = integer(time_value)
-	math = integer(math)
 	trait = integer(trait)
 	dc = integer(dc)
 	descriptor = integer(descriptor)
-	check_type = integer(check_type)
 	recovery_penalty = integer(recovery_penalty)
 	recovery_time = integer(recovery_time)
 
@@ -3897,10 +4144,13 @@ def power_post_time():
 		body = time_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
-	
+
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -3908,12 +4158,19 @@ def power_post_time():
 
 @powers.route('/power/time/delete/<power_id>', methods=['DELETE'])
 def delete_power_time(power_id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(PowerTime).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
+		return jsonify(body)

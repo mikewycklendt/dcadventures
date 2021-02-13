@@ -79,17 +79,9 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 
-	base_conditions = Condition.query.all()
-	combined_conditions = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
-	conditions_raw = []
-	for condition in base_conditions:
-		conditions_raw.append(condition.name)
-	for condition in combined_conditions:
-		conditions_raw.append(condition)
-	conditions = sorted(conditions_raw)
+	conditions = db.session.query(Job).filter(Condition.hide == None).order_by(Condition.name).all()
 
 	advantages = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
-
 
 	weapon_cat = WeaponCat.query.all()
 	
@@ -114,8 +106,6 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
 	area  = [{'type': '', 'name': 'Area Type'}, {'type': 'cone', 'name': 'Cone'}, {'type': 'line', 'name': 'Line'}, {'type': 'either', 'name': 'Cone or Line'}, {'type': 'burst', 'name': 'Burst'}, {'type': 'cloud', 'name': 'Cloud'}]
-
-
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
@@ -227,17 +217,23 @@ def save_weapon():
 	descriptor = request.get_json()['descriptor']
 
 	weapon_id = integer(weapon_id)
-	cat_id = db_integer(cat_id)
-	type_id = db_integer(type_id)
+	
+	cat_id = db_integer(WeaponCat, cat_id)
+	type_id = db_integer(WeaponType, type_id)
+	material = db_integer(Material, material)
+	length_units = db_integer(Unit, length_units)
+	resistance = db_integer(Defense, resistance)
+	power = db_integer(Power, power)
+	advantage = db_integer(Advantage, advantage)
+	conceal = db_integer(Conceal, conceal)
+	sense = db_integer(Sense, sense)
+
 	cost = integer(cost)
 	critical = integer(critical)
 	damage = integer(damage)
 	toughness = integer(toughness)
-	material = db_integer(material)
 	length = integer(length)
-	length_units = db_integer(length_units)
 	resist_dc = integer(resist_dc)
-	resistance = db_integer(resistance)
 	power_rank = integer(power_rank)
 	hands = integer(hands)
 	reach = integer(reach)
@@ -249,10 +245,8 @@ def save_weapon():
 	perception_dc = integer(perception_dc)
 	grenade_burst = integer(grenade_burst)
 	grenade_area_damage = integer(grenade_area_damage)
-	conceal = db_integer(conceal)
-	sense = db_integer(sense)
 	double_mod = integer(double_mod)
-	
+
 	entry = db.session.query(Weapon).filter(Weapon.id == weapon_id).one()
 
 	entry.cat_id = cat_id
@@ -386,6 +380,11 @@ def weapon_post_condition():
 
 	try:
 		weapon_id = integer(weapon_id)
+		condition = db_integer(Condition, condition)
+		condition_null = db_integer(Condition, condition_null)
+		condition1 = db_integer(Condition, condition1)
+		condition2 = db_integer(Condition, condition2)
+
 		damage_value = integer(damage_value)
 		damage = integer(damage)
 
@@ -469,8 +468,8 @@ def weapon_post_descriptor():
 	font = request.get_json()['font']
 	descriptor = request.get_json()['descriptor']
 
-	weapon_id = db_integer(weapon_id)
-	descriptor = db_integer(descriptor)
+	weapon_id = integer(weapon_id)
+	descriptor = db_integer(Descriptor, descriptor)
 
 	entry = WeapDescriptor(weapon_id = weapon_id,
 							descriptor = descriptor)
@@ -539,8 +538,8 @@ def weapon_post_benefit():
 	font = request.get_json()['font']
 	benefit = request.get_json()['benefit']
 
-	weapon_id = db_integer(weapon_id)
-	benefit = db_integer(benefit)
+	weapon_id = integer(weapon_id)
+	benefit = db_integer(Benefit, benefit)
 
 	entry = WeapBenefit(weapon_id = weapon_id,
 						benefit = benefit)

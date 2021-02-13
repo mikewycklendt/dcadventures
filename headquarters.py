@@ -85,8 +85,6 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	head_size = HeadSize.query.all()
 
-	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
-
 	features = db.session.query(Feature).filter(Feature.show == True).order_by(Feature.name).all()
 
 	equipment = db.session.query(Equipment).filter(Equipment.show == True).order_by(Equipment.name).all()
@@ -96,6 +94,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	weapon_cat = WeaponCat.query.all()
 
 	head_features = HeadFeature.query.all()
+
+	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons, features=features,

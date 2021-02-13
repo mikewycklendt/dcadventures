@@ -57,7 +57,29 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html', 'belt': 'equipment_create/belt.html'}
 
+	negatives = []
+	for i in range(-20, 1, 1):
+		negatives.append(i)
+
+	positives = []
+	for i in range(1, 41, 1):
+		positives.append(i)
+
+	hundred = []
+	for i in range(1, 101, 1):
+		hundred.append(i)
+
+	die = []
+	for i in range(1, 21, 1):
+		die.append(i)
+
+	time_numbers = []
+	for i in range(1, 61, 1):
+		time_numbers.append(i)
+
 	equipment = Equipment.query.all()
+
+	equipment_type = EquipType.query.all()
 
 	weapon_cat = WeaponCat.query.all()
 
@@ -118,28 +140,6 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 
 	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
-
-	negatives = []
-	for i in range(-20, 1, 1):
-		negatives.append(i)
-
-	positives = []
-	for i in range(1, 41, 1):
-		positives.append(i)
-
-	hundred = []
-	for i in range(1, 101, 1):
-		hundred.append(i)
-
-	die = []
-	for i in range(1, 21, 1):
-		die.append(i)
-
-	time_numbers = []
-	for i in range(1, 61, 1):
-		time_numbers.append(i)
-
-	equipment_type = EquipType.query.all()
 
 	damaged = [{'type': '', 'name': 'Damaged Effect'}, {'type': 'feature', 'name': 'Loses a Feature'}, {'type': 'circ', 'name': '-1 Circumstance'}]
 
@@ -263,10 +263,11 @@ def save_equipment():
 	opposed = request.get_json()['opposed']
 
 	equip_id = integer(equip_id)
-	type_id = db_integer(type_id)
+	type_id = integer(type_id)
+	expertise = db_integer(SkillBonus, expertise)
+	
 	cost = integer(cost)
 	toughness = integer(toughness)
-	expertise = db_integer(expertise)
 	speed_mod = integer(speed_mod)
 	mod_multiple_count = integer(mod_multiple_count)
 
@@ -415,10 +416,10 @@ def equipment_post_belt():
 	equipment = request.get_json()['equipment']
 	belt_item_type = request.get_json()['belt_item_type']
 
-	equip_id = db_integer(equip_id)
-	feature = db_integer(feature)
-	weapon = db_integer(weapon)
-	equipment = db_integer(equipment)
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	weapon = db_integer(Weapon, weapon)
+	equipment = db_integer(Equipment, equipment)
 	
 	if belt_item_type == 'equip':
 		cost_query = db.session.query(Equipment).filter_by(id=equipment).one()
@@ -532,13 +533,14 @@ def equipment_post_check():
 	action = request.get_json()['action']
 	action_time = request.get_json()['action_time']
 
-	equip_id = db_integer(equip_id)
-	effect = db_integer(effect)
-	feature = db_integer(feature)
-	skill_type = db_integer(skill_type)
-	skill = db_integer(skill)
-	check_type = db_integer(check_type)
-	action = db_integer(action)
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
+	check_type = db_integer(Check, check_type)
+	action = db_integer(Action, action)
+
 
 	entry = EquipCheck(equip_id = equip_id,
 						effect = effect,
@@ -622,12 +624,13 @@ def equipment_post_damaged():
 	toughness = request.get_json()['toughness']
 	penalty = request.get_json()['penalty']
 
-	equip_id = db_integer(equip_id)
-	effect = db_integer(effect)
-	feature = db_integer(feature)
-	damage = db_integer(damage)
-	skill_type = db_integer(skill_type)
-	skill = db_integer(skill)
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+	damage = db_integer(Descriptor, damage)
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
+
 	toughness = integer(toughness)
 
 	if feature is not None:
@@ -712,11 +715,12 @@ def equipment_post_descriptor():
 	effect = request.get_json()['effect']
 	feature = request.get_json()['feature']
 	descriptor = request.get_json()['descriptor']
+	
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+	descriptor = db_integer(Descriptor, descriptor)
 
-	equip_id = db_integer(equip_id)
-	effect = db_integer(effect)
-	feature = db_integer(feature)
-	descriptor = db_integer(descriptor)
 
 	entry = EquipDescriptor(equip_id = equip_id,
 							effect = effect,
@@ -789,7 +793,7 @@ def equipment_post_effect():
 	name = request.get_json()['name']
 	description = request.get_json()['description']
 
-	equip_id = db_integer(equip_id)
+	equip_id = integer(equip_id)
 
 	entry = EquipEffect(equip_id = equip_id,
 						name = name,
@@ -862,8 +866,8 @@ def equipment_post_feature():
 	description = request.get_json()['description']
 	feature = request.get_json()['feature']
 
-	equip_id = db_integer(equip_id)
-	feature = db_integer(feature)
+	equip_id = integer(equip_id)
+	feature = integer(feature)
 
 	if name != '':
 		entry = Feature(equip_id = equip_id,
@@ -974,22 +978,23 @@ def equipment_post_limits():
 	needs_internet = request.get_json()['needs_internet']
 
 	
-	equip_id = db_integer(equip_id)
-	effect = db_integer(effect)
-	feature = db_integer(feature)
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+
+	time_units = db_integer(Unit, time_units)
+	range_units = db_integer(Unit, range_units)
+	time_capacity_units = db_integer(Unit, time_capacity_units)
+	area_units = db_integer(Unit, area_units)
+	light = db_integer(Light, light)
+
 	time = integer(time)
-	time_units = db_integer(time_units)
 	range = integer(range)
-	range_units = db_integer(range_units)
 	time_capacity = integer(time_capacity)
-	time_capacity_units = db_integer(time_capacity_units)
 	capacity = integer(capacity)
 	area_long = integer(area_long)
 	area_wide = integer(area_wide)
-	area_units = db_integer(area_units)
 	uses = integer(uses)
-	light = db_integer(light)
-	
 
 	entry = EquipLimit(equip_id = equip_id,
 						effect = effect,
@@ -1134,33 +1139,7 @@ def equipment_post_modifiers():
 	body = {}
 
 	try:
-		environment = db_integer(environment)
-		sense = db_integer(sense)
-		mod_range = db_integer(mod_range)
-		subsense = db_integer(subsense)
-		cover = db_integer(cover)
-		conceal = db_integer(conceal)
-		maneuver = db_integer(maneuver)
-		weapon_melee = db_integer(weapon_melee)
-		weapon_ranged = db_integer(weapon_ranged)
-		consequence = db_integer(consequence)
-		creature = db_integer(creature)
-		emotion = db_integer(emotion)
-		conflict = db_integer(conflict)
-		profession = db_integer(profession)
-		bonus_check = db_integer(bonus_check)
-		bonus_check_range = db_integer(bonus_check_range)
-		bonus_conflict = db_integer(bonus_conflict)
-		penalty_check = db_integer(penalty_check)
-		penalty_check_range = db_integer(penalty_check_range)
-		penalty_conflict = db_integer(penalty_conflict)
-		skill = db_integer(skill)
-		light = db_integer(light)
-		equip_id = db_integer(equip_id)
-		feature = db_integer(feature)
-		effect = db_integer(effect)
-
-
+		
 		body['new'] = False
 		new_items = []
 
@@ -1225,34 +1204,37 @@ def equipment_post_modifiers():
 		equip_id = integer(equip_id)
 		feature = integer(feature)
 		effect = integer(effect)
-		skill = integer(skill)
-		light = integer(light)
+		environment = db_integer(Environment, environment)
+		sense = db_integer(Sense, sense)
+		mod_range = db_integer(Ranged, mod_range)
+		subsense = db_integer(SubSense, subsense)
+		cover = db_integer(Cover, cover)
+		conceal = db_integer(Conceal, conceal)
+		maneuver = db_integer(Maneuver, maneuver)
+		weapon_melee = db_integer(WeaponType, weapon_melee)
+		weapon_ranged = db_integer(WeaponType,  weapon_ranged)
+		condition = db_integer(Condition, condition)
+		power = db_integer(Power, power)
+		consequence = db_integer(Consequence, consequence)
+		creature = db_integer(Creature, creature)
+		emotion = db_integer(Emotion, emotion)
+		conflict = db_integer(ConflictAction, conflict)
+		profession = db_integer(Job, profession)
+		bonus_conflict = db_integer(ConflictAction, bonus_conflict)
+		penalty_conflict = db_integer(ConflictAction, penalty_conflict)
+		skill = db_integer(Skill, skill)
+		light = db_integer(Light, light)
+		bonus_check = db_integer(Check, bonus_check)
+		bonus_check_range = db_integer(Ranged, bonus_check_range)
+		penalty_check = db_integer(Check, penalty_check)
+		penalty_check_range = db_integer(Ranged, penalty_check_range)
+			
 		bonus = integer(bonus)
 		penalty = integer(penalty)
-		environment = integer(environment)
-		sense = integer(sense)
-		mod_range = integer(mod_range)
-		subsense = integer(subsense)
-		cover = integer(cover)
-		conceal = integer(conceal)
-		maneuver = integer(maneuver)
-		weapon_melee = integer(weapon_melee)
-		weapon_ranged = integer(weapon_ranged)
-		consequence = integer(consequence)
-		creature = integer(creature)
-		emotion = integer(emotion)
-		conflict = integer(conflict)
-		profession = integer(profession)
-		bonus_check = integer(bonus_check)
-		bonus_check_range = integer(bonus_check_range)
-		bonus_conflict = integer(bonus_conflict)
-		penalty_check = integer(penalty_check)
-		penalty_check_range = integer(penalty_check_range)
-		penalty_conflict = integer(penalty_conflict)
+		bonus_trait = integer(bonus_trait)
+		penalty_trait = integer(penalty_trait)
 		multiple_count = integer(multiple_count)
 		lasts = integer(lasts)
-		skill = integer(skill)
-		light = integer(light)
 
 		entry = EquipMod(equip_id = equip_id,
 							effect = effect,
@@ -1382,13 +1364,16 @@ def equipment_post_opposed():
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	
-	equip_id = db_integer(equip_id)
-	effect = db_integer(effect)
-	feature = db_integer(feature)
+	equip_id = integer(equip_id)
+	feature = db_integer(Feature, feature)
+	effect = db_integer(EquipEffect, effect)
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
+	check = db_integer(Check, check)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+
 	dc = integer(dc)
-	skill_type = db_integer(skill_type)
-	skill = db_integer(skill)
-	check = db_integer(check)
 
 	entry = EquipOpposed(equip_id = equip_id,
 						effect = effect,

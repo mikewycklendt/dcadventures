@@ -171,9 +171,9 @@ def save_armor():
 	defense = request.get_json()['defense']
 	descriptor = request.get_json()['descriptor']
 
-	type_id = db_integer(type_id)
+	type_id = integer(type_id)
 	cost = integer(cost)
-	material = db_integer(material)
+	material = integer(material)
 	toughness = integer(toughness)
 	active = integer(active)
 	perception = integer(perception)
@@ -276,8 +276,8 @@ def armor_post_descriptor():
 	font = request.get_json()['font']
 	descriptor = request.get_json()['descriptor']
 
-	armor_id = db_integer(armor_id)
-	descriptor = db_integer(descriptor)
+	armor_id = integer(aemor_id)
+	descriptor = db_integer(Descriptor, descriptor)
 
 	entry = ArmDescriptor(armor_id = armor_id,
 							descriptor = descriptor)
@@ -348,10 +348,10 @@ def armor_post_defensev():
 	defense = request.get_json()['defense']
 	bonus = request.get_json()['bonus']
 
-	armor_id = db_integer(armor_id)
+	armor_id = integer(aemor_id)
+	defense = db_integer(Defense, defense)
 	bonus = integer(bonus)
-	defense = db_integer(defense)
-
+	
 	entry = ArmDefense(armor_id = armor_id,
 							defense = defense,
 							bonus = bonus)
