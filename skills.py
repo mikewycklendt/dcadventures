@@ -1102,7 +1102,7 @@ def skill_bonus_post_degree():
 	measure_rank = db_integer(Rank, measure_rank)
 	unit_type = db_integer(MeasureType, unit_type)
 	unit = db_integer(Unit, unit)
-	measure_trait_math = db_integer(Msth, measure_trait_math)
+	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
