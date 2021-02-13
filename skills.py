@@ -1775,26 +1775,19 @@ def skill_post_levels():
 	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
 	if level_check is None:
 
-		try:
-			level_add = LevelType(bonus_id=skill_id,
+		level_add = LevelType(bonus_id=skill_id,
 									name=level_type)
 
-			db.session.add(level_add)
-			db.session.commit()
+		db.session.add(level_add)
+		db.session.commit()
 
-			type_id = level_add.id
+		type_id = level_add.id
 
-			body['level_type_id'] = type_id
-			body['level_type'] = level_add.name
-			body['created'] = False
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-
-		finally:
-			db.session.close()
+		body['level_type_id'] = type_id
+		body['level_type'] = level_add.name
+		body['created'] = False
+	
+		db.session.close()
 		
 	else:
 		level_skill = level_check.bonus_id
@@ -1808,59 +1801,52 @@ def skill_post_levels():
 		type_id = level_check.id
 		body['created'] = True
 
-	try:
-		entry = Levels(bonus_id = skill_id,
-							type_id=type_id,
-							level_type = level_type,
-							name = level,
-							level_effect = level_effect,
-							power_dc = power_dc,
-							power_degree = power_degree,
-							skill_dc = skill_dc,
-							skill_degree = skill_degree,
-							bonus_dc = bonus_dc,
-							bonus_degree = bonus_degree,
-							advantage_dc = advantage_dc,
-							advantage_degree = advantage_degree)
+	entry = Levels(bonus_id = skill_id,
+						type_id=type_id,
+						level_type = level_type,
+						name = level,
+						level_effect = level_effect,
+						power_dc = power_dc,
+						power_degree = power_degree,
+						skill_dc = skill_dc,
+						skill_degree = skill_degree,
+						bonus_dc = bonus_dc,
+						bonus_degree = bonus_degree,
+						advantage_dc = advantage_dc,
+						advantage_degree = advantage_degree)
 
-		db.session.add(entry)
-		db.session.commit()
+	db.session.add(entry)
+	db.session.commit()
 
 
-		
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-
-		rows = columns
-
-		mods = []
-		cells = []
-		spot = "levels-spot"
-
-		body['spot'] = spot
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['title'] = level_type
-		type_split = level_type.split(' ')
-		type_class = ''
-		for t in  type_split:
-			type_class += t 
-		
-		table_id = 'levels-' + type_class
-
-		body['table_id'] = table_id
-
-		body = skill_levels_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
 	
-	finally:
-		db.session.close()
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+
+	rows = columns
+
+	mods = []
+	cells = []
+	spot = "levels-spot"
+
+	body['spot'] = spot
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['title'] = level_type
+	type_split = level_type.split(' ')
+	type_class = ''
+	for t in  type_split:
+		type_class += t 
+	
+	table_id = 'levels-' + type_class
+
+	body['table_id'] = table_id
+
+	body = skill_levels_post(entry, body, cells)
+
+	db.session.close()
 	
 	return jsonify(body)
 
