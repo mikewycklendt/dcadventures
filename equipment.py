@@ -265,7 +265,7 @@ def save_equipment():
 	equip_id = integer(equip_id)
 	type_id = integer(type_id)
 	expertise = db_integer(SkillBonus, expertise)
-	
+
 	cost = integer(cost)
 	toughness = integer(toughness)
 	speed_mod = integer(speed_mod)
@@ -479,6 +479,10 @@ def equipment_post_belt():
 
 @equip.route('/equipment/belt/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_belt(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
 	try:
 		
 		get_id = db.session.query(EquipBelt).filter_by(id=equipment_id).one()
@@ -496,12 +500,19 @@ def delete_equipment_belt(equipment_id):
 			cost_query = db.session.query(EquipBelt).filter_by(equip_id=equip_id).all()
 			for c in cost_query:
 				total_cost += c.cost
+		body['total_cost'] = total_cost
+		body['cost'] = True	
 	except:
+		message = 'Could not delete that belt item.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': True, 'total_cost': total_cost, 'feature': False})
+		return jsonify(body)
 
 	
 @equip.route('/equipment/check/create', methods=['POST'])
@@ -584,16 +595,26 @@ def equipment_post_check():
 
 @equip.route('/equipment/check/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_check(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipCheck).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that rule.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-	
+		return jsonify(body)
+
 @equip.route('/equipment/damaged/create', methods=['POST'])
 def equipment_post_damaged():
 
@@ -682,16 +703,26 @@ def equipment_post_damaged():
 
 @equip.route('/equipment/damaged/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_damaged(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipDamage).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that rule.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-	
+		return jsonify(body)
+
 @equip.route('/equipment/descriptor/create', methods=['POST'])
 def equipment_post_descriptor():
 
@@ -759,16 +790,25 @@ def equipment_post_descriptor():
 
 @equip.route('/equipment/descriptor/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_descriptor(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipDescriptor).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that descriptor.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-
+		return jsonify(body)
 	
 @equip.route('/equipment/effect/create', methods=['POST'])
 def equipment_post_effect():
@@ -831,17 +871,26 @@ def equipment_post_effect():
 
 @equip.route('/equipment/effect/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_effect(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipEffect).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that effect.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
+		return jsonify(body)
 
-	
 @equip.route('/equipment/feature/create', methods=['POST'])
 def equipment_post_feature():
 
@@ -917,22 +966,27 @@ def equipment_post_feature():
 
 @equip.route('/equipment/feature/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_feature(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
+	
 	try:
-		name_check = db.session.query(Feature).filter_by(id=equipment_id).one()
-		if name_check.name != '':
-			feature = True
-		else:
-			feature = False
-		db.session.query(Feature).filter_by(id=equipment_id).delete()
+		db.session.query(EquipFeature).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that feature.  You may have created rules for it.  Delete those rules first.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': feature})
+		return jsonify(body)
 
-	
 @equip.route('/equipment/limits/create', methods=['POST'])
 def equipment_post_limits():
 
@@ -1053,16 +1107,25 @@ def equipment_post_limits():
 
 @equip.route('/equipment/limits/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_limits(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipLimit).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that rule.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-
+		return jsonify(body)
 	
 @equip.route('/equipment/modifiers/create', methods=['POST'])
 def equipment_post_modifiers():
@@ -1323,17 +1386,26 @@ def equipment_post_modifiers():
 
 @equip.route('/equipment/modifiers/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_modifiers(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipMod).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that rule.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-
-
+		return jsonify(body)
+	
 @equip.route('/equipment/opposed/create', methods=['POST'])
 def equipment_post_opposed():
 
@@ -1418,14 +1490,23 @@ def equipment_post_opposed():
 
 @equip.route('/equipment/opposed/delete/<equipment_id>', methods=['DELETE'])
 def delete_equipment_opposed(equipment_id):
+	body =  {}
+	body['feature'] = False
+	body['id'] = equipment_id
+	body['success'] = True
+	body['cost'] = False
 	try:
 		db.session.query(EquipOpposed).filter_by(id=equipment_id).delete()
 		db.session.commit()
 	except:
+		message = 'Could not delete that rule.'
+		body['success'] = False
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(equipment_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': equipment_id, 'cost': False, 'feature': False})
-
-
+		return jsonify(body)
+	

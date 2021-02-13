@@ -314,15 +314,24 @@ def armor_post_descriptor():
 
 @arm.route('/armor/descriptor/delete/<armor_id>', methods=['DELETE'])
 def delete_armor_descriptor(armor_id):
+	body = {}
+	body['success'] = True
+	body['id'] = armor_id
+	body['cost'] = False
 	try:
 		db.session.query(ArmDescriptor).filter_by(id=armor_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete that Descriptor.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(armor_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': armor_id, 'cost': False})
+		return jsonify(body)
 
 
 @arm.route('/armor/defense/create', methods=['POST'])
@@ -388,12 +397,21 @@ def armor_post_defensev():
 
 @arm.route('/armor/defense/delete/<armor_id>', methods=['DELETE'])
 def delete_armor_defense(armor_id):
+	body = {}
+	body['success'] = True
+	body['id'] = armor_id
+	body['cost'] = False
 	try:
 		db.session.query(ArmDefense).filter_by(id=armor_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete that Descriptor.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(armor_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': armor_id, 'cost': False})
+		return jsonify(body)

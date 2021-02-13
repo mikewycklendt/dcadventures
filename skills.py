@@ -525,15 +525,22 @@ def skill_bonus_post_ability():
 
 @skill.route('/skill/ability/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_ability(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillAbility).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
+		return jsonify(body)
 
 
 @skill.route('/skill/check/create', methods=['POST'])
@@ -631,16 +638,22 @@ def skill_bonus_post_check():
 
 @skill.route('/skill/check/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_check(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillCheck).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/circ/create', methods=['POST'])
 def skill_bonus_post_circ():
@@ -790,16 +803,22 @@ def skill_bonus_post_circ():
 
 @skill.route('/skill/circ/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_circ(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillCirc).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/dc/create', methods=['POST'])
 def skill_bonus_post_dc():
@@ -982,16 +1001,22 @@ def skill_bonus_post_dc():
 
 @skill.route('/skill/dc/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_dc(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillDC).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/degree/create', methods=['POST'])
 def skill_bonus_post_degree():
@@ -1188,16 +1213,22 @@ def skill_bonus_post_degree():
 
 @skill.route('/skill/degree/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_degree(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillDegree).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/opposed/create', methods=['POST'])
 def skill_bonus_post_opposed():
@@ -1294,16 +1325,22 @@ def skill_bonus_post_opposed():
 
 @skill.route('/skill/opposed/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_opposed(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillOpposed).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/time/create', methods=['POST'])
 def skill_bonus_post_time():
@@ -1408,16 +1445,22 @@ def skill_bonus_post_time():
 
 @skill.route('/skill/time/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_time(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillTime).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/modifiers/create', methods=['POST'])
 def skill_post_modifiers():
@@ -1671,16 +1714,22 @@ def skill_post_modifiers():
 
 @skill.route('/skill/modifiers/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_modifiers(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(SkillMod).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'feature': False })
-
+		return jsonify(body)
 
 @skill.route('/skill/levels/create', methods=['POST'])
 def skill_post_levels():
@@ -1818,15 +1867,20 @@ def skill_post_levels():
 
 @skill.route('/skill/levels/delete/<id>', methods=['DELETE'])
 def delete_skill_levels(id):
+	body = {}
+	body['success'] = True
 	try:
 		db.session.query(Levels).filter_by(id=id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this level.  You may have applied it to another rule.  Dekete that rule first.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': id, 'level': True})
-
-
+		return jsonify(body)
 

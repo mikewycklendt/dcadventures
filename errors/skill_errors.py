@@ -756,7 +756,7 @@ def skill_modifiers_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	equip_id = data['equip_id']
+	skill_id = data['skill_id']
 	columns = data['columns']
 	created = data['created']
 	font = data['font']
