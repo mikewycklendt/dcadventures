@@ -823,7 +823,7 @@ def skill_modifiers_post(entry, body, cells):
 
 def skill_levels_post(entry, body, cells):
 
-	skill_id = entry.sjukk_id
+	skill_id = entry.skill_id
 	level_type = entry.level_type
 	level = entry.name
 	level_effect = entry.level_effect
