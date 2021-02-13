@@ -76,8 +76,8 @@ def skill_check_post(entry, body, cells):
 	cells = cell('Action', 14, [action], cells)
 	
 	vcells = vcell('condition', 25, [condition1, 'to', condition2])
-	w = width(10, 8, range)
-	vcells = vcell('conflict', w, [conflict, range], vcells)
+	w = width(10, 8, conflict_range)
+	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	cells = check_cell('Free', 7, free, cells)
