@@ -208,7 +208,6 @@ function dc_submit() {
 	const conceal = check("dc_conceal")
 	const action = select("dc_action")
 	const action_when = select("dc_action_when")
-	const damage_type = select("dc_damage_type")
 	const inflict_type = select("dc_inflict_type")
 	const inflict_flat = select("dc_inflict_flat")
 	const inflict_trait_type = select("dc_inflict_trait_type")
@@ -269,7 +268,6 @@ function dc_submit() {
 			'conceal': conceal,
 			'action': action,
 			'action_when': action_when,
-			'damage_type': damage_type,
 			'inflict_type': inflict_type,
 			'inflict_flat': inflict_flat,
 			'inflict_trait_type': inflict_trait_type,
