@@ -524,7 +524,7 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
 
 	w = width(17, 13, consequence_action)
-	W = width(W, 13, consequence_trait)
+	w = width(w, 13, consequence_trait)
 	word = string('with', [consequence_trait])
 	vcells = vcell('consequence', w, [consequence_action, word, consequence_trait, 'results in', consequence], vcells)
 
