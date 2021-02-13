@@ -84,84 +84,48 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-
 @app.route('/table/db')
 def table_db_columns_create():
 
+	tablename =  'Extra'
 
+	name = 'All Extras'
 
-	name = 'Any Chosen Rare' 
-
-	entry = PowerDes(rare=True, name=name, hidden=True )
+	entry = Extra(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Any Chosen Uncommon' 
+	name = 'Current ' + tablename
 
-	entry = PowerDes(uncommon=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Any Chosen Common' 
-
-	entry = PowerDes(common=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Any Chosen Very Common' 
-
-	entry = PowerDes(very=True, name=name, hidden=True )
+	entry = Extra(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Any Chosen Damage' 
+	name = 'Any ' + tablename
 
-	entry = PowerDes(any_damage=True, name=name, hidden=True )
+	entry = Extra(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Any Chosen Origin' 
+	name = 'Variable ' + tablename
 
-	entry = PowerDes(any_origin=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any Chosen Source' 
-
-	entry = PowerDes(any_source=True, name=name, hidden=True )
+	entry = Extra(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Any Chosen Medium Type' 
+	name = 'No ' + tablename
 
-	entry = PowerDes(any_medium_type=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any Chosen Medium Subtype' 
-
-	entry = PowerDes(any_medium_subtype=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any Chosen Medium' 
-
-	entry = PowerDes(any_medium=True, name=name, hidden=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any Chosen Descriptor' 
-
-	entry = PowerDes(any_descriptor=True, name=name, hidden=True )
+	entry = Extra(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(PowerDes).filter_by(hidden=True).all()
-	for r in results:
-		print(r.name)
+	results = db.session.query(Extra).all()
 
-	return ('descriptor columns added')
+	for result in results:
+		print (result.id)
+		print (result.name)
 
+	return (tablename + ' db added')
 '''
 @app.route('/debilitated/create')
 def debilitated_create():
