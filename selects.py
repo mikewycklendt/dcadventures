@@ -445,21 +445,21 @@ def skill_trait_select():
 
 	this = ['This Power']
 
-	skills_query = db.session.query(Skill).filter(Skill.show == True).order_by(Skill.name).all()
+	skills_query = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 	skills = [{'id': '', 'name': 'Skill'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for skill in skills_query:
 		skills.append({'id': skill.id, 'name': skill.name})
 
-	abilities_query = db.session.query(Ability).filter(Ability.show == True).order_by(Ability.name).all()
+	abilities_query = db.session.query(Ability).filter(Ability.hide == None).order_by(Ability.name).all()
 	abilities = [{'id': '', 'name': 'Ability'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
 	for a in abilities_query:
 		abilities.append({'id': a.id, 'name': a.name})
 
-	defenses_query = db.session.query(Defense).filter(Defense.show == True).order_by(Defense.name).all()
+	defenses_query = db.session.query(Defense).filter(Defense.hide == None).order_by(Defense.name).all()
 	defenses = [{'id': '', 'name': 'Defense'}]
 	if sub == 'variable':
 		skills.append({'id': 'x', 'name': 'Variable'})
