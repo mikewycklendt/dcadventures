@@ -145,7 +145,7 @@
 								<option value="">Start Condition</option>
 								<option value="current">Current</option>
 								<option value="any">Any</option>
-								{% for c in condition %}
+								{% for c in conditions %}
 									<option value="{{c.id}}">{{c.name}}</option>
 								{% endfor %}
 							</select>
@@ -158,7 +158,7 @@
 						<div>
 							<select class="select-sml" id="circ_condition2" name="circ_condition2">
 								<option value="">End Condition</option>
-								{% for c in condition %}
+								{% for c in conditions %}
 									<option value="{{c.id}}">{{c.name}}</option>
 								{% endfor %}
 							</select>

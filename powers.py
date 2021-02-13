@@ -788,6 +788,7 @@ def power_post_alt_check():
 def delete_power_altcheck(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerAltCheck).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -884,6 +885,7 @@ def power_post_change_action():
 def delete_power_action(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerAction).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1092,6 +1094,7 @@ def power_post_character():
 def delete_power_char(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerChar).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1214,6 +1217,7 @@ def power_post_circ():
 def delete_power_circ(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerCirc).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1445,6 +1449,7 @@ def power_post_create():
 def delete_power_create(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerCreate).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1548,6 +1553,7 @@ def power_post_damage():
 def delete_power_damage(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerDamage).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1701,6 +1707,7 @@ def power_post_dc_table():
 def delete_power_dc(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerDC).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -1860,6 +1867,7 @@ def power_post_defense():
 def delete_power_defense(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerDefense).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2043,6 +2051,7 @@ def power_post_degree_mod():
 def delete_power_degree_mod(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerDegMod).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2323,6 +2332,7 @@ def power_post_environment():
 def delete_power_env(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerEnv).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2481,6 +2491,7 @@ def power_post_levels():
 def delete_power_levels(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(Levels).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2618,6 +2629,7 @@ def power_post_minion():
 def delete_power_minion(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerMinion).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -2907,6 +2919,7 @@ def power_post_mod():
 def delete_power_mod(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerMod).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3171,6 +3184,7 @@ def power_post_move():
 def delete_power_move(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerMove).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3280,6 +3294,7 @@ def power_post_opposed():
 def delete_power_opposed(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerOpposed).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3463,6 +3478,7 @@ def power_post_ranged():
 def delete_power_ranged(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerRanged).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3580,6 +3596,7 @@ def power_post_resist():
 def delete_power_resistance(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerResist).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3716,6 +3733,7 @@ def power_post_resisted_by():
 def delete_power_resist(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerResistBy).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -3837,6 +3855,7 @@ def power_post_reverse_effect():
 def delete_power_reverse(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerReverse).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -4032,6 +4051,7 @@ def power_post_sense():
 def delete_power_sense(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerSenseEffect).filter_by(id=power_id).delete()
 		db.session.commit()
@@ -4160,6 +4180,7 @@ def power_post_time():
 def delete_power_time(power_id):
 	body = {}
 	body['success'] = True
+	body['id'] = power_id
 	try:
 		db.session.query(PowerTime).filter_by(id=power_id).delete()
 		db.session.commit()

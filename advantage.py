@@ -491,9 +491,11 @@ def edit_advantage_name():
 		body['name'] = edit_advantage.name
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		error_msgs.append('There was an error processing the request')
-		body['error'] = error_msgs
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	finally:
 		db.session.close()
@@ -598,8 +600,11 @@ def advantage_post_alt_check():
 		body = adv_alt_check_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -610,15 +615,23 @@ def advantage_post_alt_check():
 
 @advantage.route('/advantage/alt_check/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_alt_check(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvAltCheck).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/benefit/create', methods=['POST'])
@@ -693,8 +706,11 @@ def advantage_post_benefit():
 		body = adv_benefit_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -705,15 +721,23 @@ def advantage_post_benefit():
 
 @advantage.route('/advantage/benefit/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_benefit(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(Benefit).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this benefit.  You may have already applied it to another rule.  Delete that rule first.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/circ/create', methods=['POST'])
@@ -814,8 +838,11 @@ def advantage_post_circ():
 		
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -826,15 +853,23 @@ def advantage_post_circ():
 
 @advantage.route('/advantage/circ/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_circ(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvCirc).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/combined/create', methods=['POST'])
@@ -896,8 +931,11 @@ def advantage_post_combined():
 		body = adv_combined_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -908,16 +946,23 @@ def advantage_post_combined():
 
 @advantage.route('/advantage/combined/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_combined(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvCombined).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 
 @advantage.route('/advantage/condition/create', methods=['POST'])
@@ -997,8 +1042,11 @@ def advantage_post_condition():
 		body = adv_condition_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1009,15 +1057,23 @@ def advantage_post_condition():
 
 @advantage.route('/advantage/condition/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_condition(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvCondition).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/dc/create', methods=['POST'])
@@ -1127,8 +1183,11 @@ def advantage_post_dc():
 		body = adv_dc_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1139,16 +1198,23 @@ def advantage_post_dc():
 
 @advantage.route('/advantage/dc/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_dc(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvDC).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/degree_mod/create', methods=['POST'])
@@ -1294,8 +1360,11 @@ def advantage_post_deg_mod():
 		body = adv_deg_mod_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1306,16 +1375,23 @@ def advantage_post_deg_mod():
 
 @advantage.route('/advantage/degree_mod/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_deg_mod(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvDegree).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/effort/create', methods=['POST'])
@@ -1402,8 +1478,11 @@ def advantage_post_effort():
 		body = adv_effort_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1413,16 +1492,23 @@ def advantage_post_effort():
 
 @advantage.route('/advantage/effort/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_effort(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvEffort).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/minion/create', methods=['POST'])
@@ -1527,8 +1613,11 @@ def advantage_post_minion():
 		body = adv_minion_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1539,18 +1628,24 @@ def advantage_post_minion():
 
 @advantage.route('/advantage/minion/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_minion(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvMinion).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-
-	
 @advantage.route('/advantage/modifiers/create', methods=['POST'])
 def advantage_post_modifiers():
 
@@ -1795,8 +1890,11 @@ def advantage_post_modifiers():
 		body = adv_modifiers_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1807,16 +1905,23 @@ def advantage_post_modifiers():
 
 @advantage.route('/advantage/modifiers/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_modifiers(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvMod).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/opposed/create', methods=['POST'])
@@ -1900,8 +2005,11 @@ def advantage_post_opposed():
 		body = adv_opposed_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -1911,16 +2019,23 @@ def advantage_post_opposed():
 
 @advantage.route('/advantage/opposed/delete/<advantage_id>', methods=['DELETE'])
 def delete_post_opposed(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvOpposed).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
-
+		return jsonify(body)
 
 	
 @advantage.route('/advantage/points/create', methods=['POST'])
@@ -2043,8 +2158,11 @@ def advantage_post_points():
 		body = adv_points_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -2055,17 +2173,24 @@ def advantage_post_points():
 
 @advantage.route('/advantage/points/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_points(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvPoints).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-	
 @advantage.route('/advantage/resist/create', methods=['POST'])
 def advantage_post_resist():
 
@@ -2132,8 +2257,11 @@ def advantage_post_resist():
 		body = adv_resist_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -2143,17 +2271,24 @@ def advantage_post_resist():
 
 @advantage.route('/advantage/resist/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_resist(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvResist).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-	
 @advantage.route('/advantage/rounds/create', methods=['POST'])
 def advantage_post_rounds():
 
@@ -2226,8 +2361,11 @@ def advantage_post_rounds():
 		body = adv_rounds_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -2237,17 +2375,24 @@ def advantage_post_rounds():
 
 @advantage.route('/advantage/rounds/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_rounds(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvRounds).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-	
 @advantage.route('/advantage/skill/create', methods=['POST'])
 def advantage_poat_skill():
 
@@ -2316,8 +2461,11 @@ def advantage_poat_skill():
 		body = adv_skill_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -2327,17 +2475,24 @@ def advantage_poat_skill():
 
 @advantage.route('/advantage/skill/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_skill(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvSkill).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-	
 @advantage.route('/advantage/time/create', methods=['POST'])
 def advantage_post_time():
 
@@ -2432,8 +2587,11 @@ def advantage_post_time():
 		body = adv_time_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
 	
 	finally:
@@ -2443,17 +2601,24 @@ def advantage_post_time():
 
 @advantage.route('/advantage/time/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_time(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvTime).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
-	
 @advantage.route('/advantage/variable/create', methods=['POST'])
 def advantage_post_variable():
 
@@ -2515,10 +2680,12 @@ def advantage_post_variable():
 		body = adv_variable_post(entry, body, cells)
 	except:
 		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
 		body['success'] = False
-		body['error'] = 'There was an error processing the request'
+		body['error_msgs'] = error_msgs 
 		db.session.rollback()
-	
 	finally:
 		db.session.close()
 	return jsonify(body)
@@ -2526,15 +2693,23 @@ def advantage_post_variable():
 
 @advantage.route('/advantage/variable/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_post_variable(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(AdvVariable).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id})
+		return jsonify(body)
 
 @advantage.route('/advantage/levels/create', methods=['POST'])
 def advantage_post_levels():
@@ -2672,12 +2847,20 @@ def advantage_post_levels():
 
 @advantage.route('/advantage/levels/delete/<advantage_id>', methods=['DELETE'])
 def delete_advantage_levels(advantage_id):
+	body = {}
+	body['success'] = True
+	body['id'] = advantage_id
 	try:
 		db.session.query(Levels).filter_by(id=advantage_id).delete()
 		db.session.commit()
 	except:
+		body['success'] = False
+		message = 'Could not delete this level. You may have already applied it to another rule.  Delete that rule first.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 		db.session.rollback()
 	finally:
 		db.session.close()
 		print('\n\n' + str(advantage_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': advantage_id, 'level': True})
+		return jsonify(body)
