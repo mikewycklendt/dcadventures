@@ -597,7 +597,7 @@ def skill_opposed_post(entry, body, cells):
 
 def skill_time_post(entry, body, cells):
 
-	time_type = entry.type
+	type = entry.type
 	value_type = entry.value_type
 	rank1 = entry.rank1
 	rank1_value = entry.rank1_value
@@ -630,9 +630,9 @@ def skill_time_post(entry, body, cells):
 	recovery_time = integer_convert(recovery_time)
 
 	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
-	time_type = selects(time_type, time_effect_select)
+	type = selects(type, time_effect_select)
 
-	cells = cell('Time Type', 24. [time_type])
+	cells = cell('Time Type', 24, [type])
 
 	vcells = vcell('value', 17, [value, units])
 	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
