@@ -203,7 +203,7 @@
 	
 		<div>
 			<select class="select-sml" id="dc_damage_type" name="dc_damage_type" onchange="dc_damage_type()">
-				{% for d in dc_damage_type %}
+				{% for d in damage_type %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>	
