@@ -240,7 +240,7 @@ def skill_circ_post_errors(data):
 	errors = id_check(Unit, time_units, 'Time Units', errors)
 	errors = int_check(time_rank, 'Time Rank', errors)
 
-	errors = required(m0d, 'Circumstance Modifier', errors)
+	errors = required(mod, 'Circumstance Modifier', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(lasts, 'Lasts', errors)
