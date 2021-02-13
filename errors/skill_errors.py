@@ -169,7 +169,7 @@ def skill_check_post_errors(data):
 	errors = variable_fields('condition', 'Trigger', trigger, [condition1, condition2], errors)
 	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)
 	errors = variable_field('condition', trigger, 'Ending Condition', condition2, errors)
-	errors = variable_fields('conflict', trigger, 'Trigger', trigger, [conflict], errors)
+	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 
 	
