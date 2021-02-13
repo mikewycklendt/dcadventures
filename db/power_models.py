@@ -186,6 +186,14 @@ class Extra(db.Model):
 	des = db.Column(db.String())
 	inherit = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	alternate = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+	base = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -196,7 +204,15 @@ class Extra(db.Model):
 			'ranks': self.ranks,
 			'des': self.des,
 			'inherit': self.inherit,
-			'alternate': self.alternate
+			'alternate': self.alternate,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved,
+			'base': self.base
 		}
 
 class PowerAltCheck(db.Model):
