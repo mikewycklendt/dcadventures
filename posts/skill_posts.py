@@ -81,7 +81,7 @@ def skill_check_post(entry, body, cells):
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	cells = check_cell('Free', 7, free, cells)
-	cells = check_cell('Weapon', 8, Weapon, cells)
+	cells = check_cell('Weapon', 8, weapon, cells)
 
 	cells = cell('Circumstance', 30, [circumstance], cells)
 
