@@ -7,13 +7,6 @@ function deg_mod_check() {
 	entry_check(deg_mod_check, title, deg_mod_base_form, entry, 160);
 }
 
-function deg_mod_base() {
-	const target_field = "deg_mod_target";
-	const entry = "deg-mod-entry";
-
-	base(target_field, entry);
-}
-
 function deg_mod_type() {
 	const select = 'deg_mod_type';
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
@@ -188,7 +181,8 @@ function deg_mod_submit() {
 	const cumulative = check("deg_mod_cumulative")
 	const linked = check("deg_mod_linked")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';

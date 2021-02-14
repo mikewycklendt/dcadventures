@@ -27,7 +27,7 @@ function check_type() {
 	const check = 'opposed_check'
 	const base = 'opposed-base';
 	const entry = 'opposed-entry';
-	const field = 'check_type';
+	const field = 'check';
 	const value = '2';
 
 	select_entry(check, base, entry, field, value);

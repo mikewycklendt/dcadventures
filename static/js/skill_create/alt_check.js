@@ -64,7 +64,8 @@ function check_submit() {
 	const action = select("check_action")
 	const free = check("check_free")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const errors = 'check-err';
 	const err_line = 'check-err-line';

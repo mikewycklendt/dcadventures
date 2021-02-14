@@ -67,7 +67,8 @@ function time_submit() {
 	const recovery_time = select("time_recovery_time")
 	const recovery_incurable = check("time_recovery_incurable")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 	
 	const errors = 'time-err';
 	const err_line = 'time-err-line';

@@ -77,7 +77,8 @@ function circ_submit() {
 	const created = circ_grid.titles;
 	const font = circ_grid.font;
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 	
 	const circ_target = select("circ_target")
 	const mod = select("circ_mod")

@@ -63,7 +63,8 @@ function opposed_submit() {
 	const recurring_value = text("opposed_recurring_value")
 	const recurring_units = select("opposed_recurring_units")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';

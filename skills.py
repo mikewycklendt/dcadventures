@@ -78,6 +78,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	time_numbers = []
 	for i in range(1, 61, 1):
 		time_numbers.append(i)
+
+	bonus_select = db.session.query(SkillBonus).filter_by(show=True).all()
 	
 	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 	
@@ -224,7 +226,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
-							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type)
+							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -530,6 +532,7 @@ def delete_skill_bonus_ability(id):
 	try:
 		db.session.query(SkillAbility).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -539,7 +542,6 @@ def delete_skill_bonus_ability(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 
@@ -643,6 +645,7 @@ def delete_skill_bonus_check(id):
 	try:
 		db.session.query(SkillCheck).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -652,7 +655,6 @@ def delete_skill_bonus_check(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/circ/create', methods=['POST'])
@@ -808,6 +810,7 @@ def delete_skill_bonus_circ(id):
 	try:
 		db.session.query(SkillCirc).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -817,7 +820,6 @@ def delete_skill_bonus_circ(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/dc/create', methods=['POST'])
@@ -1006,6 +1008,7 @@ def delete_skill_bonus_dc(id):
 	try:
 		db.session.query(SkillDC).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -1015,7 +1018,6 @@ def delete_skill_bonus_dc(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/degree/create', methods=['POST'])
@@ -1218,6 +1220,7 @@ def delete_skill_bonus_degree(id):
 	try:
 		db.session.query(SkillDegree).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -1227,7 +1230,6 @@ def delete_skill_bonus_degree(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/opposed/create', methods=['POST'])
@@ -1330,6 +1332,7 @@ def delete_skill_bonus_opposed(id):
 	try:
 		db.session.query(SkillOpposed).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -1339,7 +1342,6 @@ def delete_skill_bonus_opposed(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/time/create', methods=['POST'])
@@ -1450,6 +1452,7 @@ def delete_skill_bonus_time(id):
 	try:
 		db.session.query(SkillTime).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -1459,7 +1462,6 @@ def delete_skill_bonus_time(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/modifiers/create', methods=['POST'])
@@ -1719,6 +1721,7 @@ def delete_skill_bonus_modifiers(id):
 	try:
 		db.session.query(SkillMod).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete thst rule.'
@@ -1728,7 +1731,6 @@ def delete_skill_bonus_modifiers(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 
 @skill.route('/skill/levels/create', methods=['POST'])
@@ -1858,6 +1860,7 @@ def delete_skill_levels(id):
 	try:
 		db.session.query(Levels).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
 		body['success'] = False
 		message = 'Could not delete this level.  You may have applied it to another rule.  Dekete that rule first.'
@@ -1867,6 +1870,5 @@ def delete_skill_levels(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(id) + ' DELETED\n\n')
 		return jsonify(body)
 

@@ -237,7 +237,8 @@ function dc_submit() {
 	const keyword = text("dc_keyword")
 	const complexity = select("dc_complexity")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';

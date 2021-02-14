@@ -221,7 +221,8 @@ function modifiers_submit() {
 	const skill = select("modifiers_skill")
 	const light = select("modifiers_light")
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const errors = 'modifiers-err';
 	const err_line = 'modifiers-err-line';

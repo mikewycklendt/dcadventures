@@ -20,6 +20,15 @@
 				</div>
 
 				<div id="addskillform">
+					<div>
+						<select id="create_bonus_select" name="create_bonus_select">
+							<option value="">Bonus</option>
+							{% for b in bonus_select %}
+								<option value={{b.id}}>{{b.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+
 					<div id="nameskill">
 						<input type="text" id="skill_name" placeholder="Skill Name">
 					</div>
