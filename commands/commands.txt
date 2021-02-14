@@ -9,7 +9,8 @@ sorted(lis, key = lambda i: i['age'])
 git fetch origin master
 git reset --hard FETCH_HEADsud
 
-
+white-space: pre-line;
+white-space: pre-wrap;
 
 
 
