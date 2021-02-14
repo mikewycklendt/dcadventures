@@ -97,7 +97,7 @@ def skill_save_errors(data):
 
 	errors = together_names('Concealment', ['Concealment Type', 'Concealment'], [concealment_type, concealment], errors)
 	
-	errors = skill_required_entry('table', dc_type, 'DC Table', 'DC Table', skill_id, errors)
+	errors = skill_required_entry('table', dc_type, 'DC Table', 'DC Table', SkillDC, skill_id, errors)
 	errors = skill_required_entry('2', check_type, 'Opposed Check', 'Opponent Check', SkillOpposed, skill_id, errors)
 	errors = skill_required_entry_multiple('x', ability, 'Variable Ability', 'Variable Ability', SkillAbility, skill_id, errors)
 
