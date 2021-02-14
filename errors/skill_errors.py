@@ -352,6 +352,11 @@ def skill_dc_post_errors(data):
 	measure_trait_math = data['measure_trait_math']
 	measure_mod = data['measure_mod']
 	measure_math_rank = data['measure_math_rank']
+	measure_trait_type_unit = data['measure_trait_type_unit']
+	measure_trait_unit = data['measure_trait_unit']
+	measure_trait_math_unit = data['measure_trait_math_unit']
+	measure_mod_unit = data['measure_mod_unit']
+	measure_math_unit = data['measure_math_unit']
 	level_type = data['level_type']
 	level = data['level']
 	condition1 = data['condition1']
@@ -452,13 +457,20 @@ def skill_dc_post_errors(data):
 	errors = variable_field('unit', measure_effect, 'Measurement Unit Type', unit_type, errors)
 	errors = variable_field('unit', measure_effect, 'Measurement UnitS', unit, errors)
 
-	errors = variable_fields('skill', 'Measurement Skill Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
-	errors = variable_field('skill', measure_effect, 'Measurement Trait Type', measure_trait_type, errors)
-	errors = variable_field('skill', measure_effect, 'Measurement Trait', measure_trait, errors)
-	errors = variable_field('skill', measure_effect, 'Measurement Skill Modifier Math', measure_trait_math, errors)
-	errors = variable_field('skill', measure_effect, 'Skill Modifier', measure_mod, errors)
-	errors = variable_field('skill', measure_effect, 'Measurement Rank', measure_math_rank, errors)
+	errors = variable_fields('skill_rank', 'Measurement Skill Rank Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
+	errors = variable_field('skill_rank', measure_effect, 'Measurement Trait Type', measure_trait_type, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Measurement Trait', measure_trait, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Measurement Skill Modifier Math', measure_trait_math, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Skill Modifier', measure_mod, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Measurement Rank', measure_math_rank, errors)
 	
+	errors = variable_fields('skill_unit', 'Measurement Skill Unit Modifier', measure_effect, [measure_trait_type_unit, measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], errors)
+	errors = variable_field('skill_unit', measure_effect, 'Trait Type', measure_trait_type_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Trait', measure_trait_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Math', measure_trait_math_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Skill Modifier', measure_mod_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Measurement Rank', measure_math_unit, errors)
+
 	errors = check_fields(change_action, 'Action Change', [action, action_when], errors)
 	errors = check_field(change_action, 'Action Change', 'Action', action, errors)
 	errors = check_field(change_action, 'Action Change', 'When', action_when, errors)
@@ -512,6 +524,11 @@ def skill_degree_post_errors(data):
 	measure_trait_math = data['measure_trait_math']
 	measure_mod = data['measure_mod']
 	measure_math_rank = data['measure_math_rank']
+	measure_trait_type_unit = data['measure_trait_type_unit']
+	measure_trait_unit = data['measure_trait_unit']
+	measure_trait_math_unit = data['measure_trait_math_unit']
+	measure_mod_unit = data['measure_mod_unit']
+	measure_math_unit = data['measure_math_unit']
 	condition_type = data['condition_type']
 	condition_damage_value = data['condition_damage_value']
 	condition_damage = data['condition_damage']
@@ -571,12 +588,19 @@ def skill_degree_post_errors(data):
 	errors = variable_field('unit', measure_effect, 'Unit Type', unit_type, errors)
 	errors = variable_field('unit', measure_effect, 'Units', unit, errors)
 
-	errors = variable_fields('skill', 'Measurement Skill Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
-	errors = variable_field('skill', measure_effect, 'Trait Type', measure_trait_type, errors)
-	errors = variable_field('skill', measure_effect, 'Trait', measure_trait, errors)
-	errors = variable_field('skill', measure_effect, 'Math', measure_trait_math, errors)
-	errors = variable_field('skill', measure_effect, 'Skill Modifier', measure_mod, errors)
-	errors = variable_field('skill', measure_effect, 'Measurement Rank', measure_math_rank, errors)
+	errors = variable_fields('skill_rank', 'Measurement Skill Rank Modifier', measure_effect, [measure_trait_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], errors)
+	errors = variable_field('skill_rank', measure_effect, 'Trait Type', measure_trait_type, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Trait', measure_trait, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Math', measure_trait_math, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Skill Modifier', measure_mod, errors)
+	errors = variable_field('skill_rank', measure_effect, 'Measurement Rank', measure_math_rank, errors)
+
+	errors = variable_fields('skill_unit', 'Measurement Skill Unit Modifier', measure_effect, [measure_trait_type_unit, measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], errors)
+	errors = variable_field('skill_unit', measure_effect, 'Trait Type', measure_trait_type_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Trait', measure_trait_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Math', measure_trait_math_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Skill Modifier', measure_mod_unit, errors)
+	errors = variable_field('skill_unit', measure_effect, 'Measurement Rank', measure_math_unit, errors)
 
 	errors = variable_fields('condition', 'Condition Effect', type, [condition_type], errors)
 	errors = variable_field('condition', type, 'Condition Type', condition_type, errors)

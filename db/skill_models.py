@@ -330,6 +330,11 @@ class SkillDC(db.Model):
 	measure_trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_mod = db.Column(db.Integer)
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_trait_type_unit = db.Column(db.String())
+	measure_trait_unit = db.Column(db.Integer)
+	measure_trait_math_unit = db.Column(db.Integer, db.ForeignKey('math.id'))
+	measure_mod_unit = db.Column(db.Integer)
+	measure_math_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
@@ -385,6 +390,11 @@ class SkillDC(db.Model):
 			'measure_trait_math': self.measure_trait_math,
 			'measure_mod': self.measure_mod,
 			'measure_math_rank': self.measure_math_rank,
+			'measure_trait_type_unit': self.measure_trait_type_unit,
+			'measure_trait_unit': self.measure_trait_unit,
+			'measure_trait_math_unit': self.measure_trait_math_unit,
+			'measure_mod_unit': self.measure_mod_unit,
+			'measure_math_rank_unit': self.measure_math_unit,
 			'level_type': self.level_type,
 			'level': self.level,
 			'condition1': self.condition1,
@@ -441,6 +451,11 @@ class SkillDegree(db.Model):
 	measure_trait_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	measure_mod = db.Column(db.Integer)
 	measure_math_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
+	measure_trait_type_unit = db.Column(db.String())
+	measure_trait_unit = db.Column(db.Integer)
+	measure_trait_math_unit = db.Column(db.Integer, db.ForeignKey('math.id'))
+	measure_mod_unit = db.Column(db.Integer)
+	measure_math_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
@@ -499,6 +514,11 @@ class SkillDegree(db.Model):
 			'measure_trait_math': self.measure_trait_math,
 			'measure_mod': self.measure_mod,
 			'measure_math_rank': self.measure_math_rank,
+			'measure_trait_type_unit': self.measure_trait_type_unit,
+			'measure_trait_unit': self.measure_trait_unit,
+			'measure_trait_math_unit': self.measure_trait_math_unit,
+			'measure_mod_unit': self.measure_mod_unit,
+			'measure_math_rank_unit': self.measure_math_unit,
 			'condition_type': self.condition_type,
 			'condition_damage_value': self.condition_damage_value,
 			'condition_damage': self.condition_damage,

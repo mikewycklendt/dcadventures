@@ -198,7 +198,7 @@
 			<div id="circ-measure">				
 				<div>
 					<select class="select-sml" id="circ_measure_effect" name="circ_measure_effect" onchange="circ_measure_effect()">
-						{% for m in measure_effect %}
+						{% for m in measure_effect_circ %}
 							<option value="{{m.type}}">{{m.name}}</option>
 						{% endfor %}
 					</select>

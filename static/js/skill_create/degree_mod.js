@@ -97,7 +97,8 @@ function deg_mod_measure_effect() {
 	const select = 'deg_mod_measure_effect';
 	const options = [{'val': 'rank', 'div': 'deg-mod-measure-rank'},
 					{'val': 'unit', 'div': 'deg-mod-measure-unit'},
-					{'val': 'skill', 'div': 'deg-mod-measure-skill'}]
+					{'val': 'skill_rank', 'div': 'deg-mod-measure-skill'},
+					{'val': 'skill_unit', 'div': 'deg-mod-measure-skill-unit'}]
 
 	select_opacity(select, options);
 }
@@ -112,6 +113,13 @@ function deg_mod_unit_type() {
 function deg_mod_measure_trait_type() {
 	const select = 'deg_mod_measure_trait_type';
 	const fill = 'deg_mod_measure_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function deg_mod_measure_trait_type_unit() {
+	const select = 'deg_mod_measure_trait_type_unit';
+	const fill = 'deg_mod_measure_trait_unit';
 
 	id_select(select, fill, trait_select);
 }
@@ -170,6 +178,11 @@ function deg_mod_submit() {
 	const measure_trait_math = select("deg_mod_measure_trait_math")
 	const measure_mod = select("deg_mod_measure_mod")
 	const measure_math_rank = select("deg_mod_measure_math_rank")
+	const measure_trait_type_unit = select("deg_mod_measure_trait_type_unit")
+	const measure_trait_unit = select("deg_mod_measure_trait_unit")
+	const measure_trait_math_unit = select("deg_mod_measure_trait_math_unit")
+	const measure_mod_unit = select("deg_mod_measure_mod_unit")
+	const measure_math_unit = select("deg_mod_measure_math_unit")
 	const condition_type = select("deg_mod_condition_type")
 	const condition_damage_value = select("deg_mod_condition_damage_value")
 	const condition_damage = select("deg_mod_condition_damage")
@@ -238,6 +251,11 @@ function deg_mod_submit() {
 			'measure_trait_math': measure_trait_math,
 			'measure_mod': measure_mod,
 			'measure_math_rank': measure_math_rank,
+			'measure_trait_type_unit': measure_trait_type_unit,
+			'measure_trait_unit': measure_trait_unit,
+			'measure_trait_math_unit': measure_trait_math_unit,
+			'measure_mod_unit': measure_mod_unit,
+			'measure_math_unit': measure_math_unit,
 			'condition_type': condition_type,
 			'condition_damage_value': condition_damage_value,
 			'condition_damage': condition_damage,

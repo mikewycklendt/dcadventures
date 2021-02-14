@@ -199,6 +199,14 @@
 	grid-template-columns: 20% 25% 18% 18% 19%;
 }
 
+#deg-mod-measure-skill-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 20% 25% 18% 18% 19%;
+}
+
 #deg-mod-damage {
 	display: none;
 	opacity: 0%;

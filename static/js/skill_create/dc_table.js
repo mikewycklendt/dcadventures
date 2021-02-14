@@ -121,7 +121,8 @@ function dc_measure_effect() {
 	const select = 'dc_measure_effect';
 	const options = [{'val': 'rank', 'div': 'dc-measure-rank'},
 					{'val': 'unit', 'div': 'dc-measure-unit'},
-					{'val': 'skill', 'div': 'dc-measure-skill'}]
+					{'val': 'skill_rank', 'div': 'dc-measure-skill'},
+					{'val': 'skill_unit', 'div': 'dc-measure-unit'}]
 
 	select_opacity(select, options);
 }
@@ -136,6 +137,13 @@ function dc_unit_type() {
 function dc_measure_trait_type() {
 	const select = 'dc_measure_trait_type';
 	const fill = 'dc_measure_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function dc_measure_trait_type_unit() {
+	const select = 'dc_measure_trait_type_unit';
+	const fill = 'dc_measure_trait_unit';
 
 	id_select(select, fill, trait_select);
 }
@@ -230,6 +238,11 @@ function dc_submit() {
 	const measure_trait_math = select("dc_measure_trait_math")
 	const measure_mod = select("dc_measure_mod")
 	const measure_math_rank = select('dc_measure_math_rank')
+	const measure_trait_type_unit = select("dc_measure_trait_type_unit")
+	const measure_trait_unit = select("dc_measure_trait_unit")
+	const measure_trait_math_unit = select("dc_measure_trait_math_unit")
+	const measure_mod_unit = select("dc_measure_mod_unit")
+	const measure_math_unit = select('dc_measure_math_unit')
 	const level_type = select("dc_level_type")
 	const level = select("dc_level")
 	const condition1 = select("dc_condition1")
@@ -294,6 +307,11 @@ function dc_submit() {
 			'measure_trait_math': measure_trait_math,
 			'measure_mod': measure_mod,
 			'measure_math_rank': measure_math_rank,
+			'measure_trait_type_unit': measure_trait_type_unit,
+			'measure_trait_unit': measure_trait_unit,
+			'measure_trait_math_unit': measure_trait_math_unit,
+			'measure_mod_unit': measure_mod_unit,
+			'measure_math_unit': measure_math_unit,
 			'level_type': level_type,
 			'level': level,
 			'condition1': condition1,

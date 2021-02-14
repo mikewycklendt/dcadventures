@@ -145,6 +145,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	unit_type = MeasureType.query.all()
 
+	units = Unit.query.all()
+
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Skill Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'Check Table'}]
 
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
@@ -191,7 +193,9 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'temp', 'name': 'Effect Temporary'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
 
-	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill', 'name': 'Skill Modifier'}]
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill_rank', 'name': 'Skill Rank Modifier'}, {'type': 'skill_unit', 'name': 'Skill Unit Modifier'}]
+	
+	measure_effect_circ = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}]
 	
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
@@ -232,7 +236,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
-							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less)
+							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -896,6 +900,11 @@ def skill_bonus_post_dc():
 	measure_trait_math = request.get_json()['measure_trait_math']
 	measure_mod = request.get_json()['measure_mod']
 	measure_math_rank = request.get_json()['measure_math_rank']
+	measure_trait_type_unit = request.get_json()['measure_trait_type_unit']
+	measure_trait_unit = request.get_json()['measure_trait_unit']
+	measure_trait_math_unit = request.get_json()['measure_trait_math_unit']
+	measure_mod_unit = request.get_json()['measure_mod_unit']
+	measure_math_unit = request.get_json()['measure_math_unit']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	condition1 = request.get_json()['condition1']
@@ -916,6 +925,8 @@ def skill_bonus_post_dc():
 	unit = db_integer(Unit, unit)
 	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
+	measure_trait_math_unit = db_integer(Math, measure_trait_math_unit)
+	measure_math_unit = db_integer(Unit, measure_math_unit)
 	level_type = db_integer(LevelType, level_type)
 	level = db_integer(Levels, level)
 	condition1 = db_integer(Condition, condition1)
@@ -935,6 +946,8 @@ def skill_bonus_post_dc():
 	unit_value = integer(unit_value)
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
+	measure_trait_unit = integer(measure_trait_unit)
+	measure_mod_unit = integer(measure_mod_unit)
 	condition_turns = integer(condition_turns)
 
 	entry = SkillDC(skill_id = skill_id,
@@ -979,6 +992,11 @@ def skill_bonus_post_dc():
 					measure_trait_math = measure_trait_math,
 					measure_mod = measure_mod,
 					measure_math_rank = measure_math_rank,
+					measure_trait_type_unit = measure_trait_type_unit,
+					measure_trait_unit = measure_trait_unit,
+					measure_trait_math_unit = measure_trait_math_unit,
+					measure_mod_unit = measure_mod_unit,
+					measure_math_unit = measure_math_unit,
 					level_type = level_type,
 					level = level,
 					condition1 = condition1,
@@ -1099,6 +1117,11 @@ def skill_bonus_post_degree():
 	measure_trait_math = request.get_json()['measure_trait_math']
 	measure_mod = request.get_json()['measure_mod']
 	measure_math_rank = request.get_json()['measure_math_rank']
+	measure_trait_type_unit = request.get_json()['measure_trait_type_unit']
+	measure_trait_unit = request.get_json()['measure_trait_unit']
+	measure_trait_math_unit = request.get_json()['measure_trait_math_unit']
+	measure_mod_unit = request.get_json()['measure_mod_unit']
+	measure_math_unit = request.get_json()['measure_math_unit']
 	condition_type = request.get_json()['condition_type']
 	condition_damage_value = request.get_json()['condition_damage_value']
 	condition_damage = request.get_json()['condition_damage']
@@ -1124,6 +1147,8 @@ def skill_bonus_post_degree():
 	unit = db_integer(Unit, unit)
 	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
+	measure_trait_math_unit = db_integer(Math, measure_trait_math_unit)
+	measure_math_unit = db_integer(Unit, measure_math_unit)
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 
@@ -1143,6 +1168,8 @@ def skill_bonus_post_degree():
 	unit_value = integer(unit_value)
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
+	measure_trait_unit = integer(measure_trait_unit)
+	measure_mod_unit = integer(measure_mod_unit)
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	condition_turns = integer(condition_turns)
@@ -1191,6 +1218,11 @@ def skill_bonus_post_degree():
 						measure_trait_math = measure_trait_math,
 						measure_mod = measure_mod,
 						measure_math_rank = measure_math_rank,
+						measure_trait_type_unit = measure_trait_type_unit,
+						measure_trait_unit = measure_trait_unit,
+						measure_trait_math_unit = measure_trait_math_unit,
+						measure_mod_unit = measure_mod_unit,
+						measure_math_unit = measure_math_unit,
 						condition_type = condition_type,
 						condition_damage_value = condition_damage_value,
 						condition_damage = condition_damage,

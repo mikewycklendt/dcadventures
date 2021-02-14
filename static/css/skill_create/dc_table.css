@@ -267,6 +267,14 @@
 	grid-template-columns: 20% 25% 15% 20% 20%;
 }
 
+#dc-measure-skill-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 20% 25% 15% 20% 20%;
+}
+
 
 #dc-button-row {
 	display: grid;
