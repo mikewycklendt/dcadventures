@@ -360,6 +360,7 @@ def save_skill_bonus():
 	speed_turns = integer(speed_turns)
 	speed_mod = integer(speed_mod)
 	speed_value = integer(speed_value)
+	gm_circ_value = integer(gm_circ_value)
 	modifiers_multiple_count = integer(modifiers_multiple_count)
 
 	entry = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
