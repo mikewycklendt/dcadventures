@@ -292,7 +292,20 @@ def skill_dc_post(entry, body, cells):
 	measure_mod = integer_convert(measure_mod)
 	condition_turns = integer_convert(condition_turns)
 
-
+	math = math_convert(math)
+	action = get_name(Action, action)
+	inflict_math = math_convert(inflict_math)
+	damage_consequence = get_name(Consequence, damage_consequence)
+	measure_rank = get_name(Rank, measure_rank)
+	unit_type = get_name(MeasureType, unit_type)
+	unit = get_name(Unit, unit)
+	measure_trait_math = math_convert(measure_trait_math)
+	measure_math_rank = get_name(Rank, measure_math_rank)
+	level_type = get_name(LevelType, level_type)
+	level = get_name(Levels, level)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+	complexity = get_name(Complex, complexity)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)

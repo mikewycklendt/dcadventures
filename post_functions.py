@@ -619,7 +619,10 @@ def mod_cell(title, width, content, mod, value='e'):
 		elif c is None:
 			c = ''
 		try:
-			c = str(c)
+			if c == True:
+				print('true')
+			else:
+				c = str(c)
 		except:
 			if c == True:
 				contentwidth = '7%'
