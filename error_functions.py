@@ -86,6 +86,10 @@ def integer(value):
 		value = 56785678
 	elif value == 'gm':
 		value = 67896789
+	elif value == 'fail':
+		value = 987987
+	elif value == 'successs':
+		value = 876876
 	elif value == '':
 		value = None
 	elif value == 'none':
