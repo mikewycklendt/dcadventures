@@ -94,7 +94,7 @@ function gm_circ() {
 }
 
 function required_tools() {
-	const check = 'required_tools';
+	const check = 'tools';
 	const div =  'required-tools';
 
 	check_opacity(check, div);
