@@ -258,7 +258,7 @@
 			</div>
 
 			<div style="width: 65%;">
-				<select class="base-select" id="concealment" name="concealment">
+				<select class="base-select" id="advantage" name="advantage">
 					<option value="">Advantage</option>
 					{% for a in advantages %}
 						<option value="{{a.id}}">{{a.name}}</option>
@@ -282,7 +282,7 @@
 					</select>
 				</div>
 				<div>
-					<select class="base-select" id="skill" name="skill">
+					<select class="base-select" id="concealment" name="concealment">
 						<option value="">Concealment</option>
 						{% for c in concealment %}
 							<option value="{{c.id}}">{{c.name}}</option>
