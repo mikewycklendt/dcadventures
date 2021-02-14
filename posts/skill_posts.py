@@ -259,6 +259,8 @@ def skill_dc_post(entry, body, cells):
 	condition_turns = entry.condition_turns
 	keyword = entry.keyword
 	complexity = entry.complexity
+	action_no_damage = entry.action_no_damage
+	condition_no_damage = entry.condition_no_damage
 
 	math_trait = trait_select(math_trait, math_trait_type)	
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
@@ -331,6 +333,7 @@ def skill_dc_post(entry, body, cells):
 	word = string('for', condition_turns)
 	word2 = string('Turns', condition_turns)
 	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2, word, condition_turns, word2], new_mod)
+	new_mod = mod_cell('Only if No Damahe', 20, [condition_no_damage], new_mod)
 	body = mod_add(condition, new_mod, body)
 
 	cells = check_cell('Keyword', 8, keyword_check, cells, True)
@@ -378,6 +381,8 @@ def skill_dc_post(entry, body, cells):
 	cells = check_cell('Action Change', 15, change_action, cells, True)
 	new_mod = mod_create('Action Change', 15)
 	new_mod = mod_cell('Action Changed To', 20, [action], new_mod)
+	new_mod = mod_cell('When', 5, [action_when], new_mod)
+	new_mod = mod_cell('Only if No Damahe', 20, [action_no_damage], new_mod)
 	body = mod_add(change_action, new_mod, body)
 
 	cells = check_cell('Cover', 7, cover, cells)
