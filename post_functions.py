@@ -116,6 +116,10 @@ def integer_convert(value):
 		value = 'Unlimited'
 	elif value == 67896789:
 		value = 'GM Decides'
+	elif value == 987987:
+		value = 'Failure'
+	elif value == 876876:
+		value = 'Success'
 	elif value is None:
 		value = ''
 	else:
