@@ -90,6 +90,8 @@ def integer(value):
 		value = 987987
 	elif value == 'success':
 		value = 876876
+	elif value == 'routine':
+		value = 765765
 	elif value == '':
 		value = None
 	elif value == 'none':

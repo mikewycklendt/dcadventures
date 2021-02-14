@@ -120,6 +120,8 @@ def integer_convert(value):
 		value = 'Failure'
 	elif value == 876876:
 		value = 'Success'
+	elif value == 765765:
+		value = 'Routine'
 	elif value is None:
 		value = ''
 	else:
