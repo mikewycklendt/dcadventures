@@ -84,63 +84,74 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
-@app.route('/table/db')
-def table_db_columns_create():
 
-	tablename =  'Enhanced Skill'
 
-	name = 'All Enhanced Skills'
+@app.route('/skills/all')
+def skills_all_create():
 
-	entry = SkillBonus(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
+	names = ['Balancing',
+			'Maneuvering',
+			'Standing',
+			'Tumbling',
+			'Climbing',
+			'Jumping',
+			'Running',
+			'Swimming',
+			'Bluffing',
+			'Disguise',
+			'Feinting',
+			'Innuendo',
+			'Tricking',
+			'Detect Illusion',
+			'Detect Influence',
+			'Evaluate',
+			'Innuendo',
+			'Resist Influence',
+			'Coercing',
+			'Demoralizing',
+			'Intimidating Minions',
+			'Search',
+			'Gather Evidence',
+			'Analyze Evidence',
+			'Gather Information',
+			'Surveillance',
+			'Hearing',
+			'Seeing',
+			'Other Senses',
+			'Concealing',
+			'Contorting',
+			'Escaping',
+			'Legerdemain',
+			'Stealing',
+			'Hiding',
+			'Tailing',
+			'Operating',
+			'Building',
+			'Repairing',
+			'Jury-Rigging',
+			'Demolitions',
+			'Inventing',
+			'Security',
+			'Diagnosis',
+			'Provide Care',
+			'Revive',
+			'Stabalize',
+			'Treat Disease',
+			'Treat Poison']
 
-	entry = SkillBonus(current=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
+	for name in names:
 
-	entry = SkillBonus(any=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
+		entry = SkillBonus(show=True, name=name, base=True )
+		db.session.add(entry)
+		db.session.commit()
 
-	name = 'Variable ' + tablename
+	results = SkillBonus.query.all()
 
-	entry = SkillBonus(var=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
+	for r in results:
+		print(str(r.id) + ' ' + r.name)
 
-	entry = SkillBonus(none=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
 
-	results = db.session.query(SkillBonus).all()
 
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-'''
-@app.route('/debilitated/create')
-def debilitated_create():
-
-	entries = []
-
-	entries.append({
-		'name': 'Debilitated ',
-		'effects': 
-		'condition_id': 
-		'actions':
-		'controlled':
-		'ability_id': 
-		})
-'''
 
 
 if __name__ == '__main__':
