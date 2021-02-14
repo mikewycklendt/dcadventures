@@ -201,9 +201,9 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 		const new_cell = document.createElement('div');
 		new_cell.className = base_cell;
 		new_cell.classList.add(cell_class);
-		if (cell.content == false) {
+		if (cell.content === false) {
 			new_cell.innerHTML = '';
-		} else if (cell.content == true) {
+		} else if (cell.content === true) {
 			if (cell.mod_check == true) {
 				create_mod = true;
 				const check = document.createElement('button');
@@ -324,7 +324,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			const con = document.createElement('div');
 			con.className = mod_cell_content;
 				
-			if (new_cell.content == true && new_cell.content != '1') {
+			if (new_cell.content === true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
 				check.className = 'skill-check';
