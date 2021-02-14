@@ -89,6 +89,8 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
