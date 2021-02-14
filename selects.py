@@ -93,7 +93,7 @@ def advantage_action_select():
 
 
 	if action == 'auto':
-		body['options'] = [{'id': 'auto', 'name': 'Automatic'}]
+		body['options'] = [{'id': 0, 'name': 'Automatic'}]
 	elif action == 'base':
 		body['options'] = base
 	elif action == 'conflict':

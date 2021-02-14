@@ -169,9 +169,9 @@ def skill_circ_post(entry, body, cells):
 
 	cells = cell('Target', 16, [circ_target])
 	cells = cell('Modifier', 8, [mod], cells)
-	cells = cell('Keyword', 24, [keyword], cells)
+	cells = cell('Keyword', 18, [keyword], cells)
 
-	vcells = vcell('turns', 12, [turns])
+	vcells = vcell('turns', 10, [turns])
 	vcells = vcell('time', 14, [unit_time, time_units], vcells)
 	vcells = vcell('rank', 6, [time_rank], vcells)
 	cells = vcell_add('Lasts', lasts, vcells, cells)
