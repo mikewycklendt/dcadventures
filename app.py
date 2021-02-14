@@ -145,7 +145,7 @@ def skills_all_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	results = SkillBonus.query.all()
+	results = db.session.query(SkillBonus).filter_by(show=True).all()
 
 	for r in results:
 		print(str(r.id) + ' ' + r.name)
