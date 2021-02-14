@@ -34,85 +34,85 @@ def descriptor_name(name):
 
 def integer_convert(value):
 
-	if value == 123:
+	if value == 123123:
 		value = "Permanent"
 		print(value)
-	elif value == 121:
+	elif value == 121121:
 		value = "Power Rank"
 		print(value)
-	elif value == 567:
+	elif value == 567567:
 		value = "Any"
 		print(value)
-	elif value == 222:
+	elif value == 222222:
 		value = "Always"
 		print(value)
-	elif value == 333:
+	elif value == 333333:
 		value = "One Round"
 		print(value)
-	elif value == 111:
+	elif value == 111111:
 		value = "Extra Rank"
 		print(value)
-	elif value == 444:
+	elif value == 444444:
 		value = "Nullified"
 		print(value)
-	elif value == 555:
+	elif value == 555555:
 		value = "Normal"
 		print(value)
-	elif value == 666:
+	elif value == 666666:
 		value = "Instant"
 		print(value)
-	elif value == 777:
+	elif value == 777777:
 		value = "Distance rank"
 		print(value)
-	elif value == 888:
+	elif value == 888888:
 		value = "Vertical Height"
 		print(value)
-	elif value == 999:
+	elif value == 999999:
 		value = "No Check"
 		print(value)
-	elif value == 432:
+	elif value == 432432:
 		value = "Result"
 		print(value)
-	elif value == 778:
+	elif value == 778778:
 		value = "All"
 		print(value)
-	elif value == 112:
+	elif value == 112112:
 		value = "Trait"
 		print(value)
-	elif value == 334:
+	elif value == 334334:
 		value = "Impervious"
 		print(value)
-	elif value == 556:
+	elif value == 556556:
 		value = "Check"
 		print(value)
-	elif value == 990:
+	elif value == 990990:
 		value = "Turn"
 		print(value)
-	elif value == 211:
+	elif value == 211211:
 		value = 'One Per Degree'
-	elif value == 322:
+	elif value == 322322:
 		value = 'Scene'
-	elif value == 433:
+	elif value == 433433:
 		value = 'Automatic'
-	elif value == 544:
+	elif value == 544544:
 		value = 'Advantage Rank'
-	elif value == 655:
+	elif value == 655655:
 		value = 'Same as Bonus'
-	elif value == 766:
+	elif value == 766766:
 		value = 'Immune'
-	elif value == 877:
+	elif value == 877877:
 		value = 'No Penalties'
-	elif value == 988:
+	elif value == 988988:
 		value = 'Doubles Per Rank'
-	elif value == 998:
+	elif value == 998998:
 		value = 'Flat Value'
-	elif value == 2345:
+	elif value == 23452345:
 		value = 'This Rank'
-	elif value == 3456:
+	elif value == 34563456:
 		value = 'Parent Skill'
-	elif value == 4567:
+	elif value == 45674567:
 		value = 'Speed Rank'
-	elif value == 5678:
+	elif value == 56785678:
 		value = 'Unlimited'
 	elif value is None:
 		value = ''
