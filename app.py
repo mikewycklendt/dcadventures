@@ -87,39 +87,39 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Extra'
+	tablename =  'Enhanced Skill'
 
-	name = 'All Extras'
+	name = 'All Enhanced Skills'
 
-	entry = Extra(all=True, name=name)
+	entry = SkillBonus(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Extra(current=True, name=name)
+	entry = SkillBonus(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Extra(any=True, name=name)
+	entry = SkillBonus(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Extra(var=True, name=name)
+	entry = SkillBonus(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Extra(none=True, name=name)
+	entry = SkillBonus(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Extra).all()
+	results = db.session.query(SkillBonus).all()
 
 	for result in results:
 		print (result.id)
