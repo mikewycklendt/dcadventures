@@ -103,7 +103,7 @@ def skill_save_errors(data):
 
 	errors = skill_entry_check('Bonus/Penalty Modifier', SkillMod, modifiers, skill_id, errors)
 	errors = skill_entry_check('DC Table', SkillDC, dc, skill_id, errors)
-	errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
+	#errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
 	errors = skill_entry_check('Circqumstance Modifier', SkillCirc, circumstance, skill_id, errors)
 	errors = skill_entry_check('Opponent Check',SkillOpposed, opposed, skill_id, errors)
 	errors = skill_entry_check('Time Effect', SkillTime, time, skill_id, errors)
