@@ -1,7 +1,7 @@
 <div id="dc-header">
 
 	<div id="dc-title">
-		<input type="checkbox" id="dc_check" class="regular-checkbox big-checkbox" onclick="dc_check()"> DC Table:
+		<input type="checkbox" id="dc_check" class="regular-checkbox big-checkbox" onclick="dc_check()"> Check Table:
 	</div>
 	
 	<div id="dc-base">
@@ -44,6 +44,7 @@
 		<div>
 			<select class="select-sml" id="dc_value_value" name="dc_value_value">
 				<option value="">DC</option>
+				<option value="routine">Routine Check</option>
 				<option value="0">0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
