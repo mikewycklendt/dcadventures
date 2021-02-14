@@ -208,6 +208,7 @@ function dc_submit() {
 	const conceal = check("dc_conceal")
 	const action = select("dc_action")
 	const action_when = select("dc_action_when")
+	const action_no_damage = check("dc_action_no_damage")
 	const damage_type = select("dc_damage_type")
 	const inflict_type = select("dc_inflict_type")
 	const inflict_flat = select("dc_inflict_flat")
@@ -234,6 +235,7 @@ function dc_submit() {
 	const condition1 = select("dc_condition1")
 	const condition2 = select("dc_condition2")
 	const condition_turns = select("dc_condition_turns")
+	const condition_no_damage = check("dc_condition_no_damage")
 	const keyword = text("dc_keyword")
 	const complexity = select("dc_complexity")
 
@@ -270,6 +272,7 @@ function dc_submit() {
 			'conceal': conceal,
 			'action': action,
 			'action_when': action_when,
+			'action_no_damage': action_no_damage,			
 			'damage_type': damage_type,
 			'inflict_type': inflict_type,
 			'inflict_flat': inflict_flat,
@@ -296,6 +299,7 @@ function dc_submit() {
 			'condition1': condition1,
 			'condition2': condition2,
 			'condition_turns': condition_turns,
+			'condition_no_damage': condition_no_damage,
 			'keyword': keyword,
 			'complexity': complexity
 		}),

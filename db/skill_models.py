@@ -308,6 +308,7 @@ class SkillDC(db.Model):
 	conceal = db.Column(db.Boolean)
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action_when = db.Column(db.String())
+	action_no_damage = db.Column(db.Boolean)
 	damage_type = db.Column(db.String())
 	inflict_type = db.Column(db.String())
 	inflict_flat = db.Column(db.Integer)
@@ -334,9 +335,10 @@ class SkillDC(db.Model):
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer)
+	condition_no_damage = db.Column(db.Boolean)
 	keyword = db.Column(db.String())
 	complexity = db.Column(db.Integer, db.ForeignKey('complexity.id'))
-
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -361,6 +363,7 @@ class SkillDC(db.Model):
 			'conceal': self.conceal,
 			'action': self.action,
 			'action_when': self.action_when,
+			'action_no_damage': self.action_no_damage,
 			'damage_type': self.damage_type,
 			'inflict_type': self.inflict_type,
 			'inflict_flat': self.inflict_flat,
@@ -387,6 +390,7 @@ class SkillDC(db.Model):
 			'condition1': self.condition1,
 			'condition2': self.condition2,
 			'condition_turns': self.condition_turns,
+			'condition_no_damage': self.condition_no_damage,
 			'keyword': self.keyword,
 			'complexity': self.complexity
 		}

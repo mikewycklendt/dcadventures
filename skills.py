@@ -897,6 +897,8 @@ def skill_bonus_post_dc():
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	condition_turns = request.get_json()['condition_turns']
+	action_no_damage = request.get_json()['action_no_damage']
+	condition_no_damage = request.get_json()['condition_no_damage']
 	keyword = request.get_json()['keyword']
 	complexity = request.get_json()['complexity']
 
@@ -979,6 +981,8 @@ def skill_bonus_post_dc():
 					condition2 = condition2,
 					condition_turns = condition_turns,
 					keyword = keyword,
+					action_no_damage = action_no_damage,
+					condition_no_damage = condition_no_damage,
 					complexity = complexity)
 
 	db.session.add(entry)
