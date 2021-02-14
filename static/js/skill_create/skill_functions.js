@@ -324,7 +324,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			const con = document.createElement('div');
 			con.className = mod_cell_content;
 				
-			if (new_cell.content == true) {
+			if (new_cell.content == true && new_cell.content != '1') {
 				mod.appendChild(con);
 				const check = document.createElement('div');
 				check.className = 'skill-check';
