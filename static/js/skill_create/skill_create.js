@@ -63,6 +63,9 @@ skill_save = function() {
 	const check_dc = check("check_dc");
 	const secret = check("secret");
 	const secret_frequency = select("secret_frequency");
+	const gm_circ_value = select("gm_circ_value");
+	const gm_circ_type = select("gm_circ_type");
+	const gm_circ = check("gm_circ");
 	const ability_check = check("ability_check");
 	const check_check = check("check_check");
 	const circumstance = check("circ_check");
@@ -114,6 +117,9 @@ skill_save = function() {
 			'check_dc': check_dc,
 			'secret': secret,
 			'secret_frequency': secret_frequency,
+			'gm_circ_value': gm_circ_value,
+			'gm_circ_type': gm_circ_type,
+			'gm_circ': gm_circ,
 			'ability_check': ability_check,
 			'check_check': check_check,
 			'circumstance': circumstance,

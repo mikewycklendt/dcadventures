@@ -411,6 +411,45 @@
 
 		</div>
 
+		<div class="base-field">
+			<div id="multiple-attr-title" style="font-size: 150%;">
+				GM Sets Circumstance
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="gm_circ" class="regular-checkbox big-checkbox" onclick="gm_circ()"> 	
+				</div>
+
+				<div class="base-fade" id="gm-circ">
+					<div class="base-split">
+						<div>
+							<select class="base-select" id="gm_circ_type" name="gm_circ_type">
+								{% for g in gm_circ %}
+									<option value="{{g.type}}">{{g.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="base-select" id="gm_circ_value" name="gm_circ_value">
+								<option value="">Modifier</option>
+								<option value="gm">GM Decides</option>
+								{% for i in negatives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+ 				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 </div>

@@ -86,6 +86,13 @@ function secret() {
 	check_opacity(check, div);
 }
 
+function gm_circ() {
+	const check = 'gm_circ';
+	const div = 'gm-circ';
+
+	check_opacity(check, div);
+}
+
 function required_tools() {
 	const check = 'required_tools';
 	const div =  'required-tools';

@@ -114,6 +114,8 @@ def integer_convert(value):
 		value = 'Speed Rank'
 	elif value == 56785678:
 		value = 'Unlimited'
+	elif value == 67896789:
+		value = 'GM Decides'
 	elif value is None:
 		value = ''
 	else:

@@ -59,6 +59,9 @@ class SkillBonus(db.Model):
 	required_tools = db.Column(db.String())
 	subskill = db.Column(db.Boolean)
 	check_dc = db.Column(db.Boolean)
+	gm_circ_value = db.Column(db.Integer)
+	gm_circ_type = db.Column(db.String())
+	gm_circ = db.Column(db.Boolean)
 	secret = db.Column(db.Boolean)
 	secret_frequency = db.Column(db.String())
 	ability_check = db.Column(db.Boolean)
@@ -117,6 +120,9 @@ class SkillBonus(db.Model):
 			'check_dc': self.check_dc,
 			'secret': self.secret,
 			'secret_frequency': self.secret_frequency,
+			'gm_circ_value': self.gm_circ_value,
+			'gm_circ_type': self.gm_circ_type,
+			'gm_circ': self.gm_circ,
 			'ability_check': self.ability_check,
 			'check_check': self.check_check,
 			'circumstance': self.circumstance,

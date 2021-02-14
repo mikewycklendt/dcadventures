@@ -84,6 +84,8 @@ def integer(value):
 		value = 45674567
 	elif value == 'unlimited':
 		value = 56785678
+	elif value == 'gm':
+		value = 67896789
 	elif value == '':
 		value = None
 	elif value == 'none':
