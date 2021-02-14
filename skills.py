@@ -219,6 +219,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	gm_circ = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Alwats'}, {'type': '', 'name': 'Sometimes'}]
 
+	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
@@ -228,7 +230,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
-							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ)
+							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -1103,6 +1105,7 @@ def skill_bonus_post_degree():
 	condition_turns = request.get_json()['condition_turns']
 	keyword = request.get_json()['keyword']
 	nullify = request.get_json()['nullify']
+	nullify_type = request.get_json()['nullify_type']
 	cumulative = request.get_json()['cumulative']
 	linked = request.get_json()['linked']
 
@@ -1194,6 +1197,7 @@ def skill_bonus_post_degree():
 						condition_turns = condition_turns,
 						keyword = keyword,
 						nullify = nullify,
+						nullify_type = nullify_type,
 						cumulative = cumulative,
 						linked = linked)
 

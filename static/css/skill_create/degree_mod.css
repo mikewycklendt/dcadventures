@@ -107,7 +107,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 17% 18% 15% 25%;
+	grid-template-columns: 25% 25% 17% 18% 15%;
 }
 
 #deg-mod-button-row {

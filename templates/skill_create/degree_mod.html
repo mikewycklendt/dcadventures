@@ -538,8 +538,19 @@
 		<select class="select-sml" id="deg_mod_nullify" name="deg_mod_nullify" >
 			<option value="">DC to Nullify</option>
 			<option value="check">Extra Check</option>
+			{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
 			{% for i in positives %}
-				<option value={{i}}>{{i}} DC</option>
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div>
+		<select class="se;ect-sml" id="deg_mod_nullify_type" name="deg_mod_nullify_type">
+			{% for n in nullify %}
+				<option value="{{n.type}}">{{n.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
@@ -556,7 +567,6 @@
 		</div>
 	</div>
 
-	<div></div>
 </div>
 
 <div id="deg-mod-button-row">

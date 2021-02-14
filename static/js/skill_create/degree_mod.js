@@ -178,6 +178,7 @@ function deg_mod_submit() {
 	const condition_turns = select("deg_mod_condition_turns")
 	const keyword = text("deg_mod_keyword")
 	const nullify = select("deg_mod_nullify")
+	const nullify_type = select("deg_mod_nullify_type");
 	const cumulative = check("deg_mod_cumulative")
 	const linked = check("deg_mod_linked")
 
@@ -245,6 +246,7 @@ function deg_mod_submit() {
 			'condition_turns': condition_turns,
 			'keyword': keyword,
 			'nullify': nullify,
+			'nullify_type': nullify_type,
 			'cumulative': cumulative,
 			'linked': linked
 		}),

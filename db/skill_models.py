@@ -449,6 +449,7 @@ class SkillDegree(db.Model):
 	condition_turns = db.Column(db.Integer)
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
+	nullify_type = db.Column(db.String())
 	cumulative = db.Column(db.Boolean)
 	linked = db.Column(db.Boolean)
 
@@ -506,6 +507,7 @@ class SkillDegree(db.Model):
 			'condition_turns': self.condition_turns,
 			'keyword': self.keyword,
 			'nullify': self.nullify,
+			'nullify_type': self.nullify_type,
 			'cumulative': self.cumulative,
 			'linked': self.linked
 		}

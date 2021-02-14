@@ -88,7 +88,7 @@ def integer(value):
 		value = 67896789
 	elif value == 'fail':
 		value = 987987
-	elif value == 'successs':
+	elif value == 'success':
 		value = 876876
 	elif value == '':
 		value = None
