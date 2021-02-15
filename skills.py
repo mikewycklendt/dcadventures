@@ -353,6 +353,7 @@ def save_skill_bonus():
 	degree = request.get_json()['degree']
 	levels = request.get_json()['levels']
 	modifiers = request.get_json()['modifiers']
+	move = request.get_json()['move']
 	opposed = request.get_json()['opposed']
 	time = request.get_json()['time']
 	opposed_multiple = request.get_json()['opposed_multiple']
@@ -423,6 +424,7 @@ def save_skill_bonus():
 	entry.degree = degree
 	entry.levels = levels
 	entry.modifiers = modifiers
+	entry.move = move
 	entry.opposed = opposed
 	entry.time = time
 	entry.opposed_multiple = opposed_multiple

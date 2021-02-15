@@ -10,7 +10,7 @@ from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubTy
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
-from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
+from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillMove, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
@@ -63,6 +63,7 @@ def skill_save_errors(data):
 	degree = data['degree']
 	levels = data['levels']
 	modifiers = data['modifiers']
+	move = data['move']
 	opposed = data['opposed']
 	time = data['time']
 	opposed_multiple = data['opposed_multiple']
@@ -104,11 +105,12 @@ def skill_save_errors(data):
 	errors = skill_entry_check('Bonus/Penalty Modifier', SkillMod, modifiers, skill_id, errors)
 	errors = skill_entry_check('Check Table', SkillDC, dc, skill_id, errors)
 	errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
-	errors = skill_entry_check('Circqumstance Modifier', SkillCirc, circumstance, skill_id, errors)
+	errors = skill_entry_check('Circumstance Modifier', SkillCirc, circumstance, skill_id, errors)
 	errors = skill_entry_check('Opponent Check',SkillOpposed, opposed, skill_id, errors)
 	errors = skill_entry_check('Time Effect', SkillTime, time, skill_id, errors)
 	errors = skill_entry_check('Variable Check', SkillCheck, check_check, skill_id, errors)
 	errors = skill_entry_check('Variable Ability', SkillAbility, ability_check, skill_id, errors)
+	errors = skill_entry_check('Movement', SkillMove, move, skill_id, errors)
 
 	return (errors)
 
@@ -763,7 +765,7 @@ def skill_move_post_errors(data):
 
 	errors = required(check_type, 'Check Type', errors)
 	errors = required(turns, 'Turns', errors)
-	errorsv = required(direction, 'Direction', errors)
+	errors = required(direction, 'Direction', errors)
 
 	return (errors)
 
