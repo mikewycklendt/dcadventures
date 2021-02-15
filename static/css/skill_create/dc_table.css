@@ -240,7 +240,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 15% 20% 65%;
+	grid-template-columns: 10% 15% 75%;
 }
 
 #dc-measure-rank {
@@ -272,7 +272,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .3vw;
-	grid-template-columns: 20% 25% 15% 20% 20%;
+	grid-template-columns: 15% 20% 15% 10% 15% 10% 15%;
 }
 
 

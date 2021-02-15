@@ -1,0 +1,98 @@
+#move-header {
+	grid-template-columns: 70% 30%;
+}
+
+#move-base {
+	grid-template-columns: 100%;
+}
+
+#move-row1 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 15% 85%;
+	grid-auto-rows: auto;
+}
+
+#move-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 15% 85%;
+	grid-auto-rows: auto;
+}
+
+#move-row3 {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-auto-rows: auto;
+}
+
+#move-speed-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 30% 30% 10%;
+	grid-auto-rows: auto;
+}
+
+#move-speed-mod {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 20% 30% 15% 10% 15% 10%;
+	grid-auto-rows: auto;
+}
+
+#move-distance-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 30% 30% 10%;
+	grid-auto-rows: auto;
+}
+
+#move-distance-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 30% 30% 10%;
+	grid-auto-rows: auto;
+}
+
+#move-distance-unit-math {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 15% 25% 10% 10% 10% 10% 20%;
+	grid-auto-rows: auto;
+}
+
+#move-distance-rank-math {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 20% 30% 15% 10% 15% 10%;
+	grid-auto-rows: auto;
+}
+
+#move-button-row {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	width: 97%;
+	grid-template-rows: auto;
+}

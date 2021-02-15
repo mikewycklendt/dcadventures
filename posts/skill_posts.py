@@ -578,7 +578,72 @@ def skill_degree_post(entry, body, cells):
 	cells.clear()
 
 	return (body)
+		
+def skill_move_post(entry, body, cells):
+
+	speed = entry.speed
+	speed_rank = entry.speed_rank
+	speed_trait_type = entry.speed_trait_type
+	speed_trait = entry.speed_trait
+	speed_math1 = entry.speed_math1
+	speed_value1 = entry.speed_value1
+	speed_math2 = entry.speed_math2
+	speed_value2 = entry.speed_value2
+	distance = entry.distance
+	distance_rank = entry.distance_rank
+	distance_value = entry.distance_value
+	distance_units = entry.distance_units
+	distance_rank_trait_type = entry.distance_rank_trait_type
+	distance_rank_trait = entry.distance_rank_trait
+	distance_rank_math1 = entry.distance_rank_math1
+	distance_rank_value1 = entry.distance_rank_value1
+	distance_rank_math2 = entry.distance_rank_math2
+	distance_rank_value2 = entry.distance_rank_value2
+	distance_unit_trait_type = entry.distance_unit_trait_type
+	distance_unit_trait = entry.distance_unit_trait
+	distance_unit_math1 = entry.distance_unit_math1
+	distance_unit_value1 = entry.distance_unit_value1
+	distance_unit_math2 = entry.distance_unit_math2
+	distance_unit_value2 = entry.distance_unit_value2
+	distance_math_units = entry.distance_math_units
+	direction = entry.direction
+	check_type = entry.check_type
+	turns = entry.turns
+
+	speed_trait = trait_select(speed_trait, speed_trait_type)
+	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
+	distance_unit_trait = trait_select(distance_unit_trait, distance_unit_trait_type)
 	
+	speed_rank = integer_convert(speed_rank)
+	speed_trait = integer_convert(speed_trait)
+	speed_value1 = integer_convert(speed_value1)
+	speed_value2 = integer_convert(speed_value2)
+	distance_rank = integer_convert(distance_rank)
+	distance_value = integer_convert(distance_value)
+	distance_rank_trait = integer_convert(distance_unit_trait)
+	distance_rank_value1 = integer_convert(distance_rank_value1)
+	distance_rank_value2 = integer_convert(distance_rank_value2)
+	distance_unit_trait = integer_convert(distance_unit_trait)
+	distance_unit_value1 = integer_convert(distance_unit_value1)
+	distance_unit_value2 = integer_convert(distance_unit_value2)
+	turns = integer(turns)
+
+	speed_math1 = math_convert(speed_math1)
+	speed_math2 = math_convert(speed_math2)
+	distance_units = get_name(Unit, distance_units)
+	distance_rank_math1 = math_convert(distance_rank_math1)
+	distance_rank_math2 = math_convert(distance_rank_math2)
+	distance_unit_math1 = math_convert(distance_unit_math1)
+	distance_unit_math2 = math_convert(distance_unit_math2)
+	distance_math_units = get_name(Unit, distance_math_units)
+	check_type = get_name(Check, check_type)
+
+	body = send(cells, body)
+
+	cells.clear()
+
+	return (body)
+
 def skill_opposed_post(entry, body, cells):
 
 	attached = entry.attached

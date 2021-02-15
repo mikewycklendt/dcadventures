@@ -33,7 +33,7 @@ from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubTy
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
-from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
+from db.skill_models import SkillBonus, SkillAbility, SkillMove, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
@@ -54,7 +54,7 @@ db = SQLAlchemy()
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'skill_create/skill_create.html'
 
-	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html', 'opposed': 'skill_create/opposed.html', 'modifiers': 'skill_create/modifiers.html', 'time': 'skill_create/time.html', 'ability': 'skill_create/ability.html'}
+	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html', 'opposed': 'skill_create/opposed.html', 'modifiers': 'skill_create/modifiers.html', 'time': 'skill_create/time.html', 'ability': 'skill_create/ability.html', 'move': 'skill_create/move.html'}
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Enhanced Skill'
 	stylesheets.append({"style": "/static/css/skill_create/skill_create.css"})
@@ -81,6 +81,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	bonus_select = db.session.query(SkillBonus).filter_by(show=True).all()
 	
+	distances = db.session.query(Unit).filter_by(type_id=3)
+
 	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
 	
 	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
@@ -227,6 +229,12 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	greater_less = [{'type': '', 'name': 'Type'}, {'type': 'greater', 'name': 'Greater'}, {'type': 'less', 'name': 'Less Than'}]
 
+	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'mod', 'name': 'Modifier'}]
+
+	distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unir_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
+
+	trait_type = [{'type': 'rank', 'name': 'Trait Rank'}, {'type': 'check', 'name': 'Check Result'}]
+
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
@@ -236,7 +244,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							environments=environments, senses=senses, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_ranged=weapon_ranged, weapon_melee=weapon_melee,
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
-							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units)
+							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
+							speed=speed, distance=distance, distances=distances, trait_type=trait_type)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -1270,6 +1279,133 @@ def delete_skill_bonus_degree(id):
 	body['success'] = True
 	try:
 		db.session.query(SkillDegree).filter_by(id=id).delete()
+		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+		return jsonify(body)
+
+@skill.route('/skill/move/create', methods=['POST'])
+def skill_bonus_post_move():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = skill_move_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	skill_id = request.get_json()['skill_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	speed = request.get_json()['speed']
+	speed_rank = request.get_json()['speed_rank']
+	speed_trait_type = request.get_json()['speed_trait_type']
+	speed_trait = request.get_json()['speed_trait']
+	speed_math1 = request.get_json()['speed_math1']
+	speed_value1 = request.get_json()['speed_value1']
+	speed_math2 = request.get_json()['speed_math2']
+	speed_value2 = request.get_json()['speed_value2']
+	distance = request.get_json()['distance']
+	distance_rank = request.get_json()['distance_rank']
+	distance_value = request.get_json()['distance_value']
+	distance_units = request.get_json()['distance_units']
+	distance_rank_trait_type = request.get_json()['distance_rank_trait_type']
+	distance_rank_trait = request.get_json()['distance_rank_trait']
+	distance_rank_math1 = request.get_json()['distance_rank_math1']
+	distance_rank_value1 = request.get_json()['distance_rank_value1']
+	distance_rank_math2 = request.get_json()['distance_rank_math2']
+	distance_rank_value2 = request.get_json()['distance_rank_value2']
+	distance_unit_trait_type = request.get_json()['distance_unit_trait_type']
+	distance_unit_trait = request.get_json()['distance_unit_trait']
+	distance_unit_math1 = request.get_json()['distance_unit_math1']
+	distance_unit_value1 = request.get_json()['distance_unit_value1']
+	distance_unit_math2 = request.get_json()['distance_unit_math2']
+	distance_unit_value2 = request.get_json()['distance_unit_value2']
+	distance_math_units = request.get_json()['distance_math_units']
+	direction = request.get_json()['direction']
+	check_type = request.get_json()['check_type']
+	turns = request.get_json()['turns']
+	
+	entry = SkillMove(skill_id = skill_id,
+						speed = speed,
+						speed_rank = speed_rank,
+						speed_trait_type = speed_trait_type,
+						speed_trait = speed_trait,
+						speed_math1 = speed_math1,
+						speed_value1 = speed_value1,
+						speed_math2 = speed_math2,
+						speed_value2 = speed_value2,
+						distance = distance,
+						distance_rank = distance_rank,
+						distance_value = distance_value,
+						distance_units = distance_units,
+						distance_rank_trait_type = distance_rank_trait_type,
+						distance_rank_trait = distance_rank_trait,
+						distance_rank_math1 = distance_rank_math1,
+						distance_rank_value1 = distance_rank_value1,
+						distance_rank_math2 = distance_rank_math2,
+						distance_rank_value2 = distance_rank_value2,
+						distance_unit_trait_type = distance_unit_trait_type,
+						distance_unit_trait = distance_unit_trait,
+						distance_unit_math1 = distance_unit_math1,
+						distance_unit_value1 = distance_unit_value1,
+						distance_unit_math2 = distance_unit_math2,
+						distance_unit_value2 = distance_unit_value2,
+						distance_math_units = distance_math_units,
+						direction = direction,
+						check_type = check_type,
+						turns = turns)			
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'move'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_move_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@skill.route('/skill/move/delete/<id>', methods=['DELETE'])
+def delete_skill_bonus_move(id):
+	body = {}
+	body['success'] = True
+	try:
+		db.session.query(SkillMove).filter_by(id=id).delete()
 		db.session.commit()
 		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:

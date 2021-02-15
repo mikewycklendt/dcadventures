@@ -801,24 +801,88 @@ def id_check(Table, value_id, name, errors):
 	
 	db = SQLAlchemy()
 
-	if value_id != '':
+	if value_id == '':
+		return (errors)
+	elif value == 'all':
+		query = db.session.query(table).filter_by(all=True).first()\
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'current':
+		query = db.session.query(table).filter_by(current=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'any':
+		query = db.session.query(table).filter_by(any=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'x':
+		query = db.session.query(table).filter_by(var=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'none':
+		query = db.session.query(table).filter_by(none=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'power':
+		query = db.session.query(table).filter_by(power=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'skill':
+		query = db.session.query(table).filter_by(skill=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'extra':
+		query = db.session.query(table).filter_by(extra=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'free':
+		query = db.session.query(table).filter_by(free=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'linked_first':
+		query = db.session.query(table).filter_by(linked_first=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'linked_second':
+		query = db.session.query(table).filter_by(linked_second=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	else:
 		try:
 			value_id = int(value_id)
+			query = db.session.query(Table).filter_by(id=value_id).first()
+			if query is None:
+				message = 'Could not find ' + name
+				error = True
+				error_msgs.append(message) 
 		except:
+			print('not an int')
+			print(value)
 			message = 'Not a valid ' + name
 			error_msgs.append(message)	
 			error = True
-			errors['error'] = True
-			errors['error_msgs'] = error_msgs
-
-			return (errors)
-
-		try:
-			query = db.session.query(Table).filter_by(id=value_id).one()
-		except:	
-			message = 'Could not find ' + name
-			error = True
-			error_msgs.append(message) 
 
 	errors['error_msgs'] = error_msgs
 	if error:

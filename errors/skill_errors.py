@@ -97,13 +97,13 @@ def skill_save_errors(data):
 
 	errors = together_names('Concealment', ['Concealment Type', 'Concealment'], [concealment_type, concealment], errors)
 	
-	errors = skill_required_entry('table', dc_type, 'DC Table', 'DC Table', SkillDC, skill_id, errors)
+	errors = skill_required_entry('table', dc_type, 'Check Table', 'Check Table', SkillDC, skill_id, errors)
 	errors = skill_required_entry('2', check_type, 'Opposed Check', 'Opponent Check', SkillOpposed, skill_id, errors)
 	errors = skill_required_entry_multiple('x', ability, 'Variable Ability', 'Variable Ability', SkillAbility, skill_id, errors)
 
 	errors = skill_entry_check('Bonus/Penalty Modifier', SkillMod, modifiers, skill_id, errors)
-	errors = skill_entry_check('DC Table', SkillDC, dc, skill_id, errors)
-	#errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
+	errors = skill_entry_check('Check Table', SkillDC, dc, skill_id, errors)
+	errors = skill_entry_check('Degree of Success/Failure Modifier Table', SkillDegree, degree, skill_id, errors)
 	errors = skill_entry_check('Circqumstance Modifier', SkillCirc, circumstance, skill_id, errors)
 	errors = skill_entry_check('Opponent Check',SkillOpposed, opposed, skill_id, errors)
 	errors = skill_entry_check('Time Effect', SkillTime, time, skill_id, errors)
@@ -666,6 +666,71 @@ def skill_degree_post_errors(data):
 	errors = variable_field('consequence', type, 'Consequence Action Type', consequence_action_type, errors)
 	errors = variable_field('consequence', type, 'Consequence Action', consequence_action, errors)
 	errors = variable_field('consequence', type, 'Consequence', consequence, errors)
+
+	return (errors)
+
+def skill_move_post_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	skill_id = data['skill_id']
+	speed = data['speed']
+	speed_rank = data['speed_rank']
+	speed_trait_type = data['speed_trait_type']
+	speed_trait = data['speed_trait']
+	speed_math1 = data['speed_math1']
+	speed_value1 = data['speed_value1']
+	speed_math2 = data['speed_math2']
+	speed_value2 = data['speed_value2']
+	distance = data['distance']
+	distance_rank = data['distance_rank']
+	distance_value = data['distance_value']
+	distance_units = data['distance_units']
+	distance_rank_trait_type = data['distance_rank_trait_type']
+	distance_rank_trait = data['distance_rank_trait']
+	distance_rank_math1 = data['distance_rank_math1']
+	distance_rank_value1 = data['distance_rank_value1']
+	distance_rank_math2 = data['distance_rank_math2']
+	distance_rank_value2 = data['distance_rank_value2']
+	distance_unit_trait_type = data['distance_unit_trait_type']
+	distance_unit_trait = data['distance_unit_trait']
+	distance_unit_math1 = data['distance_unit_math1']
+	distance_unit_value1 = data['distance_unit_value1']
+	distance_unit_math2 = data['distance_unit_math2']
+	distance_unit_value2 = data['distance_unit_value2']
+	distance_math_units = data['distance_math_units']
+	direction = data['direction']
+	check_type = data['check_type']
+	turns = data['turns']
+	
+	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
+
+	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
+
+	speed_rank = integer(speed_rank)
+	speed_trait = integer(speed_trait)
+	speed_value1 = integer(speed_value1)
+	speed_value2 = integer(speed_value2)
+	distance_rank = integer(distance_rank)
+	distance_value = integer(distance_value)
+	distance_rank_trait = integer(distance_unit_trait)
+	distance_rank_value1 = integer(distance_rank_value1)
+	distance_rank_value2 = integer(distance_rank_value2)
+	distance_unit_trait = integer(distance_unit_trait)
+	distance_unit_value1 = integer(distance_unit_value1)
+	distance_unit_value2 = integer(distance_unit_value2)
+	turns = integer(turns)
+
+	errors = id_check(Math, speed_math1, 'Speed Msth 1', errors)
+	errors = id_check(Math, speed_math2, 'Speed Msth 2', errors)
+	errors = id_check(Unit, distance_units, 'Distance Units', errors)
+	errors = id_check(Math, distance_rank_math1, 'Distance Msth 1', errors)
+	errors = id_check(Math, distance_rank_math2, 'Distance Msth 2', errors)
+	errors = id_check(Math, distance_unit_math1, 'Distance Msth 1', errors)
+	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
+	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
+	errors = id_check(Check, check_type, 'Check', errors)
+
 
 	return (errors)
 

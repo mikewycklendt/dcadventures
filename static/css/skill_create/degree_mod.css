@@ -165,7 +165,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 20% 80%;
+	grid-template-columns: 15% 85%;
 }
 
 #deg-mod-time {
@@ -196,7 +196,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .3vw;
-	grid-template-columns: 20% 25% 18% 18% 19%;
+	grid-template-columns: 15% 20% 15% 10% 15% 10% 15%;
 }
 
 #deg-mod-measure-skill-unit {
