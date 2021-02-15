@@ -73,6 +73,7 @@ class SkillBonus(db.Model):
 	modifiers = db.Column(db.Boolean)
 	opposed = db.Column(db.Boolean)
 	time = db.Column(db.Boolean)
+	move = db.Column(db.Boolean)
 	opposed_multiple = db.Column(db.String())
 	modifiers_multiple = db.Column(db.String())
 	modifiers_multiple_count = db.Column(db.Integer)
@@ -130,6 +131,7 @@ class SkillBonus(db.Model):
 			'degree': self.degree,
 			'levels': self.levels,
 			'modifiers': self.modifiers,
+			'move': self.move,
 			'opposed': self.opposed,
 			'time': self.time,
 			'opposed_multiple': self.opposed_multiple,
