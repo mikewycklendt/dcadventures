@@ -8,6 +8,7 @@
 @import "modifiers.css";
 @import "time.css";
 @import "ability.css";
+@import "move.css";
 
 .skill-container {
 	display: grid;
