@@ -729,8 +729,41 @@ def skill_move_post_errors(data):
 	errors = id_check(Math, distance_unit_math1, 'Distance Msth 1', errors)
 	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
-	errors = id_check(Check, check_type, 'Check', errors)
+	errors = id_check(Check, check_type, 'Check', errors)	
+	
+	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
 
+	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
+	errors = variable_field('rank', speed, 'Rank', speed_rank, errors)
+	
+	errors = variable_fields('mod', 'Speed Modifier', speed, [speed_trait, speed_math1, speed_value1], errors)
+	errors = variable_field('mod', speed, 'Trait', speed_trait, errors)
+	errors = variable_field('mod', speed, 'First Math', speed_math1, errors)
+	errors = variable_field('mod', speed, 'First Modifier', speed_value1, errors)
+	errors = together_names('a second modifier', ['second modifier', 'second math'], [speed_value2, speed_math2], errors)
+
+	errors = variable_fields('rank', 'Distance Rank', distance, [distance_rank], errors)
+	errors = variable_field('rank', distance, 'Rank', distance_rank, errors)
+
+	errors = variable_fields('unit', 'Distance Value', distance, [distance_value, distance_units], errors)
+	errors = variable_field('unit', distance, 'Value', distance_value, errors)
+	errors = variable_field('unit', distance, 'Units', distance_units, errors)
+
+	errors = variable_fields('unit_math', 'Unit Modifier', distance, [distance_unit_trait, distance_unit_value1, distance_unit_math1], errors)
+	errors = variable_field('unit_math', distance, 'Trait', distance_unit_trait, errors)
+	errors = variable_field('unit_math', distance, 'First Modifier', distance_unit_value1, errors)
+	errors = variable_field('unit_math', distance, 'First Mathh', distance_unit_math1, errors)
+	errors = together_names('a second modifier', ['second modifier', 'second math'], [distance_unit_value2, distance_unit_math2], errors)
+
+	errors = variable_fields('rank_math', 'Rank Modifier', distance, [distance_rank_trait, distance_rank_value1, distance_rank_math1], errors)
+	errors = variable_field('rank_math', distance, 'Trait', distance_rank_trait, errors)
+	errors = variable_field('rank_math', distance, 'First Modifier', distance_rank_value1, errors)
+	errors = variable_field('rank_math', distance, 'First Math', distance_rank_math1, errors)
+	errors = together_names('a second modifier', ['second modifier', 'second math'], [distance_rank_value2, distance_rank_math2], errors)
+
+	errors = required(check_type, 'Check Type', errors)
+	errors = required(turns, 'Turns', errors)
+	errorsv = required(direction, 'Direction', errors)
 
 	return (errors)
 

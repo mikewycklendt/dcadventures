@@ -613,7 +613,7 @@ def skill_move_post(entry, body, cells):
 	speed_trait = trait_select(speed_trait, speed_trait_type)
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
 	distance_unit_trait = trait_select(distance_unit_trait, distance_unit_trait_type)
-	
+
 	speed_rank = integer_convert(speed_rank)
 	speed_trait = integer_convert(speed_trait)
 	speed_value1 = integer_convert(speed_value1)
@@ -637,6 +637,23 @@ def skill_move_post(entry, body, cells):
 	distance_unit_math2 = math_convert(distance_unit_math2)
 	distance_math_units = get_name(Unit, distance_math_units)
 	check_type = get_name(Check, check_type)
+
+	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
+	direction = selects(direction, direction_select)
+
+	cells = cell('Check', 16, [check_type])
+	cells = cell('Direction', 12, [direction], cells)
+	cells = cell('Turns', 12, [turns], cells)
+
+	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
+	vcells = vcell('mod', 25, [speed_trait, speed_value1, speed_math1, speed_value2, speed_math2], vcells)
+	cells = vcell_add('Speed', speed, vcells, cells)
+	
+	vcells = vcell('rank', 20, [distance_rank, 'Rank Distance'])
+	vcells = vcell('unit', 20, [distance_value, distance_units], vcells)
+	vcells = vcell('unit_math', 25, [distance_unit_trait, distance_unit_value1, distance_unit_math1, distance_unit_value2, distance_unit_math2, distance_math_units], vcells)
+	vcells = vcell('rank_math', 25, [distance_rank_trait, distance_rank_value1, distance_rank_math1, distance_rank_value2, distance_rank_math2], vcells)
+	cells = vcell_add('Distance', distance, vcells, cells)
 
 	body = send(cells, body)
 
