@@ -60,6 +60,35 @@ function move_submit() {
 
 	const skill_id = document.getElementById('skill_id').value;
 
+	const speed = select("move_speed");
+	const speed_rank = select("move_speed_rank");
+	const speed_trait_type = select("move_speed_trait_type");
+	const speed_trait = select("move_speed_trait");
+	const speed_math1 = select("move_speed_math1");
+	const speed_value1 = select("move_speed_value1");
+	const speed_math2 = select("move_speed_math2");
+	const speed_value2 = select("move_speed_value2");
+	const distance = select("move_distance");
+	const distance_rank = select("move_distance_rank");
+	const distance_value = text("move_distance_value");
+	const distance_units = select("move_distance_units");
+	const distance_rank_trait_type = select("move_distance_rank_trait_type");
+	const distance_rank_trait = select("move_distance_rank_trait");
+	const distance_rank_math1 = select("move_distance_rank_math1");
+	const distance_rank_value1 = select("move_distance_rank_value1");
+	const distance_rank_math2 = select("move_distance_rank_math2");
+	const distance_rank_value2 = select("move_distance_rank_value2");
+	const distance_unit_trait_type = select("move_distance_unit_trait_type");
+	const distance_unit_trait = select("move_distance_unit_trait");
+	const distance_unit_math1 = select("move_distance_unit_math1");
+	const distance_unit_value1 = select("move_distance_unit_value1");
+	const distance_unit_math2 = select("move_distance_unit_math2");
+	const distance_unit_value2 = select("move_distance_unit_value2");
+	const distance_math_units = select("move_distance_math_units");
+	const direction = select("move_direction");
+	const check_type = select("move_check_type");
+	const turns = select("move_turns");
+	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
 
@@ -69,7 +98,35 @@ function move_submit() {
 			'skill_id': skill_id,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'speed': speed,
+			'speed_rank': speed_rank,
+			'speed_trait_type': speed_trait_type,
+			'speed_trait': speed_trait,
+			'speed_math1': speed_math1,
+			'speed_value1': speed_value1,
+			'speed_math2': speed_math2,
+			'speed_value2': speed_value2,
+			'distance': distance,
+			'distance_rank': distance_rank,
+			'distance_value': distance_value,
+			'distance_units': distance_units,
+			'distance_rank_trait_type': distance_rank_trait_type,
+			'distance_rank_trait': distance_rank_trait,
+			'distance_rank_math1': distance_rank_math1,
+			'distance_rank_value1': distance_rank_value1,
+			'distance_rank_math2': distance_rank_math2,
+			'distance_rank_value2': distance_rank_value2,
+			'distance_unit_trait_type': distance_unit_trait_type,
+			'distance_unit_trait': distance_unit_trait,
+			'distance_unit_math1': distance_unit_math1,
+			'distance_unit_value1': distance_unit_value1,
+			'distance_unit_math2': distance_unit_math2,
+			'distance_unit_value2': distance_unit_value2,
+			'distance_math_units': distance_math_units,
+			'direction': direction,
+			'check_type': check_type,
+			'turns': turns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

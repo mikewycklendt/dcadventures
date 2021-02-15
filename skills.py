@@ -1340,7 +1340,31 @@ def skill_bonus_post_move():
 	direction = request.get_json()['direction']
 	check_type = request.get_json()['check_type']
 	turns = request.get_json()['turns']
-	
+
+	speed_rank = integer(speed_rank)
+	speed_trait = integer(speed_trait)
+	speed_value1 = integer(speed_value1)
+	speed_value2 = integer(speed_value2)
+	distance_rank = integer(distance_rank)
+	distance_value = integer(distance_value)
+	distance_rank_trait = integer(distance_unit_trait)
+	distance_rank_value1 = integer(distance_rank_value1)
+	distance_rank_value2 = integer(distance_rank_value2)
+	distance_unit_trait = integer(distance_unit_trait)
+	distance_unit_value1 = integer(distance_unit_value1)
+	distance_unit_value2 = integer(distance_unit_value2)
+	turns = integer(turns)
+
+	speed_math1 = db_integer(Math, speed_math1)
+	speed_math2 = db_integer(Math, speed_math2)
+	distance_units = db_integer(Unit, distance_units)
+	distance_rank_math1 = db_integer(Math, distance_rank_math1)
+	distance_rank_math2 = db_integer(Math, distance_rank_math2)
+	distance_unit_math1 = db_integer(Math, distance_unit_math1)
+	distance_unit_math2 = db_integer(Math, distance_unit_math2)
+	distance_math_units = db_integer(Unit, distance_math_units)
+	check_type = db_integer(Check, check_type)
+
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
 						speed_rank = speed_rank,

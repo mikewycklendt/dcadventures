@@ -104,7 +104,7 @@
 
 			<div>
 				<div>
-					<select class="select-sml" id="move_distance_rank " name="move_distance_rank">
+					<select class="select-sml" id="move_distance_rank" name="move_distance_rank">
 						<option value="">Distance Rank</option>
 						{% for i in poaitives %}
 							<option value={{i}}>{{i}}</option>
@@ -260,7 +260,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_check" name="move_check">
+			<select class="select-sml" id="move_check_type" name="move_check_type">
 				<option value="">Check</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
@@ -274,6 +274,7 @@
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</div>
+
 	</div>
 
 	<div id="move-button-row">
