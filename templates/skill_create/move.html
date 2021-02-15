@@ -268,11 +268,13 @@
 			</select>
 		</div>
 
-		<div class="select-sal" id="move_turns" name="move_turns">
-			<option value="">Turns</option>
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
+		<div>
+			<select class="select-sal" id="move_turns" name="move_turns">
+				<option value="">Turns</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 	</div>
