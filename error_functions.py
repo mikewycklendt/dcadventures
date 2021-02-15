@@ -804,7 +804,7 @@ def id_check(Table, value_id, name, errors):
 	if value_id == '':
 		return (errors)
 	elif value == 'all':
-		query = db.session.query(table).filter_by(all=True).first()\
+		query = db.session.query(table).filter_by(all=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
