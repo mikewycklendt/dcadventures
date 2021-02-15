@@ -46,7 +46,7 @@
 	transition: all .3s ease-out;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 20% 24% 13% 15% 13% 5%;
+	grid-template-columns: 20% 24% 13% 15% 13% 15%;
 	grid-auto-rows: auto;
 }
 
