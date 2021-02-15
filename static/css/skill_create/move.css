@@ -6,6 +6,11 @@
 	grid-template-columns: 100%;
 }
 
+#move-entry input[type="text"] {
+	height: 1.1vw;
+	padding: .1vw;
+}
+
 #move-row1 {
 	display: grid;
 	width: 98%;
