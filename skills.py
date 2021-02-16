@@ -1402,7 +1402,6 @@ def skill_bonus_post_move():
 						turns = turns)			
 
 	db.session.add(entry)
-	db.session.commit()
 
 	body = {}
 	body['id'] = entry.id
@@ -1425,6 +1424,7 @@ def skill_bonus_post_move():
 	body['font'] = font
 	
 	body = skill_move_post(entry, body, cells)
+	db.session.commit()
 
 	db.session.close()
 
