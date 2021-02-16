@@ -58,7 +58,8 @@ function move_submit() {
 	const created = move_grid.titles;
 	const font = move_grid.font;
 
-	const skill_id = document.getElementById('skill_id').value;
+	///const skill_id = document.getElementById('skill_id').value;
+	const skill_id = select("create_bonus_select");
 
 	const speed = select("move_speed");
 	const speed_rank = select("move_speed_rank");
