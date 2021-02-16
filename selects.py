@@ -549,7 +549,7 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Players Chosen DC"}]
 	else:
 		body['success'] = False
-		body['options'] = [{'id': '', 'name': ''}]
+		body['options'] = [{'id': '', 'name': 'Trait'}]
 
 
 	print(body)

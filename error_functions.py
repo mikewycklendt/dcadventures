@@ -588,7 +588,8 @@ def together_names(name, names, values, errors):
 			else:
 				all_names += ' and ' + n
 				end_message += all_names + ' fields must be complete.'
-		message += end_message
+		if len(values) > 2:
+			message += end_message
 		error_msgs.append(message)
 
 
