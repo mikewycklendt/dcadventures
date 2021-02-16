@@ -534,16 +534,9 @@ function select_maxheight_any_entry(select, div, entry) {
 	}
 
 	if (val == '') {
-		shrink_entry(entry, adiv)
+		shrink_entry(entry, adiv);
 	} else {
-		for (option of options) {
-			let valu = option.val;
-			let div = option.div;
-	
-			if (val == valu) {
-				grow_entry(entry, div);
-			}
-		}
+		grow_entry(entry, div);
 	}
 	
 }
