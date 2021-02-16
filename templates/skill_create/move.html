@@ -64,6 +64,7 @@
 				<div>
 					<select class="select-sml" name="move_speed_value1" id="move_speed_value1">
 						<option value="">Value</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -82,6 +83,7 @@
 				<div>
 					<select class="select-sml" name="move_speed_value2" id="move_speed_value2">
 						<option value="">Value</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -171,6 +173,7 @@
 				<div>
 					<select class="select-sml" name="move_distance_rank_value1" id="move_distance_rank_value1">
 						<option value="">Value</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -189,6 +192,7 @@
 				<div>
 					<select class="select-sml" name="move_distance_rank_value2" id="move_distance_rank_value2">
 						<option value="">Value</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -223,6 +227,7 @@
 				<div>
 					<select class="select-sml" name="move_distance_unit_value1" id="move_distance_unit_value1">
 						<option value="">Mod</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -241,6 +246,7 @@
 				<div>
 					<select class="select-sml" name="move_distance_unit_value2" id="move_distance_unit_value2">
 						<option value="">Mod</option>
+						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -292,6 +298,9 @@
 		<div>
 			<select class="select-sml" id="move_turns" name="move_turns">
 				<option value="">Turns</option>
+				<option value="perm">Permanent</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}

@@ -758,7 +758,7 @@ def skill_move_post_errors(data):
 	errors = variable_fields('unit_math', 'Unit Modifier', distance, [distance_unit_trait, distance_unit_value1, distance_unit_math1], errors)
 	errors = variable_field('unit_math', distance, 'Trait', distance_unit_trait, errors)
 	errors = variable_field('unit_math', distance, 'First Modifier', distance_unit_value1, errors)
-	errors = variable_field('unit_math', distance, 'First Mathh', distance_unit_math1, errors)
+	errors = variable_field('unit_math', distance, 'First Math', distance_unit_math1, errors)
 	errors = together_names('a second modifier', ['second modifier', 'second math'], [distance_unit_value2, distance_unit_math2], errors)
 
 	errors = variable_fields('rank_math', 'Rank Modifier', distance, [distance_rank_trait, distance_rank_value1, distance_rank_math1], errors)
