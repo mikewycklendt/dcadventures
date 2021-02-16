@@ -25,7 +25,8 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	grid-template-columns: 15% 85%;
-	height: 2.2vw;
+	height: auto;
+	padding: .3vw;
 	gap: .3vw;
 }
 
@@ -43,7 +44,8 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	grid-template-columns: 15% 85%;
-	height: 2.2vw;
+	padding: .3vw;
+	height: auto;
 	gap: .3vw;
 }
 
