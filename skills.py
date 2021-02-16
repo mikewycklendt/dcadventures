@@ -1401,10 +1401,11 @@ def skill_bonus_post_move():
 						check_type = check_type,
 						turns = turns)			
 
-	db.session.commit()
 
 	db.session.add(entry)
 
+	db.session.commit()
+	
 	body = {}
 	body['id'] = entry.id
 	error = False

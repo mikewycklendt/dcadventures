@@ -616,7 +616,7 @@ def skill_move_post(entry, body, cells):
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
 	distance_unit_trait = trait_select(distance_unit_trait, distance_unit_trait_type)
 
-	bonus_type = string_value_else('Bonus', 'Check', '3', check_type)
+	bonus_type = string_value_else('Bonus', 'Check', 3, check_type)
 
 	speed_rank = integer_convert(speed_rank)
 	speed_trait = integer_convert(speed_trait)
