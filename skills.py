@@ -1401,6 +1401,8 @@ def skill_bonus_post_move():
 						check_type = check_type,
 						turns = turns)			
 
+	db.session.commit()
+
 	db.session.add(entry)
 
 	body = {}
@@ -1425,7 +1427,6 @@ def skill_bonus_post_move():
 	
 	body = skill_move_post(entry, body, cells)
 	
-	db.session.commit()
 	db.session.close()
 
 	return jsonify(body)

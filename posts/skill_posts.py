@@ -650,14 +650,14 @@ def skill_move_post(entry, body, cells):
 	cells = cell('Turns', 12, [turns], cells)
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
-	vcells = vcell('mod', 25, [speed_trait, bonus_type, speed_value1, speed_math1, speed_value2, speed_math2], vcells)
+	vcells = vcell('mod', 25, [speed_trait, bonus_type, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = cell('Description', 20, [speed_description], cells)
 	
 	vcells = vcell('rank', 20, [distance_rank, 'Rank Distance'])
 	vcells = vcell('unit', 20, [distance_value, distance_units], vcells)
-	vcells = vcell('unit_math', 25, [distance_unit_trait, bonus_type, distance_unit_value1, distance_unit_math1, distance_unit_value2, distance_unit_math2, distance_math_units], vcells)
-	vcells = vcell('rank_math', 25, [distance_rank_trait, bonus_type, distance_rank_value1, distance_rank_math1, distance_rank_value2, distance_rank_math2], vcells)
+	vcells = vcell('unit_math', 25, [distance_unit_trait, bonus_type, distance_unit_math1, distance_unit_value1, distance_unit_math2,  distance_unit_value2, distance_math_units], vcells)
+	vcells = vcell('rank_math', 25, [distance_rank_trait, bonus_type, distance_rank_math1, distance_rank_value1, distance_rank_math2, distance_rank_value2], vcells)
 	cells = vcell_add('Distance', distance, vcells, cells)
 	cells = cell('Description', 20, [distance_description], cells)
 
