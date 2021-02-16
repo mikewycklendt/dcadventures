@@ -14,7 +14,7 @@
 #move-row1 {
 	display: grid;
 	width: 98%;
-	gap: .2VW;
+	gap: .2vw;
 	grid-template-columns: 15% 85%;
 	grid-auto-rows: auto;
 }
@@ -32,7 +32,7 @@
 #move-row2 {
 	display: grid;
 	width: 98%;
-	gap: .2VW;
+	gap: .2vw;
 	grid-template-columns: 15% 85%;
 	grid-auto-rows: auto;
 }
