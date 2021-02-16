@@ -803,67 +803,67 @@ def id_check(Table, value_id, name, errors):
 
 	if value_id == '':
 		return (errors)
-	elif value == 'all':
+	elif value_id == 'all':
 		query = db.session.query(table).filter_by(all=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'current':
+	elif value_id == 'current':
 		query = db.session.query(table).filter_by(current=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'any':
+	elif value_id == 'any':
 		query = db.session.query(table).filter_by(any=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'x':
+	elif value_id == 'x':
 		query = db.session.query(table).filter_by(var=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'none':
+	elif value_id == 'none':
 		query = db.session.query(table).filter_by(none=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'power':
+	elif value_id == 'power':
 		query = db.session.query(table).filter_by(power=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'skill':
+	elif value_id == 'skill':
 		query = db.session.query(table).filter_by(skill=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'extra':
+	elif value_id == 'extra':
 		query = db.session.query(table).filter_by(extra=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'free':
+	elif value_id == 'free':
 		query = db.session.query(table).filter_by(free=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'linked_first':
+	elif value_id == 'linked_first':
 		query = db.session.query(table).filter_by(linked_first=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'linked_second':
+	elif value_id == 'linked_second':
 		query = db.session.query(table).filter_by(linked_second=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
@@ -879,7 +879,7 @@ def id_check(Table, value_id, name, errors):
 				error_msgs.append(message) 
 		except:
 			print('not an int')
-			print(value)
+			print(value_id)
 			message = 'Not a valid ' + name
 			error_msgs.append(message)	
 			error = True
