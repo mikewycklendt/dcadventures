@@ -73,6 +73,7 @@ skill_save = function() {
 	const degree = check("deg_mod_check");
 	const levels = check("levels_check");
 	const modifiers = check("modifiers_check");
+	const move = check("move_check");
 	const opposed = check("opposed_check");
 	const time = check("time_check_check");
 	const opposed_multiple = select("opposed_multiple");
@@ -127,6 +128,7 @@ skill_save = function() {
 			'degree': degree,
 			'levels': levels,
 			'modifiers': modifiers,
+			'move': move,
 			'opposed': opposed,
 			'time': time,
 			'opposed_multiple': opposed_multiple,
