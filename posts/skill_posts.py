@@ -630,7 +630,7 @@ def skill_move_post(entry, body, cells):
 	distance_unit_trait = integer_convert(distance_unit_trait)
 	distance_unit_value1 = integer_convert(distance_unit_value1)
 	distance_unit_value2 = integer_convert(distance_unit_value2)
-	turns = integer(turns)
+	turns = integer_convert(turns)
 
 	speed_math1 = math_convert(speed_math1)
 	speed_math2 = math_convert(speed_math2)

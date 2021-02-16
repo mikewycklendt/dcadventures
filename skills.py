@@ -1424,8 +1424,8 @@ def skill_bonus_post_move():
 	body['font'] = font
 	
 	body = skill_move_post(entry, body, cells)
+	
 	db.session.commit()
-
 	db.session.close()
 
 	return jsonify(body)
