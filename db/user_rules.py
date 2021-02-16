@@ -53,6 +53,8 @@ class Nature(db.Model):
 			'show': self.show
 		}
 
+
+
 class Emotion(db.Model):
 	__tablename__ = 'emotions'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

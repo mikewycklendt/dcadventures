@@ -329,6 +329,7 @@ def save_skill_bonus():
 	speed_mod = request.get_json()['speed_mod']
 	speed_value = request.get_json()['speed_value']
 	condition = request.get_json()['condition']
+	attack = request.get_json()['attack']
 	advantage = request.get_json()['advantage']
 	concealment_type = request.get_json()['concealment_type']
 	concealment = request.get_json()['concealment']
@@ -379,6 +380,7 @@ def save_skill_bonus():
 	speed_mod = integer(speed_mod)
 	speed_value = integer(speed_value)
 	gm_circ_value = integer(gm_circ_value)
+	attack = integer(attack)
 	modifiers_multiple_count = integer(modifiers_multiple_count)
 
 	entry = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
@@ -400,6 +402,7 @@ def save_skill_bonus():
 	entry.speed_mod = speed_mod
 	entry.speed_value = speed_value
 	entry.condition = condition
+	entry.attack = attack
 	entry.advantage = advantage
 	entry.concealment_type = concealment_type
 	entry.concealment = concealment
@@ -1405,7 +1408,7 @@ def skill_bonus_post_move():
 	db.session.add(entry)
 
 	db.session.commit()
-	
+
 	body = {}
 	body['id'] = entry.id
 	error = False

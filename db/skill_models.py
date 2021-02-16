@@ -47,6 +47,7 @@ class SkillBonus(db.Model):
 	speed_mod = db.Column(db.Integer)
 	speed_value = db.Column(db.Integer)
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	attack = db.Column(db.Integer)
 	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	concealment_type = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
@@ -107,6 +108,7 @@ class SkillBonus(db.Model):
 			'speed_mod': self.speed_mod,
 			'speed_value': self.speed_value,
 			'condition': self.condition,
+			'attack': self.attack,
 			'advantage': self.advantage,
 			'concealment_type': self.concealment_type,
 			'concealment': self.concealment,

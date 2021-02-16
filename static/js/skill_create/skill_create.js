@@ -49,6 +49,7 @@ skill_save = function() {
 	const speed_mod = select("speed_mod");
 	const speed_value = select("speed_value");
 	const condition = select("condition");
+	const attack = select("attack")
 	const advantage = select("advantage");
 	const concealment = select("concealment");
 	const concealment_type = select("concealment_type");
@@ -104,6 +105,7 @@ skill_save = function() {
 			'speed_mod': speed_mod,
 			'speed_value': speed_value,
 			'condition': condition,
+			'attack': attack,
 			'advantage': advantage,
 			'concealment_type': concealment_type,
 			'concealment': concealment,
