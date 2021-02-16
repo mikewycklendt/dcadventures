@@ -120,6 +120,22 @@ def required(value, name, errors):
 
 	return (errors)
 
+def required_if_any(value, name, field, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		if field == '':
+			error = True
+			message = name + ' is required.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def no_zero(value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False

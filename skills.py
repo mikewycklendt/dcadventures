@@ -1322,6 +1322,7 @@ def skill_bonus_post_move():
 	speed_value1 = request.get_json()['speed_value1']
 	speed_math2 = request.get_json()['speed_math2']
 	speed_value2 = request.get_json()['speed_value2']
+	speed_description = request.get_json()['speed_description']
 	distance = request.get_json()['distance']
 	distance_rank = request.get_json()['distance_rank']
 	distance_value = request.get_json()['distance_value']
@@ -1339,6 +1340,7 @@ def skill_bonus_post_move():
 	distance_unit_math2 = request.get_json()['distance_unit_math2']
 	distance_unit_value2 = request.get_json()['distance_unit_value2']
 	distance_math_units = request.get_json()['distance_math_units']
+	distance_description = request.get_json()['distance_description']
 	direction = request.get_json()['direction']
 	check_type = request.get_json()['check_type']
 	turns = request.get_json()['turns']
@@ -1376,6 +1378,7 @@ def skill_bonus_post_move():
 						speed_value1 = speed_value1,
 						speed_math2 = speed_math2,
 						speed_value2 = speed_value2,
+						speed_description = speed_description,
 						distance = distance,
 						distance_rank = distance_rank,
 						distance_value = distance_value,
@@ -1393,6 +1396,7 @@ def skill_bonus_post_move():
 						distance_unit_math2 = distance_unit_math2,
 						distance_unit_value2 = distance_unit_value2,
 						distance_math_units = distance_math_units,
+						distance_description = distance_description,
 						direction = direction,
 						check_type = check_type,
 						turns = turns)			

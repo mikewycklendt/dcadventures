@@ -16,7 +16,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple, required_if_any
 
 
 def skill_save_errors(data):
@@ -704,6 +704,8 @@ def skill_move_post_errors(data):
 	direction = data['direction']
 	check_type = data['check_type']
 	turns = data['turns']
+	distance_description = data['distance_description']
+	speed_description = data['speed_description']
 	
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -737,31 +739,37 @@ def skill_move_post_errors(data):
 
 	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
 	errors = variable_field('rank', speed, 'Rank', speed_rank, errors)
+	errors = required_if_any(speed, 'Speed Description', speed_description, errors)
 	
 	errors = variable_fields('mod', 'Speed Modifier', speed, [speed_trait, speed_math1, speed_value1], errors)
 	errors = variable_field('mod', speed, 'Trait', speed_trait, errors)
 	errors = variable_field('mod', speed, 'First Math', speed_math1, errors)
 	errors = variable_field('mod', speed, 'First Modifier', speed_value1, errors)
 	errors = together_names('a second modifier', ['second modifier', 'second math'], [speed_value2, speed_math2], errors)
+	errors = required_if_any(speed, 'Speed Description', speed_description, errors)
 
 	errors = variable_fields('rank', 'Distance Rank', distance, [distance_rank], errors)
 	errors = variable_field('rank', distance, 'Rank', distance_rank, errors)
+	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
 	errors = variable_fields('unit', 'Distance Value', distance, [distance_value, distance_units], errors)
 	errors = variable_field('unit', distance, 'Value', distance_value, errors)
 	errors = variable_field('unit', distance, 'Units', distance_units, errors)
+	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
 	errors = variable_fields('unit_math', 'Unit Modifier', distance, [distance_unit_trait, distance_unit_value1, distance_unit_math1], errors)
 	errors = variable_field('unit_math', distance, 'Trait', distance_unit_trait, errors)
 	errors = variable_field('unit_math', distance, 'First Modifier', distance_unit_value1, errors)
 	errors = variable_field('unit_math', distance, 'First Mathh', distance_unit_math1, errors)
 	errors = together_names('a second modifier', ['second modifier', 'second math'], [distance_unit_value2, distance_unit_math2], errors)
+	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
 	errors = variable_fields('rank_math', 'Rank Modifier', distance, [distance_rank_trait, distance_rank_value1, distance_rank_math1], errors)
 	errors = variable_field('rank_math', distance, 'Trait', distance_rank_trait, errors)
 	errors = variable_field('rank_math', distance, 'First Modifier', distance_rank_value1, errors)
 	errors = variable_field('rank_math', distance, 'First Math', distance_rank_math1, errors)
 	errors = together_names('a second modifier', ['second modifier', 'second math'], [distance_rank_value2, distance_rank_math2], errors)
+	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
 	errors = required(check_type, 'Check Type', errors)
 	errors = required(turns, 'Turns', errors)

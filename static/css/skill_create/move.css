@@ -19,12 +19,30 @@
 	grid-auto-rows: auto;
 }
 
+#move-speed-description {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	grid-template-columns: 15% 85%;
+	gap: .3vw;
+}
+
 #move-row2 {
 	display: grid;
 	width: 98%;
 	gap: .2VW;
 	grid-template-columns: 15% 85%;
 	grid-auto-rows: auto;
+}
+
+#move-distance-description {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	grid-template-columns: 15% 85%;
+	gap: .3vw;
 }
 
 #move-row3 {

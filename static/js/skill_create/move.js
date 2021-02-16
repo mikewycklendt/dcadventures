@@ -33,8 +33,11 @@ function move_speed() {
 	const select = 'move_speed';
 	const options = [{'val': 'rank', 'div': 'move-speed-rank'},
 					{'val': 'mod', 'div': 'move-speed-mod'}]
+	const description = 'move-speed-description';
+	const entry = 'move-entry';
 
 	select_opacity(select, options);
+	select_maxheight_any_entry(select, description, entry);
 }
 
 function move_distance() {
@@ -43,8 +46,11 @@ function move_distance() {
 					{'val': 'unit', 'div': 'move-distance-unit'},
 					{'val': 'unit_math', 'div': 'move-distance-unit-math'},
 					{'val': 'rank_math', 'div': 'move-distance-rank-math'}]
+	const description = 'move-distance-description';
+	const entry = 'move-entry';
 
-	select_opacity(select, options)
+	select_opacity(select, options);
+	select_maxheight_any_entry(select, description, entry);
 }
 
 let move_grid = {'titles': false,
@@ -69,6 +75,7 @@ function move_submit() {
 	const speed_value1 = select("move_speed_value1");
 	const speed_math2 = select("move_speed_math2");
 	const speed_value2 = select("move_speed_value2");
+	const speed_description = text("move_speed_description")
 	const distance = select("move_distance");
 	const distance_rank = select("move_distance_rank");
 	const distance_value = text("move_distance_value");
@@ -86,6 +93,7 @@ function move_submit() {
 	const distance_unit_math2 = select("move_distance_unit_math2");
 	const distance_unit_value2 = select("move_distance_unit_value2");
 	const distance_math_units = select("move_distance_math_units");
+	const distance_description = text("move_distance_description");
 	const direction = select("move_direction");
 	const check_type = select("move_check_type");
 	const turns = select("move_turns");
@@ -108,6 +116,7 @@ function move_submit() {
 			'speed_value1': speed_value1,
 			'speed_math2': speed_math2,
 			'speed_value2': speed_value2,
+			'speed_description': speed_description,
 			'distance': distance,
 			'distance_rank': distance_rank,
 			'distance_value': distance_value,
@@ -125,6 +134,7 @@ function move_submit() {
 			'distance_unit_math2': distance_unit_math2,
 			'distance_unit_value2': distance_unit_value2,
 			'distance_math_units': distance_math_units,
+			'distance_description': distance_description,
 			'direction': direction,
 			'check_type': check_type,
 			'turns': turns

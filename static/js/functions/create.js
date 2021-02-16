@@ -523,7 +523,7 @@ function select_maxheight(select, options) {
 	};
 }
 
-function select_maxheight_any(select, div) {
+function select_maxheight_any_entry(select, div, entry) {
 	const field = document.getElementById(select);
 	const val = field.options[field.selectedIndex].value;
 
@@ -531,6 +531,19 @@ function select_maxheight_any(select, div) {
 		hide_maxheight(div);
 	} else {
 		show_maxheight(div);
+	}
+
+	if (val == '') {
+		shrink_entry(entry, adiv)
+	} else {
+		for (option of options) {
+			let valu = option.val;
+			let div = option.div;
+	
+			if (val == valu) {
+				grow_entry(entry, div);
+			}
+		}
 	}
 	
 }

@@ -651,6 +651,7 @@ class SkillMove(db.Model):
 	speed_value1 = db.Column(db.Integer)
 	speed_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
 	speed_value2 = db.Column(db.Integer)
+	speed_description = db.Column(db.String())
 	distance = db.Column(db.String())
 	distance_rank = db.Column(db.Integer)
 	distance_value = db.Column(db.Integer)
@@ -668,6 +669,7 @@ class SkillMove(db.Model):
 	distance_unit_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
 	distance_unit_value2 = db.Column(db.Integer)
 	distance_math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	distance_description = db.Column(db.String())
 	direction = db.Column(db.String())
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	turns = db.Column(db.Integer)
@@ -684,6 +686,7 @@ class SkillMove(db.Model):
 			'speed_value1': self.speed_value1,
 			'speed_math2': self.speed_math2,
 			'speed_value2': self.speed_value2,
+			'speed_description': self.speed_description,
 			'distance': self.distance,
 			'distance_rank': self.distance_rank,
 			'distance_value': self.distance_value,
@@ -701,6 +704,7 @@ class SkillMove(db.Model):
 			'distance_unit_math2': self.distance_unit_math2,
 			'distance_unit_value2': self.distance_unit_value2,
 			'distance_math_units': self.distance_math_units,
+			'distance_description': self.distance_description,
 			'direction': self.direction,
 			'check_type': self.check_type,
 			'turns': self.turns
