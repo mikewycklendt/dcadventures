@@ -164,8 +164,8 @@ def get_name(Table, value):
 		return (value)
 	else:
 		try:
-			get_name = db.session.query(Table).filter_by(id=value).one()
-			value = get_name.name
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.name
 		except:
 			print('no entry')
 			value = ''
