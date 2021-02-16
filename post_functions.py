@@ -292,6 +292,27 @@ def string(word, data):
 	
 	return (output)
 
+def string_value(word, value, field):
+
+	output = ''
+
+	if value == field:
+		output = word
+	
+	return (output)
+	
+def string_value_else(word, word2, value, field):
+
+	if field == '':
+		output = ''
+	elif value == field:
+		output = word
+	else:
+		output = word2
+	
+	return (output)
+
+
 def check_convert(word, check):
 	output = ''
 
