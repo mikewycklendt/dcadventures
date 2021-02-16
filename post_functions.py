@@ -159,15 +159,16 @@ def get_name(Table, value, name=''):
 	db = SQLAlchemy()
 
 	if value is None:
+		print (value)
 		value = ''
 		return (value)
-
-	try:
-		query = db.session.query(Table).filter_by(id=value).one()
-		value = query.name
-	except:
-		print('no entry')
-		value = ''
+	else:
+		try:
+			query = db.session.query(Table).filter_by(id=value).one()
+			value = query.name
+		except:
+			print('no entry')
+			value = ''
 
 	return (value)
 	
