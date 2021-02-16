@@ -144,8 +144,8 @@ def name(Table, value, name=''):
 
 	if value is not None:
 		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			value = query.name
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.name
 		except:
 			print('no entry')
 	else:
@@ -186,8 +186,8 @@ def get_circ(Table, value, name=''):
 
 	if value is not None:
 		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			value = query.keyword
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.keyword
 		except:
 			print('no entry')
 	else:
@@ -202,8 +202,8 @@ def get_description(Table, value, name=''):
 
 	if value is not None:
 		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			description = query.description
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			description = name_query.description
 		except:
 			print('no entry')
 	else:
