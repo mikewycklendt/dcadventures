@@ -158,24 +158,17 @@ def get_name(Table, value, name=''):
 	
 	db = SQLAlchemy()
 
-	if value == 0:
-		value = 'All'
+	if value is None:
+		value = ''
 		return (value)
 
-	if value == 1234:
-		value = name
-		return (value)
-
-	if value is not None:
-		try:
-			query = db.session.query(Table).filter_by(id=value).one()
-			value = query.name
-		except:
-			print('no entry')
-	else:
+	try:
+		query = db.session.query(Table).filter_by(id=value).one()
+		value = query.name
+	except:
+		print('no entry')
 		value = ''
 
-	
 	return (value)
 	
 def get_circ(Table, value, name=''):
@@ -237,13 +230,15 @@ def math_convert(name):
 	
 	db = SQLAlchemy()
 
-	if name is not None:
-		try:
-			query = db.session.query(Math).filter_by(id=name).one()
-			name = query.symbol
-		except:
-			print('invalid id')
-	else:
+	if name is None:
+		name =  ''
+		return (name)
+
+	try:
+		query = db.session.query(Math).filter_by(id=name).one()
+		name = query.symbol
+	except:
+		print('invalid id')
 		name = ''
 	
 	return (name)
