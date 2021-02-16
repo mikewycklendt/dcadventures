@@ -1448,7 +1448,9 @@ def delete_skill_bonus_move(id):
 		db.session.rollback()
 	finally:
 		db.session.close()
-		return jsonify(body)
+	
+	print (body)
+	return jsonify(body)
 
 @skill.route('/skill/opposed/create', methods=['POST'])
 def skill_bonus_post_opposed():
