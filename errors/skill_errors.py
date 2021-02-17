@@ -796,6 +796,7 @@ def skill_opposed_post_errors(data):
 	multiple = data['multiple']
 	recurring_value = data['recurring_value']
 	recurring_units = data['recurring_units']
+	description = data['description']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 

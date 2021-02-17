@@ -62,6 +62,7 @@ function opposed_submit() {
 	const multiple = select("opposed_multiple")
 	const recurring_value = text("opposed_recurring_value")
 	const recurring_units = select("opposed_recurring_units")
+	const description = text("opposed_description");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -90,7 +91,8 @@ function opposed_submit() {
 			'recurring': recurring,
 			'multiple': multiple,
 			'recurring_value': recurring_value,
-			'recurring_units': recurring_units
+			'recurring_units': recurring_units,
+			'description': description
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

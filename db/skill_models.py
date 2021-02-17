@@ -730,6 +730,7 @@ class SkillOpposed(db.Model):
 	multiple = db.Column(db.String())
 	recurring_value = db.Column(db.Integer)
 	recurring_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	description = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -749,7 +750,8 @@ class SkillOpposed(db.Model):
 			'recurring': self.recurring,
 			'multiple': self.multiple,
 			'recurring_value': self.recurring_value,
-			'recurring_units': self.recurring_units
+			'recurring_units': self.recurring_units,
+			'description': self.description
 		}
 
 class SkillTime(db.Model):

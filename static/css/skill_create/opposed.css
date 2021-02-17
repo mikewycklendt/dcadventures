@@ -75,6 +75,22 @@
 	grid-template-columns: 15% 25% 10% 16% 16% 22%;
 }
 
+#opposed-row4 {
+	display: grid;
+	width: 96%;
+	gap: 3px;
+	grid-template-columns: 15% 85%;
+	padding: .2vw;
+	height: auto;
+}
+
+#opposed-row4 input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+}
+
+
+
 #opposed-multiple {
 	display: none;
 	opacity: 0%;

@@ -1491,6 +1491,7 @@ def skill_bonus_post_opposed():
 	multiple = request.get_json()['multiple']
 	recurring_value = request.get_json()['recurring_value']
 	recurring_units = request.get_json()['recurring_units']
+	description = request.get_json()['description']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
@@ -1518,7 +1519,8 @@ def skill_bonus_post_opposed():
 						recurring = recurring,
 						multiple = multiple,
 						recurring_value = recurring_value,
-						recurring_units = recurring_units)			
+						recurring_units = recurring_units,
+						description = description)			
 
 	db.session.add(entry)
 	db.session.commit()
