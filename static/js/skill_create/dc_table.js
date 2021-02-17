@@ -206,7 +206,6 @@ function dc_submit() {
 	const math_trait_type = select("dc_math_trait_type")
 	const math_trait = select("dc_math_trait")
 	const condition = check("dc_condition")
-	const keyword_check = check("dc_keyword_check")
 	const levels = check("dc_levels")
 	const damage = check("dc_damage")
 	const cover = check("dc_cover")
@@ -258,6 +257,8 @@ function dc_submit() {
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
 
+	const dc_selects = 'dc-sml';
+
 	response = fetch('/skill/dc/create', {
 		method: 'POST',
 		body: JSON.stringify({
@@ -275,7 +276,6 @@ function dc_submit() {
 			'math_trait_type': math_trait_type,
 			'math_trait': math_trait,
 			'condition': condition,
-			'keyword_check': keyword_check,
 			'levels': levels,
 			'damage': damage,
 			'cover': cover,
@@ -329,13 +329,17 @@ function dc_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, dc_selects);
 			
 			dc_grid.columns.length = 0;
 			dc_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, dc_grid, route);
+			create_table(jsonResponse, dc_grid, route, [dc_selects]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;

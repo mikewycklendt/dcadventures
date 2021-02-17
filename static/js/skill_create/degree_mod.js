@@ -124,6 +124,38 @@ function deg_mod_measure_trait_type_unit() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_check_type() {
+	const select = 'deg_mod_check_type';
+	const options = [{'val': '2', 'div': 'deg-mod-check-opposed'},
+					{'val': '1', 'div': 'deg-mod-check-skill'},
+					{'val': '6', 'div': 'deg-mod-check-resist'},
+					{'val': '3', 'div': 'deg-mod-check-routine'},
+					{'val': '5', 'div': 'deg-mod-check-attack'},
+					{'val': '7', 'div': 'deg-mod-check-compare'}]
+
+	select_opacity(select, options);
+}
+
+function deg_mod_check_routine_trait_type() {
+	const select = 'deg_mod_check_routine_trait_type';
+	const fill = 'deg_mod_check_routine_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function deg_mod_check_skill_trait_type() {
+	const select = 'deg_mod_check_skill_trait_type';
+	const fill = 'deg_mod_check_skill_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function deg_mod_check_resist_trait_type() {
+	const select = 'deg_mod_check_resist_trait_type';
+	const fill = 'deg_mod_check_resist_trait';
+
+	id_select(select, fill, trait_select);
+}
 
 let deg_mod_grid = {'titles': false,
 					'columns': [],
@@ -136,64 +168,78 @@ function deg_mod_submit() {
 	const created = deg_mod_grid.titles;
 	const font = deg_mod_grid.font;
 	
-	const target = select("deg_mod_target")
-	const value = select("deg_value")
-	const type = select("deg_mod_type")
-	const action = select("deg_mod_action")
-	const time = select("deg_mod_time")
-	const recovery = check("deg_mod_time_recovery")
-	const damage_type = select("deg_mod_damage_type")
-	const object = select("deg_mod_damage_object")
-	const object_effect = select("deg_mod_damage_object_effect")
-	const inflict_type = select("deg_mod_inflict_type")
-	const inflict_flat = select("deg_mod_inflict_flat")
-	const inflict_trait_type = select("deg_mod_inflict_trait_type")
-	const inflict_trait = select("deg_mod_inflict_trait")
-	const inflict_math = select("deg_mod_inflict_math")
-	const inflict_mod = select("deg_mod_inflict_mod")
-	const inflict_bonus = select("deg_mod_inflict_bonus")
-	const damage_mod = select("deg_mod_damage_mod")
-	const damage_consequence = select("deg_mod_damage_consequence")
-	const consequence_action_type = select("deg_mod_consequence_action_type")
-	const consequence_action = select("deg_mod_consequence_action")
-	const consequence_trait_type = select("deg_mod_consequence_trait_type")
-	const consequence_trait = select("deg_mod_consequence_trait")
-	const consequence = select("deg_mod_consequence")
-	const knowledge = select("deg_mod_knowledge")
-	const knowledge_count = select("deg_mod_knowledge_count")
-	const knowledge_specificity = select("deg_mod_knowledge_specificity")
-	const level_type = select("deg_mod_level_type")
-	const level = select("deg_mod_level")
-	const level_direction = select("deg_mod_level_direction")
-	const circumstance = select("deg_mod_circumstance")
-	const circ_target = select("deg_mod_circ_target")
-	const measure_effect = select("deg_mod_measure_effect")
-	const measure_rank_value = select("deg_mod_measure_rank_value")
-	const measure_rank = select("deg_mod_measure_rank")
-	const unit_value = text("deg_mod_unit_value")
-	const unit_type = select("deg_mod_unit_type")
-	const unit = select("deg_mod_unit")
-	const measure_trait_type = select("deg_mod_measure_trait_type")
-	const measure_trait = select("deg_mod_measure_trait")
-	const measure_trait_math = select("deg_mod_measure_trait_math")
-	const measure_mod = select("deg_mod_measure_mod")
-	const measure_math_rank = select("deg_mod_measure_math_rank")
-	const measure_trait_type_unit = select("deg_mod_measure_trait_type_unit")
-	const measure_trait_unit = select("deg_mod_measure_trait_unit")
-	const measure_trait_math_unit = select("deg_mod_measure_trait_math_unit")
-	const measure_mod_unit = select("deg_mod_measure_mod_unit")
-	const measure_math_unit = select("deg_mod_measure_math_unit")
-	const condition_type = select("deg_mod_condition_type")
-	const condition_damage_value = select("deg_mod_condition_damage_value")
-	const condition_damage = select("deg_mod_condition_damage")
-	const condition1 = select("deg_mod_condition1")
-	const condition2 = select("deg_mod_condition2")
-	const condition_turns = select("deg_mod_condition_turns")
-	const keyword = text("deg_mod_keyword")
-	const nullify = select("deg_mod_nullify")
+	const target = select("deg_mod_target");
+	const value = select("deg_value");
+	const type = select("deg_mod_type");
+	const action = select("deg_mod_action");
+	const time = select("deg_mod_time");
+	const recovery = check("deg_mod_time_recovery");
+	const damage_type = select("deg_mod_damage_type");
+	const object = select("deg_mod_damage_object");
+	const object_effect = select("deg_mod_damage_object_effect");
+	const inflict_type = select("deg_mod_inflict_type");
+	const inflict_flat = select("deg_mod_inflict_flat");
+	const inflict_trait_type = select("deg_mod_inflict_trait_type");
+	const inflict_trait = select("deg_mod_inflict_trait");
+	const inflict_math = select("deg_mod_inflict_math");
+	const inflict_mod = select("deg_mod_inflict_mod");
+	const inflict_bonus = select("deg_mod_inflict_bonus");
+	const damage_mod = select("deg_mod_damage_mod");
+	const damage_consequence = select("deg_mod_damage_consequence");
+	const consequence_action_type = select("deg_mod_consequence_action_type");
+	const consequence_action = select("deg_mod_consequence_action");
+	const consequence_trait_type = select("deg_mod_consequence_trait_type");
+	const consequence_trait = select("deg_mod_consequence_trait");
+	const consequence = select("deg_mod_consequence");
+	const knowledge = select("deg_mod_knowledge");
+	const knowledge_count = select("deg_mod_knowledge_count");
+	const knowledge_specificity = select("deg_mod_knowledge_specificity");
+	const level_type = select("deg_mod_level_type");
+	const level = select("deg_mod_level");
+	const level_direction = select("deg_mod_level_direction");
+	const circumstance = select("deg_mod_circumstance");
+	const circ_target = select("deg_mod_circ_target");
+	const measure_effect = select("deg_mod_measure_effect");
+	const measure_rank_value = select("deg_mod_measure_rank_value");
+	const measure_rank = select("deg_mod_measure_rank");
+	const unit_value = text("deg_mod_unit_value");
+	const unit_type = select("deg_mod_unit_type");
+	const unit = select("deg_mod_unit");
+	const measure_trait_type = select("deg_mod_measure_trait_type");
+	const measure_trait = select("deg_mod_measure_trait");
+	const measure_trait_math = select("deg_mod_measure_trait_math");
+	const measure_mod = select("deg_mod_measure_mod");
+	const measure_math_rank = select("deg_mod_measure_math_rank");
+	const measure_trait_type_unit = select("deg_mod_measure_trait_type_unit");
+	const measure_trait_unit = select("deg_mod_measure_trait_unit");
+	const measure_trait_math_unit = select("deg_mod_measure_trait_math_unit");
+	const measure_mod_unit = select("deg_mod_measure_mod_unit");
+	const measure_math_unit = select("deg_mod_measure_math_unit");
+	const condition_type = select("deg_mod_condition_type");
+	const condition_damage_value = select("deg_mod_condition_damage_value");
+	const condition_damage = select("deg_mod_condition_damage");
+	const condition1 = select("deg_mod_condition1");
+	const condition2 = select("deg_mod_condition2");
+	const condition_turns = select("deg_mod_condition_turns");
+	const keyword = text("deg_mod_keyword");
+	const nullify = select("deg_mod_nullify");
 	const nullify_type = select("deg_mod_nullify_type");
-	const cumulative = check("deg_mod_cumulative")
-	const linked = check("deg_mod_linked")
+	const cumulative = check("deg_mod_cumulative");
+	const linked = check("deg_mod_linked");
+	const check_type = select("deg_mod_check_type");
+	const opposed = select("deg_mod_check_opposed");
+	const resist_dc = select("deg_mod_check_resist_dc");
+	const resist_trait_type = select("deg_mod_check_resist_trait_type");
+	const resist_trait = select("deg_mod_check_resist_trait");
+	const skill_dc = select("deg_mod_check_skill_dc");
+	const skill_trait_type = select("deg_mod_check_skill_trait_type");
+	const skill_trait = select("deg_mod_check_skill_trait");
+	const routine_trait_type = select("deg_mod_check_routine_trait_type");
+	const routine_trait = select("deg_mod_check_routine_trait");
+	const routine_mod = select("deg_mod_check_routine_mod");
+	const attack = select("deg_mod_check_attack");
+	const attack_turns = select("deg_mod_check_attack_turns");
+	const compare = select("deg_mod_check_compare");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -266,7 +312,21 @@ function deg_mod_submit() {
 			'nullify': nullify,
 			'nullify_type': nullify_type,
 			'cumulative': cumulative,
-			'linked': linked
+			'linked': linked,
+			'check_type': check_type,
+			'opposed': opposed,
+			'resist_dc': resist_dc,
+			'resist_trait_type': resist_trait_type,
+			'resist_trait': resist_trait,
+			'skill_dc': skill_dc,
+			'skill_trait_type': skill_trait_type,
+			'skill_trait': skill_trait,
+			'routine_trait_type': routine_trait_type,
+			'routine_trait': routine_trait,
+			'routine_mod': routine_mod,
+			'attack': attack,
+			'attack_turns': attack_turns,
+			'compare': compare
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

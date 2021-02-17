@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select, string_value, string_value_else
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select, string_value, string_value_else, get_keyword
 
 def skill_ability_post(entry, body, cells):
 
@@ -221,7 +221,6 @@ def skill_dc_post(entry, body, cells):
 	math_trait_type = entry.math_trait_type
 	math_trait = entry.math_trait
 	condition = entry.condition
-	keyword_check = entry.keyword_check
 	levels = entry.levels
 	damage = entry.damage
 	cover = entry.cover
@@ -313,6 +312,7 @@ def skill_dc_post(entry, body, cells):
 	condition2 = selects(condition2, conditions_select)
 
 	cells = cell('Target', 15, [target])
+	cells = cell('Keyword', 20, [keyword], cells)
 	
 	vcells = vcell('value', 6, [value])
 	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
@@ -328,11 +328,6 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2, word, condition_turns, word2], new_mod)
 	new_mod = mod_cell('Only if No Damage', 20, [condition_no_damage], new_mod)
 	body = mod_add(condition, new_mod, body)
-
-	cells = check_cell('Keyword', 8, keyword_check, cells, True)
-	new_mod = mod_create('Keyword', 9)
-	new_mod = mod_cell('Keyword', 9, [keyword], new_mod)
-	body = mod_add(keyword_check, new_mod, body)
 
 	cells = check_cell('Level', 7, levels, cells, True)
 	new_mod = mod_create('Level', 7)
@@ -450,11 +445,29 @@ def skill_degree_post(entry, body, cells):
 	nullify = entry.nullify
 	cumulative = entry.cumulative
 	linked = entry.linked
+	check_type = entry.check_type
+	opposed = entry.opposed
+	resist_dc = entry.resist_dc
+	resist_trait_type = entry.resist_trait_type
+	resist_trait = entry.resist_trait
+	skill_dc = entry.skill_dc
+	skill_trait_type = entry.skill_trait_type
+	skill_trait = entry.skill_trait
+	routine_trait_type = entry.routine_trait_type
+	routine_trait = entry.routine_trait
+	routine_mod = entry.routine_mod
+	attack = entry.attack
+	attack_turns = entry.attack_turns
+	compare = entry.compare
+
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 	measure_trait_unit = trait_select(measure_trait_unit, measure_trait_type_unit)
+	resist_trait =  trait_select(resist_trait, resist_trait_type)
+	skill_trait = trait_select(skill_trait, skill_trait_type)
+	routine_trait = trait_select(routine_trait, routine_trait_type)
 
 	action = get_name(Action, action)
 	damage_consequence = get_name(Consequence, damage_consequence)
@@ -468,6 +481,18 @@ def skill_degree_post(entry, body, cells):
 	measure_math_unit = get_name(Unit, measure_math_unit)
 	condition1 = get_name(Condition, condition1)
 	condition2 = get_name(Condition, condition2)
+
+	opposed = get_keyword(SkillOpposed, opposed)
+	resist_dc = get_keyword(SkillDC, resist_dc)
+	skill_dc = get_keyword(SkillDC, skill_dc)
+	compare = get_keyword(SkillOpposed, compare)
+
+	resist_trait = integer_convert(resist_trait)
+	skill_trait = integer_convert(skill_trait)
+	routine_trait = integer_convert(routine_trait)
+	routine_mod = integer_convert(routine_mod)
+	attack = integer_convert(attack)
+	attack_turns = integer_convert(attack_turns)
 
 	value = integer_convert(value)
 	time = integer_convert(time)
@@ -551,6 +576,17 @@ def skill_degree_post(entry, body, cells):
 	word = string('with', [consequence_trait])
 	vcells = vcell('consequence', w, [consequence_action, word, consequence_trait, 'results in', consequence], vcells)
 
+	attack = add_plus(attack)
+	vcells = vcell('check', 35, [skill_trait, 'Skill Check using', skill_dc, 'DC'], vcells, 1, check_type)
+	vcells = vcell('check', 35, [opposed, 'Opposed Check'], vcells, 2, check_type)
+	vcells = vcell('check', 35, [attack, 'on Attack Check for', attack_turns, 'Turns'], 5, check_type)
+	word = string('with', [routine_mod])
+	word2 = string('Modifier', [routine_mod])
+	w = width(20, 15, routine_mod)
+	vcells = vcell('check', 35, [routine_trait, 'Routine Check', word, routine_mod, word2], 3, check_type)
+	vcells - vcell('check', 35, [resist_trait, 'Resistance Check using', resist_dc, 'DC'], vcells, 6, check_type)
+	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
+	
 	cells = vcell_add('Effect', type, vcells, cells)
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
@@ -668,6 +704,7 @@ def skill_opposed_post(entry, body, cells):
 	multiple = entry.multiple
 	recurring_value = entry.recurring_value
 	recurring_units = entry.recurring_units
+	keyword = entry.keyword
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -687,6 +724,7 @@ def skill_opposed_post(entry, body, cells):
 
 	cells = cell('When', 13, [attached])
 	cells = cell('Frequency', 13, [frequency], cells)
+	cells = cell('Keyword': 15, [keyword], cells)
 	cells = cell('Player Check', 15, [trait], cells)
 	cells = cell('Modifier', 9, [mod], cells)
 	cells = cell('Check', 14, [player_check], cells)

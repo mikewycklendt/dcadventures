@@ -471,6 +471,20 @@ class SkillDegree(db.Model):
 	nullify_type = db.Column(db.String())
 	cumulative = db.Column(db.Boolean)
 	linked = db.Column(db.Boolean)
+	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
+	resist_dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	resist_trait_type = db.Column(db.String())
+	resist_trait = db.Column(db.Integer)
+	skill_dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	skill_trait_type = db.Column(db.String())
+	skill_trait = db.Column(db.Integer)
+	routine_trait_type = db.Column(db.String())
+	routine_trait = db.Column(db.Integer)
+	routine_mod = db.Column(db.Integer)
+	attack = db.Column(db.Integer)
+	attack_turns = db.Column(db.Integer)
+	compare = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 
 	def format(self):
 		return {
@@ -534,6 +548,20 @@ class SkillDegree(db.Model):
 			'nullify_type': self.nullify_type,
 			'cumulative': self.cumulative,
 			'linked': self.linked
+			'check_type': self.check_type,
+			'opposed': self.opposed,
+			'resist_dc': self.resist_dc,
+			'resist_trait_type': self.resist_trait_type,
+			'resist_trait': self.resist_trait,
+			'skill_dc': self.skill_dc,
+			'skill_trait_type': self.skill_trait_type,
+			'skill_trait': self.skill_trait,
+			'routine_trait_type': self.routine_trait_type,
+			'routine_trait': self.routine_trait,
+			'routine_mod': self.routine_mod,
+			'attack': self.attack,
+			'attack_turns': self.attack_turns,
+			'compare': self.compare
 		}
 
 class SkillMod(db.Model):
@@ -731,6 +759,7 @@ class SkillOpposed(db.Model):
 	recurring_value = db.Column(db.Integer)
 	recurring_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	description = db.Column(db.String())
+	keyword = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -751,7 +780,8 @@ class SkillOpposed(db.Model):
 			'multiple': self.multiple,
 			'recurring_value': self.recurring_value,
 			'recurring_units': self.recurring_units,
-			'description': self.description
+			'description': self.description,
+			'keyword': self.keyword
 		}
 
 class SkillTime(db.Model):

@@ -196,6 +196,27 @@ def get_circ(Table, value, name=''):
 	
 	return (value)
 
+def get_keyword(Table, value, name=''):
+	
+	db = SQLAlchemy()
+
+	if value == 1234:
+		value = name
+		return (value)
+
+	if value is not None:
+		try:
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.keyword
+		except:
+			print('no entry')
+	else:
+		value = ''
+
+	
+	return (value)
+
+
 def get_description(Table, value, name=''):
 	
 	db = SQLAlchemy()

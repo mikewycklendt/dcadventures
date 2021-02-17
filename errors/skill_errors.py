@@ -323,7 +323,6 @@ def skill_dc_post_errors(data):
 	math_trait_type = data['math_trait_type']
 	math_trait = data['math_trait']
 	condition = data['condition']
-	keyword_check = data['keyword_check']
 	levels = data['levels']
 	damage = data['damage']
 	cover = data['cover']
@@ -397,6 +396,7 @@ def skill_dc_post_errors(data):
 	errors = required(target, 'Target', errors)
 	errors = required(dc, 'DC Type', errors)
 	errors = required(description, 'Description', errors)
+	errors = required(keyword, 'Keyword', errors)
 
 	errors = variable_fields('value', 'DC Value', dc, [value], errors) 
 	errors = variable_field('value', dc, 'DC', value, errors) 
@@ -414,9 +414,6 @@ def skill_dc_post_errors(data):
 	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
 	errors = check_field(condition, 'Condition', 'Ending Condtion', condition2, errors)
 	errors = check_field(condition, 'Condition', 'Condition Turns', condition_turns, errors)
-	
-	errors = check_fields(keyword_check, 'Keyword', [keyword], errors)
-	errors = check_field(keyword_check, 'Keyword', 'Keyword', keyword, errors)
 	
 	errors = check_fields(levels, 'Levels', [level_type, level], errors)
 	errors = check_field(levels, 'Levels', ':evel Type', level_type, errors)
@@ -442,7 +439,6 @@ def skill_dc_post_errors(data):
 
 	errors = variable_fields('reduce', 'Reduce Damage', damage_type, [damage_mod], errors)
 	errors = variable_field('reduce', damage_type, 'Damage Modifier', damage_mod, errors)
-	
 	
 	errors = check_fields(complex, 'Complexity', [complexity], errors)
 	errors = check_field(complex, 'Complexity', 'Complexity', complexity, errors)
@@ -541,6 +537,21 @@ def skill_degree_post_errors(data):
 	nullify = data['nullify']
 	cumulative = data['cumulative']
 	linked = data['linked']
+	check_type = data['check_type']
+	opposed = data['opposed']
+	resist_dc = data['resist_dc']
+	resist_trait_type = data['resist_trait_type']
+	resist_trait = data['resist_trait']
+	skill_dc = data['skill_dc']
+	skill_trait_type = data['skill_trait_type']
+	skill_trait = data['skill_trait']
+	routine_trait_type = data['routine_trait_type']
+	routine_trait = data['routine_trait']
+	routine_mod = data['routine_mod']
+	attack = data['attack']
+	attack_turns = data['attack_turns']
+	compare = data['compare']
+
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -573,6 +584,19 @@ def skill_degree_post_errors(data):
 	errors = int_check(condition_damage, 'Condition Damage', errors)
 	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = int_check(nullify, 'Nullify DC', errors)
+
+	errors = id_check(Check, check_type, 'Check Tyoe', errors)
+	errors = id_check(SkillOpposed, opposed, 'Opposed Check', errors)
+	errors = id_check(SkillDC, resist_dc, 'Resistance Check DC', errors)
+	errors = id_check(SkillDC, skill_dc, 'Skilll Check DC', errors)
+	errors = id_check(SkillOpposed, compare, 'Comparison Check', errors)
+
+	errors = int_check(resist_trait, 'Resistance Trait', errors)
+	errors = int_check(skill_trait, 'Skill Check Trait', errors)
+	errors = int_check(routine_trait, 'Routine Check Trait', errors)
+	errors = int_check(routine_mod, 'Routine Check Modifier', errors)
+	errors = int_check(attack, 'Attack Check Modifier', errors)
+	errors = int_check(attack_turns, 'Attack Check Turns', errors)
 	
 	errors = required(target, 'Target', errors)
 	errors = required(value, 'Degree', errors)
@@ -668,6 +692,33 @@ def skill_degree_post_errors(data):
 	errors = variable_field('consequence', type, 'Consequence Action Type', consequence_action_type, errors)
 	errors = variable_field('consequence', type, 'Consequence Action', consequence_action, errors)
 	errors = variable_field('consequence', type, 'Consequence', consequence, errors)
+
+	errors = variable_fields('check', 'Check', type, [check_type], errors)
+	errors = variable_field('check', type, 'Check Type', check_type, errors)
+
+	errors = variable_fields('1', 'Skill Check', check_type, [skill_trait_type, skill_trait, skill_dc], errors)
+	errors = variable_field('1', check_type, 'Trait Type', skill_trait_type, errors)
+	errors = variable_field('1', check_type, 'Trait', skill_trait, errors)
+	errors = variable_field('1', check_type, 'DC', skill_dc, errors)
+
+	errors = variable_fields('2', 'Opposed Check', check_type, [opposed], errors)
+	errors = variable_field('2', check_type, 'Opposed', opposed, errors)
+	
+	errors = variable_fields('5', 'Arrack Check', check_type, [attack, attack_turns], errors)
+	errors = variable_field('5', check_type, 'Arrack Modifier', attack, errors)
+	errors = variable_field('5', check_type, 'Turns', attack_turns, errors)
+
+	errors = variable_fields('6', 'Resistance Check', check_type, [resist_dc, resist_trait_type, resist_trait], errors)
+	errors = variable_field('6', check_type, 'DC', resist_dc, errors)
+	errors = variable_field('6', check_type, 'Trait Type', esist_trait_type, errors)
+	errors = variable_field('6', check_type, 'Trait', resist_trait, errors)
+
+	errors = variable_fields('3', 'Routine Check', check_type, [routine_trait_type, routine_trait, routine_mod], errors)
+	errors = variable_field('3', check_type, 'Trait Type', routine_trait_type, errors)
+	errors = variable_field('3', check_type, 'Trait', routine_trait, errors)
+	errors = variable_field('3', check_type, 'Modifier', routine_mod, errors)
+
+	errors = variable_fields('7', 'Comparison Check', check_type, [compare], errors)
 
 	return (errors)
 

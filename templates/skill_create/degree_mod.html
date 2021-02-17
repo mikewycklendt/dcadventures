@@ -486,7 +486,7 @@
 						</select> 
 					</div>
 				</div>
-				
+
 			</div>
 			
 		</div>
@@ -571,6 +571,139 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div id="deg-mod-check">
+
+			<div>
+				<select class="select-aml" id="deg_mod_check_type" name="deg_mod_check_type" onchange="deg_mod_check_type()">
+					<option value="">Check Type</option>
+					<option value=1>Skill Check</option>>
+					<option value=2>Opposed Check</option>
+					<option value=3>Routine Check</option>
+					<option value=5>Attack Check</option>5
+					<option value=7>Comparison Check</option>
+				</select>
+			</div>
+
+			<div>
+
+				<div id="deg-mod-check-opposed">
+					<div>
+						<select class="opposed-sml" id="deg_mod_check_opposed" name="deg_mod_check_opposed">
+							<option value="">Opposed Check</option>
+							<option value="">Use opponent check form to put options here</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-resist">
+					<div>
+						<select class="dc-sml" id="deg_mod_check_resist_dc" name="deg_mod_check_skill_dc">
+							<option value="">DC</option>
+							<option value="">Use DC Form to put options here</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_resist_trait_type" name="deg_mod_check_resist_trait_type" onchange="deg_mod_check_resist_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="selecy-sml" id="deg_mod_check_resist_trait" name="deg_mod_check_resist_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+				
+				<div id="deg-mod-check-skill">
+					<div>
+						<select class="dc-sml" id="deg_mod_check_skill_dc" name="deg_mod_check_skill_dc">
+							<option value="">DC</option>
+							<option value="">Use DC Form to put options here</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_skill_trait_type" name="deg_mod_check_skill_trait_type" onchange="deg_mod_check_skill_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="selecy-sml" id="deg_mod_check_skill_trait" name="deg_mod_check_skill_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-routine">
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_trait_type" name="deg_mod_check_routine_trait_type" onchange="deg_mod_check_routine_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>  
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_trait" name="deg_mod_check_routine_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_mod" name="deg_mod_check_routine_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-attack">
+					<div>
+						<select class="select-sml" id="deg_mod_check_attack" name="deg_mod_check_attack">
+							<option value="">Attack Bonus Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_attack_turns" name="deg_mod_check_attack_turns">
+							<option value="">Turns</option>
+							<option value="round">Round</option>
+							<option value="scene">Scene</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+				</div>	
+				
+				<div id="deg-mod-check-compare">
+					<div>
+						<select class="opposed-sml" id="deg_mod_check_compare" name="deg_mod_check_compare">
+							<option value="">>Comparison Check</option>
+							<option value="">Use opponent check form to put options here</option>
+						</select>
+					</div>
+				</div>			
+
+			</div>			
+
 		</div>
 	</div>
 

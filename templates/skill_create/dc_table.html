@@ -5,11 +5,17 @@
 	</div>
 	
 	<div id="dc-base">
-		<select class="select-entry" id="dc_target" name="dc_target">
-			{% for t in targets %}
-				<option value="{{t.type}}">{{t.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<input type="text" id="dc_keyword" name="dc_keyword" placeholder="Keyword">
+		</div>
+
+		<div>
+			<select class="select-entry" id="dc_target" name="dc_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 </div>
@@ -121,13 +127,6 @@
 			</div>
 		</div>
 
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dc_keyword_check" class="medium-checkbox med-checkbox" onclick="dc_keyword()"> Keyword
-			</div>
-		</div>
-
-		
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="dc_levels" class="medium-checkbox med-checkbox" onclick="dc_levels()"> Level
@@ -540,19 +539,6 @@
 				<input type="checkbox" id="dc_condition_no_damage" class="medium-checkbox med-checkbox" > No Damage
 			</div>
 		</div>
-	</div>
-
-	<div id="dc-keyword">
-
-		<div>
-			Keyword:
-		</div>
-
-		<div>
-			<input type="text" id="dc_keyword" name="dc_keyword">
-		</div>
-
-		<div></div>
 	</div>
 
 	<div id="dc-complexity">

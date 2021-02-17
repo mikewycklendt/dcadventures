@@ -547,6 +547,8 @@ def skill_trait_select():
 		body['options'] = [{'id': '0', 'name': 'Active Opponent Rank'}]
 	elif trait == 'choice':
 		body['options'] = [{'id': "0", 'name': "Players Chosen DC"}]
+	elif trait == 'attack':
+		body['options'] = [{'id': "0", 'name': "Attack Bonus"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': 'Trait'}]

@@ -159,7 +159,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
-	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_bonus', 'name': 'This Skill'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
+	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_bonus', 'name': 'This Skill'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 
@@ -181,7 +181,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	concealment_type = [{'type': '', 'name': 'Concealment Type'}, {'type': 'requires', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}]
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
@@ -883,7 +883,6 @@ def skill_bonus_post_dc():
 	math_trait_type = request.get_json()['math_trait_type']
 	math_trait = request.get_json()['math_trait']
 	condition = request.get_json()['condition']
-	keyword_check = request.get_json()['keyword_check']
 	levels = request.get_json()['levels']
 	damage = request.get_json()['damage']
 	cover = request.get_json()['cover']
@@ -975,7 +974,6 @@ def skill_bonus_post_dc():
 					math_trait_type = math_trait_type,
 					math_trait = math_trait,
 					condition = condition,
-					keyword_check = keyword_check,
 					levels = levels,
 					damage = damage,
 					cover = cover,
@@ -1147,6 +1145,20 @@ def skill_bonus_post_degree():
 	nullify_type = request.get_json()['nullify_type']
 	cumulative = request.get_json()['cumulative']
 	linked = request.get_json()['linked']
+	check_type = request.get_json()['check_type']
+	opposed = request.get_json()['opposed']
+	resist_dc = request.get_json()['resist_dc']
+	resist_trait_type = request.get_json()['resist_trait_type']
+	resist_trait = request.get_json()['resist_trait']
+	skill_dc = request.get_json()['skill_dc']
+	skill_trait_type = request.get_json()['skill_trait_type']
+	skill_trait = request.get_json()['skill_trait']
+	routine_trait_type = request.get_json()['routine_trait_type']
+	routine_trait = request.get_json()['routine_trait']
+	routine_mod = request.get_json()['routine_mod']
+	attack = request.get_json()['attack']
+	attack_turns = request.get_json()['attack_turns']
+	compare = request.get_json()['compare']
 
 	skill_id = integer(skill_id)
 	action = db_integer(Action, action)
@@ -1165,6 +1177,19 @@ def skill_bonus_post_degree():
 	measure_math_unit = db_integer(Unit, measure_math_unit)
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
+	
+	check_type = db_integer(Check, check_type)
+	opposed = db_integer(SkillOpposed, opposed)
+	resist_dc = db_integer(SkillDC, resist_dc)
+	skill_dc = db_integer(SkillDC, skill_dc)
+	compare = db_integer(SkillOpposed, compare)
+
+	resist_trait = integer(resist_trait)
+	skill_trait = integer(skill_trait)
+	routine_trait = integer(routine_trait)
+	routine_mod = integer(routine_mod)
+	attack = integer(attack)
+	attack_turns = integer(attack_turns)
 
 	value = integer(value)
 	time = integer(time)
@@ -1247,7 +1272,21 @@ def skill_bonus_post_degree():
 						nullify = nullify,
 						nullify_type = nullify_type,
 						cumulative = cumulative,
-						linked = linked)
+						linked = linked,
+						check_type = check_type,
+						opposed = opposed,
+						resist_dc = resist_dc,
+						resist_trait_type = resist_trait_type,
+						resist_trait = resist_trait,
+						skill_dc = skill_dc,
+						skill_trait_type = skill_trait_type,
+						skill_trait = skill_trait,
+						routine_trait_type = routine_trait_type,
+						routine_trait = routine_trait,
+						routine_mod = routine_mod,
+						attack = attack,
+						attack_turns = attack_turns,
+						compare = compare)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -1492,6 +1531,7 @@ def skill_bonus_post_opposed():
 	recurring_value = request.get_json()['recurring_value']
 	recurring_units = request.get_json()['recurring_units']
 	description = request.get_json()['description']
+	keyword = request.get_json()['keyword']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
@@ -1520,7 +1560,8 @@ def skill_bonus_post_opposed():
 						multiple = multiple,
 						recurring_value = recurring_value,
 						recurring_units = recurring_units,
-						description = description)			
+						description = description,
+						keyword = keyword)			
 
 	db.session.add(entry)
 	db.session.commit()

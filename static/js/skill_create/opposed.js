@@ -63,12 +63,15 @@ function opposed_submit() {
 	const recurring_value = text("opposed_recurring_value")
 	const recurring_units = select("opposed_recurring_units")
 	const description = text("opposed_description");
+	const keyword = text("opposed_keyword");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
 
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';
+
+	const opposed_selects = 'opposed-sml';
 
 	response = fetch('/skill/opposed/create', {
 		method: 'POST',
@@ -92,7 +95,8 @@ function opposed_submit() {
 			'multiple': multiple,
 			'recurring_value': recurring_value,
 			'recurring_units': recurring_units,
-			'description': description
+			'description': description,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -103,14 +107,18 @@ function opposed_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+
 			multiple_field('opposed-multiple');
+			
+			selects_add(id, keyword, opposed_selects);
 
 			opposed_grid.columns.length = 0;
 			opposed_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, opposed_grid, route);
+			create_table(jsonResponse, opposed_grid, route, [opposed_selects]);
 			clear_errors(err_line, errors)
 
 			opposed_grid.titles = true;
