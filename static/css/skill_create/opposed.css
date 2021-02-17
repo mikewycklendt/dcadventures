@@ -125,6 +125,7 @@
 #opposed-recurring input[type="text"] {
 	height: 1.8vw;
 	padding: .1vw;
+	font-size: 100%;
 	width: 80%;
 }
 
