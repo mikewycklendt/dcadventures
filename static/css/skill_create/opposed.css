@@ -119,9 +119,13 @@
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: auto auto;
+	grid-template-columns: 50% 50% auto;
 }
 
+#opposed-recurring input[type="text"] {
+	height: auto;
+	width: 90%;
+}
 
 #opposed-err {
 	display: none;
