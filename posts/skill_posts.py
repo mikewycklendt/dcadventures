@@ -728,8 +728,8 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Keyword', 15, [keyword], cells)
 	cells = cell('Player Check', 15, [trait], cells)
 	cells = cell('Modifier', 9, [mod], cells)
-	cells = cell('Check', 14, [player_check], cells)\
-	cella = cell('Secret', 8, player_secret, cells)
+	cells = cell('Check', 14, [player_check], cells)
+	cella = check_cell('Secret', 8, player_secret, cells)
 
 	cells = cell('Opponent Check', 15, [opponent_trait], cells)
 	cells = cell('Modifier', 9, [opponent_mod], cells)
