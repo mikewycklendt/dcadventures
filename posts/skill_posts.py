@@ -580,11 +580,11 @@ def skill_degree_post(entry, body, cells):
 	attack = add_plus(attack)
 	vcells = vcell('check', 35, [skill_trait, 'Skill Check using', skill_dc, 'DC'], vcells, 1, check_type)
 	vcells = vcell('check', 35, [opposed, 'Opposed Check'], vcells, 2, check_type)
-	vcells = vcell('check', 35, [attack, 'on Attack Check for', attack_turns, 'Turns'], 5, check_type)
+	vcells = vcell('check', 35, [attack, 'on Attack Check for', attack_turns, 'Turns'], vcells, 5, check_type)
 	word = string('with', [routine_mod])
 	word2 = string('Modifier', [routine_mod])
 	w = width(20, 15, routine_mod)
-	vcells = vcell('check', 35, [routine_trait, 'Routine Check', word, routine_mod, word2], 3, check_type)
+	vcells = vcell('check', 35, [routine_trait, 'Routine Check', word, routine_mod, word2], vcells, 3, check_type)
 	vcells - vcell('check', 35, [resist_trait, 'Resistance Check using', resist_dc, 'DC'], vcells, 6, check_type)
 	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
 	
