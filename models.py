@@ -98,12 +98,15 @@ class Levels(db.Model):
 	level_effect = db.Column(db.String())
 	power_dc = db.Column(db.Boolean)
 	power_degree = db.Column(db.Boolean)
+	power_circ = db.Column(db.Boolean)
 	skill_dc = db.Column(db.Boolean)
 	skill_degree = db.Column(db.Boolean)
 	bonus_dc = db.Column(db.Boolean)
 	bonus_degree = db.Column(db.Boolean)
+	bonus_circ = db.Column(db.Boolean)
 	advantage_dc = db.Column(db.Boolean)
 	advantage_degree = db.Column(db.Boolean)
+	advantage_circ = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -116,11 +119,16 @@ class Levels(db.Model):
 			'name': self.name,
 			'level_effect': self.level_effect,
 			'power_dc': self.power_dc,
+			'power_circ': self.power_circ,
 			'power_degree': self.power_degree,
 			'skill_dc': self.skill_dc,
 			'skill_degree': self.skill_degree,
 			'bonus_dc': self.bonus_dc,
-			'bonus_degree': self.bonus_degree
+			'bonus_circ': self.bonus_circ,
+			'bonus_degree': self.bonus_degree,
+			'advantage_dc': self.advantage_dc,
+			'advantage_degree': self.advantage_degree,
+			'advantage_circ': self.advantage_circ
 		}
 
 

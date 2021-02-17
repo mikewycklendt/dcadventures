@@ -769,6 +769,19 @@ def skill_bonus_post_circ():
 	unit_time = integer(unit_time)
 	time_rank = integer(time_rank)
 
+	if level is not None:
+		try:
+			level_circ = db.session.query(Levels).filter(Levels.id == level).one()
+			level_circ.bonus_citc = True
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+		finally:
+			db.session.close()
+
 	entry = SkillCirc(skill_id = skill_id,
 						circ_target = circ_target,
 						mod = mod,
@@ -962,6 +975,19 @@ def skill_bonus_post_dc():
 	measure_trait_unit = integer(measure_trait_unit)
 	measure_mod_unit = integer(measure_mod_unit)
 	condition_turns = integer(condition_turns)
+
+	if level is not None:
+		try:
+			level_dc = db.session.query(Levels).filter(Levels.id == level).one()
+			level_dc.bonus_dc = True
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+		finally:
+			db.session.close()
 
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
@@ -1213,6 +1239,19 @@ def skill_bonus_post_degree():
 	condition_damage = integer(condition_damage)
 	condition_turns = integer(condition_turns)
 	nullify = integer(nullify)
+	
+	if level is not None:
+		try:
+			level_degree = db.session.query(Levels).filter(Levels.id == level).one()
+			level_degree.bonus_degree = True
+			db.session.commit()
+		except:
+			error = True
+			body['success'] = False
+			body['error'] = 'There was an error processing the request'
+			db.session.rollback()
+		finally:
+			db.session.close()
 
 	entry = SkillDegree(skill_id = skill_id,
 						target = target,
