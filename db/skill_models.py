@@ -547,7 +547,7 @@ class SkillDegree(db.Model):
 			'nullify': self.nullify,
 			'nullify_type': self.nullify_type,
 			'cumulative': self.cumulative,
-			'linked': self.linked
+			'linked': self.linked,
 			'check_type': self.check_type,
 			'opposed': self.opposed,
 			'resist_dc': self.resist_dc,
