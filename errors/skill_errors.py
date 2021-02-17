@@ -710,7 +710,7 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('6', 'Resistance Check', check_type, [resist_dc, resist_trait_type, resist_trait], errors)
 	errors = variable_field('6', check_type, 'DC', resist_dc, errors)
-	errors = variable_field('6', check_type, 'Trait Type', esist_trait_type, errors)
+	errors = variable_field('6', check_type, 'Trait Type', resist_trait_type, errors)
 	errors = variable_field('6', check_type, 'Trait', resist_trait, errors)
 
 	errors = variable_fields('3', 'Routine Check', check_type, [routine_trait_type, routine_trait, routine_mod], errors)
