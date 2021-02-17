@@ -232,7 +232,6 @@ def get_description(Table, value, name=''):
 
 	return (description)
 
-
 def action_convert(value, action_value):
 
 	if value == 'auto':
@@ -279,6 +278,16 @@ def extra_name(name):
 			print('invalid id')
 	
 	return (name)
+
+def int_word(word, value):
+
+	try:
+		value = int(value)
+		word = word
+	except:
+		word = ''
+
+	return (word)
 
 def selects(value, options):
 
@@ -854,3 +863,105 @@ def trait_select(value, trait):
 		value =  'Players Chosen DC'
 	
 	return (value)
+
+def linked_time(table, value, name, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(table).filter(table.id == value).one()
+			edit.time_table = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def linked_move(table, value, name, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(table).filter(table.id == value).one()
+			edit.move_table = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def level_bonus_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_circ = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def linked_level(value, column, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.c[column] = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)

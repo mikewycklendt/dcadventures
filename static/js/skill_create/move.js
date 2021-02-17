@@ -97,6 +97,9 @@ function move_submit() {
 	const direction = select("move_direction");
 	const check_type = select("move_check_type");
 	const turns = select("move_turns");
+	const dc = select("move_dc");
+	const degree = select("move_degree");
+	const circ = select("move_circ");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
@@ -137,7 +140,10 @@ function move_submit() {
 			'distance_description': distance_description,
 			'direction': direction,
 			'check_type': check_type,
-			'turns': turns
+			'turns': turns,
+			'degree': degree,
+			'circ': circ,
+			'dc': dc
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

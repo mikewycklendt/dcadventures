@@ -247,6 +247,8 @@ class SkillCirc(db.Model):
 	time_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	time_rank = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
+	time_table = db.Column(db.Boolean)
+	move_table = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -285,7 +287,10 @@ class SkillCirc(db.Model):
 			'unit_time': self.unit_time,
 			'time_units': self.time_units,
 			'time_rank': self.time_rank,
-			'circumstance': self.circumstance
+			'circumstance': self.circumstance,
+			'time_table': self.time_table,
+			'move_table': self.move_table
+
 		}
 
 class SkillDC(db.Model):
@@ -347,7 +352,9 @@ class SkillDC(db.Model):
 	condition_no_damage = db.Column(db.Boolean)
 	keyword = db.Column(db.String())
 	complexity = db.Column(db.Integer, db.ForeignKey('complexity.id'))
-	
+	time_table = db.Column(db.Boolean)
+	move_table = db.Column(db.Boolean)
+
 	def format(self):
 		return {
 			'id': self.id,
@@ -406,7 +413,9 @@ class SkillDC(db.Model):
 			'condition_turns': self.condition_turns,
 			'condition_no_damage': self.condition_no_damage,
 			'keyword': self.keyword,
-			'complexity': self.complexity
+			'complexity': self.complexity,
+			'time_table': self.time_table,
+			'move_table': self.move_table
 		}
 
 class SkillDegree(db.Model):
@@ -485,6 +494,8 @@ class SkillDegree(db.Model):
 	attack = db.Column(db.Integer)
 	attack_turns = db.Column(db.Integer)
 	compare = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
+	time_table = db.Column(db.Boolean)
+	move_table = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -561,9 +572,11 @@ class SkillDegree(db.Model):
 			'routine_mod': self.routine_mod,
 			'attack': self.attack,
 			'attack_turns': self.attack_turns,
-			'compare': self.compare
+			'compare': self.compare,
+			'time_table': self.time_table,
+			'move_table': self.move_table
 		}
-
+		
 class SkillMod(db.Model):
 	__tablename__ = 'skill_mod'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -703,6 +716,9 @@ class SkillMove(db.Model):
 	direction = db.Column(db.String())
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	turns = db.Column(db.Integer)
+	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 
 	def format(self):
 		return {
@@ -737,7 +753,10 @@ class SkillMove(db.Model):
 			'distance_description': self.distance_description,
 			'direction': self.direction,
 			'check_type': self.check_type,
-			'turns': self.turns
+			'turns': self.turns,
+			'degree': self.degree,
+			'circ': self.circ,
+			'dc': self.dc
 		}
 class SkillOpposed(db.Model):
 	__tablename__ = 'skill_opposed'
@@ -807,6 +826,10 @@ class SkillTime(db.Model):
 	recovery_penalty = db.Column(db.Integer)
 	recovery_time = db.Column(db.Integer)
 	recovery_incurable = db.Column(db.Boolean)
+	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	turns = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -828,5 +851,9 @@ class SkillTime(db.Model):
 			'recovery': self.recovery,
 			'recovery_penalty': self.recovery_penalty,
 			'recovery_time': self.recovery_time,
-			'recovery_incurable': self.recovery_incurable
+			'recovery_incurable': self.recovery_incurable,
+			'degree': self.degree,
+			'circ': self.circ,
+			'dc': self.dc,
+			'turns': self.turns
 		}

@@ -551,7 +551,10 @@ def skill_degree_post_errors(data):
 	attack = data['attack']
 	attack_turns = data['attack_turns']
 	compare = data['compare']
-
+	duration = data['duration']
+	degree = data['degree']
+	circ = data['circ']
+	dc = data['dc']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -590,6 +593,10 @@ def skill_degree_post_errors(data):
 	errors = id_check(SkillDC, resist_dc, 'Resistance Check DC', errors)
 	errors = id_check(SkillDC, skill_dc, 'Skilll Check DC', errors)
 	errors = id_check(SkillOpposed, compare, 'Comparison Check', errors)
+
+	errors = id_check(SkillDegree, degree, 'Degree', errors)
+	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
+	errors = id_check(SkillDC, dc, 'DC', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
@@ -720,6 +727,8 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('7', 'Comparison Check', check_type, [compare], errors)
 
+	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
+
 	return (errors)
 
 def skill_move_post_errors(data):
@@ -757,10 +766,17 @@ def skill_move_post_errors(data):
 	turns = data['turns']
 	distance_description = data['distance_description']
 	speed_description = data['speed_description']
+	degree = data['degree']
+	circ = data['circ']
+	dc = data['dc']
 	
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
+
+	errors = id_check(SkillDegree, degree, 'Degree', errors)
+	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
+	errors = id_check(SkillDC, dc, 'DC', errors)
 
 	errors = int_check(speed_rank, 'Speed Rank', errors)
 	errors = int_check(speed_trait, 'Speed Trait', errors)
@@ -893,6 +909,10 @@ def skill_time_post_errors(data):
 	recovery_penalty = data['recovery_penalty']
 	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
+	turns = data['turns']
+	degree = data['degree']
+	circ = data['circ']
+	dc = data['dc']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -909,6 +929,11 @@ def skill_time_post_errors(data):
 	errors = int_check(recovery_penalty, 'Recovery Penalty Modifier', errors)
 	errors = int_check(recovery_time, 'Recovery Time', errors)
 	
+	errors = int_check(turns, 'Turns', errors)
+	errors = id_check(SkillDegree, degree, 'Degree', errors)
+	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
+	errors = id_check(SkillDC, dc, 'DC', errors)
+
 	errors = required(type, 'Time Type', errors)
 	errors = required(value_type, 'Type', errors)
 
@@ -928,6 +953,8 @@ def skill_time_post_errors(data):
 	errors = variable_field('rank', value_type, 'Math', rank_math, errors)
 	errors = variable_field('rank', value_type, 'Second Rank', rank2, errors)
 	errors = variable_field('rank', value_type, 'Second Rank Value', rank2_value, errors)
+
+	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
 	errors = check_fields(recovery, 'Recovry Time', [recovery_penalty, recovery_time], errors)
 	errors = check_field(recovery, 'Recovry Time', 'Penalty', recovery_penalty, errors)

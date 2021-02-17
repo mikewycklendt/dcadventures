@@ -25,7 +25,8 @@ function time_value_type() {
 	const select = 'time_value_type';
 	const options = [{'val': 'math', 'div': 'time-math'}, 
 					{'val': 'value', 'div': 'time-value'}, 
-					{'val': 'rank', 'div': 'time-rank'}]
+					{'val': 'rank', 'div': 'time-rank'}, 
+					{'val': 'turns', 'div': 'time-turns'}]
 
 	select_opacity(select, options);
 }
@@ -66,6 +67,10 @@ function time_submit() {
 	const recovery_penalty = select("time_recovery_penalty")
 	const recovery_time = select("time_recovery_time")
 	const recovery_incurable = check("time_recovery_incurable")
+	const degree = select("time_degree");
+	const circ = select("time_circ");
+	const dc = select("time_dc");
+	const turns = select("time_turns");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -96,7 +101,11 @@ function time_submit() {
 			'recovery': recovery,
 			'recovery_penalty': recovery_penalty,
 			'recovery_time': recovery_time,
-			'recovery_incurable': recovery_incurable
+			'recovery_incurable': recovery_incurable,
+			'degree': degree,
+			'circ': circ,
+			'dc': dc,
+			'turns': turns
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

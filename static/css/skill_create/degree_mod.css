@@ -1,3 +1,10 @@
+
+.degree-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 #degrees_mod {
 	display: grid;
 	width: 100%;
@@ -389,7 +396,13 @@
 	transition: all .3s ease-out
 }
 
-
+#deg-mod-duration {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 40% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
 
 #deg-mod-add {
 	grid-area: button;

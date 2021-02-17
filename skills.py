@@ -17,7 +17,7 @@ import sys
 from dotenv import load_dotenv
 
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, linked_move, linked_time, linked_level
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
 from models import setup_db
@@ -155,7 +155,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Measurement'}, {'type': 'gm', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'turns', 'name': 'Set by GM'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -181,7 +181,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	concealment_type = [{'type': '', 'name': 'Concealment Type'}, {'type': 'requires', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'duration', 'name': 'Effect Duration'}]
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
@@ -698,6 +698,8 @@ def skill_bonus_post_circ():
 
 	errors = skill_circ_post_errors(data)
 
+	errors = linked_level(level, 'bonus_circ', errors)
+
 	error = errors['error']
 	if error:
 		body['success'] = False
@@ -876,6 +878,8 @@ def skill_bonus_post_dc():
 
 	errors = skill_dc_post_errors(data)
 
+	errors = linked_level(level, 'bonus_dc', errors)
+
 	error = errors['error']
 	if error:
 		body['success'] = False
@@ -975,19 +979,6 @@ def skill_bonus_post_dc():
 	measure_trait_unit = integer(measure_trait_unit)
 	measure_mod_unit = integer(measure_mod_unit)
 	condition_turns = integer(condition_turns)
-
-	if level is not None:
-		try:
-			level_dc = db.session.query(Levels).filter(Levels.id == level).one()
-			level_dc.bonus_dc = True
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-		finally:
-			db.session.close()
 
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
@@ -1103,6 +1094,8 @@ def skill_bonus_post_degree():
 
 	errors = skill_degree_post_errors(data)
 
+	errors = linked_level(level, 'bonus_degree', errors)
+
 	error = errors['error']
 	if error:
 		body['success'] = False
@@ -1185,6 +1178,7 @@ def skill_bonus_post_degree():
 	attack = request.get_json()['attack']
 	attack_turns = request.get_json()['attack_turns']
 	compare = request.get_json()['compare']
+	duration = request.get_json()['duration']
 
 	skill_id = integer(skill_id)
 	action = db_integer(Action, action)
@@ -1209,6 +1203,9 @@ def skill_bonus_post_degree():
 	resist_dc = db_integer(SkillDC, resist_dc)
 	skill_dc = db_integer(SkillDC, skill_dc)
 	compare = db_integer(SkillOpposed, compare)
+	degree = db_integer(SkillDegree, degree)
+	circ = db_integer(SkillCirc, circ)
+	dc = db_integer(SkillDC, dc)
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)
@@ -1216,6 +1213,7 @@ def skill_bonus_post_degree():
 	routine_mod = integer(routine_mod)
 	attack = integer(attack)
 	attack_turns = integer(attack_turns)
+	duration = integer(duration)
 
 	value = integer(value)
 	time = integer(time)
@@ -1240,18 +1238,6 @@ def skill_bonus_post_degree():
 	condition_turns = integer(condition_turns)
 	nullify = integer(nullify)
 	
-	if level is not None:
-		try:
-			level_degree = db.session.query(Levels).filter(Levels.id == level).one()
-			level_degree.bonus_degree = True
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-		finally:
-			db.session.close()
 
 	entry = SkillDegree(skill_id = skill_id,
 						target = target,
@@ -1325,7 +1311,8 @@ def skill_bonus_post_degree():
 						routine_mod = routine_mod,
 						attack = attack,
 						attack_turns = attack_turns,
-						compare = compare)
+						compare = compare,
+						duration = duration)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -1425,6 +1412,13 @@ def skill_bonus_post_move():
 	direction = request.get_json()['direction']
 	check_type = request.get_json()['check_type']
 	turns = request.get_json()['turns']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	
+	degree = db_integer(SkillDegree, degree)
+	circ = db_integer(SkillCirc, circ)
+	dc = db_integer(SkillDC, dc)
 
 	speed_rank = integer(speed_rank)
 	speed_trait = integer(speed_trait)
@@ -1449,6 +1443,16 @@ def skill_bonus_post_move():
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
 	check_type = db_integer(Check, check_type)
+
+	errors = linked_move(SkillCirc, circ, 'Circumstance', errors)
+	errors = linked_move(SkillDC, dc, 'DC', errors)
+	errors = linked_move(SkillDegree, degree, 'Circumstance', errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
@@ -1480,7 +1484,10 @@ def skill_bonus_post_move():
 						distance_description = distance_description,
 						direction = direction,
 						check_type = check_type,
-						turns = turns)			
+						turns = turns,
+						degree = degree,
+						dc = dc,
+						circ = circ)			
 
 
 	db.session.add(entry)
@@ -1689,6 +1696,10 @@ def skill_bonus_post_time():
 	recovery_penalty = request.get_json()['recovery_penalty']
 	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	turns = request.get_json()['turns']
 
 	skill_id = integer(skill_id)
 	rank1 = db_integer(Rank, rank1)
@@ -1697,6 +1708,10 @@ def skill_bonus_post_time():
 	units = db_integer(Unit, units)
 	math = db_integer(Math, math)
 
+	degree = db_integer(SkillDegree, degree)
+	circ = db_integer(SkillCirc, circ)
+	dc = db_integer(SkillDC, dc)
+
 	rank1_value = integer(rank1_value)
 	rank2_value = integer(rank2_value)
 	value = integer(value)
@@ -1704,6 +1719,12 @@ def skill_bonus_post_time():
 	math_value = integer(math_value)
 	recovery_penalty = integer(recovery_penalty)
 	recovery_time = integer(recovery_time)
+
+	turns = integer(turns)
+	
+	errors = linked_move(SkillCirc, circ, 'Circumstance', errors)
+	errors = linked_move(SkillDC, dc, 'DC', errors)
+	errors = linked_move(SkillDegree, degree, 'Circumstance', errors)
 
 	entry = SkillTime(skill_id = skill_id,
 						type = type,
@@ -1722,7 +1743,11 @@ def skill_bonus_post_time():
 						recovery = recovery,
 						recovery_penalty = recovery_penalty,
 						recovery_time = recovery_time,
-						recovery_incurable = recovery_incurable)
+						recovery_incurable = recovery_incurable,
+						degree = degree,
+						circ = circ,
+						dc = dc,
+						turns = turns)
 
 	db.session.add(entry)
 	db.session.commit()

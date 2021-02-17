@@ -139,6 +139,20 @@
 				</div>
 			</div>
 
+			<div id="time-turns">
+				<div>
+					<select class="select-sml" id="time_turns" name="time_turns">
+						<option value="">Turns</option>
+						<option value="perm">Permanent</option>
+						<option value="round">round</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
@@ -151,6 +165,30 @@
 			</div>
 		</div>
 
+		<div>
+			<select class="degree-sml" id="time_degree" name="time_degree">
+				<option value="">Degree</option>
+				<option value="">Use Degree form to put options here</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-sml" id="time_circ" name="time_circ">
+				<option value="">Circumstance Modifier</option>
+				<option value="">Use Circumstance form to put options here</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-sml" id="time_dc" name="time_dc">
+				<option value="">DC</option>
+				<option value="">Use Check Table form to put options here</option>
+			</select>
+		</div>
+	</div>
+
+
+	<div id="time-button-row">
 		<div>
 			<div id="time-recovery">
 
@@ -191,11 +229,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-	<div id="time-button-row">
-		<div></div>
 		
 		<div>
 			<div class="btn-entry" id="time_submit" name="time_submit" onclick="time_submit()">

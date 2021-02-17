@@ -1,4 +1,4 @@
-
+``
 
 class PowerChar(db.Model):
 

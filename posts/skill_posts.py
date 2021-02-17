@@ -19,7 +19,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select, string_value, string_value_else, get_keyword
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select, string_value, string_value_else, get_keyword, int_word
 
 def skill_ability_post(entry, body, cells):
 
@@ -459,6 +459,7 @@ def skill_degree_post(entry, body, cells):
 	attack = entry.attack
 	attack_turns = entry.attack_turns
 	compare = entry.compare
+	duration = entry.duration
 
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
@@ -493,6 +494,7 @@ def skill_degree_post(entry, body, cells):
 	routine_mod = integer_convert(routine_mod)
 	attack = integer_convert(attack)
 	attack_turns = integer_convert(attack_turns)
+	duration = integer_convert(duration)
 
 	value = integer_convert(value)
 	time = integer_convert(time)
@@ -585,9 +587,11 @@ def skill_degree_post(entry, body, cells):
 	word2 = string('Modifier', [routine_mod])
 	w = width(20, 15, routine_mod)
 	vcells = vcell('check', 35, [routine_trait, 'Routine Check', word, routine_mod, word2], vcells, 3, check_type)
-	vcells - vcell('check', 35, [resist_trait, 'Resistance Check using', resist_dc, 'DC'], vcells, 6, check_type)
+	vcells = vcell('check', 35, [resist_trait, 'Resistance Check using', resist_dc, 'DC'], vcells, 6, check_type)
 	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
-	
+
+	vcells = vcell('duration', 23, ['Effect Lasts for', duration, 'Turns'], vcells)
+
 	cells = vcell_add('Effect', type, vcells, cells)
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
@@ -632,6 +636,13 @@ def skill_move_post(entry, body, cells):
 	direction = entry.direction
 	check_type = entry.check_type
 	turns = entry.turns
+	degree = entry.degree
+	circ = entry.circ
+	dc = entry.dc
+
+	degree = get_keyword(SkillDegree, degree) degree
+	circ = get_keyword(SkillCirc, circ)
+	dc = get_keyword(SkillDC, dc)
 
 	speed_trait = trait_select(speed_trait, speed_trait_type)
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
@@ -681,6 +692,10 @@ def skill_move_post(entry, body, cells):
 	vcells = vcell('rank_math', 25, [distance_rank_trait, bonus_type, distance_rank_math1, distance_rank_value1, distance_rank_math2, distance_rank_value2], vcells)
 	cells = vcell_add('Distance', distance, vcells, cells)
 	cells = cell('Description', 20, [distance_description], cells)
+
+	cells = cell('Degree', 18, [degree], cells)
+	cells = cell('DC', 18, [dc], cells)
+	cells = cell('Circumstance', 18, [circ], cells)
 
 	body = send(cells, body)
 
@@ -767,6 +782,10 @@ def skill_time_post(entry, body, cells):
 	recovery_penalty = entry.recovery_penalty
 	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
+	degree = entry.degree
+	circ = entry.circ
+	dc = entry.dc
+	turns = entry.turns
 
 	trait = trait_select(trait, trait_type)
 
@@ -782,16 +801,28 @@ def skill_time_post(entry, body, cells):
 	recovery_penalty = integer_convert(recovery_penalty)
 	recovery_time = integer_convert(recovery_time)
 
-	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+	degree = get_keyword(SkillDegree, degree) degree
+	circ = get_keyword(SkillCirc, circ)
+	dc = get_keyword(SkillDC, dc)
+
+	turns = integer_convert(turns)
+
+	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Preparation'}, {'type': 'action', 'name': 'Action Duration'}, {'type': 'limit', 'name': 'Limit to Respond'}, {'type': 'lasts', 'name': 'Effect Duration'}]
 	type = selects(type, time_effect_select)
 
-	cells = cell('Time Type', 24, [type])
+	cells = cell('Time Type', 20, [type])
 
 	vcells = vcell('value', 17, [value, units])
 	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
-	vcells = vcell('rank', 45, [rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
+	vcells = vcell('rank',35, [rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
 	vcells = vcell('gm', 13, ['Set by GM'], vcells)
+	word = int_word('Turns', turns)
+	vcells = vcell('turns', 18, [turns, word], vcells)
 	vcell_add('Time', value_type, vcells, cells)
+
+	cells = cell('Degree', 18, [degree], cells)
+	cells = cell('DC', 18, [dc], cells)
+	cells = cell('Circumstance', 18, [circ], cells)
 
 	cells = check_cell('Recovey', 12, recovery, cells, True)
 	new_mod = mod_create('Recovery Time', 18)

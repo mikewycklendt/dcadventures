@@ -18,7 +18,8 @@ function deg_mod_type() {
 					{'val': 'damage', 'div': 'deg-mod-damage'},
 					{'val': 'action', 'div': 'deg-mod-action'},
 					{'val': 'time', 'div': 'deg-mod-time'},
-					{'val': 'check', 'div': 'deg-mod-check'}];
+					{'val': 'check', 'div': 'deg-mod-check'},
+					{'val': 'duration', 'div': 'deg-mod-duration'}];
 	
 	select_opacity(select, options);
 }
@@ -241,12 +242,16 @@ function deg_mod_submit() {
 	const attack = select("deg_mod_check_attack");
 	const attack_turns = select("deg_mod_check_attack_turns");
 	const compare = select("deg_mod_check_compare");
+	const duration = select("deg_mod_duration");
+	
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
 
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';
+
+	const selects = 'degree-sml';
 
 	response = fetch('/skill/degree/create', {
 		method: 'POST',
@@ -327,7 +332,8 @@ function deg_mod_submit() {
 			'routine_mod': routine_mod,
 			'attack': attack,
 			'attack_turns': attack_turns,
-			'compare': compare
+			'compare': compare,
+			'duration': duration
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -338,13 +344,18 @@ function deg_mod_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, selects);
+
 			deg_mod_grid.columns.length = 0;
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/degree/delete/'
-			create_table(jsonResponse, deg_mod_grid, route);
+			create_table(jsonResponse, deg_mod_grid, route, [selects]);
 			clear_errors(err_line, errors)
+
 
 
 			deg_mod_grid.titles = true;
