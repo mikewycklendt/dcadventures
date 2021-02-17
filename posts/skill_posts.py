@@ -801,7 +801,7 @@ def skill_time_post(entry, body, cells):
 	recovery_penalty = integer_convert(recovery_penalty)
 	recovery_time = integer_convert(recovery_time)
 
-	degree = get_keyword(SkillDegree, degree) degree
+	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
 
