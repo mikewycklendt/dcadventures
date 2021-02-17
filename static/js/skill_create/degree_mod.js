@@ -17,7 +17,8 @@ function deg_mod_type() {
 					{'val': 'consequence', 'div': 'deg-mod-consequence'},
 					{'val': 'damage', 'div': 'deg-mod-damage'},
 					{'val': 'action', 'div': 'deg-mod-action'},
-					{'val': 'time', 'div': 'deg-mod-time'}];
+					{'val': 'time', 'div': 'deg-mod-time'},
+					{'val': 'check', 'div': 'deg-mod-check'}];
 	
 	select_opacity(select, options);
 }
