@@ -514,6 +514,7 @@ def skill_degree_post(entry, body, cells):
 	condition_damage_value = integer_convert(condition_damage_value)
 	condition_turns = integer_convert(condition_turns)
 	nullify = integer_convert(nullify)
+	level_direction = integer_convert(level_direction)
 
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'One Level Up'}, {'type': -1, 'name': 'One Level Down'}]
 	level_direction = selects(level_direction, updown) 
