@@ -119,8 +119,8 @@
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 50% 50%;
-	width: auto;
+	grid-template-columns: auto auto;
+	width: 65%;
 }
 
 
