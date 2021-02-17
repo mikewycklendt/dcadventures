@@ -95,7 +95,7 @@ def item_edit():
 	db.session.commit()
 	db.session.close()
 
-	result = db.session.query(SkillDC).filter_by(id = id).one()
+	result = db.session.query(Levels).filter_by(id = id).one()
 
 	print(result.bonus_degree)
 		
