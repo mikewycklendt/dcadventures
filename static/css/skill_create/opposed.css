@@ -111,7 +111,7 @@
 
 #opposed-hidden {
 	display: grid;
-	grid-auto-columns: auto;
+	grid-template-columns: auto auto;
 	gap: .3vw;
 }
 
