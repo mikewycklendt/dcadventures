@@ -640,7 +640,7 @@ def skill_move_post(entry, body, cells):
 	circ = entry.circ
 	dc = entry.dc
 
-	degree = get_keyword(SkillDegree, degree) degree
+	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
 
