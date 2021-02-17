@@ -93,6 +93,7 @@
 #opposed-row4 input[type="text"] {
 	height: 1.2vw;
 	padding: .1vw;
+	width: 95%;
 }
 
 
@@ -105,7 +106,14 @@
 
 #opposed-button-row {
 	display: grid;
-	grid-template-columns: 25% 25% 30% 20%;
+	grid-template-columns: 25% 50% 20%;
+}
+
+#opposed-hidden {
+	display: grid;
+	grid-auto-columns: auto;
+	grid-template-rows: auto;
+	gap: .3vw;
 }
 
 #opposed-err {
