@@ -55,6 +55,7 @@ function opposed_submit() {
 	const opponent_trait_type = select("opposed_opponent_trait_type")
 	const opponent_trait = select("opposed_opponent_trait")
 	const opponent_mod = select("opposed_opponent_mod")
+	const player_secret = check("opposed_secret_player");
 	const player_check = select("opposed_player_check")
 	const opponent_check = select("opposed_opponent_check")
 	const secret = check("opposed_secret")
@@ -88,6 +89,7 @@ function opposed_submit() {
 			'opponent_trait_type': opponent_trait_type,
 			'opponent_trait': opponent_trait,
 			'opponent_mod': opponent_mod,
+			'player_secret': player_secret,
 			'player_check': player_check,
 			'opponent_check': opponent_check,
 			'secret': secret,

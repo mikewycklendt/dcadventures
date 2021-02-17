@@ -696,8 +696,9 @@ def skill_opposed_post(entry, body, cells):
 	mod = entry.mod
 	opponent_trait_type = entry.opponent_trait_type
 	opponent_trait = entry.opponent_trait
-	opponent_mod = entry.opponent_mod
+	opponent_mod = entry.opponent_mod	
 	player_check = entry.player_check
+	player_secret = entry.player_secret
 	opponent_check = entry.opponent_check
 	secret = entry.secret
 	recurring = entry.recurring
@@ -727,7 +728,9 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Keyword', 15, [keyword], cells)
 	cells = cell('Player Check', 15, [trait], cells)
 	cells = cell('Modifier', 9, [mod], cells)
-	cells = cell('Check', 14, [player_check], cells)
+	cells = cell('Check', 14, [player_check], cells)\
+	cella = cell('Secret', 8, player_secret, cells)
+
 	cells = cell('Opponent Check', 15, [opponent_trait], cells)
 	cells = cell('Modifier', 9, [opponent_mod], cells)
 	cells = cell('Check', 14, [opponent_check], cells)

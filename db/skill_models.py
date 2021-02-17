@@ -752,6 +752,7 @@ class SkillOpposed(db.Model):
 	opponent_trait = db.Column(db.Integer)
 	opponent_mod = db.Column(db.Integer)
 	player_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	player_secret = db.Column(db.Boolean)
 	opponent_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	secret = db.Column(db.Boolean)
 	recurring = db.Column(db.Boolean)
@@ -774,6 +775,7 @@ class SkillOpposed(db.Model):
 			'opponent_trait': self.opponent_trait,
 			'opponent_mod': self.opponent_mod,
 			'player_check': self.player_check,
+			'player_secret': self.player_secret,
 			'opponent_check': self.opponent_check,
 			'secret': self.secret,
 			'recurring': self.recurring,

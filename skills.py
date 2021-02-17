@@ -1523,6 +1523,7 @@ def skill_bonus_post_opposed():
 	opponent_trait_type = request.get_json()['opponent_trait_type']
 	opponent_trait = request.get_json()['opponent_trait']
 	opponent_mod = request.get_json()['opponent_mod']
+	player_secret = request.get_json()['player_secret']
 	player_check = request.get_json()['player_check']
 	opponent_check = request.get_json()['opponent_check']
 	secret = request.get_json()['secret']
@@ -1553,6 +1554,7 @@ def skill_bonus_post_opposed():
 						opponent_trait_type = opponent_trait_type,
 						opponent_trait = opponent_trait,
 						opponent_mod = opponent_mod,
+						player_secret = player_secret,
 						player_check = player_check,
 						opponent_check = opponent_check,
 						secret = secret,
