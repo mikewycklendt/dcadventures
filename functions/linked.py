@@ -137,24 +137,24 @@ def linked_options_bonus(table):
 
 def linked_options_power(table):
 	options = []
-		
+	
 	entries = db.session.query(table).all()
 	for e in entries:
 		id = e.power_id
- 		entry_name = db.session.query(Power).filter(id == id).one()
+		entry_name = db.session.query(Power).filter(id == id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
 	
 def linked_options_advantage(table):
 	options = []
-		
+
 	entries = db.session.query(table).all()
 	for e in entries:
 		id = e.advantage_id
- 		entry_name = db.session.query(Advantage).filter(id == id).one()
+		entry_name = db.session.query(Advantage).filter(id == id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
-
+		
 	return (options)
 
 def level_adv_circ(value, errors):
