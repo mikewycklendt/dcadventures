@@ -20,6 +20,7 @@ from copy import deepcopy
 db = SQLAlchemy()
 
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, check_string, variable_trait, get_name, get_circ, int_word, one_of, trait_select, string_value, string_value_else, get_keyword, int_word
+from error_functions import db_integer
 
 def skill_ability_post(entry, body, cells):
 
@@ -463,6 +464,7 @@ def skill_degree_post(entry, body, cells):
 	linked = entry.linked
 	check_type = entry.check_type
 	opposed = entry.opposed
+	variable = entry.variable
 	resist_dc = entry.resist_dc
 	resist_trait_type = entry.resist_trait_type
 	resist_trait = entry.resist_trait
@@ -503,6 +505,9 @@ def skill_degree_post(entry, body, cells):
 	resist_dc = get_keyword(SkillDC, resist_dc)
 	skill_dc = get_keyword(SkillDC, skill_dc)
 	compare = get_keyword(SkillOpposed, compare)
+	variable = get_keyword(SkillCheck, variable)
+
+	variable_id = db_integer(Check, 'x')
 
 	resist_trait = integer_convert(resist_trait)
 	skill_trait = integer_convert(skill_trait)
@@ -605,6 +610,7 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('check', 35, [routine_trait, 'Routine Check', word, routine_mod, word2], vcells, 3, check_type)
 	vcells = vcell('check', 35, [resist_trait, 'Resistance Check using', resist_dc, 'DC'], vcells, 6, check_type)
 	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
+	vcells = vcell('check', 35, [variable, 'Variable Check'], vcells, variable_id, check_type)
 
 	vcells = vcell('duration', 23, ['Effect Lasts for', duration, 'Turns'], vcells)
 
@@ -651,14 +657,17 @@ def skill_move_post(entry, body, cells):
 	distance_description = entry.distance_description
 	direction = entry.direction
 	check_type = entry.check_type
-	turns = entry.turns
 	degree = entry.degree
 	circ = entry.circ
 	dc = entry.dc
+	time = entry.time
+	keyword = entry.keyword
+
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
+	time = get_keyword(SkillTime, time)
 
 	speed_trait = trait_select(speed_trait, speed_trait_type)
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
@@ -678,7 +687,6 @@ def skill_move_post(entry, body, cells):
 	distance_unit_trait = integer_convert(distance_unit_trait)
 	distance_unit_value1 = integer_convert(distance_unit_value1)
 	distance_unit_value2 = integer_convert(distance_unit_value2)
-	turns = integer_convert(turns)
 
 	speed_math1 = math_convert(speed_math1)
 	speed_math2 = math_convert(speed_math2)
@@ -693,9 +701,10 @@ def skill_move_post(entry, body, cells):
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)
 
-	cells = cell('Check', 16, [check_type])
+
+	cells = cell('Keyword', 18, [keyword])
+	cells = cell('Check', 16, [check_type], cells)
 	cells = cell('Direction', 12, [direction], cells)
-	cells = cell('Turns', 12, [turns], cells)
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
 	vcells = vcell('mod', 25, [speed_trait, bonus_type, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
@@ -709,6 +718,7 @@ def skill_move_post(entry, body, cells):
 	cells = vcell_add('Distance', distance, vcells, cells)
 	cells = cell('Description', 20, [distance_description], cells)
 
+	cells = cell('Time', 18, [time], cells)
 	cells = cell('Degree', 18, [degree], cells)
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Circumstance', 18, [circ], cells)

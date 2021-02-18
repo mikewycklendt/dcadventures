@@ -5,7 +5,9 @@
 	</div>
 	
 	<div class="skill-base" id="move-base">
-	
+		<div>
+			<input type="text" id="move_keyword" name="move_keyword" placeholder="Keyword">
+		</div>
 	</div>
 
 </div>
@@ -47,7 +49,7 @@
 				</div>
 
 				<div>
-					<select class="select-sml" id="move_speed_trait" name="move_speed_trait">\
+					<select class="select-sml" id="move_speed_trait" name="move_speed_trait">
 						<option value="">Trait</option>
 					</select>
 				</div>
@@ -279,30 +281,30 @@
 	
 	<div id="move-row3">
 		<div>
-			<select class="select-sml" id="move_direction" name="move_direction">
+			<select class="select-entry" id="move_direction" name="move_direction">
 				{% for d in direction %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-
+	
 		<div>
-			<select class="select-sml" id="move_check_type" name="move_check_type">
-				<option value="">Check</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
+			<select class="check-sml" id="move_check_type" name="move_check_type">
+				<option value="">Check Type</option>
+				<option value="">Use Variable Check form to put options here</option>
+				<option value="base">Base Skill Check</option>
+				{% for c in bonus_check %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_turns" name="move_turns">
-				<option value="">Turns</option>
-				<option value="perm">Permanent</option>
-				<option value="round">Round</option>
-				<option value="scene">Scene</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="time-sml" id="move_time" name="opposed_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

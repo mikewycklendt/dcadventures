@@ -362,6 +362,14 @@
 	transition: all .3s ease-out
 }
 
+#deg-mod-check-variable {
+	display: none;
+	width: 98%;
+	grid-template-columns: 50% 50%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
 #deg-mod-check-compare {
 	display: none;
 	width: 98%;

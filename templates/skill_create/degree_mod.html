@@ -584,6 +584,7 @@
 					<option value=3>Routine Check</option>
 					<option value=5>Attack Check</option>5
 					<option value=7>Comparison Check</option>
+					<option value="x">From Variable Check</option>
 				</select>
 			</div>
 
@@ -595,6 +596,18 @@
 							<option value="">Opposed Check</option>
 							<option value="">Use opponent check form to put options here</option>
 							{% for b in bonus_opposed %}
+								<option value={{b.id}}>{{b.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div id="deg-mod-check-variable">
+					<div>
+						<select class="opposed-sml" id="deg_mod_check_variable" name="deg_mod_check_variable">
+							<option value="">Variable Check</option	>
+							<option value="">Use Variable check form to put options here</option>
+							{% for b in bonus_check %}
 								<option value={{b.id}}>{{b.name}}</option>
 							{% endfor %}
 						</select>

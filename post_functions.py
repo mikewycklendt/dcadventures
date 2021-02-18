@@ -171,7 +171,7 @@ def get_name(Table, value):
 			value = ''
 
 	return (value)
-	
+
 def get_circ(Table, value, name=''):
 	
 	db = SQLAlchemy()

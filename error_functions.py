@@ -120,6 +120,21 @@ def required(value, name, errors):
 
 	return (errors)
 
+def required_keyword(value, form, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value == '':
+		error = True
+		message = 'If you wsnt to create ' + form + ', tou must set the ' + name  + ' settings first.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def required_if_any(value, name, field, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -478,6 +493,27 @@ def variable_field(value, field, name, f, errors):
 		errors['error'] = error
 
 	return (errors)
+	
+def variable_field_linked(value, field, f, name, form, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		if f == '':
+			error = True
+				
+	if error:
+		message = 'If this rule uses a ' name + ' you must set the ' + form ' settings first.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def select_variable(value, field, select, name, f, errors):
 	error_msgs = errors['error_msgs']
@@ -819,6 +855,8 @@ def id_check(Table, value_id, name, errors):
 	db = SQLAlchemy()
 
 	if value_id == '':
+		return (errors)
+	if value_id == 'base':
 		return (errors)
 	elif value_id == 'all':
 		query = db.session.query(table).filter_by(all=True).first()

@@ -243,6 +243,12 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	bonus_degree = linked_options_bonus(SkillDegree)
 	
 	bonus_opposed = linked_options_bonus(SkillOpposed)
+	
+	bonus_time = linked_options_bonus(SkillTime)
+
+	bonus_move = linked_options_bonus(SkillMove)
+	
+	bonus_check = linked_options_bonus(SkillCheck)
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
@@ -255,7 +261,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
-							bonus_opposed=bonus_opposed)
+							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -621,12 +627,12 @@ def skill_bonus_post_check():
 	action_type = request.get_json()['action_type']
 	action = request.get_json()['action']
 	free = request.get_json()['free']
-	degree degree
-	circ circ
-	dc dc
-	time time
-	move move
-	keyword keyword
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	time = request.get_json()['time']
+	move = request.get_json()['move']
+	keyword = request.get_json()['keyword']
 
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
@@ -660,13 +666,13 @@ def skill_bonus_post_check():
 						condition2 = condition2,
 						action_type = action_type,
 						action = action,
-						free = free
-						degree degree
-						circ circ
-						dc dc
-						time time
-						move move
-						keyword keyword
+						free = free,
+						degree = degree,
+						circ = circ,
+						dc = dc,
+						time = time,
+						move = move,
+						keyword = keyword
 					)
 
 	db.session.add(entry)
@@ -1184,6 +1190,7 @@ def skill_bonus_post_degree():
 	linked = request.get_json()['linked']
 	check_type = request.get_json()['check_type']
 	opposed = request.get_json()['opposed']
+	variable = request.get_json()['variable']
 	resist_dc = request.get_json()['resist_dc']
 	resist_trait_type = request.get_json()['resist_trait_type']
 	resist_trait = request.get_json()['resist_trait']
@@ -1234,6 +1241,7 @@ def skill_bonus_post_degree():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
+	variable = db_integer(SkillCheck, variable)
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)
@@ -1328,6 +1336,7 @@ def skill_bonus_post_degree():
 						linked = linked,
 						check_type = check_type,
 						opposed = opposed,
+						variable = variable,
 						resist_dc = resist_dc,
 						resist_trait_type = resist_trait_type,
 						resist_trait = resist_trait,
@@ -1431,10 +1440,11 @@ def skill_bonus_post_move():
 	distance_description = request.get_json()['distance_description']
 	direction = request.get_json()['direction']
 	check_type = request.get_json()['check_type']
-	turns = request.get_json()['turns']
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
+	time = request.get_json()['time']
+	keyword = request.get_json()['keyword']
 
 	errors = skill_move_post_errors(data)
 
@@ -1451,6 +1461,7 @@ def skill_bonus_post_move():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
+	time = db_integer(SkillDC, time)
 
 	speed_rank = integer(speed_rank)
 	speed_trait = integer(speed_trait)
@@ -1506,7 +1517,6 @@ def skill_bonus_post_move():
 						distance_description = distance_description,
 						direction = direction,
 						check_type = check_type,
-						turns = turns,
 						degree = degree,
 						dc = dc,
 						circ = circ)			

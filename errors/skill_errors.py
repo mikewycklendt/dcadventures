@@ -16,7 +16,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple, required_if_any
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple, required_if_any, required_keyword, variable_field_linked
 
 
 def skill_save_errors(data):
@@ -180,7 +180,9 @@ def skill_check_post_errors(data):
 	errors = required(when, 'When', errors)
 	errors = required(action_type, 'Action Type', errors)
 	errors = required(action, 'Action', errors)
-	errors = required(keyword, 'Ketword', errors)
+	errors = required(keyword, 'Keyword', errors)
+	errors = required(trait_type, 'Rank', errors)
+	errors = required(trait, 'Trait', errors)	
 
 	errors = variable_fields('condition', 'Trigger', trigger, [condition1, condition2], errors)
 	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)
@@ -188,8 +190,8 @@ def skill_check_post_errors(data):
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 
-	
-
+	errors = variable_field_linked('1', check_type, dc, 'Skill Check', 'DC', errors)
+	errors = variable_field_linked('6', check_type, dc, 'Resistance Check', 'DC', errors)
 
 	return (errors)
 
@@ -553,6 +555,7 @@ def skill_degree_post_errors(data):
 	linked = data['linked']
 	check_type = data['check_type']
 	opposed = data['opposed']
+	variable = data['variable']
 	resist_dc = data['resist_dc']
 	resist_trait_type = data['resist_trait_type']
 	resist_trait = data['resist_trait']
@@ -607,6 +610,7 @@ def skill_degree_post_errors(data):
 	errors = id_check(SkillDC, resist_dc, 'Resistance Check DC', errors)
 	errors = id_check(SkillDC, skill_dc, 'Skilll Check DC', errors)
 	errors = id_check(SkillOpposed, compare, 'Comparison Check', errors)
+	errors = id_check(SkillCheck, variable, 'Variable Check', errors)
 
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
@@ -741,6 +745,8 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('7', 'Comparison Check', check_type, [compare], errors)
 
+	errors = variable_field_linked('x', check_type, variable, 'Variable Check', 'Variable Check', errors)
+
 	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
 
 	return (errors)
@@ -783,7 +789,9 @@ def skill_move_post_errors(data):
 	degree = data['degree']
 	circ = data['circ']
 	dc = data['dc']
-	
+	time = data['time']
+	keyword = data['keyword']
+
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
@@ -791,6 +799,7 @@ def skill_move_post_errors(data):
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
+	errors = id_check(SkillTime, time, 'Time', errors)
 
 	errors = int_check(speed_rank, 'Speed Rank', errors)
 	errors = int_check(speed_trait, 'Speed Trait', errors)
@@ -804,7 +813,6 @@ def skill_move_post_errors(data):
 	errors = int_check(distance_unit_trait, 'Distance Trait', errors)
 	errors = int_check(distance_unit_value1, 'Distance Furst Value', errors)
 	errors = int_check(distance_unit_value2, 'Distance Second Value', errors)
-	errors = int_check(turns, 'Turns', errors)
 
 	errors = id_check(Math, speed_math1, 'Speed Msth 1', errors)
 	errors = id_check(Math, speed_math2, 'Speed Msth 2', errors)
@@ -816,6 +824,7 @@ def skill_move_post_errors(data):
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
 	errors = id_check(Check, check_type, 'Check', errors)	
 	
+	errors = required(keyword, 'Keyword', errors)
 	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
 
 	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
@@ -852,7 +861,7 @@ def skill_move_post_errors(data):
 	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
 	errors = required(check_type, 'Check Type', errors)
-	errors = required(turns, 'Turns', errors)
+	errors = required_keyword(time, 'a Movement effect', 'Time Effect', errors)
 	errors = required(direction, 'Direction', errors)
 
 	return (errors)

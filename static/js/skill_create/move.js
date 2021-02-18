@@ -96,10 +96,11 @@ function move_submit() {
 	const distance_description = text("move_distance_description");
 	const direction = select("move_direction");
 	const check_type = select("move_check_type");
-	const turns = select("move_turns");
 	const dc = select("move_dc");
 	const degree = select("move_degree");
 	const circ = select("move_circ");
+	const time = select("move_time");
+	const keyword = text("move_keyword");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
@@ -140,10 +141,11 @@ function move_submit() {
 			'distance_description': distance_description,
 			'direction': direction,
 			'check_type': check_type,
-			'turns': turns,
 			'degree': degree,
 			'circ': circ,
-			'dc': dc
+			'dc': dc,
+			'time': time,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

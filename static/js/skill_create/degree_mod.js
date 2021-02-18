@@ -243,6 +243,7 @@ function deg_mod_submit() {
 	const attack_turns = select("deg_mod_check_attack_turns");
 	const compare = select("deg_mod_check_compare");
 	const duration = select("deg_mod_duration");
+	const variable = select("deg_mod_check_variable");
 
 
 	///const skill_id = document.getElementById('skill_id').value;
@@ -334,7 +335,8 @@ function deg_mod_submit() {
 			'attack': attack,
 			'attack_turns': attack_turns,
 			'compare': compare,
-			'duration': duration
+			'duration': duration,
+			'variable': variable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

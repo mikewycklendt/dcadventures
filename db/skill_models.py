@@ -494,6 +494,7 @@ class SkillDegree(db.Model):
 	linked = db.Column(db.Boolean)
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
+	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
 	resist_dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	resist_trait_type = db.Column(db.String())
 	resist_trait = db.Column(db.Integer)
@@ -573,6 +574,7 @@ class SkillDegree(db.Model):
 			'linked': self.linked,
 			'check_type': self.check_type,
 			'opposed': self.opposed,
+			'variable': self.variable,
 			'resist_dc': self.resist_dc,
 			'resist_trait_type': self.resist_trait_type,
 			'resist_trait': self.resist_trait,
@@ -731,7 +733,9 @@ class SkillMove(db.Model):
 	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
-
+	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	keyword = db.Column(db.String())
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -768,7 +772,9 @@ class SkillMove(db.Model):
 			'turns': self.turns,
 			'degree': self.degree,
 			'circ': self.circ,
-			'dc': self.dc
+			'dc': self.dc,
+			'time': self.time,
+			'keyword': self.keyword
 		}
 class SkillOpposed(db.Model):
 	__tablename__ = 'skill_opposed'
