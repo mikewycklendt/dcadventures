@@ -72,65 +72,13 @@ def linked_move(table, value, name, errors):
 	return (errors)
 
 
-def level_bonus_circ(value, errors):
-	
-	error_msgs = errors['error_msgs']
-	error = False
-
-	if value is not None:
-		try:
-			edit = db.session.query(Levels).filter(Levels.id == value).one()
-			edit.bonus_circ = True
-			db.session.commit()
-		except:
-			error = True
-			error = True
-			message = 'There was an error processing that ' + name
-			error_msgs.append(message)
-			db.session.rollback()
-		finally:
-			db.session.close()
-
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)
-
-def level_bonus_circ(value, errors):
-	
-	error_msgs = errors['error_msgs']
-	error = False
-
-	if value != '':
-		try:
-			value = int(value)
-			edit = db.session.query(Levels).filter(Levels.id == value).one()
-			edit.bonus_citc = True
-			db.session.commit()
-		except:
-			error = True
-			error = True
-			message = 'There was an error processing that ' + name
-			error_msgs.append(message)
-			db.session.rollback()
-		finally:
-			db.session.close()
-
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)
-
-
 def linked_options_bonus(table):
 	options = []
 		
 	entries = db.session.query(table).all()
 	for e in entries:
 		skill_id = e.skill_id
-		entry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
+		entry_name = db.session.query(SkillBonus).filter(SkillBonus,id == skill_id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
@@ -141,7 +89,7 @@ def linked_options_power(table):
 	entries = db.session.query(table).all()
 	for e in entries:
 		id = e.power_id
-		entry_name = db.session.query(Power).filter(id == id).one()
+		entry_name = db.session.query(Power).filter(Power.id == id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
@@ -152,7 +100,7 @@ def linked_options_advantage(table):
 	entries = db.session.query(table).all()
 	for e in entries:
 		id = e.advantage_id
-		entry_name = db.session.query(Advantage).filter(id == id).one()
+		entry_name = db.session.query(Advantage).filter(Advantage.id == id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 		
 	return (options)
@@ -219,6 +167,31 @@ def level_adv_degree(value, errors):
 			value = int(value)
 			edit = db.session.query(Levels).filter(Levels.id == value).one()
 			edit.advantage_degree = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_bonus_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_circ = True
 			db.session.commit()
 		except:
 			error = True
