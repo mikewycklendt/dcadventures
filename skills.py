@@ -52,7 +52,7 @@ skill = Blueprint('skill', __name__)
 db = SQLAlchemy()
 
 @skill.route('/skill/create')
-def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
+def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, bonus_citc=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree, bonus_opposed=bonus_opposed):
 	includehtml = 'skill_create/skill_create.html'
 
 	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html', 'opposed': 'skill_create/opposed.html', 'modifiers': 'skill_create/modifiers.html', 'time': 'skill_create/time.html', 'ability': 'skill_create/ability.html', 'move': 'skill_create/move.html'}
