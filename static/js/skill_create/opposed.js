@@ -68,6 +68,7 @@ function opposed_submit() {
 	const degree = select("opposed_degree")
 	const circ = select("opposed_circ")
 	const dc = select("opposed_dc")
+	const time = select("opposed_time")
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -105,6 +106,7 @@ function opposed_submit() {
 			'degree': degree,
 			'circ': circ,
 			'dc': dc,
+			'time': time
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

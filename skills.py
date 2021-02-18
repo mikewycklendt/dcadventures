@@ -1585,6 +1585,7 @@ def skill_bonus_post_opposed():
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
+	time = request.get_json()['time']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
@@ -1594,6 +1595,7 @@ def skill_bonus_post_opposed():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
+	rime = db_integer(SkillTime, dc)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -1622,7 +1624,8 @@ def skill_bonus_post_opposed():
 						keyword = keyword,
 						degree = degree,
 						circ = circ,
-						dc = dc)			
+						dc = dc,
+						time = time)			
 
 	db.session.add(entry)
 	db.session.commit()
@@ -1705,6 +1708,7 @@ def skill_bonus_post_time():
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
 	turns = request.get_json()['turns']
+	keyword = request.get_json()['keyword']
 
 	errors = skill_time_post_errors(data)
 	
@@ -1760,7 +1764,8 @@ def skill_bonus_post_time():
 						degree = degree,
 						circ = circ,
 						dc = dc,
-						turns = turns)
+						turns = turns,
+						keyword = keyword)
 
 	db.session.add(entry)
 	db.session.commit()

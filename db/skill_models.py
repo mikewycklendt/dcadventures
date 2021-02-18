@@ -783,6 +783,7 @@ class SkillOpposed(db.Model):
 	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 
 	def format(self):
 		return {
@@ -808,7 +809,8 @@ class SkillOpposed(db.Model):
 			'keyword': self.keyword,
 			'degree': self.degree,
 			'circ': self.circ,
-			'dc': self.dc
+			'dc': self.dc,
+			'time': self.time
 		}
 
 class SkillTime(db.Model):
@@ -836,6 +838,7 @@ class SkillTime(db.Model):
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	turns = db.Column(db.Integer)
+	keyword = db.Column(db.String)
 
 	def format(self):
 		return {
@@ -861,5 +864,6 @@ class SkillTime(db.Model):
 			'degree': self.degree,
 			'circ': self.circ,
 			'dc': self.dc,
-			'turns': self.turns
+			'turns': self.turns,
+			'keyword': self.keyword
 		}

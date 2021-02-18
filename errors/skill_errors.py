@@ -867,6 +867,7 @@ def skill_opposed_post_errors(data):
 	degree = data['degree']
 	circ = data['circ']
 	dc = data['dc']
+	time = data['time']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -882,6 +883,7 @@ def skill_opposed_post_errors(data):
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
+	errors = id_check(SkillTime, time, 'DC', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
@@ -920,6 +922,7 @@ def skill_time_post_errors(data):
 	degree = data['degree']
 	circ = data['circ']
 	dc = data['dc']
+	keyword = data['keyword']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -943,6 +946,7 @@ def skill_time_post_errors(data):
 
 	errors = required(type, 'Time Type', errors)
 	errors = required(value_type, 'Type', errors)
+	errors = required(keyword, 'Keyword', errors)
 
 	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
 	errors = variable_field('value', value_type, 'Value', value, errors)

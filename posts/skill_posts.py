@@ -725,6 +725,7 @@ def skill_opposed_post(entry, body, cells):
 	degree = entry.degree
 	circ = entry.circ
 	dc = entry.dc
+	time = entry.time
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -739,6 +740,7 @@ def skill_opposed_post(entry, body, cells):
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
+	time = get_keyword(SkillTime, time)
 
 	frequency_select = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 	frequency = selects(frequency, frequency_select)
@@ -761,7 +763,8 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Degree', 18, [degree], cells)
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
-
+	cells = cell('Time', 18, [time], cells)
+	
 	cells = check_cell('Secret', 8, secret, cells)
 
 	cells = check_cell('Recurring', 10, recurring, cells, True)
@@ -798,6 +801,7 @@ def skill_time_post(entry, body, cells):
 	circ = entry.circ
 	dc = entry.dc
 	turns = entry.turns
+	keyword = entry.keyword
 
 	trait = trait_select(trait, trait_type)
 
@@ -823,6 +827,7 @@ def skill_time_post(entry, body, cells):
 	type = selects(type, time_effect_select)
 
 	cells = cell('Time Type', 20, [type])
+	cells = cell('Keyword', 17, [keyword], cells)
 
 	vcells = vcell('value', 17, [value, units])
 	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
