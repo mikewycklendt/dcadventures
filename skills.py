@@ -40,6 +40,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
 
+from base_files import bonus_circ, bonus_dc, bonus_degree, bonus_opposed
 
 load_dotenv()
 
@@ -245,7 +246,8 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
-							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ)
+							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
+							bonus_opposed=bonus_opposed)
 
 
 @skill.route('/skill/create', methods=['POST'])

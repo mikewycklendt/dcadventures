@@ -169,6 +169,9 @@
 			<select class="degree-sml" id="time_degree" name="time_degree">
 				<option value="">Degree</option>
 				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -176,6 +179,9 @@
 			<select class="circ-sml" id="time_circ" name="time_circ">
 				<option value="">Circumstance Modifier</option>
 				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -183,6 +189,9 @@
 			<select class="dc-sml" id="time_dc" name="time_dc">
 				<option value="">DC</option>
 				<option value="">Use Check Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
