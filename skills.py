@@ -17,8 +17,10 @@ import sys
 from dotenv import load_dotenv
 
 from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add, linked_move, linked_time, linked_level, linked_options
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
+
+from functions.linked import level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, linked_move, linked_time, linked_options_advantage, linked_options_bonus, linked_options_power
 
 from models import setup_db
 
@@ -234,13 +236,13 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	trait_type = [{'type': 'rank', 'name': 'Trait Rank'}, {'type': 'check', 'name': 'Check Result'}]
 
-	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id')
+	bonus_circ = linked_options_bonus(SkillCirc)
 
-	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id')
+	bonus_dc = linked_options_bonus(SkillDC)
 	
-	bonus_degree = linked_options(SkillDegree, SkillBonus, 'skill_id')
+	bonus_degree = linked_options_bonus(SkillDegree)
 	
-	bonus_opposed = linked_options(SkillOpposed, SkillBonus, 'skill_id')
+	bonus_opposed = linked_options_bonus(SkillOpposed)
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
@@ -704,16 +706,6 @@ def skill_bonus_post_circ():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill_circ_post_errors(data)
-
-	errors = linked_level(level, 'bonus_circ', errors)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
 	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -752,6 +744,16 @@ def skill_bonus_post_circ():
 	time_units = request.get_json()['time_units']
 	time_rank = request.get_json()['time_rank']
 	circumstance = request.get_json()['circumstance']
+
+	errors = skill_circ_post_errors(data)
+
+	errors = level_bonus_circ(level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 
 	skill_id = integer(skill_id)
 	level_type = db_integer(LevelType, level_type)
@@ -884,16 +886,6 @@ def skill_bonus_post_dc():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill_dc_post_errors(data)
-
-	errors = linked_level(level, 'bonus_dc', errors)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
 	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -952,6 +944,15 @@ def skill_bonus_post_dc():
 	condition_no_damage = request.get_json()['condition_no_damage']
 	keyword = request.get_json()['keyword']
 	complexity = request.get_json()['complexity']
+	errors = skill_dc_post_errors(data)
+
+	errors = level_bonus_dc(level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 
 	skill_id = integer(skill_id)
 	math = db_integer(Math, math)
@@ -1100,16 +1101,6 @@ def skill_bonus_post_degree():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill_degree_post_errors(data)
-
-	errors = linked_level(level, 'bonus_degree', errors)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
 	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -1187,6 +1178,16 @@ def skill_bonus_post_degree():
 	attack_turns = request.get_json()['attack_turns']
 	compare = request.get_json()['compare']
 	duration = request.get_json()['duration']
+
+	errors = skill_degree_post_errors(data)
+
+	errors = level_bonus_degree(level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 
 	skill_id = integer(skill_id)
 	action = db_integer(Action, action)
@@ -1378,14 +1379,6 @@ def skill_bonus_post_move():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill_move_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
 	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -1423,6 +1416,18 @@ def skill_bonus_post_move():
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
+
+	errors = skill_move_post_errors(data)
+
+	errors = linked_move(SkillCirc, circ, 'Circumstance', errors)
+	errors = linked_move(SkillDC, dc, 'DC', errors)
+	errors = linked_move(SkillDegree, degree, 'Circumstance', errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
 	
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
@@ -1451,17 +1456,7 @@ def skill_bonus_post_move():
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
 	check_type = db_integer(Check, check_type)
-
-	errors = linked_move(SkillCirc, circ, 'Circumstance', errors)
-	errors = linked_move(SkillDC, dc, 'DC', errors)
-	errors = linked_move(SkillDegree, degree, 'Circumstance', errors)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
+	
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
 						speed_rank = speed_rank,
@@ -1675,14 +1670,6 @@ def skill_bonus_post_time():
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = skill_time_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
 	skill_id = request.get_json()['skill_id']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -1709,6 +1696,18 @@ def skill_bonus_post_time():
 	dc = request.get_json()['dc']
 	turns = request.get_json()['turns']
 
+	errors = skill_time_post_errors(data)
+	
+	errors = linked_time(SkillCirc, circ, 'Circumstance', errors)
+	errors = linked_time(SkillDC, dc, 'DC', errors)
+	errors = linked_time(SkillDegree, degree, 'Circumstance', errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 	skill_id = integer(skill_id)
 	rank1 = db_integer(Rank, rank1)
 	rank_math = db_integer(Math, rank_math)
@@ -1729,10 +1728,6 @@ def skill_bonus_post_time():
 	recovery_time = integer(recovery_time)
 
 	turns = integer(turns)
-	
-	errors = linked_move(SkillCirc, circ, 'Circumstance', errors)
-	errors = linked_move(SkillDC, dc, 'DC', errors)
-	errors = linked_move(SkillDegree, degree, 'Circumstance', errors)
 
 	entry = SkillTime(skill_id = skill_id,
 						type = type,
