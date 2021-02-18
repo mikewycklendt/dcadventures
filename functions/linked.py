@@ -24,8 +24,9 @@ def linked_time(table, value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	if value is not None:
+	if value != '':
 		try:
+			value = int(value)
 			edit = db.session.query(table).filter(table.id == value).one()
 			edit.time_table = True
 			db.session.commit()
@@ -49,8 +50,9 @@ def linked_move(table, value, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
-	if value is not None:
+	if value != '':
 		try:
+			value = int(value)
 			edit = db.session.query(table).filter(table.id == value).one()
 			edit.move_table = True
 			db.session.commit()
@@ -128,7 +130,7 @@ def linked_options_bonus(table):
 	entries = db.session.query(table).all()
 	for e in entries:
 		skill_id = e.skill_id
- 		entry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
+		ntry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
