@@ -71,9 +71,12 @@ function time_submit() {
 	const circ = select("time_circ");
 	const dc = select("time_dc");
 	const turns = select("time_turns");
+	const keyword = text("time_keyword");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
+
+	const selects = 'time-sml';
 	
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
@@ -105,7 +108,8 @@ function time_submit() {
 			'degree': degree,
 			'circ': circ,
 			'dc': dc,
-			'turns': turns
+			'turns': turns,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -115,13 +119,17 @@ function time_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			
+
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, selects);
+
 			time_grid.columns.length = 0;
 			time_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, time_grid, route);
+			create_table(jsonResponse, time_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 			time_grid.titles = true;

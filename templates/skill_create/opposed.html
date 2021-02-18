@@ -136,11 +136,6 @@
 			</div>
 		</div>
 		
-		<div>
-			<div class="check-div" style="width: 85%;">
-				<input type="checkbox" id="opposed_recurring" class="medium-checkbox med-checkbox" onclick="opposed_recurring()"> Recurring
-			</div>
-		</div>
 	</div>
 
 	<div id="opposed-row4">
@@ -169,6 +164,16 @@
 				<option value="">Resistance Check DC</option>
 				<option value="">Use Check Table form to put options here</option>
 				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="time-sml" id="opposed_time" name="opposed_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
