@@ -722,6 +722,9 @@ def skill_opposed_post(entry, body, cells):
 	recurring_value = entry.recurring_value
 	recurring_units = entry.recurring_units
 	keyword = entry.keyword
+	degree = entry.degree
+	circ = entry.circ
+	dc = entry.dc
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -732,6 +735,10 @@ def skill_opposed_post(entry, body, cells):
 	opponent_check = get_name(Check, opponent_check)
 	recurring_value = integer_convert(recurring_value)
 	recurring_units = get_name(Unit, recurring_units)
+
+	degree = get_keyword(SkillDegree, degree)
+	circ = get_keyword(SkillCirc, circ)
+	dc = get_keyword(SkillDC, dc)
 
 	frequency_select = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 	frequency = selects(frequency, frequency_select)
@@ -750,6 +757,11 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Opponent Check', 15, [opponent_trait], cells)
 	cells = cell('Modifier', 9, [opponent_mod], cells)
 	cells = cell('Check', 14, [opponent_check], cells)
+
+	cells = cell('Degree', 18, [degree], cells)
+	cells = cell('DC', 18, [dc], cells)
+	cells = cell('Circumstance', 18, [circ], cells)
+
 	cells = check_cell('Secret', 8, secret, cells)
 
 	cells = check_cell('Recurring', 10, recurring, cells, True)

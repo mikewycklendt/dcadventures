@@ -1582,11 +1582,18 @@ def skill_bonus_post_opposed():
 	recurring_units = request.get_json()['recurring_units']
 	description = request.get_json()['description']
 	keyword = request.get_json()['keyword']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
 	opponent_check = db_integer(Check, opponent_check)
 	recurring_units = db_integer(Unit, recurring_units)
+
+	degree = db_integer(SkillDegree, degree)
+	circ = db_integer(SkillCirc, circ)
+	dc = db_integer(SkillDC, dc)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -1612,7 +1619,10 @@ def skill_bonus_post_opposed():
 						recurring_value = recurring_value,
 						recurring_units = recurring_units,
 						description = description,
-						keyword = keyword)			
+						keyword = keyword,
+						degree = degree,
+						circ = circ,
+						dc = dc)			
 
 	db.session.add(entry)
 	db.session.commit()

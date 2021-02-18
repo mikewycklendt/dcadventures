@@ -243,7 +243,7 @@ function deg_mod_submit() {
 	const attack_turns = select("deg_mod_check_attack_turns");
 	const compare = select("deg_mod_check_compare");
 	const duration = select("deg_mod_duration");
-	
+
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -252,6 +252,7 @@ function deg_mod_submit() {
 	const err_line = 'deg-mod-err-line';
 
 	const selects = 'degree-sml';
+	const opp_selects = 'degree-opp-sml';
 
 	response = fetch('/skill/degree/create', {
 		method: 'POST',
@@ -347,13 +348,16 @@ function deg_mod_submit() {
 			const id = jsonResponse.id;
 
 			selects_add(id, keyword, selects);
+			if (target == 'opp') {
+				selects_add(id, keyword, opp_selects);
+			}
 
 			deg_mod_grid.columns.length = 0;
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/degree/delete/'
-			create_table(jsonResponse, deg_mod_grid, route, [selects]);
+			create_table(jsonResponse, deg_mod_grid, route, [selects, opp_selects]);
 			clear_errors(err_line, errors)
 
 

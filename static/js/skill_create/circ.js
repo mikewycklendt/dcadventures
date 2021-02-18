@@ -113,12 +113,13 @@ function circ_submit() {
 	const unit_time = text("circ_unit_time")
 	const time_units = select("circ_time_units")
 	const time_rank = select("circ_time_rank")
-	const circumstance = text("circ_circumstance")
+	const circumstance = text("circ_circumstance");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
 
 	const circ_selects = 'circ-sml'
+	const opp_selects = 'circ-opp-sml'
 
 	response = fetch('/skill/circ/create', {
 		method: 'POST',
@@ -174,13 +175,16 @@ function circ_submit() {
 			const id = jsonResponse.id
 
 			selects_add(id, keyword, circ_selects);
+			if (target == 'opp') {
+				selects_add(id, keyword, opp_selects);
+			}
 
 			circ_grid.columns.length = 0;
 			circ_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, circ_grid, route, [circ_selects]);
+			create_table(jsonResponse, circ_grid, route, [circ_selects, opp_selects]);
 			clear_errors(err_line, errors)
 
 			circ_grid.titles = true;

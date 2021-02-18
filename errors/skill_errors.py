@@ -864,6 +864,9 @@ def skill_opposed_post_errors(data):
 	recurring_value = data['recurring_value']
 	recurring_units = data['recurring_units']
 	description = data['description']
+	degree = data['degree']
+	circ = data['circ']
+	dc = data['dc']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -875,6 +878,10 @@ def skill_opposed_post_errors(data):
 	errors = id_check(Check, opponent_check, 'Opponent Check', errors)
 	errors = int_check(recurring_value, 'Recurring Value', errors)
 	errors = id_check(Unit, recurring_units, 'Recurring Units', errors)
+
+	errors = id_check(SkillDegree, degree, 'Degree', errors)
+	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
+	errors = id_check(SkillDC, dc, 'DC', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)

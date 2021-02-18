@@ -65,6 +65,9 @@ function opposed_submit() {
 	const recurring_units = select("opposed_recurring_units")
 	const description = text("opposed_description");
 	const keyword = text("opposed_keyword");
+	const degree = select("opposed_degree")
+	const circ = select("opposed_circ")
+	const dc = select("opposed_dc")
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -98,7 +101,10 @@ function opposed_submit() {
 			'recurring_value': recurring_value,
 			'recurring_units': recurring_units,
 			'description': description,
-			'keyword': keyword
+			'keyword': keyword,
+			'degree': degree,
+			'circ': circ,
+			'dc': dc,
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -258,6 +258,7 @@ function dc_submit() {
 	const err_line = 'dc-err-line';
 
 	const dc_selects = 'dc-sml';
+	const opp_selects = 'dc-opp-sml';
 
 	response = fetch('/skill/dc/create', {
 		method: 'POST',
@@ -333,13 +334,16 @@ function dc_submit() {
 			const id = jsonResponse.id;
 
 			selects_add(id, keyword, dc_selects);
-			
+			if (target == 'opp') {
+				selects_add(id, keyword, opp_selects);
+			}
+
 			dc_grid.columns.length = 0;
 			dc_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, dc_grid, route, [dc_selects]);
+			create_table(jsonResponse, dc_grid, route, [dc_selects, opp_selects]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;

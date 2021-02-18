@@ -144,6 +144,38 @@
 	</div>
 
 	<div id="opposed-row4">
+		<div>
+			<select class="degree-opp-sml" id="opposed_degree" name="opposed_degree">
+				<option value="">Degree of Success/Failure</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-opp-sml" id="opposed_circ" name="opposed_circ">
+				<option value="">Circumstance Modifier</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
+				<option value="">Resistance Check DC</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="opposed-row5">
 		<div class="vcenter" style="font-size: 80;">
 			Description
 		</div>

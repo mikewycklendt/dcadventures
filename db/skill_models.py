@@ -576,7 +576,7 @@ class SkillDegree(db.Model):
 			'time_table': self.time_table,
 			'move_table': self.move_table
 		}
-		
+
 class SkillMod(db.Model):
 	__tablename__ = 'skill_mod'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -780,6 +780,9 @@ class SkillOpposed(db.Model):
 	recurring_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	description = db.Column(db.String())
 	keyword = db.Column(db.String())
+	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 
 	def format(self):
 		return {
@@ -802,7 +805,10 @@ class SkillOpposed(db.Model):
 			'recurring_value': self.recurring_value,
 			'recurring_units': self.recurring_units,
 			'description': self.description,
-			'keyword': self.keyword
+			'keyword': self.keyword,
+			'degree': self.degree,
+			'circ': self.circ,
+			'dc': self.dc
 		}
 
 class SkillTime(db.Model):
