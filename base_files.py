@@ -39,8 +39,6 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
 
-from base_files import bonus_circ, bonus_dc, bonus_degree, bonus_opposed
-
 load_dotenv()
 
 import os
