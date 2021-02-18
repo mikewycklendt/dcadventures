@@ -238,7 +238,6 @@ class SkillCirc(db.Model):
 	target = db.Column(db.String())
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
-	time = db.Column(db.Integer)
 	condition_type = db.Column(db.String())
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
