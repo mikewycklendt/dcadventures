@@ -130,7 +130,7 @@ def linked_options_bonus(table):
 	entries = db.session.query(table).all()
 	for e in entries:
 		skill_id = e.skill_id
-		ntry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
+		entry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
