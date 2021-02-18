@@ -261,7 +261,7 @@ class SkillCirc(db.Model):
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
 	lasts = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
-	temp = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 
 	def format(self):
 		return {
@@ -298,8 +298,7 @@ class SkillCirc(db.Model):
 			'circumstance': self.circumstance,
 			'time_table': self.time_table,
 			'move_table': self.move_table,
-			'lasts': self.lasts,
-			'temp': self.temp
+			'lasts': self.lasts
 		}
 
 class SkillDC(db.Model):
