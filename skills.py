@@ -773,11 +773,6 @@ def skill_bonus_post_circ():
 	keyword = request.get_json()['keyword']
 	cumulative = request.get_json()['cumulative']
 	optional = request.get_json()['optional']
-	lasts = request.get_json()['lasts']
-	turns = request.get_json()['turns']
-	unit_time = request.get_json()['unit_time']
-	time_units = request.get_json()['time_units']
-	time_rank = request.get_json()['time_rank']
 	circumstance = request.get_json()['circumstance']
 
 	errors = skill_circ_post_errors(data)
@@ -800,7 +795,6 @@ def skill_bonus_post_circ():
 	unit = db_integer(Unit, unit)
 	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
-	time_units = db_integer(Unit, time_units)
 
 	mod = integer(mod)
 	speed = integer(speed)
@@ -812,9 +806,6 @@ def skill_bonus_post_circ():
 	unit_value = integer(unit_value)
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
-	turns = integer(turns)
-	unit_time = integer(unit_time)
-	time_rank = integer(time_rank)
 
 	if level is not None:
 		try:
@@ -858,11 +849,6 @@ def skill_bonus_post_circ():
 						keyword = keyword,
 						cumulative = cumulative,
 						optional = optional,
-						lasts = lasts,
-						turns = turns,
-						unit_time = unit_time,
-						time_units = time_units,
-						time_rank = time_rank,
 						circumstance = circumstance)
 
 	db.session.add(entry)

@@ -235,7 +235,6 @@ class SkillCirc(db.Model):
 	mod = db.Column(db.Integer)
 	effect = db.Column(db.String())
 	speed = db.Column(db.Integer)
-	temp = db.Column(db.Integer)
 	target = db.Column(db.String())
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
@@ -259,11 +258,6 @@ class SkillCirc(db.Model):
 	keyword = db.Column(db.String())
 	cumulative = db.Column(db.Boolean)
 	optional = db.Column(db.Boolean)
-	lasts = db.Column(db.String())
-	turns = db.Column(db.Integer)
-	unit_time = db.Column(db.Integer)
-	time_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	time_rank = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
@@ -300,11 +294,6 @@ class SkillCirc(db.Model):
 			'keyword': self.keyword,
 			'cumulative': self.cumulative,
 			'optional': self.optional,
-			'lasts': self.lasts,
-			'turns': self.turns,
-			'unit_time': self.unit_time,
-			'time_units': self.time_units,
-			'time_rank': self.time_rank,
 			'circumstance': self.circumstance,
 			'time_table': self.time_table,
 			'move_table': self.move_table

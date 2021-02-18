@@ -149,12 +149,8 @@ def skill_circ_post(entry, body, cells):
 	keyword = entry.keyword
 	cumulative = entry.cumulative
 	optional = entry.optional
-	lasts = entry.lasts
-	turns = entry.turns
-	unit_time = entry.unit_time
-	time_units = entry.time_units
-	time_rank = entry.time_rank
 	circumstance = entry.circumstance
+	lasts = entry.lasts
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
@@ -166,11 +162,9 @@ def skill_circ_post(entry, body, cells):
 	unit_type = get_name(MeasureType, unit_type)
 	unit = get_name(Unit, unit)
 	measure_math_rank = get_name(Rank, measure_math_rank)
-	time_units = get_name(Unit, time_units)
-
+	
 	mod = integer_convert(mod)
 	speed = integer_convert(speed)
-	temp = integer_convert(temp)
 	time = integer_convert(time)
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
@@ -178,10 +172,9 @@ def skill_circ_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
-	turns = integer_convert(turns)
-	unit_time = integer_convert(unit_time)
-	time_rank = integer_convert(time_rank)
 
+	temp = get_keyword(SkillTime, temp)
+	lasts = get_keyword(SkillTime, )
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	circ_target = selects(circ_target, targets_select)
@@ -193,14 +186,10 @@ def skill_circ_post(entry, body, cells):
 	conditions_effect = selects(conditions_effect, updown)
 
 
-	cells = cell('Target', 16, [circ_target])
+	cells = cell('Keyword', 18, [keyword])
+	cells = cell('Target', 16, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
-	cells = cell('Keyword', 18, [keyword], cells)
-
-	vcells = vcell('turns', 10, [turns])
-	vcells = vcell('time', 14, [unit_time, time_units], vcells)
-	vcells = vcell('rank', 6, [time_rank], vcells)
-	cells = vcell_add('Lasts', lasts, vcells, cells)
+	cells = cell('Lasts', 18, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
 	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')
@@ -209,7 +198,7 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('time', 14, [time, 'Time Rank'], vcells)
 	
 	temp = int_word(temp, 'Turns')
-	vcells = vcell('temp', 25, ['Effect Lasts for', temp], vcells)
+	vcells = vcell('temp', 18, [temp], vcells)
 
 	measure_rank_value = add_plus(measure_rank_value)
 	vcells = vcell('measure', 18, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')

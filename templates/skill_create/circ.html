@@ -322,58 +322,16 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="circ_lasts" name="circ_lasts" onchange="circ_lasts()">
-				{% for l in lasts %}
-					<option value="{{l.type}}">{{l.name}}</option>
+			<select class="time-sml" id="circ_time" name="circ_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div>
-			<div id="circ-turns">
-				<div>
-					<select class="select-sml" id="circ_turns" name="circ_turns">
-						<option value="">Turns</option>
-						<option value="round">Round</option>
-						<option value="scene">Scene</option>
-						<option value="perm">Permanent</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
 		
-			<div id="circ-time">
-				<div>
-					<input type="text" id="circ_unit_time" name="circ_unit_time" placeholder="Time">
-				</div>
-
-				<div>
-					<select class="select-sml" id="circ_time_units" name="circ_time_units">
-						<option value="">Units</option>
-						{% for t in times %}
-							<option value={{t.id}}>{{t.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-
-			<div id="circ-time-rank">
-				<div>
-					<select class="select-sml" id="circ_time_rank" name="circ_time_rank">
-						<option value="">Time Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-		</div>
-
-		
-		<div></div>
-
 	</div>
 
 	<div id="circ-button-row">	
