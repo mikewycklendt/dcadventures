@@ -192,7 +192,7 @@ class SkillCheck(db.Model):
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
-	move = db.Column(db.Integer, db.ForeignKey('skill_MOVE.id'))
+	move = db.Column(db.Integer, db.ForeignKey('skill_move.id'))
 
 	def format(self):
 		return {
