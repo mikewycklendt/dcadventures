@@ -54,7 +54,13 @@ def skill_check_post(entry, body, cells):
 	action_type = entry.action_type
 	action = entry.action
 	free = entry.free
-	
+	degree = entry.degree
+	circ = entry.circ
+	dc = entry.dc
+	time = entry.time
+	move = entry.move
+	keyword = entry.keyword
+
 	trait = trait_select(trait, trait_type)
 
 	check_type = get_name(Check, check_type)
@@ -65,11 +71,17 @@ def skill_check_post(entry, body, cells):
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 	
+	degree = get_keyword(SkillDegree, degree)
+	circ = get_keyword(SkillCirc, circ)
+	dc = get_keyword(SkillDC, dc)
+	time = get_keyword(SkillTime, time)
+	move = get_keyword(SkillMove, move)
 
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_type_select)
 
-	cells = cell('Check', 15, [check_type])
+	cells = cell('Keyword', 18, [keyword])
+	cells = cell('Check', 15, [check_type], cells)
 	cells = cell('Modifier', 8, [mod], cells)
 	cells = cell('When', 8, [when], cells)
 	cells = cell('Check Trait', 14, [trait], cells)
@@ -80,10 +92,14 @@ def skill_check_post(entry, body, cells):
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
+	cells = cell('Circumstance', 18, [circ], cells)
+	cells = cell('DC', 18, [dc], cells)
+	cells = cell('Degree', 18, [degree], cells)
+	cells = cell('Movement', 18, [move], cells)
+	cells = cell('Time', 18, [time], cells)
+
 	cells = check_cell('Free', 7, free, cells)
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)
-
-	cells = cell('Circumstance', 30, [circumstance], cells)
 
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
@@ -802,6 +818,7 @@ def skill_time_post(entry, body, cells):
 	dc = entry.dc
 	turns = entry.turns
 	keyword = entry.keyword
+	
 
 	trait = trait_select(trait, trait_type)
 

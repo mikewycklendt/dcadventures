@@ -187,6 +187,12 @@ class SkillCheck(db.Model):
 	action_type = db.Column(db.String())
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
+	keyword = db.Column(db.String())
+	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	move = db.Column(db.Integer, db.ForeignKey('skill_MOVE.id'))
 
 	def format(self):
 		return {
@@ -206,7 +212,13 @@ class SkillCheck(db.Model):
 			'condition2': self.condition2,
 			'action_type': self.action_type,
 			'action': self.action,
-			'free': self.free
+			'free': self.free,
+			'degree': self.degree,
+			'circ': self.circ,
+			'dc': self.dc,
+			'time': self.time,
+			'move': self.move,
+			'keyword': self.keyword
 		}
 
 class SkillCirc(db.Model):

@@ -63,7 +63,13 @@ function check_submit() {
 	const action_type = select("check_action_type")
 	const action = select("check_action")
 	const free = check("check_free")
-
+	const keyword = text("check_keyword")
+	const degree = select("check_degree")
+	const circ = select("check_circ")
+	const dc = select("check_dc")
+	const time = select("check_time")
+	const move = select("check_move")
+	
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
 
@@ -93,7 +99,13 @@ function check_submit() {
 			'condition2': condition2,
 			'action_type': action_type,
 			'action': action,
-			'free': free
+			'free': free,
+			'degree': degree,
+			'circ': circ,
+			'dc': dc,
+			'time': time,
+			'move': move,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

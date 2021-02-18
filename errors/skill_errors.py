@@ -152,6 +152,13 @@ def skill_check_post_errors(data):
 	action_type = data['action_type']
 	action = data['action']
 	free = data['free']
+	degree = data['degree']
+	circ = data['circ']
+	dc = data['dc']
+	time = data['time']
+	move = data['move']
+	keyword = data['keyword']
+
 	
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -162,11 +169,18 @@ def skill_check_post_errors(data):
 	errors = id_check(Ranged, conflict_range, 'Conflict Range', errors)
 	errors = int_check(action, 'Action', errors)
 
+	errors = id_check(SkillDegree, degree, 'Degree', errors)
+	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
+	errors = id_check(SkillDC, dc, 'DC', errors)
+	errors = id_check(SkillTime, time, 'Time Effect', errors)
+	errors = id_check(SkillMove, move, 'Movement Effect', errors)
+``
 	errors = required(check_type, 'Check Type', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(when, 'When', errors)
 	errors = required(action_type, 'Action Type', errors)
-	errors = required(Action, 'Action', errors)
+	errors = required(action, 'Action', errors)
+	errors = required(keyword, 'Ketword', errors)
 
 	errors = variable_fields('condition', 'Trigger', trigger, [condition1, condition2], errors)
 	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)

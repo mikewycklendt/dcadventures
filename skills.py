@@ -621,6 +621,18 @@ def skill_bonus_post_check():
 	action_type = request.get_json()['action_type']
 	action = request.get_json()['action']
 	free = request.get_json()['free']
+	degree degree
+	circ circ
+	dc dc
+	time time
+	move move
+	keyword keyword
+
+	degree = db_integer(SkillDegree, degree)
+	circ = db_integer(SkillCirc, circ)
+	dc = db_integer(SkillDC, dc)
+	time = db_integer(SkillTime, time)
+	move = db_integer(SkillMove, move)
 
 	skill_id = integer(skill_id)
 	check_type = db_integer(Check, check_type)
@@ -648,7 +660,14 @@ def skill_bonus_post_check():
 						condition2 = condition2,
 						action_type = action_type,
 						action = action,
-						free = free)
+						free = free
+						degree degree
+						circ circ
+						dc dc
+						time time
+						move move
+						keyword keyword
+					)
 
 	db.session.add(entry)
 	db.session.commit()
