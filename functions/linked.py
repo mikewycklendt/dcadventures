@@ -77,9 +77,13 @@ def linked_options_bonus(table):
 		
 	entries = db.session.query(table).all()
 	for e in entries:
+		if e.keyword is None:
+			keyword = ''
+		else:
+			keyword = e.keyword
 		skill_id = e.skill_id
 		entry_name = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
-		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
+		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
 
 	return (options)
 
@@ -90,7 +94,7 @@ def linked_options_power(table):
 	for e in entries:
 		id = e.power_id
 		entry_name = db.session.query(Power).filter(Power.id == id).one()
-		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
+		options.append({'id': e.id, 'name': str(e.id) + entry_name.name + ' ' + e.keyword})
 
 	return (options)
 	
