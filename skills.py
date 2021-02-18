@@ -40,8 +40,6 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
 
-from base_files import bonus_circ, bonus_dc, bonus_degree, bonus_opposed
-
 load_dotenv()
 
 import os
@@ -52,7 +50,7 @@ skill = Blueprint('skill', __name__)
 db = SQLAlchemy()
 
 @skill.route('/skill/create')
-def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree, bonus_opposed=bonus_opposed):
+def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
 	includehtml = 'skill_create/skill_create.html'
 
 	skill_includes = {'base_form': 'skill_create/base_form.html', 'dc': 'skill_create/dc_table.html', 'levels': 'skill_create/levels.html', 'degree_mod': 'skill_create/degree_mod.html', 'circ': 'skill_create/circ.html', 'alt_check': 'skill_create/alt_check.html', 'opposed': 'skill_create/opposed.html', 'modifiers': 'skill_create/modifiers.html', 'time': 'skill_create/time.html', 'ability': 'skill_create/ability.html', 'move': 'skill_create/move.html'}
@@ -236,7 +234,13 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	trait_type = [{'type': 'rank', 'name': 'Trait Rank'}, {'type': 'check', 'name': 'Check Result'}]
 
-	bonus_circ
+	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id')
+
+	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id')
+	
+	bonus_degree = linked_options(SkillDegree, SkillBonus, 'skill_id')
+	
+	bonus_opposed = linked_options(SkillOpposed, SkillBonus, 'skill_id')
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
