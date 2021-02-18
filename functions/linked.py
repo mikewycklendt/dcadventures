@@ -14,7 +14,7 @@ from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, Ski
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, c
 from copy import deepcopy
 
 db = SQLAlchemy()
