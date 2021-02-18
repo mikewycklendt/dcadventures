@@ -4,7 +4,7 @@ import dateutil.parser
 import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
 from flask_moment import Moment
-from sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
@@ -54,25 +54,25 @@ title = 'DC Adventures Online Roleplaying Game'
 sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
 
 bonus_circ = []
-entries = SkillCirc.query.all()
+entries = db.session.query(SkillCirc).all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_circ.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_dc = []
-entries = SkillCirc.query.all()
+entries = db.session.query(SkillDC).all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_dc.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_degree = []
-entries = SkillCirc.query.all()
+entries = db.session.query(SkillDegree).all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_degree.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_opposed = []
-entries = SkillCirc.query.all()
+entries = db.session.query(SkillOpposed).all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_opposed.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})

@@ -965,3 +965,13 @@ def linked_level(value, column, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def linked_options(table, parent, column):
+	options = []
+		
+	entries = db.session.query(table).all()
+	for e in entries:
+		entry_name = db.session.query(parent).filter_by(id = e.c[column]).one()
+		options.append({'id': e.id, 'name': entry_name + ' ' + e.keyword})
+
+	return (options)
