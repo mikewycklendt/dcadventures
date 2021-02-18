@@ -22,6 +22,7 @@ function ability_submit() {
 	const skill_id = select("create_bonus_select");
 	const ability = select("ability_ability");
 	const circumstance = text("ability_circumstance");
+	const variable = select("ability_variable")
 
 	const errors = 'ability-err';
 	const err_line = 'ability-err-line';
@@ -34,7 +35,8 @@ function ability_submit() {
 			'created': created,
 			'font': font,
 			'ability': ability,
-			'circumstance': circumstance
+			'circumstance': circumstance,
+			'variable': variable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -175,16 +175,13 @@ function circ_submit() {
 			const id = jsonResponse.id
 
 			selects_add(id, keyword, circ_selects);
-			if (target == 'opp') {
-				selects_add(id, keyword, opp_selects);
-			}
 
 			circ_grid.columns.length = 0;
 			circ_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, circ_grid, route, [circ_selects, opp_selects]);
+			create_table(jsonResponse, circ_grid, route, [circ_selects]);
 			clear_errors(err_line, errors)
 
 			circ_grid.titles = true;

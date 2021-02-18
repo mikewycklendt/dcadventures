@@ -13,6 +13,12 @@
 	font-size: 100%;
 }
 
+.check-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 #check-base {
 	opacity: 0%;
 	transition: all .4s ease-out;
@@ -93,6 +99,33 @@
 	transition: all .4s ease-out;
 	text-align: center;
 	grid-template-columns: 27% 7% 30% 6% 30%;
+}
+
+#check-attack {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 80%;
+}
+
+#check-opposed {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 40% 60%;
+}
+
+#check-compare {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 40% 60%;
 }
 
 #check-conflict {

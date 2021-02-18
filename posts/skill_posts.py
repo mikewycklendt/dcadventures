@@ -26,10 +26,13 @@ def skill_ability_post(entry, body, cells):
 
 	ability = entry.ability
 	circumstance = entry.circumstance
+	variable = entry.variable
 
 	ability = get_name(Ability, ability)
+	variable = get_keyword(SkillCheck, variable)
 
 	cells = cell('Ability', 15, [ability])
+	cells = cell('Checl', 18, variable)
 	cells = cell('Circumstance', 75, [circumstance])
 
 	body = send(cells, body)
@@ -61,6 +64,8 @@ def skill_check_post(entry, body, cells):
 	time = entry.time
 	move = entry.move
 	keyword = entry.keyword
+	attack = entry.attack
+	opposed = entry.opposed
 
 	trait = trait_select(trait, trait_type)
 
@@ -77,6 +82,9 @@ def skill_check_post(entry, body, cells):
 	dc = get_keyword(SkillDC, dc)
 	time = get_keyword(SkillTime, time)
 	move = get_keyword(SkillMove, move)
+	opposed = get_keyword(SkillOpposed, opposed)
+
+	attack = integer_convert(attack)
 
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
 	when = selects(when, check_type_select)
@@ -93,6 +101,9 @@ def skill_check_post(entry, body, cells):
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
+	attack = add_plus(attack)
+	cells = cell('Attack', 9, [attack], cells)
+	cells = cell('Opposed', 18, [opposed], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Degree', 18, [degree], cells)
@@ -101,8 +112,6 @@ def skill_check_post(entry, body, cells):
 
 	cells = check_cell('Free', 7, free, cells)
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)
-
-	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
 	body = send(cells, body)
 

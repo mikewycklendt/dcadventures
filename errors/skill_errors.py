@@ -121,12 +121,14 @@ def skill_ability_post_errors(data):
 	skill_id = data['skill_id']
 	ability = data['ability']
 	circumstance = data['circumstance']
+	variable = data['variable']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 	errors = id_check(Ability, ability, 'Ability', errors)
-
+	errors = id_check(SkillCheck, variable, 'Variable Check', variable)
+	
 	errors = required(ability, 'Ability', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 
@@ -158,6 +160,8 @@ def skill_check_post_errors(data):
 	time = data['time']
 	move = data['move']
 	keyword = data['keyword']
+	attack = data['attack']
+	opposed= data ['opposed']
 
 	
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
@@ -174,7 +178,10 @@ def skill_check_post_errors(data):
 	errors = id_check(SkillDC, dc, 'DC', errors)
 	errors = id_check(SkillTime, time, 'Time Effect', errors)
 	errors = id_check(SkillMove, move, 'Movement Effect', errors)
-``
+	errors = id_check(SkillOpposed, opposed, 'Opponent Check', errors)
+
+	errors = int_check(attack, 'Attack Check Modifier', errors)
+
 	errors = required(check_type, 'Check Type', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(when, 'When', errors)
@@ -192,6 +199,8 @@ def skill_check_post_errors(data):
 
 	errors = variable_field_linked('1', check_type, dc, 'Skill Check', 'DC', errors)
 	errors = variable_field_linked('6', check_type, dc, 'Resistance Check', 'DC', errors)
+	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
+	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
 
 	return (errors)
 

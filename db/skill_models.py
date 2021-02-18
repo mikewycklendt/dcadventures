@@ -158,6 +158,7 @@ class SkillAbility(db.Model):
 	skill_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	ability = db.Column(db.Integer, db.ForeignKey('abilities.id'))
 	circumstance = db.Column(db.String())
+	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
 
 
 	def format(self):
@@ -165,7 +166,8 @@ class SkillAbility(db.Model):
 			'id': self.id,
 			'skill_id': self.skill_id,
 			'ability': self.ability,
-			'circumstance': self.circumstance
+			'circumstance': self.circumstance,
+			'variable': self.variable
 		}
 
 class SkillCheck(db.Model):
@@ -193,6 +195,8 @@ class SkillCheck(db.Model):
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	move = db.Column(db.Integer, db.ForeignKey('skill_move.id'))
+	attack = db.Column(db.Integer)
+	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 
 	def format(self):
 		return {
@@ -218,7 +222,9 @@ class SkillCheck(db.Model):
 			'dc': self.dc,
 			'time': self.time,
 			'move': self.move,
-			'keyword': self.keyword
+			'keyword': self.keyword,
+			'attack': self.attack,
+			'opposed': self.opposed
 		}
 
 class SkillCirc(db.Model):

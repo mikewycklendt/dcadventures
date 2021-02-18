@@ -33,13 +33,11 @@
 	<div id="check-row2">
 
 		<div>
-			<select class="entry-select" id="check_check_type" name="check_check_type">
+			<select class="entry-select" id="check_check_type" name="check_check_type" onchange="check_check_type()">
 				<option value="">Check Type</option>
-				<option value=1>Skill Check</option>>
-				<option value="6">Resistance Check</option>
-				<option value=3>Routine Check</option>
-				<option value=5>Attack Check</option>5
-				<option value=7>Comparison Check</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -96,6 +94,44 @@
 			</select>
 		</div>
 
+	</div>
+
+	<div id="check-attack">
+		<div>
+			<select class="select-sml" id="check_attack" name="check_attack">
+				<option value="">Attack Check Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-oppoaed">
+		<div>
+			<select class="opposed-sml" id="check_opposed" name="check_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use opponent check form to put options here</option>
+				{% for b in bonus_opposed %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-dc">
+		<div>
+			<select class="dc-opp-sml" id="check_dc" name="check_dc">
+				<option value="">DC</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="check-conflict">
@@ -177,16 +213,6 @@
 				<option value="">Circumstance</option>
 				<option value="">Use Circumstance form to put options here</option>
 				{% for b in bonus_circ %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="dc-opp-sml" id="check_dc" name="check_dc">
-				<option value="">DC</option>
-				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>

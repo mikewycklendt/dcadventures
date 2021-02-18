@@ -535,13 +535,16 @@ def skill_bonus_post_ability():
 	font = request.get_json()['font']
 	ability = request.get_json()['ability']
 	circumstance = request.get_json()['circumstance']
+	variable = request.get_json()['variable']
 
 	skill_id = integer(skill_id)
 	ability = db_integer(Ability, ability)
+	variable = db_integer(SkillCheck, variable)
 
 	entry = SkillAbility(skill_id = skill_id,
 							ability = ability,
-							circumstance = circumstance)
+							circumstance = circumstance,
+							variable = variable)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -633,12 +636,17 @@ def skill_bonus_post_check():
 	time = request.get_json()['time']
 	move = request.get_json()['move']
 	keyword = request.get_json()['keyword']
+	attack = request.get_json()['attack']
+	opposed = request.get_json()['opposed']
 
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
 	time = db_integer(SkillTime, time)
 	move = db_integer(SkillMove, move)
+	opposed = db_integer(SkillOpposed, opposed)
+
+	attack = integer(attack)
 
 	skill_id = integer(skill_id)
 	check_type = db_integer(Check, check_type)
@@ -672,7 +680,9 @@ def skill_bonus_post_check():
 						dc = dc,
 						time = time,
 						move = move,
-						keyword = keyword
+						keyword = keyword,
+						attack = attack,
+						opposed = opposed
 					)
 
 	db.session.add(entry)

@@ -350,16 +350,13 @@ function deg_mod_submit() {
 			const id = jsonResponse.id;
 
 			selects_add(id, keyword, selects);
-			if (target == 'opp') {
-				selects_add(id, keyword, opp_selects);
-			}
 
 			deg_mod_grid.columns.length = 0;
 			deg_mod_grid.columns = jsonResponse.rows
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/degree/delete/'
-			create_table(jsonResponse, deg_mod_grid, route, [selects, opp_selects]);
+			create_table(jsonResponse, deg_mod_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 

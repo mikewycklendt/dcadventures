@@ -304,6 +304,55 @@ function select_maxheight_entry(select, options, entry) {
 	}
 }
 
+function select_maxheight_shared(select, options, entry) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+	const adiv = options[0].div;
+
+	let any_match = false;
+
+	console.log(val);
+
+	for (option of options) {
+		const values = option.val;
+		const div = option.div;
+
+		let value;
+		for (value of values) {
+			let match = false;
+			if (val == value) {
+				match  = true;
+				any_match = true;
+			}
+		}
+		if (match == true) {
+			show_maxheight(div);
+		} else {
+			hide_maxheight(div);
+		}
+	};
+
+	if (any_match == false) {
+		shrink_entry(entry, adiv)
+	} else {	
+		for (option of options) {
+			const values = option.val;
+			const div = option.div;
+			let match = false;
+			let value;
+			for (value of values) {
+				if (val == value) {
+					match  = true;
+				}
+			}
+			if (match == true) {
+				show_maxheight(div);
+			}
+		};
+	}
+}
+
 function hide_secondary(select_input, options, entry) {
 	const select = document.getElementById(select_input)
 	const value = select.options[select.selectedIndex].value;
