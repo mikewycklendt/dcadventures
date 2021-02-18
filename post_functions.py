@@ -971,7 +971,7 @@ def linked_options(table, parent, column):
 		
 	entries = db.session.query(table).all()
 	for e in entries:
-		entry_name = db.session.query(parent).filter(getattr(table, column)).one()
+		entry_name = db.session.query(parent).filter(id == getattr(table, column)).one()
 		options.append({'id': e.id, 'name': entry_name + ' ' + e.keyword})
 
 	return (options)
