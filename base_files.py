@@ -30,25 +30,25 @@ title = 'DC Adventures Online Roleplaying Game'
 sidebar = ["rules", "games", "stories", "heroes","npcs", "locations", "skills", "abilities", "powers", "flaws", "equipment", "devices", "armor", "weapons", "vehicles", "constructs", "help"]
 
 bonus_circ = []
-entries = SkillCirc.query.all
+entries = SkillCirc.query.all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_circ.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_dc = []
-entries = SkillCirc.query.all
+entries = SkillCirc.query.all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_dc.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_degree = []
-entries = SkillCirc.query.all
+entries = SkillCirc.query.all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_degree.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
 
 bonus_opposed = []
-entries = SkillCirc.query.all
+entries = SkillCirc.query.all()
 for e in entries:
 	bonus_name = db.session.query(SkillBonus).filter_by(id = e.skill_id).one()
 	bonus_opposed.append({'id': e.id, 'name': bonus_name + ' ' + e.keyword})
