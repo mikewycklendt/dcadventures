@@ -966,13 +966,13 @@ def linked_level(value, column, errors):
 
 	return (errors)
 
-def linked_options(table, parent, column):
+def linked_options_bonus(table):
 	options = []
 		
 	entries = db.session.query(table).all()
 	for e in entries:
-		skill_id = e.getattr(table, column)
-		entry_name = db.session.query(parent).filter(id == skill_id).one()
-		options.append({'id': e.id, 'name': entry_name + ' ' + e.keyword})
+		skill_id = e.skill_id
+ 		entry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
+		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 
 	return (options)
