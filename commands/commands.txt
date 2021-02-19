@@ -12,7 +12,10 @@ git reset --hard FETCH_HEADsud
 white-space: pre-line;
 white-space: pre-wrap;
 
+user = session.query(User).get(someid)
 
+for key, value in yourdict.iteritems():
+    setattr(user, key, value)
 
 # Users whose age is 23 AND (firstname IS alex OR lastname IS watson)
 usrs = session.query(User) \
