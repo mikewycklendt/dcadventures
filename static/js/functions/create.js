@@ -346,7 +346,7 @@ function select_maxheight_shared(select, options, entry) {
 				}
 			}
 			if (match == true) {
-				show_maxheight(div);
+				grow_entry(entry, adiv);
 			}
 		};
 	}
