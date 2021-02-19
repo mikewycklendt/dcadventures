@@ -14,7 +14,7 @@ from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, Ski
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
-import sqlalchemy
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import literal_column
 from copy import deepcopy
 
@@ -75,6 +75,7 @@ def linked_move(table, value, name, errors):
 
 def linked_options(table, trait, column):
 	options = []
+
 		
 	entries = db.session.query(table).all()
 	for e in entries:
@@ -82,7 +83,7 @@ def linked_options(table, trait, column):
 			keyword = ''
 		else:
 			keyword = e.keyword
-		id = e.c[column]
+		id = getattr(e, column)
 		entry_name = db.session.query(trait).filter(trait.id == id).one()
 		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
 
