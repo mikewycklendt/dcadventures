@@ -329,27 +329,26 @@ function select_maxheight_shared(select, options, entry) {
 			show_maxheight(div);
 		} else {
 			hide_maxheight(div);
-		}
+		}	
 	};
 
-	if (any_match == true) {
-		const values = option.val;
-		const div = option.div;
-		let match = false;
-		let value;
-		for (value of values) {
-			if (val == value) {
-				match  = true;
-				any_match = true;
+	if (any_match == true) {		
+		for (option of options) {
+			const values = option.val;
+			const div = option.div
+			let value;
+			for (value of values) {
+				if (val == value) {
+				grow_entry(entry, div)
+				}
 			}
-		}
-		if (match == true) {
-			grow_entry(entry, div);
-		}
-	} else {	
-		shrink_entry(entry, adiv);		
+		};
 	}
+
 }
+
+
+
 
 function hide_secondary(select_input, options, entry) {
 	const select = document.getElementById(select_input)
