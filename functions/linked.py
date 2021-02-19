@@ -89,38 +89,18 @@ def linked_options(table, trait, column):
 
 	return (options)
 
-def linked_options_power(table):
-	options = []
-	
-	entries = db.session.query(table).all()
-	for e in entries:
-		id = e.power_id
-		entry_name = db.session.query(Power).filter(Power.id == id).one()
-		options.append({'id': e.id, 'name': str(e.id) + entry_name.name + ' ' + e.keyword})
-
-	return (options)
-	
-def linked_options_advantage(table):
-	options = []
-
-	entries = db.session.query(table).all()
-	for e in entries:
-		id = e.advantage_id
-		entry_name = db.session.query(Advantage).filter(Advantage.id == id).one()
-		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
-		
-	return (options)
-
-def level_reference(value, column, errors):
+def level_reference(column, value, errors):
 	
 	error_msgs = errors['error_msgs']
 	error = False
+
+	add = True
 
 	if value != '':
 		try:
 			value = int(value)
 			edit = db.session.query(Levels).filter(Levels.id == value).one()
-			edit.c[column] = True
+			setattr(edit, column, add)
 			db.session.commit()
 		except:
 			error = True

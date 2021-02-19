@@ -17,13 +17,9 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
 
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
-from base_files import sidebar, stylesheets, meta_name, meta_content, title
-
-from functions.linked import linked_options, level_reference, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, linked_move, linked_time, linked_options_advantage, linked_options_power
-
 from models import setup_db
+
+from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
@@ -42,6 +38,12 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
+
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
+from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
+
+from functions.linked import linked_options, level_reference, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, linked_move, linked_time, linked_options_advantage, linked_options_power
+from functions.user_functions import user_item
 
 load_dotenv()
 
@@ -777,7 +779,7 @@ def skill_bonus_post_circ():
 
 	errors = skill_circ_post_errors(data)
 
-	errors = level_bonus_circ(level, errors)
+	errors = level_reference('bonus_circ', level, errors)
 
 	error = errors['error']
 	if error:
@@ -965,7 +967,7 @@ def skill_bonus_post_dc():
 	complexity = request.get_json()['complexity']
 	errors = skill_dc_post_errors(data)
 
-	errors = level_bonus_dc(level, errors)
+	errors = level_reference('bonus_dc', level, errors)
 
 	error = errors['error']
 	if error:
@@ -1201,7 +1203,7 @@ def skill_bonus_post_degree():
 
 	errors = skill_degree_post_errors(data)
 
-	errors = level_bonus_degree(level, errors)
+	errors = level_reference('bonus_degree', level, errors)
 
 	error = errors['error']
 	if error:
@@ -1901,68 +1903,26 @@ def skill_post_modifiers():
 
 
 	body = {}
+	body['new'] = False
+	body['new_items'] = []
+	body['error_msgs'] = []
 
 	try:
-		body['new'] = False
-		new_items = []
 
-		if emotion == 'other':	
-			entry = Emotion(name=emotion_other)
-			db.session.add(entry)
-			db.session.commit()
-			emotion = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_emotion'
-			new_items.append(item)
-			db.session.close()
+		body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
+		emotion = body['new_id']
+		
+		body = user_item(Environment, 'Environment', environment, environment_other, 'modifiers_environment', body)
+		environment = body['new_id']
+		
+		body = user_item(Creature, 'Creature', creature, creature_other, 'modifiers_creature', body)
+		creature = body['new_id']
+		
+		body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
+		creature = body['new_id']
 
-		if environment == 'other':	
-			entry = Environment(name=environment_other)
-			db.session.add(entry)
-			db.session.commit()
-			environment = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_environment'
-			new_items.append(item)
-			db.session.close()
-
-		if creature == 'other':	
-			entry = Creature(name=creature_other)
-			db.session.add(entry)
-			db.session.commit()
-			creature = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_creature'
-			new_items.append(item)
-			db.session.close()
-
-		if profession == 'other':	
-			entry = Job(name=profession_other)
-			db.session.add(entry)
-			db.session.commit()
-			profession = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_profession'
-			new_items.append(item)
-			db.session.close()
-
-		body['new_items'] = new_items
+		if body['success'] == False:
+			return jsonify(body)
 
 		skill_id = integer(skill_id)
 		environment = db_integer(Environment, environment)
