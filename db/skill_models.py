@@ -724,7 +724,6 @@ class SkillMove(db.Model):
 	distance_math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	distance_description = db.Column(db.String())
 	direction = db.Column(db.String())
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	turns = db.Column(db.Integer)
 	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
@@ -764,7 +763,6 @@ class SkillMove(db.Model):
 			'distance_math_units': self.distance_math_units,
 			'distance_description': self.distance_description,
 			'direction': self.direction,
-			'check_type': self.check_type,
 			'turns': self.turns,
 			'degree': self.degree,
 			'circ': self.circ,

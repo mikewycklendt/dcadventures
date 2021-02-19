@@ -644,7 +644,6 @@ def skill_move_post(entry, body, cells):
 	distance_math_units = entry.distance_math_units
 	distance_description = entry.distance_description
 	direction = entry.direction
-	check_type = entry.check_type
 	degree = entry.degree
 	circ = entry.circ
 	dc = entry.dc
@@ -684,14 +683,12 @@ def skill_move_post(entry, body, cells):
 	distance_unit_math1 = math_convert(distance_unit_math1)
 	distance_unit_math2 = math_convert(distance_unit_math2)
 	distance_math_units = get_name(Unit, distance_math_units)
-	check_type = get_name(Check, check_type)
 
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)
 
 
 	cells = cell('Keyword', 18, [keyword])
-	cells = cell('Check', 16, [check_type], cells)
 	cells = cell('Direction', 12, [direction], cells)
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])

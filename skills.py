@@ -1433,7 +1433,6 @@ def skill_bonus_post_move():
 	distance_math_units = request.get_json()['distance_math_units']
 	distance_description = request.get_json()['distance_description']
 	direction = request.get_json()['direction']
-	check_type = request.get_json()['check_type']
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
@@ -1479,7 +1478,6 @@ def skill_bonus_post_move():
 	distance_unit_math1 = db_integer(Math, distance_unit_math1)
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
-	check_type = db_integer(Check, check_type)
 	
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
@@ -1510,7 +1508,6 @@ def skill_bonus_post_move():
 						distance_math_units = distance_math_units,
 						distance_description = distance_description,
 						direction = direction,
-						check_type = check_type,
 						degree = degree,
 						dc = dc,
 						circ = circ)			

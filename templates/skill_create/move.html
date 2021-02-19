@@ -12,7 +12,7 @@
 				{% endfor %}
 			</select>
 		</div>
-		
+
 		<div>
 			<input type="text" id="move_keyword" name="move_keyword" placeholder="Keyword">
 		</div>
@@ -289,17 +289,6 @@
 	
 	<div id="move-row3">
 	
-		<div>
-			<select class="check-sml" id="move_check_type" name="move_check_type">
-				<option value="">Check Type</option>
-				<option value="">Use Variable Check form to put options here</option>
-				<option value="base">Base Skill Check</option>
-				{% for c in bonus_check %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
 		<div>
 			<select class="time-sml" id="move_time" name="opposed_time">
 				<option value="">Time Effect</option>

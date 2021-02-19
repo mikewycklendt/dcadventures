@@ -764,7 +764,6 @@ def skill_move_post_errors(data):
 	distance_unit_value2 = data['distance_unit_value2']
 	distance_math_units = data['distance_math_units']
 	direction = data['direction']
-	check_type = data['check_type']
 	turns = data['turns']
 	distance_description = data['distance_description']
 	speed_description = data['speed_description']
@@ -804,7 +803,6 @@ def skill_move_post_errors(data):
 	errors = id_check(Math, distance_unit_math1, 'Distance Msth 1', errors)
 	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
-	errors = id_check(Check, check_type, 'Check', errors)	
 	
 	errors = required(keyword, 'Keyword', errors)
 	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
@@ -842,7 +840,6 @@ def skill_move_post_errors(data):
 
 	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
-	errors = required(check_type, 'Check Type', errors)
 	errors = required_keyword(time, 'a Movement effect', 'Time Effect', errors)
 	errors = required(direction, 'Direction', errors)
 

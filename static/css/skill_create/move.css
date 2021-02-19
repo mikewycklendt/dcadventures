@@ -10,7 +10,7 @@
 }
 
 #move-base {
-	grid-template-columns: 40% 60%%;
+	grid-template-columns: 40% 60%;
 }
 
 #move-entry input[type="text"] {
@@ -60,7 +60,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 15% auto auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	grid-auto-rows: auto;
 }
 

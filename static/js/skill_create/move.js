@@ -95,7 +95,6 @@ function move_submit() {
 	const distance_math_units = select("move_distance_math_units");
 	const distance_description = text("move_distance_description");
 	const direction = select("move_direction");
-	const check_type = select("move_check_type");
 	const dc = select("move_dc");
 	const degree = select("move_degree");
 	const circ = select("move_circ");
@@ -142,7 +141,6 @@ function move_submit() {
 			'distance_math_units': distance_math_units,
 			'distance_description': distance_description,
 			'direction': direction,
-			'check_type': check_type,
 			'degree': degree,
 			'circ': circ,
 			'dc': dc,
