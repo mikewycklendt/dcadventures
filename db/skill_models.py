@@ -320,7 +320,7 @@ class SkillDC(db.Model):
 	damage = db.Column(db.Boolean)
 	cover = db.Column(db.Boolean)
 	complex = db.Column(db.Boolean)
-	measure = db.Column(db.Boolea)
+	measure = db.Column(db.Boolean)
 	conceal = db.Column(db.Boolean)
 	action_no_damage = db.Column(db.Boolean)
 	damage_type = db.Column(db.String())
