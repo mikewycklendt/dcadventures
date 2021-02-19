@@ -320,11 +320,8 @@ class SkillDC(db.Model):
 	damage = db.Column(db.Boolean)
 	cover = db.Column(db.Boolean)
 	complex = db.Column(db.Boolean)
-	measure = db.Column(db.Boolean)
-	change_action = db.Column(db.Boolean)
+	measure = db.Column(db.Boolea)
 	conceal = db.Column(db.Boolean)
-	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	action_when = db.Column(db.String())
 	action_no_damage = db.Column(db.Boolean)
 	damage_type = db.Column(db.String())
 	inflict_type = db.Column(db.String())
@@ -368,7 +365,8 @@ class SkillDC(db.Model):
 	conceal_effect = db.Column(db.String())
 	conceal_type = db.Column(db.Integer, db.ForeignKey('concealment.id'))
 	tools = db.Column(db.String())
-
+	variable_check = db.Column(db.Boolean)
+	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
 
 	def format(self):
 		return {
@@ -436,7 +434,9 @@ class SkillDC(db.Model):
 			'cover_type': self.cover_type,
 			'conceal_effect': self.conceal_effect,
 			'conceal_type': self.conceal_type,
-			'tools': self.tools
+			'tools': self.tools,
+			'variable_checK': self.variable_check,
+			'variable': self.variable
 		}
 
 class SkillDegree(db.Model):
