@@ -316,8 +316,8 @@ def skill_dc_post(entry, body, cells):
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
-	cells = cell('Target', 15, [target])
-	cells = cell('Keyword', 20, [keyword], cells)
+	cells = cell('Keyword', 20, [keyword])
+	cells = cell('Target', 15, [target], cells)
 	
 	vcells = vcell('value', 6, [value])
 	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
@@ -547,9 +547,9 @@ def skill_degree_post(entry, body, cells):
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
-	cells = cell('Target', 15, [target])
+	cells = cell('Keyword', 15, [keyword])
+	cells = cell('Target', 15, [target], cells)
 	cells = cell('Degree', 8, [value], cells)
-	cells = cell('Keyword', 15, [keyword], cells)
 
 	vcells = vcell('action', 40, ['Action Changed to', action])
 
@@ -759,9 +759,9 @@ def skill_opposed_post(entry, body, cells):
 	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}]
 	attached = selects(attached, attached_select)
 
-	cells = cell('When', 13, [attached])
+	cells = cell('Keyword', 15, [keyword])
+	cells = cell('When', 13, [attached], cells)
 	cells = cell('Frequency', 13, [frequency], cells)
-	cells = cell('Keyword', 15, [keyword], cells)
 	cells = cell('Player Check', 15, [trait], cells)
 	cells = cell('Modifier', 9, [mod], cells)
 	cells = cell('Check', 14, [player_check], cells)
@@ -838,8 +838,8 @@ def skill_time_post(entry, body, cells):
 	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Preparation'}, {'type': 'action', 'name': 'Action Duration'}, {'type': 'limit', 'name': 'Limit to Respond'}, {'type': 'lasts', 'name': 'Effect Duration'}]
 	type = selects(type, time_effect_select)
 
-	cells = cell('Time Type', 20, [type])
-	cells = cell('Keyword', 17, [keyword], cells)
+	cells = cell('Keyword', 17, [keyword])
+	cells = cell('Time Type', 20, [type], cells)
 
 	vcells = vcell('value', 17, [value, units])
 	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
