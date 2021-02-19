@@ -362,6 +362,13 @@ class SkillDC(db.Model):
 	complexity = db.Column(db.Integer, db.ForeignKey('complexity.id'))
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
+	tools_check = db.Column(db.Boolean)
+	cover_effect = db.Column(db.String())
+	cover_type = db.Column(db.Integer, db.ForeignKey('cover.id'))
+	conceal_effect = db.Column(db.String())
+	conceal_type = db.Column(db.Integer, db.ForeignKey('concealment.id'))
+	tools = db.Column(db.String())
+
 
 	def format(self):
 		return {
@@ -423,7 +430,13 @@ class SkillDC(db.Model):
 			'keyword': self.keyword,
 			'complexity': self.complexity,
 			'time_table': self.time_table,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'tools_check': self.tools_check,
+			'cover_effect': self.cover_effect,
+			'cover_type': self.cover_type,
+			'conceal_effect': self.conceal_effect,
+			'conceal_type': self.conceal_type,
+			'tools': self.tools
 		}
 
 class SkillDegree(db.Model):

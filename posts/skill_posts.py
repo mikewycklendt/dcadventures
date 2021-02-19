@@ -181,6 +181,12 @@ def skill_circ_post(entry, body, cells):
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	conditions_effect = selects(conditions_effect, updown)
 
+	
+	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
+
+	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'gm', 'name': 'GM Decides'}]
+
+
 
 	cells = cell('Keyword', 18, [keyword])
 	cells = cell('Target', 16, [circ_target], cells)

@@ -87,6 +87,22 @@ function dc_check_type() {
 	check_drop(check, div, entry)
 }
 
+function dc_cover() {
+	const check = 'dc_cover'
+	const div = 'dc-cover';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry)
+}
+
+function dc_conceal() {
+	const check = 'dc_conceal'
+	const div = 'dc-conceal';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry)
+}
+
 function dc_check_trait_type() {
 	const select = 'dc_check_trait_type';
 	const fill = 'dc_check_trait';
@@ -152,6 +168,14 @@ function dc_measure_trait_type_unit() {
 function dc_damage() {
 	const check = 'dc_damage';
 	const div = 'dc-damage';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry);
+}
+
+function dc_tools_check() {
+	const check = 'dc_tools_check';
+	const div = 'dc-tools';
 	const entry = 'dc-entry';
 
 	check_drop(check, div, entry);
@@ -250,6 +274,12 @@ function dc_submit() {
 	const condition_no_damage = check("dc_condition_no_damage")
 	const keyword = text("dc_keyword")
 	const complexity = select("dc_complexity")
+	const tools_check = check("dc_tools_check");
+	const cover_effect = select("dc_cover_effect")
+	const cover_type = select("dc_cover_type")
+	const conceal_effect = select("dc_conceal_effect")
+	const conceal_type = select("dc_conceal_type")
+	const tools = select("dc_tools")
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -320,7 +350,8 @@ function dc_submit() {
 			'condition_turns': condition_turns,
 			'condition_no_damage': condition_no_damage,
 			'keyword': keyword,
-			'complexity': complexity
+			'complexity': complexity,
+			'tools_check': tools_check
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

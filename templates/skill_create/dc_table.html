@@ -141,7 +141,13 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_cover" class="medium-checkbox med-checkbox" > Requires Cover
+				<input type="checkbox" id="dc_cover" class="medium-checkbox med-checkbox" onclick="dc_cover()"> Cover
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_tools_check" class="medium-checkbox med-checkbox" onclick="dc_tools_check()"> Cover
 			</div>
 		</div>
 
@@ -169,7 +175,7 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_conceal" class="medium-checkbox med-checkbox" > Requires Concealment
+				<input type="checkbox" id="dc_conceal" class="medium-checkbox med-checkbox" onclick="dc_conceal()"> Concealment
 			</div>
 		</div>
 	</div>
@@ -554,6 +560,67 @@
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="dc-cover">
+		<div>
+			Cover:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_cover_effect" name="dc_cover_effect">
+				{% for o in offers %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_cover_type" name="dc_cover_type">
+				<option value="">Cover </option>
+				{% for c in cover %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>		
+		</div>
+	</div>
+
+	<div id="dc-conceal">
+		<div>
+			Concealment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_conceal_effect" name="dc_conceal_effect">
+				{% for o in offers %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_conceal_type" name="dc_conceal_type">
+				<option value="">Concealment </option>
+				{% for c in concealment %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>		
+		</div>
+	</div>
+
+	<div id="dc-tools">
+		<div>
+			Tools:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_tools" name="dc_tools">
+				{% for r in required_tools %}
+					<option value="{{r.type}}">{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 	</div>
 
 	<div id="dc-button-row">
