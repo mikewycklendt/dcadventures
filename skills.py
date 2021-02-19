@@ -5,7 +5,7 @@ import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
-from SQLAlchemy import literal_column
+from sqlalchemy.sql import literal_column
 import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
