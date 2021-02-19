@@ -335,6 +335,7 @@ function select_maxheight_shared(select, options, entry) {
 	if (any_match == false) {
 		shrink_entry(entry, adiv)
 	} else {	
+		let option;
 		for (option of options) {
 			const values = option.val;
 			const div = option.div;
