@@ -332,24 +332,22 @@ function select_maxheight_shared(select, options, entry) {
 		}
 	};
 
-	if (any_match == false) {
-		shrink_entry(entry, adiv)
+	if (any_match == true) {
+		const values = option.val;
+		const div = option.div;
+		let match = false;
+		let value;
+		for (value of values) {
+			if (val == value) {
+				match  = true;
+				any_match = true;
+			}
+		}
+		if (match == true) {
+			grow_entry(entry, div);
+		}
 	} else {	
-		let option;
-		for (option of options) {
-			const values = option.val;
-			const div = option.div;
-			let match = false;
-			let value;
-			for (value of values) {
-				if (val == value) {
-					match  = true;
-				}
-			}
-			if (match == true) {
-				grow_entry(entry, div);
-			}
-		};
+		shrink_entry(entry, adiv);		
 	}
 }
 
