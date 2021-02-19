@@ -1,5 +1,5 @@
 #move-header {
-	grid-template-columns: 75% 25%;
+	grid-template-columns: 50% 50%;
 }
 
 
@@ -10,7 +10,7 @@
 }
 
 #move-base {
-	grid-template-columns: 100%;
+	grid-template-columns: 40% 60%%;
 }
 
 #move-entry input[type="text"] {
