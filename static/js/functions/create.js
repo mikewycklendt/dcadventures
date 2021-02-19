@@ -317,10 +317,9 @@ function select_maxheight_shared(select, options, entry) {
 	for (option of options) {
 		const values = option.val;
 		const div = option.div;
-
+		let match = false;
 		let value;
 		for (value of values) {
-			let match = false;
 			if (val == value) {
 				match  = true;
 				any_match = true;
