@@ -6,6 +6,14 @@
 	
 	<div class="skill-base" id="move-base">
 		<div>
+			<select class="select-entry" id="move_direction" name="move_direction">
+				{% for d in direction %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
 			<input type="text" id="move_keyword" name="move_keyword" placeholder="Keyword">
 		</div>
 	</div>
@@ -280,13 +288,6 @@
 	</div>
 	
 	<div id="move-row3">
-		<div>
-			<select class="select-entry" id="move_direction" name="move_direction">
-				{% for d in direction %}
-					<option value="{{d.type}}">{{d.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
 	
 		<div>
 			<select class="check-sml" id="move_check_type" name="move_check_type">
