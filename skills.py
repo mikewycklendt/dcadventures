@@ -4,7 +4,7 @@ import dateutil.parser
 import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
 from flask_moment import Moment
-import sqlalchemy
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import literal_column
 import logging
 from logging import Formatter, FileHandler
