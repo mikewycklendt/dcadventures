@@ -505,7 +505,7 @@ def variable_field_linked(value, field, f, name, form, errors):
 			error = True
 				
 	if error:
-		message = 'If this rule uses a ' name + ' you must set the ' + form ' settings first.'
+		message = 'If this rule uses a ' + name + ' you must set the ' + form + ' settings first.'
 		error_msgs.append(message)
 
 
