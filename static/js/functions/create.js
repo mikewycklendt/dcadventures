@@ -332,19 +332,25 @@ function select_maxheight_shared(select, options, entry) {
 		}	
 	};
 
-	if (any_match == true) {		
+	if (any_match == false) {
+		shrink_entry(entry, adiv)
+	} else {
 		for (option of options) {
 			const values = option.val;
-			const div = option.div
+			const div = option.div;
+			let match = false;
 			let value;
 			for (value of values) {
 				if (val == value) {
-				grow_entry(entry, div)
+					match  = true;
+					any_match = true;
 				}
 			}
-		};
+			if (match == true) {
+				show_maxheight(div);
+			}
+		}
 	}
-
 }
 
 

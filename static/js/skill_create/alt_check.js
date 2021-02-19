@@ -20,9 +20,10 @@ function check_check_type() {
 					{'val': ['1', '6'], 'div': 'check-dc'}, 
 					{'val': ['2', '7'], 'div': 'check-opposed'}]
 	const fields = ['check_attack', 'check_opposed', 'check_dc']
+	const entry = 'check-entry';
 
 	reset_all(fields); 
-	select_maxheight_shared(select, options);
+	select_maxheight_shared(select, options, entry);
 }
 
 function check_trait_type() {
