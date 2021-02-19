@@ -80,7 +80,7 @@ def linked_options(table, trait, column):
 		if e.keyword is None:
 			keyword = ''
 		else:
-			keyword = e.ketword
+			keyword = e.keyword
 		id = e.c[column]
 		entry_name = db.session.query(trait).filter(trait.id == id).one()
 		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
