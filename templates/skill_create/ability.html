@@ -5,15 +5,7 @@
 	</div>
 	
 	<div class="skill-base" id="ability-base">
-		<div>
-			<select class="check-entry" id="ability_variable" name="ability_variable">
-				<option value="">Variable Check</option	>
-				<option value="">Use Variable check form to put options here</option>
-				{% for b in bonus_check %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
+
 	</div>
 
 </div>
@@ -46,6 +38,16 @@
 
 	<div id="ability-button-row">
 		<div>
+		</div>
+
+		<div>
+			<select class="check-entry" id="ability_variable" name="ability_variable">
+				<option value="">Variable Check</option	>
+				<option value="">Use Variable check form to put options here</option>
+				{% for b in bonus_check %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>
