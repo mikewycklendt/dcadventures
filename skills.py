@@ -217,7 +217,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 
-	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
+	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
 
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 
@@ -1720,9 +1720,7 @@ def skill_bonus_post_time():
 	trait = request.get_json()['trait']
 	math = request.get_json()['math']
 	math_value = request.get_json()['math_value']
-	recovery = request.get_json()['recovery']
 	recovery_penalty = request.get_json()['recovery_penalty']
-	recovery_time = request.get_json()['recovery_time']
 	recovery_incurable = request.get_json()['recovery_incurable']
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
@@ -1759,7 +1757,6 @@ def skill_bonus_post_time():
 	trait = integer(trait)
 	math_value = integer(math_value)
 	recovery_penalty = integer(recovery_penalty)
-	recovery_time = integer(recovery_time)
 
 	turns = integer(turns)
 
@@ -1777,9 +1774,7 @@ def skill_bonus_post_time():
 						trait = trait,
 						math = math,
 						math_value = math_value,
-						recovery = recovery,
 						recovery_penalty = recovery_penalty,
-						recovery_time = recovery_time,
 						recovery_incurable = recovery_incurable,
 						degree = degree,
 						circ = circ,

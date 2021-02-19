@@ -16,7 +16,7 @@
 	<div id="time-row1">
 
 		<div>
-			<select class="select-sml" id="time_type" name="time_type">
+			<select class="select-sml" id="time_type" name="time_type" onchange="time_type()">
 				{% for t in time_effect %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -160,12 +160,6 @@
 	</div>
 
 	<div id="time-row2">
-	
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="time_recovery" class="medium-checkbox med-checkbox" onclick="time_recovery()"> Recovery Time
-			</div>
-		</div>
 
 		<div>
 			<select class="degree-sml" id="time_degree" name="time_degree">
@@ -203,7 +197,7 @@
 		<div>
 			<div id="time-recovery">
 
-				<div style="font-size:70%;">
+				<div>
 					<div class="vcenter">
 						Toughness Penalty Nullified:
 					</div>
@@ -221,21 +215,8 @@
 				</div>
 	
 				<div>
-					Every
-				</div>
-	
-				<div>
-					<select class="select-sml" id="time_recovery_time" name="time_recovery_time">
-						<option value="">Time Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-				<div>
 					<div class="check-div">
-						<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > +Incurable
+						<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > Includes Incurable
 					</div>
 				</div>
 			</div>

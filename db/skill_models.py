@@ -842,9 +842,7 @@ class SkillTime(db.Model):
 	trait = db.Column(db.Integer)
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_value = db.Column(db.Integer)
-	recovery = db.Column(db.Boolean)
 	recovery_penalty = db.Column(db.Integer)
-	recovery_time = db.Column(db.Integer)
 	recovery_incurable = db.Column(db.Boolean)
 	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
@@ -869,9 +867,7 @@ class SkillTime(db.Model):
 			'trait': self.trait,
 			'math': self.math,
 			'math_value': self.math_value,
-			'recovery': self.recovery,
 			'recovery_penalty': self.recovery_penalty,
-			'recovery_time': self.recovery_time,
 			'recovery_incurable': self.recovery_incurable,
 			'degree': self.degree,
 			'circ': self.circ,

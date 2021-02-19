@@ -135,6 +135,16 @@ function check_drop(field, divdrop, entrydrop) {
 	}
 }
 
+function uncheck_all(checks_input) {
+	let checks;
+	for (checks in checks_input){
+		const check = document.getElementById(checks)
+
+		check.checked = false;
+	}
+
+}
+
 
 function check_maxheight(field, divdrop) {
 	const check = document.getElementById(field);

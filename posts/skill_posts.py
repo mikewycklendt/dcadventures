@@ -804,9 +804,7 @@ def skill_time_post(entry, body, cells):
 	trait = entry.trait
 	math = entry.math
 	math_value = entry.math_value
-	recovery = entry.recovery
 	recovery_penalty = entry.recovery_penalty
-	recovery_time = entry.recovery_time
 	recovery_incurable = entry.recovery_incurable
 	degree = entry.degree
 	circ = entry.circ
@@ -827,7 +825,6 @@ def skill_time_post(entry, body, cells):
 	math = math_convert(math)
 	math_value = integer_convert(math_value)
 	recovery_penalty = integer_convert(recovery_penalty)
-	recovery_time = integer_convert(recovery_time)
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
@@ -835,7 +832,8 @@ def skill_time_post(entry, body, cells):
 
 	turns = integer_convert(turns)
 
-	time_effect_select = [{'type': '', 'name': 'Time Type'}, {'type': 'prepare', 'name': 'Preparation'}, {'type': 'action', 'name': 'Action Duration'}, {'type': 'limit', 'name': 'Limit to Respond'}, {'type': 'lasts', 'name': 'Effect Duration'}]
+	
+	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
 	type = selects(type, time_effect_select)
 
 	cells = cell('Keyword', 17, [keyword])
@@ -853,10 +851,8 @@ def skill_time_post(entry, body, cells):
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
 
-	cells = check_cell('Recovey', 12, recovery, cells, True)
-	new_mod = mod_create('Recovery Time', 18)
-	new_mod = mod_cell('Effect', 7, [recovery_penalty, 'Toughness Penalty Nullified Every', recovery_time, 'Time Rank'], new_mod)
-	mod_add(recovery, new_mod, body)
+	cells = cell('Recovery', 9, [recovery_penalty], cells)
+	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
 	body = send(cells, body)
 

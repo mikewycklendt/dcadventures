@@ -840,6 +840,8 @@ def skill_move_post_errors(data):
 
 	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
+
+
 	errors = required_keyword(time, 'a Movement effect', 'Time Effect', errors)
 	errors = required(direction, 'Direction', errors)
 
@@ -916,9 +918,7 @@ def skill_time_post_errors(data):
 	trait = data['trait']
 	math = data['math']
 	math_value = data['math_value']
-	recovery = data['recovery']
 	recovery_penalty = data['recovery_penalty']
-	recovery_time = data['recovery_time']
 	recovery_incurable = data['recovery_incurable']
 	turns = data['turns']
 	degree = data['degree']
@@ -939,7 +939,6 @@ def skill_time_post_errors(data):
 	errors = id_check(Math, math, 'Msth', errors)
 	errors = int_check(math_value, 'Time Math Value', errors)
 	errors = int_check(recovery_penalty, 'Recovery Penalty Modifier', errors)
-	errors = int_check(recovery_time, 'Recovery Time', errors)
 	
 	errors = int_check(turns, 'Turns', errors)
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
@@ -969,10 +968,8 @@ def skill_time_post_errors(data):
 
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
-	errors = check_fields(recovery, 'Recovry Time', [recovery_penalty, recovery_time], errors)
-	errors = check_field(recovery, 'Recovry Time', 'Penalty', recovery_penalty, errors)
-	errors = check_field(recovery, 'Recovry Time', 'Time Rank', recovery_time, errors)
-
+	errors - variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
+	
 	return (errors)
 
 def skill_modifiers_post_errors(data):

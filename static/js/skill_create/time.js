@@ -15,12 +15,21 @@ function time_base() {
 }
 
 function time_trait_type() {
-	const select = 'time_trait_type'
-	const fill = 'time_trait'
+	const select = 'time_trait_type';
+	const fill = 'time_trait';
 
 	id_select(select, fill, trait_select);
 }
-
+function time_type() {
+	const select = 'time_type';
+	const options = [{'val': 'recover', 'div': 'timee-recovery'}];
+	const fields = ['time_recovery_penalty'];
+	const checks =  ['time_recovery_incurable'];
+	
+	reset_all(fields);
+	uncheck_all(checks);
+	select_opacity(select, options);
+}
 function time_value_type() {
 	const select = 'time_value_type';
 	const options = [{'val': 'math', 'div': 'time-math'}, 
@@ -31,12 +40,6 @@ function time_value_type() {
 	select_opacity(select, options);
 }
 
-function time_recovery() {
-	const check = 'time_recovery';
-	const div = 'time-recovery';
-
-	check_display(check, div);
-}
 
 let time_grid = {'titles': false,
 					'columns': [],
@@ -63,9 +66,7 @@ function time_submit() {
 	const trait = select("time_trait")
 	const math = select("time_math")
 	const math_value = select("time_math_value")
-	const recovery = check("time_recovery")
 	const recovery_penalty = select("time_recovery_penalty")
-	const recovery_time = select("time_recovery_time")
 	const recovery_incurable = check("time_recovery_incurable")
 	const degree = select("time_degree");
 	const circ = select("time_circ");
@@ -101,9 +102,7 @@ function time_submit() {
 			'trait': trait,
 			'math': math,
 			'math_value': math_value,
-			'recovery': recovery,
 			'recovery_penalty': recovery_penalty,
-			'recovery_time': recovery_time,
 			'recovery_incurable': recovery_incurable,
 			'degree': degree,
 			'circ': circ,
