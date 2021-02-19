@@ -21,7 +21,7 @@ from error_functions import integer, required, power_check, one, field, rule_che
 from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
-from functions.linked import level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, linked_move, linked_time, linked_options_advantage, linked_options_bonus, linked_options_power
+from functions.linked import linked_options, level_reference, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, linked_move, linked_time, linked_options_advantage, linked_options_power
 
 from models import setup_db
 
@@ -237,19 +237,19 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	trait_type = [{'type': 'rank', 'name': 'Trait Rank'}, {'type': 'check', 'name': 'Check Result'}]
 
-	bonus_circ = linked_options_bonus(SkillCirc, 'keyword')
+	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id')
 
-	bonus_dc = linked_options_bonus(SkillDC, 'keyword')
+	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id')
 	
-	bonus_degree = linked_options_bonus(SkillDegree, 'keyword')
+	bonus_degree = linked_options(SkillDegree, SkillBonus, 'skill_id')
 	
-	bonus_opposed = linked_options_bonus(SkillOpposed, 'keyword')
+	bonus_opposed = linked_options(SkillOpposed, SkillBonus, 'skill_id')
 	
-	bonus_time = linked_options_bonus(SkillTime, 'keyword')
+	bonus_time = linked_options(SkillTime, SkillBonus, 'skill_id')
 
-	bonus_move = linked_options_bonus(SkillMove, 'keyword')
+	bonus_move = linked_options(SkillMove, SkillBonus, 'skill_id')
 	
-	bonus_check = linked_options_bonus(SkillCheck, 'keyword')
+	bonus_check = linked_options(SkillCheck, SkillBonus, 'skill_id')
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,

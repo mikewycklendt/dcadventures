@@ -72,7 +72,7 @@ def linked_move(table, value, name, errors):
 	return (errors)
 
 
-def linked_options_bonus(table, column_name):
+def linked_options(table, trait, column):
 	options = []
 		
 	entries = db.session.query(table).all()
@@ -80,9 +80,9 @@ def linked_options_bonus(table, column_name):
 		if e.keyword is None:
 			keyword = ''
 		else:
-			keyword = e.c[column_name]
-		skill_id = e.skill_id
-		entry_name = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
+			keyword = e.ketword
+		id = e.c[column]
+		entry_name = db.session.query(trait).filter(trait.id == id).one()
 		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
 
 	return (options)
@@ -108,6 +108,32 @@ def linked_options_advantage(table):
 		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
 		
 	return (options)
+
+def level_reference(value, column, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.c[column] = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that Level.'
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def level_adv_circ(value, errors):
 	
