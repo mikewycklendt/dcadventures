@@ -15,6 +15,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import literal_column
 from copy import deepcopy
 
 db = SQLAlchemy()
