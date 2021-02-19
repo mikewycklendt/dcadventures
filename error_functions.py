@@ -587,6 +587,49 @@ def dependent(name, value, values, errors):
 
 	return (errors)
 
+
+def valid_time_type(table, id, values, message):
+
+	error_msgs = errors['error_msgs']
+	error = True
+
+	try:
+		time = db.session.query(table).filter_by(id=id).one()
+	except:
+		print ('invalid time')
+
+	for value in values:
+		if value == time.type:
+			error = False
+	
+	if error:
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
+def invalid_time(table, id, value, name, rule):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	try:
+		time = db.session.query(table).filter_by(id=id).one()
+	except:
+		print ('invalid time')
+
+	if value == time.value_type:
+		error = True
+	
+	if error:
+		message = name + ' is	not a valid option for ' + rule
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 def check_together_var(check, checkname, message, values, errors):
 
 	error_msgs = errors['error_msgs']

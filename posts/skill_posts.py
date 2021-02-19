@@ -125,11 +125,9 @@ def skill_circ_post(entry, body, cells):
 	mod = entry.mod
 	effect = entry.effect
 	speed = entry.speed
-	temp = entry.temp
 	target = entry.target
 	level_type = entry.level_type
 	level = entry.level
-	time = entry.time
 	condition_type = entry.condition_type
 	condition1 = entry.condition1
 	condition2 = entry.condition2
@@ -165,7 +163,6 @@ def skill_circ_post(entry, body, cells):
 	
 	mod = integer_convert(mod)
 	speed = integer_convert(speed)
-	time = integer_convert(time)
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
 	unit_value = integer_convert(unit_value)
@@ -173,8 +170,7 @@ def skill_circ_post(entry, body, cells):
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
 
-	temp = get_keyword(SkillTime, temp)
-	lasts = get_keyword(SkillTime, )
+	lasts = get_keyword(SkillTime, lasts)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	circ_target = selects(circ_target, targets_select)
@@ -194,12 +190,6 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
 	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')
 	
-	time = add_plus(time)
-	vcells = vcell('time', 14, [time, 'Time Rank'], vcells)
-	
-	temp = int_word(temp, 'Turns')
-	vcells = vcell('temp', 18, [temp], vcells)
-
 	measure_rank_value = add_plus(measure_rank_value)
 	vcells = vcell('measure', 18, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
 

@@ -156,7 +156,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'turns', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'turns', 'name': 'Set by GM'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -194,7 +194,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'temp', 'name': 'Effect Temporary'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
 
 	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill_rank', 'name': 'Skill Rank Modifier'}, {'type': 'skill_unit', 'name': 'Skill Unit Modifier'}]
 	
@@ -749,11 +749,9 @@ def skill_bonus_post_circ():
 	mod = request.get_json()['mod']
 	effect = request.get_json()['effect']
 	speed = request.get_json()['speed']
-	temp = request.get_json()['temp']
 	target = request.get_json()['target']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
-	time = request.get_json()['time']
 	condition_type = request.get_json()['condition_type']
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
@@ -774,6 +772,7 @@ def skill_bonus_post_circ():
 	cumulative = request.get_json()['cumulative']
 	optional = request.get_json()['optional']
 	circumstance = request.get_json()['circumstance']
+	lasts = request.get_json()['lasts']
 
 	errors = skill_circ_post_errors(data)
 
@@ -795,11 +794,10 @@ def skill_bonus_post_circ():
 	unit = db_integer(Unit, unit)
 	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
+	lasts = db_integer(SkillTime, lasts)
 
 	mod = integer(mod)
 	speed = integer(speed)
-	temp = integer(temp)
-	time = integer(time)
 	conditions = integer(conditions)
 	conditions_effect = integer(conditions_effect)
 	measure_rank_value = integer(measure_rank_value)
@@ -825,11 +823,9 @@ def skill_bonus_post_circ():
 						mod = mod,
 						effect = effect,
 						speed = speed,
-						temp = temp,
 						target = target,
 						level_type = level_type,
 						level = level,
-						time = time,
 						condition_type = condition_type,
 						condition1 = condition1,
 						condition2 = condition2,
@@ -849,7 +845,8 @@ def skill_bonus_post_circ():
 						keyword = keyword,
 						cumulative = cumulative,
 						optional = optional,
-						circumstance = circumstance)
+						circumstance = circumstance,
+						lasts=lasts)
 
 	db.session.add(entry)
 	db.session.commit()

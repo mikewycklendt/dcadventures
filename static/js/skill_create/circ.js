@@ -84,11 +84,9 @@ function circ_submit() {
 	const mod = select("circ_mod")
 	const effect = select("circ_effect")
 	const speed = select("circ_speed")
-	const temp = select("circ_temp")
 	const target = select("circ_if_target")
 	const level_type = select("circ_level_type")
 	const level = select("circ_level")
-	const time = select("circ_time")
 	const condition_type = select("circ_condition_type")
 	const condition1 = select("circ_condition1")
 	const condition2 = select("circ_condition2")
@@ -108,12 +106,8 @@ function circ_submit() {
 	const keyword = text("circ_keyword")
 	const cumulative = check("circ_cumulative")
 	const optional = check("circ_optional")
-	const lasts = select("circ_lasts")
-	const turns = select("circ_turns")
-	const unit_time = text("circ_unit_time")
-	const time_units = select("circ_time_units")
-	const time_rank = select("circ_time_rank")
 	const circumstance = text("circ_circumstance");
+	const lasts = select("circ_lasts");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -132,11 +126,9 @@ function circ_submit() {
 			'mod': mod,
 			'effect': effect,
 			'speed': speed,
-			'temp': temp,
 			'target': target,
 			'level_type': level_type,
 			'level': level,
-			'time': time,
 			'condition_type': condition_type,
 			'condition1': condition1,
 			'condition2': condition2,
@@ -156,12 +148,8 @@ function circ_submit() {
 			'keyword': keyword,
 			'cumulative': cumulative,
 			'optional': optional,
-			'lasts': lasts,
-			'turns': turns,
-			'unit_time': unit_time,
-			'time_units': time_units,
-			'time_rank': time_rank,
-			'circumstance': circumstance
+			'circumstance': circumstance,
+			'lasts': lasts
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

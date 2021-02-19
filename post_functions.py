@@ -172,6 +172,24 @@ def get_name(Table, value):
 
 	return (value)
 
+def get_idv(Table, value):
+	
+	db = SQLAlchemy()
+
+	if value is None:
+		print (value)
+		value = ''
+		return (value)
+	else:
+		try:
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.name
+		except:
+			print('no entry')
+			value = ''
+
+	return (value)
+
 def get_circ(Table, value, name=''):
 	
 	db = SQLAlchemy()

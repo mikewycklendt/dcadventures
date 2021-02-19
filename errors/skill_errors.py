@@ -128,7 +128,7 @@ def skill_ability_post_errors(data):
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 	errors = id_check(Ability, ability, 'Ability', errors)
 	errors = id_check(SkillCheck, variable, 'Variable Check', variable)
-	
+
 	errors = required(ability, 'Ability', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 
@@ -213,11 +213,9 @@ def skill_circ_post_errors(data):
 	mod = data['mod']
 	effect = data['effect']
 	speed = data['speed']
-	temp = data['temp']
 	target = data['target']
 	level_type = data['level_type']
 	level = data['level']
-	time = data['time']
 	condition_type = data['condition_type']
 	condition1 = data['condition1']
 	condition2 = data['condition2']
@@ -237,22 +235,16 @@ def skill_circ_post_errors(data):
 	keyword = data['keyword']
 	cumulative = data['cumulative']
 	optional = data['optional']
-	lasts = data['lasts']
-	turns = data['turns']
-	unit_time = data['unit_time']
-	time_units = data['time_units']
-	time_rank = data['time_rank']
 	circumstance = data['circumstance']
+	lasts = data['lasts']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(speed, 'Speed', errors)
-	errors = int_check(temp, 'Temporary Turns', errors)
 	errors = id_check(LevelType, level_type, 'Level Type', errors)
 	errors = id_check(Levels, level, 'Level', errors)
-	errors = int_check(time, 'Time Value', errors)
 	errors = int_check(conditions, 'Condition Degree', errors)
 	errors = int_check(conditions_effect, 'Condition Effect', errors)
 	errors = int_check(measure_rank_value, 'Measurement Rank Value', errors)
@@ -262,25 +254,14 @@ def skill_circ_post_errors(data):
 	errors = id_check(Unit, unit, 'Unit', errors)
 	errors = id_check(Math, measure_trait_math, 'Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
-	errors = int_check(turns, 'Turns', errors)
-	errors = int_check(unit_time, 'Time Value', errors)
-	errors = id_check(Unit, time_units, 'Time Units', errors)
-	errors = int_check(time_rank, 'Time Rank', errors)
 
+	errors = id_check(SkillTime, lasts, 'Circumsrance Duration', errors)
+	
 	errors = required(mod, 'Circumstance Modifier', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(keyword, 'Keyword', errors)
-	errors = required(lasts, 'Lasts', errors)
 	errors = required(circ_target, 'Target', errors)
-	
-
-	errors = variable_fields('turns', 'Lasts For', lasts, [turns], errors)
-	errors = variable_field('turns', lasts, 'Turns', turns, errors)
-	errors = variable_fields('time', 'Lasts For', lasts, [unit_time, time_units], errors)
-	errors = variable_field('time', lasts, 'Time Value', unit_time, errors)
-	errors = variable_field('time', lasts, 'Time Units', time_units, errors)
-	errors = variable_fields('rank', 'Lasts For', lasts, [time_rank], errors)
-	errors = variable_field('rank', lasts, 'Time Rank', time_rank, errors)
+	errors = required(lasrs, 'Circumstance Duration', errors)
 
 	errors = variable_fields('condition', 'Circumstance Effect', effect, [condition_type], errors)
 	errors = variable_field('condition', effect, 'Condition Type', condition_type, errors)
@@ -294,13 +275,6 @@ def skill_circ_post_errors(data):
 	errors = variable_field('damage', condition_type, 'Conditions', conditions, errors)
 	errors = variable_field('damage', condition_type, 'Condition Effect', conditions_effect, errors)
 
-
-	errors = variable_fields('time', 'Circumstance Effect', effect, [time], errors)
-	errors = variable_field('time', effect, 'Time Rank Modifier', time, errors)
-	
-	errors = variable_fields('temp', 'Circumstance Effect', effect, [temp], errors)
-	errors = variable_field('temp', effect, 'Lasts For', temp, errors)
-	
 	errors = variable_fields('measure', 'Circumstance Effect', effect, [measure_effect], errors)
 	errors = variable_field('measure', effect, 'Measurement Type', measure_effect, errors)
 	
@@ -319,7 +293,6 @@ def skill_circ_post_errors(data):
 	errors = variable_field('skill', measure_effect, 'Math', measure_trait_math, errors)
 	errors = variable_field('skill', measure_effect, 'Measuremet Modifier', measure_mod, errors)
 	errors = variable_field('skill', measure_effect, 'Rank', measure_math_rank, errors)
-
 	
 	errors = variable_fields('level', 'Circumstance Effect', effect, [level_type, level], errors)
 	errors = variable_field('level', effect, 'Level Type', level_type, errors)

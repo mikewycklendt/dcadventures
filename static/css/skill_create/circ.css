@@ -138,7 +138,7 @@
 
 #circ-row2 {
 	display: grid;
-	grid-template-columns: 11% 19% 20% 16% 12% 22%;
+	grid-template-columns: 11% 19% 20% 20% 30%;
 	width: 97%;
 	grid-template-rows: auto;
 }
