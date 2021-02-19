@@ -72,7 +72,7 @@ def linked_move(table, value, name, errors):
 	return (errors)
 
 
-def linked_options_bonus(table):
+def linked_options_bonus(table, column_name):
 	options = []
 		
 	entries = db.session.query(table).all()
@@ -80,7 +80,7 @@ def linked_options_bonus(table):
 		if e.keyword is None:
 			keyword = ''
 		else:
-			keyword = e.keyword
+			keyword = e.c[column_name]
 		skill_id = e.skill_id
 		entry_name = db.session.query(SkillBonus).filter(SkillBonus.id == skill_id).one()
 		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
