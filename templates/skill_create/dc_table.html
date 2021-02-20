@@ -540,8 +540,14 @@
 				{% endfor %}
 			</select> 
 		</div>
-
-		<div>
+		
+		<div class="vcenter" style="font-size: 80%;">
+			<div class="check-div" style="width: 95%;">
+				<input type="checkbox" id="dc_condition_no_damage" class="medium-checkbox med-checkbox" > Only if No Damage
+			</div>
+		</div>
+		
+		<div style="display: none;">
 			<select class="select-sml" id="dc_condition_turns" name="dc_condition_turns">
 				<option value="">Turns</option>
 				<option value="round">Round</option>
@@ -551,13 +557,6 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
-		</div>
-
-		
-		<div class="vcenter" style="font-size: 80%;">
-			<div class="check-div" style="width: 95%;">
-				<input type="checkbox" id="dc_condition_no_damage" class="medium-checkbox med-checkbox" > Only if No Damage
-			</div>
 		</div>
 	</div>
 
