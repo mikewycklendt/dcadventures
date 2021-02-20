@@ -1932,16 +1932,16 @@ def skill_post_modifiers():
 	body['error_msgs'] = []
 
 	body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
-	emotion = body['new_id']
+	emotion = body['output']
 	
 	body = user_item(Environment, 'Environment', environment, environment_other, 'modifiers_environment', body)
-	environment = body['new_id']
+	environment = body['output']
 	
 	body = user_item(Creature, 'Creature', creature, creature_other, 'modifiers_creature', body)
-	creature = body['new_id']
+	creature = body['output']
 	
 	body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
-	creature = body['new_id']
+	creature = body['output']
 
 	if body['success'] == False:
 		return jsonify(body)
