@@ -33,18 +33,18 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
 from tables import tables
-from skills import skill
-from powers import powers
-from advantage import advantage
-from equipment import equip
-from weapons import weap
-from armor import arm
-from vehicles import vehicle
-from headquarters import head
-from selects import select
+from modules.selects import select
 from info_select import info
 from icon_select import icon
-from descriptor import descrip
+from modules.skills import skill
+from modules.powers import powers
+from modules.advantage import advantage
+from modules.equipment import equip
+from modules.weapons import weap
+from modules.armor import arm
+from modules.vehicles import vehicle
+from modules.headquarters import head
+from modules.descriptor import descrip
 
 load_dotenv()
 
