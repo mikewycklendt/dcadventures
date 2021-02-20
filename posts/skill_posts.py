@@ -932,13 +932,11 @@ def skill_modifiers_post(entry, body, cells):
 	profession_other = entry.profession_other
 	bonus_trait_type = entry.bonus_trait_type
 	bonus_trait = entry.bonus_trait
-	bonus_trait = variable_trait(bonus_trait, bonus_trait_type)
 	bonus_check = entry.bonus_check
 	bonus_check_range = entry.bonus_check_range
 	bonus_conflict = entry.bonus_conflict
 	penalty_trait_type = entry.penalty_trait_type
 	penalty_trait = entry.penalty_trait
-	penalty_trait = variable_trait(penalty_trait, penalty_trait_type)
 	penalty_check = entry.penalty_check
 	penalty_check_range = entry.penalty_check_range
 	penalty_conflict = entry.penalty_conflict
