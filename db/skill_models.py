@@ -862,6 +862,12 @@ class SkillTime(db.Model):
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	turns = db.Column(db.Integer)
 	keyword = db.Column(db.String)
+	perm = db.Column(db.Boolean)
+	turn = db.Column(db.Boolean)
+	round = db.Column(db.Boolean)
+	scene = db.Column(db.Boolean)
+	instant = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -886,5 +892,11 @@ class SkillTime(db.Model):
 			'circ': self.circ,
 			'dc': self.dc,
 			'turns': self.turns,
-			'keyword': self.keyword
+			'keyword': self.keyword,
+			'perm': self.perm,
+			'turn': self.turn,
+			'round': self.round,
+			'scene': self.scene,
+			'instant': self.instant,
+			'hide': self.hidden
 		}

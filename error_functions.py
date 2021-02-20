@@ -967,6 +967,36 @@ def id_check(Table, value_id, name, errors):
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+	elif value == 'perm':
+		query = db.session.query(table).filter_by(perm=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'round':
+		query = db.session.query(table).filter_by(round=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'scene':
+		query = db.session.query(table).filter_by(scene=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'instant':
+		query = db.session.query(table).filter_by(instant=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value == 'turn':
+		query = db.session.query(table).filter_by(turn=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
 	else:
 		try:
 			value_id = int(value_id)
@@ -1158,6 +1188,41 @@ def db_integer(table, value):
 	elif value == 'linked_second':
 		try:
 			query = db.session.query(table).filter_by(linked_second=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'perm':
+		try:
+			query = db.session.query(table).filter_by(perm=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'round':
+		try:	
+			query = db.session.query(table).filter_by(round=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'scene':
+		try:
+			query = db.session.query(table).filter_by(scene=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'instant':
+		try:	
+			query = db.session.query(table).filter_by(instant=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'turn':
+		try:	
+			query = db.session.query(table).filter_by(turn=True).first()
 			value = query.id
 		except:
 			print(value)
