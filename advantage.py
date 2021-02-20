@@ -34,11 +34,16 @@ from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, Ski
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer
-from post_functions import name, action_convert, math_convert, extra_name, descriptor_name, integer_convert, select_multiple, selects, string, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, check_cell, cell, mod_create, mod_cell, mod_add
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_table import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
+from functions.create import name_exist, db_insert, capitalize
+from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.user_functions import user_item
+
 from posts.advantage_posts import adv_benefit_post, adv_alt_check_post, adv_circ_post, adv_combined_post, adv_condition_post, adv_dc_post, adv_deg_mod_post, adv_effort_post, adv_minion_post, adv_modifiers_post, adv_opposed_post, adv_points_post, adv_resist_post, adv_rounds_post, adv_skill_post, adv_time_post, adv_variable_post, adv_levels_post
 from errors.advantage_errors import adv_benefit_post_errors, adv_alt_check_post_errors, adv_circ_post_errors, adv_combined_post_errors, adv_condition_post_errors, adv_dc_post_errors, adv_deg_mod_post_errors, adv_effort_post_errors, adv_minion_post_errors, adv_modifiers_post_errors, adv_opposed_post_errors, adv_points_post_errors, adv_resist_post_errors, adv_rounds_post_errors, adv_skill_post_errors, adv_time_post_errors, adv_variable_post_errors, adv_save_errors, adv_levels_post_errors
-
+from functions.create.advantage_create import adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry
 
 load_dotenv()
 

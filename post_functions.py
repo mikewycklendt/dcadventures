@@ -171,25 +171,7 @@ def get_name(Table, value):
 			value = ''
 
 	return (value)
-
-def get_idv(Table, value):
 	
-	db = SQLAlchemy()
-
-	if value is None:
-		print (value)
-		value = ''
-		return (value)
-	else:
-		try:
-			name_query = db.session.query(Table).filter_by(id=value).one()
-			value = name_query.name
-		except:
-			print('no entry')
-			value = ''
-
-	return (value)
-
 def get_circ(Table, value, name=''):
 	
 	db = SQLAlchemy()
@@ -881,4 +863,349 @@ def trait_select(value, trait):
 		value =  'Players Chosen DC'
 	
 	return (value)
+
+def linked_time(table, value, name, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(table).filter(table.id == value).one()
+			edit.time_table = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def linked_move(table, value, name, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(table).filter(table.id == value).one()
+			edit.move_table = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def level_bonus_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value is not None:
+		try:
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_circ = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_bonus_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_citc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def linked_options_bonus(table):
+	options = []
+		
+	entries = db.session.query(table).all()
+	for e in entries:
+		skill_id = e.skill_id
+ 		entry_name = db.session.query(SkillBonus).filter(id == skill_id).one()
+		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
+
+	return (options)
+
+def linked_options_power(table):
+	options = []
+		
+	entries = db.session.query(table).all()
+	for e in entries:
+		id = e.power_id
+ 		entry_name = db.session.query(Power).filter(id == id).one()
+		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
+
+	return (options)
+	
+def linked_options_advantage(table):
+	options = []
+		
+	entries = db.session.query(table).all()
+	for e in entries:
+		id = e.advantage_id
+ 		entry_name = db.session.query(Advantage).filter(id == id).one()
+		options.append({'id': e.id, 'name': entry_name.name + ' ' + e.keyword})
+
+	return (options)
+
+def level_adv_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.advantage_citc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_adv_dc(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.advantage_dc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_adv_degree(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.advantage_degree = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
+def level_bonus_dc(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_dc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_bonus_degree(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.bonus_degree = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_power_circ(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.power_citc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_power_dc(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.power_dc = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def level_power_degree(value, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(Levels).filter(Levels.id == value).one()
+			edit.power_degree = True
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 
