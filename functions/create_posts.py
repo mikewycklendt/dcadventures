@@ -16,6 +16,7 @@ from db.weapon_models import *
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
+from copy import deepcopy
 
 
 
