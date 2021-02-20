@@ -1930,6 +1930,7 @@ def skill_post_modifiers():
 	body['new'] = False
 	body['new_items'] = []
 	body['error_msgs'] = []
+	body['success'] = True
 
 	body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
 	emotion = body['output']
@@ -2034,7 +2035,6 @@ def skill_post_modifiers():
 	body['id'] = entry.id
 	error = False
 	error_msg = []	
-	body['success'] = True
 
 	rows = columns
 	mods = []
