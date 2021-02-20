@@ -39,7 +39,7 @@ def user_item(table, name, value, new, field, body, name_check=True, class_check
 			entry = table(name=new)
 			db.session.add(entry)
 			db.session.commit()
-			body['new_id'] = entry.id
+			value = entry.id
 			item = {}
 			body['new'] = True
 			item['id'] = entry.id
@@ -53,6 +53,7 @@ def user_item(table, name, value, new, field, body, name_check=True, class_check
 			message = 'Could not create that ' + name + '.'
 			error_msgs.append(message)
 
+	body['output'] = value
 	body['new_items'] = new_items
 	body['error_msgs'] = error_msgs
 
