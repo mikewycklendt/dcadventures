@@ -1630,3 +1630,85 @@ def skill_required_entry_multiple(value, field, name, table_name, table, id, err
 		errors['error'] = error
 
 	return (errors)
+	
+def required_entry_multiple(value, field, trait, name, table_name, table, column,  id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if id == '':
+		return (errors)
+		
+	if value == field:
+		try:
+			id = int(id)
+			attribute = getattr(table, column)
+			the_filter = attribute == id
+			query = db.session.query(table).filter(the_filter).count()
+			if query < 2:
+				error = True
+				message = 'If this ' + trait + ' involves a ' + name + ' you must create at least two entries on the ' + table_name + ' form.'
+				error_msgs.append(message)
+		except:
+			error = True
+			message = 'There was an error proceessing this request.'
+			error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
+def required_link(table, field, name, table_name, trait, column, id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+		
+	try:
+		id = int(id)
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		query = db.session.query(table).filter(the_filter).first()
+		if query is not None:
+			if field == '' or field == False:
+				error = True
+				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must assign one of those entries to this ' + name + ' before you can create this rule.'
+				error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def required_variable(table, field, name, table_name, trait, column, id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+		
+	try:
+		id = int(id)
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		query = db.session.query(table).filter(the_filter).first()
+		if query is not None:
+			if field != 'x':
+				error = True
+				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set this ' + trait + "'s " + name + ' to Variable.'
+				error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+

@@ -16,7 +16,7 @@ from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, 
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, skill_required_entry_multiple, required_if_any, required_keyword, variable_field_linked
+from error_functions import integer, required, power_check, one, field, rule_check, rule_select, cost_check, extra_cost, variable, select, variable_fields, variable_field, select_variable, together, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, select_of, id_check, extra_check, extra_convert, int_check, db_integer, db_check, if_fields, if_field, create_check, db_insert, adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry, name_exist, dependent, either, feature_check, equip_entry_check, equip_check_multiple_fields, required_multiple, weap_entry_check, arm_entry_check, no_zero, head_feature_duplicate, if_or, seperate, skill_entry_check, skill_required_entry, required_entry_multiple, required_if_any, required_keyword, variable_field_linked, required_link, required_variable
 
 
 def skill_save_errors(data):
@@ -100,7 +100,12 @@ def skill_save_errors(data):
 	
 	errors = skill_required_entry('table', dc_type, 'Check Table', 'Check Table', SkillDC, skill_id, errors)
 	errors = skill_required_entry('2', check_type, 'Opposed Check', 'Opponent Check', SkillOpposed, skill_id, errors)
-	errors = skill_required_entry_multiple('x', ability, 'Variable Ability', 'Variable Ability', SkillAbility, skill_id, errors)
+	errors = skill_required_entry_multiple('x', ability, 'skill', 'Variable Ability', 'Variable Ability', SkillAbility, 'skill_id', skill_id, errors)
+	errors = required_entry_multiple('x', action, 'skill', 'Variable Action', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
+	errors = required_entry_multiple('x', check, 'skill', 'Variable Check', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
+	errors = required_variable(SkillCheck, check, 'Check Type', 'Variable Check', 'skill', 'skill_id', skill_id, errors)
+	errors = required_variable(SkillCheck, action, 'Action', 'Variable Check', 'skill', 'skill_id', skill_id, errors)
+	errors = required_variable(SkillAbility, ability, 'Ability', 'Variable Ability', 'skill', 'skill_id', skill_id, errors)
 
 	errors = skill_entry_check('Bonus/Penalty Modifier', SkillMod, modifiers, skill_id, errors)
 	errors = skill_entry_check('Check Table', SkillDC, dc, skill_id, errors)
@@ -368,6 +373,8 @@ def skill_dc_post_errors(data):
 	tools = data['tools']
 	variable_check = data['variable_check']
 	variable = data['variable']
+	action = data['action']
+	check = data['check']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errorS)
 
@@ -485,6 +492,10 @@ def skill_dc_post_errors(data):
 
 	errors = check_fields(variable_check, 'Variable Check', [variable], errors)
 
+	errors = required_entry_multiple('x', action, 'skill', 'Variable Action', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
+	errors = required_entry_multiple('x', check, 'skill', 'Variable Check', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
+	errors = required_link(SkillCheck, variable_check, 'DC', 'Variable Check', 'skill', 'skill_id', skill_id, errors)
+	
 	return (errors)
 
 def skill_degree_post_errors(data):
