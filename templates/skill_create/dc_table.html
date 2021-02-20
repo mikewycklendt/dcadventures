@@ -21,7 +21,7 @@
 </div>
 
 <div id="dc-entry">
-	<div id="dc-row1">
+	<div id="dc-title">
 
 		<div>
 			DC:
@@ -29,6 +29,16 @@
 
 		<div>
 			Description of Action:
+		</div>
+
+		<div>
+			<select class="time-sml" id="dc_time" name="dc_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>
@@ -542,7 +552,7 @@
 
 		
 		<div class="vcenter" style="font-size: 80%;">
-			<div class="check-div" style="width: 97%;">
+			<div class="check-div" style="width: 95%;">
 				<input type="checkbox" id="dc_condition_no_damage" class="medium-checkbox med-checkbox" > Only if No Damage
 			</div>
 		</div>
