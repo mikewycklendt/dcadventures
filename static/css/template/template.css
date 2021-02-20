@@ -315,6 +315,12 @@ body{
 	justify-content: center;
 }
 
+.baseline {
+	display: flex;
+	height: 100%;
+	align-items: baseline;
+	justify-content: left;
+}
 
 .hidden {
 	display: none;
