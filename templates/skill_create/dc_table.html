@@ -21,7 +21,7 @@
 </div>
 
 <div id="dc-entry">
-	<div id="dc-title">
+	<div id="dc-title-row">
 
 		<div>
 			DC:
@@ -33,13 +33,16 @@
 
 		<div>
 			<select class="time-sml" id="dc_time" name="dc_time">
-				<option value="">Time Effect</option>
+				<option value="">Duration of Effect (1 turn if none)</option>
 				<option value="">Use Time Effect form to put options here</option>
 				{% for b in bonus_time %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="dc-row1">
 
 		<div>
 			<select class="entry-select" id="dc_dc" name="dc_dc" onchange="dc_dc()">
