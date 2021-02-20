@@ -44,7 +44,7 @@ from functions.create_posts import one, field, int_word, select_multiple, string
 
 from errors.weapons_errors import weap_benefit_post_errors, weap_condition_post_errors, weap_descriptor_post_errors, weap_save_errors
 from posts.weapons_posts import weap_benefit_post, weap_condition_post, weap_descriptor_post
-from functions.create.weapon_create import weap_entry_check
+from create_functions.weapon_create import weap_entry_check
 
 load_dotenv()
 

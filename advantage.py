@@ -44,7 +44,7 @@ from functions.create_posts import one, field, int_word, select_multiple, string
 
 from posts.advantage_posts import adv_benefit_post, adv_alt_check_post, adv_circ_post, adv_combined_post, adv_condition_post, adv_dc_post, adv_deg_mod_post, adv_effort_post, adv_minion_post, adv_modifiers_post, adv_opposed_post, adv_points_post, adv_resist_post, adv_rounds_post, adv_skill_post, adv_time_post, adv_variable_post, adv_levels_post
 from errors.advantage_errors import adv_benefit_post_errors, adv_alt_check_post_errors, adv_circ_post_errors, adv_combined_post_errors, adv_condition_post_errors, adv_dc_post_errors, adv_deg_mod_post_errors, adv_effort_post_errors, adv_minion_post_errors, adv_modifiers_post_errors, adv_opposed_post_errors, adv_points_post_errors, adv_resist_post_errors, adv_rounds_post_errors, adv_skill_post_errors, adv_time_post_errors, adv_variable_post_errors, adv_save_errors, adv_levels_post_errors
-from functions.create.advantage_create import adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry
+from create_functions.advantage_create import adv_entry_check, adv_check_multiple, adv_check_multiple_fields, adv_select_entry
 
 load_dotenv()
 

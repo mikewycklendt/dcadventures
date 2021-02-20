@@ -43,7 +43,7 @@ from functions.create_posts import one, field, int_word, select_multiple, string
 
 from posts.equipment_posts import equip_belt_post, equip_check_post, equip_damaged_post, equip_descriptor_post, equip_effect_post, equip_feature_post, equip_limits_post, equip_modifiers_post, equip_opposed_post
 from errors.equipment_errors import equip_belt_post_errors, equip_check_post_errors, equip_damaged_post_errors, equip_descriptor_post_errors, equip_effect_post_errors, equip_feature_post_errors, equip_limits_post_errors, equip_modifiers_post_errors, equip_opposed_post_errors, equip_save_errors, feature_save_errors
-from functions.create.equipment_create import equip_entry_check, unsaved, equip_create_check, equip_check_multiple_fields, feature_check
+from create_functions.equipment_create import equip_entry_check, unsaved, equip_create_check, equip_check_multiple_fields, feature_check
 
 load_dotenv()
 

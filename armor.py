@@ -44,7 +44,7 @@ from functions.create_posts import one, field, int_word, select_multiple, string
 
 from errors.armor_errors import arm_descriptor_post_errors, arm_defense_post_errors, arm_save_errors
 from posts.armor_posts import arm_descriptor_post, arm_defense_post
-from functions.create.armor_create import arm_entry_check
+from create_functions.armor_create import arm_entry_check
 
 load_dotenv()
 

@@ -45,7 +45,7 @@ from functions.create_posts import one, field, int_word, select_multiple, string
 
 from errors.headquarters_errors import head_addon_post_errors, head_feature_post_errors, head_save_errors
 from posts.headquarters_posts import head_feature_post, head_addon_post
-from functions.create.headquarters_create import head_feature_duplicate
+from create_functions.headquarters_create import head_feature_duplicate
 
 load_dotenv()
 
