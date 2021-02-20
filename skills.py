@@ -1931,136 +1931,126 @@ def skill_post_modifiers():
 	body['new_items'] = []
 	body['error_msgs'] = []
 
-	try:
-
-		body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
-		emotion = body['new_id']
-		
-		body = user_item(Environment, 'Environment', environment, environment_other, 'modifiers_environment', body)
-		environment = body['new_id']
-		
-		body = user_item(Creature, 'Creature', creature, creature_other, 'modifiers_creature', body)
-		creature = body['new_id']
-		
-		body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
-		creature = body['new_id']
-
-		if body['success'] == False:
-			return jsonify(body)
-
-		skill_id = integer(skill_id)
-		environment = db_integer(Environment, environment)
-		sense = db_integer(Sense, sense)
-		mod_range = db_integer(Ranged, mod_range)
-		subsense = db_integer(SubSense, subsense)
-		cover = db_integer(Cover, cover)
-		conceal = db_integer(Conceal, conceal)
-		maneuver = db_integer(Maneuver, maneuver)
-		weapon_melee = db_integer(WeaponType, weapon_melee)
-		weapon_ranged = db_integer(WeaponType,  weapon_ranged)
-		condition = db_integer(Condition, condition)
-		power = db_integer(Power, power)
-		consequence = db_integer(Consequence, consequence)
-		creature = db_integer(Creature, creature)
-		emotion = db_integer(Emotion, emotion)
-		conflict = db_integer(ConflictAction, conflict)
-		profession = db_integer(Job, profession)
-		bonus_conflict = db_integer(ConflictAction, bonus_conflict)
-		penalty_conflict = db_integer(ConflictAction, penalty_conflict)
-		skill = db_integer(Skill, skill)
-		light = db_integer(Light, light)
-		bonus_check = db_integer(Check, bonus_check)
-		bonus_check_range = db_integer(Ranged, bonus_check_range)
-		penalty_check = db_integer(Check, penalty_check)
-		penalty_check_range = db_integer(Ranged, penalty_check_range)
-
-		bonus = integer(bonus)
-		penalty = integer(penalty)
-		bonus_trait = integer(bonus_trait)
-		penalty_trait = integer(penalty_trait)
-		multiple_count = integer(multiple_count)
-		lasts = integer(lasts)
-
-		entry = SkillMod(skill_id = skill_id,
-							bonus = bonus,
-							bonus_type = bonus_type,
-							penalty = penalty,
-							penalty_type = penalty_type,
-							trigger = trigger,
-							bonus_effect = bonus_effect,
-							penalty_effect = penalty_effect,
-							environment = environment,
-							environment_other = environment_other,
-							sense = sense,
-							mod_range = mod_range,
-							subsense = subsense,
-							cover = cover,
-							conceal = conceal,
-							maneuver = maneuver,
-							weapon_melee = weapon_melee,
-							weapon_ranged = weapon_ranged,
-							tools = tools,
-							condition = condition,
-							power = power,
-							consequence = consequence,
-							creature = creature,
-							creature_other = creature_other,
-							emotion = emotion,
-							emotion_other = emotion_other,
-							conflict = conflict,
-							profession = profession,
-							profession_other = profession_other,
-							bonus_trait_type = bonus_trait_type,
-							bonus_trait = bonus_trait,
-							bonus_check = bonus_check,
-							bonus_check_range = bonus_check_range,
-							bonus_conflict = bonus_conflict,
-							penalty_trait_type = penalty_trait_type,
-							penalty_trait = penalty_trait,
-							penalty_check = penalty_check,
-							penalty_check_range = penalty_check_range,
-							penalty_conflict = penalty_conflict,
-							bonus_active_defense = bonus_active_defense,
-							bonus_conflict_defend = bonus_conflict_defend,
-							penalty_active_defense = penalty_active_defense,
-							penalty_conflict_defend = penalty_conflict_defend,
-							multiple = multiple,
-							multiple_count = multiple_count,
-							lasts = lasts,
-							skill = skill,
-							light = light)
-
-		db.session.add(entry)
-		db.session.commit()
-		
-		body['id'] = entry.id
-		error = False
-		error_msg = []	
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'modifiers'
-		spot = table_id + '-spot'
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		
-		body = skill_modifiers_post(entry, body, cells)
-	except:
-		error = True
-		body['success'] = False
-		body['error'] = 'There was an error processing the request'
-		db.session.rollback()
+	body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
+	emotion = body['new_id']
 	
-	finally:
-		db.session.close()
+	body = user_item(Environment, 'Environment', environment, environment_other, 'modifiers_environment', body)
+	environment = body['new_id']
+	
+	body = user_item(Creature, 'Creature', creature, creature_other, 'modifiers_creature', body)
+	creature = body['new_id']
+	
+	body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
+	creature = body['new_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
+	skill_id = integer(skill_id)
+	environment = db_integer(Environment, environment)
+	sense = db_integer(Sense, sense)
+	mod_range = db_integer(Ranged, mod_range)
+	subsense = db_integer(SubSense, subsense)
+	cover = db_integer(Cover, cover)
+	conceal = db_integer(Conceal, conceal)
+	maneuver = db_integer(Maneuver, maneuver)
+	weapon_melee = db_integer(WeaponType, weapon_melee)
+	weapon_ranged = db_integer(WeaponType,  weapon_ranged)
+	condition = db_integer(Condition, condition)
+	power = db_integer(Power, power)
+	consequence = db_integer(Consequence, consequence)
+	creature = db_integer(Creature, creature)
+	emotion = db_integer(Emotion, emotion)
+	conflict = db_integer(ConflictAction, conflict)
+	profession = db_integer(Job, profession)
+	bonus_conflict = db_integer(ConflictAction, bonus_conflict)
+	penalty_conflict = db_integer(ConflictAction, penalty_conflict)
+	skill = db_integer(Skill, skill)
+	light = db_integer(Light, light)
+	bonus_check = db_integer(Check, bonus_check)
+	bonus_check_range = db_integer(Ranged, bonus_check_range)
+	penalty_check = db_integer(Check, penalty_check)
+	penalty_check_range = db_integer(Ranged, penalty_check_range)
+
+	bonus = integer(bonus)
+	penalty = integer(penalty)
+	bonus_trait = integer(bonus_trait)
+	penalty_trait = integer(penalty_trait)
+	multiple_count = integer(multiple_count)
+	lasts = integer(lasts)
+
+	entry = SkillMod(skill_id = skill_id,
+						bonus = bonus,
+						bonus_type = bonus_type,
+						penalty = penalty,
+						penalty_type = penalty_type,
+						trigger = trigger,
+						bonus_effect = bonus_effect,
+						penalty_effect = penalty_effect,
+						environment = environment,
+						environment_other = environment_other,
+						sense = sense,
+						mod_range = mod_range,
+						subsense = subsense,
+						cover = cover,
+						conceal = conceal,
+						maneuver = maneuver,
+						weapon_melee = weapon_melee,
+						weapon_ranged = weapon_ranged,
+						tools = tools,
+						condition = condition,
+						power = power,
+						consequence = consequence,
+						creature = creature,
+						creature_other = creature_other,
+						emotion = emotion,
+						emotion_other = emotion_other,
+						conflict = conflict,
+						profession = profession,
+						profession_other = profession_other,
+						bonus_trait_type = bonus_trait_type,
+						bonus_trait = bonus_trait,
+						bonus_check = bonus_check,
+						bonus_check_range = bonus_check_range,
+						bonus_conflict = bonus_conflict,
+						penalty_trait_type = penalty_trait_type,
+						penalty_trait = penalty_trait,
+						penalty_check = penalty_check,
+						penalty_check_range = penalty_check_range,
+						penalty_conflict = penalty_conflict,
+						bonus_active_defense = bonus_active_defense,
+						bonus_conflict_defend = bonus_conflict_defend,
+						penalty_active_defense = penalty_active_defense,
+						penalty_conflict_defend = penalty_conflict_defend,
+						multiple = multiple,
+						multiple_count = multiple_count,
+						lasts = lasts,
+						skill = skill,
+						light = light)
+
+	db.session.add(entry)
+	db.session.commit()
+	
+	body['id'] = entry.id
+	error = False
+	error_msg = []	
+	body['success'] = True
+
+	rows = columns
+	mods = []
+	cells = []
+	table_id = 'modifiers'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	
+	body = skill_modifiers_post(entry, body, cells)
 
 	return jsonify(body)
 
