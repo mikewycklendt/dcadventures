@@ -967,6 +967,16 @@ def skill_bonus_post_dc():
 	condition_no_damage = request.get_json()['condition_no_damage']
 	keyword = request.get_json()['keyword']
 	complexity = request.get_json()['complexity']
+	tools_check = request.get_json()['tools_check']
+	cover_effect = request.get_json()['cover_effect']
+	cover_type = request.get_json()['cover_type']
+	conceal_effect = request.get_json()['conceal_effect']
+	conceal_type = request.get_json()['conceal_type']
+	tools = request.get_json()['tools']
+	variable_check = request.get_json()['variable_check']
+	variable = request.get_json()['variable']
+
+
 	errors = skill_dc_post_errors(data)
 
 	errors = level_reference('bonus_dc', level, errors)
@@ -1011,6 +1021,10 @@ def skill_bonus_post_dc():
 	measure_trait_unit = integer(measure_trait_unit)
 	measure_mod_unit = integer(measure_mod_unit)
 	condition_turns = integer(condition_turns)
+
+	cover_type = db_integer(Cover, cover_type)
+	conceal_type = db_integer(Conceal, conceal_type)
+	variable = db_integer(SkillCheck, variable)
 
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
@@ -1066,7 +1080,15 @@ def skill_bonus_post_dc():
 					keyword = keyword,
 					action_no_damage = action_no_damage,
 					condition_no_damage = condition_no_damage,
-					complexity = complexity)
+					complexity = complexity,
+					tools_check = tools_check,
+					cover_effect = cover_effect,
+					cover_type = cover_type,
+					conceal_effect = conceal_effect,
+					conceal_type = conceal_type,
+					tools = tools,
+					variable_check = variable_check,
+					variable = variable)
 
 	db.session.add(entry)
 	db.session.commit()

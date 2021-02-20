@@ -169,7 +169,7 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_change_action" class="medium-checkbox med-checkbox" onclick="dc_change_action()"> Action Change
+				<input type="checkbox" id="dc_variable_checK" class="medium-checkbox med-checkbox" onclick="dc_variable_checK()"> Variable Check
 			</div>
 		</div>
 		
@@ -180,16 +180,17 @@
 		</div>
 	</div>
 
-	<div id="dc-action">
+	<div id="dc-variable">
 		<div>
-			Change Action Type:
+			Variable Check:
 		</div>
 
 		<div>
-			<select class="select-sml" id="dc_action" name="dc_action">
-				<option value="">Changed Action</option>
-				{% for a in actions %}
-					<option value={{a.id}}>{{a.name}}</option>
+			<select class="check-sml" id="dc_variable" name="dc_variable">
+				<option value="">Variable Check</option	>
+				<option value="">Use Variable check form to put options here</option>
+				{% for b in bonus_check %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

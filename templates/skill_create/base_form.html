@@ -68,6 +68,7 @@
 			<div style="width: 65%;">
 				<select class="base-select" id="check" name="check" onchange="check_type()">
 					<option value="">Check</option>
+					<option value="x">Variable</option>
 					{% for c in checks %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}
@@ -83,6 +84,7 @@
 			<div style="width: 65%;">
 				<select class="base-select" id="action" name="action">
 					<option value="">Action</option>
+					<option value="x">Variable</option>
 					{% for a in actions %}
 						<option value={{a.id}}>{{a.name}}</option>
 					{% endfor %}

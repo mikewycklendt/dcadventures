@@ -326,10 +326,7 @@ def skill_dc_post_errors(data):
 	cover = data['cover']
 	complex = data['complex']
 	measure = data['measure']
-	change_action = data['change_action']
 	conceal = data['conceal']
-	action = data['action']
-	action_when = data['action_when']
 	damage_type = data['damage_type']
 	inflict_type = data['inflict_type']
 	inflict_flat = data['inflict_flat']
@@ -363,15 +360,22 @@ def skill_dc_post_errors(data):
 	condition_turns = data['condition_turns']
 	keyword = data['keyword']
 	complexity = data['complexity']
+	tools_check = data['tools_check']
+	cover_effect = data['cover_effect']
+	cover_type = data['cover_type']
+	conceal_effect = data['conceal_effect']
+	conceal_type = data['conceal_type']
+	tools = data['tools']
+	variable_check = data['variable_check']
+	variable = data['variable']
 
-	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
+	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errorS)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 	errors = int_check(value, 'DC', errors)
 	errors = int_check(mod, 'Modifier', errors)
 	errors = int_check(math_value, 'Math Value', errors)
 	errors = id_check(Math, math, 'Math', errors)
-	errors = id_check(Action, action, 'Action', errors)
 	errors = int_check(inflict_flat, 'Infllict Damage Value', errors)
 	errors = id_check(Math, inflict_math, 'Math', errors)
 	errors = int_check(inflict_mod, 'Inflict Damage Modifier', errors)
@@ -390,6 +394,10 @@ def skill_dc_post_errors(data):
 	errors = id_check(Levels, level, 'Level', errors)
 	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = id_check(Complex, complexity, 'Complexity', errors)
+	
+	errors = id_check(Cover, cover_type, 'Cover', errors)
+	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
+	errors = id_check(SkillCheck, variable, 'Variable Check', errors)
 
 	errors = required(target, 'Target', errors)
 	errors = required(dc, 'DC Type', errors)
@@ -467,9 +475,15 @@ def skill_dc_post_errors(data):
 	errors = variable_field('skill_unit', measure_effect, 'Skill Modifier', measure_mod_unit, errors)
 	errors = variable_field('skill_unit', measure_effect, 'Measurement Rank', measure_math_unit, errors)
 
-	errors = check_fields(change_action, 'Action Change', [action, action_when], errors)
-	errors = check_field(change_action, 'Action Change', 'Action', action, errors)
-	errors = check_field(change_action, 'Action Change', 'When', action_when, errors)
+	errors = check_fields(conceal, 'Concealment', [conceal_effect, conceal_type], errors)
+	errors = check_field(conceal, 'Concealment', 'Concealment Type', conceal_type, errors)
+	errors = check_field(conceal, 'Concealment', 'Concealment Effect', conceal_effect, errors)
+	
+	errors = check_fields(cover, 'Cover', [cover_effect, cover_type], errors)
+	errors = check_field(cover, 'Cover', 'Cover Type', cover_type, errors)
+	errors = check_field(cover, 'Cover', 'Cover Effect', cover_effect, errors)
+
+	errors = check_fields(variable_check, 'Variable Check', [variable], errors)
 
 	return (errors)
 
@@ -969,7 +983,7 @@ def skill_time_post_errors(data):
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
 	errors - variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
-	
+
 	return (errors)
 
 def skill_modifiers_post_errors(data):

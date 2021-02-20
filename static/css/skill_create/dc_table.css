@@ -122,13 +122,13 @@
 	gap: .2vw;
 }
 
-#dc-action {
+#dc-variable {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-columns: 25% 40% 35%;
 	gap: .2vw;
 }
 

@@ -276,12 +276,23 @@ def skill_dc_post(entry, body, cells):
 	complexity = entry.complexity
 	action_no_damage = entry.action_no_damage
 	condition_no_damage = entry.condition_no_damage
+	tools_check = entry.tools_check
+	cover_effect = entry.cover_effect
+	cover_type = entry.cover_type
+	conceal_effect = entry.conceal_effect
+	conceal_type = entry.conceal_type
+	tools = entry.tools
+	variable_check = entry.variable_check
+	variable = entry.variable
+
+	cover_type = get_name(Cover, cover_type)
+	conceal_type = get_name(Conceal, conceal_type)
+	variable = get_keyword(SkillCheck, variable)
 
 	math_trait = trait_select(math_trait, math_trait_type)	
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 	measure_trait_unit = trait_select(measure_trait_unit, measure_trait_type_unit)
-
 
 	value = integer_convert(value)
 	mod = integer_convert(mod)
@@ -386,9 +397,23 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_cell('Only if No Damage', 20, [action_no_damage], new_mod)
 	body = mod_add(change_action, new_mod, body)
 
-	cells = check_cell('Cover', 7, cover, cells)
-	cells = check_cell('Concealmet', 10, conceal, cells)
+	cells = check_cell('Cover', 7, cover, cells, True)
+	new_mod = mod_create('Cover', 10)
+	new_mod = mod_cell('Effect', 8, [cover_effect], new_mod)
+	new_mod = mod_cell('Type', 5, [cover_type], new_mod)
+	body = mod_add(cover, new_mod, body)
 
+	cells = check_cell('Concealmet', 10, conceal, cells, True)
+	new_mod = mod_create('Concealment', 15)
+	new_mod = mod_cell('Effect', 8, [conceal_effect], new_mod)
+	new_mod = mod_cell('Type', 5, [conceal_type], new_mod)
+	body = mod_add(conceal, new_mod, body)
+
+	cells = check_cell('Check', 10, variable_check, cells, True)
+	new_mod = mod_create('Variable Check', 18)
+	new_mod = mod_cell('Check', 7, [variable], new_mod)
+	body = mod_add(variable_check, new_mod, body)
+	
 	cells = cell('Description', 35, [description], cells)
 
 	body = send(cells, body)

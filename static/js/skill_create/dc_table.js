@@ -55,9 +55,9 @@ function dc_descriptor() {
 	check_drop(check, div, entry);
 }
 
-function dc_change_action() {
-	const check = 'dc_change_action';
-	const div = 'dc-action';
+function dc_variable_checK() {
+	const check = 'dc_variable_checK';
+	const div = 'dc-variable';
 	const entry = 'dc-entry';
 
 	check_drop(check, div, entry);
@@ -275,11 +275,13 @@ function dc_submit() {
 	const keyword = text("dc_keyword")
 	const complexity = select("dc_complexity")
 	const tools_check = check("dc_tools_check");
-	const cover_effect = select("dc_cover_effect")
-	const cover_type = select("dc_cover_type")
-	const conceal_effect = select("dc_conceal_effect")
-	const conceal_type = select("dc_conceal_type")
-	const tools = select("dc_tools")
+	const cover_effect = select("dc_cover_effect");
+	const cover_type = select("dc_cover_type");
+	const conceal_effect = select("dc_conceal_effect");
+	const conceal_type = select("dc_conceal_type");
+	const tools = select("dc_tools");
+	const variable_check = check("dc_variable_check");
+	const variable = select("dc_variable");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -351,7 +353,14 @@ function dc_submit() {
 			'condition_no_damage': condition_no_damage,
 			'keyword': keyword,
 			'complexity': complexity,
-			'tools_check': tools_check
+			'tools_check': tools_check,
+			'cover_effect': cover_effect,
+			'cover_type': cover_type,
+			'conceal_effect': conceal_effect,
+			'conceal_type': conceal_type,
+			'tools': tools,
+			'variable_checK': variable_check,
+			'variable': variable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
