@@ -320,6 +320,7 @@ body{
 	height: 100%;
 	align-items: baseline;
 	justify-content: left;
+	align-self: baseline;;
 }
 
 .hidden {
