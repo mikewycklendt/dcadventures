@@ -27,16 +27,16 @@ def time_db_columns_create():
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'One Turn'
+	name = '1 Turn'
 
 	entry = SkillTime(turn=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(SubSense).filter_by(hide=True).all()
+	results = db.session.query(SkillTime).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (tablename + ' db added')
+	return ('time fields added')
