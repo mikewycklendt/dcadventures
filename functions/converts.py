@@ -677,31 +677,31 @@ def id_check(Table, value_id, name, errors):
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'perm':
+	elif value_id == 'perm':
 		query = db.session.query(table).filter_by(perm=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'round':
+	elif value_id == 'round':
 		query = db.session.query(table).filter_by(round=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'scene':
+	elif value_id == 'scene':
 		query = db.session.query(table).filter_by(scene=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'instant':
+	elif value_id == 'instant':
 		query = db.session.query(table).filter_by(instant=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
-	elif value == 'turn':
+	elif value_id == 'turn':
 		query = db.session.query(table).filter_by(turn=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
