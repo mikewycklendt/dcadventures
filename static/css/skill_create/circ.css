@@ -176,7 +176,7 @@
 
 #circ-button-row {
 	display: grid;
-	grid-template-columns: 79% 21%;
+	grid-template-columns: 78% 22%;
 	width: 99%;
 	grid-template-rows: auto;
 }
@@ -184,6 +184,6 @@
 #circ-button-row input[type="text"] {
 	height: 1.4vw;
 	padding: .3vw;
-	width: 95%;
+	width: 96%;
 	font-size: 110%;
 }
