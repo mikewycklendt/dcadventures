@@ -109,7 +109,7 @@
 
 #time-button-row {
 	display: grid;
-	grid-template-columns: 87% 12%;
+	grid-template-columns: 65% 20% 15%;
 	width: 98%;
 }
 
@@ -117,7 +117,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 30% 20% 10% 20% 20%;
+	grid-template-columns: 40% 25% 35%;
 	gap: .2vw;
 }
 
