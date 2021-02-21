@@ -79,7 +79,7 @@ def linked_options(table, trait, column):
 	options = []
 
 		
-	entries = db.session.query(table).filter_by(hide=None).all()
+	entries = db.session.query(table).filter(trait.hide == None).all()
 	for e in entries:
 		if e.keyword is None:
 			keyword = ''
