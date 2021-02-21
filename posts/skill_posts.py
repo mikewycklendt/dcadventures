@@ -346,7 +346,7 @@ def skill_dc_post(entry, body, cells):
 	cells = cell('Keyword', 20, [keyword])
 	cells = cell('Target', 15, [target], cells)
 	cells = cell('Duration', 15, [time], cells)
-	`
+
 	vcells = vcell('value', 6, [value])
 	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
 	mod = add_plus(mod)
