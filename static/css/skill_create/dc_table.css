@@ -107,7 +107,7 @@
 #dc-row2 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
+	gap: .3vw;
 	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
 }
@@ -115,7 +115,7 @@
 #dc-row3 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
+	gap: .3vw;
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
 }	
