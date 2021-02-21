@@ -120,7 +120,7 @@
 	display: grid;
 	width: 97%;
 	gap: .2vw;
-	grid-template-columns: 25% 17% 20% 23% 15%;
+	grid-template-columns: 25% 17% 20% 18% 12%;
 }
 
 #deg-mod-button-row {
