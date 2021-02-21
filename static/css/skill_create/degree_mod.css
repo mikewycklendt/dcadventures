@@ -122,14 +122,14 @@
 	width: 97%;
 	gap: .2vw;
 	font-size: 105%;
-	grid-template-columns: 25% 17% 20% 22% 16%;
+	grid-template-columns: 25% 17% 20% 23% 15%;
 }
 
 #deg-mod-button-row {
 	display: grid;
 	width: 97%;
 	padding: .3vw;
-	grid-template-columns: 55% 25% 20%;
+	grid-template-columns: 62% 23% 15%;
 }
 
 #deg-mod-deg {
