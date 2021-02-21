@@ -94,38 +94,6 @@ def linked_options(table, trait, column):
 
 	return (options)
 
-def linked_options_hide(table, trait, column):
-	options = []
-
-		
-	entries = db.session.query(table).filter(trait.hide == None).all()
-	for e in entries:
-		if e.keyword is None:
-			keyword = ''
-		else:
-			keyword = e.keyword
-		id = getattr(e, column)
-		entry_name = db.session.query(trait).filter(trait.id == id).one()
-		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
-
-	return (options)
-
-def linked_options(table, trait, column):
-	options = []
-
-		
-	entries = db.session.query(table).filter(trait.hide == None).all()
-	for e in entries:
-		if e.keyword is None:
-			keyword = ''
-		else:
-			keyword = e.keyword
-		id = getattr(e, column)
-		entry_name = db.session.query(trait).filter(trait.id == id).one()
-		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
-
-	return (options)
-
 def level_reference(column, value, errors):
 	
 	error_msgs = errors['error_msgs']
