@@ -60,7 +60,7 @@
 #deg-mod-entry {
 	display: grid;
 	font-family: 'Monda', Verdana;
-	font-size: 85%;
+	font-size: 95%;
 	color: #245681;
 	width: 88%;
 	margin-top: 0px;
@@ -120,7 +120,7 @@
 	display: grid;
 	width: 97%;
 	gap: .2vw;
-	grid-template-columns: 25% 17% 20% 18% 12%;
+	grid-template-columns: 25% 17% 20% 22% 16%;
 }
 
 #deg-mod-button-row {
