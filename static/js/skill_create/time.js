@@ -22,7 +22,7 @@ function time_trait_type() {
 }
 function time_type() {
 	const select = 'time_type';
-	const options = [{'val': 'recover', 'div': 'timee-recovery'}];
+	const options = [{'val': 'recover', 'div': 'time-recovery'}];
 	const fields = ['time_recovery_penalty'];
 	const checks =  ['time_recovery_incurable'];
 	
