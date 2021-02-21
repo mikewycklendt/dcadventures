@@ -113,6 +113,13 @@
 	width: 98%;
 }
 
+#time-button-row input[type="text"] {
+	height: 1.7vw;
+	padding: .1vw;
+	font-size: 110%;
+	width: 93%;
+}
+
 #time-recovery {
 	display: none;
 	opacity: 0%;
