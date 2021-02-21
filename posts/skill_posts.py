@@ -292,10 +292,12 @@ def skill_dc_post(entry, body, cells):
 	tools = entry.tools
 	variable_check = entry.variable_check
 	variable = entry.variable
+	time = entry.time
 
 	cover_type = get_name(Cover, cover_type)
 	conceal_type = get_name(Conceal, conceal_type)
 	variable = get_keyword(SkillCheck, variable)
+	time = get_keyword(SkillTime, time)
 
 	math_trait = trait_select(math_trait, math_trait_type)	
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
@@ -343,7 +345,8 @@ def skill_dc_post(entry, body, cells):
 
 	cells = cell('Keyword', 20, [keyword])
 	cells = cell('Target', 15, [target], cells)
-	
+	cells = cell('Duration', 15, [time], cells)
+	`
 	vcells = vcell('value', 6, [value])
 	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
 	mod = add_plus(mod)
@@ -353,9 +356,7 @@ def skill_dc_post(entry, body, cells):
 
 	cells = check_cell('Condition', 9, condition, cells, True)
 	new_mod = mod_create('Condition', 12)
-	word = string('for', condition_turns)
-	word2 = string('Turns', condition_turns)
-	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2, word, condition_turns, word2], new_mod)
+	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2], new_mod)
 	new_mod = mod_cell('Only if No Damage', 20, [condition_no_damage], new_mod)
 	body = mod_add(condition, new_mod, body)
 

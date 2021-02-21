@@ -137,7 +137,7 @@ function check_drop(field, divdrop, entrydrop) {
 
 function uncheck_all(checks_input) {
 	let checks;
-	for (checks in checks_input){
+	for (checks of checks_input){
 		const check = document.getElementById(checks)
 
 		check.checked = false;

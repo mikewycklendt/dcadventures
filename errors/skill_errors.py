@@ -384,6 +384,7 @@ def skill_dc_post_errors(data):
 	variable = data['variable']
 	action = data['action']
 	check = data['check']
+	time = data['time']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errorS)
 
@@ -413,12 +414,15 @@ def skill_dc_post_errors(data):
 	
 	errors = id_check(Cover, cover_type, 'Cover', errors)
 	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
+	
 	errors = id_check(SkillCheck, variable, 'Variable Check', errors)
+	errors = id_check(SkillTime, time)
 
 	errors = required(target, 'Target', errors)
 	errors = required(dc, 'DC Type', errors)
 	errors = required(description, 'Description', errors)
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(time, 'Duration', errors)
 
 	errors = variable_fields('value', 'DC Value', dc, [value], errors) 
 	errors = variable_field('value', dc, 'DC', value, errors) 

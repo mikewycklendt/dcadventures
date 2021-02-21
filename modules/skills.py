@@ -190,7 +190,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	concealment_type = [{'type': '', 'name': 'Concealment Type'}, {'type': 'requires', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'duration', 'name': 'Effect Duration'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}]
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
@@ -974,6 +974,7 @@ def skill_bonus_post_dc():
 	tools = request.get_json()['tools']
 	variable_check = request.get_json()['variable_check']
 	variable = request.get_json()['variable']
+	time = request.get_json()['time']
 
 
 	errors = skill_dc_post_errors(data)
@@ -1023,7 +1024,9 @@ def skill_bonus_post_dc():
 
 	cover_type = db_integer(Cover, cover_type)
 	conceal_type = db_integer(Conceal, conceal_type)
+
 	variable = db_integer(SkillCheck, variable)
+	time = db_integer(SkillTime, time)
 
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
@@ -1087,7 +1090,8 @@ def skill_bonus_post_dc():
 					conceal_type = conceal_type,
 					tools = tools,
 					variable_check = variable_check,
-					variable = variable)
+					variable = variable,
+					time = time)
 
 	db.session.add(entry)
 	db.session.commit()
