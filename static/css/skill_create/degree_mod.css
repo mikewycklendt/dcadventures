@@ -119,13 +119,14 @@
 #deg-mod-row2 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
+	gap: ,2vw;
 	grid-template-columns: 25% 17% 20% 18% 15% 5%;
 }
 
 #deg-mod-button-row {
 	display: grid;
 	width: 97%;
+	padding: ,2vw;
 	grid-template-columns: 55% 25% 20%;
 }
 
