@@ -244,8 +244,8 @@ function deg_mod_submit() {
 	const compare = select("deg_mod_check_compare");
 	const duration = select("deg_mod_duration");
 	const variable = select("deg_mod_check_variable");
-
-
+	const title = text("deg_mod_title");
+ 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
 
@@ -336,7 +336,8 @@ function deg_mod_submit() {
 			'attack_turns': attack_turns,
 			'compare': compare,
 			'duration': duration,
-			'variable': variable
+			'variable': variable,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

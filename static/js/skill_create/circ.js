@@ -108,6 +108,7 @@ function circ_submit() {
 	const optional = check("circ_optional")
 	const circumstance = text("circ_circumstance");
 	const lasts = select("circ_lasts");
+	const title = text("circ_title");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -149,7 +150,8 @@ function circ_submit() {
 			'cumulative': cumulative,
 			'optional': optional,
 			'circumstance': circumstance,
-			'lasts': lasts
+			'lasts': lasts,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
