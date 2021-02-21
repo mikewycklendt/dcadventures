@@ -138,10 +138,16 @@
 
 #circ-row2 {
 	display: grid;
-	grid-template-columns: 30% 17% 15% 18% 20%;
+	grid-template-columns: 30% 17% 15% 16% 22%;
 	width: 97%;
 	gap: .2vw;
 	grid-template-rows: auto;
+}
+
+#circ-row2 input[type="text"] {
+	height: 1.35vw;
+	font-size: 90%;
+	padding: .1vw;
 }
 
 #circ-turns {
