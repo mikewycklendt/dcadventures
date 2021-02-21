@@ -724,6 +724,7 @@ textarea:focus {
 	align-items: center;
 	height: 85%;
 	padding: .2vw;
+	margin-left: .1vw;
 	text-align: center;
 	background-color: #af0101;
 	cursor: crosshair;

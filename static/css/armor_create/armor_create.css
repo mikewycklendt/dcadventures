@@ -719,7 +719,7 @@ textarea:focus {
 	text-align: center;
 	background-color: #af0101;
 	cursor: crosshair;
-	margin: 3px;
+	margin-left: .1vw;
 	justify-content: center;
 	font-family: 'Monda', Verdana;
 	text-decoration: none;
