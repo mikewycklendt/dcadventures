@@ -86,7 +86,7 @@ def linked_options(table, trait, column):
 		else:
 			keyword = e.keyword
 		id = getattr(e, column)
-		entry_name = db.session.query(trait).filter(trait.id == id).one()
+		entry_name = db.session.query(trait).filter(trait.id == id, trait.hide == None).one()
 		options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
 
 	return (options)
