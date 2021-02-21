@@ -116,7 +116,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
 }	
 
@@ -329,8 +329,12 @@
 
 #dc-button-row {
 	display: grid;
-	grid-template-columns: 45% 25% 20%;
+	grid-template-columns: 50% 25% 25%;
 	grid-template-rows: auto;
-	height: 1.8vw;
+}
+
+#dc-button-row input[type="text"] {
+	height: 1.4vw;
+	padding: .1vw;
 }
 
