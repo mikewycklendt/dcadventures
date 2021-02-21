@@ -176,7 +176,7 @@
 
 #circ-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 79% 21%;
 	width: 99%;
 	grid-template-rows: auto;
 }
