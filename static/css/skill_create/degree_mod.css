@@ -126,7 +126,7 @@
 #deg-mod-button-row {
 	display: grid;
 	width: 97%;
-	grid-template-columns: 45% 25% 20%;
+	grid-template-columns: 55% 25% 20%;
 }
 
 #deg-mod-deg {
