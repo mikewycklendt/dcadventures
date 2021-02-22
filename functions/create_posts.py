@@ -145,6 +145,64 @@ def send(cells, body):
 	return (body)
 
 
+def send_multiple(title, cells, body, table_rows='e'):
+	
+	body['cells'] = deepcopy(cells)
+	tables = body['rows']
+	add_table = body['add_title']
+	entry_id = body['id']
+	mods = body['mods']
+	font = body['font']
+	new_table = []
+
+	if table_rows == 'e':
+		table_rows = new_table
+
+	widths = []
+	for cell in cells:
+		width = cell['width']
+		widths.append(width)
+
+	new_row = {'id': entry_id, 'cells': widths}
+	if add_table:
+		table = {}
+		rows = []
+		rows.append(new_row)
+		table['id'] = title
+		grid_update = grid_columns(rows, font)
+		table['rows'] = grid_update['rows']
+		tables.append(table)
+	else:
+		for i in range(0, len(tables), 1):
+			table = tables[i]
+			rows = table['rows']
+			if table['id'] == title:
+				rows.append(new_row)
+				grid_update = grid_columns(rows, font)
+				tables[i]['rows'] = grid_update['rows']
+			else:
+				print('no match')
+
+	grid_update = grid_columns(rows, font)
+
+	grid = grid_update['grid']
+	font = grid_update['font']
+	columns = grid_update['columns']
+	saverows = grid_update['rows']
+
+	body['rows'] = tables
+	print('\n')
+
+	print(body['rows'])
+
+
+	body['font'] = font
+	body['grid'] = grid
+	body['columns'] = columns
+
+	return (body)
+
+
 def delete_row(entry_id, rows):
 
 	for i in range(0, len(rows), 1):

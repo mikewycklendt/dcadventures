@@ -21,6 +21,92 @@ from sqlalchemy.sql import literal_column
 from copy import deepcopy
 
 db = SQLAlchemy()
+	
+def link_add(table, column, id, title, keyword, title_table, body):
+	error_msgs = []
+	success = True
+	body['add_title'] = False	
+
+	id = int(id)
+	attribute = getattr(title_table, column)
+	the_filter = attribute == id
+	entry = db.session.query(title_table).filter(the_filter).filter(title_table.title == title).first()
+	if entry is not None:
+		title_id = entry.id
+	else:
+		try:
+			entry = table(name=title)
+			db.session.add(entry)
+			db.session.commit()
+			title_id = entry.id
+			body['add_title'] = True
+			db.session.close()
+		except:
+			success = False
+			error_msgs.append('There was an error adding that title.')
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	entry = db.session.query(table).filter(table.title_id == title_id, table.keyword == keyword).first()
+	if entry is not None:
+		success = False
+		error_msgs.append('You have already created a rule with that keyword for this title.')
+	
+	body['success'] = success
+	body['error_msgs'] = error_msgs
+	body['title_id'] = title_id
+
+	return (body)
+
+def delete_link(id, table, column, link_table):
+	body = {}
+	body['success'] = True
+	body['hide_table'] = False
+	get_trait = db.session.query(table).filter_by(id=id).first()
+	trait = getattr(get_trait, column)
+	db.session.query(table).filter_by(id=id).delete()
+	db.session.commit()
+	print('\n\n' + str(id) + ' DELETED\n\n')
+	db.session.close()
+	
+	attribute = getattr(link_table, column)
+	the_filter = attribute == trait
+	linked = db.session.query(link_table).filter(the_filter).first()
+	if linked is None:
+		db.session.query(link_table).filter(the_filter).deletee()\
+		body['hide_table'] = True
+		db.session.commit()
+		db.session.close()
+	
+	return jsonify(body)
+
+
+def required_link(table, field, name, table_name, trait, column, id, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+		
+	try:
+		id = int(id)
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		entry = db.session.query(table).filter(the_filter).first()
+		if entry is not None:
+			if field == '' or field == False:
+				error = True
+				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must assign one of those entries to this ' + name + ' before you can create this rule.'
+				error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def linked_time(table, value, name, errors):
 	
@@ -355,29 +441,3 @@ def level_power_degree(value, errors):
 
 	return (errors)
 
-	
-def required_link(table, field, name, table_name, trait, column, id, errors):
-		
-	error_msgs = errors['error_msgs']
-	error = False
-		
-	try:
-		id = int(id)
-		attribute = getattr(table, column)
-		the_filter = attribute == id
-		query = db.session.query(table).filter(the_filter).first()
-		if query is not None:
-			if field == '' or field == False:
-				error = True
-				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must assign one of those entries to this ' + name + ' before you can create this rule.'
-				error_msgs.append(message)
-	except:
-		error = True
-		message = 'There was an error proceessing this request.'
-		error_msgs.append(message)
-	
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)

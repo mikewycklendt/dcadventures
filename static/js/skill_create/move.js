@@ -100,6 +100,7 @@ function move_submit() {
 	const circ = select("move_circ");
 	const time = select("move_time");
 	const keyword = text("move_keyword");
+	const title = text("move_title");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
@@ -145,7 +146,8 @@ function move_submit() {
 			'circ': circ,
 			'dc': dc,
 			'time': time,
-			'keyword': keyword
+			'keyword': keyword,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

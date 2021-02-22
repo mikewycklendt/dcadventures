@@ -29,7 +29,7 @@ function descriptor_add_type()  {
 
 descriptor_add_type()
 
-function create_table(jsonResponse, object, route, selects=false) {
+function create_table(jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const spot_string = jsonResponse.spot;
 	const table_id = jsonResponse.table_id;
@@ -61,7 +61,7 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route, selects);
+		create_titles(jsonResponse, grow, object, route, selects, title);
 	
 	} else {
 
@@ -69,33 +69,48 @@ function create_table(jsonResponse, object, route, selects=false) {
 
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route, selects);
+		cells_create(table, grow, jsonResponse, object, route, selects, title);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow, object, route, selects=false) {
+function create_titles(jsonResponse, grow, object, route, selects=false, title=false, title_selects=false) {
 	
 	const spot_string = jsonResponse.spot;
-	const table_id = jsonResponse.table_id;
 	const title_string = jsonResponse.title;
 	const grid = jsonResponse.grid;
 	const cells = jsonResponse.cells;
 
+	const base_header= 'skill-header-'
+	
+	let determine_id;
+	let determine_title;
+	if (title == false) {
+		determine_id = jsonResponse.table_id;
+		determine_title = base_header + jsonResponse.table_id;
+	} else {
+		determine_id = jsonResponse.table_id + '-' + title;
+		determine_title = base_header + title;
+	}
+
+	const title_id = determine_title;
+	const table_id = determine_id;	
 	const cells_class = table_id + '-cells';
-	const table_class = table_id + '-table';
 	const title_class = table_id + '-title';
 	const base_table = 'skill-table-table';
 	const base_cell_title = 'skill-table-cell-title';
 	const base_title = 'skill-table-title-table';
 	const base_titles = 'skill-table-titles';
+	
+	const table_class = table_id + '-table';
 
 	const spot = document.getElementById(spot_string);
 	if (title_string != '') {
 		const title = document.createElement('div');
 		title.className = base_title;
 		title.innerHTML = title_string;
+		title_id.setAttribute('id', title_id);
 		spot.appendChild(title)
 	}
 	const new_table = document.createElement('div');
@@ -122,7 +137,7 @@ function create_titles(jsonResponse, grow, object, route, selects=false) {
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object, route, selects)
+	cells_create(new_table, grow, jsonResponse, object, route, selects, title, title_selects)
 	
 }
 
@@ -158,7 +173,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 }
 
-function cells_create(table_input, grow, jsonResponse, object, route, selects=false) {
+function cells_create(table_input, grow, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -258,7 +273,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object, selects) 
+	row_delete(jsonResponse, route, object, selects, title, title_selects)
 }
 
 
@@ -383,12 +398,41 @@ function check_buttons(table_id, object, table) {
 	}
 }
 
-function row_delete(jsondata, route, object, selects=false) {
-	const table_id = jsondata.table_id;
+function row_delete(jsondata, route, object, selects=false, title=false, title_selects=false) {
+
 	const cells = jsondata.cells;
-	const rows = object.columns;
 	const size = object.font;
 	console.log(rows)
+	
+	let which_table; 
+	if (title == false) {
+		which_table = object.columns;
+	} else {
+		let the_table;
+		const the_tables = object.columns;
+		for (the_table of the_tables) {
+			if (the_table.id == title) {
+				which_table = the_table.rows;
+			}
+		}
+	}
+	
+	const rows = which_table;
+	
+	const base_header= 'skill-header-'
+	
+	let determine_id;
+	let determine_title;
+	if (title == false) {
+		determine_id = jsondata.table_id;
+		determine_title = base_header + jsondata.table_id;
+	} else {
+		determine_id = jsondata.table_id + '-' + title;
+		determine_title = base_header + title;
+	}
+
+	const title_id = determine_title;
+	const table_id = determine_id;	
 
 	const cells_class = table_id + '-cells';
 	const table_class = table_id + '-table'
@@ -398,7 +442,7 @@ function row_delete(jsondata, route, object, selects=false) {
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
 	const table_change = document.getElementById(table_class)
-	
+	const header = document.getElementById(title_id)	
 	const errors = table_id + '-err';
 	const err_line = table_id + '-err-line';
 
@@ -417,9 +461,14 @@ function row_delete(jsondata, route, object, selects=false) {
 			console.log(jsonResponse)
 				if (jsonResponse.success) {
 
+
 					clear_errors(err_line, errors);
 					const remove = jsonResponse.id;
 					deleted_item(selects, remove)
+
+					if (title != false) {
+						deleted_item(title_selects, title);
+					}
 	
 					entry[i].style.maxHeight = '0vw';
 
@@ -432,7 +481,15 @@ function row_delete(jsondata, route, object, selects=false) {
 							rows.splice(i, 1);
 						}
 					}
-
+					if (title != false) {
+						const tables = object.columns;
+						for (i = 0; i < tables.length; i++) {
+							if (tables[i].id == title) {
+								object.columns[i].rows = rows;
+							}
+						}
+	
+					}
 					console.log(rows);
 
 					response = fetch('/power/grid', {
@@ -454,11 +511,21 @@ function row_delete(jsondata, route, object, selects=false) {
 							const columns = jsonResponse.columns;
 							console.log(grid)
 
-							if (grid == 'hide') {
-								table_change.style.maxHeight = '0px';
-								setTimeout(function(){table_change.style.display = 'none'}, 400);
+							if (title == false) {
+								if (grid == 'hide') {
+									table_change.style.maxHeight = '0px';
+									setTimeout(function(){table_change.style.display = 'none'}, 400);
+								} else {
+									grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+								}
 							} else {
-								grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+								if (jsonResponse.hide_table) {
+									table_change.style.maxHeight = '0px';
+									setTimeout(function(){table_change.style.display = 'none'}, 400);
+									header.style.display = 'none';
+								} else {
+									grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
+								}
 							}
 						} else {
 							console.log('error')

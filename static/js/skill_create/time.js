@@ -73,6 +73,7 @@ function time_submit() {
 	const dc = select("time_dc");
 	const turns = select("time_turns");
 	const keyword = text("time_keyword");
+	const title = text("time_title");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -108,7 +109,8 @@ function time_submit() {
 			'circ': circ,
 			'dc': dc,
 			'turns': turns,
-			'keyword': keyword
+			'keyword': keyword,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
