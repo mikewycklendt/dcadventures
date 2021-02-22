@@ -22,7 +22,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 	
-def link_add(table, column, id, title, keyword, title_table, body):
+def link_add(table, title_table, column, id, title, keyword, body):
 	error_msgs = []
 	success = True
 	body['add_title'] = False	

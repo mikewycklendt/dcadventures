@@ -777,6 +777,7 @@ def skill_bonus_post_circ():
 	optional = request.get_json()['optional']
 	circumstance = request.get_json()['circumstance']
 	lasts = request.get_json()['lasts']
+	title = request.get_json()['title']
 
 	errors = skill_circ_post_errors(data)
 
@@ -787,6 +788,10 @@ def skill_bonus_post_circ():
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
+
+	body = {}
+
+	body = link_add(SkillCirc, 'skill')
 
 	skill_id = integer(skill_id)
 	level_type = db_integer(LevelType, level_type)
@@ -855,7 +860,6 @@ def skill_bonus_post_circ():
 	db.session.add(entry)
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
@@ -975,6 +979,7 @@ def skill_bonus_post_dc():
 	variable_check = request.get_json()['variable_check']
 	variable = request.get_json()['variable']
 	time = request.get_json()['time']
+	title = request.get_json()['title']
 
 
 	errors = skill_dc_post_errors(data)
@@ -1227,6 +1232,7 @@ def skill_bonus_post_degree():
 	attack_turns = request.get_json()['attack_turns']
 	compare = request.get_json()['compare']
 	duration = request.get_json()['duration']
+	title = request.get_json()['title']
 
 	errors = skill_degree_post_errors(data)
 
@@ -1467,6 +1473,7 @@ def skill_bonus_post_move():
 	dc = request.get_json()['dc']
 	time = request.get_json()['time']
 	keyword = request.get_json()['keyword']
+	title = request.get_json()['title']
 
 	errors = skill_move_post_errors(data)
 
@@ -1756,6 +1763,7 @@ def skill_bonus_post_time():
 	dc = request.get_json()['dc']
 	turns = request.get_json()['turns']
 	keyword = request.get_json()['keyword']
+	title = request.get_json()['title']
 
 	errors = skill_time_post_errors(data)
 	
