@@ -74,7 +74,7 @@ def delete_link(id, table, column, link_table):
 	the_filter = attribute == trait
 	linked = db.session.query(link_table).filter(the_filter).first()
 	if linked is None:
-		db.session.query(link_table).filter(the_filter).deletee()\
+		db.session.query(link_table).filter(the_filter).deletee()
 		body['hide_table'] = True
 		db.session.commit()
 		db.session.close()
