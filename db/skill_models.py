@@ -262,6 +262,7 @@ class SkillCirc(db.Model):
 	move_table = db.Column(db.Boolean)
 	lasts = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	title = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -298,7 +299,8 @@ class SkillCirc(db.Model):
 			'circumstance': self.circumstance,
 			'time_table': self.time_table,
 			'move_table': self.move_table,
-			'lasts': self.lasts
+			'lasts': self.lasts,
+			'title': self.title
 		}
 
 class SkillDC(db.Model):
@@ -367,6 +369,7 @@ class SkillDC(db.Model):
 	tools = db.Column(db.String())
 	variable_check = db.Column(db.Boolean)
 	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
+	title = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -436,7 +439,8 @@ class SkillDC(db.Model):
 			'conceal_type': self.conceal_type,
 			'tools': self.tools,
 			'variable_checK': self.variable_check,
-			'variable': self.variable
+			'variable': self.variable,
+			'title': self.title
 		}
 
 class SkillDegree(db.Model):
@@ -518,6 +522,7 @@ class SkillDegree(db.Model):
 	compare = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
+	title = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -597,7 +602,8 @@ class SkillDegree(db.Model):
 			'attack_turns': self.attack_turns,
 			'compare': self.compare,
 			'time_table': self.time_table,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'title': self.title
 		}
 
 class SkillMod(db.Model):
@@ -743,6 +749,7 @@ class SkillMove(db.Model):
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	keyword = db.Column(db.String())
+	title = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -781,8 +788,10 @@ class SkillMove(db.Model):
 			'circ': self.circ,
 			'dc': self.dc,
 			'time': self.time,
-			'keyword': self.keyword
+			'keyword': self.keyword,
+			'title': self.title
 		}
+
 class SkillOpposed(db.Model):
 	__tablename__ = 'skill_opposed'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -868,6 +877,7 @@ class SkillTime(db.Model):
 	scene = db.Column(db.Boolean)
 	instant = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	title = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -898,5 +908,6 @@ class SkillTime(db.Model):
 			'round': self.round,
 			'scene': self.scene,
 			'instant': self.instant,
-			'hide': self.hidden
+			'hide': self.hidden,
+			'title': self.title
 		}
