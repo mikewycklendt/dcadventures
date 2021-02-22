@@ -24,7 +24,6 @@ with app.app_context():
   from db.rule_models import *
   from db.user_rules import *
   from db.measure_models import *
-  from db.linked_models import *
   from db.skill_models import *
   from db.advanrtage_modeks import *
   from db.vehicle_models import *
@@ -34,6 +33,7 @@ with app.app_context():
   from db.headquarters_models import *
   from db.equipment_models import *
   from db.weapon_models import *
+  from db.linked_models import *
 
 
 migrate = Migrate(app, db)
