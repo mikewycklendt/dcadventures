@@ -24,7 +24,7 @@ db = SQLAlchemy()
 	
 def link_add(table, title_table, column, id, title, keyword, body):
 	error_msgs = []
-	success = True
+	success = body['success']
 	body['add_title'] = False	
 
 	id = int(id)
@@ -59,7 +59,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 
 	return (body)
 
-def delete_link(id, table, column, link_table):
+def delete_link(table, link_table, id, column):
 	body = {}
 	body['success'] = True
 	body['hide_table'] = False
@@ -79,7 +79,7 @@ def delete_link(id, table, column, link_table):
 		db.session.commit()
 		db.session.close()
 	
-	return jsonify(body)
+	return (body)
 
 
 def required_link(table, field, name, table_name, trait, column, id, errors):

@@ -251,6 +251,7 @@ def skill_circ_post_errors(data):
 	optional = data['optional']
 	circumstance = data['circumstance']
 	lasts = data['lasts']
+	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -274,6 +275,7 @@ def skill_circ_post_errors(data):
 	errors = required(mod, 'Circumstance Modifier', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 	errors = required(circ_target, 'Target', errors)
 	errors = required(lasrs, 'Circumstance Duration', errors)
 
@@ -385,6 +387,7 @@ def skill_dc_post_errors(data):
 	action = data['action']
 	check = data['check']
 	time = data['time']
+	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errorS)
 
@@ -422,6 +425,7 @@ def skill_dc_post_errors(data):
 	errors = required(dc, 'DC Type', errors)
 	errors = required(description, 'Description', errors)
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 	errors = required(time, 'Duration', errors)
 
 	errors = variable_fields('value', 'DC Value', dc, [value], errors) 
@@ -592,6 +596,7 @@ def skill_degree_post_errors(data):
 	degree = data['degree']
 	circ = data['circ']
 	dc = data['dc']
+	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -646,6 +651,7 @@ def skill_degree_post_errors(data):
 	errors = required(target, 'Target', errors)
 	errors = required(value, 'Degree', errors)
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 
 	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect], errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_effect, errors) 
@@ -810,6 +816,7 @@ def skill_move_post_errors(data):
 	dc = data['dc']
 	time = data['time']
 	keyword = data['keyword']
+	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -843,6 +850,7 @@ def skill_move_post_errors(data):
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
 	
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
 
 	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
@@ -963,6 +971,7 @@ def skill_time_post_errors(data):
 	circ = data['circ']
 	dc = data['dc']
 	keyword = data['keyword']
+	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -986,6 +995,7 @@ def skill_time_post_errors(data):
 	errors = required(type, 'Time Type', errors)
 	errors = required(value_type, 'Type', errors)
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 
 	errors = variable_fields('value', 'Time Value', value_type, [value, units], errors)
 	errors = variable_field('value', value_type, 'Value', value, errors)

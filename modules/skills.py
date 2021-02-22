@@ -35,14 +35,15 @@ from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar,
 from db.skill_models import SkillBonus, SkillAbility, SkillMove, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillMoveType, SkillTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
@@ -789,9 +790,6 @@ def skill_bonus_post_circ():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-	body = {}
-
-	body = link_add(SkillCirc, 'skill')
 
 	skill_id = integer(skill_id)
 	level_type = db_integer(LevelType, level_type)
@@ -814,18 +812,15 @@ def skill_bonus_post_circ():
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
 
-	if level is not None:
-		try:
-			level_circ = db.session.query(Levels).filter(Levels.id == level).one()
-			level_circ.bonus_citc = True
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-		finally:
-			db.session.close()
+	body = {}
+	body['success'] = True
+
+	body = link_add(SkillCirc, SkillCircType, 'skill_id', skill_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
 
 	entry = SkillCirc(skill_id = skill_id,
 						circ_target = circ_target,
@@ -855,7 +850,8 @@ def skill_bonus_post_circ():
 						cumulative = cumulative,
 						optional = optional,
 						circumstance = circumstance,
-						lasts=lasts)
+						lasts=lasts,
+						title=title)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -863,7 +859,6 @@ def skill_bonus_post_circ():
 	body['id'] = entry.id
 	error = False
 	error_msg = []
-	body['success'] = True
 
 	rows = columns	
 	mods = []
@@ -887,22 +882,9 @@ def skill_bonus_post_circ():
 
 @skill.route('/skill/circ/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_circ(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(SkillCirc).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+	
+	body = delete_link(SkillCirc, SkillCircType, id, 'skill_id')
+	return jsonify(body)
 
 @skill.route('/skill/dc/create', methods=['POST'])
 def skill_bonus_post_dc():
@@ -1033,6 +1015,15 @@ def skill_bonus_post_dc():
 	variable = db_integer(SkillCheck, variable)
 	time = db_integer(SkillTime, time)
 
+	body = {}
+	body['success'] = True
+
+	body = link_add(SkillDC, SkillDCType, 'skill_id', skill_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
 	entry = SkillDC(skill_id = skill_id,
 					target = target,
 					dc = dc,
@@ -1096,16 +1087,15 @@ def skill_bonus_post_dc():
 					tools = tools,
 					variable_check = variable_check,
 					variable = variable,
-					time = time)
+					time = time,
+					title = title)
 
 	db.session.add(entry)
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
-	error_msg = []
-	body['success'] = True
+	error_msgs = []
 
 	rows = columns	
 	mods = []
@@ -1129,22 +1119,9 @@ def skill_bonus_post_dc():
 
 @skill.route('/skill/dc/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_dc(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(SkillDC).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+	
+	body = delete_link(SkillDC, SkillDCType, id, 'skill_id')
+	return jsonify(body)
 
 @skill.route('/skill/degree/create', methods=['POST'])
 def skill_bonus_post_degree():
@@ -1303,6 +1280,14 @@ def skill_bonus_post_degree():
 	condition_turns = integer(condition_turns)
 	nullify = integer(nullify)
 	
+	body = {}
+	body['success'] = True
+
+	body = link_add(SkillDegree, SkillDegreeType, 'skill_id', skill_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
 
 	entry = SkillDegree(skill_id = skill_id,
 						target = target,
@@ -1378,12 +1363,12 @@ def skill_bonus_post_degree():
 						attack = attack,
 						attack_turns = attack_turns,
 						compare = compare,
-						duration = duration)
+						duration = duration,
+						title = title)
 
 	db.session.add(entry)
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
@@ -1411,22 +1396,9 @@ def skill_bonus_post_degree():
 
 @skill.route('/skill/degree/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_degree(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(SkillDegree).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+		
+	body = delete_link(SkillDegree, SkillDegreeType, id, 'skill_id')
+	return jsonify(body)
 
 @skill.route('/skill/move/create', methods=['POST'])
 def skill_bonus_post_move():
@@ -1514,6 +1486,15 @@ def skill_bonus_post_move():
 	distance_unit_math1 = db_integer(Math, distance_unit_math1)
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
+
+	body = {}
+	body['success'] = True
+
+	body = link_add(SkillMove, SkillMoveType, 'skill_id', skill_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
 	
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
@@ -1546,18 +1527,17 @@ def skill_bonus_post_move():
 						direction = direction,
 						degree = degree,
 						dc = dc,
-						circ = circ)			
+						circ = circ,
+						title = title)			
 
 
 	db.session.add(entry)
 
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
-	body['success'] = True
 
 	rows = columns	
 	mods = []
@@ -1581,24 +1561,10 @@ def skill_bonus_post_move():
 
 @skill.route('/skill/move/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_move(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(SkillMove).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-	
-	print (body)
+		
+	body = delete_link(SkillMove, SkillMoveType, id, 'skill_id')
 	return jsonify(body)
+
 
 @skill.route('/skill/opposed/create', methods=['POST'])
 def skill_bonus_post_opposed():
@@ -1797,6 +1763,15 @@ def skill_bonus_post_time():
 
 	turns = integer(turns)
 
+	body = {}
+	body['success'] = True
+
+	body = link_add(SkillTime, SkillTimeType, 'skill_id', skill_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
 	entry = SkillTime(skill_id = skill_id,
 						type = type,
 						value_type = value_type,
@@ -1817,16 +1792,15 @@ def skill_bonus_post_time():
 						circ = circ,
 						dc = dc,
 						turns = turns,
-						keyword = keyword)
+						keyword = keyword,
+						title = title)
 
 	db.session.add(entry)
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
-	body['success'] = True
 
 	rows = columns	
 	mods = []
@@ -1850,22 +1824,9 @@ def skill_bonus_post_time():
 
 @skill.route('/skill/time/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_time(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(SkillTime).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+		
+	body = delete_link(SkillTime, SkillTimeType, id, 'skill_id')
+	return jsonify(body)
 
 @skill.route('/skill/modifiers/create', methods=['POST'])
 def skill_post_modifiers():

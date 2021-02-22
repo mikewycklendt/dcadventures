@@ -13,14 +13,15 @@ from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar,
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillMove, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillMoveType, SkillTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
 
@@ -157,6 +158,10 @@ def skill_circ_post(entry, body, cells):
 	optional = entry.optional
 	circumstance = entry.circumstance
 	lasts = entry.lasts
+	title = entry.title
+
+	tirle = get_name(SkillCircType, title)
+	body['title'] = title
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
@@ -293,6 +298,10 @@ def skill_dc_post(entry, body, cells):
 	variable_check = entry.variable_check
 	variable = entry.variable
 	time = entry.time
+	title = entry.title
+
+	tirle = get_name(SkillDCType, title)
+	body['title'] = title
 
 	cover_type = get_name(Cover, cover_type)
 	conceal_type = get_name(Conceal, conceal_type)
@@ -506,7 +515,10 @@ def skill_degree_post(entry, body, cells):
 	attack_turns = entry.attack_turns
 	compare = entry.compare
 	duration = entry.duration
+	title = entry.title
 
+	tirle = get_name(SkillDegreeType, title)
+	body['title'] = title
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
@@ -689,7 +701,10 @@ def skill_move_post(entry, body, cells):
 	dc = entry.dc
 	time = entry.time
 	keyword = entry.keyword
+	title = entry.title
 
+	tirle = get_name(SkillMoveType, title)
+	body['title'] = title
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
@@ -851,7 +866,10 @@ def skill_time_post(entry, body, cells):
 	dc = entry.dc
 	turns = entry.turns
 	keyword = entry.keyword
-	
+	title = entry.title
+
+	tirle = get_name(SkillTimeType, title)
+	body['title'] = title
 
 	trait = trait_select(trait, trait_type)
 
