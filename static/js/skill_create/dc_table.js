@@ -236,7 +236,6 @@ function dc_submit() {
 	const complex = check("dc_complex")
 	const measure = check("dc_measure")
 	const conceal = check("dc_conceal")
-	const action = select("dc_action")
 	const action_when = select("dc_action_when")
 	const action_no_damage = check("dc_action_no_damage")
 	const damage_type = select("dc_damage_type")
