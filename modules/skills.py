@@ -1476,7 +1476,6 @@ def skill_bonus_post_move():
 	distance_unit_trait = integer(distance_unit_trait)
 	distance_unit_value1 = integer(distance_unit_value1)
 	distance_unit_value2 = integer(distance_unit_value2)
-	turns = integer(turns)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -1617,7 +1616,7 @@ def skill_bonus_post_opposed():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
-	rime = db_integer(SkillTime, dc)
+	time = db_integer(SkillTime, dc)
 
 	trait = integer(trait)
 	mod = integer(mod)
