@@ -498,8 +498,8 @@ class SkillDegree(db.Model):
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-	condition_turns = db.Column(db.Integer)
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))\
+	
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
 	nullify_type = db.Column(db.String())

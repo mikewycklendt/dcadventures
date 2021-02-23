@@ -546,6 +546,7 @@ def skill_degree_post(entry, body, cells):
 	skill_dc = get_keyword(SkillDC, skill_dc)
 	compare = get_keyword(SkillOpposed, compare)
 	variable = get_keyword(SkillCheck, variable)
+	attack_turns  = get_keyword(SkillTime, get_keyword)
 
 	variable_id = db_integer(Check, 'x')
 
