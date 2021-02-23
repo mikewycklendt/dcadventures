@@ -35,7 +35,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 		title_id = entry.id
 	else:
 		try:
-			entry = table(name=title)
+			entry = title_table(name=title)
 			db.session.add(entry)
 			db.session.commit()
 			title_id = entry.id
