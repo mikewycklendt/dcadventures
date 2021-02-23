@@ -811,7 +811,7 @@ class SkillOpposed(db.Model):
 	secret = db.Column(db.Boolean)
 	recurring = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
-	
+	recurring_value = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	recurring_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	description = db.Column(db.String())
 	keyword = db.Column(db.String())

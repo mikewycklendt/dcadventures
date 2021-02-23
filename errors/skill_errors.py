@@ -628,7 +628,6 @@ def skill_degree_post_errors(data):
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
 	errors = int_check(condition_damage_value, 'Condition Degrees', errors)
 	errors = int_check(condition_damage, 'Condition Damage', errors)
-	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = int_check(nullify, 'Nullify DC', errors)
 
 	errors = id_check(Check, check_type, 'Check Tyoe', errors)
@@ -650,7 +649,6 @@ def skill_degree_post_errors(data):
 	errors = int_check(routine_trait, 'Routine Check Trait', errors)
 	errors = int_check(routine_mod, 'Routine Check Modifier', errors)
 	errors = int_check(attack, 'Attack Check Modifier', errors)
-	errors = int_check(attack_turns, 'Attack Check Turns', errors)
 	
 	errors = required(target, 'Target', errors)
 	errors = required(value, 'Degree', errors)
@@ -951,7 +949,7 @@ def skill_opposed_post_errors(data):
 
 	errors = variable_fields('6', 'Resistance Check', opponent_check, [dc], errors)
 	errors = variable_field('6', opponent_check, 'Resistanance DC', dc, errors)
-	
+
 	errors = variable_fields('1', 'Skill Check', opponent_check, [dc], errors)
 	errors = variable_field('1', opponent_check, 'Opponent Skill Check DC', dc, errors)
 
@@ -1095,7 +1093,6 @@ def skill_modifiers_post_errors(data):
 	errors = int_check(bonus, 'Bonus', errors)
 	errors = int_check(penalty, 'Penalty', errors)
 	errors = int_check(multiple_count, 'Multiple Count', errors)
-	errors = int_check(lasts, 'Lasts', errors)
 
 	errors = db_insert('Environment', Environment, environment, environment_other, errors)
 	errors = db_insert('Emotion', Emotion, emotion, emotion_other, errors)
