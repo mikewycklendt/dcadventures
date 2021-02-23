@@ -1040,7 +1040,6 @@ def skill_bonus_post_dc():
 					complex = complex,
 					measure = measure,
 					conceal = conceal,
-					action_when = action_when,
 					damage_type = damage_type,
 					inflict_type = inflict_type,
 					inflict_flat = inflict_flat,
