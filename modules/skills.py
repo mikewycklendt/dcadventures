@@ -1528,7 +1528,9 @@ def skill_bonus_post_move():
 						degree = degree,
 						dc = dc,
 						circ = circ,
-						title = title)			
+						title = title,
+						keyword = keyword, 
+						time = time)			
 
 
 	db.session.add(entry)
