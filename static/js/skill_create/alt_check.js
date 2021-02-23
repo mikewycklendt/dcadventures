@@ -75,11 +75,11 @@ function check_submit() {
 	const action = select("check_action");
 	const free = check("check_free");
 	const keyword = text("check_keyword");
-	const degree = select("check_degree");
+	const degree = select("check_degree_type");
 	const circ = select("check_circ_type");
-	const dc = select("check_dc");
-	const time = select("check_time");
-	const move = select("check_move");
+	const dc = select("check_dc_type");
+	const time = select("check_time_type");
+	const move = select("check_move_type");
 	const attack = select("check_attack");
 	const opposed = select("check_opposed");
 	
