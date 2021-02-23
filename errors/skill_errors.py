@@ -802,7 +802,6 @@ def skill_move_post_errors(data):
 	distance_unit_value2 = data['distance_unit_value2']
 	distance_math_units = data['distance_math_units']
 	direction = data['direction']
-	turns = data['turns']
 	distance_description = data['distance_description']
 	speed_description = data['speed_description']
 	degree = data['degree']
