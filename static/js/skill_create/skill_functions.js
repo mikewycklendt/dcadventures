@@ -415,7 +415,6 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 
 	const cells = jsondata.cells;
 	const size = object.font;
-	console.log(rows)
 	
 	let which_table; 
 	if (title == false) {
@@ -431,6 +430,7 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 	}
 	
 	const rows = which_table;
+	console.log(rows)
 	
 	const base_header= rule + '-header-'
 	
