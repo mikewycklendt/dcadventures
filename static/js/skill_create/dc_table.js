@@ -358,7 +358,7 @@ function dc_submit() {
 			'conceal_effect': conceal_effect,
 			'conceal_type': conceal_type,
 			'tools': tools,
-			'variable_checK': variable_check,
+			'variable_check': variable_check,
 			'variable': variable,
 			'time': time,
 			'title': title
