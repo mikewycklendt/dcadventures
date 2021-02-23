@@ -131,7 +131,6 @@ def skill_check_post(entry, body, cells):
 def skill_circ_post(entry, body, cells):
 
 	circ_target = entry.circ_target
-	mod = entry.mod
 	effect = entry.effect
 	speed = entry.speed
 	target = entry.target
@@ -174,7 +173,6 @@ def skill_circ_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_math_rank = get_name(Rank, measure_math_rank)
 	
-	mod = integer_convert(mod)
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
@@ -203,7 +201,6 @@ def skill_circ_post(entry, body, cells):
 
 	cells = cell('Keyword', 13, [keyword])
 	cells = cell('Target', 12, [circ_target], cells)
-	cells = cell('Modifier', 8, [mod], cells)
 	cells = cell('Lasts', 15, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
