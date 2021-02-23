@@ -255,6 +255,7 @@ function deg_mod_submit() {
 
 	const selects = 'degree-sml';
 	const opp_selects = 'degree-opp-sml';
+	const select_title = 'degree-title-sml';
 
 	response = fetch('/skill/degree/create', {
 		method: 'POST',
@@ -351,6 +352,10 @@ function deg_mod_submit() {
 		if (jsonResponse.success) {
 
 			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+
+			selects_add(title_id, title_name, select_title);
 
 			selects_add(id, keyword, selects);
 
@@ -359,7 +364,7 @@ function deg_mod_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/degree/delete/'
-			create_table('skill', jsonResponse, deg_mod_grid, route, [selects]);
+			create_table('skill', jsonResponse, deg_mod_grid, route, [selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 

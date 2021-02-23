@@ -638,6 +638,7 @@ def skill_degree_post_errors(data):
 	errors = id_check(SkillTime, level_time, 'Level Duration', errors)
 	errors = id_check(SkillTime, attack_turns, 'Attack Bonus Duration', errors)
 	errors = id_check(SkillTime, condition_turns, 'Condition Duration', errors)
+	errors = id_check(SkillDegree, linked, 'Linked Degree', errors)
 
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)

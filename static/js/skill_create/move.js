@@ -106,6 +106,7 @@ function move_submit() {
 	const err_line = 'move-err-line';
 
 	const selects = 'move-sml';
+	const select_title = 'move-title-sml'
 
 	response = fetch('/skill/move/create', {
 		method: 'POST',
@@ -159,6 +160,10 @@ function move_submit() {
 		if (jsonResponse.success) {
 
 			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+
+			selects_add(title_id, title_name, select_title);
 
 			selects_add(id, keyword, selects)
 
@@ -167,7 +172,7 @@ function move_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, move_grid, route, [selects]);
+			create_table('skill', jsonResponse, move_grid, route, [selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			move_grid.titles = true;

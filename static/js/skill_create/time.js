@@ -80,6 +80,7 @@ function time_submit() {
 
 	const selects = 'time-sml';
 	const select_entry = 'time-entry';
+	const select_title = 'time-title-sml';
 	
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
@@ -123,7 +124,10 @@ function time_submit() {
 		if (jsonResponse.success) {
 
 			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
 
+			selects_add(title_id, title_name, select_title);
 			selects_add(id, keyword, selects);
 			selects_add(id, keyword, select_entry);
 
@@ -132,7 +136,7 @@ function time_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, time_grid, route, [selects, select_entry]);
+			create_table('skill', jsonResponse, time_grid, route, [selects, select_entry], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			time_grid.titles = true;

@@ -113,8 +113,9 @@ function circ_submit() {
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
 
-	const circ_selects = 'circ-sml'
-	const opp_selects = 'circ-opp-sml'
+	const circ_selects = 'circ-sml';
+	const select_title = 'circ-title-sml';
+	const opp_selects = 'circ-opp-sml';
 
 	response = fetch('/skill/circ/create', {
 		method: 'POST',
@@ -162,7 +163,11 @@ function circ_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const id = jsonResponse.id
+			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+
+			selects_add(title_id, title_name, select_title);
 
 			selects_add(id, keyword, circ_selects);
 
@@ -171,7 +176,7 @@ function circ_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, circ_grid, route, [circ_selects]);
+			create_table('skill', jsonResponse, circ_grid, route, [circ_selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			circ_grid.titles = true;

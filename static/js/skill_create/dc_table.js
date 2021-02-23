@@ -292,6 +292,7 @@ function dc_submit() {
 	const err_line = 'dc-err-line';
 
 	const dc_selects = 'dc-sml';
+	const select_title = 'dc-title-sml';
 	const opp_selects = 'dc-opp-sml';
 
 	response = fetch('/skill/dc/create', {
@@ -376,6 +377,10 @@ function dc_submit() {
 		if (jsonResponse.success) {
 
 			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+
+			selects_add(title_id, title_name, select_title);
 
 			selects_add(id, keyword, dc_selects);
 
@@ -384,7 +389,7 @@ function dc_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, dc_grid, route, [dc_selects]);
+			create_table('skill', jsonResponse, dc_grid, route, [dc_selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;
