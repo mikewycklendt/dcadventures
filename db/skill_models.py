@@ -262,8 +262,8 @@ class SkillCirc(db.Model):
 	move_table = db.Column(db.Boolean)
 	lasts = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
-	title = db.Column(db.String())
-
+	
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -369,8 +369,8 @@ class SkillDC(db.Model):
 	tools = db.Column(db.String())
 	variable_check = db.Column(db.Boolean)
 	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
-	title = db.Column(db.String())
-
+	
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -523,7 +523,7 @@ class SkillDegree(db.Model):
 	compare = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
-	title = db.Column(db.String())
+	
 
 	def format(self):
 		return {
@@ -750,7 +750,7 @@ class SkillMove(db.Model):
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	keyword = db.Column(db.String())
-	title = db.Column(db.String())
+	
 	
 	def format(self):
 		return {
@@ -878,8 +878,8 @@ class SkillTime(db.Model):
 	scene = db.Column(db.Boolean)
 	instant = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
-	title = db.Column(db.String())
-
+	
+	
 	def format(self):
 		return {
 			'id': self.id,
