@@ -518,7 +518,7 @@ class SkillDegree(db.Model):
 	routine_trait = db.Column(db.Integer)
 	routine_mod = db.Column(db.Integer)
 	attack = db.Column(db.Integer)
-	
+	attack_turns = db.Column(db.Integer, db.ForeignKey('skill_rime.id'))
 	compare = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
