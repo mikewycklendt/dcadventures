@@ -387,7 +387,7 @@ def skill_dc_post_errors(data):
 	time = data['time']
 	title = data['title']
 
-	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errorS)
+	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)
 	errors = int_check(value, 'DC', errors)
