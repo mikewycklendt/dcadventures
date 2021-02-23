@@ -775,7 +775,6 @@ def skill_opposed_post(entry, body, cells):
 	recurring = entry.recurring
 	multiple = entry.multiple
 	recurring_value = entry.recurring_value
-	recurring_units = entry.recurring_units
 	keyword = entry.keyword
 	degree = entry.degree
 	circ = entry.circ
@@ -789,9 +788,8 @@ def skill_opposed_post(entry, body, cells):
 	opponent_mod = integer_convert(opponent_mod)
 	player_check = get_name(Check, player_check)
 	opponent_check = get_name(Check, opponent_check)
-	recurring_value = integer_convert(recurring_value)
-	recurring_units = get_name(Unit, recurring_units)
-
+	
+	recurring_value = get_keyword(SkillTime, recurring_value)
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
