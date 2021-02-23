@@ -123,7 +123,7 @@ function create_titles(rule, jsonResponse, grow, object, route, selects=false, t
 		const title = document.createElement('div');
 		title.className = base_title;
 		title.innerHTML = title_string;
-		title_id.setAttribute('id', title_id);
+		title.setAttribute('id', title_id);
 		spot.appendChild(title)
 	}
 	const new_table = document.createElement('div');
