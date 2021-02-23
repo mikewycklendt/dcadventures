@@ -69,6 +69,7 @@ def delete_link(table, link_table, id):
 	get_trait = db.session.query(table).filter_by(id=id).first()
 	title_id = get_trait.title
 	body['title_id'] = title_id
+	body['id'] = id
 	db.session.query(table).filter_by(id=id).delete()
 	db.session.commit()
 	print('\n\n' + str(id) + ' DELETED\n\n')
