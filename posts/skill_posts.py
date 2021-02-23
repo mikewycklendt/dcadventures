@@ -332,6 +332,8 @@ def skill_dc_post(entry, body, cells):
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_math_rank = get_name(Rank, measure_math_rank)
 	measure_math_unit = get_name(Unit, measure_math_unit)
+	measure_trait_math_unit = get_name(Math, measure_trait_math_unit)
+
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
 	condition1 = get_name(Condition, condition1)
