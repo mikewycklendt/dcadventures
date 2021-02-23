@@ -609,7 +609,7 @@ def db_integer(table, value):
 
 	return (value)
 
-def id_check(Table, value_id, name, errors):
+def id_check(table, value_id, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	
@@ -718,7 +718,7 @@ def id_check(Table, value_id, name, errors):
 	else:
 		try:
 			value_id = int(value_id)
-			query = db.session.query(Table).filter_by(id=value_id).first()
+			query = db.session.query(table).filter_by(id=value_id).first()
 			if query is None:
 				message = 'Could not find ' + name
 				error = True
