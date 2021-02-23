@@ -974,7 +974,6 @@ def skill_bonus_post_dc():
 
 	skill_id = integer(skill_id)
 	math = db_integer(Math, math)
-	action = db_integer(Action, action)
 	inflict_math = db_integer(Math, inflict_math)
 	damage_consequence = db_integer(Consequence, damage_consequence)
 	measure_rank = db_integer(Rank, measure_rank)
@@ -989,6 +988,9 @@ def skill_bonus_post_dc():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 	complexity = db_integer(Complex, complexity)
+
+	time = db_integer(SkillTime, time)
+	variable = db_integer(SkillCheck, variable)
 
 	value = integer(value)
 	mod = integer(mod)
