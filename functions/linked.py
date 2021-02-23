@@ -29,13 +29,14 @@ def link_add(table, title_table, column, id, title, keyword, body):
 
 	id = int(id)
 	attribute = getattr(title_table, column)
+	print (attribute)
 	the_filter = attribute == id
 	entry = db.session.query(title_table).filter(the_filter, title_table.name == title).first()
 	if entry is not None:
 		title_id = entry.id
 	else:
 		try:
-			entry = title_table(name=title)
+			entry = title_table(name=title, skill_id=id)
 			db.session.add(entry)
 			db.session.commit()
 			title_id = entry.id
