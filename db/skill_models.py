@@ -371,6 +371,7 @@ class SkillDC(db.Model):
 	variable_check = db.Column(db.Boolean)
 	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
 	title = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
+	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	
 	
 	def format(self):
