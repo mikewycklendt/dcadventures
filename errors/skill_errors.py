@@ -910,6 +910,7 @@ def skill_opposed_post_errors(data):
 	circ = data['circ']
 	dc = data['dc']
 	time = data['time']
+	keyword = data['keyword'] 
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -931,6 +932,8 @@ def skill_opposed_post_errors(data):
 	errors = required(opponent_trait_type, 'Opponent Check Trait Typr', errors)
 	errors = required(opponent_trait, 'Opponent Check Trait', errors)
 	errors = required(opponent_check, 'Opponennt Check', errors)
+	errors = required(keyword, 'Keyword', errors)
+	
 	errors = check_fields(recurring, 'Recurring', [recurring_value], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
 
