@@ -114,6 +114,10 @@
 		<div>
 			<select class="select-sml" id="dc_math_math" name="dc_math_math">
 				<option value="">Math</option>
+				<option value=""><i class="fas fa-plus"></option>					
+				<option value=""><i class="fas fa-minus"></option>
+				<option value=""><i class="fas fa-divide"></option>
+				<option value=""><i class="fas fa-times"></option>
 				{% for m in maths %}
 					<option value={{m.id}}>{{m.name}}</option>
 				{% endfor %}
