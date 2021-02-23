@@ -505,7 +505,7 @@ class SkillDegree(db.Model):
 	nullify = db.Column(db.Integer)
 	nullify_type = db.Column(db.String())
 	cumulative = db.Column(db.Boolean)
-	
+	linked = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
