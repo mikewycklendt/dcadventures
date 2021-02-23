@@ -250,10 +250,7 @@ def skill_dc_post(entry, body, cells):
 	cover = entry.cover
 	complex = entry.complex
 	measure = entry.measure
-	change_action = entry.change_action
 	conceal = entry.conceal
-	action = entry.action
-	action_when = entry.action_when
 	damage_type = entry.damage_type
 	inflict_type = entry.inflict_type
 	inflict_flat = entry.inflict_flat
@@ -408,13 +405,6 @@ def skill_dc_post(entry, body, cells):
 	
 	body = mod_add(measure, new_mod, body)
 
-	cells = check_cell('Action Change', 15, change_action, cells, True)
-	new_mod = mod_create('Action Change', 15)
-	new_mod = mod_cell('Action Changed To', 20, [action], new_mod)
-	new_mod = mod_cell('When', 5, [action_when], new_mod)
-	new_mod = mod_cell('Only if No Damage', 20, [action_no_damage], new_mod)
-	body = mod_add(change_action, new_mod, body)
-
 	cells = check_cell('Cover', 7, cover, cells, True)
 	new_mod = mod_create('Cover', 10)
 	new_mod = mod_cell('Effect', 8, [cover_effect], new_mod)
@@ -428,7 +418,7 @@ def skill_dc_post(entry, body, cells):
 	body = mod_add(conceal, new_mod, body)
 
 	cells = check_cell('Check', 10, variable_check, cells, True)
-	new_mod = mod_create('Variable Check', 18)
+	new_mod = mod_create('Change Check', 18)
 	new_mod = mod_cell('Check', 7, [variable], new_mod)
 	body = mod_add(variable_check, new_mod, body)
 	
