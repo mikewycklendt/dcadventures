@@ -324,7 +324,6 @@ def skill_dc_post(entry, body, cells):
 	condition_turns = integer_convert(condition_turns)
 
 	math = math_convert(math)
-	action = get_name(Action, action)
 	inflict_math = math_convert(inflict_math)
 	damage_consequence = get_name(Consequence, damage_consequence)
 	measure_rank = get_name(Rank, measure_rank)
