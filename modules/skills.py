@@ -1251,6 +1251,7 @@ def skill_bonus_post_degree():
 	attack_turns = db_integer(SkillTime, attack_turns)
 	condition_turns = db_integer(SkillTime, condition_turns)
 	level_time = db_integer(SkillTime, level_time)
+	linked = db_integer(SkillDegree, linked)
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)

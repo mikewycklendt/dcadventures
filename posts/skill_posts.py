@@ -662,7 +662,7 @@ def skill_degree_post(entry, body, cells):
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
 	cella = check_cell('Cumulative', 12, cumulative, cells)
-	cella = check_cell('Linked', 7, linked, cells)
+	cella = cell('Linked', 18, [linked], cells)
 
 	body = send_multiple(title, cells, body)
 
