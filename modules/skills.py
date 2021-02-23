@@ -1070,7 +1070,6 @@ def skill_bonus_post_dc():
 					level = level,
 					condition1 = condition1,
 					condition2 = condition2,
-					condition_turns = condition_turns,
 					keyword = keyword,
 					action_no_damage = action_no_damage,
 					condition_no_damage = condition_no_damage,
