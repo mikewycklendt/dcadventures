@@ -13,6 +13,12 @@
 	font-size: 80%;
 }
 
+.time-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
 #time-base {
 	opacity: 0%;
 	transition: all .4s ease-out;

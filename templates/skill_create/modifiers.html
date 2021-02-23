@@ -475,13 +475,14 @@
 		</div>
 
 		<div>
-			<select class="select-entry" id="modifier_lasts" name="modifier_lasts">
-				<option value="">Turns</option>
-				<option value="round">Round</option>
+			<select class="time-entry" id="modifier_lasts" name="modifier_lasts">
+				<option value="">Time Penalty/Bonus Applies</option>
+				<option value="turn">One Turn</option>
+				<option valuqe="round">Round</option>
 				<option value="scene">Scene</option>
-				<option value="always">Always</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

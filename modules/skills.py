@@ -1950,6 +1950,8 @@ def skill_post_modifiers():
 	penalty_check = db_integer(Check, penalty_check)
 	penalty_check_range = db_integer(Ranged, penalty_check_range)
 
+	lasts =  db_integer(SkillTime, lasts)
+
 	bonus = integer(bonus)
 	penalty = integer(penalty)
 	bonus_trait = integer(bonus_trait)

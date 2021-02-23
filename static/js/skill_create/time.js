@@ -79,6 +79,7 @@ function time_submit() {
 	const skill_id = select("create_bonus_select");
 
 	const selects = 'time-sml';
+	const select_entry = 'time-entry';
 	
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
@@ -124,13 +125,14 @@ function time_submit() {
 			const id = jsonResponse.id;
 
 			selects_add(id, keyword, selects);
+			selects_add(id, keyword, select_entry);
 
 			time_grid.columns.length = 0;
 			time_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, time_grid, route, [selects]);
+			create_table('skill', jsonResponse, time_grid, route, [selects, select_entry]);
 			clear_errors(err_line, errors)
 
 			time_grid.titles = true;

@@ -973,16 +973,12 @@ def skill_modifiers_post(entry, body, cells):
 	skill = entry.skill
 	light = entry.light
 
+
+	lasts = get_keyword(SkillTime, lasts)
+
+
 	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
 	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
-
-
-
-
-
-
-
-
 
 	bonus = integer_convert(bonus)
 	penalty = integer_convert(penalty)
@@ -1081,6 +1077,8 @@ def skill_modifiers_post(entry, body, cells):
 	vcells = vcell('skill', 20, [skill], vcells)
 	vcells = vcell('light', 20, [light], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
+
+	cells = cell('Duration', 20, [lasts], cells)
 
 	body = send(cells, body)
 	
