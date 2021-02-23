@@ -924,7 +924,7 @@ def skill_opposed_post_errors(data):
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
 	errors = id_check(SkillTime, time, 'DC', errors)
-	errors = id_check(SkillTime, 'Recurring Time', errors)
+	errors = id_check(SkillTime, recurring_value, 'Recurring Time', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
