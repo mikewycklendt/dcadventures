@@ -420,7 +420,6 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_cell('Check', 7, [variable], new_mod)
 	body = mod_add(variable_check, new_mod, body)
 	
-	cells = cell('Description', 25, [description], cells)
 
 	body = send_multiple(title, cells, body)
 
