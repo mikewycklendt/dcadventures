@@ -655,7 +655,7 @@ class SkillMod(db.Model):
 	penalty_conflict_defend = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
 	multiple_count = db.Column(db.Integer)
-	
+	lasts = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
 	light = db.Column(db.Integer, db.ForeignKey('light.id'))
 
