@@ -437,10 +437,9 @@ def skill_dc_post_errors(data):
 	errors = variable_fields('mod', 'DC Modifier', dc, [mod], errors)
 	errors = variable_field('mod', dc, 'Modifier', mod, errors)
 
-	errors = check_fields(condition, 'Condition', [condition1, condition2, condition_turns], errors)
+	errors = check_fields(condition, 'Condition', [condition1, condition2], errors)
 	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
 	errors = check_field(condition, 'Condition', 'Ending Condtion', condition2, errors)
-	errors = check_field(condition, 'Condition', 'Condition Turns', condition_turns, errors)
 	
 	errors = check_fields(levels, 'Levels', [level_type, level], errors)
 	errors = check_field(levels, 'Levels', ':evel Type', level_type, errors)
