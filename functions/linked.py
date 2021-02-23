@@ -41,6 +41,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 			db.session.commit()
 			title_id = entry.id
 			body['add_title'] = True
+			body['created'] = False
 			db.session.close()
 		except:
 			success = False
