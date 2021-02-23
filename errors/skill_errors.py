@@ -154,7 +154,6 @@ def skill_check_post_errors(data):
 
 	skill_id = data['skill_id']
 	check_type = data['check_type']
-	mod = data['mod']
 	circumstance = data['circumstance']
 	trigger = data['trigger']
 	when = data['when']
@@ -182,7 +181,6 @@ def skill_check_post_errors(data):
 
 	errors = id_check(SkillBonus, skill_id, 'Enhanced Skill', errors)	
 	errors = id_check(Check, check_type, 'Check', errors)
-	errors = int_check(mod, 'Modifier', errors)
 	errors = id_check(ConflictAction, conflict, 'Conflict Action', errors)
 	errors = id_check(Ranged, conflict_range, 'Conflict Range', errors)
 	errors = int_check(action, 'Action', errors)

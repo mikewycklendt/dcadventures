@@ -61,7 +61,6 @@ function check_submit() {
 	const font = check_grid.font;
 	
 	const check_type = select("check_check_type");
-	const mod = select("check_mod");
 	const circumstance = text("check_circ");
 	const trigger = select("check_trigger");
 	const when = select("check_when");
@@ -103,7 +102,6 @@ function check_submit() {
 			'created': created,
 			'font': font,
 			'check_type': check_type,
-			'mod': mod,
 			'circumstance': circumstance,
 			'trigger': trigger,
 			'when': when,

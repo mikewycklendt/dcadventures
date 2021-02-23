@@ -165,7 +165,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'turns', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -621,7 +621,6 @@ def skill_bonus_post_check():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 	check_type = request.get_json()['check_type']
-	mod = request.get_json()['mod']
 	circumstance = request.get_json()['circumstance']
 	trigger = request.get_json()['trigger']
 	when = request.get_json()['when']
@@ -660,13 +659,11 @@ def skill_bonus_post_check():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 
-	mod = integer(mod)
 	trait = integer(trait)
 	action = integer(action)
 
 	entry = SkillCheck(skill_id = skill_id,
 						check_type = check_type,
-						mod = mod,
 						circumstance = circumstance,
 						trigger = trigger,
 						when = when,
