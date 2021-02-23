@@ -1007,7 +1007,6 @@ def skill_bonus_post_dc():
 	measure_mod = integer(measure_mod)
 	measure_trait_unit = integer(measure_trait_unit)
 	measure_mod_unit = integer(measure_mod_unit)
-	condition_turns = integer(condition_turns)
 
 	cover_type = db_integer(Cover, cover_type)
 	conceal_type = db_integer(Conceal, conceal_type)
@@ -1281,7 +1280,6 @@ def skill_bonus_post_degree():
 	measure_mod_unit = integer(measure_mod_unit)
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
-	condition_turns = integer(condition_turns)
 	nullify = integer(nullify)
 	
 	body = {}

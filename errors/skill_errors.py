@@ -412,7 +412,6 @@ def skill_dc_post_errors(data):
 	errors = id_check(Rank, measure_math_rank, 'Measurement Rank', errors)
 	errors = id_check(LevelType, level_type, 'Level Type', errors)
 	errors = id_check(Levels, level, 'Level', errors)
-	errors = int_check(condition_turns, 'Condition Turns', errors)
 	errors = id_check(Complex, complexity, 'Complexity', errors)
 	
 	errors = id_check(Cover, cover_type, 'Cover', errors)
@@ -930,13 +929,13 @@ def skill_opposed_post_errors(data):
 	errors = int_check(opponent_mod, 'Opponent Modifier', errors)
 	errors = id_check(Check, player_check, 'Player Check', errors)
 	errors = id_check(Check, opponent_check, 'Opponent Check', errors)
-	errors = int_check(recurring_value, 'Recurring Value', errors)
 	errors = id_check(Unit, recurring_units, 'Recurring Units', errors)
 
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
 	errors = id_check(SkillTime, time, 'DC', errors)
+	errors = id_check(SkillTime, 'Recurring Time', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
@@ -945,7 +944,6 @@ def skill_opposed_post_errors(data):
 	errors = required(opponent_check, 'Opponennt Check', errors)
 	errors = check_fields(recurring, 'Recurring', [recurring_value, recurring_units], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
-	errors = check_field(recurring, 'Recurring', 'Recurring Units', recurring_units, errors)
 
 	errors = variable_fields('6', 'Resistance Check', opponent_check, [dc], errors)
 	errors = variable_field('6', opponent_check, 'Resistanance DC', dc, errors)

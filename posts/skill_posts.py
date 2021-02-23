@@ -839,7 +839,7 @@ def skill_opposed_post(entry, body, cells):
 
 	cells = check_cell('Recurring', 10, recurring, cells, True)
 	new_mod = mod_create('Recurring Check', 17)
-	new_mod = mod_cell('Every', 7, [recurring_value, recurring_units], new_mod)
+	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
 	mod_add(recurring, new_mod, body)
 
 	body = send(cells, body)
