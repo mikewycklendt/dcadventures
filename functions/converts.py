@@ -443,7 +443,7 @@ def math_convert(name):
 		name =  ''
 		return (name)
 	elif name == 1:
-		name = '<i class="fas fa-plus">'
+		name = '<i class="fas fa-minus">'
 	elif name == 2:
 		name = '<i class="fas fa-minus">'
 	elif name == 4:
