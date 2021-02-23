@@ -476,6 +476,7 @@ class SkillDegree(db.Model):
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	level_direction = db.Column(db.Integer)
+	level_time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	circumstance = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	circ_target = db.Column(db.String())
 	measure_effect = db.Column(db.String())

@@ -320,6 +320,19 @@
 					{% endfor %}
 				</select>
 			</div>
+
+			<div>
+				<select class="time=sml" id="deg_mod_level_time" name="deg_mod_level_time">
+					<option value="">Time Circumstance Lasts</option>
+					<option value="turn">One Turn</option>
+					<option value="round">Round</option>
+					<option value="scene">Scene</option>
+					<option value="">Use Time Effect form to put options here</option>
+					{% for b in bonus_time %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 		
 		<div id="deg-mod-circ">
