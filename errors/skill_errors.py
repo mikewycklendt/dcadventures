@@ -933,7 +933,7 @@ def skill_opposed_post_errors(data):
 	errors = required(opponent_trait, 'Opponent Check Trait', errors)
 	errors = required(opponent_check, 'Opponennt Check', errors)
 	errors = required(keyword, 'Keyword', errors)
-	
+
 	errors = check_fields(recurring, 'Recurring', [recurring_value], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
 
@@ -1015,7 +1015,7 @@ def skill_time_post_errors(data):
 
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
-	errors - variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
+	errors = variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
 
 	return (errors)
 
