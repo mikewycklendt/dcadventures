@@ -76,7 +76,7 @@ function check_submit() {
 	const free = check("check_free");
 	const keyword = text("check_keyword");
 	const degree = select("check_degree");
-	const circ = select("check_circ");
+	const circ = select("check_circ_type");
 	const dc = select("check_dc");
 	const time = select("check_time");
 	const move = select("check_move");
