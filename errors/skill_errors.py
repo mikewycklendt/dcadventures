@@ -416,7 +416,7 @@ def skill_dc_post_errors(data):
 	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
 	
 	errors = id_check(SkillCheck, variable, 'Variable Check', errors)
-	errors = id_check(SkillTime, time)
+	errors = id_check(SkillTime, time, 'Duration of Effect', errors)
 
 	errors = required(target, 'Target', errors)
 	errors = required(dc, 'DC Type', errors)
