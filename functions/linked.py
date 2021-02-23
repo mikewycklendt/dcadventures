@@ -48,7 +48,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 		finally:
 			db.session.close()
 
-	entry = db.session.query(table).filter(table.title_id == title_id, table.keyword == keyword).first()
+	entry = db.session.query(table).filter(table.title == title_id, table.keyword == keyword).first()
 	if entry is not None:
 		success = False
 		error_msgs.append('You have already created a rule with that keyword for this title.')
