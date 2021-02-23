@@ -52,7 +52,7 @@ function ability_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, ability_grid, route);
+			create_table('skill', jsonResponse, ability_grid, route);
 			clear_errors(err_line, errors)
 
 			ability_grid.titles = true;

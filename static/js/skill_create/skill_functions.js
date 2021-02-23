@@ -29,7 +29,7 @@ function descriptor_add_type()  {
 
 descriptor_add_type()
 
-function create_table(jsonResponse, object, route, selects=false, title=false, title_selects=false) {
+function create_table(rule, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const spot_string = jsonResponse.spot;
 	const created = jsonResponse.created;
@@ -46,10 +46,10 @@ function create_table(jsonResponse, object, route, selects=false, title=false, t
 	console.log(id)
 
 	const cells_class = table_id + '-cells';
-	const base_table = 'skill-table-table';
+	const base_table = rule + '-table-table';
 	const base_cell_title = 'skill-table-cell-title ';
-	const base_title = 'skill-table-title'
-	const base_titles = 'skill-table-titles';
+	const base_title = rule + '-table-title'
+	const base_titles = rule + '-table-titles';
 
 	let determine_id;
 	let determine_title;
@@ -72,7 +72,7 @@ function create_table(jsonResponse, object, route, selects=false, title=false, t
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route, selects, title, title_selects);
+		create_titles(rule, jsonResponse, grow, object, route, selects, title, title_selects);
 	
 	} else {
 
@@ -81,20 +81,20 @@ function create_table(jsonResponse, object, route, selects=false, title=false, t
 		
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route, selects, title, title_selects);
+		cells_create(rule, table, grow, jsonResponse, object, route, selects, title, title_selects);
 	}
 
 
 }
 
-function create_titles(jsonResponse, grow, object, route, selects=false, title=false, title_selects=false) {
+function create_titles(rule, jsonResponse, grow, object, route, selects=false, title=false, title_selects=false) {
 	
 	const spot_string = jsonResponse.spot;
 	const title_string = jsonResponse.title;
 	const grid = jsonResponse.grid;
 	const cells = jsonResponse.cells;
 
-	const base_header= 'skill-header-'
+	const base_header= rule + '-header-'
 	
 	let determine_id;
 	let determine_title;
@@ -110,10 +110,10 @@ function create_titles(jsonResponse, grow, object, route, selects=false, title=f
 	const table_id = determine_id;	
 	const cells_class = table_id + '-cells';
 	const title_class = table_id + '-title';
-	const base_table = 'skill-table-table';
-	const base_cell_title = 'skill-table-cell-title';
-	const base_title = 'skill-table-title-table';
-	const base_titles = 'skill-table-titles';
+	const base_table = rule + '-table-table';
+	const base_cell_title = rule + '-table-cell-title';
+	const base_title = rule + '-table-title-table';
+	const base_titles = rule + '-table-titles';
 	
 	const table_class = table_id + '-table';
 
@@ -149,7 +149,7 @@ function create_titles(jsonResponse, grow, object, route, selects=false, title=f
 	
 	grow += title_row.scrollHeight
 
-	cells_create(new_table, grow, jsonResponse, object, route, selects, title, title_selects)
+	cells_create(rule, new_table, grow, jsonResponse, object, route, selects, title, title_selects)
 	
 }
 
@@ -185,7 +185,7 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 
 }
 
-function cells_create(table_input, grow, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
+function cells_create(rule, table_input, grow, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const table = table_input;
 	const table_id = jsonResponse.table_id;
@@ -203,11 +203,11 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	const entry_class = table_id + '-row';
 	const delete_class = table_id + '-xbox';
 	const check_button_class = table_id + '-button'
-	const base_cells = 'skill-table-cells';
-	const base_cell = 'skill-table-cell'
-	const base_button_check = 'skill-check-button';
-	const base_check = 'skill-check';
-	const base_entry = 'skill-table-row';
+	const base_cells = rule + '-table-cells';
+	const base_cell = rule + '-table-cell'
+	const base_button_check = rule + '-check-button';
+	const base_check = rule + '-check';
+	const base_entry = rule + '-table-row';
 	const base_delete = 'xbox ';
 
 	const entry = document.createElement('div');
@@ -278,19 +278,19 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 	grow += row.scrollHeight; 
 
 	if (create_mod) {
-		mod_create(mods, id, entry, table_id, object, table);
+		mod_create(rule, mods, id, entry, table_id, object, table);
 	}
 	
 	grow_table(table, grow)
 	
 	grid__update(columns, cells, table_id, grid, cells_class, size, table)
 
-	row_delete(jsonResponse, route, object, selects, title, title_selects)
+	row_delete(rule, jsonResponse, route, object, selects, title, title_selects)
 }
 
 
 
-function mod_create(mods_input, id_input, entry_input, table_id_input, object, table) {
+function mod_create(rule, mods_input, id_input, entry_input, table_id_input, object, table) {
 
 	const mods = mods_input;
 	const id = id_input;
@@ -304,7 +304,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 	const mod_cell_sub = 'mod-cell-sub';
 	const mod_cell_title = 'mod-cell-title';
 	const mod_cell_content = 'mod-cell-content';
-	
+	const check_div = rule + '-check';
 	const entry_class = table_id + '-row';
 
 	const entries = document.getElementsByClassName(entry_class);
@@ -354,7 +354,7 @@ function mod_create(mods_input, id_input, entry_input, table_id_input, object, t
 			if (new_cell.content === true) {
 				mod.appendChild(con);
 				const check = document.createElement('div');
-				check.className = 'skill-check';
+				check.className = check_div;
 				con.appendChild(check)
 			} else {
 				con.innerHTML = new_cell.content;
@@ -410,7 +410,7 @@ function check_buttons(table_id, object, table) {
 	}
 }
 
-function row_delete(jsondata, route, object, selects=false, title=false, title_selects=false) {
+function row_delete(rule, jsondata, route, object, selects=false, title=false, title_selects=false) {
 
 	const cells = jsondata.cells;
 	const size = object.font;
@@ -431,7 +431,7 @@ function row_delete(jsondata, route, object, selects=false, title=false, title_s
 	
 	const rows = which_table;
 	
-	const base_header= 'skill-header-'
+	const base_header= rule + '-header-'
 	
 	let determine_id;
 	let determine_title;

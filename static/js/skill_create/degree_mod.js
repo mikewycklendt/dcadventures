@@ -357,7 +357,7 @@ function deg_mod_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/degree/delete/'
-			create_table(jsonResponse, deg_mod_grid, route, [selects]);
+			create_table('skill', jsonResponse, deg_mod_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 

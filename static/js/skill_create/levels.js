@@ -78,7 +78,7 @@ function levels_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/levels/delete/'
-			create_table(jsonResponse, levels_grid, route);
+			create_table('skill', jsonResponse, levels_grid, route);
 			clear_errors(err_line, errors)
 			row_delete(jsonResponse, route, levels_grid) 
 

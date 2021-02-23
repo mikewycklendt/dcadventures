@@ -384,7 +384,7 @@ function dc_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table(jsonResponse, dc_grid, route, [dc_selects]);
+			create_table('skill', jsonResponse, dc_grid, route, [dc_selects]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;
