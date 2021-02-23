@@ -13,6 +13,12 @@
 	font-size: 80%;
 }
 
+.time-title-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .time-entry {
 	height: 2.3vw; 
 	padding: .3vw;  

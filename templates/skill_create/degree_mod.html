@@ -794,16 +794,21 @@
 	</div>
 
 	<div>
+		<select class="degree-opp-sml" id="deg_mod_linked" name="deg_mod_linked">
+			<option value="">Linked to Degree</option>
+			<option value="">Use Degree form to put options here</option>
+			{% for b in bonus_degree %}
+				<option value={{b.id}}>{{b.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div>
 		<div class="check-div">
 			<input type="checkbox" id="deg_mod_cumulative" class="medium-checkbox med-checkbox"> Cumulative
 		</div>
 	</div>
 
-	<div >
-		<div class="check-div">
-			<input type="checkbox" id="deg_mod_linked" class="medium-checkbox med-checkbox"> Linked
-		</div>
-	</div>
 
 </div>
 
