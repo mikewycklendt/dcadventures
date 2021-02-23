@@ -190,11 +190,7 @@ class SkillCheck(db.Model):
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
 	keyword = db.Column(db.String())
-	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
-	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
-	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
-	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
-	move = db.Column(db.Integer, db.ForeignKey('skill_move.id'))
+	
 	attack = db.Column(db.Integer)
 	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
 
