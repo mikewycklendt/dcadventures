@@ -202,10 +202,8 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	let determine_title;
 	if (title == false) {
 		determine_id = jsonResponse.table_id;
-		determine_title = base_header + jsonResponse.table_id;
 	} else {
 		determine_id = jsonResponse.table_id + '-' + title;
-		determine_title = base_header + title;
 	}
 	
 	const table_id = determine_id;
