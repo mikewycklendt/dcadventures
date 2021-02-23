@@ -1462,7 +1462,7 @@ def skill_bonus_post_move():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
-	time = db_integer(SkillDC, time)
+	time = db_integer(SkillTime, time)
 
 	speed_rank = integer(speed_rank)
 	speed_trait = integer(speed_trait)
