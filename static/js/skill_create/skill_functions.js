@@ -125,6 +125,7 @@ function create_titles(rule, jsonResponse, grow, object, route, selects=false, t
 		title.innerHTML = title_string;
 		title.setAttribute('id', title_id);
 		spot.appendChild(title)
+		title.style.maxHeight = title.scrollHeight + 'px';
 	}
 	const new_table = document.createElement('div');
 	new_table.className = base_table;
@@ -455,7 +456,7 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 		determine_title = base_header + title;
 	}
 
-	const title_id = determine_title;
+	const header_id = determine_title;
 	const table_id = determine_id;	
 
 	const cells_class = table_id + '-cells';
@@ -466,7 +467,7 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 	const all_cells = document.getElementsByClassName(cells_class);
 	const deletes = document.getElementsByClassName(delete_class);
 	const table_change = document.getElementById(table_class)
-	const header = document.getElementById(title_id)	
+	const header = document.getElementById(header_id)	
 	const errors = table_id + '-err';
 	const err_line = table_id + '-err-line';
 
@@ -485,7 +486,7 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 			console.log(jsonResponse)
 				if (jsonResponse.success) {
 
-					const hide_table = jsonResponse.hide_tablel
+					const hide_table = jsonResponse.hide_table;
 					const title_id = jsonResponse.title_id;
 
 					clear_errors(err_line, errors);
@@ -547,7 +548,8 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 								if (hide_table == true) {
 									table_change.style.maxHeight = '0px';
 									setTimeout(function(){table_change.style.display = 'none'}, 400);
-									header.style.display = 'none';
+									header.style.maxHeight = '0px';
+									setTimeout(function(){header.style.display = 'none'}, 400);
 									deleted_item(title_selects, title_id);
 								} else {
 									grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)

@@ -952,6 +952,9 @@ textarea:focus {
 	font-size: 165%;
 	font-family: Comic, 'Monda', Verdana;
 	text-align: center;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }
 
 .err {
