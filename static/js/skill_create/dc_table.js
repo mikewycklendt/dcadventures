@@ -55,8 +55,8 @@ function dc_descriptor() {
 	check_drop(check, div, entry);
 }
 
-function dc_variable_checK() {
-	const check = 'dc_variable_checK';
+function dc_variable_check() {
+	const check = 'dc_variable_check';
 	const div = 'dc-variable';
 	const entry = 'dc-entry';
 
