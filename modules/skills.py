@@ -883,7 +883,7 @@ def skill_bonus_post_circ():
 @skill.route('/skill/circ/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_circ(id):
 	
-	body = delete_link(SkillCirc, SkillCircType, id, 'skill_id')
+	body = delete_link(SkillCirc, SkillCircType, id)
 	return jsonify(body)
 
 @skill.route('/skill/dc/create', methods=['POST'])
@@ -1120,7 +1120,7 @@ def skill_bonus_post_dc():
 @skill.route('/skill/dc/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_dc(id):
 	
-	body = delete_link(SkillDC, SkillDCType, id, 'skill_id')
+	body = delete_link(SkillDC, SkillDCType, id)
 	return jsonify(body)
 
 @skill.route('/skill/degree/create', methods=['POST'])
@@ -1397,7 +1397,7 @@ def skill_bonus_post_degree():
 @skill.route('/skill/degree/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_degree(id):
 		
-	body = delete_link(SkillDegree, SkillDegreeType, id, 'skill_id')
+	body = delete_link(SkillDegree, SkillDegreeType, id)
 	return jsonify(body)
 
 @skill.route('/skill/move/create', methods=['POST'])
@@ -1562,7 +1562,7 @@ def skill_bonus_post_move():
 @skill.route('/skill/move/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_move(id):
 		
-	body = delete_link(SkillMove, SkillMoveType, id, 'skill_id')
+	body = delete_link(SkillMove, SkillMoveType, id)
 	return jsonify(body)
 
 
@@ -1825,7 +1825,7 @@ def skill_bonus_post_time():
 @skill.route('/skill/time/delete/<id>', methods=['DELETE'])
 def delete_skill_bonus_time(id):
 		
-	body = delete_link(SkillTime, SkillTimeType, id, 'skill_id')
+	body = delete_link(SkillTime, SkillTimeType, id)
 	return jsonify(body)
 
 @skill.route('/skill/modifiers/create', methods=['POST'])

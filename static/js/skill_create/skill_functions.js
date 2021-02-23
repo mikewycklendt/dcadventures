@@ -32,7 +32,6 @@ descriptor_add_type()
 function create_table(jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const spot_string = jsonResponse.spot;
-	const table_id = jsonResponse.table_id;
 	const created = jsonResponse.created;
 	const id = jsonResponse.id; 
 	const title_string = jsonResponse.title;
@@ -47,12 +46,24 @@ function create_table(jsonResponse, object, route, selects=false, title=false, t
 	console.log(id)
 
 	const cells_class = table_id + '-cells';
-	const table_class = table_id + '-table'
 	const base_table = 'skill-table-table';
 	const base_cell_title = 'skill-table-cell-title ';
 	const base_title = 'skill-table-title'
 	const base_titles = 'skill-table-titles';
 
+	let determine_id;
+	let determine_title;
+	if (title == false) {
+		determine_id = jsonResponse.table_id;
+		determine_title = base_header + jsonResponse.table_id;
+	} else {
+		determine_id = jsonResponse.table_id + '-' + title;
+		determine_title = base_header + title;
+	}
+	
+	const table_id = determine_id;
+
+	const table_class = table_id + '-table'
 	
 	console.log(created)
 
@@ -61,15 +72,16 @@ function create_table(jsonResponse, object, route, selects=false, title=false, t
 
 		let grow =  0;
 
-		create_titles(jsonResponse, grow, object, route, selects, title);
+		create_titles(jsonResponse, grow, object, route, selects, title, title_selects);
 	
 	} else {
 
 		let grow = 0
 
+		
 		const table = document.getElementById(table_class)
 
-		cells_create(table, grow, jsonResponse, object, route, selects, title);
+		cells_create(table, grow, jsonResponse, object, route, selects, title, title_selects);
 	}
 
 
@@ -461,14 +473,12 @@ function row_delete(jsondata, route, object, selects=false, title=false, title_s
 			console.log(jsonResponse)
 				if (jsonResponse.success) {
 
+					const hide_table = jsonResponse.hide_tablel
+					const title_id = jsonResponse.title_id;
 
 					clear_errors(err_line, errors);
 					const remove = jsonResponse.id;
 					deleted_item(selects, remove)
-
-					if (title != false) {
-						deleted_item(title_selects, title);
-					}
 	
 					entry[i].style.maxHeight = '0vw';
 
@@ -481,6 +491,7 @@ function row_delete(jsondata, route, object, selects=false, title=false, title_s
 							rows.splice(i, 1);
 						}
 					}
+
 					if (title != false) {
 						const tables = object.columns;
 						for (i = 0; i < tables.length; i++) {
@@ -488,8 +499,10 @@ function row_delete(jsondata, route, object, selects=false, title=false, title_s
 								object.columns[i].rows = rows;
 							}
 						}
-	
+					} else {
+						object.columns = rows;
 					}
+
 					console.log(rows);
 
 					response = fetch('/power/grid', {
@@ -519,10 +532,11 @@ function row_delete(jsondata, route, object, selects=false, title=false, title_s
 									grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
 								}
 							} else {
-								if (jsonResponse.hide_table) {
+								if (hide_table == true) {
 									table_change.style.maxHeight = '0px';
 									setTimeout(function(){table_change.style.display = 'none'}, 400);
 									header.style.display = 'none';
+									deleted_item(title_selects, title_id);
 								} else {
 									grid__update(columns, cells, table_id, grid, cells_class, newsize, table_change)
 								}

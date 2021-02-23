@@ -59,22 +59,22 @@ def link_add(table, title_table, column, id, title, keyword, body):
 
 	return (body)
 
-def delete_link(table, link_table, id, column):
+def delete_link(table, link_table, id):
 	body = {}
 	body['success'] = True
 	body['hide_table'] = False
+
 	get_trait = db.session.query(table).filter_by(id=id).first()
-	trait = getattr(get_trait, column)
+	title_id = get_trait.title
+	body['title_id'] = title_id
 	db.session.query(table).filter_by(id=id).delete()
 	db.session.commit()
 	print('\n\n' + str(id) + ' DELETED\n\n')
 	db.session.close()
 	
-	attribute = getattr(link_table, column)
-	the_filter = attribute == trait
-	linked = db.session.query(link_table).filter(the_filter).first()
-	if linked is None:
-		db.session.query(link_table).filter(the_filter).deletee()
+	empty = db.session.query(table).filter_by(title=title_id).first()
+	if empty is None:
+		db.session.query(link_table).filter(the_filter).delete()
 		body['hide_table'] = True
 		db.session.commit()
 		db.session.close()
