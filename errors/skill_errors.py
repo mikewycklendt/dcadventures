@@ -384,7 +384,6 @@ def skill_dc_post_errors(data):
 	tools = data['tools']
 	variable_check = data['variable_check']
 	variable = data['variable']
-	check = data['check']
 	time = data['time']
 	title = data['title']
 
