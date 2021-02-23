@@ -442,13 +442,21 @@ def math_convert(name):
 	if name is None:
 		name =  ''
 		return (name)
-
-	try:
-		query = db.session.query(Math).filter_by(id=name).one()
-		name = query.symbol
-	except:
-		print('invalid id')
-		name = ''
+	elif name == 1:
+		name = '<i class="fas fa-plus">'
+	elif name == 2:
+		name = '<i class="fas fa-minus">'
+	elif name == 4:
+		name = '<i class="fas fa-divide">'
+	elif name == 3:
+		name = '<i class="fas fa-times">'
+	else:
+		try:
+			query = db.session.query(Math).filter_by(id=name).one()
+			name = query.symbol
+		except:
+			print('invalid id')
+			name = ''
 	
 	return (name)
 

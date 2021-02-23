@@ -235,7 +235,7 @@ function cells_create(table_input, grow, jsonResponse, object, route, selects=fa
 				cell_heights.push(cell_height);
 			}
 		} else {
-			new_cell.innerText = cell.content;
+			new_cell.innerHTML = cell.content;
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
 		}

@@ -160,8 +160,8 @@ def skill_circ_post(entry, body, cells):
 	lasts = entry.lasts
 	title = entry.title
 
-	tirle = get_name(SkillCircType, title)
-	body['title'] = title
+	tirle_name = get_name(SkillCircType, title)
+	body['title'] = title_name
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 
@@ -227,7 +227,7 @@ def skill_circ_post(entry, body, cells):
 
 	cells = cell('Circumstance', 30, [circumstance], cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
@@ -300,8 +300,8 @@ def skill_dc_post(entry, body, cells):
 	time = entry.time
 	title = entry.title
 
-	tirle = get_name(SkillDCType, title)
-	body['title'] = title
+	tirle_name = get_name(SkillDCType, title)
+	body['title'] = title_name
 
 	cover_type = get_name(Cover, cover_type)
 	conceal_type = get_name(Conceal, conceal_type)
@@ -434,7 +434,7 @@ def skill_dc_post(entry, body, cells):
 	
 	cells = cell('Description', 35, [description], cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
@@ -517,8 +517,8 @@ def skill_degree_post(entry, body, cells):
 	duration = entry.duration
 	title = entry.title
 
-	tirle = get_name(SkillDegreeType, title)
-	body['title'] = title
+	tirle_name = get_name(SkillDegreeType, title)
+	body['title'] = title_name
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
@@ -660,7 +660,7 @@ def skill_degree_post(entry, body, cells):
 	cella = check_cell('Cumulative', 12, cumulative, cells)
 	cella = check_cell('Linked', 7, linked, cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
@@ -703,8 +703,8 @@ def skill_move_post(entry, body, cells):
 	keyword = entry.keyword
 	title = entry.title
 
-	tirle = get_name(SkillMoveType, title)
-	body['title'] = title
+	tirle_name = get_name(SkillMoveType, title)
+	body['title'] = title_name
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
@@ -763,7 +763,7 @@ def skill_move_post(entry, body, cells):
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
@@ -868,8 +868,8 @@ def skill_time_post(entry, body, cells):
 	keyword = entry.keyword
 	title = entry.title
 
-	tirle = get_name(SkillTimeType, title)
-	body['title'] = title
+	tirle_name = get_name(SkillTimeType, title)
+	body['title'] = title_name
 
 	trait = trait_select(trait, trait_type)
 
@@ -912,7 +912,7 @@ def skill_time_post(entry, body, cells):
 	cells = cell('Recovery', 9, [recovery_penalty], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
