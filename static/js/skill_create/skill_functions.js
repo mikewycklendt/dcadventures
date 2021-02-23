@@ -41,6 +41,7 @@ function create_table(rule, jsonResponse, object, route, selects=false, title=fa
 	const rows = jsonResponse.rows;
 	const size = jsonResponse.font;
 
+	const base_header= rule + '-header-'
 
 	let determine_id;
 	let determine_title;
@@ -64,8 +65,7 @@ function create_table(rule, jsonResponse, object, route, selects=false, title=fa
 	const base_table = rule + '-table-table';
 	const base_cell_title = 'skill-table-cell-title ';
 	const base_title = rule + '-table-title'
-	const base_titles = rule + '-table-titles';
-		
+	const base_titles = rule + '-table-titles';	
 	console.log(created)
 
 
