@@ -443,13 +443,13 @@ def math_convert(name):
 		name =  ''
 		return (name)
 	elif name == 1:
-		name = '<i class="fas fa-minus">'
+		name = '<i class="fas fa-minus"></i>'
 	elif name == 2:
-		name = '<i class="fas fa-minus">'
+		name = '<i class="fas fa-minus"></i>'
 	elif name == 4:
-		name = '<i class="fas fa-divide">'
+		name = '<i class="fas fa-divide"></i>'
 	elif name == 3:
-		name = '<i class="fas fa-times">'
+		name = '<i class="fas fa-times"></i>'
 	else:
 		try:
 			query = db.session.query(Math).filter_by(id=name).one()
