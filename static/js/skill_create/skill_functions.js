@@ -119,7 +119,7 @@ function create_titles(rule, jsonResponse, grow, object, route, selects=false, t
 	const table_class = table_id + '-table';
 
 	const spot = document.getElementById(spot_string);
-	if (title_string != '') {
+	if (jsonResponse.add_title) {
 		const title = document.createElement('div');
 		title.className = base_title;
 		title.innerHTML = title_string;
