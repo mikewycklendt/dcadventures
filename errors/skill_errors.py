@@ -506,10 +506,6 @@ def skill_dc_post_errors(data):
 
 	errors = check_fields(variable_check, 'Variable Check', [variable], errors)
 
-	errors = required_entry_multiple('x', action, 'skill', 'Variable Action', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
-	errors = required_entry_multiple('x', check, 'skill', 'Variable Check', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
-	errors = required_link(SkillCheck, variable_check, 'DC', 'Variable Check', 'skill', 'skill_id', skill_id, errors)
-	
 	return (errors)
 
 def skill_degree_post_errors(data):
