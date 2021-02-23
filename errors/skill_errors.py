@@ -774,8 +774,6 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('7', 'Comparison Check', check_type, [compare], errors)
 
-	errors = variable_field_linked('x', check_type, variable, 'Variable Check', 'Variable Check', errors)
-
 	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
 
 	return (errors)

@@ -187,7 +187,7 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="dc_variable_checK" class="medium-checkbox med-checkbox" onclick="dc_variable_checK()"> Variable Check
+				<input type="checkbox" id="dc_variable_checK" class="medium-checkbox med-checkbox" onclick="dc_variable_checK()"> Change Action
 			</div>
 		</div>
 		
@@ -200,12 +200,12 @@
 
 	<div id="dc-variable">
 		<div class="vcenter" style="text-align: left;">
-			Variable Check:
+			Change Action:
 		</div>
 
 		<div>
 			<select class="check-sml" id="dc_variable" name="dc_variable">
-				<option value="">Variable Check</option	>
+				<option value="">Alternate Check</option	>
 				<option value="">Use Variable check form to put options here</option>
 				{% for b in bonus_check %}
 					<option value={{b.id}}>{{b.name}}</option>

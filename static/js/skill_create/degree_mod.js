@@ -227,7 +227,7 @@ function deg_mod_submit() {
 	const nullify = select("deg_mod_nullify");
 	const nullify_type = select("deg_mod_nullify_type");
 	const cumulative = check("deg_mod_cumulative");
-	const linked = check("deg_mod_linked");
+	const linked = select("deg_mod_linked");
 	const check_type = select("deg_mod_check_type");
 	const opposed = select("deg_mod_check_opposed");
 	const resist_dc = select("deg_mod_check_resist_dc");
