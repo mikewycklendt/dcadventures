@@ -188,7 +188,7 @@ def skill_circ_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	circ_target = selects(circ_target, targets_select)
 
-	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}]
+	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar'}]
 	target = selects(target, circ_targets_select)
 
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
@@ -201,10 +201,10 @@ def skill_circ_post(entry, body, cells):
 
 
 
-	cells = cell('Keyword', 18, [keyword])
-	cells = cell('Target', 16, [circ_target], cells)
+	cells = cell('Keyword', 13, [keyword])
+	cells = cell('Target', 12, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
-	cells = cell('Lasts', 18, [lasts], cells)
+	cells = cell('Lasts', 15, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
 	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')
@@ -340,19 +340,19 @@ def skill_dc_post(entry, body, cells):
 	condition2 = get_name(Condition, condition2)
 	complexity = get_name(Complex, complexity)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
 	
 	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}]
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
-	cells = cell('Keyword', 20, [keyword])
-	cells = cell('Target', 15, [target], cells)
-	cells = cell('Duration', 15, [time], cells)
+	cells = cell('Keyword', 14, [keyword])
+	cells = cell('Target', 10, [target], cells)
+	cells = cell('Duration', 14, [time], cells)
 
 	vcells = vcell('value', 6, [value])
-	vcells = vcell('math', 16, [math_value, math, math_trait], vcells)
+	vcells = vcell('math', 22, [math_value, math, math_trait], vcells)
 	mod = add_plus(mod)
 	vcells = vcell('mod', 7, [mod], vcells)
 	vcells = vcell('choice', 14, ['Chosen by Player'], vcells)
@@ -420,7 +420,7 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_cell('Check', 7, [variable], new_mod)
 	body = mod_add(variable_check, new_mod, body)
 	
-	cells = cell('Description', 35, [description], cells)
+	cells = cell('Description', 25, [description], cells)
 
 	body = send_multiple(title, cells, body)
 
