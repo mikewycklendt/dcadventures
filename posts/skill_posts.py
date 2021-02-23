@@ -160,7 +160,7 @@ def skill_circ_post(entry, body, cells):
 	lasts = entry.lasts
 	title = entry.title
 
-	tirle_name = get_name(SkillCircType, title)
+	title_name = get_name(SkillCircType, title)
 	body['title'] = title_name
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
@@ -297,7 +297,7 @@ def skill_dc_post(entry, body, cells):
 	time = entry.time
 	title = entry.title
 
-	tirle_name = get_name(SkillDCType, title)
+	title_name = get_name(SkillDCType, title)
 	body['title'] = title_name
 
 	cover_type = get_name(Cover, cover_type)
@@ -508,7 +508,7 @@ def skill_degree_post(entry, body, cells):
 	duration = entry.duration
 	title = entry.title
 
-	tirle_name = get_name(SkillDegreeType, title)
+	title_name = get_name(SkillDegreeType, title)
 	body['title'] = title_name
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
@@ -697,7 +697,7 @@ def skill_move_post(entry, body, cells):
 	keyword = entry.keyword
 	title = entry.title
 
-	tirle_name = get_name(SkillMoveType, title)
+	title_name = get_name(SkillMoveType, title)
 	body['title'] = title_name
 
 	degree = get_keyword(SkillDegree, degree)
@@ -862,7 +862,7 @@ def skill_time_post(entry, body, cells):
 	keyword = entry.keyword
 	title = entry.title
 
-	tirle_name = get_name(SkillTimeType, title)
+	title_name = get_name(SkillTimeType, title)
 	body['title'] = title_name
 
 	trait = trait_select(trait, trait_type)
