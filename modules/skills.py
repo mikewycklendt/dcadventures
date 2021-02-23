@@ -814,6 +814,7 @@ def skill_bonus_post_circ():
 
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
 	body = link_add(SkillCirc, SkillCircType, 'skill_id', skill_id, title, keyword, body)
 	title = body['title_id']
@@ -868,7 +869,6 @@ def skill_bonus_post_circ():
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
@@ -1016,6 +1016,7 @@ def skill_bonus_post_dc():
 
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
 	body = link_add(SkillDC, SkillDCType, 'skill_id', skill_id, title, keyword, body)
 	title = body['title_id']
@@ -1100,7 +1101,6 @@ def skill_bonus_post_dc():
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
@@ -1281,6 +1281,7 @@ def skill_bonus_post_degree():
 	
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
 	body = link_add(SkillDegree, SkillDegreeType, 'skill_id', skill_id, title, keyword, body)
 	title = body['title_id']
@@ -1382,7 +1383,6 @@ def skill_bonus_post_degree():
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
@@ -1489,6 +1489,7 @@ def skill_bonus_post_move():
 
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
 	body = link_add(SkillMove, SkillMoveType, 'skill_id', skill_id, title, keyword, body)
 	title = body['title_id']
@@ -1547,7 +1548,6 @@ def skill_bonus_post_move():
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
@@ -1765,6 +1765,7 @@ def skill_bonus_post_time():
 
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
 	body = link_add(SkillTime, SkillTimeType, 'skill_id', skill_id, title, keyword, body)
 	title = body['title_id']
@@ -1810,7 +1811,6 @@ def skill_bonus_post_time():
 
 	body['table_id'] = table_id
 	body['spot'] = spot
-	body['created'] = created
 	body['title'] = ''
 	body['rows'] = rows
 	body['mods'] = []
