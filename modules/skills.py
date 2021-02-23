@@ -1164,6 +1164,7 @@ def skill_bonus_post_degree():
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	level_direction = request.get_json()['level_direction']
+	level_time = request.get_json()['level_time']
 	circumstance = request.get_json()['circumstance']
 	circ_target = request.get_json()['circ_target']
 	measure_effect = request.get_json()['measure_effect']
@@ -1250,6 +1251,7 @@ def skill_bonus_post_degree():
 	variable = db_integer(SkillCheck, variable)
 	attack_turns = db_integer(SkillTime, attack_turns)
 	condition_turns = db_integer(SkillTime, condition_turns)
+	level_time = db_integer(SkillTime, level_time)
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)
@@ -1321,6 +1323,7 @@ def skill_bonus_post_degree():
 						level_type = level_type,
 						level = level,
 						level_direction = level_direction,
+						level_time = level_time,
 						circumstance = circumstance,
 						circ_target = circ_target,
 						measure_effect = measure_effect,

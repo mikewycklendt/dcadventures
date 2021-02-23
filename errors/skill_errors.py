@@ -549,6 +549,7 @@ def skill_degree_post_errors(data):
 	level_type = data['level_type']
 	level = data['level']
 	level_direction = data['level_direction']
+	level_time = data['level_time']
 	circumstance = data['circumstance']
 	circ_target = data['circ_target']
 	measure_effect = data['measure_effect']
@@ -636,6 +637,9 @@ def skill_degree_post_errors(data):
 	errors = id_check(SkillDC, skill_dc, 'Skilll Check DC', errors)
 	errors = id_check(SkillOpposed, compare, 'Comparison Check', errors)
 	errors = id_check(SkillCheck, variable, 'Variable Check', errors)
+	errors = id_check(SkillTime, level_time, 'Level Duration', errors)
+	errors = id_check(SkillTime, attack_turns, 'Attack Bonus Duration', errors)
+	errors = id_check(SkillTime, condition_turns, 'Condition Duration', errors)
 
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
@@ -727,8 +731,9 @@ def skill_degree_post_errors(data):
 	errors = variable_field('object', damage_type, 'Degrees', object, errors)
 	errors = variable_field('object', damage_type, 'Object Condition', object_effect, errors)
 	
-	errors = variable_fields('level', 'Level Effect', type, [level_type], errors)
+	errors = variable_fields('level', 'Level Effect', type, [level_type, level_time], errors)
 	errors = variable_field('level', type, 'Level Type', level_type, errors)
+	errors = variable_field('level', type, 'Level Duration', level_time, errors)
 	errors = if_or('Level', level_type, [level, level_direction], 'Level or Level Change', errors)
 	errors = seperate([level, level_direction], 'Level or Level Change', errors)
 	

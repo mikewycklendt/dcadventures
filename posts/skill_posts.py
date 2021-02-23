@@ -471,6 +471,7 @@ def skill_degree_post(entry, body, cells):
 	level_type = entry.level_type
 	level = entry.level
 	level_direction = entry.level_direction
+	level_time = entry.level_time
 	circumstance = entry.circumstance
 	circ_target = entry.circ_target
 	measure_effect = entry.measure_effect
@@ -548,6 +549,7 @@ def skill_degree_post(entry, body, cells):
 	variable = get_keyword(SkillCheck, variable)
 	attack_turns  = get_keyword(SkillTime, get_keyword)
 	condition_turns = get_keyword(SkillTime, condition_turns)
+	level_time = get_keyword(SkillTime, level_time)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -614,7 +616,7 @@ def skill_degree_post(entry, body, cells):
 
 	word = string('for', condition_turns)
 	word2 = string('Turns', condition_turns)
-	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2, word, condition_turns, word2], vcells, condition_type, 'condition')
+	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2, 'using', condition_turns, 'Time'], vcells, condition_type, 'condition')
 	vcells = vcell('condition', 25, [condition_damage_value, 'Conditions', condition_damage], vcells, condition_type, 'damage')
 
 	vcells = vcell('circ', 40, [circumstance, 'on', circ_target], vcells)
@@ -631,8 +633,8 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('damage', 25, [object, 'More', object_effect], vcells, damage_type, 'object')
 
 	level_value = one_of(level_type, [level])
-	level_value = one_of(level_type, [level_direction])
-	vcells = vcell('level', 20, [level_value], vcells)
+	level_value = one_of(level_type, ['One Level', level_direction, level_type])
+	vcells = vcell('level', 40, [level_value, 'using', level_time, 'Time'], vcells)
 
 	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')
 	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
@@ -645,7 +647,7 @@ def skill_degree_post(entry, body, cells):
 	attack = add_plus(attack)
 	vcells = vcell('check', 35, [skill_trait, 'Skill Check using', skill_dc, 'DC'], vcells, 1, check_type)
 	vcells = vcell('check', 35, [opposed, 'Opposed Check'], vcells, 2, check_type)
-	vcells = vcell('check', 35, [attack, 'on Attack Check for', attack_turns, 'Turns'], vcells, 5, check_type)
+	vcells = vcell('check', 35, [attack, 'using', attack_turns, 'Time'], vcells, 5, check_type)
 	word = string('with', [routine_mod])
 	word2 = string('Modifier', [routine_mod])
 	w = width(20, 15, routine_mod)
