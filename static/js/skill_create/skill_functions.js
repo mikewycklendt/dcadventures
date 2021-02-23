@@ -189,7 +189,6 @@ function grid__update(columns, cells, table_id, grid, cells_class, size, table) 
 function cells_create(rule, table_input, grow, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const table = table_input;
-	const table_id = jsonResponse.table_id;
 	const id = jsonResponse.id; 
 	const grid = jsonResponse.grid;
 	const mods = jsonResponse.mods;
@@ -198,6 +197,20 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	const columns = jsonResponse.columns;
 
 	console.log(size)
+	
+	let determine_id;
+	let determine_title;
+	if (title == false) {
+		determine_id = jsonResponse.table_id;
+		determine_title = base_header + jsonResponse.table_id;
+	} else {
+		determine_id = jsonResponse.table_id + '-' + title;
+		determine_title = base_header + title;
+	}
+	
+	const table_id = determine_id;
+
+	const table_class = table_id + '-table'
 
 
 	const cells_class = table_id + '-cells';
