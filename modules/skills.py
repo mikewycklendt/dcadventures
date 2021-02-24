@@ -247,19 +247,29 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
-	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id')
+	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
-	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id')
+	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
 	
-	bonus_degree = linked_options(SkillDegree, SkillBonus, 'skill_id')
+	bonus_degree = linked_options(SkillDegree, SkillBonus, 'skill_id', 'keyword')
 	
-	bonus_opposed = linked_options(SkillOpposed, SkillBonus, 'skill_id')
+	bonus_opposed = linked_options(SkillOpposed, SkillBonus, 'skill_id', 'keyword')
 	
-	bonus_time = linked_options(SkillTime, SkillBonus, 'skill_id')
+	bonus_time = linked_options(SkillTime, SkillBonus, 'skill_id', 'keyword')
 
-	bonus_move = linked_options(SkillMove, SkillBonus, 'skill_id')
+	bonus_move = linked_options(SkillMove, SkillBonus, 'skill_id', 'keyword')
 	
-	bonus_check = linked_options(SkillCheck, SkillBonus, 'skill_id')
+	bonus_check = linked_options(SkillCheck, SkillBonus, 'skill_id', 'keyword')
+
+	bonus_circ_type = linked_options(SkillCircType, SkillBonus, 'skill_id', 'name')
+
+	bonus_dc_type = linked_options(SkillDCType, SkillBonus, 'skill_id', 'name')
+	
+	bonus_degree_type = linked_options(SkillDegreeType, SkillBonus, 'skill_id', 'name')
+	
+	bonus_time_type = linked_options(SkillTimeType, SkillBonus, 'skill_id', 'name')
+
+	bonus_move_type = linked_options(SkillMoveType, SkillBonus, 'skill_id', 'name')
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
@@ -272,7 +282,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
-							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check)
+							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
+							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type)
 
 
 @skill.route('/skill/create', methods=['POST'])

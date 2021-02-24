@@ -164,7 +164,7 @@ def linked_move(table, value, name, errors):
 	return (errors)
 
 
-def linked_options(table, trait, column):
+def linked_options(table, trait, column, option):
 	options = []
 
 		
@@ -173,7 +173,7 @@ def linked_options(table, trait, column):
 		if e.keyword is None:
 			keyword = ''
 		else:
-			keyword = e.keyword
+			keyword = getattr(e, option)
 		id = getattr(e, column)
 		try:
 			entry_name = db.session.query(trait).filter(trait.id == id).one()
