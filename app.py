@@ -123,7 +123,7 @@ def time_db_columns_create():
 
 	for result in results:
 		print (result.id)
-		print (result.name)
+		print (result.keyword)
 
 	return ('time fields added')
 

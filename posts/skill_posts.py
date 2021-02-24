@@ -242,6 +242,7 @@ def skill_dc_post(entry, body, cells):
 	math_trait_type = entry.math_trait_type
 	math_trait = entry.math_trait
 	condition = entry.condition
+	surface = entry.surface
 	levels = entry.levels
 	damage = entry.damage
 	cover = entry.cover
@@ -417,6 +418,7 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_cell('Check', 7, [variable], new_mod)
 	body = mod_add(variable_check, new_mod, body)
 	
+	cells = check_cell('Surface', 8, surface, cells)
 
 	body = send_multiple(title, cells, body)
 

@@ -317,6 +317,7 @@ class SkillDC(db.Model):
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	math_trait_type = db.Column(db.String())
 	math_trait = db.Column(db.Integer)
+	surface = db.Column(db.Boolean)
 	condition = db.Column(db.Boolean)
 	keyword_check = db.Column(db.Boolean)
 	levels = db.Column(db.Boolean)
@@ -387,6 +388,7 @@ class SkillDC(db.Model):
 			'math': self.math,
 			'math_trait_type': self.math_trait_type,
 			'math_trait': self.math_trait,
+			'surface': self.surface,
 			'condition': self.condition,
 			'keyword_check': self.keyword_check,
 			'levels': self.levels,

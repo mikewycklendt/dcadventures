@@ -282,6 +282,7 @@ function dc_submit() {
 	const variable = select("dc_variable");
 	const time = select("dc_time");
 	const title = text("dc_title")
+	const surface = check("dc_surface")
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -361,7 +362,8 @@ function dc_submit() {
 			'variable_check': variable_check,
 			'variable': variable,
 			'time': time,
-			'title': title
+			'title': title,
+			'surface': surface
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

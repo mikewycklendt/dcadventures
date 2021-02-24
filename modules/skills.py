@@ -915,6 +915,7 @@ def skill_bonus_post_dc():
 	math = request.get_json()['math']
 	math_trait_type = request.get_json()['math_trait_type']
 	math_trait = request.get_json()['math_trait']
+	surface = request.get_json()['surface']
 	condition = request.get_json()['condition']
 	levels = request.get_json()['levels']
 	damage = request.get_json()['damage']
@@ -1042,6 +1043,7 @@ def skill_bonus_post_dc():
 					math = math,
 					math_trait_type = math_trait_type,
 					math_trait = math_trait,
+					surface = surface,
 					condition = condition,
 					levels = levels,
 					damage = damage,
