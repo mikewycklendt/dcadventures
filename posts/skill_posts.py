@@ -181,7 +181,6 @@ def skill_circ_post(entry, body, cells):
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
 	unit_value = integer_convert(unit_value)
-	unit = get_name(Unit, unit)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
 
