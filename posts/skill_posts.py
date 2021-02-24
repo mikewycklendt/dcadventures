@@ -95,7 +95,7 @@ def skill_check_post(entry, body, cells):
 
 	attack = integer_convert(attack)
 
-	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
+	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
 	when = selects(when, check_type_select)
 
 	cells = cell('Keyword', 18, [keyword])
@@ -226,7 +226,9 @@ def skill_circ_post(entry, body, cells):
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
 
-	cells = check_cell('surface', 8, surface, cells)
+	cells = check_cell('Surface', 8, surface, cells)
+	cells = check_cell('Optional', 9, optional, cells)
+	cells = check_cell('Cumulative', 10, cumulative, cells)
 
 	cells = cell('Circumstance', 30, [circumstance], cells)
 
