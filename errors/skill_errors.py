@@ -878,9 +878,6 @@ def skill_move_post_errors(data):
 
 	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
-
-
-	errors = required_keyword(time, 'a Movement effect', 'Time Effect', errors)
 	errors = required(direction, 'Direction', errors)
 
 	return (errors)
