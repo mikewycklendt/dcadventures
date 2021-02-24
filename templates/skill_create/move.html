@@ -45,7 +45,23 @@
 				<div>
 					= Speed Rank
 				</div>
-			</div>			
+			</div>	
+			
+			
+			<div id="move-speed-rank-mod">
+				<div>
+					<select class="select-sml" id="move_speed_rank_mod" name="move_speed_rank_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% 	endfor %}
+						{% for i in positives %}
+							<option value={{i}}>+{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>	
 
 			<div id="move-speed-mod">
 				<div>

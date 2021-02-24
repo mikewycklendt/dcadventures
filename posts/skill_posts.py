@@ -668,6 +668,7 @@ def skill_move_post(entry, body, cells):
 
 	speed = entry.speed
 	speed_rank = entry.speed_rank
+	speed_rank_mod = entry.speed_rank_mod
 	speed_trait_type = entry.speed_trait_type
 	speed_trait = entry.speed_trait
 	speed_math1 = entry.speed_math1
@@ -725,6 +726,7 @@ def skill_move_post(entry, body, cells):
 	distance_unit_trait = integer_convert(distance_unit_trait)
 	distance_unit_value1 = integer_convert(distance_unit_value1)
 	distance_unit_value2 = integer_convert(distance_unit_value2)
+	speed_rank_mod = integer_convert(speed_rank_mod)
 
 	speed_math1 = math_convert(speed_math1)
 	speed_math2 = math_convert(speed_math2)
@@ -743,6 +745,8 @@ def skill_move_post(entry, body, cells):
 	cells = cell('Direction', 12, [direction], cells)
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
+	speed_rank_mod = add_plus(speed_rank_mod)
+	vcells = vcell('rank_mod' 20, [speed_rank_mod, 'Speed Rank'])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = cell('Description', 20, [speed_description], cells)

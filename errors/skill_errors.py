@@ -773,6 +773,7 @@ def skill_move_post_errors(data):
 	skill_id = data['skill_id']
 	speed = data['speed']
 	speed_rank = data['speed_rank']
+	speed_rank_mod = data['speed_rank_mod']
 	speed_trait_type = data['speed_trait_type']
 	speed_trait = data['speed_trait']
 	speed_math1 = data['speed_math1']
@@ -827,6 +828,7 @@ def skill_move_post_errors(data):
 	errors = int_check(distance_unit_trait, 'Distance Trait', errors)
 	errors = int_check(distance_unit_value1, 'Distance Furst Value', errors)
 	errors = int_check(distance_unit_value2, 'Distance Second Value', errors)
+	errors  = int_check(speed_rank_mod, 'Speed Rank Modifier', errors)
 
 	errors = id_check(Math, speed_math1, 'Speed Msth 1', errors)
 	errors = id_check(Math, speed_math2, 'Speed Msth 2', errors)
@@ -843,6 +845,8 @@ def skill_move_post_errors(data):
 
 	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
 	errors = variable_field('rank', speed, 'Rank', speed_rank, errors)
+
+	errors = variable_fields('rank_mod', 'Speed Rank Modifier', speed, [speed_rank_mod], errors)
 	
 	errors = variable_fields('mod', 'Speed Modifier', speed, [speed_trait, speed_math1, speed_value1], errors)
 	errors = variable_field('mod', speed, 'Trait', speed_trait, errors)

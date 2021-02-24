@@ -732,6 +732,7 @@ class SkillMove(db.Model):
 	skill_id = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	speed = db.Column(db.String())
 	speed_rank = db.Column(db.Integer)
+	speed_rank_mod = db.Column(db.Integer)
 	speed_trait_type = db.Column(db.String())
 	speed_trait = db.Column(db.Integer)
 	speed_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
@@ -773,6 +774,7 @@ class SkillMove(db.Model):
 			'skill_id': self.skill_id,
 			'speed': self.speed,
 			'speed_rank': self.speed_rank,
+			'speed_rank_mod': self.speed_rank_mod,
 			'speed_trait_type': self.speed_trait_type,
 			'speed_trait': self.speed_trait,
 			'speed_math1': self.speed_math1,

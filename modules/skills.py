@@ -241,7 +241,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	greater_less = [{'type': '', 'name': 'Type'}, {'type': 'greater', 'name': 'Greater'}, {'type': 'less', 'name': 'Less Than'}]
 
-	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'mod', 'name': 'Modifier'}]
+	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}]
 
 	distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
@@ -1430,6 +1430,7 @@ def skill_bonus_post_move():
 	font = request.get_json()['font']
 	speed = request.get_json()['speed']
 	speed_rank = request.get_json()['speed_rank']
+	speed_rank_mod = request.get_json()['speed_rank_mod']
 	speed_trait_type = request.get_json()['speed_trait_type']
 	speed_trait = request.get_json()['speed_trait']
 	speed_math1 = request.get_json()['speed_math1']
@@ -1492,6 +1493,7 @@ def skill_bonus_post_move():
 	distance_unit_trait = integer(distance_unit_trait)
 	distance_unit_value1 = integer(distance_unit_value1)
 	distance_unit_value2 = integer(distance_unit_value2)
+	speed_rank_mod = integer(speed_rank_mod)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -1515,6 +1517,7 @@ def skill_bonus_post_move():
 	entry = SkillMove(skill_id = skill_id,
 						speed = speed,
 						speed_rank = speed_rank,
+						speed_rank_mod = speed_rank_mod,
 						speed_trait_type = speed_trait_type,
 						speed_trait = speed_trait,
 						speed_math1 = speed_math1,
