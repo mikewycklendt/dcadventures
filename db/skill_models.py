@@ -244,7 +244,7 @@ class SkillCirc(db.Model):
 	conditions = db.Column(db.Integer)
 	conditions_effect = db.Column(db.Integer)
 	measure_effect = db.Column(db.String())
-	
+	measure_type = db.Column(db.String())
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
@@ -342,7 +342,7 @@ class SkillDC(db.Model):
 	damage_mod = db.Column(db.Integer)
 	damage_consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	measure_effect = db.Column(db.String())
-	
+	measure_type = db.Column(db.String())
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
