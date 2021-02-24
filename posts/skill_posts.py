@@ -155,6 +155,7 @@ def skill_circ_post(entry, body, cells):
 	keyword = entry.keyword
 	cumulative = entry.cumulative
 	optional = entry.optional
+	surface = entry.surface
 	circumstance = entry.circumstance
 	lasts = entry.lasts
 	title = entry.title
@@ -221,6 +222,8 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('target', 30, ['If Target is', target], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
+
+	cells = check_cell('surface', 8, surface, cells)
 
 	cells = cell('Circumstance', 30, [circumstance], cells)
 

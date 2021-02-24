@@ -7,6 +7,10 @@
 	<div class="skill-base" id="circ-base">
 
 		<div>
+			<input type="text" id="circ_title" name="circ_title" placeholder="Title">
+		</div>
+
+		<div>
 			<select class="select-entry" id="circ_target" name="circ_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
@@ -327,9 +331,10 @@
 			</div>
 		</div>
 
-
-		<div>
-			<input type="text" id="circ_title" name="circ_title" placeholder="Title">
+		<div style="font-size: 80%;">
+			<div class="check-div">
+				<input type="checkbox" id="circ_surface" class="medium-checkbox med-checkbox"> Surface
+			</div>
 		</div>
 
 		<div>

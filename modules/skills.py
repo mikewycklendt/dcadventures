@@ -784,6 +784,7 @@ def skill_bonus_post_circ():
 	keyword = request.get_json()['keyword']
 	cumulative = request.get_json()['cumulative']
 	optional = request.get_json()['optional']
+	surface = request.get_json()['surface']
 	circumstance = request.get_json()['circumstance']
 	lasts = request.get_json()['lasts']
 	title = request.get_json()['title']
@@ -858,6 +859,7 @@ def skill_bonus_post_circ():
 						keyword = keyword,
 						cumulative = cumulative,
 						optional = optional,
+						surface = surface,
 						circumstance = circumstance,
 						lasts=lasts,
 						title=title)

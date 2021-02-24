@@ -263,6 +263,7 @@ class SkillCirc(db.Model):
 	lasts = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	title = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
+	surface = db.Column(db.Boolean)
 	
 	
 	def format(self):
@@ -297,6 +298,7 @@ class SkillCirc(db.Model):
 			'keyword': self.keyword,
 			'cumulative': self.cumulative,
 			'optional': self.optional,
+			'surface': self.surface,
 			'circumstance': self.circumstance,
 			'time_table': self.time_table,
 			'move_table': self.move_table,

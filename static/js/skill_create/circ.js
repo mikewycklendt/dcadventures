@@ -109,6 +109,7 @@ function circ_submit() {
 	const circumstance = text("circ_circumstance");
 	const lasts = select("circ_lasts");
 	const title = text("circ_title");
+	const surface = check("circ_surface");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -152,7 +153,8 @@ function circ_submit() {
 			'optional': optional,
 			'circumstance': circumstance,
 			'lasts': lasts,
-			'title': title
+			'title': title,
+			'surface': surface
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
