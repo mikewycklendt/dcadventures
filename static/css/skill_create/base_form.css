@@ -34,6 +34,8 @@
 }
 
 #multiple-attr-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	border-bottom: 2px solid lightblue;
 	width: 85%;
 	margin-bottom: 5px;

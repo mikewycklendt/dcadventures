@@ -1006,6 +1006,8 @@ textarea:focus {
 }
 
 .trait-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
 	text-align: center;

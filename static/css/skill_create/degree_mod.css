@@ -39,6 +39,8 @@
 
 
 #deg-mod-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 160%;
