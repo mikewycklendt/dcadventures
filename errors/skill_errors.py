@@ -584,7 +584,6 @@ def skill_degree_post_errors(data):
 	attack_turns = data['attack_turns']
 	compare = data['compare']
 	duration = data['duration']
-	dc = data['dc']
 	title = data['title']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
