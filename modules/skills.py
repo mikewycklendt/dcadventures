@@ -206,9 +206,11 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}]
 
 	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill_rank', 'name': 'Skill Rank Modifier'}, {'type': 'skill_unit', 'name': 'Skill Unit Modifier'}]
-	
+
 	measure_effect_circ = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}]
 	
+	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}]
+
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
@@ -281,7 +283,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							creatures=creatures, emotions=emotions, professions=professions, damages=damages, light=light, powers=powers, weapon_cat=weapon_cat, times=times, time_effect=time_effect,
 							abilities=abilities, frequency=frequency, lasts=lasts, attached=attached, complexity=complexity, repair=repair, advantages=advantages, time_value=time_value, circ_targets=circ_targets,
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
-							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
+							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type)
 
@@ -771,6 +773,7 @@ def skill_bonus_post_circ():
 	conditions = request.get_json()['conditions']
 	conditions_effect = request.get_json()['conditions_effect']
 	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
 	measure_rank_value = request.get_json()['measure_rank_value']
 	measure_rank = request.get_json()['measure_rank']
 	unit_value = request.get_json()['unit_value']
@@ -846,6 +849,7 @@ def skill_bonus_post_circ():
 						conditions = conditions,
 						conditions_effect = conditions_effect,
 						measure_effect = measure_effect,
+						measure_type = measure_type,
 						measure_rank_value = measure_rank_value,
 						measure_rank = measure_rank,
 						unit_value = unit_value,
@@ -937,6 +941,7 @@ def skill_bonus_post_dc():
 	damage_mod = request.get_json()['damage_mod']
 	damage_consequence = request.get_json()['damage_consequence']
 	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
 	measure_rank_value = request.get_json()['measure_rank_value']
 	measure_rank = request.get_json()['measure_rank']
 	unit_value = request.get_json()['unit_value']
@@ -1064,6 +1069,7 @@ def skill_bonus_post_dc():
 					damage_mod = damage_mod,
 					damage_consequence = damage_consequence,
 					measure_effect = measure_effect,
+					measure_type = measure_type,
 					measure_rank_value = measure_rank_value,
 					measure_rank = measure_rank,
 					unit_value = unit_value,
@@ -1175,6 +1181,7 @@ def skill_bonus_post_degree():
 	circumstance = request.get_json()['circumstance']
 	circ_target = request.get_json()['circ_target']
 	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
 	measure_rank_value = request.get_json()['measure_rank_value']
 	measure_rank = request.get_json()['measure_rank']
 	unit_value = request.get_json()['unit_value']
@@ -1332,6 +1339,7 @@ def skill_bonus_post_degree():
 						circumstance = circumstance,
 						circ_target = circ_target,
 						measure_effect = measure_effect,
+						measure_type = measure_type,
 						measure_rank_value = measure_rank_value,
 						measure_rank = measure_rank,
 						unit_value = unit_value,

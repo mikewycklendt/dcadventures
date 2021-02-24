@@ -299,7 +299,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 10% 15% 75%;
+	grid-template-columns: 10% 12% 6% 72%;
 }
 
 #dc-measure-rank {

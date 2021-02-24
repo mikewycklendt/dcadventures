@@ -234,6 +234,7 @@ def skill_circ_post_errors(data):
 	conditions = data['conditions']
 	conditions_effect = data['conditions_effect']
 	measure_effect = data['measure_effect']
+	meaasure_type = data['meaasure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']
@@ -289,8 +290,9 @@ def skill_circ_post_errors(data):
 	errors = variable_field('damage', condition_type, 'Conditions', conditions, errors)
 	errors = variable_field('damage', condition_type, 'Condition Effect', conditions_effect, errors)
 
-	errors = variable_fields('measure', 'Circumstance Effect', effect, [measure_effect], errors)
-	errors = variable_field('measure', effect, 'Measurement Type', measure_effect, errors)
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
+	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
 	
 	errors = variable_fields('rank', 'Measurement Rank', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Measurement Rank Value', measure_rank_value, errors)
@@ -352,6 +354,7 @@ def skill_dc_post_errors(data):
 	damage_mod = data['damage_mod']
 	damage_consequence = data['damage_consequence']
 	measure_effect = data['measure_effect']
+	meaasure_type = data['meaasure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']
@@ -465,9 +468,10 @@ def skill_dc_post_errors(data):
 	
 	errors = check_fields(complex, 'Complexity', [complexity], errors)
 	errors = check_field(complex, 'Complexity', 'Complexity', complexity, errors)
-	
-	errors = check_fields(measure, 'Measurement', [measure_effect], errors)
-	errors = check_field(measure, 'Measurement', 'Measurement Effect', measure_effect, errors)
+
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
+	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
 
 	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Rank Value', measure_rank_value, errors)
@@ -542,6 +546,7 @@ def skill_degree_post_errors(data):
 	circumstance = data['circumstance']
 	circ_target = data['circ_target']
 	measure_effect = data['measure_effect']
+	meaasure_type = data['meaasure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']
@@ -638,8 +643,9 @@ def skill_degree_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 
-	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect], errors)
-	errors = variable_field('measure', type, 'Measurement Type', measure_effect, errors) 
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
+	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors) 
 
 	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Value', measure_rank_value, errors)

@@ -142,6 +142,7 @@ def skill_circ_post(entry, body, cells):
 	conditions = entry.conditions
 	conditions_effect = entry.conditions_effect
 	measure_effect = entry.measure_effect
+	measure_type = entry.meaasure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
@@ -173,6 +174,7 @@ def skill_circ_post(entry, body, cells):
 	unit_type = get_name(MeasureType, unit_type)
 	unit = get_name(Unit, unit)
 	measure_math_rank = get_name(Rank, measure_math_rank)
+	measure_type = math_convert(measure_type)
 	
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
@@ -208,11 +210,11 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('condition', 17, [conditions, 'Conditions', conditions_effect], vcells, condition_type, 'damage')
 	
 	measure_rank_value = add_plus(measure_rank_value)
-	vcells = vcell('measure', 18, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
+	vcells = vcell('measure', 18, [measure_type, measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
 
-	vcells = vcell('measure', 16, [unit_value, unit], vcells, measure_effect, 'unit')
+	vcells = vcell('measure', 16, [measure_type, unit_value, unit], vcells, measure_effect, 'unit')
 
-	vcells = vcell('measure', 35, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill')
+	vcells = vcell('measure', 35, [measure_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill')
 	
 	vcells = vcell('level', 16, [level], vcells)
 	
@@ -263,6 +265,7 @@ def skill_dc_post(entry, body, cells):
 	damage_mod = entry.damage_mod
 	damage_consequence = entry.damage_consequence
 	measure_effect = entry.measure_effect
+	measure_type = entry.meaasure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
@@ -305,6 +308,7 @@ def skill_dc_post(entry, body, cells):
 	conceal_type = get_name(Conceal, conceal_type)
 	variable = get_keyword(SkillCheck, variable)
 	time = get_keyword(SkillTime, time)
+	measure_type = math_convert(measure_type)
 
 	math_trait = trait_select(math_trait, math_trait_type)	
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
@@ -392,15 +396,15 @@ def skill_dc_post(entry, body, cells):
 	select = [{'type': 'rank', 'name': 'Measurement Rank', 'w': 17}, {'type': 'unit', 'name': 'Measurement Value', 'w': 17}, {'type': 'skill', 'name': 'Skill Modifier Measurement', 'w': 27}]
 	new_mod = mod_create('Measurement', 12, measure_effect, select)
 	value = 'rank'
-	new_mod = mod_cell('Value', 7, [measure_rank_value], new_mod, value)
+	new_mod = mod_cell('Value', 7, [measure_type, measure_rank_value], new_mod, value)
 	new_mod = mod_cell('Rank', 5, [measure_rank], new_mod, value)
 	value = 'unit'
-	new_mod = mod_cell('Value', 6, [unit_value], new_mod, value)
+	new_mod = mod_cell('Value', 6, [measure_type, unit_value], new_mod, value)
 	new_mod = mod_cell('Units', 6, [unit], new_mod, value)
 	value = 'skill_rank'
-	new_mod = mod_cell('Math', 5, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], new_mod, value)
+	new_mod = mod_cell('Math', 5, [measure_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], new_mod, value)
 	value = 'skill_unit'
-	new_mod = mod_cell('Math', 5, [measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], new_mod, value)
+	new_mod = mod_cell('Math', 5, [measure_type, measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], new_mod, value)
 	
 	body = mod_add(measure, new_mod, body)
 
@@ -464,6 +468,7 @@ def skill_degree_post(entry, body, cells):
 	circumstance = entry.circumstance
 	circ_target = entry.circ_target
 	measure_effect = entry.measure_effect
+	measure_type = entry.meaasure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
@@ -539,6 +544,7 @@ def skill_degree_post(entry, body, cells):
 	condition_turns = get_keyword(SkillTime, condition_turns)
 	level_time = get_keyword(SkillTime, level_time)
 	linked = get_keyword(SkillDegree, linked)
+	measure_type = math_convert(measure_type)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -597,10 +603,10 @@ def skill_degree_post(entry, body, cells):
 
 	vcells = vcell('action', 40, ['Action Changed to', action])
 
-	vcells = vcell('measure', 20, [measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
-	vcells = vcell('measure', 20, [unit_value, unit], vcells, measure_effect, 'unit')	
-	vcells = vcell('measure', 35, [measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill_rank')
-	vcells = vcell('measure', 35, [measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], vcells, measure_effect, 'skill_unit')
+	vcells = vcell('measure', 20, [measure_type, measure_rank_value, measure_rank], vcells, measure_effect, 'rank')
+	vcells = vcell('measure', 20, [measure_type, unit_value, unit], vcells, measure_effect, 'unit')	
+	vcells = vcell('measure', 35, [measure_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill_rank')
+	vcells = vcell('measure', 35, [measure_type, measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], vcells, measure_effect, 'skill_unit')
 
 	word = string('for', condition_turns)
 	word2 = string('Turns', condition_turns)

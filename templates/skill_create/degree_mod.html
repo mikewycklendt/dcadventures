@@ -365,6 +365,14 @@
 			</div>
 
 			<div>
+				<select class="select-sml" id="deg_mod_meaasure_type" name="deg_mod_measure_type">
+					{% for m in measure_type %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
 				<div id="deg-mod-measure-rank">
 
 					<div>

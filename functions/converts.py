@@ -450,6 +450,12 @@ def math_convert(name):
 		name = '<i class="fas fa-divide"></i>'
 	elif name == 3:
 		name = '<i class="fas fa-times"></i>'
+	elif name == '>':
+		name = '<i class="fas fa-greater-than-equal"></i>'
+	elif name == '<':
+		name = '<i class="fas fa-less-than-equal"></i>'
+	elif name == '=':
+		name = '<i class="fas fa-equals"></i>'
 	else:
 		try:
 			query = db.session.query(Math).filter_by(id=name).one()

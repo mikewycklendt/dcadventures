@@ -356,6 +356,14 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="dc_meaasure_type" name="dc_measure_type">
+				{% for m in measure_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<div id="dc-measure-rank">
 
 				<div>

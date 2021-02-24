@@ -209,6 +209,14 @@
 				</div>
 
 				<div>
+					<select class="select-sml" id="circ_meaasure_type" name="circ_measure_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
 
 					<div id="circ-measure-rank">
 

@@ -189,7 +189,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 15% 85%;
+	grid-template-columns: 12% 6% 82%;
 }
 
 #deg-mod-time {
