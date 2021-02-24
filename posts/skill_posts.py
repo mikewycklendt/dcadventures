@@ -533,6 +533,7 @@ def skill_degree_post(entry, body, cells):
 	attack_turns  = get_keyword(SkillTime, get_keyword)
 	condition_turns = get_keyword(SkillTime, condition_turns)
 	level_time = get_keyword(SkillTime, level_time)
+	linked = get_keyword(SkillDegree, linked)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -641,8 +642,8 @@ def skill_degree_post(entry, body, cells):
 	cells = vcell_add('Effect', type, vcells, cells)
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
-	cella = check_cell('Cumulative', 12, cumulative, cells)
-	cella = cell('Linked', 18, [linked], cells)
+	cells = check_cell('Cumulative', 12, cumulative, cells)
+	cells = cell('Linked', 18, [linked], cells)
 
 	body = send_multiple(title, cells, body)
 
