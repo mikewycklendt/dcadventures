@@ -209,8 +209,6 @@ def skill_check_post_errors(data):
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 
-	errors = variable_field_linked('1', check_type, dc, 'Skill Check', 'DC', errors)
-	errors = variable_field_linked('6', check_type, dc, 'Resistance Check', 'DC', errors)
 	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
 	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
 
