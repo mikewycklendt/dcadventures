@@ -202,7 +202,7 @@ function deg_mod_submit() {
 	const circumstance = select("deg_mod_circumstance");
 	const circ_target = select("deg_mod_circ_target");
 	const measure_effect = select("deg_mod_measure_effect");
-	const meaasure_type = select("deg_mod_meaasure_type");
+	const measure_type = select("deg_mod_meaasure_type");
 	const measure_rank_value = select("deg_mod_measure_rank_value");
 	const measure_rank = select("deg_mod_measure_rank");
 	const unit_value = text("deg_mod_unit_value");
@@ -298,7 +298,7 @@ function deg_mod_submit() {
 			'circumstance': circumstance,
 			'circ_target': circ_target,
 			'measure_effect': measure_effect,
-			'meaasure_type': meaasure_type,
+			'measure_type': measure_type,
 			'measure_rank_value': measure_rank_value,
 			'measure_rank': measure_rank,
 			'unit_value': unit_value,

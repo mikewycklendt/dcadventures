@@ -249,7 +249,7 @@ function dc_submit() {
 	const damage_mod = select("dc_damage_mod")
 	const damage_consequence = select("dc_damage_consequence")
 	const measure_effect = select("dc_measure_effect")
-	const meaasure_type = select("dc_meaasure_type");
+	const measure_type = select("dc_meaasure_type");
 	const measure_rank_value = select("dc_measure_rank_value")
 	const measure_rank = select("dc_measure_rank")
 	const unit_value = text("dc_unit_value")
@@ -331,7 +331,7 @@ function dc_submit() {
 			'damage_mod': damage_mod,
 			'damage_consequence': damage_consequence,
 			'measure_effect': measure_effect,
-			'meaasure_type': meaasure_type,
+			'measure_type': measure_type,
 			'measure_rank_value': measure_rank_value,
 			'measure_rank': measure_rank,
 			'unit_value': unit_value,

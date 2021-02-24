@@ -94,7 +94,7 @@ function circ_submit() {
 	const conditions_effect = select("circ_conditions_effect")
 	const measure_effect = select("circ_measure_effect")
 	const measure_rank_value = select("circ_measure_rank_value")
-	const meaasure_type = select("circ_meaasure_type");
+	const measure_type = select("circ_meaasure_type");
 	const measure_rank = select("circ_measure_rank")
 	const unit_value = text("circ_unit_value")
 	const unit_type = select("circ_unit_type")
@@ -139,7 +139,7 @@ function circ_submit() {
 			'conditions': conditions,
 			'conditions_effect': conditions_effect,
 			'measure_effect': measure_effect,
-			'meaasure_type': meaasure_type,
+			'measure_type': meaasure_type,
 			'measure_rank_value': measure_rank_value,
 			'measure_rank': measure_rank,
 			'unit_value': unit_value,
