@@ -276,7 +276,6 @@ def skill_circ_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 	errors = required(circ_target, 'Target', errors)
-	errors = required(lasts, 'Circumstance Duration', errors)
 
 	errors = variable_fields('condition', 'Circumstance Effect', effect, [condition_type], errors)
 	errors = variable_field('condition', effect, 'Condition Type', condition_type, errors)
