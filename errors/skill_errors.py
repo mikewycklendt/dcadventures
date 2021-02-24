@@ -13,6 +13,7 @@ from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar,
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillMove, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillMoveType, SkillTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
 from functions.create import name_exist, db_insert, capitalize
@@ -185,11 +186,11 @@ def skill_check_post_errors(data):
 	errors = id_check(Ranged, conflict_range, 'Conflict Range', errors)
 	errors = int_check(action, 'Action', errors)
 
-	errors = id_check(SkillDegree, degree, 'Degree', errors)
-	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
-	errors = id_check(SkillDC, dc, 'DC', errors)
-	errors = id_check(SkillTime, time, 'Time Effect', errors)
-	errors = id_check(SkillMove, move, 'Movement Effect', errors)
+	errors = id_check(SkillDegreeType, degree, 'Degree', errors)
+	errors = id_check(SkillCircType, circ, 'Circumstance', errors)
+	errors = id_check(SkillDCType, dc, 'DC', errors)
+	errors = id_check(SkillTimeType, time, 'Time Effect', errors)
+	errors = id_check(SkillMoveType, move, 'Movement Effect', errors)
 	errors = id_check(SkillOpposed, opposed, 'Opponent Check', errors)
 
 	errors = int_check(attack, 'Attack Check Modifier', errors)

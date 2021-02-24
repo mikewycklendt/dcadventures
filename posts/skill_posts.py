@@ -86,11 +86,11 @@ def skill_check_post(entry, body, cells):
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 	
-	degree = get_keyword(SkillDegree, degree)
-	circ = get_keyword(SkillCirc, circ)
-	dc = get_keyword(SkillDC, dc)
-	time = get_keyword(SkillTime, time)
-	move = get_keyword(SkillMove, move)
+	degree = get_name(SkillDegreeType, degree)
+	circ = get_name(SkillCircType, circ)
+	dc = get_name(SkillDCType, dc)
+	time = get_name(SkillTimeType, time)
+	move = get_name(SkillMoveType, move)
 	opposed = get_keyword(SkillOpposed, opposed)
 
 	attack = integer_convert(attack)
