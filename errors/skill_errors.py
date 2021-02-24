@@ -234,7 +234,7 @@ def skill_circ_post_errors(data):
 	conditions = data['conditions']
 	conditions_effect = data['conditions_effect']
 	measure_effect = data['measure_effect']
-	meaasure_type = data['meaasure_type']
+	measure_type = data['measure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']
@@ -293,7 +293,7 @@ def skill_circ_post_errors(data):
 	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
-	
+
 	errors = variable_fields('rank', 'Measurement Rank', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Measurement Rank Value', measure_rank_value, errors)
 	errors = variable_field('rank', measure_effect, 'Measurement Rank', measure_rank, errors)
@@ -354,7 +354,7 @@ def skill_dc_post_errors(data):
 	damage_mod = data['damage_mod']
 	damage_consequence = data['damage_consequence']
 	measure_effect = data['measure_effect']
-	meaasure_type = data['meaasure_type']
+	measure_type = data['measure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']
@@ -546,7 +546,7 @@ def skill_degree_post_errors(data):
 	circumstance = data['circumstance']
 	circ_target = data['circ_target']
 	measure_effect = data['measure_effect']
-	meaasure_type = data['meaasure_type']
+	measure_type = data['measure_type']
 	measure_rank_value = data['measure_rank_value']
 	measure_rank = data['measure_rank']
 	unit_value = data['unit_value']

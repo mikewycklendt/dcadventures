@@ -142,7 +142,7 @@ def skill_circ_post(entry, body, cells):
 	conditions = entry.conditions
 	conditions_effect = entry.conditions_effect
 	measure_effect = entry.measure_effect
-	measure_type = entry.meaasure_type
+	measure_type = entry.measure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
@@ -265,7 +265,7 @@ def skill_dc_post(entry, body, cells):
 	damage_mod = entry.damage_mod
 	damage_consequence = entry.damage_consequence
 	measure_effect = entry.measure_effect
-	measure_type = entry.meaasure_type
+	measure_type = entry.measure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
@@ -468,7 +468,7 @@ def skill_degree_post(entry, body, cells):
 	circumstance = entry.circumstance
 	circ_target = entry.circ_target
 	measure_effect = entry.measure_effect
-	measure_type = entry.meaasure_type
+	measure_type = entry.measure_type
 	measure_rank_value = entry.measure_rank_value
 	measure_rank = entry.measure_rank
 	unit_value = entry.unit_value
