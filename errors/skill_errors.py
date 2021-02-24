@@ -584,8 +584,6 @@ def skill_degree_post_errors(data):
 	attack_turns = data['attack_turns']
 	compare = data['compare']
 	duration = data['duration']
-	degree = data['degree']
-	circ = data['circ']
 	dc = data['dc']
 	title = data['title']
 
@@ -630,10 +628,6 @@ def skill_degree_post_errors(data):
 	errors = id_check(SkillTime, attack_turns, 'Attack Bonus Duration', errors)
 	errors = id_check(SkillTime, condition_turns, 'Condition Duration', errors)
 	errors = id_check(SkillDegree, linked, 'Linked Degree', errors)
-
-	errors = id_check(SkillDegree, degree, 'Degree', errors)
-	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
-	errors = id_check(SkillDC, dc, 'DC', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
