@@ -290,7 +290,7 @@ def skill_circ_post_errors(data):
 	errors = variable_field('damage', condition_type, 'Conditions', conditions, errors)
 	errors = variable_field('damage', condition_type, 'Condition Effect', conditions_effect, errors)
 
-	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, measure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
 
@@ -469,7 +469,7 @@ def skill_dc_post_errors(data):
 	errors = check_fields(complex, 'Complexity', [complexity], errors)
 	errors = check_field(complex, 'Complexity', 'Complexity', complexity, errors)
 
-	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, measure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors)
 
@@ -643,7 +643,7 @@ def skill_degree_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 
-	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, meaasure_type], errors)
+	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, measure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors) 
 
