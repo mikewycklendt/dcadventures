@@ -746,7 +746,7 @@ def skill_move_post(entry, body, cells):
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
 	speed_rank_mod = add_plus(speed_rank_mod)
-	vcells = vcell('rank_mod' 20, [speed_rank_mod, 'Speed Rank'])
+	vcells = vcell('rank_mod', 20, [speed_rank_mod, 'Speed Rank'])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = cell('Description', 20, [speed_description], cells)
