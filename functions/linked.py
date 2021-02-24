@@ -170,14 +170,13 @@ def linked_options(table, trait, column, option):
 		
 	entries = db.session.query(table).all()
 	for e in entries:
-		if e.keyword is None:
-			keyword = ''
-		else:
-			keyword = getattr(e, option)
+		name = getattr(e, option)
+		if name is None:
+			name = ''
 		id = getattr(e, column)
 		try:
 			entry_name = db.session.query(trait).filter(trait.id == id).one()
-			options.append({'id': e.id, 'name': str(e.id) +  entry_name.name + ' ' + keyword})
+			options.append({'id': e.id, 'name': str(e.id) + ' ' +  entry_name.name + ' ' + name})
 		except:
 			print('hidden')
 
