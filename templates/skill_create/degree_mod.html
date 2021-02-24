@@ -6,7 +6,7 @@
 
 	<div id="deg-mod-base-form" >
 		<div>
-			<select class="header-select" id="deg_mod_target" name="deg_mod_target" onchange="deg_mod_base()">
+			<select class="header-select" id="deg_mod_target" name="deg_mod_target" >
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -774,7 +774,7 @@
 
 	<div>
 		<select class="select-sml" id="deg_mod_nullify" name="deg_mod_nullify" >
-			<option value="">DC to Nullify</option>
+			<option value="">Nullify DC</option>
 			<option value="check">Extra Check</option>
 			{% for i in negatives %}
 				<option value={{i}}>{{i}}</option>
