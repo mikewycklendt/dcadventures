@@ -421,7 +421,6 @@ def skill_dc_post_errors(data):
 	errors = required(description, 'Description', errors)
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
-	errors = required(time, 'Duration', errors)
 
 	errors = variable_fields('value', 'DC Value', dc, [value], errors) 
 	errors = variable_field('value', dc, 'DC', value, errors) 
