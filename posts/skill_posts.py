@@ -131,6 +131,7 @@ def skill_check_post(entry, body, cells):
 def skill_circ_post(entry, body, cells):
 
 	circ_target = entry.circ_target
+	mod = entry.mod
 	effect = entry.effect
 	speed = entry.speed
 	target = entry.target
@@ -204,6 +205,7 @@ def skill_circ_post(entry, body, cells):
 
 	cells = cell('Keyword', 13, [keyword])
 	cells = cell('Target', 12, [circ_target], cells)
+	cells = cell('Modifier', 8, [mod], cells)
 	cells = cell('Lasts', 15, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
