@@ -638,8 +638,6 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('check', 35, [compare, 'Comparison Check'], vcells, 7, check_type)
 	vcells = vcell('check', 35, [variable, 'Variable Check'], vcells, variable_id, check_type)
 
-	vcells = vcell('duration', 23, ['Effect Lasts for', duration, 'Turns'], vcells)
-
 	cells = vcell_add('Effect', type, vcells, cells)
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
