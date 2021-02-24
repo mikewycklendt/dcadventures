@@ -499,7 +499,6 @@ def skill_degree_post(entry, body, cells):
 	attack = entry.attack
 	attack_turns = entry.attack_turns
 	compare = entry.compare
-	duration = entry.duration
 	title = entry.title
 
 	title_name = get_name(SkillDegreeType, title)
@@ -543,7 +542,6 @@ def skill_degree_post(entry, body, cells):
 	routine_mod = integer_convert(routine_mod)
 	attack = integer_convert(attack)
 	attack_turns = integer_convert(attack_turns)
-	duration = integer_convert(duration)
 
 	value = integer_convert(value)
 	time = integer_convert(time)
