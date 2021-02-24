@@ -1369,7 +1369,6 @@ def skill_bonus_post_degree():
 						attack = attack,
 						attack_turns = attack_turns,
 						compare = compare,
-						duration = duration,
 						title = title)
 
 	db.session.add(entry)
