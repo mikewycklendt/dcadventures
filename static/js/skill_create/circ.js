@@ -139,7 +139,7 @@ function circ_submit() {
 			'conditions': conditions,
 			'conditions_effect': conditions_effect,
 			'measure_effect': measure_effect,
-			'measure_type': meaasure_type,
+			'measure_type': measure_type,
 			'measure_rank_value': measure_rank_value,
 			'measure_rank': measure_rank,
 			'unit_value': unit_value,
