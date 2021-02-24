@@ -244,7 +244,7 @@ class SkillCirc(db.Model):
 	conditions = db.Column(db.Integer)
 	conditions_effect = db.Column(db.Integer)
 	measure_effect = db.Column(db.String())
-	
+	measure_type = db.Column(db.Boolean)	
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
@@ -286,7 +286,7 @@ class SkillCirc(db.Model):
 			'conditions': self.conditions,
 			'conditions_effect': self.conditions_effect,
 			'measure_effect': self.measure_effect,
-			'measure_type': self.meaasure_type,
+			'measure_type': self.measure_type,
 			'measure_rank_value': self.measure_rank_value,
 			'measure_rank': self.measure_rank,
 			'unit_value': self.unit_value,
@@ -342,7 +342,7 @@ class SkillDC(db.Model):
 	damage_mod = db.Column(db.Integer)
 	damage_consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	measure_effect = db.Column(db.String())
-	
+	measure_type = db.Column(db.Boolean)
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
@@ -417,7 +417,7 @@ class SkillDC(db.Model):
 			'damage_mod': self.damage_mod,
 			'damage_consequence': self.damage_consequence,
 			'measure_effect': self.measure_effect,
-			'measure_type': self.meaasure_type,
+			'measure_type': self.measure_type,
 			'measure_rank_value': self.measure_rank_value,
 			'measure_rank': self.measure_rank,
 			'unit_value': self.unit_value,
@@ -491,7 +491,7 @@ class SkillDegree(db.Model):
 	circumstance = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	circ_target = db.Column(db.String())
 	measure_effect = db.Column(db.String())
-	
+	measure_type = db.Column(db.String())
 	measure_rank_value = db.Column(db.Integer)
 	measure_rank = db.Column(db.Integer, db.ForeignKey('ranks.id'))
 	unit_value = db.Column(db.Integer)
@@ -574,7 +574,7 @@ class SkillDegree(db.Model):
 			'circumstance': self.circumstance,
 			'circ_target': self.circ_target,
 			'measure_effect': self.measure_effect,
-			'measure_type': self.meaasure_type,
+			'measure_type': self.measure_type,
 			'measure_rank_value': self.measure_rank_value,
 			'measure_rank': self.measure_rank,
 			'unit_value': self.unit_value,
