@@ -1635,8 +1635,8 @@ def skill_bonus_post_opposed():
 	player_check = db_integer(Check, player_check)
 	opponent_check = db_integer(Check, opponent_check)
 
-	degree = db_integer(SkillDegree, degree)
-	circ = db_integer(SkillCirc, circ)
+	degree = db_integer(SkillDegreeType, degree)
+	circ = db_integer(SkillCircType, circ)
 	dc = db_integer(SkillDC, dc)
 	time = db_integer(SkillTime, dc)
 	recurring_value = db_integer(SkillTime, recurring_value)
