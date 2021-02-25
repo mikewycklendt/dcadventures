@@ -1,4 +1,17 @@
 
+function rule_specific(jsonResponse) {
+	if (jsonResponse.feature) {
+		costs.features = jsonResponse.cost;
+		calculate_cost();
+	}
+
+	if (jsonResponse.power) {
+		costs.powers_cost = jsonResponse.cost;
+		costs.powers_rank = jsonResponse.rank;
+		calculate_cost();
+	}
+}
+
 function item_info(select, entry, item_div, route, object) {
 	const field = document.getElementById(select)
 	const type_id = field.options[field.selectedIndex].value;

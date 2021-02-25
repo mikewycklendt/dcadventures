@@ -650,18 +650,20 @@ def skill_bonus_post_check():
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
+	dc_value = request.get_json()['dc_value']
 	time = request.get_json()['time']
 	move = request.get_json()['move']
 	keyword = request.get_json()['keyword']
 	attack = request.get_json()['attack']
 	opposed = request.get_json()['opposed']
 
-	degree = db_integer(SkillDegree, degree)
-	circ = db_integer(SkillCirc, circ)
-	dc = db_integer(SkillDC, dc)
-	time = db_integer(SkillTime, time)
-	move = db_integer(SkillMove, move)
+	degree = db_integer(SkillDegreeType, degree)
+	circ = db_integer(SkillCircType, circ)
+	dc = db_integer(SkillDCType, dc)
+	time = db_integer(SkillTimeType, time)
+	move = db_integer(SkillMoveType, move)
 	opposed = db_integer(SkillOpposed, opposed)
+	dc_value = db_integer(SkillDC, dc_value)
 
 	attack = integer(attack)
 
@@ -693,6 +695,7 @@ def skill_bonus_post_check():
 						degree = degree,
 						circ = circ,
 						dc = dc,
+						dc_value = dc_value,
 						time = time,
 						move = move,
 						keyword = keyword,

@@ -70,6 +70,7 @@ def skill_check_post(entry, body, cells):
 	degree = entry.degree
 	circ = entry.circ
 	dc = entry.dc
+	dc_value = entry.dc_value
 	time = entry.time
 	move = entry.move
 	keyword = entry.keyword
@@ -91,6 +92,7 @@ def skill_check_post(entry, body, cells):
 	dc = get_name(SkillDCType, dc)
 	time = get_name(SkillTimeType, time)
 	move = get_name(SkillMoveType, move)
+	dc_value = get_keyword(SkillDC, dc_value)
 	opposed = get_keyword(SkillOpposed, opposed)
 
 	attack = integer_convert(attack)
@@ -115,6 +117,7 @@ def skill_check_post(entry, body, cells):
 	cells = cell('Opposed', 18, [opposed], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
 	cells = cell('DC', 18, [dc], cells)
+	cells = cell('DC', 17, [dc_value], cells)
 	cells = cell('Degree', 18, [degree], cells)
 	cells = cell('Movement', 18, [move], cells)
 	cells = cell('Time', 18, [time], cells)

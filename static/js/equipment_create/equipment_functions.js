@@ -1,32 +1,23 @@
-function descriptor_add_type()  {
-	const fields = document.getElementsByClassName('descriptor-sml');
-	
-	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
-				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
-				{'type': 33445566, 'name': 'Any Chosen Common'}, 
-				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
-				{'type': 55667788, 'name': 'Any Chosen Damage'},
-				{'type': 66778899, 'name': 'Any Chosen Origin'},
-				{'type': 77889900, 'name': 'Any Chosen Source'},
-				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
-				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
-				{'type': 11002233, 'name': 'Any Chosen Medium'},
-				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
 
-	let field;
-	let option;
 
-	for (field of fields) {
-		for (option of options) {
-			let o = document.createElement('option');
-			o.value = option.type;
-			o.text = option.name;
-			field.add(o);
-		}
+function rule_specific(jsonResponse) {
+	const cost = jsonResponse.cost;
+	const feature_check = jsonResponse.feature;
+
+	if (feature_check == true) {
+		let feature_count = document.getElementById('feature_count').value;
+		let feature_count_div = document.getElementById('feature_count');
+		feature_count_div.value = feature_count - 1
+	}
+
+	if (cost == true) { 
+		const belt_cost = document.getElementById("belt-cost");
+		const cost_field = document.getElementById('belt_cost');
+		const total_cost = jsonResponse.total_cost;
+		belt_cost.innerHTML = total_cost;
+		cost_field.value = total_cost;	
 	}
 }
-
-descriptor_add_type()
 
 function belt_info(select, route, entry) {
 	const field = document.getElementById(select)

@@ -255,7 +255,7 @@ function deg_mod_submit() {
 	const err_line = 'deg-mod-err-line';
 
 	const selects = 'degree-sml';
-	const opp_selects = 'degree-opp-sml';
+	const opp_selects = 'degree-opp-title-sml';
 	const select_title = 'degree-title-sml';
 
 	response = fetch('/skill/degree/create', {

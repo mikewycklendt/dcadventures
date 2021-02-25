@@ -1,30 +1,8 @@
 
-function descriptor_add_type()  {
-	const fields = document.getElementsByClassName('descriptor-sml');
-	
-	options = [{'type': 11223344, 'name': 'Any Chosen Rare'}, 
-				{'type': 22334455, 'name': 'Any Chosen Uncommon'}, 
-				{'type': 33445566, 'name': 'Any Chosen Common'}, 
-				{'type': 44556677, 'name': 'Any Chosen Very Common'}, 
-				{'type': 55667788, 'name': 'Any Chosen Damage'},
-				{'type': 66778899, 'name': 'Any Chosen Origin'},
-				{'type': 77889900, 'name': 'Any Chosen Source'},
-				{'type': 88990011, 'name': 'Any Chosen Medium Type'},
-				{'type': 99001122, 'name': 'Any Chosen Medium Subtype'},
-				{'type': 11002233, 'name': 'Any Chosen Medium'},
-				{'type': 12121212, 'name': 'Any Chosen Descriptor'}]
 
-	let field;
-	let option;
 
-	for (field of fields) {
-		for (option of options) {
-			let o = document.createElement('option');
-			o.value = option.type;
-			o.text = option.name;
-			field.add(o);
-		}
-	}
+function rule_specific(jsonResponse) {
+	console.log('no specific rules');
 }
 
 descriptor_add_type()
@@ -490,6 +468,9 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 					const title_id = jsonResponse.title_id;
 
 					clear_errors(err_line, errors);
+
+					rule_specific(jsonResponse);
+
 					const remove = jsonResponse.id;
 					deleted_item(selects, remove)
 	

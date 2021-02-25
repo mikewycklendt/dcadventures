@@ -1,3 +1,12 @@
+
+function rule_specific(jsonResponse) {
+	if (jsonResponse.feature) {
+		costs.features = jsonResponse.cost;
+		calculate_cost()
+	}
+}
+
+
 function null_hide_maxheight(field, item) {
 	val = select(field);
 

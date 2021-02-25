@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit
 from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
@@ -171,6 +171,7 @@ def skill_check_post_errors(data):
 	degree = data['degree']
 	circ = data['circ']
 	dc = data['dc']
+	dc_value = data['dc_value']
 	time = data['time']
 	move = data['move']
 	keyword = data['keyword']
@@ -212,6 +213,10 @@ def skill_check_post_errors(data):
 
 	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
 	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
+
+	errors = select_of('1', 'uses a skill check', 'Check Type'. check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
+	errors = select_of('6', 'uses a resistance check', 'Check Type'. check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
+	errors = seperate([db, dc_value], 'DC or DC by Group', errors)
 
 	return (errors)
 
@@ -267,7 +272,7 @@ def skill_circ_post_errors(data):
 	errors = id_check(Unit, unit, 'Unit', errors)
 	errors = id_check(Math, measure_trait_math, 'Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
-
+'sdfvg'f
 	errors = id_check(SkillTime, lasts, 'Circumsrance Duration', errors)
 	
 	errors = required(mod, 'Circumstance Modifier', errors)

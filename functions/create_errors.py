@@ -252,6 +252,26 @@ def seperate(selects, names, errors):
 	
 	return (errors)
 
+def value_limit(limit, selects, names, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	i = 0
+	
+	for select in selects:
+		if select != '' :
+			i += 1
+
+	if i > limit:			
+		error = True
+		message = 'You can only choose one of ' + names + ' fields at once.'		
+	if error:
+		errors['error'] = error
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+	
+	return (errors)
+
 	
 def variable_field(value, field, name, f, errors):
 	error_msgs = errors['error_msgs']

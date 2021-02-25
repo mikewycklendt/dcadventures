@@ -384,12 +384,16 @@ function dc_submit() {
 
 			selects_add(id, keyword, dc_selects);
 
+			if (target == 'opp') {
+				selects_add(id, keyword, opp_selects);
+			}
+
 			dc_grid.columns.length = 0;
 			dc_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, dc_grid, route, [dc_selects], title_id, [select_title]);
+			create_table('skill', jsonResponse, dc_grid, route, [dc_selects, opp_selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;
