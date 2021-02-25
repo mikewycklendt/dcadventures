@@ -805,7 +805,7 @@ def skill_opposed_post(entry, body, cells):
 	opponent_check = get_name(Check, opponent_check)
 	
 	recurring_value = get_keyword(SkillTime, recurring_value)
-	degree = get_keyword(SkillDegree, degree)
+	degree = get_name(SkillDegreeType, degree)
 	circ = get_name(SkillCircType, circ)
 	dc = get_keyword(SkillDC, dc)
 	time = get_keyword(SkillTime, time)
