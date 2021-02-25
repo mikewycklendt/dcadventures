@@ -851,7 +851,7 @@ def skill_opposed_post(entry, body, cells):
 	mod_add(circ_check, new_mod, body)
 	
 	cells = check_cell('DC', 5, dc_check, cells, True)
-	new_mod = mod_create('', )
+	new_mod = mod_create('DC', 5)
 	new_mod = mod_cell('Group', 7, [dc_type], new_mod)
 	new_mod = mod_cell('Player DC', 13, [dc_player], new_mod)
 	new_mod = mod_cell('Opponent DC', 15, [dc], new_mod)
