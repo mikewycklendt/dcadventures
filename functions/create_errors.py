@@ -533,6 +533,47 @@ def check_field(check, checkname, name, value, errors):
 
 	return (errors)
 
+def check_of(check, checkname, names, values, errors):
+
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if check:
+		for value in values:
+			if value != '':
+				error = False
+				
+	if error:
+		message = 'You must select ' + names + ' or uncheck the ' + checkname + ' checkbox.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def select_check(value, field, check, name, require, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != field:
+		return (errors)
+``
+	if check == False:
+		error = True
+
+	if error:
+		message = 'If rhis rule involves a ' + name + ' you must set ' + require + '.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def multiple(options, errors):
 	error_msgs = errors['error_msgs']
 	error = False

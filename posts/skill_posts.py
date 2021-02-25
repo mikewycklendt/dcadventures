@@ -795,6 +795,15 @@ def skill_opposed_post(entry, body, cells):
 	circ = entry.circ
 	dc = entry.dc
 	time = entry.time
+	degree_check = entry.degree_check
+	circ_check = entry.circ_check
+	dc_check = entry.dc_check
+	time_check = entry.time_check
+	degree_value = entry.degree_value
+	dc_type = entry.dc_type
+	dc_player = entry.dc_player
+	circ_value = entry.circ_value
+	time_type = entry.time_type
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -809,6 +818,11 @@ def skill_opposed_post(entry, body, cells):
 	circ = get_name(SkillCircType, circ)
 	dc = get_keyword(SkillDC, dc)
 	time = get_keyword(SkillTime, time)
+	degree_value = get_keyword(SkillDegree, degree_value)
+	dc_type = get_name(SkillDCType, dc_type)
+	dc_player = get_keyword(SkillDC, dc_player)
+	circ_value = get_keyword(SkillCirc, circ_value)
+	time_type = get_name(SkillTimeType, time_type)
 
 	frequency_select = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 	frequency = selects(frequency, frequency_select)
@@ -827,13 +841,34 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Opponent Check', 15, [opponent_trait], cells)
 	cells = cell('Modifier', 9, [opponent_mod], cells)
 	cells = cell('Check', 14, [opponent_check], cells)
-
-	cells = cell('Degree', 18, [degree], cells)
-	cells = cell('DC', 18, [dc], cells)
-	cells = cell('Circumstance', 18, [circ], cells)
-	cells = cell('Time', 18, [time], cells)
 	
 	cells = check_cell('Secret', 8, secret, cells)
+
+	cells = check_cell('Circumstance', 12, circ_check, cells, True)
+	new_mod = mod_create('Circumstance Modifier', 24)
+	new_mod = mod_cell('Group', 7, [circ], new_mod)
+	new_mod = mod_cell('Value', 7, [circ_value], new_mod) 
+	mod_add(circ_check, new_mod, body)
+	
+	cells = check_cell('DC', 5, dc_check, cells, True)
+	new_mod = mod_create('', )
+	new_mod = mod_cell('Group', 7, [dc_type], new_mod)
+	new_mod = mod_cell('Player DC', 13, [dc_player], new_mod)
+	new_mod = mod_cell('Opponent DC', 15, [dc], new_mod)
+	mod_add(dc_check, new_mod, body)
+	
+	cells = check_cell('Degree', 8, degree_check, cells, True)
+	new_mod = mod_create('Degree', 7)
+	new_mod = mod_cell('Value', 8, [degree_value], new_mod)
+	new_mod = mod_cell('Group', 7, [degree], new_mod)
+	mod_add(degree_check, new_mod, body)
+	
+	cells = check_cell('Time', 6, time_check, cells, True)
+	new_mod = mod_create('', )
+	new_mod = mod_cell('Value', 7, [time], new_mod)
+	new_mod = mod_cell('Group', 7, [time_type], new_mod)
+	mod_add(time_check, new_mod, body)	
+
 
 	cells = check_cell('Recurring', 10, recurring, cells, True)
 	new_mod = mod_create('Recurring Check', 17)

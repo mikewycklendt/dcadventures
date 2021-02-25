@@ -1630,6 +1630,15 @@ def skill_bonus_post_opposed():
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
 	time = request.get_json()['time']
+	degree_check = request.get_json()['degree_check']
+	circ_check = request.get_json()['circ_check']
+	dc_check = request.get_json()['dc_check']
+	time_check = request.get_json()['time_check']
+	degree_value = request.get_json()['degree_value']
+	dc_type = request.get_json()['dc_type']
+	dc_player = request.get_json()['dc_player']
+	circ_value = request.get_json()['circ_value']
+	time_type = request.get_json()['time_type']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
@@ -1640,6 +1649,11 @@ def skill_bonus_post_opposed():
 	dc = db_integer(SkillDC, dc)
 	time = db_integer(SkillTime, dc)
 	recurring_value = db_integer(SkillTime, recurring_value)
+	degree_value = db_integer(SkillDegree, degree_value)
+	dc_type = db_integer(SkillDCType, dc_type)
+	dc_player = db_integer(SkillDC, dc_player)
+	circ_value = db_integer(SkillCirc, circ_value)
+	time_type = db_integer(SkillTimeType, time_type)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -1667,7 +1681,17 @@ def skill_bonus_post_opposed():
 						degree = degree,
 						circ = circ,
 						dc = dc,
-						time = time)			
+						time = time,
+						degree_check = degree_check,
+						circ_check = circ_check,
+						dc_check = dc_check,
+						time_check = time_check,
+						degree_value = degree_value,
+						dc_type = dc_type,
+						dc_player = dc_player,
+						circ_value = circ_value,
+						time_type = time_type
+					)			
 
 	db.session.add(entry)
 	db.session.commit()

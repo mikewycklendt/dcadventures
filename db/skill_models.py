@@ -838,6 +838,16 @@ class SkillOpposed(db.Model):
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	degree_check = db.Column(db.Boolean)
+	circ_check = db.Column(db.Boolean)
+	dc_check = db.Column(db.Boolean)
+	time_check = db.Column(db.Boolean)
+	degree_value = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
+	dc_type = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
+	dc_player = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
+	circ_value = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
+	time_type = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
+
 
 	def format(self):
 		return {
@@ -864,7 +874,16 @@ class SkillOpposed(db.Model):
 			'degree': self.degree,
 			'circ': self.circ,
 			'dc': self.dc,
-			'time': self.time
+			'time': self.time,
+			'degree_check': self.degree_check,
+			'circ_check': self.circ_check,
+			'dc_check': self.dc_check,
+			'time_check': self.time_check,
+			'degree_value': self.degree_value,
+			'dc_type': self.dc_type,
+			'dc_player': self.dc_player,
+			'circ_value': self.circ_value,
+			'time_type': self.time_type
 		}
 
 class SkillTime(db.Model):

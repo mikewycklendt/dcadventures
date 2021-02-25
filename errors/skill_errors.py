@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit, select_check, check_of
 from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
@@ -910,7 +910,17 @@ def skill_opposed_post_errors(data):
 	circ = data['circ']
 	dc = data['dc']
 	time = data['time']
-	keyword = data['keyword'] 
+	keyword = data['keyword']
+	degree_check = data['degree_check']
+	circ_check = data['circ_check']
+	dc_check = data['dc_check']
+	time_check = data['time_check']
+	degree_value = data['degree_value']
+	dc_type = data['dc_type']
+	dc_player = data['dc_player']
+	circ_value = data['circ_value']
+	time_type = data['time_type']
+
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -921,11 +931,16 @@ def skill_opposed_post_errors(data):
 	errors = id_check(Check, player_check, 'Player Check', errors)
 	errors = id_check(Check, opponent_check, 'Opponent Check', errors)
 
-	errors = id_check(SkillDegreeType, degree, 'Degree', errors)
-	errors = id_check(SkillCircType, circ, 'Circumstance', errors)
+	errors = id_check(SkillDegreeType, degree, 'Degree Group', errors)
+	errors = id_check(SkillCircType, circ, 'Circumstance Group', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
 	errors = id_check(SkillTime, time, 'DC', errors)
 	errors = id_check(SkillTime, recurring_value, 'Recurring Time', errors)
+	errors = id_check(SkillDegree, degree_value, 'Degree', errors)
+	errors = id_check(SkillDCType, dc_type, 'DC Group', errors)
+	errors = id_check(SkillDC, dc_player, 'Player DC', errors)
+	errors = id_check(SkillCirc, circ_value, 'Degree', errors)
+	errors = id_check(SkillTimeType, time_type, 'Time Group', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
@@ -942,6 +957,16 @@ def skill_opposed_post_errors(data):
 
 	errors = variable_fields('1', 'Skill Check', opponent_check, [dc], errors)
 	errors = variable_field('1', opponent_check, 'Opponent Skill Check DC', dc, errors)
+
+	errors = select_check('6', opponent_check, dc_check, 'Resistance Check', 'a DC value', errors)
+	errors = select_check('1', opponent_check, dc_check, 'Skill Check', 'a DC value', errors)
+	errors = select_check('6', player_check, dc_check, 'Resistance Check', 'a DC value', errors)
+	errors = select_check('1', player_check, dc_check, 'Skill Check', 'a DC value', errors)
+
+	errors = check_of(circ_check, 'Circumstance', 'a circums6ance modifier or circumstance group', [circ_value, circ], errors)
+	errors = check_of(dc_check, 'DC', ' a dc value or dc group', [dc_player, dc_type, dc], errors)
+	errors = check_of(degree_check, 'Degree', 'a degree value or degree group', [degree_value, degree], errors)
+	errors = check_of(time_check, 'Time', 'a time effect or time effect group', [time, time_type], errors)
 
 	return (errors)
 

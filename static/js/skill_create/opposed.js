@@ -36,6 +36,35 @@ function opposed_recurring() {
 	check_display(check, div);
 }
 
+
+function opposed_degree_check() {
+	const check = "opposed_degree_check"
+	const div = 'opposed-degree';
+
+	check_display(check, div);
+}
+
+function opposed_circ_check(){
+	const check = "opposed_circ_check"
+	const div = 'opposed-circ';
+
+	check_display(check, div);
+}
+
+function opposed_dc_check() {
+	const check = "opposed_dc_check"
+	const div = 'opposed-dc';
+
+	check_display(check, div);
+}
+
+function opposed_time_check() {
+	const check = "opposed_time_check"
+	const div = 'opposed-time';
+
+	check_display(check, div);
+}
+
 let opposed_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -47,27 +76,38 @@ function opposed_submit() {
 	const created = opposed_grid.titles;
 	const font = opposed_grid.font;
 
-	const attached = select("opposed_attached")
-	const frequency = select("opposed_frequency")
-	const trait_type = select("opposed_trait_type")
-	const trait = select("opposed_trait")
-	const mod = select("opposed_mod")
-	const opponent_trait_type = select("opposed_opponent_trait_type")
-	const opponent_trait = select("opposed_opponent_trait")
-	const opponent_mod = select("opposed_opponent_mod")
+	const attached = select("opposed_attached");
+	const frequency = select("opposed_frequency");
+	const trait_type = select("opposed_trait_type");
+	const trait = select("opposed_trait");
+	const mod = select("opposed_mod");
+	const opponent_trait_type = select("opposed_opponent_trait_type");
+	const opponent_trait = select("opposed_opponent_trait");
+	const opponent_mod = select("opposed_opponent_mod");
 	const player_secret = check("opposed_secret_player");
-	const player_check = select("opposed_player_check")
-	const opponent_check = select("opposed_opponent_check")
-	const secret = check("opposed_secret")
-	const recurring = check("opposed_recurring")
-	const multiple = select("opposed_multiple")
-	const recurring_value = text("opposed_recurring_value")
+	const player_check = select("opposed_player_check");
+	const opponent_check = select("opposed_opponent_check");
+	const secret = check("opposed_secret");
+	const recurring = check("opposed_recurring");
+	const multiple = select("opposed_multiple");
+	const recurring_value = text("opposed_recurring_value");
 	const description = text("opposed_description");
 	const keyword = text("opposed_keyword");
-	const degree = select("opposed_degree")
-	const circ = select("opposed_circ")
-	const dc = select("opposed_dc")
-	const time = select("opposed_time")
+	const degree = select("opposed_degree");
+	const circ = select("opposed_circ");
+	const dc = select("opposed_dc");
+	const time = select("opposed_time");
+	const degree_check = check("opposed_degree_check");
+	const circ_check = check("opposed_circ_check");
+	const dc_check = check("opposed_dc_check");
+	const time_check = check("opposed_time_check");
+	const degree_value = select("opposed_degree_value");
+	const dc_type = select("opposed_dc_type");
+	const dc_player = select("opposed_dc_player");
+	const circ_value = select("opposed_circ_value");
+	const time_type = select("opposed_time_type");
+
+
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -104,7 +144,16 @@ function opposed_submit() {
 			'degree': degree,
 			'circ': circ,
 			'dc': dc,
-			'time': time
+			'time': time,
+			'degree_check': degree_check,
+			'circ_check': circ_check,
+			'dc_check': dc_check,
+			'time_check': time_check,
+			'degree_value': degree_value,
+			'dc_type': dc_type,
+			'dc_player': dc_player,
+			'circ_value': circ_value,
+			'time_type': time_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

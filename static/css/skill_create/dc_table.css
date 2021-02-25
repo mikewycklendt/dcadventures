@@ -26,6 +26,12 @@
 	transition: all .2s linear;
 }
 
+.dc-player-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 .dc-sml {
 	height: 1.6vw; 
 	padding: .1vw;  

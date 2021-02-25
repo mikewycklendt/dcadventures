@@ -131,6 +131,44 @@
 	grid-template-columns: 50% 50% auto;
 }
 
+#opposed-circ {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 15% auto auto;
+	gap: .3vw;
+}
+
+#opposed-dc {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 5% auto auto auto;
+	gap: .3vw;
+}
+
+#opposed-degree {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 10% 45% 45%;
+	gap: .3vw;
+}
+
+#opposed-time {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 10% auto auto;
+	gap: .3vw;
+}
+
+
+
 #opposed-recurring input[type="text"] {
 	height: 1.8vw;
 	padding: .1vw;

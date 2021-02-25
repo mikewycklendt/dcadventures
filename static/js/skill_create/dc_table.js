@@ -294,6 +294,7 @@ function dc_submit() {
 	const dc_selects = 'dc-sml';
 	const select_title = 'dc-title-sml';
 	const opp_selects = 'dc-opp-sml';
+	const player_selects = 'dc-player-sml';
 
 	response = fetch('/skill/dc/create', {
 		method: 'POST',
@@ -386,6 +387,8 @@ function dc_submit() {
 
 			if (target == 'opp') {
 				selects_add(id, keyword, opp_selects);
+			} else if (target == 'active') {
+				selects_add(id, keyword, player_selects)
 			}
 
 			dc_grid.columns.length = 0;
@@ -393,7 +396,7 @@ function dc_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, dc_grid, route, [dc_selects, opp_selects], title_id, [select_title]);
+			create_table('skill', jsonResponse, dc_grid, route, [dc_selects, opp_selects, player_selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			dc_grid.titles = true;
