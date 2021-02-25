@@ -272,7 +272,7 @@ def skill_circ_post_errors(data):
 	errors = id_check(Unit, unit, 'Unit', errors)
 	errors = id_check(Math, measure_trait_math, 'Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
-'sdfvg'f
+
 	errors = id_check(SkillTime, lasts, 'Circumsrance Duration', errors)
 	
 	errors = required(mod, 'Circumstance Modifier', errors)
