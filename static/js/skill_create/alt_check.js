@@ -78,6 +78,7 @@ function check_submit() {
 	const degree = select("check_degree_type");
 	const circ = select("check_circ_type");
 	const dc = select("check_dc_type");
+	const dc_value = select("check_dc_value");
 	const time = select("check_time_type");
 	const move = select("check_move_type");
 	const attack = select("check_attack");
@@ -118,6 +119,7 @@ function check_submit() {
 			'degree': degree,
 			'circ': circ,
 			'dc': dc,
+			'dc_value': dc_value,
 			'time': time,
 			'move': move,
 			'keyword': keyword,

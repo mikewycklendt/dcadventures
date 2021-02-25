@@ -127,7 +127,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 40% 40% 20%;
 }
 
 #check-compare {

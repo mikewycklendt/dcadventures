@@ -194,6 +194,7 @@ class SkillCheck(db.Model):
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
+	dc_value = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	move = db.Column(db.Integer, db.ForeignKey('skill_move_type.id'))
 	attack = db.Column(db.Integer)
 	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
@@ -220,6 +221,7 @@ class SkillCheck(db.Model):
 			'degree': self.degree,
 			'circ': self.circ,
 			'dc': self.dc,
+			'dc_value': self.dc_value,
 			'time': self.time,
 			'move': self.move,
 			'keyword': self.keyword,

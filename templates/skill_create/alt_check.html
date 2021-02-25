@@ -124,8 +124,18 @@
 
 	<div id="check-dc">
 		<div>
-			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
+			<select class="dc-sml" id="check_dc_value" name="check_dc_value">
 				<option value="">DC</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
+				<option value="">DC By Group Title</option>
 				<option value="">Use DC Table form to put options here</option>
 				{% for b in bonus_dc_type %}
 					<option value={{b.id}}>{{b.name}}</option>
