@@ -111,18 +111,16 @@
 
 		<div>
 			<select class="select-sml" id="opposed_player_check" name="opposed_player_check">
-				<option value="">Check Type</option>
+				<option value="">Player Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="select-sml" id="opposed_opponent_check" name="opposed_check">
-				<option value="">Check Type</option>
+				<option value="">Opponent Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}

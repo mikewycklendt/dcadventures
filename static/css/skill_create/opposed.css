@@ -80,7 +80,7 @@
 	display: grid;
 	width: 96%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 10% 16% 16% 22%;
+	grid-template-columns: 16% 25% 25% 17% 22%;
 }
 
 #opposed-row4 {
