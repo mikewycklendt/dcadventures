@@ -833,13 +833,13 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('When', 13, [attached], cells)
 	cells = cell('Frequency', 13, [frequency], cells)
-	cells = cell('Player Check', 15, [trait], cells)
-	cells = cell('Modifier', 9, [mod], cells)
+	cells = cell('Player', 12, [trait], cells)
+	cells = cell('Mod', 6, [mod], cells)
 	cells = cell('Check', 14, [player_check], cells)
 	cella = check_cell('Secret', 8, player_secret, cells)
 
-	cells = cell('Opponent Check', 15, [opponent_trait], cells)
-	cells = cell('Modifier', 9, [opponent_mod], cells)
+	cells = cell('Opponent', 12, [opponent_trait], cells)
+	cells = cell('Mod', 6, [opponent_mod], cells)
 	cells = cell('Check', 14, [opponent_check], cells)
 	
 	cells = check_cell('Secret', 8, secret, cells)

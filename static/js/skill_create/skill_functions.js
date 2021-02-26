@@ -241,21 +241,16 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 		} else {
 			if (cell.circ === true) {
 				circ_check = true;
-				const circ = document.createElement('div');
-				circ.className = 'circ-cell';
-				new_cell.appendChild(circ);
 				const circ_btn = document.createElement('button');
 				circ_btn.className =  base_circ_btn;
 				circ_btn.classList.add(circ_btn_class);
-				circ_btn.setAttribute('data-stats', 'closed');
-				circ.appendChild(circ_btn);
-				const circ_cell = document.createElement('div');
-				circ_cell.innerHTML = cell.content;
-				circ.appendChild(circ_cell);
+				circ_btn.setAttribute('data-state', 'closed');
+				new_cell.appendChild(circ_btn);
+			} else {
+				new_cell.innerHTML = cell.content;
+				const cell_height = new_cell.scrollHeight;
+				cell_heights.push(cell_height);
 			}
-			new_cell.innerHTML = cell.content;
-			const cell_height = new_cell.scrollHeight;
-			cell_heights.push(cell_height);
 		}
 		row.appendChild(new_cell);
 	}
@@ -436,19 +431,19 @@ function circ_button(table_id, table) {
 			const circ = circs[i]
 			const entry = circ.parentNode;
 
-			const status = circ.getAttribute('data-status');
+			const status = circ.getAttribute('data-state');
 			if (status == 'open') {
 				circ.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
 				setTimeout(function(){circ.style.display = 'none'}, 400);
-				circ.setAttribute('dara-status', 'closed');
+				circ.setAttribute('data-state', 'closed');
 			} else if (status == 'closed') {
 				circ.style.display = 'grid';
 				circ.style.maxHeight = circ.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight + circ.scrollHeight + 'px';
-				circ.setAttribute('dara-status', 'open');
+				circ.setAttribute('data-state', 'open');
 			}
 		}
 	}
