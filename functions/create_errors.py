@@ -643,28 +643,6 @@ def of_multiple(values, message, errors):
 
 	return (errors)
 
-def check_of(check, name, values, errors):
-	error_msgs = errors['error_msgs']
-	error = True
-	sub_error = False
-
-	if check:
-		for value in values:
-			if value != '' or value == True:
-				error = False
-	else:
-		error = False
-
-	if error:
-		message = 'You must select one of the required ' + name + ' options or uncheck the ' + name + ' checkbox.'
-		error_msgs.append(message)
-
-	errors['error_msgs'] = error_msgs
-	if error:
-		errors['error'] = error
-
-	return (errors)
-
 def of(values, message, errors):
 	error_msgs = errors['error_msgs']
 	error = True
