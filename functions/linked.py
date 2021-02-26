@@ -71,7 +71,7 @@ def level_add(id, column, level, level_type, body):
 	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
 	if level_check is None:
 		try:
-			level_add = LevelType(name=level_type)
+			level_add = LevelType(name=level_type, show=True)
 			db.session.add(level_add)
 			setattr(level_add, column, id)
 			db.session.commit()

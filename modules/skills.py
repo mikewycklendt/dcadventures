@@ -2130,6 +2130,7 @@ def skill_post_levels():
 	bonus_degree = False
 	advantage_dc = False
 	advantage_degree = False
+	show = True
 
 	body = {}
 	body['success'] = True
