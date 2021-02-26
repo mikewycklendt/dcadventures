@@ -244,6 +244,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 				const circ_btn = document.createElement('button');
 				circ_btn.className =  base_circ_btn;
 				circ_btn.classList.add(circ_btn_class);
+				circ_btn.classList.add('fas')
 				circ_btn.setAttribute('data-state', 'closed');
 				new_cell.appendChild(circ_btn);
 			} else {
@@ -270,6 +271,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	delete_cell.className = base_cell;
 	const delete_btn = document.createElement('button');
 	delete_btn.className = base_delete + delete_class;
+	delete_btn.classList.add('fas')
 	delete_btn.setAttribute('data-id', id);
 	delete_cell.appendChild(delete_btn)
 	row.appendChild(delete_cell)
