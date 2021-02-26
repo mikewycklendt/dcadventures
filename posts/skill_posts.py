@@ -844,7 +844,7 @@ def skill_opposed_post(entry, body, cells):
 	
 	cells = check_cell('Secret', 8, secret, cells)
 
-	cells = check_cell('Circumstance', 12, circ_check, cells, True)
+	cells = check_cell('Circ', 6, circ_check, cells, True)
 	new_mod = mod_create('Circumstance Modifier', 24)
 	new_mod = mod_cell('Group', 7, [circ], new_mod)
 	new_mod = mod_cell('Value', 7, [circ_value], new_mod) 
@@ -857,7 +857,7 @@ def skill_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Opponent DC', 15, [dc], new_mod)
 	mod_add(dc_check, new_mod, body)
 	
-	cells = check_cell('Degree', 8, degree_check, cells, True)
+	cells = check_cell('Degree', 10, degree_check, cells, True)
 	new_mod = mod_create('Degree', 7)
 	new_mod = mod_cell('Value', 8, [degree_value], new_mod)
 	new_mod = mod_cell('Group', 7, [degree], new_mod)

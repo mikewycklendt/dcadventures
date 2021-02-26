@@ -403,11 +403,13 @@ function circ_create(rule, jsonResponse, id_input, entry_input, table_id_input, 
 		title.className = circ_title;
 		title.innerHTML = circ.title;
 		circ_row.appendChild(title);
+		console.log(circ.title)
 
 		const content = document.createElement('div');
 		content.className = 'circ-cell-circ';
 		content.innerHTML = circ.content;
 		circ_row.appendChild(content)
+		console.log(circ.content)
 	}
 	
 	circ_button(table_id, table);
@@ -432,13 +434,14 @@ function circ_button(table_id, table) {
 			const entry = circ.parentNode;
 
 			const status = circ.getAttribute('data-state');
+			console.log(status);
 			if (status == 'open') {
 				circ.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
 				setTimeout(function(){circ.style.display = 'none'}, 400);
 				circ.setAttribute('data-state', 'closed');
-			} else if (status == 'closed') {
+			} else {
 				circ.style.display = 'grid';
 				circ.style.maxHeight = circ.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
