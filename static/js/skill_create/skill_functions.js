@@ -5,8 +5,6 @@ function rule_specific(jsonResponse) {
 	console.log('no specific rules');
 }
 
-descriptor_add_type()
-
 function create_table(rule, jsonResponse, object, route, selects=false, title=false, title_selects=false) {
 
 	const spot_string = jsonResponse.spot;
