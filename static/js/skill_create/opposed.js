@@ -40,29 +40,33 @@ function opposed_recurring() {
 function opposed_degree_check() {
 	const check = "opposed_degree_check"
 	const div = 'opposed-degree';
+	const entry = 'opposed-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function opposed_circ_check(){
 	const check = "opposed_circ_check"
 	const div = 'opposed-circ';
+	const entry = 'opposed-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function opposed_dc_check() {
 	const check = "opposed_dc_check"
 	const div = 'opposed-dc';
+	const entry = 'opposed-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 function opposed_time_check() {
 	const check = "opposed_time_check"
 	const div = 'opposed-time';
+	const entry = 'opposed-entry';
 
-	check_drop(check, div);
+	check_drop(check, div, entry);
 }
 
 let opposed_grid = {'titles': false,
