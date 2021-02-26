@@ -77,7 +77,7 @@ def level_add(id, column, level, level_type, body):
 			db.session.commit()
 			add_title = True
 			created = False
-			title_id = leveltype.id
+			title_id = level_add.id
 		except:
 			success = False
 			error_msgs.append('There was an error adding that level type.')
