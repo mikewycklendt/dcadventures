@@ -85,7 +85,7 @@ def level_add(id, column, level, level_type, body):
 		finally:
 			db.session.close()
 	else:
-		trait_id = getattr(level_check, column) 
+		trait_id = getattr(level_check, column)
 		if id != trait_id:
 			success = False
 			error_msgs.append('There is already a level type with that name.')
@@ -108,7 +108,8 @@ def level_add(id, column, level, level_type, body):
 	body['error_msgs'] = error_msgs
 	body['title_id'] = title_id
 	body['add_title'] = add_title
-
+	body['title'] = level_type
+	
 	return (body)
 
 
