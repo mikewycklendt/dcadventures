@@ -169,33 +169,6 @@
 		</div>
 	</div>
 
-	<div id="opposed-degree">
-
-		<div class="vcenter" style="justify-content: left;">
-			Degree of Success/Failure:
-		</div>
-
-		<div>
-			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
-				<option value="">Degree by Group</option>
-				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-		
-		<div>
-			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
-				<option value="">Degree of Success/Failure</option>
-				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-	
 	<div id="opposed-dc">
 
 		<div class="vcenter" style="justify-content: left;">
@@ -233,6 +206,35 @@
 		</div>
 
 	</div>
+	<div id="opposed-time">
+
+		<div class="vcenter" style="justify-content: left;">
+			Time Effect:
+		</div>
+
+		<div>
+			<div>
+				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
+					<option value="">Time Effect By Group</option>
+					<option value="">Use Time Effect form to put options here</option>
+					{% for b in bonus_time_type %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+		</div>
+		
+		<div>
+			<select class="time-sml" id="opposed_time" name="opposed_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 	
 	<div id="opposed-circ">
 
@@ -263,30 +265,27 @@
 		
 	</div>
 	
-	<div id="opposed-time">
+	<div id="opposed-degree">
 
 		<div class="vcenter" style="justify-content: left;">
-			Time Effect:
+			Degree of Success/Failure:
 		</div>
 
 		<div>
-			<div>
-				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
-					<option value="">Time Effect By Group</option>
-					<option value="">Use Time Effect form to put options here</option>
-					{% for b in bonus_time_type %}
-						<option value={{b.id}}>{{b.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-	
+			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
+				<option value="">Degree by Group</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 		
 		<div>
-			<select class="time-sml" id="opposed_time" name="opposed_time">
-				<option value="">Time Effect</option>
-				<option value="">Use Time Effect form to put options here</option>
-				{% for b in bonus_time %}
+			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
+				<option value="">Degree of Success/Failure</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
