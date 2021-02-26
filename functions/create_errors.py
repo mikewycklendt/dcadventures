@@ -560,7 +560,7 @@ def select_check(value, field, check, name, require, errors):
 
 	if value != field:
 		return (errors)
-``
+
 	if check == False:
 		error = True
 
