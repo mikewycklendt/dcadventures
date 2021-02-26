@@ -66,7 +66,7 @@ def level_add(id, column, level, level_type, body):
 	success = body['success']
 	body['add_title'] = False	
 
-	id = integer(id)
+	id = int(id)
 
 	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
 	if level_check is None:
