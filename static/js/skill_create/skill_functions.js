@@ -540,8 +540,8 @@ function row_delete(rule, jsondata, route, object, selects=false, title=false, t
 	const deletes = document.getElementsByClassName(delete_class);
 	const table_change = document.getElementById(table_class)
 	const header = document.getElementById(header_id)	
-	const errors = table_id + '-err';
-	const err_line = table_id + '-err-line';
+	const errors = jsondata.table_id + '-err';
+	const err_line = jsondata.table_id + '-err-line';
 
 	for (let i = 0; i < deletes.length; i++) {
 		const btn = deletes[i];

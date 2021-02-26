@@ -151,16 +151,16 @@ def delete_level(id):
 	error_msgs = []
 
 	try:
-		get_level = db.session.query(Level).filter_by(id=id).first()
+		get_level = db.session.query(Levels).filter_by(id=id).first()
 		title_id = get_level.type_id
 		body['title_id'] = title_id
 		body['id'] = id
-		db.session.query(table).filter_by(id=id).delete()
+		db.session.query(Levels).filter_by(id=id).delete()
 		db.session.commit()
 		print('\n\n' + str(id) + ' DELETED\n\n')
 		db.session.close()
 
-		empty = db.session.query(Level).filter_by(type_id=title_id).first()
+		empty = db.session.query(Levels).filter_by(type_id=title_id).first()
 		if empty is None:
 			db.session.query(LevelType).filter_by(id=title_id).delete()
 			body['hide_table'] = True
