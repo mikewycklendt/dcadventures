@@ -1130,11 +1130,13 @@ def skill_levels_post(entry, body, cells):
 	level = entry.name
 	level_effect = entry.level_effect
 
+	title = get_name(LevelType, level_type)
+
 
 	cells = cell('Level', 17, [level], cells)
 	cells = cell('Effect', 58, [level_effect], cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 

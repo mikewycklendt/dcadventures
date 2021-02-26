@@ -109,7 +109,7 @@ def level_add(id, column, level, level_type, body):
 	body['title_id'] = title_id
 	body['add_title'] = add_title
 	body['title'] = level_type
-	
+
 	return (body)
 
 
