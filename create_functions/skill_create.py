@@ -18,6 +18,44 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+def level_add_skill(level, level_type, skill_id, body):
+	
+	skill_id = integer(skill_id)
+
+	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
+	if level_check is None:
+
+		level_add = LevelType(bonus_id=skill_id,
+									name=level_type)
+
+		db.session.add(level_add)
+		db.session.commit()
+
+		type_id = level_add.id
+
+		body['level_type'] = level_add.name
+		body['created'] = False
+		add_title = True
+		db.session.close()
+		
+	else:
+		level_skill = level_check.bonus_id
+		print(skill_id)
+		print(level_skill)
+		if skill_id != level_skill:
+			body['success'] = False
+			body['error_msgs'] = ['There is already a level type with that name.']
+			return jsonify(body)
+
+		type_id = level_check.id
+		body['created'] = True
+		add_title = False
+
+	body['title_id'] = type_id
+
+
+	return (body)
+
 	
 def skill_entry_check(name, table, check, id, errors):
 

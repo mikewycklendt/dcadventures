@@ -39,7 +39,7 @@ from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillM
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import link_add, delete_link, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
@@ -47,7 +47,7 @@ from functions.create_posts import send_multiple, one, field, int_word, select_m
 
 from posts.skill_posts import skill_ability_post, skill_move_post, skill_check_post, skill_circ_post, skill_dc_post, skill_degree_post, skill_levels_post, skill_modifiers_post, skill_opposed_post, skill_time_post
 from errors.skill_errors import skill_save_errors, skill_move_post_errors, skill_ability_post_errors, skill_check_post_errors, skill_circ_post_errors, skill_dc_post_errors, skill_degree_post_errors, skill_levels_post_errors, skill_modifiers_post_errors, skill_opposed_post_errors, skill_time_post_errors
-from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
+from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple, level_add_skill
 
 
 
@@ -2098,9 +2098,9 @@ def delete_skill_bonus_modifiers(id):
 		db.session.close()
 		return jsonify(body)
 
-@skill.route('/skill/levels/create', methods=['POST'])
+@skill.route('/levels/create', methods=['POST'])
 def skill_post_levels():
-
+	``
 	body = {}
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
@@ -2114,14 +2114,13 @@ def skill_post_levels():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
-
-	skill_id = request.get_json()['skill_id']
+	trait_id = request.get_json()['skill_id']
+	column = request.get_json['column']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
-	old_level_type = request.get_json()['old_level_type']
 	font = request.get_json()['font']
 	power_dc = False
 	power_degree = False
@@ -2134,58 +2133,30 @@ def skill_post_levels():
 
 	body = {}
 	body['success'] = True
+	body['created'] = created
 
-	power = True
+	body = level_add(skill_id, column, level, level_type, body)
+	type_id = body['title_id']
 
-	skill_id = integer(skill_id)
-
-	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
-	if level_check is None:
-
-		level_add = LevelType(bonus_id=skill_id,
-									name=level_type)
-
-		db.session.add(level_add)
-		db.session.commit()
-
-		type_id = level_add.id
-
-		body['level_type_id'] = type_id
-		body['level_type'] = level_add.name
-		body['created'] = False
-	
-		db.session.close()
-		
-	else:
-		level_skill = level_check.bonus_id
-		print(skill_id)
-		print(level_skill)
-		if skill_id != level_skill:
-			body['success'] = False
-			body['error_msgs'] = ['There is already a level type with that name.']
-			return jsonify(body)
-
-		type_id = level_check.id
-		body['created'] = True
-
-	entry = Levels(bonus_id = skill_id,
-						type_id=type_id,
-						level_type = level_type,
-						name = level,
-						level_effect = level_effect,
-						power_dc = power_dc,
-						power_degree = power_degree,
-						skill_dc = skill_dc,
-						skill_degree = skill_degree,
-						bonus_dc = bonus_dc,
-						bonus_degree = bonus_degree,
-						advantage_dc = advantage_dc,
-						advantage_degree = advantage_degree)
+	if body['success'] == False:
+		return jsonify(body)
+ 
+	entry = Levels(type_id=type_id,
+					level_type = level_type,
+					name = level,
+					level_effect = level_effect,
+					power_dc = power_dc,
+					power_degree = power_degree,
+					skill_dc = skill_dc,
+					skill_degree = skill_degree,
+					bonus_dc = bonus_dc,
+					bonus_degree = bonus_degree,
+					advantage_dc = advantage_dc,
+					advantage_degree = advantage_degree)
 
 	db.session.add(entry)
+	setattr(entry, column, trait_id)
 	db.session.commit()
-
-
 	
 	body['id'] = entry.id
 	error = False
@@ -2196,20 +2167,11 @@ def skill_post_levels():
 	mods = []
 	cells = []
 	spot = "levels-spot"
-
+	body['table_id'] = 'levels'
 	body['spot'] = spot
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
-	body['title'] = level_type
-	type_split = level_type.split(' ')
-	type_class = ''
-	for t in  type_split:
-		type_class += t 
-	
-	table_id = 'levels-' + type_class
-
-	body['table_id'] = table_id
 
 	body = skill_levels_post(entry, body, cells)
 
@@ -2217,23 +2179,10 @@ def skill_post_levels():
 	
 	return jsonify(body)
 
-
-@skill.route('/skill/levels/delete/<id>', methods=['DELETE'])
+@skill.route('/levels/delete/<id>', methods=['DELETE'])
 def delete_skill_levels(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(Levels).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete this level.  You may have applied it to another rule.  Dekete that rule first.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+
+	body = delete_level(id)
+
+	return jsonify(body)
 

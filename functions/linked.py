@@ -49,41 +49,132 @@ def link_add(table, title_table, column, id, title, keyword, body):
 			db.session.rollback()
 		finally:
 			db.session.close()
-
+`
 	entry = db.session.query(table).filter(table.title == title_id, table.keyword == keyword).first()
 	if entry is not None:
 		success = False
 		error_msgs.append('You have already created a rule with that keyword for this title.')
-	
+	`
 	body['success'] = success
 	body['error_msgs'] = error_msgs
 	body['title_id'] = title_id
 
 	return (body)
 
+def level_add(id, column, level, level_type, body):
+	error_msgs = []
+	success = body['success']
+	body['add_title'] = False	
+
+	id = integer(id)
+
+	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
+	if level_check is None:
+		try:
+			level_add = LevelType(name=level_type)
+			db.session.add(level_add)
+			setattr(level_add, column, id)
+			db.session.commit()
+			add_title = True
+			created = False
+			title_id = leveltype.id
+		except:
+			success = False
+			error_msgs.append('There was an error adding that level type.')
+			db.session.rollback()
+		finally:
+			db.session.close()
+	else:
+		trait_id = getattr(level_check, column) 
+		if id != trait_id:
+			success = False
+			error_msgs.append('There is already a level type with that name.')
+		created = True
+		title_id = level_check.id
+		created = True
+		add_title = False
+ 
+	try:
+		entry = db.session.query(Level).filter(Level.type_id == title_id, Level.name == name).first()
+		if entry is not None:
+			success = False
+			error_msgs.append('You have already created a rule with that keyword for this title.')
+	except:
+		success = False
+		error_msgs.append('There was an error processing that level')
+
+	body['success'] = success
+	body['created'] = created
+	body['error_msgs'] = error_msgs
+	body['title_id'] = title_id
+	body['add_title'] = add_title
+
+	return (body)
+
+
 def delete_link(table, link_table, id):
 	body = {}
 	body['success'] = True
 	body['hide_table'] = False
+	error_msgs = []
 
-	get_trait = db.session.query(table).filter_by(id=id).first()
-	title_id = get_trait.title
-	body['title_id'] = title_id
-	body['id'] = id
-	db.session.query(table).filter_by(id=id).delete()
-	db.session.commit()
-	print('\n\n' + str(id) + ' DELETED\n\n')
-	db.session.close()
-	
-	empty = db.session.query(table).filter_by(title=title_id).first()
-	if empty is None:
-		db.session.query(link_table).filter_by(id=title_id).delete()
-		body['hide_table'] = True
+	try:
+		get_trait = db.session.query(table).filter_by(id=id).first()
+		title_id = get_trait.title
+		body['title_id'] = title_id
+		body['id'] = id
+		db.session.query(table).filter_by(id=id).delete()
 		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
 		db.session.close()
-	
+		
+		empty = db.session.query(table).filter_by(title=title_id).first()
+		if empty is None:
+			db.sesszaion.query(link_table).filter_by(id=title_id).delete()
+			body['hide_table'] = True
+			db.session.commit()
+	except:
+		body['success'] = False
+		message = 'There was an error deleting this rule.  You may have applied it to another rule.  Delete that rule then try again.'
+		error_msgs.append(message)
+		db.session.rollback()
+	finally:
+		db.session.close()
+		body['error_msgs'] = error_msgs
+
 	return (body)
 
+def delete_level(id):
+	body = {}
+	body['success'] = True
+	body['hide_table'] = False
+	error_msgs = []
+
+	try:
+		get_level = db.session.query(Level).filter_by(id=id).first()
+		title_id = get_level.type_id
+		body['title_id'] = title_id
+		body['id'] = id
+		db.session.query(table).filter_by(id=id).delete()
+		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+		db.session.close()
+
+		empty = db.session.query(Level).filter_by(type_id=title_id).first()
+		if empty is None:
+			db.session.query(LevelType).filter_by(id=title_id).delete()
+			body['hide_table'] = True
+			db.session.commit()
+	except:
+		body['success'] = False
+		message = 'There was an error deleting that level.  You may have applied it to another rule.  Delete that rule then try again.'
+		error_msgs.append(message)
+		db.session.rollback()
+	finally:
+		db.session.close()
+		body['error_msgs'] = error_msgs
+
+	return (body)
 
 def required_link(table, field, name, table_name, trait, column, id, errors):
 		
@@ -209,6 +300,7 @@ def level_reference(column, value, errors):
 		errors['error'] = error
 
 	return (errors)
+
 
 def level_adv_circ(value, errors):
 	

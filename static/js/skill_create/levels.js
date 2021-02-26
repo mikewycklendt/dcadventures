@@ -42,10 +42,11 @@ function levels_submit() {
 	const err_line = 'levels-err-line';
 	const level_selects = 'level-type-sml';
 
-	response = fetch('/skill/levels/create', {
+	response = fetch('/levels/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'skill_id': skill_id,
+			'column': 'bonus_id',
 			'level_type': level_type,
 			'level': level,
 			'level_effect': level_effect,
@@ -63,25 +64,20 @@ function levels_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const add_level = jsonResponse.created;
+			const id = jsonResponse.id;
+			const title_name = level_type;
+			const title_id = jsonResponse.title_id;
 
-			if (add_level == false) {
-				
-				const id = jsonResponse.level_type_id		
-				const name = jsonResponse.level_type
-
-				selects_add(id, name, level_selects)
-			}
+			selects_add(id, title_name, level_selects);
 
 			levels_grid.columns.length = 0;
 			levels_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/skill/levels/delete/'
-			create_table('skill', jsonResponse, levels_grid, route);
+			const route = '/levels/delete/'
+			create_table('skill', jsonResponse, levels_grid, route, false, title_id, [level_select]);
 			clear_errors(err_line, errors)
-			row_delete(jsonResponse, route, levels_grid) 
-
+			row_delete(jsonResponse, route, levels_grid)
 
 			levels_grid.titles = true;
 
