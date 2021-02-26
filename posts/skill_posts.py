@@ -875,6 +875,8 @@ def skill_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
 	mod_add(recurring, new_mod, body)
 
+	cells = circ_cell('Description', 13, circ, cells, body)
+
 	body = send(cells, body)
 
 	cells.clear()
