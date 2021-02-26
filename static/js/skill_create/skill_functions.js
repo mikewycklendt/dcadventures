@@ -439,16 +439,24 @@ function circ_button(table_id, table) {
 			const status = btn.getAttribute('data-state');
 			console.log(status);
 			if (status == 'open') {
-				btn.classList.remove('circ-btn-up');
-				btn.classList.add('circ-btn')
+				btn.style.opacity = '0%';
+				setTimeout(function(){
+					btn.style.opacity = '100%'
+					btn.classList.remove('circ-btn-up');
+					btn.classList.add('circ-btn')
+					}, 100);
 				circ.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
 				setTimeout(function(){circ.style.display = 'none'}, 400);
 				btn.setAttribute('data-state', 'closed');
 			} else {
-				btn.classList.remove('circ-btn');
-				btn.classList.add('circ-btn-up');
+				btn.style.opacity = '0%';
+				setTimeout(function(){
+					btn.style.opacity = '100%'
+					btn.classList.remove('circ-btn');
+					btn.classList.add('circ-btn-up');
+				}, 100);
 				circ.style.display = 'grid';
 				circ.style.maxHeight = circ.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
