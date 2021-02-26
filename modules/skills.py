@@ -2135,7 +2135,7 @@ def skill_post_levels():
 	body['success'] = True
 	body['created'] = created
 
-	body = level_add(skill_id, column, level, level_type, body)
+	body = level_add(trait_id, column, level, level_type, body)
 	type_id = body['title_id']
 
 	if body['success'] == False:
