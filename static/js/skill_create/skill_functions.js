@@ -272,7 +272,6 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	delete_cell.className = base_cell;
 	const delete_btn = document.createElement('div');
 	delete_btn.className = base_delete + delete_class;
-	delete_btn.classList.add('fas')
 	delete_btn.setAttribute('data-id', id);
 	delete_cell.appendChild(delete_btn)
 	row.appendChild(delete_cell)
