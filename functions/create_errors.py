@@ -538,10 +538,12 @@ def check_of(check, checkname, names, values, errors):
 	error_msgs = errors['error_msgs']
 	error = True
 
-	if check:
-		for value in values:
-			if value != '':
-				error = False
+	if check == False:
+		return (errors)
+
+	for value in values:
+		if value != '':
+			error = False
 				
 	if error:
 		message = 'You must select ' + names + ' or uncheck the ' + checkname + ' checkbox.'
