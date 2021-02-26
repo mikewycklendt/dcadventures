@@ -2100,7 +2100,7 @@ def delete_skill_bonus_modifiers(id):
 
 @skill.route('/levels/create', methods=['POST'])
 def skill_post_levels():
-	``
+	
 	body = {}
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
