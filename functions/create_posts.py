@@ -403,7 +403,7 @@ def circ_cell(title, width, circumstance, cells, body, circ_check=True):
 
 	if circ_check:
 		circ = {'title': title,
-				'content': circ}
+				'content': circumstance}
 		circs.append(circ)
 
 	body['circ'] = circs
