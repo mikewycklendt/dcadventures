@@ -725,7 +725,8 @@ def skill_bonus_post_check():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
-	
+	body['circ'] - []
+
 	body = skill_check_post(entry, body, cells)
 
 	db.session.close()
@@ -890,6 +891,7 @@ def skill_bonus_post_circ():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_circ_post(entry, body, cells)
 
@@ -1126,6 +1128,7 @@ def skill_bonus_post_dc():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_dc_post(entry, body, cells)
 
@@ -1406,6 +1409,7 @@ def skill_bonus_post_degree():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_degree_post(entry, body, cells)
 
@@ -1575,6 +1579,7 @@ def skill_bonus_post_move():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_move_post(entry, body, cells)
 	
@@ -1715,6 +1720,7 @@ def skill_bonus_post_opposed():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_opposed_post(entry, body, cells)
 
@@ -1859,6 +1865,7 @@ def skill_bonus_post_time():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = skill_time_post(entry, body, cells)
 

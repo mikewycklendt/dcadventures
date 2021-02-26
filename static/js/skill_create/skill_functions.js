@@ -200,6 +200,8 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	const base_check = rule + '-check';
 	const base_entry = rule + '-table-row';
 	const base_delete = 'xbox ';
+	const base_circ_btn = 'circ-btn';
+	const circ_btn_class = table_id + '-circ-btn'
 
 	const entry = document.createElement('div');
 	entry.className = base_entry
@@ -212,6 +214,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	entry.appendChild(row);
 
 	let create_mod = false;
+	let circ_check = false;
 	let cell;
 	let cell_heights = [];
 	for (cell of cells) {
@@ -238,6 +241,20 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 				cell_heights.push(cell_height);
 			}
 		} else {
+			if (cell.circ === true) {
+				circ_check = true;
+				const circ = document.createElement('div');
+				circ.className = 'circ-cell';
+				new_cell.appendChild(circ);
+				const circ_btn = document.createElement('button');
+				circ_btn.className =  base_circ_btn;
+				circ_btn.classList.add(circ_btn_class);
+				circ_btn.setAttribute('data-stats', 'closed');
+				circ.appendChild(circ_btn);
+				const circ_cell = document.createElement('div');
+				circ_cell.innerHTML = cell.content;
+				circ.appendChild(circ_cell);
+			}
 			new_cell.innerHTML = cell.content;
 			const cell_height = new_cell.scrollHeight;
 			cell_heights.push(cell_height);
@@ -270,6 +287,10 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 
 	if (create_mod) {
 		mod_create(rule, mods, id, entry, table_id, object, table);
+	}
+
+	if (circ_check) {
+		circ_create(rule, jsonResponse, id, entry, table_id, object, table);
 	}
 	
 	grow_table(table, grow)
@@ -358,6 +379,81 @@ function mod_create(rule, mods_input, id_input, entry_input, table_id_input, obj
 	
 	check_buttons(table_id, object, table);
 
+}
+
+function circ_create(rule, jsonResponse, id_input, entry_input, table_id_input, table) {
+
+	const circs = jsonResponse.circ;
+	const entry = entry_input;
+	const table_id = table_id_input;
+
+	const circ_class = table_id + 'circ';
+	const base_circ = 'circ-row';
+	const circ_cell_empty = 'circ-cell-empty';
+	const circ_title = 'circ-cell-title';
+	const entry_class = table_id + '-row';
+
+	const entries = document.getElementsByClassName(entry_class);
+
+	let circ;
+	for (circ of circs) {
+		const circ_row = document.createElement('div');
+		circ_row.className = circ_class;
+		circ_row.classList.add(base_circ);
+		entry.appendChild(circ_row);
+		
+		const empty = document.createElement('div');
+		empty.className = circ_cell_empty;
+		circ_row.appendChild(empty);
+
+		const title = document.createElement('div');
+		title.className = circ_title;
+		title.innerHTML = circ.title;
+		circ_row.appendChild(title);
+
+		const content = document.createElement('div');
+		content.className = 'circ-cell-circ';
+		content.innerHTML = circ.content;
+		circ_row.appendChild(content)
+	}
+	
+	circ_button(table_id, table);
+}
+
+function circ_button(table_id, table) {
+	
+	const circ_class = table_id + '-circ';
+	const entry_class = table_id + '-row';
+	const circ_btn_class = table_id + '-circ-btn'
+
+	const entries = document.getElementsByClassName(entry_class)
+	const btns = document.getElementsByClassName(circ_btn_class);
+	const circs = document.getElementsByClassName(circ_class);
+
+	for (let i = 0; i < btns.length; i++) {
+		const btn = btns[i];
+		btn.onclick = function(e) {
+			console.log('click');
+
+			const circ = circs[i]
+			const entry = circ.parentNode;
+
+			const status = circ.getAttribute('data-status');
+			if (status == 'open') {
+				circ.style.maxHeight = '0px';
+				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
+				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
+				setTimeout(function(){circ.style.display = 'none'}, 400);
+				circ.setAttribute('dara-status', 'closed');
+			} else if (status == 'closed') {
+				circ.style.display = 'grid';
+				circ.style.maxHeight = circ.scrollHeight + 'px';
+				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
+				entry.style.maxHeight = entry.scrollHeight + circ.scrollHeight + 'px';
+				circ.setAttribute('dara-status', 'open');
+			}
+		}
+	}
 }
 
 function check_buttons(table_id, object, table) {

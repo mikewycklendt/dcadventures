@@ -602,7 +602,8 @@ def advantage_post_alt_check():
 		body['rows'] = rows
 		body['mods'] = []	
 		body['font'] = font
-				
+		body['circ'] - []
+			
 		body = adv_alt_check_post(entry, body, cells)
 	except:
 		error = True
@@ -708,6 +709,7 @@ def advantage_post_benefit():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_benefit_post(entry, body, cells)
 	except:
@@ -839,6 +841,7 @@ def advantage_post_circ():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_circ_post(entry, body, cells)
 		
@@ -933,6 +936,7 @@ def advantage_post_combined():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_combined_post(entry, body, cells)
 	except:
@@ -1044,6 +1048,7 @@ def advantage_post_condition():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 						
 		body = adv_condition_post(entry, body, cells)
 	except:
@@ -1185,6 +1190,7 @@ def advantage_post_dc():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_dc_post(entry, body, cells)
 	except:
@@ -1362,6 +1368,7 @@ def advantage_post_deg_mod():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_deg_mod_post(entry, body, cells)
 	except:
@@ -1480,6 +1487,7 @@ def advantage_post_effort():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_effort_post(entry, body, cells)
 	except:
@@ -1615,6 +1623,7 @@ def advantage_post_minion():
 		body['rows'] = rows
 		body['mods'] = []	
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_minion_post(entry, body, cells)
 	except:
@@ -1892,6 +1901,7 @@ def advantage_post_modifiers():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_modifiers_post(entry, body, cells)
 	except:
@@ -2007,6 +2017,7 @@ def advantage_post_opposed():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_opposed_post(entry, body, cells)
 	except:
@@ -2160,6 +2171,7 @@ def advantage_post_points():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_points_post(entry, body, cells)
 	except:
@@ -2259,6 +2271,7 @@ def advantage_post_resist():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_resist_post(entry, body, cells)
 	except:
@@ -2363,6 +2376,7 @@ def advantage_post_rounds():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_rounds_post(entry, body, cells)
 	except:
@@ -2463,6 +2477,7 @@ def advantage_poat_skill():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_skill_post(entry, body, cells)
 	except:
@@ -2589,6 +2604,7 @@ def advantage_post_time():
 		body['rows'] = rows	
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_time_post(entry, body, cells)
 	except:
@@ -2682,6 +2698,7 @@ def advantage_post_variable():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 				
 		body = adv_variable_post(entry, body, cells)
 	except:

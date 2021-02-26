@@ -591,6 +591,7 @@ def equipment_post_check():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_check_post(entry, body, cells)
 
@@ -699,6 +700,7 @@ def equipment_post_damaged():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_damaged_post(entry, body, cells)
 
@@ -786,6 +788,7 @@ def equipment_post_descriptor():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_descriptor_post(entry, body, cells)
 
@@ -867,6 +870,7 @@ def equipment_post_effect():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 				
 	body = equip_effect_post(entry, body, cells)
 
@@ -962,6 +966,7 @@ def equipment_post_feature():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_feature_post(entry, body, cells)
 
@@ -1103,6 +1108,7 @@ def equipment_post_limits():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_limits_post(entry, body, cells)
 
@@ -1486,6 +1492,7 @@ def equipment_post_opposed():
 	body['rows'] = rows
 	body['mods'] = []
 	body['font'] = font
+	body['circ'] - []
 	
 	body = equip_opposed_post(entry, body, cells)
 

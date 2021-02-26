@@ -775,6 +775,7 @@ def power_post_alt_check():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 
 		body = alt_check_post(entry, body, cells)
@@ -873,6 +874,7 @@ def power_post_change_action():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = change_action_post(entry, body, cells)
 	except:
@@ -1081,6 +1083,7 @@ def power_post_character():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 
 		body = character_post(entry, body, cells)
@@ -1205,6 +1208,7 @@ def power_post_circ():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = circ_post(entry, body, cells)
 	except:
@@ -1437,6 +1441,7 @@ def power_post_create():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = create_post(entry, body, cells)
 	except:
@@ -1541,6 +1546,7 @@ def power_post_damage():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = damage_post(entry, body, cells)
 	except:
@@ -1695,6 +1701,7 @@ def power_post_dc_table():
 		body['title'] = ''
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = dc_table_post(entry, body, cells)
 	except:
@@ -1854,6 +1861,7 @@ def power_post_defense():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = defense_post(entry, body, cells)
 
@@ -2039,6 +2047,7 @@ def power_post_degree_mod():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = degree_mod_post(entry, body, cells)
 	except:
@@ -2141,6 +2150,7 @@ def power_post_degree():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = degree_post(entry, body, cells)
 	except:
@@ -2320,6 +2330,7 @@ def power_post_environment():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = environment_post(entry, body, cells)
 	except:
@@ -2478,6 +2489,7 @@ def power_post_levels():
 		table_id = 'levels-' + type_class
 
 		body['table_id'] = table_id
+		body['circ'] - []
 
 		body = levels_post(entry, body, cells)
 	except:
@@ -2615,6 +2627,7 @@ def power_post_minion():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = minion_post(entry, body, cells)
 
@@ -2906,6 +2919,7 @@ def power_post_mod():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = mod_post(entry, body, cells)
 	except:
@@ -3171,6 +3185,7 @@ def power_post_move():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = move_post(entry, body, cells)
 	except:
@@ -3282,6 +3297,7 @@ def power_post_opposed():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = opposed_post(entry, body, cells)
 	except:
@@ -3466,6 +3482,7 @@ def power_post_ranged():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = ranged_post(entry, body, cells)
 	except:
@@ -3584,6 +3601,7 @@ def power_post_resist():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 			
 		body = resist_post(entry, body, cells)
 	except:
@@ -3721,6 +3739,7 @@ def power_post_resisted_by():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = resisted_by_post(entry, body, cells)
 	except:
@@ -3843,6 +3862,7 @@ def power_post_reverse_effect():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = reverse_effect_post(entry, body, cells)
 	except:
@@ -4038,6 +4058,7 @@ def power_post_sense():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = sense_post(entry, body, cells)
 	except:
@@ -4167,6 +4188,7 @@ def power_post_time():
 		body['rows'] = rows
 		body['mods'] = []
 		body['font'] = font
+		body['circ'] - []
 
 		body = time_post(entry, body, cells)
 	except:

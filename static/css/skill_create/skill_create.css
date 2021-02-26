@@ -957,6 +957,70 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
+.circ-row {
+	display: grid;
+	font-size: .7vw;
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height .4s ease-out;
+	grid-template-columns: 8% 15% 77%;
+}
+
+.circ-cell-empty {
+	display: block;
+	background-color: white;
+}
+
+.circ-cell-title {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 100%;
+	border-left: .15vw solid #245681;
+	border-bottom: .15vw solid #245681;
+	background-color: #ceddea;
+	text-align: center;
+}
+
+.circ-cell-circ {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	font-size: 85%;
+	background-color: #ceddea;
+	border-bottom: .15vw solid #245681;
+	border-right: .1vw solid #245681;
+}
+
+.circ-cell {
+	display: grid;
+	grid-template-columns: 2vw auto;
+}
+
+.circ-btn {
+	display: flex;
+	height: 1.4vw;
+	width: 90%;
+	align-items: center;
+	text-align: center;
+	color: #af0101;
+	border: none;
+	background-color: transparent;
+	transition: all .2s ease-out;
+	cursor: pointer;
+	font-size: 1.5vw;
+}
+
+.circ-btn::before {
+	font-family: 'FontAwesome';
+	content: '\f0d7';
+	display: inline-block;
+}
+
+.circ:hover {
+	color: #245681;
+	font-size: 1.9vw;
+}
+
 .err {
 	display: none;
 	width: 94%;

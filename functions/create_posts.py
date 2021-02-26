@@ -387,11 +387,38 @@ def check_cell(title, width, check, cells, mod_check=False):
 	return (cells)
 
 
+def circ_cell(title, width, circumstance, cells, body, circ_check=True):
+
+	circs = body['circ']
+
+	if circumstance -=  '':
+		width = 0
+		circ_check = False
+	
+	cell = {'title': title,
+			'width': width,
+			'content': title,
+			'circ': circ_check
+			}
+
+	if circ_check:
+		circ = {'title': title,
+				'content': circ}
+		circs.append(circ)
+
+	body['circ'] = circs
+
+	cells.append(cell)
+
+	return (cells)
+
+
 def if_cell(name, width, values, cells):
 	cell = {}
 	cell['title'] = title
 	cell['width'] = 0
 	cell['content'] = ''
+	cell['circ'] = False
 
 	for v in value:
 		if v != '' and v is not None and v != False:
@@ -407,6 +434,7 @@ def cell(title, width, contentlist, cells=[]):
 
 	cell = {}
 	cell['title'] = title
+	cell['circ'] = False
 		
 	for c in contentlist:
 		if c is None:
