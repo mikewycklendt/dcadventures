@@ -225,9 +225,10 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 		} else if (cell.content === true) {
 			if (cell.mod_check == true) {
 				create_mod = true;
-				const check = document.createElement('button');
+				const check = document.createElement('div');
 				check.className = base_button_check;
 				check.classList.add(check_button_class);
+				check.setAttribute('data-state', 'closed');
 				new_cell.appendChild(check);
 				const cell_height = new_cell.scrollHeight;
 				cell_heights.push(cell_height);
@@ -269,7 +270,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 
 	const delete_cell = document.createElement('div');
 	delete_cell.className = base_cell;
-	const delete_btn = document.createElement('button');
+	const delete_btn = document.createElement('div');
 	delete_btn.className = base_delete + delete_class;
 	delete_btn.classList.add('fas')
 	delete_btn.setAttribute('data-id', id);
@@ -281,7 +282,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	grow += row.scrollHeight; 
 
 	if (create_mod) {
-		mod_create(rule, mods, id, entry, table_id, object, table);
+		mod_create(rule, mods, id, entry, table_id, table);
 	}
 
 	if (circ_check) {
@@ -297,7 +298,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 
 
 
-function mod_create(rule, mods_input, id_input, entry_input, table_id_input, object, table) {
+function mod_create(rule, mods_input, id_input, entry_input, table_id_input, table) {
 
 	const mods = mods_input;
 	const id = id_input;
@@ -372,7 +373,7 @@ function mod_create(rule, mods_input, id_input, entry_input, table_id_input, obj
 	}
 
 	
-	check_buttons(table_id, object, table);
+	check_buttons(table_id, table);
 
 }
 
@@ -438,12 +439,16 @@ function circ_button(table_id, table) {
 			const status = btn.getAttribute('data-state');
 			console.log(status);
 			if (status == 'open') {
+				btn.classList.remove('circ-btn-up');
+				btn.classList.add('circ-btn')
 				circ.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
 				setTimeout(function(){circ.style.display = 'none'}, 400);
 				btn.setAttribute('data-state', 'closed');
 			} else {
+				btn.classList.remove('circ-btn');
+				btn.classList.add('circ-btn-up');
 				circ.style.display = 'grid';
 				circ.style.maxHeight = circ.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
@@ -454,8 +459,8 @@ function circ_button(table_id, table) {
 	}
 }
 
-function check_buttons(table_id, object, table) {
-	console.log(object)
+function check_buttons(table_id, table) {
+
 	const check_button_class = table_id + '-button'
 	const mod_class = table_id + '-mod';
 	const entry_class = table_id + '-row';
@@ -468,26 +473,24 @@ function check_buttons(table_id, object, table) {
 		const btn = btns[i];
 		btn.onclick = function(e) {
 			console.log('click');
-			console.log(object.mod)
-			console.log(object.mod[i])
 
 			const mod = mods[i]
 			const entry = mod.parentNode;
-
+			const state = btn.getAttribute('data-state');
 			console.log(mod.style.maxHeight);
 
-			if (object.mod[i] == true) {
+			if (state == 'open') {
 				mod.style.maxHeight = '0px';
 				table.style.maxHeight = table.scrollHeight - mod.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - mod.scrollHeight;
 				setTimeout(function(){mod.style.display = 'none'}, 400);
-				object.mod[i] = false;
+				btn.setAttribute('data-state', 'closed');
 			} else {
 				mod.style.display = 'grid';
 				mod.style.maxHeight = mod.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + mod.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight + mod.scrollHeight + 'px';
-				object.mod[i] = true;
+				btn.setAttribute('data-state', 'open')
 			}
 
 			console.log(mod)

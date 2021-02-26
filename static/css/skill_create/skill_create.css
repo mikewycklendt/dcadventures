@@ -1022,6 +1022,32 @@ textarea:focus {
 	font-size: 2vw;
 }
 
+.circ-btn-up {
+	display: flex;
+	height: 1.4vw;
+	width: 90%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #af0101;
+	border: none;
+	background-color: transparent;
+	transition: all .1s ease-out;
+	cursor: pointer;
+	font-size: 1.7vw;
+}
+
+.circ-btn-up::before {
+	font-family: 'FontAwesome';
+	content: '\f0de';
+	display: inline-block;
+}
+
+.circ-btn-up:hover {
+	color: #245681;
+	font-size: 2vw;
+}
+
 .err {
 	display: none;
 	width: 94%;
