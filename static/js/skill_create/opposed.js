@@ -41,28 +41,28 @@ function opposed_degree_check() {
 	const check = "opposed_degree_check"
 	const div = 'opposed-degree';
 
-	check_display(check, div);
+	check_drop(check, div);
 }
 
 function opposed_circ_check(){
 	const check = "opposed_circ_check"
 	const div = 'opposed-circ';
 
-	check_display(check, div);
+	check_drop(check, div);
 }
 
 function opposed_dc_check() {
 	const check = "opposed_dc_check"
 	const div = 'opposed-dc';
 
-	check_display(check, div);
+	check_drop(check, div);
 }
 
 function opposed_time_check() {
 	const check = "opposed_time_check"
 	const div = 'opposed-time';
 
-	check_display(check, div);
+	check_drop(check, div);
 }
 
 let opposed_grid = {'titles': false,
