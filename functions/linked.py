@@ -95,7 +95,7 @@ def level_add(id, column, level, level_type, body):
 		add_title = False
  
 	try:
-		entry = db.session.query(Levels).filter(Levels.type_id == title_id, Level.name == level).first()
+		entry = db.session.query(Levels).filter(Levels.type_id == title_id, Levels.name == level).first()
 		if entry is not None:
 			success = False
 			error_msgs.append('You have already created a rule with that keyword for this title.')
