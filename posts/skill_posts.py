@@ -633,7 +633,7 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('damage', 25, [object, 'More', object_effect], vcells, damage_type, 'object')
 
 	level_value = one_of(level_type, [level])
-	level_value = one_of(level_type, ['One Level', level_direction, level_type])
+	level_value = one_of(level_type, ['One Level', level_direction, level_type], level_value)
 	vcells = vcell('level', 40, [level_value, 'using', level_time, 'Time'], vcells)
 
 	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')

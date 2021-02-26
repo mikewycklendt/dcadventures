@@ -538,6 +538,7 @@ class SkillDegree(db.Model):
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
+	description = db.Column(db.String())
 	
 
 	def format(self):
@@ -620,7 +621,8 @@ class SkillDegree(db.Model):
 			'compare': self.compare,
 			'time_table': self.time_table,
 			'move_table': self.move_table,
-			'title': self.title
+			'title': self.title,
+			'description': self.description
 		}
 
 class SkillMod(db.Model):
