@@ -391,7 +391,7 @@ def circ_cell(title, width, circumstance, cells, body, circ_check=True):
 
 	circs = body['circ']
 
-	if circumstance -=  '':
+	if circumstance ==  '':
 		width = 0
 		circ_check = False
 	
