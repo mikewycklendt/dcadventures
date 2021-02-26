@@ -864,7 +864,7 @@ def skill_opposed_post(entry, body, cells):
 	mod_add(degree_check, new_mod, body)
 	
 	cells = check_cell('Time', 6, time_check, cells, True)
-	new_mod = mod_create('', )
+	new_mod = mod_create('Time Effect', 13)
 	new_mod = mod_cell('Value', 7, [time], new_mod)
 	new_mod = mod_cell('Group', 7, [time_type], new_mod)
 	mod_add(time_check, new_mod, body)	

@@ -34,6 +34,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 	entry = db.session.query(title_table).filter(the_filter, title_table.name == title).first()
 	if entry is not None:
 		title_id = entry.id
+		body['add_title'] = False
 	else:
 		try:
 			entry = title_table(name=title, skill_id=id)
