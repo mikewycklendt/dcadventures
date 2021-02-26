@@ -49,7 +49,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 			db.session.rollback()
 		finally:
 			db.session.close()
-`
+
 	entry = db.session.query(table).filter(table.title == title_id, table.keyword == keyword).first()
 	if entry is not None:
 		success = False
