@@ -67,9 +67,12 @@ function levels_submit() {
 			const id = jsonResponse.id;
 			const title_name = level_type;
 			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title
 
-			selects_add(id, title_name, level_selects);
-
+			if (add_title == true) {
+				selects_add(title_id, title_name, level_select);
+			}			
+			
 			levels_grid.columns.length = 0;
 			levels_grid.columns = jsonResponse.rows;
 
