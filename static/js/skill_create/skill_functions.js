@@ -285,7 +285,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 	}
 
 	if (circ_check) {
-		circ_create(rule, jsonResponse, id, entry, table_id, object, table);
+		circ_create(jsonResponse, entry, table_id, table);
 	}
 	
 	grow_table(table, grow)
@@ -376,7 +376,7 @@ function mod_create(rule, mods_input, id_input, entry_input, table_id_input, obj
 
 }
 
-function circ_create(rule, jsonResponse, id_input, entry_input, table_id_input, table) {
+function circ_create(jsonResponse, entry_input, table_id_input, table) {
 
 	const circs = jsonResponse.circ;
 	const entry = entry_input;
@@ -435,7 +435,7 @@ function circ_button(table_id, table) {
 			const circ = circs[i]
 			const entry = circ.parentNode;
 
-			const status = circ.getAttribute('data-state');
+			const status = btn.getAttribute('data-state');
 			console.log(status);
 			if (status == 'open') {
 				circ.style.maxHeight = '0px';
