@@ -191,9 +191,9 @@
 			
 			<div>
 				<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
-					<option value="">Degree by Group</option>
+					<option value="">Degree of Success/Failure</option>
 					<option value="">Use Degree form to put options here</option>
-					{% for b in bonus_degree_type %}
+					{% for b in bonus_degree %}
 						<option value={{b.id}}>{{b.name}}</option>
 					{% endfor %}
 				</select>
@@ -299,8 +299,8 @@
 	</div>
 		
 	<div id="opposed-row5">
-		<div class="vcenter" style="font-size: 80%;">
-			Circumstance:
+		<div class="vcenter" style="font-size: 85%;">
+			Circumstance
 		</div>
 
 		<div>
