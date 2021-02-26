@@ -54,7 +54,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 	if entry is not None:
 		success = False
 		error_msgs.append('You have already created a rule with that keyword for this title.')
-	`
+
 	body['success'] = success
 	body['error_msgs'] = error_msgs
 	body['title_id'] = title_id
