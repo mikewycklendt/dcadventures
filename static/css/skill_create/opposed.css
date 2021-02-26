@@ -136,7 +136,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 15% auto auto;
+	grid-template-columns: 25% auto auto;
 	gap: .3vw;
 }
 
@@ -154,7 +154,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 10% 45% 45%;
+	grid-template-columns: 25% auto auto;
 	gap: .3vw;
 }
 
@@ -163,11 +163,9 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 20% auto auto;
+	grid-template-columns: 15% auto auto;
 	gap: .3vw;
 }
-
-
 
 #opposed-recurring input[type="text"] {
 	height: 1.8vw;
