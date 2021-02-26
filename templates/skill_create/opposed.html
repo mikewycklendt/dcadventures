@@ -174,136 +174,135 @@
 		</div>
 	</div>
 
-	<div id="opposed-degree">
+	<div id="opposed-row4">
+		<div id="opposed-degree">
 
-		<div class="vcenter">
-			Degree:
-		</div>
+			<div class="vcenter">
+				Degree:
+			</div>
 
-		<div>
-			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
-				<option value="">Degree by Group</option>
-				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-		
-		<div>
-			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
-				<option value="">Degree by Group</option>
-				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-	
-	<div id="opposed-dc">
-
-		<div class="vcenter">
-			DC:
-		</div>
-
-		<div>
-			<select class="dc-title-sml" id="opposed_dc_type" name="opposed_dc_type">
-				<option value="">DC by Group</option>
-				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="dc-player-sml" id="opposed_dc_player" name="opposed_dc_player">
-				<option value="">Player DC</option>
-				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
-				<option value="">Opponent DC</option>
-				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-	</div>
-	
-	<div id="opposed-circ">
-
-		<div class="vcenter">
-			Circumstance:
-		</div>
-	
-		<div>
-			<select class="circ-title-sml" id="opposed_circ" name="opposed_circ">
-				<option value="">Circumstance By Group</option>
-				<option value="">Use Circumstance form to put options here</option>
-				{% for b in bonus_circ_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="circ-sml" id="opposed_circ_value" name="opposed_circ_value">
-				<option value="">Circumstance Modifier
-				</option>
-				<option value="">Use Circumstance form to put options here</option>
-				{% for b in bonus_circ %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-		
-	</div>
-	
-	<div id="opposed-time">
-
-		<div class="vcenter">
-			Time Effect:
-		</div>
-
-		<div>
 			<div>
-				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
-					<option value="">Time Effect By Group</option>
-					<option value="">Use Time Effect form to put options here</option>
-					{% for b in bonus_time_type %}
+				<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
+					<option value="">Degree by Group</option>
+					<option value="">Use Degree form to put options here</option>
+					{% for b in bonus_degree_type %}
 						<option value={{b.id}}>{{b.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
-	
+			
+			<div>
+				<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
+					<option value="">Degree by Group</option>
+					<option value="">Use Degree form to put options here</option>
+					{% for b in bonus_degree_type %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 		
-		<div>
-			<select class="time-sml" id="opposed_time" name="opposed_time">
-				<option value="">Time Effect</option>
-				<option value="">Use Time Effect form to put options here</option>
-				{% for b in bonus_time %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
+		<div id="opposed-dc">
+
+			<div class="vcenter">
+				DC:
+			</div>
+
+			<div>
+				<select class="dc-title-sml" id="opposed_dc_type" name="opposed_dc_type">
+					<option value="">DC by Group</option>
+					<option value="">Use Check Table form to put options here</option>
+					{% for b in bonus_dc_type %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="dc-player-sml" id="opposed_dc_player" name="opposed_dc_player">
+					<option value="">Player DC</option>
+					<option value="">Use Check Table form to put options here</option>
+					{% for b in bonus_dc %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
+					<option value="">Opponent DC</option>
+					<option value="">Use Check Table form to put options here</option>
+					{% for b in bonus_dc %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+		
+		<div id="opposed-circ">
+
+			<div class="vcenter">
+				Circumstance:
+			</div>
+		
+			<div>
+				<select class="circ-title-sml" id="opposed_circ" name="opposed_circ">
+					<option value="">Circumstance By Group</option>
+					<option value="">Use Circumstance form to put options here</option>
+					{% for b in bonus_circ_type %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="circ-sml" id="opposed_circ_value" name="opposed_circ_value">
+					<option value="">Circumstance Modifier
+					</option>
+					<option value="">Use Circumstance form to put options here</option>
+					{% for b in bonus_circ %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+		</div>
+		
+		<div id="opposed-time">
+
+			<div class="vcenter">
+				Time Effect:
+			</div>
+
+			<div>
+				<div>
+					<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
+						<option value="">Time Effect By Group</option>
+						<option value="">Use Time Effect form to put options here</option>
+						{% for b in bonus_time_type %}
+							<option value={{b.id}}>{{b.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+		
+			</div>
+			
+			<div>
+				<select class="time-sml" id="opposed_time" name="opposed_time">
+					<option value="">Time Effect</option>
+					<option value="">Use Time Effect form to put options here</option>
+					{% for b in bonus_time %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 	</div>
-
 		
-		
-
 	<div id="opposed-row5">
-		<div class="vcenter" style="font-size: 80;">
-			Description
+		<div class="vcenter" style="font-size: 80%;">
+			Circumstance:
 		</div>
 
 		<div>
