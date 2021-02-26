@@ -2115,7 +2115,7 @@ def skill_post_levels():
 		return jsonify(body)
 
 	trait_id = request.get_json()['skill_id']
-	column = request.get_json['column']
+	column = request.get_json()['column']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	level_effect = request.get_json()['level_effect']
