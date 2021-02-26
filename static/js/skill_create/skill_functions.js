@@ -380,7 +380,7 @@ function circ_create(rule, jsonResponse, id_input, entry_input, table_id_input, 
 	const entry = entry_input;
 	const table_id = table_id_input;
 
-	const circ_class = table_id + 'circ';
+	const circ_class = table_id + '-circ';
 	const base_circ = 'circ-row';
 	const circ_cell_empty = 'circ-cell-empty';
 	const circ_title = 'circ-cell-title';

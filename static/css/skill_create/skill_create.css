@@ -1000,6 +1000,7 @@ textarea:focus {
 	display: flex;
 	height: 1.4vw;
 	width: 90%;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	color: #af0101;
@@ -1007,7 +1008,7 @@ textarea:focus {
 	background-color: transparent;
 	transition: all .1s ease-out;
 	cursor: pointer;
-	font-size: 130%;
+	font-size: 180%;
 }
 
 .circ-btn::before {
@@ -1018,7 +1019,7 @@ textarea:focus {
 
 .circ-btn:hover {
 	color: #245681;
-	font-size: 140%v;
+	font-size: 140%;
 }
 
 .err {
