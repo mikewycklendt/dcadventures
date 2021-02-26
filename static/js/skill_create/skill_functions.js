@@ -323,8 +323,7 @@ function mod_create(rule, mods_input, id_input, entry_input, table_id_input, tab
 		const mod_title = new_mod.title;
 		const variable = new_mod.variable;
 		console.log(entries.length)
-		object.mod.push(false)
-
+	
 		const mod = document.createElement('div');
 		mod.className = mod_class;
 		mod.classList.add(base_mod);
