@@ -804,6 +804,7 @@ def skill_opposed_post(entry, body, cells):
 	dc_player = entry.dc_player
 	circ_value = entry.circ_value
 	time_type = entry.time_type
+	description = entry.description
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -875,7 +876,7 @@ def skill_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
 	mod_add(recurring, new_mod, body)
 
-	cells = circ_cell('Description', 13, circ, cells, body)
+	cells = circ_cell('Description', 13, desc, cells, body)
 
 	body = send(cells, body)
 

@@ -1008,7 +1008,7 @@ textarea:focus {
 	background-color: transparent;
 	transition: all .1s ease-out;
 	cursor: pointer;
-	font-size: 180%;
+	font-size: 250%;
 }
 
 .circ-btn::before {
