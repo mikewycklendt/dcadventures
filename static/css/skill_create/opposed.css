@@ -154,7 +154,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 28% auto auto;
+	grid-template-columns: 30% auto auto;
 	gap: .3vw;
 }
 
