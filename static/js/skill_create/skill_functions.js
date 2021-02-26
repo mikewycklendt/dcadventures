@@ -241,7 +241,7 @@ function cells_create(rule, table_input, grow, jsonResponse, object, route, sele
 		} else {
 			if (cell.circ === true) {
 				circ_check = true;
-				const circ_btn = document.createElement('button');
+				const circ_btn = document.createElement('div');
 				circ_btn.className =  base_circ_btn;
 				circ_btn.classList.add(circ_btn_class);
 				circ_btn.classList.add('fas')
@@ -442,13 +442,13 @@ function circ_button(table_id, table) {
 				table.style.maxHeight = table.scrollHeight - circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight - circ.scrollHeight;
 				setTimeout(function(){circ.style.display = 'none'}, 400);
-				circ.setAttribute('data-state', 'closed');
+				btn.setAttribute('data-state', 'closed');
 			} else {
 				circ.style.display = 'grid';
 				circ.style.maxHeight = circ.scrollHeight + 'px';
 				table.style.maxHeight = table.scrollHeight + circ.scrollHeight + 'px';
 				entry.style.maxHeight = entry.scrollHeight + circ.scrollHeight + 'px';
-				circ.setAttribute('data-state', 'open');
+				btn.setAttribute('data-state', 'open');
 			}
 		}
 	}
