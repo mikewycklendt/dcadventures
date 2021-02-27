@@ -307,37 +307,33 @@
 	</div>
 
 	<div id="opposed-button-row">
-		<div></div>
 
-		<div id="opposed-hidden">
-			<div id="opposed-recurring">
-				<div>
-					<select class="time-recur-entry" id="opposed_recurring_value" name="opposed_recurring_value">
-						<option value="">Time Between Checks</option>
-						<option value="turn">One Turn</option>
-						<option value="round">Round</option>
-						<option value="scene">Scene</option>
-						<option value="">Use Time Effect form to put options here</option>
-						{% for b in bonus_time %}
-							<option value={{b.id}}>{{b.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="time-recur-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
-						<option value="">Between Checks by Group</option>
-						<option value="">Use Time Effect form to put options here</option>
-						{% for b in bonus_time_type %}
-							<option value={{b.id}}>{{b.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				
+		<div id="opposed-recurring">
+			<div>
+				<select class="time-recur-entry" id="opposed_recurring_value" name="opposed_recurring_value">
+					<option value="">Time Between Checks</option>
+					<option value="turn">One Turn</option>
+					<option value="round">Round</option>
+					<option value="scene">Scene</option>
+					<option value="">Use Time Effect form to put options here</option>
+					{% for b in bonus_time %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
 
-			
+			<div>
+				<select class="time-recur-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
+					<option value="">Between Checks by Group</option>
+					<option value="">Use Time Effect form to put options here</option>
+					{% for b in bonus_time_type %}
+						<option value={{b.id}}>{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
+
+		<div>		
 			<div id="opposed-multiple" style="display: grid; opacity: 100%;">
 				<select class="select-entry" id="opposed_multiple" name="oppiosed_multiple">
 					{% for o in multiple_opposed %}
