@@ -267,7 +267,8 @@ class SkillCirc(db.Model):
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	title = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
 	surface = db.Column(db.Boolean)
-	
+	tools = db.Column(db.String())
+	materials = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -307,7 +308,9 @@ class SkillCirc(db.Model):
 			'time_table': self.time_table,
 			'move_table': self.move_table,
 			'lasts': self.lasts,
-			'title': self.title
+			'title': self.title,
+			'tools': self.tools,
+			'materials': self.materials
 		}
 
 class SkillDC(db.Model):
@@ -539,8 +542,6 @@ class SkillDegree(db.Model):
 	move_table = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
 	description = db.Column(db.String())
-	tools = db.Column(db.String())
-	materials = db.Column(db.String())
 	
 
 	def format(self):
@@ -624,9 +625,7 @@ class SkillDegree(db.Model):
 			'time_table': self.time_table,
 			'move_table': self.move_table,
 			'title': self.title,
-			'description': self.description,
-			'tools': self.tools,
-			'materials': self.materials
+			'description': self.description
 		}
 
 class SkillMod(db.Model):
