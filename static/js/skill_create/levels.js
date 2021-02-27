@@ -67,10 +67,10 @@ function levels_submit() {
 			const id = jsonResponse.id;
 			const title_name = level_type;
 			const title_id = jsonResponse.title_id;
-			const add_title = jsonResponse.add_title
+			const add_title = jsonResponse.add_title;
 
 			if (add_title == true) {
-				selects_add(title_id, title_name, level_select);
+				selects_add(title_id, title_name, level_selects);
 			}			
 			
 			levels_grid.columns.length = 0;
@@ -78,7 +78,7 @@ function levels_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/levels/delete/'
-			create_table('skill', jsonResponse, levels_grid, route, false, title_id, [level_select]);
+			create_table('skill', jsonResponse, levels_grid, route, false, title_id, [level_selects]);
 			clear_errors(err_line, errors)
 			row_delete(jsonResponse, route, levels_grid)
 
