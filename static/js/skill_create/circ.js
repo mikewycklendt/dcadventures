@@ -114,7 +114,7 @@ function circ_submit() {
 	const title = text("circ_title");
 	const surface = check("circ_surface");
 	const tools = select("circ_tools");
-	const materials = select("materials");
+	const materials = select("circ_materials");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
