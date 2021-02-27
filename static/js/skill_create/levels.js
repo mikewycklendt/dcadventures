@@ -80,7 +80,6 @@ function levels_submit() {
 			const route = '/levels/delete/'
 			create_table('skill', jsonResponse, levels_grid, route, false, title_id, [level_selects]);
 			clear_errors(err_line, errors)
-			row_delete(jsonResponse, route, levels_grid)
 
 			levels_grid.titles = true;
 

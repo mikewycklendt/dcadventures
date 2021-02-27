@@ -132,7 +132,7 @@ def delete_link(table, link_table, id):
 		
 		empty = db.session.query(table).filter_by(title=title_id).first()
 		if empty is None:
-			db.sesszaion.query(link_table).filter_by(id=title_id).delete()
+			db.session.query(link_table).filter_by(id=title_id).delete()
 			body['hide_table'] = True
 			db.session.commit()
 	except:
