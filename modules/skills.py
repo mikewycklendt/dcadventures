@@ -217,7 +217,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
 
-	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'opponent', 'name': 'Opponent Choice'}]
+	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'success', 'name': 'Successive'}, {'type': 'optional', 'name': 'Successive Optional'}]
+
+	multiple_time = [{'type': '', 'name': 'If Multiple'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'degree', 'name': 'Degree'}, {'type': 'dc', 'name': 'DC'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'success', 'name': 'Successive'}, {'type': 'optional', 'name': 'Successive Optional'}]
 
 	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
 
@@ -287,7 +289,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
-							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials)
+							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -396,6 +398,7 @@ def save_skill_bonus():
 	opposed_multiple = request.get_json()['opposed_multiple']
 	modifiers_multiple = request.get_json()['modifiers_multiple']
 	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
+	time_multiple = request.get_json()['time_multiple']
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
@@ -469,6 +472,7 @@ def save_skill_bonus():
 	entry.opposed_multiple = opposed_multiple
 	entry.modifiers_multiple = modifiers_multiple
 	entry.modifiers_multiple_count = modifiers_multiple_count
+	entry.time_multiple = time_multiple
 
 	db.session.commit()
 
@@ -1651,6 +1655,7 @@ def skill_bonus_post_opposed():
 	dc_player = request.get_json()['dc_player']
 	circ_value = request.get_json()['circ_value']
 	time_type = request.get_json()['time_type']
+	recurring_type = request.get_json()['recurring_type']
 
 	skill_id = integer(skill_id)
 	player_check = db_integer(Check, player_check)
@@ -1666,6 +1671,7 @@ def skill_bonus_post_opposed():
 	dc_player = db_integer(SkillDC, dc_player)
 	circ_value = db_integer(SkillCirc, circ_value)
 	time_type = db_integer(SkillTimeType, time_type)
+	recurring_type = db_integer(SkillTimeType, recurring_type)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -1702,7 +1708,8 @@ def skill_bonus_post_opposed():
 						dc_type = dc_type,
 						dc_player = dc_player,
 						circ_value = circ_value,
-						time_type = time_type
+						time_type = time_type,
+						recurring_type = recurring_type
 					)			
 
 	db.session.add(entry)

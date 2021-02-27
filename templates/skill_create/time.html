@@ -6,6 +6,13 @@
 	
 	<div id="time-base">
 		<div>
+			<select class="select-entry" id="time_multiple" name="time_multiple">
+				{% for m in multiple_time %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div>
 			<input type="text" id="time_title" name="time_title" placeholder="Title">
 		</div>
 	</div>

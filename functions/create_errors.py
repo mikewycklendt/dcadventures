@@ -786,3 +786,60 @@ def required_variable(table, field, name, table_name, trait, column, id, errors)
 
 	return (errors)
 
+def multiple_effect_check(table, column, value, id, select, errors):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+
+	attribute = getattr(table, column)
+	the_filter = attribute == id
+	time = db.session.query(table).filter(the_filter).count()
+
+	if time < 2:
+		return (errors)
+
+	time = db.session.query(table).filter(the_filter).all()
+
+	for s in select:
+		count = 0
+		value = s.type
+		for t in time:
+			if t.type == value:
+				count += 1
+		if count > 1:
+			if value == '':
+				error = True
+				message = 'You set more than 1 time for the ' + s.name + ' time effect but did not make a selection on the if multiple field.  Tou need ro set that value before you can save this skill.'
+				error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors) 
+
+def multiple_link_check(value, name, rule, trait, table, id, column, field, errors):
+	
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != field:
+		return (errors)
+
+	attribute = getattr(table, column)
+	the_filter = attribute == id
+	check = db.session.query(table).filter(the_filter).first()
+
+	if check is not None:
+		return (errors)
+	else:
+		error = True
+		message = 'Tou selected ' + name + ' for the if multiple field for a ' + rule + ' rule but have not set any ' + name + ' rules for this ' + trait + '.  Either create the appropriate rule or make a different selection on thst if multiple field.' 
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors) 
+	

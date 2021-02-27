@@ -110,6 +110,7 @@ function opposed_submit() {
 	const dc_player = select("opposed_dc_player");
 	const circ_value = select("opposed_circ_value");
 	const time_type = select("opposed_time_type");
+	const recurring_type = select("opposed_recurring_type");
 
 
 
@@ -157,7 +158,8 @@ function opposed_submit() {
 			'dc_type': dc_type,
 			'dc_player': dc_player,
 			'circ_value': circ_value,
-			'time_type': time_type
+			'time_type': time_type,
+			'recurring_type': recurring_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -86,6 +86,7 @@ class SkillBonus(db.Model):
 	show = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	base = db.Column(db.Boolean)
+	time_multiple = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -146,7 +147,8 @@ class SkillBonus(db.Model):
 			'none': self.none,
 			'show': self.show,
 			'approved': self.approved,
-			'base': self.base
+			'base': self.base,
+			'time_multiple': self.time_multiple
 		}
 
 
@@ -852,6 +854,7 @@ class SkillOpposed(db.Model):
 	dc_player = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
 	circ_value = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	time_type = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
+	recurring_type = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
 
 
 	def format(self):
@@ -888,7 +891,8 @@ class SkillOpposed(db.Model):
 			'dc_type': self.dc_type,
 			'dc_player': self.dc_player,
 			'circ_value': self.circ_value,
-			'time_type': self.time_type
+			'time_type': self.time_type,
+			'recurring_type': self.recurring_type
 		}
 
 class SkillTime(db.Model):

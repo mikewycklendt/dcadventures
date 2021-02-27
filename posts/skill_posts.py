@@ -167,6 +167,7 @@ def skill_circ_post(entry, body, cells):
 	tools = entry.tools
 	materials = entry.materials
 
+
 	title_name = get_name(SkillCircType, title)
 	body['title'] = title_name
 
@@ -818,6 +819,7 @@ def skill_opposed_post(entry, body, cells):
 	circ_value = entry.circ_value
 	time_type = entry.time_type
 	description = entry.description
+	entry = entry.recurring_type
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -837,6 +839,7 @@ def skill_opposed_post(entry, body, cells):
 	dc_player = get_keyword(SkillDC, dc_player)
 	circ_value = get_keyword(SkillCirc, circ_value)
 	time_type = get_name(SkillTimeType, time_type)
+	recurring_type = get_name(SkillTimeType, recurring_type)
 
 	frequency_select = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}]
 	frequency = selects(frequency, frequency_select)
@@ -887,6 +890,7 @@ def skill_opposed_post(entry, body, cells):
 	cells = check_cell('Recurring', 10, recurring, cells, True)
 	new_mod = mod_create('Recurring Check', 17)
 	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
+	new_mod = mod_cell('Using', 10, [recurring_type, 'Time Group'], new_mod)
 	mod_add(recurring, new_mod, body)
 
 	cells = circ_cell('Description', 13, description, cells, body)

@@ -79,6 +79,7 @@ def skill_save_errors(data):
 	opposed_multiple = data['opposed_multiple']
 	modifiers_multiple = data['modifiers_multiple']
 	modifiers_multiple_count = data['modifiers_multiple_count']
+	time_multiple = data['time_multiple']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -929,6 +930,7 @@ def skill_opposed_post_errors(data):
 	dc_player = data['dc_player']
 	circ_value = data['circ_value']
 	time_type = data['time_type']
+	recurring_type = data['recurring_type']
 
 
 
@@ -951,6 +953,7 @@ def skill_opposed_post_errors(data):
 	errors = id_check(SkillDC, dc_player, 'Player DC', errors)
 	errors = id_check(SkillCirc, circ_value, 'Degree', errors)
 	errors = id_check(SkillTimeType, time_type, 'Time Group', errors)
+	errors = id_check(SkillTimeType, recurring_type, 'Recurring Time Group', errors)
 
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
@@ -978,6 +981,8 @@ def skill_opposed_post_errors(data):
 	errors = check_of(dc_check, 'DC', ' a dc value or dc group', [dc_player, dc_type, dc], errors)
 	errors = check_of(degree_check, 'Degree', 'a degree value or degree group', [degree_value, degree], errors)
 	errors = check_of(time_check, 'Time', 'a time effect or time effect group', [time, time_type], errors)
+	errors = check_of(recurring, 'Recurring', 'recurring time or time effect group', [recurring_value, recurring_type], errors)
+	errors = seperate([recurring_value, recurring_type], 'recurring', errors)
 
 	return (errors)
 
