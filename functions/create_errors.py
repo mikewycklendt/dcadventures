@@ -818,7 +818,7 @@ def multiple_effect_check(table, column, value, id, select, errors):
 
 	return (errors) 
 
-def multiple_link_check(value, name, rule, trait, table, id, column, field, errors):
+def multiple_link_check(table, id, column, trait, value, name, rule, field, errors):
 	
 	error_msgs = errors['error_msgs']
 	error = False
