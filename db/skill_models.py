@@ -539,6 +539,8 @@ class SkillDegree(db.Model):
 	move_table = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
 	description = db.Column(db.String())
+	tools = db.Column(db.String())
+	materials = db.Column(db.String())
 	
 
 	def format(self):
@@ -622,7 +624,9 @@ class SkillDegree(db.Model):
 			'time_table': self.time_table,
 			'move_table': self.move_table,
 			'title': self.title,
-			'description': self.description
+			'description': self.description,
+			'tools': self.tools,
+			'materials': self.materials
 		}
 
 class SkillMod(db.Model):

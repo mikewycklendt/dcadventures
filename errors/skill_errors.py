@@ -255,6 +255,8 @@ def skill_circ_post_errors(data):
 	circumstance = data['circumstance']
 	lasts = data['lasts']
 	title = data['title']
+	tools = data['tools']
+	materials = data['materials']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -322,6 +324,13 @@ def skill_circ_post_errors(data):
 	
 	errors = variable_fields('target', 'Circumstance Effect', effect, [target], errors)
 	errors = variable_field('target', effect, 'If Target', target, errors)
+	
+	errors = variable_fields('tools', 'Circumstance Effect', effect, [tools], errors)
+	errors = variable_field('tools', effect, 'Tool Type', tools, errors)
+	
+	errors = variable_fields('materials', 'Circumstance Effect', effect, [materials], errors)
+	errors = variable_field('materials', effect, 'Material Type', materials, errors)
+
 
 	return (errors)
 
@@ -920,6 +929,7 @@ def skill_opposed_post_errors(data):
 	dc_player = data['dc_player']
 	circ_value = data['circ_value']
 	time_type = data['time_type']
+
 
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)

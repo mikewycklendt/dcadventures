@@ -164,6 +164,8 @@ def skill_circ_post(entry, body, cells):
 	circumstance = entry.circumstance
 	lasts = entry.lasts
 	title = entry.title
+	tools = entry.tools
+	materials = entry.materials
 
 	title_name = get_name(SkillCircType, title)
 	body['title'] = title_name
@@ -198,6 +200,11 @@ def skill_circ_post(entry, body, cells):
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	conditions_effect = selects(conditions_effect, updown)
 
+	tools_select = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
+	tools = selects(tools, tools_select)
+
+	materials_select = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
+	materials = selects(materials, materials_select)
 	
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
@@ -226,6 +233,10 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('speed', 20, ['Speed Rank', speed], vcells)
 	
 	vcells = vcell('target', 30, ['If Target is', target], vcells)
+	
+	vcells = vcell('tools', 25, [tools], vcells)
+	
+	vcells = vcell('materials', 25, [materials], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
 

@@ -15,7 +15,9 @@ function circ_effect() {
 					{'val': 'speed', 'div': 'circ-speed'},
 					{'val': 'time', 'div': 'circ-time-mod'},
 					{'val': 'temp', 'div': 'circ-temp'},
-					{'val': 'target', 'div': 'circ-target'}]
+					{'val': 'target', 'div': 'circ-target'},
+					{'val': 'tools', 'div': 'circ-tools'},
+					{'val': 'materials', 'div': 'circ-materials'}]
 
 	select_opacity(select, options);
 }
@@ -111,6 +113,8 @@ function circ_submit() {
 	const lasts = select("circ_lasts");
 	const title = text("circ_title");
 	const surface = check("circ_surface");
+	const tools = select("circ_tools");
+	const materials = select("materials");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -156,7 +160,9 @@ function circ_submit() {
 			'circumstance': circumstance,
 			'lasts': lasts,
 			'title': title,
-			'surface': surface
+			'surface': surface,
+			'tools': tools,
+			'materials': materials
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -48,6 +48,22 @@
 	grid-template-columns: 30% 40% 30%;
 }
 
+#circ-tools {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 30% 40% 30%;
+}
+
+#circ-materials {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 30% 40% 30%;
+}
+
 #circ-condition {
 	display: none;
 	width: 97%;

@@ -54,6 +54,26 @@
 
 		<div>
 
+			<div id="circ-tools">
+				<div>
+					<select class="select-sml" id="circ_tools" name="circ_tools">
+						{% for t in tools %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-materials">
+				<div>
+					<select class="select-sml" id="circ_materials" name="circ_materials">
+						{% for m in materials %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
+			</div>
+
 			<div id="circ-speed">
 				<div>
 					<select class="select-sml" id="circ_speed" name="circ_speed">
