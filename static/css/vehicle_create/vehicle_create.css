@@ -866,6 +866,7 @@ textarea:focus {
 	width: 90%;
 	align-items: center;
 	text-align: center;
+	justify-content: center;
 	color: #af0101;
 	border: none;
 	background-color: transparent;

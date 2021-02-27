@@ -872,6 +872,7 @@ textarea:focus {
 	display: flex;
 	height: 1.4vw;
 	width: 90%;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	color: #af0101;
@@ -1039,7 +1040,7 @@ textarea:focus {
 
 .circ-btn-up::before {
 	font-family: 'FontAwesome';
-	content: '\f0de';
+	content: '\f0d8';
 	display: inline-block;
 }
 
