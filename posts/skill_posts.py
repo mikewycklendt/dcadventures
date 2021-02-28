@@ -852,12 +852,12 @@ def skill_opposed_post(entry, body, cells):
 	cells = cell('Frequency', 13, [frequency], cells)
 	cells = cell('Player', 12, [trait], cells)
 	cells = cell('Mod', 6, [mod], cells)
-	cells = cell('Check', 14, [player_check], cells)
+	cells = cell('Check', 10, [player_check], cells)
 	cella = check_cell('Secret', 8, player_secret, cells)
 
 	cells = cell('Opponent', 12, [opponent_trait], cells)
 	cells = cell('Mod', 6, [opponent_mod], cells)
-	cells = cell('Check', 14, [opponent_check], cells)
+	cells = cell('Check', 10, [opponent_check], cells)
 	
 	cells = check_cell('Secret', 8, secret, cells)
 
@@ -894,7 +894,7 @@ def skill_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
 	mod_add(recurring, new_mod, body)
 
-	cells = circ_cell('Circ', 6, description, cells, body)
+	cells = circ_cell('Desc', 6, description, cells, body)
 
 	body = send(cells, body)
 
