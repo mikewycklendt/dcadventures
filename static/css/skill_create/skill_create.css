@@ -137,10 +137,9 @@ select:focus {
 }
 
 .select-sml {
-	height: 1.0vw; 
-	padding: .1vw;  
+	height: 1.6vw; 
+	padding:  0vw;  
 	font-size: 80%;
-	line-height: .6vw;
 }
 
 .benefit-sml {
