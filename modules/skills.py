@@ -29,7 +29,7 @@ from db.user_rules import Nature, Emotion, Environment, Job, Creature
 from db.advanrtage_modeks import Advantage, Benefit, AdvAltCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
-from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
+from db.equipment_models import Equipment, Feature, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillMove, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
@@ -153,11 +153,17 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
 
-	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
+	measure_rank = db.session.query(Rank).filter_by(rank_type='measure').all()
 
 	unit_type = MeasureType.query.all()
 
 	units = Unit.query.all()
+
+	equip_type = EquipType.query.all()
+
+	features = db.session.query(Feature).filter_by(show=True).all()
+
+	equipmwnt = db.session.query(Equipment).filter_by(show=True).all()
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Skill Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'Check Table'}]
 
@@ -255,6 +261,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
+	partner = [{'type': '', 'name': ''}, {'type': 'trait', 'name': 'Check'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'tools', 'name': 'Tools'}, {'type': 'materials', 'name': 'Materials'}]
+
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
 	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
@@ -291,7 +299,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
-							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target)
+							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
+							features=features, partner=partner)
 
 
 @skill.route('/skill/create', methods=['POST'])

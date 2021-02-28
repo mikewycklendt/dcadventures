@@ -470,6 +470,93 @@
 			</div>
 
 		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title" style="font-size: 150%;">
+				Involves Partner
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="partner" class="regular-checkbox big-checkbox" onclick="partner()"> 	
+				</div>
+
+				<div class="base-fade" id="base-partner">
+					<select class="base-select" id="partner_type" name="partner_type" onchange="partner_type()">
+						{% for p in partner %}
+							<option value="{{p.type}}">{{p.name}}</option>
+						{% endfor %}
+					</select>
+ 				</div>
+
+				 <div class="base-shrink base-split" id="partner-trait">
+					<div>
+						<select class="base-select" id="partner_trait_type" name="partner_trait_type" onchange="partner_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="base-select" id="partner_trait_type" name="partner_trait_type">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="base-shrink base-split" id="partner-tools">
+					<div>
+						<select class="base-select" id="partner_tools" name="partner_tools">
+							{% for t in tools %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div class="base-shrink base-split" id="partner-materials">
+					<div>
+						<select class="base-select" id="partner_materials" name="partner_materials">
+							{% for m in materials %}
+								<option value="{{m.type}}">{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div class="base-shrink base-split" id="partner-equip">
+					<div>
+						<select class="base-select" id="partner_equip_type" name="partner_equip_type" onchange="partner_equip_type()">
+							<option value="">Equipment Type</option>
+							{% for e in equip_type %}
+								<option value="{{e.id}}">{{e.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="base-select" id="partner_equip" name="partner_equip">
+							<option value="">Equipment</option>
+						</select>
+					</div>
+				</div>
+			</div>
+						
+			<div class="base-shrink base-split" id="partner-feature">
+				<div>
+					<select class="base-select" id="partner_feature" name="partner_feature">
+						<option value="">Feature</option>
+						{% for f in features %}
+							<option value="{{f.id}}">{{f.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+
+		</div>
 
 	</div>
 

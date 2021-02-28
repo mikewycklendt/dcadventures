@@ -93,6 +93,38 @@ function gm_circ() {
 	check_opacity(check, div);
 }
 
+function partner() {
+	const check = 'partner';
+	const div = 'base-partner';
+
+	check_opacity(check, div);
+}
+
+function partner_type() {
+	const select = 'partner_type';
+	const options = [{'val': 'trait', 'div': 'partner-trait'},
+					{'val': 'equip', 'div': 'partner-equip'},
+					{'val': 'feature', 'div': 'partner-feature'},
+					{'val': 'tools', 'div': 'partner-tools'},
+					{'val': 'materials', 'div': 'partner-materials'}]
+
+	select_maxheight(select, options);
+}
+
+function partner_equip_type() {
+	const select = 'partner_equip_type';
+	const fill = 'partner_equip';
+
+	id_select(select, fill, equipment_select);
+}
+
+function partner_trait_type() {
+	const select = 'partner_trait_type';
+	const fill = 'partner_trait';
+
+	id_select(select, fill, trait_select);
+}
+
 function required_tools() {
 	const check = 'tools';
 	const div =  'required-tools';
