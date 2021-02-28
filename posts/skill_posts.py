@@ -624,7 +624,7 @@ def skill_degree_post(entry, body, cells):
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Target', 15, [target], cells)
-	cells = cell('Effect Target', 16 [effect_target], cells)
+	cells = cell('Effect Target', 16, [effect_target], cells)
 	cells = cell('Degree', 8, [value], cells)
 
 	vcells = vcell('action', 40, ['Action Changed to', action])
