@@ -455,9 +455,9 @@ def math_convert(name):
 	elif name == '<=':
 		name = '<i class="fas fa-less-than-equal"></i>'
 	elif name == '>':
-		name = '<i class="fas fa-greater"></i>'
+		name = '<i class="fas fa-greater-than"></i>'
 	elif name == '<':
-		name = '<i class="fas fa-less"></i>'
+		name = '<i class="fas fa-less-than"></i>'
 	elif name == '=':
 		name = '<i class="fas fa-equals"></i>'
 	
