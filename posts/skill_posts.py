@@ -819,7 +819,7 @@ def skill_opposed_post(entry, body, cells):
 	circ_value = entry.circ_value
 	time_type = entry.time_type
 	description = entry.description
-	entry = entry.recurring_type
+	recurring_type = entry.recurring_type
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)

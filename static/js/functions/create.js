@@ -834,6 +834,32 @@ function selects_add(id, name, selects_input) {
 	}
 }
 
+function selects_add_new(id, name, selects) {
+	
+	let div;
+	let add = true;
+	for (div of selects) {
+		const selects = document.getElementsByClassName(div);
+		let select;
+
+		for (select of selects) {
+			options = select.options;
+			let option;
+
+			for (option of options) {
+				if (option.value == id) {
+					add = false
+				}
+			}
+		}
+	}
+
+	if (add == true) {
+		selects_add(id, name, sekects);
+	}
+
+}
+
 
 function update_divs(data) {
 	for (d of data) {
