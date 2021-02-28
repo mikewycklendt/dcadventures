@@ -702,10 +702,9 @@ def skill_degree_post_errors(data):
 	errors = variable_fields('condition', 'Condition Effect', type, [condition_type], errors)
 	errors = variable_field('condition', type, 'Condition Type', condition_type, errors)
 
-	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2, condition_turns], errors)
+	errors = variable_fields('condition', 'Condition Change', condition_type, [condition1, condition2], errors)
 	errors = variable_field('condition', condition_type, 'Starting Condition', condition1, errors)
 	errors = variable_field('condition', condition_type, 'Ending Condition Change', condition2, errors)
-	errors = variable_field('condition', condition_type, 'Turns', condition_turns, errors)
 
 	errors = variable_fields('damage', 'Damage Condition', condition_type, [condition_damage_value, condition_damage], errors)
 	errors = variable_field('damage', condition_type, 'Damage Value', condition_damage_value, errors)
