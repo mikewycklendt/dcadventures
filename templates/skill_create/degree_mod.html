@@ -12,6 +12,14 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<select class="header-select" id="deg_mod_effect_target" name="deg_mod_effect_target">
+				{% for e in effect_target %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
 	
 	</div>
 
@@ -555,7 +563,7 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
-							<option value="">Condition</option>
+							<option value="">Starting</option>
 							<option value="current">Current</option>
 							{% for c in conditions %}
 								<option value="{{c.id}}">{{c.name}}</option>
@@ -569,7 +577,7 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
-							<option value="">Condition</option>
+							<option value="">Ending</option>
 							<option value="any">Any</option>
 							<option value="linked_first">Linked Starting</option>
 							<option value="linked_second">Linked Ending</option>
@@ -579,7 +587,7 @@
 						</select>
 					</div>
 
-					<div>
+					<div style="display: none;">
 						<select class="time-sml" id="deg_mod_condition_turns" name="deg_mod_condition_turns">
 							<option value="">Time Condition Lasts</option>
 							<option value="turn">One Turn</option>

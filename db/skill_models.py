@@ -385,6 +385,7 @@ class SkillDC(db.Model):
 	variable = db.Column(db.Integer, db.ForeignKey('skill_check.id'))
 	title = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
+	effect_target = db.Column(db.String())
 	
 	
 	def format(self):
@@ -458,7 +459,8 @@ class SkillDC(db.Model):
 			'tools': self.tools,
 			'variable_checK': self.variable_check,
 			'variable': self.variable,
-			'title': self.title
+			'title': self.title,
+			'effect_target': self.effect_target
 		}
 
 class SkillDegree(db.Model):
@@ -544,7 +546,7 @@ class SkillDegree(db.Model):
 	move_table = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
 	description = db.Column(db.String())
-	
+	effect_target = db.Column(db.String())	
 
 	def format(self):
 		return {
@@ -627,7 +629,8 @@ class SkillDegree(db.Model):
 			'time_table': self.time_table,
 			'move_table': self.move_table,
 			'title': self.title,
-			'description': self.description
+			'description': self.description,
+			'effect_target': self.effect_target
 		}
 
 class SkillMod(db.Model):

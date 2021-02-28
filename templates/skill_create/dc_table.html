@@ -33,6 +33,14 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="dc_effect_target" name="dc_effect_target">
+				{% for e in effect_target %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="display: none;">
 			<select class="time-sml" id="dc_time" name="dc_time">
 				<option value="">Duration of Effect</option>
 				<option value="">Use Time Effect form to put options here</option>

@@ -173,6 +173,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 
+	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+
 	circ_targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}]
 
 	modifier_type = [{'type': '', 'name': 'Type'}, {'type': 'up', 'name': 'Up to'}, {'type': 'value', 'name': 'Exact'}, {'type': 'rank', 'name': 'Per Rank'},  {'type': '-1', 'name': 'Rank - 1'}]
@@ -289,7 +291,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							dc_value=dc_value, required_tools=required_tools, concealment_type=concealment_type, bonus_select=bonus_select, gm_circ=gm_circ, nullify=nullify, greater_less=greater_less, units=units,
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
-							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time)
+							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -992,6 +994,7 @@ def skill_bonus_post_dc():
 	variable = request.get_json()['variable']
 	time = request.get_json()['time']
 	title = request.get_json()['title']
+	effect_target = request.get_json()['effect_target']
 
 
 	errors = skill_dc_post_errors(data)
@@ -1118,7 +1121,8 @@ def skill_bonus_post_dc():
 					variable_check = variable_check,
 					variable = variable,
 					time = time,
-					title = title)
+					title = title,
+					effect_target = effect_target)
 
 	db.session.add(entry)
 	db.session.commit()
@@ -1242,6 +1246,7 @@ def skill_bonus_post_degree():
 	compare = request.get_json()['compare']
 	duration = request.get_json()['duration']
 	title = request.get_json()['title']
+	effect_target = request.get_json()['effect_target']
 
 	errors = skill_degree_post_errors(data)
 
@@ -1398,7 +1403,8 @@ def skill_bonus_post_degree():
 						attack = attack,
 						attack_turns = attack_turns,
 						compare = compare,
-						title = title)
+						title = title,
+						effect_target = effect_target)
 
 	db.session.add(entry)
 	db.session.commit()

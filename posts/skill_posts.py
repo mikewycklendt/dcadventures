@@ -318,6 +318,7 @@ def skill_dc_post(entry, body, cells):
 	variable = entry.variable
 	time = entry.time
 	title = entry.title
+	effect_target = entry.effect_target
 
 	title_name = get_name(SkillDCType, title)
 	body['title'] = title_name
@@ -365,13 +366,15 @@ def skill_dc_post(entry, body, cells):
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
-	
+	effect_target = selects(effect_target, targets_select)
+
 	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}]
 	condition1 = selects(condition1, conditions_select)
 	condition2 = selects(condition2, conditions_select)
 
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Target', 10, [target], cells)
+	cells = cell('Effect Target', 16, [effect_target], cells)
 	cells = cell('Duration', 14, [time], cells)
 
 	vcells = vcell('value', 6, [value])
@@ -530,6 +533,7 @@ def skill_degree_post(entry, body, cells):
 	attack_turns = entry.attack_turns
 	compare = entry.compare
 	title = entry.title
+	effect_target = entry.effect_target
 
 	title_name = get_name(SkillDegreeType, title)
 	body['title'] = title_name
@@ -606,6 +610,7 @@ def skill_degree_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
 	circ_target = selects(circ_target, targets_select)
+	effect_target = selects(effect_target, targets_select)
 
 	repair_select = [{'type': '', 'name': 'Effect'}, {'type': 'stable', 'name': 'Stable'}, {'type': 'broke', 'name': 'Broken'}]
 	object_effect = selects(object_effect, repair_select)
@@ -619,6 +624,7 @@ def skill_degree_post(entry, body, cells):
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Target', 15, [target], cells)
+	cells = cell('Effect Target', 16 [effect_target], cells)
 	cells = cell('Degree', 8, [value], cells)
 
 	vcells = vcell('action', 40, ['Action Changed to', action])

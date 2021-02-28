@@ -82,7 +82,7 @@
 	display: grid;
 	width: 96%;
 	gap: 3px;
-	grid-template-columns: 16% 44% 40%;
+	grid-template-columns: 16% 59% 25% 0% ;
 	grid-auto-rows: auto;
 }
 
@@ -202,7 +202,7 @@
 	transition: all .3s ease-out;
 	text-align: center;
 	width: 98%;
-	grid-template-columns: 11% 4% 24% 2% 21% 27% 11%;
+	grid-template-columns: 11% 4% 25% 2% 25% 22% 10%;
 	gap: .2vw;
 }
 
