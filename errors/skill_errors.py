@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit, select_check, check_of, multiple_effect_check, multiple_link_check, required_setting
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit, select_check, check_of, multiple_effect_check, multiple_link_check, required_setting, linked_group_check, required_link_field
 from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
@@ -154,6 +154,8 @@ def skill_save_errors(data):
 	errors = required_setting('before', opposed_attached, [dc_type], attached_select, 'skill', skill_id, False, 'skill_id', 'Opponent Check Attached', 'DC for the skill check', 'DC field in the skill settings or the DC Table', errors)
 	errors = required_setting('after', opposed_attached, [dc_type], attached_select, 'skill', skill_id, False, 'skill_id', 'Opponent Check Attached', 'DC for the skill check', 'DC field in the skill settings or the DC Table', errors)
 	
+	errors = required_link_field(SkillDC, 'skill_id', skill_id, partner_trait, 'DC for another character', 'skill', 'partner check trait', errors, 'target', 'other')
+
 	return (errors)
 
 def skill_ability_post_errors(data):
@@ -802,6 +804,8 @@ def skill_degree_post_errors(data):
 
 	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
 
+	errors = linked_group_check(SkillDC, 'other', target, 'other', 'target', skill_id, 'skill_id', 'a degree of success or failure for another character', 'DC', 'the target field to Other Character', errors)
+
 	return (errors)
 
 def skill_move_post_errors(data):
@@ -990,12 +994,9 @@ def skill_opposed_post_errors(data):
 	errors = check_fields(recurring, 'Recurring', [recurring_value], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)
 
-	errors = variable_fields('6', 'Resistance Check', opponent_check, [dc], errors)
-	errors = variable_field('6', opponent_check, 'Resistanance DC', dc, errors)
-
-	errors = variable_fields('1', 'Skill Check', opponent_check, [dc], errors)
-	errors = variable_field('1', opponent_check, 'Opponent Skill Check DC', dc, errors)
-
+	errors = select_check('6', opponent_check, dc_check, 'Resistance Check', 'a DC', errors)
+	errors = select_check('1', opponent_check, dc_check, 'Skill Check', 'a DC', errors)
+	
 	errors = select_check('6', opponent_check, dc_check, 'Resistance Check', 'a DC value', errors)
 	errors = select_check('1', opponent_check, dc_check, 'Skill Check', 'a DC value', errors)
 	errors = select_check('6', player_check, dc_check, 'Resistance Check', 'a DC value', errors)
@@ -1007,6 +1008,9 @@ def skill_opposed_post_errors(data):
 	errors = check_of(time_check, 'Time', 'a time effect or time effect group', [time, time_type], errors)
 	errors = check_of(recurring, 'Recurring', 'recurring time or time effect group', [recurring_value, recurring_type], errors)
 	errors = seperate([recurring_value, recurring_type], 'recurring', errors)
+
+	errors = linked_group_check(SkillDC, '1', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Skill Check', 'DC', 'Opponent DC', errors, True)
+	errors = linked_group_check(SkillDC, '6', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Resistance Check Check', 'DC', 'Opponent DC', errors, True)
 
 	return (errors)
 

@@ -786,6 +786,39 @@ def required_variable(table, field, name, table_name, trait, column, id, errors)
 		errors['error'] = error
 
 	return (errors)
+	
+def required_link_field(table, column, id, field, table_name, trait, fieldname, errors, second_column=False, second_value=False):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+		
+	try:
+		id = int(id)
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		if second_column == False:
+			check = db.session.query(table).filter(the_filter).first()
+		else:
+			second_attribute = getattr(table, second_column)
+			second_filter = second_attribute == second_value
+			check = db.session.query(table).filter(the_filter, second_filter).first()
+		if check is None:
+			return (errors)
+
+		if field == '':
+			error = True
+			message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set the ' + fieldname + " before you can save this " + trait +'.'
+			error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
 
 def multiple_effect_check(table, column, value, id, select, errors):
 		
@@ -871,6 +904,42 @@ def required_setting(value, field, fields, select, trait, id, table, column, nam
 				
 		if error:
 			message = 'You selected ' + option + ' for the ' + name + ' field but have not set a ' + required + ' for this '  + trait + '.  Set a ' + required + ' with the ' + requirement + ' before you can save this ' + trait + '.' 
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
+def linked_group_check(table, value, field, required, column, id, group_column, name, groupname, requirement, errors, group=False):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != field:
+		return (errors)
+
+	if id == '':
+		return (errors)
+
+	id = int(id)
+	attribute = getattr(table, column)
+	second = getattr(table, group_column)
+	the_filter = attribute == required
+	second_filter = second == id
+	check = db.session.query(table).filter(second_filter, the_filter).first()
+
+	if check is None:
+		error = True
+
+	if error:
+		if group:
+			message = 'You set this rule to have ' + name + ' but the ' + groupname + ' group you chose does not contain a ' + requirement + '.'
+			error_msgs.append(message)
+		else:
+			message = 'Before youi can create this rule that uses ' + name + ' you must create a ' + groupname + ' and set ' + requirement + ' first.'
 			error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
