@@ -756,9 +756,8 @@ def skill_degree_post_errors(data):
 	errors = variable_field('object', damage_type, 'Degrees', object, errors)
 	errors = variable_field('object', damage_type, 'Object Condition', object_effect, errors)
 	
-	errors = variable_fields('level', 'Level Effect', type, [level_type, level_time], errors)
+	errors = variable_fields('level', 'Level Effect', type, [level_type], errors)
 	errors = variable_field('level', type, 'Level Type', level_type, errors)
-	errors = variable_field('level', type, 'Level Duration', level_time, errors)
 	errors = if_or('Level', level_type, [level, level_direction], 'Level or Level Change', errors)
 	errors = seperate([level, level_direction], 'Level or Level Change', errors)
 	

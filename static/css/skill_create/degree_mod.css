@@ -175,7 +175,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: 3px;
-	grid-template-columns: 25% 25% 15% 35%;
+	grid-template-columns: 35% 40% 25%;
 }
 
 #deg-mod-action {
