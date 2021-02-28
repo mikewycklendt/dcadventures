@@ -933,6 +933,10 @@ def skill_time_post(entry, body, cells):
 	turns = entry.turns
 	keyword = entry.keyword
 	title = entry.title
+	circ_type = entry.circ_type
+	degree_type = entry.degree_type
+	dc_type = entry.dc_type
+
 
 	title_name = get_name(SkillTimeType, title)
 	body['title'] = title_name
@@ -971,9 +975,9 @@ def skill_time_post(entry, body, cells):
 	vcells = vcell('turns', 18, [turns, word], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 
-	cells = cell('Degree', 18, [degree], cells)
-	cells = cell('DC', 18, [dc], cells)
-	cells = cell('Circumstance', 18, [circ], cells)
+	cells = cell('Degree', 18, [degree, degree_type], cells)
+	cells = cell('DC', 18, [dc, dc_type], cells)
+	cells = cell('Circumstance', 18, [circ, circ_type], cells)
 
 	cells = cell('Recovery', 9, [recovery_penalty], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)

@@ -950,6 +950,9 @@ class SkillTime(db.Model):
 	instant = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
+	circ_type = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
+	degree_type = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
+	dc_type = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
 	
 	def format(self):
 		return {
@@ -981,5 +984,8 @@ class SkillTime(db.Model):
 			'scene': self.scene,
 			'instant': self.instant,
 			'hide': self.hidden,
-			'title': self.title
+			'title': self.title,
+			'circ_type': self.circ_type,
+			'degree_type': self.degree_type,
+			'dc_type': self.dc_type
 		}

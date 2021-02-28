@@ -1836,6 +1836,9 @@ def skill_bonus_post_time():
 	turns = request.get_json()['turns']
 	keyword = request.get_json()['keyword']
 	title = request.get_json()['title']
+	circ_type = request.get_json()['circ_type']
+	degree_type = request.get_json()['degree_type']
+	dc_type = request.get_json()['dc_type']
 
 	errors = skill_time_post_errors(data)
 	
@@ -1859,6 +1862,9 @@ def skill_bonus_post_time():
 	degree = db_integer(SkillDegree, degree)
 	circ = db_integer(SkillCirc, circ)
 	dc = db_integer(SkillDC, dc)
+	circ_type = db_integer(SkillCircType, circ_type)
+	degree_type = db_integer(SkillDegreeType, degree_type)
+	dc_type = db_integer(SkillDCType, dc_type)	
 
 	rank1_value = integer(rank1_value)
 	rank2_value = integer(rank2_value)
@@ -1900,7 +1906,11 @@ def skill_bonus_post_time():
 						dc = dc,
 						turns = turns,
 						keyword = keyword,
-						title = title)
+						title = title,
+						circ_type = circ_type,
+						degree_type = degree_type,
+						dc_type = dc_type
+					)
 
 	db.session.add(entry)
 	db.session.commit()

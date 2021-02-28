@@ -1040,6 +1040,10 @@ def skill_time_post_errors(data):
 	dc = data['dc']
 	keyword = data['keyword']
 	title = data['title']
+	circ_type = data['circ_type']
+	degree_type = data['degree_type']
+	dc_type = data['dc_type']
+
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -1059,6 +1063,10 @@ def skill_time_post_errors(data):
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
 	errors = id_check(SkillCirc, circ, 'Circumstance', errors)
 	errors = id_check(SkillDC, dc, 'DC', errors)
+	errors = id_check(SkillDegreeType, degree_type, 'Degree Group', errors)
+	errors = id_check(SkillCircType, circ_type, 'Circumstance Group', errors)
+	errors = id_check(SkillDCType, dc_type 'DC Group', errors)
+	
 
 	errors = required(type, 'Time Type', errors)
 	errors = required(value_type, 'Type', errors)
@@ -1085,6 +1093,10 @@ def skill_time_post_errors(data):
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
 	errors = variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
+
+	errors = seperate([dc, dc_type], 'DC', errors)
+	errors = seperate([circ, circ_type], 'Circumstance', errors)
+	errors = seperate([degree, degree_type], 'Degree', errors)
 
 	return (errors)
 

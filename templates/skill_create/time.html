@@ -197,8 +197,38 @@
 				{% endfor %}
 			</select>
 		</div>
-	</div>
+	
+		<div>
+			<select class="degree-title-sml" id="time_degree_type" name="time_degree_type">
+				<option value="">Degree by Group</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
+		<div>
+			<select class="circ-title-sml" id="time_circ_type" name="time_circ_type">
+				<option value="">Circumstance By Group</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div>
+			<select class="dc-title-sml" id="time_dc_type" name="time_dc_type">
+				<option value="">DC by Group</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for b in bonus_dc_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+	</div>
 
 	<div id="time-button-row">
 		<div>
