@@ -890,7 +890,8 @@ def skill_opposed_post(entry, body, cells):
 	cells = check_cell('Recurring', 10, recurring, cells, True)
 	new_mod = mod_create('Recurring Check', 17)
 	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
-	new_mod = mod_cell('Using', 10, [recurring_type, 'Time Group'], new_mod)
+	word = string('Time Group', [recurring_type])
+	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
 	mod_add(recurring, new_mod, body)
 
 	cells = circ_cell('Description', 13, description, cells, body)
