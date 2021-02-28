@@ -855,7 +855,7 @@ function selects_add_new(id, name, selects) {
 	}
 
 	if (add == true) {
-		selects_add(id, name, sekects);
+		selects_add(id, name, selects);
 	}
 
 }

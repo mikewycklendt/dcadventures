@@ -81,10 +81,10 @@ function time_submit() {
 	const selects = 'time-sml';
 	const select_entry = 'time-entry';
 	const select_title = 'time-title-sml';
-	const recur_entry = 'time-recur-entry';
-	const recur_sml = 'time-recur-sml';
-	const recur_title_entry = 'time-recur-title-entry';
-	const recur_title_sml = 'time-recur-title-sml';
+	const recur_entry = 'lasts-entry';
+	const recur_sml = 'lasts-sml';
+	const recur_title_entry = 'lasts-title-entry';
+	const recur_title_sml = 'lasts-title-sml';
 	
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
