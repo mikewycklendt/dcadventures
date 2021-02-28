@@ -1065,7 +1065,7 @@ def skill_time_post_errors(data):
 	errors = id_check(SkillDC, dc, 'DC', errors)
 	errors = id_check(SkillDegreeType, degree_type, 'Degree Group', errors)
 	errors = id_check(SkillCircType, circ_type, 'Circumstance Group', errors)
-	errors = id_check(SkillDCType, dc_type 'DC Group', errors)
+	errors = id_check(SkillDCType, dc_type, 'DC Group', errors)
 	
 
 	errors = required(type, 'Time Type', errors)
