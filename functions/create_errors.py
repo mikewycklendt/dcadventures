@@ -845,7 +845,7 @@ def multiple_link_check(table, id, column, trait, value, name, rule, field, fiel
 	return (errors) 
 	
 
-def required_setting(value, field, fields, select, trait, id, table=False, column, name, required, requirement, errors):
+def required_setting(value, field, fields, select, trait, id, table, column, name, required, requirement, errors):
 	error_msgs = errors['error_msgs']
 	error = True
 
