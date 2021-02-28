@@ -565,7 +565,8 @@ class SkillDegree(db.Model):
 	move_table = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
 	description = db.Column(db.String())
-	effect_target = db.Column(db.String())	
+	effect_target = db.Column(db.String())
+	value_type = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -649,7 +650,8 @@ class SkillDegree(db.Model):
 			'move_table': self.move_table,
 			'title': self.title,
 			'description': self.description,
-			'effect_target': self.effect_target
+			'effect_target': self.effect_target,
+			'value_type': self.value_type
 		}
 
 class SkillMod(db.Model):

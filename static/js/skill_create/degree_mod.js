@@ -248,6 +248,7 @@ function deg_mod_submit() {
 	const title = text("deg_mod_title");
 	const level_time = select("deg_mod_level_time");
 	const effect_target = select("deg_mod_effect_target");
+	const value_type = select("deg_mod_value_type");
  
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -344,7 +345,8 @@ function deg_mod_submit() {
 			'variable': variable,
 			'title': title,
 			'level_time': level_time,
-			'effect_target': effect_target
+			'effect_target': effect_target,
+			'value_type': value_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

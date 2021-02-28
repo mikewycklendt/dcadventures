@@ -219,7 +219,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	measure_effect_circ = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}]
 	
-	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}]
+	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
+
+	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
@@ -261,7 +263,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
-	partner = [{'type': '', 'name': ''}, {'type': 'trait', 'name': 'Check'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'tools', 'name': 'Tools'}, {'type': 'materials', 'name': 'Materials'}]
+	partner = [{'type': '', 'name': 'Requirement'}, {'type': 'trait', 'name': 'Check'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'tools', 'name': 'Tools'}, {'type': 'materials', 'name': 'Materials'}]
 
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
@@ -300,7 +302,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner)
+							features=features, partner=partner, degree_type=degree_type)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -1279,6 +1281,7 @@ def skill_bonus_post_degree():
 	duration = request.get_json()['duration']
 	title = request.get_json()['title']
 	effect_target = request.get_json()['effect_target']
+	value_type = request.get_json()['value_type']
 
 	errors = skill_degree_post_errors(data)
 
@@ -1436,7 +1439,8 @@ def skill_bonus_post_degree():
 						attack_turns = attack_turns,
 						compare = compare,
 						title = title,
-						effect_target = effect_target)
+						effect_target = effect_target,
+						value_type = value_type)
 
 	db.session.add(entry)
 	db.session.commit()

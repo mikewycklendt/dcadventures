@@ -534,6 +534,7 @@ def skill_degree_post(entry, body, cells):
 	compare = entry.compare
 	title = entry.title
 	effect_target = entry.effect_target
+	value_type = entry.value_type
 
 	title_name = get_name(SkillDegreeType, title)
 	body['title'] = title_name
@@ -569,6 +570,7 @@ def skill_degree_post(entry, body, cells):
 	level_time = get_keyword(SkillTime, level_time)
 	linked = get_keyword(SkillDegree, linked)
 	measure_type = math_convert(measure_type)
+	value_type = math_convert(value_type)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -625,7 +627,7 @@ def skill_degree_post(entry, body, cells):
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Target', 15, [target], cells)
 	cells = cell('Effect Target', 16, [effect_target], cells)
-	cells = cell('Degree', 8, [value], cells)
+	cells = cell('Degree', 8, [value_type, value], cells)
 
 	vcells = vcell('action', 40, ['Action Changed to', action])
 

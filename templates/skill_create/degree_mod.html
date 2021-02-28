@@ -783,9 +783,12 @@
 </div>
 
 <div id="deg-mod-row2">
-
 	<div>
-		<input type="text" id="deg_mod_title" name="deg_mod_title" placeholder="Title">
+		<select class="select-sml" id="deg_mod_value_type" name="deg_mod_value_type">
+			{% for d in degree_type %}
+				<option value="{{d.type}}">{{d.name}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
 	<div>
@@ -830,6 +833,10 @@
 
 <div id="deg-mod-button-row">
 	<div>
+	</div>
+	
+	<div>
+		<input type="text" id="deg_mod_title" name="deg_mod_title" placeholder="Title">
 	</div>
 
 	<div>
