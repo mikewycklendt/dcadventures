@@ -481,12 +481,14 @@
 					<input type="checkbox" id="partner" class="regular-checkbox big-checkbox" onclick="partner()"> 	
 				</div>
 
-				<div class="base-fade" id="base-partner">
-					<select class="base-select" id="partner_type" name="partner_type" onchange="partner_type()">
-						{% for p in partner %}
-							<option value="{{p.type}}">{{p.name}}</option>
-						{% endfor %}
-					</select>
+				<div class="base-fade base-split" id="base-partner">
+					<div>
+						<select class="base-select" id="partner_type" name="partner_type" onchange="partner_type()">
+							{% for p in partner %}
+								<option value="{{p.type}}">{{p.name}}</option>
+							{% endfor %}
+						</select>	
+					</div>
  				</div>
 			</div>
 
