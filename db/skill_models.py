@@ -87,6 +87,16 @@ class SkillBonus(db.Model):
 	approved = db.Column(db.Boolean)
 	base = db.Column(db.Boolean)
 	time_multiple = db.Column(db.String())
+	partner = db.Column(db.Boolean)
+	partner_type = db.Column(db.String())
+	partner_trait_type = db.Column(db.String())
+	partner_trait = db.Column(db.Integer)
+	partner_tools = db.Column(db.String())
+	partner_materials = db.Column(db.String())
+	partner_equip_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
+	partner_equip = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	partner_feature = db.Column(db.Integer, db.ForeignKey('features.id'))
+
 	
 	def format(self):
 		return {
@@ -148,7 +158,16 @@ class SkillBonus(db.Model):
 			'show': self.show,
 			'approved': self.approved,
 			'base': self.base,
-			'time_multiple': self.time_multiple
+			'time_multiple': self.time_multiple,
+			'partner': self.partner,
+			'partner_type': self.partner_type,
+			'partner_trait_type': self.partner_trait_type,
+			'partner_trait': self.partner_trait,
+			'partner_tools': self.partner_tools,
+			'partner_materials': self.partner_materials,
+			'partner_equip_type': self.partner_equip_type,
+			'partner_equip': self.partner_equip,
+			'partner_feature': self.partner_feature
 		}
 
 

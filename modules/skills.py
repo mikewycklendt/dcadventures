@@ -410,6 +410,15 @@ def save_skill_bonus():
 	modifiers_multiple = request.get_json()['modifiers_multiple']
 	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
 	time_multiple = request.get_json()['time_multiple']
+	partner partner
+	partner_type partner_type
+	partner_trait_type partner_trait_type
+	partner_trait partner_trait
+	partner_tools partner_tools
+	partner_materials partner_materials
+	partner_equip_type partner_equip_type
+	partner_equip partner_equip
+	partner_feature partner_feature
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
@@ -422,7 +431,12 @@ def save_skill_bonus():
 	weapon_cat = db_integer(WeaponCat, weapon_cat)
 	weapon_type = db_integer(WeaponType, weapon_type)
 	weapon = db_integer(Weapon, weapon)
+	partner_equip_type = db_integer(EquipType, partner_equip_type)
+	partner_equip = db_integer(Equipment, partner_equip)
+	partner_feature = db_integer(Feature, partner_feature)
 
+	partner_trait = integer(partner_trait)
+	
 	dc_value = integer(dc_value)
 	dc_mod = integer(dc_mod)
 	targets = integer(targets)
@@ -484,6 +498,15 @@ def save_skill_bonus():
 	entry.modifiers_multiple = modifiers_multiple
 	entry.modifiers_multiple_count = modifiers_multiple_count
 	entry.time_multiple = time_multiple
+	entry.partner = partner
+	entry.partner_type = partner_type
+	entry.partner_trait_type = partner_trait_type
+	entry.partner_trait = partner_trait
+	entry.partner_tools = partner_tools
+	entry.partner_materials = partner_materials
+	entry.partner_equip_type = partner_equip_type
+	entry.partner_equip = partner_equip
+	entry.partner_feature = partner_feature
 
 	db.session.commit()
 

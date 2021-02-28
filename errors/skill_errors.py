@@ -81,6 +81,16 @@ def skill_save_errors(data):
 	modifiers_multiple_count = data['modifiers_multiple_count']
 	time_multiple = data['time_multiple']
 	opposed_attached = data['opposed_attached']
+	partner = data['partner']
+	partner_type = data['partner_type']
+	partner_trait_type = data['partner_trait_type']
+	partner_trait = data['partner_trait']
+	partner_tools = data['partner_tools']
+	partner_materials = data['partner_materials']
+	partner_equip_type = data['partner_equip_type']
+	partner_equip = data['partner_equip']
+	partner_feature = data['partner_feature']
+
 
 
 

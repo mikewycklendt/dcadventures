@@ -81,7 +81,16 @@ skill_save = function() {
 	const modifiers_multiple = select("modifiers_multiple");
 	const modifiers_multiple_count = select("modifiers_multiple_count");
 	const time_multiple = select("time_multiple");
-	const opposed_attached = select("opposed_attached")
+	const opposed_attached = select("opposed_attached");
+	const partner = check("partner");
+	const partner_type = select("partner_type");
+	const partner_trait_type = select("partner_trait_type");
+	const partner_trait = select("partner_trait");
+	const partner_tools = select("partner_tools");
+	const partner_materials = select("partner_materials");
+	const partner_equip_type = select("partner_equip_type");
+	const partner_equip = select("partner_equip");
+	const partner_feature = select("partner_feature");
 
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
@@ -139,7 +148,16 @@ skill_save = function() {
 			'modifiers_multiple': modifiers_multiple,
 			'modifiers_multiple_count': modifiers_multiple_count,
 			'time_multiple': time_multiple,
-			'opposed_attached': opposed_attached
+			'opposed_attached': opposed_attached,
+			'partner': partner,
+			'partner_type': partner_type,
+			'partner_trait_type': partner_trait_type,
+			'partner_trait': partner_trait,
+			'partner_tools': partner_tools,
+			'partner_materials': partner_materials,
+			'partner_equip_type': partner_equip_type,
+			'partner_equip': partner_equip,
+			'partner_feature': partner_feature
 		}),
 		headers: {
 		'Content-Type': 'application/json',
