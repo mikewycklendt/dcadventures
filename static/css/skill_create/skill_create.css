@@ -140,6 +140,7 @@ select:focus {
 	height: 1.6vw; 
 	padding: .1vw;  
 	font-size: 80%;
+	line-height: .6vw;
 }
 
 .benefit-sml {
@@ -953,6 +954,7 @@ textarea:focus {
 	font-size: 165%;
 	font-family: Comic, 'Monda', Verdana;
 	text-align: center;
+	margin-bottom: .1vw;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
