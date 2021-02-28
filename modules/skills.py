@@ -410,15 +410,15 @@ def save_skill_bonus():
 	modifiers_multiple = request.get_json()['modifiers_multiple']
 	modifiers_multiple_count = request.get_json()['modifiers_multiple_count']
 	time_multiple = request.get_json()['time_multiple']
-	partner partner
-	partner_type partner_type
-	partner_trait_type partner_trait_type
-	partner_trait partner_trait
-	partner_tools partner_tools
-	partner_materials partner_materials
-	partner_equip_type partner_equip_type
-	partner_equip partner_equip
-	partner_feature partner_feature
+	partner = request.get_json()['partner']
+	partner_type = request.get_json()['partner_type']
+	partner_trait_type = request.get_json()['partner_trait_type']
+	partner_trait = request.get_json()['partner_trait']
+	partner_tools = request.get_json()['partner_tools']
+	partner_materials = request.get_json()['partner_materials']
+	partner_equip_type = request.get_json()['partner_equip_type']
+	partner_equip = request.get_json()['partner_equip']
+	partner_feature = request.get_json()['partner_feature']
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
