@@ -173,6 +173,7 @@ def variable_fields(value, name, field, fields, errors):
 
 	return (errors)
 
+
 def if_fields(name, field, fields, errors):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -818,7 +819,7 @@ def multiple_effect_check(table, column, value, id, select, errors):
 
 	return (errors) 
 
-def multiple_link_check(table, id, column, trait, value, name, rule, field, errors):
+def multiple_link_check(table, id, column, trait, value, name, rule, field, fieldname, errors):
 	
 	error_msgs = errors['error_msgs']
 	error = False
@@ -834,7 +835,7 @@ def multiple_link_check(table, id, column, trait, value, name, rule, field, erro
 		return (errors)
 	else:
 		error = True
-		message = 'Tou selected ' + name + ' for the if multiple field for a ' + rule + ' rule but have not set any ' + name + ' rules for this ' + trait + '.  Either create the appropriate rule or make a different selection on thst if multiple field.' 
+		message = 'Tou selected ' + name + ' for the ' + fieldname + ' field for a ' + rule + ' rule but have not set any ' + name + ' rules for this ' + trait + '.  Either create the appropriate rule or make a different selection on thst if multiple field.' 
 		error_msgs.append(message)
 
 	errors['error_msgs'] = error_msgs
@@ -843,3 +844,37 @@ def multiple_link_check(table, id, column, trait, value, name, rule, field, erro
 
 	return (errors) 
 	
+
+def required_setting(value, field, fields, select, trait, id, table=False, column, name, required, requirement, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if field != value:
+		return (errors)
+
+	for f in fields:
+		if f != '':
+			return (errors)
+
+	if table:
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		check = db.session.query(table).filter(the_filter).first()
+		if check is not None:
+			return (errors)
+	
+	for s in select:
+		if value == s.type:
+			option = s.name
+		else:
+			option = ''
+				
+		if error:
+			message = 'You selected ' + option + ' for the ' + name + ' field but have not set a ' + required + ' for this '  + trait + '.  Set a ' + required + ' with the ' + requirement + ' before you can save this ' + trait + '.' 
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)

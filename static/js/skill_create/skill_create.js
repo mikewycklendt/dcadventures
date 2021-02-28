@@ -81,6 +81,7 @@ skill_save = function() {
 	const modifiers_multiple = select("modifiers_multiple");
 	const modifiers_multiple_count = select("modifiers_multiple_count");
 	const time_multiple = select("time_multiple");
+	const opposed_attached = select("opposed_attached")
 
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
@@ -137,7 +138,8 @@ skill_save = function() {
 			'opposed_multiple': opposed_multiple,
 			'modifiers_multiple': modifiers_multiple,
 			'modifiers_multiple_count': modifiers_multiple_count,
-			'time_multiple': time_multiple
+			'time_multiple': time_multiple,
+			'opposed_attached': opposed_attached
 		}),
 		headers: {
 		'Content-Type': 'application/json',
