@@ -86,46 +86,58 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
-@app.route('/time/options')
-def time_db_columns_create():
 
-	name = 'Permanent'
 
-	entry = SkillTime(perm=True, keyword=name, hide=True )
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Consequence'
+
+	name = 'All Consequences'
+
+	entry = Consequence(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
-
-	name = 'Round'
 	
-	entry = SkillTime(round=True, keyword=name, hide=True )
+	name = 'Current ' + tablename
+
+	entry = Consequence(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Consequence(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Scene'
+	name = 'Variable ' + tablename
 
-	entry = SkillTime(scene=True, keyword=name, hide=True )
+	entry = Consequence(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Linked ' + tablename
+
+	entry = Consequence(linked=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Consequence(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Instant'
-
-	entry = SkillTime(instant=True, keyword=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = '1 Turn'
-
-	entry = SkillTime(turn=True, keyword=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(SkillTime).filter_by(hide=True).all()
+	results = db.session.query(Consequence).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
-		print (result.keyword)
+		print (result.name)
 
-	return ('time fields added')
+	return (tablename + ' db added')
+
 
 
 

@@ -552,6 +552,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'linked':
+		try:
+			query = db.session.query(table).filter_by(linked=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == 'linked_first':
 		try:
 			query = db.session.query(table).filter_by(linked_first=True).first()
@@ -672,6 +679,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'free':
 		query = db.session.query(table).filter_by(free=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'linked':
+		query = db.session.query(table).filter_by(linked=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
