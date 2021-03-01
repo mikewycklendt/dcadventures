@@ -36,6 +36,7 @@ class SkillBonus(db.Model):
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	type = db.Column(db.Integer, db.ForeignKey('skill_type.id'))
+	skill_check = db.Column(db.String())
 	dc_type = db.Column(db.String())
 	dc_value = db.Column(db.Integer)
 	dc_mod = db.Column(db.Integer)
@@ -112,6 +113,7 @@ class SkillBonus(db.Model):
 			'check_type': self.check_type,
 			'action': self.action,
 			'type': self.type,
+			'skill_check': self.skill_check,
 			'dc_type': self.dc_type,
 			'dc_value': self.dc_value,
 			'dc_mod': self.dc_mod,

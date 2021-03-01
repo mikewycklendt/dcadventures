@@ -109,6 +109,20 @@
 		
 		<div class="base-field">
 			<div id="multiple-attr-title">
+				Skill Type
+			</div>
+
+			<div style="width: 70%;">
+				<select class="base-select" id="skill_check" name="skill_check">
+					{% for s in skill_check %}
+						<option value={{s.type}}>{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="base-field">
+			<div id="multiple-attr-title">
 				Difficulty Class:
 			</div>
 		

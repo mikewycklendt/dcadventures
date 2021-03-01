@@ -94,6 +94,9 @@ skill_save = function() {
 	const opponent_turn = check("opponent_turn");
 	const opponent_turn_check = select("opponent_turn_check");
 	const opponent_turn_when = select("opponent_turn_when");
+	const skill_check = select("skill_check");
+	const secret_trait_type = select("secret_trait_type");
+	const secret_trait = select("secret_trait_type");
 	
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
@@ -163,7 +166,10 @@ skill_save = function() {
 			'partner_feature': partner_feature,
 			'opponent_turn': opponent_turn,
 			'opponent_turn_check': opponent_turn_check,
-			'opponent_turn_when': opponent_turn_when
+			'opponent_turn_when': opponent_turn_when,
+			'secret_trait_type': secret_trait_type,
+			'secret_trait': secret_trait,
+			'skill_check': skill_check
 		}),
 		headers: {
 		'Content-Type': 'application/json',

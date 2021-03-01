@@ -267,6 +267,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	when = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'after', 'name': 'After'}]
 
+	skill_check = [{'type': '', 'name': 'Skill to Check'}, {'type': 'this', 'name': 'This skill'}, {'type': 'parent', 'name': 'Parent'}, {'type': 'x', 'name': 'Variable'}]
+
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
 	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
@@ -304,7 +306,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type, when=when)
+							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -371,6 +373,7 @@ def save_skill_bonus():
 	check_type = request.get_json()['check_type']
 	action = request.get_json()['action']
 	type = request.get_json()['type']
+	skill_check = request.get_json()['skill_check']
 	dc_type = request.get_json()['dc_type']
 	dc_value = request.get_json()['dc_value']
 	dc_mod = request.get_json()['dc_mod']
@@ -465,6 +468,7 @@ def save_skill_bonus():
 	entry.check_type = check_type
 	entry.action = action
 	entry.type = type
+	entry.skill_check = skill_check
 	entry.dc_type = dc_type
 	entry.dc_value = dc_value
 	entry.dc_mod = dc_mod
