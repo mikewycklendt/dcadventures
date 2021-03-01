@@ -37,7 +37,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillMoveType, SkillTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -1856,6 +1856,12 @@ def skill_bonus_post_time():
 	circ_type = request.get_json()['circ_type']
 	degree_type = request.get_json()['degree_type']
 	dc_type = request.get_json()['dc_type']
+	instant = preset_convert('instant', value_type)
+	perm = preset_convert('perm', value_type)
+	round = preset_convert('round', value_type)
+	next = preset_convert('next', value_type)
+	scene = preset_convert('scene', value_type)
+	turn = preset_convert('turn', value_type)
 
 	errors = skill_time_post_errors(data)
 	
@@ -1926,7 +1932,13 @@ def skill_bonus_post_time():
 						title = title,
 						circ_type = circ_type,
 						degree_type = degree_type,
-						dc_type = dc_type
+						dc_type = dc_type,
+						instant = instant,
+						turn = turn,
+						perm = perm,
+						round = round,
+						next = next,
+						scene = scene
 					)
 
 	db.session.add(entry)

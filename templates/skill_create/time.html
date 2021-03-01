@@ -35,6 +35,12 @@
 				{% for t in time_value %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
+				<option value="instant">Instant</option>
+				<option value="perm">Permanent</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="next">Next Round</option>
+				<option value="scene">Scene</option>
 			</select>
 		</div>
 
@@ -152,9 +158,6 @@
 				<div>
 					<select class="select-sml" id="time_turns" name="time_turns">
 						<option value="">Turns</option>
-						<option value="perm">Permanent</option>
-						<option value="round">round</option>
-						<option value="scene">Scene</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}

@@ -608,8 +608,16 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'next':
+		try:	
+			query = db.session.query(table).filter_by(next=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == '':
 		value = None
+		return (value)
 	else:
 		try:
 			value = int(value)
@@ -731,6 +739,12 @@ def id_check(table, value_id, name, errors):
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+	elif value_id == 'next':
+		query = db.session.query(table).filter_by(next=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
 	else:
 		try:
 			value_id = int(value_id)
@@ -752,6 +766,14 @@ def id_check(table, value_id, name, errors):
 
 	return (errors)
 
+def preset_convert(value, field):
+
+	if value == field:
+		preset = True
+	else:
+		preset = None
+
+	return (preset)
 
 
 def trait_select(value, trait):
