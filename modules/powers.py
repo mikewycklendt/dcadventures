@@ -159,7 +159,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	complexity = Complex.query.all()
 
-	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
+	consequences = db.session.query(Consequence).filter(Consequence.hide == None).order_by(Consequence.name).all()
 
 	ranges = Range.query.all()
 

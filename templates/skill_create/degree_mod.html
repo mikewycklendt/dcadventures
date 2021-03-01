@@ -262,7 +262,9 @@
 
 			<div>
 				<select class="select-sml" id="deg_mod_consequence" name="deg_mod_consequence">
-					<option value="">Consequence</option>				
+					<option value="">Consequence</option>
+					<option value="any">Any</option>
+					<option value="linked">Linked</option>	
 					{% for c in consequences %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}

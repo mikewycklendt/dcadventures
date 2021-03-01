@@ -133,7 +133,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2).all()
 
-	consequences = db.session.query(Consequence).order_by(Consequence.name).all()
+	consequences = db.session.query(Consequence).filter(Consequence.hide == None).order_by(Consequence.name).all()
 
 	creatures = db.session.query(Creature).filter(Creature.show == True).order_by(Creature.name).all()
 		

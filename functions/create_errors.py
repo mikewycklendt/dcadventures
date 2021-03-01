@@ -947,3 +947,24 @@ def linked_group_check(table, value, field, required, column, id, group_column, 
 		errors['error'] = error
 
 	return (errors)
+
+
+def linked_field(value, field, name, rule, required, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if  value != 'linked' and value != 'linked_first' and value != 'linked_second':
+		return (errors)
+
+	if field == '':
+		error = True
+
+		message = 'If this ' + rule + ' involves a linked ' + name + ' you must set the ' + required + '.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
