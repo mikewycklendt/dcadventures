@@ -86,61 +86,6 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
-
-
-
-@app.route('/table/db')
-def table_db_columns_create():
-
-	tablename =  'Consequence'
-
-	name = 'All Consequences'
-
-	entry = Consequence(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Consequence(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Consequence(any=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Consequence(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Linked ' + tablename
-
-	entry = Consequence(linked=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Consequence(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(Consequence).filter_by(hide=True).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-
-
-
-
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
