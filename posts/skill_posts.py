@@ -627,7 +627,7 @@ def skill_degree_post(entry, body, cells):
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Target', 15, [target], cells)
 	cells = cell('Effect Target', 16, [effect_target], cells)
-	cells = cell('Degree', 8, [value_type, value], cells)
+	cells = cell('Degree', 12, [value_type, value], cells)
 
 	vcells = vcell('action', 40, ['Action Changed to', action])
 
@@ -682,7 +682,7 @@ def skill_degree_post(entry, body, cells):
 	
 	cells = cell('Nullify DC', 13, [nullify], cells)
 	cells = check_cell('Cumulative', 12, cumulative, cells)
-	cells = cell('Linked', 18, [linked], cells)
+	cells = cell('Linked', 15, [linked], cells)
 
 	body = send_multiple(title, cells, body)
 
