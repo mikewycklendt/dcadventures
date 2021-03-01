@@ -90,6 +90,9 @@ def skill_save_errors(data):
 	partner_equip_type = data['partner_equip_type']
 	partner_equip = data['partner_equip']
 	partner_feature = data['partner_feature']
+	opponent_turn = data['opponent_turn']
+	opponent_turn_check = data['opponent_turn_check']
+	opponent_turn_when = data['opponent_turn_when']
 
 
 
@@ -119,6 +122,10 @@ def skill_save_errors(data):
 
 	errors = check_fields(tools, 'Tools', [required_tools], errors)
 	errors = check_field(tools, 'Tools', 'Tool Type', required_tools, errors)
+
+	errors = check_fields(opponent_turn, 'Opponent Turn', [opponent_turn_check, opponent_turn_when], errors)
+	errors = check_field(opponent_turn, 'Opponent Turn', 'When during opponents turn', opponent_turn_when, errors)
+	errors = check_field(opponent_turn, 'Opponent Turn', 'Opponent Check', opponent_turn_check, errors)
 
 	errors = together_names('Concealment', ['Concealment Type', 'Concealment'], [concealment_type, concealment], errors)
 	

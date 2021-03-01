@@ -131,3 +131,10 @@ function required_tools() {
 
 	check_opacity(check, div);
 }
+
+function opponent_turn() {
+	const check = 'opponent_turn';
+	const div = 'opponent-turn';
+
+	check_opacity(check, div);
+}

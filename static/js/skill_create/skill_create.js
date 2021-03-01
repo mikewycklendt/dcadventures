@@ -91,7 +91,10 @@ skill_save = function() {
 	const partner_equip_type = select("partner_equip_type");
 	const partner_equip = select("partner_equip");
 	const partner_feature = select("partner_feature");
-
+	const opponent_turn = check("opponent_turn");
+	const opponent_turn_check = select("opponent_turn_check");
+	const opponent_turn_when = select("opponent_turn_when");
+	
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
 
@@ -157,7 +160,10 @@ skill_save = function() {
 			'partner_materials': partner_materials,
 			'partner_equip_type': partner_equip_type,
 			'partner_equip': partner_equip,
-			'partner_feature': partner_feature
+			'partner_feature': partner_feature,
+			'opponent_turn': opponent_turn,
+			'opponent_turn_check': opponent_turn_check,
+			'opponent_turn_when': opponent_turn_when
 		}),
 		headers: {
 		'Content-Type': 'application/json',

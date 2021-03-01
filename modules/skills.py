@@ -265,6 +265,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	partner = [{'type': '', 'name': 'Requirement'}, {'type': 'trait', 'name': 'Check'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'tools', 'name': 'Tools'}, {'type': 'materials', 'name': 'Materials'}]
 
+	when = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'after', 'name': 'After'}]
+
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
 	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
@@ -302,7 +304,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type)
+							features=features, partner=partner, degree_type=degree_type, when=when)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -421,6 +423,9 @@ def save_skill_bonus():
 	partner_equip_type = request.get_json()['partner_equip_type']
 	partner_equip = request.get_json()['partner_equip']
 	partner_feature = request.get_json()['partner_feature']
+	opponent_turn = request.get_json()['opponent_turn']
+	opponent_turn_check = request.get_json()['opponent_turn_check']
+	opponent_turn_when = request.get_json()['opponent_turn_when']
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
@@ -436,6 +441,7 @@ def save_skill_bonus():
 	partner_equip_type = db_integer(EquipType, partner_equip_type)
 	partner_equip = db_integer(Equipment, partner_equip)
 	partner_feature = db_integer(Feature, partner_feature)
+	opponent_turn_check = db_integer(Check, opponent_turn_check)
 
 	partner_trait = integer(partner_trait)
 	
@@ -509,6 +515,9 @@ def save_skill_bonus():
 	entry.partner_equip_type = partner_equip_type
 	entry.partner_equip = partner_equip
 	entry.partner_feature = partner_feature
+	entry.opponent_turn = opponent_turn
+	entry.opponent_turn_check = opponent_turn_check
+	entry.opponent_turn_when = opponent_turn_when
 
 	db.session.commit()
 

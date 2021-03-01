@@ -431,6 +431,37 @@
 			</div>
 
 		</div>
+		
+		<div class="base-field">
+			<div id="multiple-attr-title" style="font-size: 150%;">
+				Used on Opponents Turn
+			</div>
+
+			<div class="base-3">
+				<div>
+					<input type="checkbox" id="opponent_turn" class="regular-checkbox big-checkbox" onclick="opponent_turn()"> 	
+				</div>
+
+				<div class="base-fade base-split" id="opponent-turn">
+					<div>
+						<select class="base-select" id="opponent_turn_check" name="opponent_turn_check">
+							{% for c in checks %}
+								<option value="{{c.id}}">{{c.name}}</option>
+							{% endfor %}
+						</select>	
+					</div>
+
+					<div>
+						<select class="base-select" id="opponent_turn_when" name="opponent_turn_when">
+							{% for w in when %}
+								<option value="{{w.type}}">{{w.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+ 				</div>
+			</div>
+
+		</div>
 
 		<div class="base-field">
 			<div id="multiple-attr-title" style="font-size: 150%;">
