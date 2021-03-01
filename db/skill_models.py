@@ -957,6 +957,7 @@ class SkillTime(db.Model):
 	perm = db.Column(db.Boolean)
 	turn = db.Column(db.Boolean)
 	round = db.Column(db.Boolean)
+	next = db.Column(db.Boolean)
 	scene = db.Column(db.Boolean)
 	instant = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
@@ -992,6 +993,7 @@ class SkillTime(db.Model):
 			'perm': self.perm,
 			'turn': self.turn,
 			'round': self.round,
+			'next': self.next,
 			'scene': self.scene,
 			'instant': self.instant,
 			'hide': self.hidden,

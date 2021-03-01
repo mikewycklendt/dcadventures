@@ -32,11 +32,17 @@ def time_db_columns_create():
 	entry = SkillTime(turn=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Next Round'
+
+	entry = SkillTime(next=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
 	results = db.session.query(SkillTime).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
-		print (result.name)
+		print (result.keyword)
 
 	return ('time fields added')
