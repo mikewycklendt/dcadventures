@@ -426,6 +426,8 @@ def save_skill_bonus():
 	opponent_turn = request.get_json()['opponent_turn']
 	opponent_turn_check = request.get_json()['opponent_turn_check']
 	opponent_turn_when = request.get_json()['opponent_turn_when']
+	secret_trait_type = request.get_json()['secret_trait_type']
+	secret_trait = request.get_json()['secret_trait_type']
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
@@ -489,6 +491,8 @@ def save_skill_bonus():
 	entry.check_dc = check_dc
 	entry.secret = secret
 	entry.secret_frequency = secret_frequency
+	entry.secret_trait_type = secret_trait_type
+	entry.secret_trait = secret_trait
 	entry.gm_circ_value = gm_circ_value
 	entry.gm_circ_type = gm_circ_type
 	entry.gm_circ = gm_circ

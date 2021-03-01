@@ -93,7 +93,8 @@ def skill_save_errors(data):
 	opponent_turn = data['opponent_turn']
 	opponent_turn_check = data['opponent_turn_check']
 	opponent_turn_when = data['opponent_turn_when']
-
+	secret_trait_type = data['secret_trait_type']
+	secret_trait = data['secret_trait']
 
 
 
@@ -117,8 +118,10 @@ def skill_save_errors(data):
 	errors = variable_fields('mod', speed_type, 'Speed Turns', speed_turns, errors)
 	errors = variable_fields('mod', speed_type, 'Speed Direction', speed_direction, errors)
 
-	errors = check_fields(secret, 'GM Secret Check', [secret_frequency], errors)
+	errors = check_fields(secret, 'GM Secret Check', [secret_frequency, secret_trait_type, secret_trait], errors)
 	errors = check_field(secret, 'GM Secret Check', 'Secret Check Frequency', secret_frequency, errors)
+	errors = check_field(secret, 'GM Secret Check', 'Secret Trait Type', secret_trait_type, errors)
+	errors = check_field(secret, 'GM Secret Check', 'Secret Trait', secret_trait, errors)
 
 	errors = check_fields(tools, 'Tools', [required_tools], errors)
 	errors = check_field(tools, 'Tools', 'Tool Type', required_tools, errors)

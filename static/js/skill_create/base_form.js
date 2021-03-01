@@ -82,8 +82,17 @@ function base_weapon_type() {
 function secret() {
 	const check = 'secret';
 	const div = 'secret-frequency';
+	const shrink = 'secret-trait'
 
 	check_opacity(check, div);
+	check_maxheight(check, shrink);
+}
+
+function secret_trait_type() {
+	const select = 'secret_trait_type';
+	const fill = 'secret_trait';
+
+	id_select(select, fill, trait_select);
 }
 
 function gm_circ() {

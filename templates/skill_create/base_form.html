@@ -430,6 +430,22 @@
  				</div>
 			</div>
 
+			<div class="base-shrink base-split" id="secret-trait">
+				<div>
+					<select class="base-select" id="secret_trait_type" name="secret_trait_type" onchange="secret_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
+
+				<div>
+					<select class="base-select" id="secret_trait" name="secret_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+			</div>
+
 		</div>
 		
 		<div class="base-field">
