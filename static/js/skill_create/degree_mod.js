@@ -249,7 +249,7 @@ function deg_mod_submit() {
 	const level_time = select("deg_mod_level_time");
 	const effect_target = select("deg_mod_effect_target");
 	const value_type = select("deg_mod_value_type");
-	const description = text("deg_mod_description");
+	const description = text("deg_mod_desc");
  
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
