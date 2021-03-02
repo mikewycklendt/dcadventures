@@ -140,6 +140,13 @@
 	grid-template-columns: 53% 15% 17% 15%;
 }
 
+#deg-mod-button-row input[type="text"] {
+	width: 90%; 
+	height: 1.2vw; 
+	font-size: 100%; 
+	padding: 2%;
+}
+
 #deg-mod-deg {
 	width:95%;
 	height: auto;
