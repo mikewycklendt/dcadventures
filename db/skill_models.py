@@ -301,6 +301,7 @@ class SkillCirc(db.Model):
 	surface = db.Column(db.Boolean)
 	tools = db.Column(db.String())
 	materials = db.Column(db.String())
+	max = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -342,7 +343,8 @@ class SkillCirc(db.Model):
 			'lasts': self.lasts,
 			'title': self.title,
 			'tools': self.tools,
-			'materials': self.materials
+			'materials': self.materials,
+			'max': self.max
 		}
 
 class SkillDC(db.Model):

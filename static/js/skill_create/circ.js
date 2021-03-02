@@ -68,6 +68,13 @@ function circ_lasts() {
 
 	select_opacity(select, options);
 }
+
+function circ_cumulative() {
+	const check = 'circ_cumulative';
+	const div = 'circ-max';
+
+	check_display(check, div);
+}
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -115,6 +122,7 @@ function circ_submit() {
 	const surface = check("circ_surface");
 	const tools = select("circ_tools");
 	const materials = select("circ_materials");
+	const max = select("circ_max")
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -162,7 +170,8 @@ function circ_submit() {
 			'title': title,
 			'surface': surface,
 			'tools': tools,
-			'materials': materials
+			'materials': materials,
+			'max': max
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

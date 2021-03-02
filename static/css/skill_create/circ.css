@@ -162,10 +162,15 @@
 
 #circ-row2 {
 	display: grid;
-	grid-template-columns: 30% auto auto auto 22%;
+	grid-template-columns: 78% 22%;
 	width: 97%;
 	gap: .2vw;
 	grid-template-rows: auto;
+}
+
+#circ-row2-checks {
+	display: grid;	
+	grid-template-columns: auto auto auto auto;
 }
 
 #circ-row2 input[type="text"] {

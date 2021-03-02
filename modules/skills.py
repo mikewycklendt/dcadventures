@@ -856,6 +856,7 @@ def skill_bonus_post_circ():
 	title = request.get_json()['title']
 	tools = request.get_json()['tools']
 	materials = request.get_json()['materials']
+	max = request.get_json()['max']
 
 	errors = skill_circ_post_errors(data)
 
@@ -888,6 +889,7 @@ def skill_bonus_post_circ():
 	unit_value = integer(unit_value)
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
+	max = integer(max)
 
 	body = {}
 	body['success'] = True
@@ -933,7 +935,8 @@ def skill_bonus_post_circ():
 						lasts = lasts,
 						title = title,
 						tools = tools,
-						materials = materials
+						materials = materials,
+						max = max
 					)
 
 	db.session.add(entry)

@@ -334,7 +334,7 @@
 
 	<div id="circ-row2">
 
-		<div>
+		<div style="display: none;">
 			<select class="lasts-sml" id="circ_lasts" name="circ_lasts">
 				<option value="">Time Circumstance Lasts</option>
 				<option value="perm">Permanent</option>
@@ -349,22 +349,35 @@
 			</select>
 		</div>
 
-		<div style="font-size: 80%;">
-			<div class="check-div">
-				<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox"> Cumulative
-			</div>
-		</div>
+		<div id="circ-row2-checks">
 
-		<div style="font-size: 80%;">
-			<div class="check-div">
-				<input type="checkbox" id="circ_optional" class="medium-checkbox med-checkbox"> Optional
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox" onclick="circ_cumulative()"> Cumulative
+				</div>
 			</div>
-		</div>
 
-		<div style="font-size: 80%;">
-			<div class="check-div">
-				<input type="checkbox" id="circ_surface" class="medium-checkbox med-checkbox"> Surface
+			<div class="hidden" id="circ-max">
+				<select class="select-sml" id="circ_max" name="circ_max">
+					 <option value="">Maximum Modifier</option>
+					 {% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					 {% endfor %}
+				</select>
 			</div>
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_optional" class="medium-checkbox med-checkbox"> Optional
+				</div>
+			</div>
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_surface" class="medium-checkbox med-checkbox"> Surface
+				</div>
+			</div>
+
 		</div>
 
 		<div>

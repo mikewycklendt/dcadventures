@@ -166,6 +166,7 @@ def skill_circ_post(entry, body, cells):
 	title = entry.title
 	tools = entry.tools
 	materials = entry.materials
+	max = entry.max 
 
 
 	title_name = get_name(SkillCircType, title)
@@ -189,6 +190,7 @@ def skill_circ_post(entry, body, cells):
 	unit_value = integer_convert(unit_value)
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
+	max = integer_convert(max)
 
 	lasts = get_keyword(SkillTime, lasts)
 
@@ -244,6 +246,7 @@ def skill_circ_post(entry, body, cells):
 	cells = check_cell('Surface', 8, surface, cells)
 	cells = check_cell('Optional', 9, optional, cells)
 	cells = check_cell('Cumulative', 10, cumulative, cells)
+	cells = cell('Maximum', 9, [max], cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
