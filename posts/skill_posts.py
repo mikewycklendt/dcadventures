@@ -245,7 +245,7 @@ def skill_circ_post(entry, body, cells):
 	cells = check_cell('Optional', 9, optional, cells)
 	cells = check_cell('Cumulative', 10, cumulative, cells)
 
-	cells = circ_cell('Circ', 6, circumstance, cells, body)
+	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
 	body = send_multiple(title, cells, body)
 
@@ -448,7 +448,7 @@ def skill_dc_post(entry, body, cells):
 	
 	cells = check_cell('Surface', 8, surface, cells)
 
-	cells = circ_cell('Description', 13, description, cells, body)
+	cells = circ_cell('Description', 'Description', 13, description, cells, body)
 
 	body = send_multiple(title, cells, body)
 
@@ -775,14 +775,14 @@ def skill_move_post(entry, body, cells):
 	vcells = vcell('rank_mod', 20, [speed_rank_mod, 'Speed Rank'])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
-	cells = circ_cell('Description', 13, speed_description, cells, body)
+	cells = circ_cell('Description', 'Description', 13, speed_description, cells, body)
 	
 	vcells = vcell('rank', 20, [distance_rank, 'Rank Distance'])
 	vcells = vcell('unit', 20, [distance_value, distance_units], vcells)
 	vcells = vcell('unit_math', 25, [distance_unit_trait, distance_unit_math1, distance_unit_value1, distance_unit_math2,  distance_unit_value2, distance_math_units], vcells)
 	vcells = vcell('rank_math', 25, [distance_rank_trait, distance_rank_math1, distance_rank_value1, distance_rank_math2, distance_rank_value2], vcells)
 	cells = vcell_add('Distance', distance, vcells, cells)
-	cells = circ_cell('Description', 13, distance_description, cells, body)
+	cells = circ_cell('Description', 'Description', 13, distance_description, cells, body)
 
 	cells = cell('Time', 18, [time], cells)
 	cells = cell('Degree', 18, [degree], cells)
@@ -902,7 +902,7 @@ def skill_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
 	mod_add(recurring, new_mod, body)
 
-	cells = circ_cell('Desc', 6, description, cells, body)
+	cells = circ_cell('Desc', 'Description', 6, description, cells, body)
 
 	body = send(cells, body)
 
