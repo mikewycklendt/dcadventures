@@ -85,6 +85,45 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Subsense'
+
+	name = 'All SubSenses'
+
+	entry = SubSense(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+
+
+
+	return ('descriptor columns added')
+
+
+
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Outdoors'
+	
+	name = 'Any ' + tablename
+
+	entry = Environment(outdoors=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Environment).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+
 
 
 if __name__ == '__main__':

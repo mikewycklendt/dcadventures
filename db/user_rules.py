@@ -94,6 +94,7 @@ class Environment(db.Model):
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	show = db.Column(db.Boolean)
+	outdoora = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -106,7 +107,8 @@ class Environment(db.Model):
 			'none': self.none,
 			'hide': self.hide,
 			'approved': self.approved,
-			'show': self.show
+			'show': self.show,
+			'outdoors': self.outdoora
 		}
 
 class Job(db.Model):
