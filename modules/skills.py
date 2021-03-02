@@ -165,7 +165,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	equipmwnt = db.session.query(Equipment).filter_by(show=True).all()
 
-	nature = db.Column.query(Nature).filter_by(show=True).all()
+	nature = db.session.query(Nature).filter_by(show=True).all()
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Skill Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'Check Table'}]
 
