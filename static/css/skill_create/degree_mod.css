@@ -137,7 +137,7 @@
 	display: grid;
 	width: 99%;
 	padding: .3vw;
-	grid-template-columns: 53% 15% 17% 15%;
+	grid-template-columns: 50% 18% 17% 15%;
 }
 
 #deg-mod-button-row input[type="text"] {
