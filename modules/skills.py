@@ -1867,7 +1867,7 @@ def skill_bonus_post_time():
 	
 	errors = linked_time(SkillCirc, circ, 'Circumstance', errors)
 	errors = linked_time(SkillDC, dc, 'DC', errors)
-	errors = linked_time(SkillDegree, degree, 'Circumstance', errors)
+	errors = linked_time(SkillDegree, degree, 'Degree', errors)
 
 	error = errors['error']
 	if error:

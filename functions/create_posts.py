@@ -387,7 +387,7 @@ def check_cell(title, width, check, cells, mod_check=False):
 	return (cells)
 
 
-def circ_cell(title, width, circumstance, cells, body, circ_check=True):
+def circ_cell(title, name, width, circumstance, cells, body, circ_check=True):
 
 	circs = body['circ']
 
@@ -402,7 +402,7 @@ def circ_cell(title, width, circumstance, cells, body, circ_check=True):
 			}
 
 	if circ_check:
-		circ = {'title': title,
+		circ = {'title': name,
 				'content': circumstance}
 		circs.append(circ)
 
