@@ -638,7 +638,7 @@ def skill_degree_post(entry, body, cells):
 
 	word = string('for', condition_turns)
 	word2 = string('Turns', condition_turns)
-	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2, 'using', condition_turns, 'Time'], vcells, condition_type, 'condition')
+	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2], vcells, condition_type, 'condition')
 	vcells = vcell('condition', 25, [condition_damage_value, 'Conditions', condition_damage], vcells, condition_type, 'damage')
 
 	vcells = vcell('circ', 40, [circumstance, 'on', circ_target], vcells)
@@ -957,6 +957,9 @@ def skill_time_post(entry, body, cells):
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
 	dc = get_keyword(SkillDC, dc)
+	degree_type = get_name(SkillDegreeType, degree_type)
+	circ_type = get_name(SkillCircType, circ_type)
+	dc_type = get_name(SkillDCType, dc_type)
 
 	turns = integer_convert(turns)
 
