@@ -165,6 +165,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	equipmwnt = db.session.query(Equipment).filter_by(show=True).all()
 
+	nature = db.Column.query(Nature).filter_by(show=True).all()
+
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Skill Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'Check Table'}]
 
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
@@ -213,7 +215,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Trait'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'} ]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Trait'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}]
 
 	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'This Object'}, {'type': 'character', 'name': 'This Character'}]
 
@@ -308,7 +310,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait)
+							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait, nature=nature)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -862,6 +864,8 @@ def skill_bonus_post_circ():
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
 	trait_target = request.get_json()['trait_target']
+	environment = request.get_json()['environment']
+	nature = request.get_json()['nature']
 
 	errors = skill_circ_post_errors(data)
 
@@ -884,7 +888,11 @@ def skill_bonus_post_circ():
 	unit = db_integer(Unit, unit)
 	measure_trait_math = db_integer(Math, measure_trait_math)
 	measure_math_rank = db_integer(Rank, measure_math_rank)
+	environment = db_integer(Environment, environment)
+	nature = db_integer(Nature, nature)
+
 	lasts = db_integer(SkillTime, lasts)
+
 
 	mod = integer(mod)
 	speed = integer(speed)
@@ -945,7 +953,9 @@ def skill_bonus_post_circ():
 						max = max,
 						trait_type = trait_type,
 						trait = trait,
-						trait_target = trait_target
+						trait_target = trait_target,
+						environment = environment
+						nature = nature
 					)
 
 	db.session.add(entry)

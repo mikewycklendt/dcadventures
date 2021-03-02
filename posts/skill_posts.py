@@ -170,6 +170,8 @@ def skill_circ_post(entry, body, cells):
 	trait_type = entry.trait_type
 	trait = entry.trait
 	trait_target = entry.trait_target
+	environment = entry.environment
+	nature = entry.nature
 
 
 
@@ -188,7 +190,9 @@ def skill_circ_post(entry, body, cells):
 	unit = get_name(Unit, unit)
 	measure_math_rank = get_name(Rank, measure_math_rank)
 	measure_type = math_convert(measure_type)
-	
+	environment = get_name(Environment, environment)
+	nature = get_name(Nature, nature)
+
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
 	measure_rank_value = integer_convert(measure_rank_value)
@@ -247,6 +251,10 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('materials', 25, [materials], vcells)
 	
 	vcells = vcell('trait', 35, ['Affects', trait], vcells)
+	
+	vcells = vcell('env', 25, ['If', environment], vcells)
+	
+	vcells = vcell('nature', 25, ['If', nature], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
 

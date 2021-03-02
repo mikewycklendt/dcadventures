@@ -18,7 +18,9 @@ function circ_effect() {
 					{'val': 'target', 'div': 'circ-target'},
 					{'val': 'tools', 'div': 'circ-tools'},
 					{'val': 'materials', 'div': 'circ-materials'},
-					{'val': 'trait', 'div': 'circ-trait'}]
+					{'val': 'trait', 'div': 'circ-trait'},
+					{'val': 'env', 'div': 'circ-env'},
+					{'val': 'nature', 'div': 'circ-nature'}]
 
 	select_opacity(select, options);
 }
@@ -134,7 +136,8 @@ function circ_submit() {
 	const trait_type = select("circ_trait_type");
 	const trait = select("circ_trait");
 	const trait_target = select("circ_trait_target");
-	
+	const environment = select("circ_environment")
+	const nature = select("circ_nature")
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -186,7 +189,9 @@ function circ_submit() {
 			'max': max,
 			'trait_type': trait_type,
 			'trait': trait,
-			'trait_target': trait_target
+			'trait_target': trait_target,
+			'environment': environment,
+			'nature': nature
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

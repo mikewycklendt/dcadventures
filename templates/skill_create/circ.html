@@ -54,6 +54,27 @@
 
 		<div>
 
+			<div id="circ-env">
+				<div>
+					<select class="select-sml" id="circ_environment" name="circ_environment">
+						<option value="">Environment</option>
+						<option value="outdoors">Any Outdoors</option>
+						{% for e in environments %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-nature">
+				<select class="select-sml" id="circ_nature" name="circ_nature">
+					<option value="">Nature</option>
+					{% for n in nature %}
+						<option value={{n.id}}>{{n.name}}</option>
+					{% endfor %}
+				</select>
+ 			</div>
+
 			<div id="circ-trait">
 				<div>
 					<select class="select-sml" id="circ_trait_type" name="circ_trait_type" onchange="circ_trait_type()">

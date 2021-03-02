@@ -305,6 +305,8 @@ class SkillCirc(db.Model):
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.Integer)
 	trait_target = db.Column(db.String())
+	environment = db.Column(db.Integer, db.ForeignKey('environments.id')) 
+	nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	
 	def format(self):
 		return {
@@ -350,7 +352,9 @@ class SkillCirc(db.Model):
 			'max': self.max,
 			'trait_type': self.trait_type,
 			'trait': self.trait,
-			'trait_target': self.trait_target
+			'trait_target': self.trait_target,
+			'environment': self.environment,
+			'nature': self.nature
 		}
 
 class SkillDC(db.Model):

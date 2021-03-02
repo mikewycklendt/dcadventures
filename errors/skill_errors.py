@@ -299,6 +299,8 @@ def skill_circ_post_errors(data):
 	trait_type = data['trait_type']
 	trait = data['trait']
 	trait_target = data['trait_target']
+	environment = data['environment']
+	nature = data['nature']
 
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
@@ -318,6 +320,9 @@ def skill_circ_post_errors(data):
 	errors = id_check(Math, measure_trait_math, 'Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
 	errors = int_check(trait, 'Trait', errors)
+
+	errors = id_check(Environment, environment, 'Environment', errors)
+	errors = id_check(Nature, nature, 'Nature', errors)
 
 	errors = id_check(SkillTime, lasts, 'Circumsrance Duration', errors)
 	
@@ -376,6 +381,10 @@ def skill_circ_post_errors(data):
 	errors = variable_field('trait', effect, 'Trait Type', trait_type, errors)
 	errors = variable_field('trait', effect, 'Trait', trait, errors)
 	errors = variable_field('trait', effect, 'Trait Target', trait_target, errors)
+
+	errors = variable_fields('env', 'Environment', effect, [environment], errors)
+
+	errors = variable_fields('nature', 'Nature', effect, [nature], errors)
 
 	errors = variable_fields('materials', 'Circumstance Effect', effect, [materials], errors)
 	errors = variable_field('materials', effect, 'Material Type', materials, errors)
