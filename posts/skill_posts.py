@@ -167,12 +167,17 @@ def skill_circ_post(entry, body, cells):
 	tools = entry.tools
 	materials = entry.materials
 	max = entry.max
+	trait_type = entry.trait_type
+	trait = entry.trait
+	trait_target = entry.trait_target
+
 
 
 	title_name = get_name(SkillCircType, title)
 	body['title'] = title_name
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
+	trait = trait_select(trait, trait_type)
 
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
@@ -240,6 +245,8 @@ def skill_circ_post(entry, body, cells):
 	vcells = vcell('tools', 25, [tools], vcells)
 	
 	vcells = vcell('materials', 25, [materials], vcells)
+	
+	vcells = vcell('trait', 35, ['Affects', trait], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
 

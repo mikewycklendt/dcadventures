@@ -302,6 +302,9 @@ class SkillCirc(db.Model):
 	tools = db.Column(db.String())
 	materials = db.Column(db.String())
 	max = db.Column(db.Integer)
+	trait_type = db.Column(db.String())
+	trait = db.Column(db.Integer)
+	trait_target = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -344,7 +347,10 @@ class SkillCirc(db.Model):
 			'title': self.title,
 			'tools': self.tools,
 			'materials': self.materials,
-			'max': self.max
+			'max': self.max,
+			'trait_type': self.trait_type,
+			'trait': self.trait,
+			'trait_target': self.trait_target
 		}
 
 class SkillDC(db.Model):

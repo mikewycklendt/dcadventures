@@ -213,7 +213,9 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'} ]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Trait'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'} ]
+
+	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'This Object'}, {'type': 'character', 'name': 'This Character'}]
 
 	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill_rank', 'name': 'Skill Rank Modifier'}, {'type': 'skill_unit', 'name': 'Skill Unit Modifier'}]
 
@@ -306,7 +308,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check)
+							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -857,6 +859,9 @@ def skill_bonus_post_circ():
 	tools = request.get_json()['tools']
 	materials = request.get_json()['materials']
 	max = request.get_json()['max']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	trait_target = request.get_json()['trait_target']
 
 	errors = skill_circ_post_errors(data)
 
@@ -890,6 +895,7 @@ def skill_bonus_post_circ():
 	measure_trait = integer(measure_trait)
 	measure_mod = integer(measure_mod)
 	max = integer(max)
+	trait = integer(trait)
 
 	body = {}
 	body['success'] = True
@@ -936,7 +942,10 @@ def skill_bonus_post_circ():
 						title = title,
 						tools = tools,
 						materials = materials,
-						max = max
+						max = max,
+						trait_type = trait_type,
+						trait = trait,
+						trait_target = trait_target
 					)
 
 	db.session.add(entry)

@@ -75,6 +75,13 @@ function circ_cumulative() {
 
 	check_display(check, div);
 }
+
+function circ_trait_type() {
+	const select = 'circ_trait_type';
+	const fill = 'circ_trait';
+
+	id_select(select, fill, trait_select);
+}
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -122,7 +129,11 @@ function circ_submit() {
 	const surface = check("circ_surface");
 	const tools = select("circ_tools");
 	const materials = select("circ_materials");
-	const max = select("circ_max")
+	const max = select("circ_max");
+	const trait_type = select("circ_trait_type");
+	const trait = select("circ_trait");
+	const trait_target = select("circ_trait_target");
+	
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -171,7 +182,10 @@ function circ_submit() {
 			'surface': surface,
 			'tools': tools,
 			'materials': materials,
-			'max': max
+			'max': max,
+			'trait_type': trait_type,
+			'trait': trait,
+			'trait_target': trait_target
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

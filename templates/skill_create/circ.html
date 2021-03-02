@@ -54,6 +54,30 @@
 
 		<div>
 
+			<div id="circ-trait">
+				<div>
+					<select class="select-sml" id="circ_trait_type" name="circ_trait_type" onchange="circ_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_trait" name="circ_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_trait_target" name="circ_trait_target">
+						{% for c in circ_trait %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="circ-tools">
 				<div>
 					<select class="select-sml" id="circ_tools" name="circ_tools">
