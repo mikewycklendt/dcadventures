@@ -166,7 +166,7 @@ def skill_circ_post(entry, body, cells):
 	title = entry.title
 	tools = entry.tools
 	materials = entry.materials
-	max = entry.max 
+	max = entry.max
 
 
 	title_name = get_name(SkillCircType, title)
@@ -538,6 +538,7 @@ def skill_degree_post(entry, body, cells):
 	title = entry.title
 	effect_target = entry.effect_target
 	value_type = entry.value_type
+	description = entry.description
 
 	title_name = get_name(SkillDegreeType, title)
 	body['title'] = title_name
@@ -686,6 +687,8 @@ def skill_degree_post(entry, body, cells):
 	cells = cell('Nullify DC', 13, [nullify], cells)
 	cells = check_cell('Cumulative', 12, cumulative, cells)
 	cells = cell('Linked', 15, [linked], cells)
+
+	cells = circ_cell('Desc', 'Description', 6, description, cells, body)
 
 	body = send_multiple(title, cells, body)
 

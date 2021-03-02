@@ -1302,6 +1302,7 @@ def skill_bonus_post_degree():
 	title = request.get_json()['title']
 	effect_target = request.get_json()['effect_target']
 	value_type = request.get_json()['value_type']
+	description = request.get_json()['description']
 
 	errors = skill_degree_post_errors(data)
 
@@ -1460,7 +1461,8 @@ def skill_bonus_post_degree():
 						compare = compare,
 						title = title,
 						effect_target = effect_target,
-						value_type = value_type)
+						value_type = value_type,
+						description = description)
 
 	db.session.add(entry)
 	db.session.commit()

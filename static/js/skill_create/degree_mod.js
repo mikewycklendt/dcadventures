@@ -4,7 +4,7 @@ function deg_mod_check() {
 	const title = "deg-mod-title";
 	const entry = "deg-mod-entry";
 
-	entry_check(deg_mod_check, title, deg_mod_base_form, entry, 160);
+	entry_check(deg_mod_check, title, deg_mod_base_form, entry);
 }
 
 function deg_mod_type() {
@@ -249,6 +249,7 @@ function deg_mod_submit() {
 	const level_time = select("deg_mod_level_time");
 	const effect_target = select("deg_mod_effect_target");
 	const value_type = select("deg_mod_value_type");
+	const description = text("deg_mod_description");
  
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -346,7 +347,8 @@ function deg_mod_submit() {
 			'title': title,
 			'level_time': level_time,
 			'effect_target': effect_target,
-			'value_type': value_type
+			'value_type': value_type,
+			'description': description
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
