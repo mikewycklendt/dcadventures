@@ -954,7 +954,7 @@ def skill_bonus_post_circ():
 						trait_type = trait_type,
 						trait = trait,
 						trait_target = trait_target,
-						environment = environment
+						environment = environment,
 						nature = nature
 					)
 
