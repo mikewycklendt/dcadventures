@@ -1098,12 +1098,10 @@ def skill_time_post_errors(data):
 	errors = variable_field('math', value_type, 'Math', math, errors)
 	errors = variable_field('math', value_type, 'Value', math_value, errors)
 
-	errors = variable_fields('rank', 'Time Measurement', value_type, [rank1, rank1_value, rank_math, rank2, rank2_value], errors)
-	errors = variable_field('rank', value_type, 'First Rank', rank1, errors)
-	errors = variable_field('rank', value_type, 'First Rank Value', rank1_value, errors)
+	errors = variable_fields('rank', 'Time Measurement', value_type, [rank_math], errors)
+	errors = select_of('rank', 'uses rank math', 'time value type', value_type, [rank1, rank1_value], ['first rank', 'first value'], errors)
 	errors = variable_field('rank', value_type, 'Math', rank_math, errors)
-	errors = variable_field('rank', value_type, 'Second Rank', rank2, errors)
-	errors = variable_field('rank', value_type, 'Second Rank Value', rank2_value, errors)
+	errors = select_of('rank', 'uses rank math', 'time value type', value_type, [rank2, rank2_value], ['second rank', 'second value'], errors)
 
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
