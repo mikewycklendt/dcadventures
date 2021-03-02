@@ -17,7 +17,8 @@ function circ_effect() {
 					{'val': 'temp', 'div': 'circ-temp'},
 					{'val': 'target', 'div': 'circ-target'},
 					{'val': 'tools', 'div': 'circ-tools'},
-					{'val': 'materials', 'div': 'circ-materials'}]
+					{'val': 'materials', 'div': 'circ-materials'},
+					{'val': 'trait', 'div': 'circ-trait'}]
 
 	select_opacity(select, options);
 }
