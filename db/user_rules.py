@@ -94,6 +94,7 @@ class Environment(db.Model):
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	show = db.Column(db.Boolean)
+	outdoors = db.Column(db.Boolean)
 
 	def format(self):
 		return {
