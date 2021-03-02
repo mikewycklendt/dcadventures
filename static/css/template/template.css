@@ -335,8 +335,8 @@ body{
 }
 
 .small-text {
-	width: 90%; 
-	height: 1.2vw; 
+	height: .9vw; 
+	width: 95%;
 	font-size: 100%; 
 	padding: 2%;
 }
