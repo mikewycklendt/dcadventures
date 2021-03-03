@@ -100,7 +100,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 12% 7% 30% 6% 30% 15%;
+	grid-template-columns: 12% 7% 25% 6% 25% 25%;
 }
 
 #check-condition {
