@@ -434,7 +434,10 @@ class SkillDC(db.Model):
 	title = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
 	time = db.Column(db.Integer, db.ForeignKey('skill_time.id'))
 	effect_target = db.Column(db.String())
-	
+	equipment_use = db.Column(db.String())
+	equipment_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
+	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	equip = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -508,7 +511,11 @@ class SkillDC(db.Model):
 			'variable_checK': self.variable_check,
 			'variable': self.variable,
 			'title': self.title,
-			'effect_target': self.effect_target
+			'effect_target': self.effect_target,
+			'equipment_use': self.equipment_use,
+			'equipment_type': self.equipment_type,
+			'equipment': self.equipment,
+			'equip': self.equip
 		}
 
 class SkillDegree(db.Model):

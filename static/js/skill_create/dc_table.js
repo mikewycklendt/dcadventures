@@ -125,6 +125,21 @@ function dc_level_type() {
 	id_select(select, fill, level_select);
 }
 
+function dc_equip() {
+	const check = 'dc_equip';
+	const div = 'dc-equip';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry);
+}
+
+function dc_equipment_type() {
+	const select = 'dc_equipment_type';
+	const fill = 'dc_equipment';
+
+	id_select(select, fill, equipment_select);
+}
+
 function dc_measure() {
 	const check = 'dc_measure';
 	const div = 'dc-measure';
@@ -285,6 +300,10 @@ function dc_submit() {
 	const title = text("dc_title")
 	const surface = check("dc_surface")
 	const effect_target = select("dc_effect_target");
+	const equipment_use = select("dc_equipment_use");
+	const equipment_type = select("dc_equipment_type");
+	const equipment = select("dc_equipment");
+	const equip = check("dc_equip");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -368,7 +387,11 @@ function dc_submit() {
 			'time': time,
 			'title': title,
 			'surface': surface,
-			'effect_target': effect_target
+			'effect_target': effect_target,
+			'equipment_use': equipment_use,
+			'equipment_type': equipment_type,
+			'equipment': equipment,
+			'equip': equip
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

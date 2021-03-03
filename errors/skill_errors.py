@@ -469,6 +469,10 @@ def skill_dc_post_errors(data):
 	variable = data['variable']
 	time = data['time']
 	title = data['title']
+	equipment_use = data['equipment_use']
+	equipment_type = data['equipment_type']
+	equipment = data['equipment']
+	equip = data['equip']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -494,7 +498,9 @@ def skill_dc_post_errors(data):
 	errors = id_check(LevelType, level_type, 'Level Type', errors)
 	errors = id_check(Levels, level, 'Level', errors)
 	errors = id_check(Complex, complexity, 'Complexity', errors)
-	
+	errors = id_check(EquipType, equipment_type, 'Equipment Type', errors)
+	errors = id_check(Equipment, equipment, 'Equipment', errors)
+
 	errors = id_check(Cover, cover_type, 'Cover', errors)
 	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
 	
@@ -585,6 +591,11 @@ def skill_dc_post_errors(data):
 	errors = check_fields(cover, 'Cover', [cover_effect, cover_type], errors)
 	errors = check_field(cover, 'Cover', 'Cover Type', cover_type, errors)
 	errors = check_field(cover, 'Cover', 'Cover Effect', cover_effect, errors)
+
+	errors = check_fields(equip, 'Equipment', [equipment_use, equipment_type, equipment], errors)
+	errors = check_field(equip, 'Equipment', 'Equipment Use Type', equipment_use, errors)
+	errors = check_field(equip, 'Equipment', 'Equipment Type', equipment_type, errors)
+	errors = check_field(equip, 'Equipment', 'Equipment', equipment, errors)
 
 	errors = check_fields(variable_check, 'Variable Check', [variable], errors)
 

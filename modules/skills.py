@@ -273,6 +273,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	skill_check = [{'type': '', 'name': 'Skill to Check'}, {'type': 'this', 'name': 'This skill'}, {'type': 'parent', 'name': 'Parent'}, {'type': 'x', 'name': 'Variable'}]
 
+	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
+
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
 	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
@@ -310,7 +312,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 							speed=speed, distance=distance, distances=distances, trait_type=trait_type, measure_effect_circ=measure_effect_circ, measure_type=measure_type, offers=offers, bonus_circ=bonus_circ, bonus_dc=bonus_dc, bonus_degree=bonus_degree,
 							bonus_opposed=bonus_opposed, bonus_time=bonus_time, bonus_move=bonus_move, bonus_check=bonus_check, bonus_circ_type=bonus_circ_type, bonus_dc_type=bonus_dc_type, bonus_degree_type=bonus_degree_type,
 							bonus_move_type=bonus_move_type, bonus_time_type=bonus_time_type, materials=materials, multiple_time=multiple_time, effect_target=effect_target, equip_type=equip_type, equipmwnt=equipmwnt, 
-							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait, nature=nature)
+							features=features, partner=partner, degree_type=degree_type, when=when, skill_check=skill_check, circ_trait=circ_trait, nature=nature, equipment_type=equipment_type)
 
 
 @skill.route('/skill/create', methods=['POST'])
@@ -1077,6 +1079,10 @@ def skill_bonus_post_dc():
 	time = request.get_json()['time']
 	title = request.get_json()['title']
 	effect_target = request.get_json()['effect_target']
+	equipment_use = request.get_json()['equipment_use']
+	equipment_type = request.get_json()['equipment_type']
+	equipment = request.get_json()['equipment']
+	equip = request.get_json()['equip']
 
 
 	errors = skill_dc_post_errors(data)
@@ -1105,6 +1111,8 @@ def skill_bonus_post_dc():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 	complexity = db_integer(Complex, complexity)
+	equipment_type = db_integer(EquipType, equipment_type)
+	equipment = db_integer(Equipment, equipment)
 
 	time = db_integer(SkillTime, time)
 	variable = db_integer(SkillCheck, variable)
@@ -1204,7 +1212,12 @@ def skill_bonus_post_dc():
 					variable = variable,
 					time = time,
 					title = title,
-					effect_target = effect_target)
+					effect_target = effect_target,
+					equipment_use = equipment_use,
+					equipment_type = equipment_type,
+					equipment = equipment,
+					equip = equip
+				)
 
 	db.session.add(entry)
 	db.session.commit()

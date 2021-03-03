@@ -210,6 +210,41 @@
 				<input type="checkbox" id="dc_conceal" class="medium-checkbox med-checkbox" onclick="dc_conceal()"> Concealment
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_equip" class="medium-checkbox med-checkbox" onclick="dc_equip()"> Equipment
+			</div>
+		</div>
+	</div>
+
+	<div id="d-equip">
+		<div>
+			Equipment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment_use" name="dc_equipment_use">
+				{% for e in equipment_use %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment_type" name="dc_equipment_type" onchange="dc_equipment_type()">
+				<option value="">Equipment Type</option>
+				{% for e in equip_type %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment" name="dc_equipment">
+				<option value="">Equipment</option>
+			</select>
+		</div>
 	</div>
 
 	<div id="dc-variable">

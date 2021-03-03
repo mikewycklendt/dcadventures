@@ -123,6 +123,7 @@
 	width: 98%;
 	gap: .3vw;
 	grid-template-columns: auto auto auto auto auto auto;
+	font-size: 90%;
 	grid-auto-rows: auto;
 }
 
@@ -130,7 +131,8 @@
 	display: grid;
 	width: 98%;
 	gap: .3vw;
-	grid-template-columns: 25% 25% 25% 22%;
+	grid-template-columns: auto auto auto auto auto;
+	font-size: 90%;
 	grid-auto-rows: auto;
 }	
 
@@ -151,6 +153,16 @@
 	transition: all .3s ease-out;
 	text-align: center;
 	grid-template-columns: 25% 40% 35%;
+	gap: .2vw;
+}
+
+#dc-equip {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 20% 30% 30%;
 	gap: .2vw;
 }
 

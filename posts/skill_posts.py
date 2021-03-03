@@ -92,7 +92,6 @@ def skill_check_post(entry, body, cells):
 	action = action_convert(action_type, action)
 	condition = get_name(Condition, condition)
 
-
 	degree = get_name(SkillDegreeType, degree)
 	circ = get_name(SkillCircType, circ)
 	dc = get_name(SkillDCType, dc)
@@ -134,6 +133,8 @@ def skill_check_post(entry, body, cells):
 
 	cells = check_cell('Free', 7, free, cells)
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)
+
+	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
 	body = send(cells, body)
 
@@ -347,6 +348,10 @@ def skill_dc_post(entry, body, cells):
 	time = entry.time
 	title = entry.title
 	effect_target = entry.effect_target
+	equipment_use = entry.equipment_use
+	equipment_type = entry.equipment_type
+	equipment = entry.equipment
+	equip = entry.equip
 
 	title_name = get_name(SkillDCType, title)
 	body['title'] = title_name
@@ -385,6 +390,8 @@ def skill_dc_post(entry, body, cells):
 	measure_math_rank = get_name(Rank, measure_math_rank)
 	measure_math_unit = get_name(Unit, measure_math_unit)
 	measure_trait_math_unit = get_name(Math, measure_trait_math_unit)
+	equipment_type = get_name(EquipType, equipment_type)
+	equipment = get_name(Equipment, equipment)
 
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
@@ -473,6 +480,13 @@ def skill_dc_post(entry, body, cells):
 	new_mod = mod_create('Change Check', 18)
 	new_mod = mod_cell('Check', 7, [variable], new_mod)
 	body = mod_add(variable_check, new_mod, body)
+	
+	cells = check_cell('Equipment', 12, equip, cells, True)
+	new_mod = mod_create('Equipment', 15)
+	new_mod = mod_cell('Use Type', 9, [equipment_use], new_mod)
+	new_mod = mod_cell('Type', 5, [equipment_type], new_mod)
+	new_mod = mod_cell('Item', 9, [equipment], new_mod)
+	body = mod_add(equip, new_mod, body)
 	
 	cells = check_cell('Surface', 8, surface, cells)
 
