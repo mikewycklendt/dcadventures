@@ -302,8 +302,6 @@ def int_check(value, name, errors):
 
 def name(Table, value, name=''):
 	
-	db = SQLAlchemy()
-
 	if value == 0:
 		value = 'All'
 		return (value)
@@ -326,8 +324,6 @@ def name(Table, value, name=''):
 
 def get_name(Table, value):
 	
-	db = SQLAlchemy()
-
 	if value is None:
 		value = ''
 		return (value)
@@ -343,8 +339,6 @@ def get_name(Table, value):
 
 def get_id(Table, value):
 	
-	db = SQLAlchemy()
-
 	if value is None:
 		print (value)
 		value = ''
@@ -361,8 +355,6 @@ def get_id(Table, value):
 
 def get_circ(Table, value, name=''):
 	
-	db = SQLAlchemy()
-
 	if value == 0:
 		value = 'All'
 		return (value)
@@ -383,14 +375,8 @@ def get_circ(Table, value, name=''):
 	
 	return (value)
 
-def get_keyword(Table, value, name=''):
+def get_keyword(Table, value):
 	
-	db = SQLAlchemy()
-
-	if value == 1234:
-		value = name
-		return (value)
-
 	if value is not None:
 		try:
 			name_query = db.session.query(Table).filter_by(id=value).one()
@@ -406,8 +392,6 @@ def get_keyword(Table, value, name=''):
 
 def get_description(Table, value, name=''):
 	
-	db = SQLAlchemy()
-
 	if value is not None:
 		try:
 			name_query = db.session.query(Table).filter_by(id=value).one()
