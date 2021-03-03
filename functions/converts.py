@@ -329,7 +329,6 @@ def get_name(Table, value):
 	db = SQLAlchemy()
 
 	if value is None:
-		print (value)
 		value = ''
 		return (value)
 	else:

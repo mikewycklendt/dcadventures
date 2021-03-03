@@ -215,7 +215,11 @@ def skill_check_post_errors(data):
 	move = data['move']
 	keyword = data['keyword']
 	attack = data['attack']
-	opposed= data ['opposed']
+	opposed = data ['opposed']
+	condition = data ['condition']
+	condition_target = data ['condition_target']
+	conditions_target = data ['conditions_target']
+
 
 	
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
@@ -225,6 +229,10 @@ def skill_check_post_errors(data):
 	errors = id_check(ConflictAction, conflict, 'Conflict Action', errors)
 	errors = id_check(Ranged, conflict_range, 'Conflict Range', errors)
 	errors = int_check(action, 'Action', errors)
+	errors = id_check(Condition, condition1, 'Start Condition', errors)
+	errors = id_check(Condition, condition2, 'End Condition', errors)
+	errors = id_check(Condition, condition, 'Condition', errors)
+
 
 	errors = id_check(SkillDegreeType, degree, 'Degree', errors)
 	errors = id_check(SkillCircType, circ, 'Circumstance', errors)
@@ -244,9 +252,13 @@ def skill_check_post_errors(data):
 	errors = required(trait_type, 'Rank', errors)
 	errors = required(trait, 'Trait', errors)	
 
-	errors = variable_fields('condition', 'Trigger', trigger, [condition1, condition2], errors)
-	errors = variable_field('condition', trigger, 'Starting Condition', condition1, errors)
-	errors = variable_field('condition', trigger, 'Ending Condition', condition2, errors)
+	errors = variable_fields('change', 'Trigger', trigger, [condition1, condition2, conditions_target], errors)
+	errors = variable_field('change', trigger, 'Starting Condition', condition1, errors)
+	errors = variable_field('change', trigger, 'Ending Condition', condition2, errors)
+	errors = variable_field('change', trigger, 'Condition Target', conditions_target, errors)
+	errors = variable_fields('condition', 'Trigger', trigger, [condition, condition_target], errors)
+	errors = variable_field('condition', trigger, 'Condition', condition, errors)
+	errors = variable_field('condition', trigger, 'Condition Target', condition_target, errors)
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 

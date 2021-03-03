@@ -76,6 +76,10 @@ def skill_check_post(entry, body, cells):
 	keyword = entry.keyword
 	attack = entry.attack
 	opposed = entry.opposed
+	condition = entry.condition
+	condition_target = entry.condition_target
+	conditions_target = entry.conditions_target
+
 
 	trait = trait_select(trait, trait_type)
 
@@ -86,7 +90,9 @@ def skill_check_post(entry, body, cells):
 	condition2 = get_name(Condition, condition2)
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
-	
+	condition = get_name(Condition, condition)
+
+
 	degree = get_name(SkillDegreeType, degree)
 	circ = get_name(SkillCircType, circ)
 	dc = get_name(SkillDCType, dc)
@@ -100,6 +106,10 @@ def skill_check_post(entry, body, cells):
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
 	when = selects(when, check_type_select)
 
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	condition_target = selects(condition_target, targets)
+	conditions_target = selects(conditions_target, targets)
+
 	cells = cell('Keyword', 18, [keyword])
 	cells = cell('Check', 15, [check_type], cells)
 	cells = cell('Modifier', 8, [mod], cells)
@@ -107,7 +117,8 @@ def skill_check_post(entry, body, cells):
 	cells = cell('Check Trait', 14, [trait], cells)
 	cells = cell('Action', 14, [action], cells)
 	
-	vcells = vcell('condition', 25, [condition1, 'to', condition2])
+	vcells = vcell('change', 35, [conditions_target, 'from', condition1, 'to', condition2])
+	vcells = vcell('condition', 30, [condition_target, condition], vcells)
 	w = width(10, 8, conflict_range)
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)

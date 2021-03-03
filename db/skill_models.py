@@ -230,7 +230,10 @@ class SkillCheck(db.Model):
 	move = db.Column(db.Integer, db.ForeignKey('skill_move_type.id'))
 	attack = db.Column(db.Integer)
 	opposed = db.Column(db.Integer, db.ForeignKey('skill_opposed.id'))
-
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition_target = db.Column(db.String())
+	conditions_target = db.Column(db.String())
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -258,7 +261,10 @@ class SkillCheck(db.Model):
 			'move': self.move,
 			'keyword': self.keyword,
 			'attack': self.attack,
-			'opposed': self.opposed
+			'opposed': self.opposed,
+			'condition': self.condition,
+			'condition_target': self.condition_target,
+			'conditions_target': self.conditions_target
 		}
 
 class SkillCirc(db.Model):

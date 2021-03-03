@@ -179,9 +179,9 @@
 		</div>
 	</div>
 
-	<div id="check-condition">
+	<div id="check-conditionS">
 		<div class="vcenter" style="text-align: left;">
-			Triggered by Condition:
+			Conditions:
 		</div>
 
 		<div class="vcenter">
@@ -206,6 +206,37 @@
 				<option value="">End Condition</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry=select" id="check_conditions_target" name="check_conditions_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div id="check-conditionS">
+		<div class="vcenter" style="text-align: left;">
+			Condition:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_condition" name="check_condition">
+				<option value="">End Condition</option>
+				{% for c in conditions %}
+					<option value="{{c.id}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry=select" id="check_condition_target" name="check_condition_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

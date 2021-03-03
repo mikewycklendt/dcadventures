@@ -42,7 +42,8 @@ function check_action_type() {
 
 function check_trigger() {
 	const select = 'check_trigger';
-	const options = [{'val': 'condition', 'div': 'check-condition'},
+	const options = [{'val': 'change', 'div': 'check-conditions'},
+					{'val': 'condition', 'div': 'check-condition'},
 					{'val': 'conflict', 'div': 'check-conflict'}];
 	const entry = 'check-entry';
 
@@ -83,6 +84,10 @@ function check_submit() {
 	const move = select("check_move_type");
 	const attack = select("check_attack");
 	const opposed = select("check_opposed");
+	const condition = select("check_condition");
+	const condition_target = select("check_condition_target");
+	const conditions_target = select("check_conditions_target");
+	
 	
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -124,7 +129,10 @@ function check_submit() {
 			'move': move,
 			'keyword': keyword,
 			'attack': attack,
-			'opposed': opposed
+			'opposed': opposed,
+			'condition': condition,
+			'condition_target': condition_target,
+			'conditions_target': conditions_target
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

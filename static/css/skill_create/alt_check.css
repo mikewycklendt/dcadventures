@@ -94,13 +94,22 @@
 	grid-template-columns: auto auto auto auto auto;
 }
 
+#check-conditions {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 12% 7% 30% 6% 30% 15%;
+}
+
 #check-condition {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 27% 7% 30% 6% 30%;
+	grid-template-columns: 12% 30% 18% 50%;
 }
 
 #check-attack {

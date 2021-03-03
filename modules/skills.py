@@ -227,7 +227,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
-	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
 
@@ -719,6 +719,9 @@ def skill_bonus_post_check():
 	keyword = request.get_json()['keyword']
 	attack = request.get_json()['attack']
 	opposed = request.get_json()['opposed']
+	condition = request.get_json()['condition']
+	condition_target = request.get_json()['condition_target']
+	conditions_target = request.get_json()['conditions_target']
 
 	degree = db_integer(SkillDegreeType, degree)
 	circ = db_integer(SkillCircType, circ)
@@ -736,6 +739,7 @@ def skill_bonus_post_check():
 	conflict_range = db_integer(Ranged, conflict_range)
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
+	condition = db_integer(Condition, condition)
 
 	trait = integer(trait)
 	action = integer(action)
@@ -763,7 +767,12 @@ def skill_bonus_post_check():
 						move = move,
 						keyword = keyword,
 						attack = attack,
-						opposed = opposed
+						opposed = opposed,
+						condition = condition,
+						condition_target = condition_target,
+						conditions_target = conditions_target
+
+
 					)
 
 	db.session.add(entry)
