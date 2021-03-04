@@ -100,7 +100,7 @@ def table_db_columns_create():
 		print (result.id)
 		print (result.name)
 
-	return (tablename + ' db added')
+	return (name + ' db added')
 
 
 if __name__ == '__main__':
