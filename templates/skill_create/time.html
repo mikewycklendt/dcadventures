@@ -175,6 +175,20 @@
 					</select>
 				</div>
 			</div>
+			
+			<div id="time-mod">
+				<div>
+					<select class="select-sml" id="time_mod" name="time_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 
 		</div>
 

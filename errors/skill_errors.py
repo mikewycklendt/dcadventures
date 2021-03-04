@@ -1101,6 +1101,7 @@ def skill_time_post_errors(data):
 	degree_type = data['degree_type']
 	dc_type = data['dc_type']
 	time = data['time']
+	mod = data['mod']
 
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
@@ -1117,6 +1118,7 @@ def skill_time_post_errors(data):
 	errors = int_check(math_value, 'Time Math Value', errors)
 	errors = int_check(recovery_penalty, 'Recovery Penalty Modifier', errors)
 	errors = int_check(time, 'Time Rank', errors)
+	errors = int_check(mod, 'Time Rank Modifier', errors)
 
 	errors = int_check(turns, 'Turns', errors)
 	errors = id_check(SkillDegree, degree, 'Degree', errors)
@@ -1150,6 +1152,8 @@ def skill_time_post_errors(data):
 	errors = variable_fields('turns', 'Turns', value_type, [turns], errors)
 
 	errors = variable_fields('time', 'Time Rank', value_type, [time], errors)
+
+	errors = variable_fields('mod', 'Time Rank Modifier', value_type, [mod], errors)
 
 	errors = variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
 

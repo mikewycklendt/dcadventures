@@ -140,6 +140,13 @@
 	transition: all .3s ease-in;
 }
 
+#time-mod {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 20%;
+	transition: all .3s ease-in;
+}
+
 #time-turns {
 	display: none;
 	opacity: 0%;

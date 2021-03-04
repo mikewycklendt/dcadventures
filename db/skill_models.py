@@ -995,6 +995,7 @@ class SkillTime(db.Model):
 	degree_type = db.Column(db.Integer, db.ForeignKey('skill_degree_type.id'))
 	dc_type = db.Column(db.Integer, db.ForeignKey('skill_dc_type.id'))
 	time = db.Column(db.Integer)
+	mod = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -1031,5 +1032,6 @@ class SkillTime(db.Model):
 			'circ_type': self.circ_type,
 			'degree_type': self.degree_type,
 			'dc_type': self.dc_type,
-			'time': self.time
+			'time': self.time,
+			'mod': self.mod
 		}

@@ -989,6 +989,7 @@ def skill_time_post(entry, body, cells):
 	degree_type = entry.degree_type
 	dc_type = entry.dc_type
 	time = entry.time
+	mod = entry.mod
 
 
 	title_name = get_name(SkillTimeType, title)
@@ -1008,6 +1009,7 @@ def skill_time_post(entry, body, cells):
 	recovery_penalty = integer_convert(recovery_penalty)
 	turns = integer_convert(turns)
 	time = integer_convert(time)
+	mod = integer_convert(mod)
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
@@ -1015,8 +1017,6 @@ def skill_time_post(entry, body, cells):
 	degree_type = get_name(SkillDegreeType, degree_type)
 	circ_type = get_name(SkillCircType, circ_type)
 	dc_type = get_name(SkillDCType, dc_type)
-
-	turns = integer_convert(turns)
 
 	
 	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
@@ -1038,6 +1038,8 @@ def skill_time_post(entry, body, cells):
 	vcells = vcell('scene', 14, ['Scene'], vcells)
 	vcells = vcell('turn', 14, ['One Turn'], vcells)
 	vcells = vcell('time', 17, ['Time Rank', time], vcells)
+	mod = add_plus(mod)
+	vcells = vcell('mod', 18, [mod, 'Time Rank'], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 
 	cells = cell('Degree', 18, [degree, degree_type], cells)

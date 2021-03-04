@@ -36,7 +36,8 @@ function time_value_type() {
 					{'val': 'value', 'div': 'time-value'}, 
 					{'val': 'rank', 'div': 'time-rank'}, 
 					{'val': 'turns', 'div': 'time-turns'}, 
-					{'val': 'time', 'div': 'time-time'}]
+					{'val': 'time', 'div': 'time-time'}, 
+					{'val': 'mod', 'div': 'time-mod'}]
 
 	select_opacity(select, options);
 }
@@ -79,6 +80,7 @@ function time_submit() {
 	const degree_type = select("time_degree_type");
 	const dc_type = select("time_dc_type");
 	const time = select("time_time");
+	const mod = select("time_mod");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -125,7 +127,8 @@ function time_submit() {
 			'circ_type': circ_type,
 			'degree_type': degree_type,
 			'dc_type': dc_type,
-			'time': time
+			'time': time,
+			'mod': mod
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

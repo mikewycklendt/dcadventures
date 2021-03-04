@@ -173,7 +173,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -1911,6 +1911,8 @@ def skill_bonus_post_time():
 	scene = preset_convert('scene', value_type)
 	turn = preset_convert('turn', value_type)
 	time = request.get_json()['time']
+	mod = request.get_json()['mod']
+	mod = request.get_json()['mod']
 
 	errors = skill_time_post_errors(data)
 	
@@ -1945,6 +1947,7 @@ def skill_bonus_post_time():
 	math_value = integer(math_value)
 	recovery_penalty = integer(recovery_penalty)
 	time = integer(time)
+	mod = integer(mod)
 
 	turns = integer(turns)
 
@@ -1989,7 +1992,8 @@ def skill_bonus_post_time():
 						round = round,
 						next = next,
 						scene = scene,
-						time = time
+						time = time,
+						mod = mod
 					)
 
 	db.session.add(entry)
