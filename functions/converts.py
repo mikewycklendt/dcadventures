@@ -621,7 +621,6 @@ def id_check(table, value_id, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	
-	db = SQLAlchemy()
 
 	if value_id == '':
 		return (errors)
