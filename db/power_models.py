@@ -89,6 +89,7 @@ class Power(db.Model):
 	show = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	base = db.Column(db.Boolean)
+	active = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -150,7 +151,8 @@ class Power(db.Model):
 			'none': self.none,
 			'show': self.show,
 			'approved': self.approved,
-			'base': self.base
+			'base': self.base,
+			'active': self.active
 		}
 
 class PowerType(db.Model):

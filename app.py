@@ -84,34 +84,41 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
+@app.route('/table/db')
+def table_db_columns_create():
 
-@app.route('/item/create')
-def item_create():
+	tablename =  'Subsense'
 
-	entries = ['Ladder', 'Rope']
+	name = 'All SubSenses'
 
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
+	entry = SubSense(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
-		entry = Equipment(name=i, type_id=1, base=True, show=True)
-		db.session.add(entry)
-		db.session.commit()
 
-	entries = ['Straightjacket']
 
-	for i in entries:
-		description = ''
-		description = 'This is the description for ' + i + '.  '
-		description = description + description + description + description + description + description
 
-		entry = Equipment(name=i, type_id=3, base=True, show=True)
-		db.session.add(entry)
-		db.session.commit()
+	return ('descriptor columns added')
 
-	return ('items added')
 
+
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	name = 'Active Power'
+
+	entry = Power(active=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Power).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
 
 
 if __name__ == '__main__':

@@ -17,8 +17,9 @@ function dc_base() {
 function dc_math_trait_type() {
 	const select  = 'dc_math_trait_type';
 	const fill = 'dc_math_trait';
+	const sub = 'skill';
 
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, );
 }
 
 function dc_dc() {
