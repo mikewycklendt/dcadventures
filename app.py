@@ -110,6 +110,8 @@ def item_create():
 		db.session.add(entry)
 		db.session.commit()
 
+	return ('items added')
+
 
 
 if __name__ == '__main__':
