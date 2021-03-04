@@ -85,26 +85,30 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
+@app.route('/item/create')
+def item_create():
 
-@app.route('/table/db')
-def table_db_columns_create():
+	entries = ['Ladder', 'Rope']
 
-	tablename =  'Outdoors'
-	
-	name = 'Any ' + tablename
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
 
-	entry = Environment(outdoors=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
+		entry = Equipment(name=i, type_id=1, base=True, show=True)
+		db.session.add(entry)
+		db.session.commit()
 
-	results = db.session.query(Environment).filter_by(hide=True).all()
+	entries = ['Straightjacket']
 
-	for result in results:
-		print (result.id)
-		print (result.name)
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
 
-	return (tablename + ' db added')
-
+		entry = Equipment(name=i, type_id=3, base=True, show=True)
+		db.session.add(entry)
+		db.session.commit()
 
 
 
