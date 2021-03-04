@@ -477,7 +477,7 @@ def skill_trait_select():
 	if sub == 'variable':
 		var = db.session.query(Power).filter_by(var=True).first()
 		powers.append({'id': var.id, 'name': 'Variable Power'})
-	elif sub == 'active':
+	elif sub == 'skill-dc':
 		act = db.session.query(Power).filter_by(active=True).first()
 		powers.append({'id': act.id, 'name': act.name})
 	for p in powers_query:

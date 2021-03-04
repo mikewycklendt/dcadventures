@@ -90,7 +90,7 @@ def table_db_columns_create():
 
 	name = 'Active Power'
 
-	entry = Power(active=True, name=name, hide=True )
+	entry = Power(active=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
