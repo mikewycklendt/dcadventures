@@ -403,9 +403,9 @@ def skill_dc_post(entry, body, cells):
 	target = selects(target, targets_select)
 	effect_target = selects(effect_target, targets_select)
 
-	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}]
-	condition1 = selects(condition1, conditions_select)
-	condition2 = selects(condition2, conditions_select)
+	equipment_use_select = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
+	equipment_use = selects(equipment_use, equipment_use_select)
+
 
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Target', 10, [target], cells)
