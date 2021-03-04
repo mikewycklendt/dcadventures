@@ -94,7 +94,7 @@ def table_db_columns_create():
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Power).filter_by(hide=True).all()
+	results = db.session.query(Power).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
