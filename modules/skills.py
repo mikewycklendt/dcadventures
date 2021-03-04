@@ -173,7 +173,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'player', 'name': 'Set by Player'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -1905,6 +1905,8 @@ def skill_bonus_post_time():
 	degree_type = request.get_json()['degree_type']
 	dc_type = request.get_json()['dc_type']
 	instant = preset_convert('instant', value_type)
+	player = preset_convert('player', value_type)
+	gm = preset_convert('gm', value_type)
 	perm = preset_convert('perm', value_type)
 	round = preset_convert('round', value_type)
 	next = preset_convert('next', value_type)
@@ -1989,6 +1991,8 @@ def skill_bonus_post_time():
 						instant = instant,
 						turn = turn,
 						perm = perm,
+						player = player,
+						gm = gm,
 						round = round,
 						next = next,
 						scene = scene,

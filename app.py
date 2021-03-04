@@ -85,22 +85,29 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/table/db')
-def table_db_columns_create():
+@app.route('/time/options')
+def time_db_columns_create():
 
-	name = 'Active Power'
+	
+	name = 'Set by GM'
 
-	entry = Power(active=True, name=name)
+	entry = SkillTime(gm=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Set by Player'
+
+	entry = SkillTime(player=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Power).filter_by(show=None).all()
+	results = db.session.query(SkillTime).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
-		print (result.name)
+		print (result.keyword)
 
-	return (name + ' db added')
+	return ('time fields added')
 
 
 if __name__ == '__main__':

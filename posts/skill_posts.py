@@ -1029,6 +1029,7 @@ def skill_time_post(entry, body, cells):
 	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
 	vcells = vcell('rank',35, [rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
 	vcells = vcell('gm', 13, ['Set by GM'], vcells)
+	vcells = vcell('player', 16, ['Set by Player'], vcells)
 	word = int_word('Turns', turns)
 	vcells = vcell('turns', 18, [turns, word], vcells)	
 	vcells = vcell('instant', 14, ['Instant'], vcells)

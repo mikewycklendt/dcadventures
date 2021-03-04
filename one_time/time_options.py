@@ -38,6 +38,18 @@ def time_db_columns_create():
 	entry = SkillTime(next=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Set by GM'
+
+	entry = SkillTime(gm=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Set by Player'
+
+	entry = SkillTime(player=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
 	results = db.session.query(SkillTime).filter_by(hide=True).all()
 

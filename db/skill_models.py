@@ -989,6 +989,8 @@ class SkillTime(db.Model):
 	next = db.Column(db.Boolean)
 	scene = db.Column(db.Boolean)
 	instant = db.Column(db.Boolean)
+	player = db.Column(db.Boolean)
+	gm = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('skill_time_type.id'))
 	circ_type = db.Column(db.Integer, db.ForeignKey('skill_circ_type.id'))
@@ -1027,6 +1029,8 @@ class SkillTime(db.Model):
 			'next': self.next,
 			'scene': self.scene,
 			'instant': self.instant,
+			'player': self.player,
+			'gm': self.gm,
 			'hide': self.hidden,
 			'title': self.title,
 			'circ_type': self.circ_type,
