@@ -727,6 +727,8 @@ def skill_degree_post(entry, body, cells):
 	vcells = vcell('check', 35, [variable, 'Variable Check'], vcells, variable_id, check_type)
 
 	vcells = vcell('object', 25, ['Object Destroyed'], vcells)
+	
+	vcells = vcell('dc', 25, ['Attach DC to Object'], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	
