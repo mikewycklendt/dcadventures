@@ -549,6 +549,21 @@
 		
 	</div>
 
+	<div id="dc-complexity">
+		<div style="text-align: left;">
+			Complexity:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_complexity" name="dc_complexity">
+				<option value="">Complexity</option>
+				{% for c in complexity %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="dc-equip">
 		<div style="text-align: left;">
 			Equipment:
@@ -575,36 +590,6 @@
 			<select class="select-sml" id="dc_equipment" name="dc_equipment">
 				<option value="">Equipment</option>
 			</select>
-		</div>
-	</div>
-
-	<div id="dc-variable">
-		<div style="text-align: left;">
-			Change Check:
-		</div>
-
-		<div>
-			<select class="check-sml" id="dc_variable" name="dc_variable">
-				<option value="">Alternate Check</option	>
-				<option value="">Use Variable check form to put options here</option>
-				{% for b in bonus_check %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div style="display: none;">
-			<select class="select-sml" id="dc_action_when" name="dc_action_when">
-				{% for c in check_type %}
-					<option value="{{c.type}}">{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > No Damage
-			</div>
 		</div>
 	</div>
 
@@ -661,21 +646,6 @@
 		</div>
 	</div>
 
-	<div id="dc-complexity">
-		<div style="text-align: left;">
-			Complexity:
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_complexity" name="dc_complexity">
-				<option value="">Complexity</option>
-				{% for c in complexity %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
 
 	<div id="dc-conceal">
 		<div style="text-align: left;">
@@ -697,6 +667,36 @@
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>		
+		</div>
+	</div>
+
+	<div id="dc-variable">
+		<div style="text-align: left;">
+			Change Check:
+		</div>
+
+		<div>
+			<select class="check-sml" id="dc_variable" name="dc_variable">
+				<option value="">Alternate Check</option	>
+				<option value="">Use Variable check form to put options here</option>
+				{% for b in bonus_check %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="display: none;">
+			<select class="select-sml" id="dc_action_when" name="dc_action_when">
+				{% for c in check_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > No Damage
+			</div>
 		</div>
 	</div>
 
