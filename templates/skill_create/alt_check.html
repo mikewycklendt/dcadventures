@@ -100,54 +100,6 @@
 
 	</div>
 
-	<div id="check-attack">
-		<div>
-			<select class="select-sml" id="check_attack" name="check_attack">
-				<option value="">Attack Check Modifier</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div id="check-opposed">
-		<div>
-			<select class="opposed-sml" id="check_opposed" name="check_opposed">
-				<option value="">Opponent Check</option>
-				<option value="">Use opponent check form to put options here</option>
-				{% for b in bonus_opposed %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
-	<div id="check-dc">
-		<div>
-			<select class="dc-sml" id="check_dc_value" name="check_dc_value">
-				<option value="">DC</option>
-				<option value="">Use DC Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
-				<option value="">DC By Group Title</option>
-				<option value="">Use DC Table form to put options here</option>
-				{% for b in bonus_dc_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
 	<div id="check-conflict">
 		
 		<div class="vcenter" style="text-align: left;">
@@ -278,6 +230,54 @@
 				<option value="">Movement</option>
 				<option value="">Use Movement Effect form to put options here</option>
 				{% for b in bonus_move_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-attack">
+		<div>
+			<select class="select-sml" id="check_attack" name="check_attack">
+				<option value="">Attack Check Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-opposed">
+		<div>
+			<select class="opposed-sml" id="check_opposed" name="check_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use opponent check form to put options here</option>
+				{% for b in bonus_opposed %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-dc">
+		<div>
+			<select class="dc-sml" id="check_dc_value" name="check_dc_value">
+				<option value="">DC</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
+				<option value="">DC By Group Title</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc_type %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>

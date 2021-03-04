@@ -19,7 +19,7 @@ function check_check_type() {
 	const options = [{'val': ['5'], 'div': 'check-attack'}, 
 					{'val': ['1', '6'], 'div': 'check-dc'}, 
 					{'val': ['2', '7'], 'div': 'check-opposed'}]
-	const fields = ['check_attack', 'check_opposed', 'check_dc']
+	const fields = ['check_attack', 'check_opposed', 'check_dc_value', 'check_dc_type']
 	const entry = 'check-entry';
 
 	reset_all(fields); 
