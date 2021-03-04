@@ -102,7 +102,7 @@ class SkillBonus(db.Model):
 	opponent_turn = db.Column(db.Boolean)
 	opponent_turn_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	opponent_turn_when = db.Column(db.String())
-	objects - db.Column(db.Boolean)
+	objects = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
