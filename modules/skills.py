@@ -437,6 +437,7 @@ def save_skill_bonus():
 	opponent_turn_when = request.get_json()['opponent_turn_when']
 	secret_trait_type = request.get_json()['secret_trait_type']
 	secret_trait = request.get_json()['secret_trait_type']
+	objects = request.get_json()['objects']
 
 	ability = db_integer(Ability, ability)
 	skill = db_integer(Skill, skill)
@@ -532,6 +533,7 @@ def save_skill_bonus():
 	entry.opponent_turn = opponent_turn
 	entry.opponent_turn_check = opponent_turn_check
 	entry.opponent_turn_when = opponent_turn_when
+	entry.objects = objects
 
 	db.session.commit()
 
