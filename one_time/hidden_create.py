@@ -52,6 +52,12 @@ def table_db_columns_create():
 	entry = SubSense(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Active Power'
+
+	entry = SubSense(active=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
 	results = db.session.query(SubSense).filter_by(hide=True).all()
 

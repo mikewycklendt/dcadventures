@@ -605,6 +605,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'active':
+		try:	
+			query = db.session.query(table).filter_by(active=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == '':
 		value = None
 		return (value)
@@ -736,6 +743,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'outdoors':
 		query = db.session.query(table).filter_by(outdoors=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'active':
+		query = db.session.query(table).filter_by(active=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
