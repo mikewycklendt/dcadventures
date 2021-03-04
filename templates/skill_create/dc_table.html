@@ -218,175 +218,9 @@
 		</div>
 	</div>
 
-	<div id="dc-equip">
-		<div>
-			Equipment:
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_equipment_use" name="dc_equipment_use">
-				{% for e in equipment_use %}
-					<option value="{{e.type}}">{{e.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_equipment_type" name="dc_equipment_type" onchange="dc_equipment_type()">
-				<option value="">Equipment Type</option>
-				{% for e in equip_type %}
-					<option value={{e.id}}>{{e.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_equipment" name="dc_equipment">
-				<option value="">Equipment</option>
-			</select>
-		</div>
-	</div>
-
-	<div id="dc-variable">
-		<div class="vcenter" style="text-align: left;">
-			Change Check:
-		</div>
-
-		<div>
-			<select class="check-sml" id="dc_variable" name="dc_variable">
-				<option value="">Alternate Check</option	>
-				<option value="">Use Variable check form to put options here</option>
-				{% for b in bonus_check %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div style="display: none;">
-			<select class="select-sml" id="dc_action_when" name="dc_action_when">
-				{% for c in check_type %}
-					<option value="{{c.type}}">{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > No Damage
-			</div>
-		</div>
-	</div>
-
-	<div id="dc-damage">
-		<div class="vcenter" style="text-align: left;">
-			Damage:
-		</div>
-	
-		<div>
-			<select class="select-sml" id="dc_damage_type" name="dc_damage_type" onchange="dc_damage_type()">
-				{% for d in damage_type %}
-					<option value="{{d.type}}">{{d.name}}</option>
-				{% endfor %}
-			</select>	
-		</div>
-		
-		<div>
-			<div id="dc-damage-inflict">
-
-				<div>
-					<select class="select-sml" id="dc_inflict_type" name="dc_inflict_type" onchange="dc_inflict_type()">
-						{% for i in inflict %}
-							<option value="{{i.type}}">{{i.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<div id="dc-damage-inflict-flat">
-						<div>
-							<select class="select-sml" id="dc_inflict_flat" name="dc_inflict_flat">
-								<option value="">Degrees</option>
-								{% for i in positives %}
-									<option value={{i}}>{{i}}</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-
-					<div id="dc-damage-inflict-math">
-						<div>
-							<select class="select-sml" id="dc_inflict_trait_type" name="dc_inflict_trait_type" onchange="dc_inflict_trait_type()">
-								{% for t in traits %}
-									<option value="{{t.type}}">{{t.name}}</option>
-								{% endfor %}
-							</select>
-						</div>
-
-						<div>
-							<select class="select-sml" id="dc_inflict_trait" name="dc_inflict_trait">
-								<option value="">Trait</option>
-							</select>
-						 </div>
-					 
-						 <div>
-							 <select class="select-sml" id="dc_inflict_math" name="dc_inflict_math">
-								 <option value="">Math</option>
-								 {% for m in maths %}
-									<option value={{m.id}}>{{m.name}}</option>
-								 {% endfor %}
-							 </select>
-					 	</div>
-
-						 <div>
-							 <select class="select-sml" id="dc_inflict_mod" name="dc_inflict_mod">
-								 <option value="">Modifier</option>
-								 {% for i in positives %}
-									<option value={{i}}>{{i}}</option>
-								 {% endfor %}
-							 </select>
-						 </div>
-
-					</div>
-				
-					<div id="dc-damage-inflict-bonus">
-						<div>
-							<select class="select-sml" id="dc_inflict_bonus" name="dc_inflict_bonus">
-								<option value="">Bonus</option>
-								{% for i in positives %}
-									<option value={{i}}>{{i}}</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="dc-damage-reduce">
-				<div>
-					<select class="select-sml" id="dc_damage_mod" name="dc_damage_mod">
-						<option value="">Modifier</option>
-						{% for i in negatives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="dc_damage_consequence" name="dc_damage_consequence">
-						<option value="">Consequence</option>
-						{% for c in consequences %}
-							<option value={{c.id}}>{{c.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-		</div>
-	
-	</div>
-
 	<div id="dc-measure">
 
-		<div class="vcenter" style="text-align: left;">
+		<div style="text-align: left;">
 			Measure:
 		</div>
 
@@ -548,8 +382,152 @@
 
 	</div>
 
+	<div id="dc-damage">
+		<div style="text-align: left;">
+			Damage:
+		</div>
+	
+		<div>
+			<select class="select-sml" id="dc_damage_type" name="dc_damage_type" onchange="dc_damage_type()">
+				{% for d in damage_type %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>	
+		</div>
+		
+		<div>
+			<div id="dc-damage-inflict">
+
+				<div>
+					<select class="select-sml" id="dc_inflict_type" name="dc_inflict_type" onchange="dc_inflict_type()">
+						{% for i in inflict %}
+							<option value="{{i.type}}">{{i.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div id="dc-damage-inflict-flat">
+						<div>
+							<select class="select-sml" id="dc_inflict_flat" name="dc_inflict_flat">
+								<option value="">Degrees</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					<div id="dc-damage-inflict-math">
+						<div>
+							<select class="select-sml" id="dc_inflict_trait_type" name="dc_inflict_trait_type" onchange="dc_inflict_trait_type()">
+								{% for t in traits %}
+									<option value="{{t.type}}">{{t.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="dc_inflict_trait" name="dc_inflict_trait">
+								<option value="">Trait</option>
+							</select>
+						 </div>
+					 
+						 <div>
+							 <select class="select-sml" id="dc_inflict_math" name="dc_inflict_math">
+								 <option value="">Math</option>
+								 {% for m in maths %}
+									<option value={{m.id}}>{{m.name}}</option>
+								 {% endfor %}
+							 </select>
+					 	</div>
+
+						 <div>
+							 <select class="select-sml" id="dc_inflict_mod" name="dc_inflict_mod">
+								 <option value="">Modifier</option>
+								 {% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								 {% endfor %}
+							 </select>
+						 </div>
+
+					</div>
+				
+					<div id="dc-damage-inflict-bonus">
+						<div>
+							<select class="select-sml" id="dc_inflict_bonus" name="dc_inflict_bonus">
+								<option value="">Bonus</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="dc-damage-reduce">
+				<div>
+					<select class="select-sml" id="dc_damage_mod" name="dc_damage_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="dc_damage_consequence" name="dc_damage_consequence">
+						<option value="">Consequence</option>
+						{% for c in consequences %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<div id="dc-cover">
+		<div style="text-align: left;">
+			Cover:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_cover_effect" name="dc_cover_effect">
+				{% for o in offers %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_cover_type" name="dc_cover_type">
+				<option value="">Cover </option>
+				{% for c in cover %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>		
+		</div>
+	</div>
+
+	<div id="dc-tools">
+		<div style="text-align: left;">
+			Tools:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_tools" name="dc_tools">
+				{% for r in required_tools %}
+					<option value="{{r.type}}">{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
 	<div id="dc-levels">
-		<div class="vcenter" style="text-align: left;">
+		<div style="text-align: left;">
 			Level:
 		</div>
 
@@ -571,9 +549,68 @@
 		
 	</div>
 
+	<div id="dc-equip">
+		<div style="text-align: left;">
+			Equipment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment_use" name="dc_equipment_use">
+				{% for e in equipment_use %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment_type" name="dc_equipment_type" onchange="dc_equipment_type()">
+				<option value="">Equipment Type</option>
+				{% for e in equip_type %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_equipment" name="dc_equipment">
+				<option value="">Equipment</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="dc-variable">
+		<div style="text-align: left;">
+			Change Check:
+		</div>
+
+		<div>
+			<select class="check-sml" id="dc_variable" name="dc_variable">
+				<option value="">Alternate Check</option	>
+				<option value="">Use Variable check form to put options here</option>
+				{% for b in bonus_check %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="display: none;">
+			<select class="select-sml" id="dc_action_when" name="dc_action_when">
+				{% for c in check_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > No Damage
+			</div>
+		</div>
+	</div>
+
 	<div id="dc-condition">
 
-		<div class="vcenter" style="text-align: left;">
+		<div style="text-align: left;">
 			Condition:
 		</div>
 
@@ -625,7 +662,7 @@
 	</div>
 
 	<div id="dc-complexity">
-		<div class="vcenter" style="text-align: left;">
+		<div style="text-align: left;">
 			Complexity:
 		</div>
 
@@ -639,31 +676,9 @@
 		</div>
 	</div>
 
-	<div id="dc-cover">
-		<div class="vcenter" style="text-align: left;">
-			Cover:
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_cover_effect" name="dc_cover_effect">
-				{% for o in offers %}
-					<option value="{{o.type}}">{{o.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_cover_type" name="dc_cover_type">
-				<option value="">Cover </option>
-				{% for c in cover %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>		
-		</div>
-	</div>
 
 	<div id="dc-conceal">
-		<div class="vcenter" style="text-align: left;">
+		<div style="text-align: left;">
 			Concealment:
 		</div>
 
@@ -683,21 +698,6 @@
 				{% endfor %}
 			</select>		
 		</div>
-	</div>
-
-	<div id="dc-tools">
-		<div class="vcenter" style="text-align: left;">
-			Tools:
-		</div>
-
-		<div>
-			<select class="select-sml" id="dc_tools" name="dc_tools">
-				{% for r in required_tools %}
-					<option value="{{r.type}}">{{r.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
 	</div>
 
 	<div id="dc-button-row">

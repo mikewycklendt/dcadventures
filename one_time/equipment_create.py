@@ -54,3 +54,30 @@ def equipment_create():
 		print (result.name)
 
 	return ('equipment added')
+
+
+
+@app.route('/item/create')
+def item_create():
+
+	entries = ['Ladder', 'Rope']
+
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
+
+		entry = Equipment(name=i, type_id=1, base=True, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Straightjacket']
+
+	for i in entries:
+		description = ''
+		description = 'This is the description for ' + i + '.  '
+		description = description + description + description + description + description + description
+
+		entry = Equipment(name=i, type_id=3, base=True, show=True)
+		db.session.add(entry)
+		db.session.commit()
