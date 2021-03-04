@@ -173,7 +173,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
 	
-	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'timw', 'name': 'Time Rank'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}]
 
 	value_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -1910,6 +1910,7 @@ def skill_bonus_post_time():
 	next = preset_convert('next', value_type)
 	scene = preset_convert('scene', value_type)
 	turn = preset_convert('turn', value_type)
+	time = request.get_json()['time']
 
 	errors = skill_time_post_errors(data)
 	
@@ -1943,6 +1944,7 @@ def skill_bonus_post_time():
 	trait = integer(trait)
 	math_value = integer(math_value)
 	recovery_penalty = integer(recovery_penalty)
+	time = integer(time)
 
 	turns = integer(turns)
 
@@ -1986,7 +1988,8 @@ def skill_bonus_post_time():
 						perm = perm,
 						round = round,
 						next = next,
-						scene = scene
+						scene = scene,
+						time = time
 					)
 
 	db.session.add(entry)

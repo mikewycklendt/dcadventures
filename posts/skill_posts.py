@@ -988,6 +988,7 @@ def skill_time_post(entry, body, cells):
 	circ_type = entry.circ_type
 	degree_type = entry.degree_type
 	dc_type = entry.dc_type
+	time = entry.time
 
 
 	title_name = get_name(SkillTimeType, title)
@@ -1034,6 +1035,7 @@ def skill_time_post(entry, body, cells):
 	vcells = vcell('next', 14, ['Next Round'], vcells)
 	vcells = vcell('scene', 14, ['Scene'], vcells)
 	vcells = vcell('turn', 14, ['One Turn'], vcells)
+	vcells = vcell('time', 17, ['Time Rank', time], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 
 	cells = cell('Degree', 18, [degree, degree_type], cells)

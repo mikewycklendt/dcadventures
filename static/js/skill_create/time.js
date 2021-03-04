@@ -77,6 +77,7 @@ function time_submit() {
 	const circ_type = select("time_circ_type");
 	const degree_type = select("time_degree_type");
 	const dc_type = select("time_dc_type");
+	const time = select("time_time");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -122,7 +123,8 @@ function time_submit() {
 			'title': title,
 			'circ_type': circ_type,
 			'degree_type': degree_type,
-			'dc_type': dc_type
+			'dc_type': dc_type,
+			'time': time
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
