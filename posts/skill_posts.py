@@ -82,6 +82,7 @@ def skill_check_post(entry, body, cells):
 	conditions_target = entry.conditions_target
 
 	body['title'] = keyword
+	body['add_title'] = True
 
 
 	trait = trait_select(trait, trait_type)
