@@ -97,6 +97,7 @@ skill_save = function() {
 	const skill_check = select("skill_check");
 	const secret_trait_type = select("secret_trait_type");
 	const secret_trait = select("secret_trait_type");
+	const object = check("object");
 	
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
@@ -169,7 +170,8 @@ skill_save = function() {
 			'opponent_turn_when': opponent_turn_when,
 			'secret_trait_type': secret_trait_type,
 			'secret_trait': secret_trait,
-			'skill_check': skill_check
+			'skill_check': skill_check,
+			'objects': object
 		}),
 		headers: {
 		'Content-Type': 'application/json',
