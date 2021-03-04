@@ -151,7 +151,7 @@ function check_submit() {
 			check_grid.columns.length = 0;
 			check_grid.columns = jsonResponse.rows;
 
-			create_table('skill', jsonResponse, check_grid, route, [selects, select_entry]);
+			create_table('skill', jsonResponse, check_grid, route, [selects, select_entry], id);
 			clear_errors(err_line, errors)
 
 			check_grid.titles = true;

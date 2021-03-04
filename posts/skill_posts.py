@@ -52,6 +52,7 @@ def skill_ability_post(entry, body, cells):
 	
 def skill_check_post(entry, body, cells):
 
+	id = entry.id
 	check_type = entry.check_type
 	mod = entry.mod
 	circumstance = entry.circumstance
@@ -79,6 +80,8 @@ def skill_check_post(entry, body, cells):
 	condition = entry.condition
 	condition_target = entry.condition_target
 	conditions_target = entry.conditions_target
+
+	body['title'] = keyword
 
 
 	trait = trait_select(trait, trait_type)
@@ -136,7 +139,7 @@ def skill_check_post(entry, body, cells):
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
-	body = send(cells, body)
+	body = send_multiple(id, cells, body)
 
 	cells.clear()
 
