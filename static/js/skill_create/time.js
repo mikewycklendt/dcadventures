@@ -35,7 +35,8 @@ function time_value_type() {
 	const options = [{'val': 'math', 'div': 'time-math'}, 
 					{'val': 'value', 'div': 'time-value'}, 
 					{'val': 'rank', 'div': 'time-rank'}, 
-					{'val': 'turns', 'div': 'time-turns'}]
+					{'val': 'turns', 'div': 'time-turns'}, 
+					{'val': 'time', 'div': 'time-time'}]
 
 	select_opacity(select, options);
 }
