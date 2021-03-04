@@ -267,7 +267,7 @@ def skill_check_post_errors(data):
 
 	errors = select_of('1', 'uses a skill check', 'Check Type', check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
 	errors = select_of('6', 'uses a resistance check', 'Check Type', check_type, [dc, dc_value], ['DC', 'DC by group'], errors)
-	errors = seperate([db, dc_value], 'DC or DC by Group', errors)
+	errors = seperate([dc, dc_value], 'DC or DC by Group', errors)
 
 	return (errors)
 
