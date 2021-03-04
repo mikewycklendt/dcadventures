@@ -1006,6 +1006,8 @@ def skill_time_post(entry, body, cells):
 	math = math_convert(math)
 	math_value = integer_convert(math_value)
 	recovery_penalty = integer_convert(recovery_penalty)
+	integer_convert(turns)
+	integer_convert(time)
 
 	degree = get_keyword(SkillDegree, degree)
 	circ = get_keyword(SkillCirc, circ)
