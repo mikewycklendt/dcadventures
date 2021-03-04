@@ -904,7 +904,7 @@ def skill_opposed_post(entry, body, cells):
 	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
 
-	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'Opponent Success'}], {'type': 'success', 'name': 'Player Success'}, {'type': 'opp_fail', 'name': 'Opponent Failure'}, {'type': 'fail', 'name': 'Player Failure'}]
+	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'Opponent Success'}, {'type': 'success', 'name': 'Player Success'}, {'type': 'opp_fail', 'name': 'Opponent Failure'}, {'type': 'fail', 'name': 'Player Failure'}]
 	attached = selects(attached, attached_select)
 
 	cells = cell('Keyword', 15, [keyword])
