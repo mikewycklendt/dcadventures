@@ -612,6 +612,20 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'gm':
+		try:	
+			query = db.session.query(table).filter_by(gm=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+	elif value == 'player':
+		try:	
+			query = db.session.query(table).filter_by(player=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == '':
 		value = None
 		return (value)
@@ -749,6 +763,18 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'active':
 		query = db.session.query(table).filter_by(active=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'gm':
+		query = db.session.query(table).filter_by(gm=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'player':
+		query = db.session.query(table).filter_by(player=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
