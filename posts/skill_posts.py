@@ -114,12 +114,12 @@ def skill_check_post(entry, body, cells):
 	condition_target = selects(condition_target, targets)
 	conditions_target = selects(conditions_target, targets)
 
-	cells = cell('Keyword', 18, [keyword])
+	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Check', 11, [check_type], cells)
 	cells = cell('Modifier', 8, [mod], cells)
 	cells = cell('When', 12, [when], cells)
 	cells = cell('Check Trait', 16, [trait], cells)
-	cells = cell('Action', 14, [action], cells)
+	cells = cell('Action', 11, [action], cells)
 	
 	vcells = vcell('change', 25, [conditions_target, 'from', condition1, 'to', condition2])
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)
