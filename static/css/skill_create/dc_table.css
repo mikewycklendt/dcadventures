@@ -152,7 +152,7 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 15% 40% 35%;
+	grid-template-columns: 17% 40% 35%;
 	gap: .2vw;
 }
 
@@ -162,7 +162,7 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 15% 20% 30% 30%;
+	grid-template-columns: 13% 20% 30% 30%;
 	gap: .2vw;
 }
 
@@ -173,7 +173,7 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 17% 23% 60%;
+	grid-template-columns: 13% 23% 64%;
 	gap: .2vw;
 }
 
@@ -183,7 +183,7 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 20% 25% 25% 30%;
+	grid-template-columns: 16% 25% 25% 30%;
 	gap: .2vw;
 }
 
