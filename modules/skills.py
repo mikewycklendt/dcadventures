@@ -1917,7 +1917,7 @@ def skill_bonus_post_time():
 	time = request.get_json()['time']
 	mod = request.get_json()['mod']
 	mod = request.get_json()['mod']
-	recovery_target - request.get_json()['recovery_target']
+	recovery_target = request.get_json()['recovery_target']
 
 	errors = skill_time_post_errors(data)
 	
