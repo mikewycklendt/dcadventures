@@ -459,6 +459,7 @@ def save_skill_bonus():
 	opponent_turn_check = db_integer(Check, opponent_turn_check)
 
 	partner_trait = integer(partner_trait)
+	secret_trait = integer(secret_trait)
 	
 	dc_value = integer(dc_value)
 	dc_mod = integer(dc_mod)
