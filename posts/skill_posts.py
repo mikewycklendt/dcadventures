@@ -188,6 +188,7 @@ def skill_circ_post(entry, body, cells):
 	trait_target = entry.trait_target
 	environment = entry.environment
 	nature = entry.nature
+	check_type =  entry.check_type
 
 
 
@@ -208,6 +209,7 @@ def skill_circ_post(entry, body, cells):
 	measure_type = math_convert(measure_type)
 	environment = get_name(Environment, environment)
 	nature = get_name(Nature, nature)
+	check_type = get_name(Check, check_type)
 
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
@@ -266,7 +268,9 @@ def skill_circ_post(entry, body, cells):
 	
 	vcells = vcell('materials', 25, [materials], vcells)
 	
-	vcells = vcell('trait', 35, ['Affects', trait], vcells)
+	word = string('on', [check_type])
+	word2 = string('Check', [check_type])
+	vcells = vcell('trait', 35, ['Affects', trait, word, check_type, word2], vcells)
 	
 	vcells = vcell('env', 25, ['If', environment], vcells)
 	

@@ -138,6 +138,7 @@ function circ_submit() {
 	const trait_target = select("circ_trait_target");
 	const environment = select("circ_environment")
 	const nature = select("circ_nature")
+	const check_type  = select("circ_check_type");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -191,7 +192,8 @@ function circ_submit() {
 			'trait': trait,
 			'trait_target': trait_target,
 			'environment': environment,
-			'nature': nature
+			'nature': nature,
+			'check_type': check_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

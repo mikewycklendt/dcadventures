@@ -313,7 +313,7 @@ def skill_circ_post_errors(data):
 	trait_target = data['trait_target']
 	environment = data['environment']
 	nature = data['nature']
-
+	check_type = data['check_type']
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
 
@@ -332,6 +332,7 @@ def skill_circ_post_errors(data):
 	errors = id_check(Math, measure_trait_math, 'Math', errors)
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
 	errors = int_check(trait, 'Trait', errors)
+	errors = id_check(Check, check_type, 'Check Type', errors)
 
 	errors = id_check(Environment, environment, 'Environment', errors)
 	errors = id_check(Nature, nature, 'Nature', errors)
@@ -389,10 +390,8 @@ def skill_circ_post_errors(data):
 	errors = variable_fields('tools', 'Circumstance Effect', effect, [tools], errors)
 	errors = variable_field('tools', effect, 'Tool Type', tools, errors)
 	
-	errors = variable_fields('trait', 'Affects other Trait', effect, [trait_type, trait, trait_target], errors)
-	errors = variable_field('trait', effect, 'Trait Type', trait_type, errors)
-	errors = variable_field('trait', effect, 'Trait', trait, errors)
-	errors = variable_field('trait', effect, 'Trait Target', trait_target, errors)
+	errors = select_of('trait', 'affects another check', 'circumstance effect', effect, [trait, check_type], ['Trait', 'Check Type'] errors)
+	errors = variable_field('trait', effect, 'Check Target', trait_target, errors)
 
 	errors = variable_fields('env', 'Environment', effect, [environment], errors)
 

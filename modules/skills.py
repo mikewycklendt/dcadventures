@@ -881,6 +881,7 @@ def skill_bonus_post_circ():
 	trait_target = request.get_json()['trait_target']
 	environment = request.get_json()['environment']
 	nature = request.get_json()['nature']
+	check_type = request.get_json()['check_type']
 
 	errors = skill_circ_post_errors(data)
 
@@ -905,6 +906,7 @@ def skill_bonus_post_circ():
 	measure_math_rank = db_integer(Rank, measure_math_rank)
 	environment = db_integer(Environment, environment)
 	nature = db_integer(Nature, nature)
+	check_type = db_integer(Check, check_type)
 
 	lasts = db_integer(SkillTime, lasts)
 
@@ -970,7 +972,8 @@ def skill_bonus_post_circ():
 						trait = trait,
 						trait_target = trait_target,
 						environment = environment,
-						nature = nature
+						nature = nature,
+						check_type = check_type
 					)
 
 	db.session.add(entry)

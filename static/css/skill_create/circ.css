@@ -192,7 +192,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	gap: .3vw;
-	grid-template-columns: 30% 40% 30%;
+	grid-template-columns: 20% 30% 25% 25%;
 }
 
 #circ-env {
