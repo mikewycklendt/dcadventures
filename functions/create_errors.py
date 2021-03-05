@@ -787,10 +787,9 @@ def required_rule(value, field, table, id, column, required, trait, rule, name, 
 			if check > 0:
 				error = False 
 
-	message = 'If this ' + trait + ' uses a ' + rule + ' you must set the ' + name + ' with the ' + names + add +'.'
-	error_msgs.append(message)
-
 	if error:
+		message = 'If this ' + trait + ' uses a ' + rule + ' you must set the ' + name + ' with the ' + names + add +'.'
+		error_msgs.append(message)
 		errors['error_msgs'] = error_msgs
 		errors['error'] = error
 
