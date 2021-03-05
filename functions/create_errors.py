@@ -797,7 +797,7 @@ def required_rule(value, field, table, id, column, required, trait, rule, name, 
 	return (errors)
 
 	
-def required_variable(table, field, name, table_name, trait, selection, column, id, errors):
+def required_variable(value, table, field, name, table_name, trait, selection, column, id, errors):
 		
 	error_msgs = errors['error_msgs']
 	error = False
@@ -808,7 +808,7 @@ def required_variable(table, field, name, table_name, trait, selection, column, 
 		the_filter = attribute == id
 		query = db.session.query(table).filter(the_filter).first()
 		if query is not None:
-			if field != 'x':
+			if field != value:
 				error = True
 				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set the ' + name + ' field to ' + selection +  '.'
 				error_msgs.append(message)
