@@ -390,7 +390,7 @@ def skill_circ_post_errors(data):
 	errors = variable_fields('tools', 'Circumstance Effect', effect, [tools], errors)
 	errors = variable_field('tools', effect, 'Tool Type', tools, errors)
 	
-	errors = select_of('trait', 'affects another check', 'circumstance effect', effect, [trait, check_type], ['Trait', 'Check Type'] errors)
+	errors = select_of('trait', 'affects another check', 'circumstance effect', effect, [trait, check_type], ['Trait', 'Check Type'], errors)
 	errors = variable_field('trait', effect, 'Check Target', trait_target, errors)
 
 	errors = variable_fields('env', 'Environment', effect, [environment], errors)
