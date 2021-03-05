@@ -227,6 +227,7 @@
 						<div>
 							<select class="select-sml" id="circ_condition2" name="circ_condition2">
 								<option value="">End Condition</option>
+								<option value="remove">Remove Start Condition</option>
 								{% for c in conditions %}
 									<option value="{{c.id}}">{{c.name}}</option>
 								{% endfor %}

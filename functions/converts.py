@@ -626,6 +626,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'remove':
+		try:	
+			query = db.session.query(table).filter_by(remove=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == '':
 		value = None
 		return (value)
@@ -715,6 +722,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'linked_second':
 		query = db.session.query(table).filter_by(linked_second=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'remove':
+		query = db.session.query(table).filter_by(remove=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True

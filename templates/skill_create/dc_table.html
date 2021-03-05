@@ -620,6 +620,7 @@
 		<div>
 			<select class="select-sml" id="dc_condition2" name="dc_condition2">
 				<option value="">Ending Condition</option>
+				<option value="remove">Remove Starting Condition</option>
 				<option value="any">Any</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>

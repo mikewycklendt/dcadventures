@@ -186,7 +186,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
-	grid-template-columns: 30% 30% 40%;
+	grid-template-columns: 25% 35% 40%;
 	gap: .2vw;
 }
 

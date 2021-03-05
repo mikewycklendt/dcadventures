@@ -1027,6 +1027,7 @@ def skill_time_post(entry, body, cells):
 
 	
 	recovery_select = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'either', 'name': 'Any'}]
+	recovery_target = selects(recovery_target, recovery_select)
 
 	cells = cell('Keyword', 17, [keyword])
 	cells = cell('Time Type', 20, [type], cells)
@@ -1055,7 +1056,7 @@ def skill_time_post(entry, body, cells):
 
 	recovery_penalty = add_plus(recovery_penalty)
 	word = string('on', [recovery_penalty])
-	cells = cell('Recovery', 16, [recovery_penalty, word, recovery_target], cells)
+	cells = cell('Recovery', 14, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
 	body = send_multiple(title, cells, body)

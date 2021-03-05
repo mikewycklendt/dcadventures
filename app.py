@@ -85,30 +85,23 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 
 
-@app.route('/time/options')
-def time_db_columns_create():
 
+@app.route('/table/db')
+def table_db_columns_create():
 	
-	name = 'Set by GM'
+	name = 'Removed'
 
-	entry = SkillTime(gm=True, keyword=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Set by Player'
-
-	entry = SkillTime(player=True, keyword=name, hide=True )
+	entry = Condition(remove=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(SkillTime).filter_by(hide=True).all()
+	results = db.session.query(Condition).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
-		print (result.keyword)
+		print (result.name)
 
-	return ('time fields added')
-
+	return (tablename + ' db added')
 
 if __name__ == '__main__':
 	app.debug = True
