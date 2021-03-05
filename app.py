@@ -89,9 +89,9 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 	
-	name = 'Removed'
+	name = 'Stabilized'
 
-	entry = Condition(remove=True, name=name, hide=True )
+	entry = Condition(stable=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
@@ -101,7 +101,7 @@ def table_db_columns_create():
 		print (result.id)
 		print (result.name)
 
-	return (tablename + ' db added')
+	return (name + ' db added')
 
 if __name__ == '__main__':
 	app.debug = True

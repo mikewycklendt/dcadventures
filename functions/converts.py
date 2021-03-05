@@ -556,6 +556,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'stable':
+		try:
+			query = db.session.query(table).filter_by(stable=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == 'perm':
 		try:
 			query = db.session.query(table).filter_by(perm=True).first()
@@ -728,6 +735,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'remove':
 		query = db.session.query(table).filter_by(remove=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'stable':
+		query = db.session.query(table).filter_by(stable=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
