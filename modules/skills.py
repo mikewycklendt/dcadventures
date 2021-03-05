@@ -275,6 +275,8 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
 
+	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
+
 	bonus_circ = linked_options(SkillCirc, SkillBonus, 'skill_id', 'keyword')
 
 	bonus_dc = linked_options(SkillDC, SkillBonus, 'skill_id', 'keyword')
@@ -1915,6 +1917,7 @@ def skill_bonus_post_time():
 	time = request.get_json()['time']
 	mod = request.get_json()['mod']
 	mod = request.get_json()['mod']
+	recovery_target - request.get_json()['recovery_target']
 
 	errors = skill_time_post_errors(data)
 	
@@ -1979,6 +1982,7 @@ def skill_bonus_post_time():
 						math_value = math_value,
 						recovery_penalty = recovery_penalty,
 						recovery_incurable = recovery_incurable,
+						recovery_target = recovery_target,
 						degree = degree,
 						circ = circ,
 						dc = dc,

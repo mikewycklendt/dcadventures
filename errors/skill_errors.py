@@ -1102,6 +1102,7 @@ def skill_time_post_errors(data):
 	dc_type = data['dc_type']
 	time = data['time']
 	mod = data['mod']
+	recovery_target = data['recovery_target']
 
 
 	errors = create_check('Enhanced Skill', skill_id, SkillBonus, errors)
@@ -1155,7 +1156,8 @@ def skill_time_post_errors(data):
 
 	errors = variable_fields('mod', 'Time Rank Modifier', value_type, [mod], errors)
 
-	errors = variable_fields('recover', 'Recovery Time', type, [recovery_penalty], errors)
+	errors = variable_fields('recover', 'Recovery Time', type, [recovery_target], errors)
+	errors = variable_field('recover', type, 'Recovery Target', recovery_target, errors)
 
 	errors = seperate([dc, dc_type], 'DC', errors)
 	errors = seperate([circ, circ_type], 'Circumstance', errors)

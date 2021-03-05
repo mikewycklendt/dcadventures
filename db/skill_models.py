@@ -978,6 +978,7 @@ class SkillTime(db.Model):
 	math_value = db.Column(db.Integer)
 	recovery_penalty = db.Column(db.Integer)
 	recovery_incurable = db.Column(db.Boolean)
+	recovery_target = db.Column(db.String())
 	degree = db.Column(db.Integer, db.ForeignKey('skill_degree.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('skill_circ.id'))
 	dc = db.Column(db.Integer, db.ForeignKey('skill_dc.id'))
@@ -1018,6 +1019,7 @@ class SkillTime(db.Model):
 			'math_value': self.math_value,
 			'recovery_penalty': self.recovery_penalty,
 			'recovery_incurable': self.recovery_incurable,
+			'recovery_target': self.recovery_target,
 			'degree': self.degree,
 			'circ': self.circ,
 			'dc': self.dc,

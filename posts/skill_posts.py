@@ -992,6 +992,7 @@ def skill_time_post(entry, body, cells):
 	dc_type = entry.dc_type
 	time = entry.time
 	mod = entry.mod
+	recovery_target = entry.recovery_target
 
 
 	title_name = get_name(SkillTimeType, title)
@@ -1024,6 +1025,9 @@ def skill_time_post(entry, body, cells):
 	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
 	type = selects(type, time_effect_select)
 
+	
+	recovery_select = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'either', 'name': 'Any'}]
+
 	cells = cell('Keyword', 17, [keyword])
 	cells = cell('Time Type', 20, [type], cells)
 
@@ -1049,7 +1053,9 @@ def skill_time_post(entry, body, cells):
 	cells = cell('DC', 18, [dc, dc_type], cells)
 	cells = cell('Circumstance', 18, [circ, circ_type], cells)
 
-	cells = cell('Recovery', 9, [recovery_penalty], cells)
+	recovery_penalty = add_plus(recovery_penalty)
+	word = string('on', [recovery_penalty])
+	cells = cell('Recovery', 16, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
 	body = send_multiple(title, cells, body)

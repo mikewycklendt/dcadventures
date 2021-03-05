@@ -81,6 +81,7 @@ function time_submit() {
 	const dc_type = select("time_dc_type");
 	const time = select("time_time");
 	const mod = select("time_mod");
+	const recovery_target = select("time_recovery_target");
 
 	///const skill_id = document.getElementById('skill_id').value;
 	const skill_id = select("create_bonus_select");
@@ -128,7 +129,8 @@ function time_submit() {
 			'degree_type': degree_type,
 			'dc_type': dc_type,
 			'time': time,
-			'mod': mod
+			'mod': mod,
+			'recovery_target': recovery_target
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

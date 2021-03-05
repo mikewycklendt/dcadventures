@@ -263,14 +263,16 @@
 			<div id="time-recovery">
 
 				<div>
-					<div class="vcenter" style="font-size: 80%;">
-						Toughness Penalty Nullified:
-					</div>
+					<select class="select-sml" id="time_recovery_target" name="time_recovery_target">
+						{% for r in recovery %}
+							<option value="{{r.type}}">{{r.name}}</option>
+						{% endfor %}	
+					</select>
 				</div>
 	
 				<div>
 					<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
-						<option value="">Penalty</option>
+						<option value="">Penalty Nullified</option>
 						<option value="skill">This Rank</option>
 						<option value="parent">Parent Rank</option>
 						{% for i in positives %}
