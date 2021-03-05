@@ -810,7 +810,7 @@ def required_variable(table, field, name, table_name, trait, selection, column, 
 		if query is not None:
 			if field != 'x':
 				error = True
-				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set the ' + name + ' field to ' + selection '.'
+				message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set the ' + name + ' field to ' + selection +  '.'
 				error_msgs.append(message)
 	except:
 		error = True
