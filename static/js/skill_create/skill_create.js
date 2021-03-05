@@ -98,6 +98,7 @@ skill_save = function() {
 	const secret_trait_type = select("secret_trait_type");
 	const secret_trait = select("secret_trait_type");
 	const object = check("object");
+	const vehicle = check("vehicle");
 	
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
@@ -171,7 +172,8 @@ skill_save = function() {
 			'secret_trait_type': secret_trait_type,
 			'secret_trait': secret_trait,
 			'skill_check': skill_check,
-			'objects': object
+			'objects': object,
+			'vehicle': vehicle
 		}),
 		headers: {
 		'Content-Type': 'application/json',
