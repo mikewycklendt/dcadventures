@@ -137,7 +137,6 @@ def skill_save_errors(data):
 	errors = required_entry_multiple('x', ability, 'skill', 'Variable Ability', 'Variable Ability', SkillAbility, 'skill_id', skill_id, errors)
 	errors = required_entry_multiple('x', action, 'skill', 'Variable Action', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
 	errors = required_entry_multiple('x', check_type, 'skill', 'Variable Check', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
-	errors = required_variable('x' ,SkillCheck, action, 'Action', 'Variable Check', 'skill', 'Variable', 'skill_id', skill_id, errors)
 	errors = required_variable('x', SkillAbility, ability, 'Ability', 'Variable Ability', 'skill', 'Variable', 'skill_id', skill_id, errors)
 	errors = required_variable('table', SkillDC, dc_type, 'Difficulty Class', 'Check Table', 'skill', 'Table', 'skill_id', skill_id, errors)
 
