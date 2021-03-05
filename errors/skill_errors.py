@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit, select_check, check_of, multiple_effect_check, multiple_link_check, required_setting, linked_group_check, required_link_field, linked_field
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, value_limit, select_check, check_of, multiple_effect_check, multiple_link_check, required_setting, linked_group_check, required_link_field, linked_field, required_rule
 from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
 
 from create_functions.skill_create import skill_entry_check, skill_required_entry, skill_required_entry_multiple
@@ -134,7 +134,7 @@ def skill_save_errors(data):
 	
 	errors = skill_required_entry('table', dc_type, 'Check Table', 'Check Table', SkillDC, skill_id, errors)
 	errors = skill_required_entry('2', check_type, 'Opposed Check', 'Opponent Check', SkillOpposed, skill_id, errors)
-	errors = skill_required_entry_multiple('x', ability, 'skill', 'Variable Ability', 'Variable Ability', SkillAbility, 'skill_id', skill_id, errors)
+	errors = required_entry_multiple('x', ability, 'skill', 'Variable Ability', 'Variable Ability', SkillAbility, 'skill_id', skill_id, errors)
 	errors = required_entry_multiple('x', action, 'skill', 'Variable Action', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
 	errors = required_entry_multiple('x', check, 'skill', 'Variable Check', 'Variable Check', SkillCheck, 'skill_id', skill_id, errors)
 	errors = required_variable(SkillCheck, check, 'Check Type', 'Variable Check', 'skill', 'skill_id', skill_id, errors)
@@ -151,8 +151,9 @@ def skill_save_errors(data):
 	errors = skill_entry_check('Variable Ability', SkillAbility, ability_check, skill_id, errors)
 	errors = skill_entry_check('Movement', SkillMove, move, skill_id, errors)
 
-	errors = (SkillTime, 'skill_id', time_multiple, skill_id, time_effect_select, errors)
-
+	errors = required_rule('1', check_type, False, skill_id, 'skill_id', dc_type, 'skill', 'Skill Check', 'DC', 'Difficulty Class Field or Check Table form', errors)
+	errors = required_rule('6', check_type, False, skill_id, 'skill_id', dc_type, 'skill', 'Resistence Check', 'DC', 'Difficulty Class Field or Check Table form', errors)
+	
 	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
 
 	errors = multiple_link_check(SkillCirc, skill_id, 'skill_id', 'skill', 'circ', 'Circumstance', 'Time Effect', time_multiple, 'if multiple', errors)

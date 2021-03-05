@@ -760,6 +760,42 @@ def required_entry_multiple(value, field, trait, name, table_name, table, column
 
 	return (errors)
 
+
+def required_rule(value, field, table, id, column, required, trait, rule, name, names, errors, multiple=False):
+		
+	error_msgs = errors['error_msgs']
+	error = True
+	add = ''
+
+	if value != field:
+		return (errors)
+	
+	if required != False:
+		if required != '':
+			error = False
+
+	if table != False:
+		id = int(id)
+		attribute = getattr(table, column)
+		check = db.session.query(table).filter(attribute == id).count()
+		if multiple:
+			if check > 1:
+				error = False
+			else:	
+				add = ' and create at least 2 entries'
+		else:
+			if check > 0:
+				error = False 
+
+	message = 'If this ' + trait + ' uses a ' + rule + ' you must set the ' + name + ' with the ' + names + add +'.'
+	error_msgs.append(message)
+
+	if error:
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
+
 	
 def required_variable(table, field, name, table_name, trait, column, id, errors):
 		
