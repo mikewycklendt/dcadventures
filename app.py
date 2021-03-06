@@ -89,40 +89,40 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Creature'
+	tablename =  'Enhanced Skill'
 
-	name = 'All Creatures'
+	name = 'All Enhanced Skills'
 
-	entry = Creature(all=True, name=name, hide=True )
+	entry = SkillBonus(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Creature(current=True, name=name, hide=True )
+	entry = SkillBonus(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Creature(any=True, name=name, hide=True )
+	entry = SkillBonus(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Creature(var=True, name=name, hide=True )
+	entry = SkillBonus(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Creature(none=True, name=name, hide=True )
+	entry = SkillBonus(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 
-	results = db.session.query(Creature).filter_by(show=None).all()
+	results = db.session.query(SkillBonus).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
