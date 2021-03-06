@@ -65,7 +65,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	title = 'DC Adventures Online Roleplqying Game: Create Advantage'
 	stylesheets.append({"style": "/static/css/advantage_create/advantage_create.css"})
 
-	advantage_includes = {'base_form': 'advantage_create/base_form.html', 'dc_table': 'advantage_create/dc_table.html', 'modifiers': 'advantage_create/modifiers.html', 'skill': 'advantage_create/skill.html', 'opposed': 'advantage_create/opposed.html', 'circ': 'advantage_create/circ.html', 'degree_mod': 'advantage_create/degree_mod.html', 'levels': 'advantage_create/levels.html', 'points': 'advantage_create/points.html', 'time': 'advantage_create/time.html', 'combined': 'advantage_create/combined.html', 'resist': 'advantage_create/resist.html', 'variable': 'advantage_create/variable.html', 'alt_check': 'advantage_create/alt_check.html', 'effort': 'advantage_create/effort.html', 'benefit': 'advantage_create/benefit.html', 'rounds': 'advantage_create/rounds.html', 'condition': 'advantage_create/condition.html', 'minion': 'advantage_create/minion.html'}
+	advantage_includes = {'base_form': 'advantage_create/base_form.html', 'dc_table': 'advantage_create/dc_table.html', 'modifiers': 'advantage_create/modifiers.html', 'skill': 'advantage_create/skill.html', 'opposed': 'advantage_create/opposed.html', 'circ': 'advantage_create/circ.html', 'degree_mod': 'advantage_create/degree_mod.html', 'levels': 'advantage_create/levels.html', 'points': 'advantage_create/points.html', 'time': 'advantage_create/time.html', 'combined': 'advantage_create/combined.html', 'resist': 'advantage_create/resist.html', 'variable': 'advantage_create/variable.html', 'alt_check': 'advantage_create/alt_check.html', 'effort': 'advantage_create/effort.html', 'benefit': 'advantage_create/benefit.html', 'rounds': 'advantage_create/rounds.html', 'condition': 'advantage_create/condition.html', 'minion': 'advantage_create/minion.html', 'move': 'advantage_create/move.html'}
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -1239,71 +1239,30 @@ def advantage_post_modifiers():
 		return jsonify(body)
 
 
+
 	body = {}
+	body['new'] = False
+	body['new_items'] = []
+	body['error_msgs'] = []
+	body['success'] = True
+
+	body = user_item(Emotion, 'Emotion', emotion, emotion_other, 'modifiers_emotion', body)
+	emotion = body['output']
+	
+	body = user_item(Environment, 'Environment', environment, environment_other, 'modifiers_environment', body)
+	environment = body['output']
+	
+	body = user_item(Creature, 'Creature', creature, creature_other, 'modifiers_creature', body)
+	creature = body['output']
+	
+	body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
+	creature = body['output']
+
+	if body['success'] == False:
+		return jsonify(body)
 
 	try:
 		
-		body['new'] = False
-		new_items = []
-
-		if emotion == 'other':	
-			entry = Emotion(name=emotion_other)
-			db.session.add(entry)
-			db.session.commit()
-			emotion = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_emotion'
-			new_items.append(item)
-			db.session.close()
-
-		if environment == 'other':	
-			entry = Environment(name=environment_other)
-			db.session.add(entry)
-			db.session.commit()
-			environment = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_environment'
-			new_items.append(item)
-			db.session.close()
-
-		if creature == 'other':	
-			entry = Creature(name=creature_other)
-			db.session.add(entry)
-			db.session.commit()
-			creature = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_creature'
-			new_items.append(item)
-			db.session.close()
-
-		if profession == 'other':	
-			entry = Job(name=profession_other)
-			db.session.add(entry)
-			db.session.commit()
-			profession = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = False
-			item['field'] = 'modifiers_profession'
-			new_items.append(item)
-			db.session.close()
-
-		body['new_items'] = new_items
-
 		advantage_id = integer(advantage_id)
 		benefit = integer(benefit)
 	
