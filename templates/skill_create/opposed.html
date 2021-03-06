@@ -179,9 +179,6 @@
 			<select class="dc-title-sml" id="opposed_dc_type" name="opposed_dc_type">
 				<option value="">DC by Group</option>
 				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
@@ -189,9 +186,6 @@
 			<select class="dc-player-sml" id="opposed_dc_player" name="opposed_dc_player">
 				<option value="">Player DC</option>
 				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
@@ -199,9 +193,6 @@
 			<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
 				<option value="">Opponent DC</option>
 				<option value="">Use Check Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
@@ -217,9 +208,6 @@
 				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
 					<option value="">Time Effect By Group</option>
 					<option value="">Use Time Effect form to put options here</option>
-					{% for b in bonus_time_type %}
-						<option value={{b.id}}>{{b.name}}</option>
-					{% endfor %}
 				</select>
 			</div>
 	
@@ -229,9 +217,6 @@
 			<select class="time-sml" id="opposed_time" name="opposed_time">
 				<option value="">Time Effect</option>
 				<option value="">Use Time Effect form to put options here</option>
-				{% for b in bonus_time %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 	</div>
@@ -246,9 +231,6 @@
 			<select class="circ-title-sml" id="opposed_circ" name="opposed_circ">
 				<option value="">Circumstance By Group</option>
 				<option value="">Use Circumstance form to put options here</option>
-				{% for b in bonus_circ_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
@@ -257,9 +239,6 @@
 				<option value="">Circumstance Modifier
 				</option>
 				<option value="">Use Circumstance form to put options here</option>
-				{% for b in bonus_circ %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		
@@ -275,9 +254,6 @@
 			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
 				<option value="">Degree by Group</option>
 				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree_type %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		
@@ -285,9 +261,6 @@
 			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
 				<option value="">Degree of Success/Failure</option>
 				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 	</div>
@@ -316,9 +289,6 @@
 						<option value="round">Round</option>
 						<option value="scene">Scene</option>
 						<option value="">Use Time Effect form to put options here</option>
-						{% for b in bonus_time %}
-							<option value={{b.id}}>{{b.name}}</option>
-						{% endfor %}
 					</select>
 				</div>
 	
@@ -326,9 +296,6 @@
 					<select class="lasts-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
 						<option value="">Between Checks by Group</option>
 						<option value="">Use Time Effect form to put options here</option>
-						{% for b in bonus_time_type %}
-							<option value={{b.id}}>{{b.name}}</option>
-						{% endfor %}
 					</select>
 				</div>	
 			</div>

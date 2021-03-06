@@ -46,7 +46,7 @@ function levels_submit() {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'column': 'bonus_id',
+			'column': 'advantage_id',
 			'level_type': level_type,
 			'level': level,
 			'level_effect': level_effect,

@@ -920,7 +920,6 @@ def db_check(Table, value_id, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 	
-	db = SQLAlchemy()
 
 	if value_id != '' and value_id != '0' and value_id != 'x' and value_id != 'other':
 		try:

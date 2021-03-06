@@ -313,9 +313,6 @@
 				<option value="round">Round</option>
 				<option value="scene">Scene</option>
 				<option value="">Use Time Effect form to put options here</option>
-				{% for b in bonus_time %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
@@ -323,9 +320,6 @@
 			<select class="dc-sml" id="move_dc" name="move_dc">
 				<option value="">DC</option>
 				<option value="">Use DC Table form to put options here</option>
-				{% for b in bonus_dc %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		
@@ -333,9 +327,6 @@
 			<select class="degree-sml" id="move_degree" name="move_degree">
 				<option value="">Degree</option>
 				<option value="">Use Degree form to put options here</option>
-				{% for b in bonus_degree %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		
@@ -343,9 +334,6 @@
 			<select class="circ-sml" id="move_circ" name="move_circ">
 				<option value="">Circumstance</option>
 				<option value="">Use Circumstance form to put options here</option>
-				{% for b in bonus_circ %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 

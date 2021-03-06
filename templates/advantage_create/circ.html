@@ -378,15 +378,15 @@
 									{% endfor %}
 							</select>
 						</div>
-						
-				<div>
-					<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
-						<option value="">Rank</option>
-						{% for m in measure_rank %}
-							<option value={{m.id}}>{{m.name}}</option>
-						{% endfor %}
-					</select> 
-				</div>
+								
+						<div>
+							<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
+								<option value="">Rank</option>
+								{% for m in measure_rank %}
+									<option value={{m.id}}>{{m.name}}</option>
+								{% endfor %}
+							</select> 
+						</div>
 					</div>
 				</div>
 			</div>
@@ -405,7 +405,7 @@
 				<option value="next">Next Round</option>
 				<option value="scene">Scene</option>
 				<option value="">Use Time Effect form to put options here</option>
-				{% for b in bonus_time %}
+				{% for b in advantage_time %}
 					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>

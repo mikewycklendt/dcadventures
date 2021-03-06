@@ -48,9 +48,6 @@
 				<option value="round">Round</option>
 				<option value="scene">Scene</option>
 				<option value="perm">Permanent</option>
-				{% for b in bonus_time %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 	</div>
@@ -681,9 +678,6 @@
 			<select class="check-sml" id="dc_variable" name="dc_variable">
 				<option value="">Alternate Check</option	>
 				<option value="">Use Variable check form to put options here</option>
-				{% for b in bonus_check %}
-					<option value={{b.id}}>{{b.name}}</option>
-				{% endfor %}
 			</select>
 		</div>
 

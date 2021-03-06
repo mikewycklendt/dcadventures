@@ -338,9 +338,6 @@
 					<option value="round">Round</option>
 					<option value="scene">Scene</option>
 					<option value="">Use Time Effect form to put options here</option>
-					{% for b in bonus_time %}
-						<option value={{b.id}}>{{b.name}}</option>
-					{% endfor %}
 				</select>
 			</div>
 		</div>
@@ -598,9 +595,6 @@
 							<option value="round">Round</option>
 							<option value="scene">Scene</option>
 							<option value="">Use Time Effect form to put options here</option>
-							{% for b in bonus_time %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 				</div>
@@ -629,9 +623,6 @@
 						<select class="opposed-sml" id="deg_mod_check_opposed" name="deg_mod_check_opposed">
 							<option value="">Opposed Check</option>
 							<option value="">Use opponent check form to put options here</option>
-							{% for b in bonus_opposed %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 				</div>
@@ -641,9 +632,6 @@
 						<select class="check-sml" id="deg_mod_check_variable" name="deg_mod_check_variable">
 							<option value="">Variable Check</option	>
 							<option value="">Use Variable check form to put options here</option>
-							{% for b in bonus_check %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 				</div>
@@ -653,9 +641,6 @@
 						<select class="dc-sml" id="deg_mod_check_resist_dc" name="deg_mod_check_skill_dc">
 							<option value="">DC</option>
 							<option value="">Use DC Form to put options here</option>
-							{% for b in bonus_dc %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 
@@ -679,9 +664,6 @@
 						<select class="dc-sml" id="deg_mod_check_skill_dc" name="deg_mod_check_skill_dc">
 							<option value="">DC</option>
 							<option value="">Use DC Form to put options here</option>
-							{% for b in bonus_dc %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 
@@ -745,9 +727,6 @@
 							<option value="round">Round</option>
 							<option value="scene">Scene</option>
 							<option value="">Use Time Effect form to put options here</option>
-							{% for b in bonus_time %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select> 
 					</div>
 				</div>	
@@ -757,9 +736,6 @@
 						<select class="opposed-sml" id="deg_mod_check_compare" name="deg_mod_check_compare">
 							<option value="">>Comparison Check</option>
 							<option value="">Use opponent check form to put options here</option>
-							{% for b in bonus_opposed %}
-								<option value={{b.id}}>{{b.name}}</option>
-							{% endfor %}
 						</select>
 					</div>
 				</div>			
@@ -820,9 +796,6 @@
 		<select class="degree-sml" id="deg_mod_linked" name="deg_mod_linked">
 			<option value="">Linked to Degree</option>
 			<option value="">Use Degree form to put options here</option>
-			{% for b in bonus_degree %}
-				<option value={{b.id}}>{{b.name}}</option>
-			{% endfor %}
 		</select>
 	</div>
 
