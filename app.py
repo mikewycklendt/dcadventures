@@ -89,40 +89,40 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Power'
+	tablename =  'Advantage'
 
-	name = 'All Powers'
+	name = 'All Advantages'
 
-	entry = Power(all=True, name=name)
+	entry = Advantage(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Power(current=True, name=name)
+	entry = Advantage(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Power(any=True, name=name)
+	entry = Advantage(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Power(var=True, name=name)
+	entry = Advantage(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Power(none=True, name=name)
+	entry = Advantage(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 
-	results = db.session.query(Power).filter_by(show=None).all()
+	results = db.session.query(Advantage).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
