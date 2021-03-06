@@ -86,50 +86,6 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 
-@app.route('/table/db')
-def table_db_columns_create():
-
-	tablename =  'Advantage'
-
-	name = 'All Advantages'
-
-	entry = Advantage(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Advantage(current=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Advantage(any=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Advantage(var=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Advantage(none=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-
-	results = db.session.query(Advantage).filter_by(show=None).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-
 
 if __name__ == '__main__':
 	app.debug = True

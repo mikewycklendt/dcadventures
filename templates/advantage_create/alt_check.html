@@ -18,19 +18,31 @@
 	<div id="check-row1">
 
 		<div>
-			Check Type:
+			Keyword::
 		</div>
 
-		<div>
-			Modifier:
-		</div>
+		<div></div>
 
 		<div>
 			Circumstance:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_check_type" name="check_check_type">
+			<input type="text" id="check_keyword" name="check_keyword">
+		</div>
+
+		<div></div>
+		
+		<div>
+			<input type="text" id="check_circ" name="check_circ">
+		</div>
+	</div>
+
+
+	<div id="check-row2">
+
+		<div>
+			<select class="entry-select" id="check_check_type" name="check_check_type" onchange="check_check_type()">
 				<option value="">Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
@@ -39,25 +51,27 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_mod" name="check_mod">
-				<option value="">Modifier</option>
-				<option value="advantage">This Rank</option>
-				<option value="auto">Automatic</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="entry-select" id="check_action_type" name="check_action_type" onchange="check_action_type()">
+				{% for a in action_type %}
+					<option value="{{a.type}}">{{a.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-		
+
 		<div>
-			<input type="text" id="check_circ" name="check_circ">
+			<select class="entry-select" id="check_action" name="check_action">
+				<option value="">Action</option>
+			</select> 
+		</div>
+			
+		<div>
+			<div class="check-div" style="width: 88%;">
+				<input type="checkbox" id="check_free" class="medium-checkbox med-checkbox"> Free Check
+			</div>
 		</div>
 	</div>
 
-	<div id="check-row2">
+	<div id="check-row3">
 
 		<div>
 			<select class="entry-select" id="check_trigger" name="check_trigger" onchange="check_trigger()">
@@ -122,9 +136,9 @@
 		</div>
 	</div>
 
-	<div id="check-condition">
+	<div id="check-conditions">
 		<div class="vcenter" style="text-align: left;">
-			Triggered by Condition:
+			Conditions:
 		</div>
 
 		<div class="vcenter">
@@ -152,28 +166,133 @@
 				{% endfor %}
 			</select>
 		</div>
-	</div>
-	<div id="check-button-row">
+
 		<div>
-			<select class="entry-select" id="check_action_type" name="check_action_type" onchange="check_action_type()">
-				{% for a in action_type %}
-					<option value="{{a.type}}">{{a.name}}</option>
+			<select class="entry-select" id="check_conditions_target" name="check_conditions_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div id="check-condition">
+		<div class="vcenter" style="text-align: left;">
+			Condition:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_condition" name="check_condition">
+				<option value="">Condition</option>
+				{% for c in conditions %}
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_action" name="check_action">
-				<option value="">Action</option>
-			</select> 
+			<select class="entry-select" id="check_condition_target" name="check_condition_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
-			
+	</div>
+
+	<div id="check-row4">
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="check_free" class="medium-checkbox med-checkbox"> Free Check
-			</div>
+			<select class="degree-title-sml" id="check_degree_type" name="check_degree_type">
+				<option value="">Degree</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-title-sml" id="check_circ_type" name="check_circ_type">
+				<option value="">Circumstance</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="time-title-sml" id="check_time_type" name="check_time_type">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for b in bonus_time_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
+		<div>
+			<select class="move-title-sml" id="check_move_type" name="check_move_type">
+				<option value="">Movement</option>
+				<option value="">Use Movement Effect form to put options here</option>
+				{% for b in bonus_move_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-attack">
+		<div>
+			<select class="select-sml" id="check_attack" name="check_attack">
+				<option value="">Attack Check Modifier</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-opposed">
+		<div>
+			<select class="opposed-sml" id="check_opposed" name="check_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use opponent check form to put options here</option>
+				{% for b in bonus_opposed %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-dc">
+		<div>
+			<select class="dc-sml" id="check_dc_value" name="check_dc_value">
+				<option value="">DC</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
+				<option value="">DC By Group Title</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for b in bonus_dc_type %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="check-button-row">
+
+		<div></div>
+		
 		<div>
 			<div class="btn-entry" id="check_submit" name="check_submit" onclick="check_submit()">
 				 Add

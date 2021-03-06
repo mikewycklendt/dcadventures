@@ -96,7 +96,7 @@ function effort_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, effort_grid, route);
+			create_table('advantage', jsonResponse, effort_grid, route);
 			clear_errors(err_line, errors)
 
 			effort_grid.titles = true;

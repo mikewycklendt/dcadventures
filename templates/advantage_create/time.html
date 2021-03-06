@@ -1,7 +1,7 @@
 <div id="time-header">
 
 	<div id="time-title">
-		<input type="checkbox" id="time_check" class="regular-checkbox big-checkbox" onclick="time_check()"> Time Effect:
+		<input type="checkbox" id="time_check_check" class="regular-checkbox big-checkbox" onclick="time_check_check()"> Time Effect:
 	</div>
 	
 	<div id="time-base">
@@ -11,6 +11,17 @@
 				<option value="">Benefit</option>
 			</select>
 		</div>
+		
+		<div id="time-multiple" style="display: block; opacity: 100%;">
+			<select class="select-entry" id="time_multiple" name="time_multiple">
+				{% for m in multiple_time %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div>
+			<input type="text" id="time_title" name="time_title" placeholder="Title">
+		</div>
 	</div>
 
 </div>
@@ -19,7 +30,7 @@
 	<div id="time-row1">
 
 		<div>
-			<select class="select-sml" id="time_type" name="time_type">
+			<select class="select-sml" id="time_type" name="time_type" onchange="time_type()">
 				{% for t in time_effect %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -28,13 +39,68 @@
 
 		<div>
 			<select class="select-sml" id="time_value_type" name="time_value_type" onchange="time_value_type()">
-				{% for v in value_type %}
-					<option value="{{v.type}}">{{v.name}}</option>
+				{% for t in time_value %}
+					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
+				<option value="instant">Instant</option>
+				<option value="perm">Permanent</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="next">Next Round</option>
+				<option value="scene">Scene</option>
 			</select>
 		</div>
 
 		<div>
+
+			<div id="time-rank">
+				<div>
+					<select class="select-sml" id="time_rank1" name="time_rank1">
+						<option value="">Rank</option>
+						{% for m in measure_rank %}
+							<option value="{{m.id}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_rank1_value" name="time_rank1_value">
+						<option value="">Value</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				 </div>
+				
+				<div>
+					<select class="select-sml" id="time_rank_math" name="time_rank_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+
+				<div>
+					<select class="select-sml" id="time_rank2" name="time_rank2">
+						<option value="">Rank</option>
+						{% for m in measure_rank %}
+							<option value="{{m.id}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_rank2_value" name="time_rank2_value">
+						<option value="">Value</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				 </div>
+				 
+			</div>
 
 			<div id="time-value">
 				
@@ -55,25 +121,6 @@
 			</div>
 
 			<div id="time-math">
-
-				<div>
-					<select class="select-sml" id="time_math_value" name="time_math_value">
-						<option value="">Value</option>
-						<option value="advantage">Advantage Rank</option>
-						{% for i in time_numbers %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="time_math" name="time_math">
-						<option value="">Math</option>
-						{% for m in maths %}
-							<option value={{m.id}}>{{m.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
 				
 				<div>
 					<select class="select-sml" id="time_trait_type" name="time_trait_type" onchange="time_trait_type()">
@@ -90,7 +137,63 @@
 				</div>
 
 				<div>
+					<select class="select-sml" id="time_math" name="time_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_math_value" name="time_math_value">
+						<option value="">Value</option>
+						<option value="skill">This Rank</option>
+						<option value="parent">Parent Rank</option>
+						{% for i in time_numbers %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="venter" style="font-size: 80%;">
 					= Time Rank
+				</div>
+			</div>
+
+			<div id="time-turns">
+				<div>
+					<select class="select-sml" id="time_turns" name="time_turns">
+						<option value="">Turns</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="time-time">
+				<div>
+					<select class="select-sml" id="time_time" name="time_time">
+						<option value="">Time Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="time-mod">
+				<div>
+					<select class="select-sml" id="time_mod" name="time_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
 				</div>
 			</div>
 
@@ -99,76 +202,103 @@
 	</div>
 
 	<div id="time-row2">
+
 		<div>
-			<select class="select-sml" id="time_dc" name="time_dc">
+			<select class="degree-sml" id="time_degree" name="time_degree">
+				<option value="">Degree</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-sml" id="time_circ" name="time_circ">
+				<option value="">Circumstance Modifier</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-sml" id="time_dc" name="time_dc">
 				<option value="">DC</option>
-				<option value="">N/A</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for b in bonus_dc %}
+					<option value={{b.id}}>{{b.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div>
+			<select class="degree-title-sml" id="time_degree_type" name="time_degree_type">
+				<option value="">Degree by Group</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for b in bonus_degree_type %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml"	id="time_check_type" name="time_check_type">
-				<option value="">Check Type</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
+			<select class="circ-title-sml" id="time_circ_type" name="time_circ_type">
+				<option value="">Circumstance By Group</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for b in bonus_circ_type %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-
+	
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="time_recovery" class="medium-checkbox med-checkbox" onclick="time_recovery()"> Recovery Time
-			</div>
-		</div>
-
-	</div>
-
-	<div id="time-recovery">
-		<div>
-			Recovery Time:
-		</div>
-
-		<div style="font-size:70%;">
-			<div class="vcenter">
-				Toughness Penalty Nullified:
-			</div>
-		</div>
-
-		<div>
-			<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
-				<option value="">Penalty</option>
-				<option value="advantage">Advantage Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="dc-title-sml" id="time_dc_type" name="time_dc_type">
+				<option value="">DC by Group</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for b in bonus_dc_type %}
+					<option value={{b.id}}>{{b.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
-
-		<div>
-			Every
-		</div>
-
-		<div>
-			<select class="select-sml" id="time_recovery_time" name="time_recovery_time">
-				<option value="">Time Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > Includes Incurable
-			</div>
-		</div>
+		
 	</div>
 
 	<div id="time-button-row">
-		<div></div>
+		<div>
+			<div id="time-recovery">
+
+				<div>
+					<select class="select-sml" id="time_recovery_target" name="time_recovery_target">
+						{% for r in recovery %}
+							<option value="{{r.type}}">{{r.name}}</option>
+						{% endfor %}	
+					</select>
+				</div>
+	
+				<div>
+					<select class="select-sml" id="time_recovery_penalty" name="time_recovery_penalty">
+						<option value="">Penalty Nullified</option>
+						<option value="skill">This Rank</option>
+						<option value="parent">Parent Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div style="font-size: 80%;">
+					<div class="check-div" style="width: 90%;">
+						<input type="checkbox" id="time_recovery_incurable" class="medium-checkbox med-checkbox" > Includes Incurable
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="vcenter">
+			<input type="text" id="time_keyword" name="time_keyword" placeholder="Keyword">
+		</div>
 		
 		<div>
 			<div class="btn-entry" id="time_submit" name="time_submit" onclick="time_submit()">

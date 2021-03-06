@@ -959,6 +959,65 @@ textarea:focus {
 	transition: all .4s ease-out;
 }
 
+
+.err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}
+
+.skill-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-rows: auto;
+}
+
+.skill-base {
+	display: grid;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+.trait-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	text-align: center;
+	color: #245681;
+	margin-bottom: .01vw;
+}
+
 .circ-row {
 	display: grid;
 	font-size: .7vw;
@@ -1048,62 +1107,4 @@ textarea:focus {
 .circ-btn-up:hover {
 	color: #245681;
 	font-size: 2vw;
-}
-
-.err {
-	display: none;
-	width: 94%;
-	padding: 1%;
-	margin: 2%;
-	grid-template-columns: 100%;
-	grid-auto-rows: auto;
-	border: 1px solid #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.err-line {
-	display: block;
-	width: 80%;
-	margin-left: 10%;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	font-size: 90%;
-	font-family: 'Monda', Verdana;
-	color: #af0101;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-}
-
-.err-line::before {
-	font-family: 'FontAwesome';
-	content: '\f071';
-	padding-right: 1.5vw;
-	display: inline-block;
-}
-
-.skill-header {
-	display: grid;
-	width: 100%;
-	padding: 0px;
-	border-bottom: 2px solid lightblue;
-	grid-template-rows: auto;
-}
-
-.skill-base {
-	display: grid;
-	opacity: 0%;
-	transition: all .4s ease-out;
-}
-
-.trait-title {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	font-family: Comic, 'Monda', Verdana;
-	font-size: 200%;
-	text-align: center;
-	color: #245681;
-	margin-bottom: .01vw;
 }

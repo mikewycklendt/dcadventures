@@ -72,7 +72,7 @@ function condition_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, condition_grid, route);
+			create_table('advantage', jsonResponse, condition_grid, route);
 			clear_errors(err_line, errors)
 
 			condition_grid.titles = true;

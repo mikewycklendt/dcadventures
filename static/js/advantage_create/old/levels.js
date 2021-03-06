@@ -11,7 +11,7 @@ function levels_base() {
 	const type = "level_type";
 	const entry = "levels-entry";
 
-	base_text(type, entry);
+	base_only_text(type, entry);
 }
 
 
@@ -35,18 +35,16 @@ function levels_submit() {
 
 	const old_level_type = levels_grid.old_level_type;
 
-	///const advantage_id = document.getElementById('skill_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'levels-err';
 	const err_line = 'levels-err-line';
 	const level_selects = 'level-type-sml';
 
-	response = fetch('/levels/create', {
+	response = fetch('/advantage/levels/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'advantage_id': advantage_id,
-			'column': 'bonus_id',
 			'level_type': level_type,
 			'level': level,
 			'level_effect': level_effect,
@@ -64,22 +62,25 @@ function levels_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
-			const id = jsonResponse.id;
-			const title_name = level_type;
-			const title_id = jsonResponse.title_id;
-			const add_title = jsonResponse.add_title;
+			const add_level = jsonResponse.created;
 
-			if (add_title == true) {
-				selects_add(title_id, title_name, level_selects);
-			}			
-			
+			if (add_level == false) {
+				
+				const id = jsonResponse.level_type_id		
+				const name = jsonResponse.level_type
+
+				selects_add(id, name, level_selects)
+			}
+
 			levels_grid.columns.length = 0;
 			levels_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/levels/delete/'
-			create_table('advantage', jsonResponse, levels_grid, route, false, title_id, [level_selects]);
+			const route = '/advantage/levels/delete/'
+			create_table(jsonResponse, levels_grid, route);
 			clear_errors(err_line, errors)
+			row_delete(jsonResponse, route, levels_grid) 
+
 
 			levels_grid.titles = true;
 

@@ -1,32 +1,21 @@
-#check-header {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
+#dc-header {
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 60% 40%;
 	grid-template-rows: auto;
 }
 
-.check-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.check-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-#check-base {
+#dc-base {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: .2vw;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
 
-#check-title {
+#dc-title {
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
@@ -35,7 +24,7 @@
 	transition: all .2s linear;
 }
 
-#check-entry {
+#dc-entry {
 	display: none;
 	font-family: 'Monda', Verdana;
 	font-size: 100%;
@@ -57,115 +46,110 @@
 	transition: all .4s ease-out;
 }
 
-#check-entry input[type="text"] {
-	height: 1.5vw;
+#dc-entry input[type="text"] {
+	height: 1.7vw;
 	padding: .2vw;
-	font-size: 110%;
 	width: 95%;
 }
 
-#check-row1 {
+#dc-row1 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 24% 1% 75%;
+	grid-template-columns: 16% 84%;
 	grid-auto-rows: auto;
 }
 
-#check-row2 {
-	display: grid;
-	width: 98%;
-	gap: 3px;
-	grid-template-columns: 25% 20% 30% 25%;
+#dc-value {
+	display: none;
+	grid-template-columns: 15% 85%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
 }
 
-#check-row3 {
+#dc-math {
+	display: none;
+	grid-template-columns: 15% 20% 25% 40%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+}
+
+#dc-row2 {
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 20% 25% 35%;
+	grid-template-columns: 25% 25% 25% 25%;
 	grid-auto-rows: auto;
 }
 
-#check-row4 {
+#dc-check {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 25% 35% 20%;
+	gap: .2vw;
+}
+
+#dc-condition {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 10% 30% 10% 30% 5%;
+	gap: .2vw;
+}
+
+#dc-levels {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 30% 40% 15%;
+	gap: .2vw;
+}
+
+#dc-descriptor {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 40% 30% 10%;
+	gap: .2vw;
+}
+
+#dc-keyword {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 15% 40% 45%;
+	gap: .2vw;
+}
+
+#dc-keyword input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+	font-size: 85%;
+	width: 95%;
+}
+
+#dc-button-row {
 	display: grid;
-	width: 98%;
-	gap: 3px;
-	grid-template-columns: auto auto auto auto auto;
-}
-
-#check-conditions {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 12% 7% 25% 6% 25% 25%;
-}
-
-#check-condition {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 12% 30% 18% 50%;
-}
-
-#check-attack {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 20% 80%;
-}
-
-#check-opposed {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 60%;
-}
-
-#check-dc {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 40% 20%;
-}
-
-#check-compare {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 60%;
-}
-
-#check-conflict {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 28% 25% 20% 27%;
-}
-
-#check-button-row {
-	display: grid;
-	width: 98%;
-	gap: 3px;
 	grid-template-columns: 80% 20%;
-	grid-auto-rows: auto;
+	grid-template-rows: auto;
+	height: 1.8vw;
 }
 
-#check-err {
+
+#dc-err {
 	display: none;
 	width: 94%;
 	padding: 1%;
@@ -178,7 +162,7 @@
 	transition: all .4s ease-out;
 }
 
-.check-err-line {
+.dc-err-line {
 	display: block;
 	width: 80%;
 	margin-left: 10%;
@@ -192,7 +176,7 @@
 	transition: all .4s ease-out;
 }
 
-.check-err-line::before {
+.dc-err-line::before {
 	font-family: 'FontAwesome';
 	content: '\f071';
 	padding-right: 1.5vw;

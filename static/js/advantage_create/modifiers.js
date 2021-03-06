@@ -296,7 +296,7 @@ function modifiers_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, modifiers_grid, route);
+			create_table('advantage', jsonResponse, modifiers_grid, route);
 			clear_errors(err_line, errors)
 
 			modifiers_grid.titles = true;

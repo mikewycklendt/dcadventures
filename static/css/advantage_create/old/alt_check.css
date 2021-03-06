@@ -1,24 +1,10 @@
 #check-header {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
 	display: grid;
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
 	grid-template-columns: 70% 30%;
 	grid-template-rows: auto;
-}
-
-.check-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.check-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
 }
 
 #check-base {
@@ -68,7 +54,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 24% 1% 75%;
+	grid-template-columns: 25% 17% 58%;
 	grid-auto-rows: auto;
 }
 
@@ -76,31 +62,8 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 20% 30% 25%;
-}
-
-#check-row3 {
-	display: grid;
-	width: 98%;
-	gap: 3px;
 	grid-template-columns: 20% 20% 25% 35%;
 	grid-auto-rows: auto;
-}
-
-#check-row4 {
-	display: grid;
-	width: 98%;
-	gap: 3px;
-	grid-template-columns: auto auto auto auto auto;
-}
-
-#check-conditions {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 12% 7% 25% 6% 25% 25%;
 }
 
 #check-condition {
@@ -109,43 +72,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 12% 30% 18% 50%;
-}
-
-#check-attack {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 20% 80%;
-}
-
-#check-opposed {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 60%;
-}
-
-#check-dc {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 40% 20%;
-}
-
-#check-compare {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	text-align: center;
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 27% 7% 30% 6% 30%;
 }
 
 #check-conflict {
@@ -161,7 +88,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 25% 35% 20% 20%;
 	grid-auto-rows: auto;
 }
 

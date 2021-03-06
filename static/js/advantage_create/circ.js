@@ -4,56 +4,87 @@ function circ_check() {
 	const base = 'circ-base';
 	const entry = "circ-entry";
 
-	check_title(check, title, base, entry);
+	entry_check(check, title, base, entry);
 }
 
-function circ_base() {
-	const field = 'circ_target';
-	const entry = "circ-entry";
-
-	base(field, entry);
-}
-
-function circ_type() {
-	const field = 'circ_type';
-	const options = [{'val': 'range', 'div': 'circ-range'},
-					{'val': 'check', 'div': 'circ-check'},
-					{'val': 'conflict', 'div': 'circ-conflict'}]
-	const entry = 'circ-entry';
-
-	select_maxheight_entry(field, options, entry);
-}
-
-function circ_null_type() {
-	const select = 'circ_null_type';
-	const options = [{'val': 'condition', 'div': 'circ-null-condition'},
-					{'val': 'trait', 'div': 'circ-null-trait'},
-					{'val': 'override', 'div': 'circ-null-override'}]
+function circ_effect() {
+	const select = 'circ_effect';
+	const options = [{'val': 'condition', 'div': 'circ-condition'},
+					{'val': 'measure', 'div': 'circ-measure'},
+					{'val': 'level', 'div': 'circ-level'},
+					{'val': 'speed', 'div': 'circ-speed'},
+					{'val': 'time', 'div': 'circ-time-mod'},
+					{'val': 'temp', 'div': 'circ-temp'},
+					{'val': 'target', 'div': 'circ-target'},
+					{'val': 'tools', 'div': 'circ-tools'},
+					{'val': 'materials', 'div': 'circ-materials'},
+					{'val': 'trait', 'div': 'circ-trait'},
+					{'val': 'env', 'div': 'circ-env'},
+					{'val': 'nature', 'div': 'circ-nature'}]
 
 	select_opacity(select, options);
 }
 
-function circ_check_trait_type() {
-	const select = 'circ_check_trait_type';
-	const fill = 'circ_check_trait';
-	
-	id_select(select, fill, trait_select, variable_sub);
+function circ_condition_type() {
+	const select = 'circ_condition_type';
+	const options = [{'val': 'condition', 'div': 'circ-condition-condition'},
+					{'val': 'damage', 'div': 'circ-condition-damage'}]
+
+	select_opacity(select, options);
 }
 
-function circ_null_trait_type() {
-	const select = 'circ_null_trait_type';
-	const fill = 'circ_null_trait';
+function circ_measure_effect() {
+	const select = 'circ_measure_effect';
+	const options = [{'val': 'rank', 'div': 'circ-measure-rank'},
+					{'val': 'unit', 'div': 'circ-measure-unit'},
+					{'val': 'skill', 'div': 'circ-measure-skill'}]
 
-	id_select(select, fill, trait_select, variable_sub);
+	select_opacity(select, options);
 }
 
-function circ_null_override_trait_type() {
-	const select = 'circ_null_override_trait_type';
-	const fill = 'circ_null_override_trait';
+function circ_unit_type() {
+	const select = 'circ_unit_type';
+	const fill = 'circ_unit';
 
-	id_select(select, fill, trait_select, variable_sub);
+	id_select(select, fill, unit_select);
 }
 
+function circ_measure_trait_type() {
+	const select = 'circ_measure_trait_type';
+	const fill = 'circ_measure_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function circ_level_type() {
+	const select = 'circ_level_type';
+	const fill = 'circ_level';
+
+	id_select(select, fill, level_select);
+}
+
+function circ_lasts() {
+	const select = 'circ_lasts';
+	const options = [{'val': 'turns', 'div': 'circ-turns'}, 
+					{'val': 'time', 'div': 'circ-time'}, 
+					{'val': 'rank', 'div': 'circ-time-rank'}]
+
+	select_opacity(select, options);
+}
+
+function circ_cumulative() {
+	const check = 'circ_cumulative';
+	const div = 'circ-max';
+
+	check_display(check, div);
+}
+
+function circ_trait_type() {
+	const select = 'circ_trait_type';
+	const fill = 'circ_trait';
+
+	id_select(select, fill, trait_select);
+}
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -65,29 +96,57 @@ function circ_submit() {
 	const created = circ_grid.titles;
 	const font = circ_grid.font;
 
-	const target = select("circ_target");
-	const benefit = select("circ_benefit");
-	const mod = select("circ_mod");
-	const rounds = select("circ_rounds");
-	const circumstance = text("circ_des");
-	const circ_type = select("circ_type");
-	const circ_range = select("circ_range");
-	const conflict = select("circ_conflict");
-	const check_who = select("circ_check_who");
-	const check_trait_type = select("circ_check_trait_type");
-	const check_trait = select("circ_check_trait");
-	const null_type = select("circ_null_type");
-	const null_condition = select("circ_null_condition");
-	const null_trait_type = select("circ_null_trait_type");
-	const null_trait = select("circ_null_trait");
-	const null_override_trait_type = select("circ_null_override_trait_type");
-	const null_override_trait = select("circ_null_override_trait");
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
 	
-
-	const advantage_id = document.getElementById('advantage_id').value;
+	const benefit = select("circ_benefit");
+	const circ_target = select("circ_target")
+	const mod = select("circ_mod")
+	const effect = select("circ_effect")
+	const speed = select("circ_speed")
+	const target = select("circ_if_target")
+	const level_type = select("circ_level_type")
+	const level = select("circ_level")
+	const condition_type = select("circ_condition_type")
+	const condition1 = select("circ_condition1")
+	const condition2 = select("circ_condition2")
+	const conditions = select("circ_conditions")
+	const conditions_effect = select("circ_conditions_effect")
+	const measure_effect = select("circ_measure_effect")
+	const measure_rank_value = select("circ_measure_rank_value")
+	const measure_type = select("circ_meaasure_type");
+	const measure_rank = select("circ_measure_rank")
+	const unit_value = text("circ_unit_value")
+	const unit_type = select("circ_unit_type")
+	const unit = select("circ_unit")
+	const measure_trait_type = select("circ_measure_trait_type")
+	const measure_trait = select("circ_measure_trait")
+	const measure_trait_math = select("circ_measure_trait_math")
+	const measure_mod = select("circ_measure_mod")
+	const measure_math_rank = select("circ_measure_math_rank");
+	const keyword = text("circ_keyword")
+	const cumulative = check("circ_cumulative")
+	const optional = check("circ_optional")
+	const circumstance = text("circ_circumstance");
+	const lasts = select("circ_lasts");
+	const title = text("circ_title");
+	const surface = check("circ_surface");
+	const tools = select("circ_tools");
+	const materials = select("circ_materials");
+	const max = select("circ_max");
+	const trait_type = select("circ_trait_type");
+	const trait = select("circ_trait");
+	const trait_target = select("circ_trait_target");
+	const environment = select("circ_environment")
+	const nature = select("circ_nature")
+	const check_type  = select("circ_check_type");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
+
+	const circ_selects = 'circ-sml';
+	const select_title = 'circ-title-sml';
+	const opp_selects = 'circ-opp-sml';
 
 	response = fetch('/advantage/circ/create', {
 		method: 'POST',
@@ -96,23 +155,47 @@ function circ_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'target': target,
 			'benefit': benefit,
+			'circ_target': circ_target,
 			'mod': mod,
-			'rounds': rounds,
+			'effect': effect,
+			'speed': speed,
+			'target': target,
+			'level_type': level_type,
+			'level': level,
+			'condition_type': condition_type,
+			'condition1': condition1,
+			'condition2': condition2,
+			'conditions': conditions,
+			'conditions_effect': conditions_effect,
+			'measure_effect': measure_effect,
+			'measure_type': measure_type,
+			'measure_rank_value': measure_rank_value,
+			'measure_rank': measure_rank,
+			'unit_value': unit_value,
+			'unit_type': unit_type,
+			'unit': unit,
+			'measure_trait_type': measure_trait_type,
+			'measure_trait': measure_trait,
+			'measure_trait_math': measure_trait_math,
+			'measure_mod': measure_mod,
+			'measure_math_rank': measure_math_rank,
+			'keyword': keyword,
+			'cumulative': cumulative,
+			'optional': optional,
 			'circumstance': circumstance,
-			'circ_type': circ_type,
-			'circ_range': circ_range,
-			'conflict': conflict,
-			'check_who': check_who,
-			'check_trait_type': check_trait_type,
-			'check_trait': check_trait,
-			'null_type': null_type,
-			'null_condition': null_condition,
-			'null_trait_type': null_trait_type,
-			'null_trait': null_trait,
-			'null_override_trait_type': null_override_trait_type,
-			'null_override_trait': null_override_trait			
+			'lasts': lasts,
+			'title': title,
+			'surface': surface,
+			'tools': tools,
+			'materials': materials,
+			'max': max,
+			'trait_type': trait_type,
+			'trait': trait,
+			'trait_target': trait_target,
+			'environment': environment,
+			'nature': nature,
+			'check_type': check_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -122,16 +205,31 @@ function circ_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
-			
+
+			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title
+
+			if (add_title == true) {
+				selects_add(title_id, title_name, select_title);
+			}
+			selects_add(id, keyword, circ_selects);
+
+			if (target == 'opp') {
+				selects_add(id, keyword, opp_selects)
+			}
+
 			circ_grid.columns.length = 0;
-			circ_grid.columns = jsonResponse.rows
+			circ_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
-			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, circ_grid, route);
+			const route = '/advantage/' + table_id + '/delete/'
+			create_table('advantage', jsonResponse, circ_grid, route, [circ_selects, opp_selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			circ_grid.titles = true;
+
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 

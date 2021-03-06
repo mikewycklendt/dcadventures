@@ -50,7 +50,7 @@ function combined_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, combined_grid, route);
+			create_table('advantage', jsonResponse, combined_grid, route);
 			clear_errors(err_line, errors)
 
 			combined_grid.titles = true;

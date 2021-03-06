@@ -66,7 +66,7 @@ function rounds_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/advantage/' + table_id + '/delete/'
-			create_table(jsonResponse, rounds_grid, route);
+			create_table('advantage', jsonResponse, rounds_grid, route);
 			clear_errors(err_line, errors)
 
 			rounds_grid.titles = true;
