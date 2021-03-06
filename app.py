@@ -89,40 +89,40 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Enhanced Skill'
+	tablename =  'Power'
 
-	name = 'All Enhanced Skills'
+	name = 'All Powers'
 
-	entry = SkillBonus(all=True, name=name)
+	entry = Power(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = SkillBonus(current=True, name=name)
+	entry = Power(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = SkillBonus(any=True, name=name)
+	entry = Power(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = SkillBonus(var=True, name=name)
+	entry = Power(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = SkillBonus(none=True, name=name)
+	entry = Power(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 
-	results = db.session.query(SkillBonus).filter_by(show=None).all()
+	results = db.session.query(Power).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
