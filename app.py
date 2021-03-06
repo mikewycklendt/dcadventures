@@ -88,20 +88,48 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 @app.route('/table/db')
 def table_db_columns_create():
-	
-	name = 'Stabilized'
 
-	entry = Condition(stable=True, name=name, hide=True )
+	tablename =  'Nature'
+
+	name = 'All Nature'
+
+	entry = Nature(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Nature(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Nature(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Condition).filter_by(hide=True).all()
+	name = 'Variable ' + tablename
+
+	entry = Nature(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Nature(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+
+	results = db.session.query(Nature).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (name + ' db added')
+	return (tablename + ' db added')
+
 
 if __name__ == '__main__':
 	app.debug = True
