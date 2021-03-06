@@ -89,40 +89,40 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Profession'
+	tablename =  'Creature'
 
-	name = 'All Professions'
+	name = 'All Creatures'
 
-	entry = Job(all=True, name=name, hide=True )
+	entry = Creature(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Job(current=True, name=name, hide=True )
+	entry = Creature(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Job(any=True, name=name, hide=True )
+	entry = Creature(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Job(var=True, name=name, hide=True )
+	entry = Creature(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Job(none=True, name=name, hide=True )
+	entry = Creature(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 
-	results = db.session.query(Job).filter_by(show=None).all()
+	results = db.session.query(Creature).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
