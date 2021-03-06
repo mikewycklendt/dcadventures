@@ -89,40 +89,40 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Emotion'
+	tablename =  'Environment'
 
-	name = 'All Emotions'
+	name = 'All Environments'
 
-	entry = Emotion(all=True, name=name, hide=True )
+	entry = Environment(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = Emotion(current=True, name=name, hide=True )
+	entry = Environment(current=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = Emotion(any=True, name=name, hide=True )
+	entry = Environment(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = Emotion(var=True, name=name, hide=True )
+	entry = Environment(var=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = Emotion(none=True, name=name, hide=True )
+	entry = Environment(none=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
 
-	results = db.session.query(Emotion).filter_by(show=None).all()
+	results = db.session.query(Environment).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
