@@ -634,12 +634,12 @@ class AdvMove(db.Model):
 	distance_description = db.Column(db.String())
 	direction = db.Column(db.String())
 	turns = db.Column(db.Integer)
-
-
-
-
+	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
 	keyword = db.Column(db.String())
-
+	title = db.Column(db.Integer, db.ForeignKey('advantage_move_type.id'))
 	
 	
 	def format(self):
@@ -706,15 +706,14 @@ class AdvCheck(db.Model):
 	action = db.Column(db.Integer)
 	free = db.Column(db.Boolean)
 	keyword = db.Column(db.String())
-
-
-
-
-
-
-
+	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree_type.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ_type.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc_type.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time_type.id'))
+	dc_value = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
+	move = db.Column(db.Integer, db.ForeignKey('advantage_move_type.id'))
 	attack = db.Column(db.Integer)
-
+	opposed = db.Column(db.Integer, db.ForeignKey('advantage_opposed.id'))
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_target = db.Column(db.String())
 	conditions_target = db.Column(db.String())
@@ -788,9 +787,9 @@ class AdvCirc(db.Model):
 	circumstance = db.Column(db.String())
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
-
-
-
+	lasts = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
+	title = db.Column(db.Integer, db.ForeignKey('advantage_circ_type.id'))
 	surface = db.Column(db.Boolean)
 	tools = db.Column(db.String())
 	materials = db.Column(db.String())
@@ -921,9 +920,9 @@ class AdvDC(db.Model):
 	conceal_type = db.Column(db.Integer, db.ForeignKey('concealment.id'))
 	tools = db.Column(db.String())
 	variable_check = db.Column(db.Boolean)
-
-
-
+	variable = db.Column(db.Integer, db.ForeignKey('advantage_check.id'))
+	title = db.Column(db.Integer, db.ForeignKey('advantage_dc_type.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
 	effect_target = db.Column(db.String())
 	equipment_use = db.Column(db.String())
 	equipment_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
@@ -1044,8 +1043,8 @@ class AdvDegree(db.Model):
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	level_direction = db.Column(db.Integer)
-
-
+	level_time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
+	circumstance = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
 	circ_target = db.Column(db.String())
 	measure_effect = db.Column(db.String())
 	measure_type = db.Column(db.String())
@@ -1069,30 +1068,30 @@ class AdvDegree(db.Model):
 	condition_damage = db.Column(db.Integer)
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
-
+	condition_turns = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
 	keyword = db.Column(db.String())
 	nullify = db.Column(db.Integer)
 	nullify_type = db.Column(db.String())
 	cumulative = db.Column(db.Boolean)
-
+	linked = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-
-
-
+	opposed = db.Column(db.Integer, db.ForeignKey('advantage_opposed.id'))
+	variable = db.Column(db.Integer, db.ForeignKey('advantage_check.id'))
+	resist_dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
 	resist_trait_type = db.Column(db.String())
 	resist_trait = db.Column(db.Integer)
-
+	skill_dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
 	skill_trait_type = db.Column(db.String())
 	skill_trait = db.Column(db.Integer)
 	routine_trait_type = db.Column(db.String())
 	routine_trait = db.Column(db.Integer)
 	routine_mod = db.Column(db.Integer)
 	attack = db.Column(db.Integer)
-
-
+	attack_turns = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
+	compare = db.Column(db.Integer, db.ForeignKey('advantage_opposed.id'))
 	time_table = db.Column(db.Boolean)
 	move_table = db.Column(db.Boolean)
-
+	title = db.Column(db.Integer, db.ForeignKey('advantage_degree_type.id'))
 	description = db.Column(db.String())
 	effect_target = db.Column(db.String())
 	value_type = db.Column(db.String())
@@ -1206,24 +1205,24 @@ class AdvOpposed(db.Model):
 	secret = db.Column(db.Boolean)
 	recurring = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
-
+	recurring_value = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
 	recurring_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	description = db.Column(db.String())
 	keyword = db.Column(db.String())
-
-
-
-
+	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree_type.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ_type.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
 	degree_check = db.Column(db.Boolean)
 	circ_check = db.Column(db.Boolean)
 	dc_check = db.Column(db.Boolean)
 	time_check = db.Column(db.Boolean)
-
-
-
-
-
-
+	degree_value = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
+	dc_type = db.Column(db.Integer, db.ForeignKey('advantage_dc_type.id'))
+	dc_player = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
+	circ_value = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
+	time_type = db.Column(db.Integer, db.ForeignKey('advantage_time_type.id'))
+	recurring_type = db.Column(db.Integer, db.ForeignKey('advantage_time_type.id'))
 
 
 	def format(self):
@@ -1286,9 +1285,9 @@ class AdvTime(db.Model):
 	recovery_penalty = db.Column(db.Integer)
 	recovery_incurable = db.Column(db.Boolean)
 	recovery_target = db.Column(db.String())
-
-
-
+	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
 	turns = db.Column(db.Integer)
 	keyword = db.Column(db.String)
 	perm = db.Column(db.Boolean)
@@ -1300,10 +1299,10 @@ class AdvTime(db.Model):
 	player = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
-
-
-
-
+	title = db.Column(db.Integer, db.ForeignKey('advantage_time_type.id'))
+	circ_type = db.Column(db.Integer, db.ForeignKey('advantage_circ_type.id'))
+	degree_type = db.Column(db.Integer, db.ForeignKey('advantage_degree_type.id'))
+	dc_type = db.Column(db.Integer, db.ForeignKey('advantage_dc_type.id'))
 	time = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	
