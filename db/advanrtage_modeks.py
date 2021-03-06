@@ -599,6 +599,92 @@ class AdvVariable(db.Model):
 			'effort': self.effort
 		}
 
+class AdvMove(db.Model):
+	__tablename__ = 'advantage_move'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
+	speed = db.Column(db.String())
+	speed_rank = db.Column(db.Integer)
+	speed_rank_mod = db.Column(db.Integer)
+	speed_trait_type = db.Column(db.String())
+	speed_trait = db.Column(db.Integer)
+	speed_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	speed_value1 = db.Column(db.Integer)
+	speed_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	speed_value2 = db.Column(db.Integer)
+	speed_description = db.Column(db.String())
+	distance = db.Column(db.String())
+	distance_rank = db.Column(db.Integer)
+	distance_value = db.Column(db.Integer)
+	distance_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	distance_rank_trait_type = db.Column(db.String())
+	distance_rank_trait = db.Column(db.Integer)
+	distance_rank_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	distance_rank_value1 = db.Column(db.Integer)
+	distance_rank_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	distance_rank_value2 = db.Column(db.Integer)
+	distance_unit_trait_type = db.Column(db.String())
+	distance_unit_trait = db.Column(db.Integer)
+	distance_unit_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	distance_unit_value1 = db.Column(db.Integer)
+	distance_unit_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
+	distance_unit_value2 = db.Column(db.Integer)
+	distance_math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	distance_description = db.Column(db.String())
+	direction = db.Column(db.String())
+	turns = db.Column(db.Integer)
+	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
+	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
+	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
+	keyword = db.Column(db.String())
+	title = db.Column(db.Integer, db.ForeignKey('advantage_move_type.id'))
+	
+	
+	def format(self):
+		return {
+			'id': self.id,
+			'advantage_id': self.advantage_id,
+			'benefit': self.benefit,
+			'speed': self.speed,
+			'speed_rank': self.speed_rank,
+			'speed_rank_mod': self.speed_rank_mod,
+			'speed_trait_type': self.speed_trait_type,
+			'speed_trait': self.speed_trait,
+			'speed_math1': self.speed_math1,
+			'speed_value1': self.speed_value1,
+			'speed_math2': self.speed_math2,
+			'speed_value2': self.speed_value2,
+			'speed_description': self.speed_description,
+			'distance': self.distance,
+			'distance_rank': self.distance_rank,
+			'distance_value': self.distance_value,
+			'distance_units': self.distance_units,
+			'distance_rank_trait_type': self.distance_rank_trait_type,
+			'distance_rank_trait': self.distance_rank_trait,
+			'distance_rank_math1': self.distance_rank_math1,
+			'distance_rank_value1': self.distance_rank_value1,
+			'distance_rank_math2': self.distance_rank_math2,
+			'distance_rank_value2': self.distance_rank_value2,
+			'distance_unit_trait_type': self.distance_unit_trait_type,
+			'distance_unit_trait': self.distance_unit_trait,
+			'distance_unit_math1': self.distance_unit_math1,
+			'distance_unit_value1': self.distance_unit_value1,
+			'distance_unit_math2': self.distance_unit_math2,
+			'distance_unit_value2': self.distance_unit_value2,
+			'distance_math_units': self.distance_math_units,
+			'distance_description': self.distance_description,
+			'direction': self.direction,
+			'turns': self.turns,
+			'degree': self.degree,
+			'circ': self.circ,
+			'dc': self.dc,
+			'time': self.time,
+			'keyword': self.keyword,
+			'title': self.title
+		}
+		
 class AdvCheck(db.Model):
 	__tablename__ = 'advantage_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -1099,91 +1185,6 @@ class AdvDegree(db.Model):
 			'description': self.description
 		}
 
-class AdvMove(db.Model):
-	__tablename__ = 'advantage_move'
-	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
-	benefit = db.Column(db.Integer, db.ForeignKey('benefits.id'))
-	speed = db.Column(db.String())
-	speed_rank = db.Column(db.Integer)
-	speed_rank_mod = db.Column(db.Integer)
-	speed_trait_type = db.Column(db.String())
-	speed_trait = db.Column(db.Integer)
-	speed_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	speed_value1 = db.Column(db.Integer)
-	speed_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	speed_value2 = db.Column(db.Integer)
-	speed_description = db.Column(db.String())
-	distance = db.Column(db.String())
-	distance_rank = db.Column(db.Integer)
-	distance_value = db.Column(db.Integer)
-	distance_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	distance_rank_trait_type = db.Column(db.String())
-	distance_rank_trait = db.Column(db.Integer)
-	distance_rank_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	distance_rank_value1 = db.Column(db.Integer)
-	distance_rank_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	distance_rank_value2 = db.Column(db.Integer)
-	distance_unit_trait_type = db.Column(db.String())
-	distance_unit_trait = db.Column(db.Integer)
-	distance_unit_math1 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	distance_unit_value1 = db.Column(db.Integer)
-	distance_unit_math2 = db.Column(db.Integer, db.ForeignKey('math.id'))
-	distance_unit_value2 = db.Column(db.Integer)
-	distance_math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	distance_description = db.Column(db.String())
-	direction = db.Column(db.String())
-	turns = db.Column(db.Integer)
-	degree = db.Column(db.Integer, db.ForeignKey('advantage_degree.id'))
-	circ = db.Column(db.Integer, db.ForeignKey('advantage_circ.id'))
-	dc = db.Column(db.Integer, db.ForeignKey('advantage_dc.id'))
-	time = db.Column(db.Integer, db.ForeignKey('advantage_time.id'))
-	keyword = db.Column(db.String())
-	title = db.Column(db.Integer, db.ForeignKey('advantage_move_type.id'))
-	
-	
-	def format(self):
-		return {
-			'id': self.id,
-			'advantage_id': self.advantage_id,
-			'benefit': self.benefit,
-			'speed': self.speed,
-			'speed_rank': self.speed_rank,
-			'speed_rank_mod': self.speed_rank_mod,
-			'speed_trait_type': self.speed_trait_type,
-			'speed_trait': self.speed_trait,
-			'speed_math1': self.speed_math1,
-			'speed_value1': self.speed_value1,
-			'speed_math2': self.speed_math2,
-			'speed_value2': self.speed_value2,
-			'speed_description': self.speed_description,
-			'distance': self.distance,
-			'distance_rank': self.distance_rank,
-			'distance_value': self.distance_value,
-			'distance_units': self.distance_units,
-			'distance_rank_trait_type': self.distance_rank_trait_type,
-			'distance_rank_trait': self.distance_rank_trait,
-			'distance_rank_math1': self.distance_rank_math1,
-			'distance_rank_value1': self.distance_rank_value1,
-			'distance_rank_math2': self.distance_rank_math2,
-			'distance_rank_value2': self.distance_rank_value2,
-			'distance_unit_trait_type': self.distance_unit_trait_type,
-			'distance_unit_trait': self.distance_unit_trait,
-			'distance_unit_math1': self.distance_unit_math1,
-			'distance_unit_value1': self.distance_unit_value1,
-			'distance_unit_math2': self.distance_unit_math2,
-			'distance_unit_value2': self.distance_unit_value2,
-			'distance_math_units': self.distance_math_units,
-			'distance_description': self.distance_description,
-			'direction': self.direction,
-			'turns': self.turns,
-			'degree': self.degree,
-			'circ': self.circ,
-			'dc': self.dc,
-			'time': self.time,
-			'keyword': self.keyword,
-			'title': self.title
-		}
 
 class AdvOpposed(db.Model):
 	__tablename__ = 'advantage_opposed'
