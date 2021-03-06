@@ -90,3 +90,69 @@ class SkillTimeType(db.Model):
 			'name': self.name,
 			'skill_id': self.skill_id
 		}
+
+
+class AdvCircType(db.Model):
+	__tablename__ = 'skill_circ_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+		
+class AdvDCType(db.Model):
+	__tablename__ = 'skill_dc_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+		
+class AdvDegreeType(db.Model):
+	__tablename__ = 'skill_degree_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+
+class AdvMoveType(db.Model):
+	__tablename__ = 'skill_move_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+
+class AdvTimeType(db.Model):
+	__tablename__ = 'skill_time_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
