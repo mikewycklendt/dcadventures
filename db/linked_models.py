@@ -93,7 +93,7 @@ class SkillTimeType(db.Model):
 
 
 class AdvCircType(db.Model):
-	__tablename__ = 'skill_circ_type'
+	__tablename__ = 'advantage_circ_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
@@ -106,7 +106,7 @@ class AdvCircType(db.Model):
 		}
 		
 class AdvDCType(db.Model):
-	__tablename__ = 'skill_dc_type'
+	__tablename__ = 'advantage_dc_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
@@ -119,7 +119,7 @@ class AdvDCType(db.Model):
 		}
 		
 class AdvDegreeType(db.Model):
-	__tablename__ = 'skill_degree_type'
+	__tablename__ = 'advantage_degree_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
@@ -132,7 +132,7 @@ class AdvDegreeType(db.Model):
 		}
 
 class AdvMoveType(db.Model):
-	__tablename__ = 'skill_move_type'
+	__tablename__ = 'advantage_move_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
@@ -145,7 +145,7 @@ class AdvMoveType(db.Model):
 		}
 
 class AdvTimeType(db.Model):
-	__tablename__ = 'skill_time_type'
+	__tablename__ = 'advantage_time_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	advantage_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
