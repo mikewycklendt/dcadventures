@@ -93,31 +93,31 @@ def table_db_columns_create():
 
 	name = 'All Enhanced Skills'
 
-	entry = SkillBonus(all=True, name=name, hide=True )
+	entry = SkillBonus(all=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Current ' + tablename
 
-	entry = SkillBonus(current=True, name=name, hide=True )
+	entry = SkillBonus(current=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Any ' + tablename
 
-	entry = SkillBonus(any=True, name=name, hide=True )
+	entry = SkillBonus(any=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Variable ' + tablename
 
-	entry = SkillBonus(var=True, name=name, hide=True )
+	entry = SkillBonus(var=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'No ' + tablename
 
-	entry = SkillBonus(none=True, name=name, hide=True )
+	entry = SkillBonus(none=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
