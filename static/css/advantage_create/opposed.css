@@ -1,0 +1,209 @@
+#opposed-header {
+	display: grid;
+	width: 100%;
+	padding: 0px;
+	border-bottom: 2px solid lightblue;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: auto;
+}
+
+#opposed-base {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#opposed-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	margin: 0px;
+	font-family: Comic, 'Monda', Verdana;
+	font-size: 200%;
+	color: #245681;
+	padding: 0px;
+	transition: all .2s linear;
+}
+
+.opposed-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+#opposed-entry {
+	display: none;
+	font-family: 'Monda', Verdana;
+	font-size: 100%;
+	color: #245681;
+	width: 88%;
+	margin-top: 0px;
+	margin-left: 5%;
+	padding: 1%;
+	border-left: 1px solid  lightblue;
+	border-bottom: 1px solid  lightblue;
+	border-right: 1px solid lightblue;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	gap: 4px;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#opposed-entry input[type="text"] {
+	height: 1.3vw;
+	padding: .3vw;
+	width: 87%;
+}
+
+#opposed-row1 {
+	display: grid;
+	width: 98%;
+	height: 1.2vw;
+	gap: 3px;
+	grid-template-columns: 40% 10% 40% 10%;
+	grid-auto-rows: auto;
+}
+
+
+#opposed-row2 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 10% 15% 25% 10%;
+}
+
+#opposed-row3 {
+	display: grid;
+	width: 96%;
+	gap: 3px;
+	grid-template-columns: 16% 25% 27% 15% 22%;
+}
+
+#opposed-row4 {
+	display: grid;
+	width: 96%;
+	gap: 3px;
+	grid-template-columns: auto auto auto auto;
+}
+
+#opposed-row5 {
+	display: grid;
+	width: 96%;
+	gap: 3px;
+	grid-template-columns: 15% 67% 22%;
+	padding: .2vw;
+	height: auto;
+}
+
+#opposed-row5 input[type="text"] {
+	height: 1.2vw;
+	padding: .1vw;
+	width: 98%;
+}
+
+
+
+#opposed-multiple {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#opposed-button-row {
+	display: grid;
+	grid-template-columns: 60% 20% 20%;
+}
+
+#opposed-hidden {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: .3vw;
+}
+
+#opposed-recurring {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
+}
+
+#opposed-circ {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 26% auto auto;
+	gap: .3vw;
+}
+
+#opposed-dc {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 5% auto auto auto;
+	gap: .3vw;
+}
+
+#opposed-degree {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 30% auto auto;
+	gap: .3vw;
+}
+
+#opposed-time {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 15% auto auto;
+	gap: .3vw;
+}
+
+#opposed-recurring input[type="text"] {
+	height: 1.8vw;
+	padding: .1vw;
+	font-size: 110%;
+	width: 80%;
+}
+
+#opposed-err {
+	display: none;
+	width: 94%;
+	padding: 1%;
+	margin: 2%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+	border: 1px solid #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.opposed-err-line {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 90%;
+	font-family: 'Monda', Verdana;
+	color: #af0101;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+.opposed-err-line::before {
+	font-family: 'FontAwesome';
+	content: '\f071';
+	padding-right: 1.5vw;
+	display: inline-block;
+}
