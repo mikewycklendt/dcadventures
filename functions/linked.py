@@ -39,7 +39,7 @@ def link_add(table, title_table, column, id, title, keyword, body):
 		try:
 			entry = title_table(name=title)
 			db.session.add(entry)
-			setattr(entry, column)
+			setattr(entry, column, id)
 			db.session.commit()
 			title_id = entry.id
 			body['add_title'] = True
