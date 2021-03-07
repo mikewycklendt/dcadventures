@@ -83,8 +83,10 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
-
-
+	
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+	db.session.remove()
 
 
 if __name__ == '__main__':
