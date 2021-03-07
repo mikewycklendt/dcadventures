@@ -157,7 +157,9 @@ def adv_save_errors(data):
 	errors = check_field(gm_secret_check, 'Secret GM Check', 'Secret GM Check Trait Type', gm_trait_type, errors)
 	errors = check_field(gm_secret_check, 'Secret GM Check', 'Secret GM Check Trait Type', gm_trait, errors)\
 	
-	errors = check_of(language, 'Languages', [languages, language_rank], errors)
+	errors = check_fields(language, 'Languages', [languages, language_rank], errors)
+	errors = check_field(language, 'Languages', 'Language Count', languages, errors)
+	errors = check_field(language, 'Languages', 'Languages Per Rank', language_rank, errors)
 
 	return (errors)
 
