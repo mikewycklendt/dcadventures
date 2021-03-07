@@ -397,7 +397,7 @@ def circ_cell(title, name, width, circumstance, cells, body, circ_check=True):
 	
 	cell = {'title': title,
 			'width': width,
-			'content': title,
+			'content': '',
 			'circ': circ_check
 			}
 
