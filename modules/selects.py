@@ -450,32 +450,36 @@ def skill_trait_select():
 
 	skills_query = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 	skills = [{'id': '', 'name': 'Skill'}]
+	var = db.session.query(Skill).filter_by(var=True).first()
+	any = db.session.query(Skill).filter_by(any=True).first()
 	if sub == 'variable':
-		var = db.session.query(Skill).filter_by(var=True).first()
 		skills.append({'id': var.id, 'name': 'Variable Skill'})
+	if sub = 'points_trait':
+		skills.append({'id': var.id, 'name': 'Variable Skill'})
+		skills.append({'id': any.id, 'name': 'Any Skill'})
 	for skill in skills_query:
 		skills.append({'id': skill.id, 'name': skill.name})
 
 	abilities_query = db.session.query(Ability).filter(Ability.hide == None).order_by(Ability.name).all()
 	abilities = [{'id': '', 'name': 'Ability'}]
+	var = db.session.query(Ability).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(Ability).filter_by(var=True).first()
 		abilities.append({'id': var.id, 'name': 'Variable Ability'})
 	for a in abilities_query:
 		abilities.append({'id': a.id, 'name': a.name})
 
 	defenses_query = db.session.query(Defense).filter(Defense.hide == None).order_by(Defense.name).all()
 	defenses = [{'id': '', 'name': 'Defense'}]
+	var = db.session.query(Defense).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(Defense).filter_by(var=True).first()
 		defenses.append({'id': var.id, 'name': 'Variable Defense'})
 	for d in defenses_query:
 		defenses.append({'id': d.id, 'name': d.name})
 
 	powers_query = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 	powers = [{'id': '', 'name': 'Power'}]
+	var = db.session.query(Power).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(Power).filter_by(var=True).first()
 		powers.append({'id': var.id, 'name': 'Variable Power'})
 	elif sub == 'skill-dc':
 		act = db.session.query(Power).filter_by(active=True).first()
@@ -485,8 +489,8 @@ def skill_trait_select():
 
 	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Enhanced Skill'}]
+	var = db.session.query(SkillBonus).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(SkillBonus).filter_by(var=True).first()
 		bonuses.append({'id': var.id, 'name': 'Variable Enhanced Skill'})
 	for b in bonuses_query:
 		bonuses.append({'id': b.id, 'name': b.name})
@@ -494,16 +498,16 @@ def skill_trait_select():
 	
 	advantage_query = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
 	advantages = [{'id': '', 'name': 'Advantage'}]
+	var = db.session.query(Advantage).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(Advantage).filter_by(var=True).first()
 		advantages.append({'id': var.id, 'name': 'Variable Advantage'})
 	for a in advantage_query:
 		advantages.append({'id': a.id, 'name': a.name})
 
 	extras_query = db.session.query(Extra).filter(Extra.show == True).order_by(Extra.name).all()
 	extras = [{'id': '', 'name': 'Extra'}]
+	var = db.session.query(Extra).filter_by(var=True).first()
 	if sub == 'variable':
-		var = db.session.query(Extra).filter_by(var=True).first()
 		extras.append({'id': var.id, 'name': 'Variable'})
 	for e in extras_query:
 		try:
