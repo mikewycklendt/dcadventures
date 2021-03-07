@@ -454,7 +454,7 @@ def skill_trait_select():
 	any = db.session.query(Skill).filter_by(any=True).first()
 	if sub == 'variable':
 		skills.append({'id': var.id, 'name': 'Variable Skill'})
-	if sub = 'points_trait':
+	if sub == 'points_trait':
 		skills.append({'id': var.id, 'name': 'Variable Skill'})
 		skills.append({'id': any.id, 'name': 'Any Skill'})
 	for skill in skills_query:
