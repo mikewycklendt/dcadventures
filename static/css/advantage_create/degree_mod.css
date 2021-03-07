@@ -59,7 +59,7 @@
 #deg-mod-base-form {
 	opacity: 0%; 
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 30% 40% 30%;
 	gap: .3vw;
 	transition: all .3s ease-out; 
 	margin-bottom: .3vw; 
