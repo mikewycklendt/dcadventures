@@ -37,8 +37,9 @@ def link_add(table, title_table, column, id, title, keyword, body):
 		body['add_title'] = False
 	else:
 		try:
-			entry = title_table(name=title, skill_id=id)
+			entry = title_table(name=title)
 			db.session.add(entry)
+			setattr(entry, column)
 			db.session.commit()
 			title_id = entry.id
 			body['add_title'] = True
