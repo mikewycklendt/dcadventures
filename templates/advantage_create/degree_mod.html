@@ -6,7 +6,7 @@
 
 	<div id="deg-mod-base-form" >
 		<div>
-			<select class="header-select" id="deg_mod_target" name="deg_mod_target" >
+			<select class="entry-select" id="deg_mod_target" name="deg_mod_target" >
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -14,7 +14,7 @@
 		</div>
 
 		<div>
-			<select class="header-select" id="deg_mod_effect_target" name="deg_mod_effect_target">
+			<select class="entry-select" id="deg_mod_effect_target" name="deg_mod_effect_target">
 				{% for e in effect_target %}
 					<option value="{{e.type}}">{{e.name}}</option>
 				{% endfor %}
