@@ -96,6 +96,7 @@ class Advantage(db.Model):
 	swap_multiple = db.Column(db.String())
 	time = db.Column(db.Boolean)
 	variable = db.Column(db.Boolean)
+	move = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -176,6 +177,7 @@ class Advantage(db.Model):
 			'swap_multiple': self.swap_multiple,
 			'time': self.time,
 			'variable': self.variable,
+			'move': self.move,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
@@ -684,7 +686,7 @@ class AdvMove(db.Model):
 			'keyword': self.keyword,
 			'title': self.title
 		}
-		
+
 class AdvCheck(db.Model):
 	__tablename__ = 'advantage_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

@@ -218,8 +218,10 @@ advantage_save = function() {
 	const rounds = check("rounds_check");
 	const swap = check("skill_check");
 	const swap_multiple = select("skill_multiple");
-	const time = check("time_check");
+	const time = check("time_check_check");
 	const variable = check("variable_check");
+	const move = check("move_check");
+
 
 	const errors = 'advantage-err';
 	const err_line = 'advantage-err-line';
@@ -293,9 +295,8 @@ advantage_save = function() {
 			'swap': swap,
 			'swap_multiple': swap_multiple,
 			'time': time,
-			'variable': variable
-
-			
+			'variable': variable,
+			'move': move			
 		}),
 		headers: {
 		'Content-Type': 'application/json',

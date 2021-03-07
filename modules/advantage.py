@@ -448,6 +448,7 @@ def save_advantage():
 	swap_multiple = request.get_json()['swap_multiple']
 	time = request.get_json()['time']
 	variable = request.get_json()['variable']
+	move = request.get_json()['move']
 
 	adv_type = integer(adv_type)
 	action = db_integer(Action, action)
@@ -540,7 +541,8 @@ def save_advantage():
 	entry.swap_multiple = swap_multiple
 	entry.time = time
 	entry.variable = variable
-
+	entry.move = move
+	
 	db.session.commit()
 	body['success'] = True
 			
