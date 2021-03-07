@@ -100,6 +100,7 @@ def adv_save_errors(data):
 	swap_multiple = data['swap_multiple']
 	time = data['time']
 	variable = data['variable']
+	move = data['move']
 
 	errors = adv_entry_check('Variable Trait', AdvVariable, variable, advantage_id, errors)
 	errors = adv_entry_check('DC Table', AdvDC, dc, advantage_id, errors)
@@ -111,13 +112,14 @@ def adv_save_errors(data):
 	errors = adv_entry_check('Bonus Swap', AdvSkill, swap, advantage_id, errors)
 	errors = adv_entry_check('Condition', AdvCondition, condition, advantage_id, errors)
 	errors = adv_entry_check('Levels', Levels, levels, advantage_id, errors)
-	errors = adv_entry_check('Variable Check', AdvAltCheck, check_check, advantage_id, errors)
+	errors = adv_entry_check('Variable Check', AdvCheck, check_check, advantage_id, errors)
 	errors = adv_entry_check('Multiple Round', AdvRounds, rounds, advantage_id, errors)
 	errors = adv_entry_check('Spend Points', AdvPoints, points, advantage_id, errors)
 	errors = adv_entry_check('Extra Effort', AdvEffort, effort, advantage_id, errors)
 	errors = adv_entry_check('Time Effect', AdvTime, time, advantage_id, errors)
 	errors = adv_entry_check('Minions', AdvMinion, minion, advantage_id, errors)
 	errors = adv_entry_check('Combined Advantage', AdvCombined, combined, advantage_id, errors)
+	errors = adv_entry_check('Movement Effect', AdvMove, move, advantage_id, errors)
 
 	errors = adv_check_multiple('Swap Bonus', AdvSkill, swap_multiple, advantage_id, errors)
 	errors = adv_check_multiple('Opposed Check', AdvOpposed, opposed_multiple, advantage_id, errors)

@@ -25,6 +25,8 @@ def adv_entry_check(name, table, check, id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
+	id = int(id)
+
 	entry = db.session.query(table).filter_by(advantage_id=id).first()
 
 	if check == True:
