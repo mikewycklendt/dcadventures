@@ -92,6 +92,8 @@ def integer(value):
 		value = 876876
 	elif value == 'routine':
 		value = 765765
+	elif value == 'penval':
+		value = 654654
 	elif value == '':
 		value = None
 	elif value == 'none':
@@ -196,6 +198,8 @@ def integer_convert(value):
 		value = 'Success'
 	elif value == 765765:
 		value = 'Routine'
+	elif value == 654654:
+		value = 'Penalty Value'
 	elif value is None:
 		value = ''
 	else:
@@ -283,6 +287,8 @@ def int_check(value, name, errors):
 	elif value == '':
 		return (errors)
 	elif value == 'none':
+		return (errors)
+	elif value == 'penval':
 		return (errors)
 	else:
 		try:
