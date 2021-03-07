@@ -51,154 +51,164 @@
 			</select>
 		</div>
 
-		<div>
-
-			<div id="time-rank">
-				<div>
-					<select class="select-sml" id="time_rank1" name="time_rank1">
-						<option value="">Rank</option>
-						{% for m in measure_rank %}
-							<option value="{{m.id}}">{{m.name}}</option>
+		<div id="time-value-field">
+			<div>
+				<div id="time-measure-type">
+					<select class="select-sml" id="time_measure_type" name="time_measure_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
-
-				<div>
-					<select class="select-sml" id="time_rank1_value" name="time_rank1_value">
-						<option value="">Value</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				 </div>
-				
-				<div>
-					<select class="select-sml" id="time_rank_math" name="time_rank_math">
-						<option value="">Math</option>
-						{% for m in maths %}
-							<option value={{m.id}}>{{m.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-
-				<div>
-					<select class="select-sml" id="time_rank2" name="time_rank2">
-						<option value="">Rank</option>
-						{% for m in measure_rank %}
-							<option value="{{m.id}}">{{m.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="time_rank2_value" name="time_rank2_value">
-						<option value="">Value</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				 </div>
-				 
 			</div>
 
-			<div id="time-value">
-				
-				<div>
-					<input type="text" id="time_value" name="time_value">
-				</div>
-				
-				<div>
+			<div>
+				<div id="time-rank">
+					<div>
+						<select class="select-sml" id="time_rank1" name="time_rank1">
+							<option value="">Rank</option>
+							{% for m in measure_rank %}
+								<option value="{{m.id}}">{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="time_rank1_value" name="time_rank1_value">
+							<option value="">Value</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
 					
-					<select class="select-sml" id="time_units" name="time_units">
-						<option value="">Units</option>
-						{% for t in times %}
-							<option value={{t.id}}>{{t.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			
-			</div>
+					<div>
+						<select class="select-sml" id="time_rank_math" name="time_rank_math">
+							<option value="">Math</option>
+							{% for m in maths %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
 
-			<div id="time-math">
+
+					<div>
+						<select class="select-sml" id="time_rank2" name="time_rank2">
+							<option value="">Rank</option>
+							{% for m in measure_rank %}
+								<option value="{{m.id}}">{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="time_rank2_value" name="time_rank2_value">
+							<option value="">Value</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+				</div>
+
+				<div id="time-value">
+					
+					<div>
+						<input type="text" id="time_value" name="time_value">
+					</div>
+					
+					<div>
+						
+						<select class="select-sml" id="time_units" name="time_units">
+							<option value="">Units</option>
+							{% for t in times %}
+								<option value={{t.id}}>{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
 				
-				<div>
-					<select class="select-sml" id="time_trait_type" name="time_trait_type" onchange="time_trait_type()">
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select> 
 				</div>
 
-				<div>
-					<select class="select-sml" id="time_trait" name="time_trait">
-						<option value="">Trait</option>
-					</select>
+				<div id="time-math">
+					
+					<div>
+						<select class="select-sml" id="time_trait_type" name="time_trait_type" onchange="time_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+
+					<div>
+						<select class="select-sml" id="time_trait" name="time_trait">
+							<option value="">Trait</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="time_math" name="time_math">
+							<option value="">Math</option>
+							{% for m in maths %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="time_math_value" name="time_math_value">
+							<option value="">Value</option>
+							<option value="skill">This Rank</option>
+							<option value="parent">Parent Rank</option>
+							{% for i in time_numbers %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="venter" style="font-size: 80%;">
+						= Time Rank
+					</div>
 				</div>
 
-				<div>
-					<select class="select-sml" id="time_math" name="time_math">
-						<option value="">Math</option>
-						{% for m in maths %}
-							<option value={{m.id}}>{{m.name}}</option>
-						{% endfor %}
-					</select>
+				<div id="time-turns">
+					<div>
+						<select class="select-sml" id="time_turns" name="time_turns">
+							<option value="">Turns</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
 				</div>
 
-				<div>
-					<select class="select-sml" id="time_math_value" name="time_math_value">
-						<option value="">Value</option>
-						<option value="skill">This Rank</option>
-						<option value="parent">Parent Rank</option>
-						{% for i in time_numbers %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
+				<div id="time-time">
+					<div>
+						<select class="select-sml" id="time_time" name="time_time">
+							<option value="">Time Rank</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div id="time-mod">
+					<div>
+						<select class="select-sml" id="time_mod" name="time_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
 				</div>
 
-				<div class="venter" style="font-size: 80%;">
-					= Time Rank
-				</div>
 			</div>
-
-			<div id="time-turns">
-				<div>
-					<select class="select-sml" id="time_turns" name="time_turns">
-						<option value="">Turns</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-
-			<div id="time-time">
-				<div>
-					<select class="select-sml" id="time_time" name="time_time">
-						<option value="">Time Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-			
-			<div id="time-mod">
-				<div>
-					<select class="select-sml" id="time_mod" name="time_mod">
-						<option value="">Modifier</option>
-						{% for i in negatives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-
 		</div>
-
 	</div>
 
 	<div id="time-row2">

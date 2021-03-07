@@ -37,6 +37,8 @@
 
 #benefit-effort {
 	grid-area: effort;
+	display: grid;
+	grid-template-columns: auto auto;
 }
 
 #benefit-description {

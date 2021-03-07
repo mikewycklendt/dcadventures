@@ -208,6 +208,7 @@ class Benefit(db.Model):
 	name = db.Column(db.String())
 	description = db.Column(db.String())
 	effort = db.Column(db.Boolean)
+	ranked = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
@@ -223,6 +224,7 @@ class Benefit(db.Model):
 			'name': self.name,
 			'description': self.description,
 			'effort': self.effort,
+			'ranked': self.ranked,
 			'approved': self.approved,
 			'all': self.all,
 			'current': self.current,
@@ -1311,6 +1313,7 @@ class AdvTime(db.Model):
 	dc_type = db.Column(db.Integer, db.ForeignKey('advantage_dc_type.id'))
 	time = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
+	measure_type = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -1352,5 +1355,6 @@ class AdvTime(db.Model):
 			'degree_type': self.degree_type,
 			'dc_type': self.dc_type,
 			'time': self.time,
-			'mod': self.mod
+			'mod': self.mod,
+			'measure_type': self.measure_type
 		}

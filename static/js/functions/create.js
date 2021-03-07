@@ -364,6 +364,36 @@ function select_maxheight_shared(select, options, entry) {
 }
 
 
+function select_opacity_shared(select, options) {
+	const field = document.getElementById(select);
+	const val = field.options[field.selectedIndex].value;
+	let option;
+	const adiv = options[0].div;
+
+	let any_match = false;
+
+	console.log(val);
+
+	for (option of options) {
+		const values = option.val;
+		const div = option.div;
+		let match = false;
+		let value;
+		for (value of values) {
+			if (val == value) {
+				match  = true;
+				any_match = true;
+			}
+		}
+		if (match == true) {
+			show_opacity(div);
+		} else {
+			hide_opacity(div);
+		}	
+	};
+}
+
+
 
 
 function hide_secondary(select_input, options, entry) {

@@ -636,6 +636,7 @@ def advantage_post_benefit():
 	name = request.get_json()['name']
 	description = request.get_json()['description']
 	effort = request.get_json()['effort']
+	ranked = request.get_json()['ranked']
 
 	benefit = db.session.query(Benefit).filter(Benefit.name == name).first()
 
@@ -656,7 +657,8 @@ def advantage_post_benefit():
 		entry = Benefit(advantage_id = advantage_id,
 							name = name,
 							description = description,
-							effort = effort)
+							effort = effort,
+							ranked = ranked)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -3387,6 +3389,7 @@ def advantage_post_time():
 	mod = request.get_json()['mod']
 	mod = request.get_json()['mod']
 	recovery_target = request.get_json()['recovery_target']
+	measure_type = request.get_json()['measure_type']
 
 	errors = adv_time_post_errors(data)
 	
@@ -3472,7 +3475,8 @@ def advantage_post_time():
 						next = next,
 						scene = scene,
 						time = time,
-						mod = mod
+						mod = mod,
+						measure_type = measure_type
 					)
 
 	db.session.add(entry)

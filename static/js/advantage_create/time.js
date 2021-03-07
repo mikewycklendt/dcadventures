@@ -38,7 +38,9 @@ function time_value_type() {
 					{'val': 'turns', 'div': 'time-turns'}, 
 					{'val': 'time', 'div': 'time-time'}, 
 					{'val': 'mod', 'div': 'time-mod'}]
+	const shared = [{'val': ['math', 'value', 'rank', 'turns', 'time'], 'div': 'time-measure-type'}]
 
+	select_opacity_shared(select, shared);
 	select_opacity(select, options);
 }
 
@@ -83,6 +85,7 @@ function time_submit() {
 	const time = select("time_time");
 	const mod = select("time_mod");
 	const recovery_target = select("time_recovery_target");
+	const measure_type = select("time_measure_type");
 
 	///const advantage_id = document.getElementById('advantage_id').value;
 	const advantage_id = select("create_advantage_select");
@@ -132,7 +135,8 @@ function time_submit() {
 			'dc_type': dc_type,
 			'time': time,
 			'mod': mod,
-			'recovery_target': recovery_target
+			'recovery_target': recovery_target,
+			'measure_type': measure_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

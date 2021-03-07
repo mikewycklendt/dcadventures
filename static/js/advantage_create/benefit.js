@@ -24,6 +24,7 @@ function benefit_submit() {
 	const name = text('benefit_name')
 	const description = text('benefit_description')
 	const effort = check('benefit_effort')
+	const ranked = check('benefit_ranked');
 					
 	const errors = 'benefit-err';
 	const err_line = 'benefit-err-line';
@@ -37,7 +38,8 @@ function benefit_submit() {
 			'font': font,
 			'name': name,
 			'description': description,
-			'effort': effort
+			'effort': effort,
+			'ranked': ranked
 		}),
 		headers: {
 			'Content-Type': 'application/json',

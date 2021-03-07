@@ -999,6 +999,7 @@ def adv_time_post(entry, body, cells):
 	time = entry.time
 	mod = entry.mod
 	recovery_target = entry.recovery_target
+	measure_type = entry.measure_type
 
 
 	title_name = get_name(AdvTimeType, title)
@@ -1020,6 +1021,7 @@ def adv_time_post(entry, body, cells):
 	turns = integer_convert(turns)
 	time = integer_convert(time)
 	mod = integer_convert(mod)
+	measure_type = math_convert(measure_type)
 
 	degree = get_keyword(AdvDegree, degree)
 	circ = get_keyword(AdvCirc, circ)
@@ -1040,20 +1042,20 @@ def adv_time_post(entry, body, cells):
 	cells = cell('Benefit', 13, [benefit], cells)
 	cells = cell('Time Type', 20, [type], cells)
 
-	vcells = vcell('value', 17, [value, units])
-	vcells = vcell('math', 30, [trait, math, math_value, '= Time Rank'], vcells)
-	vcells = vcell('rank',35, [rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
+	vcells = vcell('value', 17, [measure_type, value, units])
+	vcells = vcell('math', 30, [measure_type, trait, math, math_value, '= Time Rank'], vcells)
+	vcells = vcell('rank',35, [measure_type, rank1, rank1_value, rank_math, rank2, rank2_value], vcells)
 	vcells = vcell('gm', 13, ['Set by GM'], vcells)
 	vcells = vcell('player', 16, ['Set by Player'], vcells)
 	word = int_word('Turns', turns)
-	vcells = vcell('turns', 18, [turns, word], vcells)	
+	vcells = vcell('turns', 18, [measure_type, turns, word], vcells)	
 	vcells = vcell('instant', 14, ['Instant'], vcells)
 	vcells = vcell('perm', 14, ['Permanent'], vcells)
 	vcells = vcell('round', 14, ['One Round'], vcells)
 	vcells = vcell('next', 14, ['Next Round'], vcells)
 	vcells = vcell('scene', 14, ['Scene'], vcells)
 	vcells = vcell('turn', 14, ['One Turn'], vcells)
-	vcells = vcell('time', 17, ['Time Rank', time], vcells)
+	vcells = vcell('time', 17, [measure_type, 'Time Rank', time], vcells)
 	mod = add_plus(mod)
 	vcells = vcell('mod', 18, [mod, 'Time Rank'], vcells)
 	vcell_add('Time', value_type, vcells, cells)
@@ -1082,10 +1084,12 @@ def adv_benefit_post(entry, body, cells):
 	name = entry.name
 	description = entry.description
 	effort = entry.effort
+	ranked = entry.ranked
 
 	cells = cell('Name', 25, [name])
 	cells = cell('Description', 55, [description], cells)
 	cells = check_cell('Extra Effort', 15, effort, cells)
+	cells = check_cell('Ranked', 9, ranked, cells)
 
 	body = send(cells, body)
 	
