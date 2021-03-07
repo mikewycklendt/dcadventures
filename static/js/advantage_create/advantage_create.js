@@ -222,6 +222,7 @@ advantage_save = function() {
 	const time = check("time_check_check");
 	const variable = check("variable_check");
 	const move = check("move_check");
+	const variable_multiple = select("variable_multiple");
 
 
 	const errors = 'advantage-err';
@@ -297,7 +298,8 @@ advantage_save = function() {
 			'swap_multiple': swap_multiple,
 			'time': time,
 			'variable': variable,
-			'move': move			
+			'move': move,
+			'variable_multiple': variable_multiple
 		}),
 		headers: {
 		'Content-Type': 'application/json',

@@ -96,6 +96,7 @@ class Advantage(db.Model):
 	swap_multiple = db.Column(db.String())
 	time = db.Column(db.Boolean)
 	variable = db.Column(db.Boolean)
+	variable_multiple = db.Column(db.String())
 	move = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
@@ -185,7 +186,8 @@ class Advantage(db.Model):
 			'none': self.none,
 			'show': self.show,
 			'approved': self.approved,
-			'base': self.base
+			'base': self.base,
+			'variable_multiple': self.variable_multiple
 		}
 
 class AdvantageType(db.Model):

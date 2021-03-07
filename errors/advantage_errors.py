@@ -100,6 +100,7 @@ def adv_save_errors(data):
 	swap_multiple = data['swap_multiple']
 	time = data['time']
 	variable = data['variable']
+	variable_multiple = data['variable_multiple']
 	move = data['move']
 
 	errors = adv_entry_check('Variable Trait', AdvVariable, variable, advantage_id, errors)
@@ -134,7 +135,7 @@ def adv_save_errors(data):
 	errors = if_field('Skill Check', skill_type, skill_description, 'Circumstance', errors)
 	errors = adv_select_entry('table', 'DC Table', 'Difficulty Class', 'DC Table', dc_type, AdvDC, advantage_id, errors)
 
-	errors = variable_fields('value', 'DC', dc_type, [dc_value], errors)
+	errors =  required_rule('x', trait_type, False, advantage_id, 'advantage_id', variable_multiple, 'Advantage', 'Variable Trait', 'Variable Type', 'Variable Type field in the Variable Trait form', errors)
 	
 	errors = variable_fields('value', 'DC', dc_type, [dc_value], errors)
 	errors = variable_field('value', dc_type, 'DC Value', dc_value, errors)

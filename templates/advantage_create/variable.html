@@ -5,6 +5,11 @@
 	</div>
 	
 	<div class="advantage-base" id="variable-base">
+		<select class="select-entry" id="variable_multiple" name="variable_multiple">
+			{% for v in variable_multiple %}
+				<option value="{{v.type}}">{{v.name}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
 </div>

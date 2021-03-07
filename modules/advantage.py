@@ -266,7 +266,9 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_Advantage', 'name': 'This Advantage'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}, {'type': 'any', 'name': 'Any Trait'}]
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
-	
+
+	variable_multiple = [{'type': '', 'name': 'Variable Type'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'advantage', 'name': 'Choose when Buying Advantage'}]
+
 	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
 
 	value_type_mod = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'Modifier'}]
@@ -317,7 +319,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							required_tools=required_tools, complexity=complexity, equipment_use=equipment_use, equip_type=equip_type, repair=repair, degree_type=degree_type, nullify=nullify, direction=direction,
 							speed=speed, distance=distance, distances=distances, attached=attached, frequency=frequency, multiple_time=multiple_time, time_value=time_value, recovery=recovery, advantage_check=advantage_check,
 							advantage_circ=advantage_circ, advantage_circ_type=advantage_circ_type, advantage_dc=advantage_dc, advantage_dc_type=advantage_dc_type, advantage_degree=advantage_degree,
-							advantage_degree_type=advantage_degree_type, advantage_move=advantage_move, advantage_move_type=advantage_move_type, advantage_time=advantage_time, advantage_time_type=advantage_time_type)
+							advantage_degree_type=advantage_degree_type, advantage_move=advantage_move, advantage_move_type=advantage_move_type, advantage_time=advantage_time, advantage_time_type=advantage_time_type,
+							variable_multiple=variable_multiple)
 
 @advantage.route('/advantage/create', methods=['POST'])
 def post_advantage(): 
@@ -448,6 +451,7 @@ def save_advantage():
 	swap_multiple = request.get_json()['swap_multiple']
 	time = request.get_json()['time']
 	variable = request.get_json()['variable']
+	variable_multiple = request.get_json()['variable_multiple']
 	move = request.get_json()['move']
 
 	adv_type = integer(adv_type)
@@ -541,6 +545,7 @@ def save_advantage():
 	entry.swap_multiple = swap_multiple
 	entry.time = time
 	entry.variable = variable
+	entry.variable_multiple = variable_multiple
 	entry.move = move
 	
 	db.session.commit()
