@@ -548,6 +548,23 @@
 
 	</div>
 	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Equipment Points:
+		</div>
+	
+		<div>
+			<select class="base-select" id="equipment" name="equipment">
+				<option value="">Points Per Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	
 </div>
 
 

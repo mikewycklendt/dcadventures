@@ -74,6 +74,7 @@ class Advantage(db.Model):
 	multiple = db.Column(db.Boolean)
 	groups = db.Column(db.Boolean)
 	pressure = db.Column(db.Boolean)
+	equipment = db.Column(db.Integer)
 	check_check = db.Column(db.Boolean)
 	circumstance = db.Column(db.Boolean)
 	combined = db.Column(db.Boolean)
@@ -187,7 +188,8 @@ class Advantage(db.Model):
 			'show': self.show,
 			'approved': self.approved,
 			'base': self.base,
-			'variable_multiple': self.variable_multiple
+			'variable_multiple': self.variable_multiple,
+			'equipment': self.equipment
 		}
 
 class AdvantageType(db.Model):

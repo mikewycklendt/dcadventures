@@ -453,6 +453,7 @@ def save_advantage():
 	variable = request.get_json()['variable']
 	variable_multiple = request.get_json()['variable_multiple']
 	move = request.get_json()['move']
+	equipment = request.get_json()['equipment']
 
 	adv_type = integer(adv_type)
 	action = db_integer(Action, action)
@@ -475,7 +476,8 @@ def save_advantage():
 	gm_trait = integer(gm_trait)
 	languages = integer(languages)
 	language_rank = integer(language_rank)
-	mods_count = integer(mods_count)
+	mods_count = integer(mods_count)\
+	equipment = integer(equipment)
 
 	entry = db.session.query(Advantage).filter(Advantage.id == advantage_id).one()
 
@@ -547,7 +549,8 @@ def save_advantage():
 	entry.variable = variable
 	entry.variable_multiple = variable_multiple
 	entry.move = move
-	
+	entry.equipment = equipment
+
 	db.session.commit()
 	body['success'] = True
 			
