@@ -265,6 +265,8 @@ def adv_circ_post(entry, body, cells):
 	
 	vcells = vcell('nature', 25, ['If', nature], vcells)
 	
+	vcells = vcell('area', 25, ['Against Area Effects'], vcells)
+	
 	cells = vcell_add('Effect', effect, vcells, cells)
 
 	cells = check_cell('Surface', 8, surface, cells)
