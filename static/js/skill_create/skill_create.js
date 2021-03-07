@@ -29,8 +29,7 @@ function head_edit() {
 
 skill_save = function() {
 
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
+	const skill_id = document.getElementById('skill_id').value;
 
 	const description = text("description");
 	const ability = select("ability");

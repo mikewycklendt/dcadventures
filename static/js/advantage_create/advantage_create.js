@@ -152,7 +152,8 @@ advantage_edit = function() {
 
 advantage_save = function() {
 
-	const advantage_id = document.getElementById('advantage_id').value;
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
 
 	const description = text("description");
 	const adv_type = select("type");
