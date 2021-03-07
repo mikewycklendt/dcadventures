@@ -128,14 +128,12 @@ def adv_save_errors(data):
 	errors = adv_check_multiple_fields('Bonus/Penalty Modifier', AdvMod, [mods_multiple, mods_count], advantage_id, errors)
 
 	errors = required(adv_type, 'Advantage Type', errors)
-	errors = required(action, 'Action Type', errors)
-	errors = required(check_type, 'Check Type', errors)
 
 	errors = adv_select_entry('x', 'Variable Trait', 'Trait Type', 'Variable Trait', trait_type, AdvVariable, advantage_id, errors, True)
 	errors = if_field('Skill Check', skill_type, skill_description, 'Circumstance', errors)
 	errors = adv_select_entry('table', 'DC Table', 'Difficulty Class', 'DC Table', dc_type, AdvDC, advantage_id, errors)
 
-	errors =  required_rule('x', trait_type, False, advantage_id, 'advantage_id', variable_multiple, 'Advantage', 'Variable Trait', 'Variable Type', 'Variable Type field in the Variable Trait form', errors)
+	errors = required_rule('x', trait_type, False, advantage_id, 'advantage_id', variable_multiple, 'Advantage', 'Variable Trait', 'Variable Type', 'Variable Type field in the Variable Trait form', errors)
 	
 	errors = variable_fields('value', 'DC', dc_type, [dc_value], errors)
 	errors = variable_field('value', dc_type, 'DC Value', dc_value, errors)
