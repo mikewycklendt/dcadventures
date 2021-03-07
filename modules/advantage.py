@@ -315,7 +315,9 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							circ_effect=circ_effect, nature=nature, circ_trait=circ_trait, materials=materials, circ_targets=circ_targets, measure_effect_circ=measure_effect_circ, measure_type=measure_type,
 							unit_type=unit_type, units=units, effect_target=effect_target, dc_value=dc_value, measure_effect=measure_effect, damage_type=damage_type, inflict=inflict, offers=offers, 
 							required_tools=required_tools, complexity=complexity, equipment_use=equipment_use, equip_type=equip_type, repair=repair, degree_type=degree_type, nullify=nullify, direction=direction,
-							speed=speed, distance=distance, distances=distances, attached=attached, frequency=frequency, multiple_time=multiple_time, time_value=time_value, recovery=recovery)
+							speed=speed, distance=distance, distances=distances, attached=attached, frequency=frequency, multiple_time=multiple_time, time_value=time_value, recovery=recovery, advantage_check=advantage_check,
+							advantage_circ=advantage_circ, advantage_circ_type=advantage_circ_type, advantage_dc=advantage_dc, advantage_dc_type=advantage_dc_type, advantage_degree=advantage_degree,
+							advantage_degree_type=advantage_degree_type, advantage_move=advantage_move, advantage_move_type=advantage_move_type, advantage_time=advantage_time, advantage_time_type=advantage_time_type)
 
 @advantage.route('/advantage/create', methods=['POST'])
 def post_advantage(): 

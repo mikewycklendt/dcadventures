@@ -18,7 +18,9 @@ function benefit_submit() {
 	const created = benefit_grid.titles;
 	const font = benefit_grid.font;
 					
-	const advantage_id = document.getElementById('advantage_id').value;
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
+	
 	const name = text('benefit_name')
 	const description = text('benefit_description')
 	const effort = check('benefit_effort')

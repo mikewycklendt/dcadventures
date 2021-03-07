@@ -39,8 +39,10 @@ function skill_submit() {
 	const replaced_trait_type = select("skill_replaced_trait_type")
 	const replaced_trait = select("skill_replaced_trait")
 	const multiple = select("skill_multiple")
-	const advantage_id = document.getElementById('advantage_id').value;
-
+	
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
+	
 	const errors = 'skill-err';
 	const err_line = 'skill-err-line';
 

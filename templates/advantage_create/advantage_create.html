@@ -20,11 +20,21 @@
 				</div>
 
 				<div id="addadvantageform">
-					<div id="nameadvantage">
+					
+					<div>
+						<select id="create_advantage_select" name="create_advantage_select">
+							<option value="">Advantage</option>
+							{% for a in advantages %}
+								<option value={{a.id}}>{a.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+
+					<div style="display: none;">
 						<input type="text" id="advantage_name" placeholder="Advantage Name">
 					</div>
 						
-					<div id="namebutton">
+					<div>
 						<div class="btn" id="advantage_create" onclick="advantage_create()" >
 							 Create Advantage
 						</div>

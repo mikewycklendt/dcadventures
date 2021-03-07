@@ -34,7 +34,8 @@ function variable_submit() {
 	const active = check("variable_active");
 	const effort = check("variable_effort");
 
-	const advantage_id = document.getElementById('advantage_id').value;
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
 
 	const errors = 'variable-err';
 	const err_line = 'variable-err-line';

@@ -216,7 +216,8 @@ function modifiers_submit() {
 	const multiple_count = select("modifiers_multiple_count");
 	const lasts = select("modifier_lasts");
 
-	const advantage_id = document.getElementById('advantage_id').value;
+	///const advantage_id = document.getElementById('advantage_id').value;
+	const advantage_id = select("create_advantage_select");
 
 	const errors = 'modifiers-err';
 	const err_line = 'modifiers-err-line';
