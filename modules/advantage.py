@@ -2168,6 +2168,8 @@ def advantage_post_check():
 	condition_target = request.get_json()['condition_target']
 	conditions_target = request.get_json()['conditions_target']
 
+	benefit = db_integer(Benefit, benefit)
+
 	degree = db_integer(AdvDegreeType, degree)
 	circ = db_integer(AdvCircType, circ)
 	dc = db_integer(AdvDCType, dc)
@@ -2334,6 +2336,7 @@ def advantage_post_circ():
 		return jsonify(body)
 
 
+	benefit = db_integer(Benefit, benefit)
 
 	level_type = db_integer(LevelType, level_type)
 	level = db_integer(Levels, level)
@@ -2543,6 +2546,9 @@ def advantage_post_dc():
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
+
+
+	benefit = db_integer(Benefit, benefit)
 
 	math = db_integer(Math, math)
 	inflict_math = db_integer(Math, inflict_math)
@@ -2802,6 +2808,7 @@ def advantage_post_degree():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	benefit = db_integer(Benefit, benefit)
 	
 	action = db_integer(Action, action)
 	inflict_math = db_integer(Math, inflict_math)
@@ -3049,6 +3056,9 @@ def advantage_post_move():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 	
+
+	benefit = db_integer(Benefit, benefit)
+
 	degree = db_integer(AdvDegree, degree)
 	circ = db_integer(AdvCirc, circ)
 	dc = db_integer(AdvDC, dc)
@@ -3214,6 +3224,7 @@ def advantage_post_opposed():
 	time_type = request.get_json()['time_type']
 	recurring_type = request.get_json()['recurring_type']
 
+	benefit = db_integer(Benefit, benefit)
 
 	player_check = db_integer(Check, player_check)
 	opponent_check = db_integer(Check, opponent_check)
@@ -3381,6 +3392,7 @@ def advantage_post_time():
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
 
+	benefit = db_integer(Benefit, benefit)
 
 	rank1 = db_integer(Rank, rank1)
 	rank_math = db_integer(Math, rank_math)
