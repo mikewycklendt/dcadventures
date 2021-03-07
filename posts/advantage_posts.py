@@ -578,7 +578,7 @@ def adv_degree_post(entry, body, cells):
 	value_type = entry.value_type
 	description = entry.description
 
-	title_name = get_name(SkillDegreeType, title)
+	title_name = get_name(AdvDegreeType, title)
 	body['title'] = title_name
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
