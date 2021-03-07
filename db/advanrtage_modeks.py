@@ -802,6 +802,7 @@ class AdvCirc(db.Model):
 	environment = db.Column(db.Integer, db.ForeignKey('environments.id')) 
 	nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	rank = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -851,7 +852,8 @@ class AdvCirc(db.Model):
 			'trait_target': self.trait_target,
 			'environment': self.environment,
 			'nature': self.nature,
-			'check_type': self.check_type
+			'check_type': self.check_type,
+			'rank': self.rank
 		}
 
 class AdvDC(db.Model):

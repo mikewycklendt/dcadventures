@@ -2324,6 +2324,7 @@ def advantage_post_circ():
 	environment = request.get_json()['environment']
 	nature = request.get_json()['nature']
 	check_type = request.get_json()['check_type']
+	rank = request.get_json()['rank']
 
 	errors = adv_circ_post_errors(data)
 
@@ -2364,6 +2365,7 @@ def advantage_post_circ():
 	measure_mod = integer(measure_mod)
 	max = integer(max)
 	trait = integer(trait)
+	rank = integer(rank)
 
 	body = {}
 	body['success'] = True
@@ -2417,7 +2419,8 @@ def advantage_post_circ():
 						trait_target = trait_target,
 						environment = environment,
 						nature = nature,
-						check_type = check_type
+						check_type = check_type,
+						rank = rank
 					)
 
 	db.session.add(entry)

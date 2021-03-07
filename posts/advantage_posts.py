@@ -173,6 +173,7 @@ def adv_circ_post(entry, body, cells):
 	environment = entry.environment
 	nature = entry.nature
 	check_type =  entry.check_type
+	rank = entry.rank
 
 
 
@@ -203,6 +204,7 @@ def adv_circ_post(entry, body, cells):
 	measure_trait_math = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
 	max = integer_convert(max)
+	rank = integer_convert(rank)
 
 	lasts = get_keyword(AdvTime, lasts)
 
@@ -228,6 +230,7 @@ def adv_circ_post(entry, body, cells):
 
 
 	cells = cell('Keyword', 13, [keyword])
+	cells = cell('Ranks', 6, [rank], cells)
 	cells = cell('Benefit', 13, [benefit], cells)
 	cells = cell('Target', 12, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
@@ -702,7 +705,7 @@ def adv_degree_post(entry, body, cells):
 	level_value = one_of(level_type, ['One Level', level_direction, level_type], level_value)
 	vcells = vcell('level', 40, [level_value], vcells)
 
-	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')
+	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonus'], vcells, knowledge, 'bonus')
 	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
 
 	w = width(17, 13, consequence_action)

@@ -413,6 +413,15 @@
 
 		<div id="circ-row2-checks">
 
+			<div>
+				<select class="select-sml" id="circ_rank" name="circ_rank">
+					<option value="">Ranks</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
 			<div >
 				<div class="check-div">
 					<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox" onclick="circ_cumulative()"> Cumulative

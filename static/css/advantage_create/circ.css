@@ -170,7 +170,7 @@
 
 #circ-row2-checks {
 	display: grid;	
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto;
 }
 
 #circ-row2 input[type="text"] {
