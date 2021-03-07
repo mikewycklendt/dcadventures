@@ -116,7 +116,7 @@
 	display: grid;
 	width: 100%;
 	gap: .3vw;
-	grid-template-columns: 10% 90%;
+	grid-template-columns: 15% 85%;
 }
 
 #time-measure-type {
@@ -135,7 +135,7 @@
 #time-math {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 20% 30% 17% 17% 16%;
+	grid-template-columns: 25% 35% 20% 20%;
 	transition: all .3s ease-in;
 }
 
