@@ -297,10 +297,26 @@
 			Alter Target:
 		</div>
 	
-		<div>
+		<div style="width: 55%;">
 			<select class="base-select" id="alter_target" name="alter_target">
 				{% for t in target %}
 					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Equipment Points:
+		</div>
+	
+		<div style="width: 55%;">
+			<select class="base-select" id="equipment" name="equipment">
+				<option value="">Points Per Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -548,21 +564,6 @@
 
 	</div>
 	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Equipment Points:
-		</div>
-	
-		<div>
-			<select class="base-select" id="equipment" name="equipment">
-				<option value="">Points Per Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-	</div>
 
 	
 </div>
