@@ -237,7 +237,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	permanence = [{'type': '', 'name': 'Permanence'}, {'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 
-	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}, {'type': 'check', 'name': 'Circumstance Modifier'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'condition', 'name': 'Change Condition'}, {'type': 'initiative', 'name': 'Gain Initiative'}, {'type': '20', 'name': 'Automatic 20'}]
+	points = [{'type': '', 'name': 'Spend For'}, {'type': 'ranks', 'name': 'Gain Ranks'}, {'type': 'benefit', 'name': 'Benefit'}, {'type': 'check', 'name': 'Circumstance Modifier'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'condition', 'name': 'Change Condition'}, {'type': 'initiative', 'name': 'Gain Initiative'}, {'type': '20', 'name': 'Automatic 20'}, {'type': 'success', 'name': 'Automatic Success'}]
 
 	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
 
@@ -1462,6 +1462,7 @@ def advantage_post_points():
 	ranks_lasts = request.get_json()['ranks_lasts']
 	ranks_trait_type = request.get_json()['ranks_trait_type']
 	ranks_trait = request.get_json()['ranks_trait']
+	success = request.get_json()['success']
 
 	try:
 		advantage_id = integer(advantage_id)
@@ -1485,6 +1486,7 @@ def advantage_post_points():
 		ranks_max = integer(ranks_max)
 		ranks_lasts = integer(ranks_lasts)
 		ranks_trait = integer(ranks_trait)
+		success = integer(success)
 
 		entry = AdvPoints(advantage_id = advantage_id,
 								benefit = benefit,
@@ -1510,7 +1512,8 @@ def advantage_post_points():
 								ranks_max = ranks_max,
 								ranks_lasts = ranks_lasts,
 								ranks_trait_type = ranks_trait_type,
-								ranks_trait = ranks_trait)
+								ranks_trait = ranks_trait,
+								success = success)
 
 		db.session.add(entry)
 		db.session.commit()

@@ -109,6 +109,17 @@
 					</select>
 				</div>
 			</div>
+			
+			<div id="points-success">
+				<div>
+					<select class="select-entry" id="points_success" name="points_success">
+						<option value="">Cost</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 
 			<div id="points-check">
 				<div>

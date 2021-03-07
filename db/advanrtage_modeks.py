@@ -487,6 +487,7 @@ class AdvPoints(db.Model):
 	ranks_lasts = db.Column(db.Integer)
 	ranks_trait_type = db.Column(db.String())
 	ranks_trait = db.Column(db.Integer)
+	success = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -515,7 +516,8 @@ class AdvPoints(db.Model):
 			'ranks_max': self.ranks_max,
 			'ranks_lasts': self.ranks_lasts,
 			'ranks_trait_type': self.ranks_trait_type,
-			'ranks_trait': self.ranks_trait
+			'ranks_trait': self.ranks_trait,
+			'success': self.success
 		}
 
 class AdvResist(db.Model):

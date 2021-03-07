@@ -1517,6 +1517,7 @@ def adv_points_post_errors(data):
 	ranks_lasts = data['ranks_lasts']
 	ranks_trait_type = data['ranks_trait_type']
 	ranks_trait = data['ranks_trait']
+	success = data['success']
 
 	errors = create_check('Advantage', advantage_id, Advantage, errors)
 	
@@ -1533,7 +1534,8 @@ def adv_points_post_errors(data):
 	errors = int_check(ranks_gained, 'Ranks Gained', errors)
 	errors = int_check(ranks_max, 'Maximum Ranks', errors)
 	errors = int_check(ranks_lasts, 'Ranks Last', errors)
-	
+	errors = int_check(success, 'Success Cost', errors)
+
 	errors = id_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = id_check(Benefit, benefit, 'Benefit', errors)
 	errors = id_check(Benefit, benefit_choice, 'Bemefit', errors)
@@ -1563,6 +1565,7 @@ def adv_points_post_errors(data):
 	errors = variable_field('condition', spend, 'Ending Condition', condition2, errors)
 	errors = variable_fields('initiative', 'Gain Initiative', spend, [initiative_cost], errors)
 	errors = variable_fields('20', 'Automatic 20', spend, [twenty], errors)
+	errors = variable_fields('success', 'Automatic Success', spend, [success], errors)
 
 	return(errors)
 

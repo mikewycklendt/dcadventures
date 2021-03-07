@@ -28,6 +28,13 @@
 	grid-template-columns: 18% 82%
 }
 
+#points-success {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 18% 82%
+}
+
 #points-initiative {
 	display: none;
 	opacity: 0%;

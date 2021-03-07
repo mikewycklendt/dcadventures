@@ -1462,6 +1462,7 @@ def adv_points_post(entry, body, cells):
 	ranks_lasts = entry.ranks_lasts
 	ranks_trait_type = entry.ranks_trait_type
 	ranks_trait = entry.ranks_trait
+	success = entry.success
 
 	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
 	
@@ -1478,6 +1479,7 @@ def adv_points_post(entry, body, cells):
 	ranks_gained = integer_convert(ranks_gained)
 	ranks_max = integer_convert(ranks_max)
 	ranks_lasts = integer_convert(ranks_lasts)
+	success = integer_convert(success)
 
 	check_bonus = add_plus(check_bonus)
 
@@ -1499,6 +1501,8 @@ def adv_points_post(entry, body, cells):
 	vcells = vcell('condition', 65, [condition1, 'to', condition2, 'for', condition_cost, 'Points'], vcells)
 	vcells = vcell('initiative', 35, ['Gain Initiative for', initiative_cost, 'Points'], vcells)
 	vcells = vcell('20', 30, ['Automatic 20', 'for', twenty, 'Points'], vcells)
+	vcells = vcell('success', 30, ['Automatic Success', 'for', success, 'Points'], vcells)
+
 	cells = vcell_add('Effect', spend, vcells, cells)
 
 	check_all = variable_value('check', spend, check_all)

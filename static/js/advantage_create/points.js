@@ -15,7 +15,8 @@ function points_spend() {
 					{'val': 'equip', 'div': 'points-equipment'},
 					{'val': 'condition', 'div': 'points-condition'},
 					{'val': 'initiative', 'div': 'points-initiative'},
-					{'val': '20', 'div': 'points-twenty'}]
+					{'val': '20', 'div': 'points-twenty'},
+					{'val': 'success', 'div': 'points-success'}]
 
 	select_opacity(select, options)
 }
@@ -74,6 +75,7 @@ function points_submit() {
 	const ranks_lasts = select("points_ranks_lasts");
 	const ranks_trait_type = select("points_ranks_trait_type");
 	const ranks_trait = select("points_ranks_trait");
+	const success = select("points_success");
 	
 	///const advantage_id = document.getElementById('advantage_id').value;
 	const advantage_id = select("create_advantage_select");
@@ -111,7 +113,8 @@ function points_submit() {
 			'ranks_max': ranks_max,
 			'ranks_lasts': ranks_lasts,
 			'ranks_trait_type': ranks_trait_type,
-			'ranks_trait': ranks_trait
+			'ranks_trait': ranks_trait,
+			'success': success
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
