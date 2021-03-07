@@ -18,8 +18,8 @@ function ability_submit() {
 	const created = ability_grid.titles;
 	const font = ability_grid.font;
 
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const ability = select("ability_ability");
 	const circumstance = text("ability_circumstance");
 	const variable = select("ability_variable")

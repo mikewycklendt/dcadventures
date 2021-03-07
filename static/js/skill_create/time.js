@@ -83,9 +83,8 @@ function time_submit() {
 	const mod = select("time_mod");
 	const recovery_target = select("time_recovery_target");
 
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
-
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const selects = 'time-sml';
 	const select_entry = 'time-entry';
 	const select_title = 'time-title-sml';

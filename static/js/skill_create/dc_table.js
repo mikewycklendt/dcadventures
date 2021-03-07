@@ -306,9 +306,8 @@ function dc_submit() {
 	const equipment = select("dc_equipment");
 	const equip = check("dc_equip");
 
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
-
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
 

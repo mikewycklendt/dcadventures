@@ -35,9 +35,8 @@ function levels_submit() {
 
 	const old_level_type = levels_grid.old_level_type;
 
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
-
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const errors = 'levels-err';
 	const err_line = 'levels-err-line';
 	const level_selects = 'level-type-sml';

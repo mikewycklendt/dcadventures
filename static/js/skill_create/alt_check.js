@@ -88,10 +88,9 @@ function check_submit() {
 	const condition_target = select("check_condition_target");
 	const conditions_target = select("check_conditions_target");
 	
-	
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
 
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const errors = 'check-err';
 	const err_line = 'check-err-line';
 

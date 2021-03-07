@@ -112,11 +112,8 @@ function opposed_submit() {
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
 
-
-
-	///const skill_id = document.getElementById('skill_id').value;
-	const skill_id = select("create_bonus_select");
-
+	const skill_id = document.getElementById('skill_id').value;
+	
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';
 

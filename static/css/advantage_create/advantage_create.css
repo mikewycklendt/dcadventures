@@ -17,6 +17,7 @@
 @import "rounds.css";
 @import "condition.css";
 @import "minion.css";
+@import "move.css";
 
 .advantage-container {
 	display: grid;
