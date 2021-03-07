@@ -1241,11 +1241,7 @@ def advantage_post_modifiers():
 		body['success'] = False
 		body['error_msgs'] = errors['error_msgs']
 		return jsonify(body)
-	print('creature')
-
-	print(creature)
-	print('\n')
-
+	
 	body = {}
 	body['new'] = False
 	body['new_items'] = []
@@ -1262,11 +1258,7 @@ def advantage_post_modifiers():
 	creature = body['output']
 	
 	body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
-	creature = body['output']
-
-	print('creature')
-	print(creature)
-	print('\n')
+	profession = body['output']
 
 	if body['success'] == False:
 		return jsonify(body)
