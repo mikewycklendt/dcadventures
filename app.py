@@ -116,7 +116,7 @@ def subskill_close_create():
 		else:
 			description = 'Attack Bonus equal to this rank for attacks with ' + i.name
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -143,7 +143,7 @@ def subskill_ranged_create():
 	
 		description = 'Attack Bonus equal to this rank for attacks with ' + i.name + ' Weapons.'
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -170,7 +170,7 @@ def subskill_expertise_create():
 	
 		description = 'Can answer all ' + i.name + ' related questions and perform ' + i.name + ' routine tasks as routine checks.'
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
 		db.session.add(entry)
 		db.session.commit()
 
