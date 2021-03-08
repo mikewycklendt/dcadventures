@@ -89,54 +89,6 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-@app.route('/table/db')
-def table_db_columns_create():
-
-	tablename =  'Weapon'
-
-	name = 'All Weapons'
-
-	entry = Weapon(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Weapon(current=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Weapon(any=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Weapon(var=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Weapon(none=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Active Power'
-
-	entry = Weapon(active=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(Weapon).filter_by(show=None).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
 
 @app.route('/weapon/type')
 def weapon_type_hhidden():
@@ -173,11 +125,6 @@ def weapon_type_hhidden():
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Active Power'
-
-	entry = WeaponType(active=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
 
 	results = db.session.query(WeaponType).filter_by(hide=True).all()
 

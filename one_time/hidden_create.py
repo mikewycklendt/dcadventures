@@ -9,25 +9,6 @@ def table_db_columns_create():
 	entry = SubSense(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
-
-
-
-
-	return ('descriptor columns added')
-
-
-
-
-@app.route('/table/db')
-def table_db_columns_create():
-
-	tablename =  'Subsense'
-
-	name = 'All SubSenses'
-
-	entry = SubSense(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
 	
 	name = 'Current ' + tablename
 
