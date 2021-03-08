@@ -695,7 +695,6 @@ def adv_degree_post_errors(data):
 	errors = id_check(LevelType, level_type, 'Level Type', errors)
 	errors = id_check(Levels, level, 'Level', errors)
 	errors = int_check(level_direction, 'Level Change', errors)
-	errors = id_check(SkillCirc, circumstance, 'Circumstance Modifier Keyword', errors)
 	errors = int_check(measure_rank_value, 'Measurement Rank Value', errors)
 	errors = id_check(Rank, measure_rank, 'Measurement Rank', errors)
 	errors = int_check(unit_value, 'Unit Value', errors)
@@ -718,6 +717,7 @@ def adv_degree_post_errors(data):
 	errors = id_check(AdvTime, attack_turns, 'Attack Bonus Duration', errors)
 	errors = id_check(AdvTime, condition_turns, 'Condition Duration', errors)
 	errors = id_check(AdvDegree, linked, 'Linked Degree', errors)
+	errors = id_check(AdvCirc, circumstance, 'Circumstance Modifier Keyword', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
