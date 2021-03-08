@@ -265,7 +265,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	tools = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
 
-	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_Advantage', 'name': 'This Advantage'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}, {'type': 'any', 'name': 'Any Trait'}]
+	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_Advantage', 'name': 'This Advantage'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}, {'type': 'any', 'name': 'Any Trait'}]
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
