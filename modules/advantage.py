@@ -231,7 +231,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	modifier_effect = [{'type': '', 'name': 'Affects'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'damage_check', 'name': 'Damage Checks'}, {'type': 'effect', 'name': 'Effect Modifier'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'damage', 'name': 'Damage Bonus'}, {'type': 'defense', 'name': 'Active Defenses'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
-	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}]
+	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'nature', 'name': 'Nature'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}]
 
 	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -1230,6 +1230,8 @@ def advantage_post_modifiers():
 	creature_other = request.get_json()['creature_other']
 	emotion = request.get_json()['emotion']
 	emotion_other = request.get_json()['emotion_other']
+	nature = request.get_json()['nature']
+	nature_other = request.get_json()['nature_other']
 	conflict = request.get_json()['conflict']
 	profession = request.get_json()['profession']
 	profession_other = request.get_json()['profession_other']
@@ -1276,6 +1278,9 @@ def advantage_post_modifiers():
 	body = user_item(Job, 'Profession', profession, profession_other, 'modifiers_profession', body)
 	profession = body['output']
 
+	body = user_item(Nature, 'Nature', nature, nature_other, 'modifiers_nature', body)
+	nature = body['output']
+
 	if body['success'] == False:
 		return jsonify(body)
 
@@ -1298,6 +1303,7 @@ def advantage_post_modifiers():
 		consequence = db_integer(Consequence, consequence)
 		creature = db_integer(Creature, creature)
 		emotion = db_integer(Emotion, emotion)
+		nature = db_integer(Nature, nature)
 		conflict = db_integer(ConflictAction, conflict)
 		profession = db_integer(Job, profession)
 		bonus_conflict = db_integer(ConflictAction, bonus_conflict)
@@ -1345,6 +1351,8 @@ def advantage_post_modifiers():
 							creature_other = creature_other,
 							emotion = emotion,
 							emotion_other = emotion_other,
+							nature = nature,
+							nature_other = nature_other,
 							conflict = conflict,
 							profession = profession,
 							profession_other = profession_other,

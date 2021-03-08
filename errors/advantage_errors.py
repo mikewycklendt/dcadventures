@@ -1397,6 +1397,7 @@ def adv_modifiers_post_errors(data):
 	creature_other = data['creature_other']
 	emotion = data['emotion']
 	emotion_other = data['emotion_other']
+	nature = data['nature']
 	conflict = data['conflict']
 	profession = data['profession']
 	profession_other = data['profession_other']
@@ -1447,6 +1448,7 @@ def adv_modifiers_post_errors(data):
 	errors = id_check(Check, penalty_check, 'Penalty Check Type', errors)
 	errors = id_check(Ranged, penalty_check_range, 'Penalty Check Range', errors)
 	errors = id_check(ConflictAction, penalty_conflict, 'Penalty Conflict Action', errors)
+	errors = id_check(Nature, nature, 'Nature', errors)
 
 	errors = of([bonus, penalty], 'You must set a value for either a bonus or a penalty.', errors)
 
@@ -1482,6 +1484,7 @@ def adv_modifiers_post_errors(data):
 	errors = variable_fields('tools', 'Tool Requirement', trigger, [tools], errors)
 	errors = variable_fields('ranged', 'Ranged Weapon', trigger, [weapon_ranged], errors)
 	errors = variable_fields('melee', 'Melee Weapon', trigger, [weapon_melee], errors)
+	errors = variable_fields('nature', 'Nature', trigger, [nature], errors)
 
 	return(errors)
 

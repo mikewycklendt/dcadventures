@@ -247,6 +247,21 @@
 				<input type="text" id="modifiers_creature_other" name="modifiers_creature_other" placeholder="Creature Type">
 			</div>
 			
+			<div id="modifiers-nature">
+				<select class="select-entry" id="modifiers_nature" name="modifiers_nature" onchange="modifiers_nature()">
+					<option value="">Nature</option>
+					<option value="x">Variable</option>
+					{% for n in nature %}
+						<option value={{n.id}}>{{n.name}}</option>
+					{% endfor %}
+					<option value="other">Other</option>
+				</select>
+			</div>
+
+			<div id="modifiers-nature-other">
+				<input type="text" id="modifiers_nature_other" name="modifiers_nature_other" placeholder="Creature Type">
+			</div>
+			
 			<div id="modifiers-emotion">
 				<select class="select-entry" id="modifiers_emotion" name="modifiers_emotion" onchange="modifiers_emotion()">
 					<option value="">Emotion</option>

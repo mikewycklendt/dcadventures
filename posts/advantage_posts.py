@@ -1309,6 +1309,7 @@ def adv_modifiers_post(entry, body, cells):
 	creature_other = entry.creature_other
 	emotion = entry.emotion
 	emotion_other = entry.emotion_other
+	nature = entry.nature
 	conflict = entry.conflict
 	profession = entry.profession
 	profession_other = entry.profession_other
@@ -1368,7 +1369,8 @@ def adv_modifiers_post(entry, body, cells):
 	bonus_check_range = get_name(Ranged, bonus_check_range)
 	penalty_check = get_name(Check, penalty_check)
 	penalty_check_range = get_name(Ranged, penalty_check_range)
-	
+	nature = get_name(Nature, nature)
+
 	bonus_active_defense = variable_value('trait', bonus_effect, bonus_active_defense)
 	bonus_conflict_defend = variable_value('conflict', bonus_effect, bonus_conflict_defend)
 	penalty_active_defense = variable_value('trait', penalty_effect, penalty_active_defense)
@@ -1427,6 +1429,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('tools', 20, [tools], vcells)
 	vcells = vcell('ranged', 20, [weapon_ranged], vcells)
 	vcells = vcell('melee', 20, [weapon_melee], vcells)
+	vcells = vcell('nature', 20, [nature], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	body = send(cells, body)

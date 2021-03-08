@@ -137,6 +137,24 @@
 	gap: .3vw;
 }
 
+#modifiers-nature {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
+#modifiers-nature-other {
+	display: none;
+	width: 100%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	gap: .3vw;
+}
+
 #modifiers-condition {
 	display: none;
 	width: 100%;

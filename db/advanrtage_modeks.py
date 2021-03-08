@@ -393,6 +393,8 @@ class AdvMod(db.Model):
 	creature_other = db.Column(db.String())
 	emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 	emotion_other = db.Column(db.String())
+	nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
+	nature_other = db.Column(db.String())
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	profession = db.Column(db.Integer, db.ForeignKey('jobs.id'))
 	profession_other = db.Column(db.String())
@@ -444,6 +446,8 @@ class AdvMod(db.Model):
 			'creature_other': self.creature_other,
 			'emotion': self.emotion,
 			'emotion_other': self.emotion_other,
+			'nature': self.nature,
+			'nature_other': self.nature_other,
 			'conflict': self.conflict,
 			'profession': self.profession,
 			'profession_other': self.profession_other,

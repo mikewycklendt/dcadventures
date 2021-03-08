@@ -25,17 +25,19 @@ function modifiers_trigger() {
 					{'val': 'emotion', 'div': 'modifiers-emotion'},
 					{'val': 'power', 'div': 'modifiers-power'},
 					{'val': 'consequence', 'div': 'modifiers-consequence'},
-					{'val': 'range', 'div': 'modifiers-range'},
+					{'val': 'range', 'div': 'modifiers-range'},,
+					{'val': 'nature', 'div': 'modifiers-nature'},
 					{'val': 'db', 'div': 'modifiers-profession-other'},
 					{'val': 'db', 'div': 'modifiers-creature-other'},
 					{'val': 'db', 'div': 'modifiers-emotion-other'},
-					{'val': 'db', 'div': 'modifiers-environment-other'}];
+					{'val': 'db', 'div': 'modifiers-environment-other'},
+					{'val': 'db', 'div': 'modifiers-nature-other'}];
 	const selects = ["modifiers_environment", "modifiers_sense", "modifiers_range",
 					"modifiers_subsense", "modifiers_cover", "modifiers_conceal",
 					"modifiers_maneuver", "modifiers_weapon_melee", "modifiers_weapon_ranged",
 					"modifiers_tools", "modifiers_condition", "modifiers_power", 
 					"modifiers_consequence", "modifiers_creature", "modifiers_emotion",
-					"modifiers_conflict", "modifiers_profession"];
+					"modifiers_conflict", "modifiers_profession", "modifiers_nature"];
 	
 	select_opacity(select, options);
 	reset_all(selects);
@@ -53,6 +55,14 @@ function modifiers_creature() {
 	const select = 'modifiers_creature';
 	const options = [{'val': 'other', 'div': 'modifiers-creature-other'}]
 	const div = 'modifiers-creature';
+
+	select_other(select, options, div)
+}
+
+function modifiers_nature() {
+	const select = 'modifiers_nature';
+	const options = [{'val': 'other', 'div': 'modifiers-nature-other'}]
+	const div = 'modifiers-nature';
 
 	select_other(select, options, div)
 }
@@ -195,6 +205,8 @@ function modifiers_submit() {
 	const creature_other = text("modifiers_creature_other");
 	const emotion = select("modifiers_emotion");
 	const emotion_other = text("modifiers_emotion_other");
+	const nature = select("modifiers_nature");
+	const nature_other = text("modifiers_nature_other");
 	const conflict = select("modifiers_conflict");
 	const profession = select("modifiers_profession");
 	const profession_other = text("modifiers_profession_other");
@@ -255,6 +267,8 @@ function modifiers_submit() {
 			'creature_other': creature_other,
 			'emotion': emotion,
 			'emotion_other': emotion_other,
+			'nature': nature,
+			'nature_other': nature_other,
 			'conflict': conflict,
 			'profession': profession,
 			'profession_other': profession_other,
