@@ -90,43 +90,16 @@ def shutdown_session(exception=None):
 
 
 
-@app.route('/weapon/type')
-def weapon_type_hhidden():
-
-	tablename =  'Weapon Type'
-
-	name = 'All Weapon Types'
-
-	entry = WeaponType(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
+@app.route('/table/db')
+def table_db_columns_create():
 	
-	name = 'Current ' + tablename
+	name = 'GM Sets Ability Modifier'
 
-	entry = WeaponType(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = WeaponType(any=True, name=name, hide=True )
+	entry = Ability(gm=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Variable ' + tablename
-
-	entry = WeaponType(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = WeaponType(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-
-	results = db.session.query(WeaponType).filter_by(hide=True).all()
+	results = db.session.query(Ability).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
@@ -134,72 +107,6 @@ def weapon_type_hhidden():
 
 	return (tablename + ' db added')
 
-@app.route('/weapon/style')
-def weapon_style_create():
-
-	tablename =  'Weapon Style'
-
-	name = 'All Weapon Styles'
-
-	entry = WeaponStyle(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = WeaponStyle(current=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = WeaponStyle(any=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = WeaponStyle(var=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = WeaponStyle(none=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	entries = ['Improvised']
-
-	for i in entries:
-
-		entry = WeaponStyle(name=i, improvise=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Swords', 'Knives', 'Axes', 'Spears', 'Whips', 'Clubs', 'Maces', 'Unarmed', 'Lances', 'Hammers', 'Batons']
-
-	for i in entries:
-
-		entry = WeaponStyle(name=i, type_id=1, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Guns', 'Fire', 'Throwing', 'Rockets']
-
-	for i in entries:
-
-		entry = WeaponStyle(name=i, type_id=2, show=True, base=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = WeaponStyle.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('weapon styles added')
 
 
 
