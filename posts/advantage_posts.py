@@ -1062,6 +1062,7 @@ def adv_time_post(entry, body, cells):
 	vcells = vcell('next', 14, ['Next Round'], vcells)
 	vcells = vcell('scene', 14, ['Scene'], vcells)
 	vcells = vcell('turn', 14, ['One Turn'], vcells)
+	vcells = vcell('maintain', 25, ['While Maintsining Action'], vcells)
 	vcells = vcell('time', 17, [measure_type, 'Time Rank', time], vcells)
 	mod = add_plus(mod)
 	vcells = vcell('mod', 18, [mod, 'Time Rank'], vcells)
