@@ -20,7 +20,8 @@ function circ_effect() {
 					{'val': 'materials', 'div': 'circ-materials'},
 					{'val': 'trait', 'div': 'circ-trait'},
 					{'val': 'env', 'div': 'circ-env'},
-					{'val': 'nature', 'div': 'circ-nature'}]
+					{'val': 'nature', 'div': 'circ-nature'},
+					{'val': 'conflict', 'div': 'circ-conflict'}]
 
 	select_opacity(select, options);
 }
