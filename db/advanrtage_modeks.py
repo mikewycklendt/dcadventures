@@ -99,6 +99,7 @@ class Advantage(db.Model):
 	variable = db.Column(db.Boolean)
 	variable_multiple = db.Column(db.String())
 	move = db.Column(db.Boolean)
+	unarmed = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -107,6 +108,7 @@ class Advantage(db.Model):
 	show = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	base = db.Column(db.Boolean)
+
 
 
 	def format(self):
@@ -189,7 +191,8 @@ class Advantage(db.Model):
 			'approved': self.approved,
 			'base': self.base,
 			'variable_multiple': self.variable_multiple,
-			'equipment': self.equipment
+			'equipment': self.equipment,
+			'unarmed': self.unarmed
 		}
 
 class AdvantageType(db.Model):

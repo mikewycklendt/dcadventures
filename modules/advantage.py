@@ -454,6 +454,7 @@ def save_advantage():
 	variable_multiple = request.get_json()['variable_multiple']
 	move = request.get_json()['move']
 	equipment = request.get_json()['equipment']
+	unarmed = request.get_json()['unarmed']
 
 	adv_type = integer(adv_type)
 	action = db_integer(Action, action)
@@ -550,6 +551,7 @@ def save_advantage():
 	entry.variable_multiple = variable_multiple
 	entry.move = move
 	entry.equipment = equipment
+	entry.unarmed = unarmed
 
 	db.session.commit()
 	body['success'] = True
