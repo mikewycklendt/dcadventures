@@ -585,7 +585,7 @@ def skill_trait_select():
 	return jsonify(body)
 
 @select.route('/select/trait/filter', methods=['POST'])
-def skill_trait_select():
+def skill_trait_select_filter():
 	body = {}
 	body['success'] = True
 	options = []
