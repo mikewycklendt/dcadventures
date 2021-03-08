@@ -25,7 +25,7 @@ function modifiers_trigger() {
 					{'val': 'emotion', 'div': 'modifiers-emotion'},
 					{'val': 'power', 'div': 'modifiers-power'},
 					{'val': 'consequence', 'div': 'modifiers-consequence'},
-					{'val': 'range', 'div': 'modifiers-range'},,
+					{'val': 'range', 'div': 'modifiers-range'},
 					{'val': 'nature', 'div': 'modifiers-nature'},
 					{'val': 'db', 'div': 'modifiers-profession-other'},
 					{'val': 'db', 'div': 'modifiers-creature-other'},
