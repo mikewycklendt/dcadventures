@@ -46,13 +46,52 @@ class WeaponType(db.Model):
 	any = db.Column(db.Boolean)
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 	
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'type_id': self.type_id
+			'type_id': self.type_id,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
+		}
+
+class WeaponStyle(db.Model):
+	__tablename__ = 'weapon_style'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	type_id = db.Column(db.Integer, db.ForeignKey('weapon_category.id'))
+	improvise = db.Column(db.Boolean)
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+	base = db.Column(db.Boolean)
+	
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'type_id': self.type_id,
+			'improvise': self.improvise,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'show': self.show,
+			'approved': self.approved,
+			'base': self.base
 		}
 
 class Weapon(db.Model):

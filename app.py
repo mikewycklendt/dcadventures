@@ -30,7 +30,7 @@ from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, He
 from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
-from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.weapon_models import WeaponType, WeaponCat, WeaponStyle, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
 from tables import tables
 from modules.selects import select
@@ -89,24 +89,190 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
+@app.route('/table/db')
+def table_db_columns_create():
 
-@app.route('/time/options')
-def time_db_columns_create():
+	tablename =  'Subsense'
 
-	
-	name = 'Maintaining Action'
+	name = 'All SubSenses'
 
-	entry = SkillTime(maintain=True, keyword=name, hide=True )
+	entry = SubSense(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(AdvTime).filter_by(hide=True).all()
+
+
+
+	return ('descriptor columns added')
+
+
+
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Weapon'
+
+	name = 'All Weapons'
+
+	entry = Weapon(all=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Weapon(current=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Weapon(any=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Weapon(var=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Weapon(none=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Active Power'
+
+	entry = Weapon(active=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Weapon).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
-		print (result.keyword)
+		print (result.name)
 
-	return ('time fields added')
+	return (tablename + ' db added')
+
+@app.route('/weapon/type')
+def weapon_type_hhidden():
+
+	tablename =  'Weapon Type'
+
+	name = 'All Weapon Types'
+
+	entry = WeaponType(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = WeaponType(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = WeaponType(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = WeaponType(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = WeaponType(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Active Power'
+
+	entry = WeaponType(active=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(WeaponType).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+@app.route('/weapon/style')
+def weapon_style_create():
+
+	tablename =  'Weapon Style'
+
+	name = 'All Weapon Styles'
+
+	entry = WeaponStyle(all=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = WeaponStyle(current=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = WeaponStyle(any=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = WeaponStyle(var=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = WeaponStyle(none=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	entries = ['Improvised']
+
+	for i in entries:
+
+		entry = WeaponStyle(name=i, improvise=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Swords', 'Knives', 'Axes', 'Spears', 'Whips', 'Clubs', 'Maces', 'Unarmed', 'Lances', 'Hammers', 'Batons']
+
+	for i in entries:
+
+		entry = WeaponStyle(name=i, type_id=1, show=True, base=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Guns', 'Fire', 'Throwing', 'Rockets']
+
+	for i in entries:
+
+		entry = WeaponStyle(name=i, type_id=2, show=True, base=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = WeaponStyle.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('weapon styles added')
+
 
 
 if __name__ == '__main__':
