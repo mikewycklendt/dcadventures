@@ -8,7 +8,7 @@ def subskill_close_create():
 	action = 1
 	attack = integer('skill')
 
-	styles = db.session.query(WeaponStyle).filter_by(type_id=1).all()
+	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 1, WeaponStyle.show == True).all()
 
 	for i in styles:
 
@@ -39,7 +39,7 @@ def subskill_ranged_create():
 	action = 1
 	attack = integer('skill')
 
-	styles = db.session.query(WeaponStyle).filter_by(type_id=2).all()
+	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 1, WeaponStyle.show == True).all()
 
 	for i in styles:
 	
@@ -66,7 +66,7 @@ def subskill_expertise_create():
 	check_type = 3
 	action = 1
 
-	styles = db.session.query(Job).all()
+	styles = db.session.query(Job).filter(Job.show == True).all()
 
 	for i in styles:
 	
