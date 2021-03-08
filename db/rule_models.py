@@ -40,6 +40,7 @@ class Ability(db.Model):
 	any = db.Column(db.Boolean)
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
+	gm = db.Column(db.Boolean)
 	power = db.Column(db.Boolean)
 	extra = db.Column(db.Boolean)
 	skill = db.Column(db.Boolean)
@@ -58,6 +59,7 @@ class Ability(db.Model):
 			'current': self.current,
 			'any': self.any,
 			'var': self.var,
+			'gm': self.gm,
 			'none': self.none,
 			'power': self.power,
 			'extra': self.extra,

@@ -487,11 +487,19 @@ def skill_trait_select():
 	for p in powers_query:
 		powers.append({'id': p.id, 'name': p.name})
 
-	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
+	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == False).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Enhanced Skill'}]
 	var = db.session.query(SkillBonus).filter_by(var=True).first()
 	if sub == 'variable':
 		bonuses.append({'id': var.id, 'name': 'Variable Enhanced Skill'})
+	for b in bonuses_query:
+		bonuses.append({'id': b.id, 'name': b.name})
+
+	subskills_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == True).order_by(SkillBonus.name).all()
+	subskills = [{'id': '', 'name': 'Enhanced Skill'}]
+	var = db.session.query(SkillBonus).filter_by(var=True).first()
+	if sub == 'variable':
+		bonuses.append({'id': var.id, 'name': 'Variable Subskill'})
 	for b in bonuses_query:
 		bonuses.append({'id': b.id, 'name': b.name})
 
@@ -532,6 +540,8 @@ def skill_trait_select():
 		body['options'] = advantages
 	elif trait == 'extra':
 		body['options'] = extras
+	elif trait == 'subskill':
+		body['options'] = subskills
 	elif trait == 'interact':
 		body['options'] = [{'id': '0', 'name': 'Any Interarction'}]
 	elif trait == 'manipulate':

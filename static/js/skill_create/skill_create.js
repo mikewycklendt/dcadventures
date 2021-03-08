@@ -55,6 +55,7 @@ skill_save = function() {
 	const for_weapon = check("for_weapon");
 	const weapon_cat = select("base_weapon_cat");
 	const weapon_type = select("base_weapon_type");
+	const weapon_style = select("weapon_style");
 	const weapon = select("base_weapon");
 	const untrained = check("untrained");
 	const tools = check("tools");
@@ -130,6 +131,7 @@ skill_save = function() {
 			'for_weapon': for_weapon,
 			'weapon_cat': weapon_cat,
 			'weapon_type': weapon_type,
+			'weapon_style': weapon_style,
 			'weapon': weapon,
 			'untrained': untrained,
 			'tools': tools,

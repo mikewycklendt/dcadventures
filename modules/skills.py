@@ -34,7 +34,7 @@ from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, He
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillMove, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
-from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.weapon_models import WeaponType, WeaponStyle, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import SkillCircType, SkillDCType, SkillDegreeType, SkillMoveType, SkillTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
@@ -268,7 +268,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	trait_type = [{'type': 'rank', 'name': 'Trait Rank'}, {'type': 'check', 'name': 'Check Result'}]
 
-	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_bonus', 'name': 'This Skill'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
+	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_bonus', 'name': 'This Skill'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'subskill', 'name': 'Subskill'}, {'type': 'power', 'name': 'Power'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
 	updown = [{'id': '', 'name': 'Direction'}, {'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
@@ -402,6 +402,7 @@ def save_skill_bonus():
 	for_weapon = request.get_json()['for_weapon']
 	weapon_cat = request.get_json()['weapon_cat']
 	weapon_type = request.get_json()['weapon_type']
+	weapon_style = request.get_json()['weapon_style']
 	weapon = request.get_json()['weapon']
 	untrained = request.get_json()['untrained']
 	tools = request.get_json()['tools']
@@ -459,6 +460,7 @@ def save_skill_bonus():
 	partner_equip = db_integer(Equipment, partner_equip)
 	partner_feature = db_integer(Feature, partner_feature)
 	opponent_turn_check = db_integer(Check, opponent_turn_check)
+	weapon_style = db_integer(WeaponStyle, weapon_style)
 
 	partner_trait = integer(partner_trait)
 	secret_trait = integer(secret_trait)
@@ -500,6 +502,7 @@ def save_skill_bonus():
 	entry.for_weapon = for_weapon
 	entry.weapon_cat = weapon_cat
 	entry.weapon_type = weapon_type
+	entry.weapon_style = weapon_style
 	entry.weapon = weapon
 	entry.untrained = untrained
 	entry.tools = tools
