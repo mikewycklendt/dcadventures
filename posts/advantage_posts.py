@@ -174,7 +174,7 @@ def adv_circ_post(entry, body, cells):
 	nature = entry.nature
 	check_type =  entry.check_type
 	rank = entry.rank
-
+	conflict = entry.conflict
 
 
 	title_name = get_name(AdvCircType, title)
@@ -196,6 +196,7 @@ def adv_circ_post(entry, body, cells):
 	environment = get_name(Environment, environment)
 	nature = get_name(Nature, nature)
 	check_type = get_name(Check, check_type)
+	conflict = get_name(ConflictAction, conflict)
 
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
@@ -265,6 +266,8 @@ def adv_circ_post(entry, body, cells):
 	
 	vcells = vcell('nature', 25, ['If', nature], vcells)
 	
+	vcells = vcell('conflict', 30, ['If Attempting', conflict], vcells)
+
 	vcells = vcell('area', 25, ['Against Area Effects'], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)

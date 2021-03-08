@@ -292,6 +292,7 @@ def adv_circ_post_errors(data):
 	environment = data['environment']
 	nature = data['nature']
 	check_type = data['check_type']
+	conflict = data['conflict']
 
 	
 	errors = create_check('Advantage', advantage_id, Advantage, errors)
@@ -315,6 +316,7 @@ def adv_circ_post_errors(data):
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
 	errors = int_check(trait, 'Trait', errors)
 	errors = id_check(Check, check_type, 'Check Type', errors)
+	errors = id_check(ConflictAction, conflict, 'Conflict Action', errors)
 
 	errors = id_check(Environment, environment, 'Environment', errors)
 	errors = id_check(Nature, nature, 'Nature', errors)
@@ -378,6 +380,8 @@ def adv_circ_post_errors(data):
 	errors = variable_fields('env', 'Environment', effect, [environment], errors)
 
 	errors = variable_fields('nature', 'Nature', effect, [nature], errors)
+
+	errors = variable_fields('conflict', 'Conflict Action', effect, [conflict], errors)
 
 	errors = variable_fields('materials', 'Circumstance Effect', effect, [materials], errors)
 	errors = variable_field('materials', effect, 'Material Type', materials, errors)

@@ -163,7 +163,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	bonus_type = [{'type': '', 'name': 'Up to Type'}, {'type': '', 'name': '+1 Per R'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'area', 'name': 'If Area Effect'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'area', 'name': 'If Area Effect'}, {'type': 'conflict', 'name': 'If Conflict Action'}]
 
 	circ_targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}]
 
@@ -2352,6 +2352,7 @@ def advantage_post_circ():
 	nature = request.get_json()['nature']
 	check_type = request.get_json()['check_type']
 	rank = request.get_json()['rank']
+	conflict = request.get_json()['conflict']
 
 	errors = adv_circ_post_errors(data)
 
@@ -2378,6 +2379,7 @@ def advantage_post_circ():
 	environment = db_integer(Environment, environment)
 	nature = db_integer(Nature, nature)
 	check_type = db_integer(Check, check_type)
+	conflict = db_integer(ConflictAction, conflict)
 
 	lasts = db_integer(AdvTime, lasts)
 
@@ -2447,7 +2449,8 @@ def advantage_post_circ():
 						environment = environment,
 						nature = nature,
 						check_type = check_type,
-						rank = rank
+						rank = rank,
+						conflict = conflict
 					)
 
 	db.session.add(entry)

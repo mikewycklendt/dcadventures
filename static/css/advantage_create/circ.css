@@ -203,6 +203,14 @@
 	grid-template-columns: 40% 40% 20%;
 }
 
+#circ-conflict {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 40% 40% 20%;
+}
+
 #circ-nature {
 	display: none;
 	opacity: 0%;

@@ -141,6 +141,7 @@ function circ_submit() {
 	const nature = select("circ_nature")
 	const check_type  = select("circ_check_type");
 	const rank = select("circ_rank");
+	const conflict = select("circ_conflict");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -197,7 +198,8 @@ function circ_submit() {
 			'environment': environment,
 			'nature': nature,
 			'check_type': check_type,
-			'rank': rank
+			'rank': rank,
+			'conflict': conflict
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
