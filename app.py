@@ -170,7 +170,7 @@ def subskill_expertise_create():
 	
 		description = 'Can answer all ' + i.name + ' related questions and perform ' + i.name + ' routine tasks as routine checks.'
  
-		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action)
 		db.session.add(entry)
 		db.session.commit()
 
