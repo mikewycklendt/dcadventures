@@ -181,6 +181,8 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
 
+	conflict_type = [{'type': '', 'name': 'Conflict Type'}, {'type': 'use', 'name': 'When Attempting'}, {'type': 'add', 'name': 'In Addition'}]
+
 	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Advantaage Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
@@ -320,7 +322,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							speed=speed, distance=distance, distances=distances, attached=attached, frequency=frequency, multiple_time=multiple_time, time_value=time_value, recovery=recovery, advantage_check=advantage_check,
 							advantage_circ=advantage_circ, advantage_circ_type=advantage_circ_type, advantage_dc=advantage_dc, advantage_dc_type=advantage_dc_type, advantage_degree=advantage_degree,
 							advantage_degree_type=advantage_degree_type, advantage_move=advantage_move, advantage_move_type=advantage_move_type, advantage_time=advantage_time, advantage_time_type=advantage_time_type,
-							variable_multiple=variable_multiple)
+							variable_multiple=variable_multiple, conflict_type=conflict_type)
 
 @advantage.route('/advantage/create', methods=['POST'])
 def post_advantage(): 
@@ -455,6 +457,7 @@ def save_advantage():
 	move = request.get_json()['move']
 	equipment = request.get_json()['equipment']
 	unarmed = request.get_json()['unarmed']
+	conflict_type = request.get_json()['conflict_type']
 
 	adv_type = integer(adv_type)
 	action = db_integer(Action, action)
@@ -552,6 +555,7 @@ def save_advantage():
 	entry.move = move
 	entry.equipment = equipment
 	entry.unarmed = unarmed
+	entry.conflict_type = conflict_type
 
 	db.session.commit()
 	body['success'] = True

@@ -209,13 +209,23 @@
 			For Conflict Action:
 		</div>
 	
-		<div>
-			<select class="base-select" id="conflict" name="conflict">
-				<option value="">Action</option>
-				{% for c in conflicts %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="conflict" name="conflict">
+					<option value="">Action</option>
+					{% for c in conflicts %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="conflict_type" name="conflict_type">
+					{% for c in conflict_type %}
+						<option value="{{c.type}}">{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 
 	</div>

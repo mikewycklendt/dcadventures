@@ -48,6 +48,7 @@ class Advantage(db.Model):
 	no_pre_check = db.Column(db.Boolean)
 	expertise = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
+	conflict_type = db.Column(db.String())
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	conflict_immune = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	dc_type = db.Column(db.String())
@@ -133,6 +134,7 @@ class Advantage(db.Model):
 			'no_pre_check': self.no_pre_check,
 			'expertise': self.expertise,
 			'conflict': self.conflict,
+			'conflict_type': self.conflict_type,
 			'consequence': self.consequence,
 			'conflict_immune': self.conflict_immune,
 			'dc_type': self.dc_type,
