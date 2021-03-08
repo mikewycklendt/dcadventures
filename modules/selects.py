@@ -584,6 +584,60 @@ def skill_trait_select():
 	print(body)
 	return jsonify(body)
 
+@select.route('/select/trait/filter', methods=['POST'])
+def skill_trait_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	id = request.get_json()['id'] 
+	sub = request.get_json()['sub']
+
+	if sub != 'subskill' and sub != 'bonus':
+		body['success'] = False
+		return jsonify(body)
+
+	if id == '':
+		body['success'] = False
+		return jsonify(body)
+
+	skills_query = db.session.query(Skill).filter(Skill.hide == None).all()
+	if id == 'back':
+		if sub == 'subskill':
+			options.append({'id': '', 'name': 'Filter Subskill by Skill'})
+			for s in skills_query:
+				options.append({'id': s.id, 'name': s.name})
+		if sub == 'bonus':
+			options.append({'id': '', 'name': 'Filter Enhanced Skill by Skill'})
+			for s in skills_query:
+				options.append({'id': s.id, 'name': s.name})
+		body['options'] = options
+		return jsonify(body)
+
+	id = int(id)
+	
+	if sub == 'subskill':
+		skill = db.session.query(Skill).filter_by(id=id).one()
+		title = 'Subskills for ' + skill.name
+		options.append({'id': '', 'name': title})
+		options.append({'id': 'back', 'name': 'Back to Skills'})
+		subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
+		for s in subskills:
+			options.append({'id': s.id, 'name': s.name})
+
+	if sub == 'bonus':
+		skill = db.session.query(Skill).filter_by(id=id).one()
+		title = 'Enhanced Skills for ' + skill.name
+		options.append({'id': '', 'name': title})
+		options.append({'id': 'back', 'name': 'Back to Skills'})
+		subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
+		for s in subskills:
+			options.append({'id': s.id, 'name': s.name})
+
+	body['options'] = options
+	return jsonify(body)
+
+
 @select.route('/select/descriptor', methods=['POST'])
 def power_descriptor_select():
 	body = {}
