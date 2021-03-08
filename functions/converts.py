@@ -653,6 +653,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'improvise':
+		try:	
+			query = db.session.query(table).filter_by(improvise=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == '':
 		value = None
 		return (value)
@@ -820,6 +827,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'maintain':
 		query = db.session.query(table).filter_by(maintain=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'improvise':
+		query = db.session.query(table).filter_by(improvise=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True

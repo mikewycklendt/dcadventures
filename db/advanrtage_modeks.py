@@ -60,6 +60,7 @@ class Advantage(db.Model):
 	extra_action = db.Column(db.Boolean)
 	action1 = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action2 = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	weapon_style = db.Column(db.Integer, db.ForeignKey('weapon_style.id'))
 	invent = db.Column(db.Boolean)
 	invent_permanence = db.Column(db.String())
 	invent_trait_type = db.Column(db.String())
@@ -155,6 +156,7 @@ class Advantage(db.Model):
 			'gm_trait_type': self.gm_trait_type,
 			'gm_trait': self.gm_trait,
 			'gm_veto': self.gm_veto,
+			'weapon_style': self.weapon_style,
 			'language': self.language,
 			'languages': self.languages,
 			'language_rank': self.language_rank,

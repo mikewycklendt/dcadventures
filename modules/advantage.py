@@ -156,6 +156,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2).all()
 
+	weapon_style = db.session.query(WeaponStyle).filter_by(show=True).all()
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
@@ -322,7 +323,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 							speed=speed, distance=distance, distances=distances, attached=attached, frequency=frequency, multiple_time=multiple_time, time_value=time_value, recovery=recovery, advantage_check=advantage_check,
 							advantage_circ=advantage_circ, advantage_circ_type=advantage_circ_type, advantage_dc=advantage_dc, advantage_dc_type=advantage_dc_type, advantage_degree=advantage_degree,
 							advantage_degree_type=advantage_degree_type, advantage_move=advantage_move, advantage_move_type=advantage_move_type, advantage_time=advantage_time, advantage_time_type=advantage_time_type,
-							variable_multiple=variable_multiple, conflict_type=conflict_type)
+							variable_multiple=variable_multiple, conflict_type=conflict_type, weapon_style=weapon_style)
 
 @advantage.route('/advantage/create', methods=['POST'])
 def post_advantage(): 
@@ -425,6 +426,7 @@ def save_advantage():
 	gm_trait_type = request.get_json()['gm_trait_type']
 	gm_trait = request.get_json()['gm_trait']
 	gm_veto = request.get_json()['gm_veto']
+	weapon_style = request.get_json()['weapon_style']
 	language = request.get_json()['language']
 	languages = request.get_json()['languages']
 	language_rank = request.get_json()['language_rank']
@@ -468,6 +470,7 @@ def save_advantage():
 	conflict_immune = db_integer(ConflictAction, conflict_immune)
 	action1 = db_integer(Action, action1)
 	action2 = db_integer(Action, action2)
+	weapon_style = db_integer(WeaponStyle, weapon_style)
 
 	ranked_ranks = integer(ranked_ranks)
 	ranked_max = integer(ranked_max)
@@ -556,6 +559,7 @@ def save_advantage():
 	entry.equipment = equipment
 	entry.unarmed = unarmed
 	entry.conflict_type = conflict_type
+	entry.weapon_style = weapon_style
 
 	db.session.commit()
 	body['success'] = True

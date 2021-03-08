@@ -226,6 +226,7 @@ advantage_save = function() {
 	const equipment = select("equipment");
 	const unarmed = check("unarmed");
 	const conflict_type = select("conflict_type");
+	const weapon_style = select("weapon_style");
 
 
 	const errors = 'advantage-err';
@@ -305,7 +306,8 @@ advantage_save = function() {
 			'variable_multiple': variable_multiple,
 			'equipment': equipment,
 			'unarmed': unarmed,
-			'conflict_type': conflict_type
+			'conflict_type': conflict_type,
+			'weapon_style': weapon_style
 		}),
 		headers: {
 		'Content-Type': 'application/json',

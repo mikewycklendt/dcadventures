@@ -1,4 +1,5 @@
 
+
 @app.route('/close/create')
 def subskill_close_create():
 
@@ -17,7 +18,7 @@ def subskill_close_create():
 		else:
 			description = 'Attack Bonus equal to this rank for attacks with ' + i.name
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -29,23 +30,22 @@ def subskill_close_create():
 
 	return ('subskill added')
 
-@app.route('/close/create')
+@app.route('/ranged/create')
 def subskill_ranged_create():
 
-	entries = ['Unarmed']
 	ability = 4
 	skill = 11
 	check_type = 5
 	action = 1
 	attack = integer('skill')
 
-	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 1, WeaponStyle.show == True).all()
+	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 2, WeaponStyle.show == True).all()
 
 	for i in styles:
 	
 		description = 'Attack Bonus equal to this rank for attacks with ' + i.name + ' Weapons.'
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, weapon_style=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -62,7 +62,7 @@ def subskill_ranged_create():
 def subskill_expertise_create():
 
 	ability = db_integer(Ability, 'gm')
-	skill = 11
+	skill = 5
 	check_type = 3
 	action = 1
 
@@ -72,7 +72,7 @@ def subskill_expertise_create():
 	
 		description = 'Can answer all ' + i.name + ' related questions and perform ' + i.name + ' routine tasks as routine checks.'
  
-		entry = SkillBonus(name=i, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action, attack=attack)
+		entry = SkillBonus(name=i.name, show=True, base=True, subskill=True, description=description, profession=i.id, ability=ability, skill=skill, check_type=check_type, action=action)
 		db.session.add(entry)
 		db.session.commit()
 

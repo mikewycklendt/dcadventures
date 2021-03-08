@@ -233,6 +233,23 @@
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Requires Weapon Style:
+		</div>
+	
+		<div>
+			<select class="base-select" id="weapon_style" name="weapon_style">
+				<option value="">Weapon Style</option>
+				<option value="improvise">Improvised</option>
+				{% for w in weapon_style %}
+					<option value={{w.id}}>{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			For Consequence:
 		</div>
 	
@@ -289,7 +306,7 @@
 
 				<div id="advantage-dc-mod">
 					<select class="base-select" id="advantage_dc_mod" name="advantage_dc_mod">
-						<option value="">Modufuer</option>
+						<option value="">Modifier</option>
 						{% for i in negatives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
