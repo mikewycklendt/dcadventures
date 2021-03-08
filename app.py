@@ -90,25 +90,6 @@ def shutdown_session(exception=None):
 
 
 
-@app.route('/table/db')
-def table_db_columns_create():
-	
-	name = 'GM Sets Ability Modifier'
-
-	entry = Ability(gm=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(Ability).filter_by(hide=True).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-
-
-
 
 if __name__ == '__main__':
 	app.debug = True
