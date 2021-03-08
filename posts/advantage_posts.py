@@ -1385,6 +1385,8 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('attack', 12, ['Attack Bonus'], vcells)
 	vcells = vcell('damage', 13, ['Damage Bonus'], vcells)
 	vcells = vcell('defense', 16, ['Active Defenses'], vcells)
+	vcells = vcell('all', 16, ['All Checks'], vcells)
+	vcells = vcell('damage_check', 16, ['Damage Checks'], vcells)
 	vcells = vcell('trait', 18, [bonus_trait], vcells)
 	word = string(', Range:', [bonus_check_range])
 	vcells = vcell('check', 29, [bonus_check, word, bonus_check_range], vcells)
