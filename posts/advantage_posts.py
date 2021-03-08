@@ -1396,6 +1396,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('defense', 16, ['Active Defenses'], vcells)
 	vcells = vcell('all', 16, ['All Checks'], vcells)
 	vcells = vcell('critical', 20, ['Critical Hit Rsnge'], vcells)
+	vcells = vcell('circ', 20, ['Override Circumstance'], vcells)
 	vcells = vcell('damage_check', 16, ['Damage Checks'], vcells)
 	vcells = vcell('trait', 18, [bonus_trait], vcells)
 	word = string(', Range:', [bonus_check_range])
