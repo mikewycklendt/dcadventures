@@ -1047,6 +1047,7 @@ def skill_time_post(entry, body, cells):
 	vcells = vcell('perm', 14, ['Permanent'], vcells)
 	vcells = vcell('round', 14, ['One Round'], vcells)
 	vcells = vcell('next', 14, ['Next Round'], vcells)
+	vcells = vcell('maintain', 25, ['While Maintsining Action'], vcells)
 	vcells = vcell('scene', 14, ['Scene'], vcells)
 	vcells = vcell('turn', 14, ['One Turn'], vcells)
 	vcells = vcell('time', 17, ['Time Rank', time], vcells)

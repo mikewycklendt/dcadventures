@@ -1352,6 +1352,9 @@ def adv_modifiers_post(entry, body, cells):
 	multiple_select = [{'type': '', 'name': 'If Multiple'}, {'type': 'together', 'name': 'All Work Together'}, {'type': 'round', 'name': 'Choose for Round'}, {'type': 'turn', 'name': 'Choose for Turn'}, {'type': 'pick', 'name': 'Pick 1'}, {'type': 'rank', 'name': '1 Per Rank'}]
 	multiple = selects(multiple, multiple_select)
 
+	tools_select = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
+	tools = selects(tools, tools_select)
+
 	benefit = name(Benefit, benefit)
 	environment = get_name(Environment, environment)
 	sense = get_name(Sense, sense)
