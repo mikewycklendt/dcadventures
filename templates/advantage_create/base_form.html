@@ -48,6 +48,7 @@
 			<select class="base-select" id="check" name="check">
 				<option value="">Check Type</option>
 				<option value="none">None</option>
+				<option value="all">All</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
