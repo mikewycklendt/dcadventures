@@ -68,6 +68,7 @@
 				<div>
 					<select class="select-entry" id="condition_condition1" name="condition_condition1">
 						<option value="">Starting Condition</option>
+						<option value="current">Current</option>
 						{% for c in conditions %}
 							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
