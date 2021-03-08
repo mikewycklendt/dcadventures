@@ -1450,9 +1450,9 @@ def adv_modifiers_post_errors(data):
 
 	errors = of([bonus, penalty], 'You must set a value for either a bonus or a penalty.', errors)
 
-	errors = if_fields('Bonus', bonus, [bonus_type, bonus_effect], errors)
-	errors = if_field('Bonus', bonus, bonus_type, 'Bonus Type', errors)
-	errors = if_field('Bonus', bonus, bonus_effect, 'Bonus Effect', errors)
+	errors = if_fields('Bonus', bonus, [bonus_type, bonus_effect], errors, 'immune')
+	errors = if_field('Bonus', bonus, bonus_type, 'Bonus Type', errors, 'immune')
+	errors = if_field('Bonus', bonus, bonus_effect, 'Bonus Effect', errors, 'immune')
 	errors = if_fields('Penalty', penalty, [penalty_type, penalty_effect], errors)
 	errors = if_field('Penalty', penalty, penalty_type, 'Penalty Type', errors)
 	errors = if_field('Penalty', penalty, penalty_effect, 'Penalty Effect', errors)

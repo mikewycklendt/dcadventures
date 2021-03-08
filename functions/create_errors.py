@@ -174,9 +174,12 @@ def variable_fields(value, name, field, fields, errors):
 	return (errors)
 
 
-def if_fields(name, field, fields, errors):
+def if_fields(name, field, fields, errors, exception=False):
 	error_msgs = errors['error_msgs']
 	error = False
+
+	if exception == field:
+		return (errors)
 
 	if field == '':
 		return (errors)
@@ -195,9 +198,12 @@ def if_fields(name, field, fields, errors):
 
 	return (errors)
 
-def if_field(main, field, select, name, errors):
+def if_field(main, field, select, name, errors, exception=False):
 	error_msgs = errors['error_msgs']
 	error = False
+
+	if exception == field:
+		return (errors)
 
 	if field == '':
 		return (errors)
