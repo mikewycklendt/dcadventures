@@ -128,7 +128,7 @@ def subskill_close_create():
 
 	return ('subskill added')
 
-@app.route('/close/create')
+@app.route('/ranged/create')
 def subskill_ranged_create():
 
 	ability = 4
@@ -137,7 +137,7 @@ def subskill_ranged_create():
 	action = 1
 	attack = integer('skill')
 
-	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 1, WeaponStyle.show == True).all()
+	styles = db.session.query(WeaponStyle).filter(WeaponStyle.type_id == 2, WeaponStyle.show == True).all()
 
 	for i in styles:
 	
