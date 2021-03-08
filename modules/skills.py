@@ -1920,6 +1920,7 @@ def skill_bonus_post_time():
 	perm = preset_convert('perm', value_type)
 	round = preset_convert('round', value_type)
 	next = preset_convert('next', value_type)
+	maintain = preset_convert('maintain', value_type)
 	scene = preset_convert('scene', value_type)
 	turn = preset_convert('turn', value_type)
 	time = request.get_json()['time']
@@ -2007,6 +2008,7 @@ def skill_bonus_post_time():
 						gm = gm,
 						round = round,
 						next = next,
+						maintain = maintain,
 						scene = scene,
 						time = time,
 						mod = mod

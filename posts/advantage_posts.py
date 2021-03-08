@@ -620,6 +620,9 @@ def adv_degree_post(entry, body, cells):
 	condition_turns = get_keyword(AdvTime, condition_turns)
 	level_time = get_keyword(AdvTime, level_time)
 	linked = get_keyword(AdvDegree, linked)
+	circumstance = get_circ(AdvCirc, circumstance)
+
+
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
 
@@ -642,7 +645,6 @@ def adv_degree_post(entry, body, cells):
 	damage_mod = integer_convert(damage_mod)
 	consequence_action = action_convert(consequence_action_type, consequence_action)
 	knowledge_count = integer_convert(knowledge_count)
-	circumstance = get_circ(SkillCirc, circumstance)
 	measure_rank_value = integer_convert(measure_rank_value)
 	unit_value = integer_convert(unit_value)
 	measure_trait_math = math_convert(measure_trait_math)
