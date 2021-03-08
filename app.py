@@ -89,6 +89,25 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
+@app.route('/nature/create')
+def conceal_create():
+
+	entries = ['Heat', 'Cold']
+
+	for i in entries:
+
+		entry = Nature(name=i, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Nature.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('nature added')
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
