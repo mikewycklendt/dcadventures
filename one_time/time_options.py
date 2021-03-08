@@ -50,6 +50,12 @@ def time_db_columns_create():
 	entry = SkillTime(player=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Maintaining Action'
+
+	entry = SkillTime(maintain=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
 	results = db.session.query(SkillTime).filter_by(hide=True).all()
 

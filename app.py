@@ -89,6 +89,73 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
+
+@app.route('/time/options')
+def time_db_columns_create():
+
+	name = 'Permanent'
+
+	entry = AdvTime(perm=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Round'
+	
+	entry = AdvTime(round=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Scene'
+
+	entry = AdvTime(scene=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Instant'
+
+	entry = AdvTime(instant=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = '1 Turn'
+
+	entry = AdvTime(turn=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Next Round'
+
+	entry = AdvTime(next=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Set by GM'
+
+	entry = AdvTime(gm=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Set by Player'
+
+	entry = AdvTime(player=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Maintaining Action'
+
+	entry = AdvTime(maintain=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(AdvTime).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.keyword)
+
+	return ('time fields added')
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)

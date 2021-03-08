@@ -639,6 +639,13 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+	elif value == 'maintain':
+		try:	
+			query = db.session.query(table).filter_by(maintain=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
 	elif value == 'remove':
 		try:	
 			query = db.session.query(table).filter_by(remove=True).first()
@@ -807,6 +814,12 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 	elif value_id == 'player':
 		query = db.session.query(table).filter_by(player=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+	elif value_id == 'maintain':
+		query = db.session.query(table).filter_by(maintain=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True

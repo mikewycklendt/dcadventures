@@ -1319,6 +1319,7 @@ class AdvTime(db.Model):
 	instant = db.Column(db.Boolean)
 	player = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
+	maintain = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('advantage_time_type.id'))
 	circ_type = db.Column(db.Integer, db.ForeignKey('advantage_circ_type.id'))
