@@ -496,7 +496,7 @@ def skill_trait_select():
 		bonuses.append({'id': s.id, 'name': s.name})
 	
 	subskills_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == True).order_by(SkillBonus.name).all()
-		subskills = [{'id': '', 'name': 'Filter Subskill by Skill'}]
+	subskills = [{'id': '', 'name': 'Filter Subskill by Skill'}]
 	var = db.session.query(SkillBonus).filter_by(var=True).first()
 	if sub == 'variable':
 		subskills.append({'id': var.id, 'name': 'Variable Subskill'})
