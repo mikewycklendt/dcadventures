@@ -222,6 +222,7 @@ function trait_type() {
 function check_trait() {
 	const filter = select('trait_type');
 	const fill = 'trait'
+	console.log(filter)
 
 	id_select(fill, fill, trait_filter, filter);
 }
