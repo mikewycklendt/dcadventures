@@ -230,8 +230,6 @@ def adv_check_post_errors(data):
 	errors = required(action_type, 'Action Type', errors)
 	errors = required(action, 'Action', errors)
 	errors = required(keyword, 'Keyword', errors)
-	errors = required(trait_type, 'Rank', errors)
-	errors = required(trait, 'Trait', errors)	
 
 	errors = variable_fields('change', 'Trigger', trigger, [condition1, condition2, conditions_target], errors)
 	errors = variable_field('change', trigger, 'Starting Condition', condition1, errors)
