@@ -590,7 +590,7 @@ def skill_trait_select_filter():
 	options = []
 
 	id = request.get_json()['id'] 
-	sub = request.get_json()['sub'
+	sub = request.get_json()['sub']
 
 	if id == '':
 		body['success'] = False
