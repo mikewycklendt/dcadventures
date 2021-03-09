@@ -96,6 +96,8 @@ def integer(value):
 		value = 654654
 	elif value == 'oppbonus':
 		value = 543543
+	elif value == 'retry':
+		value - 432432
 	elif value == '':
 		value = None
 	elif value == 'none':
@@ -204,6 +206,8 @@ def integer_convert(value):
 		value = 'Penalty Value'
 	elif value == 543543:
 		value = 'No Opponent Bonus'
+	elif value == 432432:
+		value = 'Retry Chhck'
 	elif value is None:
 		value = ''
 	else:
@@ -295,6 +299,8 @@ def int_check(value, name, errors):
 	elif value == 'penval':
 		return (errors)
 	elif value == 'oppbonus':
+		return (errors)
+	elif value == 'retry':
 		return (errors)
 	else:
 		try:
