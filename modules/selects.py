@@ -586,15 +586,11 @@ def skill_trait_select():
 @select.route('/select/trait/filter', methods=['POST'])
 def skill_trait_select_filter():
 	body = {}
-	body['success'] = True
+	body['success'] = False
 	options = []
 
 	id = request.get_json()['id'] 
-	sub = request.get_json()['sub']
-
-	if sub != 'subskill' and sub != 'bonus':
-		body['success'] = False
-		return jsonify(body)
+	sub = request.get_json()['sub'
 
 	if id == '':
 		body['success'] = False
@@ -613,11 +609,13 @@ def skill_trait_select_filter():
 			for s in skills_query:
 				options.append({'id': s.id, 'name': s.name})
 		body['options'] = options
+		body['success'] = True
 		return jsonify(body)
 
 	id = int(id)
 	
 	if sub == 'subskill':
+		body['success'] = True
 		skill = db.session.query(Skill).filter_by(id=id).one()
 		title = 'Subskills for ' + skill.name
 		options.append({'id': '', 'name': title})
@@ -627,6 +625,7 @@ def skill_trait_select_filter():
 			options.append({'id': s.id, 'name': s.name})
 
 	if sub == 'bonus':
+		body['success'] = True
 		skill = db.session.query(Skill).filter_by(id=id).one()
 		title = 'Enhanced Skills for ' + skill.name
 		options.append({'id': '', 'name': title})
