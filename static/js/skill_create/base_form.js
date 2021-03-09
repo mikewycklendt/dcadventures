@@ -95,6 +95,13 @@ function secret_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function secret_trait() {
+	const filter = select('secret_trait_type');
+	const fill = 'secret_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function gm_circ() {
 	const check = 'gm_circ';
 	const div = 'gm-circ';
@@ -132,6 +139,13 @@ function partner_trait_type() {
 	const fill = 'partner_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function partner_trait() {
+	const filter = select('partner_trait_type');
+	const fill = 'partner_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function required_tools() {

@@ -14,6 +14,13 @@ function move_speed_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function move_speed_trait() {
+	const filter = select('move_speed_trait_type');
+	const fill = 'move_speed_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function move_distance_unit_trait_type() {
 	const select = 'move_distance_unit_trait_type';
 	const fill = 'move_distance_unit_trait';
@@ -21,11 +28,25 @@ function move_distance_unit_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function move_distance_unit_trait() {
+	const filter = select('move_distance_unit_trait_type');
+	const fill = 'move_distance_unit_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function move_distance_rank_trait_type() {
 	const select = 'move_distance_rank_trait_type';
 	const fill = 'move_distance_rank_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function move_distance_rank_trait() {
+	const filter = select('move_distance_rank_trait_type');
+	const fill = 'move_distance_rank_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 

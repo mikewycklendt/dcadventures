@@ -22,6 +22,13 @@ function dc_math_trait_type() {
 	id_select(select, fill, trait_select, sub);
 }
 
+function dc_math_trait() {
+	const filter  = select('dc_math_trait_type');
+	const fill = 'dc_math_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function dc_dc() {
 	const field = 'dc_dc';
 	const options = [{'val': 'value', 'div': 'dc-value'},
@@ -173,11 +180,25 @@ function dc_measure_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function dc_measure_trait() {
+	const filter = select('dc_measure_trait_type');
+	const fill = 'dc_measure_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function dc_measure_trait_type_unit() {
 	const select = 'dc_measure_trait_type_unit';
 	const fill = 'dc_measure_trait_unit';
 
 	id_select(select, fill, trait_select);
+}
+
+function dc_measure_trait_unit() {
+	const filter = select('dc_measure_trait_type_unit');
+	const fill = 'dc_measure_trait_unit';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 
@@ -222,6 +243,13 @@ function dc_inflict_trait_type() {
 	const fill = 'dc_inflict_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function dc_inflict_trait() {
+	const filter = select('dc_inflict_trait_type');
+	const fill = 'dc_inflict_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 

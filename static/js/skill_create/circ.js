@@ -56,6 +56,13 @@ function circ_measure_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function circ_measure_trait() {
+	const filter = select('circ_measure_trait_type');
+	const fill = 'circ_measure_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function circ_level_type() {
 	const select = 'circ_level_type';
 	const fill = 'circ_level';
@@ -85,6 +92,14 @@ function circ_trait_type() {
 
 	id_select(select, fill, trait_select);
 }
+
+function circ_trait() {
+	const filter = select('circ_trait_type');
+	const fill = 'circ_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

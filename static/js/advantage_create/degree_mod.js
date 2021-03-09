@@ -38,6 +38,13 @@ function deg_mod_consequence_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_consequence_trait() {
+	const filter = select('deg_mod_consequence_trait_type');
+	const fill = 'deg_mod_consequence_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function deg_mod_knowledge() {
 	const select = 'deg_mod_knowledge';
 	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'}];
@@ -88,6 +95,13 @@ function deg_mod_inflict_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_inflict_trait() {
+	const filter = select('deg_mod_inflict_trait_type');
+	const fill = 'deg_mod_inflict_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function deg_mod_level_type() {
 	const select = 'deg_mod_level_type';
 	const fill = 'deg_mod_level';
@@ -119,11 +133,25 @@ function deg_mod_measure_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_measure_trait() {
+	const filter = select('deg_mod_measure_trait_type');
+	const fill = 'deg_mod_measure_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function deg_mod_measure_trait_type_unit() {
 	const select = 'deg_mod_measure_trait_type_unit';
 	const fill = 'deg_mod_measure_trait_unit';
 
 	id_select(select, fill, trait_select);
+}
+
+function deg_mod_measure_trait_unit() {
+	const filter = select('deg_mod_measure_trait_type_unit');
+	const fill = 'deg_mod_measure_trait_unit';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function deg_mod_check_type() {
@@ -145,6 +173,13 @@ function deg_mod_check_routine_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_check_routine_trait() {
+	const filter = select('deg_mod_check_routine_trait_type');
+	const fill = 'deg_mod_check_routine_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function deg_mod_check_skill_trait_type() {
 	const select = 'deg_mod_check_skill_trait_type';
 	const fill = 'deg_mod_check_skill_trait';
@@ -152,11 +187,25 @@ function deg_mod_check_skill_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function deg_mod_check_skill_trait() {
+	const filter = select('deg_mod_check_skill_trait_type');
+	const fill = 'deg_mod_check_skill_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function deg_mod_check_resist_trait_type() {
 	const select = 'deg_mod_check_resist_trait_type';
 	const fill = 'deg_mod_check_resist_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function deg_mod_check_resist_trait() {
+	const filter = select('deg_mod_check_resist_trait_type');
+	const fill = 'deg_mod_check_resist_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 let deg_mod_grid = {'titles': false,

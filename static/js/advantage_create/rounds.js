@@ -14,6 +14,13 @@ function rounds_trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function rounds_trait() {
+	const filter = select('rounds_trait_type');
+	const fill = 'rounds_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let rounds_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

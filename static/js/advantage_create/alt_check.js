@@ -33,6 +33,13 @@ function check_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function check_trait() {
+	const filter = select('check_trait_type');
+	const fill = 'check_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function check_action_type() {
 	const select = 'check_action_type';
 	const fill = 'check_action';

@@ -14,6 +14,13 @@ function resist_trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function resist_trait() {
+	const filter = select('resist_trait_type');
+	const fill = 'resist_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let resist_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

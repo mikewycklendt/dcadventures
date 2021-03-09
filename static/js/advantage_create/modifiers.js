@@ -133,6 +133,13 @@ function modifiers_penalty_trait_type() {
 	id_select(select1, fill, trait_select, variable_sub);
 }
 
+function modifiers_penalty_trait() {
+	const fill = 'modifiers_penalty_trait';
+	const filter = select('modifiers_penalty_trait_type');
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function modifiers_bonus_trait_type() {
 	const select1 = 'modifiers_bonus_trait_type';
 	const select2 = 'modifiers_penalty_trait_type';
@@ -144,6 +151,13 @@ function modifiers_bonus_trait_type() {
 
 	double_select_second(select1, select2, options, others, row, entry)
 	id_select(select1, fill, trait_select, variable_sub);
+}
+
+function modifiers_bonus_trait() {
+	const filter = select('modifiers_bonus_trait_type');
+	const fill = 'modifiers_bonus_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function modifiers_penalty_conflict() {

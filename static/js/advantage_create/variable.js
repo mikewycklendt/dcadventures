@@ -17,6 +17,13 @@ function variable_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function variable_trait() {
+	const filter = 'variable_trait_type';
+	const fill = 'variable_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let variable_grid = {'titles': false,
 					'columns': [],
 					'font': 100,

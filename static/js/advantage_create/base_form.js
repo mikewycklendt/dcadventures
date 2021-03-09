@@ -148,6 +148,13 @@ function invent_trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function invent_trait() {
+	const trait = 'invent_trait_type';
+	const fill = 'invent_trait';
+
+	id_select(fill, fill, trait_filter, trait);
+}
+
 function invent() {
 	const check = 'invent';
 	const div1 = 'base-invent-permanence';
@@ -192,6 +199,13 @@ function gm_trait_type() {
 	id_select(select, fill, trait_select, variable_sub)
 }
 
+function gm_trait() {
+	const filter = 'gm_trait_type';
+	const fill = 'gm_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function trait_type() {
 	const select = 'trait_type';
 	const fill = 'trait'
@@ -205,11 +219,25 @@ function trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function check_trait() {
+	const trait = select('trait_type');
+	const fill = 'trait'
+
+	id_select(fill, fill, trait_filter, trait);
+}
+
 function replaced_trait_type() {
 	const select = 'replaced_trait_type';
 	const fill = 'replaced_trait';
 
 	id_select(select, fill, trait_select, variable_sub);
+}
+
+function replaced_trait() {
+	const trait = select('replaced_trait_type');
+	const fill = 'replaced_trait';
+
+	id_select(fill, fill, trait_filter, trait);
 }
 
 function skill_type() {
@@ -221,6 +249,13 @@ function skill_type() {
 	select_opacity_any(select, div);
 	select_maxheight(select, options)
 	id_select(select, fill, trait_select, variable_sub);
+}
+
+function skill_trait() {
+	const trait = select('skill_type');
+	const fill = 'skill';
+
+	id_select(fill, fill, trait_filter, trait);
 }
 
 function ranked() {

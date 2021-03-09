@@ -21,12 +21,26 @@ function opposed_trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function opposed_trait() {
+	const filter = select('opposed_trait_type');
+	const fill = 'opposed_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 
 function opposed_opponent_trait_type() {
 	const select = 'opposed_opponent_trait_type'
 	const fill = 'opposed_opponent_trait'
 
 	id_select(select, fill, trait_select, variable_sub);
+}
+
+function opposed_opponent_trait() {
+	const filter = select('opposed_opponent_trait_type');
+	const fill = 'opposed_opponent_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function opposed_recurring() {

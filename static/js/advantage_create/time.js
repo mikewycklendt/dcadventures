@@ -20,6 +20,14 @@ function time_trait_type() {
 
 	id_select(select, fill, trait_select);
 }
+
+function time_trait() {
+	const filter = select('time_trait_type');
+	const fill = 'time_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function time_type() {
 	const select = 'time_type';
 	const options = [{'val': 'recover', 'div': 'time-recovery'}];
