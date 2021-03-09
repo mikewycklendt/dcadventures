@@ -84,6 +84,7 @@
 					<select class="select-entry" id="condition_condition2" name="condition_condition2">
 						<option value="">Ending Condition</option>
 						<option value="stable">Stabalized</option>
+						<option value="remove">Remove First</option>
 						{% for c in conditions %}
 							<option value="{{c.id}}">{{c.name}}</option>
 						{% endfor %}
