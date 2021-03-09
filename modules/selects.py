@@ -593,7 +593,7 @@ def skill_trait_select_filter():
 	sub = request.get_json()['sub']
 
 	print(sub)
-	
+
 	if id == '':
 		body['success'] = False
 		return jsonify(body)
@@ -616,26 +616,33 @@ def skill_trait_select_filter():
 	id = int(id)
 	
 	if sub == 'subskill':
-		body['success'] = True
-		skill = db.session.query(Skill).filter_by(id=id).one()
-		title = 'Subskills for ' + skill.name
-		options.append({'id': '', 'name': title})
-		options.append({'id': 'back', 'name': 'Back to Skills'})
-		subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
-		for s in subskills:
-			options.append({'id': s.id, 'name': s.name})
+		try:
+			body['success'] = True
+			skill = db.session.query(Skill).filter_by(id=id).one()
+			title = 'Subskills for ' + skill.name
+			options.append({'id': '', 'name': title})
+			options.append({'id': 'back', 'name': 'Back to Skills'})
+			subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
+			for s in subskills:
+				options.append({'id': s.id, 'name': s.name})
+			body['options'] = options
+		except:
+			body['success'] = False
 
 	if sub == 'bonus':
 		body['success'] = True
-		skill = db.session.query(Skill).filter_by(id=id).one()
-		title = 'Enhanced Skills for ' + skill.name
-		options.append({'id': '', 'name': title})
-		options.append({'id': 'back', 'name': 'Back to Skills'})
-		subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
-		for s in subskills:
-			options.append({'id': s.id, 'name': s.name})
+		try:
+			skill = db.session.query(Skill).filter_by(id=id).one()
+			title = 'Enhanced Skills for ' + skill.name
+			options.append({'id': '', 'name': title})
+			options.append({'id': 'back', 'name': 'Back to Skills'})
+			subskills = db.session.query(SkillBonus).filter_by(skill=id).all()
+			for s in subskills:
+				options.append({'id': s.id, 'name': s.name})
+			body['options'] = options
+		except:
+			body['success'] = False
 
-	body['options'] = options
 	return jsonify(body)
 
 
