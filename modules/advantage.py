@@ -412,6 +412,7 @@ def save_advantage():
 	dc_value = request.get_json()['dc_value']
 	dc_mod = request.get_json()['dc_mod']
 	alter_target = request.get_json()['alter_target']
+	alter_target_count = request.get_json()['alter_target_count']
 	simultaneous = request.get_json()['simultaneous']
 	simultaneous_type = request.get_json()['simultaneous_type']
 	extra_action = request.get_json()['extra_action']
@@ -486,6 +487,7 @@ def save_advantage():
 	language_rank = integer(language_rank)
 	mods_count = integer(mods_count)
 	equipment = integer(equipment)
+	alter_target_count = integer(alter_target_count)
 
 	entry = db.session.query(Advantage).filter(Advantage.id == advantage_id).one()
 
@@ -513,6 +515,7 @@ def save_advantage():
 	entry.dc_value = dc_value
 	entry.dc_mod = dc_mod
 	entry.alter_target = alter_target
+	entry.alter_target_count = alter_target_count
 	entry.simultaneous = simultaneous
 	entry.simultaneous_type = simultaneous_type
 	entry.extra_action = extra_action

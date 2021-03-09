@@ -340,12 +340,24 @@
 			Alter Target:
 		</div>
 	
-		<div style="width: 55%;">
-			<select class="base-select" id="alter_target" name="alter_target">
-				{% for t in target %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="alter_target" name="alter_target">
+					{% for t in target %}
+						<option value="{{t.type}}">{{t.name}}</option>
+					{% endfor %}
+				</select>	
+			</div>
+			
+			<div class="hidden">
+				<select class="base-select" id="alter_target_count" name="alter_target_count">
+					<option value="">Targets</option>
+					<option value="advantage">Advantage Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 
 	</div>

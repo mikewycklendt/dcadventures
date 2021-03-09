@@ -55,6 +55,7 @@ class Advantage(db.Model):
 	dc_value = db.Column(db.Integer)
 	dc_mod = db.Column(db.Integer)
 	alter_target = db.Column(db.String())
+	alter_target_count = db.Column(db.Integer)
 	simultaneous = db.Column(db.Boolean)
 	simultaneous_type = db.Column(db.String())
 	extra_action = db.Column(db.Boolean)
@@ -143,6 +144,7 @@ class Advantage(db.Model):
 			'dc_value': self.dc_value,
 			'dc_mod': self.dc_mod,
 			'alter_target': self.alter_target,
+			'alter_target_count': self.alter_target_count,
 			'simultaneous': self.simultaneous,
 			'simultaneous_type': self.simultaneous_type,
 			'extra_action': self.extra_action,

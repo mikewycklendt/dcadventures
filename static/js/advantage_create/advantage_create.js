@@ -179,6 +179,7 @@ advantage_save = function() {
 	const dc_value = select("advantage_dc_value");
 	const dc_mod = select("advantage_dc_mod");
 	const alter_target = select("alter_target");
+	const alter_target_count = select("alter_target_count");
 	const simultaneous = check("simultaneous");
 	const simultaneous_type = select("simultaneous_type");
 	const extra_action = check("extra_action");
@@ -261,6 +262,7 @@ advantage_save = function() {
 			'dc_value': dc_value,
 			'dc_mod': dc_mod,
 			'alter_target': alter_target,
+			'alter_target_count': alter_target_count,
 			'simultaneous': simultaneous,
 			'simultaneous_type': simultaneous_type,
 			'extra_action': extra_action,
