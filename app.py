@@ -98,6 +98,25 @@ def shutdown_session(exception=None):
 
 
 
+
+@app.route('/advantages/all')
+def advantages_all_create():
+
+
+	names = ['Improvised Weapon']
+
+	for name in names:
+
+		entry = Advantage(show=True, name=name, base=True )
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Advantage.query.all()
+
+	for r in results:
+		print(str(r.id) + ' ' + r.name)
+
+	return ('advantages added')
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
