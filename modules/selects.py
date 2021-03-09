@@ -628,6 +628,7 @@ def skill_trait_select_filter():
 			body['options'] = options
 		except:
 			body['success'] = False
+			db.session.close()
 
 	if sub == 'bonus':
 		body['success'] = True
@@ -642,6 +643,7 @@ def skill_trait_select_filter():
 			body['options'] = options
 		except:
 			body['success'] = False
+			db.session.close()
 
 	return jsonify(body)
 

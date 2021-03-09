@@ -273,6 +273,7 @@ def linked_options(table, trait, column, option):
 			options.append({'id': e.id, 'name': str(e.id) + ' ' +  entry_name.name + ' ' + name})
 		except:
 			print('hidden')
+			db.session.close()
 
 	return (options)
 
