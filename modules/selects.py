@@ -592,11 +592,12 @@ def skill_trait_select_filter():
 	id = request.get_json()['id'] 
 	sub = request.get_json()['sub']
 
+	print(sub)
+	
 	if id == '':
 		body['success'] = False
 		return jsonify(body)
 
-	print(sub)
 
 	skills_query = db.session.query(Skill).filter(Skill.hide == None).all()
 	if id == 'back':
