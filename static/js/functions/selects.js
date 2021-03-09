@@ -23,6 +23,7 @@ const skill_icon_select = '/select/icon/skill';
 const ability_icon_select = '/select/icon/ability';
 
 const variable_sub = 'variable';
+const any_var_sub = 'any-var';
 
 function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false) {
 	const id = select(id_field);

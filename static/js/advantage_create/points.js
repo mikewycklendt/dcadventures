@@ -34,9 +34,8 @@ function points_benefit_choice() {
 function points_ranks_trait_type() {
 	const select = 'points_ranks_trait_type';
 	const fill = 'points_ranks_trait';
-	const points_trait = 'points_trait'
 
-	id_select(select, fill, trait_select, points_trait);
+	id_select(select, fill, trait_select, any_var_sub);
 }
 
 function points_ranks_trait() {
