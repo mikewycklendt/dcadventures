@@ -265,3 +265,10 @@ function ranked() {
 
 	check_opacity(check, div);
 }
+
+function alter_target() {
+	const select = 'alter_target';
+	const options = [{'val': 'setup', 'div': 'alter-target'}];
+
+	select_opacity(select, options);
+}
