@@ -340,6 +340,8 @@ def get_name(Table, value):
 		except:
 			print('no entry')
 			value = ''
+		finally:
+			db.session.close()
 
 	return (value)
 
@@ -356,6 +358,8 @@ def get_id(Table, value):
 		except:
 			print('no entry')
 			value = ''
+		finally:
+			db.session.close()
 
 	return (value)
 
@@ -375,6 +379,8 @@ def get_circ(Table, value, name=''):
 			value = name_query.keyword
 		except:
 			print('no entry')
+		finally:
+			db.session.close()
 	else:
 		value = ''
 
@@ -389,6 +395,8 @@ def get_keyword(Table, value):
 			value = name_query.keyword
 		except:
 			print('no entry')
+		finally:
+			db.session.close()
 	else:
 		value = ''
 
@@ -404,6 +412,8 @@ def get_description(Table, value, name=''):
 			description = name_query.description
 		except:
 			print('no entry')
+		finally:
+			db.session.close()
 	else:
 		value = ''
 
@@ -416,11 +426,15 @@ def action_convert(value, action_value):
 	elif value == 'base':
 		action = db.session.query(Action).filter_by(id=action_value).one()
 		a = action.name
+		db.session.close()
 	elif value == 'conflict':
 		action = db.session.query(ConflictAction).filter_by(id=action_value).one()
 		a = action.name
+		db.session.close()
 	else:
 		a = ''
+	
+	
 
 	return (a)
 
@@ -464,6 +478,8 @@ def extra_name(name):
 			name = query.name
 		except:
 			print('invalid id')
+		finally:
+			db.session.close()
 	
 	return (name)
 
@@ -485,6 +501,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'current':
 		try:
 			query = db.session.query(table).filter_by(current=True).first()
@@ -492,6 +510,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'any':
 		try:
 			query = db.session.query(table).filter_by(any=True).first()
@@ -499,6 +519,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'x':
 		try:
 			query = db.session.query(table).filter_by(var=True).first()
@@ -506,6 +528,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'none':
 		try:
 			query = db.session.query(table).filter_by(none=True).first()
@@ -513,6 +537,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'power':
 		try:
 			query = db.session.query(table).filter_by(power=True).first()
@@ -520,6 +546,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'skill':
 		try:
 			query = db.session.query(table).filter_by(skill=True).first()
@@ -527,6 +555,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'extra':
 		try:
 			query = db.session.query(table).filter_by(extra=True).first()
@@ -534,6 +564,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'free':
 		try:
 			query = db.session.query(table).filter_by(free=True).first()
@@ -541,6 +573,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'linked':
 		try:
 			query = db.session.query(table).filter_by(linked=True).first()
@@ -548,6 +582,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'linked_first':
 		try:
 			query = db.session.query(table).filter_by(linked_first=True).first()
@@ -555,6 +591,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'linked_second':
 		try:
 			query = db.session.query(table).filter_by(linked_second=True).first()
@@ -562,6 +600,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'stable':
 		try:
 			query = db.session.query(table).filter_by(stable=True).first()
@@ -569,6 +609,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'perm':
 		try:
 			query = db.session.query(table).filter_by(perm=True).first()
@@ -576,6 +618,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'round':
 		try:	
 			query = db.session.query(table).filter_by(round=True).first()
@@ -583,6 +627,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'scene':
 		try:
 			query = db.session.query(table).filter_by(scene=True).first()
@@ -590,6 +636,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'instant':
 		try:	
 			query = db.session.query(table).filter_by(instant=True).first()
@@ -597,6 +645,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'turn':
 		try:	
 			query = db.session.query(table).filter_by(turn=True).first()
@@ -604,6 +654,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'next':
 		try:	
 			query = db.session.query(table).filter_by(next=True).first()
@@ -611,6 +663,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'outdoors':
 		try:	
 			query = db.session.query(table).filter_by(outdoors=True).first()
@@ -618,6 +672,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'active':
 		try:	
 			query = db.session.query(table).filter_by(active=True).first()
@@ -625,6 +681,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'gm':
 		try:	
 			query = db.session.query(table).filter_by(gm=True).first()
@@ -632,6 +690,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'player':
 		try:	
 			query = db.session.query(table).filter_by(player=True).first()
@@ -639,6 +699,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'maintain':
 		try:	
 			query = db.session.query(table).filter_by(maintain=True).first()
@@ -646,6 +708,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'remove':
 		try:	
 			query = db.session.query(table).filter_by(remove=True).first()
@@ -653,6 +717,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == 'improvise':
 		try:	
 			query = db.session.query(table).filter_by(improvise=True).first()
@@ -660,6 +726,8 @@ def db_integer(table, value):
 		except:
 			print(value)
 			return (value)
+		finally:
+			db.session.close()
 	elif value == '':
 		value = None
 		return (value)
@@ -687,156 +755,182 @@ def id_check(table, value_id, name, errors):
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'current':
 		query = db.session.query(table).filter_by(current=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'any':
 		query = db.session.query(table).filter_by(any=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'x':
 		query = db.session.query(table).filter_by(var=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'none':
 		query = db.session.query(table).filter_by(none=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'power':
 		query = db.session.query(table).filter_by(power=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'skill':
 		query = db.session.query(table).filter_by(skill=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'extra':
 		query = db.session.query(table).filter_by(extra=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'free':
 		query = db.session.query(table).filter_by(free=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'linked':
 		query = db.session.query(table).filter_by(linked=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'linked_first':
 		query = db.session.query(table).filter_by(linked_first=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'linked_second':
 		query = db.session.query(table).filter_by(linked_second=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'remove':
 		query = db.session.query(table).filter_by(remove=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'stable':
 		query = db.session.query(table).filter_by(stable=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'perm':
 		query = db.session.query(table).filter_by(perm=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'round':
 		query = db.session.query(table).filter_by(round=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'scene':
 		query = db.session.query(table).filter_by(scene=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'instant':
 		query = db.session.query(table).filter_by(instant=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'turn':
 		query = db.session.query(table).filter_by(turn=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'next':
 		query = db.session.query(table).filter_by(next=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'outdoors':
 		query = db.session.query(table).filter_by(outdoors=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'active':
 		query = db.session.query(table).filter_by(active=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'gm':
 		query = db.session.query(table).filter_by(gm=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'player':
 		query = db.session.query(table).filter_by(player=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'maintain':
 		query = db.session.query(table).filter_by(maintain=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	elif value_id == 'improvise':
 		query = db.session.query(table).filter_by(improvise=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
 			error_msgs.append(message)
+		db.session.close()
 	else:
 		try:
 			value_id = int(value_id)
@@ -851,7 +945,9 @@ def id_check(table, value_id, name, errors):
 			message = 'Not a valid ' + name
 			error_msgs.append(message)	
 			error = True
-
+		finally:
+			db.session.close()
+			
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
