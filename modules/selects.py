@@ -635,6 +635,7 @@ def skill_trait_select_filter():
 			options.append({'id': s.id, 'name': s.name})
 
 	body['options'] = options
+	print(options)
 	return jsonify(body)
 
 
