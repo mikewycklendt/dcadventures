@@ -220,10 +220,9 @@ function trait_type() {
 }
 
 function check_trait() {
+	console.log('word')
 	const filter = select('trait_type');
 	const fill = 'trait'
-	console.log(filter)
-	console.log('word')
 
 	id_select(fill, fill, trait_filter, filter);
 }
