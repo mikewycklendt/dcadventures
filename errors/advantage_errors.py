@@ -12,7 +12,7 @@ from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, He
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
-from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.weapon_models import WeaponType, WeaponStyle, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import AdvCircType, AdvDCType, AdvDegreeType, AdvMoveType, AdvTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
@@ -1422,6 +1422,7 @@ def adv_modifiers_post_errors(data):
 	multiple = data['multiple']
 	multiple_count = data['multiple_count']
 	lasts = data['lasts']
+	weapon_style = data['weapon_style']
 
 	errors = create_check('Advantage', advantage_id, Advantage, errors)
 	
@@ -1453,6 +1454,7 @@ def adv_modifiers_post_errors(data):
 	errors = id_check(Ranged, penalty_check_range, 'Penalty Check Range', errors)
 	errors = id_check(ConflictAction, penalty_conflict, 'Penalty Conflict Action', errors)
 	errors = id_check(Nature, nature, 'Nature', errors)
+	errors = id_check(WeaponStyle, weapon_style, 'Weapon Style', errors)
 
 	errors = of([bonus, penalty], 'You must set a value for either a bonus or a penalty.', errors)
 
@@ -1489,6 +1491,7 @@ def adv_modifiers_post_errors(data):
 	errors = variable_fields('ranged', 'Ranged Weapon', trigger, [weapon_ranged], errors)
 	errors = variable_fields('melee', 'Melee Weapon', trigger, [weapon_melee], errors)
 	errors = variable_fields('nature', 'Nature', trigger, [nature], errors)
+	errors = variable_fields('weapon', 'Weapon Style', trigger, [weapon_style], errors)
 
 	return(errors)
 

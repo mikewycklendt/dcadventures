@@ -417,6 +417,7 @@ class AdvMod(db.Model):
 	multiple = db.Column(db.String())
 	multiple_count = db.Column(db.Integer)
 	lasts = db.Column(db.Integer)
+	weapon_style = db.Column(db.Integer, db.ForeignKey('weapon_style.id'))
 
 	def format(self):
 		return {
@@ -440,6 +441,7 @@ class AdvMod(db.Model):
 			'maneuver': self.maneuver,
 			'weapon_melee': self.weapon_melee,
 			'weapon_ranged': self.weapon_ranged,
+			'weapon_style': self.weapon_style,
 			'tools': self.tools,
 			'condition': self.condition,
 			'power': self.power,

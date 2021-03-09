@@ -223,6 +223,17 @@
 				</select>
 			</div>
 			
+			<div id="modifiers-weapon">
+				<select class="select-entry" id="modifiers_weapon_style" name="modifiers_weapon_style">
+					<option value="">Weapon Style</option>
+					<option value="x">Variable</option>
+					<option value="improvise">Improvised</option>
+					{% for w in weapon_style %}
+						<option value="{{w.id}}">{{w.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
 			<div id="modifiers-consequence">
 				<select class="select-entry" id="modifiers_consequence" name="modifiers_consequence">
 					<option value="">Consequence</option>

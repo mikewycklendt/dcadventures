@@ -156,7 +156,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	weapon_ranged = db.session.query(WeaponType).filter_by(type_id=2).all()
 
-	weapon_style = db.session.query(WeaponStyle).filter_by(show=True).all()
+	weapon_style = db.session.query(WeaponStyle).filter(WeaponStyle.show==True).order_by(WeaponStyle.name).all()
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
@@ -232,7 +232,7 @@ def advantage_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	
 	modifier_effect = [{'type': '', 'name': 'Affects'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'damage_check', 'name': 'Damage Checks'}, {'type': 'effect', 'name': 'Effect Modifier'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'damage', 'name': 'Damage Bonus'}, {'type': 'defense', 'name': 'Active Defenses'}, {'type': 'critical', 'name': 'Critical Range'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'check', 'name': 'Check Type'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'circ', 'name': 'Override Circumstance'}]
 
-	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'nature', 'name': 'Nature'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}]
+	modifier_trigger = [{'type': '', 'name': 'Trigger'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'nature', 'name': 'Nature'}, {'type': 'cover', 'name': 'Cover'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'subsense', 'name': 'Subsense'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'profession', 'name': 'Characters Profession'}, {'type': 'creature', 'name': 'Creature'}, {'type': 'power', 'name': 'Power'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'range', 'name': 'Range'}, {'type': 'critical', 'name': 'Critical Attempt'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'maneuver', 'name': 'Maneuver'}, {'type': 'tools', 'name': 'Tool Requirement'}, {'type': 'ranged', 'name': 'Ranged Weapon'}, {'type': 'melee', 'name': 'Melee Weapon'}, {'type': 'weapon', 'name': 'Weapon Style'}]
 
 	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
 
@@ -1256,6 +1256,7 @@ def advantage_post_modifiers():
 	multiple = request.get_json()['multiple']
 	multiple_count = request.get_json()['multiple_count']
 	lasts = request.get_json()['lasts']
+	weapon_style = request.get_json()['weapon_style']
 
 	error = errors['error']
 
@@ -1316,6 +1317,7 @@ def advantage_post_modifiers():
 		bonus_check_range = db_integer(Ranged, bonus_check_range)
 		penalty_check = db_integer(Check, penalty_check)
 		penalty_check_range = db_integer(Ranged, penalty_check_range)
+		weapon_style = db_integer(WeaponStyle, weapon_style)
 
 		bonus = integer(bonus)
 		penalty = integer(penalty)
@@ -1376,7 +1378,8 @@ def advantage_post_modifiers():
 							penalty_conflict_defend = penalty_conflict_defend,
 							multiple = multiple,
 							multiple_count = multiple_count,
-							lasts = lasts)
+							lasts = lasts,
+							weapon_style = weapon_style)
 
 		db.session.add(entry)
 		db.session.commit()

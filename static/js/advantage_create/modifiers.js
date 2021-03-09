@@ -27,6 +27,7 @@ function modifiers_trigger() {
 					{'val': 'consequence', 'div': 'modifiers-consequence'},
 					{'val': 'range', 'div': 'modifiers-range'},
 					{'val': 'nature', 'div': 'modifiers-nature'},
+					{'val': 'weapon', 'div': 'modifiers-weapon'},
 					{'val': 'db', 'div': 'modifiers-profession-other'},
 					{'val': 'db', 'div': 'modifiers-creature-other'},
 					{'val': 'db', 'div': 'modifiers-emotion-other'},
@@ -241,6 +242,7 @@ function modifiers_submit() {
 	const multiple = select("modifiers_multiple");
 	const multiple_count = select("modifiers_multiple_count");
 	const lasts = select("modifier_lasts");
+	const weapon_style = select("modifiers_weapon_style");
 
 	///const advantage_id = document.getElementById('advantage_id').value;
 	const advantage_id = select("create_advantage_select");
@@ -302,7 +304,8 @@ function modifiers_submit() {
 			'penalty_conflict_defend': penalty_conflict_defend,
 			'multiple': multiple,
 			'multiple_count': multiple_count,
-			'lasts': lasts
+			'lasts': lasts,
+			'weapon_style': weapon_style
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

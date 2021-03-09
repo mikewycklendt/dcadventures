@@ -12,7 +12,7 @@ from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, He
 from db.power_models import Extra, Power, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
-from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.weapon_models import WeaponType, WeaponStyle, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import AdvCircType, AdvDCType, AdvDegreeType, AdvMoveType, AdvTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
@@ -1336,6 +1336,7 @@ def adv_modifiers_post(entry, body, cells):
 	multiple = entry.multiple
 	multiple_count = entry.multiple_count
 	lasts = entry.lasts
+	weapon_style  = entry.weapon_style
 
 	bonus_trait = trait_select(bonus_trait, bonus_trait_type)
 	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
@@ -1379,6 +1380,7 @@ def adv_modifiers_post(entry, body, cells):
 	penalty_check = get_name(Check, penalty_check)
 	penalty_check_range = get_name(Ranged, penalty_check_range)
 	nature = get_name(Nature, nature)
+	weapon_style = get_name(WeaponStyle, weapon_style)
 
 	bonus_active_defense = variable_value('trait', bonus_effect, bonus_active_defense)
 	bonus_conflict_defend = variable_value('conflict', bonus_effect, bonus_conflict_defend)
@@ -1447,6 +1449,8 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('ranged', 20, [weapon_ranged], vcells)
 	vcells = vcell('melee', 20, [weapon_melee], vcells)
 	vcells = vcell('nature', 20, [nature], vcells)
+	vcells = vcell('weapon', 20, [weapon_style], vcells)
+	
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	body = send(cells, body)
