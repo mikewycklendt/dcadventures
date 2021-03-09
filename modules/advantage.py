@@ -460,6 +460,7 @@ def save_advantage():
 	equipment = request.get_json()['equipment']
 	unarmed = request.get_json()['unarmed']
 	conflict_type = request.get_json()['conflict_type']
+	effect_target = request.get_json()['effect_target']
 
 	adv_type = integer(adv_type)
 	action = db_integer(Action, action)
@@ -560,6 +561,7 @@ def save_advantage():
 	entry.unarmed = unarmed
 	entry.conflict_type = conflict_type
 	entry.weapon_style = weapon_style
+	entry.effect_target = effect_target
 
 	db.session.commit()
 	body['success'] = True

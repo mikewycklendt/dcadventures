@@ -102,6 +102,7 @@ class Advantage(db.Model):
 	variable_multiple = db.Column(db.String())
 	move = db.Column(db.Boolean)
 	unarmed = db.Column(db.Boolean)
+	effect_target = db.Column(db.String())
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -196,7 +197,8 @@ class Advantage(db.Model):
 			'base': self.base,
 			'variable_multiple': self.variable_multiple,
 			'equipment': self.equipment,
-			'unarmed': self.unarmed
+			'unarmed': self.unarmed,
+			'effect_target': self.effect_target
 		}
 
 class AdvantageType(db.Model):

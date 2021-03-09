@@ -322,6 +322,21 @@
 	
 	<div class="base-field">
 		<div id="multiple-attr-title">
+			Effect Target:
+		</div>
+	
+		<div style="width: 55%;">
+			<select class="base-select" id="effect_target" name="effect_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
 			Alter Target:
 		</div>
 	
