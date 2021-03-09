@@ -219,7 +219,7 @@ function trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
-function check_trait() {
+function base_trait() {
 	console.log('word')
 	const filter = select('trait_type');
 	const fill = 'trait'
@@ -252,7 +252,7 @@ function skill_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
-function skill_trait() {
+function base_skill_trait() {
 	const filter = select('skill_type');
 	const fill = 'skill';
 
