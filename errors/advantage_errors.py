@@ -1469,9 +1469,15 @@ def adv_modifiers_post_errors(data):
 	errors = variable_fields('check', 'Bonus Check', bonus_effect, [bonus_check], errors)
 	errors = variable_fields('conflict', 'Bonus Conflict Action', bonus_effect, [bonus_conflict], errors)
 
+	errors = variable_fields('retry', 'Retry against Trigger', bonus_effect, [trigger], errors)
+	errors = variable_fields('retry', bonus_effect, 'Trigger', trigger, errors)
+
 	errors = variable_fields('trait', 'Penalty Trait', penalty_effect, [penalty_trait_type, penalty_trait], errors)
 	errors = variable_fields('check', 'Penalty Check', penalty_effect, [penalty_check], errors)
 	errors = variable_fields('conflict', 'Penalty Conflict Action', penalty_effect, [penalty_conflict], errors)
+
+	errors = variable_fields('retry', 'Retry against Trigger', penalty_effect, [trigger], errors)
+	errors = variable_fields('retry', penalty_effect, 'Trigger', trigger, errors)
 
 	errors = variable_fields('environment', 'Environment', trigger, [environment], errors)
 	errors = variable_fields('cover', 'Cover', trigger, [cover], errors)

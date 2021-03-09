@@ -1455,6 +1455,7 @@ def adv_modifiers_post(entry, body, cells):
 
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
+
 	body = send(cells, body)
 	
 	cells.clear()
