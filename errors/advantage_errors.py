@@ -102,6 +102,7 @@ def adv_save_errors(data):
 	variable = data['variable']
 	variable_multiple = data['variable_multiple']
 	move = data['move']
+	alter_target_count = data['alter_target_count']
 
 	errors = adv_entry_check('Variable Trait', AdvVariable, variable, advantage_id, errors)
 	errors = adv_entry_check('DC Table', AdvDC, dc, advantage_id, errors)
