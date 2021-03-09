@@ -1402,7 +1402,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('damage_check', 16, ['Damage Checks'], vcells)
 	vcells = vcell('trait', 18, [bonus_trait], vcells)
 	word = string(', Range:', [bonus_check_range])
-	vcells = vcell('check', 29, [bonus_check, word, bonus_check_range], vcells)
+	vcells = vcell('check', 29, [bonus_check_range, bonus_check, 'Checks'], vcells)
 	vcells = vcell('conflict', 16, [bonus_conflict], vcells)
 	cells = vcell_add('Bonus Effect', bonus_effect, vcells, cells)
 
@@ -1422,7 +1422,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('damage_check', 16, ['Damage Checks'], vcells)
 	vcells = vcell('trait', 18, [penalty_trait], vcells)
 	word = string(', Range:', [penalty_check_range])
-	vcells = vcell('check', 29, [penalty_check, word, penalty_check_range], vcells)
+	vcells = vcell('check', 29, [penalty_check_range, penalty_check, 'Checks'], vcells)
 	vcells = vcell('conflict', 16, [penalty_conflict], vcells)
 	
 	cells = vcell_add('Affects', penalty_effect, vcells, cells)
@@ -1450,7 +1450,7 @@ def adv_modifiers_post(entry, body, cells):
 	vcells = vcell('melee', 20, [weapon_melee], vcells)
 	vcells = vcell('nature', 20, [nature], vcells)
 	vcells = vcell('weapon', 20, [weapon_style], vcells)
-	
+
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	body = send(cells, body)
