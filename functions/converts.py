@@ -94,6 +94,8 @@ def integer(value):
 		value = 765765
 	elif value == 'penval':
 		value = 654654
+	elif value == 'oppbonus':
+		value = 543543
 	elif value == '':
 		value = None
 	elif value == 'none':
@@ -200,6 +202,8 @@ def integer_convert(value):
 		value = 'Routine'
 	elif value == 654654:
 		value = 'Penalty Value'
+	elif value == 543543:
+		value = 'No Opponent Bonus'
 	elif value is None:
 		value = ''
 	else:
@@ -289,6 +293,8 @@ def int_check(value, name, errors):
 	elif value == 'none':
 		return (errors)
 	elif value == 'penval':
+		return (errors)
+	elif value == 'oppbonus':
 		return (errors)
 	else:
 		try:
@@ -947,7 +953,7 @@ def id_check(table, value_id, name, errors):
 			error = True
 		finally:
 			db.session.close()
-			
+
 	errors['error_msgs'] = error_msgs
 	if error:
 		errors['error'] = error
