@@ -1,5 +1,6 @@
 
 const trait_select = '/select/trait';
+const trait_filter = '/select/trait/filter'
 const level_select = '/select/level';
 const action_select = '/select/action';
 const skill_select = '/select/skill';

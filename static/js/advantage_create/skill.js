@@ -14,11 +14,25 @@ function skill_replaced_trait_type() {
 	id_select(select, fill, trait_select, variable_sub);
 }
 
+function skill_replaced_trait() {
+	const select = 'skill_replaced_trait_type';
+	const fill = 'skill_replaced_trait';
+
+	id_select(fill, fill, trait_filter, select);
+}
+
 function skill_trait_type() {
 	const select = 'skill_trait_type';
 	const fill = 'skill_trait';
 
 	id_select(select, fill, trait_select, variable_sub);
+}
+
+function skill_trait() {
+	const select = 'skill_trait_type';
+	const fill = 'skill_trait';
+
+	id_select(fill, fill, trait_filter, select);
 }
 
 let skill_grid = {'titles': false,
