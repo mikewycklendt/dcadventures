@@ -238,6 +238,7 @@
 			<div id="modifiers-consequence">
 				<select class="select-entry" id="modifiers_consequence" name="modifiers_consequence">
 					<option value="">Consequence</option>
+					<option value="x">Variable</option>
 					{% for c in consequences %}
 						<option value="{{c.id}}">{{c.name}}</option>
 					{% endfor %}
