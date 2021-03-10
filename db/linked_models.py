@@ -162,7 +162,7 @@ class PowerCircType(db.Model):
 	__tablename__ = 'power_circ_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
 	def format(self):
 		return {
@@ -175,7 +175,7 @@ class PowerDCType(db.Model):
 	__tablename__ = 'power_dc_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
 	def format(self):
 		return {
@@ -188,7 +188,7 @@ class PowerDegreeType(db.Model):
 	__tablename__ = 'power_degree_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
 	def format(self):
 		return {
@@ -201,7 +201,7 @@ class PowerMoveType(db.Model):
 	__tablename__ = 'power_move_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
 	def format(self):
 		return {
@@ -214,7 +214,7 @@ class PowerTimeType(db.Model):
 	__tablename__ = 'power_time_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
-	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 
 	def format(self):
 		return {
