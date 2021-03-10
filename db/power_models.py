@@ -217,6 +217,13 @@ class Extra(db.Model):
 			'base': self.base
 		}
 
+class PowerCheck(db.Model):
+	__tablename__ = 'power_check'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
+
+
 
 
 class PowerCirc(db.Model):
