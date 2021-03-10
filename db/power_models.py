@@ -938,6 +938,7 @@ class PowerTime(db.Model):
 	dc_type = db.Column(db.Integer, db.ForeignKey('power_dc_type.id'))
 	time = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
+	measure_type = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -979,7 +980,8 @@ class PowerTime(db.Model):
 			'degree_type': self.degree_type,
 			'dc_type': self.dc_type,
 			'time': self.time,
-			'mod': self.mod
+			'mod': self.mod,
+			'measure_type': self.measure_type
 		}
 
 

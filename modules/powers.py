@@ -28,21 +28,22 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerAltCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegMod, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
+from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from errors.power_errors import power_save_errors, alt_check_post_errors, change_action_post_errors, character_post_errors, circ_post_errors, create_post_errors, damage_post_errors, dc_table_post_errors, defense_post_errors, degree_mod_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, move_post_errors, opposed_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors, time_post_errors
-from posts.power_posts import alt_check_post, change_action_post, character_post, circ_post, create_post, damage_post, dc_table_post, defense_post, degree_post, degree_mod_post, environment_post, levels_post, minion_post, mod_post, move_post, opposed_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, time_post
+from errors.power_errors import power_save_errors, power_check_post_errors, power_circ_post_errors, power_dc_post_errors, power_degree_post_errors, power_move_post_errors, power_opposed_post_errors, power_time_post_errors, change_action_post_errors, character_post_errors, create_post_errors, damage_post_errors, defense_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors
+from posts.power_posts import change_action_post, character_post, create_post, damage_post, defense_post, environment_post, levels_post, minion_post, mod_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, power_check_post, power_circ_post, power_dc_post, power_degree_post, power_move_post, power_opposed_post, power_time_post
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
 
 
@@ -93,251 +94,344 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 					{'type': 'reaction', 'name': 'Reaction'},
 					{'type': 'none', 'name': 'None'}]
 
-	range_type = db.session.query(Ranged).filter_by(show=True).all()
-
-	base_ranged = db.session.query(Ranged).filter(Ranged.hide != True).all()
-
-	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True).all()
-
-	duration_type = PowerDuration.query.all()
-
-	distance = db.session.query(Unit).filter_by(type_id=3)
-
-	checks = db.session.query(Check).filter(Check.hide == None).all()
+	abilities = db.session.query(Ability).filter(Ability.hide == None).all()
 
 	actions = db.session.query(Action).filter(Action.hide == None).all()
 
-	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
-
-	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
-
-	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
-
-	abilities = db.session.query(Ability).filter(Ability.hide == None).all()
-
-	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
-
-	light = Light.query.all()
-
-	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
-
-	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
-
 	advantages = db.session.query(Advantage).filter(Advantage.show == True).order_by(Advantage.name).all()
-
-	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
-
-	maths = Math.query.all()
-
-	times = db.session.query(Unit).filter_by(type_id=2)
-
-	distances = db.session.query(Unit).filter_by(type_id=3)
-
-	senses = db.session.query(Sense).filter(Sense.hide == None).all()
-
-	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).all()
-
-	visual = db.session.query(SubSense).filter_by(sense_id=6)
 	
 	auditory = db.session.query(SubSense).filter_by(sense_id=7)
 
-	olfactory = db.session.query(SubSense).filter_by(sense_id=8)
-
-	tactile = db.session.query(SubSense).filter_by(sense_id=9)
-
-	radio = db.session.query(SubSense).filter_by(sense_id=10)
-
-	mental = db.session.query(SubSense).filter_by(sense_id=11)
-
-	special = db.session.query(SubSense).filter_by(sense_id=12)
-
-	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
-
-	power_sense = db.session.query(Power).filter(Power.power_type == 3, Power.show == True).order_by(Power.name).all()
+	base_ranged = db.session.query(Ranged).filter(Ranged.hide == None).all()
 
 	bonuses = db.session.query(SkillBonus).filter(SkillBonus.show == True).order_by(SkillBonus.name).all()
 
+	checks = db.session.query(Check).filter(Check.hide == None).all()
+
 	complexity = Complex.query.all()
+
+	concealment = Conceal.query.all()
+
+	conditions = db.session.query(Condition).filter(Condition.hide == None).order_by(Condition.name).all()
+
+	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 
 	consequences = db.session.query(Consequence).filter(Consequence.hide == None).order_by(Consequence.name).all()
 
-	ranges = Range.query.all()
-
-	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
-
-	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
-
-	grounds = Ground.query.all()
-
-	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
-
-	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
-
-	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
-
-	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
-
-	level_types = LevelType.query.order_by(LevelType.name).all()
-
-	mediums = MediumType.query.order_by(MediumType.name).all()
-
-	materials = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
-	
-	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
+	cover = Cover.query.all()
 
 	damage = Damage.query.order_by(Damage.name).all()
 
-	cover = Cover.query.all()
+	damages = db.session.query(Descriptor).filter(Descriptor.damage == True, Descriptor.show == True).order_by(Descriptor.name).all()
 
-	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
 
-	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
+	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True).all()
 
-	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
+	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
 
-	dc_value = [{'type': '', 'name': 'DC Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+	distance = db.session.query(Unit).filter_by(type_id=3)
 
-	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
+	distances = db.session.query(Unit).filter_by(type_id=3)
 
-	whens = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
+	duration_type = PowerDuration.query.all()
 
-	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
 	
-	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
+	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
+	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
+
+	equip_type = EquipType.query.all()
+
+	grounds = Ground.query.all()
+
+	level_types = LevelType.query.order_by(LevelType.name).all()
+
+	light = Light.query.all()
+
+	maths = Math.query.all()
+
+	materials = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
+
+	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
+
+	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
+
+	mediums = MediumType.query.order_by(MediumType.name).all()
+
+	mental = db.session.query(SubSense).filter_by(sense_id=11)
+
+	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
+
+	olfactory = db.session.query(SubSense).filter_by(sense_id=8)
+
+	origins = db.session.query(Origin).filter(Origin.show == True).order_by(Origin.name).all()
+
+	power_sense = db.session.query(Power).filter(Power.power_type == 3, Power.show == True).order_by(Power.name).all()
+
+	powers = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
+
+	radio = db.session.query(SubSense).filter_by(sense_id=10)
+
+	range_type = db.session.query(Ranged).filter_by(show=True).all()
 	
-	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
+	ranged = db.session.query(Ranged).filter_by(show=True)
+	
+	ranges = Range.query.all()
 
-	required = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
+	senses = db.session.query(Sense).filter(Sense.hide == None).all()
 
-	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+	skills = db.session.query(Skill).filter(Skill.hide == None).order_by(Skill.name).all()
 
-	resistant = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
+	sources = db.session.query(Source).filter(Source.show == True).order_by(Source.name).all()
 
-	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+	special = db.session.query(SubSense).filter_by(sense_id=12)
 
-	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
+	subsenses = db.session.query(SubSense).filter(SubSense.hide == None).all()
 
-	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+	tactile = db.session.query(SubSense).filter_by(sense_id=9)
 
-	sense_distance = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
+	times = db.session.query(Unit).filter_by(type_id=2)
 
-	darkness = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
+	unit_type = MeasureType.query.all()
 
-	determined = [{'type': '', 'name': 'Determined By'}, {'type': 'dc', 'name': 'DC'}, {'type': 'target', 'name': 'Target Trait'}, {'type': 'player', 'name': 'Player Trait'}]
+	units = Unit.query.all()
 
-	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
+	visual = db.session.query(SubSense).filter_by(sense_id=6)
 
-	all_traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'advantage', 'name': 'Advantage'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
-	object_damage = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'effect', 'name': 'Effect Rank'}, {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
-
-	solidity = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
-
-	visibility = [{'type': '', 'name': 'Visibility'}, {'type': 'visible', 'name': 'Visible'}, {'type': 'invisible', 'name': 'Invisible'}, {'type': 'select', 'name': 'Selective'}]
+	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
-	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'uncontrolled', 'name': 'Effect Uncontrolled'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}]
+	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
-	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
-
-	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
-	
-	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
-
-	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
-
-	outcome = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
-
-	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
-
-	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
-
-	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
-
-	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
-
-	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
-
-	directions = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
-
-	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
-
-	character = [{'type': 'size', 'name': 'Size Rank'}]
-
-	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
-
-	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
-
-	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
-
-	resistance_type = [{'type': '', 'name': 'Applies to'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Check Type'}, {'type': 'harmed', 'name': 'Subject Harmed'}]
-
-	time_effect = [{'type': '', 'name': 'Time Type'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}]
-
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
-
-	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
-
-	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
-
-	insub = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
-
-	openings = [{'type': '', 'name': 'Move through'}, {'type': 'opening', 'name': 'Less than water tight'}, {'type': 'water', 'name': 'Less than air tight'}, {'type': 'solid', 'name': 'Through Solid'}, {'type': 'any', 'name': 'Throughh anything'}]
-
-	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
-
-	result = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
-
-	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
-
-	check_type = [{'type': '', 'name': 'When'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}]
-
-	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
-
-	who_check = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
-
-	dimensions = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
-
-	environment_immunity = [{'type': '', 'name': 'Immune From'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'condition', 'name': 'Condition'}]
-
-	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
-
-	immunity_type = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'rule', 'name': 'Game Rule'}]
-
-	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
-
-	travel = [{'type': '', 'name': 'Travel Type'}, {'type': 'dimension', 'name': 'Dimension Travel'}, {'type': 'space', 'name': 'Space Travel'}, {'type': 'time', 'name': 'Time Travel'}, {'type': 'teleport', 'name': 'Teleport'}]
-
-	space = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
-
-	time_travel = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
+	all_traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'advantage', 'name': 'Advantage'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
 	aquatic = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'bpth', 'name': 'Both'}]
 
-	task_type = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
+	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
-	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}]
 
-	minion_type = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
+	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
 
-	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
+	circ_targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}]
 
-	teleport_change = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
+	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'This Object'}, {'type': 'character', 'name': 'This Character'}]
 
-	teleport = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
+	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
+	
+	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
 
-	transform = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
+	character = [{'type': 'size', 'name': 'Size Rank'}]
 
-	weaken = [{'type': '', 'name': 'Weaken Type'}, {'type': 'trait', 'name': 'Specific'}, {'type': 'type', 'name': 'Broad Trait'}, {'type': 'descriptor', 'name': 'Broad Descriptor'}]
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}]
+
+	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
+
+	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
+	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
+
+	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
+
+	dc_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'mod', 'name': 'DC Modifier'}, {'type': 'routine', 'name': 'Routine Check'}, {'type': 'none', 'name': 'No DC'}, {'type': 'choice', 'name': 'Chosen by Player'}]
+
+	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
+
+	darkness = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
+
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}]
+
+	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
+
+	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
+
+	determined = [{'type': '', 'name': 'Determined By'}, {'type': 'dc', 'name': 'DC'}, {'type': 'target', 'name': 'Target Trait'}, {'type': 'player', 'name': 'Player Trait'}]
+
+	dimensions = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
+
+	directions = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
+
+	distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
+
+	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+
+	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
+
+	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
+
+	environment_immunity = [{'type': '', 'name': 'Immune From'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'condition', 'name': 'Condition'}]
+
+	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
+
+	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
+
+	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
+
+	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
+
+	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+
+	immunity_type = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'rule', 'name': 'Game Rule'}]
+
+	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
+
+	insub = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
+
+	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}]
+
+	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
+
+	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
+	
+	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
+
+	measure_effect = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'skill_rank', 'name': 'Skill Rank Modifier'}, {'type': 'skill_unit', 'name': 'Skill Unit Modifier'}]
+
+	measure_effect_circ = [{'type': '', 'name': 'Measurement Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}]
+		
+	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
+
+	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
+
+	minion_type = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
+
+	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
+
+	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
+
+	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'success', 'name': 'Successive'}, {'type': 'optional', 'name': 'Successive Optional'}]
+
+	multiple_time = [{'type': '', 'name': 'If Multiple'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'degree', 'name': 'Degree'}, {'type': 'dc', 'name': 'DC'}, {'type': 'gm', 'name': 'GM Choice'}]
+
+	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
+
+	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
+
+	object_damage = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'effect', 'name': 'Effect Rank'}, {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
+
+	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
+
+	openings = [{'type': '', 'name': 'Move through'}, {'type': 'opening', 'name': 'Less than water tight'}, {'type': 'water', 'name': 'Less than air tight'}, {'type': 'solid', 'name': 'Through Solid'}, {'type': 'any', 'name': 'Throughh anything'}]
+
+	outcome = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
+	
+	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
+
+	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+
+	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
+
+	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}]
+
+	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
+
+	repair = [{'type': '', 'name': 'Effect'}, {'type': 'stable', 'name': 'Stable'}, {'type': 'broke', 'name': 'Broken'}]
+
+	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'gm', 'name': 'GM Decides'}]
+
+	resistance_type = [{'type': '', 'name': 'Applies to'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Check Type'}, {'type': 'harmed', 'name': 'Subject Harmed'}]
+
+	resistant = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
+
+	result = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
+
+	required = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
+
+	sense_distance = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
+
+	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
+
+	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
+
+	solidity = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
+
+	space = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
+
+	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
+
+	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}]
+
+	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
+
 	target_type = [{'type': '', 'name': 'Target Type'}, {'type': 'language', 'name': 'Any Language'}, {'type': 'animal', 'name': 'Animal'}, {'type': 'machine', 'name': 'Machine'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}, {'type': 'x', 'name': 'Variable'}]
+
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
+
+	task_type = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
+
+	teleport = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
+
+	teleport_change = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
+
+	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
+
+	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'recover', 'name': 'Recovery Time'}]
+		
+	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'player', 'name': 'Set by Player'}]
+
+	time_travel = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
+
+	tools = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
+
+	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
+
+	transform = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
+
+	travel = [{'type': '', 'name': 'Travel Type'}, {'type': 'dimension', 'name': 'Dimension Travel'}, {'type': 'space', 'name': 'Space Travel'}, {'type': 'time', 'name': 'Time Travel'}, {'type': 'teleport', 'name': 'Teleport'}]
+
+	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
+
+	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
+
+	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+	
+	value_type = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}]
+
+	visibility = [{'type': '', 'name': 'Visibility'}, {'type': 'visible', 'name': 'Visible'}, {'type': 'invisible', 'name': 'Invisible'}, {'type': 'select', 'name': 'Selective'}]
+
+	weaken = [{'type': '', 'name': 'Weaken Type'}, {'type': 'trait', 'name': 'Specific'}, {'type': 'type', 'name': 'Broad Trait'}, {'type': 'descriptor', 'name': 'Broad Descriptor'}]
+
+	whens = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
+
+	who_check = [{'type': '', 'name': 'Whose Check'}, {'type': 'player', 'name': 'Player Check'}, {'type': 'opponent', 'name': 'Opponent Check'}]
+
+	power_circ = linked_options(PowerCirc, Power, 'power_id', 'keyword')
+
+	power_dc = linked_options(PowerDC, Power, 'power_id', 'keyword')
+	
+	power_degree = linked_options(PowerDegree, Power, 'power_id', 'keyword')
+	
+	power_opposed = linked_options(PowerOpposed, Power, 'power_id', 'keyword')
+	
+	power_time = linked_options(PowerTime, Power, 'power_id', 'keyword')
+
+	power_move = linked_options(PowerMove, Power, 'power_id', 'keyword')
+	
+	power_check = linked_options(PowerCheck, Power, 'power_id', 'keyword')
+
+	power_circ_type = linked_options(PowerCircType, Power, 'power_id', 'name')
+
+	power_dc_type = linked_options(PowerDCType, Power, 'power_id', 'name')
+	
+	power_degree_type = linked_options(PowerDegreeType, Power, 'power_id', 'name')
+	
+	power_time_type = linked_options(PowerTimeType, Power, 'power_id', 'name')
+
+	power_move_type = linked_options(PowerMoveType, Power, 'power_id', 'name')
+
+
+
+
 
 	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
@@ -355,7 +449,12 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											dimensions=dimensions, environment=environment, environment_immunity=environment_immunity, immunity_type=immunity_type, circ_null=circ_null, space=space,
 											travel=travel, time_travel=time_travel, aquatic=aquatic, task_type=task_type, distances=distances, ranged_type=ranged_type, who_check=who_check, cover=cover,
 											minion_type=minion_type, minion_attitude=minion_attitude, teleport=teleport, teleport_change=teleport_change, transform=transform, weaken=weaken, measure_rank=measure_rank, 
-											conceal_type=conceal_type, level_types=level_types, environments=environments, light=light, descriptor_options=descriptor_options)
+											conceal_type=conceal_type, level_types=level_types, environments=environments, light=light, descriptor_options=descriptor_options, action_type=action_type, 
+											check_trigger=check_trigger, ranged=ranged, circ_effect=circ_effect, circ_trait=circ_trait, tools=tools, materials=materials, circ_targets=circ_targets, 
+											measure_effect_circ=measure_effect_circ, measure_type=measure_type, unit_type=unit_type, effect_target=effect_target, measure_effect=measure_effect, units=units,
+											damage_type=damage_type, inflict=inflict, offers=offers, required_tools=required_tools, equipment_use=equipment_use, equip_type=equip_type, concealment=concealment,
+											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, distance=distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
+											multiple_time=multiple_time, time_value=time_value, recovery=recovery)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -701,115 +800,7 @@ def power_grid():
 
 	return jsonify(body)
 
-@powers.route('/power/alt_check/create', methods=['POST'])
-def power_post_alt_check():
 
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = alt_check_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	check_type = request.get_json()['check_type']
-	mod = request.get_json()['mod']
-	circumstance = request.get_json()['circumstance']
-	when = request.get_json()['when']
-	trait_type = request.get_json()['trait_type']
-	trait = request.get_json()['trait']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	check_type = db_integer(Check, check_type)
-
-	mod = integer(mod)
-	trait = integer(trait)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-
-
-	try:
-		entry = PowerAltCheck(power_id = power_id,
-								extra_id = extra_id,
-								check_type = check_type,
-								mod = mod,
-								circumstance = circumstance,
-								when = when,
-								trait_type = trait_type,
-								trait = trait)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'alt-check'
-		spot = "alt-check-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = alt_check_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/alt_check/delete/<power_id>', methods=['DELETE'])
-def delete_power_altcheck(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerAltCheck).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
 
 @powers.route('/power/change_action/create', methods=['POST'])
 def power_post_change_action():
@@ -1105,130 +1096,6 @@ def delete_power_char(power_id):
 	body['id'] = power_id
 	try:
 		db.session.query(PowerChar).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
-@powers.route('/power/circ/create', methods=['POST'])
-def power_post_circ():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = circ_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	target = request.get_json()['target']
-	mod = request.get_json()['mod']
-	rounds = request.get_json()['rounds']
-	description = request.get_json()['description']
-	circ_type = request.get_json()['circ_type']
-	circ_range = request.get_json()['circ_range']
-	check_who = request.get_json()['check_who']
-	check_trait_type = request.get_json()['check_trait_type']
-	check_trait = request.get_json()['check_trait']
-	null_type = request.get_json()['null_type']
-	null_condition = request.get_json()['null_condition']
-	null_descriptor = request.get_json()['null_descriptor']
-	null_trait_type = request.get_json()['null_trait_type']
-	null_trait = request.get_json()['null_trait']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	circ_range = db_integer(Ranged, circ_range)
-	null_condition = db_integer(Condition, null_condition)
-
-	mod = integer(mod)
-	rounds = integer(rounds)
-	check_trait = integer(check_trait)
-	null_descriptor = integer(null_descriptor)
-	null_trait = integer(null_trait)
-
-	try:
-		entry = PowerCirc(power_id = power_id,
-							extra_id = extra_id,
-							target = target,
-							mod = mod,
-							rounds = rounds,
-							description = description,
-							circ_type = circ_type,
-							circ_range = circ_range,
-							check_who = check_who,
-							check_trait_type = check_trait_type,
-							check_trait = check_trait,
-							null_type = null_type,
-							null_condition = null_condition,
-							null_descriptor = null_descriptor,
-							null_trait_type = null_trait_type,
-							null_trait = null_trait)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'circ'
-		spot = "circ-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = circ_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/circ/delete/<power_id>', methods=['DELETE'])
-def delete_power_circ(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerCirc).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
@@ -1580,161 +1447,6 @@ def delete_power_damage(power_id):
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify(body)
 
-@powers.route('/power/dc_table/create', methods=['POST'])
-def power_post_dc_table():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = dc_table_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	target = request.get_json()['target']
-	dc = request.get_json()['dc']
-	description = request.get_json()['description']
-	value = request.get_json()['value']
-	math_value = request.get_json()['math_value']
-	math = request.get_json()['math']
-	math_trait_type = request.get_json()['math_trait_type']
-	math_trait = request.get_json()['math_trait']
-	descriptor_check = request.get_json()['descriptor_check']
-	condition = request.get_json()['condition']
-	keyword_check = request.get_json()['keyword_check']
-	check_type = request.get_json()['check_type']
-	descriptor = request.get_json()['descriptor']
-	descriptor_possess = request.get_json()['descriptor_possess']
-	condition1 = request.get_json()['condition1']
-	condition2 = request.get_json()['condition2']
-	keyword = request.get_json()['keyword']
-	check_trait_type = request.get_json()['check_trait_type']
-	check_trait = request.get_json()['check_trait']
-	check_mod = request.get_json()['check_mod']
-	levels = request.get_json()['levels']
-	level = request.get_json()['level']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	math = db_integer(Math, math)
-	condition1 = db_integer(Condition, condition1)
-	condition2 = db_integer(Condition, condition2)
-	level = db_integer(Levels, level)
-
-	value = integer(value)
-	math_value = integer(math_value)
-	math_trait = integer(math_trait)
-	descriptor = integer(descriptor)
-	check_trait = integer(check_trait)
-	check_mod = integer(check_mod)
-
-	if level is not None:
-		try:
-			level_dc = db.session.query(Levels).filter(Levels.id == level).one()
-			level_dc.power_dc = True
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-		finally:
-			db.session.close()
-	try:
-		entry = PowerDC(power_id = power_id,
-						extra_id = extra_id,
-						target = target,
-						dc = dc,
-						description = description,
-						value = value,
-						math_value = math_value,
-						math = math,
-						math_trait_type = math_trait_type,
-						math_trait = math_trait,
-						descriptor_check = descriptor_check,
-						condition = condition,
-						keyword_check = keyword_check,
-						check_type = check_type,
-						descriptor = descriptor,
-						descriptor_possess = descriptor_possess,
-						condition1 = condition1,
-						condition2 = condition2,
-						keyword = keyword,
-						check_trait_type = check_trait_type,
-						check_trait = check_trait,
-						check_mod = check_mod,
-						levels = levels,
-						level = level)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		body['rows'] = rows
-		mods = []
-		cells = []
-		table_id = 'dc'
-		spot = "dc-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = dc_table_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/dc/delete/<power_id>', methods=['DELETE'])
-def delete_power_dc(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerDC).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
 
@@ -1895,286 +1607,6 @@ def delete_power_defense(power_id):
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify(body)
-
-@powers.route('/power/degree_mod/create', methods=['POST'])
-def power_post_degree_mod():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = degree_mod_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	target = request.get_json()['target']
-	value = request.get_json()['value']
-	deg_type = request.get_json()['deg_type']
-	circ_value = request.get_json()['circ_value']
-	circ_turns = request.get_json()['circ_turns']
-	circ_trait_type = request.get_json()['circ_trait_type']
-	circ_trait = request.get_json()['circ_trait']
-	measure_type = request.get_json()['measure_type']
-	measure_val1 = request.get_json()['measure_val1']
-	measure_math = request.get_json()['measure_math']
-	measure_trait_type = request.get_json()['measure_trait_type']
-	measure_trait = request.get_json()['measure_trait']
-	measure_value = request.get_json()['measure_value']
-	measure_rank = request.get_json()['measure_rank']
-	deg_condition_type = request.get_json()['deg_condition_type']
-	condition_damage_value = request.get_json()['condition_damage_value']
-	condition_damage = request.get_json()['condition_damage']
-	condition1 = request.get_json()['condition1']
-	condition2 = request.get_json()['condition2']
-	keyword = request.get_json()['keyword']
-	nullify = request.get_json()['nullify']
-	cumulative = request.get_json()['cumulative']
-	linked = request.get_json()['linked']
-	level = request.get_json()['level']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-	consequence_action_type = request.get_json()['consequence_action_type']
-	consequence_action = request.get_json()['consequence_action']
-	consequence_trait_type = request.get_json()['consequence_trait_type']
-	consequence_trait = request.get_json()['consequence_trait']
-	consequence = request.get_json()['consequence']
-	knowledge = request.get_json()['knowledge']
-	knowledge_count = request.get_json()['knowledge_count']
-	knowledge_specificity = request.get_json()['knowledge_specificity']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	measure_math = db_integer(Math, measure_math)
-	measure_rank = db_integer(Rank, measure_rank)
-	condition1 = db_integer(Condition, condition1)
-	condition2 = db_integer(Condition, condition2)
-	level = db_integer(Levels, level)
-	consequence = db_integer(Consequence, consequence)
-
-	value = integer(value)
-	circ_value = integer(circ_value)
-	circ_turns = integer(circ_turns)
-	circ_trait = integer(circ_trait)
-	measure_val1 = integer(measure_val1)
-	measure_trait = integer(measure_trait)
-	measure_value = integer(measure_value)
-	condition_damage_value = integer(condition_damage_value)
-	condition_damage = integer(condition_damage)
-	nullify = integer(nullify)
-	consequence_action = integer(consequence_action)
-	consequence_trait = integer(consequence_trait)
-	knowledge_count = integer(knowledge_count)
-
-	if level is not None:
-		try:
-			level_degree = db.session.query(Levels).filter(Levels.id == level).one()
-			level_degree.power_degree = True
-			db.session.commit()
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-		finally:
-			db.session.close()
-
-	try:
-		entry = PowerDegMod(power_id = power_id,
-							extra_id = extra_id,
-							target = target,
-							value = value,
-							deg_type = deg_type,
-							circ_value = circ_value,
-							circ_turns = circ_turns,
-							circ_trait_type = circ_trait_type,
-							circ_trait = circ_trait,
-							measure_type = measure_type,
-							measure_val1 = measure_val1,
-							measure_math = measure_math,
-							measure_trait_type = measure_trait_type,
-							measure_trait = measure_trait,
-							measure_value = measure_value,
-							measure_rank = measure_rank,
-							deg_condition_type = deg_condition_type,
-							condition_damage_value = condition_damage_value,
-							condition_damage = condition_damage,
-							condition1 = condition1,
-							condition2 = condition2,
-							keyword = keyword,
-							nullify = nullify,
-							cumulative = cumulative,
-							linked = linked,
-							level = level,
-							consequence_action_type = consequence_action_type,
-							consequence_action = consequence_action,
-							consequence_trait_type = consequence_trait_type,
-							consequence_trait = consequence_trait,
-							consequence = consequence,
-							knowledge = knowledge,
-							knowledge_count = knowledge_count,
-							knowledge_specificity = knowledge_specificity)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'deg-mod'
-		spot = "deg-mod-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = degree_mod_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/degree_mod/delete/<power_id>', methods=['DELETE'])
-def delete_power_degree_mod(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerDegMod).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
-@powers.route('/power/degree/create', methods=['POST'])
-def power_post_degree():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = degree_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	degree_type = request.get_json()['degree_type']
-	degree = request.get_json()['degree']
-	keyword = request.get_json()['keyword']
-	desscription = request.get_json()['desscription']
-	extra_effort = request.get_json()['extra_effort']
-	cumulative = request.get_json()['cumulative']
-	target = request.get_json()['target']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-	degree = integer(degree)
-
-	try:
-		entry = PowerDegree(power_id = power_id,
-							extra_id = extra_id,
-							degree_type = degree_type,
-							degree = degree,
-							keyword = keyword,
-							desscription = desscription,
-							extra_effort = extra_effort,
-							cumulative = cumulative,
-							target = target)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'degree'
-		spot = "degree-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = degree_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/degree/delete/<power_id>', methods=['DELETE'])
-def delete_power_degree(power_id):
-	try:
-		db.session.query(PowerDegree).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify({'success': True, 'id': power_id})
 
 @powers.route('/power/environment/create', methods=['POST'])
 def power_post_environment():
@@ -2954,383 +2386,6 @@ def delete_power_mod(power_id):
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify(body)
 
-@powers.route('/power/move/create', methods=['POST'])
-def power_post_move():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = move_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	rank = request.get_json()['rank']
-	math = request.get_json()['math']
-	mod = request.get_json()['mod']
-	per_rank = request.get_json()['per_rank']
-	flight = request.get_json()['flight']
-	aquatic = request.get_json()['aquatic']
-	ground = request.get_json()['ground']
-	condition = request.get_json()['condition']
-	direction = request.get_json()['direction']
-	distance_type = request.get_json()['distance_type']
-	distance_value = request.get_json()['distance_value']
-	distance_math_value = request.get_json()['distance_math_value']
-	distance_math = request.get_json()['distance_math']
-	distance_math_value2 = request.get_json()['distance_math_value2']
-	distance_mod = request.get_json()['distance_mod']
-	dc = request.get_json()['dc']
-	others = request.get_json()['others']
-	continuous = request.get_json()['continuous']
-	subtle = request.get_json()['subtle']
-	concentration = request.get_json()['concentration']
-	obstacles = request.get_json()['obstacles']
-	objects = request.get_json()['objects']
-	permeate = request.get_json()['permeate']
-	special = request.get_json()['special']
-	prone = request.get_json()['prone']
-	check_type = request.get_json()['check_type']
-	materials = request.get_json()['materials']
-	concealment = request.get_json()['concealment']
-	extended = request.get_json()['extended']
-	mass = request.get_json()['mass']
-	mass_value = request.get_json()['mass_value']
-	extended_actions = request.get_json()['extended_actions']
-	acquatic_type = request.get_json()['acquatic_type']
-	concealment_sense = request.get_json()['concealment_sense']
-	concealment_trait_type = request.get_json()['concealment_trait_type']
-	concealment_trait = request.get_json()['concealment_trait']
-	permeate_type = request.get_json()['permeate_type']
-	permeate_speed = request.get_json()['permeate_speed']
-	permeate_cover = request.get_json()['permeate_cover']
-	special_type = request.get_json()['special_type']
-	teleport_type = request.get_json()['teleport_type']
-	teleport_change = request.get_json()['teleport_change']
-	teleport_portal = request.get_json()['teleport_portal']
-	teleport_obstacles = request.get_json()['teleport_obstacles']
-	dimension_type = request.get_json()['dimension_type']
-	dimension_mass_rank = request.get_json()['dimension_mass_rank']
-	dimension_descriptor = request.get_json()['dimension_descriptor']
-	special_space = request.get_json()['special_space']
-	special_time = request.get_json()['special_time']
-	special_time_carry = request.get_json()['special_time_carry']
-	ground_type = request.get_json()['ground_type']
-	ground_permanence = request.get_json()['ground_permanence']
-	ground_time = request.get_json()['ground_time']
-	ground_units = request.get_json()['ground_units']
-	ground_ranged = request.get_json()['ground_ranged']
-	subtle_trait_type = request.get_json()['subtle_trait_type']
-	subtle_trait = request.get_json()['subtle_trait']
-	subtle_mod = request.get_json()['subtle_mod']
-	flight_resist = request.get_json()['flight_resist']
-	flight_equip = request.get_json()['flight_equip']
-	flight_conditions = request.get_json()['flight_conditions']
-	objects_check = request.get_json()['objects_check']
-	objects_attack = request.get_json()['objects_attack']
-	objects_skill_type = request.get_json()['objects_skill_type']
-	objects_skill = request.get_json()['objects_skill']
-	objects_direction = request.get_json()['objects_direction']
-	objects_damage = request.get_json()['objects_damage']
-	damage_type = request.get_json()['damage_type']
-	check_trait_type = request.get_json()['check_trait_type']
-	check_trait = request.get_json()['check_trait']
-	check_free = request.get_json()['check_free']
-	ranks = request.get_json()['ranks']
-	cost = request.get_json()['cost']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	math = db_integer(Math, math)
-	condition = db_integer(Condition, condition)
-	distance_math = db_integer(Math, distance_math)
-	concealment_sense = db_integer(Sense, concealment_sense)
-	ground_type = db_integer(Ground, ground_type)
-	ground_units = db_integer(Unit, ground_units)
-	objects_check = db_integer(Check, objects_check)
-	objects_attack = db_integer(ConflictAction, objects_attack)
-	damage_type = db_integer(Ability, damage_type)
-
-	rank = integer(rank)
-	mod = integer(mod)
-	distance_value = integer(distance_value)
-	distance_math_value = integer(distance_math_value)
-	distance_math_value2 = integer(distance_math_value2)
-	distance_mod = integer(distance_mod)
-	dc = integer(dc)
-	mass_value = integer(mass_value)
-	extended_actions = integer(extended_actions)
-	concealment_trait = integer(concealment_trait)
-	permeate_speed = integer(permeate_speed)
-	dimension_mass_rank = integer(dimension_mass_rank)
-	dimension_descriptor = integer(dimension_descriptor)
-	special_time_carry = integer(special_time_carry)
-	ground_time = integer(ground_time)
-	subtle_trait = integer(subtle_trait)
-	subtle_mod = integer(subtle_mod)
-	objects_skill = integer(objects_skill)
-	check_trait = integer(check_trait)
-	ranks = integer(ranks)
-	cost = integer(cost)
-
-	try:
-		entry = PowerMove(power_id = power_id,
-							extra_id = extra_id,
-							rank = rank,
-							math = math,
-							mod = mod,
-							per_rank = per_rank,
-							flight = flight,
-							aquatic = aquatic,
-							ground = ground,
-							condition = condition,
-							direction = direction,
-							distance_type = distance_type,
-							distance_value = distance_value,
-							distance_math_value = distance_math_value,
-							distance_math = distance_math,
-							distance_math_value2 = distance_math_value2,
-							distance_mod = distance_mod,
-							dc = dc,
-							others = others,
-							continuous = continuous,
-							subtle = subtle,
-							concentration = concentration,
-							obstacles = obstacles,
-							objects = objects,
-							permeate = permeate,
-							special = special,
-							prone = prone,
-							check_type = check_type,
-							materials = materials,
-							concealment = concealment,
-							extended = extended,
-							mass = mass,
-							mass_value = mass_value,
-							extended_actions = extended_actions,
-							acquatic_type = acquatic_type,
-							concealment_sense = concealment_sense,
-							concealment_trait_type = concealment_trait_type,
-							concealment_trait = concealment_trait,
-							permeate_type = permeate_type,
-							permeate_speed = permeate_speed,
-							permeate_cover = permeate_cover,
-							special_type = special_type,
-							teleport_type = teleport_type,
-							teleport_change = teleport_change,
-							teleport_portal = teleport_portal,
-							teleport_obstacles = teleport_obstacles,
-							dimension_type = dimension_type,
-							dimension_mass_rank = dimension_mass_rank,
-							dimension_descriptor = dimension_descriptor,
-							special_space = special_space,
-							special_time = special_time,
-							special_time_carry = special_time_carry,
-							ground_type = ground_type,
-							ground_permanence = ground_permanence,
-							ground_time = ground_time,
-							ground_units = ground_units,
-							ground_ranged = ground_ranged,
-							subtle_trait_type = subtle_trait_type,
-							subtle_trait = subtle_trait,
-							subtle_mod = subtle_mod,
-							flight_resist = flight_resist,
-							flight_equip = flight_equip,
-							flight_conditions = flight_conditions,
-							objects_check = objects_check,
-							objects_attack = objects_attack,
-							objects_skill_type = objects_skill_type,
-							objects_skill = objects_skill,
-							objects_direction = objects_direction,
-							objects_damage = objects_damage,
-							damage_type = damage_type,
-							check_trait_type = check_trait_type,
-							check_trait = check_trait,
-							check_free = check_free,
-							ranks = ranks,
-							cost = cost)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'move'
-		spot = "move-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = move_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-
-	return jsonify(body)
-
-
-@powers.route('/power/move/delete/<power_id>', methods=['DELETE'])
-def delete_power_move(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerMove).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
-@powers.route('/power/opposed/create', methods=['POST'])
-def power_post_opposed():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = opposed_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	trait_type = request.get_json()['trait_type']
-	trait = request.get_json()['trait']
-	mod = request.get_json()['mod']
-	opponent_trait_type = request.get_json()['opponent_trait_type']
-	opponent_trait = request.get_json()['opponent_trait']
-	opponent_mod = request.get_json()['opponent_mod']
-	player_check = request.get_json()['player_check']
-	opponent_check = request.get_json()['opponent_check']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	font = request.get_json()['font']
-
-	power_id = integer(power_id)
-	extra_id = db_integer(Extra, extra_id)
-	player_check = db_integer(Check, player_check)
-	opponent_check = db_integer(Check, opponent_check)
-
-	trait = integer(trait)
-	mod = integer(mod)
-	opponent_trait = integer(opponent_trait)
-	opponent_mod = integer(opponent_mod)
-
-	try:
-		entry = PowerOpposed(power_id = power_id,
-								extra_id = extra_id,
-								trait_type = trait_type,
-								trait = trait,
-								mod = mod,
-								opponent_trait_type = opponent_trait_type,
-								opponent_trait = opponent_trait,
-								opponent_mod = opponent_mod,
-								player_check = player_check,
-								opponent_check = opponent_check)
-
-		db.session.add(entry)
-		db.session.commit()
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'opposed'
-		spot = "opposed-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = opposed_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
-	return jsonify(body)
-
-
-@powers.route('/power/opposed/delete/<power_id>', methods=['DELETE'])
-def delete_power_opposed(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerOpposed).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
 
@@ -4092,15 +3147,18 @@ def delete_power_sense(power_id):
 		db.session.close()
 		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify(body)
-@powers.route('/power/time/create', methods=['POST'])
-def power_post_time():
+
+
+
+@powers.route('/power/check/create', methods=['POST'])
+def power_post_check():
 
 	body = {}
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
-	errors = time_post_errors(data)
+	errors = power_check_post_errors(data)
 
 	error = errors['error']
 	if error:
@@ -4111,114 +3169,1372 @@ def power_post_time():
 
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
-	time_type = request.get_json()['time_type']
-	value_type = request.get_json()['value_type']
-	value = request.get_json()['value']
-	units = request.get_json()['units']
-	time_value = request.get_json()['time_value']
-	math = request.get_json()['math']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	check_type = request.get_json()['check_type']
+	circumstance = request.get_json()['circumstance']
+	trigger = request.get_json()['trigger']
+	when = request.get_json()['when']
 	trait_type = request.get_json()['trait_type']
 	trait = request.get_json()['trait']
+	conflict = request.get_json()['conflict']
+	conflict_range = request.get_json()['conflict_range']
+	conflict_weapon = request.get_json()['conflict_weapon']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	action_type = request.get_json()['action_type']
+	action = request.get_json()['action']
+	free = request.get_json()['free']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
-	descriptor = request.get_json()['descriptor']
-	check_type = request.get_json()['check_type']
-	recovery = request.get_json()['recovery']
-	recovery_penalty = request.get_json()['recovery_penalty']
-	recovery_time = request.get_json()['recovery_time']
-	recovery_incurable = request.get_json()['recovery_incurable']
-	created = request.get_json()['created']
-	columns = request.get_json()['columns']
-	font = request.get_json()['font']
+	dc_value = request.get_json()['dc_value']
+	time = request.get_json()['time']
+	move = request.get_json()['move']
+	keyword = request.get_json()['keyword']
+	attack = request.get_json()['attack']
+	opposed = request.get_json()['opposed']
+	condition = request.get_json()['condition']
+	condition_target = request.get_json()['condition_target']
+	conditions_target = request.get_json()['conditions_target']
 
-	power_id = integer(power_id)
+	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
-	units = db_integer(Unit, units)
-	math = db_integer(Math, math)
+
+	degree = db_integer(PowerDegreeType, degree)
+	circ = db_integer(PowerCircType, circ)
+	dc = db_integer(PowerDCType, dc)
+	time = db_integer(PowerTimeType, time)
+	move = db_integer(PowerMoveType, move)
+	opposed = db_integer(PowerOpposed, opposed)
+	dc_value = db_integer(PowerDC, dc_value)
+
+	attack = integer(attack)
+
 	check_type = db_integer(Check, check_type)
+	conflict = db_integer(ConflictAction, conflict)
+	conflict_range = db_integer(Ranged, conflict_range)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	condition = db_integer(Condition, condition)
 
-	value = integer(value)
-	time_value = integer(time_value)
 	trait = integer(trait)
-	dc = integer(dc)
-	descriptor = integer(descriptor)
-	recovery_penalty = integer(recovery_penalty)
-	recovery_time = integer(recovery_time)
+	action = integer(action)
 
+	entry = PowerCheck(power_id = power_id,
+						extra_id = extra_id,
+						check_type = check_type,
+						circumstance = circumstance,
+						trigger = trigger,
+						when = when,
+						trait_type = trait_type,
+						trait = trait,
+						conflict = conflict,
+						conflict_range = conflict_range,
+						conflict_weapon = conflict_weapon,
+						condition1 = condition1,
+						condition2 = condition2,
+						action_type = action_type,
+						action = action,
+						free = free,
+						degree = degree,
+						circ = circ,
+						dc = dc,
+						dc_value = dc_value,
+						time = time,
+						move = move,
+						keyword = keyword,
+						attack = attack,
+						opposed = opposed,
+						condition = condition,
+						condition_target = condition_target,
+						conditions_target = conditions_target
+
+
+					)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'check'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+
+	body = power_check_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/check/delete/<id>', methods=['DELETE'])
+def delete_power_check(id):
+	body = {}
+	body['success'] = True
 	try:
-		entry = PowerTime(power_id = power_id,
-							extra_id = extra_id,
-							time_type = time_type,
-							value_type = value_type,
-							value = value,
-							units = units,
-							time_value = time_value,
-							math = math,
-							trait_type = trait_type,
-							trait = trait,
-							dc = dc,
-							descriptor = descriptor,
-							check_type = check_type,
-							recovery = recovery,
-							recovery_penalty = recovery_penalty,
-							recovery_time = recovery_time,
-							recovery_incurable = recovery_incurable)
-
-		db.session.add(entry)
+		db.session.query(PowerCheck).filter_by(id=id).delete()
 		db.session.commit()
-
-
-		body = {}
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-		body['success'] = True
-
-		rows = columns
-		mods = []
-		cells = []
-		table_id = 'time'
-		spot = "time-spot"
-
-		body['table_id'] = table_id
-		body['spot'] = spot
-		body['created'] = created
-		body['title'] = ''
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['circ'] = []
-
-		body = time_post(entry, body, cells)
+		print('\n\n' + str(id) + ' DELETED\n\n')
 	except:
-		error = True
-		error_msgs = []
 		body['success'] = False
-		message = 'There was an error processing the request'
+		message = 'Could not delete thst rule.'
+		error_msgs = []
 		error_msgs.append(message)
 		body['error_msgs'] = error_msgs
 		db.session.rollback()
-
 	finally:
 		db.session.close()
+		return jsonify(body)
+
+@powers.route('/power/circ/create', methods=['POST'])
+def power_post_circ():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	circ_target = request.get_json()['circ_target']
+	mod = request.get_json()['mod']
+	effect = request.get_json()['effect']
+	speed = request.get_json()['speed']
+	target = request.get_json()['target']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	condition_type = request.get_json()['condition_type']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	conditions = request.get_json()['conditions']
+	conditions_effect = request.get_json()['conditions_effect']
+	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
+	keyword = request.get_json()['keyword']
+	cumulative = request.get_json()['cumulative']
+	optional = request.get_json()['optional']
+	surface = request.get_json()['surface']
+	circumstance = request.get_json()['circumstance']
+	lasts = request.get_json()['lasts']
+	title = request.get_json()['title']
+	tools = request.get_json()['tools']
+	materials = request.get_json()['materials']
+	max = request.get_json()['max']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	trait_target = request.get_json()['trait_target']
+	environment = request.get_json()['environment']
+	nature = request.get_json()['nature']
+	check_type = request.get_json()['check_type']
+
+	errors = power_circ_post_errors(data)
+
+	errors = level_reference('power_circ', level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Math, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	environment = db_integer(Environment, environment)
+	nature = db_integer(Nature, nature)
+	check_type = db_integer(Check, check_type)
+
+	lasts = db_integer(PowerTime, lasts)
+
+
+	mod = integer(mod)
+	speed = integer(speed)
+	conditions = integer(conditions)
+	conditions_effect = integer(conditions_effect)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	max = integer(max)
+	trait = integer(trait)
+
+	body = {}
+	body['success'] = True
+	body['created'] = created
+
+	body = link_add(PowerCirc, PowerCircType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
+
+	entry = PowerCirc(power_id = power_id,
+						extra_id = extra_id,
+						circ_target = circ_target,
+						mod = mod,
+						effect = effect,
+						speed = speed,
+						target = target,
+						level_type = level_type,
+						level = level,
+						condition_type = condition_type,
+						condition1 = condition1,
+						condition2 = condition2,
+						conditions = conditions,
+						conditions_effect = conditions_effect,
+						measure_effect = measure_effect,
+						measure_type = measure_type,
+						measure_rank_value = measure_rank_value,
+						measure_rank = measure_rank,
+						unit_value = unit_value,
+						unit_type = unit_type,
+						unit = unit,
+						measure_trait_type = measure_trait_type,
+						measure_trait = measure_trait,
+						measure_trait_math = measure_trait_math,
+						measure_mod = measure_mod,
+						measure_math_rank = measure_math_rank,
+						keyword = keyword,
+						cumulative = cumulative,
+						optional = optional,
+						surface = surface,
+						circumstance = circumstance,
+						lasts = lasts,
+						title = title,
+						tools = tools,
+						materials = materials,
+						max = max,
+						trait_type = trait_type,
+						trait = trait,
+						trait_target = trait_target,
+						environment = environment,
+						nature = nature,
+						check_type = check_type
+					)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'circ'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []	
+	
+	body = power_circ_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/circ/delete/<id>', methods=['DELETE'])
+def delete_power_circ(id):
+	
+	body = delete_link(PowerCirc, PowerCircType, id)
+	return jsonify(body)
+
+@powers.route('/power/dc/create', methods=['POST'])
+def power_post_dc():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	target = request.get_json()['target']
+	dc = request.get_json()['dc']
+	description = request.get_json()['description']
+	value = request.get_json()['value']
+	mod = request.get_json()['mod']
+	math_value = request.get_json()['math_value']
+	math = request.get_json()['math']
+	math_trait_type = request.get_json()['math_trait_type']
+	math_trait = request.get_json()['math_trait']
+	surface = request.get_json()['surface']
+	condition = request.get_json()['condition']
+	levels = request.get_json()['levels']
+	damage = request.get_json()['damage']
+	cover = request.get_json()['cover']
+	complex = request.get_json()['complex']
+	measure = request.get_json()['measure']
+	conceal = request.get_json()['conceal']
+	action_when = request.get_json()['action_when']
+	damage_type = request.get_json()['damage_type']
+	inflict_type = request.get_json()['inflict_type']
+	inflict_flat = request.get_json()['inflict_flat']
+	inflict_trait_type = request.get_json()['inflict_trait_type']
+	inflict_trait = request.get_json()['inflict_trait']
+	inflict_math = request.get_json()['inflict_math']
+	inflict_mod = request.get_json()['inflict_mod']
+	inflict_bonus = request.get_json()['inflict_bonus']
+	damage_mod = request.get_json()['damage_mod']
+	damage_consequence = request.get_json()['damage_consequence']
+	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
+	measure_trait_type_unit = request.get_json()['measure_trait_type_unit']
+	measure_trait_unit = request.get_json()['measure_trait_unit']
+	measure_trait_math_unit = request.get_json()['measure_trait_math_unit']
+	measure_mod_unit = request.get_json()['measure_mod_unit']
+	measure_math_unit = request.get_json()['measure_math_unit']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	condition_turns = request.get_json()['condition_turns']
+	action_no_damage = request.get_json()['action_no_damage']
+	condition_no_damage = request.get_json()['condition_no_damage']
+	keyword = request.get_json()['keyword']
+	complexity = request.get_json()['complexity']
+	tools_check = request.get_json()['tools_check']
+	cover_effect = request.get_json()['cover_effect']
+	cover_type = request.get_json()['cover_type']
+	conceal_effect = request.get_json()['conceal_effect']
+	conceal_type = request.get_json()['conceal_type']
+	tools = request.get_json()['tools']
+	variable_check = request.get_json()['variable_check']
+	variable = request.get_json()['variable']
+	time = request.get_json()['time']
+	title = request.get_json()['title']
+	effect_target = request.get_json()['effect_target']
+	equipment_use = request.get_json()['equipment_use']
+	equipment_type = request.get_json()['equipment_type']
+	equipment = request.get_json()['equipment']
+	equip = request.get_json()['equip']
+
+
+	errors = power_dc_post_errors(data)
+
+	errors = level_reference('power_dc', level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	math = db_integer(Math, math)
+	inflict_math = db_integer(Math, inflict_math)
+	damage_consequence = db_integer(Consequence, damage_consequence)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Math, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	measure_trait_math_unit = db_integer(Math, measure_trait_math_unit)
+	measure_math_unit = db_integer(Unit, measure_math_unit)
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	complexity = db_integer(Complex, complexity)
+	equipment_type = db_integer(EquipType, equipment_type)
+	equipment = db_integer(Equipment, equipment)
+
+	time = db_integer(PowerTime, time)
+	variable = db_integer(PowerCheck, variable)
+
+	value = integer(value)
+	mod = integer(mod)
+	math_value = integer(math_value)
+	math_trait = integer(math_trait)
+	inflict_flat = integer(inflict_flat)
+	inflict_trait = integer(inflict_trait)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	measure_trait_unit = integer(measure_trait_unit)
+	measure_mod_unit = integer(measure_mod_unit)
+
+	cover_type = db_integer(Cover, cover_type)
+	conceal_type = db_integer(Conceal, conceal_type)
+
+
+	body = {}
+	body['success'] = True
+	body['created'] = created
+
+	body = link_add(PowerDC, PowerDCType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
+	entry = PowerDC(power_id = power_id,
+					extra_id = extra_id,
+					target = target,
+					dc = dc,
+					description = description,
+					value = value,
+					mod = mod,
+					math_value = math_value,
+					math = math,
+					math_trait_type = math_trait_type,
+					math_trait = math_trait,
+					surface = surface,
+					condition = condition,
+					levels = levels,
+					damage = damage,
+					cover = cover,
+					complex = complex,
+					measure = measure,
+					conceal = conceal,
+					damage_type = damage_type,
+					inflict_type = inflict_type,
+					inflict_flat = inflict_flat,
+					inflict_trait_type = inflict_trait_type,
+					inflict_trait = inflict_trait,
+					inflict_math = inflict_math,
+					inflict_mod = inflict_mod,
+					inflict_bonus = inflict_bonus,
+					damage_mod = damage_mod,
+					damage_consequence = damage_consequence,
+					measure_effect = measure_effect,
+					measure_type = measure_type,
+					measure_rank_value = measure_rank_value,
+					measure_rank = measure_rank,
+					unit_value = unit_value,
+					unit_type = unit_type,
+					unit = unit,
+					measure_trait_type = measure_trait_type,
+					measure_trait = measure_trait,
+					measure_trait_math = measure_trait_math,
+					measure_mod = measure_mod,
+					measure_math_rank = measure_math_rank,
+					measure_trait_type_unit = measure_trait_type_unit,
+					measure_trait_unit = measure_trait_unit,
+					measure_trait_math_unit = measure_trait_math_unit,
+					measure_mod_unit = measure_mod_unit,
+					measure_math_unit = measure_math_unit,
+					level_type = level_type,
+					level = level,
+					condition1 = condition1,
+					condition2 = condition2,
+					keyword = keyword,
+					action_no_damage = action_no_damage,
+					condition_no_damage = condition_no_damage,
+					complexity = complexity,
+					tools_check = tools_check,
+					cover_effect = cover_effect,
+					cover_type = cover_type,
+					conceal_effect = conceal_effect,
+					conceal_type = conceal_type,
+					tools = tools,
+					variable_check = variable_check,
+					variable = variable,
+					time = time,
+					title = title,
+					effect_target = effect_target,
+					equipment_use = equipment_use,
+					equipment_type = equipment_type,
+					equipment = equipment,
+					equip = equip
+				)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body['id'] = entry.id
+	error = False
+	error_msgs = []
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'dc'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+	
+	body = power_dc_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/dc/delete/<id>', methods=['DELETE'])
+def delete_power_dc(id):
+	
+	body = delete_link(PowerDC, PowerDCType, id)
+	return jsonify(body)
+
+@powers.route('/power/degree/create', methods=['POST'])
+def power_post_degree():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	target = request.get_json()['target']
+	value = request.get_json()['value']
+	type = request.get_json()['type']
+	action = request.get_json()['action']
+	time = request.get_json()['time']
+	recovery = request.get_json()['recovery']
+	damage_type = request.get_json()['damage_type']
+	object = request.get_json()['object']
+	object_effect = request.get_json()['object_effect']
+	inflict_type = request.get_json()['inflict_type']
+	inflict_flat = request.get_json()['inflict_flat']
+	inflict_trait_type = request.get_json()['inflict_trait_type']
+	inflict_trait = request.get_json()['inflict_trait']
+	inflict_math = request.get_json()['inflict_math']
+	inflict_mod = request.get_json()['inflict_mod']
+	inflict_bonus = request.get_json()['inflict_bonus']
+	damage_mod = request.get_json()['damage_mod']
+	damage_consequence = request.get_json()['damage_consequence']
+	consequence_action_type = request.get_json()['consequence_action_type']
+	consequence_action = request.get_json()['consequence_action']
+	consequence_trait_type = request.get_json()['consequence_trait_type']
+	consequence_trait = request.get_json()['consequence_trait']
+	consequence = request.get_json()['consequence']
+	knowledge = request.get_json()['knowledge']
+	knowledge_count = request.get_json()['knowledge_count']
+	knowledge_specificity = request.get_json()['knowledge_specificity']
+	level_type = request.get_json()['level_type']
+	level = request.get_json()['level']
+	level_direction = request.get_json()['level_direction']
+	level_time = request.get_json()['level_time']
+	circumstance = request.get_json()['circumstance']
+	circ_target = request.get_json()['circ_target']
+	measure_effect = request.get_json()['measure_effect']
+	measure_type = request.get_json()['measure_type']
+	measure_rank_value = request.get_json()['measure_rank_value']
+	measure_rank = request.get_json()['measure_rank']
+	unit_value = request.get_json()['unit_value']
+	unit_type = request.get_json()['unit_type']
+	unit = request.get_json()['unit']
+	measure_trait_type = request.get_json()['measure_trait_type']
+	measure_trait = request.get_json()['measure_trait']
+	measure_trait_math = request.get_json()['measure_trait_math']
+	measure_mod = request.get_json()['measure_mod']
+	measure_math_rank = request.get_json()['measure_math_rank']
+	measure_trait_type_unit = request.get_json()['measure_trait_type_unit']
+	measure_trait_unit = request.get_json()['measure_trait_unit']
+	measure_trait_math_unit = request.get_json()['measure_trait_math_unit']
+	measure_mod_unit = request.get_json()['measure_mod_unit']
+	measure_math_unit = request.get_json()['measure_math_unit']
+	condition_type = request.get_json()['condition_type']
+	condition_damage_value = request.get_json()['condition_damage_value']
+	condition_damage = request.get_json()['condition_damage']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	condition_turns = request.get_json()['condition_turns']
+	keyword = request.get_json()['keyword']
+	nullify = request.get_json()['nullify']
+	nullify_type = request.get_json()['nullify_type']
+	cumulative = request.get_json()['cumulative']
+	linked = request.get_json()['linked']
+	check_type = request.get_json()['check_type']
+	opposed = request.get_json()['opposed']
+	variable = request.get_json()['variable']
+	resist_dc = request.get_json()['resist_dc']
+	resist_trait_type = request.get_json()['resist_trait_type']
+	resist_trait = request.get_json()['resist_trait']
+	skill_dc = request.get_json()['skill_dc']
+	skill_trait_type = request.get_json()['skill_trait_type']
+	skill_trait = request.get_json()['skill_trait']
+	routine_trait_type = request.get_json()['routine_trait_type']
+	routine_trait = request.get_json()['routine_trait']
+	routine_mod = request.get_json()['routine_mod']
+	attack = request.get_json()['attack']
+	attack_turns = request.get_json()['attack_turns']
+	compare = request.get_json()['compare']
+	duration = request.get_json()['duration']
+	title = request.get_json()['title']
+	effect_target = request.get_json()['effect_target']
+	value_type = request.get_json()['value_type']
+	description = request.get_json()['description']
+
+	errors = power_degree_post_errors(data)
+
+	errors = level_reference('power_degree', level, errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	action = db_integer(Action, action)
+	inflict_math = db_integer(Math, inflict_math)
+	damage_consequence = db_integer(Consequence, damage_consequence)
+	consequence = db_integer(Consequence, consequence)
+	level_type = db_integer(LevelType, level_type)
+	level = db_integer(Levels, level)
+	measure_rank = db_integer(Rank, measure_rank)
+	unit_type = db_integer(MeasureType, unit_type)
+	unit = db_integer(Unit, unit)
+	measure_trait_math = db_integer(Math, measure_trait_math)
+	measure_math_rank = db_integer(Rank, measure_math_rank)
+	measure_trait_math_unit = db_integer(Math, measure_trait_math_unit)
+	measure_math_unit = db_integer(Unit, measure_math_unit)
+	condition1 = db_integer(Condition, condition1)
+	condition2 = db_integer(Condition, condition2)
+	check_type = db_integer(Check, check_type)
+
+	opposed = db_integer(PowerOpposed, opposed)
+	resist_dc = db_integer(PowerDC, resist_dc)
+	skill_dc = db_integer(PowerDC, skill_dc)
+	compare = db_integer(PowerOpposed, compare)
+	variable = db_integer(PowerCheck, variable)
+	attack_turns = db_integer(PowerTime, attack_turns)
+	condition_turns = db_integer(PowerTime, condition_turns)
+	level_time = db_integer(PowerTime, level_time)
+	linked = db_integer(PowerDegree, linked)
+	circumstance = db_integer(PowerCirc, circumstance)
+
+	resist_trait = integer(resist_trait)
+	skill_trait = integer(skill_trait)
+	routine_trait = integer(routine_trait)
+	routine_mod = integer(routine_mod)
+	attack = integer(attack)
+	attack_turns = integer(attack_turns)
+	duration = integer(duration)
+
+	value = integer(value)
+	time = integer(time)
+	object = integer(object)
+	inflict_flat = integer(inflict_flat)
+	inflict_trait = integer(inflict_trait)
+	inflict_mod = integer(inflict_mod)
+	inflict_bonus = integer(inflict_bonus)
+	damage_mod = integer(damage_mod)
+	consequence_action = integer(consequence_action)
+	consequence_trait = integer(consequence_trait)
+	knowledge_count = integer(knowledge_count)
+	level_direction = integer(level_direction)
+	measure_rank_value = integer(measure_rank_value)
+	unit_value = integer(unit_value)
+	measure_trait = integer(measure_trait)
+	measure_mod = integer(measure_mod)
+	measure_trait_unit = integer(measure_trait_unit)
+	measure_mod_unit = integer(measure_mod_unit)
+	condition_damage_value = integer(condition_damage_value)
+	condition_damage = integer(condition_damage)
+	nullify = integer(nullify)
+	
+	body = {}
+	body['success'] = True
+	body['created'] = created
+
+	body = link_add(PowerDegree, PowerDegreeType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
+	entry = PowerDegree(power_id = power_id,
+						extra_id = extra_id,
+						target = target,
+						value = value,
+						type = type,
+						action = action,
+						time = time,
+						recovery = recovery,
+						damage_type = damage_type,
+						object = object,
+						object_effect = object_effect,
+						inflict_type = inflict_type,
+						inflict_flat = inflict_flat,
+						inflict_trait_type = inflict_trait_type,
+						inflict_trait = inflict_trait,
+						inflict_math = inflict_math,
+						inflict_mod = inflict_mod,
+						inflict_bonus = inflict_bonus,
+						damage_mod = damage_mod,
+						damage_consequence = damage_consequence,
+						consequence_action_type = consequence_action_type,
+						consequence_action = consequence_action,
+						consequence_trait_type = consequence_trait_type,
+						consequence_trait = consequence_trait,
+						consequence = consequence,
+						knowledge = knowledge,
+						knowledge_count = knowledge_count,
+						knowledge_specificity = knowledge_specificity,
+						level_type = level_type,
+						level = level,
+						level_direction = level_direction,
+						level_time = level_time,
+						circumstance = circumstance,
+						circ_target = circ_target,
+						measure_effect = measure_effect,
+						measure_type = measure_type,
+						measure_rank_value = measure_rank_value,
+						measure_rank = measure_rank,
+						unit_value = unit_value,
+						unit_type = unit_type,
+						unit = unit,
+						measure_trait_type = measure_trait_type,
+						measure_trait = measure_trait,
+						measure_trait_math = measure_trait_math,
+						measure_mod = measure_mod,
+						measure_math_rank = measure_math_rank,
+						measure_trait_type_unit = measure_trait_type_unit,
+						measure_trait_unit = measure_trait_unit,
+						measure_trait_math_unit = measure_trait_math_unit,
+						measure_mod_unit = measure_mod_unit,
+						measure_math_unit = measure_math_unit,
+						condition_type = condition_type,
+						condition_damage_value = condition_damage_value,
+						condition_damage = condition_damage,
+						condition1 = condition1,
+						condition2 = condition2,
+						condition_turns = condition_turns,
+						keyword = keyword,
+						nullify = nullify,
+						nullify_type = nullify_type,
+						cumulative = cumulative,
+						linked = linked,
+						check_type = check_type,
+						opposed = opposed,
+						variable = variable,
+						resist_dc = resist_dc,
+						resist_trait_type = resist_trait_type,
+						resist_trait = resist_trait,
+						skill_dc = skill_dc,
+						skill_trait_type = skill_trait_type,
+						skill_trait = skill_trait,
+						routine_trait_type = routine_trait_type,
+						routine_trait = routine_trait,
+						routine_mod = routine_mod,
+						attack = attack,
+						attack_turns = attack_turns,
+						compare = compare,
+						title = title,
+						effect_target = effect_target,
+						value_type = value_type,
+						description = description)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'deg-mod'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+	
+	body = power_degree_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/degree/delete/<id>', methods=['DELETE'])
+def delete_power_degree(id):
+		
+	body = delete_link(PowerDegree, PowerDegreeType, id)
+	return jsonify(body)
+
+@powers.route('/power/move/create', methods=['POST'])
+def power_post_move():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	speed = request.get_json()['speed']
+	speed_rank = request.get_json()['speed_rank']
+	speed_rank_mod = request.get_json()['speed_rank_mod']
+	speed_trait_type = request.get_json()['speed_trait_type']
+	speed_trait = request.get_json()['speed_trait']
+	speed_math1 = request.get_json()['speed_math1']
+	speed_value1 = request.get_json()['speed_value1']
+	speed_math2 = request.get_json()['speed_math2']
+	speed_value2 = request.get_json()['speed_value2']
+	speed_description = request.get_json()['speed_description']
+	distance = request.get_json()['distance']
+	distance_rank = request.get_json()['distance_rank']
+	distance_value = request.get_json()['distance_value']
+	distance_units = request.get_json()['distance_units']
+	distance_rank_trait_type = request.get_json()['distance_rank_trait_type']
+	distance_rank_trait = request.get_json()['distance_rank_trait']
+	distance_rank_math1 = request.get_json()['distance_rank_math1']
+	distance_rank_value1 = request.get_json()['distance_rank_value1']
+	distance_rank_math2 = request.get_json()['distance_rank_math2']
+	distance_rank_value2 = request.get_json()['distance_rank_value2']
+	distance_unit_trait_type = request.get_json()['distance_unit_trait_type']
+	distance_unit_trait = request.get_json()['distance_unit_trait']
+	distance_unit_math1 = request.get_json()['distance_unit_math1']
+	distance_unit_value1 = request.get_json()['distance_unit_value1']
+	distance_unit_math2 = request.get_json()['distance_unit_math2']
+	distance_unit_value2 = request.get_json()['distance_unit_value2']
+	distance_math_units = request.get_json()['distance_math_units']
+	distance_description = request.get_json()['distance_description']
+	direction = request.get_json()['direction']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	time = request.get_json()['time']
+	keyword = request.get_json()['keyword']
+	title = request.get_json()['title']
+
+	errors = power_move_post_errors(data)
+
+	errors = linked_move(PowerCirc, circ, 'Circumstance', errors)
+	errors = linked_move(PowerDC, dc, 'DC', errors)
+	errors = linked_move(PowerDegree, degree, 'Circumstance', errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+	
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	degree = db_integer(PowerDegree, degree)
+	circ = db_integer(PowerCirc, circ)
+	dc = db_integer(PowerDC, dc)
+	time = db_integer(PowerTime, time)
+
+	speed_rank = integer(speed_rank)
+	speed_trait = integer(speed_trait)
+	speed_value1 = integer(speed_value1)
+	speed_value2 = integer(speed_value2)
+	distance_rank = integer(distance_rank)
+	distance_value = integer(distance_value)
+	distance_rank_trait = integer(distance_unit_trait)
+	distance_rank_value1 = integer(distance_rank_value1)
+	distance_rank_value2 = integer(distance_rank_value2)
+	distance_unit_trait = integer(distance_unit_trait)
+	distance_unit_value1 = integer(distance_unit_value1)
+	distance_unit_value2 = integer(distance_unit_value2)
+	speed_rank_mod = integer(speed_rank_mod)
+
+	speed_math1 = db_integer(Math, speed_math1)
+	speed_math2 = db_integer(Math, speed_math2)
+	distance_units = db_integer(Unit, distance_units)
+	distance_rank_math1 = db_integer(Math, distance_rank_math1)
+	distance_rank_math2 = db_integer(Math, distance_rank_math2)
+	distance_unit_math1 = db_integer(Math, distance_unit_math1)
+	distance_unit_math2 = db_integer(Math, distance_unit_math2)
+	distance_math_units = db_integer(Unit, distance_math_units)
+
+	body = {}
+	body['success'] = True
+	body['created'] = created
+
+	body = link_add(PowerMove, PowerMoveType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+	
+	entry = PowerMove(power_id = power_id,
+						extra_id = extra_id,
+						speed = speed,
+						speed_rank = speed_rank,
+						speed_rank_mod = speed_rank_mod,
+						speed_trait_type = speed_trait_type,
+						speed_trait = speed_trait,
+						speed_math1 = speed_math1,
+						speed_value1 = speed_value1,
+						speed_math2 = speed_math2,
+						speed_value2 = speed_value2,
+						speed_description = speed_description,
+						distance = distance,
+						distance_rank = distance_rank,
+						distance_value = distance_value,
+						distance_units = distance_units,
+						distance_rank_trait_type = distance_rank_trait_type,
+						distance_rank_trait = distance_rank_trait,
+						distance_rank_math1 = distance_rank_math1,
+						distance_rank_value1 = distance_rank_value1,
+						distance_rank_math2 = distance_rank_math2,
+						distance_rank_value2 = distance_rank_value2,
+						distance_unit_trait_type = distance_unit_trait_type,
+						distance_unit_trait = distance_unit_trait,
+						distance_unit_math1 = distance_unit_math1,
+						distance_unit_value1 = distance_unit_value1,
+						distance_unit_math2 = distance_unit_math2,
+						distance_unit_value2 = distance_unit_value2,
+						distance_math_units = distance_math_units,
+						distance_description = distance_description,
+						direction = direction,
+						degree = degree,
+						dc = dc,
+						circ = circ,
+						title = title,
+						keyword = keyword, 
+						time = time)			
+
+
+	db.session.add(entry)
+
+	db.session.commit()
+
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'move'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+	
+	body = power_move_post(entry, body, cells)
+	
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/move/delete/<id>', methods=['DELETE'])
+def delete_power_move(id):
+		
+	body = delete_link(PowerMove, PowerMoveType, id)
 	return jsonify(body)
 
 
-@powers.route('/power/time/delete/<power_id>', methods=['DELETE'])
-def delete_power_time(power_id):
+@powers.route('/power/opposed/create', methods=['POST'])
+def power_post_opposed():
+
 	body = {}
 	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerTime).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = power_opposed_post_errors(data)
+
+	error = errors['error']
+	if error:
 		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	attached = request.get_json()['attached']
+	frequency = request.get_json()['frequency']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	mod = request.get_json()['mod']
+	opponent_trait_type = request.get_json()['opponent_trait_type']
+	opponent_trait = request.get_json()['opponent_trait']
+	opponent_mod = request.get_json()['opponent_mod']
+	player_secret = request.get_json()['player_secret']
+	player_check = request.get_json()['player_check']
+	opponent_check = request.get_json()['opponent_check']
+	secret = request.get_json()['secret']
+	recurring = request.get_json()['recurring']
+	multiple = request.get_json()['multiple']
+	recurring_value = request.get_json()['recurring_value']
+	description = request.get_json()['description']
+	keyword = request.get_json()['keyword']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	time = request.get_json()['time']
+	degree_check = request.get_json()['degree_check']
+	circ_check = request.get_json()['circ_check']
+	dc_check = request.get_json()['dc_check']
+	time_check = request.get_json()['time_check']
+	degree_value = request.get_json()['degree_value']
+	dc_type = request.get_json()['dc_type']
+	dc_player = request.get_json()['dc_player']
+	circ_value = request.get_json()['circ_value']
+	time_type = request.get_json()['time_type']
+	recurring_type = request.get_json()['recurring_type']
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	player_check = db_integer(Check, player_check)
+	opponent_check = db_integer(Check, opponent_check)
+
+	degree = db_integer(PowerDegreeType, degree)
+	circ = db_integer(PowerCircType, circ)
+	dc = db_integer(PowerDC, dc)
+	time = db_integer(PowerTime, dc)
+	recurring_value = db_integer(PowerTime, recurring_value)
+	degree_value = db_integer(PowerDegree, degree_value)
+	dc_type = db_integer(PowerDCType, dc_type)
+	dc_player = db_integer(PowerDC, dc_player)
+	circ_value = db_integer(PowerCirc, circ_value)
+	time_type = db_integer(PowerTimeType, time_type)
+	recurring_type = db_integer(PowerTimeType, recurring_type)
+
+	trait = integer(trait)
+	mod = integer(mod)
+	opponent_trait = integer(opponent_trait)
+	opponent_mod = integer(opponent_mod)
+
+	entry = PowerOpposed(power_id = power_id,
+						extra_id = extra_id,
+						attached = attached,
+						frequency = frequency,
+						trait_type = trait_type,
+						trait = trait,
+						mod = mod,
+						opponent_trait_type = opponent_trait_type,
+						opponent_trait = opponent_trait,
+						opponent_mod = opponent_mod,
+						player_secret = player_secret,
+						player_check = player_check,
+						opponent_check = opponent_check,
+						secret = secret,
+						recurring = recurring,
+						multiple = multiple,
+						recurring_value = recurring_value,
+						description = description,
+						keyword = keyword,
+						degree = degree,
+						circ = circ,
+						dc = dc,
+						time = time,
+						degree_check = degree_check,
+						circ_check = circ_check,
+						dc_check = dc_check,
+						time_check = time_check,
+						degree_value = degree_value,
+						dc_type = dc_type,
+						dc_player = dc_player,
+						circ_value = circ_value,
+						time_type = time_type,
+						recurring_type = recurring_type
+					)			
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body = {}
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+	body['success'] = True
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'opposed'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['created'] = created
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+	
+	body = power_opposed_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/opposed/delete/<id>', methods=['DELETE'])
+def delete_power_opposed(id):
+	body = {}
+	body['success'] = True
+	try:
+		db.session.query(PowerOpposed).filter_by(id=id).delete()
+		db.session.commit()
+		print('\n\n' + str(id) + ' DELETED\n\n')
+	except:
+		body['success'] = False
+		message = 'Could not delete thst rule.'
 		error_msgs = []
-		message = 'Could not delete this entry.'
 		error_msgs.append(message)
 		body['error_msgs'] = error_msgs
+		db.session.rollback()
 	finally:
 		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
 		return jsonify(body)
+
+@powers.route('/power/time/create', methods=['POST'])
+def power_post_time():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	type = request.get_json()['type']
+	value_type = request.get_json()['value_type']
+	rank1 = request.get_json()['rank1']
+	rank1_value = request.get_json()['rank1_value']
+	rank_math = request.get_json()['rank_math']
+	rank2 = request.get_json()['rank2']
+	rank2_value = request.get_json()['rank2_value']
+	value = request.get_json()['value']
+	units = request.get_json()['units']
+	trait_type = request.get_json()['trait_type']
+	trait = request.get_json()['trait']
+	math = request.get_json()['math']
+	math_value = request.get_json()['math_value']
+	recovery_penalty = request.get_json()['recovery_penalty']
+	recovery_incurable = request.get_json()['recovery_incurable']
+	degree = request.get_json()['degree']
+	circ = request.get_json()['circ']
+	dc = request.get_json()['dc']
+	turns = request.get_json()['turns']
+	keyword = request.get_json()['keyword']
+	title = request.get_json()['title']
+	circ_type = request.get_json()['circ_type']
+	degree_type = request.get_json()['degree_type']
+	dc_type = request.get_json()['dc_type']
+	instant = preset_convert('instant', value_type)
+	player = preset_convert('player', value_type)
+	gm = preset_convert('gm', value_type)
+	perm = preset_convert('perm', value_type)
+	round = preset_convert('round', value_type)
+	next = preset_convert('next', value_type)
+	maintain = preset_convert('maintain', value_type)
+	scene = preset_convert('scene', value_type)
+	turn = preset_convert('turn', value_type)
+	time = request.get_json()['time']
+	mod = request.get_json()['mod']
+	mod = request.get_json()['mod']
+	recovery_target = request.get_json()['recovery_target']
+
+	errors = power_time_post_errors(data)
+	
+	errors = linked_time(PowerCirc, circ, 'Circumstance', errors)
+	errors = linked_time(PowerDC, dc, 'DC', errors)
+	errors = linked_time(PowerDegree, degree, 'Degree', errors)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = db_integer(Power, power_id)
+	extra_id = db_integer(Extra, extra_id)
+
+	rank1 = db_integer(Rank, rank1)
+	rank_math = db_integer(Math, rank_math)
+	rank2 = db_integer(Rank, rank2)
+	units = db_integer(Unit, units)
+	math = db_integer(Math, math)
+
+	degree = db_integer(PowerDegree, degree)
+	circ = db_integer(PowerCirc, circ)
+	dc = db_integer(PowerDC, dc)
+	circ_type = db_integer(PowerCircType, circ_type)
+	degree_type = db_integer(PowerDegreeType, degree_type)
+	dc_type = db_integer(PowerDCType, dc_type)	
+
+	rank1_value = integer(rank1_value)
+	rank2_value = integer(rank2_value)
+	value = integer(value)
+	trait = integer(trait)
+	math_value = integer(math_value)
+	recovery_penalty = integer(recovery_penalty)
+	time = integer(time)
+	mod = integer(mod)
+
+	turns = integer(turns)
+
+	body = {}
+	body['success'] = True
+	body['created'] = created
+
+	body = link_add(PowerTime, PowerTimeType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	if body['success'] == False:
+		return jsonify(body)
+
+	entry = PowerTime(power_id = power_id,
+						extra_id = extra_id,
+						type = type,
+						value_type = value_type,
+						rank1 = rank1,
+						rank1_value = rank1_value,
+						rank_math = rank_math,
+						rank2 = rank2,
+						rank2_value = rank2_value,
+						value = value,
+						units = units,
+						trait_type = trait_type,
+						trait = trait,
+						math = math,
+						math_value = math_value,
+						recovery_penalty = recovery_penalty,
+						recovery_incurable = recovery_incurable,
+						recovery_target = recovery_target,
+						degree = degree,
+						circ = circ,
+						dc = dc,
+						turns = turns,
+						keyword = keyword,
+						title = title,
+						circ_type = circ_type,
+						degree_type = degree_type,
+						dc_type = dc_type,
+						instant = instant,
+						turn = turn,
+						perm = perm,
+						player = player,
+						gm = gm,
+						round = round,
+						next = next,
+						maintain = maintain,
+						scene = scene,
+						time = time,
+						mod = mod
+					)
+
+	db.session.add(entry)
+	db.session.commit()
+
+	body['id'] = entry.id
+	error = False
+	error_msg = []
+
+	rows = columns	
+	mods = []
+	cells = []
+	table_id = 'time'
+	spot = table_id + '-spot'
+
+	body['table_id'] = table_id
+	body['spot'] = spot
+	body['title'] = ''
+	body['rows'] = rows
+	body['mods'] = []
+	body['font'] = font
+	body['circ'] = []
+	
+	body = power_time_post(entry, body, cells)
+
+	db.session.close()
+
+	return jsonify(body)
+
+@powers.route('/power/time/delete/<id>', methods=['DELETE'])
+def delete_power_time(id):
+		
+	body = delete_link(PowerTime, PowerTimeType, id)
+	return jsonify(body)
