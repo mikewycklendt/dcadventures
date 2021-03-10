@@ -156,3 +156,69 @@ class AdvTimeType(db.Model):
 			'name': self.name,
 			'skill_id': self.skill_id
 		}
+
+
+class PowerCircType(db.Model):
+	__tablename__ = 'power_circ_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+		
+class PowerDCType(db.Model):
+	__tablename__ = 'power_dc_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+		
+class PowerDegreeType(db.Model):
+	__tablename__ = 'power_degree_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+
+class PowerMoveType(db.Model):
+	__tablename__ = 'power_move_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
+
+class PowerTimeType(db.Model):
+	__tablename__ = 'power_time_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'skill_id': self.skill_id
+		}
