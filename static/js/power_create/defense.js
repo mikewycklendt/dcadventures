@@ -37,11 +37,25 @@ function defense_reflect_opposed_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function defense_reflect_opposed_trait() {
+	const filter = select('defense_reflect_opposed_trait_type');
+	const fill = 'defense_reflect_opposed_trait';
+	
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function defense_reflect_resist_trait_type() {
 	const select = 'defense_reflect_resist_trait_type';
 	const fill = 'defense_reflect_resist_trait';
 	
 	id_select(select, fill, trait_select);
+}
+
+function defense_reflect_resist_trait() {
+	const filter = select('defense_reflect_resist_trait_type');
+	const fill = 'defense_reflect_resist_trait';
+	
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function defense_reflect_check() {
@@ -58,6 +72,13 @@ function defense_immunity_trait_type() {
 	const fill = 'defense_immunity_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function defense_immunity_trait() {
+	const filter = select('defense_immunity_trait_type');
+	const fill = 'defense_immunity_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function defense_immunity_type() {

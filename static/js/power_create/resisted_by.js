@@ -14,11 +14,19 @@ function resist_base() {
 
 	base(field, entry);
 }
+
 function resist_type() {
 	const select = 'resist_trait_type';
 	const fill = 'resist_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function resist_trait() {
+	const filter = select('resist_trait_type');
+	const fill = 'resist_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function resist_effect() {

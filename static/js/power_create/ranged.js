@@ -21,6 +21,13 @@ function ranged_check_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function ranged_check_trait() {
+	const filter = select('ranged_check_trait_type');
+	const fill = 'ranged_check_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function ranged_distance_mod_trait_type() {
 	const select = 'ranged_distance_mod_trait_type';
 	const fill = 'ranged_distance_mod_trait';
@@ -28,11 +35,25 @@ function ranged_distance_mod_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function ranged_distance_mod_trait() {
+	const filter = select('ranged_distance_mod_trait_type');
+	const fill = 'ranged_distance_mod_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function ranged_trait_trait_type() {
 	const select = 'ranged_trait_trait_type';
 	const fill = 'ranged_trait_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function ranged_trait_trait() {
+	const filter = select('ranged_trait_trait_type');
+	const fill = 'ranged_trait_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function ranged_dc() {

@@ -66,6 +66,13 @@ function env_visibility_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function env_visibility_trait() {
+	const filter = select('env_visibility_trait_type');
+	const fill = 'env_visibility_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function env_immunity() {
 	const check = 'env_immunity';
 	const div = 'env-immunity'

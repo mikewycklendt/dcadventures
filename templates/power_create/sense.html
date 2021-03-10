@@ -122,7 +122,7 @@
 
 			<div id="sense-height">
 				<div>
-					<select class="select-sml" id="sense_height_trait_type" name="sense_height_trait_type" onchange="sense_height_trait()">
+					<select class="select-sml" id="sense_height_trait_type" name="sense_height_trait_type" onchange="sense_height_trait_type()">
 						{% for t in heightened %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
@@ -131,7 +131,7 @@
 
 				<div id="sense-height-trait">
 
-					<select class="select-sml" id="sense_height_trait" name="sense_height_trait">
+					<select class="select-sml" id="sense_height_trait" name="sense_height_trait" onchange="sense_height_trait()">
 						<option value=""></option>
 					</select>
 
@@ -155,7 +155,7 @@
 
 			<div id="sense-resist">
 				<div>
-					<select class="select-sml" id="sense_resist_trait_type" name="sense_resist_trait_type" onchange="sense_resist_trait()">
+					<select class="select-sml" id="sense_resist_trait_type" name="sense_resist_trait_type" onchange="sense_resist_trait_type()">
 						{% for t in resistant %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
@@ -163,7 +163,7 @@
 				</div>
 
 				<div id="sense-resist-trait">
-					<select class="select-sml" id="sense_resist_trait" name="sense_resist_trait">
+					<select class="select-sml" id="sense_resist_trait" name="sense_resist_trait" onchange="sense_resist_trait()">
 						<option value=""></option>
 					</select>
 				</div>

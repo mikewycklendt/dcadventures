@@ -87,6 +87,13 @@ function partner_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function partner_trait() {
+	const filter = select('partner_trait_type');
+	const fill = 'partner_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function partner() {
 	const field = document.getElementById('partner');
 	const val = field.options[field.selectedIndex].value;
@@ -106,6 +113,13 @@ function routine_trait_type()   {
 	const fill = 'routine_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function routine_trait()   {
+	const filter = select('routine_trait_type');
+	const fill = 'routine_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function routine_checkbox() {

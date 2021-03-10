@@ -70,6 +70,13 @@ function create_move_player() {
 	id_select(select, fill, trait_select);
 }
 
+function create_move_player_trait() {
+	const filter = select('create_move_player');
+	const fill = 'create_move_player_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function create_move_opponent_check() {
 	const check = 'create_move_opponent_check';
 	const div = 'create-move-opp';
@@ -92,11 +99,25 @@ function create_trap_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function create_trap_trait() {
+	const filter = select('create_trap_trait_type');
+	const fill = 'create_trap_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function create_trap_resist_check() {
 	const field = 'create_trap_resist_check';
 	const update = 'create_trap_resist_trait';
 
 	id_select(field, update, trait_select);
+}
+
+function create_trap_resist_trait() {
+	const filter = select('create_trap_resist_check');
+	const update = 'create_trap_resist_trait';
+
+	id_select(update, update, trait_filter, filter);
 }
 
 function create_ranged_type() {
@@ -124,6 +145,13 @@ function create_ranged_trait_type() {
 	id_select(field, update, trait_select);
 }
 
+function create_ranged_trait() {
+	const filter = select('create_ranged_trait_type');
+	const update = 'create_ranged_trait';
+
+	id_select(update, update, trait_filter, filter);
+}
+
 function create_ranged_damage_type() {
 	const field = document.getElementById('create_ranged_damage_type');
 	const value = field.options[field.selectedIndex].value;
@@ -141,6 +169,13 @@ function create_weapon_trait_type() {
 	const update = 'create_weapon_trait';
 
 	id_select(field, update, trait_select);
+}
+
+function create_weapon_trait() {
+	const filter = select('create_weapon_trait_type');
+	const update = 'create_weapon_trait';
+
+	id_select(update, update, trait_filter, filter);
 }
 
 function create_weapon_damage_type() {

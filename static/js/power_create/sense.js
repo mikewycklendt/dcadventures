@@ -43,18 +43,32 @@ function sense_type() {
 	select_opacity(select, options);
 }
 
-function sense_height_trait() {
+function sense_height_trait_type() {
 	const select = 'sense_height_trait_type';
 	const fill = 'sense_height_trait';
 
 	id_select(select, fill, trait_select);
 }
 
-function sense_resist_trait() {
+function sense_height_trait() {
+	const filter = select('sense_height_trait_type');
+	const fill = 'sense_height_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
+function sense_resist_trait_type() {
 	const select = 'sense_resist_trait_type';
 	const fill = 'sense_resist_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function sense_resist_trait() {
+	const filter = select('sense_resist_trait_type');
+	const fill = 'sense_resist_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function sense_power_req() {

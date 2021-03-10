@@ -22,6 +22,13 @@ function resistance_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function resistance_trait() {
+	const filter = select('resistance_trait_type');
+	const fill = 'resistance_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function resistance_check_type() {
 	const field = 'resistance_resist_check_type';
 	const options = [{'val': 'descriptor', 'div': 'resistance-descriptor'},
@@ -35,6 +42,13 @@ function resistance_check_trait_type() {
 	const fill = 'resistance_check_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function resistance_check_trait() {
+	const filter = select('resistance_check_trait_type');
+	const fill = 'resistance_check_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function resistance_requires_check() {

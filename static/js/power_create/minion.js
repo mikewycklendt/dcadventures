@@ -59,6 +59,13 @@ function minion_attitude_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function minion_attitude_trait() {
+	const filter = select('minion_attitude_trait_type');
+	const fill = 'minion_attitude_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let minion_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

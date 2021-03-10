@@ -38,6 +38,13 @@ function mod_limited_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function mod_limited_trait() {
+	const filter = select('mod_limited_trait_type');
+	const fill = 'mod_limited_trait'
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function mod_limited_type() {
 	const options = [{'val': 'trait', 'div': 'mod-limited-trait'},
 					{'val': 'other', 'div': 'mod-limited-description'},
@@ -116,6 +123,13 @@ function mod_reflect_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function mod_reflect_trait() {
+	const filter = select('mod_reflect_trait_type');
+	const fill = 'mod_reflect_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function mod_subtle() {
 	const check = 'mod_subtle';
 	const div = 'mod-subtle';
@@ -138,11 +152,25 @@ function mod_subtle_null_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function mod_subtle_null_trait() {
+	const filter = select('mod_subtle_null_trait_type');
+	const fill = 'mod_subtle_null_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 function mod_subtle_opponent_trait_type() {
 	const select = 'mod_subtle_opponent_trait_type';
 	const fill = 'mod_subtle_opponent_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function mod_subtle_opponent_trait() {
+	const filter = select('mod_subtle_opponent_trait_type');
+	const fill = 'mod_subtle_opponent_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function mod_others() {
@@ -181,6 +209,13 @@ function mod_ranks_trait_type() {
 	const fill = 'mod_ranks_trait';
 
 	id_select(select, fill, trait_select);
+}
+
+function mod_ranks_trait() {
+	const filter = select('mod_ranks_trait_type');
+	const fill = 'mod_ranks_trait';
+
+	id_select(fill, fill, trait_filter, filter);
 }
 
 function mod_points_type() {

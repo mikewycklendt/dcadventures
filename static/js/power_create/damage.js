@@ -21,6 +21,13 @@ function dam_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function dam_trait() {
+	const filter = select('dam_trait_type');
+	const fill = 'dam_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
 let damage_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
