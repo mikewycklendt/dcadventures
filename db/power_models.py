@@ -1670,7 +1670,11 @@ class PowerRanged(db.Model):
 	distance_mod_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	distance_mod_trait_type = db.Column(db.String())
 	distance_mod_trait = db.Column(db.Integer)
-	
+	dc = db.Column(db.Integer, db.ForeignKey('power_dc.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
+	degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
+	damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
+
 	def format(self):
 		return {
 			'id': self.id,
@@ -1707,6 +1711,9 @@ class PowerRanged(db.Model):
 			'distance_mod_trait_type': self.distance_mod_trait_type,
 			'distance_mod_trait': self.distance_mod_trait,
 			'dc': self.dc,
+			'circ': self.circ,
+			'degree': self.degree,
+			'damage': self.damage
 		}
 
 class PowerResist(db.Model):
