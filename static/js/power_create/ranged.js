@@ -133,8 +133,9 @@ function ranged_submit() {
 	const dc_trait_type = select("ranged_dc_trait_type");
 	const dc_trait = select("ranged_dc_trait");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'ranged-err';
 	const err_line = 'ranged-err-line';
 

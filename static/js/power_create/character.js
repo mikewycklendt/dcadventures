@@ -245,8 +245,9 @@ function char_submit() {
 	const cost = select("char_cost");
 	const ranks = select("char_ranks");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'char-err';
 	const err_line = 'char-err-line';
 

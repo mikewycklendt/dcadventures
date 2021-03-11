@@ -1,0 +1,361 @@
+<div class="skill-header" id="move-header">
+
+	<div class="skill-title" id="move-title">
+		<input type="checkbox" id="move_check" class="regular-checkbox big-checkbox" onclick="move_check()"> Movement Effect:
+	</div>
+	
+	<div class="skill-base" id="move-base">
+		<div>
+			<select class="select-entry" id="move_direction" name="move_direction">
+				{% for d in direction %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<input type="text" id="move_title" name="move_title" placeholder="Title">
+		</div>
+	</div>
+
+</div>
+
+<div class="skill-entry" id="move-entry">
+
+	<div id="move-row1">
+		<div>
+			<select class="select-sml" id="move_speed" name="move_speed" onchange="move_speed()">
+				{% for s in speed %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="move-speed-rank">
+				<div>
+					<select class="select-sml" id="move_speed_rank" name="move_speed_rank">
+						<option value="">Speed Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					= Speed Rank
+				</div>
+			</div>	
+			
+			
+			<div id="move-speed-rank-mod">
+				<div>
+					<select class="select-sml" id="move_speed_rank_mod" name="move_speed_rank_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% 	endfor %}
+						{% for i in positives %}
+							<option value={{i}}>+{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>	
+
+			<div id="move-speed-mod">
+				<div>
+					<select class="select-sml" id="move_speed_trait_type" name="move_speed_trait_type" onchange="move_speed_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_speed_trait" name="move_speed_trait" onchange="move_speed_trait()">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_speed_math1" id="move_speed_math1">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_speed_value1" id="move_speed_value1">
+						<option value="">Value</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" name="move_speed_math2" id="move_speed_math2">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_speed_value2" id="move_speed_value2">
+						<option value="">Value</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="move-speed-description">
+		<div>
+			Description:
+		</div>
+
+		<div>
+			<input type="text" id="move_speed_description" name="move_speed_description">
+		</div>
+	</div>
+	
+	<div id="move-row2">
+		<div>
+			<select class="select-sml" id="move_distance" name="move_distance" onchange="move_distance()">
+				{% for d in distance %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="move-distance-rank">
+				<div>
+					<select class="select-sml" id="move_distance_rank" name="move_distance_rank">
+						<option value="">Distance Rank</option>
+						{% for i in poaitives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					= Distance Rank
+				</div>
+			</div>
+			
+			<div id="move-distance-unit">
+
+				<div>
+					<input type="text" id="move_distance_value" name="move_distance_value" placeholder="Distance">
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_units" name="move_distance_units">
+						<option value="">Units</option>
+						{% for d in distances %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			
+			<div id="move-distance-rank-math">
+				<div>
+					<select class="select-sml" id="move_distance_rank_trait_type" name="move_distance_rank_trait_type" onchange="move_distance_rank_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_rank_trait" name="move_distance_rank_trait" onchange="move_distance_rank_trait()">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_rank_math1" id="move_distance_rank_math1">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_rank_value1" id="move_distance_rank_value1">
+						<option value="">Value</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" name="move_distance_rank_math2" id="move_distance_rank_math2">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_rank_value2" id="move_distance_rank_value2">
+						<option value="">Value</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="move-distance-unit-math">
+				<div>
+					<select class="select-sml" id="move_distance_unit_trait_type" name="move_distance_unit_trait_type" onchange="move_distance_unit_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_distance_unit_trait" name="move_distance_unit_trait" onchange="move_distance_unit_trait()">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_unit_math1" id="move_distance_unit_math1">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_unit_value1" id="move_distance_unit_value1">
+						<option value="">Mod</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" name="move_distance_unit_math2" id="move_distance_unit_math2">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" name="move_distance_unit_value2" id="move_distance_unit_value2">
+						<option value="">Mod</option>
+						<option value=0>0</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="move_distance_math_units" name="move_distance_math_units">
+						<option value="">Units</option>
+						{% for d in distances %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	
+	<div id="move-distance-description">
+		<div>
+			Description:
+		</div>
+
+		<div>
+			<input type="text" id="move_distance_description" name="move_distance_description">
+		</div>
+	</div>
+	
+	<div id="move-row3">
+	
+		<div>
+			<select class="time-sml" id="move_time" name="opposed_time">
+				<option value="">Time Movement Takes</option>
+				<option value="instant">Instant</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				<option value="">Use Time Effect form to put options here</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-sml" id="move_dc" name="move_dc">
+				<option value="">DC</option>
+				<option value="">Use DC Table form to put options here</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="degree-sml" id="move_degree" name="move_degree">
+				<option value="">Degree</option>
+				<option value="">Use Degree form to put options here</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-sml" id="move_circ" name="move_circ">
+				<option value="">Circumstance</option>
+				<option value="">Use Circumstance form to put options here</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div id="move-button-row">
+		<div>
+		</div>
+		
+		<div>
+			<input type="text" id="move_keyword" name="move_keyword" placeholder="Keyword">
+		</div>
+
+		<div>
+			<div class="btn-entry" id="move_submit" name="move_submit" onclick="move_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="move-spot"></div>
+
+<div class="err" id="move-err"></div>

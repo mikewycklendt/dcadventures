@@ -1,55 +1,40 @@
-<div id="circ-header">
+<div class="skill-header" id="circ-header">
 
-	<div id="circ-title">
+	<div class="skill-title" id="circ-title">
 		<input type="checkbox" id="circ_check" class="regular-checkbox big-checkbox" onclick="circ_check()"> Circumstance Modifier:
 	</div>
-
-	<div id="circ-base">
+	
+	<div class="skill-base" id="circ-base">
 
 		<div>
-			<select class="header-select" id="circ_target" name="circ_target" onchange="circ_base()">
+			<input type="text" id="circ_title" name="circ_title" placeholder="Title">
+		</div>
+
+		<div>
+			<select class="select-entry" id="circ_target" name="circ_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
-		</div>
+ 		</div>
 	
-		<diV>
-			<select class="extra-select" id="circ_extra" name="circ_extra" onchange="circ_base()">
-				<option value=>Base or Extra</option>
-				<option value=0>Base Effect</option>
-			</select>
-		</div>
-
 	</div>
 
 </div>
 
-<div id="circ-entry">
+<div class="skill-entry" id="circ-entry">
 
 	<div id="circ-row1">
 
-		<div id="circ-mod-title">
-			Modifier:
-		</div>
+		<div>Modifier</div>
 
-		<div id="circ-round-title">
-			Lasts:
-		</div>
+		<div>Effect Type</div>
 
-		<div id="circ-des-title">
-			Circumstance:
-		</div>
-
-		<div id="circ-button">
-			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
-				 Add
-			</div>
-		</div>
-
-		<div id="circ-mod">
+		<div>Effect</div>
+		
+		<div>
 			<select class="select-sml" id="circ_mod" name="circ_mod">
-				<option value="">Modifier</option>
+				<option value=""></option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
@@ -59,109 +44,40 @@
 			</select>
 		</div>
 
-		<div id="circ-round">
-			<select class="select-sml" id="circ_rounds" name="circ_rrounds">
-				<option value="0">Once</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="circ-des">
-			<textarea id="circ_des" name="circ_des"></textarea>
-		</div>
-
-		<div id="circ-type">
-			<select class="select-sml" id="circ_type" name="circ_type" onchange="circ_type()">
-				{% for c in circ_type %}
+		<div>
+			<select class="select-sml" id="circ_effect" name="circ_effect" onchange="circ_effect()">
+				{% for c in circ_effect %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-	</div>
-
-	<div id="circ-range">
 		<div>
-			<select class="select-sml" id="circ_range" name="circ_range">
-				<option value="">Range</option>
-				{% for r in range_type %}
-					<option value={{r.id}}>{{r.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
 
-	<div id="circ-check">
-		<div>
-			<select class="select-sml" id="circ_check_who" name="circ_check_who">
-				{% for w in who_check %}
-					<option value="{{w.type}}">{{w.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="circ_check_trait_type" name="circ_check_trait_type" onchange="circ_check_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="circ_check_trait" name="circ_check_trait">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-	</div>
-
-	<div id="circ-row2">
-		<div>
-			Nullify Circumstance:
-		</div>
-
-		<div>
-			<select class="select-sml" id="circ_null_type" name="circ_null_type" onchange="circ_null_type()">
-				{% for c in circ_null %}
-					<option value="{{c.type}}">{{c.name}}</option>
-				{% endfor %}
-			</select> 
-		</div>
-
-		<div>
-			<div id="circ-null-condition">
+			<div id="circ-env">
 				<div>
-					<select class="select-sml" id="circ_null_condition" name="circ_null_condition">
-						<option value="">Condition</option>
-						{% for c in conditions %}
-							<option value="{{c.id}}">{{c.name}}</option>
+					<select class="select-sml" id="circ_environment" name="circ_environment">
+						<option value="">Environment</option>
+						<option value="outdoors">Any Outdoors</option>
+						{% for e in environments %}
+							<option value={{e.id}}>{{e.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
-
-				<div></div>
 			</div>
 
-			<div id="circ-null-descriptor">
-				<div>
-					<select class="descriptor-sml" id="circ_null_descriptor" name="circ_null_descriptor">
-						<option value="">Descriptor</option>
-						<option value="">Use above form to put descriptors here</option>
-						{% for d in descriptor_options %}
-							<option value={{d.id}}>{{d.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
+			<div id="circ-nature">
+				<select class="select-sml" id="circ_nature" name="circ_nature">
+					<option value="">Nature</option>
+					{% for n in nature %}
+						<option value={{n.id}}>{{n.name}}</option>
+					{% endfor %}
+				</select>
+ 			</div>
 
-				<div></div>
-			</div>
-
-			<div id="circ-null-trait">
+			<div id="circ-trait">
 				<div>
-					<select class="select-sml" id="circ_null_trait_type" name="circ_null_trait_type" onchange="circ_null_trait_type()">
+					<select class="select-sml" id="circ_trait_type" name="circ_trait_type" onchange="circ_trait_type()">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
@@ -169,16 +85,376 @@
 				</div>
 
 				<div>
-					<select class="select-sml" id="circ_null_trait" name="circ_null_trait">
+					<select class="select-sml" id="circ_trait" name="circ_trait" onchange="circ_trait()">
 						<option value="">Trait</option>
 					</select>
 				</div>
+
+				<div>
+					<select class="select-sml" id="circ_check_type" name="circ_check_type">
+						<option value="">Check</option>
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_trait_target" name="circ_trait_target">
+						{% for c in circ_trait %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
+
+			<div id="circ-tools">
+				<div>
+					<select class="select-sml" id="circ_tools" name="circ_tools">
+						{% for t in tools %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-materials">
+				<div>
+					<select class="select-sml" id="circ_materials" name="circ_materials">
+						{% for m in materials %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
+			</div>
+
+			<div id="circ-speed">
+				<div>
+					<select class="select-sml" id="circ_speed" name="circ_speed">
+						<option value="">Speed Rank</option>
+						<option value="speed">Full Speed</option>
+						{% for i in negatives %}
+							<option value={{i}}>Speed Rank {{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>Speed Rank +{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-temp">
+				<div>
+					Effect Only Lasts For
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_temp" name="circ_temp">
+						<option value="">Turns</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="circ-target">
+				<div>
+					<select class="select-sml" id="circ_if_target" name="circ_if_target">
+						{% for c in circ_targets %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
+			<div id="circ-level">
+				<div>
+					<select class="level-type-sml" id="circ_level_type" name="circ_level_type" onchange="circ_level_type()">
+						<option value="">Level Type</option>
+						{% for l in level_types %}
+								<option value={{l.id}}>{{l.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_level" name="circ_level">
+						<option value="">Level</option>
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-time-mod">
+				<div>
+					<select class="select-sml" id="circ_time" name="circ_time">
+						<option value="">Time Rank Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="circ-condition">
+				<div>
+					<select class="select-sml" id="circ_condition_type" name="circ_condition_type" onchange="circ_condition_type()">
+						{% for c in condition_type %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+
+					<div id="circ-condition-condition">
+
+						<div class="vcenter">
+							From:
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_condition1" name="circ_condition1">
+								<option value="">Start Condition</option>
+								<option value="current">Current</option>
+								<option value="any">Any</option>
+								{% for c in conditions %}
+									<option value="{{c.id}}">{{c.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						
+						<div class="vcenter">
+							To:
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_condition2" name="circ_condition2">
+								<option value="">End Condition</option>
+								<option value="remove">Remove Start Condition</option>
+								<option value="stable">Stabilized</option>
+								{% for c in conditions %}
+									<option value="{{c.id}}">{{c.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+
+					
+					<div id="circ-condition-damage">
+
+						<div>
+							<select class="select-sml" id="circ_conditions" name="circ_condition1">
+								<option value="">Conditions</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						
+						<div class="vcenter" style="text-align: center;">
+							Conditions
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_conditions_effect" name="circ_condition2">
+								{% for u in updown %}
+									<option value="{{u.id}}">{{u.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div id="circ-measure">				
+				<div>
+					<select class="select-sml" id="circ_measure_effect" name="circ_measure_effect" onchange="circ_measure_effect()">
+						{% for m in measure_effect_circ %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="circ_meaasure_type" name="circ_measure_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+
+					<div id="circ-measure-rank">
+
+						<div>
+							<select class="select-sml" id="circ_measure_rank_value" name="circ_measure_rank_value">
+								{% for i in negatives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_measure_rank" name="circ_measure_rank">
+								{% for m in measure_rank %}
+									<option value={{m.id}}>{{m.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+				
+					<div id="circ-measure-unit">
+						<div>
+							<input type="text" id="circ_unit_value" name="circ_unit_value" placeholder="Value">
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_unit_type" name="circ_unit_type" onchange="circ_unit_type()">
+								<option value="">Unit Type</option>
+								{% for u in unit_type %}
+									<option value={{u.id}}>{{u.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_unit" name="circ_unit">
+								<option value="">Units</option>
+							</select>
+						</div>
+					</div>
+			
+					<div id="circ-measure-skill">
+						<div>
+							<select class="select-sml" id="circ_measure_trait_type" name="circ_measure_trait_type" onchange="circ_measure_trait_type()">
+								{% for t in traits %}
+									<option value="{{t.type}}">{{t.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_measure_trait" name="circ_measure_trait" onchange="circ_measure_trait()">
+								<option value="">Trait</option>
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_measure_trait_math" name="circ_measure_trait_math">
+								<option value="">Math</option>
+								{% for m in maths %}
+									<option value={{m.id}}>{{m.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="circ_measure_mod" name="circ_measure_mod">
+								<option value="">Modifier</option>
+								{% for i in negatives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+									{% endfor %}
+							</select>
+						</div>
+						
+				<div>
+					<select class="select-sml" id="circ_measure_math_rank" name="circ_measure_math_rank">
+						<option value="">Rank</option>
+						{% for m in measure_rank %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
+	<div id="circ-row2">
+
+		<div style="display: none;">
+			<select class="lasts-sml" id="circ_lasts" name="circ_lasts">
+				<option value="">Time Circumstance Lasts</option>
+				<option value="perm">Permanent</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="next">Next Round</option>
+				<option value="scene">Scene</option>
+				<option value="">Use Time Effect form to put options here</option>
+			</select>
+		</div>
+
+		<div id="circ-row2-checks">
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox" onclick="circ_cumulative()"> Cumulative
+				</div>
+			</div>
+
+			<div class="hidden" id="circ-max">
+				<select class="select-sml" id="circ_max" name="circ_max">
+					 <option value="">Maximum Modifier</option>
+					 {% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					 {% endfor %}
+				</select>
+			</div>
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_optional" class="medium-checkbox med-checkbox"> Optional
+				</div>
+			</div>
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_surface" class="medium-checkbox med-checkbox"> Surface
+				</div>
+			</div>
+
+		</div>
+
+		<div>
+			<input type="text" id="circ_keyword" name="circ_keyword" placeholder="Keyword">
+		</div>
+
+		
+		<div></div>
+
+	</div>
+
+	<div id="circ-button-row">	
+		<div>
+			<input type="text" id="circ_circumstance" name="circ_circumstance" placeholder="Circumstance">
+		</div>
+
+		<div>
+			<div class="btn-entry" id="circ_submit" name="circ_submit" onclick="circ_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
 </div>
 
 <div id="circ-spot"></div>
 
-<div id="circ-err"></div>
+<div class="err" id="circ-err"></div>

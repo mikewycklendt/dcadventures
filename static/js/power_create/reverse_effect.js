@@ -80,8 +80,9 @@ function reverse_submit() {
 	const time_value = text("reverse_time");
 	const time_unit = select("reverse_time_unit");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'reverse-err';
 	const err_line = 'reverse-err-line';
 

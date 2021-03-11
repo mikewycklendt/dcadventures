@@ -97,7 +97,8 @@ function check_submit() {
 	const conditions_target = select("check_conditions_target");
 	
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const errors = 'check-err';
 	const err_line = 'check-err-line';

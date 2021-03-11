@@ -262,7 +262,8 @@ function move_submit() {
 	const created = move_grid.titles;
 	const font = move_grid.font;
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const extra_id = select("move_extra");
 	const speed = select("move_speed");

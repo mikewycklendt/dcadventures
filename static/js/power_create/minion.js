@@ -98,8 +98,9 @@ function minions_submit() {
 	const multiple_value = select("mod_minion_multiple_value");
 	const horde = check("mod_minion_horde");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'minion-err';
 	const err_line = 'minion-err-line';
 

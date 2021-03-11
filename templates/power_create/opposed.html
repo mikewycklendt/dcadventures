@@ -1,14 +1,25 @@
 <div id="opposed-header">
 
 	<div id="opposed-title">
-		<input type="checkbox" id="opposed_check" class="regular-checkbox big-checkbox" onclick="opposed_check()"> Opposed Check:
+		<input type="checkbox" id="opposed_check" class="regular-checkbox big-checkbox" onclick="opposed_check()"> Opponent Check:
 	</div>
 	
 	<div id="opposed-base">
-		<select class="extra-select" id="opposed_extra" name="opposed_extra" onchange="opposed_base()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+		<div>
+			<select class="select-entry" id="opposed_attached" name="opposed_attached">
+				{% for a in attached %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="opposed_frequency" name="opposed_frequency">
+				{% for f in frequency %}
+					<option value="{{f.type}}">{{f.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 </div>
@@ -41,11 +52,12 @@
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
+				<option value="choice">Players Chosen DC</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="select-sml" id="opposed_trait" name="opposed_trait">
+			<select class="select-sml" id="opposed_trait" name="opposed_trait" onchange="opposed_trait()">
 				<option value="">Trait</option>
 			</select>
 		</div>
@@ -71,7 +83,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="opposed_opponent_trait" name="opposed_opponent_trait">
+			<select class="select-sml" id="opposed_opponent_trait" name="opposed_opponent_trait" onchange="opposed_opponent_trait()">
 				<option value="">Trait</option>
 			</select>
 		</div>
@@ -90,38 +102,223 @@
 	</div>
 
 	<div id="opposed-row3">
-		<div></div>
+
+		<div>
+			<div class="check-div" style="width: 85%;">
+				<input type="checkbox" id="opposed_secret_player" class="medium-checkbox med-checkbox" > Secret
+			</div>
+		</div>
 
 		<div>
 			<select class="select-sml" id="opposed_player_check" name="opposed_player_check">
-				<option value="">Check Type</option>
+				<option value="">Player Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="select-sml" id="opposed_opponent_check" name="opposed_check">
-				<option value="">Check Type</option>
+				<option value="">Opponent Check Type</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		
+		<div>
+			<div class="check-div" style="width: 89%;">
+				<input type="checkbox" id="opposed_secret" class="medium-checkbox med-checkbox" > Secret
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div" style="width: 85%;">
+				<input type="checkbox" id="opposed_recurring" class="medium-checkbox med-checkbox" onclick="opposed_recurring()"> Recurring
+			</div>
+		</div>
+		
+	</div>
+
+	<div id="opposed-row4">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="opposed_degree_check" class="medium-checkbox med-checkbox" onclick="opposed_degree_check()"> Degree
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="opposed_circ_check" class="medium-checkbox med-checkbox" onclick="opposed_circ_check()"> Circumstance
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="opposed_dc_check" class="medium-checkbox med-checkbox" onclick="opposed_dc_check()"> Skill/Resistence DC
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="opposed_time_check" class="medium-checkbox med-checkbox" onclick="opposed_time_check()"> Time Effect
+			</div>
+		</div>
+	</div>
+
+	<div id="opposed-dc">
+
+		<div class="vcenter" style="justify-content: left;">
+			DC:
+		</div>
+
+		<div>
+			<select class="dc-title-sml" id="opposed_dc_type" name="opposed_dc_type">
+				<option value="">DC by Group</option>
+				<option value="">Use Check Table form to put options here</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-player-sml" id="opposed_dc_player" name="opposed_dc_player">
+				<option value="">Player DC</option>
+				<option value="">Use Check Table form to put options here</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
+				<option value="">Opponent DC</option>
+				<option value="">Use Check Table form to put options here</option>
+			</select>
+		</div>
+
+	</div>
+	<div id="opposed-time">
+
+		<div class="vcenter" style="justify-content: left;">
+			Time Effect:
+		</div>
+
+		<div>
+			<div>
+				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
+					<option value="">Time Effect By Group</option>
+					<option value="">Use Time Effect form to put options here</option>
+				</select>
+			</div>
+	
+		</div>
+		
+		<div>
+			<select class="time-sml" id="opposed_time" name="opposed_time">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect form to put options here</option>
+			</select>
+		</div>
+	</div>
+	
+	<div id="opposed-circ">
+
+		<div class="vcenter" style="justify-content: left;">
+			Circumstance Modifier:
+		</div>
+	
+		<div>
+			<select class="circ-title-sml" id="opposed_circ" name="opposed_circ">
+				<option value="">Circumstance By Group</option>
+				<option value="">Use Circumstance form to put options here</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="circ-sml" id="opposed_circ_value" name="opposed_circ_value">
+				<option value="">Circumstance Modifier
+				</option>
+				<option value="">Use Circumstance form to put options here</option>
+			</select>
+		</div>
+		
+	</div>
+	
+	<div id="opposed-degree">
+
+		<div class="vcenter" style="justify-content: left;">
+			Degree of Success/Failure:
+		</div>
+
+		<div>
+			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
+				<option value="">Degree by Group</option>
+				<option value="">Use Degree form to put options here</option>
+			</select>
+		</div>
+		
+		<div>
+			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
+				<option value="">Degree of Success/Failure</option>
+				<option value="">Use Degree form to put options here</option>
+			</select>
+		</div>
+	</div>
+		
+	<div id="opposed-row5">
+		<div class="vcenter" style="font-size: 88%;">
+			Circumstance
+		</div>
+
+		<div>
+			<input type="text" id="opposed_description" name="opposed_description">
+		</div>
+
+		<div>
+			<input type="text" id="opposed_keyword" name="opposed_keyword" placeholder="Keyword" style="width: 87%;">
 		</div>
 	</div>
 
 	<div id="opposed-button-row">
-		<div></div>
+		<div>
+			<div id="opposed-recurring">
+				<div>
+					<select class="lasts-entry" id="opposed_recurring_value" name="opposed_recurring_value">
+						<option value="">Time Between Checks</option>
+						<option value="turn">One Turn</option>
+						<option value="round">Round</option>
+						<option value="scene">Scene</option>
+						<option value="">Use Time Effect form to put options here</option>
+					</select>
+				</div>
 	
+				<div>
+					<select class="lasts-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
+						<option value="">Between Checks by Group</option>
+						<option value="">Use Time Effect form to put options here</option>
+					</select>
+				</div>	
+			</div>
+		</div>
+
+		<div>		
+			<div id="opposed-multiple" style="display: grid; opacity: 100%;">
+				<select class="select-entry" id="opposed_multiple" name="oppiosed_multiple">
+					{% for o in multiple_opposed %}
+						<option value="{{o.type}}">{{o.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+
 		<div>
 			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">
 				 Add
 			</div>
 		</div>
 	</div>
+
 
 </div>
 

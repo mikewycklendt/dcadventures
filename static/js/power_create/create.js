@@ -276,8 +276,9 @@ function create_submit() {
 	const cost = select("create_cost_per_rank");
 	const ranks = select("create_ranks");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'create-err';
 	const err_line = 'create-err-line';
 

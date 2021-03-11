@@ -201,8 +201,9 @@ function sense_submit() {
 	const cost = select("sense_cost");
 	const power_cost = select("cost");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'sense-err';
 	const err_line = 'sense-err-line';
 

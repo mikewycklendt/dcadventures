@@ -78,8 +78,9 @@ function resist_submit() {
 	const nullify_alternate = select("resist_nullify_alternate");
 	const extra_effort = check("resist_extra_effort");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'resist-err';
 	const err_line = 'resist-err-line';
 

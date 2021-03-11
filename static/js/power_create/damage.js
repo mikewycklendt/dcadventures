@@ -47,8 +47,9 @@ function damage_submit() {
 	const damage_type = select("damage_damage_type");
 	const descriptor = select("damage_descriptor");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'damage-err';
 	const err_line = 'damage-err-line';
 

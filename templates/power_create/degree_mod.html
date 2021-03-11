@@ -1,12 +1,12 @@
 <div id="deg-mod-header">
 
 	<div id="deg-mod-title">
-		<input type="checkbox" id="deg_mod_check" class="regular-checkbox big-checkbox" onclick="deg_mod_check()">  Degree of Success/Failure (Modifier) Table:
+		<input type="checkbox" id="deg_mod_check" class="regular-checkbox big-checkbox" onclick="deg_mod_check()">  Degree of Success/Failure:
 	</div>
 
 	<div id="deg-mod-base-form" >
 		<div>
-			<select class="header-select" id="deg_mod_target" name="deg_mod_target" onchange="deg_mod_base()">
+			<select class="header-select" id="deg_mod_target" name="deg_mod_target" >
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -14,25 +14,46 @@
 		</div>
 
 		<div>
-			<select class="extra-select" id="deg_mod_extra" name="deg_mod_extra" onchange="deg_mod_base()">
-				<option value=>Base or Extra</option>
-				<option value=0>Base Effect</option>
+			<select class="header-select" id="deg_mod_effect_target" name="deg_mod_effect_target">
+				{% for e in effect_target %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
 			</select>
-		</div>
+		</div>	
 	
 	</div>
 
 </div>
 
 <div id="deg-mod-entry" style="display: none;">
+
+<div id="deg-mod-top-row">
+	
+	<div>
+		Degree
+	</div>
+
+	<div>
+		Effect
+	</div>
+
+	<div>
+		Result
+	</div>
+
+</div>
+
+
 <div id="deg-mod-row1">
 
 	<div id="deg-mod-deg">
 		<select class="select-sml" id="deg_value" name="deg_value" >
-			<option value="">Degree</option>
+			<option value=""></option>
 			{% for i in negatives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
+			<option value="fail">Failure</option>
+			<option value="success">Success</option>
 			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
@@ -41,15 +62,175 @@
 
 	<div id="deg-mod-type">
 		<select class="select-sml" id="deg_mod_type" name="deg_mod_type" onchange="deg_mod_type()">
-			<option value="">Result Type</option>
-			{% for type in deg_mod_type %}
-				<option value="{{type.type}}">{{type.name}}</option>
+			<option value="">Effect</option>
+			{% for d in deg_mod_type %}
+				<option value="{{d.type}}">{{d.name}}</option>
 			{% endfor %}
 		</select>
 	</div>
 
 	<div id="deg-mod-effect">
+
+		<div id="deg-mod-action">
+			<div>
+				<select class="select-sml" id="deg_mod_action" name="deg_mod_action">
+					<option value="">Changed Action</option>
+					{% for a in actions %}
+						<option value={{a.id}}>{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div id="deg-mod-time">
+			<div>
+				<select class="select-sml" id="deg_mod_time" name="deg_mod_time">
+					<option value="">Time Rank Modifier</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="deg_mod_time_recovery" class="medium-checkbox med-checkbox" > Applied to Recovery Time
+			</div>
+		</div>
+		</div>
+
+		<div id="deg-mod-damage">
 		
+			<div>
+				<select class="select-sml" id="deg_mod_damage_type" name="deg_mod_damage_type" onchange="deg_mod_damage_type()">
+					{% for d in damage_type %}
+						<option value="{{d.type}}">{{d.name}}</option>
+					{% endfor %}
+				</select>	
+			</div>
+			
+			<div>
+				<div id="deg-mod-damage-object">
+
+					<div>
+						<select class="select-sml" id="deg_mod_damage_object" name="deg_mod_damage_object">
+							<option value="">Degrees</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="vcenter" style="text-align: center;">
+						More
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_damage_object_effect" name="deg_mod_damage_object_effect">
+							{% for r in repair %}
+								<option value="{{r.type}}">{{r.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+				</div>
+				<div id="deg-mod-damage-inflict">
+	
+					<div>
+						<select class="select-sml" id="deg_mod_inflict_type" name="deg_mod_inflict_type" onchange="deg_mod_inflict_type()">
+							{% for i in inflict %}
+								<option value="{{i.type}}">{{i.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<div id="deg-mod-damage-inflict-flat">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_flat" name="deg_mod_inflict_flat">
+									<option value="">Degrees</option>
+									{% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+	
+						<div id="deg-mod-damage-inflict-math">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_trait_type" name="deg_mod_inflict_trait_type" onchange="deg_mod_inflict_trait_type()">
+									{% for t in traits %}
+										<option value="{{t.type}}">{{t.name}}</option>
+									{% endfor %}
+								</select>
+							</div>
+	
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_trait" name="deg_mod_inflict_trait" onchange="deg_mod_inflict_trait()">
+									<option value="">Trait</option>
+								</select>
+							 </div>
+						 
+							 <div>
+								 <select class="select-sml" id="deg_mod_inflict_math" name="deg_mod_inflict_math">
+									 <option value="">Math</option>
+									 {% for m in maths %}
+										<option value={{m.id}}>{{m.name}}</option>
+									 {% endfor %}
+								 </select>
+							 </div>
+	
+							 <div>
+								 <select class="select-sml" id="deg_mod_inflict_mod" name="deg_mod_inflict_mod">
+									 <option value="">Modifier</option>
+									 {% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									 {% endfor %}
+								 </select>
+							 </div>
+	
+						</div>
+					
+						<div id="deg-mod-damage-inflict-bonus">
+							<div>
+								<select class="select-sml" id="deg_mod_inflict_bonus" name="deg_mod_inflict_bonus">
+									<option value="">Bonus</option>
+									{% for i in positives %}
+										<option value={{i}}>{{i}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div id="deg-mod-damage-reduce">
+					<div>
+						<select class="select-sml" id="deg_mod_damage_mod" name="deg_mod_damage_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<select class="select-sml" id="deg_mod_damage_consequence" name="deg_mod_damage_consequence">
+							<option value="">Consequence</option>
+							{% for c in consequences %}
+								<option value={{c.id}}>{{c.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	
+
 		<div id="deg-mod-consequence">
 			<div>
 				<select class="select-sml" id="deg_mod_consequence_action_type" name="deg_mod_consequence_action_type" onchange="deg_mod_consequence_action_type()">
@@ -74,14 +255,16 @@
 			</div>
 
 			<div>
-				<select class="select-sml" id="deg_mod_consequence_trait" name="deg_mod_consequence_trait">
+				<select class="select-sml" id="deg_mod_consequence_trait" name="deg_mod_consequence_trait" onchange="deg_mod_consequence_trait()">
 					<option value="">Trait</option>
 				</select>
 			</div>
 
 			<div>
 				<select class="select-sml" id="deg_mod_consequence" name="deg_mod_consequence">
-					<option value="">Consequence</option>				
+					<option value="">Consequence</option>
+					<option value="any">Any</option>
+					<option value="linked">Linked</option>	
 					{% for c in consequences %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}
@@ -134,9 +317,27 @@
 			</div>
 
 			<div>
-				<select class="levels-sml" id="deg_mod_level" name="deg_mod_level">
+				<select class="select-sml" id="deg_mod_level" name="deg_mod_level">
 					<option value="">Level</option>
-					<option value="">Use Levels form to put level here</option>
+				</select>
+			</div>
+			
+			<div>
+				<select class="select-sml" id="deg_mod_level_direction" name="deg_mod_level_direction">
+					<option value="">One Level</option>
+					{% for u in updown %}
+						<option value={{u.id}}>{{u.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div style="display: none;">
+				<select class="time-sml" id="deg_mod_level_time" name="deg_mod_level_time">
+					<option value="">Time Level Applies</option>
+					<option value="turn">One Turn</option>
+					<option value="round">Round</option>
+					<option value="scene">Scene</option>
+					<option value="">Use Time Effect form to put options here</option>
 				</select>
 			</div>
 		</div>
@@ -144,60 +345,45 @@
 		<div id="deg-mod-circ">
 
 			<div>
-				<select class="select-sml" id="deg_mod_circ_value" name="deg_mod_circ_value">
-					<option value="">Modifier</option>
-					{% for i in negatives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
+				<select class="select-sml circ-sml" id="deg_mod_circumstance" name="deg_mod_circumstance">
+					<option value="">Circumstance</option>
+					<option value="">Use Circumstance Form to Put Options Here</option>
 				</select>
 			</div>
 
 			<div>
-				<select class="select-sml" id="deg_mod_circ_turns" name="deg_mod_circ_turns">
-					<option value="">Turns</option>
-					<option value="round">Round</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="deg_mod_circ_trait_type" name="deg_mod_circ_trait_type" onchange="deg_mod_circ_trait_type()">
-					{% for t in traits %}
+				<select class="select-sml" id="deg_mod_circ_target" name="deg_mod_circ_target">
+					{% for t in targets %}
 						<option value="{{t.type}}">{{t.name}}</option>
 					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="deg_mod_circ_trait" name="deg_mod_circ_trait">
-					<option value="">Trait</option>
 				</select>
 			</div>
 
 		</div>
 
 		<div id="deg-mod-measure" style="display: none;">
-
-			<div id="deg-mod-field">
-				<select class="select-sml" id="deg_mod_measure_type" name="deg_mod_measure_type" onchange="deg_mod_measure_type()">
-					<option value="">Type</option>
-					{% for type in value_type %}
-						<option value="{{type.type}}">{{type.name}}</option>
+				
+			<div>
+				<select class="select-sml" id="deg_mod_measure_effect" name="deg_mod_measure_effect" onchange="deg_mod_measure_effect()">
+					{% for m in measure_effect %}
+						<option value="{{m.type}}">{{m.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
 
 			<div>
-				<div id="deg-mod-measure-math" style="display: none;">
+				<select class="select-sml" id="deg_mod_meaasure_type" name="deg_mod_measure_type">
+					{% for m in measure_type %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div id="deg-mod-measure-rank">
 
 					<div>
-						<select class="select-sml" id="deg_mod_measure_val1" name="deg_mod_measure_val1" >
-							<option value="">Rank</option>
+						<select class="select-sml" id="deg_mod_measure_rank_value" name="deg_mod_measure_rank_value">
 							{% for i in negatives %}
 								<option value={{i}}>{{i}}</option>
 							{% endfor %}
@@ -208,59 +394,129 @@
 					</div>
 
 					<div>
-						<select class="select-sml" id="deg_mod_measure_math" name="deg_mod_measure_math" >
+						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank">
+							{% for m in measure_rank %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				
+				<div id="deg-mod-measure-unit">
+					<div>
+						<input type="text" id="deg_mod_unit_value" name="deg_mod_unit_value" placeholder="Value">
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_unit_type" name="deg_mod_unit_type" onchange="deg_mod_unit_type()">
+							<option value="">Unit Type</option>
+							{% for u in unit_type %}
+								<option value={{u.id}}>{{u.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_unit" name="deg_mod_unit">
+							<option value="">Units</option>
+						</select>
+					</div>
+				</div>
+			
+				<div id="deg-mod-measure-skill">
+					<div>
+						<select class="select-sml" id="deg_mod_measure_trait_type" name="deg_mod_measure_trait_type" onchange="deg_mod_measure_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>			
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_trait" name="deg_mod_measure_trait" onchange="deg_mod_measure_trait()">
+							<option value="">Trait</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_trait_math" name="deg_mod_measure_trait_math">
 							<option value="">Math</option>
 							{% for m in maths %}
 								<option value={{m.id}}>{{m.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_measure_mod" name="deg_mod_measure_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+								{% endfor %}
+						</select>
+					</div>
 					
 					<div>
-						<select class="select-sml" id="deg_mod_measure_trait_type" name="deg_mod_measure_trait_type" onchange="deg_mod_measure_trait_type()">
+						<select class="select-sml" id="deg_mod_measure_math_rank" name="deg_mod_measure_math_rank">
+							<option value="">Rank</option>
+							{% for m in measure_rank %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+				</div>
+
+				<div id="deg-mod-measure-skill-unit">
+					<div>
+						<select class="select-sml" id="deg_mod_measure_trait_type_unit" name="deg_mod_measure_trait_type_unit" onchange="deg_mod_measure_trait_type_unit()">
 							{% for t in traits %}
 								<option value="{{t.type}}">{{t.name}}</option>
 							{% endfor %}
-						</select>
+						</select>			
 					</div>
-
+	
 					<div>
-
-						<select class="select-sml" id="deg_mod_measure_trait" name="deg_mod_measure_trait" >
+						<select class="select-sml" id="deg_mod_measure_trait_unit" name="deg_mod_measure_trait_unit" onchange="deg_mod_measure_trait_unit()">
 							<option value="">Trait</option>
 						</select>
-
 					</div>
-
-				</div>
-
-		
-		
-				<div id="deg-mod-measure-value" style="display: none">
-
+	
 					<div>
-						<select class="select-sml" id="deg_mod_measure_value" name="deg_measure_value" >
-							<option value="">Rank</option>
-							{% for i in positives %}
+						<select class="select-sml" id="deg_mod_measure_trait_math_unit" name="deg_mod_measure_trait_math_unit">
+							<option value="">Math</option>
+							{% for m in maths %}
+								<option value={{m.id}}>{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<select class="select-sml" id="deg_mod_measure_mod_unit" name="deg_mod_measure_mod_unit">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
 								<option value={{i}}>{{i}}</option>
 							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+								{% endfor %}
 						</select>
 					</div>
-
+					
 					<div>
-
-						<select class="select-sml" id="deg_mod_measure_rank" name="deg_mod_measure_rank" >
-							<option value="">Rank Type</option>
-							{% for r in measure_rank %}
-								<option value={{r.id}}>{{r.name}}</option>
+						<select class="select-sml" id="deg_mod_measure_math_unit" name="deg_mod_measure_math_unit">
+							<option value="">Units</option>
+							{% for u in units %}
+								<option value={{u.id}}>{{u.name}}</option>
 							{% endfor %}
-						</select>
-
+						</select> 
 					</div>
-
 				</div>
-			
+
 			</div>
+			
 		</div>
 
 		<div id="deg-mod-condition" style="display: none;">
@@ -278,6 +534,7 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition_damage_value" name="deg_mod_condition_damage_value">
+							<option value="">Conditions</option>
 							{% for i in positives %}
 								<option value={{i}}>{{i}}</option>
 							{% endfor %}
@@ -285,7 +542,7 @@
 					</div>
 
 					<div style="text-align: center;">
-						Condition
+						Conditions
 					</div>
 
 					<div>
@@ -296,8 +553,7 @@
 						</select>
 					</div>
 
-				</div>
-			
+				</div>			
 			
 				<div id="deg-mod-conditions">
 					<div>
@@ -306,7 +562,7 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition1" name="deg_mod_condition1" >
-							<option value="">Condition</option>
+							<option value="">Starting</option>
 							<option value="current">Current</option>
 							{% for c in conditions %}
 								<option value="{{c.id}}">{{c.name}}</option>
@@ -320,18 +576,186 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition2" name="deg_mod_condition2" >
-							<option value="">Condition</option>
+							<option value="">Ending</option>
 							<option value="any">Any</option>
+							<option value="remove">Remove Start Condition</option>
 							<option value="linked_first">Linked Starting</option>
 							<option value="linked_second">Linked Ending</option>
+							<option value="stable">Stabilized</option>
 							{% for c in conditions %}
 								<option value="{{c.id}}">{{c.name}}</option>
 							{% endfor %}
 						</select>
 					</div>
 
-					<div></div>
+					<div style="display: none;">
+						<select class="time-sml" id="deg_mod_condition_turns" name="deg_mod_condition_turns">
+							<option value="">Time Condition Lasts</option>
+							<option value="turn">One Turn</option>
+							<option value="round">Round</option>
+							<option value="scene">Scene</option>
+							<option value="">Use Time Effect form to put options here</option>
+						</select>
+					</div>
 				</div>
+			</div>
+		</div>
+
+		<div id="deg-mod-check">
+
+			<div>
+				<select class="select-sml" id="deg_mod_check_type" name="deg_mod_check_type" onchange="deg_mod_check_type()">
+					<option value="">Check Type</option>
+					<option value=1>Skill Check</option>>
+					<option value="6">Resistance Check</option>
+					<option value=2>Opposed Check</option>
+					<option value=3>Routine Check</option>
+					<option value=5>Attack Check</option>5
+					<option value=7>Comparison Check</option>
+					<option value="x">From Variable Check</option>
+				</select>
+			</div>
+
+			<div>
+
+				<div id="deg-mod-check-opposed">
+					<div>
+						<select class="opposed-sml" id="deg_mod_check_opposed" name="deg_mod_check_opposed">
+							<option value="">Opposed Check</option>
+							<option value="">Use opponent check form to put options here</option>
+						</select>
+					</div>
+				</div>
+				
+				<div id="deg-mod-check-variable">
+					<div>
+						<select class="check-sml" id="deg_mod_check_variable" name="deg_mod_check_variable">
+							<option value="">Variable Check</option	>
+							<option value="">Use Variable check form to put options here</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-resist">
+					<div>
+						<select class="dc-sml" id="deg_mod_check_resist_dc" name="deg_mod_check_skill_dc">
+							<option value="">DC</option>
+							<option value="">Use DC Form to put options here</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_resist_trait_type" name="deg_mod_check_resist_trait_type" onchange="deg_mod_check_resist_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_resist_trait" name="deg_mod_check_resist_trait" onchange="deg_mod_check_resist_trait()">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+				
+				<div id="deg-mod-check-skill">
+					<div>
+						<select class="dc-sml" id="deg_mod_check_skill_dc" name="deg_mod_check_skill_dc">
+							<option value="">DC</option>
+							<option value="">Use DC Form to put options here</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_skill_trait_type" name="deg_mod_check_skill_trait_type" onchange="deg_mod_check_skill_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_skill_trait" name="deg_mod_check_skill_trait" onchange="deg_mod_check_skill_trait()">
+							<option value="">Trait</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-routine">
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_trait_type" name="deg_mod_check_routine_trait_type" onchange="deg_mod_check_routine_trait_type()">
+							{% for t in traits %}
+								<option value="{{t.type}}">{{t.name}}</option>
+							{% endfor %}
+						</select>  
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_trait" name="deg_mod_check_routine_trait" onchange="deg_mod_check_routine_trait()">
+							<option value="">Trait</option>
+						</select>
+					</div>
+
+					<div>
+						<select class="select-sml" id="deg_mod_check_routine_mod" name="deg_mod_check_routine_mod">
+							<option value="">Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+
+				<div id="deg-mod-check-attack">
+					<div>
+						<select class="select-sml" id="deg_mod_check_attack" name="deg_mod_check_attack">
+							<option value="">Attack Bonus Modifier</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select> 
+					</div>
+
+					<div>
+						<select class="time-sml" id="deg_mod_check_attack_turns" name="deg_mod_check_attack_turns">
+							<option value="">Time Bonus Applies</option>
+							<option value="turn">One Turn</option>
+							<option value="round">Round</option>
+							<option value="scene">Scene</option>
+							<option value="">Use Time Effect form to put options here</option>
+						</select> 
+					</div>
+				</div>	
+				
+				<div id="deg-mod-check-compare">
+					<div>
+						<select class="opposed-sml" id="deg_mod_check_compare" name="deg_mod_check_compare">
+							<option value="">>Comparison Check</option>
+							<option value="">Use opponent check form to put options here</option>
+						</select>
+					</div>
+				</div>			
+
+			</div>			
+
+		</div>
+
+		<div id="deg-mod-duration">
+			<div>
+				<select class="select-sml" id="deg_mod_duration" name="deg_mod_duration">
+					<option value="">Effect Lasts for</option>
+					<option value="perm">Permanent</option>
+					<option value="round">Round</option>
+					<option value="scene">Scene</option>
+					<option value=0>Fails</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}} Turns</option>
+					{% endfor %}
+				</select>
 			</div>
 		</div>
 	</div>
@@ -339,18 +763,39 @@
 </div>
 
 <div id="deg-mod-row2">
-
 	<div>
-		<input type="text" id="deg_mod_keyword" name="deg_mod_keyword" placeholder="Keyword">
+		<select class="select-sml" id="deg_mod_value_type" name="deg_mod_value_type">
+			{% for d in degree_type %}
+				<option value="{{d.type}}">{{d.name}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
 	<div>
 		<select class="select-sml" id="deg_mod_nullify" name="deg_mod_nullify" >
-			<option value="">DC to Nullify</option>
+			<option value="">Nullify DC</option>
 			<option value="check">Extra Check</option>
-			{% for i in positives %}
-				<option value={{i}}>{{i}} DC</option>
+			{% for i in negatives %}
+				<option value={{i}}>{{i}}</option>
 			{% endfor %}
+			{% for i in positives %}
+				<option value={{i}}>{{i}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div>
+		<select class="select-sml" id="deg_mod_nullify_type" name="deg_mod_nullify_type">
+			{% for n in nullify %}
+				<option value="{{n.type}}">{{n.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div>
+		<select class="degree-sml" id="deg_mod_linked" name="deg_mod_linked">
+			<option value="">Linked to Degree</option>
+			<option value="">Use Degree form to put options here</option>
 		</select>
 	</div>
 
@@ -360,17 +805,21 @@
 		</div>
 	</div>
 
-	<div>
-		<div class="check-div">
-			<input type="checkbox" id="deg_mod_linked" class="medium-checkbox med-checkbox"> Linked
-		</div>
-	</div>
 
-	<div></div>
 </div>
 
 <div id="deg-mod-button-row">
+
 	<div>
+		<input type="text" id="deg_mod_desc" name="deg_mod_desc" style="width: 92%; height: .8vw;" placeholder="Description">
+	</div>
+	
+	<div>
+		<input type="text" id="deg_mod_title" name="deg_mod_title" placeholder="Title">
+	</div>
+
+	<div>
+		<input type="text" id="deg_mod_keyword" name="deg_mod_keyword" placeholder="Keyword">
 	</div>
 
 	<div>

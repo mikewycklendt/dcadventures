@@ -83,7 +83,8 @@ function resistance_submit() {
 	const check_trait_type = select("resistance_check_trait_type");
 	const check_trait = select("resistance_check_trait");
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const errors = 'resistance-err';
 	const err_line = 'resistance-err-line';

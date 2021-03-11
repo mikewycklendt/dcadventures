@@ -96,7 +96,7 @@ function time_submit() {
 	const recovery_target = select("time_recovery_target");
 	const measure_type = select("time_measure_type");
 
-	///const advantage_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 
 	const selects = 'time-sml';

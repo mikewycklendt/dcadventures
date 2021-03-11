@@ -31,8 +31,9 @@ function action_submit() {
 	const objects = check("mod_objects");
 	const circumstance = text("action_circ");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'action-err';
 	const err_line = 'action-err-line';
 

@@ -111,7 +111,8 @@ function circ_submit() {
 	const created = circ_grid.titles;
 	const font = circ_grid.font;
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const extra_id = select("circ_extra");
 	const circ_target = select("circ_target")

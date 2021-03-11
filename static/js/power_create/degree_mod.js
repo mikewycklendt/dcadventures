@@ -301,7 +301,8 @@ function deg_mod_submit() {
 	const value_type = select("deg_mod_value_type");
 	const description = text("deg_mod_desc");
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';

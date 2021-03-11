@@ -140,8 +140,9 @@ function defense_submit() {
 	const cover_check = check("defense_cover_check");
 	const cover_type = select("defense_cover_type");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'defense-err';
 	const err_line = 'defense-err-line';
 

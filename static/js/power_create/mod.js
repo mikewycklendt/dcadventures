@@ -394,8 +394,9 @@ function mod_submit() {
 	const ranks_cost = select("mod_ranks_cost");
 	const cost = select("mod_cost");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'mod-err';
 	const err_line = 'mod-err-line';
 

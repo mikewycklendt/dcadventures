@@ -138,8 +138,9 @@ function env_submit() {
 	const cost = select("env_cost");
 	const ranks = select("env_ranks");
 
-	const power_id = document.getElementById('power_id').value;
-
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const errors = 'env-err';
 	const err_line = 'env-err-line';
 

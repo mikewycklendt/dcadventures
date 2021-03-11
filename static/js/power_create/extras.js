@@ -10,7 +10,8 @@ function extras_submit() {
 	let inherit = inherit_field.options[inherit_field.selectedIndex].value;
 	const alternate = check('extra_alternate')
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	if (des != '' && name != '' &&  cost != '' && rank != '') {
 

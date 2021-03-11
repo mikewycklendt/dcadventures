@@ -126,7 +126,8 @@ function opposed_submit() {
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';

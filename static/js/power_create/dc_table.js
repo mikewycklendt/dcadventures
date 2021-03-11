@@ -335,7 +335,8 @@ function dc_submit() {
 	const equipment = select("dc_equipment");
 	const equip = check("dc_equip");
 
-	const power_id = document.getElementById('power_id').value;
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';
