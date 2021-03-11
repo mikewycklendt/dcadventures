@@ -132,7 +132,7 @@
 	<div id="move-row2">
 		<div>
 			<select class="select-sml" id="move_distance" name="move_distance" onchange="move_distance()">
-				{% for d in distance %}
+				{% for d in move_distance %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>

@@ -253,7 +253,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	directions = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
 
-	distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
+	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 
@@ -447,7 +447,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											check_trigger=check_trigger, ranged=ranged, circ_effect=circ_effect, circ_trait=circ_trait, tools=tools, materials=materials, circ_targets=circ_targets, 
 											measure_effect_circ=measure_effect_circ, measure_type=measure_type, unit_type=unit_type, effect_target=effect_target, measure_effect=measure_effect, units=units,
 											damage_type=damage_type, inflict=inflict, offers=offers, required_tools=required_tools, equipment_use=equipment_use, equip_type=equip_type, concealment=concealment,
-											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, distance=distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
+											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, move_distance=move_distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
 											multiple_time=multiple_time, time_value=time_value, recovery=recovery)
 
 @powers.route('/power/create', methods=['POST'])
