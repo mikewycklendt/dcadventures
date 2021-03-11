@@ -295,6 +295,9 @@ def vehicle_equipment_select():
 		if add:
 			for special in add_options:
 				options.append(special)
+		if sub == 'variable-equip':
+			var = db.session.query(Equipment).filter_by(var=True).first()
+			options.append('id': e.id, 'name': e.name)
 		for e in equipment:
 			options.append({'id': e.id, 'name': e.name})
 	except:
