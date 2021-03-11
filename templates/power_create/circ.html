@@ -9,14 +9,21 @@
 		<div>
 			<input type="text" id="circ_title" name="circ_title" placeholder="Title">
 		</div>
+		
+		<diV>
+			<select class="extra-select" id="circ_extra" name="circ_extra">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
 
 		<div>
-			<select class="select-entry" id="circ_target" name="circ_target">
+			<select class="header-select" id="circ_target" name="circ_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>
- 		</div>
+		</div>
 	
 	</div>
 

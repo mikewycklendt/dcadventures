@@ -251,6 +251,13 @@ function move_mass() {
 	check_drop(check, div, entry);
 }
 
+function move_ground_ranged() {
+	const check = 'move_ground_ranged';
+	const div = 'move-ground-ranged';
+
+	check_display(check, div);
+}
+
 let move_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -301,6 +308,14 @@ function move_submit() {
 	const time = select("move_time");
 	const keyword = text("move_keyword");
 	const title = text("move_title");
+
+	const speed_per =  check("move_speed_per");
+	const distance_per = check("move_distance_per");
+	const flight = check("move_flight");
+	const aquatic = check("move_aquatic");
+	const ground = check("move_ground");
+	const special = check("move_special");
+	const condition_check = check("move_condition_check");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';

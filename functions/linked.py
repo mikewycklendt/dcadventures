@@ -205,6 +205,32 @@ def required_link(table, field, name, table_name, trait, column, id, errors):
 
 	return (errors)
 
+def linked_ref(table, value, name, column, body):
+	
+	error_msgs = body['error_msgs']
+	error = False
+
+	if value != '':
+		try:
+			value = int(value)
+			edit = db.session.query(table).filter(table.id == value).one()
+			setattr(tsble, column, True)
+			db.session.commit()
+		except:
+			error = True
+			error = True
+			message = 'There was an error processing that ' + name
+			error_msgs.append(message)
+			db.session.rollback()
+		finally:
+			db.session.close()
+
+	body['error_msgs'] = error_msgs
+	if error:
+		body['success'] = False
+
+	return (errors)
+
 def linked_time(table, value, name, errors):
 	
 	error_msgs = errors['error_msgs']

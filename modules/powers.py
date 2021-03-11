@@ -36,7 +36,7 @@ from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerM
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
@@ -1366,6 +1366,7 @@ def power_post_damage():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	keyword = request.get_json()['keyword']
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -1383,7 +1384,8 @@ def power_post_damage():
 							mod = mod,
 							strength = strength,
 							damage_type = damage_type,
-							descriptor = descriptor)
+							descriptor = descriptor,
+							keyword = keyword)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -2432,13 +2434,30 @@ def power_post_ranged():
 	distance_mod_trait_type = request.get_json()['distance_mod_trait_type']
 	distance_mod_trait = request.get_json()['distance_mod_trait']
 	dc = request.get_json()['dc']
-	dc_value = request.get_json()['dc_value']
-	dc_trait_type = request.get_json()['dc_trait_type']
-	dc_trait = request.get_json()['dc_trait']
+	circ = request.get_json()['circ']
+	degree = request.get_json()['degree']
+	damage = request.get_json()['damage']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
+	dc = db_integer(PowerDC, dc)
+	circ = db_integer(PowerCirc, circ)
+	degree = db_integer(PowerDegree, degree)
+	damage = db_integer(PowerDamage, damage)
+
+	body = {}
+	body['success'] = True
+	body['error_msgs'] = []
+
+	body = linked_ref(PowerCirc, circ, 'Circumstance', 'ranged', body)
+	body = linked_ref(PowerDamage, damage, 'Damage Effect', 'ranged', body)
+	body = linked_ref(PowerDC, dc, 'DC', 'ranged', body)
+	body = linked_ref(PowerDegree, degree, 'Degree', 'ranged', body)
+
+	if body['success'] = False:
+		return jsonify(body)
+ 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	flat_units = db_integer(Unit, flat_units)
@@ -2468,8 +2487,8 @@ def power_post_ranged():
 	trait_mod = integer(trait_mod)
 	distance_mod_rank = integer(distance_mod_rank)
 	distance_mod_trait = integer(distance_mod_trait)
-	dc_value = integer(dc_value)
-	dc_trait = integer(dc_trait)
+
+
 
 	try:
 		entry = PowerRanged(power_id = power_id,
@@ -2505,18 +2524,16 @@ def power_post_ranged():
 							distance_mod_trait_type = distance_mod_trait_type,
 							distance_mod_trait = distance_mod_trait,
 							dc = dc,
-							dc_value = dc_value,
-							dc_trait_type = dc_trait_type,
-							dc_trait = dc_trait)
+							circ = circ,
+							degree = degree,
+							damage = damage)
 
 		db.session.add(entry)
 		db.session.commit()
 
-		body = {}
 		body['id'] = entry.id
 		error = False
 		error_msg = []
-		body['success'] = True
 
 		rows = columns
 		mods = []

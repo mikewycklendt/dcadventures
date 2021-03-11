@@ -1,5 +1,5 @@
 #move-header {
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 40% 60%;
 }
 
 
@@ -16,7 +16,7 @@
 }
 
 #move-base {
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 30% 35% 35%;
 }
 
 #move-entry input[type="text"] {
@@ -62,7 +62,7 @@
 	gap: .3vw;
 }
 
-#move-row3 {
+#move-links {
 	display: grid;
 	width: 98%;
 	gap: .2VW;
@@ -152,4 +152,50 @@
 	padding: .1vw;
 	font-size: 95%;
 	width: 89%;
+}
+
+#move-row3 {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+	width: 99%;
+	grid-template-rows: auto;
+}
+
+
+#move-flight {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 50% 50%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-flight-left {
+	display: grid;
+	gap: 3px;
+	width: 98%;
+	grid-template-columns: 100%;
+	grid-auto-rows: auto;
+}
+
+#move-aquatic {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 10% 25% 65%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-ground {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 20% 20% 15% 25%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
 }

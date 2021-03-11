@@ -8,9 +8,16 @@
 		<div>
 			<input type="text" id="dc_title" name="dc_title" placeholder="Title">
 		</div>
+		
+		<div>
+			<select class="extra-select" id="dc_extra" name="dc_extra">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
 
 		<div>
-			<select class="select-entry" id="dc_target" name="dc_target">
+			<select class="header-select" id="dc_target" name="dc_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}

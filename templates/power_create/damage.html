@@ -5,10 +5,16 @@
 	</div>
 	
 	<div id="damage-base">
-		<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+		<div>
+			<input type="text" id="damage_keyword" name="damage_keyword" placeholder="Keyword">
+		</div>
+		
+		<div>
+			<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>	
+		</div>
 	</div>
 
 </div>

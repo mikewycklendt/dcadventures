@@ -46,12 +46,14 @@ function damage_submit() {
 	const strength = check("dam_strength");
 	const damage_type = select("damage_damage_type");
 	const descriptor = select("damage_descriptor");
+	const keyword = text("damage_keyword")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
 	const errors = 'damage-err';
 	const err_line = 'damage-err-line';
+	const selects = 'damage-sml';
 
 	response = fetch('/power/damage/create', {
 		method: 'POST',
@@ -66,7 +68,8 @@ function damage_submit() {
 			'descriptor': descriptor,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -76,13 +79,17 @@ function damage_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, selects);
 			
 			damage_grid.columns.length = 0;
 			damage_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, damage_grid, route);
+			create_table('power', jsonResponse, damage_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 			damage_grid.titles = true;

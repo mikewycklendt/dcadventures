@@ -437,6 +437,7 @@ def damage_post(entry, body, cells):
 	strength = entry.strength
 	damage_type = entry.damage_type
 	descriptor = entry.descriptor
+	keyword = entry.keyword
 
 	trait = trait_select(trait, trait_type)
 
@@ -447,7 +448,8 @@ def damage_post(entry, body, cells):
 	mod = integer_convert(mod)
 	damage_type = integer_convert(damage_type)
 
-	cells = cell('Extra', 15, [extra])
+	cells = cell('Keyword', 15, [keyword])
+	cells = cell('Extra', 15, [extra], cells)
 	cells = cell('Trait', 8, [trait], cells)
 	cells = cell('Modifier', 11, [mod], cells)
 	cells = check_cell('Strength Based', 16, strength, cells)
@@ -1140,14 +1142,19 @@ def ranged_post(entry, body, cells):
 	distance_mod_trait_type = entry.distance_mod_trait_type
 	distance_mod_trait = entry.distance_mod_trait
 	dc = entry.dc
-	dc_value = entry.dc_value
-	dc_trait_type = entry.dc_trait_type
-	dc_trait = entry.dc_trait
+	circ = entry.circ
+	degree = entry.degree
+	damage = entry.damage
+	keyword = entry.keyword
 	
 	check_trait = trait_select(check_trait, check_trait_type)
 	trait_trait = trait_select(trait_trait, trait_trait_type)
 	distance_mod_trait = trait_select(distance_mod_trait, distance_mod_trait_type)
-	dc_trait = trait_select(dc_trait, dc_trait_type)
+
+	dc = get_keyword(PowerDC, dc)
+	circ = get_keyword(PowerCirc, circ)
+	degree = get_keyword(PowerDegree, degree)
+	damage = get_keyword(PowerDamage, damage)
 
 	extra = extra_name(extra_id)
 	flat_units = name(Unit, flat_units)
@@ -1175,10 +1182,11 @@ def ranged_post(entry, body, cells):
 	check_mod = integer_convert(check_mod)
 	trait_mod = integer_convert(trait_mod)
 	distance_mod_rank = integer_convert(distance_mod_rank)
-	dc_value = integer_convert(dc_value)
 
 
-	cells = cell('Extra', 15, [extra])
+
+	cells = cell('Keyword', 15, [keyword])
+	cells = cell('Extra', 15, [extra], cells)
 
 	vcells = vcell('flat_units', 30, [flat_value, flat_units])
 
@@ -1205,7 +1213,7 @@ def ranged_post(entry, body, cells):
 	then = string('then', [rank_distance_start, rank_distance, rank_effect_rank])
 	per = string('Per', [rank_distance_start, rank_distance, rank_effect_rank])
 	rank = string('Rank', [rank_distance_start, rank_distance, rank_effect_rank])
-	vcells = vcell('rank_rank', 75, [start, rank_distance_start, rankdistance, then, rank_distance, rankdistance, per, rank_effect_rank, rank], vcells)
+	vcells = vcell('rank_rank', 50, [start, rank_distance_start, rankdistance, then, rank_distance, rankdistance, per, rank_effect_rank, rank], vcells)
 	
 	effect_rank = string('Effect Rank', [effect_mod_math, effect_mod])
 	distance_rank = string('= Distance Rank', [effect_rank, effect_mod_math, effect_mod])
@@ -1215,17 +1223,16 @@ def ranged_post(entry, body, cells):
 	vcells = vcell('trait_mod', 45, [trait_trait, trait_math, trait_mod, distance_rank], vcells)
 	
 	distance_rank = string('= Distance Rank', [distance_mod_rank, distance_mod_math, distance_mod_trait])
-	vcells = vcell('distance_mod', 70, [distance_mod_rank, distance_mod_math, distance_mod_trait, distance_rank], vcells)
+	vcells = vcell('distance_mod', 50, [distance_mod_rank, distance_mod_math, distance_mod_trait, distance_rank], vcells)
 	
 	distance_rank = string('= Distance Rank', [check_trait, check_math, check_mod, distance_rank])
-	vcells = vcell('check', 70, [check_trait, check_math, check_mod, distance_rank], vcells)
+	vcells = vcell('check', 50, [check_trait, check_math, check_mod, distance_rank], vcells)
 	cells = vcell_add('Range', range_type, vcells, cells)
 
-	cells = check_cell('DC', 10, dc, cells, True)
-	new_mod = mod_create('DC', 10)
-	new_mod = mod_cell('DC Value:', 15, [dc_value], new_mod)
-	new_mod = mod_cell('DC Trait:', 15, [dc_trait], new_mod)
-	body = mod_add(dc, new_mod, body)
+	cells = cell('Circumstance', 15, [circ], cells)
+	cells = cell('Damage', 15, [damage], cells)
+	cells = cell('DC', 15, [dc], cells)
+	cells = cell('Degree', 15, [degree], cells)
 
 	body = send(cells, body)
 

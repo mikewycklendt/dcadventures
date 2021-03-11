@@ -458,6 +458,7 @@ def damage_post_errors(data):
 	strength = data['strength']
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
+	keyword = data['keyword']
 
 	errors = power_check(power_id, errors)
 
@@ -471,6 +472,7 @@ def damage_post_errors(data):
 	errors = required(trait_type, 'Trait Type', errors)
 	errors = required(trait, 'Trait', errors)
 	errors = required(mod, 'Mod', errors)
+	errors = required(keyword, 'Keyword', errors)
 
 	errors = of([damage_type, descriptor], 'You must choose a damage type or descriptor for the damage effect.', errors)
 
@@ -970,9 +972,10 @@ def ranged_post_errors(data):
 	distance_mod_trait_type = data['distance_mod_trait_type']
 	distance_mod_trait = data['distance_mod_trait']
 	dc = data['dc']
-	dc_value = data['dc_value']
-	dc_trait_type = data['dc_trait_type']
-	dc_trait = data['dc_trait']
+	circ = data['circ']
+	degree = data['degree']
+	damage = data['damage']
+	keyword = data['keyword']
 
 	errors = power_check(power_id, errors)
 
@@ -987,7 +990,10 @@ def ranged_post_errors(data):
 	errors = id_check(Math, trait_math, 'math', errors)
 	errors = id_check(Math, distance_mod_math, 'math', errors)
 
-	
+	errors = id_check(PowerCirc, circ)
+	errors = id_check(PowerDamage, damage)
+	errors = id_check(PowerDC, dc)
+	errors = id_check(PowerDegree, degree)
 
 	errors = int_check(flat_value, 'Flat Value', errors)
 	print(errors)
@@ -1007,12 +1013,8 @@ def ranged_post_errors(data):
 	errors = int_check(trait_mod, 'Mod Value', errors)
 	errors = int_check(distance_mod_rank, 'Rank', errors)
 	errors = int_check(dc_value, 'DC Value', errors)
-
-	errors = check_fields(dc, 'DC', [dc_value, dc_trait_type, dc_trait], errors)
-	errors = check_field(dc, 'DC', 'DC', dc_value, errors)
-	errors = check_field(dc, 'Trait Type', 'DC', dc_trait_type, errors)
-	errors = check_field(dc, 'Trait', 'DC', dc_trait, errors)
 	
+	errors = required(keyword, 'Keyword', errors)
 	errors = variable_fields('flat_units', 'Flat Units', range_type, [flat_value, flat_units], errors)
 	errors = variable_field('flat_units', range_type, 'Distance',  flat_value, errors)
 	errors = variable_field('flat_units', range_type, 'Units', flat_units, errors)
@@ -1390,6 +1392,7 @@ def power_check_post_errors(data):
 
 	errors = int_check(attack, 'Attack Check Modifier', errors)
 
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(check_type, 'Check Type', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(when, 'When', errors)
@@ -1489,7 +1492,8 @@ def power_circ_post_errors(data):
 	errors = id_check(Nature, nature, 'Nature', errors)
 
 	errors = id_check(PowerTime, lasts, 'Circumsrance Duration', errors)
-	
+
+	errors = required(extra_id, 'Extra or Base Power', errors)	
 	errors = required(mod, 'Circumstance Modifier', errors)
 	errors = required(circumstance, 'Circumstance', errors)
 	errors = required(keyword, 'Keyword', errors)
@@ -1660,6 +1664,7 @@ def power_dc_post_errors(data):
 	errors = id_check(PowerCheck, variable, 'Variable Check', errors)
 	errors = id_check(PowerTime, time, 'Duration of Effect', errors)
 
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(target, 'Target', errors)
 	errors = required(dc, 'DC Type', errors)
 	errors = required(description, 'Description', errors)
@@ -1889,6 +1894,7 @@ def power_degree_post_errors(data):
 	errors = int_check(routine_mod, 'Routine Check Modifier', errors)
 	errors = int_check(attack, 'Attack Check Modifier', errors)
 	
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(target, 'Target', errors)
 	errors = required(value, 'Degree', errors)
 	errors = required(keyword, 'Keyword', errors)
@@ -2098,6 +2104,7 @@ def power_move_post_errors(data):
 	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
 	
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
@@ -2202,6 +2209,7 @@ def power_opposed_post_errors(data):
 	errors = id_check(PowerTimeType, time_type, 'Time Group', errors)
 	errors = id_check(PowerTimeType, recurring_type, 'Recurring Time Group', errors)
 
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(attached, 'Attsched', errors)
 	errors = required(frequency, 'Frequency', errors)
 	errors = required(opponent_trait_type, 'Opponent Check Trait Typr', errors)
@@ -2296,6 +2304,7 @@ def power_time_post_errors(data):
 	errors = id_check(PowerDCType, dc_type, 'DC Group', errors)
 	
 
+	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(type, 'Time Type', errors)
 	errors = required(value_type, 'Type', errors)
 	errors = required(keyword, 'Keyword', errors)
