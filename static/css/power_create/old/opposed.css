@@ -3,32 +3,22 @@
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 70% 30%;
 	grid-template-rows: auto;
 }
 
 #opposed-base {
-	display: grid;
-	grid-template-columns: 50% 50%;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
 
 #opposed-title {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
 	font-size: 200%;
 	color: #245681;
 	padding: 0px;
 	transition: all .2s linear;
-}
-
-.opposed-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
 }
 
 #opposed-entry {
@@ -53,12 +43,6 @@
 	transition: all .4s ease-out;
 }
 
-#opposed-entry input[type="text"] {
-	height: 1.3vw;
-	padding: .3vw;
-	width: 87%;
-}
-
 #opposed-row1 {
 	display: grid;
 	width: 98%;
@@ -78,100 +62,14 @@
 
 #opposed-row3 {
 	display: grid;
-	width: 96%;
-	gap: 3px;
-	grid-template-columns: 16% 25% 27% 15% 22%;
-}
-
-#opposed-row4 {
-	display: grid;
-	width: 96%;
-	gap: 3px;
-	grid-template-columns: auto auto auto auto;
-}
-
-#opposed-row5 {
-	display: grid;
-	width: 96%;
-	gap: 3px;
-	grid-template-columns: 15% 67% 22%;
-	padding: .2vw;
-	height: auto;
-}
-
-#opposed-row5 input[type="text"] {
-	height: 1.2vw;
-	padding: .1vw;
 	width: 98%;
-}
-
-
-
-#opposed-multiple {
-	display: none;
-	opacity: 0%;
-	transition: all .4s ease-out;
+	gap: 3px;
+	grid-template-columns: 15% 25% 10% 15% 25% 10%;
 }
 
 #opposed-button-row {
 	display: grid;
-	grid-template-columns: 60% 20% 20%;
-}
-
-#opposed-hidden {
-	display: grid;
-	grid-template-columns: auto auto;
-	gap: .3vw;
-}
-
-#opposed-recurring {
-	display: none;
-	opacity: 0%;
-	transition: all .4s ease-out;
-	grid-template-columns: 50% 50%;
-}
-
-#opposed-circ {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	grid-template-columns: 26% auto auto;
-	gap: .3vw;
-}
-
-#opposed-dc {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	grid-template-columns: 5% auto auto auto;
-	gap: .3vw;
-}
-
-#opposed-degree {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	grid-template-columns: 30% auto auto;
-	gap: .3vw;
-}
-
-#opposed-time {
-	display: none;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
-	grid-template-columns: 15% auto auto;
-	gap: .3vw;
-}
-
-#opposed-recurring input[type="text"] {
-	height: 1.8vw;
-	padding: .1vw;
-	font-size: 110%;
-	width: 80%;
+	grid-template-columns: 80% 20%;
 }
 
 #opposed-err {

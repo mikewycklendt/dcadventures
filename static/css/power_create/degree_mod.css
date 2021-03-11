@@ -1,3 +1,22 @@
+
+.degree-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.degree-title-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.degree-opp-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 #degrees_mod {
 	display: grid;
 	width: 100%;
@@ -20,9 +39,11 @@
 
 
 #deg-mod-title {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	margin: 0px;
 	font-family: Comic, 'Monda', Verdana;
-	font-size: 160%;
+	font-size: 200%;
 	color: #245681;
 	padding: 0px;
 	transition: all .2s linear;
@@ -39,7 +60,7 @@
 	opacity: 0%; 
 	display: grid;
 	grid-template-columns: 50% 50%;
-	gap: 4px;
+	gap: .3vw;
 	transition: all .3s ease-out; 
 	margin-bottom: .3vw; 
 }
@@ -81,24 +102,49 @@
 	margin-bottom: 4px;
 }
 
+#deg-mod-top-row {
+	display: grid;
+	width: 98%;
+	height: .9vw;
+	font-size: 105%;
+	gap: .3vw;
+	grid-template-columns: 10% 15% 75%;
+}
+
+#deg-mod-top-row-result {
+	display: grid;
+	opacity: 100%;
+	transition: all .3s;
+	grid-template-columns: 100%;
+}
+
 #deg-mod-row1 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
+	gap: .2vw;
 	grid-template-columns: 10% 15% 75%;
 }
 
 #deg-mod-row2 {
 	display: grid;
-	width: 98%;
-	gap: 3px;
-	grid-template-columns: 25% 17% 18% 15% 25%;
+	width: 97%;
+	gap: .2vw;
+	font-size: 115%;
+	grid-template-columns: 17% 17% 17% 30% 19%;
 }
 
 #deg-mod-button-row {
 	display: grid;
-	width: 97%;
-	grid-template-columns: 80% 20%;
+	width: 99%;
+	padding: .3vw;
+	grid-template-columns: 50% 18% 17% 15%;
+}
+
+#deg-mod-button-row input[type="text"] {
+	width: 90%; 
+	height: 1.2vw; 
+	font-size: 100%; 
+	padding: 2%;
 }
 
 #deg-mod-deg {
@@ -123,6 +169,152 @@
 	grid-auto-rows: auto;
 }
 
+#deg-mod-circ {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 50% 30% 20%;
+}
+
+#deg-mod-level {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 35% 40% 25%;
+}
+
+#deg-mod-action {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+}
+
+#deg-mod-measure {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 12% 6% 82%;
+}
+
+#deg-mod-time {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 30% 45% 25%;
+}
+
+#deg-mod-measure-rank {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 40% 60%;
+}
+
+#deg-mod-measure-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 30% 35% 35%;
+}
+
+#deg-mod-measure-skill {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 15% 20% 15% 10% 15% 10% 15%;
+}
+
+#deg-mod-measure-skill-unit {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .3vw;
+	grid-template-columns: 20% 25% 18% 18% 19%;
+}
+
+#deg-mod-damage {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 22% 78%;
+	gap: .2vw;
+}
+
+#deg-mod-damage-object {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 23% 12% 30% 35%;
+	gap: .2vw;
+}
+
+#deg-mod-damage-inflict {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 23% 78%;
+	gap: .2vw;
+}
+
+
+#deg-mod-damage-inflict-flat {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
+
+#deg-mod-damage-inflict-bonus {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
+
+#deg-mod-damage-inflict-math {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 23% 33% 20% 24%;
+	gap: .2vw;
+}
+
+#deg-mod-damage-reduce {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 35% 65%;
+	gap: .2vw;
+}
+
+
+#deg-mod-knowledge {
+	display: none;
+	width: auto;
+	height: auto;
+	grid-template-columns: 25% 75%;
+	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
 #deg-mod-consequence {
 	display: none;
 	width: auto;
@@ -144,31 +336,7 @@
 	transition: all .3s ease-out
 }
 
-#deg-mod-circ {
-	display: none;
-	opacity: 0%;
-	transition: all .3s ease-out;
-	gap: 3px;
-	grid-template-columns: 20% 20% 20% 30% ;
-}
 
-#deg-mod-level {
-	display: none;
-	opacity: 0%;
-	transition: all .3s ease-out;
-	gap: 3px;
-	grid-template-columns: 300% 40% 30%;
-}
-
-#deg-mod-measure {
-	display: none;
-	width: auto;
-	height: auto;
-	grid-template-columns: 25% 75%;
-	grid-auto-rows: auto;
-	opacity: 0%;
-	transition: all .3s ease-out
-}
 
 #deg-mod-condition {
 	display: none;
@@ -182,7 +350,7 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 10% 40% 10% 40%;
+	grid-template-columns: 10% 40% 5% 40% 5%;
 	opacity: 0%;
 	transition: all .3s linear;
 }
@@ -196,40 +364,76 @@
 	transition: all .3s linear;
 }
 
-#deg-mod-measure-math {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 15% 30% 30% 25%;
+#deg-mod-check {
+	display: none;
+	width: 98%;
+	grid-template-columns: 25% 75%;
 	opacity: 0%;
-	transition: opacity .3s ease-out;
+	transition: all .3s ease-out
 }
 
-#deg-mod-measure-value {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 30% 70%;
+#deg-mod-check-opposed {
+	display: none;
+	width: 98%;
+	grid-template-columns: 50% 50%;
 	opacity: 0%;
-	transition: opacity .3s ease-out;
+	transition: all .3s ease-out
 }
 
-#deg-mod-damage-math {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+#deg-mod-check-variable {
+	display: none;
+	width: 98%;
+	grid-template-columns: 50% 50%;
 	opacity: 0%;
-	transition: opacity .3s ease-out;
+	transition: all .3s ease-out
 }
 
-#deg-mod-damage-value {
-	display: grid;
-	width: 100%;
-	height: auto;
-	grid-template-columns: 25% 25% auto;
+#deg-mod-check-compare {
+	display: none;
+	width: 98%;
+	grid-template-columns: 50% 50%;
 	opacity: 0%;
-	transition: opacity .2s ease-out;
+	transition: all .3s ease-out
+}
+
+#deg-mod-check-skill {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 25% 40%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-check-resist {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 25% 40%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-check-routine {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 40% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-check-attack {
+	display: none;
+	width: 98%;
+	grid-template-columns: 50% 25% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
+#deg-mod-duration {
+	display: none;
+	width: 98%;
+	grid-template-columns: 35% 40% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out
 }
 
 #deg-mod-add {
