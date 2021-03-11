@@ -2440,6 +2440,7 @@ def power_post_ranged():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	keyword = request.get_json()['keyword']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
@@ -2455,7 +2456,7 @@ def power_post_ranged():
 	body = linked_ref(PowerDC, dc, 'DC', 'ranged', body)
 	body = linked_ref(PowerDegree, degree, 'Degree', 'ranged', body)
 
-	if body['success'] = False:
+	if body['success'] == False:
 		return jsonify(body)
  
 	power_id = integer(power_id)
@@ -2526,7 +2527,8 @@ def power_post_ranged():
 							dc = dc,
 							circ = circ,
 							degree = degree,
-							damage = damage)
+							damage = damage,
+							keyword = keyword)
 
 		db.session.add(entry)
 		db.session.commit()
