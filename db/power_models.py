@@ -1670,10 +1670,6 @@ class PowerRanged(db.Model):
 	distance_mod_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	distance_mod_trait_type = db.Column(db.String())
 	distance_mod_trait = db.Column(db.Integer)
-	dc = db.Column(db.Boolean)
-	dc_value = db.Column(db.Integer)
-	dc_trait_type = db.Column(db.String())
-	dc_trait = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -1711,9 +1707,6 @@ class PowerRanged(db.Model):
 			'distance_mod_trait_type': self.distance_mod_trait_type,
 			'distance_mod_trait': self.distance_mod_trait,
 			'dc': self.dc,
-			'dc_value': self.dc_value,
-			'dc_trait_type': self.dc_trait_type,
-			'dc_trait': self.dc_trait
 		}
 
 class PowerResist(db.Model):

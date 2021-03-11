@@ -157,12 +157,12 @@
 	gap: .4vw;
 }
 
-#ranged-dc {
+#ranged-links {
 	display: grid;
 	opacity: 0%;
 	transition: .4s;
 	width: 95%;
-	grid-template-columns: 25% 35% 40%;
+	grid-template-columns: auto auto auto auto;
 	gap: .4vw;
 }
 
@@ -171,7 +171,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 20% 65% 15%;
+	grid-template-columns: 80% 20%;
 }
 
 #ranged-err {
