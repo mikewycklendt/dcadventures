@@ -258,6 +258,29 @@ function move_ground_ranged() {
 	check_display(check, div);
 }
 
+function move_flight_resist() {
+	const check = 'move_flight_resist';
+	const div = 'move_flight_resist';
+
+	check_display(check, div);
+}
+
+function move_flight_equip() {
+	const check = 'move_flight_equip';
+	const div = 'move-flight-equip';
+
+	check_display(check, div);
+}
+
+function move_flight_equip_type() {
+	const select = 'move_flight_equip_type';
+	const fill = 'move_flight_equipment';
+	const sub = 'variable-equip';
+
+	id_select(select, fill, equipment_select, sub);
+	
+}
+
 let move_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

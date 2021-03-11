@@ -132,12 +132,15 @@ function ranged_submit() {
 	const circ = select("ranged_circ");
 	const degree = select("ranged_degree");
 	const damage = select("ranged_damage");
+	const keyword = select("ranged_keyword")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
 	const errors = 'ranged-err';
 	const err_line = 'ranged-err-line';
+
+	const selects = 'ranged-sml';
 
 	response = fetch('/power/ranged/create', {
 		method: 'POST',
@@ -180,7 +183,8 @@ function ranged_submit() {
 			'damage': damage,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'keyword': keyword
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -191,12 +195,16 @@ function ranged_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, selects);
+
 			ranged_grid.columns.length = 0;
 			ranged_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, ranged_grid, route);
+			create_table('power', jsonResponse, ranged_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 			ranged_grid.titles = true;

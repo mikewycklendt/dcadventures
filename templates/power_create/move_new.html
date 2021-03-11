@@ -31,7 +31,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div>	
 			<div id="move-speed-rank">
 				<div>
 					<select class="select-sml" id="move_speed_rank" name="move_speed_rank">
@@ -121,11 +121,13 @@
 
 	<div id="move-speed-description">
 		<div>
-			Description:
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="move_speed_per" class="medium-checkbox med-checkbox" > Per Rank
+			</div>
 		</div>
 
 		<div>
-			<input type="text" id="move_speed_description" name="move_speed_description">
+			<input type="text" id="move_speed_description" name="move_speed_description" placeholder="Descrtiption">
 		</div>
 	</div>
 	
@@ -295,15 +297,50 @@
 	
 	<div id="move-distance-description">
 		<div>
-			Description:
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="move_distance_per" class="medium-checkbox med-checkbox" > Per Rank
+			</div>
 		</div>
 
 		<div>
-			<input type="text" id="move_distance_description" name="move_distance_description">
+			<input type="text" id="move_distance_description" name="move_distance_description" placeholder="Description">
 		</div>
 	</div>
-	
+
 	<div id="move-row3">
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_flight" class="medium-checkbox med-checkbox" onclick="move_flight()"> Flight
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_aquatic" class="medium-checkbox med-checkbox" onclick="move_aquatic()"> Aquatic
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_ground" class="medium-checkbox med-checkbox" onclick="move_ground()"> Through Ground
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_special" class="medium-checkbox med-checkbox" onclick="move_special()"> Special Travel
+			</div>
+		</div>	
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_condition_check" class="medium-checkbox med-checkbox" onclick="move_condition_check()"> Special Travel
+			</div>
+		</div>	
+	</div>
+	
+	<div id="move-links">
 	
 		<div>
 			<select class="time-sml" id="move_time" name="opposed_time">
@@ -338,6 +375,252 @@
 		</div>
 
 	</div>
+
+	<div id="move-flight">
+
+		<div id="move-flight-left">
+			<div class="move-flight-split">
+				<div>
+					Flight:
+				</div>
+
+				<div style="text-align: right; font-size: 80%;">
+					Conditions when character cannot fly:
+				</div>	
+			</div>
+
+			<div class="move-flight-split">
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_flight_resist" class="medium-checkbox med-checkbox" onclick="move_flight_resist()"> Resistence
+					</div>
+				</div>
+
+				<div>
+					<div id="move-flight-resist">
+						<select class="check-sml" id="move_flight_resist_check" name="move_flight_resist_check">
+							<option value="">Use Variable Check form to Put Options Here</option>
+							{% for p in power_check %}
+								<option value={{p.id}}>{{p.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="move-flight-split">
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_flight_equip" class="medium-checkbox med-checkbox" onclick="move_flight_equip()"> Requires Equipment
+					</div>
+				</div>
+
+				<div>
+					<div id="move-flight-equip">
+						<div>
+							<select class="select-sml" id="move_flight_equip_type" name="move_flight_equip_type" onchange="move_flight_equip_type()">
+								<option value="">Equipment Type</option>
+								{% for e in equip_type %}
+									<option value={{e.id}}>{{e.name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+
+						<div>
+							<select class="select-sml" id="move_flight_equipment" name="move_flight_equipment">
+								<option value="">Equipment</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div>
+
+			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple style="height: 6vw; font-size: 110%;">
+				<option value="">(Ctl or Cmd to select multiple)</option>
+				{% for c in conditions %}
+					<option value="{{c.name}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+
+		</div>
+	</div>
+
+	<div id="move-aquatic">
+		<div>
+			Aquatic:
+		</div>
+
+		<select class="select-sml" id="move_acquatic_type" name="move_acquatic_type">
+			{% for a in aquatic %}
+				<option value="{{a.type}}">{{a.name}}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div id="move-ground">
+		<div>
+			<select class="select-sml" id="move_ground_type" name="move_ground_type">
+				<option value="">Ground Type</option>
+				{% for g in grounds %}
+					<option value={{g.id}}>{{g.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_ground_perm" name="move_ground_perm" onchange="move_ground_perm()">
+				{% for p in permanence %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_ground_ranged" class="medium-checkbox med-checkbox" onclick="move_ground_ranged()"> Ranged
+			</div>
+		</div>
+
+		<div>
+			<div id="move-ground-ranged">
+				<select class="range-sml" id="move_ground_range" name="move_ground_range">
+					<option value="">Use Ranged form to Put Range Here</option>
+					{% for p in power_ranged %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select> 
+			</div>
+		</div>
+	</div>
+
+	<div id="move-special">
+
+		<div>
+			Special Travel:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_special_type" name="move_special_type" onchange="move_special_type()">
+				{% for t in travel %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+
+			<div id="move-special-teleport">
+				<div>
+					<select class="select-sml" id="move_teleport_type" name="move_teleport_type">
+						{% for t in teleport %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_teleport_change" name="move_teleport_change">
+						{% for t in teleport_change %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_teleport_portal" class="medium-checkbox med-checkbox" > Portal
+					</div>
+				</div>	
+
+				<div>
+					<div class="check-div">
+						<input type="checkbox" id="move_teleport_obstacles" class="medium-checkbox med-checkbox" > Turnabout
+					</div>
+				</div>	
+
+			</div>
+
+			<div id="move-special-dimension">
+
+				<div>
+					<select class="select-sml" id="move_dimension_type" name="move_dimension_type" onchange="move_dimension_type()">
+						{% for d in dimensions %}
+							<option value="{{d.type}}">{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
+						<option value="">Carry Mass Rank</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+					</select>
+				</div>
+	
+				<div id="move-dimension-descriptor">
+					<select class="descriptor-sml" id="move_dimension_descriptor" name="move_dimension_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use Above Form to put descriptors here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="move-special-space">
+				<div>
+					<select class="select-sml" id="move_special_space" name="move_special_space">
+						{% for s in space %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+		
+				<div>
+
+				</div>
+			</div>
+
+			<div id="move-special-time">
+				<div>
+					<select class="select-sml" id="move_special_time" name="move_special_time">
+						{% for t in time_travel %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="move_special_time_carry" name="move_special_time_carry">
+						<option value="">Carry Mass Rank</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
 
 	<div id="move-button-row">
 		<div>

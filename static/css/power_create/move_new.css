@@ -161,12 +161,11 @@
 	grid-template-rows: auto;
 }
 
-
 #move-flight {
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 65% 35%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -178,6 +177,24 @@
 	width: 98%;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+}
+
+.move-flight-split {
+	display: grid;
+	grid-template-columns: 35% 65%;
+}
+
+#move-flight-resist {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#move-flight-equip {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 50% 50%;
 }
 
 #move-aquatic {
@@ -199,3 +216,68 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
+
+#move-ground-ranged {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+
+#move-special {
+	display: grid;
+	grid-template-columns: 15% 20% 65%;
+	gap: .2vw;
+	width: 97%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-special-dimension {
+	display: none;
+	grid-template-columns: 30% 25% 45%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-dimension-descriptor {
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-special-space {
+	display: none;
+	grid-template-columns: 50% 50%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-special-time {
+	display: none;
+	grid-template-columns: 60% 40%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#move-special-teleport {
+	display: none;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-auto-rows: auto;
+	gap: .2vw;
+	width: 97%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
