@@ -64,7 +64,7 @@ function action_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, action_grid, route);
+			create_table('power', jsonResponse, action_grid, route);
 			clear_errors(err_line, errors)
 
 			action_grid.titles = true;

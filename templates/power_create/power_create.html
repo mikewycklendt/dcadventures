@@ -20,11 +20,20 @@
 				</div>
 
 				<div id="addpowerform">
-					<div id="namepower">
+					<div>
+						<select id="create_power_select" name="create_power_select">
+							<option value="">Power</option>
+							{% for p in powers %}
+								<option value="{{p.id}}">{{p.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div>
 						<input type="text" id="power_name" placeholder="Power Name">
 					</div>
 						
-					<div id="namebutton">
+					<div>
 						<div class="btn" id="power_create" onclick="power_create()" >
 							 Create Power
 						</div>
@@ -196,6 +205,8 @@
 </div>
 
 	
+	<script src="/static/js/functions/create.js"></script>
+	<script src="/static/js/functions/create_table.js"></script>
 	<script src="/static/js/functions/descriptor.js"></script>
 	<script src="/static/js/functions/selects.js"></script>
 	<script src="/static/js/power_create/power_functions.js"></script>

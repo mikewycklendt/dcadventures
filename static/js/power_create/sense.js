@@ -272,7 +272,7 @@ function sense_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, sense_grid, route);
+			create_table('power', jsonResponse, sense_grid, route);
 			clear_errors(err_line, errors)
 
 			sense_grid.titles = true;

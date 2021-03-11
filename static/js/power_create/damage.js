@@ -81,7 +81,7 @@ function damage_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, damage_grid, route);
+			create_table('power', jsonResponse, damage_grid, route);
 			clear_errors(err_line, errors)
 
 			damage_grid.titles = true;

@@ -195,7 +195,7 @@ function ranged_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, ranged_grid, route);
+			create_table('power', jsonResponse, ranged_grid, route);
 			clear_errors(err_line, errors)
 
 			ranged_grid.titles = true;
