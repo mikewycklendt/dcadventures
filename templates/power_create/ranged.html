@@ -455,37 +455,45 @@
 	</div>
 
 	<div id="ranged-button-row">
+
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="ranged_dc" class="medium-checkbox med-checkbox" onclick="ranged_dc()"> Requires DC
-			</div>
+			<select class="degree-sml" id="ranged_degree" name="time_degree">
+				<option value="">Degree</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for p power_degree %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-sml" id="ranged_circ" name="time_circ">
+				<option value="">Circumstance Modifier</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for p power_circ %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
-		<div id="ranged-dc">
-			<div>
-				<select class="entry-select" id="ranged_dc_value" name="ranged_dc_value">
-					<option value="">DC</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<select class="dc-sml" id="ranged_dc" name="time_dc">
+				<option value="">DC</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for p power_dc %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-			<div>
-				<select class="entry-select" id="ranged_dc_trait_type" name="ranged_dc_trait_type" onchange="ranged_dc_trait_type()">
-					<option value="">Trait to Check</option>
-					{% for t in traits %}
-						<option value="{{t.type}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-			
-			<div>
-				<select class="entry-select" id="ranged_dc_trait" name="ranged_dc_trait">
-					<option value="">Trait</option>
-				</select>
-			</div>
-
+		<div>
+			<select class="damage-sml" id="ranged_damage" name="time_damage">
+				<option value="">Damage</option>
+				<option value="">Use Check Table form to put options here</option>
+				{% for p power_damage %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>

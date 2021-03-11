@@ -448,7 +448,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											measure_effect_circ=measure_effect_circ, measure_type=measure_type, unit_type=unit_type, effect_target=effect_target, measure_effect=measure_effect, units=units,
 											damage_type=damage_type, inflict=inflict, offers=offers, required_tools=required_tools, equipment_use=equipment_use, equip_type=equip_type, concealment=concealment,
 											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, move_distance=move_distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
-											multiple_time=multiple_time, time_value=time_value, recovery=recovery)
+											multiple_time=multiple_time, time_value=time_value, recovery=recovery, power_circ=power_circ, power_circ_type=power_circ_type, power_dc=power_dc, power_dc_type=power_dc_type, 
+											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
+											power_time=power_time, power_time_type=power_time_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

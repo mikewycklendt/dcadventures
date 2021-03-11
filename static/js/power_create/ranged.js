@@ -128,10 +128,10 @@ function ranged_submit() {
 	const distance_mod_math = select("ranged_distance_mod_math");
 	const distance_mod_trait_type = select("ranged_distance_mod_trait_type");
 	const distance_mod_trait = select("ranged_distance_mod_trait");
-	const dc = check("ranged_dc");
-	const dc_value = select("ranged_dc_value");
-	const dc_trait_type = select("ranged_dc_trait_type");
-	const dc_trait = select("ranged_dc_trait");
+	const dc = select("ranged_dc");
+	const circ = select("ranged_circ");
+	const degree = select("ranged_degree");
+	const damage = select("ranged_damage");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -175,9 +175,9 @@ function ranged_submit() {
 			'distance_mod_trait_type': distance_mod_trait_type,
 			'distance_mod_trait': distance_mod_trait,
 			'dc': dc,
-			'dc_value': dc_value,
-			'dc_trait_type': dc_trait_type,
-			'dc_trait': dc_trait,
+			'circ': circ,
+			'degree': degree,
+			'damage': damage,
 			'columns': columns,
 			'created': created,
 			'font': font

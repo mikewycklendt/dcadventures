@@ -335,6 +335,7 @@ class PowerCirc(db.Model):
 	environment = db.Column(db.Integer, db.ForeignKey('environments.id')) 
 	nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	ranged = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -384,7 +385,8 @@ class PowerCirc(db.Model):
 			'trait_target': self.trait_target,
 			'environment': self.environment,
 			'nature': self.nature,
-			'check_type': self.check_type
+			'check_type': self.check_type,
+			'ranged': self.ranged
 		}
 
 
@@ -466,7 +468,8 @@ class PowerDC(db.Model):
 	equipment_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	equip = db.Column(db.Boolean)
-	
+	ranged = db.Column(db.Boolean)
+
 	def format(self):
 		return {
 			'id': self.id,
@@ -544,7 +547,8 @@ class PowerDC(db.Model):
 			'equipment_use': self.equipment_use,
 			'equipment_type': self.equipment_type,
 			'equipment': self.equipment,
-			'equip': self.equip
+			'equip': self.equip,
+			'ranged': self.ranged
 		}
 
 
@@ -636,6 +640,7 @@ class PowerDegree(db.Model):
 	effect_target = db.Column(db.String())
 	value_type = db.Column(db.String())
 	description = db.Column(db.String())
+	ranged = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -722,7 +727,8 @@ class PowerDegree(db.Model):
 			'description': self.description,
 			'effect_target': self.effect_target,
 			'value_type': self.value_type,
-			'description': self.description
+			'description': self.description,
+			'ranged': self.ranged
 		}
 
 
@@ -1238,6 +1244,7 @@ class PowerDamage(db.Model):
 	__tablename__ = 'power_damage'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	keyword = db.Column(db.String())
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	trait_type = db.Column(db.String())
 	trait = db.Column(db.Integer)
@@ -1245,18 +1252,21 @@ class PowerDamage(db.Model):
 	strength = db.Column(db.Boolean)
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-
+	ranged = db.Column(db.Boolean)
+	
 	def format(self):
 		return {
 			'id': self.id,
 			'power_id': self.power_id,
+			'keyword': self.keyword,
 			'extra_id': self.extra_id,
 			'trait_type': self.trait_type,
 			'trait': self.trait,
 			'mod': self.mod,
 			'strength': self.strength,
 			'damage_type': self.damage_type,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'ranged': self.ranged
 		}
 
 
