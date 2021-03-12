@@ -775,12 +775,11 @@ function multiple(multiple_input) {
 
 	for (o of options) {
 		if (o.selected) {
-			const value = parseInt(o.value);
-			values.push(value);
+			values.push(o.value);
  		}
 	}
 
-	return (values);
+	return values;
 }
 
 

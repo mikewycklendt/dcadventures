@@ -775,6 +775,59 @@ class PowerMove(db.Model):
 	time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 	keyword = db.Column(db.String())
 	title = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
+
+	speed_per = db.Column(db.Boolean)
+	distance_per = db.Column(db.Boolean)
+	flight = db.Column(db.Boolean)
+	aquatic = db.Column(db.Boolean)
+	ground = db.Column(db.Boolean)
+	special = db.Column(db.Boolean)
+	condition_check = db.Column(db.Boolean)
+	obstacles = db.Column(db.Boolean)
+	objects = db.Column(db.Boolean)
+	permeate = db.Column(db.Boolean)
+	prone = db.Column(db.Boolean)
+	equip = db.Column(db.Boolean)
+	concealment = db.Column(db.Boolean)
+	extended = db.Column(db.Boolean)
+	mass = db.Column(db.Boolean)
+	flight_resist = db.Column(db.Boolean)
+	flight_resist_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	flight_equip = db.Column(db.Boolean)
+	flight_equip_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
+	flight_equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	flight_conditions = db.Column(db.ARRAY(db.Integer))
+	acquatic_type = db.Column(db.String())
+	ground_type = db.Column(db.Integer, db.ForeignKey('ground.id'))
+	ground_perm = db.Column(db.String())
+	ground_time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
+	ground_ranged = db.Column(db.Boolean)
+	ground_range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
+	special_type = db.Column(db.String())
+	teleport_type = db.Column(db.String())
+	teleport_change = db.Column(db.String())
+	teleport_portal = db.Column(db.Boolean)
+	teleport_obstacles = db.Column(db.Boolean)
+	dimension_type = db.Column(db.String())
+	dimension_mass_rank = db.Column(db.Integer)
+	dimension_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	special_space = db.Column(db.String())
+	special_time = db.Column(db.String())
+	special_time_carry = db.Column(db.Integer)
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	objects_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	objects_direction = db.Column(db.String())
+	objects_damage = db.Column(db.Boolean)
+	object_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
+	permeate_type = db.Column(db.String())
+	permeate_speed = db.Column(db.Integer)
+	permeate_cover = db.Column(db.Boolean)
+	equip_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
+	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	concealment_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	conceal_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	extended_actions = db.Column(db.Integer)
+	mass_value = db.Column(db.Integer)
 	
 	
 	def format(self):
@@ -817,7 +870,59 @@ class PowerMove(db.Model):
 			'dc': self.dc,
 			'time': self.time,
 			'keyword': self.keyword,
-			'title': self.title
+			'title': self.title,
+			'speed_per': self.speed_per,
+			'distance_per': self.distance_per,
+			'flight': self.flight,
+			'aquatic': self.aquatic,
+			'ground': self.ground,
+			'special': self.special,
+			'condition_check': self.condition_check,
+			'obstacles': self.obstacles,
+			'objects': self.objects,
+			'permeate': self.permeate,
+			'prone': self.prone,
+			'equip': self.equip,
+			'concealment': self.concealment,
+			'extended': self.extended,
+			'mass': self.mass,
+			'flight_resist': self.flight_resist,
+			'flight_resist_check': self.flight_resist_check,
+			'flight_equip': self.flight_equip,
+			'flight_equip_type': self.flight_equip_type,
+			'flight_equipment': self.flight_equipment,
+			'flight_conditions': self.flight_conditions,
+			'acquatic_type': self.acquatic_type,
+			'ground_type': self.ground_type,
+			'ground_perm': self.ground_perm,
+			'ground_time': self.ground_time,
+			'ground_ranged': self.ground_ranged,
+			'ground_range': self.ground_range,
+			'special_type': self.special_type,
+			'teleport_type': self.teleport_type,
+			'teleport_change': self.teleport_change,
+			'teleport_portal': self.teleport_portal,
+			'teleport_obstacles': self.teleport_obstacles,
+			'dimension_type': self.dimension_type,
+			'dimension_mass_rank': self.dimension_mass_rank,
+			'dimension_descriptor': self.dimension_descriptor,
+			'special_space': self.special_space,
+			'special_time': self.special_time,
+			'special_time_carry': self.special_time_carry,
+			'condition': self.condition,
+			'objects_check': self.objects_check,
+			'objects_direction': self.objects_direction,
+			'objects_damage': self.object_damage,
+			'object_damage': self.object_damage,
+			'permeate_type': self.permeate_type,
+			'permeate_speed': self.permeate_speed,
+			'permeate_cover': self.permeate_cover,
+			'equip_type': self.equip_type,
+			'equipment': self.equipment,
+			'concealment_sense': self.concealment_sense,
+			'conceal_opposed': self.conceal_opposed,
+			'extended_actions': self.extended_actions,
+			'mass_value': self.mass_value
 		}
 
 

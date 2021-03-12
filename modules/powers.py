@@ -4206,7 +4206,7 @@ def power_post_move():
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
 
-	flight_conditions = db
+	flight_conditions = db_multiple(Condition, flight_conditions)
 
 	flight_equip_type = db_integer(EquipType, flight_equip_type)
 	flight_equipment = db_integer(Equipment, flight_equipment)

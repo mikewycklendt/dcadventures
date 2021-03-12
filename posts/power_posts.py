@@ -2446,6 +2446,8 @@ def power_move_post(entry, body, cells):
 	equipment = get_name(Equipment, equipment)
 	concealment_sense = get_name(Sense, concealment_sense)
 
+	flight_conditions = get_multiple(Condition, flight_conditions)
+
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)
 
@@ -2459,20 +2461,103 @@ def power_move_post(entry, body, cells):
 	vcells = vcell('rank_mod', 20, [speed_rank_mod, 'Speed Rank'])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
-	cells = circ_cell('Description', 'Description', 13, speed_description, cells, body)
+	cells = circ_cell('Desc', 'Description', 5, speed_description, cells, body)
 	
 	vcells = vcell('rank', 20, [distance_rank, 'Rank Distance'])
 	vcells = vcell('unit', 20, [distance_value, distance_units], vcells)
 	vcells = vcell('unit_math', 25, [distance_unit_trait, distance_unit_math1, distance_unit_value1, distance_unit_math2,  distance_unit_value2, distance_math_units], vcells)
 	vcells = vcell('rank_math', 25, [distance_rank_trait, distance_rank_math1, distance_rank_value1, distance_rank_math2, distance_rank_value2], vcells)
 	cells = vcell_add('Distance', distance, vcells, cells)
-	cells = circ_cell('Description', 'Description', 13, distance_description, cells, body)
+	cells = circ_cell('Desc', 'Description', 5, distance_description, cells, body)
+
+	cells = check_cell('Flight', 8, flight, cells, True)
+	new_mod = mod_create('Flight', 10)
+	new_mod = mod_cell('Conditions:', 10, [flight_conditions], new_mod)
+	new_mod = mod_cell('Resistance Check:', 15, [flight_resist_check], new_mod)
+	new_mod = mod_cell('Requires Equipment:', 20, [flight_equipment], new_mod)
+	body = mod_add(flight, new_mod, body)
+
+	cells = check_cell('Aquatic', 9, aquatic, cells, True)
+	new_mod = mod_create('Aquatic', 10)
+	new_mod = mod_cell('Type:', 7, [acquatic_type], new_mod)
+	body = mod_add(aquatic, new_mod, body)
+
+	cells = check_cell('Ground', 8, ground, cells, True)
+	new_mod = mod_create('Through Ground', 17)
+	new_mod = mod_cell('Type:', 7, [ground_type], new_mod)
+	new_mod = mod_cell('Permanance:', 10, [ground_perm], new_mod)
+	new_mod = mod_cell('Lasts:', 5, [ground_time], new_mod)
+	new_mod = mod_cell('Ranged', 7, [ground_range], new_mod)
+	body = mod_add(ground, new_mod, body)
+
+	cells = check_cell('Special', 10, special, cells, True)
+	travel_select = [{'type': 'dimension', 'name': 'Dimension Travel', 'w': 20}, {'type': 'space', 'name': 'Space Travel', 'w': 18}, {'type': 'time', 'name': 'Time Travel', 'w': 15}, {'type': 'teleport', 'name': 'Teleport', 'w': 10}]
+	new_mod = mod_create('Special Travel', 19, special_type, travel_select)
+	value = 'dimension'
+	new_mod = mod_cell('Type:', 8, [dimension_type], new_mod, value)
+	new_mod = mod_cell('Carry Mass:', 12, [dimension_mass_rank], new_mod, value)
+	new_mod = mod_cell('Descriptor:', 13, [dimension_descriptor], new_mod, value)
+	value = 'space'
+	new_mod = mod_cell('Type:', 8, [special_space], new_mod, value)
+	value = 'time'
+	new_mod = mod_cell('Type:', 8, [special_time], new_mod, value)
+	new_mod = mod_cell('Carry Mass:', 12, [special_time_carry], new_mod, value)
+	value = 'teleport'
+	new_mod = mod_cell('Type:', 8, [teleport_type], new_mod, value)
+	new_mod = mod_cell('Can Change:', 12, [teleport_change], new_mod, value)
+	new_mod = mod_cell('Portal:', 9, [teleport_portal], new_mod, value)
+	new_mod = mod_cell('Turnabout:', 9, [teleport_obstacles], new_mod, value)
+	body = mod_add(special, new_mod, body)
+
+	cells = check_cell('Condition', 10, condition_check, cells, True)
+	new_mod = mod_create('Movement Condition', 20)
+	new_mod = mod_cell('Condition', 12, [condition], new_mod)
+	body = mod_add(condition_check, new_mod, body)
+
+	cells = check_cell('Prone', 7, prone, cells)
+
+	cells = check_cell('Objects', 9, objects, cells, True)
+	new_mod = mod_create('Move Objects', 15)
+	new_mod = mod_cell('Check', 7, [objects_check], new_mod)
+	new_mod = mod_cell('Direction', 10, [objects_direction], new_mod)
+	new_mod = mod_cell('Damage', 8, [object_damage], new_mod)
+	body = mod_add(objects, new_mod, body)
+
+	cells = check_cell('Permeate', 10, permeate, cells, True)
+	new_mod = mod_create('Permeate', 12)
+	new_mod = mod_cell('Type:', 8, [permeate_type], new_mod)
+	new_mod = mod_cell('Speed Modifier:', 18, [permeate_speed], new_mod)
+	new_mod = mod_cell('Provides Cover:', 18, [permeate_cover], new_mod)
+	body = mod_add(permeate, new_mod, body)
+
+	cells = check_cell('Equipment', 11, equip, cells, True)
+	new_mod = mod_create('Equipment', 15)
+	new_mod = mod_cell('Type:' 6, [equip_type], new_mod)
+	new_mod = mod_cell('Required:' 12, [equipment], new_mod)
+	body = mod_add(equip, new_mod, body)
+
+	cells = check_cell('Conceal', 9, concealment, cells, True)
+	new_mod = mod_create('Concealment', 15)
+	new_mod = mod_cell('Concealed From:', 18, [concealment_sense], new_mod)
+	new_mod = mod_cell('Opponent Check:', 15, [conceal_opposed], new_mod)
+	body = mod_add(concealment, new_mod, body)
+
+	cells = check_cell('Extended', 11, extended, cells, True)
+	new_mod = mod_create('Extended', 10)
+	word = string('Actions', [extended_actions])
+	new_mod = mod_cell('For:', 5, [extended_actions, word], new_mod)
+	body = mod_add(extended, new_mod, body)
+
+	cells = check_cell('Carry', 7, mass, cells, True)
+	new_mod = mod_create('Increased Carry Mass', 30)
+	new_mod = mod_cell('Mass Rank:', 13, [mass_value], new_mod)
+	body = mod_add(mass, new_mod, body)
 
 	cells = cell('Time', 18, [time], cells)
 	cells = cell('Degree', 18, [degree], cells)
 	cells = cell('DC', 18, [dc], cells)
 	cells = cell('Circumstance', 18, [circ], cells)
-
+	
 	body = send_multiple(title, cells, body)
 
 	cells.clear()

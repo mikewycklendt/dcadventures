@@ -340,6 +340,61 @@
 		</div>	
 	</div>
 	
+	<div id="move-row4">
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_obstacles" class="medium-checkbox med-checkbox" > Through Obstacles
+			</div>
+		</div>	
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_objects" class="medium-checkbox med-checkbox" onclick="move_objects()"> Move Objects
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_permeate" class="medium-checkbox med-checkbox" onclick="move_permeate()"> Permeate
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_prone" class="medium-checkbox med-checkbox" > Move While Prone
+			</div>
+		</div>	
+
+	</div>
+
+	<div id="move-row5">
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_equip" class="medium-checkbox med-checkbox" onclick="move_equip()"> Requires Equipment
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_concealment" class="medium-checkbox med-checkbox" onclick="move_concealment()"> Concealment
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_extended" class="medium-checkbox med-checkbox" onclick="move_extended()"> Extended
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_mass" class="medium-checkbox med-checkbox" onclick="move_mass()"> Increased Mass
+			</div>
+		</div>
+	</div>
+	
 	<div id="move-links">
 	
 		<div>
@@ -429,6 +484,7 @@
 						<div>
 							<select class="select-sml" id="move_flight_equipment" name="move_flight_equipment">
 								<option value="">Equipment</option>
+								<option value="x">Variable</option>
 							</select>
 						</div>
 					</div>
@@ -441,10 +497,9 @@
 			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple style="height: 6vw; font-size: 110%;">
 				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for c in conditions %}
-					<option value="{{c.name}}">{{c.name}}</option>
+					<option value="{{c.id}}">{{c.name}}</optiodddddddddddn>
 				{% endfor %}
 			</select>
-
 		</div>
 	</div>
 
@@ -481,22 +536,36 @@
 			</select>
 		</div>
 
-		<div>
+		<div id="move-ground-perm">
+			<select class="lasts-sml" id="move_ground_time" name="move_ground_time">
+				<option value="">Time Tunnel Lasts</option>
+				<option value="">Use Time Effect form to put options here</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="next">Next Round</option>
+				<option value="scene">Scene</option>
+				<option value="maintain">While Maintaining</option>
+				{% for p in power_time %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="width: 15%;">
 			<div class="check-div">
 				<input type="checkbox" id="move_ground_ranged" class="medium-checkbox med-checkbox" onclick="move_ground_ranged()"> Ranged
 			</div>
 		</div>
 
-`		<div>
-			<div id="move-ground-ranged">
-				<select class="ranged-sml" id="move_ground_range" name="move_ground_range">
-					<option value="">Use Ranged form to Put Range Here</option>
-					{% for p in power_ranged %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select> 
-			</div>
+		<div id="move-ground-ranged">
+			<select class="ranged-sml" id="move_ground_range" name="move_ground_range">
+				<option value="">Use Ranged form to Put Range Here</option>
+				{% for p in power_ranged %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select> 
 		</div>
+
 	</div>
 
 	<div id="move-special">
@@ -619,7 +688,180 @@
 
 	</div>
 
+	<div id="move-condition">
+		<div>
+			Condition:
+		</div>
 
+		<div>
+			<select class="select-sml" id="move_condition" name="move_condition">
+				<option value="">Condition</option>
+				<option value="x">Variable</option>
+				{% for c in conditions %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+
+	<div id="move-objects">
+		<div>
+			Move Objects:
+		</div>
+
+		<div>
+			<select class="check-sml" id="move_objects_check" name="move_objects_check">
+				<option value="">Check to Move</option>
+				<option value="">Use Variable Check form to put options Here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_objects_direction" name="move_objects_direction">
+				{% for m in move_objects %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div style="width: 15%;">
+			<div class="check-div">
+				<input type="checkbox" id="move_objects_damage" class="medium-checkbox med-checkbox" onclick="move_objects_damage()"> Damage
+			</div>
+		</div>
+
+		<div id="move-objects-damage">
+			<select class="damage-sml" id="move_object_damage" name="move_object_damage">
+				<option value="">Damage</option>
+				<option value="">Use Damage form to put options here</option>
+				{% for p in power_damage %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="move-permeate">
+		<div>
+			Permeate:
+		</div>
+
+		<div id="move-through-objects">
+			<select class="select-sml" id="move_permeate_type" name="move_permeate_type">
+				{% for o in openings %}
+					<option value="{{o.type}}">{{o.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			Speed Rank Modifier:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_permeate_speed" name="move_permeate_speed">
+				<option value="">Modifier</option>
+					{% for i in negatives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_permeate_cover" class="medium-checkbox med-checkbox" > Provides Cover
+			</div>
+		</div>	
+
+	</div>
+
+	<div id="move-equip">
+		<div>
+			Equipment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_equip_type" name="move_equip_type" onchange="move_equip_type()">
+				<option value="">Equipment Type</option>
+				{% for e in equip_type %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_equipment" name="move_equipment">
+				<option value="">Equipment</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="move-concealment">
+		<div>
+			Concealment:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_concealment_sense" name="move_concealment_sense">
+				<option value="">Sense</option>
+				<option value="x">Variable</option>
+				{% for s in senses %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="opposed-sml" id="move_conceal_opposed" name="move_conceal_opposed">
+				<option value="">Opponent Check to Detect</option>
+				<option value="">Use Opponent Check form to put options here</option>
+				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	<div id="move-extended">
+		<div>
+			Extended:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
+				<option value="">Move Actions</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="move-mass">
+		<div>
+			Increased Carry Mass:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_mass_value" name="move_mass_value">
+				<option value="">Mass Rank</option>
+				<option value="rank">Effect Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 
 
 

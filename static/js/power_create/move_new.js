@@ -78,16 +78,10 @@ function move_distance() {
 const move_entry = 'move-entry';
 
 function move_ground_perm() {
-	const field_field = document.getElementById("move_ground_perm");
-	const field = field_field.options[field_field.selectedIndex].value;
-	const div = "move-ground-time";
+	const select = "move_ground_perm";
+	const options = [{'val': 'temp', 'div': 'move-ground-perm'}];
 
-	if (field == 'temp') {
-		show_maxheight(div)
-	} else {
-		hide_maxheight(div)
-	}
-
+	select_opacity(select, options);
 }
 
 function move_ground() {
@@ -174,9 +168,9 @@ function move_objects_check() {
 
 function move_objects_damage() {
 	const check = 'move_objects_damage';
-	const div = 'move-objects-damage-type';
+	const div = 'move-objects-damage';
 
-	check_opacity(check, div);
+	check_display(check, div);
 }
 
 function move_permeate() {
@@ -278,7 +272,30 @@ function move_flight_equip_type() {
 	const sub = 'variable-equip';
 
 	id_select(select, fill, equipment_select, sub);
-	
+}
+
+function move_condition_check() {
+	const check = 'move_condition_check';
+	const div =  'move-condition';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_equip() {
+	const check = 'move_equip';
+	const div = 'move-equip';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_equip_type() {
+	const select = 'move_equip_type';
+	const fill = 'move_equipment';
+	const sub = 'variable-equip';
+
+	id_select(select, fill, equipment_select, sub);
 }
 
 let move_grid = {'titles': false,
@@ -339,6 +356,51 @@ function move_submit() {
 	const ground = check("move_ground");
 	const special = check("move_special");
 	const condition_check = check("move_condition_check");
+	const obstacles = check("move_obstacles");
+	const objects = check("move_objects");
+	const permeate = check("move_permeate");
+	const prone = check("move_prone");
+	const equip = check("move_equip");
+	const concealment = check("move_concealment");
+	const extended = check("move_extended");
+	const mass = check("move_mass");
+	const flight_resist = check("move_flight_resist");
+	const flight_resist_check = select("move_flight_resist_check");
+	const flight_equip = check("move_flight_equip");
+	const flight_equip_type = select("move_flight_equip_type");
+	const flight_equipment = select("move_flight_equipment");
+	const flight_conditions = multiple("move_flight_conditions");
+	const acquatic_type = select("move_acquatic_type");
+	const ground_type = select("move_ground_type");
+	const ground_perm = select("move_ground_perm");
+	const ground_time = select("move_ground_time");
+	const ground_ranged = check("move_ground_ranged");
+	const ground_range = select("move_ground_range");
+	const special_type = select("move_special_type");
+	const teleport_type = select("move_teleport_type");
+	const teleport_change = select("move_teleport_change");
+	const teleport_portal = check("move_teleport_portal");
+	const teleport_obstacles = check("move_teleport_obstacles");
+	const dimension_type = select("move_dimension_type");
+	const dimension_mass_rank = select("move_dimension_mass_rank");
+	const dimension_descriptor = select("move_dimension_descriptor");
+	const special_space = select("move_special_space");
+	const special_time = select("move_special_time");
+	const special_time_carry = select("move_special_time_carry");
+	const condition = select("move_condition");
+	const objects_check = select("move_objects_check");
+	const objects_direction = select("move_objects_direction");
+	const objects_damage = check("move_objects_damage");
+	const object_damage = select("move_object_damage");
+	const permeate_type = select("move_permeate_type");
+	const permeate_speed = select("move_permeate_speed");
+	const permeate_cover = check("move_permeate_cover");
+	const equip_type = select("move_equip_type");
+	const equipment = select("move_equipment");
+	const concealment_sense = select("move_concealment_sense");
+	const conceal_opposed = select("move_conceal_opposed");
+	const extended_actions = select("move_extended_actions");
+	const mass_value = select("move_mass_value");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
@@ -388,7 +450,59 @@ function move_submit() {
 			'dc': dc,
 			'time': time,
 			'keyword': keyword,
-			'title': title
+			'title': title,
+			'speed_per': speed_per,
+			'distance_per': distance_per,
+			'flight': flight,
+			'aquatic': aquatic,
+			'ground': ground,
+			'special': special,
+			'condition_check': condition_check,
+			'obstacles': obstacles,
+			'objects': objects,
+			'permeate': permeate,
+			'prone': prone,
+			'equip': equip,
+			'concealment': concealment,
+			'extended': extended,
+			'mass': mass,
+			'flight_resist': flight_resist,
+			'flight_resist_check': flight_resist_check,
+			'flight_equip': flight_equip,
+			'flight_equip_type': flight_equip_type,
+			'flight_equipment': flight_equipment,
+			'flight_conditions': flight_conditions,
+			'acquatic_type': acquatic_type,
+			'ground_type': ground_type,
+			'ground_perm': ground_perm,
+			'ground_time': ground_time,
+			'ground_ranged': ground_ranged,
+			'ground_range': ground_range,
+			'special_type': special_type,
+			'teleport_type': teleport_type,
+			'teleport_change': teleport_change,
+			'teleport_portal': teleport_portal,
+			'teleport_obstacles': teleport_obstacles,
+			'dimension_type': dimension_type,
+			'dimension_mass_rank': dimension_mass_rank,
+			'dimension_descriptor': dimension_descriptor,
+			'special_space': special_space,
+			'special_time': special_time,
+			'special_time_carry': special_time_carry,
+			'condition': condition,
+			'objects_check': objects_check,
+			'objects_direction': objects_direction,
+			'objects_damage': objects_damage,
+			'object_damage': object_damage,
+			'permeate_type': permeate_type,
+			'permeate_speed': permeate_speed,
+			'permeate_cover': permeate_cover,
+			'equip_type': equip_type,
+			'equipment': equipment,
+			'concealment_sense': concealment_sense,
+			'conceal_opposed': conceal_opposed,
+			'extended_actions': extended_actions,
+			'mass_value': mass_value
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

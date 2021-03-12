@@ -15,12 +15,12 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, db_multiple, id_multiple
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
@@ -2230,6 +2230,58 @@ def power_move_post_errors(data):
 	errors = check_fields(flight_equip, 'Flight Equipment', [flight_equipment], errors)
 	errors = check_field(flight_equip, 'Flight Equipment', 'Equipment', flight_equipment, errors)
 	
+	errors = check_fields(aquatic, 'Aquatic', [acquatic_type], errors)
+	errors = check_field(aquatic, 'Aquatic Type','Aquatic', acquatic_type, errors)
+
+	errors = check_fields(ground, 'Through Ground', [ground_type, ground_perm], errors)
+	errors = check_field(ground, 'Through Ground', 'Through Ground Type', ground_type, errors)
+	errors = check_field(ground, 'Through Ground', 'Ground Permanance', ground_perm, errors)
+	errors = variable_fields('temp', 'Temporary Ground Permanace', ground_permanence, [ground_time], errors)
+	errors = variable_field('temp', ground_permanence, 'Time', ground_time, errors)
+	errors = check_fields(ground_ranged, 'Ranged Through Ground', [ground_range], errors)
+	errors = check_field(ground_ranged, 'Ranged Through Ground', 'Range', ground_range, errors)
+
+	errors = check_fields(special, 'Special Travel', [special_type], errors)
+	errors = variable_fields('dimension', 'Dimension Travel', special_type, [dimension_type, dimension_mass_rank], errors)
+	errors = variable_field('dimension', special_type, 'Dimension Travel Type', dimension_type, errors)
+	errors = variable_field('dimension', special_type, 'Dimension Travel Carry Mass', dimension_mass_rank, errors)
+	errors = variable_fields('descriptor', 'Dimension Descriptor', dimension_type, [dimension_descriptor], errors)
+	errors = variable_fields('space', 'Space Travel', special_type, [special_space], errors)
+	errors = variable_field('space', special_type, 'Space Travel Type', special_space, errors) 
+	errors = variable_fields('time', 'Time Travel', special_type, [special_time, special_time_carry], errors)
+	errors = variable_field('time', special_type, 'Time Travel Type', special_time, errors)
+	errors = variable_field('time', special_type, 'Time Travel Carry Mass', special_time_carry, errors)
+	errors = variable_fields('teleport', 'Teleport', special_type, [teleport_type], errors)
+	errors = variable_field('teleport',  special_type, 'Teleport Type', teleport_type, errors)
+
+	errors = check_fields(condition_check, 'Movement Condition', [condition], errors)
+	errors = check_field(condition_check, 'Movement Condition', 'Condition', condition, errors)
+
+	errors = check_fields(objects, 'Move Objects', [objects_check, objects_direction], errors)
+	errors = check_field(objects, 'Move Objects', 'Move Objects Check', objects_check, errors)
+	errors = check_field(objects, 'Move Objects', 'Move Objects Direction', objects_direction, errors)
+	errors = check_fields(objects_damage, 'Move Objects Damage', [object_damage], errors)
+	errors = check_field(objects_damage, 'Move Objects Damage', 'Damage', object_damage, errors)
+
+	errors = check_fields(permeate, 'Permeate', [permeate_type, permeate_speed], errors)
+	errors = check_field(permeate, 'Permeate', 'Permeate Type', permeate_type, errors)
+	errors = check_field(permeate, 'Permeate', 'Permeate Speed Rank Modifier', permeate_speed, errors)
+
+	errors = check_fields(equip, 'Movement Equipment', [equipment], errors)
+	errors = check_field(equip, 'Movement Equipment', 'Equipment', equipment, errors)
+
+	errors = check_fields(concealment, 'Concealment', [concealment_sense, conceal_opposed], errors)
+	errors = check_field(concealment, 'Concealment', 'Concealed from Sense', concealment_sense, errors)
+	errors = check_fields(concealment, 'Concealment', 'Opponent Check', conceal_opposed, errors)
+
+	errors = check_fields(extended, 'Extended', [extended_actions], errors)
+	errors = check_field(extended, 'Extended', 'Extended Actions', extended_actions, errors)
+
+	errors = check_fields(mass, 'Increased Mass', [mass_value], errors)
+	errors = check_field(mass, 'Increased Mass', 'Increased Mass Amount', mass_value, errors)
+
+
+
 	return (errors)
 
 def power_opposed_post_errors(data):
