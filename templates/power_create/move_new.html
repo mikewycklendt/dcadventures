@@ -462,6 +462,9 @@
 
 	<div id="move-ground">
 		<div>
+			Through Ground:
+		</div>
+		<div>
 			<select class="select-sml" id="move_ground_type" name="move_ground_type">
 				<option value="">Ground Type</option>
 				{% for g in grounds %}
@@ -484,9 +487,9 @@
 			</div>
 		</div>
 
-		<div>
+`		<div>
 			<div id="move-ground-ranged">
-				<select class="range-sml" id="move_ground_range" name="move_ground_range">
+				<select class="ranged-sml" id="move_ground_range" name="move_ground_range">
 					<option value="">Use Ranged form to Put Range Here</option>
 					{% for p in power_ranged %}
 						<option value={{p.id}}>{{p.name}}</option>

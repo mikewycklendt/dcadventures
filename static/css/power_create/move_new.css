@@ -171,6 +171,16 @@
 	transition: all .4s ease-out;
 }
 
+#move-condition {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 25% 60%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #move-flight-left {
 	display: grid;
 	gap: 3px;
@@ -211,7 +221,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 20% 15% 25%;
+	grid-template-columns: 20% 20% 20% 15% 25%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;

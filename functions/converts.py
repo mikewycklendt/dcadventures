@@ -357,6 +357,19 @@ def get_name(Table, value):
 
 	return (value)
 
+def get_multiple(Table, multiple):
+
+	names = ''
+
+	for m in multiple:
+		name = get_name(Table, m)
+		if names == '':
+			names += name
+		else:
+			names += ', ' name
+
+	return (names)
+
 def get_id(Table, value):
 	
 	if value is None:
@@ -503,6 +516,15 @@ def selects(value, options):
 				value = option['name']
 
 	return (value)
+
+def db_multiple(table, multiple):
+
+	for i in range(0, len(multiple), 1):
+		db = multiple[i]
+		db = db_integer(table, db)
+		multiple[i] = db
+
+	return (multiple)
 
 def db_integer(table, value):
 	
@@ -751,6 +773,13 @@ def db_integer(table, value):
 			print(value)
 
 	return (value)
+
+def id_multiple(table, multiple, name, errors):
+
+	for m in multiple:
+		errors = id_check(table, m, name, errors)
+
+	return (errors)
 
 def id_check(table, value_id, name, errors):
 	error_msgs = errors['error_msgs']

@@ -15,7 +15,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -2333,6 +2333,60 @@ def power_move_post(entry, body, cells):
 	time = entry.time
 	keyword = entry.keyword
 	title = entry.title
+	
+	speed_per = entry.speed_per
+	distance_per = entry.distance_per
+	flight = entry.flight
+	aquatic = entry.aquatic
+	ground = entry.ground
+	special = entry.special
+	condition_check = entry.condition_check
+	obstacles = entry.obstacles
+	objects = entry.objects
+	permeate = entry.permeate
+	prone = entry.prone
+	equip = entry.equip
+	concealment = entry.concealment
+	extended = entry.extended
+	mass = entry.mass
+	flight_resist = entry.flight_resist
+	flight_resist_check = entry.flight_resist_check
+	flight_equip = entry.flight_equip
+	flight_equip_type = entry.flight_equip_type
+	flight_equipment = entry.flight_equipment
+	flight_conditions = entry.flight_conditions
+	acquatic_type = entry.acquatic_type
+	ground_type = entry.ground_type
+	ground_perm = entry.ground_perm
+	ground_time = entry.ground_time
+	ground_ranged = entry.ground_ranged
+	ground_range = entry.ground_range
+	special_type = entry.special_type
+	teleport_type = entry.teleport_type
+	teleport_change = entry.teleport_change
+	teleport_portal = entry.teleport_portal
+	teleport_obstacles = entry.teleport_obstacles
+	dimension_type = entry.dimension_type
+	dimension_mass_rank = entry.dimension_mass_rank
+	dimension_descriptor = entry.dimension_descriptor
+	special_space = entry.special_space
+	special_time = entry.special_time
+	special_time_carry = entry.special_time_carry
+	condition = entry.condition
+	objects_check = entry.objects_check
+	objects_direction = entry.objects_direction
+	objects_damage = entry.object_damage
+	object_damage = entry.object_damage
+	permeate_type = entry.permeate_type
+	permeate_speed = entry.permeate_speed
+	permeate_cover = entry.permeate_cover
+	equip_type = entry.equip_type
+	equipment = entry.equipment
+	concealment_sense = entry.concealment_sense
+	conceal_opposed = entry.conceal_opposed
+	extended_actions = entry.extended_actions
+	mass_value = entry.mass_value
+
 
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
@@ -2341,6 +2395,12 @@ def power_move_post(entry, body, cells):
 	circ = get_keyword(PowerCirc, circ)
 	dc = get_keyword(PowerDC, dc)
 	time = get_keyword(PowerTime, time)
+	flight_resist_check = get_keyword(PowerCheck, flight_resist_check)
+	ground_time = get_keyword(PowerTime, ground_time)
+	ground_range = get_keyword(PowerRanged, ground_range)
+	objects_check = get_keyword(PowerCheck, objects_check)
+	object_damage = get_keyword(PowerDamage, objects_damage)
+	conceal_opposed = get_keyword(PowerOpposed, conceal_opposed)
 
 	speed_trait = trait_select(speed_trait, speed_trait_type)
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
@@ -2362,6 +2422,12 @@ def power_move_post(entry, body, cells):
 	distance_unit_value2 = integer_convert(distance_unit_value2)
 	speed_rank_mod = integer_convert(speed_rank_mod)
 
+	dimension_mass_rank = integer_convert(dimension_mass_rank)
+	special_time_carry = integer_convert(special_time_carry)
+	permeate_speed = integer_convert(permeate_speed)
+	extended_actions = integer_convert(extended_actions)
+	mass_value = integer_convert(mass_value)
+
 	speed_math1 = math_convert(speed_math1)
 	speed_math2 = math_convert(speed_math2)
 	distance_units = get_name(Unit, distance_units)
@@ -2370,6 +2436,15 @@ def power_move_post(entry, body, cells):
 	distance_unit_math1 = math_convert(distance_unit_math1)
 	distance_unit_math2 = math_convert(distance_unit_math2)
 	distance_math_units = get_name(Unit, distance_math_units)
+
+	flight_equip_type = get_name(EquipType, flight_equip_type)
+	flight_equipment = get_name(Equipment, flight_equipment)
+	ground_type = get_name(Ground, ground_type)
+	dimension_descriptor = get_name(PowerDes, dimension_descriptor)
+	condition = get_name(Condition, condition)
+	equip_type = get_name(EquipType, equip_type)
+	equipment = get_name(Equipment, equipment)
+	concealment_sense = get_name(Sense, concealment_sense)
 
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)

@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, db_multiple, id_multiple
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
@@ -2071,6 +2071,60 @@ def power_move_post_errors(data):
 	keyword = data['keyword']
 	title = data['title']
 
+	speed_per = data['speed_per']
+	distance_per = data['distance_per']
+	flight = data['flight']
+	aquatic = data['aquatic']
+	ground = data['ground']
+	special = data['special']
+	condition_check = data['condition_check']
+	obstacles = data['obstacles']
+	objects = data['objects']
+	permeate = data['permeate']
+	prone = data['prone']
+	equip = data['equip']
+	concealment = data['concealment']
+	extended = data['extended']
+	mass = data['mass']
+	flight_resist = data['flight_resist']
+	flight_resist_check = data['flight_resist_check']
+	flight_equip = data['flight_equip']
+	flight_equip_type = data['flight_equip_type']
+	flight_equipment = data['flight_equipment']
+	flight_conditions = data['flight_conditions']
+	acquatic_type = data['acquatic_type']
+	ground_type = data['ground_type']
+	ground_perm = data['ground_perm']
+	ground_time = data['ground_time']
+	ground_ranged = data['ground_ranged']
+	ground_range = data['ground_range']
+	special_type = data['special_type']
+	teleport_type = data['teleport_type']
+	teleport_change = data['teleport_change']
+	teleport_portal = data['teleport_portal']
+	teleport_obstacles = data['teleport_obstacles']
+	dimension_type = data['dimension_type']
+	dimension_mass_rank = data['dimension_mass_rank']
+	dimension_descriptor = data['dimension_descriptor']
+	special_space = data['special_space']
+	special_time = data['special_time']
+	special_time_carry = data['special_time_carry']
+	condition = data['condition']
+	objects_check = data['objects_check']
+	objects_direction = data['objects_direction']
+	objects_damage = data['object_damage']
+	object_damage = data['object_damage']
+	permeate_type = data['permeate_type']
+	permeate_speed = data['permeate_speed']
+	permeate_cover = data['permeate_cover']
+	equip_type = data['equip_type']
+	equipment = data['equipment']
+	concealment_sense = data['concealment_sense']
+	conceal_opposed = data['conceal_opposed']
+	extended_actions = data['extended_actions']
+	mass_value = data['mass_value']
+
+
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
@@ -2080,6 +2134,13 @@ def power_move_post_errors(data):
 	errors = id_check(PowerCirc, circ, 'Circumstance', errors)
 	errors = id_check(PowerDC, dc, 'DC', errors)
 	errors = id_check(PowerTime, time, 'Time', errors)
+
+	errors = id_check(PowerCheck, flight_resist_check, 'Variable Check', errors)
+	errors = id_check(PowerTime, ground_time, 'Time Effect', errors)
+	errors = id_check(PowerRanged, ground_range, 'Ranged', errors)
+	errors = id_check(PowerCheck, objects_check, 'Variable Check', errors)
+	errors = id_check(PowerDamage, object_damage, 'Damage', errors)
+	errors = id_check(PowerOpposed, conceal_opposed, 'Opposed Check', errors)
 
 	errors = int_check(speed_rank, 'Speed Rank', errors)
 	errors = int_check(speed_trait, 'Speed Trait', errors)
@@ -2093,7 +2154,13 @@ def power_move_post_errors(data):
 	errors = int_check(distance_unit_trait, 'Distance Trait', errors)
 	errors = int_check(distance_unit_value1, 'Distance Furst Value', errors)
 	errors = int_check(distance_unit_value2, 'Distance Second Value', errors)
-	errors  = int_check(speed_rank_mod, 'Speed Rank Modifier', errors)
+	errors = int_check(speed_rank_mod, 'Speed Rank Modifier', errors)
+
+	errors = int_check(dimension_mass_rank, 'Mass Rank', errors)
+	errors = int_check(special_time_carry, 'Carry Mass', errors)
+	errors = int_check(permeate_speed, 'Speed Rank', errors)
+	errors = int_check(extended_actions, 'Extebded Actions', errors)
+	errors = int_check(mass_value, 'Mass Rank', errors)
 
 	errors = id_check(Math, speed_math1, 'Speed Msth 1', errors)
 	errors = id_check(Math, speed_math2, 'Speed Msth 2', errors)
@@ -2103,10 +2170,23 @@ def power_move_post_errors(data):
 	errors = id_check(Math, distance_unit_math1, 'Distance Msth 1', errors)
 	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
+
+	errors = id_multiple(Condition, flight_conditions, 'Condition', errors)
 	
+	errors = id_check(EquipType, flight_equip_type, 'Equipment Type', errors)
+	errors = id_check(Equipment, flight_equipment, 'Equipment', errors)
+	errors = id_check(Ground, ground_type, 'Ground Type', errors)
+	errors = id_check(PowerDes, dimension_descriptor, 'Dimension Descriptor', errors)
+	errors = id_check(Condition, condition, 'Condition', errors)
+	errors = id_check(EquipType, equip_type, 'Equipment Type', errors)
+	errors = id_check(Equipment, equipment, 'Equipment', errors)
+	errors = id_check(Sense, concealment_sense, 'Sense', errors)
+
 	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
+	errors = required(direction, 'Direction', errors)
+
 	errors = of([speed, distance], 'You must set the effect speed or distance', errors)
 
 	errors = variable_fields('rank', 'Speed Rank', speed, [speed_rank], errors)
@@ -2144,8 +2224,12 @@ def power_move_post_errors(data):
 
 	errors = required_if_any(distance, 'Distance Description', distance_description, errors)
 
-	errors = required(direction, 'Direction', errors)
+	errors = check_fields(flight_resist, 'Flight Resistance Check', [flight_resist_check], errors)
+	errors = check_field(flight_resist, 'Flight Resistance Check', 'Variable Check', flight_resist_check, errors)
 
+	errors = check_fields(flight_equip, 'Flight Equipment', [flight_equipment], errors)
+	errors = check_field(flight_equip, 'Flight Equipment', 'Equipment', flight_equipment, errors)
+	
 	return (errors)
 
 def power_opposed_post_errors(data):

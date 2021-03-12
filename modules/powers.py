@@ -34,7 +34,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple 
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -377,7 +377,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	tools = [{'type': '', 'name': 'Tools'}, {'type': 'with', 'name': 'With Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'none', 'name': 'No Tools'}]
 
-	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
+	traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
 	transform = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
 
@@ -4097,6 +4097,60 @@ def power_post_move():
 	keyword = request.get_json()['keyword']
 	title = request.get_json()['title']
 
+	speed_per = request.get_json()['speed_per']
+	distance_per = request.get_json()['distance_per']
+	flight = request.get_json()['flight']
+	aquatic = request.get_json()['aquatic']
+	ground = request.get_json()['ground']
+	special = request.get_json()['special']
+	condition_check = request.get_json()['condition_check']
+	obstacles = request.get_json()['obstacles']
+	objects = request.get_json()['objects']
+	permeate = request.get_json()['permeate']
+	prone = request.get_json()['prone']
+	equip = request.get_json()['equip']
+	concealment = request.get_json()['concealment']
+	extended = request.get_json()['extended']
+	mass = request.get_json()['mass']
+	flight_resist = request.get_json()['flight_resist']
+	flight_resist_check = request.get_json()['flight_resist_check']
+	flight_equip = request.get_json()['flight_equip']
+	flight_equip_type = request.get_json()['flight_equip_type']
+	flight_equipment = request.get_json()['flight_equipment']
+	flight_conditions = request.get_json()['flight_conditions']
+	acquatic_type = request.get_json()['acquatic_type']
+	ground_type = request.get_json()['ground_type']
+	ground_perm = request.get_json()['ground_perm']
+	ground_time = request.get_json()['ground_time']
+	ground_ranged = request.get_json()['ground_ranged']
+	ground_range = request.get_json()['ground_range']
+	special_type = request.get_json()['special_type']
+	teleport_type = request.get_json()['teleport_type']
+	teleport_change = request.get_json()['teleport_change']
+	teleport_portal = request.get_json()['teleport_portal']
+	teleport_obstacles = request.get_json()['teleport_obstacles']
+	dimension_type = request.get_json()['dimension_type']
+	dimension_mass_rank = request.get_json()['dimension_mass_rank']
+	dimension_descriptor = request.get_json()['dimension_descriptor']
+	special_space = request.get_json()['special_space']
+	special_time = request.get_json()['special_time']
+	special_time_carry = request.get_json()['special_time_carry']
+	condition = request.get_json()['condition']
+	objects_check = request.get_json()['objects_check']
+	objects_direction = request.get_json()['objects_direction']
+	objects_damage = request.get_json()['object_damage']
+	object_damage = request.get_json()['object_damage']
+	permeate_type = request.get_json()['permeate_type']
+	permeate_speed = request.get_json()['permeate_speed']
+	permeate_cover = request.get_json()['permeate_cover']
+	equip_type = request.get_json()['equip_type']
+	equipment = request.get_json()['equipment']
+	concealment_sense = request.get_json()['concealment_sense']
+	conceal_opposed = request.get_json()['conceal_opposed']
+	extended_actions = request.get_json()['extended_actions']
+	mass_value = request.get_json()['mass_value']
+
+
 	errors = power_move_post_errors(data)
 
 	errors = linked_move(PowerCirc, circ, 'Circumstance', errors)
@@ -4117,6 +4171,12 @@ def power_post_move():
 	circ = db_integer(PowerCirc, circ)
 	dc = db_integer(PowerDC, dc)
 	time = db_integer(PowerTime, time)
+	flight_resist_check = db_integer(PowerCheck, flight_resist_check)
+	ground_time = db_integer(PowerTime, ground_time)
+	ground_range = db_integer(PowerRanged, ground_range)
+	objects_check = db_integer(PowerCheck, objects_check)
+	object_damage = db_integer(PowerDamage, object_damage)
+	conceal_opposed = db_integer(PowerOpposed, conceal_opposed)
 
 	speed_rank = integer(speed_rank)
 	speed_trait = integer(speed_trait)
@@ -4131,6 +4191,11 @@ def power_post_move():
 	distance_unit_value1 = integer(distance_unit_value1)
 	distance_unit_value2 = integer(distance_unit_value2)
 	speed_rank_mod = integer(speed_rank_mod)
+	dimension_mass_rank = integer(dimension_mass_rank)
+	special_time_carry = integer(special_time_carry)
+	permeate_speed = integer(permeate_speed)
+	extended_actions = integer(extended_actions)
+	mass_value = integer(mass_value)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -4140,6 +4205,17 @@ def power_post_move():
 	distance_unit_math1 = db_integer(Math, distance_unit_math1)
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
+
+	flight_conditions = db
+
+	flight_equip_type = db_integer(EquipType, flight_equip_type)
+	flight_equipment = db_integer(Equipment, flight_equipment)
+	ground_type = db_integer(Ground, ground_type)
+	dimension_descriptor = db_integer(PowerDes, dimension_descriptor)
+	condition = db_integer(Condition, condition)
+	equip_type = db_integer(EquipType, equip_type)
+	equipment = db_integer(Equipment, equipment)
+	concealment_sense = db_integer(Sense, concealment_sense)
 
 	body = {}
 	body['success'] = True
@@ -4187,7 +4263,60 @@ def power_post_move():
 						circ = circ,
 						title = title,
 						keyword = keyword, 
-						time = time)			
+						time = time,												
+						speed_per = speed_per,
+						distance_per = distance_per,
+						flight = flight,
+						aquatic = aquatic,
+						ground = ground,
+						special = special,
+						condition_check = condition_check,
+						obstacles = obstacles,
+						objects = objects,
+						permeate = permeate,
+						prone = prone,
+						equip = equip,
+						concealment = concealment,
+						extended = extended,
+						mass = mass,
+						flight_resist = flight_resist,
+						flight_resist_check = flight_resist_check,
+						flight_equip = flight_equip,
+						flight_equip_type = flight_equip_type,
+						flight_equipment = flight_equipment,
+						flight_conditions = flight_conditions,
+						acquatic_type = acquatic_type,
+						ground_type = ground_type,
+						ground_perm = ground_perm,
+						ground_time = ground_time,
+						ground_ranged = ground_ranged,
+						ground_range = ground_range,
+						special_type = special_type,
+						teleport_type = teleport_type,
+						teleport_change = teleport_change,
+						teleport_portal = teleport_portal,
+						teleport_obstacles = teleport_obstacles,
+						dimension_type = dimension_type,
+						dimension_mass_rank = dimension_mass_rank,
+						dimension_descriptor = dimension_descriptor,
+						special_space = special_space,
+						special_time = special_time,
+						special_time_carry = special_time_carry,
+						condition = condition,
+						objects_check = objects_check,
+						objects_direction = objects_direction,
+						objects_damage = objects_damage,
+						object_damage = object_damage,
+						permeate_type = permeate_type,
+						permeate_speed = permeate_speed,
+						permeate_cover = permeate_cover,
+						equip_type = equip_type,
+						equipment = equipment,
+						concealment_sense = concealment_sense,
+						conceal_opposed = conceal_opposed,
+						extended_actions = extended_actions,
+						mass_value = mass_value
+					)			
 
 
 	db.session.add(entry)

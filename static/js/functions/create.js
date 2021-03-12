@@ -768,10 +768,19 @@ function check(check_input) {
 }
 
 function multiple(multiple_input) {
-	let selectElement = document.getElementById(multiple_input);
-	let selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+	const select = document.getElementById(multiple_input);
+	let values = [];
+	const options = select.options;
+	let o;
 
-	return selectedValues;
+	for (o of options) {
+		if (o.selected) {
+			const value = parseInt(o.value);
+			values.push(value);
+ 		}
+	}
+
+	return (values);
 }
 
 
