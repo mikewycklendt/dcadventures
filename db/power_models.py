@@ -1358,6 +1358,7 @@ class PowerDamage(db.Model):
 	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	ranged = db.Column(db.Boolean)
+	movement = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -1371,7 +1372,8 @@ class PowerDamage(db.Model):
 			'strength': self.strength,
 			'damage_type': self.damage_type,
 			'descriptor': self.descriptor,
-			'ranged': self.ranged
+			'ranged': self.ranged,
+			'movement': self.movement
 		}
 
 
@@ -1790,6 +1792,7 @@ class PowerRanged(db.Model):
 	degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	keyword = db.Column(db.String())
+	movement = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -1830,7 +1833,8 @@ class PowerRanged(db.Model):
 			'circ': self.circ,
 			'degree': self.degree,
 			'damage': self.damage,
-			'keyword': self.keyword
+			'keyword': self.keyword,
+			'movement': self.movement
 		}
 
 class PowerResist(db.Model):
