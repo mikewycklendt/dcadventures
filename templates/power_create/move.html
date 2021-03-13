@@ -699,22 +699,6 @@
 
 	</div>
 
-	<div id="move-condition">
-		<div>
-			Condition:
-		</div>
-
-		<div>
-			<select class="select-sml" id="move_condition" name="move_condition">
-				<option value="">Condition</option>
-				<option value="x">Variable</option>
-				{% for c in conditions %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-
 
 	<div id="move-objects">
 		<div>
@@ -757,6 +741,37 @@
 
 	</div>
 
+	<div id="move-extended">
+		<div>
+			Extended:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
+				<option value="">Move Actions</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="move-condition">
+		<div>
+			Condition:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_condition" name="move_condition">
+				<option value="">Condition</option>
+				<option value="x">Variable</option>
+				{% for c in conditions %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="move-permeate">
 		<div>
 			Permeate:
@@ -794,21 +809,6 @@
 
 	</div>
 
-	<div id="move-extended">
-		<div>
-			Extended:
-		</div>
-
-		<div>
-			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
-				<option value="">Move Actions</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
-	
 	<div id="move-equip">
 		<div>
 			Equipment:
