@@ -6,8 +6,9 @@
 	
 	<div id="ranged-base">
 		<div>
-			<input type="text" id="ranged_keyword" name="ranged_keyword" placeholder="Keyword"> 
+			<input type="text" id="ranged_title" name="ranged_title" placeholder="Title"> 
 		</div>
+
 		<div>
 			<select class="extra-select" id="ranged_extra" name="ranged_extra" onchange="ranged_base()">
 				<option value=>Base or Extra</option>
@@ -491,7 +492,7 @@
 			</select>
 		</div>
 
-		<div>
+		<div style="display: none;">
 			<select class="damage-sml" id="ranged_damage" name="time_damage">
 				<option value="">Damage</option>
 				<option value="">Use Check Table form to put options here</option>
@@ -501,6 +502,10 @@
 			</select>
 		</div>
 
+		<div>
+			<input type="text" id="ranged_keyword" name="ranged_keyword" placeholder="Keyword"> 
+		</div>
+		
 		<div>
 			<div class="btn-entry" id="ranged_submit" name="ranged_submit" onclick="ranged_submit()">
 				 Add

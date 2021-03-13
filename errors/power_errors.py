@@ -976,6 +976,7 @@ def ranged_post_errors(data):
 	degree = data['degree']
 	damage = data['damage']
 	keyword = data['keyword']
+	title = data['title']
 
 	errors = power_check(power_id, errors)
 
@@ -1015,6 +1016,7 @@ def ranged_post_errors(data):
 	errors = int_check(dc_value, 'DC Value', errors)
 	
 	errors = required(keyword, 'Keyword', errors)
+	errors = required(title, 'Title', errors)
 	errors = variable_fields('flat_units', 'Flat Units', range_type, [flat_value, flat_units], errors)
 	errors = variable_field('flat_units', range_type, 'Distance',  flat_value, errors)
 	errors = variable_field('flat_units', range_type, 'Units', flat_units, errors)

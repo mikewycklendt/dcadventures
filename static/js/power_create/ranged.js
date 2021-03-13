@@ -132,7 +132,8 @@ function ranged_submit() {
 	const circ = select("ranged_circ");
 	const degree = select("ranged_degree");
 	const damage = select("ranged_damage");
-	const keyword = select("ranged_keyword")
+	const keyword = text("ranged_keyword")
+	const title = text("ranged_title")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -184,7 +185,8 @@ function ranged_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'keyword': keyword
+			'keyword': keyword,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

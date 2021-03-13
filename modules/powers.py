@@ -32,7 +32,7 @@ from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
+from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple 
 from functions.create import name_exist, db_insert, capitalize
@@ -2445,6 +2445,7 @@ def power_post_ranged():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 	keyword = request.get_json()['keyword']
+	title = request.get_json()['title']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
@@ -2459,6 +2460,9 @@ def power_post_ranged():
 	body = linked_ref(PowerDamage, damage, 'Damage Effect', 'ranged', body)
 	body = linked_ref(PowerDC, dc, 'DC', 'ranged', body)
 	body = linked_ref(PowerDegree, degree, 'Degree', 'ranged', body)
+
+	body = link_add(PowerRanged, PowerRangedType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -2532,7 +2536,8 @@ def power_post_ranged():
 							circ = circ,
 							degree = degree,
 							damage = damage,
-							keyword = keyword)
+							keyword = keyword,
+							title = title)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -2572,23 +2577,9 @@ def power_post_ranged():
 
 @powers.route('/power/ranged/delete/<power_id>', methods=['DELETE'])
 def delete_power_ranged(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerRanged).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_link(PowerRanged, PowerRangedType, power_id)
+	return jsonify(body)
 
 @powers.route('/power/resist/create', methods=['POST'])
 def power_post_resist():
@@ -4155,7 +4146,7 @@ def power_post_move():
 
 	errors = linked_move(PowerCirc, circ, 'Circumstance', errors)
 	errors = linked_move(PowerDC, dc, 'DC', errors)
-	errors = linked_move(PowerDegree, degree, 'Circumstance', errors)
+	errors = linked_move(PowerDegree, degree, 'Degree', errors)
 
 	error = errors['error']
 	if error:
@@ -4223,6 +4214,9 @@ def power_post_move():
 
 	body = link_add(PowerMove, PowerMoveType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
+
+	body = linked_ref(PowerRanged, ground_ranged, 'Ranged Effect', 'movement', body)
+	body = linked_ref(PowerDamage, object_damage, 'Damage Effect', 'movement', body)
 
 	if body['success'] == False:
 		return jsonify(body)

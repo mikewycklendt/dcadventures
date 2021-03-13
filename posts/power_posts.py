@@ -1146,7 +1146,11 @@ def ranged_post(entry, body, cells):
 	degree = entry.degree
 	damage = entry.damage
 	keyword = entry.keyword
+	title = entry.title
 	
+	title_name = get_name(PowerMoveType, title)
+	body['title'] = title_name
+
 	check_trait = trait_select(check_trait, check_trait_type)
 	trait_trait = trait_select(trait_trait, trait_trait_type)
 	distance_mod_trait = trait_select(distance_mod_trait, distance_mod_trait_type)
@@ -1234,7 +1238,7 @@ def ranged_post(entry, body, cells):
 	cells = cell('DC', 15, [dc], cells)
 	cells = cell('Degree', 15, [degree], cells)
 
-	body = send(cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
@@ -2450,6 +2454,35 @@ def power_move_post(entry, body, cells):
 
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)
+
+	aquatic_select = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}]
+	acquatic_type = selects(acquatic_type, aquatic_select)
+
+	openings_select = [{'type': '', 'name': 'Move through'}, {'type': 'opening', 'name': 'Less than water tight'}, {'type': 'water', 'name': 'Less than air tight'}, {'type': 'solid', 'name': 'Through Solid'}, {'type': 'any', 'name': 'Throughh anything'}]
+	permeate_type = selects(permeate_type, openings_select)
+
+	travel_select = [{'type': '', 'name': 'Travel Type'}, {'type': 'dimension', 'name': 'Dimension Travel'}, {'type': 'space', 'name': 'Space Travel'}, {'type': 'time', 'name': 'Time Travel'}, {'type': 'teleport', 'name': 'Teleport'}]
+
+	teleport_change_select = [{'type': '', 'name': 'Can Change'}, {'type': 'direction', 'name': 'Direction'}, {'type': 'velocity', 'name': 'Velocity'}]
+	teleport_change = selects(teleport_change, teleport_change_select)
+
+	teleport_select = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
+	teleport_type = selects(teleport_type, teleport_select)
+
+	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
+	dimension_type = selects(dimension_type, dimensions_select)
+
+	space_select = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
+	special_space = selects(special_space, space_select)
+
+	time_travel_select = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
+	special_time = selects(special_time, time_travel_select)
+
+	permanence_select = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	ground_permanence = selects(ground_permanence, permanence_select)
+
+	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
+	objects_direction = selects(objects_direction, move_objects_select)
 
 
 	cells = cell('Keyword', 18, [keyword])
