@@ -425,6 +425,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	power_ranged = linked_options(PowerRanged, Power, 'power_id', 'name')
 	
+	power_ranged_type = linked_options(PowerRangedType, Power, 'power_id', 'name')
+	
 	power_damage = linked_options(PowerDamage, Power, 'power_id', 'name')
 
 
@@ -454,7 +456,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, move_distance=move_distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
 											multiple_time=multiple_time, time_value=time_value, recovery=recovery, power_circ=power_circ, power_circ_type=power_circ_type, power_dc=power_dc, power_dc_type=power_dc_type, 
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
-											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage)
+											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

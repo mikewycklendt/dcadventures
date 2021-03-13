@@ -1,32 +1,87 @@
-const move_entry = 'move-entry';
-
 function move_check() {
 	const check = "move_check";
 	const title = "move-title";
 	const base = 'move-base';
 	const entry = "move-entry";
 
-	check_title(check, title, base, entry);
+	entry_check(check, title, base, entry);
 }
 
-function move_base() {
-	const field = 'move_extra';
-	const entry = "move-entry";
+function move_speed_trait_type() {
+	const select = 'move_speed_trait_type';
+	const fill = 'move_speed_trait';
 
-	base(field, entry);
+	id_select(select, fill, trait_select);
 }
+
+function move_speed_trait() {
+	const filter = select('move_speed_trait_type');
+	const fill = 'move_speed_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
+function move_distance_unit_trait_type() {
+	const select = 'move_distance_unit_trait_type';
+	const fill = 'move_distance_unit_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function move_distance_unit_trait() {
+	const filter = select('move_distance_unit_trait_type');
+	const fill = 'move_distance_unit_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
+function move_distance_rank_trait_type() {
+	const select = 'move_distance_rank_trait_type';
+	const fill = 'move_distance_rank_trait';
+
+	id_select(select, fill, trait_select);
+}
+
+function move_distance_rank_trait() {
+	const filter = select('move_distance_rank_trait_type');
+	const fill = 'move_distance_rank_trait';
+
+	id_select(fill, fill, trait_filter, filter);
+}
+
+
+function move_speed() {
+	const select = 'move_speed';
+	const options = [{'val': 'rank', 'div': 'move-speed-rank'},
+					{'val': 'rank_mod', 'div': 'move-speed-rank-mod'},
+					{'val': 'mod', 'div': 'move-speed-mod'}]
+	const description = 'move-speed-description';
+	const entry = 'move-entry';
+
+	select_opacity(select, options);
+	select_maxheight_any_entry(select, description, entry);
+}
+
+function move_distance() {
+	const select = 'move_distance';
+	const options = [{'val': 'rank', 'div': 'move-distance-rank'},
+					{'val': 'unit', 'div': 'move-distance-unit'},
+					{'val': 'unit_math', 'div': 'move-distance-unit-math'},
+					{'val': 'rank_math', 'div': 'move-distance-rank-math'}]
+	const description = 'move-distance-description';
+	const entry = 'move-entry';
+
+	select_opacity(select, options);
+	select_maxheight_any_entry(select, description, entry);
+}
+
+const move_entry = 'move-entry';
 
 function move_ground_perm() {
-	const field_field = document.getElementById("move_ground_perm");
-	const field = field_field.options[field_field.selectedIndex].value;
-	const div = "move-ground-time";
+	const select = "move_ground_perm";
+	const options = [{'val': 'temp', 'div': 'move-ground-perm'}];
 
-	if (field == 'temp') {
-		show_maxheight(div)
-	} else {
-		hide_maxheight(div)
-	}
-
+	select_opacity(select, options);
 }
 
 function move_ground() {
@@ -113,9 +168,9 @@ function move_objects_check() {
 
 function move_objects_damage() {
 	const check = 'move_objects_damage';
-	const div = 'move-objects-damage-type';
+	const div = 'move-objects-damage';
 
-	check_opacity(check, div);
+	check_display(check, div);
 }
 
 function move_permeate() {
@@ -190,6 +245,59 @@ function move_mass() {
 	check_drop(check, div, entry);
 }
 
+function move_ground_ranged() {
+	const check = 'move_ground_ranged';
+	const div = 'move-ground-ranged';
+
+	check_display(check, div);
+}
+
+function move_flight_resist() {
+	const check = 'move_flight_resist';
+	const div = 'move_flight_resist';
+
+	check_display(check, div);
+}
+
+function move_flight_equip() {
+	const check = 'move_flight_equip';
+	const div = 'move-flight-equip';
+
+	check_display(check, div);
+}
+
+function move_flight_equip_type() {
+	const select = 'move_flight_equip_type';
+	const fill = 'move_flight_equipment';
+	const sub = 'variable-equip';
+
+	id_select(select, fill, equipment_select, sub);
+}
+
+function move_condition_check() {
+	const check = 'move_condition_check';
+	const div =  'move-condition';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_equip() {
+	const check = 'move_equip';
+	const div = 'move-equip';
+	const entry = 'move-entry';
+
+	check_drop(check, div, entry);
+}
+
+function move_equip_type() {
+	const select = 'move_equip_type';
+	const fill = 'move_equipment';
+	const sub = 'variable-equip';
+
+	id_select(select, fill, equipment_select, sub);
+}
+
 let move_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -201,46 +309,73 @@ function move_submit() {
 	const created = move_grid.titles;
 	const font = move_grid.font;
 
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
+	
 	const extra_id = select("move_extra");
-	const rank = select("move_rank");
-	const math = select("move_math");
-	const mod = select("move_mod");
-	const per_rank = check("move_per_rank");
+	const speed = select("move_speed");
+	const speed_rank = select("move_speed_rank");
+	const speed_rank_mod = select("move_speed_rank_mod");
+	const speed_trait_type = select("move_speed_trait_type");
+	const speed_trait = select("move_speed_trait");
+	const speed_math1 = select("move_speed_math1");
+	const speed_value1 = select("move_speed_value1");
+	const speed_math2 = select("move_speed_math2");
+	const speed_value2 = select("move_speed_value2");
+	const speed_description = text("move_speed_description")
+	const distance = select("move_distance");
+	const distance_rank = select("move_distance_rank");
+	const distance_value = text("move_distance_value");
+	const distance_units = select("move_distance_units");
+	const distance_rank_trait_type = select("move_distance_rank_trait_type");
+	const distance_rank_trait = select("move_distance_rank_trait");
+	const distance_rank_math1 = select("move_distance_rank_math1");
+	const distance_rank_value1 = select("move_distance_rank_value1");
+	const distance_rank_math2 = select("move_distance_rank_math2");
+	const distance_rank_value2 = select("move_distance_rank_value2");
+	const distance_unit_trait_type = select("move_distance_unit_trait_type");
+	const distance_unit_trait = select("move_distance_unit_trait");
+	const distance_unit_math1 = select("move_distance_unit_math1");
+	const distance_unit_value1 = select("move_distance_unit_value1");
+	const distance_unit_math2 = select("move_distance_unit_math2");
+	const distance_unit_value2 = select("move_distance_unit_value2");
+	const distance_math_units = select("move_distance_math_units");
+	const distance_description = text("move_distance_description");
+	const direction = select("move_direction");
+	const dc = select("move_dc");
+	const degree = select("move_degree");
+	const circ = select("move_circ");
+	const time = select("move_time");
+	const keyword = text("move_keyword");
+	const title = text("move_title");
+
+	const speed_per =  check("move_speed_per");
+	const distance_per = check("move_distance_per");
 	const flight = check("move_flight");
 	const aquatic = check("move_aquatic");
 	const ground = check("move_ground");
-	const condition = select("move_condition");
-	const direction = select("move_direction");
-	const distance_type = select("move_distance_type");
-	const distance_value = select("move_distance_value");
-	const distance_math_value = select("move_distance_math_value");
-	const distance_math = select("move_distance_math");
-	const distance_math_value2 = select("move_distance_math_value2");
-	const distance_mod = select("move_distance_mod");
-	const dc = select("move_dc");
-	const others = check("move_others");
-	const continuous = check("move_continuous");
-	const subtle = check("move_subtle");
-	const concentration = check("move_concentration");
+	const special = check("move_special");
+	const condition_check = check("move_condition_check");
 	const obstacles = check("move_obstacles");
 	const objects = check("move_objects");
 	const permeate = check("move_permeate");
-	const special = check("move_special");
 	const prone = check("move_prone");
-	const check_type = check("move_check_type");
-	const materials = check("move_materials");
+	const equip = check("move_equip");
 	const concealment = check("move_concealment");
 	const extended = check("move_extended");
 	const mass = check("move_mass");
-	const mass_value = select("move_mass_value");
-	const extended_actions = select("move_extended_actions");
+	const flight_resist = check("move_flight_resist");
+	const flight_resist_check = select("move_flight_resist_check");
+	const flight_equip = check("move_flight_equip");
+	const flight_equip_type = select("move_flight_equip_type");
+	const flight_equipment = select("move_flight_equipment");
+	const flight_conditions = multiple("move_flight_conditions");
 	const acquatic_type = select("move_acquatic_type");
-	const concealment_sense = select("move_concealment_sense");
-	const concealment_trait_type = select("move_concealment_trait_type");
-	const concealment_trait = select("move_concealment_trait");
-	const permeate_type = select("move_permeate_type");
-	const permeate_speed = select("move_permeate_speed");
-	const permeate_cover = check("move_permeate_cover");
+	const ground_type = select("move_ground_type");
+	const ground_perm = select("move_ground_perm");
+	const ground_time = select("move_ground_time");
+	const ground_ranged = check("move_ground_ranged");
+	const ground_range = select("move_ground_range");
 	const special_type = select("move_special_type");
 	const teleport_type = select("move_teleport_type");
 	const teleport_change = select("move_teleport_change");
@@ -252,79 +387,97 @@ function move_submit() {
 	const special_space = select("move_special_space");
 	const special_time = select("move_special_time");
 	const special_time_carry = select("move_special_time_carry");
-	const ground_type = select("move_ground_type");
-	const ground_permanence = select("move_ground_perm");
-	const ground_time = select("move_ground_time");
-	const ground_units = select("move_ground_units");
-	const ground_ranged = check("move_ground_ranged");
-	const subtle_trait_type = select("move_subtle_trait_type");
-	const subtle_trait = select("move_subtle_trait");
-	const subtle_mod = select("move_subtle_mod");
-	const flight_resist = check("move_flight_resist");
-	const flight_equip = check("move_flight_equip");
-	const flight_conditions = multiple("move_flight_conditions");
+	const condition = select("move_condition");
 	const objects_check = select("move_objects_check");
-	const objects_attack = select("move_objects_attack");
-	const objects_skill_type = select("move_objects_skill_type");
-	const objects_skill = select("move_objects_skill");
 	const objects_direction = select("move_objects_direction");
 	const objects_damage = check("move_objects_damage");
-	const damage_type = select("move_objects_damage_type");
-	const check_trait_type = select("move_check_trait_type");
-	const check_trait = select("move_check_trait");
-	const check_free = check("move_check_free");
-	const ranks = select("move_ranks");
-	const cost = select("move_cost");
-
-	const power_id = document.getElementById('power_id').value;
+	const object_damage = select("move_object_damage");
+	const permeate_type = select("move_permeate_type");
+	const permeate_speed = select("move_permeate_speed");
+	const permeate_cover = check("move_permeate_cover");
+	const equip_type = select("move_equip_type");
+	const equipment = select("move_equipment");
+	const concealment_sense = select("move_concealment_sense");
+	const conceal_opposed = select("move_conceal_opposed");
+	const extended_actions = select("move_extended_actions");
+	const mass_value = select("move_mass_value");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
+
+	const selects = 'move-sml';
+	const select_title = 'move-title-sml'
 
 	response = fetch('/power/move/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'power_id': power_id,
 			'extra_id': extra_id,
-			'rank': rank,
-			'math': math,
-			'mod': mod,
-			'per_rank': per_rank,
+			'columns': columns,
+			'created': created,
+			'font': font,
+			'speed': speed,
+			'speed_rank_mod': speed_rank_mod,
+			'speed_rank': speed_rank,
+			'speed_trait_type': speed_trait_type,
+			'speed_trait': speed_trait,
+			'speed_math1': speed_math1,
+			'speed_value1': speed_value1,
+			'speed_math2': speed_math2,
+			'speed_value2': speed_value2,
+			'speed_description': speed_description,
+			'distance': distance,
+			'distance_rank': distance_rank,
+			'distance_value': distance_value,
+			'distance_units': distance_units,
+			'distance_rank_trait_type': distance_rank_trait_type,
+			'distance_rank_trait': distance_rank_trait,
+			'distance_rank_math1': distance_rank_math1,
+			'distance_rank_value1': distance_rank_value1,
+			'distance_rank_math2': distance_rank_math2,
+			'distance_rank_value2': distance_rank_value2,
+			'distance_unit_trait_type': distance_unit_trait_type,
+			'distance_unit_trait': distance_unit_trait,
+			'distance_unit_math1': distance_unit_math1,
+			'distance_unit_value1': distance_unit_value1,
+			'distance_unit_math2': distance_unit_math2,
+			'distance_unit_value2': distance_unit_value2,
+			'distance_math_units': distance_math_units,
+			'distance_description': distance_description,
+			'direction': direction,
+			'degree': degree,
+			'circ': circ,
+			'dc': dc,
+			'time': time,
+			'keyword': keyword,
+			'title': title,
+			'speed_per': speed_per,
+			'distance_per': distance_per,
 			'flight': flight,
 			'aquatic': aquatic,
 			'ground': ground,
-			'condition': condition,
-			'direction': direction,
-			'distance_type': distance_type,
-			'distance_value': distance_value,
-			'distance_math_value': distance_math_value,
-			'distance_math': distance_math,
-			'distance_math_value2': distance_math_value2,
-			'distance_mod': distance_mod,
-			'dc': dc,
-			'others': others,
-			'continuous': continuous,
-			'subtle': subtle,
-			'concentration': concentration,
+			'special': special,
+			'condition_check': condition_check,
 			'obstacles': obstacles,
 			'objects': objects,
 			'permeate': permeate,
-			'special': special,
 			'prone': prone,
-			'check_type': check_type,
-			'materials': materials,
+			'equip': equip,
 			'concealment': concealment,
 			'extended': extended,
 			'mass': mass,
-			'mass_value': mass_value,
-			'extended_actions': extended_actions,
+			'flight_resist': flight_resist,
+			'flight_resist_check': flight_resist_check,
+			'flight_equip': flight_equip,
+			'flight_equip_type': flight_equip_type,
+			'flight_equipment': flight_equipment,
+			'flight_conditions': flight_conditions,
 			'acquatic_type': acquatic_type,
-			'concealment_sense': concealment_sense,
-			'concealment_trait_type': concealment_trait_type,
-			'concealment_trait': concealment_trait,
-			'permeate_type': permeate_type,
-			'permeate_speed': permeate_speed,
-			'permeate_cover': permeate_cover,
+			'ground_type': ground_type,
+			'ground_perm': ground_perm,
+			'ground_time': ground_time,
+			'ground_ranged': ground_ranged,
+			'ground_range': ground_range,
 			'special_type': special_type,
 			'teleport_type': teleport_type,
 			'teleport_change': teleport_change,
@@ -336,32 +489,20 @@ function move_submit() {
 			'special_space': special_space,
 			'special_time': special_time,
 			'special_time_carry': special_time_carry,
-			'ground_type': ground_type,
-			'ground_permanence': ground_permanence,
-			'ground_time': ground_time,
-			'ground_units': ground_units,
-			'ground_ranged': ground_ranged,
-			'subtle_trait_type': subtle_trait_type,
-			'subtle_trait': subtle_trait,
-			'subtle_mod': subtle_mod,
-			'flight_resist': flight_resist,
-			'flight_equip': flight_equip,
-			'flight_conditions': flight_conditions,
+			'condition': condition,
 			'objects_check': objects_check,
-			'objects_attack': objects_attack,
-			'objects_skill_type': objects_skill_type,
-			'objects_skill': objects_skill,
 			'objects_direction': objects_direction,
 			'objects_damage': objects_damage,
-			'damage_type': damage_type,
-			'check_trait_type': check_trait_type,
-			'check_trait': check_trait,
-			'check_free': check_free,
-			'ranks': ranks,
-			'cost': cost,
-			'columns': columns,
-			'created': created,
-			'font': font
+			'object_damage': object_damage,
+			'permeate_type': permeate_type,
+			'permeate_speed': permeate_speed,
+			'permeate_cover': permeate_cover,
+			'equip_type': equip_type,
+			'equipment': equipment,
+			'concealment_sense': concealment_sense,
+			'conceal_opposed': conceal_opposed,
+			'extended_actions': extended_actions,
+			'mass_value': mass_value
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -372,16 +513,26 @@ function move_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title
+
+			if (add_title == true) {
+				selects_add(title_id, title_name, select_title);
+			}
+			selects_add(id, keyword, selects)
+
 			move_grid.columns.length = 0;
 			move_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table(jsonResponse, move_grid, route);
+			create_table('power', jsonResponse, move_grid, route, [selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			move_grid.titles = true;
-			
+
 		} else {
 			back_errors(err_line, errors, jsonResponse)
 
