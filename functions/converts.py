@@ -366,7 +366,7 @@ def get_multiple(Table, multiple):
 		if names == '':
 			names += name
 		else:
-			names += ', ' name
+			names += ', ' + name
 
 	return (names)
 
