@@ -373,7 +373,7 @@ def arrow_cell(content, final=''):
 	empty = True
 
 	for c in content:
-		if c !- '':
+		if c != '':
 			empty = False
 
 	if empty:

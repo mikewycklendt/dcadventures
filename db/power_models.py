@@ -804,7 +804,7 @@ class PowerMove(db.Model):
 	ground_perm = db.Column(db.String())
 	ground_time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 	ground_ranged = db.Column(db.Boolean)
-	ground_range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
+	
 	special_type = db.Column(db.String())
 	teleport_type = db.Column(db.String())
 	teleport_change = db.Column(db.String())
