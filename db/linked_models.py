@@ -102,7 +102,7 @@ class AdvCircType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'advantage_id': self.advantage_id
 		}
 		
 class AdvDCType(db.Model):
@@ -115,7 +115,7 @@ class AdvDCType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'advantage_id': self.advantage_id
 		}
 		
 class AdvDegreeType(db.Model):
@@ -128,7 +128,7 @@ class AdvDegreeType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'advantage_id': self.advantage_id
 		}
 
 class AdvMoveType(db.Model):
@@ -141,7 +141,7 @@ class AdvMoveType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'advantage_id': self.advantage_id
 		}
 
 class AdvTimeType(db.Model):
@@ -154,7 +154,7 @@ class AdvTimeType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'advantage_id': self.advantage_id
 		}
 
 
@@ -168,7 +168,7 @@ class PowerCircType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'power_id': self.power_id
 		}
 		
 class PowerDCType(db.Model):
@@ -181,7 +181,7 @@ class PowerDCType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'power_id': self.power_id
 		}
 		
 class PowerDegreeType(db.Model):
@@ -194,7 +194,7 @@ class PowerDegreeType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'power_id': self.power_id
 		}
 
 class PowerMoveType(db.Model):
@@ -207,7 +207,20 @@ class PowerMoveType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'power_id': self.power_id
+		}
+
+class PowerRangedType(db.Model):
+	__tablename__ = 'power_ranged_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'power_id': self.power_id
 		}
 
 class PowerTimeType(db.Model):
@@ -220,5 +233,5 @@ class PowerTimeType(db.Model):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'skill_id': self.skill_id
+			'power_id': self.power_id
 		}
