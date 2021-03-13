@@ -332,7 +332,7 @@
 
 #move-permeate {
 	display: grid;
-	grid-template-columns: 12% 18% 22% 15% 20% 13%;
+	grid-template-columns: 12% 18% 22% 15% 23% 10%;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
