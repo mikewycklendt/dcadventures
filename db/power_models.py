@@ -1357,8 +1357,7 @@ class PowerDamage(db.Model):
 	trait = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
-	damage_type = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
-	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	
 	ranged = db.Column(db.Boolean)
 	movement = db.Column(db.Boolean)
 	

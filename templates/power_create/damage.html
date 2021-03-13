@@ -8,7 +8,7 @@
 		<div>
 			<input type="text" id="damage_keyword" name="damage_keyword" placeholder="Keyword">
 		</div>
-		
+
 		<div>
 			<select class="extra-select" id="damage_extra" name="damage_extra" onchange="damage_base()">
 				<option value=>Base or Extra</option>
@@ -70,8 +70,9 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="damage_damage_type" name="damage_damage_type">
+			<select class="select-sml" id="damage_damage_type" name="damage_damage_type" multiple style="height: 6vw; font-size: 90%;">
 				<option value="">Damage Type</option>
+				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for d in damages %}
 					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
@@ -79,8 +80,9 @@
 		</div>
 
 		<div>
-			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor">
+			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor" multiple style="height: 6vw; font-size: 90%;">
 				<option value="">Use above form to put descriptors here</option>
+				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for d in descriptor_options %}
 					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
