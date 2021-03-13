@@ -5,7 +5,11 @@
 	</div>
 	
 	<div class="power-base" id="move-base">
-		
+
+		<div>
+			<input type="text" id="move_title" name="move_title" placeholder="Title">
+		</div>
+				
 		<div>
 			<select class="extra-select" id="move_extra" name="move_extra" >
 				<option value=>Base or Extra</option>
@@ -15,15 +19,12 @@
 
 		<div>
 			<select class="select-entry" id="move_direction" name="move_direction">
-				{% for d in move_direction %}
+				{% for d in direction %}
 					<option value="{{d.type}}">{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div>
-			<input type="text" id="move_title" name="move_title" placeholder="Title">
-		</div>
 	</div>
 
 </div>
