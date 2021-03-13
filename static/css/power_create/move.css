@@ -195,7 +195,7 @@
 
 .move-flight-split {
 	display: grid;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 32% 68%;
 }
 
 #move-flight-resist {
