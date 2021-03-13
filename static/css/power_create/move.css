@@ -343,7 +343,7 @@
 
 #move-equip {
 	display: grid;
-	grid-template-columns: 12% 30% 30% 25%;
+	grid-template-columns: 14% 30% 30% 25%;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
