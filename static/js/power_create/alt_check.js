@@ -95,11 +95,12 @@ function check_submit() {
 	const condition = select("check_condition");
 	const condition_target = select("check_condition_target");
 	const conditions_target = select("check_conditions_target");
+	const ranged = select("check_ranged_type")
 	
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
-	
+
 	const errors = 'check-err';
 	const err_line = 'check-err-line';
 
@@ -136,6 +137,7 @@ function check_submit() {
 			'dc_value': dc_value,
 			'time': time,
 			'move': move,
+			'ranged': ranged,
 			'keyword': keyword,
 			'attack': attack,
 			'opposed': opposed,

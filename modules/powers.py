@@ -3211,7 +3211,8 @@ def power_post_check():
 	opposed = request.get_json()['opposed']
 	condition = request.get_json()['condition']
 	condition_target = request.get_json()['condition_target']
-	conditions_target = request.get_json()['conditions_target']
+	conditions_target = request.get_json()['conditions_target']\
+	ranged = request.get_json()['ranged']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3223,6 +3224,7 @@ def power_post_check():
 	move = db_integer(PowerMoveType, move)
 	opposed = db_integer(PowerOpposed, opposed)
 	dc_value = db_integer(PowerDC, dc_value)
+	ranged = db_integer(PowerRangedType, ranged)
 
 	attack = integer(attack)
 
@@ -3263,9 +3265,8 @@ def power_post_check():
 						opposed = opposed,
 						condition = condition,
 						condition_target = condition_target,
-						conditions_target = conditions_target
-
-
+						conditions_target = conditions_target,
+						ranged = ranged
 					)
 
 	db.session.add(entry)

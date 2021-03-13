@@ -361,7 +361,7 @@ def one_of(value, contentlist, final=''):
 		value = ''
 		return (value)
 	else:
-		content = '`'
+		content = ''
 		for c in contentlist:
 			if content == '':
 				content += c
@@ -369,6 +369,25 @@ def one_of(value, contentlist, final=''):
 				content += ' ' + c
 		return (content)
 
+def arrow_cell(content, final=''):
+	empty = True
+
+	for c in content:
+		if c !- '':
+			empty = False
+
+	if empty:
+		return (final)
+
+	content = ''
+	for c in contentlist:
+		if content == '':
+			content += c
+		else:
+			content += ' ' + c
+	return (content)
+
+	
 
 def check_cell(title, width, check, cells, mod_check=False):
 

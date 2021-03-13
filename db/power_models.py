@@ -244,6 +244,7 @@ class PowerCheck(db.Model):
 	time = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	dc_value = db.Column(db.Integer, db.ForeignKey('power_dc.id'))
 	move = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
+	ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	attack = db.Column(db.Integer)
 	opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
@@ -276,6 +277,7 @@ class PowerCheck(db.Model):
 			'dc_value': self.dc_value,
 			'time': self.time,
 			'move': self.move,
+			'ranged': self.ranged,
 			'keyword': self.keyword,
 			'attack': self.attack,
 			'opposed': self.opposed,

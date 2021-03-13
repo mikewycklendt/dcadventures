@@ -203,6 +203,9 @@
 			<select class="degree-title-sml" id="check_degree_type" name="check_degree_type">
 				<option value="">Degree</option>
 				<option value="">Use Degree form to put options here</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -210,6 +213,9 @@
 			<select class="circ-title-sml" id="check_circ_type" name="check_circ_type">
 				<option value="">Circumstance</option>
 				<option value="">Use Circumstance form to put options here</option>
+				{% for p in power_circ_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -217,6 +223,9 @@
 			<select class="time-title-sml" id="check_time_type" name="check_time_type">
 				<option value="">Time Effect</option>
 				<option value="">Use Time Effect form to put options here</option>
+				{% for p in power_time_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -224,6 +233,19 @@
 			<select class="move-title-sml" id="check_move_type" name="check_move_type">
 				<option value="">Movement</option>
 				<option value="">Use Movement Effect form to put options here</option>
+				{% for p in power_move_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="ranged-title-sml" id="check_ranged_type" name="check_range_type">
+				<option value="">Ranged</option>
+				<option value="">Use Ranged form to put options here</option>
+				{% for p in power_ranged_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>

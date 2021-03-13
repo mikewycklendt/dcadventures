@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
+from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -21,7 +21,7 @@ from functions.linked import link_add, delete_link, level_add, delete_level, lin
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
 
@@ -1616,6 +1616,7 @@ def power_check_post(entry, body, cells):
 	condition = entry.condition
 	condition_target = entry.condition_target
 	conditions_target = entry.conditions_target
+	ranged = entry.ranged
 
 	body['title'] = keyword
 	body['add_title'] = True
@@ -1641,6 +1642,7 @@ def power_check_post(entry, body, cells):
 	move = get_name(PowerMoveType, move)
 	dc_value = get_keyword(PowerDC, dc_value)
 	opposed = get_keyword(PowerOpposed, opposed)
+	ranged = get_name(PowerRangedType, ranged)
 
 	attack = integer_convert(attack)
 
@@ -1667,12 +1669,16 @@ def power_check_post(entry, body, cells):
 
 	attack = add_plus(attack)
 	cells = cell('Attack', 9, [attack], cells)
-	cells = cell('Opposed', 14, [opposed], cells)
-	cells = cell('Circumstance', 14, [circ], cells)
-	cells = cell('DC', 14, [dc, dc_value], cells)
-	cells = cell('Degree', 14, [degree], cells)
-	cells = cell('Movement', 14, [move], cells)
-	cells = cell('Time', 14, [time], cells)
+
+	cells = circ_cell('Opposed', 'Opposed', 8, opposed, cells, body)
+	cells = circ_cell('Circ Mod', 'Circumstance', 8, circ, cells, body)
+	content = arrow_cell([dc])
+	content = arrow_cell([dc_value], content)
+	cells = circ_cell('DC', 'DC', 5, content, cells, body)
+	cells = circ_cell('Degree', 'Degree', 7, degree, cells, body)
+	cells = circ_cell('Move', 'Move', 6, move, cells, body)
+	cells = circ_cell('Time', 'Time', 6, time, cells, body)
+	cells = circ_cell('Ranged', 'Ranged', 7, ranged, cells, body)
 
 	cells = check_cell('Free', 7, free, cells)
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)

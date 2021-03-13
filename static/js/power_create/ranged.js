@@ -142,6 +142,7 @@ function ranged_submit() {
 	const err_line = 'ranged-err-line';
 
 	const selects = 'ranged-sml';
+	const select_title = 'ranged-type-sml';
 
 	response = fetch('/power/ranged/create', {
 		method: 'POST',
@@ -198,6 +199,13 @@ function ranged_submit() {
 		if (jsonResponse.success) {
 
 			const id = jsonResponse.id;
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title
+
+			if (add_title == true) {
+				selects_add(title_id, title_name, select_title);
+			}
 
 			selects_add(id, keyword, selects);
 
@@ -206,7 +214,7 @@ function ranged_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, ranged_grid, route, [selects]);
+			create_table('power', jsonResponse, ranged_grid, route, [selects], title_id, [select_title]);
 			clear_errors(err_line, errors)
 
 			ranged_grid.titles = true;

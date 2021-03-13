@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerTimeType
+from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -1362,6 +1362,7 @@ def power_check_post_errors(data):
 	dc_value = data['dc_value']
 	time = data['time']
 	move = data['move']
+	ranged = data['ranged']
 	keyword = data['keyword']
 	attack = data['attack']
 	opposed = data ['opposed']
@@ -1391,6 +1392,7 @@ def power_check_post_errors(data):
 	errors = id_check(PowerTimeType, time, 'Time Effect', errors)
 	errors = id_check(PowerMoveType, move, 'Movement Effect', errors)
 	errors = id_check(PowerOpposed, opposed, 'Opponent Check', errors)
+	errors = id_check(PowerRangedType, ranged, 'Ranged', errors)
 
 	errors = int_check(attack, 'Attack Check Modifier', errors)
 
