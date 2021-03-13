@@ -179,7 +179,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 65% 35%;
+	grid-template-columns: 60% 40%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -195,7 +195,7 @@
 
 .move-flight-split {
 	display: grid;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 25% 75%;
 }
 
 #move-flight-resist {
