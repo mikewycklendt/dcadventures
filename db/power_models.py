@@ -480,6 +480,8 @@ class PowerDC(db.Model):
 	descriptor_effect = db.Column(db.String())
 	descriptor_target = db.Column(db.String())
 	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	descrip = db.Column(db.Boolean)
+
 
 	def format(self):
 		return {
@@ -562,7 +564,8 @@ class PowerDC(db.Model):
 			'ranged': self.ranged,
 			'descriptor_effect': self.descriptor_effect,
 			'descriptor_target': self.descriptor_target,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'descrip': self.descrip
 		}
 
 

@@ -3376,6 +3376,9 @@ def power_post_circ():
 	environment = request.get_json()['environment']
 	nature = request.get_json()['nature']
 	check_type = request.get_json()['check_type']
+	descriptor_effect = request.get_json()['descriptor_effect']
+	descriptor_target = request.get_json()['descriptor_target']
+	descriptor = request.get_json()['descriptor']
 
 	errors = power_circ_post_errors(data)
 
@@ -3403,6 +3406,7 @@ def power_post_circ():
 	environment = db_integer(Environment, environment)
 	nature = db_integer(Nature, nature)
 	check_type = db_integer(Check, check_type)
+	descriptor = descriptor(PowerDes, descriptor)
 
 	lasts = db_integer(PowerTime, lasts)
 
@@ -3470,7 +3474,10 @@ def power_post_circ():
 						trait_target = trait_target,
 						environment = environment,
 						nature = nature,
-						check_type = check_type
+						check_type = check_type,
+						descriptor_effect = descriptor_effect,
+						descriptor_target = descriptor_target,
+						descriptor = descriptor
 					)
 
 	db.session.add(entry)
@@ -3588,6 +3595,9 @@ def power_post_dc():
 	equipment_type = request.get_json()['equipment_type']
 	equipment = request.get_json()['equipment']
 	equip = request.get_json()['equip']
+	descriptor_effect = request.get_json()['descriptor_effect']
+	descriptor_target = request.get_json()['descriptor_target']
+	descriptor = request.get_json()['descriptor']
 
 
 	errors = power_dc_post_errors(data)
@@ -3620,6 +3630,7 @@ def power_post_dc():
 	complexity = db_integer(Complex, complexity)
 	equipment_type = db_integer(EquipType, equipment_type)
 	equipment = db_integer(Equipment, equipment)
+	descriptor = descriptor(PowerDes, descriptor)
 
 	time = db_integer(PowerTime, time)
 	variable = db_integer(PowerCheck, variable)
@@ -3722,7 +3733,10 @@ def power_post_dc():
 					equipment_use = equipment_use,
 					equipment_type = equipment_type,
 					equipment = equipment,
-					equip = equip
+					equip = equip,
+					descriptor_effect = descriptor_effect,
+					descriptor_target = descriptor_target,
+					descriptor = descriptor
 				)
 
 	db.session.add(entry)
@@ -3851,6 +3865,9 @@ def power_post_degree():
 	effect_target = request.get_json()['effect_target']
 	value_type = request.get_json()['value_type']
 	description = request.get_json()['description']
+	descriptor_effect = request.get_json()['descriptor_effect']
+	descriptor_target = request.get_json()['descriptor_target']
+	descriptor = request.get_json()['descriptor']
 
 	errors = power_degree_post_errors(data)
 
@@ -3881,6 +3898,7 @@ def power_post_degree():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 	check_type = db_integer(Check, check_type)
+	descriptor = descriptor(PowerDes, descriptor)
 
 	opposed = db_integer(PowerOpposed, opposed)
 	resist_dc = db_integer(PowerDC, resist_dc)
@@ -4013,7 +4031,10 @@ def power_post_degree():
 						title = title,
 						effect_target = effect_target,
 						value_type = value_type,
-						description = description)
+						description = description,
+						descriptor_effect = descriptor_effect,
+						descriptor_target = descriptor_target,
+						descriptor = descriptor)
 
 	db.session.add(entry)
 	db.session.commit()
