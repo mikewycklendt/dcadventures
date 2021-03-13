@@ -225,7 +225,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 17% 15% auto auto auto;
+	grid-template-columns: 10% 17% 17% auto auto auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -307,7 +307,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 60%;
+	grid-template-columns: 12% 25% 63%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -315,7 +315,7 @@
 
 #move-objects {
 	display: grid;
-	grid-template-columns: 15% auto auto auto auto;
+	grid-template-columns: 10% auto auto auto auto;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
