@@ -2533,7 +2533,7 @@ def power_move_post(entry, body, cells):
 	cells = check_cell('Equipment', 11, equip, cells, True)
 	new_mod = mod_create('Equipment', 15)
 	new_mod = mod_cell('Type:', 6, [equip_type], new_mod)
-	new_mod = mod_cell('Required:' 12, [equipment], new_mod)
+	new_mod = mod_cell('Required:', 12, [equipment], new_mod)
 	body = mod_add(equip, new_mod, body)
 
 	cells = check_cell('Conceal', 9, concealment, cells, True)
