@@ -1792,6 +1792,7 @@ class PowerRanged(db.Model):
 	degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	keyword = db.Column(db.String())
+	title = db.Column(db.String())
 	movement = db.Column(db.Boolean)
 
 	def format(self):
@@ -1834,7 +1835,8 @@ class PowerRanged(db.Model):
 			'degree': self.degree,
 			'damage': self.damage,
 			'keyword': self.keyword,
-			'movement': self.movement
+			'movement': self.movement,
+			'title': self.title
 		}
 
 class PowerResist(db.Model):
