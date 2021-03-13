@@ -254,7 +254,7 @@ function move_ground_ranged() {
 
 function move_flight_resist() {
 	const check = 'move_flight_resist';
-	const div = 'move_flight_resist';
+	const div = 'move-flight-resist';
 
 	check_display(check, div);
 }

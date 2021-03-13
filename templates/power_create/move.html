@@ -9,7 +9,7 @@
 		<div>
 			<input type="text" id="move_title" name="move_title" placeholder="Title">
 		</div>
-				
+
 		<div>
 			<select class="extra-select" id="move_extra" name="move_extra" >
 				<option value=>Base or Extra</option>
@@ -475,7 +475,7 @@
 			<div class="move-flight-split">
 				<div>
 					<div class="check-div">
-						<input type="checkbox" id="move_flight_equip" class="medium-checkbox med-checkbox" onclick="move_flight_equip()"> Requires Equipment
+						<input type="checkbox" id="move_flight_equip" class="medium-checkbox med-checkbox" onclick="move_flight_equip()"> Equipment
 					</div>
 				</div>
 
@@ -503,10 +503,10 @@
 
 		<div>
 
-			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple style="height: 6vw; font-size: 110%;">
+			<select class="select-sml" id="move_flight_conditions" name="move_flight_conditions" multiple style="height: 6vw; font-size: 900%;">
 				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for c in conditions %}
-					<option value="{{c.id}}">{{c.name}}</optiodddddddddddn>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
