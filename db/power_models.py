@@ -338,6 +338,9 @@ class PowerCirc(db.Model):
 	nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	ranged = db.Column(db.Boolean)
+	descriptor_effect = db.Column(db.String())
+	descriptor_target = db.Column(db.String())
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	
 	def format(self):
 		return {
@@ -388,7 +391,10 @@ class PowerCirc(db.Model):
 			'environment': self.environment,
 			'nature': self.nature,
 			'check_type': self.check_type,
-			'ranged': self.ranged
+			'ranged': self.ranged,
+			'descriptor_effect': self.descriptor_effect,
+			'descriptor_target': self.descriptor_target,
+			'descriptor': self.descriptor
 		}
 
 
@@ -471,6 +477,9 @@ class PowerDC(db.Model):
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	equip = db.Column(db.Boolean)
 	ranged = db.Column(db.Boolean)
+	descriptor_effect = db.Column(db.String())
+	descriptor_target = db.Column(db.String())
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -550,7 +559,10 @@ class PowerDC(db.Model):
 			'equipment_type': self.equipment_type,
 			'equipment': self.equipment,
 			'equip': self.equip,
-			'ranged': self.ranged
+			'ranged': self.ranged,
+			'descriptor_effect': self.descriptor_effect,
+			'descriptor_target': self.descriptor_target,
+			'descriptor': self.descriptor
 		}
 
 
@@ -643,6 +655,9 @@ class PowerDegree(db.Model):
 	value_type = db.Column(db.String())
 	description = db.Column(db.String())
 	ranged = db.Column(db.Boolean)
+	descriptor_effect = db.Column(db.String())
+	descriptor_target = db.Column(db.String())
+	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -730,7 +745,10 @@ class PowerDegree(db.Model):
 			'effect_target': self.effect_target,
 			'value_type': self.value_type,
 			'description': self.description,
-			'ranged': self.ranged
+			'ranged': self.ranged,
+			'descriptor_effect': self.descriptor_effect,
+			'descriptor_target': self.descriptor_target,
+			'descriptor': self.descriptor
 		}
 
 
@@ -1357,7 +1375,8 @@ class PowerDamage(db.Model):
 	trait = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
-	
+	damage_type = db.Column(db.ARRAY(db.Integer))
+	descriptor = db.Column(db.ARRAY(db.Integer))
 	ranged = db.Column(db.Boolean)
 	movement = db.Column(db.Boolean)
 	

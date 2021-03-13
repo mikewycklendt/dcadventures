@@ -247,6 +247,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
+	descriptor_effect = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
+
 	determined = [{'type': '', 'name': 'Determined By'}, {'type': 'dc', 'name': 'DC'}, {'type': 'target', 'name': 'Target Trait'}, {'type': 'player', 'name': 'Player Trait'}]
 
 	dimensions = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
@@ -257,7 +259,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
-	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
 	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
 
@@ -363,6 +365,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
 
+	targets_object = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
+
 	task_type = [{'type': '', 'name': 'Does Not Work On'}, {'type': 'physical', 'name': 'Physical Tasks'}, {'type': 'mental', 'name': 'Mental Tasks'}]
 
 	teleport = [{'type': '', 'name': 'Type'}, {'type': 'know', 'name': 'Know Destination'}, {'type': 'any', 'name': 'Any Destination'}]
@@ -458,7 +462,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											repair=repair, degree_type=degree_type, nullify=nullify, speed=speed, move_distance=move_distance, attached=attached, frequency=frequency, multiple_opposed=multiple_opposed,
 											multiple_time=multiple_time, time_value=time_value, recovery=recovery, power_circ=power_circ, power_circ_type=power_circ_type, power_dc=power_dc, power_dc_type=power_dc_type, 
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
-											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction)
+											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
+											targets_object=targets_object, descriptor_effect=descriptor_effect)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -4169,7 +4174,7 @@ def power_post_move():
 	time = db_integer(PowerTime, time)
 	flight_resist_check = db_integer(PowerCheck, flight_resist_check)
 	ground_time = db_integer(PowerTime, ground_time)
-	ground_range = db_integer(PowerRanged, ground_range)
+	ground_range = db_integer(PowerRangedType, ground_range)
 	objects_check = db_integer(PowerCheck, objects_check)
 	object_damage = db_integer(PowerDamage, object_damage)
 	conceal_opposed = db_integer(PowerOpposed, conceal_opposed)

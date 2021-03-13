@@ -55,8 +55,8 @@ function dc_complex() {
 	check_drop(check, div, entry);
 }
 
-function dc_descriptor() {
-	const check = 'dc_descriptor_check';
+function dc_descrip() {
+	const check = 'dc_descrip';
 	const div = 'dc-descriptor';
 	const entry = 'dc-entry';
 
@@ -334,6 +334,9 @@ function dc_submit() {
 	const equipment_type = select("dc_equipment_type");
 	const equipment = select("dc_equipment");
 	const equip = check("dc_equip");
+	const descriptor_effect = select("dc_descriptor_effect");
+	const descriptor_target = select("dc_descriptor_target");
+	const descriptor = select("dc_descriptor");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");

@@ -78,6 +78,34 @@
 
 	<div id="deg-mod-effect">
 
+			
+		<div id="deg-mod-descriptor">
+			<div>
+				<select class="select-sml" id="deg_mod_descriptor_effect" name="dc_descriptor_effect">
+					{% for d in descriptor_effect %}
+						<option value="{{d.type}}">{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_descriptor_target" name="dc_descriptor_target">
+					{% for e in effect_target %}
+						<option value="{{e.type}}">{{e.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="descriptor-sml" id="deg_mod_descriptor" name="dc_descriptor">
+					<option value="">Use above form to put descriptors here</option>
+					{% for d in descriptor_options %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 		<div id="deg-mod-action">
 			<div>
 				<select class="select-sml" id="deg_mod_action" name="deg_mod_action">

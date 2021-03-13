@@ -155,6 +155,9 @@ function circ_submit() {
 	const environment = select("circ_environment")
 	const nature = select("circ_nature")
 	const check_type  = select("circ_check_type");
+	const descriptor_effect = select("circ_descriptor_effect");
+	const descriptor_target = select("circ_descriptor_target");
+	const descriptor = select("circ_descriptor");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';

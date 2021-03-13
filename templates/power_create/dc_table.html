@@ -149,7 +149,7 @@
 		
 	</div>
 
-	<div id="dc-row2">
+	<div id="dc-row2" style="font-size: 90%;">
 
 		<div>
 			<div class="check-div">
@@ -186,10 +186,16 @@
 				<input type="checkbox" id="dc_tools_check" class="medium-checkbox med-checkbox" onclick="dc_tools_check()"> Tools
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_descrip" class="medium-checkbox med-checkbox" onclick="dc_descrip()"> Descriptor
+			</div>
+		</div>
 
 	</div>
 
-	<div id="dc-row3">
+	<div id="dc-row3" style="font-size: 90%;">
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="dc_complex" class="medium-checkbox med-checkbox" onclick="dc_complex()"> Complexity
@@ -700,6 +706,37 @@
 			<div class="check-div">
 				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > Only if no Damage
 			</div>
+		</div>
+	</div>
+
+	<div id="dc-descriptor">
+		<div>
+			Descriptor:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_descriptor_effect" name="dc_descriptor_effect">
+				{% for d in descriptor_effect %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_descriptor_target" name="dc_descriptor_target">
+				{% for e in effect_target %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="descriptor-sml" id="dc_descriptor" name="dc_descriptor">
+				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
 
