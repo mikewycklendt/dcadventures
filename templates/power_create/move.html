@@ -794,6 +794,21 @@
 
 	</div>
 
+	<div id="move-extended">
+		<div>
+			Extended:
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
+				<option value="">Move Actions</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
 	<div id="move-equip">
 		<div>
 			Equipment:
@@ -842,20 +857,6 @@
 
 	</div>
 
-	<div id="move-extended">
-		<div>
-			Extended:
-		</div>
-
-		<div>
-			<select class="select-sml" id="move_extended_actions" name="move_extended_actions">
-				<option value="">Move Actions</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</div>
 
 	<div id="move-mass">
 		<div>
