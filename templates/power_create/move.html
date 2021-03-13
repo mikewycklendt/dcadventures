@@ -5,6 +5,14 @@
 	</div>
 	
 	<div class="power-base" id="move-base">
+		
+		<div>
+			<select class="extra-select" id="move_extra" name="move_extra" >
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+
 		<div>
 			<select class="select-entry" id="move_direction" name="move_direction">
 				{% for d in direction %}
