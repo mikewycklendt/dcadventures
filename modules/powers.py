@@ -895,7 +895,7 @@ def power_post_cost():
 							keyword = keyword,
 							cost = cost,
 							rank = rank,
-							flat = flat.
+							flat = flat,
 							extra = extra)
 
 		db.session.add(entry)
