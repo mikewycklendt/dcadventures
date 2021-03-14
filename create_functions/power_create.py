@@ -111,7 +111,16 @@ def ranks_function(id, ranks, base_cost, base_ranks):
 	return (value)
 
 
-def cost_error()
+def cost_error():
+	error_msgs = errors['error_msgs']
+	error = False
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 
 def power_check(value, errors):
 	error_msgs = errors['error_msgs']
