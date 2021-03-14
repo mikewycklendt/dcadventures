@@ -800,7 +800,7 @@ def delete_power_extra(power_id):
 	body = {}
 	body['success'] = True
 	body['id'] = power_id
-	try:``
+	try:
 		db.session.query(Extra).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
