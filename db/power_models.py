@@ -870,6 +870,7 @@ class PowerMove(db.Model):
 	conceal_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	extended_actions = db.Column(db.Integer)
 	mass_value = db.Column(db.Integer)
+	cost = db.Column(db.Integer, db.ForeignKey('power_cosr.id'))
 	
 	
 	def format(self):
@@ -964,7 +965,8 @@ class PowerMove(db.Model):
 			'concealment_sense': self.concealment_sense,
 			'conceal_opposed': self.conceal_opposed,
 			'extended_actions': self.extended_actions,
-			'mass_value': self.mass_value
+			'mass_value': self.mass_value,
+			'cost': self.cost
 		}
 
 
@@ -1205,7 +1207,7 @@ class PowerChar(db.Model):
 	appear_description = db.Column(db.String())
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
-	cost = db.Column(db.Integer)
+	
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1319,7 +1321,7 @@ class PowerCreate(db.Model):
 	support_action_rounds = db.Column(db.Integer)
 	support_effort = db.Column(db.Integer)
 	support_effort_rounds = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
+
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1523,7 +1525,7 @@ class PowerEnv(db.Model):
 	visibility_trait_type = db.Column(db.String())
 	visibility_trait = db.Column(db.Integer)
 	visibility_mod = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
+
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1701,7 +1703,7 @@ class PowerMod(db.Model):
 	points_rerolls = db.Column(db.Integer)
 	points_reroll_result = db.Column(db.String())
 	ranks_cost = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
+
 
 	def format(self):
 		return {
@@ -2014,7 +2016,7 @@ class PowerSenseEffect(db.Model):
 	distance_factor = db.Column(db.Integer)
 	dimensional_type = db.Column(db.String())
 	ranks = db.Column(db.Integer)
-	cost = db.Column(db.Integer)
+
 
 	def format(self):
 		return {
