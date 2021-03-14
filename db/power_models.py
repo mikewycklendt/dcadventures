@@ -224,6 +224,7 @@ class PowerCost(db.Model):
 	keyword = db.Column(db.String())
 	cost = db.Column(db.Integer)
 	rank = db.Column(db.Integer)
+	ranks = db.Column(db.Integer)
 	flat = db.Column(db.Boolean)
 
 	def format(self):
@@ -233,6 +234,7 @@ class PowerCost(db.Model):
 			'keyword': self.keyword,
 			'cost': self.cost,
 			'rank': self.rank,
+			'ranks': self.ranks,
 			'flat': self.flat
 		}
 
