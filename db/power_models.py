@@ -897,6 +897,8 @@ class PowerMove(db.Model):
 	extended_actions = db.Column(db.Integer)
 	mass_value = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
+	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
+
 	
 	
 	def format(self):
@@ -992,7 +994,8 @@ class PowerMove(db.Model):
 			'conceal_opposed': self.conceal_opposed,
 			'extended_actions': self.extended_actions,
 			'mass_value': self.mass_value,
-			'cost': self.cost
+			'cost': self.cost,
+			'ranks': self.ranks
 		}
 
 
@@ -1234,7 +1237,7 @@ class PowerChar(db.Model):
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
-	ranks = db.Column(db.Integer)
+
 
 	def format(self):
 		return {
@@ -1348,7 +1351,7 @@ class PowerCreate(db.Model):
 	support_effort = db.Column(db.Integer)
 	support_effort_rounds = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
-	ranks = db.Column(db.Integer)
+
 
 	def format(self):
 		return {
@@ -1552,7 +1555,7 @@ class PowerEnv(db.Model):
 	visibility_trait = db.Column(db.Integer)
 	visibility_mod = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
-	ranks = db.Column(db.Integer)
+
 
 	def format(self):
 		return {
@@ -1666,7 +1669,7 @@ class PowerMod(db.Model):
 	subtle = db.Column(db.Boolean)
 	permanent = db.Column(db.Boolean)
 	points = db.Column(db.Boolean)
-	ranks = db.Column(db.Boolean)
+
 	action = db.Column(db.Boolean)
 	side_effect = db.Column(db.Boolean)
 	concentration = db.Column(db.Boolean)
@@ -1728,7 +1731,7 @@ class PowerMod(db.Model):
 	points_reroll_cost = db.Column(db.Integer)
 	points_rerolls = db.Column(db.Integer)
 	points_reroll_result = db.Column(db.String())
-	ranks_cost = db.Column(db.Integer)
+
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 
 	def format(self):
@@ -2041,7 +2044,7 @@ class PowerSenseEffect(db.Model):
 	distance_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	distance_factor = db.Column(db.Integer)
 	dimensional_type = db.Column(db.String())
-	ranks = db.Column(db.Integer)
+
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 
 
