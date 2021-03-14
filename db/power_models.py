@@ -35,6 +35,8 @@ class Power(db.Model):
 	power_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	duration = db.Column(db.Integer, db.ForeignKey('power_duration.id'))
 	cost = db.Column(db.Integer)
+	ranks = db.Column(db.Integer)
+	flat = db.Column(db.Boolean)
 	limit = db.Column(db.Integer)
 	dc_type = db.Column(db.String())
 	dc_value = db.Column(db.Integer)
@@ -91,6 +93,7 @@ class Power(db.Model):
 	base = db.Column(db.Boolean)
 	active = db.Column(db.Boolean)
 
+
 	def format(self):
 		return {
 			'id': self.id,
@@ -101,6 +104,8 @@ class Power(db.Model):
 			'power_range': self.power_range,
 			'duration': self.duration,
 			'cost': self.cost,
+			'ranks': self.ranks,
+			'flat': self.flat,
 			'limit': self.limit,
 			'dc_type': self.dc_type,
 			'dc_value': self.dc_value,
@@ -188,6 +193,7 @@ class Extra(db.Model):
 	des = db.Column(db.String())
 	inherit = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	alternate = db.Column(db.Boolean)
+	flat = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -207,6 +213,7 @@ class Extra(db.Model):
 			'des': self.des,
 			'inherit': self.inherit,
 			'alternate': self.alternate,
+			'flat': self.flat,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
@@ -224,8 +231,8 @@ class PowerCost(db.Model):
 	keyword = db.Column(db.String())
 	cost = db.Column(db.Integer)
 	rank = db.Column(db.Integer)
-	ranks = db.Column(db.Integer)
 	flat = db.Column(db.Boolean)
+	extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
 
 	def format(self):
 		return {
@@ -234,8 +241,25 @@ class PowerCost(db.Model):
 			'keyword': self.keyword,
 			'cost': self.cost,
 			'rank': self.rank,
+			'flat': self.flat,
+			'extra': self.extra
+		}
+
+class PowerRanks(db.Model):
+	__tablename__ = 'power_ranks'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
+	ranks = db.Column(db.Integer)
+	extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
+
+	def format(self):
+		return {
+			'id': self.id,
+			'power_id': self.power_id,
+			'cost': self.cost,
 			'ranks': self.ranks,
-			'flat': self.flat
+			'extra': self.extra
 		}
 
 class PowerCheck(db.Model):

@@ -13,6 +13,8 @@ const feature_select = '/select/feature';
 const medium_select = '/select/medium';
 const medium_subtype_select = '/select/medium/subtype';
 const descriptor_select = '/select/descriptor';
+const power_cost_select = '/select/power/cost'
+const power_ranks_select = '/select/power/ranks'
 
 const head_feature_info_select = '/info/headquarters/feature';
 const feature_info_select = '/info/feature';
@@ -25,7 +27,7 @@ const ability_icon_select = '/select/icon/ability';
 const variable_sub = 'variable';
 const any_var_sub = 'any-var';
 
-function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false) {
+function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false, power_id=false) {
 	const id = select(id_field);
 
 	response = fetch(route, {
@@ -34,7 +36,8 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 			'id': id,
 			'sub': sub,
 			'fields': fill,
-			'titles': titles
+			'titles': titles,
+			'power_id': power_id
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

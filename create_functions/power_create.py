@@ -17,7 +17,101 @@ from db.weapon_models import *
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
+def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id):
+	error_msgs = errors['error_msgs']
+	error = False
 
+	name = 'base power'
+
+	if extra_id == '':
+		error = True
+		message = 'You must select an extra or set this variable rank to base power.'
+		error_msgs.append(message)
+	elif extra_id == '0':
+		base_cost = base_cost
+		base_ranks = base_ranks
+		base_flat = base_flat
+	else:
+		extra = db.session.query(Extra).filter_by(id=extra_id).one()
+		base_cost = extra.cost
+		base_ranks = extra.ranks
+		base_flat = extra.flat
+		name = extra.name
+
+	if id == '0':
+		if base_cost == '':
+			error = True
+			message = 'You hsve not set the cost for this power yet.  Set the cost before you create a variable rank.'
+			error_msgs.append(message)
+		elif base_cost == 'x':
+			error = True
+			message = 'You set the base cost for this power to variable so you must create a variable cost and select it in the box to the left or set the base cost and base ranks values in the main create power form.'
+			error_msgs.append(message)
+		elif base_ranks == '':
+			error = True
+			message = 'You hsve not set the ranks for points value for this power yet.  Set the amount of ranks you get for the cost before you create a variable rank.'
+			error_msgs.append(message)
+		elif base_flat == True:
+			error = True
+			message = 'You have this power set at a flat cost.  Uncheck the flat cost checkbox in the main create power form to set a variable rank.'
+		else:
+			base_ranks = int(base_ranks)
+			base_cost = int(base_cost)
+			value = ranks / base_ranks
+			value = value * base_cost
+			value = round(value)
+	elif id == '':
+		error = True
+		message = 'You must select a cost before you can set a variable rank.'
+		error_msgs.append(message)
+	elif id == 'ex':
+			value = ranks / base_ranks
+			value = value * base_cost
+			value = round(value)
+	else:
+		try:
+			id = int(id)
+			get_cost = db.session.query(PowerCost).filter_by(id=id).first()
+			if get_cost is None:
+				error = True
+				message = 'You set the base cost for this power to variable but you have not created a variable cost with the variable cost form.  Set the cost there and select it in the box to the left to create a variable rank.'
+				error_msgs.append(message)
+			get_cost = db.session.query(PowerCost).filter_by(id=id).one()
+			ranks = int(ranks)
+			value = ranks / get_cost.rank
+			value = value * get_cost.cost
+			value = round(value)
+		except:
+			error = True
+			message = 'There was an error processing thst cost.'
+			error_msgs.append(message)		
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def ranks_function(id, ranks, base_cost, base_ranks):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if id is None:
+			base_ranks = int(base_ranks)
+			base_cost = int(base_cost)
+			value = ranks / base_ranks
+			value = value * cost
+	else:
+			get_cost = db.session.query(PowerCost).filter_by(id=id).one()
+			ranks = int(ranks)
+			value = ranks / get_cost.rank
+			value = value * get_cost.cost
+			value = round(value)
+
+	return (value)
+
+
+def cost_error()
 
 def power_check(value, errors):
 	error_msgs = errors['error_msgs']

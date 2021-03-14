@@ -33,6 +33,25 @@ def required(value, name, errors):
 
 	return (errors)
 
+def not_required(check, value, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if check:
+		return (errors)
+		
+	if value == '':
+		error = True
+		message = name + ' field cannot be empty.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 def required_keyword(value, form, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False

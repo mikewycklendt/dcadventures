@@ -1,20 +1,20 @@
-#cost-header {
+#ranks-header {
 	grid-template-columns: 70% 30%;
 }
 
-#cost-base {
+#ranks-base {
 	grid-template-columns: 100%;
 }
 
-#cost-row1 {
+#ranks-row1 {
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 30% 15% 15% 15% 10% 15%;
+	grid-template-columns: 30% 15% 40% 15%;
 	grid-auto-rows: auto;
 }
 
-.cost-entry {
+.ranks-entry {
 	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;

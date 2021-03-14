@@ -34,7 +34,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple 
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_convert
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -534,6 +534,8 @@ def save_power():
 	power_range = request.get_json()['power_range']
 	duration = request.get_json()['duration']
 	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
+	flat = request.get_json()['flat']
 	limit = request.get_json()['limit']
 	dc_type = request.get_json()['dc_type']
 	dc_value = request.get_json()['dc_value']
@@ -591,7 +593,7 @@ def save_power():
 	condition = db_integer(Condition, condition)
 	power = db.session.query(Power).filter(Power.id == power_id).one()
 
-	cost = integer(cost)
+	cost = var_convert(cost)
 	limit = integer(limit)
 	dc_value = integer(dc_value)
 	dc_mod = integer(dc_mod)
@@ -600,6 +602,7 @@ def save_power():
 	partner_trait = integer(partner_trait)
 	partner_dc = integer(partner_dc)
 	conflict_bonus = integer(conflict_bonus)
+	ranks = var_convert(ranks)
 
 	power.description = description
 	power.power_type = power_type
@@ -607,6 +610,8 @@ def save_power():
 	power.power_range = power_range
 	power.duration = duration
 	power.cost = cost
+	power.ranks = ranks
+	power.flat = flat
 	power.limit = limit
 	power.dc_type = dc_type
 	power.dc_value = dc_value
@@ -740,6 +745,7 @@ def power_post_extra():
 	des = request.get_json()['des']
 	inherit = request.get_json()['inherit']
 	alternate = request.get_json()['alternate']
+	flat = request.get_json()['flat']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -754,7 +760,8 @@ def power_post_extra():
 						ranks = ranks,
 						des = des,
 						inherit = inherit,
-						alternate = alternate
+						alternate = alternate,
+						flat = flat
 					)
 
 		db.session.add(entry)
@@ -875,17 +882,21 @@ def power_post_cost():
 	cost = request.get_json()['cost']
 	rank = request.get_json()['rank']
 	flat = request.get_json()['flat']
+	extra = request.get_json()['extra']
 
 	power_id = integer(power_id)
 	cost = integer(cost)
 	rank = integer(rank)
+
+	extra = db_integer(Extra, extra)
 
 	try:
 		entry = PowerCost(power_id = power_id,
 							keyword = keyword,
 							cost = cost,
 							rank = rank,
-							flat = flat)
+							flat = flat.
+							extra = extra)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -932,6 +943,104 @@ def delete_power_cost(power_id):
 	body['id'] = power_id
 	try:
 		db.session.query(PowerCost).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify(body)
+
+@powers.route('/power/ranks/create', methods=['POST'])
+def power_post_ranks():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = power_ranks_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = request.get_json()['power_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	keyword = request.get_json()['keyword']
+	cost = request.get_json()['cost']
+	rank = request.get_json()['rank']
+	flat = request.get_json()['flat']
+	extra = request.get_json()['extra']
+	base_cost = request.get_json()['base_cost']
+	base_ranks = request.get_json()['base_ranks']
+
+	power_id = integer(power_id)
+	cost = db_integer(PowerCost, cost)
+	ranks = integer(ranks)
+
+	extra = db_integer(Extra, extra)
+
+	try:
+		entry = PowerCost(power_id = power_id,
+							cost = cost,
+							ranks = ranks,
+							extra = extra)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'ranks'
+		spot = "ranks-spot"
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['circ'] = []
+
+		body = power_ranks_post(entry, body, cells, base_cost, base_ranks)
+	except:
+		error = True
+		error_msgs = []
+		body['success'] = False
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
+	finally:
+		db.session.close()
+	
+	return jsonify(body)
+
+@powers.route('/power/ranks/delete/<power_id>', methods=['DELETE'])
+def delete_power_ranks(power_id):
+	body = {}
+	body['success'] = True
+	body['id'] = power_id
+	try:
+		db.session.query(PowerRanks).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()

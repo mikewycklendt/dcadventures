@@ -30,7 +30,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipFeature, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -361,9 +361,100 @@ def unit_select():
 		body['options'] = options 
 	except:
 		body['success'] = False
+	finally:
+		db.session.close()
 
 	print(body)
 	return jsonify(body)
+
+
+@select.route('/select/power/cost', methods=['POST'])
+def unit_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id']
+	sub = request.get_json()['sub']
+	options = [{'id': '', 'name': 'Cost'}]
+
+	try:
+		id = int(id)
+		sub = int(sub)
+		if id == 0:
+			get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).first()
+			if get is None:
+				options.append({'id': '0', 'name': 'Base Power Cost'})
+			else:
+				get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).all()
+				options.append({'id': '', 'name': 'Base Power Costs'})
+				for g in get:
+					options.append({'id': g.id, 'name': g.keyword})
+		else:
+			extra = db.session.query(Extra).filter_by(id=id).one()
+			if extra.cost is not None:
+				title = extra.name + ' Cost'
+				options.append({'id': 'ex', 'name': title})
+			else:
+				get = db.session.query(PowerCost).filter(PowerCost.extra == id).first()
+				if get is None:
+					options.append({'id': '', 'name': 'No Costs Set'})
+				else:
+					get = db.session.query(PowerCost).filter(PowerCost.extra == id).all()
+					for g in get:
+						options.append({'id': g.id, 'name': g.keyword})					
+		body['options'] = options 
+	except:
+		options.append({'id': '', 'name': 'Select Base Power or Extra'})
+
+	print(body)
+	return jsonify(body)
+
+@select.route('/select/power/ranks', methods=['POST'])
+def unit_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id']
+	aub = request.get_json()['sub']
+	power_id = request.get_json()['power_id']
+	options = [{'id': '', 'name': 'Ranks'}]
+
+	try:
+		if id == 'extra':
+			sub = int(sub)
+			get = db.session.query(PowerRanks).filter(PowerRanks.cost == None, PowerRanks.extra == sub).first()
+			if get is None:
+				options.append({'id': '', 'name': 'No Ranks Set'})
+			else:
+				get = db.session.query(PowerRanks).filter(PowerRanks.cost == None, PowerRanks.extra == sub).all()
+				for g in get:
+					options.append({'id': g.id, 'name': g.ranks})
+		elif id == '0':					
+			get = db.session.query(PowerRanks).filter(PowerRanks.cost == None, PowerRanks.extra == None, PowerRanks.power_id == power_id).first()
+			if get is None:
+				options.append({'id': '', 'name': 'No Ranks Set'})
+			else:
+				get = db.session.query(PowerRanks).filter(PowerRanks.cost == None, PowerRanks.extra == None, PowerRanks.power_id == power_id).sll()
+				for g in get:
+					options.append({'id': g.id, 'name': g.ranks})
+		else:
+			id = int(id)
+			get = db.session.query(PowerRanks).filter(PowerRanks.cost == id).first()
+			if get is None:
+				options.append({'id': '', 'name': 'No Ranks Set'})
+			else:
+				get = db.session.query(PowerRanks).filter(PowerRanks.cost == id).all()
+				for g in get:
+					options.append({'id': g.id, 'name': g.ranks})
+		body['options'] = options 
+	except:
+		body['success'] = False
+	finally:
+		db.session.close()
+
+	print(body)
+	return jsonify(body)
+
 
 @select.route('/select/level', methods=['POST'])
 def power_level_select():

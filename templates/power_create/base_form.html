@@ -69,15 +69,39 @@
 		<div id="multiple-attr-title">
 			Cost Per Rank:
 		</div>
+
+		<div class="base-split">
+			<div>
+				<select class="base-select" id="cost" name="cost">
+					<option value="">Cost</option>
+					<option value="x">Variable`</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="base-select" id="base_ranks" name="base_ranks">
+					<option value="">For Ranks</op1tion>
+					{% for i in hundred %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>			
+		</div>
 		
-		<select class="base-select" id="cost" name="cost">
-			<option value="">Cost</option>
-			<option value="x">Variable`</option>
-			<option value=0>0</option>
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
+	</div>
+
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Flat Cost:
+		</div>
+
+		<div>
+			<input type="checkbox" id="flat" class="regular-checkbox big-checkbox">
+		</div>
+
 	</div>
 
 	<div class="base-field">
@@ -87,7 +111,7 @@
 		
 		<select class="base-select" id="limit" name="limit" >
 			<option value=>None</option>
-			{% for i in positives %}
+			{% for i in hundred %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
 		</select>

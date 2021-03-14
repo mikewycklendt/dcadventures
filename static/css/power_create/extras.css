@@ -16,6 +16,25 @@
 	transition: all .2s linear;
 }
 
+.extra-select {
+	height: 2.5vw; 
+	font-size: 110%;
+}
+
+.extra-select:focus {
+	background-color: lightblue;
+}
+
+.extra-cost-select {
+	height: 2.5vw; 
+	font-size: 110%;
+}
+
+.extra-select:focus {
+	background-color: lightblue;
+}
+
+
 #extras-entry {
 	display: grid;
 	font-family: 'Monda', Verdana;
@@ -36,7 +55,7 @@
 							"name name des des"
 							"points-title ranks-title des des"
 							"points ranks des des"
-							"alt alt des des";
+							"alt flat des des";
 	gap: 4px;
 }
 
@@ -61,7 +80,13 @@
 }
 
 #extras-alt{
+	font-size: 80%;
 	grid-area: alt;
+}
+
+#extras-flat{
+	font-size: 80%;
+	grid-area: flat;
 }
 
 #extras-des{

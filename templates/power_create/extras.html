@@ -44,7 +44,7 @@
 	</div>
 
 	<div id="extras-ranks-title">
-		For # of Ranks:
+		Per # of Ranks:
 	</div>
 
 	<div id="extras-points">
@@ -63,7 +63,6 @@
 	<div id="extras-ranks">
 		<select class="entry-select" id="extra_rank" name="extra_rank">
 			<option value="">Ranks</option>
-			<option value=>Flat</option>
 			{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 			{% endfor %}
@@ -73,6 +72,12 @@
 	<div id="extras-alt">
 		<div class="vcenter">
 			<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
+		</div>
+	</div>
+	
+	<div id="extras-flat">
+		<div class="vcenter">
+			<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
 		</div>
 	</div>
 

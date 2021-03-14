@@ -4,7 +4,13 @@
 		<input type="checkbox" id="cost_check" class="regular-checkbox big-checkbox" onclick="cost_check()"> Variable Cost:
 	</div>
 	
-	<div class="power-base" id="cost-base">
+	<div class="power-base" id="cost-base">		
+		<diV>
+			<select class="extra-cost-select" id="cost_extra" name="cost_extra">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Power</option>
+			</select>
+		</div>
 	</div>
 
 </div>
@@ -21,10 +27,8 @@
 		</div>
 
 		<div>
-			Ranks:
+			Per Rank:
 		</div>
-
-		<div></div>
 
 		<div></div>
 
@@ -51,7 +55,7 @@
 				{% endfor %}
 			</select>
 		</div>
-
+		
 		<div>
 			<div class="check-div" style="width: fit-content; padding-right: .4vw;">
 				<input type="checkbox" id="cost_flat" class="medium-checkbox med-checkbox"> Flat

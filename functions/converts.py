@@ -110,7 +110,15 @@ def integer(value):
 			print(value)
 
 	return (value)
+	
+def var_convert(value):
 
+	if value == 'x':
+		value = None
+	else:
+		value = int(value)
+
+	return (value)
 
 def integer_convert(value):
 
@@ -765,6 +773,12 @@ def db_integer(table, value):
 	elif value == '':
 		value = None
 		return (value)
+	elif value == '0':
+		value = None
+		return(value)
+	elif value == 'ex':
+		value = None
+		return (value)
 	else:
 		try:
 			value = int(value)
@@ -972,6 +986,8 @@ def id_check(table, value_id, name, errors):
 			error = True
 			error_msgs.append(message)
 		db.session.close()
+	elif value_id ==  'extra':
+		return (errors)
 	else:
 		try:
 			value_id = int(value_id)

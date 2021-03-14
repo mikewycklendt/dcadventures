@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function
 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
@@ -1622,7 +1622,7 @@ def power_check_post(entry, body, cells):
 	body['add_title'] = True
 	body['created'] = False
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	trait = trait_select(trait, trait_type)
 
@@ -1742,7 +1742,7 @@ def power_circ_post(entry, body, cells):
 	title_name = get_name(PowerCircType, title)
 	body['title'] = title_name
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	measure_trait = trait_select(measure_trait, measure_trait_type)
 	trait = trait_select(trait, trait_type)
@@ -1928,7 +1928,7 @@ def power_dc_post(entry, body, cells):
 	title_name = get_name(PowerDCType, title)
 	body['title'] = title_name
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	cover_type = get_name(Cover, cover_type)
 	conceal_type = get_name(Conceal, conceal_type)
@@ -2187,7 +2187,7 @@ def power_degree_post(entry, body, cells):
 	skill_trait = trait_select(skill_trait, skill_trait_type)
 	routine_trait = trait_select(routine_trait, routine_trait_type)
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	action = get_name(Action, action)
 	damage_consequence = get_name(Consequence, damage_consequence)
@@ -2456,7 +2456,7 @@ def power_move_post(entry, body, cells):
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
 	distance_unit_trait = trait_select(distance_unit_trait, distance_unit_trait_type)
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	speed_rank = integer_convert(speed_rank)
 	speed_trait = integer_convert(speed_trait)
@@ -2681,7 +2681,7 @@ def power_opposed_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	mod = integer_convert(mod)
 	opponent_mod = integer_convert(opponent_mod)
@@ -2801,7 +2801,7 @@ def power_time_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 	measure_type = math_convert(measure_type)
 
-	extra = get_name(Extra, extra)
+	extra = extra_name(extra_id)
 
 	rank1 = get_name(Rank, rank1)
 	rank1_value = integer_convert(rank1_value)
@@ -2877,14 +2877,37 @@ def power_cost_post(entry, body, cells):
 	cost = entry.cost
 	rank = entry.rank
 	flat = entry.flat
+	extra = entry.extra
 
 	cost = integer_convert(cost)
 	rank = integer_convert(rank)
 
+	extra = extra_name(extra_id)
+
 	cells = cell('Keyword', 25, [keyword])
+	cells = cell('Extra', 25, [extra], cells)
 	cells = cell('Cost', 10, [cost], cells)
-	cells = cell('Ranks', 10, [rank], cells)
+	cells = cell('Per Rank', 12, [rank], cells)
 	cells = check_cell('Flat', 6, flat, cells)
+
+	body = send(cells, body)
+
+
+def power_ranks_post(entry, body, cells, base_cost, base_ranks):
+	
+	ranks = entry.ranks
+	extra = entry.extra
+	cost = entry.cost
+
+	ranks = integer_convert(ranks)
+
+	extra = extra_name(extra_id)
+
+	calculated = ranks_function(cost, ranks, base_cost, base_ranks)
+
+	cells = cell('Extra', 25, [extra], cells)
+	cells = cell('Ranks', 12, [ranks], cells)
+	cells = cell('Cost', 12, [calculated], cells)
 
 	body = send(cells, body)
 
@@ -2897,6 +2920,7 @@ def power_extra_post(entry, body, cells):
 	des = entry.des
 	inherit = entry.inherit
 	alternate = entry.alternate
+	flat = entry.flat
 
 
 	cost = integer_convert(cost)
@@ -2906,6 +2930,7 @@ def power_extra_post(entry, body, cells):
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
 	cells = cell('Ranks', 12, [ranks], cells)
+	cells = check_cell('Flat Cost', 12, flat, cells)
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 	cells = check_cell('Alternate Effect', 17, alternate, cells)
 

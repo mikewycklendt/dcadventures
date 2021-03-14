@@ -14,6 +14,13 @@ function mod_base() {
 	base(field, entry);
 }
 
+function mod_extra() {
+	const select = 'mod_extra';
+	const fill = 'mod_cost';
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function mod_area() {
 
 	const check = 'mod_area';

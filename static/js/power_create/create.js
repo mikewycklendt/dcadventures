@@ -14,6 +14,13 @@ function create_base() {
 	base(field, entry);
 }
 
+function create_extra() {
+	const select = 'create_extra';
+	const fill = 'create_cost';
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function create_moveable() {
 	const div = document.getElementById('create-move');
 	const check = document.getElementById('create_moveable');

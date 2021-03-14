@@ -158,6 +158,8 @@ power_save = function() {
 	const power_range = select("range");
 	const duration = select("duration");
 	const cost = select("cost");
+	const ranks = select("base_ranks");
+	const flat = check("flat");
 	const limit = select("limit");
 	const dc_type = select("power_dc_type");
 	const dc_mod = select("power_dc_mod");
@@ -218,6 +220,8 @@ power_save = function() {
 			'power_range': power_range,
 			'duration': duration,
 			'cost': cost,
+			'ranks': ranks,
+			'flat': flat,
 			'limit': limit,
 			'dc_type': dc_type,
 			'dc_value': dc_value,

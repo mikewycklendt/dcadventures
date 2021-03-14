@@ -16,6 +16,13 @@ function char_base() {
 	base(field, entry)
 }
 
+function char_extra() {
+	const select = 'char_extra';
+	const fill = 'char_cost';
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function char_limited() {
 	const check = 'char_limited';
 	const div = 'char-limited';
@@ -247,7 +254,7 @@ function char_submit() {
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
-	
+
 	const errors = 'char-err';
 	const err_line = 'char-err-line';
 

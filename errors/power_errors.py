@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -20,10 +20,10 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -2516,17 +2516,52 @@ def power_cost_post_errors(data):
 	
 	errors = {'error': False, 'error_msgs': []}
 
+	power_id = data['power_id']
 	keyword = data['keyword']
 	cost = data['cost']
 	rank = data['rank']
 	flat = data['flat']
+	extra = data['extra']
+	base_flat = data['base_flat']
+	base_cost = data['base_cost']
+
+	errors = power_check(power_id, errors)
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
 
 	errors = int_check(cost, 'Cost', errors)
-	errors =  int_check(rank, 'Rank', errors)
-
+	errors =  int_check(rank, 'Per Rank', errors)
+	
+	
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(cost, 'Cost', errors)
-	errors = required(rank, 'Ranks', errors)
+	errors = required(rank, 'Per Rank', errors)
+
+	return (errors)
+
+def power_ranks_post_errors(data):
+	
+	errors = {'error': False, 'error_msgs': []}
+
+	power_id = data['power_id']
+	cost = data['cost']
+	ranks = data['ranks']
+	extra = data['extra']
+	base_ranks = data['base_ranks']
+	base_cost = data['base_cost']
+	base_flat = data['base_flat']
+
+	errors = power_check(power_id, errors)
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors =  int_check(ranks, 'Ranks', errors)
+	
+	errors = required(ranks, 'Ranks', errors)
+
+	errors = ranks_error(cost, ranks, base_cost, base_ranks, base_flat, extra)
 
 	return (errors)
 
@@ -2534,14 +2569,17 @@ def power_extra_post_errors(data):
 	
 	errors = {'error': False, 'error_msgs': []}
 
-
+	power_id = data['power_id']
 	name = data['name']
 	cost = data['cost']
 	ranks = data['ranks']
 	des = data['des']
 	inherit = data['inherit']
 	alternate = data['alternate']
+	flat = data['flat']
 
+	errors = power_check(power_id, errors)
+	errors = id_check(Power, power_id, 'Power', errors)
 
 	errors = int_check(cost, 'Cost', errors)
 	errors = int_check(ranks, 'Ranks', errors)
@@ -2549,8 +2587,8 @@ def power_extra_post_errors(data):
 	errors = id_check(inherit, 'Power', errors)
 
 	errors = required(name, 'Name', errors)
-	errors = required(cost, 'Cost', errors)
-	errors = required(ranks, 'Ranks', errors)
+	errors = not_required(alternate, cost, 'Cost', errors)
+	errors = not_required(alternate, ranks, 'Ranks', errors)
 	errors = required(des, 'Description', errors)
 
 	return (errors)

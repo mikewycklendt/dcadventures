@@ -15,6 +15,13 @@ function sense_base() {
 	base_two(field, field2, entry);
 }
 
+function sense_extra() {
+	const select = 'sense_extra';
+	const fill = 'sense_cost';
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function sense_sense() {
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';

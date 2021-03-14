@@ -24,11 +24,12 @@ function cost_submit() {
 	const cost = select("cost_cost");
 	const rank = select("cost_rank");
 	const flat = check("cost_flat");
+	const extra = select("cost_extra");
+	const base_cost = select("cost");
+	const base_flat = check("flat");
 
 	const errors = 'cost-err';
 	const err_line = 'cost-err-line';
-
-	const selects = 'cost-entry';
 
 	response = fetch('/power/cost/create', {
 		method: 'POST',
@@ -40,7 +41,11 @@ function cost_submit() {
 			'keyword': keyword,
 			'cost': cost,
 			'rank': rank,
-			'flat': flat
+			'flat': flat,
+			'extra': extra,
+			'base_cost': base_cost,
+			'base_flat': base_flat
+
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -53,14 +58,13 @@ function cost_submit() {
 
 			const id = jsonResponse.id;
 
-			selects_add(id, keyword, selects);
 
 			cost_grid.columns.length = 0;
 			cost_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, cost_grid, route, [selects]);
+			create_table('power', jsonResponse, cost_grid, route);
 			clear_errors(err_line, errors)
 
 			cost_grid.titles = true;

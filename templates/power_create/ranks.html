@@ -1,202 +1,64 @@
-<div id="ranks-header" style="justify-content: center;">
+<div class="power-header" id="ranks-header">
 
-	<div id="ranks-title">
-		Ranks Table:
+	<div class="power-title" id="ranks-title">
+		<input type="checkbox" id="ranks_check" class="regular-checkbox big-checkbox" onclick="ranks_check()"> Variable Ranks:
 	</div>
+	
+	<div class="power-base" id="ranks-base">		
+		<diV>
+			<select class="extra-select" id="ranks_extra" name="ranks_extra" onchange="ranks_extra()">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
+	</div>
+
 </div>
 
-	<div id="ranks-entry">
+<div class="power-entry" id="ranks-entry">
 
-		<div id="ranks-row1">
+	<div id="ranks-row1">
 
-			<div>
-				Rank:
-			</div>
-
-
-			<div>
-				Keyword:
-			</div>
-
-			<div>
-				Description
-			</div>
-
+		<div>
+			Cost:
 		</div>
 
-		<div id="ranks-row1">
-			<div>
-				<select class="entry-select" id="rank_rank" name="rank_rank">
-					{% for num in positives %}
-						<option value={{num}}>{{num}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<input class="entry-text" type="text" id="rank_key" name="rank_key" >
-			</div>
-
-			<div>
-				<input class="entry-text" type="text" id="rank_des" name="rank_des" >
-			</div>
+		<div>
+			Ranks:
 		</div>
 
-		<div id="ranks-row2">
-
-			<div class="vcenter">
-				Adds:
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_ranged" class="medium-checkbox med-checkbox" onclick="ranks_ranged()"> Ranged
-				</div>
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_radius" class="medium-checkbox med-checkbox"> Radius
-				</div>
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_accurate" class="medium-checkbox med-checkbox"> Accurate
-				</div>
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_acute" class="medium-checkbox med-checkbox"> Acute
-				</div>
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_sense_types" class="medium-checkbox med-checkbox"> All Sense Types
-				</div>
-			</div>
-			
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="ranks_all_senses" class="medium-checkbox med-checkbox"> All Senses
-				</div>
-			</div>
-
-		</div>
-
-		<div id="ranks-distance">
-			<div>
-				<select class="select-sml" id="ranks_distance" name="ranks_distance" onchange="ranks_distance()">
-					{% for d in sense_distance %}
-						<option value="{{d.type}}">{{d.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-	
-			<div id="ranks-distance-values">
-	
-				<div>
-					<select class="select-sml" id="ranks_dis_dc" name="ranks_dis_dc">
-						<option value="">DC</option>
-						<option value=>N/A</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-				<div>
-					<select class="select-sml" id="ranks_dis_mod" name="ranks_dis_mod">
-						<option value="">Modifier</option>
-						<option value=>N/A</option>
-						{% for i in negatives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-				<div>
-					<input type="text" id="ranks_dis_value" name="ranks_dis_value"> 
-				</div>
-	
-				<div>
-					<select class="select-sml" id="ranks_dis_unit" name="ranks_dis_unit">
-						<option value="">Unit</option>
-						{% for u in distances %}
-							<option value={{u.id}}>{{u.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-				<div id="ranks-distance-factor">
-					<select class="select-sml" id="ranks_dis_factor" name="ranks_dis_factor">
-						<option value=>X Per Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-			</div>
-		</div>
-
-		<div id="ranks-row3">
-			<div></div>
-
-			<div id="ranks-add">
-				<div class="btn-small" id="rank_add" onclick="rank_submit()">
-					 Add
-	`			</div>
-			</div>
-		</div>
-
-	</div>
-
-	<div id="ranks-table">
-
-		<div class="power-table-title">
-			Rank:
-		</div>
-
-		<div class="power-table-title">
-			Ranged
-		</div>
-
-		<div class="power-table-title">
-			Radius
-		</div>
-
-		<div class="power-table-title">
-			Accurate
-		</div>
-
-		<div class="power-table-title">
-			Acute
-		</div>
-
-		<div class="power-table-title">
-			All Sense Types
-		</div>
-		
-		<div class="power-table-title">
-			All Senses
-		</div>
-	
-		<div class="power-table-title">
-			Keyword:
-		</div>
-	
-		<div class="power-table-title">
-			Description:
-		</div>
-	
 		<div></div>
+
+		<div>
+			<select class="cost-entry" id="ranks_cost" name="ranks_cost">
+				<option value="">Cost</option>
+				<optionv value=0>Base Cost</optionv>
+				{% for p in power_cost %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="ranks_ranks" name="ranks_ranks">
+				<option value="">Ranks</option>
+				{% for i in hundred %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 		
+		<div></div>
+
+		<div>
+			<div class="btn-entry" id="ranks_submit" name="ranks_submit" onclick="ranks_submit()">
+				 Add
+			</div>
+		</div>
 	</div>
-	
-	<div id="ranks-err"></div>
+
+</div>
+
+<div id="ranks-spot"></div>
+
+<div class="err" id="ranks-err"></div>

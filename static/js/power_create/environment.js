@@ -14,6 +14,13 @@ function env_base() {
 	base(field, entry);
 }
 
+function env_extra() {
+	const select = 'env_extra';
+	const fill = 'env_cost';
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function env_condition() {
 	const check = 'env_condition';
 	const div = 'env-condition';

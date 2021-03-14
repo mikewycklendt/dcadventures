@@ -7,6 +7,13 @@ function move_check() {
 	entry_check(check, title, base, entry);
 }
 
+function move_extra() {
+	const select = 'move_extra';
+	const fill = 'move_cost'
+
+	id_select(select, fill, power_cost_select, the_power);
+}
+
 function move_speed_trait_type() {
 	const select = 'move_speed_trait_type';
 	const fill = 'move_speed_trait';
