@@ -369,7 +369,7 @@ def unit_select():
 
 
 @select.route('/select/power/cost', methods=['POST'])
-def unit_select():
+def power_cost_select():
 	body = {}
 	body['success'] = True
 
@@ -410,7 +410,7 @@ def unit_select():
 	return jsonify(body)
 
 @select.route('/select/power/ranks', methods=['POST'])
-def unit_select():
+def power_ranks_select():
 	body = {}
 	body['success'] = True
 
