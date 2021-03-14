@@ -217,6 +217,25 @@ class Extra(db.Model):
 			'base': self.base
 		}
 
+class PowerCost(db.Model):
+	__tablename__ = 'power_cost'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	keyword = db.Column(db.String())
+	cost = db.Column(db.Integer)
+	rank = db.Column(db.Integer)
+	flat = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'power_id': self.power_id,
+			'keyword': self.keyword,
+			'cost': self.cost,
+			'rank': self.rank,
+			'flat': self.flat
+		}
+
 class PowerCheck(db.Model):
 	__tablename__ = 'power_check'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

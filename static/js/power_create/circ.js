@@ -20,7 +20,8 @@ function circ_effect() {
 					{'val': 'materials', 'div': 'circ-materials'},
 					{'val': 'trait', 'div': 'circ-trait'},
 					{'val': 'env', 'div': 'circ-env'},
-					{'val': 'nature', 'div': 'circ-nature'}]
+					{'val': 'nature', 'div': 'circ-nature'},
+					{'val': 'descriptor', 'div': 'circ-descriptor'}]
 
 	select_opacity(select, options);
 }
@@ -213,7 +214,10 @@ function circ_submit() {
 			'trait_target': trait_target,
 			'environment': environment,
 			'nature': nature,
-			'check_type': check_type
+			'check_type': check_type,
+			'descriptor_effect': descriptor_effect,
+			'descriptor_target': descriptor_target,
+			'descriptor': descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -110,6 +110,15 @@
 	gap: .2vw;
 }
 
+#circ-descriptor {
+	display: none;
+	width: 97%;
+	grid-template-columns: 25% 25% 50%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: .2vw;
+}
+
 #circ-condition-condition {
 	display: none;
 	width: 97%;

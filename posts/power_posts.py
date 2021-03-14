@@ -442,8 +442,8 @@ def damage_post(entry, body, cells):
 	trait = trait_select(trait, trait_type)
 
 	extra = extra_name(extra_id)
-	damage_type = name(Descriptor, damage_type)
-	descriptor = descriptor_name(descriptor)
+	damage_type = get_multiple(Descriptor, damage_type)
+	descriptor = get_multiple(PowerDes, descriptor)
 
 	mod = integer_convert(mod)
 	damage_type = integer_convert(damage_type)
@@ -453,8 +453,8 @@ def damage_post(entry, body, cells):
 	cells = cell('Trait', 8, [trait], cells)
 	cells = cell('Modifier', 11, [mod], cells)
 	cells = check_cell('Strength Based', 16, strength, cells)
-	cells = cell('Damage Type', 24, [damage_type], cells)
-	cells = cell('Descriptor', 22, [descriptor], cells)
+	cells = circ_cell('Damage Type', 'Damage Type', 13, damage_type, cells, body)
+	cells = circ_cell('Descriptor', 'Descriptor', 12, descriptor, cells, body)
 
 	body = send(cells, body)
 
@@ -1733,8 +1733,10 @@ def power_circ_post(entry, body, cells):
 	trait_target = entry.trait_target
 	environment = entry.environment
 	nature = entry.nature
-	check_type =  entry.check_type
-
+	check_type = entry.check_type
+	descriptor_effect = entry.descriptor_effect
+	descriptor_target = entry.descriptor_target
+	descriptor = entry.descriptor
 
 
 	title_name = get_name(PowerCircType, title)
@@ -1757,12 +1759,13 @@ def power_circ_post(entry, body, cells):
 	environment = get_name(Environment, environment)
 	nature = get_name(Nature, nature)
 	check_type = get_name(Check, check_type)
+	descriptor = get_name(PowerDes, descriptor)
 
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
-	measure_rank_value = integer_convert(measure_rank_value)
-	unit_value = integer_convert(unit_value)
-	measure_trait_math = math_convert(measure_trait_math)
+	measure_rank_value = eger_convert(unit_value)
+	measure_trait_integer_convert(measure_rank_value)
+	unit_value = intmath = math_convert(measure_trait_math)
 	measure_mod = integer_convert(measure_mod)
 	max = integer_convert(max)
 
@@ -1787,6 +1790,11 @@ def power_circ_post(entry, body, cells):
 
 	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'gm', 'name': 'GM Decides'}]
 
+	effect_target_select = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
+	descriptor_target  = selects(descriptor_target, effect_target_select)
+	
+	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
+	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 
 
 	cells = cell('Keyword', 13, [keyword])
@@ -1823,6 +1831,8 @@ def power_circ_post(entry, body, cells):
 	vcells = vcell('env', 25, ['If', environment], vcells)
 	
 	vcells = vcell('nature', 25, ['If', nature], vcells)
+
+	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 	
 	cells = vcell_add('Effect', effect, vcells, cells)
 
@@ -1910,6 +1920,10 @@ def power_dc_post(entry, body, cells):
 	equipment_type = entry.equipment_type
 	equipment = entry.equipment
 	equip = entry.equip
+	descriptor_effect = entry.descriptor_effect
+	descriptor_target = entry.descriptor_target
+	descriptor = entry.descriptor
+	descrip = entry.descrip
 
 	title_name = get_name(PowerDCType, title)
 	body['title'] = title_name
@@ -1952,6 +1966,7 @@ def power_dc_post(entry, body, cells):
 	measure_trait_math_unit = get_name(Math, measure_trait_math_unit)
 	equipment_type = get_name(EquipType, equipment_type)
 	equipment = get_name(Equipment, equipment)
+	descriptor = get_name(PowerDes, descriptor)
 
 	level_type = get_name(LevelType, level_type)
 	level = get_name(Levels, level)
@@ -1961,7 +1976,15 @@ def power_dc_post(entry, body, cells):
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	target = selects(target, targets_select)
-	effect_target = selects(effect_target, targets_select)
+
+
+	effect_target_select = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
+	descriptor_target  = selects(descriptor_target, effect_target_select)
+	
+	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
+	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
+	
+	effect_target = selects(effect_target, effect_target_select)
 
 	equipment_use_select = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
 	equipment_use = selects(equipment_use, equipment_use_select)
@@ -2048,6 +2071,15 @@ def power_dc_post(entry, body, cells):
 	new_mod = mod_cell('Type', 5, [equipment_type], new_mod)
 	new_mod = mod_cell('Item', 9, [equipment], new_mod)
 	body = mod_add(equip, new_mod, body)
+
+	cells = check_cell('Descriptor', 12, descrip, cells, True)
+	new_mod = mod_create('Descriptor', 15)
+	new_mod = mod_cell('Effect', 7, [descriptor_effect], new_mod)
+	new_mod = mod_cell('Target', 7, [descriptor_target], new_mod)
+	new_mod = mod_cell('Descriptor', 9, [descriptor], new_mod)
+	body = mod_add(descrip, new_mod, body)
+
+	
 	
 	cells = check_cell('Surface', 8, surface, cells)
 
@@ -2140,6 +2172,9 @@ def power_degree_post(entry, body, cells):
 	effect_target = entry.effect_target
 	value_type = entry.value_type
 	description = entry.description
+	descriptor_effect = entry.descriptor_effect
+	descriptor_target = entry.descriptor_target
+	descriptor = entry.descriptor
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2166,6 +2201,7 @@ def power_degree_post(entry, body, cells):
 	measure_math_unit = get_name(Unit, measure_math_unit)
 	condition1 = get_name(Condition, condition1)
 	condition2 = get_name(Condition, condition2)
+	descriptor = get_name(PowerDes, descriptor)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2228,9 +2264,11 @@ def power_degree_post(entry, body, cells):
 	specificity_select = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 	knowledge_specificity = selects(knowledge_specificity, specificity_select)
 
-	conditions_select = [{'type': 'current', 'name': 'Current Condition'}, {'type': 'any', 'name': 'Any Condition'}, {'type': 'linked_first', 'name': 'Linked Starting'}, {'type': 'linked_second', 'name': 'Linked Ending'}]
-	condition1 = selects(condition1, conditions_select)
-	condition2 = selects(condition2, conditions_select)
+	effect_target_select = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
+	descriptor_target  = selects(descriptor_target, effect_target_select)
+	
+	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
+	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -2290,6 +2328,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('object', 25, ['Object Destroyed'], vcells)
 	
 	vcells = vcell('dc', 25, ['Attach DC to Object'], vcells)
+	
+	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	
@@ -2407,7 +2447,7 @@ def power_move_post(entry, body, cells):
 	time = get_keyword(PowerTime, time)
 	flight_resist_check = get_keyword(PowerCheck, flight_resist_check)
 	ground_time = get_keyword(PowerTime, ground_time)
-	ground_range = get_keyword(PowerRanged, ground_range)
+	ground_range = get_name(PowerRangedType, ground_range)
 	objects_check = get_keyword(PowerCheck, objects_check)
 	object_damage = get_keyword(PowerDamage, objects_damage)
 	conceal_opposed = get_keyword(PowerOpposed, conceal_opposed)

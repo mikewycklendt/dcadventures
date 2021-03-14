@@ -44,8 +44,8 @@ function damage_submit() {
 	const trait = select("dam_trait");
 	const mod = select("dam_mod");
 	const strength = check("dam_strength");
-	const damage_type = select("damage_damage_type");
-	const descriptor = select("damage_descriptor");
+	const damage_type = multiple("damage_damage_type");
+	const descriptor = multiple("damage_descriptor");
 	const keyword = text("damage_keyword")
 
 	///const power_id = document.getElementById('power_id').value;

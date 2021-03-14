@@ -26,6 +26,7 @@
 @import "opposed.css";
 @import "ranged.css";
 @import "minion.css";
+@import "cost.css";
 
 .power-container {
 	display: grid;

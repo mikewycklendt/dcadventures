@@ -1,0 +1,74 @@
+<div class="power-header" id="cost-header">
+
+	<div class="power-title" id="cost-title">
+		<input type="checkbox" id="cost_check" class="regular-checkbox big-checkbox" onclick="cost_check()"> Variable Cost:
+	</div>
+	
+	<div class="power-base" id="cost-base">
+	</div>
+
+</div>
+
+<div class="power-entry" id="cost-entry">
+
+	<div id="cost-row1">
+		<div>
+			Keyword:
+		</div>
+
+		<div>
+			Cost:
+		</div>
+
+		<div>
+			Ranks:
+		</div>
+
+		<div></div>
+
+		<div></div>
+
+		<div></div>
+
+		<div>
+			<input type="text" id="cost_keyword" name="cost_keyword" placeholder="Keyword">			 
+		</div>
+
+		<div>
+			<select class="select-entry" id="cost_cost" name="cost_cost">
+				<option value="">Cost</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-entry" id="cost_rank" name="cost_rank">
+				<option value="">Rank</option>
+				{% for i in hundred %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div" style="width: fit-content; padding-right: .4vw;">
+				<input type="checkbox" id="cost_flat" class="medium-checkbox med-checkbox"> Flat
+			</div>
+		</div>
+
+		<div></div>
+
+		<div>
+			<div class="btn-entry" id="cost_submit" name="cost_submit" onclick="cost_submit()">
+				 Add
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="cost-spot"></div>
+
+<div class="err" id="cost-err"></div>

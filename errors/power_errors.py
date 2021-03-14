@@ -465,8 +465,10 @@ def damage_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
-	errors = id_check(Descriptor, damage_type, 'descriptor', errors)
 
+	errors = id_multiple(Descriptor, damage_type, 'Damage Type', errors)
+	errors = id_multiple(PowerDes, descriptor, 'Descriptor', errors)
+	
 	errors = int_check(mod, 'Modifier', errors)
 
 	errors = required(trait_type, 'Trait Type', errors)
@@ -1469,6 +1471,9 @@ def power_circ_post_errors(data):
 	environment = data['environment']
 	nature = data['nature']
 	check_type = data['check_type']
+	descriptor_effect = data['descriptor_effect']
+	descriptor_target = data['descriptor_target']
+	descriptor = data['descriptor']
 
 
 	errors = power_check(power_id, errors)
@@ -1491,6 +1496,7 @@ def power_circ_post_errors(data):
 	errors = int_check(measure_mod, 'Measurement Modifier', errors)
 	errors = int_check(trait, 'Trait', errors)
 	errors = id_check(Check, check_type, 'Check Type', errors)
+	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
 
 	errors = id_check(Environment, environment, 'Environment', errors)
 	errors = id_check(Nature, nature, 'Nature', errors)
@@ -1555,6 +1561,11 @@ def power_circ_post_errors(data):
 	errors = variable_fields('env', 'Environment', effect, [environment], errors)
 
 	errors = variable_fields('nature', 'Nature', effect, [nature], errors)
+
+	errors = variable_fields('descriptor', 'Descriptor', effect, [descriptor_effect, descriptor_target, descriptor], errors)
+	errors = variable_field('descriptor', effect, 'Descriptor', descriptor, errors)
+	errors = variable_field('descriptor', effect, 'Descriptor Target', descriptor_target, errors)
+	errors = variable_field('descriptor', effect, 'Descriptor Effect', descriptor_effect, errors)
 
 	errors = variable_fields('materials', 'Circumstance Effect', effect, [materials], errors)
 	errors = variable_field('materials', effect, 'Material Type', materials, errors)
@@ -1632,6 +1643,10 @@ def power_dc_post_errors(data):
 	equipment_type = data['equipment_type']
 	equipment = data['equipment']
 	equip = data['equip']
+	descriptor_effect = data['descriptor_effect']
+	descriptor_target = data['descriptor_target']
+	descriptor = data['descriptor']
+	descrip = data['descrip']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -1661,6 +1676,7 @@ def power_dc_post_errors(data):
 	errors = id_check(Complex, complexity, 'Complexity', errors)
 	errors = id_check(EquipType, equipment_type, 'Equipment Type', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
+	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
 
 	errors = id_check(Cover, cover_type, 'Cover', errors)
 	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
@@ -1690,6 +1706,11 @@ def power_dc_post_errors(data):
 	errors = check_fields(condition, 'Condition', [condition1, condition2], errors)
 	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
 	errors = check_field(condition, 'Condition', 'Ending Condtion', condition2, errors)
+
+	errors = check_fields(descrip, 'Descriptor', [descriptor_effect, descriptor_target, descriptor], errors)
+	errors = check_field(descrip, 'Descriptor', 'Descriptor', descriptor, errors)
+	errors = check_field(descrip, 'Descriptor', 'Descriptor Target', descriptor_target, errors)
+	errors = check_field(descrip, 'Descriptor', 'Descriptor Effect', descriptor_effect, errors)
 	
 	errors = check_fields(levels, 'Levels', [level_type, level], errors)
 	errors = check_field(levels, 'Levels', ':evel Type', level_type, errors)
@@ -1845,6 +1866,9 @@ def power_degree_post_errors(data):
 	compare = data['compare']
 	duration = data['duration']
 	title = data['title']
+	descriptor_effect = data['descriptor_effect']
+	descriptor_target = data['descriptor_target']
+	descriptor = data['descriptor']
 
 
 	errors = power_check(power_id, errors)
@@ -1880,6 +1904,7 @@ def power_degree_post_errors(data):
 	errors = int_check(condition_damage, 'Condition Damage', errors)
 	errors = int_check(nullify, 'Nullify DC', errors)
 	errors = id_check(Check, check_type, 'Check Tyoe', errors)
+	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
 
 	errors = id_check(PowerOpposed, opposed, 'Opposed Check', errors)
 	errors = id_check(PowerDC, resist_dc, 'Resistance Check DC', errors)
@@ -1907,6 +1932,11 @@ def power_degree_post_errors(data):
 	errors = variable_fields('measure', 'Measurement Effect', type, [measure_effect, measure_type], errors)
 	errors = variable_field('measure', type, 'Measurement Effect', measure_effect, errors)
 	errors = variable_field('measure', type, 'Measurement Type', measure_type, errors) 
+
+	errors = variable_fields('descriptor', 'Descriptor', type, [descriptor_effect, descriptor_target, descriptor], errors)
+	errors = variable_field('descriptor', type, 'Descriptor', descriptor, errors)
+	errors = variable_field('descriptor', type, 'Descriptor Target', descriptor_target, errors)
+	errors = variable_field('descriptor', type, 'Descriptor Effect', descriptor_effect, errors)
 
 	errors = variable_fields('rank', 'Measurement Rank Value', measure_effect, [measure_rank_value, measure_rank], errors)
 	errors = variable_field('rank', measure_effect, 'Value', measure_rank_value, errors)
@@ -2023,6 +2053,7 @@ def power_degree_post_errors(data):
 	errors = variable_fields('7', 'Comparison Check', check_type, [compare], errors)
 
 	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
+
 
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
@@ -2141,7 +2172,7 @@ def power_move_post_errors(data):
 
 	errors = id_check(PowerCheck, flight_resist_check, 'Variable Check', errors)
 	errors = id_check(PowerTime, ground_time, 'Time Effect', errors)
-	errors = id_check(PowerRanged, ground_range, 'Ranged', errors)
+	errors = id_check(PowerRangedType, ground_range, 'Ranged', errors)
 	errors = id_check(PowerCheck, objects_check, 'Variable Check', errors)
 	errors = id_check(PowerDamage, object_damage, 'Damage', errors)
 	errors = id_check(PowerOpposed, conceal_opposed, 'Opposed Check', errors)

@@ -19,7 +19,8 @@ function deg_mod_type() {
 					{'val': 'action', 'div': 'deg-mod-action'},
 					{'val': 'time', 'div': 'deg-mod-time'},
 					{'val': 'check', 'div': 'deg-mod-check'},
-					{'val': 'duration', 'div': 'deg-mod-duration'}];
+					{'val': 'duration', 'div': 'deg-mod-duration'},
+					{'val': 'descriptor', 'div': 'deg-mod-descriptor'}];
 	
 	select_opacity(select, options);
 }
@@ -300,6 +301,9 @@ function deg_mod_submit() {
 	const effect_target = select("deg_mod_effect_target");
 	const value_type = select("deg_mod_value_type");
 	const description = text("deg_mod_desc");
+	const descriptor_effect = select("deg_mod_descriptor_effect");
+	const descriptor_target = select("deg_mod_descriptor_target");
+	const descriptor = select("deg_mod_descriptor");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -398,7 +402,10 @@ function deg_mod_submit() {
 			'level_time': level_time,
 			'effect_target': effect_target,
 			'value_type': value_type,
-			'description': description
+			'description': description,
+			'descriptor_effect': descriptor_effect,
+			'descriptor_target': descriptor_target,
+			'descriptor': descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

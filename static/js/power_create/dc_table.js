@@ -337,6 +337,7 @@ function dc_submit() {
 	const descriptor_effect = select("dc_descriptor_effect");
 	const descriptor_target = select("dc_descriptor_target");
 	const descriptor = select("dc_descriptor");
+	const descrip = check("dc_descrip")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -425,7 +426,11 @@ function dc_submit() {
 			'equipment_use': equipment_use,
 			'equipment_type': equipment_type,
 			'equipment': equipment,
-			'equip': equip
+			'equip': equip,
+			'descriptor_effect': descriptor_effect,
+			'descriptor_target': descriptor_target,
+			'descriptor': descriptor,
+			'descrip': descrip
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
