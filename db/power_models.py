@@ -1207,7 +1207,7 @@ class PowerChar(db.Model):
 	appear_description = db.Column(db.String())
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
-	
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1321,7 +1321,7 @@ class PowerCreate(db.Model):
 	support_action_rounds = db.Column(db.Integer)
 	support_effort = db.Column(db.Integer)
 	support_effort_rounds = db.Column(db.Integer)
-
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1525,7 +1525,7 @@ class PowerEnv(db.Model):
 	visibility_trait_type = db.Column(db.String())
 	visibility_trait = db.Column(db.Integer)
 	visibility_mod = db.Column(db.Integer)
-
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer)
 
 	def format(self):
@@ -1703,7 +1703,7 @@ class PowerMod(db.Model):
 	points_rerolls = db.Column(db.Integer)
 	points_reroll_result = db.Column(db.String())
 	ranks_cost = db.Column(db.Integer)
-
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 
 	def format(self):
 		return {
@@ -2016,6 +2016,7 @@ class PowerSenseEffect(db.Model):
 	distance_factor = db.Column(db.Integer)
 	dimensional_type = db.Column(db.String())
 	ranks = db.Column(db.Integer)
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 
 
 	def format(self):
