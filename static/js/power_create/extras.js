@@ -1,9 +1,14 @@
 
+let extras_grid = {'titles': false,
+				'columns': [],
+				'font': 80,
+				'mod': []}
+
 function extras_submit() {
 
-	const columns = cost_grid.columns;
-	const created = cost_grid.titles;
-	const font = cost_grid.font;
+	const columns = extras_grid.columns;
+	const created = extras_grid.titles;
+	const font = extras_grid.font;
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");

@@ -28,7 +28,9 @@ function cost_submit() {
 	const errors = 'cost-err';
 	const err_line = 'cost-err-line';
 
-	response = fetch('/advantage/cost/create', {
+	const selects = 'cost-entry';
+
+	response = fetch('/power/cost/create', {
 		method: 'POST',
 		body: JSON.stringify({
 			'power_id': power_id,
@@ -49,12 +51,16 @@ function cost_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			const id = jsonResponse.id;
+
+			selects_add(id, keyword, selects);
+
 			cost_grid.columns.length = 0;
 			cost_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, cost_grid, route);
+			create_table('power', jsonResponse, cost_grid, route, [selects]);
 			clear_errors(err_line, errors)
 
 			cost_grid.titles = true;

@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -2870,3 +2870,43 @@ def power_time_post(entry, body, cells):
 	cells.clear()
 
 	return (body)
+
+def power_cost_post(entry, body, cells):
+	
+	keyword = entry.keyword
+	cost = entry.cost
+	rank = entry.rank
+	flat = entry.flat
+
+	cost = integer_convert(cost)
+	rank = integer_convert(rank)
+
+	cells = cell('Keyword', 25, [keyword])
+	cells = cell('Cost', 10, [cost], cells)
+	cells = cell('Ranks', 10, [rank], cells)
+	cells = check_cell('Flat', 6, flat, cells)
+
+	body = send(cells, body)
+
+
+def power_extra_post(entry, body, cells):
+
+	name = entry.name
+	cost = entry.cost
+	ranks = entry.ranks
+	des = entry.des
+	inherit = entry.inherit
+	alternate = entry.alternate
+
+
+	cost = integer_convert(cost)
+	ranks = integer_convert(ranks)
+	inherit = get_name(inherit)
+
+	cells = cell('Name', 23, [name])
+	cells = cell('Cost', 12, [cost], cells)
+	cells = cell('Ranks', 12, [ranks], cells)
+	cells = circ_cell('Description', 'Description', 12, des, cells, body)
+	cells = check_cell('Alternate Effect', 17, alternate, cells)
+
+	body = send(cells, body)

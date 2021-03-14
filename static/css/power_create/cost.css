@@ -13,3 +13,9 @@
 	grid-template-columns: 30% 15% 15% 15% 15% 20%;
 	grid-auto-rows: auto;
 }
+
+.cost-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}

@@ -28,7 +28,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -714,68 +714,107 @@ def edit_power_name():
 		print(body)
 		return jsonify(body)
 
+@powers.route('/power/extras/create', methods=['POST'])
+def power_post_extra():
 
-@powers.route('/power/extra/create', methods=['POST'])
-def post_extra_create():
 	body = {}
 	body['success'] = True
-	error = False
-	error_msgs = []
-	
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
 
-	name = request.get_json()['name'] 
+	errors = power_extra_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
 	power_id = request.get_json()['power_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	name = request.get_json()['name']
 	cost = request.get_json()['cost']
-	ranks = request.get_json()['ranks'] 
-	des = request.get_json()['des'] 
+	ranks = request.get_json()['ranks']
+	des = request.get_json()['des']
 	inherit = request.get_json()['inherit']
 	alternate = request.get_json()['alternate']
 
 	power_id = integer(power_id)
-	inherit = integer(inherit)
+	inherit = db_integer(Power, inherit)
+
 	cost = integer(cost)
 	ranks = integer(ranks)
 
-	power = db.session.query(Extra).filter(Extra.power_id == power_id, Extra.name == name).first()
+	try:
+		entry = Extra(power_id = power_id,
+						name = name,
+						cost = cost,
+						ranks = ranks,
+						des = des,
+						inherit = inherit,
+						alternate = alternate
+					)
 
-	if power is not None:
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'extras'
+		spot = "extras-spot"
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['circ'] = []
+
+		body = power_extra_post(entry, body, cells)
+	except:
 		error = True
+		error_msgs = []
 		body['success'] = False
-		error_msgs.append('You have already created an extra with that name with that name')
-		body['error'] = error_msgs
-
-	if error:
-		return jsonify(body)
-
-	power = Extra(power_id=power_id, name=name, cost=cost, ranks=ranks, des=des, inherit=inherit, alternate=alternate)
-	db.session.add(power)
-	db.session.commit()
-
-	body['id'] = power.id
-	body['name'] = power.name
-	body['power_id'] = power.power_id
-	if power.cost is None:
-		body['cost'] = 'Variable'
-	else:
-		body['cost'] = power.cost
-	body['ranks'] = power.ranks
-	body['des'] = power.des
-	body['inherit'] = power.inherit
-	body['alternate'] = power.alternate
-
-	print(body)
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
+	finally:
+		db.session.close()
+	
 	return jsonify(body)
 
-@powers.route('/power/extra/delete/<power_id>', methods=['DELETE'])
-def delete_extra(power_id):
-	try:
+@powers.route('/power/extras/delete/<power_id>', methods=['DELETE'])
+def delete_power_extra(power_id):
+	body = {}
+	body['success'] = True
+	body['id'] = power_id
+	try:``
 		db.session.query(Extra).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
 		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
 	finally:
 		db.session.close()
-		return jsonify({'success': True})
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify(body)
+
 
 @powers.route('/power/powerdes/delete/<power_id>', methods=['DELETE'])
 def delete_powerdes(power_id):
@@ -809,6 +848,102 @@ def power_grid():
 
 	return jsonify(body)
 
+
+
+
+@powers.route('/power/cost/create', methods=['POST'])
+def power_post_cost():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = power_cost_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = request.get_json()['power_id']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	keyword = request.get_json()['keyword']
+	cost = request.get_json()['cost']
+	rank = request.get_json()['rank']
+	flat = request.get_json()['flat']
+
+	power_id = integer(power_id)
+	cost = integer(cost)
+	rank = integer(rank)
+
+	try:
+		entry = PowerCost(power_id = power_id,
+							keyword = keyword,
+							cost = cost,
+							rank = rank,
+							flat = flat)
+
+		db.session.add(entry)
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'cost'
+		spot = "cost-spot"
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['circ'] = []
+
+		body = power_cost_post(entry, body, cells)
+	except:
+		error = True
+		error_msgs = []
+		body['success'] = False
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()	
+	finally:
+		db.session.close()
+	
+	return jsonify(body)
+
+@powers.route('/power/cost/delete/<power_id>', methods=['DELETE'])
+def delete_power_cost(power_id):
+	body = {}
+	body['success'] = True
+	body['id'] = power_id
+	try:``
+		db.session.query(PowerCost).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify(body)
 
 
 @powers.route('/power/change_action/create', methods=['POST'])

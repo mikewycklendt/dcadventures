@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -468,7 +468,7 @@ def damage_post_errors(data):
 
 	errors = id_multiple(Descriptor, damage_type, 'Damage Type', errors)
 	errors = id_multiple(PowerDes, descriptor, 'Descriptor', errors)
-	
+
 	errors = int_check(mod, 'Modifier', errors)
 
 	errors = required(trait_type, 'Trait Type', errors)
@@ -2511,3 +2511,46 @@ def power_time_post_errors(data):
 
 	return (errors)
 
+
+def power_cost_post_errors(data):
+	
+	errors = {'error': False, 'error_msgs': []}
+
+	keyword = data['keyword']
+	cost = data['cost']
+	rank = data['rank']
+	flat = data['flat']
+
+	errors = int_check(cost, 'Cost', errors)
+	errors =  int_check(rank, 'Rank', errors)
+
+	errors = required(keyword, 'Keyword', errors)
+	errors = required(cost, 'Cost', errors)
+	errors = required(rank, 'Ranks', errors)
+
+	return (errors)
+
+def power_extra_post_errors(data):
+	
+	errors = {'error': False, 'error_msgs': []}
+
+
+	name = data['name']
+	cost = data['cost']
+	ranks = data['ranks']
+	des = data['des']
+	inherit = data['inherit']
+	alternate = data['alternate']
+
+
+	errors = int_check(cost, 'Cost', errors)
+	errors = int_check(ranks, 'Ranks', errors)
+
+	errors = id_check(inherit, 'Power', errors)
+
+	errors = required(name, 'Name', errors)
+	errors = required(cost, 'Cost', errors)
+	errors = required(ranks, 'Ranks', errors)
+	errors = required(des, 'Description', errors)
+
+	return (errors)
