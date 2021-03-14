@@ -930,7 +930,7 @@ def delete_power_cost(power_id):
 	body = {}
 	body['success'] = True
 	body['id'] = power_id
-	try:``
+	try:
 		db.session.query(PowerCost).filter_by(id=power_id).delete()
 		db.session.commit()
 	except:
