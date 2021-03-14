@@ -3351,7 +3351,7 @@ def power_post_check():
 	opposed = request.get_json()['opposed']
 	condition = request.get_json()['condition']
 	condition_target = request.get_json()['condition_target']
-	conditions_target = request.get_json()['conditions_target']\
+	conditions_target = request.get_json()['conditions_target']
 	ranged = request.get_json()['ranged']
 
 	power_id = db_integer(Power, power_id)
