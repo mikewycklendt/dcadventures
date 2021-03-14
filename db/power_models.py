@@ -870,7 +870,7 @@ class PowerMove(db.Model):
 	conceal_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	extended_actions = db.Column(db.Integer)
 	mass_value = db.Column(db.Integer)
-	cost = db.Column(db.Integer, db.ForeignKey('power_cosr.id'))
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	
 	
 	def format(self):
