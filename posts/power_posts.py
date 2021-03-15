@@ -257,13 +257,9 @@ def create_post(entry, body, cells):
 	move_check = entry.move_check
 	move_opponent_check = entry.move_opponent_check
 	move_opposed = entry.move_opposed
-	trap_type = entry.trap_type
-	trap_dc = entry.trap_dc
-	trap_trait_type = entry.trap_trait_type
-	trap_trait = entry.trap_trait
-	trap_resist_check = entry.trap_resist_check
-	trap_resist_trait = entry.trap_resist_trait
-	trap_resist_dc = entry.trap_resist_dc
+	trap_check = entry.trap_check
+	trap_opposed = entry.trap_opposed
+	trap_resist = entry.trap_resist
 	trap_escape = entry.trap_escape
 	ranged_type = entry.ranged_type
 	ranged_dc = entry.ranged_dc
@@ -289,6 +285,9 @@ def create_post(entry, body, cells):
 
 	move_check = get_keyword(PowerCheck, move_check)
 	move_opposed = get_keyword(PowerOpposed, move_opposed)
+	trap_check = get_keyword(PowerCheck, trap_check)
+	trap_opposed = get_keyword(PowerOpposed, trap_opposed)
+	trap_resist = get_keyword(PowerCheck, trap_resist)
 
 	trap_trait = trait_select(trap_trait, trap_trait_type)
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
@@ -364,11 +363,9 @@ def create_post(entry, body, cells):
 
 	cells = check_cell('Trap', 7, trap, cells, True)
 	new_mod = mod_create('Trap', 6)
-	new_mod = mod_cell('DC:', 4, [trap_dc], new_mod)
-	new_mod = mod_cell('Trait:', 15, [trap_trait], new_mod)
-	new_mod = mod_cell('Resistance Trait:', 19, [trap_resist_trait], new_mod)
-	new_mod = mod_cell('Resistance DC:', 18, [trap_resist_dc], new_mod)
-	new_mod = mod_cell('Can Escape:', 11, [trap_escape], new_mod)
+	new_mod = mod_cell('Check to Trap:', 15, [trap_check], new_mod)
+	new_mod = mod_cell('Check to Hold:', 15, [trap_resist], new_mod)
+	new_mod = mod_cell('Check to Escape:', 15, [trap_opposed], new_mod)
 	body = mod_add(trap, new_mod, body)
 
 	cells = check_cell('Ranged', 8, ranged, cells, True)

@@ -152,7 +152,7 @@
 #create-trap {
 	display: none;
 	width: 98%;
-	grid-template-columns: 10% 35% 20% 35%;
+	grid-template-columns: 5% 25% 25% 20% 25%;
 	gap: 3px;
 	max-height: 0;
 	overflow: hidden;

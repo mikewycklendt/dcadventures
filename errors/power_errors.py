@@ -327,13 +327,9 @@ def create_post_errors(data):
 	move_check = data['move_check']
 	move_opponent_check = data['move_opponent_check']
 	move_opposed = data['move_opposed']
-	trap_type = data['trap_type']
-	trap_dc = data['trap_dc']
-	trap_trait_type = data['trap_trait_type']
-	trap_trait = data['trap_trait']
-	trap_resist_check = data['trap_resist_check']
-	trap_resist_trait = data['trap_resist_trait']
-	trap_resist_dc = data['trap_resist_dc']
+	trap_check = data['trap_check']
+	trap_opposed = data['trap_opposed']
+	trap_resist = data['trap_resist']
 	trap_escape = data['trap_escape']
 	ranged_type = data['ranged_type']
 	ranged_dc = data['ranged_dc']
@@ -359,6 +355,9 @@ def create_post_errors(data):
 	errors = id_check(PowerRanks, ranks)
 	errors = id_check(PowerCheck, move_check)
 	errors = id_check(PowerOpposed, move_opposed)
+	errors = id_check(PowerCheck, trap_check)
+	errors = id_check(PowerOpposed, trap_opposed)
+	errors = id_check(PowerCheck, trap_resist)
 
 	errors = power_check(power_id, errors)
 
@@ -372,8 +371,6 @@ def create_post_errors(data):
 	errors = int_check(mass, 'Mass', errors)
 	errors = int_check(transform_start_mass, 'Transform Starting Mass', errors)
 	errors = int_check(transfom_mass, 'Transform Ending Mass', errors)
-	errors = int_check(trap_dc, 'Trap DC', errors)
-	errors = int_check(trap_resist_dc, 'Trap Resistance DC', errors)
 	errors = int_check(ranged_dc, 'Ranged DC', errors)
 	errors = int_check(ranged_damage_value, 'Ranged Damage Value', errors)
 	errors = int_check(weapon_mod, 'Weapon Modifier', errors)
@@ -396,16 +393,12 @@ def create_post_errors(data):
 	errors = check_field(stationary, 'Stationary', 'Moveable With', move_player, errors)
 	errors = seperate_checks([moveable, stationary], 'Moveable or Stationary', errors)
 	
-	errors = check_fields(trap, 'Trap', [trap_type, trap_resist_check, trap_resist_trait, trap_resist_dc], errors)
-	errors = check_field(trap, 'Trap', 'Trap Check Type', trap_type, errors)
-	errors = check_field(trap, 'Trap', 'Trap Resistance Trait Type', trap_resist_check, errors)
-	errors = check_field(trap, 'Trap', 'Trap Resistance Trait', trap_resist_trait, errors)
-	errors = check_field(trap, 'Trap', 'Trap Resistance DC', trap_resist_dc, errors)
-	errors = variable_fields('dc', 'Trap DC', trap_type, [trap_dc], errors)
-	errors = variable_fields('trait', 'Trap Check Against Trait', trap_type, [trap_trait_type, trap_trait], errors)
-	errors = variable_field('trait', trap_type, 'Trap Check Against Trait Type', trap_trait_type, errors)
-	errors = variable_field('trait', trap_type, 'Trap Check Against Trait', trap_trait, errors)
-
+	errors = check_fields(trap, 'Trap', [trap_check, trap_resist], errors)
+	errors = check_field(trap, 'Trap', 'Check to Trap', trap_check, errors)
+	errors = check_field(trap, 'Trap', 'Check to Hold', trap_resist, errors)
+	errors = check_fields(trap_escape, 'Escape Trap', [trap_opposed], errors)
+	errors = check_field(trap_escape, 'Escape Trap', 'Opponent Check', trap_opposed, errors)
+	
 	errors = check_fields(ranged, 'Ranged Attack', [ranged_type, ranged_damage_type], errors)
 	errors = check_field(ranged, 'Ranged Attack', 'Ranged Check Type', ranged_type, errors)
 	errors = check_field(ranged, 'Ranged Attack', 'Ranged Damage Type', ranged_damage_type, errors)

@@ -316,6 +316,16 @@
 		</div>
 		
 		<div>
+			<select class="check-sml" id="create_trap_resist" name="create_trap_resist">
+				<option value="">Check to Hold</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
 			<div class="check-div">
 				<input type="checkbox" id="create_trap_escape" class="medium-checkbox med-checkbox" onclick="create_trap_escape()"> Can Escape
 			</div>

@@ -1414,13 +1414,9 @@ def power_post_create():
 	move_check = request.get_json()['move_check']
 	move_opposed = request.get_json()['move_opposed']
 	move_opponent_check = request.get_json()['move_opponent_check']
-	trap_type = request.get_json()['trap_type']
-	trap_dc = request.get_json()['trap_dc']
-	trap_trait_type = request.get_json()['trap_trait_type']
-	trap_trait = request.get_json()['trap_trait']
-	trap_resist_check = request.get_json()['trap_resist_check']
-	trap_resist_trait = request.get_json()['trap_resist_trait']
-	trap_resist_dc = request.get_json()['trap_resist_dc']
+	trap_check = request.get_json()['trap_check']
+	trap_resist = request.get_json()['trap_resist']
+	trap_opposed = request.get_json()['trap_opposed']
 	trap_escape = request.get_json()['trap_escape']
 	ranged_type = request.get_json()['ranged_type']
 	ranged_dc = request.get_json()['ranged_dc']
@@ -1455,6 +1451,9 @@ def power_post_create():
 
 	move_check = db_integer(PowerCheck, move_check)
 	move_opposed = db_integer(PowerOpposed, move_opposed)
+	trap_check = db_integer(PowerCheck, trap_check)
+	trap_resist = db_integer(PowerCheck, trap_resist)
+	trap_opposed = db_integer(PowerOpposed, trap_opposed)
 
 	volume = integer(volume)
 	toughness = integer(toughness)
@@ -1463,10 +1462,6 @@ def power_post_create():
 	transfom_mass = integer(transfom_mass)
 	transform_start_descriptor = integer(transform_start_descriptor)
 	transform_end_descriptor = integer(transform_end_descriptor)
-	trap_dc = integer(trap_dc)
-	trap_trait = integer(trap_trait)
-	trap_resist_trait = integer(trap_resist_trait)
-	trap_resist_dc = integer(trap_resist_dc)
 	ranged_dc = integer(ranged_dc)
 	ranged_trait = integer(ranged_trait)
 	ranged_damage_value = integer(ranged_damage_value)
@@ -1513,13 +1508,9 @@ def power_post_create():
 							move_opponent_check = move_opponent_check,
 							move_check = move_check,
 							move_opposed = move_opposed,
-							trap_type = trap_type,
-							trap_dc = trap_dc,
-							trap_trait_type = trap_trait_type,
-							trap_trait = trap_trait,
-							trap_resist_check = trap_resist_check,
-							trap_resist_trait = trap_resist_trait,
-							trap_resist_dc = trap_resist_dc,
+							trap_check = trap_check,
+							trap_resist = trap_resist,
+							trap_opposed = trap_opposed,
 							trap_escape = trap_escape,
 							ranged_type = ranged_type,
 							ranged_dc = ranged_dc,

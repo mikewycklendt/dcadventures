@@ -268,6 +268,7 @@ function create_submit() {
 	const move_opponent_check = check("create_move_opponent_check");
 	const move_opposed =  select("create_move_opposed");
 	const trap_check = select("create_trap_check");
+	const trap_resist = select("create_trap_resist");
 	const trap_opposed = select("create_trap_opposed");
 	const trap_escape = check("create_trap_escape");
 	const ranged_type = select("create_ranged_type");
@@ -332,6 +333,7 @@ function create_submit() {
 			'move_opponent_check': move_opponent_check,
 			'move_opposed': move_opposed,
 			'trap_check': trap_check,
+			'trap_resist': trap_resist,
 			'trap_opposed': trap_opposed,
 			'trap_escape': trap_escape,
 			'ranged_type': ranged_type,
