@@ -166,6 +166,7 @@
 		<div>
 			<select class="circ-sml" id="sense_circ" name="sense_circ">
 				<option value="">Circumstance</option>
+				<option value="">Use Circumstance Form to Put Options Here</option>
 				{% for p in power_circ %}
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
@@ -251,69 +252,24 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="sense_time_set" name="sense_time_set" onchange="sense_time_set()">
-				{% for t in sense_time %}
-					<option value="{{t.type}}">{{t.name}}</option>
+			<select class="time-sml" id="sense_time_value" name="sense_time_value">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect Form to Put Options Here</option>
+				{% for p in power_time %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
-		</div>
-
-		<div>
-			<div id="sense-time-value">
-
-				<div>
-					<input type="text" id="sense_time_value" name="sense_time_value">
-				</div>
-
-				<div>
-					<select class="select-sml" id="sense_time_unit" name="sense_time_unit">
-						<option value="">Units</option>
-						{% for u in times %}
-							<option value={{u.id}}>{{u.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-			</div>
-
-			<div id="sense-time-skill">
-				<select class="select-sml" id="sense_time_skill" name="sense_time_skill">
-					<option value="">Skill</option>
-					{% for t in skills %}
-						<option value={{t.id}}>{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="sense-time-bonus">
-				<select class="select-sml" id="sense_time_bonus" name="sense_time_bonus">
-					<option value="">Enhanced Skill</option>
-					{% for t in bonuses %}
-						<option value="{{t.id}}">{{t.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-		</div>
-
-		<div id="sense-time-factor">
-			<div>
-				X
-			</div>
-
-			<div>
-				<select class="select-sml" id="sense_time_factor" name="sense_time_factor">
-					<option value="">N/A</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				per rank
-			</div>
-		</div>
+		</div>		
 		
+		<div>
+			<select class="time-type-sml" id="sense_time_type" name="sense_time_type">
+				<option value="">Time Effect</option>
+				<option value="">Use Time Effect Form to Put Options Here</option>
+				{% for p in power_time_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>		
 	</div>
 
 	<div id="sense-distance">
