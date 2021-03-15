@@ -378,10 +378,10 @@ def power_cost_select():
 	options = [{'id': '', 'name': 'Cost'}]
 
 	try:
-		id = int(id)
-		sub = int(sub)
 		print(id)
 		print(sub)
+		id = int(id)
+		sub = int(sub)
 		if id == 0:
 			get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).first()
 			if get is None:
