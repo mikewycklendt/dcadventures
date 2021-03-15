@@ -19,16 +19,20 @@ function char_base() {
 function char_extra() {
 	const select = 'char_extra';
 	const fill = 'char_cost';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_cost_select, the_power);
+	id_select(select, fill, power_cost_select, power_id);
 }
 
 function char_cost() {
 	const select = 'char_cost';
 	const fill = 'char_ranks';
 	const extra = 'char_extra';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 function char_limited() {

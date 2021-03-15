@@ -17,16 +17,20 @@ function env_base() {
 function env_extra() {
 	const select = 'env_extra';
 	const fill = 'env_cost';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_cost_select, the_power);
+	id_select(select, fill, power_cost_select, power_id);
 }
 
 function env_cost() {
 	const select = 'env_cost';
 	const fill = 'env_ranks';
 	const extra = 'env_extra';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 function env_condition() {

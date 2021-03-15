@@ -17,16 +17,20 @@ function mod_base() {
 function mod_extra() {
 	const select = 'mod_extra';
 	const fill = 'mod_cost';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_cost_select, the_power);
+	id_select(select, fill, power_cost_select, power_id);
 }
 
 function mod_cost() {
 	const select = 'mod_cost';
 	const fill = 'mod_ranks';
 	const extra = 'mod_extra';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 function mod_cost() {
