@@ -299,7 +299,7 @@ def cost_exist(power_id, cost):
 	error = False
 
 	costs = db.session.query(PowerCost).filter_by(power_id=power_id).first()
-	powercosts = db.session.query(PowerCost).filter(PowerCost.power_id=power_id, PowerCost.extra == None).first()
+	powercosts = db.session.query(PowerCost).filter(PowerCost.power_id == power_id, PowerCost.extra == None).first()
 	if costs is None:
 		if cost == 'x':
 			error = True
