@@ -241,7 +241,7 @@ def get_cost(value, ranks_id, extra):
 
 	if ranks_id is None:
 		ranks = None
-	else
+	else:
 		get_rank = db.session.query(PowerRanks).filter_by(id=ranks_id).one()
 		ranks = get_rank.ranks
 	
