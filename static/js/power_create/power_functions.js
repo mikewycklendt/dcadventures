@@ -9,6 +9,7 @@ function all_power_select() {
 	const the_power = select("all_power_select");
 
 	power_id.value = the_power;
+	console.log(power_id)
 }
 
 const power_id = document.getElementById('power_id');
