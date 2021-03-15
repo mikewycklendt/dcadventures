@@ -221,10 +221,16 @@
 	transition: all .4s ease-out;
 }
 
+#create-move-check {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease;
+}
+
 #create-move-opp {
 	opacity: 0%;
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 100%;
 	transition: all .3s linear;
 }
 

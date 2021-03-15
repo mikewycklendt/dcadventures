@@ -85,16 +85,9 @@ function create_support() {
 
 function create_move_player() {
 	const select = 'create_move_player';
-	const fill = 'create_move_player_trait';
+	const options = [{'val': 'check', 'div': 'create-move-check'}];
 
-	id_select(select, fill, trait_select);
-}
-
-function create_move_player_trait() {
-	const filter = select('create_move_player');
-	const fill = 'create_move_player_trait';
-
-	id_select(fill, fill, trait_filter, filter);
+	select_opacity(select, options);
 }
 
 function create_move_opponent_check() {
@@ -264,10 +257,9 @@ function create_submit() {
 	const transform_start_descriptor = select("create_transform_start_descriptor");
 	const transform_end_descriptor = select("create_transform_end_descriptor");
 	const move_player = select("create_move_player");
-	const move_player_trait = select("create_move_player_trait");
+	const move_check =  select("create_move_check");
 	const move_opponent_check = check("create_move_opponent_check");
-	const move_opponent_ability = select("create_move_opponent_ability");
-	const move_opponent_rank = select("create_move_opponent_rank");
+	const move_opposed =  select("create_move_opposed");
 	const trap_type = select("create_trap_type")
 	const trap_dc = select("create_trap_dc");
 	const trap_trait_type = select("create_trap_trait_type");
@@ -334,10 +326,9 @@ function create_submit() {
 			'transform_start_descriptor': transform_start_descriptor,
 			'transform_end_descriptor': transform_end_descriptor,
 			'move_player': move_player,
-			'move_player_trait': move_player_trait,
+			'move_check': move_check,
 			'move_opponent_check': move_opponent_check,
-			'move_opponent_ability': move_opponent_ability,
-			'move_opponent_rank': move_opponent_rank,
+			'move_opposed': move_opposed,
 			'trap_type': trap_type,
 			'trap_dc': trap_dc,
 			'trap_trait_type': trap_trait_type,

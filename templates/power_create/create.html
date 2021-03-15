@@ -271,9 +271,15 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="create_move_player_trait" name="create_move_player_trait" onchange="create_move_player_trait()">
-				<option value="">Trait</option>
-			</select>
+			<div id="create-move-check">
+				<select class="check-sml" id="create_move_check" name="create_move_check">
+					<option value="">Check</option>
+					<option value="">Use Variable Check Form to Put Options Here</option>
+					{% for p in power_check %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 
 		<div class="check-div">
@@ -282,20 +288,11 @@
 
 		<div id="create-move-opp">
 			<div>
-				<select class="select-sml" id="create_move_opponent_ability" name="create_move_opponent_ability">
-					<option value="">Rank to Move</option>
-					{% for a in abilities %}
-						<option value={{a.id}}>{{a.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="create_move_opponent_rank" name="create_move_opponent_rank">
-					<option value="rank">Power Rank</option>
-					<option value="extra">Extra Rank</option>
-					{% for i in positives %}
-						<option  value={{i}}>{{i}}</option>
+				<select class="opposed-sml" id="create_move_opposed" name="create_move_opposed">
+					<option value="">Opponent Check</option>
+					<option value="">Use Opponent Check Form to Put Options Here</option>
+					{% for p in power_opposed %}
+						<option value={{p.id}}>{{p.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
