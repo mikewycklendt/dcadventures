@@ -331,7 +331,7 @@ class PowerCheck(db.Model):
 			'opposed': self.opposed,
 			'condition': self.condition,
 			'condition_target': self.condition_target,
-			'conditions_target': self.conditions_target
+			'conditions_target': self.conditions_target,
 			'opponent': self.opponent,
 			'varible': self.variable,
 			'chained': self.chained	
