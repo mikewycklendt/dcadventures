@@ -380,6 +380,8 @@ def power_cost_select():
 	try:
 		id = int(id)
 		sub = int(sub)
+		print(id)
+		print(sub)
 		if id == 0:
 			get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).first()
 			if get is None:
@@ -402,10 +404,10 @@ def power_cost_select():
 					get = db.session.query(PowerCost).filter(PowerCost.extra == id).all()
 					for g in get:
 						options.append({'id': g.id, 'name': g.keyword})					
-		body['options'] = options 
 	except:
-		options.append({'id': '', 'name': 'Select Base Power or Extra'})
+		options.append({'id': '', 'name': 'Select Power or Extra'})
 
+	body['options'] = options 
 	print(body)
 	return jsonify(body)
 
