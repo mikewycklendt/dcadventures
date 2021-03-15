@@ -1412,7 +1412,7 @@ def power_post_create():
 	transform_end_descriptor = request.get_json()['transform_end_descriptor']
 	move_player = request.get_json()['move_player']
 	move_check = request.get_json()['move_check']
-	move_opposed = request.get_json()['move_opposed'
+	move_opposed = request.get_json()['move_opposed']
 	move_opponent_check = request.get_json()['move_opponent_check']
 	trap_type = request.get_json()['trap_type']
 	trap_dc = request.get_json()['trap_dc']
