@@ -1326,6 +1326,7 @@ class PowerCreate(db.Model):
 	move_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	move_opponent_check = db.Column(db.Boolean)
 	trap_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	trap_resist = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	trap_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	trap_escape = db.Column(db.Boolean)
 	ranged_type = db.Column(db.String())
@@ -1385,6 +1386,7 @@ class PowerCreate(db.Model):
 			'move_opponent_check': self.move_opponent_check,
 			'move_opposed': self.move_opposed,
 			'trap_check': self.trap_check,
+			'trap_resist': self.trap_resist,
 			'trap_opposed': self.trap_opposed,
 			'trap_escape': self.trap_escape,
 			'ranged_type': self.ranged_type,
