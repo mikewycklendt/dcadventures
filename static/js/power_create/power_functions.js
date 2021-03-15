@@ -5,7 +5,7 @@ function rule_specific(jsonResponse) {
 
 
 ///const power_id = document.getElementById('power_id').value;
-const the_power = select("create_power_select");
+const the_power = select("all_power_select");
 
 function show_opacity(div_input) {
 	const div = document.getElementById(div_input);
