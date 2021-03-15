@@ -95,7 +95,7 @@ def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id, power):
 	elif id == 'ex':
 		if base_flat == True:
 			error = True
-			message = 'You set the cost for ' + name + ' to flat so you cannot set a variable rank for this extra.
+			message = 'You set the cost for ' + name + ' to flat so you cannot set a variable rank for this extra.'
 			error_msgs.append(message)
 		else:
 			try:
