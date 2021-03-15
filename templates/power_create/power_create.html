@@ -21,7 +21,7 @@
 
 				<div id="addpowerform">
 					<div>
-						<select id="all_power_select" name="all_power_select" onchange="all_power_select()">
+						<select id="all_power_select" name="all_power_select" >
 							<option value="">Power</option>
 							{% for p in powers %}
 								<option value="{{p.id}}">{{p.name}}</option>
