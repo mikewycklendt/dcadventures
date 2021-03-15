@@ -18,10 +18,9 @@ function sense_base() {
 function sense_extra() {
 	const select = 'sense_extra';
 	const fill = 'sense_cost';
-
 	console.log(the_power)
 
-	id_select(select, fill, power_cost_select, the_power);
+	id_select(select, fill, power_cost_select, power_id);
 }
 
 function sense_cost() {
@@ -29,7 +28,7 @@ function sense_cost() {
 	const fill = 'sense_ranks';
 	const extra = 'sense_extra';
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 

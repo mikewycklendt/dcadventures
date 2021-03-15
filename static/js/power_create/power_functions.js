@@ -4,8 +4,14 @@ function rule_specific(jsonResponse) {
 }
 
 
-///const power_id = document.getElementById('power_id').value;
-const the_power = select("all_power_select");
+function all_power_select() {
+	const power = document.getElementById('power_id');
+	const the_power = select("all_power_select");
+
+	power_id.value = the_power;
+}
+
+const power_id = document.getElementById('power_id');
 
 function show_opacity(div_input) {
 	const div = document.getElementById(div_input);
