@@ -134,7 +134,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div id="check-conditions">
 		<div class="vcenter" style="text-align: left;">
 			Conditions:
@@ -285,6 +285,39 @@
 			<select class="dc-title-sml" id="check_dc_type" name="check_dc_type">
 				<option value="">DC By Group Title</option>
 				<option value="">Use DC Table form to put options here</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="check-trigger-variable">
+		<div>
+			Triggered by Check:
+		</div>
+		
+		<div>
+			<select class="check-sml" id="check_variable" name="create_move_check">
+				<option value="">Check</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+
+	<div id="check-trigger-opposed">
+		<div>
+			Triggered by Opposed:
+		</div>
+
+		<div>
+			<select class="opposed-sml" id="check_opponent" name="create_move_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>

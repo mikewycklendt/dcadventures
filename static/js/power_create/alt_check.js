@@ -51,6 +51,8 @@ function check_trigger() {
 	const select = 'check_trigger';
 	const options = [{'val': 'change', 'div': 'check-conditions'},
 					{'val': 'condition', 'div': 'check-condition'},
+					{'val': 'variable', 'div': 'check-trigger-variable'},
+					{'val': 'opposed', 'div': 'check-trigger-opposed'},
 					{'val': 'conflict', 'div': 'check-conflict'}];
 	const entry = 'check-entry';
 
@@ -96,6 +98,8 @@ function check_submit() {
 	const condition_target = select("check_condition_target");
 	const conditions_target = select("check_conditions_target");
 	const ranged = select("check_ranged_type")
+	const variable = select("check_variable")
+	const opponent = select("check_opponent")
 	
 
 	///const power_id = document.getElementById('power_id').value;
@@ -143,7 +147,9 @@ function check_submit() {
 			'opposed': opposed,
 			'condition': condition,
 			'condition_target': condition_target,
-			'conditions_target': conditions_target
+			'conditions_target': conditions_target,
+			'variable': variable,
+			'opponent': opponent
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

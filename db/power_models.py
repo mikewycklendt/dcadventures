@@ -295,6 +295,9 @@ class PowerCheck(db.Model):
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_target = db.Column(db.String())
 	conditions_target = db.Column(db.String())
+	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	chained = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -329,6 +332,9 @@ class PowerCheck(db.Model):
 			'condition': self.condition,
 			'condition_target': self.condition_target,
 			'conditions_target': self.conditions_target
+			'opponent': self.opponent,
+			'varible': self.variable,
+			'chained': self.chained	
 		}
 
 
@@ -1037,6 +1043,8 @@ class PowerOpposed(db.Model):
 	circ_value = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
 	time_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	recurring_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
+	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	chained = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -1075,7 +1083,10 @@ class PowerOpposed(db.Model):
 			'dc_player': self.dc_player,
 			'circ_value': self.circ_value,
 			'time_type': self.time_type,
-			'recurring_type': self.recurring_type
+			'recurring_type': self.recurring_type,
+			'variable': self.variable,
+			'chained': self.chained
+
 		}
 
 
