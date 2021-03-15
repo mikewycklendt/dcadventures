@@ -2043,6 +2043,8 @@ class PowerSenseEffect(db.Model):
 	dimensional_type = db.Column(db.String())
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
+	time_value = db.Column(db.Integer, db.ForeignKey('power_time.id'))
+	time_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 
 
 	def format(self):
@@ -2078,6 +2080,7 @@ class PowerSenseEffect(db.Model):
 			'accurate': self.accurate,
 			'acute': self.acute,
 			'time_value': self.time_value,
+			'time_type': self.time_type,
 			'distance': self.distance,
 			'distance_dc': self.distance_dc,
 			'distance_mod': self.distance_mod,
