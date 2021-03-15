@@ -1445,7 +1445,6 @@ def sense_post(entry, body, cells):
 	sense = entry.sense
 	subsense = entry.subsense
 	skill = entry.skill
-	skill_required = entry.skill_required
 	sense_type = entry.sense_type
 	height_trait_type = entry.height_trait_type
 	height_trait = entry.height_trait
@@ -1466,12 +1465,6 @@ def sense_post(entry, body, cells):
 	radius = entry.radius
 	accurate = entry.accurate
 	acute = entry.acute
-	time_set = entry.time_set
-	time_value = entry.time_value
-	time_unit = entry.time_unit
-	time_skill = entry.time_skill	
-	time_bonus = entry.time_bonus
-	time_factor = entry.time_factor
 	distance = entry.distance
 	distance_dc = entry.distance_dc
 	distance_mod = entry.distance_mod
@@ -1481,8 +1474,16 @@ def sense_post(entry, body, cells):
 	dimensional_type = entry.dimensional_type
 	ranks = entry.ranks
 	cost = entry.cost
+	time_value = entry.time_value
+	time_type = entry.time_type
+	circ = entry.circ
 
 	cost = get_cost(cost, ranks, extra_id)
+	
+	skill =  get_keyword(PowerCheck, skill)
+	time_value = get_keyword(PowerTime, time_value)
+	time_type = get_name(PowerTimeType, time_type)
+	circ = get_keyword(PowerCirc, circ)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -1490,7 +1491,6 @@ def sense_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	sense = get_name(Sense, sense)
 	subsense = get_name(SubSense, subsense)
-	skill = get_name(Skill, skill)
 	height_ensense = get_name(Power, height_ensense)
 	lighting = get_name(Light, lighting)
 	time_unit = get_name(Unit, time_unit)
@@ -1515,8 +1515,6 @@ def sense_post(entry, body, cells):
 	dimensional_type = selects(dimensional_type, dimensions_select)
 
 	resist_circ = integer_convert(resist_circ)
-	time_value = integer_convert(time_value)
-	time_factor = integer_convert(time_factor)
 	distance_dc = integer_convert(distance_dc)
 	distance_mod = integer_convert(distance_mod)
 	distance_value = integer_convert(distance_value)
@@ -1539,10 +1537,10 @@ def sense_post(entry, body, cells):
 	wid = width(wid, 10, resist_immune)
 	perm = string(resist_permanent, word)
 	wid = width(wid, 12, resist_permanent)
-	circ = string('Modifier', resist_circ)
-	wid = width(wid, 12, resist_circ)
-	vcells = vcell('resist', wid, [affects, resist_trait, word, perm, resist_circ, circ], vcells)
+	vcells = vcell('resist', wid, [affects, resist_trait, word, perm], vcells)
 	vcell_add('Effect', sense_type, vcells, cells)
+
+	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
 
 	cells = check_cell('Penetrates', 12, objects, cells)
 	cells = check_cell('Exclusive', 10, exclusive, cells)
@@ -1554,17 +1552,8 @@ def sense_post(entry, body, cells):
 	body = mod_add(dark, new_mod, body)
 
 	cells = check_cell('Time Effect', 14, time, cells, True)
-	sense_time_select = [{'type': 'value', 'name': 'Set by Value', 'w': 15}, {'type': 'skill', 'name': 'Set by Skill', 'w': 15}, {'type': 'bonus', 'name': 'Set by Enhanced Skill', 'w': 22}]
-	new_mod = mod_create('Time Effect', 15, time_set, sense_time_select)
-	value = 'value'
-	new_mod = mod_cell('Time:', 8, [time_value, time_unit], new_mod, value)
-	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
-	value = 'skill' 
-	new_mod = mod_cell('Skill:', 8, [time_skill], new_mod, value)
-	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
-	value = 'bonus'
-	new_mod = mod_cell('Enhanced Skill:', 18, [time_bonus], new_mod, value)
-	new_mod = mod_cell('X Per Rank', 12, [time_factor], new_mod, value)
+	new_mod = mod_create('Time Effect', 15)
+	new_mod = mod_cell('Keyword', 10, [time_value, time_type])
 	body = mod_add(time, new_mod, body)
 
 	cells = check_cell('Dimensional', 14, dimensional, cells, True)

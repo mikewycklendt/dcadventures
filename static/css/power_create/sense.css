@@ -71,7 +71,7 @@
 
 #sense-row2 {
 	display: grid;
-	grid-template-columns: 20% 80%;
+	grid-template-columns: 14% 66% 20%;
 }
 
 #sense-height {
@@ -95,7 +95,7 @@
 
 #sense-resist {
 	display: grid;
-	grid-template-columns: 20% 25% 20% 20% 15%;
+	grid-template-columns: 20% 30% 25% 25%;
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;

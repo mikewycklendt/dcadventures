@@ -40,8 +40,6 @@
 			Skill Check:
 		</div>
 
-		<div></div>
-
 		<div>
 			<select class="select-sml" id="sense_sense" name="sense_sense" onchange="sense_sense()">
 				<option value="any">Any</option>
@@ -106,7 +104,7 @@
 				</div>
 
 				<div>
-					<div class="check-div">
+					<div class="check-div" style="font-size: 70%;">
 						<input type="checkbox" id="sense_height_power_req" class="medium-checkbox med-checkbox" onclick="sense_power_req()"> Needs Sense Power
 					</div>
 				</div>
@@ -150,7 +148,7 @@
 					</select>
 				</div>
 
-				<div>
+				<div style="display: none;">
 					<select class="select-sml" id="sense_resist_circ" name="sense_resist_circ">
 						<option value="">Modifier</option>
 						{% for i in negatives %}
@@ -163,6 +161,15 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div>
+			<select class="circ-sml" id="sense_circ" name="sense_circ">
+				<option value="">Circumstance</option>
+				{% for p in power_circ %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 	</div>
@@ -240,7 +247,7 @@
 	<div id="sense-time">
 		
 		<div>
-			Time Set By:
+			Time Effect:
 		</div>
 
 		<div>

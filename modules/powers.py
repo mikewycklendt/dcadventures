@@ -3249,7 +3249,6 @@ def power_post_sense():
 	sense = request.get_json()['sense']
 	subsense = request.get_json()['subsense']
 	skill = request.get_json()['skill']
-	skill_required = request.get_json()['skill_required']
 	sense_type = request.get_json()['sense_type']
 	height_trait_type = request.get_json()['height_trait_type']
 	height_trait = request.get_json()['height_trait']
@@ -3270,12 +3269,8 @@ def power_post_sense():
 	radius = request.get_json()['radius']
 	accurate = request.get_json()['accurate']
 	acute = request.get_json()['acute']
-	time_set = request.get_json()['time_set']
 	time_value = request.get_json()['time_value']
-	time_unit = request.get_json()['time_unit']
-	time_skill = request.get_json()['time_skill']
-	time_bonus = request.get_json()['time_bonus']
-	time_factor = request.get_json()['time_factor']
+	time_type = request.get_json()['time_type']
 	distance = request.get_json()['distance']
 	distance_dc = request.get_json()['distance_dc']
 	distance_mod = request.get_json()['distance_mod']
@@ -3288,10 +3283,14 @@ def power_post_sense():
 	created = request.get_json()['created']
 	columns = request.get_json()['columns']
 	font = request.get_json()['font']
+	circ = request.get_json()['circ']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
-
+	skill = db_integer(PowerCheck, skill)
+	time_value = db_integer(PowerTime, time_value)
+	time_type = db_integer(PowerTimeType, time_type)
+	circ = db_integer(PowerCirc, circ)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3300,8 +3299,6 @@ def power_post_sense():
 	skill = db_integer(Skill, skill)
 	height_ensense = db_integer(Power, height_ensense)
 	lighting = db_integer(Light, lighting)
-	time_unit = db_integer(Unit, time_unit)
-	time_skill = db_integer(Skill, time_skill)
 	time_bonus = db_integer(SkillBonus, time_bonus)
 	distance_unit = db_integer(Unit, distance_unit)
 
@@ -3324,7 +3321,6 @@ def power_post_sense():
 									sense = sense,
 									subsense = subsense,
 									skill = skill,
-									skill_required = skill_required,
 									sense_type = sense_type,
 									height_trait_type = height_trait_type,
 									height_trait = height_trait,
@@ -3345,12 +3341,8 @@ def power_post_sense():
 									radius = radius,
 									accurate = accurate,
 									acute = acute,
-									time_set = time_set,
 									time_value = time_value,
-									time_unit = time_unit,
-									time_skill = time_skill,
-									time_bonus = time_bonus,
-									time_factor = time_factor,
+									time_type = time_type,
 									distance = distance,
 									distance_dc = distance_dc,
 									distance_mod = distance_mod,
@@ -3359,7 +3351,8 @@ def power_post_sense():
 									distance_factor = distance_factor,
 									dimensional_type = dimensional_type,
 									ranks = ranks,
-									cost = cost)
+									cost = cost,
+									circ = circ)
 
 		db.session.add(entry)
 		db.session.commit()

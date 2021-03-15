@@ -2045,6 +2045,7 @@ class PowerSenseEffect(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	time_value = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 	time_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
+	circ = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
 
 
 	def format(self):
@@ -2089,7 +2090,8 @@ class PowerSenseEffect(db.Model):
 			'distance_factor': self.distance_factor,
 			'dimensional_type': self.dimensional_type,
 			'ranks': self.ranks,
-			'cost': self.cost
+			'cost': self.cost,
+			'circ': self.circ
 		}
 
 class PowerReverse(db.Model):

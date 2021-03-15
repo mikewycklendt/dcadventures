@@ -177,7 +177,6 @@ function sense_submit() {
 	const sense = select("sense_sense");
 	const subsense = select("sense_subsense");
 	const skill = select("sense_skill");
-	const skill_required = check("sense_skill_req");
 	const sense_type = select("sense_type");
 	const height_trait_type = select("sense_height_trait_type");
 	const height_trait = select("sense_height_trait");
@@ -198,12 +197,6 @@ function sense_submit() {
 	const radius = check("sense_radius");
 	const accurate = check("sense_accurate");
 	const acute = check("sense_acute");
-	const time_set = select("sense_time_set");
-	const time_value = text("sense_time_value");
-	const time_unit = select("sense_time_unit");
-	const time_skill = select("sense_time_skill");
-	const time_bonus = select("sense_time_bonus");
-	const time_factor = select("sense_time_factor");
 	const distance = select("sense_distance");
 	const distance_dc = select("sense_dis_dc");
 	const distance_mod = select("sense_dis_mod");
@@ -214,6 +207,7 @@ function sense_submit() {
 	const ranks = select("sense_ranks");
 	const cost = select("sense_cost");
 	const power_cost = select("cost");
+	const circ = select("sense_circ");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -230,7 +224,6 @@ function sense_submit() {
 			'sense': sense,
 			'subsense': subsense,
 			'skill': skill,
-			'skill_required': skill_required,
 			'sense_type': sense_type,
 			'height_trait_type': height_trait_type,
 			'height_trait': height_trait,
@@ -251,12 +244,6 @@ function sense_submit() {
 			'radius': radius,
 			'accurate': accurate,
 			'acute': acute,
-			'time_set': time_set,
-			'time_value': time_value,
-			'time_unit': time_unit,
-			'time_skill': time_skill,
-			'time_bonus': time_bonus,
-			'time_factor': time_factor,
 			'distance': distance,
 			'distance_dc': distance_dc,
 			'distance_mod': distance_mod,
@@ -269,7 +256,8 @@ function sense_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'power_cost': power_cost
+			'power_cost': power_cost,
+			'circ': circ
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

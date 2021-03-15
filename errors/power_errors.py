@@ -1244,7 +1244,6 @@ def sense_post_errors(data):
 	sense = data['sense']
 	subsense = data['subsense']
 	skill = data['skill']
-	skill_required = data['skill_required']
 	sense_type = data['sense_type']
 	height_trait_type = data['height_trait_type']
 	height_trait = data['height_trait']
@@ -1267,10 +1266,7 @@ def sense_post_errors(data):
 	acute = data['acute']
 	time_set = data['time_set']
 	time_value = data['time_value']
-	time_unit = data['time_unit']
-	time_skill = data['time_skill']
-	time_bonus = data['time_bonus']
-	time_factor = data['time_factor']
+	time_type = data['time_type']
 	distance = data['distance']
 	distance_dc = data['distance_dc']
 	distance_mod = data['distance_mod']
@@ -1281,10 +1277,15 @@ def sense_post_errors(data):
 	ranks = data['ranks']
 	cost = data['cost']
 	power_cost = data['power_cost']
+	circ = data['circ']
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
-
+	errors = id_check(PowerCheck, skill)
+	errors = id_check(PowerTimeType, time_type)
+	errors = id_check(PowerTime, time_value)
+	errors = id_check(PowerCircType, circ)
+	
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -1317,14 +1318,8 @@ def sense_post_errors(data):
 	errors = variable_field('resist', sense_type, 'Resistant Trait', resist_trait, errors)
 	errors = check_field(resist_immune, 'Immunity', 'Immunity Type', resist_permanent, errors)
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
-	errors = check_field(time, 'Time Effect', 'Time Set By', time_set, errors)
-	errors = variable_fields('value', 'Time Set by Value', time_set, [time_value, time_unit], errors)
-	errors = variable_field('value', time_set, 'Value', time_value, errors)
-	errors = variable_field('value', time_set, 'Units', time_unit, errors)
-	errors = variable_fields('skill', 'Time Set by Skill', time_set, [time_skill], errors)
-	errors = variable_field('skill', time_set, 'Skill', time_skill, errors)
-	errors = variable_fields('bonus', 'Time Set by Enhanced Skill', time_set, [time_bonus], errors)
-	errors = variable_field('bonus', time_set, 'Enhanced Skill', time_bonus, errors)
+	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)
+	errors = seperate([time_value, time_type], 'the Time Effect', errors)
 	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)
 
 	return (errors)
