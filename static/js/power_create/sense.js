@@ -19,6 +19,8 @@ function sense_extra() {
 	const select = 'sense_extra';
 	const fill = 'sense_cost';
 
+	console.log(the_power)
+
 	id_select(select, fill, power_cost_select, the_power);
 }
 
