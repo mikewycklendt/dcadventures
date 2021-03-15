@@ -113,6 +113,8 @@ def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id, power):
 							value = ranks / base_ranks
 							value = value * base_cost
 							value = round(value)
+			except:
+				print ('not an int')
 	else:
 		try:
 			id = int(id)
