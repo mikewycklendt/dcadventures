@@ -17,21 +17,21 @@ function sense_base() {
 
 function sense_extra() {
 	const power_id = select("all_power_select");
-	const select = 'sense_extra';
+	const field = 'sense_extra';
 	const fill = 'sense_cost';
 	///const power_id = document.getElementById('power_id');
 
-	id_select(select, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id);
 }
 
 function sense_cost() {
 	const power_id = select("all_power_select");
-	const select = 'sense_cost';
+	const field = 'sense_cost';
 	const fill = 'sense_ranks';
 	const extra = 'sense_extra';
 	///const power_id = document.getElementById('power_id');
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
+	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 

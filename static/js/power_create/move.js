@@ -8,18 +8,22 @@ function move_check() {
 }
 
 function move_extra() {
-	const select = 'move_extra';
+	const field = 'move_extra';
 	const fill = 'move_cost'
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_cost_select, the_power);
+	id_select(field, fill, power_cost_select, power_id);
 }
 
 function move_cost() {
-	const select = 'move_cost';
+	const field = 'move_cost';
 	const fill = 'move_ranks';
 	const extra = 'move_extra';
+	///const power_id = document.getElementById('power_id');
+	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 function move_speed_trait_type() {

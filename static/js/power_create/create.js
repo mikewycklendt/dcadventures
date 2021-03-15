@@ -15,22 +15,22 @@ function create_base() {
 }
 
 function create_extra() {
-	const select = 'create_extra';
+	const field = 'create_extra';
 	const fill = 'create_cost';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id);
 }
 
 function create_cost() {
-	const select = 'create_cost';
+	const field = 'create_cost';
 	const fill = 'create_ranks';
 	const extra = 'create_extra';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
 
-	id_select(select, fill, power_ranks_select, extra, false, false, false, power_id);
+	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
 }
 
 
