@@ -172,7 +172,7 @@ function time_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/skill/' + table_id + '/delete/'
-			create_table('skill', jsonResponse, time_grid, route, [selects, select_entry], title_id, [select_title]);
+			create_table('skill', jsonResponse, time_grid, route, [selects, select_entry, recur_entry, recur_sml], title_id, [select_title, recur_title_entry, recur_title_sml]);
 			clear_errors(err_line, errors)
 
 			time_grid.titles = true;

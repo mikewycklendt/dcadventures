@@ -21,6 +21,14 @@ function env_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function env_cost() {
+	const select = 'env_cost';
+	const fill = 'env_ranks';
+	const extra = 'env_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
 function env_condition() {
 	const check = 'env_condition';
 	const div = 'env-condition';

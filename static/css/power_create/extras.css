@@ -30,10 +30,18 @@
 	font-size: 110%;
 }
 
-.extra-select:focus {
+.extra-cost-select:focus {
 	background-color: lightblue;
 }
 
+.extra-rank-select {
+	height: 2.5vw; 
+	font-size: 110%;
+}
+
+.extra-rank-select:focus {
+	background-color: lightblue;
+}
 
 #extras-entry {
 	display: grid;

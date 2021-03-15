@@ -169,7 +169,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 33% 15% 17% 15% 20%;
+	grid-template-columns: 33% 32% 15% 20%;
 }
 
 #mod-area {

@@ -27,6 +27,7 @@ function extras_submit() {
 	const selects = 'extra-select';
 	const selects_sml = 'extra-sml'
 	const selects_var = 'extra-cost-select';
+	const selects_rank = 'extra-rank-select';
 
 	response = fetch('/power/extras/create', {
 		method: 'POST',
@@ -61,12 +62,16 @@ function extras_submit() {
 				selects_add(id, name, selects_var);
 			}
 
+			if (flat == false) {
+				selects_add(id, name, selects_rank);
+			}
+
 			extras_grid.columns.length = 0;
 			extras_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, extras_grid, route, [selects, selects_sml]);
+			create_table('power', jsonResponse, extras_grid, route, [selects, selects_sml, selects_var, selects_rank]);
 			clear_errors(err_line, errors)
 
 			extras_grid.titles = true;

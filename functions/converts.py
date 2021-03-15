@@ -986,7 +986,7 @@ def id_check(table, value_id, name, errors):
 			error = True
 			error_msgs.append(message)
 		db.session.close()
-	elif value_id ==  'extra':
+	elif value_id ==  'ex':
 		return (errors)
 	else:
 		try:

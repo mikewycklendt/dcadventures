@@ -22,6 +22,15 @@ function sense_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function sense_cost() {
+	const select = 'sense_cost';
+	const fill = 'sense_ranks';
+	const extra = 'sense_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
+
 function sense_sense() {
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';
@@ -167,8 +176,6 @@ function sense_submit() {
 	const extra_id = select("sense_extra");
 	const sense = select("sense_sense");
 	const subsense = select("sense_subsense");
-	const sense_cost = select("sense_sense_cost");
-	const subsense_cost = select("sense_subsense_cost");
 	const skill = select("sense_skill");
 	const skill_required = check("sense_skill_req");
 	const sense_type = select("sense_type");
@@ -222,8 +229,6 @@ function sense_submit() {
 			'target': target,
 			'sense': sense,
 			'subsense': subsense,
-			'sense_cost': sense_cost,
-			'subsense_cost': subsense_cost,
 			'skill': skill,
 			'skill_required': skill_required,
 			'sense_type': sense_type,

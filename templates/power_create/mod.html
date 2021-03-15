@@ -149,7 +149,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_ranks" class="medium-checkbox med-checkbox" onclick="mod_ranks()"> Gain Trait
+				<input type="checkbox" id="mod_ranks_check" class="medium-checkbox med-checkbox" onclick="mod_ranks_check()"> Gain Trait
 			</div>
 		</div>
 	</div>
@@ -942,29 +942,14 @@
 		<div></div>
 
 		<div>
-			<select class="entry-select" id="mod_ranks_cost" name="mod_ranks_cost">
-				<option value="">Ranks</option>
-				{% for i in hundred %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
+			<select class="entry-select" id="mod_cost" name="mod_cost" onchange="mod_cost()">
+				<option value="">Cost</option>
 			</select>
 		</div>
 
 		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="mod_cost" name="mod_cost">
-				<option value="">N/A</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
+			<select class="entry-select" id="mod_ranks" name="mod_ranks">
+				<option value="">Ranks</option>
 			</select>
 		</div>
 

@@ -21,6 +21,21 @@ function mod_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function mod_cost() {
+	const select = 'mod_cost';
+	const fill = 'mod_ranks';
+	const extra = 'mod_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
+function mod_cost() {
+	const select = 'mod_cost';
+	const fill = 'mod_ranks';
+	const extra = 'mod_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
 function mod_area() {
 
 	const check = 'mod_area';
@@ -203,8 +218,8 @@ function mod_points() {
 	check_drop(check, div, entry);
 }
 
-function mod_ranks() {
-	const check = 'mod_ranks';
+function mod_ranks_check() {
+	const check = 'mod_ranks_check';
 	const div = 'mod-ranks';
 	const entry = 'mod-entry';
 
@@ -336,7 +351,7 @@ function mod_submit() {
 	const subtle = check("mod_subtle");
 	const permanent = check("mod_permanent");
 	const points = check("mod_points");
-	const ranks = check("mod_ranks");
+	const ranks_check = check("mod_ranks_check");
 	const action = check("mod_action");
 	const side_effect = check("mod_side_effect");
 	const concentration = check("mod_concentration");
@@ -398,7 +413,7 @@ function mod_submit() {
 	const points_reroll_cost = select("mod_points_reroll_cost");
 	const points_rerolls = select("mod_points_rerolls");
 	const points_reroll_result = select("mod_points_reroll_result");
-	const ranks_cost = select("mod_ranks_cost");
+	const ranks = select("mod_ranks");
 	const cost = select("mod_cost");
 
 	///const power_id = document.getElementById('power_id').value;
@@ -432,7 +447,7 @@ function mod_submit() {
 			'subtle': subtle,
 			'permanent': permanent,
 			'points': points,
-			'ranks': ranks,
+			'ranks_check': ranks_check,
 			'action': action,
 			'side_effect': side_effect,
 			'concentration': concentration,
@@ -494,7 +509,7 @@ function mod_submit() {
 			'points_reroll_cost': points_reroll_cost,
 			'points_rerolls': points_rerolls,
 			'points_reroll_result': points_reroll_result,
-			'ranks_cost': ranks_cost,
+			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,
 			'created': created,

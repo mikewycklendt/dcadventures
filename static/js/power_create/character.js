@@ -23,6 +23,14 @@ function char_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function char_cost() {
+	const select = 'char_cost';
+	const fill = 'char_ranks';
+	const extra = 'char_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
 function char_limited() {
 	const check = 'char_limited';
 	const div = 'char-limited';

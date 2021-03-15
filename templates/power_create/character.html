@@ -400,29 +400,14 @@
 		<div></div>
 
 		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="char_cost" name="char_cost">
+			<select class="entry-select" id="char_cost" name="char_cost" onchange="char_cost()">
 				<option value="">Cost</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
 		<div>
 			<select class="entry-select" id="char_ranks" name="char_ranks">
 				<option value="">Ranks</option>
-				{% for i in hundred %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>	
 		</div>
 		

@@ -563,29 +563,14 @@
 		<div></div>
 
 		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="create_cost_per_rank" name="create_cost_per_rank">
+			<select class="entry-select" id="create_cost_per_rank" name="create_cost_per_rank" onchange="create_cost()">
 				<option value="">Cost</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		
 		<div>
 			<select class="entry-select" id="create_ranks" name="create_ranks">
 				<option value="">Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 

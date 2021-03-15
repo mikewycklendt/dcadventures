@@ -37,14 +37,6 @@
 		</div>
 
 		<div>
-			Sense Cost: 
-		</div>
-
-		<div>
-			Sub-Sense Cost:
-		</div>
-
-		<div>
 			Skill Check:
 		</div>
 
@@ -74,36 +66,12 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="sense_sense_cost" name="sense_sense_cost">
-				<option value="">Cost</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+			<select  class="select-sml" id="sense_skill" name="sense_skill">
+				<option value="">Check</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="sense_subsense_cost" name="sense_subsense_cost">
-				<option value="">Cost</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select  class="select-sml" id="sense_skill" name="sense_skill" onchange="sense_skill()">
-				<option value="">N/A</option>
-				{% for s in skills %}
-					<option value={{s.id}}>{{s.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="sense-skill-req" style="opacity: 0%; transition: all .3s ease-in;">
-			<div class="check-div">
-				<input type="checkbox" id="sense_skill_req" class="medium-checkbox med-checkbox"> Required
-			</div>
 		</div>
 
 	</div>
@@ -418,26 +386,14 @@
 		<div></div>
 
 		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="sense_cost" name="sense_ranks">
+			<select class="entry-select" id="sense_cost" name="sense_ranks" onchange="sense_cost()">
 				<option value="">Cost</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
 		<div>
 			<select class="entry-select" id="sense_ranks" name="sense_ranks">
 				<option value="">Ranks</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 

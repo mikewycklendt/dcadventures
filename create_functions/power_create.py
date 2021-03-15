@@ -17,7 +17,7 @@ from db.weapon_models import *
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
-def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id):
+def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id, power):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -32,11 +32,23 @@ def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id):
 		base_ranks = base_ranks
 		base_flat = base_flat
 	else:
-		extra = db.session.query(Extra).filter_by(id=extra_id).one()
-		base_cost = extra.cost
-		base_ranks = extra.ranks
-		base_flat = extra.flat
-		name = extra.name
+		try:
+			extra_id = int(extra_id)
+			extra = db.session.query(Extra).filter_by(id=extra_id).one()
+			base_cost = extra.cost
+			base_ranks = extra.ranks
+			base_flat = extra.flat
+			name = extra.name
+		except:
+			error = True
+			message = 'There was a problem with that extra.'
+			error_msgs.append(message)
+	
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+		return (errors)
 
 	if id == '0':
 		if base_cost == '':
@@ -55,19 +67,52 @@ def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id):
 			error = True
 			message = 'You have this power set at a flat cost.  Uncheck the flat cost checkbox in the main create power form to set a variable rank.'
 		else:
-			base_ranks = int(base_ranks)
-			base_cost = int(base_cost)
-			value = ranks / base_ranks
-			value = value * base_cost
-			value = round(value)
+			try:
+				power = int(power)
+				ranks = int(ranks)
+				power_ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == power, PowerRanks.extra == None).first()
+				if power_ranks is not None:
+					power_ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == power, PowerRanks.extra == None).all()
+					for p in power_ranks:
+						if power_ranks.ranks == ranks:
+							error = True
+							message = 'Tou have already created a variable rank with that value for the base power.'
+							error_msgs.append(message)
+						else: 
+							base_ranks = int(base_ranks)
+							base_cost = int(base_cost)
+							value = ranks / base_ranks
+							value = value * base_cost
+							value = round(value)
+			except:
+				error = True
+				message = 'There was an error processing that rank.'
+				error_msgs.append(message)
 	elif id == '':
 		error = True
 		message = 'You must select a cost before you can set a variable rank.'
 		error_msgs.append(message)
 	elif id == 'ex':
-			value = ranks / base_ranks
-			value = value * base_cost
-			value = round(value)
+		if base_flat == True:
+			error = True
+			message = 'You set the cost for ' + name + ' to flat so you cannot set a variable rank for this extra.
+			error_msgs.append(message)
+		else:
+			try:
+				ranks = int(ranks)
+				extra_id = int(extra_id)
+				power_ranks = db.session.query(PowerRanks).filter(PowerRanks.extra == extra_id).first()
+				if power_ranks is not None:
+					power_ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == power, PowerRanks.extra == None).all()
+					for p in power_ranks:
+						if power_ranks.ranks == ranks:
+							error = True
+							message = 'Tou have already created a variable rank with that value for that extra.'
+							error_msgs.append(message)
+						else:
+							value = ranks / base_ranks
+							value = value * base_cost
+							value = round(value)
 	else:
 		try:
 			id = int(id)
@@ -92,28 +137,192 @@ def ranks_error(id, ranks, base_cost, base_ranks, base_flat, extra_id):
 
 	return (errors)
 
-def ranks_function(id, ranks, base_cost, base_ranks):
+def ranks_function(id, ranks, base_cost, base_ranks, extra_id):
 	error_msgs = errors['error_msgs']
 	error = False
 
+	if extra_id is not None:
+		extra = db.session.query(Extra).filter_by(id=extra_id).one()
+		base_cost = extra.cost
+		base_ranks = extra.ranks
+
 	if id is None:
+		try:
 			base_ranks = int(base_ranks)
 			base_cost = int(base_cost)
 			value = ranks / base_ranks
 			value = value * cost
+		except:
+			print('not an int')
 	else:
-			get_cost = db.session.query(PowerCost).filter_by(id=id).one()
-			ranks = int(ranks)
-			value = ranks / get_cost.rank
-			value = value * get_cost.cost
-			value = round(value)
+		get_cost = db.session.query(PowerCost).filter_by(id=id).one()
+		value = ranks / get_cost.rank
+		value = value * get_cost.cost
+		value = round(value)
 
 	return (value)
 
 
-def cost_error():
+def cost_error(cost, id, extra_id, base_cost, base_flat):
 	error_msgs = errors['error_msgs']
 	error = False
+
+	if extra_id == '0':
+		if base_cost != 'x':
+			error = True
+			message = 'You must set the base cost of this power to variable if you want to create a variable cost for the base power.'
+			error_msgs.append(message)
+		if base_flat:
+			error = True
+			message = 'You checked the flat cost check box.  Uncheck that box if you want to create a variable cost.'
+			error_msgs.append(message)			
+		id = int(id)
+		extra = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == id).first()
+		if extra is not None:
+			extra = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == id).all()
+			for e in extra:
+				try:
+					cost = int(cost)
+					if e.cost == cost:
+						error = True
+						message = 'You have already set ' + str(e.rank) + ' ranks to cost ' + str(cost) + ' points for the base power.'
+						error_msgs.append(message) 
+				except:
+					print('not an int')
+		try:
+			cost = int(cost)
+			if cost < 1:
+				error = True
+				message = 'Base power costs must be positive.'
+				error_msgs.append(message)
+		except:
+			print ('not sn int')
+	else:
+		try:
+			extra_id = int(extra_id)
+			extra = db.session.query(PowerCost).filter(PowerCost.extra == extra_id).first()
+			if extra is not None:
+				extra = db.session.query(PowerCost).filter(PowerCost.extra == extra_id).all()
+				for e in extra:
+					cost = int(cost)
+					if e.cost == cost:
+						error = True
+						message = 'You have already set ' + str(e.rank) + ' ranks to cost ' + str(cost) + ' points for the base power.'
+						error_msgs.append(message) 
+		except:
+			print('not an int')
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def get_ranks(Table, value):
+	
+	if value is None:
+		value = ''
+		return (value)
+	else:
+		try:
+			name_query = db.session.query(Table).filter_by(id=value).one()
+			value = name_query.ranks
+		except:
+			print('no entry')
+			value = ''
+		finally:
+			db.session.close()
+
+	return (value)
+
+def get_cost(value, ranks_id, extra):
+
+	if ranks_id is None:
+		ranks = None
+	else
+		get_rank = db.session.query(PowerRanks).filter_by(id=ranks_id).one()
+		ranks = get_rank.ranks
+	
+	if value is None:
+		if ranks is None:
+			value = ''
+		else:
+			if extra is None:
+				value = str(ranks) + ' Ranks at Base Power Cost rate'
+			else:
+				try:
+					extra = db.session.query(Extra).filter_by(id=extra).one()
+					value = ranks / extra.ranks
+					value = value * extra.cost
+					value = round(value)
+					value = str(ranks) + ' Ranks for ' + str(value) + ' points'
+				except:
+					print('no entry')
+					value = ''
+				finally:
+					db.session.close()
+	else:
+		try:
+			cost = db.session.query(PowerCost).filter_by(id=value).one()
+			flat = cost.flat
+			if flat == False:
+				every = 'every '
+			else:
+				every = ''
+			if ranks is None:
+				value = str(cost.cost) + ' polnts for ' + every + str(cost.rank) + 'Ranks'
+			else:
+				value = ranks / cost.rank
+				value = value * cost.cost
+				value = round(value)
+				value = str(ranks) + ' Ranks for ' + str(value) + ' Points'
+		except:
+			print('no entry')
+			value = ''
+		finally:
+			db.session.close()
+
+	return (value)
+
+def cost_check_table(table, id, check):
+
+	check = db.session.query(table).filter_by(cost=id).first()
+	if check is not None:
+		check = False
+		
+	return(check)
+
+def cost_exist(power_id, cost):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	costs = db.session.query(PowerCost).filter_by(power_id=power_id).first()
+	powercosts = db.session.query(PowerCost).filter(PowerCost.power_id=power_id, PowerCost.extra == None).first()
+	if costs is None:
+		if cost == 'x':
+			error = True
+			message = 'You set this power to have a variable cost but you never set a variable cost with the variable cost form.  Create a variable cost or set a base power cost.'
+			error_msgs.append(message)
+		else:
+			return (errors)
+	else:
+		if powercosts is not None and cost != 'x':
+			error = True
+			message = 'You created a variable cost for this power so you must set the base power cost to variable.'
+			error_msgs.append(message)
+		for c in costs:
+			check = True
+			id = c.id
+			check = cost_check_table(PowerSenseEffect, id, check)
+			check = cost_check_table(PowerMod, id, check)
+			check = cost_check_table(PowerMove, id, check)
+			check = cost_check_table(PowerCreate, id, check)
+			check = cost_check_table(PowerChar, id, check)
+			check = cost_check_table(PowerEnv, id, check)
+			if check:
+				error = True
+				message = 'You never assigned the ' + c.keyword + ' cost to a rule.  Assign it to a rule or delete it.'
+				error_msgs.append(message)			
 
 	errors['error_msgs'] = error_msgs
 	if error:

@@ -321,26 +321,14 @@
 		</div>
 
 		<div>
-			<div class="vcenter">
-				Cost Per Rank:
-			</div>
-		</div>
-
-		<div>
-			<select class="entry-select" id="env_cost" name="env_cost">
+			<select class="entry-select" id="env_cost" name="env_cost" onchange="env_cost()">
 				<option value="">Cost</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 
 		<div>
 			<select class="entry-select" id="env_ranks" name="env_ranks">
 				<option value="">Cost</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
 			</select>
 		</div>
 		

@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -40,6 +40,8 @@ def power_save_errors(data):
 	power_range = data['power_range']
 	duration = data['duration']
 	cost = data['cost']
+	ranks = data['ranks']
+	flat = data['flat']
 	limit = data['limit']
 	dc_type = data['dc_type']
 	dc_value = data['dc_value']
@@ -141,18 +143,8 @@ def power_save_errors(data):
 	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
 	errors = rule_select('2', check_type, 'Opposed Check', PowerOpposed, power_id, errors)
 
-	errors = cost_check(move, 'Movement Effect', cost, PowerMove, power_id, errors)
-	errors = cost_check(character, 'Changes Character Traits', cost, PowerChar, power_id, errors)
-	errors = cost_check(create, 'Create', cost, PowerCreate, power_id, errors)
-	errors = cost_check(environment, 'Environment', cost, PowerEnv, power_id, errors)
-	errors = cost_check(modifier, 'Modifiers', cost, PowerMod, power_id, errors)
-	errors = sense_cost(power_id, cost, errors)
 
-	errors = extra_cost('Movement Effect', PowerMove, power_id, errors)
-	errors = extra_cost('Changes Character Traits', PowerChar, power_id, errors)
-	errors = extra_cost('Create', PowerCreate, power_id, errors)
-	errors = extra_cost('Environment', PowerEnv, power_id, errors)
-	errors = extra_cost('Modifiers', PowerMod, power_id, errors)
+	errors = cost_exist(power_id, cost)
 
 	return (errors)
 
@@ -234,6 +226,9 @@ def character_post_errors(data):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = id_check(PowerCost, cost)
+	errors = id_check(PowerRanks, ranks)
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -245,8 +240,7 @@ def character_post_errors(data):
 	errors = int_check(reduced_value, 'Reduced', errors)
 	errors = int_check(carry_capacity, 'Carry Capacity', errors)
 	errors = int_check(points_value, 'Points', errors)
-	errors = int_check(cost, 'Cost', errors)
-	errors = int_check(ranks, 'Ranks', errors)
+
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
@@ -362,6 +356,9 @@ def create_post_errors(data):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = id_check(PowerCost, cost)
+	errors = id_check(PowerRanks, ranks)
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -387,8 +384,7 @@ def create_post_errors(data):
 	errors = int_check(support_action_rounds, 'Strengthen with Action Number of Rounds', errors)
 	errors = int_check(support_effort, 'Strengthen with Extra Effort Bonus', errors)
 	errors = int_check(support_effort_rounds, 'Strengthen with Extra Effort Number of Rounds', errors)
-	errors = int_check(cost, 'Cost', errors)
-	errors = int_check(ranks, 'Ranks', errors)
+
 
 	errors = together_names('Creating an object', ['Solidity', 'Visibility', 'Complexity', 'Volume Rank', 'Toughness', 'Mass Rank'], [solidity, visibility, complexity, volume, toughness, mass], errors)
 	errors = check_fields(moveable, 'Moveable', [move_player], errors)
@@ -599,6 +595,9 @@ def environment_post_errors(data):
 	cost = data['cost']
 	ranks = data['ranks']
 
+	errors = id_check(PowerCost, cost)
+	errors = id_check(PowerRanks, ranks)
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -610,8 +609,7 @@ def environment_post_errors(data):
 	errors = int_check(rank, 'Per Rank', errors)
 	errors = int_check(move_speed, 'Movement Speed', errors)
 	errors = int_check(visibility_mod, 'Visibility Modifier', errors)
-	errors = int_check(cost, 'Cost', errors)
-	errors = int_check(ranks, 'Ranks', errors)
+
 
 	errors = together_names('an Environmental Effect Range', ['Starting Radius', 'Distance Rank', 'Cost Per Rank'], [radius, distance, rank], errors)
 	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type, temp_extremity], errors)
@@ -755,7 +753,7 @@ def mod_post_errors(data):
 	subtle = data['subtle']
 	permanent = data['permanent']
 	points = data['points']
-	ranks = data['ranks']
+	ranks_check = data['ranks_check']
 	action = data['action']
 	side_effect = data['side_effect']
 	concentration = data['concentration']
@@ -813,8 +811,11 @@ def mod_post_errors(data):
 	points_reroll_cost = data['points_reroll_cost']
 	points_rerolls = data['points_rerolls']
 	points_reroll_result = data['points_reroll_result']
-	ranks_cost = data['ranks_cost']
+	ranks = data['ranks']
 	cost = data['cost']
+
+	errors = id_check(PowerCost, cost)
+	errors = id_check(PowerRanks, ranks)
 
 	errors = power_check(power_id, errors)
 
@@ -841,8 +842,7 @@ def mod_post_errors(data):
 	errors = int_check(ranks_mod, 'Ranks Modifier', errors)
 	errors = int_check(points_reroll_cost, 'Reroll Cost', errors)
 	errors = int_check(points_rerolls, 'Number of Rerolls', errors)
-	errors = int_check(ranks_cost, 'Ranks', errors)
-	errors = int_check(cost, 'Cost', errors)
+
 
 	errors = check_fields(affects_objects, 'Affects Objects', [], errors)
 	
@@ -916,11 +916,11 @@ def mod_post_errors(data):
 	errors = variable_field('reroll', points_type, 'Re-roll Cost', points_reroll_cost, errors)
 	errors = variable_field('reroll', points_type, 'Re-roll Target', points_reroll_target, errors)
 	
-	errors = check_fields(ranks, 'Gain Trait', [ranks_trait_type, ranks_trait, ranks_ranks, ranks_mod], errors)
-	errors = check_field(ranks, 'Gain Trait', 'Trait Type', ranks_trait_type, errors)
-	errors = check_field(ranks, 'Gain Trait', 'Trait', ranks_trait, errors)
-	errors = check_field(ranks, 'Gain Trait', 'Ranks', ranks_ranks, errors)
-	errors = check_field(ranks, 'Gain Trait', Modifier, ranks_mod, errors)
+	errors = check_fields(ranks_check, 'Gain Trait', [ranks_trait_type, ranks_trait, ranks_ranks, ranks_mod], errors)
+	errors = check_field(ranks_check, 'Gain Trait', 'Trait Type', ranks_trait_type, errors)
+	errors = check_field(ranks_check, 'Gain Trait', 'Trait', ranks_trait, errors)
+	errors = check_field(ranks_check, 'Gain Trait', 'Ranks', ranks_ranks, errors)
+	errors = check_field(ranks_check, 'Gain Trait', Modifier, ranks_mod, errors)
 	
 	errors = check_fields(side_effect, 'Side Effect', [side_effect_type], errors)
 	errors = check_field(side_effect, 'Side Effect', 'Side Effect Type', side_effect_type, errors)
@@ -1243,8 +1243,6 @@ def sense_post_errors(data):
 	target = data['target']
 	sense = data['sense']
 	subsense = data['subsense']
-	sense_cost = data['sense_cost']
-	subsense_cost = data['subsense_cost']
 	skill = data['skill']
 	skill_required = data['skill_required']
 	sense_type = data['sense_type']
@@ -1284,6 +1282,9 @@ def sense_post_errors(data):
 	cost = data['cost']
 	power_cost = data['power_cost']
 
+	errors = id_check(PowerCost, cost)
+	errors = id_check(PowerRanks, ranks)
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -1303,18 +1304,9 @@ def sense_post_errors(data):
 	errors = int_check(distance_mod, 'Distance Modifier', errors)
 	errors = int_check(distance_value, 'Distance', errors)
 	errors = int_check(distance_factor, 'Distance Factor', errors)
-	errors = int_check(ranks, 'Ranks', errors)
-	errors = int_check(cost, 'Cost', errors)
 	
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
-
-	power_cost = integer(power_cost)
-
-	errors = field_cost('Sense', sense, '', sense_cost, cost, power_cost, extra_id, errors)
-	errors = field_cost('SubSense', subsense, '', subsense_cost, cost, power_cost, extra_id, errors)
-	errors = multiple_cost('Sense and Subsense', [sense_cost, subsense_cost], cost, power_cost, extra_id, errors)
-	errors = variable_cost([sense_cost, subsense_cost], ['Sense', 'Subsense'], cost, power_cost, extra_id, errors)	
 
 	errors = variable_fields('height', 'Heightened Sense', sense_type, [height_trait_type, height_trait], errors)
 	errors = variable_field('height', sense_type, 'Heightened Sense Trait Type', height_trait_type, errors)
@@ -2103,6 +2095,10 @@ def power_move_post_errors(data):
 	circ = data['circ']
 	dc = data['dc']
 	time = data['time']
+	degree_type = data['degree_type']
+	circ_type = data['circ_type']
+	dc_type = data['dc_type']
+	time_type = data['time_type']
 	keyword = data['keyword']
 	title = data['title']
 
@@ -2169,6 +2165,11 @@ def power_move_post_errors(data):
 	errors = id_check(PowerCirc, circ, 'Circumstance', errors)
 	errors = id_check(PowerDC, dc, 'DC', errors)
 	errors = id_check(PowerTime, time, 'Time', errors)
+
+	errors = id_check(PowerDegreeType, degree_type, 'Degree Group', errors)
+	errors = id_check(PowerCircType, circ_type, 'Circumstance Group', errors)
+	errors = id_check(PowerDCType, dc_type, 'DC Group', errors)
+	errors = id_check(PowerTimeType, time_type, 'Time Group', errors)
 
 	errors = id_check(PowerCheck, flight_resist_check, 'Variable Check', errors)
 	errors = id_check(PowerTime, ground_time, 'Time Effect', errors)
@@ -2315,7 +2316,10 @@ def power_move_post_errors(data):
 	errors = check_fields(mass, 'Increased Mass', [mass_value], errors)
 	errors = check_field(mass, 'Increased Mass', 'Increased Mass Amount', mass_value, errors)
 
-
+	errors = seperate([dc, dc_type], 'DC', errors)
+	errors = seperate([circ, circ_type], 'Circumstance', errors)
+	errors = seperate([degree, degree_type], 'Degree', errors)
+	errors = seperate([time, time_type], 'Time', errors)
 
 	return (errors)
 
@@ -2533,10 +2537,11 @@ def power_cost_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 	errors =  int_check(rank, 'Per Rank', errors)
 	
-	
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(cost, 'Cost', errors)
 	errors = required(rank, 'Per Rank', errors)
+
+	errors = cost_error(cost, power_id, extra, base_cost, base_flat)
 
 	return (errors)
 

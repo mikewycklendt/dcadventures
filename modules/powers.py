@@ -28,7 +28,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -434,6 +434,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	power_ranged_type = linked_options(PowerRangedType, Power, 'power_id', 'name')
 	
 	power_damage = linked_options(PowerDamage, Power, 'power_id', 'name')
+
 
 
 
@@ -1219,6 +1220,10 @@ def power_post_character():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
+
+
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	limited_emotion = db_integer(Emotion, limited_emotion)
@@ -1234,8 +1239,6 @@ def power_post_character():
 	points_value = integer(points_value)
 	points_trait = integer(points_trait)
 	points_descriptor = integer(points_descriptor)
-	cost = integer(cost)
-	ranks = integer(ranks)
 
 	try:
 		body = {}
@@ -1448,6 +1451,10 @@ def power_post_create():
 	complexity = db_integer(Complex, complexity)
 	move_opponent_ability = db_integer(Ability, move_opponent_ability)
 
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
+
+
 	volume = integer(volume)
 	toughness = integer(toughness)
 	mass = integer(mass)
@@ -1472,8 +1479,7 @@ def power_post_create():
 	support_action_rounds = integer(support_action_rounds)
 	support_effort = integer(support_effort)
 	support_effort_rounds = integer(support_effort_rounds)
-	cost = integer(cost)
-	ranks = integer(ranks)
+
 
 	try:
 		entry = PowerCreate(power_id = power_id,
@@ -1914,6 +1920,10 @@ def power_post_environment():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
+
+
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	immunity_environment = db_integer(Environment, immunity_environment)
@@ -1925,8 +1935,7 @@ def power_post_environment():
 	move_speed = integer(move_speed)
 	visibility_trait = integer(visibility_trait)
 	visibility_mod = integer(visibility_mod)
-	cost = integer(cost)
-	ranks = integer(ranks)
+
 
 	try:
 		body = {}
@@ -2389,7 +2398,7 @@ def power_post_mod():
 	subtle = request.get_json()['subtle']
 	permanent = request.get_json()['permanent']
 	points = request.get_json()['points']
-	ranks = request.get_json()['ranks']
+	ranks_check = request.get_json()['ranks_check']
 	action = request.get_json()['action']
 	side_effect = request.get_json()['side_effect']
 	concentration = request.get_json()['concentration']
@@ -2451,11 +2460,15 @@ def power_post_mod():
 	points_reroll_cost = request.get_json()['points_reroll_cost']
 	points_rerolls = request.get_json()['points_rerolls']
 	points_reroll_result = request.get_json()['points_reroll_result']
-	ranks_cost = request.get_json()['ranks_cost']
+	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
+
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2491,8 +2504,7 @@ def power_post_mod():
 	ranks_mod = integer(ranks_mod)
 	points_reroll_cost = integer(points_reroll_cost)
 	points_rerolls = integer(points_rerolls)
-	ranks_cost = integer(ranks_cost)
-	cost = integer(cost)
+
 
 	try:
 		entry = PowerMod(power_id = power_id,
@@ -2517,7 +2529,7 @@ def power_post_mod():
 							subtle = subtle,
 							permanent = permanent,
 							points = points,
-							ranks = ranks,
+							ranks_check = ranks_check,
 							action = action,
 							side_effect = side_effect,
 							concentration = concentration,
@@ -2579,7 +2591,7 @@ def power_post_mod():
 							points_reroll_cost = points_reroll_cost,
 							points_rerolls = points_rerolls,
 							points_reroll_result = points_reroll_result,
-							ranks_cost = ranks_cost,
+							ranks = ranks,
 							cost = cost)
 
 		db.session.add(entry)
@@ -3236,8 +3248,6 @@ def power_post_sense():
 	target = request.get_json()['target']
 	sense = request.get_json()['sense']
 	subsense = request.get_json()['subsense']
-	sense_cost = request.get_json()['sense_cost']
-	subsense_cost = request.get_json()['subsense_cost']
 	skill = request.get_json()['skill']
 	skill_required = request.get_json()['skill_required']
 	sense_type = request.get_json()['sense_type']
@@ -3279,6 +3289,10 @@ def power_post_sense():
 	columns = request.get_json()['columns']
 	font = request.get_json()['font']
 
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
+
+
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	sense = db_integer(Sense, sense)
@@ -3291,8 +3305,6 @@ def power_post_sense():
 	time_bonus = db_integer(SkillBonus, time_bonus)
 	distance_unit = db_integer(Unit, distance_unit)
 
-	sense_cost = integer(sense_cost)
-	subsense_cost = integer(subsense_cost)
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
 	resist_circ = integer(resist_circ)
@@ -3302,8 +3314,7 @@ def power_post_sense():
 	distance_mod = integer(distance_mod)
 	distance_value = integer(distance_value)
 	distance_factor = integer(distance_factor)
-	ranks = integer(ranks)
-	cost = integer(cost)
+
 
 
 	try:
@@ -3312,8 +3323,6 @@ def power_post_sense():
 									target = target,
 									sense = sense,
 									subsense = subsense,
-									sense_cost = sense_cost,
-									subsense_cost = subsense_cost,
 									skill = skill,
 									skill_required = skill_required,
 									sense_type = sense_type,
@@ -4362,6 +4371,10 @@ def power_post_move():
 	circ = request.get_json()['circ']
 	dc = request.get_json()['dc']
 	time = request.get_json()['time']
+	degree_type = request.get_json()['degree_type']
+	circ_type = request.get_json()['circ_type']
+	dc_type = request.get_json()['dc_type']
+	time_type = request.get_json()['time_type']
 	keyword = request.get_json()['keyword']
 	title = request.get_json()['title']
 
@@ -4418,12 +4431,20 @@ def power_post_move():
 	extended_actions = request.get_json()['extended_actions']
 	mass_value = request.get_json()['mass_value']
 
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
+
 
 	errors = power_move_post_errors(data)
 
 	errors = linked_move(PowerCirc, circ, 'Circumstance', errors)
 	errors = linked_move(PowerDC, dc, 'DC', errors)
 	errors = linked_move(PowerDegree, degree, 'Degree', errors)
+
+	errors = linked_move(PowerCircType, circ_type, 'Circumstance Group', errors)
+	errors = linked_move(PowerDCType, dc_type, 'DC Group', errors)
+	errors = linked_move(PowerDegreeType, degree_type, 'Degree Group', errors)
+	errors = linked_move(PowerDegreeType, degree_type, 'Time Group', errors)
 
 	error = errors['error']
 	if error:
@@ -4439,12 +4460,20 @@ def power_post_move():
 	circ = db_integer(PowerCirc, circ)
 	dc = db_integer(PowerDC, dc)
 	time = db_integer(PowerTime, time)
+
+	degree_type = db_integer(PowerDegreeType, degree_type)
+	circ_type = db_integer(PowerCircType, circ_type)
+	dc_type = db_integer(PowerDCType, dc_type)
+	time_type = db_integer(PowerTimeType, time_type)
+
 	flight_resist_check = db_integer(PowerCheck, flight_resist_check)
 	ground_time = db_integer(PowerTime, ground_time)
 	ground_range = db_integer(PowerRangedType, ground_range)
 	objects_check = db_integer(PowerCheck, objects_check)
 	object_damage = db_integer(PowerDamage, object_damage)
 	conceal_opposed = db_integer(PowerOpposed, conceal_opposed)
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
 
 	speed_rank = integer(speed_rank)
 	speed_trait = integer(speed_trait)
@@ -4535,6 +4564,10 @@ def power_post_move():
 						title = title,
 						keyword = keyword, 
 						time = time,												
+						degree_type = degree_type,
+						dc_type = dc_type,
+						circ_type = circ_type,
+						time_type = time_type,												
 						speed_per = speed_per,
 						distance_per = distance_per,
 						flight = flight,
@@ -4586,7 +4619,9 @@ def power_post_move():
 						concealment_sense = concealment_sense,
 						conceal_opposed = conceal_opposed,
 						extended_actions = extended_actions,
-						mass_value = mass_value
+						mass_value = mass_value,
+						cost = cost,
+						ranks =  ranks
 					)			
 
 

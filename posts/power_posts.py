@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost
 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
@@ -108,6 +108,8 @@ def character_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	cost = get_cost(cost, ranks, extra_id)
+
 	trait = trait_select(trait, trait_type)
 	weaken_trait = trait_select(weaken_trait, weaken_trait_type)
 	reduced_trait = trait_select(reduced_trait, reduced_trait_type)
@@ -135,8 +137,7 @@ def character_post(entry, body, cells):
 	reduced_value = integer_convert(reduced_value)
 	carry_capacity = integer_convert(carry_capacity)
 	points_value = integer_convert(points_value)
-	cost = integer_convert(cost)
-	ranks = integer_convert(ranks)	 
+
 
 
 	
@@ -214,6 +215,8 @@ def character_post(entry, body, cells):
 	cells = cell('Cost/Rank', 10, [cost], cells)
 	cells = cell('Ranks', 8, [ranks], cells)
 
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -283,6 +286,8 @@ def create_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	cost = get_cost(cost, ranks, extra_id)
+
 	move_player_trait = trait_select(move_player_trait, move_player)
 	trap_trait = trait_select(trap_trait, trap_trait_type)
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
@@ -332,8 +337,7 @@ def create_post(entry, body, cells):
 	support_action_rounds = integer_convert(support_action_rounds)
 	support_effort = integer_convert(support_effort)
 	support_effort_rounds = integer_convert(support_effort_rounds)
-	cost = integer_convert(cost)
-	ranks = integer_convert(ranks)
+
 	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Solidity', 11, [solidity], cells)
@@ -417,9 +421,8 @@ def create_post(entry, body, cells):
 	new_mod = mod_cell('End Descriptor', 15, [transform_end_descriptor], new_mod)
 	body = mod_add(transform, new_mod, body)
 
-	cells = cell('Cost/Rank', 10, [cost], cells)
-	cells = cell('Ranks', 8, [ranks], cells)
-
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -628,6 +631,8 @@ def environment_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 
+	cost = get_cost(cost, ranks, extra_id)
+
 	visibility_trait = trait_select(visibility_trait, visibility_trait_type)
 
 	extra = extra_name(extra_id)
@@ -655,8 +660,7 @@ def environment_post(entry, body, cells):
 	rank = integer_convert(rank)
 	move_speed = integer_convert(move_speed)
 	visibility_mod = integer_convert(visibility_mod)
-	cost = integer_convert(cost)
-	ranks = integer_convert(ranks)
+
 
 	
 	cells = cell('Extra', 15, [extra])
@@ -702,9 +706,8 @@ def environment_post(entry, body, cells):
 	new_mod = mod_cell('Extremity', 10, [immunity_extremity], new_mod, value)
 	body = mod_add(immunity, new_mod, body)
 
-	cells = cell('Cost/Rank', 10, [cost], cells)
-	cells = cell('Ranks', 6, [ranks], cells)
-
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -833,7 +836,7 @@ def mod_post(entry, body, cells):
 	subtle = entry.subtle
 	permanent = entry.permanent
 	points = entry.points
-	ranks = entry.ranks
+	ranks_check = entry.ranks_check
 	action = entry.action
 	side_effect = entry.side_effect
 	concentration = entry.concentration
@@ -895,8 +898,10 @@ def mod_post(entry, body, cells):
 	points_reroll_cost = entry.points_reroll_cost
 	points_rerolls = entry.points_rerolls
 	points_reroll_result = entry.points_reroll_result
-	ranks_cost = entry.ranks_cost
+	ranks = entry.ranks
 	cost = entry.cost
+
+	cost = get_cost	(cost, ranks, extra_id)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	reflect_trait = trait_select(reflect_trait, reflect_trait_type)
@@ -949,8 +954,7 @@ def mod_post(entry, body, cells):
 	points_reroll_cost = integer_convert(points_reroll_cost)
 	points_rerolls = integer_convert(points_rerolls)
 	points_reroll_result = integer_convert(points_reroll_result)
-	ranks_cost = integer_convert(ranks_cost)
-	cost = integer_convert(cost)
+
 
 	
 	cells = cell('Extra', 15, [extra])
@@ -1061,12 +1065,13 @@ def mod_post(entry, body, cells):
 
 	body = mod_add(points, new_mod, body)
 
-	cells = check_cell('Ranks', 7, ranks, cells, True)
+	cells = check_cell('Ranks', 7, ranks_check, cells, True)
 	new_mod = mod_create('Gain Trait', 12)
 	new_mod = mod_cell('Trait:', 7, [ranks_trait], new_mod)
 	new_mod = mod_cell('Ranks:', 6, [ranks_ranks], new_mod)
 	new_mod = mod_cell('Modifier:', 9, [ranks_mod], new_mod)	
-	body = mod_add(ranks, new_mod, body)
+	body = mod_add(ranks_check, new_mod, body)
+
 	cells = check_cell('Action', 7, action, cells)
 	
 	cells = check_cell('Side Effect', 12, side_effect, cells, True)
@@ -1097,9 +1102,9 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Radius', 7, ranks, cells)
 	cells = check_cell('Accurate', 9, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
-	cells = cell('Cost/Rank', 10, [cost], cells)
-	cells = cell('Ranks', 10, [ranks_cost], cells)
 
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -1439,8 +1444,6 @@ def sense_post(entry, body, cells):
 	target = entry.target
 	sense = entry.sense
 	subsense = entry.subsense
-	sense_cost = entry.sense_cost
-	subsense_cost = entry.subsense_cost
 	skill = entry.skill
 	skill_required = entry.skill_required
 	sense_type = entry.sense_type
@@ -1479,6 +1482,8 @@ def sense_post(entry, body, cells):
 	ranks = entry.ranks
 	cost = entry.cost
 
+	cost = get_cost(cost, ranks, extra_id)
+
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
 
@@ -1509,8 +1514,6 @@ def sense_post(entry, body, cells):
 	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
 	dimensional_type = selects(dimensional_type, dimensions_select)
 
-	sense_cost = integer_convert(sense_cost)
-	subsense_cost = integer_convert(subsense_cost)
 	resist_circ = integer_convert(resist_circ)
 	time_value = integer_convert(time_value)
 	time_factor = integer_convert(time_factor)
@@ -1518,14 +1521,11 @@ def sense_post(entry, body, cells):
 	distance_mod = integer_convert(distance_mod)
 	distance_value = integer_convert(distance_value)
 	distance_factor = integer_convert(distance_factor)
-	ranks = integer_convert(ranks)
-	cost = integer_convert(cost)
+
 	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Sense', 9, [sense], cells)
-	cells = cell('Cost', 6, [sense_cost], cells)
 	cells = cell('Subsense', 14, [subsense], cells)
-	cells = cell('Cost', 6, [subsense_cost], cells)
 	cells = cell('Check', 16, [skill], cells)
 
 	wid = 17
@@ -1575,9 +1575,10 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Radius', 8, radius, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
-	cells = cell('Cost/Rank', 9, [cost], cells)
-	cells = cell('Ranks', 7, [ranks], cells)
-
+	
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
+	
 	body = send(cells, body)
 
 	cells.clear()
@@ -2381,6 +2382,10 @@ def power_move_post(entry, body, cells):
 	circ = entry.circ
 	dc = entry.dc
 	time = entry.time
+	degree_type = entry.degree_type
+	circ_type = entry.circ_type
+	dc_type = entry.dc_type
+	time_type = entry.time_type
 	keyword = entry.keyword
 	title = entry.title
 	
@@ -2436,6 +2441,8 @@ def power_move_post(entry, body, cells):
 	conceal_opposed = entry.conceal_opposed
 	extended_actions = entry.extended_actions
 	mass_value = entry.mass_value
+	cost = entry.cost
+	ranks = entry.ranks
 
 
 	title_name = get_name(PowerMoveType, title)
@@ -2445,6 +2452,23 @@ def power_move_post(entry, body, cells):
 	circ = get_keyword(PowerCirc, circ)
 	dc = get_keyword(PowerDC, dc)
 	time = get_keyword(PowerTime, time)
+	degree_type = get_keyword(PowerDegreeType, degree_type)
+	circ_type = get_keyword(PowerCircType, circ_type)
+	dc_type = get_keyword(PowerDCType, dc_type)
+	time_type = get_keyword(PowerTimeType, time_type)
+
+	
+	degree_value = arrow_cell([degree])
+	circ_value = arrow_cell([circ])
+	dc_value = arrow_cell([dc])
+	time_value = arrow_cell([time])
+
+	degree_value = arrow_cell([degree_type], degree_value)
+	circ_value = arrow_cell([circ_type], circ_value)
+	dc_value = arrow_cell([dc_type], dc_value)
+	time_value = arrow_cell([time_type], time_value)
+
+
 	flight_resist_check = get_keyword(PowerCheck, flight_resist_check)
 	ground_time = get_keyword(PowerTime, ground_time)
 	ground_range = get_name(PowerRangedType, ground_range)
@@ -2452,11 +2476,14 @@ def power_move_post(entry, body, cells):
 	object_damage = get_keyword(PowerDamage, objects_damage)
 	conceal_opposed = get_keyword(PowerOpposed, conceal_opposed)
 
+	cost = get_cost(cost, ranks, extra)
+
+
 	speed_trait = trait_select(speed_trait, speed_trait_type)
 	distance_rank_trait = trait_select(distance_rank_trait, distance_rank_trait_type)
 	distance_unit_trait = trait_select(distance_unit_trait, distance_unit_trait_type)
 
-	extra = extra_name(extra_id)
+	extra = extra_name(extra)
 
 	speed_rank = integer_convert(speed_rank)
 	speed_trait = integer_convert(speed_trait)
@@ -2632,10 +2659,12 @@ def power_move_post(entry, body, cells):
 	new_mod = mod_cell('Mass Rank:', 13, [mass_value], new_mod)
 	body = mod_add(mass, new_mod, body)
 
-	cells = cell('Time', 18, [time], cells)
-	cells = cell('Degree', 18, [degree], cells)
-	cells = cell('DC', 18, [dc], cells)
-	cells = cell('Circumstance', 18, [circ], cells)
+	cells = circ_cell('Time', 6, time_value, cells, body)
+	cells = circ_cell('Degree', 7, degree_value, cells, body)
+	cells = circ_cell('DC', 5, dc_value, cells, body)
+	cells = circ_cell('Circ', 6, circ_value, cells, body)
+
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
 	body = send_multiple(title, cells, body)
 
@@ -2903,7 +2932,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 
 	extra = extra_name(extra_id)
 
-	calculated = ranks_function(cost, ranks, base_cost, base_ranks)
+	calculated = ranks_function(cost, ranks, base_cost, base_ranks, extra)
 
 	cells = cell('Extra', 25, [extra], cells)
 	cells = cell('Ranks', 12, [ranks], cells)

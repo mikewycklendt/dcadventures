@@ -414,6 +414,9 @@
 				<option value="round">Round</option>
 				<option value="scene">Scene</option>
 				<option value="">Use Time Effect form to put options here</option>
+				{% for p in power_time %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -421,6 +424,9 @@
 			<select class="dc-sml" id="move_dc" name="move_dc">
 				<option value="">DC</option>
 				<option value="">Use DC Table form to put options here</option>
+				{% for p in power_dc %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -428,6 +434,9 @@
 			<select class="degree-sml" id="move_degree" name="move_degree">
 				<option value="">Degree</option>
 				<option value="">Use Degree form to put options here</option>
+				{% for p in power_degree %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -435,6 +444,48 @@
 			<select class="circ-sml" id="move_circ" name="move_circ">
 				<option value="">Circumstance</option>
 				<option value="">Use Circumstance form to put options here</option>
+				{% for p in power_circ %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}	
+			</select>
+		</div>
+		
+		<div>
+			<select class="time-sml" id="move_time_type" name="opposed_time_type">
+				<option value="">Time by Group</option>
+				{% for p in power_time_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}		
+			</select>
+		</div>
+
+		<div>
+			<select class="dc-sml" id="move_dc_type" name="move_dc_type">
+				<option value="">DC by Group</option>
+				<option value="">Use DC Table form to put options here</option>
+				{% for p in power_dc_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="degree-sml" id="move_degree_type" name="move_degree_type">
+				<option value="">Degree by Group</option>
+				<option value="">Use Degree form to put options here</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-sml" id="move_circ_type" name="move_circ_type">
+				<option value="">Circumstance by Group</option>
+				<option value="">Use Circumstance form to put options here</option>
+				{% for p in power_circ_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -882,7 +933,19 @@
 	<div id="move-button-row">
 		<div>
 		</div>
-		
+
+		<div>
+			<select class="entry-select" id="move_cost" name="move_cost" onchange="move_cost()">
+				<option value="">Cost</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="move_ranks" name="move_ranks">
+				<option value="">Ranks</option>
+			</select>
+		</div>
+
 		<div>
 			<input type="text" id="move_keyword" name="move_keyword" placeholder="Keyword">
 		</div>

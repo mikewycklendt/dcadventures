@@ -21,6 +21,15 @@ function create_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function create_cost() {
+	const select = 'create_cost';
+	const fill = 'create_ranks';
+	const extra = 'create_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
+
 function create_moveable() {
 	const div = document.getElementById('create-move');
 	const check = document.getElementById('create_moveable');

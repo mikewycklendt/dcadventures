@@ -41,6 +41,9 @@
 		<div>
 			<select class="entry-select" id="cost_cost" name="cost_cost">
 				<option value="">Cost</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}

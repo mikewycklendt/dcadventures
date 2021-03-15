@@ -14,6 +14,14 @@ function move_extra() {
 	id_select(select, fill, power_cost_select, the_power);
 }
 
+function move_cost() {
+	const select = 'move_cost';
+	const fill = 'move_ranks';
+	const extra = 'move_extra';
+
+	id_select(select, fill, power_ranks_select, extra, false, false, false, the_power);
+}
+
 function move_speed_trait_type() {
 	const select = 'move_speed_trait_type';
 	const fill = 'move_speed_trait';
@@ -353,6 +361,10 @@ function move_submit() {
 	const degree = select("move_degree");
 	const circ = select("move_circ");
 	const time = select("move_time");
+	const dc_type = select("move_dc_type");
+	const degree_type = select("move_degree_type");
+	const circ_type = select("move_circ_type");
+	const time_type = select("move_time_type");
 	const keyword = text("move_keyword");
 	const title = text("move_title");
 
@@ -408,6 +420,9 @@ function move_submit() {
 	const conceal_opposed = select("move_conceal_opposed");
 	const extended_actions = select("move_extended_actions");
 	const mass_value = select("move_mass_value");
+
+	const cost = select("move_cost");
+	const ranks = select("move_ranks");
 	
 	const errors = 'move-err';
 	const err_line = 'move-err-line';
@@ -456,6 +471,10 @@ function move_submit() {
 			'circ': circ,
 			'dc': dc,
 			'time': time,
+			'degree_type': degree_type,
+			'circ_type': circ_type,
+			'dc_type': dc_type,
+			'time_type': time_type,
 			'keyword': keyword,
 			'title': title,
 			'speed_per': speed_per,
@@ -509,7 +528,9 @@ function move_submit() {
 			'concealment_sense': concealment_sense,
 			'conceal_opposed': conceal_opposed,
 			'extended_actions': extended_actions,
-			'mass_value': mass_value
+			'mass_value': mass_value,
+			'cost': cost,
+			'ranks': ranks
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
