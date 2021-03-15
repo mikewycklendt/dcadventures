@@ -2012,7 +2012,7 @@ class PowerSenseEffect(db.Model):
 	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
 	sense_cost = db.Column(db.Integer)
 	subsense_cost = db.Column(db.Integer)
-
+	skill = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	skill_required = db.Column(db.Boolean)
 	sense_type = db.Column(db.String())
 	height_trait_type = db.Column(db.String())
