@@ -2034,12 +2034,6 @@ class PowerSenseEffect(db.Model):
 	radius = db.Column(db.Boolean)
 	accurate = db.Column(db.Boolean)
 	acute = db.Column(db.Boolean)
-	time_set = db.Column(db.String())
-	time_value = db.Column(db.Integer)
-	time_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
-	time_skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
-	time_bonus = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
-	time_factor = db.Column(db.Integer)
 	distance = db.Column(db.String())
 	distance_dc = db.Column(db.Integer)
 	distance_mod = db.Column(db.Integer)
@@ -2083,12 +2077,7 @@ class PowerSenseEffect(db.Model):
 			'radius': self.radius,
 			'accurate': self.accurate,
 			'acute': self.acute,
-			'time_set': self.time_set,
 			'time_value': self.time_value,
-			'time_unit': self.time_unit,
-			'time_skill': self.time_skill,
-			'time_bonus': self.time_bonus,
-			'time_factor': self.time_factor,
 			'distance': self.distance,
 			'distance_dc': self.distance_dc,
 			'distance_mod': self.distance_mod,
