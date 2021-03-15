@@ -218,6 +218,13 @@ function create_transform() {
 	check_drop(check, div, entry);
 }
 
+function create_trap_escape() {
+	const check = 'create_trap_escape';
+	const div = 'create-trap-escape';
+
+	check_display(check, div);
+}
+
 let create_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -260,13 +267,8 @@ function create_submit() {
 	const move_check =  select("create_move_check");
 	const move_opponent_check = check("create_move_opponent_check");
 	const move_opposed =  select("create_move_opposed");
-	const trap_type = select("create_trap_type")
-	const trap_dc = select("create_trap_dc");
-	const trap_trait_type = select("create_trap_trait_type");
-	const trap_trait = select("create_trap_trait");
-	const trap_resist_check = select("create_trap_resist_check");
-	const trap_resist_trait = select("create_trap_resist_trait");
-	const trap_resist_dc = select("create_trap_resist_dc");
+	const trap_check = select("create_trap_check");
+	const trap_opposed = select("create_trap_opposed");
 	const trap_escape = check("create_trap_escape");
 	const ranged_type = select("create_ranged_type");
 	const ranged_dc = select("create_ranged_dc");
@@ -329,13 +331,8 @@ function create_submit() {
 			'move_check': move_check,
 			'move_opponent_check': move_opponent_check,
 			'move_opposed': move_opposed,
-			'trap_type': trap_type,
-			'trap_dc': trap_dc,
-			'trap_trait_type': trap_trait_type,
-			'trap_trait': trap_trait,
-			'trap_resist_check': trap_resist_check,
-			'trap_resist_trait': trap_resist_trait,
-			'trap_resist_dc': trap_resist_dc,
+			'trap_check': trap_check,
+			'trap_opposed': trap_opposed,
 			'trap_escape': trap_escape,
 			'ranged_type': ranged_type,
 			'ranged_dc': ranged_dc,

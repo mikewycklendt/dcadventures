@@ -1325,13 +1325,8 @@ class PowerCreate(db.Model):
 	move_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	move_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	move_opponent_check = db.Column(db.Boolean)
-	trap_type = db.Column(db.String())
-	trap_dc = db.Column(db.Integer)
-	trap_trait_type = db.Column(db.String())
-	trap_trait = db.Column(db.Integer)
-	trap_resist_check = db.Column(db.String())
-	trap_resist_trait = db.Column(db.Integer)
-	trap_resist_dc = db.Column(db.Integer)
+	trap_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	trap_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	trap_escape = db.Column(db.Boolean)
 	ranged_type = db.Column(db.String())
 	ranged_dc = db.Column(db.Integer)
@@ -1389,13 +1384,8 @@ class PowerCreate(db.Model):
 			'move_check': self.move_check,
 			'move_opponent_check': self.move_opponent_check,
 			'move_opposed': self.move_opposed,
-			'trap_type': self.trap_type,
-			'trap_dc': self.trap_dc,
-			'trap_trait_type': self.trap_trait_type,
-			'trap_trait': self.trap_trait,
-			'trap_resist_check': self.trap_resist_check,
-			'trap_resist_trait': self.trap_resist_trait,
-			'trap_resist_dc': self.trap_resist_dc,
+			'trap_check': self.trap_check,
+			'trap_opposed': self.trap_opposed,
 			'trap_escape': self.trap_escape,
 			'ranged_type': self.ranged_type,
 			'ranged_dc': self.ranged_dc,
