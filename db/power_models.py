@@ -1322,10 +1322,9 @@ class PowerCreate(db.Model):
 	transform_start_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	transform_end_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	move_player = db.Column(db.String())
-	move_player_trait = db.Column(db.Integer)
+	move_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	move_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	move_opponent_check = db.Column(db.Boolean)
-	move_opponent_ability = db.Column(db.Integer, db.ForeignKey('abilities.id'))
-	move_opponent_rank = db.Column(db.Integer)
 	trap_type = db.Column(db.String())
 	trap_dc = db.Column(db.Integer)
 	trap_trait_type = db.Column(db.String())
@@ -1387,10 +1386,9 @@ class PowerCreate(db.Model):
 			'transform_start_descriptor': self.transform_start_descriptor,
 			'transform_end_descriptor': self.transform_end_descriptor,
 			'move_player': self.move_player,
-			'move_player_trait': self.move_player_trait,
+			'move_check': self.move_check,
 			'move_opponent_check': self.move_opponent_check,
-			'move_opponent_ability': self.move_opponent_ability,
-			'move_opponent_rank': self.move_opponent_rank,
+			'move_opposed': self.move_opposed,
 			'trap_type': self.trap_type,
 			'trap_dc': self.trap_dc,
 			'trap_trait_type': self.trap_trait_type,

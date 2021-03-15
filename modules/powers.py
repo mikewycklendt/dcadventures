@@ -1411,10 +1411,9 @@ def power_post_create():
 	transform_start_descriptor = request.get_json()['transform_start_descriptor']
 	transform_end_descriptor = request.get_json()['transform_end_descriptor']
 	move_player = request.get_json()['move_player']
-	move_player_trait = request.get_json()['move_player_trait']
+	move_check = request.get_json()['move_check']
+	move_opposed = request.get_json()['move_opposed'
 	move_opponent_check = request.get_json()['move_opponent_check']
-	move_opponent_ability = request.get_json()['move_opponent_ability']
-	move_opponent_rank = request.get_json()['move_opponent_rank']
 	trap_type = request.get_json()['trap_type']
 	trap_dc = request.get_json()['trap_dc']
 	trap_trait_type = request.get_json()['trap_trait_type']
@@ -1449,11 +1448,13 @@ def power_post_create():
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	complexity = db_integer(Complex, complexity)
-	move_opponent_ability = db_integer(Ability, move_opponent_ability)
+	
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
 
+	move_check = db_integer(PowerCheck, move_check)
+	move_opposed = db_integer(PowerOpposed, move_opposed)
 
 	volume = integer(volume)
 	toughness = integer(toughness)
@@ -1462,8 +1463,6 @@ def power_post_create():
 	transfom_mass = integer(transfom_mass)
 	transform_start_descriptor = integer(transform_start_descriptor)
 	transform_end_descriptor = integer(transform_end_descriptor)
-	move_player_trait = integer(move_player_trait)
-	move_opponent_rank = integer(move_opponent_rank)
 	trap_dc = integer(trap_dc)
 	trap_trait = integer(trap_trait)
 	trap_resist_trait = integer(trap_resist_trait)
@@ -1511,10 +1510,9 @@ def power_post_create():
 							transform_start_descriptor = transform_start_descriptor,
 							transform_end_descriptor = transform_end_descriptor,
 							move_player = move_player,
-							move_player_trait = move_player_trait,
 							move_opponent_check = move_opponent_check,
-							move_opponent_ability = move_opponent_ability,
-							move_opponent_rank = move_opponent_rank,
+							move_check = move_check,
+							move_opposed = move_opposed,
 							trap_type = trap_type,
 							trap_dc = trap_dc,
 							trap_trait_type = trap_trait_type,

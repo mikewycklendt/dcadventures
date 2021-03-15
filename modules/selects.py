@@ -375,7 +375,7 @@ def power_cost_select():
 
 	id = request.get_json()['id']
 	sub = request.get_json()['sub']
-	options = [{'id': '', 'name': 'Cost'}]
+	options = []
 
 	try:
 		print(id)
@@ -422,7 +422,7 @@ def power_ranks_select():
 	options = [{'id': '', 'name': 'Ranks'}]
 
 	try:
-		if id == 'extra':
+		if id == 'ex':
 			sub = int(sub)
 			get = db.session.query(PowerRanks).filter(PowerRanks.cost == None, PowerRanks.extra == sub).first()
 			if get is None:

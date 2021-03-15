@@ -39,7 +39,7 @@ def not_required(check, value, name, errors):
 
 	if check:
 		return (errors)
-		
+
 	if value == '':
 		error = True
 		message = name + ' field cannot be empty.'
@@ -277,6 +277,37 @@ def seperate(selects, names, errors):
 		errors['error_msgs'] = error_msgs
 	
 	return (errors)
+
+def seperate_checks(checks, names, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	i = 0
+	
+	for c in checks:
+		if c == True:
+			i += 1
+
+	if i > 1:			
+		error = True
+		message = 'You can can only apply ' + names + ' to one rule'		
+	if error:
+		errors['error'] = error
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+	
+	return (errors)
+
+	
+
+
+	if error:
+		errors['error'] = error
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+	
+	return (errors)
+
 
 def value_limit(limit, selects, names, errors):
 	error_msgs = errors['error_msgs']

@@ -254,10 +254,9 @@ def create_post(entry, body, cells):
 	transform_start_descriptor = entry.transform_start_descriptor
 	transform_end_descriptor = entry.transform_end_descriptor
 	move_player = entry.move_player
-	move_player_trait = entry.move_player_trait
+	move_check = entry.move_check
 	move_opponent_check = entry.move_opponent_check
-	move_opponent_ability = entry.move_opponent_ability
-	move_opponent_rank = entry.move_opponent_rank
+	move_opposed = entry.move_opposed
 	trap_type = entry.trap_type
 	trap_dc = entry.trap_dc
 	trap_trait_type = entry.trap_trait_type
@@ -288,7 +287,9 @@ def create_post(entry, body, cells):
 
 	cost = get_cost(cost, ranks, extra_id)
 
-	move_player_trait = trait_select(move_player_trait, move_player)
+	move_check = get_keyword(PowerCheck, move_check)
+	move_opposed = get_keyword(PowerOpposed, move_opposed)
+
 	trap_trait = trait_select(trap_trait, trap_trait_type)
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
 	ranged_trait = trait_select(ranged_trait, ranged_trait_type)
@@ -298,7 +299,6 @@ def create_post(entry, body, cells):
 	complexity = name(Complex, complexity)
 	transform_start_descriptor = descriptor_name(transform_start_descriptor)
 	transform_end_descriptor = descriptor_name(transform_end_descriptor)
-	move_opponent_ability = name(Ability, move_opponent_ability)
 
 	solidity_select = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
 	solidity = selects(solidity, solidity_select)
@@ -352,16 +352,14 @@ def create_post(entry, body, cells):
 	
 	cells = check_cell('Moveable', 10, moveable, cells, True)
 	new_mod = mod_create('Moveable', 13)
-	new_mod = mod_cell('Trait:', 8, [move_player_trait], new_mod)
-	new_mod = mod_cell('Ability to Move:', 16, [move_opponent_ability], new_mod)
-	new_mod = mod_cell('Rank:', 8, [move_opponent_rank], new_mod)
+	new_mod = mod_cell('Player Check:', 14, [move_check], new_mod)
+	new_mod = mod_cell('Opponent Check:', 16, [move_opposed], new_mod)
 	body = mod_add(moveable, new_mod, body)
 
 	cells = check_cell('Stationary', 13, stationary, cells, True)
 	new_mod = mod_create('Stationary', 14)
-	new_mod = mod_cell('Trait:', 8, [move_player_trait], new_mod)
-	new_mod = mod_cell('Ability to Move:', 16, [move_opponent_ability], new_mod)
-	new_mod = mod_cell('Rank:', 8, [move_opponent_rank], new_mod)
+	new_mod = mod_cell('Player Check:', 14, [move_check], new_mod)
+	new_mod = mod_cell('Opponent Check:', 16, [move_opposed], new_mod)
 	body = mod_add(stationary, new_mod, body)
 
 	cells = check_cell('Trap', 7, trap, cells, True)

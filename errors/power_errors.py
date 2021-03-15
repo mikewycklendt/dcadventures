@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table
@@ -324,10 +324,9 @@ def create_post_errors(data):
 	transform_start_descriptor = data['transform_start_descriptor']
 	transform_end_descriptor = data['transform_end_descriptor']
 	move_player = data['move_player']
-	move_player_trait = data['move_player_trait']
+	move_check = data['move_check']
 	move_opponent_check = data['move_opponent_check']
-	move_opponent_ability = data['move_opponent_ability']
-	move_opponent_rank = data['move_opponent_rank']
+	move_opposed = data['move_opposed']
 	trap_type = data['trap_type']
 	trap_dc = data['trap_dc']
 	trap_trait_type = data['trap_trait_type']
@@ -358,6 +357,8 @@ def create_post_errors(data):
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
+	errors = id_check(PowerCheck, move_check)
+	errors = id_check(PowerOpposed, move_opposed)
 
 	errors = power_check(power_id, errors)
 
@@ -365,14 +366,12 @@ def create_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 	errors = id_check(Complex, complexity, 'complexity', errors)
-	errors = id_check(Ability, move_opponent_ability, 'ability', errors)
 
 	errors = int_check(volume, 'Volume', errors)
 	errors = int_check(toughness, 'Toughness', errors)
 	errors = int_check(mass, 'Mass', errors)
 	errors = int_check(transform_start_mass, 'Transform Starting Mass', errors)
 	errors = int_check(transfom_mass, 'Transform Ending Mass', errors)
-	errors = int_check(move_opponent_rank, 'Rank for Opponent to Move', errors)
 	errors = int_check(trap_dc, 'Trap DC', errors)
 	errors = int_check(trap_resist_dc, 'Trap Resistance DC', errors)
 	errors = int_check(ranged_dc, 'Ranged DC', errors)
@@ -389,16 +388,13 @@ def create_post_errors(data):
 	errors = together_names('Creating an object', ['Solidity', 'Visibility', 'Complexity', 'Volume Rank', 'Toughness', 'Mass Rank'], [solidity, visibility, complexity, volume, toughness, mass], errors)
 	errors = check_fields(moveable, 'Moveable', [move_player], errors)
 	errors = check_field(moveable, 'Moveable', 'Moveable With', move_player, errors)
-	errors = select_variable('ability', move_player,  'an Ability', 'Trait', move_player_trait, errors)
-	errors = select_variable('skill', move_player, 'a Skill', 'Trait',  move_player_trait, errors)
-	errors = select_variable('bonus', move_player, 'an Enhanced Skill', 'Trait',  move_player_trait, errors)
-	errors = select_variable('defense', move_player, 'a Defense', 'Trait',  move_player_trait, errors)
-	errors = select_variable('power', move_player, 'a Power', 'Trait',  move_player_trait, errors)
-	errors = check_fields(move_opponent_check, 'Opponent Can Move the Object', [move_opponent_ability, move_opponent_rank, errors], errors)
-	errors = check_field(move_opponent_check, 'Opponent Can Move the Object', 'Ability', move_opponent_ability, errors)
-	errors = check_field(move_opponent_check, 'Opponent Can Move the Object', 'Rank', move_opponent_rank, errors)
+	errors = variable_fields('check', 'Moveable with Check', move_player, [move_check], errors)
+	errors = variable_field('check', move_player, 'Check', move_check, errors)
+	errors = check_fields(move_opponent_check, 'Opponent Can Move the Object', [move_opposed], errors)
+	errors = check_field(move_opponent_check, 'Opponent Can Move the Object', 'Opponent Check', move_opposed, errors)
 	errors = check_fields(stationary, 'Stationary', [move_player], errors)
 	errors = check_field(stationary, 'Stationary', 'Moveable With', move_player, errors)
+	errors = seperate_checks([moveable, stationary], 'Moveable or Stationary', errors)
 	
 	errors = check_fields(trap, 'Trap', [trap_type, trap_resist_check, trap_resist_trait, trap_resist_dc], errors)
 	errors = check_field(trap, 'Trap', 'Trap Check Type', trap_type, errors)
@@ -1284,8 +1280,8 @@ def sense_post_errors(data):
 	errors = id_check(PowerCheck, skill)
 	errors = id_check(PowerTimeType, time_type)
 	errors = id_check(PowerTime, time_value)
-	errors = id_check(PowerCircType, circ)
-	
+	errors = id_check(PowerCirc, circ)
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
