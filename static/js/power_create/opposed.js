@@ -20,8 +20,9 @@ function opposed_attached() {
 	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'}]
 	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
 					{'val': 'after_var', 'text': 'After Variable Check:'}]
+	const entry = "opposed-entry";
 
-	select_maxheight_shared(select, options);
+	select_maxheight_shared(select, options, entry);
 	div_text(select, div, values);
 }
 
