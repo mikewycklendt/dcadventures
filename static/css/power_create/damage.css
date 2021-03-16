@@ -63,7 +63,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 22% 34% 44%;
+	grid-template-columns: 25% 34% 41%;
 }
 
 #damage-button-row {
