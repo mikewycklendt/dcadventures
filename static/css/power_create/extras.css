@@ -17,8 +17,9 @@
 }
 
 .extra-select {
-	height: 2.5vw; 
-	font-size: 110%;
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
 }
 
 .extra-select:focus {
