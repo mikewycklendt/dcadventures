@@ -782,6 +782,20 @@ function multiple(multiple_input) {
 	return values;
 }
 
+function div_text(select_input, div_input, options) {
+	const div = document.getElementById(div_input)
+	const value = select(select_input);
+	let o;
+
+	for (o of options) {
+		const val = o.val;
+		const text = o.text; 
+
+		if (val == value) {
+			div.innerHTML = text;
+		}
+	}
+}
 
 function select_entry(check_input, base_input, entry_input, field_input, value) {
 	const check = document.getElementById(check_input);

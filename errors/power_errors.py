@@ -1343,10 +1343,12 @@ def power_check_post_errors(data):
 	ranged = data['ranged']
 	keyword = data['keyword']
 	attack = data['attack']
-	opposed = data ['opposed']
-	condition = data ['condition']
-	condition_target = data ['condition_target']
-	conditions_target = data ['conditions_target']
+	opposed = data['opposed']
+	condition = data['condition']
+	condition_target = data['condition_target']
+	conditions_target = data['conditions_target']
+	variable = data['variable']
+	opponent = data['opponent']
 
 
 
@@ -1393,6 +1395,9 @@ def power_check_post_errors(data):
 	errors = variable_field('condition', trigger, 'Condition Target', condition_target, errors)
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
+	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
+	errors = variable_field('opposed', trigger, 'Opponent Check', opponent, errors)
+	errors = variable_fields('variable', trigger, 'Variable Check', variable, errors)
 
 	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
 	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
@@ -2343,6 +2348,7 @@ def power_opposed_post_errors(data):
 	circ_value = data['circ_value']
 	time_type = data['time_type']
 	recurring_type = data['recurring_type']
+	variable = data['variable']
 
 
 
@@ -2367,6 +2373,7 @@ def power_opposed_post_errors(data):
 	errors = id_check(PowerCirc, circ_value, 'Degree', errors)
 	errors = id_check(PowerTimeType, time_type, 'Time Group', errors)
 	errors = id_check(PowerTimeType, recurring_type, 'Recurring Time Group', errors)
+	errors = id_check(PowerCheck, variable, 'Vsriable Check', errors)
 
 	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(attached, 'Attsched', errors)
@@ -2394,6 +2401,11 @@ def power_opposed_post_errors(data):
 	errors = check_of(time_check, 'Time', 'a time effect or time effect group', [time, time_type], errors)
 	errors = check_of(recurring, 'Recurring', 'recurring time or time effect group', [recurring_value, recurring_type], errors)
 	errors = seperate([recurring_value, recurring_type], 'recurring', errors)
+
+	errors = variable_fields('before_var', 'Before Variable Check', attached, [variable], errors)
+	errors = variable_fields('before_var', attached, 'Variable Check', variable, errors)
+	errors = variable_fields('after_var', 'After Variable Check', attached, [variable], errors)
+	errors = variable_fields('after_var', attached, 'Variable Check', variable, errors)
 
 	errors = linked_group_check(PowerDC, '1', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Skill Check', 'DC', 'Opponent DC', errors, True)
 	errors = linked_group_check(PowerDC, '6', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Resistance Check Check', 'DC', 'Opponent DC', errors, True)

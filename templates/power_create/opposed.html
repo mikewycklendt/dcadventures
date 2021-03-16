@@ -11,9 +11,9 @@
 				<option value=0>Base Effect</option>
 			</select>
 		</div>
-		
+
 		<div>
-			<select class="select-entry" id="opposed_attached" name="opposed_attached">
+			<select class="select-entry" id="opposed_attached" name="opposed_attached" onchange="opposed_attached()">
 				{% for a in attached %}
 					<option value="{{a.type}}">{{a.name}}</option>
 				{% endfor %}
@@ -186,6 +186,9 @@
 			<select class="dc-title-sml" id="opposed_dc_type" name="opposed_dc_type">
 				<option value="">DC by Group</option>
 				<option value="">Use Check Table form to put options here</option>
+				{% for p in power_dc_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -193,6 +196,9 @@
 			<select class="dc-player-sml" id="opposed_dc_player" name="opposed_dc_player">
 				<option value="">Player DC</option>
 				<option value="">Use Check Table form to put options here</option>
+				{% for p in power_dc %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -200,6 +206,9 @@
 			<select class="dc-opp-sml" id="opposed_dc" name="opposed_dc">
 				<option value="">Opponent DC</option>
 				<option value="">Use Check Table form to put options here</option>
+				{% for p in power_dc %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
@@ -215,6 +224,9 @@
 				<select class="time-title-sml" id="opposed_time_type" name="opposed_time">
 					<option value="">Time Effect By Group</option>
 					<option value="">Use Time Effect form to put options here</option>
+					{% for p in power_time_type %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
 				</select>
 			</div>
 	
@@ -224,6 +236,9 @@
 			<select class="time-sml" id="opposed_time" name="opposed_time">
 				<option value="">Time Effect</option>
 				<option value="">Use Time Effect form to put options here</option>
+				{% for p in power_time %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
@@ -238,14 +253,19 @@
 			<select class="circ-title-sml" id="opposed_circ" name="opposed_circ">
 				<option value="">Circumstance By Group</option>
 				<option value="">Use Circumstance form to put options here</option>
+				{% for p in power_circ_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 
 		<div>
 			<select class="circ-sml" id="opposed_circ_value" name="opposed_circ_value">
-				<option value="">Circumstance Modifier
-				</option>
+				<option value="">Circumstance Modifier</option>
 				<option value="">Use Circumstance form to put options here</option>
+				{% for p in power_circ %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -261,6 +281,9 @@
 			<select class="degree-title-sml" id="opposed_degree" name="opposed_degree">
 				<option value="">Degree by Group</option>
 				<option value="">Use Degree form to put options here</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 		
@@ -268,10 +291,30 @@
 			<select class="degree-sml" id="opposed_degree_value" name="opposed_degree_value">
 				<option value="">Degree of Success/Failure</option>
 				<option value="">Use Degree form to put options here</option>
+				{% for p in power_degree %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 			</select>
 		</div>
 	</div>
+	
+	<div id="opposed-variable">
+		<div id="opposed-variable-title">
+			Variable Check
+		</div>
+	
+		<div>
+			<select class="check-sml" id="opposed_variable" name="opposed_variable">
+				<option value="">Variable Check</option>
+				<option value="">Use Variable Check form to put options here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 		
+	</div>
+
 	<div id="opposed-row5">
 		<div class="vcenter" style="font-size: 88%;">
 			Circumstance
@@ -296,6 +339,9 @@
 						<option value="round">Round</option>
 						<option value="scene">Scene</option>
 						<option value="">Use Time Effect form to put options here</option>
+						{% for p in power_time %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
 					</select>
 				</div>
 	
@@ -303,6 +349,9 @@
 					<select class="lasts-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
 						<option value="">Between Checks by Group</option>
 						<option value="">Use Time Effect form to put options here</option>
+						{% for p in power_time_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
 					</select>
 				</div>	
 			</div>
@@ -317,7 +366,6 @@
 				</select>
 			</div>
 		</div>
-
 
 		<div>
 			<div class="btn-entry" id="opposed_submit" name="opposed_submit" onclick="opposed_submit()">

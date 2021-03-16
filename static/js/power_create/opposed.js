@@ -14,6 +14,17 @@ function opposed_base() {
 	base(field, entry);
 }
 
+function opposed_attached() {
+	const select = 'opposed_attached';
+	const div = 'opposed-variable-title'
+	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'}]
+	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
+					{'val': 'after_var', 'text': 'After Variable Check:'}]
+
+	select_maxheight_shared(select, options);
+	div_text(select, div, values);
+}
+
 function opposed_trait_type() {
 	const select = 'opposed_trait_type'
 	const fill = 'opposed_trait'
@@ -125,6 +136,7 @@ function opposed_submit() {
 	const circ_value = select("opposed_circ_value");
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
+	const variable = select("opposed_variable");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -172,7 +184,8 @@ function opposed_submit() {
 			'dc_player': dc_player,
 			'circ_value': circ_value,
 			'time_type': time_type,
-			'recurring_type': recurring_type
+			'recurring_type': recurring_type,
+			'variable': variable
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

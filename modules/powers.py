@@ -199,7 +199,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}]
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
@@ -3453,6 +3453,8 @@ def power_post_check():
 	condition_target = request.get_json()['condition_target']
 	conditions_target = request.get_json()['conditions_target']
 	ranged = request.get_json()['ranged']
+	variable = request.get_json()['variable']
+	opponent = request.get_json()['opponent']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3465,6 +3467,8 @@ def power_post_check():
 	opposed = db_integer(PowerOpposed, opposed)
 	dc_value = db_integer(PowerDC, dc_value)
 	ranged = db_integer(PowerRangedType, ranged)
+	variable = db_integer(PowerCheck, variable)
+	opponent = db_integer(PowerOpposed, opponent)
 
 	attack = integer(attack)
 
@@ -3477,6 +3481,13 @@ def power_post_check():
 
 	trait = integer(trait)
 	action = integer(action)
+
+	body['error_msgs'] = []
+	body = linked_ref(PowerOpposed, opponent, 'Opponent Check Trigger', 'chained', body)
+	body = linked_ref(PowerCheck, variable, 'Opponent Check Trigger', 'chained', body)
+
+	if body['success'] == False:
+		return jsonify(body)
 
 	entry = PowerCheck(power_id = power_id,
 						extra_id = extra_id,
@@ -3506,13 +3517,14 @@ def power_post_check():
 						condition = condition,
 						condition_target = condition_target,
 						conditions_target = conditions_target,
-						ranged = ranged
+						ranged = ranged,
+						variable = variable,
+						opponent = opponent
 					)
 
 	db.session.add(entry)
 	db.session.commit()
 
-	body = {}
 	body['id'] = entry.id
 	error = False
 	error_msg = []
@@ -4694,6 +4706,7 @@ def power_post_opposed():
 	circ_value = request.get_json()['circ_value']
 	time_type = request.get_json()['time_type']
 	recurring_type = request.get_json()['recurring_type']
+	variable = request.get_json()['variable']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -4712,11 +4725,18 @@ def power_post_opposed():
 	circ_value = db_integer(PowerCirc, circ_value)
 	time_type = db_integer(PowerTimeType, time_type)
 	recurring_type = db_integer(PowerTimeType, recurring_type)
+	variable = db_integer(PowerCheck, variable)
 
 	trait = integer(trait)
 	mod = integer(mod)
 	opponent_trait = integer(opponent_trait)
 	opponent_mod = integer(opponent_mod)
+
+	body['error_msgs'] = []
+	body = linked_ref(PowerCheck, variable, 'Opponent Check Trigger', 'chained', body)
+
+	if body['success'] == False:
+		return jsonify(body)
 
 	entry = PowerOpposed(power_id = power_id,
 						extra_id = extra_id,
@@ -4750,7 +4770,8 @@ def power_post_opposed():
 						dc_player = dc_player,
 						circ_value = circ_value,
 						time_type = time_type,
-						recurring_type = recurring_type
+						recurring_type = recurring_type,
+						variable = variable
 					)			
 
 	db.session.add(entry)

@@ -1602,6 +1602,8 @@ def power_check_post(entry, body, cells):
 	condition_target = entry.condition_target
 	conditions_target = entry.conditions_target
 	ranged = entry.ranged
+	variable = entry.variable
+	opponent = entry.opponent
 
 	body['title'] = keyword
 	body['add_title'] = True
@@ -1628,7 +1630,9 @@ def power_check_post(entry, body, cells):
 	dc_value = get_keyword(PowerDC, dc_value)
 	opposed = get_keyword(PowerOpposed, opposed)
 	ranged = get_name(PowerRangedType, ranged)
-
+	opponent = get_keyword(PowerOpposed, opponent)
+	variable = get_keyword(PowerCheck, variable)
+	
 	attack = integer_convert(attack)
 
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
@@ -1650,6 +1654,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)
 	w = width(10, 8, conflict_range)
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
+	vcells = vcell('variable'. 18, [variable], vcells)
+	vcells = vcell('opposed'. 18, [opponent], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	attack = add_plus(attack)
@@ -2690,6 +2696,7 @@ def power_opposed_post(entry, body, cells):
 	time_type = entry.time_type
 	description = entry.description
 	recurring_type = entry.recurring_type
+	variable = entry.variable
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -2712,17 +2719,19 @@ def power_opposed_post(entry, body, cells):
 	circ_value = get_keyword(PowerCirc, circ_value)
 	time_type = get_name(PowerTimeType, time_type)
 	recurring_type = get_name(PowerTimeType, recurring_type)
+	variable = get_keyword(PowerCheck, variable)
 
 	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
 
-	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'Opponent Success'}, {'type': 'success', 'name': 'Player Success'}, {'type': 'opp_fail', 'name': 'Opponent Failure'}, {'type': 'fail', 'name': 'Player Failure'}]
+
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check ' + variable}, {'type': 'after_var', 'name': 'After Variable Check ' + variable}]
 	attached = selects(attached, attached_select)
+
+	happens = frequency + ' ' + attached
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
-	cells = cell('When', 13, [attached], cells)
-	cells = cell('Frequency', 13, [frequency], cells)
 	cells = cell('Player', 12, [trait], cells)
 	cells = cell('Mod', 6, [mod], cells)
 	cells = cell('Check', 10, [player_check], cells)
@@ -2733,6 +2742,8 @@ def power_opposed_post(entry, body, cells):
 	cells = cell('Check', 10, [opponent_check], cells)
 	
 	cells = check_cell('Secret', 8, secret, cells)
+
+	cells = circ_cell('When', 'Check Happens', 6, happens, cells, body)
 
 	cells = check_cell('Circ', 6, circ_check, cells, True)
 	new_mod = mod_create('Circumstance Modifier', 24)

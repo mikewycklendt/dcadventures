@@ -167,6 +167,15 @@
 	gap: .3vw;
 }
 
+#opposed-variable {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 25% 35% auto;
+	gap: .3vw;
+}
+
 #opposed-recurring input[type="text"] {
 	height: 1.8vw;
 	padding: .1vw;
