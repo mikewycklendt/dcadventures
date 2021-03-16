@@ -4,7 +4,6 @@
 @import "reverse_effect.css";
 @import "move.css";
 @import "levels.css";
-@import "category.css";
 @import "sense.css";
 @import "ranks.css";
 @import "circ.css";
@@ -22,7 +21,6 @@
 @import "dc_table.css";
 @import "time.css";
 @import "alt_check.css";
-@import "degree.css";
 @import "opposed.css";
 @import "ranged.css";
 @import "minion.css";
