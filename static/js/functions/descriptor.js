@@ -42,7 +42,7 @@ function new_entry_show(row2, row3, damage) {
 function new_entry_hide(row2_input, row3_input, damage_input) {
 	const row2 = document.getElementById(row2_input);
 	const row3 = document.getElementById(row3_input);
-	const damage_input = document.getElementById(damage_input);
+	const damage = document.getElementById(damage_input);
 
 	row2.style.maxHeight = '0px';
 	setTimeout(function(){row2.style.display = 'none'}, 400);

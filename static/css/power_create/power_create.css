@@ -27,6 +27,7 @@
 @import "ranged.css";
 @import "minion.css";
 @import "cost.css";
+@import "ranks.css";
 
 .power-container {
 	display: grid;
