@@ -54,6 +54,7 @@
 #time-base {
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
+	gap: .4vw;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
