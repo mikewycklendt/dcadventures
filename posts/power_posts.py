@@ -1654,8 +1654,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)
 	w = width(10, 8, conflict_range)
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
-	vcells = vcell('variable'. 18, [variable], vcells)
-	vcells = vcell('opposed'. 18, [opponent], vcells)
+	vcells = vcell('variable', 18, [variable], vcells)
+	vcells = vcell('opposed', 18, [opponent], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	attack = add_plus(attack)
