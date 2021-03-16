@@ -118,6 +118,12 @@ select:focus {
 	font-size: 100%;
 }
 
+.select-entry {
+	height: 2.3vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
 .entry-descriptor {
 	height: 2.3vw; 
 	padding: .3vw;  
