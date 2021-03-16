@@ -444,8 +444,8 @@ def damage_post_errors(data):
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
 	keyword = data['keyword']
-	value_type value_type
-	math math
+	value_type = data['value_type']
+	math = data['math']
 
 	errors = power_check(power_id, errors)
 
@@ -457,14 +457,21 @@ def damage_post_errors(data):
 	errors = id_multiple(PowerDes, descriptor, 'Descriptor', errors)
 
 	errors = int_check(mod, 'Modifier', errors)
+	errors = id_check(Math, math, 'Math', errors)
 
-	errors = required(trait_type, 'Trait Type', errors)
-	errors = required(trait, 'Trait', errors)
-	errors = required(mod, 'Mod', errors)
+	errors = variable_fields('rank', 'Rank Value', value_type, [trait], errors)
+	errors = variable_field('rank', value_type, 'Trait', trait, errors)
+	errors = variable_fields('check', 'Checked Rank', value_type, [trait], errors)
+	errors = variable_field('check', value_type, 'Trait', trait, errors)
+
+	errors = variable_fields('value', 'Flat Value', value_type, [mod], errors)
+	errors = variable_fields('value', value_type, 'Value', mod, errors)
+
+	errors = dependent('Math', math, [mod], errors)
+
+	errors = required(value_type, 'Determined By', errors)
+
 	errors = required(keyword, 'Keyword', errors)
-
-	errors = of([damage_type, descriptor], 'You must choose a damage type or descriptor for the damage effect.', errors)
-
 
 	return (errors)
 
