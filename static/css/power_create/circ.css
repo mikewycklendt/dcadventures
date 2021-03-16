@@ -1,11 +1,12 @@
 #circ-header {
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 45% 55%;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
 
 #circ-base {
 	grid-template-columns: 30% 35% 35%;
+	gap: .4vw;
 }
 
 .circ-sml {
