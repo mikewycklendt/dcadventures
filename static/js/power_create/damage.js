@@ -47,6 +47,8 @@ function damage_submit() {
 	const damage_type = multiple("damage_damage_type");
 	const descriptor = multiple("damage_descriptor");
 	const keyword = text("damage_keyword")
+	const value_type = select("dam_value_type");
+	const math = select("dam_math")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -69,7 +71,9 @@ function damage_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'keyword': keyword
+			'keyword': keyword,
+			'value_type': value_type,
+			'math': math
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

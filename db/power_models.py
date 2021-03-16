@@ -1437,6 +1437,8 @@ class PowerDamage(db.Model):
 	descriptor = db.Column(db.ARRAY(db.Integer))
 	ranged = db.Column(db.Boolean)
 	movement = db.Column(db.Boolean)
+	value_type = db.Column(db.String())
+	math = = db.Column(db.Integer, db.ForeignKey('math.id'))
 	
 	def format(self):
 		return {
@@ -1451,7 +1453,9 @@ class PowerDamage(db.Model):
 			'damage_type': self.damage_type,
 			'descriptor': self.descriptor,
 			'ranged': self.ranged,
-			'movement': self.movement
+			'movement': self.movement,
+			'value_type': self.value_type,
+			'math': self.math
 		}
 
 

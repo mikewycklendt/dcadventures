@@ -444,6 +444,8 @@ def damage_post_errors(data):
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
 	keyword = data['keyword']
+	value_type value_type
+	math math
 
 	errors = power_check(power_id, errors)
 

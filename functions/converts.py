@@ -1097,6 +1097,14 @@ def trait_select(value, trait):
 		value =  'Active Opponent Rank'
 	elif trait == 'choice':
 		value =  'Players Chosen DC'
+	elif trait == 'mass':
+		value = "Object Mass"
+	elif trait == 'volume':
+		value = "Object Volume"
+	elif trait == 'tough':
+		value = "Object Toughness"
+	elif trait == 'attack':
+		value = "Attack Bonus"
 	
 	return (value)
 

@@ -1623,11 +1623,15 @@ def power_post_damage():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 	keyword = request.get_json()['keyword']
+	value_type = request.get_json()['value_type']
+	math = request.get_json()['math']
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	damage_type = db_multiple(Descriptor, damage_type)
 	descriptor = db_multiple(PowerDes, descriptor)
+
+	math = db_integer(math)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -1641,7 +1645,9 @@ def power_post_damage():
 							strength = strength,
 							damage_type = damage_type,
 							descriptor = descriptor,
-							keyword = keyword)
+							keyword = keyword,
+							value_type = value_type,
+							math = math)
 
 		db.session.add(entry)
 		db.session.commit()

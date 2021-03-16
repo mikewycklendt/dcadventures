@@ -436,6 +436,8 @@ def damage_post(entry, body, cells):
 	damage_type = entry.damage_type
 	descriptor = entry.descriptor
 	keyword = entry.keyword
+	value_type = entry.value_type
+	math = entry.math
 
 	trait = trait_select(trait, trait_type)
 
@@ -443,13 +445,18 @@ def damage_post(entry, body, cells):
 	damage_type = get_multiple(Descriptor, damage_type)
 	descriptor = get_multiple(PowerDes, descriptor)
 
+	math = math_convert(math)
+
 	mod = integer_convert(mod)
 	damage_type = integer_convert(damage_type)
 
+	damage_value = [{'type': '', 'name': 'Damage Dealt'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'check', 'name': 'Checked Rank'}, {'type': 'value', 'name': 'Flat Value'}]
+	value_type = selects(value_type, damage_value)
+
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 15, [extra], cells)
-	cells = cell('Trait', 8, [trait], cells)
-	cells = cell('Modifier', 11, [mod], cells)
+	cells = cell('Damage', 25, [trait, math, mod], cells)
+	cells = cell('Dealt By', 16, [value_type], cells)
 	cells = check_cell('Strength Based', 16, strength, cells)
 	cells = circ_cell('Damage Type', 'Damage Type', 13, damage_type, cells, body)
 	cells = circ_cell('Descriptor', 'Descriptor', 12, descriptor, cells, body)
