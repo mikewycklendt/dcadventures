@@ -1134,6 +1134,7 @@ class PowerTime(db.Model):
 	time = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	measure_type = db.Column(db.String())
+	rank = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -1176,7 +1177,8 @@ class PowerTime(db.Model):
 			'dc_type': self.dc_type,
 			'time': self.time,
 			'mod': self.mod,
-			'measure_type': self.measure_type
+			'measure_type': self.measure_type,
+			'rank': self.rank
 		}
 
 
@@ -1871,6 +1873,7 @@ class PowerRanged(db.Model):
 	keyword = db.Column(db.String())
 	title = db.Column(db.String())
 	movement = db.Column(db.Boolean)
+	rank = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -1913,7 +1916,8 @@ class PowerRanged(db.Model):
 			'damage': self.damage,
 			'keyword': self.keyword,
 			'movement': self.movement,
-			'title': self.title
+			'title': self.title,
+			'rank': self.rank
 		}
 
 class PowerResist(db.Model):

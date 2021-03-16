@@ -10,6 +10,10 @@
 		</div>
 
 		<div>
+			<input type="text" id="ranged_keyword" name="ranged_keyword" placeholder="Keyword"> 
+		</div>
+
+		<div>
 			<select class="extra-select" id="ranged_extra" name="ranged_extra" onchange="ranged_base()">
 				<option value=>Base or Extra</option>
 				<option value=0>Base Effect</option>
@@ -503,8 +507,12 @@
 		</div>
 
 		<div>
-			<input type="text" id="ranged_keyword" name="ranged_keyword" placeholder="Keyword"> 
+			<div class="check-div">
+				<input type="checkbox" id="ranged_rank" class="medium-checkbox med-checkbox" > Range Per Rank
+			</div>
 		</div>
+		
+
 
 		<div>
 			<div class="btn-entry" id="ranged_submit" name="ranged_submit" onclick="ranged_submit()">

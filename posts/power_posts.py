@@ -1147,6 +1147,7 @@ def ranged_post(entry, body, cells):
 	damage = entry.damage
 	keyword = entry.keyword
 	title = entry.title
+	rank = entry.rank
 	
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
@@ -1232,6 +1233,8 @@ def ranged_post(entry, body, cells):
 	distance_rank = string('= Distance Rank', [check_trait, check_math, check_mod, distance_rank])
 	vcells = vcell('check', 50, [check_trait, check_math, check_mod, distance_rank], vcells)
 	cells = vcell_add('Range', range_type, vcells, cells)
+
+	cells = check_cell('Per Rank', 9, rank, cells)
 
 	cells = cell('Circumstance', 15, [circ], cells)
 	cells = cell('Damage', 15, [damage], cells)
@@ -2817,6 +2820,7 @@ def power_time_post(entry, body, cells):
 	mod = entry.mod
 	recovery_target = entry.recovery_target
 	measure_type = entry.measure_type
+	rank = entry.rank
 
 
 	title_name = get_name(PowerTimeType, title)
@@ -2889,6 +2893,7 @@ def power_time_post(entry, body, cells):
 	cells = cell('Recovery', 14, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
+	cells  = check_cell('Per Rank', 9, rank, cells)
 	body = send_multiple(title, cells, body)
 
 	cells.clear()

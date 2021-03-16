@@ -16,6 +16,10 @@
 			<input type="text" id="time_title" name="time_title" placeholder="Title">
 		</div>
 
+		<div class="vcenter">
+			<input type="text" id="time_keyword" name="time_keyword" placeholder="Keyword">
+		</div>
+		
 		<div>
 			<select class="extra-select" id="time_extra" name="time_extra">
 				<option value=>Base or Extra</option>
@@ -277,10 +281,12 @@
 			</div>
 		</div>
 
-		<div class="vcenter">
-			<input type="text" id="time_keyword" name="time_keyword" placeholder="Keyword">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="time_rank" class="medium-checkbox med-checkbox" > Time Per Rank
+			</div>
 		</div>
-		
+
 		<div>
 			<div class="btn-entry" id="time_submit" name="time_submit" onclick="time_submit()">
 				 Add

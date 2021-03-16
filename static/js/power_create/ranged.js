@@ -134,6 +134,7 @@ function ranged_submit() {
 	const damage = select("ranged_damage");
 	const keyword = text("ranged_keyword")
 	const title = text("ranged_title")
+	const rank = check("ranged_rank");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -187,7 +188,8 @@ function ranged_submit() {
 			'created': created,
 			'font': font,
 			'keyword': keyword,
-			'title': title
+			'title': title,
+			'rank': rank
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

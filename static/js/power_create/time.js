@@ -95,6 +95,7 @@ function time_submit() {
 	const mod = select("time_mod");
 	const recovery_target = select("time_recovery_target");
 	const measure_type = select("time_measure_type");
+	const rank = check("time_rank");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -145,7 +146,8 @@ function time_submit() {
 			'time': time,
 			'mod': mod,
 			'recovery_target': recovery_target,
-			'measure_type': measure_type
+			'measure_type': measure_type,
+			'rank': rank
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

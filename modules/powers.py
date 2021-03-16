@@ -2700,6 +2700,7 @@ def power_post_ranged():
 	font = request.get_json()['font']
 	keyword = request.get_json()['keyword']
 	title = request.get_json()['title']
+	rank = request.get_json()['rank']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
@@ -2791,7 +2792,8 @@ def power_post_ranged():
 							degree = degree,
 							damage = damage,
 							keyword = keyword,
-							title = title)
+							title = title,
+							rank = rank)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -4873,6 +4875,7 @@ def power_post_time():
 	mod = request.get_json()['mod']
 	mod = request.get_json()['mod']
 	recovery_target = request.get_json()['recovery_target']
+	rank = request.get_json()['rank']
 
 	errors = power_time_post_errors(data)
 	
@@ -4960,7 +4963,8 @@ def power_post_time():
 						maintain = maintain,
 						scene = scene,
 						time = time,
-						mod = mod
+						mod = mod,
+						rank = rank
 					)
 
 	db.session.add(entry)
