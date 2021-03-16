@@ -261,12 +261,7 @@ def create_post(entry, body, cells):
 	trap_opposed = entry.trap_opposed
 	trap_resist = entry.trap_resist
 	trap_escape = entry.trap_escape
-	ranged_type = entry.ranged_type
-	ranged_dc = entry.ranged_dc
-	ranged_trait_type = entry.ranged_trait_type
-	ranged_trait = entry.ranged_trait
-	ranged_damage_type = entry.ranged_damage_type
-	ranged_damage_value = entry.ranged_damage_value
+
 	weapon_trait_type = entry.weapon_trait_type
 	weapon_trait = entry.weapon_trait
 	weapon_mod = entry.weapon_mod
@@ -291,7 +286,7 @@ def create_post(entry, body, cells):
 
 	trap_trait = trait_select(trap_trait, trap_trait_type)
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
-	ranged_trait = trait_select(ranged_trait, ranged_trait_type)
+
 	weapon_trait = trait_select(weapon_trait, weapon_trait_type)
 
 	extra = extra_name(extra_id)
@@ -327,8 +322,7 @@ def create_post(entry, body, cells):
 	move_opponent_rank = integer_convert(move_opponent_rank)
 	trap_dc = integer_convert(trap_dc)
 	trap_resist_dc = integer_convert(trap_resist_dc)
-	ranged_dc = integer_convert(ranged_dc)
-	ranged_damage_value = integer_convert(ranged_damage_value)
+
 	weapon_mod = integer_convert(weapon_mod)
 	weapon_damage = integer_convert(weapon_damage)
 	support_strength = integer_convert(support_strength)
@@ -369,20 +363,10 @@ def create_post(entry, body, cells):
 	body = mod_add(trap, new_mod, body)
 
 	cells = check_cell('Ranged', 8, ranged, cells, True)
-	determined_select = [{'type': 'dc', 'name': 'DC', 'w': 5}, {'type': 'target', 'name': 'Target Trait', 'w': 16}, {'type': 'player', 'name': 'Player Trait', 'w': 16}]
-	new_mod = mod_create('Ranged', 9, ranged_type, determined_select)
-	value = 'dc'
-	new_mod = mod_cell('Value:', 8, [ranged_dc], new_mod, value)
-	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
-	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
-	value = 'target'
-	new_mod = mod_cell('Trait:', 7, [ranged_trait], new_mod, value)
-	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
-	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
-	value = 'player'
-	new_mod = mod_cell('Trait:', 7, [ranged_trait], new_mod, value)
-	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod, value)
-	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod, value)
+	new_mod = mod_create('Ranged', 9)
+	new_mod = mod_cell('Value:', 8, [ranged_dc], new_mod)
+	new_mod = mod_cell('Damage Type:', 17, [ranged_damage_type], new_mod)
+	new_mod = mod_cell('Damage Value:', 19, [ranged_damage_value], new_mod)
 	body = mod_add(ranged, new_mod, body)
 
 	cells = check_cell('Weapon', 9, weapon, cells, True)

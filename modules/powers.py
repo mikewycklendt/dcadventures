@@ -1422,12 +1422,7 @@ def power_post_create():
 	trap_resist = request.get_json()['trap_resist']
 	trap_opposed = request.get_json()['trap_opposed']
 	trap_escape = request.get_json()['trap_escape']
-	ranged_type = request.get_json()['ranged_type']
-	ranged_dc = request.get_json()['ranged_dc']
-	ranged_trait_type = request.get_json()['ranged_trait_type']
-	ranged_trait = request.get_json()['ranged_trait']
-	ranged_damage_type = request.get_json()['ranged_damage_type']
-	ranged_damage_value = request.get_json()['ranged_damage_value']
+
 	weapon_trait_type = request.get_json()['weapon_trait_type']
 	weapon_trait = request.get_json()['weapon_trait']
 	weapon_mod = request.get_json()['weapon_mod']
@@ -1466,9 +1461,7 @@ def power_post_create():
 	transfom_mass = integer(transfom_mass)
 	transform_start_descriptor = integer(transform_start_descriptor)
 	transform_end_descriptor = integer(transform_end_descriptor)
-	ranged_dc = integer(ranged_dc)
-	ranged_trait = integer(ranged_trait)
-	ranged_damage_value = integer(ranged_damage_value)
+
 	weapon_trait = integer(weapon_trait)
 	weapon_mod = integer(weapon_mod)
 	weapon_damage = integer(weapon_damage)
@@ -1516,12 +1509,7 @@ def power_post_create():
 							trap_resist = trap_resist,
 							trap_opposed = trap_opposed,
 							trap_escape = trap_escape,
-							ranged_type = ranged_type,
-							ranged_dc = ranged_dc,
-							ranged_trait_type = ranged_trait_type,
-							ranged_trait = ranged_trait,
-							ranged_damage_type = ranged_damage_type,
-							ranged_damage_value = ranged_damage_value,
+
 							weapon_trait_type = weapon_trait_type,
 							weapon_trait = weapon_trait,
 							weapon_mod = weapon_mod,

@@ -271,12 +271,7 @@ function create_submit() {
 	const trap_resist = select("create_trap_resist");
 	const trap_opposed = select("create_trap_opposed");
 	const trap_escape = check("create_trap_escape");
-	const ranged_type = select("create_ranged_type");
-	const ranged_dc = select("create_ranged_dc");
-	const ranged_trait_type = select("create_ranged_trait_type");
-	const ranged_trait = select("create_ranged_trait");
-	const ranged_damage_type = select("create_ranged_damage_type");
-	const ranged_damage_value = select("create_ranged_damage_value");
+
 	const weapon_trait_type = select("create_weapon_trait_type");
 	const weapon_trait = select("create_weapon_trait");
 	const weapon_mod = select("create_weapon_mod");
@@ -336,12 +331,7 @@ function create_submit() {
 			'trap_resist': trap_resist,
 			'trap_opposed': trap_opposed,
 			'trap_escape': trap_escape,
-			'ranged_type': ranged_type,
-			'ranged_dc': ranged_dc,
-			'ranged_trait_type': ranged_trait_type,
-			'ranged_trait': ranged_trait,
-			'ranged_damage_type': ranged_damage_type,
-			'ranged_damage_value': ranged_damage_value,
+
 			'weapon_trait_type': weapon_trait_type,
 			'weapon_trait': weapon_trait,
 			'weapon_mod': weapon_mod,

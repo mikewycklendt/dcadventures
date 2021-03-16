@@ -331,12 +331,7 @@ def create_post_errors(data):
 	trap_opposed = data['trap_opposed']
 	trap_resist = data['trap_resist']
 	trap_escape = data['trap_escape']
-	ranged_type = data['ranged_type']
-	ranged_dc = data['ranged_dc']
-	ranged_trait_type = data['ranged_trait_type']
-	ranged_trait = data['ranged_trait']
-	ranged_damage_type = data['ranged_damage_type']
-	ranged_damage_value = data['ranged_damage_value']
+
 	weapon_trait_type = data['weapon_trait_type']
 	weapon_trait = data['weapon_trait']
 	weapon_mod = data['weapon_mod']
@@ -371,8 +366,7 @@ def create_post_errors(data):
 	errors = int_check(mass, 'Mass', errors)
 	errors = int_check(transform_start_mass, 'Transform Starting Mass', errors)
 	errors = int_check(transfom_mass, 'Transform Ending Mass', errors)
-	errors = int_check(ranged_dc, 'Ranged DC', errors)
-	errors = int_check(ranged_damage_value, 'Ranged Damage Value', errors)
+
 	errors = int_check(weapon_mod, 'Weapon Modifier', errors)
 	errors = int_check(weapon_damage, 'Weapon Damage', errors)
 	errors = int_check(support_strength, 'Support Strength Rank', errors)
@@ -400,16 +394,7 @@ def create_post_errors(data):
 	errors = check_field(trap_escape, 'Escape Trap', 'Opponent Check', trap_opposed, errors)
 	
 	errors = check_fields(ranged, 'Ranged Attack', [ranged_type, ranged_damage_type], errors)
-	errors = check_field(ranged, 'Ranged Attack', 'Ranged Check Type', ranged_type, errors)
-	errors = check_field(ranged, 'Ranged Attack', 'Ranged Damage Type', ranged_damage_type, errors)
-	errors = variable_fields('dc', 'Ranged DC', ranged_type, [ranged_dc], errors)
-	errors = variable_fields('target', 'Ranged Target Trait', ranged_type, [ranged_trait_type, ranged_trait], errors)
-	errors = variable_fields('player', 'Ranged Player Trait', ranged_type, [ranged_trait_type, ranged_trait], errors)
-	errors = variable_field('target', ranged_type, 'Ranged Target Trait Type', ranged_trait_type, errors)
-	errors = variable_field('target', ranged_type, 'Ranged Target Trait', ranged_trait, errors)
-	errors = variable_field('player', ranged_type, 'Ranged Player Trait Type', ranged_trait_type, errors)
-	errors = variable_field('player', ranged_type, 'Ranged Player Trait', ranged_trait, errors)
-	errors = variable_fields('value', 'Ranged Damage Value', ranged_damage_type, [ranged_damage_value], errors)
+
 
 	errors = check_fields(weapon, 'Weapon', [weapon_trait_type, weapon_trait, weapon_mod, weapon_damage_type], errors)
 	errors = check_field(weapon, 'Weapon', 'Weapon Trait Type', weapon_trait_type, errors)
