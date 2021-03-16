@@ -1438,7 +1438,7 @@ class PowerDamage(db.Model):
 	ranged = db.Column(db.Boolean)
 	movement = db.Column(db.Boolean)
 	value_type = db.Column(db.String())
-	math = = db.Column(db.Integer, db.ForeignKey('math.id'))
+	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	
 	def format(self):
 		return {
