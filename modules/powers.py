@@ -239,6 +239,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	damage_type = [{'type': '', 'name': 'Damage Type'}, {'type': 'inflict', 'name': 'Inflict'}, {'type': 'reduce', 'name': 'Reduce'}, {'type': 'object', 'name': 'Object'}]
 
+	damage_value = [{'type': '', 'name': 'Damage Dealt'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'check', 'name': 'Checked Rank'}, {'type': 'value', 'name': 'Flat Value'}]
+
+	damage_trait = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'},  {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
+
 	darkness = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
 
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}]
@@ -313,7 +317,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
 
-	object_damage = [{'type': '', 'name': 'Damage Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'effect', 'name': 'Effect Rank'}, {'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}, {'type': 'ability', 'name': 'Player Ability'}]
+	object_damage = [{'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}]
 
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 

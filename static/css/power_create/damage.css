@@ -55,7 +55,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 30% 15% 35%;
+	grid-template-columns: 20% 30% 15% 15% 20%;
 	grid-auto-rows: auto;
 }
 
@@ -63,7 +63,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 20% 35% 45%;
+	grid-template-columns: 30% 30% 40%;
 }
 
 #damage-button-row {

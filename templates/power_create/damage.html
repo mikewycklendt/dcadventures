@@ -28,16 +28,25 @@
 		</div>
 
 		<div>
-			Modifier
+			Math:
 		</div>
 
-		<div></div>
+		<div>
+			Value:
+		</div>
+
+		<div>
+			Determined By:
+		</div>
 		
 		<div>
 			<select class="select-sml" id="dam_trait_type" name="dam_trait_type" onchange="dam_trait_type()">
 			{% for t in traits %}
 				<option value="{{t.type}}">{{t.name}}</option>
 			{% endfor %}
+			{% for o in object_damage %}
+				<option value="{{o.type}}">{{o.name}}</option>
+			{% endfor %}}}
 			</select>
 		</div>
 
@@ -48,29 +57,47 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="dam_math" name="dam_math">
+				<option value="">Math</option>
+				{% for m in maths %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="select-sml" id="dam_mod" name="dam_mod">
-				<option value="">Modifier</option>
-				{% for i in negatives %}
+				<option value="">Value</option>
+				{% for i in positives %}
 				<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>
 		
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
-			</div>
+			<select class="select-sml" id="dam_value_type" name="dam_value_type">
+				{% for d in damage_value %}
+					<option value="{{d.type}}">{{d,name}}</option>
+				{% endfor %}
+			</select>
 		</div>
-
 	</div>
 
 	<div id="damage-row2">
 		<div>
-			Damage Type:
+			<div style="text-align: right;">
+				Damage Types:
+			</div>
+
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
+				</div>
+			</div>
 		</div>
 
 		<div>
-			<select class="select-sml" id="damage_damage_type" name="damage_damage_type" multiple style="height: 6vw; font-size: 90%;">
+			<select class="select-sml" id="damage_damage_type" name="damage_damage_type" multiple style="height: 6vw; font-size: 80%;">
 				<option value="">Damage Type</option>
 				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for d in damages %}
@@ -80,7 +107,7 @@
 		</div>
 
 		<div>
-			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor" multiple style="height: 6vw; font-size: 90%;">
+			<select class="descriptor-sml" id="damage_descriptor" name="damage_descriptor" multiple style="height: 6vw; font-size: 80%;">
 				<option value="">Use above form to put descriptors here</option>
 				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for d in descriptor_options %}

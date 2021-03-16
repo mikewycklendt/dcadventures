@@ -675,6 +675,12 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Players Chosen DC"}]
 	elif trait == 'attack':
 		body['options'] = [{'id': "0", 'name': "Attack Bonus"}]
+	elif trait == 'mass':
+		body['options'] = [{'id': "0", 'name': "Object Mass"}]
+	elif trait == 'volume':
+		body['options'] = [{'id': "0", 'name': "Object Volume"}]
+	elif trait == 'tough':
+		body['options'] = [{'id': "0", 'name': "Object Toughness"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': 'Trait'}]
