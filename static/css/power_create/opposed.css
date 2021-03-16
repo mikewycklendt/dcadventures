@@ -176,6 +176,11 @@
 	gap: .3vw;
 }
 
+#opposed-variable-title {
+	opacity: 100%;
+	transition: all .3s ease-out;
+}
+
 #opposed-recurring input[type="text"] {
 	height: 1.8vw;
 	padding: .1vw;

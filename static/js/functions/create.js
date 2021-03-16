@@ -787,14 +787,19 @@ function div_text(select_input, div_input, options) {
 	const value = select(select_input);
 	let o;
 
-	for (o of options) {
-		const val = o.val;
-		const text = o.text; 
+	div.style.opacity = '0%';
 
-		if (val == value) {
-			div.innerHTML = text;
+	setTimeout(function(){
+		for (o of options) {
+			const val = o.val;
+			const text = o.text; 
+	
+			if (val == value) {
+				div.innerHTML = text;
+			}
 		}
-	}
+		div.style.opacity = '100%';
+	}, 300)	
 }
 
 function select_entry(check_input, base_input, entry_input, field_input, value) {
