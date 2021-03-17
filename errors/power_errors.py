@@ -331,10 +331,6 @@ def create_post_errors(data):
 	trap_opposed = data['trap_opposed']
 	trap_resist = data['trap_resist']
 	trap_escape = data['trap_escape']
-	weapon_trait_type = data['weapon_trait_type']
-	weapon_trait = data['weapon_trait']
-	weapon_mod = data['weapon_mod']
-	weapon_damage_type = data['weapon_damage_type']
 	weapon_damage = data['weapon_damage']
 	support_strength = data['support_strength']
 	support_strengthen = data['support_strengthen']
@@ -356,6 +352,7 @@ def create_post_errors(data):
 	errors = id_check(PowerCheck, trap_resist, errors)
 	errors = id_check(PowerCheck, ranged_check, errors)
 	errors = id_check(PowerDamage, ranged_damage, errors)
+	errors = id_check(PowerDamage, weapon_damage, errors)
 
 	errors = power_check(power_id, errors)
 
@@ -370,8 +367,6 @@ def create_post_errors(data):
 	errors = int_check(transform_start_mass, 'Transform Starting Mass', errors)
 	errors = int_check(transfom_mass, 'Transform Ending Mass', errors)
 
-	errors = int_check(weapon_mod, 'Weapon Modifier', errors)
-	errors = int_check(weapon_damage, 'Weapon Damage', errors)
 	errors = int_check(support_strength, 'Support Strength Rank', errors)
 	errors = int_check(support_action, 'Strengthen With Action Modifier', errors)
 	errors = int_check(support_action_rounds, 'Strengthen with Action Number of Rounds', errors)
@@ -400,12 +395,8 @@ def create_post_errors(data):
 	errors = check_field(ranged, 'Ranged Attack', 'Check', ranged_check, errors)
 	errors = check_field(ranged, 'Ranged Attack', 'Damage', ranged_damage, errors)
 
-	errors = check_fields(weapon, 'Weapon', [weapon_trait_type, weapon_trait, weapon_mod, weapon_damage_type], errors)
-	errors = check_field(weapon, 'Weapon', 'Weapon Trait Type', weapon_trait_type, errors)
-	errors = check_field(weapon, 'Weapon', 'Wespon Trait', weapon_trait, errors)
-	errors = check_field(weapon, 'Weapon', 'Weapon Modifier', weapon_mod, errors)
-	errors = check_field(weapon, 'Weapon', 'Weapon Damage Type', weapon_damage_type, errors)
-	errors = variable_fields('value', 'Weapon Damage Value', weapon_damage_type, [weapon_damage], errors)
+	errors = check_fields(weapon, 'Weapon', [weapon_damage], errors)
+	errors = check_field(weapon, 'Weapon', 'Weapon Damage', weapon_damage, errors)
 
 	errors = check_fields(support, 'Supports Weight', [support_strength], errors)
 	errors = check_field(support, 'Supports Weight', 'Supports Weight Strength Rank', support_strength, errors)

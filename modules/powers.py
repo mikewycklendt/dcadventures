@@ -1374,6 +1374,7 @@ def power_post_create():
 
 	body = {}
 	body['success'] = True
+	body['error_msgs'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -1422,10 +1423,6 @@ def power_post_create():
 	trap_resist = request.get_json()['trap_resist']
 	trap_opposed = request.get_json()['trap_opposed']
 	trap_escape = request.get_json()['trap_escape']
-	weapon_trait_type = request.get_json()['weapon_trait_type']
-	weapon_trait = request.get_json()['weapon_trait']
-	weapon_mod = request.get_json()['weapon_mod']
-	weapon_damage_type = request.get_json()['weapon_damage_type']
 	weapon_damage = request.get_json()['weapon_damage']
 	support_strength = request.get_json()['support_strength']
 	support_strengthen = request.get_json()['support_strengthen']
@@ -1457,6 +1454,7 @@ def power_post_create():
 	trap_opposed = db_integer(PowerOpposed, trap_opposed)
 	ranged_check = db_integer(PowerCheck, ranged_check)
 	ranged_damage = db_integer(PowerDamage, ranged_damage)
+	weapon_damage = db_integer(PowerDamage, weapon_damage)
 
 
 	volume = integer(volume)
@@ -1467,14 +1465,18 @@ def power_post_create():
 	transform_start_descriptor = integer(transform_start_descriptor)
 	transform_end_descriptor = integer(transform_end_descriptor)
 
-	weapon_trait = integer(weapon_trait)
-	weapon_mod = integer(weapon_mod)
-	weapon_damage = integer(weapon_damage)
 	support_strength = integer(support_strength)
 	support_action = integer(support_action)
 	support_action_rounds = integer(support_action_rounds)
 	support_effort = integer(support_effort)
 	support_effort_rounds = integer(support_effort_rounds)
+
+	linked_ref(PowerCheck, move_check, 'Variable Check', 'effect', body)
+	linked_ref(PowerCheck, trap_check, 'Variable Check', 'effect', body)
+	linked_ref(PowerCheck, ranged_check, 'Variable Check', 'effect', body)
+
+	if body['success'] == False:
+		return jsonify(body)
 
 
 	try:
@@ -1516,10 +1518,6 @@ def power_post_create():
 							trap_escape = trap_escape,
 							ranged_damage = ranged_damage,
 							ranged_check = ranged_check,
-							weapon_trait_type = weapon_trait_type,
-							weapon_trait = weapon_trait,
-							weapon_mod = weapon_mod,
-							weapon_damage_type = weapon_damage_type,
 							weapon_damage = weapon_damage,
 							support_strength = support_strength,
 							support_strengthen = support_strengthen,

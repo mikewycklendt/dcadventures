@@ -261,10 +261,6 @@ def create_post(entry, body, cells):
 	trap_opposed = entry.trap_opposed
 	trap_resist = entry.trap_resist
 	trap_escape = entry.trap_escape
-	weapon_trait_type = entry.weapon_trait_type
-	weapon_trait = entry.weapon_trait
-	weapon_mod = entry.weapon_mod
-	weapon_damage_type = entry.weapon_damage_type
 	weapon_damage = entry.weapon_damage
 	support_strength = entry.support_strength
 	support_strengthen = entry.support_strengthen
@@ -286,11 +282,10 @@ def create_post(entry, body, cells):
 	trap_resist = get_keyword(PowerCheck, trap_resist)
 	ranged_damage = get_keyword(PowerDamage, ranged_damage)
 	ranged_check = get_keyword(PowerCheck, ranged_check)
-
+	weapon_damage = get_keyword(PowerDamage, weapon_damage)
+	
 	trap_trait = trait_select(trap_trait, trap_trait_type)
 	trap_resist_trait = trait_select(trap_resist_trait, trap_resist_check)
-
-	weapon_trait = trait_select(weapon_trait, weapon_trait_type)
 
 	extra = extra_name(extra_id)
 	complexity = name(Complex, complexity)
@@ -326,8 +321,6 @@ def create_post(entry, body, cells):
 	trap_dc = integer_convert(trap_dc)
 	trap_resist_dc = integer_convert(trap_resist_dc)
 
-	weapon_mod = integer_convert(weapon_mod)
-	weapon_damage = integer_convert(weapon_damage)
 	support_strength = integer_convert(support_strength)
 	support_action = integer_convert(support_action)
 	support_action_rounds = integer_convert(support_action_rounds)
@@ -373,9 +366,6 @@ def create_post(entry, body, cells):
 
 	cells = check_cell('Weapon', 9, weapon, cells, True)
 	new_mod = mod_create('Weapon', 10)
-	new_mod = mod_cell('Trait:', 7, [weapon_trait], new_mod)
-	new_mod = mod_cell('Modifier:', 9, [weapon_mod], new_mod)
-	new_mod = mod_cell('Damage Type:', 14, [weapon_damage_type], new_mod)
 	new_mod = mod_cell('Damage:', 8, [weapon_damage], new_mod)
 	body = mod_add(weapon, new_mod, body)
 

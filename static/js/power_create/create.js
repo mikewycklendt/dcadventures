@@ -271,10 +271,6 @@ function create_submit() {
 	const trap_resist = select("create_trap_resist");
 	const trap_opposed = select("create_trap_opposed");
 	const trap_escape = check("create_trap_escape");
-	const weapon_trait_type = select("create_weapon_trait_type");
-	const weapon_trait = select("create_weapon_trait");
-	const weapon_mod = select("create_weapon_mod");
-	const weapon_damage_type = select("create_weapon_damage_type");
 	const weapon_damage = select("create_weapon_damage");
 	const support_strength = select("create_support_strength");
 	const support_strengthen = check("create_support_strengthen");
@@ -332,10 +328,6 @@ function create_submit() {
 			'trap_resist': trap_resist,
 			'trap_opposed': trap_opposed,
 			'trap_escape': trap_escape,
-			'weapon_trait_type': weapon_trait_type,
-			'weapon_trait': weapon_trait,
-			'weapon_mod': weapon_mod,
-			'weapon_damage_type': weapon_damage_type,
 			'weapon_damage': weapon_damage,
 			'support_strength': support_strength,
 			'support_strengthen': support_strengthen,
