@@ -331,7 +331,6 @@ def create_post_errors(data):
 	trap_opposed = data['trap_opposed']
 	trap_resist = data['trap_resist']
 	trap_escape = data['trap_escape']
-
 	weapon_trait_type = data['weapon_trait_type']
 	weapon_trait = data['weapon_trait']
 	weapon_mod = data['weapon_mod']
@@ -345,14 +344,18 @@ def create_post_errors(data):
 	support_effort_rounds = data['support_effort_rounds']
 	cost = data['cost']
 	ranks = data['ranks']
+	ranged_damage = data['ranged_damage']
+	ranged_check = data['ranged_check']
 
-	errors = id_check(PowerCost, cost)
-	errors = id_check(PowerRanks, ranks)
-	errors = id_check(PowerCheck, move_check)
-	errors = id_check(PowerOpposed, move_opposed)
-	errors = id_check(PowerCheck, trap_check)
-	errors = id_check(PowerOpposed, trap_opposed)
-	errors = id_check(PowerCheck, trap_resist)
+	errors = id_check(PowerCost, cost, errors)
+	errors = id_check(PowerRanks, ranks, errors)
+	errors = id_check(PowerCheck, move_check, errors)
+	errors = id_check(PowerOpposed, move_opposed, errors)
+	errors = id_check(PowerCheck, trap_check, errors)
+	errors = id_check(PowerOpposed, trap_opposed, errors)
+	errors = id_check(PowerCheck, trap_resist, errors)
+	errors = id_check(PowerCheck, ranged_check, errors)
+	errors = id_check(PowerDamage, ranged_damage, errors)
 
 	errors = power_check(power_id, errors)
 
@@ -393,8 +396,9 @@ def create_post_errors(data):
 	errors = check_fields(trap_escape, 'Escape Trap', [trap_opposed], errors)
 	errors = check_field(trap_escape, 'Escape Trap', 'Opponent Check', trap_opposed, errors)
 	
-	errors = check_fields(ranged, 'Ranged Attack', [ranged_type, ranged_damage_type], errors)
-
+	errors = check_fields(ranged, 'Ranged Attack', [ranged_check, ranged_damage], errors)
+	errors = check_field(ranged, 'Ranged Attack', 'Check', ranged_check, errors)
+	errors = check_field(ranged, 'Ranged Attack', 'Damage', ranged_damage, errors)
 
 	errors = check_fields(weapon, 'Weapon', [weapon_trait_type, weapon_trait, weapon_mod, weapon_damage_type], errors)
 	errors = check_field(weapon, 'Weapon', 'Weapon Trait Type', weapon_trait_type, errors)

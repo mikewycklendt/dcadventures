@@ -350,9 +350,24 @@
 		</div>
 
 		<div>
-			<select class="dc-title-sml" id="cre"></select>
+			<select class="damage-sml" id="create_ranged_damage" name="create_ranged_damage" >
+				<option value="">Damage</option>
+				<option value="">Use Damage Form to Put Options here</option>
+				{% for p in power_damage %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
+		<div>
+			<select class="check-sml" id="create_ranged_check" name="create_ranged_check" >
+				<option value="">Check</option>
+				<option value="">Use Variable Check Form to Put Options here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
 	</div>
 

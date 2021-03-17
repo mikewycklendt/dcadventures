@@ -271,7 +271,6 @@ function create_submit() {
 	const trap_resist = select("create_trap_resist");
 	const trap_opposed = select("create_trap_opposed");
 	const trap_escape = check("create_trap_escape");
-
 	const weapon_trait_type = select("create_weapon_trait_type");
 	const weapon_trait = select("create_weapon_trait");
 	const weapon_mod = select("create_weapon_mod");
@@ -285,6 +284,8 @@ function create_submit() {
 	const support_effort_rounds = select("create_support_effort_rounds");
 	const cost = select("create_cost_per_rank");
 	const ranks = select("create_ranks");
+	const ranged_damage = select("create_ranged_damage")
+	const ranged_check = select("create_ranged_check")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -331,7 +332,6 @@ function create_submit() {
 			'trap_resist': trap_resist,
 			'trap_opposed': trap_opposed,
 			'trap_escape': trap_escape,
-
 			'weapon_trait_type': weapon_trait_type,
 			'weapon_trait': weapon_trait,
 			'weapon_mod': weapon_mod,
@@ -347,7 +347,9 @@ function create_submit() {
 			'ranks': ranks,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'ranged_damage': ranged_damage,
+			'ranged_check': ranged_check
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

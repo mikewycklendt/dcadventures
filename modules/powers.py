@@ -1422,7 +1422,6 @@ def power_post_create():
 	trap_resist = request.get_json()['trap_resist']
 	trap_opposed = request.get_json()['trap_opposed']
 	trap_escape = request.get_json()['trap_escape']
-
 	weapon_trait_type = request.get_json()['weapon_trait_type']
 	weapon_trait = request.get_json()['weapon_trait']
 	weapon_mod = request.get_json()['weapon_mod']
@@ -1439,6 +1438,9 @@ def power_post_create():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	ranged_damage ranged_damage
+	ranged_check ranged_check
+	
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -1509,7 +1511,8 @@ def power_post_create():
 							trap_resist = trap_resist,
 							trap_opposed = trap_opposed,
 							trap_escape = trap_escape,
-
+							ranged_damage = ranged_damage,
+							ranged_check = ranged_check,
 							weapon_trait_type = weapon_trait_type,
 							weapon_trait = weapon_trait,
 							weapon_mod = weapon_mod,

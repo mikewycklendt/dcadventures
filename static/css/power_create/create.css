@@ -80,7 +80,7 @@
 #create-ranged {
 	display: none;
 	width: 98%;
-	grid-template-columns: 15% 20% 40% 15% 10%;
+	grid-template-columns: 15% 35% 35%;
 	gap: .2vw;
 	max-height: 0;
 	overflow: hidden;
