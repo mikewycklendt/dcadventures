@@ -298,6 +298,8 @@ class PowerCheck(db.Model):
 	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	chained = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
+	
 	
 	def format(self):
 		return {
@@ -334,7 +336,8 @@ class PowerCheck(db.Model):
 			'conditions_target': self.conditions_target,
 			'opponent': self.opponent,
 			'varible': self.variable,
-			'chained': self.chained	
+			'chained': self.chained,
+			'effect': self.effect	
 		}
 
 
