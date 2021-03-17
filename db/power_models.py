@@ -1355,7 +1355,7 @@ class PowerCreate(db.Model):
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	ranged_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	ranged_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
-
+	weapon_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 
 	def format(self):
 		return {
