@@ -1438,8 +1438,8 @@ def power_post_create():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
-	ranged_damage ranged_damage
-	ranged_check ranged_check
+	ranged_damage = request.get_json()['ranged_damage']
+	ranged_check = request.get_json()['ranged_check']
 	
 
 	power_id = integer(power_id)
@@ -1455,6 +1455,9 @@ def power_post_create():
 	trap_check = db_integer(PowerCheck, trap_check)
 	trap_resist = db_integer(PowerCheck, trap_resist)
 	trap_opposed = db_integer(PowerOpposed, trap_opposed)
+	ranged_check = db_integer(PowerCheck, ranged_check)
+	ranged_damage = db_integer(PowerDamage, ranged_damage)
+
 
 	volume = integer(volume)
 	toughness = integer(toughness)
