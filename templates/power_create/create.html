@@ -377,45 +377,12 @@
 			Weapon:
 		</div>
 
-		<div>
-			<select class="select-sml" id="create_weapon_trait_type" name="create_weapon_trait_type" onchange="create_weapon_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-		
-		<div>
-			<select class="select-sml" id="create_weapon_trait" name="create_weapon_trait" onchange="create_weapon_trait()">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="create_weapon_mod" name="create_weapon_mod">
-				<option value="">Modifier</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="create_weapon_damage_type" name="create_weapon_damage_type" onchange="create_weapon_damage_type()">
-				{% for d in object_damage %}
-					<option value="{{d.type}}">{{d.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div id="create-weapon-value"> 
-			<select class="select-sml" id="create_weapon_damage" name="create_weapon_damage">
-				<option value="">Value</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
+		<div> 
+			<select class="damage-sml" id="create_weapon_damage" name="create_weapon_damage" >
+				<option value="">Damage</option>
+				<option value="">Use Damage Form to Put Options here</option>
+				{% for p in power_damage %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

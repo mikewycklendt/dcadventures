@@ -1345,11 +1345,6 @@ class PowerCreate(db.Model):
 	trap_resist = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	trap_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	trap_escape = db.Column(db.Boolean)
-	weapon_trait_type = db.Column(db.String())
-	weapon_trait = db.Column(db.Integer)
-	weapon_mod = db.Column(db.Integer)
-	weapon_damage_type = db.Column(db.String())
-	weapon_damage = db.Column(db.Integer)
 	support_strength = db.Column(db.Integer)
 	support_strengthen = db.Column(db.Boolean)
 	support_action = db.Column(db.Integer)
@@ -1401,10 +1396,6 @@ class PowerCreate(db.Model):
 			'trap_resist': self.trap_resist,
 			'trap_opposed': self.trap_opposed,
 			'trap_escape': self.trap_escape,
-			'weapon_trait_type': self.weapon_trait_type,
-			'weapon_trait': self.weapon_trait,
-			'weapon_mod': self.weapon_mod,
-			'weapon_damage_type': self.weapon_damage_type,
 			'weapon_damage': self.weapon_damage,
 			'support_strength': self.support_strength,
 			'support_strengthen': self.support_strengthen,
