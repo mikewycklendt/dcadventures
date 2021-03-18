@@ -164,13 +164,15 @@ class PowerCircType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	move_table = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'power_id': self.power_id,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'effect': self.effect
 		}
 		
 class PowerDCType(db.Model):
@@ -179,13 +181,15 @@ class PowerDCType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	move_table = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'power_id': self.power_id,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'effect': self.effect
 		}
 		
 class PowerDegreeType(db.Model):
@@ -194,13 +198,15 @@ class PowerDegreeType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	move_table = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'power_id': self.power_id,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'effect': self.effect
 		}
 
 class PowerMoveType(db.Model):
@@ -208,12 +214,14 @@ class PowerMoveType(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'power_id': self.power_id
+			'power_id': self.power_id,
+			'effect': self.effect
 		}
 
 class PowerRangedType(db.Model):
@@ -221,12 +229,14 @@ class PowerRangedType(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'power_id': self.power_id
+			'power_id': self.power_id,
+			'effect': self.effect
 		}
 
 class PowerTimeType(db.Model):
@@ -235,11 +245,13 @@ class PowerTimeType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	move_table = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'power_id': self.power_id,
-			'move_table': self.move_table
+			'move_table': self.move_table,
+			'effect': self.effect
 		}

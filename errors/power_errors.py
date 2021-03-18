@@ -744,9 +744,8 @@ def mod_post_errors(data):
 	effortless_degree = data['effortless_degree']
 	effortless_retries = data['effortless_retries']
 	simultaneous_descriptor = data['simultaneous_descriptor']
-	area_mod = data['area_mod']
-	area_range = data['area_range']
-	area_per_rank = data['area_per_rank']
+	area_damage = data['area_damage']
+	area_ranged = data['area_ranged']
 	area_descriptor = data['area_descriptor']
 	limited_type = data['limited_type']
 	limited_mod = data['limited_mod']
@@ -792,8 +791,10 @@ def mod_post_errors(data):
 	ranks = data['ranks']
 	cost = data['cost']
 
-	errors = id_check(PowerCost, cost)
-	errors = id_check(PowerRanks, ranks)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
+	errors = id_check(PowerDamage, area_damage, 'Damage Effect', errors)
+	errors = id_check(PowerRangedType, area_ranged, 'Ranged by Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -822,12 +823,13 @@ def mod_post_errors(data):
 	errors = int_check(points_rerolls, 'Number of Rerolls', errors)
 
 
-	errors = check_fields(affects_objects, 'Affects Objects', [], errors)
+	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
+	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
+	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object with Character', objects_character, errors)
 	
-	errors = check_fields(area, 'Area', [objects_alone, objects_character], errors)
-	errors = check_field(area, 'Area', 'Affect Object Alone', objects_alone, errors)
-	errors = check_field(area, 'Area', 'Affect Object with Character', objects_character, errors)
-	
+	errors = check_fields(area, 'Area', [area_ranged], errors)
+	errors = check_field(area, 'Area', 'Area Range', area_ranged, errors)
+
 	errors = check_fields(limited, 'Limited', [limited_type, limited_mod], errors)
 	errors = check_field(limited, 'Limited', 'Limited Type', limited_type, errors)
 	errors = check_field(limited, 'Limited', 'Limited Modifier', limited_mod, errors)
