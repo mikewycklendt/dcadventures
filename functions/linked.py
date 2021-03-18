@@ -229,7 +229,7 @@ def linked_ref(table, value, name, column, body):
 	if error:
 		body['success'] = False
 
-	return (errors)
+	return (body)
 
 def linked_time(table, value, name, errors):
 	

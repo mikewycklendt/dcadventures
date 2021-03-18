@@ -2354,6 +2354,7 @@ def delete_power_minion(power_id):
 def power_post_mod():
 
 	body = {}
+	body['error_msgs'] = []
 	body['success'] = True
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
@@ -2405,9 +2406,8 @@ def power_post_mod():
 	effortless_degree = request.get_json()['effortless_degree']
 	effortless_retries = request.get_json()['effortless_retries']
 	simultaneous_descriptor = request.get_json()['simultaneous_descriptor']
-	area_mod = request.get_json()['area_mod']
-	area_range = request.get_json()['area_range']
-	area_per_rank = request.get_json()['area_per_rank']
+	area_damage = request.get_json()['area_damage']
+	area_ranged = request.get_json()['area_ranged']
 	area_descriptor = request.get_json()['area_descriptor']
 	limited_type = request.get_json()['limited_type']
 	limited_mod = request.get_json()['limited_mod']
@@ -2459,6 +2459,8 @@ def power_post_mod():
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
+	area_ranged = db_integer(PowerRangedType, area_ranged)
+	area_damage = db_integer(PowerDamage, area_damage)
 
 
 	power_id = integer(power_id)
@@ -2475,8 +2477,6 @@ def power_post_mod():
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
 	simultaneous_descriptor = integer(simultaneous_descriptor)
-	area_mod = integer(area_mod)
-	area_range = integer(area_range)
 	area_descriptor = integer(area_descriptor)
 	limited_mod = integer(limited_mod)
 	limited_source = integer(limited_source)
@@ -2496,6 +2496,9 @@ def power_post_mod():
 	points_reroll_cost = integer(points_reroll_cost)
 	points_rerolls = integer(points_rerolls)
 
+	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
+	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
+	
 
 	try:
 		entry = PowerMod(power_id = power_id,
