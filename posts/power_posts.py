@@ -830,9 +830,8 @@ def mod_post(entry, body, cells):
 	effortless_degree = entry.effortless_degree
 	effortless_retries = entry.effortless_retries
 	simultaneous_descriptor = entry.simultaneous_descriptor
-	area_mod = entry.area_mod
-	area_range = entry.area_range
-	area_per_rank = entry.area_per_rank
+	area_damage = entry.area_damage
+	area_ranged = entry.area_ranged
 	area_descriptor = entry.area_descriptor
 	limited_type = entry.limited_type
 	limited_mod = entry.limited_mod
@@ -855,9 +854,6 @@ def mod_post(entry, body, cells):
 	side_level = entry.side_level
 	side_other = entry.side_other
 	reflect_check = entry.reflect_check
-	reflect_dc = entry.reflect_dc
-	reflect_trait_type = entry.reflect_trait_type
-	reflect_trait = entry.reflect_trait
 	reflect_descriptor = entry.reflect_descriptor
 	subtle_opponent_trait_type = entry.subtle_opponent_trait_type
 	subtle_opponent_trait = entry.subtle_opponent_trait
@@ -879,10 +875,13 @@ def mod_post(entry, body, cells):
 	ranks = entry.ranks
 	cost = entry.cost
 
-	cost = get_cost	(cost, ranks, extra_id)
+	cost = get_cost(cost, ranks, extra_id)
+
+	area_damage = get_keyword(PowerDamage, area_damage)
+	area_ranged = get_name(PowerRangedType, area_ranged)
+	reflect_check = get_keyword(PowerCheck, reflect_check)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
-	reflect_trait = trait_select(reflect_trait, reflect_trait_type)
 	subtle_opponent_trait = trait_select(subtle_opponent_trait, subtle_opponent_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
 	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
@@ -895,7 +894,6 @@ def mod_post(entry, body, cells):
 	limited_sense = get_name(Sense, limited_sense)
 	limited_range = get_name(Range, limited_range)
 	side_level = get_name(Levels, side_level)
-	reflect_check = get_name(Check, reflect_check)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -921,8 +919,6 @@ def mod_post(entry, body, cells):
 	points_reroll_result = selects(points_reroll_result, result_select)
 
 	effortless_degree = integer_convert(effortless_degree)
-	area_mod = integer_convert(area_mod)
-	area_range = integer_convert(area_range)
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
 	limited_degree = integer_convert(limited_degree)
@@ -944,8 +940,9 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Area', 7, area, cells, True)
 	new_mod = mod_create('Area', 6)
-	new_mod = mod_cell('Modifier', 9, [area_mod], new_mod)
-	new_mod = mod_cell('Range', 7, [area_range], new_mod)
+	new_mod = mod_cell('Damage', 9, [area_damage], new_mod)
+	new_mod = mod_cell('Range', 7, [area_ranged], new_mod)
+	new_mod = mod_cell('Descriptor', 7, [area_descriptor], new_mod)
 	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
@@ -1011,8 +1008,6 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Reflect', 8, reflect, cells, True)
 	new_mod = mod_create('Reflect', 8)
 	new_mod = mod_cell('Check:', 7, [reflect_check], new_mod)
-	new_mod = mod_cell('DC:', 5, [reflect_dc], new_mod)
-	new_mod = mod_cell('Trait:', 8, [reflect_trait], new_mod)
 	new_mod = mod_cell('Descriptor:', 12, [reflect_descriptor], new_mod)
 	body = mod_add(others, new_mod, body)
 	

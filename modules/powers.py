@@ -2430,9 +2430,6 @@ def power_post_mod():
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
 	reflect_check = request.get_json()['reflect_check']
-	reflect_dc = request.get_json()['reflect_dc']
-	reflect_trait_type = request.get_json()['reflect_trait_type']
-	reflect_trait = request.get_json()['reflect_trait']
 	reflect_descriptor = request.get_json()['reflect_descriptor']
 	subtle_opponent_trait_type = request.get_json()['subtle_opponent_trait_type']
 	subtle_opponent_trait = request.get_json()['subtle_opponent_trait']
@@ -2461,7 +2458,7 @@ def power_post_mod():
 	ranks = db_integer(PowerRanks, ranks)
 	area_ranged = db_integer(PowerRangedType, area_ranged)
 	area_damage = db_integer(PowerDamage, area_damage)
-
+	reflect_check = db_integer(PowerCheck, reflect_check)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2472,8 +2469,7 @@ def power_post_mod():
 	limited_sense = db_integer(Sense, limited_sense)
 	limited_range = db_integer(Range, limited_range)
 	side_level = db_integer(Levels, side_level)
-	reflect_check = db_integer(Check, reflect_check)
-
+	
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
 	simultaneous_descriptor = integer(simultaneous_descriptor)
@@ -2484,8 +2480,6 @@ def power_post_mod():
 	limited_subjects = integer(limited_subjects)
 	limited_degree = integer(limited_degree)
 	limited_descriptor = integer(limited_descriptor)
-	reflect_dc = integer(reflect_dc)
-	reflect_trait = integer(reflect_trait)
 	reflect_descriptor = integer(reflect_descriptor)
 	subtle_opponent_trait = integer(subtle_opponent_trait)
 	subtle_dc = integer(subtle_dc)
@@ -2564,9 +2558,6 @@ def power_post_mod():
 							side_level = side_level,
 							side_other = side_other,
 							reflect_check = reflect_check,
-							reflect_dc = reflect_dc,
-							reflect_trait_type = reflect_trait_type,
-							reflect_trait = reflect_trait,
 							reflect_descriptor = reflect_descriptor,
 							subtle_opponent_trait_type = subtle_opponent_trait_type,
 							subtle_opponent_trait = subtle_opponent_trait,

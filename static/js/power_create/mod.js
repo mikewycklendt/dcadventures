@@ -371,9 +371,8 @@ function mod_submit() {
 	const effortless_degree = select("mod_effortless_degree");
 	const effortless_retries = check("mod_effortless_retries");
 	const simultaneous_descriptor = select("mod_simultaneous_descriptor");
-	const area_mod = select("mod_area_mod");
-	const area_range = select("mod_area_range");
-	const area_per_rank = check("mod_area_per_rank");
+	const area_damage = select("mod_area_damage");
+	const area_ranged = select("mod_area_ranged");
 	const area_descriptor = select("mod_area_descriptor");
 	const limited_type = select("mod_limited_type");
 	const limited_mod = select("mod_limited_mod");
@@ -396,13 +395,8 @@ function mod_submit() {
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
 	const reflect_check = select("mod_reflect_check");
-	const reflect_dc = select("mod_reflect_dc");
-	const reflect_trait_type = select("mod_reflect_trait_type");
-	const reflect_trait = select("mod_reflect_trait");
 	const reflect_descriptor = select("mod_reflect_descriptor");
-	const subtle_opponent_trait_type = select("mod_subtle_opponent_trait_type");
-	const subtle_opponent_trait = select("mod_subtle_opponent_trait");
-	const subtle_dc = select("mod_subtle_dc");
+	const subtle_opposed = select("mod_subtle_opposed");
 	const subtle_null_trait_type = select("mod_subtle_null_trait_type");
 	const subtle_null_trait = select("mod_subtle_null_trait");
 	const others_carry = check("mod_others_carry");
@@ -467,9 +461,8 @@ function mod_submit() {
 			'effortless_degree': effortless_degree,
 			'effortless_retries': effortless_retries,
 			'simultaneous_descriptor': simultaneous_descriptor,
-			'area_mod': area_mod,
-			'area_range': area_range,
-			'area_per_rank': area_per_rank,
+			'area_damagw': area_damage,
+			'area_range': area_ranged,
 			'area_descriptor': area_descriptor,
 			'limited_type': limited_type,
 			'limited_mod': limited_mod,
@@ -492,13 +485,8 @@ function mod_submit() {
 			'side_level': side_level,
 			'side_other': side_other,
 			'reflect_check': reflect_check,
-			'reflect_dc': reflect_dc,
-			'reflect_trait_type': reflect_trait_type,
-			'reflect_trait': reflect_trait,
 			'reflect_descriptor': reflect_descriptor,
-			'subtle_opponent_trait_type': subtle_opponent_trait_type,
-			'subtle_opponent_trait': subtle_opponent_trait,
-			'subtle_dc': subtle_dc,
+			'subtle_opposed': subtle_opposed,
 			'subtle_null_trait_type': subtle_null_trait_type,
 			'subtle_null_trait': subtle_null_trait,
 			'others_carry': others_carry,

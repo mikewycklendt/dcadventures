@@ -1708,9 +1708,7 @@ class PowerMod(db.Model):
 	side_other = db.Column(db.String())
 	reflect_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	reflect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	subtle_opponent_trait_type = db.Column(db.String())
-	subtle_opponent_trait = db.Column(db.Integer)
-	subtle_dc = db.Column(db.Integer)
+	subtle_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	subtle_null_trait_type = db.Column(db.String())
 	subtle_null_trait = db.Column(db.Integer)
 	others_carry = db.Column(db.Boolean)
@@ -1795,9 +1793,7 @@ class PowerMod(db.Model):
 			'side_other': self.side_other,
 			'reflect_check': self.reflect_check,
 			'reflect_descriptor': self.reflect_descriptor,
-			'subtle_opponent_trait_type': self.subtle_opponent_trait_type,
-			'subtle_opponent_trait': self.subtle_opponent_trait,
-			'subtle_dc': self.subtle_dc,
+			'subtle_opposed': self.subtle_opposed,
 			'subtle_null_trait_type': self.subtle_null_trait_type,
 			'subtle_null_trait': self.subtle_null_trait,
 			'others_carry': self.others_carry,
