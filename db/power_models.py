@@ -1425,6 +1425,7 @@ class PowerDamage(db.Model):
 	movement = db.Column(db.Boolean)
 	value_type = db.Column(db.String())
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	effect = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -1441,7 +1442,8 @@ class PowerDamage(db.Model):
 			'ranged': self.ranged,
 			'movement': self.movement,
 			'value_type': self.value_type,
-			'math': self.math
+			'math': self.math,
+			'effect': self.effect
 		}
 
 
@@ -1863,6 +1865,7 @@ class PowerRanged(db.Model):
 	title = db.Column(db.String())
 	movement = db.Column(db.Boolean)
 	rank = db.Column(db.Boolean)
+	effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -1906,7 +1909,8 @@ class PowerRanged(db.Model):
 			'keyword': self.keyword,
 			'movement': self.movement,
 			'title': self.title,
-			'rank': self.rank
+			'rank': self.rank,
+			'effect': self.effect
 		}
 
 class PowerResist(db.Model):
