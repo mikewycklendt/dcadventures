@@ -1706,6 +1706,7 @@ class PowerMod(db.Model):
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	side_other = db.Column(db.String())
+	reflect_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	reflect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	subtle_opponent_trait_type = db.Column(db.String())
 	subtle_opponent_trait = db.Column(db.Integer)
@@ -1793,9 +1794,6 @@ class PowerMod(db.Model):
 			'side_level': self.side_level,
 			'side_other': self.side_other,
 			'reflect_check': self.reflect_check,
-			'reflect_dc': self.reflect_dc,
-			'reflect_trait_type': self.reflect_trait_type,
-			'reflect_trait': self.reflect_trait,
 			'reflect_descriptor': self.reflect_descriptor,
 			'subtle_opponent_trait_type': self.subtle_opponent_trait_type,
 			'subtle_opponent_trait': self.subtle_opponent_trait,
