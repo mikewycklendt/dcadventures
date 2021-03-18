@@ -1681,9 +1681,7 @@ class PowerMod(db.Model):
 	effortless_degree = db.Column(db.Integer)
 	effortless_retries = db.Column(db.Boolean)
 	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	area_mod =db.Column(db.Integer)
-	area_range = db.Column(db.Integer)
-	area_per_rank = db.Column(db.Boolean)
+
 	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
