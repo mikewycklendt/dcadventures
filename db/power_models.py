@@ -1682,7 +1682,7 @@ class PowerMod(db.Model):
 	effortless_retries = db.Column(db.Boolean)
 	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	area_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
-	
+	area_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
