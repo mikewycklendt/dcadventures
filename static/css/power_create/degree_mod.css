@@ -130,7 +130,7 @@
 	width: 97%;
 	gap: .2vw;
 	font-size: 115%;
-	grid-template-columns: 15% 15% 15% 14% 23% 19%;
+	grid-template-columns: 16% 14% 15% 14% 23% 19%;
 }
 
 #deg-mod-button-row {
