@@ -199,6 +199,7 @@ class PowerDegreeType(db.Model):
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	move_table = db.Column(db.Boolean)
 	effect = db.Column(db.Boolean)
+	multiple = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -206,7 +207,8 @@ class PowerDegreeType(db.Model):
 			'name': self.name,
 			'power_id': self.power_id,
 			'move_table': self.move_table,
-			'effect': self.effect
+			'effect': self.effect,
+			'multiple': self.multiple
 		}
 
 class PowerMoveType(db.Model):

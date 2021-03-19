@@ -13,6 +13,7 @@ from db.power_models import *
 from db.skill_models import *
 from db.vehicle_models import *
 from db.weapon_models import *
+from db.linked_models import *
 
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
@@ -341,6 +342,36 @@ def power_check(value, errors):
 		error = True
 		message = 'You must create a power name first.'
 		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def degree_check(title, value, multiple, power_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+
+	try:
+		get_title = db.session.query(PowerDegreeType).filter_by(power_id=power_id, name=title).first()
+		if get_title is None:
+			return (errors)
+		else:
+			title = get_title.id
+
+		check = db.session.query(PowerDegree).filter_by(title=title, value=value).first()
+		if check is not None:
+			if multiple == '':
+				error = True
+				message = 'Tou have set more than one effect for the degree in this degree group so you must select an option from the the if multiple field or create a new group with a new title.'
+				error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error processing that degree.'
+		error_msgs.append(message)
+		
 
 	errors['error_msgs'] = error_msgs
 	if error:

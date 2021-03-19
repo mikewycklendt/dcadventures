@@ -304,6 +304,7 @@ function deg_mod_submit() {
 	const descriptor_effect = select("deg_mod_descriptor_effect");
 	const descriptor_target = select("deg_mod_descriptor_target");
 	const descriptor = select("deg_mod_descriptor");
+	const multiple = select("deg_mod_multiple");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -405,7 +406,8 @@ function deg_mod_submit() {
 			'description': description,
 			'descriptor_effect': descriptor_effect,
 			'descriptor_target': descriptor_target,
-			'descriptor': descriptor
+			'descriptor': descriptor,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

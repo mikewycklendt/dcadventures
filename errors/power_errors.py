@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -768,12 +768,8 @@ def mod_post_errors(data):
 	side_level = data['side_level']
 	side_other = data['side_other']
 	reflect_check = data['reflect_check']
-	reflect_trait_type = data['reflect_trait_type']
-	reflect_trait = data['reflect_trait']
 	reflect_descriptor = data['reflect_descriptor']
-	subtle_opponent_trait_type = data['subtle_opponent_trait_type']
-	subtle_opponent_trait = data['subtle_opponent_trait']
-	subtle_dc = data['subtle_dc']
+	subtle_opposed = data['subtle_opposed']
 	subtle_null_trait_type = data['subtle_null_trait_type']
 	subtle_null_trait = data['subtle_null_trait']
 	others_carry = data['others_carry']
@@ -795,6 +791,8 @@ def mod_post_errors(data):
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
 	errors = id_check(PowerDamage, area_damage, 'Damage Effect', errors)
 	errors = id_check(PowerRangedType, area_ranged, 'Ranged by Group', errors)
+	errors = id_check(PowerCheck, reflect_check, 'check', errors)
+	errors = id_check(PowerOpposed, subtle_opposed, 'Opponent Check', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -808,15 +806,11 @@ def mod_post_errors(data):
 	errors = id_check(Sense, limited_sense, 'sense', errors)
 	errors = id_check(Range, limited_range, 'range', errors)
 	errors = id_check(Levels, side_level, 'level', errors)
-	errors = id_check(Check, reflect_check, 'check', errors)
 	
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
-	errors = int_check(area_mod, 'Area Modifier', errors)
-	errors = int_check(area_range, 'Area Range', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
 	errors = int_check(limited_subjects, 'limited by Number of Subjects', errors)
 	errors = int_check(limited_degree, 'limited by Degree', errors)
-	errors = int_check(subtle_dc, 'Subtle DC', errors)
 	errors = int_check(ranks_ranks, 'Number of Ranks', errors)
 	errors = int_check(ranks_mod, 'Ranks Modifier', errors)
 	errors = int_check(points_reroll_cost, 'Reroll Cost', errors)
@@ -878,17 +872,13 @@ def mod_post_errors(data):
 
 	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)
 
-	errors = check_fields(reflect, 'Reflect', [reflect_check, reflect_trait_type, reflect_trait, reflect_descriptor], errors)
+	errors = check_fields(reflect, 'Reflect', [reflect_check, reflect_descriptor], errors)
 	errors = check_field(reflect, 'Reflect', 'Reflect Check Type', reflect_check, errors)
-	errors = check_field(reflect, 'Reflect', 'Reflect Trait Type', reflect_trait_type, errors)
-	errors = check_field(reflect, 'Reflect', 'Reflect Trait', reflect_trait, errors)
 	errors = check_field(reflect, 'Reflect', 'Reflect Descriptor', reflect_descriptor, errors)
 
-	errors = check_fields(subtle, 'Subtle', [subtle_opponent_trait_type, subtle_opponent_trait, subtle_dc], errors)
-	errors = check_field(subtle, 'Subtle', 'Subtle DC', subtle_dc, errors)
-	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Trait Type', subtle_opponent_trait_type, errors)
-	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Trait', subtle_opponent_trait, errors)
-
+	errors = check_fields(subtle, 'Subtle', [subtle_opposed], errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Check', subtle_opposed, errors)
+	
 	errors = check_fields(points, 'Spend Points', [points_type], errors)
 	errors = check_field(points, 'Spend Points', 'Spend Points Type', points_type, errors)
 	errors = variable_fields('reroll', 'Re-roll', points_type, [points_reroll_target, points_reroll_cost, points_rerolls], errors)
@@ -1841,6 +1831,7 @@ def power_degree_post_errors(data):
 	descriptor_effect = data['descriptor_effect']
 	descriptor_target = data['descriptor_target']
 	descriptor = data['descriptor']
+	multiple = data['multiple']
 
 
 	errors = power_check(power_id, errors)
@@ -2033,6 +2024,7 @@ def power_degree_post_errors(data):
 	errors = linked_field(consequence, linked, 'Consequence', 'Degree of Success/Failure rule', 'linked degree', errors)
 
 	errors = linked_group_check(PowerDC, 'other', target, 'other', 'target', power_id, 'power_id', 'a degree of success or failure for another character', 'DC', 'the target field to Other Character', errors)
+	errors = degree_check(title, value, multiple, power_id, errors)
 
 	return (errors)
 

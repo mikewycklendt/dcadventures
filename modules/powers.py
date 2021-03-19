@@ -36,7 +36,7 @@ from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerM
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_convert
 from functions.create import name_exist, db_insert, capitalize
-from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
+from functions.linked import link_add, delete_link, linked_ref, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link, linked_field
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
@@ -248,6 +248,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}]
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
+
+	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}]
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
@@ -468,7 +470,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											multiple_time=multiple_time, time_value=time_value, recovery=recovery, power_circ=power_circ, power_circ_type=power_circ_type, power_dc=power_dc, power_dc_type=power_dc_type, 
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
-											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value)
+											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2431,9 +2433,7 @@ def power_post_mod():
 	side_other = request.get_json()['side_other']
 	reflect_check = request.get_json()['reflect_check']
 	reflect_descriptor = request.get_json()['reflect_descriptor']
-	subtle_opponent_trait_type = request.get_json()['subtle_opponent_trait_type']
-	subtle_opponent_trait = request.get_json()['subtle_opponent_trait']
-	subtle_dc = request.get_json()['subtle_dc']
+	subtle_opposed = request.get_json()['subtle_opposed']
 	subtle_null_trait_type = request.get_json()['subtle_null_trait_type']
 	subtle_null_trait = request.get_json()['subtle_null_trait']
 	others_carry = request.get_json()['others_carry']
@@ -2459,6 +2459,7 @@ def power_post_mod():
 	area_ranged = db_integer(PowerRangedType, area_ranged)
 	area_damage = db_integer(PowerDamage, area_damage)
 	reflect_check = db_integer(PowerCheck, reflect_check)
+	subtle_opposed = db_integer(PowerOpposed, subtle_opposed)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2481,8 +2482,6 @@ def power_post_mod():
 	limited_degree = integer(limited_degree)
 	limited_descriptor = integer(limited_descriptor)
 	reflect_descriptor = integer(reflect_descriptor)
-	subtle_opponent_trait = integer(subtle_opponent_trait)
-	subtle_dc = integer(subtle_dc)
 	subtle_null_trait = integer(subtle_null_trait)
 	ranks_trait = integer(ranks_trait)
 	ranks_ranks = integer(ranks_ranks)
@@ -2559,9 +2558,7 @@ def power_post_mod():
 							side_other = side_other,
 							reflect_check = reflect_check,
 							reflect_descriptor = reflect_descriptor,
-							subtle_opponent_trait_type = subtle_opponent_trait_type,
-							subtle_opponent_trait = subtle_opponent_trait,
-							subtle_dc = subtle_dc,
+							subtle_opposed = subtle_opposed,
 							subtle_null_trait_type = subtle_null_trait_type,
 							subtle_null_trait = subtle_opponent_trait,
 							others_carry = others_carry,
@@ -4115,6 +4112,7 @@ def power_post_degree():
 	descriptor_effect = request.get_json()['descriptor_effect']
 	descriptor_target = request.get_json()['descriptor_target']
 	descriptor = request.get_json()['descriptor']
+	multiple = request.get_json()['multiple']
 
 	errors = power_degree_post_errors(data)
 
@@ -4194,6 +4192,8 @@ def power_post_degree():
 
 	body = link_add(PowerDegree, PowerDegreeType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
+
+	body = linked_field(PowerDegreeType, title, 'Degree', 'multiple', multiple, body)
 
 	if body['success'] == False:
 		return jsonify(body)

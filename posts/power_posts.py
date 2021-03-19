@@ -855,9 +855,7 @@ def mod_post(entry, body, cells):
 	side_other = entry.side_other
 	reflect_check = entry.reflect_check
 	reflect_descriptor = entry.reflect_descriptor
-	subtle_opponent_trait_type = entry.subtle_opponent_trait_type
-	subtle_opponent_trait = entry.subtle_opponent_trait
-	subtle_dc = entry.subtle_dc
+	subtle_opposed = entry.subtle_opposed
 	subtle_null_trait_type = entry.subtle_null_trait_type
 	subtle_null_trait = entry.subtle_opponent_trait
 	others_carry = entry.others_carry
@@ -880,9 +878,9 @@ def mod_post(entry, body, cells):
 	area_damage = get_keyword(PowerDamage, area_damage)
 	area_ranged = get_name(PowerRangedType, area_ranged)
 	reflect_check = get_keyword(PowerCheck, reflect_check)
+	subtle_opposed = get_keyword(PowerOpposed, subtle_opposed)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
-	subtle_opponent_trait = trait_select(subtle_opponent_trait, subtle_opponent_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
 	ranks_trait = trait_select(ranks_trait, ranks_trait_type)
 	
@@ -922,7 +920,6 @@ def mod_post(entry, body, cells):
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
 	limited_degree = integer_convert(limited_degree)
-	subtle_dc = integer_convert(subtle_dc)
 	ranks_ranks = integer_convert(ranks_ranks)
 	ranks_mod = integer_convert(ranks_mod)
 	points_reroll_cost = integer_convert(points_reroll_cost)
@@ -1023,8 +1020,7 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Subtle', 7, subtle, cells, True)
 	new_mod = mod_create('Subtle', 8)
-	new_mod = mod_cell('Opponent Trait:', 17, [subtle_opponent_trait], new_mod)
-	new_mod = mod_cell('DC:', 4, [subtle_dc], new_mod)
+	new_mod = mod_cell('Opponent Check:', 17, [subtle_opposed], new_mod)
 	new_mod = mod_cell('Nullfied Trait:', 17, [subtle_null_trait], new_mod)
 	body = mod_add(subtle, new_mod, body)
 

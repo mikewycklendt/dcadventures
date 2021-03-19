@@ -306,40 +306,21 @@
 		</div>
 
 		<div>
-			Modifier to check:
+			<select class="damage-sml" id="mod_area_damage" name="mod_area_damage">
+				<option value="">Damage Effect</option>
+				<option value="">Use Damage form to put options here</option>
+				{% for p in power_damage %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_area_mod" name="mod_area_mod">
-				<option value="">Modifier</option>
-				<option value="rank">Power Rank</option>
-				<option value="extra">Extra Rank</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="ranged-type-sml" id="mod_area_ranged" name="mod_area_ranged">
+				<option value="">Rsnge by Group</option>
+				<option value="">Use rsnged form to put options here</option>
+				{% for p in power_ranged_type %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select> 
-		</div>
-
-		<div>
-			Range:
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_area_range" name="mod_area_range">
-				<option value="">Distance Rank</option>
-				<option value="rank">Power Rank</option>
-				<option value="extra">Extra Rank</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select> 
-		</div>
-
-		<div class="check-div">
-			<input type="checkbox" id="mod_area_per_rank" class="medium-checkbox med-checkbox"> Per Rank
 		</div>
 
 		<div>
@@ -721,34 +702,12 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_reflect_check" name="mod_reflect_check">
-				<option value="">Check Type</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
+			<select class="check-sml" id="mod_reflect_check" name="mod_reflect_check">
+				<option value="">Check</option>
+				<option value="">Use Variable check form to put options here</option>
+				{% for p in power_check %}
+					<option value={{p,id}}>{{p.name}}</option>
 				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_dc" name="mod_reflect_dc">
-				<option value="">DC</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_trait_type" name="mod_reflect_trait_type" onchange="mod_reflect_trait_type()">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_reflect_trait" name="mod_reflect_trait" onchange="mod_reflect_trait()">
-				<option value="">Trait</option>
 			</select>
 		</div>
 
@@ -769,34 +728,15 @@
 			Subtle:
 		</div>
 
-		<div style="font-size: 85%;">
-			Opponent Check Type:
-		</div>
-
 		<div>
-			<select class="select-sml" id="mod_subtle_opponent_trait_type" name="mod_subtle_opponent_trait_type">
-				{% for t in traits %}
-					<option value="{{t.type}}">{{t.name}}</option>
+			<select class="opposed-sml" id="mod_subtle_opposed" name="mod_subtle_opposed">
+				<option value="">Opponent Check</option>
+				<option value="">Use Opponent Check form to put options here</option>
+				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_subtle_opponent_trait" name="mod_subtle_opponent_trait" onchange="mod_subtle_opponent_trait()">
-				<option value="">Trait</option>
-			</select>
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_subtle_dc" name="mod_subtle_dc">
-				<option value="">DC</option>
-				{% for i in positives %}
-					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div></div>
+		</div>		
 
 		<div style="font-size: 80%;">
 			Nullified if Opponent has Trait:
