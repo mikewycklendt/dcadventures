@@ -5,10 +5,16 @@
 	</div>
 	
 	<div id="check-base">
-		<select class="extra-select" id="check_extra" name="check_extra">
-			<option value=>Base or Extra</option>
-			<option value=0>Base Effect</option>
-		</select>
+		<div>
+			<input type="text" id="check_title" name="check_title" placeholder="Title">
+		</div>
+
+		<div>
+			<select class="extra-select" id="check_extra" name="check_extra">
+				<option value=>Base or Extra</option>
+				<option value=0>Base Effect</option>
+			</select>
+		</div>
 	</div>
 
 </div>
@@ -326,6 +332,13 @@
 
 		<div></div>
 		
+		<div>
+			<select class="select-entry"  id="check_multiple" name="check_multiple">
+				{% for c in check_multiple %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 		<div>
 			<div class="btn-entry" id="check_submit" name="check_submit" onclick="check_submit()">
 				 Add

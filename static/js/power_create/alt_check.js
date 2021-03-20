@@ -100,7 +100,8 @@ function check_submit() {
 	const ranged = select("check_ranged_type")
 	const variable = select("check_variable")
 	const opponent = select("check_opponent")
-	const title = select("check_title");
+	const title = text("check_title");
+	const multiple = select("check_multiple");
 	
 
 	///const power_id = document.getElementById('power_id').value;
@@ -111,6 +112,7 @@ function check_submit() {
 
 	const select_entry = 'check-entry';
 	const selects = 'check-sml';
+	const selects_title = 'check-title-sml';
 
 	const route = '/power/check/delete/'
 
@@ -151,7 +153,8 @@ function check_submit() {
 			'conditions_target': conditions_target,
 			'variable': variable,
 			'opponent': opponent,
-			'title': title
+			'title': title,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -166,11 +169,19 @@ function check_submit() {
 
 			selects_add(id, keyword, selects);
 			selects_add(id, keyword, select_entry);
+			
+			const title_name = jsonResponse.title;
+			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title
+
+			if (add_title == true) {
+				selects_add(title_id, title_name, selects_title);
+			}
 
 			check_grid.columns.length = 0;
 			check_grid.columns = jsonResponse.rows;
 
-			create_table('power', jsonResponse, check_grid, route, [selects, select_entry], id);
+			create_table('power', jsonResponse, check_grid, route, [selects, select_entry], title_id, [selects_title]);
 			clear_errors(err_line, errors)
 
 			check_grid.titles = true;

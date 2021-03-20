@@ -300,6 +300,7 @@ class PowerCheck(db.Model):
 	chained = db.Column(db.Boolean)
 	effect = db.Column(db.Boolean)
 	title = db.Column(db.String())
+	multiple = db.Column(db.String())
 	
 	
 	def format(self):
@@ -339,7 +340,8 @@ class PowerCheck(db.Model):
 			'varible': self.variable,
 			'chained': self.chained,
 			'effect': self.effect,
-			'title': self.title
+			'title': self.title,
+			'multiple': self.multiple
 		}
 
 
