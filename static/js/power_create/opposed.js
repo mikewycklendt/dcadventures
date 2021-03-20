@@ -218,7 +218,7 @@ function opposed_submit() {
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, opposed_grid, route, [opposed_selects]);
+			create_table('power', jsonResponse, opposed_grid, route, [opposed_selects], title_id, [selects_type]);
 			clear_errors(err_line, errors)
 
 			opposed_grid.titles = true;

@@ -1048,6 +1048,7 @@ class PowerOpposed(db.Model):
 	recurring_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	chained = db.Column(db.Boolean)
+	title = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 
 
 	def format(self):
@@ -1088,8 +1089,8 @@ class PowerOpposed(db.Model):
 			'time_type': self.time_type,
 			'recurring_type': self.recurring_type,
 			'variable': self.variable,
-			'chained': self.chained
-
+			'chained': self.chained,
+			'title': self.title
 		}
 
 
