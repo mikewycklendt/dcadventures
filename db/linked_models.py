@@ -163,6 +163,7 @@ class PowerCheckType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	effect = db.Column(db.Boolean)
+	chained = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
 
 	def format(self):
@@ -171,6 +172,7 @@ class PowerCheckType(db.Model):
 			'name': self.name,
 			'power_id': self.power_id,
 			'effect': self.effect,
+			'chained': self.chained,
 			'multiple': self.multiple
 		}
 

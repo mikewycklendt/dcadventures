@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -1330,6 +1330,7 @@ def power_check_post_errors(data):
 	conditions_target = data['conditions_target']
 	variable = data['variable']
 	opponent = data['opponent']
+	title = data['title']
 
 
 
@@ -1366,6 +1367,7 @@ def power_check_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(trait_type, 'Rank', errors)
 	errors = required(trait, 'Trait', errors)	
+	errors = required(title, 'Title', errors)
 
 	errors = variable_fields('change', 'Trigger', trigger, [condition1, condition2, conditions_target], errors)
 	errors = variable_field('change', trigger, 'Starting Condition', condition1, errors)

@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -1581,10 +1581,12 @@ def power_check_post(entry, body, cells):
 	ranged = entry.ranged
 	variable = entry.variable
 	opponent = entry.opponent
+	title = entry.title
 
-	body['title'] = keyword
+	title_name = get_name(PowerCheckType, title)
+
+	body['title'] = title_name
 	body['add_title'] = True
-	body['created'] = False
 
 	extra = extra_name(extra_id)
 
@@ -1653,7 +1655,7 @@ def power_check_post(entry, body, cells):
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
-	body = send_multiple(id, cells, body)
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 
