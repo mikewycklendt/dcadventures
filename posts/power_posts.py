@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -2674,6 +2674,10 @@ def power_opposed_post(entry, body, cells):
 	description = entry.description
 	recurring_type = entry.recurring_type
 	variable = entry.variable
+	title = entry.title
+
+	title_name = get_name(PowerOpposedType, title)
+	body['title'] = title_name
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -2756,8 +2760,8 @@ def power_opposed_post(entry, body, cells):
 	mod_add(recurring, new_mod, body)
 
 	cells = circ_cell('Desc', 'Description', 6, description, cells, body)
-
-	body = send(cells, body)
+	
+	body = send_multiple(title, cells, body)
 
 	cells.clear()
 

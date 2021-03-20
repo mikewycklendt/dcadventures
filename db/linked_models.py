@@ -226,6 +226,23 @@ class PowerMoveType(db.Model):
 			'effect': self.effect
 		}
 
+class PowerOpposedType(db.Model):
+	__tablename__ = 'power_opposed_type'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	name = db.Column(db.String())
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	effect = db.Column(db.Boolean)
+	multiple = db.Column(db.String())
+
+	def format(self):
+		return {
+			'id': self.id,
+			'name': self.name,
+			'power_id': self.power_id,
+			'effect': self.effect,
+			'multiple': self.multiple
+		}
+
 class PowerRangedType(db.Model):
 	__tablename__ = 'power_ranged_type'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

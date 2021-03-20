@@ -31,6 +31,12 @@
 	font-size: 80%;
 }
 
+.opposed-title-sml {
+	height: 1.6vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
 #opposed-entry {
 	display: none;
 	font-family: 'Monda', Verdana;
@@ -94,7 +100,7 @@
 	display: grid;
 	width: 96%;
 	gap: 3px;
-	grid-template-columns: 15% 67% 22%;
+	grid-template-columns: 60% 20% 20%;
 	padding: .2vw;
 	height: auto;
 }

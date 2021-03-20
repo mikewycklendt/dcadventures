@@ -138,6 +138,7 @@ function opposed_submit() {
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
 	const variable = select("opposed_variable");
+	const title = text("opposed_title");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -146,6 +147,7 @@ function opposed_submit() {
 	const err_line = 'opposed-err-line';
 
 	const opposed_selects = 'opposed-sml';
+	const selects_type = 'opposed-title-sml';
 
 	response = fetch('/power/opposed/create', {
 		method: 'POST',
@@ -186,7 +188,8 @@ function opposed_submit() {
 			'circ_value': circ_value,
 			'time_type': time_type,
 			'recurring_type': recurring_type,
-			'variable': variable
+			'variable': variable,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -202,6 +205,13 @@ function opposed_submit() {
 			multiple_field('opposed-multiple');
 			
 			selects_add(id, keyword, opposed_selects);
+			
+			const title_id = jsonResponse.title_id;
+			const add_title = jsonResponse.add_title;
+
+			if (add_title == true) {
+				selects_add(title_id, title, selects_type);
+			}
 
 			opposed_grid.columns.length = 0;
 			opposed_grid.columns = jsonResponse.rows;

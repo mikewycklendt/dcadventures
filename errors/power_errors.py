@@ -13,7 +13,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple
 from functions.create import name_exist, db_insert, capitalize
@@ -2332,6 +2332,7 @@ def power_opposed_post_errors(data):
 	time_type = data['time_type']
 	recurring_type = data['recurring_type']
 	variable = data['variable']
+	title = data['title']
 
 
 
@@ -2366,6 +2367,7 @@ def power_opposed_post_errors(data):
 	errors = required(opponent_check, 'Opponennt Check', errors)
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(description, 'Description', errors)
+	errors = required(title, 'Title', errors)
 
 	errors = check_fields(recurring, 'Recurring', [recurring_value], errors)
 	errors = check_field(recurring, 'Recurring', 'Recurring Value', recurring_value, errors)

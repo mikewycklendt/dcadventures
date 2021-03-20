@@ -32,7 +32,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_convert
 from functions.create import name_exist, db_insert, capitalize
@@ -4021,6 +4021,7 @@ def power_post_degree():
 
 	body = {}
 	body['success'] = True
+	body['error_msgs'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -4322,6 +4323,7 @@ def power_post_move():
 
 	body = {}
 	body['success'] = True
+	body['error_msgs'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -4705,6 +4707,7 @@ def power_post_opposed():
 	time_type = request.get_json()['time_type']
 	recurring_type = request.get_json()['recurring_type']
 	variable = request.get_json()['variable']
+	title = request.get_json()['title']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -4730,8 +4733,17 @@ def power_post_opposed():
 	opponent_trait = integer(opponent_trait)
 	opponent_mod = integer(opponent_mod)
 
+	body = {}
 	body['error_msgs'] = []
+	body['success'] = True
+	body['created'] = created
+
 	body = linked_ref(PowerCheck, variable, 'Opponent Check Trigger', 'chained', body)
+
+	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+
+	body = linked_field(PowerOpposedType, title, 'Opponent Check', 'multiple', multiple, body)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -4769,7 +4781,8 @@ def power_post_opposed():
 						circ_value = circ_value,
 						time_type = time_type,
 						recurring_type = recurring_type,
-						variable = variable
+						variable = variable,
+						title = title
 					)			
 
 	db.session.add(entry)
@@ -4804,22 +4817,8 @@ def power_post_opposed():
 
 @powers.route('/power/opposed/delete/<id>', methods=['DELETE'])
 def delete_power_opposed(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(PowerOpposed).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+	body = delete_link(PowerOpposed, PowerOpposedType, id)
+	return jsonify(body)
 
 @powers.route('/power/time/create', methods=['POST'])
 def power_post_time():
