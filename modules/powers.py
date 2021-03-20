@@ -32,7 +32,7 @@ from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, 
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
-from db.linked_models import PowerCircType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
+from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
 from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_convert
 from functions.create import name_exist, db_insert, capitalize
@@ -222,6 +222,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
 
 	character = [{'type': 'size', 'name': 'Size Rank'}]
+
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'power', 'name': 'Chosen when Aquiring Power'}]
 
 	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}]
 
@@ -425,6 +427,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	power_check = linked_options(PowerCheck, Power, 'power_id', 'keyword')
 
+	power_check_type = linked_options(PowerCheckType, Power, 'power_id', 'name')
+
+	power_opposed_type = linked_options(PowerOpposedType, Power, 'power_id', 'name')
+
 	power_circ_type = linked_options(PowerCircType, Power, 'power_id', 'name')
 
 	power_dc_type = linked_options(PowerDCType, Power, 'power_id', 'name')
@@ -470,7 +476,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											multiple_time=multiple_time, time_value=time_value, recovery=recovery, power_circ=power_circ, power_circ_type=power_circ_type, power_dc=power_dc, power_dc_type=power_dc_type, 
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
-											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple)
+											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
+											power_check_type=power_check_type, power_opposed_type=power_opposed_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
