@@ -2675,6 +2675,8 @@ def power_opposed_post(entry, body, cells):
 	recurring_type = entry.recurring_type
 	variable = entry.variable
 	title = entry.title
+	opponent = entry.opponent
+	opposed = entry.opposed
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
@@ -2689,6 +2691,7 @@ def power_opposed_post(entry, body, cells):
 	player_check = get_name(Check, player_check)
 	opponent_check = get_name(Check, opponent_check)
 	
+
 	recurring_value = get_keyword(PowerTime, recurring_value)
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -2701,10 +2704,14 @@ def power_opposed_post(entry, body, cells):
 	time_type = get_name(PowerTimeType, time_type)
 	recurring_type = get_name(PowerTimeType, recurring_type)
 	variable = get_keyword(PowerCheck, variable)
+	opponent = get_name(PowerOpposedType, opponent)
+	opposed = get_keyword(PowerOpposed, opposed)
 
 	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
 
+	opposed_check = one_of(opposed, [opposed])
+	opposed_check = one_of(opponent, [opponent], opposed_check)
 
 	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check ' + variable}, {'type': 'after_var', 'name': 'After Variable Check ' + variable}]
 	attached = selects(attached, attached_select)
@@ -2758,6 +2765,8 @@ def power_opposed_post(entry, body, cells):
 	word = string('Time Group', [recurring_type])
 	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
 	mod_add(recurring, new_mod, body)
+
+	cells = circ_cell('Opponent', 'After Opponent Check', 25, opposed_check, cells, body)
 
 	cells = circ_cell('Desc', 'Description', 6, description, cells, body)
 	

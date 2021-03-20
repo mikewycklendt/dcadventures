@@ -2333,7 +2333,8 @@ def power_opposed_post_errors(data):
 	recurring_type = data['recurring_type']
 	variable = data['variable']
 	title = data['title']
-
+	opponent = data['opponent']
+	opposed = data['opposed']
 
 
 	errors = power_check(power_id, errors)
@@ -2391,6 +2392,9 @@ def power_opposed_post_errors(data):
 	errors = variable_fields('before_var', attached, 'Variable Check', variable, errors)
 	errors = variable_fields('after_var', 'After Variable Check', attached, [variable], errors)
 	errors = variable_fields('after_var', attached, 'Variable Check', variable, errors)
+
+	errors = select_of('opponent', 'Happens After an Opponent Check', 'Attached', attached, [opponent, opposed], ['Opponent Check'], errors)
+	errors = seperate([opposed, opponent], 'Opponent Check', errors)
 
 	errors = linked_group_check(PowerDC, '1', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Skill Check', 'DC', 'Opponent DC', errors, True)
 	errors = linked_group_check(PowerDC, '6', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Resistance Check Check', 'DC', 'Opponent DC', errors, True)

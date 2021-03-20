@@ -1050,6 +1050,7 @@ class PowerOpposed(db.Model):
 	chained = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 
 
 	def format(self):
@@ -1092,7 +1093,8 @@ class PowerOpposed(db.Model):
 			'variable': self.variable,
 			'chained': self.chained,
 			'title': self.title,
-			'opponent': self.opponent
+			'opponent': self.opponent,
+			'opposed': self.opposed
 		}
 
 

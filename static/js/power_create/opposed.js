@@ -17,7 +17,8 @@ function opposed_base() {
 function opposed_attached() {
 	const select = 'opposed_attached';
 	const div = 'opposed-variable-title'
-	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'}]
+	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'},
+					{'val': ['opponent'], 'div': 'opposed-opponent'}]
 	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
 					{'val': 'after_var', 'text': 'After Variable Check:'}]
 	const entry = "opposed-entry";
@@ -139,6 +140,8 @@ function opposed_submit() {
 	const recurring_type = select("opposed_recurring_type");
 	const variable = select("opposed_variable");
 	const title = text("opposed_title");
+	const opposed = select("opposed_opposed");
+	const opponent = select("opposed_opponent");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -189,7 +192,9 @@ function opposed_submit() {
 			'time_type': time_type,
 			'recurring_type': recurring_type,
 			'variable': variable,
-			'title': title
+			'title': title,
+			'opponent': opponent,
+			'opposed': opposed
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
