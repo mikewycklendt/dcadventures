@@ -100,6 +100,7 @@ function check_submit() {
 	const ranged = select("check_ranged_type")
 	const variable = select("check_variable")
 	const opponent = select("check_opponent")
+	const title = select("check_title");
 	
 
 	///const power_id = document.getElementById('power_id').value;
@@ -149,7 +150,8 @@ function check_submit() {
 			'condition_target': condition_target,
 			'conditions_target': conditions_target,
 			'variable': variable,
-			'opponent': opponent
+			'opponent': opponent,
+			'title': title
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

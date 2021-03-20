@@ -5,7 +5,7 @@
 	width: 100%;
 	padding: 0px;
 	border-bottom: 2px solid lightblue;
-	grid-template-columns: 70% 30%;
+	grid-template-columns: 50% 50%;
 	grid-template-rows: auto;
 }
 
@@ -23,6 +23,8 @@
 
 #check-base {
 	opacity: 0%;
+	display: grid;
+	grid-template-columns: 50% 50%;
 	transition: all .4s ease-out;
 }
 
