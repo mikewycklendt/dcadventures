@@ -126,7 +126,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 30% 30% 30%;
+	grid-template-columns: 25% 30% 25%;
 }
 
 #check-attack {
