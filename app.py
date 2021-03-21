@@ -112,7 +112,7 @@ def table_db_columns_create():
 		print (result.name)
 
 	
-	name = 'Powers Sense
+	name = 'Powers Sense'
 
 	entry = Sense(power=True, name=name, hide=True )
 	db.session.add(entry)
