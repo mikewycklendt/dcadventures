@@ -138,7 +138,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	equip_type = EquipType.query.all()
 
-	grounds = Ground.query.all()
+	grounds = db.session.query(Ground).filter(Ground.hide == None).all()
 
 	level_types = LevelType.query.order_by(LevelType.name).all()
 
