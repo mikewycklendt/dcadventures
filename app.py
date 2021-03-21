@@ -118,14 +118,14 @@ def table_db_columns_create():
 	db.session.add(entry)
 	db.session.commit()
 
-	return (name + ' db added')
-
 	results = db.session.query(Sense).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
+
+	return (name + ' db added')
 
 
 if __name__ == '__main__':
