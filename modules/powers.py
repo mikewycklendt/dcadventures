@@ -4922,6 +4922,7 @@ def power_post_time():
 	mod = request.get_json()['mod']
 	recovery_target = request.get_json()['recovery_target']
 	rank = request.get_json()['rank']
+	factor = request.get_json()['factor']  
 
 	errors = power_time_post_errors(data)
 	
@@ -4959,6 +4960,7 @@ def power_post_time():
 	recovery_penalty = integer(recovery_penalty)
 	time = integer(time)
 	mod = integer(mod)
+	factor = integer(factor)
 
 	turns = integer(turns)
 
@@ -5010,7 +5012,8 @@ def power_post_time():
 						scene = scene,
 						time = time,
 						mod = mod,
-						rank = rank
+						rank = rank,
+						factor = factor
 					)
 
 	db.session.add(entry)

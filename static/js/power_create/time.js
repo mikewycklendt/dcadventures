@@ -45,7 +45,8 @@ function time_value_type() {
 					{'val': 'rank', 'div': 'time-rank'}, 
 					{'val': 'turns', 'div': 'time-turns'}, 
 					{'val': 'time', 'div': 'time-time'}, 
-					{'val': 'mod', 'div': 'time-mod'}]
+					{'val': 'mod', 'div': 'time-mod'}, 
+					{'val': 'factor', 'div': 'time-factor'}]
 	const shared = [{'val': ['math', 'value', 'rank', 'turns', 'time'], 'div': 'time-measure-type'}]
 
 	select_opacity_shared(select, shared);
@@ -96,6 +97,7 @@ function time_submit() {
 	const recovery_target = select("time_recovery_target");
 	const measure_type = select("time_measure_type");
 	const rank = check("time_rank");
+	const factor = select("time_factor");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -147,7 +149,8 @@ function time_submit() {
 			'mod': mod,
 			'recovery_target': recovery_target,
 			'measure_type': measure_type,
-			'rank': rank
+			'rank': rank,
+			'factor': factor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

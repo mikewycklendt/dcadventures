@@ -1161,6 +1161,7 @@ class PowerTime(db.Model):
 	mod = db.Column(db.Integer)
 	measure_type = db.Column(db.String())
 	rank = db.Column(db.Boolean)
+	factor = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -1204,7 +1205,8 @@ class PowerTime(db.Model):
 			'time': self.time,
 			'mod': self.mod,
 			'measure_type': self.measure_type,
-			'rank': self.rank
+			'rank': self.rank,
+			'factor': self.factor
 		}
 
 

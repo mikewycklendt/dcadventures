@@ -148,6 +148,13 @@
 	transition: all .3s ease-in;
 }
 
+#time-factor {
+	display: none;
+	opacity: 0%;
+	grid-template-columns: 20% 20% 60%;
+	transition: all .3s ease-in;
+}
+
 #time-turns {
 	display: none;
 	opacity: 0%;

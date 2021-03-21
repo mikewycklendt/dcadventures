@@ -2841,6 +2841,7 @@ def power_time_post(entry, body, cells):
 	recovery_target = entry.recovery_target
 	measure_type = entry.measure_type
 	rank = entry.rank
+	factor = entry.factor
 
 
 	title_name = get_name(PowerTimeType, title)
@@ -2864,6 +2865,8 @@ def power_time_post(entry, body, cells):
 	turns = integer_convert(turns)
 	time = integer_convert(time)
 	mod = integer_convert(mod)
+	factor = integer_convert(factor)
+	times = math(3)
 
 	degree = get_keyword(PowerDegree, degree)
 	circ = get_keyword(PowerCirc, circ)
@@ -2902,6 +2905,7 @@ def power_time_post(entry, body, cells):
 	vcells = vcell('time', 17, [measure_type, 'Time Rank', time], vcells)
 	mod = add_plus(mod)
 	vcells = vcell('mod', 18, [mod, 'Time Rank'], vcells)
+	vcells = vcell('factor', 20, ['Time Rank', times, factor], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 
 	cells = cell('Degree', 18, [degree, degree_type], cells)

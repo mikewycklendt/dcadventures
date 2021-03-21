@@ -2469,6 +2469,7 @@ def power_time_post_errors(data):
 	time = data['time']
 	mod = data['mod']
 	recovery_target = data['recovery_target']
+	factor = data['factor']
 
 
 
@@ -2489,6 +2490,7 @@ def power_time_post_errors(data):
 	errors = int_check(recovery_penalty, 'Recovery Penalty Modifier', errors)
 	errors = int_check(time, 'Time Rank', errors)
 	errors = int_check(mod, 'Time Rank Modifier', errors)
+	errors = int_check(factor,  'Factor', errors)
 
 	errors = int_check(turns, 'Turns', errors)
 	errors = id_check(PowerDegree, degree, 'Degree', errors)
@@ -2525,6 +2527,8 @@ def power_time_post_errors(data):
 	errors = variable_fields('time', 'Time Rank', value_type, [time], errors)
 
 	errors = variable_fields('mod', 'Time Rank Modifier', value_type, [mod], errors)
+	
+	errors = variable_fields('factor', 'Factor Modifier', value_type, [factor], errors)
 
 	errors = variable_fields('recover', 'Recovery Time', type, [recovery_target], errors)
 	errors = variable_field('recover', type, 'Recovery Target', recovery_target, errors)

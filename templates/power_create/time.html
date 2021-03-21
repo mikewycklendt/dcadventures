@@ -175,6 +175,21 @@
 					</select>
 				</div>
 			</div>
+			
+			<div id="time-factor">
+				<div>
+					Time Rank X 
+				</div>
+
+				<div>
+					<select class="select-sml" id="time_factor" name="time_factor">
+						<option value="">Factor</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 
 			<div id="time-time">
 				<div>
