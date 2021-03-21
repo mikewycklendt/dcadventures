@@ -53,7 +53,8 @@ function check_trigger() {
 					{'val': 'condition', 'div': 'check-condition'},
 					{'val': 'variable', 'div': 'check-trigger-variable'},
 					{'val': 'opposed', 'div': 'check-trigger-opposed'},
-					{'val': 'conflict', 'div': 'check-conflict'}];
+					{'val': 'conflict', 'div': 'check-conflict'},
+					{'val': 'sense', 'div': 'check-sense'}];
 	const entry = 'check-entry';
 
 	select_maxheight_entry(select, options, entry);

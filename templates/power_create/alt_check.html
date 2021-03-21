@@ -15,6 +15,14 @@
 				<option value=0>Base Effect</option>
 			</select>
 		</div>
+
+		<div>
+			<select class="select-entry" id="check_target" name="check_target">
+				{% for c in check_targets %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+	 	</div>
 	</div>
 
 </div>
