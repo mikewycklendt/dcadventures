@@ -431,6 +431,7 @@ function mod_submit() {
 	const extra_degree = select("mod_extra_degree");
 	const extra_dc = select("mod_extra_dc");
 	const extra_circ = select("mod_extra_circ");
+	const multiple = select("mod_multiple");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -531,7 +532,8 @@ function mod_submit() {
 			'extra_count': extra_count,
 			'extra_degree': extra_degree,
 			'extra_dc': extra_dc,
-			'extra_circ': extra_circ
+			'extra_circ': extra_circ,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

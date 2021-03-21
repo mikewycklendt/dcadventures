@@ -964,6 +964,14 @@
 		<div></div>
 
 		<div>
+			<select class="entry-select" id="mod_multiple" name="mod_multiple">
+				{% for m in mod_multiple %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="entry-select" id="mod_cost" name="mod_cost" onchange="mod_cost()">
 				<option value="">Cost</option>
 			</select>

@@ -102,6 +102,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	checks = db.session.query(Check).filter(Check.hide == None).all()
 
+	creatures = db.session.query(Creature).filter(Creature.show == True).all()
+
 	complexity = Complex.query.all()
 
 	concealment = Conceal.query.all()
@@ -321,6 +323,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	multiple_time = [{'type': '', 'name': 'If Multiple'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'degree', 'name': 'Degree'}, {'type': 'dc', 'name': 'DC'}, {'type': 'gm', 'name': 'GM Choice'}]
 
+	mod_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose 1 with Extra or Power'}]
+
 	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
 
 	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
@@ -483,7 +487,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
-											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets)
+											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2474,6 +2478,7 @@ def power_post_mod():
 	extra_degree = request.get_json()['extra_degree']
 	extra_dc = request.get_json()['extra_dc']
 	extra_circ = request.get_json()['extra_circ']
+	multiple = request.get_json()['multiple']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2609,7 +2614,8 @@ def power_post_mod():
 							extra_count = extra_count,
 							extra_degree = extra_degree,
 							extra_dc = extra_dc,
-							extra_circ = extra_circ
+							extra_circ = extra_circ,
+							multiple = multiple
 						)
 
 		db.session.add(entry)
