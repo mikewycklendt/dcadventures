@@ -871,7 +871,13 @@ def mod_post(entry, body, cells):
 	points_rerolls = entry.points_rerolls
 	points_reroll_result = entry.points_reroll_result
 	ranks = entry.ranks
-	cost = entry.cost
+	cost = entry.cost	
+	extra = entry.extra
+	extra_count = entry.extra_count
+	extra_degree = entry.extra_degree
+	extra_dc = entry.extra_dc
+	extra_circ = entry.extra_circ
+
 
 	cost = get_cost(cost, ranks, extra_id)
 
@@ -879,6 +885,9 @@ def mod_post(entry, body, cells):
 	area_ranged = get_name(PowerRangedType, area_ranged)
 	reflect_check = get_keyword(PowerCheck, reflect_check)
 	subtle_opposed = get_keyword(PowerOpposed, subtle_opposed)
+	extra_degree = get_name(PowerDegreeType, extra_degree)
+	extra_dc = get_name(PowerDCType, extra_dc)
+	extra_circ = get_name(PowerCircType, extra_circ)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -925,8 +934,7 @@ def mod_post(entry, body, cells):
 	points_reroll_cost = integer_convert(points_reroll_cost)
 	points_rerolls = integer_convert(points_rerolls)
 	points_reroll_result = integer_convert(points_reroll_result)
-
-
+	extra_count = integer_convert(extra_count)
 	
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1065,6 +1073,13 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Degree:', 8, [effortless_degree], new_mod)
 	new_mod = mod_cell('Unlimited Retries:', 20, [effortless_retries], new_mod)	
 	body = mod_add(effortless, new_mod, body)
+	
+	cells = check_cell('Extra', 7, extra, cells, True)
+	new_mod = mod_create('Extra Effect', 16)
+	new_mod = mod_cell('Degree:', 8, [extra_degree], new_mod)
+	new_mod = mod_cell('Circumstance', 17, [extra_circ], new_mod)
+	new_mod = mod_cell('DC', 5, [extra_dc], new_mod)	
+	body = mod_add(extra, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
 	cells = check_cell('Unreliable', 11, unreliable, cells)

@@ -1693,6 +1693,7 @@ class PowerMod(db.Model):
 	radius = db.Column(db.Boolean)
 	accurate = db.Column(db.Boolean)
 	acute = db.Column(db.Boolean)
+	extra = db.Column(db.Boolean)
 	objects_alone = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	objects_character = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	effortless_degree = db.Column(db.Integer)
@@ -1740,6 +1741,10 @@ class PowerMod(db.Model):
 	points_reroll_result = db.Column(db.String())
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
+	extra_count = db.Column(db.Integer)
+	extra_degree = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
+	extra_dc = db.Column(db.Integer, db.ForeignKey('power_dc_type.id'))
+	extra_circ = db.Column(db.Integer, db.ForeignKey('power_circ_type.id'))
 
 	def format(self):
 		return {
@@ -1767,6 +1772,7 @@ class PowerMod(db.Model):
 			'precise': self.precise,
 			'progressive': self.progressive,
 			'subtle': self.subtle,
+			'extra': self.extra,
 			'permanent': self.permanent,
 			'points': self.points,
 			'ranks': self.ranks,
@@ -1824,7 +1830,11 @@ class PowerMod(db.Model):
 			'points_rerolls': self.points_rerolls,
 			'points_reroll_result': self.points_reroll_result,
 			'ranks_cost': self.ranks_cost,
-			'cost': self.cost
+			'cost': self.cost,
+			'extra_count': self.extra_count,
+			'extra_degree': self.extra_degree,
+			'extra_dc': self.extra_dc,
+			'extra_circ': self.extra_circ
 		}
 
 class PowerRanged(db.Model):

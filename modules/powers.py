@@ -2460,6 +2460,11 @@ def power_post_mod():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	extra = request.get_json()['extra']
+	extra_count = request.get_json()['extra_count']
+	extra_degree = request.get_json()['extra_degree']
+	extra_dc = request.get_json()['extra_dc']
+	extra_circ = request.get_json()['extra_circ']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2467,6 +2472,9 @@ def power_post_mod():
 	area_damage = db_integer(PowerDamage, area_damage)
 	reflect_check = db_integer(PowerCheck, reflect_check)
 	subtle_opposed = db_integer(PowerOpposed, subtle_opposed)
+	extra_circ = db_integer(PowerCircType, extra_circ)
+	extra_circ = db_integer(PowerDCType, extra_dc)
+	extra_circ = db_integer(PowerDegreeType, extra_degree)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2495,6 +2503,7 @@ def power_post_mod():
 	ranks_mod = integer(ranks_mod)
 	points_reroll_cost = integer(points_reroll_cost)
 	points_rerolls = integer(points_rerolls)
+	extra_count = integer(extra_count)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2581,7 +2590,13 @@ def power_post_mod():
 							points_rerolls = points_rerolls,
 							points_reroll_result = points_reroll_result,
 							ranks = ranks,
-							cost = cost)
+							cost = cost,
+							extra = extra,
+							extra_count = extra_count,
+							extra_degree = extra_degree,
+							extra_dc = extra_dc,
+							extra_circ = extra_circ
+						)
 
 		db.session.add(entry)
 		db.session.commit()

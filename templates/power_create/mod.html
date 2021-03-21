@@ -220,7 +220,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_extra_effect" class="medium-checkbox med-checkbox" onclick="mod_extra_effect()"> Extra Effect
+				<input type="checkbox" id="mod_extra" class="medium-checkbox med-checkbox" onclick="mod_extra()"> Extra Effect
 			</div>
 		</div>
 
@@ -882,6 +882,49 @@
 
 			</div>
 		</div>
+	</div>
+
+	<div>
+		<div>
+			Extra Effect:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_extra_count" name="mod_extra_count">
+				<option value="">Count</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="degree-title-sml" id="mod_extra_degree" name="mod_extra_degree">
+				<option value="">By Group</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="dc-title-sml" id="mod_extra_dc" name="mod_extra_dc">
+				<option value="">By Group</option>
+				{% for p in power_dc_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="circ-title-sml" id="mod_extra_circ" name="mod_extra_circ">
+				<option value="">Circumstance By Group</option>
+				{% for p in power_circ_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
 	</div>
 
 	<div id="mod-buttonrow">

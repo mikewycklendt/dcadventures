@@ -322,6 +322,14 @@ function mod_limited_level_type() {
 	id_select(select, fill, level_select);
 }
 
+function mod_extra() {
+	const check = 'mod_extra';
+	const div = 'mod_extra';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 
 let mod_grid = {'titles': false,
 					'columns': [],
@@ -413,7 +421,12 @@ function mod_submit() {
 	const points_reroll_result = select("mod_points_reroll_result");
 	const ranks = select("mod_ranks");
 	const cost = select("mod_cost");
-
+	const extra = check("mod_extra");
+	const extra_count = select("mod_extra_count");
+	const extra_degree = select("mod_extra_degree");
+	const extra_dc = select("mod_extra_dc");
+	const extra_circ = select("mod_extra_circ");
+	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
@@ -505,7 +518,12 @@ function mod_submit() {
 			'cost': cost,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'extra': extra,
+			'extra_count': extra_count,
+			'extra_degree': extra_degree,
+			'extra_dc': extra_dc,
+			'extra_circ': extra_circ
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

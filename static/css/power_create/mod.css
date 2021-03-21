@@ -434,6 +434,17 @@
 }
 
 
+#mod-extra {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 15% 10% 25% 25% 25%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+
 #mod-err {
 	display: none;
 	width: 94%;

@@ -786,6 +786,12 @@ def mod_post_errors(data):
 	points_reroll_result = data['points_reroll_result']
 	ranks = data['ranks']
 	cost = data['cost']
+	extra = data['extra']
+	extra_count = data['extra_count']
+	extra_degree = data['extra_degree']
+	extra_dc = data['extra_dc']
+	extra_circ = data['extra_circ']
+
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -793,6 +799,9 @@ def mod_post_errors(data):
 	errors = id_check(PowerRangedType, area_ranged, 'Ranged by Group', errors)
 	errors = id_check(PowerCheck, reflect_check, 'check', errors)
 	errors = id_check(PowerOpposed, subtle_opposed, 'Opponent Check', errors)
+	errors = id_check(PowerCircType, extra_circ, 'Extra Circumstance', errors)
+	errors = id_check(PowerDCType, extra_dc, 'Extra DC', errors)
+	errors = id_check(PowerDegreeType, extra_degree, 'Extra Degree', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -815,7 +824,7 @@ def mod_post_errors(data):
 	errors = int_check(ranks_mod, 'Ranks Modifier', errors)
 	errors = int_check(points_reroll_cost, 'Reroll Cost', errors)
 	errors = int_check(points_rerolls, 'Number of Rerolls', errors)
-
+	errors = int_check(extra_count, 'Extra Effect Count', errors)
 
 	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
@@ -903,8 +912,10 @@ def mod_post_errors(data):
 	errors = check_fields(effortless, 'Effortless', [effortless_degree], errors)
 	errors = check_field(effortless, 'Effortless', 'Degree of Failure', effortless_degree, errors)
 
-
-
+	errors = check_fields(extra, 'Extra Effect', [extra_count], errors)
+	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)
+	errors = check_of(extra, 'Extra Effect', 'a degree, circumstance or dc', [extra_dc, extra_degree, extra_circ], errors)
+	
 	return (errors)
 
 def ranged_post_errors(data):
