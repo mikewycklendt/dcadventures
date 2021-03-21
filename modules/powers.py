@@ -3495,7 +3495,7 @@ def power_post_check():
 
 	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
-)
+
 	body = linked_ref(PowerOpposed, opponent, 'Opponent Check Trigger', 'chained', body)
 	body = linked_ref(PowerCheck, variable, 'Variable Check Trigger', 'chained', body)
 	body = linked_ref(PowerOpposedType, opponent_type, 'Opponent Check Trigger', 'chained', body)
