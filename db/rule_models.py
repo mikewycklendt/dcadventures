@@ -401,7 +401,7 @@ class Ground(db.Model):
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
