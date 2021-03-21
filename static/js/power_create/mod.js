@@ -8,14 +8,14 @@ function mod_check() {
 }
 
 function mod_base() {
-	const field = 'mod_extra';
+	const field = 'mod_extra_id';
 	const entry = "mod-entry";
 
 	base(field, entry);
 }
 
-function mod_extra() {
-	const field = 'mod_extra';
+function mod_extra_id() {
+	const field = 'mod_extra_id';
 	const fill = 'mod_cost';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
@@ -342,7 +342,7 @@ function mod_submit() {
 	const created = mod_grid.titles;
 	const font = mod_grid.font;
 
-	const extra_id = select("mod_extra");
+	const extra_id = select("mod_extra_id");
 	const affects_objects = check("mod_affects_objects");
 	const area = check("mod_area");
 	const persistent = check("mod_persistent");
