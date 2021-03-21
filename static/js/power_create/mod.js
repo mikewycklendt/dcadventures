@@ -324,7 +324,7 @@ function mod_limited_level_type() {
 
 function mod_extra() {
 	const check = 'mod_extra';
-	const div = 'mod_extra';
+	const div = 'mod-extra';
 	const entry = 'mod-entry';
 
 	check_drop(check, div, entry);
