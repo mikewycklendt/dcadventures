@@ -1317,6 +1317,7 @@ def power_check_post_errors(data):
 
 	power_id = data['power_id']
 	extra_id = data['extra_id']
+	target = data['target']
 	check_type = data['check_type']
 	circumstance = data['circumstance']
 	trigger = data['trigger']
@@ -1350,6 +1351,7 @@ def power_check_post_errors(data):
 	varible_type = data['variable_type']
 	title = data['title']
 	multiple = data['multiple']
+	sense = data['sense']
 
 
 
@@ -1365,7 +1367,7 @@ def power_check_post_errors(data):
 	errors = id_check(Condition, condition1, 'Start Condition', errors)
 	errors = id_check(Condition, condition2, 'End Condition', errors)
 	errors = id_check(Condition, condition, 'Condition', errors)
-
+	errors = id_check)(Sense, sense, 'Sense', errors)
 
 	errors = id_check(PowerDegreeType, degree, 'Degree', errors)
 	errors = id_check(PowerCircType, circ, 'Circumstance', errors)
@@ -1387,6 +1389,7 @@ def power_check_post_errors(data):
 	errors = required(trait_type, 'Rank', errors)
 	errors = required(trait, 'Trait', errors)	
 	errors = required(title, 'Title', errors)
+	errors = required(target, 'Check Target', errors)
 
 	errors = variable_fields('change', 'Trigger', trigger, [condition1, condition2, conditions_target], errors)
 	errors = variable_field('change', trigger, 'Starting Condition', condition1, errors)
@@ -1397,6 +1400,8 @@ def power_check_post_errors(data):
 	errors = variable_field('condition', trigger, 'Condition Target', condition_target, errors)
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
+	errors = variable_fields('sense', 'Trigger', trigger, [sense], errors)
+	errors = variable_field('sense', trigger, 'Sense', sense, errors)
 	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
 	errors = select_of('opposed', 'is triggered bt an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)

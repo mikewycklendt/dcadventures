@@ -204,6 +204,29 @@
 		</div>
 	</div>
 
+	<div id="check-sense">
+		<div>
+			Triggered by Sense:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_sense" name="check_sense">
+				<option value="">Sense</option>
+				<option value="x">Variable</option>
+				<option value="any">Any</option>
+				<option value="power">Active Power Sense</option>
+				{% for s in senses %}
+					<option value={{s.id}}>{{s.name}}</option>
+				{% endfor %}
+			</select>
+ 		</div>
+		 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="check_mental" class="medium-checkbox med-checkbox" > Excludes Mental
+			</div>
+		</div>
+	</div>
 	<div id="check-row4">
 		<div>
 			<select class="degree-title-sml" id="check_degree_type" name="check_degree_type">
@@ -294,6 +317,7 @@
 			</select>
 		</div>
 	</div>
+
 
 	<div id="check-trigger-variable">
 		<div>

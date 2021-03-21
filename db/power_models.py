@@ -269,6 +269,7 @@ class PowerCheck(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	target = db.Column(db.String())
 	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	mod = db.Column(db.Integer)
 	circumstance = db.Column(db.String())
@@ -305,6 +306,8 @@ class PowerCheck(db.Model):
 	effect = db.Column(db.Boolean)
 	title = db.Column(db.String())
 	multiple = db.Column(db.String())
+	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	mental = db.Column(db.Boolean)
 	
 	
 	def format(self):
@@ -312,6 +315,7 @@ class PowerCheck(db.Model):
 			'id': self.id,
 			'power_id': self.power_id,
 			'extra_id':self.extra_id,
+			'target': self.target,
 			'check_type': self.check_type,
 			'mod': self.mod,
 			'circumstance': self.circumstance,
@@ -347,7 +351,9 @@ class PowerCheck(db.Model):
 			'chained': self.chained,
 			'effect': self.effect,
 			'title': self.title,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'sense': self.sense,
+			'mental': self.mental
 		}
 
 

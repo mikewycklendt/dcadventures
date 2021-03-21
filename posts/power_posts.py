@@ -1604,6 +1604,8 @@ def power_check_post(entry, body, cells):
 	opponent_type = entry.opponent_type
 	varible_type = entry.variable_type
 	title = entry.title
+	sense = entry.sense
+	mental = entry.mental
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1622,6 +1624,7 @@ def power_check_post(entry, body, cells):
 	mod = integer_convert(mod)
 	action = action_convert(action_type, action)
 	condition = get_name(Condition, condition)
+	sense = get_name(Sense, sense)
 
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -1634,6 +1637,8 @@ def power_check_post(entry, body, cells):
 	opponent = get_keyword(PowerOpposed, opponent)
 	variable = get_keyword(PowerCheck, variable)
 	
+	mental = check_string('Except Mental', mental)
+
 	attack = integer_convert(attack)
 
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
@@ -1657,6 +1662,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
 	vcells = vcell('variable', 18, [variable, varible_type], vcells)
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
+	w = width(14, 10, mental)
+	vcells = vcell('sense', w, [sense, mental], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	attack = add_plus(attack)

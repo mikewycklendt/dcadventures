@@ -584,8 +584,10 @@ def skill_trait_select():
 	powers_query = db.session.query(Power).filter(Power.show == True).order_by(Power.name).all()
 	powers = [{'id': '', 'name': 'Power'}]
 	var = db.session.query(Power).filter_by(var=True).first()
+	var_sense = db.session.query(Power).filter_by(var_sense=True).first()
 	if sub == 'variable':
 		powers.append({'id': var.id, 'name': 'Variable Power'})
+		powers.append({'id': var_sense.id, 'name': 'Variable Sense Power'})
 	elif sub == 'skill-dc':
 		act = db.session.query(Power).filter_by(active=True).first()
 		powers.append({'id': act.id, 'name': act.name})

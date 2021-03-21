@@ -30,7 +30,7 @@ function check_trait_type() {
 	const select = 'check_trait_type';
 	const fill = 'check_trait';
 
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function check_trait() {
@@ -71,6 +71,7 @@ function check_submit() {
 	const font = check_grid.font;
 	
 	const extra_id = select("check_extra");
+	const target = select("check_target")
 	const check_type = select("check_check_type");
 	const circumstance = text("check_circ");
 	const trigger = select("check_trigger");
@@ -104,7 +105,8 @@ function check_submit() {
 	const opponent_type = select("check_opponent_type")
 	const title = text("check_title");
 	const multiple = select("check_multiple");
-	
+	const sense = select("check_sense");
+	const mental = check("check_mental");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -126,6 +128,7 @@ function check_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
+			'target': target,
 			'check_type': check_type,
 			'circumstance': circumstance,
 			'trigger': trigger,
@@ -158,7 +161,9 @@ function check_submit() {
 			'opponent_type': opponent_type,
 			'varible_type': variable_type,
 			'title': title,
-			'multiple': multiple
+			'multiple': multiple,
+			'sense': sense,
+			'mental': mental
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

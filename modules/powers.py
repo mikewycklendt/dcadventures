@@ -223,11 +223,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	character = [{'type': 'size', 'name': 'Size Rank'}]
 
+	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
+
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'power', 'name': 'Chosen when Aquiring Power'}]
 
 	check_traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
-	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}]
+	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}]
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'success', 'name': 'After Success'}, {'type': 'fail', 'name': 'After Failure'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
 
@@ -479,7 +481,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
-											power_check_type=power_check_type, power_opposed_type=power_opposed_type)
+											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3449,6 +3451,7 @@ def power_post_check():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	target = request.get_json()['target']
 	check_type = request.get_json()['check_type']
 	circumstance = request.get_json()['circumstance']
 	trigger = request.get_json()['trigger']
@@ -3482,6 +3485,8 @@ def power_post_check():
 	varible_type = request.get_json()['variable_type']
 	title = request.get_json()['title']
 	multiple = request.get_json()['multiple']
+	sense = request.get_json()['sense']
+	mental = request.get_json()['mental']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3507,6 +3512,7 @@ def power_post_check():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 	condition = db_integer(Condition, condition)
+	sense = db_integer(Sense, sense)
 
 	trait = integer(trait)
 	action = integer(action)
@@ -3526,6 +3532,7 @@ def power_post_check():
 
 	entry = PowerCheck(power_id = power_id,
 						extra_id = extra_id,
+						target = target,
 						check_type = check_type,
 						circumstance = circumstance,
 						trigger = trigger,
@@ -3558,7 +3565,9 @@ def power_post_check():
 						title = title,
 						multiple = multiple,
 						opponent_type = opponent_type,
-						varible_type = variable_type
+						varible_type = variable_type,
+						sense = sense,
+						mental = mental
 					)
 
 	db.session.add(entry)
