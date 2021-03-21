@@ -164,7 +164,7 @@
 #time-factor {
 	display: none;
 	opacity: 0%;
-	grid-template-columns: 20% 20% 60%;
+	grid-template-columns: 40% 20% 40%;
 	transition: all .3s ease-in;
 }
 
