@@ -142,6 +142,7 @@ function opposed_submit() {
 	const title = text("opposed_title");
 	const opposed = select("opposed_opposed");
 	const opponent = select("opposed_opponent");
+	const variable_type = select("opposed_variable_type")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -194,7 +195,8 @@ function opposed_submit() {
 			'variable': variable,
 			'title': title,
 			'opponent': opponent,
-			'opposed': opposed
+			'opposed': opposed,
+			'variable_type': variable_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

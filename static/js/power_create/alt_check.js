@@ -100,6 +100,8 @@ function check_submit() {
 	const ranged = select("check_ranged_type")
 	const variable = select("check_variable")
 	const opponent = select("check_opponent")
+	const variable_type = select("check_variable_type")
+	const opponent_type = select("check_opponent_type")
 	const title = text("check_title");
 	const multiple = select("check_multiple");
 	
@@ -153,6 +155,8 @@ function check_submit() {
 			'conditions_target': conditions_target,
 			'variable': variable,
 			'opponent': opponent,
+			'opponent_type': opponent_type,
+			'varible_type': variable_type,
 			'title': title,
 			'multiple': multiple
 		}),

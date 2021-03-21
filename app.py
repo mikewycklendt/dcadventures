@@ -97,6 +97,50 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Ground Type'
+
+	name = 'All Ground Types'
+
+	entry = Ground(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Ground(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Ground(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Ground(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Ground(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Ground).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+
 
 if __name__ == '__main__':
 	app.debug = True

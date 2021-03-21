@@ -1581,6 +1581,8 @@ def power_check_post(entry, body, cells):
 	ranged = entry.ranged
 	variable = entry.variable
 	opponent = entry.opponent
+	opponent_type = entry.opponent_type
+	varible_type = entry.variable_type
 	title = entry.title
 
 	title_name = get_name(PowerCheckType, title)
@@ -1633,8 +1635,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)
 	w = width(10, 8, conflict_range)
 	vcells = vcell('conflict', w, [conflict, conflict_range], vcells)
-	vcells = vcell('variable', 18, [variable], vcells)
-	vcells = vcell('opposed', 18, [opponent], vcells)
+	vcells = vcell('variable', 18, [variable, varible_type], vcells)
+	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	cells = vcell_add('Trigger', trigger, vcells, cells)
 
 	attack = add_plus(attack)
@@ -2679,6 +2681,7 @@ def power_opposed_post(entry, body, cells):
 	title = entry.title
 	opponent = entry.opponent
 	opposed = entry.opposed
+	variable_type = entry.variable_type
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
@@ -2708,14 +2711,17 @@ def power_opposed_post(entry, body, cells):
 	variable = get_keyword(PowerCheck, variable)
 	opponent = get_name(PowerOpposedType, opponent)
 	opposed = get_keyword(PowerOpposed, opposed)
+	variable_type = get_name(PowerCheckType, variable_type)
 
 	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
 
-	opposed_check = one_of(opposed, [opposed])
-	opposed_check = one_of(opponent, [opponent], opposed_check)
+	opposed_check = one_of(opposed, [opposed, 'Opponent Check'])
+	opposed_check = one_of(opponent, [opponent, 'Opponent Check'], opposed_check)
+	variable_check = one_of(variable, [variable, 'Variable Check'])
+	variable_check = one_of(variable_type, [variable_type, 'Variable Check'], variable_check)
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check ' + variable}, {'type': 'after_var', 'name': 'After Variable Check ' + variable}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check ' + variable_check}, {'type': 'after_var', 'name': 'After Variable Check ' + variable_check}, {'type': 'opponent', 'name': 'After Opponent Check ' + opposed_check}]
 	attached = selects(attached, attached_select)
 
 	happens = frequency + ' ' + attached
@@ -2767,8 +2773,6 @@ def power_opposed_post(entry, body, cells):
 	word = string('Time Group', [recurring_type])
 	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
 	mod_add(recurring, new_mod, body)
-
-	cells = circ_cell('Opponent', 'After Opponent Check', 25, opposed_check, cells, body)
 
 	cells = circ_cell('Desc', 'Description', 6, description, cells, body)
 	

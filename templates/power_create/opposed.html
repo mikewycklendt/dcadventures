@@ -313,6 +313,16 @@
 			</select>
 		</div>
 		
+		<div>
+			<select class="check-title-sml" id="opposed_variable_type" name="opposed_variable_type">
+				<option value="">Variable Check by Group</option>
+				<option value="">Use Variable Check form to put options here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
 	</div>
 	
 	<div id="opposed-variable">

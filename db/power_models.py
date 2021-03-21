@@ -297,6 +297,8 @@ class PowerCheck(db.Model):
 	conditions_target = db.Column(db.String())
 	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	opponent_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	variable_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	chained = db.Column(db.Boolean)
 	effect = db.Column(db.Boolean)
 	title = db.Column(db.String())
@@ -338,6 +340,8 @@ class PowerCheck(db.Model):
 			'conditions_target': self.conditions_target,
 			'opponent': self.opponent,
 			'varible': self.variable,
+			'opponent_type': self.opponent_type,
+			'varible_type': self.variable_type,
 			'chained': self.chained,
 			'effect': self.effect,
 			'title': self.title,
@@ -1055,6 +1059,7 @@ class PowerOpposed(db.Model):
 	title = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	variable_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 
 
 	def format(self):
@@ -1098,7 +1103,8 @@ class PowerOpposed(db.Model):
 			'chained': self.chained,
 			'title': self.title,
 			'opponent': self.opponent,
-			'opposed': self.opposed
+			'opposed': self.opposed,
+			'variable_type': self.variable_type
 		}
 
 

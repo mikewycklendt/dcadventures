@@ -301,10 +301,20 @@
 		</div>
 		
 		<div>
-			<select class="check-sml" id="check_variable" name="create_move_check">
+			<select class="check-sml" id="check_variable" name="check_variable">
 				<option value="">Check</option>
 				<option value="">Use Variable Check Form to Put Options Here</option>
 				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="check-title-sml" id="check_variable_type" name="check_variable_type">
+				<option value="">Check by Group</option>
+				<option value="">Use Variable Check Form to Put Options Here</option>
+				{% for p in power_check_type %}
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
@@ -322,6 +332,16 @@
 				<option value="">Opponent Check</option>
 				<option value="">Use Opponent Check Form to Put Options Here</option>
 				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="opposed-title-sml" id="check_opponent_type" name="create_move_opposed_type">
+				<option value="">Opponent Check by Group</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_opposed_type %}
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>

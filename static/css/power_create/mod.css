@@ -55,7 +55,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 15% 20% 20% 20%;
+	grid-template-columns: auto auto auto auto auto auto auto;
 	grid-auto-rows: auto;
 }
 
@@ -79,7 +79,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 13% 18% 24% 25%;
+	grid-template-columns: auto auto auto;
 	grid-auto-rows: auto;
 }
 

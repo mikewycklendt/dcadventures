@@ -1330,7 +1330,10 @@ def power_check_post_errors(data):
 	conditions_target = data['conditions_target']
 	variable = data['variable']
 	opponent = data['opponent']
+	opponent_type = data['opponent_type']
+	varible_type = data['variable_type']
 	title = data['title']
+	multiple = data['multiple']
 
 
 
@@ -1379,8 +1382,10 @@ def power_check_post_errors(data):
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
 	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
-	errors = variable_field('opposed', trigger, 'Opponent Check', opponent, errors)
-	errors = variable_fields('variable', trigger, 'Variable Check', variable, errors)
+	errors = select_of('opposed', 'is triggered bt an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
+	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
+	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, varible_type], ['Variable Check'], errors)
+	errors = seperate([varible_type, variable], 'Variable Check', errors)
 
 	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
 	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)
@@ -2337,6 +2342,7 @@ def power_opposed_post_errors(data):
 	title = data['title']
 	opponent = data['opponent']
 	opposed = data['opposed']
+	variable_type = data['variable_type']
 
 
 	errors = power_check(power_id, errors)
@@ -2397,6 +2403,12 @@ def power_opposed_post_errors(data):
 
 	errors = select_of('opponent', 'Happens After an Opponent Check', 'Attached', attached, [opponent, opposed], ['Opponent Check'], errors)
 	errors = seperate([opposed, opponent], 'Opponent Check', errors)
+
+	errors = select_of('before_var', 'Before Variable Check', 'Attached', attached, [variable, variable_type], ['Variable Check'], errors)
+	errors = seperate([variable, variable_type], 'Variable Check', errors)
+	
+	errors = select_of('after_var', 'After Variable Check', 'Attached', attached, [variable, variable_type], ['Variable Check'], errors)
+	errors = seperate([variable, variable_type], 'Variable Check', errors)
 
 	errors = linked_group_check(PowerDC, '1', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Skill Check', 'DC', 'Opponent DC', errors, True)
 	errors = linked_group_check(PowerDC, '6', opponent_check, 'opp', 'target', dc_type, 'title', 'an Opponent Resistance Check Check', 'DC', 'Opponent DC', errors, True)

@@ -251,7 +251,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
-	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}]
+	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}, {'type': 'extra', 'name': '1 Per Extra Application'}]
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
@@ -3411,6 +3411,7 @@ def power_post_check():
 
 	body = {}
 	body['success'] = True
+	body['error_msgs'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -3457,6 +3458,10 @@ def power_post_check():
 	ranged = request.get_json()['ranged']
 	variable = request.get_json()['variable']
 	opponent = request.get_json()['opponent']
+	opponent_type = request.get_json()['opponent_type']
+	varible_type = request.get_json()['variable_type']
+	title = request.get_json()['title']
+	multiple = request.get_json()['multiple']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3471,6 +3476,8 @@ def power_post_check():
 	ranged = db_integer(PowerRangedType, ranged)
 	variable = db_integer(PowerCheck, variable)
 	opponent = db_integer(PowerOpposed, opponent)
+	opponent_type = db_integer(PowerOpposedType, opponent_type)
+	varible_type = db_integer(PowerCheckType, varible_type)
 
 	attack = integer(attack)
 
@@ -3484,9 +3491,15 @@ def power_post_check():
 	trait = integer(trait)
 	action = integer(action)
 
-	body['error_msgs'] = []
+	body['created'] = created
+
+	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
+	title = body['title_id']
+)
 	body = linked_ref(PowerOpposed, opponent, 'Opponent Check Trigger', 'chained', body)
-	body = linked_ref(PowerCheck, variable, 'Opponent Check Trigger', 'chained', body)
+	body = linked_ref(PowerCheck, variable, 'Variable Check Trigger', 'chained', body)
+	body = linked_ref(PowerOpposedType, opponent_type, 'Opponent Check Trigger', 'chained', body)
+	body = linked_ref(PowerCheckType, variable_type, 'Variable Check Trigger', 'chained', body)
 
 	if body['success'] == False:
 		return jsonify(body)
@@ -3521,7 +3534,11 @@ def power_post_check():
 						conditions_target = conditions_target,
 						ranged = ranged,
 						variable = variable,
-						opponent = opponent
+						opponent = opponent,
+						title = title,
+						multiple = multiple,
+						opponent_type = opponent_type,
+						varible_type = variable_type
 					)
 
 	db.session.add(entry)
@@ -3555,22 +3572,9 @@ def power_post_check():
 
 @powers.route('/power/check/delete/<id>', methods=['DELETE'])
 def delete_power_check(id):
-	body = {}
-	body['success'] = True
-	try:
-		db.session.query(PowerCheck).filter_by(id=id).delete()
-		db.session.commit()
-		print('\n\n' + str(id) + ' DELETED\n\n')
-	except:
-		body['success'] = False
-		message = 'Could not delete thst rule.'
-		error_msgs = []
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()
-	finally:
-		db.session.close()
-		return jsonify(body)
+	
+	body = delete_link(PowerOpposed, PowerOpposedType, id)
+	return jsonify(body)
 
 @powers.route('/power/circ/create', methods=['POST'])
 def power_post_circ():
@@ -4717,6 +4721,7 @@ def power_post_opposed():
 	title = request.get_json()['title']
 	opponent = request.get_json()['opponent']
 	opposed = request.get_json()['opposed']
+	variable_type = request.get_json()['variable_type']
 
 
 	power_id = db_integer(Power, power_id)
@@ -4739,6 +4744,7 @@ def power_post_opposed():
 	variable = db_integer(PowerCheck, variable)
 	opponent = db_integer(PowerOpposedType, opponent)
 	opposed = db_integer(PowerOpposed, opposed)
+	variable_type = db_integer(PowerCheckType, variable_type)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -4750,7 +4756,8 @@ def power_post_opposed():
 	body['success'] = True
 	body['created'] = created
 
-	body = linked_ref(PowerCheck, variable, 'Opponent Check Trigger', 'chained', body)
+	body = linked_ref(PowerCheck, variable, 'Attached Variable Check', 'chained', body)
+	body = linked_ref(PowerCheckType, variable_type, 'Attached Variable Check', 'chained', body)
 
 	body = link_add(PowerOpposed, PowerOpposedType, 'power_id', power_id, title, keyword, body)
 	title = body['title_id']
@@ -4796,7 +4803,8 @@ def power_post_opposed():
 						variable = variable,
 						title = title,
 						opponent = opponent,
-						opposed = opposed
+						opposed = opposed,
+						variable_type = variable_type
 					)			
 
 	db.session.add(entry)
