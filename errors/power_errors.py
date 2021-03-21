@@ -1367,7 +1367,7 @@ def power_check_post_errors(data):
 	errors = id_check(Condition, condition1, 'Start Condition', errors)
 	errors = id_check(Condition, condition2, 'End Condition', errors)
 	errors = id_check(Condition, condition, 'Condition', errors)
-	errors = id_check)(Sense, sense, 'Sense', errors)
+	errors = id_check(Sense, sense, 'Sense', errors)
 
 	errors = id_check(PowerDegreeType, degree, 'Degree', errors)
 	errors = id_check(PowerCircType, circ, 'Circumstance', errors)
