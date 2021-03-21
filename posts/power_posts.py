@@ -850,6 +850,7 @@ def mod_post(entry, body, cells):
 	limited_subsense = entry.limited_subsense
 	limited_descriptor = entry.limited_descriptor
 	limited_range = entry.limited_range
+	limited_ground = entry.limited_ground
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
@@ -901,6 +902,7 @@ def mod_post(entry, body, cells):
 	limited_sense = get_name(Sense, limited_sense)
 	limited_range = get_name(Range, limited_range)
 	side_level = get_name(Levels, side_level)
+	limited_ground = get_name(Ground, limited_ground)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -997,6 +999,9 @@ def mod_post(entry, body, cells):
 	value = 'level'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Level:', 7, [limited_level], new_mod, value)
+	value = 'ground'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Ground Type:', 15, [limited_ground], new_mod, value)
 	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Innate', 8, innate, cells)

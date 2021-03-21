@@ -1719,6 +1719,7 @@ class PowerMod(db.Model):
 	limited_subsense = db.Column(db.String())
 	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
+	limited_ground = db.Column(db.Integer, db.ForeignKey('ground.id'))
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	side_other = db.Column(db.String())
@@ -1809,6 +1810,7 @@ class PowerMod(db.Model):
 			'limited_subsense': self.limited_subsense,
 			'limited_descriptor': self.limited_descriptor,
 			'limited_range': self.limited_range,
+			'limited_ground': self.limited_ground,
 			'side_effect_type': self.side_effect_type,
 			'side_level': self.side_level,
 			'side_other': self.side_other,

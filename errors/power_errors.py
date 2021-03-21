@@ -764,6 +764,7 @@ def mod_post_errors(data):
 	limited_subsense = data['limited_subsense']
 	limited_descriptor = data['limited_descriptor']
 	limited_range = data['limited_range']
+	limited_ground = data['limited_ground']
 	side_effect_type = data['side_effect_type']
 	side_level = data['side_level']
 	side_other = data['side_other']
@@ -815,7 +816,8 @@ def mod_post_errors(data):
 	errors = id_check(Sense, limited_sense, 'sense', errors)
 	errors = id_check(Range, limited_range, 'range', errors)
 	errors = id_check(Levels, side_level, 'level', errors)
-	
+	errors = id_check(Ground, limited_ground, 'Ground Type', errors)
+
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
 	errors = int_check(limited_subjects, 'limited by Number of Subjects', errors)
@@ -877,6 +879,9 @@ def mod_post_errors(data):
 
 	errors = variable_fields('level', 'Limited by Level', limited_type, [limited_level], errors)
 	errors = variable_field('level', limited_type, 'Level', limited_level, errors)
+
+	errors = variable_fields('ground', 'Limited by Ground Type', limited_type, [limited_ground], errors)
+	errors = variable_field('ground', limited_type, 'Ground Type', limited_ground, errors)
 
 
 	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)

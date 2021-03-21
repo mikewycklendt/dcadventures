@@ -295,7 +295,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
+	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'ground', 'name': 'To Ground Type'}]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -2435,6 +2435,7 @@ def power_post_mod():
 	limited_subsense = request.get_json()['limited_subsense']
 	limited_descriptor = request.get_json()['limited_descriptor']
 	limited_range = request.get_json()['limited_range']
+	limited_ground = request.get_json()['limited_ground']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
@@ -2485,6 +2486,7 @@ def power_post_mod():
 	limited_sense = db_integer(Sense, limited_sense)
 	limited_range = db_integer(Range, limited_range)
 	side_level = db_integer(Levels, side_level)
+	limited_ground = db_integer(Ground, limited_ground)
 	
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
@@ -2569,6 +2571,7 @@ def power_post_mod():
 							limited_subsense = limited_subsense,
 							limited_descriptor = limited_descriptor,
 							limited_range = limited_range,
+							limited_ground = limited_ground,
 							side_effect_type = side_effect_type,
 							side_level = side_level,
 							side_other = side_other,

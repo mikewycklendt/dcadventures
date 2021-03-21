@@ -84,7 +84,8 @@ function mod_limited_type() {
 					{'val': 'task', 'div': 'mod-limited-task'},
 					{'val': 'task_type', 'div': 'mod-limited-task-type'},
 					{'val': 'source', 'div': 'mod-limited-source'},
-					{'val': 'level', 'div': 'mod-limited-level'}];
+					{'val': 'level', 'div': 'mod-limited-level'},
+					{'val': 'ground', 'div': 'mod-limited-ground'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);
@@ -399,6 +400,7 @@ function mod_submit() {
 	const limited_subsense = select("mod_limited_subsense");
 	const limited_descriptor = select("mod_limited_descriptor");
 	const limited_range = select("mod_limited_range");
+	const limited_ground = select("mod_limited_ground");
 	const side_effect_type = select("mod_side_effect_type");
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
@@ -494,6 +496,7 @@ function mod_submit() {
 			'limited_subsense': limited_subsense,
 			'limited_descriptor': limited_descriptor,
 			'limited_range': limited_range,
+			'limited_ground': limited_ground,
 			'side_effect_type': side_effect_type,
 			'side_level': side_level,
 			'side_other': side_other,
