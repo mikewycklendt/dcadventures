@@ -58,8 +58,18 @@
 			</select>
 		</div>
 
-		<div>
 
+		<div id="time-value-field">
+			<div>
+				<div id="time-measure-type">
+					<select class="select-sml" id="time_measure_type" name="time_measure_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
 			<div id="time-rank">
 				<div>
 					<select class="select-sml" id="time_rank1" name="time_rank1">

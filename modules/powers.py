@@ -4923,6 +4923,7 @@ def power_post_time():
 	recovery_target = request.get_json()['recovery_target']
 	rank = request.get_json()['rank']
 	factor = request.get_json()['factor']  
+	measure_type = request.get_json()['measure_type']
 
 	errors = power_time_post_errors(data)
 	
@@ -5013,7 +5014,8 @@ def power_post_time():
 						time = time,
 						mod = mod,
 						rank = rank,
-						factor = factor
+						factor = factor,
+						measure_type = measure_type
 					)
 
 	db.session.add(entry)
