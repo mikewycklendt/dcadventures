@@ -506,6 +506,18 @@
 					</select>
 				</div>
 			</div>
+			
+			<div id="mod-limited-creature">
+				<div>
+					<select class="select-sml" id="mod_limited_creature" name="mod_limited_creature" >
+						<option value="">Creature</option>
+						<option value="x">Variable</option>
+						{% for c in creatures %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 
 			<div id="mod-limited-sense">
 				<div>
@@ -748,6 +760,14 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="mod_subtle_type" name="mod_subtle_type">
+				{% foe s in subtle_type %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="opposed-sml" id="mod_subtle_opposed" name="mod_subtle_opposed">
 				<option value="">Opponent Check</option>
 				<option value="">Use Opponent Check form to put options here</option>
@@ -757,8 +777,8 @@
 			</select>
 		</div>		
 
-		<div style="font-size: 80%;">
-			Nullified if Opponent has Trait:
+		<div class="vcenter" style="font-size: 70%;">
+			Nullified by Trait:
 		</div>
 
 		<div>

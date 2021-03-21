@@ -765,11 +765,13 @@ def mod_post_errors(data):
 	limited_descriptor = data['limited_descriptor']
 	limited_range = data['limited_range']
 	limited_ground = data['limited_ground']
+	limited_creature = data['limited_creature']
 	side_effect_type = data['side_effect_type']
 	side_level = data['side_level']
 	side_other = data['side_other']
 	reflect_check = data['reflect_check']
 	reflect_descriptor = data['reflect_descriptor']
+	subtle_type = data['subtle_type']
 	subtle_opposed = data['subtle_opposed']
 	subtle_null_trait_type = data['subtle_null_trait_type']
 	subtle_null_trait = data['subtle_null_trait']
@@ -883,6 +885,9 @@ def mod_post_errors(data):
 	errors = variable_fields('ground', 'Limited by Ground Type', limited_type, [limited_ground], errors)
 	errors = variable_field('ground', limited_type, 'Ground Type', limited_ground, errors)
 
+	errors = variable_fields('creature', 'Limited to Creature', limited_type, [limited_creature], errors)
+	errors = variable_field('creature', limited_type, 'Creature Type', limited_creature, errors)
+
 
 	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)
 
@@ -890,8 +895,11 @@ def mod_post_errors(data):
 	errors = check_field(reflect, 'Reflect', 'Reflect Check Type', reflect_check, errors)
 	errors = check_field(reflect, 'Reflect', 'Reflect Descriptor', reflect_descriptor, errors)
 
-	errors = check_fields(subtle, 'Subtle', [subtle_opposed], errors)
-	errors = check_field(subtle, 'Subtle', 'Subtle Opponent Check', subtle_opposed, errors)
+	errors = check_fields(subtle, 'Subtle', [subtle_type], errors)
+	errors = check_field(subtle, 'Subtle', 'Subtle Type', subtle_type, errors)
+	errors = variable_fields('detect', 'Detectable', subtle_type, [subtle_opposed], errors)
+	errors = variable_fields('detect', subtle_type, 'Subtle Opponent Check', subtle_opposed, errors)
+
 	
 	errors = check_fields(points, 'Spend Points', [points_type], errors)
 	errors = check_field(points, 'Spend Points', 'Spend Points Type', points_type, errors)

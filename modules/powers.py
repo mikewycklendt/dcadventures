@@ -299,7 +299,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'ground', 'name': 'To Ground Type'}]
+	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, ]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -372,6 +372,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}]
 
 	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
+
+	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}]
 
 	target_type = [{'type': '', 'name': 'Target Type'}, {'type': 'language', 'name': 'Any Language'}, {'type': 'animal', 'name': 'Animal'}, {'type': 'machine', 'name': 'Machine'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}, {'type': 'x', 'name': 'Variable'}]
 
@@ -2440,11 +2442,13 @@ def power_post_mod():
 	limited_descriptor = request.get_json()['limited_descriptor']
 	limited_range = request.get_json()['limited_range']
 	limited_ground = request.get_json()['limited_ground']
+	limited_creature = request.get_json()['limited_creature']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
 	reflect_check = request.get_json()['reflect_check']
 	reflect_descriptor = request.get_json()['reflect_descriptor']
+	subtle_type = request.get_json()['subtle_type']
 	subtle_opposed = request.get_json()['subtle_opposed']
 	subtle_null_trait_type = request.get_json()['subtle_null_trait_type']
 	subtle_null_trait = request.get_json()['subtle_null_trait']
@@ -2491,6 +2495,7 @@ def power_post_mod():
 	limited_range = db_integer(Range, limited_range)
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
+	limited_creature = db_integer(Creature, limited_creature)
 	
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
@@ -2576,11 +2581,13 @@ def power_post_mod():
 							limited_descriptor = limited_descriptor,
 							limited_range = limited_range,
 							limited_ground = limited_ground,
+							limited_creature = limited_creature,
 							side_effect_type = side_effect_type,
 							side_level = side_level,
 							side_other = side_other,
 							reflect_check = reflect_check,
 							reflect_descriptor = reflect_descriptor,
+							subtle_type = subtle_type,
 							subtle_opposed = subtle_opposed,
 							subtle_null_trait_type = subtle_null_trait_type,
 							subtle_null_trait = subtle_opponent_trait,

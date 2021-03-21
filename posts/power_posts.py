@@ -851,11 +851,13 @@ def mod_post(entry, body, cells):
 	limited_descriptor = entry.limited_descriptor
 	limited_range = entry.limited_range
 	limited_ground = entry.limited_ground
+	limited_creature = entry.limited_creature
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
 	reflect_check = entry.reflect_check
 	reflect_descriptor = entry.reflect_descriptor
+	subtle_type = entry.subtle_type
 	subtle_opposed = entry.subtle_opposed
 	subtle_null_trait_type = entry.subtle_null_trait_type
 	subtle_null_trait = entry.subtle_opponent_trait
@@ -903,6 +905,7 @@ def mod_post(entry, body, cells):
 	limited_range = get_name(Range, limited_range)
 	side_level = get_name(Levels, side_level)
 	limited_ground = get_name(Ground, limited_ground)
+	limited_creature = get_name(Creature, limited_creature)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -926,6 +929,9 @@ def mod_post(entry, body, cells):
 
 	result_select = [{'type': '', 'name': 'Result'}, {'type': 'high', 'name': 'Higher'}, {'type': 'low', 'name': 'Lower'}]
 	points_reroll_result = selects(points_reroll_result, result_select)
+
+	subtle_type_select = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}]
+	subtle_type = selects(subtle_type, subtle_type_select)
 
 	effortless_degree = integer_convert(effortless_degree)
 	limited_mod = integer_convert(limited_mod)
@@ -957,7 +963,7 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Selective', 9, selective, cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
-	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}]
+	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}]
 	new_mod = mod_create('Limited', 9, limited_type, limited_type_select)
 	value = 'task_type'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
@@ -1002,6 +1008,13 @@ def mod_post(entry, body, cells):
 	value = 'ground'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Ground Type:', 15, [limited_ground], new_mod, value)
+	value = 'creature'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Creature:', 15, [limited_creature], new_mod, value)
+	value = 'family'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'org'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Innate', 8, innate, cells)
@@ -1033,6 +1046,7 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Subtle', 7, subtle, cells, True)
 	new_mod = mod_create('Subtle', 8)
+	new_mod = mod_cell('Type:', 5, [subtle_type], new_mod)
 	new_mod = mod_cell('Opponent Check:', 17, [subtle_opposed], new_mod)
 	new_mod = mod_cell('Nullfied Trait:', 17, [subtle_null_trait], new_mod)
 	body = mod_add(subtle, new_mod, body)

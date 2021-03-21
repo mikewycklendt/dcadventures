@@ -85,7 +85,8 @@ function mod_limited_type() {
 					{'val': 'task_type', 'div': 'mod-limited-task-type'},
 					{'val': 'source', 'div': 'mod-limited-source'},
 					{'val': 'level', 'div': 'mod-limited-level'},
-					{'val': 'ground', 'div': 'mod-limited-ground'}];
+					{'val': 'ground', 'div': 'mod-limited-ground'},
+					{'val': 'creature', 'div': 'mod-limited-creature'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);
@@ -401,11 +402,13 @@ function mod_submit() {
 	const limited_descriptor = select("mod_limited_descriptor");
 	const limited_range = select("mod_limited_range");
 	const limited_ground = select("mod_limited_ground");
+	const limited_creature = select("mod_limited_creature");
 	const side_effect_type = select("mod_side_effect_type");
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
 	const reflect_check = select("mod_reflect_check");
 	const reflect_descriptor = select("mod_reflect_descriptor");
+	const subtle_type = select("mod_subtle_type");
 	const subtle_opposed = select("mod_subtle_opposed");
 	const subtle_null_trait_type = select("mod_subtle_null_trait_type");
 	const subtle_null_trait = select("mod_subtle_null_trait");
@@ -497,11 +500,13 @@ function mod_submit() {
 			'limited_descriptor': limited_descriptor,
 			'limited_range': limited_range,
 			'limited_ground': limited_ground,
+			'limited_creature': limited_creature,
 			'side_effect_type': side_effect_type,
 			'side_level': side_level,
 			'side_other': side_other,
 			'reflect_check': reflect_check,
 			'reflect_descriptor': reflect_descriptor,
+			'subtle_type': subtle_type,
 			'subtle_opposed': subtle_opposed,
 			'subtle_null_trait_type': subtle_null_trait_type,
 			'subtle_null_trait': subtle_null_trait,
