@@ -101,7 +101,7 @@ def table_db_columns_create():
 
 	name = 'Variable Sense Power'
 
-	entry = Power(var_sense=True, name=name, )
+	entry = Power(var_sense=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 
