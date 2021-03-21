@@ -92,6 +92,7 @@ class Power(db.Model):
 	approved = db.Column(db.Boolean)
 	base = db.Column(db.Boolean)
 	active = db.Column(db.Boolean)
+	var_sense = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -157,7 +158,8 @@ class Power(db.Model):
 			'show': self.show,
 			'approved': self.approved,
 			'base': self.base,
-			'active': self.active
+			'active': self.active,
+			'var_sense': self.sense
 		}
 
 class PowerType(db.Model):

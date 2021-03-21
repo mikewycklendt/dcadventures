@@ -96,6 +96,24 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
+@app.route('/table/db')
+def table_db_columns_create():
+
+	name = 'Variable Sense Power'
+
+	entry = Power(var_sense=True, name=name, )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Power).filter_by(show=None).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (name + ' db added')
+
+
 
 if __name__ == '__main__':
 	app.debug = True

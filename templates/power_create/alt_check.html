@@ -96,7 +96,7 @@
 
 		<div>
 			<select class="entry-select" id="check_trait_type" name="check_trait_type" onchange="check_trait_type()">
-				{% for t in traits %}
+				{% for t in check_traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
 			</select>

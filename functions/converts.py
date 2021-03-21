@@ -1065,6 +1065,12 @@ def trait_select(value, trait):
 			value = query.name
 		except:
 			value = 'Not Found'
+	elif trait == 'equip':
+		try:
+			query = db.session.query(Equipment).filter_by(id=value).one()
+			value = query.name
+		except:
+			value = 'Not Found'
 	elif trait == 'interact':
 		value =  'Any Interarction'
 	elif trait == 'manipulate':

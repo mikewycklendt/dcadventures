@@ -556,6 +556,15 @@ def skill_trait_select():
 	for skill in skills_query:
 		skills.append({'id': skill.id, 'name': skill.name})
 
+	equipment_query = db.session.query(Equipment).filter(Equipment.show == True).order_by(Equipment.name).all()
+	equipment = [{'id': '', 'name': 'Equipment'}]
+	var = db.session.query(Equipment).filter_by(var=True).first()
+	if sub == 'variable':
+		equipment.append({'id': var.id, 'name': 'Variable Equipmment'})
+	for e in equipment_query:
+		equipment.append({'id': e.id, 'name': e.name})
+	
+
 	abilities_query = db.session.query(Ability).filter(Ability.hide == None).order_by(Ability.name).all()
 	abilities = [{'id': '', 'name': 'Ability'}]
 	var = db.session.query(Ability).filter_by(var=True).first()
@@ -635,6 +644,8 @@ def skill_trait_select():
 		body['options'] = advantages
 	elif trait == 'extra':
 		body['options'] = extras
+	elif trait == 'equip':
+		body['options'] = equipment
 	elif trait == 'subskill':
 		body['options'] = subskills
 	elif trait == 'interact':
