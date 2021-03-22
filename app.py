@@ -20,7 +20,7 @@ from models import setup_db
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -98,6 +98,83 @@ def shutdown_session(exception=None):
 
 
 
+@app.route('/creatures/create')
+def creatures_create():
+
+	entries = ['Elves', 'Sea']
+
+	for i in entries:
+
+		entry = Creature(name=i)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Creature.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('creatures added')
+
+@app.route('/narrow/create')
+def narrow_create():
+
+	tablename =  'Narrow Creature'
+
+	name = 'All Nsrrow Creatures'
+
+	entry = NarrowCreature(all=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = NarrowCreature(current=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = NarrowCreature(any=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = NarrowCreature(var=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = NarrowCreature(none=True, name=name)
+	db.session.add(entry)
+	db.session.commit()
+
+	entries = ['Dog', 'Falcon', 'Cat']
+
+	for i in entries:
+
+		entry = Narrow(name=i, creature=9, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	entries = ['Dolphin', 'Whale', 'Shark']
+
+	for i in entries:
+
+		entry = Narrow(name=i, creature=19, show=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Narrow.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('narrow creatures added')
 
 
 if __name__ == '__main__':

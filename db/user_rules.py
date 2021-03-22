@@ -164,3 +164,32 @@ class Creature(db.Model):
 			'approved': self.approved,
 			'show': self.show
 		}	
+
+class NarrowCreature(db.Model):
+	__tablename__ = 'creature_narrow'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
+	name = db.Column(db.String())
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'creature': self.creature,
+			'name': self.name,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide,
+			'approved': self.approved,
+			'show': self.show
+		}	

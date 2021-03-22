@@ -23,7 +23,7 @@ from models import setup_db
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -155,6 +155,39 @@ def equip_weapon_select():
 			options.append({'id': w.id, 'name': w.name})
 	except:
 		options.append({'id': '', 'name': 'Weapon'})
+	
+	body['options'] = options
+
+	print(body)
+	return jsonify(body)
+
+@select.route('/select/creature/narrow', methods=['POST'])
+def narrow_creature_select():
+	body = {}
+	body['success'] = True
+	options = []
+
+	type_id = request.get_json()['id'] 
+	sub = request.get_json()['sub']
+
+	try:
+		type_id = int(type_id)
+		print(type_id)
+		creature = db.session.query(Creature).filter_by(id=type_id).one()
+		narrow = db.session.query(NarrowCreature).filter(NarrowCreature.type_id == type_id, NarrowCreature.show == True).order_by(Weapon.name).all()
+		creature_name = creature.name + ' Creatures'
+		variable_name = 'Variable ' + creature.name
+		other_name = 'Other ' + creature.name
+		var = {'id': 'x', 'name': variable_name}
+		other = {'id': 'other', 'name': other_name }
+		options.append({'id': '', 'name': creature_name})
+		if sub == 'variable-other':
+			options.append(var)
+			options.append(other)
+		for n in narrow:
+			options.append({'id': n.id, 'name': n.name})
+	except:
+		options.append({'id': '', 'name': 'Nsrrow Creature'})
 	
 	body['options'] = options
 

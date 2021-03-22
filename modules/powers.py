@@ -21,7 +21,7 @@ from models import setup_db
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -157,6 +157,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	mediums = MediumType.query.order_by(MediumType.name).all()
 
 	mental = db.session.query(SubSense).filter_by(sense_id=11)
+
+	narrow = db.session.query(NarrowCreature).filter(NarrowCreature.show == True).all()
 
 	nature = db.session.query(Nature).filter(Nature.show == True).order_by(Nature.name).all()
 
