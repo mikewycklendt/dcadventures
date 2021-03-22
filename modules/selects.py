@@ -526,7 +526,7 @@ def get_subsense_select():
 	body['success'] = True
 
 	sense_id_str = request.get_json()['id']
-	sub - request.get_json()['sub']
+	sub = request.get_json()['sub']
 
 	print(sense_id_str)
 
