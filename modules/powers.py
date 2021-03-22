@@ -2511,6 +2511,7 @@ def power_post_mod():
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
 	limited_creature = db_integer(Creature, limited_creature)
+	limited_creature_narrow = db_integer(NarrowCreature, limited_creature_narrow)
 	
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
