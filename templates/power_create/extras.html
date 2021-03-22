@@ -14,73 +14,92 @@
 
 <div id="extras-entry">
 
-	<div id="extras-name-title">
-		Name:
-	</div>
-
-	<div id="extras-des-title">
-		Description
-	</div>
-
-	<div id="extras-inherits">
-		<select class="header-select" id="extra_inherit" name="extra_inherit" style="font-size: 80%;">
-			<option value=>Inherits Effects of:</option>
-			{% for p in powers %}
-				<option value="{{p.id}}">{{p.name}}</option>
-			{% endfor %}
-		</select>
-	</div>
-	
-	<div id="extras-name">
-		<input type="text" class="entry-text" id="extra_name" name="extra_name">
-	</div>
-
-	<div id="extras-des">
-		<textarea id="extra_des" name="extra_des"></textarea>
-	</div>
-	
-	<div id="extras-points-title">
-		Cost:
-	</div>
-
-	<div id="extras-ranks-title">
-		Per # of Ranks:
-	</div>
-
-	<div id="extras-points">
-		<select class="entry-select" id="extra_cost" name="extra_cost">
-			<option value="">Points</option>
-			<option value="x">Variable</option>
-			{% for i in negatives %}
-				<option value={{i}}>{i}</option>
-			{% endfor %}
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div id="extras-ranks">
-		<select class="entry-select" id="extra_rank" name="extra_rank">
-			<option value="">Ranks</option>
-			{% for i in positives %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
-	</div>
-
-	<div id="extras-alt">
-		<div class="vcenter">
-			<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
+	<div id="extras-row1">
+		<div>
+			Name:
 		</div>
-	</div>
 	
-	<div id="extras-flat">
-		<div class="vcenter">
-			<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
+		<div>
+			Description
 		</div>
+	
+		<div>
+			<select class="header-select" id="extra_inherit" name="extra_inherit" style="font-size: 80%;">
+				<option value=>Inherits Effects of:</option>
+				{% for p in powers %}
+					<option value="{{p.id}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
 	</div>
 
+	<div id="extras-row2">
+		<div>
+			<div>
+				<input type="text" class="entry-text" id="extra_name" name="extra_name">
+			</div>		
+
+			<div class="extras-split">
+				<div>
+					<select class="entry-select" id="extra_cost" name="extra_cost">
+						<option value="">Points</option>
+						<option value="x">Variable</option>
+						{% for i in negatives %}
+							<option value={{i}}>{i}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			
+				<div>
+					<select class="entry-select" id="extra_rank" name="extra_rank">
+						<option value="">Ranks</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>			
+			</div>
+			
+			<div class="extras-split">	
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
+					</div>
+				</div>
+				
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
+					</div>
+				</div>	
+			</div>
+			
+			<div class="extras-split">
+				
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_stack" class="medium-checkbox med-checkbox"> Stackable
+					</div>
+				</div>	
+				
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Ranks - Power Rank
+					</div>
+				</div>	
+			</div>
+		</div>
+
+		<div>
+			<textarea id="extra_des" name="extra_des"></textarea>
+		</div>		
+	</div>
+	
+
+	
 </div>
 <div id="extras-spot">
 	

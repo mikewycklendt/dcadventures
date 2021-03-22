@@ -777,6 +777,8 @@ def power_post_extra():
 	inherit = request.get_json()['inherit']
 	alternate = request.get_json()['alternate']
 	flat = request.get_json()['flat']
+	stack = request.get_json()['stack']
+	power_rank = request.get_json()['power_rank']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -792,7 +794,10 @@ def power_post_extra():
 						des = des,
 						inherit = inherit,
 						alternate = alternate,
-						flat = flat
+						flat = flat,
+						stack = stack,
+						power_rank = power_rank
+
 					)
 
 		db.session.add(entry)

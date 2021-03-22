@@ -3025,7 +3025,8 @@ def power_extra_post(entry, body, cells):
 	inherit = entry.inherit
 	alternate = entry.alternate
 	flat = entry.flat
-
+	stack = entry.stack
+	power_rank = entry.power_rank
 
 	cost = integer_convert(cost)
 	ranks = integer_convert(ranks)
@@ -3033,9 +3034,11 @@ def power_extra_post(entry, body, cells):
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
-	cells = cell('Ranks', 12, [ranks], cells)
+	cells = cell('Per Rank', 12, [ranks], cells)
 	cells = check_cell('Flat Cost', 12, flat, cells)
-	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 	cells = check_cell('Alternate Effect', 17, alternate, cells)
+	cells = check_cell('Stackable', 11, stack, cells)
+	cells = check_cell('Power Rank', 12, power_rank, cells)
+	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 
 	body = send(cells, body)

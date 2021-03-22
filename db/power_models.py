@@ -196,6 +196,8 @@ class Extra(db.Model):
 	inherit = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	alternate = db.Column(db.Boolean)
 	flat = db.Column(db.Boolean)
+	stack = db.Column(db.Boolean)
+	power_rank = db.Column(db.Boolean)
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -216,6 +218,8 @@ class Extra(db.Model):
 			'inherit': self.inherit,
 			'alternate': self.alternate,
 			'flat': self.flat,
+			'stack': self.stack,
+			'power_rank': self.power_rank,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
