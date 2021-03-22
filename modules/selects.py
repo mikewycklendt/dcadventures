@@ -174,7 +174,7 @@ def narrow_creature_select():
 		type_id = int(type_id)
 		print(type_id)
 		creature = db.session.query(Creature).filter_by(id=type_id).one()
-		narrow = db.session.query(NarrowCreature).filter(NarrowCreature.type_id == type_id, NarrowCreature.show == True).order_by(Weapon.name).all()
+		narrow = db.session.query(NarrowCreature).filter(NarrowCreature.creature == type_id, NarrowCreature.show == True).order_by(Weapon.name).all()
 		creature_name = creature.name + ' Creatures'
 		variable_name = 'Variable ' + creature.name
 		other_name = 'Other ' + creature.name
