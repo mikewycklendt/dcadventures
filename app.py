@@ -96,6 +96,50 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Concealment'
+
+	name = 'All Concealment'
+
+	entry = Conceal(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Conceal(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Conceal(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Conceal(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Conceal(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Conceal).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+
 
 if __name__ == '__main__':
 	app.debug = True
