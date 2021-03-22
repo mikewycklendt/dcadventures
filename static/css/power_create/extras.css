@@ -78,7 +78,8 @@
 	display: grid;
 	grid-template-columns: 40% 60%;
 	font-size: 70%;
-	padding: .2vw;
+	padding: .4vw;
+	justify-content: left;
 }
 
 #extras-entry textarea{
