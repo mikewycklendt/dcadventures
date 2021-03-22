@@ -761,7 +761,7 @@
 
 		<div>
 			<select class="select-sml" id="mod_subtle_type" name="mod_subtle_type">
-				{% foe s in subtle_type %}
+				{% for s in subtle_type %}
 					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}
 			</select>
