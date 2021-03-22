@@ -824,9 +824,9 @@ function div_text_multiple(select_input, options) {
 	
 			if (val == value) {
 				div.innerHTML = text;
+				div.style.opacity = '100%';
 			}
 		}
-		div.style.opacity = '100%';
 	}, 300)	
 }
 
