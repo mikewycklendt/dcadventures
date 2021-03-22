@@ -71,6 +71,23 @@ def string(word, data):
 	
 	return (output)
 
+
+def string_all(word, data):
+	full = True
+
+	output = ''
+
+	print('\n\n\n\n')
+	for d in data:
+		print(d)
+		if d == '':
+			full = False
+
+	if full:
+		output = word
+	
+	return (output)
+
 def string_value(word, value, field):
 
 	output = ''
@@ -301,6 +318,47 @@ def vcell_add(title, field, vcells, cells):
 
 	return (cells)
 
+def drop_vcell(title, names, w, field, vcells, cells, body):
+
+	circs = body['circ']
+	
+	content = ''
+	width = 0
+	
+	circ_check = False
+
+	for vcell in vcells:
+		value = vcell['value']
+		con = vcell['content']
+		if value == field:
+			content = con
+			width = w
+			circ_check = True
+
+	cell = {'title': title,
+			'width': width,
+			'content': '',
+			'circ': circ_check
+			}
+
+	name = ''
+	for n in names:
+		if name == '':
+			name = n
+		else:
+			name += ' ' + n
+
+	if circ_check:
+		circ = {'title': name,
+				'content': content}
+		circs.append(circ)
+
+	body['circ'] = circs
+
+	cells.append(cell)
+
+	return (cells)
+
 
 def vcell(value, width, contentlist, vcells='e', value2='e', selection2='e', selection3='e', value3='e'):
 
@@ -430,6 +488,40 @@ def circ_cell(title, name, width, circumstance, cells, body, circ_check=True):
 	cells.append(cell)
 
 	return (cells)
+
+def drop_cell(title, name, width, values, cells, body, circ_check=True):
+
+	circs = body['circ']
+
+	if circumstance ==  '':
+		width = 0
+		circ_check = False
+	
+	cell = {'title': title,
+			'width': width,
+			'content': '',
+			'circ': circ_check
+			}
+
+	content = ''
+	for v in values:
+		if content == '':
+			content = v
+		else:
+			content += ' ' + v
+
+
+	if circ_check:
+		circ = {'title': name,
+				'content': content}
+		circs.append(circ)
+
+	body['circ'] = circs
+
+	cells.append(cell)
+
+	return (cells)
+
 
 
 def if_cell(name, width, values, cells):

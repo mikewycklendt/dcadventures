@@ -108,6 +108,7 @@ function check_submit() {
 	const multiple = select("check_multiple");
 	const sense = select("check_sense");
 	const mental = check("check_mental");
+	const maneuver = select("check_maneuver");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -164,7 +165,8 @@ function check_submit() {
 			'title': title,
 			'multiple': multiple,
 			'sense': sense,
-			'mental': mental
+			'mental': mental,
+			'maneuver':  maneuver
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

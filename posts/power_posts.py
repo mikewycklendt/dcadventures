@@ -21,7 +21,7 @@ from functions.linked import link_add, delete_link, level_add, delete_level, lin
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost
 
@@ -1645,6 +1645,7 @@ def power_check_post(entry, body, cells):
 	title = entry.title
 	sense = entry.sense
 	mental = entry.mental
+	maneuver = entry.maneuver
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1664,6 +1665,7 @@ def power_check_post(entry, body, cells):
 	action = action_convert(action_type, action)
 	condition = get_name(Condition, condition)
 	sense = get_name(Sense, sense)
+	maneuver = get_name(Maneuver, maneuver)
 
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -1687,9 +1689,11 @@ def power_check_post(entry, body, cells):
 	condition_target = selects(condition_target, targets)
 	conditions_target = selects(conditions_target, targets)
 
+	check_trigger_select = [{'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}]
+	trigger_title  =  selects(trigger, check_trigger_select)
+
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
-	cells = cell('Check', 11, [check_type], cells)
 	cells = cell('Modifier', 8, [mod], cells)
 	cells = cell('When', 12, [when], cells)
 	cells = cell('Check Trait', 16, [trait], cells)
@@ -1703,16 +1707,22 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
 	vcells = vcell('sense', w, [sense, mental], vcells)
-	cells = vcell_add('Trigger', trigger, vcells, cells)
+	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
 
 	attack = add_plus(attack)
-	cells = cell('Attack', 9, [attack], cells)
-
-	cells = circ_cell('Opposed', 'Opposed', 8, opposed, cells, body)
+	word = string_all('on', [attack, maneuver])
+	vcells = vcell(5, 8, [attack, word, maneuver])
+	vcells = vcell(1, 8, [dc, dc_value], vcells)
+	vcells = vcell(6, 8, [dc, dc_value], vcells)
+	vcells = vcell(2, 8, [opposed], vcells)
+	vcells = vcell(7, 8, [opposed], vcells)
+	vcells = vcell(3, 8, [''], vcells)
+	vcells = vcell(4, 8, [''], vcells)
+	vcells = vcell(8, 8, [''], vcells)
+	check_title = get_name(Check, check_type)
+	cells = drop_vcell('Check', [check_title, ' Check'], 7, check_type, vcells, cells, body)
+	
 	cells = circ_cell('Circ Mod', 'Circumstance', 8, circ, cells, body)
-	content = arrow_cell([dc])
-	content = arrow_cell([dc_value], content)
-	cells = circ_cell('DC', 'DC', 5, content, cells, body)
 	cells = circ_cell('Degree', 'Degree', 7, degree, cells, body)
 	cells = circ_cell('Move', 'Move', 6, move, cells, body)
 	cells = circ_cell('Time', 'Time', 6, time, cells, body)

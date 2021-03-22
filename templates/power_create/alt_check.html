@@ -288,6 +288,11 @@
 	</div>
 
 	<div id="check-attack">
+
+		<div>
+			Attack Check
+		</div>
+
 		<div>
 			<select class="select-sml" id="check_attack" name="check_attack">
 				<option value="">Attack Check Modifier</option>
@@ -299,9 +304,23 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<select class="select-sml" id="check_maneuver" name="check_maneuver">
+				<option value="">Maneuver</option>
+				{% for m in maneuvers %}
+					<option value={{m.id}}>{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="check-opposed">
+
+		<div id="check-opposed-title">
+
+		</div>
+
 		<div>
 			<select class="opposed-sml" id="check_opposed" name="check_opposed">
 				<option value="">Opponent Check</option>
@@ -311,6 +330,10 @@
 	</div>
 
 	<div id="check-dc">
+
+		<div id="check-dc-title">
+
+		</div>
 		<div>
 			<select class="dc-sml" id="check_dc_value" name="check_dc_value">
 				<option value="">DC</option>
