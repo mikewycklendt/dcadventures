@@ -512,6 +512,7 @@
 					<select class="select-sml" id="mod_limited_creature" name="mod_limited_creature" onchange="mod_limited_creature()">
 						<option value="">Creature</option>
 						<option value="x">Variable</option>
+						<option value="other">Other</option>
 						{% for c in creatures %}
 							<option value={{c.id}}>{{c.name}}</option>
 						{% endfor %}
