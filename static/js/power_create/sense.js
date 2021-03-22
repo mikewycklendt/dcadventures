@@ -59,7 +59,7 @@ function sense_type() {
 	const select = "sense_type";
 	const options = [{'val': 'height', 'div': "sense-height"},
 					{'val': 'resist', 'div': "sense-resist"},
-					{'val': 'conceal', 'div': "sense-cobceal"}];
+					{'val': 'conceal', 'div': "sense-conceal"}];
 
 	select_opacity(select, options);
 }
