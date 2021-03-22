@@ -323,9 +323,21 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 32% 32% 25%;
 	opacity: 0%;
 	transition: all .3s ease-out;
+}
+
+#mod-limited-creature-other {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
+#mod-limited-creature-other input[type="text"] {
+	height: 1.1vw;
+	padding: .2vw;
+	background-color: lightblue;
 }
 
 #mod-limited-language-mod {

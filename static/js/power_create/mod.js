@@ -332,6 +332,22 @@ function mod_extra() {
 	check_drop(check, div, entry);
 }
 
+function mod_limited_creature() {
+	const select = 'mod_limited_creature';
+	const fill = 'mod_limited_creature_narrow';
+	const options = [{'val': 'other', 'div': 'mod-limited-creature-other'}]
+	
+	id_select(select, fill, narrow_creature_select, other_var_sub);
+	select_opacity(select, options)
+}
+
+function mod_limited_creature() {
+	const select = 'mod_limited_creature_narrow';
+	const options = [{'val': 'other', 'div': 'mod-limited-creature-other'}]
+	
+	select_opacity(select, options)
+}
+
 
 let mod_grid = {'titles': false,
 					'columns': [],
@@ -403,6 +419,8 @@ function mod_submit() {
 	const limited_range = select("mod_limited_range");
 	const limited_ground = select("mod_limited_ground");
 	const limited_creature = select("mod_limited_creature");
+	const limited_creature_narrow = select("mod_limited_creature_narrow");
+	const limited_creature_other = text("mod_limited_creature_other");
 	const side_effect_type = select("mod_side_effect_type");
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
@@ -502,6 +520,8 @@ function mod_submit() {
 			'limited_range': limited_range,
 			'limited_ground': limited_ground,
 			'limited_creature': limited_creature,
+			'limited_creature_narrow': limited_creature_narrow,
+			'limited_creature_other': limited_creature_other,
 			'side_effect_type': side_effect_type,
 			'side_level': side_level,
 			'side_other': side_other,

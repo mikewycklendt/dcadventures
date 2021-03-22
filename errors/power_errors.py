@@ -2,7 +2,7 @@
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -766,6 +766,8 @@ def mod_post_errors(data):
 	limited_range = data['limited_range']
 	limited_ground = data['limited_ground']
 	limited_creature = data['limited_creature']
+	limited_creature_narrow = data['limited_creature_narrow']
+	limited_creature_other = data['limited_creature_other']
 	side_effect_type = data['side_effect_type']
 	side_level = data['side_level']
 	side_other = data['side_other']
@@ -819,6 +821,8 @@ def mod_post_errors(data):
 	errors = id_check(Range, limited_range, 'range', errors)
 	errors = id_check(Levels, side_level, 'level', errors)
 	errors = id_check(Ground, limited_ground, 'Ground Type', errors)
+	errors = id_check(Creature, limited_creature, 'Creature', errors)
+	errors = id_check(NarrowCreature, limited_creature_narrow, 'Narrow Creature', errors)
 
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
@@ -887,6 +891,10 @@ def mod_post_errors(data):
 
 	errors = variable_fields('creature', 'Limited to Creature', limited_type, [limited_creature], errors)
 	errors = variable_field('creature', limited_type, 'Creature Type', limited_creature, errors)
+	errors = variable_fields('other', 'Other Creature', limited_creature, [limited_creature_other], errors)
+	errors = variable_field('other', limited_creature, 'Other Creature', limited_creature_other, errors)
+	errors = variable_fields('other', 'Other Nsrrow Creature', limited_creature_narrow, [limited_creature_other], errors)
+	errors = variable_field('other', limited_creature_narrow, 'Other Creature', limited_creature_other, errors)
 
 
 	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)

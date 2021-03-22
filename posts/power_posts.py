@@ -2,7 +2,7 @@
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -852,6 +852,7 @@ def mod_post(entry, body, cells):
 	limited_range = entry.limited_range
 	limited_ground = entry.limited_ground
 	limited_creature = entry.limited_creature
+	limited_creature_narrow = entry.limited_creature_narrow
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
@@ -906,6 +907,7 @@ def mod_post(entry, body, cells):
 	side_level = get_name(Levels, side_level)
 	limited_ground = get_name(Ground, limited_ground)
 	limited_creature = get_name(Creature, limited_creature)
+	limited_creature_narrow = get_name(NarrowCreature, limited_creature_narrow)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1011,6 +1013,7 @@ def mod_post(entry, body, cells):
 	value = 'creature'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Creature:', 15, [limited_creature], new_mod, value)
+	new_mod = mod_cell('Narrow Creature', 17, [limited_creature_narrow], new_mod, value)
 	value = 'family'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'org'

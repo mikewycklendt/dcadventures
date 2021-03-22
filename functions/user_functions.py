@@ -24,7 +24,7 @@ from copy import deepcopy
 
 db = SQLAlchemy()
 
-def user_item(table, name, value, new, field, body, name_check=True, class_check=False):
+def user_item(table, name, value, new, field, body, name_check=True, class_check=False, sub=False, sub_column=False):
 
 	new_items = body['new_items']
 	error_msgs = body['error_msgs']
@@ -44,6 +44,9 @@ def user_item(table, name, value, new, field, body, name_check=True, class_check
 
 			entry = table(name=new)
 			db.session.add(entry)
+			if sub != False:
+				setattr(table, sub_column, sub)
+				
 			db.session.commit()
 			value = entry.id
 			item = {}

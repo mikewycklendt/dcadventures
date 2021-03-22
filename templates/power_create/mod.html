@@ -509,13 +509,24 @@
 			
 			<div id="mod-limited-creature">
 				<div>
-					<select class="select-sml" id="mod_limited_creature" name="mod_limited_creature" >
+					<select class="select-sml" id="mod_limited_creature" name="mod_limited_creature" onchange="mod_limited_creature()">
 						<option value="">Creature</option>
 						<option value="x">Variable</option>
 						{% for c in creatures %}
 							<option value={{c.id}}>{{c.name}}</option>
 						{% endfor %}
 					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml" id="mod_limited_creature_narrow" name="mod_limited_creature_narrow" onchange="mod_limited_creature_narrow()">
+						<option value="">Narrow Creature</option>
+						<option value="x">Variable Narrow Creature</option>
+					</select>
+				</div>
+
+				<div id="mod-limited-creature-other">
+					<input type="text" id="mod_limited_creature_other" name="mod_limited_creature_other" placeholder="Other Creature">
 				</div>
 			</div>
 

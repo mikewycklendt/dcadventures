@@ -188,6 +188,7 @@ def narrow_creature_select():
 			options.append({'id': n.id, 'name': n.name})
 	except:
 		options.append({'id': '', 'name': 'Nsrrow Creature'})
+		options.append({'id': 'x', 'name': 'Variable Nsrrow Creature'})
 	
 	body['options'] = options
 

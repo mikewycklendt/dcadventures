@@ -1733,6 +1733,8 @@ class PowerMod(db.Model):
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	limited_ground = db.Column(db.Integer, db.ForeignKey('ground.id'))
 	limited_creature =  db.Column(db.Integer, db.ForeignKey('creature.id'))
+	limited_creature_narrow =  db.Column(db.Integer, db.ForeignKey('creature_narrow.id'))
+	limited_creature_other =  db.Column(db.String())
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	side_other = db.Column(db.String())
@@ -1826,6 +1828,8 @@ class PowerMod(db.Model):
 			'limited_range': self.limited_range,
 			'limited_ground': self.limited_ground,
 			'limited_creature': self.limited_creature,
+			'limited_creature_narroq': self.limited_creature_narrow,
+			'limited_creature_other': self.limited_creature_other,
 			'side_effect_type': self.side_effect_type,
 			'side_level': self.side_level,
 			'side_other': self.side_other,

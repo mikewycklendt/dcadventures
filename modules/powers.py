@@ -2381,6 +2381,8 @@ def power_post_mod():
 	body = {}
 	body['error_msgs'] = []
 	body['success'] = True
+	body['new'] = False
+	body['new_items'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -2453,6 +2455,8 @@ def power_post_mod():
 	limited_range = request.get_json()['limited_range']
 	limited_ground = request.get_json()['limited_ground']
 	limited_creature = request.get_json()['limited_creature']
+	limited_creature_narrow = request.get_json()['limited_creature_narrow']
+	limited_creature_other = request.get_json()['limited_creature_other']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
@@ -2530,6 +2534,12 @@ def power_post_mod():
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
 	
+	body = user_item(Creature, 'Creature', limited_creature, limited_creature_other, 'creature-sml', body, True, True)
+	limited_creature = body['output']
+
+	body = user_item(NarrowCreature, 'Narrow Creature', limited_creature_narrow, limited_creature_other, 'creature-narrow-sml', body, True, True, limited_creature, 'creature')
+	limited_creature_narrow = body['output']
+		
 
 	try:
 		entry = PowerMod(power_id = power_id,
@@ -2593,6 +2603,8 @@ def power_post_mod():
 							limited_range = limited_range,
 							limited_ground = limited_ground,
 							limited_creature = limited_creature,
+							limited_creature_narrow = limited_creature_narrow,
+							limited_creature_other = limited_creature_other,
 							side_effect_type = side_effect_type,
 							side_level = side_level,
 							side_other = side_other,

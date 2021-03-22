@@ -97,54 +97,6 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-
-@app.route('/creatures/create')
-def creatures_create():
-
-	entries = ['Elves', 'Sea']
-
-	for i in entries:
-
-		entry = Creature(name=i)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Creature.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('creatures added')
-
-@app.route('/narrow/create')
-def narrow_create():
-
-	entries = ['Dog', 'Falcon', 'Cat']
-
-	for i in entries:
-
-		entry = NarrowCreature(name=i, creature=9, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	entries = ['Dolphin', 'Whale', 'Shark', 'Fish']
-
-	for i in entries:
-
-		entry = NarrowCreature(name=i, creature=19, show=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Narrow.query.all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return ('narrow creatures added')
-
-
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
