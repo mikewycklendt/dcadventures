@@ -60,6 +60,7 @@
 	border-bottom-right-radius: 10px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
+	gap: .3vw;
 }
 
 #extras-row1 {
@@ -76,9 +77,9 @@
 
 .extras-split {
 	display: grid;
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 50% 50%;
 	font-size: 70%;
-	padding: .4vw;
+	padding: .3vw;
 	justify-content: left;
 }
 
