@@ -160,7 +160,7 @@ def narrow_create():
 		db.session.add(entry)
 		db.session.commit()
 
-	entries = ['Dolphin', 'Whale', 'Shark']
+	entries = ['Dolphin', 'Whale', 'Shark', 'Fish']
 
 	for i in entries:
 
