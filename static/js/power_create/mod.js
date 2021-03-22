@@ -341,7 +341,7 @@ function mod_limited_creature() {
 	select_opacity(select, options)
 }
 
-function mod_limited_creature() {
+function mod_limited_creature_narrow() {
 	const select = 'mod_limited_creature_narrow';
 	const options = [{'val': 'other', 'div': 'mod-limited-creature-other'}]
 	
