@@ -76,8 +76,9 @@
 
 .extras-split {
 	display: grid;
-	grid-template-columns: 50% 50%;
-	font-size: 80%;
+	grid-template-columns: 40% 60%;
+	font-size: 70%;
+	padding: .2vw;
 }
 
 #extras-entry textarea{
