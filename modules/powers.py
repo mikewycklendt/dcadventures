@@ -3384,7 +3384,7 @@ def power_post_sense():
 									dimensional_type = dimensional_type,
 									ranks = ranks,
 									cost = cost,
-									circ = circ
+									circ = circ,
 									comprehend = comprehend,
 									comprehend_type = comprehend_type
 								)
