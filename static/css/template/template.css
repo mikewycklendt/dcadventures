@@ -308,6 +308,15 @@ body{
 	border: 1px solid lightblue;
 }
 
+.check-div-fit {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	padding-right: .4vw;
+	border-radius: 5px;
+	border: 1px solid lightblue;
+}
+
 .vcenter {
 	display: flex;
 	height: 100%;
