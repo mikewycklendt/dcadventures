@@ -52,7 +52,7 @@
 	display: grid;
 	grid-template-columns: 15% 15% 20% 22% 28%;
 	grid-auto-rows: auto;
-	gap: .4vw;
+	gap: .2vw;
 }
 
 #sense-button-row {
