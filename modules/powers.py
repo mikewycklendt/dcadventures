@@ -367,7 +367,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3293,6 +3293,9 @@ def power_post_sense():
 	target = request.get_json()['target']
 	sense = request.get_json()['sense']
 	subsense = request.get_json()['subsense']
+	visual = request.get_json()['visual']
+	mental = request.get_json()['mental']
+	tactile = request.get_json()['tactile']
 	skill = request.get_json()['skill']
 	sense_type = request.get_json()['sense_type']
 	height_trait_type = request.get_json()['height_trait_type']
@@ -3367,6 +3370,9 @@ def power_post_sense():
 									target = target,
 									sense = sense,
 									subsense = subsense,
+									visual = visual,
+									mental = mental,
+									tactile = tactile,
 									skill = skill,
 									sense_type = sense_type,
 									height_trait_type = height_trait_type,

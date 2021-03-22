@@ -1453,6 +1453,9 @@ def sense_post(entry, body, cells):
 	target = entry.target
 	sense = entry.sense
 	subsense = entry.subsense
+	visual = entry.visual
+	mental = entry.mental
+	tactile = entry.tactile
 	skill = entry.skill
 	sense_type = entry.sense_type
 	height_trait_type = entry.height_trait_type
@@ -1586,6 +1589,10 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
 	
+	cells = check_cell('No Mental', 11, mental, cells)
+	cells = check_cell('No Visual', 11, visual, cells)
+	cells = check_cell('No Tactile', 11, tactile, cells)
+
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
 	

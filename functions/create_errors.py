@@ -633,6 +633,26 @@ def select_check(value, field, check, name, require, errors):
 
 	return (errors)
 
+
+def checked_invalid_option(check, value, field, checkname, fieldname, name, errors):
+
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if check == False:
+		return (errors)
+
+	if value == field:
+		error = True
+		message = 'If rhis rule ' + checkname + ' you cannot set the ' + fieldname + ' field to ' + name + '.'
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def multiple(options, errors):
 	error_msgs = errors['error_msgs']
 	error = False

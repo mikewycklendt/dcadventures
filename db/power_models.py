@@ -2045,6 +2045,9 @@ class PowerSenseEffect(db.Model):
 	target = db.Column(db.String())
 	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	subsense = db.Column(db.Integer, db.ForeignKey('sub_senses.id'))
+	visual = db.Column(db.Boolean)
+	mental = db.Column(db.Boolean)
+	tactile = db.Column(db.Boolean)
 	sense_cost = db.Column(db.Integer)
 	subsense_cost = db.Column(db.Integer)
 	skill = db.Column(db.Integer, db.ForeignKey('power_check.id'))
@@ -2092,6 +2095,8 @@ class PowerSenseEffect(db.Model):
 			'target': self.target,
 			'sense': self.sense,
 			'subsense': self.subsense,
+			'visual': self.visual,
+			'mental': self.mental,
 			'sense_cost': self.sense_cost,
 			'subsense_cost': self.subsense_cost,
 			'skill': self.skill,
