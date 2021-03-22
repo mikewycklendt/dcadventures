@@ -120,43 +120,11 @@ def creatures_create():
 @app.route('/narrow/create')
 def narrow_create():
 
-	tablename =  'Narrow Creature'
-
-	name = 'All Nsrrow Creatures'
-
-	entry = NarrowCreature(all=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = NarrowCreature(current=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = NarrowCreature(any=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = NarrowCreature(var=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = NarrowCreature(none=True, name=name)
-	db.session.add(entry)
-	db.session.commit()
-
 	entries = ['Dog', 'Falcon', 'Cat']
 
 	for i in entries:
 
-		entry = Narrow(name=i, creature=9, show=True)
+		entry = NarrowCreature(name=i, creature=9, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
@@ -164,7 +132,7 @@ def narrow_create():
 
 	for i in entries:
 
-		entry = Narrow(name=i, creature=19, show=True)
+		entry = NarrowCreature(name=i, creature=19, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
