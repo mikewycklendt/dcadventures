@@ -802,6 +802,34 @@ function div_text(select_input, div_input, options) {
 	}, 300)	
 }
 
+
+function div_text_multiple(select_input, options) {
+	const value = select(select_input);
+	let o;
+
+	for (o of options) {
+		const val = o.val;
+		const div = document.getElementById(o.div);
+
+		if (val == value) {
+			div.style.opacity = '0%';
+		}
+	}
+
+	setTimeout(function(){
+		for (o of options) {
+			const val = o.val;
+			const text = o.text; 
+			const div = document.getElementById(o.div);
+	
+			if (val == value) {
+				div.innerHTML = text;
+			}
+		}
+		div.style.opacity = '100%';
+	}, 300)	
+}
+
 function select_entry(check_input, base_input, entry_input, field_input, value) {
 	const check = document.getElementById(check_input);
 	const base = document.getElementById(base_input);

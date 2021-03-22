@@ -58,7 +58,8 @@ function sense_skill() {
 function sense_type() {
 	const select = "sense_type";
 	const options = [{'val': 'height', 'div': "sense-height"},
-					{'val': 'resist', 'div': "sense-resist"}];
+					{'val': 'resist', 'div': "sense-resist"},
+					{'val': 'conceal', 'div': "sense-cobceal"}];
 
 	select_opacity(select, options);
 }
@@ -225,6 +226,7 @@ function sense_submit() {
 	const circ = select("sense_circ");
 	const comprehend = check("sense_comprehend");
 	const comprehend_type = select("aense_comprehend_type");
+	const concealment = select("sense_concealment");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -279,7 +281,8 @@ function sense_submit() {
 			'power_cost': power_cost,
 			'circ': circ,
 			'comprehend': comprehend,
-			'comprehend_type': comprehend_type
+			'comprehend_type': comprehend_type,
+			'concealment': concealment
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -1491,6 +1491,7 @@ def sense_post(entry, body, cells):
 	circ = entry.circ
 	comprehend = entry.comprehend
 	comprehend_type = entry.comprehend_type
+	concealment = entry.concealment
 
 
 	cost = get_cost(cost, ranks, extra_id)
@@ -1512,6 +1513,7 @@ def sense_post(entry, body, cells):
 	time_skill = get_name(Skill, time_skill)
 	time_bonus = get_name(SkillBonus, time_bonus)
 	distance_unit = get_name(Unit, distance_unit)
+	concealment = get_name(Conceal, concealment)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1557,6 +1559,7 @@ def sense_post(entry, body, cells):
 	perm = string(resist_permanent, word)
 	wid = width(wid, 12, resist_permanent)
 	vcells = vcell('resist', wid, [affects, resist_trait, word, perm], vcells)
+	vcells = vcell('conceal', 22, [concealment], vcells)
 	vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

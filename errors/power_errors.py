@@ -1285,6 +1285,7 @@ def sense_post_errors(data):
 	circ = data['circ']
 	comprehend = data['comprehend']
 	comprehend_type = data['comprehend_type']
+	concealment = data['concealment']
 
 
 	errors = id_check(PowerCost, cost)
@@ -1303,6 +1304,7 @@ def sense_post_errors(data):
 	errors = id_check(Unit, time_unit, 'unit', errors)
 	errors = id_check(Skill, time_skill, 'skill', errors)
 	errors = id_check(Unit, distance_unit, 'unit', errors)
+	errors = id_check(Conceal, concealment, 'Concealment', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1325,6 +1327,10 @@ def sense_post_errors(data):
 	errors = variable_field('resist', sense_type, 'Resistant Trait Type', resist_trait_type, errors)
 	errors = variable_field('resist', sense_type, 'Resistant Trait', resist_trait, errors)
 	errors = check_field(resist_immune, 'Immunity', 'Immunity Type', resist_permanent, errors)
+
+	errors = variable_fields('conceal', 'Concealment', sense_type, [concealment], errors)
+	errors = variable_field('conceal', sense_type, 'Concealment', concealment, errors)
+
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)
 	errors = seperate([time_value, time_type], 'the Time Effect', errors)

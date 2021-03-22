@@ -146,6 +146,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	light = Light.query.all()
 
+	maneuvers = db.session.query(Maneuver).filter(Maneuver.hide == None).order_by(Maneuver.name).all()
+
 	maths = Math.query.all()
 
 	material = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
@@ -491,7 +493,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_degree=power_degree, power_degree_type=power_degree_type, power_move=power_move, power_move_type=power_move_type, power_opposed=power_opposed, power_check=power_check,
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
-											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures)
+											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
+											maneuvers=maneuvers)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3334,6 +3337,7 @@ def power_post_sense():
 	circ = request.get_json()['circ']
 	comprehend = request.get_json()['comprehend']
 	comprehend_type = request.get_json()['comprehend_type']
+	concealment = request.get_json()['concealment']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3351,6 +3355,7 @@ def power_post_sense():
 	lighting = db_integer(Light, lighting)
 	time_bonus = db_integer(SkillBonus, time_bonus)
 	distance_unit = db_integer(Unit, distance_unit)
+	concealment = db_integer(Conceal, concealment)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3407,7 +3412,8 @@ def power_post_sense():
 									cost = cost,
 									circ = circ,
 									comprehend = comprehend,
-									comprehend_type = comprehend_type
+									comprehend_type = comprehend_type,
+									concealment = concealment
 								)
 
 		db.session.add(entry)

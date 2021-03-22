@@ -110,6 +110,17 @@
 
 		<div>
 
+			<div id="sense-conceal">
+				<div>
+					<select class="select-sml" id="sense_concealment" name="sense_concealment">
+						<option value="">Concealment</option>
+						{% for c in concealment %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="sense-height">
 				<div>
 					<select class="select-sml" id="sense_height_trait_type" name="sense_height_trait_type" onchange="sense_height_trait_type()">

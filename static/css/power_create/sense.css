@@ -103,6 +103,14 @@
 	transition: all .3s ease-out;
 }
 
+#sense-conceal {
+	display: grid;
+	grid-template-columns: 30% 70%;
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #sense-resist-trait {
 	display: grid;
 	grid-auto-rows: auto;
