@@ -1483,6 +1483,9 @@ def sense_post(entry, body, cells):
 	time_value = entry.time_value
 	time_type = entry.time_type
 	circ = entry.circ
+	comprehend = entry.comprehend
+	comprehend_type = entry.comprehend_type
+
 
 	cost = get_cost(cost, ranks, extra_id)
 	
@@ -1519,6 +1522,10 @@ def sense_post(entry, body, cells):
 
 	dimensions_select = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
 	dimensional_type = selects(dimensional_type, dimensions_select)
+
+	
+	comprehend_select = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
+	comprehend_type = selects(comprehend_type, comprehend_select)
 
 	resist_circ = integer_convert(resist_circ)
 	distance_dc = integer_convert(distance_dc)
@@ -1566,6 +1573,11 @@ def sense_post(entry, body, cells):
 	new_mod = mod_create('Dimensional', 15)
 	new_mod = mod_cell('Type', 6, [dimensional_type], new_mod)
 	body = mod_add(dimensional, new_mod, body)
+	
+	cells = check_cell('Comprehend', 12, comprehend, cells, True)
+	new_mod = mod_create('Comprehend', 15)
+	new_mod = mod_cell('Type', 6, [comprehend_type], new_mod)
+	body = mod_add(comprehend, new_mod, body)
 
 	cells = check_cell('Radius', 8, radius, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)
@@ -2965,6 +2977,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	ranks = entry.ranks
 	extra = entry.extra
 	cost = entry.cost
+	unique = entry.unique
 
 	ranks = integer_convert(ranks)
 
@@ -2975,6 +2988,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	cells = cell('Extra', 25, [extra], cells)
 	cells = cell('Ranks', 12, [ranks], cells)
 	cells = cell('Cost', 12, [calculated], cells)
+	cells = check_cell('Unique', 8, unique, cells)
 
 	body = send(cells, body)
 

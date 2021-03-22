@@ -1272,6 +1272,9 @@ def sense_post_errors(data):
 	cost = data['cost']
 	power_cost = data['power_cost']
 	circ = data['circ']
+	comprehend = data['comprehend']
+	comprehend_type = data['comprehend_type']
+
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
@@ -1315,6 +1318,7 @@ def sense_post_errors(data):
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)
 	errors = seperate([time_value, time_type], 'the Time Effect', errors)
 	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)
+	errors = check_field(comprehend, 'Comprehend', 'Comprehend Type', comprehend_type, errors)
 
 	return (errors)
 

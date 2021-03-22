@@ -109,7 +109,7 @@ function sense_dark() {
 	const check = "sense_dark";
 	const lig = "sense-lighting";
 
-	check_opacity(check, lig);
+	check_display(check, lig);
 }
 
 function sense_time_set() {
@@ -165,6 +165,14 @@ function sense_dimensional() {
 	check_drop(check, div, entry);
 }
 
+function sense_comprehend(){
+	const check = 'sense_comprehend';
+	const div = 'sense-comprehend';
+	const entry = 'sense-entry';
+
+	check_drop(check, div, entry);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -212,6 +220,8 @@ function sense_submit() {
 	const cost = select("sense_cost");
 	const power_cost = select("cost");
 	const circ = select("sense_circ");
+	const comprehend = check("sense_comprehend");
+	const comprehend_type = select("aense_comprehend_type");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -261,7 +271,9 @@ function sense_submit() {
 			'created': created,
 			'font': font,
 			'power_cost': power_cost,
-			'circ': circ
+			'circ': circ,
+			'comprehend': comprehend,
+			'comprehend_type': comprehend_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

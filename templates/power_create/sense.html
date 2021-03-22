@@ -218,6 +218,12 @@
 				<input type="checkbox" id="sense_time" class="medium-checkbox med-checkbox" onclick="sense_time()"> Time Effect
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_comprehend" class="medium-checkbox med-checkbox" onclick="sense_comprehend()"> Comprehend
+			</div>
+		</div>
 
 		<div>
 			<div class="check-div">
@@ -243,6 +249,20 @@
 			</div>
 		</div>
 	
+	</div>
+
+	<div id="aense-comprehend">
+		<div>
+			Comprehend
+		</div>
+
+		<div>
+			<select class="select-sml" id="aense_comprehend_type" name="aense_comprehend_type">
+				{% for c in comprehend %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="sense-time">

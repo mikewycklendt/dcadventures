@@ -237,6 +237,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
 
+	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
+
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
@@ -1005,6 +1007,7 @@ def power_post_ranks():
 	rank = request.get_json()['rank']
 	flat = request.get_json()['flat']
 	extra = request.get_json()['extra']
+	unique = request.get_json()['unique']
 	base_cost = request.get_json()['base_cost']
 	base_ranks = request.get_json()['base_ranks']
 
@@ -1018,7 +1021,8 @@ def power_post_ranks():
 		entry = PowerCost(power_id = power_id,
 							cost = cost,
 							ranks = ranks,
-							extra = extra)
+							extra = extra,
+							unique = unique)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -3310,6 +3314,8 @@ def power_post_sense():
 	columns = request.get_json()['columns']
 	font = request.get_json()['font']
 	circ = request.get_json()['circ']
+	comprehend = request.get_json()['comprehend']
+	comprehend_type = request.get_json()['comprehend_type']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3378,7 +3384,10 @@ def power_post_sense():
 									dimensional_type = dimensional_type,
 									ranks = ranks,
 									cost = cost,
-									circ = circ)
+									circ = circ
+									comprehend = comprehend,
+									comprehend_type = comprehend_type
+								)
 
 		db.session.add(entry)
 		db.session.commit()

@@ -33,6 +33,7 @@ function ranks_submit() {
 	const base_cost = select("cost");
 	const base_ranks = select("base_ranks");
 	const base_flat = check("flat");
+	const unique = check("ranks_unique");
 
 	const errors = 'ranks-err';
 	const err_line = 'ranks-err-line';
@@ -48,6 +49,7 @@ function ranks_submit() {
 			'ranks': ranks,
 			'base_cost': base_cost,
 			'extra': extra,
+			'unique': unique,
 			'base_ranks': base_ranks,
 			'base_flat': base_flat
 		}),

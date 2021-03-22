@@ -60,6 +60,7 @@
 }
 
 #sense-lighting {
+	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
 }
@@ -114,7 +115,7 @@
 #sense-row3 {
 	display: grid;
 	padding: 2px;;
-	grid-template-columns: 25% 15% 20% 25% 15%;
+	grid-template-columns: auto auto auto auto auto;
 	justify-content: center;
 	gap: 2px;
 }
@@ -123,7 +124,7 @@
 	display: grid;
 	padding: 2px;
 	gap: 2px;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: auto auto auto auto auto auto;
 	justify-content: center;
 }
 
@@ -182,6 +183,15 @@
 #sense-dimensional {
 	display: grid;
 	grid-template-columns: 20% 30% 50%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#aense-comprehend  {
+	display: grid;
+	grid-template-columns: 15% 20% 15% 50%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;

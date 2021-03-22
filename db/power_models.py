@@ -254,6 +254,7 @@ class PowerRanks(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer)
 	extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	unique = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -261,7 +262,8 @@ class PowerRanks(db.Model):
 			'power_id': self.power_id,
 			'cost': self.cost,
 			'ranks': self.ranks,
-			'extra': self.extra
+			'extra': self.extra,
+			'unique': self.unique
 		}
 
 class PowerCheck(db.Model):
@@ -2075,7 +2077,8 @@ class PowerSenseEffect(db.Model):
 	time_value = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 	time_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	circ = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
-
+	comprehend = db.Column(db.Boolean)
+	comprehend_type = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -2120,7 +2123,9 @@ class PowerSenseEffect(db.Model):
 			'dimensional_type': self.dimensional_type,
 			'ranks': self.ranks,
 			'cost': self.cost,
-			'circ': self.circ
+			'circ': self.circ,
+			'comprehend': self.comprehend,
+			'comprehend_type': self.comprehend_type
 		}
 
 class PowerReverse(db.Model):
