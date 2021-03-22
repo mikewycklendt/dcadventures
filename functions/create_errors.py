@@ -33,11 +33,14 @@ def required(value, name, errors):
 
 	return (errors)
 
-def not_required(check, value, name, errors):
+def not_required(check, value, name, errors, option='e', field=False):
 	error_msgs = errors['error_msgs']
 	error = False
 
 	if check:
+		return (errors)
+
+	if option == field:
 		return (errors)
 
 	if value == '':
@@ -50,6 +53,7 @@ def not_required(check, value, name, errors):
 		errors['error'] = error
 
 	return (errors)
+
 
 
 def required_keyword(value, form, name, errors):

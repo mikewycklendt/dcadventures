@@ -2650,7 +2650,7 @@ def power_extra_post_errors(data):
 
 	errors = required(name, 'Name', errors)
 	errors = not_required(alternate, cost, 'Cost', errors)
-	errors = not_required(alternate, ranks, 'Ranks', errors)
+	errors = not_required(alternate, ranks, 'Ranks', errors, 'x', cost)
 	errors = required(des, 'Description', errors)
 
 	return (errors)
