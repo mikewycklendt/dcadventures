@@ -21,9 +21,14 @@ function check_check_type() {
 					{'val': ['2', '7'], 'div': 'check-opposed'}]
 	const fields = ['check_attack', 'check_opposed', 'check_dc_value', 'check_dc_type']
 	const entry = 'check-entry';
+	const titles = [{'val': '1', 'text': 'Skill Check', 'div': 'check-dc-title'},
+					{'val': '6', 'text': 'Resistance Check', 'div': 'check-dc-title'},
+					{'val': '2', 'text': 'Opposed Check', 'div': 'check-opposed-title'},
+					{'val': '7', 'text': 'Comparison Check', 'div': 'check-opposed-title'}]
 
 	reset_all(fields); 
 	select_maxheight_shared(select, options, entry);
+	div_text_multiple(select, titles);
 }
 
 function check_trait_type() {
