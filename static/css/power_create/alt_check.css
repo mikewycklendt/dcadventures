@@ -191,6 +191,14 @@
 	grid-template-columns: 28% 25% 20% 27%;
 }
 
+#check-dc-title {
+	transition: all .3s ease-out;
+}
+
+#check-opposed-title {
+	transition: all .3s ease-out;
+}
+
 #check-button-row {
 	display: grid;
 	width: 98%;
