@@ -105,7 +105,7 @@
 
 #sense-conceal {
 	display: grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 30% 25%;
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;

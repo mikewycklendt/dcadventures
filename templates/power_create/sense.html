@@ -112,13 +112,21 @@
 
 			<div id="sense-conceal">
 				<div>
-					<select class="select-sml" id="sense_concealment" name="sense_concealment">
+					<select class="select-sml" id="sense_concealment" name="sense_concealment" onchange="sense_concealment()">
 						<option value="">Concealment</option>
+						<option value="any">Any</option>
 						{% for c in concealment %}
 							<option value={{c.id}}>{{c.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
+						
+				<div id="sense-conceal-precise">
+					<div class="check-div-fit">
+						<input type="checkbox" id="sense_conceal_precise" class="medium-checkbox med-checkbox" > Precise
+					</div>
+				</div>
+
 			</div>
 
 			<div id="sense-height">

@@ -141,6 +141,24 @@ def table_db_columns_create():
 
 
 
+@app.route('/time/options')
+def time_db_columns_create():
+	
+	name = 'Until Next Check'
+
+	entry = PowerTime(check=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(PowerTime).filter_by(hide=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.keyword)
+
+	return ('time fields added')
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)

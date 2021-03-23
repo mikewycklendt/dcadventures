@@ -3343,6 +3343,7 @@ def power_post_sense():
 	comprehend = request.get_json()['comprehend']
 	comprehend_type = request.get_json()['comprehend_type']
 	concealment = request.get_json()['concealment']
+	conceal_precise = request.get_json()['conceal_precise']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3418,7 +3419,8 @@ def power_post_sense():
 									circ = circ,
 									comprehend = comprehend,
 									comprehend_type = comprehend_type,
-									concealment = concealment
+									concealment = concealment,
+									conceal_precise = conceal_precise
 								)
 
 		db.session.add(entry)

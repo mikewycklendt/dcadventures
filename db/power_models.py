@@ -2093,6 +2093,7 @@ class PowerSenseEffect(db.Model):
 	comprehend = db.Column(db.Boolean)
 	comprehend_type = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
+	conceal_precise = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2142,7 +2143,8 @@ class PowerSenseEffect(db.Model):
 			'circ': self.circ,
 			'comprehend': self.comprehend,
 			'comprehend_type': self.comprehend_type,
-			'concealment': self.concealment
+			'concealment': self.concealment,
+			'conceal_precise': self.conceal_precise
 		}
 
 class PowerReverse(db.Model):
