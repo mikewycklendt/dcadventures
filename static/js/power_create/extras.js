@@ -22,6 +22,9 @@ function extras_submit() {
 	const flat = check("extra_flat");
 	const stack = check("extra_stack");
 	const power_rank = check("extra_power_rank");
+	const type = select("extra_type")
+	const required = select("extra_required")
+	
 	
 	const errors = 'extras-err';
 	const err_line = 'extras-err-line';
@@ -46,7 +49,9 @@ function extras_submit() {
 			'alternate': alternate,
 			'flat': flat,
 			'stack': stack,
-			'power_rank': power_rank
+			'power_rank': power_rank,
+			'type': type,
+			'required': required
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

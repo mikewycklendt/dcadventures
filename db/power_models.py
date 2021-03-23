@@ -198,6 +198,8 @@ class Extra(db.Model):
 	flat = db.Column(db.Boolean)
 	stack = db.Column(db.Boolean)
 	power_rank = db.Column(db.Boolean)
+	type = db.Column(db.String())
+	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -220,6 +222,8 @@ class Extra(db.Model):
 			'flat': self.flat,
 			'stack': self.stack,
 			'power_rank': self.power_rank,
+			'type': self.type,
+			'required': self.required,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,

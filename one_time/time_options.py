@@ -56,6 +56,12 @@ def time_db_columns_create():
 	entry = SkillTime(maintain=True, keyword=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
+	
+	name = 'Until Next Check'
+
+	entry = SkillTime(check=True, keyword=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
 	results = db.session.query(SkillTime).filter_by(hide=True).all()
 

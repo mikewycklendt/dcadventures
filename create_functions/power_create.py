@@ -295,7 +295,7 @@ def cost_check_table(table, id, check):
 		
 	return(check)
 
-def cost_exist(power_id, cost):
+def cost_exist(power_id, cost, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
@@ -325,6 +325,32 @@ def cost_exist(power_id, cost):
 			if check:
 				error = True
 				message = 'You never assigned the ' + c.keyword + ' cost to a rule.  Assign it to a rule or delete it.'
+				error_msgs.append(message)			
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def extra_cost_exist(power_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	extras = db.session.query(Extra).filter_by(power_id=power_id).first()
+
+	if extras is None:
+		return (errors)
+
+	extras = db.session.query(Extra).filter_by(power_id=power_id).all()
+
+	for e in extras:
+		id = e.id
+		if e.cost is None:
+			check = db.session.query(PowerCost).filter_by(extra=id).first()
+			if check is None:
+				error = True
+				message = 'You set the extra ' + e.name + ' to have a variable cost but did not set a variable cost for it.  Create the cost for ' + e.name + ' with the variable cost form and assign it to at least one rule before you can save this power.'
 				error_msgs.append(message)			
 
 	errors['error_msgs'] = error_msgs

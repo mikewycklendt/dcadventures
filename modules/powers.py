@@ -277,7 +277,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 
-	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'overwrite', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'add', 'name': 'Add'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
@@ -320,6 +320,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
 
 	minion_type = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
+
+	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
 	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 
@@ -494,7 +496,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
-											maneuvers=maneuvers)
+											maneuvers=maneuvers, extra_type=extra_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -779,12 +781,15 @@ def power_post_extra():
 	flat = request.get_json()['flat']
 	stack = request.get_json()['stack']
 	power_rank = request.get_json()['power_rank']
+	type = request.get_json()['type']
+	required = request.get_json()['required']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
+	required = db_integer(Extra, required)
 
-	cost = integer(cost)
-	ranks = integer(ranks)
+	cost = var_convert(cost)
+	ranks = var_convert(ranks)
 
 	try:
 		entry = Extra(power_id = power_id,
@@ -796,8 +801,9 @@ def power_post_extra():
 						alternate = alternate,
 						flat = flat,
 						stack = stack,
-						power_rank = power_rank
-
+						power_rank = power_rank,
+						type = type,
+						required = required
 					)
 
 		db.session.add(entry)
@@ -3344,6 +3350,7 @@ def power_post_sense():
 	comprehend_type = request.get_json()['comprehend_type']
 	concealment = request.get_json()['concealment']
 	conceal_precise = request.get_json()['conceal_precise']
+
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)

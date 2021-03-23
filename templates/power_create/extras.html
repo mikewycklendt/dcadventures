@@ -60,10 +60,30 @@
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
 					</select>
-				</div>			
+				</div>	
 			</div>
-			
-			<div class="extras-split">	
+
+			<div>
+				<select class="entry-select" id="extra_type" name="extra_type">
+					{% for e in extra_type %}
+						<option value="{{e.type}}">{{e.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>		
+				<select class="extra-select" id="extra_required" name="extra_required">
+					<option value=>Required Extra</option>
+				</select>
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<textarea id="extra_des" name="extra_des"></textarea>
+			</div>
+					
+			<div class="extras-four">	
 				<div>
 					<div class="vcenter">
 						<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
@@ -75,10 +95,7 @@
 						<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
 					</div>
 				</div>
-			</div>
 			
-			<div class="extras-split">
-				
 				<div>
 					<div class="vcenter">
 						<input type="checkbox" id="extra_stack" class="medium-checkbox med-checkbox"> Stackable
@@ -91,11 +108,10 @@
 					</div>
 				</div>	
 			</div>
-		</div>
 
-		<div>
-			<textarea id="extra_des" name="extra_des"></textarea>
 		</div>		
+	
+	
 	</div>
 	
 

@@ -174,6 +174,13 @@ function sense_comprehend(){
 	check_drop(check, div, entry);
 }
 
+function sense_concealment() {
+	const select = 'sense_concealment'
+	const options = [{'val': 'any', 'div': 'sense-conceal-precise'}]
+
+	select_opacity(select, options);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -227,6 +234,7 @@ function sense_submit() {
 	const comprehend = check("sense_comprehend");
 	const comprehend_type = select("aense_comprehend_type");
 	const concealment = select("sense_concealment");
+	const conceal_precise = check("sense_conceal_precise");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -282,7 +290,8 @@ function sense_submit() {
 			'circ': circ,
 			'comprehend': comprehend,
 			'comprehend_type': comprehend_type,
-			'concealment': concealment
+			'concealment': concealment,
+			'conceal_precise': conceal_precise
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

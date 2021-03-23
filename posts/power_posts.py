@@ -15,7 +15,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -1492,6 +1492,7 @@ def sense_post(entry, body, cells):
 	comprehend = entry.comprehend
 	comprehend_type = entry.comprehend_type
 	concealment = entry.concealment
+	conceal_precise = entry.conceal_precise
 
 
 	cost = get_cost(cost, ranks, extra_id)
@@ -1560,7 +1561,7 @@ def sense_post(entry, body, cells):
 	wid = width(wid, 12, resist_permanent)
 	vcells = vcell('resist', wid, [affects, resist_trait, word, perm], vcells)
 	vcells = vcell('conceal', 22, [concealment], vcells)
-	vcell_add('Effect', sense_type, vcells, cells)
+	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
 
@@ -1592,9 +1593,11 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
 	
+	cells = check_cell('Precise', 7, conceal_precise, cells)
 	cells = check_cell('No Mental', 11, mental, cells)
 	cells = check_cell('No Visual', 11, visual, cells)
 	cells = check_cell('No Tactile', 11, tactile, cells)
+
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
@@ -3027,14 +3030,20 @@ def power_extra_post(entry, body, cells):
 	flat = entry.flat
 	stack = entry.stack
 	power_rank = entry.power_rank
+	type = entry.type
+	required = entry.required
 
-	cost = integer_convert(cost)
+
+	cost = var_string(cost)
 	ranks = integer_convert(ranks)
-	inherit = get_name(inherit)
+	inherit = get_name(Power,inherit)
+	required = get_name(Extra, required)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
 	cells = cell('Per Rank', 12, [ranks], cells)
+	cells = cell('Effect Type', 12, [type], cells)
+	cells = cell('Required Extra', 17, [required], cells)
 	cells = check_cell('Flat Cost', 12, flat, cells)
 	cells = check_cell('Alternate Effect', 17, alternate, cells)
 	cells = check_cell('Stackable', 11, stack, cells)

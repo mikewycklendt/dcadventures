@@ -105,11 +105,19 @@
 
 #sense-conceal {
 	display: grid;
-	grid-template-columns: 30% 25%;
+	grid-template-columns: 30% 20% 50%;
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
 }
+
+
+#sense-conceal-precise {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 
 #sense-resist-trait {
 	display: grid;

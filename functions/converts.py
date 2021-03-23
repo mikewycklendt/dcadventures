@@ -119,6 +119,15 @@ def var_convert(value):
 		value = int(value)
 
 	return (value)
+	
+def var_string(value):
+
+	if value is None:
+		value = 'Variable'
+	else:
+		value = str(value)
+
+	return (value)
 
 def integer_convert(value):
 
