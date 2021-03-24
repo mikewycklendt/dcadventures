@@ -179,10 +179,12 @@ power_save = function() {
 	const skill = select("skill");
 	const skill_required = select("skill_required");
 	const skill_when = select("skill_when");
-	const conflict = select("conflict")
-	const conflict_bonus = select("conflict_bonus")
-	const conflict_type = select("conflict_type")
+	const conflict = select("conflict");
+	const conflict_bonus = select("conflict_bonus");
+	const conflict_type = select("conflict_type");
 	const condition = select("power_condition");
+	const target_type = select("target_type");
+	const strength_based = select("strength_based");
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
 	const character = check('char_check');;
@@ -245,6 +247,8 @@ power_save = function() {
 			'conflict_bonus': conflict_bonus,
 			'conflict_type': conflict_type,
 			'condition': condition,
+			'target_type': target_type,
+			'strength_based': strength_based,
 			'alt_check': alt_check,
 			'change_action': change_action,
 			'character': character,

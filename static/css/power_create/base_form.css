@@ -167,6 +167,13 @@
 	grid-template-columns: 50% 50%;
 }
 
+.base-three {
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+
+
 .check-fade{
 	opacity: 0%;
 	transition: all .3s linear;

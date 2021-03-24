@@ -62,6 +62,9 @@ class Power(db.Model):
 	target_type = db.Column(db.String())
 	target = db.Column(db.String())
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	target_type = db.Column(db.String())
+	strength_based = db.Column(db.String())
+
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -129,6 +132,8 @@ class Power(db.Model):
 			'grab': self.grab,
 			'grab_type': self.grab_type,
 			'condition': self.condition,
+			'target_type': self.target_type,
+			'strength_based': self.strength_based,
 			'alt_check': self.alt_check,
 			'change_action': self.change_action,
 			'character': self.character,

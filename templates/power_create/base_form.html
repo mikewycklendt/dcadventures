@@ -290,9 +290,23 @@
 		</div>
 	
 		<div style="width: 70%;">
-			<select class="base-select" id="target" name="target">
-				{% for t in target_type %}
-					<option value="{{t.type}}">{{t.name}}</option>
+			<select class="base-select" id="target_type" name="target_type">
+				{% for c in comprehend %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Target Type:
+		</div>
+	
+		<div style="width: 70%;">
+			<select class="base-select" id="strength_based" name="strength_based">
+				{% for s in strength_based %}
+					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -368,7 +382,7 @@
 			Conflict Bonus:
 		</div>
 
-		<div class="base-split">
+		<div class="base-three">
 	
 			<div>
 				<select class="base-select" id="conflict" name="conflict">

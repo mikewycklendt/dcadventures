@@ -215,7 +215,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'effect', 'name': 'Against Effect'}]
 
 	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
 
@@ -385,9 +385,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
 
-	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}]
+	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
-	target_type = [{'type': '', 'name': 'Target Type'}, {'type': 'language', 'name': 'Any Language'}, {'type': 'animal', 'name': 'Animal'}, {'type': 'machine', 'name': 'Machine'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}, {'type': 'x', 'name': 'Variable'}]
+	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}]
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
 
@@ -496,7 +496,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
-											maneuvers=maneuvers, extra_type=extra_type)
+											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -594,6 +594,9 @@ def save_power():
 	conflict_bonus = request.get_json()['conflict_bonus']
 	conflict_type = request.get_json()['conflict_type']
 	condition = request.get_json()['condition']
+	target_type = request.get_json()['target_type']
+	strength_based = request.get_json()['strength_based']
+
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
 	character = request.get_json()['character']
@@ -670,6 +673,9 @@ def save_power():
 	power.conflict_bonus = conflict_bonus
 	power.conflict_type = conflict_type
 	power.condition = condition
+	power.target_type = target_type
+	power.strength_based = strength_based
+
 	power.alt_check = alt_check	
 	power.change_action = change_action
 	power.character = character	

@@ -97,7 +97,11 @@ def integer(value):
 	elif value == 'oppbonus':
 		value = 543543
 	elif value == 'retry':
-		value - 432432
+		value = 432432
+	elif value == 'prop':
+		value = 321321
+	elif value == 'volume':
+		value = 210210
 	elif value == '':
 		value = None
 	elif value == 'none':
@@ -225,6 +229,10 @@ def integer_convert(value):
 		value = 'No Opponent Bonus'
 	elif value == 432432:
 		value = 'Retry Chhck'
+	elif value == 321321:
+		value = 'Proportional'
+	elif value == 210210:
+		value = 'Volume Rank'
 	elif value is None:
 		value = ''
 	else:
@@ -318,6 +326,10 @@ def int_check(value, name, errors):
 	elif value == 'oppbonus':
 		return (errors)
 	elif value == 'retry':
+		return (errors)
+	elif value == 'prop':
+		return (errors)
+	elif value == 'volume':
 		return (errors)
 	else:
 		try:
