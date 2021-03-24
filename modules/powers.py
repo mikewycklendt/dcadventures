@@ -496,7 +496,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
-											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type)
+											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
