@@ -791,27 +791,28 @@ def power_post_extra():
 	required = request.get_json()['required']
 	extra_effect = request.get_json()['extra_effect']
 	extra_effect_count = request.get_json()['extra_effect_count']
-	variable variable
-	character character
-	circ circ
-	create create
-	damage damage
-	dc dc
-	defense defense
-	degree degree
-	env env
-	minion minion
-	mod mod
-	move move
-	opposed opposed
-	ranged ranged
-	sense sense
-	time time
+	variable = request.get_json()['variable']
+	character = request.get_json()['character']
+	circ = request.get_json()['circ']
+	create = request.get_json()['create']
+	damage = request.get_json()['damage']
+	dc = request.get_json()['dc']
+	defense = request.get_json()['defense']
+	degree = request.get_json()['degree']
+	env = request.get_json()['env']
+	minion = request.get_json()['minion']
+	mod = request.get_json()['mod']
+	move = request.get_json()['move']
+	opposed = request.get_json()['opposed']
+	ranged = request.get_json()['ranged']
+	sense = request.get_json()['sense']
+	time = request.get_json()['time']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
 	required = db_integer(Extra, required)
 
+	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
 	ranks = var_convert(ranks)
 
@@ -829,23 +830,23 @@ def power_post_extra():
 						type = type,
 						required = required
 						extra_effect = extra_effect,
-						extra_effect_count = extra_effect_count
-						variable variable
-						character character
-						circ circ
-						create create
-						damage damage
-						dc dc
-						defense defense
-						degree degree
-						env env
-						minion minion
-						mod mod
-						move move
-						opposed opposed
-						ranged ranged
-						sense sense
-						time time
+						extra_effect_count = extra_effect_count,
+						variable = variable,
+						character = character,
+						circ = circ,
+						create = create,
+						damage = damage,
+						dc = dc,
+						defense = defense,
+						degree = degree,
+						env = env,
+						minion = minion,
+						mod = mod,
+						move = move,
+						opposed = opposed,
+						ranged = ranged,
+						sense = sense,
+						time = time
 					)
 
 		db.session.add(entry)
