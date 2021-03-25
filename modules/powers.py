@@ -1754,6 +1754,7 @@ def power_post_defense():
 	parry = request.get_json()['parry']
 	toughness = request.get_json()['toughness']
 	will = request.get_json()['will']
+	active = request.get_json()['active']
 	resist_area = request.get_json()['resist_area']
 	resist_perception = request.get_json()['resist_perception']
 	reflect = request.get_json()['reflect']
@@ -1806,6 +1807,7 @@ def power_post_defense():
 								parry = parry,
 								toughness = toughness,
 								will = will,
+								active = active,
 								resist_area = resist_area,
 								resist_perception = resist_perception,
 								reflect = reflect,

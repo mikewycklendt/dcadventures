@@ -472,6 +472,7 @@ def defense_post_errors(data):
 	parry = data['parry']
 	toughness = data['toughness']
 	will = data['will']
+	active = data['active']
 	resist_area = data['resist_area']
 	resist_perception = data['resist_perception']
 	reflect = data['reflect']

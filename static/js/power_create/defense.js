@@ -120,6 +120,7 @@ function defense_submit() {
 	const parry = check("defense_parry");
 	const toughness = check("defense_toughness");
 	const will = check("defense_will");
+	const active = check("defense_active");
 	const resist_area = check("defense_resist_area");
 	const resist_perception = check("defense_resist_perc");
 	const reflect = check("defense_reflect");
@@ -161,6 +162,7 @@ function defense_submit() {
 			'parry': parry,
 			'toughness': toughness,
 			'will': will,
+			'active': active,
 			'resist_area': resist_area,
 			'resist_perception': resist_perception,
 			'reflect': reflect,

@@ -37,6 +37,7 @@
 			<select class="select-sml" id="defense_defense" name="defense_defense">
 				<option value="">Defense</option>
 				<option value=any>Any</option>
+				<option value="power">Power Rank</option>
 				{% for d in defenses %}
 					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
@@ -89,7 +90,7 @@
 
 	</div>
 
-	<div id="defense-row2">
+	<div id="defense-row2" style="font-size: 80%;">
 
 		<div>
 			Works with: 
@@ -113,6 +114,10 @@
 		
 		<div class="check-div">
 			<input type="checkbox" id="defense_will" class="medium-checkbox med-checkbox" > Will
+		</div>
+
+		<div class="check-div">
+			<input type="checkbox" id="defense_active" class="medium-checkbox med-checkbox" > Active
 		</div>
 
 	</div>

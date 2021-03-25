@@ -684,7 +684,7 @@ def check_of_multiple(check, name, values, message, errors):
 	if check:
 		for value in values:
 			for v in value:
-				if v != '' or value == True:
+				if v != '' and v != False
 					complete = True
 				else:
 					complete = False
@@ -710,7 +710,7 @@ def of_multiple(values, message, errors):
 
 	for value in values:
 		for v in value:
-			if v != '' or value == True:
+			if v != '' and v != False:
 				complete = True
 			else:
 				complete = False
@@ -772,7 +772,7 @@ def select_of(value, selected_name, field_name, field, values, names, errors):
 
 	if value == field:
 		for v in values:
-			if v != '' or v == True:
+			if v != '':
 				error = False
 
 	last = len(names) - 1
@@ -783,6 +783,29 @@ def select_of(value, selected_name, field_name, field, values, names, errors):
 	for_message += ' or ' + names[last]
 
 	message = 'If this effect ' + selected_name + ', you must complete one of the ' + for_message + ' fields or make a different selection in the ' + field_name + ' field.'
+
+	if error:
+		error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def select_of_check(value, selected_name, names, field_name, field, values, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if value != field:
+		return (errors)
+
+	if value == field:
+		for v in values:
+			if v == True:
+				error = False
+
+	message = 'If this effect ' + selected_name + ', you must select one of the ' + names + ' fields or make a different selection in the ' + field_name + ' field.'
 
 	if error:
 		error_msgs.append(message)

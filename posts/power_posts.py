@@ -457,6 +457,7 @@ def defense_post(entry, body, cells):
 	parry = entry.parry
 	toughness = entry.toughness
 	will = entry.will
+	active = entry.active
 	resist_area = entry.resist_area
 	resist_perception = entry.resist_perception
 	reflect = entry.reflect
@@ -523,6 +524,7 @@ def defense_post(entry, body, cells):
 	cells = check_cell('Parry', 7, parry, cells)
 	cells = check_cell('Toughness', 10, toughness, cells)
 	cells = check_cell('Will', 5, will, cells)
+	cells = check_cell('Active', 7, active, cells)
 	cells = check_cell('Resists Area', 12, resist_area, cells)
 	cells = check_cell('Resists Perception', 19, resist_perception, cells)
 	
