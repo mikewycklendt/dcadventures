@@ -25,6 +25,23 @@
 			{% endfor %}
 		</select>
 	</div>
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Check Type:
+		</div>
+	
+		<div>
+			<select class="base-select" id="check" name="check" onchange="check_type()">
+				<option value="">Check Type</option>
+				<option value="none">None</option>
+				{% for c in checks %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -38,6 +55,25 @@
 			{% endfor %}
 		</select>
 	</div>
+
+	
+	<div class="base-field">
+		<div id="multiple-attr-title">
+			Conflict Action:
+		</div>
+		
+		<div style="width: 65%;">
+			<select class="base-select" id="conflict" name="conflict">
+				<option value=''>Conflict Action</option>
+				{% for c in conflicts %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+	</div>
+
+	
 
 	<div class="base-field">
 		<div id="multiple-attr-title">
@@ -108,13 +144,15 @@
 		<div id="multiple-attr-title">
 			Rank Limit:
 		</div>
-		
-		<select class="base-select" id="limit" name="limit" >
-			<option value=>None</option>
-			{% for i in hundred %}
-				<option value={{i}}>{{i}}</option>
-			{% endfor %}
-		</select>
+
+		<div style="width: 60%;">
+			<select class="base-select" id="limit" name="limit" >
+				<option value=>None</option>
+				{% for i in hundred %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	
 	</div>
 
@@ -168,23 +206,6 @@
 				<option value="">DC</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-	</div>
-	
-	<div class="base-field">
-		<div id="multiple-attr-title">
-			Check Type:
-		</div>
-	
-		<div>
-			<select class="base-select" id="check" name="check" onchange="check_type()">
-				<option value="">Check Type</option>
-				<option value=>None</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
@@ -385,15 +406,15 @@
 		<div class="base-three">
 	
 			<div>
-				<select class="base-select" id="conflict" name="conflict">
-					<option value="">N/A</option>
+				<select class="base-select" id="bonus_conflict" name="bonus_conflict">
+					<option value="">Action</option>
 					{% for c in conflicts %}
 						<option value={{c.id}}>{{c.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
 
-			<div>
+			<div style="width: 20%;">
 				<select class="base-select" id="conflict_bonus" name="conflict_bonus">
 					<option value="">Bonus</option>
 					{% for i in positives %}
@@ -402,7 +423,7 @@
 				</select>
 			</div>
 
-			<div>
+			<div style="width: 20%;">
 				<select class="base-select" id="conflict_type" class="conflict_type">
 					{% for b in bonus_type %}
 						<option value="{{b.type}}">{{b.name}}</option>

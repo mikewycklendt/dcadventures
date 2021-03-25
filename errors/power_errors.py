@@ -62,6 +62,7 @@ def power_save_errors(data):
 	skill_required = data['skill_required']
 	skill_when = data['skill_when']
 	conflict = data['conflict']
+	bonus_conflict = data['bonus_conflict']
 	conflict_bonus = data['conflict_bonus']
 	conflict_type = data['conflict_type']	
 	condition = data['condition']

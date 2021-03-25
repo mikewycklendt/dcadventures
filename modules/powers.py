@@ -591,6 +591,7 @@ def save_power():
 	skill_required = request.get_json()['skill_required']
 	skill_when = request.get_json()['skill_when']
 	conflict = request.get_json()['conflict']
+	bonus_conflict = request.get_json()['bonus_conflict']
 	conflict_bonus = request.get_json()['conflict_bonus']
 	conflict_type = request.get_json()['conflict_type']
 	condition = request.get_json()['condition']
@@ -626,6 +627,7 @@ def save_power():
 	check_type = db_integer(Check, check_type)
 	skill = db_integer(Skill, skill)
 	conflict = db_integer(ConflictAction, conflict)
+	bonus_conflict = db_integer(ConflictAction, bonus_conflict)
 	condition = db_integer(Condition, condition)
 	power = db.session.query(Power).filter(Power.id == power_id).one()
 
@@ -670,6 +672,7 @@ def save_power():
 	power.skill_required = skill_required
 	power.skill_when = skill_when
 	power.conflict = conflict
+	power.bonus_conflict = bonus_conflict
 	power.conflict_bonus = conflict_bonus
 	power.conflict_type = conflict_type
 	power.condition = condition

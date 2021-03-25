@@ -180,6 +180,7 @@ power_save = function() {
 	const skill_required = select("skill_required");
 	const skill_when = select("skill_when");
 	const conflict = select("conflict");
+	const bonus_conflict = select("bonus_conflict");
 	const conflict_bonus = select("conflict_bonus");
 	const conflict_type = select("conflict_type");
 	const condition = select("power_condition");
@@ -244,6 +245,7 @@ power_save = function() {
 			'skill_required': skill_required,
 			'skill_when': skill_when,
 			'conflict': conflict,
+			'bonus_conflict': bonus_conflict,
 			'conflict_bonus': conflict_bonus,
 			'conflict_type': conflict_type,
 			'condition': condition,
