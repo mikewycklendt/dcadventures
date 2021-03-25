@@ -983,6 +983,7 @@ def ranged_post_errors(data):
 	damage = data['damage']
 	keyword = data['keyword']
 	title = data['title']
+	general = data['general']
 
 	errors = power_check(power_id, errors)
 
@@ -996,6 +997,7 @@ def ranged_post_errors(data):
 	errors = id_check(Math, check_math, 'math', errors)
 	errors = id_check(Math, trait_math, 'math', errors)
 	errors = id_check(Math, distance_mod_math, 'math', errors)
+	errors = id_check(Range, general, 'General Range', errors)
 
 	errors = id_check(PowerCirc, circ)
 	errors = id_check(PowerDamage, damage)
@@ -1071,6 +1073,8 @@ def ranged_post_errors(data):
 	errors = variable_field('check', range_type, 'Trait', check_trait, errors)
 	errors = variable_field('check', range_type, 'Math', check_math, errors)
 	errors = variable_field('check', range_type, 'Modifier', check_mod, errors)
+
+	errors = variable_fields('general', 'General Range', range_type, [general], errors)
 
 
 

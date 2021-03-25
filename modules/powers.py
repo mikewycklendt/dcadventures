@@ -351,7 +351,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
-	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}]
+	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'general', 'name': 'General'}]
 
 	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
 
@@ -2542,6 +2542,7 @@ def power_post_ranged():
 	keyword = request.get_json()['keyword']
 	title = request.get_json()['title']
 	rank = request.get_json()['rank']
+	general = request.get_json()['general']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
@@ -2572,6 +2573,7 @@ def power_post_ranged():
 	check_math = db_integer(Math, check_math)
 	trait_math = db_integer(Math, trait_math)
 	distance_mod_math = db_integer(Math, distance_mod_math)
+	general = db_integer(Range, general)
 
 	flat_value = integer(flat_value)
 	flat_rank = integer(flat_rank)
@@ -2634,7 +2636,8 @@ def power_post_ranged():
 							damage = damage,
 							keyword = keyword,
 							title = title,
-							rank = rank)
+							rank = rank,
+							general = general)
 
 		db.session.add(entry)
 		db.session.commit()

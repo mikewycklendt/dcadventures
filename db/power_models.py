@@ -1957,6 +1957,7 @@ class PowerRanged(db.Model):
 	movement = db.Column(db.Boolean)
 	rank = db.Column(db.Boolean)
 	effect = db.Column(db.Boolean)
+	general = db.Column(db.Integer, db.ForeignKey('range.id'))
 
 	def format(self):
 		return {
@@ -2001,7 +2002,8 @@ class PowerRanged(db.Model):
 			'movement': self.movement,
 			'title': self.title,
 			'rank': self.rank,
-			'effect': self.effect
+			'effect': self.effect,
+			'general': self.general
 		}
 
 class PowerResist(db.Model):

@@ -1161,6 +1161,7 @@ def ranged_post(entry, body, cells):
 	keyword = entry.keyword
 	title = entry.title
 	rank = entry.rank
+	general = entry.general
 	
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
@@ -1182,6 +1183,8 @@ def ranged_post(entry, body, cells):
 	check_math = math_convert(Math, check_math)
 	trait_math = math_convert(Math, trait_math)
 	distance_mod_math = math_convert(Math, distance_mod_math)
+
+	general = get_name(Range, general)
 
 	flat_value = integer_convert(flat_value)
 	flat_rank = integer_convert(flat_rank)
@@ -1210,6 +1213,8 @@ def ranged_post(entry, body, cells):
 
 	distance_rank = string('Rank Distance', [flat_rank])
 	vcells = vcell('distance_rank', 30, [flat_rank, distance_rank], vcells)
+	
+	vcells = vcell('general', 30, [general, 'Range'], vcells)
 
 	rank = string('Rank:', [flat_rank_rank, flat_rank_value, flat_rank_units])
 	equals = string('=', [flat_rank_rank, flat_rank_value, flat_rank_units])
