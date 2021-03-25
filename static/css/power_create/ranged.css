@@ -185,7 +185,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: auto auto auto 22% 15%;
+	grid-template-columns: auto auto auto 18% 15%;
 }
 
 #ranged-err {
