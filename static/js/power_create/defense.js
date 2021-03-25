@@ -125,13 +125,7 @@ function defense_submit() {
 	const resist_perception = check("defense_resist_perc");
 	const reflect = check("defense_reflect");
 	const immunity = check("defense_immunity");
-	const reflect_action = select("defense_reflect_action");
-	const reflect_check = select("defense_reflect_check");
-	const reflect_dc = select("defense_reflect_dc");
-	const reflect_opposed_trait_type = select("defense_reflect_opposed_trait_type");
-	const reflect_opposed_trait = select("defense_reflect_opposed_trait");
-	const reflect_resist_trait_type = select("defense_reflect_resist_trait_type");
-	const reflect_resist_trait = select("defense_reflect_resist_trait");
+	const reflect_check = select("defense_reflect_check")
 	const immunity_type = select("defense_immunity_type");
 	const immunity_trait_type = select("defense_immunity_trait_type");
 	const immunity_trait = select("defense_immunity_trait");
@@ -167,13 +161,7 @@ function defense_submit() {
 			'resist_perception': resist_perception,
 			'reflect': reflect,
 			'immunity': immunity,
-			'reflect_action': reflect_action,
 			'reflect_check': reflect_check,
-			'reflect_dc': reflect_dc,
-			'reflect_opposed_trait_type': reflect_opposed_trait_type,
-			'reflect_opposed_trait': reflect_opposed_trait,
-			'reflect_resist_trait_type': reflect_resist_trait_type,
-			'reflect_resist_trait': reflect_resist_trait,
 			'immunity_type': immunity_type,
 			'immunity_trait_type': immunity_trait_type,
 			'immunity_trait': immunity_trait,

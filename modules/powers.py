@@ -1762,13 +1762,7 @@ def power_post_defense():
 	resist_perception = request.get_json()['resist_perception']
 	reflect = request.get_json()['reflect']
 	immunity = request.get_json()['immunity']
-	reflect_action = request.get_json()['reflect_action']
 	reflect_check = request.get_json()['reflect_check']
-	reflect_dc = request.get_json()['reflect_dc']
-	reflect_opposed_trait_type = request.get_json()['reflect_opposed_trait_type']
-	reflect_opposed_trait = request.get_json()['reflect_opposed_trait']
-	reflect_resist_trait_type = request.get_json()['reflect_resist_trait_type']
-	reflect_resist_trait = request.get_json()['reflect_resist_trait']
 	immunity_type = request.get_json()['immunity_type']
 	immunity_trait_type = request.get_json()['immunity_trait_type']
 	immunity_trait = request.get_json()['immunity_trait']
@@ -1781,19 +1775,17 @@ def power_post_defense():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 
+	reflect_check = db_integer(PowerCheck, reflect_check)
+	
+
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	defense = db_integer(Defense, defense)
-	reflect_action = db_integer(Action, reflect_action)
-	reflect_check = db_integer(Check, reflect_check)
 	immunity_damage = db_integer(Descriptor, immunity_damage)
 	cover_type = db_integer(Cover, cover_type)
 
 	mod = integer(mod)
 	roll = integer(roll)
-	reflect_dc = integer(reflect_dc)
-	reflect_opposed_trait = integer(reflect_opposed_trait)
-	reflect_resist_trait = integer(reflect_resist_trait)
 	immunity_trait = integer(immunity_trait)
 	immunity_descriptor = integer(immunity_descriptor)
 
@@ -1815,13 +1807,7 @@ def power_post_defense():
 								resist_perception = resist_perception,
 								reflect = reflect,
 								immunity = immunity,
-								reflect_action = reflect_action,
 								reflect_check = reflect_check,
-								reflect_dc = reflect_dc,
-								reflect_opposed_trait_type = reflect_opposed_trait_type, 
-								reflect_opposed_trait = reflect_opposed_trait,
-								reflect_resist_trait_type = reflect_resist_trait_type,
-								reflect_resist_trait = reflect_resist_trait,
 								immunity_type = immunity_type,
 								immunity_trait_type = immunity_trait_type,
 								immunity_trait =immunity_trait,

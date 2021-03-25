@@ -462,13 +462,7 @@ def defense_post(entry, body, cells):
 	resist_perception = entry.resist_perception
 	reflect = entry.reflect
 	immunity = entry.immunity
-	reflect_action = entry.reflect_action
 	reflect_check = entry.reflect_check
-	reflect_dc = entry.reflect_dc
-	reflect_opposed_trait_type = entry.reflect_opposed_trait_type
-	reflect_opposed_trait = entry.reflect_opposed_trait
-	reflect_resist_trait_type = entry.reflect_resist_trait_type
-	reflect_resist_trait = entry.reflect_resist_trait
 	immunity_type = entry.immunity_type
 	immunity_trait_type = entry.immunity_trait_type
 	immunity_trait = entry.immunity_trait
@@ -478,16 +472,14 @@ def defense_post(entry, body, cells):
 	cover_check = entry.cover_check
 	cover_type = entry.cover_type
 	
-	reflect_opposed_trait = trait_select(reflect_opposed_trait, reflect_opposed_trait_type)
-	reflect_resist_trait = trait_select(reflect_resist_trait, reflect_resist_trait_type)
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
+	reflect_check = get_keyword(PowerCheck, reflect_check)
+
 	extra = extra_name(extra_id)
 	immunity_descriptor = descriptor_name(immunity_descriptor)
 
 	defense = get_name(Defense, defense)
-	reflect_action = get_name(Action, reflect_action)
-	reflect_check = get_name(Check, reflect_check)
 	immunity_damage = get_name(Descriptor, immunity_damage)
 	cover_type = get_name(Cover, cover_type)
 
@@ -496,7 +488,6 @@ def defense_post(entry, body, cells):
 
 	mod = integer_convert(mod)
 	roll = integer_convert(roll)
-	reflect_dc = integer_convert(reflect_dc)
 
 	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
 	use = selects(use, use_type_select)
@@ -527,27 +518,10 @@ def defense_post(entry, body, cells):
 	cells = check_cell('Resists Perception', 19, resist_perception, cells)
 	
 	cells = check_cell('Reflect', 10, reflect, cells, True)
-	select = [{'type': 1, 'name': 'Skill Check', 'w': 10}, {'type': 2, 'name': 'Opposed Check', 'w': 15}, {'type': 3, 'name': 'Routine Check', 'w': 15}, {'type': 4, 'name': 'Team Check', 'w': 15}, {'type': 5, 'name': 'Attack Check', 'w': 15}, {'type': 6, 'name': 'Resistance Check', 'w': 15}, {'type': 7, 'name': 'Comparison Check', 'w': 15}]
-	new_mod = mod_create('Reflects Attacks', 17, reflect_check, select)
-
-	value = 1
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	new_mod = mod_cell('DC:', 7, [reflect_dc], new_mod, value)
-	value = 2
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	new_mod = mod_cell('Opposed By:', 15, [reflect_opposed_trait], new_mod, value)
-	value = 3
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	value = 4
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	value = 5
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
-	value = 6
-	new_mod = mod_cell('Action Type', 15, [reflect_action], new_mod, value)
-	new_mod = mod_cell('Resisted By', 15, [reflect_resist_trait], new_mod, value)
+	new_mod = mod_create('Reflects Attacks', 17)
+	new_mod = mod_cell('Check:', 15, [reflect_check], new_mod, value)e)
 	body = mod_add(reflect, new_mod, body)
-	value = 7
-	new_mod = mod_cell('Action Type:', 15, [reflect_action], new_mod, value)
+
 	cells = check_cell('Immunity', 10, immunity, cells, True)
 	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)

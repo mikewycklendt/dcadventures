@@ -1547,13 +1547,6 @@ class PowerDefense(db.Model):
 	resist_perception = db.Column(db.Boolean)
 	reflect = db.Column(db.Boolean)
 	immunity = db.Column(db.Boolean)
-	reflect_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
-	reflect_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	reflect_dc = db.Column(db.Integer)
-	reflect_opposed_trait_type = db.Column(db.String())
-	reflect_opposed_trait = db.Column(db.Integer)
-	reflect_resist_trait_type = db.Column(db.String())
-	reflect_resist_trait = db.Column(db.Integer)
 	immunity_type = db.Column(db.String())
 	immunity_trait_type = db.Column(db.String())
 	immunity_trait = db.Column(db.Integer)
@@ -1582,13 +1575,7 @@ class PowerDefense(db.Model):
 			'resist_perception': self.resist_perception,
 			'reflect': self.reflect,
 			'immunity': self.immunity,
-			'reflect_action': self.reflect_action,
 			'reflect_check': self.reflect_check,
-			'reflect_dc': self.reflect_dc,
-			'reflect_opposed_trait_type': self.reflect_opposed_trait_type,
-			'reflect_opposed_trait': self.reflect_opposed_trait,
-			'reflect_resist_trait_type': self.reflect_resist_trait_type,
-			'reflect_resist_trait': self.reflect_resist_trait,
 			'immunity_type': self.immunity_type,
 			'immunity_trait_type': self.immunity_trait_type,
 			'immunity_trait': self.immunity_trait,

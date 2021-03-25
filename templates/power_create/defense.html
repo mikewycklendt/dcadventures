@@ -151,70 +151,15 @@
 		</div>
 		
 		<div>
-			<select class="select-sml" id="defense_reflect_action" name="defense_reflect_action">
-				<option value="">Reflect Action</option>
-				{% for a in actions %}
-					<option value={{a.id}}>{{a.name}}</option>
+			<select class="check-sml" id="defense_reflect_check" name="defense_reflect_check">
+				<option value="">Reflect Check</option>
+				<option value="">Use Variable Check form to Put Options here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div>
-			<select class="select-sml" id="defense_reflect_check" name="defense_reflect_check" onchange="defense_reflect_check()">
-				<option value="">Check Type</option>
-				<option value=free>Free Check</option>
-				{% for c in checks %}
-					<option value={{c.id}}>{{c.name}}</option>
-				{% endfor %}	
-			</select>
-		</div>
-
-		<div>
-			<div id="defense-reflect-dc">
-				<div>
-					<select class="select-sml" id="defense_reflect_dc" name="defense_reflect_dc">
-						<option value="">DC</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			</div>
-			
-			<div id="defense-reflect-opposed">
-				<div>
-					<select class="select-sml" id="defense_reflect_opposed_trait_type" name="defense_reflect_opposed_trait_type" onchange="defense_reflect_opposed_trait_type()">
-						<option value="">Opposed Trait</option>
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="defense_reflect_opposed_trait" name="defense_reflect_opposed_trait" onchange="defense_reflect_opposed_trait()">
-						<option value="">Trait</option>
-					</select>
-				</div>
-			</div>
-
-			<div id="defense-reflect-resist">
-				<div>
-					<select class="select-sml" id="defense_reflect_resist_trait_type" name="defense_reflect_resist_trait_type" onchange="defense_reflect_resist_trait_type()">
-						<option value="">Resistance Trait</option>
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="defense_reflect_resist_trait" name="defense_reflect_resist_trait" onchange="defense_reflect_resist_trait()">
-						<option value="">Trait</option>
-					</select>
-				</div>
-			</div>
-		</div>
 
 	</div>
 	

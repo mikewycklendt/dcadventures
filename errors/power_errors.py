@@ -478,13 +478,7 @@ def defense_post_errors(data):
 	resist_perception = data['resist_perception']
 	reflect = data['reflect']
 	immunity = data['immunity']
-	reflect_action = data['reflect_action']
 	reflect_check = data['reflect_check']
-	reflect_dc = data['reflect_dc']
-	reflect_opposed_trait_type = data['reflect_opposed_trait_type']
-	reflect_opposed_trait = data['reflect_opposed_trait']
-	reflect_resist_trait_type = data['reflect_resist_trait_type']
-	reflect_resist_trait = data['reflect_resist_trait']
 	immunity_type = data['immunity_type']
 	immunity_trait_type = data['immunity_trait_type']
 	immunity_trait = data['immunity_trait']
@@ -500,29 +494,14 @@ def defense_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 
-	print('\n\n\n\n\n')
-	print(reflect_action)
 	
-	errors = id_check(Action, reflect_action, 'Action', errors)
 
-	print(reflect_check)
-	errors = id_check(Check, reflect_check, 'Check', errors)
+	errors = id_check(PowerCheck, reflect_check, 'Reflect Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
 
 	errors = together('a die roll', [roll, outcome], errors)
-	errors = check_fields(reflect, 'Reflects Attacks', [reflect_action, reflect_check], errors)
-	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Action Type', reflect_action, errors)
-	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Check Type', reflect_check, errors)
-
-	value = reflect_check
-	fields = field('Trait Type', reflect_opposed_trait_type)
-	fields = field('Trait', reflect_opposed_trait, fields)
-	errors = variable('Opposed Check', '2', value, fields, errors)
-	fields = field('DC', reflect_dc)
-	errors = variable('Skill Check', '1', value, fields, errors)
-	fields = field('Trait Type', reflect_resist_trait)
-	fields = field('Trait', reflect_resist_trait_type, fields)
-	errors = variable('Resistance Check', '6', value, fields, errors)
+	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
+	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Check', reflect_check, errors)
 
 	errors = check_fields(immunity, 'immunity', [immunity_type], errors)
 
