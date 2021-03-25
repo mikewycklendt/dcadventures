@@ -424,7 +424,7 @@ def multiple_error(check, name, table, power_id, errors, title_table=False, colu
 					value = getattr(c, column)
 					attribute = getattr(table, column)
 					the_filter = attribute == value
-					checked = db.session.query(table).filter_by(title=title_id, the_filter, extra_id=None).count()
+					checked = db.session.query(table).filter(table.title == title_id, the_filter, table.extra_id == None).count()
 				else:
 					checked = db.session.query(table).filter_by(title=title_id, extra_id=None).count()			
 				if checked > 1:
