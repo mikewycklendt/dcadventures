@@ -403,7 +403,7 @@
 			Conflict Bonus:
 		</div>
 
-		<div class="base-three">
+		<div class="base-split">
 	
 			<div>
 				<select class="base-select" id="bonus_conflict" name="bonus_conflict">
@@ -414,23 +414,25 @@
 				</select>
 			</div>
 
-			<div>
-				<select class="base-select" id="conflict_bonus" name="conflict_bonus">
-					<option value="">Bonus</option>
-					{% for i in positives %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
+			<div class="base-split">
+				<div>
+					<select class="base-select" id="conflict_bonus" name="conflict_bonus">
+						<option value="">Bonus</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div>
+					<select class="base-select" id="conflict_type" class="conflict_type">
+						{% for b in bonus_type %}
+							<option value="{{b.type}}">{{b.name}}</option>
+						{% endfor %}
+					</select>
+				</div>	
 			</div>
-
-			<div>
-				<select class="base-select" id="conflict_type" class="conflict_type">
-					{% for b in bonus_type %}
-						<option value="{{b.type}}">{{b.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
+			
 		</div>
 
 	</div>
