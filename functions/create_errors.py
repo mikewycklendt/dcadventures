@@ -684,7 +684,7 @@ def check_of_multiple(check, name, values, message, errors):
 	if check:
 		for value in values:
 			for v in value:
-				if v != '' and v != False
+				if v != '' and v != False:
 					complete = True
 				else:
 					complete = False
