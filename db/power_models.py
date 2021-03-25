@@ -1205,6 +1205,7 @@ class PowerTime(db.Model):
 	player = db.Column(db.Boolean)
 	gm = db.Column(db.Boolean)
 	maintain = db.Column(db.Boolean)
+	check = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	circ_type = db.Column(db.Integer, db.ForeignKey('power_circ_type.id'))
@@ -1250,6 +1251,8 @@ class PowerTime(db.Model):
 			'instant': self.instant,
 			'player': self.player,
 			'gm': self.gm,
+			'maintain': self.maintain,
+			'check': self.check,
 			'hide': self.hidden,
 			'title': self.title,
 			'circ_type': self.circ_type,
