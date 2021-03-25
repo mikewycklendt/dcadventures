@@ -205,6 +205,26 @@ class Extra(db.Model):
 	power_rank = db.Column(db.Boolean)
 	type = db.Column(db.String())
 	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	extra_effect_count = db.Column(db.Integer)
+	extra_effect = db.Column(db.Boolean)
+	
+	variable = db.Column(db.Boolean)
+	character = db.Column(db.Boolean)
+	circ = db.Column(db.Boolean)
+	create = db.Column(db.Boolean)
+	damage = db.Column(db.Boolean)
+	dc = db.Column(db.Boolean)
+	defense = db.Column(db.Boolean)
+	degree = db.Column(db.Boolean)
+	env = db.Column(db.Boolean)
+	minion = db.Column(db.Boolean)
+	mod = db.Column(db.Boolean)
+	move = db.Column(db.Boolean)
+	opposed = db.Column(db.Boolean)
+	ranged = db.Column(db.Boolean)
+	sense = db.Column(db.Boolean)
+	time = db.Column(db.Boolean)
+
 	all = db.Column(db.Boolean)
 	current = db.Column(db.Boolean)
 	any = db.Column(db.Boolean)
@@ -229,6 +249,22 @@ class Extra(db.Model):
 			'power_rank': self.power_rank,
 			'type': self.type,
 			'required': self.required,
+			'variable': self.variable,
+			'character': self.character,
+			'circ': self.circ,
+			'create': self.create,
+			'damage': self.damage,
+			'dc': self.dc,
+			'defense': self.defense,
+			'degree': self.degree,
+			'env': self.env,
+			'minion': self.minion,
+			'mod': self.mod,
+			'move': self.move,
+			'opposed': self.opposed,
+			'ranged': self.ranged,
+			'sense': self.sense,
+			'time': self.time,
 			'all': self.all,
 			'current': self.current,
 			'any': self.any,
@@ -236,7 +272,9 @@ class Extra(db.Model):
 			'none': self.none,
 			'show': self.show,
 			'approved': self.approved,
-			'base': self.base
+			'base': self.base,
+			'extra_effect_count': self.extra_effect_count,
+			'extra_effect': self.extra_effect
 		}
 
 class PowerCost(db.Model):
@@ -654,8 +692,6 @@ class PowerDC(db.Model):
 			'descriptor': self.descriptor,
 			'descrip': self.descrip
 		}
-
-
 
 class PowerDegree(db.Model):
 	__tablename__ = 'power_degree'

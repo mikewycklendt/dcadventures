@@ -1,7 +1,21 @@
 
 function rule_specific(jsonResponse) {
-	console.log('no specific rules');
+	extra_effect_check(jsonResponse)
 }
+
+function extra_effect_check(jsonResponse) {
+	const multiple = jsonResponse.multiple;
+	const table = jsonResponse.table_id;
+
+	const div = 'extras-' + table;
+	
+	if (multiple == true) {
+		show_opacity(div)
+	} else {
+		hide_opacity(div)
+	}
+}
+
 
 
 

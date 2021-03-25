@@ -418,6 +418,8 @@ function deg_mod_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			extra_effect_check(jsonResponse);
+			
 			const id = jsonResponse.id;
 			const title_name = jsonResponse.title;
 			const title_id = jsonResponse.title_id;

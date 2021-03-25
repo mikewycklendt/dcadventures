@@ -115,15 +115,20 @@ def level_add(id, column, level, level_type, body):
 	return (body)
 
 
-def delete_link(table, link_table, id):
+def delete_link(table, link_table, id, multiple=False, column=False):
 	body = {}
 	body['success'] = True
 	body['hide_table'] = False
 	error_msgs = []
 
+	multiple = False
+
 	try:
 		get_trait = db.session.query(table).filter_by(id=id).first()
 		title_id = get_trait.title
+		power_id = get_trait.power_id
+		if column != False:
+			value = getattr(get_trait, column)
 		body['title_id'] = title_id
 		body['id'] = id
 		db.session.query(table).filter_by(id=id).delete()
@@ -136,6 +141,26 @@ def delete_link(table, link_table, id):
 			db.session.query(link_table).filter_by(id=title_id).delete()
 			body['hide_table'] = True
 			db.session.commit()
+		
+		if mulriple:
+			check = db.session.query(table).filter_by(power_id=power_id).first()
+			if check is not None:
+				check = db.session.query(table).filter_by(power_id=power_id).all()
+				for c in check:
+					title_id = c.title
+					if column != False:
+						value = getattr(c, column)
+						attribute = getattr(table, column)
+						the_filter = attribute == value
+						checked = db.session.query(table).filter_by(title=title_id, the_filter, extra_id=None).count()
+					else:
+						checked = db.session.query(table).filter_by(title=title_id, extra_id=None).count()			
+					if checked > 1:
+						check_title = db.session.query(link_table).filter_by(id=title_id).one()
+						if check_title.multiple == 'x':
+							multiple = True
+
+			body['multiple'] = multiple		
 	except:
 		body['success'] = False
 		message = 'There was an error deleting this rule.  You may have applied it to another rule.  Delete that rule then try again.'

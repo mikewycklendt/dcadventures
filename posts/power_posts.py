@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
@@ -883,6 +883,8 @@ def mod_post(entry, body, cells):
 	extra_circ = entry.extra_circ
 
 
+	body = one_multiple(PowerMod, power_id, body)
+
 	cost = get_cost(cost, ranks, extra_id)
 
 	area_damage = get_keyword(PowerDamage, area_damage)
@@ -1611,6 +1613,7 @@ def sense_post(entry, body, cells):
 
 def power_check_post(entry, body, cells):
 
+	power_id = entry.power_id
 	extra = entry.extra_id
 	id = entry.id
 	check_type = entry.check_type
@@ -1654,6 +1657,8 @@ def power_check_post(entry, body, cells):
 
 	body['title'] = title_name
 	body['add_title'] = True
+
+	body = title_multiple(PowerCheck, PowerCheckType, title, power_id, body)
 
 	extra = extra_name(extra_id)
 
@@ -2146,6 +2151,7 @@ def power_dc_post(entry, body, cells):
 
 def power_degree_post(entry, body, cells):
 
+	power_id = entry.power_id
 	extra = entry.extra_id
 	target = entry.target
 	value = entry.value
@@ -2231,6 +2237,8 @@ def power_degree_post(entry, body, cells):
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
+
+	body = degree_multiple(value, title, power_id, body)
 
 	inflict_trait = trait_select(inflict_trait, inflict_trait_type)
 	consequence_trait = trait_select(consequence_trait, consequence_trait_type)
@@ -2726,6 +2734,7 @@ def power_move_post(entry, body, cells):
 
 def power_opposed_post(entry, body, cells):
 
+	power_id = entry.power_id
 	extra = entry.extra_id
 	attached = entry.attached
 	frequency = entry.frequency
@@ -2766,6 +2775,8 @@ def power_opposed_post(entry, body, cells):
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
+
+	body = title_multiple(PowerOpposed, PowerOpposedType, title, power_id, body)
 
 	trait = trait_select(trait, trait_type)
 	opponent_trait = trait_select(opponent_trait, opponent_trait_type)
@@ -3034,6 +3045,24 @@ def power_extra_post(entry, body, cells):
 	power_rank = entry.power_rank
 	type = entry.type
 	required = entry.required
+	extra_effect = entry.extra_effect
+	extra_effect_count = entry.extra_effect_count
+	variable = entry.variable
+	character = entry.character
+	circ = entry.circ
+	create = entry.create
+	damage = entry.damage
+	dc = entry.dc
+	defense = entry.defense
+	degree = entry.degree
+	env = entry.env
+	minion = entry.minion
+	mod = entry.mod
+	move = entry.move
+	opposed = entry.opposed
+	ranged = entry.ranged
+	sense = entry.sense
+	time = entry.time
 
 
 	cost = var_string(cost)
@@ -3050,6 +3079,28 @@ def power_extra_post(entry, body, cells):
 	cells = check_cell('Alternate Effect', 17, alternate, cells)
 	cells = check_cell('Stackable', 11, stack, cells)
 	cells = check_cell('Power Rank', 12, power_rank, cells)
+	
+	cells = check_cell('Extra Effect', 14, extra_effect, cells, True)
+	new_mod = mod_create('Extra Effect', 15)
+	new_mod = mod_cell('Effects', 7, [extra_effect_count], new_mod)
+	new_mod = mod_cell('Checks', 7, [variable], new_mod)
+	new_mod = mod_cell('Character Traits', 13, [character], new_mod)
+	new_mod = mod_cell('Circumstance', 10, [circ], new_mod)
+	new_mod = mod_cell('Create', 7, [create], new_mod)
+	new_mod = mod_cell('Damage', 7, [damage], new_mod)
+	new_mod = mod_cell('DC', 4, [dc], new_mod)
+	new_mod = mod_cell('Defense',9, [defense], new_mod)
+	new_mod = mod_cell('Degree', 7, [degree], new_mod)
+	new_mod = mod_cell('Environment', 12, [env], new_mod)
+	new_mod = mod_cell('Minion', 9, [minion], new_mod)
+	new_mod = mod_cell('Modifiers', 11, [mod], new_mod)
+	new_mod = mod_cell('Movement', 10, [move], new_mod)
+	new_mod = mod_cell('Opponent', 9, [opposed], new_mod)
+	new_mod = mod_cell('Ranged', 9, [ranged], new_mod)
+	new_mod = mod_cell('Sense', 7, [sense], new_mod)
+	new_mod = mod_cell('Time', 7, [time], new_mod)
+	body = mod_add(extra_effect, new_mod, body)
+
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 
 	body = send(cells, body)

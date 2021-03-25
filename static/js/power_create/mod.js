@@ -564,6 +564,8 @@ function mod_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			extra_effect_check(jsonResponse);
+			
 			mod_grid.columns.length = 0;
 			mod_grid.columns = jsonResponse.rows;
 			cells = jsonResponse.cells

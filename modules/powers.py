@@ -44,7 +44,7 @@ from functions.create_posts import send_multiple, one, field, int_word, select_m
 
 from errors.power_errors import power_save_errors, power_cost_post_errors, power_extra_post_errors, power_check_post_errors, power_circ_post_errors, power_dc_post_errors, power_degree_post_errors, power_move_post_errors, power_opposed_post_errors, power_time_post_errors, change_action_post_errors, character_post_errors, create_post_errors, damage_post_errors, defense_post_errors, environment_post_errors, levels_post_errors, minion_post_errors, mod_post_errors, ranged_post_errors, resist_post_errors, resisted_by_post_errors, reverse_effect_post_errors, sense_post_errors
 from posts.power_posts import change_action_post, character_post, create_post, damage_post, defense_post, environment_post, levels_post, minion_post, mod_post, ranged_post, resist_post, resisted_by_post, reverse_effect_post, sense_post, power_check_post, power_circ_post, power_dc_post, power_degree_post, power_move_post, power_opposed_post, power_time_post, power_cost_post, power_extra_post
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, delete_power
 
 
 
@@ -231,7 +231,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
-	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'power', 'name': 'Chosen when Aquiring Power'}]
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
 
 	check_traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
@@ -241,7 +241,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
 
-	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
+	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'x', 'name': 'Variable'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
@@ -263,7 +263,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
-	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}, {'type': 'extra', 'name': '1 Per Extra Application'}]
+	degree_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring'}, {'type': 'all', 'name': 'All Take Effect'}]
 
 	descriptor_type = [{'type': '', 'name': 'Applies To:'}, {'type': 'power', 'name': 'This Power'}, {'type': 'effect', 'name': 'Power Effect'}]
 
@@ -327,11 +327,11 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'check', 'name': 'Check'}]
 
-	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'success', 'name': 'Successive'}, {'type': 'optional', 'name': 'Successive Optional'}, {'type': 'power', 'name': 'When Aquiring Power'}]
+	multiple_opposed = [{'type': '', 'name': 'If Multiple'}, {'type': 'high', 'name': 'Higher Rank'}, {'type': 'low', 'name': 'Lower Rank'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'success', 'name': 'Successive'}, {'type': 'optional', 'name': 'Successive Optional'}, {'type': 'x', 'name': 'When Aquiring Power'}]
 
 	multiple_time = [{'type': '', 'name': 'If Multiple'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'degree', 'name': 'Degree'}, {'type': 'dc', 'name': 'DC'}, {'type': 'gm', 'name': 'GM Choice'}]
 
-	mod_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'power', 'name': 'Choose 1 with Extra or Power'}]
+	mod_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
 	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
 
@@ -789,6 +789,24 @@ def power_post_extra():
 	power_rank = request.get_json()['power_rank']
 	type = request.get_json()['type']
 	required = request.get_json()['required']
+	extra_effect = request.get_json()['extra_effect']
+	extra_effect_count = request.get_json()['extra_effect_count']
+	variable variable
+	character character
+	circ circ
+	create create
+	damage damage
+	dc dc
+	defense defense
+	degree degree
+	env env
+	minion minion
+	mod mod
+	move move
+	opposed opposed
+	ranged ranged
+	sense sense
+	time time
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -810,6 +828,24 @@ def power_post_extra():
 						power_rank = power_rank,
 						type = type,
 						required = required
+						extra_effect = extra_effect,
+						extra_effect_count = extra_effect_count
+						variable variable
+						character character
+						circ circ
+						create create
+						damage damage
+						dc dc
+						defense defense
+						degree degree
+						env env
+						minion minion
+						mod mod
+						move move
+						opposed opposed
+						ranged ranged
+						sense sense
+						time time
 					)
 
 		db.session.add(entry)
@@ -1185,23 +1221,9 @@ def power_post_change_action():
 
 @powers.route('/power/action/delete/<power_id>', methods=['DELETE'])
 def delete_power_action(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerAction).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+
+	body = delete_power(PowerAction, power_id)
+	return jsonify(body)
 
 @powers.route('/power/character/create', methods=['POST'])
 def power_post_character():
@@ -1396,23 +1418,9 @@ def power_post_character():
 
 @powers.route('/power/char/delete/<power_id>', methods=['DELETE'])
 def delete_power_char(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerChar).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+
+	body = delete_power(PowerChar, power_id)
+	return jsonify(body)
 
 @powers.route('/power/create/create', methods=['POST'])
 def power_post_create():
@@ -1613,23 +1621,9 @@ def power_post_create():
 
 @powers.route('/power/create/delete/<power_id>', methods=['DELETE'])
 def delete_power_create(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerCreate).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerCreate, power_id)
+	return jsonify(body)
 
 @powers.route('/power/damage/create', methods=['POST'])
 def power_post_damage():
@@ -1726,23 +1720,9 @@ def power_post_damage():
 
 @powers.route('/power/damage/delete/<power_id>', methods=['DELETE'])
 def delete_power_damage(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerDamage).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerDamage, power_id)
+	return jsonify(body)
 
 @powers.route('/power/defense/create', methods=['POST'])
 def power_post_defense():
@@ -1887,23 +1867,9 @@ def power_post_defense():
 
 @powers.route('/power/defense/delete/<power_id>', methods=['DELETE'])
 def delete_power_defense(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerDefense).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+
+	body = delete_power(PowerDefense, power_id)
+	return jsonify(body)
 
 @powers.route('/power/environment/create', methods=['POST'])
 def power_post_environment():
@@ -2078,183 +2044,9 @@ def power_post_environment():
 
 @powers.route('/power/env/delete/<power_id>', methods=['DELETE'])
 def delete_power_env(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerEnv).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
-@powers.route('/power/levels/create', methods=['POST'])
-def power_post_levels():
-
-	body = {}
-	body['success'] = True
-	errors = {'error': False, 'error_msgs': []}
-	data = request.get_json()
-
-	errors = levels_post_errors(data)
-
-	error = errors['error']
-	if error:
-		body['success'] = False
-		body['error_msgs'] = errors['error_msgs']
-		return jsonify(body)
-
-
-	power_id = request.get_json()['power_id']
-	extra_id = request.get_json()['extra_id']
-	level_type = request.get_json()['level_type']
-	level = request.get_json()['level']
-	level_effect = request.get_json()['level_effect']
-	columns = request.get_json()['columns']
-	created = request.get_json()['created']
-	old_level_type = request.get_json()['old_level_type']
-	font = request.get_json()['font']
-	power_dc = False
-	power_degree = False
-	skill_dc = False
-	skill_degree = False
-	bonus_dc = False
-	bonus_degree = False
-	advantage_dc = False
-	advantage_degree = False
-
-	body = {}
-	body['success'] = True
-
-	power = True
-
-	power_id = integer(power_id)
-	extra_id = extra_convert(extra_id)
-
-	level_check = db.session.query(LevelType).filter(LevelType.name == level_type).first()
-	if level_check is None:
-
-		try:
-			level_add = LevelType(power_id=power_id,
-									name=level_type)
-
-			db.session.add(level_add)
-			db.session.commit()
-
-			type_id = level_add.id
-
-			body['level_type_id'] = type_id
-			body['level_type'] = level_add.name
-			body['created'] = False
-		except:
-			error = True
-			body['success'] = False
-			body['error'] = 'There was an error processing the request'
-			db.session.rollback()
-
-		finally:
-			db.session.close()
-		
-	else:
-		level_power = level_check.power_id
-		print(power_id)
-		print(level_power)
-		if power_id != level_power:
-			body['success'] = False
-			body['error_msgs'] = ['There is already a level type with that name.']
-			return jsonify(body)
-
-		type_id = level_check.id
-		body['created'] = True
-
-	try:
-		entry = Levels(power_id = power_id,
-							extra_id = extra_id,
-							type_id=type_id,
-							level_type = level_type,
-							name = level,
-							level_effect = level_effect,
-							power_dc = power_dc,
-							power_degree = power_degree,
-							skill_dc = skill_dc,
-							skill_degree = skill_degree,
-							bonus_dc = bonus_dc,
-							bonus_degree = bonus_degree,
-							advantage_dc = advantage_dc,
-							advantage_degree = advantage_degree)
-
-		db.session.add(entry)
-		db.session.commit()
-
-
-		
-		body['id'] = entry.id
-		error = False
-		error_msg = []
-
-		rows = columns
-
-		mods = []
-		cells = []
-		spot = "levels-spot"
-
-		body['spot'] = spot
-		body['rows'] = rows
-		body['mods'] = []
-		body['font'] = font
-		body['title'] = level_type
-		type_split = level_type.split(' ')
-		type_class = ''
-		for t in  type_split:
-			type_class += t 
-		
-		table_id = 'levels-' + type_class
-
-		body['table_id'] = table_id
-		body['circ'] = []
-
-		body = levels_post(entry, body, cells)
-	except:
-		error = True
-		error_msgs = []
-		body['success'] = False
-		message = 'There was an error processing the request'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-		db.session.rollback()	
-	finally:
-		db.session.close()
 	
+	body = delete_power(PowerEnv, power_id)
 	return jsonify(body)
-
-
-@powers.route('/power/levels/delete/<power_id>', methods=['DELETE'])
-def delete_power_levels(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(Levels).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this level.  You may have already used it on another rule.  Delete that rule first.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
 
 @powers.route('/power/minion/create', methods=['POST'])
 def power_post_minion():
@@ -2377,23 +2169,9 @@ def power_post_minion():
 
 @powers.route('/power/minion/delete/<power_id>', methods=['DELETE'])
 def delete_power_minion(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerMinion).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+
+	body = delete_power(PowerMinion, power_id)
+	return jsonify(body)
 
 @powers.route('/power/mod/create', methods=['POST'])
 def power_post_mod():
@@ -2698,23 +2476,9 @@ def power_post_mod():
 
 @powers.route('/power/mod/delete/<power_id>', methods=['DELETE'])
 def delete_power_mod(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerMod).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerMod, power_id, True)
+	return jsonify(body)
 
 @powers.route('/power/ranged/create', methods=['POST'])
 def power_post_ranged():
@@ -3012,23 +2776,9 @@ def power_post_resist():
 
 @powers.route('/power/resistance/delete/<power_id>', methods=['DELETE'])
 def delete_power_resistance(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerResist).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerResist, power_id)
+	return jsonify(body)
 
 @powers.route('/power/resisted_by/create', methods=['POST'])
 def power_post_resisted_by():
@@ -3150,23 +2900,9 @@ def power_post_resisted_by():
 
 @powers.route('/power/resist/delete/<power_id>', methods=['DELETE'])
 def delete_power_resist(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerResistBy).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerResistBy, power_id)
+	return jsonify(body)
 
 @powers.route('/power/reverse_effect/create', methods=['POST'])
 def power_post_reverse_effect():
@@ -3273,23 +3009,9 @@ def power_post_reverse_effect():
 
 @powers.route('/power/reverse/delete/<power_id>', methods=['DELETE'])
 def delete_power_reverse(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerReverse).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
+	
+	body = delete_power(PowerReverse, power_id)
+	return jsonify(body)
 
 @powers.route('/power/sense/create', methods=['POST'])
 def power_post_sense():
@@ -3477,24 +3199,9 @@ def power_post_sense():
 
 @powers.route('/power/sense/delete/<power_id>', methods=['DELETE'])
 def delete_power_sense(power_id):
-	body = {}
-	body['success'] = True
-	body['id'] = power_id
-	try:
-		db.session.query(PowerSenseEffect).filter_by(id=power_id).delete()
-		db.session.commit()
-	except:
-		db.session.rollback()
-		body['success'] = False
-		error_msgs = []
-		message = 'Could not delete this entry.'
-		error_msgs.append(message)
-		body['error_msgs'] = error_msgs
-	finally:
-		db.session.close()
-		print('\n\n' + str(power_id) + ' DELETED\n\n')
-		return jsonify(body)
-
+	
+	body = delete_power(PowerSenseEffect, power_id)
+	return jsonify(body)
 
 
 @powers.route('/power/check/create', methods=['POST'])
@@ -3598,6 +3305,8 @@ def power_post_check():
 	body = linked_ref(PowerOpposedType, opponent_type, 'Opponent Check Trigger', 'chained', body)
 	body = linked_ref(PowerCheckType, variable_type, 'Variable Check Trigger', 'chained', body)
 
+	body = linked_field(PowerCheckType, title, 'Variable Check', 'multiple', multiple, body)
+
 	if body['success'] == False:
 		return jsonify(body)
 
@@ -3674,7 +3383,7 @@ def power_post_check():
 @powers.route('/power/check/delete/<id>', methods=['DELETE'])
 def delete_power_check(id):
 	
-	body = delete_link(PowerOpposed, PowerOpposedType, id)
+	body = delete_link(PowerOpposed, PowerOpposedType, id, True)
 	return jsonify(body)
 
 @powers.route('/power/circ/create', methods=['POST'])
@@ -3864,7 +3573,7 @@ def power_post_circ():
 @powers.route('/power/circ/delete/<id>', methods=['DELETE'])
 def delete_power_circ(id):
 	
-	body = delete_link(PowerCirc, PowerCircType, id)
+	body = delete_link(PowerCirc, PowerCircType, id, True)
 	return jsonify(body)
 
 @powers.route('/power/dc/create', methods=['POST'])
@@ -4125,7 +3834,7 @@ def power_post_dc():
 @powers.route('/power/dc/delete/<id>', methods=['DELETE'])
 def delete_power_dc(id):
 	
-	body = delete_link(PowerDC, PowerDCType, id)
+	body = delete_link(PowerDC, PowerDCType, id, True)
 	return jsonify(body)
 
 @powers.route('/power/degree/create', methods=['POST'])
@@ -4427,7 +4136,7 @@ def power_post_degree():
 @powers.route('/power/degree/delete/<id>', methods=['DELETE'])
 def delete_power_degree(id):
 		
-	body = delete_link(PowerDegree, PowerDegreeType, id)
+	body = delete_link(PowerDegree, PowerDegreeType, id, True, 'value')
 	return jsonify(body)
 
 @powers.route('/power/move/create', methods=['POST'])
@@ -4762,7 +4471,7 @@ def power_post_move():
 @powers.route('/power/move/delete/<id>', methods=['DELETE'])
 def delete_power_move(id):
 		
-	body = delete_link(PowerMove, PowerMoveType, id)
+	body = delete_link(PowerMove, PowerMoveType, id, True)
 	return jsonify(body)
 
 
@@ -4940,7 +4649,7 @@ def power_post_opposed():
 
 @powers.route('/power/opposed/delete/<id>', methods=['DELETE'])
 def delete_power_opposed(id):
-	body = delete_link(PowerOpposed, PowerOpposedType, id)
+	body = delete_link(PowerOpposed, PowerOpposedType, id, True)
 	return jsonify(body)
 
 @powers.route('/power/time/create', methods=['POST'])
@@ -5120,5 +4829,5 @@ def power_post_time():
 @powers.route('/power/time/delete/<id>', methods=['DELETE'])
 def delete_power_time(id):
 		
-	body = delete_link(PowerTime, PowerTimeType, id)
+	body = delete_link(PowerTime, PowerTimeType, id, True)
 	return jsonify(body)

@@ -80,6 +80,8 @@ class Defense(db.Model):
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	power = db.Column(db.Boolean)
+	
 
 	def format(self):
 		return {
@@ -93,7 +95,8 @@ class Defense(db.Model):
 			'any': self.any,
 			'var': self.var,
 			'none': self.none,
-			'hide': self.hide
+			'hide': self.hide,
+			'power': self.power
 		}
 
 class Action(db.Model):

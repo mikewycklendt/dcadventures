@@ -1,3 +1,13 @@
+function extra_extra_effect() {
+	const check = 'extra_extra_effect';
+	const div = 'extra-extra-effect';
+	const row = 'extras-extra-effect';
+	const entry = 'extras-entry';
+
+	check_display(check, div);
+	check_drop(check, row, entry);
+}
+
 
 let extras_grid = {'titles': false,
 				'columns': [],
@@ -22,8 +32,26 @@ function extras_submit() {
 	const flat = check("extra_flat");
 	const stack = check("extra_stack");
 	const power_rank = check("extra_power_rank");
-	const type = select("extra_type")
-	const required = select("extra_required")
+	const type = select("extra_type");
+	const required = select("extra_required");
+	const extra_effect = check("extra_extra_effect");
+	const extra_effect_count = select("extra_extra_effect_count");
+	const variable = check("extra_variable");
+	const character = check("extra_character");
+	const circ = check("extra_circ");
+	const create = check("extra_create");
+	const damage = check("extra_damage");
+	const dc = check("extra_dc");
+	const defense = check("extra_defense");
+	const degree = check("extra_degree");
+	const env = check("extra_env");
+	const minion = check("extra_minion");
+	const mod = check("extra_mod");
+	const move = check("extra_move");
+	const opposed = check("extra_opposed");
+	const ranged = check("extra_ranged");
+	const sense = check("extra_sense");
+	const time = check("extra_time");
 	
 	
 	const errors = 'extras-err';
@@ -51,7 +79,25 @@ function extras_submit() {
 			'stack': stack,
 			'power_rank': power_rank,
 			'type': type,
-			'required': required
+			'required': required,
+			'extra_effect': extra_effect,
+			'extra_effect_count': extra_effect_count,
+			'variable': variable,
+			'character': character,
+			'circ': circ,
+			'create': create,
+			'damage': damage,
+			'dc': dc,
+			'defense': defense,
+			'degree': degree,
+			'env': env,
+			'minion': minion,
+			'mod': mod,
+			'move': move,
+			'opposed': opposed,
+			'ranged': ranged,
+			'sense': sense,
+			'time': time
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

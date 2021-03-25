@@ -405,6 +405,96 @@ def degree_check(title, value, multiple, power_id, errors):
 
 	return (errors)
 
+def multiple_error(check, name, table, power_id, errors, title_table=False, column=False):
+	error_msgs = errors['error_msgs']
+	error = False
+	multiple = False
+
+	check = db.session.query(table).filter_by(power_id=power_id).first()
+	if check is None:
+		error = True
+		message = 'You cannot have extra effects for ' + name + ' because you have not created a rule for ' + name + ' yet.  In order for this extra to give an extra ' + name + ' effect you must create more than one rule and set the if multiple field to Chosen with Power.'
+		error_msgs.append(message)
+	if check is not None:
+		if title_table != False:
+			check = db.session.query(table).filter_by(power_id=power_id).all()
+			for c in check:
+				title_id = c.title
+				if column != False:
+					value = getattr(c, column)
+					attribute = getattr(table, column)
+					the_filter = attribute == value
+					checked = db.session.query(table).filter_by(title=title_id, the_filter, extra_id=None).count()
+				else:
+					checked = db.session.query(table).filter_by(title=title_id, extra_id=None).count()			
+				if checked > 1:
+					check_title = db.session.query(link_table).filter_by(id=title_id).one()
+					if check_title.multiple == 'x':
+						multiple = True
+		else:
+			check = db.session.query(table).filter_by(power_id=power_id, extra_id=None, multiple='x').count()
+			if check > 1:
+				multiple = True
+
+		if multiple == False:
+			error = True
+			message = 'You cannot have extra effects for ' + name + ' because you have not created more than one ' + name + ' rule yet and set those rules if multiple fields to chosen with power.  In order for this extra to give an extra ' + name + ' effect you must create more than one rule and set the if multiple field to Chosen with Power.'
+			error_msgs.append(message)
+			
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def degree_multiple(value, title, power_id, body):
+	multiple = False
+
+	try:
+		check = db.session.query(PowerDegree).filter_by(title=title, value=value, extra_id=None).count()
+		if check > 1:
+			check_title = db.session.query(PowerDegreeType).filter_by(id=title).one()
+			if check_title.multiple == 'x':
+				multiple = True
+
+		body['multiple'] = multiple
+	except:
+		body['success'] = False
+		body['error_msgs'] = ['There Was an error processing this degree']
+
+	return (body)
+
+def one_multiple(table, power_id, body):
+	multiple = False
+
+	try:
+		check = db.session.query(table).filter_by(power_id=power_id, extra_id=None, multiple='x').count()
+		if check > 1:
+			multiple = True
+
+		body['multiple'] = multiple
+	except:
+		body['success'] = False
+		body['error_msgs'] = ['There Was an error processing this degree']
+
+	return (body)
+
+def title_multiple(table, title_table, title, power_id, body):
+	multiple = False
+
+	try:
+		check = db.session.query(table).filter_by(title=title, extra_id=None).count()
+		if check > 1:
+			check_title = db.session.query(title_table).filter_by(id=title).one()
+			if check_title.multiple == 'x':
+				multiple = True
+
+		body['multiple'] = multiple
+	except:
+		body['success'] = False
+		body['error_msgs'] = ['There Was an error processing this degree']
+
+	return (body)
 
 def rule_check(check, name, table, power, errors):
 	error_msgs = errors['error_msgs']
@@ -503,6 +593,33 @@ def extra_cost(name, table, power, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def delete_power(table, power_id, multiple=False):
+	body = {}
+	body['success'] = True
+	body['id'] = power_id
+	try:
+		if multiple:
+			check = db.session.query(table).filter_by(power_id=power_id, extra_id=None, multiple='x').count()
+			if check > 1:
+				multiple = True
+			else:
+				multiple = False
+			body['multiple'] = multiple
+
+		db.session.query(PowerAction).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		db.session.rollback()
+		body['success'] = False
+		error_msgs = []
+		message = 'Could not delete this entry.'
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return (body)
 
 def extra_check(value_id, name, errors):
 	error_msgs = errors['error_msgs']

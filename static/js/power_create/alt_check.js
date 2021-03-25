@@ -182,6 +182,8 @@ function check_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			extra_effect_check(jsonResponse);
+
 			const id = jsonResponse.id;
 
 			selects_add(id, keyword, selects);

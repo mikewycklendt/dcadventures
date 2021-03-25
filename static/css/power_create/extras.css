@@ -91,7 +91,7 @@
 
 .extras-three {
 	display: grid;
-	grid-template-columns: 33% 33% 33%;
+	grid-template-columns: 40% 30% 30%;
 	font-size: 70%;
 	padding: .4vw;
 	justify-content: left;
@@ -103,4 +103,19 @@
 	height: 4vw; 
 	font-size: 90%; 
 	padding: 2%;
+}
+
+#extras-extra-effect {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: auto auto auto auto auto;
+	grid-auto-rows: auto;
+}
+
+#extras-hidden {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
 }

@@ -207,6 +207,8 @@ function opposed_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 
+			extra_effect_check(jsonResponse);
+			
 			const id = jsonResponse.id;
 
 			multiple_field('opposed-multiple');
