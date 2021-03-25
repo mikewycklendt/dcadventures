@@ -36,7 +36,7 @@
 		<div>
 			<select class="select-sml" id="defense_defense" name="defense_defense">
 				<option value="">Defense</option>
-				<option value=any>Any</option>
+				<option value=any>Any Defense</option>
 				<option value="power">Power Rank</option>
 				{% for d in defenses %}
 					<option value={{d.id}}>{{d.name}}</option>
@@ -64,28 +64,22 @@
 			</select>
 		</div>
 
-		<div class="die-roll">
-			<div>
-				<select class="select-sml" id="defense_roll" name="defense_roll">
-					<option value="">Roll</option>
-					<option value="always">Always</option>
-					{% for i in die %}
-						<option value={{i}}>{{i}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<select class="select-sml" id="defense_outcome" name="defense_outcome">
+				{% for m in measure_type %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
-			<div>
-				 or 
-			</div>
-
-			<div>
-				<select class="select-sml" id="defense_outcome" name="defense_outcome">
-					{% for o in outcome %}
-						<option value="{{o.type}}">{{o.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
+		<div>
+			<select class="select-sml" id="defense_roll" name="defense_roll">
+				<option value="">Roll</option>
+				<option value="always">Always</option>
+				{% for i in die %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 	</div>

@@ -504,8 +504,7 @@ def defense_post(entry, body, cells):
 	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
 	cover_type = selects(cover_type, cover_select)
 
-	outcome_select = [{'type': '', 'name': ''}, {'type': '<', 'name': 'Lower'}, {'type': '>', 'name': 'Higher'}]
-	outcome = selects(outcome, outcome_select)
+	outcome = math_convert(outcome)
 
 	cells.clear()
 
@@ -513,12 +512,11 @@ def defense_post(entry, body, cells):
 	cells = cell('Defense', 12, [defense])
 	cells = cell('Use', 10, [use], cells)
 	cells = cell('Mod', 7, [mod], cells)
-	word = string('or', [roll, outcome])
 	print('\n\n\n')
 	print(word)
 	print(roll)
 	print(outcome)
-	cells = cell('Roll', 10, [roll, word, outcome], cells)
+	cells = cell('Roll', 7, [outcome, roll], cells)
 	cells = check_cell('Dodge', 7, dodge, cells)
 	cells = check_cell('Fortitude', 10, fortitude, cells)
 	cells = check_cell('Parry', 7, parry, cells)
