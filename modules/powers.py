@@ -828,7 +828,7 @@ def power_post_extra():
 						stack = stack,
 						power_rank = power_rank,
 						type = type,
-						required = required
+						required = required,
 						extra_effect = extra_effect,
 						extra_effect_count = extra_effect_count,
 						variable = variable,
