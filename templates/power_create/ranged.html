@@ -74,7 +74,7 @@
 					<select class="entry-select" id="ranged_general" name="ranged_general">
 						<option value="">Range</option>
 						{% for r in ranges %}
-
+							<option value={{r.id}}>{{r.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
