@@ -1547,6 +1547,7 @@ class PowerDefense(db.Model):
 	resist_perception = db.Column(db.Boolean)
 	reflect = db.Column(db.Boolean)
 	immunity = db.Column(db.Boolean)
+	reflect_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	immunity_type = db.Column(db.String())
 	immunity_trait_type = db.Column(db.String())
 	immunity_trait = db.Column(db.Integer)

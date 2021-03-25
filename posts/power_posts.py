@@ -519,7 +519,7 @@ def defense_post(entry, body, cells):
 	
 	cells = check_cell('Reflect', 10, reflect, cells, True)
 	new_mod = mod_create('Reflects Attacks', 17)
-	new_mod = mod_cell('Check:', 15, [reflect_check], new_mod, value)e)
+	new_mod = mod_cell('Check:', 15, [reflect_check], new_mod, value)
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
