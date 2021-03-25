@@ -99,65 +99,20 @@ def shutdown_session(exception=None):
 @app.route('/table/db')
 def table_db_columns_create():
 
-	tablename =  'Concealment'
 
-	name = 'All Concealment'
+	name = 'Power Rank'
 
-	entry = Conceal(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Conceal(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Conceal(any=True, name=name, hide=True )
+	entry = Defense(power=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Variable ' + tablename
-
-	entry = Conceal(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Conceal(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(Conceal).filter_by(hide=True).all()
+	results = db.session.query(Defense).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (tablename + ' db added')
-
-
-
-@app.route('/time/options')
-def time_db_columns_create():
-	
-	name = 'Until Next Check'
-
-	entry = PowerTime(check=True, keyword=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(PowerTime).filter_by(hide=True).all()
-
-	for result in results:
-		print (result.id)
-		print (result.keyword)
-
-	return ('time fields added')
-
+	return (name + ' db added')
 
 if __name__ == '__main__':
 	app.debug = True
