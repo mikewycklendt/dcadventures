@@ -306,6 +306,16 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="check_attack_range" name="check_attack_range">
+				<option value="">Range</option>
+				<option value="all">All Ranges</option>
+				{% for r in ranged %}
+					<option value={{r.id}}>{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="select-sml" id="check_maneuver" name="check_maneuver">
 				<option value="">Maneuver</option>
 				{% for m in maneuvers %}

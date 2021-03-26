@@ -1371,6 +1371,7 @@ def power_check_post_errors(data):
 	title = data['title']
 	multiple = data['multiple']
 	sense = data['sense']
+	attack_range = data['attack_range']
 
 
 
@@ -1426,6 +1427,9 @@ def power_check_post_errors(data):
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
 	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, varible_type], ['Variable Check'], errors)
 	errors = seperate([varible_type, variable], 'Variable Check', errors)
+
+	errors = variable_fields('5', 'Attack Check', check_type, [attack_range], errors)
+	errors = variable_field('5', check_type, 'Range', attack_range, errors)
 
 	errors = variable_field_linked('2', check_type, opposed, 'Opposed Check', 'Opponent Check', errors)
 	errors = variable_field_linked('7', check_type, opposed, 'Comparison Check', 'Opponent Check', errors)

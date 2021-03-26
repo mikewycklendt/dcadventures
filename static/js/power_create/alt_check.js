@@ -100,6 +100,7 @@ function check_submit() {
 	const time = select("check_time_type");
 	const move = select("check_move_type");
 	const attack = select("check_attack");
+	const attack_range = select("check_attack_range");
 	const opposed = select("check_opposed");
 	const condition = select("check_condition");
 	const condition_target = select("check_condition_target");
@@ -159,6 +160,7 @@ function check_submit() {
 			'ranged': ranged,
 			'keyword': keyword,
 			'attack': attack,
+			'attack_range': attack_range,
 			'opposed': opposed,
 			'condition': condition,
 			'condition_target': condition_target,
