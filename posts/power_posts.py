@@ -1631,6 +1631,7 @@ def power_check_post(entry, body, cells):
 	sense = entry.sense
 	mental = entry.mental
 	maneuver = entry.maneuver
+	attack_range = entry.attack_range
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1653,6 +1654,7 @@ def power_check_post(entry, body, cells):
 	condition = get_name(Condition, condition)
 	sense = get_name(Sense, sense)
 	maneuver = get_name(Maneuver, maneuver)
+	attack_range = get_name(Ranged, attack_range)
 
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -1698,7 +1700,7 @@ def power_check_post(entry, body, cells):
 
 	attack = add_plus(attack)
 	word = string_all('on', [attack, maneuver])
-	vcells = vcell(5, 8, [attack, word, maneuver])
+	vcells = vcell(5, 8, [attack, word, maneuver, 'at', attack_range, 'Range'])
 	vcells = vcell(1, 8, [dc, dc_value], vcells)
 	vcells = vcell(6, 8, [dc, dc_value], vcells)
 	vcells = vcell(2, 8, [opposed], vcells)

@@ -3259,6 +3259,7 @@ def power_post_check():
 	sense = request.get_json()['sense']
 	mental = request.get_json()['mental']
 	maneuver = request.get_json()['maneuver']
+	attack_range = request.get_json()['attack_range']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3286,6 +3287,7 @@ def power_post_check():
 	condition = db_integer(Condition, condition)
 	sense = db_integer(Sense, sense)
 	maneuver = db_integer(Maneuver, maneuver)
+	attack_range = db_integer(Ranged, attack_range)
 
 	trait = integer(trait)
 	action = integer(action)
@@ -3343,7 +3345,8 @@ def power_post_check():
 						varible_type = variable_type,
 						sense = sense,
 						mental = mental,
-						maneuver = maneuver
+						maneuver = maneuver,
+						attack_range = attack_range
 					)
 
 	db.session.add(entry)

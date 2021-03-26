@@ -82,7 +82,7 @@
 		
 		<select class="base-select" id="range" name="range"   onchange="range_type()">
 			<option value="">Range</option>
-			{% for r in base_ranged %}
+			{% for r in ranged %}
 				<option value="{{r.id}}">{{r.name}}</option>
 			{% endfor %}
 		</select>
