@@ -1836,7 +1836,7 @@ def power_circ_post(entry, body, cells):
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 	
-	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both' 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
+	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both', 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
 	conflict_grab = selects(conflict_grab, grab_type)
 
 	cells = cell('Keyword', 13, [keyword])
