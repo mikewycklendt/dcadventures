@@ -63,7 +63,7 @@ visibility traittype trait modifier costperrank
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 5% 20% 5% 20% 20%;
+	grid-template-columns: 18% 5% 17% 5% 15% 20%;
 	grid-auto-rows: auto;
 }
 
