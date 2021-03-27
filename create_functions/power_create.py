@@ -594,6 +594,45 @@ def extra_cost(name, table, power, errors):
 
 	return (errors)
 
+def extra_cost(cost, power_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if cost == 'trait':
+		check = db.session.query(PowerChar).filter_by(power_id=power_id, extra_id=None).first()
+		if check is None:
+			error = True	
+			message = 'You selected Trait Cost for this power but that is only a valid option for powers that change character traits.  Select a different cost for this power.'
+			error_msgs.append(message)
+
+	check_cost = db.session.query(PowerCost).filter_by(power_id=power_id).first()
+	if check is not None:
+		for c in check_cost:
+			cost = c.id
+			if c.cost == 112112:
+				check = db.session.query(PowerChar).filter_by(cost=cost).first()
+				if check is None:
+					error = True	
+					message = 'You selected Trait Cost for the variable cost '  + c.keyword + ' but that is only a valid option for powers that change character traits.  You must assign that cost to a changes character traits rule.'
+					error_msgs.append(message)
+	
+	check_extra = db.session.query(Extra).filter_by(power_id=power_id).first()
+	if check is not None:
+		for c in check_extra:
+			extra = c.id
+			if c.cost == 112112:
+				check = db.session.query(PowerChar).filter_by(power_id=power_id).first()
+				if check is None:
+					error = True	
+					message = 'You selected Trait Cost for the extra '  + c.name + ' but that is only a valid option for powers that change character traits and this power does not have a changes character trait rule assigned to it.  Create that rule or recreate the extra with a different cost.'
+					error_msgs.append(message)
+		
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def delete_power(table, power_id, multiple=False):
 	body = {}
 	body['success'] = True
