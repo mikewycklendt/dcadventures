@@ -1278,6 +1278,8 @@ def power_post_character():
 	reduced_trait = request.get_json()['reduced_trait']
 	reduced_value = request.get_json()['reduced_value']
 	reduced_full = request.get_json()['reduced_full']
+	limbs_count = request.get_json()['limbs_count']
+	limbs_rank = request.get_json()['limbs_rank']
 	limbs_continuous = request.get_json()['limbs_continuous']
 	limbs_sustained = request.get_json()['limbs_sustained']
 	limbs_distracting = request.get_json()['limbs_distracting']
@@ -1304,18 +1306,19 @@ def power_post_character():
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	limited_emotion = db_integer(Emotion, limited_emotion)
+	points_descriptor = db_integer(PowerDes, points_descriptor)
+	weaken_descriptor = db_integer(PowerDes, weaken_descriptor)
 
 	trait = integer(trait)
 	value = integer(value)
 	increase = integer(increase)
 	weaken_trait = integer(weaken_trait)
-	weaken_descriptor = integer(weaken_descriptor)
 	reduced_trait = integer(reduced_trait)
 	reduced_value = integer(reduced_value)
 	carry_capacity = integer(carry_capacity)
 	points_value = integer(points_value)
 	points_trait = integer(points_trait)
-	points_descriptor = integer(points_descriptor)
+	limbs_count = integer(limbs_count)
 
 	try:
 		body = {}
@@ -1369,6 +1372,8 @@ def power_post_character():
 							reduced_trait = reduced_trait,
 							reduced_value = reduced_value,
 							reduced_full = reduced_full,
+							limbs_count = limbs_count,
+							limbs_rank = limbs_rank,
 							limbs_continuous = limbs_continuous,
 							limbs_sustained = limbs_sustained,
 							limbs_distracting = limbs_distracting,

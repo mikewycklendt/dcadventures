@@ -213,6 +213,7 @@ def character_post_errors(data):
 	reduced_trait = data['reduced_trait']
 	reduced_value = data['reduced_value']
 	reduced_full = data['reduced_full']
+	limbs_count = data['limbs_count']
 	limbs_continuous = data['limbs_continuous']
 	limbs_sustained = data['limbs_sustained']
 	limbs_distracting = data['limbs_distracting']
@@ -243,7 +244,7 @@ def character_post_errors(data):
 	errors = int_check(reduced_value, 'Reduced', errors)
 	errors = int_check(carry_capacity, 'Carry Capacity', errors)
 	errors = int_check(points_value, 'Points', errors)
-
+	errors = int_check(limbs_count, 'Limbs Count', errors)
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
@@ -260,6 +261,7 @@ def character_post_errors(data):
 	errors = variable_field('defense', reduced_trait_type, 'Defense', reduced_trait, errors)
 
 	errors = check_of(limbs, 'Extra Limbs', [limbs_continuous, limbs_sustained, limbs_distracting, limbs_projection], errors)
+	errors = check_field(limbs, 'Extra Limbs', 'Limbs', limbs_count, errors)
 	errors = check_field(carry, 'Extra Carry', 'Carry Capacity', carry_capacity, errors)
 	errors = check_fields(points, 'Hero Points', [points_value, points_trait_type, points_trait], errors)
 	errors = check_field(points, 'Hero Points', 'Points Value', points_value, errors)

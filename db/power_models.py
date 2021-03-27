@@ -1326,6 +1326,8 @@ class PowerChar(db.Model):
 	reduced_trait = db.Column(db.Integer)
 	reduced_value = db.Column(db.Integer)
 	reduced_full = db.Column(db.Boolean)
+	limbs_count = db.Column(db.Integer)
+	limbs_rank = db.Column(db.Boolean)
 	limbs_continuous = db.Column(db.Boolean)
 	limbs_sustained = db.Column(db.Boolean)
 	limbs_distracting = db.Column(db.Boolean)
@@ -1376,6 +1378,8 @@ class PowerChar(db.Model):
 			'reduced_trait': self.reduced_trait,
 			'reduced_value': self.reduced_value,
 			'reduced_full': self.reduced_full,
+			'limbs_count': self.limbs_count,
+			'limbs_rank': self.limbs_rank,
 			'limbs_continuous': self.limbs_continuous,
 			'limbs_sustained': self.limbs_sustained,
 			'limbs_distracting': self.limbs_distracting,

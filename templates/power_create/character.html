@@ -266,25 +266,40 @@
 	<div id="char-limbs">
 
 		<div>
-			<div class="check-div">
+			<select class="select-sml" id="char_limbs_count" name="char_limbs_count">
+				<option value="">Limbs</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="char_limbs_rank" class="medium-checkbox med-checkbox" > Per Rank
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_continuous" class="medium-checkbox med-checkbox" > Continuous
 			</div>
 		</div>
 		
 		<div>
-			<div class="check-div">
+			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_sustained" class="medium-checkbox med-checkbox" > Sustained
 			</div>
 		</div>
 		
 		<div>
-			<div class="check-div">
+			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_distracting" class="medium-checkbox med-checkbox" > Distracting
 			</div>
 		</div>
 		
 		<div>
-			<div class="check-div">
+			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="char_limbs_projection" class="medium-checkbox med-checkbox" > Projection
 			</div>
 		</div>

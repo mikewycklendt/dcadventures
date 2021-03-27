@@ -92,6 +92,8 @@ def character_post(entry, body, cells):
 	reduced_trait = entry.reduced_trait
 	reduced_value = entry.reduced_value
 	reduced_full = entry.reduced_full
+	limbs_count = entry.limbs_count
+	limbs_rank = entry.limbs_rank
 	limbs_continuous = entry.limbs_continuous
 	limbs_sustained = entry.limbs_sustained
 	limbs_distracting = entry.limbs_distracting
@@ -108,6 +110,7 @@ def character_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 
+
 	cost = get_cost(cost, ranks, extra_id)
 
 	trait = trait_select(trait, trait_type)
@@ -119,6 +122,8 @@ def character_post(entry, body, cells):
 	weaken_descriptor = descriptor_name(weaken_descriptor)
 	points_descriptor = descriptor_name(points_descriptor)
 	limited_emotion = name(Emotion, limited_emotion)
+
+	limbs_rank = ('Limbs Per Rank', limbs_rank)
 
 	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 	limited_by = selects(limited_by, limited_select)
@@ -137,7 +142,7 @@ def character_post(entry, body, cells):
 	reduced_value = integer_convert(reduced_value)
 	carry_capacity = integer_convert(carry_capacity)
 	points_value = integer_convert(points_value)
-
+	limbs_count = integer_convert(limbs_count)
 
 
 	
@@ -164,6 +169,7 @@ def character_post(entry, body, cells):
 
 	cells = check_cell('Limbs', 8, limbs, cells, True)
 	new_mod = mod_create('Extra Limbs', 14)
+	new_mod = mod_cell('Limbs', 6, [limbs_count, limbs_rank], new_mod)
 	new_mod = mod_cell('Continuous:', 11, [limbs_continuous], new_mod)
 	new_mod = mod_cell('Sustained:', 10, [limbs_sustained], new_mod)
 	new_mod = mod_cell('Distracting:', 12, [limbs_distracting], new_mod)
