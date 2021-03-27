@@ -1774,6 +1774,8 @@ def power_circ_post(entry, body, cells):
 	descriptor_effect = entry.descriptor_effect
 	descriptor_target = entry.descriptor_target
 	descriptor = entry.descriptor
+	conflict_grab = entry.conflict_grab
+	conflict = entry.conflict
 
 
 	title_name = get_name(PowerCircType, title)
@@ -1797,6 +1799,7 @@ def power_circ_post(entry, body, cells):
 	nature = get_name(Nature, nature)
 	check_type = get_name(Check, check_type)
 	descriptor = get_name(PowerDes, descriptor)
+	conflict = get_name(ConflictAction, conflict)
 
 	speed = integer_convert(speed)
 	conditions = integer_convert(conditions)	
@@ -1832,7 +1835,9 @@ def power_circ_post(entry, body, cells):
 	
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
-
+	
+	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both' 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
+	conflict_grab = selects(conflict_grab, grab_type)
 
 	cells = cell('Keyword', 13, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -1873,6 +1878,9 @@ def power_circ_post(entry, body, cells):
 
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 	
+	word = string('with', conflict_grab)
+	vcells = vcell('conflict', 35, [conflict, word, conflict_grab])
+
 	cells = vcell_add('Effect', effect, vcells, cells)
 
 	cells = check_cell('Surface', 8, surface, cells)

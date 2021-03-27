@@ -21,7 +21,8 @@ function circ_effect() {
 					{'val': 'trait', 'div': 'circ-trait'},
 					{'val': 'env', 'div': 'circ-env'},
 					{'val': 'nature', 'div': 'circ-nature'},
-					{'val': 'descriptor', 'div': 'circ-descriptor'}]
+					{'val': 'descriptor', 'div': 'circ-descriptor'},
+					{'val': 'conflict', 'div': 'circ-conflict'}]
 
 	select_opacity(select, options);
 }
@@ -101,6 +102,13 @@ function circ_trait() {
 	id_select(fill, fill, trait_filter, filter);
 }
 
+function circ_conflict() {
+	const select = 'circ_conflict';
+	const options = [{'val': '7', 'div': 'circ-conflict-grab'}]
+
+	select_opacity(select, options);
+}
+
 let circ_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -159,6 +167,8 @@ function circ_submit() {
 	const descriptor_effect = select("circ_descriptor_effect");
 	const descriptor_target = select("circ_descriptor_target");
 	const descriptor = select("circ_descriptor");
+	const conflict = select("circ_conflict");
+	const conflict_grab = select("circ_conflict_grab");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -217,7 +227,9 @@ function circ_submit() {
 			'check_type': check_type,
 			'descriptor_effect': descriptor_effect,
 			'descriptor_target': descriptor_target,
-			'descriptor': descriptor
+			'descriptor': descriptor,
+			'conflict': conflict,
+			'conflict_grab': conflict_grab
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

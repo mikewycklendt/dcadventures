@@ -23,7 +23,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -144,6 +144,7 @@ def power_save_errors(data):
 	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
 	errors = rule_select('2', check_type, 'Opposed Check', PowerOpposed, power_id, errors)
 
+	errors = trait_cost(cost, power_id, errors)
 
 	errors = cost_exist(power_id, cost, errors)
 	errors = extra_cost_exist(power_id, errors)
@@ -533,7 +534,6 @@ def environment_post_errors(data):
 	impede = data['impede']
 	conceal = data['conceal']
 	visibility = data['visibility']
-	selective = data['selective']
 	immunity = data['immunity']
 	immunity_type = data['immunity_type']
 	temp_type = data['temp_type']
@@ -1487,6 +1487,8 @@ def power_circ_post_errors(data):
 	descriptor_effect = data['descriptor_effect']
 	descriptor_target = data['descriptor_target']
 	descriptor = data['descriptor']
+	conflict = data['conflict']
+	conflict_grab = data['conflict_grab']
 
 
 	errors = power_check(power_id, errors)
@@ -1510,6 +1512,7 @@ def power_circ_post_errors(data):
 	errors = int_check(trait, 'Trait', errors)
 	errors = id_check(Check, check_type, 'Check Type', errors)
 	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
+	errors = id_check(ConflictAction, conflict_grab, 'Conflict Action', errors)
 
 	errors = id_check(Environment, environment, 'Environment', errors)
 	errors = id_check(Nature, nature, 'Nature', errors)
@@ -1579,6 +1582,12 @@ def power_circ_post_errors(data):
 	errors = variable_field('descriptor', effect, 'Descriptor', descriptor, errors)
 	errors = variable_field('descriptor', effect, 'Descriptor Target', descriptor_target, errors)
 	errors = variable_field('descriptor', effect, 'Descriptor Effect', descriptor_effect, errors)
+
+	errors = variable_fields('conflict', 'Conflict Action', effect, [conflict], errors)
+	errors = variable_field('conflict', effect, 'Conflict Action', conflict, errors)
+	errors = variable_fields('7', 'Grab', conflict, [conflict_grab], errors)
+	errors = variable_fields('7', conflict, 'Grab Type', conflict_grab, errors)
+
 
 	errors = variable_fields('materials', 'Circumstance Effect', effect, [materials], errors)
 	errors = variable_field('materials', effect, 'Material Type', materials, errors)

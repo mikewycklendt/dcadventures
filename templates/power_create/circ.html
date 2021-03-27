@@ -62,6 +62,26 @@
 		</div>
 
 		<div>
+			
+			<div id="circ-conflict">
+				<div>
+					<select class="select-sml" id="circ_conflict" name="circ_conflict" onchange="circ_conflict()">
+						<option value="">Conflict Action</option>
+						{% for c in conflicts %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="circ-conflict-grab">
+					<select class="select-sml" id="circ_conflict_grab" name="circ_conflict_grab">
+						{% for g in grab_type %}
+							<option value="{{g.type}}">{{g.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+			</div>
 				
 			<div id="circ-descriptor">
 				<div>

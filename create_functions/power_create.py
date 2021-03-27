@@ -594,7 +594,7 @@ def extra_cost(name, table, power, errors):
 
 	return (errors)
 
-def extra_cost(cost, power_id, errors):
+def trait_cost(cost, power_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 

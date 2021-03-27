@@ -215,7 +215,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
-	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'effect', 'name': 'Against Effect'}]
+	circ_effect = [{'type': '', 'name': 'Condition'}, {'type': 'condition', 'name': 'Condition Effect'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'trait', 'name': 'Applied to other Check'}, {'type': 'measure', 'name': 'If Measurement'}, {'type': 'level', 'name': 'If Level'}, {'type': 'speed', 'name': 'If Speed'}, {'type': 'target', 'name': 'If Target'}, {'type': 'tools', 'name': 'If Tools'}, {'type': 'materials', 'name': 'If Materials'}, {'type': 'env', 'name': 'If Environment'}, {'type': 'nature', 'name': 'If Nature'}, {'type': 'conflict', 'name': 'If Conflict Action'}, {'type': 'effect', 'name': 'Against Effect'}]
 
 	circ_null = [{'type': '', 'name': 'Nullified'}, {'type': 'trait', 'name': 'From Trait'}, {'type': 'descriptor', 'name': 'From Descriptor'}, {'type': 'condition', 'name': 'From Condition'}]
 
@@ -294,6 +294,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 
 	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
+
+	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both' 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
 
 	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
@@ -1889,7 +1891,6 @@ def power_post_environment():
 	impede = request.get_json()['impede']
 	conceal = request.get_json()['conceal']
 	visibility = request.get_json()['visibility']
-	selective = request.get_json()['selective']
 	immunity = request.get_json()['immunity']
 	immunity_type = request.get_json()['immunity_type']
 	temp_type = request.get_json()['temp_type']
@@ -1976,7 +1977,6 @@ def power_post_environment():
 							impede = impede,
 							conceal = conceal,
 							visibility = visibility,
-							selective = selective,
 							immunity = immunity,
 							immunity_type = immunity_type,
 							temp_type = temp_type,
@@ -3440,6 +3440,8 @@ def power_post_circ():
 	descriptor_effect = request.get_json()['descriptor_effect']
 	descriptor_target = request.get_json()['descriptor_target']
 	descriptor = request.get_json()['descriptor']
+	conflict = request.get_json()['conflict']
+	conflict_grab = request.get_json()['conflict_grab']
 
 	errors = power_circ_post_errors(data)
 
@@ -3467,8 +3469,8 @@ def power_post_circ():
 	environment = db_integer(Environment, environment)
 	nature = db_integer(Nature, nature)
 	check_type = db_integer(Check, check_type)
-	descriptor = descriptor(PowerDes, descriptor)
-
+	descriptor = db_integer(PowerDes, descriptor)
+	conflict = db_integer(ConflictAction, conflict)
 	lasts = db_integer(PowerTime, lasts)
 
 
@@ -3538,7 +3540,9 @@ def power_post_circ():
 						check_type = check_type,
 						descriptor_effect = descriptor_effect,
 						descriptor_target = descriptor_target,
-						descriptor = descriptor
+						descriptor = descriptor,
+						conflict = conflict,
+						conflict_grab = conflict_grab
 					)
 
 	db.session.add(entry)

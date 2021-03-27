@@ -135,7 +135,6 @@ function env_submit() {
 	const impede = check("env_impede");
 	const conceal = check("env_conceal");
 	const visibility = check("env_visibility");
-	const selective = check("env_selective");
 	const immunity = check("env_immunity");
 	const immunity_type = select("env_immunity_type");
 	const temp_type = select("env_temp_type");
@@ -175,7 +174,6 @@ function env_submit() {
 			'impede': impede,
 			'conceal': conceal,
 			'visibility': visibility,
-			'selective': selective,
 			'immunity': immunity,
 			'immunity_type': immunity_type,
 			'temp_type': temp_type,
