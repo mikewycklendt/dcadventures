@@ -3447,6 +3447,7 @@ def power_post_circ():
 	descriptor = request.get_json()['descriptor']
 	conflict = request.get_json()['conflict']
 	conflict_grab = request.get_json()['conflict_grab']
+	rank = request.get_json()['rank']
 
 	errors = power_circ_post_errors(data)
 
@@ -3547,7 +3548,8 @@ def power_post_circ():
 						descriptor_target = descriptor_target,
 						descriptor = descriptor,
 						conflict = conflict,
-						conflict_grab = conflict_grab
+						conflict_grab = conflict_grab,
+						rank = rank
 					)
 
 	db.session.add(entry)

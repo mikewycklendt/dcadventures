@@ -249,7 +249,7 @@ function char_submit() {
 	const reduced_value = select("char_reduced_value");
 	const reduced_full = check("char_reduced_full");
 	const limbs_count = select("char_limbs_count")
-	const limbs_rank = select("char_limbs_rank")
+	const limbs_rank = check("char_limbs_rank")
 	const limbs_continuous = check("char_limbs_continuous");
 	const limbs_sustained = check("char_limbs_sustained");
 	const limbs_distracting = check("char_limbs_distracting");

@@ -460,19 +460,25 @@
 
 		<div id="circ-row2-checks">
 
-			<div >
-				<div class="check-div">
-					<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox" onclick="circ_cumulative()"> Cumulative
-				</div>
-			</div>
-
-			<div class="hidden" id="circ-max">
+			<div>
 				<select class="select-sml" id="circ_max" name="circ_max">
-					 <option value="">Maximum Modifier</option>
+					 <option value="">Maximum</option>
 					 {% for i in positives %}
 						<option value={{i}}>{{i}}</option>
 					 {% endfor %}
 				</select>
+			</div>
+			
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_rank" class="medium-checkbox med-checkbox" > Per Rank
+				</div>
+			</div>
+
+			<div >
+				<div class="check-div">
+					<input type="checkbox" id="circ_cumulative" class="medium-checkbox med-checkbox" onclick="circ_cumulative()"> Cumulative
+				</div>
 			</div>
 
 			<div >

@@ -1782,6 +1782,7 @@ def power_circ_post(entry, body, cells):
 	descriptor = entry.descriptor
 	conflict_grab = entry.conflict_grab
 	conflict = entry.conflict
+	rank = entry.rank
 
 
 	title_name = get_name(PowerCircType, title)
@@ -1849,6 +1850,7 @@ def power_circ_post(entry, body, cells):
 	cells = cell('Extra', 13, [extra], cells)
 	cells = cell('Target', 12, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
+	cells = check_cell('Per Rank', 9, rank, cells)
 	cells = cell('Lasts', 15, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')
