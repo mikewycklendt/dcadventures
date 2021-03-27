@@ -73,6 +73,11 @@
 	grid-template-columns: 30% 30% 40%;
 }
 
+#circ-conflict-grab {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
 #circ-condition {
 	display: none;
 	width: 97%;
