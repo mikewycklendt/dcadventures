@@ -45,6 +45,7 @@
 				<div>
 					<select class="select-sml" id="move_speed_rank" name="move_speed_rank">
 						<option value="">Speed Rank</option>
+						<option value="rank">Power Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -58,6 +59,15 @@
 			
 			
 			<div id="move-speed-rank-mod">
+
+				<div>
+					<select class="select-sml" id="move_speed_mod" name="move_speed_mod">
+						{% for s in speed_mod %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+
 				<div>
 					<select class="select-sml" id="move_speed_rank_mod" name="move_speed_rank_mod">
 						<option value="">Modifier</option>

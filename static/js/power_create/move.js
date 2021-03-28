@@ -334,6 +334,8 @@ function move_submit() {
 	const extra_id = select("move_extra");
 	const speed = select("move_speed");
 	const speed_rank = select("move_speed_rank");
+	const speed_mod = select("move_speed_mod");
+	const speed_math = select("move_speed_math");
 	const speed_rank_mod = select("move_speed_rank_mod");
 	const speed_trait_type = select("move_speed_trait_type");
 	const speed_trait = select("move_speed_trait");
@@ -443,6 +445,8 @@ function move_submit() {
 			'created': created,
 			'font': font,
 			'speed': speed,
+			'speed_mod': speed_mod,
+			'speed_math': speed_math,
 			'speed_rank_mod': speed_rank_mod,
 			'speed_rank': speed_rank,
 			'speed_trait_type': speed_trait_type,

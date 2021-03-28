@@ -387,6 +387,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}]
 
+	speed_mod = [{'type': '',  'name': 'Modified Rank'}, {'type': 'rank',  'name': 'Speed Rank'}, {'type': 'power',  'name': 'Power Rank'}, {'type': 'extra',  'name': 'Extra Rank'}]
+	
 	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
 
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
@@ -500,7 +502,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_time=power_time, power_time_type=power_time_type, power_ranged=power_ranged, power_damage=power_damage, power_ranged_type=power_ranged_type, direction=direction,
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
-											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply)
+											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
+											speed_mod=speed_mod)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -4187,6 +4190,8 @@ def power_post_move():
 	font = request.get_json()['font']
 	speed = request.get_json()['speed']
 	speed_rank = request.get_json()['speed_rank']
+	speed_math = request.get_json()['speed_math']
+	speed_mod = request.get_json()['speed_mod']
 	speed_rank_mod = request.get_json()['speed_rank_mod']
 	speed_trait_type = request.get_json()['speed_trait_type']
 	speed_trait = request.get_json()['speed_trait']
@@ -4349,6 +4354,7 @@ def power_post_move():
 	distance_unit_math1 = db_integer(Math, distance_unit_math1)
 	distance_unit_math2 = db_integer(Math, distance_unit_math2)
 	distance_math_units = db_integer(Unit, distance_math_units)
+	speed_math = db_integer(Math, speed_math)
 
 	flight_conditions = db_multiple(Condition, flight_conditions)
 
@@ -4378,6 +4384,8 @@ def power_post_move():
 						extra_id = extra_id,
 						speed = speed,
 						speed_rank = speed_rank,
+						speed_mod = speed_mod,
+						speed_math = speed_math,
 						speed_rank_mod = speed_rank_mod,
 						speed_trait_type = speed_trait_type,
 						speed_trait = speed_trait,

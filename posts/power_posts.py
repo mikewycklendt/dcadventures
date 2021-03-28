@@ -2429,6 +2429,8 @@ def power_move_post(entry, body, cells):
 	extra = entry.extra_id
 	speed = entry.speed
 	speed_rank = entry.speed_rank
+	speed_mod = entry.speed_mod
+	speed_math = entry.speed_math
 	speed_rank_mod = entry.speed_rank_mod
 	speed_trait_type = entry.speed_trait_type
 	speed_trait = entry.speed_trait
@@ -2591,6 +2593,8 @@ def power_move_post(entry, body, cells):
 	distance_unit_math1 = math_convert(distance_unit_math1)
 	distance_unit_math2 = math_convert(distance_unit_math2)
 	distance_math_units = get_name(Unit, distance_math_units)
+	speed_math = math_convert(speed_math)
+
 
 	flight_equip_type = get_name(EquipType, flight_equip_type)
 	flight_equipment = get_name(Equipment, flight_equipment)
@@ -2641,8 +2645,7 @@ def power_move_post(entry, body, cells):
 	cells = cell('Direction', 12, [direction], cells)
 
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
-	speed_rank_mod = add_plus(speed_rank_mod)
-	vcells = vcell('rank_mod', 20, [speed_rank_mod, 'Speed Rank'])
+	vcells = vcell('rank_mod', 20, [speed_mod, speed_math, speed_rank_mod])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = circ_cell('Desc', 'Description', 5, speed_description, cells, body)

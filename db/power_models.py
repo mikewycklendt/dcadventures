@@ -899,6 +899,8 @@ class PowerMove(db.Model):
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	speed = db.Column(db.String())
 	speed_rank = db.Column(db.Integer)
+	speed_mod = db.Column(db.String())
+	speed_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	speed_rank_mod = db.Column(db.Integer)
 	speed_trait_type = db.Column(db.String())
 	speed_trait = db.Column(db.Integer)
@@ -998,6 +1000,8 @@ class PowerMove(db.Model):
 			'extra_id':self.extra_id,
 			'speed': self.speed,
 			'speed_rank': self.speed_rank,
+			'speed_mod': self.speed_mod,
+			'speed_math': self.speed_math,
 			'speed_rank_mod': self.speed_rank_mod,
 			'speed_trait_type': self.speed_trait_type,
 			'speed_trait': self.speed_trait,
