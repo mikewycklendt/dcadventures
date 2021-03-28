@@ -216,7 +216,7 @@ def character_post_errors(data):
 	limbs_count = data['limbs_count']
 	limbs_continuous = data['limbs_continuous']
 	limbs_sustained = data['limbs_sustained']
-	limbs_distracting = data['limbs_distracting']
+	limbs_condition = data['limbs_condition']
 	limbs_projection = data['limbs_projection']
 	carry_capacity = data['carry_capacity']
 	points_value = data['points_value']
@@ -245,6 +245,8 @@ def character_post_errors(data):
 	errors = int_check(carry_capacity, 'Carry Capacity', errors)
 	errors = int_check(points_value, 'Points', errors)
 	errors = int_check(limbs_count, 'Limbs Count', errors)
+
+	errors = id_check(Condition, limbs_condition, 'Condition', errors)
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)

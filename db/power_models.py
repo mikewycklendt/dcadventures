@@ -1332,8 +1332,8 @@ class PowerChar(db.Model):
 	limbs_rank = db.Column(db.Boolean)
 	limbs_continuous = db.Column(db.Boolean)
 	limbs_sustained = db.Column(db.Boolean)
-	limbs_distracting = db.Column(db.Boolean)
 	limbs_projection = db.Column(db.Boolean)
+	limbs_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	carry_capacity = db.Column(db.Integer)
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
@@ -1382,9 +1382,9 @@ class PowerChar(db.Model):
 			'reduced_full': self.reduced_full,
 			'limbs_count': self.limbs_count,
 			'limbs_rank': self.limbs_rank,
+			'limbs_condition': self.limbs_condition,
 			'limbs_continuous': self.limbs_continuous,
 			'limbs_sustained': self.limbs_sustained,
-			'limbs_distracting': self.limbs_distracting,
 			'limbs_projection': self.limbs_projection,
 			'carry_capacity': self.carry_capacity,
 			'points_value': self.points_value,

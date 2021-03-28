@@ -252,8 +252,8 @@ function char_submit() {
 	const limbs_rank = check("char_limbs_rank")
 	const limbs_continuous = check("char_limbs_continuous");
 	const limbs_sustained = check("char_limbs_sustained");
-	const limbs_distracting = check("char_limbs_distracting");
 	const limbs_projection = check("char_limbs_projection");
+	const limbs_condition = select("char_limbs_condition")
 	const carry_capacity = select("char_carry_capacity");
 	const points_value = select("char_points_value");
 	const points_trait_type = select("char_points_trait_type");
@@ -309,8 +309,8 @@ function char_submit() {
 			'limbs_rank': limbs_rank,
 			'limbs_continuous': limbs_continuous,
 			'limbs_sustained': limbs_sustained,
-			'limbs_distracting': limbs_distracting,
 			'limbs_projection': limbs_projection,
+			'limbs_condition': limbs_condition,
 			'carry_capacity': carry_capacity,
 			'points_value': points_value,
 			'points_trait_type': points_trait_type,

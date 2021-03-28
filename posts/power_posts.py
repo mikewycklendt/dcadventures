@@ -96,7 +96,7 @@ def character_post(entry, body, cells):
 	limbs_rank = entry.limbs_rank
 	limbs_continuous = entry.limbs_continuous
 	limbs_sustained = entry.limbs_sustained
-	limbs_distracting = entry.limbs_distracting
+	limbs_condition = entry.limbs_condition
 	limbs_projection = entry.limbs_projection
 	carry_capacity = entry.carry_capacity
 	points_value = entry.points_value
@@ -122,6 +122,7 @@ def character_post(entry, body, cells):
 	weaken_descriptor = descriptor_name(weaken_descriptor)
 	points_descriptor = descriptor_name(points_descriptor)
 	limited_emotion = name(Emotion, limited_emotion)
+	limbs_condition = get_name(Condition, limbs_condition)
 
 	limbs_rank = ('Limbs Per Rank', limbs_rank)
 
@@ -170,9 +171,9 @@ def character_post(entry, body, cells):
 	cells = check_cell('Limbs', 8, limbs, cells, True)
 	new_mod = mod_create('Extra Limbs', 14)
 	new_mod = mod_cell('Limbs', 6, [limbs_count, limbs_rank], new_mod)
+	new_mod = mod_cell('Condition:', 10, [limbs_condition], new_mod)
 	new_mod = mod_cell('Continuous:', 11, [limbs_continuous], new_mod)
 	new_mod = mod_cell('Sustained:', 10, [limbs_sustained], new_mod)
-	new_mod = mod_cell('Distracting:', 12, [limbs_distracting], new_mod)
 	new_mod = mod_cell('Projection:', 12, [limbs_projection], new_mod)
 	body = mod_add(limbs, new_mod, body)
 
