@@ -224,6 +224,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'This Object'}, {'type': 'character', 'name': 'This Character'}]
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}]
+
+	circ_apply = [{'type': '', 'name': 'Applies'}, {'type': 'always', 'name': 'Always'}, {'type': 'circ', 'name': 'Circumstance'}]
 	
 	circumstances = [{'type': '', 'name': 'N/A'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'table', 'name': 'Circumstance Table'}]
 
@@ -3465,6 +3467,7 @@ def power_post_circ():
 	conflict = request.get_json()['conflict']
 	conflict_grab = request.get_json()['conflict_grab']
 	rank = request.get_json()['rank']
+	apply = request.get_json()['apply']
 
 	errors = power_circ_post_errors(data)
 
@@ -3566,7 +3569,8 @@ def power_post_circ():
 						descriptor = descriptor,
 						conflict = conflict,
 						conflict_grab = conflict_grab,
-						rank = rank
+						rank = rank,
+						apply = apply
 					)
 
 	db.session.add(entry)

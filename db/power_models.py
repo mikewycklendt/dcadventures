@@ -471,6 +471,7 @@ class PowerCirc(db.Model):
 	conflict = db.Column(db.Integer, db.ForeignKey('conflict_actions.id'))
 	conflict_grab = db.Column(db.String())
 	rank = db.Column(db.Boolean)
+	apply = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -527,7 +528,8 @@ class PowerCirc(db.Model):
 			'descriptor': self.descriptor,
 			'conflict': self.conflict,
 			'conflict_grab': self.conflict_grab,
-			'rank': self.rank
+			'rank': self.rank,
+			'apply': self.apply
 		}
 
 

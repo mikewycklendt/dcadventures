@@ -1800,7 +1800,7 @@ def power_circ_post(entry, body, cells):
 	conflict_grab = entry.conflict_grab
 	conflict = entry.conflict
 	rank = entry.rank
-
+	apply = entry.apply
 
 	title_name = get_name(PowerCircType, title)
 	body['title'] = title_name
@@ -1850,6 +1850,9 @@ def power_circ_post(entry, body, cells):
 	materials_select = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 	materials = selects(materials, materials_select)
 	
+	circ_apply = [{'type': '', 'name': 'Applies'}, {'type': 'always', 'name': 'Always'}, {'type': 'circ', 'name': 'Circumstance'}]
+	apply = selects(apply, circ_apply)
+	
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
 	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'gm', 'name': 'GM Decides'}]
@@ -1868,6 +1871,7 @@ def power_circ_post(entry, body, cells):
 	cells = cell('Target', 12, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
 	cells = check_cell('Per Rank', 9, rank, cells)
+	cells = cell('Applies', 11, [apply], cells)
 	cells = cell('Lasts', 15, [lasts], cells)
 
 	vcells = vcell('condition', 25, [condition1, 'to', condition2], 'e', condition_type, 'condition')

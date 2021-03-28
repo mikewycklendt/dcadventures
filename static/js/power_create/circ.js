@@ -170,6 +170,7 @@ function circ_submit() {
 	const conflict = select("circ_conflict");
 	const conflict_grab = select("circ_conflict_grab");
 	const rank = check("circ_rank");
+	const apply = select("circ_apply");
 
 	const errors = 'circ-err';
 	const err_line = 'circ-err-line';
@@ -231,7 +232,8 @@ function circ_submit() {
 			'descriptor': descriptor,
 			'conflict': conflict,
 			'conflict_grab': conflict_grab,
-			'rank': rank
+			'rank': rank,
+			'apply': apply
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

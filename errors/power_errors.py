@@ -1509,6 +1509,7 @@ def power_circ_post_errors(data):
 	descriptor = data['descriptor']
 	conflict = data['conflict']
 	conflict_grab = data['conflict_grab']
+	apply = data['apply']
 
 
 	errors = power_check(power_id, errors)
@@ -1545,6 +1546,7 @@ def power_circ_post_errors(data):
 	errors = required(keyword, 'Keyword', errors)
 	errors = required(title, 'Title', errors)
 	errors = required(circ_target, 'Target', errors)
+	errors = required(apply, 'Applies', errors)
 
 	errors = variable_fields('condition', 'Circumstance Effect', effect, [condition_type], errors)
 	errors = variable_field('condition', effect, 'Condition Type', condition_type, errors)
