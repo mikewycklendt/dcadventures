@@ -1852,7 +1852,7 @@ def power_circ_post(entry, body, cells):
 	
 	circ_apply = [{'type': '', 'name': 'Applies'}, {'type': 'always', 'name': 'Always'}, {'type': 'circ', 'name': 'Circumstance'}]
 	apply = selects(apply, circ_apply)
-	
+
 	offers  = [{'type': '', 'name': 'Effect'}, {'type': 'required', 'name': 'Requires'}, {'type': 'provides', 'name': 'Provides'}]
 
 	required_tools = [{'type': '', 'name': 'Tools'}, {'type': 'correct', 'name': 'Correct Tools'}, {'type': 'improper', 'name': 'Improper Tools'}, {'type': 'gm', 'name': 'GM Decides'}]
@@ -1866,8 +1866,8 @@ def power_circ_post(entry, body, cells):
 	grab_type = [{'type': '', 'name': 'Grab Type'}, {'type': 'primary', 'name': 'Primary Hand'}, {'type': 'off', 'name': 'Off Hand'}, {'type': 'any', 'name': 'Any Hand'}, {'type': 'both', 'name': 'Both Hands'}, {'type': 'all', 'name': 'All Limbs'}]
 	conflict_grab = selects(conflict_grab, grab_type)
 
-	cells = cell('Keyword', 13, [keyword])
-	cells = cell('Extra', 13, [extra], cells)
+	cells = cell('Keyword', 15, [keyword])
+	cells = cell('Extra', 15, [extra], cells)
 	cells = cell('Target', 12, [circ_target], cells)
 	cells = cell('Modifier', 8, [mod], cells)
 	cells = check_cell('Per Rank', 9, rank, cells)
