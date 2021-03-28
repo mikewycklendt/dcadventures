@@ -34,6 +34,7 @@ function ranks_submit() {
 	const base_ranks = select("base_ranks");
 	const base_flat = check("flat");
 	const unique = check("ranks_unique");
+	const effect = text("ranks_effect")
 
 	const errors = 'ranks-err';
 	const err_line = 'ranks-err-line';
@@ -51,7 +52,8 @@ function ranks_submit() {
 			'extra': extra,
 			'unique': unique,
 			'base_ranks': base_ranks,
-			'base_flat': base_flat
+			'base_flat': base_flat,
+			'effect': effect
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

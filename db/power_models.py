@@ -306,6 +306,7 @@ class PowerRanks(db.Model):
 	ranks = db.Column(db.Integer)
 	extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	unique = db.Column(db.Boolean)
+	effect = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -314,7 +315,8 @@ class PowerRanks(db.Model):
 			'cost': self.cost,
 			'ranks': self.ranks,
 			'extra': self.extra,
-			'unique': self.unique
+			'unique': self.unique,
+			'effect': self.effect
 		}
 
 class PowerCheck(db.Model):

@@ -1076,6 +1076,7 @@ def power_post_ranks():
 	unique = request.get_json()['unique']
 	base_cost = request.get_json()['base_cost']
 	base_ranks = request.get_json()['base_ranks']
+	effect = request.get_json()['effect']
 
 	power_id = integer(power_id)
 	cost = db_integer(PowerCost, cost)
@@ -1088,7 +1089,8 @@ def power_post_ranks():
 							cost = cost,
 							ranks = ranks,
 							extra = extra,
-							unique = unique)
+							unique = unique,
+							effect = effect)
 
 		db.session.add(entry)
 		db.session.commit()

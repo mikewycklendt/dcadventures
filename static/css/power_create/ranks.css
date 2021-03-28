@@ -10,7 +10,15 @@
 	display: grid;
 	width: 98%;
 	gap: .2VW;
-	grid-template-columns: 30% 15% 40% 15%;
+	grid-template-columns: 25% 15% 60%;
+	grid-auto-rows: auto;
+}
+
+#ranks-button-row {
+	display: grid;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 70% 15% 15%;
 	grid-auto-rows: auto;
 }
 

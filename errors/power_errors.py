@@ -2634,6 +2634,7 @@ def power_ranks_post_errors(data):
 	base_ranks = data['base_ranks']
 	base_cost = data['base_cost']
 	base_flat = data['base_flat']
+	effect = data['effect']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2643,6 +2644,7 @@ def power_ranks_post_errors(data):
 	errors =  int_check(ranks, 'Ranks', errors)
 	
 	errors = required(ranks, 'Ranks', errors)
+	errors = required(effect, 'Effect', errors)
 
 	errors = ranks_error(cost, ranks, base_cost, base_ranks, base_flat, extra)
 

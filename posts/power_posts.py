@@ -3035,6 +3035,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	extra = entry.extra
 	cost = entry.cost
 	unique = entry.unique
+	effect = entry.effect
 
 	ranks = integer_convert(ranks)
 
@@ -3046,7 +3047,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	cells = cell('Ranks', 12, [ranks], cells)
 	cells = cell('Cost', 12, [calculated], cells)
 	cells = check_cell('Unique', 8, unique, cells)
-
+	cells = circ_cell('Effect', 'Effect', 8, effect, cells, body)
 	body = send(cells, body)
 
 
