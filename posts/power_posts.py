@@ -2223,6 +2223,7 @@ def power_degree_post(entry, body, cells):
 	condition_type = entry.condition_type
 	condition_damage_value = entry.condition_damage_value
 	condition_damage = entry.condition_damage
+	condition_degree = entry.condition_degree
 	condition1 = entry.condition1
 	condition2 = entry.condition2
 	condition_turns = entry.condition_turns
@@ -2362,10 +2363,10 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('measure', 35, [measure_type, measure_trait, measure_trait_math, measure_mod, measure_math_rank], vcells, measure_effect, 'skill_rank')
 	vcells = vcell('measure', 35, [measure_type, measure_trait_unit, measure_trait_math_unit, measure_mod_unit, measure_math_unit], vcells, measure_effect, 'skill_unit')
 
-	word = string('for', condition_turns)
-	word2 = string('Turns', condition_turns)
+
+	word = check_string('Per Degree', condition_degree)
 	vcells = vcell('condition', 40, ['From', condition1, 'to', condition2], vcells, condition_type, 'condition')
-	vcells = vcell('condition', 25, [condition_damage_value, 'Conditions', condition_damage], vcells, condition_type, 'damage')
+	vcells = vcell('condition', 30, [condition_damage_value, 'Conditions', condition_damage, word], vcells, condition_type, 'damage')
 
 	vcells = vcell('circ', 40, [circumstance, 'on', circ_target], vcells)
 	time = add_plus(time)

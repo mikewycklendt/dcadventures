@@ -762,6 +762,7 @@ class PowerDegree(db.Model):
 	condition_type = db.Column(db.String())
 	condition_damage_value = db.Column(db.Integer)
 	condition_damage = db.Column(db.Integer)
+	condition_degree = db.Column(db.Boolean)
 	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer, db.ForeignKey('power_time.id'))
@@ -853,6 +854,7 @@ class PowerDegree(db.Model):
 			'condition_type': self.condition_type,
 			'condition_damage_value': self.condition_damage_value,
 			'condition_damage': self.condition_damage,
+			'condition_degree': self.condition_degree,
 			'condition1': self.condition1,
 			'condition2': self.condition2,
 			'condition_turns': self.condition_turns,

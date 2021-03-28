@@ -698,6 +698,8 @@ def skill_trait_select():
 		body['options'] = [{'id': '0', 'name': 'This Advantage'}]
 	elif trait == 'sense':
 		body['options'] = [{'id': '0', 'name': 'Sense'}]
+	elif trait == 'vert':
+		body['options'] = [{'id': '0', 'name': 'Vertical Distance'}]
 	elif trait == 'size':	
 		body['options'] = [{'id': '0', 'name': 'Size Rank'}]
 	elif trait == 'speed':	

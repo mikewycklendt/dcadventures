@@ -272,6 +272,7 @@ function deg_mod_submit() {
 	const condition_type = select("deg_mod_condition_type");
 	const condition_damage_value = select("deg_mod_condition_damage_value");
 	const condition_damage = select("deg_mod_condition_damage");
+	const condition_degree = check("deg_mod_condition_degree")
 	const condition1 = select("deg_mod_condition1");
 	const condition2 = select("deg_mod_condition2");
 	const condition_turns = select("deg_mod_condition_turns");
@@ -375,6 +376,7 @@ function deg_mod_submit() {
 			'condition_type': condition_type,
 			'condition_damage_value': condition_damage_value,
 			'condition_damage': condition_damage,
+			'condition_degree': condition_degree,
 			'condition1': condition1,
 			'condition2': condition2,
 			'condition_turns': condition_turns,
@@ -419,7 +421,7 @@ function deg_mod_submit() {
 		if (jsonResponse.success) {
 
 			extra_effect_check(jsonResponse);
-			
+
 			const id = jsonResponse.id;
 			const title_name = jsonResponse.title;
 			const title_id = jsonResponse.title_id;

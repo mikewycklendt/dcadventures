@@ -1148,6 +1148,8 @@ def trait_select(value, trait):
 		value = "Object Toughness"
 	elif trait == 'attack':
 		value = "Attack Bonus"
+	elif trait == 'vert':
+		value = "Vertical Distance"
 	
 	return (value)
 

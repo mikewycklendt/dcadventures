@@ -199,6 +199,7 @@
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
+						<option value="vert">Vertical Distance</option>
 					</select>
 				</div>
 
@@ -220,6 +221,8 @@
 				<div>
 					<select class="select-sml" name="move_distance_rank_value1" id="move_distance_rank_value1">
 						<option value="">Value</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
 						<option value=0>0</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>

@@ -3938,6 +3938,7 @@ def power_post_degree():
 	condition_type = request.get_json()['condition_type']
 	condition_damage_value = request.get_json()['condition_damage_value']
 	condition_damage = request.get_json()['condition_damage']
+	condition_degree = request.get_json()['condition_degree']
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	condition_turns = request.get_json()['condition_turns']
@@ -4109,6 +4110,7 @@ def power_post_degree():
 						condition_type = condition_type,
 						condition_damage_value = condition_damage_value,
 						condition_damage = condition_damage,
+						condition_degree = condition_degree,
 						condition1 = condition1,
 						condition2 = condition2,
 						condition_turns = condition_turns,
