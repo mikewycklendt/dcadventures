@@ -185,7 +185,7 @@
 
 #circ-row2 {
 	display: grid;
-	grid-template-columns: auto auto auto auto auto auto;
+	grid-template-columns: 15% 15% auto auto auto auto;
 	width: 97%;
 	gap: .2vw;
 	grid-template-rows: auto;
