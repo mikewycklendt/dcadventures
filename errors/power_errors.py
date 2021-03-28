@@ -752,6 +752,10 @@ def mod_post_errors(data):
 	limited_creature = data['limited_creature']
 	limited_creature_narrow = data['limited_creature_narrow']
 	limited_creature_other = data['limited_creature_other']
+	limited_env_other = data['limited_env_other']
+	limited_env = data['limited_env']
+	limited_emotion = data['limited_emotion']
+	limited_emotion_other = data['limited_emotion_other']
 	side_effect_type = data['side_effect_type']
 	side_level = data['side_level']
 	side_other = data['side_other']
@@ -792,6 +796,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerDCType, extra_dc, 'Extra DC', errors)
 	errors = id_check(PowerDegreeType, extra_degree, 'Extra Degree', errors)
 
+
 	errors = power_check(power_id, errors)
 
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -807,6 +812,8 @@ def mod_post_errors(data):
 	errors = id_check(Ground, limited_ground, 'Ground Type', errors)
 	errors = id_check(Creature, limited_creature, 'Creature', errors)
 	errors = id_check(NarrowCreature, limited_creature_narrow, 'Narrow Creature', errors)
+	errors = id_check(Environment, limited_env, 'Environment', errors)
+	errors = id_check(Emotion, limited_emotion, 'Emotion', errors)
 
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
@@ -880,6 +887,15 @@ def mod_post_errors(data):
 	errors = variable_fields('other', 'Other Nsrrow Creature', limited_creature_narrow, [limited_creature_other], errors)
 	errors = variable_field('other', limited_creature_narrow, 'Other Creature', limited_creature_other, errors)
 
+	errors = variable_fields('env', 'Limited to Environment', limited_type, [limited_env], errors)
+	errors = variable_field('env', limited_type, 'Environment', limited_env, errors)
+	errors = variable_fields('other', 'Other Environment', limited_env, [limited_env_other], errors)
+	errors = variable_field('other', limited_env, 'Other Environment', limited_env_other, errors)
+
+	errors = variable_fields('emotion', 'Limited to Emotion', limited_type, [limited_emotion], errors)
+	errors = variable_field('emotion', limited_type, 'Emotion', limited_emotion, errors)
+	errors = variable_fields('other', 'Other Emotion', limited_emotion, [limited_emotion_other], errors)
+	errors = variable_field('other', limited_emotion, 'Other Emotion', limited_emotion_other, errors)
 
 	errors = check_of(others, 'Affects Others', [others_carry, others_touch], errors)
 

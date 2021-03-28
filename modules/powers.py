@@ -309,7 +309,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, ]
+	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -2252,6 +2252,10 @@ def power_post_mod():
 	limited_creature = request.get_json()['limited_creature']
 	limited_creature_narrow = request.get_json()['limited_creature_narrow']
 	limited_creature_other = request.get_json()['limited_creature_other']
+	limited_env_other = request.get_json()['limited_env_other']
+	limited_env = request.get_json()['limited_env']
+	limited_emotion_other = request.get_json()['limited_emotion_other']
+	limited_emotion = request.get_json()['limited_emotion']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
@@ -2305,9 +2309,7 @@ def power_post_mod():
 	limited_range = db_integer(Range, limited_range)
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
-	limited_creature = db_integer(Creature, limited_creature)
-	limited_creature_narrow = db_integer(NarrowCreature, limited_creature_narrow)
-	
+
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
 	simultaneous_descriptor = integer(simultaneous_descriptor)
@@ -2335,7 +2337,17 @@ def power_post_mod():
 
 	body = user_item(NarrowCreature, 'Narrow Creature', limited_creature_narrow, limited_creature_other, 'creature-narrow-sml', body, True, True, limited_creature, 'creature')
 	limited_creature_narrow = body['output']
-		
+	
+	body = user_item(Environment, 'Environment', limited_env, limited_env_other, 'env-sml', body, True, True)
+	limited_env = body['output']
+	
+	body = user_item(Emotion, 'Emotion', limited_emotion, limited_emotion_other, 'emotion-sml', body, True, True)
+	limited_emotion = body['output']
+	
+	limited_creature = db_integer(Creature, limited_creature)
+	limited_creature_narrow = db_integer(NarrowCreature, limited_creature_narrow)
+	limited_env = db_integer(Environment, limited_env_other)
+	limited_emotion = db_integer(Emotion, limited_emotion)
 
 	try:
 		entry = PowerMod(power_id = power_id,
@@ -2401,6 +2413,10 @@ def power_post_mod():
 							limited_creature = limited_creature,
 							limited_creature_narrow = limited_creature_narrow,
 							limited_creature_other = limited_creature_other,
+							limited_env_other = limited_env_other,
+							limited_env = limited_env,
+							limited_emotion_other = limited_emotion_other,
+							limited_emotion = limited_emotion,
 							side_effect_type = side_effect_type,
 							side_level = side_level,
 							side_other = side_other,

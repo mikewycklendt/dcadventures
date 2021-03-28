@@ -530,6 +530,41 @@
 					<input type="text" id="mod_limited_creature_other" name="mod_limited_creature_other" placeholder="Other Creature">
 				</div>
 			</div>
+			
+			<div id="mod-limited-env">
+				<div>
+					<select class="select-sml env-sml" id="mod_limited_env" name="mod_limited_env" onchange="mod_limited_env()">
+						<option value="">Environment</option>
+						<option value="x">Variable</option>
+						<option value="other">Other</option>
+						{% for e in environments %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="mod-limited-env-other">
+					<input type="text" id="mod_limited_env_other" name="mod_limited_env_other" placeholder="Other Environment">
+				</div>
+			</div>
+
+			
+			<div id="mod-limited-emotion">
+				<div>
+					<select class="select-sml emotion-sml" id="mod_limited_emotion" name="mod_limited_emotion" onchange="mod_limited_emotion()">
+						<option value="">Emotion</option>
+						<option value="x">Variable</option>
+						<option value="other">Other</option>
+						{% for e in emotions %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="mod-limited-emotion-other">
+					<input type="text" id="mod_limited_emotion_other" name="mod_limited_emotion_other" placeholder="Other Emotion">
+				</div>
+			</div>
 
 			<div id="mod-limited-sense">
 				<div>
@@ -971,7 +1006,7 @@
 		
 	</div>
 
-	
+
 
 	<div id="mod-buttonrow">
 

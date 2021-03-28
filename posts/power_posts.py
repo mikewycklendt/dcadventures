@@ -833,6 +833,8 @@ def mod_post(entry, body, cells):
 	limited_ground = entry.limited_ground
 	limited_creature = entry.limited_creature
 	limited_creature_narrow = entry.limited_creature_narrow
+	limited_env = entry.limited_env
+	limited_emotion = entry.limited_emotion
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
@@ -890,6 +892,8 @@ def mod_post(entry, body, cells):
 	limited_ground = get_name(Ground, limited_ground)
 	limited_creature = get_name(Creature, limited_creature)
 	limited_creature_narrow = get_name(NarrowCreature, limited_creature_narrow)
+	limited_env = get_name(Environment, limited_env)
+	limited_emotion = get_name(Emotion, limited_emotion)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -947,7 +951,7 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Selective', 9, selective, cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
-	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}]
+	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}]
 	new_mod = mod_create('Limited', 9, limited_type, limited_type_select)
 	value = 'task_type'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
@@ -1000,6 +1004,18 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'org'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'complication'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'day'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'night'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'env'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Environment', 14, [limited_env], new_mod, value)
+	value = 'emotion'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Emotion', 14, [limited_emotion], new_mod, value)
 	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Innate', 8, innate, cells)
