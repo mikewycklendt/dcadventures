@@ -235,6 +235,7 @@ function sense_submit() {
 	const comprehend_type = select("aense_comprehend_type");
 	const concealment = select("sense_concealment");
 	const conceal_precise = check("sense_conceal_precise");
+	const multiple = select("sense_multiple");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -291,7 +292,8 @@ function sense_submit() {
 			'comprehend': comprehend,
 			'comprehend_type': comprehend_type,
 			'concealment': concealment,
-			'conceal_precise': conceal_precise
+			'conceal_precise': conceal_precise,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

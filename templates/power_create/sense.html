@@ -412,6 +412,14 @@
 		<div></div>
 
 		<div>
+			<select class="entry-select" id="sense_multiple" name="sense_multiple">
+				{% for s in sense_multiple %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="entry-select" id="sense_cost" name="sense_ranks" onchange="sense_cost()">
 				<option value="">Cost</option>
 			</select>
