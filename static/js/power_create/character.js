@@ -265,6 +265,8 @@ function char_submit() {
 	const insub_description = text("char_insub_des");
 	const cost = select("char_cost");
 	const ranks = select("char_ranks");
+	const multiple = select("char_multiple");
+	const points_type = select("char_points_type")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -312,6 +314,7 @@ function char_submit() {
 			'limbs_projection': limbs_projection,
 			'limbs_condition': limbs_condition,
 			'carry_capacity': carry_capacity,
+			'points_type': points_type,
 			'points_value': points_value,
 			'points_trait_type': points_trait_type,
 			'points_trait': points_trait,
@@ -324,7 +327,8 @@ function char_submit() {
 			'ranks': ranks,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -339,6 +343,8 @@ function char_submit() {
 			const items = jsonResponse.new_items;
 
 			new_items(insert, items);
+
+			extra_effect_check(jsonResponse)
 
 			char_grid.columns.length = 0;
 			char_grid.columns = jsonResponse.rows;

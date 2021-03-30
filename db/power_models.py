@@ -1234,6 +1234,7 @@ class PowerTime(db.Model):
 	measure_type = db.Column(db.String())
 	rank = db.Column(db.Boolean)
 	factor = db.Column(db.Integer)
+	reattempt_effort = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -1280,7 +1281,8 @@ class PowerTime(db.Model):
 			'mod': self.mod,
 			'measure_type': self.measure_type,
 			'rank': self.rank,
-			'factor': self.factor
+			'factor': self.factor,
+			'reattempt_effort': self.reattempt_effort
 		}
 
 
@@ -1345,6 +1347,7 @@ class PowerChar(db.Model):
 	limbs_projection = db.Column(db.Boolean)
 	limbs_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	carry_capacity = db.Column(db.Integer)
+	points_type = db.Column(db.String())
 	points_value = db.Column(db.Integer)
 	points_trait_type = db.Column(db.String())
 	points_trait = db.Column(db.Integer)
@@ -1355,6 +1358,7 @@ class PowerChar(db.Model):
 	insub_description = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
+	multiple = db.Column(db.String())
 
 
 	def format(self):
@@ -1397,6 +1401,7 @@ class PowerChar(db.Model):
 			'limbs_sustained': self.limbs_sustained,
 			'limbs_projection': self.limbs_projection,
 			'carry_capacity': self.carry_capacity,
+			'points_type': self.points_type,
 			'points_value': self.points_value,
 			'points_trait_type': self.points_trait_type,
 			'points_trait': self.points_trait,
@@ -1406,7 +1411,8 @@ class PowerChar(db.Model):
 			'insub_type': self.insub_type,
 			'insub_description': self.insub_description,
 			'cost': self.cost,
-			'ranks': self.ranks
+			'ranks': self.ranks,
+			'multiple': self.multiple
 		}
 
 class PowerCreate(db.Model):

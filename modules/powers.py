@@ -231,6 +231,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	character = [{'type': 'size', 'name': 'Size Rank'}]
 
+	char_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
+
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
@@ -279,7 +281,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 
-	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'overwrite', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'add', 'name': 'Add'}]
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'overwrite', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
@@ -353,6 +355,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 
+	points_type = [{'type': '', 'name': 'Points Type'}, {'type': 'taken', 'name': 'Taken From Trait'}, {'type': 'restore', 'name': 'Restored to Trait'}]
+
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'general', 'name': 'General'}]
@@ -407,7 +411,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 
-	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'recover', 'name': 'Recovery Time'}]
+	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
 		
 	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'factor', 'name': 'Factor Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'player', 'name': 'Set by Player'}, {'type': 'check', 'name': 'Until Next Check'}]
 
@@ -503,7 +507,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
-											speed_mod=speed_mod)
+											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1292,6 +1296,7 @@ def power_post_character():
 	limbs_condition = request.get_json()['limbs_condition']
 	limbs_projection = request.get_json()['limbs_projection']
 	carry_capacity = request.get_json()['carry_capacity']
+	points_type = request.get_json()['points_type']
 	points_value = request.get_json()['points_value']
 	points_trait_type = request.get_json()['points_trait_type']
 	points_trait = request.get_json()['points_trait']
@@ -1305,6 +1310,8 @@ def power_post_character():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	multiple = request.get_json()['multiple']
+
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -1387,6 +1394,7 @@ def power_post_character():
 							limbs_sustained = limbs_sustained,
 							limbs_projection = limbs_projection,
 							carry_capacity = carry_capacity,
+							points_type = points_type,
 							points_value = points_value,
 							points_trait_type = points_trait_type,
 							points_trait = points_trait,
@@ -1396,7 +1404,8 @@ def power_post_character():
 							insub_type = insub_type,
 							insub_description = insub_description,
 							cost = cost,
-							ranks = ranks)
+							ranks = ranks,
+							multiple = multiple)
 
 		db.session.add(entry)
 		db.session.commit()
@@ -4748,6 +4757,7 @@ def power_post_time():
 	rank = request.get_json()['rank']
 	factor = request.get_json()['factor']  
 	measure_type = request.get_json()['measure_type']
+	reattempt_effort = request.get_json()['reattempt_effort']
 
 	errors = power_time_post_errors(data)
 	
@@ -4840,7 +4850,8 @@ def power_post_time():
 						mod = mod,
 						rank = rank,
 						factor = factor,
-						measure_type = measure_type
+						measure_type = measure_type,
+						reattempt_effort = reattempt_effort
 					)
 
 	db.session.add(entry)

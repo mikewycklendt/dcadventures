@@ -590,6 +590,11 @@ function mod_submit() {
 
 			extra_effect_check(jsonResponse);
 
+			const insert = jsonResponse.new;
+			const items = jsonResponse.new_items;
+
+			new_items(insert, items);
+			
 			mod_grid.columns.length = 0;
 			mod_grid.columns = jsonResponse.rows;
 			cells = jsonResponse.cells

@@ -109,6 +109,10 @@ def character_post(entry, body, cells):
 	insub_description = entry.insub_description
 	cost = entry.cost
 	ranks = entry.ranks
+	multiple = entry.multiple
+	points_type = entry.points_type
+
+	body = one_multiple(PowerChar, power_id, body)
 
 
 	cost = get_cost(cost, ranks, extra_id)
@@ -188,6 +192,7 @@ def character_post(entry, body, cells):
 
 	cells = check_cell('Points', 8, points, cells, True)
 	new_mod = mod_create('Hero Points', 14)
+	new_mod = mod_cell('Type', 6, [points_type], new_mod)
 	new_mod = mod_cell('Affected Trait', 18, [points_trait], new_mod)
 	new_mod = mod_cell('Points:', 9, [points_value], new_mod)
 	new_mod = mod_cell('Descriptor:', 12, [points_descriptor], new_mod)
@@ -221,6 +226,8 @@ def character_post(entry, body, cells):
 
 	cells = cell('Cost/Rank', 10, [cost], cells)
 	cells = cell('Ranks', 8, [ranks], cells)
+
+	cells = cell('Mulriple', 9, [multiple], cells)
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
@@ -2929,7 +2936,7 @@ def power_time_post(entry, body, cells):
 	measure_type = entry.measure_type
 	rank = entry.rank
 	factor = entry.factor
-
+	reattempt_effort = entry.reattempt_effort
 
 	title_name = get_name(PowerTimeType, title)
 	body['title'] = title_name
@@ -2963,7 +2970,7 @@ def power_time_post(entry, body, cells):
 	dc_type = get_name(PowerDCType, dc_type)
 
 	
-	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'recover', 'name': 'Recovery Time'}]
+	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
 	type = selects(type, time_effect_select)
 
 	
@@ -3004,7 +3011,8 @@ def power_time_post(entry, body, cells):
 	cells = cell('Recovery', 14, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
-	cells  = check_cell('Per Rank', 9, rank, cells)
+	cells = check_cell('Per Rank', 9, rank, cells)
+	cells = check_cell('Instant Effort', 16, reattempt_effort, cells)
 	body = send_multiple(title, cells, body)
 
 	cells.clear()

@@ -1090,6 +1090,12 @@ def trait_select(value, trait):
 			value = query.name
 		except:
 			value = 'Not Found'
+	elif trait == 'effect':
+		try:
+			query = db.session.query(Power).filter_by(id=value).one()
+			value = 'Trait Affected by ' + query.name
+		except:
+			value = 'Not Found'
 	elif trait == 'advantage':
 		try:
 			query = db.session.query(Advantage).filter_by(id=value).one()
@@ -1150,6 +1156,8 @@ def trait_select(value, trait):
 		value = "Attack Bonus"
 	elif trait == 'vert':
 		value = "Vertical Distance"
+	elif trait == 'points':
+		value = "Hero Point Total"
 	
 	return (value)
 

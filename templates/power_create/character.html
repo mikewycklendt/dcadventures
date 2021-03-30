@@ -334,11 +334,19 @@
 
 	<div id="char-points">
 		<div>
+			<select class="select-sml" id="char_points_type" name="char_points_type">
+				{% for p in points_type %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="select-sml" id="char_points_value" name="char_points_value">
 				<option value="">Points</option>
-				<option value="trait">Rank of Affected Trait</option>
-				<option value="rank">This Power's Rank</option>
-				<option value="extra">This Extra's Rank</option>
+				<option value="trait">Plsyer Rank of Affected Trait</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
 				<option value="all">Lose All</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
@@ -351,10 +359,11 @@
 
 		<div>
 			<select class="select-sml" id="char_points_trait_type" name="char_points_trait_type" onchange="char_points_trait_type()">
-				<option value="">Points taken from</option>
 				{% for t in traits %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
+				<option value="effect">Points Affected by Power</option>
+				<option value="points">Hero Point Total</option>
 			</select>
 		</div>
 
@@ -416,6 +425,14 @@
 	<div id="char-button">
 
 		<div></div>
+
+		<div>
+			<select class="entry-select" id="char_multiple" name="char_multiple">
+				{% for c in char_multiple %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
 		<div>
 			<select class="entry-select" id="char_cost" name="char_cost" onchange="char_cost()">

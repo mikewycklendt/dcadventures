@@ -619,14 +619,23 @@ def skill_trait_select():
 	powers = [{'id': '', 'name': 'Power'}]
 	var = db.session.query(Power).filter_by(var=True).first()
 	var_sense = db.session.query(Power).filter_by(var_sense=True).first()
+	act = db.session.query(Power).filter_by(active=True).first()
 	if sub == 'variable':
 		powers.append({'id': var.id, 'name': 'Variable Power'})
 		powers.append({'id': var_sense.id, 'name': 'Variable Sense Power'})
 	elif sub == 'skill-dc':
-		act = db.session.query(Power).filter_by(active=True).first()
 		powers.append({'id': act.id, 'name': act.name})
 	for p in powers_query:
 		powers.append({'id': p.id, 'name': p.name})
+
+	effects = [{'id': '', 'name': 'Trait Affected by'}]
+	if sub == 'variable':
+		effects.append({'id': var.id, 'name': 'Variable Power'})
+		effects.append({'id': var_sense.id, 'name': 'Variable Sense Power'})
+	elif sub == 'skill-dc':
+		effects.append({'id': act.id, 'name': act.name})
+	for p in powers_query:
+		effects.append({'id': p.id, 'name': p.name})
 
 	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == False).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Filter Enhanced Skill by Skill'}]
@@ -676,6 +685,8 @@ def skill_trait_select():
 		body['options'] = bonuses
 	elif trait == 'power':
 		body['options'] = powers
+	elif trait == 'effect':
+		body['options'] = effects
 	elif trait == 'advantage':
 		body['options'] = advantages
 	elif trait == 'extra':

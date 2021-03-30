@@ -220,6 +220,7 @@ def character_post_errors(data):
 	limbs_projection = data['limbs_projection']
 	carry_capacity = data['carry_capacity']
 	points_value = data['points_value']
+	points_type = data['points_type']
 	points_trait_type = data['points_trait_type']
 	points_trait = data['points_trait']
 	points_descriptor = data['points_descriptor']
@@ -229,6 +230,7 @@ def character_post_errors(data):
 	insub_description = data['insub_description']
 	cost = data['cost']
 	ranks = data['ranks']
+	multiple = data['multiple']
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
@@ -277,6 +279,12 @@ def character_post_errors(data):
 	errors = check_fields(insubstantial, 'Insubstantial', [insub_type, insub_description], errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Description', insub_description, errors)
+
+	errors = check_fields(points, 'Hero Points', [points_type, points_value, points_trait, points_trait_type], errors)
+	errors = check_field(points, 'Hero Points', 'Points Type', points_type, errors)
+	errors = check_field(points, 'Hero Points', 'Points', points_value, errors)
+	errors = check_field(points, 'Hero Points', 'Points Trait Type', points_trait_type, errors)
+	errors = check_field(points, 'Hero Points', 'Points Trait', points_trait, errors)
 
 	errors = check_fields(weaken, 'Weaken', [weaken_type], errors)
 	errors = check_field(weaken, 'Weaken', 'Weaken Type', weaken_type, errors)
@@ -2704,12 +2712,14 @@ def power_extra_post_errors(data):
 	errors = check_fields(extra_effect, 'Extra Effect', [extra_effect_count], errors)
 	errors = check_field(extra_effect, 'Extra Effect', 'Extra Effects Count', extra_effect_count, errors)
 
+	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
+	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)
 
 	errors = multiple_error(degree, 'Degree of Success/Failure Effect', PowerDegree, power_id, errors, PowerDegreeType, 'value')
 	errors = multiple_error(mod, 'Modifiers', PowerMod, power_id, errors)
 	errors = multiple_error(variable, 'Variable Checks', PowerCheck, power_id, errors, PowerCheckType)
 	errors = multiple_error(opposed, 'Opponent Checks', PowerOpposed, power_id, errors, PowerOpposedType)
-		
+	errors = multiple_error(character, 'Changes Character Traits', PowerChar, power_id, errors)
 	
 
 	return (errors)

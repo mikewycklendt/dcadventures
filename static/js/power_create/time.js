@@ -30,9 +30,10 @@ function time_trait() {
 
 function time_type() {
 	const select = 'time_type';
-	const options = [{'val': 'recover', 'div': 'time-recovery'}];
+	const options = [{'val': 'recover', 'div': 'time-recovery'},
+					{'val': 'reattempt', 'div': 'time-reattempt'}];
 	const fields = ['time_recovery_penalty'];
-	const checks =  ['time_recovery_incurable'];
+	const checks =  ['time_recovery_incurable', 'time_reattempt_effort'];
 	
 	reset_all(fields);
 	uncheck_all(checks);
@@ -98,6 +99,7 @@ function time_submit() {
 	const measure_type = select("time_measure_type");
 	const rank = check("time_rank");
 	const factor = select("time_factor");
+	const reattempt_effort = check("time_reattempt_effort");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -150,7 +152,8 @@ function time_submit() {
 			'recovery_target': recovery_target,
 			'measure_type': measure_type,
 			'rank': rank,
-			'factor': factor
+			'factor': factor,
+			'reattempt_effort': reattempt_effort 
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
