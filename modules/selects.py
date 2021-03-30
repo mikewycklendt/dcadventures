@@ -741,6 +741,8 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Object Volume"}]
 	elif trait == 'tough':
 		body['options'] = [{'id': "0", 'name': "Object Toughness"}]
+	elif trait == 'points':
+		body['options'] = [{'id': "0", 'name': "Hero Point Total"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': 'Trait'}]
