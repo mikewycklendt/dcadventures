@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerCondition, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -2616,6 +2616,58 @@ def power_time_post_errors(data):
 	errors = seperate([degree, degree_type], 'Degree', errors)
 
 	return (errors)
+
+
+def power_condition_post_errors(data):
+
+	errors = {'error': False, 'error_msgs': []}
+
+	power_id = data['power_id']\
+	extra_id = data['extra_id']
+	target = data['target']
+	columns = data['columns']
+	Created = data['created']
+	font = data['font']
+	benefit = data['benefit']
+	condition_type = data['condition_type']
+	condition = data['condition']
+	condition_null = data['condition_null']
+	condition1 = data['condition1']
+	condition2 = data['condition2']
+	damage_value = data['damage_value']
+	damage = data['damage']
+
+
+	errors = power_check(power_id, errors)
+	errors = id_check(Power, power_id, 'Power', errors)
+	errors = required(extra_id, 'Extra', errors)
+	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = int_check(damage_value, 'Condition Damage', errors)
+	errors = int_check(damage, 'Damage Direction', errors)
+
+	errors = id_check(Advantage, advantage_id, 'Advantage', errors)
+	errors = id_check(Benefit, benefit, 'Benefit', errors)
+
+	errors = required(condition_type, 'Condition Type', errors)
+
+	errors = required(extra_id, 'Base Power or Extra', errors)
+	errors = required(target, 'Target', errors)
+
+	errors = variable_fields('active', 'Active Condition', condition_type, [condition], errors)
+	errors = variable_field('active', condition_type, 'Condition', condition, errors)
+	errors = variable_fields('change', 'CondItion Change', condition_type, [condition1, condition2], errors)
+	errors = variable_field('change', condition_type, 'Starting CondItion', condition1, errors)
+	errors = variable_field('change', condition_type, 'Ending CondItion', condition2, errors)
+	errors = variable_fields('damage', 'Condition Damage', condition_type, [damage_value, damage], errors)
+	errors = variable_field('damage', condition_type, 'Damage Degrees', damage_value, errors)
+	errors = variable_field('damage', condition_type, 'Condition Damage Direction ', damage, errors)
+	errors = variable_fields('null', 'Nullify Condition', condition_type, [condition_null], errors)
+	errors = variable_field('null', condition_type, 'Nullified Condition', condition_null, errors)
+
+
+	return(errors)
+
 
 
 def power_cost_post_errors(data):

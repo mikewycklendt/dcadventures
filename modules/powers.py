@@ -28,7 +28,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerCondition, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -4896,3 +4896,120 @@ def delete_power_time(id):
 		
 	body = delete_link(PowerTime, PowerTimeType, id, True)
 	return jsonify(body)
+
+
+
+@powers.route('/power/condition/create', methods=['POST'])
+def power_post_condition():
+
+	body = {}
+	body['success'] = True
+	errors = {'error': False, 'error_msgs': []}
+	data = request.get_json()
+
+	errors = power_condition_post_errors(data)
+
+	error = errors['error']
+	if error:
+		body['success'] = False
+		body['error_msgs'] = errors['error_msgs']
+		return jsonify(body)
+
+	power_id = request.get_json()['power_id']
+	extra_id = request.get_json()['extra_id']
+	target = request.get_json()['target']
+	columns = request.get_json()['columns']
+	created = request.get_json()['created']
+	font = request.get_json()['font']
+	benefit = request.get_json()['benefit']
+	condition_type = request.get_json()['condition_type']
+	condition = request.get_json()['condition']
+	condition_null = request.get_json()['condition_null']
+	condition1 = request.get_json()['condition1']
+	condition2 = request.get_json()['condition2']
+	damage_value = request.get_json()['damage_value']
+	damage = request.get_json()['damage']
+
+	try:
+		power_id = db_integer(Power, power_id)
+		extra_id = db_integer(Extra, extra_id)
+
+		condition = db_integer(Condition, condition)
+		condition_null = db_integer(Condition, condition_null)
+		condition1 = db_integer(Condition, condition1)
+		condition2 = db_integer(Condition, condition2)
+	
+		damage_value = integer(damage_value)
+		damage = integer(damage)
+
+		entry = PowerCondition(power_id = power_id,
+									extra_id = extra_id,
+									target = target,
+									condition_type = condition_type,
+									condition = condition,
+									condition_null = condition_null,
+									condition1 = condition1,
+									condition2 = condition2,
+									damage_value = damage_value,
+									damage = damage)
+
+		db.session.add(entry)	
+		db.session.commit()
+
+		body = {}
+		body['id'] = entry.id
+		error = False
+		error_msg = []
+		body['success'] = True
+
+		rows = columns
+		mods = []
+		cells = []
+		table_id = 'condition'
+		spot = table_id + '-spot'
+
+		body['table_id'] = table_id
+		body['spot'] = spot
+		body['created'] = created
+		body['title'] = ''
+		body['rows'] = rows
+		body['mods'] = []
+		body['font'] = font
+		body['circ'] = []
+						
+		body = power_condition_post(entry, body, cells)
+	except:
+		error = True
+		error_msgs = []
+		message = 'There was an error processing the request'
+		error_msgs.append(message)
+		body['success'] = False
+		body['error_msgs'] = error_msgs 
+		db.session.rollback()
+	
+	finally:
+		db.session.close()
+
+	return jsonify(body)
+
+
+@powers.route('/power/condition/delete/<power_id>', methods=['DELETE'])
+def delete_power_condition(power_id):
+	body = {}
+	body['success'] = True
+	body['id'] = power_id
+	try:
+		db.session.query(PowerCondition).filter_by(id=power_id).delete()
+		db.session.commit()
+	except:
+		body['success'] = False
+		message = 'Could not delete this rule.'
+		error_msgs = []
+		error_msgs.append(message)
+		body['error_msgs'] = error_msgs
+		db.session.rollback()
+	finally:
+		db.session.close()
+		print('\n\n' + str(power_id) + ' DELETED\n\n')
+		return jsonify(body)
+	

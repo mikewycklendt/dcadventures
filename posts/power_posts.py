@@ -9,7 +9,7 @@ from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
 from db.descriptor_models import Descriptor, Origin, Source, Medium, MediumSubType, MediumType
 from db.equipment_models import Equipment, EquipBelt, EquipCheck, EquipDamage, EquipDescriptor, EquipEffect, EquipLimit, EquipMod, EquipOpposed, EquipType
 from db.headquarters_models import Headquarters, HeadCharFeat, HeadFeatAddon, HeadFeature, HeadSize
-from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
+from db.power_models import Extra, Power, PowerCost, PowerRanks, PowerCondition, PowerDuration, PowerAction, PowerCheck, PowerChar, PowerCirc, PowerCreate, PowerDamage, PowerDC, PowerDefense, PowerDegree, PowerDes, PowerEnv, PowerMinion, PowerMod, PowerMove, PowerOpposed, PowerRanged, PowerResist, PowerResistBy, PowerReverse, PowerSenseEffect, PowerTime, PowerType
 from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, SkillDC, SkillDegree, SkillMod, SkillOpposed, SkillTime
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
@@ -3035,6 +3035,47 @@ def power_time_post(entry, body, cells):
 	cells = check_cell('Instant w/Effort', 18, reattempt_effort, cells)
 	body = send_multiple(title, cells, body)
 
+	cells.clear()
+
+	return (body)
+
+
+def power_condition_post(entry, body, cells):
+
+	power_id = entry.power_id
+	extra_id = entry.extra_id
+	target = entry.target
+	condition_type = entry.condition_type
+	condition = entry.condition
+	condition_null = entry.condition_null
+	condition1 = entry.condition1
+	condition2 = entry.condition2
+	damage_value = entry.damage_value
+	damage = entry.damage
+
+	damage_value = integer_convert(damage_value)
+
+	updown_select = [{'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
+	damage = selects(damage, updown_select)
+
+	benefit = name(Benefit, benefit)
+	condition = get_name(Condition, condition)
+	condition_null = get_name(Condition, condition_null)
+	condition1 = get_name(Condition, condition1)
+	condition2 = get_name(Condition, condition2)
+
+	extra = get_name(Extra, extra_id)
+
+	cells = cell('Extra', 15, [extra])
+	cells = cell('Target', 15, [target], cells)
+	vcells = vcell('active', 40, [condition, 'Active'])
+	vcells = vcell('change', 60, [condition1, 'to', condition2], vcells)
+	vcells = vcell('damage', 40, [damage_value, 'Condition', damage], vcells)
+	vcells = vcell('null', 40, [condition_null, 'Nullified'], vcells)
+	cells = vcell_add('Condition Effect', condition_type, vcells, cells)
+
+	body = send(cells, body)
+	
 	cells.clear()
 
 	return (body)

@@ -1419,6 +1419,35 @@ class PowerChar(db.Model):
 			'multiple': self.multiple
 		}
 
+class PowerCondition(db.Model):
+	__tablename__ = 'power_condition'
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
+	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	target =  db.Column(db.String())
+	condition_type = db.Column(db.String())
+	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition_null = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition1 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	damage_value = db.Column(db.Integer)
+	damage = db.Column(db.Integer)
+
+	def format(self):
+		return {
+			'id': self.id,
+			'power_id': self.power_id,
+			'extra_id': self.extra_id,
+			'target': self.target,
+			'condition_type': self.condition_type,
+			'condition': self.condition,
+			'condition_null': self.condition_null,
+			'condition1': self.condition1,
+			'condition2': self.condition2,
+			'damage_value': self.damage_value,
+			'damage': self.damage
+		}
+
 class PowerCreate(db.Model):
 	__tablename__ = 'power_create'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)

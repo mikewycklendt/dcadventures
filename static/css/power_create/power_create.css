@@ -26,6 +26,7 @@
 @import "minion.css";
 @import "cost.css";
 @import "ranks.css";
+@import "condition.css";
 
 .power-container {
 	display: grid;
