@@ -2622,7 +2622,7 @@ def power_condition_post_errors(data):
 
 	errors = {'error': False, 'error_msgs': []}
 
-	power_id = data['power_id']\
+	power_id = data['power_id']
 	extra_id = data['extra_id']
 	target = data['target']
 	columns = data['columns']
