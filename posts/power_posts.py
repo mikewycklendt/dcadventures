@@ -2941,6 +2941,9 @@ def power_time_post(entry, body, cells):
 	rank = entry.rank
 	factor = entry.factor
 	reattempt_effort = entry.reattempt_effort
+	check = entry.check
+	action = entry.action
+
 
 	title_name = get_name(PowerTimeType, title)
 	body['title'] = title_name
@@ -2966,15 +2969,21 @@ def power_time_post(entry, body, cells):
 	factor = integer_convert(factor)
 	times = math(3)
 
+	action = get_name(Action, action)
+
 	degree = get_keyword(PowerDegree, degree)
 	circ = get_keyword(PowerCirc, circ)
 	dc = get_keyword(PowerDC, dc)
 	degree_type = get_name(PowerDegreeType, degree_type)
 	circ_type = get_name(PowerCircType, circ_type)
 	dc_type = get_name(PowerDCType, dc_type)
+	check = get_keyword(PowerCheck, check)
+
 
 	
-	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
+	
+
+	time_effect_select = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
 	type = selects(type, time_effect_select)
 
 	
@@ -3006,17 +3015,24 @@ def power_time_post(entry, body, cells):
 	vcells = vcell('factor', 20, ['Time Rank', times, factor], vcells)
 	vcell_add('Time', value_type, vcells, cells)
 
-	cells = cell('Degree', 18, [degree, degree_type], cells)
-	cells = cell('DC', 18, [dc, dc_type], cells)
-	cells = cell('Circumstance', 18, [circ, circ_type], cells)
+	degree = arrow_cell([degree, degree_type])
+	cells = circ_cell('Degree', 'Degree', 7, degree, cells, body)
+	dc = arrow_cell([dc, dc_type])
+	cells = circ_cell('DC', 'DC', 5, dc, cells, body)
+	circ = arrow_cell([circ, circ_type])
+	cells = circ_cell('Circ', 'Circumstance Modifier', 5, circ, cells, body)
 
 	recovery_penalty = add_plus(recovery_penalty)
 	word = string('on', [recovery_penalty])
 	cells = cell('Recovery', 14, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
 
+	action_name = action + ' Action'
+	cells = circ_cell('Action', 'Action', 7, action_name, cells, body)
+	cells = circ_cell('Check', 'Check', 7, check, cells, body)
+
 	cells = check_cell('Per Rank', 9, rank, cells)
-	cells = check_cell('Instant Effort', 16, reattempt_effort, cells)
+	cells = check_cell('Instant w/Effort', 18, reattempt_effort, cells)
 	body = send_multiple(title, cells, body)
 
 	cells.clear()

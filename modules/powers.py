@@ -413,7 +413,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 
-	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
+	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}]
 		
 	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'factor', 'name': 'Factor Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'player', 'name': 'Set by Player'}, {'type': 'check', 'name': 'Until Next Check'}]
 
@@ -4762,6 +4762,8 @@ def power_post_time():
 	factor = request.get_json()['factor']  
 	measure_type = request.get_json()['measure_type']
 	reattempt_effort = request.get_json()['reattempt_effort']
+	check = request.get_json()['check']
+	action = request.get_json()['action']
 
 	errors = power_time_post_errors(data)
 	
@@ -4783,6 +4785,7 @@ def power_post_time():
 	rank2 = db_integer(Rank, rank2)
 	units = db_integer(Unit, units)
 	math = db_integer(Math, math)
+	action = db_integer(Action, action)
 
 	degree = db_integer(PowerDegree, degree)
 	circ = db_integer(PowerCirc, circ)
@@ -4790,6 +4793,7 @@ def power_post_time():
 	circ_type = db_integer(PowerCircType, circ_type)
 	degree_type = db_integer(PowerDegreeType, degree_type)
 	dc_type = db_integer(PowerDCType, dc_type)	
+	check = db_integer(PowerCheck, check)
 
 	rank1_value = integer(rank1_value)
 	rank2_value = integer(rank2_value)
@@ -4855,7 +4859,9 @@ def power_post_time():
 						rank = rank,
 						factor = factor,
 						measure_type = measure_type,
-						reattempt_effort = reattempt_effort
+						reattempt_effort = reattempt_effort,
+						check = check,
+						action = action
 					)
 
 	db.session.add(entry)

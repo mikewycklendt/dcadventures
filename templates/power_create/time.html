@@ -313,6 +313,28 @@
 					</div>
 				</div>		
 			</div>
+
+			<div id="time-check">
+				<div>
+					<select class="check-sml" id="time_check" name="time_check">
+						<option value="">Use Variable Check form to put options here</option>
+						{% for p in power_check %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="time-action">
+				<div>
+					<select class="select-sml" id="time_action" name="time_action">
+						<option value="">Action Type</option>
+						{% for a in actions %}
+							<option value={{a.id}}>{{a.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 		</div>
 
 		<div>

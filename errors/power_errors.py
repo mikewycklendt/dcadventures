@@ -2537,6 +2537,9 @@ def power_time_post_errors(data):
 	mod = data['mod']
 	recovery_target = data['recovery_target']
 	factor = data['factor']
+	check = data['check']
+	action = data['action']
+
 
 
 
@@ -2599,6 +2602,12 @@ def power_time_post_errors(data):
 
 	errors = variable_fields('recover', 'Recovery Time', type, [recovery_target], errors)
 	errors = variable_field('recover', type, 'Recovery Target', recovery_target, errors)
+
+	errors = variable_fields('check', 'Time Until Next Check', type, [check], errors)
+	errors = variable_field('check', type, 'Check', check, errors)
+	
+	errors = variable_fields('action', 'Time Until Take New Action', type, [action], errors)
+	errors = variable_field('action', type, 'Action Type', action, errors)
 
 	errors = seperate([dc, dc_type], 'DC', errors)
 	errors = seperate([circ, circ_type], 'Circumstance', errors)

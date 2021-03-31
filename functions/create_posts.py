@@ -427,10 +427,10 @@ def one_of(value, contentlist, final=''):
 				content += ' ' + c
 		return (content)
 
-def arrow_cell(content, final=''):
+def arrow_cell(contentlist, final=''):
 	empty = True
 
-	for c in content:
+	for c in contentlists:
 		if c != '':
 			empty = False
 

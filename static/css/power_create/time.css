@@ -219,3 +219,18 @@
 	gap: .2vw;
 }
 
+#time-action {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 35% 65%;
+	gap: .2vw;
+}
+
+#time-check {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
