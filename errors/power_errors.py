@@ -2626,7 +2626,7 @@ def power_condition_post_errors(data):
 	extra_id = data['extra_id']
 	target = data['target']
 	columns = data['columns']
-	Created = data['created']
+	created = data['created']
 	font = data['font']
 	benefit = data['benefit']
 	condition_type = data['condition_type']
