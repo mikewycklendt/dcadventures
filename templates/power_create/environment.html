@@ -74,7 +74,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="env_condition" class="medium-checkbox med-checkbox" onclick="env_condition()"> Temperature
+				<input type="checkbox" id="env_condition" class="medium-checkbox med-checkbox" onclick="env_condition()"> Environment Condition
 			</div>
 		</div>
 		
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 
-		<div>
+		<div style="display: none;">
 			<div class="check-div">
 				<input type="checkbox" id="env_immunity" class="medium-checkbox med-checkbox" onclick="env_immunity()"> Immunity
 			</div>
@@ -135,8 +135,8 @@
 
 				<div>
 					<select class="select-sml" id="env_temp_type" name="env_temp_type">
-						{% for t in temp_type %}
-							<option value="{{t.type}}">{{t.name}}</option>
+						{% for e in env_conditions %}
+							<option value={{e.id}}>{{e.name}}</option>
 						{% endfor %}
 					</select>
 				</div>
@@ -199,8 +199,8 @@
 
 		<div>
 			<select class="select-sml" id="env_condition_temp_type" name="env_condition_temp_type">
-				{% for t in temp_type %}
-					<option value="{{t.type}}">{{t.name}}</option>
+				{% for e in env_conditions %}
+					<option value={{e.id}}>{{e.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

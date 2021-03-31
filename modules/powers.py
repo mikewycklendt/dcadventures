@@ -19,7 +19,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -137,6 +137,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
 
 	environments = db.session.query(Environment).filter(Environment.show == True).order_by(Environment.name).all()
+
+	env_conditions = db.session.query(EnvCondition).filter(EnvCondition.hide == None).all()
 
 	equip_type = EquipType.query.all()
 
@@ -509,7 +511,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
-											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple)
+											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

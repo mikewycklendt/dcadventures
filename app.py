@@ -18,7 +18,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -96,23 +96,58 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/table/db')
-def table_db_columns_create():
+@app.route('/temp/create')
+def temp_create():
 
+	entries = ['Cold', 'Heat', 'High Pressure', 'Radiation', 'Vaccuum']
 
-	name = 'Power Rank'
+	for i in entries:
 
-	entry = Defense(power=True, name=name, hide=True )
+		entry = EnvCondition(name=i)
+		db.session.add(entry)
+		db.session.commit()
+	
+	
+	tablename =  'Emvironment Condition'
+
+	name = 'All Environment Conditions'
+
+	entry = EnvCondition(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = EnvCondition(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = EnvCondition(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Defense).filter_by(hide=True).all()
+	name = 'Variable ' + tablename
+
+	entry = EnvCondition(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = EnvCondition(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+
+	results = EnvCondition.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (name + ' db added')
+	return ('environment conditions added')
 
 if __name__ == '__main__':
 	app.debug = True
