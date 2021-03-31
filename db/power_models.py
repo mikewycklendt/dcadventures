@@ -1235,8 +1235,6 @@ class PowerTime(db.Model):
 	rank = db.Column(db.Boolean)
 	factor = db.Column(db.Integer)
 	reattempt_effort = db.Column(db.Boolean)
-	check_type = db.Column(db.Integer, db.ForeignKey('checks.id'))
-	action = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	
 	def format(self):
 		return {
@@ -1285,8 +1283,6 @@ class PowerTime(db.Model):
 			'rank': self.rank,
 			'factor': self.factor,
 			'reattempt_effort': self.reattempt_effort,
-			'check_type': self.check_type,
-			'action': self.action
 		}
 
 
