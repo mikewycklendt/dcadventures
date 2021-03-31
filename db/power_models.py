@@ -1617,6 +1617,8 @@ class PowerDefense(db.Model):
 	immunity_rule = db.Column(db.String())
 	cover_check = db.Column(db.Boolean)
 	cover_type = db.Column(db.Integer, db.ForeignKey('cover.id'))
+	immunity_consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	immunity_suffocate = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -1645,7 +1647,9 @@ class PowerDefense(db.Model):
 			'immunity_damage': self.immunity_damage,
 			'immunity_rule': self.immunity_rule,
 			'cover_check': self.cover_check,
-			'cover_type': self.cover_type
+			'cover_type': self.cover_type,
+			'immunity_consequence': self.immunity_consequence,
+			'immunity_suffocate': self.immunity_suffocate
 		}
 
 

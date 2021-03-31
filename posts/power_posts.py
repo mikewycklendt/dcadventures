@@ -485,7 +485,9 @@ def defense_post(entry, body, cells):
 	immunity_rule = entry.immunity_rule
 	cover_check = entry.cover_check
 	cover_type = entry.cover_type
-	
+	immunity_consequence = entry.immunity_consequence
+	immunity_suffocate = entry.immunity_suffocate
+
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
 	reflect_check = get_keyword(PowerCheck, reflect_check)
@@ -496,6 +498,7 @@ def defense_post(entry, body, cells):
 	defense = get_name(Defense, defense)
 	immunity_damage = get_name(Descriptor, immunity_damage)
 	cover_type = get_name(Cover, cover_type)
+	immunity_consequence = get_name(Consequence, immunity_consequence)
 
 	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 	immunity_rule = selects(immunity_rule, game_rule_select)
@@ -537,7 +540,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}]
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -545,8 +548,9 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value)
 	value = 'descriptor'
 	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value)
-	value = 'rule'
-	new_mod = mod_cell('Rule:', 10, [immunity_rule], new_mod, value)
+	value = 'consequence'
+	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
+	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

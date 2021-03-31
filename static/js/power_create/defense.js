@@ -71,7 +71,7 @@ function defense_immunity_trait_type() {
 	const select = 'defense_immunity_trait_type';
 	const fill = 'defense_immunity_trait';
 
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function defense_immunity_trait() {
@@ -86,9 +86,16 @@ function defense_immunity_type() {
 	const options = [{'val': 'trait', 'div': 'defense-immunity-trait'},
 					{'val': 'damage', 'div': 'defense-immunity-damage'},
 					{'val': 'descriptor', 'div': 'defense-immunity-descriptor'},
-					{'val': 'rule', 'div': 'defense-immunity-rule'}]
+					{'val': 'consequence', 'div': 'defense-immunity-consequence'}]
 
 	select_opacity(select, options);
+}
+
+function  defense_immunity_consequence() {
+	const select = 'defense_immunity_consequence';
+	const options = [{'val': '5', 'div': 'defense-immunity-suffocate'}]
+
+	select_opacity(select, options)
 }
 
 function defense_cover() {
@@ -134,6 +141,8 @@ function defense_submit() {
 	const immunity_rule = select("defense_immunity_rule");
 	const cover_check = check("defense_cover_check");
 	const cover_type = select("defense_cover_type");
+	const immunity_consequence = select("defense_immunity_consequence");
+	const immunity_suffocate = select("defense_immunity_suffocate")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -172,7 +181,9 @@ function defense_submit() {
 			'cover_type': cover_type,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'immunity_consequence': immunity_consequence,
+			'immunity_suffocate': immunity_suffocate
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

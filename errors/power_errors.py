@@ -500,6 +500,7 @@ def defense_post_errors(data):
 	immunity_rule = data['immunity_rule']
 	cover_check = data['cover_check']
 	cover_type = data['cover_type']
+	immunity_consequence = data['immunity_consequence']
 
 	errors = power_check(power_id, errors)
 
@@ -511,6 +512,7 @@ def defense_post_errors(data):
 
 	errors = id_check(PowerCheck, reflect_check, 'Reflect Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
+	errors = id_check(Consequence, immunity_consequence, 'Consequence', errors)
 
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
@@ -528,6 +530,9 @@ def defense_post_errors(data):
 	errors = variable('Descriptor Immunity', 'descriptor', value, fields, errors)
 	fields = field('Rule', immunity_rule)
 	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
+
+	errors = variable_fields('consequence', 'Immune to Consequence', immunity_type, [immunity_consequence], errors)
+	errors = variable_field('consequence', immunity_type, 'Consequence', immunity_type, immunity_consequence, errors)
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
 

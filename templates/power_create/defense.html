@@ -192,6 +192,30 @@
 					</select>
 				</div>
 			</div>
+			
+			<div id="defense-immunity-consequence">
+
+				<div>
+					<select class="select-sml" id="defense_immunity_consequence" name="defense_immunity_consequence" onchange="defense_immunity_consequence()">
+						<option value="">Consequence</option>
+						{% for c in consequences %}
+						<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>	
+				</div>
+			
+				<div id="defense-immunity-suffocate">
+					<select class="select-sml" id="defense_immunity_suffocate" name="defense_immunity_suffocate">
+						{% for s in suffocation_type %}
+						<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
+
+				</div>
+
+			
+			</div>
+				
 
 			<div id="defense-immunity-descriptor">
 				<div>

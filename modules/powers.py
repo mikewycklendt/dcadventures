@@ -305,7 +305,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	immunity_type = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'rule', 'name': 'Game Rule'}]
+	immunity_type = [{'type': '', 'name': 'Immune From'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -402,6 +402,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
 	subtle_type = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}]
+
+	suffocation_type = [{'type': '',  'name': 'Suffocation Type'}, {'type': 'all',  'name': 'All'}, {'type': 'x',  'name': 'Variable'}, {'type': 'water',  'name': 'Underwater'}, {'type': 'alien',  'name': 'Alien Atmosphere'}, {'type': 'forced',  'name': 'Forced'}]
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
 
@@ -511,7 +513,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											targets_object=targets_object, descriptor_effect=descriptor_effect, damage_value=damage_value, degree_multiple=degree_multiple, check_multiple=check_multiple, 
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
-											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences)
+											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
+											suffocation_type=suffocation_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1802,6 +1805,8 @@ def power_post_defense():
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
 	font = request.get_json()['font']
+	immunity_consequence = request.get_json()['immunity_consequence']
+	immunity_suffocate = request.get_json()['immunity_suffocate']
 
 	reflect_check = db_integer(PowerCheck, reflect_check)
 	
@@ -1811,6 +1816,7 @@ def power_post_defense():
 	defense = db_integer(Defense, defense)
 	immunity_damage = db_integer(Descriptor, immunity_damage)
 	cover_type = db_integer(Cover, cover_type)
+	immunity_consequence = db_integer(Consequence, immunity_consequence)
 
 	mod = integer(mod)
 	roll = integer(roll)
@@ -1843,7 +1849,9 @@ def power_post_defense():
 								immunity_damage = immunity_damage,
 								immunity_rule = immunity_rule,
 								cover_check = cover_check,
-								cover_type = cover_type)
+								cover_type = cover_type,
+								immunity_consequence = immunity_consequence,
+								immunity_suffocate = immunity_suffocate)
 		db.session.add(entry)
 		db.session.commit()
 

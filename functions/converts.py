@@ -1072,6 +1072,12 @@ def trait_select(value, trait):
 			value = query.name
 		except:
 			value = 'Not Found'
+	elif trait == 'resist':
+		try:
+			query = db.session.query(Defense).filter_by(id=value).one()
+			value = 'Powers Resisted by ' + query.name
+		except:
+			value = 'Not Found'
 	elif trait == 'skill':
 		try:
 			query = db.session.query(Skill).filter_by(id=value).one()

@@ -636,6 +636,10 @@ def skill_trait_select():
 		effects.append({'id': act.id, 'name': act.name})
 	for p in powers_query:
 		effects.append({'id': p.id, 'name': p.name})
+	
+	resist = [{'id': '', 'name': 'Powers Resisted By'}]
+	for d in defenses_query:
+		defenses.append({'id': d.id, 'name': d.name})
 
 	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == False).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Filter Enhanced Skill by Skill'}]
@@ -687,6 +691,8 @@ def skill_trait_select():
 		body['options'] = powers
 	elif trait == 'effect':
 		body['options'] = effects
+	elif trait == 'resist':
+		body['options'] = resist
 	elif trait == 'advantage':
 		body['options'] = advantages
 	elif trait == 'extra':
