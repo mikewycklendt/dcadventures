@@ -4762,7 +4762,7 @@ def power_post_time():
 	factor = request.get_json()['factor']  
 	measure_type = request.get_json()['measure_type']
 	reattempt_effort = request.get_json()['reattempt_effort']
-	check = request.get_json()['check']
+	check_type = request.get_json()['check_type']
 	action = request.get_json()['action']
 
 	errors = power_time_post_errors(data)
@@ -4793,7 +4793,7 @@ def power_post_time():
 	circ_type = db_integer(PowerCircType, circ_type)
 	degree_type = db_integer(PowerDegreeType, degree_type)
 	dc_type = db_integer(PowerDCType, dc_type)	
-	check = db_integer(PowerCheck, check)
+	check_type = db_integer(PowerCheck, check_type)
 
 	rank1_value = integer(rank1_value)
 	rank2_value = integer(rank2_value)
@@ -4860,7 +4860,7 @@ def power_post_time():
 						factor = factor,
 						measure_type = measure_type,
 						reattempt_effort = reattempt_effort,
-						check = check,
+						check_type = check_type,
 						action = action
 					)
 

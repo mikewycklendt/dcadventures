@@ -158,7 +158,7 @@ function time_submit() {
 			'rank': rank,
 			'factor': factor,
 			'reattempt_effort': reattempt_effort,
-			'check': check_type,
+			'check_type': check_type,
 			'action': action
 		}),
 		headers: {

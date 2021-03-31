@@ -2941,7 +2941,7 @@ def power_time_post(entry, body, cells):
 	rank = entry.rank
 	factor = entry.factor
 	reattempt_effort = entry.reattempt_effort
-	check = entry.check
+	check_type = entry.check_type
 	action = entry.action
 
 
@@ -2977,7 +2977,7 @@ def power_time_post(entry, body, cells):
 	degree_type = get_name(PowerDegreeType, degree_type)
 	circ_type = get_name(PowerCircType, circ_type)
 	dc_type = get_name(PowerDCType, dc_type)
-	check = get_keyword(PowerCheck, check)
+	check_type = get_keyword(PowerCheck, check_type)
 
 
 	
@@ -3029,7 +3029,7 @@ def power_time_post(entry, body, cells):
 
 	action_name = action + ' Action'
 	cells = circ_cell('Action', 'Action', 7, action_name, cells, body)
-	cells = circ_cell('Check', 'Check', 7, check, cells, body)
+	cells = circ_cell('Check', 'Check', 7, check_type, cells, body)
 
 	cells = check_cell('Per Rank', 9, rank, cells)
 	cells = check_cell('Instant w/Effort', 18, reattempt_effort, cells)
