@@ -96,26 +96,22 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/consequence/create')
-def consequence_create():
+@app.route('/conditions/add')
+def conditions_create():
 
-	consequence = ['Sleep Deprivation']
-
-	for i in consequence:
-
-		entry = Consequence(name=i)
+	names = ['Holding Breath']
+	
+	for name in names:
+		entry = Condition(name=name)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Consequence.query.all()
+	results = Condition.query.all()
 
-	for result in results:
-		print (result.id)
-		print (result.name)
+	for r in results:
+		print (str(r.id) + ' ' + r.name)
 
-	return ('consequences added')
-
-
+	return ('conditions added')
 
 
 if __name__ == '__main__':
