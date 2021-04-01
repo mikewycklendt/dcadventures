@@ -1705,6 +1705,7 @@ def power_check_post(entry, body, cells):
 	attack_range = entry.attack_range
 	consequence = entry.consequence
 	consequence_target = entry.consequence_target
+	defenseless = entry.defenseless
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1729,6 +1730,7 @@ def power_check_post(entry, body, cells):
 	maneuver = get_name(Maneuver, maneuver)
 	attack_range = get_name(Ranged, attack_range)
 	consequence = get_name(Consequence, consequence)
+	defenseless = get_name(Action, defenseless)
 
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -1761,6 +1763,7 @@ def power_check_post(entry, body, cells):
 	cells = cell('When', 12, [when], cells)
 	cells = cell('Check Trait', 16, [trait], cells)
 	cells = cell('Action', 11, [action], cells)
+	cells = cell('Defenseless', 13, [defenseless], cells)
 	
 	vcells = vcell('change', 25, [conditions_target, 'from', condition1, 'to', condition2])
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)
@@ -3161,7 +3164,7 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 
 	calculated = ranks_function(cost, ranks, base_cost, base_ranks, extra)
 	
-	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'To Use All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}]
+	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'To Use All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
 	required_type = selects(required_type, ranks_required)
 
 	required = required + required_type

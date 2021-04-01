@@ -84,6 +84,21 @@
 		</div>
 	</div>
 
+	<div id="check-defenseless">
+		<div>
+			Action if Defenseless:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_defenseless" name="check_defenseless">
+				<option value="">Action</option>
+				{% for a in actions %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="check-row3">
 
 		<div>

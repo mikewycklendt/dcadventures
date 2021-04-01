@@ -377,6 +377,7 @@ class PowerCheck(db.Model):
 	attack_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	consequence_target = db.Column(db.String())
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	defenseless = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	
 	
 	def format(self):
@@ -426,7 +427,8 @@ class PowerCheck(db.Model):
 			'maneuver': self.maneuver,
 			'attack_range': self.attack_range,
 			'consequence': self.consequence,
-			'consequence_target': self.consequence_target
+			'consequence_target': self.consequence_target,
+			'defenseless': self.defenseless
 		}
 
 

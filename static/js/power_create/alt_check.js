@@ -48,6 +48,7 @@ function check_trait() {
 function check_action_type() {
 	const select = 'check_action_type';
 	const fill = 'check_action';
+	const options = [{'val': 'conflict', 'div': 'check-defenseless'}]
 
 	id_select(select, fill, action_select);
 }
@@ -118,6 +119,7 @@ function check_submit() {
 	const maneuver = select("check_maneuver");
 	const consequence = select("check_consequence");
 	const consequence_target = select("check_consequence_target");
+	const defenseless = select("check_defenseless");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -178,7 +180,8 @@ function check_submit() {
 			'mental': mental,
 			'maneuver':  maneuver,
 			'consequence': consequence,
-			'consequence_target': consequence_target
+			'consequence_target': consequence_target,
+			'defenseless': defenseless
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

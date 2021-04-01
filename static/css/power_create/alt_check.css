@@ -87,6 +87,15 @@
 	grid-template-columns: 25% 20% 30% 25%;
 }
 
+#check-defenseless {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	text-align: center;
+	grid-template-columns: 25% 25% 50%;
+}
+
 #check-row3 {
 	display: grid;
 	width: 98%;

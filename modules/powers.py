@@ -367,7 +367,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'general', 'name': 'General'}]
 
-	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}]
+	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
 
 	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
 
@@ -3362,6 +3362,7 @@ def power_post_check():
 	attack_range = request.get_json()['attack_range']
 	consequence = request.get_json()['consequence']
 	consequence_target = request.get_json()['consequence_target']
+	defenseless = request.get_json()['defenseless']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3391,6 +3392,7 @@ def power_post_check():
 	maneuver = db_integer(Maneuver, maneuver)
 	attack_range = db_integer(Ranged, attack_range)
 	consequence = db_integer(Consequence, consequence)
+	defenseless = db_integer(Action, defenseless)
 
 	trait = integer(trait)
 	action = integer(action)
@@ -3451,7 +3453,8 @@ def power_post_check():
 						maneuver = maneuver,
 						attack_range = attack_range,
 						consequence = consequence,
-						consequence_target = consequence_target
+						consequence_target = consequence_target,
+						defenseless = defenseless
 					)
 
 	db.session.add(entry)
