@@ -152,29 +152,6 @@
 
 	</div>
 
-	<div id="defense-reflect">
-
-		<div class="valign" style="font-size: 80%;">
-			Reflect Action:
-		</div>
-		
-		<div>
-			<select class="check-sml" id="defense_reflect_check" name="defense_reflect_check">
-				<option value="">Reflect Check</option>
-				<option value="">Use Variable Check form to Put Options here</option>
-				{% for p in power_check %}
-					<option value={{p.id}}>{{p.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
-		<div>
-			<div class="check-div-fit" style="font-size: 75%;">
-				<input type="checkbox" id="defense_redirect" class="medium-checkbox med-checkbox" > Redirect
-			</div>
-		</div>
-	</div>
-	
 	<div id="defense-immunity">
 		<div class="valign" style="font-size: 80%;">
 			Immunity:
@@ -336,6 +313,30 @@
 			<input type="text" id="defense_env_other" name="defense_env_other" placeholder="Other Environment">
 		</div>
 	</div>
+
+	<div id="defense-reflect">
+
+		<div class="valign" style="font-size: 80%;">
+			Reflect Action:
+		</div>
+		
+		<div>
+			<select class="check-sml" id="defense_reflect_check" name="defense_reflect_check">
+				<option value="">Reflect Check</option>
+				<option value="">Use Variable Check form to Put Options here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div-fit" style="font-size: 80%;>
+				<input type="checkbox" id="defense_redirect" class="medium-checkbox med-checkbox" > Redirect
+			</div>
+		</div>
+	</div>
+	
 
 	<div id="defense-cover">
 		<div class="valign" style="font-size: 80%;">
