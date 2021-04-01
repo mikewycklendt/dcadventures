@@ -258,7 +258,7 @@
 
 						<div>
 							<select class="select-sml env-sml" id="defense_immunity_environment" name="defense_immunity_environment" onchange="env_immunity_environment()">
-								<option value="">Environment Type</option>
+								<option value="">Environment</option>
 								<option value="x">Variable</option>
 								{% for e in environments %}
 									<option value="{{e.id}}">{{e.name}}</option>
@@ -268,13 +268,13 @@
 
 						<div>
 							<div class="check-div" style="font-size: 75%;">
-								<input type="checkbox" id="defense_immunity_env_penalty" class="medium-checkbox med-checkbox" > No Movement Penalty
+								<input type="checkbox" id="defense_immunity_env_penalty" class="medium-checkbox med-checkbox" > Movement Penalty
 							</div>
 						</div>
 
 						<div>
 							<div class="check-div" style="font-size: 75%;">
-								<input type="checkbox" id="defense_immunity_env_circumstance" class="medium-checkbox med-checkbox" > No Circumstance
+								<input type="checkbox" id="defense_immunity_env_circumstance" class="medium-checkbox med-checkbox" > Circumstance
 							</div>
 						</div>
 
