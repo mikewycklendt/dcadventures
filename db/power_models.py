@@ -2038,6 +2038,8 @@ class PowerRanged(db.Model):
 	rank = db.Column(db.Boolean)
 	effect = db.Column(db.Boolean)
 	general = db.Column(db.Integer, db.ForeignKey('range.id'))
+	perception = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2083,7 +2085,9 @@ class PowerRanged(db.Model):
 			'title': self.title,
 			'rank': self.rank,
 			'effect': self.effect,
-			'general': self.general
+			'general': self.general,
+			'perception': self.perception,
+			'hide': self.hide
 		}
 
 class PowerResist(db.Model):

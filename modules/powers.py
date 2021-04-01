@@ -2571,6 +2571,7 @@ def power_post_ranged():
 	power_id = request.get_json()['power_id']
 	extra_id = request.get_json()['extra_id']
 	range_type = request.get_json()['range_type']
+	perception = preset_convert('percep', range_type)
 	flat_value = request.get_json()['flat_value']
 	flat_units = request.get_json()['flat_units']
 	flat_rank = request.get_json()['flat_rank']
@@ -2705,7 +2706,8 @@ def power_post_ranged():
 							keyword = keyword,
 							title = title,
 							rank = rank,
-							general = general)
+							general = general,
+							perception = perception)
 
 		db.session.add(entry)
 		db.session.commit()

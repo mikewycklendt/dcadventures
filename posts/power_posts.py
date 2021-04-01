@@ -1282,6 +1282,9 @@ def ranged_post(entry, body, cells):
 	
 	distance_rank = string('= Distance Rank', [check_trait, check_math, check_mod, distance_rank])
 	vcells = vcell('check', 50, [check_trait, check_math, check_mod, distance_rank], vcells)
+
+	vcells = vcell('percep', 25, ['Perception Range'], vcells)
+
 	cells = vcell_add('Range', range_type, vcells, cells)
 
 	cells = check_cell('Per Rank', 9, rank, cells)
