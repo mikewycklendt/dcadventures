@@ -1813,6 +1813,7 @@ def power_post_defense():
 	immunity_temp = request.get_json()['immunity_temp']
 	immunity_extremity = request.get_json()['immunity_extremity']
 	immunity_environment = request.get_json()['immunity_environment']
+	env_other = request.get_json()['env_other']
 	immunity_env_penalty = request.get_json()['immunity_env_penalty']
 	immunity_env_circumstance = request.get_json()['immunity_env_circumstance']
 	multiple = request.get_json()['multiple']
@@ -1833,6 +1834,8 @@ def power_post_defense():
 	immunity_temp = db_integer(EnvCondition, immunity_temp)
 	immunity_environment = db_integer(Environment, immunity_environment)
 
+	body = user_item(Environment, 'Environment', immunity_environment, env_other, 'env-sml', body, True, True)
+	immunity_environment = body['output']
 
 	mod = integer(mod)
 	roll = integer(roll)

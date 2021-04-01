@@ -135,7 +135,17 @@
 	transition: all .4s ease-out;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 20% 28% 55%;
+	grid-template-columns: 17% 28% 55%;
+}
+
+#defense-env-other {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 17% 28% 55%;
 }
 
 #defense-immunity-descriptor {

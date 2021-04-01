@@ -258,9 +258,10 @@
 					<div id="defense-env-immunity-environment">
 
 						<div>
-							<select class="select-sml env-sml" id="defense_immunity_environment" name="defense_immunity_environment" onchange="env_immunity_environment()">
+							<select class="select-sml env-sml" id="defense_immunity_environment" name="defense_immunity_environment" onchange="defense_immunity_environment()">
 								<option value="">Environment</option>
 								<option value="x">Variable</option>
+								<option value="other">Other</option>
 								{% for e in environments %}
 									<option value="{{e.id}}">{{e.name}}</option>
 								{% endfor %}
@@ -282,7 +283,6 @@
 					</div>
 				</div>
 			</div>
-				
 
 			<div id="defense-immunity-descriptor">
 				<div>
@@ -320,6 +320,16 @@
 					</select>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div id="defense-env-other">
+		<div class="vcenter" style="font-size: 80%;">
+			Other Environment:
+		</div>
+
+		<div>
+			<input type="text" id="defense_env_other" name="defense_env_other" placeholder="Other Environment">
 		</div>
 	</div>
 

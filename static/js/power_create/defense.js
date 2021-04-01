@@ -131,6 +131,14 @@ function defense_immunity_env() {
 	select_opacity(select, options);
 }
 
+function defense_immunity_environment() {
+	const select = 'defense_immunity_environment';
+	const options = [{'val': 'other', 'div': 'defense-env-other'}];
+	const entry = 'defense-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
 function defense_cover() {
 	const check = 'defense_cover_check';
 	const div = 'defense-cover';
@@ -181,6 +189,7 @@ function defense_submit() {
 	const immunity_temp = select("defense_immunity_temp");
 	const immunity_extremity = select("defense_immunity_extremity");
 	const immunity_environment = select("defense_immunity_environment");
+	const env_other = text("defense_env_other");
 	const immunity_env_penalty = check("defense_immunity_env_penalty");
 	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
 	const multiple = select("defense_multiple");
@@ -232,6 +241,7 @@ function defense_submit() {
 			'immunity_temp': immunity_temp,
 			'immunity_extremity': immunity_extremity,
 			'immunity_environment': immunity_environment,
+			'env_other': env_other,
 			'immunity_env_penalty': immunity_env_penalty,
 			'immunity_env_circumstance': immunity_env_circumstance,
 			'multiple': multiple,
