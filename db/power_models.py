@@ -283,7 +283,7 @@ class Extra(db.Model):
 			'extra_effect': self.extra_effect,
 			'target': self.target,
 			'target_type': self.target_type,
-			'target_check': self.target_check.
+			'target_check': self.target_check,
 			'action_check': self.action_check,
 			'action': self.action,
 			'action_type': self.action_type
