@@ -43,6 +43,12 @@
 	transition: all .4s ease-out;
 }
 
+#defense-entry input[type="text"] {
+	height: 1.1vw;
+	background-color: lightblue;
+	padding: .1vw;
+}
+
 #defense-row1 {
 	display: grid;
 	width: 98%;
