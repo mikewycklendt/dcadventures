@@ -151,7 +151,7 @@
 	transition: all .4s ease-out;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 17% 28% 55%;
+	grid-template-columns: 20% 28% 52%;
 }
 
 #defense-immunity-descriptor {
