@@ -112,6 +112,17 @@
 	transition: all .4s ease-out;
 	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
+	font-size: 70%;
+}
+
+#extras-target {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 35% 30% 30%;
+	grid-auto-rows: auto;
+	font-size: 80%;
 }
 
 #extras-hidden {

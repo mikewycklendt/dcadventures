@@ -2748,6 +2748,8 @@ def power_ranks_post_errors(data):
 	base_cost = data['base_cost']
 	base_flat = data['base_flat']
 	effect = data['effect']
+	required =  data['required']
+	required_type = data['required_type']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2758,6 +2760,9 @@ def power_ranks_post_errors(data):
 	
 	errors = required(ranks, 'Ranks', errors)
 	errors = required(effect, 'Effect', errors)
+
+	errors = dependent('Required Extra', required_type, [required], errors)
+	errors = dependent('Required Extra', required, [required_type], errors)
 
 	errors = ranks_error(cost, ranks, base_cost, base_ranks, base_flat, extra)
 
@@ -2795,6 +2800,9 @@ def power_extra_post_errors(data):
 	ranged = data['ranged']
 	sense = data['sense']
 	time = data['time']
+	target_type = data['target_type']
+	target = data['target']
+	target_check = data['target_check']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2811,6 +2819,10 @@ def power_extra_post_errors(data):
 	errors = required(type, 'Effect Type', errors)
 	errors = check_fields(extra_effect, 'Extra Effect', [extra_effect_count], errors)
 	errors = check_field(extra_effect, 'Extra Effect', 'Extra Effects Count', extra_effect_count, errors)
+
+	errors = check_fields(target_check, 'Changes Target', [target, target_type], errors)
+	errors = check_field(target_check, 'Changes Target', 'Target Type', target_type, errors)
+	errors = check_field(target_check, 'Changes Target', 'Tsrget', target, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)

@@ -3150,18 +3150,28 @@ def power_ranks_post(entry, body, cells, base_cost, base_ranks):
 	cost = entry.cost
 	unique = entry.unique
 	effect = entry.effect
+	required = entry.required
+	required_type = entry.required_type
 
 	ranks = integer_convert(ranks)
 
 	extra = extra_name(extra_id)
 
+	required = get_name(Extra, required)
+
 	calculated = ranks_function(cost, ranks, base_cost, base_ranks, extra)
+	
+	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'To Use All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}]
+	required_type = selects(required_type, ranks_required)
+
+	required = required + required_type
 
 	cells = cell('Extra', 25, [extra], cells)
 	cells = cell('Ranks', 12, [ranks], cells)
 	cells = cell('Cost', 12, [calculated], cells)
 	cells = check_cell('Unique', 8, unique, cells)
 	cells = circ_cell('Effect', 'Effect', 8, effect, cells, body)
+	cells = circ_cell('Required', 'Required Extra', 10, required, cells, body)
 	body = send(cells, body)
 
 
@@ -3196,12 +3206,22 @@ def power_extra_post(entry, body, cells):
 	ranged = entry.ranged
 	sense = entry.sense
 	time = entry.time
+	target_check = entry.target_check
+	target = entry.target
+	target_type = entry.target_type
 
 
 	cost = var_string(cost)
 	ranks = integer_convert(ranks)
 	inherit = get_name(Power,inherit)
 	required = get_name(Extra, required)
+
+	
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
+	type = selects(type, extra_type)
+
+	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
+	target_type = selects(target_type, extra_target)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
@@ -3233,6 +3253,12 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_cell('Sense', 7, [sense], new_mod)
 	new_mod = mod_cell('Time', 7, [time], new_mod)
 	body = mod_add(extra_effect, new_mod, body)
+
+	cells = check_cell('Target', 8, target_check, cells, True)
+	new_mod = mod_create('Changes Effect Target', 23)
+	new_mod = mod_cell('Target', 8, [target], new_mod)
+	new_mod = mod_cell('Type', 5, [target_type], new_mod)
+	body = mod_add(target_check, new_mod, body)
 
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 

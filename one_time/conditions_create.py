@@ -266,7 +266,7 @@ def conditions_extras_create():
 @app.route('/conditions/add')
 def conditions_create():
 
-	names = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised']
+	names = ['Normal', 'Standing', 'Asleep', 'Blind', 'Bound', 'Deaf', 'Dying', 'Entranced', 'Exhausted', 'Incapactated', 'Paralyzed', 'Prone', 'Restrained', 'Staggered', 'Surprised', 'Holding Breath']
 	
 	for name in names:
 		entry = Condition(name=name)

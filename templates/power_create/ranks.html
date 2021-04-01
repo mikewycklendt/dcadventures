@@ -54,13 +54,27 @@
 	</div>
 
 	<div id="ranks-button-row">
-		<div></div>
 		
 		<div>
-			<div class="vcenter" style="justify-content: left; text-align: left;">
+			<div class="check-div-fit">
 				<input type="checkbox" id="ranks_unique" class="medium-checkbox med-checkbox" > Unique
 			</div>
 		</div>
+
+		<div>
+			<select class="extra-select" id="ranks_required" name="ranks_required">
+				<option value="">Required Extra</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="ranks_required_type"  name="ranks_required_type">
+				{% for r in ranks_required %}
+					<option value="{{r.type}}">{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 
 		<div>
 			<div class="btn-entry" id="ranks_submit" name="ranks_submit" onclick="ranks_submit()">

@@ -1,13 +1,18 @@
 function extra_extra_effect() {
 	const check = 'extra_extra_effect';
-	const div = 'extra-extra-effect';
 	const row = 'extras-extra-effect';
 	const entry = 'extras-entry';
 
-	check_display(check, div);
 	check_drop(check, row, entry);
 }
 
+function extra_target_check() {
+	const check = 'extra_target_check';
+	const div = 'extras-target';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
 
 let extras_grid = {'titles': false,
 				'columns': [],
@@ -52,6 +57,9 @@ function extras_submit() {
 	const ranged = check("extra_ranged");
 	const sense = check("extra_sense");
 	const time = check("extra_time");
+	const target = select("extra_target");
+	const target_type = select("extra_target_type");
+	const target_check = check("extra_target_check");
 	
 	
 	const errors = 'extras-err';
@@ -97,7 +105,10 @@ function extras_submit() {
 			'opposed': opposed,
 			'ranged': ranged,
 			'sense': sense,
-			'time': time
+			'time': time,
+			'target_type': target_type,
+			'target': target,
+			'target_check': target_check
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

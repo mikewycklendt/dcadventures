@@ -117,23 +117,53 @@
 						<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
 					</div>
 				</div>	
-
-				<div class="extras-hidden" id="extra-extra-effect">
-					<select class="select-sml" id="extra_extra_effect_count" name="extra_extra_effect">
-						<option value="">Effects</option>
-						<option value="extra">Extra Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
+				
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_target_check" class="medium-checkbox med-checkbox" onclick="extra_target_check()"> Changes Effect Target
+					</div>
+				</div>	
 			</div>
 		</div>		
 	
 	
 	</div>
 
+	<div id="extras-target">
+		<div>
+			Changes Effect Target:
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_target" name="extra_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_target_type" name="extra_target_type">
+				{% for e in extra_target %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="extras-extra-effect">
+
+		<div id="extra-extra-effect">
+			<select class="select-sml" id="extra_extra_effect_count" name="extra_extra_effect">
+				<option value="">Effects</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+
 		<div class="extras-hidden" id="extras-check">
 			<div>
 				<div class="vcenter">

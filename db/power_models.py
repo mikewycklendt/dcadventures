@@ -207,6 +207,9 @@ class Extra(db.Model):
 	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	extra_effect_count = db.Column(db.Integer)
 	extra_effect = db.Column(db.Boolean)
+	target_check = db.Column(db.Boolean)
+	target = db.Column(db.String())
+	target_type = db.Column(db.String())
 	
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -274,7 +277,10 @@ class Extra(db.Model):
 			'approved': self.approved,
 			'base': self.base,
 			'extra_effect_count': self.extra_effect_count,
-			'extra_effect': self.extra_effect
+			'extra_effect': self.extra_effect,
+			'target': self.target,
+			'target_type': self.target_type,
+			'target_check': self.target_check
 		}
 
 class PowerCost(db.Model):
@@ -307,6 +313,8 @@ class PowerRanks(db.Model):
 	extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	unique = db.Column(db.Boolean)
 	effect = db.Column(db.String())
+	required = db.Column(db.Integer, db.ForeignKey('extras.id'))
+	required_type = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -316,7 +324,9 @@ class PowerRanks(db.Model):
 			'ranks': self.ranks,
 			'extra': self.extra,
 			'unique': self.unique,
-			'effect': self.effect
+			'effect': self.effect,
+			'required': self.required,
+			'required_type': self.required_type
 		}
 
 class PowerCheck(db.Model):

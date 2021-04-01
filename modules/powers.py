@@ -285,7 +285,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 
-	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'overwrite', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
+
+	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
@@ -364,6 +366,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'general', 'name': 'General'}]
+
+	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'Other Powers With This Effect'}]
 
 	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
 
@@ -516,7 +520,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
-											suffocation_type=suffocation_type, defense_multiple=defense_multiple)
+											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_target=extra_target, ranks_required=ranks_required)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -830,6 +834,9 @@ def power_post_extra():
 	ranged = request.get_json()['ranged']
 	sense = request.get_json()['sense']
 	time = request.get_json()['time']
+	target_check = request.get_json()['target_check']
+	target_type = request.get_json()['target_type']
+	target = request.get_json()['target']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -869,7 +876,10 @@ def power_post_extra():
 						opposed = opposed,
 						ranged = ranged,
 						sense = sense,
-						time = time
+						time = time,
+						target_check = target_check,
+						target_type = target_type,
+						target = target
 					)
 
 		db.session.add(entry)
@@ -1093,12 +1103,15 @@ def power_post_ranks():
 	base_cost = request.get_json()['base_cost']
 	base_ranks = request.get_json()['base_ranks']
 	effect = request.get_json()['effect']
+	required = request.get_json()['required']
+	required_type = request.get_json()['required_type']
 
 	power_id = integer(power_id)
 	cost = db_integer(PowerCost, cost)
 	ranks = integer(ranks)
 
 	extra = db_integer(Extra, extra)
+	required = db_integer(Extra, required)
 
 	try:
 		entry = PowerCost(power_id = power_id,
@@ -1106,7 +1119,9 @@ def power_post_ranks():
 							ranks = ranks,
 							extra = extra,
 							unique = unique,
-							effect = effect)
+							effect = effect,
+							required = required,
+							required_type = required_type)
 
 		db.session.add(entry)
 		db.session.commit()
