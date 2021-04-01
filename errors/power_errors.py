@@ -596,6 +596,10 @@ def environment_post_errors(data):
 	visibility_mod = data['visibility_mod']
 	cost = data['cost']
 	ranks = data['ranks']
+	elements = data['elements']
+	element = data['element']
+	element_strength = data['element_strength']
+	element_mass = data['element_mass']
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
@@ -611,7 +615,10 @@ def environment_post_errors(data):
 	errors = int_check(rank, 'Per Rank', errors)
 	errors = int_check(move_speed, 'Movement Speed', errors)
 	errors = int_check(visibility_mod, 'Visibility Modifier', errors)
+	errors = int_check(element_mass, 'Mass Rank', errors)
+	errors = int_check(element_strength, 'Strength Rank', errors)
 
+	errors = id_check(Element, element)
 
 	errors = together_names('an Environmental Effect Range', ['Starting Radius', 'Distance Rank', 'Cost Per Rank'], [radius, distance, rank], errors)
 	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type, temp_extremity], errors)
@@ -628,6 +635,11 @@ def environment_post_errors(data):
 	errors = check_field(visibility, 'Visibility', 'Visibility Trait', visibility_trait, errors)
 	errors = check_field(visibility, 'Visibility', 'Visibility Modifier', visibility_mod, errors)
 	
+	errors =  check_fields(elements, 'Element Control', [element, element_mass, element_strength], errors)
+	errors =  check_field(elements, 'Element Control', 'Element', element, errors)
+	errors =  check_field(elements, 'Element Control', 'Mass Eank', element_mass, errors)
+	errors =  check_field(elements, 'Element Control', 'Strength Rank',  element_strength, errors)
+
 	errors = check_fields(immunity, 'Immunity', [immunity_type], errors)
 	errors = check_field(immunity, 'Immunity', 'Immunity Type', immunity_type, errors)
 

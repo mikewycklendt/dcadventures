@@ -132,6 +132,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	duration_type = PowerDuration.query.all()
 
+	elements = db.session.query(Element).filter(Element.hide == None).all()
+
 	emotions = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
 	
 	energies = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 2, MediumSubType.show == True).order_by(MediumSubType.name)
@@ -520,7 +522,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
-											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required)
+											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2000,7 +2002,12 @@ def power_post_environment():
 	ranks = request.get_json()['ranks']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
-	font = request.get_json()['font']
+	font = request.get_json()['font']		
+	elements = request.get_json()['elements']
+	element = request.get_json()['element']
+	element_strength = request.get_json()['element_strength']
+	element_mass = request.get_json()['element_mass']
+
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2010,6 +2017,7 @@ def power_post_environment():
 	extra_id = db_integer(Extra, extra_id)
 	immunity_environment = db_integer(Environment, immunity_environment)
 	move_nature = db_integer(Nature, move_nature)
+	element = db_integer(Element, element)
 
 	radius = integer(radius)
 	distance = integer(distance)
@@ -2017,6 +2025,8 @@ def power_post_environment():
 	move_speed = integer(move_speed)
 	visibility_trait = integer(visibility_trait)
 	visibility_mod = integer(visibility_mod)
+	element_mass = integer(element_mass)
+	element_strength = integer(element_strength)
 
 
 	try:
@@ -2082,7 +2092,11 @@ def power_post_environment():
 							visibility_trait = visibility_trait,
 							visibility_mod = visibility_mod,
 							cost = cost,
-							ranks = ranks)
+							ranks = ranks,
+							elements = elements,
+							element = element,
+							element_strength = element_strength,
+							element_mass = element_mass)
 
 		db.session.add(entry)
 		db.session.commit()

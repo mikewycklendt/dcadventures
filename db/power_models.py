@@ -1730,8 +1730,11 @@ class PowerEnv(db.Model):
 	visibility_mod = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
-
-
+	elements = db.Column(db.Boolean)
+	element = db.Column(db.Integer, db.ForeignKey('elements.id'))
+	element_strength = db.Column(db.Integer)
+	element_mass  =  db.Column(db.Integer)
+	
 	def format(self):
 		return {
 			'id': self.id,
@@ -1765,7 +1768,11 @@ class PowerEnv(db.Model):
 			'visibility_trait': self.visibility_trait,
 			'visibility_mod': self.visibility_mod,
 			'cost': self.cost,
-			'ranks': self.ranks
+			'ranks': self.ranks,
+			'elements': self.elements,
+			'element': self.element,
+			'element_strength': self.element_strength,
+			'element_mass': self.element_mass
 		}
 
 class PowerMinion(db.Model):

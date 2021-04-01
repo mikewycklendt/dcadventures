@@ -628,6 +628,10 @@ def environment_post(entry, body, cells):
 	visibility_mod = entry.visibility_mod
 	cost = entry.cost
 	ranks = entry.ranks
+	elements = entry.elements
+	element = entry.element
+	element_strength = entry.element_strength
+	element_mass = entry.element_mass
 
 	cost = get_cost(cost, ranks, extra_id)
 
@@ -636,6 +640,7 @@ def environment_post(entry, body, cells):
 	extra = extra_name(extra_id)
 	immunity_environment = get_name(Environment, immunity_environment)
 	move_nature = get_name(Nature, move_nature)
+	element = get_name(Element, element)
 
 	temp_type_select = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 	temp_type = selects(temp_type, temp_type_select)
@@ -653,6 +658,8 @@ def environment_post(entry, body, cells):
 	conceal_type_select = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 	conceal_type = selects(conceal_type, conceal_type_select)
 
+	element_mass = integer_convert(element_mass)
+	element_strength = integer_convert(element_strength)
 	radius = integer_convert(radius)
 	distance = integer_convert(distance)
 	rank = integer_convert(rank)
@@ -683,6 +690,13 @@ def environment_post(entry, body, cells):
 	cells = check_cell('Counter Conceal', 17, conceal, cells, True)
 	new_mod = mod_create('Counters Concealment', 23)
 	new_mod = mod_cell('Type:', 7, [conceal_type], new_mod)
+	body = mod_add(conceal, new_mod, body)
+	
+	cells = check_cell('Elements', 11, elements, cells, True)
+	new_mod = mod_create('Element Control', 23)
+	new_mod = mod_cell('Element:', 9, [element], new_mod)
+	new_mod = mod_cell('Strength:', 9, [element_strength], new_mod)
+	new_mod = mod_cell('Mass::', 6, [element_mass], new_mod)
 	body = mod_add(conceal, new_mod, body)
 
 	cells = check_cell('Visibility', 13, visibility, cells, True)

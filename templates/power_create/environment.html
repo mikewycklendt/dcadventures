@@ -95,6 +95,12 @@
 				<input type="checkbox" id="env_visibility" class="medium-checkbox med-checkbox" onclick="env_visibility()"> Visibility
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="env_elements" class="medium-checkbox med-checkbox" onclick="env_elements()"> Elements
+			</div>
+		</div>
 
 		<div style="display: none;">
 			<div class="check-div">
@@ -116,6 +122,45 @@
 		</div>
 
 	</div>
+
+	<div id="env-elements">
+		<div>
+			Element Control:
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_element" name="env_element">
+				<option value="">Element</option>
+				{% for e in elements %}
+					<option value={{e.id}}>{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_element_strength" name="env_element_strength">
+				<option value="">Strength Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="env_element_mass" name="env_element_mass">
+				<option value="">Mass Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
 
 	<div id="env-immunity">
 		<div>

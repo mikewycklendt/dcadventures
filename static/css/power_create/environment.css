@@ -70,9 +70,10 @@ visibility traittype trait modifier costperrank
 #env-row2 {
 	display: grid;
 	width: 98%;
-	gap: 3px;
-	grid-template-columns: auto auto auto auto;
+	gap: .3vw;
+	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
+	font-size: 80%;
 }
 
 #env-row3 {
@@ -90,6 +91,15 @@ visibility traittype trait modifier costperrank
 	overflow: hidden;
 	transition: all .4s ease-out;
 	grid-template-columns: 12% 18% 70%;
+}
+
+#env-elements {
+	display: none;
+	font-size: 90%;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 18% 25% 20% 20%;
 }
 
 #env-immunity-condition {

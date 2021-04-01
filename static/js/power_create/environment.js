@@ -116,6 +116,14 @@ function env_immunity_type() {
 	select_opacity(select, options);
 }
 
+function env_elements() {
+	const check = 'env_elements';
+	const div = 'env-elements';
+	const entry = 'env-entry';
+
+	check_drop(check, div, entry);
+}
+
 let env_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -155,7 +163,11 @@ function env_submit() {
 	const visibility_mod = select("env_visibility_mod");
 	const cost = select("env_cost");
 	const ranks = select("env_ranks");
-
+	const elements = check("env_elements");
+	const element = select("env_element");
+	const element_strength = select("env_element_strength");
+	const element_mass = select("env_element_mass");
+	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
@@ -196,7 +208,11 @@ function env_submit() {
 			'ranks': ranks,
 			'columns': columns,
 			'created': created,
-			'font': font
+			'font': font,
+			'elements': elements,
+			'element': element,
+			'element_strength': element_strength,
+			'element_mass': element_mass
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
