@@ -210,6 +210,9 @@ class Extra(db.Model):
 	target_check = db.Column(db.Boolean)
 	target = db.Column(db.String())
 	target_type = db.Column(db.String())
+	action_check = db.Column(db.Boolean)
+	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	action_type = db.Column(db.String())
 	
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -280,7 +283,10 @@ class Extra(db.Model):
 			'extra_effect': self.extra_effect,
 			'target': self.target,
 			'target_type': self.target_type,
-			'target_check': self.target_check
+			'target_check': self.target_check.
+			'action_check': self.action_check,
+			'action': self.action,
+			'action_type': self.action_type
 		}
 
 class PowerCost(db.Model):

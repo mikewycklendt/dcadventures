@@ -84,8 +84,14 @@
 				<textarea id="extra_des" name="extra_des"></textarea>
 			</div>
 					
-			<div class="extras-three">	
-				
+			<div class="extras-four">	
+								
+				<div>
+					<div class="vcenter">
+						<input type="checkbox" id="extra_action_check" class="medium-checkbox med-checkbox" onclick="extra_action_check()"> Changes Action
+					</div>
+				</div>	
+
 				<div>
 					<div class="vcenter">
 						<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
@@ -103,7 +109,6 @@
 						<input type="checkbox" id="extra_stack" class="medium-checkbox med-checkbox"> Stackable
 					</div>
 				</div>	
-				
 			</div>
 			
 			<div class="extras-three">
@@ -145,11 +150,34 @@
 
 		<div>
 			<select class="select-sml" id="extra_target_type" name="extra_target_type">
-				{% for e in extra_target %}
+				{% for e in extra_change %}
 					<option value="{{e.type}}">{{e.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="extras-action">
+		<div>
+			Changes Action Type:
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_action" name="extra_action">
+				<option value="">Action</option>
+				{% for a in actions %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_action_type" name="extra_action_type">
+				{% for e in extra_change %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
 	</div>
 
 	<div id="extras-extra-effect">

@@ -19,7 +19,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Element, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -287,7 +287,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 
-	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
+	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
@@ -520,7 +520,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
-											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_target=extra_target, ranks_required=ranks_required)
+											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -837,10 +837,14 @@ def power_post_extra():
 	target_check = request.get_json()['target_check']
 	target_type = request.get_json()['target_type']
 	target = request.get_json()['target']
+	action_check = request.get_json()['action_check']
+	action = request.get_json()['action']
+	action_type = request.get_json()['action_type']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
 	required = db_integer(Extra, required)
+	action = db_integer(Action, action)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
@@ -879,7 +883,10 @@ def power_post_extra():
 						time = time,
 						target_check = target_check,
 						target_type = target_type,
-						target = target
+						target = target,
+						action_check = action_check,
+						action = action,
+						action_type = action_type
 					)
 
 		db.session.add(entry)

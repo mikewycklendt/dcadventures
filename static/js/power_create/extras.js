@@ -14,6 +14,14 @@ function extra_target_check() {
 	check_drop(check, div, entry);
 }
 
+function extra_action_check() {
+	const check = 'extra_action_check';
+	const div = 'extras-action';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -60,6 +68,9 @@ function extras_submit() {
 	const target = select("extra_target");
 	const target_type = select("extra_target_type");
 	const target_check = check("extra_target_check");
+	const action_check = check("extra_action_check");
+	const action = select("extra_action");
+	const action_type = select("extra_action_type");
 	
 	
 	const errors = 'extras-err';
@@ -108,7 +119,10 @@ function extras_submit() {
 			'time': time,
 			'target_type': target_type,
 			'target': target,
-			'target_check': target_check
+			'target_check': target_check,
+			'action_check': action_check,
+			'action': action,
+			'action_type': action_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

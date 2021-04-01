@@ -1,6 +1,6 @@
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -3212,6 +3212,9 @@ def power_extra_post(entry, body, cells):
 	target_check = entry.target_check
 	target = entry.target
 	target_type = entry.target_type
+	action_check = entry.action_check
+	action = entry.action
+	action_type = entry.action_type
 
 
 	cost = var_string(cost)
@@ -3219,12 +3222,14 @@ def power_extra_post(entry, body, cells):
 	inherit = get_name(Power,inherit)
 	required = get_name(Extra, required)
 
-	
+	action = get_name(Action, action)
+
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 	type = selects(type, extra_type)
 
 	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 	target_type = selects(target_type, extra_target)
+	action_type = selects(action_type, extra_target)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
@@ -3262,6 +3267,12 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_cell('Target', 8, [target], new_mod)
 	new_mod = mod_cell('Type', 5, [target_type], new_mod)
 	body = mod_add(target_check, new_mod, body)
+
+	cells = check_cell('Action', 8, action_check, cells, True)
+	new_mod = mod_create('Changes Action Type', 23)
+	new_mod = mod_cell('Action', 8, [action], new_mod)
+	new_mod = mod_cell('Type', 5, [action_type], new_mod)
+	body = mod_add(action_check, new_mod, body)
 
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 

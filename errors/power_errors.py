@@ -1,6 +1,6 @@
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -2803,6 +2803,9 @@ def power_extra_post_errors(data):
 	target_type = data['target_type']
 	target = data['target']
 	target_check = data['target_check']
+	action_check = data['action_check']
+	action = data['action']
+	action_type = data['action_type']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2821,8 +2824,12 @@ def power_extra_post_errors(data):
 	errors = check_field(extra_effect, 'Extra Effect', 'Extra Effects Count', extra_effect_count, errors)
 
 	errors = check_fields(target_check, 'Changes Target', [target, target_type], errors)
-	errors = check_field(target_check, 'Changes Target', 'Target Type', target_type, errors)
+	errors = check_field(target_check, 'Changes Target', 'Changes Target Type', target_type, errors)
 	errors = check_field(target_check, 'Changes Target', 'Tsrget', target, errors)
+
+	errors = check_fields(action_check, 'Changes Action', [action, action_type], errors)
+	errors = check_field(action_check, 'Changes Action', 'Action', action, errors)
+	errors = check_field(action_check, 'Changes Action', 'Action Change Type', action_type, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)

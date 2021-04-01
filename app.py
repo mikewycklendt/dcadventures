@@ -18,7 +18,7 @@ from base_files import sidebar, stylesheets, meta_name, meta_content, title
 from models import setup_db
 
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
-from db.rule_models import Ability, Defense, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
+from db.rule_models import Ability, Defense, Element, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
 from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
 
@@ -96,22 +96,57 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/conditions/add')
-def conditions_create():
+@app.route('/element/create')
+def element_create():
 
-	names = ['Holding Breath']
-	
-	for name in names:
-		entry = Condition(name=name)
+	entries = ['Earth', 'Wind', 'Water', 'Fire']
+
+	for i in entries:
+
+		entry = Element(name=i)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Condition.query.all()
+	tablename =  'Element'
 
-	for r in results:
-		print (str(r.id) + ' ' + r.name)
+	name = 'All Elements'
 
-	return ('conditions added')
+	entry = Element(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Current ' + tablename
+
+	entry = Element(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Element(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Variable ' + tablename
+
+	entry = Element(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Element(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+
+	results = Element.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('Elements added')
 
 
 if __name__ == '__main__':
