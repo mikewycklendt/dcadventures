@@ -93,7 +93,7 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	text-align: center;
-	grid-template-columns: 25% 25% 50%;
+	grid-template-columns: 25% 20% 50%;
 }
 
 #check-row3 {
