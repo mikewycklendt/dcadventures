@@ -304,6 +304,8 @@ function sense_submit() {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
 			
+			extra_effect_check(jsonResponse)
+			
 			sense_grid.columns.length = 0;
 			sense_grid.columns = jsonResponse.rows;
 

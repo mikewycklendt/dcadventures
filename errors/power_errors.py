@@ -1430,6 +1430,8 @@ def power_check_post_errors(data):
 	multiple = data['multiple']
 	sense = data['sense']
 	attack_range = data['attack_range']
+	consequence = data['consequence']
+	consequence_target = data['consequence_target']
 
 
 
@@ -1446,6 +1448,7 @@ def power_check_post_errors(data):
 	errors = id_check(Condition, condition2, 'End Condition', errors)
 	errors = id_check(Condition, condition, 'Condition', errors)
 	errors = id_check(Sense, sense, 'Sense', errors)
+	errors = id_check(Consequence, consequence)
 
 	errors = id_check(PowerDegreeType, degree, 'Degree', errors)
 	errors = id_check(PowerCircType, circ, 'Circumstance', errors)
@@ -1485,6 +1488,10 @@ def power_check_post_errors(data):
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
 	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, varible_type], ['Variable Check'], errors)
 	errors = seperate([varible_type, variable], 'Variable Check', errors)
+
+	errors = variable_fields('consequence', 'Trigger', trigger, [consequence_target, consequence], errors)
+	errors = variable_field('consequence', trigger, 'Consequence Target', consequence_target, errors)
+	errors = variable_field('consequence', trigger, 'Consequence', consequence, errors)	
 
 	errors = variable_fields('5', 'Attack Check', check_type, [attack_range], errors)
 	errors = variable_field('5', check_type, 'Range', attack_range, errors)
@@ -2813,6 +2820,9 @@ def power_extra_post_errors(data):
 	errors = multiple_error(variable, 'Variable Checks', PowerCheck, power_id, errors, PowerCheckType)
 	errors = multiple_error(opposed, 'Opponent Checks', PowerOpposed, power_id, errors, PowerOpposedType)
 	errors = multiple_error(character, 'Changes Character Traits', PowerChar, power_id, errors)
+	errors = multiple_error(defense, 'Defensive Effect', PowerDefense, power_id, errors)
+	errors = multiple_error(sense, 'Sense Effect', PowerSenseEffect, power_id, errors)
+	
 	
 
 	return (errors)

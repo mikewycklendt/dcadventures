@@ -148,6 +148,29 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="check-consequence">
+		<div>
+			Consequence:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_consequence" name="check_consequence">
+				<option value="">Consequence</option>
+				{% for c in consequences %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_consequence_target" name="check_consequence_target">
+				{% for t in targets %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
 	
 	<div id="check-conditions">
 		<div class="vcenter" style="text-align: left;">

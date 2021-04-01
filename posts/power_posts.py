@@ -497,6 +497,8 @@ def defense_post(entry, body, cells):
 	multiple = entry.multiple
 	cost = entry.cost
 	ranks = entry.ranks
+	
+	body = one_multiple(PowerDefense, power_id, body)
 
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
@@ -1701,6 +1703,8 @@ def power_check_post(entry, body, cells):
 	mental = entry.mental
 	maneuver = entry.maneuver
 	attack_range = entry.attack_range
+	consequence = entry.consequence
+	consequence_target = entry.consequence_target
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1724,6 +1728,7 @@ def power_check_post(entry, body, cells):
 	sense = get_name(Sense, sense)
 	maneuver = get_name(Maneuver, maneuver)
 	attack_range = get_name(Ranged, attack_range)
+	consequence = get_name(Consequence, consequence)
 
 	degree = get_name(PowerDegreeType, degree)
 	circ = get_name(PowerCircType, circ)
@@ -1765,6 +1770,7 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
 	vcells = vcell('sense', w, [sense, mental], vcells)
+	vcells - vcell('consequence', 30, [consequence, 'on', consequence_target], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
 
 	attack = add_plus(attack)

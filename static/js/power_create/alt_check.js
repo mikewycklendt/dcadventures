@@ -59,7 +59,8 @@ function check_trigger() {
 					{'val': 'variable', 'div': 'check-trigger-variable'},
 					{'val': 'opposed', 'div': 'check-trigger-opposed'},
 					{'val': 'conflict', 'div': 'check-conflict'},
-					{'val': 'sense', 'div': 'check-sense'}];
+					{'val': 'sense', 'div': 'check-sense'},
+					{'val': 'consequence', 'div': 'check-consequence'}];
 	const entry = 'check-entry';
 
 	select_maxheight_entry(select, options, entry);
@@ -115,6 +116,8 @@ function check_submit() {
 	const sense = select("check_sense");
 	const mental = check("check_mental");
 	const maneuver = select("check_maneuver");
+	const consequence = select("check_consequence");
+	const consequence_target = select("check_consequence_target");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -173,7 +176,9 @@ function check_submit() {
 			'multiple': multiple,
 			'sense': sense,
 			'mental': mental,
-			'maneuver':  maneuver
+			'maneuver':  maneuver,
+			'consequence': consequence,
+			'consequence_target': consequence_target
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

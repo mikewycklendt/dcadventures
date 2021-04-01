@@ -266,6 +266,8 @@ function defense_submit() {
 			const insert = jsonResponse.new;
 			const items = jsonResponse.new_items;
 
+			extra_effect_check(jsonResponse)
+			
 			new_items(insert, items);
 			
 			const table_id = jsonResponse.table_id;

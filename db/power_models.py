@@ -365,6 +365,8 @@ class PowerCheck(db.Model):
 	mental = db.Column(db.Boolean)
 	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
 	attack_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
+	consequence_target = db.Column(db.String())
+	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	
 	
 	def format(self):
@@ -412,7 +414,9 @@ class PowerCheck(db.Model):
 			'sense': self.sense,
 			'mental': self.mental,
 			'maneuver': self.maneuver,
-			'attack_range': self.attack_range
+			'attack_range': self.attack_range,
+			'consequence': self.consequence,
+			'consequence_target': self.consequence_target
 		}
 
 
