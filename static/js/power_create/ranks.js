@@ -8,12 +8,12 @@ function ranks_check() {
 }
 
 function ranks_extra() {
-	const select = 'ranks_extra';
+	const field = 'ranks_extra';
 	const fill = 'ranks_cost';
 	const power_id = select("all_power_select");
 	///const power_id = document.getElementById('power_id');
 
-	id_select(select, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id);
 }
 
 function ranks_required() {
