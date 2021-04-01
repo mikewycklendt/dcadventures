@@ -65,7 +65,7 @@
 
 #extras-row1 {
 	display: grid;
-	grid-template-columns: 40% 30% 30%;
+	grid-template-columns: 30% 40% 30%;
 	gap: .3vw;
 }
 
