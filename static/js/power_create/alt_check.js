@@ -49,8 +49,10 @@ function check_action_type() {
 	const select = 'check_action_type';
 	const fill = 'check_action';
 	const options = [{'val': 'conflict', 'div': 'check-defenseless'}]
+	const entry = 'check-entry';
 
 	id_select(select, fill, action_select);
+	select_maxheight_entry(select, options, entry)
 }
 
 function check_trigger() {
