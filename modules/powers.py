@@ -1796,6 +1796,7 @@ def power_post_defense():
 	reflect = request.get_json()['reflect']
 	immunity = request.get_json()['immunity']
 	reflect_check = request.get_json()['reflect_check']
+	redirect = request.get_json()['redirect']
 	immunity_type = request.get_json()['immunity_type']
 	immunity_trait_type = request.get_json()['immunity_trait_type']
 	immunity_trait = request.get_json()['immunity_trait']
@@ -1861,6 +1862,7 @@ def power_post_defense():
 								reflect = reflect,
 								immunity = immunity,
 								reflect_check = reflect_check,
+								redirect = redirect,
 								immunity_type = immunity_type,
 								immunity_trait_type = immunity_trait_type,
 								immunity_trait =immunity_trait,

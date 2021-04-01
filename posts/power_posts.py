@@ -476,7 +476,8 @@ def defense_post(entry, body, cells):
 	resist_perception = entry.resist_perception
 	reflect = entry.reflect
 	immunity = entry.immunity
-	reflect_check = entry.reflect_check
+	reflect_check = entry.reflect_check\
+	redirect = entry.redirect
 	immunity_type = entry.immunity_type
 	immunity_trait_type = entry.immunity_trait_type
 	immunity_trait = entry.immunity_trait
@@ -552,7 +553,8 @@ def defense_post(entry, body, cells):
 	
 	cells = check_cell('Reflect', 10, reflect, cells, True)
 	new_mod = mod_create('Reflects Attacks', 17)
-	new_mod = mod_cell('Check:', 15, [reflect_check], new_mod, value)
+	new_mod = mod_cell('Check:', 15, [reflect_check], new_mod)
+	new_mod = mod_cell('Redirect:', 10, [redirect], new_mod)
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)

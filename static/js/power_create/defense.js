@@ -175,6 +175,7 @@ function defense_submit() {
 	const reflect = check("defense_reflect");
 	const immunity = check("defense_immunity");
 	const reflect_check = select("defense_reflect_check")
+	const redirect = check("defense_redirect");
 	const immunity_type = select("defense_immunity_type");
 	const immunity_trait_type = select("defense_immunity_trait_type");
 	const immunity_trait = select("defense_immunity_trait");
@@ -224,6 +225,7 @@ function defense_submit() {
 			'reflect': reflect,
 			'immunity': immunity,
 			'reflect_check': reflect_check,
+			'redirect': redirect,
 			'immunity_type': immunity_type,
 			'immunity_trait_type': immunity_trait_type,
 			'immunity_trait': immunity_trait,
