@@ -54,16 +54,6 @@
 	transition: all .3s linear;
 }
 
-#descriptor-field-title {
-	opacity: 0%;
-	transition: all .3s linear;
-}
-
-#descriptor-field {
-	opacity: 0%;
-	transition: all .3s linear;
-}
-
 #descriptor-medium-title {
 	opacity: 0%;
 	transition: all .3s linear;

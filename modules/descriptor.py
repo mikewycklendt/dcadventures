@@ -35,7 +35,7 @@ from db.skill_models import SkillBonus, SkillAbility, SkillCheck, SkillCirc, Ski
 from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, VehPower
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, rarity_convert
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -261,7 +261,14 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_subtype_id = entry.id
-				entry = Descriptor(name=medium_subtype_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=damage)
+				damage_name = medium_subtype_name + ' Damage'
+				rarity = rarity_convert(2)
+				descriptor = Descriptor(name=medium_subtype_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity)
+				db.session.add(descriptor)
+				db.session.commit()
+				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True)
+				db.session.add(descriptor)
+				db.session.commit()
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_medium_subtype', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name
@@ -310,7 +317,14 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				medium_id = entry.id
-				entry = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, medium=entry.id, result=medium_des, damage=damage)
+				damage_name = medium_name + ' Damage'
+				rarity = rarity_convert(6)
+				descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity)
+				db.session.add(descriptor)
+				db.session.commit()
+				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True)
+				db.session.add(descriptor)
+				db.session.commit()
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_medium', 'id': entry.id, 'name': entry.name})
 				one_medium_name = entry.name
@@ -350,16 +364,9 @@ def post_descriptor():
 		else:
 			name = name + ', ' + one_medium_name
 
-	if rare == 1:
-		rarity = 'very'
-	if rare == 2:	
-		rarity = 'common'
-	if 2 < rare < 5:
-		rarity = 'uncommon'
-	if rare > 4:
-		rarity= 'rare'
-
 	if descriptor_field == 'new':
+		rare += 1
+		rarity = rarity_convert(rare)
 		process = True
 		try:
 			descriptor_check = db.session.query(Descriptor).filter(Descriptor.name == descriptor_name).first()

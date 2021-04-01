@@ -1214,3 +1214,15 @@ def db_check(Table, value_id, name, errors):
 
 	return (errors)
 
+def rarity_convert(rare):
+	
+	if rare == 2:
+		rarity = 'very'
+	if rare == 3 :	
+		rarity = 'common'
+	if 3 < rare < 7:
+		rarity = 'uncommon'
+	if rare > 7:
+		rarity= 'rare'
+
+	return (rarity)
