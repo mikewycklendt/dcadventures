@@ -14,6 +14,26 @@ function defense_base() {
 	base(field, entry);
 }
 
+function defense_extra() {
+	const power_id = select("all_power_select");
+	const field = 'defense_extra';
+	const fill = 'defense_cost';
+	///const power_id = document.getElementById('power_id');
+
+	id_select(field, fill, power_cost_select, power_id);
+}
+
+function defense_cost() {
+	const power_id = select("all_power_select");
+	const field = 'defense_cost';
+	const fill = 'defense_ranks';
+	const extra = 'defense_extra';
+	///const power_id = document.getElementById('power_id');
+
+	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
+}
+
+
 function defense_reflect() {
 	const check = 'defense_reflect';
 	const div = 'defense-reflect';
@@ -163,6 +183,10 @@ function defense_submit() {
 	const immunity_environment = select("defense_immunity_environment");
 	const immunity_env_penalty = check("defense_immunity_env_penalty");
 	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
+	const multiple = select("defense_multiple");
+	const cost = select("defense_cost");
+	const ranks = select("defense_ranks");
+	
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -209,7 +233,10 @@ function defense_submit() {
 			'immunity_extremity': immunity_extremity,
 			'immunity_environment': immunity_environment,
 			'immunity_env_penalty': immunity_env_penalty,
-			'immunity_env_circumstance': immunity_env_circumstance
+			'immunity_env_circumstance': immunity_env_circumstance,
+			'multiple': multiple,
+			'cost': cost,
+			'ranks': ranks
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

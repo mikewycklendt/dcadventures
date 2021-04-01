@@ -508,6 +508,9 @@ def defense_post_errors(data):
 	immunity_environment = data['immunity_environment']
 	immunity_env_penalty = data['immunity_env_penalty']
 	immunity_env_circumstance = data['immunity_env_circumstance']
+	multiple = data['multiple']
+	cost = data['cost']
+	ranks = data['ranks']
 
 	errors = power_check(power_id, errors)
 
@@ -515,7 +518,8 @@ def defense_post_errors(data):
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
 
-	
+	errors = id_check(PowerCost, cost, errors)
+	errors = id_check(PowerRanks, ranks, errors)
 
 	errors = id_check(PowerCheck, reflect_check, 'Reflect Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)

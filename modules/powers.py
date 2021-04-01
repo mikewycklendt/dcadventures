@@ -265,6 +265,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	darkness = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
 
+	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
+
 	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}]
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
@@ -514,7 +516,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
-											suffocation_type=suffocation_type)
+											suffocation_type=suffocation_type, defense_multiple=defense_multiple)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1813,9 +1815,14 @@ def power_post_defense():
 	immunity_environment = request.get_json()['immunity_environment']
 	immunity_env_penalty = request.get_json()['immunity_env_penalty']
 	immunity_env_circumstance = request.get_json()['immunity_env_circumstance']
+	multiple = request.get_json()['multiple']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
 
 	reflect_check = db_integer(PowerCheck, reflect_check)
-	
+
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)	
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -1866,7 +1873,10 @@ def power_post_defense():
 								immunity_extremity = immunity_extremity,
 								immunity_environment = immunity_environment,
 								immunity_env_penalty = immunity_env_penalty,
-								immunity_env_circumstance = immunity_env_circumstance
+								immunity_env_circumstance = immunity_env_circumstance,
+								multiple = multiple,
+								cost = cost,
+								ranks = ranks
 							)
 		db.session.add(entry)
 		db.session.commit()

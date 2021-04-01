@@ -5,7 +5,7 @@
 	</div>
 	
 	<div id="defense-base">
-		<select class="extra-select" id="defense_extra" name="defense_extra" onchange="defense_base()">
+		<select class="extra-select" id="defense_extra" name="defense_extra" onchange="defense_base(); defense_extra()">
 			<option value=>Base or Extra</option>
 			<option value=0>Base Effect</option>
 		</select>
@@ -334,10 +334,27 @@
 	</div>
 
 	<div id="defense-button-row">
-		
-
-
 		<div></div>
+		
+		<div>
+			<select class="entry-select" id="defense_multiple" name="defense_multiple">
+				{% for d in defense_multiple %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="defense_cost" name="defense_cost" onchange="defense_cost()">
+				<option value="">Cost</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="defense_ranks" name="defense_ranks">
+				<option value="">Ranks</option>
+			</select>	
+		</div>
 
 		<div>
 			<div class="btn-entry" id="defense_submit" name="defense_submit" onclick="defense_submit()">

@@ -493,7 +493,9 @@ def defense_post(entry, body, cells):
 	immunity_environment = entry.immunity_environment
 	immunity_env_penalty = entry.immunity_env_penalty
 	immunity_env_circumstance = entry.immunity_env_circumstance
-
+	multiple = entry.multiple
+	cost = entry.cost
+	ranks = entry.ranks
 
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
@@ -509,6 +511,7 @@ def defense_post(entry, body, cells):
 	immunity_environment = get_name(Environment, immunity_environment)
 	immunity_temp = get_name(EnvCondition, immunity_temp)
 
+	cost = get_cost(cost, ranks, extra_id)
 
 	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 	immunity_rule = selects(immunity_rule, game_rule_select)
@@ -521,6 +524,9 @@ def defense_post(entry, body, cells):
 
 	cover_select = [{'type': '', 'name': 'Cover Type'}, {'type': 'partial', 'name': 'Partial Cover'}, {'type': 'total', 'name': 'Total Cover'}]
 	cover_type = selects(cover_type, cover_select)
+
+	defense_multiple = [{'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
+	multiple = selects(multiple, defense_multiple)
 
 	outcome = math_convert(outcome)
 
@@ -574,6 +580,8 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Cover Type', 18, [cover_type], new_mod)
 	body = mod_add(cover_check, new_mod, body)
 		
+	cells = circ_cell('Multiple', 'If Multiple', 8, multiple, cells, body)
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 
 	body = send(cells, body)
 
