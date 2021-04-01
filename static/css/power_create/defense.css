@@ -47,7 +47,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 20% 15% 15% 15%;
+	grid-template-columns: 20% 15% 15% 12% 8% 30%;
 	grid-auto-rows: auto;
 }
 
@@ -80,11 +80,6 @@
 	overflow: hidden;
 	transition: all .4s ease-out;
 	gap: .2vw;
-}
-
-#defense-cover {
-	opacity: 0%;
-	transition: all .4s ease-out;
 }
 
 #defense-reflect {
@@ -131,6 +126,16 @@
 	width: 98%;
 	gap: .2vw;
 	grid-template-columns: 12% 20% 68%;
+}
+
+#defense-cover {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: 17% 28% 55%;
 }
 
 #defense-immunity-descriptor {

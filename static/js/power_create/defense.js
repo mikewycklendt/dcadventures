@@ -114,8 +114,9 @@ function defense_immunity_env() {
 function defense_cover() {
 	const check = 'defense_cover_check';
 	const div = 'defense-cover';
+	const entry = 'defense-entry'
 
-	check_opacity(check, div);
+	check_drop(check, div, entry);
 }
 
 let defense_grid = {'titles': false,
