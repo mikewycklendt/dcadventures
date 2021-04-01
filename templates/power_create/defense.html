@@ -41,6 +41,7 @@
 			<select class="select-sml" id="defense_defense" name="defense_defense">
 				<option value="">Defense</option>
 				<option value=any>Any Defense</option>
+				<option value="x">Variable</option>
 				<option value="power">Power Rank</option>
 				{% for d in defenses %}
 					<option value={{d.id}}>{{d.name}}</option>
@@ -171,7 +172,7 @@
 	</div>
 	
 	<div id="defense-immunity">
-		<div>
+		<div style="font-size: 80%;">
 			Immunity:
 		</div>
 
@@ -266,14 +267,14 @@
 						</div>
 
 						<div>
-							<div class="check-div" style="font-size: 80%;">
-								<input type="checkbox" id="defense_immunity_env_penalty" class="medium-checkbox med-checkbox" > No Movement Penalty
+							<div class="check-div" style="font-size: 70%;">
+								<input type="checkbox" id="defense_immunity_env_penalty" class="medium-checkbox med-checkbox" > Movement Penalty
 							</div>
 						</div>
 
 						<div>
-							<div class="check-div" style="font-size: 80%;">
-								<input type="checkbox" id="defense_immunity_env_circumstance" class="medium-checkbox med-checkbox" > No Circumstance
+							<div class="check-div" style="font-size: 70%;">
+								<input type="checkbox" id="defense_immunity_env_circumstance" class="medium-checkbox med-checkbox" > Circumstance
 							</div>
 						</div>
 

@@ -47,7 +47,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 20% 15% 15% 12% 8% 30%;
+	grid-template-columns: 20% 15% 15% 12% 12% auto;
 	grid-auto-rows: auto;
 }
 
@@ -125,7 +125,7 @@
 	transition: all .4s ease-out;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 12% 20% 68%;
+	grid-template-columns: 9% 16% 75%;
 }
 
 #defense-cover {
@@ -135,7 +135,7 @@
 	transition: all .4s ease-out;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 17% 28% 55%;
+	grid-template-columns: 20% 28% 55%;
 }
 
 #defense-immunity-descriptor {
