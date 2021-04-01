@@ -319,16 +319,23 @@
 		</div>
 	</div>
 
-	<div id="defense-button-row">
-		
+	<div id="defense-cover">
+		<div>
+			Provides Cover:
+		</div>
 
-		<div id="defense-cover">
+		<div>
 			<select class="select-sml" id="defense_cover_type" name="defense_cover_type">
 				{% for c in cover %}
 					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
-			</select>
+			</select>	
 		</div>
+	</div>
+
+	<div id="defense-button-row">
+		
+
 
 		<div></div>
 
