@@ -477,7 +477,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	power_move_type = linked_options(PowerMoveType, Power, 'power_id', 'name')
 	
-	power_ranged = linked_options(PowerRanged, Power, 'power_id', 'name')
+	power_ranged = linked_options(PowerRanged, Power, 'power_id', 'keyword')
 	
 	power_ranged_type = linked_options(PowerRangedType, Power, 'power_id', 'name')
 	

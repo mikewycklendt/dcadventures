@@ -324,6 +324,13 @@ body{
 	justify-content: center;
 }
 
+.valign {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: left;
+}
+
 .baseline {
 	display: flex;
 	height: 100%;
