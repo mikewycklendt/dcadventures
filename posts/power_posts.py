@@ -487,6 +487,13 @@ def defense_post(entry, body, cells):
 	cover_type = entry.cover_type
 	immunity_consequence = entry.immunity_consequence
 	immunity_suffocate = entry.immunity_suffocate
+	immunity_env = entry.immunity_env
+	immunity_temp = entry.immunity_temp
+	immunity_extremity = entry.immunity_extremity
+	immunity_environment = entry.immunity_environment
+	immunity_env_penalty = entry.immunity_env_penalty
+	immunity_env_circumstance = entry.immunity_env_circumstance
+
 
 	immunity_trait = trait_select(immunity_trait, immunity_trait_type)
 	
@@ -499,6 +506,9 @@ def defense_post(entry, body, cells):
 	immunity_damage = get_name(Descriptor, immunity_damage)
 	cover_type = get_name(Cover, cover_type)
 	immunity_consequence = get_name(Consequence, immunity_consequence)
+	immunity_environment = get_name(Environment, immunity_environment)
+	immunity_temp = get_name(EnvCondition, immunity_temp)
+
 
 	game_rule_select = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 	immunity_rule = selects(immunity_rule, game_rule_select)
@@ -540,7 +550,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}]
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 25}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -551,6 +561,12 @@ def defense_post(entry, body, cells):
 	value = 'consequence'
 	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
 	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
+	value = 'env'
+	new_mod = mod_cell('Environment:', 14, [immunity_environment], new_mod, value)
+	new_mod = mod_cell('Environment Condition:', 22, [immunity_temp], new_mod, value)
+	new_mod = mod_cell('No Circumstance', 15, [immunity_env_circumstance], new_mod, value)
+	new_mod = mod_cell('No Movement Penalty:', 17, [immunity_env_penalty], new_mod, value)
+	new_mod = mod_cell('Extremity:', 11, [immunity_extremity], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

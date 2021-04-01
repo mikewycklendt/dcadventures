@@ -291,7 +291,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
 
-	environment_immunity = [{'type': '', 'name': 'Immune From'}, {'type': 'environment', 'name': 'Environment'}, {'type': 'condition', 'name': 'Condition'}]
+	environment_immunity = [{'type': '', 'name': 'Type'}, {'type': 'env', 'name': 'Environment'}, {'type': 'condition', 'name': 'Environment Condition'}]
 
 	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
 
@@ -1807,6 +1807,12 @@ def power_post_defense():
 	font = request.get_json()['font']
 	immunity_consequence = request.get_json()['immunity_consequence']
 	immunity_suffocate = request.get_json()['immunity_suffocate']
+	immunity_env = request.get_json()['immunity_env']
+	immunity_temp = request.get_json()['immunity_temp']
+	immunity_extremity = request.get_json()['immunity_extremity']
+	immunity_environment = request.get_json()['immunity_environment']
+	immunity_env_penalty = request.get_json()['immunity_env_penalty']
+	immunity_env_circumstance = request.get_json()['immunity_env_circumstance']
 
 	reflect_check = db_integer(PowerCheck, reflect_check)
 	
@@ -1817,6 +1823,9 @@ def power_post_defense():
 	immunity_damage = db_integer(Descriptor, immunity_damage)
 	cover_type = db_integer(Cover, cover_type)
 	immunity_consequence = db_integer(Consequence, immunity_consequence)
+	immunity_temp = db_integer(EnvCondition, immunity_temp)
+	immunity_environment = db_integer(Environment, immunity_environment)
+
 
 	mod = integer(mod)
 	roll = integer(roll)
@@ -1851,7 +1860,14 @@ def power_post_defense():
 								cover_check = cover_check,
 								cover_type = cover_type,
 								immunity_consequence = immunity_consequence,
-								immunity_suffocate = immunity_suffocate)
+								immunity_suffocate = immunity_suffocate,
+								immunity_env = immunity_env,
+								immunity_temp = immunity_temp,
+								immunity_extremity = immunity_extremity,
+								immunity_environment = immunity_environment,
+								immunity_env_penalty = immunity_env_penalty,
+								immunity_env_circumstance = immunity_env_circumstance
+							)
 		db.session.add(entry)
 		db.session.commit()
 

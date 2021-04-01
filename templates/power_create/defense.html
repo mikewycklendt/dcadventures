@@ -215,6 +215,63 @@
 
 			
 			</div>
+			
+	<div id="defense-immunity-env">
+
+		<div>
+			<select class="select-sml" id="defense_immunity_env" name="defense_immunity_env" onchange="defense_immunity_env()">
+				{% for e in environment_immunity %}
+					<option value="{{e.type}}">{{e.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div id="defense-env-immunity-condition">
+
+				<div>
+					<select class="select-sml" id="defense_immunity_temp" name="defense_immunity_temp">
+						{% for e in env_conditions %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="defense_immunity_extremity" name="defense_immunity_extremity">
+						{% for e in extremity %}
+							<option value="{{e.type}}">{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="defense-env-immunity-environment">
+
+				<div>
+					<select class="select-sml env-sml" id="defense_immunity_environment" name="defense_immunity_environment" onchange="env_immunity_environment()">
+						<option value="">Environment Type</option>
+						<option value="x">Variable</option>
+						{% for e in environments %}
+							<option value="{{e.id}}">{{e.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+
+				<div>
+					<div class="check-div" style="font-size: 80%;">
+						<input type="checkbox" id="defense_immunity_env_penalty" class="medium-checkbox med-checkbox" > No Movement Penalty
+					</div>
+				</div>
+
+				<div>
+					<div class="check-div" style="font-size: 80%;">
+						<input type="checkbox" id="defense_immunity_env_circumstance" class="medium-checkbox med-checkbox" > No Circumstance
+					</div>
+				</div>
+
+			</div>
+		</div>
 				
 
 			<div id="defense-immunity-descriptor">

@@ -86,16 +86,29 @@ function defense_immunity_type() {
 	const options = [{'val': 'trait', 'div': 'defense-immunity-trait'},
 					{'val': 'damage', 'div': 'defense-immunity-damage'},
 					{'val': 'descriptor', 'div': 'defense-immunity-descriptor'},
-					{'val': 'consequence', 'div': 'defense-immunity-consequence'}]
+					{'val': 'consequence', 'div': 'defense-immunity-consequence'},
+					{'val': 'env', 'div': 'defense-immunity-env'}]
 
 	select_opacity(select, options);
 }
 
-function  defense_immunity_consequence() {
+function defense_immunity_consequence() {
 	const select = 'defense_immunity_consequence';
 	const options = [{'val': '5', 'div': 'defense-immunity-suffocate'}]
 
 	select_opacity(select, options)
+}
+
+function defense_immunity_env() {
+	const select = 'defense_immunity_env';
+	const options = [{'val': 'env', 'div': 'defense-env-immunity-environment'},
+					{'val': 'condition', 'div': 'defense-env-immunity-condition'}]
+	const fields = ['defense_immunity_temp', 'defense_immunity_extremity', 'defense_immunity_environment'];
+	const checks = ['defense_immunity_env_penalty', 'defense_immunity_env_circumstance'];
+
+	reset_all(fields);
+	uncheck_all(checks);
+	select_opacity(select, options);
 }
 
 function defense_cover() {
@@ -142,7 +155,13 @@ function defense_submit() {
 	const cover_check = check("defense_cover_check");
 	const cover_type = select("defense_cover_type");
 	const immunity_consequence = select("defense_immunity_consequence");
-	const immunity_suffocate = select("defense_immunity_suffocate")
+	const immunity_suffocate = select("defense_immunity_suffocate");
+	const immunity_env = select("defense_immunity_env");
+	const immunity_temp = select("defense_immunity_temp");
+	const immunity_extremity = select("defense_immunity_extremity");
+	const immunity_environment = select("defense_immunity_environment");
+	const immunity_env_penalty = check("defense_immunity_env_penalty");
+	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -183,7 +202,13 @@ function defense_submit() {
 			'created': created,
 			'font': font,
 			'immunity_consequence': immunity_consequence,
-			'immunity_suffocate': immunity_suffocate
+			'immunity_suffocate': immunity_suffocate,
+			'immunity_env': immunity_env,
+			'immunity_temp': immunity_temp,
+			'immunity_extremity': immunity_extremity,
+			'immunity_environment': immunity_environment,
+			'immunity_env_penalty': immunity_env_penalty,
+			'immunity_env_circumstance': immunity_env_circumstance
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

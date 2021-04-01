@@ -165,6 +165,31 @@
 	gap: .2vw;
 }
 
+#defense-immunity-env {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 20% 80%;
+	gap: .2vw;
+}
+
+#defense-env-immunity-condition {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
+#defense-env-immunity-environment {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 25% 40% 35%;
+	gap: .2vw;
+}
+
+
 #defense-immunity-suffocate {
 	display: none;
 	opacity: 0%;

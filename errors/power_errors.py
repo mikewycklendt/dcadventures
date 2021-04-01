@@ -501,6 +501,13 @@ def defense_post_errors(data):
 	cover_check = data['cover_check']
 	cover_type = data['cover_type']
 	immunity_consequence = data['immunity_consequence']
+	immunity_suffocate = data['immunity_suffocate']
+	immunity_env = data['immunity_env']
+	immunity_temp = data['immunity_temp']
+	immunity_extremity = data['immunity_extremity']
+	immunity_environment = data['immunity_environment']
+	immunity_env_penalty = data['immunity_env_penalty']
+	immunity_env_circumstance = data['immunity_env_circumstance']
 
 	errors = power_check(power_id, errors)
 
@@ -513,6 +520,8 @@ def defense_post_errors(data):
 	errors = id_check(PowerCheck, reflect_check, 'Reflect Check', errors)
 	errors = id_check(Descriptor, immunity_damage, 'Descriptor', errors)
 	errors = id_check(Consequence, immunity_consequence, 'Consequence', errors)
+	errors = id_check(Environment, immunity_environment, 'Environment', errors)
+	errors = id_check(EnvCondition, immunity_temp, 'Environment Condition', errors)
 
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
@@ -533,6 +542,18 @@ def defense_post_errors(data):
 
 	errors = variable_fields('consequence', 'Immune to Consequence', immunity_type, [immunity_consequence], errors)
 	errors = variable_field('consequence', immunity_type, 'Consequence', immunity_type, immunity_consequence, errors)
+	errors = variable_fields('5', 'Suffocation', immunity_consequence, [immunity_suffocate], errors)
+	errors = variable_field('5', immunity_consequence, 'Suffocation Type', immunity_suffocate, errors)
+
+	errors = variable_fields('env', 'Environment Immunity', immunity_type, [immunity_env], errors)
+	errors = variable_field('env', immunity_type, 'Environment Immunity Type', immunity_env, errors)
+	errors = variable_fields('condition', 'Environment Condition Immunity', immunity_env, [immunity_temp, immunity_extremity], errors)
+	errors = variable_field('condition', immunity_env, 'Environment Condition', immunity_temp, errors)
+	errors = variable_field('condition', immunity_env, 'Extremity', immunity_extremity, errors)
+	errors = variable_fields('env', 'Environment Immunity', immunity_env, [immunity_environment], errors)
+	errors = variable_fields('env', immunity_env, 'Environment', immunity_environment, errors)
+
+
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
 
