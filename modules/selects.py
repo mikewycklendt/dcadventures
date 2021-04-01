@@ -639,7 +639,7 @@ def skill_trait_select():
 	
 	resist = [{'id': '', 'name': 'Powers Resisted By'}]
 	for d in defenses_query:
-		defenses.append({'id': d.id, 'name': d.name})
+		resist.append({'id': d.id, 'name': d.name})
 
 	bonuses_query = db.session.query(SkillBonus).filter(SkillBonus.show == True, SkillBonus.subskill == False).order_by(SkillBonus.name).all()
 	bonuses = [{'id': '', 'name': 'Filter Enhanced Skill by Skill'}]
