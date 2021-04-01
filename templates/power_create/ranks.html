@@ -62,17 +62,20 @@
 		</div>
 
 		<div>
-			<select class="extra-select" id="ranks_required" name="ranks_required">
+			<select class="extra-select" id="ranks_required" name="ranks_required" onchange="ranks_required()">
 				<option value="">Required Extra</option>
+				<option value="1"> Any</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="entry-select" id="ranks_required_type"  name="ranks_required_type">
-				{% for r in ranks_required %}
-					<option value="{{r.type}}">{{r.name}}</option>
-				{% endfor %}
-			</select>
+			<div id="ranks-required" class="hidden">
+				<select class="entry-select" id="ranks_required_type"  name="ranks_required_type">
+					{% for r in ranks_required %}
+						<option value="{{r.type}}">{{r.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 		</div>
 
 		<div></div>

@@ -18,9 +18,9 @@ function char_base() {
 
 function char_extra() {
 	const power_id = select("all_power_select");
+	///const power_id = document.getElementById('power_id');
 	const field = 'char_extra';
 	const fill = 'char_cost';
-	///const power_id = document.getElementById('power_id');
 
 	id_select(field, fill, power_cost_select, power_id);
 }
