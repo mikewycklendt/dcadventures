@@ -476,7 +476,7 @@ def defense_post(entry, body, cells):
 	resist_perception = entry.resist_perception
 	reflect = entry.reflect
 	immunity = entry.immunity
-	reflect_check = entry.reflect_check\
+	reflect_check = entry.reflect_check
 	redirect = entry.redirect
 	immunity_type = entry.immunity_type
 	immunity_trait_type = entry.immunity_trait_type
