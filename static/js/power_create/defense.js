@@ -259,10 +259,13 @@ function defense_submit() {
 
 			
 			defense_grid.columns.length = 0;
-			console.log(defense_grid.columns);
 			defense_grid.columns = jsonResponse.rows;
-			console.log(defense_grid.columns);
+		
+			const insert = jsonResponse.new;
+			const items = jsonResponse.new_items;
 
+			new_items(insert, items);
+			
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
 			create_table('power', jsonResponse, defense_grid, route);
