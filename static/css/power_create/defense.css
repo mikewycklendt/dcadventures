@@ -44,9 +44,10 @@
 }
 
 #defense-entry input[type="text"] {
-	height: 1.1vw;
+	height: 1vw;
 	background-color: lightblue;
 	padding: .1vw;
+	font-size: 85%;
 }
 
 #defense-row1 {
