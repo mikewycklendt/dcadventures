@@ -113,6 +113,7 @@
 	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
 	font-size: 70%;
+	gap: .4vw;
 }
 
 #extras-target {
