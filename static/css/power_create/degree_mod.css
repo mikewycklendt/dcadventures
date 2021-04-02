@@ -345,6 +345,16 @@
 	transition: all .3s ease-out
 }
 
+#deg-mod-knowledge-mind {
+	display: none;
+	width: auto;
+	height: auto;
+	grid-template-columns: 35% 30% 35%;
+	grid-auto-rows: auto;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
+
 
 
 #deg-mod-condition {

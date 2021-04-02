@@ -1931,6 +1931,7 @@ def power_degree_post_errors(data):
 	knowledge = data['knowledge']
 	knowledge_count = data['knowledge_count']
 	knowledge_specificity = data['knowledge_specificity']
+	knowledge_mind = data['knowledge_mind']
 	level_type = data['level_type']
 	level = data['level']
 	level_direction = data['level_direction']
@@ -2132,6 +2133,9 @@ def power_degree_post_errors(data):
 	errors = variable_fields('knowledge', 'Gain Knowledge Effect', type, [knowledge], errors)
 	errors = variable_field('knowledge', type, 'Knowledge Type', knowledge, errors)
 
+	errors = variable_fields('mind', 'Mind Reading', knowledge, [knowledge_mind], errors)
+	errors = variable_field('mind', knowledge, 'Read Mind', knowledge_mind, errors)
+	
 	errors = variable_fields('bonus', 'Learn Bonus', knowledge, [knowledge_count, knowledge_specificity], errors)
 	errors = variable_field('bonus', knowledge, 'Amount', knowledge_count, errors)
 	errors = variable_field('bonus', knowledge, 'Specificity', knowledge_specificity, errors)

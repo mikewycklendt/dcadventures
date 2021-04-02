@@ -48,7 +48,8 @@ function deg_mod_consequence_trait() {
 
 function deg_mod_knowledge() {
 	const select = 'deg_mod_knowledge';
-	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'}];
+	const options = [{'val': 'bonus', 'div':'deg-mod-knowledge-bonus'},
+					{'val': 'mind', 'div':'deg-mod-knowledge-mind'}];
 	
 	select_opacity(select, options);
 }
@@ -247,6 +248,7 @@ function deg_mod_submit() {
 	const knowledge = select("deg_mod_knowledge");
 	const knowledge_count = select("deg_mod_knowledge_count");
 	const knowledge_specificity = select("deg_mod_knowledge_specificity");
+	const knowledge_mind = select("deg_mod_knowledge_mind");
 	const level_type = select("deg_mod_level_type");
 	const level = select("deg_mod_level");
 	const level_direction = select("deg_mod_level_direction");
@@ -351,6 +353,7 @@ function deg_mod_submit() {
 			'knowledge': knowledge,
 			'knowledge_count': knowledge_count,
 			'knowledge_specificity': knowledge_specificity,
+			'knowledge_mind': knowledge_mind,
 			'level_type': level_type,
 			'level': level,
 			'level_direction': level_direction,

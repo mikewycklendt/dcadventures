@@ -337,6 +337,16 @@
 						</select>
 					</div>
 				</div>
+
+				<div id="deg-mod-knowledge-mind">
+					<div>
+						<select class="select-sml" id="deg_mod_knowledge_mind" name="deg_mod_knowledge_mind">
+							{% for m in mind %}
+								<option value="{{m.type}}">{{m.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
 

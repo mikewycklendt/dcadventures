@@ -2280,6 +2280,7 @@ def power_degree_post(entry, body, cells):
 	knowledge = entry.knowledge
 	knowledge_count = entry.knowledge_count
 	knowledge_specificity = entry.knowledge_specificity
+	knowledge_mind = entry.knowledge_mind
 	level_type = entry.level_type
 	level = entry.level
 	level_direction = entry.level_direction
@@ -2432,6 +2433,9 @@ def power_degree_post(entry, body, cells):
 	
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
+	
+	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}]
+	knowledge_mind = selects(knowledge_mind, mind_select)
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -2470,6 +2474,7 @@ def power_degree_post(entry, body, cells):
 
 	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')
 	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
+	vcells = vcell('knowledge', 23, [knowledge_mind, 'Thoughts'], vcells, knowledge, 'mind')
 
 	w = width(17, 13, consequence_action)
 	w = width(w, 13, consequence_trait)
