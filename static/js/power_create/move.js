@@ -362,6 +362,7 @@ function move_submit() {
 	const distance_unit_value2 = select("move_distance_unit_value2");
 	const distance_math_units = select("move_distance_math_units");
 	const distance_description = text("move_distance_description");
+	const distance_max = check("move_distance_max")
 	const direction = select("move_direction");
 	const dc = select("move_dc");
 	const degree = select("move_degree");
@@ -474,6 +475,7 @@ function move_submit() {
 			'distance_unit_value2': distance_unit_value2,
 			'distance_math_units': distance_math_units,
 			'distance_description': distance_description,
+			'distance_max': distance_max,
 			'direction': direction,
 			'degree': degree,
 			'circ': circ,

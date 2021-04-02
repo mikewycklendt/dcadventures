@@ -263,27 +263,12 @@ function mod_ranks_trait() {
 }
 
 function mod_points_type() {
-	const field = document.getElementById('mod_points_type');
-	const val = field.options[field.selectedIndex].value;
-	const rer = 'mod-points-reroll';
+	const field = 'mod_points_type';
+	const options =  [{'val': 'reroll', 'div': 'mod-points-reroll'},
+					{'val': 'give', 'div': 'mod-points-give'},];
 
-	if (val == 'reroll') {
-		show_opacity(rer)
-	} else {
-		hide_opacity(rer)
-	}
-}
-
-function mod_points_reerolls() {
-	const field = document.getElementById("mod_points_rerolls");
-	const val = field.options[field.selectedIndex].value;
-	const div = document.getElementById('mod-points-reroll-result');
-
-	if (val > 1) {
-		div.style.opacity = '100%';
-	} else {
-		div.style.opacity = '0%';
-	}
+	
+	select_opacity(field, options)
 }
 
 function mod_side_effect() {
@@ -462,6 +447,7 @@ function mod_submit() {
 	const points_reroll_cost = select("mod_points_reroll_cost");
 	const points_rerolls = select("mod_points_rerolls");
 	const points_reroll_result = select("mod_points_reroll_result");
+	const points_give = select("mod_points_give");
 	const ranks = select("mod_ranks");
 	const cost = select("mod_cost");
 	const extra = check("mod_extra");
@@ -567,6 +553,7 @@ function mod_submit() {
 			'points_reroll_cost': points_reroll_cost,
 			'points_rerolls': points_rerolls,
 			'points_reroll_result': points_reroll_result,
+			'points_give': points_give,
 			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,

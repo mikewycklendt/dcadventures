@@ -253,6 +253,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
+	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
+
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
 
 	dc_type = [{'type': None, 'name': 'None'}, {'type': 'gm', 'name': 'Set By GM'}, {'type': 'rank', 'name': 'Power Rank'}, {'type': 'value', 'name': 'Value'}, {'type': 'mod', 'name': 'Rank + Modifier'}, {'type': 'table', 'name': 'DC Table'}]
@@ -405,7 +407,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	speed_mod = [{'type': '',  'name': 'Modified Rank'}, {'type': 'rank',  'name': 'Speed Rank'}, {'type': 'power',  'name': 'Power Rank'}, {'type': 'extra',  'name': 'Extra Rank'}]
 	
-	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}]
+	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}, {'type': 'give', 'name': 'Give Points'}, {'type': 'negate', 'name': 'Negate Reroll'}]
 
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
@@ -522,7 +524,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											power_check_type=power_check_type, power_opposed_type=power_opposed_type, check_traits=check_traits, check_targets=check_targets, mod_multiple=mod_multiple, creatures=creatures,
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
-											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements)
+											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2373,6 +2375,7 @@ def power_post_mod():
 	points_reroll_cost = request.get_json()['points_reroll_cost']
 	points_rerolls = request.get_json()['points_rerolls']
 	points_reroll_result = request.get_json()['points_reroll_result']
+	points_give = request.get_json()['points_give']
 	ranks = request.get_json()['ranks']
 	cost = request.get_json()['cost']
 	columns = request.get_json()['columns']
@@ -2424,6 +2427,7 @@ def power_post_mod():
 	points_reroll_cost = integer(points_reroll_cost)
 	points_rerolls = integer(points_rerolls)
 	extra_count = integer(extra_count)
+	points_give = integer(points_give)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2534,6 +2538,7 @@ def power_post_mod():
 							points_reroll_cost = points_reroll_cost,
 							points_rerolls = points_rerolls,
 							points_reroll_result = points_reroll_result,
+							points_give = points_give,
 							ranks = ranks,
 							cost = cost,
 							extra = extra,
@@ -4328,6 +4333,7 @@ def power_post_move():
 	distance_unit_value2 = request.get_json()['distance_unit_value2']
 	distance_math_units = request.get_json()['distance_math_units']
 	distance_description = request.get_json()['distance_description']
+	distance_max = request.get_json()['distance_max']
 	direction = request.get_json()['direction']
 	degree = request.get_json()['degree']
 	circ = request.get_json()['circ']
@@ -4522,6 +4528,7 @@ def power_post_move():
 						distance_unit_value2 = distance_unit_value2,
 						distance_math_units = distance_math_units,
 						distance_description = distance_description,
+						distance_max = distance_max,
 						direction = direction,
 						degree = degree,
 						dc = dc,

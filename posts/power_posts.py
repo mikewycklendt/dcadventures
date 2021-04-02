@@ -910,6 +910,7 @@ def mod_post(entry, body, cells):
 	points_reroll_cost = entry.points_reroll_cost
 	points_rerolls = entry.points_rerolls
 	points_reroll_result = entry.points_reroll_result
+	points_give = entry.points_give
 	ranks = entry.ranks
 	cost = entry.cost	
 	extra = entry.extra
@@ -985,7 +986,8 @@ def mod_post(entry, body, cells):
 	points_rerolls = integer_convert(points_rerolls)
 	points_reroll_result = integer_convert(points_reroll_result)
 	extra_count = integer_convert(extra_count)
-	
+	points_give = integer_convert(points_give)
+
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
 	new_mod = mod_create('Affects Objects', 20)
@@ -1110,12 +1112,15 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Permanent', 10, permanent, cells)
 
-	cells = check_cell('Points', 8, points, cells, True)
-	new_mod = mod_create('Points Rerolls', 17)
-	new_mod = mod_cell('Target:', 8, [points_reroll_target], new_mod)
-	new_mod = mod_cell('Cost:', 6, [points_reroll_cost], new_mod)
-	new_mod = mod_cell('Rerolls:', 10, [points_reroll_result], new_mod)
-
+	cells = check_cell('Points', 8, points, cells, True)		
+	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Spend to Re-roll', 'w': 20}, {'type': 'give', 'name': 'Spend to Give Points', 'w': 20}, {'type': 'negate', 'name': 'Spend to Negate Reroll', 'w': 20}]
+	new_mod = mod_create('Points Rerolls', 17, points_type, spend)
+	value = 'reroll'
+	new_mod = mod_cell('Target:', 8, [points_reroll_target], new_mod, value)
+	new_mod = mod_cell('Cost:', 6, [points_reroll_cost], new_mod, value)
+	new_mod = mod_cell('Rerolls:', 10, [points_reroll_result], new_mod, value)
+	value = 'give'
+	new_mod = mod_cell('Points Per Round:', 18, [points_give], new_mod, value)
 	body = mod_add(points, new_mod, body)
 
 	cells = check_cell('Ranks', 7, ranks_check, cells, True)
@@ -2536,6 +2541,7 @@ def power_move_post(entry, body, cells):
 	distance_unit_value2 = entry.distance_unit_value2
 	distance_math_units = entry.distance_math_units
 	distance_description = entry.distance_description
+	distance_max = entry.distance_max
 	direction = entry.direction
 	degree = entry.degree
 	circ = entry.circ
@@ -2734,6 +2740,7 @@ def power_move_post(entry, body, cells):
 	vcells = vcell('unit_math', 25, [distance_unit_trait, distance_unit_math1, distance_unit_value1, distance_unit_math2,  distance_unit_value2, distance_math_units], vcells)
 	vcells = vcell('rank_math', 25, [distance_rank_trait, distance_rank_math1, distance_rank_value1, distance_rank_math2, distance_rank_value2], vcells)
 	cells = vcell_add('Distance', distance, vcells, cells)
+	cells = check_cell('Only Max', 10, distance_max, cells)
 	cells = circ_cell('Desc', 'Description', 5, distance_description, cells, body)
 
 	cells = check_cell('Flight', 8, flight, cells, True)

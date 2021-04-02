@@ -951,7 +951,7 @@
 					</select>
 				</div>
 
-				<div id="mod-points-reroll-result">
+				<div>
 					<select class="select-sml" id="mod_points_reroll_result" name="mod_points_reroll_result">
 						{% for r in result %}
 							<option value="{{r.type}}">{{r.name}}</option>
@@ -959,6 +959,17 @@
 					</select>
 				</div>
 
+			</div>
+
+			<div id="mod-points-give">
+				<div>
+					<select class="select-sml" id="mod_points_give" name="mod_points_give">
+						<option value="">Points Per Round</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>

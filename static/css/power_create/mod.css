@@ -453,9 +453,11 @@
 	transition: all .3s ease-out;
 }
 
-#mod-points-reroll-result {
+#mod-points-give {
+	display: none;
 	opacity: 0%;
-	transition: all .4s ease-out;
+	grid-template-columns: 25% 25% 25% 25%;
+	transition: all .3s ease-out;
 }
 
 #mod-ranks {

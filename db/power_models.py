@@ -957,6 +957,7 @@ class PowerMove(db.Model):
 	distance_unit_value2 = db.Column(db.Integer)
 	distance_math_units = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	distance_description = db.Column(db.String())
+	distance_max = db.Column(db.Boolean)
 	direction = db.Column(db.String())
 	turns = db.Column(db.Integer)
 	degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
@@ -1058,6 +1059,7 @@ class PowerMove(db.Model):
 			'distance_unit_value2': self.distance_unit_value2,
 			'distance_math_units': self.distance_math_units,
 			'distance_description': self.distance_description,
+			'distance_max': self.distance_max,
 			'direction': self.direction,
 			'turns': self.turns,
 			'degree': self.degree,
@@ -1922,6 +1924,7 @@ class PowerMod(db.Model):
 	points_reroll_cost = db.Column(db.Integer)
 	points_rerolls = db.Column(db.Integer)
 	points_reroll_result = db.Column(db.String())
+	points_give = db.Column(db.Integer)
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	extra_count = db.Column(db.Integer)
@@ -2021,6 +2024,7 @@ class PowerMod(db.Model):
 			'points_reroll_cost': self.points_reroll_cost,
 			'points_rerolls': self.points_rerolls,
 			'points_reroll_result': self.points_reroll_result,
+			'points_give': self.points_give,
 			'ranks_cost': self.ranks_cost,
 			'cost': self.cost,
 			'extra_count': self.extra_count,

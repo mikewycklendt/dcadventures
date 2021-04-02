@@ -56,7 +56,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .3s ease-out;
-	grid-template-columns: 15% 85%;
+	grid-template-columns: 15% 70% 15%;
 	padding: .1vw;
 	height: auto;
 	gap: .3vw;
