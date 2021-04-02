@@ -349,6 +349,14 @@ function mod_limited_creature_narrow() {
 	select_opacity(select, options)
 }
 
+function mod_feedback() {
+	const check = 'mod_feedback';
+	const div = 'mod-feedback';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 
 let mod_grid = {'titles': false,
 					'columns': [],
@@ -456,6 +464,8 @@ function mod_submit() {
 	const extra_dc = select("mod_extra_dc");
 	const extra_circ = select("mod_extra_circ");
 	const multiple = select("mod_multiple");
+	const feedback = check("mod_feedback")
+	const feedback_mod = select("mod_feedback_mod")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -564,7 +574,9 @@ function mod_submit() {
 			'extra_degree': extra_degree,
 			'extra_dc': extra_dc,
 			'extra_circ': extra_circ,
-			'multiple': multiple
+			'multiple': multiple,
+			'feedback': feedback,
+			'feedback_mod': feedback_mod
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -1936,6 +1936,8 @@ class PowerMod(db.Model):
 	extra_dc = db.Column(db.Integer, db.ForeignKey('power_dc_type.id'))
 	extra_circ = db.Column(db.Integer, db.ForeignKey('power_circ_type.id'))
 	multiple = db.Column(db.String())
+	feedback = db.Column(db.Boolean)
+	feedback_mod = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -2035,7 +2037,9 @@ class PowerMod(db.Model):
 			'extra_degree': self.extra_degree,
 			'extra_dc': self.extra_dc,
 			'extra_circ': self.extra_circ,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'feedback': self.feedback,
+			'feedback_mod': self.feedback_mod
 		}
 
 class PowerRanged(db.Model):

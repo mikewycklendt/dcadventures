@@ -224,6 +224,33 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_feedback" class="medium-checkbox med-checkbox" onclick="mod_feedback()"> Feedback
+			</div>
+		</div>
+
+	</div>
+
+	<div id="mod-feedback">
+
+		<div>
+			Feedback
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_feedback_mod" name="mod_feedback_mod">
+				<option value="">Resistance Modifier</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in negatives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+				{% for i in poaitives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 
 	</div>
 

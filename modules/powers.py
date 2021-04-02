@@ -2390,6 +2390,8 @@ def power_post_mod():
 	extra_dc = request.get_json()['extra_dc']
 	extra_circ = request.get_json()['extra_circ']
 	multiple = request.get_json()['multiple']
+	feedback_mod = request.get_json()['feedback_mod']
+	feedback = request.get_json()['feedback']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2431,6 +2433,7 @@ def power_post_mod():
 	points_rerolls = integer(points_rerolls)
 	extra_count = integer(extra_count)
 	points_give = integer(points_give)
+	feedback_mod = integer(feedback_mod)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2549,7 +2552,9 @@ def power_post_mod():
 							extra_degree = extra_degree,
 							extra_dc = extra_dc,
 							extra_circ = extra_circ,
-							multiple = multiple
+							multiple = multiple,
+							feedback_mod = feedback_mod,
+							feedback = feedback
 						)
 
 		db.session.add(entry)

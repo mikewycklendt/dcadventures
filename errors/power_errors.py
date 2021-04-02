@@ -837,6 +837,8 @@ def mod_post_errors(data):
 	extra_degree = data['extra_degree']
 	extra_dc = data['extra_dc']
 	extra_circ = data['extra_circ']
+	feedback_mod = data['feedback_mod']
+	feedback = data['feedback']
 
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
@@ -878,6 +880,7 @@ def mod_post_errors(data):
 	errors = int_check(points_rerolls, 'Number of Rerolls', errors)
 	errors = int_check(extra_count, 'Extra Effect Count', errors)
 	errors = int_check(points_give, 'Points Given Per Round', errors)
+	errors = int_check(feedback_mod, 'Feedback Resistance Modifier', errors)
 
 	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
@@ -992,6 +995,10 @@ def mod_post_errors(data):
 	errors = check_fields(extra, 'Extra Effect', [extra_count], errors)
 	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)
 	errors = check_of(extra, 'Extra Effect', 'a degree, circumstance or dc', [extra_dc, extra_degree, extra_circ], errors)
+	
+	errors = check_fields(feedback, 'Feedback', [feedback_mod], errors)
+	errors = check_field(feedback, 'Feedback', 'Resistance Modifier', feedback_mod, errors)
+	
 	
 	return (errors)
 

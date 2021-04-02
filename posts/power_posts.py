@@ -918,6 +918,8 @@ def mod_post(entry, body, cells):
 	extra_degree = entry.extra_degree
 	extra_dc = entry.extra_dc
 	extra_circ = entry.extra_circ
+	feedback = entry.feedback
+	feedback_mod = entry.feedback_mod
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -987,6 +989,7 @@ def mod_post(entry, body, cells):
 	points_reroll_result = integer_convert(points_reroll_result)
 	extra_count = integer_convert(extra_count)
 	points_give = integer_convert(points_give)
+	feedback_mod = integer_convert(feedback_mod)
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1161,6 +1164,12 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Circumstance', 17, [extra_circ], new_mod)
 	new_mod = mod_cell('DC', 5, [extra_dc], new_mod)	
 	body = mod_add(extra, new_mod, body)
+
+	cells = check_cell('Feedback', 10, feedback, cells, True)
+	new_mod = mod_create('Feedback', 12)
+	new_mod = mod_cell('Resistance Modifier:', 18, [feedback_mod], new_mod)	
+	body = mod_add(feedback, new_mod, body)
+	
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
 	cells = check_cell('Unreliable', 11, unreliable, cells)

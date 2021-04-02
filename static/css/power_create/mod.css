@@ -95,7 +95,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
 }
 
@@ -465,6 +465,16 @@
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 22% 19% 29% 15% 15% ;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#mod-feedback {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 12% 20% 50%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
