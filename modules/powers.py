@@ -3797,6 +3797,9 @@ def power_post_dc():
 	descriptor_target = request.get_json()['descriptor_target']
 	descriptor = request.get_json()['descriptor']
 	descrip = request.get_json()['descrip']
+	ranks = request.get_json()['ranks']
+	rank = request.get_json()['rank']
+	ranks_per = request.get_json()['ranks_per']
 
 
 	errors = power_dc_post_errors(data)
@@ -3849,6 +3852,8 @@ def power_post_dc():
 	measure_mod = integer(measure_mod)
 	measure_trait_unit = integer(measure_trait_unit)
 	measure_mod_unit = integer(measure_mod_unit)
+	rank = integer(rank)
+	ranks_per = integer(ranks_per)
 
 	cover_type = db_integer(Cover, cover_type)
 	conceal_type = db_integer(Conceal, conceal_type)
@@ -3936,7 +3941,10 @@ def power_post_dc():
 					descriptor_effect = descriptor_effect,
 					descriptor_target = descriptor_target,
 					descriptor = descriptor,
-					descrip = descrip
+					descrip = descrip,
+					ranks = ranks,
+					rank = rank,
+					ranks_per = ranks_per
 				)
 
 	db.session.add(entry)

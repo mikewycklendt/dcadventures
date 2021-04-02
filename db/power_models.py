@@ -640,6 +640,9 @@ class PowerDC(db.Model):
 	descriptor_target = db.Column(db.String())
 	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	descrip = db.Column(db.Boolean)
+	ranks = db.Column(db.Boolean)
+	rank = db.Column(db.Integer)
+	ranks_per = db.Column(db.Integer)
 
 
 	def format(self):
@@ -724,7 +727,10 @@ class PowerDC(db.Model):
 			'descriptor_effect': self.descriptor_effect,
 			'descriptor_target': self.descriptor_target,
 			'descriptor': self.descriptor,
-			'descrip': self.descrip
+			'descrip': self.descrip,
+			'ranks': self.ranks,
+			'rank': self.rank,
+			'ranks_per': self.ranks_per
 		}
 
 class PowerDegree(db.Model):

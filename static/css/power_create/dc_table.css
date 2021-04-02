@@ -123,7 +123,7 @@
 	width: 98%;
 	gap: .3vw;
 	grid-template-columns: auto auto auto auto auto auto auto;
-	font-size: 90%;
+	font-size: 80%;
 	grid-auto-rows: auto;
 }
 
@@ -131,8 +131,8 @@
 	display: grid;
 	width: 98%;
 	gap: .3vw;
-	grid-template-columns: auto auto auto auto auto;
-	font-size: 90%;
+	grid-template-columns: auto auto auto auto auto auto;
+	font-size: 80%;
 	grid-auto-rows: auto;
 }	
 
@@ -143,6 +143,16 @@
 	transition: all .3s ease-out;
 	text-align: center;
 	grid-template-columns: 20% 25% 35% 20%;
+	gap: .2vw;
+}
+
+#dc-ranks {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	grid-template-columns: 20% 15% 5% 15% 45%;
 	gap: .2vw;
 }
 

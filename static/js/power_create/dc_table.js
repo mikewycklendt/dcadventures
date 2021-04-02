@@ -103,6 +103,14 @@ function dc_cover() {
 	check_drop(check, div, entry)
 }
 
+function dc_ranks() {
+	const check = 'dc_ranks';
+	const div = 'dc-ranks';
+	const entry = 'dc-entry';
+
+	check_drop(check, div, entry)
+}
+
 function dc_conceal() {
 	const check = 'dc_conceal'
 	const div = 'dc-conceal';
@@ -338,6 +346,9 @@ function dc_submit() {
 	const descriptor_target = select("dc_descriptor_target");
 	const descriptor = select("dc_descriptor");
 	const descrip = check("dc_descrip")
+	const ranks =  check("dc_ranks");
+	const rank = select("dc_rank");
+	const ranks_per = select("dc_ranks_per");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -430,7 +441,10 @@ function dc_submit() {
 			'descriptor_effect': descriptor_effect,
 			'descriptor_target': descriptor_target,
 			'descriptor': descriptor,
-			'descrip': descrip
+			'descrip': descrip,
+			'ranks': ranks,
+			'rank': rank,
+			'ranks_per': ranks_per
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -1748,6 +1748,9 @@ def power_dc_post_errors(data):
 	descriptor_target = data['descriptor_target']
 	descriptor = data['descriptor']
 	descrip = data['descrip']
+	ranks = data['ranks']
+	rank = data['rank']
+	ranks_per = data['ranks_per']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -1778,6 +1781,9 @@ def power_dc_post_errors(data):
 	errors = id_check(EquipType, equipment_type, 'Equipment Type', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
 	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
+	errors = int_check(rank, 'Ranks', errors)
+	errors - int_check(ranks_per, 'Result Over DC', errors)
+
 
 	errors = id_check(Cover, cover_type, 'Cover', errors)
 	errors = id_check(Conceal, conceal_type, 'Concealment', errors)
@@ -1880,6 +1886,10 @@ def power_dc_post_errors(data):
 	errors = check_field(equip, 'Equipment', 'Equipment Use Type', equipment_use, errors)
 	errors = check_field(equip, 'Equipment', 'Equipment Type', equipment_type, errors)
 	errors = check_field(equip, 'Equipment', 'Equipment', equipment, errors)
+
+	errors = check_fields(rank, 'Ranks', [rank, ranks_per], errors)
+	errors = check_field(rank, 'Ranks', 'Ranks', rank, errors)
+	errors = check_field(rank, 'Ranks', 'Result Over DC', ranks_per, errors)
 
 	errors = check_fields(variable_check, 'Variable Check', [variable], errors)
 

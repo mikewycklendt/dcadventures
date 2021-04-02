@@ -228,6 +228,13 @@
 				<input type="checkbox" id="dc_equip" class="medium-checkbox med-checkbox" onclick="dc_equip()"> Equipment
 			</div>
 		</div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="dc_ranks" class="medium-checkbox med-checkbox" onclick="dc_ranks()"> Ranks
+			</div>
+		</div>
+
 	</div>
 
 	<div id="dc-measure">
@@ -708,6 +715,38 @@
 			<div class="check-div">
 				<input type="checkbox" id="dc_action_no_damage" class="medium-checkbox med-checkbox" > Only if no Damage
 			</div>
+		</div>
+	</div>
+
+	<div id="dc-ranks">
+		<div>
+			Check for Ranks
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_rank" name="dc_rank">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			Ranks Per
+		</div>
+		
+		<div>
+			<select class="select-sml" id="dc_ranks_per" name="dc_ranks_per">
+				<option value="">Above DC</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			Result above DC
 		</div>
 	</div>
 

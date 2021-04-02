@@ -2069,6 +2069,9 @@ def power_dc_post(entry, body, cells):
 	descriptor_target = entry.descriptor_target
 	descriptor = entry.descriptor
 	descrip = entry.descrip
+	ranks = entry.ranks
+	rank = entry.rank
+	ranks_per = entry.ranks_per
 
 	title_name = get_name(PowerDCType, title)
 	body['title'] = title_name
@@ -2098,6 +2101,8 @@ def power_dc_post(entry, body, cells):
 	measure_mod = integer_convert(measure_mod)
 	measure_mod_unit = integer_convert(measure_mod_unit)
 	condition_turns = integer_convert(condition_turns)
+	rank = integer_convert(rank)
+	ranks_per = integer_convert(ranks_per)
 
 	math = math_convert(math)
 	inflict_math = math_convert(inflict_math)
@@ -2223,9 +2228,13 @@ def power_dc_post(entry, body, cells):
 	new_mod = mod_cell('Target', 7, [descriptor_target], new_mod)
 	new_mod = mod_cell('Descriptor', 9, [descriptor], new_mod)
 	body = mod_add(descrip, new_mod, body)
+	
+	cells = check_cell('Ranks', 7, ranks, cells, True)
+	new_mod = mod_create('Check for Ranks', 20)
+	new_mod = mod_cell('Ranks Gained', 13, [rank], new_mod)
+	new_mod = mod_cell('Per Result Over DC', 20, [ranks_per], new_mod)
+	body = mod_add(ranks, new_mod, body)
 
-	
-	
 	cells = check_cell('Surface', 8, surface, cells)
 
 	cells = circ_cell('Description', 'Description', 13, description, cells, body)
