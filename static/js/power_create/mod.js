@@ -424,6 +424,7 @@ function mod_submit() {
 	const limited_degree = select("mod_limited_degree");
 	const limited_sense = select("mod_limited_sense");
 	const limited_subsense = select("mod_limited_subsense");
+	const limited_sense_depend = check("mod_limited_sense_depend");
 	const limited_descriptor = select("mod_limited_descriptor");
 	const limited_range = select("mod_limited_range");
 	const limited_ground = select("mod_limited_ground");
@@ -532,6 +533,7 @@ function mod_submit() {
 			'limited_degree': limited_degree,
 			'limited_sense': limited_sense,
 			'limited_subsense': limited_subsense,
+			'limited_sense_depend': limited_sense_depend,
 			'limited_descriptor': limited_descriptor,
 			'limited_range': limited_range,
 			'limited_ground': limited_ground,

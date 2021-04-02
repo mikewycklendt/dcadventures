@@ -2347,6 +2347,7 @@ def power_post_mod():
 	limited_degree = request.get_json()['limited_degree']
 	limited_sense = request.get_json()['limited_sense']
 	limited_subsense = request.get_json()['limited_subsense']
+	limited_sense_depend = request.get_json()['limited_sense_depend']
 	limited_descriptor = request.get_json()['limited_descriptor']
 	limited_range = request.get_json()['limited_range']
 	limited_ground = request.get_json()['limited_ground']
@@ -2513,6 +2514,7 @@ def power_post_mod():
 							limited_degree = limited_degree,
 							limited_sense = limited_sense,
 							limited_subsense = limited_subsense,
+							limited_sense_depend = limited_sense_depend,
 							limited_descriptor = limited_descriptor,
 							limited_range = limited_range,
 							limited_ground = limited_ground,

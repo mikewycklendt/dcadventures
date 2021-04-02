@@ -1040,6 +1040,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Sense:', 7, [limited_sense], new_mod, value)
 	new_mod = mod_cell('Subsense:', 10, [limited_subsense], new_mod, value)
+	new_mod = mod_cell('Dependent:', 7, [limited_sense_depend], new_mod, value)
 	value = 'range'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Range:', 7, [limited_range], new_mod, value)

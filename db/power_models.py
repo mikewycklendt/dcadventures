@@ -1898,6 +1898,7 @@ class PowerMod(db.Model):
 	limited_degree = db.Column(db.Integer)
 	limited_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	limited_subsense = db.Column(db.String())
+	limited_sense_depend = db.Column(db.Boolean)
 	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
 	limited_ground = db.Column(db.Integer, db.ForeignKey('ground.id'))
@@ -2000,6 +2001,7 @@ class PowerMod(db.Model):
 			'limited_degree': self.limited_degree,
 			'limited_sense': self.limited_sense,
 			'limited_subsense': self.limited_subsense,
+			'limited_sense_depend': self.limited_sense_depend,
 			'limited_descriptor': self.limited_descriptor,
 			'limited_range': self.limited_range,
 			'limited_ground': self.limited_ground,
