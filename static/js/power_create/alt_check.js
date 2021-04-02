@@ -122,6 +122,7 @@ function check_submit() {
 	const consequence = select("check_consequence");
 	const consequence_target = select("check_consequence_target");
 	const defenseless = select("check_defenseless");
+	const touch = check("check_touch");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -183,7 +184,8 @@ function check_submit() {
 			'maneuver':  maneuver,
 			'consequence': consequence,
 			'consequence_target': consequence_target,
-			'defenseless': defenseless
+			'defenseless': defenseless,
+			'touch': touch
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

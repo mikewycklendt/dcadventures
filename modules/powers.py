@@ -333,7 +333,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 		
 	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
-	mind = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}]
+	mind = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
 
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
 
@@ -3392,6 +3392,7 @@ def power_post_check():
 	consequence = request.get_json()['consequence']
 	consequence_target = request.get_json()['consequence_target']
 	defenseless = request.get_json()['defenseless']
+	touch = request.get_json()['touch']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3483,7 +3484,8 @@ def power_post_check():
 						attack_range = attack_range,
 						consequence = consequence,
 						consequence_target = consequence_target,
-						defenseless = defenseless
+						defenseless = defenseless,
+						touch = touch
 					)
 
 	db.session.add(entry)

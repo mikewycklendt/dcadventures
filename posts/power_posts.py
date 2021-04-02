@@ -1725,6 +1725,7 @@ def power_check_post(entry, body, cells):
 	consequence = entry.consequence
 	consequence_target = entry.consequence_target
 	defenseless = entry.defenseless
+	touch = entry.touch
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1763,6 +1764,7 @@ def power_check_post(entry, body, cells):
 	variable = get_keyword(PowerCheck, variable)
 	
 	mental = check_string('Except Mental', mental)
+	touch = check_string('Must Maintain Touch', touch)
 
 	attack = integer_convert(attack)
 
@@ -1797,7 +1799,7 @@ def power_check_post(entry, body, cells):
 
 	attack = add_plus(attack)
 	word = string_all('on', [attack, maneuver])
-	vcells = vcell(5, 8, [attack, word, maneuver, 'at', attack_range, 'Range'])
+	vcells = vcell(5, 8, [attack, word, maneuver, 'at', attack_range, 'Range', touch])
 	vcells = vcell(1, 8, [dc, dc_value], vcells)
 	vcells = vcell(6, 8, [dc, dc_value], vcells)
 	vcells = vcell(2, 8, [opposed], vcells)
@@ -2434,7 +2436,7 @@ def power_degree_post(entry, body, cells):
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 	
-	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}]
+	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
 
 	cells = cell('Keyword', 15, [keyword])
