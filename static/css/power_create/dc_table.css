@@ -152,7 +152,7 @@
 	overflow: hidden;
 	transition: all .3s ease-out;
 	text-align: center;
-	grid-template-columns: 20% 15% 5% 15% 45%;
+	grid-template-columns: 20% 15% 10% 15% 40%;
 	gap: .2vw;
 }
 
