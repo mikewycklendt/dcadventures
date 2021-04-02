@@ -62,6 +62,10 @@
 	gap: .3vw;
 }
 
+#move-distance-description input[type="text"] {
+	width: 95%;
+}
+
 #move-links {
 	display: grid;
 	width: 98%;
