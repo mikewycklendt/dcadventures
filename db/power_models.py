@@ -1390,8 +1390,11 @@ class PowerChar(db.Model):
 	points_trait_type = db.Column(db.String())
 	points_trait = db.Column(db.Integer)
 	points_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	appear_form = db.Column(db.String())
 	appear_target = db.Column(db.String())
 	appear_description = db.Column(db.String())
+	appear_creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
+	appear_creature_narrow = db.Column(db.Integer, db.ForeignKey('creature_narrow.id'))
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
@@ -1444,8 +1447,11 @@ class PowerChar(db.Model):
 			'points_trait_type': self.points_trait_type,
 			'points_trait': self.points_trait,
 			'points_descriptor': self.points_descriptor,
+			'appear_form': self.appear_form,
 			'appear_target': self.appear_target,
 			'appear_description': self.appear_description,
+			'appear_creature': self.appear_creature,
+			'appear_creature_narrow': self.appear_creature_narrow,
 			'insub_type': self.insub_type,
 			'insub_description': self.insub_description,
 			'cost': self.cost,

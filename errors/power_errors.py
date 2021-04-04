@@ -224,8 +224,11 @@ def character_post_errors(data):
 	points_trait_type = data['points_trait_type']
 	points_trait = data['points_trait']
 	points_descriptor = data['points_descriptor']
+	appear_form = data['appear_form']
 	appear_target = data['appear_target']
 	appear_description = data['appear_description']
+	appear_creature = data['appear_creature']
+	appear_creature_narrow = data['appear_creature_narrow']
 	insub_type = data['insub_type']
 	insub_description = data['insub_description']
 	cost = data['cost']
@@ -249,6 +252,8 @@ def character_post_errors(data):
 	errors = int_check(limbs_count, 'Limbs Count', errors)
 
 	errors = id_check(Condition, limbs_condition, 'Condition', errors)
+	errors = id_check(Creature, appear_creature, 'Broad Form', errors)
+	errors = id_check(NarrowCreature, appear_creature_narrow, 'Narrow Form', errors)
 
 	errors = together('an Increased Trait', [trait_type, value, increase], errors)
 	errors = check_field(limited, 'Limited', 'Limited By', limited_by, errors)
@@ -272,9 +277,16 @@ def character_post_errors(data):
 	errors = check_field(points, 'Hero Points', 'Trait Type', points_trait_type, errors)
 	errors = check_field(points, 'Hero Points', 'Trait', points_trait, errors)
 
-	errors = check_fields(appear, 'Alters Appearance', [appear_target, appear_description], errors)
+	errors = check_fields(appear, 'Alters Appearance', [appear_target, appear_form], errors)
 	errors = check_field(appear, 'Alters Appearance', 'Target', appear_target, errors)
-	errors = check_field(appear, 'Alters Appearance', 'Description', appear_description, errors)
+	errors = check_field(appear, 'Alters Appearance', 'Form', appear_form, errors)
+
+	errors = variable_fields('broad', 'Broad Form', appear_form, [appear_creature], errors)
+	errors = variable_fields('broad', appear_form, 'Broad Form', appear_creature, errors)
+
+	errors = variable_fields('narrow', 'Narrow Form', appear_form, [appear_creature, appear_creature_narrow], errors)
+	errors = variable_fields('narrow', appear_form, 'Broad Form', appear_creature, errors)
+	errors = variable_fields('narrow', appear_form, 'Narrow Form', appear_creature_narrow, errors)
 
 	errors = check_fields(insubstantial, 'Insubstantial', [insub_type, insub_description], errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)

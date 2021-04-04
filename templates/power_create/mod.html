@@ -581,6 +581,7 @@
 					<select class="select-sml emotion-sml" id="mod_limited_emotion" name="mod_limited_emotion" onchange="mod_limited_emotion()">
 						<option value="">Emotion</option>
 						<option value="x">Variable</option>
+						<option value="all">All</option>
 						<option value="other">Other</option>
 						{% for e in emotions %}
 							<option value={{e.id}}>{{e.name}}</option>

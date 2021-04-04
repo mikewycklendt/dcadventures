@@ -96,57 +96,32 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/element/create')
-def element_create():
 
-	entries = ['Earth', 'Wind', 'Water', 'Fire']
 
-	for i in entries:
+@app.route('/table/db')
+def table_db_columns_create():
 
-		entry = Element(name=i)
-		db.session.add(entry)
-		db.session.commit()
+	
+	name = 'Machine'
 
-	tablename =  'Element'
-
-	name = 'All Elements'
-
-	entry = Element(all=True, name=name, hide=True )
+	entry = Creature(machine=True, name=name)
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Current ' + tablename
+	name = 'Humsnoid'
 
-	entry = Element(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Element(any=True, name=name, hide=True )
+	entry = Creature(human=True, name=name )
 	db.session.add(entry)
 	db.session.commit()
 
-	name = 'Variable ' + tablename
-
-	entry = Element(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Element(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-
-	results = Element.query.all()
+	results = db.session.query(Creature).filter_by(show=None).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('Elements added')
+	return (name + ' db added')
+
 
 
 if __name__ == '__main__':

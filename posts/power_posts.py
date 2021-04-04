@@ -103,8 +103,11 @@ def character_post(entry, body, cells):
 	points_trait_type = entry.points_trait_type
 	points_trait = entry.points_trait
 	points_descriptor = entry.points_descriptor
+	appear_form = entry.appear_form
 	appear_target = entry.appear_target
 	appear_description = entry.appear_description
+	appear_creature = entry.appear_creature
+	appear_creature_narrow = entry.appear_creature_narrow
 	insub_type = entry.insub_type
 	insub_description = entry.insub_description
 	cost = entry.cost
@@ -127,6 +130,8 @@ def character_post(entry, body, cells):
 	points_descriptor = descriptor_name(points_descriptor)
 	limited_emotion = name(Emotion, limited_emotion)
 	limbs_condition = get_name(Condition, limbs_condition)
+	appear_creature = get_name(Creature, appear_creature)
+	appear_creature_narrow = get_name(NarrowCreature, appear_creature_narrow)
 
 	limbs_rank = ('Limbs Per Rank', limbs_rank)
 
@@ -141,6 +146,9 @@ def character_post(entry, body, cells):
 	
 	traits_select = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'extra', 'name': 'Power Extra'}]
 	weaken_broad = selects(weaken_broad, traits_select)
+
+	appear_form_select = [{'type': '', 'name': 'Form'}, {'type': 'single', 'name': 'Single'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'creature', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
+	appear_form = selects(appear_form, appear_form_select)
 
 	value = integer_convert(value)
 	increase = integer_convert(increase)
@@ -201,6 +209,9 @@ def character_post(entry, body, cells):
 	cells = check_cell('Appearance', 14, appear, cells, True)
 	new_mod = mod_create('Alters Appearance', 20)
 	new_mod = mod_cell('Target:', 7, [appear_target], new_mod)
+	new_mod = mod_cell('Form', 5, [appear_form], new_mod)
+	new_mod = mod_cell('Broad Form', 12, [appear_creature], new_mod)
+	new_mod = mod_cell('Narrow Form', 15, [appear_creature_narrow], new_mod)
 	new_mod = mod_cell('Description:', 11, [appear_description], new_mod)
 	body = mod_add(appear, new_mod, body)
 

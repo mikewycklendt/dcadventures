@@ -208,6 +208,41 @@ function char_weaken_broad() {
 	}
 }
 
+function char_appear_creature() {
+	const select = 'char_appear_creature';
+	const fill = 'char_appear_creature_narrow';
+	const options = [{'val': 'other', 'div': 'char-appear-creature-other'}];
+	const entry = 'char-entry';
+
+	select_maxheight_entry(select, options, entry);
+	id_select(select, fill, narrow_creature_select, other_var_sub);
+}
+
+function char_appear_creature_narrow() {
+	const select = 'char_appear_creature_narrow';
+	const options = [{'val': 'other', 'div': 'char-appear-creature-other'}];
+	const entry = 'char-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
+function char_appear_form() {
+	const select = 'char_appear_form';
+	const options = [{'val': ['broad', 'narrow'], 'div': 'char-appear-broad'},
+					{'val': ['narrow'], 'div': 'char-appear-narrow'},
+					{'val': ['single'], 'div': 'char-appear-single'}];
+	const fields = ['char_appear_creature_narrow', 'char_appear_creature'];
+	const titles = [{'val': 'broad', 'text':  'Other Creature:'},
+					{'val': 'narrow', 'text':  'Other Narrow Creature:'}];
+	const div = 'char-appear-creature-other-title';
+	const text = ['char_appear_des'];
+
+	div_text(select, div, titles);
+	reset_all(fields);
+	reset_text(text);
+	select_opacity_shared(select, options);
+}
+
 let char_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -259,8 +294,12 @@ function char_submit() {
 	const points_trait_type = select("char_points_trait_type");
 	const points_trait = select("char_points_trait");
 	const points_descriptor = select("char_points_descriptor");
+	const appear_form = select("char_appear_form");
 	const appear_target = select("char_appear_target");
 	const appear_description = text("char_appear_des");
+	const appear_creature = select("char_appear_creature")
+	const appear_creature_narrow = select("char_appear_creature_narrow")
+	const appear_creature_other = text("char_appear_creature_other");
 	const insub_type = select("char_insub_type");
 	const insub_description = text("char_insub_des");
 	const cost = select("char_cost");
@@ -319,8 +358,12 @@ function char_submit() {
 			'points_trait_type': points_trait_type,
 			'points_trait': points_trait,
 			'points_descriptor': points_descriptor,
+			'appear_form': appear_form,
 			'appear_target': appear_target,
 			'appear_description': appear_description,
+			'appear_creature': appear_creature,
+			'appear_creature_narrow': appear_creature_narrow,
+			'appear_creature_other': appear_creature_other,
 			'insub_type': insub_type,
 			'insub_description': insub_description,
 			'cost': cost,

@@ -150,6 +150,8 @@ class Creature(db.Model):
 	hide = db.Column(db.Boolean)
 	approved = db.Column(db.Boolean)
 	show = db.Column(db.Boolean)
+	machine = db.Column(db.Boolean)
+	human = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -162,7 +164,9 @@ class Creature(db.Model):
 			'none': self.none,
 			'hide': self.hide,
 			'approved': self.approved,
-			'show': self.show
+			'show': self.show,
+			'machine': self.machine,
+			'human': self.human
 		}	
 
 class NarrowCreature(db.Model):

@@ -809,6 +809,24 @@ def db_integer(table, value):
 			return (value)
 		finally:
 			db.session.close()
+	elif value == 'machine':
+		try:	
+			query = db.session.query(table).filter_by(machine=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
+	elif value == 'human':
+		try:	
+			query = db.session.query(table).filter_by(human=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
 	elif value == '':
 		value = None
 		return (value)
@@ -1034,6 +1052,20 @@ def id_check(table, value_id, name, errors):
 		db.session.close()
 	elif value_id == 'percep':
 		query = db.session.query(table).filter_by(perception=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'machine':
+		query = db.session.query(table).filter_by(machine=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'human':
+		query = db.session.query(table).filter_by(human=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True

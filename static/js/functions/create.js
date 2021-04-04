@@ -24,6 +24,14 @@ function hide_opacity(div_input) {
 	setTimeout(function(){div.style.display = 'none';}, 300);
 }
 
+function reset_text(texts) {
+	let t;
+	for (t of texts) {
+		const text = document.getElementById(t);	
+		text.value = '';
+	}
+}
+
 
 function show_opacity_class(div_input) {
 	const divs = document.getElementsByClassName(div_input);

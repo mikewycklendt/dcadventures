@@ -215,6 +215,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	all_traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'advantage', 'name': 'Advantage'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
+	appear_form = [{'type': '', 'name': 'Form'}, {'type': 'single', 'name': 'Single'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'broad', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
+
 	aquatic = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'bpth', 'name': 'Both'}]
 
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
@@ -527,7 +529,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
-											knowledge=knowledge, mind=mind)
+											knowledge=knowledge, mind=mind, appear_form=appear_form)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1339,8 +1341,12 @@ def power_post_character():
 	points_trait_type = request.get_json()['points_trait_type']
 	points_trait = request.get_json()['points_trait']
 	points_descriptor = request.get_json()['points_descriptor']
+	appear_form = request.get_json()['appear_form']
 	appear_target = request.get_json()['appear_target']
 	appear_description = request.get_json()['appear_description']
+	appear_creature = request.get_json()['appear_creature']
+	appear_creature_narrow = request.get_json()['appear_creature_narrow']
+	appear_creature_other = request.get_json()['appear_creature_other']
 	insub_type = request.get_json()['insub_type']
 	insub_description = request.get_json()['insub_description']
 	cost = request.get_json()['cost']
@@ -1361,6 +1367,8 @@ def power_post_character():
 	points_descriptor = db_integer(PowerDes, points_descriptor)
 	weaken_descriptor = db_integer(PowerDes, weaken_descriptor)
 	limbs_condition =  db_integer(Condition, limbs_condition)
+	appear_creature = db_integer(Creature, appear_creature)
+	appear_creature_narrow = db_integer(NarrowCreature, appear_creature_narrow)
 
 	trait = integer(trait)
 	value = integer(value)
@@ -1373,27 +1381,13 @@ def power_post_character():
 	points_trait = integer(points_trait)
 	limbs_count = integer(limbs_count)
 
-	try:
-		body = {}
+
+	body = user_item(Creature, 'Creature', appear_creature, appear_creature_other, 'creature-sml', body, True, True)
+	appear_creature = body['output']
+
+	body = user_item(NarrowCreature, 'Narrow Creature', appear_creature_narrow, appear_creature_other, 'creature-narrow-sml', body, True, True, appear_creature, 'creature')
+	appear_creature_narrow = body['output']
 	
-		body['new'] = False
-		new_items = []
-
-		if limited_emotion == 'other':	
-			entry = Emotion(name=limited_emotion_other)
-			db.session.add(entry)
-			db.session.commit()
-			limited_emotion = entry.id
-			item = {}
-			body['new'] = True
-			item['id'] = entry.id
-			item['name'] = entry.name
-			item['class'] = True
-			item['field'] = 'emotion-sml'
-			body['new_items'] = new_items
-			new_items.append(item)
-			db.session.close()
-
 
 		entry = PowerChar(power_id = power_id,
 							extra_id = extra_id,
@@ -1437,8 +1431,11 @@ def power_post_character():
 							points_trait_type = points_trait_type,
 							points_trait = points_trait,
 							points_descriptor = points_descriptor,
+							appear_form = appear_form,
 							appear_target = appear_target,
 							appear_description = appear_description,
+							appear_creature = appear_creature,
+							appear_creature_narrow = appear_creature_narrow,
 							insub_type = insub_type,
 							insub_description = insub_description,
 							cost = cost,
