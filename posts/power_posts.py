@@ -114,6 +114,8 @@ def character_post(entry, body, cells):
 	ranks = entry.ranks
 	multiple = entry.multiple
 	points_type = entry.points_type
+	meta = entry.meta
+	metamorph = entry.metamorph
 
 	body = one_multiple(PowerChar, power_id, body)
 
@@ -156,7 +158,7 @@ def character_post(entry, body, cells):
 	carry_capacity = integer_convert(carry_capacity)
 	points_value = integer_convert(points_value)
 	limbs_count = integer_convert(limbs_count)
-
+	metamorph = integer_convert(metamorph)
 
 	
 	cells = cell('Extra', 15, [extra])
@@ -214,6 +216,11 @@ def character_post(entry, body, cells):
 	new_mod = mod_cell('Narrow Form', 15, [appear_creature_narrow], new_mod)
 	new_mod = mod_cell('Description:', 11, [appear_description], new_mod)
 	body = mod_add(appear, new_mod, body)
+
+	cells = check_cell('Metamorph', 12, meta, cells, True)
+	new_mod = mod_create('Metamorph', 12)
+	new_mod = mod_cell('Sets of Traits per Rank:', 20, [metamorph], new_mod)
+	body = mod_add(meta, new_mod, body)
 
 	cells = check_cell('Insubstantial', 14, insubstantial, cells, True)
 	new_mod = mod_create('Insubstantial', 16)

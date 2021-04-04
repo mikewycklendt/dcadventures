@@ -234,6 +234,8 @@ def character_post_errors(data):
 	cost = data['cost']
 	ranks = data['ranks']
 	multiple = data['multiple']
+	meta = data['meta']
+	metamorph = data['metamorph']
 
 	errors = id_check(PowerCost, cost)
 	errors = id_check(PowerRanks, ranks)
@@ -250,6 +252,7 @@ def character_post_errors(data):
 	errors = int_check(carry_capacity, 'Carry Capacity', errors)
 	errors = int_check(points_value, 'Points', errors)
 	errors = int_check(limbs_count, 'Limbs Count', errors)
+	errors = int_check(metamorph, 'Sets of Traits', errors)
 
 	errors = id_check(Condition, limbs_condition, 'Condition', errors)
 	errors = id_check(Creature, appear_creature, 'Broad Form', errors)
@@ -282,11 +285,11 @@ def character_post_errors(data):
 	errors = check_field(appear, 'Alters Appearance', 'Form', appear_form, errors)
 
 	errors = variable_fields('broad', 'Broad Form', appear_form, [appear_creature], errors)
-	errors = variable_fields('broad', appear_form, 'Broad Form', appear_creature, errors)
+	errors = variable_field('broad', appear_form, 'Broad Form', appear_creature, errors)
 
 	errors = variable_fields('narrow', 'Narrow Form', appear_form, [appear_creature, appear_creature_narrow], errors)
-	errors = variable_fields('narrow', appear_form, 'Broad Form', appear_creature, errors)
-	errors = variable_fields('narrow', appear_form, 'Narrow Form', appear_creature_narrow, errors)
+	errors = variable_field('narrow', appear_form, 'Broad Form', appear_creature, errors)
+	errors = variable_field('narrow', appear_form, 'Narrow Form', appear_creature_narrow, errors)
 
 	errors = check_fields(insubstantial, 'Insubstantial', [insub_type, insub_description], errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)
@@ -313,6 +316,8 @@ def character_post_errors(data):
 	errors = variable_fields('descriptor', 'Broad Descriptor', weaken_type, [weaken_descriptor], errors)
 	errors = variable_field('descriptor', weaken_type, 'Descriptor', weaken_descriptor, errors)
 
+	errors = check_fields(meta, 'Metamorph', [metamorph], errors)
+	errors = check_field(meta, 'Metamorph', 'Sets of Traits', metamorph, errors)
 
 	errors = db_insert('Emotion', Emotion, limited_emotion, limited_emotion_other, errors)
 

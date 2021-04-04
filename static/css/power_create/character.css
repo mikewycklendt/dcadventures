@@ -69,7 +69,7 @@ trait amount
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 24% 20% 20% 17% 19%;
+	grid-template-columns: auto auto auto auto auto;
 	grid-auto-rows: auto;
 }
 
@@ -92,6 +92,17 @@ trait amount
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 12% 30% 58%;
+	grid-auto-rows: auto;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#char-meta {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 12% 20% 10%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;

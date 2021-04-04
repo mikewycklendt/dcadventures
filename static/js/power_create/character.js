@@ -163,6 +163,14 @@ function char_size() {
 	}
 }
 
+function char_meta() {
+	const check = 'char_meta';
+	const div = 'char-meta';
+	const entry = 'char-entry';
+
+	check_drop(check, div, entry);
+}
+
 function char_weaken() {
 	const check = 'char_weaken';
 	const div = 'char-weaken';
@@ -308,7 +316,9 @@ function char_submit() {
 	const cost = select("char_cost");
 	const ranks = select("char_ranks");
 	const multiple = select("char_multiple");
-	const points_type = select("char_points_type")
+	const points_type = select("char_points_type");
+	const meta = check("char_meta");
+	const metamorph = select("char_metamorph");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -374,7 +384,9 @@ function char_submit() {
 			'columns': columns,
 			'created': created,
 			'font': font,
-			'multiple': multiple
+			'multiple': multiple,
+			'meta': meta,
+			'metamorph': metamorph
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

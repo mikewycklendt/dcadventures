@@ -1400,6 +1400,8 @@ class PowerChar(db.Model):
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	multiple = db.Column(db.String())
+	meta = db.Column(db.Boolean)
+	metamorph = db.Column(db.Integer)
 
 
 	def format(self):
@@ -1456,7 +1458,9 @@ class PowerChar(db.Model):
 			'insub_description': self.insub_description,
 			'cost': self.cost,
 			'ranks': self.ranks,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'meta': self.meta,
+			'metamorph': self.metamorph
 		}
 
 class PowerCondition(db.Model):

@@ -126,6 +126,31 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="char_meta" class="medium-checkbox med-checkbox" onclick="char_meta()"> Metamorph
+			</div>
+		</div>
+
+	</div>
+
+	<div id="char-meta">
+		<div>
+			Metamorph:
+		</div>
+
+		<div style="font-size: 75%;">
+			Sets of Traits Per Rank:
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_metamorph" name="char_metamorph">
+				<option value="">Sets</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="char-weaken">

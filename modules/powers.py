@@ -1355,6 +1355,8 @@ def power_post_character():
 	created = request.get_json()['created']
 	font = request.get_json()['font']
 	multiple = request.get_json()['multiple']
+	meta = request.get_json()['meta']
+	metamorph = request.get_json()['metamorph']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -1380,6 +1382,7 @@ def power_post_character():
 	points_value = integer(points_value)
 	points_trait = integer(points_trait)
 	limbs_count = integer(limbs_count)
+	metamorph = integer(metamorph)
 
 
 	body = user_item(Creature, 'Creature', appear_creature, appear_creature_other, 'creature-sml', body, True, True)
@@ -1441,7 +1444,9 @@ def power_post_character():
 							insub_description = insub_description,
 							cost = cost,
 							ranks = ranks,
-							multiple = multiple)
+							multiple = multiple,
+							meta = meta,
+							metamorph = metamorph)
 
 		db.session.add(entry)
 		db.session.commit()
