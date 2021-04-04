@@ -1388,6 +1388,7 @@ def power_post_character():
 	body = user_item(NarrowCreature, 'Narrow Creature', appear_creature_narrow, appear_creature_other, 'creature-narrow-sml', body, True, True, appear_creature, 'creature')
 	appear_creature_narrow = body['output']
 	
+	try:
 
 		entry = PowerChar(power_id = power_id,
 							extra_id = extra_id,
