@@ -104,7 +104,7 @@ function char_points_trait_type() {
 	const select = 'char_points_trait_type'
 	const fill = 'char_points_trait'
 	
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function char_points_trait() {
@@ -125,7 +125,7 @@ function char_reduced_trait_type() {
 	const select = 'char_reduced_trait_type';
 	const fill = 'char_reduced_trait';
 
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function char_reduced_trait() {
@@ -139,7 +139,7 @@ function char_trait_type() {
 	const select = 'char_trait_type';
 	const fill = 'char_trait';
 
-	id_select(select, fill, trait_select);
+	id_select(select, fill, trait_select, variable_sub);
 }
 
 function char_trait() {
