@@ -1754,6 +1754,7 @@ def power_check_post(entry, body, cells):
 	consequence_target = entry.consequence_target
 	defenseless = entry.defenseless
 	touch = entry.touch
+	target_type = entry.target_type
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -1803,7 +1804,7 @@ def power_check_post(entry, body, cells):
 	condition_target = selects(condition_target, targets)
 	conditions_target = selects(conditions_target, targets)
 
-	check_trigger_select = [{'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict Action'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}]
+	check_trigger_select = [{'type': 'change', 'name': 'Condition Change Trigger'}, {'type': 'condition', 'name': 'Condition Trigger'}, {'type': 'conflict', 'name': 'Conflict Action Trigger'}, {'type': 'sense', 'name': 'Sense Trigger'}, {'type': 'variable', 'name': 'Variable Check Trigger'}, {'type': 'opposed', 'name': 'Opponent Check Trigger'}, {'type': 'consequence', 'name': 'Consequence Trigger'}, {'type': 'target', 'name': 'Target Type Trigger'}]
 	trigger_title  =  selects(trigger, check_trigger_select)
 
 	cells = cell('Keyword', 14, [keyword])
@@ -1822,7 +1823,8 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
 	vcells = vcell('sense', w, [sense, mental], vcells)
-	vcells - vcell('consequence', 30, [consequence, 'on', consequence_target], vcells)
+	vcells = vcell('consequence', 30, [consequence, 'on', consequence_target], vcells)
+	vcells = vcell('target', 20, [target_type], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
 
 	attack = add_plus(attack)

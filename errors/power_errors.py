@@ -1472,6 +1472,7 @@ def power_check_post_errors(data):
 	attack_range = data['attack_range']
 	consequence = data['consequence']
 	consequence_target = data['consequence_target']
+	target_type = data['target_type']
 
 
 
@@ -1524,6 +1525,8 @@ def power_check_post_errors(data):
 	errors = variable_fields('sense', 'Trigger', trigger, [sense], errors)
 	errors = variable_field('sense', trigger, 'Sense', sense, errors)
 	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
+	errors = variable_fields('target', 'Trigger', trigger, [target_type], errors)
+	errors = variable_field('target', trigger, 'Target Type', target_type, errors)
 	errors = select_of('opposed', 'is triggered bt an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
 	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, varible_type], ['Variable Check'], errors)

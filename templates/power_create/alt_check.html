@@ -164,6 +164,20 @@
 		</div>
 	</div>
 
+	<div id="check-target">
+		<div>
+			Target Type:
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_target_type" name="check_target_type">
+				{% for t in check_target %}
+					<option value="{{t.type}}">{{t.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+	</div>
+
 	<div id="check-consequence">
 		<div>
 			Consequence:
