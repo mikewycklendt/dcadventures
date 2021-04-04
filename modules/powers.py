@@ -156,7 +156,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	material = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
 
-	material_type = db.Column(Material).filter(Material.hide == None).order_by(Material.name).all
+	material_type = db.Column(Material).filter(Material.hide == None).order_by(Material.name).all()
 
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
