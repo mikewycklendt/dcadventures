@@ -319,7 +319,7 @@
 
 #move-objects {
 	display: grid;
-	grid-template-columns: 10% auto auto auto auto auto;
+	grid-template-columns: 10% auto 15% 18% auto auto;
 	grid-auto-rows: auto;
 	gap: .2vw;
 	width: 97%;
