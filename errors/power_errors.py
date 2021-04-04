@@ -2303,6 +2303,7 @@ def power_move_post_errors(data):
 	objects_direction = data['objects_direction']
 	objects_damage = data['object_damage']
 	object_damage = data['object_damage']
+	objects_strength = data['objects_strength']
 	permeate_type = data['permeate_type']
 	permeate_speed = data['permeate_speed']
 	permeate_cover = data['permeate_cover']
@@ -2349,6 +2350,7 @@ def power_move_post_errors(data):
 	errors = int_check(distance_unit_value1, 'Distance Furst Value', errors)
 	errors = int_check(distance_unit_value2, 'Distance Second Value', errors)
 	errors = int_check(speed_rank_mod, 'Speed Rank Modifier', errors)
+	errors = int_check(objects_strength, 'Strength Rank', errors)
 
 	errors = int_check(dimension_mass_rank, 'Mass Rank', errors)
 	errors = int_check(special_time_carry, 'Carry Mass', errors)
@@ -2454,9 +2456,11 @@ def power_move_post_errors(data):
 	errors = check_fields(condition_check, 'Movement Condition', [condition], errors)
 	errors = check_field(condition_check, 'Movement Condition', 'Condition', condition, errors)
 
-	errors = check_fields(objects, 'Move Objects', [objects_check, objects_direction], errors)
+	errors = check_fields(objects, 'Move Objects', [objects_check, objects_direction, objects_strength], errors)
 	errors = check_field(objects, 'Move Objects', 'Move Objects Check', objects_check, errors)
 	errors = check_field(objects, 'Move Objects', 'Move Objects Direction', objects_direction, errors)
+	errors = check_field(objects, 'Move Objects', 'Strength Rank', objects_strength, errors)
+	
 	errors = check_fields(objects_damage, 'Move Objects Damage', [object_damage], errors)
 	errors = check_field(objects_damage, 'Move Objects Damage', 'Damage', object_damage, errors)
 

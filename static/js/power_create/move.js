@@ -416,6 +416,7 @@ function move_submit() {
 	const condition = select("move_condition");
 	const objects_check = select("move_objects_check");
 	const objects_direction = select("move_objects_direction");
+	const objects_strength = select("move_objects_strength");
 	const objects_damage = check("move_objects_damage");
 	const object_damage = select("move_object_damage");
 	const permeate_type = select("move_permeate_type");
@@ -530,6 +531,7 @@ function move_submit() {
 			'objects_direction': objects_direction,
 			'objects_damage': objects_damage,
 			'object_damage': object_damage,
+			'objects_strength': objects_strength,
 			'permeate_type': permeate_type,
 			'permeate_speed': permeate_speed,
 			'permeate_cover': permeate_cover,

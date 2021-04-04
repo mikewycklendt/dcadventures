@@ -777,7 +777,7 @@
 		</div>
 
 		<div>
-			<select class="check-sml" id="move_objects_check" name="move_objects_check">
+			<select class="check-title-sml" id="move_objects_check" name="move_objects_check">
 				<option value="">Check to Move</option>
 				<option value="">Use Variable Check form to put options Here</option>
 				{% for p in power_check %}
@@ -790,6 +790,17 @@
 			<select class="select-sml" id="move_objects_direction" name="move_objects_direction">
 				{% for m in move_objects %}
 					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="move_objects_strength" name="move_objects_strength">
+				<option value="">Strength Rank</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
 		</div>

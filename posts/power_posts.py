@@ -2634,6 +2634,7 @@ def power_move_post(entry, body, cells):
 	objects_direction = entry.objects_direction
 	objects_damage = entry.object_damage
 	object_damage = entry.object_damage
+	objects_strength = entry.objects_strength
 	permeate_type = entry.permeate_type
 	permeate_speed = entry.permeate_speed
 	permeate_cover = entry.permeate_cover
@@ -2700,6 +2701,7 @@ def power_move_post(entry, body, cells):
 	distance_unit_value1 = integer_convert(distance_unit_value1)
 	distance_unit_value2 = integer_convert(distance_unit_value2)
 	speed_rank_mod = integer_convert(speed_rank_mod)
+	objects_strength = integer_convert(objects_strength)
 
 	dimension_mass_rank = integer_convert(dimension_mass_rank)
 	special_time_carry = integer_convert(special_time_carry)
@@ -2829,6 +2831,7 @@ def power_move_post(entry, body, cells):
 	cells = check_cell('Objects', 9, objects, cells, True)
 	new_mod = mod_create('Move Objects', 15)
 	new_mod = mod_cell('Check', 7, [objects_check], new_mod)
+	new_mod = mod_cell('Strength Rank', 15, [objects_strength], new_mod)
 	new_mod = mod_cell('Direction', 10, [objects_direction], new_mod)
 	new_mod = mod_cell('Damage', 8, [object_damage], new_mod)
 	body = mod_add(objects, new_mod, body)

@@ -4409,6 +4409,7 @@ def power_post_move():
 	objects_check = request.get_json()['objects_check']
 	objects_direction = request.get_json()['objects_direction']
 	objects_damage = request.get_json()['object_damage']
+	objects_strength = request.get_json()['objects_strength']
 	object_damage = request.get_json()['object_damage']
 	permeate_type = request.get_json()['permeate_type']
 	permeate_speed = request.get_json()['permeate_speed']
@@ -4458,7 +4459,7 @@ def power_post_move():
 	flight_resist_check = db_integer(PowerCheck, flight_resist_check)
 	ground_time = db_integer(PowerTime, ground_time)
 	ground_range = db_integer(PowerRangedType, ground_range)
-	objects_check = db_integer(PowerCheck, objects_check)
+	objects_check = db_integer(PowerCheckType, objects_check)
 	object_damage = db_integer(PowerDamage, object_damage)
 	conceal_opposed = db_integer(PowerOpposed, conceal_opposed)
 	cost = db_integer(PowerCost, cost)
@@ -4482,6 +4483,7 @@ def power_post_move():
 	permeate_speed = integer(permeate_speed)
 	extended_actions = integer(extended_actions)
 	mass_value = integer(mass_value)
+	objects_strength = integer(objects_strength)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -4604,6 +4606,7 @@ def power_post_move():
 						objects_direction = objects_direction,
 						objects_damage = objects_damage,
 						object_damage = object_damage,
+						objects_strength = objects_strength,
 						permeate_type = permeate_type,
 						permeate_speed = permeate_speed,
 						permeate_cover = permeate_cover,

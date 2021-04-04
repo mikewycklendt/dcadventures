@@ -1016,6 +1016,7 @@ class PowerMove(db.Model):
 	objects_direction = db.Column(db.String())
 	objects_damage = db.Column(db.Boolean)
 	object_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
+	objects_strength = db.Column(db.Integer)
 	permeate_type = db.Column(db.String())
 	permeate_speed = db.Column(db.Integer)
 	permeate_cover = db.Column(db.Boolean)
@@ -1117,6 +1118,7 @@ class PowerMove(db.Model):
 			'objects_direction': self.objects_direction,
 			'objects_damage': self.object_damage,
 			'object_damage': self.object_damage,
+			'objects_strength': self.objects_strength,
 			'permeate_type': self.permeate_type,
 			'permeate_speed': self.permeate_speed,
 			'permeate_cover': self.permeate_cover,
