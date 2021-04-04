@@ -236,7 +236,10 @@ function char_appear_form() {
 					{'val': 'narrow', 'text':  'Other Narrow Creature:'}];
 	const div = 'char-appear-creature-other-title';
 	const text = ['char_appear_des'];
+	const other = [{'val': 'other', 'div': 'char-appear-creature-other'}];
+	const entry = 'char-entry';
 
+	select_maxheight_entry(select, other, entry);
 	div_text(select, div, titles);
 	reset_all(fields);
 	reset_text(text);
