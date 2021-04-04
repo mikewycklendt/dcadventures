@@ -458,12 +458,24 @@ class Material(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	toughness = db.Column(db.Integer)
-
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
+	
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
-			'toughness': self.toughness
+			'toughness': self.toughness,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide
 		}
 
 class Complex(db.Model):

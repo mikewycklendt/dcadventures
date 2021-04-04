@@ -101,26 +101,46 @@ def shutdown_session(exception=None):
 @app.route('/table/db')
 def table_db_columns_create():
 
-	
-	name = 'Machine'
+	tablename =  'Material'
 
-	entry = Creature(machine=True, name=name)
+	name = 'All Materials'
+
+	entry = Material(all=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 	
-	name = 'Humsnoid'
+	name = 'Current ' + tablename
 
-	entry = Creature(human=True, name=name )
+	entry = Material(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
+
+	entry = Material(any=True, name=name, hide=True )
 	db.session.add(entry)
 	db.session.commit()
 
-	results = db.session.query(Creature).filter_by(show=None).all()
+	name = 'Variable ' + tablename
+
+	entry = Material(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
+
+	entry = Material(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+
+	results = db.session.query(Material).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (name + ' db added')
+	return (tablename + ' db added')
 
 
 

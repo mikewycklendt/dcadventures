@@ -156,6 +156,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	material = db.session.query(MediumSubType).filter(MediumSubType.medium_type == 1, MediumSubType.show == True).order_by(MediumSubType.name)
 
+	material_type = db.Column(Material).filter(Material.hide == None).order_by(Material.name).all
+
 	measure_rank = db.session.query(Rank).filter_by(rank_type='measure')
 
 	medium = db.session.query(Medium).filter(Medium.show == True).order_by(Medium.name).all()
@@ -327,7 +329,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'half', 'name': 'To Half Effect'}]
+	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'half', 'name': 'To Half Effect'}, {'type': 'material', 'name': 'To Material'}]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -345,7 +347,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
-	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
+	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'x', 'name': 'Variable'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 
 	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'check', 'name': 'Check'}]
 
@@ -531,7 +533,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											maneuvers=maneuvers, extra_type=extra_type, subtle_type=subtle_type, comprehend=comprehend, strength_based=strength_based, grab_type=grab_type, circ_apply=circ_apply, 
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
-											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target)
+											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2363,6 +2365,7 @@ def power_post_mod():
 	limited_env = request.get_json()['limited_env']
 	limited_emotion_other = request.get_json()['limited_emotion_other']
 	limited_emotion = request.get_json()['limited_emotion']
+	limited_material = request.get_json()['limited_material']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
@@ -2419,6 +2422,7 @@ def power_post_mod():
 	limited_range = db_integer(Range, limited_range)
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
+	limited_material = db_integer(Material, limited_material)
 
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
@@ -2530,6 +2534,7 @@ def power_post_mod():
 							limited_env = limited_env,
 							limited_emotion_other = limited_emotion_other,
 							limited_emotion = limited_emotion,
+							limited_material = limited_material,
 							side_effect_type = side_effect_type,
 							side_level = side_level,
 							side_other = side_other,

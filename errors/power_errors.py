@@ -825,6 +825,7 @@ def mod_post_errors(data):
 	limited_env = data['limited_env']
 	limited_emotion = data['limited_emotion']
 	limited_emotion_other = data['limited_emotion_other']
+	limited_material = data['limited_material']
 	side_effect_type = data['side_effect_type']
 	side_level = data['side_level']
 	side_other = data['side_other']
@@ -886,6 +887,7 @@ def mod_post_errors(data):
 	errors = id_check(NarrowCreature, limited_creature_narrow, 'Narrow Creature', errors)
 	errors = id_check(Environment, limited_env, 'Environment', errors)
 	errors = id_check(Emotion, limited_emotion, 'Emotion', errors)
+	errors = id_check(Material, limited_material, 'Material', errors)
 
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
@@ -953,6 +955,9 @@ def mod_post_errors(data):
 
 	errors = variable_fields('ground', 'Limited by Ground Type', limited_type, [limited_ground], errors)
 	errors = variable_field('ground', limited_type, 'Ground Type', limited_ground, errors)
+
+	errors = variable_fields('ground', 'Limited by Material Type', limited_type, [limited_material], errors)
+	errors = variable_field('ground', limited_type, 'Material Type', limited_material, errors)
 
 	errors = variable_fields('creature', 'Limited to Creature', limited_type, [limited_creature], errors)
 	errors = variable_field('creature', limited_type, 'Creature Type', limited_creature, errors)

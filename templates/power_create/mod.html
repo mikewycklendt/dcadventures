@@ -534,6 +534,18 @@
 				</div>
 			</div>
 			
+			<div id="mod-limited-material">
+				<div>
+					<select class="select-sml" id="mod_limited_material" name="mod_limited_material" >
+						<option value="">Material</option>
+						<option value="x">Variable</option>
+						{% for m in material_type %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			
 			<div id="mod-limited-creature">
 				<div>
 					<select class="select-sml creature-sml" id="mod_limited_creature" name="mod_limited_creature" onchange="mod_limited_creature()">

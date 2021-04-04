@@ -1922,7 +1922,8 @@ class PowerMod(db.Model):
 	limited_env_other = db.Column(db.String())
 	limited_env =  db.Column(db.Integer, db.ForeignKey('environments.id'))
 	limited_emotion_other = db.Column(db.String())
-	limited_emotion =  db.Column(db.Integer, db.ForeignKey('emotions.id'))
+	limited_emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
+	limited_material = db.Column(db.Integer, db.ForeignKey('materials.id'))
 	side_effect_type = db.Column(db.String())
 	side_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	side_other = db.Column(db.String())
@@ -2026,6 +2027,7 @@ class PowerMod(db.Model):
 			'limited_env': self.limited_env,
 			'limited_emotion_other': self.limited_emotion_other,
 			'limited_emotion': self.limited_emotion,
+			'limited_material': self.limited_material,
 			'side_effect_type': self.side_effect_type,
 			'side_level': self.side_level,
 			'side_other': self.side_other,

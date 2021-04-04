@@ -907,6 +907,7 @@ def mod_post(entry, body, cells):
 	limited_creature_narrow = entry.limited_creature_narrow
 	limited_env = entry.limited_env
 	limited_emotion = entry.limited_emotion
+	limited_material = entry.limited_material
 	side_effect_type = entry.side_effect_type
 	side_level = entry.side_level
 	side_other = entry.side_other
@@ -969,6 +970,7 @@ def mod_post(entry, body, cells):
 	limited_creature_narrow = get_name(NarrowCreature, limited_creature_narrow)
 	limited_env = get_name(Environment, limited_env)
 	limited_emotion = get_name(Emotion, limited_emotion)
+	limited_material = get_name(Material, limited_material)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1028,7 +1030,7 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Selective', 9, selective, cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
-	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}, {'type': 'self', 'name': 'Limited To Self', 'w': 20}, {'type': 'half', 'name': 'Limited To Half Effect', 'w': 30}]
+	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}, {'type': 'self', 'name': 'Limited To Self', 'w': 20}, {'type': 'half', 'name': 'Limited To Half Effect', 'w': 30}, {'type': 'material', 'name': 'Limited To Material', 'w': 20}]
 	new_mod = mod_create('Limited', 9, limited_type, limited_type_select)
 	value = 'task_type'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
@@ -1096,6 +1098,9 @@ def mod_post(entry, body, cells):
 	value = 'emotion'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Emotion', 14, [limited_emotion], new_mod, value)
+	value = 'material'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Material', 14, [limited_material], new_mod, value)
 	body = mod_add(limited, new_mod, body)
 
 	cells = check_cell('Innate', 8, innate, cells)
@@ -2760,7 +2765,7 @@ def power_move_post(entry, body, cells):
 	permanence_select = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
 	ground_permanence = selects(ground_permanence, permanence_select)
 
-	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
+	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'x', 'name': 'Variable'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 	objects_direction = selects(objects_direction, move_objects_select)
 
 
