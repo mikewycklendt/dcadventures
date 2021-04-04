@@ -1012,6 +1012,7 @@ class PowerMove(db.Model):
 	special_time = db.Column(db.String())
 	special_time_carry = db.Column(db.Integer)
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	objects_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	objects_direction = db.Column(db.String())
 	objects_damage = db.Column(db.Boolean)
 	object_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
