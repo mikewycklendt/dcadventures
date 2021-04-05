@@ -2729,12 +2729,13 @@ def power_move_post(entry, body, cells):
 	flight_equipment = get_name(Equipment, flight_equipment)
 	ground_type = get_name(Ground, ground_type)
 	dimension_descriptor = get_name(PowerDes, dimension_descriptor)
-	condition = get_name(Condition, condition)
 	equip_type = get_name(EquipType, equip_type)
 	equipment = get_name(Equipment, equipment)
 	concealment_sense = get_name(Sense, concealment_sense)
+	condition_circ_check = get_name(Check, condition_circ_check)
 
 	flight_conditions = get_multiple(Condition, flight_conditions)
+	condition = get_multiple(Condition, condition)
 
 	direction_select = [{'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'} ]
 	direction = selects(direction, direction_select)
@@ -2829,6 +2830,8 @@ def power_move_post(entry, body, cells):
 	cells = check_cell('Condition', 10, condition_check, cells, True)
 	new_mod = mod_create('Movement Condition', 20)
 	new_mod = mod_cell('Condition', 12, [condition], new_mod)
+	new_mod = mod_cell('No Circumstance', 16, [condition_circ], new_mod)
+	new_mod = mod_cell('On Checks', 10, [condition_circ_check], new_mod)
 	body = mod_add(condition_check, new_mod, body)
 
 	cells = check_cell('Prone', 7, prone, cells)

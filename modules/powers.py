@@ -4411,6 +4411,8 @@ def power_post_move():
 	special_time = request.get_json()['special_time']
 	special_time_carry = request.get_json()['special_time_carry']
 	condition = request.get_json()['condition']
+	condition_circ = request.get_json()['condition_circ']
+	condition_circ_check = request.get_json()['condition_circ_check']
 	objects_check = request.get_json()['objects_check']
 	objects_direction = request.get_json()['objects_direction']
 	objects_damage = request.get_json()['object_damage']
@@ -4501,15 +4503,16 @@ def power_post_move():
 	speed_math = db_integer(Math, speed_math)
 
 	flight_conditions = db_multiple(Condition, flight_conditions)
+	condition = db_multiple(Condition, condition)
 
 	flight_equip_type = db_integer(EquipType, flight_equip_type)
 	flight_equipment = db_integer(Equipment, flight_equipment)
 	ground_type = db_integer(Ground, ground_type)
 	dimension_descriptor = db_integer(PowerDes, dimension_descriptor)
-	condition = db_integer(Condition, condition)
 	equip_type = db_integer(EquipType, equip_type)
 	equipment = db_integer(Equipment, equipment)
 	concealment_sense = db_integer(Sense, concealment_sense)
+	condition_circ_check = db_integer(Check, condition_circ_check)
 
 	body = {}
 	body['success'] = True
@@ -4607,6 +4610,8 @@ def power_post_move():
 						special_time = special_time,
 						special_time_carry = special_time_carry,
 						condition = condition,
+						condition_circ = condition_circ,
+						condition_circ_check = condition_circ_check,
 						objects_check = objects_check,
 						objects_direction = objects_direction,
 						objects_damage = objects_damage,

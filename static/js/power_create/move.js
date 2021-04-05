@@ -317,6 +317,13 @@ function move_equip_type() {
 	id_select(select, fill, equipment_select, sub);
 }
 
+function move_condition_circ() {
+	const check = 'move_condition_circ';
+	const div = 'move-condition-check';
+
+	check_display(check, div);
+}
+
 let move_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -413,7 +420,9 @@ function move_submit() {
 	const special_space = select("move_special_space");
 	const special_time = select("move_special_time");
 	const special_time_carry = select("move_special_time_carry");
-	const condition = select("move_condition");
+	const condition = multiple("move_condition");
+	const condition_circ = check("move_condition_circ");
+	const condition_circ_check = select("move_condition_circ_check");
 	const objects_check = select("move_objects_check");
 	const objects_direction = select("move_objects_direction");
 	const objects_strength = select("move_objects_strength");
@@ -527,6 +536,8 @@ function move_submit() {
 			'special_time': special_time,
 			'special_time_carry': special_time_carry,
 			'condition': condition,
+			'condition_circ': condition_circ,
+			'condition_circ_check': condition_circ_check,
 			'objects_check': objects_check,
 			'objects_direction': objects_direction,
 			'objects_damage': objects_damage,

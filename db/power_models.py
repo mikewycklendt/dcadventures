@@ -1012,6 +1012,8 @@ class PowerMove(db.Model):
 	special_time = db.Column(db.String())
 	special_time_carry = db.Column(db.Integer)
 	condition = db.Column(db.ARRAY(db.Integer))
+	condition_circ = db.Column(db.Boolean)
+	condition_circ_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	objects_check = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	objects_direction = db.Column(db.String())
 	objects_damage = db.Column(db.Boolean)
@@ -1114,6 +1116,8 @@ class PowerMove(db.Model):
 			'special_time': self.special_time,
 			'special_time_carry': self.special_time_carry,
 			'condition': self.condition,
+			'condition_circ': self.condition_circ,
+			'condition_circ_check': self.condition_circ_check,
 			'objects_check': self.objects_check,
 			'objects_direction': self.objects_direction,
 			'objects_damage': self.object_damage,

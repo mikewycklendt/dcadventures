@@ -311,9 +311,15 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 12% 25% 63%;
+	grid-template-columns: 12% 25% 23% 50%;
 	max-height: 0;
 	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#move-condition-check {
+	display: none;
+	opacity: 0%;
 	transition: all .4s ease-out;
 }
 

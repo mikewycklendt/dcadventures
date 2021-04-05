@@ -2304,6 +2304,8 @@ def power_move_post_errors(data):
 	special_time = data['special_time']
 	special_time_carry = data['special_time_carry']
 	condition = data['condition']
+	condition_circ = data['condition_circ']
+	condition_circ_check = data['condition_circ_check']
 	objects_check = data['objects_check']
 	objects_direction = data['objects_direction']
 	objects_damage = data['object_damage']
@@ -2373,17 +2375,17 @@ def power_move_post_errors(data):
 	errors = id_check(Math, distance_unit_math2, 'Distance Msth 2', errors)
 	errors = id_check(Unit, distance_math_units, 'Distance Units', errors)
 
-	errors = id_multiple(Condition, flight_conditions, 'Condition', errors)
+	errors = id_multiple(Condition, condition, 'Conditions', errors)
+	errors = id_multiple(Condition, flight_conditions, 'Flight Conditions', errors)
 	
 	errors = id_check(EquipType, flight_equip_type, 'Equipment Type', errors)
 	errors = id_check(Equipment, flight_equipment, 'Equipment', errors)
 	errors = id_check(Ground, ground_type, 'Ground Type', errors)
 	errors = id_check(PowerDes, dimension_descriptor, 'Dimension Descriptor', errors)
-	errors = id_check(Condition, condition, 'Condition', errors)
 	errors = id_check(EquipType, equip_type, 'Equipment Type', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
 	errors = id_check(Sense, concealment_sense, 'Sense', errors)
-	errors = id_check(Condition, permeate_condition, 'Permeate Condition', errors)
+	errors = id_check(Check, condition_circ_check, 'No Circumstance Check', errors)
 
 	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(keyword, 'Keyword', errors)
@@ -2462,6 +2464,8 @@ def power_move_post_errors(data):
 
 	errors = check_fields(condition_check, 'Movement Condition', [condition], errors)
 	errors = check_field(condition_check, 'Movement Condition', 'Condition', condition, errors)
+	errors = check_fields(condition_circ, 'No Movement Condition Circumstance', [condition_circ_check], errors)
+	errors = check_field(condition_circ, 'No Movement Condition Circumstance', 'Check Type', condition_circ_check, errors)
 
 	errors = check_fields(objects, 'Move Objects', [objects_check, objects_direction, objects_strength], errors)
 	errors = check_field(objects, 'Move Objects', 'Move Objects Check', objects_check, errors)

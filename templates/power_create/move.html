@@ -364,7 +364,7 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_condition_check" class="medium-checkbox med-checkbox" onclick="move_condition_check()"> Condition
+				<input type="checkbox" id="move_condition_check" class="medium-checkbox med-checkbox" onclick="move_condition_check()"> Conditions
 			</div>
 		</div>	
 	</div>
@@ -840,7 +840,7 @@
 
 	<div id="move-condition">
 		<div>
-			Condition:
+			Conditions:
 		</div>
 
 		<div>
@@ -852,7 +852,21 @@
 			</select>
 		</div>
 
-		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="move_condition_circ" class="medium-checkbox med-checkbox" onclick="move_condition_circ()"> No Circumstance
+			</div>
+
+			<div id="move-condition-check">
+				<select class="select-sml" id="move_condition_circ_check" name="move_condition_circ_check">
+					<option value="">Check Type</option>
+					<option value="all">All Checks</option>
+					{% for c in checks %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
 	</div>
 
 	<div id="move-permeate">
