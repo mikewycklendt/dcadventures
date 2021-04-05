@@ -844,14 +844,15 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_condition" name="move_condition">
-				<option value="">Condition</option>
-				<option value="x">Variable</option>
+			<select class="select-sml" id="move_condition" name="move_condition" multiple style="height: 6vw; font-size: 90%;">
+				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for c in conditions %}
-					<option value={{c.id}}>{{c.name}}</option>
+					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+
+		
 	</div>
 
 	<div id="move-permeate">
@@ -867,7 +868,7 @@
 			</select>
 		</div>
 
-		<div class="vcenter" style="font-size: 80%;">
+		<div class="vcenter" style="font-size: 75%;">
 			Speed Rank Modifier:
 		</div>
 
@@ -888,6 +889,7 @@
 				<input type="checkbox" id="move_permeate_cover" class="medium-checkbox med-checkbox" > Provides Cover
 			</div>
 		</div>	
+
 
 	</div>
 

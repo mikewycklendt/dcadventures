@@ -2312,6 +2312,7 @@ def power_move_post_errors(data):
 	permeate_type = data['permeate_type']
 	permeate_speed = data['permeate_speed']
 	permeate_cover = data['permeate_cover']
+	permeate_condition = data['permeate_condition']
 	equip_type = data['equip_type']
 	equipment = data['equipment']
 	concealment_sense = data['concealment_sense']
@@ -2382,6 +2383,7 @@ def power_move_post_errors(data):
 	errors = id_check(EquipType, equip_type, 'Equipment Type', errors)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
 	errors = id_check(Sense, concealment_sense, 'Sense', errors)
+	errors = id_check(Condition, permeate_condition, 'Permeate Condition', errors)
 
 	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(keyword, 'Keyword', errors)
