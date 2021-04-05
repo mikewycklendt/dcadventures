@@ -411,7 +411,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 
-	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}]
+	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}, {'type': 'penalty', 'name': 'Speed Penalty Modifier'}]
 
 	speed_mod = [{'type': '',  'name': 'Modified Rank'}, {'type': 'rank',  'name': 'Speed Rank'}, {'type': 'power',  'name': 'Power Rank'}, {'type': 'extra',  'name': 'Extra Rank'}]
 	
@@ -4333,6 +4333,7 @@ def power_post_move():
 	speed_rank = request.get_json()['speed_rank']
 	speed_math = request.get_json()['speed_math']
 	speed_mod = request.get_json()['speed_mod']
+	speed_penalty = request.get_json()['speed_penalty']
 	speed_rank_mod = request.get_json()['speed_rank_mod']
 	speed_trait_type = request.get_json()['speed_trait_type']
 	speed_trait = request.get_json()['speed_trait']
@@ -4491,6 +4492,7 @@ def power_post_move():
 	extended_actions = integer(extended_actions)
 	mass_value = integer(mass_value)
 	objects_strength = integer(objects_strength)
+	speed_penalty = integer(speed_penalty)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -4534,6 +4536,7 @@ def power_post_move():
 						speed_mod = speed_mod,
 						speed_math = speed_math,
 						speed_rank_mod = speed_rank_mod,
+						speed_penalty = speed_penalty,
 						speed_trait_type = speed_trait_type,
 						speed_trait = speed_trait,
 						speed_math1 = speed_math1,

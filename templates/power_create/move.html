@@ -46,6 +46,7 @@
 					<select class="select-sml" id="move_speed_rank" name="move_speed_rank">
 						<option value="">Speed Rank</option>
 						<option value="rank">Power Rank</option>
+						<option value="extta">Extra Rank</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}
@@ -54,6 +55,25 @@
 
 				<div>
 					= Speed Rank
+				</div>
+			</div>	
+			<div id="move-speed-penalty">
+				<div>
+					<select class="select-sml" id="move_speed_penalty" name="move_speed_penalty">
+						<option value="">Modifier</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}	
+						{% for i in positives %}
+							<option value={{i}}>+{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					On Speed Penalties
 				</div>
 			</div>	
 			

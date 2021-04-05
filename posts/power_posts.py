@@ -2558,6 +2558,7 @@ def power_move_post(entry, body, cells):
 	speed_mod = entry.speed_mod
 	speed_math = entry.speed_math
 	speed_rank_mod = entry.speed_rank_mod
+	speed_penalty = entry.speed_penalty
 	speed_trait_type = entry.speed_trait_type
 	speed_trait = entry.speed_trait
 	speed_math1 = entry.speed_math1
@@ -2707,6 +2708,7 @@ def power_move_post(entry, body, cells):
 	distance_unit_value2 = integer_convert(distance_unit_value2)
 	speed_rank_mod = integer_convert(speed_rank_mod)
 	objects_strength = integer_convert(objects_strength)
+	speed_penalty = integer_convert(speed_penalty)
 
 	dimension_mass_rank = integer_convert(dimension_mass_rank)
 	special_time_carry = integer_convert(special_time_carry)
@@ -2777,6 +2779,8 @@ def power_move_post(entry, body, cells):
 	vcells = vcell('rank', 20, ['Speed Rank', speed_rank])
 	vcells = vcell('rank_mod', 20, [speed_mod, speed_math, speed_rank_mod])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
+	speed_penalty = add_plus(speed_penalty)
+	vcells = vcell('penalty', 25, [speed_penalty, 'To Speed Penalties'], vcells) 
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = circ_cell('Desc', 'Description', 5, speed_description, cells, body)
 	

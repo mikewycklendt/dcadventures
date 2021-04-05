@@ -2228,6 +2228,7 @@ def power_move_post_errors(data):
 	speed_mod = data['speed_mod']
 	speed_math = data['speed_math']
 	speed_rank_mod = data['speed_rank_mod']
+	speed_penalty = data['speed_penalty']
 	speed_trait_type = data['speed_trait_type']
 	speed_trait = data['speed_trait']
 	speed_math1 = data['speed_math1']
@@ -2359,6 +2360,7 @@ def power_move_post_errors(data):
 	errors = int_check(distance_unit_value2, 'Distance Second Value', errors)
 	errors = int_check(speed_rank_mod, 'Speed Rank Modifier', errors)
 	errors = int_check(objects_strength, 'Strength Rank', errors)
+	errors = int_check(speed_penalty, 'Penalty Modifier', errors)
 
 	errors = int_check(dimension_mass_rank, 'Mass Rank', errors)
 	errors = int_check(special_time_carry, 'Carry Mass', errors)
@@ -2402,6 +2404,8 @@ def power_move_post_errors(data):
 	errors = variable_fields('rank_mod', speed, 'Math', speed_math, errors)
 	errors = variable_fields('rank_mod', speed, 'Modifier', speed_rank_mod, errors)
 	
+	errors = variable_fields('penalty', 'Speed Penalty Modifier', speed, [speed_penalty], errors)
+
 	errors = variable_fields('mod', 'Speed Modifier', speed, [speed_trait, speed_math1, speed_value1], errors)
 	errors = variable_field('mod', speed, 'Trait', speed_trait, errors)
 	errors = variable_field('mod', speed, 'First Math', speed_math1, errors)
