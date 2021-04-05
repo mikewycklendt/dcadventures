@@ -844,7 +844,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="move_condition" name="move_condition" multiple style="height: 6vw; font-size: 90%;">
+			<select class="select-sml" id="move_condition" name="move_condition" multiple style="height: 6vw; font-size: 80%;">
 				<option value="">(Ctl or Cmd to select multiple)</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
@@ -853,7 +853,7 @@
 		</div>
 
 		<div>
-			<div class="check-div">
+			<div style="font-size: 80%;" class="check-div-fit">
 				<input type="checkbox" id="move_condition_circ" class="medium-checkbox med-checkbox" onclick="move_condition_circ()"> No Circumstance
 			</div>
 
