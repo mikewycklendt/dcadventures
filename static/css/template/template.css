@@ -362,3 +362,7 @@ body{
 	grid-auto-rows: auto;
 	gap: .3vw;
 }
+
+.block {
+	display: block;
+}
