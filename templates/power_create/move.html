@@ -859,14 +859,16 @@
 				</div>	
 			</div>
 			
-			<div class="block" id="move-condition-check">
-				<select class="select-sml" id="move_condition_circ_check" name="move_condition_circ_check">
-					<option value="">Check Type</option>
-					<option value="all">All Checks</option>
-					{% for c in checks %}
-						<option value={{c.id}}>{{c.name}}</option>
-					{% endfor %}
-				</select>
+			<div class="block">
+				<div id="move-condition-check">
+					<select class="select-sml" id="move_condition_circ_check" name="move_condition_circ_check">
+						<option value="">Check Type</option>
+						<option value="all">All Checks</option>
+						{% for c in checks %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
 			</div>	
 		</div>
 	</div>
