@@ -311,7 +311,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 30% 25% 40%;
+	grid-template-columns: 13% 32% 23% 40%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;

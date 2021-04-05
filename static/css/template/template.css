@@ -356,3 +356,9 @@ body{
 	font-size: 100%; 
 	padding: 2%;
 }
+
+.rows {
+	display: grid;
+	grid-auto-rows: auto;
+	gap: .3vw;
+}
