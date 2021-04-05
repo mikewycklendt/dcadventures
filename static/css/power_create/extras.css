@@ -100,7 +100,7 @@
 
 .extras-four {
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: 30% 30% 20% 20%;
 	font-size: 70%;
 	padding: .4vw;
 	justify-content: left;
@@ -126,6 +126,16 @@
 }
 
 #extras-target {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 27% 30% 30%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
+#extras-action {
 	display: none;
 	max-height: 0;
 	overflow: hidden;
