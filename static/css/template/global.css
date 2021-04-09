@@ -94,32 +94,6 @@
 	font-style: normal;
 }
 
-.btn-login{
-	vertical-align: middle;
-	text-align: center;
-	font-family: Comic;
-	width: 5vw;
-	height: auto;
-	margin-top: .6vw;
-	padding: .3vw;
-	border: 2px solid white;
-	border-color: white;
-	background-color: #af0101;
-	font-size: 1.2vw;
-	color: white;
-	transition: all .15s linear;
-	cursor: pointer;
-}
-
-.btn-login:hover{
-	transform: scale(1.15, 1.15);
-	border: 2px solid white;
-	border-color: white;
-	background-color: #3a4e87;
-	text-align: center;
-	color: white;
-}
-
 #flashed-messages {
 	display: block;
 	width: 100%;
