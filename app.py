@@ -14,6 +14,7 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
+from flask_mobility import Mobility
 
 from models import setup_db
 
@@ -64,6 +65,8 @@ db_path = os.environ.get("db_path")
 
 app = Flask(__name__)
 moment = Moment(app)
+Mobility(app)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = db_path
 app.register_blueprint(tables)
 app.register_blueprint(skill)
@@ -89,9 +92,15 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	includehtml = 'home.html'
 
 	stylesheets.append({"style": "/static/css/home.css"})
-	stylesheets.append({"style": "/static/css/template/template.css"})
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	if request.mobile:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
+
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 	
 
 
