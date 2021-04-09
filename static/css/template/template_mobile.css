@@ -175,9 +175,10 @@
 	vertical-align: middle;
 	text-align: center;
 	font-family: Comic;
-	width: 90%;
+	width: 85%;
 	height: auto;
 	margin-top: 1vw;
+	margin-right: 1vw;
 	padding: .3vw;
 	border: 2px solid white;
 	border-color: white;
