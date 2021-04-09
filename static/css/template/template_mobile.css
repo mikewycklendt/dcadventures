@@ -154,7 +154,7 @@
  #navbar {
 	 display: grid;
 	 grid-template-columns: 50% 30% 20%;
-	 height: 1.4vw;
+	 height: 4vw;
 	 background-color: #232323;
  }
 
