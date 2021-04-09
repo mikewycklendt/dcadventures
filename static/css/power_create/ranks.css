@@ -27,3 +27,9 @@
 	padding: .3vw;  
 	font-size: 100%;
 }
+
+#ranks-stack {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}

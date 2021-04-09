@@ -57,9 +57,16 @@
 		
 		<div>
 			<div class="vcenter">
-				<input type="checkbox" id="ranks_unique" class="medium-checkbox med-checkbox" > Unique
+				<input type="checkbox" id="ranks_unique" class="medium-checkbox med-checkbox" onclick="ranks_unique()"> Unique
 			</div>
 		</div>
+
+		<div id="ranks-stack">
+			<div class="vcenter">
+				<input type="checkbox" id="ranks_stack" class="medium-checkbox med-checkbox" > Stackable
+			</div>
+		</div>
+
 
 		<div>
 			<select class="extra-select" id="ranks_required" name="ranks_required" onchange="ranks_required()">
@@ -77,7 +84,6 @@
 			</div>
 		</div>
 
-		<div></div>
 
 		<div>
 			<div class="btn-entry" id="ranks_submit" name="ranks_submit" onclick="ranks_submit()">

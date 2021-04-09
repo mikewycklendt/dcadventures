@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="{{ meta_name }}" content="{{ meta_content }}" />
+
+		<title>{{ title }}</title>
+
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
+		
+		<!---
+		<script src="/static/js/template.js"></script>
+		--->
+
+
+		{% for s in stylesheets %}
+		<link type="text/css" rel="stylesheet" href="{{ s.style }}"  />
+		{% endfor %}				
+
+	</head>
+
+<body>
+	<div id="layout">
+		<div id="navbar">
+			<div>
+				<nav role="navigation">
+					<div id="menuToggle">
+					  <input type="checkbox" />
+					  <span></span>
+					  <span></span>
+					  <span></span>
+					  <ul id="menu">
+						<a href="#"><li>Home</li></a>
+						<a href="#"><li>About</li></a>
+						<a href="#"><li>Info</li></a>
+						<a href="#"><li>Contact</li></a>
+						<a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+					  </ul>
+					</div>
+				  </nav>
+			</div>
+	
+			<div></div>
+	
+			<div>
+				<div class="btn-login">Login</div>
+			</div>
+		</div>
+
+		<div>
+			<img src="/static/img/banner.png" width="100%" style="display: block;">	
+		</div>
+
+		<div id="sidelines">
+			<div id="content">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<div id="flashed-messages">
+						{% for message in messages %}
+							<div class="flash-message">{{ message }}</div>
+						{% endfor %}
+						</div>
+					{% endif %}
+				{% endwith %}
+			
+				{% include includehtml %}	
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

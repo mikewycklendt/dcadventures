@@ -23,6 +23,13 @@ function ranks_required() {
 	select_opacity_any(select, div);
 }
 
+function ranks_unique()  {
+	const check ='ranks_unique';
+	const div = 'ranks-stack';
+
+	check_display(check, div);
+}
+
 let ranks_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

@@ -89,9 +89,22 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 	includehtml = 'home.html'
 
 	stylesheets.append({"style": "/static/css/home.css"})
+	stylesheets.append({"style": "/static/css/template/template.css"})
 
 	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 	
+
+
+@app.route('/mobile')
+def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
+	includehtml = 'home.html'
+
+	stylesheets.append({"style": "/static/css/home.css"})
+	stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+
+	return render_template('template_mobile.html', includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
+	
+
 @app.teardown_appcontext
 def shutdown_session(exception=None):
 	db.session.remove()
