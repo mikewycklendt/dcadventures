@@ -57,8 +57,8 @@
 	box-shadow: 10px 8px 12px 0px lightblue;
 	text-shadow: 3px 3px 4px #b4b3b3;;
 	color: #af0101;
-	border: 3vw solid #af0101;
-	border-radius: 1vw;
+	border: 1vw solid #af0101;
+	border-radius: 3vw;
 	padding: 4vw;
 	width: 60%;
 	height: auto;
@@ -71,7 +71,7 @@
 .home-btn:hover{
 	font-size: 14vw;
 	color: #3a4e87;
-	border: .3vw solid #3a4e87;
+	border: 1vw solid #3a4e87;
 	text-shadow: none;
 	transform: scale(1.14, 1.14);
 	height: auto;
