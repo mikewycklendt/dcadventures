@@ -7,12 +7,12 @@
 
 .splash{
 	display: grid;
-	grid-auto-rows: auto auto auto;
+	grid-auto-rows: auto;
 	grid-template-columns: 100%;
 	grid-area: contentpage;
 	height: auto;
 	width: 80%;
-	margin-left: 20vw;
+	margin-left: 10vw;
 	margin-right: 10vw;
 	vertical-align: middle;
 	background-image: url('/static/img/justice.png');
@@ -20,30 +20,11 @@
 }
 
 
-#signup{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#about{
-	display: table-cell;
-	align-content: center;
-	vertical-align: middle;
-	text-align: center;
-}
-
 #buttons {
 	display: grid;
 	height: auto;
 	grid-template-columns: 50% 50%;
 	grid-auto-rows: auto;
-	grid-template-areas: "signup about";
-}
-
-#below{
-	grid-area: below;
-	height: 200px;
 }
 
 #btn-splash{
