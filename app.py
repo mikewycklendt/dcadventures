@@ -91,14 +91,15 @@ migrate = Migrate(app, db)
 def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 
-	stylesheets.append({"style": "/static/css/home.css"})
 
 	if request.MOBILE:
 		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
 		template = 'template_mobile.html'
+		stylesheets.append({"style": "/static/css/home_mobile.css"})
 	else:
 		stylesheets.append({"style": "/static/css/template/template.css"})
 		template = 'template.html'
+		stylesheets.append({"style": "/static/css/home.css"})
 
 	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar)
 	
