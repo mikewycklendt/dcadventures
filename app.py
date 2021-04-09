@@ -93,7 +93,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 	stylesheets.append({"style": "/static/css/home.css"})
 
-	if request.mobile:
+	if request.MOBILE:
 		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
 		template = 'template_mobile.html'
 	else:
