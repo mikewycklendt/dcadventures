@@ -154,7 +154,7 @@
  #navbar {
 	 display: grid;
 	 grid-template-columns: 50% 35% 15%;
-	 height: 8vw;
+	 height: 9.5vw;
 	 background-color: #232323;
  }
 
@@ -177,7 +177,7 @@
 	font-family: Comic;
 	width: 90%;
 	height: auto;
-	margin-top: .6vw;
+	margin-top: 1vw;
 	padding: .3vw;
 	border: 2px solid white;
 	border-color: white;
