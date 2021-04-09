@@ -153,7 +153,7 @@
 
  #navbar {
 	 display: grid;
-	 grid-template-columns: 50% 35% 15%;
+	 grid-template-columns: 50% 30% 15% 5%;
 	 height: 9.5vw;
 	 background-color: #232323;
  }
@@ -177,7 +177,7 @@
 	font-family: Comic;
 	width: 85%;
 	height: auto;
-	margin-top: 3vw;
+	margin-top: 2vw;
 	margin-right: 3vw;
 	padding: .3vw;
 	border: 2px solid white;
