@@ -14,8 +14,8 @@
  {
    display: block;
    position: relative;
-   top: 50px;
-   left: 50px;
+   top: 25px;
+   left: 25px;
    
    z-index: 1;
    
@@ -154,7 +154,7 @@
  #navbar {
 	 display: grid;
 	 grid-template-columns: 50% 30% 20%;
-	 height: 6vw;
+	 height: 15vw;
 	 background-color: #232323;
  }
 
