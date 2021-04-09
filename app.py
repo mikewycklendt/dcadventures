@@ -96,7 +96,7 @@ def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_con
 
 
 @app.route('/mobile')
-def home(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
+def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, title=title):
 	includehtml = 'home.html'
 
 	stylesheets.append({"style": "/static/css/home.css"})
