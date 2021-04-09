@@ -50,6 +50,7 @@
 .home-btn{
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	text-align: center;
 	font-family: Comic;
 	font-size: 10vw;
