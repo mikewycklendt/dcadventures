@@ -8,6 +8,7 @@
    background: white;
    color: #cdcdcd;
    font-family: "Avenir Next", "Avenir", sans-serif;
+   font-size: 3vw;
  }
  
  #menuToggle
@@ -123,7 +124,7 @@
    padding: 50px;
    padding-top: 125px;
    
-   background: #ededed;
+   background: #1e507a;
    list-style-type: none;
    -webkit-font-smoothing: antialiased;
    /* to stop flickering of text in safari */
@@ -137,7 +138,8 @@
  #menu li
  {
    padding: 10px 0;
-   font-size: 22px;
+   font-size: 120%;
+   font-family: Comic;
  }
  
  #menuToggle input:checked ~ ul
@@ -196,4 +198,58 @@
 	background-color: #3a4e87;
 	text-align: center;
 	color: white;
+}
+
+#btn-sidebar{
+	display: block;
+	font-family: Comic;
+	font-size: 1.5vw;
+	color: #cdb99d;;
+	text-shadow: 3px 3px 4px black;
+	padding-top: 0px;
+	padding-bottom: 0%;
+	padding-left: 0px;	
+	padding-right: 0px;
+	width: 95%;
+	height: auto;
+	margin: 0px;
+	margin-bottom: 0%;
+	border-bottom: 2px solid #cdb99d;
+	cursor: pointer;
+	transition: all .1s linear;
+}
+
+#btn-sidebar:hover {
+	font-size: 1.7vw;
+	color: #7ecef6;
+	text-shadow: 4px 4px 8px black;
+	padding-top: 0px;
+	padding-bottom: 0%;
+	padding-left: 0px;
+	padding-right: 0px;
+	height: auto;
+	margin: 0px;
+	margin-bottom: 0%;
+	border-bottom: 2px solid #7ecef6;
+	border-right: 2px solid #7ecef6;
+}
+
+#btn-sidebar::before {
+	font-family: 'FontAwesome';
+	font-size: 1vw;
+	text-shadow: 0px 0px 2px white, 3px 3px 4px black;
+	content: '\f005';
+	padding-left: .3vw;
+	padding-right: .4vw;
+	display:inline-block;
+	line-height: 1.6vw;
+}
+
+.btn-sidebar{
+	transition: all .1s linear;
+	background-color: rgba(255,255,255, 0);
+}
+
+.btn-sidebar:hover{
+	background-color: rgba(255,255,255, .2);
 }
