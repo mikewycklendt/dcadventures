@@ -66,12 +66,6 @@
 	margin-bottom: 20px;
 }
 
-.base-select {
-	height: 1.9vw;
-	padding: .1vw;
-	font-size: 100%;
-}
-
 .base-field {
 	display: grid;
 	width: 85%;
