@@ -54,7 +54,7 @@ db_path = os.environ.get("db_path")
 
 equip = Blueprint('equipment', __name__)
 db = SQLAlchemy()
-Mobility(equip)
+
 
 @equip.route('/equipment/create')
 def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):

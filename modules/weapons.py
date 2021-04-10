@@ -55,7 +55,6 @@ db_path = os.environ.get("db_path")
 
 weap = Blueprint('weap', __name__)
 db = SQLAlchemy()
-Mobility(weap)
 
 @weap.route('/weapon/create')
 def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):

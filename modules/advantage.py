@@ -56,7 +56,6 @@ db_path = os.environ.get("db_path")
 
 advantage = Blueprint('advantage', __name__)
 db = SQLAlchemy()
-Mobility(advsntage)
 
 
 

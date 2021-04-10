@@ -55,7 +55,7 @@ db_path = os.environ.get("db_path")
 
 arm = Blueprint('arm', __name__)
 db = SQLAlchemy()
-Mobility(arm)
+
 
 @arm.route('/armor/create')
 def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):

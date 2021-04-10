@@ -55,7 +55,6 @@ db_path = os.environ.get("db_path")
 
 vehicle = Blueprint('vehicle', __name__)
 db = SQLAlchemy()
-Mobility(vehicle)
 
 @vehicle.route('/vehicle/create')
 def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):

@@ -57,7 +57,6 @@ db_path = os.environ.get("db_path")
 
 powers = Blueprint('powers', __name__)
 db = SQLAlchemy()
-Mobility(powers)
 
 @powers.route('/power/create')
 def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):

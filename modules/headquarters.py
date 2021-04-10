@@ -56,7 +56,7 @@ db_path = os.environ.get("db_path")
 
 head = Blueprint('head', __name__)
 db = SQLAlchemy()
-Mobility(head)
+
 
 @head.route('/headquarters/create')
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
