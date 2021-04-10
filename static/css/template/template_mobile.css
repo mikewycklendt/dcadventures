@@ -233,7 +233,7 @@
 
 .btn-sidebar::before {
 	font-family: 'FontAwesome';
-	font-size: 85%;
+	font-size: 60%;
 	text-shadow: 0px 0px 2px white, 3px 3px 4px black;
 	content: '\f005';
 	padding-left: .3vw;
