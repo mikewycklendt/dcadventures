@@ -41,6 +41,10 @@
 	line-height: 1.6vw;
 }
 
+.btn-sidebar a{
+	color: #cdb99d;
+}
+
 
 .signup-btn{
 	background: url('/static/img/signupRED.png') no-repeat;
