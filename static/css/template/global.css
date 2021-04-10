@@ -280,6 +280,12 @@ a {
 	font-size: 110%;
 }
 
+.base-select {
+	height: 100%;
+	padding: .1vw;
+	font-size: 100%;
+}
+
 .extra-select:focus {
 	background-color: lightblue;
 }
