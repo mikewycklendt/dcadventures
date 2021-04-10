@@ -15,6 +15,7 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
+from flask_mobility import Mobility
 
 from models import setup_db
 
@@ -53,6 +54,7 @@ db_path = os.environ.get("db_path")
 
 equip = Blueprint('equipment', __name__)
 db = SQLAlchemy()
+Mobility(equip)
 
 @equip.route('/equipment/create')
 def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -62,6 +64,13 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 	stylesheets.append({"style": "/static/css/equipment_create/equipment_create.css"})
 
 	equipment_includes = {'base_form': 'equipment_create/base_form.html', 'damaged': 'equipment_create/damaged.html', 'opposed': 'equipment_create/opposed.html', 'modifiers': 'equipment_create/modifiers.html', 'check': 'equipment_create/check.html', 'limits': 'equipment_create/limits.html', 'descriptor': 'equipment_create/descriptors.html', 'feature': 'equipment_create/feature.html', 'effect': 'equipment_create/effect.html', 'belt': 'equipment_create/belt.html'}
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -173,7 +182,7 @@ def equipment_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=
 
 	locks = [{'type': '', 'name': 'Lock Type'}, {'type': 'keys', 'name': 'Keys'}, {'type': 'electric', 'name': 'Electronic'}, {'type': 'both', 'name': 'Both'}]
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, equipment_includes=equipment_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, equipment=equipment, equipment_type=equipment_type, damaged=damaged, skills=skills,
 							times=times, distances=distances, expertise=expertise, when=when, conditions=conditions, damages=damages, checks=checks, light=light, environments=environments, senses=senses,
 							ranged=ranged, subsenses=subsenses, cover=cover, concealment=concealment, maneuvers=maneuvers, weapon_melee=weapon_melee, weapon_ranged=weapon_ranged, tools=tools, powers=powers,

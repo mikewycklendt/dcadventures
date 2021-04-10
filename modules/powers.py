@@ -15,6 +15,7 @@ from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
+from flask_mobility import Mobility
 
 from models import setup_db
 
@@ -56,6 +57,7 @@ db_path = os.environ.get("db_path")
 
 powers = Blueprint('powers', __name__)
 db = SQLAlchemy()
+Mobility(powers)
 
 @powers.route('/power/create')
 def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -66,6 +68,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	power_includes = {'base_form': 'power_create/base_form.html', 'range': 'power_create/range.html', 'resisted_by': 'power_create/resisted_by.html', 'reverse_effect': 'power_create/reverse_effect.html', 'move': 'power_create/move.html', 'levels': 'power_create/levels.html', 'category': 'power_create/category.html', 'sense': 'power_create/sense.html', 'ranks': 'power_create/ranks.html', 'circ': 'power_create/circ.html', 'create': 'power_create/create.html', 'damage': 'power_create/damage.html', 'extras': 'power_create/extras.html', 'degree_mod': 'power_create/degree_mod.html', 'defense': 'power_create/defense.html', 'character': 'power_create/character.html', 'environment': 'power_create/environment.html', 'descriptors': 'power_create/descriptors.html', 'resist': 'power_create/resist.html', 'change_action': 'power_create/change_action.html', 'mod': 'power_create/mod.html', 'dc_table': 'power_create/dc_table.html', 'time': 'power_create/time.html', 'alt_check': 'power_create/alt_check.html', 'degree': 'power_create/degree.html', 'opposed': 'power_create/opposed.html', 'ranged': 'power_create/ranged.html', 'minion': 'power_create/minion.html', 'cost': 'power_create/cost.html', 'ranks': 'power_create/ranks.html', 'condition': 'power_create/condition.html'}
 	
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
+
 	negatives = []
 	for i in range(-20, 1, 1):
 		negatives.append(i)
@@ -504,7 +513,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 
 
-	return render_template('template.html', sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
+	return render_template(template, sense_time=sense_time, all_some=all_some, power_sense=power_sense, bonuses=bonuses, sense_type=sense_type, visual=visual, auditory=auditory, olfactory=olfactory, 
 											tactile=tactile, radio=radio, mental=mental, special=special, value_bonus=value_bonus, heightened=heightened, resistant=resistant, required=required, circumstances=circumstances, 
 											senses=senses, subsenses=subsenses, actions=actions, permanence=permanence, time_numbers=time_numbers, maths=maths, times=times, targets=targets, whens=whens, dc_value=dc_value, 
 											effects=effects, conditions=conditions, check_types=check_types, powers=powers, skills=skills, abilities=abilities, defenses=defenses, checks=checks, dc_type=dc_type, 

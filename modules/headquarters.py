@@ -10,6 +10,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
+from flask_mobility import Mobility
 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
@@ -55,6 +56,7 @@ db_path = os.environ.get("db_path")
 
 head = Blueprint('head', __name__)
 db = SQLAlchemy()
+Mobility(head)
 
 @head.route('/headquarters/create')
 def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -64,6 +66,13 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Headquarters'
 	stylesheets.append({"style": "/static/css/headquarters_create/headquarters_create.css"})
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -104,7 +113,7 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, headquarters_includes=headquarters_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, head_toughness=head_toughness, head_size=head_size, addons=addons, features=features,
 							equipment=equipment, equipment_type=equipment_type, weapon_cat=weapon_cat, head_features=head_features)
 

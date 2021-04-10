@@ -14,6 +14,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
+from flask_mobility import Mobility
 
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -54,6 +55,7 @@ db_path = os.environ.get("db_path")
 
 arm = Blueprint('arm', __name__)
 db = SQLAlchemy()
+Mobility(arm)
 
 @arm.route('/armor/create')
 def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -63,6 +65,13 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Armor'
 	stylesheets.append({"style": "/static/css/advantage_create/armor_create.css"})
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -97,7 +106,7 @@ def armor_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	materials = db.session.query(Material).order_by(Material.name).all()
 
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, armor_includes=armor_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, armor_includes=armor_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, armor_type=armor_type, defenses=defenses, origins=origins, sources=sources,
 							mediums=mediums, materials=materials)
 							

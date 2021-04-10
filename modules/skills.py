@@ -11,6 +11,7 @@ from logging import Formatter, FileHandler
 from flask_wtf import Form
 from flask_migrate import Migrate
 from datetime import datetime
+from flask_mobility import Mobility
 
 from decimal import *
 from measurements import decRound, divide, multiply, measure
@@ -59,6 +60,7 @@ db_path = os.environ.get("db_path")
 
 skill = Blueprint('skill', __name__)
 db = SQLAlchemy()
+Mobility(skill)
 
 @skill.route('/skill/create')
 def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -68,6 +70,13 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Enhanced Skill'
 	stylesheets.append({"style": "/static/css/skill_create/skill_create.css"})
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -303,7 +312,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	bonus_move_type = linked_options(SkillMoveType, SkillBonus, 'skill_id', 'name')
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, skill_includes=skill_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, skills=skills, checks=checks, actions=actions, skill_type=skill_type, maths=maths,
 							value_type=value_type, traits=traits, level_types=level_types, conditions=conditions, targets=targets, deg_mod_type=deg_mod_type, action_type=action_type, knowledge=knowledge,
 							consequences=consequences, specificity=specificity, measure_rank=measure_rank, condition_type=condition_type, updown=updown, circ_effect=circ_effect, measure_effect=measure_effect,

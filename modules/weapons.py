@@ -14,6 +14,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
+from flask_mobility import Mobility
 
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -54,6 +55,7 @@ db_path = os.environ.get("db_path")
 
 weap = Blueprint('weap', __name__)
 db = SQLAlchemy()
+Mobility(weap)
 
 @weap.route('/weapon/create')
 def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -63,6 +65,13 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	title = 'DC Adventures Online Roleplaying Game: Create Weapon'
 	stylesheets.append({"style": "/static/css/weapon_create/weapon_create.css"})
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -114,7 +123,7 @@ def weapon_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=met
 
 	area  = [{'type': '', 'name': 'Area Type'}, {'type': 'cone', 'name': 'Cone'}, {'type': 'line', 'name': 'Line'}, {'type': 'either', 'name': 'Cone or Line'}, {'type': 'burst', 'name': 'Burst'}, {'type': 'cloud', 'name': 'Cloud'}]
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, weapon_includes=weapon_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, weapon_cat=weapon_cat, powers=powers, materials=materials, origins=origins,
 							sources=sources, mediums=mediums, condition=condition, conditions=conditions, updown=updown, benefits=benefits, defenses=defenses, area=area, advantages=advantages, conceal=conceal,
 							senses=senses)

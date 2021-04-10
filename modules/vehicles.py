@@ -14,6 +14,7 @@ from decimal import *
 from measurements import decRound, divide, multiply, measure
 import sys
 from dotenv import load_dotenv
+from flask_mobility import Mobility
 
 from base_files import sidebar, stylesheets, meta_name, meta_content, title
 
@@ -54,6 +55,7 @@ db_path = os.environ.get("db_path")
 
 vehicle = Blueprint('vehicle', __name__)
 db = SQLAlchemy()
+Mobility(vehicle)
 
 @vehicle.route('/vehicle/create')
 def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta_content, sidebar=sidebar):
@@ -63,6 +65,13 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 	
 	title = 'DC Adventures Online Roleplaying Game: Create Vehicle'
 	stylesheets.append({"style": "/static/css/vehicle_create/vehicle_create.css"})
+
+	if request.MOBILE:
+		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		template = 'template_mobile.html'
+	else:
+		stylesheets.append({"style": "/static/css/template/template.css"})
+		template = 'template.html'
 
 	negatives = []
 	for i in range(-20, 1, 1):
@@ -100,7 +109,7 @@ def vehicle_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=me
 
 	addons = [{'type': '', 'name': 'Add-on Type'}, {'type': 'feature', 'name': 'Feature'}, {'type': 'weapon', 'name': 'Weapon'}, {'type': 'equipment', 'name': 'Equipment'}]
 
-	return render_template('template.html', includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
+	return render_template(template, includehtml=includehtml, title=title, stylesheets=stylesheets, vehicle_includes=vehicle_includes, sidebar=sidebar, meta_content=meta_content, meta_name=meta_name,
 							negatives=negatives, positives=positives, hundred=hundred, die=die, time_numbers=time_numbers, vehicle_type=vehicle_type, vehicle_size=vehicle_size, power_type=power_type,
 							features=features, equioment=equipment, equipment_type=equipment_type, addons=addons, weapon_cat=weapon_cat)
 
