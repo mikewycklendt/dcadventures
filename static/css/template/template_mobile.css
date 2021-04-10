@@ -204,7 +204,7 @@
 	background-color: rgba(255,255,255, 0);
 	display: block;
 	font-family: Comic;
-	font-size: 200%;
+	font-size: 175%;
 	color: #cdb99d;;
 	text-shadow: 3px 3px 4px black;
 	padding: 2.5%;
@@ -222,7 +222,7 @@
 
 .btn-sidebar:hover {
 	background-color: rgba(255,255,255, .2);
-	font-size: 225%;
+	font-size: 190%;
 	color: #7ecef6;
 	text-shadow: 4px 4px 8px black;
 	height: auto;
@@ -233,7 +233,7 @@
 
 .btn-sidebar::before {
 	font-family: 'FontAwesome';
-	font-size: 1vw;
+	font-size: 150%;
 	text-shadow: 0px 0px 2px white, 3px 3px 4px black;
 	content: '\f005';
 	padding-left: .3vw;
