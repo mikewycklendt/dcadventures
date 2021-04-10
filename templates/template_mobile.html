@@ -29,15 +29,17 @@
 					  <span></span>
 					  <span></span>
 					  <span></span>
-					  <div id="menu">
+					  <ul id="menu">
 						{% for button in sidebar %}
-							<a href={{button.link}}>	
-								<button class="btn-sidebar">
-									{{ button.name }}
-								</button>
-							</a>
+							<li>
+								<a href={{button.link}}>	
+									<button class="btn-sidebar">
+										{{ button.name }}
+									</button>
+								</a>	
+							</li>					
 						{% endfor %}
-					  </div>
+					  </ul>
 					</div>
 				  </nav>
 			</div>
