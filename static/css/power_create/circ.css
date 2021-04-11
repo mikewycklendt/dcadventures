@@ -9,24 +9,6 @@
 	gap: .4vw;
 }
 
-.circ-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.circ-title-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.circ-opp-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
 #circ-row1 {
 	display: grid;
 	width: 98%;

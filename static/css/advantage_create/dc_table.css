@@ -26,30 +26,6 @@
 	transition: all .2s linear;
 }
 
-.dc-player-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.dc-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.dc-title-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.dc-opp-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
 #dc-entry {
 	display: none;
 	font-family: 'Monda', Verdana;

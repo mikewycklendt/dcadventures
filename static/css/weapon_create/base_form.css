@@ -73,12 +73,6 @@
 	background-color: lightblue;
 }
 
-.base-select {
-	height: 2vw;
-	padding: .1vw;
-	font-size: 95%;
-}
-
 .base-field {
 	display: grid;
 	width: 85%;

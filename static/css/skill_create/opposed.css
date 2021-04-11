@@ -25,12 +25,6 @@
 	transition: all .2s linear;
 }
 
-.opposed-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
 #opposed-entry {
 	display: none;
 	font-family: 'Monda', Verdana;

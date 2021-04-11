@@ -18,6 +18,7 @@ sidebar = [{'name': 'rules', 'link': '#'},
 			{'name': 'devices', 'link': '#'}, 
 			{'name': 'armor', 'link': '/armor/create'}, 
 			{'name': 'weapons', 'link': '/weapon/create'}, 
-			{'name': 'vehicles', 'link': '/vehicle/create'}, 
+			{'name': 'vehicles', 'link': '/vehicle/create'},
+			{'name': 'headquarters', 'link': '/headquarters/create'}, 
 			{'name': 'constructs', 'link': '#'}, 
 			{'name': 'help', 'link': '#'}]

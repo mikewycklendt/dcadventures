@@ -9,24 +9,6 @@
 	grid-template-rows: auto;
 }
 
-.check-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.check-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.check-title-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
 #check-base {
 	opacity: 0%;
 	display: grid;

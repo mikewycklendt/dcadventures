@@ -37,7 +37,7 @@
 #box-title {
 	display: flex;
 	width: 85%;
-	height: 4.5vw;
+	height: fit-content;
 	margin-top: 2%;
 	margin-left: 8%;
 	margin-bottom: 2%;

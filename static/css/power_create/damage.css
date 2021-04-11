@@ -23,12 +23,6 @@
 	transition: all .2s linear;
 }
 
-.damage-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
 #damage-entry {
 	display: none;
 	font-family: 'Monda', Verdana;

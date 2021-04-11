@@ -1,0 +1,296 @@
+
+.select-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.benefit-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.select-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.entry-select {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.descriptor-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.effect-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.feature-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.select-sml {
+	height: 3.5vw; 
+	padding:  0vw;  
+	font-size: 80%;
+}
+
+.benefit-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.extra-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.descriptor-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.levels-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.level-type-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.header-select {
+	height: 4.5vw;
+	font-size: 110%;
+}
+
+.extra-select {
+	height: 4.5vw; 
+	font-size: 110%;
+}
+
+.extra-select:focus {
+	background-color: lightblue;
+}
+
+.base-select {
+	height: 5.5vw;
+	padding: .1vw;
+	font-size: 100%;
+}
+
+.check-entry {
+	height: 4.5vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.check-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.check-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.circ-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.circ-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.circ-opp-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.cost-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.damage-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.dc-player-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.dc-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.dc-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.dc-opp-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.degree-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.degree-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.degree-opp-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.extra-select {
+	height: 4.5vw; 
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.extra-select:focus {
+	background-color: lightblue;
+}
+
+.extra-cost-select {
+	height: 4.5vw; 
+	font-size: 110%;
+}
+
+.extra-cost-select:focus {
+	background-color: lightblue;
+}
+
+.extra-rank-select {
+	height: 4.5vw; 
+	font-size: 110%;
+}
+
+.extra-rank-select:focus {
+	background-color: lightblue;
+}
+
+.move-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.move-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.opposed-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.opposed-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.ranged-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.ranged-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.time-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.time-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+}
+
+.time-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.lasts-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.lasts-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+
+}
+
+.lasts-title-entry {
+	height: 4.5vw;
+	padding: .3vw;  
+	font-size: 100%;
+}
+
+.lasts-title-sml {
+	height: 3.5vw; 
+	padding: .1vw;  
+	font-size: 80%;
+
+}

@@ -69,11 +69,13 @@ def headquarters_create(stylesheets=stylesheets, meta_name=meta_name, meta_conte
 
 	if request.MOBILE:
 		stylesheets.append({"style": "/static/css/template/template_mobile.css"})
+		stylesheets.append({"style": "/static/css/template/selects_mobile.css"})
 		template = 'template_mobile.html'
 	else:
 		stylesheets.append({"style": "/static/css/template/template.css"})
+		stylesheets.append({"style": "/static/css/template/selects.css"})
 		template = 'template.html'
-
+	
 	negatives = []
 	for i in range(-20, 1, 1):
 		negatives.append(i)

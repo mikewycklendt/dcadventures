@@ -7,50 +7,6 @@
 	grid-template-rows: auto;
 }
 
-.time-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.time-title-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-}
-
-.time-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.lasts-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.lasts-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-
-}
-
-.lasts-title-entry {
-	height: 2.3vw; 
-	padding: .3vw;  
-	font-size: 100%;
-}
-
-.lasts-title-sml {
-	height: 1.6vw; 
-	padding: .1vw;  
-	font-size: 80%;
-
-}
-
 #time-base {
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
