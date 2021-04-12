@@ -9,7 +9,7 @@
 	<div id="sense-base">
 
 		<div>
-			<select class="header-select" id="sense_target" name="sense_target" onchange="sense_base()">
+			<select class="select-entry" id="sense_target" name="sense_target" onchange="sense_base()">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -127,6 +127,21 @@
 					<div class="check-div-fit">
 						<input type="checkbox" id="sense_conceal_precise" class="medium-checkbox med-checkbox" > Precise
 					</div>
+				</div>
+
+				<div>
+					<div class="check-div-fit">
+						<input type="checkbox" id="sense_conceal_power" class="medium-checkbox med-checkbox" onclick="sense_conceal_power()"> From Sense Power
+					</div>
+				</div>
+
+				<div id="sense-conceal-power">
+					<select class="select-sml" id="sense_conceal_power_sense" name="sense_conceal_power_sense">
+						<option value="">Sense Power</option>
+						{% for p in power_sense %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
 				</div>
 
 			</div>

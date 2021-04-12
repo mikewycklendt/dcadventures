@@ -3227,6 +3227,8 @@ def power_post_sense():
 	comprehend_type = request.get_json()['comprehend_type']
 	concealment = request.get_json()['concealment']
 	conceal_precise = request.get_json()['conceal_precise']
+	conceal_power = request.get_json()['conceal_power']
+	conceal_power_sense = request.get_json()['conceal_power_sense']
 	multiple = request.get_json()['multiple']
 
 
@@ -3247,6 +3249,7 @@ def power_post_sense():
 	time_bonus = db_integer(SkillBonus, time_bonus)
 	distance_unit = db_integer(Unit, distance_unit)
 	concealment = db_integer(Conceal, concealment)
+	conceal_power_sense = db_integer(Power, conceal_power_sense)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3306,6 +3309,8 @@ def power_post_sense():
 									comprehend_type = comprehend_type,
 									concealment = concealment,
 									conceal_precise = conceal_precise,
+									conceal_power = conceal_power,
+									conceal_power_sense = conceal_power_sense,
 									multiple = multiple
 								)
 

@@ -181,6 +181,13 @@ function sense_concealment() {
 	select_opacity(select, options);
 }
 
+function sense_conceal_power() {
+	const check = 'sense_conceal_power';
+	const div = 'sense-conceal-power';
+
+	check_display(check, div);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -235,6 +242,8 @@ function sense_submit() {
 	const comprehend_type = select("aense_comprehend_type");
 	const concealment = select("sense_concealment");
 	const conceal_precise = check("sense_conceal_precise");
+	const conceal_power = check("sense_conceal_power");
+	const conceal_power_sense = select("sense_conceal_power_sense");
 	const multiple = select("sense_multiple");
 
 	///const power_id = document.getElementById('power_id').value;
@@ -293,6 +302,8 @@ function sense_submit() {
 			'comprehend_type': comprehend_type,
 			'concealment': concealment,
 			'conceal_precise': conceal_precise,
+			'conceal_power': conceal_power,
+			'conceal_power_sense': conceal_power_sense,
 			'multiple': multiple
 		}),
 		headers: {

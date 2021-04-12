@@ -1375,6 +1375,8 @@ def sense_post_errors(data):
 	comprehend = data['comprehend']
 	comprehend_type = data['comprehend_type']
 	concealment = data['concealment']
+	conceal_power_sense = data['conceal_power_sense']
+	conceal_power = data['conceal_power']
 
 
 	errors = id_check(PowerCost, cost)
@@ -1419,6 +1421,8 @@ def sense_post_errors(data):
 
 	errors = variable_fields('conceal', 'Concealment', sense_type, [concealment], errors)
 	errors = variable_field('conceal', sense_type, 'Concealment', concealment, errors)
+	errors = check_fields(conceal_power, 'Concealed from Power', [conceal_power_sense], errors)
+	errors = check_field(conceal_power, 'Concealed from Power', 'Sense Power', conceal_power_sense, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

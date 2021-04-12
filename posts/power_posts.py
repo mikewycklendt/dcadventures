@@ -1593,6 +1593,9 @@ def sense_post(entry, body, cells):
 	comprehend_type = entry.comprehend_type
 	concealment = entry.concealment
 	conceal_precise = entry.conceal_precise
+	conceal_power = entry.conceal_power
+	conceal_power_sense = entry.conceal_power_sense
+
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
 
@@ -1616,6 +1619,7 @@ def sense_post(entry, body, cells):
 	time_bonus = get_name(SkillBonus, time_bonus)
 	distance_unit = get_name(Unit, distance_unit)
 	concealment = get_name(Conceal, concealment)
+	conceal_power_sense = get_name(Power, conceal_power_sense)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1660,10 +1664,12 @@ def sense_post(entry, body, cells):
 	affects =  string('Affects', [resist_trait])
 	word = check_convert('Immune', resist_immune)
 	wid = width(wid, 10, resist_immune)
-	perm = string(resist_permanent, word)
+	perm = string(resist_permanent, [word])
 	wid = width(wid, 12, resist_permanent)
 	vcells = vcell('resist', wid, [affects, resist_trait, word, perm], vcells)
-	vcells = vcell('conceal', 22, [concealment], vcells)
+	word = string('from', [conceal_power_sense])
+	w = width(22, 14, conceal_power_sense)
+	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

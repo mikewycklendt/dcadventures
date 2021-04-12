@@ -2303,6 +2303,8 @@ class PowerSenseEffect(db.Model):
 	comprehend_type = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
 	conceal_precise = db.Column(db.Boolean)
+	conceal_power = db.Column(db.Boolean)
+	conceal_power_sense = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	multiple = db.Column(db.String())
 
 	def format(self):
@@ -2355,6 +2357,8 @@ class PowerSenseEffect(db.Model):
 			'comprehend_type': self.comprehend_type,
 			'concealment': self.concealment,
 			'conceal_precise': self.conceal_precise,
+			'conceal_power': self.conceal_power,
+			'conceal_power_sense': self.conceal_power_sense,
 			'multiple': self.multiple
 		}
 
