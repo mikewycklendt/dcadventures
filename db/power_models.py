@@ -1032,6 +1032,7 @@ class PowerMove(db.Model):
 	mass_value = db.Column(db.Integer)
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
+	trackless = db.Column(db.Boolean)
 
 	
 	
@@ -1137,7 +1138,8 @@ class PowerMove(db.Model):
 			'extended_actions': self.extended_actions,
 			'mass_value': self.mass_value,
 			'cost': self.cost,
-			'ranks': self.ranks
+			'ranks': self.ranks,
+			'trackless': self.trackless
 		}
 
 

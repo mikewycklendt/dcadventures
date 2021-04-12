@@ -4444,6 +4444,7 @@ def power_post_move():
 	conceal_opposed = request.get_json()['conceal_opposed']
 	extended_actions = request.get_json()['extended_actions']
 	mass_value = request.get_json()['mass_value']
+	trackless = request.get_json()['trackless']
 
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
@@ -4647,7 +4648,8 @@ def power_post_move():
 						extended_actions = extended_actions,
 						mass_value = mass_value,
 						cost = cost,
-						ranks =  ranks
+						ranks =  ranks,
+						trackless = trackless
 					)			
 
 

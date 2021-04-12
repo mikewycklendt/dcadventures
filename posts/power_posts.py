@@ -2659,6 +2659,7 @@ def power_move_post(entry, body, cells):
 	mass_value = entry.mass_value
 	cost = entry.cost
 	ranks = entry.ranks
+	trackless = entry.trackless
 
 
 	title_name = get_name(PowerMoveType, title)
@@ -2885,6 +2886,8 @@ def power_move_post(entry, body, cells):
 	new_mod = mod_create('Increased Carry Mass', 30)
 	new_mod = mod_cell('Mass Rank:', 13, [mass_value], new_mod)
 	body = mod_add(mass, new_mod, body)
+
+	cells = check_cell('Trackless', 11, trackless, cells)
 
 	cells = circ_cell('Time', 6, time_value, cells, body)
 	cells = circ_cell('Degree', 7, degree_value, cells, body)

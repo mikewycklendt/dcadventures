@@ -440,6 +440,7 @@ function move_submit() {
 	const conceal_opposed = select("move_conceal_opposed");
 	const extended_actions = select("move_extended_actions");
 	const mass_value = select("move_mass_value");
+	const trackless = check("move_trackless");
 
 	const cost = select("move_cost");
 	const ranks = select("move_ranks");
@@ -558,7 +559,8 @@ function move_submit() {
 			'extended_actions': extended_actions,
 			'mass_value': mass_value,
 			'cost': cost,
-			'ranks': ranks
+			'ranks': ranks,
+			'trackless': trackless
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
