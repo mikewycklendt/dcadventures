@@ -4,7 +4,16 @@ meta_name="DC Adventures Online"
 meta_content="An online DC Comics Roleplaying game. Play as your favorite character or create your own hero."
 title = 'DC Adventures Online Roleplaying Game'
 
-sidebar = [{'name': 'rules', 'link': '#'}, 
+sidebar = [{'name': 'skills', 'link': '/skill/create'}, 
+			{'name': 'powers', 'link': '/power/create'}, 
+			{'name': 'equipment', 'link': '/equipment/create'}, 
+			{'name': 'armor', 'link': '/armor/create'}, 
+			{'name': 'weapons', 'link': '/weapon/create'}, 
+			{'name': 'vehicles', 'link': '/vehicle/create'},
+			{'name': 'headquarters', 'link': '/headquarters/create'}]
+
+
+sidebar_complete = [{'name': 'rules', 'link': '#'}, 
 			{'name': 'games', 'link': '#'}, 
 			{'name': 'stories', 'link': '#'}, 
 			{'name': 'heroes', 'link': '#'}, 

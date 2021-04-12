@@ -435,6 +435,7 @@ function move_submit() {
 	const permeate_cover = check("move_permeate_cover");
 	const equip_type = select("move_equip_type");
 	const equipment = select("move_equipment");
+	const equip_improvise = check("move_equip_improvise");
 	const concealment_sense = select("move_concealment_sense");
 	const conceal_opposed = select("move_conceal_opposed");
 	const extended_actions = select("move_extended_actions");
@@ -551,6 +552,7 @@ function move_submit() {
 			'permeate_cover': permeate_cover,
 			'equip_type': equip_type,
 			'equipment': equipment,
+			'equip_improvise': equip_improvise,
 			'concealment_sense': concealment_sense,
 			'conceal_opposed': conceal_opposed,
 			'extended_actions': extended_actions,

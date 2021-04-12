@@ -2646,6 +2646,7 @@ def power_move_post(entry, body, cells):
 	permeate_cover = entry.permeate_cover
 	equip_type = entry.equip_type
 	equipment = entry.equipment
+	equip_improvise = entry.equip_improvise
 	concealment_sense = entry.concealment_sense
 	conceal_opposed = entry.conceal_opposed
 	extended_actions = entry.extended_actions
@@ -2859,6 +2860,7 @@ def power_move_post(entry, body, cells):
 	new_mod = mod_create('Equipment', 15)
 	new_mod = mod_cell('Type:', 6, [equip_type], new_mod)
 	new_mod = mod_cell('Required:', 12, [equipment], new_mod)
+	new_mod = mod_cell('Can Improvise', 15, [equip_improvise], new_mod)
 	body = mod_add(equip, new_mod, body)
 
 	cells = check_cell('Conceal', 9, concealment, cells, True)

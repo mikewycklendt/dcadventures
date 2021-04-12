@@ -4434,6 +4434,7 @@ def power_post_move():
 	permeate_cover = request.get_json()['permeate_cover']
 	equip_type = request.get_json()['equip_type']
 	equipment = request.get_json()['equipment']
+	equip_improvise = request.get_json()['equip_improvise']
 	concealment_sense = request.get_json()['concealment_sense']
 	conceal_opposed = request.get_json()['conceal_opposed']
 	extended_actions = request.get_json()['extended_actions']
@@ -4635,6 +4636,7 @@ def power_post_move():
 						permeate_cover = permeate_cover,
 						equip_type = equip_type,
 						equipment = equipment,
+						equip_improvise = equip_improvise,
 						concealment_sense = concealment_sense,
 						conceal_opposed = conceal_opposed,
 						extended_actions = extended_actions,

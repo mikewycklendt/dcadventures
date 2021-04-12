@@ -1025,6 +1025,7 @@ class PowerMove(db.Model):
 	permeate_cover = db.Column(db.Boolean)
 	equip_type = db.Column(db.Integer, db.ForeignKey('equipment_type.id'))
 	equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
+	equip_improvise = db.Column(db.Boolean)
 	concealment_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	conceal_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	extended_actions = db.Column(db.Integer)
@@ -1130,6 +1131,7 @@ class PowerMove(db.Model):
 			'permeate_cover': self.permeate_cover,
 			'equip_type': self.equip_type,
 			'equipment': self.equipment,
+			'equip_improvise': self.equip_improvise,
 			'concealment_sense': self.concealment_sense,
 			'conceal_opposed': self.conceal_opposed,
 			'extended_actions': self.extended_actions,
