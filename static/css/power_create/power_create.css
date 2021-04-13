@@ -134,7 +134,7 @@ textarea:focus {
 	display: flex;
 	align-items: center;
 	width: 95%;
-	height: auto;
+	height: 100%;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
