@@ -106,9 +106,10 @@ textarea:focus {
 }
 
 .btn {
-	display: table-cell;
-	width: 17vw;
-	height:  3.6vw;
+	display: flex;
+	align-items: center;
+	width: 95%;
+	height: auto;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
@@ -134,7 +135,7 @@ textarea:focus {
 
 .btn::before {
 	font-family: 'FontAwesome';
-	content: '\f067';
+	content: '\f055';
 	display: inline-block;
 }
 
@@ -233,8 +234,7 @@ textarea:focus {
 	width: 100%;
 	margin: 2%;
 	grid-template-columns: 70% 25%;
-	grid-template-rows: auto;
-	grid-template-areas: "namefield namebutton";
+	grid-auto-rows: auto;
 }
 
 #addarmorunderline {

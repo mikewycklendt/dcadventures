@@ -123,9 +123,10 @@ textarea:focus {
 }
 
 .btn {
-	display: table-cell;
-	width: 17vw;
-	height:  3.6vw;
+	display: flex;
+	align-items: center;
+	width: 95%;
+	height: auto;
 	background-color: #af0101;
 	cursor: crosshair;
 	margin: 3px;
@@ -151,7 +152,7 @@ textarea:focus {
 
 .btn::before {
 	font-family: 'FontAwesome';
-	content: '\f067';
+	content: '\f055';
 	display: inline-block;
 }
 
