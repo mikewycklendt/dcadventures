@@ -5,7 +5,8 @@ meta_content="An online DC Comics Roleplaying game. Play as your favorite charac
 title = 'DC Adventures Online Roleplaying Game'
 
 sidebar = [{'name': 'skills', 'link': '/skill/create'}, 
-			{'name': 'powers', 'link': '/power/create'}, 
+			{'name': 'powers', 'link': '/power/create'}, , 
+			{'name': 'advantages', 'link': '/advantage/create'},
 			{'name': 'equipment', 'link': '/equipment/create'}, 
 			{'name': 'armor', 'link': '/armor/create'}, 
 			{'name': 'weapons', 'link': '/weapon/create'}, 
