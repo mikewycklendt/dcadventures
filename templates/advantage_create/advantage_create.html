@@ -20,17 +20,8 @@
 				</div>
 
 				<div id="addadvantageform">
-					
-					<div>
-						<select id="create_advantage_select" name="create_advantage_select">
-							<option value="">Advantage</option>
-							{% for a in advantages %}
-								<option value={{a.id}}>{{a.name}}</option>
-							{% endfor %}
-						</select> 
-					</div>
 
-					<div style="display: none;">
+					<div >
 						<input type="text" id="advantage_name" placeholder="Advantage Name">
 					</div>
 						

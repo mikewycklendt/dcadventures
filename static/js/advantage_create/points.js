@@ -84,9 +84,8 @@ function points_submit() {
 	const ranks_trait = select("points_ranks_trait");
 	const success = select("points_success");
 	
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
-	
+	const advantage_id = document.getElementById('advantage_id').value;
+
 	const errors = 'points-err';
 	const err_line = 'points-err-line';
 

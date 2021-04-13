@@ -59,9 +59,8 @@ function effort_submit() {
 	const benefit_count = select("effort_benefit_count");
 	const benefit_effort = check("effort_benefit_effort");
 	
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
-	
+	const advantage_id = document.getElementById('advantage_id').value;
+
 	const errors = 'effort-err';
 	const err_line = 'effort-err-line';
 

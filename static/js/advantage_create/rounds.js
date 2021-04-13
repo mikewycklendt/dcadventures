@@ -40,9 +40,8 @@ function rounds_submit() {
 	const trait = select("rounds_trait");
 	const end = select("rounds_end");
 	
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
-	
+	const advantage_id = document.getElementById('advantage_id').value;
+
 	const errors = 'rounds-err';
 	const err_line = 'rounds-err-line';
 

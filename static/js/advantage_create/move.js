@@ -86,8 +86,7 @@ function move_submit() {
 	const created = move_grid.titles;
 	const font = move_grid.font;
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const benefit = select("move_benefit");
 	const speed = select("move_speed");

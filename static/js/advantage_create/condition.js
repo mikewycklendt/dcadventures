@@ -37,8 +37,7 @@ function condition_submit() {
 	const damage_value = select("condition_damage_value");
 	const damage = select("condition_damage");
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'condition-err';
 	const err_line = 'condition-err-line';

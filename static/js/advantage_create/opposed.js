@@ -127,10 +127,7 @@ function opposed_submit() {
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
 
-
-
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'opposed-err';
 	const err_line = 'opposed-err-line';

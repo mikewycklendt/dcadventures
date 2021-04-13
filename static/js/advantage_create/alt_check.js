@@ -97,8 +97,7 @@ function check_submit() {
 	const conditions_target = select("check_conditions_target");
 	
 	
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'check-err';
 	const err_line = 'check-err-line';

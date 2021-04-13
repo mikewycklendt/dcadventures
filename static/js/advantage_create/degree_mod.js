@@ -300,9 +300,8 @@ function deg_mod_submit() {
 	const effect_target = select("deg_mod_effect_target");
 	const value_type = select("deg_mod_value_type");
 	const description = text("deg_mod_desc");
- 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'deg-mod-err';
 	const err_line = 'deg-mod-err-line';

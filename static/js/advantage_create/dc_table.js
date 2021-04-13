@@ -334,8 +334,7 @@ function dc_submit() {
 	const equipment = select("dc_equipment");
 	const equip = check("dc_equip");
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'dc-err';
 	const err_line = 'dc-err-line';

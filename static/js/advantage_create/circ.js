@@ -112,9 +112,8 @@ function circ_submit() {
 	const created = circ_grid.titles;
 	const font = circ_grid.font;
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
-	
+	const advantage_id = document.getElementById('advantage_id').value;
+
 	const benefit = select("circ_benefit");
 	const circ_target = select("circ_target")
 	const mod = select("circ_mod")

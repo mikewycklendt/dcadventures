@@ -244,8 +244,7 @@ function modifiers_submit() {
 	const lasts = select("modifier_lasts");
 	const weapon_style = select("modifiers_weapon_style");
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'modifiers-err';
 	const err_line = 'modifiers-err-line';

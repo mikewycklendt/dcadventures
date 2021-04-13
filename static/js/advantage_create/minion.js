@@ -97,8 +97,7 @@ function minions_submit() {
 	const multiple_value = select("mod_minion_multiple_value");
 	const horde = check("mod_minion_horde");
 
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'minion-err';
 	const err_line = 'minion-err-line';

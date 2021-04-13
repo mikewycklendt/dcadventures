@@ -38,9 +38,8 @@ function resist_submit() {
 	const mod = select("resist_mod");
 	const which = select("resist_which");
 	
-	///const advantage_id = document.getElementById('advantage_id').value;
-	const advantage_id = select("create_advantage_select");
-	
+	const advantage_id = document.getElementById('advantage_id').value;
+
 	const errors = 'resist-err';
 	const err_line = 'resist-err-line';
 

@@ -35,8 +35,7 @@ function levels_submit() {
 
 	const old_level_type = levels_grid.old_level_type;
 
-	///const advantage_id = document.getElementById('skill_id').value;
-	const advantage_id = select("create_advantage_select");
+	const advantage_id = document.getElementById('advantage_id').value;
 
 	const errors = 'levels-err';
 	const err_line = 'levels-err-line';
