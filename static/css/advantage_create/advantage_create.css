@@ -153,7 +153,7 @@ textarea:focus {
 .btn::before {
 	font-family: 'FontAwesome';
 	content: '\f055';
-	padding-right: 1.5vw;
+	padding-right: .7vw;
 	display: inline-block;
 }
 
