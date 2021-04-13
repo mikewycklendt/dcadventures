@@ -268,7 +268,7 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#vehicle-edit-field input[type="text"] {
+#addvehiclegrid input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;

@@ -286,7 +286,7 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#advantage-edit-field input[type="text"] {
+#addadvantagegrid input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;

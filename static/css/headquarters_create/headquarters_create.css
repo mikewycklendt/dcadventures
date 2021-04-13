@@ -269,7 +269,7 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#head-edit-field input[type="text"] {
+#addheadgrid input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;

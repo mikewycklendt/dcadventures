@@ -276,7 +276,7 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#skill-edit-field input[type="text"] {
+#addskillgrid input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;

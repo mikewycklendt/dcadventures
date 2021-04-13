@@ -293,7 +293,7 @@ textarea:focus {
 	transition: all .15s ease-out;
 }
 
-#power-edit-field input[type="text"] {
+#addpowergrid input[type="text"] {
 	height: 2.4vw;
 	padding: .5vw;
 	font-size: 150%;
