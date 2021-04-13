@@ -135,6 +135,7 @@ textarea:focus {
 
 .btn::before {
 	font-family: 'FontAwesome';
+	padding-right: 1.5vw;
 	font-size: 130%;
 	content: '\f055';
 	display: inline-block;
