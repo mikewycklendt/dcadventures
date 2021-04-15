@@ -176,7 +176,7 @@ body{
 	display: flex;
 	align-items: center;
 	width: 95%;
-	padding: .2%;
+	height: 5vw;
 	background-color: #af0101;
 	cursor: pointer;
 	margin: 3px;
