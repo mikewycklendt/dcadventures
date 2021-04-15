@@ -157,7 +157,7 @@ body{
 }
 
 
-#login {
+.modal-content {
 	display: none;
 	align-items: center;
 	align-self: center;
@@ -168,6 +168,8 @@ body{
 	outline-offset: -4px;
 	width: 40vw;
 	height: 80vh;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
 
 .login {

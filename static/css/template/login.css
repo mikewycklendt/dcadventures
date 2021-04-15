@@ -9,6 +9,7 @@
 	grid-template-columns: 25% 50% 25%;
 }
 
+
 #login-banner {
 	display: flex;
 	width: 80%;
@@ -26,11 +27,4 @@
 	text-align: left;
 	border-bottom: 2px solid #af0101;
 	padding: 3vw;
-}
-
-.close-div {
-	display: flex;
-	align-items: flex-end;
-	width: 100%;
-	height: fit-content;
 }

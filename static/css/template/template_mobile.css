@@ -280,9 +280,8 @@
 	display: inline-block;	
 }
 
-#login {
-	display: flex;
-	align-items: center;
+.modal-content {
+	display: none;
 	background-color: #fefefe;
 	margin: auto;
 	padding: 10vw;
@@ -290,4 +289,6 @@
 	outline-offset: -4px;
 	width: 70vw;
 	height: 80vh;
+	opacity: 0%;
+	transition: all .2s ease-out;
 }
