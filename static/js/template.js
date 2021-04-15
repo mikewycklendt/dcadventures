@@ -4,7 +4,7 @@ function show_login() {
 	const div = 'login';
 
 	show_div(modal, 'flex');
-	show_div(div, 'block');
+	show_div(div, 'flex');
 }
 
 function login_close() {
