@@ -191,6 +191,10 @@ a {
 	display: block;
 }
 
+.close {
+	cursor: pointer;
+	width: fit-content;
+}
 
 .close::before {
 	font-family: 'FontAwesome';
