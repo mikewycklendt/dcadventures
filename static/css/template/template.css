@@ -159,6 +159,8 @@ body{
 
 .modal-content {
 	display: none;
+	background: url(/static/img/bg/modal_bg.png) no-repeat;
+	background-size: 100%;
 	align-items: center;
 	align-self: center;
 	justify-content: center;
