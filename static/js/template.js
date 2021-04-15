@@ -10,6 +10,6 @@ function show_login() {
 function login_close() {
 	const div = 'login';
 
-	hide_div(div, 200);
-	hide_div(modal, 200);
+	hide_div(div, 2);
+	hide_div(modal, 2);
 }
