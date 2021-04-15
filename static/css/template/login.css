@@ -34,3 +34,9 @@
 	padding: 1vw;
 	margin-bottom: 5px;
 }
+
+.login-fields {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
