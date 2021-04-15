@@ -31,11 +31,11 @@ body{
 
 }
 
-#bannergrid{
+#banner{
 	display: grid;
 	grid-area: banner;
 	height: 100%;
-	background-image: url( 'img/banner.jpg' ) no-repeat;
+	background-image: url( '/static/img/banner.jpg' ) no-repeat;
 	background-size: cover;
 	width: 100%;
 	grid-template-columns:  auto 7vw;
@@ -45,12 +45,6 @@ body{
 
 #login-btn-place {
 	display: block;
-}
-
-#banner {
-	grid-area: banner;
-	width: auto;
-	height: auto;
 }
 
 #banner-img {
