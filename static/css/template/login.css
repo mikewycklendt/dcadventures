@@ -23,11 +23,12 @@
 }
 
 .login-field {
+	width: 80%;
 	display: grid;
 	color: #af0101;
 	font-size: 200%;
 	font-family: Comic;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 35% 65%;
 	text-align: left;
 	border: 2px solid #af0101;
 	padding: 1vw;
