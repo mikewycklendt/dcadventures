@@ -205,3 +205,15 @@ body{
 	content: '\f2f6';
 	display: inline-block;	
 }
+
+.text-big input[type="text"] {
+	height: 2.5vw;
+	padding: .6vw;
+	font-size: 140%;
+}
+
+.text-small input[type="text"] {
+	height: 1.1vw;
+	font-size: 80%;
+	padding: .1vw;
+}

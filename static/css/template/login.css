@@ -23,6 +23,8 @@
 
 .login-field {
 	display: grid;
+	font-size: 150%;
+	font-family: Comic;
 	grid-template-columns: 25% 75%;
 	text-align: left;
 	border-bottom: 2px solid #af0101;
