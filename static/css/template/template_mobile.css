@@ -246,3 +246,48 @@
 	color: #cdb99d;
 	text-decoration: none;
 }
+
+.login {
+	display: flex;
+	align-items: center;
+	width: 95%;
+	height: 10vw;
+	background-color: #af0101;
+	cursor: crosshair;
+	margin: 3px;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Comic;
+	text-decoration: none;
+	font-size: 120%;
+	color: white;
+	outline: 2px solid white;
+	outline-offset: -4px;
+	transition: all .2s ease-out;
+}
+
+.login:hover {
+	background-color: lightblue;
+	color: black;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+	
+.login::before {
+	font-family: 'FontAwesome';
+	content: '\f2f6';
+	display: inline-block;	
+}
+
+#login {
+	display: flex;
+	align-items: center;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 10vw;
+	outline: 2px solid #af0101;
+	outline-offset: -4px;
+	width: 70vw;
+	height: 80vh;
+}

@@ -199,41 +199,11 @@ a {
 	display: inline-block;	
 }
 
-.login {
-	display: flex;
-	align-items: center;
-	width: 95%;
-	height: 100%;
-	background-color: #af0101;
-	cursor: crosshair;
-	margin: 3px;
-	justify-content: center;
-	text-align: center;
-	vertical-align: middle;
-	font-family: Comic;
-	text-decoration: none;
-	font-size: 120%;
-	color: white;
-	outline: 2px solid white;
-	outline-offset: -4px;
-	transition: all .2s ease-out;
-}
-
-.login:hover {
-	background-color: lightblue;
-	color: black;
-	outline: 2px solid black;
-	outline-offset: -2px;
-}
-	
-.login::before {
-	font-family: 'FontAwesome';
-	content: '\f2f6';
-	display: inline-block;	
-}
-
 .modal {
 	display: none; /* Hidden by default */
+	align-items: center;
+	align-content: center;
+	justify-content: center;
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
 	left: 0;
@@ -244,23 +214,4 @@ a {
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
-#login-grid {
-	display: grid;
-	grid-auto-rows: auto;
-}
-
-#login-btn {
-	display: grid;
-	grid-template-columns: 25% 50% 25%;
-}
-
-#login-banner {
-	display: flex;
-	width: 80%;
-	height: fit-content;
-	align-self: center;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-}
+ 

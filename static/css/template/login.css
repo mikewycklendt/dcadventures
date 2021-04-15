@@ -1,0 +1,36 @@
+ 
+#login-grid {
+	display: grid;
+	grid-auto-rows: auto;
+}
+
+#login-btn {
+	display: grid;
+	grid-template-columns: 25% 50% 25%;
+}
+
+#login-banner {
+	display: flex;
+	width: 80%;
+	height: fit-content;
+	align-self: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20vh;
+}
+
+.login-field {
+	display: grid;
+	grid-template-columns: 25% 75%;
+	text-align: left;
+	border-bottom: 2px solid #af0101;
+	padding: 3vw;
+}
+
+.close-div {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	height: fit-content;
+}

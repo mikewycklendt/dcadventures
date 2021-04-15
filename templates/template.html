@@ -29,12 +29,12 @@
 			<div id="banner">
 
 			
-				<div id="bannergrid" style="position: absolute; width: 70%;">
-					<div id="topleft"></div>
-					<div id="login">
-						<div class="btn-login">Login</div>		
-					</div>
-					<div id="bottom"></div>
+				<div id="bannergrid">
+					<div></div>
+
+					<div id="login-btn-place">
+						<div class="btn-login" onclick="show_login()">Login</div>		
+					</div>		
 				</div>
 			
 
@@ -106,6 +106,14 @@
 
 		</script>
 		--->		
+
+		<script src="/static/js/functions/functions.js"></script>
+
+		<div id="template-modal" class="modal">
+				
+			{% include '/template/login.html' %}
+				
+		</div>
 
 	</body>
 </html>
