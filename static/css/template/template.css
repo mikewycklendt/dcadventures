@@ -176,7 +176,7 @@ body{
 	display: flex;
 	align-items: center;
 	width: 95%;
-	padding: 1%;
+	padding: .2%;
 	background-color: #af0101;
 	cursor: pointer;
 	margin: 3px;
@@ -203,7 +203,7 @@ body{
 .login::before {
 	font-family: 'FontAwesome';
 	content: '\f2f6';
-	padding-right: 20px;
+	padding-right: 15px;
 	display: inline-block;	
 }
 
