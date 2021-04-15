@@ -178,7 +178,7 @@ body{
 	width: 95%;
 	padding: 1%;
 	background-color: #af0101;
-	cursor: crosshair;
+	cursor: pointer;
 	margin: 3px;
 	justify-content: center;
 	text-align: center;
