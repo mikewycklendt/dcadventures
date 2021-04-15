@@ -26,6 +26,7 @@
 	width: 80%;
 	display: grid;
 	color: #af0101;
+	margin-left: 10%;
 	font-size: 200%;
 	font-family: Comic;
 	grid-template-columns: 35% 65%;
