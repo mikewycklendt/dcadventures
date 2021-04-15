@@ -22,7 +22,7 @@ body{
 	width: 70%;
 	height: 100%;
 	margin: 0px;
-	grid-template-rows: 13vw auto auto;
+	grid-template-rows: 13.2vw auto auto;
 	grid-template-columns: .2% 17% .2% 82.4% .2%;
 	grid-template-areas: "banner banner banner banner right"
 							"left sidebar middle content right"
