@@ -12,6 +12,8 @@
 
 
 #login-banner {
+	background: url("/static/img/login.png") no-repeat;
+	background-size: 100%;
 	display: flex;
 	width: 80%;
 	height: fit-content;
