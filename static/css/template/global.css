@@ -220,6 +220,7 @@ a {
 .close-div {
 	display: flex;
 	align-items: flex-end;
+	justify-content: right;
 	width: 100%;
 	height: fit-content;
 }
