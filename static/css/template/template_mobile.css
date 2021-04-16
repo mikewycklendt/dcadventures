@@ -260,7 +260,7 @@
 	vertical-align: middle;
 	font-family: Comic;
 	text-decoration: none;
-	font-size: 120%;
+	font-size: 200%;
 	color: white;
 	outline: 2px solid white;
 	outline-offset: -4px;
@@ -287,8 +287,8 @@
 	padding: 10vw;
 	outline: 2px solid #af0101;
 	outline-offset: -4px;
-	width: 70vw;
-	height: 80vh;
+	width: 60vw;
+	height: 60vh;
 	opacity: 0%;
 	transition: all .2s ease-out;
 }
