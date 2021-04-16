@@ -288,19 +288,21 @@
 	outline: 2px solid #af0101;
 	outline-offset: -4px;
 	width: 60vw;
-	height: 60vh;
+	height: 75vh;
 	opacity: 0%;
 	transition: all .2s ease-out;
 }
 
 .text-big input[type="text"] {
-	height: 5.5vw;
+	height: 5vw;
+	width: 93%;
 	padding: 1vw;
-	font-size: 150%;
+	font-size: 130%;
 }
 
 .text-small input[type="text"] {
 	height: 2.5vw;
+	width: 93%;
 	font-size: 90%;
 	padding: .5vw;
 }
