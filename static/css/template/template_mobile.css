@@ -284,7 +284,7 @@
 	display: none;
 	background-color: #fefefe;
 	margin: auto;
-	padding: 10vw;
+	padding: 5vw;
 	outline: 2px solid #af0101;
 	outline-offset: -4px;
 	width: 60vw;
@@ -294,7 +294,7 @@
 }
 
 .text-big input[type="text"] {
-	height: 7vw;
+	height: 5.5vw;
 	padding: 1vw;
 	font-size: 150%;
 }
