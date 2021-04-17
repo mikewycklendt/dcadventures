@@ -1584,6 +1584,7 @@ def sense_post(entry, body, cells):
 	distance_unit = entry.distance_unit
 	distance_factor = entry.distance_factor
 	dimensional_type = entry.dimensional_type
+	dimensional_descriptor = entry.dimensional_descriptor
 	ranks = entry.ranks
 	cost = entry.cost
 	time_value = entry.time_value
@@ -1620,6 +1621,7 @@ def sense_post(entry, body, cells):
 	distance_unit = get_name(Unit, distance_unit)
 	concealment = get_name(Conceal, concealment)
 	conceal_power_sense = get_name(Power, conceal_power_sense)
+	dimensional_descriptor = get_name(PowerDes, dimensional_descriptor)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1691,6 +1693,7 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Dimensional', 14, dimensional, cells, True)
 	new_mod = mod_create('Dimensional', 15)
 	new_mod = mod_cell('Type', 6, [dimensional_type], new_mod)
+	new_mod = mod_cell('Descriptor Dimensions', 23, [dimensional_descriptor], new_mod)
 	body = mod_add(dimensional, new_mod, body)
 	
 	cells = check_cell('Comprehend', 12, comprehend, cells, True)
@@ -2540,6 +2543,10 @@ def power_degree_post(entry, body, cells):
 	
 	vcells = vcell('dc', 25, ['Attach DC to Object'], vcells)
 	
+	vcells = vcell('null', 22, ['Effect Nullified'], vcells)
+	
+	vcells = vcell('uncontrol', 22, ['Effect Uncontrolled'], vcells)
+	
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
@@ -3080,7 +3087,7 @@ def power_time_post(entry, body, cells):
 	reattempt_effort = entry.reattempt_effort
 	check_type = entry.check_type
 	action = entry.action
-
+	on_check = entry.on_check
 
 	title_name = get_name(PowerTimeType, title)
 	body['title'] = title_name
@@ -3105,6 +3112,8 @@ def power_time_post(entry, body, cells):
 	mod = integer_convert(mod)
 	factor = integer_convert(factor)
 	times = math(3)
+
+	on_check = get_name(Check, on_check)
 
 	action = get_name(Action, action)
 
@@ -3167,6 +3176,7 @@ def power_time_post(entry, body, cells):
 	action_name = action + ' Action'
 	cells = circ_cell('Action', 'Action', 7, action_name, cells, body)
 	cells = circ_cell('Check', 'Check', 7, check_type, cells, body)
+	cells = cell('On Check', 13, [on_check], cells)
 
 	cells = check_cell('Per Rank', 9, rank, cells)
 	cells = check_cell('Instant w/Effort', 18, reattempt_effort, cells)

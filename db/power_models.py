@@ -1285,6 +1285,7 @@ class PowerTime(db.Model):
 	reattempt_effort = db.Column(db.Boolean)
 	check_type = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	on_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
 	
 	def format(self):
 		return {
@@ -1334,7 +1335,8 @@ class PowerTime(db.Model):
 			'factor': self.factor,
 			'reattempt_effort': self.reattempt_effort,
 			'check_type': self.check_type,
-			'action': self.action
+			'action': self.action,
+			'on_check': self.on_check
 		}
 
 
@@ -2296,6 +2298,7 @@ class PowerSenseEffect(db.Model):
 	distance_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 	distance_factor = db.Column(db.Integer)
 	dimensional_type = db.Column(db.String())
+	dimensional_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	time_value = db.Column(db.Integer, db.ForeignKey('power_time.id'))
@@ -2352,6 +2355,7 @@ class PowerSenseEffect(db.Model):
 			'distance_unit': self.distance_unit,
 			'distance_factor': self.distance_factor,
 			'dimensional_type': self.dimensional_type,
+			'dimensional_descriptor': self.dimensional_descriptor,
 			'ranks': self.ranks,
 			'cost': self.cost,
 			'circ': self.circ,

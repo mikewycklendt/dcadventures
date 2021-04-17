@@ -202,7 +202,7 @@
 
 #sense-dimensional {
 	display: grid;
-	grid-template-columns: 20% 30% 50%;
+	grid-template-columns: 20% 30% 35%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;

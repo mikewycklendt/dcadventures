@@ -1368,6 +1368,7 @@ def sense_post_errors(data):
 	distance_unit = data['distance_unit']
 	distance_factor = data['distance_factor']
 	dimensional_type = data['dimensional_type']
+	dimensional_descriptor = data['dimensional_descriptor']
 	ranks = data['ranks']
 	cost = data['cost']
 	power_cost = data['power_cost']
@@ -1396,6 +1397,7 @@ def sense_post_errors(data):
 	errors = id_check(Skill, time_skill, 'skill', errors)
 	errors = id_check(Unit, distance_unit, 'unit', errors)
 	errors = id_check(Conceal, concealment, 'Concealment', errors)
+	errors = id_check(PowerDes, dimensional_descriptor, 'Dimensional Descriptor', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1433,6 +1435,11 @@ def sense_post_errors(data):
 	errors = checked_invalid_option(mental, '11', sense, 'Excludes Mental Senses', 'Sense', 'Mental', errors)
 	errors = checked_invalid_option(visual, '6', sense, 'Excludes Visual Senses', 'Sense', 'Visual', errors)
 	errors = checked_invalid_option(tactile, '9', sense, 'Excludes Tactile Senses', 'Sense', 'Tactile', errors)
+
+	errors = variable_fields('descriptor', 'Descriptor Dimension', dimensional_type, [dimensional_descriptor], errors)
+	errors = variable_field('descriptor', dimensional_type, 'Descriptor', dimensional_descriptor, errors)
+	
+
 
 	return (errors)
 

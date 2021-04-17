@@ -188,6 +188,13 @@ function sense_conceal_power() {
 	check_display(check, div);
 }
 
+function sense_dimensional_type() {
+	const select = 'sense_dimensional_type';
+	const options = [{'val': 'descriptor', 'div': 'sense-dimensional-type'}]
+
+	select_opacity(select, options);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -234,6 +241,7 @@ function sense_submit() {
 	const distance_unit = select("sense_dis_unit");
 	const distance_factor = select("sense_dis_factor");
 	const dimensional_type = select("sense_dimensional_type");
+	const dimensional_descriptor = select("sense_dimensional_descriptor")
 	const ranks = select("sense_ranks");
 	const cost = select("sense_cost");
 	const power_cost = select("cost");
@@ -291,6 +299,7 @@ function sense_submit() {
 			'distance_unit': distance_unit,
 			'distance_factor': distance_factor,
 			'dimensional_type': dimensional_type,
+			'dimensional_descriptor': dimensional_descriptor,
 			'ranks': ranks,
 			'cost': cost,
 			'columns': columns,

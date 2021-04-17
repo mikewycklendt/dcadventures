@@ -104,6 +104,7 @@ function time_submit() {
 	const reattempt_effort = check("time_reattempt_effort");
 	const check_type = select("time_check");
 	const action = select("time_action");
+	const on_check = select("time_on_check")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -159,7 +160,8 @@ function time_submit() {
 			'factor': factor,
 			'reattempt_effort': reattempt_effort,
 			'check_type': check_type,
-			'action': action
+			'action': action,
+			'on_check': on_check
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
