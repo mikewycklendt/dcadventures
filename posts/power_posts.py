@@ -1677,6 +1677,7 @@ def sense_post(entry, body, cells):
 	word = string('from', [conceal_power_sense])
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
+	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
