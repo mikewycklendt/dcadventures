@@ -263,8 +263,8 @@ function sense_submit() {
 	const multiple = select("sense_multiple");
 	const analytical = check("sense_analytical");
 	const acute_req = check("sense_acute_req");
-	const awareneass = check("sense_awareneass");
-	const awareneass_descriptor = select("sense_awareneass_descriptor")
+	const awareness = check("sense_awareness");
+	const awareness_descriptor = select("sense_awareness_descriptor")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -328,8 +328,8 @@ function sense_submit() {
 			'multiple': multiple,
 			'analytical': analytical,
 			'acute_req': acute_req,
-			'awareneass': awareneass,
-			'awareneass_descriptor': awareneass_descriptor
+			'awareness': awareness,
+			'awareness_descriptor': awareness_descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -3233,8 +3233,8 @@ def power_post_sense():
 	multiple = request.get_json()['multiple']
 	analytical = request.get_json()['analytical']
 	acute_req = request.get_json()['acute_req']
-	awareneass = request.get_json()['awareneass']
-	awareneass_descriptor = request.get_json()['awareneass_descriptor']
+	awareness = request.get_json()['awareness']
+	awareness_descriptor = request.get_json()['awareness_descriptor']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3255,7 +3255,7 @@ def power_post_sense():
 	concealment = db_integer(Conceal, concealment)
 	conceal_power_sense = db_integer(Power, conceal_power_sense)
 	dimensional_descriptor = db_integer(PowerDes, dimensional_descriptor)
-	awareneass_descriptor = db_integer(PowerDes, awareneass_descriptor)
+	awareness_descriptor = db_integer(PowerDes, awareness_descriptor)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3321,8 +3321,8 @@ def power_post_sense():
 									multiple = multiple,
 									analytical = analytical,
 									acute_req = acute_req,
-									awareneass_descriptor = awareneass_descriptor,
-									awareneass = awareneass
+									awareness_descriptor = awareness_descriptor,
+									awareness = awareness
 								)
 
 		db.session.add(entry)

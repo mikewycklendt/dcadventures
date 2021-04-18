@@ -1598,8 +1598,8 @@ def sense_post(entry, body, cells):
 	conceal_power_sense = entry.conceal_power_sense
 	analytical = entry.analytical
 	acute_req = entry.acute_req
-	awareneass = entry.awareneass
-	awareneass_descriptor = entry.awareneass_descriptor
+	awareness = entry.awareness
+	awareness_descriptor = entry.awareness_descriptor
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1626,7 +1626,7 @@ def sense_post(entry, body, cells):
 	concealment = get_name(Conceal, concealment)
 	conceal_power_sense = get_name(Power, conceal_power_sense)
 	dimensional_descriptor = get_name(PowerDes, dimensional_descriptor)
-	awareneass_descriptor = get_name(PowerDes, awareneass_descriptor)
+	awareness_descriptor = get_name(PowerDes, awareness_descriptor)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1706,10 +1706,10 @@ def sense_post(entry, body, cells):
 	new_mod = mod_cell('Type', 6, [comprehend_type], new_mod)
 	body = mod_add(comprehend, new_mod, body)
 
-	cells = check_cell('Awareness', 11, awareneass, cells, True)
+	cells = check_cell('Awareness', 11, awareness, cells, True)
 	new_mod = mod_create('Awareness', 15)
-	new_mod = mod_cell('Effect Type', 16, [awareneass_descriptor], new_mod)
-	body = mod_add(awareneass, new_mod, body)
+	new_mod = mod_cell('Effect Type', 16, [awareness_descriptor], new_mod)
+	body = mod_add(awareness, new_mod, body)
 
 	cells = check_cell('Radius', 8, radius, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)

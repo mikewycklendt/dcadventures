@@ -1378,8 +1378,8 @@ def sense_post_errors(data):
 	concealment = data['concealment']
 	conceal_power_sense = data['conceal_power_sense']
 	conceal_power = data['conceal_power']
-	awareneass = data['awareneass']
-	awareneass_descriptor = data['awareneass_descriptor']
+	awareness = data['awareness']
+	awareness_descriptor = data['awareness_descriptor']
 
 
 
@@ -1439,8 +1439,8 @@ def sense_post_errors(data):
 	errors = checked_invalid_option(visual, '6', sense, 'Excludes Visual Senses', 'Sense', 'Visual', errors)
 	errors = checked_invalid_option(tactile, '9', sense, 'Excludes Tactile Senses', 'Sense', 'Tactile', errors)
 
-	errors = check_fields(awareneass, 'Awareness', [awareneass_descriptor], errors)
-	errors = check_field(awareneass, 'Awareness', 'Descriptor', awareneass_descriptor, errors)
+	errors = check_fields(awareness, 'Awareness', [awareness_descriptor], errors)
+	errors = check_field(awareness, 'Awareness', 'Descriptor', awareness_descriptor, errors)
 
 	errors = variable_fields('descriptor', 'Descriptor Dimension', dimensional_type, [dimensional_descriptor], errors)
 	errors = variable_field('descriptor', dimensional_type, 'Descriptor', dimensional_descriptor, errors)
