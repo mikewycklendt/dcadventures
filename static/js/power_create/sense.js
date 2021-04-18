@@ -195,6 +195,14 @@ function sense_dimensional_type() {
 	select_opacity(select, options);
 }
 
+function sense_awareneass() {
+	const check = 'sense_awareneass';
+	const div = 'sense-awareneass';
+	const entry = 'sense-entry';
+
+	check_drop(check, div, entry);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -253,6 +261,10 @@ function sense_submit() {
 	const conceal_power = check("sense_conceal_power");
 	const conceal_power_sense = select("sense_conceal_power_sense");
 	const multiple = select("sense_multiple");
+	const analytical = check("sense_analytical");
+	const acute_req = check("sense_acute_req");
+	const awareneass = check("sense_awareneass");
+	const awareneass_descriptor = select("sense_awareneass_descriptor")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -313,7 +325,11 @@ function sense_submit() {
 			'conceal_precise': conceal_precise,
 			'conceal_power': conceal_power,
 			'conceal_power_sense': conceal_power_sense,
-			'multiple': multiple
+			'multiple': multiple,
+			'analytical': analytical,
+			'acute_req': acute_req,
+			'awareneass': awareneass,
+			'awareneass_descriptor': awareneass_descriptor
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

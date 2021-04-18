@@ -305,7 +305,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'}, {'type': 'swing', 'name': 'Swing'},]
 
-	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'add', 'name': 'Add'}]
 
 	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
@@ -3231,7 +3231,10 @@ def power_post_sense():
 	conceal_power = request.get_json()['conceal_power']
 	conceal_power_sense = request.get_json()['conceal_power_sense']
 	multiple = request.get_json()['multiple']
-
+	analytical = request.get_json()['analytical']
+	acute_req = request.get_json()['acute_req']
+	awareneass = request.get_json()['awareneass']
+	awareneass_descriptor = request.get_json()['awareneass_descriptor']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3252,6 +3255,7 @@ def power_post_sense():
 	concealment = db_integer(Conceal, concealment)
 	conceal_power_sense = db_integer(Power, conceal_power_sense)
 	dimensional_descriptor = db_integer(PowerDes, dimensional_descriptor)
+	awareneass_descriptor = db_integer(PowerDes, awareneass_descriptor)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3314,7 +3318,11 @@ def power_post_sense():
 									conceal_precise = conceal_precise,
 									conceal_power = conceal_power,
 									conceal_power_sense = conceal_power_sense,
-									multiple = multiple
+									multiple = multiple,
+									analytical = analytical,
+									acute_req = acute_req,
+									awareneass_descriptor = awareneass_descriptor,
+									awareneass = awareneass
 								)
 
 		db.session.add(entry)

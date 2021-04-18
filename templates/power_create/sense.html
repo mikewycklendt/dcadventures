@@ -271,6 +271,40 @@
 
 		<div>
 			<div class="check-div">
+				<input type="checkbox" id="sense_radius" class="medium-checkbox med-checkbox" > Radius 
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_accurate" class="medium-checkbox med-checkbox" > Accurate
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_acute" class="medium-checkbox med-checkbox" > Acute
+			</div>
+		</div>
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_analytical" class="medium-checkbox med-checkbox" > Analytical 
+			</div>
+		</div>
+
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_acute_req" class="medium-checkbox med-checkbox" > Requires Acute 
+			</div>
+		</div>
+		
+	</div>
+
+	<div id="sense-row5">
+		<div>
+			<div class="check-div">
 				<input type="checkbox" id="sense_time" class="medium-checkbox med-checkbox" onclick="sense_time()"> Time Effect
 			</div>
 		</div>
@@ -289,22 +323,26 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="sense_radius" class="medium-checkbox med-checkbox" > Radius 
+				<input type="checkbox" id="sense_awareneass" class="medium-checkbox med-checkbox" onclick="sense_awareness()"> Awareness
 			</div>
 		</div>
 
+	</div>
+
+	<div id="sense-awareneass">
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="sense_accurate" class="medium-checkbox med-checkbox" > Accurate
-			</div>
+			Awareness:
 		</div>
 
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="sense_acute" class="medium-checkbox med-checkbox" > Acute
-			</div>
+			<select class="descriptor-sml" id="sense_awareneass_descriptor" name="sense_awareneass_descriptor">
+				<option value="">Descriptor</option>
+				<option value="">Use above form to put descriptors here</option>
+				{% for d in descriptor_options %}
+					<option value={{d.id}}>{{d.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
-	
 	</div>
 
 	<div id="sense-comprehend">
@@ -339,7 +377,7 @@
 		
 		<div>
 			<select class="time-title-sml" id="sense_time_type" name="sense_time_type">
-				<option value="">Time Effect</option>
+				<option value="">Time Effect by Group</option>
 				<option value="">Use Time Effect Form to Put Options Here</option>
 				{% for p in power_time_type %}
 					<option value={{p.id}}>{{p.name}}</option>

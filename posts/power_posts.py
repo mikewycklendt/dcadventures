@@ -21,7 +21,7 @@ from functions.linked import link_add, delete_link, level_add, delete_level, lin
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
 
@@ -1596,6 +1596,10 @@ def sense_post(entry, body, cells):
 	conceal_precise = entry.conceal_precise
 	conceal_power = entry.conceal_power
 	conceal_power_sense = entry.conceal_power_sense
+	analytical = entry.analytical
+	acute_req = entry.acute_req
+	awareneass = entry.awareneass
+	awareneass_descriptor = entry.awareneass_descriptor
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1622,6 +1626,7 @@ def sense_post(entry, body, cells):
 	concealment = get_name(Conceal, concealment)
 	conceal_power_sense = get_name(Power, conceal_power_sense)
 	dimensional_descriptor = get_name(PowerDes, dimensional_descriptor)
+	awareneass_descriptor = get_name(PowerDes, awareneass_descriptor)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1701,14 +1706,22 @@ def sense_post(entry, body, cells):
 	new_mod = mod_cell('Type', 6, [comprehend_type], new_mod)
 	body = mod_add(comprehend, new_mod, body)
 
+	cells = check_cell('Awareness', 11, awareneass, cells, True)
+	new_mod = mod_create('Awareness', 15)
+	new_mod = mod_cell('Effect Type', 16, [awareneass_descriptor], new_mod)
+	body = mod_add(awareneass, new_mod, body)
+
 	cells = check_cell('Radius', 8, radius, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
-	
+	cells = check_cell('Analytical' 12, analytical, cells)
+	cells = check_cell('Req Acute', 10, acute_req, cells)
 	cells = check_cell('Precise', 7, conceal_precise, cells)
-	cells = check_cell('No Mental', 11, mental, cells)
-	cells = check_cell('No Visual', 11, visual, cells)
-	cells = check_cell('No Tactile', 11, tactile, cells)
+
+	words = checks_strings('Mental', mental)
+	words = checks_strings('Visual', visual, words)
+	words = checks_strings('Tactile', tactile, words)
+	cells = circ_cell('Excludes', 'Excludes:', 10, words, cells, body)
 
 	cells = circ_cell('Multiple', 'If Multiple', 10, multiple, cells, body)
 
@@ -3327,7 +3340,7 @@ def power_extra_post(entry, body, cells):
 
 	action = get_name(Action, action)
 
-	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 	type = selects(type, extra_type)
 
 	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]

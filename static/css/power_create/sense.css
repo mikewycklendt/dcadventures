@@ -138,19 +138,21 @@
 	display: grid;
 	padding: 2px;;
 	grid-template-columns: auto auto auto auto auto;
-	gap: 2px;
+	gap: .3vw;
 }
 
 #sense-row4 {
 	display: grid;
 	padding: 2px;
-	gap: 2px;
+	gap: .3vw;
 	grid-template-columns: auto auto auto auto auto auto;
 }
 
+
 #sense-row5 {
 	display: grid;
-	grid-template-columns: 20% 80%;	
+	grid-template-columns: auto auto auto auto auto;
+	gap: .3vw;
 }
 
 #sense-time {
@@ -203,6 +205,15 @@
 #sense-dimensional {
 	display: grid;
 	grid-template-columns: 20% 30% 35%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-awareness {
+	display: grid;
+	grid-template-columns: 13% 35% 35%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;

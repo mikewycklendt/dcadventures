@@ -713,3 +713,17 @@ def check_string(word, value):
 		value = ''
 
 	return (value)
+
+def checks_strings(word, value, words=''):
+
+	if value == True:
+		value = word
+	else:
+		value = ''
+
+	if words == '':
+		words = value
+	else:
+		words += ', ' + value
+
+	return (value)

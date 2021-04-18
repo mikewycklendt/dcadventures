@@ -2311,6 +2311,10 @@ class PowerSenseEffect(db.Model):
 	conceal_power = db.Column(db.Boolean)
 	conceal_power_sense = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	multiple = db.Column(db.String())
+	analytical = db.Column(db.Boolean)
+	acute_req = db.Column(db.Boolean)
+	awareneass = db.Column(db.Boolean)
+	awareneass_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -2365,7 +2369,11 @@ class PowerSenseEffect(db.Model):
 			'conceal_precise': self.conceal_precise,
 			'conceal_power': self.conceal_power,
 			'conceal_power_sense': self.conceal_power_sense,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'analytical': self.analytical,
+			'acute_req': self.acute_req,
+			'awareneass': self.awareneass,
+			'awareneass_descriptor': self.awareneass_descriptor
 		}
 
 class PowerReverse(db.Model):
