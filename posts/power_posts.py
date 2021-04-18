@@ -1714,7 +1714,7 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Radius', 8, radius, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
-	cells = check_cell('Analytical' 12, analytical, cells)
+	cells = check_cell('Analytical', 12, analytical, cells)
 	cells = check_cell('Req Acute', 10, acute_req, cells)
 	cells = check_cell('Precise', 7, conceal_precise, cells)
 
