@@ -195,9 +195,9 @@ function sense_dimensional_type() {
 	select_opacity(select, options);
 }
 
-function sense_awareneass() {
-	const check = 'sense_awareneass';
-	const div = 'sense-awareneass';
+function sense_awareness() {
+	const check = 'sense_awareness';
+	const div = 'sense-awareness';
 	const entry = 'sense-entry';
 
 	check_drop(check, div, entry);
