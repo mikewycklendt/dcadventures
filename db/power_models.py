@@ -2313,6 +2313,8 @@ class PowerSenseEffect(db.Model):
 	multiple = db.Column(db.String())
 	analytical = db.Column(db.Boolean)
 	acute_req = db.Column(db.Boolean)
+	awareness = db.Column(db.Boolean)
+	awareness_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
