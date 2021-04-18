@@ -2313,8 +2313,6 @@ class PowerSenseEffect(db.Model):
 	multiple = db.Column(db.String())
 	analytical = db.Column(db.Boolean)
 	acute_req = db.Column(db.Boolean)
-	awareneass = db.Column(db.Boolean)
-	awareneass_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -2372,8 +2370,8 @@ class PowerSenseEffect(db.Model):
 			'multiple': self.multiple,
 			'analytical': self.analytical,
 			'acute_req': self.acute_req,
-			'awareneass': self.awareneass,
-			'awareneass_descriptor': self.awareneass_descriptor
+			'awareness': self.awareness,
+			'awareness_descriptor': self.awareness_descriptor
 		}
 
 class PowerReverse(db.Model):
