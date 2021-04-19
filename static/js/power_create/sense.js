@@ -68,6 +68,8 @@ function sense_type() {
 function sense_counter_conceal()   {
 	const select = 'sense_counter_conceal';
 	const options = [{'val': 'descriptor', 'div': 'sense-counter-conceal-descriptor'}]
+
+	select_opacity(select, options);
 }
 
 function sense_height_trait_type() {
