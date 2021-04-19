@@ -21,7 +21,7 @@ from functions.linked import link_add, delete_link, level_add, delete_level, lin
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings, substitute
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
 
@@ -1600,6 +1600,11 @@ def sense_post(entry, body, cells):
 	acute_req = entry.acute_req
 	awareness = entry.awareness
 	awareness_descriptor = entry.awareness_descriptor
+	counter_conceal = entry.counter_conceal
+	counter_conceal_descriptor = entry.counter_conceal_descriptor
+	ranged = entry.range
+	range = entry.range
+	ranged_type = entry.ranged_type
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1610,6 +1615,8 @@ def sense_post(entry, body, cells):
 	time_value = get_keyword(PowerTime, time_value)
 	time_type = get_name(PowerTimeType, time_type)
 	circ = get_keyword(PowerCirc, circ)
+	range = get_keyword(PowerRanged, range)
+	ranged_type = get_name(PowerRangedType, ranged_type)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -1627,6 +1634,9 @@ def sense_post(entry, body, cells):
 	conceal_power_sense = get_name(Power, conceal_power_sense)
 	dimensional_descriptor = get_name(PowerDes, dimensional_descriptor)
 	awareness_descriptor = get_name(PowerDes, awareness_descriptor)
+	counter_conceal_descriptor = get_name(PowerDes, counter_conceal_descriptor)
+
+	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
 
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
 	target = selects(target, targets_select)
@@ -1677,6 +1687,7 @@ def sense_post(entry, body, cells):
 	word = string('from', [conceal_power_sense])
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
+	vcells = vcell('counter_conceal', 30, ['Counters', counter_conceal, 'Concealment'], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
@@ -1695,6 +1706,11 @@ def sense_post(entry, body, cells):
 	new_mod = mod_create('Time Effect', 15)
 	new_mod = mod_cell('Keyword', 10, [time_value, time_type])
 	body = mod_add(time, new_mod, body)
+
+	cells = check_cell('Extended', 11, ranged, cells, True)
+	new_mod = mod_create('Extended', 15)
+	new_mod = mod_cell('Range', 10, [range, ranged_type])
+	body = mod_add(ranged, new_mod, body)
 
 	cells = check_cell('Dimensional', 14, dimensional, cells, True)
 	new_mod = mod_create('Dimensional', 15)
@@ -2560,6 +2576,10 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('null', 22, ['Effect Nullified'], vcells)
 	
 	vcells = vcell('uncontrol', 22, ['Effect Uncontrolled'], vcells)
+	
+	vcells = vcell('act', 12, ['Can Act'], vcells)
+
+	vcells = vcell('no_act', 12, ["Can't Act"], vcells)
 	
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 

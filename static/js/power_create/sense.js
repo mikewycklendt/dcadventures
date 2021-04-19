@@ -59,9 +59,15 @@ function sense_type() {
 	const select = "sense_type";
 	const options = [{'val': 'height', 'div': "sense-height"},
 					{'val': 'resist', 'div': "sense-resist"},
-					{'val': 'conceal', 'div': "sense-conceal"}];
+					{'val': 'conceal', 'div': "sense-conceal"},
+					{'va;': 'counter_conceal', 'div': 'sense-counter-conceal'}];
 
 	select_opacity(select, options);
+}
+
+function sense_counter_conceal()   {
+	const select = 'sense_counter_conceal';
+	const options = [{'val': 'descriptor', 'div': 'sense-counter-conceal-descriptor'}]
 }
 
 function sense_height_trait_type() {
@@ -203,6 +209,14 @@ function sense_awareness() {
 	check_drop(check, div, entry);
 }
 
+function sense_ranged() {
+	const check = 'sense_ranged';
+	const div = 'sense-ranged';
+	const entry ='sense-entry';
+
+	check_drop(check, div, entry);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -265,6 +279,11 @@ function sense_submit() {
 	const acute_req = check("sense_acute_req");
 	const awareness = check("sense_awareness");
 	const awareness_descriptor = select("sense_awareness_descriptor")
+	const counter_conceal = select("sense_counter_conceal");
+	const counter_conceal_descriptor = select("sense_counter_conceal_descriptor")
+	const ranged = check("sense_ranged");
+	const range = select("sense_range");
+	const ranged_type = select("sense_ranged_type")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -329,7 +348,12 @@ function sense_submit() {
 			'analytical': analytical,
 			'acute_req': acute_req,
 			'awareness': awareness,
-			'awareness_descriptor': awareness_descriptor
+			'awareness_descriptor': awareness_descriptor,
+			'counter_conceal': counter_conceal,
+			'counter_conceal_descriptor': counter_conceal_descriptor,
+			'ranged': ranged,
+			'range': range,
+			'ranged_type': ranged_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

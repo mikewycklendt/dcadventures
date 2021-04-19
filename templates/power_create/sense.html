@@ -106,7 +106,25 @@
 
 		<div>
 
-			
+			<div id="sense-counter-conceal">
+				<div>
+					<select class="select-sml" id="sense_counter_conceal" name="sense_counter_conceal" onchange="sense_counter_conceal()">
+						{% for c in counter_conceal %}
+							<option value="{{c.type}}">{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="hidden" id="sense-counter-conceal-descriptor">		
+					<select class="descriptor-sml" id="sense_counter_conceal_descriptor" name="sense_counter_conceal_descriptor">
+						<option value="">Descriptor</option>
+						<option value="">Use above form to put descriptors here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
 
 			<div id="sense-conceal">
 				<div>
@@ -326,6 +344,39 @@
 			</div>
 		</div>
 
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="sense_ranged" class="medium-checkbox med-checkbox" onclick="sense_ranged()"> Extended
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="sense-ranged">
+		<div>
+			Extended:
+		</div>
+
+		<div>
+			<select class="ranged-sml" id="sense_range" name="sense_range">
+				<option value="">Range</option>
+				<option value="">Use Ranged Form to Put Options Here</option>
+				{% for p in power_ranged %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="ranged-sml" id="sense_ranged_type" name="sense_ranged_type">
+				<option value="">Range by Group</option>
+				<option value="">Use Ranged Form to Put Options Here</option>
+				{% for p in power_ranged_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="sense-awareness">

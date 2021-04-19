@@ -2315,6 +2315,11 @@ class PowerSenseEffect(db.Model):
 	acute_req = db.Column(db.Boolean)
 	awareness = db.Column(db.Boolean)
 	awareness_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	counter_conceal = db.Column(db.String())
+	counter_conceal_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	ranged = db.Column(db.Boolean)
+	range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
+	ranged_type = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 
 	def format(self):
 		return {
@@ -2373,7 +2378,12 @@ class PowerSenseEffect(db.Model):
 			'analytical': self.analytical,
 			'acute_req': self.acute_req,
 			'awareness': self.awareness,
-			'awareness_descriptor': self.awareness_descriptor
+			'awareness_descriptor': self.awareness_descriptor,
+			'counter_conceal_descriptor': self.counter_conceal_descriptor,
+			'counter_conceal': self.counter_conceal,
+			'ranged': self.ranged,
+			'range': self.range,
+			'ranged_type': self.ranged_type
 		}
 
 class PowerReverse(db.Model):

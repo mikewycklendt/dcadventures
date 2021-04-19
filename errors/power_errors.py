@@ -1380,15 +1380,20 @@ def sense_post_errors(data):
 	conceal_power = data['conceal_power']
 	awareness = data['awareness']
 	awareness_descriptor = data['awareness_descriptor']
+	counter_conceal_descriptor  = data['counter_conceal_descriptor']
+	counter_conceal = data['counter_conceal']
+	ranged = data['ranged']
+	range = data['range']
+	ranged_type = data['ranged_type']
 
-
-
-	errors = id_check(PowerCost, cost)
-	errors = id_check(PowerRanks, ranks)
-	errors = id_check(PowerCheck, skill)
-	errors = id_check(PowerTimeType, time_type)
-	errors = id_check(PowerTime, time_value)
-	errors = id_check(PowerCirc, circ)
+	errors = id_check(PowerCost, cost, 'Cost', errors)
+	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
+	errors = id_check(PowerCheck, skill, 'Variable Check', errors)
+	errors = id_check(PowerTimeType, time_type, 'Time by Group', errors)
+	errors = id_check(PowerTime, time_value, 'Time', errors)
+	errors = id_check(PowerCirc, circ,  'Circumstance', errors)
+	errors = id_check(PowerRanged, range, 'Range', errors)
+	errors = id_check(PowerRangedType, ranged_type, 'Range by Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1401,6 +1406,8 @@ def sense_post_errors(data):
 	errors = id_check(Unit, distance_unit, 'unit', errors)
 	errors = id_check(Conceal, concealment, 'Concealment', errors)
 	errors = id_check(PowerDes, dimensional_descriptor, 'Dimensional Descriptor', errors)
+	errors = id_check(PowerDes, awareness_descriptor, 'Awareness Descriptor', errors)
+	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1444,8 +1451,11 @@ def sense_post_errors(data):
 
 	errors = variable_fields('descriptor', 'Descriptor Dimension', dimensional_type, [dimensional_descriptor], errors)
 	errors = variable_field('descriptor', dimensional_type, 'Descriptor', dimensional_descriptor, errors)
-	
 
+	errors = variable_fields('descriptor', 'Counters Descriptor Concealment', counter_conceal, [counter_conceal_descriptor], errors)
+	errors = variable_field('descriptor', counter_conceal, 'Descriptor', counter_conceal_descriptor, errors)
+
+	errors = check_of(ranged, 'Extended', 'Range or Range by Group', [range, ranged_type], errors)
 
 	return (errors)
 

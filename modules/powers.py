@@ -269,6 +269,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
+	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'all', 'name': 'All Concealment'}]
+
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
 
 	condition_type = [{'type': '', 'name': 'Condition Type'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}]
@@ -287,7 +289,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}]
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
@@ -411,7 +413,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'communicate', 'name': 'Communication'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'countet_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3235,6 +3237,11 @@ def power_post_sense():
 	acute_req = request.get_json()['acute_req']
 	awareness = request.get_json()['awareness']
 	awareness_descriptor = request.get_json()['awareness_descriptor']
+	counter_conceal = request.get_json()['counter_conceal']
+	counter_conceal_descriptor = request.get_json()['counter_conceal_descriptor']
+	ranged = request.get_json()['ranged']
+	range = request.get_json()['range']
+	ranged_type = request.get_json()['ranged_type']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3242,6 +3249,8 @@ def power_post_sense():
 	time_value = db_integer(PowerTime, time_value)
 	time_type = db_integer(PowerTimeType, time_type)
 	circ = db_integer(PowerCirc, circ)
+	range = db_integer(PowerRanged, range)
+	ranged_type = db_integer(PowerRangedType, ranged_type)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3256,6 +3265,7 @@ def power_post_sense():
 	conceal_power_sense = db_integer(Power, conceal_power_sense)
 	dimensional_descriptor = db_integer(PowerDes, dimensional_descriptor)
 	awareness_descriptor = db_integer(PowerDes, awareness_descriptor)
+	counter_conceal_descriptor = db_integer(PowerDes, counter_conceal_descriptor)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3322,7 +3332,12 @@ def power_post_sense():
 									analytical = analytical,
 									acute_req = acute_req,
 									awareness_descriptor = awareness_descriptor,
-									awareness = awareness
+									awareness = awareness,
+									counter_conceal = counter_conceal,
+									counter_conceal_descriptor = counter_conceal_descriptor,
+									ranged = ranged,
+									range = range,
+									ranged_type = ranged_type
 								)
 
 		db.session.add(entry)

@@ -727,3 +727,10 @@ def checks_strings(word, value, words=''):
 		words += ', ' + value
 
 	return (value)
+
+def substitute(value, field, sub):
+	
+	if value == field:
+		value = sub
+
+	return (value)
