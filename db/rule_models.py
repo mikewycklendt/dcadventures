@@ -378,7 +378,7 @@ class SubSense(db.Model):
 			'any': self.any,
 			'var': self.var,
 			'none': self.none,
-			'hide': self.hide
+			'hide': self.hide,
 			'normsl': self.normsl
 		}
 
