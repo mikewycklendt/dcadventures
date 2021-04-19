@@ -1396,6 +1396,9 @@ def sense_post_errors(data):
 	ranged = data['ranged']
 	range = data['range']
 	ranged_type = data['ranged_type']
+	light_penalty = data['light_penalty']
+	light_penalty_trait_type = data['light_penalty_trait_type']
+	light_penalty_trait = data['light_penalty_trait']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1419,6 +1422,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerDes, dimensional_descriptor, 'Dimensional Descriptor', errors)
 	errors = id_check(PowerDes, awareness_descriptor, 'Awareness Descriptor', errors)
 	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
+	errors = id_check(Light, light_penalty, 'Light Type', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1446,6 +1450,11 @@ def sense_post_errors(data):
 	errors = variable_field('conceal', sense_type, 'Concealment', concealment, errors)
 	errors = check_fields(conceal_power, 'Concealed from Power', [conceal_power_sense], errors)
 	errors = check_field(conceal_power, 'Concealed from Power', 'Sense Power', conceal_power_sense, errors)
+
+	errors = variable_fields('light', 'No Light Penalties', sense_type, [light_penalty, light_penalty_trait_type, light_penalty_trait], errors)
+	errors = variable_field('light', sense_type, 'Light Type', light_penalty, errors)
+	errors = variable_field('light', sense_type, 'Trait Type', light_penalty_trait_type, errors)
+	errors = variable_field('light', sense_type, 'Trait', light_penalty_trait, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

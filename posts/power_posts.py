@@ -1613,6 +1613,9 @@ def sense_post(entry, body, cells):
 	ranged = entry.range
 	range = entry.range
 	ranged_type = entry.ranged_type
+	light_penalty = entry.light_penalty
+	light_penalty_trait_type = entry.light_penalty_trait_type
+	light_penalty_trait = entry.light_penalty_trait
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1628,6 +1631,7 @@ def sense_post(entry, body, cells):
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
+	light_penalty_trait = trait_select(light_penalty_trait, light_penalty_trait_type)
 
 	extra = extra_name(extra_id)
 	sense = get_name(Sense, sense)
@@ -1643,6 +1647,7 @@ def sense_post(entry, body, cells):
 	dimensional_descriptor = get_name(PowerDes, dimensional_descriptor)
 	awareness_descriptor = get_name(PowerDes, awareness_descriptor)
 	counter_conceal_descriptor = get_name(PowerDes, counter_conceal_descriptor)
+	light_penalty = get_name(Light, light_penalty)
 
 	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
 
@@ -1697,6 +1702,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
 	vcells = vcell('counter_conceal', 30, ['Counters', counter_conceal, 'Concealment'], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
+	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

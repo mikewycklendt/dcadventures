@@ -106,6 +106,43 @@
 
 		<div>
 
+			<div id="sense-light-penalty">
+				<div class="vcenter" style="font-size: 80%;">
+					No
+				</div>
+
+				<div>
+					<select class="select-sml" id="sense_light_penalty" name="sense_light_penalty">
+						<option value="">Light</option>
+						{% for l in light %}
+							<option value={{l.id}}>{{l.name}}</option>
+						{% endfor %}
+					</select> 
+				</div>
+
+				<div class="vcenter" style="font-size: 80%;">
+					Penalties on
+				</div>
+
+				<div>
+					<select class="select-sml" id="sense_light_penalty_trait_type" name="sense_light_penalty_trait_type" onchange="sense_light_penalty_trait_type()">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="sense_light_penalty_trait" name="sense_light_penalty_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div class="valign" style="font-size: 80%;">
+					Checks
+				</div>
+			</div>
+
 			<div id="sense-counter-conceal">
 				<div>
 					<select class="select-sml" id="sense_counter_conceal" name="sense_counter_conceal" onchange="sense_counter_conceal()">

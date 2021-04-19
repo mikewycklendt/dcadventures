@@ -2328,6 +2328,9 @@ class PowerSenseEffect(db.Model):
 	ranged = db.Column(db.Boolean)
 	range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
 	ranged_type = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
+	light_penalty = db.Column(db.Integer, db.ForeignKey('light.id'))
+	light_penalty_trait_type = db.Column(db.String())
+	light_penalty_trait = db.Column(db.Integer)  
 
 	def format(self):
 		return {
@@ -2391,7 +2394,10 @@ class PowerSenseEffect(db.Model):
 			'counter_conceal': self.counter_conceal,
 			'ranged': self.ranged,
 			'range': self.range,
-			'ranged_type': self.ranged_type
+			'ranged_type': self.ranged_type,
+			'light_penalty': self.light_penalty,
+			'light_penalty_trait_type': self.light_penalty_trait_type,
+			'light_penalty_trait': self.light_penalty_trait
 		}
 
 class PowerReverse(db.Model):

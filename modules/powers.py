@@ -413,7 +413,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3252,6 +3252,9 @@ def power_post_sense():
 	ranged = request.get_json()['ranged']
 	range = request.get_json()['range']
 	ranged_type = request.get_json()['ranged_type']
+	light_penalty = request.get_json()['light_penalty']
+	light_penalty_trait_type = request.get_json()['light_penalty_trait_type']
+	light_penalty_trait = request.get_json()['light_penalty_trait']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3276,6 +3279,7 @@ def power_post_sense():
 	dimensional_descriptor = db_integer(PowerDes, dimensional_descriptor)
 	awareness_descriptor = db_integer(PowerDes, awareness_descriptor)
 	counter_conceal_descriptor = db_integer(PowerDes, counter_conceal_descriptor)
+	light_penalty = db_integer(Light, light_penalty)
 
 	height_trait = integer(height_trait)
 	resist_trait = integer(resist_trait)
@@ -3286,6 +3290,7 @@ def power_post_sense():
 	distance_mod = integer(distance_mod)
 	distance_value = integer(distance_value)
 	distance_factor = integer(distance_factor)
+	light_penalty_trait = integer(light_penalty_trait)
 
 
 
@@ -3347,7 +3352,10 @@ def power_post_sense():
 									counter_conceal_descriptor = counter_conceal_descriptor,
 									ranged = ranged,
 									range = range,
-									ranged_type = ranged_type
+									ranged_type = ranged_type,
+									light_penalty = light_penalty,
+									light_penalty_trait_type = light_penalty_trait_type,
+									light_penalty_trait = light_penalty_trait
 								)
 
 		db.session.add(entry)

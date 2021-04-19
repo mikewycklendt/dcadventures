@@ -88,6 +88,13 @@ function ranged_dc_trait_type() {
 	id_select(select, fill, trait_select);
 }
 
+function ranged_penalty_trait_type() {
+	const select = 'ranged_penalty_trait_type';
+	const fill = 'ranged_penalty_trait';
+
+	id_select(select, fill, trait_select);
+}
+
 let ranged_grid = {'titles': false,
 					'columns': [],
 					'font': 100,

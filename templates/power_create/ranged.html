@@ -96,7 +96,7 @@
 				</div>
 
 				<div>
-					<select class="entry-select" id="ranged_penalty_trait_type" name="ranged_penalty_trait_type">
+					<select class="entry-select" id="ranged_penalty_trait_type" name="ranged_penalty_trait_type" onchange="ranged_penalty_trait_type()">
 						{% for t in traits %}
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
