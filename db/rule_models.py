@@ -366,6 +366,7 @@ class SubSense(db.Model):
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	normsl = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -378,6 +379,7 @@ class SubSense(db.Model):
 			'var': self.var,
 			'none': self.none,
 			'hide': self.hide
+			'normsl': self.normsl
 		}
 
 class Light(db.Model):

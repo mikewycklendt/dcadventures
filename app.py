@@ -120,52 +120,24 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
+@app.route('/subsenses/create')
+def subsenses_create():
 
-@app.route('/table/db')
-def table_db_columns_create():
+	special = ['Direction', 'Distance', 'Dsnger', 'Time']
 
-	tablename =  'Material'
+	for sense in special:
+		sense_id = 12
+		entry = SubSense(name=sense, sense_id=sense_id)
+		db.session.add(entry)
+		db.session.commit()
 
-	name = 'All Materials'
-
-	entry = Material(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Material(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Material(any=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Material(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Material(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-
-	results = db.session.query(Material).filter_by(hide=True).all()
+	results = db.session.query(SubSense).filter_by(sense_id=12).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return (tablename + ' db added')
-
-
+	return ('senses added')
 
 if __name__ == '__main__':
 	app.debug = True
