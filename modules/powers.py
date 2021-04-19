@@ -1348,6 +1348,7 @@ def power_post_character():
 	reduced_trait_type = request.get_json()['reduced_trait_type']
 	reduced_trait = request.get_json()['reduced_trait']
 	reduced_value = request.get_json()['reduced_value']
+	reduced_rank = request.get_json()['reduced_rank']
 	reduced_full = request.get_json()['reduced_full']
 	limbs_count = request.get_json()['limbs_count']
 	limbs_rank = request.get_json()['limbs_rank']
@@ -1403,7 +1404,7 @@ def power_post_character():
 	points_trait = integer(points_trait)
 	limbs_count = integer(limbs_count)
 	metamorph = integer(metamorph)
-
+	reduced_rank = integer(reduced_rank)
 
 	body = user_item(Creature, 'Creature', appear_creature, appear_creature_other, 'creature-sml', body, True, True)
 	appear_creature = body['output']
@@ -1442,6 +1443,7 @@ def power_post_character():
 							reduced_trait_type = reduced_trait_type,
 							reduced_trait = reduced_trait,
 							reduced_value = reduced_value,
+							reduced_rank = reduced_rank,
 							reduced_full = reduced_full,
 							limbs_count = limbs_count,
 							limbs_rank = limbs_rank,

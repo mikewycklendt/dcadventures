@@ -1395,6 +1395,7 @@ class PowerChar(db.Model):
 	reduced_trait_type = db.Column(db.String())
 	reduced_trait = db.Column(db.Integer)
 	reduced_value = db.Column(db.Integer)
+	reduced_rank = db.Column(db.Integer)
 	reduced_full = db.Column(db.Boolean)
 	limbs_count = db.Column(db.Integer)
 	limbs_rank = db.Column(db.Boolean)
@@ -1454,6 +1455,7 @@ class PowerChar(db.Model):
 			'reduced_trait_type': self.reduced_trait_type,
 			'reduced_trait': self.reduced_trait,
 			'reduced_value': self.reduced_value,
+			'reduced_rank': self.reduced_rank,
 			'reduced_full': self.reduced_full,
 			'limbs_count': self.limbs_count,
 			'limbs_rank': self.limbs_rank,

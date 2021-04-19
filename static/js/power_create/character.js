@@ -293,6 +293,7 @@ function char_submit() {
 	const reduced_trait_type = select("char_reduced_trait_type");
 	const reduced_trait = select("char_reduced_trait");
 	const reduced_value = select("char_reduced_value");
+	const reduced_rank = select("char_reduced_rank");
 	const reduced_full = check("char_reduced_full");
 	const limbs_count = select("char_limbs_count")
 	const limbs_rank = check("char_limbs_rank")
@@ -358,6 +359,7 @@ function char_submit() {
 			'reduced_trait_type': reduced_trait_type,
 			'reduced_trait': reduced_trait,
 			'reduced_value': reduced_value,
+			'reduced_rank': reduced_rank,
 			'reduced_full': reduced_full,
 			'limbs_count': limbs_count,
 			'limbs_rank': limbs_rank,

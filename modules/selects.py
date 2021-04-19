@@ -539,7 +539,6 @@ def get_subsense_select():
 		return jsonify(body)
 
 	if sense_id_str == 'all':
-		options.append({'id': 'any', 'name': 'Any'})
 		options.append({'id': 'all', 'name': 'All'})
 		options.append({'id': 'normal', 'name': 'Normal Only'})
 
@@ -557,8 +556,7 @@ def get_subsense_select():
 
 		if sense_id != 12:
 			options.append({'id': 'all', 'name': all_sense})
-
-		options.append({'id': 'x', 'name': variable_sense})
+			options.append({'id': 'x', 'name': variable_sense})
 
 		for subsense in subsenses:
 			options.append({'id': subsense.id, 'name': subsense.name})

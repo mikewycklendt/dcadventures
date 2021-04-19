@@ -250,7 +250,7 @@
 
 	<div id="char-reduced">
 		<div>
-			Reduced Trait:
+			Reduced:
 		</div>
 
 		<div>
@@ -280,8 +280,21 @@
 			</select>
 		</div>
 
+		<div class="vcenter" style="font-size: 70%;">
+			Per
+		</div>
+
+		<div>
+			<select class="select-sml" id="char_reduced_rank" name="char_reduced_rank">
+				<option value="">Rank</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div id="char-reduced-full">
-			<div class="check-div">
+			<div class="check-div" style="font-size: 70%;">
 				<input type="checkbox" id="char_reduced_full" class="medium-checkbox med-checkbox"> Normal Strength 	
 			</div>
 		</div>

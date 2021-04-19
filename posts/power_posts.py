@@ -91,6 +91,7 @@ def character_post(entry, body, cells):
 	reduced_trait_type = entry.reduced_trait_type
 	reduced_trait = entry.reduced_trait
 	reduced_value = entry.reduced_value
+	reduced_rank = entry.reduced_rank
 	reduced_full = entry.reduced_full
 	limbs_count = entry.limbs_count
 	limbs_rank = entry.limbs_rank
@@ -159,6 +160,7 @@ def character_post(entry, body, cells):
 	points_value = integer_convert(points_value)
 	limbs_count = integer_convert(limbs_count)
 	metamorph = integer_convert(metamorph)
+	reduced_rank = integer_convert(reduced_rank)
 
 	
 	cells = cell('Extra', 15, [extra])
@@ -178,7 +180,9 @@ def character_post(entry, body, cells):
 	cells = check_cell('Reduced', 9, reduced, cells, True)
 	new_mod = mod_create('Reduced Trait', 16)
 	new_mod = mod_cell('Trait:', 8, [reduced_trait], new_mod)
-	new_mod = mod_cell('Reduced By:', 12, [reduced_value], new_mod)
+	word = string('Per', reduced_rank)
+	word2 = string('Rank', reduced_rank)
+	new_mod = mod_cell('Reduced By:', 12, [reduced_value, word, reduced_rank, word2], new_mod)
 	new_mod = mod_cell('Normal Strength:', 16, [reduced_full], new_mod)
 	body = mod_add(reduced, new_mod, body)
 
