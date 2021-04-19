@@ -120,7 +120,7 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-@app.route('/subsenses/create')
+@app.route('/subsense/create')
 def subsenses_create():
 
 	special = ['Direction', 'Distance', 'Dsnger', 'Time']
