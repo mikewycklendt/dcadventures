@@ -646,6 +646,7 @@ def save_power():
 	condition = request.get_json()['condition']
 	target_type = request.get_json()['target_type']
 	strength_based = request.get_json()['strength_based']
+	info = request.get_json()['info']
 
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
@@ -727,6 +728,7 @@ def save_power():
 	power.condition = condition
 	power.target_type = target_type
 	power.strength_based = strength_based
+	power.info = info
 
 	power.alt_check = alt_check	
 	power.change_action = change_action

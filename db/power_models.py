@@ -64,6 +64,7 @@ class Power(db.Model):
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	target_type = db.Column(db.String())
 	strength_based = db.Column(db.String())
+	info = db.Column(db.Boolean)
 
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)

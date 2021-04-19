@@ -186,6 +186,8 @@ power_save = function() {
 	const condition = select("power_condition");
 	const target_type = select("target_type");
 	const strength_based = select("strength_based");
+	const info = check("info")
+
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
 	const character = check('char_check');;
