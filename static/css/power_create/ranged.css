@@ -78,6 +78,15 @@
 	gap: .4vw;
 }
 
+#ranged-penalty {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 7% 15% 15% 5% 20% 30% 8%;
+	grid-auto-rows: auto;
+	gap: .4vw;
+}
+
 #ranged-flat-distance-rank {
 	display: none;
 	opacity: 0%;

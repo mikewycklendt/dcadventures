@@ -75,7 +75,8 @@ function ranged_type() {
 					{'val': 'check', 'div': 'ranged-check'}, 
 					{'val': 'trait_mod', 'div': 'ranged-trait-mod'}, 
 					{'val': 'distance_mod', 'div': 'ranged-distance-mod'}, 
-					{'val': 'general', 'div': 'ranged-general'}]
+					{'val': 'general', 'div': 'ranged-general'}, 
+					{'val': 'penalty', 'div': 'ranged-penalty'}]
 
 	select_opacity(select, options);
 }
@@ -137,6 +138,10 @@ function ranged_submit() {
 	const title = text("ranged_title")
 	const rank = check("ranged_rank");
 	const general = select("ranged_general");
+	const penalty_math = select("ranged_penalty_math");
+	const penalty_mod = select("ranged_penalty_mod");
+	const penalty_trait_type = select("ranged_penalty_trait_type");
+	const penalty_trait = select("ranged_penalty_trait");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -192,7 +197,11 @@ function ranged_submit() {
 			'keyword': keyword,
 			'title': title,
 			'rank': rank,
-			'general': general
+			'general': general,
+			'penalty_math': penalty_math,
+			'penalty_mod': penalty_mod,
+			'penalty_trait_type': penalty_trait_type,
+			'penalty_trait': penalty_trait
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

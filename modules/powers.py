@@ -389,7 +389,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
-	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'general', 'name': 'General'}]
+	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 
 	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
 
@@ -2687,6 +2687,10 @@ def power_post_ranged():
 	title = request.get_json()['title']
 	rank = request.get_json()['rank']
 	general = request.get_json()['general']
+	penalty_math = request.get_json()['penalty_math']
+	penalty_mod = request.get_json()['penalty_mod']
+	penalty_trait_type = request.get_json()['penalty_trait_type']
+	penalty_trait = request.get_json()['penalty_trait_type']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
@@ -2718,6 +2722,7 @@ def power_post_ranged():
 	trait_math = db_integer(Math, trait_math)
 	distance_mod_math = db_integer(Math, distance_mod_math)
 	general = db_integer(Range, general)
+	penalty_math = db_integer(Math, penalty_math)
 
 	flat_value = integer(flat_value)
 	flat_rank = integer(flat_rank)
@@ -2738,7 +2743,8 @@ def power_post_ranged():
 	trait_mod = integer(trait_mod)
 	distance_mod_rank = integer(distance_mod_rank)
 	distance_mod_trait = integer(distance_mod_trait)
-
+	penalty_mod = integer(penalty_mod)
+	penalty_trait = integer(penalty_trait)
 
 
 	try:
@@ -2782,7 +2788,11 @@ def power_post_ranged():
 							title = title,
 							rank = rank,
 							general = general,
-							perception = perception)
+							perception = perception,
+							penalty_math = penalty_math,
+							penalty_mod = penalty_mod,
+							penalty_trait_type = penalty_trait_type,
+							penalty_trait = penalty_trait)
 
 		db.session.add(entry)
 		db.session.commit()

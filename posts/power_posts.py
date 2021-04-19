@@ -1252,6 +1252,10 @@ def ranged_post(entry, body, cells):
 	title = entry.title
 	rank = entry.rank
 	general = entry.general
+	penalty_math = entry.penalty_math
+	penalty_mod = entry.penalty_mod
+	penalty_trait_type = entry.penalty_trait_type
+	penalty_trait = entry.penalty_trait
 	
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
@@ -1259,6 +1263,7 @@ def ranged_post(entry, body, cells):
 	check_trait = trait_select(check_trait, check_trait_type)
 	trait_trait = trait_select(trait_trait, trait_trait_type)
 	distance_mod_trait = trait_select(distance_mod_trait, distance_mod_trait_type)
+	penalty_trait = trait_select(penalty_trait, penalty_trait_type)
 
 	dc = get_keyword(PowerDC, dc)
 	circ = get_keyword(PowerCirc, circ)
@@ -1273,6 +1278,7 @@ def ranged_post(entry, body, cells):
 	check_math = math_convert(Math, check_math)
 	trait_math = math_convert(Math, trait_math)
 	distance_mod_math = math_convert(Math, distance_mod_math)
+	penalty_math = math_convert(Math, penalty_math)
 
 	general = get_name(Range, general)
 
@@ -1293,7 +1299,7 @@ def ranged_post(entry, body, cells):
 	check_mod = integer_convert(check_mod)
 	trait_mod = integer_convert(trait_mod)
 	distance_mod_rank = integer_convert(distance_mod_rank)
-
+	penalty_mod = integer_convert(penalty_mod)
 
 
 	cells = cell('Keyword', 15, [keyword])
@@ -1342,6 +1348,8 @@ def ranged_post(entry, body, cells):
 	vcells = vcell('check', 50, [check_trait, check_math, check_mod, distance_rank], vcells)
 
 	vcells = vcell('percep', 25, ['Perception Range'], vcells)
+
+	vcells = vcell('penalty', 40, ['Range', penalty_math, penalty_mod, 'on', penalty_trait, 'Checks'], vcells)
 
 	cells = vcell_add('Range', range_type, vcells, cells)
 

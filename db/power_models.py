@@ -2119,6 +2119,10 @@ class PowerRanged(db.Model):
 	general = db.Column(db.Integer, db.ForeignKey('range.id'))
 	perception = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	penalty_math = db.Column(db.Integer, db.ForeignKey('math.id'))
+	penalty_mod = db.Column(db.Integer)
+	penalty_trait_type = db.Column(db.String())
+	penalty_trait = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -2166,7 +2170,11 @@ class PowerRanged(db.Model):
 			'effect': self.effect,
 			'general': self.general,
 			'perception': self.perception,
-			'hide': self.hide
+			'hide': self.hide,
+			'penalty_math': self.penalty_math,
+			'penalty_mod': self.penalty_mod,
+			'penalty_trait_type': self.penalty_trait_type,
+			'penalty_trait': self.penalty_trait
 		}
 
 class PowerResist(db.Model):

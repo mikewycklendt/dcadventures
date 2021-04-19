@@ -1067,6 +1067,10 @@ def ranged_post_errors(data):
 	keyword = data['keyword']
 	title = data['title']
 	general = data['general']
+	penalty_math = data['penalty_math']
+	penalty_mod = data['penalty_mod']
+	penalty_trait_type = data['penalty_trait_type']
+	penalty_trait = data['penalty_trait']
 
 	errors = power_check(power_id, errors)
 
@@ -1081,6 +1085,7 @@ def ranged_post_errors(data):
 	errors = id_check(Math, trait_math, 'math', errors)
 	errors = id_check(Math, distance_mod_math, 'math', errors)
 	errors = id_check(Range, general, 'General Range', errors)
+	errors = id_check(Math, penalty_math, 'Math', errors)
 
 	errors = id_check(PowerCirc, circ)
 	errors = id_check(PowerDamage, damage)
@@ -1156,6 +1161,12 @@ def ranged_post_errors(data):
 	errors = variable_field('check', range_type, 'Trait', check_trait, errors)
 	errors = variable_field('check', range_type, 'Math', check_math, errors)
 	errors = variable_field('check', range_type, 'Modifier', check_mod, errors)
+
+	errors = variable_fields('penalty', 'Range Penalty Modifier', range_type, [penalty_math, penalty_mod, penalty_trait_type, penalty_trait], errors)
+	errors = variable_field('penalty', range_type, 'Math', penalty_math, errors)
+	errors = variable_field('penalty', range_type, 'Modifier', penalty_mod, errors)
+	errors = variable_field('penalty', range_type, 'Trsit Type', penalty_trait_type, errors)
+	errors = variable_field('penalty', range_type, 'Trait', penalty_trait, errors)
 
 	errors = variable_fields('general', 'General Range', range_type, [general], errors)
 

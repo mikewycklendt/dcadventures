@@ -42,6 +42,78 @@
 
 		<div>
 
+			<div id="ranged-penalty">
+				<div>
+				</div>
+
+				<div>
+					Math
+				</div>
+
+				<div>
+					Modifier
+				</div>
+
+				<div></div>
+
+				<div>
+					Trait Type
+				</div>
+
+				<div>
+					Trait
+				</div>
+
+				<div></div>
+
+				<div class="vcenter">
+					Range
+				</div>
+
+				<div>
+					<select class="entry-select" id="ranged_penalty_math" name="ranged_penalty_math">
+						<option value="">Math</option>
+						{% for m in maths %}
+							<option value={{m.id}}>{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="entry-select" id="ranged_penalty_mod" name="ranged_penalty_mod">
+						<option value="">Modifier</option>
+						{% for i in negatives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+						{% for i in positives %}
+							<option value={{i}}>{{i}]</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="vcenter">
+					on
+				</div>
+
+				<div>
+					<select class="entry-select" id="ranged_penalty_trait_type" name="ranged_penalty_trait_type">
+						{% for t in traits %}
+							<option value="{{t.type}}">{{t.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="entry-select" id="ranged_penalty_trait" name="ranged_penalty_trait">
+						<option value="">Trait</option>
+					</select>
+				</div>
+
+				<div class="vcenter">
+					Checks
+				</div>
+			</div>
+
 			<div id="ranged-flat-units">
 
 				<div>
