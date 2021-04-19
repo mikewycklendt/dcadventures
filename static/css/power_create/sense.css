@@ -111,18 +111,9 @@
 	transition: all .3s ease-out;
 }
 
-#sense-ranged {
-	display: grid;
-	grid-template-columns: 13% 35% 35%;
-	gap: .3vw;
-	display: none;
-	opacity: 0%;
-	transition: all .3s ease-out;
-}
-
 #sense-counter-conceal {
 	display: grid;
-	grid-template-columns: 35% 65%;
+	grid-template-columns: 35% 35%;
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
@@ -153,16 +144,14 @@
 
 #sense-row3 {
 	display: grid;
-	padding: 2px;;
-	grid-template-columns: auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	gap: .3vw;
 }
 
 #sense-row4 {
 	display: grid;
-	padding: 2px;
 	gap: .3vw;
-	grid-template-columns: auto auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto;
 }
 
 
@@ -173,6 +162,15 @@
 }
 
 #sense-time {
+	display: grid;
+	grid-template-columns: 15% 35% 35% 15%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
+#sense-ranged {
 	display: grid;
 	grid-template-columns: 15% 35% 35% 15%;
 	display: none;
