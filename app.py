@@ -120,24 +120,25 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-@app.route('/subsense/create')
-def subsenses_create():
 
-	special = ['Direction', 'Distance', 'Dsnger', 'Time']
+@app.route('/table/db')
+def table_db_columns_create():
 
-	for sense in special:
-		sense_id = 12
-		entry = SubSense(name=sense, sense_id=sense_id)
-		db.session.add(entry)
-		db.session.commit()
+	
+	name = 'Active Defenses'
 
-	results = db.session.query(SubSense).filter_by(sense_id=12).all()
+	entry = Defense(active=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	results = db.session.query(Defense).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('senses added')
+	return (tablename + ' db added')
+
 
 if __name__ == '__main__':
 	app.debug = True

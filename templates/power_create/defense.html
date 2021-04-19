@@ -46,6 +46,7 @@
 				{% for d in defenses %}
 					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
+				<option value="active">Active Defenses</option>
 			</select>
 		</div>
 
@@ -60,6 +61,8 @@
 		<div>
 			<select class="select-sml" id="defense_mod" name="defense_mod">
 				<option value="">Modifier</option>
+				<option value="rank">Power Rank</option>
+				<option value="halfrank">Half Power Rank</option>
 				{% for i in negatives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
