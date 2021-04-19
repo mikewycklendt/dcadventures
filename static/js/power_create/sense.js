@@ -297,6 +297,7 @@ function sense_submit() {
 	const light_penalty = select("sense_light_penalty");
 	const light_penalty_trait_type = select("sense_light_penalty_trait_type");
 	const light_penalty_trait = select("sense_light_penalty_trait");
+	const ranged_sense = check('sense_ranged_sense')
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -369,7 +370,8 @@ function sense_submit() {
 			'ranged_type': ranged_type,
 			'light_penalty': light_penalty,
 			'light_penalty_trait_type': light_penalty_trait_type,
-			'light_penalty_trait': light_penalty_trait
+			'light_penalty_trait': light_penalty_trait,
+			'ranged_sense': ranged_sense
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

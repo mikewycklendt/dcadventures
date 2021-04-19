@@ -186,7 +186,8 @@ power_save = function() {
 	const condition = select("power_condition");
 	const target_type = select("target_type");
 	const strength_based = select("strength_based");
-	const info = check("info")
+	const info = check("info");
+	const gm_trigger = check("gm_trigger");
 
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
@@ -273,7 +274,9 @@ power_save = function() {
 			'resist_by': resist_by,
 			'reverse': reverse,
 			'sense': sense,
-			'time': time
+			'time': time,
+			'info': info,
+			'gm_trigger': gm_trigger
 		}),
 		headers: {
 		'Content-Type': 'application/json',

@@ -647,6 +647,7 @@ def save_power():
 	target_type = request.get_json()['target_type']
 	strength_based = request.get_json()['strength_based']
 	info = request.get_json()['info']
+	gm_trigger = request.get_json()['gm_trigger']
 
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
@@ -729,6 +730,7 @@ def save_power():
 	power.target_type = target_type
 	power.strength_based = strength_based
 	power.info = info
+	power.gm_trigger = gm_trigger
 
 	power.alt_check = alt_check	
 	power.change_action = change_action
@@ -3257,6 +3259,7 @@ def power_post_sense():
 	light_penalty = request.get_json()['light_penalty']
 	light_penalty_trait_type = request.get_json()['light_penalty_trait_type']
 	light_penalty_trait = request.get_json()['light_penalty_trait']
+	ranged_sense = request.get_json()['ranged_sense']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3357,7 +3360,8 @@ def power_post_sense():
 									ranged_type = ranged_type,
 									light_penalty = light_penalty,
 									light_penalty_trait_type = light_penalty_trait_type,
-									light_penalty_trait = light_penalty_trait
+									light_penalty_trait = light_penalty_trait,
+									ranged_sense = ranged_sense
 								)
 
 		db.session.add(entry)

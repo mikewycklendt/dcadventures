@@ -65,6 +65,7 @@ class Power(db.Model):
 	target_type = db.Column(db.String())
 	strength_based = db.Column(db.String())
 	info = db.Column(db.Boolean)
+	gm_trigger = db.Column(db.Boolean)
 
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
@@ -2331,7 +2332,8 @@ class PowerSenseEffect(db.Model):
 	ranged_type = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	light_penalty = db.Column(db.Integer, db.ForeignKey('light.id'))
 	light_penalty_trait_type = db.Column(db.String())
-	light_penalty_trait = db.Column(db.Integer)  
+	light_penalty_trait = db.Column(db.Integer)
+	ranged_sense = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2398,7 +2400,8 @@ class PowerSenseEffect(db.Model):
 			'ranged_type': self.ranged_type,
 			'light_penalty': self.light_penalty,
 			'light_penalty_trait_type': self.light_penalty_trait_type,
-			'light_penalty_trait': self.light_penalty_trait
+			'light_penalty_trait': self.light_penalty_trait,
+			'ranged_sense': self.ranged_sense
 		}
 
 class PowerReverse(db.Model):

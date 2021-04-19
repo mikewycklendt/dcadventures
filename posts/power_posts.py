@@ -1743,6 +1743,7 @@ def sense_post(entry, body, cells):
 	body = mod_add(awareness, new_mod, body)
 
 	cells = check_cell('Radius', 8, radius, cells)
+	cells = check_cell('Ranged', 8, ranged_sense, cells)
 	cells = check_cell('Accurate', 10, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
 	cells = check_cell('Analytical', 12, analytical, cells)
