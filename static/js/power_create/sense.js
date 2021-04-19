@@ -60,7 +60,7 @@ function sense_type() {
 	const options = [{'val': 'height', 'div': "sense-height"},
 					{'val': 'resist', 'div': "sense-resist"},
 					{'val': 'conceal', 'div': "sense-conceal"},
-					{'va;': 'counter_conceal', 'div': 'sense-counter-conceal'}];
+					{'val': 'counter_conceal', 'div': 'sense-counter-conceal'}];
 
 	select_opacity(select, options);
 }
