@@ -87,6 +87,7 @@ def power_save_errors(data):
 	reverse = data['reverse']
 	sense = data['sense']
 	time = data['time']
+	req_descriptor = data['req_descriptor']
 
 	power_id = integer(power_id)
 

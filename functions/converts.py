@@ -104,6 +104,8 @@ def integer(value):
 		value = 210210
 	elif value == 'halfrank':
 		value = 223223
+	elif value == 'halfpenalty':
+		value = 445445
 	elif value == '':
 		value = None
 	elif value == 'none':
@@ -237,6 +239,8 @@ def integer_convert(value):
 		value = 'Volume Rank'
 	elif value == 223223:
 		value = '1/2 Power Rank'
+	elif value == 445445:
+		value = '- 1/2 Power Rank'
 	elif value is None:
 		value = ''
 	else:
@@ -336,6 +340,8 @@ def int_check(value, name, errors):
 	elif value == 'volume':
 		return (errors)
 	elif value == 'halfrank':
+		return (errors)
+	elif value == 'halfpenalty':
 		return (errors)
 	else:
 		try:

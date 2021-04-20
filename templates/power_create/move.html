@@ -445,7 +445,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="move_mass" class="medium-checkbox med-checkbox" onclick="move_mass()"> Increased Mass
+				<input type="checkbox" id="move_mass" class="medium-checkbox med-checkbox" onclick="move_mass()"> Carry Mass
 			</div>
 		</div>
 	</div>
@@ -732,18 +732,6 @@
 						{% endfor %}
 					</select>
 				</div>
-				
-				<div>
-					<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
-						<option value="">Carry Mass Rank</option>
-							{% for i in negatives %}
-								<option value={{i}}>{{i}}</option>
-							{% endfor %}
-							{% for i in positives %}
-								<option value={{i}}>{{i}}</option>
-							{% endfor %}
-					</select>
-				</div>
 	
 				<div id="move-dimension-descriptor">
 					<select class="descriptor-sml" id="move_dimension_descriptor" name="move_dimension_descriptor">
@@ -752,6 +740,18 @@
 						{% for d in descriptor_options %}
 							<option value={{d.id}}>{{d.name}}</option>
 						{% endfor %}
+					</select>
+				</div>
+				
+				<div style="display: none;">
+					<select class="select-sml" id="move_dimension_mass_rank" name="move_dimension_mass_rank">
+						<option value="">Carry Mass Rank</option>
+							{% for i in negatives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
 					</select>
 				</div>
 			</div>
@@ -779,7 +779,7 @@
 					</select>
 				</div>
 
-				<div>
+				<div style="display: none;">
 					<select class="select-sml" id="move_special_time_carry" name="move_special_time_carry">
 						<option value="">Carry Mass Rank</option>
 						{% for i in negatives %}
@@ -912,11 +912,11 @@
 			</select>
 		</div>
 
-		<div class="vcenter" style="font-size: 75%;">
+		<div class="vcenter" style="font-size: 75%; display: none;">
 			Speed Rank Modifier:
 		</div>
 
-		<div>
+		<div style="display: none;">
 			<select class="select-sml" id="move_permeate_speed" name="move_permeate_speed">
 				<option value="">Modifier</option>
 					{% for i in negatives %}
@@ -994,7 +994,7 @@
 
 	<div id="move-mass">
 		<div>
-			Increased Carry Mass:
+			Carry Mass:
 		</div>
 
 		<div>
@@ -1002,6 +1002,7 @@
 				<option value="">Mass Rank</option>
 				<option value="rank">Effect Rank</option>
 				<option value="extra">Extra Rank</option>
+				<option value=0>0</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
