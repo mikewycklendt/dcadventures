@@ -33,7 +33,8 @@ function time_type() {
 	const options = [{'val': 'recover', 'div': 'time-recovery'},
 					{'val': 'reattempt', 'div': 'time-reattempt'},
 					{'val': 'action', 'div': 'time-action'},
-					{'val': 'check', 'div': 'time-check'}];
+					{'val': 'check', 'div': 'time-check'},
+					{'val': 'points', 'div': 'time-points'}];
 	const fields = ['time_recovery_penalty', 'time_action', 'time_check'];
 	const checks =  ['time_recovery_incurable', 'time_reattempt_effort'];
 	
@@ -105,6 +106,7 @@ function time_submit() {
 	const check_type = select("time_check");
 	const action = select("time_action");
 	const on_check = select("time_on_check")
+	const points = select("points");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -161,7 +163,8 @@ function time_submit() {
 			'reattempt_effort': reattempt_effort,
 			'check_type': check_type,
 			'action': action,
-			'on_check': on_check
+			'on_check': on_check,
+			'points': points
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

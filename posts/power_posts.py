@@ -308,8 +308,11 @@ def create_post(entry, body, cells):
 	ranks = entry.ranks
 	ranged_damage = entry.ranged_damage
 	ranged_check = entry.ranged_check
+	multiple = entry.multiple
 
 	cost = get_cost(cost, ranks, extra_id)
+	
+	body = one_multiple(PowerCreate, power_id, body)
 
 	move_check = get_keyword(PowerCheck, move_check)
 	move_opposed = get_keyword(PowerOpposed, move_opposed)
@@ -328,13 +331,16 @@ def create_post(entry, body, cells):
 	transform_start_descriptor = descriptor_name(transform_start_descriptor)
 	transform_end_descriptor = descriptor_name(transform_end_descriptor)
 
+	create_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}, {'type': 'stack', 'name': 'Stackable'}]
+	multiple = selects(multiple, create_multiple)
+
 	solidity_select = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
 	solidity = selects(solidity, solidity_select)
 
 	visibility_select = [{'type': '', 'name': 'Visibility'}, {'type': 'visible', 'name': 'Visible'}, {'type': 'invisible', 'name': 'Invisible'}, {'type': 'select', 'name': 'Selective'}]
 	visibility = selects(visibility, visibility_select)
 
-	transform_select = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
+	transform_select = [{'type': '', 'name': 'Transform Type'}, {'type': 'one', 'name': 'One Substance to One Substance'}, {'type': 'togroup', 'name': 'Single Substance to Group'}, {'type': 'result', 'name': 'Group to Single Result'}, {'type': 'broad', 'name': 'Broad Group to Broad Group'}, {'type': 'any', 'name': 'Any Material into Anything Else'}]
 	transform_type = selects(transform_type, transform_select)
 
 	moveable_select = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'power', 'name': 'Power'}]
@@ -430,6 +436,8 @@ def create_post(entry, body, cells):
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
+	cells = circ_cell('Multiple', 'If Multiple', 9, multiple, cells, body)
+
 	body = send(cells, body)
 
 	cells.clear()
@@ -1860,7 +1868,7 @@ def power_check_post(entry, body, cells):
 
 	attack = integer_convert(attack)
 
-	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}]
+	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'active', 'name': 'Target Active'}]
 	when = selects(when, check_type_select)
 
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
@@ -2007,7 +2015,7 @@ def power_circ_post(entry, body, cells):
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
 	circ_target = selects(circ_target, targets_select)
 
-	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar'}]
+	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar'}, {'type': 'hand', 'name': 'Hand Held Object'}]
 	target = selects(target, circ_targets_select)
 
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
@@ -2078,6 +2086,8 @@ def power_circ_post(entry, body, cells):
 	
 	word = string('with', conflict_grab)
 	vcells = vcell('conflict', 35, [conflict, word, conflict_grab])
+
+	vcells = vcell('hand', 20, )
 
 	cells = vcell_add('Effect', effect, vcells, cells)
 
@@ -3225,6 +3235,8 @@ def power_time_post(entry, body, cells):
 	word = string('on', [recovery_penalty])
 	cells = cell('Recovery', 14, [recovery_penalty, word, recovery_target], cells)
 	cells = check_cell('Incurable', 9, recovery_incurable, cells)
+
+	cells = cell('Points', 7, [points], cells)
 
 	action_name = action + ' Action'
 	cells = circ_cell('Action', 'Action', 7, action_name, cells, body)

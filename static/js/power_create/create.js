@@ -282,6 +282,7 @@ function create_submit() {
 	const ranks = select("create_ranks");
 	const ranged_damage = select("create_ranged_damage")
 	const ranged_check = select("create_ranged_check")
+	const multiple = select("create_multiple")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -341,7 +342,8 @@ function create_submit() {
 			'created': created,
 			'font': font,
 			'ranged_damage': ranged_damage,
-			'ranged_check': ranged_check
+			'ranged_check': ranged_check,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -351,6 +353,8 @@ function create_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+			
+			extra_effect_check(jsonResponse)
 			
 			create_grid.columns.length = 0;
 			create_grid.columns = jsonResponse.rows;

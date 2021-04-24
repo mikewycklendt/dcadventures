@@ -1288,6 +1288,7 @@ class PowerTime(db.Model):
 	check_type = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	on_check = db.Column(db.Integer, db.ForeignKey('checks.id'))
+	points = db.Column(db.Integer)
 	
 	def format(self):
 		return {
@@ -1338,7 +1339,8 @@ class PowerTime(db.Model):
 			'reattempt_effort': self.reattempt_effort,
 			'check_type': self.check_type,
 			'action': self.action,
-			'on_check': self.on_check
+			'on_check': self.on_check,
+			'points': self.points
 		}
 
 
@@ -1562,6 +1564,7 @@ class PowerCreate(db.Model):
 	ranged_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	ranged_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	weapon_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
+	multiple = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -1649,7 +1652,8 @@ class PowerDamage(db.Model):
 			'movement': self.movement,
 			'value_type': self.value_type,
 			'math': self.math,
-			'effect': self.effect
+			'effect': self.effect,
+			'multiple': self.multiple
 		}
 
 

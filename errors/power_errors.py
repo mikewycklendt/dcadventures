@@ -2965,6 +2965,7 @@ def power_extra_post_errors(data):
 	errors = multiple_error(character, 'Changes Character Traits', PowerChar, power_id, errors)
 	errors = multiple_error(defense, 'Defensive Effect', PowerDefense, power_id, errors)
 	errors = multiple_error(sense, 'Sense Effect', PowerSenseEffect, power_id, errors)
+	errors = multiple_error(create, 'Create Effect', PowerCreate, power_id, errors)
 	
 	
 

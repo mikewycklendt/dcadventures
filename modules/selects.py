@@ -209,7 +209,7 @@ def equip_medium_subtype_select():
 	sub = request.get_json()['sub']
 	get_titles = request.get_json()['titles']
 
-	print('id ' + medium_type_id)
+	print('id ' + id)
 	
 
 	try:
@@ -727,7 +727,7 @@ def skill_trait_select():
 	elif trait == 'any':
 		body['options'] = [{'id': '0', 'name': 'Any Trait'}]
 	elif trait == 'x':
-		body['options'] = [{'id': '0', 'name': 'Variable'}]
+		body['options'] = [{'id': '0', 'name': 'Variable Traot'}]
 	elif trait == 'auto':
 		body['options'] = [{'id': '0', 'name': 'Automatic'}]
 	elif trait == '':

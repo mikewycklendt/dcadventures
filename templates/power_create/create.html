@@ -469,6 +469,14 @@
 		<div></div>
 
 		<div>
+			<select class="entry-select" id="create_multiple" name="create_multiple">
+				{% for c in create_multiple %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
 			<select class="entry-select" id="create_cost_per_rank" name="create_cost_per_rank" onchange="create_cost()">
 				<option value="">Cost</option>
 			</select>

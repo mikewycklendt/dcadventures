@@ -280,6 +280,17 @@
 
 	<div id="time-button-row">
 		<div>
+			<div id="time-points">
+				<div>
+					<select class="select-sml" id="time_points" name="time_points">
+						<option value="">Points Restored</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="time-recovery">
 
 				<div>
