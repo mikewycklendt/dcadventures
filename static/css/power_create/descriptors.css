@@ -127,9 +127,7 @@
 	gap: 3px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	height: auto;
 }
 
 #descriptor-row3 textarea {
@@ -142,7 +140,6 @@
 .descriptor-des-field {
 	display: none;
 	width: 98%;
-	height: 1.4;
 	gap: 3px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
