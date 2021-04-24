@@ -122,14 +122,14 @@
 }
 
 #descriptor-row3 {
-	display: grid;
+	display: none;
 	width: 98%;
 	gap: 3px;
 	grid-template-columns: 100%;
 	grid-auto-rows: auto;
 }
 
-#descriptor-row3 textarea {
+.descriptor-des-field textarea {
 	width: 95%; 
 	height: 3vw; 
 	font-size: 110%; 

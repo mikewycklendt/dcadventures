@@ -22,8 +22,6 @@ function descriptor_des(value_input, div_input, row3_input) {
 	if (value == 'new') {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
-		row3.style.display = 'grid';
-		row3.style.maxHeight = div.scrollHeight + div.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
 		setTimeout(function(){div.style.display = 'none'}, 400);
