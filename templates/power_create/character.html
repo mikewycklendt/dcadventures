@@ -167,9 +167,11 @@
 				<div id="char-weaken-trait">
 					<div>
 						<select class="select-sml" id="char_weaken_trait_type" name="char_weaken_trait_type" onchange="char_weaken_trait_type()">
-							{% for t in traits %}
-								<option value="{{t.type}}">{{t.name}}</option>
-							{% endfor %}
+							<option value="ability">Ability</option>
+							<option value="skill">Skill</option>
+							<option value="power">Power</option>
+							<option value="advantage">Advantage</option>
+							<option value="x">Variable</option>
 						</select>
 					</div>
 
@@ -182,10 +184,12 @@
 
 				<div id="char-weaken-type">
 					<select class="select-sml" id="char_weaken_broad" name="char_weaken_broad">
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
-						{% endfor %}
-					</select>
+						<option value="ability">Ability</option>
+						<option value="skill">Skill</option>
+						<option value="power">Power</option>
+						<option value="advantage">Advantage</option>
+						<option value="x">Variable</option>
+				</select>
 				</div>
 
 				<div id="char-weaken-descriptor">

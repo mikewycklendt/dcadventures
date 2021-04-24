@@ -64,7 +64,7 @@ function descriptor() {
 	field_show(medium_subtype, med_title_row1, med_row1)
 
 	descriptor_create_fields(origin, source, medium_subtype, medium, descriptor, row2, row3, damage)
-	show_descriptor_field(origin, source, medium_subtype, medium, des_field, des_title_row1);
+	show_descriptor_field(origin, source, medium_type, medium_subtype, medium, des_field, des_title_row1);
 
 	get_descriptors(origin, source, medium_type, medium_subtype, medium, descriptor)
 }

@@ -2700,7 +2700,7 @@ def power_time_post_errors(data):
 	factor = data['factor']
 	check_type = data['check_type']
 	action = data['action']
-
+	points = data['points']
 
 
 
@@ -2771,6 +2771,9 @@ def power_time_post_errors(data):
 	
 	errors = variable_fields('action', 'Time Until Take New Action', type, [action], errors)
 	errors = variable_field('action', type, 'Action Type', action, errors)
+
+	errors = variable_fields('points', 'Points Restored', type, [points], errors)
+	errors = variable_field('points', type, 'Points', points, errors)
 
 	errors = seperate([dc, dc_type], 'DC', errors)
 	errors = seperate([circ, circ_type], 'Circumstance', errors)

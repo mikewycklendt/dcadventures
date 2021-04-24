@@ -68,9 +68,10 @@ function descriptor_create_fields(origin_input, source_input, medium_subtype_inp
 	}
 }
 
-function show_descriptor_field(origin_input, source_input, medium_subtype_input, medium_input, descriptor_field, descriptor_title=false) {
+function show_descriptor_field(origin_input, source_input, medium_type_input, medium_subtype_input, medium_input, descriptor_field, descriptor_title=false) {
 	const origin = select(origin_input);
 	const source = select(source_input);
+	const medium_type = select(medium_type_input);
 	const medium_subtype = select(medium_subtype_input);
 	const medium = select(medium_input);
 	const des_field =  document.getElementById(descriptor_field)
