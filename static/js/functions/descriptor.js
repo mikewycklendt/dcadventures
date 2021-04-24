@@ -22,6 +22,8 @@ function descriptor_des(value_input, div_input, row3_input) {
 	if (value == 'new') {
 		div.style.display = 'grid';
 		div.style.maxHeight = div.scrollHeight + 'px';
+		row3.style.display = 'grid';
+		row3.style.maxHeight = div.scrollHeight + row3.scrollHeight + 'px';
 	} else {
 		div.style.maxHeight = '0px';
 		setTimeout(function(){div.style.display = 'none'}, 400);
@@ -32,7 +34,7 @@ function new_entry_show(row2_input, row3_input, damage_input) {
 	const row2 = document.getElementById(row2_input);
 	const row3 = document.getElementById(row3_input);
 	const damage = document.getElementById(damage_input);
-
+	
 	row2.style.display = 'grid';
 	row2.style.maxHeight = row2.scrollHeight + 'px';
 	row3.style.display = 'grid';
