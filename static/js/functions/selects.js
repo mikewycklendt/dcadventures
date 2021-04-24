@@ -51,7 +51,7 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 		if (jsonResponse.success) {
 
 			if (jsonResponse.titles) {
-				titles = jsonResponse.title;
+				titles = jsonResponse.titles;
 				let t;
 				for (t of titles) {
 					const div = document.getElementById(t.div)
