@@ -124,13 +124,13 @@ def mediumtype_create():
 
 	name = 'Physical Damage'
 
-	entry = Descriptor(name=name, medium_type=3, damage=True)
+	entry = Descriptor(name=name, medium_type=3, damage=True, show=True)
 	db.session.add(entry)
 	db.session.commit()
 	
 	name = 'Energy Damage'
 
-	entry = Descriptor(name=name, medium_type=4, damage=True)
+	entry = Descriptor(name=name, medium_type=4, damage=True, show=True)
 	db.session.add(entry)
 	db.session.commit()
 
