@@ -862,7 +862,6 @@ def power_descriptor_select():
 	print(len(descriptors))
 
 	max_d = len(descriptors)
-	print(descriptors[0])
 	i = 0
 
 	print('origin id: '+ str(origin))

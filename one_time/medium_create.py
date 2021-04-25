@@ -17,6 +17,31 @@ def mediumtype_create():
 
 	return ('medium added')
 
+@app.route('/mediumtype/create')
+def mediumtype_create():
+
+	name = 'Physical Damage'
+
+	entry = Descriptor(name=name, medium_type=1, damage=True)
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Energy Damage'
+
+	entry = Descriptor(name=name, medium_type=2, damage=True)
+	db.session.add(entry)
+	db.session.commit()
+
+	results = Descriptor.query.all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return ('medium added')
+
+
+
 @app.route('/mediumsubtype/create')
 def mediumsubtypetype_create():
 
