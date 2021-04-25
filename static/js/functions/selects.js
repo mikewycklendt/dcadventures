@@ -123,7 +123,7 @@ function get_descriptors(origin_input, source_input, medium_type_input, medium_s
 	const medium_subtype = select(medium_subtype_input);
 	const medium = select(medium_input);
 	
-	response = fetch('/power/descriptor/select', {
+	response = fetch('/select/descriptor', {
 		method: 'POST',
 		body: JSON.stringify({
 			'origin': origin,
