@@ -162,7 +162,7 @@ function get_descriptors(origin_input, source_input, medium_type_input, medium_s
 				let o = document.createElement("option")
 				o.value = option.id;
 				o.text = option.name;
-				update.add(o);
+				select.add(o);
 			}
 
 		} else {
