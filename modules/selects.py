@@ -299,8 +299,11 @@ def equip_medium_select():
 			options.append({'id': '', 'name': 'Medium'})
 		finally:
 			db.session.close()
-	else:
+	elif medium_subtype ==  'new':
 		options.append({'id': '', 'name': 'Medium'})
+		options.append({'id': 'new', 'name': 'New Medium'})
+	else:
+		body['success'] = False
 
 	body['options'] = options
 	print(body)
