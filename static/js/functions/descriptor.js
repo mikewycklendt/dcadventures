@@ -35,8 +35,6 @@ function new_entry_show(row2_input, row3_input, damage_input) {
 	
 	row2.style.display = 'grid';
 	row2.style.maxHeight = row2.scrollHeight + 'px';
-	row3.style.display = 'grid';
-	row3.style.maxHeight = row3.scrollHeight + 'px';
 	damage.style.display = 'grid';
 	damage.style.maxHeight = damage.scrollHeight + 'px';
 }
@@ -48,8 +46,6 @@ function new_entry_hide(row2_input, row3_input, damage_input) {
 
 	row2.style.maxHeight = '0px';
 	setTimeout(function(){row2.style.display = 'none'}, 400);
-	row3.style.maxHeight = '0px';
-	setTimeout(function(){row3.style.display = 'none'}, 400);
 	damage.style.maxHeight = '0px';
 	setTimeout(function(){damage.style.display = 'none'}, 400);
 }

@@ -221,7 +221,7 @@ def equip_medium_subtype_select():
 			subtype_div = get_titles['title']
 
 		first_medium = medium_type.name + ' Mediums'
-		first_subtype = medium_type.name + 'Subtypes'
+		first_subtype = medium_type.name + ' Subtypes'
 		
 		subtype_options.append({'id': '', 'name': first_subtype})
 		medium_options.append({'id': '', 'name': first_medium})

@@ -99,6 +99,7 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 					const select = field.select;
 					const update = document.getElementById(select)
 					const inserts = field.options;
+					update.innerText = null;
 					let option;
 					for (option of inserts) {
 						let o = document.createElement("option")
