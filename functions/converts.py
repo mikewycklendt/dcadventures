@@ -1274,9 +1274,9 @@ def db_check(Table, value_id, name, errors):
 
 	return (errors)
 
-def rarity_convert(rare):
+def rarity_convert(rare, damage=False):
 	
-	if rare == 2:
+	if rare < 3:
 		rarity = 'very'
 	if rare == 3 :	
 		rarity = 'common'
@@ -1284,5 +1284,8 @@ def rarity_convert(rare):
 		rarity = 'uncommon'
 	if rare > 7:
 		rarity= 'rare'
+
+	if damage == True:
+		rarity = None
 
 	return (rarity)
