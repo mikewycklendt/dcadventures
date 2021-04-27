@@ -123,37 +123,40 @@ def post_descriptor():
 
 	if origin == 'new':
 		process = True
-		origin_check = db.session.query(Origin).filter(Origin.name == origin_name).first()
-		if origin_check is not None:
-			process = False
+		try:
+			origin_check = db.session.query(Origin).filter(Origin.name == origin_name).first()
+			if origin_check is not None:
+				process = False
+				error = True
+				body['success'] = False
+				error_msgs.append('There is already an origin with that name')
+				body['error'] = error_msgs
+			if process:
+				rare += 1
+				entry = Origin(name=origin_name, description=origin_des, show=show)
+				db.session.add(entry)
+				db.session.commit()
+				origin_id = entry.id
+				rarity = rarity_convert(1)
+				descriptor_origin = origin_name + ' Origin'
+				descriptor = Descriptor(name=descriptor_origin, origin=origin_id, result=origin_des, damage=damage, show=show, rarity=rarity)
+				db.session.add(descriptor)
+				db.session.commit()
+				
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
+				if name == '':
+					name = name + entry.name
+				else:
+					name = name + ', ' + entry.name
+		except:
 			error = True
 			body['success'] = False
-			error_msgs.append('There is already an origin with that name')
+			error_msgs.append('Could Not Add that origin')
 			body['error'] = error_msgs
-		if process:
-			rare += 1
-			entry = Origin(name=origin_name, description=origin_des, show=show)
-			db.session.add(entry)
-			db.session.commit()
-			origin_id = entry.id
-			rarity = rarity_convert(1)
-			descriptor = Descriptor(name=origin_name, origin=origin_id, result=origin_des, damage=damage, show=show, rarity=rarity)
-			db.session.add(descriptor)
-			db.session.commit()
-			
-			body['add_select'] = True
-			new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
-			if name == '':
-				name = name + entry.name
-			else:
-				name = name + ', ' + entry.name
-
-		error = True
-		body['success'] = False
-		error_msgs.append('Could Not Add that origin')
-		body['error'] = error_msgs
-		db.session.rollback()
-		db.session.close()
+			db.session.rollback()
+		finally:
+			db.session.close()
 	elif origin == '':
 		origin_id = None
 	else:
@@ -193,7 +196,8 @@ def post_descriptor():
 				db.session.commit()
 				source_id = entry.id
 				rarity = rarity_convert(1)
-				descriptor = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage, show=show, rarity=rarity)
+				descriptor_source = source_name + ' Source'
+				descriptor = Descriptor(name=descriptor_source, source=entry.id, result=source_des, damage=damage, show=show, rarity=rarity)
 				db.session.add(descriptor)
 				db.session.commit()
 				
