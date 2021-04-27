@@ -322,31 +322,32 @@ def post_descriptor():
 			error_msgs.append('There is already a medium with that name')
 			body['error'] = error_msgs
 		if process:
-			rare += 4
-			entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des, show=show)
-			db.session.add(entry)
-			db.session.commit()
-			medium_id = entry.id
-			damage_name = medium_name + ' Damage'
-			rarity = rarity_convert(6)
-			descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity, show=show)
-			db.session.add(descriptor)
-			db.session.commit()
-			descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True, show=show)
-			db.session.add(descriptor)
-			db.session.commit()
-			new_selects.append({'select': 'descriptor_field', 'id': descriptor.id, 'name': damage_name})
-			body['add_select'] = True
-			new_selects.append({'select': 'descriptor_medium', 'id': medium_id, 'name': entry.name})
-			one_medium_name = entry.name
-	except:
-			error = True
-			body['success'] = False
-			error_msgs.append('Could Not Add that medium')
-			body['error'] = error_msgs
-			db.session.rollback()
-		finally:
-			db.session.close()
+			try:
+				rare += 4
+				entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des, show=show)
+				db.session.add(entry)
+				db.session.commit()
+				medium_id = entry.id
+				damage_name = medium_name + ' Damage'
+				rarity = rarity_convert(6)
+				descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, rarity=rarity, show=show)
+				db.session.add(descriptor)
+				db.session.commit()
+				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, damage=True, show=show)
+				db.session.add(descriptor)
+				db.session.commit()
+				new_selects.append({'select': 'descriptor_field', 'id': descriptor.id, 'name': damage_name})
+				body['add_select'] = True
+				new_selects.append({'select': 'descriptor_medium', 'id': medium_id, 'name': entry.name})
+				one_medium_name = entry.name
+			except:
+				error = True
+				body['success'] = False
+				error_msgs.append('Could Not Add that medium')
+				body['error'] = error_msgs
+				db.session.rollback()
+			finally:
+				db.session.close()
 	elif medium == '':
 		medium_id = None
 	elif medium == 'all':
