@@ -136,8 +136,10 @@ function descriptor_submit() {
 
 	const damage_check = document.getElementById('descriptor_damage');
 	const damage = damage_check.checked;
+
+	///const power_id = document.getElementById('power_id').value;
+	const power_id = select("create_power_select");
 	
-	const power_id = document.getElementById('power_id').value;
 
 	if (((origin == 'new' && origin_name != '' && origin_des != '') || (origin != 'new' )) || ((source == 'new' && source_name != '' && source_des != '') || (source != 'new')) || 
 			((medium_subtype == 'new' && medium_subtype_name != '' && medium_subtype_des != '') || (medium_subtype != 'new')) || ((medium == 'new' && medium_name != '' && medium_des != '') || (medium != 'new')) ||

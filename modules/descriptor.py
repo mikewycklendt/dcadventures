@@ -88,6 +88,8 @@ def post_descriptor():
 	damage = request.get_json()['damage']
 	power_id = request.get_json()['power_id']
 
+	show = True
+
 	name = ''
 	one_medium_name = ''
 
@@ -131,11 +133,11 @@ def post_descriptor():
 				body['error'] = error_msgs
 			if process:
 				rare += 1
-				entry = Origin(name=origin_name, description=origin_des)
+				entry = Origin(name=origin_name, description=origin_des, show=show)
 				db.session.add(entry)
 				db.session.commit()
 				origin_id = entry.id
-				entry = Descriptor(name=origin_name, origin=entry.id, result=origin_des, damage=damage)
+				entry = Descriptor(name=origin_name, origin=entry.id, result=origin_des, damage=damage, show=show)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
 				if name == '':
@@ -184,11 +186,11 @@ def post_descriptor():
 				body['error'] = error_msgs
 			if process:
 				rare += 1
-				entry = Source(name=source_name, description=source_des)
+				entry = Source(name=source_name, description=source_des, show=show)
 				db.session.add(entry)
 				db.session.commit()
 				source_id = entry.id
-				entry = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage)
+				entry = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage, show=show)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_source', 'id': entry.id, 'name': entry.name})
 				if name == '':
@@ -257,20 +259,21 @@ def post_descriptor():
 				body['error'] = error_msgs
 			if process:
 				rare += 1
-				entry = MediumSubType(name=medium_subtype_name, medium_type=medium_type_id, description=medium_subtype_des)
+				entry = MediumSubType(name=medium_subtype_name, medium_type=medium_type_id, description=medium_subtype_des, show=show)
 				db.session.add(entry)
 				db.session.commit()
 				medium_subtype_id = entry.id
 				damage_name = medium_subtype_name + ' Damage'
 				rarity = rarity_convert(2)
-				descriptor = Descriptor(name=medium_subtype_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity)
+				descriptor = Descriptor(name=medium_subtype_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
-				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True)
+				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
+				new_selects.append({'select': 'descriptor_field', 'id': descriptor.id, 'name': damage_name})
 				body['add_select'] = True
-				new_selects.append({'select': 'descriptor_medium_subtype', 'id': entry.id, 'name': entry.name})
+				new_selects.append({'select': 'descriptor_medium_subtype', 'id': medium_subtype_id, 'name': entry.name})
 				one_medium_name = entry.name
 		except:
 			error = True
@@ -313,20 +316,21 @@ def post_descriptor():
 				body['error'] = error_msgs
 			if process:
 				rare += 4
-				entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des)
+				entry = Medium(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, description=medium_des, show=show)
 				db.session.add(entry)
 				db.session.commit()
 				medium_id = entry.id
 				damage_name = medium_name + ' Damage'
 				rarity = rarity_convert(6)
-				descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity)
+				descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, rarity=rarity, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
-				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True)
+				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=entry.id, result=medium_subtype_des, damage=True, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
+				new_selects.append({'select': 'descriptor_field', 'id': descriptor.id, 'name': damage_name})
 				body['add_select'] = True
-				new_selects.append({'select': 'descriptor_medium', 'id': entry.id, 'name': entry.name})
+				new_selects.append({'select': 'descriptor_medium', 'id': medium_id, 'name': entry.name})
 				one_medium_name = entry.name
 		except:
 			error = True
@@ -377,7 +381,7 @@ def post_descriptor():
 				error_msgs.append('There is already a descriptor with that name')
 				body['error'] = error_msgs
 			if process:
-				entry = Descriptor(name=descriptor_name, origin=origin_id, source=source_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, medium=medium_id, result=descriptor_result, damage=damage, rarity=rarity)
+				entry = Descriptor(name=descriptor_name, origin=origin_id, source=source_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, medium=medium_id, result=descriptor_result, damage=damage, rarity=rarity, show=show)
 				db.session.add(entry)
 				db.session.commit()
 				descriptor_id = entry.id

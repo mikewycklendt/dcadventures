@@ -2477,6 +2477,7 @@ class PowerDes(db.Model):
 	any_medium_subtype = db.Column(db.Boolean)
 	any_medium = db.Column(db.Boolean)
 	any_descriptor = db.Column(db.Boolean)
+	hidden_name = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -2503,5 +2504,6 @@ class PowerDes(db.Model):
 			'any_medium_type': self.any_medium_type,
 			'any_medium_subtype': self.any_medium_subtype,
 			'any_medium': self.any_medium,
-			'any_descriptor': self.any_descriptor
+			'any_descriptor': self.any_descriptor,
+			'hidden_name': self.hidden_name
 		}
