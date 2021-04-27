@@ -288,7 +288,7 @@ def equip_medium_select():
 
 			if sub == 'power_create':
 				all_subtype = 'Any ' + subtype.name
-				ooptions.append({'id': 'all', 'name': all_subtype})
+				options.append({'id': 'all', 'name': all_subtype})
 				options.append({'id': 'new', 'name': 'New'})
 				
 			for medium in mediums:

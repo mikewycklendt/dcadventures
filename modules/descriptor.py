@@ -137,7 +137,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				origin_id = entry.id
-				entry = Descriptor(name=origin_name, origin=entry.id, result=origin_des, damage=damage, show=show)
+				rarity = rarity_convert(1)
+				entry = Descriptor(name=origin_name, origin=entry.id, result=origin_des, damage=damage, show=show, rarity=rarity)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_origin', 'id': entry.id, 'name': entry.name})
 				if name == '':
@@ -190,7 +191,8 @@ def post_descriptor():
 				db.session.add(entry)
 				db.session.commit()
 				source_id = entry.id
-				entry = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage, show=show)
+				rarity = rarity_convert(1)
+				entry = Descriptor(name=source_name, source=entry.id, result=source_des, damage=damage, show=show, rarity=rarity)
 				body['add_select'] = True
 				new_selects.append({'select': 'descriptor_source', 'id': entry.id, 'name': entry.name})
 				if name == '':
