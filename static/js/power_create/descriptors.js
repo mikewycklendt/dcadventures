@@ -138,7 +138,7 @@ function descriptor_submit() {
 	const damage = damage_check.checked;
 
 	///const power_id = document.getElementById('power_id').value;
-	const power_id = select("create_power_select");
+	const power_id = select("all_power_select");
 	
 
 	if (((origin == 'new' && origin_name != '' && origin_des != '') || (origin != 'new' )) || ((source == 'new' && source_name != '' && source_des != '') || (source != 'new')) || 
