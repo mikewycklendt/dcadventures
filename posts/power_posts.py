@@ -1268,6 +1268,8 @@ def ranged_post(entry, body, cells):
 	penalty_mod = entry.penalty_mod
 	penalty_trait_type = entry.penalty_trait_type
 	penalty_trait = entry.penalty_trait
+	cost = entry.cost
+	ranks = entry.ranks
 	
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
@@ -1313,6 +1315,7 @@ def ranged_post(entry, body, cells):
 	distance_mod_rank = integer_convert(distance_mod_rank)
 	penalty_mod = integer_convert(penalty_mod)
 
+	cost = get_cost(cost, ranks, extra_id)
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 15, [extra], cells)
@@ -1372,6 +1375,8 @@ def ranged_post(entry, body, cells):
 	cells = cell('DC', 15, [dc], cells)
 	cells = cell('Degree', 15, [degree], cells)
 
+	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
+	
 	body = send_multiple(title, cells, body)
 
 	cells.clear()
@@ -2843,7 +2848,7 @@ def power_move_post(entry, body, cells):
 	time_travel_select = [{'type': '', 'name': 'Time Travel Type'}, {'type': 'Fixed', 'name': 'Fixed Point in Time'}, {'type': 'past', 'name': 'Any Point in Past'}, {'type': 'future', 'name': 'Any Point in Future'}, {'type': 'timeline', 'name': 'Alternate Timeline'}, {'type': 'any', 'name': 'Any Point in time'}  ]
 	special_time = selects(special_time, time_travel_select)
 
-	permanence_select = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	permanence_select = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}, {'type': 'turn', 'name': 'Chosen on Turn'}]
 	ground_permanence = selects(ground_permanence, permanence_select)
 
 	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'x', 'name': 'Variable'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]

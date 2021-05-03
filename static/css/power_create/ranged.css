@@ -178,13 +178,19 @@
 	gap: .4vw;
 }
 
+#ranged-row2 {
+	display: grid;
+	width: 98%;
+	gap: .2vw;
+	grid-template-columns: auto auto auto;
+}
+
 #ranged-button-row {
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: auto auto auto 18% 15%;
+	grid-template-columns: 15% 20% 20% 30% 15%;
 }
-
 #ranged-err {
 	display: none;
 	width: 94%;

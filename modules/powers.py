@@ -385,13 +385,13 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	
 	partners = [{'type': '', 'name': 'N/A'}, {'type': 'power', 'name': 'Same Power'}, {'type': 'device', 'name': 'Device'}, {'type': 'both', 'name': 'Power or Device'}, {'type': 'skill', 'name': 'Skill Check'}]
 
-	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}]
+	permanence = [{'type': '', 'name': 'Permanence'},{'type': 'temp', 'name': 'Temporary'}, {'type': 'perm', 'name': 'Permanent'}, {'type': 'turn', 'name': 'Chosen on Turn'}]
 
 	points_type = [{'type': '', 'name': 'Points Type'}, {'type': 'taken', 'name': 'Taken From Trait'}, {'type': 'restore', 'name': 'Restored to Trait'}]
 
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
-	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'flat_rank_units', 'name': 'Flat Units By Rank'}, {'type': 'flat_rank_distance', 'name': 'Flat Distance Rank By Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
+	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 
 	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
 
@@ -2703,11 +2703,15 @@ def power_post_ranged():
 	penalty_mod = request.get_json()['penalty_mod']
 	penalty_trait_type = request.get_json()['penalty_trait_type']
 	penalty_trait = request.get_json()['penalty_trait_type']
+	cost = request.get_json()['cost']
+	ranks = request.get_json()['ranks']
 
 	dc = db_integer(PowerDC, dc)
 	circ = db_integer(PowerCirc, circ)
 	degree = db_integer(PowerDegree, degree)
 	damage = db_integer(PowerDamage, damage)
+	cost = db_integer(PowerCost, cost)
+	ranks = db_integer(PowerRanks, ranks)
 
 	body = {}
 	body['success'] = True
@@ -2804,7 +2808,9 @@ def power_post_ranged():
 							penalty_math = penalty_math,
 							penalty_mod = penalty_mod,
 							penalty_trait_type = penalty_trait_type,
-							penalty_trait = penalty_trait)
+							penalty_trait = penalty_trait,
+							cost = cost,
+							ranks = ranks)
 
 		db.session.add(entry)
 		db.session.commit()

@@ -149,6 +149,8 @@ function ranged_submit() {
 	const penalty_mod = select("ranged_penalty_mod");
 	const penalty_trait_type = select("ranged_penalty_trait_type");
 	const penalty_trait = select("ranged_penalty_trait");
+	const cost = select("ranged_cost")
+	const ranks = select("ranged_ranks")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -208,7 +210,9 @@ function ranged_submit() {
 			'penalty_math': penalty_math,
 			'penalty_mod': penalty_mod,
 			'penalty_trait_type': penalty_trait_type,
-			'penalty_trait': penalty_trait
+			'penalty_trait': penalty_trait,
+			'cost': cost,
+			'ranks': ranks
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

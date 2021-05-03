@@ -552,7 +552,7 @@
 
 	</div>
 
-	<div id="ranged-button-row">
+	<div id="ranged-row2">
 
 		<div>
 			<select class="degree-sml" id="ranged_degree" name="time_degree">
@@ -593,6 +593,11 @@
 				{% endfor %}
 			</select>
 		</div>
+	</div>
+
+	<div id="ranged-button-row">
+
+		<div></div>
 
 		<div>
 			<div class="check-div" style="font-size: 80%;">
@@ -600,7 +605,17 @@
 			</div>
 		</div>
 		
+		<div>
+			<select class="entry-select" id="ranged_cost" name="ranged_ranks" onchange="ranged_cost()">
+				<option value="">Cost</option>
+			</select>
+		</div>
 
+		<div>
+			<select class="entry-select" id="ranged_ranks" name="ranged_ranks">
+				<option value="">Ranks</option>
+			</select>
+		</div>
 
 		<div>
 			<div class="btn-entry" id="ranged_submit" name="ranged_submit" onclick="ranged_submit()">

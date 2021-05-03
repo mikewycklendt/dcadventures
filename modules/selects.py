@@ -959,6 +959,9 @@ def power_descriptor_select():
 			else:
 				del descriptors[i]
 
+	nocat = db.session.query(Descriptor).filter_by(origin=None, source=None, medium_type=None, medium_subtype=None, medium=None).all()
+
+
 	print('\n\n')
 	for descriptor in descriptors:
 		print('results:')
@@ -966,6 +969,9 @@ def power_descriptor_select():
 
 	for descriptor in descriptors:
 		options.append({'id': descriptor['id'], 'name': descriptor['name']})
+	
+	for n in nocat:
+		options.append({'id': n.id, 'name': n.name})
 
 	body['options'] = options
 

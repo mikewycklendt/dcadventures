@@ -2131,6 +2131,8 @@ class PowerRanged(db.Model):
 	penalty_mod = db.Column(db.Integer)
 	penalty_trait_type = db.Column(db.String())
 	penalty_trait = db.Column(db.Integer)
+	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
+	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
 
 	def format(self):
 		return {
@@ -2182,7 +2184,9 @@ class PowerRanged(db.Model):
 			'penalty_math': self.penalty_math,
 			'penalty_mod': self.penalty_mod,
 			'penalty_trait_type': self.penalty_trait_type,
-			'penalty_trait': self.penalty_trait
+			'penalty_trait': self.penalty_trait,
+			'cost': self.cost,
+			'ranks': self.ranks
 		}
 
 class PowerResist(db.Model):
