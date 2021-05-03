@@ -119,30 +119,24 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/mediumtype/create')
-def mediumtype_create():
+@app.route('/ground/create')
+def ground_create():
 
-	name = 'Physical Damage'
+	ground = ['Snow', 'Ice']
 
-	entry = Descriptor(name=name, medium_type=3, damage=True, show=True)
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Energy Damage'
+	for i in ground:
 
-	entry = Descriptor(name=name, medium_type=4, damage=True, show=True)
-	db.session.add(entry)
-	db.session.commit()
+		entry = Ground(name=i)
+		db.session.add(entry)
+		db.session.commit()
 
-	results = Descriptor.query.all()
+	results = Ground.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('medium added')
-
-
+	return ('grounds added')
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
