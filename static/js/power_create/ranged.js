@@ -14,6 +14,25 @@ function ranged_base() {
 	base(field, entry);
 }
 
+function ranged_extra() {
+	const power_id = select("all_power_select");
+	const field = 'ranged_extra';
+	const fill = 'ranged_cost';
+	///const power_id = document.getElementById('power_id');
+
+	id_select(field, fill, power_cost_select, power_id);
+}
+
+function ranged_cost() {
+	const power_id = select("all_power_select");
+	const field = 'ranged_cost';
+	const fill = 'ranged_ranks';
+	const extra = 'ranged_extra';
+	///const power_id = document.getElementById('power_id');
+
+	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
+}
+
 function ranged_check_trait_type() {
 	const select = 'ranged_check_trait_type'
 	const fill = 'ranged_check_trait'
