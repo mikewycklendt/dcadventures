@@ -435,8 +435,10 @@ def power_cost_select():
 				if ranks is None:
 					ranks_options.append({'id': '', 'name': 'No Ranks Set'})
 				else:
+					ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == sub, PowerRanks.extra == None, PowerRanks.cost == None).all()
 					ranks_options.append({'id': '', 'name': 'Base Power Ranks'})
-					ranks_options.append({'id': ranks.id, 'name': ranks.ranks})
+					for r in ranks:
+						ranks_options.append({'id': r.id, 'name': r.ranks})
 			else:
 				get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).all()
 				options.append({'id': '', 'name': 'Base Power Costs'})
@@ -453,8 +455,10 @@ def power_cost_select():
 				if ranks is None:
 					ranks_options.append({'id': '', 'name': 'No Ranks Set'})
 				else:
+					ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == sub, PowerRanks.extra == id, PowerRanks.cost == None).all()
 					ranks_options.append({'id': '', 'name': ranks_title})
-					ranks_options.append({'id': ranks.id, 'name': ranks.ranks})
+					for r in ranks:
+						ranks_options.append({'id': r.id, 'name': r.ranks})
 			else:
 				get = db.session.query(PowerCost).filter(PowerCost.extra == id).first()
 				if get is None:
