@@ -18,9 +18,10 @@ function defense_extra() {
 	const power_id = select("all_power_select");
 	const field = 'defense_extra';
 	const fill = 'defense_cost';
+	const ranks = 'defense_ranks';
 	///const power_id = document.getElementById('power_id');
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function defense_cost() {

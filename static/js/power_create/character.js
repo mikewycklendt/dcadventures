@@ -21,8 +21,9 @@ function char_extra() {
 	///const power_id = document.getElementById('power_id');
 	const field = 'char_extra';
 	const fill = 'char_cost';
+	const ranks = 'char_ranks';
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function char_cost() {

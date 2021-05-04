@@ -19,9 +19,10 @@ function sense_extra() {
 	const power_id = select("all_power_select");
 	const field = 'sense_extra';
 	const fill = 'sense_cost';
+	const ranks = 'sense_ranks';
 	///const power_id = document.getElementById('power_id');
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function sense_cost() {

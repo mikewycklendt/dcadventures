@@ -29,7 +29,7 @@ const variable_sub = 'variable';
 const any_var_sub = 'any-var';
 const other_var_sub = 'variable-other';
 
-function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false, power_id=false) {
+function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false, second_sub=false) {
 	const id = select(id_field);
 
 	response = fetch(route, {
@@ -39,7 +39,7 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 			'sub': sub,
 			'fields': fill,
 			'titles': titles,
-			'power_id': power_id
+			'second_sub': second_sub
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -59,6 +59,18 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 
 					div.style.opacity = '100%';
 					div.innerText = title;
+				}
+			}
+
+			if (jsonRespons.second) {
+				const select = document.getElementById(second_sub);
+				const options =jsonResponse.ranks;
+				let option;
+				for (option of options) {
+					let o = document.createElement('option');
+					o.value = option.id;
+					o.text = option.name
+					select.add(o);
 				}
 			}
 

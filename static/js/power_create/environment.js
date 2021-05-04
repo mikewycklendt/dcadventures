@@ -17,10 +17,11 @@ function env_base() {
 function env_extra() {
 	const field = 'env_extra';
 	const fill = 'env_cost';
+	const ranks = 'env_ranks';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function env_cost() {

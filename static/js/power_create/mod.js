@@ -17,10 +17,11 @@ function mod_base() {
 function mod_extra_id() {
 	const field = 'mod_extra_id';
 	const fill = 'mod_cost';
+	const ranks = 'mod_ranks';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function mod_cost() {

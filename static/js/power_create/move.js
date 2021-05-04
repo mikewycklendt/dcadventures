@@ -9,11 +9,12 @@ function move_check() {
 
 function move_extra() {
 	const field = 'move_extra';
-	const fill = 'move_cost'
+	const fill = 'move_cost';
+	const ranks = 'move_ranks';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function move_cost() {

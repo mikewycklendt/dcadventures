@@ -19,8 +19,9 @@ function create_extra() {
 	const fill = 'create_cost';
 	///const power_id = document.getElementById('power_id');
 	const power_id = select("all_power_select");
+	const ranks = 'create_ranks';
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
 }
 
 function create_cost() {
@@ -355,7 +356,7 @@ function create_submit() {
 		if (jsonResponse.success) {
 			
 			extra_effect_check(jsonResponse)
-			
+
 			create_grid.columns.length = 0;
 			create_grid.columns = jsonResponse.rows;
 

@@ -409,9 +409,16 @@ def unit_select():
 def power_cost_select():
 	body = {}
 	body['success'] = True
+	ranks_options = []
 
 	id = request.get_json()['id']
 	sub = request.get_json()['sub']
+	second = request.get_json()['second_sub']
+
+	if second != False:
+		body['second'] = True
+	else:
+		body['second'] = False
 	options = []
 
 	try:
@@ -423,16 +430,31 @@ def power_cost_select():
 			get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).first()
 			if get is None:
 				options.append({'id': '0', 'name': 'Base Power Cost'})
+				ranks = True
+				ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == sub, PowerRanks.extra == None, PowerRanks.cost == None).first()
+				if ranks is None:
+					ranks_options.append({'id': '', 'name': 'No Ranks Set'})
+				else:
+					ranks_options.append({'id': '', 'name': 'Base Power Ranks'})
+					ranks_options.append({'id': ranks.id, 'name': ranks.ranks})
 			else:
 				get = db.session.query(PowerCost).filter(PowerCost.extra == None, PowerCost.power_id == sub).all()
 				options.append({'id': '', 'name': 'Base Power Costs'})
 				for g in get:
 					options.append({'id': g.id, 'name': g.keyword})
+				ranks_options.append({'id': '', 'name': 'Select Cost'})
 		else:
 			extra = db.session.query(Extra).filter_by(id=id).one()
 			if extra.cost is not None:
 				title = extra.name + ' Cost'
+				ranks_title = extra.name + ' Ranks'
 				options.append({'id': 'ex', 'name': title})
+				ranks = db.session.query(PowerRanks).filter(PowerRanks.power_id == sub, PowerRanks.extra == id, PowerRanks.cost == None).first()
+				if ranks is None:
+					ranks_options.append({'id': '', 'name': 'No Ranks Set'})
+				else:
+					ranks_options.append({'id': '', 'name': ranks_title})
+					ranks_options.append({'id': ranks.id, 'name': ranks.ranks})
 			else:
 				get = db.session.query(PowerCost).filter(PowerCost.extra == id).first()
 				if get is None:
@@ -440,11 +462,13 @@ def power_cost_select():
 				else:
 					get = db.session.query(PowerCost).filter(PowerCost.extra == id).all()
 					for g in get:
-						options.append({'id': g.id, 'name': g.keyword})					
+						options.append({'id': g.id, 'name': g.keyword})
+				ranks_options.append({'id': '', 'name': 'Select Cost'})
 	except:
 		options.append({'id': '', 'name': 'Select Power or Extra'})
 
 	body['options'] = options 
+	body['ranks'] = ranks_options
 	print(body)
 	return jsonify(body)
 
@@ -455,7 +479,7 @@ def power_ranks_select():
 
 	id = request.get_json()['id']
 	aub = request.get_json()['sub']
-	power_id = request.get_json()['power_id']
+	power_id = request.get_json()['second_sub']
 	options = [{'id': '', 'name': 'Ranks'}]
 
 	try:

@@ -127,6 +127,14 @@ def var_convert(value):
 		value = int(value)
 
 	return (value)
+
+def cost_convert(value):
+	if value == '0':
+		value = None
+	else:
+		value = int(value)
+
+	return (value)
 	
 def var_string(value):
 

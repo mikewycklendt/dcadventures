@@ -18,9 +18,10 @@ function ranged_extra() {
 	const power_id = select("all_power_select");
 	const field = 'ranged_extra';
 	const fill = 'ranged_cost';
+	const rank = 'ranged_ranks';
 	///const power_id = document.getElementById('power_id');
 
-	id_select(field, fill, power_cost_select, power_id);
+	id_select(field, fill, power_cost_select, power_id, false, false, false, rank);
 }
 
 function ranged_cost() {
