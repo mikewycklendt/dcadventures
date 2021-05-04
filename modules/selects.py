@@ -415,10 +415,10 @@ def power_cost_select():
 	sub = request.get_json()['sub']
 	second = request.get_json()['second_sub']
 
-	if second != False:
-		body['second'] = True
-	else:
+	if second == False:
 		body['second'] = False
+	else:
+		body['second'] = True
 	options = []
 
 	try:
@@ -468,7 +468,7 @@ def power_cost_select():
 		options.append({'id': '', 'name': 'Select Power or Extra'})
 
 	body['options'] = options 
-	body['ranks'] = ranks_options
+	body['options_two'] = ranks_options
 	print(body)
 	return jsonify(body)
 
