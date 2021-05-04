@@ -62,7 +62,7 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 				}
 			}
 
-			if (jsonRespons.second) {
+			if (jsonResponse.second) {
 				const select = document.getElementById(second_sub);
 				const options =jsonResponse.ranks;
 				let option;
