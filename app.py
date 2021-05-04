@@ -118,25 +118,42 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 @app.teardown_appcontext
 def shutdown_session(exception=None):
 	db.session.remove()
+	
+@app.route('/range/create')
+def range_create():
 
-@app.route('/ground/create')
-def ground_create():
+	ranges = []
 
-	ground = ['Snow', 'Ice']
+	ranges.append({'name': 'Statewide',
+					'distance': None})
+					
+	ranges.append({'name': 'Worldwide',
+					'distance': None})
+					
+	ranges.append({'name': 'Unlimited',
+					'distance': None})
 
-	for i in ground:
 
-		entry = Ground(name=i)
+
+	for r in ranges:
+		name = r['name']
+		distance = r['distance']
+
+		entry = Range(name=name, distance=distance)
 		db.session.add(entry)
 		db.session.commit()
 
-	results = Ground.query.all()
+	results = Range.query.all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('grounds added')
+	return ('ranges added')
+
+
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)

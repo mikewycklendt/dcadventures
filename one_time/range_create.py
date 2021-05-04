@@ -14,6 +14,16 @@ def range_create():
 	ranges.append({'name': 'Long',
 					'distance': 100
 					})
+					
+	ranges.append({'name': 'Statewide',
+					'distance': None})
+					
+	ranges.append({'name': 'Worldwide',
+					'distance': None})
+					
+	ranges.append({'name': 'Unlimited',
+					'distance': None})
+
 
 
 	for r in ranges:
