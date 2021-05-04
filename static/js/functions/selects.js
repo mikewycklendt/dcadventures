@@ -64,6 +64,9 @@ function id_select(id_field, fill, route, sub=false, classname=false, titles=fal
 
 			if (jsonResponse.second) {
 				const select = document.getElementById(second_sub);
+				select.innerText = null;
+				select.style.backgroundColor = 'lightblue';
+				setTimeout(function(){select.style.backgroundColor = "white"}, 200)
 				const options = jsonResponse.options_two;
 				let option;
 				for (option of options) {
