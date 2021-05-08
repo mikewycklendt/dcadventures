@@ -611,6 +611,7 @@
 					<select class="select-sml org-sml" id="mod_limited_org" name="mod_limited_org" onchange="mod_limited_org()">
 						<option value="">Organization</option>
 						<option value="x">Variable</option>
+						<option value="other">Other</option>
 						{% for o in organization %}
 							<option value={{o.id}}>{{o.name}}</option>
 						{% endfor %}
