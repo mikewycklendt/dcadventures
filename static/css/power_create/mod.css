@@ -361,6 +361,21 @@
 	transition: all .3s ease-out;
 }
 
+#mod-limited-org {
+	display: none;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: 32% 35% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
+#mod-limited-org-other {
+	display: none;
+	opacity: 0%;
+	transition: all .4s ease-out;
+}
+
 #mod-limited-emotion-other {
 	display: none;
 	opacity: 0%;
