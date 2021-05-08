@@ -139,7 +139,7 @@ class Job(db.Model):
 		}
 		
 class Organization(db.Model):
-	__tablename__ = 'jobs'
+	__tablename__ = 'organizations'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
 	all = db.Column(db.Boolean)
