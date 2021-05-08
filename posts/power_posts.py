@@ -2,7 +2,7 @@
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature, Organization
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -918,6 +918,7 @@ def mod_post(entry, body, cells):
 	limited_creature = entry.limited_creature
 	limited_creature_narrow = entry.limited_creature_narrow
 	limited_env = entry.limited_env
+	limited_org = entry.limited_org
 	limited_emotion = entry.limited_emotion
 	limited_material = entry.limited_material
 	side_effect_type = entry.side_effect_type
@@ -983,6 +984,7 @@ def mod_post(entry, body, cells):
 	limited_env = get_name(Environment, limited_env)
 	limited_emotion = get_name(Emotion, limited_emotion)
 	limited_material = get_name(Material, limited_material)
+	limited_org = get_name(Organization, limited_org)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1096,6 +1098,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'org'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	new_mod = mod_cell('Organization', 14, [limited_org], new_mod, value)
 	value = 'complication'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'day'

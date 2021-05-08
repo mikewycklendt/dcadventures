@@ -90,7 +90,8 @@ function mod_limited_type() {
 					{'val': 'creature', 'div': 'mod-limited-creature'},
 					{'val': 'env', 'div': 'mod-limited-env'},
 					{'val': 'emotion', 'div': 'mod-limited-emotion'},
-					{'val': 'material', 'div': 'mod-limited-material'}];
+					{'val': 'material', 'div': 'mod-limited-material'},
+					{'val': 'org', 'div': 'mod-limited-org'}];
 	const field = 'mod_limited_type';
 
 	select_opacity(field, options);
@@ -113,6 +114,13 @@ function mod_limited_env() {
 function mod_limited_emotion() {
 	const select = 'mod_limited_emotion';
 	const options = [{'val': 'other', 'div': 'mod-limited-emotion-other'}];
+
+	select_opacity(select, options);
+}
+
+function mod_limited_org() {
+	const select = 'mod_limited_org';
+	const options = [{'val': 'other', 'div': 'mod-limited-org-other'}];
 
 	select_opacity(select, options);
 }
@@ -438,6 +446,8 @@ function mod_submit() {
 	const limited_env = select("mod_limited_env");
 	const limited_env_other = text("mod_limited_env_other");
 	const limited_material = select("mod_limited_material");
+	const limited_org = select('mod_limited_org');
+	const limited_org_other = text("mod_limited_org_other");
 	const side_effect_type = select("mod_side_effect_type");
 	const side_other = text("mod_side_other");
 	const side_level = select('mod_side_level');
@@ -547,6 +557,8 @@ function mod_submit() {
 			'limited_emotion_other': limited_emotion_other,
 			'limited_env': limited_env,
 			'limited_env_other': limited_env_other,
+			'limited_org': limited_org,
+			'limited_org_other': limited_org_other,
 			'limited_material': limited_material,
 			'side_effect_type': side_effect_type,
 			'side_level': side_level,

@@ -2393,6 +2393,8 @@ def power_post_mod():
 	limited_emotion_other = request.get_json()['limited_emotion_other']
 	limited_emotion = request.get_json()['limited_emotion']
 	limited_material = request.get_json()['limited_material']
+	limited_org = request.get_json()['limited_org']
+	limited_org_other = request.get_json()['limited_org_other']
 	side_effect_type = request.get_json()['side_effect_type']
 	side_level = request.get_json()['side_level']
 	side_other = request.get_json()['side_other']
@@ -2487,10 +2489,14 @@ def power_post_mod():
 	body = user_item(Emotion, 'Emotion', limited_emotion, limited_emotion_other, 'emotion-sml', body, True, True)
 	limited_emotion = body['output']
 	
+	body = user_item(Organization, 'Organization', limited_org, limited_org_other, 'org-sml', body, True, True)
+	limited_org = body['output']
+
 	limited_creature = db_integer(Creature, limited_creature)
 	limited_creature_narrow = db_integer(NarrowCreature, limited_creature_narrow)
 	limited_env = db_integer(Environment, limited_env_other)
 	limited_emotion = db_integer(Emotion, limited_emotion)
+	limited_org = db_integer(Organization, limited_org)
 
 	try:
 		entry = PowerMod(power_id = power_id,
@@ -2559,6 +2565,8 @@ def power_post_mod():
 							limited_creature_other = limited_creature_other,
 							limited_env_other = limited_env_other,
 							limited_env = limited_env,
+							limited_org = limited_org,
+							limited_org_other = limited_org_other,
 							limited_emotion_other = limited_emotion_other,
 							limited_emotion = limited_emotion,
 							limited_material = limited_material,

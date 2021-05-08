@@ -605,6 +605,22 @@
 					<input type="text" id="mod_limited_emotion_other" name="mod_limited_emotion_other" placeholder="Other Emotion">
 				</div>
 			</div>
+			
+			<div id="mod-limited-org">
+				<div>
+					<select class="select-sml org-sml" id="mod_limited_org" name="mod_limited_org" onchange="mod_limited_org()">
+						<option value="">Organization</option>
+						<option value="x">Variable</option>
+						{% for o in organization %}
+							<option value={{o.id}}>{{o.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="mod-limited-org-other">
+					<input type="text" id="mod_limited_org_other" name="mod_limited_org_other" placeholder="Other Organization">
+				</div>
+			</div>
 
 			<div id="mod-limited-sense">
 				<div>
