@@ -3380,7 +3380,7 @@ def power_post_sense():
 									comprehend_type = comprehend_type,
 									comprehend_animal = comprehend_animal,
 									comprehend_language = comprehend_language,
-									comprehend_spirit = comprehend_spirit,``
+									comprehend_spirit = comprehend_spirit,
 									concealment = concealment,
 									conceal_precise = conceal_precise,
 									conceal_power = conceal_power,
