@@ -451,7 +451,7 @@
 			</select>
 		</div>
 
-		<div id="sense-comprehend-animal">
+		<div class="hidden" id="sense-comprehend-animal">
 			<select class="select-sml" id="aense_comprehend_animal" name="aense_comprehend_animal">
 				{% for a in animals %}
 					<option value="{{a.type}}">{{a.name}}</option>
@@ -459,7 +459,7 @@
 			</select>
 		</div>
 
-		,<div id="aense-comprehend-language">
+		,<div class="hidden" id="aense-comprehend-language">
 			<select class="select-sml" id="sense_comprehend_language" name="aense_comprehend_language">
 				{% for l in languages %}
 					<option value="{{l.type}}">{{l.name}}</option>
@@ -467,7 +467,7 @@
 			</select>
 		</div>
 
-		<div id="aense-comprehend-spirit">
+		<div class="hidden" id="aense-comprehend-spirit">
 			<select class="select-sml" id="aense_comprehend_spirit" name="aense_comprehend_spirit">
 				{% for s in spirits %}
 					<option value="{{s.type}}">{{s.name}}</option>

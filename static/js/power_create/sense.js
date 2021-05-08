@@ -233,7 +233,7 @@ function aense_comprehend_type()  {
 	const options = [{'val': 'animal', 'div': 'aense-comprehend-animal'}, 
 					{'val': 'spirit', 'div': 'aense-comprehend-spirit'},
 					{'val': 'language', 'div': 'aense-comprehend-language'}];
-	const selects = ['sense_comprehend_animal', 'sense_comprehend_language', 'sense_comprehend_spirit']
+	const selects = ['aense_comprehend_animal', 'sense_comprehend_language', 'aense_comprehend_spirit']
 	
 	reset_all(selects);
 	select_opacity(select, options);
