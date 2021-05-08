@@ -952,6 +952,7 @@ def mod_post(entry, body, cells):
 	extra_circ = entry.extra_circ
 	feedback = entry.feedback
 	feedback_mod = entry.feedback_mod
+	passive = entry.passive
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1215,6 +1216,8 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Radius', 7, ranks, cells)
 	cells = check_cell('Accurate', 9, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)
+	cells = check_cell('Passive', 8, passive, cells)
+
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
@@ -1584,6 +1587,7 @@ def sense_post(entry, body, cells):
 	visual = entry.visual
 	mental = entry.mental
 	tactile = entry.tactile
+	special = entry.special
 	skill = entry.skill
 	sense_type = entry.sense_type
 	height_trait_type = entry.height_trait_type
@@ -1788,6 +1792,7 @@ def sense_post(entry, body, cells):
 	words = checks_strings('Mental', mental)
 	words = checks_strings('Visual', visual, words)
 	words = checks_strings('Tactile', tactile, words)
+	words = checks_strings('Special', special, words)
 	cells = circ_cell('Excludes', 'Excludes:', 10, words, cells, body)
 
 	cells = circ_cell('Multiple', 'If Multiple', 10, multiple, cells, body)

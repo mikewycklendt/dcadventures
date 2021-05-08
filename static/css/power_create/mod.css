@@ -99,6 +99,14 @@
 	grid-auto-rows: auto;
 }
 
+#mod-row7 {
+	display: grid;
+	width: 98%;
+	gap: 3px;
+	grid-template-columns: auto auto auto auto auto;
+	grid-auto-rows: auto;
+}
+
 #mod-simultaneous {
 	display: none;
 	font-size: 100%;

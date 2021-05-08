@@ -257,6 +257,7 @@ function sense_submit() {
 	const visual = check("sense_visual");
 	const mental = check("sense_mental");
 	const tactile = check("sense_tactile");
+	const special = check("sense_special")
 	const skill = select("sense_skill");
 	const sense_type = select("sense_type");
 	const height_trait_type = select("sense_height_trait_type");
@@ -331,6 +332,7 @@ function sense_submit() {
 			'visual': visual,
 			'mental': mental,
 			'tactile': tactile,
+			'special': special,
 			'skill': skill,
 			'sense_type': sense_type,
 			'height_trait_type': height_trait_type,

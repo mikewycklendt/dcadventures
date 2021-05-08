@@ -480,6 +480,7 @@ function mod_submit() {
 	const multiple = select("mod_multiple");
 	const feedback = check("mod_feedback")
 	const feedback_mod = select("mod_feedback_mod")
+	const passive = check("mod_passive")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -594,7 +595,8 @@ function mod_submit() {
 			'extra_circ': extra_circ,
 			'multiple': multiple,
 			'feedback': feedback,
-			'feedback_mod': feedback_mod
+			'feedback_mod': feedback_mod,
+			'passive': passive
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

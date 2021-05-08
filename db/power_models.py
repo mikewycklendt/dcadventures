@@ -1976,6 +1976,7 @@ class PowerMod(db.Model):
 	multiple = db.Column(db.String())
 	feedback = db.Column(db.Boolean)
 	feedback_mod = db.Column(db.Integer)
+	passive = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2081,7 +2082,8 @@ class PowerMod(db.Model):
 			'extra_circ': self.extra_circ,
 			'multiple': self.multiple,
 			'feedback': self.feedback,
-			'feedback_mod': self.feedback_mod
+			'feedback_mod': self.feedback_mod,
+			'passive': self.passive
 		}
 
 class PowerRanged(db.Model):

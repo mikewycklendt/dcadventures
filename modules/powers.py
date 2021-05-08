@@ -2436,6 +2436,7 @@ def power_post_mod():
 	multiple = request.get_json()['multiple']
 	feedback_mod = request.get_json()['feedback_mod']
 	feedback = request.get_json()['feedback']
+	passive = request.get_json()['passive']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2607,7 +2608,8 @@ def power_post_mod():
 							extra_circ = extra_circ,
 							multiple = multiple,
 							feedback_mod = feedback_mod,
-							feedback = feedback
+							feedback = feedback,
+							passive = passive
 						)
 
 		db.session.add(entry)
@@ -3234,6 +3236,7 @@ def power_post_sense():
 	visual = request.get_json()['visual']
 	mental = request.get_json()['mental']
 	tactile = request.get_json()['tactile']
+	special = request.get_json()['special']
 	skill = request.get_json()['skill']
 	sense_type = request.get_json()['sense_type']
 	height_trait_type = request.get_json()['height_trait_type']
@@ -3342,6 +3345,7 @@ def power_post_sense():
 									visual = visual,
 									mental = mental,
 									tactile = tactile,
+									special = special,
 									skill = skill,
 									sense_type = sense_type,
 									height_trait_type = height_trait_type,

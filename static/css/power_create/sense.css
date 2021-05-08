@@ -50,7 +50,7 @@
 
 #sense-row1 {
 	display: grid;
-	grid-template-columns: 15% 15% 12% 12% 12% 34%;
+	grid-template-columns: 15% 15% 12% 12% 12% 12% 22%;
 	grid-auto-rows: auto;
 	gap: .2vw;
 }
