@@ -1376,7 +1376,7 @@ def ranged_post(entry, body, cells):
 	cells = cell('Degree', 15, [degree], cells)
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
-	
+
 	body = send_multiple(title, cells, body)
 
 	cells.clear()
@@ -2610,6 +2610,10 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('null', 22, ['Effect Nullified'], vcells)
 	
 	vcells = vcell('uncontrol', 22, ['Effect Uncontrolled'], vcells)
+	
+	vcells = vcell('detect', 22, ['Detect Effect'], vcells)
+	
+	vcells = vcell('understand', 26, ['Understand Communication'], vcells)
 	
 	vcells = vcell('act', 12, ['Can Act'], vcells)
 
