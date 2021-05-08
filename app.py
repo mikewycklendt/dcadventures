@@ -21,7 +21,7 @@ from models import setup_db
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, Action, EnvCondition, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
-from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature
+from db.user_rules import Nature, Emotion, Environment, Job, Creature, NarrowCreature, Organization
 
 from db.advanrtage_modeks import Advantage, Benefit, AdvCheck, AdvCirc, AdvCombined, AdvCondition, AdvDC, AdvDegree, AdvEffort, AdvMinion, AdvMod, AdvOpposed, AdvPoints, AdvPoints, AdvResist, AdvRounds, AdvSkill, AdvTime, AdvVariable, AdvantageType, AdvMove
 from db.armor_models import Armor, ArmorType, ArmDefense, ArmDescriptor
@@ -118,38 +118,49 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 @app.teardown_appcontext
 def shutdown_session(exception=None):
 	db.session.remove()
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	tablename =  'Organization'
+
+	name = 'All Organizations'
+
+	entry = Organization(all=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 	
-@app.route('/range/create')
-def range_create():
+	name = 'Current ' + tablename
 
-	ranges = []
+	entry = Organization(current=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'Any ' + tablename
 
-	ranges.append({'name': 'Statewide',
-					'distance': None})
-					
-	ranges.append({'name': 'Worldwide',
-					'distance': None})
-					
-	ranges.append({'name': 'Unlimited',
-					'distance': None})
+	entry = Organization(any=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
 
+	name = 'Variable ' + tablename
 
+	entry = Organization(var=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	name = 'No ' + tablename
 
-	for r in ranges:
-		name = r['name']
-		distance = r['distance']
-
-		entry = Range(name=name, distance=distance)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Range.query.all()
+	entry = Organization(none=True, name=name, hide=True )
+	db.session.add(entry)
+	db.session.commit()
+	
+	results = db.session.query(Organization).filter_by(hide=True).all()
 
 	for result in results:
 		print (result.id)
 		print (result.name)
 
-	return ('ranges added')
+	return (tablename + ' db added')
 
 
 
