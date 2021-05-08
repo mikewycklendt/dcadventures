@@ -2330,6 +2330,9 @@ class PowerSenseEffect(db.Model):
 	circ = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
 	comprehend = db.Column(db.Boolean)
 	comprehend_type = db.Column(db.String())
+	comprehend_animal = db.Column(db.String())
+	comprehend_language = db.Column(db.String())
+	comprehend_spirit = db.Column(db.String())
 	concealment = db.Column(db.Integer, db.ForeignKey('concealment.id'))
 	conceal_precise = db.Column(db.Boolean)
 	conceal_power = db.Column(db.Boolean)
@@ -2398,6 +2401,9 @@ class PowerSenseEffect(db.Model):
 			'circ': self.circ,
 			'comprehend': self.comprehend,
 			'comprehend_type': self.comprehend_type,
+			'comprehend_animal': self.comprehend_animal,
+			'comprehend_language': self.comprehend_language,
+			'comprehend_spirit': self.comprehend_spirit,
 			'concealment': self.concealment,
 			'conceal_precise': self.conceal_precise,
 			'conceal_power': self.conceal_power,

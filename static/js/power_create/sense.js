@@ -228,6 +228,17 @@ function sense_ranged() {
 	check_drop(check, div, entry);
 }
 
+function aense_comprehend_type()  {
+	const select = 'aense_comprehend_type';
+	const options = [{'val': 'animal', 'div': 'aense-comprehend-animal'}, 
+					{'val': 'spirit', 'div': 'aense-comprehend-spirit'},
+					{'val': 'language', 'div': 'aense-comprehend-language'}];
+	const selects = ['sense_comprehend_animal', 'sense_comprehend_language', 'sense_comprehend_spirit']
+	
+	reset_all(selects);
+	select_opacity(select, options);
+}
+
 let sense_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -281,6 +292,9 @@ function sense_submit() {
 	const circ = select("sense_circ");
 	const comprehend = check("sense_comprehend");
 	const comprehend_type = select("aense_comprehend_type");
+	const comprehend_animal = select("aense_comprehend_animal");
+	const comprehend_language = select("sense_comprehend_language");
+	const comprehend_spirit = select("aense_comprehend_spirit");
 	const concealment = select("sense_concealment");
 	const conceal_precise = check("sense_conceal_precise");
 	const conceal_power = check("sense_conceal_power");
@@ -355,6 +369,9 @@ function sense_submit() {
 			'circ': circ,
 			'comprehend': comprehend,
 			'comprehend_type': comprehend_type,
+			'comprehend_animal': comprehend_animal,
+			'comprehend_language': comprehend_language,
+			'comprehend_spirit': comprehend_spirit,
 			'concealment': concealment,
 			'conceal_precise': conceal_precise,
 			'conceal_power': conceal_power,

@@ -444,9 +444,33 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="aense_comprehend_type" name="aense_comprehend_type">
+			<select class="select-sml" id="aense_comprehend_type" name="aense_comprehend_type" onchange="aense_comprehend_type()">
 				{% for c in comprehend %}
 					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="sense-comprehend-animal">
+			<select class="select-sml" id="aense_comprehend_animal" name="aense_comprehend_animal">
+				{% for a in animals %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		,<div class="hidden" id="aense-comprehend-language">
+			<select class="select-sml" id="sense_comprehend_language" name="aense_comprehend_language">
+				{% for l in languages %}
+					<option value="{{l.type}}">{{l.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="aense-comprehend-spirit">
+			<select class="select-sml" id="aense_comprehend_spirit" name="aense_comprehend_spirit">
+				{% for s in spirits %}
+					<option value="{{s.type}}">{{s.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

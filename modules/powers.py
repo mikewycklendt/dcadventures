@@ -223,6 +223,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
+	animals = [{'type': '', 'name': 'Comprehend Animals'}, {'type': 'speak', 'name': 'Speak to'}, {'type': 'understad', 'name': 'Understand'}, {'type': 'both', 'name': 'Both'}]
+
 	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
@@ -267,7 +269,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_types = [{'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}]
 
-	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'x', 'name': 'Variable'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
+	comprehend = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'x', 'name': 'Variable'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirit', 'name': 'Spirits'}]
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
@@ -342,6 +344,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	insub = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
 
 	knowledge = [{'type': '', 'name': 'GM Knowledge'}, {'type': 'bonus', 'name': 'Learn Bonus'}, {'type': 'lie', 'name': 'GM May Lie'}, {'type': 'mind', 'name': 'Read Mind'}]
+
+	languages = [{'type': '', 'name': 'Comprehend Languages'}, {'type': 'speak', 'name': 'Speak all Languages'}, {'type': 'understand', 'name': 'Comprehend all Languages'}, {'type': 'everyone', 'name': 'Everyone Understands You'}, {'type': 'read', 'name': 'Read all Languages'}]
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
@@ -432,6 +436,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	speed_mod = [{'type': '',  'name': 'Modified Rank'}, {'type': 'rank',  'name': 'Speed Rank'}, {'type': 'power',  'name': 'Power Rank'}, {'type': 'extra',  'name': 'Extra Rank'}]
 	
 	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}, {'type': 'give', 'name': 'Give Points'}, {'type': 'negate', 'name': 'Negate Reroll'}]
+
+	spirits = [{'type': '', 'name': 'Comprehend Spirits'}, {'type': 'understand', 'name': 'Perceive and Understand'}, {'type': 'communicate', 'name': 'Communicate Both Ways'}]
 
 	strength_based = [{'type': '', 'name': 'Strength Based'}, {'type': 'always', 'name': 'Always'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen With Power'}]
 
@@ -550,7 +556,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
-											organization=organization)
+											organization=organization, animals=animals, languages=languages, spirits=spirits)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3267,6 +3273,9 @@ def power_post_sense():
 	circ = request.get_json()['circ']
 	comprehend = request.get_json()['comprehend']
 	comprehend_type = request.get_json()['comprehend_type']
+	comprehend_animal = request.get_json()['comprehend_animal']
+	comprehend_language = request.get_json()['comprehend_language']
+	comprehend_spirit = request.get_json()['comprehend_spirit']
 	concealment = request.get_json()['concealment']
 	conceal_precise = request.get_json()['conceal_precise']
 	conceal_power = request.get_json()['conceal_power']
@@ -3369,6 +3378,9 @@ def power_post_sense():
 									circ = circ,
 									comprehend = comprehend,
 									comprehend_type = comprehend_type,
+									comprehend_animal = comprehend_animal,
+									comprehend_language = comprehend_language,
+									comprehend_spirit = comprehend_spirit,``
 									concealment = concealment,
 									conceal_precise = conceal_precise,
 									conceal_power = conceal_power,

@@ -1387,6 +1387,9 @@ def sense_post_errors(data):
 	circ = data['circ']
 	comprehend = data['comprehend']
 	comprehend_type = data['comprehend_type']
+	comprehend_language = data['comprehend_language']
+	comprehend_animal = data['comprehend_animal']
+	comprehend_spirit = data['comprehend_spirit']
 	concealment = data['concealment']
 	conceal_power_sense = data['conceal_power_sense']
 	conceal_power = data['conceal_power']
@@ -1475,6 +1478,16 @@ def sense_post_errors(data):
 
 	errors = variable_fields('descriptor', 'Counters Descriptor Concealment', counter_conceal, [counter_conceal_descriptor], errors)
 	errors = variable_field('descriptor', counter_conceal, 'Descriptor', counter_conceal_descriptor, errors)
+
+	errors = check_fields(comprehend, 'Comprehend', [comprehend_type], errors)
+	errors = check_field(comprehend, 'Comprehend', 'Comprehend Type', comprehend_type, errors)
+
+	errors = variable_fields('animal', 'Comprehend', comprehend_type, [comprehend_animal], errors)
+	errors = variable_field('animal', comprehend_type, 'Comprehend Animals', comprehend_animal, errors)
+	errors = variable_fields('language', 'Comprehend', comprehend_type, [comprehend_language], errors)
+	errors = variable_field('language', comprehend_type, 'Comprehend Languages', comprehend_language, errors)
+	errors = variable_fields('spirit', 'Comprehend', comprehend_type, [comprehend_spirit], errors)
+	errors = variable_field('spirit', comprehend_type, 'Comprehend Spirits', comprehend_spirit, errors)
 
 	errors = check_of(ranged, 'Extended', 'Range or Range by Group', [range, ranged_type], errors)
 

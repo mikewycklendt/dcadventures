@@ -1620,6 +1620,9 @@ def sense_post(entry, body, cells):
 	circ = entry.circ
 	comprehend = entry.comprehend
 	comprehend_type = entry.comprehend_type
+	comprehend_animal = entry.comprehend_animal
+	comprehend_language = entry.comprehend_language
+	comprehend_spirit = entry.comprehend_spirit
 	concealment = entry.concealment
 	conceal_precise = entry.conceal_precise
 	conceal_power = entry.conceal_power
@@ -1693,6 +1696,15 @@ def sense_post(entry, body, cells):
 	comprehend_select = [{'type': '', 'name': 'Can Comprehend'}, {'type': 'animal', 'name': 'Animals'}, {'type': 'language', 'name': 'Lsnguages'}, {'type': 'machine', 'name': 'Machines'}, {'type': 'object', 'name': 'Objects'}, {'type': 'plant', 'name': 'Plants'}, {'type': 'spirits', 'name': 'Spirits'}]
 	comprehend_type = selects(comprehend_type, comprehend_select)
 
+	animals_select = [{'type': '', 'name': 'Comprehend Animals'}, {'type': 'speak', 'name': 'Speak to'}, {'type': 'understad', 'name': 'Understand'}, {'type': 'both', 'name': 'Both'}]
+	comprehend_animal = selects(comprehend_animal, animals_select)
+
+	languages_select = [{'type': '', 'name': 'Comprehend Languages'}, {'type': 'speak', 'name': 'Speak all Languages'}, {'type': 'understand', 'name': 'Comprehend all Languages'}, {'type': 'everyone', 'name': 'Everyone Understands You'}, {'type': 'read', 'name': 'Read all Languages'}]
+	comprehend_language = selects(comprehend_language, languages_select)
+
+	spirits_select = [{'type': '', 'name': 'Comprehend Spirits'}, {'type': 'understand', 'name': 'Perceive and Understand'}, {'type': 'communicate', 'name': 'Communicate Both Ways'}]
+	comprehend_spirit = selects(comprehend_spirit, spirits_select)
+
 	resist_circ = integer_convert(resist_circ)
 	distance_dc = integer_convert(distance_dc)
 	distance_mod = integer_convert(distance_mod)
@@ -1755,6 +1767,9 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Comprehend', 12, comprehend, cells, True)
 	new_mod = mod_create('Comprehend', 15)
 	new_mod = mod_cell('Type', 6, [comprehend_type], new_mod)
+	new_mod = mod_cell('Animal Type', 15, [comprehend_animal], new_mod)
+	new_mod = mod_cell('Languages Type', 17, [comprehend_language], new_mod)
+	new_mod = mod_cell('Spirits Type', 14, [comprehend_spirit], new_mod)
 	body = mod_add(comprehend, new_mod, body)
 
 	cells = check_cell('Awareness', 11, awareness, cells, True)
