@@ -230,9 +230,9 @@ function sense_ranged() {
 
 function aense_comprehend_type()  {
 	const select = 'aense_comprehend_type';
-	const options = [{'val': 'animal', 'div': 'aense-comprehend-animal'}, 
-					{'val': 'spirit', 'div': 'aense-comprehend-spirit'},
-					{'val': 'language', 'div': 'aense-comprehend-language'}];
+	const options = [{'val': 'animal', 'div': 'sense-comprehend-animal'}, 
+					{'val': 'spirit', 'div': 'sense-comprehend-spirit'},
+					{'val': 'language', 'div': 'sense-comprehend-language'}];
 	const selects = ['aense_comprehend_animal', 'sense_comprehend_language', 'aense_comprehend_spirit']
 	
 	reset_all(selects);
