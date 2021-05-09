@@ -66,6 +66,8 @@ class Power(db.Model):
 	strength_based = db.Column(db.String())
 	info = db.Column(db.Boolean)
 	gm_trigger = db.Column(db.Boolean)
+	req_descriptor = db.Column(db.Boolean)
+	damage_descriptor = db.Column(db.Boolean)
 
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
@@ -136,6 +138,8 @@ class Power(db.Model):
 			'condition': self.condition,
 			'target_type': self.target_type,
 			'strength_based': self.strength_based,
+			'req_descriptor': self.req_descriptor,
+			'damage_descriptor': self.damage_descriptor,
 			'alt_check': self.alt_check,
 			'change_action': self.change_action,
 			'character': self.character,
