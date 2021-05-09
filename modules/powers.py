@@ -660,6 +660,7 @@ def save_power():
 	info = request.get_json()['info']
 	gm_trigger = request.get_json()['gm_trigger']
 	req_descriptor = request.get_json()['req_descriptor']
+	damage_descriptor = request.get_json()['damage_descriptor']
 
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
@@ -744,6 +745,7 @@ def save_power():
 	power.info = info
 	power.gm_trigger = gm_trigger
 	power.req_descriptor = req_descriptor
+	power.damage_descriptor = damage_descriptor
 
 	power.alt_check = alt_check	
 	power.change_action = change_action

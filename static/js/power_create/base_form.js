@@ -123,15 +123,15 @@ function routine_trait()   {
 }
 
 function routine_checkbox() {
-	const check = document.getElementById('routine_checkbox');
-	const div = document.getElementById('power-routine');
-	const val = check.checked;
+	const check = 'routine_checkbox';
+	const div = 'power-routine';
+	
+	check_drop(check, div)
+}
 
-	if (val == true) {
-		div.style.display = 'grid';
-		div.style.maxHeight = div.scrollHeight + 'px';
-	} else {
-		div.style.maxHeight = '0px';
-		setTimeout(function(){div.style.display = 'none'}, 400);
-	}
+function req_descriptor() {
+	const check = 'req_descriptor';
+	const div = 'req-descriptor';
+
+	check_display(check, div);
 }

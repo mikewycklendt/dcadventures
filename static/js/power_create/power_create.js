@@ -189,6 +189,7 @@ power_save = function() {
 	const info = check("info");
 	const gm_trigger = check("gm_trigger");
 	const req_descriptor = check("req_descriptor");
+	const damage_descriptor = check("damage_descriptor");
 
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
@@ -278,7 +279,8 @@ power_save = function() {
 			'time': time,
 			'info': info,
 			'gm_trigger': gm_trigger,
-			'req_descriptor': req_descriptor
+			'req_descriptor': req_descriptor,
+			'damage_descriptor': damage_descriptor
 		}),
 		headers: {
 		'Content-Type': 'application/json',
