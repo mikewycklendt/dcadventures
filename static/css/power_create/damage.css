@@ -100,3 +100,8 @@
 	padding-right: 1.5vw;
 	display: inline-block;
 }
+
+#dam-strength {
+	opacity: 0%;
+	transition: all .4s ease-in;
+}
