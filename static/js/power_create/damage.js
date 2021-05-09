@@ -44,6 +44,7 @@ function damage_submit() {
 	const trait = select("dam_trait");
 	const mod = select("dam_mod");
 	const strength = check("dam_strength");
+	const strength_based = select("dam_strength_based")
 	const damage_type = multiple("damage_damage_type");
 	const descriptor = multiple("damage_descriptor");
 	const keyword = text("damage_keyword")
@@ -66,6 +67,7 @@ function damage_submit() {
 			'trait': trait,
 			'mod': mod,
 			'strength': strength,
+			'strength_based': strength_based,
 			'damage_type': damage_type,
 			'descriptor': descriptor,
 			'columns': columns,

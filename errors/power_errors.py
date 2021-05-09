@@ -454,6 +454,7 @@ def damage_post_errors(data):
 	trait = data['trait']
 	mod = data['mod']
 	strength = data['strength']
+	strength_based = data['strength_based']
 	damage_type = data['damage_type']
 	descriptor = data['descriptor']
 	keyword = data['keyword']
@@ -485,6 +486,9 @@ def damage_post_errors(data):
 	errors = required(value_type, 'Determined By', errors)
 
 	errors = required(keyword, 'Keyword', errors)
+
+	errors = check_fields(strength, 'Strength Based Damage', [strength_based], errors)
+	errors = check_field(strength, 'Strength Based Damage', 'Strength Based Type', strength_based, errors)
 
 	return (errors)
 

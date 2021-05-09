@@ -1756,6 +1756,7 @@ def power_post_damage():
 	trait = request.get_json()['trait']
 	mod = request.get_json()['mod']
 	strength = request.get_json()['strength']
+	strength_based = request.get_json()['strength_based']
 	damage_type = request.get_json()['damage_type']
 	descriptor = request.get_json()['descriptor']
 	columns = request.get_json()['columns']
@@ -1782,6 +1783,7 @@ def power_post_damage():
 							trait = trait,
 							mod = mod,
 							strength = strength,
+							strength_based = strength_based,
 							damage_type = damage_type,
 							descriptor = descriptor,
 							keyword = keyword,

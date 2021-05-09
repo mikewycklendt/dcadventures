@@ -94,8 +94,16 @@
 					<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
 				</div>
 			</div>
+
+			<div class="hidden">
+				<select class="select-sml" id="dam_strength_based" name="dam_strength_based">
+					{% for s in strength_based %}
+						<option value="{{s.type}}">{{s.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
 			
-			<div>
+			<div style="display: none;">
 				<div class="check-div" style="font-size: 90%;">
 					<input type="checkbox" id="dam_strength_option" class="medium-checkbox med-checkbox"> Optional Strength
 				</div>

@@ -1628,6 +1628,7 @@ class PowerDamage(db.Model):
 	trait = db.Column(db.Integer)
 	mod = db.Column(db.Integer)
 	strength = db.Column(db.Boolean)
+	strength_based = db.Column(db.String())
 	damage_type = db.Column(db.ARRAY(db.Integer))
 	descriptor = db.Column(db.ARRAY(db.Integer))
 	ranged = db.Column(db.Boolean)
@@ -1646,6 +1647,7 @@ class PowerDamage(db.Model):
 			'trait': self.trait,
 			'mod': self.mod,
 			'strength': self.strength,
+			'strength_based': self.strength_based,
 			'damage_type': self.damage_type,
 			'descriptor': self.descriptor,
 			'ranged': self.ranged,
