@@ -32,7 +32,7 @@ function dam_strength() {
 	const check = 'dam_strength';
 	const div = 'dam-strength';
 
-	check_display(check, div);
+	check_opacity(check, div);
 }
 
 let damage_grid = {'titles': false,
