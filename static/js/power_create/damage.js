@@ -28,6 +28,13 @@ function dam_trait() {
 	id_select(fill, fill, trait_filter, filter);
 }
 
+function dam_strength() {
+	const check = 'dam_strength';
+	const div = 'dam-strength';
+
+	check_display(check, div);
+}
+
 let damage_grid = {'titles': false,
 					'columns': [],
 					'font': 80,

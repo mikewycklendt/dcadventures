@@ -89,13 +89,13 @@
 				Damage Types:
 			</div>
 
-			<div>
+			<div style="display: block;">
 				<div class="check-div" style="font-size: 90%;">
-					<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"> Strength-Based
+					<input type="checkbox" id="dam_strength" class="medium-checkbox med-checkbox"  onclick="dam_strength()"> Strength-Based
 				</div>
 			</div>
 
-			<div class="hidden">
+			<div class="hidden" id="dam-strength">
 				<select class="select-sml" id="dam_strength_based" name="dam_strength_based">
 					{% for s in strength_based %}
 						<option value="{{s.type}}">{{s.name}}</option>
