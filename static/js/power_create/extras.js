@@ -22,6 +22,21 @@ function extra_action_check() {
 	check_drop(check, div, entry);
 }
 
+function extra_routine() {
+	const check = 'extra-routine';
+	const div =  'extras-skill';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
+function extra_skill_type() {
+	const select = 'extra_skill_type';
+	const fill = 'extra_skill';
+
+	id_select(select, fill, skill_select);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -71,6 +86,9 @@ function extras_submit() {
 	const action_check = check("extra_action_check");
 	const action = select("extra_action");
 	const action_type = select("extra_action_type");
+	const routine = check("extra_routine");
+	const skill = select("extra_skill");
+	const skill_type = select("extra_skill_type");
 	
 	
 	const errors = 'extras-err';
@@ -122,7 +140,10 @@ function extras_submit() {
 			'target_check': target_check,
 			'action_check': action_check,
 			'action': action,
-			'action_type': action_type
+			'action_type': action_type,
+			'routine': routine,
+			'skill_type': skill_type,
+			'skill': skill
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

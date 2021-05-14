@@ -2950,6 +2950,9 @@ def power_extra_post_errors(data):
 	action_check = data['action_check']
 	action = data['action']
 	action_type = data['action_type']
+	routine = data['routine']
+	skill_type = data['skill_type']
+	skill = data['skill']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2974,6 +2977,9 @@ def power_extra_post_errors(data):
 	errors = check_fields(action_check, 'Changes Action', [action, action_type], errors)
 	errors = check_field(action_check, 'Changes Action', 'Action', action, errors)
 	errors = check_field(action_check, 'Changes Action', 'Action Change Type', action_type, errors)
+
+	errors = check_fields(routine, 'Routine Skill Check', [skill_type], errors)
+	errors = check_field(routine, 'Routine Skill Check', 'Skill', skill_type, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)

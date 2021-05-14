@@ -41,7 +41,7 @@
 
 			<div class="extras-split" style="font-size: 100%;">
 				<div>
-					<select class="entry-select" id="extra_cost" name="extra_cost">
+					<select class="select-sml" id="extra_cost" name="extra_cost">
 						<option value="">Points</option>
 						<option value="x">Variable</option>
 						<option value="trait">Trait Cost</option>
@@ -55,7 +55,7 @@
 				</div>
 			
 				<div>
-					<select class="entry-select" id="extra_rank" name="extra_rank">
+					<select class="select-sml" id="extra_rank" name="extra_rank">
 						<option value="">Ranks</option>
 						{% for i in positives %}
 							<option value={{i}}>{{i}}</option>
@@ -65,7 +65,7 @@
 			</div>
 
 			<div>
-				<select class="entry-select" id="extra_type" name="extra_type">
+				<select class="select-sml" id="extra_type" name="extra_type">
 					{% for e in extra_type %}
 						<option value="{{e.type}}">{{e.name}}</option>
 					{% endfor %}
@@ -73,7 +73,7 @@
 			</div>
 
 			<div>		
-				<select class="extra-select" id="extra_required" name="extra_required">
+				<select class="select-sml" id="extra_required" name="extra_required">
 					<option value=>Required Extra</option>
 				</select>
 			</div>
@@ -111,28 +111,56 @@
 				</div>	
 			</div>
 			
-			<div class="extras-three">
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_target_check" class="medium-checkbox med-checkbox" onclick="extra_target_check()"> Changes Effect Target
-					</div>
-				</div>	
-
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Power's Ranks
-					</div>
-				</div>	
-				
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
-					</div>
-				</div>	
-			</div>
 		</div>		
+
+	<div class="extras-row3">
+		
+		<div>
+			<div class="vcenter">
+				<input type="checkbox" id="extra_routine" class="medium-checkbox med-checkbox" onclick="extra_routine()"> Routine Skill Check
+			</div>
+		</div>	
+		<div>
+			<div class="vcenter">
+				<input type="checkbox" id="extra_target_check" class="medium-checkbox med-checkbox" onclick="extra_target_check()"> Changes Effect Target
+			</div>
+		</div>	
+
+		<div>
+			<div class="vcenter">
+				<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Power's Ranks
+			</div>
+		</div>	
+		
+		<div>
+			<div class="vcenter">
+				<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
+			</div>
+		</div>	
+	</div>
 	
+	</div>
 	
+	<div id="extras-skill">
+
+		<div style="font-size: 80%;">
+			Routine Skill Check
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_skill_type" name="extra_skill_type" onchange="extra_skill_type()">
+				<option value="">Skill</option>
+				{% for s in skills %}
+					<option value="{{s.id}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_skill" name="extra_skill">
+				<option value="">Enhanced Skill</option>
+			</select>
+		</div>
 	</div>
 
 	<div id="extras-target">

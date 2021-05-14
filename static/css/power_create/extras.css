@@ -47,6 +47,12 @@
 	gap: .3vw;
 }
 
+#extras-row3 {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	gap: .3vw;
+}
+
 #extras-left {
 	display: grid;
 	grid-auto-rows: auto;
@@ -108,6 +114,16 @@
 }
 
 #extras-action {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 27% 30% 30%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
+#extras-skill {
 	display: none;
 	max-height: 0;
 	overflow: hidden;

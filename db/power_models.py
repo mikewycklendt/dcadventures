@@ -219,7 +219,10 @@ class Extra(db.Model):
 	action_check = db.Column(db.Boolean)
 	action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	action_type = db.Column(db.String())
-	
+	routine = db.Column(db.Boolean)
+	skill_type = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
+	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
 	circ = db.Column(db.Boolean)
@@ -258,6 +261,7 @@ class Extra(db.Model):
 			'alternate': self.alternate,
 			'flat': self.flat,
 			'stack': self.stack,
+			'routine': self.routine,
 			'power_rank': self.power_rank,
 			'type': self.type,
 			'required': self.required,
@@ -292,7 +296,9 @@ class Extra(db.Model):
 			'target_check': self.target_check,
 			'action_check': self.action_check,
 			'action': self.action,
-			'action_type': self.action_type
+			'action_type': self.action_type,
+			'skill_type': self.skill_type,
+			'skill': self.skill
 		}
 
 class PowerCost(db.Model):

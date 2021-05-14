@@ -3415,6 +3415,9 @@ def power_extra_post(entry, body, cells):
 	action_check = entry.action_check
 	action = entry.action
 	action_type = entry.action_type
+	routine = entry.routine
+	skill_type = entry.skill_type
+	skill = entry.skill
 
 
 	cost = var_string(cost)
@@ -3422,6 +3425,8 @@ def power_extra_post(entry, body, cells):
 	inherit = get_name(Power,inherit)
 	required = get_name(Extra, required)
 
+	skill_type = get_name(Skill, skill_type)
+	skill = get_name(SkillBonus, skill)
 	action = get_name(Action, action)
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
@@ -3467,6 +3472,12 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_cell('Target', 8, [target], new_mod)
 	new_mod = mod_cell('Type', 5, [target_type], new_mod)
 	body = mod_add(target_check, new_mod, body)
+
+	cells = check_cell('Routine', 9, routine, cells, True)
+	new_mod = mod_create('Routine Skill Check', 25)
+	new_mod = mod_cell('Skill', 8, [skill_type], new_mod)
+	new_mod = mod_cell('Enhanced Skill', 17, [skill], new_mod)
+	body = mod_add(routine, new_mod, body)
 
 	cells = check_cell('Action', 8, action_check, cells, True)
 	new_mod = mod_create('Changes Action Type', 23)

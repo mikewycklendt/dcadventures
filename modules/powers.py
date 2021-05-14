@@ -884,11 +884,16 @@ def power_post_extra():
 	action_check = request.get_json()['action_check']
 	action = request.get_json()['action']
 	action_type = request.get_json()['action_type']
+	routine = request.get_json()['routine']
+	skill_type = request.get_json()['skill_type']
+	skill = request.get_json()['skill']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
 	required = db_integer(Extra, required)
 	action = db_integer(Action, action)
+	skill_type = db_integer(Skill, skill_type)
+	skill = db_integer(SkillBonus, skill)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
@@ -930,7 +935,10 @@ def power_post_extra():
 						target = target,
 						action_check = action_check,
 						action = action,
-						action_type = action_type
+						action_type = action_type,
+						routine = routine,
+						skill_type = skill_type,
+						skill = skill
 					)
 
 		db.session.add(entry)
