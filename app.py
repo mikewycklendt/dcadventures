@@ -119,50 +119,8 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 def shutdown_session(exception=None):
 	db.session.remove()
 
-@app.route('/table/db')
-def table_db_columns_create():
 
-	tablename =  'Organization'
-
-	name = 'All Organizations'
-
-	entry = Organization(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Organization(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Organization(any=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Organization(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Organization(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	results = db.session.query(Organization).filter_by(hide=True).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-
-
+```j2io`
 
 
 if __name__ == '__main__':
