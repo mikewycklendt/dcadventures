@@ -131,6 +131,7 @@
 	transition: all .4s ease-out;
 	grid-template-columns: 21% 30% 30%;
 	grid-auto-rows: auto;
+	font-size: 80%;
 }
 
 .extras-hidden {
