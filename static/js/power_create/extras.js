@@ -23,7 +23,7 @@ function extra_action_check() {
 }
 
 function extra_routine() {
-	const check = 'extra-routine';
+	const check = 'extra_routine';
 	const div =  'extras-skill';
 	const entry = 'extras-entry';
 
