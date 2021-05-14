@@ -274,7 +274,8 @@ function deg_mod_submit() {
 	const condition_type = select("deg_mod_condition_type");
 	const condition_damage_value = select("deg_mod_condition_damage_value");
 	const condition_damage = select("deg_mod_condition_damage");
-	const condition_degree = check("deg_mod_condition_degree")
+	const condition_degree = check("deg_mod_condition_degree");
+	const condition_incurable = check("deg_mod_condition_incurable");
 	const condition1 = select("deg_mod_condition1");
 	const condition2 = select("deg_mod_condition2");
 	const condition_turns = select("deg_mod_condition_turns");
@@ -380,6 +381,7 @@ function deg_mod_submit() {
 			'condition_damage_value': condition_damage_value,
 			'condition_damage': condition_damage,
 			'condition_degree': condition_degree,
+			'condition_incurable': condition_incurable,
 			'condition1': condition1,
 			'condition2': condition2,
 			'condition_turns': condition_turns,

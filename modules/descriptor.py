@@ -332,10 +332,10 @@ def post_descriptor():
 				medium_id = entry.id
 				damage_name = medium_name + ' Damage'
 				rarity = rarity_convert(6)
-				descriptor = Descriptor(name=medium_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, rarity=rarity, show=show)
+				descriptor = Descriptor(name=medium_name, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, rarity=rarity, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
-				descriptor = Descriptor(name=damage_name, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, damage=True, show=show)
+				descriptor = Descriptor(name=damage_name, medium=medium_id, medium_type=medium_type_id, medium_subtype=medium_subtype_id, result=medium_des, damage=True, show=show)
 				db.session.add(descriptor)
 				db.session.commit()
 				new_selects.append({'select': 'descriptor_field', 'id': descriptor.id, 'name': damage_name})

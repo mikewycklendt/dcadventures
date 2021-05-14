@@ -317,7 +317,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
-	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
+	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}, {'type': 'effect', 'name': 'Effect'}]
 
 	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
 
@@ -4195,6 +4195,7 @@ def power_post_degree():
 	condition_damage_value = request.get_json()['condition_damage_value']
 	condition_damage = request.get_json()['condition_damage']
 	condition_degree = request.get_json()['condition_degree']
+	condition_incurable = request.get_json()['condition_incurable']
 	condition1 = request.get_json()['condition1']
 	condition2 = request.get_json()['condition2']
 	condition_turns = request.get_json()['condition_turns']
@@ -4368,6 +4369,7 @@ def power_post_degree():
 						condition_damage_value = condition_damage_value,
 						condition_damage = condition_damage,
 						condition_degree = condition_degree,
+						condition_incurable = condition_incurable,
 						condition1 = condition1,
 						condition2 = condition2,
 						condition_turns = condition_turns,
