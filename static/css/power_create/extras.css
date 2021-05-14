@@ -129,7 +129,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 27% 30% 30%;
+	grid-template-columns: 21% 30% 30%;
 	grid-auto-rows: auto;
 }
 
