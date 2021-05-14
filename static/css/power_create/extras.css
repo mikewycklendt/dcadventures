@@ -51,6 +51,7 @@
 	display: grid;
 	grid-template-columns: auto auto auto auto;
 	gap: .3vw;
+	font-size: 70%;
 }
 
 #extras-left {
