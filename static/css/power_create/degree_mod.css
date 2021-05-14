@@ -368,7 +368,8 @@
 	display: none;
 	width: 100%;
 	height: auto;
-	grid-template-columns: 25% 20% 28% 27%;
+	grid-template-columns: 25% 20% 27% 27%;
+	gap: 3px;
 	opacity: 0%;
 	transition: all .3s linear;
 }
