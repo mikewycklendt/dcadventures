@@ -133,7 +133,7 @@
 	grid-auto-rows: auto;
 }
 
-#extras-hidden {
+.extras-hidden {
 	display: none;
 	opacity: 0%;
 	transition: all .4s ease-out;
