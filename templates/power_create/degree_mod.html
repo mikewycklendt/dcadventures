@@ -588,6 +588,7 @@
 
 					<div>
 						<select class="select-sml" id="deg_mod_condition_damage" name="deg_mod_condition_damage">
+							<option value="">Change</option>
 							{% for u in updown %}
 								<option value={{u.id}}>{{u.name}}</option>
 							{% endfor %}
@@ -595,13 +596,13 @@
 					</div>
 		
 					<div>
-						<div class="check-div">
+						<div class="check-div" style="font-size: 80%;">
 							<input type="checkbox" id="deg_mod_condition_degree" class="medium-checkbox med-checkbox" > Per Degree
 						</div>
 					</div>			
 
 					<div>
-						<div class="check-div">
+						<div class="check-div" style="font-size: 80%;">
 							<input type="checkbox" id="deg_mod_condition_incurable" class="medium-checkbox med-checkbox" > +Incurable
 						</div>
 					</div>			
