@@ -120,7 +120,6 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-```j2io`
 
 
 if __name__ == '__main__':
