@@ -2641,6 +2641,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('act', 12, ['Can Act'], vcells)
 
 	vcells = vcell('no_act', 12, ["Can't Act"], vcells)
+
+	vcells = vcell('no_reattempt', 18, ["Can't Reattempt"], vcells)
 	
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 

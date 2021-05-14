@@ -159,6 +159,14 @@
 	grid-template-columns: 50% 30% 20%;
 }
 
+#deg-mod-reattempt {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	gap: 3px;
+	grid-template-columns: 50% 30% 20%;
+}
+
 #deg-mod-level {
 	display: none;
 	opacity: 0%;

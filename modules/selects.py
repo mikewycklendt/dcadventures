@@ -645,7 +645,7 @@ def skill_trait_select():
 	act = db.session.query(Defense).filter_by(active=True).first()
 	if sub == 'variable':
 		defenses.append({'id': var.id, 'name': 'Variable Defense'})
-		defenses.append({'id': act.id, 'name': 'Active Defenses'})
+	defenses.append({'id': act.id, 'name': 'Active Defenses'})
 	for d in defenses_query:
 		defenses.append({'id': d.id, 'name': d.name})
 
