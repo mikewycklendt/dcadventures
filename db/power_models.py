@@ -1512,6 +1512,8 @@ class PowerCondition(db.Model):
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	damage_value = db.Column(db.Integer)
 	damage = db.Column(db.Integer)
+	time_effect = db.Column(db.Integer, db.ForeignKey('power_time.id'))
+	time_last = db.Column(db.Integer, db.ForeignKey('power_time.id'))
 
 	def format(self):
 		return {
@@ -1525,7 +1527,9 @@ class PowerCondition(db.Model):
 			'condition1': self.condition1,
 			'condition2': self.condition2,
 			'damage_value': self.damage_value,
-			'damage': self.damage
+			'damage': self.damage,
+			'time_effect': self.time_effect,
+			'time_last': self.time_last
 		}
 
 class PowerCreate(db.Model):

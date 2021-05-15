@@ -3311,6 +3311,8 @@ def power_condition_post(entry, body, cells):
 	condition2 = entry.condition2
 	damage_value = entry.damage_value
 	damage = entry.damage
+	time_effect = entry.time_effect
+	time_last = entry.time_last
 
 	damage_value = integer_convert(damage_value)
 
@@ -3323,15 +3325,21 @@ def power_condition_post(entry, body, cells):
 	condition1 = get_name(Condition, condition1)
 	condition2 = get_name(Condition, condition2)
 
+	time_effect = get_keyword(PowerTime, time_effect)
+	time_last = get_keyword(PowerTime, time_last)
+
 	extra = get_name(Extra, extra_id)
 
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Target', 15, [target], cells)
 	vcells = vcell('active', 40, [condition, 'Active'])
-	vcells = vcell('change', 60, [condition1, 'to', condition2], vcells)
+	vcells = vcell('change', 40, [condition1, 'to', condition2], vcells)
 	vcells = vcell('damage', 40, [damage_value, 'Condition', damage], vcells)
 	vcells = vcell('null', 40, [condition_null, 'Nullified'], vcells)
 	cells = vcell_add('Condition Effect', condition_type, vcells, cells)
+
+	cells = cell('Takes Effect', 16, [time_effect], cells)
+	cells = cell('Lasts', 16, [time_last], cells)
 
 	body = send(cells, body)
 	

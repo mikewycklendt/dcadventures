@@ -2830,7 +2830,8 @@ def power_condition_post_errors(data):
 	condition2 = data['condition2']
 	damage_value = data['damage_value']
 	damage = data['damage']
-
+	time_effect = data['time_effect']
+	time_last = data['time_last']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -2842,11 +2843,14 @@ def power_condition_post_errors(data):
 
 	errors = id_check(Advantage, advantage_id, 'Advantage', errors)
 	errors = id_check(Benefit, benefit, 'Benefit', errors)
+	errors = id_check(PowerTime, time_effect, 'Time Until Condition Takes Effect', errors)
+	errors = id_check(PowerTime, time_last, 'Time Condition Lasts', errors)
 
 	errors = required(condition_type, 'Condition Type', errors)
 
 	errors = required(extra_id, 'Base Power or Extra', errors)
 	errors = required(target, 'Target', errors)
+	errors = required(time_effect, 'Time Until Condition Takes Effect', errors)
 
 	errors = variable_fields('active', 'Active Condition', condition_type, [condition], errors)
 	errors = variable_field('active', condition_type, 'Condition', condition, errors)

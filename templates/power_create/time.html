@@ -102,6 +102,8 @@
 				<div>
 					<select class="select-sml" id="time_rank2" name="time_rank2">
 						<option value="">Rank</option>
+						<option value="37">This Power</option>
+						<option value="38">This Extra</option>
 						{% for m in measure_rank %}
 							<option value="{{m.id}}">{{m.name}}</option>
 						{% endfor %}
@@ -165,8 +167,8 @@
 				<div>
 					<select class="select-sml" id="time_math_value" name="time_math_value">
 						<option value="">Value</option>
-						<option value="skill">This Rank</option>
-						<option value="parent">Parent Rank</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
 						{% for i in time_numbers %}
 							<option value={{i}}>{{i}}</option>
 						{% endfor %}

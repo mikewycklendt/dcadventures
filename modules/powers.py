@@ -457,7 +457,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	temp_type = [{'type': '', 'name': 'Type'}, {'type': 'all', 'name': 'All'}, {'type': 'cold', 'name': 'Cold'}, {'type': 'heat', 'name': 'Heat'}, {'type': 'pressure', 'name': 'High Pressure'}, {'type': 'radiation', 'name': 'Radiation'}, {'type': 'vaccum', 'name': 'Vaccuum'}]
 
-	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
+	time_effect = [{'type': '', 'name': 'Time Effect'}, {'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'condition_effect', 'name': 'Time Until Condition Takes Effect'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
 		
 	time_value = [{'type': '', 'name': 'Type'}, {'type': 'value', 'name': 'Value'}, {'type': 'math', 'name': 'Math'}, {'type': 'rank', 'name': 'Rank Marh'}, {'type': 'time', 'name': 'Time Rank'}, {'type': 'mod', 'name': 'Time Rank Modifier'}, {'type': 'factor', 'name': 'Factor Modifier'}, {'type': 'turns', 'name': 'Turns'}, {'type': 'gm', 'name': 'Set by GM'}, {'type': 'player', 'name': 'Set by Player'}, {'type': 'check', 'name': 'Until Next Check'}]
 
@@ -5039,6 +5039,7 @@ def power_post_time():
 	on_check = request.get_json()['on_check']
 	points = request.get_json()['points']
 
+
 	errors = power_time_post_errors(data)
 	
 	errors = linked_time(PowerCirc, circ, 'Circumstance', errors)
@@ -5207,7 +5208,8 @@ def power_post_condition():
 	condition2 = request.get_json()['condition2']
 	damage_value = request.get_json()['damage_value']
 	damage = request.get_json()['damage']
-
+	time_effect = request.get_json()['time_effect']
+	time_last = request.get_json()['time_last']
 	try:
 		power_id = db_integer(Power, power_id)
 		extra_id = db_integer(Extra, extra_id)
@@ -5216,6 +5218,9 @@ def power_post_condition():
 		condition_null = db_integer(Condition, condition_null)
 		condition1 = db_integer(Condition, condition1)
 		condition2 = db_integer(Condition, condition2)
+
+		time_effect = db_integer(PowerTime, time_effect)
+		time_last = db_integer(PowerTime, time_last)
 	
 		damage_value = integer(damage_value)
 		damage = integer(damage)
@@ -5229,7 +5234,9 @@ def power_post_condition():
 									condition1 = condition1,
 									condition2 = condition2,
 									damage_value = damage_value,
-									damage = damage)
+									damage = damage,
+									time_effect = time_effect,
+									time_last = time_last)
 
 		db.session.add(entry)	
 		db.session.commit()

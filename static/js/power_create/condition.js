@@ -37,6 +37,8 @@ function condition_submit() {
 	const condition2 = select("condition_condition2");
 	const damage_value = select("condition_damage_value");
 	const damage = select("condition_damage");
+	const time_effect = select("condition_time_effect");
+	const time_last = select("condition_time_last");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -58,7 +60,9 @@ function condition_submit() {
 			'condition1': condition1,
 			'condition2': condition2,
 			'damage_value': damage_value,
-			'damage': damage
+			'damage': damage,
+			'time_effect': time_effect,
+			'time_last': time_last
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -52,7 +52,8 @@
 
 #condition-button-row {
 	display: grid;
-	grid-template-columns: 80% 20%;
+	grid-template-columns: 20% 30% 30% 20%;
+	gap: 4px;
 	width: 97%;
 	grid-template-rows: auto;
 }
