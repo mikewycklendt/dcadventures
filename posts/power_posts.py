@@ -2188,6 +2188,7 @@ def power_dc_post(entry, body, cells):
 	complexity = entry.complexity
 	action_no_damage = entry.action_no_damage
 	condition_no_damage = entry.condition_no_damage
+	condition_dead = entry.condition_dead
 	tools_check = entry.tools_check
 	cover_effect = entry.cover_effect
 	cover_type = entry.cover_type
@@ -2241,6 +2242,7 @@ def power_dc_post(entry, body, cells):
 	condition_turns = integer_convert(condition_turns)
 	rank = integer_convert(rank)
 	ranks_per = integer_convert(ranks_per)
+	condition_dead = integer_convert(condition_dead)
 
 	math = math_convert(math)
 	inflict_math = math_convert(inflict_math)
@@ -2295,6 +2297,7 @@ def power_dc_post(entry, body, cells):
 	new_mod = mod_create('Condition', 12)
 	new_mod = mod_cell('Effect', 7, ['From', condition1, 'to', condition2], new_mod)
 	new_mod = mod_cell('Only if No Damage', 20, [condition_no_damage], new_mod)
+	new_mod = mod_cell('Dead For', 8, [condition_dead, 'minutes'], new_mod)
 	body = mod_add(condition, new_mod, body)
 
 	cells = check_cell('Level', 7, levels, cells, True)

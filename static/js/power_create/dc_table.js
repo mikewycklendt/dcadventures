@@ -79,6 +79,14 @@ function dc_condition() {
 	check_drop(check, div, entry);
 }
 
+function dc_condition1() {
+	const select = 'dc_condition1';
+	const options = [{'val': 'dead', 'div': 'dc-condition-dead'}];
+	const entry = 'dc-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
 function dc_keyword() {
 	const check = 'dc_keyword_check';
 	const div = 'dc-keyword';
@@ -324,6 +332,7 @@ function dc_submit() {
 	const condition2 = select("dc_condition2")
 	const condition_turns = select("dc_condition_turns")
 	const condition_no_damage = check("dc_condition_no_damage")
+	const condition_dead = select("dc_condition_dead");
 	const keyword = text("dc_keyword")
 	const complexity = select("dc_complexity")
 	const tools_check = check("dc_tools_check");
@@ -420,6 +429,7 @@ function dc_submit() {
 			'condition2': condition2,
 			'condition_turns': condition_turns,
 			'condition_no_damage': condition_no_damage,
+			'condition_dead': condition_dead,
 			'keyword': keyword,
 			'complexity': complexity,
 			'tools_check': tools_check,

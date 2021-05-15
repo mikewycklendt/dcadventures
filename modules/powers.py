@@ -3922,6 +3922,7 @@ def power_post_dc():
 	condition2 = request.get_json()['condition2']
 	condition_turns = request.get_json()['condition_turns']
 	action_no_damage = request.get_json()['action_no_damage']
+	condition_dead = request.get_json()['condition_dead']
 	condition_no_damage = request.get_json()['condition_no_damage']
 	keyword = request.get_json()['keyword']
 	complexity = request.get_json()['complexity']
@@ -4001,6 +4002,7 @@ def power_post_dc():
 	measure_mod_unit = integer(measure_mod_unit)
 	rank = integer(rank)
 	ranks_per = integer(ranks_per)
+	condition_dead = integer(condition_dead)
 
 	cover_type = db_integer(Cover, cover_type)
 	conceal_type = db_integer(Conceal, conceal_type)
@@ -4069,6 +4071,7 @@ def power_post_dc():
 					keyword = keyword,
 					action_no_damage = action_no_damage,
 					condition_no_damage = condition_no_damage,
+					condition_dead = condition_dead,
 					complexity = complexity,
 					tools_check = tools_check,
 					cover_effect = cover_effect,

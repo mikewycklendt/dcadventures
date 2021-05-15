@@ -623,12 +623,13 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="dc_condition1" name="dc_condition1">
+			<select class="select-sml" id="dc_condition1" name="dc_condition1" onchange="dc_condition1()">
 				<option value="">Starting Condition</option>
 				<option value="current">Current</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}
+				<option value="dead">Dead</option>
 			</select> 
 		</div>
 
@@ -661,6 +662,26 @@
 				<option value="scene">Scene</option>
 				<option value="perm">Permanent</option>
 				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<div id="dc-condition-dead">
+		<div></div>
+		
+		<div class="vcenter" style="font-size: 80%;">
+			Minutes Dead:
+		</div>
+
+		<div>
+			<select class="select-sml" id="dc_condition_dead" name="dc_condition_dead">
+				<option value="">Minutes</option>
+				<option value="rank">Power Rank</option>
+				<option value="extra">Extra Rank</option>
+				<option value="unlimited">Unlimited</option>
+				{% for i in hundred %}
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>

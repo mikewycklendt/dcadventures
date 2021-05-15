@@ -1829,6 +1829,7 @@ def power_dc_post_errors(data):
 	condition1 = data['condition1']
 	condition2 = data['condition2']
 	condition_turns = data['condition_turns']
+	condition_dead = data['condition_dead']
 	keyword = data['keyword']
 	complexity = data['complexity']
 	tools_check = data['tools_check']
@@ -1914,6 +1915,9 @@ def power_dc_post_errors(data):
 	errors = check_fields(condition, 'Condition', [condition1, condition2], errors)
 	errors = check_field(condition, 'Condition', 'Starting Condition', condition1, errors)
 	errors = check_field(condition, 'Condition', 'Ending Condtion', condition2, errors)
+
+	errors = variable_fields('dead', 'Dead Condition', condition1, [condition_dead], errors)
+	errors = variable_field('dead', condition1, 'Minutes', condition_dead, errors)
 
 	errors = check_fields(descrip, 'Descriptor', [descriptor_effect, descriptor_target, descriptor], errors)
 	errors = check_field(descrip, 'Descriptor', 'Descriptor', descriptor, errors)

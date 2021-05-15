@@ -204,6 +204,17 @@
 	gap: .2vw;
 }
 
+#dc-condition-dead {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .3s ease-out;
+	text-align: center;
+	width: 98%;
+	grid-template-columns: 11% 15% 25%;
+	gap: .2vw;
+}
+
 #dc-levels {
 	display: none;
 	max-height: 0;

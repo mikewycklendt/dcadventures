@@ -632,6 +632,7 @@ class PowerDC(db.Model):
 	condition2 = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_turns = db.Column(db.Integer)
 	condition_no_damage = db.Column(db.Boolean)
+	condition_dead = db.Column(db.Integer)
 	keyword = db.Column(db.String())
 	complexity = db.Column(db.Integer, db.ForeignKey('complexity.id'))
 	time_table = db.Column(db.Boolean)
@@ -721,6 +722,7 @@ class PowerDC(db.Model):
 			'condition2': self.condition2,
 			'condition_turns': self.condition_turns,
 			'condition_no_damage': self.condition_no_damage,
+			'condition_dead': self.condition_dead,
 			'keyword': self.keyword,
 			'complexity': self.complexity,
 			'time_table': self.time_table,
