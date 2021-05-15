@@ -120,23 +120,6 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-@app.route('/conditions/add')
-def conditions_create():
-
-	names = ['Dead']
-	
-	for name in names:
-		entry = Condition(name=name, hide=True, dead=True)
-		db.session.add(entry)
-		db.session.commit()
-
-	results = Condition.query.all()
-
-	for r in results:
-		print (str(r.id) + ' ' + r.name)
-
-	return ('conditions added')
-
 
 if __name__ == '__main__':
 	app.debug = True

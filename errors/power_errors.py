@@ -1,4 +1,5 @@
 
+from logging import error
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -1407,6 +1408,8 @@ def sense_post_errors(data):
 	light_penalty = data['light_penalty']
 	light_penalty_trait_type = data['light_penalty_trait_type']
 	light_penalty_trait = data['light_penalty_trait']
+	illusion_range = data['illusion_range']
+	illusion_unit = data['illusion_unit']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1431,6 +1434,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerDes, awareness_descriptor, 'Awareness Descriptor', errors)
 	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
 	errors = id_check(Light, light_penalty, 'Light Type', errors)
+	errors = id_check(Unit, illusion_unit, 'Unit', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1441,6 +1445,7 @@ def sense_post_errors(data):
 	errors = int_check(distance_mod, 'Distance Modifier', errors)
 	errors = int_check(distance_value, 'Distance', errors)
 	errors = int_check(distance_factor, 'Distance Factor', errors)
+	errors = int_check(illusion_range, 'Illusion Diameter', errors)
 	
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
@@ -1463,6 +1468,10 @@ def sense_post_errors(data):
 	errors = variable_field('light', sense_type, 'Light Type', light_penalty, errors)
 	errors = variable_field('light', sense_type, 'Trait Type', light_penalty_trait_type, errors)
 	errors = variable_field('light', sense_type, 'Trait', light_penalty_trait, errors)
+
+	errors = variable_fields('illusion', 'Illusion', sense_type, [illusion_range, illusion_unit], errors)
+	errors = variable_field('illusion', sense_type, 'Illusion Units', illusion_unit, errors)
+	errors = variable_field('illusion', sense_type, 'Illusion Diameter', illusion_range, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

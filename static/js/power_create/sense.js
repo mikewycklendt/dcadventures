@@ -62,7 +62,8 @@ function sense_type() {
 					{'val': 'resist', 'div': "sense-resist"},
 					{'val': 'conceal', 'div': "sense-conceal"},
 					{'val': 'counter_conceal', 'div': 'sense-counter-conceal'},
-					{'val': 'light', 'div': 'sense-light-penalty'}];
+					{'val': 'light', 'div': 'sense-light-penalty'},
+					{'val': 'illusion', 'div': 'sense-illusion'}];
 
 	select_opacity(select, options);
 }
@@ -313,7 +314,9 @@ function sense_submit() {
 	const light_penalty = select("sense_light_penalty");
 	const light_penalty_trait_type = select("sense_light_penalty_trait_type");
 	const light_penalty_trait = select("sense_light_penalty_trait");
-	const ranged_sense = check('sense_ranged_sense')
+	const ranged_sense = check('sense_ranged_sense');
+	const illusion_range = select("sense_illusion_range");
+	const illusion_unit = select("sense_illusion_unit");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -391,7 +394,9 @@ function sense_submit() {
 			'light_penalty': light_penalty,
 			'light_penalty_trait_type': light_penalty_trait_type,
 			'light_penalty_trait': light_penalty_trait,
-			'ranged_sense': ranged_sense
+			'ranged_sense': ranged_sense,
+			'illusion_range': illusion_range,
+			'illusion_unit': illusion_unit
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

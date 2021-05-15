@@ -1647,6 +1647,8 @@ def sense_post(entry, body, cells):
 	light_penalty = entry.light_penalty
 	light_penalty_trait_type = entry.light_penalty_trait_type
 	light_penalty_trait = entry.light_penalty_trait
+	illusion_range = entry.illusion_range
+	illusion_unit = entry.illusion_unit
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1679,6 +1681,7 @@ def sense_post(entry, body, cells):
 	awareness_descriptor = get_name(PowerDes, awareness_descriptor)
 	counter_conceal_descriptor = get_name(PowerDes, counter_conceal_descriptor)
 	light_penalty = get_name(Light, light_penalty)
+	illusion_unit = get_name(Unit, illusion_unit)
 
 	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
 
@@ -1718,7 +1721,7 @@ def sense_post(entry, body, cells):
 	distance_mod = integer_convert(distance_mod)
 	distance_value = integer_convert(distance_value)
 	distance_factor = integer_convert(distance_factor)
-
+	illusion_range = integer_convert(illusion_range)
 	
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Sense', 9, [sense], cells)
@@ -1743,6 +1746,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('counter_conceal', 30, ['Counters', counter_conceal, 'Concealment'], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
+	vcells = vcell('illusion', 35, ['Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

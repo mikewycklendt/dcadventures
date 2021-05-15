@@ -43,7 +43,7 @@
 		<div></div>
 
 		<div></div>
-		
+
 		<div>
 			Skill Check:
 		</div>
@@ -113,6 +113,22 @@
 		</div>
 
 		<div>
+
+			<div id="sense-illusion">
+				<div>
+					<input type="text" id="sense_illusion_range" name="sense_illusion_range" placeholder="Area"> 
+				</div>
+
+				<div>
+					<select class="select-sml" id="sense_illusion_unit" name="sense_illusion_unit">
+						<option value="">Units</option>
+						{% for d in distances %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+			</div>
 
 			<div id="sense-light-penalty">
 				<div class="vcenter" style="font-size: 80%;">

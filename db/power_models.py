@@ -2369,6 +2369,8 @@ class PowerSenseEffect(db.Model):
 	light_penalty_trait_type = db.Column(db.String())
 	light_penalty_trait = db.Column(db.Integer)
 	ranged_sense = db.Column(db.Boolean)
+	illusion_range = db.Column(db.Integer)
+	illusion_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
 
 	def format(self):
 		return {

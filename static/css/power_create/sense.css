@@ -84,6 +84,14 @@
 	transition: all .3s ease-out;
 }
 
+#sense-illusion {
+	grid-template-columns: 20% 25% 32% 23%;
+	display: none;
+	opacity: 0%;
+	gap: .3vw;
+	transition: all .3s ease-out;
+}
+
 #sense-height-trait {
 	display: grid;
 	grid-auto-rows: auto;

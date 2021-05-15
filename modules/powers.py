@@ -421,7 +421,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3309,6 +3309,8 @@ def power_post_sense():
 	light_penalty_trait_type = request.get_json()['light_penalty_trait_type']
 	light_penalty_trait = request.get_json()['light_penalty_trait']
 	ranged_sense = request.get_json()['ranged_sense']
+	illusion_range = request.get_json()['illusion_range']
+	illusion_unit = request.get_json()['illusion_unit']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3319,6 +3321,7 @@ def power_post_sense():
 	range = db_integer(PowerRanged, range)
 	ranged_type = db_integer(PowerRangedType, ranged_type)
 
+	illusion_unit = db_integer(Unit, illusion_unit)
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	sense = db_integer(Sense, sense)
@@ -3345,6 +3348,7 @@ def power_post_sense():
 	distance_value = integer(distance_value)
 	distance_factor = integer(distance_factor)
 	light_penalty_trait = integer(light_penalty_trait)
+	illusion_range = integer(illusion_range)
 
 
 
@@ -3414,7 +3418,9 @@ def power_post_sense():
 									light_penalty = light_penalty,
 									light_penalty_trait_type = light_penalty_trait_type,
 									light_penalty_trait = light_penalty_trait,
-									ranged_sense = ranged_sense
+									ranged_sense = ranged_sense,
+									illusion_range = illusion_range,
+									illusion_unit = illusion_unit
 								)
 
 		db.session.add(entry)
