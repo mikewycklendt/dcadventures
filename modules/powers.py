@@ -339,7 +339,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}]
+	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'condition', 'name': 'Condition'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -1904,6 +1904,7 @@ def power_post_defense():
 	env_other = request.get_json()['env_other']
 	immunity_env_penalty = request.get_json()['immunity_env_penalty']
 	immunity_env_circumstance = request.get_json()['immunity_env_circumstance']
+	immunity_condition = request.get_json()['immunity_condition']
 	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
@@ -1921,6 +1922,7 @@ def power_post_defense():
 	immunity_consequence = db_integer(Consequence, immunity_consequence)
 	immunity_temp = db_integer(EnvCondition, immunity_temp)
 	immunity_environment = db_integer(Environment, immunity_environment)
+	immunity_condition = db_integer(Condition, immunity_condition)
 
 	body = user_item(Environment, 'Environment', immunity_environment, env_other, 'env-sml', body, True, True)
 	immunity_environment = body['output']
@@ -1966,6 +1968,7 @@ def power_post_defense():
 								immunity_environment = immunity_environment,
 								immunity_env_penalty = immunity_env_penalty,
 								immunity_env_circumstance = immunity_env_circumstance,
+								immunity_condition = immunity_condition,
 								multiple = multiple,
 								cost = cost,
 								ranks = ranks

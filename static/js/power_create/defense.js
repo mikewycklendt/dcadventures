@@ -108,7 +108,8 @@ function defense_immunity_type() {
 					{'val': 'damage', 'div': 'defense-immunity-damage'},
 					{'val': 'descriptor', 'div': 'defense-immunity-descriptor'},
 					{'val': 'consequence', 'div': 'defense-immunity-consequence'},
-					{'val': 'env', 'div': 'defense-immunity-env'}]
+					{'val': 'env', 'div': 'defense-immunity-env'},
+					{'val': 'condition', 'div': 'defense-immunity-condition'}]
 
 	select_opacity(select, options);
 }
@@ -191,6 +192,7 @@ function defense_submit() {
 	const immunity_temp = select("defense_immunity_temp");
 	const immunity_extremity = select("defense_immunity_extremity");
 	const immunity_environment = select("defense_immunity_environment");
+	const immunity_condition = select("defense_immunity_condition")
 	const env_other = text("defense_env_other");
 	const immunity_env_penalty = check("defense_immunity_env_penalty");
 	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
@@ -247,6 +249,7 @@ function defense_submit() {
 			'env_other': env_other,
 			'immunity_env_penalty': immunity_env_penalty,
 			'immunity_env_circumstance': immunity_env_circumstance,
+			'immunity_condition': immunity_condition,
 			'multiple': multiple,
 			'cost': cost,
 			'ranks': ranks

@@ -169,6 +169,17 @@
 		</div>
 
 		<div>
+			<div id="defense-immunity-condition">
+				<div>
+					<select class="select-sml" id="defense_immunity_condition" name="defense_immunity_condition">
+						<option value="">Condition</option>
+						{% for c in conditions %}
+							<option value={{c,id}}>{{c.name}}</option>
+						{% endfor %}}}
+					</select>
+				</div>
+			</div>
+	
 			<div id="defense-immunity-trait">
 				<div>
 					<select  class="select-sml" id="defense_immunity_trait_type" name="defense_immunity_trait_type" onchange="defense_immunity_trait_type()">

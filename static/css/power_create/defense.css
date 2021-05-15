@@ -163,6 +163,14 @@
 	gap: .2vw;
 }
 
+#defense-immunity-condition {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 40% 60%;
+	gap: .2vw;
+}
+
 #defense-immunity-damage {
 	display: none;
 	opacity: 0%;

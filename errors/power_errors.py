@@ -533,6 +533,7 @@ def defense_post_errors(data):
 	immunity_environment = data['immunity_environment']
 	immunity_env_penalty = data['immunity_env_penalty']
 	immunity_env_circumstance = data['immunity_env_circumstance']
+	immunity_condition = data['immunity_condition']
 	multiple = data['multiple']
 	cost = data['cost']
 	ranks = data['ranks']
@@ -569,6 +570,9 @@ def defense_post_errors(data):
 	fields = field('Rule', immunity_rule)
 	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
 
+	errors = variable_fields('condition', 'Condition Immunity', immunity_type, [immunity_condition], errors)
+	errors = variable_field('condition', immunity_type, 'Condition', immunity_condition, errors)
+
 	errors = variable_fields('consequence', 'Immune to Consequence', immunity_type, [immunity_consequence], errors)
 	errors = variable_field('consequence', immunity_type, 'Consequence', immunity_type, immunity_consequence, errors)
 	errors = variable_fields('5', 'Suffocation', immunity_consequence, [immunity_suffocate], errors)
@@ -581,7 +585,6 @@ def defense_post_errors(data):
 	errors = variable_field('condition', immunity_env, 'Extremity', immunity_extremity, errors)
 	errors = variable_fields('env', 'Environment Immunity', immunity_env, [immunity_environment], errors)
 	errors = variable_fields('env', immunity_env, 'Environment', immunity_environment, errors)
-
 
 
 	errors = check_fields(cover_check, 'cover', [cover_type], errors)
