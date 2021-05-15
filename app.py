@@ -135,7 +135,7 @@ def conditions_create():
 	for r in results:
 		print (str(r.id) + ' ' + r.name)
 
-	return ('conditions added'
+	return ('conditions added')
 
 
 if __name__ == '__main__':
