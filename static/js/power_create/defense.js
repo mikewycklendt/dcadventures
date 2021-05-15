@@ -104,14 +104,14 @@ function defense_immunity_trait() {
 
 function defense_immunity_type() {
 	const select = 'defense_immunity_type';
-	const options = [{'val': 'trait', 'div': 'defense-immunity-trait'},
-					{'val': 'damage', 'div': 'defense-immunity-damage'},
-					{'val': 'descriptor', 'div': 'defense-immunity-descriptor'},
-					{'val': 'consequence', 'div': 'defense-immunity-consequence'},
-					{'val': 'env', 'div': 'defense-immunity-env'},
-					{'val': 'condition', 'div': 'defense-immunity-condition'}]
+	const options = [{'val': ['trait'], 'div': 'defense-immunity-trait'},
+					{'val': ['damage'], 'div': 'defense-immunity-damage'},
+					{'val': ['descriptor'], 'div': 'defense-immunity-descriptor'},
+					{'val': ['consequence'], 'div': 'defense-immunity-consequence'},
+					{'val': ['env'], 'div': 'defense-immunity-env'},
+					{'val': ['condition_attack', 'condition_effect'], 'div': 'defense-immunity-condition'}]
 
-	select_opacity(select, options);
+	select_opacity_shared(select, options);
 }
 
 function defense_immunity_consequence() {

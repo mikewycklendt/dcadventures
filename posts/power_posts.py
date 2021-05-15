@@ -592,7 +592,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition', 'name': 'Immune from Condition', 'w': 25}]
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -609,7 +609,9 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('No Circumstance', 15, [immunity_env_circumstance], new_mod, value)
 	new_mod = mod_cell('No Movement Penalty:', 17, [immunity_env_penalty], new_mod, value)
 	new_mod = mod_cell('Extremity:', 11, [immunity_extremity], new_mod, value)
-	value = 'condition'
+	value = 'condition_attack'
+	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
+	value = 'condition_effect'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 

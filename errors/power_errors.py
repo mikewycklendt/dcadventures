@@ -570,8 +570,11 @@ def defense_post_errors(data):
 	fields = field('Rule', immunity_rule)
 	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
 
-	errors = variable_fields('condition', 'Condition Immunity', immunity_type, [immunity_condition], errors)
-	errors = variable_field('condition', immunity_type, 'Condition', immunity_condition, errors)
+	errors = variable_fields('condition_effect', 'Condition Immunity', immunity_type, [immunity_condition], errors)
+	errors = variable_field('condition_effect', immunity_type, 'Condition', immunity_condition, errors)
+
+	errors = variable_fields('condition_attack', 'Condition Immunity', immunity_type, [immunity_condition], errors)
+	errors = variable_field('condition_attack', immunity_type, 'Condition', immunity_condition, errors)
 
 	errors = variable_fields('consequence', 'Immune to Consequence', immunity_type, [immunity_consequence], errors)
 	errors = variable_field('consequence', immunity_type, 'Consequence', immunity_type, immunity_consequence, errors)
