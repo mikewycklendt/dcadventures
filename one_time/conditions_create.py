@@ -279,3 +279,40 @@ def conditions_create():
 		print (str(r.id) + ' ' + r.name)
 
 	return ('conditions added')
+
+	
+@app.route('/conditions/add')
+def conditions_create():
+
+	names = ['Dead']
+	
+	for name in names:
+		entry = Condition(name=name, hide=True, dead=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Condition.query.all()
+
+	for r in results:
+		print (str(r.id) + ' ' + r.name)
+
+	return ('conditions added')
+
+
+
+@app.route('/conditions/add')
+def conditions_create():
+
+	names = ['Linked Damage Condition']
+	
+	for name in names:
+		entry = Condition(name=name, hide=True, linked_damage=True)
+		db.session.add(entry)
+		db.session.commit()
+
+	results = Condition.query.all()
+
+	for r in results:
+		print (str(r.id) + ' ' + r.name)
+
+	return ('conditions added')
