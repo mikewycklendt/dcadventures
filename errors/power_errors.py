@@ -24,7 +24,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost
+from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -145,6 +145,8 @@ def power_save_errors(data):
 	errors = rule_select('sense', power_type, 'Sense', PowerSenseEffect, power_id, errors)
 	errors = rule_select('move', power_type, 'Movement', PowerMove, power_id, errors)
 	errors = rule_select('2', check_type, 'Opposed Check', PowerOpposed, power_id, errors)
+
+	errors = power_sense_condition(power_id, errors)
 
 	errors = trait_cost(cost, power_id, errors)
 
@@ -1410,6 +1412,8 @@ def sense_post_errors(data):
 	light_penalty_trait = data['light_penalty_trait']
 	illusion_range = data['illusion_range']
 	illusion_unit = data['illusion_unit']
+	condition = data['condition']
+	condition_degree = data['condition_degree']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1419,6 +1423,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerCirc, circ,  'Circumstance', errors)
 	errors = id_check(PowerRanged, range, 'Range', errors)
 	errors = id_check(PowerRangedType, ranged_type, 'Range by Group', errors)
+	errors = id_check(PowerDegree, condition_degree, 'Degree of Succeaa/Failure', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1435,6 +1440,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
 	errors = id_check(Light, light_penalty, 'Light Type', errors)
 	errors = id_check(Unit, illusion_unit, 'Unit', errors)
+	errors = id_check(Condition, condition)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1472,6 +1478,10 @@ def sense_post_errors(data):
 	errors = variable_fields('illusion', 'Illusion', sense_type, [illusion_range, illusion_unit], errors)
 	errors = variable_field('illusion', sense_type, 'Illusion Units', illusion_unit, errors)
 	errors = variable_field('illusion', sense_type, 'Illusion Diameter', illusion_range, errors)
+
+	errors = variable_fields('condition', 'Sense Condition', sense_type, [condition_degree, condition], errors)
+	errors = variable_field('condition', sense_type, 'Degree of Succesa/Failure', condition_degree, errors)
+	errors = variable_field('condition', sense_type, 'Condition', condition, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

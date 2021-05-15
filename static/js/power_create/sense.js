@@ -63,7 +63,8 @@ function sense_type() {
 					{'val': 'conceal', 'div': "sense-conceal"},
 					{'val': 'counter_conceal', 'div': 'sense-counter-conceal'},
 					{'val': 'light', 'div': 'sense-light-penalty'},
-					{'val': 'illusion', 'div': 'sense-illusion'}];
+					{'val': 'illusion', 'div': 'sense-illusion'},
+					{'val': 'condition', 'div': 'sense-condition'}];
 
 	select_opacity(select, options);
 }
@@ -317,6 +318,8 @@ function sense_submit() {
 	const ranged_sense = check('sense_ranged_sense');
 	const illusion_range = select("sense_illusion_range");
 	const illusion_unit = select("sense_illusion_unit");
+	const condition = select("sense_condition");
+	const condition_degree = select("sense_condition_degree");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -396,7 +399,9 @@ function sense_submit() {
 			'light_penalty_trait': light_penalty_trait,
 			'ranged_sense': ranged_sense,
 			'illusion_range': illusion_range,
-			'illusion_unit': illusion_unit
+			'illusion_unit': illusion_unit,
+			'condition': condition,
+			'condition_degree': condition_degree
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

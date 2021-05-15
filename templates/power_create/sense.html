@@ -114,6 +114,30 @@
 
 		<div>
 
+			<div id="sense-condition">
+				<div>
+					<select class="select-sml" id="sense_condition" name="sense_condition">
+						<option value="">Condition</option>
+						<option value="10">Impaired</option>
+						<option value="6">Disabled</option>
+						<option value="13">Unaware</option>
+						<option value="2">Controlled</option>
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml degree-sense-sml" id="sense_condition_degree" name="sense_condition_degree">
+						<option value="">Degree of Success/Failure</option>
+						<option value="">Use Degree of Success/Failure Form to Put Options Here</option>
+						{% for p in power_degree %}
+							<option value="{{p.id}}">{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+
+			</div>
+
 			<div id="sense-illusion">
 				<div>
 					<input type="text" id="sense_illusion_range" name="sense_illusion_range" placeholder="Area"> 

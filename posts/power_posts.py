@@ -1649,6 +1649,8 @@ def sense_post(entry, body, cells):
 	light_penalty_trait = entry.light_penalty_trait
 	illusion_range = entry.illusion_range
 	illusion_unit = entry.illusion_unit
+	condition_degree = entry.condition_degree
+	condition = entry.condition
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1661,6 +1663,7 @@ def sense_post(entry, body, cells):
 	circ = get_keyword(PowerCirc, circ)
 	range = get_keyword(PowerRanged, range)
 	ranged_type = get_name(PowerRangedType, ranged_type)
+	condition_degree = get_keyword(PowerDegree, condition_degree)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -1682,6 +1685,7 @@ def sense_post(entry, body, cells):
 	counter_conceal_descriptor = get_name(PowerDes, counter_conceal_descriptor)
 	light_penalty = get_name(Light, light_penalty)
 	illusion_unit = get_name(Unit, illusion_unit)
+	condition = get_name(Condition, condition)
 
 	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
 
@@ -1747,6 +1751,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	vcells = vcell('illusion', 35, ['Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
+	vcells = vcell('condition', 40, [condition, 'on', condition_degree, 'Degree'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
@@ -2658,6 +2663,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('no_reattempt', 18, ["Can't Reattempt"], vcells)
 	
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
+
+	vcells = vcell('sense', 30, ['Apply Condition On Sense Form'], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	

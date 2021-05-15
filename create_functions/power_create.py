@@ -536,6 +536,29 @@ def rule_select(value, field, name, table, power, errors):
 
 	return (errors)
 
+def power_sense_condition(power_id, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	check = db.session.query(PowerDegree).filter_by(power_id=power_id, type='sense').first()
+
+	if check is None:
+		return (errors)
+	else:
+		for c in check:
+			sense = db.session.query(PowerSenseEffect).filter_by(power_id=power_id, condition_degree=c.id).first()
+			if sense is None:
+				error = True
+				messege = 'You created a degree of success/failure rule with the keyword ' + c.keyword + ' but never set the sense condition in the sense effect form.  Assign that degree of success/failure rule to a sense rule or delete that success/failure rule'
+				error_msgs.append(messege)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 def cost_check(check, name, field, table, power, errors, values='e'):
 	error_msgs = errors['error_msgs']
 	error = False
