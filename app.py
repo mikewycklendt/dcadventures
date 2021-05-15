@@ -123,10 +123,10 @@ def shutdown_session(exception=None):
 @app.route('/conditions/add')
 def conditions_create():
 
-	names = ['Linked Damage Condition']
+	names = ['Dead']
 	
 	for name in names:
-		entry = Condition(name=name, hide=True, linked_damage=True)
+		entry = Condition(name=name, hide=True, dead=True)
 		db.session.add(entry)
 		db.session.commit()
 

@@ -685,6 +685,15 @@ def db_integer(table, value):
 			return (value)
 		finally:
 			db.session.close()
+	elif value == 'linked_damage':
+		try:
+			query = db.session.query(table).filter_by(linked_damage=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
 	elif value == 'stable':
 		try:
 			query = db.session.query(table).filter_by(stable=True).first()
@@ -978,6 +987,13 @@ def id_check(table, value_id, name, errors):
 		db.session.close()
 	elif value_id == 'linked_second':
 		query = db.session.query(table).filter_by(linked_second=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'linked_damage':
+		query = db.session.query(table).filter_by(linked_damage=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
