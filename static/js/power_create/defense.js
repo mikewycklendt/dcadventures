@@ -91,8 +91,9 @@ function defense_reflect_check() {
 function defense_immunity_trait_type() {
 	const select = 'defense_immunity_trait_type';
 	const fill = 'defense_immunity_trait';
+	const sub = 'variable_emotion'
 
-	id_select(select, fill, trait_select, variable_sub);
+	id_select(select, fill, trait_select, sub);
 }
 
 function defense_immunity_trait() {
