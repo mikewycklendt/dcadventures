@@ -313,6 +313,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'}, {'type': 'swing', 'name': 'Swing'},]
 
+	emotion_type = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'option', 'name': 'Optional'}]
+
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'add', 'name': 'Add'}]
 
 	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
@@ -556,7 +558,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
-											organization=organization, animals=animals, languages=languages, spirits=spirits)
+											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -661,6 +663,8 @@ def save_power():
 	gm_trigger = request.get_json()['gm_trigger']
 	req_descriptor = request.get_json()['req_descriptor']
 	damage_descriptor = request.get_json()['damage_descriptor']
+	emotion = request.get_json()['emotion']
+	emotion_type = request.get_json()['emotion_type']
 
 	alt_check = request.get_json()['alt_check']
 	change_action = request.get_json()['change_action']
@@ -746,6 +750,8 @@ def save_power():
 	power.gm_trigger = gm_trigger
 	power.req_descriptor = req_descriptor
 	power.damage_descriptor = damage_descriptor
+	power.emotion = emotion
+	power.emotion_type = emotion_type
 
 	power.alt_check = alt_check	
 	power.change_action = change_action

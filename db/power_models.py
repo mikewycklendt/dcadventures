@@ -68,6 +68,9 @@ class Power(db.Model):
 	gm_trigger = db.Column(db.Boolean)
 	req_descriptor = db.Column(db.Boolean)
 	damage_descriptor = db.Column(db.Boolean)
+	emotion_type = db.Column(db.Boolean)
+	emotion =  db.Column(db.String())
+	alteration = db.Column(db.Boolean)
 
 	alt_check = db.Column(db.Boolean)
 	change_action = db.Column(db.Boolean)
@@ -140,6 +143,9 @@ class Power(db.Model):
 			'strength_based': self.strength_based,
 			'req_descriptor': self.req_descriptor,
 			'damage_descriptor': self.damage_descriptor,
+			'emotion_type': self.emotion_type,
+			'emotion': self.emotion,
+			'alteration': self.alteration,
 			'alt_check': self.alt_check,
 			'change_action': self.change_action,
 			'character': self.character,

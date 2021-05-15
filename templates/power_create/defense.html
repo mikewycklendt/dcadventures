@@ -176,6 +176,8 @@
 							<option value="{{t.type}}">{{t.name}}</option>
 						{% endfor %}
 						<option value="resist">Powers Resisted By</option>
+						<option value="alterarion">Alteration Effects</option>
+						<option value="emotion">Emotion Effects</option>
 					</select>
 				</div>
 
@@ -224,6 +226,8 @@
 
 						<div>
 							<select class="select-sml" id="defense_immunity_temp" name="defense_immunity_temp">
+								<option value="">Environment Condition</option>
+								<option value="x">Variable</option>	
 								{% for e in env_conditions %}
 									<option value={{e.id}}>{{e.name}}</option>
 								{% endfor %}

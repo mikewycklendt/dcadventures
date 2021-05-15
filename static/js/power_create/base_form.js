@@ -135,3 +135,10 @@ function req_descriptor() {
 
 	check_display(check, div);
 }
+
+function emotion() {
+	const check =  'emotion';
+	const div = 'base-emotion';
+
+	check_display(check, div);
+}

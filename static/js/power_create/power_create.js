@@ -190,6 +190,9 @@ power_save = function() {
 	const gm_trigger = check("gm_trigger");
 	const req_descriptor = check("req_descriptor");
 	const damage_descriptor = check("damage_descriptor");
+	const emotion = check("emotion");
+	const emotion_type = select("emotion_type");
+	const alteration = check("alteration")
 
 	const alt_check = check("check_check");
 	const change_action = check('change_action_check');
@@ -280,7 +283,10 @@ power_save = function() {
 			'info': info,
 			'gm_trigger': gm_trigger,
 			'req_descriptor': req_descriptor,
-			'damage_descriptor': damage_descriptor
+			'damage_descriptor': damage_descriptor,
+			'emotion_type': emotion_type,
+			'emotion': emotion,
+			'alteration': alteration
 		}),
 		headers: {
 		'Content-Type': 'application/json',

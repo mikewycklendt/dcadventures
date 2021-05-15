@@ -1280,6 +1280,10 @@ def trait_select(value, trait):
 		value = "Vertical Distance"
 	elif trait == 'points':
 		value = "Hero Point Total"
+	elif trait == 'alteration':
+		value = "Alteration Effects"
+	elif trait == 'emotion':
+		value = "Emotion Effects"
 	
 	return (value)
 
