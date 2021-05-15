@@ -126,7 +126,7 @@ def conditions_create():
 	names = ['Dead']
 	
 	for name in names:
-		entry = Condition(name=name)
+		entry = Condition(name=name, hide=True, dead=True)
 		db.session.add(entry)
 		db.session.commit()
 

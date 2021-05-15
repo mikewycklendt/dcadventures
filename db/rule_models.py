@@ -259,6 +259,7 @@ class Condition(db.Model):
 	remove = db.Column(db.Boolean)
 	stable = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	dead = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -281,7 +282,8 @@ class Condition(db.Model):
 			'linked_second': self.linked_second,
 			'remove': self.remove,
 			'stable': self.stable,
-			'hide': self.hide
+			'hide': self.hide,
+			'dead': self.dead
 		}
 
 class Maneuver(db.Model):
