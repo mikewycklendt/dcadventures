@@ -93,7 +93,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 14% 30% 20% 30%;
+	grid-template-columns: 14% 30% 13% 27%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
