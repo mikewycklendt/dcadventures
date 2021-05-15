@@ -1704,6 +1704,7 @@ class PowerDefense(db.Model):
 	immunity = db.Column(db.Boolean)
 	reflect_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	redirect = db.Column(db.Boolean)
+	reflect_immune = db.Column(db.Boolean)
 	immunity_type = db.Column(db.String())
 	immunity_trait_type = db.Column(db.String())
 	immunity_trait = db.Column(db.Integer)
@@ -1748,6 +1749,7 @@ class PowerDefense(db.Model):
 			'immunity': self.immunity,
 			'reflect_check': self.reflect_check,
 			'redirect': self.redirect,
+			'reflect_immune': self.reflect_immune,
 			'immunity_type': self.immunity_type,
 			'immunity_trait_type': self.immunity_trait_type,
 			'immunity_trait': self.immunity_trait,

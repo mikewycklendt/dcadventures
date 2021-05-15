@@ -558,6 +558,26 @@ def power_sense_condition(power_id, errors):
 
 	return (errors)
 
+def power_reflect_immune(power_id, reflect_immune, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if reflect_immune == False: 
+		return (errors)
+
+	check = db.session.query(PowerDefense).filter_by(power_id=power_id, immunity=True).first()
+
+	if check is None:
+		error = True
+		messege = "You chose to limit the reflect effect to attacks to which you are immune but you haven't set an immunity rule yet.  Create an immunity rule for this power or uncheck the Only for Immune Attacks checkbox to create this reflect rule."
+		error_msgs.append(messege)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 
 def cost_check(check, name, field, table, power, errors, values='e'):
 	error_msgs = errors['error_msgs']
