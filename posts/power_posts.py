@@ -614,7 +614,7 @@ def defense_post(entry, body, cells):
 	value = 'condition_effect'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
 	value = 'life'
-	new_mod = mod_cell('Immune From', 12. ['Disease, Poison, All Environment Conditions, Suffocation, Starvation sndd Thirst'], new_mod, value)
+	new_mod = mod_cell('Immune From', 12. ['Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst'], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

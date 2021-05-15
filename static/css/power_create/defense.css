@@ -168,7 +168,7 @@
 	opacity: 0%;
 	transition: all .3s ease-out;
 	grid-template-columns: 100%;
-	font-size: 80%;
+	font-size: 75%;
 	gap: .2vw;
 }
 

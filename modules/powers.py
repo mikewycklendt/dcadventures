@@ -339,6 +339,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
+	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "emotion", 'name': 'Emotion Effects'}]
+
 	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
@@ -558,7 +560,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
-											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type)
+											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

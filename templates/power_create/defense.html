@@ -189,12 +189,9 @@
 			<div id="defense-immunity-trait">
 				<div>
 					<select  class="select-sml" id="defense_immunity_trait_type" name="defense_immunity_trait_type" onchange="defense_immunity_trait_type()">
-						{% for t in traits %}
-							<option value="{{t.type}}">{{t.name}}</option>
+						{% for i in immunity_trait %}
+							<option value="{{i.type}}">{{i.name}}</option>
 						{% endfor %}
-						<option value="resist">Powers Resisted By</option>
-						<option value="alteration">Alteration Effects</option>
-						<option value="emotion">Emotion Effects</option>
 					</select>
 				</div>
 
