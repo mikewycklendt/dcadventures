@@ -226,6 +226,7 @@
 		<div>
 			<select class="entry-select" id="check_condition2" name="check_condition2">
 				<option value="">End Condition</option>
+				,<option value="stable">Stabalized</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
 				{% endfor %}

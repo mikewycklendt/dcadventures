@@ -211,7 +211,7 @@
 	transition: all .3s ease-out;
 	text-align: center;
 	width: 98%;
-	grid-template-columns: 11% 15% 25%;
+	grid-template-columns: 11% 15% 15%;
 	gap: .2vw;
 }
 

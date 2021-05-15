@@ -256,6 +256,7 @@ class Condition(db.Model):
 	none = db.Column(db.Boolean)
 	linked_first = db.Column(db.Boolean)
 	linked_second = db.Column(db.Boolean)
+	linked_damage = db.Column(db.Boolean)
 	remove = db.Column(db.Boolean)
 	stable = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
@@ -280,6 +281,7 @@ class Condition(db.Model):
 			'none': self.none,
 			'linked_first': self.linked_first,
 			'linked_second': self.linked_second,
+			'linked_damage': self.linked_damage,
 			'remove': self.remove,
 			'stable': self.stable,
 			'hide': self.hide,
