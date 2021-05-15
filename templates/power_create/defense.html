@@ -169,6 +169,24 @@
 		</div>
 
 		<div>
+			<div id="defense-immunity-emotion">
+				<div>
+					<select class="select-sml emotion-sml" id="defense_immunity_emotion" name="defense_immunity_emotion" onchange="defense_immunity_emotion()">
+						<option value="">Emotion</option>
+						<option value="x">Variable Emotion</option>
+						<option value="other">Other Emotion</option>
+						{% for e in emotions %}
+							<option value={{e.id}}>{{e.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="hiddeb" id="defense-immunity-emotion-other">
+					<input type="text" id="defense_immunity_emotion_other" name="defense_immunity_emotion_other" placeholder="Emotion">
+				</div>
+
+			</div>
+
 			<div id="defense-immunity-life">
 				<div class="valign">
 					Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst

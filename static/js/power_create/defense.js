@@ -110,9 +110,17 @@ function defense_immunity_type() {
 					{'val': ['consequence'], 'div': 'defense-immunity-consequence'},
 					{'val': ['env'], 'div': 'defense-immunity-env'},
 					{'val': ['condition_attack', 'condition_effect'], 'div': 'defense-immunity-condition'},
-					{'val': ['life'], 'div': 'defense-immunity-life'}]
+					{'val': ['life'], 'div': 'defense-immunity-life'},
+					{'val': ['emotion'], 'div': 'defense-immunity-emotion'}]
 
 	select_opacity_shared(select, options);
+}
+
+function defense_immunity_emotion() {
+	const select = 'defense_immunity_emotion';
+	const options = [{'val': 'other', 'div': 'defense-immunity-emotion-other'}]
+
+	select_opacity(select, options);
 }
 
 function defense_immunity_consequence() {
@@ -193,7 +201,9 @@ function defense_submit() {
 	const immunity_temp = select("defense_immunity_temp");
 	const immunity_extremity = select("defense_immunity_extremity");
 	const immunity_environment = select("defense_immunity_environment");
-	const immunity_condition = select("defense_immunity_condition")
+	const immunity_condition = select("defense_immunity_condition");
+	const immunity_emotion = select("defense_immunity_emotion");
+	const immunity_emotion_other = text("defense_immunity_emotion_other");
 	const env_other = text("defense_env_other");
 	const immunity_env_penalty = check("defense_immunity_env_penalty");
 	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
@@ -251,6 +261,8 @@ function defense_submit() {
 			'immunity_env_penalty': immunity_env_penalty,
 			'immunity_env_circumstance': immunity_env_circumstance,
 			'immunity_condition': immunity_condition,
+			'immunity_emotion_other': immunity_emotion_other,
+			'immunity_emotion': immunity_emotion,
 			'multiple': multiple,
 			'cost': cost,
 			'ranks': ranks

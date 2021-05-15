@@ -534,6 +534,7 @@ def defense_post_errors(data):
 	immunity_env_penalty = data['immunity_env_penalty']
 	immunity_env_circumstance = data['immunity_env_circumstance']
 	immunity_condition = data['immunity_condition']
+	immunity_emotion = data['immunity_emotion']
 	multiple = data['multiple']
 	cost = data['cost']
 	ranks = data['ranks']
@@ -552,6 +553,7 @@ def defense_post_errors(data):
 	errors = id_check(Consequence, immunity_consequence, 'Consequence', errors)
 	errors = id_check(Environment, immunity_environment, 'Environment', errors)
 	errors = id_check(EnvCondition, immunity_temp, 'Environment Condition', errors)
+	errors = id_check(Emotion, immunity_emotion, 'Emotion', errors)
 
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
@@ -581,6 +583,9 @@ def defense_post_errors(data):
 	errors = variable_fields('5', 'Suffocation', immunity_consequence, [immunity_suffocate], errors)
 	errors = variable_field('5', immunity_consequence, 'Suffocation Type', immunity_suffocate, errors)
 
+	errors = variable_fields('emotion', 'Immune From Emotion', immunity_type, [immunity_emotion], errors)
+	errors = variable_field('emotion', immunity_type, 'Emotion', immunity_emotion, errors)
+	
 	errors = variable_fields('env', 'Environment Immunity', immunity_type, [immunity_env], errors)
 	errors = variable_field('env', immunity_type, 'Environment Immunity Type', immunity_env, errors)
 	errors = variable_fields('condition', 'Environment Condition Immunity', immunity_env, [immunity_temp, immunity_extremity], errors)

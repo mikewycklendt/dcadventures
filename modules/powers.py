@@ -1,6 +1,7 @@
 from flask import Blueprint
 import json
 import dateutil.parser
+from flask.wrappers import Request
 import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
 from flask_moment import Moment
@@ -339,9 +340,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	heightened = [{'type': '', 'name': 'Affects'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "emotion", 'name': 'Emotion Effects'}]
+	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
-	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}]
+	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -1907,6 +1908,8 @@ def power_post_defense():
 	immunity_env_penalty = request.get_json()['immunity_env_penalty']
 	immunity_env_circumstance = request.get_json()['immunity_env_circumstance']
 	immunity_condition = request.get_json()['immunity_condition']
+	immunity_emotion = request.get_json()['immunity_emotion']
+	immunity_emotion_other = request.get_json()['immunity_emotion_other']
 	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
@@ -1933,6 +1936,11 @@ def power_post_defense():
 	roll = integer(roll)
 	immunity_trait = integer(immunity_trait)
 	immunity_descriptor = integer(immunity_descriptor)
+
+	body = user_item(Emotion, 'Emotion', immunity_emotion, immunity_emotion_other, 'emotion-sml', body, True, True)
+	immunity_emotion = body['output']
+
+	immunity_emotion = db_integer(Emotion, immunity_emotion)
 
 	try:
 		entry = PowerDefense(power_id = power_id,
@@ -1971,6 +1979,7 @@ def power_post_defense():
 								immunity_env_penalty = immunity_env_penalty,
 								immunity_env_circumstance = immunity_env_circumstance,
 								immunity_condition = immunity_condition,
+								immunity_emotion = immunity_emotion,
 								multiple = multiple,
 								cost = cost,
 								ranks = ranks

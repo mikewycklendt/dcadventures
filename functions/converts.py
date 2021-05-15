@@ -1236,6 +1236,24 @@ def trait_select(value, trait):
 			value = query.name
 		except:
 			value = 'Not Found'
+	elif trait == 'skill_emotion':
+		try:
+			query = db.session.query(Emotion).filter_by(id=value).one()
+			value = 'Skills Affecting ' + query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'power_emotion':
+		try:
+			query = db.session.query(Emotion).filter_by(id=value).one()
+			value = 'Powers Affecting ' + query.name
+		except:
+			value = 'Not Found'
+	elif trait == 'trait_emotion':
+		try:
+			query = db.session.query(Emotion).filter_by(id=value).one()
+			value = 'All Traits Affecting ' + query.name
+		except:
+			value = 'Not Found'
 	elif trait == 'interact':
 		value =  'Any Interarction'
 	elif trait == 'manipulate':
@@ -1282,7 +1300,7 @@ def trait_select(value, trait):
 		value = "Hero Point Total"
 	elif trait == 'alteration':
 		value = "Alteration Effects"
-	elif trait == 'emotion':
+	elif trait == 'all_emotion':
 		value = "Emotion Effects"
 	
 	return (value)

@@ -525,6 +525,7 @@ def defense_post(entry, body, cells):
 	immunity_env_penalty = entry.immunity_env_penalty
 	immunity_env_circumstance = entry.immunity_env_circumstance
 	immunity_condition = entry.immunity_condition
+	immunity_emotion = entry.immunity_emotion
 	multiple = entry.multiple
 	cost = entry.cost
 	ranks = entry.ranks
@@ -545,6 +546,7 @@ def defense_post(entry, body, cells):
 	immunity_environment = get_name(Environment, immunity_environment)
 	immunity_temp = get_name(EnvCondition, immunity_temp)
 	immunity_condition = get_name(Condition, immunity_condition)
+	immunity_emotion = get_name(Emotion, immunity_emotion)
 
 	cost = get_cost(cost, ranks, extra_id)
 
@@ -592,7 +594,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -614,7 +616,9 @@ def defense_post(entry, body, cells):
 	value = 'condition_effect'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
 	value = 'life'
-	new_mod = mod_cell('Immune From', 12. ['Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst'], new_mod, value)
+	new_mod = mod_cell('Immune From', 12, ['Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst'], new_mod, value)
+	value = 'emotion'
+	new_mod = mod_cell('Emotion', 10, [immunity_emotion], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

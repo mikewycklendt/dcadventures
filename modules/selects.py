@@ -713,6 +713,22 @@ def skill_trait_select():
 			print('no power')
 			body['success'] = False
 
+	emotion_query = db.session.query(Emotion).filter(Emotion.show == True).order_by(Emotion.name).all()
+	if trait == 'skill_emotion':
+		name = 'Skill Affecting Emotion'
+	elif trait == 'power_emotion':
+		name = 'Power Affecting Emotion'
+	elif trait == 'trait_emotion':
+		name = 'Trsit Affecting Emotion'
+	else:
+		name = 'Emotion'
+	emotions = [{'id': '', 'name': name}]
+	var = db.session.query(Emotion).filter_by(var=True).first()
+	if sub == 'variable_emotion' or sub == 'variable':
+		emotions.append({'id': var.id, 'name': 'Variable'})
+	for e in emotion_query:
+		emotions.append({'id': e.id, 'name': e.name})
+
 	if trait == 'ability':
 		body['options'] = abilities
 	elif trait == 'defense':
@@ -735,6 +751,12 @@ def skill_trait_select():
 		body['options'] = equipment
 	elif trait == 'subskill':
 		body['options'] = subskills
+	elif trait == 'skill_emotion':
+		body['options'] = emotions
+	elif trait == 'power_emotion':
+		body['options'] = emotions
+	elif trait == 'trait_emotion':
+		body['options'] = emotions  
 	elif trait == 'interact':
 		body['options'] = [{'id': '0', 'name': 'Any Interarction'}]
 	elif trait == 'manipulate':
@@ -785,8 +807,8 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Hero Point Total"}]
 	elif trait == 'alteration':
 		body['options'] = [{'id': "0", 'name': "Alteration Effects"}]
-	elif trait == 'emotion':
-		body['options'] = [{'id': "0", 'name': "Emotion Effects"}]
+	elif trait == 'all_emotion':
+		body['options'] = [{'id': "0", 'name': "All Emotion Effects"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': 'Trait'}]
