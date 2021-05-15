@@ -109,7 +109,8 @@ function defense_immunity_type() {
 					{'val': ['descriptor'], 'div': 'defense-immunity-descriptor'},
 					{'val': ['consequence'], 'div': 'defense-immunity-consequence'},
 					{'val': ['env'], 'div': 'defense-immunity-env'},
-					{'val': ['condition_attack', 'condition_effect'], 'div': 'defense-immunity-condition'}]
+					{'val': ['condition_attack', 'condition_effect'], 'div': 'defense-immunity-condition'},
+					{'val': ['life'], 'div': 'defense-immunity-life'}]
 
 	select_opacity_shared(select, options);
 }

@@ -592,7 +592,7 @@ def defense_post(entry, body, cells):
 	body = mod_add(reflect, new_mod, body)
 
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}]
+	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -613,6 +613,8 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
 	value = 'condition_effect'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
+	value = 'life'
+	new_mod = mod_cell('Immune From', 12. ['Disease, Poison, All Environment Conditions, Suffocation, Starvation sndd Thirst'], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

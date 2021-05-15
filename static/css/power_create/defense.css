@@ -163,6 +163,15 @@
 	gap: .2vw;
 }
 
+#defense-immunity-life {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 100%;
+	font-size: 80%;
+	gap: .2vw;
+}
+
 #defense-immunity-condition {
 	display: none;
 	opacity: 0%;
