@@ -1911,6 +1911,7 @@ def power_post_defense():
 	immunity_condition = request.get_json()['immunity_condition']
 	immunity_emotion = request.get_json()['immunity_emotion']
 	immunity_emotion_other = request.get_json()['immunity_emotion_other']
+	immunity_except = request.get_json()['immunity_except']
 	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
@@ -1982,6 +1983,7 @@ def power_post_defense():
 								immunity_env_circumstance = immunity_env_circumstance,
 								immunity_condition = immunity_condition,
 								immunity_emotion = immunity_emotion,
+								immunity_except = immunity_except,
 								multiple = multiple,
 								cost = cost,
 								ranks = ranks

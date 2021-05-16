@@ -1723,6 +1723,7 @@ class PowerDefense(db.Model):
 	immunity_env_circumstance = db.Column(db.Boolean)
 	immunity_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	immunity_emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
+	immunity_except = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))
 	ranks = db.Column(db.Integer, db.ForeignKey('power_ranks.id'))
@@ -1768,6 +1769,7 @@ class PowerDefense(db.Model):
 			'immunity_env_circumstance': self.immunity_env_circumstance,
 			'immunity_condition': self.immunity_condition,
 			'immunity_emotion': self.immunity_emotion,
+			'immunity_except': self.immunity_except,
 			'multiple': self.multiple,
 			'cost': self.cost,
 			'ranks': self.ranks
