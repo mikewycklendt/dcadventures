@@ -120,7 +120,7 @@ def shutdown_session(exception=None):
 	db.session.remove()
 
 
-
+hhhuj`1`
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)
