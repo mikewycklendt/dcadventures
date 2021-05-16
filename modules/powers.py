@@ -296,7 +296,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}]
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
@@ -364,7 +364,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 		
 	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
-	mind = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
+	mind = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
 
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
 

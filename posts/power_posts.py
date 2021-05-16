@@ -2613,7 +2613,7 @@ def power_degree_post(entry, body, cells):
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 	
-	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
+	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
 
 	cells = cell('Keyword', 15, [keyword])
@@ -2691,6 +2691,8 @@ def power_degree_post(entry, body, cells):
 
 	vcells = vcell('no_reattempt', 18, ["Can't Reattempt"], vcells)
 	
+	vcells = vcell('reattempt', 18, ["Can Reattempt"], vcells)
+
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 
 	vcells = vcell('sense', 30, ['Apply Condition On Sense Form'], vcells)

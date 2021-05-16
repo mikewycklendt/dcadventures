@@ -375,10 +375,16 @@ def power_check(value, errors):
 
 	return (errors)
 
-def degree_check(title, value, multiple, power_id, errors):
+def degree_check(title, value, multiple, power_id, extra_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
 
+	if extra_id == '0':
+		extra_id = None
+	else:
+		extra_id = int(extra_id)
+
+	power_id = int(power_id)
 
 	try:
 		get_title = db.session.query(PowerDegreeType).filter_by(power_id=power_id, name=title).first()
@@ -387,7 +393,7 @@ def degree_check(title, value, multiple, power_id, errors):
 		else:
 			title = get_title.id
 
-		check = db.session.query(PowerDegree).filter_by(title=title, value=value).first()
+		check = db.session.query(PowerDegree).filter_by(title=title, value=value, extra_id=extra_id).first()
 		if check is not None:
 			if multiple == '':
 				error = True

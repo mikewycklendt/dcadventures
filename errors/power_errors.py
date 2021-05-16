@@ -2137,6 +2137,8 @@ def power_degree_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+	
+	errors = degree_check(title, value, multiple, power_id, extra_id, errors)
 
 
 	errors = int_check(value, 'Degree Value', errors)
@@ -2334,7 +2336,6 @@ def power_degree_post_errors(data):
 	errors = linked_field(consequence, linked, 'Consequence', 'Degree of Success/Failure rule', 'linked degree', errors)
 
 	errors = linked_group_check(PowerDC, 'other', target, 'other', 'target', power_id, 'power_id', 'a degree of success or failure for another character', 'DC', 'the target field to Other Character', errors)
-	errors = degree_check(title, value, multiple, power_id, errors)
 
 	return (errors)
 

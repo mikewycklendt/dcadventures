@@ -16,11 +16,11 @@ function opposed_base() {
 
 function opposed_attached() {
 	const select = 'opposed_attached';
-	const div = 'opposed-variable-title'
+	const div = 'opposed-variable-title';
 	const options = [{'val': ['before_var', 'after_var'], 'div': 'opposed-variable'},
 					{'val': ['opponent'], 'div': 'opposed-opponent'}]
 	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
-					{'val': 'after_var', 'text': 'After Variable Check:'}]
+					{'val': 'after_var', 'text': 'After Variable Check:'}];
 	const entry = "opposed-entry";
 
 	select_maxheight_shared(select, options, entry);
