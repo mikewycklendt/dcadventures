@@ -103,7 +103,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: auto auto auto auto auto;
+	grid-template-columns: 15% auto auto auto auto;
 	grid-auto-rows: auto;
 }
 
