@@ -132,7 +132,7 @@
 	transition: all .4s ease-out;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 9% 14% 62% 15%;
+	grid-template-columns: 9% 14% 61% 16%;
 }
 
 #defense-cover {
