@@ -213,7 +213,11 @@ function deg_mod_check_resist_trait() {
 function deg_mod_knowledge_mind() {
 	const select = 'deg_mod_knowledge_mind';
 	const options =  [{'val': ['personal', 'memory', 'sub'], 'div': 'deg-mod-knowledge-mind-count'}];
-	const words = [{'val': 'personal', 'text': 'Questions'}, {'val': 'memory', 'text': 'Memories'}, {'val': 'personal', 'text': 'Memories, Traumas, or Personalities'}];
+	const words = [{'val': 'personal', 'text': 'Questions'}, 
+					{'val': 'memory', 'text': 'Memories'}, 
+					{'val': 'surface', 'text': ''}, 
+					{'val': 'sense', 'text': ''}, 
+					{'val': 'sub', 'text': 'Memories, Traumas, or Personalities'}];
 	const div = 'deg-mod-knowledge-mind-type';
 	const field = ['deg_mod_knowledge_mind_count'];
 
