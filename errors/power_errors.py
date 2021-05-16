@@ -295,9 +295,8 @@ def character_post_errors(data):
 	errors = variable_field('narrow', appear_form, 'Broad Form', appear_creature, errors)
 	errors = variable_field('narrow', appear_form, 'Narrow Form', appear_creature_narrow, errors)
 
-	errors = check_fields(insubstantial, 'Insubstantial', [insub_type, insub_description], errors)
+	errors = check_fields(insubstantial, 'Insubstantial', [insub_type], errors)
 	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Type', insub_type, errors)
-	errors = check_field(insubstantial, 'Insubstantial', 'Insubstantial Description', insub_description, errors)
 
 	errors = check_fields(points, 'Hero Points', [points_type, points_value, points_trait, points_trait_type], errors)
 	errors = check_field(points, 'Hero Points', 'Points Type', points_type, errors)
@@ -535,6 +534,7 @@ def defense_post_errors(data):
 	immunity_env_penalty = data['immunity_env_penalty']
 	immunity_env_circumstance = data['immunity_env_circumstance']
 	immunity_condition = data['immunity_condition']
+	immunity_except = data['immunity_except']
 	immunity_emotion = data['immunity_emotion']
 	multiple = data['multiple']
 	cost = data['cost']
@@ -587,6 +587,8 @@ def defense_post_errors(data):
 	errors = variable_fields('emotion', 'Immune From Emotion', immunity_type, [immunity_emotion], errors)
 	errors = variable_field('emotion', immunity_type, 'Emotion', immunity_emotion, errors)
 	
+	errors = checked_invalid_option(immunity_except, 'life', immunity_type, 'is an immunity exception', 'immunity exception type', 'life support', errors)
+
 	errors = variable_fields('env', 'Environment Immunity', immunity_type, [immunity_env], errors)
 	errors = variable_field('env', immunity_type, 'Environment Immunity Type', immunity_env, errors)
 	errors = variable_fields('condition', 'Environment Condition Immunity', immunity_env, [immunity_temp, immunity_extremity], errors)
@@ -878,6 +880,10 @@ def mod_post_errors(data):
 	extra_circ = data['extra_circ']
 	feedback_mod = data['feedback_mod']
 	feedback = data['feedback']
+	adv = data['adv']
+	advantage = data['advantage']
+	advantage_rank = data['advantage_rank']
+	advantage_rank_per = data['advantage_rank_per']
 
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
@@ -909,6 +915,7 @@ def mod_post_errors(data):
 	errors = id_check(Environment, limited_env, 'Environment', errors)
 	errors = id_check(Emotion, limited_emotion, 'Emotion', errors)
 	errors = id_check(Material, limited_material, 'Material', errors)
+	errors = id_check(Advantage, advantage, 'Advantage', errors)
 
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
@@ -921,6 +928,7 @@ def mod_post_errors(data):
 	errors = int_check(extra_count, 'Extra Effect Count', errors)
 	errors = int_check(points_give, 'Points Given Per Round', errors)
 	errors = int_check(feedback_mod, 'Feedback Resistance Modifier', errors)
+	errors = int_check(advantage_rank, 'Advantage Ranks', errors)
 
 	errors = check_fields(affects_objects, 'Affects Objects', [objects_alone, objects_character], errors)
 	errors = check_field(affects_objects, 'Affects Objects', 'Affect Object Alone', objects_alone, errors)
@@ -1042,7 +1050,10 @@ def mod_post_errors(data):
 	errors = check_fields(feedback, 'Feedback', [feedback_mod], errors)
 	errors = check_field(feedback, 'Feedback', 'Resistance Modifier', feedback_mod, errors)
 	
-	
+	errors = check_fields(adv, 'Advantage Ranks', [advantage, advantage_rank], errors)
+	errors = check_field(adv, 'Advantage Ranks', 'Advantage', advantage, errors)
+	errors = check_field(adv, 'Advantage Ranks', 'Rsnks', advantage_rank, errors)
+
 	return (errors)
 
 def ranged_post_errors(data):
@@ -2326,6 +2337,7 @@ def power_move_post_errors(data):
 	extra_id = data['extra_id']
 	speed = data['speed']
 	speed_rank = data['speed_rank']
+	speed_max = data['speed_max']
 	speed_mod = data['speed_mod']
 	speed_math = data['speed_math']
 	speed_rank_mod = data['speed_rank_mod']
@@ -2512,6 +2524,9 @@ def power_move_post_errors(data):
 	errors = variable_field('mod', speed, 'First Math', speed_math1, errors)
 	errors = variable_field('mod', speed, 'First Modifier', speed_value1, errors)
 	errors = together_names('a second modifier', ['second modifier', 'second math'], [speed_value2, speed_math2], errors)
+
+	errors = variable_fields('max', 'Maximum Speed', speed, [speed_max], errors)
+	errors = variable_field('max', speed, 'Maximum Speed Rank', speed_max, errors)
 
 	errors = required_if_any(speed, 'Speed Description', speed_description, errors)
 

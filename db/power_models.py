@@ -957,6 +957,7 @@ class PowerMove(db.Model):
 	extra_id = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	speed = db.Column(db.String())
 	speed_rank = db.Column(db.Integer)
+	speed_max = db.Column(db.Integer)
 	speed_mod = db.Column(db.String())
 	speed_math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	speed_rank_mod = db.Column(db.Integer)
@@ -1065,6 +1066,7 @@ class PowerMove(db.Model):
 			'extra_id':self.extra_id,
 			'speed': self.speed,
 			'speed_rank': self.speed_rank,
+			'speed_max': self.speed_max,
 			'speed_mod': self.speed_mod,
 			'speed_math': self.speed_math,
 			'speed_rank_mod': self.speed_rank_mod,
@@ -2011,6 +2013,10 @@ class PowerMod(db.Model):
 	feedback = db.Column(db.Boolean)
 	feedback_mod = db.Column(db.Integer)
 	passive = db.Column(db.Boolean)
+	adv = db.Column(db.Boolean)
+	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
+	advantage_rank = db.Column(db.Integer)
+	advantage_rank_per = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2117,7 +2123,11 @@ class PowerMod(db.Model):
 			'multiple': self.multiple,
 			'feedback': self.feedback,
 			'feedback_mod': self.feedback_mod,
-			'passive': self.passive
+			'passive': self.passive,
+			'adv': self.adv,
+			'advantage:': self.advantage,
+			'advantage_rank': self.advantage_rank,
+			'advantage_rank_per': self.advantage_rank_per
 		}
 
 class PowerRanged(db.Model):

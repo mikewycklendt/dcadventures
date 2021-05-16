@@ -75,7 +75,8 @@ function move_speed() {
 	const options = [{'val': 'rank', 'div': 'move-speed-rank'},
 					{'val': 'rank_mod', 'div': 'move-speed-rank-mod'},
 					{'val': 'mod', 'div': 'move-speed-mod'},
-					{'val': 'penalty', 'div': 'move-speed-penalty'}]
+					{'val': 'penalty', 'div': 'move-speed-penalty'},
+					{'val': 'max', 'div': 'move-speed-max'}]
 	const description = 'move-speed-description';
 	const entry = 'move-entry';
 
@@ -343,6 +344,7 @@ function move_submit() {
 	const extra_id = select("move_extra");
 	const speed = select("move_speed");
 	const speed_rank = select("move_speed_rank");
+	const speed_max = select("move_speed_max")
 	const speed_mod = select("move_speed_mod");
 	const speed_math = select("move_speed_math");
 	const speed_rank_mod = select("move_speed_rank_mod");
@@ -462,6 +464,7 @@ function move_submit() {
 			'font': font,
 			'speed': speed,
 			'speed_mod': speed_mod,
+			'speed_max': speed_max,
 			'speed_math': speed_math,
 			'speed_rank_mod': speed_rank_mod,
 			'speed_penalty': speed_penalty,

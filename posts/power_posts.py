@@ -595,41 +595,33 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Limited to Immunity', 20, [reflect_immune], new_mod)
 	body = mod_add(reflect, new_mod, body)
 
+	word = check_string('Not ', immunity_except)
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
+	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'damage'
 	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'descriptor'
 	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'consequence'
 	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
 	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'env'
 	new_mod = mod_cell('Environment:', 14, [immunity_environment], new_mod, value)
 	new_mod = mod_cell('Environment Condition:', 22, [immunity_temp], new_mod, value)
 	new_mod = mod_cell('No Circumstance', 15, [immunity_env_circumstance], new_mod, value)
 	new_mod = mod_cell('No Movement Penalty:', 17, [immunity_env_penalty], new_mod, value)
 	new_mod = mod_cell('Extremity:', 11, [immunity_extremity], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'condition_attack'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'condition_effect'
 	new_mod = mod_cell('Condition', 12, [immunity_condition], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'life'
 	new_mod = mod_cell('Immune From', 12, ['Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst'], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	value = 'emotion'
 	new_mod = mod_cell('Emotion', 10, [immunity_emotion], new_mod, value)
-	new_mod = mod_cell('Exception', 11, [immunity_except], new_mod)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)
@@ -976,6 +968,10 @@ def mod_post(entry, body, cells):
 	feedback = entry.feedback
 	feedback_mod = entry.feedback_mod
 	passive = entry.passive
+	adv = entry.adv
+	advantage = entry.advantage
+	advantage_rank = entry.advantage_rank
+	advantage_rank_per = entry.advantage_rank_per
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1009,6 +1005,7 @@ def mod_post(entry, body, cells):
 	limited_emotion = get_name(Emotion, limited_emotion)
 	limited_material = get_name(Material, limited_material)
 	limited_org = get_name(Organization, limited_org)
+	advantage = get_name(Advantage, advantage)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1048,6 +1045,7 @@ def mod_post(entry, body, cells):
 	extra_count = integer_convert(extra_count)
 	points_give = integer_convert(points_give)
 	feedback_mod = integer_convert(feedback_mod)
+	advantage_rank = integer_convert(advantage_rank)
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1237,6 +1235,12 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Resistance Modifier:', 18, [feedback_mod], new_mod)	
 	body = mod_add(feedback, new_mod, body)
 	
+	word = check_string('Per Rank', advantage_rank_per)
+	cells = check_cell('Advantage', 11, adv, cells, True)
+	new_mod = mod_create('Advantage Ranks', 17)
+	new_mod = mod_cell('Advantage', 18, [advantage], new_mod)
+	new_mod = mod_cell('Ranks', 18, [advantage_rank, word], new_mod)	
+	body = mod_add(adv, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
 	cells = check_cell('Unreliable', 11, unreliable, cells)
@@ -2708,6 +2712,7 @@ def power_move_post(entry, body, cells):
 	extra = entry.extra_id
 	speed = entry.speed
 	speed_rank = entry.speed_rank
+	speed_max = entry.speed_max
 	speed_mod = entry.speed_mod
 	speed_math = entry.speed_math
 	speed_rank_mod = entry.speed_rank_mod
@@ -2864,6 +2869,7 @@ def power_move_post(entry, body, cells):
 	speed_rank_mod = integer_convert(speed_rank_mod)
 	objects_strength = integer_convert(objects_strength)
 	speed_penalty = integer_convert(speed_penalty)
+	speed_max = integer_convert(speed_max)
 
 	dimension_mass_rank = integer_convert(dimension_mass_rank)
 	special_time_carry = integer_convert(special_time_carry)
@@ -2935,7 +2941,8 @@ def power_move_post(entry, body, cells):
 	vcells = vcell('rank_mod', 20, [speed_mod, speed_math, speed_rank_mod])
 	vcells = vcell('mod', 25, [speed_trait, speed_math1, speed_value1, speed_math2, speed_value2], vcells)
 	speed_penalty = add_plus(speed_penalty)
-	vcells = vcell('penalty', 25, [speed_penalty, 'To Speed Penalties'], vcells) 
+	vcells = vcell('penalty', 25, [speed_penalty, 'To Speed Penalties'], vcells)
+	vcells = vcell('max', 25, [speed_max, 'Maximum Speed Rank'], vcells)
 	cells = vcell_add('Speed', speed, vcells, cells)
 	cells = circ_cell('Desc', 'Description', 5, speed_description, cells, body)
 	

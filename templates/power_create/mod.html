@@ -155,7 +155,7 @@
 		
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_points" class="medium-checkbox med-checkbox" onclick="mod_points()"> Spend Points
+				<input type="checkbox" id="mod_points" class="medium-checkbox med-checkbox" onclick="mod_points()"> Rerolls
 			</div>
 		</div>
 
@@ -233,8 +233,46 @@
 	</div>
 
 	<div id="mod-row7">
-		<div class="check-div-fit">
-			<input type="checkbox" id="mod_passive" class="medium-checkbox med-checkbox" > Passive
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="mod_passive" class="medium-checkbox med-checkbox" > Passive
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="mod_adv" class="medium-checkbox med-checkbox" onclick="mod_adv()"> Advantage Ranks
+			</div>
+		</div>
+	</div>
+
+	<div id="mod-advantage">
+		<div class="valign" style="font-size: 80%;">
+			Advantage Ranks:
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_advantage" name="mod_advantage">
+				<option value="">Advantage</option>
+				{% for a in advantages %}
+					<option value={{a.id}}>{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_advantage_rank" name="mod_advantage_rank">
+				<option value="">Ranks</option>
+				{% for i in positives %}
+					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="mod_advantage_rank_per" class="medium-checkbox med-checkbox" > Per Rank
+			</div>
 		</div>
 	</div>
 

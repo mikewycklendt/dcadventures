@@ -81,6 +81,16 @@
 	grid-auto-rows: auto;
 }
 
+#move-speed-max {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	width: 98%;
+	gap: .2VW;
+	grid-template-columns: 30% 30% 30% 10%;
+	grid-auto-rows: auto;
+}
+
 #move-speed-rank-mod {
 	display: none;
 	opacity: 0%;

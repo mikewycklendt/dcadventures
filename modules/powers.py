@@ -436,11 +436,11 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
 
-	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}, {'type': 'penalty', 'name': 'Speed Penalty Modifier'}]
+	speed = [{'type': '', 'name': 'Speed Type'}, {'type': 'rank', 'name': 'Speed Rank'}, {'type': 'rank_mod', 'name': 'Speed Modifier'}, {'type': 'mod', 'name': 'Math'}, {'type': 'penalty', 'name': 'Speed Penalty Modifier'}, {'type': 'max', 'name': 'Speed Maximum'}]
 
 	speed_mod = [{'type': '',  'name': 'Modified Rank'}, {'type': 'rank',  'name': 'Speed Rank'}, {'type': 'power',  'name': 'Power Rank'}, {'type': 'extra',  'name': 'Extra Rank'}]
 	
-	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}, {'type': 'give', 'name': 'Give Points'}, {'type': 'negate', 'name': 'Negate Reroll'}]
+	spend = [{'type': '', 'name': 'Effect'}, {'type': 'reroll', 'name': 'Re-roll'}, {'type': 'give', 'name': 'Give Luck Points'}, {'type': 'negate', 'name': 'Negate Reroll'}]
 
 	spirits = [{'type': '', 'name': 'Comprehend Spirits'}, {'type': 'understand', 'name': 'Perceive and Understand'}, {'type': 'communicate', 'name': 'Communicate Both Ways'}]
 
@@ -2473,6 +2473,10 @@ def power_post_mod():
 	feedback_mod = request.get_json()['feedback_mod']
 	feedback = request.get_json()['feedback']
 	passive = request.get_json()['passive']
+	adv = request.get_json()['adv']
+	advantage = request.get_json()['advantage']
+	advantage_rank = request.get_json()['advantage_rank']
+	advantage_rank_per = request.get_json()['advantage_rank_per']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2495,6 +2499,7 @@ def power_post_mod():
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
 	limited_material = db_integer(Material, limited_material)
+	advantage = db_integer(Advantage, advantage)
 
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
@@ -2516,6 +2521,7 @@ def power_post_mod():
 	extra_count = integer(extra_count)
 	points_give = integer(points_give)
 	feedback_mod = integer(feedback_mod)
+	advantage_rank = integer(advantage_rank)
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2645,7 +2651,11 @@ def power_post_mod():
 							multiple = multiple,
 							feedback_mod = feedback_mod,
 							feedback = feedback,
-							passive = passive
+							passive = passive,
+							adv = adv,
+							advantage = advantage,
+							advantage_rank = advantage_rank,
+							advantage_rank_per = advantage_rank_per
 						)
 
 		db.session.add(entry)
@@ -4490,6 +4500,7 @@ def power_post_move():
 	font = request.get_json()['font']
 	speed = request.get_json()['speed']
 	speed_rank = request.get_json()['speed_rank']
+	speed_max = request.get_json()['speed_max']
 	speed_math = request.get_json()['speed_math']
 	speed_mod = request.get_json()['speed_mod']
 	speed_penalty = request.get_json()['speed_penalty']
@@ -4654,6 +4665,7 @@ def power_post_move():
 	mass_value = integer(mass_value)
 	objects_strength = integer(objects_strength)
 	speed_penalty = integer(speed_penalty)
+	speed_max = integer(speed_max)
 
 	speed_math1 = db_integer(Math, speed_math1)
 	speed_math2 = db_integer(Math, speed_math2)
@@ -4694,6 +4706,7 @@ def power_post_move():
 						extra_id = extra_id,
 						speed = speed,
 						speed_rank = speed_rank,
+						speed_max = speed_max,
 						speed_mod = speed_mod,
 						speed_math = speed_math,
 						speed_rank_mod = speed_rank_mod,

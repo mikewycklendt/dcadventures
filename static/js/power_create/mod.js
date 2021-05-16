@@ -367,6 +367,13 @@ function mod_feedback() {
 	check_drop(check, div, entry);
 }
 
+function mod_adv() {
+	const check = 'mod_adv';
+	const div = 'mod-advantage';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
 
 let mod_grid = {'titles': false,
 					'columns': [],
@@ -478,9 +485,13 @@ function mod_submit() {
 	const extra_dc = select("mod_extra_dc");
 	const extra_circ = select("mod_extra_circ");
 	const multiple = select("mod_multiple");
-	const feedback = check("mod_feedback")
-	const feedback_mod = select("mod_feedback_mod")
-	const passive = check("mod_passive")
+	const feedback = check("mod_feedback");
+	const feedback_mod = select("mod_feedback_mod");
+	const passive = check("mod_passive");
+	const adv = check("mod_adv");
+	const advantage = select("mod_advantage");
+	const advantage_rank = select("mod_advantage_rank");
+	const advantage_rank_per = check("mod_advantage_rank_per");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -596,7 +607,11 @@ function mod_submit() {
 			'multiple': multiple,
 			'feedback': feedback,
 			'feedback_mod': feedback_mod,
-			'passive': passive
+			'passive': passive,
+			'adv': adv,
+			'advantage': advantage,
+			'advantage_rank': advantage_rank,
+			'advantage_rank_per': advantage_rank_per
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
