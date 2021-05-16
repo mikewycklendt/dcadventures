@@ -2457,6 +2457,7 @@ def power_degree_post(entry, body, cells):
 	knowledge_count = entry.knowledge_count
 	knowledge_specificity = entry.knowledge_specificity
 	knowledge_mind = entry.knowledge_mind
+	knowledge_mind_count = entry.knowledge_mind_count
 	level_type = entry.level_type
 	level = entry.level
 	level_direction = entry.level_direction
@@ -2566,6 +2567,7 @@ def power_degree_post(entry, body, cells):
 	routine_mod = integer_convert(routine_mod)
 	attack = integer_convert(attack)
 	attack_turns = integer_convert(attack_turns)
+	knowledge_mind_count = integer_convert(knowledge_mind_count)
 
 	value = integer_convert(value)
 	time = integer_convert(time)
@@ -2611,7 +2613,7 @@ def power_degree_post(entry, body, cells):
 	descriptor_effect_select = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 	descriptor_effect = selects(descriptor_effect, descriptor_effect_select)
 	
-	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
+	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
 
 	cells = cell('Keyword', 15, [keyword])
@@ -2652,7 +2654,7 @@ def power_degree_post(entry, body, cells):
 
 	vcells = vcell('knowledge', 35, ['Learn', knowledge_count, knowledge_specificity, 'Bonud'], vcells, knowledge, 'bonus')
 	vcells = vcell('knowledge', 12, ['GM May Lie'], vcells, knowledge, 'lie')
-	vcells = vcell('knowledge', 23, [knowledge_mind, 'Thoughts'], vcells, knowledge, 'mind')
+	vcells = vcell('knowledge', 35, [knowledge_mind], vcells, knowledge, 'mind')
 
 	w = width(17, 13, consequence_action)
 	w = width(w, 13, consequence_trait)

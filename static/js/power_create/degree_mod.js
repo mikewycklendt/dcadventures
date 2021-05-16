@@ -210,6 +210,21 @@ function deg_mod_check_resist_trait() {
 	id_select(fill, fill, trait_filter, filter);
 }
 
+function deg_mod_knowledge_mind() {
+	const select = 'deg_mod_knowledge_mind';
+	const options =  [{'val': ['personal', 'memory', 'sub'], 'div': 'deg-mod-knowledge-mind-count'}];
+	const words = [{'val': 'personal', 'text': 'Questions'}, {'val': 'memory', 'text': 'Memories'}, {'val': 'personal', 'text': 'Memories, Traumas, or Personalities'}];
+	const div = 'deg-mod-knowledge-mind-type';
+	const field = ['deg_mod_knowledge_mind_count'];
+
+	reset_all(field);
+	select_opacity_shared(select, options);
+	div_text(select, div, words);
+}
+
+
+
+
 let deg_mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -249,6 +264,7 @@ function deg_mod_submit() {
 	const knowledge_count = select("deg_mod_knowledge_count");
 	const knowledge_specificity = select("deg_mod_knowledge_specificity");
 	const knowledge_mind = select("deg_mod_knowledge_mind");
+	const knowledge_mind_count = select("deg_mod_knowledge_mind_count")
 	const level_type = select("deg_mod_level_type");
 	const level = select("deg_mod_level");
 	const level_direction = select("deg_mod_level_direction");
@@ -355,6 +371,7 @@ function deg_mod_submit() {
 			'knowledge_count': knowledge_count,
 			'knowledge_specificity': knowledge_specificity,
 			'knowledge_mind': knowledge_mind,
+			'knowledge_mind_count': knowledge_mind_count,
 			'level_type': level_type,
 			'level': level,
 			'level_direction': level_direction,

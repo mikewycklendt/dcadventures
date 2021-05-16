@@ -789,6 +789,7 @@ class PowerDegree(db.Model):
 	knowledge_count = db.Column(db.Integer)
 	knowledge_specificity = db.Column(db.String())
 	knowledge_mind = db.Column(db.String())
+	knowledge_mind_count = db.Column(db.Integer)
 	level_type = db.Column(db.Integer, db.ForeignKey('level_type.id'))
 	level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	level_direction = db.Column(db.Integer)
@@ -884,6 +885,7 @@ class PowerDegree(db.Model):
 			'knowledge_count': self.knowledge_count,
 			'knowledge_specificity': self.knowledge_specificity,
 			'knowledge_mind': self.knowledge_mind,
+			'knowledge_mind_count': self.knowledge_mind_count,
 			'level_type': self.level_type,
 			'level': self.level,
 			'level_direction': self.level_direction,

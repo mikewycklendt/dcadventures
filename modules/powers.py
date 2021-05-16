@@ -4217,6 +4217,7 @@ def power_post_degree():
 	knowledge_count = request.get_json()['knowledge_count']
 	knowledge_specificity = request.get_json()['knowledge_specificity']
 	knowledge_mind = request.get_json()['knowledge_mind']
+	knowledge_mind_count = request.get_json()['knowledge_mind_count']
 	level_type = request.get_json()['level_type']
 	level = request.get_json()['level']
 	level_direction = request.get_json()['level_direction']
@@ -4349,6 +4350,7 @@ def power_post_degree():
 	condition_damage_value = integer(condition_damage_value)
 	condition_damage = integer(condition_damage)
 	nullify = integer(nullify)
+	knowledge_mind_count = integer(knowledge_mind_count)
 	
 	body = {}
 	body['success'] = True
@@ -4391,6 +4393,7 @@ def power_post_degree():
 						knowledge_count = knowledge_count,
 						knowledge_specificity = knowledge_specificity,
 						knowledge_mind = knowledge_mind,
+						knowledge_mind_count = knowledge_mind_count,
 						level_type = level_type,
 						level = level,
 						level_direction = level_direction,

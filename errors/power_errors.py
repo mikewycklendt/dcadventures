@@ -2076,6 +2076,7 @@ def power_degree_post_errors(data):
 	knowledge_count = data['knowledge_count']
 	knowledge_specificity = data['knowledge_specificity']
 	knowledge_mind = data['knowledge_mind']
+	knowledge_mind_count = data['knowledge_mind_count']
 	level_type = data['level_type']
 	level = data['level']
 	level_direction = data['level_direction']
@@ -2166,6 +2167,7 @@ def power_degree_post_errors(data):
 	errors = int_check(nullify, 'Nullify DC', errors)
 	errors = id_check(Check, check_type, 'Check Tyoe', errors)
 	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
+	errors = int_check(knowledge_mind_count, 'Mind Reading Count', errors)
 
 	errors = id_check(PowerOpposed, opposed, 'Opposed Check', errors)
 	errors = id_check(PowerDC, resist_dc, 'Resistance Check DC', errors)
@@ -2279,6 +2281,13 @@ def power_degree_post_errors(data):
 
 	errors = variable_fields('mind', 'Mind Reading', knowledge, [knowledge_mind], errors)
 	errors = variable_field('mind', knowledge, 'Read Mind', knowledge_mind, errors)
+
+	errors = variable_fields('personal', 'Personal Thoughts', knowledge_mind, [knowledge_mind_count], errors)
+	errors = variable_field('personal', knowledge_mind, 'Personal Thoughts Count', knowledge_mind_count, errors)
+	errors = variable_fields('memory', 'Memory', knowledge_mind, [knowledge_mind_count], errors)
+	errors = variable_field('memory', knowledge_mind, 'Memory Count', knowledge_mind_count, errors)
+	errors = variable_fields('sub', 'Subconscious Thoughts', knowledge_mind, [knowledge_mind_count], errors)
+	errors = variable_field('sub', knowledge_mind, 'Subconscious Thoughts Count', knowledge_mind_count, errors)
 	
 	errors = variable_fields('bonus', 'Learn Bonus', knowledge, [knowledge_count, knowledge_specificity], errors)
 	errors = variable_field('bonus', knowledge, 'Amount', knowledge_count, errors)

@@ -169,6 +169,10 @@ a {
 	transition: all .3s ease-out;
 }
 
+.text-change {
+	transition: all .3s ease-in;
+}
+
 .split {
 	grid-template-columns: 50% 50%;
 	gap: .3vw;

@@ -340,11 +340,26 @@
 
 				<div id="deg-mod-knowledge-mind">
 					<div>
-						<select class="select-sml" id="deg_mod_knowledge_mind" name="deg_mod_knowledge_mind">
+						<select class="select-sml" id="deg_mod_knowledge_mind" name="deg_mod_knowledge_mind" onchange="deg_mod_knowledge_mind()">
 							{% for m in mind %}
 								<option value="{{m.type}}">{{m.name}}</option>
 							{% endfor %}
 						</select>
+					</div>
+
+					<div>
+						<div class="hidden" id="deg-mod-knowledge-mind-count">
+							<select class="select-sml" id="deg_mod_knowledge_mind_count" name="deg_mod_knowledge_mind_count">
+								<option value="">Count</option>
+								{% for i in positives %}
+									<option value={{i}}>{{i}}</option>
+								{% endfor %}
+							</select>
+						</div>	
+					</div>
+
+					<div class="valign text-change" id="deg-mod-knowledge-mind-type" style="font-size: 80%;">
+
 					</div>
 				</div>
 			</div>
