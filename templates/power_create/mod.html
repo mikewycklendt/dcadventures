@@ -557,10 +557,19 @@
 
 			<div id="mod-limited-degree">
 				<div>
-					<select class="select-sml" id="mod_limited_degree" name="mod_limited_degree">
+					<select class="selwect-sml"	id="mod_limited_degree_type" name="mod_limited_degree_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>		
+				</div>
+				
+				<div>
+					<select class="degree-sml" id="mod_limited_degree" name="mod_limited_degree">
 						<option value="">Degree</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
+						<option value="">Use Degree of Success/Failure Form to Put Options Here</option>
+						{% for p in power_degree %}
+							<option value={{p.id}}>{{p.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

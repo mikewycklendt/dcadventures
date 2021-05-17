@@ -438,6 +438,7 @@ function mod_submit() {
 	const limited_subjects = select("mod_limited_subjects");
 	const limited_extra = select("mod_limited_extra");
 	const limited_language_type = select("mod_limited_language_type");
+	const limited_degree_type = select("mod_limited_degree_type");
 	const limited_degree = select("mod_limited_degree");
 	const limited_sense = select("mod_limited_sense");
 	const limited_subsense = select("mod_limited_subsense");
@@ -555,6 +556,7 @@ function mod_submit() {
 			'limited_subjects': limited_subjects,
 			'limited_extra': limited_extra,
 			'limited_language_type': limited_language_type,
+			'limited_degree_type': limited_degree_type,
 			'limited_degree': limited_degree,
 			'limited_sense': limited_sense,
 			'limited_subsense': limited_subsense,

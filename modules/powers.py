@@ -354,7 +354,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'others', 'name': 'To Others'}, {'type': 'objects', 'name': 'To Objects'}, {'type': 'half', 'name': 'To Half Effect'}, {'type': 'material', 'name': 'To Material'}]
+	limited_type = [{'type': '', 'name': 'Limited'}, {'type': 'task_type', 'name': 'By Task Type'}, {'type': 'task', 'name': 'To All Tasks but One'}, {'type': 'trait', 'name': 'Against Trait'}, {'type': 'descriptor', 'name': 'Against Descriptor'}, {'type': 'subjects', 'name': 'To Number of Subjects'}, {'type': 'extra', 'name': 'To Extra Effect'}, {'type': 'degree', 'name': 'To Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'others', 'name': 'To Others'}, {'type': 'objects', 'name': 'To Objects'}, {'type': 'half', 'name': 'To Half Effect'}, {'type': 'lang', 'name': 'To Common Language'}, {'type': 'language', 'name': 'Against Different Language'}, {'type': 'material', 'name': 'To Material'}]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -2420,6 +2420,7 @@ def power_post_mod():
 	limited_subjects = request.get_json()['limited_subjects']
 	limited_extra = request.get_json()['limited_extra']
 	limited_language_type = request.get_json()['limited_language_type']
+	limited_degree_type = request.get_json()['limited_degree_type']
 	limited_degree = request.get_json()['limited_degree']
 	limited_sense = request.get_json()['limited_sense']
 	limited_subsense = request.get_json()['limited_subsense']
@@ -2487,6 +2488,7 @@ def power_post_mod():
 	extra_circ = db_integer(PowerCircType, extra_circ)
 	extra_circ = db_integer(PowerDCType, extra_dc)
 	extra_circ = db_integer(PowerDegreeType, extra_degree)
+	limited_degree = db_integer(PowerDegree, limited_degree)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2509,7 +2511,6 @@ def power_post_mod():
 	limited_source = integer(limited_source)
 	limited_trait = integer(limited_trait)
 	limited_subjects = integer(limited_subjects)
-	limited_degree = integer(limited_degree)
 	limited_descriptor = integer(limited_descriptor)
 	reflect_descriptor = integer(reflect_descriptor)
 	subtle_null_trait = integer(subtle_null_trait)
@@ -2602,6 +2603,7 @@ def power_post_mod():
 							limited_subjects = limited_subjects,
 							limited_extra = limited_extra,
 							limited_language_type = limited_language_type,
+							limited_degree_type = limited_degree_type,
 							limited_degree = limited_degree,
 							limited_sense = limited_sense,
 							limited_subsense = limited_subsense,

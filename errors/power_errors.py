@@ -835,6 +835,7 @@ def mod_post_errors(data):
 	limited_subjects = data['limited_subjects']
 	limited_extra = data['limited_extra']
 	limited_language_type = data['limited_language_type']
+	limited_degree_type = data['limited_degree_type']
 	limited_degree = data['limited_degree']
 	limited_sense = data['limited_sense']
 	limited_subsense = data['limited_subsense']
@@ -895,7 +896,7 @@ def mod_post_errors(data):
 	errors = id_check(PowerCircType, extra_circ, 'Extra Circumstance', errors)
 	errors = id_check(PowerDCType, extra_dc, 'Extra DC', errors)
 	errors = id_check(PowerDegreeType, extra_degree, 'Extra Degree', errors)
-
+	errors = id_check(PowerDegree, limited_degree, 'Degree'. errors)
 
 	errors = power_check(power_id, errors)
 
@@ -964,8 +965,9 @@ def mod_post_errors(data):
 	errors = variable_fields('extra', 'Limited to Extra Effect', limited_type, [limited_extra], errors)
 	errors = variable_field('extra', limited_type, 'Extra', limited_extra, errors)
 
-	errors = variable_fields('degree', 'Limited by Degree of Success', limited_type, [limited_degree], errors)
+	errors = variable_fields('degree', 'Limited by Degree of Success', limited_type, [limited_degree, limited_degree_type], errors)
 	errors = variable_field('degree', limited_type, 'Degree of Success', limited_degree, errors)
+	errors = variable_field('degree', limited_type, 'Degree Type', limited_degree_type, errors)
 
 	errors = variable_fields('sense', 'Limited by Sense', limited_type, [limited_sense], errors)
 	errors = variable_field('sense', limited_type, 'Sense', limited_sense, errors)
@@ -2137,7 +2139,7 @@ def power_degree_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
-	
+
 	errors = degree_check(title, value, multiple, power_id, extra_id, errors)
 
 

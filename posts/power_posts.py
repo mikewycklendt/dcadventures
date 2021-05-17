@@ -924,6 +924,7 @@ def mod_post(entry, body, cells):
 	limited_subjects = entry.limited_subjects
 	limited_extra = entry.limited_extra
 	limited_language_type = entry.limited_language_type
+	limited_degree_type = entry.limited_degree_type
 	limited_degree = entry.limited_degree
 	limited_sense = entry.limited_sense
 	limited_subsense = entry.limited_subsense
@@ -985,6 +986,7 @@ def mod_post(entry, body, cells):
 	extra_degree = get_name(PowerDegreeType, extra_degree)
 	extra_dc = get_name(PowerDCType, extra_dc)
 	extra_circ = get_name(PowerCircType, extra_circ)
+	limited_degree = get_keyword(PowerDegree, limited_degree)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1012,6 +1014,8 @@ def mod_post(entry, body, cells):
 	limited_source = descriptor_name(limited_source)
 	simultaneous_descriptor = descriptor_name(simultaneous_descriptor)
 	area_descriptor = descriptor_name(area_descriptor)
+
+	limited_degree_type = math_convert(limited_degree_type)
 	
 	limited_type_select = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
 
@@ -1036,7 +1040,6 @@ def mod_post(entry, body, cells):
 	effortless_degree = integer_convert(effortless_degree)
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
-	limited_degree = integer_convert(limited_degree)
 	ranks_ranks = integer_convert(ranks_ranks)
 	ranks_mod = integer_convert(ranks_mod)
 	points_reroll_cost = integer_convert(points_reroll_cost)
@@ -1066,7 +1069,7 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Selective', 9, selective, cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
-	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}, {'type': 'self', 'name': 'Limited To Self', 'w': 20}, {'type': 'half', 'name': 'Limited To Half Effect', 'w': 30}, {'type': 'material', 'name': 'Limited To Material', 'w': 20}, {'type': 'others', 'name': 'Limited To Others', 'w': 20}, {'type': 'objects', 'name': 'Limited To Objects', 'w': 20}]
+	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited by Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited by Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}, {'type': 'self', 'name': 'Limited To Self', 'w': 20}, {'type': 'half', 'name': 'Limited To Half Effect', 'w': 30}, {'type': 'material', 'name': 'Limited To Material', 'w': 20}, {'type': 'others', 'name': 'Limited To Others', 'w': 20}, {'type': 'lang', 'name': 'Limited To Common Language', 'w': 28}, {'type': 'objects', 'name': 'Limited To Objects', 'w': 20}]
 	new_mod = mod_create('Limited', 9, limited_type, limited_type_select)
 	value = 'task_type'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
@@ -1091,7 +1094,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Extra Effect:', 15, [limited_extra], new_mod, value)
 	value = 'degree'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
-	new_mod = mod_cell('Degree:', 8, [limited_degree], new_mod, value)
+	new_mod = mod_cell('Degree:', 8, [limited_degree_type, limited_degree], new_mod, value)
 	value = 'sense'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Sense:', 7, [limited_sense], new_mod, value)
@@ -1132,6 +1135,8 @@ def mod_post(entry, body, cells):
 	value = 'others'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'objects'
+	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
+	value = 'lang'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	value = 'env'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
