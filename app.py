@@ -119,7 +119,6 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 def shutdown_session(exception=None):
 	db.session.remove()
 
-`hhhytre`
 
 if __name__ == '__main__':
 	app.debug = True
