@@ -118,7 +118,7 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 @app.teardown_appcontext
 def shutdown_session(exception=None):
 	db.session.remove()
-s`cfgtvy
+	
 
 if __name__ == '__main__':
 	app.debug = True
