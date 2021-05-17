@@ -134,6 +134,10 @@ def materials_create():
 		'toughness': 0
 	})
 
+	materials.append({
+		'name': 'Water',
+		'toughness': 0
+	})
 	
 	materials.append({
 		'name': 'Glass',
