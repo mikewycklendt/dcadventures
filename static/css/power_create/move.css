@@ -260,7 +260,7 @@
 
 
 #move-special {
-	display: grid;
+	display: none;
 	grid-template-columns: 10% 20% 65%;
 	gap: .2vw;
 	width: 97%;
@@ -331,7 +331,7 @@
 }
 
 #move-objects {
-	display: grid;
+	display: none;
 	grid-template-columns: 10% auto 15% 18% auto auto;
 	grid-auto-rows: auto;
 	gap: .2vw;
@@ -348,7 +348,7 @@
 }
 
 #move-permeate {
-	display: grid;
+	display: none;
 	grid-template-columns: 12% 18% 22% 15% 23% 10%;
 	grid-auto-rows: auto;
 	gap: .2vw;
@@ -359,7 +359,7 @@
 }
 
 #move-equip {
-	display: grid;
+	display: none;
 	grid-template-columns: 14% 30% 30% 25%;
 	grid-auto-rows: auto;
 	gap: .2vw;
@@ -370,7 +370,7 @@
 }
 
 #move-concealment {
-	display: grid;
+	display: none;
 	grid-template-columns: 17% 20% 30% 35%;
 	gap: .2vw;
 	width: 97%;
