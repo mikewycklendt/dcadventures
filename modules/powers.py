@@ -246,7 +246,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	circ_targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar Biology'}, {'type': 'hand', 'name': 'Hand Held Object'}]
 
-	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'This Object'}, {'type': 'character', 'name': 'This Character'}]
+	circ_trait = [{'type': '', 'name': 'Applied to'}, {'type': 'all', 'name': 'All Checks'}, {'type': 'object', 'name': 'Attached Object'}, {'type': 'character', 'name': 'Attached Character'}]
 
 	circ_type = [{'type': '', 'name': 'Triggered By'}, {'type': 'range', 'name': 'Range'}, {'type': 'check', 'name': 'Check Type'}, {'type': '', 'name': 'Hand Held'}]
 

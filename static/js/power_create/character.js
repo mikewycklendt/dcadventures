@@ -220,19 +220,23 @@ function char_weaken_broad() {
 function char_appear_creature() {
 	const select = 'char_appear_creature';
 	const fill = 'char_appear_creature_narrow';
-	const options = [{'val': 'other', 'div': 'char-appear-creature-other'}];
+	const options = [{'val': 'other', 'div': 'char-appear-creature-other', 'text': 'Other Broad Form'}];
 	const entry = 'char-entry';
+	const div = 'char-appear-creature-other-title';
 
 	select_maxheight_entry(select, options, entry);
 	id_select(select, fill, narrow_creature_select, other_var_sub);
+	div_text(select, div, options);
 }
 
 function char_appear_creature_narrow() {
 	const select = 'char_appear_creature_narrow';
-	const options = [{'val': 'other', 'div': 'char-appear-creature-other'}];
+	const options = [{'val': 'other', 'div': 'char-appear-creature-other-narrow', 'text': 'Other Narrow Form'}];
 	const entry = 'char-entry';
+	const div = 'char-appear-creature-other-title';
 
 	select_maxheight_entry(select, options, entry);
+	div_text(select, div, options);
 }
 
 function char_appear_form() {
@@ -241,15 +245,11 @@ function char_appear_form() {
 					{'val': ['narrow'], 'div': 'char-appear-narrow'},
 					{'val': ['single'], 'div': 'char-appear-single'}];
 	const fields = ['char_appear_creature_narrow', 'char_appear_creature'];
-	const titles = [{'val': 'broad', 'text':  'Other Creature:'},
-					{'val': 'narrow', 'text':  'Other Narrow Creature:'}];
-	const div = 'char-appear-creature-other-title';
 	const text = ['char_appear_des'];
 	const other = [{'val': 'other', 'div': 'char-appear-creature-other'}];
 	const entry = 'char-entry';
 
 	select_maxheight_entry(select, other, entry);
-	div_text(select, div, titles);
 	reset_all(fields);
 	reset_text(text);
 	select_opacity_shared(select, options);
