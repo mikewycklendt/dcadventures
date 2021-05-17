@@ -1968,7 +1968,7 @@ class PowerMod(db.Model):
 	limited_extra = db.Column(db.Integer, db.ForeignKey('extras.id'))
 	limited_language_type = db.Column(db.String())
 	limited_degree_type = db.Column(db.String())
-	
+	limited_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	limited_sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
 	limited_subsense = db.Column(db.String())
 	limited_sense_depend = db.Column(db.Boolean)
