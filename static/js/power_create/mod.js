@@ -513,6 +513,7 @@ function mod_submit() {
 	const advantage_effect = check("mod_advantage_effect");
 	const precise_type = select("mod_precise_type");
 	const sustained_action = select("mod_sustained_action");
+	const sustained_no_move = check("mod_sustained_no_move")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -638,7 +639,8 @@ function mod_submit() {
 			'advantage_rank_per': advantage_rank_per,
 			'advantage_effect': advantage_effect,
 			'precise_type': precise_type,
-			'sustained_action': sustained_action
+			'sustained_action': sustained_action,
+			'sustained_no_move': sustained_no_move
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

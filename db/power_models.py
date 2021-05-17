@@ -2037,6 +2037,7 @@ class PowerMod(db.Model):
 	advantage_effect = db.Column(db.Boolean)
 	precise_type = db.Column(db.Boolean)
 	sustained_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
+	sustained_no_move = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2153,7 +2154,8 @@ class PowerMod(db.Model):
 			'advantage_rank_per': self.advantage_rank_per,
 			'advantage_effect': self.advantage_effect,
 			'precise_type': self.precise_type,
-			'sustained_action': self.sustained_action
+			'sustained_action': self.sustained_action,
+			'sustained_no_move': self.sustained_no_move
 		}
 
 class PowerRanged(db.Model):

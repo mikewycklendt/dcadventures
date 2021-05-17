@@ -1,4 +1,5 @@
 
+from os import error
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -1186,6 +1187,7 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Sustained', 9, sustained, cells, True)
 	new_mod = mod_create('Sustained', 13)
 	new_mod = mod_cell('Action to Sustain', 20, [sustained_action], new_mod)
+	new_mod = mod_cell('No Movement', 12, [sustained_no_move], new_mod)
 	body = mod_add(sustained, new_mod, body)
 
 	cells = check_cell('Reflect', 8, reflect, cells, True)
