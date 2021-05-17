@@ -390,7 +390,7 @@
 }
 
 #move-mass {
-	display: grid;
+	display: none;
 	grid-template-columns: 14% 20% 55%;
 	grid-auto-rows: auto;
 	gap: .2vw;
