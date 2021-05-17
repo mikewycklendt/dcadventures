@@ -45,6 +45,17 @@ function extra_range_check() {
 	check_drop(check, div, entry);
 }
 
+function extra_range() {
+	const check = 'ranged_check';
+	const base = 'ranged-base';
+	const entry = 'ranged-entry';
+	const field = 'extra_range';
+	const value = '5';
+	
+	select_entry(check, base, entry, field, value);
+}
+
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,

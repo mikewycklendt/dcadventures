@@ -542,6 +542,39 @@ def rule_select(value, field, name, table, power, errors):
 
 	return (errors)
 
+def extra_rule_select(table, name, formname, power, column, value, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	check = db.session.query(Extra).filter_by(power_id=power).first()
+
+	if check is None:
+		return (errors)
+
+	attribute = getattr(Extra, column)
+	the_filter = attribute == value
+	check = db.session.query(Extra).filter(the_filter).first()
+
+	if check is None:
+		return (errors)
+
+	check = db.session.query(Extra).filter(the_filter).all()
+
+	for c in check:
+		extra_id = c.id
+		extra = c.name
+		form = db.session.query(table).filter_by(power_id = power, extra_id = extra_id).first()
+		if form is None:
+			error = True
+			message = 'You created the extra ' + extra + ' for this power and ' + name + ' so you must create a rule with the ' + formname + ' form for the extra.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
 def power_sense_condition(power_id, errors):
 	error_msgs = errors['error_msgs']
 	error = False
