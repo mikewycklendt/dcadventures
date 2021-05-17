@@ -308,4 +308,9 @@
 	padding: .5vw;
 }
 
-
+.med-textarea textarea{
+	width: 100%; 
+	height: 12vw; 
+	font-size: 90%; 
+	padding: 2%;
+}
