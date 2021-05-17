@@ -406,6 +406,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	possess = [{'type': '', 'name': 'Possession'}, {'type': 'possess', 'name': 'While Possessing'}, {'type': 'oppose', 'name': 'While Opposing'}]
 
+	precise_type = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
+
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 
 	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
@@ -2504,6 +2506,7 @@ def power_post_mod():
 	advantage_rank = request.get_json()['advantage_rank']
 	advantage_rank_per = request.get_json()['advantage_rank_per']
 	advantage_effect = request.get_json()['advantage_effect']
+	precise_type = request.get_json()['precise_type']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2686,7 +2689,8 @@ def power_post_mod():
 							advantage = advantage,
 							advantage_rank = advantage_rank,
 							advantage_rank_per = advantage_rank_per,
-							advantage_effect = advantage_effect
+							advantage_effect = advantage_effect,
+							precise_type = precise_type
 						)
 
 		db.session.add(entry)

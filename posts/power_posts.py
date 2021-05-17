@@ -1,4 +1,5 @@
 
+from typing import NoReturn
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -987,6 +988,7 @@ def mod_post(entry, body, cells):
 	advantage_rank = entry.advantage_rank
 	advantage_rank_per = entry.advantage_rank_per
 	advantage_effect = entry.advantage_effect
+	precise_type = entry.precise_type
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1053,6 +1055,9 @@ def mod_post(entry, body, cells):
 	subtle_type_select = [{'type': '', 'name': 'Subtle Type'}, {'type': 'detect', 'name': 'Detectable'}, {'type': 'undetectable', 'name': 'Undetectable'}, {'type': 'notice', 'name': 'Effect Not Noticeable'}, {'type': 'invisible', 'name': 'Effect Target Invisible'}, {'type': 'understand', 'name': 'Not Understandable'}]
 	subtle_type = selects(subtle_type, subtle_type_select)
 
+	precise_type_select = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
+	precise_type = selects(precise_type, precise_type_select)
+	
 	effortless_degree = integer_convert(effortless_degree)
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
@@ -1192,7 +1197,11 @@ def mod_post(entry, body, cells):
 	cells = check_cell('Affects Corporeal', 17, affects_corp, cells)
 	cells = check_cell('Continuous', 10, continuous, cells)
 	cells = check_cell('Vulnerable', 11, vulnerable, cells)
-	cells = check_cell('Precise', 8, precise, cells)
+	
+	cells = check_cell('Precise', 8, precise, cells, True)
+	new_mod = mod_create('Precise', 10)
+	new_mod = mod_cell('Type:', 7, [precise_type], new_mod)
+	body = mod_add(precise, new_mod, body)
 	cells = check_cell('Progressive', 11, progressive, cells)
 
 	cells = check_cell('Subtle', 7, subtle, cells, True)

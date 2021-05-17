@@ -129,7 +129,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_precise" class="medium-checkbox med-checkbox"> Precise
+				<input type="checkbox" id="mod_precise" class="medium-checkbox med-checkbox" onclick="mod_precise()"> Precise
 			</div>
 		</div>
 	</div>
@@ -244,6 +244,18 @@
 				<input type="checkbox" id="mod_adv" class="medium-checkbox med-checkbox" onclick="mod_adv()"> Advantage Ranks
 			</div>
 		</div>
+	</div>
+
+	<div id="mod-precise">
+		<div>
+			Precise:
+		</div>
+
+		<select class="select-sml" id="mod_precise_type" name="mod_precise_type">
+			{% for p in precise_type %}
+				<option value="{{p.type}}">{{p.name}}</option>
+			{% endfor %}
+		</select>
 	</div>
 
 	<div id="mod-advantage">

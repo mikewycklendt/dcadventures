@@ -899,6 +899,7 @@ def mod_post_errors(data):
 	advantage = data['advantage']
 	advantage_rank = data['advantage_rank']
 	advantage_rank_per = data['advantage_rank_per']
+	precise_type = data['precise_type']
 
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
@@ -1076,6 +1077,9 @@ def mod_post_errors(data):
 	errors = check_fields(adv, 'Advantage Ranks', [advantage, advantage_rank], errors)
 	errors = check_field(adv, 'Advantage Ranks', 'Advantage', advantage, errors)
 	errors = check_field(adv, 'Advantage Ranks', 'Rsnks', advantage_rank, errors)
+
+	errors = check_fields(precise, 'Precise', [precise_type], errors)
+	errors = check_field(precise, 'Precise', 'Precise Type', precise_type, errors)
 
 	return (errors)
 
