@@ -119,7 +119,32 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 def shutdown_session(exception=None):
 	db.session.remove()
 	
-	
+
+@app.route('/table/db')
+def table_db_columns_create():
+
+	name = 'Any Material Medium'
+
+	entry = PoweDes(any_material=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+
+	name = 'Any Energy Medium'
+
+	entry = PoweDes(any_energy=True, name=name, hidden=True )
+	db.session.add(entry)
+	db.session.commit()
+
+
+	results = db.session.query(PowerDes).filter_by(hidden=True).all()
+
+	for result in results:
+		print (result.id)
+		print (result.name)
+
+	return (tablename + ' db added')
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(32)

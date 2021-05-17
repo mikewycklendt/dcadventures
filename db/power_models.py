@@ -2570,6 +2570,8 @@ class PowerDes(db.Model):
 	any_medium_type = db.Column(db.Boolean)
 	any_medium_subtype = db.Column(db.Boolean)
 	any_medium = db.Column(db.Boolean)
+	any_material = db.Column(db.Boolean)
+	any_energy = db.Column(db.Boolean)
 	any_descriptor = db.Column(db.Boolean)
 	hidden_name = db.Column(db.String())
 
@@ -2598,6 +2600,8 @@ class PowerDes(db.Model):
 			'any_medium_type': self.any_medium_type,
 			'any_medium_subtype': self.any_medium_subtype,
 			'any_medium': self.any_medium,
+			'any_material': self.any_material,
+			'any_energy': self.any_energy,
 			'any_descriptor': self.any_descriptor,
 			'hidden_name': self.hidden_name
 		}
