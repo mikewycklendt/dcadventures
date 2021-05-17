@@ -1975,7 +1975,7 @@ class PowerMod(db.Model):
 	limited_sense_depend = db.Column(db.Boolean)
 	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_range_type = db.Column(db.String())
-	
+	limited_range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
 	limited_ground = db.Column(db.Integer, db.ForeignKey('ground.id'))
 	limited_creature =  db.Column(db.Integer, db.ForeignKey('creature.id'))
 	limited_creature_narrow =  db.Column(db.Integer, db.ForeignKey('creature_narrow.id'))
