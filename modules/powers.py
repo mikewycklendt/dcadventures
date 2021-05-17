@@ -2487,6 +2487,7 @@ def power_post_mod():
 	advantage = request.get_json()['advantage']
 	advantage_rank = request.get_json()['advantage_rank']
 	advantage_rank_per = request.get_json()['advantage_rank_per']
+	advantage_effect = request.get_json()['advantage_effect']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2668,7 +2669,8 @@ def power_post_mod():
 							adv = adv,
 							advantage = advantage,
 							advantage_rank = advantage_rank,
-							advantage_rank_per = advantage_rank_per
+							advantage_rank_per = advantage_rank_per,
+							advantage_effect = advantage_effect
 						)
 
 		db.session.add(entry)

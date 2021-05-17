@@ -975,6 +975,7 @@ def mod_post(entry, body, cells):
 	advantage = entry.advantage
 	advantage_rank = entry.advantage_rank
 	advantage_rank_per = entry.advantage_rank_per
+	advantage_effect = entry.advantage_effect
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1250,8 +1251,9 @@ def mod_post(entry, body, cells):
 	word = check_string('Per Rank', advantage_rank_per)
 	cells = check_cell('Advantage', 11, adv, cells, True)
 	new_mod = mod_create('Advantage Ranks', 17)
-	new_mod = mod_cell('Advantage', 18, [advantage], new_mod)
-	new_mod = mod_cell('Ranks', 18, [advantage_rank, word], new_mod)	
+	new_mod = mod_cell('Advantage', 12, [advantage], new_mod)
+	new_mod = mod_cell('Ranks', 7, [advantage_rank, word], new_mod)
+	new_mod = mod_cell('Limited to Effect', 18, [advantage_effect], new_mod)	
 	body = mod_add(adv, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)

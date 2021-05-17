@@ -494,6 +494,7 @@ function mod_submit() {
 	const advantage = select("mod_advantage");
 	const advantage_rank = select("mod_advantage_rank");
 	const advantage_rank_per = check("mod_advantage_rank_per");
+	const advantage_effect = check("mod_advantage_effect")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -616,7 +617,8 @@ function mod_submit() {
 			'adv': adv,
 			'advantage': advantage,
 			'advantage_rank': advantage_rank,
-			'advantage_rank_per': advantage_rank_per
+			'advantage_rank_per': advantage_rank_per,
+			'advantage_effect': advantage_effect
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

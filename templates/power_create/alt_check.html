@@ -57,6 +57,7 @@
 		<div>
 			<select class="entry-select" id="check_check_type" name="check_check_type" onchange="check_check_type()">
 				<option value="">Check Type</option>
+				<option value="none">No Check</option>
 				{% for c in checks %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}

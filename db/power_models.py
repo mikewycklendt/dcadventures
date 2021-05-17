@@ -2026,6 +2026,7 @@ class PowerMod(db.Model):
 	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
 	advantage_rank = db.Column(db.Integer)
 	advantage_rank_per = db.Column(db.Boolean)
+	advantage_effect = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2139,7 +2140,8 @@ class PowerMod(db.Model):
 			'adv': self.adv,
 			'advantage:': self.advantage,
 			'advantage_rank': self.advantage_rank,
-			'advantage_rank_per': self.advantage_rank_per
+			'advantage_rank_per': self.advantage_rank_per,
+			'advantage_effect': self.advantage_effect
 		}
 
 class PowerRanged(db.Model):
