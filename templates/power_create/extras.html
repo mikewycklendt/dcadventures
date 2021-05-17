@@ -83,63 +83,82 @@
 			<div>
 				<textarea id="extra_des" name="extra_des"></textarea>
 			</div>
-					
-			<div class="extras-four">	
-								
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_action_check" class="medium-checkbox med-checkbox" onclick="extra_action_check()"> Changes Action
-					</div>
-				</div>	
-
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
-					</div>
-				</div>
-			
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
-					</div>
-				</div>	
-			
-				<div>
-					<div class="vcenter">
-						<input type="checkbox" id="extra_stack" class="medium-checkbox med-checkbox"> Stackable
-					</div>
-				</div>	
-			</div>
-			
-		</div>		
-	
 	</div>
 
-	
 	<div id="extras-row3">
 		
 		<div>
-			<div class="vcenter">
+			<div class="check-div">
 				<input type="checkbox" id="extra_routine" class="medium-checkbox med-checkbox" onclick="extra_routine()"> Routine Skill Check
 			</div>
 		</div>	
 		<div>
-			<div class="vcenter">
+			<div class="check-div">
 				<input type="checkbox" id="extra_target_check" class="medium-checkbox med-checkbox" onclick="extra_target_check()"> Changes Effect Target
 			</div>
 		</div>	
 
 		<div>
-			<div class="vcenter">
+			<div class="check-div">
 				<input type="checkbox" id="extra_power_rank" class="medium-checkbox med-checkbox"> Power's Ranks
 			</div>
 		</div>	
 		
 		<div>
-			<div class="vcenter">
+			<div class="check-div">
 				<input type="checkbox" id="extra_extra_effect" class="medium-checkbox med-checkbox" onclick="extra_extra_effect()"> Extra Effect
 			</div>
 		</div>	
+	</div>
+					
+	<div class="extras-row4">	
+								
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_range_check" class="medium-checkbox med-checkbox" onclick="extra_range_check()"> Changes Range
+			</div>
+		</div>	
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_action_check" class="medium-checkbox med-checkbox" onclick="extra_action_check()"> Changes Action
+			</div>
+		</div>	
+
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_alternate" class="medium-checkbox med-checkbox"> Alternate Effect
+			</div>
+		</div>
+	
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_flat" class="medium-checkbox med-checkbox"> Flat Cost
+			</div>
+		</div>	
+	
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="extra_stack" class="medium-checkbox med-checkbox"> Stackable
+			</div>
+		</div>	
+	</div>
+	
+</div>		
+
+	<div id="extras-range">
+		<div>
+			Changes Range:
+		</div>
+
+		<div>
+			<select class="select-sml" id="extra_range" name="extra_range">
+				<option value="">Range</option>
+				{% for r in ranged %}
+					<option value={{r.id}}>{{r.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
 	</div>
 
 	<div id="extras-skill">

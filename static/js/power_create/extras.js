@@ -37,6 +37,14 @@ function extra_skill_type() {
 	id_select(select, fill, skill_select);
 }
 
+function extra_range_check() {
+	const check = 'extra_range_check';
+	const div = 'extras-range';
+	const entry = 'extras-entry';
+
+	check_drop(check, div, entry);
+}
+
 let extras_grid = {'titles': false,
 				'columns': [],
 				'font': 80,
@@ -89,6 +97,8 @@ function extras_submit() {
 	const routine = check("extra_routine");
 	const skill = select("extra_skill");
 	const skill_type = select("extra_skill_type");
+	const range_check = check("extra_range_check");
+	const range = select("extra_range")
 	
 	
 	const errors = 'extras-err';
@@ -143,7 +153,9 @@ function extras_submit() {
 			'action_type': action_type,
 			'routine': routine,
 			'skill_type': skill_type,
-			'skill': skill
+			'skill': skill,
+			'range_check': range_check,
+			'range': range
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

@@ -3029,6 +3029,8 @@ def power_extra_post_errors(data):
 	routine = data['routine']
 	skill_type = data['skill_type']
 	skill = data['skill']
+	range_check = data['range_check']
+	range = data['range']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3036,7 +3038,11 @@ def power_extra_post_errors(data):
 	errors = int_check(cost, 'Cost', errors)
 	errors = int_check(ranks, 'Ranks', errors)
 
-	errors = id_check(inherit, 'Power', errors)
+	errors = id_check(Power, inherit, 'Power', errors)
+	errors = id_check(Action, action, 'Action', errors)
+	errors = id_check(Ranged, range, 'Range', errors)
+	errors = id_check(Skill, skill_type, 'Skill', errors)
+	errors = id_check(SkillBonus, skill, 'Enhanced Skill', errors)
 
 	errors = required(name, 'Name', errors)
 	errors = not_required(alternate, cost, 'Cost', errors)
@@ -3056,6 +3062,9 @@ def power_extra_post_errors(data):
 
 	errors = check_fields(routine, 'Routine Skill Check', [skill_type], errors)
 	errors = check_field(routine, 'Routine Skill Check', 'Skill', skill_type, errors)
+
+	errors = check_fields(range_check, 'Changes Range', [range], errors)
+	errors = check_field(range_check, 'Changes Range', 'Range', range, errors)
 
 	errors = variable_fields('required', 'Overwrites Required', effect, [required], errors)
 	errors = variable_fields('required', effect, 'Overwrites Required', required, errors)

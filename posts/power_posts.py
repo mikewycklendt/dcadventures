@@ -141,7 +141,7 @@ def character_post(entry, body, cells):
 	limited_select = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 	limited_by = selects(limited_by, limited_select)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	appear_target =  selects(appear_target, targets_select)
 
 	insub_select = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
@@ -1456,7 +1456,7 @@ def resist_post(entry, body, cells):
 	descriptor = descriptor_name(descriptor)
 	check_type = name(Check, check_type)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 
 
@@ -1580,7 +1580,7 @@ def reverse_effect_post(entry, body, cells):
 	math = math_convert(Math, math)
 	time_unit = name(Unit, time_unit)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 
 	whens_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before Turn'}, {'type': 'after', 'name': 'After Turn'}]
@@ -1728,7 +1728,7 @@ def sense_post(entry, body, cells):
 
 	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 
 	all_some_select = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
@@ -1951,7 +1951,7 @@ def power_check_post(entry, body, cells):
 	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'active', 'name': 'Target Active'}]
 	when = selects(when, check_type_select)
 
-	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	condition_target = selects(condition_target, targets)
 	conditions_target = selects(conditions_target, targets)
 
@@ -2092,7 +2092,7 @@ def power_circ_post(entry, body, cells):
 
 	lasts = get_keyword(PowerTime, lasts)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	circ_target = selects(circ_target, targets_select)
 
 	circ_targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'biology', 'name': 'Unfamiliar'}, {'type': 'hand', 'name': 'Hand Held Object'}]
@@ -2316,7 +2316,7 @@ def power_dc_post(entry, body, cells):
 	condition2 = get_name(Condition, condition2)
 	complexity = get_name(Complex, complexity)
 
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Player'}, {'type': 'other', 'name': 'Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 
 
@@ -2608,7 +2608,7 @@ def power_degree_post(entry, body, cells):
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'Up'}, {'type': -1, 'name': 'Down'}]
 	condition_damage = selects(condition_damage, updown)
 	
-	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 	circ_target = selects(circ_target, targets_select)
 	effect_target = selects(effect_target, targets_select)
@@ -3494,6 +3494,8 @@ def power_extra_post(entry, body, cells):
 	routine = entry.routine
 	skill_type = entry.skill_type
 	skill = entry.skill
+	range_check = entry.range_check
+	range = entry.range
 
 
 	cost = var_string(cost)
@@ -3504,6 +3506,7 @@ def power_extra_post(entry, body, cells):
 	skill_type = get_name(Skill, skill_type)
 	skill = get_name(SkillBonus, skill)
 	action = get_name(Action, action)
+	range = get_name(Ranged, range)
 
 	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'add', 'name': 'Add'}]
 	type = selects(type, extra_type)
@@ -3511,6 +3514,9 @@ def power_extra_post(entry, body, cells):
 	extra_target = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 	target_type = selects(target_type, extra_target)
 	action_type = selects(action_type, extra_target)
+
+	target_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
+	target = selects(target, target_select)
 
 	cells = cell('Name', 23, [name])
 	cells = cell('Cost', 12, [cost], cells)
@@ -3560,6 +3566,11 @@ def power_extra_post(entry, body, cells):
 	new_mod = mod_cell('Action', 8, [action], new_mod)
 	new_mod = mod_cell('Type', 5, [action_type], new_mod)
 	body = mod_add(action_check, new_mod, body)
+
+	cells = check_cell('Range', 8, range_check, cells, True)
+	new_mod = mod_create('Changes Range', 16)
+	new_mod = mod_cell('Range', 8, [range], new_mod)
+	body = mod_add(range_check, new_mod, body)
 
 	cells = circ_cell('Description', 'Description', 12, des, cells, body)
 

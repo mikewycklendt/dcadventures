@@ -228,6 +228,8 @@ class Extra(db.Model):
 	routine = db.Column(db.Boolean)
 	skill_type = db.Column(db.Integer, db.ForeignKey('skill_bonus.id'))
 	skill = db.Column(db.Integer, db.ForeignKey('skills.id'))
+	range_check = db.Column(db.Boolean)
+	range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 
 	variable = db.Column(db.Boolean)
 	character = db.Column(db.Boolean)
@@ -304,7 +306,9 @@ class Extra(db.Model):
 			'action': self.action,
 			'action_type': self.action_type,
 			'skill_type': self.skill_type,
-			'skill': self.skill
+			'skill': self.skill,
+			'range_check': self.range_check,
+			'range': self.range
 		}
 
 class PowerCost(db.Model):

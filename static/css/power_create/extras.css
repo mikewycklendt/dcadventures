@@ -54,6 +54,13 @@
 	font-size: 70%;
 }
 
+#extras-row4 {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto;
+	gap: .3vw;
+	font-size: 70%;
+}
+
 #extras-left {
 	display: grid;
 	grid-auto-rows: auto;
@@ -115,6 +122,16 @@
 }
 
 #extras-action {
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+	grid-template-columns: 27% 30% 30%;
+	grid-auto-rows: auto;
+	font-size: 80%;
+}
+
+#extras-range {
 	display: none;
 	max-height: 0;
 	overflow: hidden;

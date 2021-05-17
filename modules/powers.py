@@ -450,7 +450,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	suffocation_type = [{'type': '',  'name': 'Suffocation Type'}, {'type': 'all',  'name': 'All'}, {'type': 'x',  'name': 'Variable'}, {'type': 'water',  'name': 'Underwater'}, {'type': 'alien',  'name': 'Alien Atmosphere'}, {'type': 'forced',  'name': 'Forced'}]
 
-	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}]
+	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 
 	targets_object = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}]
 
@@ -896,6 +896,8 @@ def power_post_extra():
 	routine = request.get_json()['routine']
 	skill_type = request.get_json()['skill_type']
 	skill = request.get_json()['skill']
+	range_check = request.get_json()['range_check']
+	range = request.get_json()['range']
 
 	power_id = integer(power_id)
 	inherit = db_integer(Power, inherit)
@@ -903,6 +905,7 @@ def power_post_extra():
 	action = db_integer(Action, action)
 	skill_type = db_integer(Skill, skill_type)
 	skill = db_integer(SkillBonus, skill)
+	range = db_integer(Ranged, range)
 
 	extra_effect_count = integer(extra_effect_count)
 	cost = var_convert(cost)
@@ -947,7 +950,9 @@ def power_post_extra():
 						action_type = action_type,
 						routine = routine,
 						skill_type = skill_type,
-						skill = skill
+						skill = skill,
+						range_check = range_check,
+						range =  range
 					)
 
 		db.session.add(entry)
