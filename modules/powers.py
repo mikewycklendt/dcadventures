@@ -568,7 +568,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
-											damage_applied=damage_applied)
+											damage_applied=damage_applied, precise_type=precise_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
