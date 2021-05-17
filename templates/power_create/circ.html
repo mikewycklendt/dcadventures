@@ -135,11 +135,9 @@
 			<div id="circ-trait">
 				<div>
 					<select class="select-sml" id="circ_trait_type" name="circ_trait_type" onchange="circ_trait_type()">
-						<option value="ability">Ability</option>
-						<option value="defense">Defense</option>
-						<option value="power">Power</option>
-						<option value="skill">Skill</option>
-						<option value="bonus">Enhhanced Skill</option>
+						{% for b in base_traits %}
+							<option value="{{b.type}}">{{b.name}}</option>
+						{% endfor %}
 						<option value="advantage">Advantage</option>
 						<option value="extra">Extra</option>
 					</select>
