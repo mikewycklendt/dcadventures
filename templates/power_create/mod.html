@@ -641,13 +641,30 @@
 			
 			<div id="mod-limited-material">
 				<div>
-					<select class="select-sml" id="mod_limited_material" name="mod_limited_material" >
+					<select class="material-sml select-sml" id="mod_limited_material" name="mod_limited_material" onchange="mod_limited_material()">
 						<option value="">Material</option>
 						<option value="x">Variable</option>
+						<option value="other">Other Material</option>
 						{% for m in material_type %}
-							<option value={{m.id}}>{{m.name}}</option>
+						`	<option value={{m.id}}>{{m.name}}</option>
 						{% endfor %}
 					</select>
+				</div>
+
+				<div id="mod-limited-material-other">
+					<div class="text-sml">
+						<input type="text" id="mod_limited_material_other" name="mod_limited_material_other" placeholder="Material">
+					</div>
+
+					<div>
+						<select class="select-sml" id="mod_limited_material_other_tough" name="mod_limited_material_other_tough">
+							<option value="">Toughness</option>
+							<option value="0">0</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select> 
+					</div>
 				</div>
 			</div>
 			

@@ -340,9 +340,18 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 35% 35% 30%;
+	grid-template-columns: 30% 70%;
 	opacity: 0%;
 	transition: all .3s ease-out;
+}
+
+#mod-limited-material-other {
+	display: none;
+	width: 98%;
+	opacity: 0%;
+	transition: all .4s ease-out;
+	grid-template-columns: 60% 40%;
+	gap: .3vw;
 }
 
 #mod-limited-descriptor {

@@ -2463,6 +2463,8 @@ def power_post_mod():
 	limited_emotion_other = request.get_json()['limited_emotion_other']
 	limited_emotion = request.get_json()['limited_emotion']
 	limited_material = request.get_json()['limited_material']
+	limited_material_other = request.get_json()['limited_material_other']
+	limited_material_other_tough = request.get_json()['limited_material_other_tough']
 	limited_org = request.get_json()['limited_org']
 	limited_org_other = request.get_json()['limited_org_other']
 	side_effect_type = request.get_json()['side_effect_type']
@@ -2531,7 +2533,6 @@ def power_post_mod():
 	limited_range = db_integer(PowerRanged, limited_range)
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
-	limited_material = db_integer(Material, limited_material)
 	advantage = db_integer(Advantage, advantage)
 	sustained_action = db_integer(Action, sustained_action)
 
@@ -2555,6 +2556,8 @@ def power_post_mod():
 	points_give = integer(points_give)
 	feedback_mod = integer(feedback_mod)
 	advantage_rank = integer(advantage_rank)
+	limited_material_other_tough = integer(limited_material_other_tough)
+
 
 	body = linked_ref(PowerDamage, area_damage, 'Damage Effect', 'effect', body)
 	body = linked_ref(PowerRangedType, area_ranged, 'Ranged Effect', 'effect', body)
@@ -2564,6 +2567,9 @@ def power_post_mod():
 
 	body = user_item(NarrowCreature, 'Narrow Creature', limited_creature_narrow, limited_creature_other, 'creature-narrow-sml', body, True, True, limited_creature, 'creature')
 	limited_creature_narrow = body['output']
+	
+	body = user_item(Material, 'Material', limited_material, limited_material_other, 'material-sml', body, True, True, limited_material_other_tough, 'toughness')
+	limited_material = body['output']
 	
 	body = user_item(Environment, 'Environment', limited_env, limited_env_other, 'env-sml', body, True, True)
 	limited_env = body['output']
@@ -2579,6 +2585,7 @@ def power_post_mod():
 	limited_env = db_integer(Environment, limited_env_other)
 	limited_emotion = db_integer(Emotion, limited_emotion)
 	limited_org = db_integer(Organization, limited_org)
+	limited_material = db_integer(Material, limited_material)
 
 	try:
 		entry = PowerMod(power_id = power_id,

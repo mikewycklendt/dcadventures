@@ -358,6 +358,13 @@ function mod_limited_creature_narrow() {
 	select_opacity(select, options)
 }
 
+function mod_limited_material() {
+	const select = 'mod_limited_material';
+	const options = [{'val': 'other', 'div': 'mod-limited-material-other'}]
+
+	select_opacity(select, options);
+}
+
 function mod_feedback() {
 	const check = 'mod_feedback';
 	const div = 'mod-feedback';
@@ -471,6 +478,8 @@ function mod_submit() {
 	const limited_env = select("mod_limited_env");
 	const limited_env_other = text("mod_limited_env_other");
 	const limited_material = select("mod_limited_material");
+	const limited_material_other = text("mod_limited_material_other");
+	const limited_material_other_tough = select("mod_limited_material_other_tough");
 	const limited_org = select('mod_limited_org');
 	const limited_org_other = text("mod_limited_org_other");
 	const side_effect_type = select("mod_side_effect_type");
@@ -597,6 +606,8 @@ function mod_submit() {
 			'limited_org': limited_org,
 			'limited_org_other': limited_org_other,
 			'limited_material': limited_material,
+			'limited_material_other': limited_material_other,
+			'limited_material_other_tough': limited_material_other_tough,
 			'side_effect_type': side_effect_type,
 			'side_level': side_level,
 			'side_other': side_other,
