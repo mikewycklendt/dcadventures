@@ -125,13 +125,13 @@ def table_db_columns_create():
 
 	name = 'Any Material Medium'
 
-	entry = PoweDes(any_material=True, name=name, hidden=True )
+	entry = PowerDes(any_material=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 
 	name = 'Any Energy Medium'
 
-	entry = PoweDes(any_energy=True, name=name, hidden=True )
+	entry = PowerDes(any_energy=True, name=name, hidden=True )
 	db.session.add(entry)
 	db.session.commit()
 
