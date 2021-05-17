@@ -109,7 +109,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 27% 30% 30%;
+	grid-template-columns: 24% 30% 30%;
 	grid-auto-rows: auto;
 	font-size: 80%;
 }
@@ -119,7 +119,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 27% 30% 30%;
+	grid-template-columns: 24% 30% 30%;
 	grid-auto-rows: auto;
 	font-size: 80%;
 }
@@ -129,7 +129,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 27% 30% 30%;
+	grid-template-columns: 24% 30% 30%;
 	grid-auto-rows: auto;
 	font-size: 80%;
 }
@@ -139,7 +139,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 21% 30% 30%;
+	grid-template-columns: 24% 30% 30%;
 	grid-auto-rows: auto;
 	font-size: 80%;
 }
