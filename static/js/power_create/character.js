@@ -231,7 +231,7 @@ function char_appear_creature() {
 
 function char_appear_creature_narrow() {
 	const select = 'char_appear_creature_narrow';
-	const options = [{'val': 'other', 'div': 'char-appear-creature-other-narrow', 'text': 'Other Narrow Form'}];
+	const options = [{'val': 'other', 'div': 'char-appear-creature-other', 'text': 'Other Narrow Form'}];
 	const entry = 'char-entry';
 	const div = 'char-appear-creature-other-title';
 
