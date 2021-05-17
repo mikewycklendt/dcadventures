@@ -2507,6 +2507,7 @@ def power_post_mod():
 	advantage_rank_per = request.get_json()['advantage_rank_per']
 	advantage_effect = request.get_json()['advantage_effect']
 	precise_type = request.get_json()['precise_type']
+	sustained_action = request.get_json()['sustained_action']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2531,6 +2532,7 @@ def power_post_mod():
 	limited_ground = db_integer(Ground, limited_ground)
 	limited_material = db_integer(Material, limited_material)
 	advantage = db_integer(Advantage, advantage)
+	sustained_action = db_integer(Action, sustained_action)
 
 	effortless_degree = integer(effortless_degree)
 	effortless_retries = integer(effortless_retries)
@@ -2690,7 +2692,8 @@ def power_post_mod():
 							advantage_rank = advantage_rank,
 							advantage_rank_per = advantage_rank_per,
 							advantage_effect = advantage_effect,
-							precise_type = precise_type
+							precise_type = precise_type,
+							sustained_action = sustained_action
 						)
 
 		db.session.add(entry)

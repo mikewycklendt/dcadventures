@@ -988,6 +988,7 @@ def mod_post(entry, body, cells):
 	advantage_rank_per = entry.advantage_rank_per
 	advantage_effect = entry.advantage_effect
 	precise_type = entry.precise_type
+	sustained_action = entry.sustained_action
 
 
 	body = one_multiple(PowerMod, power_id, body)
@@ -1023,6 +1024,7 @@ def mod_post(entry, body, cells):
 	limited_material = get_name(Material, limited_material)
 	limited_org = get_name(Organization, limited_org)
 	advantage = get_name(Advantage, advantage)
+	sustained_action = get_name(Action, sustained_action)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1181,7 +1183,10 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Continous Touch:', 18, [others_touch_continuous], new_mod)
 	body = mod_add(others, new_mod, body)
 
-	cells = check_cell('Sustained', 9, sustained, cells)
+	cells = check_cell('Sustained', 9, sustained, cells, True)
+	new_mod = mod_create('Sustained', 13)
+	new_mod = mod_cell('Action to Sustain', 20, [sustained_action], new_mod)
+	body = mod_add(sustained, new_mod, body)
 
 	cells = check_cell('Reflect', 8, reflect, cells, True)
 	new_mod = mod_create('Reflect', 8)

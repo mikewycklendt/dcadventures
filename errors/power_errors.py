@@ -900,6 +900,7 @@ def mod_post_errors(data):
 	advantage_rank = data['advantage_rank']
 	advantage_rank_per = data['advantage_rank_per']
 	precise_type = data['precise_type']
+	sustained_action = data['sustained_action']
 
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
@@ -932,6 +933,7 @@ def mod_post_errors(data):
 	errors = id_check(Emotion, limited_emotion, 'Emotion', errors)
 	errors = id_check(Material, limited_material, 'Material', errors)
 	errors = id_check(Advantage, advantage, 'Advantage', errors)
+	errors = id_check(Action, sustained_action, 'Sustained Action', errors)
 
 	errors = int_check(effortless_degree, 'Effortless Degree', errors)
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
@@ -1080,6 +1082,9 @@ def mod_post_errors(data):
 
 	errors = check_fields(precise, 'Precise', [precise_type], errors)
 	errors = check_field(precise, 'Precise', 'Precise Type', precise_type, errors)
+
+	errors = check_fields(sustained, 'Sustained', [sustained_action], errors)
+	errors = check_field(sustained, 'Sustained', 'Action to Sustain', sustained_action, errors)
 
 	return (errors)
 

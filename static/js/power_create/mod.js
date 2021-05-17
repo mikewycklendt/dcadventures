@@ -382,6 +382,14 @@ function mod_precise_type() {
 	check_drop(check, div, entry);
 }
 
+function mod_sustained() {
+	const check = 'mod_sustained';
+	const div = 'mod-sustained';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -504,6 +512,7 @@ function mod_submit() {
 	const advantage_rank_per = check("mod_advantage_rank_per");
 	const advantage_effect = check("mod_advantage_effect");
 	const precise_type = select("mod_precise_type");
+	const sustained_action = select("mod_sustained_action");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -628,7 +637,8 @@ function mod_submit() {
 			'advantage_rank': advantage_rank,
 			'advantage_rank_per': advantage_rank_per,
 			'advantage_effect': advantage_effect,
-			'precise_type': precise_type
+			'precise_type': precise_type,
+			'sustained_action': sustained_action
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
