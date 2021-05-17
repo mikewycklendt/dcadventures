@@ -64,7 +64,7 @@
 	display: grid;
 	width: 98%;
 	gap: .2vw;
-	grid-template-columns: 33% 33% 19% 15%;
+	grid-template-columns: 33% 35% 17% 15%;
 }
 
 #damage-err {
