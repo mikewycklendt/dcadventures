@@ -233,7 +233,7 @@
 	display: none;
 	opacity: 0%;
 	transition: all .3s ease-out;
-	grid-template-columns: 38% auto auto;
+	grid-template-columns: 35% auto auto;
 	gap: .2vw;
 }
 
