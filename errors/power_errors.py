@@ -463,6 +463,9 @@ def damage_post_errors(data):
 	keyword = data['keyword']
 	value_type = data['value_type']
 	math = data['math']
+	check_type = data['check_type']
+	check = data['check_type']
+	applied = data['applied']
 
 	errors = power_check(power_id, errors)
 
@@ -472,6 +475,9 @@ def damage_post_errors(data):
 
 	errors = id_multiple(Descriptor, damage_type, 'Damage Type', errors)
 	errors = id_multiple(PowerDes, descriptor, 'Descriptor', errors)
+
+	errors = id_check(PowerCheck, check, 'Check', errors)
+	errors = id_check(PowerCheckType, check_type, 'Check By Group', errors)
 
 	errors = int_check(mod, 'Modifier', errors)
 	errors = id_check(Math, math, 'Math', errors)
@@ -492,6 +498,11 @@ def damage_post_errors(data):
 
 	errors = check_fields(strength, 'Strength Based Damage', [strength_based], errors)
 	errors = check_field(strength, 'Strength Based Damage', 'Strength Based Type', strength_based, errors)
+
+	errors = seperate([check, check_type], 'Check', errors)
+
+	errors = if_field('Check', check, applied, 'Applied', errors)
+	errors = if_field('Check Group', check_type, applied, 'Applied', errors)
 
 	return (errors)
 

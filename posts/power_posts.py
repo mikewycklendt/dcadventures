@@ -458,6 +458,9 @@ def damage_post(entry, body, cells):
 	keyword = entry.keyword
 	value_type = entry.value_type
 	math = entry.math
+	applied = entry.applied
+	check_type = entry.check_type
+	check = entry.check
 
 	trait = trait_select(trait, trait_type)
 
@@ -465,10 +468,16 @@ def damage_post(entry, body, cells):
 	damage_type = get_multiple(Descriptor, damage_type)
 	descriptor = get_multiple(PowerDes, descriptor)
 
+	check = get_keyword(PowerCheck, check)
+	check_type = get_name(PowerCheckType, check_type)
+	
+	damage_applied = [{'type': 'always', 'name': ' Checks on Every Check'}, {'type': 'choice', 'name': ' Checks When Player Chooses'}]
+	applied = selects(applied, damage_applied)
+	total_check = 'Damage Applied to ' + check + check_type + applied
+
 	math = math_convert(math)
 
 	mod = integer_convert(mod)
-	damage_type = integer_convert(damage_type)
 
 	damage_value = [{'type': '', 'name': 'Damage Dealt'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'check', 'name': 'Checked Rank'}, {'type': 'value', 'name': 'Flat Value'}]
 	value_type = selects(value_type, damage_value)
@@ -478,8 +487,10 @@ def damage_post(entry, body, cells):
 	cells = cell('Damage', 25, [trait, math, mod], cells)
 	cells = cell('Dealt By', 16, [value_type], cells)
 	cells = check_cell('Strength Based', 16, strength, cells)
-	cells = circ_cell('Damage Type', 'Damage Type', 13, damage_type, cells, body)
-	cells = circ_cell('Descriptor', 'Descriptor', 12, descriptor, cells, body)
+	cells = circ_cell('Damage Type', 'Damage Types', 13, damage_type, cells, body)
+	cells = circ_cell('Descriptor', 'Descriptors', 12, descriptor, cells, body)
+	cells = circ_cell('Check', 'Check:', 8, total_check. cells, body)
+
 
 	body = send(cells, body)
 

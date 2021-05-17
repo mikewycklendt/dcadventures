@@ -1,7 +1,7 @@
 
 
 .benefit-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
@@ -19,19 +19,19 @@
 }
 
 .descriptor-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
 
 .effect-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
 
 .feature-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
@@ -85,7 +85,7 @@
 }
 
 .check-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
@@ -121,7 +121,7 @@
 }
 
 .cost-entry {
-	height: 80%;  
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
@@ -185,7 +185,7 @@
 }
 
 .extra-cost-select {
-	height: 2.5vw; 
+	height: 2.3vw; 
 	font-size: 110%;
 }
 
@@ -194,7 +194,7 @@
 }
 
 .extra-rank-select {
-	height: 2.5vw; 
+	height: 2.3vw; 
 	font-size: 110%;
 }
 
@@ -257,7 +257,7 @@
 }
 
 .lasts-entry {
-	height: 80%;  
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }
@@ -270,7 +270,7 @@
 }
 
 .lasts-title-entry {
-	height: 80%; 
+	height: 2.3vw; 
 	padding: .3vw;  
 	font-size: 100%;
 }

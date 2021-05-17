@@ -292,6 +292,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	damage_value = [{'type': '', 'name': 'Damage Dealt'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'check', 'name': 'Checked Rank'}, {'type': 'value', 'name': 'Flat Value'}]
 
+	damage_applied = [{'type': '', 'name': 'Applied'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}]
+
 	damage_trait = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'},  {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
 	darkness = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
@@ -563,7 +565,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											speed_mod=speed_mod, char_multiple=char_multiple, points_type=points_type, sense_multiple=sense_multiple, env_conditions=env_conditions, consequences=consequences,
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
-											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits)
+											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
+											damage_applied=damage_applied)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1762,6 +1765,7 @@ def power_post_damage():
 
 	body = {}
 	body['success'] = True
+	body['error_msgs'] = []
 	errors = {'error': False, 'error_msgs': []}
 	data = request.get_json()
 
@@ -1789,16 +1793,25 @@ def power_post_damage():
 	keyword = request.get_json()['keyword']
 	value_type = request.get_json()['value_type']
 	math = request.get_json()['math']
+	check = request.get_json()['check']
+	check_type = request.get_json()['check_type']
+	applied = request.get_json()['applied']
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
 	damage_type = db_multiple(Descriptor, damage_type)
 	descriptor = db_multiple(PowerDes, descriptor)
 
-	math = db_integer(math)
+	check = db_integer(PowerCheck, check)
+	check_type = db_integer(PowerCheckType, check_type)
+
+	math = db_integer(Math, math)
 
 	trait = integer(trait)
 	mod = integer(mod)
+
+	body = linked_ref(PowerCheck, check, 'Check', 'damage', body)
+	body = linked_ref(PowerCheckType, check_type, 'Check by Group', 'damage', body)
 
 	try:
 		entry = PowerDamage(power_id = power_id,
@@ -1812,7 +1825,10 @@ def power_post_damage():
 							descriptor = descriptor,
 							keyword = keyword,
 							value_type = value_type,
-							math = math)
+							math = math,
+							check = check,
+							check_type = check_type,
+							applied = applied)
 
 		db.session.add(entry)
 		db.session.commit()

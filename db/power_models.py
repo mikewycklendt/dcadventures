@@ -408,6 +408,7 @@ class PowerCheck(db.Model):
 	defenseless = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	touch = db.Column(db.Boolean)
 	target_type = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 	
 	
 	def format(self):
@@ -460,7 +461,8 @@ class PowerCheck(db.Model):
 			'consequence_target': self.consequence_target,
 			'defenseless': self.defenseless,
 			'touch': self.touch,
-			'target_type': self.target_type
+			'target_type': self.target_type,
+			'damage': self.damage
 		}
 
 
@@ -1668,7 +1670,10 @@ class PowerDamage(db.Model):
 	value_type = db.Column(db.String())
 	math = db.Column(db.Integer, db.ForeignKey('math.id'))
 	effect = db.Column(db.Boolean)
-	
+	check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	applied = db.Column(db.String())
+
 	def format(self):
 		return {
 			'id': self.id,
@@ -1687,7 +1692,10 @@ class PowerDamage(db.Model):
 			'value_type': self.value_type,
 			'math': self.math,
 			'effect': self.effect,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'check': self.check,
+			'check_type': self.check_type,
+			'applied': applied
 		}
 
 

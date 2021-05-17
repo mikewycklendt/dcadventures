@@ -136,7 +136,31 @@
 	
 	<div id="damage-button-row">
 		<div>
+			<select class="check-entry" id="damage_check" name="damage_check">
+				<option value="">Applies to Check</option>
+				<option value="">Use Check Form to Put Options Here</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
+		
+		<div>
+			<select class="select-entry check-title-entry" id="damage_check_type" name="damage_check_type">
+				<option value="">Applies to Check Group</option>
+				<option value="">Use Check Form to Put Options Here</option>
+				{% for p in power_check_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select> 
+		</div>
 
+		<div>
+			<select class="select-entry" id="damage_applied" name="damage_applied">
+				{% for d in damage_applied %}
+					<option value="{{d.type}}">{{d.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>

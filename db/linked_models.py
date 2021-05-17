@@ -165,6 +165,7 @@ class PowerCheckType(db.Model):
 	effect = db.Column(db.Boolean)
 	chained = db.Column(db.Boolean)
 	multiple = db.Column(db.String())
+	damage = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -173,7 +174,8 @@ class PowerCheckType(db.Model):
 			'power_id': self.power_id,
 			'effect': self.effect,
 			'chained': self.chained,
-			'multiple': self.multiple
+			'multiple': self.multiple,
+			'damage': self.damage
 		}
 
 class PowerCircType(db.Model):

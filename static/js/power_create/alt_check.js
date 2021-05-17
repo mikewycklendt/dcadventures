@@ -135,6 +135,7 @@ function check_submit() {
 	const select_entry = 'check-entry';
 	const selects = 'check-sml';
 	const selects_title = 'check-title-sml';
+	const title_entry = 'check-title-entry'
 
 	const route = '/power/check/delete/'
 
@@ -212,6 +213,7 @@ function check_submit() {
 
 			if (add_title == true) {
 				selects_add(title_id, title_name, selects_title);
+				selects_add(title_id, title_name, title_entry);
 			}
 
 			check_grid.columns.length = 0;

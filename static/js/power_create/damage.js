@@ -57,6 +57,9 @@ function damage_submit() {
 	const keyword = text("damage_keyword")
 	const value_type = select("dam_value_type");
 	const math = select("dam_math")
+	const check = select("damage_check");
+	const check_type = select("damage_check_type");
+	const applied = select("damage_applied");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -82,7 +85,10 @@ function damage_submit() {
 			'font': font,
 			'keyword': keyword,
 			'value_type': value_type,
-			'math': math
+			'math': math,
+			'check': check,
+			'check_type': check_type,
+			'applied': applied
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
