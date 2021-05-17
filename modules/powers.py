@@ -354,7 +354,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	limited = [{'type': '', 'name': 'Enhanced While'}, {'type': 'day', 'name': 'Daytime'}, {'type': 'night', 'name': 'Nightime'}, {'type': 'water', 'name': 'Underwater'}, {'type': 'emotion', 'name': 'Emotional State'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'other', 'name': 'Other Condition'}]
 
-	limited_type = [{'type': '', 'name': 'Limited'}, {'type': 'task_type', 'name': 'By Task Type'}, {'type': 'task', 'name': 'To All Tasks but One'}, {'type': 'trait', 'name': 'Against Trait'}, {'type': 'descriptor', 'name': 'Against Descriptor'}, {'type': 'subjects', 'name': 'To Number of Subjects'}, {'type': 'extra', 'name': 'To Extra Effect'}, {'type': 'degree', 'name': 'To Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'others', 'name': 'To Others'}, {'type': 'objects', 'name': 'To Objects'}, {'type': 'half', 'name': 'To Half Effect'}, {'type': 'lang', 'name': 'To Common Language'}, {'type': 'language', 'name': 'Against Different Language'}, {'type': 'material', 'name': 'To Material'}]
+	limited_type = [{'type': '', 'name': 'Limited'}, {'type': 'task_type', 'name': 'By Task Type'}, {'type': 'task', 'name': 'To All Tasks but One'}, {'type': 'trait', 'name': 'Against Trait'}, {'type': 'descriptor', 'name': 'Against Descriptor'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'level', 'name': 'Against Level'}, {'type': 'to_level', 'name': 'To Level'}, {'type': 'subjects', 'name': 'To Number of Subjects'}, {'type': 'extra', 'name': 'To Extra Effect'}, {'type': 'degree', 'name': 'To Degree of Success'}, {'type': 'sense', 'name': 'To Sense'},  {'type': 'range', 'name': 'To Range'}, {'type': 'ground', 'name': 'To Ground Type'}, {'type': 'family', 'name': 'To Family'}, {'type': 'org', 'name': 'To Organization'}, {'type': 'creature', 'name': 'To Creature'}, {'type': 'env', 'name': 'To Environment'}, {'type': 'day', 'name': 'To Daytime'}, {'type': 'night', 'name': 'To Nightime'}, {'type': 'emotion', 'name': 'To Emotion'}, {'type': 'self', 'name': 'To Self'}, {'type': 'others', 'name': 'To Others'}, {'type': 'objects', 'name': 'To Objects'}, {'type': 'half', 'name': 'To Half Effect'}, {'type': 'material', 'name': 'To Material'}, {'type': 'lang', 'name': 'To Common Language'}, {'type': 'language', 'name': 'Against Different Language'}, {'type': 'complication', 'name': 'Triggers Complication'}, {'type': 'other', 'name': 'Other'}]
 	
 	materials = [{'type': '', 'name': 'Materials'}, {'type': 'with', 'name': 'With Materials'}, {'type': 'improper', 'name': 'Improper Materials'}, {'type': 'none', 'name': 'No Materials'}]
 
@@ -2410,6 +2410,7 @@ def power_post_mod():
 	area_descriptor = request.get_json()['area_descriptor']
 	limited_type = request.get_json()['limited_type']
 	limited_mod = request.get_json()['limited_mod']
+	limited_level_degree = request.get_json()['limited_level_degree']
 	limited_level = request.get_json()['limited_level']
 	limited_source = request.get_json()['limited_source']
 	limited_task_type = request.get_json()['limited_task_type']
@@ -2426,6 +2427,7 @@ def power_post_mod():
 	limited_subsense = request.get_json()['limited_subsense']
 	limited_sense_depend = request.get_json()['limited_sense_depend']
 	limited_descriptor = request.get_json()['limited_descriptor']
+	limited_range_type = request.get_json()['limited_range_type']
 	limited_range = request.get_json()['limited_range']
 	limited_ground = request.get_json()['limited_ground']
 	limited_creature = request.get_json()['limited_creature']
@@ -2497,7 +2499,7 @@ def power_post_mod():
 	limited_level = db_integer(Levels, limited_level)
 	limited_extra = db_integer(Extra, limited_extra)
 	limited_sense = db_integer(Sense, limited_sense)
-	limited_range = db_integer(Range, limited_range)
+	limited_range = db_integer(PowerRanged, limited_range)
 	side_level = db_integer(Levels, side_level)
 	limited_ground = db_integer(Ground, limited_ground)
 	limited_material = db_integer(Material, limited_material)
@@ -2593,6 +2595,7 @@ def power_post_mod():
 							area_descriptor = area_descriptor,
 							limited_type = limited_type,
 							limited_mod = limited_mod,
+							limited_level_degree = limited_level_degree,
 							limited_level = limited_level,
 							limited_source = limited_source,
 							limited_task_type = limited_task_type,
@@ -2609,6 +2612,7 @@ def power_post_mod():
 							limited_subsense = limited_subsense,
 							limited_sense_depend = limited_sense_depend,
 							limited_descriptor = limited_descriptor,
+							limited_range_type = limited_range_type,
 							limited_range = limited_range,
 							limited_ground = limited_ground,
 							limited_creature = limited_creature,

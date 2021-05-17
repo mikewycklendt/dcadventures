@@ -73,28 +73,27 @@ function mod_limited_trait() {
 }
 
 function mod_limited_type() {
-	const options = [{'val': 'trait', 'div': 'mod-limited-trait'},
-					{'val': 'other', 'div': 'mod-limited-description'},
-					{'val': 'subjects', 'div': 'mod-limited-subjects'},
-					{'val': 'extra', 'div': 'mod-limited-extra'},
-					{'val': 'language', 'div': 'mod-limited-language'},
-					{'val': 'degree', 'div': 'mod-limited-degree'},
-					{'val': 'sense', 'div': 'mod-limited-sense'},
-					{'val': 'range', 'div': 'mod-limited-range'},
-					{'val': 'descriptor', 'div': 'mod-limited-descriptor'},
-					{'val': 'task', 'div': 'mod-limited-task'},
-					{'val': 'task_type', 'div': 'mod-limited-task-type'},
-					{'val': 'source', 'div': 'mod-limited-source'},
-					{'val': 'level', 'div': 'mod-limited-level'},
-					{'val': 'ground', 'div': 'mod-limited-ground'},
-					{'val': 'creature', 'div': 'mod-limited-creature'},
-					{'val': 'env', 'div': 'mod-limited-env'},
-					{'val': 'emotion', 'div': 'mod-limited-emotion'},
-					{'val': 'material', 'div': 'mod-limited-material'},
-					{'val': 'org', 'div': 'mod-limited-org'}];
+	const options = [{'val': ['trait'], 'div': 'mod-limited-trait'},
+					{'val': ['other'], 'div': 'mod-limited-description'},
+					{'val': ['subjects'], 'div': 'mod-limited-subjects'},
+					{'val': ['extra'], 'div': 'mod-limited-extra'},
+					{'val': ['degree'], 'div': 'mod-limited-degree'},
+					{'val': ['sense'], 'div': 'mod-limited-sense'},
+					{'val': ['range'], 'div': 'mod-limited-range'},
+					{'val': ['descriptor'], 'div': 'mod-limited-descriptor'},
+					{'val': ['task'], 'div': 'mod-limited-task'},
+					{'val': ['task_type'], 'div': 'mod-limited-task-type'},
+					{'val': ['source'], 'div': 'mod-limited-source'},
+					{'val': ['level', 'to_level'], 'div': 'mod-limited-level'},
+					{'val': ['ground'], 'div': 'mod-limited-ground'},
+					{'val': ['creature'], 'div': 'mod-limited-creature'},
+					{'val': ['env'], 'div': 'mod-limited-env'},
+					{'val': ['emotion'], 'div': 'mod-limited-emotion'},
+					{'val': ['material'], 'div': 'mod-limited-material'},
+					{'val': ['org'], 'div': 'mod-limited-org'}];
 	const field = 'mod_limited_type';
 
-	select_opacity(field, options);
+	select_opacity_shared(field, options);
 }
 
 function mod_limited_sense() {
@@ -428,6 +427,7 @@ function mod_submit() {
 	const area_descriptor = select("mod_area_descriptor");
 	const limited_type = select("mod_limited_type");
 	const limited_mod = select("mod_limited_mod");
+	const limited_level_degree = select("mod_limited_level_degree");
 	const limited_level = select('mod_limited_level');
 	const limited_source = select("mod_limited_source");
 	const limited_task_type = select("mod_limited_task_type");
@@ -444,6 +444,7 @@ function mod_submit() {
 	const limited_subsense = select("mod_limited_subsense");
 	const limited_sense_depend = check("mod_limited_sense_depend");
 	const limited_descriptor = select("mod_limited_descriptor");
+	const limited_range_type = select("mod_limited_range_type");
 	const limited_range = select("mod_limited_range");
 	const limited_ground = select("mod_limited_ground");
 	const limited_creature = select("mod_limited_creature");
@@ -546,6 +547,7 @@ function mod_submit() {
 			'area_descriptor': area_descriptor,
 			'limited_type': limited_type,
 			'limited_mod': limited_mod,
+			'limited_level_degree': limited_level_degree,
 			'limited_level': limited_level,
 			'limited_source': limited_source,
 			'limited_task_type': limited_task_type,
@@ -562,6 +564,7 @@ function mod_submit() {
 			'limited_subsense': limited_subsense,
 			'limited_sense_depend': limited_sense_depend,
 			'limited_descriptor': limited_descriptor,
+			'limited_range_type': limited_range_type,
 			'limited_range': limited_range,
 			'limited_ground': limited_ground,
 			'limited_creature': limited_creature,

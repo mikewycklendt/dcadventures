@@ -442,6 +442,14 @@
 			<div id="mod-limited-level">
 
 				<div>
+					<select class="select-sml" id="mod_limited_level_degree" name="mod_limited_level_degree">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
 					<select class="level-type-sml" id="mod_limited_level_type" name="mod_limited_level_type" onchange="mod_limited_level_type()">
 						<option value="">Level Type</option>
 						{% for l in level_types %}
@@ -717,10 +725,21 @@
 			</div>
 
 			<div id="mod-limited-range">
+
 				<div>
-					<select class="select-sml" id="mod_limited_range" name="mod_limited_range">
-						{% for r in ranges %}
-							<option value="{{r.id}}">{{r.name}}</option>
+					<select class="select-sml" id="mod_limited_range_type" name="mod_limited_range_type">
+						{% for m in measure_type %}
+							<option value="{{m.type}}">{{m.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="ranged-sml" id="mod_limited_range" name="mod_limited_range">
+						<option value="">Range</option>
+						<option value="">Use Ranged Form to Put Options Here</option>
+						{% for p in power_ranged %}
+							<option value="{{p.id}}">{{p.name}}</option>
 						{% endfor %}
 					</select>
 				</div>

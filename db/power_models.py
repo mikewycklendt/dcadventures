@@ -1957,6 +1957,7 @@ class PowerMod(db.Model):
 	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
+	limited_level_degree = db.Column(db.String())
 	limited_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
 	limited_source = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_task_type = db.Column(db.String())
@@ -1973,7 +1974,8 @@ class PowerMod(db.Model):
 	limited_subsense = db.Column(db.String())
 	limited_sense_depend = db.Column(db.Boolean)
 	limited_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
-	limited_range = db.Column(db.Integer, db.ForeignKey('range.id'))
+	limited_range_type = db.Column(db.String())
+	
 	limited_ground = db.Column(db.Integer, db.ForeignKey('ground.id'))
 	limited_creature =  db.Column(db.Integer, db.ForeignKey('creature.id'))
 	limited_creature_narrow =  db.Column(db.Integer, db.ForeignKey('creature_narrow.id'))
@@ -2069,6 +2071,7 @@ class PowerMod(db.Model):
 			'area_descriptor': self.area_descriptor,
 			'limited_type': self.limited_type,
 			'limited_mod': self.limited_mod,
+			'limited_level_degree': self.limited_level_degree,
 			'limited_level': self.limited_level,
 			'limited_source': self.limited_source,
 			'limited_task_type': self.limited_task_type,
@@ -2085,6 +2088,7 @@ class PowerMod(db.Model):
 			'limited_subsense': self.limited_subsense,
 			'limited_sense_depend': self.limited_sense_depend,
 			'limited_descriptor': self.limited_descriptor,
+			'limited_range_type': self.limited_range_type,
 			'limited_range': self.limited_range,
 			'limited_ground': self.limited_ground,
 			'limited_creature': self.limited_creature,

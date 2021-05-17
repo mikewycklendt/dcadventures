@@ -825,6 +825,7 @@ def mod_post_errors(data):
 	area_descriptor = data['area_descriptor']
 	limited_type = data['limited_type']
 	limited_mod = data['limited_mod']
+	limited_level_degree = data['limited_level_degree']
 	limited_level = data['limited_level']
 	limited_source = data['limited_source']
 	limited_task_type = data['limited_task_type']
@@ -840,6 +841,7 @@ def mod_post_errors(data):
 	limited_sense = data['limited_sense']
 	limited_subsense = data['limited_subsense']
 	limited_descriptor = data['limited_descriptor']
+	limited_range_type = data['limited_range_type']
 	limited_range = data['limited_range']
 	limited_ground = data['limited_ground']
 	limited_creature = data['limited_creature']
@@ -908,7 +910,7 @@ def mod_post_errors(data):
 	errors = id_check(Levels, limited_level, 'level', errors)
 	errors = id_check(Extra, limited_extra, 'extra', errors)
 	errors = id_check(Sense, limited_sense, 'sense', errors)
-	errors = id_check(Range, limited_range, 'range', errors)
+	errors = id_check(PowerRsnged, limited_range, 'range', errors)
 	errors = id_check(Levels, side_level, 'level', errors)
 	errors = id_check(Ground, limited_ground, 'Ground Type', errors)
 	errors = id_check(Creature, limited_creature, 'Creature', errors)
@@ -972,8 +974,9 @@ def mod_post_errors(data):
 	errors = variable_fields('sense', 'Limited by Sense', limited_type, [limited_sense], errors)
 	errors = variable_field('sense', limited_type, 'Sense', limited_sense, errors)
 
-	errors = variable_fields('range', 'Limited by Range', limited_type, [limited_range], errors)
+	errors = variable_fields('range', 'Limited by Range', limited_type, [limited_range, limited_range_type], errors)
 	errors = variable_field('range', limited_type, 'Range', limited_range, errors)
+	errors = variable_field('range', limited_type, 'Range', limited_range_type, errors)
 
 	errors = variable_fields('source', 'Requires Descriptor', limited_type, [limited_source], errors)
 	errors = variable_field('source', limited_type, 'Required Descriptor', limited_source, errors)
@@ -981,8 +984,14 @@ def mod_post_errors(data):
 	errors = variable_fields('other', 'Limited by Other', limited_type, [limited_description], errors)
 	errors = variable_field('other', limited_type, 'Other Factor', limited_description, errors)
 
-	errors = variable_fields('level', 'Limited by Level', limited_type, [limited_level], errors)
+	errors = variable_fields('level', 'Limited by Level', limited_type, [limited_mod, limited_level_degree, limited_level], errors)
 	errors = variable_field('level', limited_type, 'Level', limited_level, errors)
+	errors = variable_field('level', limited_type, 'Level Degree', limited_level_degree, errors)
+	errors = variable_field('level', limited_type, 'Modifier', limited_mod, errors)
+	
+	errors = variable_fields('to_level', 'Limited to Level', limited_type, [limited_level_degree, limited_level], errors)
+	errors = variable_field('level', limited_type, 'Level', limited_level, errors)
+	errors = variable_field('level', limited_type, 'Level Degree', limited_level_degree, errors)
 
 	errors = variable_fields('ground', 'Limited by Ground Type', limited_type, [limited_ground], errors)
 	errors = variable_field('ground', limited_type, 'Ground Type', limited_ground, errors)
