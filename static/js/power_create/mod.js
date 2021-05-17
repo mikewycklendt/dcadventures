@@ -374,7 +374,7 @@ function mod_adv() {
 	check_drop(check, div, entry);
 }
 
-function mod_precise_type() {
+function mod_precise() {
 	const check = 'mod_precise';
 	const div = 'mod-precise';
 	const entry = 'mod-entry';
