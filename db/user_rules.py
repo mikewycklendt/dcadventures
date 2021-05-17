@@ -224,3 +224,4 @@ class NarrowCreature(db.Model):
 			'approved': self.approved,
 			'show': self.show
 		}	
+

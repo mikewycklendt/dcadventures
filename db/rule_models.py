@@ -472,6 +472,8 @@ class Material(db.Model):
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	show = db.Column(db.Boolean)
+	approved = db.Column(db.Boolean)
 	
 	def format(self):
 		return {
@@ -483,7 +485,10 @@ class Material(db.Model):
 			'any': self.any,
 			'var': self.var,
 			'none': self.none,
-			'hide': self.hide
+			'hide': self.hide,
+			'show': self.show,
+			'approved': self.approved
+
 		}
 
 class Complex(db.Model):

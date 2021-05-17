@@ -68,7 +68,7 @@ def materials_create():
 		name = material['name']
 		toughness = material['toughness']
 
-		entry = Material(name=name, toughness=toughness)
+		entry = Material(name=name, toughness=toughness, show=True)
 		db.session.add(entry)
 		db.session.commit()
 
