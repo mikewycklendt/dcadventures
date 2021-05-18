@@ -442,37 +442,47 @@
 			</select>
 		</div>
 
-		<div>
-			<select class="select-sml" id="char_appear_target" name="char_appear_target">
-				{% for t in targets %}
-					<option value="{{t.type}}">{{t.name}}</option>
-				{% endfor %}
-			</select>
+		<div id="char-appear-quick">	
+			<div>
+				<div class="check-div-fit" style="font-size: 80%;">
+					<input type="checkbox" id="char_appear_costume" class="medium-checkbox med-checkbox" > Costume Only
+				</div>
+			</div>
 		</div>
 
-		<div id="char-appear-broad">
+		<div id="char-appear-form">
 			<div>
-				<select class="select-sml creature-sml" id="char_appear_creature" name="char_appear_creature" onchange="char_appear_creature()">
-					<option value="">Broad Form</option>
-					<option value="x">Variable</option>
-					<option value="other">Other Creature</option>
-					<option value="20">Machine</option>
-					<option value="21">Humanoid</option>
-					{% for c in creatures %}
-						<option value={{c.id}}>{{c.name}}</option>
+				<select class="select-sml" id="char_appear_target" name="char_appear_target">
+					{% for t in targets %}
+						<option value="{{t.type}}">{{t.name}}</option>
 					{% endfor %}
 				</select>
 			</div>
-
-			<div id="char-appear-narrow">
-				<select class="select-sml creature-narrow-sml" id="char_appear_creature_narrow" name="char_appear_creature_narrow" onchange="char_appear_creature_narrow()">
-					<option value="">Narrow Creature</option>
-				</select>
+	
+			<div id="char-appear-broad">
+				<div>
+					<select class="select-sml creature-sml" id="char_appear_creature" name="char_appear_creature" onchange="char_appear_creature()">
+						<option value="">Broad Form</option>
+						<option value="x">Variable</option>
+						<option value="other">Other Creature</option>
+						<option value="20">Machine</option>
+						<option value="21">Humanoid</option>
+						{% for c in creatures %}
+							<option value={{c.id}}>{{c.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+	
+				<div id="char-appear-narrow">
+					<select class="select-sml creature-narrow-sml" id="char_appear_creature_narrow" name="char_appear_creature_narrow" onchange="char_appear_creature_narrow()">
+						<option value="">Narrow Creature</option>
+					</select>
+				</div>
 			</div>
-		</div>
-
-		<div id="char-appear-single">
-			<input type="text" id="char_appear_des" name="char_appear_des" placeholder="Description">
+	
+			<div id="char-appear-single">
+				<input type="text" id="char_appear_des" name="char_appear_des" placeholder="Description">
+			</div>	
 		</div>
 
 	</div>

@@ -109,26 +109,34 @@ trait amount
 	transition: all .4s ease-out;
 }
 
+
 #char-appear {
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 25% 20% 55%;
+	grid-template-columns: 18% 15% 65%;
 	grid-auto-rows: auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
 }
 
-#char-appear {
+#char-appear-form {
 	display: none;
 	width: 98%;
-	gap: 3px;
-	grid-template-columns: 18% 15% 15% 50%;
-	grid-auto-rows: auto;
-	max-height: 0;
-	overflow: hidden;
-	transition: all .4s ease-out;
+	opacity: 0%;
+	transition: all .3s;
+	grid-template-columns: 30% 70%;
+	gap: .3vw;
+}
+
+#char-appear-quick {
+	display: none;
+	width: 98%;
+	opacity: 0%;
+	transition: all .3s;
+	grid-template-columns: 50% 50%;
+	gap: .3vw;
 }
 
 #char-appear-creature-other {

@@ -248,10 +248,15 @@ function char_appear_form() {
 	const text = ['char_appear_des'];
 	const other = [{'val': 'other', 'div': 'char-appear-creature-other'}];
 	const entry = 'char-entry';
+	const checks = ["char_appear_costume"];
+	const base = [{'val': ['broad', 'narrow', 'single'], 'div': 'char-appear-form'},
+					{'val': ['quick'], 'div': 'char-appear-quick'}];
 
+	uncheck_all(checks);
 	select_maxheight_entry(select, other, entry);
 	reset_all(fields);
 	reset_text(text);
+	select_opacity_shared(select, base);
 	select_opacity_shared(select, options);
 }
 
@@ -313,6 +318,7 @@ function char_submit() {
 	const appear_creature = select("char_appear_creature")
 	const appear_creature_narrow = select("char_appear_creature_narrow")
 	const appear_creature_other = text("char_appear_creature_other");
+	const appear_costume = check("char_appear_costume");
 	const insub_type = select("char_insub_type");
 	const insub_description = text("char_insub_des");
 	const cost = select("char_cost");
@@ -380,6 +386,7 @@ function char_submit() {
 			'appear_creature': appear_creature,
 			'appear_creature_narrow': appear_creature_narrow,
 			'appear_creature_other': appear_creature_other,
+			'appear_costume': appear_costume,
 			'insub_type': insub_type,
 			'insub_description': insub_description,
 			'cost': cost,

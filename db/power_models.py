@@ -1446,6 +1446,7 @@ class PowerChar(db.Model):
 	appear_description = db.Column(db.String())
 	appear_creature = db.Column(db.Integer, db.ForeignKey('creature.id'))
 	appear_creature_narrow = db.Column(db.Integer, db.ForeignKey('creature_narrow.id'))
+	appear_costume = db.Column(db.Boolean)
 	insub_type = db.Column(db.String())
 	insub_description = db.Column(db.String())
 	cost = db.Column(db.Integer, db.ForeignKey('power_cost.id'))	
@@ -1506,6 +1507,7 @@ class PowerChar(db.Model):
 			'appear_description': self.appear_description,
 			'appear_creature': self.appear_creature,
 			'appear_creature_narrow': self.appear_creature_narrow,
+			'appear_costume': self.appear_costume,
 			'insub_type': self.insub_type,
 			'insub_description': self.insub_description,
 			'cost': self.cost,

@@ -232,7 +232,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	all_traits = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'advantage', 'name': 'Advantage'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}]
 
-	appear_form = [{'type': '', 'name': 'Form'}, {'type': 'single', 'name': 'Single'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'broad', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
+	appear_form = [{'type': '', 'name': 'Form'}, {'type': 'quick', 'name': 'Quick Change'}, {'type': 'single', 'name': 'Single Form'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'broad', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
 
 	aquatic = [{'type': '', 'name': 'Aquatic Type'}, {'type': 'surface', 'name': 'Surface'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'bpth', 'name': 'Both'}]
 
@@ -1412,6 +1412,7 @@ def power_post_character():
 	appear_creature = request.get_json()['appear_creature']
 	appear_creature_narrow = request.get_json()['appear_creature_narrow']
 	appear_creature_other = request.get_json()['appear_creature_other']
+	appear_costume = request.get_json()['appear_costume']
 	insub_type = request.get_json()['insub_type']
 	insub_description = request.get_json()['insub_description']
 	cost = request.get_json()['cost']
@@ -1506,6 +1507,7 @@ def power_post_character():
 							appear_description = appear_description,
 							appear_creature = appear_creature,
 							appear_creature_narrow = appear_creature_narrow,
+							appear_costume = appear_costume,
 							insub_type = insub_type,
 							insub_description = insub_description,
 							cost = cost,

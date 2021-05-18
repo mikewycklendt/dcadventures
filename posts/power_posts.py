@@ -110,6 +110,7 @@ def character_post(entry, body, cells):
 	appear_description = entry.appear_description
 	appear_creature = entry.appear_creature
 	appear_creature_narrow = entry.appear_creature_narrow
+	appear_costume = entry.appear_costume
 	insub_type = entry.insub_type
 	insub_description = entry.insub_description
 	cost = entry.cost
@@ -151,7 +152,7 @@ def character_post(entry, body, cells):
 	traits_select = [{'type': '', 'name': 'Trait Type'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'extra', 'name': 'Power Extra'}]
 	weaken_broad = selects(weaken_broad, traits_select)
 
-	appear_form_select = [{'type': '', 'name': 'Form'}, {'type': 'single', 'name': 'Single'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'creature', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
+	appear_form_select = [{'type': '', 'name': 'Form'}, {'type': 'quick', 'name': 'Quick Change'}, {'type': 'single', 'name': 'Single Form'}, {'type': 'narrow', 'name': 'Narrow Form'}, {'type': 'creature', 'name': 'Broad Form'}, {'type': 'any', 'name': 'Any Form of Same Mass'}]
 	appear_form = selects(appear_form, appear_form_select)
 
 	value = integer_convert(value)
@@ -220,6 +221,7 @@ def character_post(entry, body, cells):
 	new_mod = mod_cell('Broad Form', 12, [appear_creature], new_mod)
 	new_mod = mod_cell('Narrow Form', 15, [appear_creature_narrow], new_mod)
 	new_mod = mod_cell('Description:', 11, [appear_description], new_mod)
+	new_mod = mod_cell('Limited to Costume', 20, [appear_costume], new_mod)
 	body = mod_add(appear, new_mod, body)
 
 	cells = check_cell('Metamorph', 12, meta, cells, True)
