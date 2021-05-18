@@ -675,6 +675,7 @@ def check_trigger_select():
 		options.append({'id': 'after', 'name': 'After Consequence Happens'})
 
 	print(body)
+	body['options'] = options
 	return jsonify(body)
 		
 
