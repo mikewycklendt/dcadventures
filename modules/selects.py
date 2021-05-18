@@ -329,10 +329,8 @@ def vehicle_equipment_select():
 		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
 		equipment = db.session.query(Equipment).filter(Equipment.type_id == type_id, Equipment.show == True).order_by(Equipment.name).all()
 		options.append({'id': '', 'name': equip_type.name})
-		if add:
-			for special in add_options:
-				options.append(special)
-		if sub == 'variable-equip':
+		
+		if sub == 'variable-equip' or sub == 'variable':
 			var = db.session.query(Equipment).filter_by(var=True).first()
 			options.append({'id': e.id, 'name': e.name})
 		for e in equipment:
