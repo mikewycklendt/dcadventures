@@ -4736,11 +4736,11 @@ def power_post_move():
 	flight_conditions = db_multiple(Condition, flight_conditions)
 	condition = db_multiple(Condition, condition)
 
-	flight_equip_type = db_integer(EquipType, flight_equip_type)
+	flight_equip_type = db_integer(EquipType, flight_equip_type, True)
 	flight_equipment = db_integer(Equipment, flight_equipment)
 	ground_type = db_integer(Ground, ground_type)
 	dimension_descriptor = db_integer(PowerDes, dimension_descriptor)
-	equip_type = db_integer(EquipType, equip_type)
+	equip_type = db_integer(EquipType, equip_type, True)
 	equipment = db_integer(Equipment, equipment)
 	concealment_sense = db_integer(Sense, concealment_sense)
 	condition_circ_check = db_integer(Check, condition_circ_check)

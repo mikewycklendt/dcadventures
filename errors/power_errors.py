@@ -2535,11 +2535,11 @@ def power_move_post_errors(data):
 	errors = id_multiple(Condition, condition, 'Conditions', errors)
 	errors = id_multiple(Condition, flight_conditions, 'Flight Conditions', errors)
 	
-	errors = id_check(EquipType, flight_equip_type, 'Equipment Type', errors)
+	errors = id_check(EquipType, flight_equip_type, 'Equipment Type', errors, True)
 	errors = id_check(Equipment, flight_equipment, 'Equipment', errors)
 	errors = id_check(Ground, ground_type, 'Ground Type', errors)
 	errors = id_check(PowerDes, dimension_descriptor, 'Dimension Descriptor', errors)
-	errors = id_check(EquipType, equip_type, 'Equipment Type', errors)
+	errors = id_check(EquipType, equip_type, 'Equipment Type', errors, True)
 	errors = id_check(Equipment, equipment, 'Equipment', errors)
 	errors = id_check(Sense, concealment_sense, 'Sense', errors)
 	errors = id_check(Check, condition_circ_check, 'No Circumstance Check', errors)

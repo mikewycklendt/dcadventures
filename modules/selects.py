@@ -324,6 +324,11 @@ def vehicle_equipment_select():
 		if sub == 'feature':
 			options.append({'id': 'all', 'name': 'All Features'})
 
+	if type_id == 'x':
+		options.append({'id': 'x', 'name': 'Variable Equipment'})
+		body['options'] = options
+		return jsonify(body)
+
 	try:
 		type_id = int(type_id)
 		equip_type = db.session.query(EquipType).filter_by(id=type_id).one()
@@ -332,7 +337,7 @@ def vehicle_equipment_select():
 		
 		if sub == 'variable-equip' or sub == 'variable':
 			var = db.session.query(Equipment).filter_by(var=True).first()
-			options.append({'id': var.id, 'name': var.name})
+			options.append({'id': var.id, 'name': 'Variable ' + equip_type.name})
 		for e in equipment:
 			options.append({'id': e.id, 'name': e.name})
 	except:

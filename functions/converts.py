@@ -575,8 +575,12 @@ def db_multiple(table, multiple):
 
 	return (multiple)
 
-def db_integer(table, value):
+def db_integer(table, value, exception=False):
 	
+	if exception == True:
+		value = None
+		return (value)
+
 	if value == 'all':
 		try:
 			query = db.session.query(table).filter_by(all=True).first()
@@ -899,7 +903,7 @@ def id_multiple(table, multiple, name, errors):
 
 	return (errors)
 
-def id_check(table, value_id, name, errors):
+def id_check(table, value_id, name, errors, exception=False):
 	error_msgs = errors['error_msgs']
 	error = False
 	
@@ -930,6 +934,8 @@ def id_check(table, value_id, name, errors):
 			error_msgs.append(message)
 		db.session.close()
 	elif value_id == 'x':
+		if exception == True:
+			return (errors)
 		query = db.session.query(table).filter_by(var=True).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
@@ -1172,6 +1178,8 @@ def preset_convert(value, field):
 		preset = None
 
 	return (preset)
+
+def variable_none(table, value):
 
 
 def trait_select(value, trait):
