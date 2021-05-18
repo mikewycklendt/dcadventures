@@ -597,6 +597,7 @@
 						<div>
 							<select class="select-sml" id="move_flight_equip_type" name="move_flight_equip_type" onchange="move_flight_equip_type()">
 								<option value="">Equipment Type</option>
+								<option value="x">Variable Equipment</option>
 								{% for e in equip_type %}
 									<option value={{e.id}}>{{e.name}}</option>
 								{% endfor %}
@@ -960,6 +961,7 @@
 		<div>
 			<select class="select-sml" id="move_equip_type" name="move_equip_type" onchange="move_equip_type()">
 				<option value="">Equipment Type</option>
+				<option value="x">Variable Equipment</option>
 				{% for e in equip_type %}
 					<option value={{e.id}}>{{e.name}}</option>
 				{% endfor %}
