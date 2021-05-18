@@ -608,7 +608,7 @@ def get_subsense_select():
 
 
 @select.route('/select/check/trigger', methods=['POST'])
-def skill_trait_select():
+def check_trigger_select():
 	body = {}
 	body['success'] = True
 
