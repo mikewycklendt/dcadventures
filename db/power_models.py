@@ -1731,6 +1731,7 @@ class PowerDefense(db.Model):
 	cover_type = db.Column(db.Integer, db.ForeignKey('cover.id'))
 	immunity_consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
 	immunity_suffocate = db.Column(db.String())
+	immunity_fall_surface = db.Column(db.Boolean)
 	immunity_env = db.Column(db.String())
 	immunity_temp = db.Column(db.Integer, db.ForeignKey('environment_condition.id'))
 	immunity_extremity = db.Column(db.String())
@@ -1777,6 +1778,7 @@ class PowerDefense(db.Model):
 			'cover_type': self.cover_type,
 			'immunity_consequence': self.immunity_consequence,
 			'immunity_suffocate': self.immunity_suffocate,
+			'immunity_fall_surface': self.immunity_fall_surface,
 			'immunity_env': self.immunity_env,
 			'immunity_temp': self.immunity_temp,
 			'immunity_extremity': self.immunity_extremity,

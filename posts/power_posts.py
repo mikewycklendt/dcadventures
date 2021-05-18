@@ -620,6 +620,7 @@ def defense_post(entry, body, cells):
 	value = 'consequence'
 	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
 	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
+	new_mod = mod_cell('Requires Surface', 17, [immunity_fall_surface], new_mod, value)
 	value = 'env'
 	new_mod = mod_cell('Environment:', 14, [immunity_environment], new_mod, value)
 	new_mod = mod_cell('Environment Condition:', 22, [immunity_temp], new_mod, value)
