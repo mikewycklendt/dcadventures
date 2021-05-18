@@ -153,7 +153,7 @@
 
 #move-button-row {
 	display: grid;
-	grid-template-columns: 15% 20% 15% 25% 25%;
+	grid-template-columns: 20% 30% 15% 20% 15%;
 	width: 99%;
 	grid-template-rows: auto;
 }

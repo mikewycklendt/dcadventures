@@ -2477,7 +2477,7 @@ def power_move_post_errors(data):
 	conceal_opposed = data['conceal_opposed']
 	extended_actions = data['extended_actions']
 	mass_value = data['mass_value']
-
+	multiple = data['multiple']
 
 	errors = power_check(power_id, errors)
 	errors = id_check(Power, power_id, 'Power', errors)
@@ -3098,6 +3098,7 @@ def power_extra_post_errors(data):
 	errors = multiple_error(defense, 'Defensive Effect', PowerDefense, power_id, errors)
 	errors = multiple_error(sense, 'Sense Effect', PowerSenseEffect, power_id, errors)
 	errors = multiple_error(create, 'Create Effect', PowerCreate, power_id, errors)
+	errors = multiple_error(move, 'Movement Effect', PowerMove, power_id, errors)
 	
 	
 

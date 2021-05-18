@@ -237,13 +237,15 @@ class PowerMoveType(db.Model):
 	name = db.Column(db.String())
 	power_id = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	effect = db.Column(db.Boolean)
+	multiple = db.Column(db.String)
 
 	def format(self):
 		return {
 			'id': self.id,
 			'name': self.name,
 			'power_id': self.power_id,
-			'effect': self.effect
+			'effect': self.effect,
+			'multiple': self.multiple
 		}
 
 class PowerOpposedType(db.Model):

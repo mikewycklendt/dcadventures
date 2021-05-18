@@ -444,7 +444,7 @@ function move_submit() {
 	const extended_actions = select("move_extended_actions");
 	const mass_value = select("move_mass_value");
 	const trackless = check("move_trackless");
-
+	const multiple = select("move_multiple");
 	const cost = select("move_cost");
 	const ranks = select("move_ranks");
 	
@@ -564,7 +564,8 @@ function move_submit() {
 			'mass_value': mass_value,
 			'cost': cost,
 			'ranks': ranks,
-			'trackless': trackless
+			'trackless': trackless,
+			'multiple': multiple
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -574,6 +575,8 @@ function move_submit() {
 	.then(jsonResponse => {
 		console.log(jsonResponse)
 		if (jsonResponse.success) {
+
+			extra_effect_check(jsonResponse);
 
 			const id = jsonResponse.id;
 			const title_name = jsonResponse.title;

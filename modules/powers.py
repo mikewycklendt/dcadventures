@@ -376,6 +376,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	move_distance = [{'type': '', 'name': 'Distance Type'}, {'type': 'rank', 'name': 'Rank Value'}, {'type': 'unit', 'name': 'Unit Value'}, {'type': 'unit_math', 'name': 'Unit Math'}, {'type': 'rank_math', 'name': 'Rank Math'}]
 
+	move_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All Take Effect'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Power'}]
+
 	move_objects = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'x', 'name': 'Variable'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 
 	moveable = [{'type': '', 'name': 'Moveable With'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'immoveable', 'name': 'Immoveable'}, {'type': 'check', 'name': 'Check'}]
@@ -568,7 +570,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
-											damage_applied=damage_applied, precise_type=precise_type)
+											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -4656,7 +4658,7 @@ def power_post_move():
 	extended_actions = request.get_json()['extended_actions']
 	mass_value = request.get_json()['mass_value']
 	trackless = request.get_json()['trackless']
-
+	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
 	ranks = request.get_json()['ranks']
 
@@ -4862,7 +4864,8 @@ def power_post_move():
 						mass_value = mass_value,
 						cost = cost,
 						ranks =  ranks,
-						trackless = trackless
+						trackless = trackless,
+						multiple = multiple
 					)			
 
 

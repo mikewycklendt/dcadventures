@@ -1033,6 +1033,11 @@
 
 	<div id="move-button-row">
 		<div>
+			<select class="select-entry" id="move_multiple" name="move_multiple">
+				{% for m in move_multiple %}
+					<option value="{{m.type}}">{{m.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
 
 		<div>

@@ -2862,10 +2862,12 @@ def power_move_post(entry, body, cells):
 	cost = entry.cost
 	ranks = entry.ranks
 	trackless = entry.trackless
-
+	multiple = entry.multiple
 
 	title_name = get_name(PowerMoveType, title)
 	body['title'] = title_name
+
+	body = one_multiple(PowerMove, power_id, body)
 
 	degree = get_keyword(PowerDegree, degree)
 	circ = get_keyword(PowerCirc, circ)
@@ -2982,6 +2984,8 @@ def power_move_post(entry, body, cells):
 	move_objects_select = [{'type': '', 'name': 'Direction'}, {'type': 'all', 'name': 'All Directions'}, {'type': 'x', 'name': 'Variable'}, {'type': 'vertical', 'name': 'Up and Down'}, {'type': 'horizontal', 'name': 'Towards and Away'}, {'type': 'attract', 'name': 'Attraction'}, {'type': 'repel', 'name': 'Repulsion'}]
 	objects_direction = selects(objects_direction, move_objects_select)
 
+	move_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All Take Effect'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Power'}]
+	multiple = selects(multiple, move_multiple)
 
 	cells = cell('Keyword', 18, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -3097,6 +3101,8 @@ def power_move_post(entry, body, cells):
 	cells = circ_cell('Degree', 7, degree_value, cells, body)
 	cells = circ_cell('DC', 5, dc_value, cells, body)
 	cells = circ_cell('Circ', 6, circ_value, cells, body)
+
+	cells = circ_cell('Multiple', 'If Multiple', 10, multiple, cells, body)
 
 	cells = circ_cell('Cost', 'Cost', 5, cost, cells, body)
 	
