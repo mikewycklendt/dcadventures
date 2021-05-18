@@ -112,7 +112,8 @@ function defense_immunity_type() {
 					{'val': ['env'], 'div': 'defense-immunity-env'},
 					{'val': ['condition_attack', 'condition_effect'], 'div': 'defense-immunity-condition'},
 					{'val': ['life'], 'div': 'defense-immunity-life'},
-					{'val': ['emotion'], 'div': 'defense-immunity-emotion'}]
+					{'val': ['emotion'], 'div': 'defense-immunity-emotion'},
+					{'val': ['eat'], 'div': 'defense-immunity-eat'}]
 
 	select_opacity_shared(select, options);
 }
