@@ -26,6 +26,7 @@ const skill_icon_select = '/select/icon/skill';
 const ability_icon_select = '/select/icon/ability';
 
 const variable_sub = 'variable';
+const all_var_sub = 'all-var';
 const any_var_sub = 'any-var';
 const other_var_sub = 'variable-other';
 

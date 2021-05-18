@@ -589,8 +589,9 @@ def get_subsense_select():
 		variable_sense = 'Variable ' + sense.name
 
 		if sense_id != 12:
-			options.append({'id': 'all', 'name': all_sense})
-			options.append({'id': 'x', 'name': variable_sense})
+			if sub == 'all-var' or sub == 'sense':
+				options.append({'id': 'all', 'name': all_sense})
+				options.append({'id': 'x', 'name': variable_sense})
 
 		for subsense in subsenses:
 			options.append({'id': subsense.id, 'name': subsense.name})

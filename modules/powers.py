@@ -316,13 +316,9 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	directions = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'horiz', 'name': 'Horizontal'}, {'type': 'all', 'name': 'All Directions'}]
 
-	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'}, {'type': 'swing', 'name': 'Swing'},]
+	direction = [{'type': '', 'name': 'Direction'}, {'type': 'vert', 'name': 'Vertical'}, {'type': 'hor', 'name': 'Horizontal'}, {'type': 'both', 'name': 'both'}, {'type': 'swim', 'name': 'Swim'}, {'type': 'jump', 'name': 'Jump'}, {'type': 'swing', 'name': 'Swing'}, {'type': 'climb', 'name': 'Climb'}]
 
 	emotion_type = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'option', 'name': 'Optional'}]
-
-	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'add', 'name': 'Add'}]
-
-	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}, {'type': 'effect', 'name': 'Effect'}]
 
@@ -333,6 +329,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	environment_immunity = [{'type': '', 'name': 'Type'}, {'type': 'env', 'name': 'Environment'}, {'type': 'condition', 'name': 'Environment Condition'}]
 
 	equipment_use = [{'type': '', 'name': 'Use Type'}, {'type': 'use', 'name': 'With Use of'}, {'type': 'resist', 'name': 'Resist'}]
+
+	extra_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'over', 'name': 'Overwrite All'}, {'type': 'form', 'name': 'Overwrite Used Forms'}, {'type': 'filled', 'name': 'Overwrite Filled'}, {'type': 'required', 'name': 'Overwrites Required'}, {'type': 'uncheck', 'name': 'Checked = Unchecked'}, {'type': 'add', 'name': 'Add'}]
+
+	extra_change = [{'type': '', 'name': 'Target Type'}, {'type': 'over', 'name': 'Overwrites'}, {'type': 'add', 'name': 'In Addition'}]
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 

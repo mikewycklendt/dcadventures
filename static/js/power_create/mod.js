@@ -100,7 +100,7 @@ function mod_limited_sense() {
 	const select = 'mod_limited_sense';
 	const fill = 'mod_limited_subsense';
 
-	id_select(select, fill, subsense_select);
+	id_select(select, fill, subsense_select, all_var_sub);
 }
 
 function mod_limited_env() {

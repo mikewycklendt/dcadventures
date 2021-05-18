@@ -39,9 +39,8 @@ function sense_cost() {
 function sense_sense() {
 	const select = 'sense_sense';
 	const fill = 'sense_subsense';
-	const sub = 'sense';
-
-	id_select(select, fill, subsense_select, sub)
+	
+	id_select(select, fill, subsense_select, all_var_sub)
 }
 
 function sense_skill() {
