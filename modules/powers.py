@@ -4623,6 +4623,7 @@ def power_post_move():
 	flight_equipment = request.get_json()['flight_equipment']
 	flight_conditions = request.get_json()['flight_conditions']
 	acquatic_type = request.get_json()['acquatic_type']
+	acquatic_prone = request.get_json()['acquatic_prone']
 	ground_type = request.get_json()['ground_type']
 	ground_perm = request.get_json()['ground_perm']
 	ground_time = request.get_json()['ground_time']
@@ -4828,6 +4829,7 @@ def power_post_move():
 						flight_equipment = flight_equipment,
 						flight_conditions = flight_conditions,
 						acquatic_type = acquatic_type,
+						acquatic_prone = acquatic_prone,
 						ground_type = ground_type,
 						ground_perm = ground_perm,
 						ground_time = ground_time,

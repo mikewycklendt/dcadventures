@@ -327,6 +327,15 @@ function move_condition_circ() {
 	check_display(check, div);
 }
 
+function move_acquatic_type() {
+	const select = 'move_acquatic_type';
+	const options = [{'val': 'surface', 'div': 'move-acquatic-prone'}];
+	const checks = ['move_acquatic_prone'];
+
+	uncheck_all(checks);
+	select_opacity(select, options);
+}
+
 let move_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -409,6 +418,7 @@ function move_submit() {
 	const flight_equipment = select("move_flight_equipment");
 	const flight_conditions = multiple("move_flight_conditions");
 	const acquatic_type = select("move_acquatic_type");
+	const acquatic_prone = check("move_acquatic_prone");
 	const ground_type = select("move_ground_type");
 	const ground_perm = select("move_ground_perm");
 	const ground_time = select("move_ground_time");
@@ -528,6 +538,7 @@ function move_submit() {
 			'flight_equipment': flight_equipment,
 			'flight_conditions': flight_conditions,
 			'acquatic_type': acquatic_type,
+			'acquatic_prone': acquatic_prone,
 			'ground_type': ground_type,
 			'ground_perm': ground_perm,
 			'ground_time': ground_time,

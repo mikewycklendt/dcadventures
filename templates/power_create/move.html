@@ -631,11 +631,20 @@
 			Aquatic:
 		</div>
 
-		<select class="select-sml" id="move_acquatic_type" name="move_acquatic_type">
-			{% for a in aquatic %}
-				<option value="{{a.type}}">{{a.name}}</option>
-			{% endfor %}
-		</select>
+		<div>
+			<select class="select-sml" id="move_acquatic_type" name="move_acquatic_type" onchange="move_acquatic_type()">
+				{% for a in aquatic %}
+					<option value="{{a.type}}">{{a.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="move-acquatic-prone">
+			<div class="check-div-fit">
+				<input type="checkbox" id="move_acquatic_prone" class="medium-checkbox med-checkbox"> Can Lie Prone
+			</div>
+		</div>
+
 	</div>
 
 	<div id="move-ground">

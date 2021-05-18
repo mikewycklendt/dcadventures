@@ -2827,6 +2827,7 @@ def power_move_post(entry, body, cells):
 	flight_equipment = entry.flight_equipment
 	flight_conditions = entry.flight_conditions
 	acquatic_type = entry.acquatic_type
+	acquatic_prone = entry.acquatic_prone
 	ground_type = entry.ground_type
 	ground_perm = entry.ground_perm
 	ground_time = entry.ground_time
@@ -3018,6 +3019,7 @@ def power_move_post(entry, body, cells):
 	cells = check_cell('Aquatic', 9, aquatic, cells, True)
 	new_mod = mod_create('Aquatic', 10)
 	new_mod = mod_cell('Type:', 7, [acquatic_type], new_mod)
+	new_mod = mod_cell('Can Lie Prone', 16, [acquatic_prone], new_mod)
 	body = mod_add(aquatic, new_mod, body)
 
 	cells = check_cell('Ground', 8, ground, cells, True)

@@ -1027,6 +1027,7 @@ class PowerMove(db.Model):
 	flight_equipment = db.Column(db.Integer, db.ForeignKey('equipment.id'))
 	flight_conditions = db.Column(db.ARRAY(db.Integer))
 	acquatic_type = db.Column(db.String())
+	acquatic_prone = db.Column(db.Boolean)
 	ground_type = db.Column(db.Integer, db.ForeignKey('ground.id'))
 	ground_perm = db.Column(db.String())
 	ground_time = db.Column(db.Integer, db.ForeignKey('power_time.id'))
@@ -1136,6 +1137,7 @@ class PowerMove(db.Model):
 			'flight_equipment': self.flight_equipment,
 			'flight_conditions': self.flight_conditions,
 			'acquatic_type': self.acquatic_type,
+			'acquatic_prone': self.acquatic_prone,
 			'ground_type': self.ground_type,
 			'ground_perm': self.ground_perm,
 			'ground_time': self.ground_time,
