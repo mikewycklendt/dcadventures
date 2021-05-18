@@ -332,7 +332,7 @@ def vehicle_equipment_select():
 		
 		if sub == 'variable-equip' or sub == 'variable':
 			var = db.session.query(Equipment).filter_by(var=True).first()
-			options.append({'id': e.id, 'name': e.name})
+			options.append({'id': var.id, 'name': var.name})
 		for e in equipment:
 			options.append({'id': e.id, 'name': e.name})
 	except:
