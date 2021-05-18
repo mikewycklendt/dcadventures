@@ -409,7 +409,8 @@ class PowerCheck(db.Model):
 	touch = db.Column(db.Boolean)
 	target_type = db.Column(db.String())
 	damage = db.Column(db.Boolean)
-	
+	primary = db.Column(db.Boolean)
+	frequency = db.Column(db.String())
 	
 	def format(self):
 		return {
@@ -462,7 +463,9 @@ class PowerCheck(db.Model):
 			'defenseless': self.defenseless,
 			'touch': self.touch,
 			'target_type': self.target_type,
-			'damage': self.damage
+			'damage': self.damage,
+			'primary': self.primary,
+			'frequency': self.frequency
 		}
 
 

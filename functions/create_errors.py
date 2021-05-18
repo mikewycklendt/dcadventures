@@ -377,6 +377,27 @@ def variable_field(value, field, name, f, errors):
 
 	return (errors)
 	
+def incompatible(value, field, dependent, val, f, fieldname, name, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != value:
+		return (errors)
+	else:
+		if f == val:
+			error = True
+				
+	if error:
+		message = 'If this rule uses ' + dependent + ' the ' + fieldname + ' cannot be set to ' + na,e
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
 def variable_field_of(value, field, names, fields, errors):
 	error_msgs = errors['error_msgs']
 	error = True

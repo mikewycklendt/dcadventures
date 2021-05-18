@@ -16,6 +16,7 @@ const descriptor_select = '/select/descriptor';
 const power_cost_select = '/select/power/cost';
 const power_ranks_select = '/select/power/ranks';
 const narrow_creature_select = '/select/creature/narrow';
+const check_trigger_select = '/select/check/trigger';
 
 const head_feature_info_select = '/info/headquarters/feature';
 const feature_info_select = '/info/feature';

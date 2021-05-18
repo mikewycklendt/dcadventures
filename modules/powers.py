@@ -228,7 +228,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	animals = [{'type': '', 'name': 'Comprehend Animals'}, {'type': 'speak', 'name': 'Speak to'}, {'type': 'understad', 'name': 'Understand'}, {'type': 'both', 'name': 'Both'}]
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
+	attached = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
 
 	all_some = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
@@ -262,6 +262,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	char_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
+	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}]
+
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
@@ -270,7 +272,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
 
-	check_trigger = [{'type': '', 'name': 'Triggered'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'target', 'name': 'Target Type'}]
+	check_trigger = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'variable', 'name': 'Variable Check'}, {'type': 'opposed', 'name': 'Opponent Check'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'conflict', 'name': 'Conflict'}, {'type': 'sense', 'name': 'Sense'}, {'type': 'consequence', 'name': 'Consequence'}]
 
 	check_type = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'success', 'name': 'After Success'}, {'type': 'fail', 'name': 'After Failure'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'active', 'name': 'Target Active'}]
 
@@ -574,7 +576,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
-											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after)
+											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3634,6 +3636,7 @@ def power_post_check():
 	defenseless = request.get_json()['defenseless']
 	touch = request.get_json()['touch']
 	target_type = request.get_json()['target_type']
+	primary = request.get_json()['primary']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3727,7 +3730,8 @@ def power_post_check():
 						consequence_target = consequence_target,
 						defenseless = defenseless,
 						touch = touch,
-						target_type = target_type
+						target_type = target_type,
+						primary = primary
 					)
 
 	db.session.add(entry)

@@ -112,7 +112,13 @@
 
 		<div>
 			<select class="entry-select" id="check_when" name="check_when">
-				{% for c in check_type %}
+				<option value="">When</option>
+			</select>
+		</div>
+
+		<div>
+			<select class="entry-select" id="check_frequency" name="check_frequency">
+				{% for c in check_frequency %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
 			</select>
@@ -476,6 +482,12 @@
 	<div id="check-button-row">
 
 		<div></div>
+		
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="check_primary" class="medium-checkbox med-checkbox"> Primary Check
+			</div>
+		</div>
 		
 		<div>
 			<select class="select-entry"  id="check_multiple" name="check_multiple">

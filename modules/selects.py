@@ -604,6 +604,77 @@ def get_subsense_select():
 	print(body)
 	return jsonify(body)
 
+
+@select.route('/select/check/trigger', methods=['POST'])
+def skill_trait_select():
+	body = {}
+	body['success'] = True
+
+	id = request.get_json()['id'] 
+	sub = request.get_json()['sub']
+	options = []
+
+	options.append({'id': '', 'name': 'When'})
+
+	check = [{'id': 'before', 'name': 'Before Attempt'},
+			{'id': 'after', 'name': 'After Attempt'},
+			{'id': 'success', 'name': 'After Success'},
+			{'id': 'fail', 'name': 'After Failure'}]
+			
+	opponent = [{'id': 'after_opp', 'name': 'After Opponent Attempt'},
+			{'id': 'before_opp', 'name': 'Before Opponent Attempt'},
+			{'id': 'success_opp', 'name': 'After Opponent Success'},
+			{'id': 'fail_opp', 'name': 'After Opponent Failure'}]
+
+	if id == '':
+		options.append({'id': 'primary', 'name': 'Primary Check'})
+	if id == 'change':
+		options.append({'id': 'before', 'name': 'Before Change Happens'})
+		options.append({'id': 'after', 'name': 'After Change Happens'})
+	elif id == 'condition':
+		options.append({'id': 'before', 'name': 'Before Condition Takes Effect'})
+		options.append({'id': 'after', 'name': 'After Condition Takes Effect'})
+ 	elif id == 'conflict':
+		for c in check:
+			options.append(c)
+		for o in opponent:
+			options.append(o)
+	elif id == 'sense':
+		options.append({'id': 'before', 'name': 'Before Player Uses Sense'})
+		options.append({'id': 'after', 'name': 'After Player Uses Sense'})
+		options.append({'id': 'before_opp', 'name': 'Before Opponent Uses Sense'})
+		options.append({'id': 'after_opp', 'name': 'After Opponent Uses Sense'})
+		options.append({'id': 'before_skill', 'name': 'Before Player Sense Skill'})
+		options.append({'id': 'after_skill', 'name': 'After Player Sense Skill'})
+		options.append({'id': 'before_opp_skill', 'name': 'Before Opponent Sense Skill'})
+		options.append({'id': 'after_opp_skill', 'name': 'After Opponent Sense Skill'})
+		options.append({'id': 'before_effect', 'name': 'Before Player Sense Effect'})
+		options.append({'id': 'after_effect', 'name': 'After Player Sense Effect'})
+		options.append({'id': 'before_opp_effect', 'name': 'Before Opponent Sense Effect'})
+		options.append({'id': 'after_opp_effect', 'name': 'After Opponent Sense Effect'})
+	elif id == 'variable':
+		for c in check:
+			options.append(c)
+	elif id == 'primary':
+		for c in check:
+			options.append(c)
+		opposed = db.session.query(PowerOpposed).filter_by(power_id=sub, attached=id).first()
+		if opposed is not None:
+			for o in opponent:
+				options.append(o)
+	elif id == 'opposed':
+		for c in check:
+			options.append(c)
+		for o in opponent:
+			options.append(o)
+	elif id == 'consequence':
+		options.append({'id': 'before', 'name': 'Before Consequence Happens'})
+		options.append({'id': 'after', 'name': 'After Consequence Happens'})
+
+	print(body)
+	return jsonify(body)
+		
+
 @select.route('/select/trait', methods=['POST'])
 def skill_trait_select():
 	body = {}

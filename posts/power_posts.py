@@ -1940,6 +1940,7 @@ def power_check_post(entry, body, cells):
 	defenseless = entry.defenseless
 	touch = entry.touch
 	target_type = entry.target_type
+	primary = entry.primary
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -2035,6 +2036,8 @@ def power_check_post(entry, body, cells):
 	cells = check_cell('Weapon', 8, conflict_weapon, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
+
+	cells = check_cell('Primary', 9, primary, cells)
 
 	body = send_multiple(title, cells, body)
 
@@ -3197,7 +3200,7 @@ def power_opposed_post(entry, body, cells):
 	variable_check = one_of(variable, [variable, 'Variable Check'])
 	variable_check = one_of(variable_type, [variable_type, 'Variable Check'], variable_check)
 
-	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
+	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional Check'}, {'type': 'before', 'name': 'Before Primary Check'}, {'type': 'after', 'name': 'After Primary Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
 	attached = selects(attached, attached_select)
 
 	after_select = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
@@ -3205,7 +3208,7 @@ def power_opposed_post(entry, body, cells):
 
 	before_select = [{'type': '', 'name': 'Before Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}]
 	before = selects(before, before_select)
-	
+
 	happens = frequency + ' ' + attached
 
 	cells = cell('Keyword', 15, [keyword])

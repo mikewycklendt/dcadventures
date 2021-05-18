@@ -28,10 +28,10 @@ function char_extra() {
 
 function char_cost() {
 	const power_id = select("all_power_select");
+	///const power_id = document.getElementById('power_id');
 	const field = 'char_cost';
 	const fill = 'char_ranks';
 	const extra = 'char_extra';
-	///const power_id = document.getElementById('power_id');
 
 	id_select(field, fill, power_ranks_select, extra, false, false, false, power_id);
 }

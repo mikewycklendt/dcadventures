@@ -56,7 +56,7 @@ function check_action_type() {
 }
 
 function check_trigger() {
-	const select = 'check_trigger';
+	const field = 'check_trigger';
 	const options = [{'val': 'change', 'div': 'check-conditions'},
 					{'val': 'condition', 'div': 'check-condition'},
 					{'val': 'variable', 'div': 'check-trigger-variable'},
@@ -66,8 +66,12 @@ function check_trigger() {
 					{'val': 'consequence', 'div': 'check-consequence'},
 					{'val': 'target', 'div': 'check-target'}];
 	const entry = 'check-entry';
+	const fill = 'check_when';
+	const power_id = select("all_power_select");
+	///const power_id = document.getElementById('power_id');
 
-	select_maxheight_entry(select, options, entry);
+	id_select(field, fill, check_trigger_select, power_id);
+	select_maxheight_entry(field, options, entry);
 }
 
 let check_grid = {'titles': false,
@@ -124,7 +128,9 @@ function check_submit() {
 	const consequence_target = select("check_consequence_target");
 	const defenseless = select("check_defenseless");
 	const touch = check("check_touch");
-	const target_type = select("check_target_type")
+	const target_type = select("check_target_type");
+	const primary = check("check_primary");
+	const frequency = select("check_frequency");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -189,7 +195,9 @@ function check_submit() {
 			'consequence_target': consequence_target,
 			'defenseless': defenseless,
 			'touch': touch,
-			'target_type': target_type
+			'target_type': target_type,
+			'primary': primary,
+			'frequency': frequency
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
