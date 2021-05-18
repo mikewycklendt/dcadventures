@@ -540,6 +540,7 @@ def defense_post(entry, body, cells):
 	immunity_env_circumstance = entry.immunity_env_circumstance
 	immunity_condition = entry.immunity_condition
 	immunity_emotion = entry.immunity_emotion
+	immunity_toxic = entry.immunity_toxic
 	immunity_except = entry.immunity_except
 	multiple = entry.multiple
 	cost = entry.cost
@@ -611,7 +612,7 @@ def defense_post(entry, body, cells):
 
 	word = check_string('Not ', immunity_except)
 	cells = check_cell('Immunity', 10, immunity, cells, True)
-	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}]
+	select =[{'type': 'trait', 'name': word + 'Immune From Trait', 'w': 18}, {'type': 'damage', 'name': word + 'Immune From Damage Type', 'w': 25}, {'type': 'descriptor', 'name': word + 'Immune From Descriptor', 'w': 25}, {'type': 'rule', 'name': word + 'Immune From Game Rule', 'w': 25}, {'type': 'consequence', 'name': word + 'Immune from Consequence', 'w': 25}, {'type': 'critical', 'name': word + 'Immune from Critical Hits', 'w': 25}, {'type': 'env', 'name': word + 'Immune from Environment', 'w': 30}, {'type': 'condition_effect', 'name': word + 'Immune from Effect Condition', 'w': 35}, {'type': 'condition_attack', 'name': word + 'Immune from Attack Condition', 'w': 35}, {'type': 'emotion', 'name': word + 'Immune from Emotion', 'w': 22}, {'type': 'life', 'name': 'Life Support', 'w': 15}, {'type': 'eat', 'name': 'Eat Anything', 'w': 15}]
 	new_mod = mod_create('Immunity', 17, immunity_type, select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 15, [immunity_trait], new_mod, value)
@@ -637,6 +638,8 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Immune From', 12, ['Disease, Poison, All Environment Conditions, Suffocation, Starvation and Thirst'], new_mod, value)
 	value = 'emotion'
 	new_mod = mod_cell('Emotion', 10, [immunity_emotion], new_mod, value)
+	value = 'eat'
+	new_mod = mod_cell('Includes Toxic', 16, [immunity_toxic], new_mod, value)
 	body = mod_add(immunity, new_mod, body)	
 
 	cells = check_cell('Cover', 7, cover_check, cells, True)

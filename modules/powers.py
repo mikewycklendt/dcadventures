@@ -346,7 +346,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
-	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}]
+	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -1939,6 +1939,7 @@ def power_post_defense():
 	immunity_condition = request.get_json()['immunity_condition']
 	immunity_emotion = request.get_json()['immunity_emotion']
 	immunity_emotion_other = request.get_json()['immunity_emotion_other']
+	immunity_toxic = request.get_json()['immunity_toxic']
 	immunity_except = request.get_json()['immunity_except']
 	multiple = request.get_json()['multiple']
 	cost = request.get_json()['cost']
@@ -2012,6 +2013,7 @@ def power_post_defense():
 								immunity_env_circumstance = immunity_env_circumstance,
 								immunity_condition = immunity_condition,
 								immunity_emotion = immunity_emotion,
+								immunity_toxic = immunity_toxic,
 								immunity_except = immunity_except,
 								multiple = multiple,
 								cost = cost,

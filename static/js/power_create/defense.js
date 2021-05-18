@@ -212,6 +212,7 @@ function defense_submit() {
 	const immunity_condition = select("defense_immunity_condition");
 	const immunity_emotion = select("defense_immunity_emotion");
 	const immunity_emotion_other = text("defense_immunity_emotion_other");
+	const immunity_toxic = check("defense_immunity_toxic")
 	const env_other = text("defense_env_other");
 	const immunity_env_penalty = check("defense_immunity_env_penalty");
 	const immunity_env_circumstance = check("defense_immunity_env_circumstance");
@@ -275,6 +276,7 @@ function defense_submit() {
 			'immunity_emotion_other': immunity_emotion_other,
 			'immunity_emotion': immunity_emotion,
 			'immunity_except': immunity_except,
+			'immunity_toxic': immunity_toxic,
 			'multiple': multiple,
 			'cost': cost,
 			'ranks': ranks
