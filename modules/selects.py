@@ -658,6 +658,7 @@ def check_trigger_select():
 		for c in check:
 			options.append(c)
 	elif id == 'primary':
+		sub = int(sub)
 		for c in check:
 			options.append(c)
 		opposed = db.session.query(PowerOpposed).filter_by(power_id=sub, attached=id).first()
