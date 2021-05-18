@@ -64,8 +64,9 @@ function opposed_opponent_trait() {
 function opposed_recurring() {
 	const check = 'opposed_recurring';
 	const div = 'opposed-recurring';
+	const entry = 'opposed-entry';
 
-	check_display(check, div);
+	check_drop(check, div, entry);
 }
 
 
