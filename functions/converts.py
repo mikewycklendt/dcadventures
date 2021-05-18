@@ -1397,8 +1397,8 @@ def check_when_convert(id, when):
 			when = 'Before Condition Takes Effect'
 		if when == 'after':
 			when = 'After Condition Takes Effect'
- 	elif id == 'conflict':
-		 when = selects(when, check)
+	elif id == 'conflict':
+		when = selects(when, check)
 	elif id == 'sense':
 		when = selects(when, sense)
 	elif id == 'variable':
