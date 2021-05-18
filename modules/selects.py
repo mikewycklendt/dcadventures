@@ -101,6 +101,8 @@ def advantage_action_select():
 		body['options'] = base
 	elif action == 'conflict':
 		body['options'] = conflict
+	elif action == 'None':
+		body['options'] = [{'id': 0, 'name': 'No Action'}]
 
 	print(body)
 	return jsonify(body)
@@ -634,7 +636,7 @@ def skill_trait_select():
 	elif id == 'condition':
 		options.append({'id': 'before', 'name': 'Before Condition Takes Effect'})
 		options.append({'id': 'after', 'name': 'After Condition Takes Effect'})
- 	elif id == 'conflict':
+	elif id == 'conflict':
 		for c in check:
 			options.append(c)
 		for o in opponent:

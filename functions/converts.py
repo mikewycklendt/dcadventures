@@ -497,6 +497,8 @@ def action_convert(value, action_value):
 
 	if value == 'auto':
 		a = 'Automatic'
+	elif value ==  'none':
+		a = 'No Action'
 	elif value == 'base':
 		action = db.session.query(Action).filter_by(id=action_value).one()
 		a = action.name
@@ -1356,3 +1358,60 @@ def rarity_convert(rare, damage=False):
 		rarity = None
 
 	return (rarity)
+
+
+def check_when_convert(id, when):
+
+	check = [{'type': 'before', 'name': 'Before Attempt'},
+			{'type': 'after', 'name': 'After Attempt'},
+			{'type': 'success', 'name': 'After Success'},
+			{'type': 'fail', 'name': 'After Failure'},
+			{'type': 'after_opp', 'name': 'After Opponent Attempt'},
+			{'type': 'before_opp', 'name': 'Before Opponent Attempt'},
+			{'type': 'success_opp', 'name': 'After Opponent Success'},
+			{'type': 'fail_opp', 'name': 'After Opponent Failure'}]
+
+	sense = [{'type': 'before', 'name': 'Before Player Uses Sense'},
+			{'type': 'after', 'name': 'After Player Uses Sense'},
+			{'type': 'before_opp', 'name': 'Before Opponent Uses Sense'},
+			{'type': 'after_opp', 'name': 'After Opponent Uses Sense'},
+			{'type': 'before_skill', 'name': 'Before Player Sense Skill'},
+			{'type': 'after_skill', 'name': 'After Player Sense Skill'},
+			{'type': 'before_opp_skill', 'name': 'Before Opponent Sense Skill'},
+			{'type': 'after_opp_skill', 'name': 'After Opponent Sense Skill'},
+			{'type': 'before_effect', 'name': 'Before Player Sense Effect'},
+			{'type': 'after_effect', 'name': 'After Player Sense Effect'},
+			{'type': 'before_opp_effect', 'name': 'Before Opponent Sense Effect'},
+			{'type': 'after_opp_effect', 'name': 'After Opponent Sense Effect'}]
+
+	if id == '':
+		if when == 'primary':
+			when = 'Primary Check'
+	if id == 'change':
+		if when == 'before':
+			when = 'Before Change Happens'
+		if when == 'after':
+			when = 'After Change Happens'
+	elif id == 'condition':
+		if when == 'before':
+			when = 'Before Condition Takes Effect'
+		if when == 'after':
+			when = 'After Condition Takes Effect'
+ 	elif id == 'conflict':
+		 when = selects(when, check)
+	elif id == 'sense':
+		when = selects(when, sense)
+	elif id == 'variable':
+		when = selects(when, check)
+	elif id == 'primary':
+		when = selects(when, check)
+	elif id == 'opposed':
+		when = selects(when, check)
+	elif id == 'consequence':
+		if when == 'before':
+			when = 'Before Consequence Happens'
+		if when == 'after':
+			when = 'After Consequence Happens'
+
+	return (when)
+
