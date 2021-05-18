@@ -20,13 +20,6 @@
 			</select>
 		</div>
 
-		<div>
-			<select class="select-entry" id="opposed_frequency" name="opposed_frequency">
-				{% for f in frequency %}
-					<option value="{{f.type}}">{{f.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
 	</div>
 
 </div>
@@ -324,7 +317,7 @@
 		</div>
 		
 	</div>
-	
+			
 	<div id="opposed-opponent">
 		<div id="opposed-opponent-title">
 			After Opponent Check:
@@ -350,8 +343,38 @@
 			</select>
 		</div>
 		
+	</div>	
+	
+	<div id="opposed-recurring">
+		<div>
+			Time Between Checks:
+		</div>
+
+		<div>
+			<select class="select-sml recur-sml" id="opposed_recurring_value" name="opposed_recurring_value">
+				<option value="">Time</option>
+				<option value="turn">One Turn</option>
+				<option value="round">Round</option>
+				<option value="scene">Scene</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for p in power_time %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml recur-title-sml" id="opposed_recurring_type" name="opposed_recurring_type">
+				<option value="">Time by Group</option>
+				<option value="">Use Time Effect form to put options here</option>
+				{% for p in power_time_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
 	</div>
 
+		
 	<div id="opposed-row5">
 		<div>
 			<input type="text" id="opposed_description" name="opposed_description" placeholder="Circumstance">
@@ -368,29 +391,31 @@
 
 	<div id="opposed-button-row">
 		<div>
-			<div id="opposed-recurring">
-				<div>
-					<select class="lasts-entry" id="opposed_recurring_value" name="opposed_recurring_value">
-						<option value="">Time Between Checks</option>
-						<option value="turn">One Turn</option>
-						<option value="round">Round</option>
-						<option value="scene">Scene</option>
-						<option value="">Use Time Effect form to put options here</option>
-						{% for p in power_time %}
-							<option value={{p.id}}>{{p.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-	
-				<div>
-					<select class="lasts-title-entry" id="opposed_recurring_type" name="opposed_recurring_type">
-						<option value="">Between Checks by Group</option>
-						<option value="">Use Time Effect form to put options here</option>
-						{% for p in power_time_type %}
-							<option value={{p.id}}>{{p.name}}</option>
-						{% endfor %}
-					</select>
-				</div>	
+		</div>
+
+		<div>
+			<div class="hidden" id="opposed-before">
+				<select class="select-entry" id="opposed_before" name="opposed_before">
+					{% for b in before %}
+						<option value="{{b.type}}">{{b.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="hidden" id="opposed-after">
+				<select class="select-entry" id="opposed_after" name="opposed_after">
+					{% for a in after %}
+						<option value="{{a.type}}">{{a.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+				
+			<div class="hidden" id="opposed-primary">
+				<select class="select-entry" id="opposed_frequency" name="opposed_frequency">
+					{% for f in frequency %}
+						<option value="{{f.type}}">{{f.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
 		</div>
 

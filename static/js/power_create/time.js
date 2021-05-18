@@ -114,13 +114,14 @@ function time_submit() {
 	const selects = 'time-sml';
 	const select_entry = 'time-entry';
 	const select_title = 'time-title-sml';
-	const recur_entry = 'lasts-entry';
-	const recur_sml = 'lasts-sml';
-	const recur_title_entry = 'lasts-title-entry';
-	const recur_title_sml = 'lasts-title-sml';
+	const lasts_entry = 'lasts-entry';
+	const lasts_sml = 'lasts-sml';
+	const lasts_title_entry = 'lasts-title-entry';
+	const lasts_title_sml = 'lasts-title-sml';
 	const condition_effect = 'time-condition-effect';
 	const condition_lasts =  'time-condition-lasts';
-	
+	const recur_sml = 'recur-sml'
+	const recur_title_sml = 'recur-title-sml';
 	const errors = 'time-err';
 	const err_line = 'time-err-line';
 
@@ -184,25 +185,30 @@ function time_submit() {
 
 			if (add_title == true) {
 				selects_add(title_id, title_name, select_title);
-			}
+			};
 
 			selects_add(id, keyword, selects);
 			selects_add(id, keyword, select_entry);
 
 			if (type == 'lasts') {
-				selects_add(id, keyword, recur_entry);
-				selects_add(id, keyword, recur_sml)				
-				selects_add_new(title_id, title_name, recur_title_entry);
-				selects_add_new(title_id, title_name, recur_title_sml);
-			}
+				selects_add(id, keyword, lasts_entry);
+				selects_add(id, keyword, lasts_sml)				
+				selects_add_new(title_id, title_name, lasts_title_entry);
+				selects_add_new(title_id, title_name, lasts_title_sml);
+			};
 
 			if (type == 'condition') {
 				selects_add(id, keyword, condition_lasts);
-			}
+			};
 
 			if (type == 'condition_effect') {
 				selects_add(id, keyword, condition_effect);
-			}
+			};
+
+			if (type == 'recur') {
+				selects_add(id, keyword, recur_sml);
+				selects_add_new(title_id, title_name, recur_title_sml);
+			};
 
 			time_grid.columns.length = 0;
 			time_grid.columns = jsonResponse.rows;

@@ -1223,6 +1223,8 @@ class PowerOpposed(db.Model):
 	opponent = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
 	opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	variable_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	before = db.Column(db.String())
+	after = db.Column(db.String())
 
 
 	def format(self):
@@ -1267,7 +1269,9 @@ class PowerOpposed(db.Model):
 			'title': self.title,
 			'opponent': self.opponent,
 			'opposed': self.opposed,
-			'variable_type': self.variable_type
+			'variable_type': self.variable_type,
+			'before': self.before,
+			'after': self.after
 		}
 
 

@@ -197,6 +197,28 @@ def variable_fields(value, name, field, fields, errors):
 	return (errors)
 
 
+def variable_fields_of(value, name, field, fields, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if field != value:
+		return (errors)
+	else:
+		for f in fields:
+			if f != '':
+				error = False
+				
+		if error:
+			message = 'You select one of the ' + name + ' fields.'
+			error_msgs.append(message)
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+
 def if_fields(name, field, fields, errors, exception=False):
 	error_msgs = errors['error_msgs']
 	error = False
@@ -346,6 +368,28 @@ def variable_field(value, field, name, f, errors):
 				
 	if error:
 		message = name + ' field is required.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
+def variable_field_of(value, field, names, fields, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+
+	if field != value:
+		return (errors)
+	else:
+		for f in fields:
+			if f != '':
+				error = False
+				
+	if error:
+		message = 'You must select one of the ' + names + ' fields.'
 		error_msgs.append(message)
 
 

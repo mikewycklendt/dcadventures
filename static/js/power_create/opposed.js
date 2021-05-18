@@ -22,7 +22,13 @@ function opposed_attached() {
 	const values = [{'val': 'before_var', 'text': 'Before Variable Check:'}, 
 					{'val': 'after_var', 'text': 'After Variable Check:'}];
 	const entry = "opposed-entry";
+	const attached = [{'val': ['before', 'before_var'], 'div': 'opposed-before'},
+					{'val': ['after', 'after_var', 'opponent'], 'div': 'opposed-after'},
+					{'val': ['primary'], 'div': 'opposed-primary'}]
+	const fields = ['opposed_before', 'opposed_after', 'opposed_frequency']
 
+	reset_all(fields);
+	select_opacity_shared(select, attached);
 	select_maxheight_shared(select, options, entry);
 	div_text(select, div, values);
 }
@@ -142,7 +148,9 @@ function opposed_submit() {
 	const title = text("opposed_title");
 	const opposed = select("opposed_opposed");
 	const opponent = select("opposed_opponent");
-	const variable_type = select("opposed_variable_type")
+	const variable_type = select("opposed_variable_type");
+	const before = select("opposed_before");
+	const after = select("opposed_after");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -196,7 +204,9 @@ function opposed_submit() {
 			'title': title,
 			'opponent': opponent,
 			'opposed': opposed,
-			'variable_type': variable_type
+			'variable_type': variable_type,
+			'before': before,
+			'after': after
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

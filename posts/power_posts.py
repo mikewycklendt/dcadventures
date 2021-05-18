@@ -3154,6 +3154,8 @@ def power_opposed_post(entry, body, cells):
 	opponent = entry.opponent
 	opposed = entry.opposed
 	variable_type = entry.variable_type
+	before = entry.before
+	after = entry.after
 
 	title_name = get_name(PowerOpposedType, title)
 	body['title'] = title_name
@@ -3195,9 +3197,15 @@ def power_opposed_post(entry, body, cells):
 	variable_check = one_of(variable, [variable, 'Variable Check'])
 	variable_check = one_of(variable_type, [variable_type, 'Variable Check'], variable_check)
 
-	attached = [{'type': '', 'name': 'Attached'}, {'type': 'alone', 'name': 'Only Check'}, {'type': 'before', 'name': 'Before Skill Check'}, {'type': 'after', 'name': 'After Skill Check'}, {'type': 'with', 'name': 'With Skill Check'}, {'type': 'before_attack', 'name': 'Before Attack Check'}, {'type': 'after_attack', 'name': 'After Attack Check'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'before_var', 'name': 'Before Variable Check ' + variable_check}, {'type': 'after_var', 'name': 'After Variable Check ' + variable_check}, {'type': 'opponent', 'name': 'After Opponent Check ' + opposed_check}]
+	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'before', 'name': 'Before Check'}, {'type': 'after', 'name': 'After Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
 	attached = selects(attached, attached_select)
 
+	after_select = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
+	after = selects(after, after_select)
+
+	before_select = [{'type': '', 'name': 'Before Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}]
+	before = selects(before, before_select)
+	
 	happens = frequency + ' ' + attached
 
 	cells = cell('Keyword', 15, [keyword])
@@ -3334,7 +3342,7 @@ def power_time_post(entry, body, cells):
 	
 	
 
-	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'condition_effect', 'name': 'Time Until Condition Takes Effect'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
+	time_effect_select = [{'type': 'prepare', 'name': 'Time to Prepare'}, {'type': 'recur', 'name': 'Time Between Recurring Check'}, {'type': 'action', 'name': 'Time Action Takes'}, {'type': 'limit', 'name': 'Time Limit to Respond'}, {'type': 'lasts', 'name': 'Time Result Lasts'}, {'type': 'condition', 'name': 'Time Condition Lasts'}, {'type': 'condition_effect', 'name': 'Time Until Condition Takes Effect'}, {'type': 'effect', 'name': 'Time Effect Happens'}, {'type': 'repeat', 'name': 'Time Until Repeat Check'}, {'type': 'check', 'name': 'Time Until Next Check'}, {'type': 'action', 'name': 'Time Until Take Another Action'}, {'type': 'reattempt', 'name': 'Time Until Reattempt'}, {'type': 'recover', 'name': 'Recovery Time'}, {'type': 'points', 'name': 'Points Restored'}]
 	type = selects(type, time_effect_select)
 
 	
