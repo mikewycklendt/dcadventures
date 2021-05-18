@@ -1179,9 +1179,6 @@ def preset_convert(value, field):
 
 	return (preset)
 
-def variable_none(table, value):
-
-
 def trait_select(value, trait):
 
 	if trait == 'ability':
