@@ -167,20 +167,7 @@
 	</div>
 
 	<div id="mod-row5">
-
 		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_passive" class="medium-checkbox med-checkbox" > Passive
-			</div>
-		</div>
-		
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_adv" class="medium-checkbox med-checkbox" onclick="mod_adv()"> Advantage			</div>
-			</div>
-		</div>
-
-		<div style="display: none;">
 			<div class="check-div">
 				<input type="checkbox" id="mod_action" class="medium-checkbox med-checkbox"> Action
 			</div>
@@ -204,7 +191,7 @@
 			</div>
 		</div>
 
-		<div style="display: none;">
+		<div>
 			<div class="check-div">
 				<input type="checkbox" id="mod_effortless" class="medium-checkbox med-checkbox" onclick="mod_effortless()"> Effortless
 			</div>
@@ -245,6 +232,20 @@
 
 	</div>
 
+	<div id="mod-row7">
+		<div>
+			<div class="check-div">
+				<input type="checkbox" id="mod_passive" class="medium-checkbox med-checkbox" > Passive
+			</div>
+		</div>
+		
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="mod_adv" class="medium-checkbox med-checkbox" onclick="mod_adv()"> Advantage Ranks
+			</div>
+		</div>
+	</div>
+
 	<div id="mod-concentration">
 		<div class="valigb">
 			Concentration
@@ -252,7 +253,7 @@
 
 		<div>
 			<select class="check-sml" id="mod_concentration_check" name="mod_concentration_check">
-				<option value="">Success on Check</option>
+				<option value="">Automatic Success on Check</option>
 				<option value="">Use Variable Check form to put options here</option>
 				<option value="primary">Primary Check</option>
 				{% for p in power_check %}
@@ -263,7 +264,7 @@
 
 		<div>
 			<select class="check-title-sml" id="mod_concentration_check_type" name="mod_concentration_check_type">
-				<option value="">Success on Check by Group</option>
+				<option value="">Automatic Success on Check by Group</option>
 				<option value="">Use Variable Check form to put options here</option>
 				<option value="primary">Primary Check</option>
 				{% for p in power_check_type %}
@@ -274,7 +275,7 @@
 
 		<div>
 			<select class="opposed-sml" id="mod_concentration_opposed" name="mod_concentration_opposed">
-				<option value="">Success on Opponent Check</option>
+				<option value="">Automatic Success on Opponent Check</option>
 				<option value="">Use Opponent Check form to Put Options Here</option>
 				{% for p in power_opposed %}
 					<option value={{p.id}}>{{p.name}}</option>
@@ -283,7 +284,7 @@
 		</div>
 
 		<div>
-			<div class="check-div-fit" style="font-size: 80%;">
+			<div class="check-div-fit" style="font-size: 75%;">
 				<input type="checkbox" id="mod_concentration_effort" class="medium-checkbox med-checkbox"> Nullified with Effort
 			</div>
 		</div>
