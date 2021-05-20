@@ -1743,6 +1743,8 @@ class PowerDefense(db.Model):
 	immunity_trait_type = db.Column(db.String())
 	immunity_trait = db.Column(db.Integer)
 	immunity_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	immunity_descriptor_type = db.Column(db.String())
+	immunity_descriptor_count = db.Column(db.Integer)
 	immunity_damage = db.Column(db.Integer, db.ForeignKey('descriptors.id'))
 	immunity_rule = db.Column(db.String())
 	cover_check = db.Column(db.Boolean)
@@ -1791,6 +1793,8 @@ class PowerDefense(db.Model):
 			'immunity_trait_type': self.immunity_trait_type,
 			'immunity_trait': self.immunity_trait,
 			'immunity_descriptor': self.immunity_descriptor,
+			'immunity_descriptor_type': self.immunity_descriptor_type,
+			'immunity_descriptor_count': self.immunity_descriptor_count,
 			'immunity_damage': self.immunity_damage,
 			'immunity_rule': self.immunity_rule,
 			'cover_check': self.cover_check,

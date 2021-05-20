@@ -533,6 +533,8 @@ def defense_post_errors(data):
 	immunity_trait_type = data['immunity_trait_type']
 	immunity_trait = data['immunity_trait']
 	immunity_descriptor = data['immunity_descriptor']
+	immunity_descriptor_type = data['immunity_descriptor_type']
+	immunity_descriptor_count = data['immunity_descriptor_count']
 	immunity_damage = data['immunity_damage']
 	immunity_rule = data['immunity_rule']
 	cover_check = data['cover_check']
@@ -568,6 +570,8 @@ def defense_post_errors(data):
 	errors = id_check(EnvCondition, immunity_temp, 'Environment Condition', errors)
 	errors = id_check(Emotion, immunity_emotion, 'Emotion', errors)
 
+	errors = int_check(immunity_descriptor_count, 'Effect Count', errors)
+
 	errors = together('a die roll', [roll, outcome], errors)
 	errors = check_fields(reflect, 'Reflects Attacks', [reflect_check], errors)
 	errors = check_field(reflect, 'Reflects Attacks', 'Reflect Check', reflect_check, errors)
@@ -584,6 +588,8 @@ def defense_post_errors(data):
 	errors = variable('Descriptor Immunity', 'descriptor', value, fields, errors)
 	fields = field('Rule', immunity_rule)
 	errors = variable('Game Rule Immunity', 'rule', value, fields, errors)
+
+	errors = variable_field('descriptor', immunity_type, 'Immune from Descriptor Type', immunity_descriptor_type, errors)
 
 	errors = variable_fields('condition_effect', 'Condition Immunity', immunity_type, [immunity_condition], errors)
 	errors = variable_field('condition_effect', immunity_type, 'Condition', immunity_condition, errors)
@@ -1629,6 +1635,7 @@ def power_check_post_errors(data):
 	sense = data['sense']
 	sense_type = data['sense_type']
 	sense_target = data['sense_target']
+	mental = data['mental']
 	attack_range = data['attack_range']
 	consequence = data['consequence']
 	consequence_target = data['consequence_target']
@@ -1689,6 +1696,7 @@ def power_check_post_errors(data):
 	errors = variable_field('sense', trigger, 'Sense', sense, errors)
 	errors = variable_field('sense', trigger, 'Sense User', sense_target, errors)
 	errors = variable_field('sense', trigger, 'Sense Use Type', sense_type, errors)
+	errors = valid_options(mental, 'Excludes Mental Senses', ['any', 'x'], 'Variable Sense or Any Senae', sense, 'Sense', errors)
 	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
 	errors = variable_fields('target', 'Trigger', trigger, [target_type], errors)
 	errors = variable_field('target', trigger, 'Target Type', target_type, errors)

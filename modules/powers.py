@@ -358,6 +358,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
 
+	immunity_descriptor_type = [{'type': '', 'name': 'Immune from Descriptor Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': 'Number or Matching Effects'}]
+
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
 	insub = [{'type': '', 'name': 'Insubstantial Type'}, {'type': 'fluid', 'name': 'Fluid'}, {'type': 'gas', 'name': 'Gaseous'}, {'type': 'energy', 'name': 'Energy'}, {'type': 'incorp', 'name': 'Incorporeal'}]
@@ -581,7 +583,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
-											check_sense_type=check_sense_type, check_sense_target=check_sense_target)
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target, immunity_descriptor_type=immunity_descriptor_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1932,6 +1934,8 @@ def power_post_defense():
 	immunity_trait_type = request.get_json()['immunity_trait_type']
 	immunity_trait = request.get_json()['immunity_trait']
 	immunity_descriptor = request.get_json()['immunity_descriptor']
+	immunity_descriptor_type = request.get_json()['immunity_descriptor_type']
+	immunity_descriptor_count = request.get_json()['immunity_descriptor_count']
 	immunity_damage = request.get_json()['immunity_damage']
 	immunity_rule = request.get_json()['immunity_rule']
 	cover_check = request.get_json()['cover_check']
@@ -1980,6 +1984,7 @@ def power_post_defense():
 	roll = integer(roll)
 	immunity_trait = integer(immunity_trait)
 	immunity_descriptor = integer(immunity_descriptor)
+	immunity_descriptor_count = integer(immunity_descriptor_count)
 
 	body = user_item(Emotion, 'Emotion', immunity_emotion, immunity_emotion_other, 'emotion-sml', body, True, True)
 	immunity_emotion = body['output']
@@ -2011,6 +2016,8 @@ def power_post_defense():
 								immunity_trait_type = immunity_trait_type,
 								immunity_trait =immunity_trait,
 								immunity_descriptor = immunity_descriptor,
+								immunity_descriptor_type = immunity_descriptor_type,
+								immunity_descriptor_count = immunity_descriptor_count,
 								immunity_damage = immunity_damage,
 								immunity_rule = immunity_rule,
 								cover_check = cover_check,

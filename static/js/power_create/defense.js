@@ -157,10 +157,18 @@ function defense_immunity_environment() {
 	select_maxheight_entry(select, options, entry);
 }
 
+function defense_immunity_descriptor_count() {
+	const select = 'defense_immunity_descriptor_type';
+	const options = [{'val': 'count', 'div': 'defense-immunity-descriptor-count'}]
+
+	select_opacity(select, options)
+}
+
 function defense_cover() {
 	const check = 'defense_cover_check';
 	const div = 'defense-cover';
 	const entry = 'defense-entry'
+	const fields = ['defense_immunity_descriptor_count']
 
 	check_drop(check, div, entry);
 }
@@ -199,6 +207,8 @@ function defense_submit() {
 	const immunity_trait_type = select("defense_immunity_trait_type");
 	const immunity_trait = select("defense_immunity_trait");
 	const immunity_descriptor = select("defense_immunity_descriptor");
+	const immunity_descriptor_type = select("defense_immunity_descriptor_type");
+	const immunity_descriptor_count = select("defense_immunity_descriptor_count");
 	const immunity_damage = select("defense_immunity_damage");
 	const immunity_rule = select("defense_immunity_rule");
 	const cover_check = check("defense_cover_check");
@@ -256,6 +266,8 @@ function defense_submit() {
 			'immunity_trait_type': immunity_trait_type,
 			'immunity_trait': immunity_trait,
 			'immunity_descriptor': immunity_descriptor,
+			'immunity_descriptor_type': immunity_descriptor_type,
+			'immunity_descriptor_count': immunity_descriptor_count,
 			'immunity_damage': immunity_damage,
 			'immunity_rule': immunity_rule,
 			'cover_check': cover_check,

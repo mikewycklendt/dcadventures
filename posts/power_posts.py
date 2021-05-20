@@ -526,6 +526,8 @@ def defense_post(entry, body, cells):
 	immunity_trait_type = entry.immunity_trait_type
 	immunity_trait = entry.immunity_trait
 	immunity_descriptor = entry.immunity_descriptor
+	immunity_descriptor_type = entry.immunity_descriptor_type
+	immunity_descriptor_count = entry.immunity_descriptor_count
 	immunity_damage = entry.immunity_damage
 	immunity_rule = entry.immunity_rule
 	cover_check = entry.cover_check
@@ -571,6 +573,7 @@ def defense_post(entry, body, cells):
 
 	mod = integer_convert(mod)
 	roll = integer_convert(roll)
+	immunity_descriptor_count = integer_convert(immunity_descriptor_count)
 
 	use_type_select = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
 	use = selects(use, use_type_select)
@@ -580,6 +583,9 @@ def defense_post(entry, body, cells):
 
 	defense_multiple = [{'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 	multiple = selects(multiple, defense_multiple)
+
+	immunity_descriptor_type_select = [{'type': '', 'name': 'Immune from Descriptor Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': immunity_descriptor_count}]
+	immunity_descriptor_type = selects(immunity_descriptor_type, immunity_descriptor_type_select)
 
 	outcome = math_convert(outcome)
 
@@ -620,6 +626,7 @@ def defense_post(entry, body, cells):
 	new_mod = mod_cell('Damage:', 10, [immunity_damage], new_mod, value)
 	value = 'descriptor'
 	new_mod = mod_cell('Descriptor:', 15, [immunity_descriptor], new_mod, value)
+	new_mod = mod_cell('Effects', 9, [immunity_descriptor_type], new_mod, value)
 	value = 'consequence'
 	new_mod = mod_cell('Consequence:', 13, [immunity_consequence], new_mod, value)
 	new_mod = mod_cell('Suffocatiom Type', 18, [immunity_suffocate], new_mod, value)
