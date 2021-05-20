@@ -157,7 +157,7 @@ function defense_immunity_environment() {
 	select_maxheight_entry(select, options, entry);
 }
 
-function defense_immunity_descriptor_count() {
+function defense_immunity_descriptor_type() {
 	const select = 'defense_immunity_descriptor_type';
 	const options = [{'val': 'count', 'div': 'defense-immunity-descriptor-count'}]
 

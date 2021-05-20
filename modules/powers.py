@@ -358,7 +358,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
 
-	immunity_descriptor_type = [{'type': '', 'name': 'Immune from Descriptor Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': 'Number or Matching Effects'}]
+	immunity_descriptor_type = [{'type': '', 'name': 'Descriptor Immunity Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': 'Number or Matching Effects'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 

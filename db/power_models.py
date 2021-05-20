@@ -2609,6 +2609,7 @@ class PowerDes(db.Model):
 	any_energy = db.Column(db.Boolean)
 	any_descriptor = db.Column(db.Boolean)
 	hidden_name = db.Column(db.String())
+	power = db.Column(db.Boolean)
 
 	def format(self):
 		return {
