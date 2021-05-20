@@ -270,7 +270,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': 'Any Use of Sense'}, {'type': 'skill', 'name': 'Sense Used With Skill'}, {'type': 'power', 'name': 'Sense Used With Power'}]
 
-	check_sense_target = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'player', 'name': 'Player Uses Sense'}, {'type': 'opp', 'name': 'Opponent Uses Sense'}, {'type': 'team', 'name': 'Teammate Uses Sense'}]
+	check_sense_target = [{'type': '', 'name': 'Sense User'}, {'type': 'player', 'name': 'Player Uses Sense'}, {'type': 'opp', 'name': 'Opponent Uses Sense'}, {'type': 'team', 'name': 'Teammate Uses Sense'}]
 
 	check_target = [{'type': '', 'name': 'Check Tsrget'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}]
 
