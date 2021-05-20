@@ -133,7 +133,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defenses = db.session.query(Defense).filter(Defense.hide == None).all()
 
-	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True).all()
+	descriptor_options = db.session.query(PowerDes).filter_by(hidden=True, power=None).all()
 
 	descriptors = db.session.query(Descriptor).filter(Descriptor.show == True).order_by(Descriptor.name).all()
 
