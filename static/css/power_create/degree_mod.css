@@ -345,7 +345,21 @@
 	transition: all .3s ease-out
 }
 
+#deg-mod-effect-type {
+	display: none;
+	width: 98%;
+	grid-template-columns: 25% 75%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
 
+#deg-mod-effect-descriptor {
+	display: none;
+	width: 98%;
+	grid-template-columns: 40% 35% 25%;
+	opacity: 0%;
+	transition: all .3s ease-out
+}
 
 #deg-mod-condition {
 	display: none;

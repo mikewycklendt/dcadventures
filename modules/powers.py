@@ -266,7 +266,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
-	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites Check'}]
 
 	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': 'Any Use of Sense'}, {'type': 'skill', 'name': 'Sense Used With Skill'}, {'type': 'power', 'name': 'Sense Used With Power'}]
 
@@ -310,7 +310,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}]
 
 	degree_type = [{'type': '', 'name': 'Degree Type'}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
@@ -333,6 +333,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	effect_target = [{'type': '', 'name': 'Effect Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'allies', 'name': 'All Allies'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'object', 'name': 'Object'}, {'type': 'effect', 'name': 'Effect'}]
 
 	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
+
+	effect_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'power', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}]
 
 	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
 
@@ -583,7 +585,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
-											check_sense_type=check_sense_type, check_sense_target=check_sense_target, immunity_descriptor_type=immunity_descriptor_type)
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target, immunity_descriptor_type=immunity_descriptor_type, effect_type=effect_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -1983,7 +1985,7 @@ def power_post_defense():
 	mod = integer(mod)
 	roll = integer(roll)
 	immunity_trait = integer(immunity_trait)
-	immunity_descriptor = integer(immunity_descriptor)
+	immunity_descriptor = db_integer(PowerDes, immunity_descriptor)
 	immunity_descriptor_count = integer(immunity_descriptor_count)
 
 	body = user_item(Emotion, 'Emotion', immunity_emotion, immunity_emotion_other, 'emotion-sml', body, True, True)
@@ -3651,7 +3653,7 @@ def power_post_check():
 	variable = request.get_json()['variable']
 	opponent = request.get_json()['opponent']
 	opponent_type = request.get_json()['opponent_type']
-	varible_type = request.get_json()['variable_type']
+	variable_type = request.get_json()['variable_type']
 	title = request.get_json()['title']
 	multiple = request.get_json()['multiple']
 	sense = request.get_json()['sense']
@@ -3666,6 +3668,7 @@ def power_post_check():
 	touch = request.get_json()['touch']
 	target_type = request.get_json()['target_type']
 	primary = request.get_json()['primary']
+	overwrite = request.get_json()['overwrite']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3681,7 +3684,9 @@ def power_post_check():
 	variable = db_integer(PowerCheck, variable)
 	opponent = db_integer(PowerOpposed, opponent)
 	opponent_type = db_integer(PowerOpposedType, opponent_type)
-	varible_type = db_integer(PowerCheckType, varible_type)
+	variable_type = db_integer(PowerCheckType, variable_type)
+	overwrite = db_integer(PowerCheck, overwrite)
+
 
 	attack = integer(attack)
 
@@ -3750,7 +3755,7 @@ def power_post_check():
 						title = title,
 						multiple = multiple,
 						opponent_type = opponent_type,
-						varible_type = variable_type,
+						variable_type = variable_type,
 						sense = sense,
 						sense_type = sense_type,
 						sense_target = sense_target,
@@ -3762,7 +3767,8 @@ def power_post_check():
 						defenseless = defenseless,
 						touch = touch,
 						target_type = target_type,
-						primary = primary
+						primary = primary,
+						overwrite = overwrite
 					)
 
 	db.session.add(entry)
@@ -4372,6 +4378,10 @@ def power_post_degree():
 	descriptor_target = request.get_json()['descriptor_target']
 	descriptor = request.get_json()['descriptor']
 	multiple = request.get_json()['multiple']
+	effect = request.get_json()['effect']
+	effect_descriptor = request.get_json()['effect_descriptor']
+	effect_descriptor_type = request.get_json()['effect_descriptor_type']
+	effect_descriptor_count = request.get_json()['effect_descriptor_count']
 
 	errors = power_degree_post_errors(data)
 
@@ -4402,7 +4412,8 @@ def power_post_degree():
 	condition1 = db_integer(Condition, condition1)
 	condition2 = db_integer(Condition, condition2)
 	check_type = db_integer(Check, check_type)
-	descriptor = descriptor(PowerDes, descriptor)
+	descriptor = db_integer(PowerDes, descriptor)
+	effect_descriptor = db_integer(PowerDes, effect_descriptor)
 
 	opposed = db_integer(PowerOpposed, opposed)
 	resist_dc = db_integer(PowerDC, resist_dc)
@@ -4422,6 +4433,7 @@ def power_post_degree():
 	attack = integer(attack)
 	attack_turns = integer(attack_turns)
 	duration = integer(duration)
+	effect_descriptor_count = integer(effect_descriptor_count)
 
 	value = integer(value)
 	time = integer(time)
@@ -4545,7 +4557,11 @@ def power_post_degree():
 						description = description,
 						descriptor_effect = descriptor_effect,
 						descriptor_target = descriptor_target,
-						descriptor = descriptor)
+						descriptor = descriptor,
+						effect = effect,
+						effect_descriptor = effect_descriptor,
+						effect_descriptor_type = effect_descriptor_type,
+						effect_descriptor_count = effect_descriptor_count)
 
 	db.session.add(entry)
 	db.session.commit()

@@ -15,19 +15,36 @@ function deg_mod_extra() {
 
 function deg_mod_type() {
 	const select = 'deg_mod_type';
-	const options = [{'val': 'circ', 'div':'deg-mod-circ'},
-					{'val': 'measure', 'div':  'deg-mod-measure'},
-					{'val': 'condition', 'div': 'deg-mod-condition'},
-					{'val': 'level', 'div': 'deg-mod-level'},
-					{'val': 'knowledge', 'div': 'deg-mod-knowledge'},
-					{'val': 'consequence', 'div': 'deg-mod-consequence'},
-					{'val': 'damage', 'div': 'deg-mod-damage'},
-					{'val': 'action', 'div': 'deg-mod-action'},
-					{'val': 'time', 'div': 'deg-mod-time'},
-					{'val': 'check', 'div': 'deg-mod-check'},
-					{'val': 'duration', 'div': 'deg-mod-duration'},
-					{'val': 'descriptor', 'div': 'deg-mod-descriptor'}];
-	
+	const options = [{'val': ['circ'], 'div':'deg-mod-circ'},
+					{'val': ['measure'], 'div':  'deg-mod-measure'},
+					{'val': ['condition'], 'div': 'deg-mod-condition'},
+					{'val': ['level'], 'div': 'deg-mod-level'},
+					{'val': ['knowledge'], 'div': 'deg-mod-knowledge'},
+					{'val': ['consequence'], 'div': 'deg-mod-consequence'},
+					{'val': ['damage'], 'div': 'deg-mod-damage'},
+					{'val': ['action'], 'div': 'deg-mod-action'},
+					{'val': ['time'], 'div': 'deg-mod-time'},
+					{'val': ['check'], 'div': 'deg-mod-check'},
+					{'val': ['duration'], 'div': 'deg-mod-duration'},
+					{'val': ['descriptor'], 'div': 'deg-mod-descriptor'},
+					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'}];
+
+	select_opacity(select, options);
+}
+
+function deg_mod_effect() {
+	const select = 'deg_mod_effect';
+	const options = [{'val': 'descriptor', 'div': 'deg-mod-effect-descriptor'}];
+
+	select_opacity(select, options);
+}
+
+function deg_mod_effect_descriptor_type() {
+	const select = 'deg_mod_effect_descriptor_type';
+	const options = [{'val': 'count', 'div': 'deg-mod-effect-descriptor-count'}]
+	const fields = ['deg_mod_effect_descriptor_count']
+
+	reset_all(fields)
 	select_opacity(select, options);
 }
 
@@ -336,6 +353,10 @@ function deg_mod_submit() {
 	const descriptor_target = select("deg_mod_descriptor_target");
 	const descriptor = select("deg_mod_descriptor");
 	const multiple = select("deg_mod_multiple");
+	const effect = select("deg_mod_effect");
+	const effect_descriptor = select("deg_mod_effect_descriptor");
+	const effect_descriptor_type = select("deg_mod_effect_descriptor_type");
+	const effect_descriptor_count = select("deg_mod_effect_descriptor_count");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -442,7 +463,11 @@ function deg_mod_submit() {
 			'descriptor_effect': descriptor_effect,
 			'descriptor_target': descriptor_target,
 			'descriptor': descriptor,
-			'multiple': multiple
+			'multiple': multiple,
+			'effect': effect,
+			'effect_descriptor': effect_descriptor,
+			'effect_descriptor_type': effect_descriptor_type,
+			'effect_descriptor_count': effect_descriptor_count
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

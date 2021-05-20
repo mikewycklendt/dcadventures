@@ -496,15 +496,26 @@
 	</div>
 
 	<div id="check-button-row">
-
 		<div></div>
+
+		<div>
+			<div class="hidden" id="check-overwrite">
+				<select class="check-entry" id="check_overwrite" name="check_overwrite">
+					<option value="">Overwrites Check</option>
+					<option value="primary">Primary Check</option>
+					{% for p in power_check %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+		</div>
 	
 		<div class="vcenter" style="font-size: 115%;">
 			<input type="checkbox" id="check_primary" class="medium-checkbox med-checkbox"> Primary Check
 		</div>
 	
 		<div>
-			<select class="select-entry"  id="check_multiple" name="check_multiple">
+			<select class="select-entry"  id="check_multiple" name="check_multiple" onchange="check_multiple()">
 				{% for c in check_multiple %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}

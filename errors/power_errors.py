@@ -1629,7 +1629,7 @@ def power_check_post_errors(data):
 	variable = data['variable']
 	opponent = data['opponent']
 	opponent_type = data['opponent_type']
-	varible_type = data['variable_type']
+	variable_type = data['variable_type']
 	title = data['title']
 	multiple = data['multiple']
 	sense = data['sense']
@@ -1642,6 +1642,7 @@ def power_check_post_errors(data):
 	target_type = data['target_type']
 	primary = data['primary']
 	frequency = data['frequency']
+	overwrite = data['overwrite']
 
 
 
@@ -1667,6 +1668,11 @@ def power_check_post_errors(data):
 	errors = id_check(PowerMoveType, move, 'Movement Effect', errors)
 	errors = id_check(PowerOpposed, opposed, 'Opponent Check', errors)
 	errors = id_check(PowerRangedType, ranged, 'Ranged', errors)
+	errors = id_check(PowerCheck, overwrite, 'Check to Overwrite', errors)
+	errors = id_check(PowerCheck, variable, 'Linked Variable Check', errors)
+	errors = id_check(PowerCheckType, variable_type, 'Linked Variable Check by Group', errors)
+	errors = id_check(PowerOpposed, opponent, 'Linked Opponent Check', errors)
+	errors = id_check(PowerOpposedType, opponent_type, 'Linked Opponent Check by Group', errors)
 
 	errors = int_check(attack, 'Attack Check Modifier', errors)
 
@@ -1702,8 +1708,8 @@ def power_check_post_errors(data):
 	errors = variable_field('target', trigger, 'Target Type', target_type, errors)
 	errors = select_of('opposed', 'is triggered bt an Opponent Check', 'Trigger', trigger, [opponent, opponent_type], ['Opponent Check'], errors)
 	errors = seperate([opponent_type, opponent], 'Opponent Check', errors)
-	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, varible_type], ['Variable Check'], errors)
-	errors = seperate([varible_type, variable], 'Variable Check', errors)
+	errors = select_of('variable', trigger, 'is triggered bt a Variable Check', 'Trigger', trigger, [variable, variable_type], ['Variable Check'], errors)
+	errors = seperate([variable_type, variable], 'Variable Check', errors)
 
 	errors = variable_fields('consequence', 'Trigger', trigger, [consequence_target, consequence], errors)
 	errors = variable_field('consequence', trigger, 'Consequence Target', consequence_target, errors)
@@ -1721,6 +1727,8 @@ def power_check_post_errors(data):
 
 	errors = incompatible('2', check_type, 'an Opposed Check', 'object', frequency, 'Frequency', 'Inanimate Object', errors)
 	errors = incompatible('7', check_type, 'a Comparison Check', 'object', frequency, 'Frequency', 'Inanimate Object', errors)
+
+	errors = variable_field('overwrite', multiple, 'Check to Overwrite', overwrite, errors)
 
 	return (errors)
 
@@ -2194,6 +2202,10 @@ def power_degree_post_errors(data):
 	descriptor_target = data['descriptor_target']
 	descriptor = data['descriptor']
 	multiple = data['multiple']
+	effect = data['effect']
+	effect_descriptor = data['effect_descriptor']
+	effect_descriptor_type = data['effect_descriptor_type']
+	effect_descriptor_count = data['effect_descriptor_count']
 
 
 	errors = power_check(power_id, errors)
@@ -2233,6 +2245,7 @@ def power_degree_post_errors(data):
 	errors = id_check(Check, check_type, 'Check Tyoe', errors)
 	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
 	errors = int_check(knowledge_mind_count, 'Mind Reading Count', errors)
+	errors = int_check(effect_descriptor_count, 'Effect Count', errors)
 
 	errors = id_check(PowerOpposed, opposed, 'Opposed Check', errors)
 	errors = id_check(PowerDC, resist_dc, 'Resistance Check DC', errors)
@@ -2244,6 +2257,9 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerTime, condition_turns, 'Condition Duration', errors)
 	errors = id_check(PowerDegree, linked, 'Linked Degree', errors)
 	errors = id_check(PowerCirc, circumstance, 'Circumstance Modifier Keyword', errors)
+	
+	errors = id_check(PowerDes, effect_descriptor)
+
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
@@ -2392,6 +2408,18 @@ def power_degree_post_errors(data):
 
 	errors = variable_fields('duration', 'Effect Duration', type, [duration], errors)
 
+	errors = variable_fields('null', 'Effect Nullified', type, [effect], errors)
+	errors = variable_field('null', type, 'Effect Type', effect, errors)
+	errors = variable_fields('uncontrol', 'Effect Uncontrolled', type, [effect], errors)
+	errors = variable_field('uncontrol', type, 'Effect Type', effect, errors)
+	errors = variable_fields('detect', 'Detect Effect', type, [effect], errors)
+	errors = variable_field('detect', type, 'Effect Type', effect, errors)
+
+	errors = variable_fields('descriptor', 'Descriptor', effect, [effect_descriptor], errors)
+	errors = variable_field('descriptor', effect, 'Descriptor', effect_descriptor, errors)
+
+	errors = variable_fields('count', 'Effect Count', effect_descriptor_type, [effect_descriptor_count], errora)
+	errors = variable_field('count', effect_descriptor_type, 'Count', effect_descriptor_count, errora)
 
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)

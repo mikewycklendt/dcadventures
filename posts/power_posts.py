@@ -24,7 +24,7 @@ from functions.user_functions import user_item
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings, substitute
 
-from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
+from create_functions.power_create import multiple_error, power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
 
 from flask_sqlalchemy import SQLAlchemy
 from copy import deepcopy
@@ -1953,7 +1953,7 @@ def power_check_post(entry, body, cells):
 	variable = entry.variable
 	opponent = entry.opponent
 	opponent_type = entry.opponent_type
-	varible_type = entry.variable_type
+	variable_type = entry.variable_type
 	title = entry.title
 	sense = entry.sense
 	sense_target = entry.sense_target
@@ -1967,6 +1967,7 @@ def power_check_post(entry, body, cells):
 	touch = entry.touch
 	target_type = entry.target_type
 	primary = entry.primary
+	overwrite = entry.overwrite
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -2002,8 +2003,12 @@ def power_check_post(entry, body, cells):
 	opposed = get_keyword(PowerOpposed, opposed)
 	ranged = get_name(PowerRangedType, ranged)
 	opponent = get_keyword(PowerOpposed, opponent)
+	opponent_type = get_name(PowerOpposedType, opponent_type)
 	variable = get_keyword(PowerCheck, variable)
-	
+	variable_type = get_name(PowerCheckType, variable_type)
+	overwrite = get_keyword(PowerCheck, overwrite)
+
+
 	mental = check_string('Except Mental', mental)
 	touch = check_string('Must Maintain Touch', touch)
 
@@ -2024,6 +2029,9 @@ def power_check_post(entry, body, cells):
 
 	check_sense_target = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'player', 'name': 'Player Uses '}, {'type': 'opp', 'name': 'Opponent Uses '}, {'type': 'team', 'name': 'Teammate Uses '}]
 	sense_target = selects(sense_target, check_sense_target)
+
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites ' + overwrite}]
+	multiple = selects(multiple, check_multiple)
 
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -2070,6 +2078,8 @@ def power_check_post(entry, body, cells):
 	cells = circ_cell('Circ', 'Circumstance', 6, circumstance, cells, body)
 
 	cells = check_cell('Primary', 9, primary, cells)
+
+	cells = circ_cell('Multiple', 'If Multiple', 10, multiple, cells, body)
 
 	body = send_multiple(title, cells, body)
 
@@ -2596,6 +2606,10 @@ def power_degree_post(entry, body, cells):
 	descriptor_effect = entry.descriptor_effect
 	descriptor_target = entry.descriptor_target
 	descriptor = entry.descriptor
+	effect = entry.effect
+	effect_descriptor = entry.effect_descriptor
+	effect_descriptor_type = entry.effect_descriptor_type
+	effect_descriptor_count = entry.effect_descriptor_count
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2625,6 +2639,7 @@ def power_degree_post(entry, body, cells):
 	condition1 = get_name(Condition, condition1)
 	condition2 = get_name(Condition, condition2)
 	descriptor = get_name(PowerDes, descriptor)
+	effect_descriptor = get_name(PowerDes, effect_descriptor)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2649,6 +2664,7 @@ def power_degree_post(entry, body, cells):
 	attack = integer_convert(attack)
 	attack_turns = integer_convert(attack_turns)
 	knowledge_mind_count = integer_convert(knowledge_mind_count)
+	effect_descriptor_count = integer_convert(effect_descriptor_count)
 
 	value = integer_convert(value)
 	time = integer_convert(time)
@@ -2696,6 +2712,10 @@ def power_degree_post(entry, body, cells):
 	
 	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
+
+	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'power', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}]
+	effect = selects(effect, effect_type)
+
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -2758,11 +2778,11 @@ def power_degree_post(entry, body, cells):
 	
 	vcells = vcell('dc', 25, ['Attach DC to Object'], vcells)
 	
-	vcells = vcell('null', 22, ['Effect Nullified'], vcells)
+	vcells = vcell('null', 45, [effect, 'Nullified'], vcells)
 	
-	vcells = vcell('uncontrol', 22, ['Effect Uncontrolled'], vcells)
+	vcells = vcell('uncontrol', 45, [effect, 'Uncontrolled'], vcells)
 	
-	vcells = vcell('detect', 22, ['Detect Effect'], vcells)
+	vcells = vcell('detect', 45, [effect, 'Detected'], vcells)
 	
 	vcells = vcell('understand', 26, ['Understand Communication'], vcells)
 	

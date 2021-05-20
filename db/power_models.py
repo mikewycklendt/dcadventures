@@ -414,6 +414,7 @@ class PowerCheck(db.Model):
 	damage = db.Column(db.Boolean)
 	primary = db.Column(db.Boolean)
 	frequency = db.Column(db.String())
+	overwrite = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	
 	def format(self):
 		return {
@@ -470,7 +471,8 @@ class PowerCheck(db.Model):
 			'target_type': self.target_type,
 			'damage': self.damage,
 			'primary': self.primary,
-			'frequency': self.frequency
+			'frequency': self.frequency,
+			'overwrite': self.overwrite
 		}
 
 
@@ -866,6 +868,10 @@ class PowerDegree(db.Model):
 	descriptor_effect = db.Column(db.String())
 	descriptor_target = db.Column(db.String())
 	descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	effect = db.Column(db.String())
+	effect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	effect_descriptor_type = db.Column(db.String())
+	effect_descriptor_count = db.Column(db.Integer)
 
 	def format(self):
 		return {
@@ -960,7 +966,11 @@ class PowerDegree(db.Model):
 			'ranged': self.ranged,
 			'descriptor_effect': self.descriptor_effect,
 			'descriptor_target': self.descriptor_target,
-			'descriptor': self.descriptor
+			'descriptor': self.descriptor,
+			'effect': self.effect,
+			'effect_descriptor': self.effect_descriptor,
+			'effect_descriptor_type': self.effect_descriptor_type,
+			'effect_descriptor_count': self.effect_descriptor_count
 		}
 
 

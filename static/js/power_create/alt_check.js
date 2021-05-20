@@ -75,6 +75,13 @@ function check_trigger() {
 	select_maxheight_entry(field, options, entry);
 }
 
+function check_multiple() {
+	const select = 'check_multiple';
+	const options = [{'val': 'overwrite', 'div': 'check-overwrite'}]
+
+	select_opacity(select, options);
+}
+
 let check_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -134,6 +141,7 @@ function check_submit() {
 	const target_type = select("check_target_type");
 	const primary = check("check_primary");
 	const frequency = select("check_frequency");
+	const overwrite = select("check_overwrite");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -188,7 +196,7 @@ function check_submit() {
 			'variable': variable,
 			'opponent': opponent,
 			'opponent_type': opponent_type,
-			'varible_type': variable_type,
+			'variable_type': variable_type,
 			'title': title,
 			'multiple': multiple,
 			'sense': sense,
@@ -202,7 +210,8 @@ function check_submit() {
 			'touch': touch,
 			'target_type': target_type,
 			'primary': primary,
-			'frequency': frequency
+			'frequency': frequency,
+			'overwrite': overwrite
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
