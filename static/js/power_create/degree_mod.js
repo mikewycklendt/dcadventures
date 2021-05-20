@@ -7,6 +7,12 @@ function deg_mod_check() {
 	entry_check(deg_mod_check, title, deg_mod_base_form, entry);
 }
 
+function deg_mod_extra() {
+	const field = 'deg_mod_extra';
+	
+	descriptor_base(field);
+}
+
 function deg_mod_type() {
 	const select = 'deg_mod_type';
 	const options = [{'val': 'circ', 'div':'deg-mod-circ'},

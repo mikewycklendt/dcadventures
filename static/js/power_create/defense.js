@@ -12,6 +12,7 @@ function defense_base() {
 	const entry = "defense-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function defense_extra() {

@@ -12,6 +12,7 @@ function env_base() {
 	const entry = "env-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function env_extra() {

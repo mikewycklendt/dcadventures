@@ -12,6 +12,7 @@ function minion_base() {
 	const entry = "minion-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function minion_multiple() {

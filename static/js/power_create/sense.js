@@ -13,6 +13,7 @@ function sense_base() {
 	const entry = "sense-entry";
 
 	base_two(field, field2, entry);
+	descriptor_base(field);
 }
 
 function sense_extra() {

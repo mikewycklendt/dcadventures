@@ -12,6 +12,7 @@ function create_base() {
 	const entry = "create-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function create_extra() {

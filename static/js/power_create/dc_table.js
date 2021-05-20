@@ -14,6 +14,12 @@ function dc_base() {
 	base(field, entry);
 }
 
+function dc_extra() {
+	const field = 'dc_extra';
+	
+	descriptor_base(field);
+}
+
 function dc_math_trait_type() {
 	const select  = 'dc_math_trait_type';
 	const fill = 'dc_math_trait';

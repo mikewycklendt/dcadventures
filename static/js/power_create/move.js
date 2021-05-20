@@ -15,6 +15,7 @@ function move_extra() {
 	const power_id = select("all_power_select");
 
 	id_select(field, fill, power_cost_select, power_id, false, false, false, ranks);
+	descriptor_base(field);
 }
 
 function move_cost() {

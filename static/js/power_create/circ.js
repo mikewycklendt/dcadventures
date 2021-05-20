@@ -7,6 +7,12 @@ function circ_check() {
 	entry_check(check, title, base, entry);
 }
 
+function circ_extra() {
+	const field = 'circ_extra';
+
+	descriptor_base(field);
+}
+
 function circ_effect() {
 	const select = 'circ_effect';
 	const options = [{'val': 'condition', 'div': 'circ-condition'},

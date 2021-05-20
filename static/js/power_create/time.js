@@ -12,6 +12,7 @@ function time_base() {
 	const entry = "time-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function time_trait_type() {

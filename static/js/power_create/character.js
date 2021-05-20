@@ -13,7 +13,8 @@ function char_base() {
 	const field ='char_extra';
 	const entry = "char-entry";
 
-	base(field, entry)
+	base(field, entry);
+	descriptor_base(field);
 }
 
 function char_extra() {

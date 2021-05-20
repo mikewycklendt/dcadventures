@@ -12,6 +12,7 @@ function damage_base() {
 	const entry = "damage-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function dam_trait_type() {

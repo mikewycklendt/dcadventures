@@ -12,6 +12,7 @@ function check_base() {
 	const entry =  "check-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function check_check_type() {

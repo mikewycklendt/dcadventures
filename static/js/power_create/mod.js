@@ -12,6 +12,7 @@ function mod_base() {
 	const entry = "mod-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function mod_extra_id() {

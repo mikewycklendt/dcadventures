@@ -12,6 +12,7 @@ function opposed_base() {
 	const entry = "opposed-entry";
 
 	base(field, entry);
+	descriptor_base(field);
 }
 
 function opposed_attached() {

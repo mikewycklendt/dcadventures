@@ -14,6 +14,33 @@ function descriptor_new(value_input, div_input, des_title_input, des_field_input
 	}
 }
 
+function descriptor_base(extra_input) {
+	const selects = document.getElementsByClassName('descriptor-sml');
+	const extra = select(extra_input);
+	let s;
+
+	if (extra != '0') {	
+		for (s of selects) {
+			const o = document.createElement('option');
+			o.value = 'power';
+			o.text = 'Base Power Setting';
+			select.add(o);
+		}
+	} else {
+		for (s of selects) {
+			options = s.options;
+			let option;
+
+			for (option of options) {
+				if (option.value == 'power') {
+					console.log(option.value);
+					option.remove();
+				}
+			}
+		}
+	}
+}
+
 function descriptor_des(value_input, div_input, row3_input) {
 	const row3 = document.getElementById(row3_input) 
 	const value = select(value_input)
