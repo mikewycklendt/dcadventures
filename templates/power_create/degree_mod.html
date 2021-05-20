@@ -87,36 +87,37 @@
 				</select>
 			</div>
 
-			
-			<div id="deg-mod-effect-descriptor">
-				<div>
-					<select class="descriptor-sml" id="deg_mod_effect_descriptor" name="deg_mod_effect_descriptor">
-						<option value="">Descriptor</option>
-						<option value="">Use above form to put descriptors here</option>
-						{% for d in descriptor_options %}
-							<option value={{d.id}}>{{d.name}}</option>
-				`		{% endfor %}
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="deg_mod_effect_descriptor_type" name="deg_mod_effect_descriptor_type" onchange="deg_mod_effect_descriptor_type()">
-						{% for i in immunity_descriptor_type %}
-							<option value="{{i.type}}">{{i.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div class="hidden" id="deg-mod-effect-descriptor-count">
-					<select class="select-sml" id="deg_mod_effect_descriptor_count" name="deg_mod_effect_descriptor_count">
-						<option value="">Effects</option>
-						<option value="rank">Power Rank</option>
-						<option value="extra">Extra Rank</option>
-						{% for i in positives %}
-							<option value={{i}}>{{i}}</option>
-						{% endfor %}
-					</select>
-				</div>
+			<div>
+				<div id="deg-mod-effect-descriptor">
+					<div>
+						<select class="descriptor-sml" id="deg_mod_effect_descriptor" name="deg_mod_effect_descriptor">
+							<option value="">Descriptor</option>
+							<option value="">Use above form to put descriptors here</option>
+							{% for d in descriptor_options %}
+								<option value={{d.id}}>{{d.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div>
+						<select class="select-sml" id="deg_mod_effect_descriptor_type" name="deg_mod_effect_descriptor_type" onchange="deg_mod_effect_descriptor_type()">
+							{% for i in immunity_descriptor_type %}
+								<option value="{{i.type}}">{{i.name}}</option>
+							{% endfor %}
+						</select>
+					</div>
+	
+					<div class="hidden" id="deg-mod-effect-descriptor-count">
+						<select class="select-sml" id="deg_mod_effect_descriptor_count" name="deg_mod_effect_descriptor_count">
+							<option value="">Effects</option>
+							<option value="rank">Power Rank</option>
+							<option value="extra">Extra Rank</option>
+							{% for i in positives %}
+								<option value={{i}}>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>	
 			</div>
 		</div>
 
