@@ -77,6 +77,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 		stylesheets.append({"style": "/static/css/template/selects.css"})
 		template = 'template.html'
 	
+	
 	negatives = []
 	for i in range(-20, 1, 1):
 		negatives.append(i)
