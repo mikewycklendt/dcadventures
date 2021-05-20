@@ -930,6 +930,7 @@ def mod_post(entry, body, cells):
 	area_damage = entry.area_damage
 	area_ranged = entry.area_ranged
 	area_descriptor = entry.area_descriptor
+	area_attach = entry.area_attach
 	limited_type = entry.limited_type
 	limited_mod = entry.limited_mod
 	limited_level_degree = entry.limited_level_degree
@@ -996,7 +997,10 @@ def mod_post(entry, body, cells):
 	advantage_effect = entry.advantage_effect
 	precise_type = entry.precise_type
 	sustained_action = entry.sustained_action
-
+	concentration_check = entry.concentration_check
+	concentration_check_type = entry.concentration_check_type
+	concentration_opposed = entry.concentration_opposed
+	concentration_effort = entry.concentration_effort
 
 	body = one_multiple(PowerMod, power_id, body)
 
@@ -1010,6 +1014,9 @@ def mod_post(entry, body, cells):
 	extra_dc = get_name(PowerDCType, extra_dc)
 	extra_circ = get_name(PowerCircType, extra_circ)
 	limited_degree = get_keyword(PowerDegree, limited_degree)
+	concentration_check = get_keyword(PowerCheck, concentration_check)
+	concentration_check_type = get_name(PowerCheckType, concentration_check_type)
+	concentration_opposed = get_keyword(PowerOpposed, concentration_opposed)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1091,6 +1098,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Damage', 9, [area_damage], new_mod)
 	new_mod = mod_cell('Range', 7, [area_ranged], new_mod)
 	new_mod = mod_cell('Descriptor', 7, [area_descriptor], new_mod)
+	new_mod = mod_cell('Attached to Area', 16, [area_attach], new_mod)
 	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
@@ -1255,7 +1263,13 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Other Side Effect:', 22, [side_other], new_mod, value)
 	body = mod_add(side_effect, new_mod, body)
 	
-	cells = check_cell('Concentration', 13, concentration, cells)
+	cells = check_cell('Concentration', 13, concentration, cells, True)
+	new_mod = mod_create('Concentration', 15)
+	new_mod = mod_cell('Check', 7, [concentration_check], new_mod)
+	new_mod = mod_cell('Check by Group', 12, [concentration_check_type], new_mod)
+	new_mod = mod_cell('Opposed Check', 15, [concentration_opposed], new_mod)
+	new_mod = mod_cell('Nullified with Extra Effort', 25, [concentration_effort], new_mod)
+	body = mod_add(concentration, new_mod, body)
 	
 	cells = check_cell('Simultaneous', 13, simultaneous, cells, True)
 	new_mod = mod_create('Simultaneous', 14)
@@ -1879,6 +1893,9 @@ def sense_post(entry, body, cells):
 	words = checks_strings('Visual', visual, words)
 	words = checks_strings('Tactile', tactile, words)
 	words = checks_strings('Special', special, words)
+
+
+
 	cells = circ_cell('Excludes', 'Excludes:', 10, words, cells, body)
 
 	cells = circ_cell('Multiple', 'If Multiple', 10, multiple, cells, body)
@@ -1932,6 +1949,8 @@ def power_check_post(entry, body, cells):
 	varible_type = entry.variable_type
 	title = entry.title
 	sense = entry.sense
+	sense_target = entry.sense_target
+	sense_type = entry.sense_type
 	mental = entry.mental
 	maneuver = entry.maneuver
 	attack_range = entry.attack_range
@@ -1993,6 +2012,12 @@ def power_check_post(entry, body, cells):
 	check_trigger_select = [{'type': 'change', 'name': 'Condition Change Trigger'}, {'type': 'condition', 'name': 'Condition Trigger'}, {'type': 'conflict', 'name': 'Conflict Action Trigger'}, {'type': 'sense', 'name': 'Sense Trigger'}, {'type': 'variable', 'name': 'Variable Check Trigger'}, {'type': 'opposed', 'name': 'Opponent Check Trigger'}, {'type': 'consequence', 'name': 'Consequence Trigger'}, {'type': 'target', 'name': 'Target Type Trigger'}]
 	trigger_title  =  selects(trigger, check_trigger_select)
 
+	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': ''}, {'type': 'skill', 'name': 'Skill Using '}, {'type': 'power', 'name': 'Power Using '}]
+	sense_type = selects(sense_type, check_sense_type)
+
+	check_sense_target = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'player', 'name': 'Player Uses '}, {'type': 'opp', 'name': 'Opponent Uses '}, {'type': 'team', 'name': 'Teammate Uses '}]
+	sense_target = selects(sense_target, check_sense_target)
+
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
 	cells = cell('Modifier', 8, [mod], cells)
@@ -2008,7 +2033,7 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('variable', 18, [variable, varible_type], vcells)
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
-	vcells = vcell('sense', w, [sense, mental], vcells)
+	vcells = vcell('sense', w, [sense_target, sense_type, sense, mental], vcells)
 	vcells = vcell('consequence', 30, [consequence, 'on', consequence_target], vcells)
 	vcells = vcell('target', 20, [target_type], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)

@@ -268,6 +268,10 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
 
+	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': 'Any Use of Sense'}, {'type': 'skill', 'name': 'Sense Used With Skill'}, {'type': 'power', 'name': 'Sense Used With Power'}]
+
+	check_sense_target = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'player', 'name': 'Player Uses Sense'}, {'type': 'opp', 'name': 'Opponent Uses Sense'}, {'type': 'team', 'name': 'Teammate Uses Sense'}]
+
 	check_target = [{'type': '', 'name': 'Check Tsrget'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}]
 
 	check_traits = [{'type': '', 'name': 'Rank'}, {'type': 'this_power', 'name': 'This Power'}, {'type': 'this_extra', 'name': 'This Extra'}, {'type': 'ability', 'name': 'Ability'}, {'type': 'skill', 'name': 'Base Skill'}, {'type': 'defense', 'name': 'Defense'}, {'type': 'bonus', 'name': 'Enhanced Skill'}, {'type': 'power', 'name': 'Power'}, {'type': 'equip', 'name': 'Equipment'}, {'type': 'speed', 'name': 'Speed Rank'}, {'type': 'distance', 'name': 'Distance Rank'}, {'type': 'active', 'name': 'Active Opponent Rank'}, {'type': 'attack', 'name': 'Attack Bonus'}, {'type': 'size', 'name': 'Size Rank'}, {'type': 'interact', 'name': 'Any Interarction'}, {'type': 'manipulate',  'name': 'Any Manipulation'}]
@@ -576,7 +580,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											suffocation_type=suffocation_type, defense_multiple=defense_multiple, extra_change=extra_change, ranks_required=ranks_required, elements=elements, condition=condition,
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
-											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency)
+											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2447,6 +2452,7 @@ def power_post_mod():
 	area_damage = request.get_json()['area_damage']
 	area_ranged = request.get_json()['area_ranged']
 	area_descriptor = request.get_json()['area_descriptor']
+	area_attach = request.get_json()['area_attach']
 	limited_type = request.get_json()['limited_type']
 	limited_mod = request.get_json()['limited_mod']
 	limited_level_degree = request.get_json()['limited_level_degree']
@@ -2525,6 +2531,11 @@ def power_post_mod():
 	precise_type = request.get_json()['precise_type']
 	sustained_action = request.get_json()['sustained_action']
 	sustained_no_move = request.get_json()['sustained_no_move']
+	concentration_check = request.get_json()['concentration_check']
+	concentration_check_type = request.get_json()['concentration_check_type']
+	concentration_opposed = request.get_json()['concentration_opposed']
+	concentration_effort = request.get_json()['concentration_effort']
+
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -2536,6 +2547,10 @@ def power_post_mod():
 	extra_circ = db_integer(PowerDCType, extra_dc)
 	extra_circ = db_integer(PowerDegreeType, extra_degree)
 	limited_degree = db_integer(PowerDegree, limited_degree)
+	concentration_check = db_integer(PowerCheck, concentration_check)
+	concentration_check_type = db_integer(PowerCheckType, concentration_check_type)
+	concentration_opposed = db_integer(PowerOpposed, concentration_opposed)
+
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2644,6 +2659,7 @@ def power_post_mod():
 							area_range = area_range,
 							area_per_rank = area_per_rank,
 							area_descriptor = area_descriptor,
+							area_attach = area_attach,
 							limited_type = limited_type,
 							limited_mod = limited_mod,
 							limited_level_degree = limited_level_degree,
@@ -2716,7 +2732,11 @@ def power_post_mod():
 							advantage_effect = advantage_effect,
 							precise_type = precise_type,
 							sustained_action = sustained_action,
-							sustained_no_move = sustained_no_move
+							sustained_no_move = sustained_no_move,
+							concentration_check = concentration_check,
+							concentration_check_type = concentration_check_type,
+							concentration_opposed = concentration_opposed,
+							concentration_effort = concentration_effort
 						)
 
 		db.session.add(entry)
@@ -3628,6 +3648,8 @@ def power_post_check():
 	title = request.get_json()['title']
 	multiple = request.get_json()['multiple']
 	sense = request.get_json()['sense']
+	sense_type = request.get_json()['sense_type']
+	sense_target = request.get_json()['sense_target']
 	mental = request.get_json()['mental']
 	maneuver = request.get_json()['maneuver']
 	attack_range = request.get_json()['attack_range']
@@ -3723,6 +3745,8 @@ def power_post_check():
 						opponent_type = opponent_type,
 						varible_type = variable_type,
 						sense = sense,
+						sense_type = sense_type,
+						sense_target = sense_target,
 						mental = mental,
 						maneuver = maneuver,
 						attack_range = attack_range,

@@ -142,12 +142,12 @@
 
 	<div id="check-conflict">
 		
-		<div class="vcenter" style="text-align: left;">
+		<div class="valign">
 			After Conflict Action:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_conflict" name="check_conflict">
+			<select class="select-sml" id="check_conflict" name="check_conflict">
 				<option value="">Conflict Action</option>
 				{% for c in conflicts %}
 					<option value={{c.id}}>{{c.name}}</option>
@@ -156,7 +156,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_conflict_range" name="check_conflict_range">
+			<select class="select-sml" id="check_conflict_range" name="check_conflict_range">
 				<option value="">Range</option>
 				{% for r in ranged %}
 					<option value={{r.id}}>{{r.name}}</option>
@@ -172,12 +172,12 @@
 	</div>
 
 	<div id="check-target">
-		<div>
+		<div class="valign">
 			Target Type:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_target_type" name="check_target_type">
+			<select class="select-sml" id="check_target_type" name="check_target_type">
 				{% for t in check_target %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -186,12 +186,12 @@
 	</div>
 
 	<div id="check-consequence">
-		<div>
+		<div class="valign">
 			Consequence:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_consequence" name="check_consequence">
+			<select class="select-sml" id="check_consequence" name="check_consequence">
 				<option value="">Consequence</option>
 				{% for c in consequences %}
 					<option value={{c.id}}>{{c.name}}</option>
@@ -200,7 +200,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_consequence_target" name="check_consequence_target">
+			<select class="select-sml" id="check_consequence_target" name="check_consequence_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -209,7 +209,7 @@
 	</div>
 	
 	<div id="check-conditions">
-		<div class="vcenter" style="text-align: left;">
+		<div class="valign">
 			Conditions:
 		</div>
 
@@ -218,7 +218,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_condition1" name="check_condition1">
+			<select class="select-sml" id="check_condition1" name="check_condition1">
 				<option value="">Start Condition</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
@@ -231,7 +231,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_condition2" name="check_condition2">
+			<select class="select-sml" id="check_condition2" name="check_condition2">
 				<option value="">End Condition</option>
 				,<option value="stable">Stabalized</option>
 				{% for c in conditions %}
@@ -241,7 +241,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_conditions_target" name="check_conditions_target">
+			<select class="select-sml" id="check_conditions_target" name="check_conditions_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -250,12 +250,12 @@
 	</div>
 	
 	<div id="check-condition">
-		<div class="vcenter" style="text-align: left;">
+		<div class="valign" style="text-align: left;">
 			Condition:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_condition" name="check_condition">
+			<select class="select-sml" id="check_condition" name="check_condition">
 				<option value="">Condition</option>
 				{% for c in conditions %}
 					<option value="{{c.id}}">{{c.name}}</option>
@@ -264,7 +264,7 @@
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_condition_target" name="check_condition_target">
+			<select class="select-sml" id="check_condition_target" name="check_condition_target">
 				{% for t in targets %}
 					<option value="{{t.type}}">{{t.name}}</option>
 				{% endfor %}
@@ -273,27 +273,43 @@
 	</div>
 
 	<div id="check-sense">
-		<div class="vcenter">
+		<div class="valign">
 			Triggered by Sense:
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_sense" name="check_sense">
+			<select class="select-sml" id="check_sense" name="check_sense">
 				<option value="">Sense</option>
 				<option value="x">Variable</option>
 				<option value="any">Any</option>
-				<option value="power">Active Power Sense</option>
 				{% for s in senses %}
 					<option value={{s.id}}>{{s.name}}</option>
 				{% endfor %}
 			</select>
  		</div>
-		 
+
+		 <div>
+			<select class="select-sml" id="check_sense_type" name="check_sense_type">
+				{% for c in check_sense_type %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
 		<div>
-			<div class="check-div">
+			<select class="select-sml" id="check_sense_target" name="check_sense_target">
+				{% for c in check_sense_target %}
+					<option value="{{c.type}}">{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div" style="font-size: 80%;">
 				<input type="checkbox" id="check_mental" class="medium-checkbox med-checkbox" > Excludes Mental
 			</div>
 		</div>
+
 	</div>
 	<div id="check-row4">
 		<div>

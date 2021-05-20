@@ -642,18 +642,8 @@ def check_trigger_select():
 		for o in opponent:
 			options.append(o)
 	elif id == 'sense':
-		options.append({'id': 'before', 'name': 'Before Player Uses Sense'})
-		options.append({'id': 'after', 'name': 'After Player Uses Sense'})
-		options.append({'id': 'before_opp', 'name': 'Before Opponent Uses Sense'})
-		options.append({'id': 'after_opp', 'name': 'After Opponent Uses Sense'})
-		options.append({'id': 'before_skill', 'name': 'Before Player Sense Skill'})
-		options.append({'id': 'after_skill', 'name': 'After Player Sense Skill'})
-		options.append({'id': 'before_opp_skill', 'name': 'Before Opponent Sense Skill'})
-		options.append({'id': 'after_opp_skill', 'name': 'After Opponent Sense Skill'})
-		options.append({'id': 'before_effect', 'name': 'Before Player Sense Effect'})
-		options.append({'id': 'after_effect', 'name': 'After Player Sense Effect'})
-		options.append({'id': 'before_opp_effect', 'name': 'Before Opponent Sense Effect'})
-		options.append({'id': 'after_opp_effect', 'name': 'After Opponent Sense Effect'})
+		options.append({'id': 'before', 'name': 'Before Use of Sense'})
+		options.append({'id': 'after', 'name': 'After Use of Sense'})
 	elif id == 'variable':
 		for c in check:
 			options.append(c)

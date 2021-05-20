@@ -1,3 +1,4 @@
+from db.skill_models import SkillBonus
 from flask import Flask, render_template, request, Response, flash, redirect, url_for
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
@@ -400,6 +401,8 @@ class PowerCheck(db.Model):
 	title = db.Column(db.String())
 	multiple = db.Column(db.String())
 	sense = db.Column(db.Integer, db.ForeignKey('senses.id'))
+	sense_type = db.Column(db.String())
+	sense_target = db.Column(db.String())
 	mental = db.Column(db.Boolean)
 	maneuver = db.Column(db.Integer, db.ForeignKey('maneuvers.id'))
 	attack_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
@@ -455,6 +458,8 @@ class PowerCheck(db.Model):
 			'title': self.title,
 			'multiple': self.multiple,
 			'sense': self.sense,
+			'sense_type': self.sense_type,
+			'sense_target': self.sense_target,
 			'mental': self.mental,
 			'maneuver': self.maneuver,
 			'attack_range': self.attack_range,
@@ -1984,6 +1989,7 @@ class PowerMod(db.Model):
 	area_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
 	area_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	area_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	area_attach = db.Column(db.Boolean)
 	limited_type = db.Column(db.String())
 	limited_mod = db.Column(db.Integer)
 	limited_level_degree = db.Column(db.String())
@@ -2055,6 +2061,10 @@ class PowerMod(db.Model):
 	precise_type = db.Column(db.Boolean)
 	sustained_action = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	sustained_no_move = db.Column(db.Boolean)
+	concentration_check = db.Column(db.Integer, db.ForeignKey('power_check.id'))
+	concentration_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
+	concentration_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
+	concentration_effort = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2100,8 +2110,8 @@ class PowerMod(db.Model):
 			'simultaneous_descriptor': self.simultaneous_descriptor,
 			'area_damage': self.area_damage,
 			'area_ranged': self.area_ranged,
-			'area_per_rank': self.area_per_rank,
 			'area_descriptor': self.area_descriptor,
+			'area_attach': self.area_attach,
 			'limited_type': self.limited_type,
 			'limited_mod': self.limited_mod,
 			'limited_level_degree': self.limited_level_degree,
@@ -2172,7 +2182,11 @@ class PowerMod(db.Model):
 			'advantage_effect': self.advantage_effect,
 			'precise_type': self.precise_type,
 			'sustained_action': self.sustained_action,
-			'sustained_no_move': self.sustained_no_move
+			'sustained_no_move': self.sustained_no_move,
+			'concentration_check': self.concentration_check,
+			'concentration_check_type': self.concentration_check_type,
+			'concentration_opposed': self.concentration_opposed,
+			'concentration_effort': self.concentration_effort
 		}
 
 class PowerRanged(db.Model):

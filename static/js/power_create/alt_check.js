@@ -122,6 +122,8 @@ function check_submit() {
 	const title = text("check_title");
 	const multiple = select("check_multiple");
 	const sense = select("check_sense");
+	const sense_type = select("check_sense_type");
+	const sense_target = select("check_sense_target")
 	const mental = check("check_mental");
 	const maneuver = select("check_maneuver");
 	const consequence = select("check_consequence");
@@ -189,6 +191,8 @@ function check_submit() {
 			'title': title,
 			'multiple': multiple,
 			'sense': sense,
+			'sense_type': sense_type,
+			'sense_target': sense_target,
 			'mental': mental,
 			'maneuver':  maneuver,
 			'consequence': consequence,

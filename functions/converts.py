@@ -871,6 +871,15 @@ def db_integer(table, value, exception=False):
 			return (value)
 		finally:
 			db.session.close()
+	elif value == 'primary':
+		try:	
+			query = db.session.query(table).filter_by(primary=True).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
 	elif value == 'dead':
 		try:	
 			query = db.session.query(table).filter_by(dead=True).first()
@@ -1147,6 +1156,13 @@ def id_check(table, value_id, name, errors, exception=False):
 			error = True
 			error_msgs.append(message)
 		db.session.close()
+	elif value_id == 'primary':
+		query = db.session.query(table).filter_by(primary=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
 	elif value_id ==  'ex':
 		return (errors)
 	else:
@@ -1371,18 +1387,8 @@ def check_when_convert(id, when):
 			{'type': 'success_opp', 'name': 'After Opponent Success'},
 			{'type': 'fail_opp', 'name': 'After Opponent Failure'}]
 
-	sense = [{'type': 'before', 'name': 'Before Player Uses Sense'},
-			{'type': 'after', 'name': 'After Player Uses Sense'},
-			{'type': 'before_opp', 'name': 'Before Opponent Uses Sense'},
-			{'type': 'after_opp', 'name': 'After Opponent Uses Sense'},
-			{'type': 'before_skill', 'name': 'Before Player Sense Skill'},
-			{'type': 'after_skill', 'name': 'After Player Sense Skill'},
-			{'type': 'before_opp_skill', 'name': 'Before Opponent Sense Skill'},
-			{'type': 'after_opp_skill', 'name': 'After Opponent Sense Skill'},
-			{'type': 'before_effect', 'name': 'Before Player Sense Effect'},
-			{'type': 'after_effect', 'name': 'After Player Sense Effect'},
-			{'type': 'before_opp_effect', 'name': 'Before Opponent Sense Effect'},
-			{'type': 'after_opp_effect', 'name': 'After Opponent Sense Effect'}]
+	sense = [{'type': 'before', 'name': 'Before Use of Sense'},
+			{'type': 'after', 'name': 'After Use of Sense'}]
 
 	if id == '':
 		if when == 'primary':

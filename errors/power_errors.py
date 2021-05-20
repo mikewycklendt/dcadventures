@@ -21,7 +21,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -901,7 +901,9 @@ def mod_post_errors(data):
 	advantage_rank_per = data['advantage_rank_per']
 	precise_type = data['precise_type']
 	sustained_action = data['sustained_action']
-
+	concentration_check = data['concentration_check']
+	concentration_check_type = data['concentration_check_type']
+	concentration_opposed = data['concentration_opposed']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -913,6 +915,9 @@ def mod_post_errors(data):
 	errors = id_check(PowerDCType, extra_dc, 'Extra DC', errors)
 	errors = id_check(PowerDegreeType, extra_degree, 'Extra Degree', errors)
 	errors = id_check(PowerDegree, limited_degree, 'Degree'. errors)
+	errors = id_check(PowerCheck, concentration_check, 'Concentration Check', errors)
+	errors = id_check(PowerCheckType, concentration_check_type, 'Concentration Check by Group', errors)
+	errors = id_check(PowerOpposed, concentration_opposed)
 
 	errors = power_check(power_id, errors)
 
@@ -1086,6 +1091,8 @@ def mod_post_errors(data):
 	errors = check_fields(sustained, 'Sustained', [sustained_action], errors)
 	errors = check_field(sustained, 'Sustained', 'Action to Sustain', sustained_action, errors)
 
+	errors = seperate([concentration_check, concentration_check_type, concentration_opposed], 'Concentration', errors)
+	errors = check_of(concentration, 'Concentration', 'Concentration Check', [concentration_check, concentration_check_type, concentration_opposed], errors)
 	return (errors)
 
 def ranged_post_errors(data):
@@ -1570,6 +1577,12 @@ def sense_post_errors(data):
 
 	errors = check_of(ranged, 'Extended', 'Range or Range by Group', [range, ranged_type], errors)
 
+	errors = valid_options(mental, 'Excludes a Mental Sense', ['all', 'x'], 'All Senses or Variable Sense', sense, 'Sense', errors)
+	errors = valid_options(tactile, 'Excludes a Tactile Sense', ['all', 'x'], 'All Senses or Variable Sense', sense, 'Sense', errors)
+	errors = valid_options(special, 'Excludes a Special Sense', ['all', 'x'], 'All Senses or Variable Sense', sense, 'Sense', errors)
+	errors = valid_options(visual, 'Excludes a Visual Sense', ['all', 'x'], 'All Senses or Variable Sense', sense, 'Sense', errors)
+
+
 	return (errors)
 
 
@@ -1614,6 +1627,8 @@ def power_check_post_errors(data):
 	title = data['title']
 	multiple = data['multiple']
 	sense = data['sense']
+	sense_type = data['sense_type']
+	sense_target = data['sense_target']
 	attack_range = data['attack_range']
 	consequence = data['consequence']
 	consequence_target = data['consequence_target']
@@ -1670,8 +1685,10 @@ def power_check_post_errors(data):
 	errors = variable_field('condition', trigger, 'Condition Target', condition_target, errors)
 	errors = variable_fields('conflict', 'Trigger', trigger, [conflict], errors)
 	errors = variable_field('conflict', trigger, 'Conflict Action', conflict, errors)
-	errors = variable_fields('sense', 'Trigger', trigger, [sense], errors)
+	errors = variable_fields('sense', 'Trigger', trigger, [sense, sense_type, sense_target], errors)
 	errors = variable_field('sense', trigger, 'Sense', sense, errors)
+	errors = variable_field('sense', trigger, 'Sense User', sense_target, errors)
+	errors = variable_field('sense', trigger, 'Sense Use Type', sense_type, errors)
 	errors = variable_fields('opposed', 'Trigger', trigger, [opponent], errors)
 	errors = variable_fields('target', 'Trigger', trigger, [target_type], errors)
 	errors = variable_field('target', trigger, 'Target Type', target_type, errors)

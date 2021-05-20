@@ -397,6 +397,14 @@ function mod_sustained() {
 	check_drop(check, div, entry);
 }
 
+function mod_concentration() {
+	const check = 'mod_concentration';
+	const div = 'mod-concentration';
+	const entry  = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -448,6 +456,7 @@ function mod_submit() {
 	const area_damage = select("mod_area_damage");
 	const area_ranged = select("mod_area_ranged");
 	const area_descriptor = select("mod_area_descriptor");
+	const area_attach = check("mod_area_attach");
 	const limited_type = select("mod_limited_type");
 	const limited_mod = select("mod_limited_mod");
 	const limited_level_degree = select("mod_limited_level_degree");
@@ -522,7 +531,11 @@ function mod_submit() {
 	const advantage_effect = check("mod_advantage_effect");
 	const precise_type = select("mod_precise_type");
 	const sustained_action = select("mod_sustained_action");
-	const sustained_no_move = check("mod_sustained_no_move")
+	const sustained_no_move = check("mod_sustained_no_move");
+	const concentration_check = select("mod_concentration_check");
+	const concentration_check_type = select("mod_concentration_check_type");
+	const concentration_opposed = select("mod_concentration_opposed");
+	const concentration_effort = check("mod_concentration_effort");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -574,6 +587,7 @@ function mod_submit() {
 			'area_damagw': area_damage,
 			'area_range': area_ranged,
 			'area_descriptor': area_descriptor,
+			'area_attach': area_attach,
 			'limited_type': limited_type,
 			'limited_mod': limited_mod,
 			'limited_level_degree': limited_level_degree,
@@ -651,7 +665,11 @@ function mod_submit() {
 			'advantage_effect': advantage_effect,
 			'precise_type': precise_type,
 			'sustained_action': sustained_action,
-			'sustained_no_move': sustained_no_move
+			'sustained_no_move': sustained_no_move,
+			'concentration_check': concentration_check,
+			'concentration_check_type': concentration_check_type,
+			'concentration_opposed': concentration_opposed,
+			'concentration_effort': concentration_effort
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

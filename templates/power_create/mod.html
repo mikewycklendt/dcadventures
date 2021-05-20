@@ -181,7 +181,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_concentration" class="medium-checkbox med-checkbox"> Concentration
+				<input type="checkbox" id="mod_concentration" class="medium-checkbox med-checkbox" onclick="mod_concentration()"> Concentration
 			</div>
 		</div>
 
@@ -246,8 +246,52 @@
 		</div>
 	</div>
 
-	<div id="mod-sustained">
+	<div id="mod-concentration">
+		<div class="valigb">
+			Concentration
+		</div>
+
 		<div>
+			<select class="check-sml" id="mod_concentration_check" name="mod_concentration_check">
+				<option value="">Automatic Success on Check</option>
+				<option value="">Use Variable Check form to put options here</option>
+				<option value="primary">Primary Check</option>
+				{% for p in power_check %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="check-title-sml" id="mod_concentration_check_type" name="mod_concentration_check_type">
+				<option value="">Automatic Success on Check by Group</option>
+				<option value="">Use Variable Check form to put options here</option>
+				<option value="primary">Primary Check</option>
+				{% for p in power_check_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="opposed-sml" id="mod_concentration_opposed" name="mod_concentration_opposed">
+				<option value="">Automatic Success on Opponent Check</option>
+				<option value="">Use Opponent Check form to Put Options Here</option>
+				{% for p in power_opposed %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<div class="check-div-fit" style="font-size: 75%;">
+				<input type="checkbox" id="mod_concentration_effort" class="medium-checkbox med-checkbox"> Nullified with Effort
+			</div>
+		</div>
+	</div>
+
+	<div id="mod-sustained">
+		<div class="valigb">
 			Sustained:
 		</div>
 
@@ -453,6 +497,12 @@
 					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="mod_area_attach" class="medium-checkbox med-checkbox"> Attached
+			</div>
 		</div>
 
 	</div>

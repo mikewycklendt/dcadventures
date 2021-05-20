@@ -397,6 +397,25 @@ def incompatible(value, field, dependent, val, f, fieldname, name, errors):
 		errors['error'] = error
 
 	return (errors)
+
+def valid_options(check, name, values, names, field, fieldname, errors):
+	error_msgs = errors['error_msgs']
+	error = True
+	
+	if check == False:
+		return (errors)
+
+	for v in values:
+		if field == v:
+			error = False
+
+	if error:
+		message = 'If this rule ' + name + ' you can only select ' + names + ' from the ' + fieldname + ' field.'
+		error_msgs.append(message)
+		errors['error_msgs'] = error_msgs
+		errors['error'] = error
+
+	return (errors)
 	
 def variable_field_of(value, field, names, fields, errors):
 	error_msgs = errors['error_msgs']
