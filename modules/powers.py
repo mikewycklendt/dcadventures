@@ -266,7 +266,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
-	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites Check'}]
+	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}]
 
 	check_sense_type = [{'type': '', 'name': 'Sense Use Type'}, {'type': 'any', 'name': 'Any Use of Sense'}, {'type': 'skill', 'name': 'Sense Used With Skill'}, {'type': 'power', 'name': 'Sense Used With Power'}]
 
@@ -403,7 +403,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	null_type = [{'type': '', 'name': 'Effect'}, {'type': 'null', 'name': 'Nullifies Effect'}, {'type': 'mod', 'name': 'Modifier to Check'}]
 
 	nullify = [{'type': '', 'name': 'Nullify Type'}, {'type': 'dc', 'name': 'DC'}, {'type': 'mod', 'name': 'Modifier'}]
-
 
 	object_damage = [{'type': 'mass', 'name': 'Object Mass'}, {'type': 'volume', 'name': 'Object Volume'}, {'type': 'tough', 'name': 'Object Toughness'}]
 
@@ -3652,7 +3651,7 @@ def power_post_check():
 	variable = request.get_json()['variable']
 	opponent = request.get_json()['opponent']
 	opponent_type = request.get_json()['opponent_type']
-	variable_type = request.get_json()['variable_type']
+	varible_type = request.get_json()['variable_type']
 	title = request.get_json()['title']
 	multiple = request.get_json()['multiple']
 	sense = request.get_json()['sense']
@@ -3667,7 +3666,6 @@ def power_post_check():
 	touch = request.get_json()['touch']
 	target_type = request.get_json()['target_type']
 	primary = request.get_json()['primary']
-	overwrite = request.get_json()['overwrite']
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3683,9 +3681,7 @@ def power_post_check():
 	variable = db_integer(PowerCheck, variable)
 	opponent = db_integer(PowerOpposed, opponent)
 	opponent_type = db_integer(PowerOpposedType, opponent_type)
-	variable_type = db_integer(PowerCheckType, variable_type)
-	overwrite = db_integer(PowerCheck, overwrite)
-
+	varible_type = db_integer(PowerCheckType, varible_type)
 
 	attack = integer(attack)
 
@@ -3754,7 +3750,7 @@ def power_post_check():
 						title = title,
 						multiple = multiple,
 						opponent_type = opponent_type,
-						variable_type = variable_type,
+						varible_type = variable_type,
 						sense = sense,
 						sense_type = sense_type,
 						sense_target = sense_target,
@@ -3766,8 +3762,7 @@ def power_post_check():
 						defenseless = defenseless,
 						touch = touch,
 						target_type = target_type,
-						primary = primary,
-						overwrite = overwrite
+						primary = primary
 					)
 
 	db.session.add(entry)
