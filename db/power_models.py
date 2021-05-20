@@ -872,6 +872,7 @@ class PowerDegree(db.Model):
 	effect_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	effect_descriptor_type = db.Column(db.String())
 	effect_descriptor_count = db.Column(db.Integer)
+	test = db.Column(db.Boolean)
 
 	def format(self):
 		return {
