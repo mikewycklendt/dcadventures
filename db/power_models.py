@@ -2002,7 +2002,7 @@ class PowerMod(db.Model):
 	objects_alone = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	objects_character = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	effortless_type = db.Column(db.String())
-	
+	effortless_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	effortless_degree_type = db.Column(db.String())
 	effortless_retries = db.Column(db.Boolean)
 	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
