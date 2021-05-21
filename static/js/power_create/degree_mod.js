@@ -29,7 +29,7 @@ function deg_mod_type() {
 					{'val': ['descriptor'], 'div': 'deg-mod-descriptor'},
 					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'}];
 
-	select_opacity(select, options);
+	select_opacity_shared(select, options);
 }
 
 function deg_mod_effect() {
