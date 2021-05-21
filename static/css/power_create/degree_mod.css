@@ -348,7 +348,7 @@
 #deg-mod-effect-type {
 	display: none;
 	width: 98%;
-	grid-template-columns: 25% 75%;
+	grid-template-columns: 20% 80%;
 	opacity: 0%;
 	transition: all .3s ease-out
 }
@@ -356,7 +356,7 @@
 #deg-mod-effect-descriptor {
 	display: none;
 	width: 98%;
-	grid-template-columns: 40% 35% 25%;
+	grid-template-columns: 43% 42% 15%;
 	opacity: 0%;
 	transition: all .3s ease-out
 }
