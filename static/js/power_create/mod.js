@@ -458,7 +458,6 @@ function mod_submit() {
 	const acute = check("ranks_acute");
 	const objects_alone = select("mod_objects_alone");
 	const objects_character = select("mod_objects_character");
-	const effortless_type = select("mod_effortless_type")
 	const effortless_degree = select("mod_effortless_degree");
 	const effortless_retries = check("mod_effortless_retries");
 	const effortless_degree_type = select("mod_effortless_degree_type");
@@ -591,7 +590,6 @@ function mod_submit() {
 			'acute': acute,
 			'objects_alone': objects_alone,
 			'objects_character': objects_character,
-			'effortless_type': effortless_degree_type,
 			'effortless_degree_type': effortless_degree_type,
 			'effortless_degree': effortless_degree,
 			'effortless_retries': effortless_retries,

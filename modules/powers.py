@@ -2458,7 +2458,6 @@ def power_post_mod():
 	acute = request.get_json()['acute']
 	objects_alone = request.get_json()['objects_alone']
 	objects_character = request.get_json()['objects_character']
-	effortless_type = request.get_json()['effortless_type']
 	effortless_degree_type = request.get_json()['effortless_degree_type']
 	effortless_degree = request.get_json()['effortless_degree']
 	effortless_retries = request.get_json()['effortless_retries']
@@ -2664,7 +2663,6 @@ def power_post_mod():
 							acute = acute,
 							objects_alone = objects_alone,
 							objects_character = objects_character,
-							effortless_type = effortless_type,
 							effortless_degree_type = effortless_degree_type,
 							effortless_degree = effortless_degree,
 							effortless_retries = effortless_retries,

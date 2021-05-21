@@ -835,7 +835,6 @@ def mod_post_errors(data):
 	unreliable = data['unreliable']
 	objects_alone = data['objects_alone']
 	objects_character = data['objects_character']
-	effortless_type = data['effortless_type']
 	effortless_degree_type = data['effortless_degree_type']
 	effortless_degree = data['effortless_degree']
 	effortless_retries = data['effortless_retries']
@@ -1080,12 +1079,9 @@ def mod_post_errors(data):
 	errors = check_fields(simultaneous, 'Simultaneous', [simultaneous_descriptor], errors)
 	errors = check_field(simultaneous, 'Simultaneous', 'Descriptor', simultaneous_descriptor, errors)
 	
-	errors = check_fields(effortless, 'Effortless', [effortless_type], errors)
-	errors = check_field(effortless, 'Effortless', 'Effortless Type', effortless_type, errors)
-
-	errors = variable_fields('reattempt', 'Can Reattempt After Failure', effortless_type, [effortless_degree, effortless_degree_type], errors)
-	errors = variable_field('reattempt', effortless_type, 'Degree', effortless_degree, errors)
-	errors = variable_field('reattempt', effortless_type, 'Degree Type', effortless_degree_type, errors)
+	errors = check_fields(effortless, 'Effortless', [ effortless_degree,  effortless_degree_type], errors)
+	errors = check_field(effortless, 'Effortless', 'Degree Type',  effortless_degree_type, errors)
+	errors = check_field(effortless, 'Effortless', 'Degree',  effortless_degree, errors)
 
 	errors = check_fields(extra, 'Extra Effect', [extra_count], errors)
 	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)

@@ -425,39 +425,29 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="mod_effortless_type" name="mod_effortless_type" onchange="mod_effortless_type()">
-				{% for e in effortless_type %}
-					<option value="{{e.type}}">{{e.name}}</option>
+			<select class="select-sml reattempt-sml" id="mod_effortless_degree" name="mod_effortless_degree">
+				<option value="">Reattempt After Degree of Failure</option>
+				<option value="fail">Failure</option>
+				{% for p in power_degree %}
+					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div id="mod-effortless-reattempt">
-			<div>
-				<select class="select-sml reattempt-sml" id="mod_effortless_degree" name="mod_effortless_degree">
-					<option value="">Reattempt After Degree of Failure</option>
-					<option value="fail">Failure</option>
-					{% for p in power_degree %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<select class="select-sml" id="mod_effortless_degree_type" name="mod_effortless_degree_type">
-					{% for m in measure_type %}
-						<option value="{{p.type}}">{{p.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div>
-				<div class="check-div">
-					<input type="checkbox" id="mod_effortless_retries" class="medium-checkbox med-checkbox"> Unlimited Retries
-				</div>
-			</div>
-	
+		<div>
+			<select class="select-sml" id="mod_effortless_degree_type" name="mod_effortless_degree_type">
+				{% for m in measure_type %}
+					<option value="{{p.type}}">{{p.name}}</option>
+				{% endfor %}
+			</select>
 		</div>
+
+		<div>
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="mod_effortless_retries" class="medium-checkbox med-checkbox"> Unlimited Retries
+			</div>
+		</div>
+	
 
 	</div>
 

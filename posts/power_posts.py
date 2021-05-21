@@ -932,6 +932,7 @@ def mod_post(entry, body, cells):
 	objects_alone = entry.objects_alone
 	objects_character = entry.objects_character
 	effortless_degree = entry.effortless_degree
+	effortless_degree_type = entry.effortless_degree_type
 	effortless_retries = entry.effortless_retries
 	simultaneous_descriptor = entry.simultaneous_descriptor
 	area_damage = entry.area_damage
@@ -1024,6 +1025,7 @@ def mod_post(entry, body, cells):
 	concentration_check = get_keyword(PowerCheck, concentration_check)
 	concentration_check_type = get_name(PowerCheckType, concentration_check_type)
 	concentration_opposed = get_keyword(PowerOpposed, concentration_opposed)
+	effortless_degree = get_keyword(PowerDegree, effortless_degree)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1056,6 +1058,7 @@ def mod_post(entry, body, cells):
 	limited_degree_type = math_convert(limited_degree_type)
 	limited_level_degree = math_convert(limited_level_degree)
 	limited_range_type = math_convert(limited_range_type)
+	effortless_degree_type = math_convert(effortless_degree_type)
 
 	limited_type_select = [{'type': '', 'name': 'Limited Against'}, {'type': 'task_type', 'name': 'Task Type'}, {'type': 'task', 'name': 'All tasks but One'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'subjects', 'name': 'Subjects'}, {'type': 'language', 'name': 'Different Language'}, {'type': 'extra', 'name': 'Extra Effect'}, {'type': 'degree', 'name': 'Degree of Success'}, {'type': 'sense', 'name': 'Sense'},  {'type': 'range', 'name': 'Range'}, {'type': 'source', 'name': 'Requires Descriptor'}, {'type': 'other', 'name': 'Other'}, {'type': 'level', 'name': 'Level'}]
 
@@ -1080,7 +1083,6 @@ def mod_post(entry, body, cells):
 	precise_type_select = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 	precise_type = selects(precise_type, precise_type_select)
 
-	effortless_degree = integer_convert(effortless_degree)
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
 	ranks_ranks = integer_convert(ranks_ranks)
@@ -1285,7 +1287,7 @@ def mod_post(entry, body, cells):
 	
 	cells = check_cell('Effortless', 11, effortless, cells, True)
 	new_mod = mod_create('Effortless', 12)
-	new_mod = mod_cell('Degree:', 8, [effortless_degree], new_mod)
+	new_mod = mod_cell('Degree:', 8, [effortless_degree_type, effortless_degree, 'Degree'], new_mod)
 	new_mod = mod_cell('Unlimited Retries:', 20, [effortless_retries], new_mod)	
 	body = mod_add(effortless, new_mod, body)
 	
