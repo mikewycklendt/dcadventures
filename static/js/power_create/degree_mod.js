@@ -34,7 +34,8 @@ function deg_mod_type() {
 
 function deg_mod_effect() {
 	const select = 'deg_mod_effect';
-	const options = [{'val': 'descriptor', 'div': 'deg-mod-effect-descriptor'}];
+	const options = [{'val': 'descriptor', 'div': 'deg-mod-effect-descriptor'},
+					{'val': 'power', 'div': 'deg-mod-effect-power'}];
 
 	select_opacity(select, options);
 }
@@ -357,7 +358,8 @@ function deg_mod_submit() {
 	const effect_descriptor = select("deg_mod_effect_descriptor");
 	const effect_descriptor_type = select("deg_mod_effect_descriptor_type");
 	const effect_descriptor_count = select("deg_mod_effect_descriptor_count");
-
+	const effect_power = select("deg_mod_effect_power")
+	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
@@ -467,7 +469,8 @@ function deg_mod_submit() {
 			'effect': effect,
 			'effect_descriptor': effect_descriptor,
 			'effect_descriptor_type': effect_descriptor_type,
-			'effect_descriptor_count': effect_descriptor_count
+			'effect_descriptor_count': effect_descriptor_count,
+			'effect_power': effect_power
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

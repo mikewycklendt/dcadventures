@@ -321,6 +321,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	descriptor_effect = [{'type': '', 'name': 'Effect'}, {'type': 'apply', 'name': 'Applies'}, {'type': 'remove', 'name': 'Removes'}, {'type': 'if', 'name': 'If'}]
 
+	descriptor_effect_type = [{'type': '', 'name': 'Descriptor Effect Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': 'Number or Matching Effects'}]
+
 	determined = [{'type': '', 'name': 'Determined By'}, {'type': 'dc', 'name': 'DC'}, {'type': 'target', 'name': 'Target Trait'}, {'type': 'player', 'name': 'Player Trait'}]
 
 	dimensions = [{'type': '', 'name': 'Dimension Type'}, {'type': 'one', 'name': 'Specific Dimension'}, {'type': 'descriptor', 'name': 'Descriptor Dimension'}, {'type': 'any', 'name': 'Any Dimension'}]
@@ -335,7 +337,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	effects = [{'type': 'condition', 'name': 'Condition'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'nullify', 'name': 'Nullifies Opponent Effect'}, {'type': 'trait', 'name': 'Weakened Trait'}, {'type': 'level', 'name': 'Level'}]
 
-	effect_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'power', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}]
+	effect_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'this', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'effect', 'name': 'Any Effect'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'power', 'name': 'Power Effect'}]
 
 	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
 
@@ -360,8 +362,6 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
 	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
-
-	immunity_descriptor_type = [{'type': '', 'name': 'Descriptor Immunity Type'}, {'type': 'all', 'name': 'All Effects That Match'}, {'type': 'count', 'name': 'Number or Matching Effects'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -586,7 +586,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
-											check_sense_type=check_sense_type, check_sense_target=check_sense_target, immunity_descriptor_type=immunity_descriptor_type, effect_type=effect_type)
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -4383,6 +4383,7 @@ def power_post_degree():
 	effect_descriptor = request.get_json()['effect_descriptor']
 	effect_descriptor_type = request.get_json()['effect_descriptor_type']
 	effect_descriptor_count = request.get_json()['effect_descriptor_count']
+	effect_power = request.get_json()['effect_power']
 
 	errors = power_degree_post_errors(data)
 
@@ -4415,6 +4416,7 @@ def power_post_degree():
 	check_type = db_integer(Check, check_type)
 	descriptor = db_integer(PowerDes, descriptor)
 	effect_descriptor = db_integer(PowerDes, effect_descriptor)
+	effect_power = db_integer(Power, effect_power)
 
 	opposed = db_integer(PowerOpposed, opposed)
 	resist_dc = db_integer(PowerDC, resist_dc)
@@ -4562,7 +4564,8 @@ def power_post_degree():
 						effect = effect,
 						effect_descriptor = effect_descriptor,
 						effect_descriptor_type = effect_descriptor_type,
-						effect_descriptor_count = effect_descriptor_count)
+						effect_descriptor_count = effect_descriptor_count,
+						effect_power = effect_power)
 
 	db.session.add(entry)
 	db.session.commit()

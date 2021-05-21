@@ -78,6 +78,58 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-effect-type">
+			<div>
+				<select class="select-sml" id="deg_mod_effect" name="deg_mod_effect" onchange="deg_mod_effect()">
+					{% for e in effect_type %}
+						<option value="{{e.type}}">{{e.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div id="deg-mod-effect-descriptor">
+				<div>
+					<select class="descriptor-sml" id="deg_mod_effect_descriptor" name="deg_mod_effect_descriptor">
+						<option value="">Use Descriptor form to put options here</option>
+						{% for d in descriptor_options %}
+							<option value={{d.id}}>{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div>
+					<select class="select-sml" id="deg_mod_effect_descriptor_type" name="deg_mod_effect_descriptor_type">
+						{% for d in descriptor_effect_type %}
+							<option value="{{d.type}}">{{d.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div id="deg-mod-effect-descriptor-count">
+					<select class="select-sml" id="deg_mod_effect_descriptor_count" name="deg_mod_effect_descriptor_count">
+						<option value="">Effect Count</option>
+						<option value="rank">Power Rank</option>
+						<option value="extra">Extra Rank</option>
+						{% for i in positives %}
+							<option value={{i}}>{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
+			<div id="deg-mod-effect-power">
+				<div>
+					<select class="select-sml" id="deg_mod_effect_power" name="deg_mod_effect_power">
+						<option value="">Power</option>
+						<option value="xsense">Any Sense Power</option>
+						{% for p in powers %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+
 			
 		<div id="deg-mod-descriptor">
 			<div>

@@ -2610,6 +2610,7 @@ def power_degree_post(entry, body, cells):
 	effect_descriptor = entry.effect_descriptor
 	effect_descriptor_type = entry.effect_descriptor_type
 	effect_descriptor_count = entry.effect_descriptor_count
+	effect_power = entry.effect_power
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2640,6 +2641,7 @@ def power_degree_post(entry, body, cells):
 	condition2 = get_name(Condition, condition2)
 	descriptor = get_name(PowerDes, descriptor)
 	effect_descriptor = get_name(PowerDes, effect_descriptor)
+	effect_power = get_name(Power, effect_power)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2713,7 +2715,7 @@ def power_degree_post(entry, body, cells):
 	mind_select = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': knowledge_mind_count + 'Personal Thoughts'}, {'type': 'memory', 'name': knowledge_mind_count + 'Memories'}, {'type': 'sub', 'name': knowledge_mind_count + 'Subconscious Thoughts'}, {'type': 'sense', 'name': 'Sensory Link'}]
 	knowledge_mind = selects(knowledge_mind, mind_select)
 
-	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'power', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}]
+	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'this', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}, {'type': 'power', 'name': effect_power}]
 	effect = selects(effect, effect_type)
 
 

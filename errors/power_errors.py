@@ -2206,6 +2206,7 @@ def power_degree_post_errors(data):
 	effect_descriptor = data['effect_descriptor']
 	effect_descriptor_type = data['effect_descriptor_type']
 	effect_descriptor_count = data['effect_descriptor_count']
+	effect_power = data['effect_power']
 
 
 	errors = power_check(power_id, errors)
@@ -2258,8 +2259,8 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerDegree, linked, 'Linked Degree', errors)
 	errors = id_check(PowerCirc, circumstance, 'Circumstance Modifier Keyword', errors)
 	
-	errors = id_check(PowerDes, effect_descriptor)
-
+	errors = id_check(PowerDes, effect_descriptor, 'Effect Descriptor', errors)
+	errors = id_check(Power, effect_power, 'Power Effect', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
@@ -2417,9 +2418,11 @@ def power_degree_post_errors(data):
 
 	errors = variable_fields('descriptor', 'Descriptor', effect, [effect_descriptor], errors)
 	errors = variable_field('descriptor', effect, 'Descriptor', effect_descriptor, errors)
-
 	errors = variable_fields('count', 'Effect Count', effect_descriptor_type, [effect_descriptor_count], errora)
 	errors = variable_field('count', effect_descriptor_type, 'Count', effect_descriptor_count, errora)
+
+	errors = variable_fields('power', 'Power Effect', effect, [effect_power], errors)
+	errors = variable_field('power', effect, 'Power', effect_power, errors)
 
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
