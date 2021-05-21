@@ -436,6 +436,7 @@
 			<div>
 				<select class="select-sml reattempt-sml" id="mod_effortless_degree" name="mod_effortless_degree">
 					<option value="">Reattempt After Degree of Failure</option>
+					<option value="fail">Failure</option>
 					{% for p in power_degree %}
 						<option value={{p.id}}>{{p.name}}</option>
 					{% endfor %}

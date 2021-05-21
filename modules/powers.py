@@ -2458,6 +2458,8 @@ def power_post_mod():
 	acute = request.get_json()['acute']
 	objects_alone = request.get_json()['objects_alone']
 	objects_character = request.get_json()['objects_character']
+	effortless_type = request.get_json()['effortless_type']
+	effortless_degree_type = request.get_json()['effortless_degree_type']
 	effortless_degree = request.get_json()['effortless_degree']
 	effortless_retries = request.get_json()['effortless_retries']
 	simultaneous_descriptor = request.get_json()['simultaneous_descriptor']
@@ -2562,7 +2564,7 @@ def power_post_mod():
 	concentration_check = db_integer(PowerCheck, concentration_check)
 	concentration_check_type = db_integer(PowerCheckType, concentration_check_type)
 	concentration_opposed = db_integer(PowerOpposed, concentration_opposed)
-
+	effortless_degree = db_integer(PowerDegree, effortless_degree)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2577,8 +2579,6 @@ def power_post_mod():
 	advantage = db_integer(Advantage, advantage)
 	sustained_action = db_integer(Action, sustained_action)
 
-	effortless_degree = integer(effortless_degree)
-	effortless_retries = integer(effortless_retries)
 	simultaneous_descriptor = integer(simultaneous_descriptor)
 	area_descriptor = integer(area_descriptor)
 	limited_mod = integer(limited_mod)
@@ -2664,6 +2664,8 @@ def power_post_mod():
 							acute = acute,
 							objects_alone = objects_alone,
 							objects_character = objects_character,
+							effortless_type = effortless_type,
+							effortless_degree_type = effortless_degree_type,
 							effortless_degree = effortless_degree,
 							effortless_retries = effortless_retries,
 							simultaneous_descriptor = simultaneous_descriptor,
@@ -4386,6 +4388,7 @@ def power_post_degree():
 	effect_descriptor_type = request.get_json()['effect_descriptor_type']
 	effect_descriptor_count = request.get_json()['effect_descriptor_count']
 	effect_power = request.get_json()['effect_power']
+	fail = preset_convert('fail', value)
 
 	errors = power_degree_post_errors(data)
 
@@ -4567,7 +4570,8 @@ def power_post_degree():
 						effect_descriptor = effect_descriptor,
 						effect_descriptor_type = effect_descriptor_type,
 						effect_descriptor_count = effect_descriptor_count,
-						effect_power = effect_power)
+						effect_power = effect_power,
+						fail = fail)
 
 	db.session.add(entry)
 	db.session.commit()

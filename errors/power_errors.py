@@ -835,6 +835,8 @@ def mod_post_errors(data):
 	unreliable = data['unreliable']
 	objects_alone = data['objects_alone']
 	objects_character = data['objects_character']
+	effortless_type = data['effortless_type']
+	effortless_degree_type = data['effortless_degree_type']
 	effortless_degree = data['effortless_degree']
 	effortless_retries = data['effortless_retries']
 	simultaneous_descriptor = data['simultaneous_descriptor']
@@ -946,7 +948,8 @@ def mod_post_errors(data):
 	errors = id_check(Advantage, advantage, 'Advantage', errors)
 	errors = id_check(Action, sustained_action, 'Sustained Action', errors)
 
-	errors = int_check(effortless_degree, 'Effortless Degree', errors)
+	errors = id_check(PowerDegree, effortless_degree, 'Effortless Degree', errors)
+
 	errors = int_check(limited_mod, 'Limited Modifier', errors)
 	errors = int_check(limited_subjects, 'limited by Number of Subjects', errors)
 	errors = int_check(limited_degree, 'limited by Degree', errors)
@@ -1077,8 +1080,12 @@ def mod_post_errors(data):
 	errors = check_fields(simultaneous, 'Simultaneous', [simultaneous_descriptor], errors)
 	errors = check_field(simultaneous, 'Simultaneous', 'Descriptor', simultaneous_descriptor, errors)
 	
-	errors = check_fields(effortless, 'Effortless', [effortless_degree], errors)
-	errors = check_field(effortless, 'Effortless', 'Degree of Failure', effortless_degree, errors)
+	errors = check_fields(effortless, 'Effortless', [effortless_type], errors)
+	errors = check_field(effortless, 'Effortless', 'Effortless Type', effortless_type, errors)
+
+	errors = variable_fields('reattempt', 'Can Reattempt After Failure', effortless_type, [effortless_degree, effortless_degree_type], errors)
+	errors = variable_field('reattempt', effortless_type, 'Degree', effortless_degree, errors)
+	errors = variable_field('reattempt', effortless_type, 'Degree Type', effortless_degree_type, errors)
 
 	errors = check_fields(extra, 'Extra Effect', [extra_count], errors)
 	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)

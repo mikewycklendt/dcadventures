@@ -898,6 +898,15 @@ def db_integer(table, value, exception=False):
 			return (value)
 		finally:
 			db.session.close()
+	elif value == 'fail':
+		try:
+			query = db.session.query(table).filter_by(fail=True, value=None).first()
+			value = query.id
+		except:
+			print(value)
+			return (value)
+		finally:
+			db.session.close()
 	elif value == '':
 		value = None
 		return (value)
@@ -1174,6 +1183,13 @@ def id_check(table, value_id, name, errors, exception=False):
 		db.session.close()
 	elif value_id == 'sense':
 		query = db.session.query(table).filter_by(sense=True).first()
+		if query is None:
+			message = 'Not a valid option for ' + name
+			error = True
+			error_msgs.append(message)
+		db.session.close()
+	elif value_id == 'fail':
+		query = db.session.query(table).filter_by(fail=True, value=None).first()
 		if query is None:
 			message = 'Not a valid option for ' + name
 			error = True
