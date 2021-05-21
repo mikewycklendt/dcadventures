@@ -161,6 +161,12 @@
 
 		<div>
 			<div class="check-div">
+				<input type="checkbox" id="mod_effortless" class="medium-checkbox med-checkbox" onclick="mod_effortless()"> Effortless
+			</div>
+		</div>
+
+		<div style="display: none;">
+			<div class="check-div">
 				<input type="checkbox" id="mod_ranks_check" class="medium-checkbox med-checkbox" onclick="mod_ranks_check()"> Gain Trait
 			</div>
 		</div>
@@ -188,12 +194,6 @@
 		<div>
 			<div class="check-div">
 				<input type="checkbox" id="mod_simultaneous" class="medium-checkbox med-checkbox" onclick="mod_simultaneous()"> Simultaneous
-			</div>
-		</div>
-
-		<div style="display: none;">
-			<div class="check-div">
-				<input type="checkbox" id="mod_effortless" class="medium-checkbox med-checkbox" onclick="mod_effortless()"> Effortless
 			</div>
 		</div>
 
@@ -425,23 +425,37 @@
 		</div>
 
 		<div>
-			After Degree of Failure:
-		</div>
-
-		<div>
-			<select class="select-sml" id="mod_effortless_degree" name="mod_effortless_degree">
-				<option value="">Degree</option>
-				<option value="">N/A</option>
-				{% for i in negatives %}
-					<option value={{i}}>{{i}}</option>
+			<select class="select-sml" id="mod_effortless_type" name="mod_effortless_type" onchange="mod_effortless_type()">
+				{% for e in effortless_type %}
+					<option value="{{e.type}}">{{e.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div>
-			<div class="check-div">
-				<input type="checkbox" id="mod_effortless_retries" class="medium-checkbox med-checkbox"> Unlimited Retries
+		<div id="mod-effortless-reattempt">
+			<div>
+				<select class="select-sml reattempt-sml" id="mod_effortless_degree" name="mod_effortless_degree">
+					<option value="">Reattempt After Degree of Failure</option>
+					{% for p in power_degree %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select>
 			</div>
+
+			<div>
+				<select class="select-sml" id="mod_effortless_degree_type" name="mod_effortless_degree_type">
+					{% for m in measure_type %}
+						<option value="{{p.type}}">{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<div class="check-div">
+					<input type="checkbox" id="mod_effortless_retries" class="medium-checkbox med-checkbox"> Unlimited Retries
+				</div>
+			</div>
+	
 		</div>
 
 	</div>

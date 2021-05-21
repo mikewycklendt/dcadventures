@@ -339,6 +339,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	effect_type = [{'type': '', 'name': 'Effect Type'}, {'type': 'this', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'effect', 'name': 'Any Effect'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'power', 'name': 'Power Effect'}]
 
+	effortless_type = [{'type': '', 'name': 'Effortless Type'}, {'type': 'reattempt', 'name': 'Can Reattempt After Failure'}]
+
 	environment = [{'type': '', 'name': 'Environment Type'}, {'type': 'underwater', 'name': 'Underwater'}, {'type': 'gravity', 'name': 'Zero Gravity'}, {'type': 'mountains', 'name': 'Mountains'}, {'type': 'jungle', 'name': 'Jungle'}, {'type': 'desert', 'name': 'Desert'}, {'type': 'volcano', 'name': 'Volcano'}, {'type': 'other', 'name': 'Other'}]
 
 	environment_immunity = [{'type': '', 'name': 'Type'}, {'type': 'env', 'name': 'Environment'}, {'type': 'condition', 'name': 'Environment Condition'}]
@@ -586,7 +588,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
-											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type)
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 

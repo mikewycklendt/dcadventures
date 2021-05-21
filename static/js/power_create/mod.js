@@ -305,6 +305,13 @@ function mod_effortless() {
 	check_drop(check, div, entry);
 }
 
+function mod_effortless_type() {
+	const select = 'mod_effortless_type';
+	const options = [{'val': 'reattempt', 'div': 'mod-effortless-reattempt'}]
+
+	select_opacity(select, options);
+}
+
 function mod_side_effect_type() {
 	const select = 'mod_side_effect_type';
 	const options = [{'val': 'other', 'div': 'mod-side-other'},
@@ -451,8 +458,10 @@ function mod_submit() {
 	const acute = check("ranks_acute");
 	const objects_alone = select("mod_objects_alone");
 	const objects_character = select("mod_objects_character");
+	const effortless_type = select("mod_effortless_type")
 	const effortless_degree = select("mod_effortless_degree");
 	const effortless_retries = check("mod_effortless_retries");
+	const effortless_degree_type = select("mod_effortless_degree_type");
 	const simultaneous_descriptor = select("mod_simultaneous_descriptor");
 	const area_damage = select("mod_area_damage");
 	const area_ranged = select("mod_area_ranged");
@@ -582,6 +591,8 @@ function mod_submit() {
 			'acute': acute,
 			'objects_alone': objects_alone,
 			'objects_character': objects_character,
+			'effortless_type': effortless_degree_type,
+			'effortless_degree_type': effortless_degree_type,
 			'effortless_degree': effortless_degree,
 			'effortless_retries': effortless_retries,
 			'simultaneous_descriptor': simultaneous_descriptor,

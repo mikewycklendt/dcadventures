@@ -1,3 +1,4 @@
+from io import SEEK_CUR
 from db.skill_models import SkillBonus
 from flask import Flask, render_template, request, Response, flash, redirect, url_for
 from flask_moment import Moment
@@ -2000,7 +2001,9 @@ class PowerMod(db.Model):
 	extra = db.Column(db.Boolean)
 	objects_alone = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	objects_character = db.Column(db.Integer, db.ForeignKey('defense.id'))
-	effortless_degree = db.Column(db.Integer)
+	effortless_type = db.Column(db.String())
+	
+	effortless_degree_type = db.Column(db.String())
 	effortless_retries = db.Column(db.Boolean)
 	simultaneous_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	area_damage = db.Column(db.Integer, db.ForeignKey('power_damage.id'))
@@ -2122,6 +2125,8 @@ class PowerMod(db.Model):
 			'unreliable': self.unreliable,
 			'objects_alone': self.objects_alone,
 			'objects_character': self.objects_character,
+			'effortless_type': self.effortless_type,
+			'effortless_degree_type': self.effortless_degree_type,
 			'effortless_degree': self.effortless_degree,
 			'effortless_retries': self.effortless_retries,
 			'simultaneous_descriptor': self.simultaneous_descriptor,
