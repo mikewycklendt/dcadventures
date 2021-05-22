@@ -171,7 +171,6 @@ def table_db_columns_create():
 
 	return (tablename + ' db added')
 
-`gfyu77`
 
 if __name__ == '__main__':
 	app.debug = True
