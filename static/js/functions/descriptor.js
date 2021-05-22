@@ -24,7 +24,7 @@ function descriptor_base(extra_input) {
 			const o = document.createElement('option');
 			o.value = 'power';
 			o.text = 'Base Power Setting';
-			select.add(o);
+			s.add(o);
 		}
 	} else {
 		for (s of selects) {

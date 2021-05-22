@@ -2484,6 +2484,7 @@ class PowerSenseEffect(db.Model):
 	ranged_sense = db.Column(db.Boolean)
 	illusion_range = db.Column(db.Integer)
 	illusion_unit = db.Column(db.Integer, db.ForeignKey('unit_type.id'))
+	illusion_selective = db.Column(db.Boolean)
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 
@@ -2558,7 +2559,10 @@ class PowerSenseEffect(db.Model):
 			'light_penalty_trait': self.light_penalty_trait,
 			'ranged_sense': self.ranged_sense,
 			'condition': self.condition,
-			'condition_degree': self.condition_degree
+			'condition_degree': self.condition_degree,
+			'illusion_range': self.illusion_range,
+			'illusion_unit': self.illusion_unit,
+			'illusion_selective': self.illusion_selective
 		}
 
 class PowerReverse(db.Model):

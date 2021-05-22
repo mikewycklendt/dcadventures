@@ -1746,6 +1746,7 @@ def sense_post(entry, body, cells):
 	light_penalty_trait = entry.light_penalty_trait
 	illusion_range = entry.illusion_range
 	illusion_unit = entry.illusion_unit
+	illusion_selective = entry.illusion_selective
 	condition_degree = entry.condition_degree
 	condition = entry.condition
 
@@ -1847,7 +1848,8 @@ def sense_post(entry, body, cells):
 	vcells = vcell('counter_conceal', 30, ['Counters', counter_conceal, 'Concealment'], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
-	vcells = vcell('illusion', 35, ['Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
+	illusion_selective = check_string('Selective', illusion_selective)
+	vcells = vcell('illusion', 40, [illusion_selective, 'Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
 	vcells = vcell('condition', 40, [condition, 'on', condition_degree, 'Degree'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 

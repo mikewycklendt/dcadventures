@@ -3440,6 +3440,7 @@ def power_post_sense():
 	ranged_sense = request.get_json()['ranged_sense']
 	illusion_range = request.get_json()['illusion_range']
 	illusion_unit = request.get_json()['illusion_unit']
+	illusion_selective = request.get_json()['illusion_selective']
 	condition_degree = request.get_json()['condition_degree']
 	condition = request.get_json()['condition']
 
@@ -3554,6 +3555,7 @@ def power_post_sense():
 									ranged_sense = ranged_sense,
 									illusion_range = illusion_range,
 									illusion_unit = illusion_unit,
+									illusion_selective = illusion_selective,
 									condition_degree = condition_degree,
 									condition = condition
 								)
