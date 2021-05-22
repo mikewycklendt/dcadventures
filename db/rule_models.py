@@ -392,11 +392,26 @@ class Light(db.Model):
 	__tablename__ = 'light'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String())
+	all = db.Column(db.Boolean)
+	current = db.Column(db.Boolean)
+	any = db.Column(db.Boolean)
+	var = db.Column(db.Boolean)
+	none = db.Column(db.Boolean)
+	free = db.Column(db.Boolean)
+	hide = db.Column(db.Boolean)
+	select = db.Column(db.Boolean)
 
 	def format(self):
 		return {
 			'id': self.id,
-			'name': self.name
+			'name': self.name,
+			'all': self.all,
+			'current': self.current,
+			'any': self.any,
+			'var': self.var,
+			'none': self.none,
+			'hide': self.hide,
+			'select': self.select
 		}
 
 class Ground(db.Model):
@@ -550,6 +565,7 @@ class EnvCondition(db.Model):
 	var = db.Column(db.Boolean)
 	none = db.Column(db.Boolean)
 	hide = db.Column(db.Boolean)
+	select = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -560,7 +576,8 @@ class EnvCondition(db.Model):
 			'any': self.any,
 			'var': self.var,
 			'none': self.none,
-			'hide': self.hide
+			'hide': self.hide,
+			'select': self.select
 		}
 
 class Element(db.Model):

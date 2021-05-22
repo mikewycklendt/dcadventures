@@ -1425,6 +1425,8 @@ def check_when_convert(id, when):
 	if id == '':
 		if when == 'primary':
 			when = 'Primary Check'
+		if when == 'second':
+			when = 'Secondary Effect'
 	if id == 'change':
 		if when == 'before':
 			when = 'Before Change Happens'
