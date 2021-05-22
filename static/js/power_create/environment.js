@@ -131,7 +131,9 @@ function env_condition_temp_type() {
 	const options = [{'val': ['1', '2', '3'], 'div': 'env-condition-heat'}]
 	const selective = [{'val': 'select', 'div': 'env-condition-selective'}]
 
-	select_maxheight_shared(select, options);
+	select_opacity_shared(select, options);
+	select_opacity(select, selective);
+
 }
 
 let env_grid = {'titles': false,
