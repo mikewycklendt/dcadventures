@@ -116,61 +116,6 @@ def home_mobile(sidebar=sidebar, stylesheets=stylesheets, meta_name=meta_name, m
 
 
 
-@app.route('/table/db')
-def table_db_columns_create():
-
-	tablename =  'Lightomg'
-
-	name = 'All Lightomg'
-
-	entry = Light(all=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Current ' + tablename
-
-	entry = Light(current=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Any ' + tablename
-
-	entry = Light(any=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Variable ' + tablename
-
-	entry = Light(var=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'No ' + tablename
-
-	entry = Light(none=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-	
-	name = 'Selective' + tablename
-
-	entry = Light(select=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	name = 'Selective Condition'
-
-	entry = EnvCondition(select=True, name=name, hide=True )
-	db.session.add(entry)
-	db.session.commit()
-
-	results = db.session.query(Light).filter_by(hide=True).all()
-
-	for result in results:
-		print (result.id)
-		print (result.name)
-
-	return (tablename + ' db added')
-
 
 if __name__ == '__main__':
 	app.debug = True

@@ -679,9 +679,17 @@ def environment_post_errors(data):
 	errors = id_check(Element, element)
 
 	errors = together_names('an Environmental Effect Range', ['Starting Radius', 'Distance Rank', 'Cost Per Rank'], [radius, distance, rank], errors)
-	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type, temp_extremity], errors)
+	errors = check_fields(condition_check, 'Environmental Condition', [condition_temp_type], errors)
 	errors = check_field(condition_check, 'Environmental Condition', 'Temperature Type', condition_temp_type, errors)
-	errors = check_field(condition_check, 'Environmental Condition', 'Temperature Extremity', temp_extremity, errors)
+
+	errors = variable_fields('1', 'Environmental Condition', condition_temp_type, [temp_extremity], errors)
+	errors = variable_field('1', condition_temp_type, 'Extremity', temp_extremity, errors)
+	errors = variable_fields('2', 'Environmental Condition', condition_temp_type, [temp_extremity], errors)
+	errors = variable_field('2', condition_temp_type, 'Extremity', temp_extremity, errors)
+	errors = variable_fields('3', 'Environmental Condition', condition_temp_type, [temp_extremity], errors)
+	errors = variable_field('3', condition_temp_type, 'Extremity', temp_extremity, errors)
+
+
 	errors = check_fields(impede, 'Impedes Movement', [move_nature, move_speed], errors)
 	errors = check_field(impede, 'Impedes Movement', 'Impedes Movement Nature Type', move_nature, errors)
 	errors = check_field(impede, 'Impedes Movement', 'Impedes Movement Speed Modifier', move_speed, errors)

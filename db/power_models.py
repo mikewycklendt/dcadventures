@@ -1857,6 +1857,7 @@ class PowerEnv(db.Model):
 	no_circumstance = db.Column(db.Boolean)
 	immunity_other = db.Column(db.String())
 	condition_temp_type = db.Column(db.String())
+	condition_selective = db.Column(db.Boolean)
 	temp_extremity = db.Column(db.String())
 	move_nature = db.Column(db.Integer, db.ForeignKey('nature.id'))
 	move_speed = db.Column(db.Integer)
@@ -1896,6 +1897,7 @@ class PowerEnv(db.Model):
 			'no_circumstance': self.no_circumstance,
 			'immunity_other': self.immunity_other,
 			'condition_temp_type': self.condition_temp_type,
+			'condition_selective': self.condition_selective,
 			'temp_extremity': self.temp_extremity,
 			'move_nature': self.move_nature,
 			'move_speed': self.move_speed,

@@ -243,21 +243,32 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="env_condition_temp_type" name="env_condition_temp_type">
+			<select class="select-sml" id="env_condition_temp_type" name="env_condition_temp_type" onchange="env_condition_temp_type()">
+				<option value="">Condition</option>
+				<option value="select">Selective</option>
 				{% for e in env_conditions %}
 					<option value={{e.id}}>{{e.name}}</option>
 				{% endfor %}
 			</select>
 		</div>
+		
+		<div id="env-condition-heat">
 
-		<div>
-			<select class="select-sml" id="env_temp_extremity" name="env_temp_extremity">
-				{% for e in extremity %}
-					<option value="{{e.type}}">{{e.name}}</option>
-				{% endfor %}
-			</select>
+			<div>
+				<select class="select-sml" id="env_temp_extremity" name="env_temp_extremity">
+					{% for e in extremity %}
+						<option value="{{e.type}}">{{e.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+	
+			<div class="hidden" id="env-condition-selective">
+				<div class="check-div-fit">
+					<input type="checkbox" id="env_condition_selective" class="medium-checkbox med-checkbox" > Hot/Cold Only
+				</div>
+			</div>
+
 		</div>
-
 
 
 		<div></div>

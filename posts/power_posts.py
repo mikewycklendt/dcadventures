@@ -1,5 +1,6 @@
 
 from os import error
+from typing import NoReturn
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
@@ -687,6 +688,7 @@ def environment_post(entry, body, cells):
 	no_circumstance = entry.no_circumstance
 	immunity_other = entry.immunity_other
 	condition_temp_type = entry.condition_temp_type
+	condition_selective = entry.condition_selective
 	temp_extremity = entry.temp_extremity
 	move_nature = entry.move_nature
 	move_speed = entry.move_speed
@@ -747,6 +749,7 @@ def environment_post(entry, body, cells):
 	new_mod = mod_create('Temperature Condition', 25)
 	new_mod = mod_cell('Temperature Type:', 20, [condition_temp_type], new_mod)
 	new_mod = mod_cell('Extremity:', 10, [temp_extremity], new_mod)
+	new_mod = mod_cell('Limited to Hot/Cold', 18, [condition_selective], new_mod)
 	body = mod_add(condition_check, new_mod, body)
 
 	cells = check_cell('Impede', 7, impede, cells, True)

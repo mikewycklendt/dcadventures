@@ -126,6 +126,14 @@ function env_elements() {
 	check_drop(check, div, entry);
 }
 
+function env_condition_temp_type() {
+	const select = 'env_condition_temp_type';
+	const options = [{'val': ['1', '2', '3'], 'div': 'env-condition-heat'}]
+	const selective = [{'val': 'select', 'div': 'env-condition-selective'}]
+
+	select_maxheight_shared(select, options);
+}
+
 let env_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -154,6 +162,7 @@ function env_submit() {
 	const no_penalty = check("env_no_penalty");
 	const no_circumstance = check("env_no_circumstance");
 	const condition_temp_type = select("env_condition_temp_type");
+	const condition_selective = check("env_condition_selective")
 	const temp_extremity = select("env_temp_extremity");
 	const move_nature = select("env_move_nature");
 	const move_speed = select("env_move_speed");
@@ -197,6 +206,7 @@ function env_submit() {
 			'no_penalty': no_penalty,
 			'no_circumstance': no_circumstance,
 			'condition_temp_type': condition_temp_type,
+			'condition_selective': condition_selective,
 			'temp_extremity': temp_extremity,
 			'move_nature': move_nature,
 			'move_speed': move_speed,

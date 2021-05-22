@@ -141,7 +141,7 @@ def skill_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	level_types = LevelType.query.order_by(LevelType.name).all()
 	
-	light = Light.query.all()
+	light = db.session.query(Light).filter(Light.hide == None).all()
 
 	maneuvers = db.session.query(Maneuver).filter(Maneuver.hide == None).order_by(Maneuver.name).all()
 

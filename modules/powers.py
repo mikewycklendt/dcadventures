@@ -160,7 +160,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	level_types = LevelType.query.order_by(LevelType.name).all()
 
-	light = Light.query.all()
+	light = db.session.query(Light).filter(Light.hide == None).all()
 
 	maneuvers = db.session.query(Maneuver).filter(Maneuver.hide == None).order_by(Maneuver.name).all()
 
@@ -2126,6 +2126,7 @@ def power_post_environment():
 	no_penalty = request.get_json()['no_penalty']
 	no_circumstance = request.get_json()['no_circumstance']
 	condition_temp_type = request.get_json()['condition_temp_type']
+	condition_selective = request.get_json()['condition_selective']
 	temp_extremity = request.get_json()['temp_extremity']
 	move_nature = request.get_json()['move_nature']
 	move_speed = request.get_json()['move_speed']
@@ -2220,6 +2221,7 @@ def power_post_environment():
 							no_circumstance = no_circumstance,
 							condition_temp_type = condition_temp_type,
 							temp_extremity = temp_extremity,
+							condition_selective = condition_selective,
 							move_nature = move_nature,
 							move_speed = move_speed,
 							move_cost_circ = move_cost_circ,

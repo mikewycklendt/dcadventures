@@ -143,6 +143,13 @@ visibility traittype trait modifier costperrank
 	transition: all .4s ease-out;
 }
 
+#env-condition-heat {
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+	grid-template-columns: 50% 50%;
+	gap: .4vw;
+}
 #env-move {
 	display: none;
 	grid-template-columns: 15% 20% 10% 1% 25% 1% 28%;
