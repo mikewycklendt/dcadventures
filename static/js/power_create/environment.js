@@ -128,7 +128,7 @@ function env_elements() {
 
 function env_condition_temp_type() {
 	const select = 'env_condition_temp_type';
-	const options = [{'val': ['1', '2', '3'], 'div': 'env-condition-heat'}]
+	const options = [{'val': ['select', '1', '2', '3'], 'div': 'env-condition-heat'}]
 	const selective = [{'val': 'select', 'div': 'env-condition-selective'}]
 
 	select_opacity_shared(select, options);
