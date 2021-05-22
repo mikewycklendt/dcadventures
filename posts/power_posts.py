@@ -1,6 +1,4 @@
 
-from os import error
-from typing import NoReturn
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
 from db.measure_models import MeasureType, Unit, Math, Rank, Measurement, MassCovert, TimeCovert, DistanceCovert, VolumeCovert
