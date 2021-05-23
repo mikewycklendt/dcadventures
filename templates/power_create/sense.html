@@ -509,6 +509,22 @@
 				{% endfor %}
 			</select>
 		</div>
+
+		<div>
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="sense_awareness_subtle" class="medium-checkbox med-checkbox" onclick="sense_aware_subtle()"> Includes Subtle
+			</div>					
+		</div>
+
+		<div class="hidden" id="sense-awareness-subtle">
+			<select class="select-sml" id="sense_awareness_subtle_ranks" name="sense_awareness_subtle_rsnks">
+				<option value="">Ranks</option>
+				<option value="1">1 Rank</option>
+				<option value="2"> 2 Ranks</option>
+				<option value="sny">Any Subtle Modifier</option>
+			</select>
+		</div>
+
 	</div>
 
 	<div id="sense-comprehend">

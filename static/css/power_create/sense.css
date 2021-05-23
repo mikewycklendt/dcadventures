@@ -108,6 +108,14 @@
 	transition: all .3s ease-out;
 }
 
+#sense-aware {
+	grid-template-columns: 50% 35% 15%;
+	display: none;
+	opacity: 0%;
+	gap: .3vw;
+	transition: all .3s ease-out;
+}
+
 #sense-height-trait {
 	display: grid;
 	grid-auto-rows: auto;

@@ -1749,6 +1749,8 @@ def sense_post(entry, body, cells):
 	acute_req = entry.acute_req
 	awareness = entry.awareness
 	awareness_descriptor = entry.awareness_descriptor
+	awareness_subtle = entry.awareness_subtle
+	awareness_subtle_ranks = entry.awareness_subtle_ranks
 	counter_conceal = entry.counter_conceal
 	counter_conceal_descriptor = entry.counter_conceal_descriptor
 	ranged = entry.range
@@ -1839,7 +1841,9 @@ def sense_post(entry, body, cells):
 	distance_value = integer_convert(distance_value)
 	distance_factor = integer_convert(distance_factor)
 	illusion_range = integer_convert(illusion_range)
-	
+	awareness_subtle_ranks = integer_convert(awareness_subtle_ranks)
+
+
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Sense', 9, [sense], cells)
 	cells = cell('Subsense', 14, [subsense], cells)
@@ -1908,6 +1912,8 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Awareness', 11, awareness, cells, True)
 	new_mod = mod_create('Awareness', 15)
 	new_mod = mod_cell('Effect Type', 16, [awareness_descriptor], new_mod)
+	new_mod = mod_cell('Detects Subtle', 18, [awareness_subtle], new_mod)
+	new_mod = mod_cell('Subtle Ranks', 15, [awareness_subtle_ranks, 'Ranks'], new_mod)
 	body = mod_add(awareness, new_mod, body)
 
 	cells = check_cell('Radius', 8, radius, cells)

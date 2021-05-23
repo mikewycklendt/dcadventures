@@ -223,6 +223,13 @@ function sense_awareness() {
 	check_drop(check, div, entry);
 }
 
+function sense_awareness_subtle() {
+	const check = 'sense_awareness_subtle';
+	const div = 'sense-awareness-subtle';
+
+	check_display(check, div);
+}
+
 function sense_ranged() {
 	const check = 'sense_ranged';
 	const div = 'sense-ranged';
@@ -307,7 +314,9 @@ function sense_submit() {
 	const analytical = check("sense_analytical");
 	const acute_req = check("sense_acute_req");
 	const awareness = check("sense_awareness");
-	const awareness_descriptor = select("sense_awareness_descriptor")
+	const awareness_descriptor = select("sense_awareness_descriptor");
+	const awareness_subtle = check("sense_awareness_subtle");
+	const awareness_subtle_ranks = select("sense_awareness_subtle_ranks");
 	const counter_conceal = select("sense_counter_conceal");
 	const counter_conceal_descriptor = select("sense_counter_conceal_descriptor")
 	const ranged = check("sense_ranged");
@@ -393,6 +402,8 @@ function sense_submit() {
 			'acute_req': acute_req,
 			'awareness': awareness,
 			'awareness_descriptor': awareness_descriptor,
+			'awareness_subtle_ranks': awareness_subtle_ranks,
+			'awareness_subtle': awareness_subtle,
 			'counter_conceal': counter_conceal,
 			'counter_conceal_descriptor': counter_conceal_descriptor,
 			'ranged': ranged,

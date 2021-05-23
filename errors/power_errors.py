@@ -1495,6 +1495,8 @@ def sense_post_errors(data):
 	conceal_power = data['conceal_power']
 	awareness = data['awareness']
 	awareness_descriptor = data['awareness_descriptor']
+	awareness_subtle = data['awareness_subtle']
+	awareness_subtle_ranks = data['awareness_subtle_ranks']
 	counter_conceal_descriptor  = data['counter_conceal_descriptor']
 	counter_conceal = data['counter_conceal']
 	ranged = data['ranged']
@@ -1546,7 +1548,8 @@ def sense_post_errors(data):
 	errors = int_check(distance_value, 'Distance', errors)
 	errors = int_check(distance_factor, 'Distance Factor', errors)
 	errors = int_check(illusion_range, 'Illusion Diameter', errors)
-	
+	errors = int_check(awareness_subtle_ranks, 'Subtle Ranks', errors)
+
 	errors = required(sense_type, 'Sense Effect Type', errors)
 	errors = required(target, 'Target', errors)
 
@@ -1592,6 +1595,9 @@ def sense_post_errors(data):
 
 	errors = check_fields(awareness, 'Awareness', [awareness_descriptor], errors)
 	errors = check_field(awareness, 'Awareness', 'Descriptor', awareness_descriptor, errors)
+	errors = check_fields(awareness_subtle, 'Detects Subtle', [awareness_subtle_ranks], errors)
+	errors = check_field(awareness_subtle, 'Detects Subtle', 'Subtle Ranks', awareness_subtle_ranks, errors)
+
 
 	errors = variable_fields('descriptor', 'Descriptor Dimension', dimensional_type, [dimensional_descriptor], errors)
 	errors = variable_field('descriptor', dimensional_type, 'Descriptor', dimensional_descriptor, errors)

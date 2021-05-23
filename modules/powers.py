@@ -459,7 +459,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	solidity = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
 
-	source_type = [{'type': '', 'name': ''}, {'type': 'player', 'name': 'Player Has Access To'}, {'type': 'opponent', 'name': 'Opponent Has Descriptor'}, {'type': 'area', 'name': 'Area Target Has Descriptor'}, {'type': 'object', 'name': 'Object Has Descriptor'}]
+	source_type = [{'type': '', 'name': 'Descriptor Type'}, {'type': 'player', 'name': 'Player Has Access To'}, {'type': 'opponent', 'name': 'Opponent Has Descriptor'}, {'type': 'area', 'name': 'Area Target Has Descriptor'}, {'type': 'object', 'name': 'Object Has Descriptor'}]
 
 	space = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
 
@@ -3444,6 +3444,8 @@ def power_post_sense():
 	acute_req = request.get_json()['acute_req']
 	awareness = request.get_json()['awareness']
 	awareness_descriptor = request.get_json()['awareness_descriptor']
+	awareness_subtle = request.get_json()['awareness_subtle']
+	awareness_subtle_ranks = request.get_json()['awareness_subtle_ranks']
 	counter_conceal = request.get_json()['counter_conceal']
 	counter_conceal_descriptor = request.get_json()['counter_conceal_descriptor']
 	ranged = request.get_json()['ranged']
@@ -3501,7 +3503,7 @@ def power_post_sense():
 	distance_factor = integer(distance_factor)
 	light_penalty_trait = integer(light_penalty_trait)
 	illusion_range = integer(illusion_range)
-
+	awareness_subtle_ranks = integer(awareness_subtle_ranks)
 
 
 	try:
@@ -3561,6 +3563,8 @@ def power_post_sense():
 									analytical = analytical,
 									acute_req = acute_req,
 									awareness_descriptor = awareness_descriptor,
+									awareness_subtle = awareness_subtle,
+									awareness_subtle_ranks = awareness_subtle_ranks,
 									awareness = awareness,
 									counter_conceal = counter_conceal,
 									counter_conceal_descriptor = counter_conceal_descriptor,

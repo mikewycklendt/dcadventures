@@ -2481,6 +2481,8 @@ class PowerSenseEffect(db.Model):
 	acute_req = db.Column(db.Boolean)
 	awareness = db.Column(db.Boolean)
 	awareness_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	awareness_subtle = db.Column(db.Boolean)
+	awareness_subtle_ranks = db.Column(db.Integer)
 	counter_conceal = db.Column(db.String())
 	counter_conceal_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	ranged = db.Column(db.Boolean)
@@ -2497,6 +2499,7 @@ class PowerSenseEffect(db.Model):
 	condition_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 	remote_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	remote_simultaneous = db.Column(db.Boolean)
+	sense_aware_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 
 	def format(self):
 		return {
@@ -2559,6 +2562,8 @@ class PowerSenseEffect(db.Model):
 			'acute_req': self.acute_req,
 			'awareness': self.awareness,
 			'awareness_descriptor': self.awareness_descriptor,
+			'awareness_subtle': self.awareness_subtle,
+			'awareness_subtle_ranks': self.awareness_subtle_ranks,
 			'counter_conceal_descriptor': self.counter_conceal_descriptor,
 			'counter_conceal': self.counter_conceal,
 			'ranged': self.ranged,
