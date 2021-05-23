@@ -1105,15 +1105,14 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Area', 7, area, cells, True)
 	new_mod = mod_create('Area', 6)
-	new_mod = mod_cell('Damage', 9, [area_damage], new_mod)
 	new_mod = mod_cell('Range', 7, [area_ranged], new_mod)
 	new_mod = mod_cell('Descriptor', 7, [area_descriptor], new_mod)
 	new_mod = mod_cell('Attached to Area', 16, [area_attach], new_mod)
+	new_mod = mod_cell('Selective', 12, [selective]], new_mod)
 	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
 	cells = check_cell('Incurable', 8, incurable, cells)
-	cells = check_cell('Selective', 9, selective, cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
 	limited_type_select = [{'type': 'task_type', 'name': 'Limited by Task Type', 'w': 23}, {'type': 'task', 'name': 'Limited by All tasks but One', 'w': 34}, {'type': 'trait', 'name': 'Limited by Trait', 'w': 19}, {'type': 'descriptor', 'name': 'Limited by Descriptor', 'w': 23}, {'type': 'subjects', 'name': 'Limited by Subjects', 'w': 22}, {'type': 'language', 'name': 'Limited by Language', 'w': 24}, {'type': 'extra', 'name': 'Limited to Extra', 'w': 20}, {'type': 'degree', 'name': 'Limited to Degree of Success', 'w': 33}, {'type': 'sense', 'name': 'Limited to Sense', 'w': 19},  {'type': 'range', 'name': 'Limited by Range', 'w': 19}, {'type': 'source', 'name': 'Limited by Requireed Descriptor', 'w': 35}, {'type': 'other', 'name': 'Limited by Other Factor', 'w': 27}, {'type': 'level', 'name': 'Limited by Level', 'w': 19}, {'type': 'to_level', 'name': 'Limited to Level', 'w': 19}, {'type': 'ground', 'name': 'Limited To Ground Type', 'w': 24}, {'type': 'family', 'name': 'Limited To Family', 'w': 20}, {'type': 'creature', 'name': 'Limited To Creature', 'w': 20}, {'type': 'org', 'name': 'Limited to Organization', 'w': 25}, {'type': 'complication', 'name': 'Triggers Complication', 'w': 25}, {'type': 'env', 'name': 'Limited to Environment', 'w': 25}, {'type': 'day', 'name': 'Limited to Daytime', 'w': 25}, {'type': 'night', 'name': 'Limited to Nightime', 'w': 25}, {'type': 'emorion', 'name': 'Limited to Emotion', 'w': 25}, {'type': 'self', 'name': 'Limited To Self', 'w': 20}, {'type': 'half', 'name': 'Limited To Half Effect', 'w': 30}, {'type': 'material', 'name': 'Limited To Material', 'w': 20}, {'type': 'others', 'name': 'Limited To Others', 'w': 20}, {'type': 'lang', 'name': 'Limited To Common Language', 'w': 28}, {'type': 'objects', 'name': 'Limited To Objects', 'w': 20}]
