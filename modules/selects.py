@@ -86,7 +86,7 @@ def advantage_action_select():
 	sub = request.get_json()['sub']
 
 	base = []
-	any = db.session.query(Action).filter(Action.any == None).first()
+	any = db.session.query(Action).filter(Action.any == True).first()
 	if sub == 'any':
 		base.append({'id': any.id, 'name': any.name})
 	actions = db.session.query(Action).filter(Action.hide == None).all()
