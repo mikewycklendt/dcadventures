@@ -370,6 +370,7 @@
 
 		<div>
 			<select class="select-sml" id="mod_feedback_cover" name="mod_feedback_cover">
+				<option value="">Cover</option>
 				{% for c in cover %}
 					<option value={{c.id}}>{{c.name}}</option>
 				{% endfor %}
@@ -589,8 +590,13 @@
 			</div>
 
 			<div id="mod-limited-source">
+
 				<div>
-					Required Descriptor:
+					<select class="select-sml" id="mod_limited_source_type" name="mod_limited_source_type">
+						{% for s in source_type %}
+							<option value="{{s.type}}">{{s.name}}</option>
+						{% endfor %}
+					</select>
 				</div>
 
 				<div>
@@ -602,6 +608,8 @@
 						{% endfor %}
 					</select>
 				</div>
+
+
 			</div>
 
 			<div id="mod-limited-task-type">

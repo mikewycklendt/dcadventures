@@ -854,6 +854,7 @@ def mod_post_errors(data):
 	limited_mod = data['limited_mod']
 	limited_level_degree = data['limited_level_degree']
 	limited_level = data['limited_level']
+	limited_source_type = data['limited_source_type']
 	limited_source = data['limited_source']
 	limited_task_type = data['limited_task_type']
 	limited_task = data['limited_task']
@@ -1019,7 +1020,8 @@ def mod_post_errors(data):
 	errors = variable_field('range', limited_type, 'Range', limited_range, errors)
 	errors = variable_field('range', limited_type, 'Range', limited_range_type, errors)
 
-	errors = variable_fields('source', 'Requires Descriptor', limited_type, [limited_source], errors)
+	errors = variable_fields('source', 'Requires Descriptor', limited_type, [limited_source_type, limited_source], errors)
+	errors = variable_field('source', limited_type, 'Descriptor Type', limited_source_type, errors)
 	errors = variable_field('source', limited_type, 'Required Descriptor', limited_source, errors)
 
 	errors = variable_fields('other', 'Limited by Other', limited_type, [limited_description], errors)

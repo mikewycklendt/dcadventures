@@ -478,6 +478,7 @@ function mod_submit() {
 	const limited_mod = select("mod_limited_mod");
 	const limited_level_degree = select("mod_limited_level_degree");
 	const limited_level = select('mod_limited_level');
+	const limited_source_type = select("mod_limited_source_type")
 	const limited_source = select("mod_limited_source");
 	const limited_task_type = select("mod_limited_task_type");
 	const limited_task = text("mod_limited_task");
@@ -613,6 +614,7 @@ function mod_submit() {
 			'limited_mod': limited_mod,
 			'limited_level_degree': limited_level_degree,
 			'limited_level': limited_level,
+			'limited_source_type': limited_source_type,
 			'limited_source': limited_source,
 			'limited_task_type': limited_task_type,
 			'limited_task': limited_task,

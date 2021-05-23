@@ -459,6 +459,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	solidity = [{'type': '', 'name': 'Solidity'}, {'type': 'solid', 'name': 'Solid'}, {'type': 'incorp', 'name': 'Incorporeal'}, {'type': 'select', 'name': 'Selective'}]
 
+	source_type = [{'type': '', 'name': ''}, {'type': 'player', 'name': 'Player Has Access To'}, {'type': 'opponent', 'name': 'Opponent Has Descriptor'}, {'type': 'area', 'name': 'Area Target Has Descriptor'}, {'type': 'object', 'name': 'Object Has Descriptor'}]
+
 	space = [{'type': '', 'name': 'Space Travel Type'}, {'type': 'solar', 'name': 'Planets in Solar System'}, {'type': 'star', 'name': 'Other Star Systems'}, {'type': 'galaxy', 'name': 'Other Galaxies'}]
 
 	specificity = [{'type': '', 'name': 'Specifity'}, {'type': 'relative', 'name': 'Relative'}, {'type': 'exact', 'name': 'Exact'}]
@@ -591,7 +593,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type)
+											feedback_type=feedback_type, source_type=source_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2475,6 +2477,7 @@ def power_post_mod():
 	limited_mod = request.get_json()['limited_mod']
 	limited_level_degree = request.get_json()['limited_level_degree']
 	limited_level = request.get_json()['limited_level']
+	limited_source_type = request.get_json()['limited_source_type']
 	limited_source = request.get_json()['limited_source']
 	limited_task_type = request.get_json()['limited_task_type']
 	limited_task = request.get_json()['limited_task']
@@ -2687,6 +2690,7 @@ def power_post_mod():
 							limited_level_degree = limited_level_degree,
 							limited_level = limited_level,
 							limited_source = limited_source,
+							limited_source_type = limited_source_type,
 							limited_task_type = limited_task_type,
 							limited_task = limited_task,
 							limited_trait_type = limited_trait_type,

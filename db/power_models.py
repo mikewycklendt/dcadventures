@@ -2018,6 +2018,7 @@ class PowerMod(db.Model):
 	limited_mod = db.Column(db.Integer)
 	limited_level_degree = db.Column(db.String())
 	limited_level = db.Column(db.Integer, db.ForeignKey('levels.id'))
+	limited_source_type = db.Column(db.String())
 	limited_source = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	limited_task_type = db.Column(db.String())
 	limited_task = db.Column(db.String())
@@ -2145,6 +2146,7 @@ class PowerMod(db.Model):
 			'limited_mod': self.limited_mod,
 			'limited_level_degree': self.limited_level_degree,
 			'limited_level': self.limited_level,
+			'limited_source_type': self.limited_source_type,
 			'limited_source': self.limited_source,
 			'limited_task_type': self.limited_task_type,
 			'limited_task': self.limited_task,

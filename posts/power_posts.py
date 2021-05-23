@@ -944,6 +944,7 @@ def mod_post(entry, body, cells):
 	limited_mod = entry.limited_mod
 	limited_level_degree = entry.limited_level_degree
 	limited_level = entry.limited_level
+	limited_source_type = entry.limited_source_type
 	limited_source = entry.limited_source
 	limited_task_type = entry.limited_task_type
 	limited_task = entry.limited_task
@@ -1089,6 +1090,8 @@ def mod_post(entry, body, cells):
 	precise_type_select = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 	precise_type = selects(precise_type, precise_type_select)
 
+	source_type = [{'type': '', 'name': ''}, {'type': 'player', 'name': 'Player Has Access To'}, {'type': 'opponent', 'name': 'Opponent Has Descriptor'}, {'type': 'area', 'name': 'Area Target Has Descriptor'}, {'type': 'object', 'name': 'Object Has Descriptor'}]
+	limited_source_type = selects(limited_source_type, source_type)
 
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
@@ -1161,6 +1164,7 @@ def mod_post(entry, body, cells):
 	value = 'source'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Required Descriptor:', 20, [limited_source], new_mod, value)
+	new_mod = mod_cell('Descriptor Type', 16, [limited_source_type], new_mod, value)
 	value = 'other'
 	new_mod = mod_cell('Modifier', 9, [limited_mod], new_mod, value)
 	new_mod = mod_cell('Other Factor:', 16, [limited_description], new_mod, value)
