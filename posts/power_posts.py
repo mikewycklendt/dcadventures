@@ -1108,7 +1108,7 @@ def mod_post(entry, body, cells):
 	new_mod = mod_cell('Range', 7, [area_ranged], new_mod)
 	new_mod = mod_cell('Descriptor', 7, [area_descriptor], new_mod)
 	new_mod = mod_cell('Attached to Area', 16, [area_attach], new_mod)
-	new_mod = mod_cell('Selective', 12, [selective]], new_mod)
+	new_mod = mod_cell('Selective', 12, [selective], new_mod)
 	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
