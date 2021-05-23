@@ -384,7 +384,7 @@ function mod_feedback() {
 function mod_feedback_type() {
 	const select = 'mod_feedback_type';
 	const options = [{'val': 'mod', 'div': 'mod-feedback-mod'},
-					{'val': 'defehse', 'div': 'mod-feedback-defense'}]
+					{'val': 'defense', 'div': 'mod-feedback-defense'}]
 
 	select_opacity(select, options);
 }
