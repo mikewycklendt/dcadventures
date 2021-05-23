@@ -353,6 +353,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
+	feedback_type = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, , {'type': 'defense', 'name': 'Power Rank For Defense'}]
+
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 
 	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
@@ -451,7 +453,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -588,7 +590,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											knowledge=knowledge, mind=mind, appear_form=appear_form, check_target=check_target, material_type=material_type, counter_conceal=counter_conceal, create_multiple=create_multiple,
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
-											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type)
+											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
+											feedback_type=feedback_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2536,6 +2539,9 @@ def power_post_mod():
 	extra_circ = request.get_json()['extra_circ']
 	multiple = request.get_json()['multiple']
 	feedback_mod = request.get_json()['feedback_mod']
+	feedback_type = request.get_json()['feedback_type']
+	feedback_cover = request.get_json()['feedback_cover']
+	feedback_defense = request.get_json()['feedback_defense']
 	feedback = request.get_json()['feedback']
 	passive = request.get_json()['passive']
 	adv = request.get_json()['adv']
@@ -2579,6 +2585,8 @@ def power_post_mod():
 	limited_ground = db_integer(Ground, limited_ground)
 	advantage = db_integer(Advantage, advantage)
 	sustained_action = db_integer(Action, sustained_action)
+	feedback_cover = db_integer(Cover, feedback_cover)
+	feedback_defense = db_integer(Defense, feedback_defense)
 
 	simultaneous_descriptor = integer(simultaneous_descriptor)
 	area_descriptor = integer(area_descriptor)
@@ -2737,6 +2745,9 @@ def power_post_mod():
 							extra_circ = extra_circ,
 							multiple = multiple,
 							feedback_mod = feedback_mod,
+							feedback_type = feedback_type,
+							feedback_cover = feedback_cover,
+							feedback_defense = feedback_defense,
 							feedback = feedback,
 							passive = passive,
 							adv = adv,
@@ -3443,6 +3454,8 @@ def power_post_sense():
 	illusion_selective = request.get_json()['illusion_selective']
 	condition_degree = request.get_json()['condition_degree']
 	condition = request.get_json()['condition']
+	remote_ranged = request.get_json()['remote_ranged']
+	remote_simultaneous = request.get_json()['remote_simultaneous']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3453,6 +3466,7 @@ def power_post_sense():
 	range = db_integer(PowerRanged, range)
 	ranged_type = db_integer(PowerRangedType, ranged_type)
 	condition_degree = db_integer(PowerDegree, condition_degree)
+	remote_ranged = db_integer(PowerRangedType, remote_ranged)
 
 	illusion_unit = db_integer(Unit, illusion_unit)
 	power_id = integer(power_id)
@@ -3557,7 +3571,9 @@ def power_post_sense():
 									illusion_unit = illusion_unit,
 									illusion_selective = illusion_selective,
 									condition_degree = condition_degree,
-									condition = condition
+									condition = condition,
+									remote_ranged = remote_ranged,
+									remote_simultaneous = remote_simultaneous
 								)
 
 		db.session.add(entry)

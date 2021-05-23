@@ -361,6 +361,22 @@
 		</div>
 
 		<div>
+			<select class="select-sml" id="mod_feedback_type" name="mod_feedback_type" onchange="mod_feedback_type()">
+				{% for f in feedback_type %}
+					<option value="{{f.type}}">{{f.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_feedback_cover" name="mod_feedback_cover">
+				{% for c in cover %}
+					<option value={{c.id}}>{{c.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="mod-feedback-mod">
 			<select class="select-sml" id="mod_feedback_mod" name="mod_feedback_mod">
 				<option value="">Resistance Modifier</option>
 				<option value="rank">Power Rank</option>
@@ -370,6 +386,16 @@
 				{% endfor %}
 				{% for i in poaitives %}
 					<option value={{i}}>{{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="hidden" id="mod-feedback-defense">
+			<select class="select-sml" id="mod_feedback_defense" name="mod_feedback_defense">
+				<option value="">Defense</option>
+				<option value="active">Active Defenses</option>
+				{% for d in defenses %}
+					<option value={{d.id}}>{{d.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

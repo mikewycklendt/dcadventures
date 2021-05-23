@@ -114,6 +114,25 @@
 
 		<div>
 
+			<div id="sense-remote">
+				<div>
+					<select class="ranged-type-sml" id="sense_remote_ranged" name="sense_remote_ranged">
+						<option value="">Range by Group</option>
+						<option value="">Use Ranged Form to Put Options Here</option>
+						{% for p in power_ranged_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+					
+				<div>
+					<div class="check-div-fit">
+						<input type="checkbox" id="sense_remote_simultaneous" class="medium-checkbox med-checkbox"> Simultaneous	
+					</div>
+				</div>
+
+			</div>
+
 			<div id="sense-condition">
 				<div>
 					<select class="select-sml" id="sense_condition" name="sense_condition">

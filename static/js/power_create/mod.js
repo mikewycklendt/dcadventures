@@ -381,6 +381,14 @@ function mod_feedback() {
 	check_drop(check, div, entry);
 }
 
+function mod_feedback_type() {
+	const select = 'mod_feedback_type';
+	const options = [{'val': 'mod', 'div': 'mod-feedback-mod'},
+					{'val': 'defehse', 'div': 'mod-feedback-defense'}]
+
+	select_opacity(select, options);
+}
+
 function mod_adv() {
 	const check = 'mod_adv';
 	const div = 'mod-advantage';
@@ -532,6 +540,9 @@ function mod_submit() {
 	const multiple = select("mod_multiple");
 	const feedback = check("mod_feedback");
 	const feedback_mod = select("mod_feedback_mod");
+	const feedback_type = select("mod_feedback_type");
+	const feedback_cover = select("mod_feedback_cover");
+	const feedback_defense = select("mod_feedback_defense");
 	const passive = check("mod_passive");
 	const adv = check("mod_adv");
 	const advantage = select("mod_advantage");
@@ -666,7 +677,10 @@ function mod_submit() {
 			'extra_circ': extra_circ,
 			'multiple': multiple,
 			'feedback': feedback,
+			'feedback_type': feedback_type,
+			'feedback_cover': feedback_cover,
 			'feedback_mod': feedback_mod,
+			'feedback_defense': feedback_defense,
 			'passive': passive,
 			'adv': adv,
 			'advantage': advantage,

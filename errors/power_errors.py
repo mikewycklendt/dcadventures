@@ -910,6 +910,9 @@ def mod_post_errors(data):
 	extra_circ = data['extra_circ']
 	feedback_mod = data['feedback_mod']
 	feedback = data['feedback']
+	feedback_type = data['feedback_type']
+	feedback_cover = data['feedback_cover']
+	feedback_defense = data['feedback_defense']
 	adv = data['adv']
 	advantage = data['advantage']
 	advantage_rank = data['advantage_rank']
@@ -954,6 +957,8 @@ def mod_post_errors(data):
 	errors = id_check(Material, limited_material, 'Material', errors)
 	errors = id_check(Advantage, advantage, 'Advantage', errors)
 	errors = id_check(Action, sustained_action, 'Sustained Action', errors)
+	errors = id_check(Cover, feedback_cover, 'Feedback Cover', errors)
+	errors = id_check(Defense, feedback_defense, 'Feedback Defense', errors)
 
 	errors = id_check(PowerDegree, effortless_degree, 'Effortless Degree', errors)
 
@@ -1095,8 +1100,14 @@ def mod_post_errors(data):
 	errors = check_field(extra, 'Extra Effect', 'Count', extra_count, errors)
 	errors = check_of(extra, 'Extra Effect', 'a degree, circumstance or dc', [extra_dc, extra_degree, extra_circ], errors)
 	
-	errors = check_fields(feedback, 'Feedback', [feedback_mod], errors)
-	errors = check_field(feedback, 'Feedback', 'Resistance Modifier', feedback_mod, errors)
+	errors = check_fields(feedback, 'Feedback', [feedback_type, feedback_cover], errors)
+	errors = check_field(feedback, 'Feedback', 'Feedbacl Type', feedback_type, errors)
+	errors = check_field(feedback, 'Feedback', 'Feedbacl Cover', feedback_cover, errors)
+
+	errors = variable_fields('mod', 'Feedback', feedback_type, [feedback_mod], errors)
+	errors = variable_field('mod', feedback_type, 'Feedback Resistance Modifier', feedback_mod, errors)
+	errors = variable_fields('defense', 'Feedback', feedback_type, [feedback_defense], errors)
+	errors = variable_field('defense', feedback_type, 'Feedback Defense', feedback_defense, errors)
 	
 	errors = check_fields(adv, 'Advantage Ranks', [advantage, advantage_rank], errors)
 	errors = check_field(adv, 'Advantage Ranks', 'Advantage', advantage, errors)
@@ -1494,6 +1505,7 @@ def sense_post_errors(data):
 	illusion_unit = data['illusion_unit']
 	condition = data['condition']
 	condition_degree = data['condition_degree']
+	remote_ranged = data['remote_ranged']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1520,7 +1532,7 @@ def sense_post_errors(data):
 	errors = id_check(PowerDes, counter_conceal_descriptor, 'Counters Concealment Descriptor', errors)
 	errors = id_check(Light, light_penalty, 'Light Type', errors)
 	errors = id_check(Unit, illusion_unit, 'Unit', errors)
-	errors = id_check(Condition, condition)
+	errors = id_check(Condition, condition, 'Conndition', errors)
 
 	errors = int_check(sense_cost, 'Sense Cost', errors)
 	errors = int_check(subsense_cost, 'Subsense Cost', errors)
@@ -1562,6 +1574,9 @@ def sense_post_errors(data):
 	errors = variable_fields('condition', 'Sense Condition', sense_type, [condition_degree, condition], errors)
 	errors = variable_field('condition', sense_type, 'Degree of Succesa/Failure', condition_degree, errors)
 	errors = variable_field('condition', sense_type, 'Condition', condition, errors)
+
+	errors = variable_fields('remote', 'Remote Sensing', sense_type, [remote_ranged], errors)
+	errors = variable_field('remote', sense_type, 'Remote Sensing', remote_ranged, errors)
 
 	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)

@@ -85,7 +85,7 @@ def advantage_action_select():
 	action = request.get_json()['id']
 	sub = request.get_json()['sub']
 
-	base = []
+	base = [{'id': '', 'name': 'Action'}]
 	any = db.session.query(Action).filter(Action.any == True).first()
 	if sub == 'any':
 		base.append({'id': any.id, 'name': any.name})
@@ -93,7 +93,7 @@ def advantage_action_select():
 	for a in actions:
 		base.append({'id': a.id, 'name': a.name})
 		
-	conflict = []
+	conflict = [{'id': '', 'name': 'Conflict Action'}]
 	conflicts = db.session.query(ConflictAction).filter(ConflictAction.hide == None).order_by(ConflictAction.name).all()
 	for c in conflicts:
 		conflict.append({'id': c.id, 'name': c.name})
@@ -641,6 +641,7 @@ def check_trigger_select():
 	elif id == 'condition':
 		options.append({'id': 'before', 'name': 'Before Condition Takes Effect'})
 		options.append({'id': 'after', 'name': 'After Condition Takes Effect'})
+		options.append({'id': 'condition', 'name': 'When Target Has Condition'})
 	elif id == 'conflict':
 		for c in check:
 			options.append(c)

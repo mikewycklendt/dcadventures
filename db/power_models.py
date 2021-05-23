@@ -2075,7 +2075,10 @@ class PowerMod(db.Model):
 	extra_circ = db.Column(db.Integer, db.ForeignKey('power_circ_type.id'))
 	multiple = db.Column(db.String())
 	feedback = db.Column(db.Boolean)
+	feedback_type = db.Column(db.String())
+	feedback_cover = db.Column(db.Integer, db.ForeignKey('cover.id'))
 	feedback_mod = db.Column(db.Integer)
+	feedback_defense = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	passive = db.Column(db.Boolean)
 	adv = db.Column(db.Boolean)
 	advantage = db.Column(db.Integer, db.ForeignKey('advantages.id'))
@@ -2199,7 +2202,10 @@ class PowerMod(db.Model):
 			'extra_circ': self.extra_circ,
 			'multiple': self.multiple,
 			'feedback': self.feedback,
+			'feedback_type': self.feedback_type,
+			'feedback_cover': self.feedback_cover,
 			'feedback_mod': self.feedback_mod,
+			'feedback_defense': self.feedback_defense,
 			'passive': self.passive,
 			'adv': self.adv,
 			'advantage:': self.advantage,
@@ -2487,6 +2493,8 @@ class PowerSenseEffect(db.Model):
 	illusion_selective = db.Column(db.Boolean)
 	condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 	condition_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
+	remote_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
+	remote_simultaneous = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2562,7 +2570,9 @@ class PowerSenseEffect(db.Model):
 			'condition_degree': self.condition_degree,
 			'illusion_range': self.illusion_range,
 			'illusion_unit': self.illusion_unit,
-			'illusion_selective': self.illusion_selective
+			'illusion_selective': self.illusion_selective,
+			'remote_ranged': self.remote_ranged,
+			'remote_simultaneous': self.remote_simultaneous
 		}
 
 class PowerReverse(db.Model):

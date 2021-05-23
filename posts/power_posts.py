@@ -997,7 +997,10 @@ def mod_post(entry, body, cells):
 	extra_dc = entry.extra_dc
 	extra_circ = entry.extra_circ
 	feedback = entry.feedback
+	feedback_type = entry.feedback_type
+	feedback_cover = entry.feedback_cover
 	feedback_mod = entry.feedback_mod
+	feedback_defense = entry.feedback_defense
 	passive = entry.passive
 	adv = entry.adv
 	advantage = entry.advantage
@@ -1049,6 +1052,8 @@ def mod_post(entry, body, cells):
 	limited_org = get_name(Organization, limited_org)
 	advantage = get_name(Advantage, advantage)
 	sustained_action = get_name(Action, sustained_action)
+	feedback_cover = get_name(Cover, feedback_cover)
+	feedback_defense = get_name(Defense, feedback_defense)
 
 	reflect_descriptor = descriptor_name(reflect_descriptor)
 	limited_descriptor = descriptor_name(limited_descriptor)
@@ -1084,6 +1089,7 @@ def mod_post(entry, body, cells):
 	precise_type_select = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 	precise_type = selects(precise_type, precise_type_select)
 
+
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
 	ranks_ranks = integer_convert(ranks_ranks)
@@ -1095,6 +1101,9 @@ def mod_post(entry, body, cells):
 	points_give = integer_convert(points_give)
 	feedback_mod = integer_convert(feedback_mod)
 	advantage_rank = integer_convert(advantage_rank)
+
+	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, , {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
+	feedback_type = selects(feedback_type, feedback_type_select)
 
 	cells = cell('Extra', 15, [extra])
 	cells = check_cell('Affects Objects', 16, affects_objects, cells, True)
@@ -1300,7 +1309,8 @@ def mod_post(entry, body, cells):
 
 	cells = check_cell('Feedback', 10, feedback, cells, True)
 	new_mod = mod_create('Feedback', 12)
-	new_mod = mod_cell('Resistance Modifier:', 18, [feedback_mod], new_mod)	
+	new_mod = mod_cell('Resistance:', 12, [feedback_type], new_mod)
+	new_mod = mod_cell('Cover', 8, [feedback_cover], new_mod)	
 	body = mod_add(feedback, new_mod, body)
 	
 	word = check_string('Per Rank', advantage_rank_per)
@@ -1748,6 +1758,8 @@ def sense_post(entry, body, cells):
 	illusion_selective = entry.illusion_selective
 	condition_degree = entry.condition_degree
 	condition = entry.condition
+	remote_ranged = entry.remote_ranged
+	remote_simultaneous = entry.remote_simultaneous
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1850,6 +1862,8 @@ def sense_post(entry, body, cells):
 	illusion_selective = check_string('Selective', illusion_selective)
 	vcells = vcell('illusion', 40, [illusion_selective, 'Illusion', illusion_range, illusion_unit, 'in Diameter'], vcells)
 	vcells = vcell('condition', 40, [condition, 'on', condition_degree, 'Degree'], vcells)
+	remote_simultaneous = check_string('Simultaneously', remote_simultaneous)
+	vcells = vcell('remote', 40, ['Remote Sense at', remote_ranged, 'Range', remote_simultaneous], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)
