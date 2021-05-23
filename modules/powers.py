@@ -353,7 +353,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	extremity = [{'type': '', 'name': 'Extremity'}, {'type': 'intense', 'name': 'Intense'}, {'type': 'extreme', 'name': 'Extreme'}]
 
-	feedback_type = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, , {'type': 'defense', 'name': 'Power Rank For Defense'}]
+	feedback_type = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For Defense'}]
 
 	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 
