@@ -1102,7 +1102,7 @@ def mod_post(entry, body, cells):
 	feedback_mod = integer_convert(feedback_mod)
 	advantage_rank = integer_convert(advantage_rank)
 
-	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, , {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
+	feedback_type_select = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': feedback_mod + ' Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For ' + feedback_defense}]
 	feedback_type = selects(feedback_type, feedback_type_select)
 
 	cells = cell('Extra', 15, [extra])
