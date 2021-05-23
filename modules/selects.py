@@ -82,9 +82,13 @@ def advantage_action_select():
 	body = {}
 	body['success'] = True
 
-	action = request.get_json()['id'] 
+	action = request.get_json()['id']
+	sub = request.get_json()['sub']
 
 	base = []
+	any = db.session.query(Action).filter(Action.any == None).first()
+	if sub == 'any':
+		base.append({'id': any.id, 'name': any.name})
 	actions = db.session.query(Action).filter(Action.hide == None).all()
 	for a in actions:
 		base.append({'id': a.id, 'name': a.name})
@@ -879,6 +883,8 @@ def skill_trait_select():
 		body['options'] = [{'id': "0", 'name': "Alteration Effects"}]
 	elif trait == 'all_emotion':
 		body['options'] = [{'id': "0", 'name': "All Emotion Effects"}]
+	elif trait == 'any':
+		body['options'] = [{'id': "0", 'name': "Any Trait"}]
 	else:
 		body['success'] = False
 		body['options'] = [{'id': '', 'name': 'Trait'}]

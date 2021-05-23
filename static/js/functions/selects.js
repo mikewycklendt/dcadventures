@@ -30,6 +30,7 @@ const variable_sub = 'variable';
 const all_var_sub = 'all-var';
 const any_var_sub = 'any-var';
 const other_var_sub = 'variable-other';
+const any_sub = 'any'
 
 function id_select(id_field, fill, route, sub=false, classname=false, titles=false, multiple=false, second_sub=false) {
 	const id = select(id_field);

@@ -1373,6 +1373,8 @@ def trait_select(value, trait):
 		value = "Alteration Effects"
 	elif trait == 'all_emotion':
 		value = "Emotion Effects"
+	elif trait == 'any':
+		value = "Any Trait"
 	
 	return (value)
 
