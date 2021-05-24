@@ -1767,6 +1767,7 @@ def sense_post(entry, body, cells):
 	condition = entry.condition
 	remote_ranged = entry.remote_ranged
 	remote_simultaneous = entry.remote_simultaneous
+	micro = entry.micro
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1787,7 +1788,7 @@ def sense_post(entry, body, cells):
 
 	extra = extra_name(extra_id)
 	sense = get_name(Sense, sense)
-	subsense = get_name(SubSense, subsense)
+	subsense_name = get_name(SubSense, subsense)
 	height_ensense = get_name(Power, height_ensense)
 	lighting = get_name(Light, lighting)
 	time_unit = get_name(Unit, time_unit)
@@ -1836,6 +1837,9 @@ def sense_post(entry, body, cells):
 	spirits_select = [{'type': '', 'name': 'Comprehend Spirits'}, {'type': 'understand', 'name': 'Perceive and Understand'}, {'type': 'communicate', 'name': 'Communicate Both Ways'}]
 	comprehend_spirit = selects(comprehend_spirit, spirits_select)
 
+	sense_micro = [{'type', '', 'name': 'Object Size'}, {'type', 'dust', 'name': 'Dust-Sized'}, {'type', 'cell', 'name': 'Cellular-Sized'}, {'type', 'molecule', 'name': 'DNA/Molecules'}, {'type', 'atom', 'name': 'Atomic-Sized'}]
+	micro = selects(micro, sense_micro)
+
 	resist_circ = integer_convert(resist_circ)
 	distance_dc = integer_convert(distance_dc)
 	distance_mod = integer_convert(distance_mod)
@@ -1847,9 +1851,13 @@ def sense_post(entry, body, cells):
 
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Sense', 9, [sense], cells)
-	cells = cell('Subsense', 14, [subsense], cells)
-	cells = cell('Check', 16, [skill], cells)
+	cells = cell('Subsense', 14, [subsense_name], cells)
 
+	vcells = vcell(6, 25, ['Can See', micro, 'Objects'])
+	cells = drop_vcell('Special', 'Special Abilities', 20, subsense, vcells, cells, body)
+	
+	cells = cell('Check', 16, [skill], cells)
+	
 	wid = 17
 	affects = string('Affects', [height_trait])
 	word = string('Requires', [height_ensense])

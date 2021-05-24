@@ -44,6 +44,14 @@ function sense_sense() {
 	id_select(select, fill, subsense_select, all_var_sub)
 }
 
+function sense_subsense() {
+	const select = 'sense_subsense';
+	const options = [{'val': '6', 'div': 'sense-micro'}];
+	const entry = 'sense-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
 function sense_skill() {
 	const field_field = document.getElementById("sense_skill");
 	const field = field_field.options[field_field.selectedIndex].value;
@@ -335,6 +343,7 @@ function sense_submit() {
 	const condition_degree = select("sense_condition_degree");
 	const remote_ranged = select("sense_remote_ranged");
 	const remote_simultaneous = check("sense_remote_simultaneous");
+	const micro = select("sense_micro")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -422,7 +431,8 @@ function sense_submit() {
 			'condition': condition,
 			'condition_degree': condition_degree,
 			'remote_ranged': remote_ranged,
-			'remote_simultaneous': remote_simultaneous
+			'remote_simultaneous': remote_simultaneous,
+			'micro': micro
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

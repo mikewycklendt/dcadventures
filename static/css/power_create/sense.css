@@ -273,6 +273,14 @@
 	transition: all .4s ease-out;
 }
 
+#sense-micro {
+	grid-template-columns: 25% 25% 25% 15%;
+	display: none;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-out;
+}
+
 #sense-comprehend  {
 	display: grid;
 	grid-template-columns: 15% 20% 30% 35%;

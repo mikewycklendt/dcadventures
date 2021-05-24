@@ -60,7 +60,7 @@
 		</div>
 			
 		<div>
-			<select class="select-sml" id="sense_subsense" name="sense_subsense">
+			<select class="select-sml" id="sense_subsense" name="sense_subsense" onchange="sense_subsense()">
 				<option value="any">Any</option>
 				<option value="all">All</option>
 				<option value="x">Variable</option>
@@ -236,7 +236,7 @@
 				</div>
 
 				<div class="hidden" id="sense-counter-conceal-heat">		
-					<div class="check-div-fit" style="font-size: 80%;">
+					<div class="check-div-fit" style="font-size: 90%;">
 						<input type="checkbox" id="sense_counter_conceal_heat" class="medium-checkbox med-checkbox" > Only by Temperature
 					</div>
 				</div>
@@ -476,6 +476,21 @@
 		</div>
 		
 	</div>
+
+	<div id="sense-micro">
+		<div>
+			Microscopic Vision:
+		</div>
+
+		<div>
+			<select class="select-sml" id="sense_micro" name="sense_micro">
+				{% for s in sense_micro %}
+					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="sense-ranged">
 		<div>
 			Extended:

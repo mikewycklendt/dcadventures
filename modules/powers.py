@@ -447,9 +447,11 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	required = [{'type': 'always', 'name': 'Always'}, {'type': 'some', 'name': 'Sometimes'}]
 
-	sense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}, {'type': 'stack', 'name': 'Stackable'}]
-
 	sense_distance = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
+
+	sense_micro = [{'type', '', 'name': 'Object Size'}, {'type', 'dust', 'name': 'Dust-Sized'}, {'type', 'cell', 'name': 'Cellular-Sized'}, {'type', 'molecule', 'name': 'DNA/Molecules'}, {'type', 'atom', 'name': 'Atomic-Sized'}]
+
+	sense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}, {'type': 'stack', 'name': 'Stackable'}]
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
@@ -593,7 +595,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type)
+											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3463,6 +3465,7 @@ def power_post_sense():
 	condition = request.get_json()['condition']
 	remote_ranged = request.get_json()['remote_ranged']
 	remote_simultaneous = request.get_json()['remote_simultaneous']
+	micro = request.get_json()['micro']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3583,7 +3586,8 @@ def power_post_sense():
 									condition_degree = condition_degree,
 									condition = condition,
 									remote_ranged = remote_ranged,
-									remote_simultaneous = remote_simultaneous
+									remote_simultaneous = remote_simultaneous,
+									micro = micro
 								)
 
 		db.session.add(entry)

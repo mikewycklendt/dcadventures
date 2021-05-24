@@ -1510,6 +1510,7 @@ def sense_post_errors(data):
 	condition = data['condition']
 	condition_degree = data['condition_degree']
 	remote_ranged = data['remote_ranged']
+	micro = data['micro']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1566,6 +1567,9 @@ def sense_post_errors(data):
 	errors = variable_field('conceal', sense_type, 'Concealment', concealment, errors)
 	errors = check_fields(conceal_power, 'Concealed from Power', [conceal_power_sense], errors)
 	errors = check_field(conceal_power, 'Concealed from Power', 'Sense Power', conceal_power_sense, errors)
+
+	errors = variable_fields('6', 'Microscopic Vision', subsense, [micro], errors)
+	errors = variable_fields('6', subsense, 'Object Size', micro, errors)
 
 	errors = variable_fields('light', 'No Light Penalties', sense_type, [light_penalty, light_penalty_trait_type, light_penalty_trait], errors)
 	errors = variable_field('light', sense_type, 'Light Type', light_penalty, errors)

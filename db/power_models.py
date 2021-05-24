@@ -2503,6 +2503,7 @@ class PowerSenseEffect(db.Model):
 	remote_ranged = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
 	remote_simultaneous = db.Column(db.Boolean)
 	sense_aware_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	micro = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -2583,7 +2584,8 @@ class PowerSenseEffect(db.Model):
 			'illusion_unit': self.illusion_unit,
 			'illusion_selective': self.illusion_selective,
 			'remote_ranged': self.remote_ranged,
-			'remote_simultaneous': self.remote_simultaneous
+			'remote_simultaneous': self.remote_simultaneous,
+			'micro': self.micro
 		}
 
 class PowerReverse(db.Model):
