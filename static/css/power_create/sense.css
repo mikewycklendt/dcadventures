@@ -274,7 +274,7 @@
 }
 
 #sense-micro {
-	grid-template-columns: 17% 25% 25% 15%;
+	grid-template-columns: 17% 25% 30% 15%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;
