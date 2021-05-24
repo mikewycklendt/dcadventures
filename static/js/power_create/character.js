@@ -126,8 +126,12 @@ function char_insub() {
 function char_reduced_trait_type() {
 	const select = 'char_reduced_trait_type';
 	const fill = 'char_reduced_trait';
+	const options = [{'val': ['speed', 'size'], 'div': 'char-penalty'}]
+	const checks = ['char_penalty']
 
+	uncheck_all(checks);
 	id_select(select, fill, trait_select, variable_sub);
+	select_opacity_if_not(select, options)
 }
 
 function char_reduced_trait() {
@@ -140,8 +144,12 @@ function char_reduced_trait() {
 function char_trait_type() {
 	const select = 'char_trait_type';
 	const fill = 'char_trait';
+	const options = [{'val': ['speed', 'size'], 'div': 'char-bonus'}]
+	const checks = ['char_bonus']
 
+	uncheck_all(checks);
 	id_select(select, fill, trait_select, variable_sub);
+	select_opacity_if_not(select, options)
 }
 
 function char_trait() {
@@ -149,20 +157,6 @@ function char_trait() {
 	const fill = 'char_trait';
 
 	id_select(fill, fill, trait_filter, filter);
-}
-
-function char_size() {
-	const tra_field = document.getElementById('char_reduced_trait_type');
-	const tra = tra_field.options[tra_field.selectedIndex].value;
-	const mod_field = document.getElementById('char_reduced_value');
-	const mod = mod_field.options[mod_field.selectedIndex].value;
-	const div = document.getElementById('char-reduced-full');
-
-	if (tra == 'size' && mod < 0) {
-		div.style.opacity = '100%';
-	} else {
-		div.style.opacity = '0%';
-	}
 }
 
 function char_meta() {
@@ -328,6 +322,8 @@ function char_submit() {
 	const points_type = select("char_points_type");
 	const meta = check("char_meta");
 	const metamorph = select("char_metamorph");
+	const penalty = check("char_penalty")
+	const bonus = check("char_bonus");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -397,7 +393,9 @@ function char_submit() {
 			'font': font,
 			'multiple': multiple,
 			'meta': meta,
-			'metamorph': metamorph
+			'metamorph': metamorph,
+			'penalty': penalty,
+			'bonus': bonus
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

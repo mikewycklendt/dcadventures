@@ -60,6 +60,13 @@
 			</select>
 		</div>
 
+		<div class="hidden" id="char-bonus">
+			<div class="check-div-fit">
+				<input type="checkbox" id="char_bonus" class="medium-checkbox med-checkbox" > Bonus
+			</div>
+		</div>
+
+
 		<div style="display: none;">
 			<div class="check-div">
 				<input type="checkbox" id="char_limited" class="medium-checkbox med-checkbox" onclick="char_limited()"> Limited
@@ -278,7 +285,7 @@
 		</div>
 
 		<div>
-			<select class="select-sml" id="char_reduced_value" name="char_reduced_value" onchange="char_size()">
+			<select class="select-sml" id="char_reduced_value" name="char_reduced_value" >
 				<option value="">Amount</option>
 				<option value="all">All</option>
 				{% for i in negatives %}
@@ -298,6 +305,12 @@
 					<option value={{i}}>{{i}}</option>
 				{% endfor %}
 			</select>
+		</div>
+
+		<div class="hidden" id="char-penalty">
+			<div class="check-div-fit" style="font-size: 90%;">
+				<input type="checkbox" id="char_penalty" class="medium-checkbox med-checkbox"> Penalty 	
+			</div>
 		</div>
 
 		<div id="char-reduced-full">

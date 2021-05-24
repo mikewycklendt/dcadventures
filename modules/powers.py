@@ -1454,6 +1454,8 @@ def power_post_character():
 	multiple = request.get_json()['multiple']
 	meta = request.get_json()['meta']
 	metamorph = request.get_json()['metamorph']
+	penalty = request.get_json()['penalty']
+	bonus = request.get_json()['bonus']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -1545,7 +1547,9 @@ def power_post_character():
 							ranks = ranks,
 							multiple = multiple,
 							meta = meta,
-							metamorph = metamorph)
+							metamorph = metamorph,
+							penalty = penalty,
+							bonus = bonus)
 
 		db.session.add(entry)
 		db.session.commit()

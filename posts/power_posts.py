@@ -118,6 +118,8 @@ def character_post(entry, body, cells):
 	points_type = entry.points_type
 	meta = entry.meta
 	metamorph = entry.metamorph
+	penalty = entry.penalty
+	bonus = entry.bonus
 
 	body = one_multiple(PowerChar, power_id, body)
 
@@ -169,8 +171,9 @@ def character_post(entry, body, cells):
 	wid = 8
 	perrank = string('Per', increase)
 	rank = string('Rank', increase)
+	bonus = check_string('Bonus', bonus)
 	wid = width(wid, 8, increase)
-	cells = cell('Increase', wid, [value, perrank, increase, rank], cells)
+	cells = cell('Increase', wid, [value, bonus, perrank, increase, rank], cells)
 
 	cells = check_cell('Limited', 8, limited, cells, True)
 	new_mod = mod_create('Limited', 12)
@@ -183,7 +186,8 @@ def character_post(entry, body, cells):
 	new_mod = mod_cell('Trait:', 8, [reduced_trait], new_mod)
 	word = string('Per', reduced_rank)
 	word2 = string('Rank', reduced_rank)
-	new_mod = mod_cell('Reduced By:', 12, [reduced_value, word, reduced_rank, word2], new_mod)
+	penalty = check_string('Penalty', penalty)
+	new_mod = mod_cell('Reduced By:', 12, [reduced_value, penalty, word, reduced_rank, word2], new_mod)
 	new_mod = mod_cell('Normal Strength:', 16, [reduced_full], new_mod)
 	body = mod_add(reduced, new_mod, body)
 

@@ -1488,6 +1488,8 @@ class PowerChar(db.Model):
 	multiple = db.Column(db.String())
 	meta = db.Column(db.Boolean)
 	metamorph = db.Column(db.Integer)
+	penalty = db.Column(db.Boolean)
+	bonus = db.Column(db.Boolean)
 
 
 	def format(self):
@@ -1548,7 +1550,9 @@ class PowerChar(db.Model):
 			'ranks': self.ranks,
 			'multiple': self.multiple,
 			'meta': self.meta,
-			'metamorph': self.metamorph
+			'metamorph': self.metamorph,
+			'penalty': self.penalty,
+			'bonus': self.bonus
 		}
 
 class PowerCondition(db.Model):
