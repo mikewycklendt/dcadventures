@@ -2505,6 +2505,8 @@ class PowerSenseEffect(db.Model):
 	sense_aware_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
 	micro = db.Column(db.String())
 	micro_expertise = db.Column(db.String())
+	cognition_inactive = db.Column(db.Boolean)
+	cognition_self = db.Column(db.Boolean)
 
 	def format(self):
 		return {
@@ -2587,7 +2589,9 @@ class PowerSenseEffect(db.Model):
 			'remote_ranged': self.remote_ranged,
 			'remote_simultaneous': self.remote_simultaneous,
 			'micro': self.micro,
-			'micro_expertise': self.micro_expertise
+			'micro_expertise': self.micro_expertise,
+			'cognition_inactive': self.cognition_inactive,
+			'cognition_self': self.cognition_self
 		}
 
 class PowerReverse(db.Model):

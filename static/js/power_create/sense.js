@@ -66,23 +66,27 @@ function sense_skill() {
 
 function sense_type() {
 	const select = "sense_type";
-	const options = [{'val': 'height', 'div': "sense-height"},
-					{'val': 'resist', 'div': "sense-resist"},
-					{'val': 'conceal', 'div': "sense-conceal"},
-					{'val': 'counter_conceal', 'div': 'sense-counter-conceal'},
-					{'val': 'light', 'div': 'sense-light-penalty'},
-					{'val': 'illusion', 'div': 'sense-illusion'},
-					{'val': 'condition', 'div': 'sense-condition'},
-					{'val': 'remote', 'div': 'sense-remote'}];
+	const options = [{'val': ['height'], 'div': "sense-height"},
+					{'val': ['resist'], 'div': "sense-resist"},
+					{'val': ['conceal'], 'div': "sense-conceal"},
+					{'val': ['counter_conceal'], 'div': 'sense-counter-conceal'},
+					{'val': ['light'], 'div': 'sense-light-penalty'},
+					{'val': ['illusion'], 'div': 'sense-illusion'},
+					{'val': ['condition'], 'div': 'sense-condition'},
+					{'val': ['remote'], 'div': 'sense-remote'},
+					{'val': ['precog', 'postcog'], 'div': 'sense-cognition'},
+					{'val': ['postcog'], 'div': 'sense-cognition-self'}];
 
-	select_opacity(select, options);
+	select_opacity_shared(select, options);
 }
 
 function sense_counter_conceal()   {
 	const select = 'sense_counter_conceal';
 	const options = [{'val': 'descriptor', 'div': 'sense-counter-conceal-descriptor'},
 					{'val': 'dark', 'div': 'sense-counter-conceal-heat'}]
+	const checks = ['sense_counter_conceal_heat'];
 
+	uncheck_all(checks);
 	select_opacity(select, options);
 }
 
@@ -345,6 +349,8 @@ function sense_submit() {
 	const remote_simultaneous = check("sense_remote_simultaneous");
 	const micro = select("sense_micro");
 	const micro_expertise = select("sense_micro_expertise");
+	const cognition_inactive = check("sense_cognition_inactive");
+	const cognition_self = check("sense_cognition_self");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -434,7 +440,9 @@ function sense_submit() {
 			'remote_ranged': remote_ranged,
 			'remote_simultaneous': remote_simultaneous,
 			'micro': micro,
-			'micro_expertise': micro_expertise
+			'micro_expertise': micro_expertise,
+			'cognition_inactive': cognition_inactive,
+			'cognition_self': cognition_self
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

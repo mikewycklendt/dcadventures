@@ -143,6 +143,14 @@
 	transition: all .3s ease-out;
 }
 
+#sense-cognition {
+	display: grid;
+	grid-template-columns: 30% auto auto auto;
+	display: none;
+	opacity: 0%;
+	transition: all .3s ease-out;
+}
+
 #sense-light-penalty {
 	display: grid;
 	grid-template-columns: 5% 20% 17% 19% 29% 10%;

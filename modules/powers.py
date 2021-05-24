@@ -287,7 +287,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
-	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'dark', 'name': 'Darkness Only'}, {'type': 'all', 'name': 'All Concealment'}]
+	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'dark', 'name': 'Darkness Only'}, {'type': 'penetrate', 'name': 'Penetrates Concealment'}, {'type': 'all', 'name': 'All Concealment'}]
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
 
@@ -457,7 +457,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}, {'type': 'precog', 'name': 'Precognition'}, {'type': 'postcog', 'name': 'Postcognition'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3469,6 +3469,8 @@ def power_post_sense():
 	remote_simultaneous = request.get_json()['remote_simultaneous']
 	micro = request.get_json()['micro']
 	micro_expertise = request.get_json()['micro_expertise']
+	cognition_inactive = request.get_json()['cognition_inactive']
+	cognition_self = request.get_json()['cognition_self']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3591,7 +3593,9 @@ def power_post_sense():
 									remote_ranged = remote_ranged,
 									remote_simultaneous = remote_simultaneous,
 									micro = micro,
-									micro_expertise = micro_expertise
+									micro_expertise = micro_expertise,
+									cognition_inactive = cognition_inactive,
+									cognition_self = cognition_self
 								)
 
 		db.session.add(entry)

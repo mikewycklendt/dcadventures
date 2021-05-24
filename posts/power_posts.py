@@ -21,7 +21,7 @@ from functions.linked import link_add, delete_link, level_add, delete_level, lin
 from functions.user_functions import user_item
 
 from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
-from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings, substitute
+from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings, substitute, unchecked_string
 
 from create_functions.power_create import multiple_error, power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
 
@@ -1768,6 +1768,9 @@ def sense_post(entry, body, cells):
 	remote_ranged = entry.remote_ranged
 	remote_simultaneous = entry.remote_simultaneous
 	micro = entry.micro
+	micro_expertise = entry.micro_expertise
+	cognition_inactive = entry.cognition_inactive
+	cognition_self = entry.cognition_self
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1813,7 +1816,7 @@ def sense_post(entry, body, cells):
 	darkness_select = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
 	lighting = selects(lighting, darkness_select)
 
-	counter_conceal_select = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': counter_conceal_descriptor}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'all', 'name': 'All'}]
+	counter_conceal_select = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': counter_conceal_descriptor}, {'type': 'penetrate', 'name': 'Obstacle'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'all', 'name': 'All'}]
 	counter_conceal = selects(counter_conceal, counter_conceal_select)
 	
 	sense_distance_select = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
@@ -1851,6 +1854,8 @@ def sense_post(entry, body, cells):
 	illusion_range = integer_convert(illusion_range)
 	awareness_subtle_ranks = integer_convert(awareness_subtle_ranks)
 
+	cognition_inactive = unchecked_string('Simultaneous', cognition_inactive)
+	cognition_self = check_string('on own Timeline', cognition_self)
 
 	cells = cell('Extra', 15, [extra])
 	cells = cell('Sense', 9, [sense], cells)
@@ -1885,6 +1890,8 @@ def sense_post(entry, body, cells):
 	vcells = vcell('condition', 40, [condition, 'on', condition_degree, 'Degree'], vcells)
 	remote_simultaneous = check_string('Simultaneously', remote_simultaneous)
 	vcells = vcell('remote', 40, ['Remote Sense at', remote_ranged, 'Range', remote_simultaneous], vcells)
+	vcells = vcell('precog', 30, [cognition_inactive, 'Precognition'], vcells)
+	vcells = vcell('postcog', 40, [cognition_inactive, 'Postcognition', cognition_self], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

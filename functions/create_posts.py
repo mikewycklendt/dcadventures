@@ -714,6 +714,15 @@ def check_string(word, value):
 
 	return (value)
 
+def unchecked_string(word, value):
+
+	if value == False:
+		value = word
+	else:
+		value = ''
+
+	return (value)
+
 def checks_strings(word, value, words=''):
 
 	if value == True:
