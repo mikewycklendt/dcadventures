@@ -78,6 +78,17 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-null-condition">
+			<div>
+				<select class="select-sml" id="deg_mod_null_condition" name="deg_mod_null_condition">
+					<option value="">Nullified Condition</option>
+					{% for c in conditions %}
+						<option value={{c.id}}>{{c.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 		<div id="deg-mod-effect-type">
 			<div>
 				<select class="select-sml" id="deg_mod_effect" name="deg_mod_effect" onchange="deg_mod_effect()">

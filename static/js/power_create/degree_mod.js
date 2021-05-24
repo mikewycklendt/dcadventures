@@ -27,7 +27,8 @@ function deg_mod_type() {
 					{'val': ['check'], 'div': 'deg-mod-check'},
 					{'val': ['duration'], 'div': 'deg-mod-duration'},
 					{'val': ['descriptor'], 'div': 'deg-mod-descriptor'},
-					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'}];
+					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'},
+					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'}];
 
 	select_opacity_shared(select, options);
 }
@@ -359,6 +360,7 @@ function deg_mod_submit() {
 	const effect_descriptor_type = select("deg_mod_effect_descriptor_type");
 	const effect_descriptor_count = select("deg_mod_effect_descriptor_count");
 	const effect_power = select("deg_mod_effect_power")
+	const null_condition = select("deg_mod_null_condition")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -470,7 +472,8 @@ function deg_mod_submit() {
 			'effect_descriptor': effect_descriptor,
 			'effect_descriptor_type': effect_descriptor_type,
 			'effect_descriptor_count': effect_descriptor_count,
-			'effect_power': effect_power
+			'effect_power': effect_power,
+			'null_condition': null_condition
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

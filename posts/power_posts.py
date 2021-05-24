@@ -1753,6 +1753,7 @@ def sense_post(entry, body, cells):
 	awareness_subtle_ranks = entry.awareness_subtle_ranks
 	counter_conceal = entry.counter_conceal
 	counter_conceal_descriptor = entry.counter_conceal_descriptor
+	counter_conceal_heat = entry.counter_conceal_heat
 	ranged = entry.range
 	range = entry.range
 	ranged_type = entry.ranged_type
@@ -1802,8 +1803,6 @@ def sense_post(entry, body, cells):
 	illusion_unit = get_name(Unit, illusion_unit)
 	condition = get_name(Condition, condition)
 
-	counter_conceal = substitute('descriptor', counter_conceal, counter_conceal_descriptor)
-
 	targets_select = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	target = selects(target, targets_select)
 
@@ -1813,6 +1812,8 @@ def sense_post(entry, body, cells):
 	darkness_select = [{'type': '', 'name': 'See In:'}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'poor', 'name': 'Poor Light'}]
 	lighting = selects(lighting, darkness_select)
 
+	counter_conceal_select = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': counter_conceal_descriptor}, {'type': 'dark', 'name': 'Darkness'}, {'type': 'all', 'name': 'All'}]
+	counter_conceal = selects(counter_conceal, counter_conceal_select)
 	
 	sense_distance_select = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
 	distance = selects(distance, sense_distance_select)
@@ -1864,7 +1865,8 @@ def sense_post(entry, body, cells):
 	word = string('from', [conceal_power_sense])
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
-	vcells = vcell('counter_conceal', 30, ['Counters', counter_conceal, 'Concealment'], vcells)
+	counter_conceal_heat = check_string('If Temperature', counter_conceal_heat)
+	vcells = vcell('counter_conceal', 40, ['Counters', counter_conceal, 'Concealment', counter_conceal_heat], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	illusion_selective = check_string('Selective', illusion_selective)
@@ -2639,6 +2641,7 @@ def power_degree_post(entry, body, cells):
 	effect_descriptor_type = entry.effect_descriptor_type
 	effect_descriptor_count = entry.effect_descriptor_count
 	effect_power = entry.effect_power
+	null_condition = entry.null_condition
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2670,6 +2673,7 @@ def power_degree_post(entry, body, cells):
 	descriptor = get_name(PowerDes, descriptor)
 	effect_descriptor = get_name(PowerDes, effect_descriptor)
 	effect_power = get_name(Power, effect_power)
+	null_condition = get_name(Condition, null_condition)
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
@@ -2827,6 +2831,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('descriptor', 30, [descriptor_effect, descriptor, 'on', descriptor_target], vcells)
 
 	vcells = vcell('sense', 30, ['Apply Condition On Sense Form'], vcells)
+
+	vcells = vcell('null_condition', 30, [null_condition, 'Nullified'], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	

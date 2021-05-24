@@ -72,7 +72,8 @@ function sense_type() {
 
 function sense_counter_conceal()   {
 	const select = 'sense_counter_conceal';
-	const options = [{'val': 'descriptor', 'div': 'sense-counter-conceal-descriptor'}]
+	const options = [{'val': 'descriptor', 'div': 'sense-counter-conceal-descriptor'},
+					{'val': 'dark', 'div': 'sense-counter-conceal-heat'}]
 
 	select_opacity(select, options);
 }
@@ -318,7 +319,8 @@ function sense_submit() {
 	const awareness_subtle = check("sense_awareness_subtle");
 	const awareness_subtle_ranks = select("sense_awareness_subtle_ranks");
 	const counter_conceal = select("sense_counter_conceal");
-	const counter_conceal_descriptor = select("sense_counter_conceal_descriptor")
+	const counter_conceal_descriptor = select("sense_counter_conceal_descriptor");
+	const counter_conceal_heat = check("sense_counter_conceal_heat");
 	const ranged = check("sense_ranged");
 	const range = select("sense_range");
 	const ranged_type = select("sense_ranged_type");
@@ -406,6 +408,7 @@ function sense_submit() {
 			'awareness_subtle': awareness_subtle,
 			'counter_conceal': counter_conceal,
 			'counter_conceal_descriptor': counter_conceal_descriptor,
+			'counter_conceal_heat': counter_conceal_heat,
 			'ranged': ranged,
 			'range': range,
 			'ranged_type': ranged_type,

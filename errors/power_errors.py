@@ -2241,6 +2241,7 @@ def power_degree_post_errors(data):
 	effect_descriptor_type = data['effect_descriptor_type']
 	effect_descriptor_count = data['effect_descriptor_count']
 	effect_power = data['effect_power']
+	null_condition = data['null_condition']
 
 
 	errors = power_check(power_id, errors)
@@ -2295,6 +2296,7 @@ def power_degree_post_errors(data):
 	
 	errors = id_check(PowerDes, effect_descriptor, 'Effect Descriptor', errors)
 	errors = id_check(Power, effect_power, 'Power Effect', errors)
+	errors = id_check(Condition, null_condition, 'Nullified Condition', errors)
 
 	errors = int_check(resist_trait, 'Resistance Trait', errors)
 	errors = int_check(skill_trait, 'Skill Check Trait', errors)
@@ -2457,6 +2459,9 @@ def power_degree_post_errors(data):
 
 	errors = variable_fields('power', 'Power Effect', effect, [effect_power], errors)
 	errors = variable_field('power', effect, 'Power', effect_power, errors)
+
+	errors = variable_fields('null_condition', 'Nullify Condition', effect, [null_condition], errors)
+	errors = variable_field('null_condition', effect, 'Nullified Condition', null_condition, errors)
 
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)

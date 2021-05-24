@@ -875,6 +875,7 @@ class PowerDegree(db.Model):
 	effect_descriptor_count = db.Column(db.Integer)
 	effect_power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	fail = db.Column(db.Boolean)
+	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
 
 
 	def format(self):
@@ -976,7 +977,8 @@ class PowerDegree(db.Model):
 			'effect_descriptor_type': self.effect_descriptor_type,
 			'effect_descriptor_count': self.effect_descriptor_count,
 			'effect_power': self.effect_power,
-			'fail': self.fail
+			'fail': self.fail,
+			'null_condition': self.null_condition
 		}
 
 
@@ -2485,6 +2487,7 @@ class PowerSenseEffect(db.Model):
 	awareness_subtle_ranks = db.Column(db.Integer)
 	counter_conceal = db.Column(db.String())
 	counter_conceal_descriptor = db.Column(db.Integer, db.ForeignKey('power_descriptors.id'))
+	counter_conceal_heat = db.Column(db.Boolean)
 	ranged = db.Column(db.Boolean)
 	range = db.Column(db.Integer, db.ForeignKey('power_ranged.id'))
 	ranged_type = db.Column(db.Integer, db.ForeignKey('power_ranged_type.id'))
@@ -2566,6 +2569,7 @@ class PowerSenseEffect(db.Model):
 			'awareness_subtle_ranks': self.awareness_subtle_ranks,
 			'counter_conceal_descriptor': self.counter_conceal_descriptor,
 			'counter_conceal': self.counter_conceal,
+			'counter_conceal_heat': self.counter_conceal_heat,
 			'ranged': self.ranged,
 			'range': self.range,
 			'ranged_type': self.ranged_type,

@@ -266,7 +266,7 @@
 }
 
 #sense-awareness {
-	grid-template-columns: 13% 35% 35%;
+	grid-template-columns: 13% 35% 25% 15%;
 	display: none;
 	max-height: 0;
 	overflow: hidden;
