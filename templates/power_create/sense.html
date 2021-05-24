@@ -114,6 +114,28 @@
 
 		<div>
 
+			<div id="sense-track">
+				<div>
+					<select class="select-sml speed-sml" id="sense_track_speed" name="sense_track_speed">
+						<option value="">Tracking Speed</option>
+						<option value="">Use Movement Effect Form to Put Options Here</option>
+						{% for p in power_move %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+				
+				<div>
+					<select class="select-sml speed-type-sml" id="sense_track_speed_type" name="sense_track_speed_type">
+						<option value="">Tracking Speed by Group</option>
+						<option value="">Use Movement Effect Form to Put Options Here</option>
+						{% for p in power_move_type %}
+							<option value={{p.id}}>{{p.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+
 			<div id="sense-cognition">
 				<div>
 					<div class="check-div">

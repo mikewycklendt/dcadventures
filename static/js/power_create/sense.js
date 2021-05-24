@@ -75,7 +75,8 @@ function sense_type() {
 					{'val': ['condition'], 'div': 'sense-condition'},
 					{'val': ['remote'], 'div': 'sense-remote'},
 					{'val': ['precog', 'postcog'], 'div': 'sense-cognition'},
-					{'val': ['postcog'], 'div': 'sense-cognition-self'}];
+					{'val': ['postcog'], 'div': 'sense-cognition-self'},
+					{'val': ['track'], 'div': 'sense-track'}];
 
 	select_opacity_shared(select, options);
 }
@@ -351,6 +352,8 @@ function sense_submit() {
 	const micro_expertise = select("sense_micro_expertise");
 	const cognition_inactive = check("sense_cognition_inactive");
 	const cognition_self = check("sense_cognition_self");
+	const track_speed = select("sense_track_speed");
+	const track_speed_type = select("sense_track_speed_type");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -442,7 +445,9 @@ function sense_submit() {
 			'micro': micro,
 			'micro_expertise': micro_expertise,
 			'cognition_inactive': cognition_inactive,
-			'cognition_self': cognition_self
+			'cognition_self': cognition_self,
+			'track_speed': track_speed,
+			'track_speed_type': track_speed_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

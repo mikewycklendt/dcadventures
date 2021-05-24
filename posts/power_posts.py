@@ -1771,6 +1771,8 @@ def sense_post(entry, body, cells):
 	micro_expertise = entry.micro_expertise
 	cognition_inactive = entry.cognition_inactive
 	cognition_self = entry.cognition_self
+	track_speed = entry.track_speed
+	track_speed_type = entry.track_speed_type
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1784,6 +1786,8 @@ def sense_post(entry, body, cells):
 	range = get_keyword(PowerRanged, range)
 	ranged_type = get_name(PowerRangedType, ranged_type)
 	condition_degree = get_keyword(PowerDegree, condition_degree)
+	track_speed = get_keyword(PowerMove, track_speed)
+	track_speed_type = get_name(PowerMoveType, track_speed_type)
 
 	height_trait = trait_select(height_trait, height_trait_type)
 	resist_trait = trait_select(resist_trait, resist_trait_type)
@@ -1892,6 +1896,7 @@ def sense_post(entry, body, cells):
 	vcells = vcell('remote', 40, ['Remote Sense at', remote_ranged, 'Range', remote_simultaneous], vcells)
 	vcells = vcell('precog', 30, [cognition_inactive, 'Precognition'], vcells)
 	vcells = vcell('postcog', 40, [cognition_inactive, 'Postcognition', cognition_self], vcells)
+	vcells = vcell('track', 40, ['Tracking at', track_speed, track_speed_type, 'Speed'], vcells)
 	cells = vcell_add('Effect', sense_type, vcells, cells)
 
 	cells = circ_cell('Circ', 'Circumstance', 6, circ, cells, body)

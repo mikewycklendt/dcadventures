@@ -463,7 +463,9 @@ function move_submit() {
 	const err_line = 'move-err-line';
 
 	const selects = 'move-sml';
-	const select_title = 'move-title-sml'
+	const select_title = 'move-title-sml';
+	const speed_sml = 'speed-sml';
+	const speed_type_sml = 'speed-type-sml'
 
 	response = fetch('/power/move/create', {
 		method: 'POST',
@@ -600,12 +602,19 @@ function move_submit() {
 			}
 			selects_add(id, keyword, selects)
 
+			if (speed == 'rank' || speed == 'rank_mod' || speed == 'mod') {
+				selects_add(id, keyword, speed_sml);
+				if (add_title == true) {
+					selects_add(title_id, title_name, speed_type_sml);
+				}
+			}
+
 			move_grid.columns.length = 0;
 			move_grid.columns = jsonResponse.rows;
 
 			const table_id = jsonResponse.table_id;
 			const route = '/power/' + table_id + '/delete/'
-			create_table('power', jsonResponse, move_grid, route, [selects], title_id, [select_title]);
+			create_table('power', jsonResponse, move_grid, route, [selects, speed_sml], title_id, [select_title, speed_type_sml]);
 			clear_errors(err_line, errors)
 
 			move_grid.titles = true;

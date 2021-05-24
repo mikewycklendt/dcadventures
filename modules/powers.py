@@ -457,7 +457,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_time = [{'type': '', 'name': ''}, {'type': 'value', 'name': 'Value'}, {'type': 'skill', 'name': 'Skill'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
 
-	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}, {'type': 'precog', 'name': 'Precognition'}, {'type': 'postcog', 'name': 'Postcognition'}]
+	sense_type =  [{'type': '', 'name': 'Effect Type'}, {'type': 'height', 'name': 'Heightened'}, {'type': 'resist', 'name': 'Resistant'}, {'type': 'conceal', 'name': 'Concealment'}, {'type': 'counter_conceal', 'name': 'Counters Concealment'}, {'type': 'communicate', 'name': 'Communication'}, {'type': 'light', 'name': 'No Light Penalty'}, {'type': 'illusion', 'name': 'Illusion'}, {'type': 'condition', 'name': 'Apply Condition to Sense'}, {'type': 'remote', 'name': 'Remote Sensing'}, {'type': 'precog', 'name': 'Precognition'}, {'type': 'postcog', 'name': 'Postcognition'}, {'type': 'track', 'name': 'Tracking'}]
 
 	side_effects = [{'type': '', 'name': 'Side Effect'}, {'type': 'complication', 'name': 'Complication'}, {'type': 'level', 'name': 'Level'}, {'type': 'other', 'name': 'Other'}]
 
@@ -3471,6 +3471,9 @@ def power_post_sense():
 	micro_expertise = request.get_json()['micro_expertise']
 	cognition_inactive = request.get_json()['cognition_inactive']
 	cognition_self = request.get_json()['cognition_self']
+	track_speed = request.get_json()['track_speed']
+	track_speed_type = request.get_json()['track_speed_type']
+
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3482,6 +3485,8 @@ def power_post_sense():
 	ranged_type = db_integer(PowerRangedType, ranged_type)
 	condition_degree = db_integer(PowerDegree, condition_degree)
 	remote_ranged = db_integer(PowerRangedType, remote_ranged)
+	track_speed = db_integer(PowerMove, track_speed)
+	track_speed_type = db_integer(PowerMoveType, track_speed_type)
 
 	illusion_unit = db_integer(Unit, illusion_unit)
 	power_id = integer(power_id)
@@ -3595,7 +3600,9 @@ def power_post_sense():
 									micro = micro,
 									micro_expertise = micro_expertise,
 									cognition_inactive = cognition_inactive,
-									cognition_self = cognition_self
+									cognition_self = cognition_self,
+									track_speed = track_speed,
+									track_speed_type = track_speed_type
 								)
 
 		db.session.add(entry)

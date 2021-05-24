@@ -1,4 +1,5 @@
 
+from _typeshed.wsgi import ErrorStream
 from logging import error
 from models import Modifier, ModifierTable, LevelType, Levels, Damage, DamageType
 from db.rule_models import Ability, Defense, Element, EnvCondition, Action, ConflictAction, Skill, Check, Condition, Maneuver, Ranged, Sense, SubSense, Light, Ground, Range, Consequence, Material, Complex, Cover, Conceal, Phase, SkillTable, SkillType
@@ -1512,6 +1513,8 @@ def sense_post_errors(data):
 	remote_ranged = data['remote_ranged']
 	micro = data['micro']
 	micro_expertise = data['micro_expertise']
+	track_speed = data['track_speed']
+	track_speed_type = data['track_speed_type']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1522,6 +1525,9 @@ def sense_post_errors(data):
 	errors = id_check(PowerRanged, range, 'Range', errors)
 	errors = id_check(PowerRangedType, ranged_type, 'Range by Group', errors)
 	errors = id_check(PowerDegree, condition_degree, 'Degree of Succeaa/Failure', errors)
+	errors = id_check(PowerMove, track_speed, 'Tracking Speed', errors)
+	errors = id_check(PowerMoveType, track_speed_type, 'Tracking Speed by Group', errors)
+
 
 	errors = power_check(power_id, errors)
 
@@ -1604,7 +1610,6 @@ def sense_post_errors(data):
 	errors = check_fields(awareness_subtle, 'Detects Subtle', [awareness_subtle_ranks], errors)
 	errors = check_field(awareness_subtle, 'Detects Subtle', 'Subtle Ranks', awareness_subtle_ranks, errors)
 
-
 	errors = variable_fields('descriptor', 'Descriptor Dimension', dimensional_type, [dimensional_descriptor], errors)
 	errors = variable_field('descriptor', dimensional_type, 'Descriptor', dimensional_descriptor, errors)
 
@@ -1620,6 +1625,9 @@ def sense_post_errors(data):
 	errors = variable_field('language', comprehend_type, 'Comprehend Languages', comprehend_language, errors)
 	errors = variable_fields('spirit', 'Comprehend', comprehend_type, [comprehend_spirit], errors)
 	errors = variable_field('spirit', comprehend_type, 'Comprehend Spirits', comprehend_spirit, errors)
+
+	errors = variable_fields_of('track', 'Tracking', sense_type, [track_speed, track_speed_type], errors)
+	errors = seperate([track_speed, track_speed_type], 'Tracking Speed or Speed by Group', errors)
 
 	errors = check_of(ranged, 'Extended', 'Range or Range by Group', [range, ranged_type], errors)
 

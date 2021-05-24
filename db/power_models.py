@@ -2507,6 +2507,8 @@ class PowerSenseEffect(db.Model):
 	micro_expertise = db.Column(db.String())
 	cognition_inactive = db.Column(db.Boolean)
 	cognition_self = db.Column(db.Boolean)
+	track_speed = db.Column(db.Integer, db.ForeignKey('power_move.id'))
+	track_speed_type = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
 
 	def format(self):
 		return {
@@ -2591,7 +2593,9 @@ class PowerSenseEffect(db.Model):
 			'micro': self.micro,
 			'micro_expertise': self.micro_expertise,
 			'cognition_inactive': self.cognition_inactive,
-			'cognition_self': self.cognition_self
+			'cognition_self': self.cognition_self,
+			'track_speed': self.track_speed,
+			'track_speed_type': self.track_speed_type
 		}
 
 class PowerReverse(db.Model):
