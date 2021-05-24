@@ -421,6 +421,14 @@ function mod_concentration() {
 	check_drop(check, div, entry);
 }
 
+function mod_unreliable() {
+	const check = 'mod_unreliable';
+	const div = 'mod-unreliable';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -557,7 +565,8 @@ function mod_submit() {
 	const concentration_check_type = select("mod_concentration_check_type");
 	const concentration_opposed = select("mod_concentration_opposed");
 	const concentration_effort = check("mod_concentration_effort");
-
+	const unreliable_type = select("mod_unreliable_type")
+	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
 	
@@ -695,7 +704,8 @@ function mod_submit() {
 			'concentration_check': concentration_check,
 			'concentration_check_type': concentration_check_type,
 			'concentration_opposed': concentration_opposed,
-			'concentration_effort': concentration_effort
+			'concentration_effort': concentration_effort,
+			'unreliable_type': unreliable_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

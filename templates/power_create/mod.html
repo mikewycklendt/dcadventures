@@ -213,7 +213,7 @@
 
 		<div>
 			<div class="check-div">
-				<input type="checkbox" id="mod_unreliable" class="medium-checkbox med-checkbox"> Unreliable
+				<input type="checkbox" id="mod_unreliable" class="medium-checkbox med-checkbox" onclick="mod_unreliable()"> Unreliable
 			</div>
 		</div>
 
@@ -235,6 +235,20 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="mod-unreliable">
+		<div class="valigm">
+			Unreliable
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_unreliable_type" name="mod_unreliable_type">
+				{% for u in unreliable_type %}
+					<option value="{{u.type}}">{{u.name}}</option>
+				{% endfor %}
+			</select>
+		</div>	
 	</div>
 
 

@@ -2095,6 +2095,7 @@ class PowerMod(db.Model):
 	concentration_check_type = db.Column(db.Integer, db.ForeignKey('power_check_type.id'))
 	concentration_opposed = db.Column(db.Integer, db.ForeignKey('power_opposed.id'))
 	concentration_effort = db.Column(db.Boolean)
+	unreliable_type = db.Column(db.String())
 
 	def format(self):
 		return {
@@ -2222,7 +2223,8 @@ class PowerMod(db.Model):
 			'concentration_check': self.concentration_check,
 			'concentration_check_type': self.concentration_check_type,
 			'concentration_opposed': self.concentration_opposed,
-			'concentration_effort': self.concentration_effort
+			'concentration_effort': self.concentration_effort,
+			'unreliable_type': self.unreliable_type
 		}
 
 class PowerRanged(db.Model):

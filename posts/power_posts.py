@@ -1092,6 +1092,9 @@ def mod_post(entry, body, cells):
 
 	source_type = [{'type': '', 'name': ''}, {'type': 'player', 'name': 'Player Has Access To'}, {'type': 'opponent', 'name': 'Opponent Has Descriptor'}, {'type': 'area', 'name': 'Area Target Has Descriptor'}, {'type': 'object', 'name': 'Object Has Descriptor'}]
 	limited_source_type = selects(limited_source_type, source_type)
+	
+	unreliable_type_select = [{'type': '', 'name': 'Unreliable Type'}, {'type': 'fail', 'name': "Effect Doesn't Work"}, {'type': 'info', 'name': 'Bad Information From GM'}]
+	unreliable_type = selects(unreliable_type, unreliable_type_select)
 
 	limited_mod = integer_convert(limited_mod)
 	limited_subjects = integer_convert(limited_subjects)
@@ -1326,7 +1329,11 @@ def mod_post(entry, body, cells):
 	body = mod_add(adv, new_mod, body)
 	
 	cells = check_cell('Noticeable', 11, noticeable, cells)
-	cells = check_cell('Unreliable', 11, unreliable, cells)
+	cells = check_cell('Unreliable', 11, unreliable, cells, True)
+	new_mod = mod_create('Unreliable', 12)
+	new_mod = mod_cell('Type', 6, [unreliable_type], new_mod)
+	body = mod_add(unreliable, new_mod, body)
+
 	cells = check_cell('Radius', 7, ranks, cells)
 	cells = check_cell('Accurate', 9, accurate, cells)
 	cells = check_cell('Acute', 7, acute, cells)

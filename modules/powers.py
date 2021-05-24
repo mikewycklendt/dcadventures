@@ -511,6 +511,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	updown = [{'id': 1, 'name': 'Up'}, {'id': -1, 'name': 'Down'}]
 
+	unreliable_type = [{'type': '', 'name': 'Unreliable Type'}, {'type': 'fail', 'name': "Effect Doesn't Work"}, {'type': 'info', 'name': 'Bad Information From GM'}]
+
 	use_type = [{'type': '', 'name': 'Use Type'}, {'type': 'add', 'name': 'Add to'}, {'type': 'rank', 'name': 'Add Per Rank'}, {'type': 'replace', 'name': 'In Place of'}, {'type': 'gm', 'name': 'GM Choice'}]
 
 	value_bonus = [{'type': 'value', 'name': 'Value'}, {'type': 'bonus', 'name': 'Enhanced Skill'}]
@@ -597,7 +599,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise)
+											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2563,6 +2565,7 @@ def power_post_mod():
 	concentration_check_type = request.get_json()['concentration_check_type']
 	concentration_opposed = request.get_json()['concentration_opposed']
 	concentration_effort = request.get_json()['concentration_effort']
+	unreliable_type = request.get_json()['unreliable_type']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2769,7 +2772,8 @@ def power_post_mod():
 							concentration_check = concentration_check,
 							concentration_check_type = concentration_check_type,
 							concentration_opposed = concentration_opposed,
-							concentration_effort = concentration_effort
+							concentration_effort = concentration_effort,
+							unreliable_type = unreliable_type
 						)
 
 		db.session.add(entry)

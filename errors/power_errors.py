@@ -922,6 +922,7 @@ def mod_post_errors(data):
 	concentration_check = data['concentration_check']
 	concentration_check_type = data['concentration_check_type']
 	concentration_opposed = data['concentration_opposed']
+	unreliable_type = data['unreliable_type']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1122,7 +1123,13 @@ def mod_post_errors(data):
 
 	errors = seperate([concentration_check, concentration_check_type, concentration_opposed], 'Concentration', errors)
 	errors = check_of(concentration, 'Concentration', 'Concentration Check', [concentration_check, concentration_check_type, concentration_opposed], errors)
+	
+	errors = check_fields(unreliable, 'Unreliable', [unreliable_type], errors)
+	errors = check_field(unreliable, 'Unreliable', 'Unreliable Type', unreliable_type, errors)
+	
 	return (errors)
+
+	
 
 def ranged_post_errors(data):
 
