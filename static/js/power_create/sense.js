@@ -143,8 +143,9 @@ function sense_resist_immune() {
 function sense_dark() {
 	const check = "sense_dark";
 	const lig = "sense-lighting";
+	const entry = "sense-entry";
 
-	check_display(check, lig);
+	check_drop(check, lig, entry);
 }
 
 function sense_time_set() {
@@ -354,6 +355,7 @@ function sense_submit() {
 	const cognition_self = check("sense_cognition_self");
 	const track_speed = select("sense_track_speed");
 	const track_speed_type = select("sense_track_speed_type");
+	const counter_conceal_uv = check("sense_counter_conceal_uv");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -447,7 +449,8 @@ function sense_submit() {
 			'cognition_inactive': cognition_inactive,
 			'cognition_self': cognition_self,
 			'track_speed': track_speed,
-			'track_speed_type': track_speed_type
+			'track_speed_type': track_speed_type,
+			'counter_conceal_uv': counter_conceal_uv
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

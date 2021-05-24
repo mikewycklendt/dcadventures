@@ -271,12 +271,6 @@
 					</select>
 				</div>
 
-				<div class="hidden" id="sense-counter-conceal-heat">		
-					<div class="check-div-fit" style="font-size: 90%;">
-						<input type="checkbox" id="sense_counter_conceal_heat" class="medium-checkbox med-checkbox" > Only by Temperature
-					</div>
-				</div>
-
 			</div>
 
 			<div id="sense-conceal">
@@ -428,14 +422,6 @@
 			</div>
 		</div>
 
-		<div id="sense-lighting" style="opacity: 0%; transition: all .3s ease-in;">
-			<select class="select-sml" id="sense_lighting" name="sense_lighting">
-				{% for l in light %}
-			   <option value={{l.id}}>{{l.name}}</option>
-				{% endfor %}
-			</select>
-		</div>
-
 	</div>
 
 
@@ -511,6 +497,34 @@
 			</div>
 		</div>
 		
+	</div>
+
+	<div id="sense-lighting">
+		<div>
+			Counters Darkness:
+		</div>
+
+		<div>
+			<select class="select-sml" id="sense_lighting" name="sense_lighting">
+				<option value="">Lighting</option>
+				{% for l in light %}
+			   		<option value={{l.id}}>{{l.name}}</option>
+				{% endfor %}
+			</select>	
+		</div>
+
+		<div>		
+			<div class="check-div" style="font-size: 90%;">
+				<input type="checkbox" id="sense_counter_conceal_heat" class="medium-checkbox med-checkbox" > Only by Temperature
+			</div>
+		</div>
+
+		<div>		
+			<div class="check-div" style="font-size: 90%;">
+				<input type="checkbox" id="sense_counter_conceal_uv" class="medium-checkbox med-checkbox" > Only with UV Source
+			</div>
+		</div>
+
 	</div>
 
 	<div id="sense-micro">

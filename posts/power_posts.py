@@ -1773,6 +1773,7 @@ def sense_post(entry, body, cells):
 	cognition_self = entry.cognition_self
 	track_speed = entry.track_speed
 	track_speed_type = entry.track_speed_type
+	counter_conceal_uv = entry.counter_conceal_uv
 
 
 	body = one_multiple(PowerSenseEffect, power_id, body)
@@ -1885,8 +1886,7 @@ def sense_post(entry, body, cells):
 	word = string('from', [conceal_power_sense])
 	w = width(22, 14, conceal_power_sense)
 	vcells = vcell('conceal', w, [concealment, word, conceal_power_sense], vcells)
-	counter_conceal_heat = check_string('If Temperature', counter_conceal_heat)
-	vcells = vcell('counter_conceal', 40, ['Counters', counter_conceal, 'Concealment', counter_conceal_heat], vcells)
+	vcells = vcell('counter_conceal', 40, ['Counters', counter_conceal, 'Concealment'], vcells)
 	vcells = vcell('communicate', 20, ['Communication Link'], vcells)
 	vcells = vcell('light', 40, ['No', light_penalty, 'Penalty on', light_penalty_trait, 'Checks'], vcells)
 	illusion_selective = check_string('Selective', illusion_selective)
@@ -1908,6 +1908,8 @@ def sense_post(entry, body, cells):
 	cells = check_cell('Counters Dark', 16, dark, cells, True)
 	new_mod = mod_create('Counters Darkness', 22)
 	new_mod = mod_cell('See In:', 8, lighting, new_mod)
+	new_mod = mod_cell('Requires Temperature Difference', 30, [counter_conceal_heat], new_mod)
+	new_mod = mod_cell('Requires UV Light Source', 30, [counter_conceal_uv], new_mod)
 	body = mod_add(dark, new_mod, body)
 
 	cells = check_cell('Time Effect', 14, time, cells, True)

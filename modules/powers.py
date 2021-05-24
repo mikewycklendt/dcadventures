@@ -287,7 +287,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	conceal_type = [{'type': 'reduce', 'name': 'Reduce'}, {'type': 'eliminate', 'name': 'Eliminate'}]
 
-	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'dark', 'name': 'Darkness Only'}, {'type': 'penetrate', 'name': 'Penetrates Concealment'}, {'type': 'all', 'name': 'All Concealment'}]
+	counter_conceal = [{'type': '', 'name': 'Counter Type'}, {'type': 'descriptor', 'name': 'Effects with Descriptor'}, {'type': 'penetrate', 'name': 'Penetrates Concealment'}, {'type': 'all', 'name': 'All Concealment'}]
 
 	condition = [{'type': '', 'name': 'Condition Type'}, {'type': 'active', 'name': 'Active Condition'}, {'type': 'change', 'name': 'Condition Change'}, {'type': 'damage', 'name': 'Damage Condition'}, {'type': 'null', 'name': 'Nullify Condition'}]
 
@@ -3473,6 +3473,7 @@ def power_post_sense():
 	cognition_self = request.get_json()['cognition_self']
 	track_speed = request.get_json()['track_speed']
 	track_speed_type = request.get_json()['track_speed_type']
+	counter_conceal_uv = request.get_json()['counter_conceal_uv']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -3602,7 +3603,8 @@ def power_post_sense():
 									cognition_inactive = cognition_inactive,
 									cognition_self = cognition_self,
 									track_speed = track_speed,
-									track_speed_type = track_speed_type
+									track_speed_type = track_speed_type,
+									counter_conceal_uv = counter_conceal_uv
 								)
 
 		db.session.add(entry)

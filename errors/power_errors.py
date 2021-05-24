@@ -1513,6 +1513,7 @@ def sense_post_errors(data):
 	micro_expertise = data['micro_expertise']
 	track_speed = data['track_speed']
 	track_speed_type = data['track_speed_type']
+	counter_conceal_uv = data['counter_conceal_uv']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1593,7 +1594,7 @@ def sense_post_errors(data):
 	errors = variable_fields('remote', 'Remote Sensing', sense_type, [remote_ranged], errors)
 	errors = variable_field('remote', sense_type, 'Remote Sensing', remote_ranged, errors)
 
-	errors = check_field(dark, 'Counters Darkness', 'Darkness Type', lighting, errors)
+	errors = check_field(dark, 'Counters Darkness', 'Lighting', lighting, errors)
 	errors = check_of(time, 'Time Effect', 'a Time Effect or Time Effect by Group', [time_value, time_type], errors)
 	errors = seperate([time_value, time_type], 'the Time Effect', errors)
 	errors = check_field(dimensional, 'Dimensional', 'Dimensional Type', dimensional_type, errors)

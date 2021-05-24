@@ -62,8 +62,11 @@
 
 #sense-lighting {
 	display: none;
-	opacity: 0%;
+	max-height: 0;
+	overflow: hidden;
 	transition: all .4s ease-out;
+	grid-template-columns: 18% 22% 30% 30%;
+	gap: 4px;
 }
 
 #sense-lighting-head {
