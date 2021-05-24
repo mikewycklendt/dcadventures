@@ -387,6 +387,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 		
 	measure_type = [{'type': '', 'name': 'Type'}, {'type': '=', 'name': '='}, {'type': '>', 'name': '>'}, {'type': '<', 'name': '<'}, {'type': '>=', 'name': '>='}, {'type': '<=', 'name': '<='} ]
 
+	micro_expertise = [{'type': '', 'name': 'Expertise to Understand'}, {'type': 'always', 'name': 'Always'}, {'type': 'never', 'name': 'Never'}, {'type': 'gm', 'name': 'GM Decides'}]
+
 	mind = [{'type': '', 'name': 'Read Mind'}, {'type': 'affect', 'name': 'Affect Surface Thoughts'}, {'type': 'surface', 'name': 'Surface Thoughts'}, {'type': 'personal', 'name': 'Personal Thoughts'}, {'type': 'memory', 'name': 'Memory'}, {'type': 'sub', 'name': 'Subconscious'}, {'type': 'sense', 'name': 'Sensory Link'}]
 
 	minion_attitude = [{'type': '', 'name': 'Minion Attitude'}, {'type': 'none', 'name': 'Cooperative'}, {'type': 'Indifferent', 'name': 'Indifferent'}, {'type': 'Unfriendly', 'name': 'Unfriendly'}]
@@ -595,7 +597,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro)
+											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -3466,6 +3468,7 @@ def power_post_sense():
 	remote_ranged = request.get_json()['remote_ranged']
 	remote_simultaneous = request.get_json()['remote_simultaneous']
 	micro = request.get_json()['micro']
+	micro_expertise = request.get_json()['micro_expertise']
 
 	cost = db_integer(PowerCost, cost)
 	ranks = db_integer(PowerRanks, ranks)
@@ -3587,7 +3590,8 @@ def power_post_sense():
 									condition = condition,
 									remote_ranged = remote_ranged,
 									remote_simultaneous = remote_simultaneous,
-									micro = micro
+									micro = micro,
+									micro_expertise = micro_expertise
 								)
 
 		db.session.add(entry)

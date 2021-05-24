@@ -478,7 +478,7 @@
 	</div>
 
 	<div id="sense-micro">
-		<div>
+		<div class="valign">
 			Microscopic Vision:
 		</div>
 
@@ -486,6 +486,14 @@
 			<select class="select-sml" id="sense_micro" name="sense_micro">
 				{% for s in sense_micro %}
 					<option value="{{s.type}}">{{s.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div>
+			<select class="select-sml" id="sense_micro_expertise" name="sense_micro_expertise">
+				{% for m in micro_expertise %}
+					<option value="{{m.type}}">{{m.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

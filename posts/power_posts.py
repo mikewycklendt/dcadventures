@@ -1840,6 +1840,9 @@ def sense_post(entry, body, cells):
 	sense_micro = [{'type': '', 'name': 'Object Size'}, {'type': 'dust', 'name': 'Dust-Sized'}, {'type': 'cell', 'name': 'Cellular-Sized'}, {'type': 'molecule', 'name': 'DNA/Molecules'}, {'type': 'atom', 'name': 'Atomic-Sized'}]
 	micro = selects(micro, sense_micro)
 
+	micro_expertise_select = [{'type': 'always', 'name': 'but requires an Expertise Check to understand'}, {'type': 'never', 'name': 'and understand what you see'}, {'type': 'gm', 'name': 'but GM may require an Expertise Check to understand'}]
+	micro_expertise = selects(micro_expertise, micro_expertise_select)
+
 	resist_circ = integer_convert(resist_circ)
 	distance_dc = integer_convert(distance_dc)
 	distance_mod = integer_convert(distance_mod)
@@ -1853,7 +1856,7 @@ def sense_post(entry, body, cells):
 	cells = cell('Sense', 9, [sense], cells)
 	cells = cell('Subsense', 14, [subsense_name], cells)
 
-	vcells = vcell(6, 25, ['Can See', micro, 'Objects'])
+	vcells = vcell(6, 25, ['Can See', micro, 'Objects', micro_expertise])
 	cells = drop_vcell('Special', 'Special Abilities', 20, subsense, vcells, cells, body)
 	
 	cells = cell('Check', 16, [skill], cells)

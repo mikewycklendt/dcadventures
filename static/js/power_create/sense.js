@@ -343,7 +343,8 @@ function sense_submit() {
 	const condition_degree = select("sense_condition_degree");
 	const remote_ranged = select("sense_remote_ranged");
 	const remote_simultaneous = check("sense_remote_simultaneous");
-	const micro = select("sense_micro")
+	const micro = select("sense_micro");
+	const micro_expertise = select("sense_micro_expertise");
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -432,7 +433,8 @@ function sense_submit() {
 			'condition_degree': condition_degree,
 			'remote_ranged': remote_ranged,
 			'remote_simultaneous': remote_simultaneous,
-			'micro': micro
+			'micro': micro,
+			'micro_expertise': micro_expertise
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
