@@ -1837,7 +1837,7 @@ def sense_post(entry, body, cells):
 	spirits_select = [{'type': '', 'name': 'Comprehend Spirits'}, {'type': 'understand', 'name': 'Perceive and Understand'}, {'type': 'communicate', 'name': 'Communicate Both Ways'}]
 	comprehend_spirit = selects(comprehend_spirit, spirits_select)
 
-	sense_micro = [{'type', '', 'name': 'Object Size'}, {'type', 'dust', 'name': 'Dust-Sized'}, {'type', 'cell', 'name': 'Cellular-Sized'}, {'type', 'molecule', 'name': 'DNA/Molecules'}, {'type', 'atom', 'name': 'Atomic-Sized'}]
+	sense_micro = [{'type': '', 'name': 'Object Size'}, {'type': 'dust', 'name': 'Dust-Sized'}, {'type': 'cell', 'name': 'Cellular-Sized'}, {'type': 'molecule', 'name': 'DNA/Molecules'}, {'type': 'atom', 'name': 'Atomic-Sized'}]
 	micro = selects(micro, sense_micro)
 
 	resist_circ = integer_convert(resist_circ)
@@ -1857,7 +1857,7 @@ def sense_post(entry, body, cells):
 	cells = drop_vcell('Special', 'Special Abilities', 20, subsense, vcells, cells, body)
 	
 	cells = cell('Check', 16, [skill], cells)
-	
+
 	wid = 17
 	affects = string('Affects', [height_trait])
 	word = string('Requires', [height_ensense])

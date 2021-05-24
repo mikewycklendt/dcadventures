@@ -449,7 +449,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	sense_distance = [{'type': '', 'name': 'Range'}, {'type': 'unlimited', 'name': 'Unlimited'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'unit', 'name': 'By Rank (Units)'}, {'type': 'rank', 'name': 'By Rank'}]
 
-	sense_micro = [{'type', '', 'name': 'Object Size'}, {'type', 'dust', 'name': 'Dust-Sized'}, {'type', 'cell', 'name': 'Cellular-Sized'}, {'type', 'molecule', 'name': 'DNA/Molecules'}, {'type', 'atom', 'name': 'Atomic-Sized'}]
+	sense_micro = [{'type': '', 'name': 'Object Size'}, {'type': 'dust', 'name': 'Dust-Sized'}, {'type': 'cell', 'name': 'Cellular-Sized'}, {'type': 'molecule', 'name': 'DNA/Molecules'}, {'type': 'atom', 'name': 'Atomic-Sized'}]
 
 	sense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}, {'type': 'stack', 'name': 'Stackable'}]
 
