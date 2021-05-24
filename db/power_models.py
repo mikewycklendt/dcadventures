@@ -2507,7 +2507,7 @@ class PowerSenseEffect(db.Model):
 	micro_expertise = db.Column(db.String())
 	cognition_inactive = db.Column(db.Boolean)
 	cognition_self = db.Column(db.Boolean)
-	track_speed = db.Column(db.Integer, db.ForeignKey('power_move.id'))
+	track_speed = db.Column(db.Integer, db.ForeignKey('power_movement.id'))
 	track_speed_type = db.Column(db.Integer, db.ForeignKey('power_move_type.id'))
 
 	def format(self):
