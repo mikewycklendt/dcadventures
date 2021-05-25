@@ -433,6 +433,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 
+	rank_type =   [{'type':  '', 'name': 'Rank Type'}, {'type':  'power', 'name': 'Power Rank'}, {'type':  'extra', 'name': 'Extra Rank'}]
+
 	ranks_required = [{'type': '', 'name': 'Required For'}, {'type': 'effect', 'name': 'All Rank Effects'}, {'type': 'attack', 'name': 'To Attack With This Effect'}, {'type': 'effect', 'name': 'To Use Other Powers With This Effect'}, {'type': 'both', 'name': 'To Attack or Use Other Powers'}]
 
 	recovery = [{'type': '', 'name': 'Target'}, {'type': 'player', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'either', 'name': 'Either'}]
@@ -599,7 +601,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type)
+											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2332,6 +2334,7 @@ def power_post_minion():
 	resitable_check = request.get_json()['resitable_check']
 	resitable_dc = request.get_json()['resitable_dc']
 	multiple_value = request.get_json()['multiple_value']
+	multiple_type = request.get_json()['multiple_type']
 	horde = request.get_json()['horde']
 	columns = request.get_json()['columns']
 	created = request.get_json()['created']
@@ -2372,6 +2375,7 @@ def power_post_minion():
 							resitable_check = resitable_check,
 							resitable_dc = resitable_dc,
 							multiple_value = multiple_value,
+							multiple_type = multiple_type,
 							horde = horde)
 
 		db.session.add(entry)

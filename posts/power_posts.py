@@ -859,6 +859,9 @@ def minion_post(entry, body, cells):
 	minion_type_select = [{'type': '', 'name': 'Minion Type'}, {'type': 'specific', 'name': 'Specific'}, {'type': 'general', 'name': 'General'}, {'type': 'broad', 'name': 'Broad'}]
 	variable_type = selects(variable_type, minion_type_select)
 
+	rank_type =   [{'type':  '', 'name': 'Rank Type'}, {'type':  'power', 'name': 'Power Rank'}, {'type':  'extra', 'name': 'Extra Rank'}]
+	multiple_type = selects(multiple_type, rank_type)
+
 	points = integer_convert(points)
 	sacrifice_cost = integer_convert(sacrifice_cost)
 	resitable_dc = integer_convert(resitable_dc)
@@ -872,7 +875,7 @@ def minion_post(entry, body, cells):
 	cells = check_cell('Link', 7, link, cells)
 	cells = check_cell('Multiple', 9, multiple, cells, True)
 	new_mod = mod_create('Multiple Minions', 20)
-	new_mod  = mod_cell('Count', 7, [multiple_value], new_mod)
+	new_mod  = mod_cell('Count', 7, [multiple_type, 'x', multiple_value], new_mod)
 	new_mod  = mod_cell('Horde', 7, [horde], new_mod)
 	body = mod_add(multiple, new_mod, body)
 	

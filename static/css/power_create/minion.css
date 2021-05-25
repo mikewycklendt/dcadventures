@@ -65,7 +65,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 20% 20% 15% 20% 20%;
 }
 
 #minion-attitude {
@@ -86,8 +86,11 @@
 
 #minion-sacrifice {
 	display: none;
-	opacity: 0%;
-	transition: all .3s ease-out;
+	max-height: 0;
+	overflow: hidden;
+	transition: all .4s ease-in;
+	grid-template-columns: 10% 25% 15%;
+	gap: 4px;
 }
 
 

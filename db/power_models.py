@@ -1944,6 +1944,7 @@ class PowerMinion(db.Model):
 	resitable_check = db.Column(db.Integer, db.ForeignKey('defense.id'))
 	resitable_dc = db.Column(db.Integer)
 	multiple_value = db.Column(db.Integer)
+	multiple_type = db.Column(db.String())
 	horde = db.Column(db.Boolean)
 
 	def format(self):
@@ -1969,6 +1970,7 @@ class PowerMinion(db.Model):
 			'resitable_check': self.resitable_check,
 			'resitable_dc': self.resitable_dc,
 			'multiple_value': self.multiple_value,
+			'multiple_type': self.multiple_type,
 			'horde': self.horde
 		}
 

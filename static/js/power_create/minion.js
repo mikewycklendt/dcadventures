@@ -49,8 +49,9 @@ function minion_resitable() {
 function minion_sacrifice() {
 	const check = 'minion_sacrifice';
 	const div = 'minion-sacrifice';
+	const entry = 'minion-entry';
 
-	check_display(check, div);
+	check_drop(check, div, entry);
 }
 
 function minion_attitude_trait_type() {
@@ -97,6 +98,7 @@ function minions_submit() {
 	const resitable_check = select("minion_resitable_check");
 	const resitable_dc = select("minion_resitable_dc");
 	const multiple_value = select("mod_minion_multiple_value");
+	const multiple_type =  select("mod_minion_multiple_type");
 	const horde = check("mod_minion_horde");
 
 	///const power_id = document.getElementById('power_id').value;
@@ -128,6 +130,7 @@ function minions_submit() {
 			'resitable_check': resitable_check,
 			'resitable_dc': resitable_dc,
 			'multiple_value': multiple_value,
+			'multiple_type': multiple_type,
 			'horde': horde,
 			'columns': columns,
 			'created': created,

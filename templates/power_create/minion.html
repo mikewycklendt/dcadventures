@@ -88,13 +88,24 @@
 			</div>
 		</div>
 
-		<div id="minion-sacrifice">
+	</div>
+
+	<div id="minion-sacrifice">
+		<div class="valign">
+			Sacrfice:
+		</div>
+
+		<div style="font-size: 80%;">
+			Power Point Cost Per Use
+		</div>
+	
+		<div>
 			<select class="select-sml" id="mod_minion_sacrifice_cost" name="mod_minion_sacrifice_cost">
-				<option value="">Power Point Cost Per Use</option>
+				<option value="">Cost</option>
 				{% for i in positives %}
 					<option value={{i}}>{{i}} Power Points</option>
 				{% endfor %}
-			</select>
+			</select>	
 		</div>
 	</div>
 
@@ -173,6 +184,14 @@
 				<option value="">Minions</option>
 				{% for i in positives %}
 					<option value={{i}}>Rank X {{i}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_minion_multiple_type" name="mod_minion_multiple_type">
+				{% for r in rank_type %}
+					<option value="{{r/type}}">{{r.name}}</option>
 				{% endfor %}
 			</select>
 		</div>

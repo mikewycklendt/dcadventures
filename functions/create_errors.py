@@ -377,6 +377,27 @@ def variable_field(value, field, name, f, errors):
 
 	return (errors)
 	
+def extra_option(field, name, f, errors):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if field != 'extra':
+		return (errors)
+	else:
+		if f == '0':
+			error = True
+				
+	if error:
+		message = 'You set this rule for the base power effect so you cannot set the ' + name + ' field to Extra Rank.'
+		error_msgs.append(message)
+
+
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+	
 def incompatible(value, field, dependent, val, f, fieldname, name, errors):
 	error_msgs = errors['error_msgs']
 	error = False
