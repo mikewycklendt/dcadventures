@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
+from functions.create_errors import extra_option, required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell, arrow_cell, drop_cell, drop_vcell, string_all, checks_strings, substitute, unchecked_string
 
 from create_functions.power_create import multiple_error, power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, get_ranks, get_cost, degree_multiple, one_multiple, title_multiple
@@ -2032,6 +2032,7 @@ def power_check_post(entry, body, cells):
 	attack_range = entry.attack_range
 	consequence = entry.consequence
 	consequence_target = entry.consequence_target
+	consequence_null = entry.consequence_null
 	defenseless = entry.defenseless
 	touch = entry.touch
 	target_type = entry.target_type
@@ -2102,6 +2103,8 @@ def power_check_post(entry, body, cells):
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites ' + overwrite}]
 	multiple = selects(multiple, check_multiple)
 
+	consequence_null = check_string('Nullifies', consequence_null)
+
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
 	cells = cell('Modifier', 8, [mod], cells)
@@ -2118,7 +2121,7 @@ def power_check_post(entry, body, cells):
 	vcells = vcell('opposed', 18, [opponent, opponent_type], vcells)
 	w = width(14, 10, mental)
 	vcells = vcell('sense', w, [sense_target, sense_type, sense, mental], vcells)
-	vcells = vcell('consequence', 30, [consequence, 'on', consequence_target], vcells)
+	vcells = vcell('consequence', 30, [consequence_null, consequence, 'on', consequence_target], vcells)
 	vcells = vcell('target', 20, [target_type], vcells)
 	cells = drop_vcell('Trigger', [trigger_title], 9, trigger, vcells, cells)
 
@@ -3319,7 +3322,7 @@ def power_opposed_post(entry, body, cells):
 	opposed = get_keyword(PowerOpposed, opposed)
 	variable_type = get_name(PowerCheckType, variable_type)
 
-	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
+	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
 
 	opposed_check = one_of(opposed, [opposed, 'Opponent Check'])
@@ -3330,10 +3333,10 @@ def power_opposed_post(entry, body, cells):
 	attached_select = [{'type': '', 'name': 'Attached'}, {'type': 'primary', 'name': 'Primary Check'}, {'type': 'condition', 'name': 'Conditional Check'}, {'type': 'before', 'name': 'Before Primary Check'}, {'type': 'after', 'name': 'After Primary Check'}, {'type': 'before_var', 'name': 'Before Variable Check'}, {'type': 'after_var', 'name': 'After Variable Check'}, {'type': 'opponent', 'name': 'After Opponent Check'}]
 	attached = selects(attached, attached_select)
 
-	after_select = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
+	after_select = [{'type': '', 'name': 'After Check'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
 	after = selects(after, after_select)
 
-	before_select = [{'type': '', 'name': 'Before Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}]
+	before_select = [{'type': '', 'name': 'Before Check'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}]
 	before = selects(before, before_select)
 
 	happens = frequency + ' ' + attached

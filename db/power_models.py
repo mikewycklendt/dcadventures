@@ -409,6 +409,7 @@ class PowerCheck(db.Model):
 	attack_range = db.Column(db.Integer, db.ForeignKey('ranged.id'))
 	consequence_target = db.Column(db.String())
 	consequence = db.Column(db.Integer, db.ForeignKey('consequences.id'))
+	consequence_null = db.Column(db.Boolean)
 	defenseless = db.Column(db.Integer, db.ForeignKey('actions.id'))
 	touch = db.Column(db.Boolean)
 	target_type = db.Column(db.String())
@@ -467,6 +468,7 @@ class PowerCheck(db.Model):
 			'attack_range': self.attack_range,
 			'consequence': self.consequence,
 			'consequence_target': self.consequence_target,
+			'consequence_null': self.consequence_null,
 			'defenseless': self.defenseless,
 			'touch': self.touch,
 			'target_type': self.target_type,

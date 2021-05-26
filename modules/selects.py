@@ -857,7 +857,7 @@ def skill_trait_select():
 	elif trait == 'any':
 		body['options'] = [{'id': '0', 'name': 'Any Trait'}]
 	elif trait == 'x':
-		body['options'] = [{'id': '0', 'name': 'Variable Traot'}]
+		body['options'] = [{'id': '0', 'name': 'Variable Trait'}]
 	elif trait == 'auto':
 		body['options'] = [{'id': '0', 'name': 'Automatic'}]
 	elif trait == '':
