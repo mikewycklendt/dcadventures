@@ -47,7 +47,7 @@
 	display: grid;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 15% 25% 25% 20% 15%;
+	grid-template-columns: 15% 25% 30% 20%;
 	grid-auto-rows: auto;
 }
 
@@ -57,6 +57,7 @@
 	gap: 3px;
 	grid-template-columns: auto auto auto auto auto auto;
 	grid-auto-rows: auto;
+	font-size: 90%;
 }
 
 
