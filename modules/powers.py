@@ -223,7 +223,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	action_type = [{'type': '', 'name': 'Action Type'}, {'type': 'auto', 'name': 'Automatic'}, {'type': 'base', 'name': 'Base Action'}, {'type': 'conflict', 'name': 'Conflict Action'}]
 
-	after = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
+	after = [{'type': '', 'name': 'After Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'fail', 'name': 'After Player Failure'}, {'type': 'fail_choice', 'name': 'After Player Failure Optional'}, {'type': 'success', 'name': 'After Player Success'}, {'type': 'success_choice', 'name': 'After Player Success Optional'}, {'type': 'opp_fail', 'name': 'After Opponent Failure'}, {'type': 'opp_fail_choice', 'name': 'After Opponent Failure Optional'}, {'type': 'opp_success', 'name': 'After Opponent Success'}, {'type': 'opp_success_choice', 'name': 'After Opponent Success Optional'}]
 
 	against = [{'type': '', 'name': 'Check Against'}, {'type': 'dc', 'name': 'DC'}, {'type': 'trait', 'name': 'Opponent Trait'} ]
 
@@ -241,7 +241,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	base_traits = [{'type': "ability", 'name': 'Ability'}, {'type': "defense", 'name': 'Defense'}, {'type': "power", 'name': 'Power'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhhanced Skill'}]
 
-	before = [{'type': '', 'name': 'Before Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'gm', 'name': 'GM Choice'}]
+	before = [{'type': '', 'name': 'Before Check'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'gm', 'name': 'GM Choice'}]
 
 	bonus_type = [{'type': 'flat', 'name': 'Flat'}, {'type': 'rank', 'name': 'Per Rank'}]
 
@@ -355,7 +355,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	feedback_type = [{'type': '', 'name': 'Feedback Type'}, {'type': 'mod', 'name': 'Reaistance Modifier'}, {'type': 'defense', 'name': 'Power Rank For Defense'}]
 
-	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'target', 'name': 'If Opponent Tsrgeted'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
+	frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 
 	game_rule = [{'type': '', 'name': 'Game Rule'}, {'type': 'critical', 'name': 'Critical Hits'}, {'type': 'suffocate', 'name': 'Suffocation'}, {'type': 'starve', 'name': 'Starvation'}, {'type': 'thirst', 'name': 'Thirst'}, {'type': 'sleep', 'name': 'Need for Sleep'}, {'type': 'fall', 'name': 'Falling'}]
 
@@ -366,6 +366,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 	immunity_trait = [{'type': "power", 'name': 'Power'}, {'type': "extra", 'name': 'Extra'}, {'type': "skill", 'name': 'Skill'}, {'type': "bonus", 'name': 'Enhanced Skill'}, {'type': "interact", 'name': 'Any Interaction Skill'}, {'type': "manipulate", 'name': 'Any Manipulation Skill'}, {'type': "resist", 'name': 'Powers Resisted By'}, {'type': "alteration", 'name': 'Alteration Effects'}, {'type': "skill_emotion", 'name': "Skills Affecting Emotion"}, {'type': "power_emotion", 'name': "Powers Affecting Emotion"}, {'type': "trait_emotion", 'name': "All Traits Affecting Emotion"}, {'type': "all_emotion", 'name': 'All Emotion Effects'}]
 
 	immunity_type = [{'type': '', 'name': 'Immunity'}, {'type': 'trait', 'name': 'Trait'}, {'type': 'damage', 'name': 'Damage Type'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'critiical', 'name': 'Critical Hits'}, {'type': 'env', 'name': 'Environment'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'emotion', 'name': 'Emotion'}, {'type': 'condition_effect', 'name': 'Condition from Effect'}, {'type': 'condition_attack', 'name': 'Condition from Attack'}, {'type': 'life', 'name': 'Life Support'}, {'type': 'eat', 'name': 'Eat Anything'}]
+
+	incurable_type  = [{'type': '', 'name': 'Incurable Type'}, {'type': 'counter', 'name': 'Cannot be Countered by Effect'}, {'type': 'permanent', 'name': 'Effect Permanent'}]
 
 	inflict = [{'type': '', 'name': 'Inflict Type'}, {'type': 'flat', 'name': 'Flat'}, {'type': 'bonus', 'name': 'Flat Bonus'}, {'type': 'math', 'name': 'Math'}]
 
@@ -601,7 +603,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											organization=organization, animals=animals, languages=languages, spirits=spirits, emotion_type=emotion_type, immunity_trait=immunity_trait, base_traits=base_traits,
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
-											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type)
+											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
+											incurable_type=incurable_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2574,6 +2577,7 @@ def power_post_mod():
 	concentration_opposed = request.get_json()['concentration_opposed']
 	concentration_effort = request.get_json()['concentration_effort']
 	unreliable_type = request.get_json()['unreliable_type']
+	incurable_type = request.get_json()['incurable_type']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2781,7 +2785,8 @@ def power_post_mod():
 							concentration_check_type = concentration_check_type,
 							concentration_opposed = concentration_opposed,
 							concentration_effort = concentration_effort,
-							unreliable_type = unreliable_type
+							unreliable_type = unreliable_type,
+							incurable_type = incurable_type
 						)
 
 		db.session.add(entry)

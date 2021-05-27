@@ -925,6 +925,7 @@ def mod_post_errors(data):
 	concentration_check_type = data['concentration_check_type']
 	concentration_opposed = data['concentration_opposed']
 	unreliable_type = data['unreliable_type']
+	incurable_type = data['incurable_type']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -1129,6 +1130,9 @@ def mod_post_errors(data):
 	errors = check_fields(unreliable, 'Unreliable', [unreliable_type], errors)
 	errors = check_field(unreliable, 'Unreliable', 'Unreliable Type', unreliable_type, errors)
 	
+	errors = check_fields(incurable, 'Incurable', [incurable_type], errors)
+	errors = check_field(incurable, 'Incurable', 'Incurable Type', incurable_type, errors)
+
 	return (errors)
 
 	

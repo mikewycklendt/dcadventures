@@ -237,6 +237,20 @@
 
 	</div>
 
+	<div id="mod-incurable">
+		<div class="valign">
+			Incurable
+		</div>
+
+		<div>
+			<select class="select-sml" id="mod_incurable_type" name="mod_incurable_type">
+				{% for i in incurable_type %}
+					<option value="{{i.type}}">{{i.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
 	<div id="mod-unreliable">
 		<div class="valigm">
 			Unreliable

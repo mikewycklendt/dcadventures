@@ -565,7 +565,8 @@ function mod_submit() {
 	const concentration_check_type = select("mod_concentration_check_type");
 	const concentration_opposed = select("mod_concentration_opposed");
 	const concentration_effort = check("mod_concentration_effort");
-	const unreliable_type = select("mod_unreliable_type")
+	const unreliable_type = select("mod_unreliable_type");
+	const incurable_type = select("mod_incurable_type");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -705,7 +706,8 @@ function mod_submit() {
 			'concentration_check_type': concentration_check_type,
 			'concentration_opposed': concentration_opposed,
 			'concentration_effort': concentration_effort,
-			'unreliable_type': unreliable_type
+			'unreliable_type': unreliable_type,
+			'incurable_type': incurable_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
