@@ -82,6 +82,14 @@ function check_multiple() {
 	select_opacity(select, options);
 }
 
+function check_frequency() {
+	const select = 'check_frequency';
+	const options = [{'val': 'maintain', 'div': 'check-maintain'}];
+	const entry = 'check-entry';
+
+	select_maxheight_entry(select, options, entry);
+}
+
 let check_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -143,6 +151,7 @@ function check_submit() {
 	const primary = check("check_primary");
 	const frequency = select("check_frequency");
 	const overwrite = select("check_overwrite");
+	const maintain_concentrate = check("check_maintain_concentrate")
 
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -213,7 +222,8 @@ function check_submit() {
 			'target_type': target_type,
 			'primary': primary,
 			'frequency': frequency,
-			'overwrite': overwrite
+			'overwrite': overwrite,
+			'maintain_concentrate': maintain_concentrate
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

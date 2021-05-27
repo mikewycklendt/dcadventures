@@ -1426,7 +1426,7 @@ def rarity_convert(rare, damage=False):
 	return (rarity)
 
 
-def check_when_convert(id, when):
+def check_when_convert(id, when, frequency):
 
 	check = [{'type': 'before', 'name': 'Before Attempt'},
 			{'type': 'after', 'name': 'After Attempt'},
@@ -1442,20 +1442,20 @@ def check_when_convert(id, when):
 
 	if id == '':
 		if when == 'primary':
-			when = 'Primary Check'
-		if when == 'second':
-			when = 'Secondary Effect'
+			when = 'as the Primary Check'
+		elif when == 'second':
+			when = 'as a Secondary Effect'
 	if id == 'change':
 		if when == 'before':
 			when = 'Before Change Happens'
-		if when == 'after':
+		elif when == 'after':
 			when = 'After Change Happens'
 	elif id == 'condition':
 		if when == 'before':
 			when = 'Before Condition Takes Effect'
-		if when == 'after':
+		elif when == 'after':
 			when = 'After Condition Takes Effect'
-		if when == 'condition':
+		elif when == 'condition':
 			when = 'When Target Has Condition'
 	elif id == 'conflict':
 		when = selects(when, check)
@@ -1470,8 +1470,10 @@ def check_when_convert(id, when):
 	elif id == 'consequence':
 		if when == 'before':
 			when = 'Before Consequence Happens'
-		if when == 'after':
+		elif when == 'after':
 			when = 'After Consequence Happens'
 
+	when = frequency + ' ' + when
+	
 	return (when)
 

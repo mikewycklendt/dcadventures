@@ -113,11 +113,13 @@
 		<div>
 			<select class="entry-select" id="check_when" name="check_when">
 				<option value="">When</option>
+				<option value="primary">Primary Check</option>
+				<option value="second">Secondary Effect</option>
 			</select>
 		</div>
 
 		<div>
-			<select class="entry-select" id="check_frequency" name="check_frequency">
+			<select class="entry-select" id="check_frequency" name="check_frequency" onchange="check_frequency()">
 				{% for c in check_frequency %}
 					<option value="{{c.type}}">{{c.name}}</option>
 				{% endfor %}
@@ -139,6 +141,18 @@
 			</select>
 		</div>
 
+	</div>
+
+	<div id="check-maintain">
+		<div class="valign">
+			Maintain Effect
+		</div>
+
+		<div>
+			<div class="check-div-fit">
+				<input type="checkbox" id="check_maintain_concentrate" class="medium-checkbox med-checkbox" > Requires Concentration
+			</div>
+		</div>
 	</div>
 
 	<div id="check-conflict">
@@ -504,6 +518,10 @@
 
 	<div id="check-button-row">
 
+		<div class="vcenter" style="font-size: 115%;">
+			<input type="checkbox" id="check_primary" class="medium-checkbox med-checkbox"> Primary Check
+		</div>
+	
 		<div>
 			<div class="hidden" id="check-overwrite">
 				<select class="check-entry" id="check_overwrite" name="check_overwrite">
@@ -514,10 +532,6 @@
 					{% endfor %}
 				</select>
 			</div>	
-		</div>
-	
-		<div class="vcenter" style="font-size: 115%;">
-			<input type="checkbox" id="check_primary" class="medium-checkbox med-checkbox"> Primary Check
 		</div>
 	
 		<div>

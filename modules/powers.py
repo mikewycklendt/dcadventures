@@ -263,7 +263,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	char_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}]
+	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GN Choice'}, {'type': 'active', 'name': 'Active Target'}, {'type': 'object', 'name': 'Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect'}]
 
 	check_targets =  [{'type': '', 'name': 'Check Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'partner', 'name': 'Psrtner'}]
 
@@ -3736,6 +3736,8 @@ def power_post_check():
 	target_type = request.get_json()['target_type']
 	primary = request.get_json()['primary']
 	overwrite = request.get_json()['overwrite']
+	maintain_concentrate = request.get_json()['maintain_concentrate']
+	frequency = request.get_json()['frequency'] 
 
 	power_id = db_integer(Power, power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -3836,7 +3838,9 @@ def power_post_check():
 						touch = touch,
 						target_type = target_type,
 						primary = primary,
-						overwrite = overwrite
+						overwrite = overwrite,
+						maintain_concentrate = maintain_concentrate,
+						frequency = frequency
 					)
 
 	db.session.add(entry)

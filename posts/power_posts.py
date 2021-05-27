@@ -15,7 +15,7 @@ from db.vehicle_models import Vehicle, VehFeature, VehicleSize, VehicleType, Veh
 from db.weapon_models import WeaponType, WeaponCat, WeapBenefit, WeapCondition, WeapDescriptor, Weapon 
 from db.linked_models import PowerCircType, PowerCheckType, PowerOpposedType, PowerDCType, PowerDegreeType, PowerMoveType, PowerRangedType, PowerTimeType
 
-from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string
+from functions.converts import integer, integer_convert, int_check, name, get_name, get_id, get_circ, get_keyword, get_description, action_convert, math_convert, extra_name, db_integer, id_check, trait_select, db_check, selects, preset_convert, db_multiple, id_multiple, get_multiple, var_string, check_when_convert
 from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
@@ -2038,6 +2038,8 @@ def power_check_post(entry, body, cells):
 	target_type = entry.target_type
 	primary = entry.primary
 	overwrite = entry.overwrite
+	maintain_concentrate = entry.maintain_concentrate
+	frequency = entry.frequency
 
 	title_name = get_name(PowerCheckType, title)
 
@@ -2084,9 +2086,6 @@ def power_check_post(entry, body, cells):
 
 	attack = integer_convert(attack)
 
-	check_type_select = [{'type': '', 'name': 'When'}, {'type': 'before', 'name': 'Before'}, {'type': 'replace', 'name': 'Replace'}, {'type': 'extra', 'name': 'In Addition'}, {'type': 'player', 'name': 'Player Choice'}, {'type': 'gm', 'name': 'GM Choice'}, {'type': 'active', 'name': 'Target Active'}]
-	when = selects(when, check_type_select)
-
 	targets = [{'type': '', 'name': 'Target'}, {'type': 'active', 'name': 'Active Player'}, {'type': 'other', 'name': 'Other Character'}, {'type': 'team', 'name': 'Teammate'}, {'type': 'opp', 'name': 'Opponent'}, {'type': 'anyone', 'name': 'Anyone'}]
 	condition_target = selects(condition_target, targets)
 	conditions_target = selects(conditions_target, targets)
@@ -2103,15 +2102,23 @@ def power_check_post(entry, body, cells):
 	check_multiple =  [{'type': '', 'name': 'If Multiple'}, {'type': 'turn', 'name': 'Chosen on Turn'}, {'type': 'x', 'name': 'Chosen when Aquiring Power'}, {'type': 'overwrite', 'name': 'Overwrites ' + overwrite}]
 	multiple = selects(multiple, check_multiple)
 
+	maintain_concentrate = check_string(' While Concentrating', maintain_concentrate)
+
+	check_frequency = [{'type': '', 'name': 'Frequency'}, {'type': 'always', 'name': 'Always'}, {'type': 'choice', 'name': "Player's Choice"}, {'type': 'gm', 'name': "GM's Choice"}, {'type': 'active', 'name': 'If the Target is Active'}, {'type': 'object', 'name': 'If the Target is an Inanimate Object'}, {'type': 'maintain', 'name': 'Maintain Effect' + maintain_concentrate}]
+	frequency = selects(frequency, check_frequency)
+
 	consequence_null = check_string('Nullifies', consequence_null)
+
+	when = check_when_convert(trigger, when, frequency)
 
 	cells = cell('Keyword', 14, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
 	cells = cell('Modifier', 8, [mod], cells)
-	cells = cell('When', 12, [when], cells)
 	cells = cell('Check Trait', 16, [trait], cells)
+	cells = cell('Check', 12, [check_type], cells)
 	cells = cell('Action', 11, [action], cells)
 	cells = cell('Defenseless', 13, [defenseless], cells)
+	cells = circ_cell('When', 'When', 6, when, cells, body)
 	
 	vcells = vcell('change', 25, [conditions_target, 'from', condition1, 'to', condition2])
 	vcells = vcell('condition', 20, [condition_target, condition], vcells)

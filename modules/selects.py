@@ -635,6 +635,7 @@ def check_trigger_select():
 	if id == '':
 		options.append({'id': 'primary', 'name': 'Primary Check'})
 		options.append({'id': 'second', 'name': 'Secondary Effect'})
+		options.append({'id': 'maintain', 'name': 'Maintain Effect'})
 	if id == 'change':
 		options.append({'id': 'before', 'name': 'Before Change Happens'})
 		options.append({'id': 'after', 'name': 'After Change Happens'})
