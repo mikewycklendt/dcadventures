@@ -1131,7 +1131,7 @@ def cross_check(rulename, first_tablename, directions, second_tablename, table, 
 			
 		if check is None:
 			error = True
-			message = 'You created a ' + rulename + ' rule on the ' + first_tablename + " form so you must " + directions + ' on the ' + second_tablename ' form.'
+			message = 'You created a ' + rulename + ' rule on the ' + first_tablename + " form so you must " + directions + ' on the ' + second_tablename + ' form.'
 			error_msgs.append(message)
 	except:
 		error = True
