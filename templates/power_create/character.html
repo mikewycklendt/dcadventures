@@ -163,84 +163,83 @@
 	</div>
 
 	<div id="char-weaken">
-			<div>
-				Weaken
-			</div>
+		<div>
+			Weaken
+		</div>
 
+		<div>
+			<select class="select-sml" id="char_weaken_type" name="char_weaken_type" onchange="char_weaken_type(); char_weaken_broad()">
+				{% for w in weaken %}
+					<option value="{{w.type}}">{{w.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="opposed-title-sml" id="char_weaken_opposed_type" name="char_weaken_opposed_type">
+				<option value="">Opponent Check by Group</option>
+				<option value="">Use Opponent Check Form to Put Options Here</option>
+				{% for p in power_opposed_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div>
+			<select class="select-sml weaken-sml" id="char_weaken_degree_type" name="char_weaken_degree_type">
+				<option value="">Degree by Group</option>`
+				<option value="">Set the Weaken Amount on the Degree Form to Put Options Here</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div id="char-weaken-trait">
 			<div>
-				<select class="select-sml" id="char_weaken_type" name="char_weaken_type" onchange="char_weaken_type(); char_weaken_broad()">
-					{% for w in weaken %}
-						<option value="{{w.type}}">{{w.name}}</option>
-					{% endfor %}
+				<select class="select-sml" id="char_weaken_trait_type" name="char_weaken_trait_type" onchange="char_weaken_trait_type()">
+					<option value="ability">Ability</option>
+					<option value="skill">Skill</option>
+					<option value="power">Power</option>
+					<option value="advantage">Advantage</option>
+					<option value="x">Variable</option>
 				</select>
 			</div>
 
 			<div>
-				<select class="opposed-title-sml" id="char_weaken_opposed_type" name="char_weaken_opposed_type">
-					<option value="">Opponent Check by Group</option>
-					<option value="">Use Opponent Check Form to Put Options Here</option>
-					{% for p in power_opposed_type %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
+				<select class="select-sml" id="char_weaken_trait" name="char_weaken_trait" onchange="char_weaken_trait()">
+					<option value="">Trait</option>
+				</select>
+			</div>
+		</div>
+
+		<div id="char-weaken-broad">
+			<div id="char-weaken-type">
+				<select class="select-sml" id="char_weaken_broad" name="char_weaken_broad">
+					<option value="ability">Ability</option>
+					<option value="skill">Skill</option>
+					<option value="power">Power</option>
+					<option value="advantage">Advantage</option>
+					<option value="x">Variable</option>
 				</select>
 			</div>
 
+			<div id="char-weaken-descriptor">
+				<select class="descriptor-sml" id="char_weaken_descriptor" name="char_weaken_descriptor">
+					<option value="">Descriptor</option>
+					<option value="">Use above form to put descriptors here</option>
+					{% for d in descriptor_options %}
+						<option value={{d.id}}>{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		
 			<div>
-				<select class="select-sml weaken-sml" id="char_weaken_degree_type" name="char_weaken_degree_type">
-					<option value="">Degree by Group</option>`
-					<option value="">Set the Weaken Amount on the Degree Form to Put Options Here</option>
-					{% for p in power_degree_type %}
-						<option value={{p.id}}>{{p.name}}</option>
-					{% endfor %}
-				</select>
-			</div>
-
-			<div id="char-weaken-trait">
-				<div>
-					<select class="select-sml" id="char_weaken_trait_type" name="char_weaken_trait_type" onchange="char_weaken_trait_type()">
-						<option value="ability">Ability</option>
-						<option value="skill">Skill</option>
-						<option value="power">Power</option>
-						<option value="advantage">Advantage</option>
-						<option value="x">Variable</option>
-					</select>
-				</div>
-
-				<div>
-					<select class="select-sml" id="char_weaken_trait" name="char_weaken_trait" onchange="char_weaken_trait()">
-						<option value="">Trait</option>
-					</select>
+				<div class="check-div" style="font-size: 70%;">
+					<input type="checkbox" id="char_weaken_simultaneous" class="medium-checkbox med-checkbox" > Simultaneous
 				</div>
 			</div>
 
-			<div id="char-weaken-broad">
-				<div id="char-weaken-type">
-					<select class="select-sml" id="char_weaken_broad" name="char_weaken_broad">
-						<option value="ability">Ability</option>
-						<option value="skill">Skill</option>
-						<option value="power">Power</option>
-						<option value="advantage">Advantage</option>
-						<option value="x">Variable</option>
-					</select>
-				</div>
-
-				<div id="char-weaken-descriptor">
-					<select class="descriptor-sml" id="char_weaken_descriptor" name="char_weaken_descriptor">
-						<option value="">Descriptor</option>
-						<option value="">Use above form to put descriptors here</option>
-						{% for d in descriptor_options %}
-							<option value={{d.id}}>{{d.name}}</option>
-						{% endfor %}
-					</select>
-				</div>
-			
-				<div>
-					<div class="check-div" style="font-size: 70%;">
-						<input type="checkbox" id="char_weaken_simultaneous" class="medium-checkbox med-checkbox" > Simultaneous
-					</div>
-				</div>
-
-			</div>
 		</div>
 	</div>
 
