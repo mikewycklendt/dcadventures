@@ -195,7 +195,9 @@ function char_weaken_type() {
 					{'val': 'type', 'div': 'char-weaken-type'},
 					{'val': 'descriptor', 'div': 'char-weaken-descriptor'}];
 	const broad = [{'val': ['type', 'descriptor'], 'div': 'char-weaken-broad'}];
+	const checks = ['char_weaken_simultaneous'];
 
+	uncheck_all(checks);
 	select_opacity(select, options);
 	select_opacity_shared(select, broad);
 }

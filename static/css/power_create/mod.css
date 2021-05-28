@@ -562,7 +562,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 13% 25%;
+	grid-template-columns: 13% 25% auto auto auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
@@ -572,7 +572,7 @@
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 13% 25%;
+	grid-template-columns: 13% 25% auto auto auto;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;

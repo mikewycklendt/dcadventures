@@ -429,6 +429,14 @@ function mod_unreliable() {
 	check_drop(check, div, entry);
 }
 
+function mod_incurable() {
+	const check = 'mod_incurable';
+	const div = 'mod-incurable';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
