@@ -395,6 +395,15 @@
 	transition: all .3s linear;
 }
 
+#deg-mod-reverse {
+	display: none;
+	width: 100%;
+	height: auto;
+	grid-template-columns: 15% 35%;
+	opacity: 0%;
+	transition: all .3s linear;
+}
+
 #deg-mod-null-condition {
 	display: none;
 	width: 100%;

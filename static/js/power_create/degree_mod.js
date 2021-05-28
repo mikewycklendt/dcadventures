@@ -29,7 +29,8 @@ function deg_mod_type() {
 					{'val': ['descriptor'], 'div': 'deg-mod-descriptor'},
 					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'},
 					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'},
-					{'val': ['weaken'], 'div': 'deg-mod-weaken'}];
+					{'val': ['weaken'], 'div': 'deg-mod-weaken'},
+					{'val': ['reverse'], 'div': 'deg-mod-reverse'}];
 
 	select_opacity_shared(select, options);
 }
@@ -369,7 +370,9 @@ function deg_mod_submit() {
 	const null_condition = select("deg_mod_null_condition");
 	const weaken_type = select("deg_mod_weaken_type");
 	const weaken_max = select("deg_mod_weaken_max");
-	const weaken_val = select("deg_mod_weaken_val")
+	const weaken_val = select("deg_mod_weaken_val");
+	const reverse_type = select("deg_mod_reverse_type");
+	const reverse = select("deg_mod_reverse");
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -486,7 +489,9 @@ function deg_mod_submit() {
 			'null_condition': null_condition,
 			'weaken_type': weaken_type,
 			'weaken_val': weaken_val,
-			'weaken_max': weaken_max
+			'weaken_max': weaken_max,
+			'reverse_type': reverse_type,
+			'reverse': reverse
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

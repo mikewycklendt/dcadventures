@@ -2723,6 +2723,8 @@ def power_degree_post(entry, body, cells):
 	weaken_type = entry.weaken_type
 	weaken_max = entry.weaken_max
 	weaken_val = entry.weaken_val
+	reverse_type = entry.reverse_type
+	reverse = entry.reverse
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2758,6 +2760,7 @@ def power_degree_post(entry, body, cells):
 
 	measure_type = math_convert(measure_type)
 	value_type = math_convert(value_type)
+	reverse_type = math_convert(reverse_type)
 
 	opposed = get_keyword(PowerOpposed, opposed)
 	resist_dc = get_keyword(PowerDC, resist_dc)
@@ -2769,6 +2772,7 @@ def power_degree_post(entry, body, cells):
 	level_time = get_keyword(PowerTime, level_time)
 	linked = get_keyword(PowerDegree, linked)
 	circumstance = get_circ(PowerCirc, circumstance)
+	reverse = get_keyword(PowerDegree, reverse)
 
 	variable_id = db_integer(Check, 'x')
 
@@ -2920,6 +2924,8 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('weaken', 25, [weaken_val, 'Points Lost'], vcells, weaken_type, 'val')
 	vcells = vcell('weaken', 35, [weaken_val, 'Points Lost Per Degree'], vcells, weaken_type, 'degree')
 	vcells = vcell('weaken', 45, ['Lose Points Equal to Difference in Check'], vcells, weaken_type, 'check')
+
+	vcells = vcell('reverse', 40, [reverse_type, reverse, 'Efffect Reversed'], vcells)
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	

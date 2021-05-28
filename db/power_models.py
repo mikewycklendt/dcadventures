@@ -883,6 +883,8 @@ class PowerDegree(db.Model):
 	weaken_type = db.Column(db.String())
 	weaken_max = db.Column(db.Integer)
 	weaken_val = db.Column(db.Integer)
+	reverse_type = db.Column(db.String())
+	reverse = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
 
 
 	def format(self):
@@ -988,7 +990,9 @@ class PowerDegree(db.Model):
 			'null_condition': self.null_condition,
 			'weaken_type': self.weaken_type,
 			'weaken_val': self.weaken_val,
-			'weaken_max': self.weaken_max
+			'weaken_max': self.weaken_max,
+			'reverse_type': self.reverse_type,
+			'reverse': self.reverse
 		}
 
 

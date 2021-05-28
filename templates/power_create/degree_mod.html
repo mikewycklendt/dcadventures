@@ -78,6 +78,25 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-reverse">
+			<div>
+				<select class="select-sml" id="deg_mod_reverse_type" name="deg_mod_reverse_type">
+					{% for m in measure_type %}
+						<option value="{{m.type}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="degree-sml" id="deg_mod_reverse" name="deg_mod_reverse">
+					<option value="">Degree Reversed</option>
+					{% for p in power_degree %}
+						<option value={{p.id}}>{{p.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 		<div id="deg-mod-weaken">
 			<div>
 				<select class="select-sml" id="deg_mod_weaken_type" name="deg_mod_weaken_type" onchange="deg_mod_weaken_type()">

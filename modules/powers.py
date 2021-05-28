@@ -311,7 +311,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	defense_multiple = [{'type': '', 'name': 'If Multiple'}, {'type': 'all', 'name': 'All take Effect'}, {'type': 'turn', 'name': 'Choose on Turn'}, {'type': 'x', 'name': 'Choose When Aquiring Effect'}]
 
-	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}]
+	deg_mod_type = [{'type': 'measure', 'name': 'Measurement'}, {'type': 'condition', 'name': 'Condition Change'}, {'type': 'null_condition', 'name': 'Nullify Condition'}, {'type': 'action', 'name': 'Action Change'}, {'type': 'circ', 'name': 'Circumstance'}, {'type': 'time', 'name': 'Time Modifier'}, {'type': 'damage', 'name': 'Damage'}, {'type': 'level', 'name': 'Level'}, {'type': 'knowledge', 'name': 'Gain Knowledge'}, {'type': 'consequence', 'name': 'Consequence'}, {'type': 'check', 'name': 'Check'}, {'type': 'object', 'name': 'Object Destroyed'}, {'type': 'dc', 'name': 'Attach DC to Object'}, {'type': 'descriptor', 'name': 'Descriptor'}, {'type': 'null', 'name': 'Effect Nullified'}, {'type': 'uncontrol', 'name': 'Effect Uncontrolled'}, {'type': 'detect', 'name': "Detect Effect"}, {'type': 'act', 'name': 'Can Act'}, {'type': 'no_act', 'name': "Can't Act"}, {'type': 'no_reattempt', 'name': "Can't Reattempt"}, {'type': 'reattempt', 'name': "Can Reattempt"}, {'type': 'understand', 'name': 'Understand Communication'}, {'type': 'sense', 'name': 'Sense Condition'}, {'type': 'weaken', 'name': 'Weaken'}, {'type': 'reverse', 'name': 'Reverse Degree Effect'}]
 
 	deg_mod_weaken_type = [{'type': '', 'name': 'Points Type'}, {'type': 'val', 'name': 'Value'}, {'type': 'degree', 'name': 'Value Per Degree'}, {'type': 'check', 'name': 'Check Difference'}]
 
@@ -4486,6 +4486,8 @@ def power_post_degree():
 	weaken_type = request.get_json()['weaken_type']
 	weaken_max = request.get_json()['weaken_max']
 	weaken_val = request.get_json()['weaken_val']
+	reverse_type = request.get_json()['reverse_type']
+	reverse = request.get_json()['reverse']
 
 	errors = power_degree_post_errors(data)
 
@@ -4531,6 +4533,8 @@ def power_post_degree():
 	level_time = db_integer(PowerTime, level_time)
 	linked = db_integer(PowerDegree, linked)
 	circumstance = db_integer(PowerCirc, circumstance)
+	reverse = db_integer(PowerDegree, reverse)
+
 
 	resist_trait = integer(resist_trait)
 	skill_trait = integer(skill_trait)
@@ -4676,7 +4680,9 @@ def power_post_degree():
 						null_condition = null_condition,
 						weaken_type = weaken_type,
 						weaken_max = weaken_max,
-						weaken_val = weaken_val)
+						weaken_val = weaken_val,
+						reverse_type = reverse_type,
+						reverse = reverse)
 
 	db.session.add(entry)
 	db.session.commit()

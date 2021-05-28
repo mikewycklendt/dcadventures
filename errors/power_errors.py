@@ -2291,6 +2291,8 @@ def power_degree_post_errors(data):
 	weaken_type = data['weaken_type']
 	weaken_max = data['weaken_max']
 	weaken_val = data['weaken_val']
+	reverse_type = data['reverse_type']
+	reverse = data['reverse']
 
 
 	errors = power_check(power_id, errors)
@@ -2344,7 +2346,9 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerTime, condition_turns, 'Condition Duration', errors)
 	errors = id_check(PowerDegree, linked, 'Linked Degree', errors)
 	errors = id_check(PowerCirc, circumstance, 'Circumstance Modifier Keyword', errors)
-	
+	errors = id_check(PowerDegree, reverse, 'Reversed Degree', errors)
+
+
 	errors = id_check(PowerDes, effect_descriptor, 'Effect Descriptor', errors)
 	errors = id_check(Power, effect_power, 'Power Effect', errors)
 	errors = id_check(Condition, null_condition, 'Nullified Condition', errors)
@@ -2521,6 +2525,10 @@ def power_degree_post_errors(data):
 	errors = variable_field('val', weaken_type, 'Points Lost', weaken_val, errors)
 	errors = variable_field('degree', weaken_type, 'Points Lost Per Degree', weaken_val, errors)
 	
+	errors = variable_fields('reverse', 'Reverse Degree Effect', type, [reverse_type, reverse], errors)
+	errors = variable_field('reverse', type, 'Degree Type', reverse_type, errors)
+	errors = variable_field('reverse', type, 'Degree', reverse, errors)
+
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 
