@@ -880,6 +880,9 @@ class PowerDegree(db.Model):
 	effect_power = db.Column(db.Integer, db.ForeignKey('powers.id'))
 	fail = db.Column(db.Boolean)
 	null_condition = db.Column(db.Integer, db.ForeignKey('conditions.id'))
+	weaken_type = db.Column(db.String())
+	weaken_max = db.Column(db.Integer)
+	weaken_val = db.Column(db.Integer)
 
 
 	def format(self):
@@ -982,7 +985,10 @@ class PowerDegree(db.Model):
 			'effect_descriptor_count': self.effect_descriptor_count,
 			'effect_power': self.effect_power,
 			'fail': self.fail,
-			'null_condition': self.null_condition
+			'null_condition': self.null_condition,
+			'weaken_type': self.weaken_type,
+			'weaken_val': self.weaken_val,
+			'weaken_max': self.weaken_max
 		}
 
 
@@ -1453,6 +1459,8 @@ class PowerChar(db.Model):
 	insubstantial = db.Column(db.Boolean)
 	weaken = db.Column(db.Boolean)
 	weaken_type = db.Column(db.String())
+	weaken_opposed_type = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
+	weaken_degree_type = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
 	weaken_trait_type = db.Column(db.String())
 	weaken_trait = db.Column(db.Integer)
 	weaken_broad = db.Column(db.String())
@@ -1516,6 +1524,8 @@ class PowerChar(db.Model):
 			'insubstantial': self.insubstantial,
 			'weaken': self.weaken,
 			'weaken_type': self.weaken_type,
+			'weaken_opposed_type': self.weaken_opposed_type,
+			'weaken_degree_type': self.weaken_degree_type,
 			'weaken_trait_type': self.weaken_trait_type,
 			'weaken_trait': self.weaken_trait,
 			'weaken_broad': self.weaken_broad,

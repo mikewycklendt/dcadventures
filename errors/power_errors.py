@@ -20,7 +20,7 @@ from functions.create import name_exist, db_insert, capitalize
 from functions.linked import link_add, delete_link, level_add, delete_level, linked_options, level_reference, linked_move, linked_time, level_bonus_circ, level_bonus_dc, level_bonus_degree, level_power_circ, level_power_dc, level_power_degree, level_adv_circ, level_adv_dc, level_adv_degree, required_link
 from functions.user_functions import user_item
 
-from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option
+from functions.create_errors import required, required_keyword, required_if_any, no_zero, required_multiple, variable, select, variable_fields, if_fields, if_field, if_or, seperate, variable_field, variable_field_linked, select_variable, together, dependent, valid_time_type, invalid_time, check_together_var, together_names, check_fields, check_field, multiple, check_of_multiple, of_multiple, check_of, of, either, select_of, create_check, required_entry_multiple, required_variable, not_required, seperate_checks, checked_invalid_option, variable_fields_of, incompatible, valid_options, extra_option, variable_required_rules, cross_check
 from functions.create_posts import send_multiple, one, field, int_word, select_multiple, string, string_value, string_value_else, check_convert, width, send, delete_row, grid_columns, vcell_add, vcell, one_of, check_cell, if_cell, cell, mod_create, mod_cell, mod_add, variable_value, add_plus, int_word, check_string, circ_cell
 
 from create_functions.power_create import power_check, rule_check, rule_select, cost_check, extra_cost, extra_check, extra_convert, field_cost, multiple_cost, variable_cost, sense_cost, power_rules, valid_extra, ranks_error, ranks_function, cost_error, cost_exist, cost_check_table, degree_check, extra_cost_exist, multiple_error, trait_cost, power_sense_condition, power_reflect_immune, extra_rule_select
@@ -204,6 +204,8 @@ def character_post_errors(data):
 	insubstantial = data['insubstantial']
 	weaken = data['weaken']
 	weaken_type = data['weaken_type']
+	weaken_opposed_type = data['weaken_opposed_type']
+	weaken_degree_type = data['weaken_degree_type']
 	weaken_trait_type = data['weaken_trait_type']
 	weaken_trait = data['weaken_trait']
 	weaken_broad = data['weaken_broad']
@@ -249,6 +251,9 @@ def character_post_errors(data):
 	errors = id_check(Power, power_id, 'Power', errors)
 	errors = required(extra_id, 'Extra', errors)
 	errors = extra_check(extra_id, 'Extra', errors)
+
+	errors = id_check(PowerOpposedType, weaken_opposed_type, 'Weaken Opponent Check By Group', errors)
+	errors = id_check(PowerDegreeType, weaken_degree_type, 'Weaken Degree by Group', errors)
 
 	errors = int_check(value, 'Increased By', errors)
 	errors = int_check(increase, 'Per Rank', errors)
@@ -304,8 +309,10 @@ def character_post_errors(data):
 	errors = check_field(points, 'Hero Points', 'Points Trait Type', points_trait_type, errors)
 	errors = check_field(points, 'Hero Points', 'Points Trait', points_trait, errors)
 
-	errors = check_fields(weaken, 'Weaken', [weaken_type], errors)
+	errors = check_fields(weaken, 'Weaken', [weaken_type, weaken_opposed_type, weaken_degree_type], errors)
 	errors = check_field(weaken, 'Weaken', 'Weaken Type', weaken_type, errors)
+	errors = check_field(weaken, 'Weaken', 'Opponent Check by Group', weaken_opposed_type, errors)
+	errors = check_field(weaken, 'Weaken', 'Degree by Group', weaken_degree_type, errors)
 	errors = variable_fields('trait', 'Weaken Specific Trait', weaken_type, [weaken_trait_type, weaken_trait], errors)
 	errors = variable_fields('type', 'Weaken Broad Trait', weaken_type, [weaken_broad], errors)
 	errors = variable_fields('descriptor', 'Weaken Broad Descriptor', weaken_type, [weaken_descriptor], errors)
@@ -2268,6 +2275,9 @@ def power_degree_post_errors(data):
 	effect_descriptor_count = data['effect_descriptor_count']
 	effect_power = data['effect_power']
 	null_condition = data['null_condition']
+	weaken_type = data['weaken_type']
+	weaken_max = data['weaken_max']
+	weaken_val = data['weaken_val']
 
 
 	errors = power_check(power_id, errors)
@@ -2308,6 +2318,8 @@ def power_degree_post_errors(data):
 	errors = id_check(PowerDes, descriptor, 'Descriptor', errors)
 	errors = int_check(knowledge_mind_count, 'Mind Reading Count', errors)
 	errors = int_check(effect_descriptor_count, 'Effect Count', errors)
+	errors = int_check(weaken_max, 'Maximum Points Lost', errors)
+	errors = int_check(weaken_val, 'Points Lost', errors)
 
 	errors = id_check(PowerOpposed, opposed, 'Opposed Check', errors)
 	errors = id_check(PowerDC, resist_dc, 'Resistance Check DC', errors)
@@ -2489,6 +2501,13 @@ def power_degree_post_errors(data):
 	errors = variable_fields('null_condition', 'Nullify Condition', effect, [null_condition], errors)
 	errors = variable_field('null_condition', effect, 'Nullified Condition', null_condition, errors)
 
+	errors = variable_fields('weaken', 'Weaken', type, [weaken_type, weaken_max], errors)
+	errors = variable_fields('weaken', type, 'Points Type', weaken_type, errors)
+	errors = variable_fields('weaken', type, 'Maximum Points Lost', weaken_max, errors)
+	
+	errors = variable_field('val', weaken_type, 'Points Lost', weaken_val, errors)
+	errors = variable_field('degree', weaken_type, 'Points Lost Per Degree', weaken_val, errors)
+	
 	errors = linked_field(condition1, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 	errors = linked_field(condition2, linked, 'Condition', 'Degree of Success/Failure rule', 'linked degree', errors)
 

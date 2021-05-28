@@ -79,6 +79,8 @@ def character_post(entry, body, cells):
 	insubstantial = entry.insubstantial
 	weaken = entry.weaken
 	weaken_type = entry.weaken_type
+	weaken_opposed_type = entry.weaken_opposed_type
+	weaken_degree_type = entry.weaken_degree_type
 	weaken_trait_type = entry.weaken_trait_type
 	weaken_trait = entry.weaken_trait
 	weaken_broad = entry.weaken_broad
@@ -130,6 +132,9 @@ def character_post(entry, body, cells):
 	weaken_trait = trait_select(weaken_trait, weaken_trait_type)
 	reduced_trait = trait_select(reduced_trait, reduced_trait_type)
 	points_trait = trait_select(points_trait, points_trait_type)
+
+	weaken_opposed_type = get_name(PowerOpposedType, weaken_opposed_type)
+	weaken_degree_type = get_name(PowerDegreeType, weaken_degree_type)
 
 	extra = extra_name(extra_id)
 	weaken_descriptor = descriptor_name(weaken_descriptor)
@@ -243,13 +248,18 @@ def character_post(entry, body, cells):
 	new_mod = mod_create('Weaken', 10, weaken_type, weaken_select)
 	value = 'trait'
 	new_mod = mod_cell('Trait:', 8, [weaken_trait], new_mod, value)	
-	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
+	new_mod = mod_cell('Opponent Check', 18, [weaken_opposed_type], new_mod, value)
+	new_mod = mod_cell('Degree Group', 18, [weaken_degree_type], new_mod, value)
 	value = 'type'
 	new_mod = mod_cell('Trait Type:', 12, [weaken_broad], new_mod, value)
 	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
+	new_mod = mod_cell('Opponent Check', 18, [weaken_opposed_type], new_mod, value)
+	new_mod = mod_cell('Degree Group', 18, [weaken_degree_type], new_mod, value)
 	value = 'descriptor'
 	new_mod = mod_cell('Descriptor:', 8, [weaken_descriptor], new_mod, value)
 	new_mod = mod_cell('Simultaneous:', 15, [weaken_simultaneous], new_mod, value)
+	new_mod = mod_cell('Opponent Check', 18, [weaken_opposed_type], new_mod, value)
+	new_mod = mod_cell('Degree Group', 18, [weaken_degree_type], new_mod, value)
 	body = mod_add(weaken, new_mod, body)
 
 	cells = cell('Cost/Rank', 10, [cost], cells)
@@ -1137,7 +1147,7 @@ def mod_post(entry, body, cells):
 	body = mod_add(area, new_mod, body)
 
 	cells = check_cell('Persistant', 10, persistent, cells)
-	
+
 	cells = check_cell('Incurable', 8, incurable, cells, True)
 	new_mod = mod_create('Incurable', 12)
 	new_mod = mod_cell('Type:', 6, [incurable_type], new_mod)
@@ -2698,6 +2708,9 @@ def power_degree_post(entry, body, cells):
 	effect_descriptor_count = entry.effect_descriptor_count
 	effect_power = entry.effect_power
 	null_condition = entry.null_condition
+	weaken_type = entry.weaken_type
+	weaken_max = entry.weaken_max
+	weaken_val = entry.weaken_val
 
 	title_name = get_name(PowerDegreeType, title)
 	body['title'] = title_name
@@ -2776,6 +2789,9 @@ def power_degree_post(entry, body, cells):
 	condition_turns = integer_convert(condition_turns)
 	nullify = integer_convert(nullify)
 	level_direction = integer_convert(level_direction)
+	weaken_max = integer_convert(weaken_max)
+	weaken_val = integer_convert(weaken_val)
+
 
 	updown = [{'type': '', 'name': 'Direction'}, {'type': 1, 'name': 'One Level Up'}, {'type': -1, 'name': 'One Level Down'}]
 	level_direction = selects(level_direction, updown) 
@@ -2805,7 +2821,6 @@ def power_degree_post(entry, body, cells):
 
 	effect_type = [{'type': '', 'name': 'Nullify Type'}, {'type': 'this', 'name': 'This Power'}, {'type': 'active', 'name': 'Active Oppponent Effect'}, {'type': 'descriptor', 'name': effect_descriptor_count + 'Effects with Descriptor' + effect_descriptor}, {'type': 'power', 'name': effect_power}]
 	effect = selects(effect, effect_type)
-
 
 	cells = cell('Keyword', 15, [keyword])
 	cells = cell('Extra', 13, [extra], cells)
@@ -2889,6 +2904,10 @@ def power_degree_post(entry, body, cells):
 	vcells = vcell('sense', 30, ['Apply Condition On Sense Form'], vcells)
 
 	vcells = vcell('null_condition', 30, [null_condition, 'Nullified'], vcells)
+	
+	vcells = vcell('weaken', 25, [weaken_val, 'Points Lost'], vcells, weaken_type, 'val')
+	vcells = vcell('weaken', 35, [weaken_val, 'Points Lost Per Degree'], vcells, weaken_type, 'degree')
+	vcells = vcell('weaken', 45, ['Lose Points Equal to Difference in Check'], vcells, weaken_type, 'check')
 
 	cells = vcell_add('Effect', type, vcells, cells)
 	

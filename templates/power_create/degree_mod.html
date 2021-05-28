@@ -78,6 +78,38 @@
 
 	<div id="deg-mod-effect">
 
+		<div id="deg-mod-weaken">
+			<div>
+				<select class="select-sml" id="deg_mod_weaken_type" name="deg_mod_weaken_type" onchange="deg_mod_weaken_type()">
+					{% for d in deg_mod_weaken_type %}
+						<option value="{{d.type}}">{{d.name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div>
+				<select class="select-sml" id="deg_mod_weaken_max" name="deg_mod_weaken_max">
+					<option value="">Maximum Lost Points</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="hidden" id="deg-mod-weaken-val">
+				<select class="select-sml" id="deg_mod_weaken_val" name="deg_mod_weaken_val">
+					<option value="">Points Lost</option>
+					<option value="rank">Power Rank</option>
+					<option value="extra">Extra Rank</option>
+					{% for i in positives %}
+						<option value={{i}}>{{i}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
 		<div id="deg-mod-null-condition">
 			<div>
 				<select class="select-sml" id="deg_mod_null_condition" name="deg_mod_null_condition">

@@ -1,4 +1,5 @@
 
+from create_functions.power_create import trait_cost
 from models import *
 from db.rule_models import *
 from db.measure_models import *
@@ -1051,6 +1052,86 @@ def required_link_field(table, column, id, field, table_name, trait, fieldname, 
 		if field == '':
 			error = True
 			message = 'You have created a ' + table_name + ' for this ' + trait + ' so you must set the ' + fieldname + " before you can save this " + trait +'.'
+			error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def variable_required_rules(value, field, rulename, required, table_name, table, column, id, errors, second_column=False, second_value=False, any=False):
+		
+	error_msgs = errors['error_msgs']
+	error = False
+
+	if value != field:
+		return (errors)
+		
+	try:
+		id = int(id)
+		attribute = getattr(table, column)
+		the_filter = attribute == id
+		if second_column == False:
+			check = db.session.query(table).filter(the_filter).first()
+		else:
+			if any != False:
+				second_attribute = getattr(table, second_column)
+				second_filter = second_attribute != second_value
+			else:
+				second_attribute = getattr(table, second_column)
+				second_filter = second_attribute == second_value
+			check = db.session.query(table).filter(the_filter, second_filter).first()
+		if check is None:
+			error = True
+			message = 'If this rule involves ' + rulename + ' you must fill out the ' + required + ' on the ' + table_name + " form first."
+			error_msgs.append(message)
+	except:
+		error = True
+		message = 'There was an error proceessing this request.'
+		error_msgs.append(message)
+	
+	errors['error_msgs'] = error_msgs
+	if error:
+		errors['error'] = error
+
+	return (errors)
+
+def cross_check(rulename, first_tablename, directions, second_tablename, table, column, value, second_table, trait_column, id, errors, second_column=False, second_value=False, any=False, second_any=False):
+	error_msgs = errors['error_msgs']
+	error = False
+
+	try:
+		id = int(id)
+		attribute = getattr(table, trait_column)
+		the_filter = attribute == id
+		first_attribute = getattr(table, column)
+		if any != False:
+			first_filter = first_attribute != value
+		else:
+			first_filter = first_attribute == value
+		check = db.session.query(table).filter(the_filter, first_filter).first()
+		
+		if check is None:
+			return (errors)
+
+		if second_column == False:
+			check = db.session.query(second_table).filter(the_filter).first()
+		else:
+			second_attribute = getattr(second_table, second_column)
+			if second_any != False:
+				second_filter = second_attribute != value
+			else:
+				second_filter = second_attribute == value
+			check = db.session.query(second_table).filter(the_filter, second_filter).first()
+			
+		if check is None:
+			error = True
+			message = 'You created a ' + rulename + ' rule on the ' + first_tablename + " form so you must " + directions + ' on the ' + second_tablename ' form.'
 			error_msgs.append(message)
 	except:
 		error = True

@@ -28,7 +28,8 @@ function deg_mod_type() {
 					{'val': ['duration'], 'div': 'deg-mod-duration'},
 					{'val': ['descriptor'], 'div': 'deg-mod-descriptor'},
 					{'val': ['null', 'uncontrol', 'detect'], 'div': 'deg-mod-effect-type'},
-					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'}];
+					{'val': ['null_condition'], 'div': 'deg-mod-null-condition'},
+					{'val': ['weaken'], 'div': 'deg-mod-weaken'}];
 
 	select_opacity_shared(select, options);
 }
@@ -252,7 +253,12 @@ function deg_mod_knowledge_mind() {
 	div_text(select, div, words);
 }
 
+function deg_mod_weaken_type() {
+	const select = 'deg_mod_weaken_type';
+	const options = [{'val': ['val', 'degree'], 'div': 'deg-mod-weaken-val'}]
 
+	select_opacity_shared(select, options)
+}
 
 
 let deg_mod_grid = {'titles': false,
@@ -359,8 +365,11 @@ function deg_mod_submit() {
 	const effect_descriptor = select("deg_mod_effect_descriptor");
 	const effect_descriptor_type = select("deg_mod_effect_descriptor_type");
 	const effect_descriptor_count = select("deg_mod_effect_descriptor_count");
-	const effect_power = select("deg_mod_effect_power")
-	const null_condition = select("deg_mod_null_condition")
+	const effect_power = select("deg_mod_effect_power");
+	const null_condition = select("deg_mod_null_condition");
+	const weaken_type = select("deg_mod_weaken_type");
+	const weaken_max = select("deg_mod_weaken_max");
+	const weaken_val = select("deg_mod_weaken_val")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -371,6 +380,7 @@ function deg_mod_submit() {
 	const selects = 'degree-sml';
 	const opp_selects = 'degree-opp-title-sml';
 	const select_title = 'degree-title-sml';
+	const weaken_sml = 'weaken-sml';
 
 	response = fetch('/power/degree/create', {
 		method: 'POST',
@@ -473,7 +483,10 @@ function deg_mod_submit() {
 			'effect_descriptor_type': effect_descriptor_type,
 			'effect_descriptor_count': effect_descriptor_count,
 			'effect_power': effect_power,
-			'null_condition': null_condition
+			'null_condition': null_condition,
+			'weaken_type': weaken_type,
+			'weaken_val': weaken_val,
+			'weaken_max': weaken_max
 		}),
 		headers: {
 		  'Content-Type': 'application/json',
@@ -496,6 +509,10 @@ function deg_mod_submit() {
 			}
 
 			selects_add(id, keyword, selects);
+
+			if (type == 'weaken') {
+				selects_add(id, keyword, weaken_sml);
+			}
 
 			deg_mod_grid.columns.length = 0;
 			deg_mod_grid.columns = jsonResponse.rows

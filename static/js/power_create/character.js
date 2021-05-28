@@ -193,24 +193,13 @@ function char_weaken_type() {
 	const select = 'char_weaken_type';
 	const options = [{'val': 'trait', 'div': 'char-weaken-trait'},
 					{'val': 'type', 'div': 'char-weaken-type'},
-					{'val': 'descriptor', 'div': 'char-weaken-descriptor'}]
+					{'val': 'descriptor', 'div': 'char-weaken-descriptor'}];
+	const broad = [{'val': ['type', 'descriptor'], 'div': 'char-weaken-broad'}];
 
-	select_opacity(select, options)
+	select_opacity(select, options);
+	select_opacity_shared(select, broad);
 }
 
-function char_weaken_broad() {
-	const select = document.getElementById('char_weaken_type');
-	const value = select.options[select.selectedIndex].value;
-	const div = document.getElementById('char-weaken-broad');
-	
-	if (value == 'type') {
-		div.style.opacity = '100%'
-	} else if (value == 'descriptor') {
-		div.style.opacity = '100%'
-	} else {
-		div.style.opacity = '0%';
-	}
-}
 
 function char_appear_creature() {
 	const select = 'char_appear_creature';
@@ -282,11 +271,13 @@ function char_submit() {
 	const insubstantial = check("char_insub");
 	const weaken = check("char_weaken");
 	const weaken_type = select("char_weaken_type");
+	const weaken_opposed_type = select("char_weaken_opposed_type");
+	const weaken_degree_type = select("char_weaken_degree_type")
 	const weaken_trait_type = select("char_weaken_trait_type");
 	const weaken_trait = select("char_weaken_trait");
 	const weaken_broad = select("char_weaken_broad");
 	const weaken_descriptor = select("char_weaken_descriptor");
-	const weaken_simultaneous = check("char_simultaneous");
+	const weaken_simultaneous = check("char_weaken_simultaneous");
 	const limited_by = select("char_limited_by");
 	const limited_other = text("char_other");
 	const limited_emotion = select("char_emotion");
@@ -351,6 +342,8 @@ function char_submit() {
 			'insubstantial': insubstantial,
 			'weaken': weaken,
 			'weaken_type': weaken_type,
+			'weaken_opposed_type': weaken_opposed_type,
+			'weaken_degree_type': weaken_degree_type,
 			'weaken_trait_type': weaken_trait_type,
 			'weaken_trait': weaken_trait,
 			'weaken_broad': weaken_broad,
