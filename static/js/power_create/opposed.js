@@ -146,6 +146,8 @@ function opposed_submit() {
 	const circ_value = select("opposed_circ_value");
 	const time_type = select("opposed_time_type");
 	const recurring_type = select("opposed_recurring_type");
+	const recurring_degree_type = select("opposed_recurring_degree_type");
+	const recurring_fail = check("opposed_recurring_fail");
 	const variable = select("opposed_variable");
 	const title = text("opposed_title");
 	const opposed = select("opposed_opposed");
@@ -202,6 +204,8 @@ function opposed_submit() {
 			'circ_value': circ_value,
 			'time_type': time_type,
 			'recurring_type': recurring_type,
+			'recurring_degree_type': recurring_degree_type,
+			'recurring_fail': recurring_fail,
 			'variable': variable,
 			'title': title,
 			'opponent': opponent,

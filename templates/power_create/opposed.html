@@ -347,12 +347,12 @@
 	
 	<div id="opposed-recurring">
 		<div class="valign"  style="font-size: 80;">
-			Time Between Checks:
+			Recurring:
 		</div>
 
 		<div>
 			<select class="select-sml recur-sml" id="opposed_recurring_value" name="opposed_recurring_value">
-				<option value="">Time</option>
+				<option value="">Time Between Checks</option>
 				<option value="turn">One Turn</option>
 				<option value="round">Round</option>
 				<option value="scene">Scene</option>
@@ -371,7 +371,23 @@
 					<option value={{p.id}}>{{p.name}}</option>
 				{% endfor %}
 			</select>
-		</div>	
+		</div>
+
+		<div>
+			<select class="degree-title-sml" id="opposed_recurring_degree_type" name="opposed_recurring_degree_type">
+				<option value="">Degree Effect by Group</option>
+				<option value="">Use Degree of Success/Failure Form to Put Options Here</option>
+				{% for p in power_degree_type %}
+					<option value={{p.id}}}>{{p.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	
+		<div>
+			<div class="check-div" style="font-size: 80%;">
+				<input type="checkbox" id="opposed_recurring_fail" class="medium-checkbox med-checkbox" > After Failure Only
+			</div>
+		</div>
 	</div>
 
 		

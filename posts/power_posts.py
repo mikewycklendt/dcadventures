@@ -3333,6 +3333,8 @@ def power_opposed_post(entry, body, cells):
 	time_type = entry.time_type
 	description = entry.description
 	recurring_type = entry.recurring_type
+	recurring_degree_type = entry.recurring_degree_type
+	recurring_fail = entry.recurring_fail
 	variable = entry.variable
 	title = entry.title
 	opponent = entry.opponent
@@ -3372,6 +3374,7 @@ def power_opposed_post(entry, body, cells):
 	opponent = get_name(PowerOpposedType, opponent)
 	opposed = get_keyword(PowerOpposed, opposed)
 	variable_type = get_name(PowerCheckType, variable_type)
+	recurring_degree_type = get_name(PowerDegreeType, recurring_degree_type)
 
 	frequency_select = [{'type': 'always', 'name': 'Always'}, {'type': 'target', 'name': 'If Opponent Targeted'}, {'type': 'gm', 'name': 'GM Discretion'}, {'type': 'player', 'name': 'Player Choice'}]
 	frequency = selects(frequency, frequency_select)
@@ -3438,6 +3441,8 @@ def power_opposed_post(entry, body, cells):
 	new_mod = mod_cell('Every', 15, [recurring_value], new_mod)
 	word = string('Time Group', [recurring_type])
 	new_mod = mod_cell('Using', 10, [recurring_type, word], new_mod)
+	new_mod = mod_cell('Degree Effect', 16, [recurring_degree_type], new_mod)
+	new_mod = mod_cell('After Failure Only', 20, [recurring_fail], new_mod)
 	mod_add(recurring, new_mod, body)
 
 	cells = circ_cell('Desc', 'Description', 6, description, cells, body)

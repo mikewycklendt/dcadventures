@@ -2864,6 +2864,7 @@ def power_opposed_post_errors(data):
 	circ_value = data['circ_value']
 	time_type = data['time_type']
 	recurring_type = data['recurring_type']
+	recurring_degree_type = data['recurring_degree_type']
 	variable = data['variable']
 	title = data['title']
 	opponent = data['opponent']
@@ -2895,6 +2896,7 @@ def power_opposed_post_errors(data):
 	errors = id_check(PowerTimeType, time_type, 'Time Group', errors)
 	errors = id_check(PowerTimeType, recurring_type, 'Recurring Time Group', errors)
 	errors = id_check(PowerCheck, variable, 'Vsriable Check', errors)
+	errors = id_check(PowerDegreeType, recurring_degree_type, 'Recurring Degree Effect Group', errors)
 
 	errors = required(extra_id, 'Extra or Base Power', errors)
 	errors = required(attached, 'Attsched', errors)

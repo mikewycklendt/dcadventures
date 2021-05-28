@@ -5134,6 +5134,8 @@ def power_post_opposed():
 	circ_value = request.get_json()['circ_value']
 	time_type = request.get_json()['time_type']
 	recurring_type = request.get_json()['recurring_type']
+	recurring_degree_type = request.get_json()['recurring_degree_type']
+	recurring_fail = request.get_json()['recurring_fail']
 	variable = request.get_json()['variable']
 	title = request.get_json()['title']
 	opponent = request.get_json()['opponent']
@@ -5164,6 +5166,7 @@ def power_post_opposed():
 	opponent = db_integer(PowerOpposedType, opponent)
 	opposed = db_integer(PowerOpposed, opposed)
 	variable_type = db_integer(PowerCheckType, variable_type)
+	recurring_degree_type = db_integer(PowerDegreeType, recurring_degree_type)
 
 	trait = integer(trait)
 	mod = integer(mod)
@@ -5219,6 +5222,8 @@ def power_post_opposed():
 						circ_value = circ_value,
 						time_type = time_type,
 						recurring_type = recurring_type,
+						recurring_degree_type = recurring_degree_type,
+						recurring_fail = recurring_fail,
 						variable = variable,
 						title = title,
 						opponent = opponent,

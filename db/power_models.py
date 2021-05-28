@@ -1257,6 +1257,8 @@ class PowerOpposed(db.Model):
 	circ_value = db.Column(db.Integer, db.ForeignKey('power_circ.id'))
 	time_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
 	recurring_type = db.Column(db.Integer, db.ForeignKey('power_time_type.id'))
+	recurring_degree_type = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
+	recurring_fail = db.Column(db.Boolean)
 	variable = db.Column(db.Integer, db.ForeignKey('power_check.id'))
 	chained = db.Column(db.Boolean)
 	title = db.Column(db.Integer, db.ForeignKey('power_opposed_type.id'))
@@ -1304,6 +1306,8 @@ class PowerOpposed(db.Model):
 			'circ_value': self.circ_value,
 			'time_type': self.time_type,
 			'recurring_type': self.recurring_type,
+			'recurring_degree_type': self.recurring_degree_type,
+			'recurring_fail': self.recurring_fail,
 			'variable': self.variable,
 			'chained': self.chained,
 			'title': self.title,
