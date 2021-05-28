@@ -212,7 +212,7 @@ trait amount
 	display: none;
 	width: 98%;
 	gap: 3px;
-	grid-template-columns: 10% 15% 20% 20% 35%;
+	grid-template-columns: 9% 16% 19% 19% 37%;
 	max-height: 0;
 	overflow: hidden;
 	transition: all .4s ease-out;
