@@ -435,6 +435,8 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 
 	precise_type = [{'type': '', 'name': 'Precise Type'}, {'type': 'objects', 'name': 'Fine Msnipulation of Objects'}, {'type': 'body', 'name': 'Effects Speecific Parts of Body'}, {'type': 'choice', 'name': 'Choose What Effect Affects'}]
 
+	progressive_type = [{'type': '', 'name': 'Progressive Type'}, {'type': 'increase', 'name': 'Failure Increases Effect Degree'}, {'type': 'repeat', 'name': 'Failure Repeats Effect'}]
+
 	ranged_type = [{'type': '', 'name': 'Ranged Type'}, {'type': 'flat_units', 'name': 'Flat Units'}, {'type': 'distance_rank', 'name': 'Flat Distance Rank'}, {'type': 'units_rank', 'name': 'Units Per Rank'}, {'type': 'rank_rank', 'name': 'Distance Rank Per Rank'}, {'type': 'effect_mod', 'name': 'Effect Rank Modifier'}, {'type': 'trait_mod', 'name': 'Trait Rank Modifier'}, {'type': 'distance_mod', 'name': 'Distance Rank Modifier'}, {'type': 'check', 'name': 'Check Result'}, {'type': 'penalty', 'name': 'Range Penalty Modifier'}, {'type': 'general', 'name': 'General'}]
 
 	rank_type =   [{'type':  '', 'name': 'Rank Type'}, {'type':  'power', 'name': 'Power Rank'}, {'type':  'extra', 'name': 'Extra Rank'}]
@@ -606,7 +608,7 @@ def power_create(stylesheets=stylesheets, meta_name=meta_name, meta_content=meta
 											damage_applied=damage_applied, precise_type=precise_type, move_multiple=move_multiple, before=before, after=after, check_frequency=check_frequency, 
 											check_sense_type=check_sense_type, check_sense_target=check_sense_target, descriptor_effect_type=descriptor_effect_type, effect_type=effect_type, effortless_type=effortless_type,
 											feedback_type=feedback_type, source_type=source_type, sense_micro=sense_micro, micro_expertise=micro_expertise, unreliable_type=unreliable_type, rank_type=rank_type,
-											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type)
+											incurable_type=incurable_type, deg_mod_weaken_type=deg_mod_weaken_type, progressive_type=progressive_type)
 
 @powers.route('/power/create', methods=['POST'])
 def post_power(): 
@@ -2589,6 +2591,9 @@ def power_post_mod():
 	concentration_effort = request.get_json()['concentration_effort']
 	unreliable_type = request.get_json()['unreliable_type']
 	incurable_type = request.get_json()['incurable_type']
+	progressive_type = request.get_json()['progressive_type']
+	progressive_degree = request.get_json()['progressive_degree']
+	progressive_degree_type  = request.get_json()['progressive_degree_type']
 
 
 	cost = db_integer(PowerCost, cost)
@@ -2605,6 +2610,8 @@ def power_post_mod():
 	concentration_check_type = db_integer(PowerCheckType, concentration_check_type)
 	concentration_opposed = db_integer(PowerOpposed, concentration_opposed)
 	effortless_degree = db_integer(PowerDegree, effortless_degree)
+	progressive_degree = db_integer(PowerDegree, progressive_degree)
+	progressive_degree_type = db_integer(PowerDegreeType, progressive_degree_type)
 
 	power_id = integer(power_id)
 	extra_id = db_integer(Extra, extra_id)
@@ -2797,7 +2804,10 @@ def power_post_mod():
 							concentration_opposed = concentration_opposed,
 							concentration_effort = concentration_effort,
 							unreliable_type = unreliable_type,
-							incurable_type = incurable_type
+							incurable_type = incurable_type,
+							progressive_type = progressive_type,
+							progressive_degree = progressive_degree,
+							progressive_degree_type = progressive_degree_type
 						)
 
 		db.session.add(entry)

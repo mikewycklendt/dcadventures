@@ -933,6 +933,9 @@ def mod_post_errors(data):
 	concentration_opposed = data['concentration_opposed']
 	unreliable_type = data['unreliable_type']
 	incurable_type = data['incurable_type']
+	progressive_type = data['progressive_type']
+	progressive_degree = data['progressive_degree']
+	progressive_degree_type = data['progressive_degree_type']
 
 	errors = id_check(PowerCost, cost, 'Cost', errors)
 	errors = id_check(PowerRanks, ranks, 'Ranks', errors)
@@ -947,6 +950,8 @@ def mod_post_errors(data):
 	errors = id_check(PowerCheck, concentration_check, 'Concentration Check', errors)
 	errors = id_check(PowerCheckType, concentration_check_type, 'Concentration Check by Group', errors)
 	errors = id_check(PowerOpposed, concentration_opposed)
+	errors = id_check(PowerDegree, progressive_degree, 'Progressive Degree', errors)
+	errors = id_check(PowerDegreeType, progressive_degree_type, 'Progressive Degree by Group', errors)
 
 	errors = power_check(power_id, errors)
 
@@ -1139,6 +1144,14 @@ def mod_post_errors(data):
 	
 	errors = check_fields(incurable, 'Incurable', [incurable_type], errors)
 	errors = check_field(incurable, 'Incurable', 'Incurable Type', incurable_type, errors)
+
+	errors = check_fields(progressive, 'Progressivr', [progressive_type], errors)
+	errors = check_field(progressive, 'Progressive', 'Progressive Type', progressive_type, errors)
+	errors = variable_fields('increase', 'Increase Effect Degree', progressive_type, [progressive_degree_type], errors)
+	errors = variable_field('increase', progressive_type, 'Degree by Group', progressive_degree_type, errors)
+	errors = variable_fields('repeat', 'Repeat Degree Effect', progressive_type, [progressive_degree], errors)
+	errors = variable_field('repeat', progressive_type, 'Repeat Degree Effect', progressive_degree, errors)
+
 
 	return (errors)
 

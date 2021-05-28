@@ -437,6 +437,24 @@ function mod_incurable() {
 	check_drop(check, div, entry);
 }
 
+function mod_progressive() {
+	const check = 'mod_progressive';
+	const div = 'mod-progressive';
+	const entry = 'mod-entry';
+
+	check_drop(check, div, entry);
+}
+
+function mod_progressive_type() {
+	const select = 'mod_progressive_type';
+	const options = [{'val': ['increase'], 'div': 'mod-progressive-degree-type'},
+					{'val': ['repeat'], 'div': 'mod-progressive-degree'}];
+	const fields = ['mod_progressive_degree_type', 'mod_progressive_degree']
+					
+	reset_all(fields);
+	select_opacity_shared(select, options);
+}
+
 let mod_grid = {'titles': false,
 					'columns': [],
 					'font': 80,
@@ -575,6 +593,9 @@ function mod_submit() {
 	const concentration_effort = check("mod_concentration_effort");
 	const unreliable_type = select("mod_unreliable_type");
 	const incurable_type = select("mod_incurable_type");
+	const progressive_type = select("mod_progressive_type");
+	const progressive_degree = select("mod_progressive_degree");
+	const progressive_degree_type = select("mod_progressive_degree_type")
 	
 	///const power_id = document.getElementById('power_id').value;
 	const power_id = select("create_power_select");
@@ -715,7 +736,10 @@ function mod_submit() {
 			'concentration_opposed': concentration_opposed,
 			'concentration_effort': concentration_effort,
 			'unreliable_type': unreliable_type,
-			'incurable_type': incurable_type
+			'incurable_type': incurable_type,
+			'progressive_type': progressive_type,
+			'progressive_degree': progressive_degree,
+			'progressive_degree_type': progressive_degree_type
 		}),
 		headers: {
 		  'Content-Type': 'application/json',

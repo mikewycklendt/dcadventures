@@ -2117,6 +2117,9 @@ class PowerMod(db.Model):
 	concentration_effort = db.Column(db.Boolean)
 	unreliable_type = db.Column(db.String())
 	incurable_type = db.Column(db.String())
+	progressive_type = db.Column(db.String())
+	progressive_degree = db.Column(db.Integer, db.ForeignKey('power_degree.id'))
+	progressive_degree_type = db.Column(db.Integer, db.ForeignKey('power_degree_type.id'))
 
 	def format(self):
 		return {
@@ -2246,7 +2249,10 @@ class PowerMod(db.Model):
 			'concentration_opposed': self.concentration_opposed,
 			'concentration_effort': self.concentration_effort,
 			'unreliable_type': self.unreliable_type,
-			'incurable_type': self.incurable_type
+			'incurable_type': self.incurable_type,
+			'progressive_type': self.progressive_type,
+			'progressive_degree': self.progressive_degree,
+			'progressive_degree_type': self.progressive_degree_type
 		}
 
 class PowerRanged(db.Model):

@@ -1031,6 +1031,10 @@ def mod_post(entry, body, cells):
 	concentration_check_type = entry.concentration_check_type
 	concentration_opposed = entry.concentration_opposed
 	concentration_effort = entry.concentration_effort
+	progressive_type = entry.progressive_type
+	progressive_degree = entry.progressive_degree
+	progressive_degree_type = entry.progressive_degree_type
+
 
 	body = one_multiple(PowerMod, power_id, body)
 
@@ -1048,6 +1052,8 @@ def mod_post(entry, body, cells):
 	concentration_check_type = get_name(PowerCheckType, concentration_check_type)
 	concentration_opposed = get_keyword(PowerOpposed, concentration_opposed)
 	effortless_degree = get_keyword(PowerDegree, effortless_degree)
+	progressive_degree = get_keyword(PowerDegree. progressive_degree)
+	progressive_degree_type = get_name(PowerDegreeType, progressive_degree_type)
 
 	limited_trait = trait_select(limited_trait, limited_trait_type)
 	subtle_null_trait = trait_select(subtle_null_trait, subtle_null_trait_type)
@@ -1271,7 +1277,13 @@ def mod_post(entry, body, cells):
 	new_mod = mod_create('Precise', 10)
 	new_mod = mod_cell('Type:', 7, [precise_type], new_mod)
 	body = mod_add(precise, new_mod, body)
-	cells = check_cell('Progressive', 11, progressive, cells)
+
+	cells = check_cell('Progressive', 11, progressive, cells, True)
+	new_mod = mod_create('Progressive', 14)
+	new_mod = mod_cell('Type', 6, [progressive_type], new_mod)
+	new_mod = mod_cell('Degree', 9, [progressive_degree], new_mod)
+	new_mod = mod_cell('Degree by Group', 18, [progressive_degree_type], new_mod)
+	body = mod_add(progressive, new_mod, body)
 
 	cells = check_cell('Subtle', 7, subtle, cells, True)
 	new_mod = mod_create('Subtle', 8)
